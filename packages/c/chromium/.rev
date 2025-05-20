@@ -5616,4 +5616,41 @@ boo#1224178</comment>
   * CVE-2025-4372: Use after free in WebAudio</comment>
     <requestid>1275140</requestid>
   </revision>
+  <revision rev="462" vrev="1">
+    <srcmd5>5e5dd3a3c48cf10118f2871793bb1ac3</srcmd5>
+    <version>136.0.7103.113</version>
+    <time>1747726307</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 136.0.7103.113
+  (stable release 2025-05-14) (boo#1243205)
+  * CVE-2025-4664: Insufficient policy enforcement in Loader
+  * CVE-2025-4609: Incorrect handle provided in unspecified
+    circumstances in Mojo
+
+- try build on ppc64le
+- added patches (from fedora)
+    ppc-fedora-add-ppc64-architecture-string.patch
+    ppc-fedora-0001-linux-seccomp-bpf-ppc64-glibc-workaround-in-SIGSYS-h.patch
+    ppc-fedora-0001-sandbox-Enable-seccomp_bpf-for-ppc64.patch
+    ppc-fedora-0001-services-service_manager-sandbox-linux-Fix-TCGETS-de.patch
+    ppc-fedora-0001-sandbox-linux-bpf_dsl-Update-syscall-ranges-for-ppc6.patch
+    ppc-fedora-0001-sandbox-linux-Implement-partial-support-for-ppc64-sy.patch
+    ppc-fedora-0001-sandbox-linux-Update-IsSyscallAllowed-in-broker_proc.patch
+    ppc-fedora-0001-sandbox-linux-Update-syscall-helpers-lists-for-ppc64.patch
+    ppc-fedora-0002-sandbox-linux-bpf_dsl-Modify-seccomp_macros-to-add-s.patch
+    ppc-fedora-0003-sandbox-linux-system_headers-Update-linux-seccomp-he.patch
+    ppc-fedora-0004-sandbox-linux-system_headers-Update-linux-signal-hea.patch
+    ppc-fedora-0005-sandbox-linux-seccomp-bpf-Add-ppc64-syscall-stub.patch
+    ppc-fedora-0005-sandbox-linux-update-unit-test-for-ppc64.patch
+    ppc-fedora-0006-sandbox-linux-disable-timedwait-time64-ppc64.patch
+    ppc-fedora-0007-sandbox-linux-add-ppc64-stat.patch
+    ppc-fedora-Sandbox-linux-services-credentials.cc-PPC.patch
+    ppc-fedora-0008-sandbox-fix-ppc64le-glibc234.patch
+    ppc-fedora-0001-third_party-angle-Include-missing-header-cstddef-in-.patch
+    ppc-fedora-0001-Add-PPC64-support-for-boringssl.patch
+    ppc-fedora-0001-third_party-libvpx-Properly-generate-gni-on-ppc64.patch
+    ppc-fedora-0001-third_party-pffft-Include-altivec.h-on-ppc64-with-SI.patch
+    ppc-fedora-0002-Add-PPC64-generated-files-for-boringssl.patch</comment>
+    <requestid>1277583</requestid>
+  </revision>
 </revisionlist>

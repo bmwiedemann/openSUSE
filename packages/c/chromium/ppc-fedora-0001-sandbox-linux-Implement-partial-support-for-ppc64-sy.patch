@@ -1,0 +1,80 @@
+From 036d209a3f1a771de9aed31dfbe804aaf91d1c27 Mon Sep 17 00:00:00 2001
+From: Shawn Anastasio <shawnanastasio@yahoo.com>
+Date: Thu, 9 Aug 2018 23:35:21 -0500
+Subject: [PATCH] sandbox/linux: Implement partial support for ppc64 syscalls
+ and ucontext
+
+Unlike other architectures, the ppc64 files currently rely on applicable
+headers being provided by the system. It is sufficient for standard
+GNU/Linux environments, but may require expansion elsewhere.
+---
+ sandbox/linux/BUILD.gn                              |  2 ++
+ sandbox/linux/system_headers/linux_syscalls.h       |  4 ++++
+ sandbox/linux/system_headers/linux_ucontext.h       |  2 ++
+ sandbox/linux/system_headers/ppc64_linux_syscalls.h | 12 ++++++++++++
+ sandbox/linux/system_headers/ppc64_linux_ucontext.h | 12 ++++++++++++
+ 5 files changed, 32 insertions(+)
+ create mode 100644 sandbox/linux/system_headers/ppc64_linux_syscalls.h
+ create mode 100644 sandbox/linux/system_headers/ppc64_linux_ucontext.h
+
+Index: chromium-134.0.6998.35/sandbox/linux/BUILD.gn
+===================================================================
+--- chromium-134.0.6998.35.orig/sandbox/linux/BUILD.gn
++++ chromium-134.0.6998.35/sandbox/linux/BUILD.gn
+@@ -384,6 +384,8 @@ component("sandbox_services") {
+ 
+ source_set("sandbox_services_headers") {
+   sources = [
++    "system_headers/ppc64_linux_syscalls.h",
++    "system_headers/ppc64_linux_ucontext.h",
+     "system_headers/arm64_linux_syscalls.h",
+     "system_headers/arm_linux_syscalls.h",
+     "system_headers/arm_linux_ucontext.h",
+Index: chromium-134.0.6998.35/sandbox/linux/system_headers/linux_syscalls.h
+===================================================================
+--- chromium-134.0.6998.35.orig/sandbox/linux/system_headers/linux_syscalls.h
++++ chromium-134.0.6998.35/sandbox/linux/system_headers/linux_syscalls.h
+@@ -35,5 +35,9 @@
+ #include "sandbox/linux/system_headers/arm64_linux_syscalls.h"
+ #endif
+ 
++#if defined(__powerpc64__)
++#include "sandbox/linux/system_headers/ppc64_linux_syscalls.h"
++#endif
++
+ #endif  // SANDBOX_LINUX_SYSTEM_HEADERS_LINUX_SYSCALLS_H_
+ 
+Index: chromium-134.0.6998.35/sandbox/linux/system_headers/ppc64_linux_syscalls.h
+===================================================================
+--- /dev/null
++++ chromium-134.0.6998.35/sandbox/linux/system_headers/ppc64_linux_syscalls.h
+@@ -0,0 +1,12 @@
++// Copyright 2014 The Chromium Authors. All rights reserved.
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#ifndef SANDBOX_LINUX_SYSTEM_HEADERS_PPC64_LINUX_SYSCALLS_H_
++#define SANDBOX_LINUX_SYSTEM_HEADERS_PPC64_LINUX_SYSCALLS_H_
++
++#include <asm/unistd.h>
++
++//TODO: is it necessary to redefine syscall numbers for PPC64?
++
++#endif  // SANDBOX_LINUX_SYSTEM_HEADERS_PPC64_LINUX_SYSCALLS_H_
+Index: chromium-134.0.6998.35/sandbox/linux/system_headers/ppc64_linux_ucontext.h
+===================================================================
+--- /dev/null
++++ chromium-134.0.6998.35/sandbox/linux/system_headers/ppc64_linux_ucontext.h
+@@ -0,0 +1,12 @@
++// Copyright 2014 The Chromium Authors. All rights reserved.
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#ifndef SANDBOX_LINUX_SYSTEM_HEADERS_PPC64_LINUX_UCONTEXT_H_
++#define SANDBOX_LINUX_SYSTEM_HEADERS_PPC64_LINUX_UCONTEXT_H_
++
++#include <sys/ucontext.h>
++
++//TODO: is it necessary to redefine ucontext on PPC64?
++
++#endif  // SANDBOX_LINUX_SYSTEM_HEADERS_PPC64_LINUX_UCONTEXT_H_

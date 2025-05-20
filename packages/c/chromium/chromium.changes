@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Thu May 15 00:07:25 CEST 2025 - ro@suse.de
+
+- Chromium 136.0.7103.113
+  (stable release 2025-05-14) (boo#1243205)
+
+  * CVE-2025-4664: Insufficient policy enforcement in Loader
+  * CVE-2025-4609: Incorrect handle provided in unspecified
+    circumstances in Mojo
+
+-------------------------------------------------------------------
+Mon May 12 17:13:38 CEST 2025 - ro@suse.de
+
+- try build on ppc64le
+- added patches (from fedora)
+    ppc-fedora-add-ppc64-architecture-string.patch
+    ppc-fedora-0001-linux-seccomp-bpf-ppc64-glibc-workaround-in-SIGSYS-h.patch
+    ppc-fedora-0001-sandbox-Enable-seccomp_bpf-for-ppc64.patch
+    ppc-fedora-0001-services-service_manager-sandbox-linux-Fix-TCGETS-de.patch
+    ppc-fedora-0001-sandbox-linux-bpf_dsl-Update-syscall-ranges-for-ppc6.patch
+    ppc-fedora-0001-sandbox-linux-Implement-partial-support-for-ppc64-sy.patch
+    ppc-fedora-0001-sandbox-linux-Update-IsSyscallAllowed-in-broker_proc.patch
+    ppc-fedora-0001-sandbox-linux-Update-syscall-helpers-lists-for-ppc64.patch
+    ppc-fedora-0002-sandbox-linux-bpf_dsl-Modify-seccomp_macros-to-add-s.patch
+    ppc-fedora-0003-sandbox-linux-system_headers-Update-linux-seccomp-he.patch
+    ppc-fedora-0004-sandbox-linux-system_headers-Update-linux-signal-hea.patch
+    ppc-fedora-0005-sandbox-linux-seccomp-bpf-Add-ppc64-syscall-stub.patch
+    ppc-fedora-0005-sandbox-linux-update-unit-test-for-ppc64.patch
+    ppc-fedora-0006-sandbox-linux-disable-timedwait-time64-ppc64.patch
+    ppc-fedora-0007-sandbox-linux-add-ppc64-stat.patch
+    ppc-fedora-Sandbox-linux-services-credentials.cc-PPC.patch
+    ppc-fedora-0008-sandbox-fix-ppc64le-glibc234.patch
+    ppc-fedora-0001-third_party-angle-Include-missing-header-cstddef-in-.patch
+    ppc-fedora-0001-Add-PPC64-support-for-boringssl.patch
+    ppc-fedora-0001-third_party-libvpx-Properly-generate-gni-on-ppc64.patch
+    ppc-fedora-0001-third_party-pffft-Include-altivec.h-on-ppc64-with-SI.patch
+    ppc-fedora-0002-Add-PPC64-generated-files-for-boringssl.patch
+    ppc-fedora-0002-third_party-lss-kernel-structs.patch
+    ppc-fedora-0001-swiftshader-fix-build.patch
+    ppc-fedora-Rtc_base-system-arch.h-PPC.patch
+    ppc-fedora-0002-Include-cstddef-to-fix-build.patch
+    ppc-fedora-0004-third_party-crashpad-port-curl-transport-ppc64.patch
+    ppc-fedora-HACK-third_party-libvpx-use-generic-gnu.patch
+    ppc-fedora-0001-third-party-hwy-wrong-include.patch
+    ppc-fedora-HACK-debian-clang-disable-base-musttail.patch
+    ppc-fedora-0001-Add-ppc64-target-to-libaom.patch
+    ppc-fedora-0001-Add-pregenerated-config-for-libaom-on-ppc64.patch
+    ppc-fedora-0002-third_party-libvpx-Remove-bad-ppc64-config.patch
+    ppc-fedora-0003-third_party-libvpx-Add-ppc64-generated-config.patch
+    ppc-fedora-0004-third_party-libvpx-work-around-ambiguous-vsx.patch
+    ppc-fedora-skia-vsx-instructions.patch
+    ppc-fedora-0001-Implement-support-for-ppc64-on-Linux.patch
+    ppc-fedora-0001-Implement-support-for-PPC64-on-Linux.patch
+    ppc-fedora-0001-Force-baseline-POWER8-AltiVec-VSX-CPU-features-when-.patch
+    ppc-fedora-fix-clang-selection.patch
+    ppc-fedora-fix-rustc.patch
+    ppc-fedora-fix-rust-linking.patch
+    ppc-fedora-fix-breakpad-compile.patch
+    ppc-fedora-fix-partition-alloc-compile.patch
+    ppc-fedora-fix-study-crash.patch
+    ppc-fedora-memory-allocator-dcheck-assert-fix.patch
+    ppc-fedora-fix-different-data-layouts.patch
+    ppc-fedora-0002-Add-ppc64-trap-instructions.patch
+    ppc-fedora-fix-ppc64-linux-syscalls-headers.patch
+    ppc-fedora-use-sysconf-page-size-on-ppc64.patch
+    ppc-fedora-0001-Enable-ppc64-pointer-compression.patch
+    ppc-fedora-dawn-fix-ppc64le-detection.patch
+    ppc-fedora-add-ppc64-architecture-to-extensions.diff
+    ppc-fedora-fix-unknown-warning-option-messages.diff
+    ppc-fedora-add-ppc64-pthread-stack-size.patch
+    ppc-fedora-fix-ppc64-rust_png-build-error.patch
+- added patches
+    ppc-chromium-136-clang-config.patch
+- disable swiftshader on ppc64le like on aarch64
+ 
+-------------------------------------------------------------------
 Wed May  7 10:17:50 CEST 2025 - ro@suse.de
 
 - Chromium 136.0.7103.92

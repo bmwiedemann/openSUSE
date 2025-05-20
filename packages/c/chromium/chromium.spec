@@ -32,7 +32,7 @@
 %bcond_with gtk4
 %bcond_with qt5
 %endif
-%ifarch aarch64
+%ifarch aarch64 ppc64le riscv64
 %bcond_with swiftshader
 %else
 %bcond_without swiftshader
@@ -44,7 +44,7 @@
 # ERROR Unresolved dependencies.
 # //chrome/browser/ui/lens:unit_tests(//build/toolchain/linux/unbundle:default)
 #   needs //third_party/icu:icuuc_public(//build/toolchain/linux/unbundle:default)
-#bcond_without system_icu
+%bcond_with system_icu
 %bcond_without qt6
 %bcond_without ffmpeg_51
 %define ffmpeg_version 59
@@ -107,7 +107,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        136.0.7103.92
+Version:        136.0.7103.113
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -158,6 +158,64 @@ Patch373:       chromium-134-type-mismatch-error.patch
 Patch375:       chromium-131-fix-qt-ui.pach
 Patch376:       chromium-135-add_map_droppable.patch
 Patch377:       chromium-135-gperf-output.patch
+# conditionally applied patches ppc64le only
+Patch401:       ppc-fedora-add-ppc64-architecture-string.patch
+Patch402:       ppc-fedora-0001-linux-seccomp-bpf-ppc64-glibc-workaround-in-SIGSYS-h.patch
+Patch403:       ppc-fedora-0001-sandbox-Enable-seccomp_bpf-for-ppc64.patch
+Patch404:       ppc-fedora-0001-services-service_manager-sandbox-linux-Fix-TCGETS-de.patch
+Patch405:       ppc-fedora-0001-sandbox-linux-bpf_dsl-Update-syscall-ranges-for-ppc6.patch
+Patch406:       ppc-fedora-0001-sandbox-linux-Implement-partial-support-for-ppc64-sy.patch
+Patch407:       ppc-fedora-0001-sandbox-linux-Update-IsSyscallAllowed-in-broker_proc.patch
+Patch408:       ppc-fedora-0001-sandbox-linux-Update-syscall-helpers-lists-for-ppc64.patch
+Patch409:       ppc-fedora-0002-sandbox-linux-bpf_dsl-Modify-seccomp_macros-to-add-s.patch
+Patch410:       ppc-fedora-0003-sandbox-linux-system_headers-Update-linux-seccomp-he.patch
+Patch411:       ppc-fedora-0004-sandbox-linux-system_headers-Update-linux-signal-hea.patch
+Patch412:       ppc-fedora-0005-sandbox-linux-seccomp-bpf-Add-ppc64-syscall-stub.patch
+Patch413:       ppc-fedora-0005-sandbox-linux-update-unit-test-for-ppc64.patch
+Patch414:       ppc-fedora-0006-sandbox-linux-disable-timedwait-time64-ppc64.patch
+Patch415:       ppc-fedora-0007-sandbox-linux-add-ppc64-stat.patch
+Patch416:       ppc-fedora-Sandbox-linux-services-credentials.cc-PPC.patch
+Patch417:       ppc-fedora-0008-sandbox-fix-ppc64le-glibc234.patch
+Patch418:       ppc-fedora-0001-third_party-angle-Include-missing-header-cstddef-in-.patch
+Patch419:       ppc-fedora-0001-Add-PPC64-support-for-boringssl.patch
+Patch420:       ppc-fedora-0001-third_party-libvpx-Properly-generate-gni-on-ppc64.patch
+Patch421:       ppc-fedora-0001-third_party-pffft-Include-altivec.h-on-ppc64-with-SI.patch
+Patch422:       ppc-fedora-0002-Add-PPC64-generated-files-for-boringssl.patch
+Patch423:       ppc-fedora-0002-third_party-lss-kernel-structs.patch
+Patch424:       ppc-fedora-0001-swiftshader-fix-build.patch
+Patch425:       ppc-fedora-Rtc_base-system-arch.h-PPC.patch
+Patch426:       ppc-fedora-0002-Include-cstddef-to-fix-build.patch
+Patch427:       ppc-fedora-0004-third_party-crashpad-port-curl-transport-ppc64.patch
+Patch428:       ppc-fedora-HACK-third_party-libvpx-use-generic-gnu.patch
+Patch429:       ppc-fedora-0001-third-party-hwy-wrong-include.patch
+Patch430:       ppc-fedora-HACK-debian-clang-disable-base-musttail.patch
+Patch431:       ppc-fedora-0001-Add-ppc64-target-to-libaom.patch
+Patch432:       ppc-fedora-0001-Add-pregenerated-config-for-libaom-on-ppc64.patch
+Patch433:       ppc-fedora-0002-third_party-libvpx-Remove-bad-ppc64-config.patch
+Patch434:       ppc-fedora-0003-third_party-libvpx-Add-ppc64-generated-config.patch
+Patch435:       ppc-fedora-0004-third_party-libvpx-work-around-ambiguous-vsx.patch
+Patch436:       ppc-fedora-skia-vsx-instructions.patch
+Patch437:       ppc-fedora-0001-Implement-support-for-ppc64-on-Linux.patch
+Patch438:       ppc-fedora-0001-Implement-support-for-PPC64-on-Linux.patch
+Patch439:       ppc-fedora-0001-Force-baseline-POWER8-AltiVec-VSX-CPU-features-when-.patch
+Patch440:       ppc-fedora-fix-clang-selection.patch
+Patch441:       ppc-fedora-fix-rustc.patch
+Patch442:       ppc-fedora-fix-rust-linking.patch
+Patch443:       ppc-fedora-fix-breakpad-compile.patch
+Patch444:       ppc-fedora-fix-partition-alloc-compile.patch
+Patch445:       ppc-fedora-fix-study-crash.patch
+Patch446:       ppc-fedora-memory-allocator-dcheck-assert-fix.patch
+Patch447:       ppc-fedora-fix-different-data-layouts.patch
+Patch448:       ppc-fedora-0002-Add-ppc64-trap-instructions.patch
+Patch449:       ppc-fedora-fix-ppc64-linux-syscalls-headers.patch
+Patch450:       ppc-fedora-use-sysconf-page-size-on-ppc64.patch
+Patch451:       ppc-fedora-0001-Enable-ppc64-pointer-compression.patch
+Patch452:       ppc-fedora-dawn-fix-ppc64le-detection.patch
+Patch453:       ppc-fedora-add-ppc64-architecture-to-extensions.diff
+Patch454:       ppc-fedora-fix-unknown-warning-option-messages.diff
+Patch455:       ppc-fedora-add-ppc64-pthread-stack-size.patch
+Patch456:       ppc-fedora-fix-ppc64-rust_png-build-error.patch
+Patch457:       ppc-chromium-136-clang-config.patch
 # conditionally applied patches
 # patch where ffmpeg < 5
 Patch1002:      chromium-125-ffmpeg-5.x-reordered_opaque.patch
@@ -315,7 +373,7 @@ Obsoletes:      chromium-dev-desktop-kde < %{version}
 Obsoletes:      chromium-ffmpeg < %{version}
 Obsoletes:      chromium-ffmpegsumo < %{version}
 # no 32bit supported and it takes ages to build
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64 ppc64le
 %if 0%{?suse_version} <= 1500
 BuildRequires:  pkgconfig(glproto)
 %endif
@@ -428,8 +486,12 @@ WebDriver is an open source tool for automated testing of webapps across many br
 
 %prep
 %setup -q -n %{rname}-%{version}
-# apply all patches up to 999
-%autopatch -p1 -M 999
+# apply all patches up to 399
+%autopatch -p1 -M 399
+
+%ifarch ppc64le
+%autopatch -p1 -m 400 -M 499
+%endif
 
 %if %{without ffmpeg_51}
 # ffmpeg is too old
@@ -956,6 +1018,17 @@ myconf_gn+=" host_cpu=\"x64\""
 %ifarch riscv64
 myconf_gn+=" host_cpu=\"riscv64\""
 %endif
+%ifarch aarch64
+myconf_gn+=" host_cpu=\"arm64\""
+%if %{with arm_bti}
+myconf_gn+=" arm_control_flow_integrity=\"standard\""
+%else
+myconf_gn+=" arm_control_flow_integrity=\"none\""
+%endif
+%endif
+%ifarch ppc64le
+myconf_gn+=" host_cpu=\"ppc64\""
+%endif
 myconf_gn+=" host_os=\"linux\""
 myconf_gn+=" is_debug=false"
 myconf_gn+=" dcheck_always_on=false"
@@ -1044,15 +1117,6 @@ myconf_gn+=" icu_use_data_file=false"
 # won't be able to load the codec even if the library can handle it
 myconf_gn+=" proprietary_codecs=true"
 myconf_gn+=" ffmpeg_branding=\"Chrome\""
-
-%ifarch aarch64
-myconf_gn+=" host_cpu=\"arm64\""
-%if %{with arm_bti}
-myconf_gn+=" arm_control_flow_integrity=\"standard\""
-%else
-myconf_gn+=" arm_control_flow_integrity=\"none\""
-%endif
-%endif
 
 # Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys
 # Note: these are for the openSUSE Chromium builds ONLY. For your own distribution,

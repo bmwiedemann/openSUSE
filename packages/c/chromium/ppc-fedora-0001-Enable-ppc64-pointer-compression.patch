@@ -1,0 +1,13 @@
+Index: chromium-134.0.6998.117/v8/gni/v8.gni
+===================================================================
+--- chromium-134.0.6998.117.orig/v8/gni/v8.gni
++++ chromium-134.0.6998.117/v8/gni/v8.gni
+@@ -224,7 +224,7 @@ assert(!(v8_enable_webassembly && v8_ena
+ if (v8_enable_pointer_compression == "") {
+   v8_enable_pointer_compression =
+       v8_current_cpu == "arm64" || v8_current_cpu == "x64" ||
+-      v8_current_cpu == "loong64"
++      v8_current_cpu == "loong64" || v8_current_cpu == "ppc64"
+ }
+ 
+ # The Wasm interpreter is currently supported only on arm64 and x64, on

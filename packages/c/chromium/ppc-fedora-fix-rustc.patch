@@ -1,0 +1,13 @@
+diff -up chromium-131.0.6778.69/build/config/rust.gni.fix-rustc chromium-131.0.6778.69/build/config/rust.gni
+--- chromium-131.0.6778.69/build/config/rust.gni.fix-rustc	2024-11-12 22:48:45.000000000 +0100
++++ chromium-131.0.6778.69/build/config/rust.gni	2024-11-19 23:01:25.484436409 +0100
+@@ -200,6 +200,9 @@ if (is_linux || is_chromeos) {
+   if (current_cpu == "arm64") {
+     rust_abi_target = "aarch64-unknown-linux-gnu"
+     cargo_target_abi = ""
++  } else if (current_cpu == "ppc64") {
++    rust_abi_target = "powerpc64le-unknown-linux-gnu"
++    cargo_target_abi = ""
+   } else if (current_cpu == "x86") {
+     rust_abi_target = "i686-unknown-linux-gnu"
+     cargo_target_abi = ""

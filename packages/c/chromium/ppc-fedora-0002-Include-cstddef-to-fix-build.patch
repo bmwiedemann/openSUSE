@@ -1,0 +1,21 @@
+From 82922bf486e9926a171152f61030dfcd53f017b8 Mon Sep 17 00:00:00 2001
+From: Timothy Pearson <tpearson@raptorengineering.com>
+Date: Thu, 30 Aug 2018 17:32:05 -0500
+Subject: [PATCH] Include cstddef to fix build
+
+size_t is not defined unless cstddef is included.
+---
+ third_party/crashpad/crashpad/compat/linux/sys/user.h  |   1 +
+
+Index: chromium-127.0.6533.72/third_party/crashpad/crashpad/compat/linux/sys/user.h
+===================================================================
+--- chromium-127.0.6533.72.orig/third_party/crashpad/crashpad/compat/linux/sys/user.h
++++ chromium-127.0.6533.72/third_party/crashpad/crashpad/compat/linux/sys/user.h
+@@ -15,6 +15,7 @@
+ #ifndef CRASHPAD_COMPAT_LINUX_SYS_USER_H_
+ #define CRASHPAD_COMPAT_LINUX_SYS_USER_H_
+ 
++#include <cstddef>
+ #include_next <sys/user.h>
+ 
+ #include <features.h>

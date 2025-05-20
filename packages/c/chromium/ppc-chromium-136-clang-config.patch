@@ -1,0 +1,11 @@
+--- chromium-136.0.7103.92/build/config/clang/BUILD.gn	2025/05/13 09:47:39	1.1
++++ chromium-136.0.7103.92/build/config/clang/BUILD.gn	2025/05/13 09:48:27
+@@ -206,6 +206,8 @@
+           _suffix = "-aarch64"
+         } else if (current_cpu == "riscv64") {
+           _suffix = "-riscv64"
++        } else if (current_cpu == "ppc64") {
++          _suffix = "-powerpc64le"
+         } else {
+           assert(false)  # Unhandled cpu type
+         }

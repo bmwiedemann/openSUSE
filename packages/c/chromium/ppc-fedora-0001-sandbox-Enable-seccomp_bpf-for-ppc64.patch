@@ -1,0 +1,23 @@
+From 0c65e40ae578b743b5f06956597ebc9700768d18 Mon Sep 17 00:00:00 2001
+From: Shawn Anastasio <shawnanastasio@yahoo.com>
+Date: Thu, 9 Aug 2018 22:45:47 -0500
+Subject: [PATCH 1/1] sandbox: Enable seccomp_bpf for ppc64
+
+---
+ sandbox/features.gni | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: chromium-128.0.6613.113/sandbox/features.gni
+===================================================================
+--- chromium-128.0.6613.113.orig/sandbox/features.gni
++++ chromium-128.0.6613.113/sandbox/features.gni
+@@ -9,7 +9,8 @@
+ use_seccomp_bpf = (is_linux || is_chromeos || is_android) &&
+                   (current_cpu == "x86" || current_cpu == "x64" ||
+                    current_cpu == "arm" || current_cpu == "arm64" ||
+-                   current_cpu == "mipsel" || current_cpu == "mips64el")
++                   current_cpu == "mipsel" || current_cpu == "mips64el" ||
++                   current_cpu == "ppc64")
+ 
+ # SSBD (Speculative Store Bypass Disable) is a mitigation of Spectre Variant 4.
+ # As Spectre Variant 4 can be mitigated by site isolation, opt-out SSBD on site
