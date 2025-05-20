@@ -112,4 +112,15 @@ Update to 1.52.2:
 (🤖: Submission of fake-gcs-server via https://src.opensuse.org/pool/fake-gcs-server/pulls/4 by mcepl)</comment>
     <requestid>1252309</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f56fd7345213ce887c5bad02f23dc523</srcmd5>
+    <version>1.52.2</version>
+    <time>1747726431</time>
+    <user>anag_factory</user>
+    <comment>- Drop BuildRequires: golang-packaging. The original macros for
+  file movements into GOPATH are obsolete with Go modules.
+- Update vendoring manually to make tests pass, even on non-Intel
+  architectures (bsc#1242242).</comment>
+    <requestid>1277893</requestid>
+  </revision>
 </revisionlist>

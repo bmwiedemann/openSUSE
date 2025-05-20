@@ -32,11 +32,8 @@ Source1:        vendor.tar.xz
 # update vendored golang-oauth2 (CVE-2025-22868, GO-2025-3488)
 Patch0:         update-golang-oauth2.patch
 BuildRequires:  fdupes
-BuildRequires:  go >= 1.23.0
-BuildRequires:  golang-packaging
+BuildRequires:  golang(API) >= 1.23
 BuildRequires:  xz
-%{go_nostrip}
-%{go_provides}
 
 %description
 fake-gcs-server provides an emulator for Google Cloud Storage API. It can be used as a library in Go projects and/or as a standalone binary/Docker image.
@@ -45,22 +42,17 @@ fake-gcs-server provides an emulator for Google Cloud Storage API. It can be use
 %autosetup -p1 -a1
 
 %build
-%goprep %{import_path}
+export GOFLAGS="-buildmode=pie"
 go build
 
 %install
-%goinstall
+# find . -newer %%{_sourcedir}/*.spec -ls
 install -Dm755 fake-gcs-server %{buildroot}%{_bindir}/fake-gcs-server
-%gosrc
-
-%fdupes %{buildroot}%{_datadir}/go
-
-%{gofilelist}
 
 %check
-%gotest %{import_path}
+go test -v ./...
 
-%files -f file.lst
+%files
 %license LICENSE
 %doc README.md
 %{_bindir}/fake-gcs-server

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 15 16:31:21 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Drop BuildRequires: golang-packaging. The original macros for
+  file movements into GOPATH are obsolete with Go modules.
+- Update vendoring manually to make tests pass, even on non-Intel
+  architectures (bsc#1242242).
+
+-------------------------------------------------------------------
 Tue Mar 11 08:23:03 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.52.2:
