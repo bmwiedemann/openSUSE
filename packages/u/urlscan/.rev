@@ -223,4 +223,15 @@
   * Keybindings for page up/down</comment>
     <requestid>1226189</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>53eecdb23758a99a7b466a2311d8d16a</srcmd5>
+    <version>1.0.7</version>
+    <time>1747726732</time>
+    <user>anag_factory</user>
+    <comment>- Update to urlscan 1.0.7
+  * Update TLD list
+  * Add urwid extended color support. Fixes #154
+  * Update flake.lock and add .envrc and .direnv/ to gitignore</comment>
+    <requestid>1278380</requestid>
+  </revision>
 </revisionlist>
