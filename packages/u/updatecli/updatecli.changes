@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu May 15 04:54:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.100.0:
+  * Features
+    - feat(gitlab/mergerequest): configure additional fields during
+      mr creation @alikhil (#5094)
+    - feat(autodiscovery/cargo): switch cargo update to
+      cargo-upgrade @loispostula (#4793)
+  * Maintenance
+    - deps(github/action): bump all dependencies @updateclibot[bot]
+      (#5102)
+    - deps: bump golangci-lint to v2.1.6 @updateclibot[bot] (#5080)
+    - deps(go): bump module oras.land/oras-go/v2 to v2.6.0
+      @updateclibot[bot] (#5078)
+    - deps: Bump Golang version to 1.24.3 @updateclibot[bot]
+      (#5052)
+    - deps(go): bump module dario.cat/mergo to v1.0.2
+      @updateclibot[bot] (#5061)
+    - deps(go): bump module golang.org/x/oauth2 to v0.30.0
+      @updateclibot[bot] (#5045)
+    - deps(go): bump module golang.org/x/net to v0.40.0
+      @updateclibot[bot] (#5039)
+
+-------------------------------------------------------------------
 Mon May 05 08:03:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.99.0:
