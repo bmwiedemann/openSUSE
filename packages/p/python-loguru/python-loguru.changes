@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May  7 05:28:06 UTC 2025 - Guang Yee <gyee@suse.com>
+
+- Update to 0.7.3
+  * Fix Cython incompatibility caused by the absence of underlying stack frames, which resulted in a ValueError during logging (#88).
+  * Fix possible RuntimeError when removing all handlers with logger.remove() due to thread-safety issue (#1183)
+  * Fix diagnose=True option of exception formatting not working as expected with Python 3.13 (#1235).
+  * Fix non-standard level names not fully compatible with logging.Formatter() (#1231).
+  * Fix inability to display a literal "\" immediately before color markups (#988).
+  * Fix possible infinite recursion when an exception is raised from a __repr__ method decorated with logger.catch() (#1044).
+  * Improve performance of datetime formatting while logging messages (#1201).
+  * Reduce startup time in the presence of installed but unused IPython third-party library (#1001).
+- Remove py313.patch and py314.patch as they had landed in 0.7.3
+
+-------------------------------------------------------------------
 Mon Oct 28 12:13:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add py313.patch, py314.patch: fixes for python 3.13 and 3.14

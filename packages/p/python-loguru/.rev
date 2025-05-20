@@ -168,4 +168,12 @@
     <comment>- add py313.patch, py314.patch: fixes for python 3.13 and 3.14</comment>
     <requestid>1218804</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>21af2bed0b309da78798b083c976f7fb</srcmd5>
+    <version>0.7.3</version>
+    <time>1747730195</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1278383</requestid>
+  </revision>
 </revisionlist>

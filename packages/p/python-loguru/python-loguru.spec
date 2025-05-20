@@ -1,7 +1,7 @@
 #
 # spec file for package python-loguru
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-loguru
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        Python logging component with a simple interface
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Delgan/loguru
-Source:         https://files.pythonhosted.org/packages/source/l/loguru/loguru-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: taken from https://github.com/Delgan/loguru/pull/1079.patch
-Patch1:         py313.patch
-Patch2:         https://github.com/Delgan/loguru/commit/3a901de465b0dbb398f455dc3393d976fd0affbe.patch#/py314.patch
+Source:         https://github.com/Delgan/loguru/archive/refs/tags/%{version}.tar.gz#/loguru-%{version}.tar.gz
 BuildRequires:  %{python_module colorama}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-mypy-plugins}
+BuildRequires:  %{python_module pytest-mypy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-colorama
@@ -47,10 +49,10 @@ which dispatches log messages to configured handlers.
 %autosetup -p1 -n loguru-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,7 +66,7 @@ fi
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python_sitelib}/loguru
 %{python_sitelib}/loguru-%{version}*-info
 
