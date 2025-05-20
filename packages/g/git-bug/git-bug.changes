@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 19 08:38:03 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.10.1:
+  - cli: ignore missing sections when removing configuration (ddb22a2f)
+- Update to version 0.10.0:
+  - bridge: correct command used to create a new bridge (9942337b)
+  - web: simplify header navigation (7e95b169)
+  - webui: remark upgrade + gfm + syntax highlighting (6ee47b96)
+  - BREAKING CHANGE: dev-infra: remove gokart (89b880bd)
+- Update to version 0.10.0
+  - bridge: correct command used to create a new bridge (9942337b)
+  - web: simplify header navigation (7e95b169)
+  - web: remark upgrade + gfm + syntax highlighting (6ee47b96)
+- Update to version 0.9.0:
+  - completion: remove errata from string literal (aa102c91)
+  - tui: improve readability of the help bar (23be684a)
+
+-------------------------------------------------------------------
 Tue May 06 10:21:55 UTC 2025 - mcepl@cepl.eu
 
 - Update to version 0.8.1+git.1746484874.96c7a111:

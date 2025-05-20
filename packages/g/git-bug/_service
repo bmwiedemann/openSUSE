@@ -1,5 +1,5 @@
 <services>
-    <service name="tar_scm" mode="manual">
+    <!-- service name="tar_scm" mode="manual">
         <param name="versionprefix">0.8.1+git</param>
         <param name="revision">v0.8.1</param>
         <param name="url">https://github.com/git-bug/git-bug.git</param>
@@ -11,6 +11,6 @@
         <param name="file">*.tar</param>
         <param name="compression">gz</param>
     </service>
-    <service name="set_version" mode="manual"/>
+    <service name="set_version" mode="manual"/ -->
     <service name="go_modules" mode="manual"/>
 </services>

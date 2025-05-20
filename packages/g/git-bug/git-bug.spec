@@ -17,18 +17,18 @@
 
 
 Name:           git-bug
-Version:        0.8.1+git.1746484874.96c7a111
+Version:        0.10.1
 Release:        0
 Summary:        Distributed, offline-first bug tracker embedded in git, with bridges
 License:        MIT
 URL:            https://github.com/MichaelMure/git-bug
-# Source0:        https://github.com/MichaelMure/%%{name}/archive/refs/tags/v%%{version}.tar.gz#/git-bug-%%{version}.tar.gz
-Source0:        git-bug-%{version}.tar.gz
+Source0:        https://github.com/MichaelMure/%{name}/archive/refs/tags/v%{version}.tar.gz#/git-bug-%{version}.tar.gz
+# Source0:        git-bug-%%{version}.tar.gz
 Source1:        vendor.tar.gz
 # PATCH-FIX-UPSTREAM remote-config.patch gh#MichaelMure/git-bug!1076 mcepl@suse.com
 # try reading git-bug.remote config value before defaulting to 'origin' when no explicit REMOTE argument
 Patch0:         remote-config.patch
-BuildRequires:  golang(API) = 1.23
+BuildRequires:  golang(API) = 1.24
 # # PATCH-FEATURE-UPSTREAM 501-export.patch gh#MichaelMure/git-bug!501 mcepl@suse.com
 # # add a command to export bugs as raw operations
 # Patch0:         501-export.patch
@@ -91,7 +91,12 @@ zsh shell completions for git-bug
 %autosetup -p1 -a1
 
 %build
-%make_build build
+# COMMANDS_PATH="github.com/git-bug/git-bug/commands"
+# LDFLAGS="-X ${COMMANDS_PATH}.GitCommit=${GIT_COMMIT} \
+# 	-X ${COMMANDS_PATH}.GitLastTag=${GIT_LAST_TAG} \
+# 	-X ${COMMANDS_PATH}.GitExactTag=${GIT_EXACT_TAG}"
+export GOFLAGS="-buildmode=pie"
+go build
 
 %install
 install -Dm755 git-bug %{buildroot}%{_bindir}/git-bug
@@ -107,7 +112,7 @@ install -Dm0644 misc/completion/zsh/git-bug  \
 
 %check
 # before we mark network requiring tests (gh#git-bug/git-bug#1313)
-%make_build test || true
+go test -v -bench=. ./... || true
 
 %files
 %license LICENSE

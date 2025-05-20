@@ -259,4 +259,25 @@ Update to the commit d499b6e.
 - CVE-2025-22869-bump-go-crypto-ssh.patch</comment>
     <requestid>1275060</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4f380a861b4e4f8b8d0832f3749530a5</srcmd5>
+    <version>0.10.1</version>
+    <time>1747726722</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.10.1:
+  - cli: ignore missing sections when removing configuration (ddb22a2f)
+- Update to version 0.10.0:
+  - bridge: correct command used to create a new bridge (9942337b)
+  - web: simplify header navigation (7e95b169)
+  - webui: remark upgrade + gfm + syntax highlighting (6ee47b96)
+  - BREAKING CHANGE: dev-infra: remove gokart (89b880bd)
+- Update to version 0.10.0
+  - bridge: correct command used to create a new bridge (9942337b)
+  - web: simplify header navigation (7e95b169)
+  - web: remark upgrade + gfm + syntax highlighting (6ee47b96)
+- Update to version 0.9.0:
+  - completion: remove errata from string literal (aa102c91)
+  - tui: improve readability of the help bar (23be684a)</comment>
+    <requestid>1278375</requestid>
+  </revision>
 </revisionlist>
