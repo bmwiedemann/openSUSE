@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  8 16:27:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * Portal: Make autostart directory if not exists
+  * Check for redacted font
+  * Updated translations
+
+-------------------------------------------------------------------
 Tue Nov 19 22:11:38 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.0.0:
