@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 13 15:02:15 UTC 2025 - dcermak@suse.com
+
+- Update to version 20250512.8ec1341:
+  * flow: close socket fd on error
+  * flow: fix wrong macro name in comments
+
+-------------------------------------------------------------------
+Fri May 09 12:44:10 UTC 2025 - dcermak@suse.com
+
+- Update to version 20250507.eea8a76:
+  * flow: fix podman issue #26073
+
+-------------------------------------------------------------------
 Mon May 05 08:25:44 UTC 2025 - dcermak@suse.com
 
 - Update to version 20250503.587980c:

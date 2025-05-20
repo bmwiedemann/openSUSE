@@ -45,7 +45,7 @@
 
 %global selinuxtype targeted
 Name:           passt
-Version:        20250503.587980c
+Version:        20250512.8ec1341
 Release:        0
 Summary:        User-mode networking daemons for virtual machines and namespaces
 License:        GPL-2.0-or-later AND BSD-3-Clause
