@@ -49,6 +49,9 @@ BuildRequires:  llvm-devel >= 17
 BuildRequires:  python3-devel
 Requires:       lld
 
+%define gccver %(rpm -q --qf '%%{VERSION}' gcc)
+%requires_eq    gcc%{gccver}
+
 %package devel
 Summary:        Development headers for use when fuzzing with American fuzzy lop
 Requires:       %name = %version

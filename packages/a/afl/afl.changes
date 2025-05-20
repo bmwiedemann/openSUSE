@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 16 12:41:31 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- require exact gcc it was built with to avoid gcc version mismatches
+  (bsc#1243255)
+
+-------------------------------------------------------------------
 Mon Apr 28 11:46:05 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - updated to 4.32c

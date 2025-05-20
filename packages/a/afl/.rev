@@ -1566,4 +1566,13 @@
   - afl-cc: (forwarded request 1273087 from msmeissn)</comment>
     <requestid>1273088</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>59fac2b013c4f4e0d467712e7a4d0af6</srcmd5>
+    <version>4.32c</version>
+    <time>1747726516</time>
+    <user>anag_factory</user>
+    <comment>- require exact gcc it was built with to avoid gcc version mismatches
+  (bsc#1243255) (forwarded request 1278052 from msmeissn)</comment>
+    <requestid>1278053</requestid>
+  </revision>
 </revisionlist>
