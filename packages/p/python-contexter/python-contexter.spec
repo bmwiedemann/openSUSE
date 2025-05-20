@@ -1,7 +1,7 @@
 #
 # spec file for package python-contexter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-contexter
 Version:        0.1.4
 Release:        0
@@ -25,11 +24,12 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://bitbucket.org/defnull/contexter
 Source:         https://files.pythonhosted.org/packages/source/c/contexter/contexter-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -43,14 +43,16 @@ rm -r *egg-info*
 chmod a-x README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/contexter.py
+%{python_sitelib}/contexter-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/contexter*
 
 %changelog
