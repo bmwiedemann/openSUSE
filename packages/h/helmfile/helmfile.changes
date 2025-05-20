@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue May 20 06:26:38 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.1.0:
+  What's Changed
+  * chore: fix typo in create_test.go by @sadikkuzu in #2025
+  * build(deps): bump golangci/golangci-lint-action from 7 to 8 by
+    @dependabot in #2029
+  * build(deps): bump golang.org/x/sync from 0.13.0 to 0.14.0 by
+    @dependabot in #2028
+  * build(deps): bump github.com/helmfile/chartify from 0.22.0 to
+    0.23.0 by @dependabot in #2027
+  * chore: remove test data files by @yxxhero in #2026
+  * build(deps): bump golang.org/x/term from 0.31.0 to 0.32.0 by
+    @dependabot in #2033
+  * build(deps): bump github.com/helmfile/vals from 0.40.1 to
+    0.41.0 by @dependabot in #2032
+  * build(deps): bump dario.cat/mergo from 1.0.1 to 1.0.2 by
+    @dependabot in #2035
+  * feat(tmpl): enhance ToYaml test with multiple scenarios by
+    @yxxhero in #2031
+  * [sops, age] update to have SSH key support with sops by
+    @itscaro in #2036
+  * feat(yaml): add JSON style encoding option to NewEncoder by
+    @yxxhero in #2038
+  * refactor(yaml): upgrade from gopkg.in/yaml.v2 to v3 by @yxxhero
+    in #2039
+  * Update readme & documentation with 2025 status of helmfile
+    project by @zhaque44 in #2040
+  * build(deps): bump k8s.io/apimachinery from 0.33.0 to 0.33.1 by
+    @dependabot in #2041
+  * build(deps): bump github.com/zclconf/go-cty from 1.16.2 to
+    1.16.3 by @dependabot in #2043
+
+-------------------------------------------------------------------
 Wed Apr 30 17:03:40 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.0.0:
