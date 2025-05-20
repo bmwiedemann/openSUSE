@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 16 12:19:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Mon Mar 20 10:16:36 UTC 2023 - pgajdos@suse.com
 
 - do not require six

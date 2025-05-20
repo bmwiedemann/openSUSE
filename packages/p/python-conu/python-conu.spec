@@ -1,7 +1,7 @@
 #
 # spec file for package python-conu
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-conu
 Version:        1.0.0
 Release:        0
@@ -26,7 +25,9 @@ URL:            https://github.com/user-cont/conu
 Source:         https://files.pythonhosted.org/packages/source/c/conu/conu-%{version}.tar.gz
 # https://github.com/user-cont/conu/issues/390
 Patch0:         python-conu-no-six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docker
@@ -58,10 +59,10 @@ Python container testing library.
 rm tests/integration/test_k8s.py tests/integration/test_openshift.py tests/release/test_release.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
