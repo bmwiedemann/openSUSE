@@ -64,6 +64,9 @@ Development files for lucene++, a high-performance, full-featured text search en
 %autosetup -p1 -n LucenePlusPlus-rel_%{version}
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake -DINSTALL_GTEST=OFF
 %make_build lucene++ lucene++-contrib
 
