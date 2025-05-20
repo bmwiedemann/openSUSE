@@ -42,4 +42,12 @@
     <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>887126</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ea5fa090afc40280acc1af915fbe80f9</srcmd5>
+    <version>1.1.2</version>
+    <time>1747726541</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1278071</requestid>
+  </revision>
 </revisionlist>

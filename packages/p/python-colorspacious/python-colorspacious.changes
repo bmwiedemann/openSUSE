@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 16 09:50:35 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed Apr 21 05:13:42 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy. 

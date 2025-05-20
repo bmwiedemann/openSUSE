@@ -1,7 +1,7 @@
 #
 # spec file for package python-colorspacious
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python36 1
 Name:           python-colorspacious
 Version:        1.1.2
 Release:        0
@@ -26,7 +24,9 @@ License:        MIT
 URL:            https://github.com/njsmith/colorspacious
 Source:         https://files.pythonhosted.org/packages/source/c/colorspacious/colorspacious-%{version}.tar.gz
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
@@ -48,10 +48,10 @@ uniform CAM02-UCS / CAM02-LCD / CAM02-SCD spaces proposed by Luo et al
 %setup -q -n colorspacious-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # no tests present
@@ -59,6 +59,7 @@ uniform CAM02-UCS / CAM02-LCD / CAM02-SCD spaces proposed by Luo et al
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/colorspacious
+%{python_sitelib}/colorspacious-%{version}*-info
 
 %changelog
