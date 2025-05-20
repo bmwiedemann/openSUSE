@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon May 19 04:35:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.76.0:
+  * Exciting New Features
+    - Introduced new lifecycle annotate command by @rimapol in
+      #2964
+  * Bug Fixes
+    - Fix bug to use Maven wrapper when DepTreeParams.UseWrapper is
+      true by @ranma2913 in jfrog/jfrog-cli-security#420
+    - BuildScan - Fix parse violations if requested to show by
+      @attiasas in jfrog/jfrog-cli-security#422
+
+-------------------------------------------------------------------
+Thu May 08 08:36:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.75.1:
+  * Improvements
+    - Update Analyzer Manager to v1.17.0 by @attiasas in
+      jfrog/jfrog-cli-security#411
+  * Bug Fixes
+    - Fix jf eot command output by @EyalDelarea in #2961
+    - Added no cache flag to gradle dep tree by @eyalk007 in
+      jfrog/jfrog-cli-security#413
+
+-------------------------------------------------------------------
 Fri May  2 05:11:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package jfrog-cli: client that automates access to the JFrog
