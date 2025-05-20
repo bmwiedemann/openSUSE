@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-platformio
-Version:        6.1.17
+Version:        6.1.18
 Release:        0
 Summary:        New Generation Ecosystem for Embedded Development
 License:        Apache-2.0
