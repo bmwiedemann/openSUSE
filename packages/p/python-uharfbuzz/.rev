@@ -77,4 +77,17 @@
     * Update to HarfBuzz 11.0.1</comment>
     <requestid>1269314</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a8b5f9d69fa055b4cd2089529ef6081a</srcmd5>
+    <version>0.50.2</version>
+    <time>1747773957</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1278685 from glaubitz
+
+- Update to 0.50.2
+    * Skip building PyPy 3.8 wheels as the build currently fails.
+  - from version 0.50.0
+    * Update to HarfBuzz 11.2.0</comment>
+    <requestid>1278843</requestid>
+  </revision>
 </revisionlist>

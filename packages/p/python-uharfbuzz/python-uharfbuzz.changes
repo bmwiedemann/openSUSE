@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 20 11:46:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.50.2
+  * Skip building PyPy 3.8 wheels as the build currently fails.
+- from version 0.50.0
+  * Update to HarfBuzz 11.2.0
+
+-------------------------------------------------------------------
 Thu Apr 10 13:39:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.49.0
