@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 12 11:25:44 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 10.1.0:
+  * Too many changes to list, see
+    <https://octave.org/NEWS-10.html>.
+- Re-base octave_tools_pie.patch for update.
+- Bump apiver to 60 in keeping with upstream.
+
+-------------------------------------------------------------------
 Wed Mar 19 13:36:14 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Switch BuildRequires: pcre-devel to pcre2-devel.
@@ -520,7 +529,7 @@ Wed Nov 27 20:13:20 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
   again, as the target directory is removed by 'pkg build'.
 
 -------------------------------------------------------------------
-Fri Jul 05 12:14:16 2019 UTC - Markus Ebner <hiwatari.seiji@gmail.com>
+Fri Jul  5 12:14:16 UTC 2019 - Markus Ebner <hiwatari.seiji@gmail.com>
 
 - Backport fix: Cursor misplaced when entering newline in editor with tabs indentation
   behavior (bug #56533)

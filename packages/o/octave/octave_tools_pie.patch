@@ -1,16 +1,16 @@
-Index: octave-7.1.0/src/module.mk
+Index: octave-10.1.0/src/module.mk
 ===================================================================
---- octave-7.1.0.orig/src/module.mk
-+++ octave-7.1.0/src/module.mk
-@@ -74,6 +74,7 @@ nodist_%canon_reldir%_octave_SOURCES = %
- %canon_reldir%_octave_LDFLAGS = \
+--- octave-10.1.0.orig/src/module.mk
++++ octave-10.1.0/src/module.mk
+@@ -77,6 +77,7 @@ nodist_%canon_reldir%_octave_SOURCES = %
+   $(AM_LDFLAGS) \
    $(NO_UNDEFINED_LDFLAG) \
    $(OCTAVE_LINK_OPTS) \
 +  -pie \
    $(WARN_LDFLAGS) \
    $(OCTAVE_UNICODE_EXE_LDFLAGS)
  
-@@ -95,6 +96,7 @@ nodist_%canon_reldir%_octave_cli_SOURCES
+@@ -98,6 +99,7 @@ nodist_%canon_reldir%_octave_cli_SOURCES
  %canon_reldir%_octave_cli_LDFLAGS = \
    $(NO_UNDEFINED_LDFLAG) \
    $(OCTAVE_LINK_OPTS) \
@@ -18,7 +18,7 @@ Index: octave-7.1.0/src/module.mk
    $(WARN_LDFLAGS) \
    $(OCTAVE_UNICODE_EXE_LDFLAGS)
  
-@@ -121,6 +123,7 @@ endif
+@@ -124,6 +126,7 @@ endif
  %canon_reldir%_octave_gui_LDFLAGS = \
    $(NO_UNDEFINED_LDFLAG) \
    $(OCTAVE_GUI_LINK_OPTS) \
@@ -26,9 +26,9 @@ Index: octave-7.1.0/src/module.mk
    $(WARN_LDFLAGS) \
    $(OCTAVE_UNICODE_EXE_LDFLAGS)
  
-@@ -149,8 +152,14 @@ nodist_%canon_reldir%_mkoctfile_SOURCES
-   $(SRC_DIR_CPPFLAGS) \
-   $(OCTAVE_CPPFLAGS)
+@@ -153,8 +156,14 @@ nodist_%canon_reldir%_mkoctfile_SOURCES
+   $(OCTAVE_CPPFLAGS) \
+   -DOCTAVE_MEX_SOVERSION="$(OCTAVE_LIBOCTMEX_SOVERSION_MAJOR)"
  
 +%canon_reldir%_mkoctfile_LDFLAGS = \
 +  -pie

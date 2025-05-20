@@ -16,9 +16,9 @@
 #
 
 
-%define apiver  v59
+%define apiver  v60
 # Required for RC builds, in this case version contains ~rc, src_ver -rc
-%define pkg_ver 9.2.0
+%define pkg_ver 10.1.0
 %define src_ver %{pkg_ver}
 # Image processing library
 %if 0
@@ -332,6 +332,7 @@ xvfb-run make %{?_smp_mflags} check RUN_OCTAVE_OPTIONS="--no-gui-libs"
 %{_libdir}/%{name}/%{src_ver}/oct
 %{_libdir}/%{name}/%{src_ver}/liboctave.so.*
 %{_libdir}/%{name}/%{src_ver}/liboctinterp.so.*
+%{_libdir}/%{name}/%{src_ver}/liboctmex.so.*
 %if %{with gui}
 %dir %{_libdir}/%{name}/%{src_ver}/exec/
 %dir %{_libdir}/%{name}/%{src_ver}/exec/*-*-linux-gnu*/
@@ -349,6 +350,7 @@ xvfb-run make %{?_smp_mflags} check RUN_OCTAVE_OPTIONS="--no-gui-libs"
 %{_libdir}/%{name}/api-%{apiver}
 %{_libdir}/pkgconfig/octave.pc
 %{_libdir}/pkgconfig/octinterp.pc
+%{_libdir}/pkgconfig/octmex.pc
 %{_rpmmacrodir}/macros.octave
 
 %files doc

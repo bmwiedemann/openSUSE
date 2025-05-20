@@ -842,4 +842,15 @@ http://hg.savannah.gnu.org/hgweb/octave/rev/122d3f62e179 (forwarded request 1845
     <comment></comment>
     <requestid>1255033</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>9237a51f1918e89fed678a78d7eef6fc</srcmd5>
+    <version>10.1.0</version>
+    <time>1747726674</time>
+    <user>anag_factory</user>
+    <comment>* Update to version 10.1.0.
+* Bump apiver to 60 in keeping with upstream.
+* Switch BuildRequires: pcre-devel to pcre2-devel.
+* Drop deprecated BuildRequires: update-desktop-files (providing  %suse_update_desktop_file macro that is no longer used).</comment>
+    <requestid>1278299</requestid>
+  </revision>
 </revisionlist>
