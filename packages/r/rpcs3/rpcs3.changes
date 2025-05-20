@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Mon May 19 19:05:29 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Fix log level of sdl pad handler log message
+
+-------------------------------------------------------------------
+Mon May 19 15:59:50 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Use upstream cmake build option `-DCMAKE_POLICY_VERSION_MINIMUM=3.5`
+  for cmake4 (#16978)
+
+-------------------------------------------------------------------
+Mon May 19 14:21:09 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to rpcs3-0.0.36~git20250515:
+  * Logitech G27 update shifter input (#17216)
+  * Fix some warnings
+  * Update VulkanMemoryAllocator to 3.3.0
+  * Update SDL to 3.2.14
+
+-------------------------------------------------------------------
+Wed May 14 20:23:14 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to rpcs3-0.0.36~git20250514:
+  * LG27: Update defaults
+  * G27: Make warning label color more dynamic
+  * G27: Improve layout a bit
+  * Fix emu name in label
+  * Gui: simplify LogitechG27 settings dialog
+  * Fix UB
+  * SPU: Improved GETLLAR spin detection conditions
+  * Logitech G27 Expand SDL device identification, add mapping note (#17206)
+  * LogitechG27: use named_thread instead of std::thread
+  * SDL/input: Log GUID
+  * Fix CallFromMainThread execution condition
+  * rsx: Don't trigger surface swap-in/swap-out handlers when replacing
+    self
+  * Make Disable IPv6 text translatable
+  * Bind RPCN client socket only if bind_ip is set
+  * Fix building with SDL submodule
+  * Make IP Binding more global
+  * System: Fix Kill calling duplication
+  * trophies/overlays: treat unlocked hidden trophies just like normal
+    unlocked trophies
+  * SPU: Evaluated Thread-blocked LR messaging
+  * Emu: Track game termination progress better
+  * remove SDL_INIT_JOYSTICK since SDL_INIT_GAMEPAD implies 
+    SDL_INIT_JOYSTICK
+  * initialize sdl haptic, log haptic device open errors
+  * cellSysutilCheckCallback: increase read_counter as soon as a 
+    callback is about to be called
+  * Use const for present_samples buf argument
+  * overlays: Allow auto exit in home menu's exit game function
+  * Emu: Make game termination less confusing
+  * Add log message when QApplication is being quit
+  * Log RPCS3 exit code
+  * Add log message if game ignores exit game request
+  * MSVC: Fix weird std::move on const variable warning...
+  * Use string_view for log params
+  * StrUtil: Add more unit tests
+  * Fixup SPU Interpreters
+
+-------------------------------------------------------------------
+Wed May 14 20:12:59 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update spec file config from sdl2 to sdl3
+
+-------------------------------------------------------------------
 Wed May  7 18:50:08 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 0.0.36~git20250507:

@@ -17,7 +17,7 @@
 
 
 Name:           rpcs3
-Version:        0.0.36~git20250507
+Version:        0.0.36~git20250515
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only
@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(zlib)
 ##opengl:
 BuildRequires:  pkgconfig(glew) >= 1.13.0
 BuildRequires:  pkgconfig(egl)
-BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sdl3)
 
 ##vulkan:
 BuildRequires:  pkgconfig(vulkan) >= 1.1.126
@@ -66,7 +66,7 @@ BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(openal)
 
 ##faudio:
-BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sdl3)
 #-------------------------------------------------
 
 #ffmpeg dependencies
@@ -118,9 +118,6 @@ echo "// This is a generated file.
 " > %{name}/git-version.h
 
 %build
-# Remove cmake4 error due to not setting
-# min cmake version - sflees.de
-export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
 ## llvm intel-ittapi workarounds
 
@@ -150,7 +147,8 @@ cd ../%{name}_build
         -DCMAKE_INSTALL_PREFIX="%{_prefix}" \
         -DCMAKE_INSTALL_LIBEXEC="%{_libexecdir}" \
         -DCMAKE_BUILD_TYPE="Release" \
-        -DCMAKE_SKIP_RPATH="YES"
+        -DCMAKE_SKIP_RPATH="YES" \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
 %make_jobs
 
