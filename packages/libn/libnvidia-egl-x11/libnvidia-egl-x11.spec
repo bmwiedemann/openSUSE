@@ -26,13 +26,12 @@ Summary:        NVIDIA XLib and XCB EGL Platform Library
 # src/x11/dma-buf.h:/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/sndirsch/egl-x11
+URL:            https://github.com/NVIDIA/egl-x11
 Source0:        https://github.com/sndirsch/egl-x11/archive/%{version}/%{rname}-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch1:         0001-Increment-version-number-to-1.0.1.patch
-Patch2:         0002-Fall-back-to-gbm_bo_create_with_modifiers.patch
-Patch3:         0003-Fix-the-passthrough-call-in-eplX11SwapInterval.patch
-Patch4:         0004-base-Add-a-hook-function-for-eglQueryDisplayAttrib.patch
+Patch1:         0001-Increment-version-number-to-1.0.2.patch
+Patch2:         0002-Don-t-close-the-syncfd-in-WaitImplicitFence.patch
+Patch3:         0003-Fix-the-error-reporting-in-WaitTimelinePoint.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  ninja

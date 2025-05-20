@@ -47,4 +47,24 @@
 * added latest patches from github project</comment>
     <requestid>1256165</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d97dd27045e19ea11fcfe12a1f7d8031</srcmd5>
+    <version>1.0.1</version>
+    <time>1747726309</time>
+    <user>anag_factory</user>
+    <comment>- use upstream URL; now that we have official version numbers of
+  this library ...
+
+- update to official version 1.0.1
+  * supersedes the following patches I applied on my artifical 1.0.1
+    + 0001-Increment-version-number-to-1.0.1.patch
+    + 0002-Fall-back-to-gbm_bo_create_with_modifiers.patch
+    + 0003-Fix-the-passthrough-call-in-eplX11SwapInterval.patch
+    + 0004-base-Add-a-hook-function-for-eglQueryDisplayAttrib.patch
+- 0001-Increment-version-number-to-1.0.2.patch
+  0002-Don-t-close-the-syncfd-in-WaitImplicitFence.patch
+  0003-Fix-the-error-reporting-in-WaitTimelinePoint.patch
+  * added latest fixes from github project after 1.0.1 release</comment>
+    <requestid>1277797</requestid>
+  </revision>
 </revisionlist>
