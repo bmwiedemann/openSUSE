@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 18 10:04:54 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 4.0:
+  * Added file system monitoring;
+  * Added new sort orders: date, size and numeric;
+  * Added support for lossless scaling of vector images;
+  * Added support for loading list of images from file;
+  * Fixed bug with wl-copy used in actions;
+  * Fixed bug with slow rendering of long text;
+  * Fixed crash when image is almost out of window;
+  * Fixed font scaling in HiDPI.
+
+-------------------------------------------------------------------
 Sat Mar 15 22:54:46 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 3.9:
