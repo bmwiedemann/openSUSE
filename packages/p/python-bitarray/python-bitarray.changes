@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 17 18:02:05 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.4.1
+  * add `pyproject.toml`, see #233
+  * implement `bits2bytes()` in C.
+  * optimize `delslice()` when `step` is larger than about 5.
+  * consistently name `*_span()` and `*_range()` in C for
+    invert, set and count.
+  * organize and add tests.
+
+-------------------------------------------------------------------
 Wed May 14 09:31:52 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.4.0
