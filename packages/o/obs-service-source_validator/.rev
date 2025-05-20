@@ -829,4 +829,14 @@ last submission had wrong tar ball for unknown reason</comment>
   * helpers/check_dates_in_changes: Only look at the first line of entries</comment>
     <requestid>1277691</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>aeff8b159f397240b2102c36f1840865</srcmd5>
+    <version>0.42</version>
+    <time>1747726725</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.42:
+  * helpers/check_dates_in_changes: Include line numbers in errors
+  * helpers/check_dates_in_changes: Only match if -------- is at the line start</comment>
+    <requestid>1278369</requestid>
+  </revision>
 </revisionlist>

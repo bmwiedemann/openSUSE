@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 19 09:31:29 UTC 2025 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 0.42:
+  * helpers/check_dates_in_changes: Include line numbers in errors
+  * helpers/check_dates_in_changes: Only match if -------- is at the line start
+
+-------------------------------------------------------------------
 Thu May 15 10:41:18 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 0.41:
