@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon May 12 21:17:46 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to neko 2.4.1
+  * all:
+    + fixed build issues on BSD based systems (gh#HaxeFoundation/neko#296
+      gh#HaxeFoundation/neko#297 gh#HaxeFoundation/neko#298
+      gh#HaxeFoundation/neko#299)
+    + fixed for c standards with builtin bool
+    + fixed thread usage causing global cleanup crashes
+      (gh#HaxeFoundation/neko#304)
+  * std:
+    + fixed double close when using process_stdin_close
+      (gh#HaxeFoundation/neko#300)
+  * ssl:
+    + fixed certificate verification failure on windows
+      (gh#HaxeFoundation/neko#293)
+  * cmake:
+    + updated zlib and mariadb-connector-c for newer cmake compatibility
+      (gh#HaxeFoundation/neko#309)
+    + updated mariadb-connector-c for compatibility with new clang on arm64
+      (gh#HaxeFoundation/neko#309)
+
+-------------------------------------------------------------------
 Tue Jul 23 20:29:00 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to neko 2.4.0

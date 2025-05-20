@@ -16,7 +16,7 @@
 #
 
 Name:           neko
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        A cross-platform lightweight virtual machine and language
 License:        MIT
