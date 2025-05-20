@@ -17,7 +17,7 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1650
 %if "%{flavor}" == "primary"
 # this one is goes into Ring0:  Bootstrap for primary python stack
 %define pprefix %{primary_python}
@@ -53,7 +53,7 @@ ExclusiveArch:  do-not-build
 %define mypython python
 %{?sle15_python_module_pythons}
 Name:           %{pprefix}-setuptools%{psuffix}
-Version:        78.1.0
+Version:        78.1.1
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND Python-2.0

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 13 15:45:23 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 78.1.1:
+  * More fully sanitized the filename in PackageIndex._download.
+- switch build-exclusion to be tumbleweed only
+
+-------------------------------------------------------------------
 Sun Mar 30 07:55:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 78.1.0:
@@ -8,7 +15,7 @@ Sun Mar 30 07:55:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
 Mon Mar 24 17:42:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 78.0.2
-  * Reverted distutils changes that broke the monkey patching of command 
+  * Reverted distutils changes that broke the monkey patching of command
     classes.
   * Temporarily remove requests from integration tests.
 
@@ -45,7 +52,7 @@ Tue Feb 25 20:32:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Jan 16 01:55:52 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Also provide python3-setuptools-wheel for the primary flavor. 
+- Also provide python3-setuptools-wheel for the primary flavor.
 
 -------------------------------------------------------------------
 Wed Jan 15 15:27:23 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>

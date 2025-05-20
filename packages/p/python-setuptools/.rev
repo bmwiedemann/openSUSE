@@ -1350,4 +1350,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1267380</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>3885fce38611e3f92b2b6c36f4bd11d7</srcmd5>
+    <version>78.1.1</version>
+    <time>1747726288</time>
+    <user>anag_factory</user>
+    <comment>- update to 78.1.1:
+  * More fully sanitized the filename in PackageIndex._download.
+- switch build-exclusion to be tumbleweed only
+
+  * Reverted distutils changes that broke the monkey patching of command
+- Also provide python3-setuptools-wheel for the primary flavor.</comment>
+    <requestid>1277199</requestid>
+  </revision>
 </revisionlist>
