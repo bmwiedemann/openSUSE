@@ -32,4 +32,12 @@
     <comment></comment>
     <requestid>1186976</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0d03d09c98a8836b9a9ae235607a97be</srcmd5>
+    <version>2.0.4</version>
+    <time>1747726649</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in old changelog entries (forwarded request 1277780 from dimstar)</comment>
+    <requestid>1278240</requestid>
+  </revision>
 </revisionlist>
