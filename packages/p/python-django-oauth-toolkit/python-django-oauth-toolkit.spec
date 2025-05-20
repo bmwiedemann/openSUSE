@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-oauth-toolkit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,31 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-django-oauth-toolkit
-Version:        1.7.0
+Version:        3.0.1
 Release:        0
 Summary:        OAuth2 Provider for Django
 License:        BSD-2-Clause
 URL:            https://github.com/jazzband/django-oauth-toolkit
 Source:         https://github.com/jazzband/django-oauth-toolkit/archive/%{version}.tar.gz#/django-oauth-toolkit-%{version}.tar.gz
-Patch0:         stop-using-pk-to-reference-tokens.patch
-BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module Django >= 4.2}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module djangorestframework}
-BuildRequires:  %{python_module jwcrypto >= 0.8.0}
-BuildRequires:  %{python_module oauthlib >= 3.1.0}
-BuildRequires:  %{python_module pytz}
+BuildRequires:  %{python_module jwcrypto >= 1.5.0}
+BuildRequires:  %{python_module oauthlib >= 3.2.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module requests >= 2.13.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.2
-Requires:       python-jwcrypto >= 0.8.0
-Requires:       python-oauthlib >= 3.1.0
+Requires:       python-Django >= 4.2
+Requires:       python-jwcrypto >= 1.5.0
+Requires:       python-oauthlib >= 3.2.2
 Requires:       python-requests >= 2.13.0
 Conflicts:      python-django-oauth
 BuildArch:      noarch
@@ -57,10 +57,10 @@ Django OAuth Toolkit can help you providing out of the box all the endpoints, da
 %autosetup -p1 -n django-oauth-toolkit-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -71,6 +71,7 @@ export PYTHONPATH=$(pwd)
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS CHANGELOG.md docs/*.rst docs/rest-framework/ docs/tutorial/ docs/views/
-%{python_sitelib}/*
+%{python_sitelib}/oauth2_provider
+%{python_sitelib}/django_oauth_toolkit-%{version}.dist-info
 
 %changelog

@@ -121,4 +121,41 @@
     <comment></comment>
     <requestid>1238967</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7d8e7e94d2ae310ab9f455546f36ac46</srcmd5>
+    <version>3.0.1</version>
+    <time>1747726491</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.0.1:
+  * Security
+    + Add a new setting REFRESH_TOKEN_REUSE_PROTECTION.
+    + Bump oauthlib version required to 3.2.2 and above.
+  * Added
+    + Added compatibility with LoginRequiredMiddleware introduced in Django
+      5.1.
+    + Add OAuth2ExtraTokenMiddleware for adding access token to request.
+    + Add option to disable client_secret hashing to allow verifying JWTs'
+      signatures when using HS256 keys.
+    + Support Python 3.12 and Django 5.0
+    + Adds the ability to define how to store a user profile.
+    + implement OIDC RP-Initiated Logout
+    + Allow Authorization Code flow without a client_secret.
+    + Support Django 4.2.
+    + Support prompt=login for the OIDC Authorization Code Flow end user
+      Authentication Request.
+    + Add &quot;scopes_supported&quot; to the ConnectDiscoveryInfoView.
+  * Changed
+    + createapplication management command enhanced to display an
+      auto-generated secret before it gets hashed.
+    + Changed default value of PKCE_REQUIRED to True.
+    + Changed to implement hashed client_secret values.
+    + Add default configurable OIDC standard scopes that determine which
+      claims are returned.
+    + Make the access_token available to get_oidc_claims when called from
+      get_userinfo_claims.
+    + Added --algorithm argument to createapplication management command
+  * Fixed
+    + Fix migration error when there are pre-existing Access Tokens.</comment>
+    <requestid>1277974</requestid>
+  </revision>
 </revisionlist>

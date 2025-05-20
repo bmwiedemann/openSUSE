@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri May 16 08:06:40 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.0.1:
+  * Security
+    + Add a new setting REFRESH_TOKEN_REUSE_PROTECTION.
+    + Bump oauthlib version required to 3.2.2 and above.
+  * Added
+    + Added compatibility with LoginRequiredMiddleware introduced in Django
+      5.1.
+    + Add OAuth2ExtraTokenMiddleware for adding access token to request.
+    + Add option to disable client_secret hashing to allow verifying JWTs'
+      signatures when using HS256 keys.
+    + Support Python 3.12 and Django 5.0
+    + Adds the ability to define how to store a user profile.
+    + implement OIDC RP-Initiated Logout
+    + Allow Authorization Code flow without a client_secret.
+    + Support Django 4.2.
+    + Support prompt=login for the OIDC Authorization Code Flow end user
+      Authentication Request.
+    + Add "scopes_supported" to the ConnectDiscoveryInfoView.
+  * Changed
+    + createapplication management command enhanced to display an
+      auto-generated secret before it gets hashed.
+    + Changed default value of PKCE_REQUIRED to True.
+    + Changed to implement hashed client_secret values.
+    + Add default configurable OIDC standard scopes that determine which
+      claims are returned.
+    + Make the access_token available to get_oidc_claims when called from
+      get_userinfo_claims.
+    + Added --algorithm argument to createapplication management command
+  * Fixed
+    + Fix migration error when there are pre-existing Access Tokens.
+    + Interpret EXP in AccessToken always as UTC instead of (possibly) local
+      timezone.
+    + Fix a 500 error when trying to logout with no id_token_hint even if the
+      browser session already expired.
+    + Fix prompt=none redirects to login screen
+    + Fix AttributeError in OAuth2ExtraTokenMiddleware when a custom
+      AccessToken model is used.
+    + Handle oauthlib errors on create token requests
+    + Fix validate_bearer_token() to properly set request.scopes to the list
+      of granted scopes.
+    + Fixed help text for --skip-authorization argument of the
+      createapplication management command.
+  * Removed
+    + Remove support for Python 3.7 and Django 2.2
+    + Removes support for insecure urn:ietf:wg:oauth:2.0:oob and
+      urn:ietf:wg:oauth:2.0:oob:auto which are replaced by RFC 8252
+      "OAuth 2.0 for Native Apps" BCP.
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+- Drop patch stop-using-pk-to-reference-tokens.patch, no longer required.
+
+-------------------------------------------------------------------
 Sat Jan 18 15:20:48 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
