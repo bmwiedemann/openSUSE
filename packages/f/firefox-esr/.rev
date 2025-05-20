@@ -72,4 +72,19 @@
 </comment>
     <requestid>1276614</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>83444f474a109e02802a9aa8dd7631a0</srcmd5>
+    <version>128.10.1</version>
+    <time>1747726678</time>
+    <user>anag_factory</user>
+    <comment>- create-tar.sh: Update keyring-file, if necessary
+- Mozilla Firefox ESR 128.10.1
+  MFSA 2025-37 (boo#1243303)
+  * CVE-2025-4918 (bmo#1966612)
+    Out-of-bounds access when resolving Promise objects
+  * CVE-2025-4919 (bmo#1966614)
+    Out-of-bounds access when optimizing linear sums
+</comment>
+    <requestid>1278366</requestid>
+  </revision>
 </revisionlist>

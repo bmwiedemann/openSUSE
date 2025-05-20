@@ -26,6 +26,8 @@ function main() {
     printf "%-40s: User forced skip (SKIP_LOCALES set)\n" "locales"
   fi
 
+  update_key_file
+
   clean_up_old_tarballs
 }
 
@@ -82,11 +84,13 @@ function set_internal_variables() {
     TB_LOCALE_TARBALL="$PRODUCT-$VERSION$VERSION_SUFFIX.strings_all.tar.zst"
   fi
   FTP_URL="https://ftp.mozilla.org/pub/$PRODUCT/releases/$VERSION$VERSION_SUFFIX/source"
+  KEY_FTP_URL="https://ftp.mozilla.org/pub/$PRODUCT/releases/$VERSION$VERSION_SUFFIX/KEY"
   FTP_CANDIDATES_BASE_URL="https://ftp.mozilla.org/pub/%s/candidates"
   LOCALES_URL="https://product-details.mozilla.org/1.0/l10n"
   FF_L10N_MONOREPO="https://github.com/mozilla-l10n/firefox-l10n"
   PRODUCT_URL="https://product-details.mozilla.org/1.0"
   ALREADY_EXTRACTED_LOCALES_FILE=0
+  PARSED_CANDIDATES_URL=""
 }
 
 function get_ftp_candidates_url() {
@@ -366,7 +370,8 @@ function download_release_or_candidate_file() {
 
   if ! wget --quiet --show-progress --progress=bar "$FTP_URL/$upstream_file"; then
       local CANDIDATE_TARBALL_LOCATION=""
-      CANDIDATE_TARBALL_LOCATION="$(printf "%s/%s/source/%s" "$(get_ftp_candidates_url "$PRODUCT" "$VERSION$VERSION_SUFFIX")" "$BUILD_ID" "$upstream_file" )"
+      PARSED_CANDIDATES_URL="$(printf "%s/%s/" "$(get_ftp_candidates_url "$PRODUCT" "$VERSION$VERSION_SUFFIX")" "$BUILD_ID")"
+      CANDIDATE_TARBALL_LOCATION="$(printf "%s/source/%s" "$PARSED_CANDIDATES_URL" "$upstream_file" )"
       wget --quiet --show-progress --progress=bar "$CANDIDATE_TARBALL_LOCATION"
   fi
 }
@@ -569,6 +574,29 @@ function clean_up_old_tarballs() {
       echo "Deleting old sources tarball $TB_LOCALE_TARBALL"
       ask_cont_abort_question "Is this ok?" || exit 0
       rm "$TB_LOCALE_TARBALL"
+  fi
+}
+
+function update_key_file() {
+  if [ -e "mozilla.keyring" ]; then
+    local UPSTREAM_KEYFILE=""
+    if [ -z "$PARSED_CANDIDATES_URL"]; then
+      local UPSTREAM_KEYFILE=$(curl --silent --fail "$KEY_FTP_URL") || return 1;
+    else
+      CANDIDATES_KEY_URL="$(printf "%s/KEY" "$PARSED_CANDIDATES_URL")"
+      local UPSTREAM_KEYFILE=$(curl --silent --fail "$CANDIDATES_KEY_URL") || return 1;
+    fi
+    diff -y --suppress-common-lines -d <(cat mozilla.keyring) <(echo "$UPSTREAM_KEYFILE") > /dev/null
+    local KEYRING_CHANGED=$?
+    echo ""
+    if [ $KEYRING_CHANGED -eq 1 ]; then
+      echo "Keyring changed. Updating it."
+      echo "$UPSTREAM_KEYFILE" > mozilla.keyring
+    else
+      echo "Keyring did not changed."
+    fi
+  else
+    echo "No local keyring found. Skipping keyring-check."
   fi
 }
 
