@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 16 10:16:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.36.0:
+  * Features
+    - deploy: --no-install-crds option for converge, plan, bundle
+      apply (8fd1a04)
+    - deploy: --release-label option for converge/bundle apply
+      (222d031)
+    - logging: show image index and total to indicate build
+      progress (b7652b3)
+  * Bug Fixes
+    - avoid checksum errors in service worktree when
+      core.untrackedCache is enabled (0952e34)
+    - logging: use yellow color for warnings to distinguish them
+      from errors (c52f375)
+
+-------------------------------------------------------------------
 Wed May 07 12:02:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.35.10:
