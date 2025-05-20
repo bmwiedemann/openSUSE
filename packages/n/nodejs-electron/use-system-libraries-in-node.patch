@@ -16,8 +16,8 @@ Both this and the unbundle flags should be upstreamed but probably separately.
  }
  
  assert(!node_enable_inspector || node_use_openssl,
---- src/third_party/electron_node/unofficial.gni	2025-04-24 18:36:09.022852136 +0200
-+++ src/third_party/electron_node/unofficial.gni	2025-04-29 11:31:11.474026894 +0200
+--- src/third_party/electron_node/unofficial.gni.orig	2025-05-14 23:39:11.439896657 +0200
++++ src/third_party/electron_node/unofficial.gni	2025-05-15 00:49:20.743843435 +0200
 @@ -9,6 +9,35 @@ import("$node_v8_path/gni/v8.gni")
  # The actual configurations are put inside a template in unofficial.gni to
  # prevent accidental edits from contributors.
@@ -54,7 +54,7 @@ Both this and the unbundle flags should be upstreamed but probably separately.
    config("node_features") {
      defines = []
      if (is_component_build) {
-@@ -138,23 +167,19 @@ template("node_gn_build") {
+@@ -139,24 +168,20 @@ template("node_gn_build") {
  
    source_set("libnode") {
      configs += [ ":node_internal_config" ]
@@ -62,6 +62,7 @@ Both this and the unbundle flags should be upstreamed but probably separately.
      public_configs = [
        ":node_external_config",
        "deps/googletest:googletest_config",
+       ":zstd_include_config"
      ]
      public_deps = [
 -      "deps/ada",
@@ -79,9 +80,9 @@ Both this and the unbundle flags should be upstreamed but probably separately.
        "deps/postject",
        "deps/sqlite",
        "deps/uvwasi",
-@@ -179,21 +204,36 @@ template("node_gn_build") {
-     if (is_mac) {
-       frameworks = [ "CoreFoundation.framework" ]
+@@ -186,21 +211,36 @@ template("node_gn_build") {
+         "Security.framework",
+       ]
      }
 -    if (is_posix) {
 -      configs -= [ "//build/config/gcc:symbol_visibility_hidden" ]
@@ -122,7 +123,7 @@ Both this and the unbundle flags should be upstreamed but probably separately.
      if (v8_enable_i18n_support) {
        deps += [ "//third_party/icu" ]
      }
-@@ -222,19 +262,6 @@ template("node_gn_build") {
+@@ -229,19 +269,6 @@ template("node_gn_build") {
        sources += node_inspector.node_inspector_sources +
                   node_inspector.node_inspector_generated_sources
      }
@@ -141,4 +142,18 @@ Both this and the unbundle flags should be upstreamed but probably separately.
 -    }
    }
  
-   executable(target_name) {
+   config("zstd_include_config") {
+@@ -435,11 +462,13 @@ template("node_gn_build") {
+     ]
+ 
+     sources = [ "src/node_snapshot_stub.cc" ]
++    if(false) { #Test only target, not sure why it breaks gn
+     sources += exec_script("./tools/search_files.py",
+                            [ rebase_path(".", root_build_dir),
+                              rebase_path("test/cctest", root_build_dir),
+                              "cc" ],
+                            "list lines")
++    }
+ 
+     if (node_use_openssl) {
+       deps += [ "deps/ncrypto" ]

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 17 09:18:14 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 35.4.0
+  * Node 22.15.0
+  * Added support for system-context-menu on Linux
+  * Fixed a possible crash using the WebView tag and calling focus
+- Drop CheckPortalAvailabilityOnBusThread-UaF-crash.patch applied upstream
+- Add system-zstd-in-node.patch to fix build error
+- 15.6: reverse upstream changes to build with old cares
+  * node-cares-1.21-2.patch
+  * node-cares-1.21-3.patch
+
+-------------------------------------------------------------------
 Fri May  9 15:31:47 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Fix reproducible builds (bsc#1041090)

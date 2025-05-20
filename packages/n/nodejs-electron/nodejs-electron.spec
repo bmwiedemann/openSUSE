@@ -189,7 +189,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        35.3.0
+Version:        35.4.0
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -216,6 +216,8 @@ Source413:       webrtc-aom3.8-AV1E_SET_MAX_CONSEC_FRAME_DROP_CBR-2.patch
 Source461:      webrtc-make_ref_counted-absl2024-nullability.patch
 # and c-ares 1.19
 Source470:      node-cares-1.21.patch
+Source471:      node-cares-1.21-2.patch
+Source472:      node-cares-1.21-3.patch
 # and spirv 2023
 Source480:      angle-SPV_BINARY_TO_TEXT_OPTION_NESTED_INDENT.patch
 
@@ -310,6 +312,7 @@ Patch1091:      use-system-libraries-in-node.patch
 Patch1092:      fix-system-highway.patch
 Patch1093:      system-sqlite.patch
 Patch1094:      absl_strings-missing-headers.patch
+Patch1095:      system-zstd-in-node.patch
 
 
 # PATCHES to fix interaction with third-party software
@@ -380,7 +383,6 @@ Patch3206:      string-hasher-flax-vector-conversions.patch
 Patch3207:      unexportable_key_service_impl-Wlto-type-mismatch.patch
 Patch3208:      to_vector-std-projected-gcc119888.patch
 Patch3209:      file_dialog-missing-uint32_t.patch
-Patch3210:      CheckPortalAvailabilityOnBusThread-UaF-crash.patch
 Patch3211:      html_permission_element_strings_map-reproducible.patch
 
 # Patches to re-enable upstream force disabled features.
@@ -732,6 +734,8 @@ patch -R -p1 < %SOURCE413
 %endif
 
 %if %{without cares_21}
+patch -R -p1 < %SOURCE472
+patch -R -p1 < %SOURCE471
 patch -R -p1 < %SOURCE470
 %endif
 

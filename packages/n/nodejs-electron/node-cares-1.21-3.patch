@@ -1,0 +1,31 @@
+From b85505d450e3a401cf0d13c096abfc75a7932105 Mon Sep 17 00:00:00 2001
+From: Ethan Arrowood <ethan@arrowood.dev>
+Date: Mon, 7 Apr 2025 05:43:14 -0600
+Subject: [PATCH] dns: restore dns query cache ttl
+
+Fixes: https://github.com/nodejs/node/issues/57636
+
+Co-authored-by: Robert Nagy <ronagy@icloud.com>
+PR-URL: https://github.com/nodejs/node/pull/57640
+Reviewed-By: Matteo Collina <matteo.collina@gmail.com>
+Reviewed-By: Robert Nagy <ronagy@icloud.com>
+Reviewed-By: Tim Perry <pimterry@gmail.com>
+Reviewed-By: Luigi Pinca <luigipinca@gmail.com>
+Reviewed-By: Ruben Bridgewater <ruben@bridgewater.de>
+Reviewed-By: James M Snell <jasnell@gmail.com>
+---
+ src/cares_wrap.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/cares_wrap.cc b/src/cares_wrap.cc
+index e58f164ca5124a..fc8f361614ba5f 100644
+--- a/third_party/electron_node/src/cares_wrap.cc
++++ b/third_party/electron_node/src/cares_wrap.cc
+@@ -778,6 +778,7 @@ void ChannelWrap::Setup() {
+   options.sock_state_cb_data = this;
+   options.timeout = timeout_;
+   options.tries = tries_;
++  options.qcache_max_ttl = 0;
+ 
+   int r;
+   if (!library_inited_) {

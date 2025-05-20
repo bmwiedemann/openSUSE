@@ -1,0 +1,261 @@
+From ef91595e2fc1f96b7c8eb51bfcc1408a5adaa4a9 Mon Sep 17 00:00:00 2001
+From: Rithvik Vibhu <rithvikvibhu@gmail.com>
+Date: Tue, 14 May 2024 23:10:31 +0530
+Subject: [PATCH] dns: add TLSA record query and parsing
+
+PR-URL: https://github.com/nodejs/node/pull/52983
+Refs: https://github.com/nodejs/node/issues/39569
+Reviewed-By: Paolo Insogna <paolo@cowtech.it>
+Reviewed-By: James M Snell <jasnell@gmail.com>
+Reviewed-By: Rich Trott <rtrott@gmail.com>
+Reviewed-By: Ethan Arrowood <ethan@arrowood.dev>
+---
+ doc/api/dns.md                          | 71 ++++++++++++++++++
+ lib/internal/dns/utils.js               |  2 +
+ src/cares_wrap.cc                       | 96 +++++++++++++++++++++++++
+ src/cares_wrap.h                        |  8 +++
+ src/env_properties.h                    |  4 ++
+ test/common/internet.js                 |  2 +
+ test/internet/test-dns-cares-domains.js |  1 +
+ test/internet/test-dns.js               | 41 +++++++++++
+ test/internet/test-trace-events-dns.js  |  1 +
+ 9 files changed, 226 insertions(+)
+
+diff --git a/lib/internal/dns/utils.js b/lib/internal/dns/utils.js
+index 7d9e22d1c2458f..bcca83fd4fe54d 100644
+--- a/third_party/electron_node/lib/internal/dns/utils.js
++++ b/third_party/electron_node/lib/internal/dns/utils.js
+@@ -235,6 +235,7 @@ const resolverKeys = [
+   'resolvePtr',
+   'resolveSoa',
+   'resolveSrv',
++  'resolveTlsa',
+   'resolveTxt',
+   'reverse',
+ ];
+@@ -300,6 +301,7 @@ function createResolverClass(resolver) {
+   Resolver.prototype.resolveCname = resolveMap.CNAME = resolver('queryCname');
+   Resolver.prototype.resolveMx = resolveMap.MX = resolver('queryMx');
+   Resolver.prototype.resolveNs = resolveMap.NS = resolver('queryNs');
++  Resolver.prototype.resolveTlsa = resolveMap.TLSA = resolver('queryTlsa');
+   Resolver.prototype.resolveTxt = resolveMap.TXT = resolver('queryTxt');
+   Resolver.prototype.resolveSrv = resolveMap.SRV = resolver('querySrv');
+   Resolver.prototype.resolvePtr = resolveMap.PTR = resolver('queryPtr');
+diff --git a/src/cares_wrap.cc b/src/cares_wrap.cc
+index e79f43d1824b60..f43193c3ce0905 100644
+--- a/third_party/electron_node/src/cares_wrap.cc
++++ b/third_party/electron_node/src/cares_wrap.cc
+@@ -40,6 +40,10 @@
+ #include <vector>
+ #include <unordered_set>
+ 
++#ifndef T_TLSA
++#define T_TLSA 52 /* TLSA certificate association */
++#endif
++
+ #ifndef T_CAA
+ # define T_CAA    257 /* Certification Authority Authorization */
+ #endif
+@@ -57,6 +61,7 @@ namespace node {
+ namespace cares_wrap {
+ 
+ using v8::Array;
++using v8::ArrayBuffer;
+ using v8::Context;
+ using v8::EscapableHandleScope;
+ using v8::Exception;
+@@ -352,6 +357,65 @@ int ParseCaaReply(
+   return ARES_SUCCESS;
+ }
+ 
++int ParseTlsaReply(Environment* env,
++                   unsigned char* buf,
++                   int len,
++                   Local<Array> ret) {
++  EscapableHandleScope handle_scope(env->isolate());
++
++  ares_dns_record_t* dnsrec = nullptr;
++
++  int status = ares_dns_parse(buf, len, 0, &dnsrec);
++  if (status != ARES_SUCCESS) {
++    ares_dns_record_destroy(dnsrec);
++    return status;
++  }
++
++  uint32_t offset = ret->Length();
++  size_t rr_count = ares_dns_record_rr_cnt(dnsrec, ARES_SECTION_ANSWER);
++
++  for (size_t i = 0; i < rr_count; i++) {
++    const ares_dns_rr_t* rr =
++        ares_dns_record_rr_get(dnsrec, ARES_SECTION_ANSWER, i);
++
++    if (ares_dns_rr_get_type(rr) != ARES_REC_TYPE_TLSA) continue;
++
++    unsigned char certusage = ares_dns_rr_get_u8(rr, ARES_RR_TLSA_CERT_USAGE);
++    unsigned char selector = ares_dns_rr_get_u8(rr, ARES_RR_TLSA_SELECTOR);
++    unsigned char match = ares_dns_rr_get_u8(rr, ARES_RR_TLSA_MATCH);
++    size_t data_len;
++    const unsigned char* data =
++        ares_dns_rr_get_bin(rr, ARES_RR_TLSA_DATA, &data_len);
++    if (!data || data_len == 0) continue;
++
++    Local<ArrayBuffer> data_ab = ArrayBuffer::New(env->isolate(), data_len);
++    memcpy(data_ab->Data(), data, data_len);
++
++    Local<Object> tlsa_rec = Object::New(env->isolate());
++    tlsa_rec
++        ->Set(env->context(),
++              env->cert_usage_string(),
++              Integer::NewFromUnsigned(env->isolate(), certusage))
++        .Check();
++    tlsa_rec
++        ->Set(env->context(),
++              env->selector_string(),
++              Integer::NewFromUnsigned(env->isolate(), selector))
++        .Check();
++    tlsa_rec
++        ->Set(env->context(),
++              env->match_string(),
++              Integer::NewFromUnsigned(env->isolate(), match))
++        .Check();
++    tlsa_rec->Set(env->context(), env->data_string(), data_ab).Check();
++
++    ret->Set(env->context(), offset + i, tlsa_rec).Check();
++  }
++
++  ares_dns_record_destroy(dnsrec);
++  return ARES_SUCCESS;
++}
++
+ int ParseTxtReply(
+     Environment* env,
+     const unsigned char* buf,
+@@ -861,6 +925,11 @@ int NsTraits::Send(QueryWrap<NsTraits>* wrap, const char* name) {
+   return ARES_SUCCESS;
+ }
+ 
++int TlsaTraits::Send(QueryWrap<TlsaTraits>* wrap, const char* name) {
++  wrap->AresQuery(name, ARES_CLASS_IN, ARES_REC_TYPE_TLSA);
++  return ARES_SUCCESS;
++}
++
+ int TxtTraits::Send(QueryWrap<TxtTraits>* wrap, const char* name) {
+   wrap->AresQuery(name, ARES_CLASS_IN, ARES_REC_TYPE_TXT);
+   return ARES_SUCCESS;
+@@ -1045,6 +1114,10 @@ int AnyTraits::Parse(
+   if (!soa_record.IsEmpty())
+     ret->Set(env->context(), ret->Length(), soa_record).Check();
+ 
++  /* Parse TLSA records */
++  status = ParseTlsaReply(env, buf, len, ret);
++  if (status != ARES_SUCCESS && status != ARES_ENODATA) return status;
++
+   /* Parse CAA records */
+   status = ParseCaaReply(env, buf, len, ret, true);
+   if (status != ARES_SUCCESS && status != ARES_ENODATA)
+@@ -1219,6 +1292,27 @@ int NsTraits::Parse(
+   return ARES_SUCCESS;
+ }
+ 
++int TlsaTraits::Parse(QueryTlsaWrap* wrap,
++                      const std::unique_ptr<ResponseData>& response) {
++  if (response->is_host) [[unlikely]] {
++    return ARES_EBADRESP;
++  }
++
++  unsigned char* buf = response->buf.data;
++  int len = response->buf.size;
++
++  Environment* env = wrap->env();
++  HandleScope handle_scope(env->isolate());
++  Context::Scope context_scope(env->context());
++
++  Local<Array> tlsa_records = Array::New(env->isolate());
++  int status = ParseTlsaReply(env, buf, len, tlsa_records);
++  if (status != ARES_SUCCESS) return status;
++
++  wrap->CallOnComplete(tlsa_records);
++  return ARES_SUCCESS;
++}
++
+ int TxtTraits::Parse(
+     QueryTxtWrap* wrap,
+     const std::unique_ptr<ResponseData>& response) {
+@@ -1998,6 +2092,7 @@ void Initialize(Local<Object> target,
+   SetProtoMethod(isolate, channel_wrap, "queryCname", Query<QueryCnameWrap>);
+   SetProtoMethod(isolate, channel_wrap, "queryMx", Query<QueryMxWrap>);
+   SetProtoMethod(isolate, channel_wrap, "queryNs", Query<QueryNsWrap>);
++  SetProtoMethod(isolate, channel_wrap, "queryTlsa", Query<QueryTlsaWrap>);
+   SetProtoMethod(isolate, channel_wrap, "queryTxt", Query<QueryTxtWrap>);
+   SetProtoMethod(isolate, channel_wrap, "querySrv", Query<QuerySrvWrap>);
+   SetProtoMethod(isolate, channel_wrap, "queryPtr", Query<QueryPtrWrap>);
+@@ -2029,6 +2124,7 @@ void RegisterExternalReferences(ExternalReferenceRegistry* registry) {
+   registry->Register(Query<QueryCnameWrap>);
+   registry->Register(Query<QueryMxWrap>);
+   registry->Register(Query<QueryNsWrap>);
++  registry->Register(Query<QueryTlsaWrap>);
+   registry->Register(Query<QueryTxtWrap>);
+   registry->Register(Query<QuerySrvWrap>);
+   registry->Register(Query<QueryPtrWrap>);
+diff --git a/src/cares_wrap.h b/src/cares_wrap.h
+index 4a5d22c0ef085f..6703a5fee3d529 100644
+--- a/third_party/electron_node/src/cares_wrap.h
++++ b/third_party/electron_node/src/cares_wrap.h
+@@ -460,6 +460,13 @@ struct NsTraits final {
+       const std::unique_ptr<ResponseData>& response);
+ };
+ 
++struct TlsaTraits final {
++  static constexpr const char* name = "resolveTlsa";
++  static int Send(QueryWrap<TlsaTraits>* wrap, const char* name);
++  static int Parse(QueryWrap<TlsaTraits>* wrap,
++                   const std::unique_ptr<ResponseData>& response);
++};
++
+ struct TxtTraits final {
+   static constexpr const char* name = "resolveTxt";
+   static int Send(QueryWrap<TxtTraits>* wrap, const char* name);
+@@ -515,6 +522,7 @@ using QueryCaaWrap = QueryWrap<CaaTraits>;
+ using QueryCnameWrap = QueryWrap<CnameTraits>;
+ using QueryMxWrap = QueryWrap<MxTraits>;
+ using QueryNsWrap = QueryWrap<NsTraits>;
++using QueryTlsaWrap = QueryWrap<TlsaTraits>;
+ using QueryTxtWrap = QueryWrap<TxtTraits>;
+ using QuerySrvWrap = QueryWrap<SrvTraits>;
+ using QueryPtrWrap = QueryWrap<PtrTraits>;
+diff --git a/src/env_properties.h b/src/env_properties.h
+index 9d22dc69754178..bc97dfc66c96f9 100644
+--- a/third_party/electron_node/src/env_properties.h
++++ b/third_party/electron_node/src/env_properties.h
+@@ -91,6 +91,7 @@
+   V(cached_data_rejected_string, "cachedDataRejected")                         \
+   V(cached_data_string, "cachedData")                                          \
+   V(cache_key_string, "cacheKey")                                              \
++  V(cert_usage_string, "certUsage")                                            \
+   V(change_string, "change")                                                   \
+   V(changes_string, "changes")                                                 \
+   V(channel_string, "channel")                                                 \
+@@ -135,6 +136,7 @@
+   V(dns_ptr_string, "PTR")                                                     \
+   V(dns_soa_string, "SOA")                                                     \
+   V(dns_srv_string, "SRV")                                                     \
++  V(dns_tlsa_string, "TLSA")                                                   \
+   V(dns_txt_string, "TXT")                                                     \
+   V(done_string, "done")                                                       \
+   V(duration_string, "duration")                                               \
+@@ -237,6 +239,7 @@
+   V(line_number_string, "lineNumber")                                          \
+   V(loop_count, "loopCount")                                                   \
+   V(mac_string, "mac")                                                         \
++  V(match_string, "match")                                                     \
+   V(max_buffer_string, "maxBuffer")                                            \
+   V(max_concurrent_streams_string, "maxConcurrentStreams")                     \
+   V(message_port_constructor_string, "MessagePort")                            \
+@@ -336,6 +339,7 @@
+   V(scopeid_string, "scopeid")                                                 \
+   V(script_id_string, "scriptId")                                              \
+   V(script_name_string, "scriptName")                                          \
++  V(selector_string, "selector")                                               \
+   V(serial_number_string, "serialNumber")                                      \
+   V(serial_string, "serial")                                                   \
+   V(servername_string, "servername")                                           \

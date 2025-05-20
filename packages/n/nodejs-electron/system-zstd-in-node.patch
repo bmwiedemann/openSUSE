@@ -1,0 +1,10 @@
+--- src/build/linux/unbundle/zstd.gn.orig	2025-05-15 00:07:52.687879791 +0200
++++ src/build/linux/unbundle/zstd.gn	2025-05-15 00:52:47.403841155 +0200
+@@ -25,3 +25,7 @@ source_set("decompress") {
+   public_configs = [ ":system_zstd" ]
+   public_deps = [ ":zstd_headers" ]
+ }
++source_set("headers") {
++  public_configs = [ ":system_zstd" ]
++  public_deps = [ ":zstd_headers" ]
++}

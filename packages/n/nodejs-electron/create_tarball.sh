@@ -69,7 +69,7 @@ EOF
 export DEPOT_TOOLS_UPDATE=0
 
 echo ">>>>>> Downloading electron-${ELECTRON_PKGVERSION}"
-gclient sync -v --jobs $(nproc) --nohooks --no-history --shallow --revision=v"${ELECTRON_PKGVERSION}"
+gclient sync -v --jobs 15 --nohooks --no-history --shallow --revision=v"${ELECTRON_PKGVERSION}"
 if [ $? -ne 0 ]; then
     echo "ERROR: gclient sync failed"
     cleanup_and_exit 1
@@ -332,9 +332,12 @@ find third_party/electron_node/deps/ngtcp2 -type f ! -name "*.gn" -a ! -name "*.
 find third_party/electron_node/deps/openssl -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/simdutf -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/v8 -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
-rm -rvf third_party/electron_node/deps/v8/tools
+rm -rvf third_party/electron_node/deps/v8/{tools,include}
 ln -srv v8/tools -t third_party/electron_node/deps/v8/
+ln -srv v8/include -t third_party/electron_node/deps/v8/
 find third_party/electron_node/deps/zlib -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
+find third_party/electron_node/deps/zstd -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
+
 
 # vendored system headers
 rm -rf build/linux/debian*sysroot
