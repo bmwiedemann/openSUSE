@@ -845,4 +845,21 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
   + Updated translations. (forwarded request 1255448 from iznogood)</comment>
     <requestid>1255579</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>231273f542e0ba5dcbe5b04489fe0236</srcmd5>
+    <version>48.1</version>
+    <time>1747726637</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + Fixes:
+    - Select all text in entry when opening search
+    - Attach shortcuts window to main window
+    - Prevent interaction with main window when dialog is shown
+    - Group dialogs with window they are opened from
+    - Fix margins in preferences dialog
+    - Fix undo/redo shortcuts in documentation
+    - Update displayed note change time on change
+  + Updated translations. (forwarded request 1277257 from iznogood)</comment>
+    <requestid>1278253</requestid>
+  </revision>
 </revisionlist>
