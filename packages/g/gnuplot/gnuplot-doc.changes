@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 12 12:14:33 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add patches
+  * fix4bug1240325.patch - boo#1240325: CVE-2025-31176: segmentation fault on plot3d_points
+  * fix4bug1240326.patch - boo#1240326: CVE-2025-31177: heap-buffer overflow on utf8_copy_one
+  * fix4bug1240327.patch - boo#1240327: CVE-2025-31178: segmentation fault on GetAnnotateString
+  * fix4bug1240328.patch - boo#1240328: CVE-2025-31179: segmentation fault on xstrftime
+  * fix4bug1240329.patch - boo#1240329: CVE-2025-31180: segmentation fault on CANVAS_text
+  * fix4bug1240330.patch - boo#1240330: CVE-2025-31181: segmentation fault on X11_graphics
+  * fix4bug1241684.patch - boo#1241684: CVE-2025-3359: segmentation fault via IO_str_init_static_internal function
+- Add a check section and we use a dump terminal
+
+-------------------------------------------------------------------
+Tue Feb 18 13:09:58 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Use openspecfun only for opensuse builds
+
+-------------------------------------------------------------------
 Tue Jan  7 09:57:13 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Update to gnuplot 6.0.2

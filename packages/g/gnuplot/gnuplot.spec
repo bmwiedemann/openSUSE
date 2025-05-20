@@ -115,6 +115,13 @@ Patch4:         gnuplot-4.6.0-demo.diff
 Patch5:         gnuplot-wx3.diff
 Patch6:         gnuplot-QtCore-PIC.dif
 Patch7:         gnuplot-PIE.patch
+Patch25:        fix4bug1240325.patch
+Patch26:        fix4bug1240326.patch
+Patch27:        fix4bug1240327.patch
+Patch28:        fix4bug1240328.patch
+Patch29:        fix4bug1240329.patch
+Patch30:        fix4bug1240330.patch
+Patch84:        fix4bug1241684.patch
 %define _x11lib     %{_libdir}
 %define _x11data    %{_datadir}/X11
 %define _x11inc     %{_includedir}/X11
@@ -150,6 +157,13 @@ cp %{_sourcedir}/picins.sty docs
 %patch -P5 -p1 -b .w3x
 %patch -P6 -p0 -b .pic
 %patch -P7 -p1 -b .pie
+%patch -P25 -p0 -b .p25
+%patch -P26 -p0 -b .p26
+%patch -P27 -p0 -b .p27
+%patch -P28 -p0 -b .p28
+%patch -P29 -p0 -b .p29
+%patch -P30 -p0 -b .p30
+%patch -P84 -p0 -b .p84
 
 %build
 autoreconf -fi
@@ -273,6 +287,11 @@ autoreconf -fi
     rm -f %{buildroot}/%{_docdir}/gnuplot/demo/Makefile*
     install -m 0444 %{S:1}            %{buildroot}/%{_docdir}/gnuplot/
     %fdupes %{buildroot}/%{_docdir}
+%endif
+
+%if "%{flavor}" == ""
+%check
+GNUTERM=dumb make check
 %endif
 
 %if "%{flavor}" == "doc"

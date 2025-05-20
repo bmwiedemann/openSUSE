@@ -1341,4 +1341,32 @@ removed boo#1203092 (forwarded request 1006499 from AndreasStieger)</comment>
     <comment>- Use openspecfun only for opensuse builds</comment>
     <requestid>1246676</requestid>
   </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>7c7dfe1979911a001201772b4a3f2040</srcmd5>
+    <version>6.0.2</version>
+    <time>1747726269</time>
+    <user>anag_factory</user>
+    <comment>- Add patches
+  * fix4bug1240325.patch - boo#1240325: CVE-2025-31176: segmentation fault on plot3d_points
+  * fix4bug1240326.patch - boo#1240326: CVE-2025-31177: heap-buffer overflow on utf8_copy_one
+  * fix4bug1240327.patch - boo#1240327: CVE-2025-31178: segmentation fault on GetAnnotateString
+  * fix4bug1240328.patch - boo#1240328: CVE-2025-31179: segmentation fault on xstrftime
+  * fix4bug1240329.patch - boo#1240329: CVE-2025-31180: segmentation fault on CANVAS_text
+  * fix4bug1240330.patch - boo#1240330: CVE-2025-31181: segmentation fault on X11_graphics
+  * fix4bug1241684.patch - boo#1241684: CVE-2025-3359: segmentation fault via IO_str_init_static_internal function
+- Add a check section and we use a dump terminal
+
+- Use openspecfun only for opensuse builds
+
+- Add patches
+  * fix4bug1240325.patch - boo#1240325: CVE-2025-31176: segmentation fault on plot3d_points
+  * fix4bug1240326.patch - boo#1240326: CVE-2025-31177: heap-buffer overflow on utf8_copy_one
+  * fix4bug1240327.patch - boo#1240327: CVE-2025-31178: segmentation fault on GetAnnotateString
+  * fix4bug1240328.patch - boo#1240328: CVE-2025-31179: segmentation fault on xstrftime
+  * fix4bug1240329.patch - boo#1240329: CVE-2025-31180: segmentation fault on CANVAS_text
+  * fix4bug1240330.patch - boo#1240330: CVE-2025-31181: segmentation fault on X11_graphics
+  * fix4bug1241684.patch - boo#1241684: CVE-2025-3359: segmentation fault via IO_str_init_static_internal function
+- Add a check section and we use a dump terminal</comment>
+    <requestid>1277115</requestid>
+  </revision>
 </revisionlist>
