@@ -508,4 +508,12 @@
 - Update to GNOME 3.20.2 FATE#318572 (forwarded request 967703 from dimstar)</comment>
     <requestid>967858</requestid>
   </revision>
+  <revision rev="73" vrev="23">
+    <srcmd5>ba8017cb8d42b88b8bd30ee01d50bb03</srcmd5>
+    <version>3.0.0</version>
+    <time>1747726644</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in old changelog entries (forwarded request 1277778 from dimstar)</comment>
+    <requestid>1278238</requestid>
+  </revision>
 </revisionlist>
