@@ -24,4 +24,14 @@
     &quot;compact&quot;)</comment>
     <requestid>1098928</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5c7567e56bf2693861b52ce9888cfbd0</srcmd5>
+    <version>1.25</version>
+    <time>1747726634</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.25:
+  * feat: virtualenv improvements
+  * Fix for empty string value from pyvenv.cfg parsing (forwarded request 1278287 from jfkw)</comment>
+    <requestid>1278288</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package powerline-go
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           powerline-go
-Version:        1.24
+Version:        1.25
 Release:        0
 Summary:        A Powerline like prompt for Bash, ZSH and Fish
 License:        GPL-3.0-or-later
@@ -26,7 +26,7 @@ URL:            https://github.com/justjanne/powerline-go
 Source0:        https://github.com/justjanne/powerline-go/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.20
+BuildRequires:  golang(API) = 1.24
 %{go_nostrip}
 
 %description
