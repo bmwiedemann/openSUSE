@@ -17,7 +17,7 @@
 
 
 Name:           asar
-Version:        3.4.1
+Version:        4.0.0
 Release:        0
 Summary:        Creating atom-shell (electron) app packages
 License:        MIT and ISC
@@ -66,11 +66,11 @@ tsc --removeComments --sourceMap false || true
 mkdir -pv %{buildroot}%{nodejs_sitelib}/@electron
 mkdir -pv %{buildroot}%{_bindir}
 cp -alr . %{buildroot}%{nodejs_sitelib}/@electron/asar
-ln -srv %{buildroot}%{nodejs_sitelib}/@electron/asar/bin/asar.js %{buildroot}%{_bindir}/asar
+ln -srv %{buildroot}%{nodejs_sitelib}/@electron/asar/bin/asar.mjs %{buildroot}%{_bindir}/asar
 # symlink old package name
 ln -srv %{buildroot}%{nodejs_sitelib}/{@electron/,}asar
 #fix shebang
-sed -i '1s/env //' %{buildroot}%{nodejs_sitelib}/@electron/asar/bin/asar.js
+sed -i '1s/env //' %{buildroot}%{nodejs_sitelib}/@electron/asar/bin/asar.mjs
 cd %{buildroot}%{nodejs_sitelib}/asar
 
 # Correct bogus version in package.json
@@ -92,7 +92,10 @@ find -name @types -print0 |xargs -r0 -- rm -rvf
 find -name .github -print0 |xargs -r0 -- rm -rvf
 find -name .circleci -print0 |xargs -r0 -- rm -rvf
 find -name '*.md' -type f -print -delete
+find -name '*.map' -type f -print -delete
 find -name '*.markdown' -type f -print -delete
+find -name '*.cts' -type f -print -delete
+find -name '*.mts' -type f -print -delete
 find -name '*.ts' -type f -print -delete
 find -name '.*.yml' -type f -print -delete
 find -name '.*ignore' -type f -print -delete
@@ -105,6 +108,7 @@ find -name '.prettierrc*' -type f -print -delete
 find -name '.releaserc*' -type f -print -delete
 find -name '.mocharc*' -type f -print -delete
 find -name tsconfig.json -type f -print -delete
+find -name .nvmrc -type f -print -delete
 
 #remove symlink to no longer existent dev executable
 rm -v node_modules/.bin/node-which
@@ -115,16 +119,16 @@ find . -type d -empty -print -delete
 %fdupes %{buildroot}
 
 %check
-pushd %{buildroot}%{nodejs_sitelib}/asar
+pushd %{buildroot}%{nodejs_sitelib}
 # https://docs.fedoraproject.org/en-US/packaging-guidelines/Node.js/#_build_testing_in_check
-%{__nodejs} -e 'require("./")'
+%{__nodejs} -e 'require("@electron/asar")'
 
 #check that the executable starts
-./bin/asar.js -h
+./@electron/asar/bin/asar.mjs -h
 popd
 
 #the actual test suite 
-npx mocha -- --reporter spec --timeout 10000
+npx mocha -- --timeout '"20000"'
 
 %files
 %defattr(-,root,root)

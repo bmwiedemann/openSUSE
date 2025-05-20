@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 17 11:40:13 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 4.0.0
+  * Rewrite program to use ES modules and require Node 22
+
+-------------------------------------------------------------------
 Mon Apr  7 14:04:51 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 3.4.1
