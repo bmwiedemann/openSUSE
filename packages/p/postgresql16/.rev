@@ -204,4 +204,19 @@
   * https://www.postgresql.org/about/news/p-3018/</comment>
     <requestid>1247459</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>df01f4e9772301cbc561073604df84d6</srcmd5>
+    <version>16.9</version>
+    <time>1747726506</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to 16.9:
+  * bsc#1242931, CVE-2025-4207: postgresql: PostgreSQL GB18030
+    encoding validation can read one byte past end of allocation
+    for text that fails validation.
+  * https://www.postgresql.org/docs/release/16.9/
+  * https://www.postgresql.org/about/news/p-3072/
+- Add postresql-pg_config_paths.patch to Fix a race condition
+  while generating pg_config_paths.h.</comment>
+    <requestid>1278024</requestid>
+  </revision>
 </revisionlist>
