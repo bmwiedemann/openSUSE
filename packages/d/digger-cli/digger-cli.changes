@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 20 05:13:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.100:
+  * role duration in seconds (#1950)
+  * remove logline that is logged in result anyeway (#1949)
+  * Update digger_config.go (#1948)
+  * Delete old plan comments on PR update (#1943)
+
+-------------------------------------------------------------------
 Tue May 13 04:37:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.99:
