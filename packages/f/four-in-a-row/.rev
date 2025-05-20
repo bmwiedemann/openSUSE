@@ -309,4 +309,12 @@
     <comment>Push GNOME 3.38</comment>
     <requestid>847186</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>d514ec359073065c43713dc2aa2a9b08</srcmd5>
+    <version>3.38.1</version>
+    <time>1747726642</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in old changelog entries (forwarded request 1277767 from dimstar)</comment>
+    <requestid>1278232</requestid>
+  </revision>
 </revisionlist>
