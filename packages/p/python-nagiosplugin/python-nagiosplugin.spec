@@ -35,6 +35,8 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
+# For who util for checking examples/check_users.py
+BuildRequires:  coreutils-systemd
 # /SECTION
 %python_subpackages
 
@@ -65,8 +67,7 @@ and default logic commonly found in Nagios checks, including:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# skip because of gh#mpounsett/nagiosplugin#53
-%pytest -k 'not test_check_users'
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt

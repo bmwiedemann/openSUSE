@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 20 14:33:34 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add missing BR coreutils-systemd for testing
+  examples/check_users.py
+
+-------------------------------------------------------------------
 Mon May  5 05:43:47 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
