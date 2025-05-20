@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 17 08:50:00 UTC 2025 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-7.18 (API & ABI are backwards compatible).
+- Add CMake find_package(primecount) support.
+- libprimecount.md: Add CMake find_package(primecount) section.
+- PhiTiny.cpp: Reduce code bloat.
+- Move private header files from /include to /src.
+- src/CMakeLists.txt: Update for private header files in /src.
+- test/CMakeLists.txt: Update for private header files in /src.
+- Vector.hpp: Get rid of std::is_trivial which is deprecated in C++26.
+- Update to latest primesieve-12.9 library.
+- Update to latest libdivide-5.2.0 library.
+
+-------------------------------------------------------------------
 Tue Apr 29 17:28:00 UTC 2025 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-7.17 (API & ABI are backwards compatible).
