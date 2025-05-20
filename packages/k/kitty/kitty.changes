@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat May 17 14:38:50 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.42.1:
+  * Fix ambiguous width and private use characters not being rendered when
+    used with variable width text-sizing protocol escape codes
+  * Quick access terminal: Restore focus to previously active window when
+    hiding the quick access terminal window on macOS (#8627)
+  * Wayland: Fix an abort if the terminal program sets a window title longer
+    than 2KB that contains CSI escape sequences and multibyte UTF-8 (#8619)
+  * Quick access terminal: Allow toggling the window to full screen using the
+    standard kitty ctrl+shift+f11 shortcut (#8626)
+    - https://sw.kovidgoyal.net/kitty/conf/#shortcut-kitty.Toggle-fullscreen
+  * Quick access terminal: Allow configuring the monitor to display the panel
+    on in Wayland/X11 (#8630)
+  * A new setting remember_window_position to optionally use the position of
+    the last closed kitty OS Window as the position of the first kitty
+    OS Window when running a new kitty instance (#8601)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.remember_window_position
+  * Panel kitten: A new center-sized value for --edge to allow easily creating
+    sized and centered panels
+    - https://sw.kovidgoyal.net/kitty/kittens/panel/#cmdoption-kitty-kitten-panel-edge
+  * Wayland: The kitty --name flag now sets the XDG window tag on compositors
+    that support the xdg-toplevel-tag protocol.
+    - https://wayland.app/protocols/xdg-toplevel-tag-v1
+
+-------------------------------------------------------------------
 Mon May 12 14:35:16 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.42.0:
