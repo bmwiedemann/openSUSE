@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 19 06:05:16 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.30.13:
+  * Bump images, dependencies and versions
+
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires: go >= 1.23.8`
+  * BuildRequires:  golang(API) = 1.23
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.30.13/build/dependencies.yaml#L117-L139
+
+-------------------------------------------------------------------
 Wed Apr 23 13:07:09 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.30.12:
