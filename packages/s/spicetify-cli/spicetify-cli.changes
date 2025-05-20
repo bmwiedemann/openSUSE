@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 19 17:15:24 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Update to version 2.40.9:
+  * fix: correctly apply search bug fix
+  * chore: change info msg
+  * fix(wrapper): use `type` regex for menus
+  * feat: add partial support for Spotify 1.2.64
+  * feat(css-map): update `lyrics-lyricsContent-lyric` (#3411)
+
+-------------------------------------------------------------------
 Mon May 12 06:53:41 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Update to version 2.40.7:
