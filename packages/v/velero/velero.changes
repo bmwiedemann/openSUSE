@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 19 04:36:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.16.1:
+  * Call WaitGroup.Done() once only when PVB changes to final
+    status the first time to avoid panic
+  * Support using image registry proxy in more cases.
+  * Add default bakcup repository configuration for E2E.
+  * Add VolumeSnapshotContent into the RIA and the mustHave
+    resource list. (#8926)
+  * bump up base image
+  * Remove pushing images to GCR.
+  * For not found errors on managed fields, add restore warning
+  * issue-8878: relief node os deduction error checks
+  * Bump Golang and golang.org/x/net to fix CVEs.
+
+-------------------------------------------------------------------
 Mon Apr 14 07:57:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.16.0:
