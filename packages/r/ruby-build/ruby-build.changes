@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 17 11:23:33 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20250516.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250516
+  * Modify `update-jruby` script to require Java 21+ for JRuby 10+ by @mislav in #2531
+  * Add 3.4.4 in 87f57bb7a8176afa7f9256a1bd6fa18d251f210e
+
+-------------------------------------------------------------------
 Wed May  7 18:29:34 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20250507.
