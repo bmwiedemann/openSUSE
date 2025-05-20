@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon May 19 22:10:15 UTC 2025 - maiku.fabian@gmail.com
+
+- Update to 2.27.56
+- Use the order of spellchecking suggestions coming from enchant
+  for the score of the spellchecking candidates
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/739)
+- Use @dataclass for PredictionCandidate instead of NamedTuple
+  for Python 3.7+, fall back to the NamedTuple for Python < 3.7.
+- command `show_selection_info`: Instead of cancelling the selection,
+  add the selection to the candidates
+  (Related: https://github.com/mike-fabian/ibus-typing-booster/issues/733)
+- Parse NamesList.txt if available in the system
+  (Related: https://github.com/mike-fabian/ibus-typing-booster/issues/698)
+- Translation update from Weblate (pl 100%)
+
+-------------------------------------------------------------------
+Sat May 17 17:38:52 UTC 2025 - maiku.fabian@gmail.com
+
+- Update to 2.27.54
+- Migrate emoji_picker.py from Gtk.main() to GLib.MainLoop()
+  (Makes Control-C work even while flowboxes are filled)
+- emoji-picker: use a progress bar instead of a spinner
+  (Spinner is currently broken in Gtk3 but the progress bar is nicer anyway)
+- Use GLib.timeout_add() in emoji-picker when typing into the search entry
+  (That avoids starting a new search after every keypress when typing
+  very fast, instead wait for a short pause in typing before starting a search.)
+- Add a new command `show_selection_info` to analyze a selection
+  and show the Unicode code points, grapheme clusters, emoji sequences, …
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/733)
+- When committing with space while the preedit is empty,
+  something might be selected in the lookup table which needs
+  to be committed then
+  (Related: https://github.com/mike-fabian/ibus-typing-booster/issues/707)
+- If a new label is selected in emoji-picker, stop filling
+  the flowbox with contents for the old label
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/734)
+- Add IBus.KEY_Escape to self._commit_trigger_keys
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/731)
+- Translation update from Weblate (kab 77.4%, ko 100%)
+
+-------------------------------------------------------------------
 Mon May 12 15:49:30 UTC 2025 - maiku.fabian@gmail.com
 
 - Update to 2.27.53
@@ -2433,7 +2474,7 @@ Wed Feb  22 18:51:20 UTC 2017 - maiku.fabian@gmail.com
 - make it noarch
 
 -------------------------------------------------------------------
-Wed Feb  22 11:46:57 UTC 2017 - maiku.fabian@gmail.com
+Wed Feb  22 11:46:58 UTC 2017 - maiku.fabian@gmail.com
 
 - fix build (thanks to Stefan Dirsch)
 
@@ -2515,7 +2556,7 @@ Thu Jan  19 08:43:06 UTC 2017 - maiku.fabian@gmail.com
 - Do not try to reopen the preëdit when any modifier except
   CapsLock is on (Resolves: rhbz#1414642)
 
----------------------------------------------------------
+-------------------------------------------------------------------
 Tue Jan  17 14:00:23 UTC 2017 - maiku.fabian@gmail.com
 
 - update to 1.5.18

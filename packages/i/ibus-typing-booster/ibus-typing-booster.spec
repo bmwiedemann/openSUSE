@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-typing-booster
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.27.53
+Version:        2.27.56
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
@@ -41,7 +41,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
 %if 0%{?suse_version} > 1600
-BuildRequires: python3-rapidfuzz
+BuildRequires:  python3-rapidfuzz
 %endif
 # Because of “from packing import version”:
 BuildRequires:  python3-packaging
@@ -74,7 +74,6 @@ Recommends:     python3-regex
 Recommends:     python3-simpleaudio
 # To make emoji and Unicode symbol matching faster:
 Recommends:     python3-rapidfuzz
-BuildRequires:  python3-pyxdg
 BuildRequires:  myspell-de
 BuildRequires:  myspell-de_DE
 BuildRequires:  myspell-en
@@ -83,6 +82,7 @@ BuildRequires:  myspell-es
 BuildRequires:  myspell-es_ES
 BuildRequires:  myspell-fr_FR
 BuildRequires:  myspell-it_IT
+BuildRequires:  python3-pyxdg
 
 %description
 Ibus-typing-booster is a context sensitive completion
