@@ -56,8 +56,10 @@ Source7:        opensuse-container-9ab48ce9-5ae3116a.asc
 
 # Container key SUSE Linux Enterprise
 Source8:        build-container-d4ade9c3-5a2e9669.asc
-# openSUSE Backports key (previously PackageHub, now also Leap 15.3 / 15.4)
-Source9:        gpg-pubkey-65176565-61a0ee8f.asc
+# openSUSE Backports key (previously PackageHub, now also Leap 15.6)
+Source9:        gpg-pubkey-25db7ae0-645bae34.asc
+# obsoletes old RSA 2k backports key
+Obsoletes:      gpg-pubkey-65176565
 # Container key SUSE Linux Enterprise in PEM format
 Source11:       build-container-d4ade9c3-5a2e9669.pem
 

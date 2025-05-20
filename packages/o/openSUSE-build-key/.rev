@@ -426,4 +426,14 @@ However, it would be good to have these out before we do switch. (forwarded requ
   2048 bit key. (forwarded request 1252008 from msmeissn)</comment>
     <requestid>1252009</requestid>
   </revision>
+  <revision rev="48" vrev="57">
+    <srcmd5>ad1d83f21da77bd16c1621c1418927eb</srcmd5>
+    <version>1.0</version>
+    <time>1747726271</time>
+    <user>anag_factory</user>
+    <comment>- added gpg-pubkey-25db7ae0-645bae34.asc: RSA 4k SLE15 Backports key.
+- removed gpg-pubkey-65176565-61a0ee8f.asc: old RSA 2k Backports key.
+  (bsc#1243135) (forwarded request 1277127 from msmeissn)</comment>
+    <requestid>1277128</requestid>
+  </revision>
 </revisionlist>

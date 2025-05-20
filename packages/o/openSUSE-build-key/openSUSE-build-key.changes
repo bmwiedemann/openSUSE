@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 13 12:18:48 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- added gpg-pubkey-25db7ae0-645bae34.asc: RSA 4k SLE15 Backports key.
+- removed gpg-pubkey-65176565-61a0ee8f.asc: old RSA 2k Backports key.
+  (bsc#1243135)
+
+-------------------------------------------------------------------
 Tue Mar 11 10:15:19 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - gpg-pubkey-39db7c82-66c5d91a.asc: extended lifetime of SLE12 / 15 
