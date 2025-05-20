@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 16 09:56:07 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix changelog format: the line immediately after the dashed line
+  is supposed to be the header with date/author info.
+
+-------------------------------------------------------------------
 Sat Feb 22 16:29:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.7.8:
@@ -16,7 +22,7 @@ Sat Jul 25 16:12:31 UTC 2015 - dl8fcl@darc.de
   spec file cleanup
 
 -------------------------------------------------------------------
+Wed Mar 07 00:00:00 UTC 2007 - dl9pf@gmx.de
 
-* Wed Mar 07 2007 dl9pf@gmx.de
 - import to buildservice
 
