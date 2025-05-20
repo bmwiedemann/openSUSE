@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f18e7a9096aa341aa34126ef13fce154</srcmd5>
+    <version>20250515</version>
+    <time>1747773937</time>
+    <user>anag_factory</user>
+    <comment>- Fixed incorrect source url
+- Updated tarball
+- Removed obsolete patches:
+  * fix-building.patch</comment>
+    <requestid>1278847</requestid>
+  </revision>
+</revisionlist>

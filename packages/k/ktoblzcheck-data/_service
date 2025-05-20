@@ -1,0 +1,22 @@
+<services>
+  <service name="download_url" mode="manual">
+    <param name="protocol">https</param>
+    <param name="host">www.betaalvereniging.nl</param>
+    <param name="path">/wp-content/uploads/BIC-lijst-NL-2.xlsx</param>
+  </service>
+  <service name="download_url" mode="manual">
+    <param name="protocol">https</param>
+    <param name="host">api.six-group.com</param>
+    <param name="path">/api/epcd/bankmaster/v2/public/downloads/bcbankenstamm</param>
+  </service>
+  <service name="download_url" mode="manual">
+    <param name="protocol">https</param>
+    <param name="host">www.bundesbank.de</param>
+    <param name="path">/de/aufgaben/unbarer-zahlungsverkehr/serviceangebot/bankleitzahlen/download---bankleitzahlen-602592</param>
+  </service>
+  <service name="download_url" mode="manual">
+    <param name="protocol">https</param>
+    <param name="host">www.bundesbank.de</param>
+    <param name="path">/resource/blob/602880/c9e0b10e3678615c2651a61c004ba850/mL/verzeichnis-der-erreichbaren-zahlungsdienstleister-data.csv</param>
+  </service>
+</services>

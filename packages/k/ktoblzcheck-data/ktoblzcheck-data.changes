@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Tue May 20 14:31:43 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fixed incorrect source url
+- Updated tar ball
+- Removed obsolete patches:
+  * fix-building.patch
+
+-------------------------------------------------------------------
+Mon May 19 10:02:24 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Use manual service mode, as the default mode is not allowed
+  at openSUSE Factory
+
+-------------------------------------------------------------------
+Thu May 15 06:59:11 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Initial package, moved out from ktoblzcheck
