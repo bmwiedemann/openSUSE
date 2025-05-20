@@ -1,7 +1,7 @@
 #
 # spec file for package autorandr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           autorandr
 Version:        1.15.0.1709469470
 Release:        0
@@ -23,9 +24,9 @@ License:        GPL-3.0-or-later
 URL:            https://github.com/phillipberndt/autorandr
 Source0:        %{name}-%{version}.tar.bz2
 Source10:       autorandr-rpmlintrc
-BuildRequires:  python-rpm-macros
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 Requires:       libinput-tools
 BuildArch:      noarch
 
@@ -56,7 +57,7 @@ Bash command-line completion support for %{name}.
   SYSTEMD_UNIT_DIR="%{_unitdir}" \
   UDEV_RULES_DIR="%{_udevrulesdir}" \
   BASH_COMPLETIONS_DIR="%{_datadir}/bash-completion"
-  
+
 %python3_fix_shebang
 
 %pre

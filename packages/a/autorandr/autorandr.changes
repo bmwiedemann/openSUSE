@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 16 09:59:08 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix changelog format: the line immediately after the dashed line
+  is supposed to be the header with date/author info.
+
+-------------------------------------------------------------------
 Tue May 28 17:25:52 UTC 2024 - Eric Renfro <erenfro@linux-help.org>
 
 - Removed obsoleted Group.
@@ -14,7 +20,6 @@ Tue May 28 13:31:12 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 - Update specfile to openSUSE standards.
 
 -------------------------------------------------------------------
-
 Sat May 25 12:00:00 UTC 2024 - Eric Renfro <erenfro@linux-help.org>
 
 - Branched version
@@ -30,7 +35,6 @@ Sat May 25 12:00:00 UTC 2024 - Eric Renfro <erenfro@linux-help.org>
   * fish completion: fix typo in folder name
 
 -------------------------------------------------------------------
-
 Wed Dec 07 12:00:00 UTC 2016 - phillip.berndt@googlemail.com
 
 - initial version
