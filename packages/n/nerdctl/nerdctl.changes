@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue May 13 11:49:09 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 2.1.1:
+  * Dockerfile: fix cross-compiling gomodjail
+  * CI: test `make artifacts` on every PR
+  * Add loong64 as a build target + completion
+  * test: remove unnecessary sleep in container setup for log tests
+  * Add loong64 artifact
+  * test: add delay to ensure logs are available before following
+  * fix: avoid adding extraneous line feed when tail logs
+  * build(deps): bump github.com/vishvananda/netlink
+  * (re)-tackle CNI concurrency issues
+  * Clarify corner case on Tigron WithFeeder
+  * Fix flaky diff test
+  * Carry a copy of vagrant gpg key
+  * CI: pin docker to a specific version
+  * update gotestsum (1.12.2)
+  * update containerd-fuse-overlayfs (2.1.5)
+  * update fuse-overlayfs (1.15)
+  * update RootlessKit (2.3.5)
+  * release note: add containerd v2.1 as a compatible version
+  * build(deps): bump github.com/Microsoft/hcsshim
+  * update containerd version to 2.1.0
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * build(deps): bump actions/setup-go from 5.4.0 to 5.5.0
+  * build(deps): bump github.com/rootless-containers/rootlesskit/v2
+  * build(deps): bump github.com/containerd/containerd/v2
+  * Disable docker testing for SigProxyFalse
+  * Fix debug display issue with pty
+  * TestRunWithLogBinary: workaround for "package slices is not in GOROOT"
+  * oci-hook: add /usr/sbin:/sbin to PATH for iptables
+  * Revert "Workaround gomodjail concurrency issue"
+  * update gomodjail (0.1.2)
+  * feat: add support for userns
+  * build(deps): bump github.com/containerd/containerd/v2
+  * go.mod: github.com/syndtr/gocapability: gomodjail:unconfined
+  * Rewrite TestLogsWithoutNewlineOrEOF
+  * Increase timeout for windows on TestRunRmTime
+  * Integration in-container: simplify job
+  * fix: test nerdctl ps filter created.
+  * Workaround gomodjail concurrency issue
+  * build(deps): bump the golang-x group with 6 updates
+  * More defensive makefile
+  * Add darwin to Makefile
+  * Gomodjail: unconfine fsnotify and cdi
+  * Bump up timeout for lint-build
+  * Adding summaries for CI workflows
+  * GHA: rewrite in container integration workflow
+  * Fix error output for target not found
+  * Refactor github workflows
+  * Disable blkio test for older kernels
+  * Removing net.core.somaxconn from test
+  * fix: enhance event monitoring by adding close event channel
+  * Follow-up to #4012: address tests issues
+  * fix: logs updated on starting of a stopped container
+  * feat: containerd v2.1 RC migrate.
+  * Fix tigron prepend args regression
+  * Add support for CDI devices to device flag
+  * go.mod: experimental integration of gomodjail (library sandbox)
+
+-------------------------------------------------------------------
 Tue May 06 11:18:00 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 2.0.5:
