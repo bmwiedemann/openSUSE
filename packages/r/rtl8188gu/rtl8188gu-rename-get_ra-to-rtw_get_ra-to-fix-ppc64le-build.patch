@@ -1,0 +1,87 @@
+diff -Nur rtl8188gu/core/rtw_odm.c rtl8188gu-new/core/rtw_odm.c
+--- rtl8188gu/core/rtw_odm.c	2023-01-12 00:45:31.000000000 +0800
++++ rtl8188gu-new/core/rtw_odm.c	2025-05-16 21:29:18.141772865 +0800
+@@ -307,7 +307,7 @@
+ 				RTW_PRINT("phys_t%u ta="MAC_FMT" %s, %s(band:%u, ch:%u, l_rxsc:%u)\n"
+ 					, *phys & 0xf
+ 					, MAC_ARG(get_ta(wlanhdr))
+-					, is_broadcast_mac_addr(get_ra(wlanhdr)) ? "BC" : is_multicast_mac_addr(get_ra(wlanhdr)) ? "MC" : "UC"
++					, is_broadcast_mac_addr(rtw_get_ra(wlanhdr)) ? "BC" : is_multicast_mac_addr(rtw_get_ra(wlanhdr)) ? "MC" : "UC"
+ 					, HDATA_RATE(attrib->data_rate)
+ 					, phys_t0->band, phys_t0->channel, phys_t0->rxsc
+ 				);
+@@ -423,7 +423,7 @@
+ 				RTW_PRINT("phys_t%u ta="MAC_FMT" %s, %s(band:%u, ch:%u, rf_mode:%u, l_rxsc:%u, ht_rxsc:%u) => %u,%u\n"
+ 					, *phys & 0xf
+ 					, MAC_ARG(get_ta(wlanhdr))
+-					, is_broadcast_mac_addr(get_ra(wlanhdr)) ? "BC" : is_multicast_mac_addr(get_ra(wlanhdr)) ? "MC" : "UC"
++					, is_broadcast_mac_addr(rtw_get_ra(wlanhdr)) ? "BC" : is_multicast_mac_addr(rtw_get_ra(wlanhdr)) ? "MC" : "UC"
+ 					, HDATA_RATE(attrib->data_rate)
+ 					, phys_t1->band, phys_t1->channel, phys_t1->rf_mode, phys_t1->l_rxsc, phys_t1->ht_rxsc
+ 					, pkt_cch, pkt_bw
+@@ -441,7 +441,7 @@
+ 				RTW_PRINT("phys_t%u ta="MAC_FMT" %s, %s(band:%u, ch:%u, l_rxsc:%u, ht_rxsc:%u)\n"
+ 					, *phys & 0xf
+ 					, MAC_ARG(get_ta(wlanhdr))
+-					, is_broadcast_mac_addr(get_ra(wlanhdr)) ? "BC" : is_multicast_mac_addr(get_ra(wlanhdr)) ? "MC" : "UC"
++					, is_broadcast_mac_addr(rtw_get_ra(wlanhdr)) ? "BC" : is_multicast_mac_addr(rtw_get_ra(wlanhdr)) ? "MC" : "UC"
+ 					, HDATA_RATE(attrib->data_rate)
+ 					, phys_t2->band, phys_t2->channel, phys_t2->l_rxsc, phys_t2->ht_rxsc
+ 				);
+diff -Nur rtl8188gu/core/rtw_recv.c rtl8188gu-new/core/rtw_recv.c
+--- rtl8188gu/core/rtw_recv.c	2023-01-12 00:45:31.000000000 +0800
++++ rtl8188gu-new/core/rtw_recv.c	2025-05-16 21:29:18.069131361 +0800
+@@ -4440,7 +4440,7 @@
+ 	wlanhdr = get_recvframe_data(precvframe);
+ 
+ 	ta = get_ta(wlanhdr);
+-	ra = get_ra(wlanhdr);
++	ra = rtw_get_ra(wlanhdr);
+ 	is_ra_bmc = IS_MCAST(ra);
+ 
+ 	if (_rtw_memcmp(adapter_mac_addr(padapter), ta, ETH_ALEN) == _TRUE) {
+@@ -4559,7 +4559,7 @@
+ {
+ 	s32 ret = _SUCCESS;
+ 	u8 *pbuf = precvframe->u.hdr.rx_data;
+-	u8 *pda = get_ra(pbuf);
++	u8 *pda = rtw_get_ra(pbuf);
+ 	u8 ra_is_bmc = IS_MCAST(pda);
+ #ifdef CONFIG_CONCURRENT_MODE
+ 	_adapter *iface = NULL;
+diff -Nur rtl8188gu/hal/hal_com.c rtl8188gu-new/hal/hal_com.c
+--- rtl8188gu/hal/hal_com.c	2023-01-12 00:45:31.000000000 +0800
++++ rtl8188gu-new/hal/hal_com.c	2025-05-16 21:29:18.642133525 +0800
+@@ -10718,7 +10718,7 @@
+ 
+ 			/*RTW_INFO("=>%s WIFI_DATA_TYPE or WIFI_QOS_DATA_TYPE\n", __FUNCTION__);*/
+ 			if (psta) {
+-				if (IS_MCAST(get_ra(get_recvframe_data(prframe))))
++				if (IS_MCAST(rtw_get_ra(get_recvframe_data(prframe))))
+ 					psta_dframe_info = &psta->sta_dframe_info_bmc;
+ 				else
+ 					psta_dframe_info = &psta->sta_dframe_info;
+diff -Nur rtl8188gu/include/wifi.h rtl8188gu-new/include/wifi.h
+--- rtl8188gu/include/wifi.h	2023-01-12 00:45:31.000000000 +0800
++++ rtl8188gu-new/include/wifi.h	2025-05-16 21:29:19.502168123 +0800
+@@ -454,7 +454,7 @@
+ 		return _FALSE;
+ }
+ 
+-__inline static unsigned char *get_ra(unsigned char *pframe)
++__inline static unsigned char *rtw_get_ra(unsigned char *pframe)
+ {
+ 	unsigned char	*ra;
+ 	ra = GetAddr1Ptr(pframe);
+diff -Nur rtl8188gu/os_dep/linux/ioctl_cfg80211.c rtl8188gu-new/os_dep/linux/ioctl_cfg80211.c
+--- rtl8188gu/os_dep/linux/ioctl_cfg80211.c	2023-01-12 00:45:31.000000000 +0800
++++ rtl8188gu-new/os_dep/linux/ioctl_cfg80211.c	2025-05-16 21:29:19.527136866 +0800
+@@ -5015,7 +5015,7 @@
+ 
+ indicate:
+ 	#if defined(RTW_DEDICATED_P2P_DEVICE)
+-	if (rtw_cfg80211_redirect_pd_wdev(dvobj_to_wiphy(dvobj), get_ra(frame), &wdev))
++	if (rtw_cfg80211_redirect_pd_wdev(dvobj_to_wiphy(dvobj), rtw_get_ra(frame), &wdev))
+ 		if (0)
+ 			RTW_INFO("redirect to pd_wdev:%p\n", wdev);
+ 	#endif

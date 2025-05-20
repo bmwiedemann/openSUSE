@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 16 13:45:32 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add rtl8188gu-rename-get_ra-to-rtw_get_ra-to-fix-ppc64le-build.patch
+  On powerpc64le, the kernel header <asm/disassemble.h> defines a function named
+  get_ra(u32), which conflicts with the driver's own static inline get_ra(). 
+  This patch renames the driver's function to rtw_get_ra() to avoid the conflict.
+
+-------------------------------------------------------------------
 Thu May 15 07:58:09 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add fix-build-on-kernel-6_14.patch, support kernel 6.14+ 

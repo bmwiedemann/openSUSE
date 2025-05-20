@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>1277602</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b5ac955eccf60d44e020ab54e5531a50</srcmd5>
+    <version>0.0.0+git20230112.c2b79fc</version>
+    <time>1747726551</time>
+    <user>anag_factory</user>
+    <comment>- Add rtl8188gu-rename-get_ra-to-rtw_get_ra-to-fix-ppc64le-build.patch
+  On powerpc64le, the kernel header &lt;asm/disassemble.h&gt; defines a function named
+  get_ra(u32), which conflicts with the driver's own static inline get_ra(). 
+  This patch renames the driver's function to rtw_get_ra() to avoid the conflict. (forwarded request 1278081 from hillwood)</comment>
+    <requestid>1278082</requestid>
+  </revision>
 </revisionlist>
