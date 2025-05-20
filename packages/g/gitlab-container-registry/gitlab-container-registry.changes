@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue May 20 04:36:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.22.0:
+  * Features
+    - add custom user agent to azure (bbcfebf)
+    - add support for setting user-agent for the GCS next storage
+      driver (fb16a14)
+    - Add support for Workload Identity to GCS storage driver.
+      (5e5dcb8)
+    - datastore: add DB load balancing replication lag tracking
+      (5fee255)
+    - handlers: add rate-limiter middleware (d4e92b3)
+    - support more S3 storage classes (1d17b6a)
+    - use JSON API in gcs next driver (678013d)
+  * Bug Fixes
+    - api: allow new tag to be created even if matching immutable
+      patterns (b6e7631)
+    - better context handling in DeleteFiles method of gcs_next,
+      refactor the function (abf5efd)
+    - bubble up error from failed sub-repository size calculation
+      (99be331)
+    - make Size() method of the gcs_next Writer correctly report
+      size of the data written so far (923f25f)
+    - proper context cancellation in gcs_next driver (6078c25)
+  * Performance Improvements
+    - avoid needlesly sorting results in Delete() call for gcs_next
+      (fc78910)
+  * Reverts
+    - remove fallback on redis cache config for dlb (c765bf4)
+  * Build
+    - build gcs driver by default (d977c9a)
+    - deps: update module cloud.google.com/go/storage to v1.52.0
+      (cc493db)
+    - deps: update module cloud.google.com/go/storage to v1.53.0
+      (240796e)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.79.3 (ddded1c)
+    - deps: update module github.com/rubenv/sql-migrate to v1.8.0
+      (d3741b7)
+    - deps: update module
+      github.com/testcontainers/testcontainers-go to v0.37.0
+      (339e80d)
+    - deps: update module
+      github.com/testcontainers/testcontainers-go/modules/postgres
+      to v0.37.0 (e2a6301)
+    - deps: update module gitlab.com/gitlab-org/labkit to v1.24.0
+      (978c6ea)
+    - deps: update module go.uber.org/mock to v0.5.2 (4021b8b)
+    - deps: update module golang.org/x/crypto to v0.38.0 (6d9f5a0)
+    - deps: update module golang.org/x/net to v0.40.0 (f2c399b)
+    - deps: update module google.golang.org/api to v0.231.0
+      (90fa3f0)
+    - deps: update module google.golang.org/api to v0.232.0
+      (789d0e1)
+
+-------------------------------------------------------------------
 Tue Apr 29 05:57:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.21.0:
