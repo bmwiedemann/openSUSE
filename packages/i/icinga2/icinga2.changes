@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 15 14:59:42 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Clean up merge-conflict markers in the changelog.
+
+-------------------------------------------------------------------
 Fri Mar 14 16:30:58 CET 2025 - ro@suse.de
 
 - fix permissions for include and script files 
@@ -1837,7 +1842,6 @@ Sat Jun 25 14:00:24 UTC 2016 - ecsos@opensuse.org
     * Bug 11779 (API): Incorrect variable names for joined fields in filters
 
 -------------------------------------------------------------------
->>>>>>> ./icinga2.changes.r55
 Wed Apr 27 17:38:08 UTC 2016 - ecsos@opensuse.org
 
 - update to upstream version 2.4.7
