@@ -1,7 +1,7 @@
 #
 # spec file for package python-catkin-pkg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define commands create_pkg find_pkg generate_changelog package_version prepare_release tag_changelog test_changelog
-%define skip_python2 1
 Name:           python-catkin-pkg
-Version:        0.4.24
+Version:        1.0.0
 Release:        0
 Summary:        Catkin package library
 License:        BSD-3-Clause
 URL:            https://wiki.ros.org/catkin_pkg
-Source:         https://github.com/ros-infrastructure/catkin_pkg/archive/%{version}.tar.gz
-# https://github.com/ros-infrastructure/catkin_pkg/commit/b5c6812b40fa31da91ee560dda7c6e470dedcfb8.diff
-Patch0:         python-catkin-pkg-no-mock.patch
+Source0:        https://github.com/ros-infrastructure/catkin_pkg/archive/%{version}.tar.gz
+Source99:       python-catkin-pkg.rpmlintrc
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docutils
 Requires:       python-pyparsing
 Requires:       python-python-dateutil
 Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module docutils}
@@ -55,10 +54,10 @@ Library for retrieving information about catkin packages.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 for c in %{commands}; do
   %python_clone -a %{buildroot}%{_bindir}/catkin_$c
 done
@@ -88,6 +87,7 @@ done
 %python_alternative %{_bindir}/catkin_prepare_release
 %python_alternative %{_bindir}/catkin_tag_changelog
 %python_alternative %{_bindir}/catkin_test_changelog
-%{python_sitelib}/*
+%{python_sitelib}/catkin_pkg
+%{python_sitelib}/catkin_pkg*-info
 
 %changelog

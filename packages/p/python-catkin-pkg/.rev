@@ -76,4 +76,41 @@
     <comment></comment>
     <requestid>960715</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>53b0a0334d1e0d3efa36e13cfc14166e</srcmd5>
+    <version>1.0.0</version>
+    <time>1747726439</time>
+    <user>anag_factory</user>
+    <comment>- Add missing rpmlintrc to the SPEC file.
+
+- Convert to pip-based build
+
+- deleted patches
+  - python-catkin-pkg-no-mock.patch (upstreamed)
+
+- update to 1.0.0:
+  * List 'ROS Infrastructure Team' as the package maintainer.
+    `#328 &lt;https://github.com/ros-
+    infrastructure/catkin_pkg/pull/328&gt;`_
+  * Drop support for Python 2. `#354 &lt;https://github.com/ros-
+    infrastructure/catkin_pkg/pull/354&gt;`_
+  * Move flake8 config to setup.cfg, address flake8 v6
+    violations. `#356 &lt;https://github.com/ros-
+    infrastructure/catkin_pkg/pull/356&gt;`_
+  * Contributors
+  * Scott K Logan
+  * Steven! Ragnarök
+  * 0.5.2 (2022-05-27)
+  * Use renamed function for getting multiple build types. `#342
+    &lt;https://github.com/ros-infrastructure/catkin_pkg/pull/342&gt;`_
+  * Resolves `#341 &lt;https://github.com/ros-
+    infrastructure/catkin_pkg/pull/341&gt;`_
+  * Contributors
+  * Steven! Ragnarök
+  * 0.5.1 (2022-05-10)
+  * Add API method for getting all build types regardless of
+    conditions. `#337 &lt;https://github.com/ros-
+    infrastructure/catkin_pkg/pull/337&gt;`_</comment>
+    <requestid>1277898</requestid>
+  </revision>
 </revisionlist>
