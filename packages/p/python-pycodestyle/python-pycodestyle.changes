@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 15 07:56:06 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.0:
+  * Improve performance.
+  * Drop EOL python 3.8.
+  * E251: fix false positive for PEP 696 defaults
+
+-------------------------------------------------------------------
 Sun Aug 18 16:49:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.12.1:
