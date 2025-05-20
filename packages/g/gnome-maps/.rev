@@ -843,4 +843,12 @@
   + Updated translations. (forwarded request 1268782 from iznogood)</comment>
     <requestid>1269670</requestid>
   </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>3fe34928bf9a8df528a809e00a13b647</srcmd5>
+    <version>48.2</version>
+    <time>1747726453</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in changelog (forwarded request 1277757 from dimstar)</comment>
+    <requestid>1277947</requestid>
+  </revision>
 </revisionlist>
