@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 16 10:21:24 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250516:
+  * Correct P15UV model alias to UV-13Pro
+  * Remove a bunch of overly verbose yaesu_clone logging
+  * Fix hardware flow flag for TH-K2,TM-271/281, etc
+  * Updated Italian Translation
+  * Updated Spanish Translation
+
+-------------------------------------------------------------------
 Fri May  9 14:06:04 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250509:
