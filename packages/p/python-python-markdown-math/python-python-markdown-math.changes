@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 20 11:15:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.9
+  * Fixed handling of begin/end inside inline math.
+    - Thanks to Tianxiang Xia for the bug report.
+  * Modernized packaging.
+  * Python ≥ 3.9 and setuptools ≥ 77.0 are now required.
+- Adjust upstream source name in spec file
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Tue Nov 12 15:08:49 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix the name of the package, it should be python-python-markdown-math

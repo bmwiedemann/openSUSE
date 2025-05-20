@@ -27,4 +27,20 @@
     <comment>- Add proper Provides/Obsoletes</comment>
     <requestid>1224236</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fcfad675fbc6a6f19e321f771ccc4e09</srcmd5>
+    <version>0.9</version>
+    <time>1747773954</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1278653 from glaubitz
+
+- Update to 0.9
+    * Fixed handling of begin/end inside inline math.
+      - Thanks to Tianxiang Xia for the bug report.
+    * Modernized packaging.
+    * Python ≥ 3.9 and setuptools ≥ 77.0 are now required.
+  - Adjust upstream source name in spec file
+  - Update BuildRequires from pyproject.toml</comment>
+    <requestid>1278840</requestid>
+  </revision>
 </revisionlist>

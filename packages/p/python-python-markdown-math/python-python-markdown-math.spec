@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-markdown-math
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,18 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-python-markdown-math
-Version:        0.8
+Version:        0.9
 Release:        0
 Summary:        Math extension for Python-Markdown
 License:        BSD-3-Clause
 Provides:       python-markdown-math = %version-%release
 Obsoletes:      python-markdown-math < %version-%release
 URL:            https://github.com/mitya57/python-markdown-math
-Source:         https://files.pythonhosted.org/packages/source/p/python-markdown-math/python-markdown-math-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python_markdown_math/python_markdown_math-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,7 +44,7 @@ Obsoletes:      python-markdown-math < %version
 This extension adds math formulas support to Python-Markdown.
 
 %prep
-%autosetup -p1 -n python-markdown-math-%{version}
+%autosetup -p1 -n python_markdown_math-%{version}
 
 %build
 %pyproject_wheel
