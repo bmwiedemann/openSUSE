@@ -1854,4 +1854,12 @@ New stable rel</comment>
   + Fix crash when opening downloaded file. (forwarded request 1272580 from iznogood)</comment>
     <requestid>1272603</requestid>
   </revision>
+  <revision rev="220" vrev="2">
+    <srcmd5>9f7947255422f0f2a398006ed4ea133c</srcmd5>
+    <version>48.3</version>
+    <time>1747726479</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in old changelog entries (forwarded request 1277763 from dimstar)</comment>
+    <requestid>1278228</requestid>
+  </revision>
 </revisionlist>
