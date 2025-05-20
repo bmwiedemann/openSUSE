@@ -1,7 +1,7 @@
 #
 # spec file for package python-cppclean
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cppclean
 Version:        0.13
 Release:        0
@@ -25,12 +24,14 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/myint/cppclean
 Source:         https://github.com/myint/cppclean/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  bash
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,10 +46,10 @@ considerable extra compiles increasing the edit-compile-run cycle.
 %setup -q -n cppclean-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/cppclean
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -65,6 +66,7 @@ considerable extra compiles increasing the edit-compile-run cycle.
 %license COPYING
 %doc README.rst
 %python_alternative %{_bindir}/cppclean
-%{python_sitelib}/*
+%{python_sitelib}/cpp
+%{python_sitelib}/cppclean-%{version}*-info
 
 %changelog
