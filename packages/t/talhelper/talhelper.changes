@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat May 17 07:07:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.25:
+  * docs: update CLI reference documentation (#1008)
+  * chore(deps): update dependency siderolabs/talos to v1.10.2
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.10.2
+  * chore(schema): update talos-extensions.yaml JSON schema (#1007)
+  * chore(container): update registry.k8s.io/kubectl docker tag to
+    v1.33.1
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(schema): update talos-extensions.yaml JSON schema (#1002)
+  * feat(genconfig): verbose warning instead when secrets file is
+    not found
+  * chore(github-action): update renovatebot/github-action action
+    to v42.0.2
+  * feat(genconfig): only append extra kernel args when not using
+    UKI image
+  * chore(schema): update talos-extensions.yaml JSON schema (#997)
+  * chore(schema): update talos-extensions.yaml JSON schema (#996)
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.24
+  * feat: update Scoop for talhelper version v3.0.24
+  * feat: update flake (#992)
+
+-------------------------------------------------------------------
 Thu May 08 08:22:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.24:
