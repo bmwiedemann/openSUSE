@@ -1635,4 +1635,12 @@ work. (forwarded request 640069 from iznogood)</comment>
 - Rebase patches with quilt. (forwarded request 1271073 from iznogood)</comment>
     <requestid>1271340</requestid>
   </revision>
+  <revision rev="203" vrev="2">
+    <srcmd5>69a4734b4758ea8fa16073af582c6786</srcmd5>
+    <version>48.1</version>
+    <time>1747726521</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in old changelog entries (forwarded request 1277777 from dimstar)</comment>
+    <requestid>1278237</requestid>
+  </revision>
 </revisionlist>
