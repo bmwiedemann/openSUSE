@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 16 12:39:20 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 10.2.3
+  * Restore logic on when to open an address specific socket
+  * [Fix] DHCP Failure on WAN Interface Rename (Fixes #504)
+  * BSD: routes via P2P interfaces now find their out-going
+    interface
+  * -b --background fixed
+  * resolv: Fix processing more DNSSL options than RDNSS]
+  * dhcpcd: Remove option rapid_commit from dhcpcd.conf
+  * privsep: Fix valgrind and hardened-malloc on Linux with SECCOMP
+  * route: Don't spam route changes for lifetime
+
+-------------------------------------------------------------------
 Wed Feb 26 13:56:29 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 10.2.2
