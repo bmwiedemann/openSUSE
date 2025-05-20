@@ -1450,6 +1450,7 @@ unsorted:
   - bladeRF 
   - bladeRF-devel 
   - bladeRF-udev 
+  - blake3-devel 
   - blame 
   - blanket 
   - blanket-lang 
@@ -3199,7 +3200,6 @@ unsorted:
   - dhcp-devel 
   - dhcp-doc 
   - dhcp-keama 
-  - dhcpcd 
   - dhcpd-pools 
   - dhewm3 
   - dhex 
@@ -4598,6 +4598,7 @@ unsorted:
   - gamemode 
   - gamemoded 
   - gamescope 
+  - gamescope-plus 
   - gammaray 
   - gammaray-devel 
   - gammaray-qt6 
@@ -10476,6 +10477,7 @@ unsorted:
   - ktls-utils 
   - ktnef-devel 
   - ktoblzcheck 
+  - ktoblzcheck-data 
   - ktoblzcheck-devel 
   - ktop 
   - ktorrent 
@@ -12054,7 +12056,6 @@ unsorted:
   - libbladeRF2 
   - libbladeRF2-doc 
   - libblake3-0 
-  - libblake3-devel 
   - libblas3-32bit 
   - libblaspp1 
   - libblastrampoline-devel 
@@ -13210,10 +13211,10 @@ unsorted:
   - libgaminggear0 
   - libgaminggearfx0 
   - libgaminggearwidget0 
-  - libgammaray-3_1_0 
-  - libgammaray-qt6-3_1_0 
-  - libgammaray-shared-3_1_0 
-  - libgammaray-shared-qt6-3_1_0 
+  - libgammaray-3_2_0 
+  - libgammaray-qt6-3_2_0 
+  - libgammaray-shared-3_2_0 
+  - libgammaray-shared-qt6-3_2_0 
   - libgap9 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
@@ -13330,7 +13331,7 @@ unsorted:
   - libgig-devel 
   - libgig-tools 
   - libgig11 
-  - libginac11 
+  - libginac13 
   - libgio-2_0-0-32bit 
   - libgiomm-2_4-1-32bit 
   - libgirara-gtk3-4 
@@ -14197,7 +14198,6 @@ unsorted:
   - liblittleb0 
   - liblkl0 
   - libllama 
-  - libllava 
   - liblldb15 
   - liblldb18 
   - liblldb19 
@@ -25217,7 +25217,6 @@ unsorted:
   - python311-gwosc 
   - python311-gwpy 
   - python311-gwyfile 
-  - python311-gyp 
   - python311-h5netcdf 
   - python311-h5py 
   - python311-h5py-openmpi4 
@@ -26417,6 +26416,7 @@ unsorted:
   - python311-pytest-mpi 
   - python311-pytest-mpl 
   - python311-pytest-mypy 
+  - python311-pytest-mypy-plugins 
   - python311-pytest-mypy-testing 
   - python311-pytest-openfiles 
   - python311-pytest-order 
@@ -28930,7 +28930,6 @@ unsorted:
   - python312-gwosc 
   - python312-gwpy 
   - python312-gwyfile 
-  - python312-gyp 
   - python312-h11 
   - python312-h2 
   - python312-h5netcdf 
@@ -30163,6 +30162,7 @@ unsorted:
   - python312-pytest-mpi 
   - python312-pytest-mpl 
   - python312-pytest-mypy 
+  - python312-pytest-mypy-plugins 
   - python312-pytest-mypy-testing 
   - python312-pytest-openfiles 
   - python312-pytest-order 
@@ -32656,7 +32656,6 @@ unsorted:
   - python313-gwosc 
   - python313-gwpy 
   - python313-gwyfile 
-  - python313-gyp 
   - python313-h11 
   - python313-h5netcdf 
   - python313-h5py 
@@ -33227,6 +33226,7 @@ unsorted:
   - python313-netCDF4 
   - python313-netaddr 
   - python313-nethsm 
+  - python313-netifaces 
   - python313-netmiko 
   - python313-netpbmfile 
   - python313-netutils 
@@ -33853,6 +33853,7 @@ unsorted:
   - python313-pytest-mpi 
   - python313-pytest-mpl 
   - python313-pytest-mypy 
+  - python313-pytest-mypy-plugins 
   - python313-pytest-mypy-testing 
   - python313-pytest-openfiles 
   - python313-pytest-order 
@@ -48698,6 +48699,7 @@ unsorted:
   - wlr-sunclock 
   - wlrctl 
   - wlroots-0_17-devel 
+  - wlroots-0_18-devel 
   - wlroots-devel 
   - wlsunset 
   - wm-icons 
@@ -49276,7 +49278,6 @@ unsorted:
   - yast2-iplb 
   - yast2-iscsi-lio-server 
   - yast2-multipath 
-  - yast2-online-update-configuration 
   - yast2-rdp 
   - yast2-rear 
   - yast2-registration 
