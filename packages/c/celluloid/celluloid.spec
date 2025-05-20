@@ -18,7 +18,7 @@
 
 %define _name   io.github.celluloid_player.Celluloid
 Name:           celluloid
-Version:        0.28
+Version:        0.29
 Release:        0
 Summary:        Simple GTK+ frontend for MPV
 License:        GPL-3.0-or-later
@@ -28,7 +28,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool >= 0.40.6
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.44

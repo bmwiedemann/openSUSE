@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 18 05:52:08 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.29
+  * Fix an issue that can cause flickering or black screens with
+    Nvidia GPU.
+  * Fix preferences dialog not saving configuration files.
+  * Fix controls not re-appearing after being hidden.
+  * Fix main menu popover not appearing at the right location
+    when toggled with keyboard shortcut.
+  * Make displaying file durations in the playlist optional.
+  * Fix controls being off-center in some configurations.
+
+-------------------------------------------------------------------
 Fri Apr  4 05:42:13 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.28
