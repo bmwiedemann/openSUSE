@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.settings.system
 Name:           switchboard-plug-about
-Version:        8.2.0
+Version:        8.2.1
 Release:        0
 Summary:        Switchboard plug to show system information
 License:        GPL-3.0-or-later

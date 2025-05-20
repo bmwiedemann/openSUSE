@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  8 16:46:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.2.1:
+  * Plug: add about this device search result
+  * OperatingSystemView.vala: use of in download progress string
+  * OperatingSystemView: more explicit restart directions
+  * README: Fix broken Weblate badge
+  * Metainfo: add restart message to issues
+  * Updated translations
+
+-------------------------------------------------------------------
 Fri Feb 14 19:59:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.2.0:
