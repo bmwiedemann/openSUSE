@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 20 10:34:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.36.1:
+  * Bug Fixes
+    - fix(host-cleanup): improve host cleanup consistency
+    - fix(host-cleanup): start auto host cleanup when no certain
+      project
+
+-------------------------------------------------------------------
 Fri May 16 10:16:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.36.0:
