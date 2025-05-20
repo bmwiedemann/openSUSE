@@ -2361,4 +2361,12 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1275305 from iznogood)</comment>
     <requestid>1275537</requestid>
   </revision>
+  <revision rev="267" vrev="2">
+    <srcmd5>3658574c29ac6b094ef7ca44c5022466</srcmd5>
+    <version>48.1+15</version>
+    <time>1747726499</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in old changelog entries (forwarded request 1277774 from dimstar)</comment>
+    <requestid>1278235</requestid>
+  </revision>
 </revisionlist>
