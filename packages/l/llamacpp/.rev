@@ -67,4 +67,24 @@
   upstream</comment>
     <requestid>1276203</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>56e5d3b4cce4f37d47e2fbd4be21ce3c</srcmd5>
+    <version>5426</version>
+    <time>1747736392</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5426:
+  * print hint when loading a model when no backends are loaded
+  * vulkan: use scalar FA rather than coopmat2 when N==1
+  * mtmd : add vision support for llama 4
+  * Full changelog:
+    https://github.com/ggml-org/llama.cpp/compare/b5402...b5426
+- Update to 5402
+  * removed llava subpackage (#13460)
+  * Full changelog:
+    https://github.com/ggml-org/llama.cpp/compare/b5158...b5321
+- Update to version 5332:
+  * server : vision support via libmtmd
+</comment>
+    <requestid>1278459</requestid>
+  </revision>
 </revisionlist>

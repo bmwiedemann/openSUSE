@@ -17,7 +17,7 @@
 
 
 Name:           llamacpp
-Version:        5321
+Version:        5426
 Release:        0
 Summary:        llama-cli tool to run inference using the llama.cpp library
 License:        MIT
@@ -160,8 +160,6 @@ Library to handle multimodal inputs for llama.cpp.
 %install
 %cmake_install
 
-# used for shader compilation only
-rm %{buildroot}%{_bindir}/vulkan-shaders-gen
 # dev scripts
 rm %{buildroot}%{_bindir}/convert_hf_to_gguf.py
 
@@ -209,9 +207,5 @@ rm %{buildroot}%{_bindir}/convert_hf_to_gguf.py
 %files -n libmtmd
 %license LICENSE
 %{_libdir}/libmtmd_shared.so
-
-%files -n libllava
-%license LICENSE
-%{_libdir}/libllava_shared.so
 
 %changelog
