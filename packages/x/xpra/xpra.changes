@@ -1,4 +1,141 @@
 -------------------------------------------------------------------
+Tue May 13 15:34:18 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250513.41385706:
+  * let the events propagate to the other handlers
+  * debug logging for event masks
+  * #4523 move system initialization to setup()
+  * monitor mode does work in 8-bit palette mode
+  * simplify: always use the lowest free wid
+  * monitor mode can setup many event receivers
+  * move apply_monitor_config to a function and catch errors there
+  * unit tests should mirror real defaults
+  * configuring monitors must be done from the UI thread
+  * #4523 unbreak monitor server
+  * #4579 don't use mmap for sending RLE8 images
+  * cosmetic
+  * #4523 unbreak desktop servers
+  * #3735 merge all X11 backends command line options together
+  * #3735 only enable '-fakescreenfps' on recent enough distros
+  * disable dwm match_window_color by default
+  * don't load any X11 bits for non-X11 servers
+  * we now inherit from GLibServer via ServerCore
+
+-------------------------------------------------------------------
+Mon May 12 15:01:35 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250512.aa2fcc92:
+  * #4483 handle delayed frames without erroring out
+  * #4483 disentangle client options and channel options
+  * #4577 support multiple remote uris
+  * #4483 sharing should be enabled by default
+  * the glib server superclasss takes care of do_run()
+  * include debug logging
+  * filter codecs using name stripped of options
+  * #4523 try to move display initialization to display manager
+  * keyboard cleanup can fail, ignore it
+  * move load check to a function
+  * don't log a message when NOWARN encoders are missing
+  * delay some more imports
+  * #4523 try to disentangle Gtk / X11 initialization
+  * simplify 'stub' module naming, more consistent
+  * ensure all X11 servers have a 'display'
+  * #4523 move mdns to a subsystem
+  * oops: missed from 109ec1c3e35ccbbdf351c7749a6adc06866443a5
+  * simplify X11 checks
+  * fixup c582aff81f376ae2a57df10a145219888b61e278: don't test X11 bits
+  * match refactoring: stubs has uid + gid, other things have moved
+  * clearer method names
+  * #4523 tidy up server initialization code
+  * cython files should never be added
+  * #4523 move dbus init to subsystem
+  * #4523 start moving splash to subsystem
+  * move exec_cwd to command subsystem
+  * skip unused imports in non-backwards compatible mode
+  * #4523 move local socket initialization to server core
+  * ensure all env vars are strings
+  * #4523 move ssh-agent initialization to module
+  * #4575 build the runner service
+  * #4575 stub runner service
+  * move x11 bits to a function
+  * handle missing 'debug' control command arguments more gracefully
+  * handle aliases used in Logger constructor, add 'glib' alias
+  * stronger types + better debug logging
+  * #4523 move display pid and kill_display() to display module
+  * #4575 move glib server methods to a module
+  * cython 3.1.0
+
+-------------------------------------------------------------------
+Thu May 08 14:12:39 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250508.35f2cc28:
+  * minor type hint fixes
+  * potential undefined var error
+  * must be a list so we can append to it
+  * reinit was broken: match new make window simplified arguments
+  * cleaner syntax
+  * stronger and correct type hints
+  * add docstrings
+  * no need to override default methods
+
+-------------------------------------------------------------------
+Wed May 07 19:01:41 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250507.e4f4ff91:
+  * missed from 48b2253dd5a760a215b83501c5806ae06f0bd197
+  * split socket authentication code to a module
+  * #4523 move power events to a module
+  * move dotxpra to where it is needed
+  * forgot to add uinput module in a0bcc2c480a817a25ec3cb49c04a8cd5ab5c7346
+  * make background worker reusable
+
+-------------------------------------------------------------------
+Wed May 07 16:14:54 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250507.a0bcc2c4:
+  * move daemon and uinput bits to reusable modules
+  * cython 3.1.0rc2
+  * match refactored paths
+  * #4496 initenv and run-xpra should be removed
+  * move functions to util/env
+  * split pid functions
+
+-------------------------------------------------------------------
+Tue May 06 20:38:32 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250506.111e1c78:
+  * only resume audio if it was suspended
+  * also convert to ints as early as possible
+  * remove now unused 'proxy-video-encoders' option
+  * use correct type for pathexpand function
+  * buggy operand priority: Xephyr would fail without geometry
+  * #3735 enable '-fakescreenfps'
+  * type hint fixes
+  * read-only $HOME should not be fatal
+  * show error if display is not accessible
+  * stronger types
+
+-------------------------------------------------------------------
+Mon May 05 16:16:17 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250505.60cc7467:
+  * stronger types for socket-dirs
+  * #4573 fixup modified is_writable check changed in b42d0b42dd5453b9468b6f2445f3a1105b9b8ef5
+
+-------------------------------------------------------------------
+Mon May 05 15:47:14 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250505.927a5502:
+  * explicitly empty package
+  * #4573 the device id can be negative, which means unspecified
+  * someone made a mess, IDE?
+  * can't use home if it's readonly
+  * back off a little bit, no need to spin so hard
+  * #4574 create parent directories if needed, handle failures more gracefully
+  * command should always be a sequence of strings
+  * rename singleton factory methods + stronger type hints
+
+-------------------------------------------------------------------
 Sun May 04 18:35:36 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 6.4.0+git20250504.7a6f181e:

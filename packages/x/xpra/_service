@@ -1,4 +1,7 @@
 <services>
+  <!--
+  <service name="download_files" mode="manual" />
+  -->
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/Xpra-org/xpra</param>
     <param name="scm">git</param>

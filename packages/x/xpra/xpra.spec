@@ -30,13 +30,15 @@
 
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.4.0+git20250504.7a6f181e
+Version:        6.4.0+git20250513.41385706
+#Version:        6.3
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
 Group:          System/X11/Utilities
 URL:            https://www.xpra.org/
 Source0:        %{name}-%{version}.tar.gz
+#Source0:        https://github.com/Xpra-org/xpra/archive/refs/tags/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
 Source1:        xpra-icon.png
 Source100:      xpra-rpmlintrc
 BuildRequires:  ImageMagick
@@ -147,6 +149,7 @@ network bandwidth constraints.
 %prep
 
 %setup -q
+
 find -name '*.py' \
   -exec sed -i '1{\@^#!/usr/bin/env python@d}' {} +
 find \( -name xpraforwarder \

@@ -11,5 +11,5 @@ addFilter("python-leftover-require .*-pycups");
 addFilter("python-leftover-require .*-rencode");
 
 ### 20250410: This is needed when building locally, but not in OBS
-#addFilter("python-bytecode-inconsistent-mtime *");
+addFilter("python-bytecode-inconsistent-mtime *");
 #####
