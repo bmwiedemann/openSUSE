@@ -2292,13 +2292,13 @@ Tue Nov  4 12:21:24 CET 2008 - ro@suse.de
 - no nvtv on ia64 either, add to ifarch lists 
 
 -------------------------------------------------------------------
-Fri Oct 10 08:14:19 WST 2008 - mboman@suse.de
+Fri Oct 10 08:14:19 EST 2008 - mboman@suse.de
 
 - Update to version 2.24.2:
   + Make the YouTube plugin faster by fixing some locking problems
 
 -------------------------------------------------------------------
-Fri Oct  3 08:14:19 WST 2008 - mboman@suse.de
+Fri Oct  3 08:14:19 EST 2008 - mboman@suse.de
 
 - Update to version 2.24.1:
   + Fix typo in the browser plugin documentation
