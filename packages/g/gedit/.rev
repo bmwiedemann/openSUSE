@@ -1270,4 +1270,12 @@ Pushing GNOME 45.rc packages</comment>
   longer needed, nor used. (forwarded request 1270242 from iznogood)</comment>
     <requestid>1270279</requestid>
   </revision>
+  <revision rev="161" vrev="2">
+    <srcmd5>11f0a7fd488ec2a96508516605cce064</srcmd5>
+    <version>48.2</version>
+    <time>1747726468</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in old changelog entries (forwarded request 1277808 from dimstar)</comment>
+    <requestid>1277957</requestid>
+  </revision>
 </revisionlist>
