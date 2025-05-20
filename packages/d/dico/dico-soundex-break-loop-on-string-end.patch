@@ -1,0 +1,27 @@
+From d71b9986a697c5e7024e84b7f71365996be839ed Mon Sep 17 00:00:00 2001
+From: Sergey Poznyakoff <gray@gnu.org>
+Date: Tue, 8 Apr 2025 23:08:04 +0300
+Subject: Bugfix
+
+* lib/soundex.c (dico_soundex): Break the loop on hitting end
+of string.
+---
+ lib/soundex.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/lib/soundex.c b/lib/soundex.c
+index f9eb464..c543480 100644
+--- a/lib/soundex.c
++++ b/lib/soundex.c
+@@ -100,6 +100,8 @@ dico_soundex(const char *text, char codestr[DICO_SOUNDEX_SIZE])
+ 	return -1;
+     s = input;
+     do {
++	if (*s == 0)
++	    break;
+ 	codestr[0] = utf8_wc_toupper(*s++);
+     } while (codestr[0] > 127 || (prev = soundex_code(codestr[0])) == 0);
+     for (i = 1; i < DICO_SOUNDEX_SIZE-1 && *s; s++) {
+-- 
+cgit v1.2.3
+

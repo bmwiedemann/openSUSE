@@ -1,7 +1,7 @@
 #
 # spec file for package dico
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,6 +31,10 @@ Source0:        https://ftp.gnu.org/gnu/dico/dico-%{version}.tar.xz
 # Source1:        https://ftp.gnu.org/gnu/dico/dico-%%{version}.tar.xz.sig
 # https://www.gnu.org.ua/software/dico/download.html
 # Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=311#/%%{name}.keyring
+# PATCH-FIX-UPSTREAM dico-python-int-conversion.patch badshah400@gmail.com -- Fix int conversion issues causing build failures [https://puszcza.gnu.org.ua/bugs/?646]
+Patch0:         dico-python-int-conversion.patch
+# PATCH-FIX-UPSTREAM https://git.gnu.org.ua/dico.git/commit/?id=d71b9986a697c5e7024e84b7f71365996be839ed
+Patch1:         https://git.gnu.org.ua/dico.git/patch/?id=d71b9986a697c5e7024e84b7f71365996be839ed#/dico-soundex-break-loop-on-string-end.patch
 BuildRequires:  groff
 BuildRequires:  guile-devel
 BuildRequires:  libtool

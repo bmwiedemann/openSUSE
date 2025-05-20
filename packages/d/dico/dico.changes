@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  6 09:49:54 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add dico-python-int-conversion.patch: Fix int conversion issues
+  causing build failures [https://puszcza.gnu.org.ua/bugs/?646].
+- Add dico-soundex-break-loop-on-string-end.patch: Break the loop
+  on hitting end of string.
+
+-------------------------------------------------------------------
 Wed Jan  1 21:56:30 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2.12

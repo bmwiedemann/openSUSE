@@ -1,0 +1,25 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: fix building with -Werror=int-conversion
+
+Index: dico/modules/python/python.c
+===================================================================
+--- dico.orig/modules/python/python.c	2025-01-02 14:47:45.419666326 +0100
++++ dico/modules/python/python.c	2025-01-02 14:47:45.419666326 +0100
+@@ -100,7 +100,7 @@
+ }
+ 
+ static PyTypeObject PySelectionKeyType = {
+-    PyObject_HEAD_INIT(&PyType_Type)
++    PyVarObject_HEAD_INIT(&PyType_Type, 0)
+     .tp_name = "DicoSelectionKey",
+     .tp_basicsize = sizeof (PySelectionKey),
+     .tp_dealloc = _PySelectionKey_dealloc,
+@@ -185,7 +185,7 @@
+ }
+ 
+ static PyTypeObject PyStrategyType = {
+-    PyObject_HEAD_INIT(&PyType_Type)
++    PyVarObject_HEAD_INIT(&PyType_Type, 0)
+     .tp_name = "DicoStrategy",
+     .tp_basicsize = sizeof (PyStrategy),
+     .tp_dealloc = _PyStrategy_dealloc,
