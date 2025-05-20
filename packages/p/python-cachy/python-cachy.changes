@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 15 12:47:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed Nov 29 12:32:31 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add upstream patch flexmock-0.11.patch to make tests work with

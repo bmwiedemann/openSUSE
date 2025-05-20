@@ -1,7 +1,7 @@
 #
 # spec file for package python-cachy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,11 +30,13 @@ Patch1:         flexmock-0.11.patch
 BuildRequires:  %{python_module fakeredis >= 0.10.2}
 BuildRequires:  %{python_module flexmock >= 0.10.2}
 BuildRequires:  %{python_module msgpack-python >= 0.5}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pymemcache >= 4.0}
 BuildRequires:  %{python_module pytest >= 3.5}
 BuildRequires:  %{python_module pytest-mock >= 1.9}
 BuildRequires:  %{python_module redis >= 2.10}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-msgpack-python >= 0.5
@@ -50,10 +52,10 @@ Cachy provides a caching library.
 %autosetup -p1 -n cachy-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %fdupes %{buildroot}%{$python_sitelib}
 }
