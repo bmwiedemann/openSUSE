@@ -203,7 +203,7 @@ Wed Dec 31 07:05:51 EST 2008 - mboman@suse.de
   + Added "animation-finished" signals to GooCanvasItem & Model.
 
 -------------------------------------------------------------------
-Fri Oct  3 11:28:10 WST 2008 - mboman@suse.de
+Fri Oct  3 11:28:10 EST 2008 - mboman@suse.de
 
 - Update to version 0.12:
   + Fixed redraws of tables after updates.
