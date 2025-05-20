@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 15 04:55:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.36.0:
+  * 1.36.0 Release (#2013)
+  * Add test cases for loading .env file
+  * fix: error directory path in tests.sh
+  * fix: resolve env_file variable interpolation issues by adding
+    support for  and default syntax
+  * fix: Load variables from .env file by default
+  * Fix ConfigMap name clash if env_file name is equal (#2001)
+  * update typo in kompose.volume.subpath
+  * Improve command to run in docker
+  * Fix case of FromAs
+  * Replaced y with ✓ (#1975)
+  * chore: improving the description for the no-interpolate
+    argument
+  * feat(no-interpolate): add no-interpolate feature option to the
+    cli
+
+-------------------------------------------------------------------
 Thu Dec 12 14:49:21 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - refactor spec
