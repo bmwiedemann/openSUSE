@@ -1,7 +1,7 @@
 #
 # spec file for package gnustep-libobjc2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,6 +77,9 @@ mkdir third_party/robin-map/include
 ln -s %{_includedir}/tsl third_party/robin-map/include/tsl
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 # clang does not support lto yet
 %if 0%{?suse_version} > 1500
 %define _lto_cflags %{nil}

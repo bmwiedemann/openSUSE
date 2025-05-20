@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  7 05:23:41 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
+
+-------------------------------------------------------------------
 Sat Jun 25 14:34:17 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Add gnustep-libobjc2-2.1-fix-trampoline-flags.patch
