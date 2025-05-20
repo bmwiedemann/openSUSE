@@ -505,4 +505,12 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1149861 from dimstar)</comment>
     <requestid>1149924</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a7d807058e3d4d3c1c1ecca95c6c94af</srcmd5>
+    <version>0.8.1.1</version>
+    <time>1747726494</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1278010</requestid>
+  </revision>
 </revisionlist>

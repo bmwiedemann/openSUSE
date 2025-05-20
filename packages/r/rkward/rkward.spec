@@ -1,7 +1,7 @@
 #
 # spec file for package rkward
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,64 +16,49 @@
 #
 
 
-# Leap before 15.2 doesn't have a new enough QtWebEngine (5.12 is the minimum version)
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
-# QtWebEngine is not available on ppc
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
-%bcond_without qtwebengine
-%else
-%bcond_with qtwebengine
-%endif
-%else
-%bcond_with qtwebengine
-%endif
 Name:           rkward
-Version:        0.7.5
+Version:        0.8.1.1
 Release:        0
 Summary:        Graphical frontend for R language
 Summary(fr):    Interface graphique pour le langage R
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Math
 URL:            https://rkward.kde.org/
-Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.gz
-Patch0:         Fix_handling_carriage_returns.patch
-Patch1:         Fix_Syntax_Pipe.patch
+Source0:        https://files.kde.org/rkward/testing/for_packaging/rkward-%{version}.tar.gz
 BuildRequires:  R-base-devel
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-fortran
 BuildRequires:  gettext
-BuildRequires:  karchive-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  knotifications-devel
-BuildRequires:  kparts-devel
-BuildRequires:  ktexteditor-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kwindowsystem-devel
-BuildRequires:  kxmlgui-devel
+BuildRequires:  kf6-filesystem
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Script)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
-%if %{with qtwebengine}
-BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.12.0
-%else
-BuildRequires:  kdewebkit-devel
-BuildRequires:  cmake(Qt5WebKitWidgets)
-%endif
+BuildRequires:  cmake(KF6Archive)
+BuildRequires:  cmake(KF6BreezeIcons)
+BuildRequires:  cmake(KF6Config)
+BuildRequires:  cmake(KF6CoreAddons)
+BuildRequires:  cmake(KF6Crash)
+BuildRequires:  cmake(KF6DocTools)
+BuildRequires:  cmake(KF6I18n)
+BuildRequires:  cmake(KF6Notifications)
+BuildRequires:  cmake(KF6Parts)
+BuildRequires:  cmake(KF6TextEditor)
+BuildRequires:  cmake(KF6WidgetsAddons)
+BuildRequires:  cmake(KF6WindowSystem)
+BuildRequires:  cmake(KF6XmlGui)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6WebEngineWidgets)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
 Recommends:     kate-plugins
 Suggests:       kbibtex
 Suggests:       pandoc
 # rkward needs the R-base version it was compiled with - boo#993268
 %requires_eq    R-base
+Conflicts:      rkward
 
 %description
 RKWard aims to provide an easily extensible, easy to use IDE/GUI for the
@@ -88,89 +73,370 @@ combiner la puissance du langage R et la (relative) simplicité d'utilisation
 des outils statistiques commerciaux. L'objectif à long terme est de voir son
 intégration dans les suites bureautiques.
 
+%lang_package
+
 %prep
-%autosetup -p1
+%autosetup -p1 -n rkward-%{version}
 
 %build
-%cmake_kf5 -d build
-%make_jobs
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
+%cmake_kf6
+%{kf6_build}
 
 %install
-%make_install -C build
+%{kf6_install}
 
 %suse_update_desktop_file -n org.kde.rkward
 
-%find_lang %{name}
+%find_lang rkward %{?no_lang_C}
 
-%files -f %{name}.lang
+%check
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
+%ctest
+
+%files -f rkward.lang
 %doc README TODO AUTHORS
-%doc %{_kf5_mandir}/man1/rkward.1.gz
-%dir %{_kf5_sharedir}/doc/HTML/en/rkwardplugins
-%doc %{_kf5_sharedir}/doc/HTML/en/rkwardplugins/index.cache.bz2
-%doc %{_kf5_sharedir}/doc/HTML/en/rkwardplugins/index.docbook
-%doc %{_kf5_sharedir}/doc/HTML/en/rkwardplugins/menu_hierarchy_example.png
-%doc %{_kf5_sharedir}/doc/HTML/en/rkwardplugins/t_test_plugin_example.png
-%license COPYING
-%{_kf5_applicationsdir}/org.kde.rkward.desktop
-%{_kf5_appstreamdir}/org.kde.rkward.appdata.xml
-%{_kf5_sharedir}/icons/hicolor/16x16/apps/rkward.png
-%{_kf5_sharedir}/icons/hicolor/22x22/apps/rkward.png
-%{_kf5_sharedir}/icons/hicolor/32x32/apps/rkward.png
-%{_kf5_sharedir}/icons/hicolor/48x48/apps/rkward.png
-%{_kf5_sharedir}/icons/hicolor/64x64/apps/rkward.png
-%{_kf5_sharedir}/icons/hicolor/128x128/apps/rkward.png
-%{_kf5_sharedir}/icons/hicolor/scalable/apps/rkward.svgz
-%{_kf5_sharedir}/ktexteditor_snippets/
-%{_kf5_bindir}/rkward*
-%if %{pkg_vcmp kf5-filesystem >= 20220307}
+%doc %{_kf6_mandir}/man1/rkward.1.gz
+%dir %{_kf6_sharedir}/doc/HTML/en/rkwardplugins
+%doc %{_kf6_sharedir}/doc/HTML/en/rkwardplugins/index.cache.bz2
+%doc %{_kf6_sharedir}/doc/HTML/en/rkwardplugins/index.docbook
+%doc %{_kf6_sharedir}/doc/HTML/en/rkwardplugins/menu_hierarchy_example.png
+%doc %{_kf6_sharedir}/doc/HTML/en/rkwardplugins/t_test_plugin_example.png
+%doc %{_kf6_sharedir}/doc/HTML/ca/rkward/index.cache.bz2
+%doc %{_kf6_sharedir}/doc/HTML/ca/rkward/index.docbook
+%doc %{_kf6_sharedir}/doc/HTML/ca/rkwardplugins/index.cache.bz2
+%doc %{_kf6_sharedir}/doc/HTML/ca/rkwardplugins/index.docbook
+%doc %{_kf6_sharedir}/doc/HTML/en/rkward/index.cache.bz2
+%doc %{_kf6_sharedir}/doc/HTML/en/rkward/index.docbook
+%doc %{_kf6_sharedir}/doc/HTML/it/rkward/index.cache.bz2
+%doc %{_kf6_sharedir}/doc/HTML/it/rkward/index.docbook
+%doc %{_kf6_sharedir}/doc/HTML/nl/rkward/index.cache.bz2
+%doc %{_kf6_sharedir}/doc/HTML/nl/rkward/index.docbook
+%doc %{_kf6_sharedir}/doc/HTML/nl/rkwardplugins/index.cache.bz2
+%doc %{_kf6_sharedir}/doc/HTML/nl/rkwardplugins/index.docbook
+%doc %{_kf6_sharedir}/doc/HTML/sl/rkward/index.cache.bz2
+%doc %{_kf6_sharedir}/doc/HTML/sl/rkward/index.docbook
+%doc %{_kf6_sharedir}/doc/HTML/sl/rkwardplugins/index.cache.bz2
+%doc %{_kf6_sharedir}/doc/HTML/sl/rkwardplugins/index.docbook
+%doc %{_kf6_sharedir}/doc/HTML/sv/rkward/index.cache.bz2
+%doc %{_kf6_sharedir}/doc/HTML/sv/rkward/index.docbook
+%doc %{_kf6_sharedir}/doc/HTML/sv/rkwardplugins/index.cache.bz2
+%doc %{_kf6_sharedir}/doc/HTML/sv/rkwardplugins/index.docbook
+%doc %{_kf6_sharedir}/doc/HTML/uk/rkward/index.cache.bz2
+%doc %{_kf6_sharedir}/doc/HTML/uk/rkward/index.docbook
+%doc %{_kf6_sharedir}/doc/HTML/uk/rkwardplugins/index.cache.bz2
+%doc %{_kf6_sharedir}/doc/HTML/uk/rkwardplugins/index.docbook
+%license LICENSES/*
+%{_kf6_applicationsdir}/org.kde.rkward.desktop
+%{_datadir}/metainfo/org.kde.rkward.metainfo.xml
+%{_kf6_sharedir}/icons/hicolor/16x16/apps/rkward.png
+%{_kf6_sharedir}/icons/hicolor/22x22/apps/rkward.png
+%{_kf6_sharedir}/icons/hicolor/32x32/apps/rkward.png
+%{_kf6_sharedir}/icons/hicolor/48x48/apps/rkward.png
+%{_kf6_sharedir}/icons/hicolor/64x64/apps/rkward.png
+%{_kf6_sharedir}/icons/hicolor/128x128/apps/rkward.png
+%{_kf6_sharedir}/icons/hicolor/scalable/apps/rkward.svgz
+%{_kf6_sharedir}/ktexteditor_snippets/
+%{_kf6_bindir}/rkward*
+%if %{pkg_vcmp kf6-filesystem >= 20220307}
 %{_libexecdir}/rkward.rbackend
 %else
-%{_kf5_libdir}/libexec/
+%{_kf6_libdir}/libexec/
 %endif
-%{_kf5_sharedir}/rkward/
-%{_kf5_servicesdir}/rkward.protocol
-%if 0%{?suse_version} > 1320 || (0%{?suse_version} == 1315 && 0%{?sle_version} >= 120300)
-# we have the syntax-highlighting framework since Leap 42.3
-%dir %{_kf5_sharedir}/org.kde.syntax-highlighting
-%dir %{_kf5_sharedir}/org.kde.syntax-highlighting/syntax
-%{_kf5_sharedir}/org.kde.syntax-highlighting/syntax/rkward.xml
-%else
-%dir %{_kf5_sharedir}/katepart5
-%dir %{_kf5_sharedir}/katepart5/syntax
-%{_kf5_sharedir}/katepart5/syntax/rkward.xml
-%endif
-%{_kf5_sharedir}/mime/packages/vnd.kde.rkward-output.xml
-%{_kf5_sharedir}/mime/packages/vnd.kde.rmarkdown.xml
-%{_kf5_sharedir}/mime/packages/vnd.rkward.r.xml
-
-# language files
-
-%dir %{_kf5_sharedir}/rkward/po/
-%lang(ca) %{_kf5_sharedir}/rkward/po/ca/
-%lang(es) %{_kf5_sharedir}/rkward/po/es/
-%lang(gl) %{_kf5_sharedir}/rkward/po/gl/
-%lang(nl) %{_kf5_sharedir}/rkward/po/nl/
-%lang(pl) %{_kf5_sharedir}/rkward/po/pl/
-%lang(pt) %{_kf5_sharedir}/rkward/po/pt/
-%lang(pt_BR) %{_kf5_sharedir}/rkward/po/pt_BR/
-%lang(sv) %{_kf5_sharedir}/rkward/po/sv/
-%lang(uk) %{_kf5_sharedir}/rkward/po/uk/
-
-%doc %lang(en) %{_kf5_sharedir}/doc/HTML/en/rkward/
-%doc %lang(it) %{_kf5_sharedir}/doc/HTML/it/rkward/
-%doc %lang(nl) %{_kf5_sharedir}/doc/HTML/nl/rkward/
-%doc %lang(sv) %{_kf5_sharedir}/doc/HTML/sv/rkward/
-%doc %lang(uk) %{_kf5_sharedir}/doc/HTML/uk/rkward/
-
-%doc %lang(nl) %{_kf5_sharedir}/doc/HTML/nl/rkwardplugins/
-%doc %lang(sv) %{_kf5_sharedir}/doc/HTML/sv/rkwardplugins/
-%doc %lang(uk) %{_kf5_sharedir}/doc/HTML/uk/rkwardplugins/
-
-%doc %lang(ca) %{_kf5_mandir}/ca/man1/rkward.1.gz
-%doc %lang(de) %{_kf5_mandir}/de/man1/rkward.1.gz
-%doc %lang(it) %{_kf5_mandir}/it/man1/rkward.1.gz
-%doc %lang(nl) %{_kf5_mandir}/nl/man1/rkward.1.gz
-%doc %lang(sv) %{_kf5_mandir}/sv/man1/rkward.1.gz
-%doc %lang(uk) %{_kf5_mandir}/uk/man1/rkward.1.gz
+%{_kf6_sharedir}/rkward/
+%{_datadir}/kio/servicemenus/rkward.protocol
+%{_libdir}/librkward.rbackend.lib.so
+%{_kf6_sharedir}/mime/packages/vnd.kde.rkward-output.xml
+%{_kf6_sharedir}/mime/packages/vnd.kde.rmarkdown.xml
+%{_kf6_sharedir}/mime/packages/vnd.rkward.r.xml
+%dir %{_datadir}/doc/HTML/ca/rkward
+%dir %{_datadir}/doc/HTML/ca/rkwardplugins
+%dir %{_datadir}/doc/HTML/en/rkward
+%dir %{_datadir}/doc/HTML/it/rkward
+%dir %{_datadir}/doc/HTML/nl/rkward
+%dir %{_datadir}/doc/HTML/nl/rkwardplugins
+%dir %{_datadir}/doc/HTML/sl/rkward
+%dir %{_datadir}/doc/HTML/sl/rkwardplugins
+%dir %{_datadir}/doc/HTML/sv/rkward
+%dir %{_datadir}/doc/HTML/sv/rkwardplugins
+%dir %{_datadir}/doc/HTML/uk/rkward
+%dir %{_datadir}/doc/HTML/uk/rkwardplugins
+%dir %{_datadir}/kio
+%dir %{_datadir}/kio/servicemenus
+%{_datadir}/locale/bs/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/bs/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/bs/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/bs/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/bs/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/bs/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/bs/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/bs/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/bs/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/ca/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/ca/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/ca/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/ca/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/ca/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/ca/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/ca/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/ca/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/ca/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/ca@valencia/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/ca@valencia/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/ca@valencia/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/ca@valencia/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/ca@valencia/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/ca@valencia/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/ca@valencia/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/ca@valencia/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/ca@valencia/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/cs/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/cs/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/cs/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/cs/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/cs/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/cs/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/cs/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/cs/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/cs/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/de/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/de/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/de/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/de/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/de/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/de/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/de/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/de/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/de/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/en_GB/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/en_GB/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/en_GB/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/en_GB/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/en_GB/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/en_GB/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/en_GB/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/en_GB/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/en_GB/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/eo/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/eo/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/eo/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/eo/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/eo/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/eo/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/eo/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/eo/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/eo/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/es/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/es/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/es/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/es/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/es/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/es/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/es/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/es/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/es/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/et/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/et/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/et/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/et/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/et/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/et/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/et/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/et/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/et/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/eu/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/eu/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/eu/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/fi/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/fi/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/fi/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/fi/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/fi/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/fi/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/fi/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/fi/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/fi/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/fr/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/fr/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/fr/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/fr/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/fr/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/fr/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/fr/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/fr/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/fr/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/gl/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/gl/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/gl/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/gl/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/gl/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/gl/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/gl/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/gl/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/gl/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/he/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/hu/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/ia/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/ia/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/ia/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/ia/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/ia/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/ia/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/ia/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/ia/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/ia/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/it/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/it/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/it/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/it/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/it/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/it/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/it/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/it/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/it/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/ja/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/ja/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/ja/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/ja/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/ja/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/ja/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/ja/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/ja/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/ja/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/ka/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/ka/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/ka/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/ka/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/ka/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/ka/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/ka/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/ka/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/ka/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/lt/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/lt/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/lt/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/lt/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/lt/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/lt/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/lt/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/lt/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/lt/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/nl/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/nl/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/nl/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/nl/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/nl/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/nl/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/nl/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/nl/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/nl/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/pl/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/pl/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/pl/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/pl/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/pl/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/pl/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/pl/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/pl/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/pl/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/pt/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/pt/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/pt/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/pt/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/pt/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/pt/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/pt/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/pt/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/pt/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/pt_BR/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/pt_BR/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/pt_BR/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/pt_BR/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/pt_BR/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/pt_BR/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/pt_BR/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/pt_BR/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/pt_BR/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/ru/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/ru/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/ru/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/ru/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/ru/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/ru/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/ru/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/ru/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/ru/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/sl/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/sl/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/sl/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/sl/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/sl/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/sl/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/sl/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/sl/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/sl/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/sv/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/sv/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/sv/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/sv/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/sv/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/sv/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/sv/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/sv/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/sv/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/tr/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/tr/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/tr/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/tr/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/tr/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/tr/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/tr/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/tr/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/tr/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/uk/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/uk/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/uk/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/uk/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/uk/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/uk/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/uk/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/uk/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/uk/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__plots.mo
+%{_mandir}/ca/man1/rkward.1%{?ext_man}
+%{_mandir}/de/man1/rkward.1%{?ext_man}
+%{_mandir}/it/man1/rkward.1%{?ext_man}
+%{_mandir}/nl/man1/rkward.1%{?ext_man}
+%{_mandir}/sl/man1/rkward.1%{?ext_man}
+%{_mandir}/sv/man1/rkward.1%{?ext_man}
+%{_mandir}/uk/man1/rkward.1%{?ext_man}
 
 %changelog
