@@ -116,4 +116,12 @@
 - remove suse_update_desktop_file macro (forwarded request 1276200 from rrahl0)</comment>
     <requestid>1276204</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c9420cac9cf643ddf2158d5b7da474d4</srcmd5>
+    <version>4.0.0~beta1</version>
+    <time>1747773971</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1278852</requestid>
+  </revision>
 </revisionlist>

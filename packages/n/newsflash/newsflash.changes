@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May 09 17:49:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 4.0.0~beta1:
+  * Dist & Upload beta
+  * update changelog +semver:major
+  * again
+  * quotes
+  * try again
+  * beta release job & update deps
+  * fix custom sync interval initial error state
+  * update blueprint repo url
+  * restore search term before selecting sidebar item
+  * restore search term before selecting sidebar item
+- enable building with lto
+
+-------------------------------------------------------------------
 Fri May 09 10:50:29 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 3.3.5+223:
