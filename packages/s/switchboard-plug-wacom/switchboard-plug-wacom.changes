@@ -1,3 +1,13 @@
+-------------------------------------------------------------------
+Thu May  8 16:51:11 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * Meson: add log domain
+  * Fix some build warnings
+  * Add check for stylus detection
+  * Update README.md
+  * Updated translations
+
 ------------------------------------------------------------------
 Wed Nov 12 03:00:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
