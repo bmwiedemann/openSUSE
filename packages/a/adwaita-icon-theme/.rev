@@ -320,4 +320,12 @@
     <comment>New stable branch release (forwarded request 1253136 from iznogood)</comment>
     <requestid>1253364</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>8200aeff81a9295c16e63ab456382bf8</srcmd5>
+    <version>48.0</version>
+    <time>1747726455</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in old changelog entries (forwarded request 1277758 from dimstar)</comment>
+    <requestid>1277948</requestid>
+  </revision>
 </revisionlist>

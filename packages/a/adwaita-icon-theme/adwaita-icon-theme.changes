@@ -1121,7 +1121,7 @@ Thu Feb 12 00:24:20 CET 2009 - vuntz@novell.com
   + process-working: replace the spinner. (bgo#558367)
 
 -------------------------------------------------------------------
-Wed Oct  1 16:45:17 WST 2008 - mboman@suse.de
+Wed Oct  1 16:45:17 EST 2008 - mboman@suse.de
 
 - Update to version 2.24.0:
   + Cosmetic version bump
@@ -1132,7 +1132,6 @@ Mon Sep 15 21:15:53 EST 2008 - mboman@novell.com
 - Update to version 2.23.92:
   + Changed the metaphor of the accessibility icon as requested by the a11y
     team
-
 
 -------------------------------------------------------------------
 Sun Aug 31 05:06:19 CET 2008 - mboman@novell.com
