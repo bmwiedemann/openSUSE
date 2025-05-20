@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May 18 18:54:29 MSK 2025 - Mark Nefedov <mark_nefedov@icloud.com>
+
+- Update to version 1.4.4
+ * Fix potential security issue CVE-2024-54662, related to "socksmethod"
+   use in client/hostid-rules.
+   Reported by Igor Medovolkin (igor.aka.igro@gmail.com.example.com)
+ * Add a missing call to setgroups(2).
+   Reported by Leo <deleo@gmx.de.example.com>
+ * Patch to fix compilation with libminiupnp 2.2.8.
+   From Emily <hello@emily.moe.example.com>
+ * Client connectchild optimizations.
+ * Client SIGIO handling improvements.
+ * Various configure/build fixes.
+ * Updated to support TCP_EXP1 version of TCP hostid format.
+- Update patch dante-1.4.1-gcc5-fixes.patch
+
+-------------------------------------------------------------------
 Tue Jun 18 09:30:58 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove nonfunctional rc symlink (pointed to a plain file
@@ -81,10 +98,10 @@ Wed May  6 08:15:33 UTC 2015 - mpluskal@suse.com
 Tue Apr 28 06:29:58 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.4.1
-  * Fixed configure problem with detection of libc.so on recent 
+  * Fixed configure problem with detection of libc.so on recent
     FreeBSD versions.
-  * Fixed problem in configure test used for figuring out which 
-    buffer in an IPC socket is used for determining bytes that can 
+  * Fixed problem in configure test used for figuring out which
+    buffer in an IPC socket is used for determining bytes that can
     be buffered.  Should fix problem on FreeBSD.
   * Fixed bug in handling of buffered GSSAPI data.
   * AIX 6.1 compilation fixes.
@@ -94,7 +111,7 @@ Tue Apr 28 06:29:58 UTC 2015 - mpluskal@suse.com
 - Cleanup spec-file with spec-cleaner
 - Remove upstreamed/obsolete patches
   * dante-1.4.0-64bit_portability.patch
-  * dante-1.4.0-glibc-2.17.patch 
+  * dante-1.4.0-glibc-2.17.patch
   * dante-1.4.0-sockd_conf.patch
 - Update dependencies
 - Enable upnp support
@@ -105,7 +122,7 @@ Fri Jan 30 14:35:48 UTC 2015 - diego.ercolani@gmail.com
 
 - reviewed the systemd init script
 - added patch:
-  * dante-1.4.0-sockd_conf.patch to accomplish new syntax 
+  * dante-1.4.0-sockd_conf.patch to accomplish new syntax
 
 -------------------------------------------------------------------
 Tue May 20 12:52:20 UTC 2014 - jsegitz@novell.com
@@ -115,7 +132,7 @@ Tue May 20 12:52:20 UTC 2014 - jsegitz@novell.com
 -------------------------------------------------------------------
 Fri Jan 24 15:06:14 UTC 2014 - dvaleev@suse.com
 
-- Fix HAVE_SENDBUF_IOCTL macro 
+- Fix HAVE_SENDBUF_IOCTL macro
 
 - added patches:
   * dante-1.4.0-sendbuf_macro.patch
@@ -327,15 +344,15 @@ Thu Jan 12 16:54:58 UTC 2012 - tabraham@novell.com
   * If the proxy server (socks, http, or upnp) is configured via
     environment variables, don't attempt to also parse any socks.conf
     files
-  * The "HTTP_PROXY" environment variable has been renamed to 
+  * The "HTTP_PROXY" environment variable has been renamed to
     "HTTP_CONNECT_PROXY" to avoid conflict with HTTP proxies that do
     not support the HTTP CONNECT request
   * Fixed an unintended change to ACL semantics regarding bind requests
-    in Dante 1.2.3 noted by Ralf Wenk 
+    in Dante 1.2.3 noted by Ralf Wenk
     <Ralf.Wenk@hs-karlsruhe.de.example.com> many thanks
   * Fixed a bug regarding handling of cases where the ulimit for max
     number of files is unlimited. Reported and analyzed by Ralf Wenk
-    <Ralf.Wenk@hs-karlsruhe.de.example.com> 
+    <Ralf.Wenk@hs-karlsruhe.de.example.com>
 
 - changes in 1.3.1
   * Fixed a bug regarding handling of socks clients that do not fillow
@@ -382,7 +399,7 @@ Wed Oct 20 12:44:04 CEST 2010 - ro@suse.de
     unknown msg_styles.
   o Set PAM_RUSER so that rhosts-based PAM authentication can work.
   o Wrapper for calling getsockopt(2) with SO_ERROR added.
- 
+
 - update to 1.2.1
   o GSSAPI support is no longer disabled on heimdal versions older than
     0.8.0, which have no wrap/unwrap support for aes256-cts-hmac-sha1-96.
@@ -501,33 +518,33 @@ Wed Oct 20 12:44:04 CEST 2010 - ro@suse.de
     it, fixing a bug.
   o Incorrect assert fixed.
   o Log close of client-rule with correct command.
- 
+
 
 -------------------------------------------------------------------
 Wed Apr  1 16:29:11 CEST 2009 - crrodriguez@suse.de
 
-- remove static libraries and "la" files 
+- remove static libraries and "la" files
 
 -------------------------------------------------------------------
 Thu Aug 28 01:25:51 CEST 2008 - ro@suse.de
 
-- fix init-script: add $network to Required-Stop 
+- fix init-script: add $network to Required-Stop
 
 -------------------------------------------------------------------
 Wed Jan 30 03:03:54 CET 2008 - ro@suse.de
 
-- don't package same docs in all three subpackages 
+- don't package same docs in all three subpackages
 
 -------------------------------------------------------------------
 Tue Aug 29 01:14:11 CEST 2006 - ro@suse.de
 
 - m4 gets picky about files ending with comments,
-  add a blank line to acinclude.m4 
+  add a blank line to acinclude.m4
 
 -------------------------------------------------------------------
 Mon Mar 13 16:27:25 CET 2006 - mge@suse.de
 
-- update to 1.1.19 
+- update to 1.1.19
 
 -------------------------------------------------------------------
 Wed Jan 25 21:35:19 CET 2006 - mls@suse.de
@@ -537,7 +554,7 @@ Wed Jan 25 21:35:19 CET 2006 - mls@suse.de
 -------------------------------------------------------------------
 Mon Jan 16 15:35:15 CET 2006 - mge@suse.de
 
-- update to 1.1.18 
+- update to 1.1.18
 
 -------------------------------------------------------------------
 Thu Jul  1 17:13:34 CEST 2004 - mge@suse.de
@@ -563,7 +580,7 @@ Sat Jan 10 22:01:36 CET 2004 - adrian@suse.de
 -------------------------------------------------------------------
 Thu Aug 21 16:52:58 CEST 2003 - ro@suse.de
 
-- fix build for beta distros 
+- fix build for beta distros
 
 -------------------------------------------------------------------
 Mon Jul 28 17:57:19 CEST 2003 - mge@suse.de
@@ -573,12 +590,12 @@ Mon Jul 28 17:57:19 CEST 2003 - mge@suse.de
 -------------------------------------------------------------------
 Mon Jul 28 12:24:22 CEST 2003 - mge@suse.de
 
-- fix bug #23141 error trying to socksify ssh 
+- fix bug #23141 error trying to socksify ssh
 
 -------------------------------------------------------------------
 Tue May 27 12:14:10 CEST 2003 - ro@suse.de
 
-- add libdsocks.a to devel file list 
+- add libdsocks.a to devel file list
 
 -------------------------------------------------------------------
 Mon Aug 19 19:19:46 CEST 2002 - mmj@suse.de
@@ -604,7 +621,7 @@ Wed Jul 10 22:32:41 CEST 2002 - olh@suse.de
 Mon Apr 29 13:03:14 CEST 2002 - sf@suse.de
 
 - added %{_libdir} to build on bilib achrs
-- added %{suse_update_config} to build on x86_64 
+- added %{suse_update_config} to build on x86_64
 
 -------------------------------------------------------------------
 Tue Feb 19 00:40:21 CET 2002 - ro@suse.de
@@ -614,7 +631,7 @@ Tue Feb 19 00:40:21 CET 2002 - ro@suse.de
 -------------------------------------------------------------------
 Mon Jan 14 12:37:01 CET 2002 - ro@suse.de
 
-- removed START_SOCKD 
+- removed START_SOCKD
 
 -------------------------------------------------------------------
 Tue Oct 30 23:29:15 CET 2001 - bjacke@suse.de
@@ -644,7 +661,7 @@ Mon Dec  4 13:43:56 MET 2000 - mge@suse.de
 -------------------------------------------------------------------
 Wed Nov 22 14:23:13 CET 2000 - uli@suse.de
 
-- fixed to build 
+- fixed to build
 
 -------------------------------------------------------------------
 Thu Jul 13 19:26:44 MEST 2000 - mge@suse.de

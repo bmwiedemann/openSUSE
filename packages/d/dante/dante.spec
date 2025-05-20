@@ -1,7 +1,7 @@
 #
 # spec file for package dante
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libsocks0
 Name:           dante
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        A SOCKSv4 and v5 client implementation
 License:        BSD-3-Clause

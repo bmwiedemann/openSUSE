@@ -1,5 +1,5 @@
 diff --git a/lib/Rcompat.c b/lib/Rcompat.c
-index f03e125..fc79abe 100755
+index e13d365..0788b5f 100755
 --- a/lib/Rcompat.c
 +++ b/lib/Rcompat.c
 @@ -44,6 +44,8 @@
@@ -9,7 +9,7 @@ index f03e125..fc79abe 100755
 +#include<stdio.h>
 +
  static const char rcsid[] =
- "$Id: Rcompat.c,v 1.89.4.2.6.2 2020/11/11 16:11:51 karls Exp $";
+ "$Id: Rcompat.c,v 1.89.4.2.6.2.4.1 2024/11/21 10:22:42 michaels Exp $";
  
 @@ -513,7 +515,7 @@ Rgets(buf)
     slog(LOG_DEBUG, "%s: fd %d", function, d);
