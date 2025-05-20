@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 19 07:44:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 5.8.2
+  * Add SSL.com root VMC CA certificates to `MVCCAs.pem`
+  * Replace deprecated `importlib.resources.path` call
+    with `importlib.resources.file`
+    * Use `importlib-resources` to support older versions of Python
+- Update BuildRequires from pyproject.toml
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Tue Mar  4 16:36:52 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.8.1

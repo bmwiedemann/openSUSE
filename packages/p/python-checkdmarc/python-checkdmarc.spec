@@ -17,8 +17,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-checkdmarc
-Version:        5.8.1
+Version:        5.8.2
 Release:        0
 Summary:        A Python module and command line parser for SPF and DMARC records
 License:        Apache-2.0
@@ -26,6 +27,7 @@ URL:            https://domainaware.github.io/checkdmarc
 Source:         https://github.com/domainaware/checkdmarc/archive/refs/tags/%{version}.tar.gz#/checkdmarc-%{version}.tar.gz
 Patch0:         skip-network-tests.patch
 BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module importlib_resources >= 6.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
