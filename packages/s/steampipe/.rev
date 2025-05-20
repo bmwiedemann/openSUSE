@@ -66,4 +66,18 @@
   * Fix issue where system-ingestible output format(csv) was humanised(comma separated) leading to a breaking change in query outputs. Closes #4525 (forwarded request 1275009 from ph03nix)</comment>
     <requestid>1275014</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2a3201b9b0ccf3dc062488f3f972f707</srcmd5>
+    <version>1.1.3</version>
+    <time>1747726335</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.3:
+  * v1.1.3
+  * [dep][actions](deps): Bump booxmedialtd/ws-action-parse-semver (#4518)
+  * [dep][actions](deps): Bump actions/download-artifact from 4.2.1 to 4.3.0 (#4519)
+  * [dep][actions](deps): Bump actions/setup-go from 5.4.0 to 5.5.0 (#4530)
+  * [dep][go](deps): Bump google.golang.org/grpc from 1.71.0 to 1.72.1 (#4534)
+  * Fix plugin manager verifyRunning function to avoid false positives, which lead to failure to start the plugin manager. Fixes #4507 (forwarded request 1277749 from ph03nix)</comment>
+    <requestid>1277802</requestid>
+  </revision>
 </revisionlist>
