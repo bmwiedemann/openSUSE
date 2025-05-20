@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon May 19 14:54:28 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.7.5:
+ * Enhancements
+   * Add more context to external errors 
+   * Align indentation of long arguments 
+   * Preserve order of dependencies which are sorted naively 
+   * Align progress bars by largest name length 
+   * Reinstall local packages in uv add 
+   * Rename --raw-sources to --raw 
+   * Show 'Downgraded' when self update is used to install an older version 
+   * Suggest uv self update if required uv version is newer 
+   * Add 3.14 beta images to uv Docker images 
+   * Add comma after "i.e." in Conda environment error 
+   * Be more precise in unpinned packages warning 
+   * Fix detection of sorted dependencies when include-group is used 
+   * Fix display of HTTP responses in trace logs for retry of errors 
+   * Log skip reasons during Python installation key interpreter match checks 
+   * Redact credentials when displaying URLs 
+ * Bug fixes
+   * Support case-sensitive module discovery in the build backend 
+   * Bump Simple cache bucket to v16 
+   * Don't error when the script is too short for the buffer 
+   * Add missing word in "script not supported" error 
+   * Avoid erroring on pylock.toml dependency entries 
+   * Avoid panics for cannot-be-a-base URLs 
+   * Ensure cached realm credentials are applied if no password is found for index URL 
+   * Fix .tgz parsing to respect true extension 
+   * Fix double self-dependency 
+   * Reject pylock.toml in uv add -r 
+   * Retain dot-separated wheel tags during cache prune 
+   * Retain trailing comments after PEP 723 metadata block 
+ * Documentation
+   * Use "export" instead of "install" in uv export arguments 
+   * Remove extra newline 
+ * Preview features
+   * Build backend: Normalize glob paths 
+
+-------------------------------------------------------------------
 Sat May 10 16:36:30 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
 
 - build needs 28G memory on s390x - adjust _constraints
