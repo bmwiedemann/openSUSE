@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-icon-theme
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           gnome-icon-theme
 Version:        3.12.0
 Release:        0
 Summary:        GNOME Icon Theme
-License:        LGPL-3.0-or-later OR CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 OR LGPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            http://www.gnome.org/
 Source:         http://download.gnome.org/sources/gnome-icon-theme/3.12/%{name}-%{version}.tar.xz
