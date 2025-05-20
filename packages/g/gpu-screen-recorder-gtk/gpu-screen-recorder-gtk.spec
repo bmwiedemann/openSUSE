@@ -19,7 +19,7 @@
 %bcond_with test
 %define appid   com.dec05eba.gpu_screen_recorder
 Name:           gpu-screen-recorder-gtk
-Version:        20250318
+Version:        20250510
 Release:        0
 Summary:        GTK frontend for GPU Screen Recorder
 License:        GPL-3.0-only
@@ -69,6 +69,5 @@ GTK frontend for GPU Screen Recorder.
 %{_bindir}/%{name}
 %{_datadir}/icons/hicolor/*/*/%{appid}*.png
 %{_datadir}/applications/%{appid}.desktop
-%{_datadir}/metainfo/%{appid}.appdata.xml
 
 %changelog
