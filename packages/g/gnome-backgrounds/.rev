@@ -677,4 +677,12 @@
     <comment>New stable branch release (forwarded request 1253135 from iznogood)</comment>
     <requestid>1253363</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>2f54d91095d3e4da4ab952affdc22bdd</srcmd5>
+    <version>48.0</version>
+    <time>1747726496</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in old changelog entries (forwarded request 1277771 from dimstar)</comment>
+    <requestid>1278234</requestid>
+  </revision>
 </revisionlist>
