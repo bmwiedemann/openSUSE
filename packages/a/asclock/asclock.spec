@@ -1,7 +1,7 @@
 #
 # spec file for package asclock
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            http://www.tigr.net/afterstep/
 Source:         asclock-%{version}.tar.bz2
 Patch0:         gcc4.diff
 Patch1:         asclock-C99.diff
+# fix build with gcc15
+Patch2:         asclock-gcc15.patch
 BuildRequires:  fdupes
 BuildRequires:  imake
 BuildRequires:  pkgconfig

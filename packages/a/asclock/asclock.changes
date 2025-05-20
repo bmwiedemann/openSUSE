@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  6 06:37:24 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + asclock-gcc15.patch
+
+-------------------------------------------------------------------
 Fri Aug 16 09:42:31 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add asclock-C99.diff which declares a function defined after use so
