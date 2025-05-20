@@ -32,7 +32,7 @@
 Name:           blake3
 Version:        1.8.2
 Release:        0
-Summary:        A modern and fast cryptographic hash function
+Summary:        A cryptographic hash function
 License:        Apache-2.0
 URL:            https://github.com/BLAKE3-team/BLAKE3
 Source0:        https://github.com/BLAKE3-team/BLAKE3/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -50,87 +50,83 @@ BuildRequires:  gcc-c++
 %endif
 
 %description
-BLAKE3 is a modern cryptographic hash function designed for
-high performance, strong security, and parallelism. It builds
-upon earlier BLAKE and BLAKE2 designs but introduces a Merkle
-tree structure that enables efficient parallel computation
-across multiple cores, making it significantly faster than many
-traditional hash functions like SHA-2 or SHA-3. BLAKE3 offers
-a fixed 256-bit output and is designed to be simple, compact,
-and memory-efficient, making it suitable for a wide range of
-platforms—from embedded devices to high-performance servers. In
-addition to being a cr yptographic hash, BLAKE3 can also serve as
-a keyed hash (MAC) or extendable output function (XOF), making it
-versatile for various cryptographic applications.
+BLAKE3 is a cryptographic hash function with features like Extendable
+Output Function (XOF), Key Derivation Functions (KDF), Pseudorandom
+Functions (PRF) and Keyed Hashes (MAC). It introduces a Merkle tree
+structure that enables parallel computation across multiple cores.
+BLAKE3 offers a fixed 256-bit output and targets memory efficiency.
 
-%if 0%{?with_b3sum}
 %package -n b3sum
 Summary:        A command line utility for calculating BLAKE3 hashes
 
 %description -n b3sum
-A command line utility for calculating BLAKE3 hashes, similar to Coreutils tools
-like b2sum or md5sum.
+A command line utility for calculating BLAKE3 hashes, similar to
+Coreutils tools like b2sum or md5sum.
 
-%endif # with_b3sum
-
-%if 0%{?with_clib}
 %package -n libblake3-%{soname}
-Summary:        The official C implementation of BLAKE3
+Summary:        A cryptographic hash function
 
 %description -n libblake3-%{soname}
+BLAKE3 is a cryptographic hash function with features like Extendable
+Output Function (XOF), Key Derivation Functions (KDF), Pseudorandom
+Functions (PRF) and Keyed Hashes (MAC). It introduces a Merkle tree
+structure that enables parallel computation across multiple cores.
+BLAKE3 offers a fixed 256-bit output and targets memory efficiency.
+
 The official C implementation of BLAKE3.
 
-%package -n libblake3-devel
+%package devel
 Summary:        Development files for libblake3
 Requires:       libblake3-%{soname} = %{version}
+Obsoletes:      libblake3-devel < %{version}-%{release}
+Provides:       libblake3-devel = %{version}-%{release}
 
-%description -n libblake3-devel
+%description devel
 This package contains the development files (mainly C header files) for libblake3.
-
-%endif # with_clib
 
 %prep
 %autosetup -p1 -a1 -n BLAKE3-%{version}
 
 %build
+b="$PWD"
 
 %if 0%{?with_b3sum}
-pushd b3sum
+cd b3sum
 %{cargo_build}
-popd
+cd "$b"
 %endif # with_b3sum
 
 %if 0%{?with_clib}
-pushd c
+cd c
 %cmake -DBLAKE3_USE_TBB=1
 %cmake_build
-popd
+cd "$b"
 %endif # with_clib
 
 %install
+b="$PWD"
 
 %if 0%{?with_b3sum}
-pushd b3sum
+cd b3sum
 %{cargo_install}
-popd
+cd "$b"
 %endif
 
 %if 0%{?with_clib}
-pushd c
+cd c
 %cmake_install
-popd
+cd "$b"
 %endif # with_clib
 
 %if 0%{?with_b3sum}
 %check
-pushd b3sum
+b="$PWD"
+cd b3sum
 %{cargo_test}
-popd
+cd "$b"
 %endif
 
-%if 0%{?with_clib}
 %ldconfig_scriptlets -n libblake3-%{soname}
-%endif
 
 %if 0%{?with_b3sum}
 %files -n b3sum
@@ -144,7 +140,7 @@ popd
 %license LICENSE_A2 LICENSE_A2LLVM LICENSE_CC0
 %{_libdir}/libblake3.so.*
 
-%files -n libblake3-devel
+%files devel
 %license LICENSE_A2 LICENSE_A2LLVM LICENSE_CC0
 %{_includedir}/blake3.h
 %{_libdir}/cmake/blake3

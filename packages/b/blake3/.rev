@@ -7,4 +7,16 @@
     <comment>A modern and fast cryptographic hash function. cli disabled as I'm waiting for merge with b3sum</comment>
     <requestid>1276874</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>62dccdcf530e178125abf69a449be7f4</srcmd5>
+    <version>1.8.2</version>
+    <time>1747726606</time>
+    <user>anag_factory</user>
+    <comment>- Make build recipe POSIX sh compatible, avoiding the pushd command.
+- Trim idempotent if..endif guards.
+- Trim decade-sensitive wording from descriptions.
+- Implement naming guidelines: devel package should simple be based
+  on the SRPM name.</comment>
+    <requestid>1278164</requestid>
+  </revision>
 </revisionlist>
