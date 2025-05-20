@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 16 09:53:53 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix changelog format: the line immediately after the dashed line
+  is supposed to be the header with date/author info.
+
+-------------------------------------------------------------------
 Tue Apr  8 16:13:26 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ack 3.8.2:
@@ -321,7 +327,6 @@ Thu Oct 17 21:03:44 UTC 2013 - andreas.stieger@gmx.de
   * bash completion is gone, remove dead code
 
 -------------------------------------------------------------------
-
 Thu Aug 15 13:07:09 UTC 2013 - idonmez@suse.com
 
 - Add perl-File-Next runtime dependency
