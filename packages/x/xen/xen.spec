@@ -125,7 +125,7 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.20.0_10
+Version:        4.20.0_12
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -170,38 +170,21 @@ Patch7:         67cb03e0-x86-vlapic-ESR-write-handling.patch
 Patch8:         67d17edd-x86-expose-MSR_FAM10H_MMIO_CONF_BASE-on-AMD.patch
 Patch9:         67d17ede-VT-x-PI-usage-of-msi_desc-msg-field.patch
 Patch10:        67d2a3fe-libxl-avoid-infinite-loop-in-libxl__remove_directory.patch
+Patch11:        67dada68-x86-mm-IS_ALIGNED-in-IS_LnE_ALIGNED.patch
+Patch12:        67ea4268-x86-P2M-sync-fast-slow-p2m_get_page_from_gfn.patch
+Patch13:        67ea428e-percpu-dont-init-on-resume.patch
+Patch14:        67f8ecda-rangeset-incorrect-subtraction.patch
+Patch15:        6800b54f-x86-HVM-update-repeat-count-upon.patch
+Patch16:        68076044-x86emul-clip-rep-count-for-STOS.patch
+Patch17:        6808f549-x86-Intel-work-around-MONITOR-MWAIT-errata.patch
+Patch18:        68221f20-x86-alternative-when-feature-not-present.patch
+Patch19:        68221f21-x86-guest-remove-Xen-hypercall_page.patch
+Patch20:        68221f22-x86-misalign-__x86_indirect_thunk.patch
+Patch21:        68221f23-x86-misalign-RETs-in-clear_bhb_loops.patch
+Patch22:        68221f24-x86-stubs-introduce-place_ret.patch
+Patch23:        68221f25-x86-build-with-Return-Thunks.patch
+Patch24:        68221f26-x86-spec-ctrl-synthesise-ITS_NO.patch
 # EMBARGOED security fixes
-# libxc
-Patch301:       libxc-bitmap-long.patch
-Patch302:       libxc-sr-xl-migration-debug.patch
-Patch303:       libxc-sr-readv_exact.patch
-Patch304:       libxc-sr-save-show_transfer_rate.patch
-Patch305:       libxc-sr-save-mfns.patch
-Patch306:       libxc-sr-save-types.patch
-Patch307:       libxc-sr-save-errors.patch
-Patch308:       libxc-sr-save-iov.patch
-Patch309:       libxc-sr-save-rec_pfns.patch
-Patch310:       libxc-sr-save-guest_data.patch
-Patch311:       libxc-sr-save-local_pages.patch
-Patch312:       libxc-sr-restore-pfns.patch
-Patch313:       libxc-sr-restore-types.patch
-Patch314:       libxc-sr-restore-mfns.patch
-Patch315:       libxc-sr-restore-map_errs.patch
-Patch316:       libxc-sr-restore-populate_pfns-pfns.patch
-Patch317:       libxc-sr-restore-populate_pfns-mfns.patch
-Patch318:       libxc-sr-restore-read_record.patch
-Patch319:       libxc-sr-restore-handle_buffered_page_data.patch
-Patch320:       libxc-sr-restore-handle_incoming_page_data.patch
-Patch321:       libxc-sr-LIBXL_HAVE_DOMAIN_SUSPEND_PROPS.patch
-Patch322:       libxc-sr-precopy_policy.patch
-Patch323:       libxc-sr-max_iters.patch
-Patch324:       libxc-sr-min_remaining.patch
-Patch325:       libxc-sr-abort_if_busy.patch
-Patch326:       libxc-sr-xg_sr_bitmap.patch
-Patch327:       libxc-sr-xg_sr_bitmap-populated_pfns.patch
-Patch328:       libxc-sr-restore-hvm-legacy-superpage.patch
-Patch329:       libxc-sr-track-migration-time.patch
-Patch330:       libxc-sr-number-of-iterations.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
@@ -214,7 +197,6 @@ Patch407:       replace-obsolete-network-configuration-commands-in-s.patch
 Patch408:       ignore-ip-command-script-errors.patch
 # Needs to go upstream
 Patch420:       suspend_evtchn_lock.patch
-Patch421:       vif-route.patch
 # Other bug fixes or features
 Patch450:       xen.sysconfig-fillup.patch
 Patch451:       xenconsole-no-multiple-connections.patch
@@ -228,8 +210,6 @@ Patch464:       xen.libxl.dmmd.patch
 Patch465:       xenstore-run-in-studomain.patch
 Patch466:       libxl.helper_done-crash.patch
 Patch467:       libxl.LIBXL_HOTPLUG_TIMEOUT.patch
-# python3 conversion patches
-Patch500:       build-python3-conversion.patch
 # Hypervisor and PV driver Patches
 Patch600:       xen.bug1026236.suse_vtsc_tolerance.patch
 Patch601:       x86-ioapic-ack-default.patch

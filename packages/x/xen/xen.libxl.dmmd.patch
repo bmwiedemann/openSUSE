@@ -100,7 +100,7 @@ References: bsc#954872
  aio:/.*		{ DPC->had_depr_prefix=1; DEPRECATE(0); }
 --- a/tools/libs/light/libxl_internal.h
 +++ b/tools/libs/light/libxl_internal.h
-@@ -2070,6 +2070,10 @@ _hidden char *libxl__object_to_json(libx
+@@ -2068,6 +2068,10 @@ _hidden char *libxl__object_to_json(libx
  _hidden int libxl__cpuid_legacy(libxl_ctx *ctx, uint32_t domid, bool retore,
                                  libxl_domain_build_info *info);
  

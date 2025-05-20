@@ -3086,4 +3086,12 @@
     <comment>Add changelog entry for bug 1241206. No code change.</comment>
     <requestid>1273188</requestid>
   </revision>
+  <revision rev="364" vrev="1">
+    <srcmd5>8335b05a889ae69892ab95136b9f2974</srcmd5>
+    <version>4.20.0_12</version>
+    <time>1747726284</time>
+    <user>anag_factory</user>
+    <comment>Fix for security bug bsc#1243117 - VUL-0: CVE-2024-28956 XSA-469. Various other upstream bug fixes. Dropped a series of deprecated patches.</comment>
+    <requestid>1277871</requestid>
+  </revision>
 </revisionlist>

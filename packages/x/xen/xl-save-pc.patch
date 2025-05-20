@@ -67,7 +67,7 @@ Keep going if the event type and shutdown reason remains the same.
      int fd;
      uint8_t *config_data;
      int config_len;
-@@ -144,12 +147,24 @@ static int save_domain(uint32_t domid, i
+@@ -143,12 +146,24 @@ static int save_domain(uint32_t domid, i
          fprintf(stderr, "Failed to open temp file %s for writing\n", filename);
          exit(EXIT_FAILURE);
      }
@@ -81,7 +81,7 @@ Keep going if the event type and shutdown reason remains the same.
  
      save_domain_core_writeconfig(fd, filename, config_data, config_len);
  
-     int rc = libxl_domain_suspend_suse(ctx, domid, fd, &props, NULL);
+     int rc = libxl_domain_suspend(ctx, domid, fd, 0, NULL);
      close(fd);
  
 +    if (xsh) {
