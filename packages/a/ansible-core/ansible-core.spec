@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible-core
-Version:        2.18.5
+Version:        2.18.6
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
@@ -97,6 +97,7 @@ Requires:       %{ansible_python}-Jinja2 >= 3.0.0
 Requires:       %{ansible_python}-PyYAML >= 5.1
 Requires:       %{ansible_python}-cryptography
 Requires:       %{ansible_python}-packaging
+Requires:       %{ansible_python}-rpm
 Requires:       (%{ansible_python}-resolvelib >= 0.5.3 with %{ansible_python}-resolvelib < 2.0.0)
 
 # ansible-documentation is a separate package since 2.15.3

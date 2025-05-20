@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 20 09:11:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.21.0
+  * Fix pyproject license deprecation warnings
+  * Drop Python 3.8
+  * Use Python 3.11 for cibuildwheel
+  * Build wheels for more architectures
+  * Drop ppc64 architecture
+  * Bump Python version since <3.9 is EOL
+
+-------------------------------------------------------------------
 Mon Feb 24 08:14:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 8.20.0

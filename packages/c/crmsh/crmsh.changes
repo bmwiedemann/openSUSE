@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue May 20 09:59:39 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250520.6bc90213:
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: ui_cluster: Add firewalld stage to crm cluster init help info
+
+-------------------------------------------------------------------
+Tue May 20 07:18:35 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250520.2e297cfa:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: bootstrap: Add high-availability firewalld service on geo arbitrator
+  * Dev: bootstrap: Apply firewalld changes to both runtime and permanent configurations without reload
+  * Dev: behave: Add functional test for deployment of high-availability firewalld service
+  * Dev: bootstrap: Manage high-availability service in firewalld (bsc#1242494)
+  * Dev: Makefile.am: Update Makefile for high-availability.xml
+  * Dev: crmsh.spec: Improve firewalld support in spec file
+  * Dev: qdevice: Enable qnetd port in firewalld
+  * Dev: bootstrap: Remove codes of configuring ports in firewalld
+  * Dev: spec: Update spec file for high-availability.xml
+  * Dev: Add high-availability.xml for service of firewalld (bsc#1242494)
+  * Dev: ui_configure: Add ':' suffix to order kind completer
+
+-------------------------------------------------------------------
+Fri May 16 05:24:12 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250516.bb49ed3c:
+  * Dev: behave: Fix cross-network isolation issue
+  * Dev: main: Ignore crm flag options to get completion
+
+-------------------------------------------------------------------
+Wed May 07 07:31:18 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250507.0735a244:
+  * Dev: behave: Add functional test for previous commit
+  * Dev: ui_cluster: Refactor the `do_restart` function
+  * Dev: ui_cluster: Skip stopping cluster if dlm_controld is running in maintenance mode
+
+-------------------------------------------------------------------
+Tue May 06 09:23:36 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250506.d5a19e23:
+  * Dev: migration: add a message about how to upgrade cib schema version (jsc#PED-8252)
+
+-------------------------------------------------------------------
 Tue May 06 06:13:37 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250506.7ca341fa:

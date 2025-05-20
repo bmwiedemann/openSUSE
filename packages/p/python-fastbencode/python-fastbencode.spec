@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastbencode
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-fastbencode
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        Implementation of the bencode serialization format
 License:        GPL-2.0-or-later
@@ -26,7 +25,9 @@ URL:            https://github.com/breezy-team/fastbencode
 Source:         https://github.com/breezy-team/fastbencode/archive/refs/tags/v%{version}.tar.gz#/fastbencode-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  python-rpm-macros
@@ -44,10 +45,10 @@ provides significantly better performance.
 %autosetup -p1 -n fastbencode-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +57,7 @@ provides significantly better performance.
 %files %{python_files}
 %doc README.md SECURITY.md
 %license COPYING
-%{python_sitearch}/fastbencode*
+%{python_sitearch}/fastbencode
+%{python_sitearch}/fastbencode-%{version}*-info
 
 %changelog

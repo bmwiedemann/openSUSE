@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Config-GitLike
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,30 @@
 #
 
 
-Name:           perl-Config-GitLike
-Version:        1.18
-Release:        0
 %define cpan_name Config-GitLike
-Summary:        Git-compatible config file parsing
+Name:           perl-Config-GitLike
+Version:        1.180.0
+Release:        0
+# 1.18 -> normalize -> 1.180.0
+%define cpan_version 1.18
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AL/ALEXMV/%{cpan_name}-%{version}.tar.gz
+Summary:        Git-compatible config file parsing
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/A/AL/ALEXMV/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.59
 BuildRequires:  perl(Moo)
 BuildRequires:  perl(MooX::Types::MooseLike)
 BuildRequires:  perl(Test::Exception)
 Requires:       perl(Moo)
 Requires:       perl(MooX::Types::MooseLike)
+Provides:       perl(Config::GitLike) = %{version}
+Provides:       perl(Config::GitLike::Cascaded)
+Provides:       perl(Config::GitLike::Git)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -74,11 +79,11 @@ method calls.
 A few methods have parameters that are always used for the same purpose:
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -89,7 +94,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 16 10:04:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Jul 27 05:42:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Stupid me: it should be rm -rf test_output, not just rm -rf

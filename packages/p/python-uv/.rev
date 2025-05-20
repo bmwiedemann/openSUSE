@@ -692,4 +692,25 @@
    * Retain trailing comments after PEP 723 metadata block</comment>
     <requestid>1278420</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bcdf56e04a2146ab1d17f56139dc8bce</srcmd5>
+    <version>0.7.6</version>
+    <time>1747753457</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.7.6:
+ * Standalone Python
+   * Add Python 3.14 on musl
+   * Add free-threaded Python on musl
+   * Add Python 3.14.0a7
+   * Statically link libpython into the interpreter on Linux for a significant performance boost
+   * See the python-build-standalone release notes for more details.
+ * Enhancements
+   * Improve compatibility of VIRTUAL_ENV_PROMPT value 
+   * Bump MSRV to 1.85 and Edition 2024 
+ * Bug fixes
+   * Respect default extras in uv remove 
+ * Documentation
+   * Fix PowerShell code blocks</comment>
+    <requestid>1278558</requestid>
+  </revision>
 </revisionlist>

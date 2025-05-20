@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 20 09:04:52 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 10.0.1
+  * **Moved to Codeberg:** https://codeberg.org/nielsenb-jf/aniso8601
+  * :code:`year_range_check` will only shift 0s in from the left for
+    year strings of length 2. Since :code:`parse_date` throws an
+    :code:`IsoFormatError` for year strings of lengths other than 2 or
+    4 this shouldn't significantly change any public API consumers.
+  * Specify changelog location in :code:`setup.py`
+  * Change to `Woodpecker CI <https://woodpecker-ci.org/>`_
+  * Add a CI pipeline to test builders when a tag is pushed
+
+-------------------------------------------------------------------
 Mon Feb  3 13:35:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.0.0:

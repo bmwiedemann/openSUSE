@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  4 13:09:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete and unused gnome-common BuildRequires. Dropped
+  upstream in version 1.2.0.
+
+-------------------------------------------------------------------
 Tue Apr  5 14:01:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.0:

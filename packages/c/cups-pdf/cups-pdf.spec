@@ -1,7 +1,7 @@
 #
 # spec file for package cups-pdf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           cups-pdf
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Virtual PDF printer for CUPS
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/PDF
 URL:            https://www.cups-pdf.de/
-Source0:        http://www.cups-pdf.de/src/cups-pdf_%{version}.tar.gz
-#PATCH-FIX-OPENSUSE cups-pdf_gs-options.patch needed for ghostscript > 9.50
-Patch0:         cups-pdf_gs-options.patch
+Source0:        https://www.cups-pdf.de/src/cups-pdf_%{version}.tar.gz
 BuildRequires:  cups-devel
 Requires:       cups-client
 

@@ -113,4 +113,13 @@ See installed CHANGELOG.md for more changes</comment>
   * [CVE-2025-46727] Unbounded parameter parsing in Rack::QueryParser can lead to memory exhaustion. (forwarded request 1275593 from krauselukas)</comment>
     <requestid>1275614</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fb662c0285860296ab6bd44a72d66b2b</srcmd5>
+    <version>2.2.15</version>
+    <time>1747753516</time>
+    <user>anag_factory</user>
+    <comment>- update to version 2.2.15
+   * Optional support for CGI::Cookie if not available. (forwarded request 1278563 from hellcp-work)</comment>
+    <requestid>1278696</requestid>
+  </revision>
 </revisionlist>

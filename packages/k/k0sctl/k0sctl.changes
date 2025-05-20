@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue May 20 10:33:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.24.0:
+  * What's Changed
+    - Clean up uploaded k0s binary temp files by @kke in #854
+    - Clean up previously left-behind k0s upload k0s.tmp.* binaries
+      by @kke in #853
+    - Validate clock skew between hosts by @kke in #848
+    - Allow defining backup filename by @kke in #856
+    - Add spec.options for setting some flag values via config YAML
+      by @kke in #870
+    - Add spec.options.evictTaint to allow setting a taint on nodes
+      before stopping k0s by @lyluck-pixiv in #863
+    - Fix reset --force by @kke in #875
+    - More fine grained drain options by @kke in #878
+    - Release development builds on PR merge to main by @kke in
+      #868
+    - Make the second press of ctrl-c exit immediately by @kke in
+      #881
+    - Wait longer for controllers to become ready by @kke in #883
+    - Stagger controller join sequencing to optimize etcd quorum
+      formation by @kke in #885
+  * Bumps, chores, CI, ...
+    - Bump github.com/urfave/cli/v2 from 2.27.5 to 2.27.6 by
+      @dependabot in #851
+    - Bump golang.org/x/text from 0.22.0 to 0.23.0 by @dependabot
+      in #852
+    - Update rig to v0.20.0 - fix temp file permissions by @kke in
+      #855
+    - Add missing hosts_test.go by @kke in #857
+    - Bump k8s.io/client-go from 0.32.2 to 0.32.3 by @dependabot in
+      #858
+    - Bump github.com/go-playground/validator/v10 from 10.25.0 to
+      10.26.0 by @dependabot in #865
+    - Bump golang.org/x/text from 0.23.0 to 0.24.0 by @dependabot
+      in #867
+    - Include changes since latest stable release in dev build
+      release notes by @kke in #872
+    - Replace ubuntu-20.04 runners with 24.04 by @kke in #873
+    - Bump golang.org/x/net from 0.37.0 to 0.38.0 by @dependabot in
+      #871
+    - Use go 1.24.2 by @kke in #876
+    - Bump k8s.io/client-go from 0.32.3 to 0.33.0 by @dependabot in
+      #874
+    - Bump golang.org/x/text from 0.24.0 to 0.25.0 by @dependabot
+      in #880
+    - Bump rig to v0.21.0 by @kke in #886
+    - Bump k8s.io/client-go from 0.33.0 to 0.33.1 by @dependabot in
+      #889
+
+-------------------------------------------------------------------
 Thu Feb 27 12:49:00 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.23.0:

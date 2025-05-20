@@ -5,6 +5,22 @@ Sat Apr 19 09:07:53 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
   * Set release branch version to 1.1.0
 
 -------------------------------------------------------------------
+Mon Mar 10 14:41:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- set CXXFLAGS to build the coroutine library
+
+-------------------------------------------------------------------
+Mon Mar 10 14:11:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.1.0:
+  no changelog found
+
+-------------------------------------------------------------------
+Mon Mar 10 13:45:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- change compiler to clang, to avoid GCC bugs in coroutines
+
+-------------------------------------------------------------------
 Sat Mar  9 13:40:04 UTC 2024 - Shani Hadiyanto <shanipribadi@gmail.com>
 
 - Update to version 1.0.2

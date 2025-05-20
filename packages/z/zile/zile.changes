@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May  2 08:17:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.4:
+  * This release fixes reading files larger than 2GB, and
+    writing files where the operating system divides the writing
+    into multiple chunks (in practice, probably also files longer
+    than 2GB).
+    Previously, the amount of
+    data read was subject to integer overflow, and the wrong
+    data (both in content and size) was written when it was written
+    in multiple passes. I’ve never had a bug report about this,
+    but apologies to anyone who ran into it!
+
+-------------------------------------------------------------------
 Tue Dec 31 13:31:19 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - fix build by addin -Wno-incompatible-pointer-types
@@ -15,13 +29,13 @@ Wed May  5 11:08:39 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 Thu Apr  8 07:12:54 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Small packaging cleanup
-- Drop doc subpackage 
+- Drop doc subpackage
 
 -------------------------------------------------------------------
 Thu Apr  8 07:01:50 UTC 2021 - Anton Smorodskyi <anton.smorodskyi@suse.com>
 
 - Update to version 2.6.1:
-  * The program has been completely rewritten in Vala. 
+  * The program has been completely rewritten in Vala.
 
 -------------------------------------------------------------------
 Wed Feb 10 12:04:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -64,7 +78,7 @@ Sun Apr 17 21:21:44 UTC 2016 - sleep_walker@opensuse.org
 Wed Mar 19 17:24:11 UTC 2014 - avvissu@yandex.ru
 
 - update to 2.4.11
-- Add BuildRequires: pkg-config pkgconfig(bdw-gc) 
+- Add BuildRequires: pkg-config pkgconfig(bdw-gc)
 - Moved package base and desktop into zile
 - Spec file cleanup
 

@@ -20,7 +20,7 @@
 %bcond_without python2
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        10.0.0
+Version:        10.0.1
 Release:        0
 Summary:        A library for parsing ISO 8601 strings
 License:        BSD-3-Clause

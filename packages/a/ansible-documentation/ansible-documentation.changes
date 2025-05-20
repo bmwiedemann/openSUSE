@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue May 20 04:57:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.18.6:
+  * ci: refresh dev dependencies (#2642)
+  * Only run pr_labeler on devel or stable-* branches (#2552)
+    (#2606)
+  * First pass at adding notes requested in #1638 (#2566) (#2600)
+  * Update interpreter_discovery for changes made in ansible-core
+    2.17 (#2438) (#2609)
+  * ci: refresh dev dependencies (#2623)
+  * Update networking guides to be compatible with ansible-core
+    2.18+. (#2586) (#2594)
+  * Add one sentence per line to the style guide (#2470) (#2579)
+  * add EXAMPLE to sample passwords etc (#2574) (#2583)
+  * ci: refresh dev dependencies (#2589)
+  * ci: refresh dev dependencies (#2570)
+  * Update Ansible 11 porting guide for 11.5.0 release (#2547)
+    (#2564)
+  * Update example image from `fedora:39` to `fedora:42` (#2541)
+    (#2558)
+  * Update developing_modules_documenting.rst (#2551) (#2555)
+  * ci: refresh dev dependencies (#2537)
+  * Module format and doc: tidy up (#2502) (#2542)
+
+-------------------------------------------------------------------
 Thu Apr 24 06:57:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.18.5:

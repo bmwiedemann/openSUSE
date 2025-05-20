@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 19 09:22:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.21.1
+  * Make provider `dynu` able to work not only with the root domain of a zone (#31)
+  * Remove the usage of a deprecated function of beautifulsoup (#29)
+- from version 3.21.0
+  * Add `devnomads` provider (#19)
+  * Add `scaleway` provider (#21)
+  * In `ionos` provider, authentication is not required
+    when using automatic detection of registrar (#22)
+  * In `hover` provider, prevent to send empty bodies in requests
+    that would be refused by the API (#26)
+  * Remove `webgo` provider (#20)
+
+-------------------------------------------------------------------
 Wed Jan  8 16:49:52 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
 
 - update to 3.20.1:

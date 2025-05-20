@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue May 20 04:53:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.18.6:
+  * Minor Changes
+    - ansible-test - Use the -t option to set the stop timeout when
+      stopping a container. This avoids use of the --time option which
+      was deprecated in Docker v28.0.
+  * Bugfixes
+    - Ansible will now ensure predictable permissions on remote
+      artifacts, until now it only ensured executable and relied on
+      system masks for the rest.
+    - ansible-doc - fix indentation for first line of descriptions of
+      suboptions and sub-return values (#84690).
+    - ansible-doc - fix line wrapping for first line of description of
+      options and return values (#84690).
+    - dnf5 - avoid generating excessive transaction entries in the
+      dnf5 history (#85046)
+    - dnf5 - when bugfix and/or security is specified, skip packages
+      that do not have any such updates, even for new versions of
+      libdnf5 where this functionality changed and it is considered
+      failure
+    - script - Fix up become support for Windows scripts when become
+      was set through host variables and not on the task directly -
+      #85076
+
+-------------------------------------------------------------------
+Mon May 19 09:51:23 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Add missing dependency on python311-rpm required by package_facts
+  (#1243193)
+
+-------------------------------------------------------------------
 Thu Apr 24 06:56:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.18.5:

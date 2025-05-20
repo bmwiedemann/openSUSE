@@ -25,8 +25,10 @@ License:        MIT
 URL:            https://capnproto.org
 Source:         https://capnproto.org/capnproto-c++-%{version}.tar.gz
 BuildRequires:  cmake
-%if 0%{?suse_version} >= 1500
-BuildRequires:  gcc-c++
+%if 0%{?suse_version} >= 1699
+BuildRequires:  clang
+BuildRequires:  clang-devel
+BuildRequires:  libstdc++6-devel-gcc15
 %else
 BuildRequires:  gcc7-c++
 %endif
@@ -61,8 +63,10 @@ This package provides development headers for capnproto.
 %autosetup -n %{name}-c++-%{version}
 
 %build
-export CXX=g++
 test -x "$(type -p g++-7)" && export CXX=g++-7
+%if 0%{?suse_version} >= 1699
+export CXXFLAGS="${optflags} -std=c++20"
+%endif
 %configure
 %make_build
 

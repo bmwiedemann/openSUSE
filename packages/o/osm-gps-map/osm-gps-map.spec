@@ -25,7 +25,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            http://nzjrs.github.io/osm-gps-map/
 Source:         https://github.com/nzjrs/osm-gps-map/releases/download/1.2.0/%{name}-%{version}.tar.gz
-BuildRequires:  gnome-common
+
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
@@ -108,6 +108,7 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}
 %{_libdir}/libosmgpsmap-1.0.so
 %{_libdir}/pkgconfig/osmgpsmap-1.0.pc
 %dir %{_datadir}/gtk-doc
+%dir %{_datadir}/gtk-doc/html
 %{_datadir}/gtk-doc/html/libosmgpsmap
 
 %changelog

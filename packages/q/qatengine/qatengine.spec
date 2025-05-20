@@ -1,7 +1,7 @@
 #
 # spec file for package qatengine
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qatengine
-Version:        1.7.0
+Version:        1.9.0
 Release:        0
 Summary:        Intel QuickAssist Technology (QAT) QATengine Library
 License:        BSD-3-Clause

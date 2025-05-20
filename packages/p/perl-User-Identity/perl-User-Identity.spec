@@ -1,7 +1,7 @@
 #
 # spec file for package perl-User-Identity
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,33 @@
 
 %define cpan_name User-Identity
 Name:           perl-User-Identity
-Version:        1.02
+Version:        1.20.0
 Release:        0
+# 1.02 -> normalize -> 1.20.0
+%define cpan_version 1.02
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Collect information about a user
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARKOV/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARKOV/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Hash::Ordered) >= 0.014
-Requires:       perl(Hash::Ordered) >= 0.014
+BuildRequires:  perl(Hash::Ordered) >= 0.14
+Requires:       perl(Hash::Ordered) >= 0.14
+Provides:       perl(Mail::Identity) = %{version}
+Provides:       perl(User::Identity) = %{version}
+Provides:       perl(User::Identity::Archive) = %{version}
+Provides:       perl(User::Identity::Archive::Plain) = %{version}
+Provides:       perl(User::Identity::Collection) = %{version}
+Provides:       perl(User::Identity::Collection::Emails) = %{version}
+Provides:       perl(User::Identity::Collection::Locations) = %{version}
+Provides:       perl(User::Identity::Collection::Systems) = %{version}
+Provides:       perl(User::Identity::Collection::Users) = %{version}
+Provides:       perl(User::Identity::Item) = %{version}
+Provides:       perl(User::Identity::Location) = %{version}
+Provides:       perl(User::Identity::System) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -50,7 +65,7 @@ author.
 Extends "DESCRIPTION" in User::Identity::Item.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

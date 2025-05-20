@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bitstruct
-Version:        8.20.0
+Version:        8.21.0
 Release:        0
 Summary:        Interpret strings as packed binary data
 License:        MIT

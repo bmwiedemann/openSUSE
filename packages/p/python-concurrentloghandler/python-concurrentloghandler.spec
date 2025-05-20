@@ -1,7 +1,7 @@
 #
 # spec file for package python-concurrentloghandler
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define modname concurrent-log-handler
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-concurrentloghandler
 Version:        0.9.19
 Release:        0
@@ -26,14 +25,14 @@ License:        Apache-2.0
 Group:          Development/Libraries/Python
 URL:            https://github.com/Preston-Landers/concurrent-log-handler
 Source:         https://github.com/Preston-Landers/%{modname}/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM test_returncode.patch bsc#[0-9]+ mcepl@suse.com
-# test script should return errorlevel
-# Patch0:         test_returncode.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module portalocker}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  sed
+Requires:       python-portalocker
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,10 +48,10 @@ log file concurrently.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # Remove files installed in wrong places
 rm -rf %{buildroot}%{_usr}/{docs,tests}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -66,6 +65,7 @@ $python stresstest.py
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/concurrent_log_handler
+%{python_sitelib}/concurrent_log_handler-%{version}*-info
 
 %changelog

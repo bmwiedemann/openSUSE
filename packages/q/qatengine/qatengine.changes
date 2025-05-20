@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 20 13:05:21 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.9.0:
+  * Bug fixes, README update and version bump
+  * Fixed boringssl segfault when no QAT HW devices are available
+  * QAT Engine and Provider compatibility issues fix with OpenSSL 3.3 and 3.4
+  * Fixed memory leaks observed in qat hw provider
+  * Fixed aes-cbc-hmac-sha testapp insecure algo issue
+
+- update to 1.8.0:
+  * Fix AES128-SHA failure with nginx
+  * Fix provider warnings with co-existence mode when building rpm using qatengine.spec
+  * Add AVX2 bit check support for client platforms
+  * Fixed offload issue for qat hw aes-ccm and sm3 when modules removed
+  * Added QAT_SW Provider support for RSA encrypt and decrypt
+  * Algorithms with AES-128 and AES-192 keys added to insecure list and disabled by default
+
+
+-------------------------------------------------------------------
 Fri Dec  6 16:11:21 UTC 2024 - Torsten Duwe <duwe@suse.com>
 
 - update to 1.7.0:

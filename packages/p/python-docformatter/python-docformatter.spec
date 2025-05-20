@@ -16,19 +16,16 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-docformatter
-Version:        1.7.5
+Version:        1.7.7
 Release:        0
 Summary:        Utility to re-format docstrings per PEP 257
 License:        MIT
 URL:            https://github.com/myint/docformatter
 Source:         https://github.com/PyCQA/docformatter/archive/refs/tags/v%{version}.tar.gz#/docformatter-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#PyCQA/docformatter#280
-Patch0:         remove-mock.patch
-# PATCH-FIX-UPSTREAM gh#PyCQA/docformatter#296
-Patch1:         support-python-312.patch
 # PATCH-FIX-OPENSUSE Do not require virtualenvs to run the tests
-Patch2:         do-not-require-venv.patch
+Patch0:         do-not-require-venv.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}

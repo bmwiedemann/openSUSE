@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 20 09:13:24 UTC 2025 - Jay Michalska <jay.michalska@suse.com>
+
+- update to version 2.2.15
+   * Optional support for CGI::Cookie if not available.
+
+-------------------------------------------------------------------
 Thu May  8 14:14:02 UTC 2025 - Lukas Krause <lukas.krause@suse.com>
 
 - update to version 2.2.14

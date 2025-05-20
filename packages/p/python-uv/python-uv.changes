@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 20 09:04:07 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.7.6:
+ * Standalone Python
+   * Add Python 3.14 on musl
+   * Add free-threaded Python on musl
+   * Add Python 3.14.0a7
+   * Statically link libpython into the interpreter on Linux for a significant performance boost
+   * See the python-build-standalone release notes for more details.
+ * Enhancements
+   * Improve compatibility of VIRTUAL_ENV_PROMPT value 
+   * Bump MSRV to 1.85 and Edition 2024 
+ * Bug fixes
+   * Respect default extras in uv remove 
+ * Documentation
+   * Fix PowerShell code blocks 
+
+-------------------------------------------------------------------
 Mon May 19 14:54:28 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.5:

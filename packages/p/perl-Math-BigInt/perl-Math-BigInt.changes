@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Mon Apr 14 05:37:15 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.005003
+   see /usr/share/doc/packages/perl-Math-BigInt/CHANGES
+
+  2.005003 2025-04-13
+  * Add new methods to_fp80() and from_fp80() for encoding and decoding values in
+    the x86 extended-precision 80 bit format.
+  2.005002 2025-03-28
+  * Fix the handling of read-only objects in bblsft() and bbrsft() in
+    Math::BigFloat and Math::BigRat.
+  2.005001 2025-03-25
+  New:
+  * Add new method bperm() to Math::BigInt, Math::BigFloat, and Math::BigRat.
+  * Add the following methods to Math::BigRat and Math::BigFloat:
+      bilog2(), bilog10(), bclog2(), bclog10(), bfib(), blucas(),
+      from_bytes(), from_base(), to_bytes(), to_ieee754()
+  * Add method bmuladd(), bgcd(), and blcm() to Math::BigRat.
+  * Add method bpi() to Math::BigRat. It returns a rational approximation of PI
+    accurate to the specified accuracy or precision, or the default accuracy if
+    no accuracy is specified.
+  * Add methods bdstr(), bnstr(), and bestr() to Math::BigRat.
+  * Add support for rounding in Math::BigFloat methods bdstr(), bestr(), bnstr(),
+    and bestr().
+  * Add method from_ieee754() to Math::BigInt and Math::BigRat, including
+    documentation. In Math::BigInt, from_ieee754() is similar to the other
+    from_xxx() methods in that way that it returns a NaN if the input is a finite
+    non-integer.
+  * Add new backend library method _scmp() for doing signed comparison.
+  Changes/Improvements:
+  * Method new() now always returns a new object, as would be expected.
+  * Make bgcd() in Math::BigRat and Math::BigFloat support non-integer arguments.
+    Now, bgcd(0.8, 1.2) in Math::BigFloat returns 0.4, and bgcd(4/5, 6/5) in
+    Math::BigRat returns 2/5.
+  * Make blcm(0, 0) work the same way in Math::BigInt, Math::BigRat, and
+    Math::BigFloat. Now blcm(0, 0) is always 0.
+  * Correct the documentation for is_inf(), bceil() and bfloor()
+  * Methods bdiv() and bmod() are now aliases to bfdiv() and bfmod(),
+    respectively. (This doesn't change the behaviour of bdiv() and bmod().)
+  * Math::BigFloat methods bfmod() and btmod() are faster than before.
+  * Improve documentation for bnok().
+  * Improve upgrading and downgrading, e.g., use $class->upgrade() rather than
+    just $upgrade, since the former works better for sublasses.
+  Fixes:
+  * Add missing calls to modify().
+  * All boolean methods now return 1 or 0. Some would return 1 or "".
+  * Harmonise methods in different classes so they behave similarly, at least to
+    the extent possible.
+  * Fix bug in Math::BigInt->bfib() causing sign to be incorrect for some of the
+    output values when bfib() was called in list context with a negative input.
+  * Correct miscellaneous typos and errors in the documentation.
+  2.004001 2025-02-12
+  * Improve upgrading and downgrading.
+    - Upgrading and downgrading is more consistent.
+    - Upgrading and downgrading now keeps the reference, so in the following
+      example, $x changes from being a Math::BigInt with a value of 2 to a
+      Math::BigFloat with the value 1.4142...
+        perl -Mbignum -le '$x = 2; $x -> bsqrt(); print $x'
+  * Fix bug in Math::BigFloat->bdiv(): in list context, bdiv() would do floored
+    division, except when the denominator was 1. Now, bdiv() always does floored
+    division.
+
+-------------------------------------------------------------------
 Fri Jan 24 05:31:49 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.003004

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 20 07:51:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.0.1
+  * Bugfix: Always clear the connect lock on connection lost,
+    allowing client reconnect
+
+-------------------------------------------------------------------
 Fri Apr  4 12:16:40 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 4.0.0

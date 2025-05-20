@@ -1999,4 +1999,12 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
     - Revert &quot;Run decode_it also in the other case&quot;</comment>
     <requestid>1267136</requestid>
   </revision>
+  <revision rev="212" vrev="1">
+    <srcmd5>65cd8bd833e0fe280ad48516719e8d47</srcmd5>
+    <version>1.16.0</version>
+    <time>1747753509</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1278651</requestid>
+  </revision>
 </revisionlist>

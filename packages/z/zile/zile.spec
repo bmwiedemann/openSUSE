@@ -1,7 +1,7 @@
 #
 # spec file for package zile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           zile
-Version:        2.6.2
+Version:        2.6.4
 Release:        0
 Summary:        Lightweight Emacs Clone
 License:        GPL-3.0-only
