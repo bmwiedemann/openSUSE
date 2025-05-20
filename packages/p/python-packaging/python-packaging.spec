@@ -1,7 +1,7 @@
 #
 # spec file for package python-packaging
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # in order to avoid rewriting for subpackage generator
 %define mypython python
 %global flavor @BUILD_FLAVOR@%{nil}
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1650
 %if "%{flavor}" == "primary"
 # this one is goes into Ring0:  Bootstrap for primary python stack
 %define pprefix %{primary_python}

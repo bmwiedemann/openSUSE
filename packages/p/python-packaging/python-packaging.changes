@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 13 15:38:23 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- skip primary build only for Tumbleweed (adjust version)
+
+-------------------------------------------------------------------
 Sun Nov 10 13:40:15 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to 24.2:
@@ -79,7 +84,7 @@ Sat Apr 15 10:28:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.1
   * chore: add typed classifier
-  * Improve parser error messaging around mistakes in/around 
+  * Improve parser error messaging around mistakes in/around
     version specifiers
   * Upgrade to latest mypy
   * Delete print() from test_tags
@@ -90,7 +95,7 @@ Sat Apr 15 10:28:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Relax typing of _key on _BaseVersion
   * Replace spaces in platform names with underscores
   * Import underlying parser function as an underscored variable
-  
+
 -------------------------------------------------------------------
 Thu Apr 13 22:42:50 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
@@ -252,7 +257,7 @@ Sun May 29 09:22:42 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 -------------------------------------------------------------------
 Mon Apr 25 07:56:29 UTC 2022 - Hui-Zhi Zhao <hui.zhi.zhao@suse.com>
 
-- Ignore python3.6.2 since the test doesn't support it. 
+- Ignore python3.6.2 since the test doesn't support it.
 
 -------------------------------------------------------------------
 Wed Nov 24 15:16:45 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
@@ -285,13 +290,13 @@ Sat Nov  6 18:30:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Jun 17 17:28:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
-- Add Provides: for python*dist(packaging): work around boo#1186870 
+- Add Provides: for python*dist(packaging): work around boo#1186870
 - skip tests failing because of no-legacyversion-warning.patch
 
 -------------------------------------------------------------------
 Sat May  1 21:03:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- add no-legacyversion-warning.patch to restore compatibility with 20.4 
+- add no-legacyversion-warning.patch to restore compatibility with 20.4
 
 -------------------------------------------------------------------
 Tue Feb  2 01:02:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -337,14 +342,14 @@ Tue May  5 07:23:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 Wed Mar 11 14:37:16 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 20.3
-  * Fix a bug that caused a 32-bit OS that runs on a 64-bit ARM CPU 
+  * Fix a bug that caused a 32-bit OS that runs on a 64-bit ARM CPU
     (e.g. ARM-v8, aarch64), to report the wrong bitness.
 - Drop already upstreamed patch issue_254.patch
 
 -------------------------------------------------------------------
 Mon Feb 10 14:51:38 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- add issue_254.patch to fix tests under non-x86_64 pplatforms 
+- add issue_254.patch to fix tests under non-x86_64 pplatforms
 
 -------------------------------------------------------------------
 Wed Feb  5 13:45:06 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -352,12 +357,12 @@ Wed Feb  5 13:45:06 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 - Update to 20.1
  * Fix a bug caused by reuse of an exhausted iterator.
  * Add type hints
- * Add proper trove classifiers for PyPy support 
- * Scale back depending on ctypes for manylinux support detection 
+ * Add proper trove classifiers for PyPy support
+ * Scale back depending on ctypes for manylinux support detection
  * Use sys.implementation.name where appropriate for packaging.tags
  * Expand upon the API provded by packaging.tags
- * Officially support Python 3.8 
- * Add major, minor, and micro aliases to packaging.version.Version 
+ * Officially support Python 3.8
+ * Add major, minor, and micro aliases to packaging.version.Version
  * Properly mark packaging has being fully typed by adding a py.typed file
 
 -------------------------------------------------------------------
