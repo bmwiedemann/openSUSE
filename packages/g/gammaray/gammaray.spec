@@ -28,17 +28,15 @@
 %define qt_min_version 5.15
 %endif
 %define rname gammaray
-%define short_version 3.1
-%define soversion 3_1_0
+%define short_version 3.2
+%define soversion 3_2_0
 Name:           gammaray%{?pkg_suffix}
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Introspection/Debugging Tool for Qt Applications
 License:        GPL-2.0-or-later
 URL:            https://www.kdab.com/gammaray
 Source0:        https://github.com/KDAB/GammaRay/releases/download/v%{version}/%{rname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         gammaray-qt69.patch
 BuildRequires:  binutils-devel
 BuildRequires:  cmake >= 3.16.0
 BuildRequires:  doxygen
@@ -162,10 +160,7 @@ and debugging utilities specifically tailored for the various
 frameworks in Qt. Development files.
 
 %prep
-%autosetup -p1 -n %{rname}-%{version}
-
-# Unused
-rm -r 3rdparty/KDStateMachineEditor
+%autosetup -p1 -n GammaRay-%{version}
 
 %build
 %define _lto_cflags %{nil}
@@ -174,15 +169,17 @@ rm -r 3rdparty/KDStateMachineEditor
   -DQT_VERSION_MAJOR=5 \
   -DECM_MKSPECS_INSTALL_DIR=%{_libdir}/qt5/mkspecs/modules \
   -DQCH_INSTALL_DIR=%{_datadir}/gammaray
+
 %cmake_build
 %endif
 
 %if 0%{?qt6}
 %cmake_qt6 \
-  -DQT_VERSION_MAJOR=6 \
-  -DECM_MKSPECS_INSTALL_DIR=%{_qt6_mkspecsdir}/modules \
-  -DQCH_INSTALL_DIR=%{_datadir}/gammaray \
-  -DQDOC_INDEX_DIR=%{_qt6_docdir}
+  -DQT_VERSION_MAJOR:STRING=6 \
+  -DECM_MKSPECS_INSTALL_DIR:STRING=%{_qt6_mkspecsdir}/modules \
+  -DQCH_INSTALL_DIR:STRING=%{_datadir}/gammaray \
+  -DQDOC_INDEX_DIR:STRING=%{_qt6_docdir}
+
 %qt6_build
 %endif
 

@@ -251,4 +251,12 @@
   * gammaray-qt69.patch</comment>
     <requestid>1266790</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>60f2164bde60e64207ab46bed1a0831d</srcmd5>
+    <version>3.2.0</version>
+    <time>1747726476</time>
+    <user>anag_factory</user>
+    <comment>Update to 3.2.0</comment>
+    <requestid>1277960</requestid>
+  </revision>
 </revisionlist>
