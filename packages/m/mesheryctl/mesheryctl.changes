@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat May 17 08:07:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.82:
+  * Meshery CLI
+    - chore(mesheryctl-connections): refactor experimental connection
+      command @lekaf974 (#14691)
+  * Maintenance
+    - ci(documentation): fix github action go setup version @lekaf974
+      (#14731)
+    - Bump undici from 5.28.5 to 5.29.0 in /ui @dependabot (#14729)
+  * Documentation
+    - Add contributing guide for Schema-Driven UI development in
+      Meshery @amitamrutiya (#14699)
+    - chore(mesheryctl-connections): refactor experimental connection
+      command @lekaf974 (#14691)
+- update to 0.8.81:
+  * no CLI-related changes in this release
+- update to 0.8.80:
+  * no CLI-related changes in this release
+- update to 0.8.79:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
 Tue May 13 10:44:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.78:
@@ -5722,7 +5745,7 @@ Thu Sep  7 11:42:37 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
     - Update MeshMap Snapshot Service @Abhishek-kumar09 (#8332)
 
 -------------------------------------------------------------------
-Tue Aug  1 13a24:07 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+Tue Aug  1 13:24:07 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.6.114:
   * General
