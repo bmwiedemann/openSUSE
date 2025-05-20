@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 14 09:29:52 UTC 2025 - Tudor Roman <tudor@tudorr.ro>
+
+- Build with systemd support
+  * fix: Unit file uses systemd activation, but program was built
+    without support for it.
+
+-------------------------------------------------------------------
 Wed Apr  9 20:59:26 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.5.1

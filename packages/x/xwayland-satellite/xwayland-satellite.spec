@@ -41,7 +41,7 @@ do not support rootless Xwayland themselves (such as niri & weston 14).
 sed -i 's|/usr/local|/usr|' resources/%{name}.service
 
 %build
-%{cargo_build}
+%{cargo_build} -F systemd
 
 %install
 install -Dm755 target/release/%{name} -t %{buildroot}%{_bindir}
