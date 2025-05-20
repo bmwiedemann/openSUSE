@@ -74,4 +74,12 @@
     <comment> (forwarded request 1193466 from iznogood)</comment>
     <requestid>1193731</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5248500494eba611746777c2a70bc496</srcmd5>
+    <version>2.42.3</version>
+    <time>1747726652</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in old changelog entries (forwarded request 1277791 from dimstar)</comment>
+    <requestid>1278247</requestid>
+  </revision>
 </revisionlist>
