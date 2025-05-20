@@ -1127,4 +1127,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment></comment>
     <requestid>1276851</requestid>
   </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>5bc4a0e6a0557a0e4b14241ae251f829</srcmd5>
+    <version>9.10.2</version>
+    <time>1747726436</time>
+    <user>anag_factory</user>
+    <comment>- more work on riscv64-ncg.patch (forwarded request 1277896 from mimi_vx)</comment>
+    <requestid>1277897</requestid>
+  </revision>
 </revisionlist>
