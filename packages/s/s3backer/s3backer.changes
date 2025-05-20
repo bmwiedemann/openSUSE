@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 10 21:37:49 UTC 2025 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to release 2.1.4
+    - Add new flag "--sharedDiskMode" (issue #236)
+    - Fix use of deprecated cURL constant (pr #228)
+    - Conditionalize nbdkit "block_size" callback (issue #226)
+    - Skip nbd-client(8) cleanup step if it failed to start properly (#227).
+    - Add new flag "--accessEC2IAM-IMDSv2" (issue #228)
+
+-------------------------------------------------------------------
 Wed Jun 12 22:29:33 UTC 2024 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Upgrade to release 2.1.3
