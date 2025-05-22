@@ -171,4 +171,12 @@
     <comment>Make it compatible with new setuptools</comment>
     <requestid>1266268</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>18151fc1b14dfdb9d4cca9f3a662b8b5</srcmd5>
+    <version>6.1</version>
+    <time>1747925822</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1279223</requestid>
+  </revision>
 </revisionlist>

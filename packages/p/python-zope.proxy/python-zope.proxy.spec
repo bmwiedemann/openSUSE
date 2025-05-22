@@ -95,8 +95,8 @@ rm -rf zope.proxy.egg-info
 %{python_sitearch}/zope[_.]proxy-%{version}.dist-info
 
 %files %{python_files devel}
-%dir %{python_sysconfig_path include}/zope_proxy
-%{python_sysconfig_path include}/zope_proxy/*
+%dir %{python_sysconfig_path include}/zope[_.]proxy
+%{python_sysconfig_path include}/zope[_.]proxy/*
 %{python_sitearch}/zope/proxy/proxy.h
 %endif
 
