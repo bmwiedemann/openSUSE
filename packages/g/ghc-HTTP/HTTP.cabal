@@ -1,7 +1,7 @@
 Cabal-Version: >= 1.10
 Name: HTTP
 Version: 4000.4.1
-x-revision: 5
+x-revision: 6
 Build-type: Simple
 License: BSD3
 License-file: LICENSE
@@ -145,7 +145,7 @@ Library
     ghc-options:      -Werror
 
   if os(windows)
-    Build-depends: Win32 >= 2.2.0.0 && < 2.14
+    Build-depends: Win32 >= 2.2.0.0 && < 2.15
 
 Test-Suite test
   type: exitcode-stdio-1.0
