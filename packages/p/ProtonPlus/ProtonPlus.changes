@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 20 20:58:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.4.30:
+  * Add support for Proton-EM
+- update to 0.4.29:
+  * Fix only Steam showing up
+- update to 0.4.28:
+  * Update Chinese translation and improve localization
+  * Update runtime to GNOME 48
+  * Added a check for inactive Steam installation
+
+-------------------------------------------------------------------
 Wed Mar 12 11:53:10 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.4.27:
