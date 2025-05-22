@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 21 05:20:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.4:
+  * PIV certificate list properties by @mmerklinger in #648
+  * Windows certificate mapping for PIV by @mmerklinger in #649
+
+-------------------------------------------------------------------
 Wed May  7 15:42:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.3:
