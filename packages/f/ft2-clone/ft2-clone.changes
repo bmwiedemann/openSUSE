@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 21 19:00:40 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.96
+  * Fixed: When deleting a song position entry, the currently
+    viewed pattern would sometimes not be the correct one.
+  * Reverted tracker scope scaling behavior to that of v1.93 and
+    earlier. This is a minor change. Sample waveform will not
+    have an upper clip now.
+  * Don't bypass window compositor in Linux (fixes broken window
+    manager visuals).
+
+-------------------------------------------------------------------
 Tue Mar  4 17:45:05 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.95
