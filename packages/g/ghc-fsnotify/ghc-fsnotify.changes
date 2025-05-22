@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 20 11:39:03 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update fsnotify to version 0.4.3.0.
+  Version 0.4.3.0
+  ----------
+  * Use polling as a generic fallback and add support for WASM (https://github.com/haskell-fswatch/hfsnotify/pull/110)
+  * Gracefully handle broken symlinks (https://github.com/haskell-fswatch/hfsnotify/pull/120)
+
+-------------------------------------------------------------------
 Fri Mar 21 10:47:51 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update fsnotify to version 0.4.2.0.
