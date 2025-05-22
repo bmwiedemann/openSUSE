@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 21 14:00:25 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.20:
+  * Added full support to CIDR subnets. Thanks to Jefferson J. Raimon. @jeffersonraimon
+  * Fixed a fail to build from source with GCC 15. Thanks to Josh Ellithorpe. @zquestz
+  * Updated OUI table.
+
+-------------------------------------------------------------------
 Sat Dec  3 22:16:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10:

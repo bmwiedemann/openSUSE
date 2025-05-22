@@ -1,7 +1,7 @@
 #
 # spec file for package netdiscover
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           netdiscover
-Version:        0.10
+Version:        0.20
 Release:        0
 Summary:        A network address discovering/monitoring tool
 License:        GPL-3.0-or-later
-Group:          Productivity/Networking/Other
 URL:            https://github.com/netdiscover-scanner/netdiscover
 Source0:        https://github.com/netdiscover-scanner/netdiscover/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
