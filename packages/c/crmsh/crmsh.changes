@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu May 22 09:37:52 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250522.ffecd6cb:
+  * Dev: ChangeLog: update ChangeLog for release 5.0.0-rc1
+  * Dev: ChangeLog: update ChangeLog for release 5.0.0-pre
+
+-------------------------------------------------------------------
+Thu May 22 03:32:12 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250522.b1128f4a:
+  * Dev: testcases: Adjust original testcases for previous commit
+  * Dev: Drop scripts and templates which include unsupported RAs (jsc#PED-8924)
+
+-------------------------------------------------------------------
+Wed May 21 08:18:39 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250521.c5288d1f:
+  * Dev: behave: Adjust related timeout values after removing pcmk_delay_max
+
+-------------------------------------------------------------------
+Wed May 21 06:08:14 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250521.3924dbf7:
+  * Fix: crmsh.spec.in Recommends bash-completion
+  * Fix: Makefile.am: install bash-completion for crm
+  * Fix: Makefile.am: add python wheel target and polish uninstall actions
+
+-------------------------------------------------------------------
+Wed May 21 04:55:47 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250521.b3ef1be4:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: sbd: Remove pcmk_delay_max while cacaulating stonith timeout value
+
+-------------------------------------------------------------------
+Wed May 21 02:39:10 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250521.db6ff2d8:
+  * Dev: behave: Add functional test for previous commit
+  * Fix: corosync: Don't set quorum.two_node to 1 if qdevice configured
+
+-------------------------------------------------------------------
 Tue May 20 09:59:39 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250520.6bc90213:

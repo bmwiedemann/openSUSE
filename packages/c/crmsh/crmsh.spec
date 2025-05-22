@@ -41,7 +41,7 @@ Name:           crmsh
 Summary:        High Availability cluster command-line interface
 License:        GPL-2.0-or-later
 Group:          %{pkg_group}
-Version:        5.0.0+20250520.6bc90213
+Version:        5.0.0+20250522.ffecd6cb
 Release:        0
 URL:            http://crmsh.github.io
 Source0:        %{name}-%{version}.tar.bz2
@@ -59,6 +59,7 @@ Requires:       python3 >= 3.10
 Requires:       python3-PyYAML
 Requires:       python3-lxml
 Requires:       python3-packaging
+Recommends:     bash-completion
 BuildRequires:  python3-lxml
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-pip
