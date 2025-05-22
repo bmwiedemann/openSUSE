@@ -1,3 +1,10 @@
+gpxsee (13.43) stable; urgency=low
+
+  * Improved marine charts (ENC,IMG) style/rendering.
+  * Added OpenFreeMap to the default maps list.
+
+ -- Martin Tuma <tumic@cbox.cz>  Tue, 20 May 2025 22:44:23 +0200
+
 gpxsee (13.42) stable; urgency=low
 
   * Significantly improved marine charts (ENC,IMG) style/rendering.
