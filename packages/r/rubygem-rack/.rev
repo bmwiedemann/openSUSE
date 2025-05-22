@@ -255,4 +255,12 @@ For more detailed information see the installed CHANGELOG.md</comment>
   - rubygem-rack-CVE-2025-27111.patch</comment>
     <requestid>1252026</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>edc40b9b1c5b6971a159958c764e8b08</srcmd5>
+    <version>3.1.15</version>
+    <time>1747925779</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1278995</requestid>
+  </revision>
 </revisionlist>
