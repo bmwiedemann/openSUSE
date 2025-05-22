@@ -17,7 +17,7 @@
 
 
 Name:           terragrunt
-Version:        0.78.4
+Version:        0.80.1
 Release:        0
 Summary:        Thin wrapper for Terraform for working with multiple Terraform modules
 License:        MIT
@@ -26,12 +26,36 @@ Source:         terragrunt-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        Makefile
 Source3:        PACKAGING_README.md
-BuildRequires:  go1.23
+BuildRequires:  bash-completion
+BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.24
 
 %description
 Terragrunt is a thin wrapper for Terraform that provides extra tools for
 keeping your Terraform configurations DRY, working with multiple Terraform
 modules, and managing remote state.
+
+%package -n %{name}-bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-bash-completion
+Bash command line completion support for %{name}.
+
+%package -n %{name}-zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       zsh
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description -n %{name}-zsh-completion
+zsh command line completion support for %{name}.
 
 %prep
 %autosetup -p1 -a 1
@@ -46,9 +70,34 @@ go build \
 # Install the binary.
 install -D -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
 
+# create the shell completion files
+
+rm -f ~/.bashrc ~/.zshrc
+touch ~/.bashrc ~/.zshrc
+
+%{buildroot}/%{_bindir}/%{name} --install-autocomplete
+sed -i 's#%{buildroot}##g' ~/.bashrc ~/.zshrc
+
+# install the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+install -m 0644 ~/.bashrc %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+
+# install the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+install -m 0644 ~/.zshrc %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
+
+%check
+%{buildroot}/%{_bindir}/%{name} --version | grep v%{version}
+
 %files
 %doc README.md
 %license LICENSE.txt
 %{_bindir}/%{name}
+
+%files -n %{name}-bash-completion
+%{_datarootdir}/bash-completion/completions/%{name}
+
+%files -n %{name}-zsh-completion
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %changelog

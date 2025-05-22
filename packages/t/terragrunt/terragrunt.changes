@@ -1,4 +1,128 @@
 -------------------------------------------------------------------
+Thu May 22 10:55:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.80.1:
+  * chore: Build process now leverages Go 1.24 features and
+    improvements by @denis256 in #4324
+- Makefile adapted, upstream now uses mockgen instead of mockery
+- add shell completion subpackages
+
+-------------------------------------------------------------------
+Thu May 22 04:59:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.80.0:
+  Terraform 1.12 support: We are now testing Terragrunt against
+  Terraform 1.12 and is confirmed to be working.
+  NOTE: Although this release is marked as backward incompatible,
+  it is functionally compatible as nothing has been changed in
+  Terragrunt internals. The minor version release is useful to mark
+  the change in Terraform version that is being tested.
+  * What's Changed
+    - chore: Add support for Terraform 1.12 (#4317)
+    - build(deps): bump golang.org/x/sys from 0.32.0 to 0.33.0
+      (#4268)
+    - build(deps): bump cloud.google.com/go/storage from 1.51.0 to
+      1.53.0 (#4269)
+    - build(deps): bump github.com/aws/aws-sdk-go from 1.55.6 to
+      1.55.7 (#4300)
+
+-------------------------------------------------------------------
+Thu May 22 04:52:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.79.3:
+  * Enhancements
+    - Limitation on Catalog URLs lifted
+      A limitation on only supporting recognized go-getter URL
+      patters has been lifted from the catalog command.
+      The reason this limitation existed in the past was to ensure
+      that users were able to have Terragrunt load module source
+      code in browsers from the catalog Terminal User Interface
+      (TUI). To support that, only a constrained set of sources
+      were supported, to ensure that a button was available to pop
+      open the link in the browser.
+      Terragrunt will now dynamically adjust the buttons available
+      after module selection to gracefully degrade the experience,
+      instead of completely rejecting repository sources that can't
+      be predictably converted to browser URLs.
+      This allows more users to adopt the Terragrunt Catalog, while
+      providing the same great user experience for users that are
+      on fully supported platforms, like GitHub, GitLab, BitBucket,
+      etc.
+  * What's Changed
+    - feat: Allow unknown catalog URLs (#4318)
+    - chore: Adjusting catalog implementation (#4315)
+    - Update 04-config-blocks-and-attributes.md (#4319)
+
+-------------------------------------------------------------------
+Thu May 22 04:44:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.79.2:
+  * Performance Improvements
+    - Improved overall performance by memoizing -version output in
+      each unit.
+  * What's Changed
+    - feat: performance improvement on -version execution (#4288)
+
+-------------------------------------------------------------------
+Wed May 21 13:52:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.79.1:
+  * Enhancements
+    - Recursive stack clean
+      Improved stack clean to recursively delete all nested stack
+      directories, ensuring thorough cleanup.
+  * What's Changed
+    - feat: improved `stack clean` to remove recursive stack
+      directories (#4313)
+    - Update QuickStart documentation with an additional example to
+      control the output directory (#4299)
+    - fix: Enabling disabled tests (#4312)
+    - feat: Switching to GitHub Actions OIDC role assumption for
+      OIDC test (#4305)
+    - fix: Correcting `legacy-all` strict control name in docs
+      (#4311)
+
+-------------------------------------------------------------------
+Wed May 21 04:29:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.79.0:
+  * Enhancements
+    The run --all command automatically generates Terragrunt Stacks
+    If you are using terragrunt.stack.hcl files in your codebase,
+    run --all commands will now automatically expand all
+    terragrunt.stack.hcl files into generated stack configurations,
+    as if you had run stack generate before running the run --all
+    command.
+    e.g.
+      terragrunt run --all plan
+    Is now equivalent to:
+      terragrunt stack generate
+      terragrunt run --all plan
+    If you would like to disable this new behavior, you can use the
+    --no-stack-generate to opt out of automatic stack generation.
+  * What's Changed
+    - fix: Fixing install version (#4310)
+    - feat: Adjusting nav height (#4284)
+    - feat: Adding cloud-nuke cron (#4306)
+    - fix: Fixing `remote-relative-with-slash` fixture on ARM tests
+      (#4297)
+    - Improved error handling (#4303)
+    - Automatically stack generate in run --all or run --graph
+      command (#4283)
+    - build(deps): bump DavidAnson/markdownlint-cli2-action from 19
+      to 20 (#4302)
+    - build(deps): bump ruby/setup-ruby from 1.238.0 to 1.242.0
+      (#4301)
+    - build(deps): bump github.com/gruntwork-io/terratest (#4267)
+    - build(deps): bump ruby/setup-ruby from 1.233.0 to 1.238.0
+      (#4270)
+    - Enable back disable test (#4286)
+    - feat: Github Action tests migration (#4281)
+    - feat: Adding GTM (#4285)
+    - feat: Moving users over to terragrunt-v1.gruntwork.io docs
+      (#4202)
+
+-------------------------------------------------------------------
 Wed May 14 04:49:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.78.4:
