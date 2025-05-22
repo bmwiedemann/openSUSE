@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 12 18:12:26 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.10.2.
+  texmath (0.12.10.2)
+
+    * Use texmath-symbols 0.1.8 (supports typst 0.13 symbols).
+
+  texmath (0.12.10.1)
+
+    * MathML writer: group function application with operator name (#262).
+      This fixes an issue with munder/mover. Previously the mo
+      with the U+2061 was being put under the 'lim' operator
+      instead of 'n -> oo'. Grouping them ensures that munder/mover
+      will work properly.
+
+-------------------------------------------------------------------
 Tue Apr 29 21:50:43 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update texmath to version 0.12.10.
