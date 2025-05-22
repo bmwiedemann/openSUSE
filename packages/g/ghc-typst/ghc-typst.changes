@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon May 12 20:56:24 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update typst to version 0.8.
+  ## 0.8
+
+    * Allow `json`, `toml`, `xml` to take either file path or bytes.
+
+    * Allow `read` to return bytes if encoding is 'none'.
+
+    * `bibliography`, `image`: change parameter name to `source` and allow bytes.
+
+    * Add 'bytes' as a type name and constructor.
+
+    * Add VBytes constructor for Val and TBytes for ValType. [API change]
+
+    * Allow values of arguments type to be added together.
+
+    * Support `calc.norm`.
+
+    * Math: add `lcm` operator.
+
+    * Require typst-symbols >= 0.1.8.1 (#67), giving us typst 0.13 symbols.
+
+    * Add "dictionary" as name of TDict type (#65).
+
+-------------------------------------------------------------------
 Sun Mar 16 17:15:48 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update typst to version 0.7.
