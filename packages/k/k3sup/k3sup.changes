@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 21 11:03:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.13.9:
+  * Update vendor
+  * Look for default service account before marking cluster ready
+  * Cancel concurrent builds
+  * Create request-a-feature.md
+  * Update issue templates
+
+-------------------------------------------------------------------
 Tue Jan 21 06:07:59 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.13.8:
