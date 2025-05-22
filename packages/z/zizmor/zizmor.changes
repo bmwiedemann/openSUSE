@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed May 21 04:29:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.8.0:
+  * Announcements
+    - zizmor's website has changed! The new website is hosted at
+      docs.zizmor.sh. The old website will redirect to the new one
+      for a while, but users should update any old links in
+      preparation for the v1.8.0 release, which will likely remove
+      the redirects entirely (#769)
+    - zizmor is now hosted under the @zizmorcore GitHub
+      organization as zizmorcore/zizmor. The old repository at
+      woodruffw/zizmor will redirect to the new one, but users
+      should update any old links to limit confusion
+  * New Features
+    - zizmor now supports the ZIZMOR_CONFIG environment variable as
+      an alternative to --config (#789)
+  * Bug Fixes
+    - zizmor now correctly handles index-style contexts in the
+      template-injection audit (#800, #806)
+  * Dependencies
+    - chore(deps): `cargo autoinherit` (#826)
+    - chore(deps): bump zizmorcore/zizmor-action in the
+      github-actions group (#822)
+    - chore(deps): bump owo-colors from 4.2.0 to 4.2.1 in the cargo
+      group (#812)
+    - chore(deps): run `cargo autoinherit` (#805)
+    - chore(deps): bump the cargo group with 5 updates (#786)
+
+-------------------------------------------------------------------
 Fri May 09 05:25:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add shell completion subpackages
