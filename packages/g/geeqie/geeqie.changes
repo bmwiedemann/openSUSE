@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon May 12 13:11:28 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 2.6:
+  + Four OSD profiles
+  + Move some file dialogs to gtk_file_chooser()
+  + Additional command line option: --dupes-export
+  + Additional command line option: --dupes
+  + Additional command line option: --dupes-recurse=
+  + Modify Open Collection menu
+  + Additional --get-file-info data: Marks, Path to thumbnail
+  + Additional menu item - system Open Recent File
+  + Additional menu item - system Open File
+  + Updated Help files
+  + Allow rectangle drawing up and to left
+  + Improve user info. after crash
+  + Improve user info. when a config. file error is detected
+  + Additional command line option: --file-extensions
+  + Additional file type: FITS
+  + Additional file type: numpy
+  + Additional file type: EXR
+  + Convert Geeqie to be a GtkApplication
+  + Updated translations.
+- Update BuildRequires following upstream changes: Drop
+  pkgconfig(lcms2) and add pkgconfig(OpenEXR) pkgconfig(cfitsio).
+
+-------------------------------------------------------------------
 Mon Mar 25 07:00:58 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 2.4:

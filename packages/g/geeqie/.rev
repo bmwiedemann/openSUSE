@@ -303,4 +303,34 @@
   geeqie-2.2-fix-rename-crash.patch: fixed upstream.</comment>
     <requestid>1161714</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>abe450c95c72b5b51e2b10a8dda2883f</srcmd5>
+    <version>2.6</version>
+    <time>1747925783</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.6:
+  + Four OSD profiles
+  + Move some file dialogs to gtk_file_chooser()
+  + Additional command line option: --dupes-export
+  + Additional command line option: --dupes
+  + Additional command line option: --dupes-recurse=
+  + Modify Open Collection menu
+  + Additional --get-file-info data: Marks, Path to thumbnail
+  + Additional menu item - system Open Recent File
+  + Additional menu item - system Open File
+  + Updated Help files
+  + Allow rectangle drawing up and to left
+  + Improve user info. after crash
+  + Improve user info. when a config. file error is detected
+  + Additional command line option: --file-extensions
+  + Additional file type: FITS
+  + Additional file type: numpy
+  + Additional file type: EXR
+  + Convert Geeqie to be a GtkApplication
+  + Updated translations.
+- Update BuildRequires following upstream changes: Drop
+  pkgconfig(lcms2) and add pkgconfig(OpenEXR) pkgconfig(cfitsio).
+</comment>
+    <requestid>1279019</requestid>
+  </revision>
 </revisionlist>

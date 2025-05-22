@@ -1,7 +1,7 @@
 #
 # spec file for package geeqie
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           geeqie
-Version:        2.4
+Version:        2.6
 Release:        0
 Summary:        Lightweight Gtk+ based image viewer
 License:        GPL-2.0-or-later
@@ -40,13 +40,14 @@ BuildRequires:  update-desktop-files
 BuildRequires:  vim
 BuildRequires:  yelp-tools
 BuildRequires:  yelp-xsl
+BuildRequires:  pkgconfig(OpenEXR) >= 3.0.0
+BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(champlain-0.12) >= 0.12
 BuildRequires:  pkgconfig(champlain-gtk-0.12) >= 0.12
 BuildRequires:  pkgconfig(ddjvuapi) >= 3.5.27
 BuildRequires:  pkgconfig(exiv2) >= 0.11
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
-BuildRequires:  pkgconfig(lcms2) >= 2.0
 BuildRequires:  pkgconfig(libarchive) >= 3.4.0
 BuildRequires:  pkgconfig(libffmpegthumbnailer) >= 2.1.0
 BuildRequires:  pkgconfig(libheif) >= 1.3.2
@@ -85,10 +86,11 @@ rm %{buildroot}%{_docdir}/%{name}/COPYING
 
 %files
 %license COPYING
-%doc NEWS TODO README.md
+%doc NEWS README.md
 %doc %{_docdir}/%{name}/html
 %{_bindir}/geeqie
-%{_datadir}/applications/org.geeqie.Geeqie.desktop
+%{_datadir}/applications/org.geeqie.{Geeqie,cache-maintenance}.desktop
+%{_datadir}/bash-completion/completions/geeqie
 %{_datadir}/icons/hicolor/scalable/apps/geeqie.svg
 %{_datadir}/geeqie/
 %{_datadir}/pixmaps/geeqie.png
