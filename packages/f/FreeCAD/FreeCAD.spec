@@ -35,14 +35,22 @@
 %bcond_without smesh
 %bcond_with    cmake_trace
 
+%if 0%{?suse_version} > 1500
+%define qt_version 6
+%else
+%define qt_version 5
+%endif
+
 Name:           FreeCAD
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        General Purpose 3D CAD Modeler
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            https://www.freecad.org/
-Source0:        https://github.com/FreeCAD/FreeCAD/releases/download/%{version}/freecad_source.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/FreeCAD/FreeCAD/releases/download/%%{version}/freecad_source.tar.gz
+Source0:        https://github.com/FreeCAD/FreeCAD/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://github.com/FreeCAD/OndselSolver/archive/09d6175a2ba69e7016fcecc4f384946a2f84f92d.zip#/ondselsolver-09d6175a2ba6.zip
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Gui-Quarter-Add-missing-OpenGL-includes.patch
 # PATCH-FIX-OPENSUSE
@@ -55,30 +63,24 @@ Patch3:         0001-Mod-CAM-Add-missing-OpenGL-includes.patch
 Patch9:         0001-Fix-variable-name-for-OpenGL-library.patch
 # PATCH-FIX-OPENSUSE
 Patch14:        freecad-opengl.patch
-# PATCH-FIX-UPSTREAM
-Patch15:        https://github.com/FreeCAD/FreeCAD/commit/3b502359353e2a74dee8a8bcfed5750b69f32cdc.patch#/smesh-Fix-build-failure-with-vtk-9_4.patch
 # PATCH-FIX-UPSTREAM -- Prereq for Fix-test-failure-temporary-file-race.patch
 Patch16:        https://github.com/FreeCAD/FreeCAD/commit/6f23f01e509348a6755ad3c465a3d7ffd758ee03.patch#/Add-property-read-write-test.patch
-# PATCH-FIX-UPSTREAM -- https://github.com/FreeCAD/FreeCAD/commit/a0e1a31623e334d7186e687c33fad3887e91ee2e -- rebased
-Patch17:        Fix-test-failure-temporary-file-race.patch
-# PATCH-FIX-UPSTREAM FreeCad-drop-imghdr-import.patch badshah400@gmail.com -- Drop imghdr import to allow building with python 3.13; upstream commit
-Patch18:        https://github.com/FreeCAD/FreeCAD/commit/a3a0d316b13deb31c7a4b47a069702980de8f1bc.patch#/FreeCad-drop-imghdr-import.patch
 # PATCH-FIX-UPSTREAM
-Patch50:        https://github.com/Ondsel-Development/OndselSolver/commit/2e3659c4bce3e6885269e0cb3d640261b2a91108.patch#/ondselsolver_fix_gcc_75_filesystem.patch
+Patch17:        https://github.com/FreeCAD/FreeCAD/commit/a0e1a31623e334d7186e687c33fad3887e91ee2e.patch#/Fix-test-failure-temporary-file-race.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
 
-BuildRequires:  libboost_filesystem-devel >= 1.55
-BuildRequires:  libboost_graph-devel >= 1.55
-BuildRequires:  libboost_program_options-devel >= 1.55
-BuildRequires:  libboost_regex-devel >= 1.55
+BuildRequires:  libboost_filesystem-devel >= 1.65
+BuildRequires:  libboost_graph-devel >= 1.65
+BuildRequires:  libboost_program_options-devel >= 1.65
+BuildRequires:  libboost_regex-devel >= 1.65
 %if %{without boost_signals2}
-BuildRequires:  libboost_signals-devel >= 1.55
+BuildRequires:  libboost_signals-devel >= 1.65
 %endif
-BuildRequires:  libboost_serialization-devel >= 1.55
-BuildRequires:  libboost_system-devel >= 1.55
-BuildRequires:  libboost_thread-devel >= 1.55
+BuildRequires:  libboost_serialization-devel >= 1.65
+BuildRequires:  libboost_system-devel >= 1.65
+BuildRequires:  libboost_thread-devel >= 1.65
 
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
@@ -106,18 +108,24 @@ BuildRequires:  occt-devel
 BuildRequires:  pkg-config
 BuildRequires:  proj-devel
 BuildRequires:  sqlite3-devel
+BuildRequires:  unzip
 
-# Qt5 & python3
+# Qt & python3
 BuildRequires:  python3-devel >= 3.6.9
 BuildRequires:  python3-matplotlib
 BuildRequires:  python3-pivy >= 0.6.8
 BuildRequires:  python3-ply
 BuildRequires:  python3-pybind11-devel
 BuildRequires:  python3-pycxx-devel
+%if %{qt_version} == 5
 BuildRequires:  python3-pyside2-devel
+%else
+BuildRequires:  python3-pyside6-devel
+%endif
 BuildRequires:  python3-vtk
 BuildRequires:  python3-xml
 BuildRequires:  cmake(GTest)
+BuildRequires:  cmake(Microsoft.GSL)
 %if %{with zipios}
 BuildRequires:  cmake(ZipIos)
 %endif
@@ -126,24 +134,31 @@ BuildRequires:  cmake(yaml-cpp)
 %if %{with ondselsolver}
 BuildRequires:  pkgconfig(OndselSolver)
 %endif
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5ScriptTools)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5XmlPatterns)
+BuildRequires:  cmake(Qt%{qt_version}Concurrent)
+BuildRequires:  cmake(Qt%{qt_version}LinguistTools)
+BuildRequires:  cmake(Qt%{qt_version}Network)
+BuildRequires:  cmake(Qt%{qt_version}OpenGL)
+BuildRequires:  cmake(Qt%{qt_version}PrintSupport)
+BuildRequires:  cmake(Qt%{qt_version}Svg)
+BuildRequires:  cmake(Qt%{qt_version}Test)
+BuildRequires:  cmake(Qt%{qt_version}UiTools)
 BuildRequires:  pkgconfig(liblzma)
+
 Requires:       python3-numpy
+%if %{qt_version} == 5
 Requires:       python3-pyside2
+%else
+Requires:       python3-pyside6
+%endif
 Requires:       python3-vtk
+
 # For Arch & Draft workbench
 Requires:       python3-pivy
+
 # For FEM workbench
 Requires:       python3-PyYAML
-Requires:       python3-matplotlib-qt5
+Requires:       python3-matplotlib
+Recommends:     python3-matplotlib-qt
 Requires:       python3-ply
 Requires:       python3-six
 
@@ -170,11 +185,11 @@ Requires:       %{name} = %{version}
 This package contains the files needed for development with FreeCAD.
 
 %prep
-%autosetup -c -N
-%autopatch -p1 -M 49
+%autosetup -N -b 1
+%autopatch -p1
 
-# Run manually, have to inject the 3rdParty path
-cat %{P:50} | patch --verbose -d src/3rdParty/OndselSolver -p1
+rmdir ./src/3rdParty/OndselSolver
+mv ../OndselSolver-* ./src/3rdParty/OndselSolver
 
 # Use system gtest - https://github.com/FreeCAD/FreeCAD/issues/10126
 sed -i -e 's/add_subdirectory(lib)/find_package(GTest)/' \
@@ -182,7 +197,7 @@ sed -i -e 's/add_subdirectory(lib)/find_package(GTest)/' \
        -e 's/ gmock_main/ GTest::gmock_main/' \
   tests/CMakeLists.txt \
   tests/src/Mod/*/CMakeLists.txt
-# Lower Python minimum version for Leap
+# Lower Python minimum version for Leap 15.x
 sed -i -e 's/3.8/3.6/' cMake/FreeCAD_Helpers/SetupPython.cmake
 
 # fix env-script-interpreter
@@ -232,13 +247,18 @@ rm tests/lib -fr
   -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON \
   -DOCC_INCLUDE_DIR=%{_includedir}/opencascade \
   -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-  -DPYTHON_INCLUDE_DIR=%{python3_sysconfig_path include} \
+%if %{qt_version} == 5
+  -DFREECAD_QT_VERSION=5 \
   -DSHIBOKEN_INCLUDE_DIR=/usr/include/shiboken2/ \
   -DPYSIDE_INCLUDE_DIR=/usr/include/PySide2/ \
+%else
+  -DFREECAD_QT_VERSION=6 \
+  -DSHIBOKEN_INCLUDE_DIR=/usr/include/shiboken6/ \
+  -DPYSIDE_INCLUDE_DIR=/usr/include/PySide6/ \
+%endif
   -DPYBIND11_FINDPYTHON:BOOL=ON \
   -DFREECAD_USE_PYBIND11:BOOL=ON \
   -DBUILD_ENABLE_CXX_STD:STRING="C++17" \
-  -DFREECAD_QT_MAJOR_VERSION=5 \
   -DFREECAD_USE_QT_DIALOG:BOOL=OFF \
   -DFREECAD_USE_EXTERNAL_FMT:BOOL=TRUE \
   -DFREECAD_USE_EXTERNAL_PIVY:BOOL=TRUE \
@@ -282,6 +302,7 @@ rm -Rf %{buildroot}%{_datadir}/pixmaps
 rm %{buildroot}%{x_prefix}/include/E57Format/E57Export.h
 rm -Rf %{buildroot}%{_includedir}/%{name}/OndselSolver
 rm %{buildroot}%{_datadir}/pkgconfig/OndselSolver.pc
+rm %{buildroot}/%{_libdir}/%{name}/lib/libOndselSolver.so
 rmdir %{buildroot}%{_datadir}/pkgconfig
 rmdir %{buildroot}%{x_prefix}/include/E57Format
 # Broken

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 15 17:47:26 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.0.1
+  This is a bugfix release, no new features
+- Use Qt6 for Tumbleweed and Leap 16.x
+- Drop upstream patches:
+  * FreeCad-drop-imghdr-import.patch
+  * smesh-Fix-build-failure-with-vtk-9_4.patch
+  * ondselsolver_fix_gcc_75_filesystem.patch
+- Rebase:
+  * Fix-test-failure-temporary-file-race.patch
+
+-------------------------------------------------------------------
 Tue Apr 15 07:55:40 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop BuildRequires: pkgconfig(glew) as it is not used for build.
