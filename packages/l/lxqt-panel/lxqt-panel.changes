@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat May 17 15:33:03 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.2.1:
+  * Enable "Show Desktop" plugin under wlroots wayland compositors
+  * Workarounds are added for kwin_wayland's problems with showing
+    desktop
+  * The children of a window are minimized with it on kwin_wayland
+  * Redundant attention demands (urgency hitns are removed under
+    kwin_wayland
+  * A rare DND crash is prevented in Task Manager under Wayland
+  * Removed ancient QT_USE_XXXX variabls and dropped QTX_LIBRARIES
+  * Timezone switching with mouse wheel is made optional in World
+    Clock.
+  * Added an icon for plugin-sensors
+  * Code Cleanup
+
+-------------------------------------------------------------------
 Thu Apr 17 21:53:05 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.2.0:

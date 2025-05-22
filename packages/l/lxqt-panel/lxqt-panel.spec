@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-panel
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        LXQt desktop panel
 License:        LGPL-2.1-or-later
@@ -34,25 +34,25 @@ Patch1:         0002-panel-conf-branding.patch
 #PATCH-FIX-UPSTREAM 0003-use-wlroots-backend-with-unknown-compositors.patch
 #https://github.com/lxqt/lxqt-panel/pull/2161
 Patch2:         0003-use-wlroots-backend-with-unknown-compositors.patch
-BuildRequires:  cmake >= 3.27.0
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  libsensors4-devel
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel
 
 BuildRequires:  cmake(KF6Solid)
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(LayerShellQt) >= 6.0.0
+BuildRequires:  cmake(lxqt2-build-tools)
+BuildRequires:  cmake(lxqt-menu-data) >= 2.1.0
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6GuiPrivate) >= 6.3.5
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6WaylandClient)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
-BuildRequires:  cmake(lxqt-menu-data) >= 2.1.0
-BuildRequires:  cmake(lxqt2-build-tools)
 
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbusmenu-lxqt)
