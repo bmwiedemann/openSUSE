@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 21 06:40:31 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Update to mutt 2.2.14 (Bug fix release)
+  * fixing a couple possible crashes, in GPGME and with IMAP when
+    logging out
+  * and correcting a small issue with unnecessary encoding of "."
+    in attachment names (2231 encoding). 
+- Make doc info and hmtl file build without network
+- Set default mail spool files
+
+-------------------------------------------------------------------
 Mon Jul 15 08:13:13 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Remove patch aw.listreply.diff as it conflicts with builtin

@@ -1488,4 +1488,18 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
   of mutt function (boo#1227731)</comment>
     <requestid>1187531</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>1b9ebff61dca9f9df96a165b4a48357a</srcmd5>
+    <version>2.2.14</version>
+    <time>1747925780</time>
+    <user>anag_factory</user>
+    <comment>- Update to mutt 2.2.14 (Bug fix release)
+  * fixing a couple possible crashes, in GPGME and with IMAP when
+    logging out
+  * and correcting a small issue with unnecessary encoding of &quot;.&quot;
+    in attachment names (2231 encoding). 
+- Make doc info and hmtl file build without network
+- Set default mail spool files</comment>
+    <requestid>1278996</requestid>
+  </revision>
 </revisionlist>

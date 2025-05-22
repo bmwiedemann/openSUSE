@@ -1,7 +1,7 @@
 #
 # spec file for package mutt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,14 @@
 %bcond_with    mutt_openssl
 %bcond_without mutt_gnutls
 Name:           mutt
-Version:        2.2.13
+Version:        2.2.14
 Release:        0
 Summary:        Mail Program
 # ftp://ftp.mutt.org/mutt/devel/
 # https:///bitbucket.org/mutt/mutt/downloads/%%name-%%version.tar.gz
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Clients
-URL:            http://www.mutt.org
+URL:            https://www.mutt.org
 Source0:        https://bitbucket.org/mutt/mutt/downloads/mutt-%{version}.tar.gz
 Source1:        Signature_conversion
 Source2:        README.alternates
@@ -64,7 +64,7 @@ BuildRequires:  automake
 BuildRequires:  cyrus-sasl
 BuildRequires:  cyrus-sasl-gssapi
 BuildRequires:  cyrus-sasl-plain
-BuildRequires:  docbook-dsssl-stylesheets
+BuildRequires:  docbook-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook2x
 BuildRequires:  hunspell
@@ -77,10 +77,12 @@ BuildRequires:  opensp
 BuildRequires:  pkgconfig
 BuildRequires:  texlive-jadetex
 BuildRequires:  w3m
+BuildRequires:  pkgconfig(gpg-error)
 BuildRequires:  pkgconfig(gssrpc)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(zlib)
 BuildRequires:  tex(8r.enc)
 %if 0%{suse_version} >= 1500
 BuildRequires:  python3-base
@@ -94,7 +96,7 @@ Requires:       glibc-locale
 Suggests:       smtp_daemon
 Requires(post): %{_bindir}/cat
 Requires(post): %{_bindir}/mkdir
-Requires(postun):%{_bindir}/rm
+Requires(postun): %{_bindir}/rm
 Requires(pre):  %{_bindir}/grep
 Requires(pre):  %{_bindir}/zcat
 Recommends:     hunspell
@@ -109,31 +111,15 @@ BuildRequires:  pkgconfig(openssl)
 %if %{with mutt_gnutls}
 BuildRequires:  pkgconfig(gnutls)
 %endif
-%if 0%{?suse_version} > 1315
-BuildRequires:  pkgconfig(kyotocabinet)
-%else
 BuildRequires:  libkyotocabinet-devel
-%endif
-%if 0%{?suse_version} > 1315
 BuildRequires:  pkgconfig(libidn2)
-%else
-BuildRequires:  pkgconfig(libidn)
-%endif
-%if 0%{?suse_version} > 1315
 BuildRequires:  pkgconfig(ncurses)
-%else
-BuildRequires:  ncurses-devel
-%endif
-%if 0%{?suse_version} > 1130
 BuildRequires:  pkgconfig(shared-mime-info)
-%endif
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
 %endif
-%if 0%{?suse_version} > 1130
 Requires(post): shared-mime-info
-Requires(postun):shared-mime-info
-%endif
+Requires(postun): shared-mime-info
 
 %description
 A very powerful mail user agent. It supports (among other nice things)
@@ -146,7 +132,7 @@ Summary:        Additional Documentation about Mutt
 Group:          Documentation/Other
 Requires:       %{name} = %{version}
 Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 Recommends:     perl(Expect)
 Provides:       %{name}:%{_docdir}/%{name}/COPYRIGHT
 BuildArch:      noarch
@@ -256,14 +242,14 @@ $KRB5CFGPATH --version
 	--with-gss=%{_prefix} \
 	--with-curses=%{_prefix} \
 	--with-sqlite3=%{_prefix} \
+	--with-zlib=%{_prefix} \
+	--with-mailpath=%{_localstatedir}/mail \
+	--with-homespool=Mail/mailbox \
 	--enable-smtp \
 	--enable-hcache \
 	--enable-debug \
-%if 0%{?suse_version} > 1315
 	--with-idn2
-%else
-	--with-idn
-%endif
+SP_ENCODING=UTF-8; export SP_ENCODING
 %make_build -C doc clean
 %make_build
 %make_build -C doc

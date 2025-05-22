@@ -230,7 +230,7 @@
 +}
 --- sendlib.c
 +++ sendlib.c	2020-01-14 13:28:45.787807571 +0000
-@@ -2589,7 +2589,11 @@ send_msg (const char *path, char **args,
+@@ -2591,7 +2591,11 @@ send_msg (const char *path, char **args,
        if (SendmailWait >= 0 && tempfile && *tempfile)
        {
  	/* *tempfile will be opened as stdout */
