@@ -1317,4 +1317,14 @@ mostly-working synapse than nothing at all) and the package has been update to
       using delegated auth. (#18337)</comment>
     <requestid>1274932</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>185e6709a28e732f8674fa2e0d215adb</srcmd5>
+    <version>1.130.0</version>
+    <time>1747925745</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1278898 from darix
+
+- Update to 1.130.0</comment>
+    <requestid>1278899</requestid>
+  </revision>
 </revisionlist>
