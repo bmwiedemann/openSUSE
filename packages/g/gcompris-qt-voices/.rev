@@ -196,4 +196,13 @@ please place in same staging as gcompris-qt
     <comment></comment>
     <requestid>1270192</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2dee5eb51dc3064b78892b520dd0133b</srcmd5>
+    <version>25.1~20250521</version>
+    <time>1747925840</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 25.1~20250521 for gcompris-qt 25.1
+</comment>
+    <requestid>1279262</requestid>
+  </revision>
 </revisionlist>
