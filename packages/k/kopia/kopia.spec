@@ -17,7 +17,7 @@
 
 
 Name:           kopia
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        Cross-platform backup tool with fast incremental backups
 License:        Apache-2.0
