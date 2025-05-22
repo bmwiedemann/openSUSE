@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue May 20 01:50:03 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update persistent to version 2.16.0.0.
+  # 2.16.0.0
+
+  * [#1584](https://github.com/yesodweb/persistent/pull/1584)
+      * Rename `Span` to `SourceSpan`
+      * Parse entity definitions using Megaparsec.
+      * Support Haddock-style multiline pre-comments.
+  * [#1589](https://github.com/yesodweb/persistent/pull/1589)
+      * Support configurable parse errors and warnings
+  * [#1585](https://github.com/yesodweb/persistent/pull/1585)
+      * Support parsing PersistField UTCTime from text with timezone, e.g. "2025-04-12T06:53:42Z".
+        This is needed for Sqlite, which has no native datetime support but uses e.g. TEXT.
+  * [#1587](https://github.com/yesodweb/persistent/pull/1587)
+      * Improve documentation of `mpsFieldLabelModifier`.
+
+  # 2.15.1.0
+
+  * [#1519](https://github.com/yesodweb/persistent/pull/1519/files/9865a295f4545d30e55aacb6efc25f27f758e8ad#diff-5af2883367baae8f7f266df6a89fc2d1defb7572d94ed069e05c8135a883bc45)
+      * Add `keyAndEntityFieldsDatabase`. This was intended to be added in 2.14.7.0 but was not properly re-exported.
+
+  # 2.15.0.1
+
+  * [#1575](https://github.com/yesodweb/persistent/pull/1575)
+      * Fix benchmark build for GHC 9.8-9.12
+      * Support `template-haskell` up to 2.24
+
+  # 2.15.0.0
+
+  * [#1569](https://github.com/yesodweb/persistent/pull/1569)
+    * Add position information to `EntityDef`, `UnboundEntityDef` via a `Span`
+      field as a preliminary design that just gives the entire span of the
+      input text (i.e. the entire file or quasiquote the item is defined in).
+    * Move `Database.Persist.TH` internals to `Database.Persist.TH.Internal` and
+      no longer export the following internals:
+      * lensPTH
+      * parseReferences
+      * embedEntityDefs
+      * fieldError
+      * AtLeastOneUniqueKey(..)
+      * OnlyOneUniqueKey(..)
+      * pkNewtype
+
+-------------------------------------------------------------------
 Tue Apr  8 06:14:53 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update persistent to version 2.14.6.3 revision 1.
