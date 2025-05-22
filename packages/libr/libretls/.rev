@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cfd4964fb018f23f27e8abb08f049d30</srcmd5>
+    <version>3.8.1</version>
+    <time>1747925737</time>
+    <user>anag_factory</user>
+    <comment>LibreTLS is a port of libtls from LibreSSL to OpenSSL
+
+Needs: Prefer: -libretls-devel</comment>
+    <requestid>1278864</requestid>
+  </revision>
+</revisionlist>

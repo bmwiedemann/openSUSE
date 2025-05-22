@@ -1,0 +1,10 @@
+<package name="libretls" project="openSUSE:Factory">
+  <title>Libtls for OpenSSL</title>
+  <description>LibreTLS is a port of libtls from LibreSSL to OpenSSL. libtls is “a new TLS
+library, designed to make it easier to write foolproof applications”.
+
+LibreTLS aims to make the libtls API more easily and widely available for
+OpenSSL based systems. Specifically it uses the default CA locations of
+OpenSSL.</description>
+  <url>https://git.causal.agency/libretls/about/</url>
+</package>
