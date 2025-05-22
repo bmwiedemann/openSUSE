@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 14 15:08:21 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %make_build instead of %jobs (boo#1237231)
+- Mark COPYING file as %license
+
+-------------------------------------------------------------------
 Thu Feb  8 16:01:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Prepare for RPM 4.20: use autosetup.

@@ -64,7 +64,7 @@ export CFLAGS="-DLDAP_DEPRECATED $RPM_OPT_FLAGS -fcommon"
     --enable-browser-dnd 		\
     --disable-update-mimedb             \
     --disable-debugging
-%__make %{?jobs:-j%jobs}
+%make_build
 
 %install
 %makeinstall
@@ -89,7 +89,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README TODO
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README TODO
 %{_bindir}/gq
 %{_datadir}/pixmaps/gq/
 #%{prefix}/share/locale/*/LC_MESSAGES/gq.mo
