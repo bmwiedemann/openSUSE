@@ -1,0 +1,5 @@
+<package name="eduvpn-common" project="openSUSE:Factory">
+  <title>eduvpn-common</title>
+  <description>It is needed by 'eduvpn-client' - the corresponding front-end . Package contains the shared library written in Go with functions that all eduVPN clients can use and a python wrapper. The latter has dependency to 'libeduvpn_common'.</description>
+  <url>https://eduvpn.codeberg.page/eduvpn-common/</url>
+</package>

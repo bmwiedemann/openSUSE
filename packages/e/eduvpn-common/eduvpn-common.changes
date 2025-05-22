@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Wed May 14 11:46:04 UTC 2025 - René Neumaier <r.neumaier@mailbox.org> - 3.0.0
+
+- Change specfile name and package names
+  * Name specfile 'eduvpn-common' witch corresponding subpackages
+  * Add support for multiple python versions
+  * Fix 'BuildRequires' incl. usage of macro %{python_module}
+  * Fix 'Requires' package names
+  * Change 'build macros'
+  * Add libname as 'soname' in 'go build' product
+  * Add %check routine
+  * Cosmetic changes
+
+-------------------------------------------------------------------
+Sun Apr 27 17:27:14 UTC 2025 - René Neumaier <r.neumaier@mailbox.org> - 3.0.0
+
+- Update to 3.0.0
+- Changed source URL from GitHub to Codeberg
+- BuildRequires Go >= 1.23
+
+-------------------------------------------------------------------
+Sat Aug  3 16:00:35 UTC 2024 - René Neumaier <r.neumaier@mailbox.org> - 2.1.0
+
+- Update to 2.1.0
+- Changed 'URL' to official project website
+- Added GPG package source verification
+
+-------------------------------------------------------------------
+Tue Jul  2 19:55:59 UTC 2024 - René Neumaier <r.neumaier@mailbox.org> - 2.0.2
+
+- Update to 2.0.2
+  * Client: More frequent state file saving which helps forceful
+    closes of a client
+  * Config: Implement atomic file writes
+
+-------------------------------------------------------------------
+Tue Jun 11 17:34:57 UTC 2024 - René Neumaier <r.neumaier@mailbox.org> - 2.0.1
+
+- Update to 2.0.1
+  * Lots of changes between version 1.2.1 and 2.0.1 please checkout
+    the full release notes in docdir (/usr/share/doc/packages)
+
+-------------------------------------------------------------------
+Tue Jun  4 13:13:23 UTC 2024 - René Neumaier <r.neumaier@mailbox.org> - 1.2.1
+
+- Update to 1.2.1
+  * python wrapper: Do not add type annotation for global object
+  * python wrapper: Do not use \* in docstring to avoid
+    SyntaxWarning for Python 3.12
+
+-------------------------------------------------------------------
+Sun Dec 17 00:38:05 UTC 2023 - René Neumaier <r.neumaier@mailbox.org> - 1.2.0
+
+- Update to 1.2.0
+  * Small changes - OAuth, API, Renew
+  * See full release notes in docdir (/usr/share/doc/packages)
+- Fix specfile issues
+  * Add upstream license, readme and changelog file to package
+  * Fix license information in RPM summary
+
+-------------------------------------------------------------------
+Tue Dec  5 15:39:57 UTC 2023 - René Neumaier <r.neumaier@mailbox.org>
+
+- Specfile changes
+  * Insert fdupes due to duplicates
+  * Cosmetics
+
+-------------------------------------------------------------------
+Mon Dec  4 23:01:37 UTC 2023 - René Neumaier <r.neumaier@mailbox.org> - 1.1.2
+
+- Initial commit at 1.1.2
+  * Reworked Fedora39 spec from https://app.eduvpn.org
+  * Attach last recent GitHub changelog as following:
+
+- 1.1.2 (2023-09-01)
+  * Server:
+    * Update endpoints more frequently
+    * Update endpoints differently for secure internet: For the
+      "home server" and the "current location" separately
+  * Python:
+    * Change setup.py lib copying to fix pip building with
+      manylinux
+  * Deps:
+    * Update go.mod/go.sum
+
+- 1.1.1 (2023-08-29)
+  * Server:
+    * Update OAuth endpoints when endpoints are refreshed from
+      .well-known/vpn-user-portal
