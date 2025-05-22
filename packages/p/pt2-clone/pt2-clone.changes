@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May 21 18:58:31 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.75
+  * Set Sample Offset (9xx) now works on >64kB samples.
+  * You can now use SHIFT+(ALT/CTRL)+left/right/up/down to adjust
+    the sample data mark in the sampler screen.
+  * SHIFT+(ALT/CTRL)+z = play sample range in the sample editor
+    screen.
+- Update to version 1.74
+  * Crash-fix: If you attempted to move the loop start point of
+    a single-cycle waveform while the tuning tone was enabled,
+    the program would crash.
+  * Don't bypass window compositor in Linux (fixes broken
+    window manager visuals).
+  * Fixed accidental playback stop in the classic "dirt.mod"
+    module by using "F00" effect heuristics on module load.
+
+-------------------------------------------------------------------
 Thu Apr 10 17:52:00 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.73
