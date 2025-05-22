@@ -41,7 +41,6 @@ BuildRequires:  libmp3lame-devel
 BuildRequires:  lirc-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel
 BuildRequires:  sndio-devel
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 20 11:51:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Remove unneeded qt6-gui-private-devel build dependency
+
+-------------------------------------------------------------------
 Sat Dec 21 17:30:46 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - Update to 4.4.2
