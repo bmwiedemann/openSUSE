@@ -1,7 +1,7 @@
 #
 # spec file for package python-XlsxWriter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,10 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jmcnamara/XlsxWriter
 Source:         https://github.com/jmcnamara/XlsxWriter/archive/RELEASE_%{version}.tar.gz#/XlsxWriter-RELEASE_%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -52,23 +54,18 @@ supports features such as formatting and many more.
 %setup -q -n XlsxWriter-RELEASE_%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%{python_expand #
-%{$python_install}
-mv %{buildroot}%{_bindir}/vba_extract.py \
-   %{buildroot}%{_bindir}/vba_extract-%{$python_bin_suffix}
-}
-
+%pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/vba_extract.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%prepare_alternative vba_extract
 
 %post
-%python_install_alternative vba_extract
+%python_install_alternative vba_extract.py
 
 %postun
-%python_uninstall_alternative vba_extract
+%python_uninstall_alternative vba_extract.py
 
 %check
 %pytest
@@ -76,8 +73,8 @@ mv %{buildroot}%{_bindir}/vba_extract.py \
 %files %{python_files}
 %doc Changes README.rst
 %license LICENSE.txt
-%python_alternative %{_bindir}/vba_extract
-%{python_sitelib}/xlsxwriter/
-%{python_sitelib}/XlsxWriter-%{version}-py*.egg-info
+%python_alternative %{_bindir}/vba_extract.py
+%{python_sitelib}/xlsxwriter
+%{python_sitelib}/[Xx]lsx[Ww]riter-%{version}*-info
 
 %changelog

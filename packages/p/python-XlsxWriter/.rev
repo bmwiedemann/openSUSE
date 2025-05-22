@@ -180,4 +180,14 @@ Updated to version 0.8.7.</comment>
     <comment></comment>
     <requestid>1218456</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>7fbfbda81551d4ac355c481ecd4f1e7d</srcmd5>
+    <version>3.2.0</version>
+    <time>1747925733</time>
+    <user>anag_factory</user>
+    <comment>- Switch building to use of PEP517 backend.
+  Don't rename vba_extract.py to vba_extract, it makes things too
+  complicated.</comment>
+    <requestid>1278862</requestid>
+  </revision>
 </revisionlist>
