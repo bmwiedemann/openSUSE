@@ -1,7 +1,7 @@
 #
 # spec file for package gr-osmosdr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,9 +69,6 @@ Requires:       python3-gr-osmosdr = %{version}
 Source1:        gr-osmosdr-sdrplay2-support-git20180914.tar.gz
 Patch2:         gr-osmosdr-add-sdrplay2-support-git20180914-gr38.patch
 Patch7:         gr-osmosdr-0007-sdrplay-use-std-ptr.patch
-%endif
-%ifarch i586 x86_64 aarch64 armv7hl
-BuildRequires:  libxtrx-devel
 %endif
 %if 0%{with_sdrplay}
 BuildRequires:  sdrplay-devel
