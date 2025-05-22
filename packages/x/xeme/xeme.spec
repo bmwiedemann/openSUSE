@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           xeme
-Version:        0+53
+Version:        0+64
 Release:        0
 Summary:        High level XMPP parsing library
 License:        LGPL-2.1-or-later
@@ -26,8 +26,8 @@ URL:            https://keep.imfreedom.org/xeme/xeme
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  python3-gi-docgen
-BuildRequires:  pkgconfig(birb)
+BuildRequires:  python3-gi-docgen >= 2025.3
+BuildRequires:  pkgconfig(birb) >= 0.3.1
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.76
 BuildRequires:  pkgconfig(gobject-2.0)

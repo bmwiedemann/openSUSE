@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 21 10:26:31 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0+64:
+  * Update gi-docgen to 2025.3
+  * Add additional API for managing the bodies and subjects of messages
+  * Add Xeme.LocalizedString
+  * Add a Xeme.Message:message-type property
+  * Clean up some rogue gchar's
+  * Update the unit tests for output stream and avoid a reference leak
+  * Add Xeme.InputStream.stop
+  * Modernize some unit tests
+  * Don't require to and from in Xeme.OutputStream.new
+  * Update the license headers
+  * Clean up a few things in the build system and update the wrap files
+
+-------------------------------------------------------------------
 Mon Feb 17 21:42:25 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0+53:

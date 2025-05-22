@@ -7,4 +7,23 @@
     <comment></comment>
     <requestid>1246717</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>47de69a1ca4fe3b75dc71f6c329f8333</srcmd5>
+    <version>0+64</version>
+    <time>1747925786</time>
+    <user>anag_factory</user>
+    <comment>- update to 0+64:
+  * Update gi-docgen to 2025.3
+  * Add additional API for managing the bodies and subjects of messages
+  * Add Xeme.LocalizedString
+  * Add a Xeme.Message:message-type property
+  * Clean up some rogue gchar's
+  * Update the unit tests for output stream and avoid a reference leak
+  * Add Xeme.InputStream.stop
+  * Modernize some unit tests
+  * Don't require to and from in Xeme.OutputStream.new
+  * Update the license headers
+  * Clean up a few things in the build system and update the wrap files (forwarded request 1279017 from rrahl0)</comment>
+    <requestid>1279018</requestid>
+  </revision>
 </revisionlist>
