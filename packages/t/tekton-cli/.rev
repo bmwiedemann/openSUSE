@@ -7,4 +7,12 @@
     <comment>new package tekton-cli: The Tekton Pipelines CLI project provides a command-line interface (CLI) for interacting with Tekton, an open-source framework for Continuous Integration and Delivery (CI/CD) systems</comment>
     <requestid>1248567</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2963efc43fca0a68b04b359866d1d90b</srcmd5>
+    <version>0.41.0</version>
+    <time>1747925757</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1278919</requestid>
+  </revision>
 </revisionlist>
