@@ -7,4 +7,19 @@
     <comment>new package, usefull for community</comment>
     <requestid>1230077</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7fa252dda281e2e43ac820ab5160fccd</srcmd5>
+    <version>9.3.0</version>
+    <time>1747925792</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 9.3.0:
+  * Make the cache configurable by cpp API (@mgautierfr #950)
+  * Remove old ZIM (v0) titleindex (title pointer list) (@mgautierfr #949,@veloman-yunkan #969)
+  * Fixed ZIM title indexing of items with title identical to the item's path (@veloman-yunkan #968)
+  * Fixed ZIM suggestions for a single-word-followed-by-space query (@veloman-yunkan #953)
+  * Testing based on latest zim-testing-suite 0.8.0 (@veloman-yunkan #971)
+  * Fix compilation on NetBSD because MAP_POPULATE &amp; pread64() undefined (@leleliu008 #928 #929)
+  * Upload GitHub workflows (@kelson42 #940 #942 #970)</comment>
+    <requestid>1279050</requestid>
+  </revision>
 </revisionlist>

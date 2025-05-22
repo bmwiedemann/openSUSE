@@ -1,7 +1,7 @@
 #
 # spec file for package libzim
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define  sover  9
 Name:           libzim
-Version:        9.2.3
+Version:        9.3.0
 Release:        0
 Summary:        Reference implementation for the ZIM file format
 License:        GPL-2.0-or-later

@@ -1,4 +1,4 @@
-From 48c8c3fa7ad7a54f6df9a5be2676d189bbaf0022 Mon Sep 17 00:00:00 2001
+From 2c4789b37bd4ad5074a3c5c675db90201576471c Mon Sep 17 00:00:00 2001
 From: Michael Cho <michael@michaelcho.dev>
 Date: Thu, 31 Oct 2024 11:12:07 -0400
 Subject: [PATCH] Fix build with ICU 76
@@ -15,7 +15,7 @@ at https://mesonbuild.com/Reference-manual_functions.html#build_target
  1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index eeb89981..79e97f46 100644
+index 53664e95..bd47b03a 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -77,9 +77,15 @@ else
