@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Tue May 20 19:58:45 UTC 2025 - René Neumaier <r.neumaier@mailbox.org> - 4.5.0
+
+- Add 'with' operator to reflect 'eduvpn-common' dependencies
+
+-------------------------------------------------------------------
+Wed May 14 10:55:37 UTC 2025 - René Neumaier <r.neumaier@mailbox.org> - 4.5.0
+
+- Specfile changes
+  * Add support for multiple python versions
+  * Fix 'BuildRequires' incl. usage of macro %{python_module}
+  * Fix 'Requires' package names
+  * Change 'build macros'
+  * Cosmetic fixes
+
+-------------------------------------------------------------------
+Sun Apr 27 17:31:09 UTC 2025 - René Neumaier <r.neumaier@mailbox.org> - 4.5.0
+
+- Update to 4.5.0
+  * Require python3-eduvpn-common >= 3 && < 4
+- Changed source URL from GitHub to Codeberg
+- See release notes in /usr/share/doc/packages since pre-release
+  Version 4.4.99.0 from 2024-12-20
+
+-------------------------------------------------------------------
+Sat Aug  3 16:07:15 UTC 2024 - René Neumaier <r.neumaier@mailbox.org> - 4.4.0
+
+- Update to 4.4.0
+  * Require python3-eduvpn-common >= 2.1.0 && < 3.0.0
+- Changed 'URL' to official project website
+- Added GPG package source verification
+
+-------------------------------------------------------------------
+Tue Jun 11 17:38:15 UTC 2024 - René Neumaier <r.neumaier@mailbox.org> - 4.3.1
+
+- Update to 4.3.1
+  * Lots of changes between version 4.2.1 and 4.3.1 please checkout
+    the full release notes in docdir (/usr/share/doc/packages)
+- Reworked specfile
+  * Added better 'letsconnect-client' description
+  * setup.py no longer specify 'extra files' added manual routine
+  * Default place for package datadir (share) files collides with
+    Tumbleweed/%{python3_sitelib} macro - workaround in %prep
+  * Removed unneeded dependencies
+  * python3-eduvpn-common >= 2.0.0 is needed
+
+-------------------------------------------------------------------
+Tue Jun  4 13:16:04 UTC 2024 - René Neumaier <r.neumaier@mailbox.org> - 4.2.1
+
+- Version requirements to python3-eduvpn-common have been adjusted
+  and synchronized: 'setup.py' and specfile
+
+-------------------------------------------------------------------
+Fri Feb  2 13:10:01 UTC 2024 - René Neumaier <r.neumaier@mailbox.org> - 4.2.1
+
+- Update to 4.2.1
+  * Make the OpenVPN/WireGuard DNS the maximum priority to avoid
+    DNS from resolving through other interfaces
+
+-------------------------------------------------------------------
+Sun Dec 17 00:51:00 UTC 2023 - René Neumaier <r.neumaier@mailbox.org> - 4.2.0
+
+- Update to 4.2.0
+  * Protocol info has moved to connection info details
+  * Log unhandled exceptions
+  * Bump eduvpn-common to 1.2.0
+  * Remove unused dbus dependency
+  * Add upstream changelog to eduvpn-client docdir
+  * See full release notes in docdir (/usr/share/doc/packages)
+
+-------------------------------------------------------------------
+Tue Dec  5 16:15:33 UTC 2023 - René Neumaier <r.neumaier@mailbox.org>
+
+- Specfile changes
+  * Removed 'pytest-runner', it isn't a dep. in setup.py
+  * Inserted %find_lang for locales
+
+-------------------------------------------------------------------
+Mon Dec  4 23:11:54 UTC 2023 - René Neumaier <r.neumaier@mailbox.org> - 4.1.3
+
+- Initial commit at 4.1.3
+  * Reworked Fedora39 spec from https://app.eduvpn.org
+  * Attach last recent GitHub changelog as following:
+
+- 4.1.3 (2023-09-01)
+  * Bump eduvpn-common to 1.1.2 to further handle endpoint caching
+  * Mention eduvpn-common version in the UI
+  * Add a version flag to the CLI
+
+- 4.1.2 (2023-08-29)
+  * Make sure profile combo indexes are always set correctly when
+    ignoring the reconnect dialog
+  * Support MTU for WireGuard
+  * Bump eduvpn-common to 1.1.1 in order to fix OAuth endpoint
+    caching issues
+
+- 4.1.1 (2023-04-20)
+  * Fix profile combo in UI not selecting the actual current
+    profile
