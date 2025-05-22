@@ -17,7 +17,7 @@
 
 
 Name:           meslo-lg-dz-fonts
-Version:        1.2.2
+Version:        1.2.4
 Release:        0
 Summary:        Meslo LG Font Family
 License:        Apache-2.0

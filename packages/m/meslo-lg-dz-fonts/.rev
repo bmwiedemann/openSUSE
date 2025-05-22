@@ -20,4 +20,20 @@
   * Remove undesired fi ligature (issue #20) </comment>
     <requestid>1274259</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>af2202ae1592706a306489085c98775d</srcmd5>
+    <version>1.2.4</version>
+    <time>1747925800</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.2.4:
+  * Center bold and bold-italic period glyph 
+
+- Update to 1.2.3:
+  * Shorten non-bold comma glyph for consistency with other glyphs
+  * Shrink bold period glyph to match other punctuation
+  * Revert exclamation point glyph style back to that of Bitstream 
+    Vera Sans Mono
+</comment>
+    <requestid>1279135</requestid>
+  </revision>
 </revisionlist>
