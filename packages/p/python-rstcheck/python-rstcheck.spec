@@ -1,7 +1,7 @@
 #
 # spec file for package python-rstcheck
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Python module to check syntax of reStructuredText
 License:        MIT
 URL:            https://github.com/myint/rstcheck
 Source:         https://files.pythonhosted.org/packages/source/r/rstcheck/rstcheck-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#rstcheck/rstcheck#244
+Patch0:         support-click-8.2.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}

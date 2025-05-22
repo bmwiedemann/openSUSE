@@ -103,4 +103,13 @@
   * Bump default python version to 3.12</comment>
     <requestid>1199453</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>57de47524922c010a289d3357d5a97e0</srcmd5>
+    <version>6.2.4</version>
+    <time>1747925790</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-click-8.2.patch:
+  * Support click 8.2 changes.</comment>
+    <requestid>1279039</requestid>
+  </revision>
 </revisionlist>
