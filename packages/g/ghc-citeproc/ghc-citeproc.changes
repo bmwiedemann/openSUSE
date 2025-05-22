@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon May 12 23:06:21 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update citeproc to version 0.9.0.1.
+  ## 0.9.0.1
+
+    * Fix `readAsInt` so it handles negative numbers in strings.
+      `readAsInt` attempts to read strings as integers, but previously
+      it didn't properly handle strings like `"-387"`, which are
+      sometimes used in bibliographies. See jgm/pandoc#10839.
+
+  ## 0.9
+
+    * Fix handling of `type` conditions in `if` (#151).
+      In an `if` element with `type="article-journal chapter"`, citeproc
+      previously treated this as two separate conditions
+      (type=article-journal, type=chapter).  But it seems that the
+      intended behavior is to treat it as a single condition that
+      succeeds if any of the listed types match. The difference between
+      current and intended behavior comes out when `match="all"` is used;
+      this will always fail when `type` contains more than one type.
+
+      To fix this, we change the `HasType` constructor on `Condition`
+      so that it takes a list of Texts rather than single one [API change],
+      and we populate it with the result of splitting the argument
+      of `type`. In Eval, we change the clause for the HasType condition
+      so that it succeeds if any of the types in the list match.
+
+    * Add `--link-citations` and `--link-bibliography` options to binary
+      (#142, Daphne Preston-Kendal).
+
+    * Bump containers upper bound.
+
+-------------------------------------------------------------------
 Sun Feb  9 08:05:28 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update citeproc to version 0.8.1.3.
