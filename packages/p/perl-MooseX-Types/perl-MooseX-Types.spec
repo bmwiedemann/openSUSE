@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MooseX-Types
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-MooseX-Types
-Version:        0.50
-Release:        0
 %define cpan_name MooseX-Types
+Name:           perl-MooseX-Types
+Version:        0.500.0
+Release:        0
+# 0.50 -> normalize -> 0.500.0
+%define cpan_version 0.50
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Organise your Moose types in libraries
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/MooseX-Types/
-Source0:        http://www.cpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Carp::Clan) >= 6.00
-BuildRequires:  perl(Module::Build::Tiny) >= 0.034
+BuildRequires:  perl(Carp::Clan) >= 6.0.0
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build::Tiny) >= 0.34
 BuildRequires:  perl(Module::Metadata)
 BuildRequires:  perl(Module::Runtime)
 BuildRequires:  perl(Moose) >= 1.06
@@ -47,8 +48,8 @@ BuildRequires:  perl(Sub::Name)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Requires)
-BuildRequires:  perl(namespace::autoclean) >= 0.16
-Requires:       perl(Carp::Clan) >= 6.00
+BuildRequires:  perl(namespace::autoclean) >= 0.160
+Requires:       perl(Carp::Clan) >= 6.0.0
 Requires:       perl(Module::Runtime)
 Requires:       perl(Moose) >= 1.06
 Requires:       perl(Moose::Exporter)
@@ -59,7 +60,17 @@ Requires:       perl(Sub::Exporter)
 Requires:       perl(Sub::Exporter::ForMethods) >= 0.100052
 Requires:       perl(Sub::Install)
 Requires:       perl(Sub::Name)
-Requires:       perl(namespace::autoclean) >= 0.16
+Requires:       perl(namespace::autoclean) >= 0.160
+Provides:       perl(MooseX::Types) = %{version}
+Provides:       perl(MooseX::Types::Base) = %{version}
+Provides:       perl(MooseX::Types::CheckedUtilExports) = %{version}
+Provides:       perl(MooseX::Types::Combine) = %{version}
+Provides:       perl(MooseX::Types::Moose) = %{version}
+Provides:       perl(MooseX::Types::TypeDecorator) = %{version}
+Provides:       perl(MooseX::Types::UndefinedType) = %{version}
+Provides:       perl(MooseX::Types::Util) = %{version}
+Provides:       perl(MooseX::Types::Wrapper) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -89,10 +100,10 @@ warn, with a few exceptions. If you are declaring a 'class_type()' or
 name like '"MyApp::Foo"'.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Build.PL --installdirs=vendor
+perl Build.PL --installdirs=vendor
 ./Build build --flags=%{?_smp_mflags}
 
 %check
@@ -103,7 +114,7 @@ name like '"MyApp::Foo"'.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes CONTRIBUTING LICENCE README
+%doc Changes CONTRIBUTING README
+%license LICENCE
 
 %changelog
