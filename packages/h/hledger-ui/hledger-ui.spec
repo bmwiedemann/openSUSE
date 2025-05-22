@@ -19,13 +19,12 @@
 %global pkg_name hledger-ui
 %global pkgver %{pkg_name}-%{version}
 Name:           %{pkg_name}
-Version:        1.42.1
+Version:        1.42.2
 Release:        0
 Summary:        Terminal interface for the hledger accounting system
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-ansi-terminal-devel
@@ -93,8 +92,7 @@ ExcludeArch:    %{ix86}
 
 %description
 A simple terminal user interface for the hledger accounting system. It can be a
-more convenient way to browse your accounts than the CLI. This package
-currently does not support Microsoft Windows, except in WSL.
+more convenient way to browse your accounts than the CLI.
 
 hledger is a robust, cross-platform set of tools for tracking money, time, or
 any other commodity, using double-entry accounting and a simple, editable file
@@ -136,7 +134,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup
-cp -p %{SOURCE1} %{name}.cabal
 
 %build
 %ghc_lib_build
