@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 22 04:46:05 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.6.8:
+  * Implement go mod edit -replace using _service params refs #57
+  * cmd_go_mod() use list for arg cmd and new arg subcmd refs #57
+
+-------------------------------------------------------------------
+Wed May 21 04:07:39 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.6.7:
+  * archive_autodetect() match archive files before dir refs #66 #69 #73
+  * Ensure some level of compatibility with older libarchive
+  * archive_autodetect docstring add .obscpio to format list
+  * Format with python black
+  * Fix using go.mod of toplevel
+
+-------------------------------------------------------------------
 Fri Apr 18 13:34:31 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:

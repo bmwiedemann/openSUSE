@@ -209,4 +209,14 @@
     TypeError: new_archive_read_disk() got an unexpected keyword argument 'mtime' (forwarded request 1270831 from jfkw)</comment>
     <requestid>1270856</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ae316adba73d621ce0b3e15d1a775d07</srcmd5>
+    <version>0.6.8</version>
+    <time>1747925758</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.6.8:
+  * Implement go mod edit -replace using _service params refs #57
+  * cmd_go_mod() use list for arg cmd and new arg subcmd refs #57 (forwarded request 1279146 from jfkw)</comment>
+    <requestid>1279150</requestid>
+  </revision>
 </revisionlist>
