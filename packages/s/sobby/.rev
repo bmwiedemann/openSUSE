@@ -165,4 +165,12 @@
     <comment>Use pkgconfig (forwarded request 729531 from iznogood)</comment>
     <requestid>729718</requestid>
   </revision>
+  <revision rev="25" vrev="12">
+    <srcmd5>50637710fcf22a19aefcc1812fdb37c8</srcmd5>
+    <version>0.4.8</version>
+    <time>1747925781</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1279011</requestid>
+  </revision>
 </revisionlist>

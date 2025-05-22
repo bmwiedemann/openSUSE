@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 14 16:04:02 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %make_build instead of %jobs (boo#1237231)
+- Mark COPYING file as %license
+
+-------------------------------------------------------------------
 Mon Sep  9 16:32:01 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace glibmm2-devel with pkgconfig(glibmm-2.4) BuildRequires,

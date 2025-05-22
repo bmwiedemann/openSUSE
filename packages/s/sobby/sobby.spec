@@ -42,7 +42,7 @@ platforms only.
 
 %build
 %configure --disable-static --with-pic
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 %makeinstall
@@ -52,7 +52,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr (-, root, root)
-%doc AUTHORS COPYING ChangeLog NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
 %{_bindir}/sobby
 %doc %{_mandir}/man1/sobby.*
 
