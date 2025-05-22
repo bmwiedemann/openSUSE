@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 21 04:40:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.101:
+  * add page to mintjson fips (#1953)
+  * enable fips140 builds (#1952)
+  * chore/go 124 upgrade (#1951)
+
+-------------------------------------------------------------------
 Tue May 20 05:13:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.100:
