@@ -848,4 +848,41 @@ See changelog in:
     <comment></comment>
     <requestid>1268277</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>e4e17780e62f7f36dc5398fd197c7fbc</srcmd5>
+    <version>3.18.0</version>
+    <time>1747925738</time>
+    <user>anag_factory</user>
+    <comment>- reduce parallelism even more on tests 
+
+- Update to version 3.18.0:
+  * Notable Changes
+    - Add support for JSON Schema 2020
+    - Enabled cpu and memory profiling
+    - Add hook annotation to output hook logs to client on error
+  * Changelog
+    - build(deps): bump the k8s-io group with 7 updates
+    - fix: govulncheck workflow
+    - bump version to v3.18.0
+    - fix:add proxy support when mTLS configured
+    - docs: Note about http fallback for OCI registries
+    - Bump net package to avoid CVE on dev-v3
+    - Bump toml
+    - backport #30677to dev3
+    - build(deps): bump github.com/rubenv/sql-migrate from 1.7.2 to
+      1.8.0
+    - Add install test for TakeOwnership flag
+    - Fix --take-ownership
+    - build(deps): bump github.com/rubenv/sql-migrate from 1.7.1 to
+      1.7.2
+    - build(deps): bump golang.org/x/crypto from 0.36.0 to 0.37.0
+    - build(deps): bump golang.org/x/term from 0.30.0 to 0.31.0
+    - Testing text bump
+    - Permit more Go version and not only 1.23.8
+    - Bumps github.com/distribution/distribution/v3 from 3.0.0-rc.3
+      to 3.0.0
+    - Unarchiving fix
+    - Fix typo</comment>
+    <requestid>1278876</requestid>
+  </revision>
 </revisionlist>

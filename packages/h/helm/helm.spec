@@ -19,7 +19,7 @@
 %define goipath helm.sh/helm/v3
 %define git_dirty clean
 Name:           helm
-Version:        3.17.3
+Version:        3.18.0
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
@@ -32,11 +32,12 @@ BuildRequires:  golang-packaging
 # go is not available on Framework one for x86
 ExcludeArch:    %ix86
 %endif
-BuildRequires:  golang(API) = 1.23
+BuildRequires:  golang(API) = 1.24
 %{go_provides}
 
 %description
-Helm is a tool for managing Kubernetes charts. Charts are packages of pre-configured Kubernetes resources.
+Helm is a tool for managing Kubernetes charts. Charts are packages of
+pre-configured Kubernetes resources.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
@@ -102,7 +103,7 @@ mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 # requires network
 rm -v pkg/plugin/installer/*installer_test.go
 rm -v pkg/engine/engine_test.go
-GO111MODULE=on go test -p 3 ./...
+GO111MODULE=on go test -p 2 ./...
 
 %files
 %doc README.md
