@@ -1,7 +1,7 @@
 #
 # spec file for package gap-polenta
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-polenta
-Version:        1.3.10
+Version:        1.3.11
 Release:        0
 Summary:        GAP: Polycyclic presentations for matrix groups
 License:        GPL-2.0+
