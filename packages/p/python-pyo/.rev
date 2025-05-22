@@ -70,4 +70,15 @@
     * Removed deprecated files.</comment>
     <requestid>1180113</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4b2df5daf5d894ece3d8f2383602c29c</srcmd5>
+    <version>1.0.5</version>
+    <time>1747925778</time>
+    <user>anag_factory</user>
+    <comment>- Use libalternatives
+- Add python-standard-aifc for python &gt;= 3.13
+
+- Switch building to use of PEP517 backend.</comment>
+    <requestid>1278976</requestid>
+  </revision>
 </revisionlist>

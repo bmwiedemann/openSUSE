@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 21 07:28:23 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use libalternatives
+- Add python-standard-aifc for python >= 3.13
+
+-------------------------------------------------------------------
+Tue May 20 14:57:24 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch building to use of PEP517 backend.
+
+-------------------------------------------------------------------
 Tue Jun 11 14:14:54 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.0.5

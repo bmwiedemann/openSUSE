@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,12 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 Name:           python-pyo
 Version:        1.0.5
 Release:        0
@@ -30,7 +34,9 @@ Source1:        https://raw.githubusercontent.com/belangeo/pyo/master/LICENSE
 # PATCH-FIX-UPSTREAM - Fix multiple incorrect declarations and signatures of callback functions
 Patch:          https://github.com/belangeo/pyo/pull/277.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  portmidi-devel
@@ -39,6 +45,18 @@ BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(liblo)
 BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(sndfile)
+# Test build requires, aifc is no longer part of python standard lib
+# since python3.13:
+# https://github.com/belangeo/pyo/issues/286
+BuildRequires:  python313-standard-aifc
+Requires:       (python-standard-aifc if python-base >= 3.13)
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -52,15 +70,35 @@ cp %{SOURCE1} .
 
 %build
 export CFLAGS="%{optflags}"
-%python_build --use-jack --use-double
+%{pyproject_wheel -C "--build-option=--use-jack" -C "--build-option=--use-double" .}
 
 %install
-%python_install --use-jack --use-double
+%pyproject_install
+
+# Fix non-executable-script editor and examples
+%{python_expand #
+for i in editor examples/algorithmic examples/sequencing examples/matrix examples/fft examples/sampling examples/synthesis
+do
+sed -i "/^#!\s*\/usr\/bin\/env python/d" %{buildroot}%{$python_sitearch}/pyo/$i/*.py
+done
+}
+
 %python_clone -a %{buildroot}%{_bindir}/epyo
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+# Change directory to avoid importing from source
+mkdir -p test
+pushd test
 # testsuite is broken and can not be run even from github tarball
+%{python_expand #
+PYTHONPATH=%{buildroot}%{$python_sitearch} $python -c "import pyo; print(pyo.PYO_VERSION)"
+}
+popd
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative epyo
 
 %post
 %python_install_alternative epyo
@@ -72,6 +110,8 @@ export CFLAGS="%{optflags}"
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/epyo
-%{python_sitearch}/*
+%{python_sitearch}/pyo
+%{python_sitearch}/pyo64
+%{python_sitearch}/pyo-%{version}*-info
 
 %changelog
