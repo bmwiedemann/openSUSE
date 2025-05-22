@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 19 11:45:49 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- remove-qemu-workarounds.patch: remove obsolete qemu workarounds
+
+-------------------------------------------------------------------
 Tue Apr 29 07:56:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.5.4

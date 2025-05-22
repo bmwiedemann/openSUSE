@@ -100,6 +100,8 @@ BuildRequires:  texlive-ec
 %endif
 # PATCH-FIX-OPENSUSE install README.openSUSE and sbclrc.sample
 Patch0:         sbcl-1.1.2-install.patch
+# PATCH-FIX-UPSTREAM Remove obsolete qemu workarounds
+Patch1:         remove-qemu-workarounds.patch
 ExcludeArch:    s390x
 Requires:       sbcl-bin
 
