@@ -18,15 +18,14 @@
 
 %define         sover 0
 Name:           birb
-Version:        0.3.1
+Version:        0.4.0
 Release:        0
 Summary:        A library of utilities for GLib based apps
 License:        LGPL-2.1-or-later
 URL:            https://keep.imfreedom.org/birb/birb
-Source0:        https://sourceforge.net/projects/pidgin/files/%{name}/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://sourceforge.net/projects/pidgin/files/%{name}/%{version}/%{name}-%{version}.tar.xz.asc
+Source0:        https://downloads.sf.net/pidgin/%{name}-%{version}.tar.xz
+Source1:        https://downloads.sf.net/pidgin/%{name}-%{version}.tar.xz.asc
 Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x40de1dc7288fe3f50ab938c548f66affd9bdb729#/%{name}.keyring
-Source3:        lgpl-2.1.txt
 BuildRequires:  meson >= 1.0.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gi-docgen >= 2024.1
@@ -68,7 +67,6 @@ BuildArch:      noarch
 
 %prep
 %autosetup
-cp %{SOURCE3} .
 
 %build
 %meson \
@@ -86,7 +84,7 @@ cp %{SOURCE3} .
 %ldconfig_scriptlets -n lib%{name}%{sover}
 
 %files -n lib%{name}%{sover}
-%license lgpl-2.1.txt
+%license LICENSE
 %doc AUTHORS ChangeLog README.md
 %{_libdir}/lib%{name}.so.*
 

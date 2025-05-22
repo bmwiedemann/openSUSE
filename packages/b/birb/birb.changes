@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 21 09:48:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.4.0:
+  * Add a license file
+  * Annotate constructor that returns a base type
+  * Add ivanhoe to the AUTHORS
+  * Make sure we look for gi-docgen before other dependencies
+  * Add our common string functions
+  * Add some helpers for counting list model changes
+  * Add Birb.assert_list_mode_n_items
+  * Add Birb.StringObject.equal
+  * Add Birb.count.property_changed
+- use a shorter form of the download link
+
+-------------------------------------------------------------------
 Fri Jan 31 12:46:01 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.3.1:
