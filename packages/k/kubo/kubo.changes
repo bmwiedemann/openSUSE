@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu May 22 07:33:23 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- 0.35.0
+  * Opt-in HTTP Retrieval client
+  * Dedicated Reprovider.Strategy for MFS
+  * Experimental support for MFS as a FUSE mount point
+  * Grid view in WebUI
+  * Enhanced DAG-Shaping Controls
+  * Datastore Metrics Now Opt-In
+  * Improved performance of data onboarding
+  * Optimized, dedicated queue for providing fresh CIDs
+  * New Provider configuration options
+  * Deprecated ipfs stats provider
+  * New Bitswap configuration options
+    * Bitswap.Libp2pEnabled
+    * Bitswap.ServerEnabled
+    * Internal.Bitswap.ProviderSearchMaxResults
+  * New Routing configuration options
+    * Routing.IgnoreProviders
+    * Routing.DelegatedRouters
+  * New Pebble database format config
+  * New environment variables
+    * Improved Log Output Setting
+    * New Repo Lock Optional Wait
+  * Updated golang.org/x/net to 0.39.0 (boo#1241776, CVE-2025-22872)
+
+-------------------------------------------------------------------
 Tue Apr  1 14:52:01 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Build with -v flag
