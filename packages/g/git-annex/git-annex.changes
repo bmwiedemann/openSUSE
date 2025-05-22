@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 20 14:30:35 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20250520.
+  git-annex (10.20250520) upstream; urgency=medium
+
+    * Preferred content now supports "balanced=groupname:lackingcopies"
+      to make files be evenly balanced amoung as many repositories as are
+      needed to satisfy numcopies.
+    * map: Fix buggy handling of remotes that are bare git repositories
+      accessed via ssh.
+    * map: Avoid looping forever with mutually recursive paths between
+      repositories accessed via ssh.
+    * whereused: Fix bug that could find matches from grafts
+      in remote git-annex branches.
+    * Windows: Fix bug that can cause git status to show annexed files as
+      modified when built with OsPath.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 20 May 2025 10:25:47 -0400
+
+-------------------------------------------------------------------
 Wed Apr 16 17:35:22 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20250416.
