@@ -25,12 +25,17 @@ URL:            https://openmopac.github.io
 Source0:        mopac-%{version}.tar.gz
 BuildRequires:  blas-devel
 BuildRequires:  cmake
-BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
 BuildRequires:  python3-numpy-devel
 # mopac7 is obsolete version of same software
 Provides:       mopac7 = %{version}
 Obsoletes:      mopac7 < %{version}
+%if 0%{?suse_version} > 1550
+BuildRequires:  gcc-fortran
+%else
+BuildRequires:  gcc14-fortran
+%endif
+
 
 %description
 MOPAC is a computational chemistry software package that implements a
@@ -66,6 +71,9 @@ This package contains development files.
 %autosetup -n mopac-%{version}
 
 %build
+%if 0%{?suse_version} < 1550
+export FC="gfortran-14"
+%endif
 %cmake
 %cmake_build
 

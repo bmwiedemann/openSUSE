@@ -7,4 +7,13 @@
     <comment>sort of new package, will obsolete mopac7</comment>
     <requestid>1253660</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>da8dd71b901a7a58b6422ce8b0ed1822</srcmd5>
+    <version>23.1.2</version>
+    <time>1747925791</time>
+    <user>anag_factory</user>
+    <comment>- Regenerate obscpio archive without excluding hidden files 
+- Use gfortran-14 for building on Leap</comment>
+    <requestid>1279028</requestid>
+  </revision>
 </revisionlist>
