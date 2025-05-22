@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hslua-module-system
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Lua module wrapper around Haskell's System module
 License:        MIT
@@ -39,6 +39,8 @@ BuildRequires:  ghc-hslua-marshalling-devel
 BuildRequires:  ghc-hslua-marshalling-prof
 BuildRequires:  ghc-hslua-packaging-devel
 BuildRequires:  ghc-hslua-packaging-prof
+BuildRequires:  ghc-process-devel
+BuildRequires:  ghc-process-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-temporary-devel
 BuildRequires:  ghc-temporary-prof
@@ -110,7 +112,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc CHANGELOG.md
+%doc CHANGELOG.md README.md
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license LICENSE
