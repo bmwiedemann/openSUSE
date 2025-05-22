@@ -1,11 +1,24 @@
 -------------------------------------------------------------------
+Fri May 16 14:52:52 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 19.24.9:
+  * Add linear_layer for neural networks (gh#davisking/dlib#3074).
+  * fix SyntaxWarning: invalid escape sequence '\('
+    (gh#davisking/dlib#3069).
+  * Add Byte Pair Encoding (BPE) class for subword tokenization
+    (gh#davisking/dlib#3056).
+  * Drop namespace std (gh#davisking/dlib#3067).
+  * Fix a bug when getting a gzip header extra field with
+    inflate() (gh#davisking/dlib#3063).
+
+-------------------------------------------------------------------
 Fri May  2 08:20:22 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 19.24.8:
   * Fix cmake project version number.
 - Changes from version 19.24.7:
   * Change the default u32string char type to char32_t
-    (ghdavisking/dlib#3059)
+    (gh#davisking/dlib#3059)
 
 -------------------------------------------------------------------
 Wed Oct  2 07:55:07 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
