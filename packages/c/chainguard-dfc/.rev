@@ -8,4 +8,12 @@
  convert Dockerfiles to use Chainguard Images and APKs in FROM and RUN lines etc.</comment>
     <requestid>1276494</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ee199e993c1b93376f6cdd9e2c32a9cf</srcmd5>
+    <version>0.7.2</version>
+    <time>1747925806</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1279154</requestid>
+  </revision>
 </revisionlist>

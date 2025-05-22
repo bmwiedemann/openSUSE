@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define executable_name dfc
 
 Name:           chainguard-dfc
-Version:        0.7.0
+Version:        0.7.2
 Release:        0
 Summary:        Chainguard Dockerfile Converter
 License:        Apache-2.0
@@ -27,8 +28,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  golang(API) >= 1.24
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.24
 # there is already a package called dfc...
 Conflicts:      dfc
 
@@ -50,8 +51,8 @@ Bash command line completion support for %{name}.
 %package -n %{name}-fish-completion
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
-Requires:       fish
 Requires:       %{name} = %{version}
+Requires:       fish
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
@@ -61,8 +62,8 @@ Fish command line completion support for %{name}.
 %package -n %{name}-zsh-completion
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
-Requires:       zsh
 Requires:       %{name} = %{version}
+Requires:       zsh
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
