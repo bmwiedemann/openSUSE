@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 21 04:29:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.92.2:
+  * Bug Fixes
+    - unpin dockerfile base images to prevent wget TLS errors
+      [#2671 @spiffcs]
+    - Parse java group ID and artifact ID from PURL when missing
+      [#2675 @wagoodman]
+    - Grype can't update DB in docker volume (regression) [#2517
+      #2672 @willmurphyscode]
+  * Additional Changes
+    - Remove getDB() from the v6 DB reader [#2669 @wagoodman]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#2676)
+    - chore(deps): update tools to latest versions (#2673)
+
+-------------------------------------------------------------------
 Sat May 17 07:06:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.92.1:
