@@ -1,6 +1,6 @@
 Name: cpphs
 Version: 1.20.9.1
-x-revision: 1
+x-revision: 2
 Copyright: 2004-2017, Malcolm Wallace
 License: LGPL
 License-File: LICENCE-LGPL
@@ -25,20 +25,19 @@ Build-type: Simple
 Extra-Source-Files: README, LICENCE-GPL, LICENCE-commercial, CHANGELOG, docs/cpphs.1, docs/index.html
 
 tested-with:
-  ghc ==9.2.1
-   || ==9.0.1
-   || ==8.10.7
-   || ==8.8.4
-   || ==8.6.5
-   || ==8.4.4
-   || ==8.2.2
-   || ==8.0.2
-   || ==7.10.3
-   || ==7.8.4
-   || ==7.6.3
-   || ==7.4.2
-   || ==7.2.2
-   || ==7.0.4
+  GHC == 9.12.2
+  GHC == 9.10.2
+  GHC == 9.8.4
+  GHC == 9.6.7
+  GHC == 9.4.8
+  GHC == 9.2.8
+  GHC == 9.0.2
+  GHC == 8.10.7
+  GHC == 8.8.4
+  GHC == 8.6.5
+  GHC == 8.4.4
+  GHC == 8.2.2
+  GHC == 8.0.2
 
 flag old-locale
   description: If true, use old-locale, otherwise use time 1.5 or newer.
@@ -55,7 +54,7 @@ Library
       Hs-Source-Dirs: . old
 
     else
-      Build-Depends: time >=1.5 && <1.13
+      Build-Depends: time >=1.5 && <1.15
       Hs-Source-Dirs: . new
 
     Exposed-Modules:
@@ -74,7 +73,7 @@ Library
         TimeCompat
 
 Executable cpphs
-    Build-Depends: base>=3&&<6, directory <1.4, polyparse>=1.13 && <1.14
+    Build-Depends: base >=4.3 && <5, directory <1.4, polyparse>=1.13 && <1.14
     Main-Is: cpphs.hs
 
     if flag(old-locale)
@@ -84,7 +83,7 @@ Executable cpphs
       Hs-Source-Dirs: . old
 
     else
-      Build-Depends: time >=1.5 && <1.13
+      Build-Depends: time >=1.5 && <1.15
       Hs-Source-Dirs: . new
 
     Other-Modules:
