@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-feed
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Summary:        Interfacing with RSS (v 0.9x, 2.x, 1.0) + Atom feeds
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/4.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/5.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-compat-devel
 BuildRequires:  ghc-base-compat-prof
@@ -111,8 +111,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 %prep
 %autosetup -n %{pkg_name}-%{version}
 cp -p %{SOURCE1} %{pkg_name}.cabal
-cabal-tweak-dep-ver base '< 4.20' '< 5'
-cabal-tweak-dep-ver base-compat '< 0.14' '< 1'
 
 %build
 %ghc_lib_build
