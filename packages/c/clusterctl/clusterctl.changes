@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 21 05:13:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.2:
+  * build: bump golang.org/x/net to 0.38
+  * 📖 Update clusterctl version to v1.10.x in quick start
+
+-------------------------------------------------------------------
 Tue Apr 29 19:46:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.1:
