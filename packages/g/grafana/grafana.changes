@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed May 14 09:47:29 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to version 11.6.1:
+  Features and enhancements:
+  * GrafanaUI: Use safePolygon close handler for interactive
+    tooltips instead of a delay
+  Bug fixes:
+  * Alertmanager: Add Role-Based Access Control via reqAction Field
+  * GrafanaUI: Remove blurred background from overlay backdrops to
+    improve performance
+
+- Update to version 11.6.0:
+  Features and enhancements:
+  * Canvas: One-click data links and actions
+  * Visualisations: One-click data links and actions
+  * Visualisations: New Actions cell type for tables
+  * Annotations: Better time region control with Cron syntax
+  * Visualisations: Improved performance in geomaps
+  * Dashboards: Variables supported for all transformations
+  * Alerting: Alert rule version history
+  * Alerting: Support for Jira Service Management contact point
+  * Datasource: Label Based Access Control (LBAC)
+  * Plugins: Details links improvements
+  * Security: API keys fully deprecated and automatically migrated
+    to Service Accounts
+
+-------------------------------------------------------------------
 Tue Apr 29 09:43:38 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Drop 0003-Bump-go-jose.patch
@@ -18,8 +45,8 @@ Tue Apr 29 09:43:38 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
   Bug fixes:
   * InfluxDB: Fix nested variable interpolation
   Security:
-  * CVE-2025-3454
-  * CVE-2025-2703
+  * CVE-2025-3454 (bsc#1241683)
+  * CVE-2025-2703 (bsc#1241687)
   * CVE-2025-30204: Bump github.com/golang-jwt/jwt/v5 (bsc#1240503)
 
 - Update to version 11.5.3:
@@ -34,6 +61,8 @@ Tue Apr 29 09:43:38 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
   * InfluxDB: Improve handling of template variables contained in
     regular expressions (InfluxQL)
   * Org redirection: Fix linking between orgs
+  Security:
+  * CVE-2025-22870: Bump golang.org/x/net (bsc#1238703)
 
 -------------------------------------------------------------------
 Mon Mar 10 11:27:53 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
@@ -575,8 +604,6 @@ Mon Oct 21 10:46:51 UTC 2024 - marius.kittler@suse.com
     stages.
   * Logs: Infinite scrolling in Explore enabled by default.
   * Plugins: Improve frontend loader cache.
-  * Chore: Upgrade go from 1.21.0 to 1.21.10.
-  * Chore: Upgrade go to 1.22.3.
   * Team: Add an endpoint for bulk team membership updates.
   * Flamegraph: Add collapse and expand group buttons to toolbar.
   * OIDC: Support Generic OAuth org to role mappings.
@@ -678,6 +705,8 @@ Mon Oct 21 10:46:51 UTC 2024 - marius.kittler@suse.com
     label values discovery.-rs
   * Tempo: Escape backslash in span name for promsql query.
   * Alerting: Export and provisioning rules into subfolders.
+  Security:
+  * CVE-2023-45288: Bump golang.org/x/net (bsc#1236510)
   Bug fixes:
   * Alerting: Fix go-swagger extraction and several embedded types
     from Alertmanager in Swagger docs.
