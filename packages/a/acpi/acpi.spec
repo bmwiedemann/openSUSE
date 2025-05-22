@@ -25,7 +25,7 @@ URL:            https://sourceforge.net/projects/acpiclient/
 Source:         https://sourceforge.net/projects/acpiclient/files/acpiclient/%{version}/%{name}-%{version}.tar.gz
 # Package was split from acpid package
 Provides:       acpid:%{_bindir}/acpi
-ExclusiveArch:  %{ix86} x86_64 ia64 aarch64
+ExclusiveArch:  %{ix86} x86_64 ia64 aarch64 riscv64
 
 %description
 Linux ACPI client is a small command-line program that attempts to
