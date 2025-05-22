@@ -65,7 +65,7 @@ export CFLAGS="%{optflags}"
   --libdir=%{_libdir}             \
   --mandir=%{_mandir}             \
   --prefix=%{_prefix}             \
-  --cores=%{jobs}
+  --cores=${RPM_BUILD_NCPUS:-1}
 
 # The following options will affect generated code.
 #  --enable-pointer-packing Assumes address encoding is subset of pointer range
