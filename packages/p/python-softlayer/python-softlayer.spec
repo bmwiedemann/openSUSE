@@ -1,7 +1,7 @@
 #
 # spec file for package python-softlayer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-softlayer
-Version:        6.1.11
+Version:        6.2.6
 Release:        0
 Summary:        A set of Python libraries that assist in calling the SoftLayer API
 License:        MIT
 URL:            https://github.com/softlayer/softlayer-python
 Source:         https://github.com/softlayer/softlayer-python/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#softlayer/softlayer-python#2222
+Patch0:         support-click-8.2.patch
 BuildRequires:  %{python_module click >= 8.0.4}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module prettytable >= 2.5.0}
 BuildRequires:  %{python_module prompt_toolkit >= 2}
 BuildRequires:  %{python_module pygments >= 2.0.0}
@@ -36,6 +39,7 @@ BuildRequires:  %{python_module softlayer-zeep >= 5.0.0}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module urllib3 >= 1.24}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 8.0.4
@@ -48,9 +52,9 @@ Requires:       python-setuptools
 Requires:       python-softlayer-zeep >= 5.0.0
 Requires:       python-typing_extensions
 Requires:       python-urllib3 >= 1.24
-Conflicts:      sl
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -60,12 +64,11 @@ This library provides a simple Python client to interact with SoftLayer's XML-RP
 %autosetup -p1 -n softlayer-python-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/slcli
-%python_clone -a %{buildroot}%{_bindir}/sl
 # do not install tests
 %python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -76,17 +79,15 @@ This library provides a simple Python client to interact with SoftLayer's XML-RP
 
 %post
 %python_install_alternative slcli
-%python_install_alternative sl
 
 %postun
 %python_uninstall_alternative slcli
-%python_uninstall_alternative sl
 
 %files %{python_files}
 %license LICENSE
 %doc *.md
-%{python_sitelib}/*
-%python_alternative %{_bindir}/sl
+%{python_sitelib}/SoftLayer
+%{python_sitelib}/softlayer-%{version}.dist-info
 %python_alternative %{_bindir}/slcli
 
 %changelog

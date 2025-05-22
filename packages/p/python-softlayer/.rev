@@ -360,4 +360,40 @@
   * Added a thread capable client.cf_call() function</comment>
     <requestid>1135609</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cf3a0882eeeb5a7d2b00f645bb967543</srcmd5>
+    <version>6.2.6</version>
+    <time>1747925858</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.2.6:
+  * Added feature to iter_call to force a orderBy filter
+  * Fixed an issues with search command.
+  * Added --owner, --public_ip and --private_ip search fields for hardware
+    list
+  * Added get_total_items to SoftLayerListResult.
+  * Fixed invalid filter in vs migrate preventing guest list from being
+    properly shown.
+  * Sums up child items in invoices-detail
+  * Updated vlan masks to fix id/number fields not being retrieved properly
+  * Added x509 certificate support to cli
+  * Added vpn status to user list.
+  * Fixed a bug when displaying empty tables.
+  * Added more error handling around table output
+  * Reworked user permissions list to include permissions
+  * More efficient created_by
+  * Fixed a bug in the config parser
+  * Fixed an issue with confirmation not handling uppercase ids
+  * Removed requirements in volume-modify commands
+  * Marked --crt and --key as required for slcli ssl add
+  * Added network flag to update-firmware
+  * Added detect-secrets workflow
+  * Added support for python 3.12
+  * Adding support for internal styles of authentication
+- Add patch support-click-8.2.patch:
+  * Support changes that Click 8.2 made.
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+- Package should be noarch.</comment>
+    <requestid>1279292</requestid>
+  </revision>
 </revisionlist>
