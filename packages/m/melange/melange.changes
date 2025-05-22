@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 22 04:37:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.0:
+  * sbom/direct download git locations (#1992)
+  * Fix/cpio multiarch (#1997)
+  * fix: better handling key string (#1995)
+  * feat: use user's SSH keys to talk to QEMU runner (#1994)
+
+-------------------------------------------------------------------
 Fri May 16 14:26:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.25.1:
