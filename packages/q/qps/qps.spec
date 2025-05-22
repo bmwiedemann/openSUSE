@@ -17,11 +17,10 @@
 
 
 Name:           qps
-Version:        2.10.0
+Version:        2.11.1
 Release:        0
 Summary:        Visual Process Manager
 License:        GPL-2.0-or-later
-Group:          System/Monitoring
 URL:            https://github.com/lxqt/qps
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc

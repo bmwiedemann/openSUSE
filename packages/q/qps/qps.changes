@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 17 15:41:42 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.11.1:
+  * Fixed first launching of Qps without config file
+
+-------------------------------------------------------------------
+Thu Apr 17 22:15:00 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Updated to version 2.11.0:
+  * Cleaned up the code and settings, and silenced compilation
+    warnings
+- Removed Group: declarations, no longer used
+
+-------------------------------------------------------------------
 Wed Nov  6 21:42:07 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to version 2.10.0:
