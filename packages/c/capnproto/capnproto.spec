@@ -28,7 +28,6 @@ BuildRequires:  cmake
 %if 0%{?suse_version} >= 1699
 BuildRequires:  clang
 BuildRequires:  clang-devel
-BuildRequires:  libstdc++6-devel-gcc15
 %else
 BuildRequires:  gcc7-c++
 %endif
