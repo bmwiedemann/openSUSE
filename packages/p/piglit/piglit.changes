@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 21 07:28:55 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1~20250508:
+  * gl: test push pop attribute with color material
+  * tests: test UBO and SSBO backed by the same buffer
+  * cmake: Fix mis-matching arguments warning
+  * tests: Add test for GL_EXT_shader_clock
+  * arb_direct_state_access: fix internaformat query behavior
+  * vulkan: Add cmat tests using constant as accumulator
+
+-------------------------------------------------------------------
 Wed Apr 09 10:03:57 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1~20250403:

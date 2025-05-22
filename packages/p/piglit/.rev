@@ -528,4 +528,18 @@
   * cmake: Add Python 3.13 to supported versions</comment>
     <requestid>1268096</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c1f9a9744e895263f2a8b244db155b64</srcmd5>
+    <version>1~20250508</version>
+    <time>1747925773</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1~20250508:
+  * gl: test push pop attribute with color material
+  * tests: test UBO and SSBO backed by the same buffer
+  * cmake: Fix mis-matching arguments warning
+  * tests: Add test for GL_EXT_shader_clock
+  * arb_direct_state_access: fix internaformat query behavior
+  * vulkan: Add cmat tests using constant as accumulator</comment>
+    <requestid>1278977</requestid>
+  </revision>
 </revisionlist>
