@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed May 21 13:50:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.42.1:
+  * Bugfixes
+    - c94b6a1: fix: lint issues, modernize codebase (#922)
+      (@caarlos0)
+  * Other work
+    - a543547: docs: update cmd docs (@caarlos0)
+  * Dependencies
+    - chore(deps): update rpmpack to last commit
+    - chore(deps): bump anchore/sbom-action from 0.19.0 to 0.20.0
+      (#930)
+    - chore(deps): bump dependabot/fetch-metadata from 2.3.0 to
+      2.4.0 (#929)
+    - chore(deps): bump dario.cat/mergo from 1.0.1 to 1.0.2 (#928)
+    - chore(deps): bump golangci/golangci-lint-action from 7 to 8
+      (#926)
+    - chore(deps): bump anchore/sbom-action from 0.18.0 to 0.19.0
+      (#925)
+    - chore(deps): bump sigstore/cosign-installer from 3.8.1 to
+      3.8.2 (#924)
+    - chore(deps): bump github.com/ProtonMail/go-crypto from 1.1.6
+      to 1.2.0 (#923)
+
+-------------------------------------------------------------------
 Sat Mar 29 07:51:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.42.0:
