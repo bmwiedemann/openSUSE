@@ -58,4 +58,12 @@ migrations as well as point release upgrades
     <comment></comment>
     <requestid>1242876</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b96251345af4267a9efcfd423585aa13</srcmd5>
+    <version>20250521.ab8700a</version>
+    <time>1747925818</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1279197</requestid>
+  </revision>
 </revisionlist>

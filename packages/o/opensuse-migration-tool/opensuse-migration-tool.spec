@@ -2,8 +2,8 @@
 # spec file for package opensuse-migration-tool
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2024 Marcela Maslanova
-# Copyright (c) 2024 Lubos Kocman
+# Copyright (c) 2025 Marcela Maslanova
+# Copyright (c) 2025 Lubos Kocman
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 
 Name:           opensuse-migration-tool
-Version:        20250129.63f1e30
+Version:        20250521.ab8700a
 Release:        0
 Summary:        Migration and Upgrade tool for openSUSE
 License:        Apache-2.0
