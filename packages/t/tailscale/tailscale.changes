@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 22 08:27:09 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.84.0:
+  * The --reason flag is added to the tailscale down command
+  * ReconnectAfter policy setting, which configures the maximum period of time
+    between a user disconnecting Tailscale and the client automatically
+    reconnecting
+  * Tailscale CLI commands throw an error if multiple of the same flag are detected
+  * Network connectivity issues when creating a new profile or switching
+    profiles while using an exit node
+  * DNS-over-TCP fallback works correctly with upstream servers reachable only
+    via the tailnet
+- remove fix-CVE-2025-22869.patch, as upstream updated their dependencies
+
+-------------------------------------------------------------------
 Fri Apr 18 07:37:15 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.82.5:
