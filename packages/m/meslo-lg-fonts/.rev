@@ -75,4 +75,20 @@
     <comment></comment>
     <requestid>1268430</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>582433d480fd87201ea5947f37ec2a7f</srcmd5>
+    <version>1.2.4</version>
+    <time>1747925800</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.2.4:
+  * Center bold and bold-italic period glyph 
+
+- Update to 1.2.3:
+  * Shorten non-bold comma glyph for consistency with other glyphs
+  * Shrink bold period glyph to match other punctuation
+  * Revert exclamation point glyph style back to that of Bitstream 
+    Vera Sans Mono
+</comment>
+    <requestid>1279134</requestid>
+  </revision>
 </revisionlist>
