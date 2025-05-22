@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 12 18:45:10 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update typst-symbols to version 0.1.8.1.
+  ## 0.1.8.1
+
+  * Revert sorting in scrape-symbols.hs, introduced mistakenly in 0.1.8.
+
+  * Regenerate symbol tables, so that defaults for things like `dots` are fixed.
+
+  ## 0.1.8
+
+  * Update to typst 0.13.
+
+-------------------------------------------------------------------
 Tue Oct 22 02:49:53 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update typst-symbols to version 0.1.7.
