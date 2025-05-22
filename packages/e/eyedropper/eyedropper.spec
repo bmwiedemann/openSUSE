@@ -19,6 +19,7 @@
 
 %define lname   com.github.finefindus.eyedropper
 %bcond_with     warp
+%bcond_with     test
 %define sname   blueprint-compiler
 %define sver    0.8.1
 Name:           eyedropper
@@ -70,8 +71,10 @@ tar -xf %{SOURCE1} --strip-components 1 -C subprojects/%{sname}
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 
+%if %{with test}
 %check
 %meson_test
+%endif
 
 %files
 %license LICENSE
