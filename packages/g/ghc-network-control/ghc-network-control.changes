@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 18 23:42:14 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update network-control to version 0.1.7.
+  ## 0.1.7
+
+  * Implementing setLRUCapacity.
+
+-------------------------------------------------------------------
 Sun Mar 30 08:30:48 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update network-control to version 0.1.6.
