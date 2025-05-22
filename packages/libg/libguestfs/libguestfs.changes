@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 13 11:48:35 MDT 2025 - carnold@suse.com
+
+- Update to version 1.55.11 (jsc#PED-12706)
+  * daemon/fstrim.c: Run the fstrim command twice
+  * lib/create.c: Fix check after BLKDISCARD
+  * daemon: inspect: Remove duplicate root mountpoints in /etc/fstab
+
+-------------------------------------------------------------------
 Mon May 12 14:17:21 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use FUSE3 starting with suse_version 1600 (aka CODE16): Release
