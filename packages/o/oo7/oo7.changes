@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed May 21 16:42:44 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- remove Provides: secret-tool
+
+-------------------------------------------------------------------
+Mon May 12 21:11:50 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- remove Obsoletes: secret-tool
+
+-------------------------------------------------------------------
+Tue May  6 14:40:08 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update vendor tarball, fixing bsc#1242633
+
+-------------------------------------------------------------------
+Thu Apr 17 21:23:26 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Enable build of portal, daemon, cargo-credential
+- Enable tests
+- Update cargo vendor
+
+-------------------------------------------------------------------
 Sun Mar 23 21:08:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.4.3:

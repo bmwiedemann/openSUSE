@@ -52,4 +52,12 @@
   breaking change (forwarded request 1255542 from rrahl0)</comment>
     <requestid>1255544</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1bc5dea5815cac24e7ae79af689735d2</srcmd5>
+    <version>0.4.3</version>
+    <time>1747925723</time>
+    <user>anag_factory</user>
+    <comment>- remove Provides: secret-tool (forwarded request 1279088 from rrahl0)</comment>
+    <requestid>1279090</requestid>
+  </revision>
 </revisionlist>
