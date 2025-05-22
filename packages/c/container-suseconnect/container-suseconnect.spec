@@ -22,7 +22,7 @@
 %global zypp_services %{zypp_path}/services
 %global zypp_urlresolver %{zypp_path}/urlresolver
 Name:           %{project}
-Version:        2.5.1
+Version:        2.5.3
 Release:        0
 Summary:        Provides access to repositories inside containers
 License:        Apache-2.0
@@ -34,7 +34,7 @@ Source2:        container-suseconnect-rpmlintrc
 BuildRequires:  libzypp > 9.34
 BuildRequires:  zstd
 %if 0%{?suse_version} == 1500
-BuildRequires:  go1.23-openssl
+BuildRequires:  go1.24-openssl
 %else
 BuildRequires:  golang(API) = 1.24
 %endif

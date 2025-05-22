@@ -4,14 +4,16 @@
         <param name="scm">git</param>
         <param name="filename">container-suseconnect</param>
         <param name="exclude">.git</param>
-        <param name="versionformat">2.5.1</param>
-        <param name="revision">v2.5.1</param>
+        <param name="versionformat">@PARENT_TAG@</param>
+        <param name="versionrewrite-pattern">v(.*)</param>
+        <param name="revision">v2.5.3</param>
+        <param name="changesgenerate">enable</param>
     </service>
+    <service mode="manual" name="set_version"/>
     <service mode="manual" name="recompress">
         <param name="file">*.tar</param>
         <param name="compression">zst</param>
     </service>
-    <service mode="manual" name="set_version"/>
     <service mode="manual" name="go_modules">
         <param name="compression">zst</param>
     </service>

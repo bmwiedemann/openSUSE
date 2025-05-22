@@ -38,4 +38,26 @@
   * Remove use of urfave/cli and replace it with flag</comment>
     <requestid>1272246</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e066a1cb2878a0605edd5f9aa404d32e</srcmd5>
+    <version>2.5.3</version>
+    <time>1747925739</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.3 (bsc#1243360):
+  * only handle command line options for the default arg0 case
+  * parse and ignore the previously removed log-credentials-errors
+  * Restore usage output on unhandled command line options
+
+- Update to version 2.5.2:
+  * Prepare for new release
+  * Fix default behavior
+  * Use comma-separated lists for case in switch
+  * Switch to go stable and update mod to 1.24.0
+  * Remove use of urfave/cli and replace it with flag
+  * Various golangci-lint v2.1x warnings fixed
+  * Bump github.com/urfave/cli/v2 from 2.27.5 to 2.27.6
+  * Also allow optionally to pass down the system_token
+  * Bump github.com/stretchr/testify from 1.9.0 to 1.10.0</comment>
+    <requestid>1278878</requestid>
+  </revision>
 </revisionlist>
