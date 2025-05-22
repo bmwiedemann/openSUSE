@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 15 11:12:15 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update blaze-builder to version 0.4.3.
+  * 0.4.3 2025-05-15
+    - Fix computation of max buffer overhead on 32 bit platforms
+      (sternenseemann, PR #8 https://github.com/blaze-builder/blaze-builder/pull/8)
+    - Drop support for GHC 7, bytestring < 0.10.4 and text < 1.1.2
+    - Tested with GHC 8.0 - 9.12.2
+
+-------------------------------------------------------------------
 Sun Aug 27 17:50:11 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update blaze-builder to version 0.4.2.3.
