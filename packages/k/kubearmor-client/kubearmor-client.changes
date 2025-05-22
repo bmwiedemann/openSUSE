@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 21 13:52:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.1:
+  * minor fix
+
+-------------------------------------------------------------------
+Wed May 21 06:45:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.0:
+  * Update ossf/scorecard-action action to v2.4.1
+  * Support karmor install for non-k8s environment (#475)
+  * addressed reviews
+  * add log source column in profile
+  * using PWD as tmp dir when access to /tmp/ is not available
+
+-------------------------------------------------------------------
 Tue Mar 18 17:48:59 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.3.4:
