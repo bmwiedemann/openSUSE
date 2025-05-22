@@ -1468,4 +1468,18 @@
   * releaser: Prepare repository for 0.148.0-DEV (forwarded request 1276967 from jfkw)</comment>
     <requestid>1276968</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>cdcc9e55ef50719b1dca54658b1642b9</srcmd5>
+    <version>0.147.4</version>
+    <time>1747925751</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.147.4:
+  * releaser: Bump versions for release of 0.147.4
+  * Fix it so css.TailwindCSS inlineImports options isn't always enabled
+  * tpl: Add a test case
+  * tpl: Narrow down the usage of plain text shortcodes when rendering HTML
+  * tpl: Fix theme overrides when theme has old layout setup (e.g. _default)
+  * releaser: Prepare repository for 0.148.0-DEV (forwarded request 1278901 from jfkw)</comment>
+    <requestid>1278902</requestid>
+  </revision>
 </revisionlist>

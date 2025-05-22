@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 21 02:26:58 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.147.4:
+  * releaser: Bump versions for release of 0.147.4
+  * Fix it so css.TailwindCSS inlineImports options isn't always enabled
+  * tpl: Add a test case
+  * tpl: Narrow down the usage of plain text shortcodes when rendering HTML
+  * tpl: Fix theme overrides when theme has old layout setup (e.g. _default)
+  * releaser: Prepare repository for 0.148.0-DEV
+
+-------------------------------------------------------------------
 Mon May 12 17:33:23 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.147.3:
