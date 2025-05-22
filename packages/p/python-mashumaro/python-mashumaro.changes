@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 21 05:13:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.16:
+  * Added support for custom JSON Schema instance formats defined by
+    users (#267)
+  * Added support for typing.ReadOnly and typing_extensions.ReadOnly
+    from PEP 705 (#272)
+  * Fixed AttributeError when using generic SerializableType subclass
+    (#275)
+
+-------------------------------------------------------------------
 Mon Dec  2 09:45:29 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to v3.15:
