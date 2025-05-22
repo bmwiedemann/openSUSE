@@ -284,4 +284,14 @@ please place in same staging as gcompris-qt-voices
     <comment></comment>
     <requestid>1269138</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>898114bd17c42d2de19abd2d8690a549</srcmd5>
+    <version>25.1</version>
+    <time>1747925849</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 25.1 contains bug fixes and graphics
+  improvements on many activities
+</comment>
+    <requestid>1279263</requestid>
+  </revision>
 </revisionlist>
