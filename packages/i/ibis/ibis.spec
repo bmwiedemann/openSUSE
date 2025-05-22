@@ -18,13 +18,13 @@
 
 %define         sover 0
 Name:           ibis
-Version:        0.13.1
+Version:        0.14.0
 Release:        0
 Summary:        Gobject based library
 License:        GPL-2.0-or-later
 URL:            https://keep.imfreedom.org/ibis/ibis
-Source0:        https://downloads.sf.net/pidgin/%{name}/%{name}-%{version}.tar.xz
-Source1:        https://downloads.sf.net/pidgin/%{name}/%{name}-%{version}.tar.xz.asc
+Source0:        https://downloads.sf.net/pidgin/%{name}-%{version}.tar.xz
+Source1:        https://downloads.sf.net/pidgin/%{name}-%{version}.tar.xz.asc
 Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x40de1dc7288fe3f50ab938c548f66affd9bdb729#/%{name}.keyring
 BuildRequires:  meson
 BuildRequires:  pkgconfig
