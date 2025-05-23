@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 16 09:36:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri Oct 23 14:44:10 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Use %pycache_only %python_sitelib instead of %python3_sitelib

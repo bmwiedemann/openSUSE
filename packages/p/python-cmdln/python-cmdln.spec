@@ -1,7 +1,7 @@
 #
 # spec file for package python-cmdln
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cmdln
 Version:        2.0.0
 Release:        0
@@ -26,7 +25,9 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/trentm/cmdln
 Source:         https://files.pythonhosted.org/packages/source/c/cmdln/cmdln-%{version}.zip
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildRequires:  tcl
 BuildRequires:  unzip
@@ -50,15 +51,16 @@ sed -i '/^#!/d' lib/cmdln.py
 chmod -x examples/*
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %check
 
 %files %{python_files}
-%doc LICENSE.txt docs/ examples/
+%license LICENSE.txt
+%doc docs/ examples/
 %{python_sitelib}/cmdln*
 %pycache_only %{python_sitelib}/__pycache__/*
 
