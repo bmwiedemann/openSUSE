@@ -916,4 +916,14 @@ source service setup which messed up my spec file.
   * inkmp-script: fix &quot;bad array subscript&quot; error (bsc#1239550) (forwarded request 1252873 from mwilck)</comment>
     <requestid>1252874</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>783d81f7c982cddb993408036eeb3ec4</srcmd5>
+    <version>16.0.60</version>
+    <time>1748003361</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 16.0.60:
+  * spec file: add missing util-linux requirement (bsc#1241465)
+  * kernel-scriptlets: enable tracing with KERNEL_PACKAGE_SCRIPT_TRACE=1 (forwarded request 1277668 from mwilck)</comment>
+    <requestid>1277669</requestid>
+  </revision>
 </revisionlist>

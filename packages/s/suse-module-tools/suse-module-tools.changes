@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 15 09:06:40 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.60:
+  * spec file: add missing util-linux requirement (bsc#1241465)
+  * kernel-scriptlets: enable tracing with KERNEL_PACKAGE_SCRIPT_TRACE=1
+
+-------------------------------------------------------------------
 Thu Mar 13 19:43:57 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.59:

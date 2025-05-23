@@ -1,7 +1,7 @@
 #
 # spec file for package suse-module-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Location for modprobe and depmod .conf files
-#
-# This assumes post-usr-merge (20210527) for Tumbleweed
+
 %global modprobe_dir /usr/lib/modprobe.d
 %global depmod_dir /usr/lib/depmod.d
 %global dracutlibdir %{_prefix}/lib/dracut
@@ -37,7 +35,7 @@
 %global modprobe_conf_rpmsave %(echo "%{modprobe_conf_files}" | sed 's,\\([^ ]*\\),%{_sysconfdir}/modprobe.d/\\1.conf.rpmsave,g')
 
 Name:           suse-module-tools
-Version:        16.0.59
+Version:        16.0.60
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -51,8 +49,9 @@ Requires:       /usr/bin/gzip
 Requires:       /usr/bin/sed
 Requires:       coreutils
 Requires:       findutils
-Requires:       systemd-rpm-macros
 Requires:       rpm
+Requires:       systemd-rpm-macros
+Requires:       util-linux
 Requires(post): /usr/bin/grep
 Requires(post): /usr/bin/sed
 Requires(post): coreutils
@@ -78,13 +77,12 @@ This package contains helper scripts for KMP installation and
 uninstallation, as well as default configuration files for depmod and
 modprobe.
 
-
 %package scriptlets
 Summary:        Kernel rpm scriptlets
 Provides:       suse-kernel-rpm-scriptlets = 0
 Requires:       suse-module-tools = %{version}
-Provides:       suse-module-tools:/usr/lib/module-init-tools/kernel-scriptlets
 Provides:       sdbootutil-rpm-scriptlets = 2.0
+Provides:       suse-module-tools:/usr/lib/module-init-tools/kernel-scriptlets
 Obsoletes:      sdbootutil-rpm-scriptlets < 2.0
 
 %description scriptlets
@@ -247,6 +245,7 @@ exit 0
 %ifarch ppc64 ppc64le
 /usr/lib/systemd/system-generators
 %endif
+
 #
 %files scriptlets
 /usr/lib/module-init-tools/kernel-scriptlets
