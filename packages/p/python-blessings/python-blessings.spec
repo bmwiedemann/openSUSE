@@ -1,7 +1,7 @@
 #
 # spec file for package python-blessings
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-blessings
 Version:        1.7
@@ -27,8 +26,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/erikrose/blessings
 Source:         https://files.pythonhosted.org/packages/source/b/blessings/blessings-%{version}.tar.gz
 BuildRequires:  %{python_module curses}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires:       python-curses
 Requires:       python-six
@@ -43,10 +44,10 @@ arrays of text.
 %setup -q -n blessings-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %check
 # Can't be run because it expects real term where it can play with colours
@@ -55,6 +56,7 @@ arrays of text.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/blessings
+%{python_sitelib}/blessings-%{version}*-info
 
 %changelog
