@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 23 11:41:56 CEST 2025 - aschnell@suse.com
+
+- update to 1.88.0
+  * new libraries:
+    + Hash2 (extensible hashing framework)
+    + MQTT5 (MQTT5 client library)
+  * for details on all changes see,
+    https://www.boost.org/users/history/version_1_88_0.html
+- boost-smart-ptr.patch: included upstream
+- boost-missing-BOOST_MOVE_STD_NS_BEG.patch: included upstream
+- boost-missing-BOOST_MOVE_STD_NS_BEG-again.patch: included upstream
+
+-------------------------------------------------------------------
 Mon Apr 07 14:14:22 CEST 2025 - aschnell@suse.com
 
 - Remove requires of boost exception from boost coroutine

@@ -19,8 +19,8 @@
 #
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define ver 1.87.0
-%define _ver 1_87_0
+%define ver 1.88.0
+%define _ver 1_88_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -72,9 +72,9 @@ ExclusiveArch:  do_not_build
 %define base_name boost%{?name_suffix}
 
 Name:           %{base_name}
-Version:        1.87.0
+Version:        1.88.0
 Release:        0
-%define library_version 1_87_0
+%define library_version 1_88_0
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
@@ -101,9 +101,6 @@ Patch17:        python_mpi.patch
 Patch18:        dynamic_linking.patch
 Patch20:        python_library_name.patch
 Patch21:        boost-remove-cmakedir.patch
-Patch22:        boost-smart-ptr.patch
-Patch23:        https://github.com/boostorg/move/commit/5f073f8f00ee23b4502c0ad30a3aa2a5154cd1e8.patch#/boost-missing-BOOST_MOVE_STD_NS_BEG.patch
-Patch24:        https://github.com/boostorg/move/commit/e9ff3ca0952e680871145f454925614d950cef4d.patch#/boost-missing-BOOST_MOVE_STD_NS_BEG-again.patch
 Patch25:        boost-no-exception.patch
 %{?suse_build_hwcaps_libs}
 BuildRequires:  fdupes
@@ -715,7 +712,7 @@ Requires:       libboost_context%{library_version}-devel = %{version}
 Requires:       libboost_date_time%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_process%{library_version} = %{version}
-Conflicts:      boost-devel < 1.87
+Conflicts:      boost-devel < 1.88
 Conflicts:      libboost_process-devel-impl
 Provides:       libboost_process-devel-impl = %{version}
 
@@ -1000,6 +997,7 @@ This package contains Boost::Locale runtime library.
 %package     -n libboost_locale%{library_version}-devel
 Summary:        Development headers for Boost.Locale library
 Group:          Development/Libraries/C and C++
+Requires:       libboost_charconv%{library_version}-devel = %{version}
 Requires:       libboost_chrono%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_locale%{library_version} = %{version}
@@ -1127,9 +1125,6 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch -P 18 -p1
 %patch -P 20 -p1
 %patch -P 21 -p1
-%patch -P 22 -p1
-%patch -P 23 -p2
-%patch -P 24 -p2
 %patch -P 25
 
 %build
