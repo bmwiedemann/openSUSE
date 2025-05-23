@@ -40,6 +40,8 @@ Summary:        A C++11 HTTP/HTTPS library
 %package devel
 Summary:        A C++11 HTTP/HTTPS library
 Requires:       lib%{name}%{libver} = %{version}
+# cmake files require presence of libzstd even if httplib was built without it
+Requires:       pkgconfig(libzstd)
 
 %description
 This is a multi-threaded HTTP library with blocking I/O. There is no

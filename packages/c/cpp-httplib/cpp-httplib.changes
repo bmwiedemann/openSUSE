@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 19 20:04:41 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add dependency from cpp-httplib-devel to libzstd-devel
+  to workaround cmake wanting it in all cases unconditionally.
+
+-------------------------------------------------------------------
 Mon May 12 11:00:44 UTC 2025 - pgajdos@suse.com
 
 - version update to 0.20.1
