@@ -1,7 +1,7 @@
 #
 # spec file for package cvsps
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,7 +58,7 @@ cp %{SOURCE1} %{SOURCE2} %{SOURCE4} .
 %build
 export CFLAGS="%{optflags}"
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_VERBOSE_MAKEFILE=TRUE .
-%{__make} %{?jobs:-j%jobs}
+%make_build
 
 %install
 %makeinstall
@@ -68,7 +68,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc README CHANGELOG COPYING
+%license COPYING
+%doc README CHANGELOG
 %doc bk-cvs.mail cvsps-bk-cvs.mail
 %{_bindir}/cvsps
 %{_mandir}/man*/*

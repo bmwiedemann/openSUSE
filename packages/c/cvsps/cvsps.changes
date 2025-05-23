@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 14 14:49:34 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %make_build instead of %jobs (boo#1237231)
+- Mark COPYING file as %license
+
+-------------------------------------------------------------------
 Mon Feb 26 11:07:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
