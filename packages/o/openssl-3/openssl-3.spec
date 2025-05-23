@@ -80,8 +80,6 @@ Patch15:        openssl-skipped-tests-EC-curves.patch
 Patch16:        openssl-FIPS-140-3-keychecks.patch
 # PATCH-FIX-FEDORA bsc#1221760 FIPS: Execute KATS before HMAC verification
 Patch17:        openssl-FIPS-early-KATS.patch
-# PATCH-FIX-SUSE NOOP rh-allow-sha1-signatures from crypto-policies
-Patch18:        openssl-rh-allow-sha1-signatures.patch
 # PATCH-FIX-FEDORA bsc#1221365 bsc#1221824 FIPS: Service Level Indicator is needed
 Patch19:        openssl-FIPS-limit-rsa-encrypt.patch
 Patch20:        openssl-FIPS-Expose-a-FIPS-indicator.patch
@@ -118,6 +116,14 @@ Patch38:        openssl-shared-jitterentropy.patch
 Patch39:        openssl-disable-75-test_quicapi-test.patch
 # PATCH-FIX-FEDORA bsc#1221365 FIPS: Service Level Indicator is needed
 Patch40:        openssl-FIPS-enforce-EMS-support.patch
+# PATCH-FIX-FEDORA bsc#1221787 FIPS: Selectively disallow SHA1 signatures
+Patch41:        openssl-Allow-disabling-of-SHA1-signatures.patch
+# PATCH-FIX-FEDORA bsc#1221365 FIPS: Deny SHA-1 signature verification in FIPS provider
+Patch42:        openssl-FIPS-Deny-SHA-1-sigver-in-FIPS-provider.patch
+# PATCH-FIX-FEDORA FIPS: Allow SHA1 in seclevel 2 if rh-allow-sha1-signatures = yes
+Patch43:        openssl-FIPS-Allow-SHA1-in-seclevel-2-if-rh-allow-sha1-signatures.patch
+# PATCH-FIX-FEDORA FIPS: Fix the speed command in FIPS mode for KMAC
+Patch44:        openssl-FIPS-Fix-openssl-speed-KMAC.patch
 
 # ulp-macros is available according to SUSE version.
 %ifarch x86_64

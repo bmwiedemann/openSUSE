@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 15 09:41:20 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Fix the speed command in FIPS mode for KMAC
+  * Add openssl-FIPS-Fix-openssl-speed-KMAC.patch
+
+-------------------------------------------------------------------
+Mon May 12 10:47:50 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Restore the check to deny SHA1 signatures in FIPS mode and
+  the functionality to allow/deny via crypto-policies. [jsc#PED-12224]
+  * Remove openssl-rh-allow-sha1-signatures.patch
+  * Add patches:
+    - openssl-Allow-disabling-of-SHA1-signatures.patch
+    - openssl-FIPS-Deny-SHA-1-sigver-in-FIPS-provider.patch
+    - openssl-FIPS-Allow-SHA1-in-seclevel-2-if-rh-allow-sha1-signatures.patch
+
+-------------------------------------------------------------------
 Fri Apr  4 13:34:27 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 3.5.0:
