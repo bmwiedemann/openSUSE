@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu May 15 14:45:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.1:
+  + Enhancements:
+    - Code cleanups and improvements to app info tracking
+    - Include PID/TID in realtime portal error messages
+    - Search for portal backends in $XDG_DATA_DIRS
+    - Prioritize user portal configs over system ones
+  + Bug Fixes:
+    - Fix race condition in the host registry portal
+    - Avoid spurious warnings when dbus.service stops
+    - Documentation fixes
+    - Fix running tests from /tmp
+    - Fix installing dynamic launcher
+    - Improve error reporting in the document portal
+    - Fix incorrect state tracking in input capture portal
+
+-------------------------------------------------------------------
 Fri Mar 28 01:48:38 UTC 2025 - Yifan Jiang <yfjiang@suse.com>
 
 - Optimize docs dependency concern by using default sphinx

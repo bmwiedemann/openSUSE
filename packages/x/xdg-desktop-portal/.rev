@@ -491,4 +491,25 @@
   * remove-furo-dep.patch (forwarded request 1266404 from yfjiang)</comment>
     <requestid>1266888</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>68dedba7cfab2c749fd4454187ed4875</srcmd5>
+    <version>1.20.1</version>
+    <time>1748003308</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.20.1:
+  + Enhancements:
+    - Code cleanups and improvements to app info tracking
+    - Include PID/TID in realtime portal error messages
+    - Search for portal backends in $XDG_DATA_DIRS
+    - Prioritize user portal configs over system ones
+  + Bug Fixes:
+    - Fix race condition in the host registry portal
+    - Avoid spurious warnings when dbus.service stops
+    - Documentation fixes
+    - Fix running tests from /tmp
+    - Fix installing dynamic launcher
+    - Improve error reporting in the document portal
+    - Fix incorrect state tracking in input capture portal (forwarded request 1277803 from iznogood)</comment>
+    <requestid>1278252</requestid>
+  </revision>
 </revisionlist>
