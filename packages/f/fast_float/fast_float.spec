@@ -17,7 +17,7 @@
 
 
 Name:           fast_float
-Version:        7.0.0
+Version:        8.0.2
 Release:        0
 Summary:        A fast number parsing library
 License:        Apache-2.0 OR BSL-1.0 OR MIT

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 17 17:46:52 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 8.0.2:
+  * No relevant changes.
+- Changes from version 8.0.1:
+  * Fix various build warnings.
+- Changes from version 8.0.0:
+  * Add version macros.
+  * Better compile time error messages for unsupported types.
+  * Support char8_t on C++20.
+  * Introduce equiv_uint_t helper.
+  * 16-bit float support.
+
+-------------------------------------------------------------------
 Sat Jan 18 05:58:09 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 7.0.0:
