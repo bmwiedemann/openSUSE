@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 17 14:57:50 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.11
+  Bugfix release
+  * The last release was no good: I've disabled the custom cursor
+    for now, since it broke stuff like the editor.
+  * Also a compile issue with newer C versions should be fixed now
+
+-------------------------------------------------------------------
 Sun May 11 19:06:00 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.1.10:
