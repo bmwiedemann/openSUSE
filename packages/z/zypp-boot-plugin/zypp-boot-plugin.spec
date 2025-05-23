@@ -1,7 +1,7 @@
 #
 # spec file for package zypp-boot-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zypp-boot-plugin
-Version:        0.0.12
+Version:        0.0.13
 Release:        0
 Summary:        Zypp plugin for checking if a reboot is needed
 License:        AGPL-3.0-or-later
