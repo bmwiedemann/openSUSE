@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 17.4
+%define pgversion 17.5
 %define pgmajor 17
 %define buildlibs 1
 %define tarversion %{pgversion}
@@ -183,6 +183,7 @@ Source1:        https://ftp.postgresql.org/pub/source/v%{tarversion}/postgresql-
 Source2:        baselibs.conf
 Source17:       postgresql-rpmlintrc
 Patch1:         postgresql-conf.patch
+Patch2:         postresql-pg_config_paths.patch
 # PL/Perl needs to be linked with rpath (bsc#578053)
 Patch4:         postgresql-plperl-keep-rpath.patch
 Patch8:         postgresql-testsuite-keep-results-file.patch
@@ -518,6 +519,7 @@ included in the postgresql-server package.
 # confuse PostgreSQL's build system
 touch -r configure tmp
 %patch -P 1
+%patch -P 2
 %patch -P 4
 %patch -P 8
 %patch -P 9
