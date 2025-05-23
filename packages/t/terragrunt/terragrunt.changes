@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri May 23 04:58:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.80.2:
+  * New Features
+    - find adds support for --include
+      The find command now supports the --include flag to allow for
+      fine grained control over the discovery of units that include
+      other partial configurations.
+  * Bug Fixes
+    - --tf-path now correctly overrides terraform_binary
+      A bug in the precedence logic for Terragrunt configuration
+      parsing resulted in the CLI flag --tf-path from being ignored
+      when the terraform_binary attribute was set.
+      Terragrunt will now correctly respect the terraform_binary
+      attribute when set, and allow --tf-path to override the value
+      when it is set.
+  * What's Changed
+    - fix: Cleaning up addition of `--include` on `find` (#4335)
+    - chore: migrated to golangci-lint v2 (#4333)
+    - fix: Fixing usage of `--tf-path` (#4332)
+    - feat: Adding flake test (#4334)
+    - add `--include` in `find --json` (#4330)
+    - feat: Adding basic benchmarks (#4325)
+
+-------------------------------------------------------------------
 Thu May 22 10:55:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.80.1:
