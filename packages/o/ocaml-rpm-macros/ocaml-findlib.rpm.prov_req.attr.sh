@@ -12,6 +12,7 @@ trap _x EXIT
 cmd=
 test "$1" = "-prov" && cmd=prov
 test "$1" = "-req"  && cmd=req
+pkg_version="$2"
 do_work() {
   local f=$1
   local pkg_name
@@ -214,7 +215,7 @@ do_work() {
     pkg_req="${pkg_req//,/ }"
     if test -n "${pkg_prov}" && test "${cmd}" = "prov"
     then
-      echo "${prov_req_name}($pkg_prov)"
+      echo "${prov_req_name}($pkg_prov) = ${pkg_version}"
     fi
     if test "${cmd}" = "req"
     then

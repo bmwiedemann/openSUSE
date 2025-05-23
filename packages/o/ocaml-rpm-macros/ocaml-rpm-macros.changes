@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 17 14:53:11 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Include the version of the package in the ocamlfind provide entries
+
+-------------------------------------------------------------------
 Mon Sep  9 09:09:09 UTC 2024 - ohering@suse.de
 
 - Package also *.vo and *.glob, for Coq

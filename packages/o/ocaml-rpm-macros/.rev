@@ -230,4 +230,12 @@ trim changes file</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1201435</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c81aaa57ef3d6f3711a504479e736705</srcmd5>
+    <version>20250517</version>
+    <time>1748003296</time>
+    <user>anag_factory</user>
+    <comment>- Include the version of the package in the ocamlfind provide entries</comment>
+    <requestid>1278176</requestid>
+  </revision>
 </revisionlist>

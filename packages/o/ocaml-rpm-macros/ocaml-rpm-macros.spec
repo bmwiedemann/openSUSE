@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-rpm-macros
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-rpm-macros
-Version:        20240909
+Version:        20250517
 Release:        0
 Summary:        RPM macros for building OCaml source packages
 License:        GPL-2.0-only
@@ -80,7 +80,7 @@ _EOF_
   attr_sh="%%_rpmconfigdir/${tag}.sh"
   tee %buildroot${file_sh} < %{SOURCE1}
   tee %buildroot${file_attr} <<_EOF_
-%%__${tag}_provides ${attr_sh} -prov
+%%__${tag}_provides ${attr_sh} -prov %%version
 %%__${tag}_requires ${attr_sh} -req
 %%__${tag}_path     ^%ocaml_standard_library/.*/META$|^%ocaml_standard_library/META$
 _EOF_
@@ -101,7 +101,7 @@ tee %buildroot%_rpmmacrodir/macros.%name <<'_EOF_'
 # - Helper applications below %ocaml_standard_library go into the -devel subpackage
 # - License files go into the main package.
 # - To aid debugging of cmxs files, their debuginfo is preserved by removing the executable bit.
-# 
+#
 # get rid of %_rpmconfigdir/find-debuginfo.sh
 # strip kills the bytecode part of ELF binaries
 #
