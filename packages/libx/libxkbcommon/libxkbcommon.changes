@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 21 19:27:50 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.10.0
+  * Changed Compose behavior so that sequences defined later always
+    override ones defined earlier, even if the new sequence is
+    shorter.
+  * Modifiers masks handling has been refactored to properly handle
+    virtual modifiers. Modifier masks are now always considered as
+    an opaque encoding of the modifiers state:
+  * 1. Modifiers masks should not be interpreted by other means
+    than the provided API. In particular, one should not assume
+    that modifiers masks always denote the modifiers indexes of the
+    keymap.
+  * 2. It enables using virtual modifiers with arbitrary mappings.
+
+-------------------------------------------------------------------
 Tue May  6 23:33:23 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.9.2
