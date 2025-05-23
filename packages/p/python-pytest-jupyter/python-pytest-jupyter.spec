@@ -20,8 +20,6 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
-# python-nbformat needed by the client subpackage is not available on python313
-%define skip_python313 1
 %else
 %define psuffix %{nil}
 %bcond_with test
@@ -111,11 +109,8 @@ mv pytest_jupyter pytest_jupyter.moved
 %{python_sitelib}/pytest_jupyter
 %{python_sitelib}/pytest_jupyter-%{version}.dist-info
 
-# python-nbformat needed by the client subpackage is not available on python313
-%if %{?python_version_nodots} < 313
 %files %{python_files client}
 %license LICENSE
-%endif
 
 %if !%{with ringdisabled}
 %files %{python_files server}
