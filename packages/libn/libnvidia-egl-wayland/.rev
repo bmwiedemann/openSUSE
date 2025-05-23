@@ -208,4 +208,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1252481</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7efbfd6a41eb2be98fcbf3ea20c07b70</srcmd5>
+    <version>1.1.19</version>
+    <time>1748003353</time>
+    <user>anag_factory</user>
+    <comment>- update to version 1.1.19:
+  * Fix an issue causing EGL_EXT_present_opaque to be advertised
+    on non-Wayland EGLDisplays</comment>
+    <requestid>1277515</requestid>
+  </revision>
 </revisionlist>

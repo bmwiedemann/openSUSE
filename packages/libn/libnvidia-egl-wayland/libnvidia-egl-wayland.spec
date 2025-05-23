@@ -20,7 +20,7 @@
 %define lname libnvidia-egl-wayland%{so_ver}
 %define rname egl-wayland
 Name:           libnvidia-egl-wayland
-Version:        1.1.18
+Version:        1.1.19
 Release:        0
 Summary:        The EGLStream-based Wayland external platform
 License:        MIT

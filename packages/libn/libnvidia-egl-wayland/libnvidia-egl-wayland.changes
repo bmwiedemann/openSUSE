@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 15 00:36:47 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 1.1.19:
+  * Fix an issue causing EGL_EXT_present_opaque to be advertised
+    on non-Wayland EGLDisplays 
+
+-------------------------------------------------------------------
 Wed Mar  5 13:57:01 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - moved XML documentation to -devel package 
