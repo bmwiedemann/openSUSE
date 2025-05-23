@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 19 07:15:36 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.1.114:
+  * Fix to broken TRC cache for formula based TRCs in ICC profiles.
+  * BABL_ICC_INTENT_DEFAULT added.
+  * Some broken conversions removed.
+
+-------------------------------------------------------------------
 Mon Mar 17 11:31:38 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.1.112:

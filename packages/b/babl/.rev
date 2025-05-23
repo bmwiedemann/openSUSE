@@ -527,4 +527,15 @@
     seperator.</comment>
     <requestid>1253759</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>ad241aa712b046f50be448883eac6ddc</srcmd5>
+    <version>0.1.114</version>
+    <time>1748003335</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.1.114:
+  * Fix to broken TRC cache for formula based TRCs in ICC profiles.
+  * BABL_ICC_INTENT_DEFAULT added.
+  * Some broken conversions removed. (forwarded request 1278315 from polslinux)</comment>
+    <requestid>1278394</requestid>
+  </revision>
 </revisionlist>
