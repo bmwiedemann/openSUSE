@@ -139,4 +139,17 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment></comment>
     <requestid>947376</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6b3c8b6c06754d2932d8cc4dfe4759e7</srcmd5>
+    <version>2.14.1</version>
+    <time>1748003368</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.14.1:
+  * Fix thread safety of encoding and decoding when uselocale() or newlocale()
+    is used to switch locales inside the threads (#674, #675, #677).
+  * Use David M. Gay’s dtoa() algorithm to avoid misprinting issues of
+    real numbers that are not exactly representable as a double() (#680).
+</comment>
+    <requestid>1277798</requestid>
+  </revision>
 </revisionlist>

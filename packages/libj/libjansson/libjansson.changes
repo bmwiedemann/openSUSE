@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 15 14:10:28 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.14.1:
+  * Fix thread safety of encoding and decoding when uselocale() or newlocale()
+    is used to switch locales inside the threads (#674, #675, #677).
+  * Use David M. Gay’s dtoa() algorithm to avoid misprinting issues of
+    real numbers that are not exactly representable as a double() (#680).
+
+-------------------------------------------------------------------
 Tue Jan 18 21:11:51 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 2.14:
