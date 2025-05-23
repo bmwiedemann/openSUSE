@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 19 08:30:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.8.1
+  * Fix stdout function on testing.Result
+
+-------------------------------------------------------------------
+Tue May 13 06:24:46 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.0:
+  * Fix for click 8.2.
+
+-------------------------------------------------------------------
 Thu Feb 27 10:04:44 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
