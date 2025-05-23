@@ -81,4 +81,14 @@ Needed by a factory package perl-Params-Validate
     <comment>1</comment>
     <requestid>295761</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c2afe33f4ac0e452b6d7de7eaa09bb75</srcmd5>
+    <version>0.90.0</version>
+    <time>1748003377</time>
+    <user>anag_factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+</comment>
+    <requestid>1278654</requestid>
+  </revision>
 </revisionlist>
