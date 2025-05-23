@@ -549,4 +549,29 @@
     the TRUSTED_HOSTS config.</comment>
     <requestid>1244038</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>d70b714eb174313c801df9dcb2b4f32f</srcmd5>
+    <version>3.1.1</version>
+    <time>1748003230</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.1.1 (CVE-2025-47278, bsc#1243163):
+  * Fix signing key selection order when key rotation is enabled via
+    SECRET_KEY_FALLBACKS. GHSA-4grg-w6v8-c28g
+  * Fix type hint for cli_runner.invoke. #5645
+  * flask --help loads the app and plugins first to make sure all
+    commands are shown. #5673
+  * Mark sans-io base class as being able to handle views that return
+    AsyncIterable. This is not accurate for Flask, but makes typing
+    easier for Quart. #5659
+- Update to 3.1.1 (CVE-2025-47278, bsc#1243163):
+  * Fix signing key selection order when key rotation is enabled via
+    SECRET_KEY_FALLBACKS. GHSA-4grg-w6v8-c28g
+  * Fix type hint for cli_runner.invoke. #5645
+  * flask --help loads the app and plugins first to make sure all
+    commands are shown. #5673
+  * Mark sans-io base class as being able to handle views that return
+    AsyncIterable. This is not accurate for Flask, but makes typing
+    easier for Quart. #5659</comment>
+    <requestid>1277662</requestid>
+  </revision>
 </revisionlist>

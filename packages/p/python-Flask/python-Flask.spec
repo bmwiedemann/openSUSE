@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        A microframework based on Werkzeug, Jinja2 and good intentions
 License:        BSD-3-Clause
@@ -32,6 +32,7 @@ URL:            https://flask.palletsprojects.com
 Source0:        https://files.pythonhosted.org/packages/source/f/flask/flask-%{version}.tar.gz
 Source1:        python-Flask-rpmlintrc
 BuildRequires:  %{python_module Jinja2 >= 3.1.2}
+BuildRequires:  %{python_module MarkupSafe}
 BuildRequires:  %{python_module Werkzeug >= 3.1.0}
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module blinker >= 1.9}
@@ -45,6 +46,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-Jinja2 >= 3.1.2
+Requires:       python-MarkupSafe
 Requires:       python-Werkzeug >= 3.1.0
 Requires:       python-blinker >= 1.9
 Requires:       python-click >= 8.1.3

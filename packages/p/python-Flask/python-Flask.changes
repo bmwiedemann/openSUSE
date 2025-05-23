@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 15 06:16:18 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.1.1 (CVE-2025-47278, bsc#1243163):
+  * Fix signing key selection order when key rotation is enabled via
+    SECRET_KEY_FALLBACKS. GHSA-4grg-w6v8-c28g
+  * Fix type hint for cli_runner.invoke. #5645
+  * flask --help loads the app and plugins first to make sure all
+    commands are shown. #5673
+  * Mark sans-io base class as being able to handle views that return
+    AsyncIterable. This is not accurate for Flask, but makes typing
+    easier for Quart. #5659
+
+-------------------------------------------------------------------
 Fri Feb  7 01:47:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.1.0:
