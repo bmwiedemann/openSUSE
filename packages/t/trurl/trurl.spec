@@ -1,8 +1,8 @@
 #
 # spec file for package trurl
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2023-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2023-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           trurl
-Version:        0.16
+Version:        0.16.1
 Release:        0
 Summary:        Command line tool for URL parsing and manipulation
 License:        MIT
@@ -34,14 +34,26 @@ BuildRequires:  pkgconfig(libcurl) >= 7.62.0
 A CLI tool that parses and manipulates URLs, designed to help
 shell script authors everywhere.
 
+%package zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+Requires:       zsh
+BuildArch:      noarch
+
+%description zsh-completion
+Zsh command-line completion support for %{name}.
+
 %prep
-%setup -q
+%autosetup
 
 %build
 %make_build PREFIX=%{_prefix}
+make completions
 
 %install
 make PREFIX=%{_prefix} DESTDIR=%{buildroot} install
+install -Dm 0644 completions/_trurl.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 
 %check
 make test
@@ -51,5 +63,9 @@ make test
 %doc README.md RELEASE-NOTES
 %{_bindir}/trurl
 %{_mandir}/man1/trurl.1%{?ext_man}
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%{_datadir}/zsh/*
 
 %changelog

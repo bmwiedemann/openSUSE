@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 18 08:13:12 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.16.1
+  * Generate ZSH completions base on trurl.md.
+  * Makefile: only create MANDIR when manpage is installed.
+  * trurl: handle zero length query pairs.
+- Create subpackage for zsh-completion
+
+-------------------------------------------------------------------
 Thu Sep 19 14:56:57 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.16
