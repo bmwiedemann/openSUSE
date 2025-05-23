@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Warn
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Test-Warn
 Name:           perl-Test-Warn
-Version:        0.37
+Version:        0.370.0
 Release:        0
+# 0.37 -> normalize -> 0.370.0
+%define cpan_version 0.37
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl extension to test methods for warnings
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BI/BIGJ/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BI/BIGJ/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -32,6 +34,8 @@ BuildRequires:  perl(Carp) >= 1.22
 BuildRequires:  perl(Sub::Uplevel) >= 0.12
 Requires:       perl(Carp) >= 1.22
 Requires:       perl(Sub::Uplevel) >= 0.12
+Provides:       perl(Test::Warn) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -45,8 +49,9 @@ If you are not already familiar with the Test::More manpage now would be
 the time to go take a look.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
