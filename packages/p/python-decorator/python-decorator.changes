@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue May 20 09:26:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.2.1
+  * Updated CHANGES.md
+  * Update Makefile [ci skip]
+  * Include tests and documentation in sdist
+  * Managed functions without __name__
+- from version 5.2.0
+  * Replace deprecated logging.warn with logging.warning
+  * Add support for Python 3.11
+  * Update download links
+  * Fix codespell errors
+  * Add support for decorative partial functions
+  * Replace 'bytecode' by 'binary' in LICENSE.txt to align with BSD-2-Clause
+  * Add support for Python 3.12
+  * Stop testing EOL Python 3.5 and 3.6 due to CI unavailability
+  * Requiring Python >= 3.7
+  * Dropped support for Python <= 3.6
+  * Use SPDX license identifier
+  * Add support for Python 3.13
+  * codespell: assertIn is not a typo
+  * Testing only Python >= 3.8
+  * Using asyncio.run
+  * Replaced setup.py with pyproject
+  * Updated copyright
+  * Moved tests outside of src
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+  * Update name for dist directory in %files section
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

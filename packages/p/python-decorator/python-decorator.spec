@@ -1,7 +1,7 @@
 #
 # spec file for package python-decorator
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,16 @@
 
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-decorator
-Version:        5.1.1
+Version:        5.2.1
 Release:        0
 Summary:        Decorators for Humans
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/micheles/decorator
 Source:         https://files.pythonhosted.org/packages/source/d/decorator/decorator-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -50,20 +49,20 @@ redirecting_stdout, locked, etc. more accessible.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python src/tests/test.py -v
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python tests/test.py -v
 
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.md README.rst
 %{python_sitelib}/decorator.py*
 %pycache_only %{python_sitelib}/__pycache__/decorator.*.py*
-%{python_sitelib}/decorator-%{version}-py*.egg-info
+%{python_sitelib}/decorator-%{version}.dist-info
 
 %changelog
