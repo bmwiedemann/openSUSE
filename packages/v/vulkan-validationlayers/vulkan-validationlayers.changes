@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 18 06:02:29 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.313.0
+  * layers: Fix undefined behavior for DynamicStateValue
+  * gpuav: Store modified extensions and features locally
+  * gpuav: Warn on reaching max actions cmd validation
+  * layers: Add runtime topology VU checks
+  * layers: Check layout mismatch for dynamic rendering barrier
+  * layers: Get VK_EXT_fragment_density_map_offset working
+
+-------------------------------------------------------------------
 Thu Mar 13 17:03:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.309.0
