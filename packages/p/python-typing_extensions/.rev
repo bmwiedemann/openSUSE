@@ -323,4 +323,23 @@
     directly subscripted with an `Unpack` object.</comment>
     <requestid>1265375</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>fc10afb9a1fd2b350cad0f82aed845f3</srcmd5>
+    <version>4.13.2</version>
+    <time>1748003257</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1278677 from glaubitz
+
+- Update to 4.13.2
+    * Fix `TypeError` when taking the union of `typing_extensions.TypeAliasType`
+      and a `typing.TypeAliasType` on Python 3.12 and 3.13.
+    * Backport from CPython PR #132160) to avoid having user arguments
+      shadowed in generated `__new__` by `@typing_extensions.deprecated`.
+  - from version 4.13.1
+    * Fix regression in 4.13.0 on Python 3.10.2 causing a `TypeError` when
+      using `Concatenate`.
+    * Fix `TypeError` when using `evaluate_forward_ref` on Python 3.10.1-2
+      and 3.9.8-10.</comment>
+    <requestid>1278841</requestid>
+  </revision>
 </revisionlist>
