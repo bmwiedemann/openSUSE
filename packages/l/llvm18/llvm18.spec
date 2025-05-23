@@ -1,7 +1,7 @@
 #
 # spec file for package llvm18
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -433,6 +433,8 @@ Patch30:        clang-fix-openmp-test-non-x86.patch
 Patch31:        clang-shlib-symbol-versioning.patch
 # PATCH-FIX-UPSTREAM: use shlib.quote to fix Python 3.13 compatibility
 Patch32:        libcxx-use-shlex-quote.patch
+# PATCH-FIX-UPSTREAM: Fix missing include necessary when building with GCC 15 libstdc++
+Patch33:        gcc15-add-necessary-includes.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -881,6 +883,7 @@ This package contains the development files for Polly.
 %patch -P 24 -p1
 %patch -P 25 -p2
 %patch -P 28 -p2
+%patch -P 33 -p1
 
 pushd clang-%{_version}.src
 %patch -P 2 -p1

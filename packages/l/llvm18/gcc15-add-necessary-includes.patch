@@ -1,0 +1,49 @@
+Index: llvm-18.1.8.src/include/llvm/ADT/SmallVector.h
+===================================================================
+--- llvm-18.1.8.src.orig/include/llvm/ADT/SmallVector.h
++++ llvm-18.1.8.src/include/llvm/ADT/SmallVector.h
+@@ -19,6 +19,7 @@
+ #include <algorithm>
+ #include <cassert>
+ #include <cstddef>
++#include <cstdint>
+ #include <cstdlib>
+ #include <cstring>
+ #include <functional>
+Index: llvm-18.1.8.src/lib/Target/X86/MCTargetDesc/X86MCTargetDesc.h
+===================================================================
+--- llvm-18.1.8.src.orig/lib/Target/X86/MCTargetDesc/X86MCTargetDesc.h
++++ llvm-18.1.8.src/lib/Target/X86/MCTargetDesc/X86MCTargetDesc.h
+@@ -13,6 +13,7 @@
+ #ifndef LLVM_LIB_TARGET_X86_MCTARGETDESC_X86MCTARGETDESC_H
+ #define LLVM_LIB_TARGET_X86_MCTARGETDESC_X86MCTARGETDESC_H
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ 
+Index: llvm-18.1.8.src/lib/Target/AMDGPU/MCTargetDesc/AMDGPUMCTargetDesc.h
+===================================================================
+--- llvm-18.1.8.src.orig/lib/Target/AMDGPU/MCTargetDesc/AMDGPUMCTargetDesc.h
++++ llvm-18.1.8.src/lib/Target/AMDGPU/MCTargetDesc/AMDGPUMCTargetDesc.h
+@@ -15,6 +15,7 @@
+ #ifndef LLVM_LIB_TARGET_AMDGPU_MCTARGETDESC_AMDGPUMCTARGETDESC_H
+ #define LLVM_LIB_TARGET_AMDGPU_MCTARGETDESC_AMDGPUMCTARGETDESC_H
+ 
++#include <cstdint>
+ #include <memory>
+ 
+ namespace llvm {
+Index: llvm-18.1.8.src/tools/lldb/include/lldb/Utility/AddressableBits.h
+===================================================================
+--- llvm-18.1.8.src.orig/lldb-18.1.8.src/include/lldb/Utility/AddressableBits.h
++++ llvm-18.1.8.src/lldb-18.1.8.src/include/lldb/Utility/AddressableBits.h
+@@ -10,6 +10,8 @@
+ #define LLDB_UTILITY_ADDRESSABLEBITS_H
+ 
+ #include "lldb/lldb-forward.h"
++
++#include <cstdint>
+ 
+ namespace lldb_private {
+ 

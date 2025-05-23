@@ -243,4 +243,15 @@
 - Update to r196371 from release_34 branch</comment>
     <requestid>1248580</requestid>
   </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>f665a534e1c19452f34b59e67860edd6</srcmd5>
+    <version>18.1.8</version>
+    <time>1748003263</time>
+    <user>anag_factory</user>
+    <comment>- Add gcc15-add-necessary-includes.patch in order to add four
+  instances of a missing include of cstdint which is necessary with
+  GCC15's libstdc++. (boo#1237099, boo#1243186)
+</comment>
+    <requestid>1277902</requestid>
+  </revision>
 </revisionlist>

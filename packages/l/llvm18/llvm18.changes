@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 14 10:30:28 UTC 2025 - Martin Jambor <mjambor@suse.com>
+
+- Add gcc15-add-necessary-includes.patch in order to add four
+  instances of a missing include of cstdint which is necessary with
+  GCC15's libstdc++. (boo#1237099, boo#1243186)
+
+-------------------------------------------------------------------
 Fri Nov 22 17:12:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add libcxx-use-shlex-quote.patch to fix build with python 3.13
