@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 15 08:16:51 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.18.0:
+  * output device, output management: add EDR setting
+  * output device: fix capability enum value for bits per color
+  * outputdevice, -management: add a setting to limit the maximum bits per color
+  * kde-output-management: fix capability name in docs
+  * kde-output-{device,management}: Add ddc_ci_allowed
+  * kde-external-brightness: Add set_uses_ddc_ci()
+  * output device, -management: add a replication source setting
+
+-------------------------------------------------------------------
 Fri Mar 21 14:20:04 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 1.17.0:
