@@ -62,7 +62,7 @@ when signing into your account.
 
 %package common
 Summary:        Support files for the KWallet PAM module
-Requires:       kwalletd6
+Requires:       kwalletd6 >= 6.14.0
 Requires:       socat
 Provides:       pam_kwallet-common = %{version}
 Obsoletes:      pam_kwallet-common < %{version}
@@ -76,8 +76,9 @@ module.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
+# While there is still kwalletd6, only ksecretd supports --pam-login
 # Before usrmerge, the PAM module goes into /lib*/security/
-%cmake_kf6 -DKWALLETD_BIN_PATH=%{_kf6_bindir}/kwalletd6 \
+%cmake_kf6 -DKWALLETD_BIN_PATH=%{_kf6_bindir}/ksecretd \
     -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} \
 %if 0%{?suse_version} < 1550
     -DCMAKE_INSTALL_LIBDIR=/%{_lib}
