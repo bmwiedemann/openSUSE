@@ -24,12 +24,17 @@ Version:        0.15.3
 Release:        0
 Summary:        Typer, build great CLIs. Easy to code. Based on Python type hints
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/tiangolo/typer
 Source:         https://files.pythonhosted.org/packages/source/t/typer/typer-%{version}.tar.gz
 Source2:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM gh#fastapi/typer#1222
+Patch0:         support-click-8.2.patch
+BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module rich}
+BuildRequires:  %{python_module shellingham}
 BuildRequires:  %{python_module typer-slim}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -59,8 +64,7 @@ which allows users to run scripts not using typer with the same command line com
 as those that do.
 
 %prep
-%setup -q -n typer-%{version}
-%autopatch -p1
+%autosetup -p1 -n typer-%{version}
 
 %build
 %pyproject_wheel
@@ -76,7 +80,10 @@ as those that do.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# There are no tests in the python package as it only pulls dependencies
+# Broken with click 8.2.0:
+# - test_enum/test_tutorial003
+# - test_script_completion_run and test_completion_show_invalid_shell
+%pytest -k 'not ((test_enum and test_tutorial003) or test_script_completion_run or test_completion_show_invalid_shell)'
 
 %post
 %python_install_alternative typer
@@ -88,6 +95,6 @@ as those that do.
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/typer
-%{python_sitelib}/typer-%{version}*-info
+%{python_sitelib}/typer-%{version}.dist-info
 
 %changelog

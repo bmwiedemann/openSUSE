@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 16 05:00:12 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-click-8.2.patch:
+  * Support both click 8.1 and 8.2.
+- Switch to autosetup macro.
+
+-------------------------------------------------------------------
 Tue Apr 29 17:58:31 UTC 2025 - Matthias Bach <marix@marix.org> - 0.15.3
 
 - Update to 0.15.3

@@ -249,4 +249,14 @@
 </comment>
     <requestid>1273509</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>177e763b413a489d7784b7ae9b9f5fea</srcmd5>
+    <version>0.15.3</version>
+    <time>1748003238</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-click-8.2.patch:
+  * Support both click 8.1 and 8.2.
+- Switch to autosetup macro.</comment>
+    <requestid>1277916</requestid>
+  </revision>
 </revisionlist>
