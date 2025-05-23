@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 14 05:40:18 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.231.0 (1.231)
+   see /usr/share/doc/packages/perl-Tie-Cycle/Changes
+
+  1.231 2025-04-13T19:31:08Z
+  	* require a newer version.pm for v5.10.1 tests
+
+-------------------------------------------------------------------
 Sat Jan  4 05:36:16 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.229.0 (1.229)

@@ -18,10 +18,10 @@
 
 %define cpan_name Tie-Cycle
 Name:           perl-Tie-Cycle
-Version:        1.229.0
+Version:        1.231.0
 Release:        0
-# 1.229 -> normalize -> 1.229.0
-%define cpan_version 1.229
+# 1.231 -> normalize -> 1.231.0
+%define cpan_version 1.231
 License:        Artistic-2.0
 Summary:        Cycle through a list of values via a scalar
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,6 +32,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::More) >= 1
+BuildRequires:  perl(version) >= 0.86
 Provides:       perl(Tie::Cycle) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
@@ -54,7 +55,7 @@ after the tie, the elements of the cycle will change as well. See the
 included _test.pl_ script for an example of this effect.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

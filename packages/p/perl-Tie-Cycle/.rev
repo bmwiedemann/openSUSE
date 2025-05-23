@@ -113,4 +113,15 @@
   	* refresh distro and move to BRIANDFOY (forwarded request 1236698 from tinita)</comment>
     <requestid>1236813</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d9b2f47a3279e6bdaecd89ab2895372c</srcmd5>
+    <version>1.231.0</version>
+    <time>1748003401</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.231.0 (1.231)
+   see /usr/share/doc/packages/perl-Tie-Cycle/Changes
+  1.231 2025-04-13T19:31:08Z
+  	* require a newer version.pm for v5.10.1 tests (forwarded request 1278600 from tinita)</comment>
+    <requestid>1279034</requestid>
+  </revision>
 </revisionlist>
