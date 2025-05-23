@@ -20,8 +20,6 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
-# python-pytest-jupyter-client is not available on python 313
-%define skip_python313 1
 %else
 %define psuffix %{nil}
 %bcond_with test

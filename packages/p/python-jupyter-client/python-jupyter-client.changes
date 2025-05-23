@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 19 17:12:02 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Drop skipping the tests for python 3.13
+
+-------------------------------------------------------------------
 Wed Nov  6 20:11:01 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Only skip the tests on python 3.13 due to missing dependencies
