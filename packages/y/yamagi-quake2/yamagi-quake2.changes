@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 17 14:51:06 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 8.51
+  * Fix savegame and mod incompatibilities when Yamagi Quake II is
+    complied in C23 mode. With this fix applied savegames written
+    by unfixed binaries will crash the client. It is advised to
+    complete the current run before upgrading. The official Windows
+    binaries were not affected by this problem. Other platforms
+    mostly if they build the binaries with GCC 15 which enables
+    C23 mode by default.
+  * Fix memory leaks in the mod selection menu.
+  * General code cleanup around `bool` handling.
+
+-------------------------------------------------------------------
 Mon Apr 21 06:15:15 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add BuildRequires pkgconfig(gl), fixes building for Leap
