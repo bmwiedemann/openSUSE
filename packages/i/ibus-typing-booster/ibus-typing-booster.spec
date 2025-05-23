@@ -17,7 +17,7 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.27.56
+Version:        2.27.59
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
@@ -74,6 +74,7 @@ Recommends:     python3-regex
 Recommends:     python3-simpleaudio
 # To make emoji and Unicode symbol matching faster:
 Recommends:     python3-rapidfuzz
+BuildRequires:  python3-pyxdg
 BuildRequires:  myspell-de
 BuildRequires:  myspell-de_DE
 BuildRequires:  myspell-en
@@ -82,7 +83,6 @@ BuildRequires:  myspell-es
 BuildRequires:  myspell-es_ES
 BuildRequires:  myspell-fr_FR
 BuildRequires:  myspell-it_IT
-BuildRequires:  python3-pyxdg
 
 %description
 Ibus-typing-booster is a context sensitive completion

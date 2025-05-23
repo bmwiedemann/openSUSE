@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 21 18:20:16 UTC 2025 - maiku.fabian@gmail.com
+
+- Update to 2.27.59
+- Make Super prefix ('s-') work when using an m17n input method using that prefix
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/712)
+- Update emoji-data.txt, emoji-sequences.txt, emoji-test.txt,
+  emoji-variation-sequences.txt, emoji-zwj-sequences.txt to the
+  Unicode 17.0.0 draft as of 2025-05-14
+- Update UnicodeData.txt, DerivedAge.txt, NameAliases.txt to the
+  Unicode 17.0.0 draft as of 2025-05-14
+- Update emoji annotations from CLDR
+- When _command_show_selection_info() can not get a selection,
+  use the grapheme cluster directly left of the cursor as a fallback
+  (Related: https://github.com/mike-fabian/ibus-typing-booster/issues/733)
+
+-------------------------------------------------------------------
 Mon May 19 22:10:15 UTC 2025 - maiku.fabian@gmail.com
 
 - Update to 2.27.56
@@ -2556,7 +2572,7 @@ Thu Jan  19 08:43:06 UTC 2017 - maiku.fabian@gmail.com
 - Do not try to reopen the preëdit when any modifier except
   CapsLock is on (Resolves: rhbz#1414642)
 
--------------------------------------------------------------------
+---------------------------------------------------------
 Tue Jan  17 14:00:23 UTC 2017 - maiku.fabian@gmail.com
 
 - update to 1.5.18
