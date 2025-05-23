@@ -226,6 +226,9 @@ Patch42:        gh126985-mv-pyvenv.cfg2getpath.patch
 # PATCH-FIX-UPSTREAM gh-132535-rsrc-warn-test_timeout.patch gh#python/cpython#132535 mcepl@suse.com
 # allows test_timeout tests to pass
 Patch43:        gh-132535-rsrc-warn-test_timeout.patch
+# PATCH-FIX-UPSTREAM CVE-2025-4516-DecodeError-handler.patch bsc#1243273 mcepl@suse.com
+# this patch makes things totally awesome
+Patch44:        CVE-2025-4516-DecodeError-handler.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
