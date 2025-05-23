@@ -32,6 +32,10 @@ Patch4:         transfig-fix-afl.patch
 Patch20:        184.patch
 Patch21:        185.patch
 Patch22:        186.patch
+Patch23:        192.patch
+Patch24:        187.patch
+Patch25:        191.patch
+Patch26:        190.patch
 Patch43:        fig2dev-3.2.6-fig2mpdf.patch
 Patch44:        fig2dev-3.2.6-fig2mpdf-doc.patch
 Patch45:        transfig-gcc14.patch
@@ -78,6 +82,10 @@ find -type f -exec chmod a-x,go-w '{}' \;
 %patch -P 20 -p0
 %patch -P 21 -p0
 %patch -P 22 -p0
+%patch -P 23 -p0
+%patch -P 24 -p0
+%patch -P 25 -p0
+%patch -P 26 -p0
 %patch -P 43 -p1 -b .mpdf
 %patch -P 44 -p1 -b .mpdfdoc
 %patch -P 45 -p0 -b .gcc14

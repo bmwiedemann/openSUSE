@@ -656,4 +656,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1274933</requestid>
   </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>d9fb409f7ba7e3c529f185b929303cfb</srcmd5>
+    <version>3.2.9a</version>
+    <time>1748003284</time>
+    <user>anag_factory</user>
+    <comment>- Work around bug in obs service
+
+- Add patches in order of our bug numbers (differs to upstream)
+  * 192.patch -- Bug boo#1243260 (CVE-2025-46397)
+    fig2dev stack-overflow
+  * 187.patch -- Bug boo#1243261 (CVE-2025-46400)
+    fig2dev segmentation fault in read_arcobject
+  * 191.patch -- Bug boo#1243262 (CVE-2025-46398)
+    fig2dev stack-overflow via read_objects
+  * 190.patch -- Bug boo#1243263 (CVE-2025-46399)
+    fig2dev segmentation fault in genge_itp_spline
+
+    ____________________________________________________________</comment>
+    <requestid>1277988</requestid>
+  </revision>
 </revisionlist>

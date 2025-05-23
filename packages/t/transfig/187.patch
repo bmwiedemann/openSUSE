@@ -1,0 +1,179 @@
+commit 1e5515a1ea2ec8651cf85ab5000d026bb962492a
+Author: Thomas Loimer <thomas.loimer@tuwien.ac.at>
+Date:   Thu Jan 23 21:08:43 2025 +0100
+
+    pict2e: deal with arcs with an radius of 1, #187
+    
+    The pict2e driver resolves patterned arcs to a series of line segments.
+    The line is constructed from a spline approximating a circle.
+    For an arc radius of about 1, no line remains. Ignore such small arcs.
+
+diff --git fig2dev/dev/genpict2e.c fig2dev/dev/genpict2e.c
+index 423032c..b55bf38 100644
+--- fig2dev/dev/genpict2e.c
++++ fig2dev/dev/genpict2e.c
+@@ -3,7 +3,7 @@
+  * Copyright (c) 1991 by Micah Beck
+  * Parts Copyright (c) 1985-1988 by Supoj Sutanthavibul
+  * Parts Copyright (c) 1989-2015 by Brian V. Smith
+- * Parts Copyright (c) 2015-2023 by Thomas Loimer
++ * Parts Copyright (c) 2015-2025 by Thomas Loimer
+  *
+  * Any party obtaining a copy of these files is granted, free of charge, a
+  * full and unrestricted irrevocable, world-wide, paid up, royalty-free,
+@@ -19,7 +19,7 @@
+ /*
+  * genpict2e.c: convert fig to pict2e macro language for LaTeX
+  *
+- * Author: Thomas Loimer, 2014-2023
++ * Author: Thomas Loimer, 2014-2025
+  * Based on the latex picture driver, genlatex.c
+  *
+  */
+@@ -2277,8 +2277,13 @@ put_patternarc(
+ 	l->join_style = MITERJOIN;
+ 
+ 	p = l->points;
+-	if (p == NULL)
++	for (i = 0; i < 8 && p != NULL; ++i)
++		p = p->next;
++	/* If the radius is about 1, the spline may consist of
++	   a few points only. */
++	if (i < 7)
+ 		return;
++	p = l->points;
+ 
+ 	/*
+ 	 * Walk along the spline, until the arc angle is covered.
+@@ -2428,7 +2433,7 @@ genpict2e_arc(F_arc *a)
+ 	rad = 0.5*(sqrt((double)d1x*d1x + (double)d1y*d1y)
+ 			+ sqrt((double)d2x*d2x + (double)d2y*d2y));
+ 	rad = round(rad*10.0) / 10.0;
+-	/* how precise must the angle be given? 
++	/* how precise must the angle be given?
+ 	   1/rad is the view angle of one pixel */
+ 	da = 180.0 / M_PI / rad;
+ 	preca = 0;
+commit c4465e0d9af89d9738aad31c2d0873ac1fa03c96
+Author: Thomas Loimer <thomas.loimer@tuwien.ac.at>
+Date:   Sat Jan 25 21:06:59 2025 +0100
+
+    Reject arcs with an radius smaller than 3, #187
+    
+    This also reverts the previous commit, 1e5515. An arc with too
+    small radius caused a crash in pict2e output. Instead of dealing
+    with such arcs in the pict2e driver, reject them already when
+    reading.
+
+diff --git fig2dev/dev/genpict2e.c fig2dev/dev/genpict2e.c
+index b55bf38..423032c 100644
+--- fig2dev/dev/genpict2e.c
++++ fig2dev/dev/genpict2e.c
+@@ -3,7 +3,7 @@
+  * Copyright (c) 1991 by Micah Beck
+  * Parts Copyright (c) 1985-1988 by Supoj Sutanthavibul
+  * Parts Copyright (c) 1989-2015 by Brian V. Smith
+- * Parts Copyright (c) 2015-2025 by Thomas Loimer
++ * Parts Copyright (c) 2015-2023 by Thomas Loimer
+  *
+  * Any party obtaining a copy of these files is granted, free of charge, a
+  * full and unrestricted irrevocable, world-wide, paid up, royalty-free,
+@@ -19,7 +19,7 @@
+ /*
+  * genpict2e.c: convert fig to pict2e macro language for LaTeX
+  *
+- * Author: Thomas Loimer, 2014-2025
++ * Author: Thomas Loimer, 2014-2023
+  * Based on the latex picture driver, genlatex.c
+  *
+  */
+@@ -2277,13 +2277,8 @@ put_patternarc(
+ 	l->join_style = MITERJOIN;
+ 
+ 	p = l->points;
+-	for (i = 0; i < 8 && p != NULL; ++i)
+-		p = p->next;
+-	/* If the radius is about 1, the spline may consist of
+-	   a few points only. */
+-	if (i < 7)
++	if (p == NULL)
+ 		return;
+-	p = l->points;
+ 
+ 	/*
+ 	 * Walk along the spline, until the arc angle is covered.
+@@ -2433,7 +2428,7 @@ genpict2e_arc(F_arc *a)
+ 	rad = 0.5*(sqrt((double)d1x*d1x + (double)d1y*d1y)
+ 			+ sqrt((double)d2x*d2x + (double)d2y*d2y));
+ 	rad = round(rad*10.0) / 10.0;
+-	/* how precise must the angle be given?
++	/* how precise must the angle be given? 
+ 	   1/rad is the view angle of one pixel */
+ 	da = 180.0 / M_PI / rad;
+ 	preca = 0;
+diff --git fig2dev/object.h fig2dev/object.h
+index 50afbf0..178d629 100644
+--- fig2dev/object.h
++++ fig2dev/object.h
+@@ -92,11 +92,14 @@ typedef struct f_ellipse {
+ 	struct f_ellipse	*next;
+ } F_ellipse;
+ 
++#define RADIUS2_MIN	9
+ #define INVALID_ELLIPSE(e)						\
+ 	e->type < T_ELLIPSE_BY_RAD || e->type > T_CIRCLE_BY_DIA ||	\
+ 	COMMON_PROPERTIES(e) || (e->direction != 1 && e->direction != 0) ||  \
+ 	e->radiuses.x == 0 || e->radiuses.y == 0 ||			\
++	e->radiuses.x + e->radiuses.y < RADIUS2_MIN ||			\
+ 	e->angle < -7. || e->angle > 7.
++	/* radiuses are set to positive in read.c */
+ 
+ typedef struct f_arc {
+ 	int			type;
+@@ -131,7 +134,10 @@ typedef struct f_arc {
+ 	(a->direction != 0 && a->direction != 1) ||			\
+ 	COINCIDENT(a->point[0], a->point[1]) ||				\
+ 	COINCIDENT(a->point[0], a->point[2]) ||				\
+-	COINCIDENT(a->point[1], a->point[2])
++	COINCIDENT(a->point[1], a->point[2]) ||				\
++	(a->point[0].x - a->center.x) * (a->point[0].x - a->center.x) +	\
++	(a->point[0].y - a->center.y) * (a->point[0].y - a->center.y) <	\
++	RADIUS2_MIN
+ 
+ typedef struct f_line {
+ 	int			type;
+diff --git fig2dev/read1_3.c fig2dev/read1_3.c
+index 8a1a89a..1605498 100644
+--- fig2dev/read1_3.c
++++ fig2dev/read1_3.c
+@@ -3,7 +3,7 @@
+  * Copyright (c) 1991 by Micah Beck
+  * Parts Copyright (c) 1985-1988 by Supoj Sutanthavibul
+  * Parts Copyright (c) 1989-2015 by Brian V. Smith
+- * Parts Copyright (c) 2015-2022 by Thomas Loimer
++ * Parts Copyright (c) 2015-2025 by Thomas Loimer
+  *
+  * Any party obtaining a copy of these files is granted, free of charge, a
+  * full and unrestricted irrevocable, world-wide, paid up, royalty-free,
+@@ -156,8 +156,10 @@ read_arcobject(FILE *fp)
+ 	a->pen_color = a->fill_color = BLACK_COLOR;
+ 	a->depth = 0;
+ 	a->pen = 0;
++	a->fill_style = 0;
+ 	a->for_arrow = NULL;
+ 	a->back_arrow = NULL;
++	a->cap_style = 0;
+ 	a->comments = NULL;
+ 	a->next = NULL;
+ 	n = fscanf(fp,
+@@ -328,6 +330,10 @@ read_ellipseobject(FILE *fp)
+ 		e->type = T_CIRCLE_BY_RAD;
+ 	else
+ 		e->type = T_CIRCLE_BY_DIA;
++	if (e->radiuses.x < 0)
++		e->radiuses.x *= -1;
++	if (e->radiuses.y < 0)
++		e->radiuses.y *= -1;
+ 	if (INVALID_ELLIPSE(e)) {
+ 		put_msg(Err_invalid, "ellipse");
+ 		free(e);

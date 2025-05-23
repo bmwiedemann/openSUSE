@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 16 09:32:21 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Work around bug in obs service
+
+-------------------------------------------------------------------
+Fri May 16 08:18:32 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add patches in order of our bug numbers (differs to upstream)
+  * 192.patch -- Bug boo#1243260 (CVE-2025-46397)
+    fig2dev stack-overflow
+  * 187.patch -- Bug boo#1243261 (CVE-2025-46400)
+    fig2dev segmentation fault in read_arcobject
+  * 191.patch -- Bug boo#1243262 (CVE-2025-46398)
+    fig2dev stack-overflow via read_objects
+  * 190.patch -- Bug boo#1243263 (CVE-2025-46399)
+    fig2dev segmentation fault in genge_itp_spline
+
+-------------------------------------------------------------------
 Tue Apr 29 12:01:57 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add patches
@@ -344,7 +362,7 @@ Mon May  7 10:28:07 UTC 2018 - werner@suse.de
 
 - Update to fig2dev version 3.2.7a (Patchlevel 7a (April 2018))
   o  Language         previous option         current option
-    ------------------------------------------------------------
+    ____________________________________________________________
      cgm              -b dummy                -a
      epic             -A scale                -d scale
      eepic            -A scale                -d scale
@@ -918,12 +936,10 @@ Wed Oct 18 15:58:04 CEST 2000 - werner@suse.de
 
 - Avoid epsfig style, use normal graphics style (bug# 4168)
 
--------------------------------------------------------------------
 Fri Sep 15 17:01:53 CEST 2000 - werner
 
 - Update to 3.2.3c to fit xfig version
 
--------------------------------------------------------------------
 Wed May 31 16:26:42 CEST 2000 - werner
 
 - Use %{_defaultdocdir}
@@ -960,17 +976,17 @@ Thu Sep 17 18:15:53 MEST 1998 - ro@suse.de
 
 - dont redeclare sys_errlist for glibc
 
-----------------------------------------------------------------------------
+-------------------------------------------------------------------
 Fri Oct 10 15:32:09 MEST 1997 - florian@suse.de
 
 - update to version 3.2
 
-----------------------------------------------------------------------------
+-------------------------------------------------------------------
 Wed Oct  8 16:06:02 CEST 1997 - ro@suse.de
 
 - Prepared package for automatic build
 
-----------------------------------------------------------------------------
+-------------------------------------------------------------------
 Tue May 27 20:03:59 MEST 1997 - florian@suse.de
 
 
