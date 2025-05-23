@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed May 21 08:33:31 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 25.1.1
+  -->  https://docs.mesa3d.org/relnotes/25.1.1   
+- supersedes the following patches
+  * U_0001-radv-driconf-Add-radv_force_64k_sparse_alignment-con.patch 
+  * U_0002-driconf-Add-workarounds-for-DOOM-The-Dark-Ages.patch
+
+-------------------------------------------------------------------
+Fri May 16 12:10:20 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_0001-radv-driconf-Add-radv_force_64k_sparse_alignment-con.patch
+  U_0002-driconf-Add-workarounds-for-DOOM-The-Dark-Ages.patch
+  * fixes issues with DOOM: The Dark Ages
+
+-------------------------------------------------------------------
+Fri May  9 12:40:24 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- build d3d12 video driver only when %vdpau_d3d12 is set
+
+-------------------------------------------------------------------
+Fri May  9 11:12:21 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- enable panfrost vulkan driver on Leap 16.0
+
+-------------------------------------------------------------------
+Thu May  8 13:39:58 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 25.1.0
+  -->  https://docs.mesa3d.org/relnotes/25.1.0 
+- adjusted patches:
+  * python36-buildfix1.patch
+  * n_drirc-disable-rgb10-for-chromium-on-amd.patch,
+- supersedes the following patches:
+  * python36-buildfix2.patch
+  * u_intel-drop-annotations-from-spv2hex.patch
+  * U_clover-Don-t-include-libclc-headers.patch
+- osmesa no longer available; it's considered redundant with EGL
+  surfaceless
+
+-------------------------------------------------------------------
 Wed Apr 30 17:53:50 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to release 25.0.5

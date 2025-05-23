@@ -1,8 +1,8 @@
-Index: mesa-24.3.0-rc1/src/util/00-mesa-defaults.conf
+Index: mesa-25.1.0/src/util/00-mesa-defaults.conf
 ===================================================================
---- mesa-24.3.0-rc1.orig/src/util/00-mesa-defaults.conf
-+++ mesa-24.3.0-rc1/src/util/00-mesa-defaults.conf
-@@ -1040,6 +1040,14 @@ TODO: document the other workarounds.
+--- mesa-25.1.0.orig/src/util/00-mesa-defaults.conf
++++ mesa-25.1.0/src/util/00-mesa-defaults.conf
+@@ -803,6 +803,14 @@ TODO: document the other workarounds.
          <application name="Rocket League" executable="RocketLeague">
              <option name="radeonsi_zerovram" value="true" />
          </application>
@@ -14,6 +14,6 @@ Index: mesa-24.3.0-rc1/src/util/00-mesa-defaults.conf
 +        <application name="Totem" executable="totem">
 +            <option name="allow_rgb10_configs" value="false" />
 +        </application>
-         <application name="Gfx Bench" executable="gfxbench_gl">
-             <!-- Helps offscreen tests -->
-             <option name="mesa_glthread_app_profile" value="1"/>
+         <!-- YoYo game engine workarounds -->
+         <application name="Monolith demo5" executable="runner" sha1="0c40d509a74e357f0280cb1bd882e9cd94b91bdf">
+             <option name="radeonsi_sync_compile" value="true" />

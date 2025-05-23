@@ -6259,4 +6259,36 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   --&gt; https://docs.mesa3d.org/relnotes/25.0.5</comment>
     <requestid>1273728</requestid>
   </revision>
+  <revision rev="543" vrev="415">
+    <srcmd5>d25949f77ff597fca2644690cb6129a9</srcmd5>
+    <version>unknown</version>
+    <time>1748003396</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 25.1.1
+  --&gt;  https://docs.mesa3d.org/relnotes/25.1.1   
+- supersedes the following patches
+  * U_0001-radv-driconf-Add-radv_force_64k_sparse_alignment-con.patch 
+  * U_0002-driconf-Add-workarounds-for-DOOM-The-Dark-Ages.patch
+
+- U_0001-radv-driconf-Add-radv_force_64k_sparse_alignment-con.patch
+  U_0002-driconf-Add-workarounds-for-DOOM-The-Dark-Ages.patch
+  * fixes issues with DOOM: The Dark Ages
+
+- build d3d12 video driver only when %vdpau_d3d12 is set
+
+- enable panfrost vulkan driver on Leap 16.0
+
+- Update to release 25.1.0
+  --&gt;  https://docs.mesa3d.org/relnotes/25.1.0 
+- adjusted patches:
+  * python36-buildfix1.patch
+  * n_drirc-disable-rgb10-for-chromium-on-amd.patch,
+- supersedes the following patches:
+  * python36-buildfix2.patch
+  * u_intel-drop-annotations-from-spv2hex.patch
+  * U_clover-Don-t-include-libclc-headers.patch
+- osmesa no longer available; it's considered redundant with EGL
+  surfaceless</comment>
+    <requestid>1279001</requestid>
+  </revision>
 </revisionlist>
