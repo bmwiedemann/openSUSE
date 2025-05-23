@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed May 21 07:04:36 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.5.10:
+  * Fixed a critical crash in linking-utils.haveAvailableRoutes
+    that was introduced accidentally in 0.5.9 and caused loss of
+    audio output on affected systems (#797, #799, #800, !713)
+
+-------------------------------------------------------------------
+Mon May 19 11:37:42 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.5.9:
+  * Additions & Enhancements:
+    - Added a new audio node grouping functionality using an
+      external command line tool (!646)
+    - The libcamera monitor now supports devices that are not
+      associated with device ids (!701)
+    - The wireplumber user systemd service is now associated with
+      dbus.service to avoid strange warnings when dbus exits (!702)
+    - Added "SYSLOG_IDENTIFIER", "SYSLOG_FACILITY", "SYSLOG_PID"
+      and "TID" to log messages that are sent to the journal (!709)
+  * Fixes:
+    - Fixed a crash of wpctl set-default on 32-bit architectures
+      (#773)
+    - Fixed a crash when a configuration component had no
+      'provides' field (#771)
+    - Reduced the log level of some messages that didn't need
+      to be as high (!695)
+    - Fixed another nil reference issue in the alsa.lua monitor
+      script (!704)
+    - Fixed name deduplication of v4l2 and libcamera devices (!705)
+    - Fixed an issue with wpctl not being able to save settings
+      sometimes (!708, #749) 
+- Drop patches that are already included in this version:
+  * 0001-internal-comp-loader-generate-a-provides-for-components.patch
+  * 0002-wpctl-fix-default-device-name-leak.patch
+  * 0003-wpctl-fix-types-in-variadic-arguments.patch
+  * 0004-monitor-utils-Support-devices-without-any-device-ids.patch
+  * 0005-v4l2_monitor-scripts-fix-for-deduplicate-devices-with-the.patch
+  * 0006-monitors_libcamera-fix-deduplicating-devices-with-the-same.patch
+  * 0007-monitors_alsa-fix-nil-table-indexing.patch
+
+-------------------------------------------------------------------
 Wed May 14 07:22:11 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use Supplements: pulseaudio in wireplumber-video-only-profile

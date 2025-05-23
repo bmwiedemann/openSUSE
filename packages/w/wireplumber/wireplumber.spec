@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.5.8
+Version:        0.5.10
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -30,13 +30,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        wireplumber.env
-Patch0:         0001-internal-comp-loader-generate-a-provides-for-components.patch
-Patch1:         0002-wpctl-fix-default-device-name-leak.patch
-Patch2:         0003-wpctl-fix-types-in-variadic-arguments.patch
-Patch3:         0004-monitor-utils-Support-devices-without-any-device-ids.patch
-Patch4:         0005-v4l2_monitor-scripts-fix-for-deduplicate-devices-with-the.patch
-Patch5:         0006-monitors_libcamera-fix-deduplicating-devices-with-the-same.patch
-Patch6:         0007-monitors_alsa-fix-nil-table-indexing.patch
 Patch100:       set-profile-in-service.patch
 # docs
 BuildRequires:  doxygen
