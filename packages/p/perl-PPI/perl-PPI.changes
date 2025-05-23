@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  5 05:38:39 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.283.0 (1.283)
+   see /usr/share/doc/packages/perl-PPI/Changes
+
+  1.283   2025-05-04 09:52:43Z
+  	- Allow zero byte documents to have a location
+  	- handle simple lists in feature arg decomposing
+  	- warn on unknown feature arg decompose instead of die
+
+-------------------------------------------------------------------
 Sat Dec 28 05:32:21 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.281.0 (1.281)
