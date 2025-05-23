@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 18 04:28:06 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.313.0
+  * loader: Lazily allocate ICD surface objects
+
+-------------------------------------------------------------------
 Thu Mar 13 16:31:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.309.0
