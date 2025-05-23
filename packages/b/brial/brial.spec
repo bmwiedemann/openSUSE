@@ -1,7 +1,7 @@
 #
 # spec file for package brial
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,20 @@
 
 %define lname	libbrial3
 Name:           brial
-Version:        1.2.12
+Version:        1.2.14
 Release:        0
 Summary:        The Polynomials over Boolean Rings Computer Algebra System
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/BRiAl/BRiAl
 Source:         https://github.com/BRiAl/BRiAl/releases/download/%version/%name-%version.tar.bz2
+BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel >= 1.58
 BuildRequires:  libboost_test-devel >= 1.58
 BuildRequires:  libpng-devel
-BuildRequires:  pkgconfig(m4ri)
+BuildRequires:  libtool
+BuildRequires:  pkgconfig(m4ri) >= 20250128
 Provides:       bundled(cudd) = 2.5.0
 
 %description
@@ -72,6 +74,7 @@ developing with polybori/brial libraries.
 %autosetup -p1
 
 %build
+autoreconf -fi
 %configure --disable-static
 %make_build
 
@@ -92,5 +95,6 @@ find %buildroot -type f -name "*.la" -delete -print
 %_includedir/polybori.h
 %_libdir/libbrial.so
 %_libdir/libbrial_groebner.so
+%_libdir/pkgconfig/*.pc
 
 %changelog
