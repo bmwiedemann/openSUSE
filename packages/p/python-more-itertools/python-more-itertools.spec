@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-more-itertools
-Version:        10.6.0
+Version:        10.7.0
 Release:        0
 Summary:        More routines for operating on iterables, beyond itertools
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/erikrose/more-itertools
-Source:         https://files.pythonhosted.org/packages/source/m/more-itertools/more-itertools-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/m/more_itertools/more_itertools-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
@@ -38,7 +38,7 @@ Additional building blocks, recipes, and routines for working with
 Python iterables.
 
 %prep
-%setup -q -n more-itertools-%{version}
+%setup -q -n more_itertools-%{version}
 chmod -x more_itertools/more.py
 
 %build
