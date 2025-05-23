@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun May 18 17:04:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 138.0.4
+  MFSA 2025-36 (bsc#1243303)
+  * CVE-2025-4918 (bmo#1966612)
+    Out-of-bounds access when resolving Promise objects
+  * CVE-2025-4919 (bmo#1966614)
+    Out-of-bounds access when optimizing linear sums
+  * Fixed: Fixed a crash that could occur when viewing websites
+    that use WebGL. (bmo#1961191)
+  * Fixed: Fixed an issue where the browser could repeatedly
+    crash when certain SVG effects (like blur or drop shadow)
+    were applied to very small areas. (bmo#1924241)
+    (bmo#1924241)
+  * Fixed: On Linux, fixed an issue where video playback would
+    appear washed-out on Wayland when HDR support was
+    unavailable. (bmo#1961610)
+  * Fixed: Fixed an issue where the "Match Case" shortcut `Alt+C`
+    in the find-in-page toolbar did not toggle the checkbox as
+    expected. (bmo#1952611)
+
+-------------------------------------------------------------------
 Mon May 12 05:56:15 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 138.0.1
