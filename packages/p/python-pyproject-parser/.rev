@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1249625</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c2a1e76236cee14eca536e12846731c2</srcmd5>
+    <version>0.13.0</version>
+    <time>1748003230</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.13.0:
+  * Add parser for [dependency-groups].
+- Skip a testcase broken by Click 8.2.0.</comment>
+    <requestid>1277522</requestid>
+  </revision>
 </revisionlist>

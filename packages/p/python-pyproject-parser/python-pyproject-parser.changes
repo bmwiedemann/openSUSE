@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 15 04:31:53 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.13.0:
+  * Add parser for [dependency-groups].
+- Skip a testcase broken by Click 8.2.0.
+
+-------------------------------------------------------------------
 Thu Feb 27 10:11:48 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

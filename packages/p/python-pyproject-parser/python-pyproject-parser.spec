@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyproject-parser
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,15 +26,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyproject-parser%{psuffix}
-Version:        0.11.1
+Version:        0.13.0
 Release:        0
 Summary:        Parser for 'pyproject.toml'
 License:        MIT
 URL:            https://github.com/repo-helper/pyproject-parser
 Source:         https://github.com/repo-helper/pyproject-parser/archive/refs/tags/v%{version}.tar.gz#/pyproject-parser-%{version}.tar.gz
+BuildRequires:  %{python_module hatch-requirements-txt}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 40.6.0}
-BuildRequires:  %{python_module wheel >= 0.34.2}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
@@ -92,7 +91,8 @@ Parser for 'pyproject.toml'
 
 %check
 %if %{with test}
-%pytest
+# Broken with click 8.2.0
+%pytest -k 'not test_handle_tracebacks_ignored_exceptions_click'
 %endif
 
 %if !%{with test}
