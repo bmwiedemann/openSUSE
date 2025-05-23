@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu May 22 13:33:52 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Add '%{requires_eq perl}' to ensure it gets rebuilt even for perl
+  patch version updates
+
+-------------------------------------------------------------------
+Mon May 19 05:35:34 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.490.0 (1.49)
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  1.49 - 18 May 2025
+  - Handle core Deparse changes for xor (Jim Keenan) (GH-355)
+  - Code tidying
+  1.48 - 11 May 2025
+  - Fix up args handling for reports (Mitch McCracken) (GH-354)
+  - Correct error message when launch is unavailable
+  - Improve perlcritic compliance
+  1.47 - 4 May 2025
+  - Improve defined-or handling (Ed J) (GH-352)
+  - Always set both HARNESS_PERL_SWITCHES and PERL5OPT (Ed J) (GH-351)
+  - Fix many spelling mistakes (Josh Soref) (GH-341)
+  - Improve criteria handling in cover script (Tom Wyant) (GH-347)
+  - Fix uninitialized value warning in `cover -write` (Josh Soref) (GH-339)
+  1.46 - 2 May 2025
+   - Add tests for new any and all functions
+   - Note testing against 5.40.2
+  1.45 - 1 May 2025
+   - Add new versions and test against them
+   - Fix things to work with 5.41.x and new ^^ operator
+   - Add explicit test for ^^ operator
+   - Move devel-cover-docker into this repository
+   - Improve cpancover code
+
+-------------------------------------------------------------------
 Wed Jun 19 17:55:32 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Remove manual dependency on perl-B-Debug. The dependency was

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-Cover
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Devel-Cover
 Name:           perl-Devel-Cover
-Version:        1.440.0
+Version:        1.490.0
 Release:        0
-# 1.44 -> normalize -> 1.440.0
-%define cpan_version 1.44
+# 1.49 -> normalize -> 1.490.0
+%define cpan_version 1.49
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Code coverage metrics for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -29,9 +29,9 @@ Source0:        https://cpan.metacpan.org/authors/id/P/PJ/PJCJ/%{cpan_name}-%{cp
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(HTML::Entities) >= 3.69
+BuildRequires:  perl(HTML::Entities) >= 3.690
 BuildRequires:  perl(Test::More) >= 0.88
-Requires:       perl(HTML::Entities) >= 3.69
+Requires:       perl(HTML::Entities) >= 3.690
 Provides:       perl(Devel::Cover) = %{version}
 Provides:       perl(Devel::Cover::Annotation::Git) = %{version}
 Provides:       perl(Devel::Cover::Annotation::Random) = %{version}
@@ -83,22 +83,26 @@ Provides:       perl(Devel::Cover::Util) = %{version}
 Provides:       perl(Devel::Cover::Web) = %{version}
 %undefine       __perllib_provides
 Recommends:     perl(Browser::Open)
+Recommends:     perl(CPAN::Releases::Latest)
 Recommends:     perl(Capture::Tiny)
 Recommends:     perl(Class::XSAccessor)
 Recommends:     perl(HTML::Parser)
 Recommends:     perl(JSON::MaybeXS) >= 1.003003
 Recommends:     perl(Moo)
-Recommends:     perl(PPI::HTML) >= 1.07
+Recommends:     perl(PPI::HTML) >= 1.70
 Recommends:     perl(Parallel::Iterator)
 Recommends:     perl(Perl::Tidy) >= 20060719
-Recommends:     perl(Pod::Coverage) >= 0.06
+Recommends:     perl(Pod::Coverage) >= 0.60
 Recommends:     perl(Pod::Coverage::CountParents)
 Recommends:     perl(Sereal::Decoder)
 Recommends:     perl(Sereal::Encoder)
-Recommends:     perl(Template) >= 2.00
+Recommends:     perl(Template) >= 2.0.0
 Recommends:     perl(Test::Differences)
 Recommends:     perl(namespace::clean)
 %{perl_requires}
+# MANUAL BEGIN
+%{requires_eq perl}
+# MANUAL END
 
 %description
 This module provides code coverage metrics for Perl. Code coverage metrics
@@ -143,14 +147,14 @@ mode of operation, but this now gets little testing and will probably be
 removed soon. You probably don't care about any of this.
 
 The most appropriate mailing list on which to discuss this module would be
-perl-qa. See http://lists.perl.org/list/perl-qa.html.
+perl-qa. See https://lists.perl.org/list/perl-qa.html.
 
 The Devel::Cover repository can be found at
-http://github.com/pjcj/Devel--Cover. This is also where problems should be
+https://github.com/pjcj/Devel--Cover. This is also where problems should be
 reported.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
