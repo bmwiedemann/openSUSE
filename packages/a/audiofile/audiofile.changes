@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 14 02:41:16 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add audiofile-CVE-2019-13147.patch: Do not allow too many channel
+  to prevent NULL pointer dereference (bsc#1140031).
+
+-------------------------------------------------------------------
 Wed Apr 30 06:51:00 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add audiofile-CVE-2022-24599.patch: Clear buffer when allocating
