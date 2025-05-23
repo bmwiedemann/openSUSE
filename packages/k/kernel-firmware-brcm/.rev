@@ -38,4 +38,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * brcm: Add NVRAM file for Radxa Rock Pi X mini PC</comment>
     <requestid>1276102</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5c020cbf5f4080a189762eba2c603304</srcmd5>
+    <version>20250516</version>
+    <time>1748003385</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250516 (git commit 759c4acafb4a):
+  * brcmfmac: Add a couple of NanoPi devices</comment>
+    <requestid>1278690</requestid>
+  </revision>
 </revisionlist>
