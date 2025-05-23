@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 18 04:29:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.313.0
+  * vkcubepp: Support protected output
+  * cube: Only count non-minimized frames
+
+-------------------------------------------------------------------
 Thu Mar 13 16:41:22 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.309.0
