@@ -175,4 +175,12 @@
 - Place evlib_uv.so into own package to fix SR#1112213</comment>
     <requestid>1204598</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>14d886d11b58e9e9a878e9858aab5828</srcmd5>
+    <version>4.3.5</version>
+    <time>1748003480</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1279340</requestid>
+  </revision>
 </revisionlist>

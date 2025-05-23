@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 24 19:51:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.3.5:
+  * netlink: when binding the per-context socket, let the kernel
+    choose the unicast address.
+  * async dns: allow up to 8 x 128-char CNAMEs from 4
+  * multiple code correctness fixes, including memory safety fixes
+- fix Leap build: rename -evlib-uv to -evlib_uv
+
+-------------------------------------------------------------------
 Mon Feb 26 04:19:54 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Make the main shared library require the evlib plugin.

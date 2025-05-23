@@ -2,6 +2,7 @@
 # spec file for package libwebsockets
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define sover 19
 Name:           libwebsockets
-Version:        4.3.3
+Version:        4.3.5
 Release:        0
 Summary:        A WebSockets library written in C
 # base64-decode.c and ssl-http2.c is under MIT license with FPC exception.
@@ -28,12 +29,13 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://libwebsockets.org
 Source:         https://github.com/warmcat/libwebsockets/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
-BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libuv)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Libwebsockets covers some features for people making embedded
@@ -42,7 +44,7 @@ HTTP/WebSocket servers or clients.
 %package -n %{name}%{sover}
 Summary:        A WebSockets library written in C
 Group:          Development/Libraries/C and C++
-Requires:       %{name}-evlib-uv = %{version}
+Requires:       %{name}-evlib_uv = %{version}
 
 %description -n %{name}%{sover}
 Libwebsockets covers some features for people making embedded
@@ -57,19 +59,20 @@ HTTP/WebSocket servers or clients.
   lost password, etc.)
 * SSL PFS support
 
-%package evlib-uv
+%package evlib_uv
 Summary:        Shared library for evlib_uv plugin
 Group:          Development/Libraries/C and C++
 Requires(pre):  %{name}%{sover} = %{version}
+Provides:       %{name}-evlib-uv = %{version}
+Obsoletes:      %{name}-evlib-uv < %{version}
 
-%description evlib-uv
+%description evlib_uv
 This package contains the shared library for evlib_uv plugin.
 
 %package devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{sover} = %{version}
-Requires:       openssl-devel
 
 %description devel
 This subpackage contains libraries and header files for developing
@@ -82,29 +85,31 @@ applications that want to make use of the WebSockets library.
 %cmake \
     -DLWS_WITHOUT_TESTAPPS=ON \
     -DLWS_WITHOUT_BUILTIN_GETIFADDRS=ON \
-    -DLWS_USE_BUNDLED_ZLIB=OFF \
     -DLWS_WITHOUT_BUILTIN_SHA1=ON \
     -DLWS_WITH_STATIC=OFF \
     -DLWS_WITHOUT_TESTAPPS=ON \
     -DLWS_WITH_LIBUV=ON
-%make_build
+%cmake_build
 
 %install
 %cmake_install
 rm %{buildroot}%{_libdir}/pkgconfig/libwebsockets_static.pc
 
-%post -n libwebsockets%{sover} -p /sbin/ldconfig
-%postun -n libwebsockets%{sover} -p /sbin/ldconfig
+%check
+%ctest
+
+%ldconfig_scriptlets -n libwebsockets%{sover}
 
 %files -n libwebsockets%{sover}
 %license LICENSE
 %{_libdir}/libwebsockets.so.%{sover}
 
-%files evlib-uv
+%files evlib_uv
 %license LICENSE
 %{_libdir}/libwebsockets-evlib_uv.so
 
 %files devel
+%license LICENSE
 %doc README.* changelog
 %{_includedir}/*
 %{_libdir}/libwebsockets.so
