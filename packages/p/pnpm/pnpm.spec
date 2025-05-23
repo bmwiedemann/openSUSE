@@ -34,6 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  nodejs-devel >= 18
 BuildRequires:  nodejs-packaging
 Requires:       bash
+Requires:       nodejs(abi) >= 18
 Recommends:     python3
 Provides:       npm(%{name}) = %{version}
 BuildArch:      noarch

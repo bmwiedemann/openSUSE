@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 20 12:10:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add Requires for nodejs(abi) >= 18
+
+-------------------------------------------------------------------
 Wed May 14 04:42:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 10.11.0:
