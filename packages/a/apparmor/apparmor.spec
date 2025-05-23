@@ -876,8 +876,8 @@ do
 done
 
 %posttrans profiles
-# workaround for bnc#904620#c8 / lp#1392042
-rm -f /var/cache/apparmor/* 2>/dev/null
+# workaround for bnc#904620#c8 / lp#1392042 and bnc#1242553
+apparmor_parser --purge-cache
 #restart_on_update apparmor - but non-broken (bnc#853019)
 systemctl is-active -q apparmor && systemctl reload apparmor ||:
 

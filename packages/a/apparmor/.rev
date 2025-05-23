@@ -2964,4 +2964,13 @@ Note: I checked the GPG signature with both the expired and the refreshed key, a
 - remove upstream py313-aa-notify.patch (forwarded request 1268894 from cboltz)</comment>
     <requestid>1268895</requestid>
   </revision>
+  <revision rev="222" vrev="2">
+    <srcmd5>d9d157ca5f5f43589a11e2b0b0986df8</srcmd5>
+    <version>4.1.0</version>
+    <time>1748003261</time>
+    <user>anag_factory</user>
+    <comment>- Purge potentially stale profile cache during rpm posttrans via
+  &quot;apparmor_parser --purge-cache&quot; (boo#1242553) (forwarded request 1277180 from dmdiss)</comment>
+    <requestid>1277890</requestid>
+  </revision>
 </revisionlist>
