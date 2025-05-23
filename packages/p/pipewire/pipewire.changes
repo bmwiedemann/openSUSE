@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu May 22 10:45:36 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.4.3:
+  * Highlights
+    - Many netjack2 improvements. The driver/manager roles were
+      fixed, MIDI is written correctly and errors are handled
+      better.
+    - Improvements to UMP sysex handling.
+    - More small bug fixes and improvements.
+  * PipeWire
+    - Let all commands go to the node. This makes it possible to
+      send custom commands.
+  * Modules
+    - Many netjack2 improvements. The driver/manager roles were
+      fixed, MIDI is written correctly and errors are handled
+      better.
+    - Improve the filter-graph state management in filter-chain.
+  * SPA
+    - Use default value of filter. (#4619)
+    - Fix UMP program change conversion to MIDI 1.0. (#4664)
+    - Skip only the first buffer for raw formats in v4l2 to avoid
+      dropping important headers when dealing with encoded formats.
+    - Fix ebur128 port name. (#4667)
+    - Only convert UMP/MIDI, pass other controls. Fixes OSC and
+      other control types in the mixer. (#4692)
+    - Improve UMP sysex handling in alsa seq.
+    - Improve ALSA audio.channels support. Only use this when the
+      value is within the valid range.
+  * Tools
+    - debug UMP SysRT messages correctly in pw-mididump.
+  * JACK
+    - Handle sysex in UMP better by appending the converted midi1
+      sysex
+
+-------------------------------------------------------------------
 Wed May 14 08:00:28 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Better use "Suggests" instead of Recommends otherwise
