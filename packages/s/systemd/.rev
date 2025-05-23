@@ -7591,4 +7591,19 @@ handle manual pages that consist only of a .so directive such as
     <comment></comment>
     <requestid>1274357</requestid>
   </revision>
+  <revision rev="447" vrev="3">
+    <srcmd5>b4cf741b23654219fe81c04874f72cf3</srcmd5>
+    <version>257.5</version>
+    <time>1748003293</time>
+    <user>anag_factory</user>
+    <comment>- Import commit 8e9840a2897e36ae3f926f8d10a2b0d7e4102c67 (bsc#1243280)
+  8e9840a289 bless-boot: never try to rename an entry file onto itself
+  5b5cde8866 bless-boot: in &quot;status&quot; output report bad state from prev boot as &quot;dirty&quot;
+  49949fa9fb bless-boot: switch from last_path_component() to path_find_last_component()
+
+- systemd-update-helper: Fix invalid use of &quot;break&quot; in case statement
+
+    18dde3dd2a umount: do not move busy network mounts (bsc#1236177)</comment>
+    <requestid>1278063</requestid>
+  </revision>
 </revisionlist>

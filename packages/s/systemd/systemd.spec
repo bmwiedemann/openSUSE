@@ -33,7 +33,7 @@
 %if %{without obs_service_set_version}
 %define systemd_version    257.5
 %define systemd_release    0
-%define archive_version    +suse.8.gc10a66fb4d
+%define archive_version    +suse.11.g8e9840a289
 %endif
 
 %define _testsuitedir %{_systemd_util_dir}/tests

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 16 10:49:22 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Import commit 8e9840a2897e36ae3f926f8d10a2b0d7e4102c67 (bsc#1243280)
+
+  8e9840a289 bless-boot: never try to rename an entry file onto itself
+  5b5cde8866 bless-boot: in "status" output report bad state from prev boot as "dirty"
+  49949fa9fb bless-boot: switch from last_path_component() to path_find_last_component()
+
+-------------------------------------------------------------------
+Thu May 15 12:04:47 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- systemd-update-helper: Fix invalid use of "break" in case statement
+
+-------------------------------------------------------------------
 Tue Apr 22 15:06:19 UTC 2025 - Franck Bui <fbui@suse.com>
 
 - systemd-update-helper: do not stop or disable services when they are migrated
@@ -20,6 +34,7 @@ Fri Apr  4 08:43:26 UTC 2025 - Franck Bui <fbui@suse.com>
     9b52c10986 test-network: replace symlink to 99-default.link with a copy
     d7577221b8 man/pstore.conf: pstore.conf template is not always installed in /etc
     62071a984d man: coredump.conf template is not always installed in /etc (bsc#1237496)
+    18dde3dd2a umount: do not move busy network mounts (bsc#1236177)
 
   For a complete list of changes, visit:
   https://github.com/openSUSE/systemd/compare/f133e5974e69708d7491d4823780690c913f7bda...c10a66fb4dd34b86d42fa92501bd88db63df479a

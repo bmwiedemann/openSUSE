@@ -82,7 +82,7 @@ do_remove_units() {
     user)
         systemctl --global disable --no-warn "${units[@]}"
 
-        [ -d /run/systemd/system ] || break
+        [ -d /run/systemd/system ] || return
 
         users=$(systemctl list-units 'user@*' --legend=no | sed -n -r 's/.*user@([0-9]+).service.*/\1/p')
         for user in $users; do
