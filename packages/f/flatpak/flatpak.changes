@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun May 11 11:49:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.1:
+  + Bug fixes:
+    - Fix intermittent flatpak-portal crashes by avoiding
+      unnecessary multi-threading
+    - Don't show a confusing confirmation prompt when flatpak
+      remove --unused removes autoprune-unless extensions that are
+      no longer needed, such as older Nvidia drivers
+    - Don't propagate $PYTHONPYCACHEPREFIX from host into sandbox
+    - Don't propagate $WAYLAND_DISPLAY, $WAYLAND_SOCKET from host
+      into sandbox if access to the Wayland socket has been denied
+    - When discovering the AT-SPI bus, treat $AT_SPI_BUS_ADDRESS as
+      higher-priority than GetAddress(), more closely matching the
+      behaviour of AT-SPI itself
+    - Fix a memory leak when installing extra-data
+    - Don't show fatal transaction errors twice
+    - Fix the build with -Ddefault_library=static
+    - Fix incorrect error reporting
+    - When using FLATPAK_TTY_PROGRESS, terminate OSC escape
+      sequence with standard ST sequence instead of xterm-specific
+      BEL
+    - Include all options in shell completion for flatpak search
+  + Enhancements:
+    - When using parental controls, allow a child account to update
+      existing apps by default, to ensure that security and bugfix
+      updates can be installed. This can be overridden by setting
+      polkit policy rules for the new
+      org.freedesktop.Flatpak.override-parental-controls-update
+      action if necessary
+    - Make systemd scopes easier to match to Flatpak app instances,
+      by using the instance ID instead of the top-level process ID
+      in the scope name
+    - Access to --device=dri now includes /dev/udmabuf
+    - Improve the error message for an invalid parameter to
+      flatpak-spawn --sandbox-a11y-own-name
+    - Speed up flatpak prune --dry-run by not calculating potential
+      freed space and avoiding operations that would need to hold a
+      lock
+    - Speed up flatpak permission-reset by only writing entries
+      that have actually changed
+    - Documentation improvements
+    - Look for TLS certificates at /etc/containers/certs.d when
+      interacting with OCI registries
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Jan  9 17:41:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.0:

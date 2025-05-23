@@ -35,7 +35,7 @@
 %define support_environment_generators 1
 %endif
 Name:           flatpak
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
