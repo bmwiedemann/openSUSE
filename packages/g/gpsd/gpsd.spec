@@ -1,7 +1,7 @@
 #
 # spec file for package gpsd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define         _udevdir %(pkg-config --variable udevdir udev)
 %bcond_without python2
 Name:           gpsd
-Version:        3.25
+Version:        3.26
 Release:        0
 Summary:        Service daemon for mediating access to a GPS
 License:        BSD-3-Clause
@@ -385,6 +385,7 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %{_mandir}/man1/gps.1%{?ext_man}
 %{_mandir}/man1/gps2udp.1%{?ext_man}
 %{_mandir}/man1/gpscsv.1%{?ext_man}
+%{_mandir}/man1/gpslogntp.1%{?ext_man}
 %{_mandir}/man1/gpsmon.1%{?ext_man}
 %{_mandir}/man1/gpspipe.1%{?ext_man}
 %{_mandir}/man1/gpsplot.1%{?ext_man}
@@ -412,6 +413,7 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %{_bindir}/ppscheck
 %{_bindir}/ubxtool
 %{_bindir}/zerk
+%{_bindir}/gpslogntp
 %{_bindir}/gpsrinex
 %{_bindir}/gpscsv
 %{_bindir}/gpsplot

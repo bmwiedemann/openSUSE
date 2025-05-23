@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed May 14 20:31:14 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 3.26
+  * Handle NTRIPv2 that comes in "chunks".
+  * Add many UBX decodes.  Mostly in ubxtool, some in gpsd.
+  * Improve TSIP and UBX intitalization.
+  * Gather Antenna Status (ant_stat) and Jamming (jam) and send to JSON.
+  * Always build u-blox, RTCM104V2, RTCM104V3 drivers.
+  * Add partial support for badly documented ALLYSTAR GNSS messages.
+  * Add minimal support for Unicore GNSS messages.
+  * Add minimal support for CASIC GNSS messages.
+  * Add minimal support for buggy Inertial Sense GNSS messages.
+  * Try to work better as non-root using non-standard "capabilities".
+  * Add SUBSYSTEM=gnss rule to gpsd.rules
+  * Moved ntploggps from NTPSec to GPSD and renamed to gpslogntp.
+  * Fix many build, Coverity, and Codacy warnings.
+  * Improved Python interface for the lexer.
+  * Add support for new BeiDou PRNs and subframes.
+  * Officially deprecate gpsmon.
+  * Improve support for NMEA 4.11 (a stealthy moving target).
+  * Remove Oceanserver IMU support.  Never worked well.
+  * Always with  build ubx, NMEA 103, rtcm104v2 and rtcm104v3 support.
+  * Add support for jamming detection.
+  * Add Go client example.
+  * Add support for RTCM3.2
+- Update gpsd.keyring (0C898D47 -> 4294517B)
+
+-------------------------------------------------------------------
 Mon Apr 29 09:32:13 UTC 2024 - pgajdos@suse.com
 
 - usage of %python3_fix_shebang to cover /usr/bin is also
