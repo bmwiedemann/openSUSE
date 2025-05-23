@@ -738,4 +738,19 @@
     <comment></comment>
     <requestid>1255866</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>e856d965d880b57be92116aaaa41c7bf</srcmd5>
+    <version>0.4.62</version>
+    <time>1748003336</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.4.62:
+  * png-load: avoid crashing on some invalid files
+  * bevel: code cleanups, pass only valid values to gegl:emboss
+  * exr-save: fix scratch buffer computation for large images
+  * fractal-trace: add ui-ranges to coordiantes
+  * depend on babl&gt;=0.1.112 removing ifdefs keeping old variants working
+  * mark nodes as intert in ::dispose and check for this during traversals, this
+    fixes a crash when using a libc that has a non-clobbering free. (forwarded request 1278316 from polslinux)</comment>
+    <requestid>1278395</requestid>
+  </revision>
 </revisionlist>

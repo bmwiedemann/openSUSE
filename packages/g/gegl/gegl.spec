@@ -26,7 +26,7 @@
 %bcond_with gegl_docs
 
 Name:           gegl
-Version:        0.4.58
+Version:        0.4.62
 Release:        0
 Summary:        Generic Graphics Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -51,7 +51,7 @@ BuildRequires:  python3-gi-docgen
 %endif
 BuildRequires:  ruby
 BuildRequires:  suitesparse-devel
-BuildRequires:  (pkgconfig(babl) or pkgconfig(babl-0.1))
+BuildRequires:  (pkgconfig(babl)  >= 0.1.112 or pkgconfig(babl-0.1)  >= 0.1.112)
 BuildRequires:  pkgconfig(OpenEXR) >= 1.6.1
 BuildRequires:  pkgconfig(cairo) >= 1.12.2
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.32.0
