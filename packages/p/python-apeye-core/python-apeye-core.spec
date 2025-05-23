@@ -1,7 +1,7 @@
 #
 # spec file for package python-apeye-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Name:           python-apeye-core%{psuffix}
 Version:        1.1.5
 Release:        0
 Summary:        Core (offline) functionality for the apeye library
-License:        MIT
+License:        BSD-3-Clause
 URL:            https://github.com/domdfcoding/apeye-core
 Source:         https://github.com/domdfcoding/apeye-core/archive/refs/tags/v%{version}.tar.gz#/apeye_core-%{version}.tar.gz
 BuildRequires:  %{python_module hatch-requirements-txt}

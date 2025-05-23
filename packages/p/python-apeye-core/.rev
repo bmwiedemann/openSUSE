@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1249627</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>38975ab12d2316417de002b49b3cda36</srcmd5>
+    <version>1.1.5</version>
+    <time>1748003232</time>
+    <user>anag_factory</user>
+    <comment>- Fix the license, it is BSD-3-Clause, not MIT.</comment>
+    <requestid>1277666</requestid>
+  </revision>
 </revisionlist>
