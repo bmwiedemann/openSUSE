@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 13 07:54:38 UTC 2025 - ming li <mli@suse.com>
+
+- Update to version 4.14:
+  * updated astyle lib to version 3.6.2
+  * fixed SWIG lib compilation (#247)
+  * updated Terraform file suffix list
+
+-------------------------------------------------------------------
 Wed Dec  4 03:43:54 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 4.13:
