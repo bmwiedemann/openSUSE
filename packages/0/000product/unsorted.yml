@@ -248,10 +248,6 @@ unsorted:
   - QR-Code-generator-devel 
   - QSVEnc 
   - QTalarm 
-  - QtAV 
-  - QtAV-devel 
-  - QtAV-players 
-  - QtAV-qml 
   - QtDMM 
   - QtPass 
   - R-KernSmooth 
@@ -1534,10 +1530,10 @@ unsorted:
   - boomaga-lang 
   - boost-devel 
   - boost-jam 
-  - boost1_87_0-doc-html 
-  - boost1_87_0-doc-pdf 
-  - boost1_87_0-jam 
-  - boost1_87_0-quickbook 
+  - boost1_88_0-doc-html 
+  - boost1_88_0-doc-pdf 
+  - boost1_88_0-jam 
+  - boost1_88_0-quickbook 
   - booth 
   - booth-test 
   - bootiso 
@@ -1987,6 +1983,7 @@ unsorted:
   - casync 
   - catalan-pos-dict 
   - catcodec 
+  - catgirl 
   - catimg 
   - catimg-zsh-completion 
   - cava 
@@ -7366,8 +7363,6 @@ unsorted:
   - gnome-robots-lang 
   - gnome-screenshot 
   - gnome-screenshot-lang 
-  - gnome-search-tool 
-  - gnome-search-tool-lang 
   - gnome-settings-daemon-devel 
   - gnome-shell-classic-xsession 
   - gnome-shell-devel 
@@ -11229,10 +11224,6 @@ unsorted:
   - libMyGUIEngine3_4_3 
   - libOIS-devel 
   - libOIS1_5_0 
-  - libOSMesa-devel 
-  - libOSMesa-devel-32bit 
-  - libOSMesa8 
-  - libOSMesa8-32bit 
   - libOgreBites-devel 
   - libOgreBites13_6 
   - libOgreBitesQt13_6 
@@ -11518,8 +11509,6 @@ unsorted:
   - libQt6Xdg4 
   - libQt6XdgIconLoader-devel 
   - libQt6XdgIconLoader4 
-  - libQtAV1 
-  - libQtAVWidgets1 
   - libQtOlm3_0 
   - libQtQuick5-32bit 
   - libQuotient-qt6-devel 
@@ -11585,7 +11574,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVulkanLayerSettings-1_4_309 
+  - libVulkanLayerSettings-1_4_313 
   - libWN3 
   - libWPEBackend-fdo-1_0-1 
   - libWPEBackend-fdo-1_0-1-32bit 
@@ -11708,7 +11697,7 @@ unsorted:
   - liba52-devel 
   - libabigail-devel 
   - libabigail-tools 
-  - libabigail5 
+  - libabigail6 
   - libabiword-3_0 
   - libabiword-3_0-devel 
   - libabsl_2501_0_0-32bit 
@@ -12089,155 +12078,155 @@ unsorted:
   - libbobcat6 
   - libboinc8 
   - libboost_atomic-devel 
-  - libboost_atomic1_87_0 
-  - libboost_atomic1_87_0-32bit 
-  - libboost_atomic1_87_0-devel 
-  - libboost_atomic1_87_0-x86-64-v3 
-  - libboost_charconv1_87_0 
-  - libboost_charconv1_87_0-32bit 
-  - libboost_charconv1_87_0-devel 
-  - libboost_charconv1_87_0-x86-64-v3 
+  - libboost_atomic1_88_0 
+  - libboost_atomic1_88_0-32bit 
+  - libboost_atomic1_88_0-devel 
+  - libboost_atomic1_88_0-x86-64-v3 
+  - libboost_charconv1_88_0 
+  - libboost_charconv1_88_0-32bit 
+  - libboost_charconv1_88_0-devel 
+  - libboost_charconv1_88_0-x86-64-v3 
   - libboost_chrono-devel 
-  - libboost_chrono1_87_0 
-  - libboost_chrono1_87_0-devel 
+  - libboost_chrono1_88_0 
+  - libboost_chrono1_88_0-devel 
   - libboost_container-devel 
-  - libboost_container1_87_0 
-  - libboost_container1_87_0-32bit 
-  - libboost_container1_87_0-devel 
-  - libboost_container1_87_0-x86-64-v3 
+  - libboost_container1_88_0 
+  - libboost_container1_88_0-32bit 
+  - libboost_container1_88_0-devel 
+  - libboost_container1_88_0-x86-64-v3 
   - libboost_context-devel 
-  - libboost_context1_87_0 
-  - libboost_context1_87_0-32bit 
-  - libboost_context1_87_0-devel 
-  - libboost_context1_87_0-x86-64-v3 
+  - libboost_context1_88_0 
+  - libboost_context1_88_0-32bit 
+  - libboost_context1_88_0-devel 
+  - libboost_context1_88_0-x86-64-v3 
   - libboost_contract-devel 
-  - libboost_contract1_87_0 
-  - libboost_contract1_87_0-devel 
+  - libboost_contract1_88_0 
+  - libboost_contract1_88_0-devel 
   - libboost_coroutine-devel 
-  - libboost_coroutine1_87_0 
-  - libboost_coroutine1_87_0-32bit 
-  - libboost_coroutine1_87_0-devel 
-  - libboost_coroutine1_87_0-x86-64-v3 
+  - libboost_coroutine1_88_0 
+  - libboost_coroutine1_88_0-32bit 
+  - libboost_coroutine1_88_0-devel 
+  - libboost_coroutine1_88_0-x86-64-v3 
   - libboost_date_time-devel 
-  - libboost_date_time1_87_0 
-  - libboost_date_time1_87_0-32bit 
-  - libboost_date_time1_87_0-devel 
-  - libboost_date_time1_87_0-x86-64-v3 
+  - libboost_date_time1_88_0 
+  - libboost_date_time1_88_0-32bit 
+  - libboost_date_time1_88_0-devel 
+  - libboost_date_time1_88_0-x86-64-v3 
   - libboost_fiber-devel 
-  - libboost_fiber1_87_0 
-  - libboost_fiber1_87_0-32bit 
-  - libboost_fiber1_87_0-devel 
-  - libboost_fiber1_87_0-x86-64-v3 
+  - libboost_fiber1_88_0 
+  - libboost_fiber1_88_0-32bit 
+  - libboost_fiber1_88_0-devel 
+  - libboost_fiber1_88_0-x86-64-v3 
   - libboost_filesystem-devel 
-  - libboost_filesystem1_87_0-32bit 
-  - libboost_filesystem1_87_0-devel 
+  - libboost_filesystem1_88_0-32bit 
+  - libboost_filesystem1_88_0-devel 
   - libboost_graph-devel 
-  - libboost_graph1_87_0 
-  - libboost_graph1_87_0-32bit 
-  - libboost_graph1_87_0-devel 
-  - libboost_graph1_87_0-x86-64-v3 
+  - libboost_graph1_88_0 
+  - libboost_graph1_88_0-32bit 
+  - libboost_graph1_88_0-devel 
+  - libboost_graph1_88_0-x86-64-v3 
   - libboost_graph_parallel-devel 
-  - libboost_graph_parallel1_87_0 
-  - libboost_graph_parallel1_87_0-devel 
-  - libboost_graph_parallel1_87_0-x86-64-v3 
+  - libboost_graph_parallel1_88_0 
+  - libboost_graph_parallel1_88_0-devel 
+  - libboost_graph_parallel1_88_0-x86-64-v3 
   - libboost_headers-devel 
-  - libboost_headers1_87_0-devel 
+  - libboost_headers1_88_0-devel 
   - libboost_iostreams-devel 
-  - libboost_iostreams1_87_0-32bit 
-  - libboost_iostreams1_87_0-devel 
-  - libboost_json1_87_0 
-  - libboost_json1_87_0-32bit 
-  - libboost_json1_87_0-devel 
-  - libboost_json1_87_0-x86-64-v3 
+  - libboost_iostreams1_88_0-32bit 
+  - libboost_iostreams1_88_0-devel 
+  - libboost_json1_88_0 
+  - libboost_json1_88_0-32bit 
+  - libboost_json1_88_0-devel 
+  - libboost_json1_88_0-x86-64-v3 
   - libboost_locale-devel 
-  - libboost_locale1_87_0-32bit 
-  - libboost_locale1_87_0-devel 
+  - libboost_locale1_88_0-32bit 
+  - libboost_locale1_88_0-devel 
   - libboost_log-devel 
-  - libboost_log1_87_0 
-  - libboost_log1_87_0-devel 
+  - libboost_log1_88_0 
+  - libboost_log1_88_0-devel 
   - libboost_math-devel 
-  - libboost_math1_87_0 
-  - libboost_math1_87_0-32bit 
-  - libboost_math1_87_0-devel 
-  - libboost_math1_87_0-x86-64-v3 
+  - libboost_math1_88_0 
+  - libboost_math1_88_0-32bit 
+  - libboost_math1_88_0-devel 
+  - libboost_math1_88_0-x86-64-v3 
   - libboost_mpi-devel 
-  - libboost_mpi1_87_0 
-  - libboost_mpi1_87_0-devel 
-  - libboost_mpi1_87_0-x86-64-v3 
-  - libboost_mpi_python-py3-1_87_0 
-  - libboost_mpi_python-py3-1_87_0-devel 
+  - libboost_mpi1_88_0 
+  - libboost_mpi1_88_0-devel 
+  - libboost_mpi1_88_0-x86-64-v3 
+  - libboost_mpi_python-py3-1_88_0 
+  - libboost_mpi_python-py3-1_88_0-devel 
   - libboost_mpi_python3-devel 
   - libboost_nowide-devel 
-  - libboost_nowide1_87_0 
-  - libboost_nowide1_87_0-32bit 
-  - libboost_nowide1_87_0-devel 
-  - libboost_nowide1_87_0-x86-64-v3 
-  - libboost_numpy-py3-1_87_0 
-  - libboost_numpy-py3-1_87_0-devel 
+  - libboost_nowide1_88_0 
+  - libboost_nowide1_88_0-32bit 
+  - libboost_nowide1_88_0-devel 
+  - libboost_nowide1_88_0-x86-64-v3 
+  - libboost_numpy-py3-1_88_0 
+  - libboost_numpy-py3-1_88_0-devel 
   - libboost_numpy3-devel 
   - libboost_process-devel 
-  - libboost_process1_87_0 
-  - libboost_process1_87_0-32bit 
-  - libboost_process1_87_0-devel 
-  - libboost_process1_87_0-x86-64-v3 
+  - libboost_process1_88_0 
+  - libboost_process1_88_0-32bit 
+  - libboost_process1_88_0-devel 
+  - libboost_process1_88_0-x86-64-v3 
   - libboost_program_options-devel 
-  - libboost_program_options1_87_0 
-  - libboost_program_options1_87_0-32bit 
-  - libboost_program_options1_87_0-devel 
-  - libboost_program_options1_87_0-x86-64-v3 
-  - libboost_python-py3-1_87_0-32bit 
-  - libboost_python-py3-1_87_0-devel 
+  - libboost_program_options1_88_0 
+  - libboost_program_options1_88_0-32bit 
+  - libboost_program_options1_88_0-devel 
+  - libboost_program_options1_88_0-x86-64-v3 
+  - libboost_python-py3-1_88_0-32bit 
+  - libboost_python-py3-1_88_0-devel 
   - libboost_python3-devel 
   - libboost_random-devel 
-  - libboost_random1_87_0 
-  - libboost_random1_87_0-32bit 
-  - libboost_random1_87_0-devel 
-  - libboost_random1_87_0-x86-64-v3 
+  - libboost_random1_88_0 
+  - libboost_random1_88_0-32bit 
+  - libboost_random1_88_0-devel 
+  - libboost_random1_88_0-x86-64-v3 
   - libboost_regex-devel 
-  - libboost_regex1_87_0 
-  - libboost_regex1_87_0-32bit 
-  - libboost_regex1_87_0-devel 
-  - libboost_regex1_87_0-x86-64-v3 
+  - libboost_regex1_88_0 
+  - libboost_regex1_88_0-32bit 
+  - libboost_regex1_88_0-devel 
+  - libboost_regex1_88_0-x86-64-v3 
   - libboost_serialization-devel 
-  - libboost_serialization1_87_0 
-  - libboost_serialization1_87_0-32bit 
-  - libboost_serialization1_87_0-devel 
-  - libboost_serialization1_87_0-x86-64-v3 
+  - libboost_serialization1_88_0 
+  - libboost_serialization1_88_0-32bit 
+  - libboost_serialization1_88_0-devel 
+  - libboost_serialization1_88_0-x86-64-v3 
   - libboost_stacktrace-devel 
-  - libboost_stacktrace1_87_0 
-  - libboost_stacktrace1_87_0-32bit 
-  - libboost_stacktrace1_87_0-devel 
-  - libboost_stacktrace1_87_0-x86-64-v3 
+  - libboost_stacktrace1_88_0 
+  - libboost_stacktrace1_88_0-32bit 
+  - libboost_stacktrace1_88_0-devel 
+  - libboost_stacktrace1_88_0-x86-64-v3 
   - libboost_system-devel 
-  - libboost_system1_87_0 
-  - libboost_system1_87_0-32bit 
-  - libboost_system1_87_0-devel 
-  - libboost_system1_87_0-x86-64-v3 
+  - libboost_system1_88_0 
+  - libboost_system1_88_0-32bit 
+  - libboost_system1_88_0-devel 
+  - libboost_system1_88_0-x86-64-v3 
   - libboost_test-devel 
-  - libboost_test1_87_0 
-  - libboost_test1_87_0-32bit 
-  - libboost_test1_87_0-devel 
-  - libboost_test1_87_0-x86-64-v3 
+  - libboost_test1_88_0 
+  - libboost_test1_88_0-32bit 
+  - libboost_test1_88_0-devel 
+  - libboost_test1_88_0-x86-64-v3 
   - libboost_thread-devel 
-  - libboost_thread1_87_0-32bit 
-  - libboost_thread1_87_0-devel 
+  - libboost_thread1_88_0-32bit 
+  - libboost_thread1_88_0-devel 
   - libboost_timer-devel 
-  - libboost_timer1_87_0 
-  - libboost_timer1_87_0-devel 
+  - libboost_timer1_88_0 
+  - libboost_timer1_88_0-devel 
   - libboost_type_erasure-devel 
-  - libboost_type_erasure1_87_0 
-  - libboost_type_erasure1_87_0-32bit 
-  - libboost_type_erasure1_87_0-devel 
-  - libboost_type_erasure1_87_0-x86-64-v3 
-  - libboost_url1_87_0 
-  - libboost_url1_87_0-32bit 
-  - libboost_url1_87_0-devel 
-  - libboost_url1_87_0-x86-64-v3 
+  - libboost_type_erasure1_88_0 
+  - libboost_type_erasure1_88_0-32bit 
+  - libboost_type_erasure1_88_0-devel 
+  - libboost_type_erasure1_88_0-x86-64-v3 
+  - libboost_url1_88_0 
+  - libboost_url1_88_0-32bit 
+  - libboost_url1_88_0-devel 
+  - libboost_url1_88_0-x86-64-v3 
   - libboost_wave-devel 
-  - libboost_wave1_87_0 
-  - libboost_wave1_87_0-32bit 
-  - libboost_wave1_87_0-devel 
-  - libboost_wave1_87_0-x86-64-v3 
+  - libboost_wave1_88_0 
+  - libboost_wave1_88_0-32bit 
+  - libboost_wave1_88_0-devel 
+  - libboost_wave1_88_0-x86-64-v3 
   - libboringssl1 
   - libbotan-3-7 
   - libbotan-devel 
@@ -13744,7 +13733,7 @@ unsorted:
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa2 
-  - libhiredis1_1_0 
+  - libhiredis1_3_0 
   - libhl1 
   - libhmac-devel 
   - libhmac-tools 
@@ -16666,7 +16655,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit 
-  - libvolk-1_4_309 
+  - libvolk-1_4_313 
   - libvolk3_2 
   - libvomsapi1 
   - libvorbis-devel 
@@ -16761,7 +16750,7 @@ unsorted:
   - libwebrtc_audio_processing-devel-static 
   - libwebrtc_audio_processing1 
   - libwebsockets-devel 
-  - libwebsockets-evlib-uv 
+  - libwebsockets-evlib_uv 
   - libwebsockets19 
   - libweston-14 
   - libweston-14-0 
@@ -22914,6 +22903,7 @@ unsorted:
   - postsrsd 
   - potrace 
   - potrace-devel 
+  - pounce 
   - povray 
   - povray-doc 
   - power-profiles-daemon-doc 
@@ -23411,7 +23401,7 @@ unsorted:
   - python3-barbicanclient 
   - python3-bcc 
   - python3-boost_parallel_mpi 
-  - python3-boost_parallel_mpi1_87_0 
+  - python3-boost_parallel_mpi1_88_0 
   - python3-botan 
   - python3-bump2version 
   - python3-bytesize 
@@ -26436,6 +26426,7 @@ unsorted:
   - python311-pytest-mypy-testing 
   - python311-pytest-openfiles 
   - python311-pytest-order 
+  - python311-pytest-param-files 
   - python311-pytest-percent 
   - python311-pytest-plus 
   - python311-pytest-pretty 
@@ -30184,6 +30175,7 @@ unsorted:
   - python312-pytest-mypy-testing 
   - python312-pytest-openfiles 
   - python312-pytest-order 
+  - python312-pytest-param-files 
   - python312-pytest-percent 
   - python312-pytest-plus 
   - python312-pytest-pretty 
@@ -33863,6 +33855,7 @@ unsorted:
   - python313-pytest-instafail 
   - python313-pytest-isort 
   - python313-pytest-jupyter 
+  - python313-pytest-jupyter-client 
   - python313-pytest-jupyter-server 
   - python313-pytest-lazy-fixture 
   - python313-pytest-listener 
@@ -33877,6 +33870,7 @@ unsorted:
   - python313-pytest-mypy-testing 
   - python313-pytest-openfiles 
   - python313-pytest-order 
+  - python313-pytest-param-files 
   - python313-pytest-percent 
   - python313-pytest-plus 
   - python313-pytest-pretty 
@@ -34942,7 +34936,6 @@ unsorted:
   - qmmp-plugin-pack-samplerate 
   - qmmp-plugin-pack-youtube 
   - qmodbus 
-  - qnapi 
   - qoauth-qt5-devel 
   - qodem 
   - qoi-devel 
@@ -47588,6 +47581,7 @@ unsorted:
   - trousers-devel 
   - trufflehog 
   - trurl 
+  - trurl-zsh-completion 
   - truth 
   - truth-javadoc 
   - tryton 
