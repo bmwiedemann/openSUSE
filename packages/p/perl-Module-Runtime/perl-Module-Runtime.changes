@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 22 05:35:26 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.18.0 (0.018)
+   see /usr/share/doc/packages/perl-Module-Runtime/Changes
+
+  0.018   2025-04-21
+    - avoid xattr headers in release tarball
+
+    - minor code reformatting
+
+-------------------------------------------------------------------
 Tue Apr  8 05:36:15 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.17.0 (0.017)

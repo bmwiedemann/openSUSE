@@ -18,10 +18,10 @@
 
 %define cpan_name Module-Runtime
 Name:           perl-Module-Runtime
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
-# 0.017 -> normalize -> 0.17.0
-%define cpan_version 0.017
+# 0.018 -> normalize -> 0.18.0
+%define cpan_version 0.018
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Runtime module handling
 URL:            https://metacpan.org/release/%{cpan_name}

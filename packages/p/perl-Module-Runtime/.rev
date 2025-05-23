@@ -129,4 +129,16 @@
    see /usr/share/doc/packages/perl-Module-Runtime/Changes (forwarded request 1270015 from tinita)</comment>
     <requestid>1270269</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0490183b9f40c391125e0a15d63629d3</srcmd5>
+    <version>0.18.0</version>
+    <time>1748003404</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.18.0 (0.018)
+   see /usr/share/doc/packages/perl-Module-Runtime/Changes
+  0.018   2025-04-21
+    - avoid xattr headers in release tarball
+    - minor code reformatting (forwarded request 1278616 from tinita)</comment>
+    <requestid>1279037</requestid>
+  </revision>
 </revisionlist>
