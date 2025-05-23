@@ -40,4 +40,13 @@ After this PR, there will be a delete request for kernel-firmware.
   instructing zypp about the usrmerge is perfect for this use case.</comment>
     <requestid>1272734</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>07ad4cf0ab9d711b7554a8c05d02183b</srcmd5>
+    <version>20250516</version>
+    <time>1748003386</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250516 (git commit 759c4acafb4a):
+  * nvidia: add GSP-RM version 570.144 firmware images</comment>
+    <requestid>1278691</requestid>
+  </revision>
 </revisionlist>

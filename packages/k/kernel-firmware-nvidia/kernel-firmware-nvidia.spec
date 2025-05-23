@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version aaae2fb60f75b07d9c249ebe668524f7ddf51243
+%define git_version 759c4acafb4a80d76885e4a1542229a27d677322
 
 Name:           kernel-firmware-nvidia
-Version:        20250206
+Version:        20250516
 Release:        0
 Summary:        Kernel firmware files for Nvidia Tegra and graphics drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
