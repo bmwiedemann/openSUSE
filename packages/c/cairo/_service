@@ -9,11 +9,11 @@
     <param name="versionrewrite-replacement">\1</param>
 <!--    <param name="changesgenerate">enable</param> -->
   </service>
-<!--  <service name="tar" mode="buildtime"/>
+  <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">zst</param>
-  </service> -->
+  </service>
   <service name="set_version" mode="manual" />
 </services>
 

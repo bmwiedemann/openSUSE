@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 19 07:23:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch back to using source service.
+
+-------------------------------------------------------------------
 Mon Mar 17 20:43:30 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.4:
@@ -1323,7 +1328,7 @@ Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
 - obsolete old -XXbit packages (bnc#437293)
 
 -------------------------------------------------------------------
-Tue Sep 30 07:06:06 WST 2008 - mboman@suse.de
+Tue Sep 30 07:06:06 EST 2008 - mboman@suse.de
 
 - Update to version 1.8.0:
   + Many API changes. See NEWS for full details
