@@ -214,6 +214,9 @@ technologies that have been submitted to the ECMA for standardization.
 %patch -P 23 -p1
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %define _lto_cflags %{nil}
 # autogen.sh seems broken: it is not processing libgs subdirectory leaving old stuff there untouched.
 # so, remove gnu-build-system files manually
