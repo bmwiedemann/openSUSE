@@ -25,14 +25,14 @@
 %endif
 
 Name:           s3backer
-Version:        2.1.4
+Version:        2.1.5
 Release:        0
 Summary:        FUSE and NBD single file backing store via Amazon S3
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://github.com/archiecobbs/%{name}
 Source:         https://s3.amazonaws.com/archie-public/%{name}/%{name}-%{version}.tar.gz
-BuildRequires:  fuse-devel >= 2.5
+BuildRequires:  fuse3-devel >= 3.0.0
 BuildRequires:  libcurl-devel >= 7.16.2
 BuildRequires:  libexpat-devel
 BuildRequires:  libopenssl-devel

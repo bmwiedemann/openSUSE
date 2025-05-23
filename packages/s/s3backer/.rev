@@ -304,4 +304,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1278182</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>00e28d323f2181b70c5e761a84d43835</srcmd5>
+    <version>2.1.5</version>
+    <time>1748003473</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to release 2.1.5
+    - Add new flag &quot;--statsFileMirror&quot; (issue #237)
+    - Update to FUSE 3.x (#239)</comment>
+    <requestid>1279338</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 22 18:07:25 UTC 2025 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to release 2.1.5
+    - Add new flag "--statsFileMirror" (issue #237)
+    - Update to FUSE 3.x (#239)
+
+-------------------------------------------------------------------
 Sat May 10 21:37:49 UTC 2025 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Upgrade to release 2.1.4
