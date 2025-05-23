@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri May 16 09:23:08 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 6.5.0 (CVE-2025-47287, bsc#1243268):
+  * Security Improvements:
+    - Previously, malformed multipart-form-data requests could log
+      multiple warnings and constitute a denial-of-service attack. Now
+      an exception is raised at the first error, so there is only one
+      log message per request. This fixes CVE-2025-47287.
+  * General Changes:
+    - Python 3.14 is now supported. Older versions of Tornado will
+      work on Python 3.14 but may log deprecation warnings.
+    - The free-threading mode of Python 3.13 is now supported on an
+      experimental basis. Prebuilt wheels are not yet available for
+      this configuration, but it can be built from source.
+    - The minimum supported Python version is 3.9.
+  * Deprecation Notices:
+    - Support for obs-fold continuation lines in HTTP headers is
+      deprecated and will be removed in Tornado 7.0, as is the use of
+      carriage returns without line feeds as header separators.
+    - The callback argument to websocket_connect is deprecated and
+      will be removed in Tornado 7.0. Note that on_message_callback is
+      not deprecated.
+    - The log_message and args attributes of tornado.web.HTTPError are
+      deprecated. Use the new get_message method instead.
+
+-------------------------------------------------------------------
 Mon Nov 25 03:19:20 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.4.2: 
