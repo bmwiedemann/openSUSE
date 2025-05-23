@@ -33,6 +33,12 @@ Source:         https://github.com/openucx/ucx/releases/download/v%version%{?ver
 Patch1:         openucx-s390x-support.patch
 Patch2:         ucm-fix-UCX_MEM_MALLOC_RELOC.patch
 Patch3:         UCT-IB-UD-Use-GRH-to-detect-address-family-on-non-Mellanox-hardware.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         openucx-strict-headers.patch
+# additional strict-header fixes
+Patch5:         openucx-strict-headers-additional.patch
+# PATCH-FIX-UPSTREAM
+Patch6:         openucx-extern-c.patch
 BuildRequires:  autoconf >= 2.63
 BuildRequires:  automake >= 1.10
 BuildRequires:  binutils-devel

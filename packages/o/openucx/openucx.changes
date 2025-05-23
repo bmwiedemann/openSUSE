@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  2 14:16:35 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add openucx-strict-headers.patch and openucx-extern-c.patch from
+  upstream and additional openucx-strict-headers-additional.patch
+  to build w/ gcc-15 (boo#1241939)
+
+-------------------------------------------------------------------
 Tue Apr  1 12:31:11 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add UCT-IB-UD-Use-GRH-to-detect-address-family-on-non-Mellanox-hardware.patch
