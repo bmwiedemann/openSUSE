@@ -16,13 +16,13 @@
 #
 
 
-%define lname libVulkanLayerSettings-1_4_309
+%define lname libVulkanLayerSettings-1_4_313
 %if 0%{?suse_version} < 1600
 %define gcc_version 13
 %endif
 
 Name:           vulkan-utility-libraries
-Version:        1.4.309
+Version:        1.4.313
 Release:        0
 Summary:        Utility libraries for Vulkan
 License:        Apache-2.0
@@ -71,8 +71,8 @@ find . -type f -name CMakeLists.txt -exec perl -i -lpe 's{\@PACKAGE_VERSION\@}{%
 
 %build
 %cmake \
-	-DCMAKE_C_COMPILER="gcc%{?gcc_version:-%{gcc_version}}" \
-	-DCMAKE_CXX_COMPILER="g++%{?gcc_version:-%{gcc_version}}"
+	-DCMAKE_C_COMPILER="gcc%{?gcc_version:-%gcc_version}" \
+	-DCMAKE_CXX_COMPILER="g++%{?gcc_version:-%gcc_version}"
 %cmake_build
 
 %install
