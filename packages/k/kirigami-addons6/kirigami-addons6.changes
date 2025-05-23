@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 20 08:54:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.8.1
+  * Add check for QDoc target
+
+-------------------------------------------------------------------
+Tue May 20 06:25:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.8.0
+  https://carlschwan.eu/2025/05/19/kirigami-addons-1.8.0/
+  * Two new form delegates: FormLinkDelegate and FormIconDelegate
+  * Added a password quality checker
+  * Improved avatar rendering
+  * Fixed several issues when using Kirigami with the QtQuick
+    software rendering backend
+
+-------------------------------------------------------------------
 Sun Jan 19 09:46:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.7.0

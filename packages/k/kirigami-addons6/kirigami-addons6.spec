@@ -23,7 +23,7 @@
 
 %define rname kirigami-addons
 Name:           kirigami-addons6
-Version:        1.7.0
+Version:        1.8.1
 Release:        0
 Summary:        Add-ons for the Kirigami framework
 License:        LGPL-3.0-only
@@ -43,6 +43,7 @@ BuildRequires:  cmake(KF6KirigamiPlatform) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Tools) >= %{qt6_version}
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       libKF6Svg6 >= %{kf6_version}
 Requires:       libKirigamiAddonsStatefulApp6 >= %{version}
@@ -94,8 +95,7 @@ Provides translations for %{name}.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-# A DBUILD_QCH option exists but does nothing
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
