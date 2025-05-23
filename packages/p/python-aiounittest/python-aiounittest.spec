@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiounittest
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,8 +26,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/kwarunek/aiounittest
 Source:         https://github.com/kwarunek/aiounittest/archive/%{version}.tar.gz#/aiounittest-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module wrapt}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,10 +49,10 @@ test of the asynchronous code (asyncio). You can test:
 %setup -q -n aiounittest-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,7 +61,7 @@ test of the asynchronous code (asyncio). You can test:
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/aiounittest-%{version}-*.egg-info/
+%{python_sitelib}/aiounittest-%{version}*-info/
 %{python_sitelib}/aiounittest
 
 %changelog
