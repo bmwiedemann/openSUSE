@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 20 07:00:09 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Fix product name missing in snapshot list (bsc#1243162)
+  * grub2-snapper-plugin.sh
+
+-------------------------------------------------------------------
+Tue May 20 03:30:52 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Fix incorrect nvme disks and boot order in bootlist output (bsc#1237174)
+  * 0001-ieee1275-support-added-for-multiple-nvme-bootpaths.patch
+
+-------------------------------------------------------------------
 Mon May  5 12:00:12 UTC 2025 - Michael Chang <mchang@suse.com>
 
 - Fix CVE-2025-4382: TPM auto-decryption data exposure (bsc#1242971)

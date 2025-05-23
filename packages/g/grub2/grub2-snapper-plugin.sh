@@ -61,7 +61,7 @@ snapshot_submenu () {
   if [ -z "$kernel_ver" -a -L ${snapshot}/boot/image ]; then
     kernel_ver=`readlink ${snapshot}/boot/image | sed -e 's/^image-//' -e 's/-default$//'`
   fi
-  eval `cat ${snapshot}/etc/os-release` 
+  [ ! -f "${snapshot}/etc/os-release" ] || source "${snapshot}/etc/os-release"
   # bsc#934252 - Replace SLES 12.1 with SLES12-SP1 for the list of snapshots
   if test "${NAME}" = "SLES" -o "${NAME}" = "SLED"; then
     VERSION=`echo ${VERSION} | sed -e 's!^\([0-9]\{1,\}\)\.\([0-9]\{1,\}\)$!\1-SP\2!'`
