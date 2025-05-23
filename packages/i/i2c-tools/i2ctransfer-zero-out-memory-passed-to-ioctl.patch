@@ -1,0 +1,50 @@
+From: Jean Delvare <jdelvare@suse.de>
+Date: Tue, 13 May 2025 17:35:39 +0200
+Subject: i2ctransfer: Zero out memory passed to ioctl()
+Git-commit: ea51da725b743da00b894dfdc4ab189f5a51e90e
+Patch-mainline: yes
+
+Valgrind complains that uninitialized memory may be passed to
+ioctl():
+
+== Syscall param ioctl(I2C_RDWR) points to uninitialised byte(s)
+==    at 0x499382B: ioctl (in /lib64/libc.so.6)
+==    by 0x401957: main (i2ctransfer.c:343)
+==  Address 0x1ffefff94c is on thread 1's stack
+==  in frame #1, created by main (i2ctransfer.c:144)
+==
+== Syscall param ioctl(I2C_RDWR).msgs points to uninitialised byte(s)
+==    at 0x499382B: ioctl (in /lib64/libc.so.6)
+==    by 0x401957: main (i2ctransfer.c:343)
+==  Address 0x1ffefff956 is on thread 1's stack
+==  in frame #1, created by main (i2ctransfer.c:144)
+
+Zero out the i2c_rdwr_ioctl_data struct as well as the msgs array to
+guarantee that no uninitialized memory will ever be passed to the
+kernel.
+
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+
+diff --git a/tools/i2ctransfer.c b/tools/i2ctransfer.c
+index 8d40b49ba80e..4db98e3593a0 100644
+--- a/tools/i2ctransfer.c
++++ b/tools/i2ctransfer.c
+@@ -149,8 +149,7 @@ int main(int argc, char *argv[])
+ 	enum parse_state state = PARSE_GET_DESC;
+ 	unsigned int buf_idx = 0;
+ 
+-	for (i = 0; i < I2C_RDRW_IOCTL_MAX_MSGS; i++)
+-		msgs[i].buf = NULL;
++	memset(msgs, 0, sizeof(msgs));
+ 
+ 	/* handle (optional) flags first */
+ 	while ((opt = getopt(argc, argv, "abfhvVy")) != -1) {
+@@ -334,6 +333,7 @@ int main(int argc, char *argv[])
+ 		struct i2c_rdwr_ioctl_data rdwr;
+ 		unsigned int print_flags = PRINT_READ_BUF;
+ 
++		memset(&rdwr, 0, sizeof(rdwr));
+ 		rdwr.msgs = msgs;
+ 		rdwr.nmsgs = nmsgs;
+ 		nmsgs_sent = ioctl(file, I2C_RDWR, &rdwr);

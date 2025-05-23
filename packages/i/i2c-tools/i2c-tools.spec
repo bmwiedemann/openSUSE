@@ -1,7 +1,7 @@
 #
 # spec file for package i2c-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,10 @@ URL:            https://i2c.wiki.kernel.org/index.php/I2C_Tools
 Source0:        https://www.kernel.org/pub/software/utils/i2c-tools/%{name}-%{version}.tar.xz
 Source1:        https://www.kernel.org/pub/software/utils/i2c-tools/%{name}-%{version}.tar.sign
 Source2:        i2c-tools.keyring
+Patch1:         i2ctransfer-dont-link-with-libi2c.patch
+Patch2:         i2ctransfer-dont-free-memory-which-was-never-allocated.patch
+Patch3:         i2ctransfer-prevent-msgs-overflow-with-many-parameters.patch
+Patch4:         i2ctransfer-zero-out-memory-passed-to-ioctl.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
@@ -79,7 +83,7 @@ Python binding part.
 %endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}" CC="%{__cc}" BUILD_STATIC_LIB:=0

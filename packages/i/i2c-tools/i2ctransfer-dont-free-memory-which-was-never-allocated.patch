@@ -1,0 +1,42 @@
+From: Jean Delvare <jdelvare@suse.de>
+Date: Tue, 13 May 2025 17:21:19 +0200
+Subject: i2ctransfer: Don't free memory which was never allocated
+Git-commit: 4102d1e66e7d01414e2c6fcbe3918ef6727dc755
+Patch-mainline: yes
+References: bko#220112
+
+If an error occurs while msgs[] is been prepared for the transfer,
+we jump to the clean-up path. How many buffers need to be freed
+depends on the state. If we were parsing data, we should free up to
+nmsgs. However, if we were parsing descriptors, we should free
+up to nmsgs - 1 only. The code was unconditionally freeing up to
+nmsgs, potentially freeing a non-allocated buffer.
+
+In most cases, it was not a problem, we would simply call free() on a
+NULL pointer and that's a no-op. However, if msgs[] was full then we
+would access memory beyond its end and call free() on a random
+pointer.
+
+Fixes: 9fc53a7fc669 ("i2c-tools: add new tool 'i2ctransfer'")
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+
+diff --git a/tools/i2ctransfer.c b/tools/i2ctransfer.c
+index f204af4296c4..a0c3d0f42adc 100644
+--- a/tools/i2ctransfer.c
++++ b/tools/i2ctransfer.c
+@@ -364,7 +364,13 @@ int main(int argc, char *argv[])
+  err_out:
+ 	close(file);
+ 
+-	for (i = 0; i <= nmsgs; i++)
++	/*
++	 * If we were parsing data, the buffer for the last message was
++	 * already allocated and nmsgs still points to it.
++	 */
++	if (state == PARSE_GET_DATA)
++		free(msgs[nmsgs].buf);
++	for (i = 0; i < nmsgs; i++)
+ 		free(msgs[i].buf);
+ 
+ 	exit(1);

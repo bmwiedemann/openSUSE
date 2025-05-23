@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 19 17:03:11 UTC 2025 - Jean Delvare <jdelvare@suse.com>
+
+- i2ctransfer-dont-link-with-libi2c.patch: Don't link i2ctransfer
+  with libi2c.
+- i2ctransfer-dont-free-memory-which-was-never-allocated.patch,
+  i2ctransfer-prevent-msgs-overflow-with-many-parameters.patch:
+  Prevent a stack overflow when too many command line parameters
+  are passed to i2ctransfer (bko#220112).
+- i2ctransfer-zero-out-memory-passed-to-ioctl.patch: Sanitize the
+  memory passed to ioctl().
+
+-------------------------------------------------------------------
 Tue Oct 29 10:20:09 UTC 2024 - Jean Delvare <jdelvare@suse.com>
 
 - Replace the tarball by the exact upstream tarball to make the

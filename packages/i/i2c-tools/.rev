@@ -374,4 +374,14 @@
   checked automatically.</comment>
     <requestid>1219052</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>1f7aed10ba680e52830df7913567e1f6</srcmd5>
+    <version>4.4</version>
+    <time>1748003338</time>
+    <user>anag_factory</user>
+    <comment>- Don't link i2ctransfer with libi2c.
+- Prevent a stack overflow when too many command line parameters are passed to i2ctransfer (bko#220112).
+- i2ctransfer: Sanitize the memory passed to ioctl().</comment>
+    <requestid>1278433</requestid>
+  </revision>
 </revisionlist>

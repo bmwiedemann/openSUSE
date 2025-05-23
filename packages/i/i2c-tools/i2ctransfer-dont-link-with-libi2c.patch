@@ -1,0 +1,28 @@
+From: Jean Delvare <jdelvare@suse.de>
+Date: Tue, 13 May 2025 13:35:51 +0200
+Subject: i2ctransfer: Don't link with libi2c
+Git-commit: a22fda5ed0c84c669443794a1e02225907eb7cae
+Patch-mainline: yes
+
+i2ctransfer doesn't make use of any function from libi2c so it should
+not link with that library.
+
+Fixes: 9fc53a7fc669 ("i2c-tools: add new tool 'i2ctransfer'")
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+
+diff --git a/tools/Module.mk b/tools/Module.mk
+index f5b133db3ec8..844e6298bd79 100644
+--- a/tools/Module.mk
++++ b/tools/Module.mk
+@@ -36,8 +36,8 @@ $(TOOLS_DIR)/i2cset: $(TOOLS_DIR)/i2cset.o $(TOOLS_DIR)/i2cbusses.o $(TOOLS_DIR)
+ $(TOOLS_DIR)/i2cget: $(TOOLS_DIR)/i2cget.o $(TOOLS_DIR)/i2cbusses.o $(TOOLS_DIR)/util.o $(LIB_DEPS)
+ 	$(CC) $(LDFLAGS) -o $@ $^ $(TOOLS_LDFLAGS)
+ 
+-$(TOOLS_DIR)/i2ctransfer: $(TOOLS_DIR)/i2ctransfer.o $(TOOLS_DIR)/i2cbusses.o $(TOOLS_DIR)/util.o $(LIB_DEPS)
+-	$(CC) $(LDFLAGS) -o $@ $^ $(TOOLS_LDFLAGS)
++$(TOOLS_DIR)/i2ctransfer: $(TOOLS_DIR)/i2ctransfer.o $(TOOLS_DIR)/i2cbusses.o $(TOOLS_DIR)/util.o
++	$(CC) $(LDFLAGS) -o $@ $^
+ 
+ #
+ # Objects

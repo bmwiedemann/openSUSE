@@ -1,0 +1,33 @@
+From: Jean Delvare <jdelvare@suse.de>
+Date: Tue, 13 May 2025 17:23:30 +0200
+Subject: i2ctransfer: Prevent msgs[] overflow with many parameters
+Git-commit: 93fedbd9da2289674b51a3c982ea5cd3fd3f213c
+Patch-mainline: yes
+References: bko#220112
+
+There's an off-by-one bug in the message count check to ensure that we
+do not process more messages than the kernel allows. nmsgs points to
+the index within msgs[] which would be used for the _next_ message. If
+this index is equal the maximum number of messages then we must stop
+already.
+
+This closes bug #220112:
+https://bugzilla.kernel.org/show_bug.cgi?id=220112
+
+Fixes: 9fc53a7fc669 ("i2c-tools: add new tool 'i2ctransfer'")
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+
+diff --git a/tools/i2ctransfer.c b/tools/i2ctransfer.c
+index a0c3d0f42adc..8d40b49ba80e 100644
+--- a/tools/i2ctransfer.c
++++ b/tools/i2ctransfer.c
+@@ -193,7 +193,7 @@ int main(int argc, char *argv[])
+ 		__u8 data, *buf;
+ 		char *end;
+ 
+-		if (nmsgs > I2C_RDRW_IOCTL_MAX_MSGS) {
++		if (nmsgs == I2C_RDRW_IOCTL_MAX_MSGS) {
+ 			fprintf(stderr, "Error: Too many messages (max: %d)\n",
+ 				I2C_RDRW_IOCTL_MAX_MSGS);
+ 			goto err_out;
