@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 15 05:35:28 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.12.0 (3.012)
+   see /usr/share/doc/packages/perl-Business-ISBN/Changes
+
+  3.012 2025-04-14T18:53:47Z
+  	* require a newer version.pm for v5.10.1 tests
+
+-------------------------------------------------------------------
 Sat Jan  4 05:29:57 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.11.0 (3.011)
