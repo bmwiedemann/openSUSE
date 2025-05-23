@@ -133,4 +133,14 @@ I tested the upgrade path and this will not break anybody relying on the package
 </comment>
     <requestid>1273508</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>644707c1fec8de32bc7b4b04316f0915</srcmd5>
+    <version>0.15.3</version>
+    <time>1748003238</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-click-8.2.patch:
+  * Support both click 8.1 and 8.2.
+- Switch to autosetup macros.</comment>
+    <requestid>1277915</requestid>
+  </revision>
 </revisionlist>
