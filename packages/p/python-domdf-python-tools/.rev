@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1202870</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>acecd4310f85483a5a0392ac37e31ed5</srcmd5>
+    <version>3.10.0</version>
+    <time>1748003227</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.10.0:
+  * Switch build backend to hatch.</comment>
+    <requestid>1277019</requestid>
+  </revision>
 </revisionlist>

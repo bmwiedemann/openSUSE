@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 13 06:42:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.10.0:
+  * Switch build backend to hatch.
+
+-------------------------------------------------------------------
 Mon Sep 23 15:16:05 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
