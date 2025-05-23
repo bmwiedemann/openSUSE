@@ -87,4 +87,15 @@
   * Resolve -Wsign-conversion warnings from clang</comment>
     <requestid>1040070</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c2cc1ac4f4fc533f079b9d9759ff7aaf</srcmd5>
+    <version>1.0.9</version>
+    <time>1748003340</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.9
+  * meson: Add option to build with meson
+  * Improve man page formatting
+- switch to meson build</comment>
+    <requestid>1278435</requestid>
+  </revision>
 </revisionlist>

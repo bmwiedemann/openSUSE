@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 19 18:35:57 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.9
+  * meson: Add option to build with meson
+  * Improve man page formatting
+- switch to meson build 
+
+-------------------------------------------------------------------
 Sun Dec  4 21:33:20 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.8
