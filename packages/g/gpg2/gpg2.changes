@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 13 19:47:52 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Don't install expired sks certificate [bsc#1243069]
+  * Add patch gnupg-dirmngr-Don-t-install-expired-sks-certificate.patch
+- Revert old max-cache-ttl behavior [bsc#1241656]
+  * Add patch gnupg-agent-Recover-the-old-behavior-with-max-cache-ttl-0.patch
+
+-------------------------------------------------------------------
 Thu May  8 16:39:41 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 2.5.6:
