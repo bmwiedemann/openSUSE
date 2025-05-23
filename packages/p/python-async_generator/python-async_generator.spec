@@ -1,7 +1,7 @@
 #
 # spec file for package python-async_generator
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-async_generator
 Version:        1.10
@@ -27,8 +25,10 @@ License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/python-trio/async_generator
 Source:         https://files.pythonhosted.org/packages/source/a/async_generator/async_generator-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -42,10 +42,10 @@ tools to make them usable, like contextlib.asynccontextmanager.
 %setup -q -n async_generator-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
