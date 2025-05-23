@@ -1396,4 +1396,12 @@
     <comment></comment>
     <requestid>1195154</requestid>
   </revision>
+  <revision rev="186" vrev="2">
+    <srcmd5>acf59bc9a6eab783dfa0cc64e18b52b7</srcmd5>
+    <version>44.1</version>
+    <time>1748003302</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in old changelog entries (forwarded request 1277775 from dimstar)</comment>
+    <requestid>1278236</requestid>
+  </revision>
 </revisionlist>
