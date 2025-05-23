@@ -895,4 +895,13 @@
     <comment>KDE release gear 25.04.1</comment>
     <requestid>1275683</requestid>
   </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>44a4ebe1fe9bdfb7d86147b3bd585169</srcmd5>
+    <version>25.04.1</version>
+    <time>1748003333</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream change (kde#473847)
+  * 0001-todoviewsortfilterproxymodel.cpp-fix-regression-in-f.patch</comment>
+    <requestid>1278390</requestid>
+  </revision>
 </revisionlist>
