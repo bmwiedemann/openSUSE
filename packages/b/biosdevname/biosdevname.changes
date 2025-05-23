@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 16 10:00:27 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix changelog format: the line immediately after the dashed line
+  is supposed to be the header with date/author info.
+
+-------------------------------------------------------------------
 Tue Feb 27 21:56:34 UTC 2024 - Thomas Renninger <trenn@suse.de>
 
 - Binary is in /usr/sbin not /sbin
@@ -342,4 +348,3 @@ Mon Sep  3 00:00:00 CEST 2007 - bwalle@suse.de
 
 - initial package for SUSE (209107, FATE 301528)
 
--------------------------------------------------------------------

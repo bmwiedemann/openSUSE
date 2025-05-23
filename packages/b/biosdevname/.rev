@@ -415,4 +415,12 @@ D    dmidecode-prevent-infinite-recursion.patch</comment>
     <comment></comment>
     <requestid>1154679</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>5b8e6f206676eece281bf09d034ca2ea</srcmd5>
+    <version>0.7.3.7.g495ab76</version>
+    <time>1748003344</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1278552</requestid>
+  </revision>
 </revisionlist>
