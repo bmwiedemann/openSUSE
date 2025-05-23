@@ -36,6 +36,10 @@ Source:         %{name}-%{version}%{git_ver}.tar.bz2
 Source1:        baselibs.conf
 Patch0:         libfabric-libtool.patch
 Patch1:         psm3-prevent-code-from-building-using-AVX-AVX2.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         libfabric-2.0.0-gcc15.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         libfabric-2.0.0-gcc15-part2.patch
 URL:            http://www.github.com/ofiwg/libfabric
 BuildRequires:  autoconf
 BuildRequires:  automake

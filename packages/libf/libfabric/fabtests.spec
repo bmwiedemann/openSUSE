@@ -29,6 +29,10 @@ Source:         libfabric-%{version}%{git_ver}.tar.bz2
 Source1:        fabtests-rpmlintrc
 Patch0:         libfabric-libtool.patch
 Patch1:         psm3-prevent-code-from-building-using-AVX-AVX2.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         libfabric-2.0.0-gcc15.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         libfabric-2.0.0-gcc15-part2.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libfabric-devel = %{version}
