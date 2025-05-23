@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 18 04:30:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.313.0
+  * Generate padding fields in VolkDeviceTable to preserve ABI
+  * Regenerated volk.h with padding fields
+
+-------------------------------------------------------------------
 Thu Mar 13 17:21:42 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.309.0
