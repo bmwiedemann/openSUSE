@@ -77,4 +77,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * amd_pmf: Update AMD PMF TA Firmware to v3.1</comment>
     <requestid>1276105</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6c26087acf24f058faf8199e7b39f42e</srcmd5>
+    <version>20250516</version>
+    <time>1748003387</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250516 (git commit 759c4acafb4a):
+  * powervr: add firmware for Imagination Technologies BXS-4-64 GPU
+  * cnm: update chips&amp;media wave521c firmware.</comment>
+    <requestid>1278692</requestid>
+  </revision>
 </revisionlist>
