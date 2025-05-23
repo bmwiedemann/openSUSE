@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 21 05:42:04 MDT 2025 - carnold@suse.com
+
+- Update to version 1.55.13 (jsc#PED-12706)
+  * appliance: Remove zfs-fuse
+  * Various updates to common submodule
+  * ocaml-dep.sh.in: Remove mlgettext subdirectory
+  * New API: Replace btrfs-fsck with btrfs-scrub-full
+  * daemon: Implement e2fsck -n flag (as FORCENO option)
+
+-------------------------------------------------------------------
 Tue May 13 11:48:35 MDT 2025 - carnold@suse.com
 
 - Update to version 1.55.11 (jsc#PED-12706)
