@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Package-Stash-XS
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,22 @@
 
 %define cpan_name Package-Stash-XS
 Name:           perl-Package-Stash-XS
-Version:        0.30
+Version:        0.300.0
 Release:        0
+# 0.30 -> normalize -> 0.300.0
+%define cpan_version 0.30
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Faster and more correct implementation of the Package::Stash API
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Needs)
+Provides:       perl(Package::Stash::XS) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -38,7 +42,7 @@ way that's less buggy and much faster. It will be used by default if it's
 installed, and should be preferred in all environments with a compiler.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
