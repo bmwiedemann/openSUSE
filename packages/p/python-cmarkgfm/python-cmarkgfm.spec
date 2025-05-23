@@ -1,7 +1,7 @@
 #
 # spec file for package python-cmarkgfm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,14 +29,15 @@ Source:         https://files.pythonhosted.org/packages/source/c/cmarkgfm/cmarkg
 Patch0:         cmark-gfm-13.patch
 BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-cffi >= 1.0.0
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-cffi >= 1.0.0
-
 %python_subpackages
 
 %description
@@ -49,10 +50,10 @@ chmod a-x LICENSE.txt README.rst
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 find %{buildroot} -type f -name "*.h" -delete -print
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
