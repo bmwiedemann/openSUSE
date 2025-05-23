@@ -898,4 +898,12 @@ Should be copied to 12.2 if possible (it actually makes the bt stack work) (forw
     <comment></comment>
     <requestid>1206268</requestid>
   </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>d21159e00b3afbeaa9f89d2f2e63d2a5</srcmd5>
+    <version>47.1</version>
+    <time>1748003282</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in old changelog entries (forwarded request 1277772 from dimstar)</comment>
+    <requestid>1277951</requestid>
+  </revision>
 </revisionlist>
