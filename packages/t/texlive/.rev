@@ -1261,4 +1261,12 @@
 - Make build also for Leap 15.6</comment>
     <requestid>1275502</requestid>
   </revision>
+  <revision rev="104" vrev="107">
+    <srcmd5>777da9b69e59b4b1ed88d660373c169d</srcmd5>
+    <version>unknown</version>
+    <time>1748003370</time>
+    <user>anag_factory</user>
+    <comment>- disabled osmesa support, which has been removed with Mesa 25.1.0</comment>
+    <requestid>1277961</requestid>
+  </revision>
 </revisionlist>

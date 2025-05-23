@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 11 08:25:32 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- disabled osmesa support, which has been removed with Mesa 25.1.0 
+
+-------------------------------------------------------------------
 Thu May 08 10:27:23 CEST 2025 - Arvin Schnell <aschnell@suse.com>
 
 - Add patch boost.dif

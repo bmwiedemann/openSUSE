@@ -173,7 +173,9 @@ BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(libcurl)
+%if 0%{?suse_version} < 1699
 BuildRequires:  pkgconfig(osmesa)
+%endif
 #BuildRequires:  pkgconfig(glm)
 BuildRequires:  glm-devel
 BuildRequires:  pkgconfig(glu)
