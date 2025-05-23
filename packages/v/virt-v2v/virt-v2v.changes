@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed May 21 05:36:08 MDT 2025 - carnold@suse.com
+
+- Update to virt-v2v 2.7.16 (jsc#PED-12706)
+  * input: vddk: Use single nbdkit-vddk-plugin instance with
+    exports
+  * v2v: Generate --machine-readable list of input and output modes
+  * convert; Run a filesystem check before and after conversion
+  * Various documentation updates
+
+-------------------------------------------------------------------
+Tue May 13 11:17:58 MDT 2025 - carnold@suse.com
+
+- Update to virt-v2v 2.7.15 (jsc#PED-12706)
+  * bash: Replace 'cp -d' command with POSIX 'cp -P'
+  * ocaml-link.sh.in: Remove redundant use of getopt
+  * lib/libvirt_utils.ml: Turn live domain error into a warning
+  * convert: flush output after printing debug information
+  * convert: Print more readable mountpoint stats
+  * input: Add undocumented -io vddk-noextents=true option
+  * v2v: Remove --vddk-*, --vdsm-*, --compressed, --qemu-boot
+    compat options
+  * v2v: Remove --no-trim and --vmtype options
+  * v2v: Remove --password-file option
+  * input: Add -io vddk-file=... option
+  * Add new virt-v2v-open tool
+  * Rename -o rhv -> -o ovirt, and -o rhv-upload -> -o ovirt-upload
+  * Update common submodule with various modifications
+  * -o libvirt: Use Output.disk_path to form the output disk name
+  * input: vddk: Only ask for a password once
+
+-------------------------------------------------------------------
 Wed Apr 16 12:54:26 MDT 2025 - carnold@suse.com
 
 - Update to virt-v2v 2.7.12 (jsc#PED-8910)
