@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 8d82acd29b5c115f0b75b17907ebce712c6f2e22
+%define git_version 759c4acafb4a80d76885e4a1542229a27d677322
 
 Name:           kernel-firmware-bluetooth
-Version:        20250425
+Version:        20250516
 Release:        0
 Summary:        Kernel firmware files for various Bluetooth drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware

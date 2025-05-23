@@ -111,4 +111,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtl_bt: Update RTL8852B BT USB FW to 0x098B_154B</comment>
     <requestid>1276101</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>88fd3f7c12ddd3892965a76b6f5de8ae</srcmd5>
+    <version>20250516</version>
+    <time>1748003384</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250516 (git commit 759c4acafb4a):
+  * rtl_bt: Update RTL8822C BT USB and UART firmware to 0x7C20</comment>
+    <requestid>1278689</requestid>
+  </revision>
 </revisionlist>

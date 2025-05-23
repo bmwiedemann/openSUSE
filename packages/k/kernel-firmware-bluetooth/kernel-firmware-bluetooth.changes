@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 19 19:09:03 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250516 (git commit 759c4acafb4a):
+  * rtl_bt: Update RTL8822C BT USB and UART firmware to 0x7C20
+
+-------------------------------------------------------------------
 Mon Apr 28 07:29:27 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250425 (git commit 8d82acd29b5c):
@@ -5298,7 +5304,6 @@ Wed Nov 24 20:02:38 UTC 2010 - coolo@novell.com
 - update to 20101113 tarball for 2.6.36+ kernel
 
 -------------------------------------------------------------------
-
 Thu Jul  1 17:11:34 UTC 2010 - gregkh@suse.de
 
 - update to the 20100617 tarball, which has lots of updates that
