@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Path-Class
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,36 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Path-Class
-Version:        0.37
-Release:        0
 %define cpan_name Path-Class
+Name:           perl-Path-Class
+Version:        0.370.0
+Release:        0
+# 0.37 -> normalize -> 0.370.0
+%define cpan_version 0.37
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Cross-platform path specification manipulation
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Path-Class/
-Source0:        http://www.cpan.org/authors/id/K/KW/KWILLIAMS/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/K/KW/KWILLIAMS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(File::Spec) >= 3.26
-BuildRequires:  perl(Module::Build) >= 0.360100
+BuildRequires:  perl(Module::Build) >= 0.3601
 BuildRequires:  perl(Perl::OSType)
 BuildRequires:  perl(parent)
 Requires:       perl(File::Spec) >= 3.26
 Requires:       perl(Perl::OSType)
 Requires:       perl(parent)
+Provides:       perl(Path::Class) = %{version}
+Provides:       perl(Path::Class::Dir) = %{version}
+Provides:       perl(Path::Class::Entity) = %{version}
+Provides:       perl(Path::Class::File) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -88,21 +93,21 @@ Path::Class::Dir modules, so please see those modules' documentation for
 more details about how to use them.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes LICENSE README
+%doc Changes README
+%license LICENSE
 
 %changelog
