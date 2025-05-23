@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 16 06:21:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.0.2
+  * Skip testBasicSortTests in general (Kelledin)
+  * Add a TestResourceManager.id() API for letting test results
+    report about a resource identity (freeekanayaka)
+  * Refactor failIf to assertFalse for Python 3.12 Compatibility (cjwatson)
+  * Add support for Python >=3.10 (jelmer)
+- Drop use-correct-assertions.patch, merged upstream
+- Refresh testresources-flaky-tests.patch
+
+-------------------------------------------------------------------
 Wed May  8 06:37:08 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not use pytest for the testsuite, switch to %pyunittest. 

@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-testresources
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        A pyunit extension for managing expensive test resources
 License:        (Apache-2.0 OR BSD-3-Clause) AND GPL-2.0-or-later
 URL:            https://github.com/testing-cabal/testresources
 Source:         https://files.pythonhosted.org/packages/source/t/testresources/testresources-%{version}.tar.gz
 Patch0:         testresources-flaky-tests.patch
-# PATCH-FIX-UPSTREAM gh#testing-cabal/testresources#15
-Patch1:         use-correct-assertions.patch
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}

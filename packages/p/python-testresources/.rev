@@ -124,4 +124,12 @@
     <comment>- Do not use pytest for the testsuite, switch to %pyunittest.</comment>
     <requestid>1172633</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>80c43ae987456ec8dae12b9a3df09065</srcmd5>
+    <version>2.0.2</version>
+    <time>1748003242</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1278122</requestid>
+  </revision>
 </revisionlist>

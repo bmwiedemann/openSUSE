@@ -1,12 +1,11 @@
-Index: testresources-2.0.1/testresources/tests/test_optimising_test_suite.py
-===================================================================
---- testresources-2.0.1.orig/testresources/tests/test_optimising_test_suite.py
-+++ testresources-2.0.1/testresources/tests/test_optimising_test_suite.py
-@@ -498,6 +498,7 @@ class TestGraphStuff(testtools.TestCase)
+diff -Nru testresources-2.0.2.orig/testresources/tests/test_optimising_test_suite.py testresources-2.0.2/testresources/tests/test_optimising_test_suite.py
+--- testresources-2.0.2.orig/testresources/tests/test_optimising_test_suite.py	2025-04-22 12:21:27.000000000 +0200
++++ testresources-2.0.2/testresources/tests/test_optimising_test_suite.py	2025-05-16 08:21:08.834763803 +0200
+@@ -537,6 +537,7 @@
          permutations.append([case4, case1, case3, case2])
          return permutations
  
 +    @unittest.skip("too flaky")
      def testBasicSortTests(self):
+         self.skipTest("flaky, see LP #1645008")
          # Test every permutation of inputs, with legacy tests.
-         # Cannot use equal costs because of the use of
