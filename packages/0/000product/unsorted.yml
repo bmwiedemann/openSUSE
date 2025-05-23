@@ -1957,6 +1957,7 @@ unsorted:
   - cargo-audit-advisory-db 
   - cargo-auditable 
   - cargo-c 
+  - cargo-credential-oo7 
   - cargo-packaging 
   - cargo-vendor-filterer 
   - cargo1.78 
@@ -3599,6 +3600,7 @@ unsorted:
   - editorconfig-checker 
   - editres 
   - edk2-Shell 
+  - eduvpn-client 
   - ee4j 
   - eekboard-devel 
   - eeyek-fonts 
@@ -6355,6 +6357,10 @@ unsorted:
   - ghc-regex-tdfa-devel 
   - ghc-regex-tdfa-doc 
   - ghc-regex-tdfa-prof 
+  - ghc-replace-megaparsec 
+  - ghc-replace-megaparsec-devel 
+  - ghc-replace-megaparsec-doc 
+  - ghc-replace-megaparsec-prof 
   - ghc-resolv 
   - ghc-resolv-devel 
   - ghc-resolv-doc 
@@ -11008,6 +11014,7 @@ unsorted:
   - leocad 
   - leptonica-devel 
   - leptonica-tools 
+  - letsconnect-client 
   - level-zero 
   - level-zero-devel 
   - leveldb 
@@ -12714,7 +12721,7 @@ unsorted:
   - libdisplay-info-devel 
   - libdisplaydevice0_0_0 
   - libdjvulibre-devel 
-  - libdlib19_24_8 
+  - libdlib19_24_9 
   - libdlm 
   - libdlm-devel 
   - libdlm3 
@@ -12830,6 +12837,7 @@ unsorted:
   - libedit-devel 
   - libedit0-32bit 
   - libeditorconfig-devel 
+  - libeduvpn_common-3_0_0 
   - libefa1-32bit 
   - libei-devel 
   - libeiskaltdcpp2_4 
@@ -15766,6 +15774,8 @@ unsorted:
   - librest-0_7-0 
   - librest-devel 
   - librest0_7-devel 
+  - libretls-devel 
+  - libretls-libtls28 
   - libretro-gtk-2-0 
   - librevenge-devel 
   - librevenge-doc 
@@ -19971,6 +19981,9 @@ unsorted:
   - onnx-backend-test 
   - onnx-devel 
   - oo7 
+  - oo7-cli 
+  - oo7-daemon 
+  - oo7-portal 
   - ooRexx 
   - ooRexx-devel 
   - oomstaller 
@@ -22324,6 +22337,7 @@ unsorted:
   - pfstools-octave 
   - pfsview 
   - pg_comparator 
+  - pg_top 
   - pgaccess 
   - pgadmin4 
   - pgadmin4-cloud 
@@ -24948,6 +24962,8 @@ unsorted:
   - python311-editdistance-devel 
   - python311-edk2toolext 
   - python311-edk2toollib 
+  - python311-eduvpn-client 
+  - python311-eduvpn-common 
   - python311-efl 
   - python311-elastic-transport 
   - python311-elasticsearch 
@@ -28657,6 +28673,8 @@ unsorted:
   - python312-editdistance-devel 
   - python312-edk2toolext 
   - python312-edk2toollib 
+  - python312-eduvpn-client 
+  - python312-eduvpn-common 
   - python312-efl 
   - python312-elastic-transport 
   - python312-elasticsearch 
@@ -32389,6 +32407,8 @@ unsorted:
   - python313-editdistance-devel 
   - python313-edk2toolext 
   - python313-edk2toollib 
+  - python313-eduvpn-client 
+  - python313-eduvpn-common 
   - python313-efl 
   - python313-elastic-transport 
   - python313-elasticsearch 
@@ -37593,6 +37613,8 @@ unsorted:
   - termshark 
   - termsyn-bitmap-fonts 
   - terragrunt 
+  - terragrunt-bash-completion 
+  - terragrunt-zsh-completion 
   - teseq 
   - tesla-polyglot-common 
   - tesla-polyglot-common-javadoc 
