@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 21 11:47:54 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+-  [sle16][postfix] postfix service failed to start due to
+   "chmod: cannot access '/etc/postfix/virtual.lmdb': No such file or directory"
+   (bsc#1243409)
+
+-------------------------------------------------------------------
+Tue May 20 18:03:05 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- move /var/spool/mail/ to separate package (bsc#1179574)
+
+-------------------------------------------------------------------
 Thu May  8 08:08:04 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - postfix incorrect logic for the master.cf handling for tls ports

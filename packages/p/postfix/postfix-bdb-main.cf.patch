@@ -1,7 +1,5 @@
-Index: conf/main.cf
-===================================================================
---- conf/main.cf.orig
-+++ conf/main.cf
+--- conf/main.cf.orig	2025-05-21 13:20:29.531943251 +0200
++++ conf/main.cf	2025-05-21 13:30:34.282414688 +0200
 @@ -576,6 +576,7 @@ unknown_local_recipient_reject_code = 55
  #
  #smtpd_banner = $myhostname ESMTP $mail_name
@@ -10,7 +8,7 @@ Index: conf/main.cf
  
  # PARALLEL DELIVERY TO THE SAME DESTINATION
  #
-@@ -682,4 +683,165 @@ sample_directory =
+@@ -682,4 +683,160 @@ sample_directory =
  # readme_directory: The location of the Postfix README files.
  #
  readme_directory =
@@ -40,7 +38,6 @@ Index: conf/main.cf
 +masquerade_domains = 
 +masquerade_exceptions = 
 +mydestination = $myhostname, localhost.$mydomain, localhost
-+myhostname = 
 +mynetworks_style = subnet
 +relayhost = 
 +
@@ -103,9 +100,7 @@ Index: conf/main.cf
 +relay_clientcerts = 
 +#tls_random_source = dev:/dev/urandom
 +
-+smtp_use_tls = no
 +#smtp_tls_loglevel = 0
-+smtp_enforce_tls = no
 +smtp_tls_security_level = 
 +smtp_tls_CAfile = 
 +smtp_tls_CApath = 
@@ -115,9 +110,7 @@ Index: conf/main.cf
 +#smtp_tls_session_cache_timeout = 3600s
 +smtp_tls_session_cache_database = 
 +
-+smtpd_use_tls = no
 +#smtpd_tls_loglevel = 0
-+smtpd_enforce_tls = no
 +smtpd_tls_security_level = 
 +smtpd_tls_CAfile = 
 +smtpd_tls_CApath = 
@@ -148,7 +141,7 @@ Index: conf/main.cf
 +#virtual_mailbox_limit = 0
 +#virtual_mailbox_limit_inbox = no
 +#virtual_mailbox_maps = mysql:/etc/postfix/mysql_virtual_mailbox_maps.cf
-+## For dovecot LMTP replace 'virtual' with 'lmtp:unix:private/dovecot-lmtp'
++## For dovecot LMTP replace 'virtual' with 'lmtp:unix:private/lmtp-dovecot'
 +#virtual_transport = virtual
 +## Additional for quota support
 +#virtual_mailbox_limit_maps = mysql:/etc/postfix/mysql_virtual_mailbox_limit_maps.cf

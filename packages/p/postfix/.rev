@@ -2441,4 +2441,22 @@ successfully tested on Tumbleweed x86_64</comment>
   (bsc#1242822)</comment>
     <requestid>1275464</requestid>
   </revision>
+  <revision rev="253" vrev="3">
+    <srcmd5>0a79cf214fbd38a145f5f3d94ef4a113</srcmd5>
+    <version>3.10.2</version>
+    <time>1748003405</time>
+    <user>anag_factory</user>
+    <comment>-  [sle16][postfix] postfix service failed to start due to
+   &quot;chmod: cannot access '/etc/postfix/virtual.lmdb': No such file or directory&quot;
+   (bsc#1243409)
+
+- move /var/spool/mail/ to separate package (bsc#1179574)
+
+-  [sle16][postfix] postfix service failed to start due to
+   &quot;chmod: cannot access '/etc/postfix/virtual.lmdb': No such file or directory&quot;
+   (bsc#1243409)
+
+- move /var/spool/mail/ to separate package (bsc#1179574)</comment>
+    <requestid>1279040</requestid>
+  </revision>
 </revisionlist>
