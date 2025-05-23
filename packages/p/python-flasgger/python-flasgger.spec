@@ -35,6 +35,8 @@ URL:            https://github.com/flasgger/flasgger/
 Source:         https://files.pythonhosted.org/packages/source/f/flasgger/flasgger-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Based on gh#flasgger/flasgger#629
 Patch0:         remove-six.patch
+# PATCH-FIX-UPSTREAM gh#flasgger/flasgger#633
+Patch1:         support-click-8.2.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

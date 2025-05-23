@@ -110,4 +110,13 @@
   * Remove use of six.</comment>
     <requestid>1239689</requestid>
   </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>39c0cbdb54479e5d457caeba7472d2df</srcmd5>
+    <version>0.9.7.1</version>
+    <time>1748003227</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-click-8.2.patch:
+  * Support click 8.2+.</comment>
+    <requestid>1277022</requestid>
+  </revision>
 </revisionlist>
