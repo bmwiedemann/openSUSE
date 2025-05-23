@@ -2,6 +2,7 @@
 # spec file for package hiredis
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +17,9 @@
 #
 
 
-%global libname lib%{name}1_1_0
+%global libname lib%{name}1_3_0
 Name:           hiredis
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Minimalistic C client for Redis
 License:        BSD-3-Clause
@@ -72,8 +73,7 @@ install -m 0755 %{name}-test %{buildroot}%{_bindir}
 
 find %{buildroot} -type f -name '*.a' -delete
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %license COPYING
