@@ -86,4 +86,15 @@
 </comment>
     <requestid>1156578</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d97910229eeb8f28ac487fccf10c1833</srcmd5>
+    <version>1.205.0</version>
+    <time>1748003402</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.205.0 (1.205)
+   see /usr/share/doc/packages/perl-Business-ISMN/Changes
+  1.205 2025-04-13T22:56:31Z
+  	* require a newer version.pm for v5.10.1 tests (forwarded request 1278593 from tinita)</comment>
+    <requestid>1279035</requestid>
+  </revision>
 </revisionlist>
