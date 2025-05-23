@@ -159,4 +159,15 @@ After this PR, there will be a delete request for kernel-firmware.
     (bsc#1243030)</comment>
     <requestid>1277005</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c2b5556dcf230b863df0e94d68ca84df</srcmd5>
+    <version>20250521</version>
+    <time>1748003408</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250521 (git commit 3fbaee2775a4):
+  * cirrus: cs35l41: Fix firmware links for several ASUS laptops
+  * cirrus: cs35l41: Add Firmware for various HP Agusta Laptops using CS35L41 HDA
+  * cirrus: cs35l41: Add Firmware for various ACER Laptops using CS35L41 HDA</comment>
+    <requestid>1279110</requestid>
+  </revision>
 </revisionlist>

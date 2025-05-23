@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 21 20:44:47 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250521 (git commit 3fbaee2775a4):
+  * cirrus: cs35l41: Fix firmware links for several ASUS laptops
+  * cirrus: cs35l41: Add Firmware for various HP Agusta Laptops using CS35L41 HDA
+  * cirrus: cs35l41: Add Firmware for various ACER Laptops using CS35L41 HDA
+
+-------------------------------------------------------------------
 Tue May 13 05:13:45 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250512 (git commit 9f8e520fd736):
@@ -5345,7 +5353,6 @@ Wed Nov 24 20:02:38 UTC 2010 - coolo@novell.com
 - update to 20101113 tarball for 2.6.36+ kernel
 
 -------------------------------------------------------------------
-
 Thu Jul  1 17:11:34 UTC 2010 - gregkh@suse.de
 
 - update to the 20100617 tarball, which has lots of updates that
