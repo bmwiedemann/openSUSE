@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 21 05:23:25 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird ESR 128.0.2
+  MFSA 2025-40 (boo#1243303)
+  * CVE-2025-4918 (bmo#1966612)
+    Out-of-bounds access when resolving Promise objects
+  * CVE-2025-4919 (bmo#1966614)
+    Out-of-bounds access when optimizing linear sums
+  * Messages could not be viewed if the profile used a UNC path
+  * Visual and UX improvements
+
+-------------------------------------------------------------------
 Thu May 15 17:11:50 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Thunderbird ESR 128.10.1:
