@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May  3 05:34:24 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.86.0 (0.086)
+   see /usr/share/doc/packages/perl-CryptX/Changes
+
+  0.086   2025-05-02
+          - fixe #118 Syncing with recent Math-BigInt
+          - bundled libtomcrypt update branch:develop (commit:3905c289 2025-04-23)
+
+-------------------------------------------------------------------
 Sun Feb  9 05:30:11 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.85.0 (0.085)
