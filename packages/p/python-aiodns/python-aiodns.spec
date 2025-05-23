@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiodns
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,6 @@
 
 # DNS tests won't work in OBS
 %bcond_with tests
-
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-aiodns
 Version:        3.2.0
@@ -29,16 +27,17 @@ License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/saghul/aiodns/releases
 Source0:        https://github.com/saghul/aiodns/archive/refs/tags/v%{version}.tar.gz#/aiodns-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-Requires:       python-pycares >= 4.0.0
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-pycares >= 4.0.0
+BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  %{python_module pycares}
 BuildRequires:  python-typing
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -48,10 +47,10 @@ Simple DNS resolver for asyncio module.
 %autosetup -p1 -n aiodns-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/aiodns/
 
 %if %{with tests}
@@ -62,6 +61,7 @@ Simple DNS resolver for asyncio module.
 %files %{python_files}
 %doc ChangeLog README.rst
 %license LICENSE
-%{python_sitelib}/aiodns*
+%{python_sitelib}/aiodns
+%{python_sitelib}/aiodns-%{version}*-info
 
 %changelog

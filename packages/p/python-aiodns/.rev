@@ -109,4 +109,12 @@ for me important as dependency for XMPP client poezio, which is 7 years outdated
   * Add support for getnameinfo</comment>
     <requestid>1164066</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>312f1a09c958db1d0d86a49feb0a7621</srcmd5>
+    <version>3.2.0</version>
+    <time>1748003229</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1277076</requestid>
+  </revision>
 </revisionlist>
