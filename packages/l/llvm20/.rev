@@ -63,4 +63,17 @@
 - Rebase llvm-do-not-install-static-libraries.patch.</comment>
     <requestid>1274226</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>17b643a5d26d9d344513c51455c815e1</srcmd5>
+    <version>20.1.5</version>
+    <time>1748003312</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20.1.5.
+  * This release contains bug-fixes for the LLVM 20.1.0 release.
+    This release is API and ABI compatible with 20.1.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Add llvm-fix-hexagon-test.patch to fix failing test.
+- Enable build of libc++ for ppc64le</comment>
+    <requestid>1278295</requestid>
+  </revision>
 </revisionlist>

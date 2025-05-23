@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May 18 12:00:54 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 20.1.5.
+  * This release contains bug-fixes for the LLVM 20.1.0 release.
+    This release is API and ABI compatible with 20.1.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Add llvm-fix-hexagon-test.patch to fix failing test.
+
+-------------------------------------------------------------------
+Tue May 13 13:38:32 CEST 2025 - Ruediger Oertel <ro@suse.de>
+
+- Enable build of libc++ for ppc64le
+
+-------------------------------------------------------------------
 Sat May  3 21:35:33 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 20.1.4.

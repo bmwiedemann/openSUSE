@@ -19,7 +19,7 @@
 %global _sonum  20
 %global _minor  %{_sonum}.1
 %global _soname %{_minor}%{?_rc:-rc%_rc}
-%global _patch_level 4
+%global _patch_level 5
 %global _relver %{_minor}.%{_patch_level}
 %global _version %_relver%{?_rc:-rc%_rc}
 %global _itsme20 1
@@ -28,7 +28,7 @@
 %global _soclang 13
 %global _socxx  1
 
-%ifarch x86_64 aarch64 %arm riscv64
+%ifarch x86_64 aarch64 %arm riscv64 ppc64le
 %bcond_without libcxx
 %else
 %bcond_with libcxx
@@ -444,6 +444,8 @@ Patch25:        check-no-llvm-exegesis.patch
 Patch27:        clang-fix-openmp-test.patch
 # PATCH-FIX-UPSTREAM: Fix test with x87 floating-point.
 Patch28:        llvm-fix-cov-test-i586.patch
+# PATCH-FIX-UPSTREAM: Fix test pfalse-v4i1.ll
+Patch29:        llvm-fix-hexagon-test.patch
 BuildRequires:  %{python_pkg}-base >= 3.8
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
@@ -885,6 +887,7 @@ This package contains the development files for Polly.
 %patch -P 24 -p1
 %patch -P 25 -p2
 %patch -P 28 -p2
+%patch -P 29 -p2
 
 pushd clang-%{_version}.src
 %patch -P 2 -p1
