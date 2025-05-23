@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 18 04:25:29 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.313.0
+  * New extensions: VK_EXT_fragment_density_map_offset,
+    VK_KHR_shader_bfloat16, VK_NV_external_compute_queue_vendor,
+    VK_QCOM_tile_shading.
+
+-------------------------------------------------------------------
 Thu Mar 13 16:26:58 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.309.0
