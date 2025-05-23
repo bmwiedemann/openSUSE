@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 17 15:21:55 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 3.0.0:
+  * Add Wayland compatibility
+  * Added command-line option for saving screenshot and exiting
+    without showing window.
+  * Show the window on the screen with cursor under X11
+  * Fixed 2 old X11 bugs in auto-saving and --minimized
+    command-line option
+  * Use LXQt build tools for compilation
+  * GUI Cleanup
+
+-------------------------------------------------------------------
 Thu Apr 17 22:19:13 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.10.0:
