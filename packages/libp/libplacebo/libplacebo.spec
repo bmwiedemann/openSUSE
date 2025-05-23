@@ -16,12 +16,12 @@
 #
 
 
-%define sover   349
+%define sover   351
 %if 0%{?suse_version} < 1600
 %define py_min_ver 11
 %endif
 Name:           libplacebo
-Version:        7.349.0
+Version:        7.351.0
 Release:        0
 Summary:        Library for GPU-accelerated video/image rendering primitives
 License:        LGPL-2.1-or-later

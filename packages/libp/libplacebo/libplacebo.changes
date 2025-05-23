@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 21 22:46:00 UTC 2025 - llyyr <llyyr@yukari.in>
+
+- Update libplacebo to version 7.351.0. See details in:
+    https://code.videolan.org/videolan/libplacebo/-/tags/v7.351.0
+
+-------------------------------------------------------------------
 Thu Apr 17 08:39:44 UTC 2025 - llyyr <llyyr@yukari.in>
 
 - Use python3-Jinja2 and python3-glad2 for BuildRequires instead of
