@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue May 20 16:14:35 MDT 2025 - carnold@suse.com
+
+- Update to version 1.54.0 (jsc#PED-12706)
+  * bash: Replace 'cp -d' command with POSIX 'cp -P'
+  * ocaml-link.sh.in: Remove redundant use of getopt
+  * mltools: decouple and simplify osinfo device support checks
+  * mlcustomize: disable `--inject-virtio-win osinfo`
+  * mltools: Unreference various objects
+  * Revert "mltools: Unreference various objects"
+  * mltools: Fix memory leak in OCaml binding of libosinfo
+  * mlstdutils: Implement String.implode
+  * mlstdutils: Add List.make function
+  * mltools: Fix spelling mistake
+  * mlstdutils: Add List.same function
+  * mlstdutils: Modify List.take, List.drop to match OCaml 5.3
+  * mlstdutils: Rename List.dropwhile -> drop_while, takewhile -> take_while
+  * mlstdutils: Add List.last function
+  * mlstdutils: Move List module first
+  * mlstdutils: Add String.common_prefix, longest_common_prefix
+  * mlstdutils: Remove Std_utils.identity
+  * mlstdutils: Remove Std_utils.protect
+  * mlstdutils: Remove List.filter_map
+  * mlstdutils: Fix comment that still referred to the old function names
+  * mldrivers: Link to gettext-stub if ocaml-gettext is enabled
+  * mlstdutils: Rename String.is_prefix -> starts_with, is_suffix -> ends_with
+
+-------------------------------------------------------------------
 Thu Apr  3 11:36:44 MDT 2025 - carnold@suse.com
 
 - Update to version 1.53.9 (jsc#PED-8910)

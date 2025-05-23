@@ -207,4 +207,12 @@
     <comment>Update guestfs-tools to version 1.53.9</comment>
     <requestid>1266968</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>55a4205b49b7c5487e67e3eb6b1f41e3</srcmd5>
+    <version>1.54.0</version>
+    <time>1748003469</time>
+    <user>anag_factory</user>
+    <comment>Update guestfs-tools to version 1.54.0</comment>
+    <requestid>1279329</requestid>
+  </revision>
 </revisionlist>

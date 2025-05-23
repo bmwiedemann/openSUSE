@@ -20,8 +20,8 @@
 %global patches_touch_autotools 1
 
 # The source directory.
-###%global source_directory 1.52-stable
-%global source_directory 1.53-development
+%global source_directory 1.54-stable
+####%global source_directory 1.53-development
 
 #
 %define guestfs_docdir %{_defaultdocdir}/%{name}
@@ -31,7 +31,7 @@
 
 Summary:        Tools to access and modify virtual machine disk images
 Name:           guestfs-tools
-Version:        1.53.9
+Version:        1.54.0
 Release:        0
 License:        GPL-2.0-or-later
 
