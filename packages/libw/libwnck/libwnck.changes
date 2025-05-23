@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Tue May 20 08:28:45 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add libwnck-fix-compiler-error.patch: Fix declaration after label
+  error reported by compiler. (glgo#GNOME/libwnck!67)
+
+-------------------------------------------------------------------
 Tue Jan 14 19:11:38 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 43.2:
+- Update to version 43.2 (bsc#1241297):
   + Add WnckHandle to the docs.
   + Add missing build dependency.
   + Do not restore original event mask.

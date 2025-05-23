@@ -24,6 +24,8 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://git.gnome.org/browse/libwnck
 Source0:        %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM libwnck-fix-compiler-error.patch glgo#GNOME/libwnck!67 alynx.zhou@suse.com -- Fix declaration after label error
+Patch0:         libwnck-fix-compiler-error.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
@@ -33,6 +35,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xres)
 
 %description
