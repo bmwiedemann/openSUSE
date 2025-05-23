@@ -1,7 +1,7 @@
 #
 # spec file for package sessreg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           sessreg
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Utility to manage utmp/wtmp entries for X sessions
 License:        MIT
 Group:          System/X11/Utilities
 URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(xorg-macros) >= 1.4
 BuildRequires:  pkgconfig(xproto) >= 7.0.25
@@ -42,12 +41,11 @@ other display managers such as gdm or kdm.
 %setup -q
 
 %build
-autoreconf -fi
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %defattr(-,root,root)

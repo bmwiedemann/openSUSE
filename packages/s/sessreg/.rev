@@ -122,4 +122,18 @@
   * Fix -Wstringop-truncation warnings in safe_strncpy()</comment>
     <requestid>1032262</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f680a5ae50401710de2d0caf7fce0990</srcmd5>
+    <version>1.1.4</version>
+    <time>1748003311</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.4
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * meson: Add option to build with meson
+  * Add --help and --version options
+  * Improve man page formatting
+  * man pages: fix warnings from `mandoc -T lint` and `groff -rCHECKSTYLE=10`
+- switch to meson build</comment>
+    <requestid>1278289</requestid>
+  </revision>
 </revisionlist>

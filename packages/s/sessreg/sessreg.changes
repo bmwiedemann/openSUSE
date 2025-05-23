@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 18 19:38:32 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.4
+  * Remove "All rights reserved" from Oracle copyright notices
+  * meson: Add option to build with meson
+  * Add --help and --version options
+  * Improve man page formatting
+  * man pages: fix warnings from `mandoc -T lint` and `groff -rCHECKSTYLE=10`
+- switch to meson build
+
+-------------------------------------------------------------------
 Sat Oct 29 20:36:21 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.3
