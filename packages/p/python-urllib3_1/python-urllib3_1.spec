@@ -1,7 +1,7 @@
 #
 # spec file for package python-urllib3_1
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -131,6 +131,8 @@ skiplist="test_ssl_read_timeout or test_ssl_failed_fingerprint_verification or t
 skiplist+=" or test_recent_date"
 # too slow to run in obs (checks 2GiB of data)
 skiplist+=" or test_requesting_large_resources_via_ssl"
+# Latest tornado raises an exception on bad header so this test fails
+skiplist+=" or test_skip_header"
 # Python 3.12: SSL requests to localhost hang during handshake
 python312_skip=" or TestClientCerts or TestSSL or test_cannot_import_ssl or (TestProxyManager and test_connect)"
 %pytest -k "not (${skiplist} ${$python_skip})"  --no-success-flaky-report

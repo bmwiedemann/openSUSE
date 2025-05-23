@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 19 07:29:03 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip some test that fails with latest python-tornado
+
+-------------------------------------------------------------------
 Tue Sep 10 06:30:59 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.26.20:

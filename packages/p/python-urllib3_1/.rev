@@ -94,4 +94,12 @@
   * No longer required.</comment>
     <requestid>1199801</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1404d7dd72b03f897881bb28d18b0663</srcmd5>
+    <version>1.26.20</version>
+    <time>1748003247</time>
+    <user>anag_factory</user>
+    <comment>- Skip some test that fails with latest python-tornado</comment>
+    <requestid>1278319</requestid>
+  </revision>
 </revisionlist>
