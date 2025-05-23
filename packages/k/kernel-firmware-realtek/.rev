@@ -75,4 +75,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtw89: 8922a: update fw to v0.35.71.0</comment>
     <requestid>1276107</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5f7ba85243501bc0be7409b045a9e157</srcmd5>
+    <version>20250516</version>
+    <time>1748003388</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250516 (git commit 759c4acafb4a):
+  * rtl_nic: add firmware rtl8127a-1</comment>
+    <requestid>1278693</requestid>
+  </revision>
 </revisionlist>
