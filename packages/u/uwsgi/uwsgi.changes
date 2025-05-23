@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 14 17:28:25 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use $RPM_BUILD_NCPUS instead of %jobs (boo#1237231)
+
+-------------------------------------------------------------------
 Tue Apr 15 19:29:44 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add gcc15.patch (from upstream) and plugins-gcc15.patch to fix

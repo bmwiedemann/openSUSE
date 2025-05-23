@@ -552,7 +552,7 @@ export UWSGICONFIG_LUALIB="lua"
 export UWSGICONFIG_LUAPC="lua"
 export UWSGICONFIG_RUBYPATH="ruby1.9"
 export CFLAGS="%{optflags} -Wno-error=deprecated-declarations -I%{_includedir}/glusterfs -I$(echo %{_libdir}/erlang/lib/erl_interface-*/include) -I%{_jvmdir}/java/include/linux -L$UWSGICONFIG_JVM_LIBPATH/jli"
-%{?jobs:export CPUCOUNT=%jobs}
+export CPUCOUNT=${RPM_BUILD_NCPUS:-1}
 %python_expand PYTHON=$python $python uwsgiconfig.py --build opensuse
 
 # Build python3 plugins
