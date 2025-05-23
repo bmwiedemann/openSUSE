@@ -15,20 +15,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-durationpy
-Version:        0.9 
+Version:        0.10
 Release:        0
 Summary:        Module for converting between datetime.timedelta and Go's Duration strings
 # FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
 License:        MIT
 URL:            https://github.com/icholy/durationpy
 Source:         https://github.com/icholy/durationpy/archive/refs/tags/%{version}.tar.gz#/durationpy-%{version}.tar.gz
+BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 21.0.0}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module devel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -48,7 +49,6 @@ Module for converting between datetime.timedelta and Go's Duration strings.
 
 %check
 %pytest test.py
-
 
 %files %{python_files}
 %doc README.md
