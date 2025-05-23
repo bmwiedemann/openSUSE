@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Authen-SASL
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,10 @@
 
 %define cpan_name Authen-SASL
 Name:           perl-Authen-SASL
-Version:        2.170.0
+Version:        2.180.0
 Release:        0
-%define cpan_version 2.1700
+# 2.1800 -> normalize -> 2.180.0
+%define cpan_version 2.1800
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        SASL Authentication framework
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -34,17 +35,19 @@ BuildRequires:  perl(Pod::Coverage::TrustPod)
 BuildRequires:  perl(Test::Pod)
 BuildRequires:  perl(Test::Pod::Coverage)
 Requires:       perl(Digest::HMAC_MD5)
-Provides:       perl(Authen::SASL) = 2.170.0
-Provides:       perl(Authen::SASL::CRAM_MD5) = 2.170.0
-Provides:       perl(Authen::SASL::EXTERNAL) = 2.170.0
-Provides:       perl(Authen::SASL::Perl) = 2.170.0
-Provides:       perl(Authen::SASL::Perl::ANONYMOUS) = 2.170.0
-Provides:       perl(Authen::SASL::Perl::CRAM_MD5) = 2.170.0
-Provides:       perl(Authen::SASL::Perl::DIGEST_MD5) = 2.170.0
-Provides:       perl(Authen::SASL::Perl::EXTERNAL) = 2.170.0
-Provides:       perl(Authen::SASL::Perl::GSSAPI) = 2.170.0
-Provides:       perl(Authen::SASL::Perl::LOGIN) = 2.170.0
-Provides:       perl(Authen::SASL::Perl::PLAIN) = 2.170.0
+Provides:       perl(Authen::SASL) = %{version}
+Provides:       perl(Authen::SASL::CRAM_MD5) = %{version}
+Provides:       perl(Authen::SASL::EXTERNAL) = %{version}
+Provides:       perl(Authen::SASL::Perl) = %{version}
+Provides:       perl(Authen::SASL::Perl::ANONYMOUS) = %{version}
+Provides:       perl(Authen::SASL::Perl::CRAM_MD5) = %{version}
+Provides:       perl(Authen::SASL::Perl::DIGEST_MD5) = %{version}
+Provides:       perl(Authen::SASL::Perl::EXTERNAL) = %{version}
+Provides:       perl(Authen::SASL::Perl::GSSAPI) = %{version}
+Provides:       perl(Authen::SASL::Perl::LOGIN) = %{version}
+Provides:       perl(Authen::SASL::Perl::OAUTHBEARER) = %{version}
+Provides:       perl(Authen::SASL::Perl::PLAIN) = %{version}
+Provides:       perl(Authen::SASL::Perl::XOAUTH2) = %{version}
 %undefine       __perllib_provides
 Recommends:     perl(GSSAPI)
 %{perl_requires}
@@ -85,7 +88,7 @@ or if you have another plugin module that supports the Authen::SASL API
  use Authen::SASL qw(My::SASL::Plugin);
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -100,7 +103,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc api.txt Changes compat_pl example_pl README
+%doc api.txt Changes README
 %license LICENSE
 
 %changelog

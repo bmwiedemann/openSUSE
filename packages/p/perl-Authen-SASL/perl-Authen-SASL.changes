@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Apr 26 05:33:44 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.180.0 (2.1800)
+   see /usr/share/doc/packages/perl-Authen-SASL/Changes
+
+
+  2.1800  TO BE RELEASED
+    [Changed]
+      - Minimum required Perl version 5.14+ (from 5.6.0);
+        Digest::HMAC_MD5 was 5.8.1, making 5.8.1 the effective minimum
+      - Move example code to the eg/ directory
+
+    [Added]
+      - Mechanisms XOAUTH2 and OAUTHBEARER added
+      - Include mechanisms available on server when
+        negotiation fails on the client
+      - Add `_acceptable()` function to allow mechanism
+        implementation classes to decline selection based
+        on the callback values
+
+-------------------------------------------------------------------
 Fri Mar  8 21:59:55 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides
