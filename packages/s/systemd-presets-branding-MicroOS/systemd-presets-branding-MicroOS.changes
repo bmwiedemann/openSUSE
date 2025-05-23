@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 15 06:25:23 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Enable import-pubring-from-rpmdb.* to import keyrings from rpmdb
+  to allow systemd tools access to OBS to fetch images.
+
+-------------------------------------------------------------------
 Fri Apr 12 16:13:00 UTC 2024 - Ignaz Forster <iforster@suse.com>
 
 - On a transactional system make sure that /var and /etc are

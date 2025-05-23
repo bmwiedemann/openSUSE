@@ -81,4 +81,14 @@
     <comment></comment>
     <requestid>1168356</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>3f44eb6fb39f8a4b20d75fbd5df8d675</srcmd5>
+    <version>20230214</version>
+    <time>1748003367</time>
+    <user>anag_factory</user>
+    <comment>- Enable import-pubring-from-rpmdb.* to import keyrings from rpmdb
+  to allow systemd tools access to OBS to fetch images.
+</comment>
+    <requestid>1277748</requestid>
+  </revision>
 </revisionlist>
