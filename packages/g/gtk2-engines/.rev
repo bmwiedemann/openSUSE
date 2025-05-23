@@ -386,4 +386,12 @@
   i586 only enabled in LegacyX86). (forwarded request 1155226 from dimstar)</comment>
     <requestid>1155243</requestid>
   </revision>
+  <revision rev="58" vrev="22">
+    <srcmd5>6a7feff0a1cd0104695ccdf3576ad508</srcmd5>
+    <version>2.20.2</version>
+    <time>1748003303</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in old changelog entries (forwarded request 1277782 from dimstar)</comment>
+    <requestid>1278241</requestid>
+  </revision>
 </revisionlist>
