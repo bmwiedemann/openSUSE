@@ -7000,4 +7000,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.14.6 &amp; cBPF and ITS fixes &amp; other fixes; bugs: bsc#1012628 bsc#1242006 bsc#1242778</comment>
     <requestid>1277082</requestid>
   </revision>
+  <revision rev="781" vrev="1">
+    <srcmd5>f89c261781634df9a83c93b36619420a</srcmd5>
+    <version>6.14.8</version>
+    <time>1748003350</time>
+    <user>anag_factory</user>
+    <comment>6.14.8 &amp; config update; bugs: bsc#1012628 bsc#1243081</comment>
+    <requestid>1279426</requestid>
+  </revision>
 </revisionlist>

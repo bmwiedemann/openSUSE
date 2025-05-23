@@ -16,16 +16,16 @@
 #
 
 
-%define git_commit ad69173661e912fc54ea9589c400528b76aa8aca
+%define git_commit e6e8235f058f5afcf4d5053be4b0f87108234281
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
 Name:           kernel-syms
-Version:        6.14.6
+Version:        6.14.8
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gad69173
+Release:        <RELEASE>.ge6e8235
 %else
 Release:        0
 %endif
