@@ -1191,4 +1191,30 @@ New stable rel</comment>
   + Various test suite improvements. (forwarded request 1270193 from iznogood)</comment>
     <requestid>1270274</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>0be24c49452e970abb546a183990e843</srcmd5>
+    <version>11.2.1</version>
+    <time>1748003273</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 11.2.1:
+  + Various build improvements.
+  + Fix build with HB_NO_DRAW and HB_NO_PAINT.
+  + Add an optional harfruzz shaper that uses HarfRuzz; an ongoing
+    Rust port of HarfBuzz shaping. This shaper is mainly used for
+    testing the output of the Rust implementation.
+  + Fix regression that caused applying unsafe_to_break() to the
+    whole buffer to be ignored.
+  + Update USE data files.
+  + Fix getting advances of out-of-rage glyph indices in
+    DirectWrite font functions.
+- Changes from version 11.2.0:
+  + Painting of COLRv1 fonts without clip boxes is now about 10
+    times faster.
+  + Synthetic bold/slant of a sub font is now respected, instead of
+    using the parent’s.
+  + Glyph extents for fonts synthetic bold/slant are now accurately
+    calculated.
+  + Various build fixes. (forwarded request 1276943 from iznogood)</comment>
+    <requestid>1277946</requestid>
+  </revision>
 </revisionlist>
