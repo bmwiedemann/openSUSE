@@ -432,7 +432,7 @@ Sat Dec 20 11:37:20 EST 2008 - mboman@suse.de
   + Avoid a memory leak in schema class.
 
 -------------------------------------------------------------------
-Fri Oct  3 18:47:27 WST 2008 - mboman@suse.de
+Fri Oct  3 18:47:27 EST 2008 - mboman@suse.de
 
 - Update to version 2.24.0:
   + Added Schema and SchemaValidator classes, demonstrated in 
