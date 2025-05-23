@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat May 17 16:13:28 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 36.0.2
+  * Improved autocomplete for JSON and YAML in zsh.
+  * Added toBase64 and fromBase64 builtins.
+  * Added YAML.parse and YAML.stringify builtins.
+- Update to version 36.0.1
+  * Fixed JSON unmarshal for unquote.
+- Update to version 36.0.0
+  * Improved JSON parsing speed and memory usage.
+    Opening huge JSON files ~4GB now takes half the mem size.
+  * Fixed jumps with J/K over wrapped strings.
+  * Fixed pageup and pagedown movements. Now they work same as in
+    vim.
+  * Added loading spinner for big JSON files.
+  * Added better expand/collapse e/E support with multiple JSON
+    objects.
+  * Added better previews of collapsed nodes.
+  * Fixed support for multiple documents in single YAML file.
+  * Added FX_COLLAPSED=1 option to start in collapsed view.
+  * Added support to display plain text in interactive mode.
+  * Added support for HTTP headers with curl -i ... | fx.
+  * Added base64 images preview.
+  * Added jumping back/forward in locations history with [ ] keys.
+  * Added goto symbol with @ key.
+  * Added s key to show/hide array/object sizes.
+  * Added go to ref with ctrl+g.
+  * Added line numbers with option FX_LINE_NUMBERS.
+  * Added scroll percentage in status bar.
+  * Added edit-in-place save function. 
+
+-------------------------------------------------------------------
 Sun Jun 30 17:18:05 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 35.0.0
