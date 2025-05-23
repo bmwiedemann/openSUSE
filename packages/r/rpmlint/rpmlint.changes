@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 15 11:16:41 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.7.0+git20250515.1368c7ea:
+  * systemd-tmpfiles: add nix socket directory (bsc#1243206)
+
+-------------------------------------------------------------------
 Mon May 05 16:47:01 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.7.0+git20250505.8f450e38:
@@ -3595,8 +3601,7 @@ Tue May 16 13:37:33 UTC 2017 - krahmer@suse.com
 
 - whitelisting switchroo-control (bsc#1034309)
 
-------------------------------------------------------------------- 
-
+-------------------------------------------------------------------
 Fri Apr 28 14:07:50 CEST 2017 - mgerstner@suse.com
 
 - whitelisting backintime (bsc#1007723, bsc#1032717)

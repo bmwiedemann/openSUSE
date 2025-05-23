@@ -5215,4 +5215,15 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1274680</requestid>
   </revision>
+  <revision rev="504" vrev="1">
+    <srcmd5>3ebde57f92f8667f9e1ee707f8387a37</srcmd5>
+    <version>2.7.0+git20250515.1368c7ea</version>
+    <time>1748003215</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.7.0+git20250515.1368c7ea:
+  * systemd-tmpfiles: add nix socket directory (bsc#1243206)
+- Fix an old changelog entry from 2017
+  * somehow the format was invalid and the source_validator now detects it</comment>
+    <requestid>1277753</requestid>
+  </revision>
 </revisionlist>
