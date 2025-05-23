@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 14 06:20:53 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
+
+- use gcc13 for Code 15
+- Use python3-docutils for Code 16
+
+-------------------------------------------------------------------
 Fri Apr 18 11:35:35 UTC 2025 - Max Lin <mlin@suse.com>
 
 - Compile with gcc15 instead of gcc14

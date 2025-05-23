@@ -136,4 +136,12 @@ http://lists.adiscon.net/pipermail/rsyslog/2014-January/036117.html</comment>
     <comment></comment>
     <requestid>1273296</requestid>
   </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>55ce6f56931aacb3b62fbb4d2131d088</srcmd5>
+    <version>1.0.6</version>
+    <time>1748003362</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1277702</requestid>
+  </revision>
 </revisionlist>

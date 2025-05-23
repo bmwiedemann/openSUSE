@@ -1,7 +1,7 @@
 #
 # spec file for package liblogging
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,13 +29,16 @@ URL:            http://www.liblogging.org/
 Source0:        http://download.rsyslog.com/liblogging/%{name}-%{version}.tar.gz
 Patch0:         0001-support-build-with-gcc-14.patch
 BuildRequires:  dos2unix
-BuildRequires:  gcc15
+%if 0%{?is_opensuse} && 0%{?suse_version} < 1600
+%global force_gcc_version 13
+%endif
+BuildRequires:  gcc%{?force_gcc_version}
 BuildRequires:  pkgconfig >= 0.9.0
 %if %{with_rst2man}
-%if 0%{?is_opensuse}
-BuildRequires:  python3-docutils
-%else
+%if 0%{?suse_version} < 1600
 BuildRequires:  python-docutils
+%else
+BuildRequires:  python3-docutils
 %endif
 %endif
 %if %{with_systemd_journal}
@@ -76,6 +79,9 @@ developing programs which use liblogging library.
 %autopatch -p1
 
 %build
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+%endif
 %configure \
 	--disable-static \
 	--enable-rfc3195 \
