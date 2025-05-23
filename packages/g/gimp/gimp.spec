@@ -37,7 +37,7 @@
 %define alsa_version            1.0.0
 %define appstream_glib_version  0.7.7
 %define atk_version             2.4.0
-%define babl_version            0.1.112
+%define babl_version            0.1.114
 %define cairo_version           1.14.0
 %define cairo_pdf_version       1.14.0
 %define dbus_glib_version       0.70
@@ -46,7 +46,7 @@
 %define freetype2_version       2.1.7
 %define exiv2_version           0.27.4
 %define gdk_pixbuf_version      2.30.8
-%define gegl_version            0.4.56
+%define gegl_version            0.4.62
 %define gexiv2_version          0.14.0
 %define glib_version            2.70.0
 %define gtk3_version            3.24.48
@@ -85,7 +85,7 @@
 %define pkg_name gimp
 
 Name:           gimp
-Version:        3.0.2
+Version:        3.0.4
 Release:        0
 %global pkg_version %{version}
 Summary:        The GNU Image Manipulation Program
@@ -100,8 +100,6 @@ Source2:        openSUSE.gpl
 Patch1:         gimp-2.99.19-cm-system-monitor-profile-by-default.patch
 Patch2:         gimp-2.99.19-external-help-browser.patch
 Patch3:         gimp-2.99.19-no-phone-home-default.patch
-Patch4:         0001-Avoid-type-names-and-keywords.patch
-Patch5:         gimp-3.0.2_de_shortcut_clash.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif

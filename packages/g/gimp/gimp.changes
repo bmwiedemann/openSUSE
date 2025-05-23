@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 19 06:52:00 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.4:
+  * Clipboard Pasting: Resolved an issue where pasted selections into
+    other programs were incorrectly padded to the original image size.
+  * Monitor-Related Crashes: Addressed crashes occurring when changing
+    or turning off the main monitor.
+  * Font Handling: Improved font loading speed on startup, benefiting
+    users with extensive font libraries.
+  * Non-Destructive Filters: Enhanced undo history tracking for filters
+    and fixed visual glitches during layer rotations with active filters.
+  * Corrected the Help button functionality in the About Dialog.
+  * Fixed icon display issues on KDE Wayland.
+  * Resolved the ZDI-CAN-26752 bug affecting .ICO file imports.
+- Drop upstreamed 0001-Avoid-type-names-and-keywords.patch
+- Drop upstreamed gimp-3.0.2_de_shortcut_clash.patch
+
+-------------------------------------------------------------------
 Mon Apr 28 14:49:41 UTC 2025 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - add gimp-3.0.2_de_shortcut_clash.patch to fix shortcuts of JPEG export
