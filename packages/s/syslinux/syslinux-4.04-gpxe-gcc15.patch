@@ -1,0 +1,11 @@
+--- a/gpxe/src/Makefile	2011-04-18 23:24:17.000000000 +0200
++++ b/gpxe/src/Makefile	2025-05-04 10:57:07.460410478 +0200
+@@ -4,7 +4,7 @@
+ #
+ 
+ CLEANUP		:=
+-CFLAGS		:=
++CFLAGS		:= -std=gnu11
+ ASFLAGS		:=
+ LDFLAGS		:=
+ MAKEDEPS	:= Makefile

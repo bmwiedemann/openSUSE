@@ -65,6 +65,7 @@ Patch23:        %{name}-%{version}-lzo.patch
 Patch24:        %{name}-%{version}-gcc10.patch
 Patch25:        syslinux-4.04-reproducible-isohybrid.patch
 Patch26:        %{name}-%{version}-pie.patch
+Patch27:        %{name}-%{version}-gpxe-gcc15.patch
 
 %description
 SYSLINUX is a boot loader for the Linux operating system which operates

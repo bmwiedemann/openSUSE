@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  4 09:18:37 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add syslinux-4.04-gpxe-gcc15.patch to fix gcc-15 compile time
+  errors during (re-)build of gpxelinux.0
+
+-------------------------------------------------------------------
 Mon Feb 26 13:28:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated

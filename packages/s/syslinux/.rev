@@ -543,4 +543,12 @@ helps ipxe iso reproducibility. (forwarded request 868912 from bmwiedemann)</com
     <comment></comment>
     <requestid>1182473</requestid>
   </revision>
+  <revision rev="72" vrev="51">
+    <srcmd5>c92e231d359b223630a23c29bc0b2b78</srcmd5>
+    <version>4.04</version>
+    <time>1748003271</time>
+    <user>anag_factory</user>
+    <comment>add syslinux-4.04-gpxe-gcc15.patch to fix gcc-15 compile time errors during (re-)build of gpxelinux.0 (forwarded request 1274217 from hsk17)</comment>
+    <requestid>1277941</requestid>
+  </revision>
 </revisionlist>
