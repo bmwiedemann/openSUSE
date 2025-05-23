@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu May 22 05:11:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.0.1:
+  * Changelog
+    - Updated to Golang 1.24
+    - Updated artifact script generators
+    - Added version command improvements
+    - Avoided container name conflicts
+    - Updated data when regenerating a secret
+    - Customized CLI & router images in the bootstrap script
+    - Fixed panic when trying to set annotations on router config
+    - Added debug dump command for kube environments
+  * Additional Fixes
+    - https://github.com/skupperproject/skupper/issues/2009
+    - https://github.com/skupperproject/skupper/issues/2029
+    - https://github.com/skupperproject/skupper/issues/1994
+    - https://github.com/skupperproject/skupper/issues/2054
+    - https://github.com/skupperproject/skupper/issues/1957
+    - https://github.com/skupperproject/skupper/issues/2023
+
+-------------------------------------------------------------------
 Fri Mar 07 17:32:01 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.0.0:
