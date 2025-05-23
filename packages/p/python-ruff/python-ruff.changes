@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon May 19 14:18:18 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update 0.11.10:
+ * Preview features
+   * [ruff] Implement a recursive check for RUF060 
+   * [airflow] Enable autofixes for AIR301 and AIR311 
+   * [airflow] Apply try catch guard to all AIR3 rules 
+   * [airflow] Extend AIR311 rules 
+ * Bug fixes
+   * [flake8-bugbear] Ignore B028 if skip_file_prefixes is present 
+   * [flake8-pie] Mark autofix for PIE804 as unsafe if the dictionary contains comments 
+   * [flake8-simplify] Correct behavior for str.split/rsplit with maxsplit=0 (SIM905) 
+   * [flake8-simplify] Fix SIM905 autofix for rsplit creating a reversed list literal 
+   * [flake8-use-pathlib] Suppress diagnostics for all os.* functions that have the dir_fd parameter (PTH) 
+   * [refurb] Mark autofix as safe only for number literals (FURB116) 
+ * Rule changes
+   * [flake8-bandit] Skip S608 for expressionless f-strings 
+   * [flake8-pytest-style] Don't recommend usefixtures for parametrize values (PT019) 
+   * [pyupgrade] Add resource.error as deprecated alias of OSError (UP024) 
+ * CLI
+   * Disable jemalloc on Android 
+ * Documentation
+   * Update Neovim setup docs 
+   * [flake8-simplify] Add fix safety section (SIM103) 
+   * [flake8-simplify] Add fix safety section (SIM112) 
+   * [pylint] Add fix safety section (PLC0414) 
+   * [pylint] Add fix safety section (PLE4703) 
+   * [pylint] Add fix safety section (PLW1514) 
+   * [pylint] Add fix safety section (PLW3301) 
+   * [ruff] Add fix safety section (RUF007) 
+   * [ruff] Add fix safety section (RUF033) 
+
+-------------------------------------------------------------------
+Tue May 13 06:39:19 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.11.9:
+ * Preview features
+   * Default to latest supported Python version for version-related syntax errors 
+   * Implement deferred annotations for Python 3.14 
+   * [airflow] Fix SQLTableCheckOperator typo (AIR302) 
+   * [airflow] Remove airflow.utils.dag_parsing_context.get_parsing_context (AIR301) 
+   * [airflow] Skip attribute check in try catch block (AIR301) 
+   * [flake8-bandit] Mark tuples of string literals as trusted input in S603 
+   * [isort] Check full module path against project root(s) when categorizing first-party imports 
+   * [ruff] Add new rule in-empty-collection (RUF060) 
+ * Bug fixes
+   * Fix missing combine call for lint.typing-extensions setting 
+   * [flake8-async] Fix module name in ASYNC110, ASYNC115, and ASYNC116 fixes 
+   * [pyupgrade] Add spaces between tokens as necessary to avoid syntax errors in UP018 autofix 
+   * [refurb] Fix false positive for float and complex numbers in FURB116 
+   * [parser] Flag single unparenthesized generator expr with trailing comma in arguments. 
+ * Documentation
+   * Add instructions on how to upgrade to a newer Rust version 
+   * Update code of conduct email address 
+   * Add fix safety sections to PLC2801, PLR1722, and RUF013
+   * Add link to check-typed-exception from S110 and S112 
+ * Other changes
+   * Allow passing a virtual environment to ruff analyze graph 
+
+-------------------------------------------------------------------
 Fri May  2 15:28:43 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.8

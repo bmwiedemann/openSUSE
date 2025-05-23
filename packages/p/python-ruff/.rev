@@ -2025,4 +2025,40 @@
   * Make syntax error for unparenthesized except tuples version specific to before 3.14</comment>
     <requestid>1274047</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>7a461f61aa424b09169a16a0e4989f0e</srcmd5>
+    <version>0.11.10</version>
+    <time>1748003248</time>
+    <user>anag_factory</user>
+    <comment>- update 0.11.10:
+ * Preview features
+   * [ruff] Implement a recursive check for RUF060 
+   * [airflow] Enable autofixes for AIR301 and AIR311 
+   * [airflow] Apply try catch guard to all AIR3 rules 
+   * [airflow] Extend AIR311 rules 
+ * Bug fixes
+   * [flake8-bugbear] Ignore B028 if skip_file_prefixes is present 
+   * [flake8-pie] Mark autofix for PIE804 as unsafe if the dictionary contains comments 
+   * [flake8-simplify] Correct behavior for str.split/rsplit with maxsplit=0 (SIM905) 
+   * [flake8-simplify] Fix SIM905 autofix for rsplit creating a reversed list literal 
+   * [flake8-use-pathlib] Suppress diagnostics for all os.* functions that have the dir_fd parameter (PTH) 
+   * [refurb] Mark autofix as safe only for number literals (FURB116) 
+ * Rule changes
+   * [flake8-bandit] Skip S608 for expressionless f-strings 
+   * [flake8-pytest-style] Don't recommend usefixtures for parametrize values (PT019) 
+   * [pyupgrade] Add resource.error as deprecated alias of OSError (UP024) 
+ * CLI
+   * Disable jemalloc on Android 
+ * Documentation
+   * Update Neovim setup docs 
+   * [flake8-simplify] Add fix safety section (SIM103) 
+   * [flake8-simplify] Add fix safety section (SIM112) 
+   * [pylint] Add fix safety section (PLC0414) 
+   * [pylint] Add fix safety section (PLE4703) 
+   * [pylint] Add fix safety section (PLW1514) 
+   * [pylint] Add fix safety section (PLW3301) 
+   * [ruff] Add fix safety section (RUF007) 
+   * [ruff] Add fix safety section (RUF033)</comment>
+    <requestid>1278416</requestid>
+  </revision>
 </revisionlist>
