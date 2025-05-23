@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 16 08:36:19 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.7
+   * abipkgdiff: Add new --verbose-diff option
+   * Add support for reading XZ-compressed files
+   * Normalize declaration names read from DWARF
+   * Fix a case of pointer to void* change filtering
+
+-------------------------------------------------------------------
+Thu Apr  3 17:09:26 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Workaround Sphinx race condition (boo#1102408)
+
+-------------------------------------------------------------------
 Sun Mar 30 08:48:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6:
