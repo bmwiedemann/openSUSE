@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-WSGIProxy2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %{?sle15_python_module_pythons}
 Name:           python-WSGIProxy2%{psuffix}
 Version:        0.5.1
@@ -33,7 +32,9 @@ Summary:        WSGI Proxy Implementation
 License:        MIT
 URL:            https://github.com/gawel/WSGIProxy2/
 Source:         https://files.pythonhosted.org/packages/source/W/WSGIProxy2/WSGIProxy2-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-WebOb
@@ -57,11 +58,11 @@ Proxy support for WebOb or classic WSGI applications
 %setup -q -n WSGIProxy2-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -75,7 +76,8 @@ Proxy support for WebOb or classic WSGI applications
 %files %{python_files}
 %license COPYING
 %doc CHANGES.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/wsgiproxy
+%{python_sitelib}/[Ww][Ss][Gg][Ii][Pp]roxy2-%{version}*-info
 %endif
 
 %changelog
