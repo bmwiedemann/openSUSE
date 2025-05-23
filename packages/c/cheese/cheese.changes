@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 16 07:20:28 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-download 73.patch: hash references have changed after merge.
+
+-------------------------------------------------------------------
 Fri Sep  6 15:09:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 73.patch: Fix JSON validation. Fixes startup with json-glib
@@ -1979,7 +1984,7 @@ Mon Oct 20 14:37:11 CEST 2008 - meissner@suse.de
 - require gstreamer-plugins-good for basic video sources
 
 -------------------------------------------------------------------
-Wed Oct  1 07:34:56 WST 2008 - mboman@suse.de
+Wed Oct  1 07:34:56 EST 2008 - mboman@suse.de
 
 - Update to version 2.24.0:
   + correct an error in the help file, which prevented the document to be
