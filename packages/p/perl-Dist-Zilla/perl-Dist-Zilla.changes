@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May  2 05:34:52 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.33.0 (6.033)
+   see /usr/share/doc/packages/perl-Dist-Zilla/Changes
+
+  6.033     2025-05-01 11:45:18-04:00 America/New_York
+          - when creating a tarball with GNU tar, use --format=ustar to avoid
+            xattrs and other problems sometimes related to macOS (thanks, Graham
+            Knop!)
+
+-------------------------------------------------------------------
 Sun Jun 23 16:14:57 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 6.32.0 (6.032)
