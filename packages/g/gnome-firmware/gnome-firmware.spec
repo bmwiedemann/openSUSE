@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-firmware
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,11 @@ License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://gitlab.gnome.org/World/gnome-firmware
 Source0:        %{name}-%{version}.tar.xz
+
+BuildRequires:  desktop-file-utils
 BuildRequires:  help2man
 BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(fwupd) >= 1.7.5
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.2
@@ -52,7 +53,6 @@ supported by fwupd.
 
 %install
 %meson_install
-%suse_update_desktop_file -r -G "Install firmware on devices" org.gnome.Firmware "GTK;GNOME;Settings;HardwareSettings;"
 
 %find_lang %{name}
 

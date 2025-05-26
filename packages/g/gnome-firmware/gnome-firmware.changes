@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 23 10:54:04 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete update-desktop-files BuildRequires and macro.
+  Replace with desktop-file-utils BuildRequires.
+
+-------------------------------------------------------------------
 Wed Oct  2 04:00:01 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 47.0:
