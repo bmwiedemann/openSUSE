@@ -47,7 +47,7 @@ pcsc-lite package.
 %autosetup -p0 -n slb_rf60
 
 %build
-make %{?jobs:-j%jobs} lib COPTS="$RPM_OPT_FLAGS -Wno-unused" LD="gcc $LDFLAGS"
+%make_build lib COPTS="$RPM_OPT_FLAGS -Wno-unused" LD="gcc $LDFLAGS"
 
 %install
 install -d $RPM_BUILD_ROOT%{ifddir}/
