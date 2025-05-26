@@ -181,4 +181,17 @@
     <comment></comment>
     <requestid>1237573</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8e020794068e594650726e3700260950</srcmd5>
+    <version>2.26.0</version>
+    <time>1748277343</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1278598 from tinita
+
+- updated to 2.26.0 (2.026)
+   see /usr/share/doc/packages/perl-Test-Manifest/Changes
+  2.026 2025-04-13T22:11:37Z
+  	* require a newer version.pm for v5.10.1 tests</comment>
+    <requestid>1279790</requestid>
+  </revision>
 </revisionlist>

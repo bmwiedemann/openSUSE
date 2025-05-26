@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 14 05:39:37 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.26.0 (2.026)
+   see /usr/share/doc/packages/perl-Test-Manifest/Changes
+
+  2.026 2025-04-13T22:11:37Z
+  	* require a newer version.pm for v5.10.1 tests
+
+-------------------------------------------------------------------
 Sun Jan  5 05:33:12 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.25.0 (2.025)

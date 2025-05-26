@@ -18,10 +18,10 @@
 
 %define cpan_name Test-Manifest
 Name:           perl-Test-Manifest
-Version:        2.25.0
+Version:        2.26.0
 Release:        0
-# 2.025 -> normalize -> 2.25.0
-%define cpan_version 2.025
+# 2.026 -> normalize -> 2.26.0
+%define cpan_version 2.026
 License:        Artistic-2.0
 Summary:        Interact with a t/test_manifest file
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,6 +32,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::More) >= 1
+BuildRequires:  perl(version) >= 0.86
 Provides:       perl(Test::Manifest) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
@@ -61,7 +62,7 @@ Optionally, you can add a number after the test name in test_manifest to
 define sets of tests. See 'get_t_files' for more information.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
