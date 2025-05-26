@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri May 23 12:09:54 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.9.0
+  * Add cisco_ios inline power support for Cat45xx.
+  * Fix protocol spelling in hp_comware disp ip interface.
+  * Fix lowercase capture groups.
+  * Update Linux ip route show.
+  * Normalize vlan id and name stragglers.
+  * Juniper junos show rsvp interface.
+  * Fix space issue for command date, seen on XR6.6.3.
+  * Add Huawei VRP display bgp peer template.
+  * adding new template for juniper_junos_show_route_summary.
+  * Update cisco_xr_ping.textfsm for trailing commas.
+  * Add new template for Huawei VRP display patch-information.
+  * Add Huawei VRP display ntp status template.
+  * Add new template for Fsas Si-R show ip ospf neighbor.
+  * Cisco IOS 'show ip bgp summary' neighbor ASDOT format.
+  * Add uptime to Arista show version.
+  * Update linux ip link show.
+  * Add cisco ios show spanning-tree root.
+  * Fix cisco_nxos_show_hsrp_all for initial state.
+  * Fix encapsulation column in Arista sh int status.
+  * Support IOS pwr inline faulty oper state.
+  * Add IOS inline power support for 68xx.
+  * Fix XR7 parse error where ARP EVPN line exists.
+  * Add template for Linux top.
+  * Add Linux nmcli connection show.
+  * Cisco IOS-XE additional transceiver data.
+  * Regenerate XR sh ipv4 int test.
+  * Add Huawei VRP display module-information verbose.
+  * Add Linux iwlist wlan0 scanning.
+
+-------------------------------------------------------------------
 Thu Apr 10 15:59:28 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Enable sle15_python_module_pythons (align with poetry)
