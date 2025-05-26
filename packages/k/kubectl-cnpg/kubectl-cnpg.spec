@@ -17,7 +17,7 @@
 
 
 Name:           kubectl-cnpg
-Version:        1.25.1
+Version:        1.25.2
 Release:        0
 Summary:        Manage PostgreSQL clusters built using CloudNativePG
 License:        Apache-2.0
@@ -26,14 +26,14 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.24
 
 %description
 CloudNativePG provides a plugin for kubectl to manage a cluster in Kubernetes.
 
 Documentation is at:
-https://cloudnative-pg.io/documentation/1.23/kubectl-plugin
+https://cloudnative-pg.io/docs
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}

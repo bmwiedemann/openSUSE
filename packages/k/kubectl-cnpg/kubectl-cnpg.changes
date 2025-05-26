@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Fri May 23 12:19:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.25.2:
+  CloudNativePG is now officially a CNCF project: CloudNativePG has
+  been accepted into the Cloud Native Computing Foundation (CNCF),
+  marking a significant milestone in its evolution. As part of this
+  transition, the project is now governed under CloudNativePG, a
+  Series of LF Projects, LLC, ensuring long-term sustainability and
+  community-driven innovation. (#7203)
+  * Fixes
+    - Increased the buffer size in the logs pretty command to
+      better handle larger log output (#7281).
+    - Ensured the plugin-name parameter is required for
+      plugin-based backups and disallowed for non-plugin backup
+      methods (#7506).
+    - Ensured that the primary Pod is recreated during an
+      imperative restart when primaryUpdateMethod is set to
+      restart, aligning its definition with the replicas. (#7122)
+  * Dependencies
+    - chore(deps): bump golang.org/x/net from 0.35.0 to 0.36.0 in
+      the go_modules group across 1 directory (#7136)
+    - chore(deps): bump golang.org/x/net from 0.37.0 to 0.38.0 in
+      the go_modules group across 1 directory (#7382)
+    - chore(deps): pin dependencies (release-1.25) (#7263)
+    - chore(deps): pin github/codeql-action action to 45775bd
+      (release-1.25) (#7318)
+    - chore(deps): update Go version in go.mod (#7082)
+    - chore(deps): update actions/setup-go digest to d35c59a
+      (release-1.25) (#7529)
+    - chore(deps): update all non-major github action
+      (release-1.25) (#7331)
+    - chore(deps): update all non-major github action
+      (release-1.25) (#7415)
+    - chore(deps): update all non-major github action
+      (release-1.25) (#7475)
+    - chore(deps): update backup test tools (release-1.25) (#7421)
+    - chore(deps): update crazy-max/ghaction-import-gpg digest to
+      e89d409 (release-1.25) (#7323)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v1.64.6 (release-1.25) (#7090)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v1.64.7 (release-1.25) (#7140)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v1.64.8 (release-1.25) (#7175)
+    - chore(deps): update dependency
+      operator-framework/operator-registry to v1.53.0
+      (release-1.25) (#7480)
+    - chore(deps): update dependency
+      operator-framework/operator-registry to v1.54.0
+      (release-1.25) (#7523)
+    - chore(deps): update dependency
+      redhat-openshift-ecosystem/openshift-preflight to v1.13.0
+      (release-1.25) (#7404)
+    - chore(deps): update dependency rook/rook to v1.17.1
+      (release-1.25) (#7426)
+    - chore(deps): update github/codeql-action digest to 45775bd
+      (release-1.25) (#7319)
+    - chore(deps): update kindest/node docker tag to v1.32.3
+      (release-1.25) (#7171)
+    - chore(deps): update kindest/node docker tag to v1.33.0
+      (release-1.25) (#7435)
+    - chore(deps): update kubernetes csi (release-1.25) (#7372)
+    - chore(deps): update module sigs.k8s.io/controller-tools to
+      v0.17.3 (release-1.25) (#7356)
+    - chore(deps): update operator framework (release-1.25) (#7077)
+    - chore(deps): update operator framework to v1.39.2
+      (release-1.25) (#7213)
+    - chore(deps): update spellcheck to v0.48.0 (release-1.25)
+      (#7313)
+    - fix(deps): update all non-major go dependencies
+      (release-1.25) (#7094)
+    - fix(deps): update all non-major go dependencies
+      (release-1.25) (#7240)
+    - fix(deps): update all non-major go dependencies
+      (release-1.25) (#7337)
+    - fix(deps): update all non-major go dependencies
+      (release-1.25) (#7487)
+    - fix(deps): update k8s.io/utils digest to 0f33e8f
+      (release-1.25) (#7533)
+    - fix(deps): update kubernetes patches (release-1.25) (#7223)
+    - fix(deps): update module
+      github.com/cloudnative-pg/barman-cloud to v0.3.1
+      (release-1.25) (#7457)
+    - fix(deps): update module github.com/cloudnative-pg/cnpg-i to
+      v0.2.1 (release-1.25) (#7525)
+    - fix(deps): update module sigs.k8s.io/controller-runtime to
+      v0.20.3 (release-1.25) (#7111)
+    - fix(docs): EOL dates (#7161)
+    - fix(docs): typo in backup plugin message (#7501)
+    - fix(docs): typo in benchmarking.md (#7343)
+    - fix(docs): typo in the architecture section  (#7383)
+
+-------------------------------------------------------------------
 Sat Mar 01 10:45:13 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.25.1:
