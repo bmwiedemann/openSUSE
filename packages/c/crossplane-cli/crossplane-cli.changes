@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu May 22 04:54:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.20.0:
+  Full changelog
+  https://github.com/crossplane/crossplane/releases/tag/v1.20.0
+  * CLI-related changes:
+    - Crossplane CLI shell completions: Shell completions are now
+      included for the crossplane CLI, enabling you to autocomplete
+      crossplane commands with arguments and values. Try out
+      crossplane beta trace and instead of typing or pasting the
+      resource name, just let <tab> auto complete find it for you!
+      Learn how to get started with shell completions in the CLI
+      reference.
+      https://docs.crossplane.io/v1.20/cli/#installing-shell-autocompletions
+  * Dependencies
+    - Use latest buf
+    - Use the new buf-action
+    - build: bump go to 1.23.9
+    - chore(deps): bump crossplane-runtime to v1.20.0
+    - chore(deps): bump crossplane-runtime to v1.20.0-rc.1
+    - chore(deps): bump golang version in Earthfile to v1.23.7
+    - chore(deps): pin bufbuild/buf-action action to 5150a1e
+    - chore(deps): run go mod tidy
+    - chore(deps): update module github.com/go-jose/go-jose/v4 to
+      v4.0.5 [security] (#6297)
+    - chore(deps): update module github.com/golang-jwt/jwt/v4 to
+      v4.5.2 [security]
+    - chore(deps): update module github.com/open-policy-agent/opa
+      to v1 [security]
+    - chore(deps): update module golang.org/x/crypto to v0.35.0
+      [security]
+    - chore(deps): update module golang.org/x/oauth2 to v0.27.0
+      [security]
+    - chore: bumping crossplane-runtime dependency in main to
+      1.20.0-rc.0
+    - chore: bumping renovate baseBranches for 1.19
+    - chore: run +go-generate
+    - chore: update release table for 1.19
+    - fix(cli): consider --insecure-skip-tls-verify flag for
+      crossplane xpkg push command
+    - fix(deps): update module github.com/golang-jwt/jwt/v5 to
+      v5.2.2 [security]
+    - fix(deps): update module golang.org/x/net to v0.36.0
+      [security]
+    - fix(deps): update module golang.org/x/net to v0.38.0
+      [security]
+
+-------------------------------------------------------------------
 Wed Mar 26 19:58:27 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.19.1:
