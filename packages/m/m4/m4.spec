@@ -60,6 +60,13 @@ cp -a /usr/lib/rpm/config.{sub,guess} build-aux/
 %endif
 
 %check
+%if 0%{?qemu_user_space_build}
+# Stack overflow tests are not supported by qemu linux-user emulation
+echo exit 77 > checks/stackovf.test
+echo exit 77 > tests/test-c-stack.sh
+echo 'int main () { return 77; }' > tests/test-sigsegv-catch-stackoverflow1.c
+echo 'int main () { return 77; }' > tests/test-sigsegv-catch-stackoverflow2.c
+%endif
 %make_build check CFLAGS="%{optflags}"
 
 %install

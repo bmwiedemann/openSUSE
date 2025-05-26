@@ -379,4 +379,12 @@
     <comment>drop -std=gnu17 from CFLAGS as 1.4.20 supports C23 (forwarded request 1277391 from hsk17)</comment>
     <requestid>1277401</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>8c22e8bd9b9a4d72b7e184835a8d9ad7</srcmd5>
+    <version>1.4.20</version>
+    <time>1748277112</time>
+    <user>anag_factory</user>
+    <comment>- Skip all stack overflow tests in qemu linux-user emulation (forwarded request 1278367 from Andreas_Schwab)</comment>
+    <requestid>1279279</requestid>
+  </revision>
 </revisionlist>
