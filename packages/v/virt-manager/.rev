@@ -2174,4 +2174,12 @@
     <comment>Fixes dependencies on Tumbleweed and other distros</comment>
     <requestid>1270608</requestid>
   </revision>
+  <revision rev="275" vrev="11">
+    <srcmd5>ff86d654c428e034d2daf10d4e497398</srcmd5>
+    <version>5.0.0</version>
+    <time>1748277096</time>
+    <user>anag_factory</user>
+    <comment>Fix detection problem for SLES 16 media</comment>
+    <requestid>1278884</requestid>
+  </revision>
 </revisionlist>

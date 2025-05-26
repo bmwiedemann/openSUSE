@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 19 15:14:01 MDT 2025 - carnold@suse.com
+
+- Add detection code for SLES 16 media (bsc#1236252, bsc#1243296)
+  virtinst-add-sle16-detection-support.patch
+
+-------------------------------------------------------------------
 Mon Apr 14 22:57:32 MDT 2025 - carnold@suse.com
 
 - Spec file changes for including the correct dependencies
