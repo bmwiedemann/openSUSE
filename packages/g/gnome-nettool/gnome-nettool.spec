@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-nettool
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ BuildRequires:  fdupes
 BuildRequires:  gnome-common
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(libgtop-2.0)
@@ -64,8 +63,6 @@ NOCONFIGURE=1 ./autogen.sh
 
 %install
 %make_install
-# Note: I guess X-SuSE-Core-System is not the best thing for the non-GNOME menu, but we need something for the build to work. Oh well...
-%suse_update_desktop_file -r gnome-nettool GNOME GTK System X-SuSE-Core-System
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
