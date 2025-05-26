@@ -34,11 +34,11 @@ Source99:       gpaste-rpmlintrc
 Patch0:         https://patch-diff.githubusercontent.com/raw/Keruspe/GPaste/pull/446.patch
 # For directory ownership
 BuildRequires:  gnome-shell >= 3.28
+BuildRequires:  desktop-file-utils
 BuildRequires:  gobject-introspection-devel >= 1.58.0
 BuildRequires:  intltool >= 0.50.0
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(clutter-1.0)
 BuildRequires:  pkgconfig(dbus-1)
