@@ -17,7 +17,7 @@
 
 
 Name:           git-next
-Version:        2025.5.0
+Version:        2025.5.1
 Release:        0
 Summary:        Trunk-based development manager for a solo developer
 License:        MIT

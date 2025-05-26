@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 26 04:45:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2025.5.1:
+  * Added
+    - drop support for externally managed repos
+    - ForgoJo => Forgejo
+  * Fixed
+    - push commits to remote branches properly
+    - shutdown error message is always shown
+  * Other
+    - remove debug info from dev builds
+    - ServerRepoConfig uses Builder in favour of Constructor
+    - clean up migration TODO list for next project
+    - add just recipe publish-docker-image {tag}
+
+-------------------------------------------------------------------
 Wed May 07 04:16:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2025.5.0:
