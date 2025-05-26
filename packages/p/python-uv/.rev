@@ -713,4 +713,27 @@
    * Fix PowerShell code blocks</comment>
     <requestid>1278558</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e60028ef065a75e153f6a40f076f1ce2</srcmd5>
+    <version>0.7.8</version>
+    <time>1748277263</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.7.8
+ * Standalone Python
+   + revert almost all changesd from 0.7.6 - 0.7.7 due misscompilation
+ * Documentation
+   * Remove misleading line in pin documentation
+
+- update to 0.7.7:
+ * Python
+   * Work around third-party packages that (incorrectly) assume the interpreter is dynamically linking libpython
+   * Allow the experimental JIT to be enabled at runtime on Python 3.13 and 3.14 on macOS on aarch64 aka Apple Silicon
+   * See the python-build-standalone release notes for more details.
+ * Bug fixes
+   * Make uv version lock and sync
+   * Fix references to ldd in diagnostics to correctly refer to ld.so 
+ * Documentation
+   * Clarify adding SSH Git dependencies</comment>
+    <requestid>1280090</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon May 26 08:51:37 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.7.8
+ * Standalone Python
+   + revert almost all changesd from 0.7.6 - 0.7.7 due misscompilation
+ * Documentation
+   * Remove misleading line in pin documentation
+
+-------------------------------------------------------------------
+Fri May 23 13:15:53 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.7.7:
+ * Python
+   * Work around third-party packages that (incorrectly) assume the interpreter is dynamically linking libpython
+   * Allow the experimental JIT to be enabled at runtime on Python 3.13 and 3.14 on macOS on aarch64 aka Apple Silicon
+   * See the python-build-standalone release notes for more details.
+ * Bug fixes
+   * Make uv version lock and sync
+   * Fix references to ldd in diagnostics to correctly refer to ld.so 
+ * Documentation
+   * Clarify adding SSH Git dependencies
+
+
+-------------------------------------------------------------------
 Tue May 20 09:04:07 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.6:
