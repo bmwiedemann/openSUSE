@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 22 08:46:01 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 0.3.23:
+  * cargo update and bump version
+  * cargo lock
+  * cargo lock
+  * capitalizes the word 'list' consistently
+  * takes a suggestion from clippy
+  * update CHANGELOG
+  * bump version
+  * couple word swaps in the built-in word lists
+  * update EFF copyright information
+  * upidates Changleog
+  * upgrades Rust edition to '2024' and reformats entire codebase to be up-to-date with Rust 1.85.0
+  * cargo lock
+
+-------------------------------------------------------------------
 Tue Feb 04 07:32:29 UTC 2025 - felix.niederwanger@suse.de
 
 - Update to version 0.3.18:
