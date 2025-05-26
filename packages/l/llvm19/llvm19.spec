@@ -78,7 +78,7 @@
 %define gcc_version 13
 %endif
 
-%if %{suse_version} > 1600
+%if %{suse_version} >= 1600
 %global python_pkg python3
 %global python_bin python3
 %else

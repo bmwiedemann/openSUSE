@@ -122,4 +122,13 @@
     <comment></comment>
     <requestid>1277267</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>5c97616d32eb51ed6d28ef079edf5fa8</srcmd5>
+    <version>19.1.7</version>
+    <time>1748277589</time>
+    <user>anag_factory</user>
+    <comment>- Use generic python3 for SLES 16 as python 3.11 is dropped there.
+  [bsc#1243630] (forwarded request 1280063 from rguenther)</comment>
+    <requestid>1280064</requestid>
+  </revision>
 </revisionlist>

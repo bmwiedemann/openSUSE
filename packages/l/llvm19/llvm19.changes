@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 26 08:06:27 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Use generic python3 for SLES 16 as python 3.11 is dropped there.
+  [bsc#1243630]
+
+-------------------------------------------------------------------
 Tue May 13 13:37:15 CEST 2025 - Ruediger Oertel <ro@suse.de>
 
 - Enable build of libc++ for ppc64le
