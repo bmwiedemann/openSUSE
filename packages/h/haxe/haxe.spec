@@ -40,10 +40,9 @@ BuildRequires:  ocaml >= 4.08
 BuildRequires:  ocaml-dune
 BuildRequires:  ocamlfind(camlp5)
 BuildRequires:  ocamlfind(camlp-streams)
-BuildRequires:  ocaml-extlib-devel >= 1.8.0
+BuildRequires:  ocamlfind(extlib) >= 1.8.0
 BuildRequires:  ocamlfind(findlib)
-BuildRequires:  ocamlfind(luv)
-BuildRequires:  ocaml-luv-devel >= 0.5.12
+BuildRequires:  ocamlfind(luv) >= 0.5.12
 BuildRequires:  ocamlfind(ptmap)
 BuildRequires:  ocamlfind(sedlex)
 BuildRequires:  ocamlfind(sha)

@@ -444,4 +444,12 @@ We're in the process of easing the installation process across different Linux d
 * https://build.opensuse.org/requests/1277575</comment>
     <requestid>1277720</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>b8b6702640c987b336cdcc9412baf329</srcmd5>
+    <version>4.3.7</version>
+    <time>1748277356</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1279808</requestid>
+  </revision>
 </revisionlist>
