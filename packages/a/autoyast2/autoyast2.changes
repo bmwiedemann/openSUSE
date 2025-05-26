@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 16 17:29:09 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
+
+- Move also the firewall section before software in inst_autosetup
+  (bsc#1243185).
+- 5.0.7
+
+-------------------------------------------------------------------
 Thu Mar 27 17:24:54 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
 
 - Load default security settings before importing the section to
@@ -2473,8 +2480,8 @@ Thu Jan 14 10:22:53 CET 2016 - schubi@suse.de
   AutoYaST configuration file. (bnc#961320)
 - 3.1.110
 
--------------------------------------------------------------------
 
+-------------------------------------------------------------------
 Wed Jan 13 11:40:25 UTC 2016 - igonzalezsosa@suse.com
 
 - Fix validation of AutoYaST profiles (bsc#954412)
@@ -2515,8 +2522,8 @@ Wed Nov 25 13:22:56 UTC 2015 - lslezak@suse.cz
   fixes exporting wrong package selection caused by deployment of
   the installation images (bsc#956325, bsc#910728)
 
--------------------------------------------------------------------
 
+-------------------------------------------------------------------
 Fri Nov 20 11:44:16 CET 2015 - schubi@suse.de
 
 - Evaluating needed YAST packages which are defined in the
@@ -2953,8 +2960,8 @@ Fri Jul 25 12:00:17 UTC 2014 - jsrain@suse.cz
   (bnc#885634)
 - 3.1.51
 
--------------------------------------------------------------------
 
+-------------------------------------------------------------------
 Tue Jul 22 13:57:40 CEST 2014 - schubi@suse.de
 
 - Calling bootloader configuration before evaluating package selection.
