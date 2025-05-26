@@ -16,19 +16,19 @@
 #
 
 
-%define _suffix ga10
+%define _suffix ga6
 %define _fullname suite3270-%{version}%{_suffix}
 %define _x026ver 1.2
 Name:           x3270
-Version:        4.3
+Version:        4.4
 Release:        0
 Summary:        A Family of IBM 3270 Terminal Emulators
 License:        MIT
 Group:          System/X11/Terminals
 URL:            https://x3270.miraheze.org
 #Git-Clone:     https://github.com/pmattes/x3270
-Source0:        https://download.sourceforge.net/x3270/%{_fullname}-src.tgz
-Source1:        https://download.sourceforge.net/x3270/x026-%{_x026ver}.tgz
+Source0:        https://downloads.sourceforge.net/project/x3270/x3270/%{version}%{_suffix}/%{_fullname}-src.tgz#/%{_fullname}-src.tar.gz
+Source1:        https://downloads.sourceforge.net/project/x3270/x026/%{_x026ver}/x026-%{_x026ver}.tgz
 Source2:        x3270.desktop
 Patch0:         mknod.patch
 Patch100:       usr_local_bin.patch
@@ -118,6 +118,7 @@ x026 is a fun toy which emulates an x026 puncher.
 find . -name ".gitignore" -delete
 
 %build
+%global _lto_cflags %{nil}
 export CFLAGS="%{optflags}"
 export LIBX3270DIR=%{_sysconfdir}/x3270
 %configure \
@@ -133,7 +134,13 @@ export LIBX3270DIR=%{_sysconfdir}/x3270
   --with-fontdir=%{_miscfontsdir}
 # There is broken generated makefile
 sed -i -e 's:$(FALLBACKS_:$(FALLBACKS):g' x3270/Makefile
-%make_build LIBX3270DIR=${LIBX3270DIR} unix CC="gcc %{optflags}"
+if test -n "$SOURCE_DATE_EPOCH"
+then
+    # there is a mistake in Common/mkersion.py
+    SOURCE_DATE_EPOCH="$(date --date="@$SOURCE_DATE_EPOCH" +'%%a %%b %%d %%H:%%M:%%S %%Z %%Y')"
+fi
+# Choose -j 1 otherwise wrong order with missed dependencies
+%make_build -j 1 LIBX3270DIR=${LIBX3270DIR} unix CC="gcc ${CFLAGS}"
 # the IBM 026 keypunch emulator
 cd x026-%{_x026ver}
     xmkmf
