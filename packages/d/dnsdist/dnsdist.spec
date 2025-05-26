@@ -1,7 +1,7 @@
 #
 # spec file for package dnsdist
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@
 %bcond_with     dnsdist_luajit
 %endif
 Name:           dnsdist
-Version:        1.9.7
+Version:        1.9.10
 Release:        0
 Summary:        A highly DNS-, DoS- and abuse-aware loadbalancer
 License:        GPL-2.0-only

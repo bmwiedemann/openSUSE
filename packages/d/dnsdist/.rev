@@ -138,4 +138,13 @@
   in update</comment>
     <requestid>1221287</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>98f7bf1d4f6cb7783edbb40e9bd21def</srcmd5>
+    <version>1.9.10</version>
+    <time>1748277636</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.9.10: (bsc#1243378, bsc#1242028, CVE-2025-30194, CVE-2025-30193)
+  https://www.dnsdist.org/changelog.html#change-1.9.10</comment>
+    <requestid>1280131</requestid>
+  </revision>
 </revisionlist>
