@@ -2180,4 +2180,50 @@
   * Fixed Kontent Detector (#4122) (forwarded request 1276810 from ph03nix)</comment>
     <requestid>1276866</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>205c3d0f9adc32c94400e4ba5a1580ca</srcmd5>
+    <version>3.88.34</version>
+    <time>1748283405</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.88.34:
+  * Prevent indefinite hang for sql server detector (#4174)
+  * feat: allow input source from pipe (#4088)
+  * Enhanced smartsheets detector (#4168)
+- Update to version 3.88.33:
+  * Added support for indeterminate verification for letter Z detectors (#4165)
+  * Change filesystem unit enumeration to use provided inputs (#4163)
+- Update to version 3.88.32:
+  * Fixed Grafana detector (#4166)
+  * Reduce verbosity of chunk trace logging (#4161)
+  * Increase postman logging verbosity (#4160)
+  * Change github file extension log message verbosity (#4159)
+  * docs: fix typos (#4158)
+Note: The previously pushed version 3.89.0 never existed. This was a typo, which in conjunction with using the wrong revision caused the 'main' branch to be packaged.
+- Fix _service file (change revision from main to the actual tag)
+- Update to version 3.88.31:
+  * fix(twitch): Update Twitch detector to handle new RawV2 field and adjust test expectations (#4150)
+  * Add a bunch of Postman logging (#4154)
+  * Added DataBricks Analyzer (#4135)
+  * fixed shopify detector line number (#4149)
+  * chore: run setup-go after checkout (#4143)
+  * Add per-chunk detection logging (#4152)
+  * [Feat] Added Dropbox API OAuth2 Token Analyzer (#4080)
+  * Updated Github Source Validate method (#4144)
+  * replace anthropic reference with groq (#4147)
+  * [Fix] Line number issue for custom detector (#3997)
+- Update to version 3.89.0:
+  * Updated Github Source Validate method (#4144)
+  * replace anthropic reference with groq (#4147)
+  * [Fix] Line number issue for custom detector (#3997)
+  * fix(postman): prevent infinite recursion in variable substitution (#4145)
+  * Add metrics to the Postman source (#4142)
+  * [Feat] Implementation of Posthog Analyzer (#4103)
+  * [Feat] Added Mux API Analyzer (#4128)
+  * fixed name of netlify analyzer in cli output (#4140)
+  * fix(discordwebhook): Update Discord webhook detector to support 19-digit IDs (#4133)
+  * [Feat] Added New AccuWeather Detector Version (#4114)
+  * [Feat] Added Ngrok API Key Analyzer (#4110)
+  * Improved JDBC Detector Regex (#4109) (forwarded request 1279988 from ph03nix)</comment>
+    <requestid>1280315</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon May 26 07:09:24 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.88.34:
+  * Prevent indefinite hang for sql server detector (#4174)
+  * feat: allow input source from pipe (#4088)
+  * Enhanced smartsheets detector (#4168)
+
+-------------------------------------------------------------------
+Mon May 26 07:08:38 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.88.33:
+  * Added support for indeterminate verification for letter Z detectors (#4165)
+  * Change filesystem unit enumeration to use provided inputs (#4163)
+
+-------------------------------------------------------------------
+Thu May 22 08:48:45 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.88.32:
+  * Fixed Grafana detector (#4166)
+  * Reduce verbosity of chunk trace logging (#4161)
+  * Increase postman logging verbosity (#4160)
+  * Change github file extension log message verbosity (#4159)
+  * docs: fix typos (#4158)
+
+-------------------------------------------------------------------
+Wed May 21 14:22:16 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+Note: The previously pushed version 3.89.0 never existed. This was a typo, which in conjunction with using the wrong revision caused the 'main' branch to be packaged.
+
+- Fix _service file (change revision from main to the actual tag)
+- Update to version 3.88.31:
+  * fix(twitch): Update Twitch detector to handle new RawV2 field and adjust test expectations (#4150)
+  * Add a bunch of Postman logging (#4154)
+  * Added DataBricks Analyzer (#4135)
+  * fixed shopify detector line number (#4149)
+  * chore: run setup-go after checkout (#4143)
+  * Add per-chunk detection logging (#4152)
+  * [Feat] Added Dropbox API OAuth2 Token Analyzer (#4080)
+  * Updated Github Source Validate method (#4144)
+  * replace anthropic reference with groq (#4147)
+  * [Fix] Line number issue for custom detector (#3997)
+
+-------------------------------------------------------------------
+Mon May 19 08:16:17 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.89.0:
+  * Updated Github Source Validate method (#4144)
+  * replace anthropic reference with groq (#4147)
+  * [Fix] Line number issue for custom detector (#3997)
+  * fix(postman): prevent infinite recursion in variable substitution (#4145)
+  * Add metrics to the Postman source (#4142)
+  * [Feat] Implementation of Posthog Analyzer (#4103)
+  * [Feat] Added Mux API Analyzer (#4128)
+  * fixed name of netlify analyzer in cli output (#4140)
+  * fix(discordwebhook): Update Discord webhook detector to support 19-digit IDs (#4133)
+  * [Feat] Added New AccuWeather Detector Version (#4114)
+  * [Feat] Added Ngrok API Key Analyzer (#4110)
+  * Improved JDBC Detector Regex (#4109)
+
+-------------------------------------------------------------------
 Mon May 12 10:16:56 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 3.88.29:
