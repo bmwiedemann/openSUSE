@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri May  9 10:37:16 UTC 2025 - Noel Power <nopower@suse.com>
+
+- Update and rename update-apparmor-samba-profile script to
+  update-samba-security-profile. It additionally now caters
+  for selinux (if selinux is used); (bsc#1241391);
+
+-------------------------------------------------------------------
+Wed Apr 30 11:49:35 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
+
+- Update smb.conf to enable SMB3 unix extensions
+
+-------------------------------------------------------------------
+Tue Apr 22 10:08:04 UTC 2025 - Noel Power <nopower@suse.com>
+
+- Update to 4.22.1
+  * Running "gpo manage motd set" twice fails with backtrace;
+    (bso#15774).
+  * samba-tool gpo backup creates entity backups it can't read;
+    (bso#15829).
+  * gp_cert_auto_enroll_ext.py has problem unpacking GUIDs with
+    prepended 0's; (bso#15839).
+  * Deadlock between two smbd processes; (bso#15767).
+  * Subnet based interfaces definition not listening on all
+    covered IP addresses; (bso#15823).
+  * PANIC: assert failed at source3/smbd/smb2_oplock.c(156):
+    sconn->oplocks.exclusive_open>=0; (bso#15836).
+  * net ad join fails with "Failed to join domain: failed to
+    create kerberos keytab"; (bso#15727).
+  * Enable support for cephfs case insensitive behavior;
+    (bso#15822).
+  * Remove of file or directory not possible with vfs_acl_tdb;
+    (bso#15791).
+  * Wide link issue in samba 4.22; (bso#15841).
+  * NT_STATUS_INVALID_PARAMETER: Can't create folders on share of
+    an exfat file system; (bso#15845).
+  * Lease code is not endian-safe; (bso#15849).
+  * vfs_ceph_new module does not work with other modules for
+    snapshot management; (bso#15818).
+  * vfs_ceph_new: Add path based fallback for SMB_VFS_FCHOWN,
+    SMB_VFS_FCHMOD and SMB_VFS_FNTIMES; (bso#15834).
+  * Add async io API from libcephfs to ceph_new VFS module;
+    (bso#15810).
+
+-------------------------------------------------------------------
 Wed Mar 12 15:03:15 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 4.22.0

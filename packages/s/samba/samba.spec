@@ -168,7 +168,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.22.0+git.379.98f46fb51c
+Version:        4.22.1+git.393.a3fcbaec1e5
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -866,7 +866,7 @@ for script in ${startScripts}; do
 done
 install -m 0755 tools/nmbstatus %{buildroot}/%{_bindir}/nmbstatus
 pod2man tools/nmbstatus >%{buildroot}/%{_mandir}/man1/nmbstatus.1
-install -m 0755 tools/update-apparmor-samba-profile \
+install -m 0755 tools/update-samba-security-profile \
 	%{buildroot}/%{_datadir}/samba/
 # PDF generator
 install -p -m 0755 tools/smbprngenpdf %{buildroot}/%{_bindir}/smbprngenpdf
@@ -1195,7 +1195,7 @@ exit 0
 %attr(0644,root,root) %{_datadir}/omc/svcinfo.d/nmb.xml
 %attr(0644,root,root) %{_datadir}/omc/svcinfo.d/smb.xml
 %dir %{_datadir}/samba
-%{_datadir}/samba/update-apparmor-samba-profile
+%{_datadir}/samba/update-samba-security-profile
 %{_mandir}/man1/smbstatus.1.*
 %{_mandir}/man1/wspsearch.1.*
 %{_mandir}/man5/smbpasswd.5.*
