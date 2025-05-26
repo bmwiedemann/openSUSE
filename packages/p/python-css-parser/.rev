@@ -77,4 +77,12 @@
   * tests: adjust exception string checks for python 3.11</comment>
     <requestid>1124874</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6d275edf1b0f66af29582f1c59b96788</srcmd5>
+    <version>1.0.10</version>
+    <time>1748277631</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1280139</requestid>
+  </revision>
 </revisionlist>
