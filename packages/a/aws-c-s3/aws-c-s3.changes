@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 19 08:47:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.18
+  * Revert "[s3_meta_request]: Retry on ExpiredToken" by @waahm7 in (#518)
+
+-------------------------------------------------------------------
 Wed May  7 11:27:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.17
