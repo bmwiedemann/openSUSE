@@ -17,19 +17,18 @@
 
 
 Name:           meslo-lg-fonts
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        Meslo LG Font Family
 License:        Apache-2.0
 Group:          System/X11/Fonts
 URL:            https://github.com/andreberg/Meslo-Font
 # Upstream source 1.2.1:
-# https://github.com/andreberg/Meslo-Font/archive/v1.2.1.tar.gz
-# Downstream source 1.2.2:
-# https://github.com/regularhunter/Meslo-Font/archive/1.2.2.tar.gz
+# https://github.com/andreberg/Meslo-Font
+# Downstream source 1.2.5:
+# https://github.com/regularhunter/Meslo-Font
 Source0:        Meslo_LG_v%{version}.zip
 Source1:        README.md
-Source2:        COPYING
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 Recommends:     meslo-lg-dz-fonts
@@ -43,7 +42,6 @@ a customized Bitstream Vera Sans Mono).
 %prep
 %setup -qn "Meslo_LG_v%{version}"
 cp %{SOURCE1} .
-cp %{SOURCE2} .
 # %%doc doesn't work with spaces. Let's rename the file.
 mv -f "About Meslo LG v%{version}.pdf" About_Meslo_LG_v%{version}.pdf
 
@@ -56,7 +54,7 @@ install -Dpm 644 *.ttf "%{buildroot}/%{_ttfontsdir}/"
 %reconfigure_fonts_scriptlets
 
 %files
-%doc About_Meslo_LG_v%{version}.pdf COPYING README.md
+%doc About_Meslo_LG_v%{version}.pdf LICENSE COPYRIGHT README.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/*.ttf
 

@@ -91,4 +91,15 @@
 </comment>
     <requestid>1279134</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>462bdc1ffff71bbad9465644afeebc3f</srcmd5>
+    <version>1.2.5</version>
+    <time>1748277299</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.2.5:
+  * Revert invalid OS/2 version back to 3
+  * Add license and copyright notice to release archive
+</comment>
+    <requestid>1279868</requestid>
+  </revision>
 </revisionlist>
