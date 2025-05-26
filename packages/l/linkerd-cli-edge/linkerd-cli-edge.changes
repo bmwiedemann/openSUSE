@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri May 23 05:12:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.5.4:
+  * build(deps): bump @babel/eslint-plugin from 7.27.0 to 7.27.1 in
+    /web/app (#14013)
+  * build(deps): bump DavidAnson/markdownlint-cli2-action from
+    19.1.0 to 20.0.0 (#14032)
+  * build(deps): bump bitflags from 2.9.0 to 2.9.1 (#14026)
+  * build(deps): bump cc from 1.2.21 to 1.2.23 (#14035)
+  * build(deps): bump codecov/codecov-action from 5.4.2 to 5.4.3
+    (#14031)
+  * build(deps): bump core-js from 3.41.0 to 3.42.0 in /web/app
+    (#14014)
+  * build(deps): bump errno from 0.3.11 to 0.3.12 (#14040)
+  * build(deps): bump github.com/prometheus/common from 0.63.0 to
+    0.64.0 (#14030)
+  * build(deps): bump google.golang.org/grpc from 1.72.0 to 1.72.1
+    (#14025)
+  * build(deps): bump hyper-util from 0.1.11 to 0.1.12 (#14038)
+  * build(deps): bump rustls-webpki from 0.103.2 to 0.103.3
+    (#14017)
+  * build(deps): bump the clap group with 2 updates (#14015)
+  * build(deps): bump tj-actions/changed-files (#14019)
+  * build(deps): bump tj-actions/changed-files (#14045)
+  * build(deps): bump tower-http from 0.6.3 to 0.6.4 (#14018)
+  * build(deps): bump windows-core from 0.61.0 to 0.61.2 (#14039)
+  * build(deps): bump windows-result from 0.3.2 to 0.3.4 (#14042)
+  * build(deps): bump windows-strings from 0.4.0 to 0.4.2 (#14041)
+  * build(deps-dev): bump webpack from 5.99.7 to 5.99.8 in /web/app
+    (#14012)
+  * chore(deps): sort and organize dependencies (#13969)
+  * chore(readme): trivial copyright date bump (#14023)
+  * chore: Update MAINTAINERS.md (#14044)
+
+-------------------------------------------------------------------
 Thu May 15 10:40:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.5.3:
