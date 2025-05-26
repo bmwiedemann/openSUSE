@@ -1,0 +1,25 @@
+[Unit]
+Description=MistServer streaming media toolkit
+Documentation=https://docs.mistserver.org
+After=network.target network-online.target
+
+[Service]
+User=mistserver
+Group=mistserver
+ExecStart=/usr/bin/MistController --config /etc/MistServer.json
+TimeoutStopSec=8
+TasksMax=infinity
+ProtectSystem=full
+ReadWritePaths=/etc/MistServer.json
+ProtectHome=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

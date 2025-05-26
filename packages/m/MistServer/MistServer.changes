@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Sun May 11 19:10:14 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Make it final
+
+-------------------------------------------------------------------
+Sat May 10 20:42:56 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Debug dependancy unresolvability 
+
+-------------------------------------------------------------------
+Fri May  9 22:07:21 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Fix user config install X2
+
+-------------------------------------------------------------------
+Fri May  9 22:03:16 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Fix user config install
+
+-------------------------------------------------------------------
+Wed May  7 22:32:14 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Finilize project for the first Factory release.
+
+-------------------------------------------------------------------
+Mon May  5 13:14:45 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Remove unneeded and dangerous /dev/shm cleanup from the systemd service file.
+
+-------------------------------------------------------------------
+Mon May  5 12:40:29 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Remove unneeded build dependencies.
+
+-------------------------------------------------------------------
+Sun May  4 14:29:59 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Temporarily switch to home selfbuilt libraries to produce complete working builds.
+
+-------------------------------------------------------------------
+Fri May  2 21:33:16 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Initial packaging, thanks to Georg, Richard, Gertjan and my imaginary friends.
