@@ -27,11 +27,7 @@ Source:         https://www.opencsg.org/OpenCSG-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libXmu-devel
-BuildRequires:  libqt5-qtbase-common-devel
-BuildRequires:  libqt5-qtbase-devel
-%ifarch %{arm32} %{arm64}
 BuildRequires:  pkgconfig(gl)
-%endif
 
 %description
 OpenCSG is a library that does image-based Constructive Solid
