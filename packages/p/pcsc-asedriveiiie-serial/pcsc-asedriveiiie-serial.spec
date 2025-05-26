@@ -45,7 +45,7 @@ chmod -x ChangeLog LICENSE README
 
 %build
 %configure
-make %{?jobs:-j%jobs} CC="%__cc" LD="%__ld" CPP="%__cpp" CXX="%__cxx"
+%make_build CC="%__cc" LD="%__ld" CPP="%__cpp" CXX="%__cxx"
 
 %install
 %makeinstall
