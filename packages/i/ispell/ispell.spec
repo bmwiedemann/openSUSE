@@ -1,7 +1,7 @@
 #
 # spec file for package ispell
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,8 @@ Patch8:         ispell-3.3.02-mkdir.patch
 Patch9:         ispell-3.3.02-strip.patch
 # PATCH-FIX-OPENSUSE correct typo (boo#966124)
 Patch10:        boo966124.dif
+# bug report and patch sent to ispell-bugs at itcorp.com
+Patch11:        ispell-3.4.06-gcc15.patch
 
 %description
 Ispell is a fast, screen-oriented spell checker that shows you your
@@ -92,9 +94,9 @@ Provides:       locale(ispell:en)
 Requires(post): bash
 Requires(post): ispell
 Requires(post): fileutils
-Requires(postun):bash
-Requires(postun):ispell
-Requires(postun):fileutils
+Requires(postun): bash
+Requires(postun): ispell
+Requires(postun): fileutils
 
 %description -n ispell-american
 This package includes a ready American dictionary for ispell. If you
@@ -113,9 +115,9 @@ Provides:       locale(ispell:en_GB)
 Requires(post): bash
 Requires(post): ispell
 Requires(post): fileutils
-Requires(postun):bash
-Requires(postun):ispell
-Requires(postun):fileutils
+Requires(postun): bash
+Requires(postun): ispell
+Requires(postun): fileutils
 
 %description -n ispell-british
 This packages includes a ready British dictionary for ispell. If you
@@ -147,6 +149,7 @@ squeeze or unsqueeze a sorted word list for better compression.
 %patch -P8  -p 0 -b .mkdir
 %patch -P9  -p 0 -b .strip
 %patch -P10 -p 0 -b .typo
+%patch -P11 -p 1
 
 %build
   PATH=$PATH:$PWD

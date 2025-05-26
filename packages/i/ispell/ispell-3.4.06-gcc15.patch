@@ -1,0 +1,86 @@
+diff -upr ispell-3.4.06.orig/deformatters/defmt-c.c ispell-3.4.06/deformatters/defmt-c.c
+--- ispell-3.4.06.orig/deformatters/defmt-c.c	2025-05-07 08:07:25.553071269 +0000
++++ ispell-3.4.06/deformatters/defmt-c.c	2025-05-07 08:32:06.505777537 +0000
+@@ -79,7 +79,8 @@ static char Rcs_Id[] =
+ #endif /* NO_FCNTL_H */
+ 
+ 
+-int		main ();	/* Filter to select C/C++ comments */
++int		main (int argc, char * argv[]);
++                                /* Filter to select C/C++ comments */
+ static int	igetchar ();	/* Read one character from stdin */
+ static int	do_slashstar ();
+ 				/* Handle C-style comments */
+diff -upr ispell-3.4.06.orig/deformatters/defmt-sh.c ispell-3.4.06/deformatters/defmt-sh.c
+--- ispell-3.4.06.orig/deformatters/defmt-sh.c	2025-05-07 08:07:25.553144518 +0000
++++ ispell-3.4.06/deformatters/defmt-sh.c	2025-05-07 08:33:16.016934294 +0000
+@@ -73,10 +73,11 @@ static char Rcs_Id[] =
+ #endif /* O_BINARY */
+ #endif /* NO_FCNTL_H */
+ 
+-int		main ();	/* Filter to select sh/bash comments */
++int		main (int argc, char * argv[]);
++                                /* Filter to select sh/bash comments */
+ static int	igetchar ();	/* Read one character from stdin */
+ static int	do_comment ();	/* Handle comments */
+-static int	do_quote ();	/* Handle quoted strings */
++static int	do_quote (int);	/* Handle quoted strings */
+ 
+ int main (argc, argv)
+     int		argc;		/* Argument count */
+diff -upr ispell-3.4.06.orig/ijoin.c ispell-3.4.06/ijoin.c
+--- ispell-3.4.06.orig/ijoin.c	2025-05-07 08:07:25.553693061 +0000
++++ ispell-3.4.06/ijoin.c	2025-05-07 08:29:30.551023141 +0000
+@@ -159,7 +159,7 @@ typedef struct
+  */
+ #undef strcmp
+ 
+-static int		(*compare) () = strcmp; /* Comparison function */
++static int		(*compare) (const char *, const char *) = strcmp; /* Comparison function */
+ static char *		emptyfield = ""; /* Use this to replace empty fields */
+ static FILE *		file1;		/* First file to join */
+ static FILE *		file2;		/* Second file to join */
+@@ -173,7 +173,7 @@ static char *		tabchar = " \t"; /* Field
+ static int		unpairable1 = 0; /* NZ if -a1 */
+ static int		unpairable2 = 0; /* NZ if -a2 */
+ 
+-extern int	strcmp ();
++extern int	strcmp (const char *, const char *);
+ 
+ int main (argc, argv)			/* Join files */
+     int			argc;		/* Argument count */
+@@ -250,10 +250,10 @@ int main (argc, argv)			/* Join files */
+ 		runs &= ~FLD_RUNS;
+ 		break;
+ 	    case 's':
+-		compare = strscmp;
++		compare = (int (*) (const char *, const char *))strscmp;
+ 		break;
+ 	    case 'u':
+-		compare = strucmp;
++		compare = (int (*) (const char *, const char *))strucmp;
+ 		break;
+ 	    default:
+ 		usage ();
+diff -upr ispell-3.4.06.orig/term.c ispell-3.4.06/term.c
+--- ispell-3.4.06.orig/term.c	2025-05-07 08:07:25.555695544 +0000
++++ ispell-3.4.06/term.c	2025-05-07 08:11:05.508653442 +0000
+@@ -196,12 +196,12 @@ static struct ltchars	ltc;
+ static struct ltchars	oltc;
+ #endif
+ #endif
+-static SIGNAL_TYPE	(*oldint) ();
+-static SIGNAL_TYPE	(*oldterm) ();
++static SIGNAL_TYPE	(*oldint) (int);
++static SIGNAL_TYPE	(*oldterm) (int);
+ #ifdef SIGTSTP
+-static SIGNAL_TYPE	(*oldttin) ();
+-static SIGNAL_TYPE	(*oldttou) ();
+-static SIGNAL_TYPE	(*oldtstp) ();
++static SIGNAL_TYPE	(*oldttin) (int);
++static SIGNAL_TYPE	(*oldttou) (int);
++static SIGNAL_TYPE	(*oldtstp) (int);
+ #endif
+ 
+ void terminit ()
+

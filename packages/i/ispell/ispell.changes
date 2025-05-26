@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  7 08:55:25 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  bug report and patch sent to ispell-bugs at itcorp.com
+  + ispell-3.4.06-gcc15.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 11:45:01 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Split off sq and unsq into an own package to provide namespace
