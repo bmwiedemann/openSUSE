@@ -1,7 +1,7 @@
 #
 # spec file for package python-distorm3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname distorm3
 Name:           python-%{modname}
 Version:        3.5.2
@@ -27,7 +26,9 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/gdabah/distorm
 Source:         https://files.pythonhosted.org/packages/source/d/distorm3/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -43,16 +44,18 @@ text.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 # tests are not packaged in the upstream tarball
 
 %files %{python_files}
 %license COPYING
-%{python_sitearch}/*
+%{python_sitearch}/distorm3
+%{python_sitearch}/distorm3-%{version}*-info
+%{python_sitearch}/_distorm3.cpython*
 
 %changelog

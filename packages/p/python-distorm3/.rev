@@ -160,4 +160,13 @@
   * added registers list for used registers in every instruction in python</comment>
     <requestid>892587</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>4eff38370f12b8ac4fca41b79be63af3</srcmd5>
+    <version>3.5.2</version>
+    <time>1748277642</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build
+</comment>
+    <requestid>1280228</requestid>
+  </revision>
 </revisionlist>
