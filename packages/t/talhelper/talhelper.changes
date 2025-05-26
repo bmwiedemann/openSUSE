@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun May 25 07:52:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.26:
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(schema): update talos-extensions.yaml JSON schema (#1020)
+  * fix(docs): remove duplicated entry
+  * fix(deps): update module github.com/google/go-containerregistry
+    to v0.20.5
+  * chore(schema): update talos-extensions.yaml JSON schema (#1018)
+  * fix(deps): update module github.com/google/go-containerregistry
+    to v0.20.4
+  * docs: tweaked documentation a bit (#1014)
+  * feat(config): allow go template inside `extraManifests` files
+  * chore(github-action): update renovatebot/github-action action
+    to v42.0.3
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.25
+  * feat: update Scoop for talhelper version v3.0.25
+  * feat: update flake (#1009)
+
+-------------------------------------------------------------------
 Sat May 17 07:07:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.25:
