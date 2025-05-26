@@ -1,7 +1,7 @@
 #
 # spec file for package virt-viewer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,9 @@ BuildRequires:  libgovirt-devel
 BuildRequires:  libpixman-1-0-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  meson
+%if 0%{?suse_version} < 1600 || 0%{?suse_version} >= 1699
 BuildRequires:  spice-gtk-devel
+%endif
 BuildRequires:  vte-devel
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-vnc-2.0)
@@ -74,6 +76,11 @@ the display, and libvirt for looking up VNC server details.
 %prep
 %autosetup -p1
 
+%if 0%{?suse_version} < 1600 || 0%{?suse_version} >= 1699
+%define have_spice -Dspice=enabled
+%else
+%define have_spice -Dspice=disabled
+%endif
 %if ! %{with_govirt}
 %define govirt_arg -Dovirt=disabled
 %else
@@ -82,7 +89,7 @@ the display, and libvirt for looking up VNC server details.
 
 %build
 %meson \
-    -Dspice=enabled \
+    %{have_spice} \
     %{govirt_arg} \
     %{nil}
 %meson_build

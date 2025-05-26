@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 23 13:47:44 MDT 2025 - carnold@suse.com
+
+- Disable spice for running on SLES16 (jsc#PED-12706)
+  virt-viewer.spec
+
+-------------------------------------------------------------------
 Sat Mar  1 11:35:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop libglade2-devel BuildRequires: Converted from Glade to

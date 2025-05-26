@@ -606,4 +606,12 @@
     <comment></comment>
     <requestid>1249894</requestid>
   </revision>
+  <revision rev="77" vrev="7">
+    <srcmd5>f1afb602b05aa981c0ab120aaef8d0e7</srcmd5>
+    <version>11.0</version>
+    <time>1748277291</time>
+    <user>anag_factory</user>
+    <comment>Disable building with spice for virt-viewer on SLES16</comment>
+    <requestid>1279670</requestid>
+  </revision>
 </revisionlist>
