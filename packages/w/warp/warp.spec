@@ -1,7 +1,7 @@
 #
 # spec file for package warp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,19 @@
 #
 
 
-%define _lto_cflags %{nil}
+# Check license crate and data version from vendor.tar.zst
+# The vendored dir will be named as vendor/license-<lic_crate_ver>+<lic_data_ver>/
+%define lic_crate_ver 3.6.0
+%define lic_data_ver 3.26.0
 Name:           warp
-Version:        0.8.0
+Version:        0.9.2
 Release:        0
 Summary:        App to securely send files via the internet or local network
 License:        GPL-3.0-or-later
 URL:            https://apps.gnome.org/en-GB/app/app.drey.Warp/
-Source0:        %{name}-%{version}.tar
+Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+Source2:        https://github.com/spdx/license-list-data/archive/refs/tags/v%{lic_data_ver}.tar.gz#/license-list-data-%{version}.tar.gz
 BuildRequires:  cargo-packaging
 BuildRequires:  itstool
 BuildRequires:  meson
@@ -50,7 +54,9 @@ which includes local network transfer if possible.
 %lang_package
 
 %prep
-%autosetup -a1
+%autosetup -p1 -a1 -b2
+mkdir -p vendor/license-%{lic_crate_ver}+%{lic_data_ver}/license-list-data
+cp -pr ../license-list-data-%{lic_data_ver}/* vendor/license-%{lic_crate_ver}+%{lic_data_ver}/license-list-data/
 
 %build
 %meson
@@ -69,8 +75,7 @@ which includes local network transfer if possible.
 %{_datadir}/help/C/%{name}/
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/metainfo/*.metainfo.xml
-%dir %{_datadir}/warp
-%{_datadir}/warp/licenses.json
+%{_datadir}/warp/
 
 %files lang -f %{name}.lang
 
