@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 23 12:18:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.36.3:
+  * Bug Fixes
+    - deploy: improve values handling and add more trace logging;
+      undo many reverts (6bdca4a)
+
+-------------------------------------------------------------------
+Fri May 23 04:56:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.36.2:
+  * Bug Fixes
+    - build, stapel: fix service git apply patch failed (#6871)
+      (31d3b88)
+    - deploy: wrong values rendered (many reverts) (1fc5833)
+    - giterminism: fix error in case of using invalid git worktree
+      (#6867) (48596ae)
+    - stapel: fix git apply patch error handling (81314a8)
+
+-------------------------------------------------------------------
 Tue May 20 10:34:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.36.1:
