@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun May 25 08:07:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.88:
+  * no CLI-related changes in this release
+- update to 0.8.87:
+  * Meshery CLI
+    - updated the server url for component search @VinayCheripally (#14755)
+- update to 0.8.86:
+  * no CLI-related changes in this release
+- update to 0.8.85:
+  * no CLI-related changes in this release
+  * Maintenance
+    - Bump github.com/open-policy-agent/opa from 1.0.1 to 1.4.0
+      @dependabot (#14631)
+- update to 0.8.84:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
 Tue May 20 10:54:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.83:
