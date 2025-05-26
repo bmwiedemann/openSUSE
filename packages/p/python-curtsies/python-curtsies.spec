@@ -1,7 +1,7 @@
 #
 # spec file for package python-curtsies
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-curtsies
@@ -29,9 +28,11 @@ URL:            https://github.com/bpython/curtsies
 Source:         https://files.pythonhosted.org/packages/source/c/curtsies/curtsies-%{version}.tar.gz
 BuildRequires:  %{python_module blessed >= 1.5}
 BuildRequires:  %{python_module cwcwidth}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyte}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-blessed >= 1.5
@@ -47,10 +48,10 @@ arrays of text.
 %setup -q -n curtsies-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +61,6 @@ arrays of text.
 %license LICENSE
 %doc README.md
 %{python_sitelib}/curtsies
-%{python_sitelib}/curtsies-%{version}-py*.egg-info
+%{python_sitelib}/curtsies-%{version}*-info
 
 %changelog
