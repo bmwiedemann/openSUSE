@@ -1,7 +1,7 @@
 #
 # spec file for package gucharmap
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  unicode-ucd >= 16.0.0
 BuildRequires:  unicode-ucd-unihan
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(freetype2)
@@ -97,9 +96,6 @@ export LIBS="-ldl"
 %meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
-# We need X-SuSE-Editor to avoid an error for the categories check. We don't
-# want TextEditor, since that's too wide.
-%suse_update_desktop_file -N "GNOME Character Map" -G "Character Map" %{name} X-SuSE-Editor
 %fdupes -s %{buildroot}%{_datadir}
 
 %post -n libgucharmap%{so_api}-%{so_gucharmap} -p /sbin/ldconfig

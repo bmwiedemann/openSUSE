@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 23 13:14:13 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete update-desktop-files BuildRequires and macro.
+
+-------------------------------------------------------------------
 Tue Nov 12 09:46:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 16.0.2:
