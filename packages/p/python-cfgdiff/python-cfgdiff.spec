@@ -1,7 +1,7 @@
 #
 # spec file for package python-cfgdiff
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cfgdiff
 Version:        0.0.0+git.1641843506.dc1234a
 Release:        0
@@ -25,21 +24,13 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/evgeni/cfgdiff
 Source:         cfgdiff-%{version}.tar.xz
-BuildRequires:  %{python_module setuptools}
 ### SECTION test requirements
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module configobj}
-BuildRequires:  %{python_module dnspython}
-BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module reconfigure}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 ## /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML
-Requires:       python-configobj
-Requires:       python-dnspython
-Requires:       python-lxml
-Recommends:     python-reconfigure
 Provides:       cfgdiff
 BuildArch:      noarch
 %python_subpackages
@@ -60,10 +51,10 @@ cfgdiff currently supports the following formats:
 %setup -q -n cfgdiff-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/cfgdiff
 
@@ -74,11 +65,14 @@ cfgdiff currently supports the following formats:
 %python_uninstall_alternative cfgdiff
 
 %check
-%python_exec -m unittest discover tests/ -v
+export PYTHONPATH=.
+%pyunittest tests/test_cfgdiff.py -v
 
 %files %{python_files}
 %license LICENSE README.md
-%{python_sitelib}/*
+%{python_sitelib}/cfgdiff.py
+%{python_sitelib}/cfgdiff-*-info
+%pycache_only %{python_sitelib}/__pycache__/cfgdiff*
 %python_alternative %{_bindir}/cfgdiff
 
 %changelog
