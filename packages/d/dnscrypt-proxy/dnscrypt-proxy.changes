@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 21 12:00:00 UTC 2025 - cunix@mail.de
+
+- Update to version 2.1.11
+  * web-based monitoring user interface added
+  * configuration files hot-reloading implemented
+  * HTTP/3 probing
+  * added parallel downloading of block lists
+
+-------------------------------------------------------------------
 Fri Mar 28 03:02:02 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Updated to version 2.1.8
