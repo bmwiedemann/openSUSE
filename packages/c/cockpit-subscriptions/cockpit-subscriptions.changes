@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri May 23 08:57:51 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Add load-css-overrides.patch to add branding styling
+
+-------------------------------------------------------------------
+Thu May  8 09:03:49 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
+
+- update to version 10:
+    * Update node_modules
+    * Bug fixes
+
+-------------------------------------------------------------------
+Fri May  2 09:06:07 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
+
+- Upgrade to patternfly 6
+ * Update dependencies
+ * Update translations
+ * Bug fixes
+ * Better handling of non-superuser transitions 
+
+-------------------------------------------------------------------
 Fri Mar 21 11:59:46 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
 
 - Update to version 8

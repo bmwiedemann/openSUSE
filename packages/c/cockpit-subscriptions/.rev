@@ -19,4 +19,22 @@
   * Update node_modules</comment>
     <requestid>1255826</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>90972f2e8bece9a6715552f7af2c9daa</srcmd5>
+    <version>10</version>
+    <time>1748277228</time>
+    <user>anag_factory</user>
+    <comment>- Add load-css-overrides.patch to add branding styling
+
+- update to version 10:
+    * Update node_modules
+    * Bug fixes
+
+- Upgrade to patternfly 6
+ * Update dependencies
+ * Update translations
+ * Bug fixes
+ * Better handling of non-superuser transitions</comment>
+    <requestid>1279495</requestid>
+  </revision>
 </revisionlist>

@@ -16,7 +16,7 @@
 #
 
 Name: cockpit-subscriptions
-Version: 8
+Version: 10
 Release: 1%{?dist}
 Summary: Cockpit module for managing and registering subscriptions
 License: LGPL-2.1-or-later
@@ -26,6 +26,7 @@ Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 Source12:       update_version.sh
 %include %_sourcedir/node_modules.spec.inc
+Patch10:        load-css-overrides.patch
 
 BuildArch: noarch
 BuildRequires: local-npm-registry
@@ -37,14 +38,14 @@ BuildRequires: gettext
 Requires: cockpit-bridge
 Requires: suseconnect-ng
 
-Provides: bundled(npm(@patternfly/patternfly)) = 5.4.2
-Provides: bundled(npm(@patternfly/react-core)) = 5.4.12
-Provides: bundled(npm(@patternfly/react-icons)) = 5.4.2
-Provides: bundled(npm(@patternfly/react-styles)) = 5.4.1
-Provides: bundled(npm(@patternfly/react-tokens)) = 5.4.1
+Provides: bundled(npm(@patternfly/patternfly)) = 6.2.3
+Provides: bundled(npm(@patternfly/react-core)) = 6.2.2
+Provides: bundled(npm(@patternfly/react-icons)) = 6.2.2
+Provides: bundled(npm(@patternfly/react-styles)) = 6.2.2
+Provides: bundled(npm(@patternfly/react-tokens)) = 6.2.2
 Provides: bundled(npm(attr-accept)) = 2.2.5
 Provides: bundled(npm(file-selector)) = 2.1.2
-Provides: bundled(npm(focus-trap)) = 7.6.2
+Provides: bundled(npm(focus-trap)) = 7.6.4
 Provides: bundled(npm(js-tokens)) = 4.0.0
 Provides: bundled(npm(loose-envify)) = 1.4.0
 Provides: bundled(npm(object-assign)) = 4.1.1
@@ -61,7 +62,7 @@ Provides: bundled(npm(tslib)) = 2.8.1
 A Cockpit module for managing and registering subscriptions
 
 %prep
-%autosetup
+%autosetup -p1
 rm -f package-lock.json
 local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts
 

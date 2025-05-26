@@ -1,0 +1,24 @@
+From 508eb7e9e3e0dcc1c78fe5990ec5703497fff3d2 Mon Sep 17 00:00:00 2001
+From: Alice Brooks <alice.brooks@suse.com>
+Date: Thu, 22 May 2025 11:37:35 +0100
+Subject: [PATCH] Add patch to include css-overrides
+
+---
+ src/index.html | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/index.html b/src/index.html
+index 0ab9c45..45125b4 100644
+--- a/src/index.html
++++ b/src/index.html
+@@ -23,6 +23,7 @@ along with this package; If not, see <http://www.gnu.org/licenses/>.
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <link rel="stylesheet" href="index.css">
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+ 
+     <script type="text/javascript" src="index.js"></script>
+     <script type="text/javascript" src="po.js"></script>
+-- 
+2.49.0
+
