@@ -1,7 +1,7 @@
 #
 # spec file for package quadrapassel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ Source0:        https://download.gnome.org/sources/quadrapassel/40/%{name}-%{ver
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.24.0
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(clutter-1.0) >= 1.0.0
