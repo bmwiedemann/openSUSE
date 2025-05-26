@@ -1,7 +1,7 @@
 #
 # spec file for package log4net
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ BuildRequires:  mono-basic
 BuildRequires:  mono-data-sqlite
 BuildRequires:  mono-devel
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildArch:      noarch
 #=============================================================================
 
