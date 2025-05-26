@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu May 22 13:31:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.26.1:
+  * fix(dotnet-deps-cataloger): avoid repeated dependency
+    resolution (#3930)
+  * chore(deps): update tools to latest versions (#3921)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#3925)
+
+-------------------------------------------------------------------
+Wed May 21 04:30:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.26.0:
+  * Added Features
+    - Read version resources from non-.NET DLLs and executables
+      [#3842 #3911 @wagoodman]
+  * Bug Fixes
+    - pkg.JavaArchive.PomProperties is being populated even though
+      no pom.properties file was present for analysis [#3922
+      @wagoodman]
+    - syft 1.24.0 debug container - wget fails TLS [#3891 #3915
+      @spiffcs]
+  * Dependencies
+    - chore(deps): update CPE dictionary index (#3913)
+
+-------------------------------------------------------------------
 Sat May 17 07:14:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.25.1:
