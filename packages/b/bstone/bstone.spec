@@ -18,7 +18,7 @@
 
 
 Name:           bstone
-Version:        1.2.14
+Version:        1.2.16
 Release:        0
 Summary:        A source port of Blake Stone
 # bstone is GPL-2.0+, but statically links GLM (MIT license), STB (public domain or MIT), and xbrz (GPL-3.0+)

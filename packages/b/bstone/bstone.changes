@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 13 19:00:19 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.16
+  Added
+  * Exclusive fullscreen mode and borderless fullscreen windowed
+    mode.
+  * Cvar to control refresh rate in exclusive fullscreen mode
+    (vid_refresh_rate).
+  * Cvar to control window mode (vid_window_mode).
+  Fixed
+  * [CMake] Do not use command 'project' in the intermediate
+    scripts.
+- Update to version 1.2.15
+  Fixed
+  * MacOS build with embeded SDL v2.32.2.
+
+-------------------------------------------------------------------
 Sat Mar 22 08:22:24 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.14
