@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri May 23 22:08:11 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 2.1.5:
+  + Full Changelog:
+    https://github.com/gnome-terminator/terminator/compare/v2.1.4...v2.1.5
+  + Fix invalid escape sequences
+  + Add plugin to clone ssh and container sessions when terminal is split
+  + Add reverse search keyboard binding
+  + fix translation in popup menu
+  + Searchbar improvements
+  + 3.8 is not supported by GH anymore
+  + [bug 949] its reported in the issue that the save button in la…
+  + fix test failure
+  + Ensure that when the layout item is changed the layout sub item also gets reset to first item, else KeyError is thrown
+  + Clean up VTE notification-received signal check
+  + Fix TypeError in reconfigure() of terminal.py (line 753)
+  + Updates for file po/terminator.pot in hu
+
+-------------------------------------------------------------------
 Fri May 31 14:12:40 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 2.1.4:

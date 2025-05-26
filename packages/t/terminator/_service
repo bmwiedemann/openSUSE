@@ -1,8 +1,8 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="versionprefix">2.1.4</param>
+    <param name="versionprefix">2.1.5</param>
     <param name="url">https://github.com/gnome-terminator/terminator.git</param>
-    <param name="revision">730c1fb2cde620bce9a085a5adf4ffbabfc98334</param>
+    <param name="revision">590a9cd349763094b4018c64b010542fa9675f7e</param>
     <param name="scm">git</param>
     <param name="submodules">enable</param>
     <param name="changesgenerate">disable</param>

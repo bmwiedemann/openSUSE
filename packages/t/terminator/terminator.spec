@@ -1,7 +1,7 @@
 #
 # spec file for package terminator
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define _mtime 1717035565
-%define _commit 730c1fb
+%define _mtime 1747876956
+%define _commit 590a9cd3
 
 %global __requires_exclude typelib\\(Gnome\\)
 Name:           terminator
-Version:        2.1.4
+Version:        2.1.5
 Release:        0
 Summary:        Store and run multiple GNOME terminals in one window
 License:        GPL-2.0-only
@@ -82,6 +82,9 @@ python3 setup.py build
 python3 setup.py install --root=%{buildroot} --prefix=%{_prefix}
 
 rm %{buildroot}/%{_datadir}/applications/%{name}.desktop
+
+# Fix broken python shebang on main executable
+sed -i 's/#!python/#!\/usr\/bin\/env python3/g' %{buildroot}/%{_bindir}/%{name}
 
 desktop-file-install --vendor="" --dir=%{buildroot}%{_datadir}/applications data/%{name}.desktop
 %suse_update_desktop_file %{name}
