@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 21 07:18:59 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20250520:
+  * Actualización de lista de extensiones del dominio ec en orden alfabético (#2420)
+  * remove wildcard from `*.my.canvasite.cn` and `*.my.canva.site` (#2477)
+  * Add biz.gh and net.gh SLD to Public Suffix List (#2455)
+  * util: gTLD data autopull updates for 2025-05-17T15:16:58 UTC (#2480)
+  * Update public_suffix_list.dat (#2462)
+  * chore: move Appwrite domains (#2467)
+  * update email contact for is-a.dev (#2465)
+  * merge `Harrison Network` into `William Harrison` (#2463)
+  * remove `localhostcert.net` (#2464)
+  * remove `PSL Sandbox` (#2460)
+  * Add code tags to domains in README
+  * fix(readme): remove preceding dots (#2456)
+  * util: gTLD data autopull updates for 2025-04-30T15:19:32 UTC (#2454)
+  * Adding `onid.ca` (#2452)
+  * util: gTLD data autopull updates for 2025-04-26T15:16:32 UTC (#2447)
+  * util: gTLD data autopull updates for 2025-04-24T15:19:52 UTC (#2446)
+
+-------------------------------------------------------------------
 Thu Apr 24 11:41:01 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20250424:
