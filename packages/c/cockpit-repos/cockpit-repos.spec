@@ -16,8 +16,8 @@
 #
 
 Name: cockpit-repos
-Version: 3
-Release: 1%{?dist}
+Version: 4.3
+Release: 0%{?dist}
 Summary: A Cockpit module for managing system repositories
 URL: https://github.com/openSUSE/cockpit-repos
 License: LGPL-2.1-or-later
@@ -25,8 +25,8 @@ License: LGPL-2.1-or-later
 Source0: %{name}-%{version}.tar.xz
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
-Source12:       update_version.sh
 %include %_sourcedir/node_modules.spec.inc
+Patch10:        load-css-overrides.patch
 
 BuildArch: noarch
 %if ! 0%{?suse_version}
@@ -36,6 +36,7 @@ ExclusiveArch: %{nodejs_arches} noarch
 BuildRequires: nodejs >= 18
 %endif
 BuildRequires: make
+BuildRequires: cockpit-devel >= 337
 %if 0%{?suse_version}
 # Suse's package has a different name
 BuildRequires: appstream-glib
@@ -80,11 +81,13 @@ Provides: bundled(npm(tslib)) = 2.8.1
 A Cockpit module for managing system repositories
 
 %prep
-%autosetup
+%autosetup -p1
 rm -f package-lock.json
 local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts
 
 %build
+mkdir -p pkg
+cp -r %{_datadir}/cockpit/devel/lib pkg/lib
 NODE_ENV=production make
 
 %install

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 23 08:56:38 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Add load-css-overrides.patch to add branding styling
+
+-------------------------------------------------------------------
+Thu May 15 08:46:49 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to version 4.3:
+  * misc: remove @ts-expect-error as upstream types contain addEventListener
+  * Makefile: Update Cockpit lib to c3930d9078a11407265af3972911f147
+  * cockpit-ci: Update container to 2025-05-10
+  * build(deps-dev): bump the stylelint group across 1 directory with 2 updates
+  * build(deps-dev): bump typescript-eslint/eslint-plugin
+  * Makefile: Update Cockpit lib to 2d99a737603637846d296fb2627ebedf
+  * build(deps): bump the patternfly group with 3 updates
+  * src: fix all off the typescript warnings
+  * ci: run typecheck on pullrequests
+  * misc: Add a script for checking types
+
+-------------------------------------------------------------------
 Fri Mar 21 11:53:22 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
 
 - Update to version 3
