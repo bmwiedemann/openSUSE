@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 18 14:14:51 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to version 8.87:
+  * out-of-range InsertColumn to throw exception instead of segfaulting
+  * out-of-range RemoveColumn to throw exception instead of segfaulting
+
+-------------------------------------------------------------------
 Sun Mar 23 17:17:58 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update to version 8.85:
