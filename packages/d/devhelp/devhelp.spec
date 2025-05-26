@@ -1,7 +1,7 @@
 #
 # spec file for package devhelp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ BuildRequires:  gobject-introspection-devel >= 1.30.0
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.64
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
@@ -117,15 +116,13 @@ This package contains the Devhelp plugin for Vim.
 
 %install
 %meson_install
-%suse_update_desktop_file -G "Developer Help" org.gnome.Devhelp* Documentation
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 
 # glibmm2 needs this
 mkdir -p %{buildroot}%{_datadir}/devhelp/books
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license LICENSES

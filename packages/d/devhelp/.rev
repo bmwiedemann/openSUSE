@@ -785,4 +785,12 @@
   reliable pkgconfig(gi-docgen). (forwarded request 1073110 from iznogood)</comment>
     <requestid>1073234</requestid>
   </revision>
+  <revision rev="97" vrev="3">
+    <srcmd5>269e66db5c455fb5931f4aa5604fd29c</srcmd5>
+    <version>43.0</version>
+    <time>1748277575</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1279632 from iznogood)</comment>
+    <requestid>1280033</requestid>
+  </revision>
 </revisionlist>
