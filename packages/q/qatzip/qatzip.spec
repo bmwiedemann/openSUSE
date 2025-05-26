@@ -1,7 +1,7 @@
 #
 # spec file for package qatzip
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qatzip
-Version:        1.2.0
+Version:        1.3.1
 Release:        0
 Summary:        Intel QuickAssist Technology (QAT) QATzip Library
 License:        BSD-3-Clause
@@ -28,6 +28,7 @@ Patch0:         qatzip-fortify_source=3.patch
 BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  liblz4-devel
+BuildRequires:  libnuma-devel
 BuildRequires:  libtool
 BuildRequires:  qatlib-devel >= 22.07.0
 BuildRequires:  zlib-devel >= 1.2.7
