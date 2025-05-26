@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 24 16:53:56 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.77.0:
+  * [Webview] Fixed Cloudflare challenge detection
+  * [Servers] Manga-Scantrad (FR): Update
+  * [Servers] Night scans (EN): Update
+  * [Servers] Tres Daos (ES): Update
+  * [Servers] Mangapill (EN): Update
+  * [L10n] Updated Spanish translation
+
+-------------------------------------------------------------------
 Fri May  9 18:18:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.76.1:
