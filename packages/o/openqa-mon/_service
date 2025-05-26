@@ -1,9 +1,9 @@
 <services>
   <service name="obs_scm" mode="disabled">
-    <param name="url">https://github.com/grisu48/openqa-mon.git</param>
+    <param name="url">https://github.com/os-autoinst/openqa-mon.git</param>
     <param name="scm">git</param>
-    <param name="revision">main</param>
-    <param name="version">v1.5.0</param>
+    <param name="revision">v1.5.0</param>
+	<param name="versionformat">@PARENT_TAG@</param>
 	<param name="versionrewrite-pattern">v(.*)</param>
 	<param name="changesgenerate">enable</param>
   </service>

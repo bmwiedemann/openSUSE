@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 22 08:02:54 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Switch source repo to new location
+- Fixed _service: Switch revision from main to actual version
+
+-------------------------------------------------------------------
 Wed May 14 14:57:51 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 1.5.0:

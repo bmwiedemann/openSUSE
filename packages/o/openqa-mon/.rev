@@ -210,4 +210,13 @@
   * Remove year (forwarded request 1277440 from ph03nix)</comment>
     <requestid>1277449</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c4c7909d26b5b6d6fc152bc50605442a</srcmd5>
+    <version>1.5.0</version>
+    <time>1748277669</time>
+    <user>anag_factory</user>
+    <comment>- Switch source repo to new location
+- Fixed _service: Switch revision from main to actual version (forwarded request 1279216 from ph03nix)</comment>
+    <requestid>1280314</requestid>
+  </revision>
 </revisionlist>
