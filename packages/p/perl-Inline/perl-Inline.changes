@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 24 16:54:30 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
 Fri Jan 14 14:33:59 UTC 2022 - Tina Müller <tina.mueller@suse.com>
 
 - Remove "Provides: perl-Inline-C"

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Inline
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,29 @@
 
 %define cpan_name Inline
 Name:           perl-Inline
-Version:        0.86
+Version:        0.860.0
 Release:        0
-Summary:        Write Perl Subroutines in Other Programming Languages
+# 0.86 -> normalize -> 0.860.0
+%define cpan_version 0.86
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Write Perl Subroutines in Other Programming Languages
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/I/IN/INGY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/I/IN/INGY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(JSON::PP)
 BuildRequires:  perl(Test::More) >= 0.88
-BuildRequires:  perl(Test::Warn) >= 0.23
+BuildRequires:  perl(Test::Warn) >= 0.230
 BuildRequires:  perl(version) >= 0.82
 Requires:       perl(version) >= 0.82
+Provides:       perl(Foo::Tester) = 0.20.0
+Provides:       perl(Inline) = %{version}
+Provides:       perl(Inline::Foo) = %{version}
+Provides:       perl(Inline::MakeMaker) = %{version}
+Provides:       perl(Inline::denter)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -58,8 +66,9 @@ Best of all, it works the same on both Unix and Microsoft Windows. See
 Inline- Support for support information.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
