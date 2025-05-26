@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May 22 22:46:22 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.5.1:
+  * fix(build): Bump loki-build-image for docker-driver (backport release-3.5.x) (#17741)
+  * chore(backport): fix guard clauses to prevent error spam in logs (#17715)
+  * chore(deps): update dependency vite to v6.2.7 [security] (release-3.5.x) (#17418)
+  * docs: manual backport 17548 (#17587)
+  * chore(ci): Pull in latest loki-release code for Loki 3.5 (#17586)
+  * chore(docs): Update cache docs (backport release-3.5.x) (#17566)
+  * docs: fix typos (#17534) (#17535)
+  * docs: Getting started rewrite (backport release-3.5.x) (#17559)
+  * chore(ci): Pull in latest main for .github directory in release 3.5 (#17543)
+  * docs: Created migration guide from SSD -> Distributed (backport release-3.5.x) (#17513)
+  * docs: correct spelling of lambda-promtail (backport release-3.5.x) (#17467)
+  * docs: Update attribute name (backport release-3.5.x) (#17466)
+  * docs(logcli): update command reference (backport release-3.5.x) (#17465)
+  * docs: Document the default value for the working_directory for compactor (backport release-3.5.x) (#17464)
+  * feat: prepare Loki 3.5 release
+  * chore(k248): release 3.5.0 (#16954)
+  * docs: Loki 3.5 Release Notes (backport k248) (#17392)
+
+-------------------------------------------------------------------
 Fri Apr 25 06:08:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.5.0:
