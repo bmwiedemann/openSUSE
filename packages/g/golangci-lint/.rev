@@ -789,4 +789,12 @@
   * docs: update GitHub Action assets (#5766) (forwarded request 1274257 from jfkw)</comment>
     <requestid>1274268</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>dae2a1fafc7e4764457d50356b98ddc5</srcmd5>
+    <version>2.1.6</version>
+    <time>1748277260</time>
+    <user>anag_factory</user>
+    <comment>- properly set the version information in the binary</comment>
+    <requestid>1279569</requestid>
+  </revision>
 </revisionlist>

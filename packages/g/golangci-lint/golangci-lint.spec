@@ -36,13 +36,16 @@ dozens of linters included.
 
 %build
 %ifnarch ppc64
-export GOFLAGS="-buildmode=pie"
+export GOFLAGS="-buildmode=pie -trimpath"
 %endif
-go build ./cmd/%{name}
+export BUILDDATE=$(date -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%Y-%m-%d)
+go build \
+    -ldflags "-s -w -X main.version=%{version} -X main.commit=OpenBuildService -X main.date=$BUILDDATE" \
+    ./cmd/%{name}
 
 %check
 # execute the binary as a basic check
-./%{name} --help
+./%{name} --version | grep -q "%{version}"
 
 %install
 install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
