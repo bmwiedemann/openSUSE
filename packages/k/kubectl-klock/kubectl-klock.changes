@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Mon May 26 04:58:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.8.0:
+  * New features
+    - Auto-hide deleted after duration by @applejag in #154
+      This adds a new flag --hide-deleted, which can be set to
+      either a time duration (e.g 10s, 1m, but also supports
+      additional units like 1d, 1w, not that it's super useful in
+      this case... )
+      When set, deleted rows will disappear after this duration.
+      * To always hide deleted rows you can pass
+        --hide-deleted=true.
+      * To revert back to v0.7.2's behavior of always showing
+        deleted rows, pass --hide-deleted=false
+      This includes a "behavioral breaking change ⚠️" as
+      --hide-deleted is by default set to 10s
+    - Added environment variables support by @applejag in #154
+      I always had some plumbing in kubectl-klock for using
+      environment variables. But they never worked as intended, so
+      it was never a supported use case. But now they do!
+      Command-line flags can now be controlled via environment
+      variables:
+        export KLOCK_ALL_NAMESPACES="true"                     # --all-namespaces
+        export KLOCK_FIELD_SELECTOR="status.phase!=Succeeded"  # --field-separator
+        export KLOCK_HIDE_DELETED="false"                      # --hide-deleted
+        export KLOCK_LABEL_COLUMNS="app.kubernetes.io/name"    # --label-columns
+        export KLOCK_OUTPUT="wide"                             # --output
+        export KLOCK_SELECTOR="team!=frontend"                 # --selector
+        export KLOCK_WATCH_KUBECONFIG="true"                   # --watch-kubeconfig
+      The command-line flags have precedense over the environment
+      variables. So if you set KLOCK_ALL_NAMESPACES=true then you
+      can revert the value by passing the flag
+      --all-namespaces=false
+    - Use kubecolor coloring by @applejag in #150
+      Now making use of kubecolor's table and help text coloring!
+      This includes using kubecolor's ~/.kube/color.yaml config.
+      For more information about kubecolor theme customization,
+      see: https://kubecolor.github.io/customizing/themes/
+    - Added options subcommand & hide "common flags" from kubectl
+      klock --help by @applejag in #156
+      This, together with the kubecolor help text coloring, makes
+      kubectl klock --help much more readable.
+      Help text for the "standard command-line flags" like --as,
+      --context, --kubeconfig, --token, etc have been moved to the
+      options subcommand.
+  * Changes
+    - Changed d hotkey to show deleted rows instead of hiding by
+      @applejag in #154
+      With the addition on --hide-deleted flag, the d hotkey has
+      been changed from "hide deleted rows" to "show hidden deleted
+      rows".
+  * Bug fixes
+    - Fix --context flag completion by @applejag in #153
+  * Dependencies
+    - In summary, kubectl-klock is now built using Go 1.24.3 and
+      using Kubernetes libraries for Kubernetes v1.33.1.
+    - Bump the all group with 2 updates by @dependabot in #126
+    - Bump github.com/charmbracelet/bubbletea from 1.2.1 to 1.2.2
+      in the all group by @dependabot in #127
+    - Bump the all group with 5 updates by @dependabot in #128
+    - Bump github.com/charmbracelet/bubbletea from 1.2.3 to 1.2.4
+      in the all group by @dependabot in #130
+    - Bump markdownlint-cli2 from 0.15.0 to 0.16.0 in the all group
+      by @dependabot in #131
+    - Bump markdownlint-cli2 from 0.16.0 to 0.17.0 in the all group
+      by @dependabot in #133
+    - Update Go to 1.23.4 by @applejag in #134
+    - Bump the all group with 4 updates by @dependabot in #132
+    - Bump the all group with 4 updates by @dependabot in #135
+    - Bump golang.org/x/net from 0.30.0 to 0.33.0 by @dependabot in
+      #136
+    - Bump github.com/charmbracelet/bubbletea from 1.2.4 to 1.3.0
+      in the all group by @dependabot in #137
+    - Bump the all group with 6 updates by @dependabot in #138
+    - Bump github.com/charmbracelet/bubbletea from 1.3.3 to 1.3.4
+      in the all group by @dependabot in #139
+    - Bump the all group with 6 updates by @dependabot in #141
+    - Bump golang.org/x/net from 0.33.0 to 0.36.0 by @dependabot in
+      #140
+    - Bump github.com/spf13/viper from 1.20.0 to 1.20.1 in the all
+      group by @dependabot in #142
+    - Bump github.com/fsnotify/fsnotify from 1.8.0 to 1.9.0 in the
+      all group by @dependabot in #143
+    - Bump github.com/charmbracelet/bubbles from 0.20.0 to 0.21.0
+      in the all group by @dependabot in #144
+    - Bump golang.org/x/net from 0.36.0 to 0.38.0 by @dependabot in
+      #145
+    - Bump the all group across 1 directory with 5 updates by
+      @dependabot in #147
+    - Bump markdownlint-cli2 from 0.17.2 to 0.18.0 in the all group
+      by @dependabot in #148
+    - Bump the all group with 4 updates by @dependabot in #149
+  * Non-functional changes
+    - Removed VERSION file in favor of automatic version detection
+      by @applejag in #151
+      I've also removed the CHANGELOG.md in favor of the notes I
+      write here in GitHub releases. If you relied on that before,
+      then I'm sorry for the inconvinience. But this improves
+      maintainability for me.
+    - Added build attestations by @applejag in #152
+      Since this version you should be able to verify that release
+      assets are built by me by running:
+        gh attestation verify ./kubectl-klock_linux_amd64.tar.gz --repo applejag/kubectl-klock
+    - Fixed goreleaser config warnings by @applejag in #155
+
+-------------------------------------------------------------------
+Thu May 22 05:24:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.7.2:
+  * Update VERSION
+  * Bump version in VERSION
+  * Bump github.com/charmbracelet/bubbletea in the all group (#125)
+  * Bump rajatjindal/krew-release-bot from 0.0.46 to 0.0.47 in the all group (#124)
+  * Bump markdownlint-cli2 from 0.14.0 to 0.15.0 in the all group (#123)
+  * Bump the all group with 2 updates (#122)
+  * Bump the all group with 6 updates (#121)
+  * Bump the all group with 5 updates (#119)
+  * Bump github.com/charmbracelet/bubbles in the all group (#118)
+  * Bump markdownlint-cli2 from 0.13.0 to 0.14.0 in the all group (#117)
+
+-------------------------------------------------------------------
+Thu May 22 05:24:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kubectl-klock: kubectl plugin to render watch output
+  in a more readable fashion
