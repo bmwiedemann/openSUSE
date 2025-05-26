@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr 20 05:34:51 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.17.0 (3.017)
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.017: Fri 18 Apr 18:29:10 CEST 2025
+
+  	Improvements:
+  	- add .gitignore.
+  	- warn against bounce.
+  	- Content-Disposition "reaction", RFC9078
+  	- Content-Language support, RFC3282
+  	- refer to IANA list of transfer encodings, RFC4289
+  	- refer to RFC6854 for use of address groups in From and Sender.
+  	- refer to RFC5322 for handling of white-space and folding in
+  	  structured headers.
+
+-------------------------------------------------------------------
 Thu Dec 12 16:25:15 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.16.0 (3.016)

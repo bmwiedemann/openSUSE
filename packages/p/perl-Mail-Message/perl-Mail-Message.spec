@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mail-Message
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Mail-Message
 Name:           perl-Mail-Message
-Version:        3.16.0
+Version:        3.17.0
 Release:        0
-# 3.016 -> normalize -> 3.16.0
-%define cpan_version 3.016
+# 3.017 -> normalize -> 3.17.0
+%define cpan_version 3.017
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Processing MIME messages
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -34,20 +34,20 @@ BuildRequires:  perl(Date::Format)
 BuildRequires:  perl(Date::Parse)
 BuildRequires:  perl(Encode) >= 2.26
 BuildRequires:  perl(IO::Scalar)
-BuildRequires:  perl(MIME::Types) >= 1.004
-BuildRequires:  perl(Mail::Address) >= 2.17
+BuildRequires:  perl(MIME::Types) >= 1.4.0
+BuildRequires:  perl(Mail::Address) >= 2.170
 BuildRequires:  perl(Time::Zone)
-BuildRequires:  perl(URI) >= 1.23
-BuildRequires:  perl(User::Identity) >= 1.02
+BuildRequires:  perl(URI) >= 1.230
+BuildRequires:  perl(User::Identity) >= 1.20.0
 Requires:       perl(Date::Format)
 Requires:       perl(Date::Parse)
 Requires:       perl(Encode) >= 2.26
 Requires:       perl(IO::Scalar)
-Requires:       perl(MIME::Types) >= 1.004
-Requires:       perl(Mail::Address) >= 2.17
+Requires:       perl(MIME::Types) >= 1.4.0
+Requires:       perl(Mail::Address) >= 2.170
 Requires:       perl(Time::Zone)
-Requires:       perl(URI) >= 1.23
-Requires:       perl(User::Identity) >= 1.02
+Requires:       perl(URI) >= 1.230
+Requires:       perl(User::Identity) >= 1.20.0
 Provides:       perl(Mail::Box::FastScalar) = %{version}
 Provides:       perl(Mail::Box::Parser) = %{version}
 Provides:       perl(Mail::Box::Parser::Perl) = %{version}
@@ -109,7 +109,7 @@ this class. Methods which are related to folders is implemented in the
 Mail::Box::Message extension.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
