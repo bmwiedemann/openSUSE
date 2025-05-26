@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 23 14:01:38 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete update-desktop-files BuildRequires and macro.
+
+-------------------------------------------------------------------
 Thu Jul 11 18:42:44 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add -fpermissive to optflags to work around C99 violations which

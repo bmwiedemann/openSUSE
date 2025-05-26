@@ -1,7 +1,7 @@
 #
 # spec file for package libgda
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
 BuildRequires:  readline-devel
 BuildRequires:  unixODBC-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.26.0
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(sqlcipher)
@@ -402,8 +401,6 @@ javac getsp.java
 # remove error about java bytecode being for something later than java 1.15 -- see http://en.opensuse.org/Java/Packaging/Cookbook
 export NO_BRP_CHECK_BYTECODE_VERSION=true
 %meson_install
-# X-SuSE-Design is just to make the brp check happy...
-%suse_update_desktop_file org.gnome.gda.Browser X-SuSE-Design
 mv %{buildroot}%{_mandir}/man1/gda-sql.1 %{buildroot}%{_mandir}/man1/gda-sql-6.0.1
 sed -e 's-#!/usr/bin/env python3-#!/usr/bin/python3-g' -i %{buildroot}%{_bindir}/t*
 chmod 755 %{buildroot}%{_bindir}/*

@@ -780,4 +780,12 @@ file is not available on the system.
     <comment></comment>
     <requestid>1187325</requestid>
   </revision>
+  <revision rev="99" vrev="10">
+    <srcmd5>2e8c3cc34de60db1832acc0a4e6bcf9f</srcmd5>
+    <version>6.0.0</version>
+    <time>1748277568</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1279614 from iznogood)</comment>
+    <requestid>1280023</requestid>
+  </revision>
 </revisionlist>
