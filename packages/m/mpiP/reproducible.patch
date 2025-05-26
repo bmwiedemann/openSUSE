@@ -1,0 +1,29 @@
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Wed, 9 Apr 2025 05:44:50 +0200
+Subject: [PATCH] Allow to omit build time and hostname
+
+for reproducible builds.
+
+Alternatively, this part can also be dropped completely.
+
+This patch was done while working on reproducible builds for openSUSE.
+
+
+diff --git a/make-wrappers.py b/make-wrappers.py
+index 809d0e4..c96f3b3 100755
+--- a/make-wrappers.py
++++ make-wrappers.py
+@@ -924,9 +924,10 @@ def StandardFileHeader(fname):
+     olist = []
+     olist.append("/* " + fname + " */\n")
+     olist.append("/* DO NOT EDIT -- AUTOMATICALLY GENERATED! */\n")
+-    olist.append("/* Timestamp: " + time.strftime("%d %B %Y %H:%M", time.localtime(time.time())) + "  */\n")
+-    olist.append("/* Location: " + socket.gethostname () + " " + os.name + " */\n")
+-    olist.append("/* Creator: " + os.environ["LOGNAME"] + "  */\n")
++    if not os.getenv("SOURCE_DATE_EPOCH"):
++        olist.append("/* Timestamp: " + time.strftime("%d %B %Y %H:%M", time.localtime(time.time())) + "  */\n")
++        olist.append("/* Location: " + socket.gethostname () + " " + os.name + " */\n")
++        olist.append("/* Creator: " + os.environ["LOGNAME"] + "  */\n")
+     olist.append("\n")
+     olist.append("\n")
+     return olist

@@ -67,6 +67,7 @@ Patch2:         Add-return-value-to-non-void-function.patch
 Patch3:         pc_lookup-replace-PTR-with-void.patch
 Patch4:         configure-fix-compilation-error-for-GCC-14.patch
 Patch5:         arch-add-generic-arch-using-GCC-builtins.patch
+Patch6:         reproducible.patch
 
 BuildRequires:  %{flavor}-devel
 BuildRequires:  binutils-devel
