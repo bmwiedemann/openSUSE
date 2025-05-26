@@ -230,4 +230,18 @@
   * Bug fixes</comment>
     <requestid>1253659</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0a06b22492dc776f669cf1b0686f275f</srcmd5>
+    <version>104</version>
+    <time>1748277124</time>
+    <user>anag_factory</user>
+    <comment>- New version 104, updates since 102:
+  * drop correct-container-search.patch: upstreamed
+  * Upgraded to Patternfly 6
+  * Link service containers to service pages
+  * Connect to other accounts
+  * Translation updates
+  * Bug fixes</comment>
+    <requestid>1279486</requestid>
+  </revision>
 </revisionlist>
