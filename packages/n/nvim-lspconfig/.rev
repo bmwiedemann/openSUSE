@@ -200,4 +200,41 @@
   * fix(mdx_analyzer): remove invalid field and update brief (forwarded request 1272860 from rrahl0)</comment>
     <requestid>1272861</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2b3e0dec2379bb14597f3ab52d7945ac</srcmd5>
+    <version>2.2.0</version>
+    <time>1748283399</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.2.0:
+  * fix(configs): remove sanitize_cmd
+  * feat(ts_ls): provide command to run source actions
+  * fix: add pylyzer dependency info (erg)
+  * feat(docgen.lua): improve vimdoc generator
+  * feat(powershell_es): add vim.lsp.config support
+  * feat(efm): add vim.lsp.config support
+  * fix(powershell_es): typo bundlePath -&gt; bundle_path
+  * feat(docgen.lua): convert @brief codeblocks for vimdoc
+  * docs: cleanup
+  * fix(rust_analyzer): nvim_echo must not be called in a fast event context
+  * Support for non-conventional package.json5
+  * fix: improve typescript server path search for ts dependents lsp
+  * fix(eslint): check nil before on_dir
+  * fix(mesonlsp): improved root detection
+  * feat: laravel-ls
+  * fix(lsp/zk): fix user command options; invalid key description
+  * fix(eslint): require workspace instead of checking root dir for nil value
+  * Revert &quot;fix(configs): remove sanitize_cmd&quot;
+  * fix(texlab): Improve root detection for Latexmk projects
+  * fix(configs): execute sanitize_cmd only on windows to speed up WSL
+  * feat(ccls): add vim.lsp.config support
+  * fix(ast_grep): workspace_required=true
+  * fix(doc): Correct lua_ls documentation
+  * docs(lua_ls): add field Lua.runtime.path to example config for Nvim Lua
+  * feat(oxlint): added oxlint lsp config
+  * fix(omnisharp): update executable name
+  * fix(taplo): add Taplo configuration files to root markers
+  * Feature: migrate builtin commands
+  * fix(configs): eliminate some usages of root_pattern (forwarded request 1280308 from rrahl0)</comment>
+    <requestid>1280309</requestid>
+  </revision>
 </revisionlist>
