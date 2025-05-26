@@ -473,6 +473,7 @@ Requires(pre):  selinux-policy = %{version}-%{release}
 Requires:       /usr/bin/make
 Requires:       checkpolicy >= %{CHECKPOLICYVER}
 Requires:       m4
+Requires(post): policycoreutils-devel >= %{POLICYCOREUTILSVER}
 
 %description devel
 SELinux policy development package
@@ -486,6 +487,11 @@ SELinux policy development package
 %{_datadir}/selinux/devel/include/*
 %{_datadir}/selinux/devel/Makefile
 %{_datadir}/selinux/devel/example.*
+%ghost %verify(not md5 size mode mtime) %{_sharedstatedir}/sepolgen/interface_info
+
+%post devel
+%{_sbindir}/selinuxenabled && %{_bindir}/sepolgen-ifgen 2>/dev/null
+exit 0
 
 %package doc
 Summary:        SELinux policy documentation

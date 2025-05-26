@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 15 12:14:03 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Improve selinux-policy-devel dependencies and add post script to
+  improve experience when debugging (bsc#1236193).
+
+-------------------------------------------------------------------
 Mon May 12 14:26:14 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Update to version 20250512:

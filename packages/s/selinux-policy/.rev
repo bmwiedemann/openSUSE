@@ -1786,4 +1786,12 @@ https://build.opensuse.org/request/show/1178504 </comment>
     <comment></comment>
     <requestid>1276888</requestid>
   </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>cbfdab4b3dd1cac17d3198334e5c9844</srcmd5>
+    <version>20250512</version>
+    <time>1748277115</time>
+    <user>anag_factory</user>
+    <comment>devel packaging improvments</comment>
+    <requestid>1279041</requestid>
+  </revision>
 </revisionlist>
