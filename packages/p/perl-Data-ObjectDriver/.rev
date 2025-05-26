@@ -63,4 +63,15 @@
     <comment></comment>
     <requestid>1236270</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>82bb30cd8eec7bbb8224799220d59672</srcmd5>
+    <version>0.250.0</version>
+    <time>1748277344</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1278603 from tinita
+
+- updated to 0.250.0 (0.25)
+   see /usr/share/doc/packages/perl-Data-ObjectDriver/Changes</comment>
+    <requestid>1279791</requestid>
+  </revision>
 </revisionlist>
