@@ -852,4 +852,28 @@
   * GO-2025-3664 CVE-2025-43915 GHSA-42mr-jpwh-m9rv (forwarded request 1279102 from jfkw)</comment>
     <requestid>1279106</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>c2190b026769b578a9cc12e28b4e0fed</srcmd5>
+    <version>0.0.20250523T151856</version>
+    <time>1748277287</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20250523T151856 2025-05-23T15:18:56Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3699 GO-2025-3700 GO-2025-3701 GO-2025-3702 GO-2025-3703
+  * GO-2025-3690 CVE-2024-40120 GHSA-q97m-8853-pq76
+  * GO-2025-3691 CVE-2025-2527 GHSA-h356-3mfw-x368
+  * GO-2025-3692 CVE-2025-31947 GHSA-qgwx-rffp-6cx9
+  * GO-2025-3693 CVE-2025-3446 GHSA-r7r2-m3vr-c8qc
+  * GO-2025-3694 CVE-2025-2570 GHSA-fpff-wj6m-grvr
+  * GO-2025-3696 CVE-2025-47283 GHSA-3hw7-qj9h-r835
+  * GO-2025-3697 CVE-2025-47282 GHSA-xwgg-m7fx-83wx
+  * GO-2025-3698 CVE-2025-47284 GHSA-9x73-87fh-54w9
+  * GO-2025-3699 CVE-2025-47290 GHSA-cm76-qm8v-3j95
+  * GO-2025-3700 CVE-2025-48056 GHSA-274q-79q9-52j7
+  * GO-2025-3701 CVE-2025-47291 GHSA-cxfp-7pvr-95ff
+  * GO-2025-3702 CVE-2025-48069 GHSA-2c47-m757-32g6
+  * GO-2025-3703 CVE-2025-5031 GHSA-pqqp-7cp8-vxvf (forwarded request 1279843 from jfkw)</comment>
+    <requestid>1279844</requestid>
+  </revision>
 </revisionlist>

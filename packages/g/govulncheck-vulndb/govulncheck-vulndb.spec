@@ -19,7 +19,7 @@
 %define shortname vulndb
 
 Name:           govulncheck-vulndb
-Version:        0.0.20250520T172319
+Version:        0.0.20250523T151856
 Release:        0
 Summary:        Local copy of Go vulnerability database
 License:        CC-BY-4.0
