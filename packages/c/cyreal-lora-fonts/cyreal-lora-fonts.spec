@@ -1,7 +1,7 @@
 #
 # spec file for package cyreal-lora-fonts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,20 @@
 #
 
 
+%global desc Lora is a well-balanced contemporary serif with roots in calligraphy. It is\
+a text typeface with moderate contrast well suited for body text. A paragraph\
+set in Lora will make a memorable appearance because of its brushed curves\
+in contrast with driving serifs. The overall typographic voice of Lora perfectly\
+conveys the mood of a modern-day story, or an art essay.\
+\
+Technically Lora is optimised for screen appearance, and works equally well in\
+print.\
+\
+Designed by Olga Karpushina, and Alexei Vanyashin for Cyreal.
 Name:           cyreal-lora-fonts
 Version:        3.005
 Release:        0
-Summary:        Serif family for text. Variable Open Source Font
+Summary:        Serif family for text
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            http://www.cyreal.org/fonts/lora/
@@ -36,19 +46,19 @@ BuildArch:      noarch
 %reconfigure_fonts_prereq
 
 %description
-Lora is a well-balanced contemporary serif with roots in calligraphy. It is
-a text typeface with moderate contrast well suited for body text. A paragraph
-set in Lora will make a memorable appearance because of its brushed curves
-in contrast with driving serifs. The overall typographic voice of Lora perfectly
-conveys the mood of a modern-day story, or an art essay.
+%{desc}
 
-Technically Lora is optimised for screen appearance, and works equally well in
-print.
+%package -n cyreal-lora-variable-fonts
+Summary:        Serif family for text (variable version)
 
-Designed by Olga Karpushina, and Alexei Vanyashin for Cyreal.
+%description -n cyreal-lora-variable-fonts
+%{desc}
+
+This package contains the variable version of fonts.
 
 %prep
 %autosetup -c
+
 cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} .
 
 %build
@@ -56,13 +66,21 @@ cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} .
 %install
 install -dm0755 %{buildroot}%{_ttfontsdir}
 install -m0644 fonts/otf/*.otf %{buildroot}%{_ttfontsdir}
+install -m0644 fonts/variable/*.ttf %{buildroot}%{_ttfontsdir}
 
 %reconfigure_fonts_scriptlets
+%reconfigure_fonts_scriptlets -n cyreal-lora-variable-fonts
 
 %files
 %license OFL.txt
 %doc README.md {AUTHORS,CONTRIBUTORS,TRADEMARKS,FONTLOG}.txt Lora-sample.png
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/*.otf
+
+%files -n cyreal-lora-variable-fonts
+%license OFL.txt
+%doc README.md {AUTHORS,CONTRIBUTORS,TRADEMARKS,FONTLOG}.txt Lora-sample.png
+%dir %{_ttfontsdir}
+%{_ttfontsdir}/*.ttf
 
 %changelog

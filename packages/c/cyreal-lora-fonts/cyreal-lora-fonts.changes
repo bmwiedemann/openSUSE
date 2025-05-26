@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 18 08:13:54 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Add %reconfigure_fonts_scriptlets for the subpackage
+
+-------------------------------------------------------------------
+Thu May 15 09:14:08 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Add variable fonts into separate subpackage
+
+-------------------------------------------------------------------
 Thu Jan 19 19:50:57 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.005
