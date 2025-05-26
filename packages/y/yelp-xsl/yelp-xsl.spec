@@ -1,7 +1,7 @@
 #
 # spec file for package yelp-xsl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,8 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Yelp
 Source0:        https://download.gnome.org/sources/yelp-xsl/42/%{name}-%{version}.tar.xz
 Source99:       yelp-xsl-rpmlintrc
-
+# PATCH-FIX-UPSTREAM 6902d74.patch CVE-2025-3155 bsc#1240688 qzhao@suse.com -- Initial fix for CVE-2025-3155 from parrot409.
+Patch0:         https://gitlab.gnome.org/GNOME/yelp-xsl/-/commit/6902d74.patch
 BuildRequires:  itstool >= 1.2.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libxml-2.0)
