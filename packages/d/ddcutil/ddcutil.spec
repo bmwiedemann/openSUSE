@@ -1,7 +1,7 @@
 #
 # spec file for package ddcutil
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ddcutil
-Version:        2.1.4
+Version:        2.2.0
 Release:        0
 Summary:        Utility to query and update monitor settings
 License:        GPL-2.0-or-later
@@ -119,7 +119,6 @@ make %{?_smp_mflags} check
 %{_bindir}/ddcutil
 
 %files -n ddcutil-i2c-udev-rules
-%{_udevrulesdir}/60-ddcutil-usb.rules
 %{_udevrulesdir}/60-ddcutil-i2c.rules
 %{_modulesloaddir}*
 

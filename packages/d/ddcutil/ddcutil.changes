@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr  3 08:40:34 UTC 2025 - pallas wept <pallaswept@proton.me>
+
+- Update to 2.2.0:
+  * ddcutil 2.2.0 is a major new release
+  * Detecting and reporting display connection and disconnection
+    has been reworked and enhanced, making libddcutil more useful
+    to applications such as KDE PowerDevil, vdu_controls, and
+    ddcutil-service.
+  * Other enhancements include :
+    - support for DisplayLink devices using driver evince
+    - more consistent and extensive use of the system log
+    - additional facilities for remote problem diagnosis
+    - changes in building, installation, and packaging
+  * And, of course, there's a year's accumulation of bug fixes
+    and minor enhancements.
+  * Shared library libddcutil is backwardly compatible with that
+    release 2.1.4. It contains some minor changes and additional
+    API functions for display change detection. The SONAME is
+    unchanged as libddcutil.so.5. The release library file is
+    libddcutil.so.5.2.0
+  * Detailed information about the changes can be found in file 
+    CHANGELOG.md in the source tree, and on pages ddcutil 2.2.0 
+    Release Notes (https://www.ddcutil.com/release_notes_220/)
+    and Shared Library Changes for Release 2.2.0
+    (https://www.ddcutil.com/c_api_220/) on the web site.
+  
+-------------------------------------------------------------------
 Wed May 15 06:58:39 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 2.1.4:
