@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 24 19:17:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.2:
+  + Fix crash on shutdown
+  + Fix not properly switching between keypad and text entry
+  + Fix USSD dialog getting hidden, turning the whole application
+    unresponsive
+
+-------------------------------------------------------------------
 Thu Apr 10 17:06:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1:

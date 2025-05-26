@@ -17,7 +17,7 @@
 
 
 Name:           calls
-Version:        48.1
+Version:        48.2
 Release:        0
 Summary:        A phone dialer and call handler
 License:        GPL-3.0-only AND MIT
