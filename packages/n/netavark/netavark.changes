@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Tue May 20 04:51:45 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 1.15.0:
+  * release v1.15.0
+  * release notes for v1.15.0
+  * update release notes from v1.14.1
+  * update nftables to 0.6.2
+  * run cargo update
+  * chore(deps): update rust crate tempfile to 3.20.0
+  * chore(deps): update rust crate chrono to 0.4.41
+  * fix(deps): update rust crate tokio to 1.45.0
+  * fix(deps): update tonic monorepo to 0.13.1
+  * fix(deps): update rust crate zbus to 5.6.0
+  * fix(deps): update rust crate sha2 to 0.10.9
+  * fix(deps): update rust crate clap to ~4.5.37
+  * aardvark: handle names more safely
+  * aardvark: use one buffer for commit_entry()
+  * don't clone container_names in AardvarkEntry
+  * Makefile: correctly set SOURCES
+  * remove some unused deps
+  * Makefile: use cargo --locked in CI
+  * chore(deps): update dependency containers/automation_images to v20250422
+  * ci: ensure tree is clean after build
+  * fix(deps): update rust crate rand to 0.9.1
+  * .github: check_cirrus_cron work around github bug
+  * Cargo.lock: fix desync with Cargo.toml
+  * fix(deps): update rust crate netlink-packet-utils to 0.6.0
+  * firewalld_reload: share connection
+  * fix new rust 1.86 lint errors
+  * ignore SIGTERM and SIGINT on teardown
+  * fix(deps): update rust crate tokio to 1.44.2
+  * Release GHA: Automatically publish crate
+  * test: use ncat not nc
+  * update CI image 2025-03-24
+  * fix new clippy lint errors
+  * fix(deps): update rust crate env_logger to 0.11.8
+  * fix(deps): update rust crate clap to ~4.5.34
+  * chore(deps): update rust crate once_cell to 1.21.3
+  * fix(deps): update rust crate hyper-util to 0.1.11
+  * GHA: Automate release
+  * remove search domain from response
+  * chore(deps): update rust crate once_cell to 1.21.2
+  * fix(deps): update tonic monorepo to 0.13.0
+  * Add link to c/common contributor's guide
+  * fix(deps): update rust crate log to 0.4.27
+  * chore(deps): update rust crate tempfile to 3.19.1
+  * fix(deps): update rust crate nispor to 1.2.23
+  * fix(deps): update rust crate netlink-packet-route to 0.22.0
+  * Fix detect of Firewalld's StrictForwardPorts property
+  * chore(deps): update rust crate tempfile to 3.19.0
+  * chore(deps): update rust crate once_cell to 1.21.1
+  * fix(deps): update rust crate tokio to 1.44.1
+  * chore(deps): update rust crate once_cell to 1.21.0
+  * fix(deps): update rust crate env_logger to 0.11.7
+  * fix(deps): update rust crate tokio to 1.44.0
+  * test/001-basic: Make commit test optional
+  * .github: remove cirrus rerun action
+  * chore(deps): update rust crate tempfile to 3.18.0
+  * fix(deps): update rust crate clap to ~4.5.31
+  * chore(deps): update rust crate chrono to 0.4.40
+  * fix(deps): update rust crate zbus to v5
+  * Bump MSRV to v1.77
+  * Update Rust crate log to 0.4.26
+  * cirrus: do not build debug bins
+  * Makefile: do not rebuild if nothing changed
+  * Makefile: uninstall netavark-firewalld-reload.service
+  * docs/Makefile: several fixes
+  * Makefile: build docs by default
+  * Makefile: do not build twice
+  * chore(deps): update rust crate tempfile to 3.17.1
+  * chore(deps): update rust crate tempfile to 3.17.0
+  * fix(deps): update rust crate prost to 0.13.5
+  * Bump to v1.15.0-dev
+
+-------------------------------------------------------------------
 Wed Mar 19 05:31:40 UTC 2025 - madhankumar.chellamuthu@suse.com
 
 - Update to version 1.14.1:
@@ -189,7 +264,7 @@ Wed Aug 07 06:36:53 UTC 2024 - danish.prakash@suse.com
   * fix(deps): update rust crate tokio to 1.39.1
   * fix(deps): update rust crate env_logger to 0.11.4
   * fix(deps): update rust crate tokio to 1.38.1
-  * update mozim to 0.2.4
+  * update mozim to 0.2.4 (bsc#1236567)
   * fix(deps): update rust crate serde_json to 1.0.120
   * netavark: dhcp_proxy: use dns servers from dhcp lease
   * fix(deps): update rust crate serde_json to 1.0.119

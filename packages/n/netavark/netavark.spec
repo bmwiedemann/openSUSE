@@ -19,7 +19,7 @@
 %define major_minor %((v=%{version}; echo ${v%.*}))
 
 Name:           netavark
-Version:        1.14.1
+Version:        1.15.0
 Release:        0
 Summary:        Container network stack
 License:        Apache-2.0
@@ -35,7 +35,6 @@ BuildRequires:  protobuf-devel
 BuildRequires:  systemd-rpm-macros
 # aardvark-dns and %%{name} are usually released in sync
 Requires:       aardvark-dns >= %{major_minor}
-# Provides: container-network-stack = 2
 Requires:       %{?default_firewall_backend}
 
 %description
