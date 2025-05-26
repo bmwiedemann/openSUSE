@@ -1,7 +1,7 @@
 #
 # spec file for package python-dennis
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dennis
 Version:        1.1.0
 Release:        0
@@ -27,16 +26,18 @@ URL:            https://github.com/willkg/dennis
 Source:         https://files.pythonhosted.org/packages/source/d/dennis/dennis-%{version}.tar.gz
 # Module dependencies
 BuildRequires:  %{python_module click >= 6}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module polib >= 1.0.8}
 # Test runner
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 6
 Requires:       python-polib >= 1.0.8
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -50,10 +51,10 @@ mismatched HTML, missing variables, etc.
 %setup -q -n dennis-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/dennis-cmd
 %python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -72,6 +73,7 @@ export LANG="en_US.UTF-8"
 %license LICENSE
 %doc CHANGELOG README.rst
 %python_alternative %{_bindir}/dennis-cmd
-%{python_sitelib}/*
+%{python_sitelib}/dennis
+%{python_sitelib}/dennis-%{version}*-info
 
 %changelog
