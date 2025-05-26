@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun May 25 07:52:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.51.0:
+  * govc (CLI)
+    - [59cb29b] Add vm.disk.promote command
+    - [eaaeb84] Add import.vmdk '-i' flag to output vmdk info only
+  * Commits
+    - chore: Update version.go for v0.51.0
+    - api: Add option to use a filter function as value of
+      property.Match
+    - vcsim: Add CreateSnapshotEx for simulator
+    - api: Add object.VirtualMachine.CreateSnapshotEx method
+    - vcsim: Use OptionManager to configure session timeout
+      duration
+    - build(deps): bump actions/setup-go from 5.4.0 to 5.5.0
+    - chore(deps): go mod tidy
+    - build(deps): bump golang.org/x/text from 0.24.0 to 0.25.0
+    - vcsim: Add VirtualMachine.PromoteDisks_Task method
+    - govc: Add vm.disk.promote command
+    - api: Add object.VirtualMachine.PromoteDisks method
+    - vcsim: Use vmdk.Descriptor for vmdk file metadata
+    - build(deps): bump mxschmitt/action-tmate from 3.21 to 3.22
+    - govc: Add import.vmdk '-i' flag to output vmdk info only
+    - api: Extend vmdk.Info to include Descriptor
+    - fix: vcsim: Avoid possible race in SessionManager.Logout
+    - emacs: Add datastore.ls '-a' flag when prefix arg is given
+    - chore: update container images
+    - vcsim: Avoid use of sha1 for stable UUIDs (OIDs)
+    - build(deps): bump test-unit from 3.6.7 to 3.6.8 in /gen
+    - build(deps): bump mxschmitt/action-tmate from 3.20 to 3.21
+    - build(deps): bump nokogiri in /gen in the bundler group
+    - chore: update `.goreleaser.yml` to v2
+
+-------------------------------------------------------------------
 Thu Apr 24 19:29:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.0:
