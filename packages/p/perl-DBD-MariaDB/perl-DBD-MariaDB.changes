@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue May 20 12:56:54 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Remove perl-DBD-MariaDB-fix_ssl_connection_test.patch: (fixed upstream)
+
+-------------------------------------------------------------------
+Mon May  5 05:36:14 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.240.0 (1.24)
+   see /usr/share/doc/packages/perl-DBD-MariaDB/Changes
+
+  1.24 2025-05-04
+   - Add a test for large BLOB with parameter
+   - Fix Dave Labley's broken e-mail address
+   - Stop parsing a column named "limits" as the LIMIT keyword
+     (https://github.com/perl5-dbi/DBD-MariaDB/issues/208)
+   - Various test fixes (e.g. no dead loop in t/87async.t, remembering the
+     value of --testauthplugin for repeated Makefile.PL runs, support for the
+     Embedded server, explicit disconnect after testing the connection)
+   - Better handling of the Embedded server (e.g. fix mariadb_hostinfo and
+     SQL_SERVER_NAME, no support for async queries and
+     mariadb_max_allowed_packets, extended documentation of
+     mariadb_embedded_options)
+   - Add new Makefile.PL option --requireembsup (and a corresponding env variable
+     DBD_MARIADB_REQUIREEMBSUP) to ensure the client library's support for the
+     Embedded server
+   - More support and fixes for new MySQL 8 features (mariadb_auto_reconnect for
+     8.0.24+, SSL options for MySQL 8.3.0+, bind params for 8.3.0+)
+   - Documentation of empty versus undefined password
+   - Stop calling mariadb_db_reconnect when changing $dbh attributes unless it's
+     really needed
+   - On MSWin32, non-socket connections do not use WINAPI HANDLE
+   - Fix type (MEDIMUMBLOB -> MEDIUMBLOB)
+   - Handle new SSL error messages in tests
+     (https://github.com/perl5-dbi/DBD-MariaDB/issues/209)
+
+-------------------------------------------------------------------
 Mon Aug 12 11:41:03 UTC 2024 - Nathan Cutler <ncutler@suse.com>
 
 - Add patch perl-DBD-MariaDB-fix_ssl_connection_test.patch to reflect
