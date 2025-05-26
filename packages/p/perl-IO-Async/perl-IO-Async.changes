@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 23 05:34:12 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.804.0 (0.804)
+   see /usr/share/doc/packages/perl-IO-Async/Changes
+
+  0.804   2025-04-22
+          [CHANGES]
+           * Add extra LoopTests tests for IO and timer operation after a
+             ->post_fork call, in order to help test RT152635
+           * Remove duplicate `use VERSION` declaration from helper package in
+             TimeQueue.pm
+
+-------------------------------------------------------------------
 Fri Mar  8 22:33:46 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides
