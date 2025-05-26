@@ -180,4 +180,15 @@
   * code cleanup</comment>
     <requestid>1277144</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5cf58e538d4e502bdd2aaeb4aa2db44a</srcmd5>
+    <version>0.7.0</version>
+    <time>1748277265</time>
+    <user>anag_factory</user>
+    <comment>- 0.7.0
+  * supporting _manifest file as successor of _subdirs
+  * record configured branch of submodules in package scmsync url
+  * stay on the configured branch of a submodule on checkout</comment>
+    <requestid>1279572</requestid>
+  </revision>
 </revisionlist>
