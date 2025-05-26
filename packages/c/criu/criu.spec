@@ -16,29 +16,24 @@
 #
 
 
+# currently broken with LTO, resulting in segfaults (bsc#1203854)
+%define _lto_cflags %{nil}
+%ifarch x86_64 aarch64
+%define with_amdgpu_plugin 1
+%else
+%define with_amdgpu_plugin 0
+%endif
+%define proto_c_ver %(protoc-c --version | head -1 | awk '{print $2}')
 %if 0%{?suse_version} >= 1330
 %define use_asciidoctor 1
 %define make_options USE_ASCIIDOCTOR=1
 %endif
-
 # Build criu with nftables default support if available
 %if "%{?default_firewall_backend}" == "nftables"
     %define prefer_nftables 1
 %else
     %define prefer_nftables 0
 %endif
-
-# currently broken with LTO, resulting in segfaults (bsc#1203854)
-%define _lto_cflags %{nil}
-
-%ifarch x86_64 aarch64
-%define with_amdgpu_plugin 1
-%else
-%define with_amdgpu_plugin 0
-%endif
-
-%define proto_c_ver %(protoc-c --version | head -1 | awk '{print $2}')
-
 Name:           criu
 Version:        4.1
 Release:        0
@@ -49,14 +44,12 @@ URL:            https://criu.org/
 Source0:        http://github.com/checkpoint-restore/criu/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # To be generated; we keep a static one for building without pip
 Source1:        crit.py
+Patch1:         0001-net-nftables-avoid-restore-failure-if-the-CRIU-nft-t.patch
 Patch101:       criu-py-install-fix.diff
 Patch102:       0002-Fix-build-with-nftables-installed-in-different-direc.patch
 Patch104:       plugin-dir-path.patch
 Patch105:       criu-ns-python3-shebang.patch
 BuildRequires:  libcap-devel
-%if %{with_amdgpu_plugin}
-BuildRequires:  libdrm-devel
-%endif
 BuildRequires:  libgnutls-devel
 BuildRequires:  libnet-devel
 BuildRequires:  libnl3-devel
@@ -66,6 +59,11 @@ BuildRequires:  protobuf-c
 BuildRequires:  protobuf-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
+Requires:       python3-protobuf
+ExclusiveArch:  x86_64 aarch64 ppc64le armv7l armv7hl s390x riscv
+%if %{with_amdgpu_plugin}
+BuildRequires:  libdrm-devel
+%endif
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 BuildRequires:  nftables-devel
 BuildRequires:  pkgconfig(libselinux)
@@ -76,8 +74,6 @@ BuildRequires:  rubygem(asciidoctor)
 BuildRequires:  asciidoc
 BuildRequires:  xmlto
 %endif
-Requires:       python3-protobuf
-ExclusiveArch:  x86_64 aarch64 ppc64le armv7l armv7hl s390x riscv
 %if 0%{?suse_version} > 1320
 BuildRequires:  libbsd-devel
 %endif
@@ -139,8 +135,7 @@ This package contains all necessary include files and libraries needed
 to develop applications with CRIU library.
 
 %prep
-%setup -q
-%autopatch -M 200 -p1
+%autosetup -p1
 
 %if %{prefer_nftables}
 # build with default nftables support on envs
@@ -161,11 +156,11 @@ echo "BINFMT_MISC_VIRTUALIZED" > .config
 
 %build
 export CFLAGS="%{optflags}"
-%ifarch %arm
+%ifarch %{arm}
 export CFLAGS="$CFLAGS -Wno-error=deprecated"
 %endif
 # WERROR=0 is needed for avoiding warning due to doubly _GNU_SOURCE defines
-make V=1 %{?_smp_mflags} %{?make_options} WERROR=0 \
+%make_build %{?make_options} WERROR=0 \
 	PREFIX=%{_prefix} \
 	LIBDIR=%{_libdir} \
 	LIBEXECDIR=%{_libexecdir} \

@@ -583,4 +583,35 @@
     <comment>- build with selinux support (bsc#1238136)</comment>
     <requestid>1270639</requestid>
   </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>59476cc0db5aa347e0d022e866f5603e</srcmd5>
+    <version>4.1</version>
+    <time>1748277598</time>
+    <user>anag_factory</user>
+    <comment>- add
+  0001-net-nftables-avoid-restore-failure-if-the-CRIU-nft-t.patch
+  (bsc#1241515)
+
+- fix filelist mismatch after libexecdir change
+  --shell-job restore to fail
+  * C/R of shared bind-mounts
+    bind mounts detection
+        Ability to ignore FPU restoration
+  * Punch pages from mem images on restore (optimizes live-migration)
+  * Packed timers into core image
+  * Post-restore script fails too late (if does it)
+  * Default log file for service when starting via systemd
+  * Using subdirs in log file name via RPC breaks security
+  * Stacked images don't work on non-shared FS (missing pagemap-s)
+  * Various fixes (and improvements) in build system
+     external net devices and unknown file types
+   * Filtering of criu show output
+   * Coverity checks fail here and there
+    Generic memory allocation for restorer
+    VDSO proxy was unmapped at the very end of restore
+    SEQPACKET unix sockets support
+    Enhanced logging in parasite
+    different distros)</comment>
+    <requestid>1280078</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 26 08:18:40 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add
+  0001-net-nftables-avoid-restore-failure-if-the-CRIU-nft-t.patch
+  (bsc#1241515)
+
+-------------------------------------------------------------------
 Thu Apr 17 20:26:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - build with selinux support (bsc#1238136)
@@ -235,7 +242,7 @@ Tue Dec  1 15:58:59 CET 2020 - tiwai@suse.de
 -------------------------------------------------------------------
 Wed Sep 23 12:17:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- fix filelist mismatch after libexecdir change 
+- fix filelist mismatch after libexecdir change
 
 -------------------------------------------------------------------
 Wed May 20 16:49:38 CEST 2020 - tiwai@suse.de
@@ -386,7 +393,7 @@ Thu Apr  5 12:30:17 CEST 2018 - tiwai@suse.de
 
 - update to criu 3.8.1: a bug-fix release
   FDstore was initialized twice (re-initialized) causing e.g.
-  --shell-job restore to fail 
+  --shell-job restore to fail
 
 -------------------------------------------------------------------
 Tue Mar 20 22:50:51 CET 2018 - tiwai@suse.de
@@ -1185,7 +1192,7 @@ Mon Dec  1 18:17:51 CET 2014 - tiwai@suse.de
   * C/R of /dev/console
   * C/R of virtualized devtmpfs (openvz and future upstream kernels)
   * C/R of empty mqueue fs (posix message queues)
-  * C/R of shared bind-mounts 
+  * C/R of shared bind-mounts
   See more details at http://criu.org/Releases#v._1.4
 
 -------------------------------------------------------------------
@@ -1197,7 +1204,7 @@ Mon Sep 15 13:43:00 CEST 2014 - tiwai@suse.de
     explicit CLI option
   * Validation for leaf mount points was skipped
   * Mount options were corrupted on dump, which resulted in errors
-    bind mounts detection 
+    bind mounts detection
 
 -------------------------------------------------------------------
 Tue Sep  2 07:33:29 CEST 2014 - tiwai@suse.de
@@ -1222,17 +1229,17 @@ Tue May  6 11:48:37 CEST 2014 - tiwai@suse.de
   * Multiple mount namespaces
   * FPU state restore control
         Restore old FPU state on newer CPUs
-        Ability to ignore FPU restoration 
+        Ability to ignore FPU restoration
   * Support stopped multi-threaded tasks
   * CRIU now can execv() other binary right after restore is complete
   * Inode-revese mapping can be enforced to allow live-migration with FS copying
   * Gold linker can now be used to compile CRIU
   * "Berserker" test to check CRIU scalability
-  * Punch pages from mem images on restore (optimizes live-migration) 
+  * Punch pages from mem images on restore (optimizes live-migration)
  Optimizations:
   * Batched deduplication of memory images
   * Packed rlimits into core image
-  * Packed timers into core image 
+  * Packed timers into core image
  Fixes:
   * Bad checks for kcmp() ret codes resulted in errors in file sharing detection
   * Multiple mmap-s of same files with different flags blocked the restore
@@ -1245,7 +1252,7 @@ Tue May  6 11:48:37 CEST 2014 - tiwai@suse.de
   * Irmap mis-compared devices for disk FS-s
   * TMPFS handles always change during dump/restore
   * Pre-dump sometimes hangs on FIFO-s
-  * Post-restore script fails too late (if does it) 
+  * Post-restore script fails too late (if does it)
 
 -------------------------------------------------------------------
 Sat Mar  1 09:39:03 CET 2014 - tiwai@suse.de
@@ -1262,7 +1269,7 @@ Wed Feb 26 17:15:26 CET 2014 - tiwai@suse.de
   * RPC API got closer to CLI
   * New "post-restore" call in action scripts
   * Logrotate rules file
-  * Default log file for service when starting via systemd 
+  * Default log file for service when starting via systemd
   Bug fixes:
   * A lot for ARM cross-compile
   * Fsnotifies dumping didn't work on NFS
@@ -1277,7 +1284,7 @@ Wed Feb 26 17:15:26 CET 2014 - tiwai@suse.de
   * Small memory leak when writing to incremental image(s)
   * Restoring fsnotify for links results in ELOOP
   * Host's PATH is not suitable when execv-ing tar/ip/iptable to restore namespace (workaround, proper fix will be in 1.3)
-  * Using subdirs in log file name via RPC breaks security 
+  * Using subdirs in log file name via RPC breaks security
 - New subpackages: libcriu1 and criu-devel
 - Remove obsoleted always-define-ptrace_peeksiginfo_args.diff
 
@@ -1288,7 +1295,7 @@ Tue Jan 28 12:42:34 CET 2014 - tiwai@suse.de
   * Errors from memory dumping are not handled resulting in
     corrupted dumps
   * EOF detection in stacked images is done with error
-  * Stacked images don't work on non-shared FS (missing pagemap-s) 
+  * Stacked images don't work on non-shared FS (missing pagemap-s)
 
 -------------------------------------------------------------------
 Tue Jan 21 12:23:27 CET 2014 - tiwai@suse.de
@@ -1304,7 +1311,7 @@ Tue Jan 21 12:23:27 CET 2014 - tiwai@suse.de
   * VDSO page mis-handle on pre-dump
   * FPU state loss on pre-dump
   * Memory tracking turns ON w/o request
-  * Various fixes (and improvements) in build system 
+  * Various fixes (and improvements) in build system
 - Fix missing struct ptrace_peeksiginfo_args on FACTORY:
   always-define-ptrace_peeksiginfo_args.diff
 
@@ -1315,10 +1322,10 @@ Wed Jan  8 16:40:12 CET 2014 - tiwai@suse.de
   New features:
    * libcriu.so -- wrapper library for RPC clients
    * new plugins: external unix sockets, external bind mounts,
-     external net devices and unknown file types 
+     external net devices and unknown file types
    * Images deduplication in incremental dumps
    * Integration with systemd
-   * Filtering of criu show output 
+   * Filtering of criu show output
   Bug fixes:
    * Errors in unlinked files/sockets detection on BTRFS
    * NFS silly-rename files are not treated as unlinked
@@ -1330,7 +1337,7 @@ Wed Jan  8 16:40:12 CET 2014 - tiwai@suse.de
    * Negative return code into shell
    * Tasks left in wrong states after failed dump
    * A little bit more verbose check action
-   * Coverity checks fail here and there 
+   * Coverity checks fail here and there
 
 - Drop obsoleted criu-fix-PTRACE_LISTEN-define.diff
 
@@ -1349,7 +1356,7 @@ Mon Nov 25 18:09:55 CET 2013 - tiwai@suse.de
     Optimized headers
     More info in logs about undumpable files
     More comments about tricky dump/restore places
-    Generic memory allocation for restorer 
+    Generic memory allocation for restorer
   * Bugfixes
     After --leave-running linked remaps were not cleaned
     TCP was left locked after --leave-running
@@ -1366,7 +1373,7 @@ Mon Nov 25 18:09:55 CET 2013 - tiwai@suse.de
     Artificial small limit on the number of shared memory segments
     to restore
     Bug in ARM VFP restore
-    VDSO proxy was unmapped at the very end of restore 
+    VDSO proxy was unmapped at the very end of restore
 
 -------------------------------------------------------------------
 Sun Oct 20 09:41:15 CEST 2013 - tiwai@suse.de
@@ -1380,7 +1387,7 @@ Sun Oct 20 09:41:15 CEST 2013 - tiwai@suse.de
     Dump and restore net ns iptables configuration (w/o conntracks)
     Support for external net devices in netns (e.g. openvz venet)
     Support CORK and NODELAY TCP options
-    SEQPACKET unix sockets support 
+    SEQPACKET unix sockets support
   * Fixes and improvements
     Unload restorer blob after restore
     Fixes and enhancements in criu show
@@ -1394,7 +1401,7 @@ Sun Oct 20 09:41:15 CEST 2013 - tiwai@suse.de
     Fixed lost unmapped criu vmas in restore
     Fixes in parsing devices in /proc/pid/maps and /proc/locks
     Fixed snd/rcv buf sockoptions restore
-    Enhanced logging in parasite 
+    Enhanced logging in parasite
 
 -------------------------------------------------------------------
 Fri Sep  6 09:08:02 CEST 2013 - tiwai@suse.de
@@ -1432,7 +1439,7 @@ Mon Jul  8 12:35:16 CEST 2013 - tiwai@suse.de
   * Opened /proc/PID/ns/* files C/R
   * Daemon mode for page-server
   * Build-time features test (makes it possible to build on
-    different distros) 
+    different distros)
 
 -------------------------------------------------------------------
 Wed May 29 09:42:17 CEST 2013 - tiwai@suse.de
