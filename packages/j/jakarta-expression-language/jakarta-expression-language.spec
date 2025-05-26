@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-expression-language
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,11 +57,11 @@ popd
 %install
 #jar
 install -dm 0755 %{buildroot}%{_javadir}/%{name}
-install -pm 0644 api/target/jakarta.enterprise.lang-model-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
+install -pm 0644 api/target/jakarta.el-api-%{version}.jar %{buildroot}%{_javadir}/%{name}/jakarta.el-api.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-%{mvn_install_pom} api/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
-%add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
+%{mvn_install_pom} api/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/jakarta.el-api.pom
+%add_maven_depmap %{name}/jakarta.el-api.pom %{name}/jakarta.el-api.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr api/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}

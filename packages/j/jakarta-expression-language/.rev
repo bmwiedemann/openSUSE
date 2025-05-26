@@ -7,4 +7,12 @@
     <comment>new package needed by tomcat11</comment>
     <requestid>1274292</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dc155e1aaff8768f9040862034a79e64</srcmd5>
+    <version>6.0.1</version>
+    <time>1748277584</time>
+    <user>anag_factory</user>
+    <comment>Cleanup</comment>
+    <requestid>1280065</requestid>
+  </revision>
 </revisionlist>

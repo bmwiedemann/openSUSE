@@ -6,10 +6,10 @@
   <!-- Build environment properties                                           -->
   <!-- ====================================================================== -->
 
-  <property name="project.groupId" value="jakarta.enterprise"/>
-  <property name="project.artifactId" value="jakarta.enterprise.lang-model"/>
+  <property name="project.groupId" value="jakarta.el"/>
+  <property name="project.artifactId" value="jakarta.el-api"/>
   <property name="project.version" value="6.0.1"/>
-  <property name="spec.version" value="3.0"/>
+  <property name="spec.version" value="6.0"/>
 
   <property name="compiler.release" value="8"/>
   <property name="compiler.source" value="1.${compiler.release}"/>
@@ -23,8 +23,6 @@
   <property name="build.javadocDir" value="src/main/javadoc"/>
 
   <property name="reporting.outputDirectory" value="${build.dir}/site"/>
-
-  <property name="maven.repo.local" value="${user.home}/.m2/repository"/>
 
   <!-- ====================================================================== -->
   <!-- Defining classpaths                                                    -->
@@ -136,26 +134,21 @@ Use is subject to &lt;a href=&quot;{@docRoot}/doc-files/speclicense.html&quot; t
          basedir="${build.outputDir}"
          excludes="**/package.html">
       <manifest>
-		<attribute name="Build-Jdk-Spec" value="17"/>
 		<attribute name="Bundle-Description" value="Jakarta Expression Language 6.0"/>
 		<attribute name="Bundle-DocURL" value="https://www.eclipse.org"/>
 		<attribute name="Bundle-License" value="https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt,https://www.gnu.org/software/classpath/license.html"/>
 		<attribute name="Bundle-ManifestVersion" value="2"/>
 		<attribute name="Bundle-Name" value="Jakarta Expression Language API"/>
-		<attribute name="Bundle-SymbolicName" value="jakarta.el-api"/>
+		<attribute name="Bundle-SymbolicName" value="${project.artifactId}"/>
 		<attribute name="Bundle-Vendor" value="Eclipse Foundation"/>
-		<attribute name="Bundle-Version" value="6.0.1"/>
-		<attribute name="Created-By" value="Apache Maven Bundle Plugin 5.1.9"/>
-		<attribute name="Export-Package" value="jakarta.el;version=&quot;6.0.1&quot;"/>
+		<attribute name="Bundle-Version" value="${project.version}"/>
+		<attribute name="Export-Package" value="jakarta.el;version=&quot;${project.version}&quot;"/>
 		<attribute name="Extension-Name" value="jakarta.el"/>
 		<attribute name="Implementation-Vendor" value="Eclipse Foundation"/>
-		<attribute name="Implementation-Version" value="6.0.1"/>
+		<attribute name="Implementation-Version" value="${project.version}"/>
 		<attribute name="Import-Package" value="java.beans,java.io,java.lang,java.lang.annotation,java.lang.invoke,java.lang.ref,java.lang.reflect,java.text,java.util,java.util.concurrent,java.util.function"/>
-		<attribute name="Manifest-Version" value="1.0"/>
-		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=17))&quot;"/>
+		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
 		<attribute name="Specification-Vendor" value="Eclipse Foundation"/>
-		<attribute name="Specification-Version" value="6.0"/>
-		<attribute name="Tool" value="Bnd-6.3.1.202206071316"/>
       </manifest>
     </jar>
   </target>
