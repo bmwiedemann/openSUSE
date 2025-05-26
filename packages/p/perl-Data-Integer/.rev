@@ -15,4 +15,15 @@
     <comment>1</comment>
     <requestid>516831</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3e6662d7bc704e5dfded5b41bc47791a</srcmd5>
+    <version>0.7.0</version>
+    <time>1748277341</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1278594 from tinita
+
+- updated to 0.7.0 (0.007)
+   see /usr/share/doc/packages/perl-Data-Integer/Changes</comment>
+    <requestid>1279783</requestid>
+  </revision>
 </revisionlist>
