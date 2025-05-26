@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 17 17:08:04 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build with cmake 4 (boo#1239788) cxxopts-3.2.1-cmake4.patch
+
+-------------------------------------------------------------------
 Sun Mar 24 13:35:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.1:

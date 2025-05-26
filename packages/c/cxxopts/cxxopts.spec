@@ -2,6 +2,7 @@
 # spec file for package cxxopts
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +24,7 @@ Summary:        C++ command line option parser
 License:        MIT
 URL:            https://github.com/jarro2783/cxxopts
 Source0:        https://github.com/jarro2783/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         cxxopts-3.2.1-cmake4.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 
