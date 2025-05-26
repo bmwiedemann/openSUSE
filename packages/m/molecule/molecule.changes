@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon May 26 08:05:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.5.0:
+  * Bugfixes
+    - Remove internal use of SystemExit part 2 (#4416) @Qalthos
+    - Enable junit.xml reporting to codecov.io (#4432) @Qalthos
+    - Add merge_group handler for tox workflow (#4436) @Qalthos
+    - Update documentation to reflect creator-ee deprecation
+      (#4434) @shatakshiiii
+  * Maintenance
+    - Bump the dependencies group in /.config with 4 updates
+      (#4449) @dependabot[bot]
+    - Bump the dependencies group in /.config with 9 updates
+      (#4447) @dependabot[bot]
+    - chore: swap deprecated setting (#4441) @Qalthos
+    - Bump the dependencies group in /.config with 14 updates
+      (#4442) @dependabot[bot]
+    - Bump the dependencies group in /.config with 10 updates
+      (#4438) @dependabot[bot]
+    - chore: pre-commit autoupdate (#4435) @pre-commit-ci[bot]
+    - Bump the dependencies group in /.config with 7 updates
+      (#4433) @dependabot[bot]
+    - Bump the dependencies group in /.config with 6 updates
+      (#4431) @dependabot[bot]
+    - Bump the dependencies group in /.config with 7 updates
+      (#4430) @dependabot[bot]
+    - Bump the dependencies group in /.config with 4 updates
+      (#4429) @dependabot[bot]
+    - chore: pre-commit autoupdate (#4425) @pre-commit-ci[bot]
+    - Bump ruff from 0.11.3 to 0.11.4 in /.config in the
+      dependencies group (#4424) @dependabot[bot]
+    - Update linters (#4421) @ssbarnea
+    - Bump mkdocstrings-python from 1.16.9 to 1.16.10 in /.config
+      in the dependencies group (#4422) @dependabot[bot]
+    - Workaround for dependabot improper python version (#4420)
+      @ssbarnea
+    - Replace black with ruff format (#4419) @ssbarnea
+    - Make molecule compatible with ansible 2.19 data tagging
+      (#4418) @ssbarnea
+    - chore: pre-commit autoupdate (#4407) @pre-commit-ci[bot]
+
+-------------------------------------------------------------------
 Tue Apr  1 17:58:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.4.0:

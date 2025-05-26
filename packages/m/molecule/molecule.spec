@@ -39,7 +39,7 @@
 
 %bcond_without test
 Name:           molecule
-Version:        25.4.0
+Version:        25.5.0
 Release:        0
 Summary:        Aids in the development and testing of Ansible roles
 License:        MIT
