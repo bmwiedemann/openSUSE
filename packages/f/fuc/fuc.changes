@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 22 13:06:58 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 3.1.0:
+  * Support hard linking files in cpz!
+  * Fixed bugs with --force and symlinks.
+  * Upgrade deps
+
+-------------------------------------------------------------------
 Wed Mar 12 20:19:51 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 3.0.1:
