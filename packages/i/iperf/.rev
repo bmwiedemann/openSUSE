@@ -435,4 +435,34 @@ from the original iperf. These include, for example, a zero-copy mode and</comme
     <comment></comment>
     <requestid>1275238</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>fe5c46ca4f1d8dbc493348ef0b738698</srcmd5>
+    <version>3.19</version>
+    <time>1748277448</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.19
+  * iperf3 now supports the use of Multi-Path TCP (MPTCPv1) on Linux
+    with the use of the `-m` or `--mptcp` flag. (PR #1661)
+  * iperf3 now supports a `--cntl-ka` option to enable TCP keepalives
+    on the control connection. (#812, #835, PR #1423)
+  * iperf3 now supports the `MSG_TRUNC` receive option, specified by
+    the `--skip-rx-copy`. This theoretically improves the rated
+    throughput of tests at high bitrates by not delivering network
+    payload data to userspace. (#1678, PR #1717)
+  * A bug that caused the bitrate setting to be ignored when bursts
+    are set, has been fixed. (#1773, #1820, PR #1821, PR #1848)
+  * The congestion control protocol setting, if used, is now
+    properly reset between tests. (PR #1812)
+  * iperf3 now exits with a non-error 0 exit code if exiting via a
+    `SIGTERM`, `SIGHUP`, or `SIGINT`. (#1009, PR# 1829)
+  * The current behavior of iperf3 with respect to the `-n` and `-k`
+    options is now documented as correct. (#1768, #1775, #596, PR #1800)
+- switched to official sources from https://downloads.es.net/pub/iperf/
+  following the note on https://software.es.net/iperf/obtaining.html#source-distributions
+  GitHub releases are not guaranteed to always be released with
+  proper checksums, signage and downloads.
+- removed patches: iperf-gcc15.patch (included upstream)
+</comment>
+    <requestid>1279942</requestid>
+  </revision>
 </revisionlist>

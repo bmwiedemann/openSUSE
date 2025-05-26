@@ -18,16 +18,16 @@
 
 %define soname  0
 Name:           iperf
-Version:        3.18
+Version:        3.19
 Release:        0
 Summary:        A tool to measure network performance
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Diagnostic
-URL:            https://github.com/esnet/iperf
-Source:         https://github.com/esnet/iperf/releases/download/%{version}/iperf-%{version}.tar.gz
-Source1:        https://github.com/esnet/iperf/releases/download/%{version}/iperf-%{version}.tar.gz.sha256
-# https://github.com/esnet/iperf/commit/beadb59b90e8d3339d31f9f15525108072fde135
-Patch0:         iperf-gcc15.patch
+URL:            https://software.es.net/iperf/
+Source:         https://downloads.es.net/pub/iperf/iperf-%{version}.tar.gz
+Source1:        https://downloads.es.net/pub/iperf/iperf-%{version}.tar.gz.sha256
+# GH: https://github.com/esnet/iperf/releases/download/%%{version}/iperf-%%{version}.tar.gz
+# GH: https://github.com/esnet/iperf/releases/download/%%{version}/iperf-%%{version}.tar.gz.sha256
 Requires:       lib%{name}%{soname} = %{version}-%{release}
 %if %{?sles_version} && %{?sles_version} <= 11
 BuildRequires:  libuuid-devel
