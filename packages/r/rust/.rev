@@ -889,4 +889,12 @@ See SR#946556</comment>
     <comment></comment>
     <requestid>1267803</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>c7527e5fe752a8fd2937280ac6f79626</srcmd5>
+    <version>1.87.0</version>
+    <time>1748277098</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.87.0 - for details see the rust1.87 package</comment>
+    <requestid>1278904</requestid>
+  </revision>
 </revisionlist>
