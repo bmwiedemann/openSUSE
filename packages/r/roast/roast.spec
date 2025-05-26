@@ -1,7 +1,7 @@
 #
 # spec file for package roast
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           roast
-Version:        5.1.7
+Version:        6.1.1
 Release:        0
 Summary:        Simpler tar archiver and extractor
 License:        MPL-2.0
 URL:            https://github.com/openSUSE-Rust/roast
-Source0:        https://github.com/openSUSE-Rust/roast/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-v%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(openssl)
 
 %package -n obs-service-recomprizz
 Version:        %{version}
@@ -52,6 +53,14 @@ License:        MPL-2.0
 %description -n obs-service-raw
 Utility to raw decompress tape archives to unarchived sources.
 
+%package -n obs-service-roast_scm
+Version:        %{version}
+Summary:        OBS Source Service for roast_scm
+License:        MPL-2.0
+
+%description -n obs-service-roast_scm
+Utility to roast remote git repositories as tarball sources.
+
 %description
 Roast is a simple tar archiver and extractor with very high
 compression settings for supported formats such as zstd.
@@ -59,7 +68,7 @@ compression settings for supported formats such as zstd.
 It also supports recompression from an existing tarball.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -n %{name}-v%{version}
 
 %build
 %{cargo_build}
@@ -75,9 +84,8 @@ cp -v %{buildroot}%{_bindir}/recomprizz %{buildroot}%{_prefix}/lib/obs/service/r
 install -m0644 recomprizz.service %{buildroot}%{_prefix}/lib/obs/service
 cp -v %{buildroot}%{_bindir}/raw %{buildroot}%{_prefix}/lib/obs/service/raw
 install -m0644 raw.service %{buildroot}%{_prefix}/lib/obs/service
-
-# Non-functional binary. Still WIP
-rm %{buildroot}%{_bindir}/roast-scm
+cp -v %{buildroot}%{_bindir}/roast_scm %{buildroot}%{_prefix}/lib/obs/service/roast_scm
+install -m0644 roast_scm.service %{buildroot}%{_prefix}/lib/obs/service
 
 %check
 %{cargo_test}
@@ -86,8 +94,9 @@ rm %{buildroot}%{_bindir}/roast-scm
 %{_bindir}/roast
 %{_bindir}/raw
 %{_bindir}/recomprizz
+%{_bindir}/roast_scm
 %license LICENCE
-%doc     CHANGELOG README.md
+%doc     CHANGELOG.md README.md
 
 %files -n obs-service-roast
 %dir %{_prefix}/lib/obs
@@ -95,7 +104,7 @@ rm %{buildroot}%{_bindir}/roast-scm
 %{_prefix}/lib/obs/service/roast
 %{_prefix}/lib/obs/service/roast.service
 %license LICENCE
-%doc     CHANGELOG README.md
+%doc     CHANGELOG.md README.md
 
 %files -n obs-service-recomprizz
 %dir %{_prefix}/lib/obs
@@ -103,7 +112,7 @@ rm %{buildroot}%{_bindir}/roast-scm
 %{_prefix}/lib/obs/service/recomprizz
 %{_prefix}/lib/obs/service/recomprizz.service
 %license LICENCE
-%doc     CHANGELOG README.md
+%doc     CHANGELOG.md README.md
 
 %files -n obs-service-raw
 %dir %{_prefix}/lib/obs
@@ -111,6 +120,14 @@ rm %{buildroot}%{_bindir}/roast-scm
 %{_prefix}/lib/obs/service/raw
 %{_prefix}/lib/obs/service/raw.service
 %license LICENCE
-%doc     CHANGELOG README.md
+%doc     CHANGELOG.md README.md
+
+%files -n obs-service-roast_scm
+%dir %{_prefix}/lib/obs
+%dir %{_prefix}/lib/obs/service
+%{_prefix}/lib/obs/service/roast_scm
+%{_prefix}/lib/obs/service/roast_scm.service
+%license LICENCE
+%doc     CHANGELOG.md README.md
 
 %changelog

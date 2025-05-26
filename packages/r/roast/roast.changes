@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon May 19 02:28:44 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 6.1.1:
+  * improvements: allow returning an `Option<PathBuf>` if is-temporary is set to `false`.
+  * fix: import correctly `std::path::PathBuf`.
+  * fix: use the correct return type inside the map.
+  * fix: ensure that the outdir exists
+  * docs: this is roast_scm. this file was copied from recomprizz so it was overlooked accidentally
+  * docs: fix typo in README.md
+  * fix: return type should be Result<Option<PathBuf>>
+  * fix: return type should be Result<Option<PathBuf>>
+  * fix: return Ok(())
+
+-------------------------------------------------------------------
+Sat May 17 14:34:02 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 6.1.0. This includes changes that are from 6.0.0.
+  * clippy: apply clippy fixes
+  * docs: add and improve doc comments
+  * chore: version bump dependencies
+  * fix: it should be evaluated if it's false
+  * fix: add let binding
+  * improvements: feature is-temporary now have clearer messages if directory was not deleted.
+  * cli: set the is-temporary with ArgAction::Set
+  * docs: improvements on how everything works
+  * feat: is-temporary flag now used.
+  * docs: add roast_scm.service
+  * format: run `cargo +nightly fmt`
+  * clippy: apply clippy fixes
+  * fix: remove unused key in roast-cli's Cargo.toml
+
+-------------------------------------------------------------------
 Wed Nov 27 06:19:57 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 5.1.7:

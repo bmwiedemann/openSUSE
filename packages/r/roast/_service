@@ -1,9 +1,8 @@
 <services>
-  <service mode="manual" name="download_files" />
   <service name="cargo_vendor" mode="manual">
-     <param name="src">roast*.tar.gz</param>
+     <param name="src">https://codeberg.org/Rusty-Geckos/roast</param>
      <param name="update">true</param>
+     <param name="revision">v6.1.1</param>
   </service>
-  <service name="cargo_audit" mode="manual" />
 </services>
 
