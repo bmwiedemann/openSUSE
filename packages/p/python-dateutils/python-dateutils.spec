@@ -1,7 +1,7 @@
 #
 # spec file for package python-dateutils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-dateutils
 Version:        0.6.12
@@ -27,7 +25,9 @@ License:        0BSD
 Group:          Development/Languages/Python
 URL:            https://github.com/jmcantrell/python-dateutils
 Source:         https://files.pythonhosted.org/packages/source/d/dateutils/dateutils-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil
@@ -47,10 +47,10 @@ Python library for working with date and datetime objects.
 sed -i '/argparse/d' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # Avoid conflicts with dateutils; these scripts lack many features of the other package
 rm %{buildroot}%{_bindir}/dateadd %{buildroot}%{_bindir}/datediff
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -58,6 +58,7 @@ rm %{buildroot}%{_bindir}/dateadd %{buildroot}%{_bindir}/datediff
 %files %{python_files}
 %doc README.mkd
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/dateutils
+%{python_sitelib}/dateutils-%{version}*-info
 
 %changelog
