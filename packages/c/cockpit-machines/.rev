@@ -254,4 +254,16 @@
 - Remove qemu-spice from SLFO_16 (bsc#1238723)</comment>
     <requestid>1254678</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b6aca7a552566d276525a34b88712356</srcmd5>
+    <version>330</version>
+    <time>1748277224</time>
+    <user>anag_factory</user>
+    <comment>- update to 330
+  * Upgraded to Patternfly 6
+- changes from 329
+  * Fix launching remote viewer
+  * Translation updates</comment>
+    <requestid>1279482</requestid>
+  </revision>
 </revisionlist>

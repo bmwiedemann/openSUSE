@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  2 06:54:32 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
+
+- update to 330
+  * Upgraded to Patternfly 6
+- changes from 329
+  * Fix launching remote viewer
+  * Translation updates
+
+-------------------------------------------------------------------
 Fri Mar 14 12:49:21 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
 
 - Patch cockpit-machines to use UEFI as default firmware
