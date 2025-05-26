@@ -22,7 +22,7 @@
 %bcond_without  apparmor
 
 Name:           podman
-Version:        5.4.2
+Version:        5.5.0
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -30,7 +30,6 @@ Group:          System/Management
 URL:            https://%{project}
 Source0:        %{name}-%{version}.tar.gz
 Source1:        podman.conf
-Patch0:         0001-CVE-2025-22869-ssh-limit-the-size-of-the-internal-pa.patch
 Patch1:         0001-remove-appending-rw-as-the-default-mount-option.patch
 BuildRequires:  man
 BuildRequires:  bash-completion
@@ -50,8 +49,7 @@ BuildRequires:  libcontainers-common
 BuildRequires:  libgpgme-devel
 BuildRequires:  libostree-devel
 BuildRequires:  libseccomp-devel
-# at least go 1.18 is needed from go.mod
-BuildRequires:  golang(API) >= 1.22
+BuildRequires:  golang(API) >= 1.23
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)

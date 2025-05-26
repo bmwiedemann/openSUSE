@@ -1338,4 +1338,12 @@ Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
     <comment>Downgrade criu from Requires to Recommends. (forwarded request 1275320 from danishprakash)</comment>
     <requestid>1276770</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>73ae3bdcffd7f1bd1cd5decbbe5bf3a3</srcmd5>
+    <version>5.5.0</version>
+    <time>1748277106</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1279137</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Thu May 15 05:10:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.5.0:
+  Big update, see the full changelog here:
+  https://github.com/containers/podman/releases/tag/v5.5.0
+  * Breaking Changes
+    - Due to changes in Docker API types, two small breaking
+      changes have been made in the Go bindings for the REST API.
+      The containers.Commit() function now returns a new struct
+      (types.IDResponse) with identical contents, and the
+      containers.ExecCreate function's handlers.ExecCreateConfig
+      parameter now contains a different embedded struct,
+      potentially requiring changes to how it is assigned to.
+  * Dependencies
+    - fix(deps): update module github.com/docker/docker to
+      v28.1.1+incompatible
+    - fix(deps): update module github.com/mattn/go-sqlite3 to
+      v1.14.28
+    - fix(deps): update module github.com/docker/docker to
+      v28.1.1+incompatible
+    - chore(deps): update dependency setuptools to v79
+    - fix(deps): update module github.com/docker/docker to
+      v28.1.0+incompatible
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.1.2
+    - fix(deps): update module golang.org/x/net to v0.39.0
+    - fix(deps): update module golang.org/x/crypto to v0.37.0
+    - fix(deps): update module github.com/onsi/ginkgo/v2 to v2.23.4
+    - fix(deps): update module golang.org/x/term to v0.31.0
+    - fix(deps): update module github.com/moby/sys/user to v0.4.0
+    - fix(deps): update module github.com/onsi/gomega to v1.37.0
+    - fix(deps): update module github.com/shirou/gopsutil/v4 to
+      v4.25.3
+    - fix(deps): update github.com/openshift/imagebuilder digest to
+      e87e4e1
+    - fix(deps): update github.com/opencontainers/runtime-tools
+      digest to 260e151
+    - chore(deps): update dependency setuptools to v78
+    - fix(deps): update module golang.org/x/net to v0.38.0
+    - fix(deps): update module
+      github.com/containers/gvisor-tap-vsock to v0.8.5
+    - fix(deps): update module github.com/onsi/gomega to v1.36.3
+    - chore(deps): update dependency setuptools to v77
+    - chore(deps): update dependency setuptools to ~=76.1.0
+    - fix(deps): update module github.com/opencontainers/runc to
+      v1.2.6
+    - fix(deps): update module golang.org/x/net to v0.37.0
+    - chore(deps): update dependency setuptools to v76
+    - fix(deps): update module golang.org/x/net to v0.36.0
+      [security]
+    - chore(deps): update dependency setuptools to ~=75.9.1
+    - fix(deps): update module github.com/containers/buildah to
+      v1.39.2
+    - fix(deps): update module github.com/opencontainers/image-spec
+      to v1.1.1
+    - fix(deps): update module github.com/shirou/gopsutil/v4 to
+      v4.25.2
+    - chore(deps): update dependency pytest to v8.3.5
+    - fix(deps): update github.com/vishvananda/netlink digest to
+      0af3215
+    - fix(deps): update github.com/digitalocean/go-qemu digest to
+      ee9b066
+    - fix(deps): update module
+      github.com/opencontainers/runtime-spec to v1.2.1
+    - fix(deps): update module github.com/containers/libhvee to
+      v0.10.0
+    - fix(deps): update module github.com/containers/buildah to
+      v1.39.1
+    - chore(deps): update module github.com/go-jose/go-jose/v4 to
+      v4.0.5 [security]
+    - fix(deps): update module github.com/vbatts/git-validation to
+      v1.2.2
+    - fix(deps): update module github.com/vbauerster/mpb/v8 to
+      v8.9.3
+    - fix(deps): update module
+      tags.cncf.io/container-device-interface to v0.8.1
+    - fix(deps): update github.com/containers/storage digest to
+      b6f6fb2
+    - fix(deps): update module github.com/opencontainers/runc to
+      v1.2.5
+    - chore(deps): update docker.io/library/golang docker tag to
+      v1.24
+    - fix(deps): update github.com/hugelgupf/p9 digest to 6f4f11e
+    - fix(deps): update module golang.org/x/tools to v0.30.0
+    - fix(deps): update module golang.org/x/net to v0.35.0
+    - fix(deps): update module golang.org/x/crypto to v0.33.0
+    - fix(deps): update module github.com/vbauerster/mpb/v8 to
+      v8.9.2
+    - fix(deps): update module google.golang.org/protobuf to
+      v1.36.5
+    - fix(deps): update module golang.org/x/sync to v0.11.0
+    - fix(deps): update module golang.org/x/term to v0.29.0
+    - fix(deps): update module golang.org/x/sys to v0.30.0
+    - fix(deps): update module github.com/shirou/gopsutil/v4 to
+      v4.25.1
+    - fix(deps): update golang.org/x/exp digest to e0ece0d
+    - fix(deps): update github.com/vishvananda/netlink digest to
+      7c2350b
+    - fix(deps): update module github.com/spf13/pflag to v1.0.6
+    - fix(deps): update module google.golang.org/protobuf to
+      v1.36.4
+- remove 0001-CVE-2025-22869-ssh-limit-the-size-of-the-internal-pa.patch
+
+-------------------------------------------------------------------
 Wed May  7 15:50:54 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
 
 - Downgrade criu from Requires to Recommends. It's provides optional
