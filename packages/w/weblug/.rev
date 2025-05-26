@@ -34,4 +34,12 @@
     <comment>Remove older version archive, which got forgotten to be removed. (forwarded request 1165667 from ph03nix)</comment>
     <requestid>1165694</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>14706cfe3c03693293c932127396e185</srcmd5>
+    <version>0.5</version>
+    <time>1748283404</time>
+    <user>anag_factory</user>
+    <comment>- Fixed _service: Switch revision from main to actual version (forwarded request 1279212 from ph03nix)</comment>
+    <requestid>1280313</requestid>
+  </revision>
 </revisionlist>
