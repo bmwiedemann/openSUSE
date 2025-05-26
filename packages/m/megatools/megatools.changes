@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 16 08:19:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.11.4:
+  * enable stealth mode
+  * update domain names
+- remove unneeded fuse dependency (boo#1242079) and other unused
+  dependencies
+
+-------------------------------------------------------------------
 Thu Mar 16 12:18:00 UTC 2023 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
 
 - updated to 1.11.1
