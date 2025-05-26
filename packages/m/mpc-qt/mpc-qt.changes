@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 23 21:56:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Remove unneeded build dependency
+- Spec cleanup
+- Don't install translations manually, they're already embedded
+  in the executable
+
+-------------------------------------------------------------------
 Mon May 12 19:29:43 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Use current repository in the URL field

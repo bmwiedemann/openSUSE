@@ -185,4 +185,15 @@
 </comment>
     <requestid>1276958</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>be45d3aa766a8e6b1846d38968866a9d</srcmd5>
+    <version>24.12.1</version>
+    <time>1748277298</time>
+    <user>anag_factory</user>
+    <comment>- Remove unneeded build dependency
+- Spec cleanup
+- Don't install translations manually, they're already embedded
+  in the executable (forwarded request 1279684 from krop)</comment>
+    <requestid>1279691</requestid>
+  </revision>
 </revisionlist>

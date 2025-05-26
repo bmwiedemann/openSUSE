@@ -23,8 +23,8 @@ Summary:        Media Player Classic Qute Theater
 License:        GPL-2.0-only
 URL:            https://github.com/mpc-qt/mpc-qt
 Source0:        https://github.com/mpc-qt/mpc-qt/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        %{name}.changes
-BuildRequires:  libQt5Gui-private-headers-devel
+# For dirs ownership
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  qt6-tools-linguist
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6DBus)
@@ -34,11 +34,6 @@ BuildRequires:  pkgconfig(Qt6OpenGLWidgets)
 BuildRequires:  pkgconfig(Qt6Svg)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(mpv) >= 1.101.0
-%if 0%{?suse_version} > 1500
-BuildRequires:  gcc-c++
-%else
-BuildRequires:  gcc10-c++
-%endif
 
 %description
 A clone of Media Player Classic reimplemented in Qt.
@@ -48,33 +43,22 @@ A clone of Media Player Classic reimplemented in Qt.
 rm -rf mpv-dev
 
 %build
-export CXX=g++
-test -x "$(type -p g++-10)" && export CXX=g++-10
 qmake6 \
-  QMAKE_CFLAGS+="%{optflags} -fpie" QMAKE_CXXFLAGS+="%{optflags} -fpie" \
-  QMAKE_LFLAGS="%{optflags} -pie" QMAKE_CC="${CC}" QMAKE_CXX="${CXX}" \
   PREFIX=%{_prefix} MPCQT_VERSION=%{version} \
   mpc-qt.pro
-%make_build
+%qmake6_build
 
 %install
-mkdir -p %{buildroot}/%{_bindir} \
-         %{buildroot}/%{_datadir}/applications \
-         %{buildroot}/%{_datadir}/pixmaps \
-         %{buildroot}/%{_datadir}/%{name}/translations
-install -m 0755 bin/%{name} %{buildroot}/%{_bindir}
-install -m 0644 images/icon/mpc-qt.svg %{buildroot}/%{_datadir}/pixmaps/%{name}.svg
-install -m 0644 %{name}_*.qm -t %{buildroot}/%{_datadir}/%{name}/translations
-install -m 0644 io.github.mpc-qt.mpc-qt.desktop %{buildroot}/%{_datadir}/applications
+%qmake6_install
+
+# Use %%doc instead
+rm -r %{buildroot}%{_datadir}/doc/mpc-qt
 
 %files
-%doc README.md
+%doc README.md DOCS/ipc.md
 %license LICENSE
 %{_bindir}/%{name}
-%{_datadir}/pixmaps/%{name}.svg
-%{_datadir}/applications/*.desktop
-%dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/translations
-%{_datadir}/%{name}/translations/%{name}_*.qm
+%{_datadir}/applications/io.github.mpc-qt.mpc-qt.desktop
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
 %changelog
