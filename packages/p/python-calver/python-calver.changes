@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 23 16:32:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.04.17:
+  * test: Delete SOURCE_DATE_EPOCH envvar if already present for
+    robustness
+- update to 2025.04.02:
+  * Update build backend
+  * Support running tests from source distribution
+- update to 2025.04.01:
+  * Switch to `pyproject.toml` as much as possible
+- update to 2025.03.31:
+  * Support Python 3.11, test 3.12-dev, drop EOL 3.5-3.6
+  * Update release.yml to use OIDC publishing
+  * Drop 3.7 and 3.8
+  * Support SOURCE_DATE_EPOCH for reproducible builds
+
+-------------------------------------------------------------------
 Thu May 15 12:48:06 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
@@ -11,7 +28,7 @@ Fri Apr 21 12:23:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Apr 20 08:02:49 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Inject multibuild. 
+- Inject multibuild.
 
 -------------------------------------------------------------------
 Wed Jul 13 21:23:32 UTC 2022 - Ben Greiner <code@bnavigator.de>

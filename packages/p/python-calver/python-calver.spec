@@ -28,7 +28,7 @@
 %define ghtag 2022.06.26
 %{?sle15_python_module_pythons}
 Name:           python-calver%{psuffix}
-Version:        2022.6.26
+Version:        2025.4.17
 Release:        0
 Summary:        Setuptools extension for CalVer package versions
 License:        Apache-2.0

@@ -25,4 +25,26 @@
     <comment></comment>
     <requestid>1277826</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>72f345b6708702187e19de734069a528</srcmd5>
+    <version>2025.4.17</version>
+    <time>1748277132</time>
+    <user>anag_factory</user>
+    <comment>- update to 2025.04.17:
+  * test: Delete SOURCE_DATE_EPOCH envvar if already present for
+    robustness
+- update to 2025.04.02:
+  * Update build backend
+  * Support running tests from source distribution
+- update to 2025.04.01:
+  * Switch to `pyproject.toml` as much as possible
+- update to 2025.03.31:
+  * Support Python 3.11, test 3.12-dev, drop EOL 3.5-3.6
+  * Update release.yml to use OIDC publishing
+  * Drop 3.7 and 3.8
+  * Support SOURCE_DATE_EPOCH for reproducible builds
+
+- Inject multibuild.</comment>
+    <requestid>1279597</requestid>
+  </revision>
 </revisionlist>
