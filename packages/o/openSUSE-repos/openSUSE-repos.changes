@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 26 14:50:34 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250526.4556805:
+  * Default zypp parallel downloads for 16.0 and TW
+  * Enable NVIDIA repository for Leap 16.0
+
+-------------------------------------------------------------------
+Wed May 21 10:32:31 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Fix url for Leap 16 tmp migration repo 
+
+-------------------------------------------------------------------
 Mon Mar 24 14:23:47 UTC 2025 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20250324.7d1bc96:

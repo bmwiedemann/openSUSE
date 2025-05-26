@@ -67,7 +67,7 @@ ExclusiveArch:  do_not_build
 %if "%flavor" == "openSUSE-repos-Leap"
 %define theme Leap
 %define branding leap
-%define with_nvidia 0
+%define with_nvidia 1
 %endif
 %endif
 
@@ -80,7 +80,7 @@ Name:           openSUSE-repos
 %else
 Name:           openSUSE-repos-%{theme}
 %endif
-Version:        20250324.7d1bc96
+Version:        20250526.4556805
 Release:        0
 Summary:        openSUSE package repositories
 License:        MIT
