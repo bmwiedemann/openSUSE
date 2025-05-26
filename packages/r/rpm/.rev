@@ -2594,4 +2594,13 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>print scriptlet messages in --runposttrans</comment>
     <requestid>1272673</requestid>
   </revision>
+  <revision rev="323" vrev="4">
+    <srcmd5>c6bfe1176d6e0a41f966190dcd0f11ad</srcmd5>
+    <version>4.20.1</version>
+    <time>1748277108</time>
+    <user>anag_factory</user>
+    <comment>- fix posttrans scriptlet argument in the update case [bsc#1243279]
+- fix postuntrans scriptlets not being run if dump_posttrans is set</comment>
+    <requestid>1279053</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 21 15:40:57 CEST 2025 - mls@suse.de
+
+- fix posttrans scriptlet argument in the update case [bsc#1243279]
+  * updated patch: posttrans.diff
+- fix postuntrans scriptlets not being run if dump_posttrans is set
+
+-------------------------------------------------------------------
 Fri Apr 25 11:29:35 CEST 2025 - mls@suse.de
 
 - print scriptlet messages in --runposttrans
