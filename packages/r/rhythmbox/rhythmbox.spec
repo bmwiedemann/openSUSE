@@ -1,7 +1,7 @@
 #
 # spec file for package rhythmbox
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://wiki.gnome.org/Apps/Rhythmbox
 Source0:        https://download.gnome.org/sources/rhythmbox/3.4/%{name}-%{version}.tar.xz
 Source1:        %{name}-remote-control.xml
 Source2:        daap-server.xml
+
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  lirc-devel
@@ -33,7 +35,6 @@ BuildRequires:  meson >= 0.59
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.18.0
