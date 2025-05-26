@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 22 03:12:26 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 2.10.0
+  - Add meson build
+  - po: Add LINGUAS and POTFILES
+  - Remove outdated install instructions
+  - Remove unused search flags variable
+  - Replace deprecated exo with libxfce4ui 4.21.0
+  - Fix missing declaration warning
+  - Fix shadowed variables
+  - Fix unused lambda capture warning
+  - Translation Updates
+
+-------------------------------------------------------------------
 Wed Feb 19 13:18:18 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 2.9.2

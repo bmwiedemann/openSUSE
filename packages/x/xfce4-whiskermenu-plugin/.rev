@@ -600,4 +600,22 @@
     <comment></comment>
     <requestid>1247260</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d2ab0ebc72ed2acd32ccc25de5ef8dd7</srcmd5>
+    <version>2.10.0</version>
+    <time>1748277152</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.10.0
+  - Add meson build
+  - po: Add LINGUAS and POTFILES
+  - Remove outdated install instructions
+  - Remove unused search flags variable
+  - Replace deprecated exo with libxfce4ui 4.21.0
+  - Fix missing declaration warning
+  - Fix shadowed variables
+  - Fix unused lambda capture warning
+  - Translation Updates
+</comment>
+    <requestid>1279205</requestid>
+  </revision>
 </revisionlist>

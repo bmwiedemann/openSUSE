@@ -19,15 +19,15 @@
 %define panel_version 4.16
 %define plugin whiskermenu
 Name:           xfce4-whiskermenu-plugin
-Version:        2.9.2
+Version:        2.10.0
 Release:        0
 Summary:        Alternate Xfce Menu
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-whiskermenu-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/2.9/%{name}-%{version}.tar.bz2
-BuildRequires:  cmake >= 3.16
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/2.10/%{name}-%{version}.tar.xz
 BuildRequires:  gcc-c++
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(accountsservice) >= 0.6.45
 BuildRequires:  pkgconfig(exo-2) >= 4.16
@@ -53,33 +53,18 @@ Installed applications can be browsed by clicking on the category
 buttons on the side. Whisker Menu keeps a list of most recent used
 applications launched from it.
 
-%package lang
-Summary:        Translations for package %{name}
-Group:          System/Localization
-Requires:       %{name} = %{version}
-Supplements:    %{name}
-Provides:       %{name}-lang-all = %{version}
-# package was renamed in 2019 after Leap 15.1
-Obsoletes:      xfce4-panel-plugin-%{plugin}-lang < %{version}-%{release}
-Provides:       xfce4-panel-plugin-%{plugin}-lang = %{version}-%{release}
-BuildArch:      noarch
-
-%description lang
-Provides translations for the "%{name}" package.
+%lang_package
 
 %prep
 %autosetup
 
 %build
-%cmake
-%if 0%{?suse_version} <= 1500
-make %{?_smp_mflags} VERBOSE=1
-%else
-%cmake_build
-%endif
+%meson
+%meson_build
 
 %install
-%cmake_install
+%meson_install
+
 %find_lang xfce4-whiskermenu-plugin %{?no_lang_C}
 
 %files
