@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 23 12:17:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.1:
+  * Bug Fixes
+    - improve values handling; add more trace logs (358855f)
+
+-------------------------------------------------------------------
 Wed May 14 10:43:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.0:
