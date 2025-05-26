@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 24 05:34:50 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.250.0 (0.25)
+   see /usr/share/doc/packages/perl-Net-CIDR/ChangeLog
+
+  0.25    Sam Varshavchik  <mrsam@courier-mta.com>
+  	Fix warning with Perl 5.40
+  0.24.1
+  	No changes, re-pushed due to a release problem.
+  0.24
+  2025-03-09   brian d foy <briandfoy@pobox.com>
+  	* Strip leading zeros from octets from addr2cidr
+
+-------------------------------------------------------------------
 Tue Mar 11 05:33:41 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.230.0 (0.23)

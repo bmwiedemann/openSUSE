@@ -18,10 +18,10 @@
 
 %define cpan_name Net-CIDR
 Name:           perl-Net-CIDR
-Version:        0.230.0
+Version:        0.250.0
 Release:        0
-# 0.23 -> normalize -> 0.230.0
-%define cpan_version 0.23
+# 0.25 -> normalize -> 0.250.0
+%define cpan_version 0.25
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Manipulate IPv4/IPv6 netblocks in CIDR notation
 URL:            https://metacpan.org/release/%{cpan_name}
