@@ -38,6 +38,8 @@ Patch0:         harden_qbittorrent-nox@.service.patch
 Patch2:         qbittorrent-fix_boost_1.75_build.patch
 # PATCH-FIX-OPENSUSE qbittorrent-altpython.patch force newer python for the plugins -- aloisio@gmx.com
 Patch3:         qbittorrent-altpython.patch
+# PATCH-FIX-OPENSUSE qbittorrent-Qt610.patch
+Patch4:         qbittorrent-Qt610.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme

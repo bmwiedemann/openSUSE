@@ -1,0 +1,11 @@
+diff --git a/cmake/Modules/CheckPackages.cmake b/cmake/Modules/CheckPackages.cmake
+index 6c85b8d11..b24f0e9ca 100644
+--- a/cmake/Modules/CheckPackages.cmake
++++ b/cmake/Modules/CheckPackages.cmake
+@@ -54,3 +54,6 @@ if (DBUS)
+         PURPOSE "Required by the DBUS feature"
+     )
+ endif()
++if(Qt6Core_VERSION VERSION_GREATER_EQUAL 6.10)
++    find_package(Qt6 ${minQt6Version} REQUIRED COMPONENTS CorePrivate)
++endif()

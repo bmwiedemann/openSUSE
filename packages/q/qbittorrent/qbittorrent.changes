@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 23 16:43:05 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add qbittorrent-Qt610.patch to fix build with Qt 6.10
+
+-------------------------------------------------------------------
 Mon Apr 28 06:56:02 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.1.0
