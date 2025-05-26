@@ -42,7 +42,6 @@ BuildRequires:  id3lib-devel
 BuildRequires:  intltool >= 0.50.0
 BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.24
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(flac) >= 1.1.4
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
@@ -93,7 +92,6 @@ NOCONFIGURE=1 ./autogen.sh
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-#suse_update_desktop_file %{name}
 %find_lang %{name}
 # We take the HACKERS and AUTHORS file to the standard package doc
 rm -rf %{buildroot}%{_datadir}/doc

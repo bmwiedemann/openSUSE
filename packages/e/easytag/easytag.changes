@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 23 12:37:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete update-desktop-files BuildRequires.
+
+-------------------------------------------------------------------
 Thu Feb 27 17:57:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream patches, lifted from debian, fix build for 32bit:
