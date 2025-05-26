@@ -7,4 +7,12 @@
     <comment>New package eduvpn-client (reworked dependency handling)</comment>
     <requestid>1279007</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ab8d241d7ff57f3245c4c24a0d61514c</srcmd5>
+    <version>4.5.1</version>
+    <time>1748277234</time>
+    <user>anag_factory</user>
+    <comment>version update to 4.5.1</comment>
+    <requestid>1279513</requestid>
+  </revision>
 </revisionlist>

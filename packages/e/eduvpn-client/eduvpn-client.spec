@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define vname linux-app
 Name:           eduvpn-client
-Version:        4.5.0
+Version:        4.5.1
 Release:        0
 Summary:        The eduVPN desktop client (CLI and GUI front-end)
 License:        GPL-3.0-or-later
