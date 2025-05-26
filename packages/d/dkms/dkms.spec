@@ -17,7 +17,7 @@
 
 
 Name:           dkms
-Version:        3.1.6
+Version:        3.1.7
 Release:        0
 Summary:        Dynamic Kernel Module Support Framework
 License:        GPL-2.0-only

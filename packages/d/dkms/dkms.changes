@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 14 20:10:14 UTC 2025 - Alexandru Gabriel Bradatan <alex.bradatan85@yahoo.it>
+
+- Update to 3.1.7
+  * Add codeSigning EKU to generated MOK
+  * Various fixes:
+    - Record location of archived original modules and restore them
+      there
+    - Support AUTOINSTALL="no"
+    - Do not clean the clean build tree before building the module
+    - Error out on dkms.conf containing duplicate module
+      definitions
+    - common.postinst: run with the same verbosity as autoinstall
+    - Add more sanity checks
+    - Make some error messages more informative
+
+-------------------------------------------------------------------
 Thu Mar 27 09:09:25 UTC 2025 - Alexandru Gabriel Bradatan <alex.bradatan85@yahoo.it>
 
 - Update to 3.1.4
