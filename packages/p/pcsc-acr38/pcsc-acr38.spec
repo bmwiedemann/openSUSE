@@ -88,7 +88,7 @@ cd non-ccid/ACR38_LINUX_%{tar_version}
 autoreconf -f -i
 %configure\
 	--disable-static
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 cd non-ccid/ACR38_LINUX_%{tar_version}
