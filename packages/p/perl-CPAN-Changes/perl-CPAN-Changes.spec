@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CPAN-Changes
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name CPAN-Changes
 Name:           perl-CPAN-Changes
-Version:        0.500004
+Version:        0.500005
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parser for CPAN style change logs
@@ -52,7 +52,7 @@ This module will help users programmatically read and write Changes files
 that conform to the specification.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

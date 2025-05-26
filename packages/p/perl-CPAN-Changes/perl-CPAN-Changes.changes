@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 18 05:33:22 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.500005
+   see /usr/share/doc/packages/perl-CPAN-Changes/Changes
+
+  0.500005 - 2025-04-17
+    - fix Test::CPAN::Changes on perl 5.10 without upgrading version.pm
+
+-------------------------------------------------------------------
 Fri May  3 03:06:08 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.500004

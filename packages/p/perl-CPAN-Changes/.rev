@@ -55,4 +55,17 @@
     <comment></comment>
     <requestid>1174457</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>312c7ac0153a7e4e7bbec12c3c040716</srcmd5>
+    <version>0.500005</version>
+    <time>1748277346</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1278608 from tinita
+
+- updated to 0.500005
+   see /usr/share/doc/packages/perl-CPAN-Changes/Changes
+  0.500005 - 2025-04-17
+    - fix Test::CPAN::Changes on perl 5.10 without upgrading version.pm</comment>
+    <requestid>1279793</requestid>
+  </revision>
 </revisionlist>
