@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 16 09:52:33 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix changelog format: the line immediately after the dashed line
+  is supposed to be the header with date/author info.
+
+-------------------------------------------------------------------
 Mon May  5 14:18:56 UTC 2025 - pgajdos@suse.com
 
 - added patches
@@ -223,13 +229,11 @@ Wed Dec 23 20:22:47 UTC 2009 - coolo@novell.com
 - remove the moblin hack that fixes something not in this package
 
 -------------------------------------------------------------------
-
 Fri Nov  6 03:42:04 UTC 2009 - gregkh@suse.de
 
 - fix mode on /etc/logrotate.d/acct to not be executable.
 
 -------------------------------------------------------------------
-
 Wed Nov  4 04:01:04 UTC 2009 - gregkh@suse.de
 
 - do not enable acct to start automatically on Moblin.  We don't
