@@ -82,7 +82,7 @@ NOCONFIGURE=1 autoreconf -fi
 %configure \
    --libdir=%{_prefix}/lib \
    --disable-docs
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 # For backward compatability with <= 1110
@@ -93,6 +93,7 @@ find %{buildroot}%{_prefix}/lib -name %{name}.pc -type f -print -delete
 
 %files
 %defattr(-,root,root)
+%license COPYING
 %dir %{_prefix}/lib/mono/gac/%{name}
 %{_prefix}/lib/mono/gac/%{name}/
 %dir %{_prefix}/lib/mono/%{name}

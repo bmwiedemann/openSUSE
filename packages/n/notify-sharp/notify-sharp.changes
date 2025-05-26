@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 14 15:43:12 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %make_build instead of %jobs (boo#1237231)
+- Mark COPYING file as %license
+
+-------------------------------------------------------------------
 Thu Feb 22 14:06:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -70,6 +76,6 @@ Thu Jun 21 12:46:37 CDT 2007 - maw@suse.de
 - Don't build as root.
 
 -------------------------------------------------------------------
-Mon Jun 11 2007 12:00:00 EST 2007 - calvinrg@gmail.com
+Mon Jun 11 12:00:00 EST 2007 - calvinrg@gmail.com
 
 - Initial package, version 0.4.0
