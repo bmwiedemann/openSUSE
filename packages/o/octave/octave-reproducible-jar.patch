@@ -1,0 +1,51 @@
+---
+ configure.ac           |   10 ++++++++++
+ scripts/java/module.mk |   11 +++++++++--
+ 2 files changed, 19 insertions(+), 2 deletions(-)
+
+Index: octave-10.1.0/scripts/java/module.mk
+===================================================================
+--- octave-10.1.0.orig/scripts/java/module.mk
++++ octave-10.1.0/scripts/java/module.mk
+@@ -52,11 +52,18 @@ $(%canon_reldir%_JAVA_CLASSES) : %.class
+ 	             -d $(abs_top_builddir)/scripts/java \
+ 	             $(org_octave_dir)/$(<F) )
+ 
++JAR_DATE = $(shell date -u -d"@$(SOURCE_MTIME)" -I'seconds')
++
+ if AMCOND_HAVE_JAVA
+ %reldir%/octave.jar: $(%canon_reldir%_JAVA_CLASSES)
+ 	$(OCT_V_JAR)rm -f $@-t $@ && \
+-	( cd scripts/java; \
+-	  "$(JAR)" cf octave.jar-t $(JAVA_CLASSES) ) && \
++	if test "x$(JAR_SUPPORT_DATE)" = "xyes"; then \
++	  ( cd scripts/java; \
++	    "$(JAR)" -c --date="$(JAR_DATE)" -f octave.jar-t $(JAVA_CLASSES) ) \
++	else \
++	  ( cd scripts/java; \
++	    "$(JAR)" -c -f octave.jar-t $(JAVA_CLASSES) ) \
++	fi && \
+ 	mv $@-t $@
+ endif
+ 
+Index: octave-10.1.0/configure.ac
+===================================================================
+--- octave-10.1.0.orig/configure.ac
++++ octave-10.1.0/configure.ac
+@@ -2697,6 +2697,16 @@ do
+     break
+   fi
+ 
++  ## Test if jar supports --date for reproducible builds
++  AC_MSG_CHECKING([whether jar supports '--date' option])
++  if $JAR --help | grep -- '--date=' > /dev/null 2>&1; then
++      JAR_SUPPORT_DATE=yes
++      AC_MSG_RESULT($JAR_SUPPORT_DATE)
++      AC_SUBST(JAR_SUPPORT_DATE)
++  else
++      AC_MSG_RESULT(no)
++  fi
++
+   ## Passed all configuration tests.  A workable Java installation was found.
+   build_java=yes
+   AC_DEFINE(HAVE_JAVA, 1,

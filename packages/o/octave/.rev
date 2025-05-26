@@ -853,4 +853,12 @@ http://hg.savannah.gnu.org/hgweb/octave/rev/122d3f62e179 (forwarded request 1845
 * Drop deprecated BuildRequires: update-desktop-files (providing  %suse_update_desktop_file macro that is no longer used).</comment>
     <requestid>1278299</requestid>
   </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>f70078b5e5caef4ec8be7d84eb7a44b5</srcmd5>
+    <version>10.1.0</version>
+    <time>1748277647</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1280229</requestid>
+  </revision>
 </revisionlist>

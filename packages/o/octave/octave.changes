@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 20 09:57:03 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add octave-reproducible-jar.patch: Set jar date to source
+  modification date-time for reproducible builds (bug #67140).
+- Build with GCC 8 for Leap <= 15.6 for c++17 <filesystem>
+  support; this fixes build failures on 15.6 and older Leap.
+- tests: Set Xvfb screen colour depth to 16, which seems the
+  minimum required for `image/getframe.m` test to not segfault
+  (bug #65866).
+- Call ldconfig_scriptlets on cli package instead of main package.
+- Drop use of deprecated install_info post(un) scriptlets.
+
+-------------------------------------------------------------------
 Mon May 12 11:25:44 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 10.1.0:

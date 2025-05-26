@@ -46,6 +46,9 @@
 %else
 %define blas_library blas
 %endif
+%if 0%{?suse_version} <= 1500
+%define gcc_ver 8
+%endif
 Name:           octave
 Version:        %{pkg_ver}
 Release:        0
@@ -60,6 +63,8 @@ Source2:        %{name}-rpmlintrc
 Patch0:         octave_tools_pie.patch
 # PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?54607
 Patch1:         0001-Disable-signal-handler-thread-avoid-duplicate-signal.patch
+# PATCH-FIX-UPSTREAM octave-reproducible-jar.patch badshah400@gmail.com -- Set jar date to source modification date-time for reproducible builds [https://savannah.gnu.org/bugs/index.php?67140]
+Patch2:         octave-reproducible-jar.patch
 #
 BuildRequires:  %{blas_library}-devel
 BuildRequires:  arpack-ng-devel
@@ -71,8 +76,8 @@ BuildRequires:  dejagnu
 BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel
 BuildRequires:  flex
-BuildRequires:  gcc-c++
-BuildRequires:  gcc-fortran
+BuildRequires:  gcc%{?gcc_ver}-c++
+BuildRequires:  gcc%{?gcc_ver}-fortran
 BuildRequires:  ghostscript
 BuildRequires:  glpk-devel
 BuildRequires:  gmp-devel
@@ -225,6 +230,11 @@ This package contains documentation for Octave.
 %autopatch -p1
 
 %build
+%if 0%{?gcc_ver}
+export CC=gcc-%{gcc_ver}
+export CXX=g++-%{gcc_ver}
+export F77=gfortran-%{gcc_ver}
+%endif
 
 # rebuild makefiles after Patch0
 autoreconf -i -s -f
@@ -284,18 +294,12 @@ echo "-Xss8m" >  %{buildroot}/%{_datadir}/%{name}/%{src_ver}/m/java/java.opts
 # dgetrf is quite memory hungry, see https://github.com/xianyi/OpenBLAS/issues/246
 echo "-Xss8m" >  scripts/java/java.opts
 
-# We need "--no-gui-libs" as a temporary work around to https://savannah.gnu.org/bugs/index.php?65866
-xvfb-run make %{?_smp_mflags} check RUN_OCTAVE_OPTIONS="--no-gui-libs"
+# We need at least a screen bit depth of 16 (xvfb-run defaults to 8) for some GUI tests to work
+# https://savannah.gnu.org/bugs/index.php?65866
+xvfb-run -a -s "-screen 0 640x480x16" \
+%make_build check
 
-%ldconfig_scriptlets
-
-%post cli
-/sbin/ldconfig
-%install_info --info-dir=%{_infodir} %{_infodir}/octave.info.gz
-
-%postun cli
-/sbin/ldconfig
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/octave.info.gz
+%ldconfig_scriptlets cli
 
 %files
 %license COPYING
