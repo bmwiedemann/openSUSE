@@ -9,7 +9,9 @@ PIDFile=/run/nginx.pid
 ExecStartPre=/usr/sbin/nginx -t
 ExecStart=/usr/sbin/nginx -g "daemon off;"
 ExecReload=/bin/kill -s HUP $MAINPID
-KillSignal=SIGQUIT
+# Try graceful shutdown first, otherwise forced shutdown to not need to resort
+# to SIGKILL
+ExecStop=/bin/sh -c "kill -s QUIT $MAINPID && waitpid --timeout 3 --exited $MAINPID || kill -s TERM $MAINPID"
 TimeoutStopSec=5
 KillMode=mixed
 PrivateTmp=true

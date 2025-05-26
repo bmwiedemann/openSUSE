@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 22 13:53:07 UTC 2025 - Oliver Kurz <okurz@suse.com>
+
+- Changed service to prevent "timed out. Killing" messages on service stopping
+
+-------------------------------------------------------------------
 Wed Apr 16 14:49:23 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 1.27.5

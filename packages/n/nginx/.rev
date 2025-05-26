@@ -1230,4 +1230,12 @@
     curves in OpenSSL.</comment>
     <requestid>1270052</requestid>
   </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>8d2cd3890ee2c28692cb79fb4c39003d</srcmd5>
+    <version>1.27.5</version>
+    <time>1748277122</time>
+    <user>anag_factory</user>
+    <comment>- Changed service to prevent &quot;timed out. Killing&quot; messages on service stopping</comment>
+    <requestid>1279422</requestid>
+  </revision>
 </revisionlist>
