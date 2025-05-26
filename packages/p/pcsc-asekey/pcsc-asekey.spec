@@ -52,7 +52,7 @@ pcsc-lite package.
 %build
 %configure\
 	--with-udev-rules-dir=%{_udevrulesdir}
-make %{?jobs:-j%jobs} CC="%__cc" LD="%__ld" CPP="%__cpp" CXX="%__cxx"
+%make_build CC="%__cc" LD="%__ld" CPP="%__cpp" CXX="%__cxx"
 
 %install
 %makeinstall
