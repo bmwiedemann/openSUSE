@@ -17,7 +17,7 @@
 
 
 Name:           cloud-hypervisor
-Version:        45.0
+Version:        46.0
 Release:        0
 Summary:        A Virtual Machine Monitor
 License:        Apache-2.0 AND BSD-3-Clause

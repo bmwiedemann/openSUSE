@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat May 24 10:24:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 46.0:
+  * File-level Locking Support with --disk
+  * Improved Error Reporting with VM Resizing
+  * IPv6 Address Support with --net
+  * Deprecated SGX Support
+  * Remove path as required for DiskConfig from the OpenAPI spec file
+  * Properly parse PCI capabilities
+  * Reprogram PCI device BAR when its MSE bit is set
+  * Update IOMMU mappings of MMIO regions with BAR reprogram for VFIO
+    devices
+  * Avoid resizing VMs to zero vCPUs
+  * Fix extended topology enumeration leaf exposed to the guest
+
+-------------------------------------------------------------------
 Sun Mar 30 11:37:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 45.0:

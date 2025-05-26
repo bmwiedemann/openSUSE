@@ -46,4 +46,23 @@
 - enable riscv64 builds (forwarded request 1265533 from rrahl0)</comment>
     <requestid>1265534</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cd23026e235c94b48443dfa5a75e62f6</srcmd5>
+    <version>46.0</version>
+    <time>1748277327</time>
+    <user>anag_factory</user>
+    <comment>- update to 46.0:
+  * File-level Locking Support with --disk
+  * Improved Error Reporting with VM Resizing
+  * IPv6 Address Support with --net
+  * Deprecated SGX Support
+  * Remove path as required for DiskConfig from the OpenAPI spec file
+  * Properly parse PCI capabilities
+  * Reprogram PCI device BAR when its MSE bit is set
+  * Update IOMMU mappings of MMIO regions with BAR reprogram for VFIO
+    devices
+  * Avoid resizing VMs to zero vCPUs
+  * Fix extended topology enumeration leaf exposed to the guest (forwarded request 1279757 from rrahl0)</comment>
+    <requestid>1279758</requestid>
+  </revision>
 </revisionlist>
