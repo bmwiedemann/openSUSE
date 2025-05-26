@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-recipes
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,6 @@ BuildRequires:  itstool
 BuildRequires:  libxml2-tools
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala-devel
 BuildRequires:  pkgconfig(gnome-autoar-0)
 BuildRequires:  pkgconfig(goa-1.0)
@@ -86,7 +85,6 @@ search results from Recipes.
 
 %install
 %meson_install
-%suse_update_desktop_file -r org.gnome.Recipes GTK GNOME Office ProjectManagement
 %fdupes %{buildroot}%{_datadir}
 %find_lang %{name} %{?no_lang_C}
 %find_lang org.gnome.Recipes %{?no_lang_C}

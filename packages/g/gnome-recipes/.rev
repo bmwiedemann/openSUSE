@@ -93,4 +93,12 @@
     <comment></comment>
     <requestid>1205828</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>bf177056f3fa37ec3d415142ffc235f9</srcmd5>
+    <version>2.0.4+117</version>
+    <time>1748277550</time>
+    <user>anag_factory</user>
+    <comment>- Drop obsolete update-desktop-files BuildRequires and macro. (forwarded request 1279537 from iznogood)</comment>
+    <requestid>1280016</requestid>
+  </revision>
 </revisionlist>
