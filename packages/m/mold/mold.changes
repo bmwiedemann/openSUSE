@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon May 26 06:52:40 UTC 2025 - Martin Liška <martin.liska@hey.com>
+
+- Update to version 2.40.0
+
+  * mold now lays out DWARF32 debug info before DWARF64 in output debug sections to
+    mitigate relocation overflow issues with DWARF32 when a debug info section
+    exceeds 4 GiB. This should help people who are building extremely large
+    executables in debug mode. (19a1bc6, 159ce3b)
+  * Here are the details: By default, GCC and Clang emit DWARF32 even for 64-bit
+    code. That is, the debug info typically uses 32 bit offsets to refer to
+    locations in other debug info sections while it uses 64 bits to represent
+    addresses. This imposes a limitation on the largest offset DWARF32 debug info
+    can refer to, which is 4 GiB. If the output debug section exceeds that size, the
+    linker may report a relocation overflow error. You can instruct the compilers to
+    emit DWARF64, which uses 64 bits for inter-debug info references, if you are
+    building an extremely large executable. So, the proper fix for the relocation
+    overflow issue is to build all object files with -gdwarf64. However, rebuilding
+    all static libraries with the new compiler flag is not always feasible for
+    various reasons. This new feature mitigates the issue by placing DWARF32 at the
+    beginning of output debug info sections, followed by DWARF64. By doing so,
+    relocation overflow can be prevented as long as the total size of DWARF32
+    remains under 4 GiB, allowing users to continue using object files compiled
+    without -gdwarf64 for very large executables.
+  * Note that mold only sorts debug section contents when their size exceeds 4 GiB.
+    Therefore, for most outputs, this mitigation doesn't change the result at all.
+  * Fixed a regression introduced in 2.38.0 in which a thread-local variable with an
+    unusually large alignment might not have been aligned properly. That caused
+    mislinking of systemd when LTO was enabled (#1463). (53c1758)
+  * Fixed a regression introduced in 2.38.0 in which --as-needed was ignored when
+    creating an executable under a rare condition. (af36625)
+  * Fixed an assertion failure on some targets that is triggered when an weak
+    undefined symbol in an executable is promoted to a dynamic symbol with the -z
+    dynamic-undefined-weak option. (0fdffad)
+  * mold now ignores --dynamic-linker if -static is given. The new behavior is
+    compatible with GNU ld. (c13ecc9)
+
+-------------------------------------------------------------------
 Mon May 12 16:55:44 UTC 2025 - Martin Liška <martin.liska@hey.com>
 
 - Update to version 2.39.1
