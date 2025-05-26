@@ -224,4 +224,19 @@
     <comment></comment>
     <requestid>1173969</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>feaef0d1a0d845cc33cc0d56955d8e49</srcmd5>
+    <version>1.7003</version>
+    <time>1748277360</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1279804 from tinita
+
+- updated to 1.7003
+   see /usr/share/doc/packages/perl-Math-BigInt-GMP/CHANGES
+  1.7003 2025-03-25
+   * Sync test files with Math-BigInt.
+  1.7002 2025-02-22
+   * Sync test files with Math-BigInt.</comment>
+    <requestid>1279817</requestid>
+  </revision>
 </revisionlist>

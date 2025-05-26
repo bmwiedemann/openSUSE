@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Math-BigInt-GMP
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Math-BigInt-GMP
 Name:           perl-Math-BigInt-GMP
-Version:        1.7001
+Version:        1.7003
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Backend library for Math::BigInt etc. based on GMP
@@ -29,10 +29,10 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp) >= 1.22
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.58
-BuildRequires:  perl(Math::BigInt) >= 2.3.1
+BuildRequires:  perl(Math::BigInt) >= 2.005001
 BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(Carp) >= 1.22
-Requires:       perl(Math::BigInt) >= 2.3.1
+Requires:       perl(Math::BigInt) >= 2.005001
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  gmp-devel
@@ -56,7 +56,7 @@ This package contains a replacement (drop-in) module for Math::BigInt's core,
 Math::BigInt::Calc.pm.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
