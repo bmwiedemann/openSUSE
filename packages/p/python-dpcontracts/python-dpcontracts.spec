@@ -1,7 +1,7 @@
 #
 # spec file for package python-dpcontracts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-dpcontracts
 Version:        0.6.0
@@ -28,7 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/deadpixi/contracts
 Source:         https://files.pythonhosted.org/packages/source/d/dpcontracts/dpcontracts-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/deadpixi/contracts/master/LICENSE
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -49,15 +49,17 @@ be specified on functions and on classes.
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/dpcontracts.py
+%{python_sitelib}/dpcontracts-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/dpcontracts*
 
 %changelog
