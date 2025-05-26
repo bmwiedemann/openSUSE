@@ -25,13 +25,13 @@ Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Accerciser
 Source0:        https://download.gnome.org/sources/accerciser/3.46/%{name}-%{version}.tar.xz
 
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 # py3atspi is a virtual name that is provided by the default at-spi stack
 BuildRequires:  py3atspi
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(atspi-2) >= 2.5.2
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
@@ -78,7 +78,6 @@ This package provides the IPython console widget
 
 %install
 %meson_install
-%suse_update_desktop_file -r -N "Accerciser" -G "Accesibility Debugger" accerciser Utility GNOME Accessibility
 %find_lang %{name} %{?no_lang_C}
 %python3_fix_shebang
 %fdupes %{buildroot}%{_prefix}
