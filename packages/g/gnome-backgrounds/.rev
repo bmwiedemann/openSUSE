@@ -685,4 +685,13 @@
     <comment>Fix date format in old changelog entries (forwarded request 1277771 from dimstar)</comment>
     <requestid>1278234</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>75feed743bca4ee93a6586bbf628a32d</srcmd5>
+    <version>48.2.1</version>
+    <time>1748277580</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.2.1:
+  + Two extra wallpapers celebrating the Pride month. (forwarded request 1279848 from iznogood)</comment>
+    <requestid>1280049</requestid>
+  </revision>
 </revisionlist>
