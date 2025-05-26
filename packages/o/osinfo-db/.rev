@@ -656,4 +656,12 @@
     <comment>Add support for SLEMicro 6.2 and Windows Server 2025</comment>
     <requestid>1265288</requestid>
   </revision>
+  <revision rev="83" vrev="4">
+    <srcmd5>c5603679e6c4b61334087ba52cd47d81</srcmd5>
+    <version>20250124</version>
+    <time>1748277095</time>
+    <user>anag_factory</user>
+    <comment>Fix for bsc#1243296 sles16 definition with wrong path for aarch64 and others</comment>
+    <requestid>1278883</requestid>
+  </revision>
 </revisionlist>

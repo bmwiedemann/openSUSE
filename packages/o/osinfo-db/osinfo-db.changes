@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 20 14:11:44 MDT 2025 - carnold@suse.com
+
+- bsc#1243296 - What version of virt-manager-common supports SLES16
+  ISO layout
+  add-sles16-support.patch
+
+-------------------------------------------------------------------
 Fri Mar 28 12:50:18 MDT 2025 - carnold@suse.com
 
 - bsc#1240121 - [SLEMicro6.2] osinfo-db: Add support for slem6.2 to
