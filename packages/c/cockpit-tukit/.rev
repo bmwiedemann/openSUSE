@@ -119,4 +119,41 @@
   * drop 38.patch</comment>
     <requestid>1272677</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>63f5c97c7c6d8f69b4b44d47ab13d821</srcmd5>
+    <version>0.1.4~git0.6eacfc1</version>
+    <time>1748277225</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.1.4~git0.6eacfc1:
+  * Display message for user if they aren't superuser (bsc#1242139)
+  * UI Fixes
+  * FEAT: Patternfly 6 support
+  * BUMP deps to patternfly-6 and update COCKPIT_REPO_COMMIT
+  * fix: Properly handle superuser.allowed
+  * Bump @typescript-eslint/eslint-plugin in the types group
+  * Bump qunit from 2.19.4 to 2.24.1
+  * Bump the stylelint group across 1 directory with 2 updates
+  * Bump ts-loader from 9.4.4 to 9.5.2
+  * Bump glob from 11.0.1 to 11.0.2
+  * Bump the stylelint group with 2 updates
+  * Bump @typescript-eslint/eslint-plugin in the types group
+  * Bump @babel/preset-typescript from 7.22.5 to 7.27.1
+  * Chore: With dependabot now enabled, lets update insecure npm packages
+  * Bump the react group with 2 updates
+  * Bump esbuild from 0.25.2 to 0.25.4 in the esbuild group
+  * ci: Add in dependabot and automated updates to cockpit-lib
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Georgian)</comment>
+    <requestid>1279489</requestid>
+  </revision>
 </revisionlist>
