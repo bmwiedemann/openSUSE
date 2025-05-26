@@ -3564,7 +3564,7 @@ Tue Oct 21 19:24:32 EST 2008 - mboman@suse.de
   + Stability fix with concurrent close and reads (made amarok2 crash)
 
 -------------------------------------------------------------------
-Fri Oct  3 11:26:25 WST 2008 - mboman@suse.de
+Fri Oct  3 11:26:25 EST 2008 - mboman@suse.de
 
 - Update to version 1.0.1:
   + bgo#547568 - gvfsd-trash crash due to race condition
