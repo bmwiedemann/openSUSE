@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 21 15:22:28 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.3.3:
+  * Replace all double-quoted string literals by single quotes in
+    unit test (gh#SRombauts/SQLiteCpp#483).
+  * Add logic to use different FindPackage for python if cmake is
+    above 3.12 (gh#SRombauts/SQLiteCpp#454).
+  * tests/Database_test.cpp: fix a warning around #endif
+    (gh#SRombauts/SQLiteCpp#489).
+  * SQLiteCpp/Statement.h: add missing <cstdint> include
+    (gh#SRombauts/SQLiteCpp#488).
+  * sqlite3: set SQLITE_OMIT_LOAD_EXTENSION
+    (gh#SRombauts/SQLiteCpp#496).
+
+-------------------------------------------------------------------
 Sat Aug 17 13:59:46 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.3.2:

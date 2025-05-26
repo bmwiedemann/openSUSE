@@ -1,7 +1,7 @@
 #
 # spec file for package SQLiteCpp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define shlib libsqlitecpp0
 Name:           SQLiteCpp
-Version:        3.3.2
+Version:        3.3.3
 Release:        0
 Summary:        A C++ SQLite3 wrapper
 License:        MIT
