@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 22 14:36:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2025.05.22
+  * yt: Add PO token support for subtitles
+  * yt: Add web_embedded client for age-restricted videos
+  * yt: Add a PO Token Provider Framework
+  * yt: Extract media_type for all videos
+  * yt: Fix --live-from-start support for premieres
+  * yt: Fix geo-restriction error handling
+
+-------------------------------------------------------------------
 Sun May  4 08:49:41 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2025.04.30 [boo#1242186]
