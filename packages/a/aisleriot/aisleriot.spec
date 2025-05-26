@@ -29,7 +29,6 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.49
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.32.0
@@ -67,7 +66,6 @@ This package provides extra themes for Aisleriot.
 %install
 %meson_install
 %fdupes -s %{buildroot}%{_datadir}/help
-%suse_update_desktop_file -N "AisleRiot" -G "Solitaire" sol
 %find_lang %{name} %{?no_lang_C}
 
 %files
