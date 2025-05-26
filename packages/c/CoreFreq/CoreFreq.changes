@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat May 24 11:52:27 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 2.0.5
+  * [Code Review]
+    - Restrict module parameters to load-time only
+  * [AMD]
+    - [Genoa]
+      - Attempt SOC voltage reading
+      - Apply monitoring interval to RAM consumption calculation
+    - [Kernel]
+      - Use CONFIG_AMD_NB to call SMU if kernel version ≥ 6.0
+  * [Intel]
+    - [Core Ultra]
+      - Updated register names and addresses
+    - [Alder Lake/N]
+      - Added "Twin Lake" and "Amston Lake" codenames
+  * [x86_64]
+    - Added lock prefix to bit operations for cross-package atomicity
+  * [AArch64] [RISC-V] [PowerPC]
+    - Improved CPU topology detection to identify the BSP (Boot Strap Processor)
+
+-------------------------------------------------------------------
 Wed May 14 18:27:26 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 2.0.3
@@ -43,7 +65,7 @@ Wed May 14 18:27:26 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
         - Added specifics for an "Eng Sample" of Genoa architecture
       - Accumulate the power consumed by RAM
       - Attempt to monitor DIMM power consumption from HSMP
-      -Use generic voltage & power
+      - Use generic voltage & power
     - [Hawk Point]
       - Set AddrCfg & DimmCfg addresses for Phoenix UMC
     - [Family 1Ah]
@@ -71,7 +93,7 @@ Wed May 14 18:27:26 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
     - [ppc64] Fix the Carry flag asm code
     - [ppc64] The processor version register (PVR) is a 32-bit register
     - [ppc64] Use MFXER to get the XER
-               Raise the Carry Flag
+              Raise the Carry Flag
     - [ppc64][riscv64] ASM instructions for uBench macros
     - [aarch64] Checking CSSELR and CCSIDR registers in ARMv9
     - [aarch64] If FEAT_CCIDX implemented read NumSets from upper reg
