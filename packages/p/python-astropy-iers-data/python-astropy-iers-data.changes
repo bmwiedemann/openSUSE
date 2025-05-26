@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 23 15:26:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2025.5.19.0.38.36:
+  * **Full Changelog**: https://github.com/astropy/astropy-iers-
+    data/compare/v0.2025.5.12.0.38.29...v0.2025.5.19.0.38.36
+- update to 0.2025.5.12.0.38.29:
+  * **Full Changelog**: https://github.com/astropy/astropy-iers-
+    data/compare/v0.2025.5.5.0.38.14...v0.2025.5.12.0.38.29
+- update to 0.2025.5.5.0.38.14:
+  * Bump the actions group in /.github/workflows with 2 updates
+
+-------------------------------------------------------------------
 Sun Apr  6 16:05:02 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.2025.3.31.0.36.18
