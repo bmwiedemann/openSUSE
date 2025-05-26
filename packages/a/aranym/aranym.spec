@@ -37,7 +37,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL_image)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  pkgconfig(osmesa)
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
@@ -77,7 +76,7 @@ Features:
 sed -i -e 's,/-g,/-:,' configure.ac configure
 
 %build
-%define common_opts --docdir=%{_docdir}/%{name} --enable-addressing=direct --enable-usbhost --enable-nfosmesa
+%define common_opts --docdir=%{_docdir}/%{name} --enable-addressing=direct --enable-usbhost
 %define _configure ../configure
 %ifarch %{ix86} x86_64 %{arm}
 mkdir jit

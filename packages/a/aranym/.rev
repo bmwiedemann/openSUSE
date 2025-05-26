@@ -380,4 +380,12 @@
     <comment>- configure.patch: fix missing header in configure test (forwarded request 1197129 from AndreasSchwab)</comment>
     <requestid>1197130</requestid>
   </revision>
+  <revision rev="48" vrev="8">
+    <srcmd5>5b3115de45f80ddb2b1928a74cef2330</srcmd5>
+    <version>1.1.0</version>
+    <time>1748277442</time>
+    <user>anag_factory</user>
+    <comment>- Drop OSMesa support (forwarded request 1279929 from AndreasSchwab)</comment>
+    <requestid>1279930</requestid>
+  </revision>
 </revisionlist>
