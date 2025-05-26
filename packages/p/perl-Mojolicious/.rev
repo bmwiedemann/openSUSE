@@ -1668,4 +1668,18 @@ Tons of changes, just the peak of the ice berg:
     <comment></comment>
     <requestid>1231543</requestid>
   </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>0296ed7ec307c6d5b3205413c40693f3</srcmd5>
+    <version>9.400.0</version>
+    <time>1748277353</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1278679 from tinita
+
+- updated to 9.400.0 (9.40)
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+  9.40  2025-05-12
+    - Added EXPERIMENTAL support for resumable file downloads.
+    - Added EXPERIMENTAL download methods to Mojo::File and Mojo::UserAgent::Transactor.</comment>
+    <requestid>1279801</requestid>
+  </revision>
 </revisionlist>

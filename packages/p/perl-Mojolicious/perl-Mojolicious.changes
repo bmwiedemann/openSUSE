@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 13 05:35:55 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.400.0 (9.40)
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.40  2025-05-12
+    - Added EXPERIMENTAL support for resumable file downloads.
+    - Added EXPERIMENTAL download methods to Mojo::File and Mojo::UserAgent::Transactor.
+
+-------------------------------------------------------------------
 Thu Dec 12 16:31:16 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.390.0 (9.39)

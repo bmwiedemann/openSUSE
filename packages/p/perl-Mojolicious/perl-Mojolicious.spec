@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojolicious
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Mojolicious
 Name:           perl-Mojolicious
-Version:        9.390.0
+Version:        9.400.0
 Release:        0
-# 9.39 -> normalize -> 9.390.0
-%define cpan_version 9.39
+# 9.40 -> normalize -> 9.400.0
+%define cpan_version 9.40
 License:        Artistic-2.0
 Summary:        Real-time web framework
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -161,7 +161,7 @@ first class Unicode support and much more for you to discover.
 Take a look at our excellent documentation in Mojolicious::Guides!
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
