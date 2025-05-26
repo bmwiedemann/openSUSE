@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 23 12:17:43 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.5.0
+  * Return correct choices when API token can PUT but not POST.
+  * When using OIDC proxy for authentication return correct
+    nb.version property.
+  * Add CircuitTerminations, ConsolePorts, ConsoleServerPorts,
+    PowerOutlets, PowerPorts to trace of circuit.
+
+-------------------------------------------------------------------
 Fri Nov 15 13:41:37 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 7.4.1
