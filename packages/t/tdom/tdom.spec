@@ -1,7 +1,7 @@
 #
 # spec file for package tdom
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ BuildRequires:  libexpat-devel
 BuildRequires:  tcl-devel
 BuildRequires:  tcllib
 Source0:        http://tdom.org/downloads/tdom-%{version}-src.tgz
+# https://tdom.org/index.html/info/2db2c391674a7cc3
+Patch0:         tdom-gcc15.patch
 
 %description
 tDOM combines high performance XML data processing with easy and
@@ -49,7 +51,7 @@ Requires:       tdom = %{version}
 This package contains files for developing software based on tdom.
 
 %prep
-%autosetup  -p1 -n %{name}-%{version}-src
+%autosetup -p0 -n %{name}-%{version}-src
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -100,4 +102,3 @@ make -C ../extensions/tnc DESTDIR=%buildroot install
 %_includedir/tdom.h
 
 %changelog
-
