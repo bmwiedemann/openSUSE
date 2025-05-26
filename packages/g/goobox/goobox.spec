@@ -1,7 +1,7 @@
 #
 # spec file for package goobox
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.36
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.0.0
@@ -61,7 +60,6 @@ Goobox is a CD player and ripper that always knows just what to do.
 
 %install
 %meson_install
-%suse_update_desktop_file org.gnome.Goobox AudioVideo Player CD
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}
 

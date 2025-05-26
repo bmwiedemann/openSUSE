@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 23 12:52:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete update-desktop-files BuildRequires and macro.
+
+-------------------------------------------------------------------
 Wed Oct 11 22:55:00 UTC 2023 - Bjørn <bjorn.lie@gmail.com>
 
 - Add goobox-Make_pages_pass_yelp_check_validate.patch: help: Make
