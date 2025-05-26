@@ -1,8 +1,8 @@
 #
 # spec file for package jc
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2020-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2020-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           jc
-Version:        1.25.4
+Version:        1.25.5
 Release:        0
 Summary:        JSON CLI output utility
 License:        MIT
@@ -29,7 +29,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 Requires:       python3-Pygments >= 2.3.0
-Requires:       python3-ifconfig-parser >= 0.0.5
 Requires:       python3-ruamel.yaml >= 0.15.0
 Requires:       python3-xmltodict >= 0.12.0
 Recommends:     jq
@@ -37,7 +36,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  python3-Faker
 BuildRequires:  python3-Pygments >= 2.3.0
-BuildRequires:  python3-ifconfig-parser >= 0.0.5
 BuildRequires:  python3-pytest
 BuildRequires:  python3-ruamel.yaml >= 0.15.0
 BuildRequires:  python3-xmltodict >= 0.12.0
