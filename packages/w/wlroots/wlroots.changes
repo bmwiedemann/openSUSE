@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri May 16 12:12:22 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.19.0:
+  * color-management-v1 for HDR10 support (note, renderer and backend bits have not yet been merged)
+  * ext-image-capture-source-v1 and ext-image-copy-capture-v1 for next-generation screen capture
+  * ext-data-control-v1 for clipboard managers as a copy of the wlr-protocols version
+  * xdg-toplevel-icon-v1 for customized per-toplevel icons
+  * xdg-dialog-v1 for marking toplevels as dialogs
+  * xdg-system-bell-v1 for ringing the system bell
+  * ext-idle-notify-v1 minor version 2 for activity trackers
+  * presentation-time minor version 2 for improved variable refresh rate support
+  * wlr-layer-shell-v1 minor version 5 for setting the edge of an exclusive zone
+  * Explicit synchonization support in backends and renderers
+  * Multi-GPU support for display-only devices (e.g. USB-based such as gud)
+  * Direct scanout in backends now supports cropping and scaling buffers
+  * Scene-graph improvements: optimizations (e.g. skip rendering of opaque black backgrounds),
+  * transparent restacking for X11 windows, new helper for wlr-gamma-control-v1 support
+  * HTML documentation is now published on GitLab Pages: https://wlroots.pages.freedesktop.org/wlroots/
+  * A new udmabuf allocator has been introduced, for use with software GL and Vulkan implementations such
+    as llvmpipe and lavapipe
+
+-------------------------------------------------------------------
 Sun Dec 29 01:31:19 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.18.2:

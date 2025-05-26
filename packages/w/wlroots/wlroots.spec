@@ -1,7 +1,7 @@
 #
 # spec file for package wlroots
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%global ver_suffix 0.18
-%global sover      0_18
-%global patch_ver  2
+%global ver_suffix 0.19
+%global sover      0_19
+%global patch_ver  0
 %global libname libwlroots-%{sover}
 %bcond_without  drm_backend
 %bcond_without  libinput_backend

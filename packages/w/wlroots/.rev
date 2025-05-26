@@ -533,4 +533,12 @@
   * wlr_keyboard: don't emit key event for duplicated keycodes</comment>
     <requestid>1233717</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>23874f9f363eda5e705c09ea2f3c207a</srcmd5>
+    <version>0.19.0</version>
+    <time>1748277474</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1279945</requestid>
+  </revision>
 </revisionlist>
