@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 28 05:46:27 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.37.0 (0.037)
+   see /usr/share/doc/packages/perl-Crypt-JWT/Changes
+
+  0.037   2025-04-27
+          - fix #43 Fails to decode JWT from AWS Application Load Balancers
+          - fix #44 Allow decoding JWS with Base64 padding characters
+          - added tolerate_padding parameter for decode_jwt
+
+-------------------------------------------------------------------
 Mon Jan 27 05:30:19 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.36.0 (0.036)

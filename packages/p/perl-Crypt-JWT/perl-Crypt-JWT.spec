@@ -18,10 +18,10 @@
 
 %define cpan_name Crypt-JWT
 Name:           perl-Crypt-JWT
-Version:        0.36.0
+Version:        0.37.0
 Release:        0
-# 0.036 -> normalize -> 0.36.0
-%define cpan_version 0.036
+# 0.037 -> normalize -> 0.37.0
+%define cpan_version 0.037
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        JSON Web Token
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -31,11 +31,11 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Compress::Raw::Zlib)
-BuildRequires:  perl(CryptX) >= 0.067
+BuildRequires:  perl(CryptX) >= 0.67.0
 BuildRequires:  perl(JSON)
 BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(Compress::Raw::Zlib)
-Requires:       perl(CryptX) >= 0.067
+Requires:       perl(CryptX) >= 0.67.0
 Requires:       perl(JSON)
 Requires:       perl(Test::More) >= 0.88
 Provides:       perl(Crypt::JWT) = %{version}
