@@ -1,7 +1,7 @@
 #
 # spec file for package python-dotmap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dotmap
 Version:        1.3.30
 Release:        0
@@ -24,7 +23,9 @@ Summary:        Python ordered, dynamically-expandable dot-access dictionary
 License:        MIT
 URL:            https://github.com/drgrib/dotmap
 Source:         https://files.pythonhosted.org/packages/source/d/dotmap/dotmap-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -37,10 +38,10 @@ Python ordered, dynamically-expandable dot-access dictionary.
 %setup -q -n dotmap-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -49,6 +50,7 @@ Python ordered, dynamically-expandable dot-access dictionary.
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/dotmap
+%{python_sitelib}/dotmap-%{version}*-info
 
 %changelog
