@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 26 10:21:33 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 1.9.23
+  * Bug
+    + MRESOLVER-659: NPE in trusted checksum post processor if
+  * Improvement
+    + MRESOLVER-680: Disable checksum by default for .sigstore.json
+      as well
+    + MRESOLVER-703: HTTP transport should expose config for max
+      redirects
+
+-------------------------------------------------------------------
 Tue Aug 27 08:51:42 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.9.22
