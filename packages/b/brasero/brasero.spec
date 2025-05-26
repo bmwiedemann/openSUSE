@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  tinysparql-devel
 # We need the %%mime_database_* macros
 BuildRequires:  shared-mime-info
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.29.14
@@ -196,10 +195,6 @@ NOCONFIGURE=1 ./autogen.sh
 rm %{buildroot}%{_datadir}/locale/en@shaw/LC_MESSAGES/*
 %endif
 find %{buildroot} -type f -name "*.la" -delete -print
-%suse_update_desktop_file %{name}
-%if %{with nautilus_extension}
-%suse_update_desktop_file brasero-nautilus
-%endif
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 
