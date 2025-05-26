@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri May 23 08:52:59 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Add load-css-overrides.patch so we can add custom styling
+
+-------------------------------------------------------------------
+Thu May 15 07:31:45 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
+
+- Update to version 3:
+  * build(deps-dev): bump @typescript-eslint/eslint-plugin
+  * build(deps-dev): bump the stylelint group across 1 directory with 2 updates
+  * ci: run typecheck on pullrequests
+  * misc: Add a script for checking types
+  * build(deps-dev): bump the esbuild group with 2 updates
+  * build(deps-dev): bump @typescript-eslint/eslint-plugin
+  * build(deps-dev): bump stylelint-config-recommended-scss
+  * build(deps): bump the patternfly group with 4 updates
+  * pkg: bump cockpit-devel dependency version to 337
+  * src: Fix UI issues
+  * src: Fix patternfly 6 dependencies
+  * misc: Update dependencies to patternfly 6
+  * build(deps-dev): bump @typescript-eslint/eslint-plugin
+  * Update remove.tsx
+  * build(deps-dev): bump stylelint in the stylelint group
+  * build(deps-dev): bump the esbuild group with 2 updates
+  * build(deps-dev): bump stylelint in the stylelint group
+  * build(deps-dev): bump glob from 11.0.1 to 11.0.2
+  * build(deps-dev): bump the types group with 2 updates
+  * build(deps-dev): bump the stylelint group with 3 updates
+  * build(deps-dev): bump qunit from 2.23.1 to 2.24.1
+  * build(deps-dev): bump eslint-plugin-react
+  * build(deps): bump the patternfly group across 1 directory with 2 updates
+  * build(deps-dev): bump the esbuild group with 2 updates
+  * ci: Add ci for pull request
+  * misc: add pot for translations
+  * build(deps-dev): bump esbuild from 0.24.2 to 0.25.0
+  * misc: Add .git-blame-ignore-revs
+  * src: Fix all eslint rules
+  * misc: update eslint rules
+
+-------------------------------------------------------------------
 Thu Mar 06 06:39:24 UTC 2025 - miika.alikirri@suse.com
 
 - Update to version 2:

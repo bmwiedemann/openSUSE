@@ -7,4 +7,41 @@
     <comment>Initial submission for cockpit-packages</comment>
     <requestid>1256184</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>64a4c0977ce0597bb24d93fa92283c19</srcmd5>
+    <version>3</version>
+    <time>1748277226</time>
+    <user>anag_factory</user>
+    <comment>- Add load-css-overrides.patch so we can add custom styling
+
+- Update to version 3:
+  * build(deps-dev): bump @typescript-eslint/eslint-plugin
+  * build(deps-dev): bump the stylelint group across 1 directory with 2 updates
+  * ci: run typecheck on pullrequests
+  * misc: Add a script for checking types
+  * build(deps-dev): bump the esbuild group with 2 updates
+  * build(deps-dev): bump @typescript-eslint/eslint-plugin
+  * build(deps-dev): bump stylelint-config-recommended-scss
+  * build(deps): bump the patternfly group with 4 updates
+  * pkg: bump cockpit-devel dependency version to 337
+  * src: Fix UI issues
+  * src: Fix patternfly 6 dependencies
+  * misc: Update dependencies to patternfly 6
+  * build(deps-dev): bump @typescript-eslint/eslint-plugin
+  * Update remove.tsx
+  * build(deps-dev): bump stylelint in the stylelint group
+  * build(deps-dev): bump the esbuild group with 2 updates
+  * build(deps-dev): bump stylelint in the stylelint group
+  * build(deps-dev): bump glob from 11.0.1 to 11.0.2
+  * build(deps-dev): bump the types group with 2 updates
+  * build(deps-dev): bump the stylelint group with 3 updates
+  * build(deps-dev): bump qunit from 2.23.1 to 2.24.1
+  * build(deps-dev): bump eslint-plugin-react
+  * build(deps): bump the patternfly group across 1 directory with 2 updates
+  * build(deps-dev): bump the esbuild group with 2 updates
+  * ci: Add ci for pull request
+  * misc: add pot for translations
+  * build(deps-dev): bump esbuild from 0.24.2 to 0.25.0</comment>
+    <requestid>1279493</requestid>
+  </revision>
 </revisionlist>
