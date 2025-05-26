@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 14 12:47:00 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Load required "setxkbmap" package on demand (bsc#1243088)
+- 5.0.4
+
+-------------------------------------------------------------------
 Thu May 16 20:41:25 UTC 2024 - jjindrak@suse.com
 
 - Rename Europe/Kiev to Europe/Kyiv as per 2022b release of
