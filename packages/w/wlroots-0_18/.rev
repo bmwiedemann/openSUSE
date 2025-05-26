@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c6385eb42c423686bb21e927d6375008</srcmd5>
+    <version>0.18.2</version>
+    <time>1748277646</time>
+    <user>anag_factory</user>
+    <comment>New package to accommodate 0.18.x version of wlroots. This allows other wlroots-based compositors to catch up such as river and sway.</comment>
+    <requestid>1280237</requestid>
+  </revision>
+</revisionlist>
