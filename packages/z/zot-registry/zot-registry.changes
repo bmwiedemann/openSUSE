@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Fri May 23 04:59:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.3:
+  * Merge commit from fork
+  * fix(sync): fixed checking updates in remote tags digest (#3156)
+  * chore: fix dependabot alerts (#3154)
+  * chore: fix dependabot alerts (#3141)
+  * feat(events): add events extension (#3045)
+  * chore: fix dependabot alerts (#3127)
+  * chore: update conformance badge (#3114)
+  * chore: fix dependabot alerts (#3112)
+  * fix: remove unneeded double locks in redis implementation of
+    metadb (#3055)
+  * fix: get groups claim from idtokenclaims (#3101)
+  * feat(sync): use regclient for sync extension (#2903)
+  * chore: fix dependabot alerts (#3099)
+  * chore: fix dependabot alerts (#3084)
+  * ci: update golang version to be synced to gh (#3073)
+  * chore: fix dependabot alerts (#3072)
+  * chore: fix dependabot alerts (#3070)
+  * fix(zui): show referrers pointing to image manifests (#3053)
+  * feat: handle multiple attributes (#3052)
+  * chore: fix dependabot alerts (#3051)
+  * feat: build windows binaries (#3047)
+  * fix: bump zui version to fix minor issues with handling empty
+    manifest lists and missing platform information (#3044)
+  * chore: fix dependabot alerts (#3041)
+  * ci: fix failures in nightly (#3042)
+  * chore: Remove `VOLUME` instruction from image (#3027)
+  * test: do not use the clustering feature in case of redis + s3
+    storage
+  * test: add scale-out clustering tests using multiple zot servers
+    with with redis and S3 integration
+  * chore: update image and dist specs to v1.1.1 (#3023)
+  * chore: fix dependabot alerts (#3026)
+  * fix: allow changing media-type when pushing an image tag
+    (#3022)
+  * fix: show data from docker mediatypes in search results (#3019)
+  * chore: fix dependabot alerts (#3021)
+  * [feat]: add support for EC/ED25519 public keys for token
+    authentication (#2998)
+  * chore: fix dependabot alerts (#3002)
+  * Cumulative improvements for CI troubleshooting (#2996)
+  * feat(htpasswd): add autoreload for htpasswd (#2933)
+  * chore: fix dependabot alerts (#2991)
+  * chore: fix dependabot alerts (#2988)
+  * chore: fix dependabot alerts (#2978)
+  * fix: Update AWS DynamoDB permission list and correct issues in
+    DynamoDB examples (#2963)
+  * chore: fix dependabot alerts (#2961)
+  * More validation for DynamoDB cache driver cachetablename
+    (#2949)
+  * chore: fix dependabot alerts (#2945)
+  * fix: MetaDB fixes related to Docker media types (#2934)
+  * feat(ldap): allow to customize user filter (#2927)
+  * redis driver for blob cache information and metadb (#2865)
+  * fix(sync): fixed harbor authentication issues on '_catalog'
+    endpoint (#2891)
+  * chore: fix dependabot alerts (#2922)
+  * feat(sync): add tag excludeRegex filter (#2906)
+  * [Feat]: Support for AWS ECR Authentication with Temporary
+    Tokens (#2907)
+  * fix(dynamodb): properly handle ResourceInUseException for
+    existing tables (#2909)
+  * docs: fix ratelimit example (#2905)
+  * chore: fix dependabot alerts (#2904)
+
+-------------------------------------------------------------------
 Tue Feb 25 08:27:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package zot-registry: scale-out production-ready

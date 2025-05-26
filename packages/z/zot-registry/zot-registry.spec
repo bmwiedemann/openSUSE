@@ -20,10 +20,10 @@
 %define executable_name zot
 
 # https://github.com/project-zot/zot/blob/main/Makefile#L28
-%define zui_version commit-930ae7e
+%define zui_version commit-303dfb3
 
 Name:           zot-registry
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        Scale-out production-ready vendor-neutral OCI-native container image registry
 License:        Apache-2.0

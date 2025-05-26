@@ -7,4 +7,12 @@
     <comment>new package zot-registry: scale-out production-ready vendor-neutral OCI-native container image/artifact registry (purely based on OCI Distribution Specification)</comment>
     <requestid>1249058</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f9e8893583a389028602e87bc0e66c86</srcmd5>
+    <version>2.1.3</version>
+    <time>1748277166</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1279437</requestid>
+  </revision>
 </revisionlist>
