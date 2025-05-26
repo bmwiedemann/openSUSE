@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon May 26 08:03:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.5.0:
+  * Bugfixes
+    - schema/meta: support SLES 15SP6 (#4591) @Finkregh
+    - Update documentation to reflect creator-ee deprecation
+      (#4598) @shatakshiiii
+  * Maintenance
+    - replace unmaintained creator-ee with
+      community-ansible-dev-tools (#4581) @docgalaxyblock
+    - Bump codecov/codecov-action from 5.4.2 to 5.4.3 (#4609)
+      @dependabot[bot]
+    - Bump the dependencies group in /.config with 7 updates
+      (#4613) @dependabot[bot]
+    - Bump the dependencies group in /.config with 9 updates
+      (#4610) @dependabot[bot]
+    - Make test_broken_ansible_cfg test pass with ansible devel
+      branch (#4605) @shatakshiiii
+    - Update dependencies (#4607) @shatakshiiii
+    - Add merge_group handler for tox workflow (#4601) @Qalthos
+    - Enable junit.xml reporting to codecov.io (#4597) @Qalthos
+    - chore: pre-commit autoupdate (#4600) @pre-commit-ci[bot]
+    - Bump the dependencies group in /.config with 6 updates
+      (#4599) @dependabot[bot]
+    - Bump codecov/codecov-action from 5.4.0 to 5.4.2 (#4584)
+      @dependabot[bot]
+
+-------------------------------------------------------------------
 Tue Apr 29 06:10:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.4.0:
