@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  5 05:39:38 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.104007
+   see /usr/share/doc/packages/perl-Software-License/Changes
+
+  0.104007  2025-05-04 10:08:25+02:00 Europe/Berlin
+          - update GPL v1 text to current version
+          - CPAN::Meta v1 "gpl" license is explicitly GPL v2
+          - Improve recognition for Apache 1.1 & 2.0
+
+-------------------------------------------------------------------
 Sat Feb 10 03:09:10 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.104006

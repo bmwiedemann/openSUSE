@@ -153,4 +153,19 @@
     <comment></comment>
     <requestid>1156303</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e28012743e21178798492b0d003016c1</srcmd5>
+    <version>0.104007</version>
+    <time>1748277361</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1279806 from tinita
+
+- updated to 0.104007
+   see /usr/share/doc/packages/perl-Software-License/Changes
+  0.104007  2025-05-04 10:08:25+02:00 Europe/Berlin
+          - update GPL v1 text to current version
+          - CPAN::Meta v1 &quot;gpl&quot; license is explicitly GPL v2
+          - Improve recognition for Apache 1.1 &amp; 2.0</comment>
+    <requestid>1279819</requestid>
+  </revision>
 </revisionlist>
