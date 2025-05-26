@@ -18,10 +18,10 @@
 
 %define cpan_name MIME-Types
 Name:           perl-MIME-Types
-Version:        2.270.0
+Version:        2.280.0
 Release:        0
-# 2.27 -> normalize -> 2.270.0
-%define cpan_version 2.27
+# 2.28 -> normalize -> 2.280.0
+%define cpan_version 2.28
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Definition of MIME types
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -37,9 +37,14 @@ Provides:       perl(MojoX::MIME::Types) = %{version}
 %{perl_requires}
 
 %description
-MIME types are used in many applications (for instance as part of e-mail
+"MIME Type" is the old name for "Media Type". This module dates from 1999,
+and name changes are painful, so we stuck with the original name.
+
+Media types are used in many applications (for instance as part of e-mail
 and HTTP traffic) to indicate the type of content which is transmitted. or
-expected. See RFC2045 at _https://www.ietf.org/rfc/rfc2045.txt_
+expected. Read RFC6838 at _https://www.rfc-editor.org/rfc/rfc6838_
+(registrations) and RFC9694 at _https://www.rfc-editor.org/rfc/rfc9694_
+(top-levels) for the specification.
 
 Sometimes detailed knowledge about a mime-type is need, however this module
 only knows about the file-name extensions which relate to some filetype. It

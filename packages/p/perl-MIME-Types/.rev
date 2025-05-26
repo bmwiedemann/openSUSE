@@ -387,4 +387,15 @@
     <comment></comment>
     <requestid>1244960</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>54651219b27c6c14cbb2017a7486484a</srcmd5>
+    <version>2.280.0</version>
+    <time>1748277348</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1278610 from tinita
+
+- updated to 2.280.0 (2.28)
+   see /usr/share/doc/packages/perl-MIME-Types/ChangeLog</comment>
+    <requestid>1279795</requestid>
+  </revision>
 </revisionlist>
