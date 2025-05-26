@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon May 26 04:45:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.20.1:
+  * Command-Line Interface
+    - minor cleanups in diff tests (#4594) by Julio Lopez
+  * Server
+    - fixed server-based notifications (#4598) by Jarek Kowalski
+  * Snapshots
+    - fixed snapshotting of \server\share (#4603) by Jarek Kowalski
+    - Remove checkpoints after a complete snapshot (#4439) by
+      shniubobo
+  * Notifications
+    - fixed notification severities on snapshot creation (#4604) by
+      Jarek Kowalski
+  * CI/CD
+    - enforce consistent formatting of KopiaUI code (#4586) by
+      Jarek Kowalski
+  * Graphical User Interface
+    - reformat code to 120 characters per line (#338) by Jarek
+      Kowalski
+    - fixed 'Set Policy' button (#337) by Jarek Kowalski
+    - SMTP credentials should not be required (#336) by Jarek
+      Kowalski
+    - ignore exceptions when making incremental changes to the
+      policy (#335) by Jarek Kowalski
+    - report code coverage (#334) by Jarek Kowalski
+    - globally apply prettier formatting (#333) by Jarek Kowalski
+  * Dependencies
+    - build(deps): bump the common-golang-dependencies group with 4
+      updates (#4582)
+    - build(deps): bump github.com/prometheus/common (#4583)
+
+-------------------------------------------------------------------
 Tue May 20 04:35:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.20.0:
