@@ -36,4 +36,12 @@
   * Don't stop at first path when `force` flag is set (forwarded request 1246579 from ph03nix)</comment>
     <requestid>1246821</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b99382865401ad0cfe4f4c7ff4c60a20</srcmd5>
+    <version>0.11.0</version>
+    <time>1748283403</time>
+    <user>anag_factory</user>
+    <comment>- Fixed _service: Switch revision from main to actual version (forwarded request 1279213 from ph03nix)</comment>
+    <requestid>1280312</requestid>
+  </revision>
 </revisionlist>
