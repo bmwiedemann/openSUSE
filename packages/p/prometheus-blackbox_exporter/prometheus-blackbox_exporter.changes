@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 16 12:42:50 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Security: Fix proxy bypassing using IPv6 zone IDs
+  (CVE-2025-22870, bsc#1238680)
+- Security: Fix closing connections when receiving too many headers
+  (CVE-2023-45288, bsc#1236515)
+- Add 0001-Bump-x-net.patch
+- Use `manual` build service
+- Build with `promu`
+- Drop Go packaging macros
+- Add testing
+
+-------------------------------------------------------------------
 Mon Jun 26 10:19:52 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Use obscpio for go modules service

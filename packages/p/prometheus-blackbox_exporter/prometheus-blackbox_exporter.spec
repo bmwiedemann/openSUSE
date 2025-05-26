@@ -1,7 +1,7 @@
 #
 # spec file for package prometheus-blackbox_exporter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,15 +36,15 @@ Source0:        blackbox_exporter-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        prometheus-blackbox_exporter.service
 # This patch has been applied before generating vendor tarball
-#Patch1:         0001-Update-go-modules.patch
+Patch1:         0001-Bump-x-net.patch
 BuildRequires:  fdupes
-BuildRequires:  golang-packaging
+BuildRequires:  golang-github-prometheus-promu >= 0.17.0
 %if 0%{?rhel}
 BuildRequires:  golang >= 1.19
 BuildRequires:  libcap
 %else
 BuildRequires:  libcap-progs
-BuildRequires:  golang(API) >= 1.19
+BuildRequires:  golang(API) >= 1.23
 %endif
 %{?systemd_ordering}
 %if 0%{?suse_version}
@@ -61,13 +61,14 @@ Prometheus blackbox exporter allows blackbox probing of endpoints over HTTP, HTT
 %autosetup -a1 -p1 -n blackbox_exporter-%{version}
 
 %build
-%goprep github.com/prometheus/blackbox_exporter
-export LDFLAGS="-X 'github.com/prometheus/common/version.Version=%{version}' \
--X 'github.com/prometheus/common/version.BuildDate=$SOURCE_DATE_EPOCH'"
-%gobuild -ldflags="$LDFLAGS" -mod=vendor "" ...
+%ifarch i586 s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
+export BUILD_CGO_FLAG="--cgo"
+%endif
+export GOFLAGS="-buildmode=pie"
+promu build -v $BUILD_CGO_FLAG
 
 %install
-%goinstall
+install -D -m0755 %{_builddir}/blackbox_exporter-%{version}/blackbox_exporter-%{version} %{buildroot}%{_bindir}/blackbox_exporter
 install -D -m0644 %{SOURCE2} %{buildroot}%{_unitdir}/prometheus-blackbox_exporter.service
 install -D -m0644 %{_builddir}/blackbox_exporter-%{version}/blackbox.yml %{buildroot}%{_sysconfdir}/prometheus/blackbox.yml
 install -Dd -m0755 %{buildroot}%{_sbindir}
@@ -77,6 +78,8 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %check
 # Fix OBS debug_package execution.
 rm -f %{buildroot}/usr/lib/debug/%{_bindir}/blackbox_exporter-%{version}-*.debug
+go test -x .
+%{buildroot}%{_bindir}/blackbox_exporter --version
 
 %pre
 %if 0%{?rhel}
