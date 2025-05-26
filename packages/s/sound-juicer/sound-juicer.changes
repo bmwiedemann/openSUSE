@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 23 15:54:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Seems the update-desktop-files BuildRequires have returned
+  somehow, or was not properly removed last time around.
+
+-------------------------------------------------------------------
 Wed Jul 17 16:55:11 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and macro.
