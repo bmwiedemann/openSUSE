@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 20 13:48:18 UTC 2025 - Antoine Ginies <aginies@suse.com>
+
+- version 1.1:
+  * remove timeout to get IP address, this is adding wrong information
+    and this is not reliable at all, purpose of the tool is to prepare
+    the system not to replace network manager
+  * remove simple option (add too much complexity in this basic tool)
+  * connection name on the Ethernet/wifi interface is using "-brslave"
+    appendix now
+  * Fix issue with master_interface check
+
+-------------------------------------------------------------------
 Tue Apr 29 15:43:07 UTC 2025 - Antoine Ginies <aginies@suse.com>
 
 - version 1.0

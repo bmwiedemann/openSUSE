@@ -66,4 +66,16 @@
 </comment>
     <requestid>1273487</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>12d97930cae2fa49d086d70bd39fb4af</srcmd5>
+    <version>1.1</version>
+    <time>1748277230</time>
+    <user>anag_factory</user>
+    <comment>- version 1.1:
+  * remove timeout to get IP address, this is adding wrong information and this is not reliable at all, purpose of the tool is to prepare the system not to replace network manager
+  * remove simple option (add too much complexity in this basic tool) 
+  * connection name on the Ethernet/wifi interface is using &quot;-brslave&quot; appendix now
+  * Fix issue with master_interface check</comment>
+    <requestid>1279501</requestid>
+  </revision>
 </revisionlist>
