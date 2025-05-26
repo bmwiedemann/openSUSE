@@ -4,6 +4,7 @@
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Nicolas FORMICHELLA <stigpro@outlook.fr>
 # Copyright (c) 2022 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +23,7 @@
 %global origrel 1
 
 Name:           distribution-gpg-keys
-Version:        1.105
+Version:        1.111
 Release:        0
 Summary:        GPG keys of various Linux distributions
 Group:          System/Packages
@@ -35,7 +36,7 @@ BuildArch:      noarch
 GPG keys used by various Linux distributions to sign packages.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}-%{origrel}
+%autosetup -p1 -n %{name}-%{name}-%{version}-%{origrel}
 
 %build
 #nothing to do here

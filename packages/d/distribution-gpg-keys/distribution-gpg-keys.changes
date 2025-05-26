@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 23 21:02:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.111
+  + add link for remi/EL-10 key
+  + update copr keys
+  + Update Mageia gpg key
+  + Add Fedora 44 key
+  + add Remi 2025 key
+  + alma: Add AlmaLinux 10 key
+  + Update keys for Azure Linux and Kylin
+  + fedora: Update rawhide symlink
+  + Navy Linux GPG key Update
+  + Add symlinks to rpmfusion 42 and 43
+  + Add keys for el-10 rpmfusion-free and nonfree
+  + Add RHEL 10 keys
+  + Add OpenWrt keys
+
+-------------------------------------------------------------------
 Thu Aug 22 11:04:53 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
 
 - Update to 1.105
