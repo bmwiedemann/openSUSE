@@ -18,10 +18,10 @@
 
 %define cpan_name Tree-DAG_Node
 Name:           perl-Tree-DAG_Node
-Version:        1.330.0
+Version:        1.350.0
 Release:        0
-# 1.33 -> normalize -> 1.330.0
-%define cpan_version 1.33
+# 1.35 -> normalize -> 1.350.0
+%define cpan_version 1.35
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        An N-ary tree
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -52,6 +52,8 @@ two mothers).
 
 %prep
 %autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

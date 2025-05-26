@@ -233,4 +233,50 @@
     <comment></comment>
     <requestid>1272893</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d989f68d66d0a392e9916e20e6a40149</srcmd5>
+    <version>1.350.0</version>
+    <time>1748277361</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1279810 from tinita
+
+- updated to 1.350.0 (1.35)
+   see /usr/share/doc/packages/perl-Tree-DAG_Node/Changelog.ini
+  [V 1.35]
+  Date=2025-05-12T17:00:00
+  Comments= &lt;&lt;EOT
+  - Change sub hashref2string() line 726 so it does not generate an error or warning when
+  the node or node name is '' (empty string), undef or 0 (zero).
+  - Change test data so that when stringifying a tree, node names without attributes are
+  output as (e.g.) 'lexeme: Attributes{}' rather than as just 'lexeme'. This was alleged
+  to have been done as per the last dot point under v 1.34 below, but was not done properly.
+  - This last point also affects the related module Data::RenderAsTree, which ships with a
+  range of test programs and sample scripts which futher exercise these features.
+  The point of these latter samples is so you can use them without having to fiddle about
+  removing the test code in the corresponding test scripts.
+  EOT
+  [V 1.34]
+  Date=2025-04-23T17:01:00
+  Comments= &lt;&lt;EOT
+  - Thanx to Shawn Laffan for reporting a problem with line-endings in files read and written,
+  by both Tree::DAG_Node and t/read.tree.t, when he tests under Strawberry Perl.
+  - The 2 test files t/tree.with*.txt ship as ISO-8859-1 while t/tree.utf8.attributes.txt ships
+  as UTF-8. So...
+  - Don't explicitly use UTF-8 encoding in DAG_Node.pm's sub read_tree(). Rather, use a regexp
+  to standardize line endings after reading. Likewise, in t/read.tree.t, do the same.
+  - I have un-commented the 2 extra tests at the end of t/read.tree.t. Specifically,
+  line 50 was 'for (qw/utf8/)# with without/)'. It now says 'for (qw/utf8 with without/)'
+  - Reformat test data files t/tree.*.attributes.txt
+  This was done with the new files share/read.write.tree.(pl, sh).
+  And it was done because some of the test data files had been written
+  by old code with slightly different indenting.
+  - Add a new test data file, t/metag.cooked.tree.txt
+  It's a copy of MarpaX::Grammar::Parser's share/metag.cooked.tree.
+  The test program t/read.tree.t was edited to include this new file.
+  - Patch tree::DAG_Node.format_node() to output 'Attributes: {}' and not just 'Attributes:'
+  when the user does not want attributes reported. This makes the code match the sample
+  trees shipped in t/.
+  EOT</comment>
+    <requestid>1279821</requestid>
+  </revision>
 </revisionlist>
