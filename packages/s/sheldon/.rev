@@ -52,4 +52,13 @@
  * update libgit2 to 1.9.0 (forwarded request 1244443 from mimi_vx)</comment>
     <requestid>1244444</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e298da5e9e9b256fe9bfc25fedfb261f</srcmd5>
+    <version>0.8.2</version>
+    <time>1748277243</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.23
+ * Reduce scope of file mutex (forwarded request 1279540 from mimi_vx)</comment>
+    <requestid>1279541</requestid>
+  </revision>
 </revisionlist>
