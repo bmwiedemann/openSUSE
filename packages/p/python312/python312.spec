@@ -184,6 +184,9 @@ Patch41:        docs-docutils_014-Sphinx_420.patch
 # PATCH-FIX-SLE doc-py38-to-py36.patch mcepl@suse.com
 # Make documentation extensions working with Python 3.6
 Patch44:        doc-py38-to-py36.patch
+# PATCH-FIX-UPSTREAM CVE-2025-4516-DecodeError-handler.patch bsc#1243273 mcepl@suse.com
+# patch from gh#python/cpython!134337
+Patch45:        CVE-2025-4516-DecodeError-handler.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
