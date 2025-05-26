@@ -42,4 +42,12 @@
   * Fixed [isue #91] on github.</comment>
     <requestid>1046297</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>33179d7a4da161cef84fed91e736291c</srcmd5>
+    <version>1.7.16</version>
+    <time>1748277639</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1280152</requestid>
+  </revision>
 </revisionlist>
