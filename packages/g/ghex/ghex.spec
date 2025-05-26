@@ -22,7 +22,7 @@
 %define soname libgtkhex-%{ghex_abi}-%{so_ver}
 
 Name:           ghex
-Version:        46.2
+Version:        48.alpha
 Release:        0
 Summary:        GNOME Binary Editor
 License:        GPL-2.0-or-later
@@ -30,10 +30,10 @@ Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Ghex
 Source:         %{name}-%{version}.tar.zst
 
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(atk) >= 1.0.0
 BuildRequires:  pkgconfig(gail-3.0)
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.31.10
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
 # Obsoletes libgtkhex-4-0 can be dropped when SLED/Leap 15.5 is out of support
 Obsoletes:      libgtkhex-4-0 < %{version}
 
@@ -88,7 +88,6 @@ This package provides introspection bindings for ghex.
 %install
 %meson_install
 
-%suse_update_desktop_file -r org.gnome.GHex GNOME Utility Editor
 %find_lang %{name} ghex-%{ghex_abi}-%{so_ver}.%{so_ver_ext}.lang %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}
 

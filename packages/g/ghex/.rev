@@ -591,4 +591,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment></comment>
     <requestid>1244818</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>0fb3342f8a231ad51350b42956999002</srcmd5>
+    <version>48.alpha</version>
+    <time>1748277542</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1279634 from iznogood)</comment>
+    <requestid>1280006</requestid>
+  </revision>
 </revisionlist>

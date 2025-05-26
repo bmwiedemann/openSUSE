@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri May 23 10:40:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete update-desktop-files BuildRequires and macro.
+  Replace with desktop-file-utils BuildRequires.
+
+-------------------------------------------------------------------
+Sat Feb  8 10:56:30 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha:
+  + widget/appwin/prefs: Support ASCII unicode control characters
+  + help:
+    - Update for ASCII unicode control characters
+    - Fix typo
+  + Minor code cleanups
+  + ci: Update .gitlab-ci.yml for automated tarballs
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb  8 09:56:30 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.alpha:
+  + main: fix GdkDisplay access before init
+  + app: Port to AdwDialog
+  + appdata: Add URLs for translate and vcs-browser
+  + doap: Reorder maintainers to work around Flathub limitations
+  + gtk-doc: Correct documentation for hex_widget_get_selection
+    return value
+  + widget: Backspace should delete/zero the prior character if no
+    selection
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Feb  8 08:56:30 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.2:
