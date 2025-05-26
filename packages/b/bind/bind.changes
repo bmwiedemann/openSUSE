@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May 20 13:39:21 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Upgrade to release 9.20.9
+  Security Fixes:
+  * Prevent an assertion failure when processing TSIG algorithm.
+    (CVE-2025-40775)
+    [bsc#1243361]
+
+  Feature Changes:
+  * Return DNS COOKIE and NSID with BADVERS.
+  * Disable separate memory context for libxml2 memory allocations
+    on macOS.
+  * Use Jinja2 templates in system tests.
+
+  Bug Fixes:
+  * Revert NSEC3 closest encloser lookup improvements.
+  * Fix EDNS YAML output in dig.
+  * Fix RDATA checks for PRIVATEOID keys.
+  * Fix a serve-stale issue with a delegated zone.
+
+-------------------------------------------------------------------
 Thu Apr 17 10:51:44 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Upgrade to release 9.20.8

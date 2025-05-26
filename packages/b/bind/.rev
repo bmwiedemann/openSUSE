@@ -2481,4 +2481,16 @@ New Features
     <comment>- Upgrade to release 9.20.8</comment>
     <requestid>1270284</requestid>
   </revision>
+  <revision rev="219" vrev="1">
+    <srcmd5>e400eb3809b5b6fae06186fbe3f8b55f</srcmd5>
+    <version>9.20.9</version>
+    <time>1748277124</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to release 9.20.9
+  Security Fixes:
+  * Prevent an assertion failure when processing TSIG algorithm.
+    (CVE-2025-40775)
+    [bsc#1243361]</comment>
+    <requestid>1279469</requestid>
+  </revision>
 </revisionlist>
