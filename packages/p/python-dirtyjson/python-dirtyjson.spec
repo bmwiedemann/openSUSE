@@ -1,7 +1,7 @@
 #
 # spec file for package python-dirtyjson
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dirtyjson
 Version:        1.0.8
 Release:        0
@@ -25,8 +24,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/codecobblers/dirtyjson
 Source:         https://files.pythonhosted.org/packages/source/d/dirtyjson/dirtyjson-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -39,10 +40,10 @@ JSON decoder for Python that can extract data from dirty input.
 %autosetup -p1 -n dirtyjson-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -r %{buildroot}%{$python_sitelib}/dirtyjson/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -52,6 +53,7 @@ JSON decoder for Python that can extract data from dirty input.
 %files %{python_files}
 %doc CHANGES.txt README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/dirtyjson
+%{python_sitelib}/dirtyjson-%{version}*-info
 
 %changelog
