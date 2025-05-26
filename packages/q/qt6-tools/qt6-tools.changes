@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 22 16:12:43 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix qdoc reproducibility issues
+  (bsc#1243434):
+  * 0001-QDoc-Sort-non-function-nodes-by-name-then-erase-duplicates.patch
+
+-------------------------------------------------------------------
 Mon Apr  7 16:13:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Fix desktop files

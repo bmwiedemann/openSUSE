@@ -32,7 +32,7 @@ Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # Legal:
 # most src/ subfolders are GPL-3.0-only WITH Qt-GPL-exception-1.0, except:
-# qdoc is GPL-3.0-only WITH Qt-GPL-exception-1.0 
+# qdoc is GPL-3.0-only WITH Qt-GPL-exception-1.0
 # src/shared contains BSD-3-Clause and LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-only) files. The
 # 'GPL-3.0-only WITH Qt-GPL-exception-1.0' files in this folder are only used on Windows.
 License:        (LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only) AND GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -45,6 +45,8 @@ Source13:       org.qt.assistant6.desktop
 # The 48x48 icon was removed from qttools
 Source14:       linguist6.png
 Source99:       qt6-tools-rpmlintrc
+# PATCH-FIX-UPSTREAM 0001-QDoc-Sort-non-function-nodes-by-name-then-erase-duplicates.patch alarrosa@suse.com -- Fix reproducibility bsc#1243434
+Patch0:         0001-QDoc-Sort-non-function-nodes-by-name-then-erase-duplicates.patch
 # clang-devel in Leap 15 points to clang7...
 %if 0%{?suse_version} == 1500
 # Leap 15.6 has llvm 19 since 2025-02-12, we need to use it to avoid doc build issues
