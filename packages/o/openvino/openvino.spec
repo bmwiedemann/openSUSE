@@ -429,6 +429,9 @@ rm -fr %{buildroot}%{_datadir}/licenses/*
 %license LICENSE
 %{_includedir}/%{name}/
 %{_libdir}/cmake/%{prj_name}/
+%ifarch riscv64
+%{_libdir}/cmake/xbyak_riscv/
+%endif
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/openvino.pc
 
