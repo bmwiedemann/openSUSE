@@ -1,6 +1,6 @@
-From ecfe5445feb2bdf4ad092b340b72a6b1f78d29e6 Mon Sep 17 00:00:00 2001
+From 29264680d65a0661d81eb5c973bdef3cd5eccc0b Mon Sep 17 00:00:00 2001
 From: Jacek Tomasiak <jacek.tomasiak@gmail.com>
-Date: Wed, 20 Nov 2024 12:28:39 +0530
+Date: Mon, 28 Apr 2025 20:33:01 +0530
 Subject: [PATCH] Add branding for SLE Micro
 
 ---
@@ -12,17 +12,17 @@ Subject: [PATCH] Add branding for SLE Micro
  create mode 100644 src/branding/suse/branding.css
 
 diff --git a/Makefile.am b/Makefile.am
-index 22fa06617..6dee293ae 100644
+index 83f1ee7a7..1198d191e 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -166,6 +166,7 @@ include src/branding/debian/Makefile.am
+@@ -167,6 +167,7 @@ include src/branding/debian/Makefile.am
  include src/branding/default/Makefile.am
  include src/branding/fedora/Makefile.am
  include src/branding/opensuse/Makefile.am
 +include src/branding/suse/Makefile.am
  include src/branding/rhel/Makefile.am
- include src/branding/scientific/Makefile.am
  include src/branding/ubuntu/Makefile.am
+ include src/client/Makefile.am
 diff --git a/src/branding/suse/Makefile.am b/src/branding/suse/Makefile.am
 new file mode 100644
 index 000000000..4a1e7ab72
@@ -46,7 +46,7 @@ new file mode 100644
 index 000000000..baea6f560
 --- /dev/null
 +++ b/src/branding/suse/branding.css
-@@ -0,0 +1,87 @@
+@@ -0,0 +1,82 @@
 +/* Extra overrides */
 +:root {
 +    --eos-bc-green-500: #30ba78;
@@ -59,10 +59,6 @@ index 000000000..baea6f560
 +
 +#brand:before {
 +    content: "${PRETTY_NAME}";
-+}
-+
-+.login-pf .container {
-+    background-color: rgba(255, 255, 255);
 +}
 +
 +#option-group svg polygon {
@@ -88,13 +84,12 @@ index 000000000..baea6f560
 +
 +body.login-pf {
 +    background-color: var(--eos-bc-pine-500);
-+    color: var(--eos-bc-text);
 +}
 +
 +/* Only use background image on desktops */
 +@media(min-width: 1024px) {
 +    body.login-pf {
-+        background-image: url("default-1920x1200.png");
++        background-image: url("default-1920x1200.png") !important;
 +        background-repeat: no-repeat;
 +        background-position: 100% 0 !important;
 +        background-size: cover;
@@ -134,7 +129,6 @@ index 000000000..baea6f560
 +#index-brand:before {
 +    content: "${PRETTY_NAME}";
 +}
-\ No newline at end of file
 -- 
-2.47.0
+2.49.0
 

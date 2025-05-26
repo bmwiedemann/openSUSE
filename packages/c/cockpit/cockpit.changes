@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri May 23 07:46:41 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update branding patch for micro and sle
+
+-------------------------------------------------------------------
+Thu May 22 12:42:43 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Bug fixes
+- Update theme for patternfly 6
+- Update spec from upstream
+- Change when selinux policies are installed
+
+-------------------------------------------------------------------
+Thu May  8 08:30:23 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
+
+- update to 338:
+    Upstream Changes:
+        - Translation updates
+        - Bug fixes
+- Add check_cockpit_users and add_preexec_cockpit.patch to ensure manually created
+  users and groups are removed. Also check systemd support is in nsswitch
+
+-------------------------------------------------------------------
+Tue Apr 29 04:23:41 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
+
+- Update cockpit to 337
+    Upstream Changes:
+        337:
+            - Upgraded to Patternfly 6
+            - Support dnf needs-restarting
+        336.2:
+            - storage: Revert "Use mdraid metadata version 1.0 when in Anaconda mode"
+            - Translation updates
+        336.1:
+            - storage: Fix passphrase remembering with "Reuse encryption" 
+            - Translation updates
+        336:
+            - storage: Implement deletion of multi-device btrfs
+            - storage: Use mdraid metadata version 1.0 when in Anaconda mode
+            - Add a channel capabilities system
+        335:
+            storage: SMART support
+- update various patches to apply on 337
+
+-------------------------------------------------------------------
 Mon Apr 28 07:43:52 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
 
 - Update 0007-Remove-DynamicUser-setting-as-these-conflict-with-re.patch

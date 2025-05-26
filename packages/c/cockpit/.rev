@@ -678,4 +678,41 @@ For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
   where it is relevant</comment>
     <requestid>1273359</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>e7c59425bcec5814022cf1b05f13a3c8</srcmd5>
+    <version>338</version>
+    <time>1748277125</time>
+    <user>anag_factory</user>
+    <comment>- Update branding patch for micro and sle
+
+- Bug fixes
+- Update theme for patternfly 6
+- Update spec from upstream
+- Change when selinux policies are installed
+
+- update to 338:
+    Upstream Changes:
+        - Translation updates
+        - Bug fixes
+- Add check_cockpit_users and add_preexec_cockpit.patch to ensure manually created
+  users and groups are removed. Also check systemd support is in nsswitch
+
+- Update cockpit to 337
+    Upstream Changes:
+        337:
+            - Upgraded to Patternfly 6
+            - Support dnf needs-restarting
+        336.2:
+            - storage: Revert &quot;Use mdraid metadata version 1.0 when in Anaconda mode&quot;
+            - Translation updates
+        336.1:
+            - storage: Fix passphrase remembering with &quot;Reuse encryption&quot; 
+            - Translation updates
+        336:
+            - storage: Implement deletion of multi-device btrfs
+            - storage: Use mdraid metadata version 1.0 when in Anaconda mode
+            - Add a channel capabilities system
+        335:</comment>
+    <requestid>1279492</requestid>
+  </revision>
 </revisionlist>

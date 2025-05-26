@@ -1,6 +1,6 @@
-From 617d236f005538be4a53b4a4cb88aac0ad6bf14b Mon Sep 17 00:00:00 2001
+From 60004e16cda0599e5789dc79e95d006f0c0a95b5 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?David=20D=C3=ADaz=20Gonz=C3=A1lez?= <dgonzalez@suse.de>
-Date: Mon, 13 Jun 2022 20:05:21 +0100
+Date: Mon, 28 Apr 2025 20:42:49 +0530
 Subject: [PATCH] Load custom CSS
 
 In order to override Cockpit's default styling, another CSS file is
@@ -14,39 +14,40 @@ now, it fulfills the requirements of [3].
 [2] https://github.com/cockpit-project/cockpit/issues/16359
 [3] https://en.opensuse.org/openSUSE:ALP/Workgroups/SysMngmnt
 ---
- pkg/apps/index.html                    |  1 +
- pkg/kdump/index.html                   |  1 +
- pkg/metrics/index.html                 |  1 +
- pkg/networkmanager/firewall.html       |  1 +
- pkg/networkmanager/index.html          |  1 +
- pkg/packagekit/index.html              |  1 +
- pkg/playground/index.html              |  1 +
- pkg/playground/journal.html            |  1 +
- pkg/playground/metrics.html            |  1 +
- pkg/playground/plot.html               |  1 +
- pkg/playground/react-patterns.html     |  1 +
- pkg/playground/speed.html              |  1 +
- pkg/playground/test.html               |  1 +
- pkg/selinux/setroubleshoot.html        |  1 +
- pkg/shell/index.html                   |  1 +
- pkg/shell/shell.html                   |  1 +
- pkg/sosreport/index.html               |  1 +
- pkg/storaged/index.html                |  1 +
- pkg/systemd/hwinfo.html                |  1 +
- pkg/systemd/index.html                 |  1 +
- pkg/systemd/logs.html                  |  1 +
- pkg/systemd/services.html              |  1 +
- pkg/systemd/terminal.html              |  1 +
- pkg/users/index.html                   |  1 +
- src/branding/default/css-overrides.css | 12 ++++++++++++
- 25 files changed, 36 insertions(+)
- create mode 100644 src/branding/default/css-overrides.css
+ pkg/apps/index.html                |  1 +
+ pkg/kdump/index.html               |  1 +
+ pkg/metrics/index.html             |  1 +
+ pkg/networkmanager/firewall.html   |  1 +
+ pkg/networkmanager/index.html      |  1 +
+ pkg/packagekit/index.html          |  1 +
+ pkg/playground/index.html          |  1 +
+ pkg/playground/journal.html        |  1 +
+ pkg/playground/metrics.html        |  1 +
+ pkg/playground/plot.html           |  1 +
+ pkg/playground/react-patterns.html |  1 +
+ pkg/playground/speed.html          |  1 +
+ pkg/playground/test.html           |  1 +
+ pkg/shell/index.html               |  1 +
+ pkg/shell/shell.html               |  1 +
+ pkg/sosreport/index.html           |  1 +
+ pkg/static/css-overrides.css       | 12 ++++++++++++
+ pkg/systemd/hwinfo.html            |  1 +
+ pkg/systemd/index.html             |  1 +
+ pkg/systemd/logs.html              |  1 +
+ pkg/systemd/services.html          |  1 +
+ pkg/systemd/terminal.html          |  1 +
+ pkg/users/index.html               |  1 +
+ pkg/storaged/index.html            |  1 +
+ pkg/static/login.html              |  1 +
+ pkg/selinux/index.html             |  1 +
+ 23 files changed, 34 insertions(+)
+ create mode 100644 pkg/static/css-overrides.css
 
-Index: cockpit/pkg/apps/index.html
-===================================================================
---- cockpit.orig/pkg/apps/index.html
-+++ cockpit/pkg/apps/index.html
-@@ -23,6 +23,7 @@ along with Cockpit; If not, see <http://
+diff --git a/pkg/apps/index.html b/pkg/apps/index.html
+index fd17d5131..9aac50800 100644
+--- a/pkg/apps/index.html
++++ b/pkg/apps/index.html
+@@ -23,6 +23,7 @@ along with Cockpit; If not, see <https://www.gnu.org/licenses/>.
      <title translate="yes">Applications</title>
      <meta charset="utf-8" />
      <link href="apps.css" type="text/css" rel="stylesheet" />
@@ -54,11 +55,11 @@ Index: cockpit/pkg/apps/index.html
      <script type="text/javascript" src="../base1/cockpit.js"></script>
      <script type="text/javascript" src="../base1/po.js"></script>
      <script type="text/javascript" src="po.js"></script>
-Index: cockpit/pkg/kdump/index.html
-===================================================================
---- cockpit.orig/pkg/kdump/index.html
-+++ cockpit/pkg/kdump/index.html
-@@ -25,6 +25,7 @@ along with Cockpit; If not, see <http://
+diff --git a/pkg/kdump/index.html b/pkg/kdump/index.html
+index 8138f050f..619416dd4 100644
+--- a/pkg/kdump/index.html
++++ b/pkg/kdump/index.html
+@@ -25,6 +25,7 @@ along with Cockpit; If not, see <https://www.gnu.org/licenses/>.
      <meta name="viewport" content="width=device-width, initial-scale=1" />
  
      <link rel="stylesheet" href="kdump.css" />
@@ -66,11 +67,11 @@ Index: cockpit/pkg/kdump/index.html
  
      <script type="text/javascript" src="kdump.js"></script>
      <script type="text/javascript" src="../base1/po.js"></script>
-Index: cockpit/pkg/metrics/index.html
-===================================================================
---- cockpit.orig/pkg/metrics/index.html
-+++ cockpit/pkg/metrics/index.html
-@@ -23,6 +23,7 @@ along with this package; If not, see <ht
+diff --git a/pkg/metrics/index.html b/pkg/metrics/index.html
+index cbb82dccc..b17bd1a76 100644
+--- a/pkg/metrics/index.html
++++ b/pkg/metrics/index.html
+@@ -23,6 +23,7 @@ along with this package; If not, see <https://www.gnu.org/licenses/>.
      <meta name="viewport" content="width=device-width, initial-scale=1" />
  
      <link rel="stylesheet" href="index.css" />
@@ -78,11 +79,11 @@ Index: cockpit/pkg/metrics/index.html
  
      <script type="text/javascript" src="../base1/cockpit.js"></script>
      <script type="text/javascript" src="../manifests.js"></script>
-Index: cockpit/pkg/networkmanager/firewall.html
-===================================================================
---- cockpit.orig/pkg/networkmanager/firewall.html
-+++ cockpit/pkg/networkmanager/firewall.html
-@@ -23,6 +23,7 @@ along with Cockpit; If not, see <http://
+diff --git a/pkg/networkmanager/firewall.html b/pkg/networkmanager/firewall.html
+index e5ea58276..6bc5327f5 100644
+--- a/pkg/networkmanager/firewall.html
++++ b/pkg/networkmanager/firewall.html
+@@ -23,6 +23,7 @@ along with Cockpit; If not, see <https://www.gnu.org/licenses/>.
      <meta charset="utf-8" />
  
      <link href="firewall.css" type="text/css" rel="stylesheet" />
@@ -90,10 +91,10 @@ Index: cockpit/pkg/networkmanager/firewall.html
  
      <script src="../base1/cockpit.js"></script>
      <script src="../base1/po.js"></script>
-Index: cockpit/pkg/networkmanager/index.html
-===================================================================
---- cockpit.orig/pkg/networkmanager/index.html
-+++ cockpit/pkg/networkmanager/index.html
+diff --git a/pkg/networkmanager/index.html b/pkg/networkmanager/index.html
+index fc9cb5aff..3aceef1b2 100644
+--- a/pkg/networkmanager/index.html
++++ b/pkg/networkmanager/index.html
 @@ -24,6 +24,7 @@
    <meta charset="utf-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -102,11 +103,11 @@ Index: cockpit/pkg/networkmanager/index.html
    <script src="../base1/cockpit.js"></script>
    <script src="../manifests.js"></script>
    <script src="../base1/po.js"></script>
-Index: cockpit/pkg/packagekit/index.html
-===================================================================
---- cockpit.orig/pkg/packagekit/index.html
-+++ cockpit/pkg/packagekit/index.html
-@@ -24,6 +24,7 @@ along with Cockpit; If not, see <http://
+diff --git a/pkg/packagekit/index.html b/pkg/packagekit/index.html
+index c95dfd263..f4f3baab6 100644
+--- a/pkg/packagekit/index.html
++++ b/pkg/packagekit/index.html
+@@ -24,6 +24,7 @@ along with Cockpit; If not, see <https://www.gnu.org/licenses/>.
    <meta charset="utf-8" />
  
    <link href="updates.css" rel="stylesheet" />
@@ -114,10 +115,10 @@ Index: cockpit/pkg/packagekit/index.html
  
    <script src="../base1/cockpit.js"></script>
    <script src="../base1/po.js"></script>
-Index: cockpit/pkg/playground/index.html
-===================================================================
---- cockpit.orig/pkg/playground/index.html
-+++ cockpit/pkg/playground/index.html
+diff --git a/pkg/playground/index.html b/pkg/playground/index.html
+index 4f2bce82d..6f87bc642 100644
+--- a/pkg/playground/index.html
++++ b/pkg/playground/index.html
 @@ -5,6 +5,7 @@
      <title>Cockpit Development Playground</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -126,10 +127,10 @@ Index: cockpit/pkg/playground/index.html
      <script src="../base1/cockpit.js"></script>
      <script src="../manifests.js"></script>
      <script src="index.js"></script>
-Index: cockpit/pkg/playground/journal.html
-===================================================================
---- cockpit.orig/pkg/playground/journal.html
-+++ cockpit/pkg/playground/journal.html
+diff --git a/pkg/playground/journal.html b/pkg/playground/journal.html
+index 473537cb8..c1f10201f 100644
+--- a/pkg/playground/journal.html
++++ b/pkg/playground/journal.html
 @@ -5,6 +5,7 @@
      <title>Cockpit Journal Box</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -138,10 +139,10 @@ Index: cockpit/pkg/playground/journal.html
      <script src="../base1/cockpit.js"></script>
      <script src="journal.js"></script>
  </head>
-Index: cockpit/pkg/playground/metrics.html
-===================================================================
---- cockpit.orig/pkg/playground/metrics.html
-+++ cockpit/pkg/playground/metrics.html
+diff --git a/pkg/playground/metrics.html b/pkg/playground/metrics.html
+index d3485c344..bab3b4eb1 100644
+--- a/pkg/playground/metrics.html
++++ b/pkg/playground/metrics.html
 @@ -5,6 +5,7 @@
      <title>Cockpit Monitoring</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -150,10 +151,10 @@ Index: cockpit/pkg/playground/metrics.html
      <script src="../base1/cockpit.js"></script>
      <script src="metrics.js"></script>
  </head>
-Index: cockpit/pkg/playground/plot.html
-===================================================================
---- cockpit.orig/pkg/playground/plot.html
-+++ cockpit/pkg/playground/plot.html
+diff --git a/pkg/playground/plot.html b/pkg/playground/plot.html
+index dae84c4b7..e1e8fa7dc 100644
+--- a/pkg/playground/plot.html
++++ b/pkg/playground/plot.html
 @@ -5,6 +5,7 @@
      <title>Cockpit Plots</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -162,10 +163,10 @@ Index: cockpit/pkg/playground/plot.html
      <script src="../base1/cockpit.js"></script>
      <script src="plot.js"></script>
  </head>
-Index: cockpit/pkg/playground/react-patterns.html
-===================================================================
---- cockpit.orig/pkg/playground/react-patterns.html
-+++ cockpit/pkg/playground/react-patterns.html
+diff --git a/pkg/playground/react-patterns.html b/pkg/playground/react-patterns.html
+index a220e0a51..437bd2e39 100644
+--- a/pkg/playground/react-patterns.html
++++ b/pkg/playground/react-patterns.html
 @@ -5,6 +5,7 @@
      <title>Cockpit React Patterns Usage</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -174,10 +175,10 @@ Index: cockpit/pkg/playground/react-patterns.html
      <script src="../base1/cockpit.js"></script>
      <script src="react-patterns.js"></script>
  </head>
-Index: cockpit/pkg/playground/speed.html
-===================================================================
---- cockpit.orig/pkg/playground/speed.html
-+++ cockpit/pkg/playground/speed.html
+diff --git a/pkg/playground/speed.html b/pkg/playground/speed.html
+index 603c7341a..e89d111de 100644
+--- a/pkg/playground/speed.html
++++ b/pkg/playground/speed.html
 @@ -5,6 +5,7 @@
      <title>Cockpit Speed Tests</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -186,10 +187,10 @@ Index: cockpit/pkg/playground/speed.html
      <script src="../base1/cockpit.js"></script>
      <script src="speed.js"></script>
  </head>
-Index: cockpit/pkg/playground/test.html
-===================================================================
---- cockpit.orig/pkg/playground/test.html
-+++ cockpit/pkg/playground/test.html
+diff --git a/pkg/playground/test.html b/pkg/playground/test.html
+index 97a74791f..a2519cfd2 100644
+--- a/pkg/playground/test.html
++++ b/pkg/playground/test.html
 @@ -5,6 +5,7 @@
      <title>Cockpit playground</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -198,35 +199,35 @@ Index: cockpit/pkg/playground/test.html
      <script src="../base1/cockpit.js"></script>
      <script src="test.js"></script>
  </head>
-Index: cockpit/pkg/shell/index.html
-===================================================================
+diff --git a/pkg/shell/index.html b/pkg/shell/index.html
+index 6dd5ad1ac..1c6f3512c 100644
 --- a/pkg/shell/index.html
 +++ b/pkg/shell/index.html
-@@ -6,6 +6,7 @@
-     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+@@ -7,6 +7,7 @@
+     <link rel="icon" href="../../static/favicon.ico" />
      <link href="shell.css" rel="stylesheet" />
      <link href="../../static/branding.css" rel="stylesheet" />
 +    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
      <script src="../base1/cockpit.js"></script>
      <script src="../manifests-i18n.js"></script>
      <script src="po.js"></script>
-Index: cockpit/pkg/shell/shell.html
-===================================================================
---- cockpit.orig/pkg/shell/shell.html
-+++ cockpit/pkg/shell/shell.html
+diff --git a/pkg/shell/shell.html b/pkg/shell/shell.html
+index c9adf7ae2..97f088f7c 100644
+--- a/pkg/shell/shell.html
++++ b/pkg/shell/shell.html
 @@ -5,6 +5,7 @@
      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
      <link rel="stylesheet" href="index.css" />
 +    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
  </head>
- <body class="pf-v5-m-tabular-nums">
+ <body class="pf-v6-m-tabular-nums">
      <div class="curtains-ct">
-Index: cockpit/pkg/sosreport/index.html
-===================================================================
---- cockpit.orig/pkg/sosreport/index.html
-+++ cockpit/pkg/sosreport/index.html
-@@ -22,6 +22,7 @@ along with Cockpit; If not, see <http://
+diff --git a/pkg/sosreport/index.html b/pkg/sosreport/index.html
+index e673383ad..224b42463 100644
+--- a/pkg/sosreport/index.html
++++ b/pkg/sosreport/index.html
+@@ -22,6 +22,7 @@ along with Cockpit; If not, see <https://www.gnu.org/licenses/>.
      <title translate="yes">Diagnostic reports</title>
      <meta charset="utf-8" />
      <link href="sosreport.css" rel="stylesheet" />
@@ -234,82 +235,11 @@ Index: cockpit/pkg/sosreport/index.html
      <script type="text/javascript" src="../base1/cockpit.js"></script>
      <script type="text/javascript" src="../base1/po.js"></script>
      <script type="text/javascript" src="po.js"></script>
-Index: cockpit/pkg/systemd/hwinfo.html
-===================================================================
---- cockpit.orig/pkg/systemd/hwinfo.html
-+++ cockpit/pkg/systemd/hwinfo.html
-@@ -4,6 +4,7 @@
-     <title translate="yes">Hardware information</title>
-     <meta charset="utf-8" />
-     <link href="hwinfo.css" type="text/css" rel="stylesheet" />
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
-     <script src="../base1/cockpit.js"></script>
-     <script src="../base1/po.js"></script>
-     <script src="po.js"></script>
-Index: cockpit/pkg/systemd/index.html
-===================================================================
---- cockpit.orig/pkg/systemd/index.html
-+++ cockpit/pkg/systemd/index.html
-@@ -6,6 +6,7 @@
-   <meta name="description" content="" />
-   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <link rel="stylesheet" href="overview.css" />
-+  <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet"/>
-   <script type="text/javascript" src="../base1/cockpit.js"></script>
-   <script type="text/javascript" src="../base1/po.js"></script>
-   <script type="text/javascript" src="overview.js"></script>
-Index: cockpit/pkg/systemd/logs.html
-===================================================================
---- cockpit.orig/pkg/systemd/logs.html
-+++ cockpit/pkg/systemd/logs.html
-@@ -23,6 +23,7 @@ along with Cockpit; If not, see <http://
-   <title translate="yes">Journal</title>
-   <meta charset="utf-8" />
-   <link href="logs.css" rel="stylesheet" />
-+  <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
-   <script type="text/javascript" src="../base1/cockpit.js"></script>
-   <script src="../base1/po.js"></script>
-   <script src="po.js"></script>
-Index: cockpit/pkg/systemd/services.html
-===================================================================
---- cockpit.orig/pkg/systemd/services.html
-+++ cockpit/pkg/systemd/services.html
-@@ -5,6 +5,7 @@
-     <meta charset="utf-8" />
-     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <link href="services.css" type="text/css" rel="stylesheet" />
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
-     <script src="../base1/cockpit.js"></script>
-     <script src="../base1/po.js"></script>
-     <script src="services.js"></script>
-Index: cockpit/pkg/systemd/terminal.html
-===================================================================
---- cockpit.orig/pkg/systemd/terminal.html
-+++ cockpit/pkg/systemd/terminal.html
-@@ -5,6 +5,7 @@
-     <meta charset="utf-8" />
-     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <link href="terminal.css" type="text/css" rel="stylesheet" />
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
-     <script src="../base1/cockpit.js"></script>
-     <script src="../base1/po.js"></script>
-     <script src="po.js"></script>
-Index: cockpit/pkg/users/index.html
-===================================================================
---- cockpit.orig/pkg/users/index.html
-+++ cockpit/pkg/users/index.html
-@@ -24,6 +24,7 @@
-     <meta charset="utf-8" />
-     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <link href="users.css" type="text/css" rel="stylesheet" />
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
-     <script src="../base1/cockpit.js"></script>
-     <script src="../base1/po.js"></script>
-     <script src="po.js"></script>
-Index: cockpit/pkg/static/css-overrides.css
-===================================================================
+diff --git a/pkg/static/css-overrides.css b/pkg/static/css-overrides.css
+new file mode 100644
+index 000000000..7481f7ecf
 --- /dev/null
-+++ cockpit/pkg/static/css-overrides.css
++++ b/pkg/static/css-overrides.css
 @@ -0,0 +1,12 @@
 +/**
 + * PLEASE, DO NOT CHANGE THIS FILE.
@@ -323,3 +253,114 @@ Index: cockpit/pkg/static/css-overrides.css
 + *   - https://github.com/cockpit-project/cockpit/pull/17437
 + *   - https://github.com/cockpit-project/cockpit/issues/16359
 + */
+diff --git a/pkg/systemd/hwinfo.html b/pkg/systemd/hwinfo.html
+index a3413faca..549b80298 100644
+--- a/pkg/systemd/hwinfo.html
++++ b/pkg/systemd/hwinfo.html
+@@ -4,6 +4,7 @@
+     <title translate="yes">Hardware information</title>
+     <meta charset="utf-8" />
+     <link href="hwinfo.css" type="text/css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
+     <script src="../base1/cockpit.js"></script>
+     <script src="../base1/po.js"></script>
+     <script src="po.js"></script>
+diff --git a/pkg/systemd/index.html b/pkg/systemd/index.html
+index 91a268a4a..ee125fe65 100644
+--- a/pkg/systemd/index.html
++++ b/pkg/systemd/index.html
+@@ -6,6 +6,7 @@
+   <meta name="description" content="" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <link rel="stylesheet" href="overview.css" />
++  <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet"/>
+   <script type="text/javascript" src="../base1/cockpit.js"></script>
+   <script type="text/javascript" src="../base1/po.js"></script>
+   <script type="text/javascript" src="overview.js"></script>
+diff --git a/pkg/systemd/logs.html b/pkg/systemd/logs.html
+index f89f1fa47..5086ce1f6 100644
+--- a/pkg/systemd/logs.html
++++ b/pkg/systemd/logs.html
+@@ -23,6 +23,7 @@ along with Cockpit; If not, see <https://www.gnu.org/licenses/>.
+   <title translate="yes">Journal</title>
+   <meta charset="utf-8" />
+   <link href="logs.css" rel="stylesheet" />
++  <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
+   <script type="text/javascript" src="../base1/cockpit.js"></script>
+   <script src="../base1/po.js"></script>
+   <script src="po.js"></script>
+diff --git a/pkg/systemd/services.html b/pkg/systemd/services.html
+index 74fa456d4..e9c7047ee 100644
+--- a/pkg/systemd/services.html
++++ b/pkg/systemd/services.html
+@@ -5,6 +5,7 @@
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link href="services.css" type="text/css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
+     <script src="../base1/cockpit.js"></script>
+     <script src="../base1/po.js"></script>
+     <script src="services.js"></script>
+diff --git a/pkg/systemd/terminal.html b/pkg/systemd/terminal.html
+index ce7216e4e..63547f9d3 100644
+--- a/pkg/systemd/terminal.html
++++ b/pkg/systemd/terminal.html
+@@ -5,6 +5,7 @@
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link href="terminal.css" type="text/css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
+     <script src="../base1/cockpit.js"></script>
+     <script src="../base1/po.js"></script>
+     <script src="po.js"></script>
+diff --git a/pkg/users/index.html b/pkg/users/index.html
+index d26cf4781..b0c6ebf87 100644
+--- a/pkg/users/index.html
++++ b/pkg/users/index.html
+@@ -24,6 +24,7 @@
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link href="users.css" type="text/css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
+     <script src="../base1/cockpit.js"></script>
+     <script src="../base1/po.js"></script>
+     <script src="po.js"></script>
+diff --git a/pkg/storaged/index.html b/pkg/storaged/index.html
+index 6893e4909..b6677bb56 100644
+--- a/pkg/storaged/index.html
++++ b/pkg/storaged/index.html
+@@ -24,6 +24,7 @@
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link href="storaged.css" type="text/css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <script src="../base1/cockpit.js"></script>
+     <script src="../base1/po.js"></script>
+     <script src="../manifests.js"></script>
+diff --git a/pkg/static/login.html b/pkg/static/login.html
+index 6a8fa4f44..9019499a5 100644
+--- a/pkg/static/login.html
++++ b/pkg/static/login.html
+@@ -11,6 +11,7 @@
+   <script type="text/javascript" src="cockpit/static/login.js"></script>
+   <link href="cockpit/static/login.css" type="text/css" rel="stylesheet" />
+   <link href="cockpit/static/branding.css" type="text/css" rel="stylesheet" />
++  <link href="cockpit/static/css-overrides.css" type="text/css" rel="stylesheet" />
+ </head>
+
+ <body class="login-pf">
+diff --git a/pkg/selinux/index.html b/pkg/selinux/index.html
+index cc3825a25..e1c814c6d 100644
+--- a/pkg/selinux/index.html
++++ b/pkg/selinux/index.html
+@@ -25,6 +25,7 @@ along with Cockpit; If not, see <https://www.gnu.org/licenses/>.
+     <meta name="viewport" content="width=device-width, initial-scale=1" />
+ 
+     <link rel="stylesheet" href="selinux.css" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+ 
+     <script type="text/javascript" src="../base1/cockpit.js"></script>
+     <script type="text/javascript" src="../base1/po.js"></script>
+-- 
+2.49.0
+

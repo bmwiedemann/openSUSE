@@ -50,13 +50,14 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        334.1
+Version:        338
 Release:        0
 Source0:        cockpit-%{version}.tar.gz
 Source1:        cockpit.pam
 Source2:        cockpit-rpmlintrc
 Source3:        cockpit-suse-theme.tar
 Source4:        cockpit-no-pamoath.pam
+Source5:        check_cockpit_users
 Source10:       update_version.sh
 Source99:       README.packaging
 Source98:       package-lock.json
@@ -78,7 +79,7 @@ Patch104:       selinux_libdir.patch
 Patch105:       fix-libexecdir.patch
 Patch106:       packagekit-single-install.patch
 Patch109:       0008-pybridge-endian-flag.patch
-
+Patch110:       add_preexec_cockpit.patch
 Patch201:       remove_rh_links.patch
 
 %define build_all 1
@@ -214,6 +215,7 @@ BuildRequires:  python3-pytest-timeout
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
+
 %patch -P 106 -p1
 %patch -P 109 -p1
 
@@ -234,6 +236,10 @@ BuildRequires:  python3-pytest-timeout
 %patch -P 108 -p1
 %else
 %patch -P 107 -p1
+%endif
+
+%if 0%{?suse_version} >= 1600
+%patch -P 110 -p1
 %endif
 
 %patch -P 201 -p1
@@ -359,7 +365,7 @@ echo '%dir %{_datadir}/cockpit/selinux' > selinux.list
 find %{buildroot}%{_datadir}/cockpit/selinux -type f >> selinux.list
 
 echo '%dir %{_datadir}/cockpit/static' > static.list
-echo '%dir %{_datadir}/cockpit/static/fonts' >> static.list
+find %{buildroot}%{_datadir}/cockpit/static/* -type d | while read line; do echo "%dir $line"; done >> static.list
 find %{buildroot}%{_datadir}/cockpit/static -type f >> static.list
 
 # when not building basic packages, remove their files
@@ -444,6 +450,12 @@ rm -f %{buildroot}%{_datadir}/pixmaps/cockpit-sosreport.png
 mkdir -p %{buildroot}%{_datadir}/cockpit/devel
 cp -a pkg/lib %{buildroot}%{_datadir}/cockpit/devel
 
+# cockpit.socket preexec to ensure users are created as dynamic users
+
+%if 0%{?suse_version} >= 1600
+install -D -m 755 %SOURCE5 %{buildroot}%{_libexecdir}/
+%endif 
+
 # -------------------------------------------------------------------------------
 # Sub-packages
 
@@ -455,6 +467,7 @@ It offers network configuration, log inspection, diagnostic reports, SELinux
 troubleshooting, interactive command-line sessions, and more.
 
 %files
+%license COPYING
 %{_docdir}/cockpit/AUTHORS
 %{_docdir}/cockpit/COPYING
 %{_docdir}/cockpit/README.md
@@ -468,12 +481,14 @@ troubleshooting, interactive command-line sessions, and more.
 
 %package bridge
 Summary: Cockpit bridge server-side component
+BuildArch: noarch
 
 %description bridge
 The Cockpit bridge component installed server side and runs commands on the
 system on behalf of the web based user interface.
 
 %files bridge -f base.list
+%license COPYING
 %doc %{_mandir}/man1/cockpit-bridge.1.gz
 %{_bindir}/cockpit-bridge
 %{_libexecdir}/cockpit-askpass
@@ -489,6 +504,7 @@ deploy Cockpit on their machines as well as helps developers who want to
 embed or extend Cockpit.
 
 %files doc
+%license COPYING
 %exclude %{_docdir}/cockpit/AUTHORS
 %exclude %{_docdir}/cockpit/COPYING
 %exclude %{_docdir}/cockpit/README.md
@@ -535,6 +551,7 @@ Recommends: (reportd if abrt)
 This package contains the Cockpit shell and system configuration interfaces.
 
 %files system -f system.list
+%license COPYING
 %dir %{_datadir}/cockpit/shell/images
 
 %package ws
@@ -543,13 +560,13 @@ Requires: glib-networking
 Requires: openssl
 Requires: glib2 >= 2.50.0
 %if 0%{?with_selinux}
+Requires: (%{name}-ws-selinux = %{version}-%{release} if selinux-policy-base)
 Requires: (selinux-policy >= %{_selinux_policy_version} if selinux-policy-%{selinuxtype})
 Requires(post): (policycoreutils if selinux-policy-%{selinuxtype})
 %endif
 Conflicts: firewalld < 0.6.0-1
 Recommends: sscg >= 2.3
 Recommends: system-logos
-Requires:  (%{name}-selinux-policies if selinux-policy-base)
 Suggests: sssd-dbus
 %if 0%{?suse_version}
 Requires(pre): permissions
@@ -580,6 +597,7 @@ If sssd-dbus is installed, you can enable client certificate/smart card
 authentication via sssd/FreeIPA.
 
 %files ws -f static.list
+%license COPYING
 %doc %{_mandir}/man1/cockpit-desktop.1.gz
 %doc %{_mandir}/man5/cockpit.conf.5.gz
 %doc %{_mandir}/man8/cockpit-ws.8.gz
@@ -631,6 +649,7 @@ authentication via sssd/FreeIPA.
 %if 0%{?suse_version} == 1500
 %{?suse_version:%verify(not mode) }%attr(4750, root, cockpit-wsinstance-socket) %{_libexecdir}/cockpit-session
 %else
+%{_libexecdir}/check_cockpit_users
 %{_libexecdir}/cockpit-session
 %endif
 %{_datadir}/cockpit/branding
@@ -718,40 +737,36 @@ for i in pam.d/cockpit ; do
      test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 %endif
+
 %if 0%{?with_selinux}
-%package selinux-policies
-Summary: selinux policies required by cockpit
-Requires(post): selinux-policy-%{selinuxtype} >= %{selinux_policyver}
-Requires(post): selinux-tools
+%package ws-selinux
+Summary: SELinux security policy for cockpit-ws
+# older -ws contained the SELinux policy, now split out
+Conflicts: %{name}-ws < 337-1.2025
+Requires(post): selinux-policy-%{selinuxtype} >= %{_selinux_policy_version}
+Requires(post): libselinux-utils
 Requires(post): policycoreutils
+Obsoletes: %{name}-selinux-policies < 338
 
-%description selinux-policies
-package that contains selinux rules/policies needed by cockpit when selinux is enabled
+%description ws-selinux
+SELinux policy module for the cockpit-ws package.
 
-%files selinux-policies
+%files ws-selinux
+%license COPYING
 %{_datadir}/selinux/packages/%{selinuxtype}/%{name}.pp.bz2
 %{_mandir}/man8/%{name}_session_selinux.8cockpit.*
 %{_mandir}/man8/%{name}_ws_selinux.8cockpit.*
 %ghost %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{name}
 
-%pre selinux-policies
-if %{_sbindir}/selinuxenabled 2>/dev/null; then
-    %selinux_relabel_pre -s %{selinuxtype}
-fi
-
-%post selinux-policies
+%posttrans ws-selinux
+%selinux_relabel_pre -s %{selinuxtype}
 %selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{selinuxtype}/%{name}.pp.bz2
-if [ -x %{_sbindir}/selinuxenabled ]; then
-    %selinux_relabel_post -s %{selinuxtype}
-fi
+%selinux_relabel_post -s %{selinuxtype}
 
-%postun selinux-policies
+%postun ws-selinux
 %selinux_modules_uninstall -s %{selinuxtype} %{name}
-if [ -x %{_sbindir}/selinuxenabled ]; then
-    %selinux_relabel_post -s %{selinuxtype}
-fi
+%selinux_relabel_post -s %{selinuxtype}
 %endif
-
 
 # -------------------------------------------------------------------------------
 # Sub-packages that are part of cockpit-system in RHEL/CentOS, but separate in Fedora
@@ -769,6 +784,7 @@ BuildArch: noarch
 The Cockpit component for configuring kernel crash dumping.
 
 %files kdump -f kdump.list
+%license COPYING
 %{_datadir}/metainfo/org.cockpit_project.cockpit_kdump.metainfo.xml
 
 %if !0%{?suse_version}
@@ -784,8 +800,9 @@ The Cockpit component for creating diagnostic reports with the
 sosreport tool.
 
 %files sosreport -f sosreport.list
-%{_datadir}/metainfo/org.cockpit-project.cockpit-sosreport.metainfo.xml
-%{_datadir}/pixmaps/cockpit-sosreport.png
+%license COPYING
+%{_datadir}/metainfo/org.cockpit_project.cockpit_sosreport.metainfo.xml
+%{_datadir}/icons/hicolor/64x64/apps/cockpit-sosreport.png
 %endif
 
 %package networkmanager
@@ -802,6 +819,7 @@ BuildArch: noarch
 The Cockpit component for managing networking.  This package uses NetworkManager.
 
 %files networkmanager -f networkmanager.list
+%license COPYING
 %{_datadir}/metainfo/org.cockpit_project.cockpit_networkmanager.metainfo.xml
 
 %endif
@@ -824,6 +842,7 @@ This package contains the Cockpit user interface integration with the
 utility setroubleshoot to diagnose and resolve SELinux issues.
 
 %files selinux -f selinux.list
+%license COPYING
 %{_datadir}/metainfo/org.cockpit_project.cockpit_selinux.metainfo.xml
 
 %endif
@@ -854,6 +873,7 @@ BuildArch: noarch
 The Cockpit component for managing storage.  This package uses udisks.
 
 %files -n cockpit-storaged -f storaged.list
+%license COPYING
 %{_datadir}/metainfo/org.cockpit_project.cockpit_storaged.metainfo.xml
 
 %post storaged
@@ -885,6 +905,7 @@ The Cockpit components for installing OS updates and Cockpit add-ons,
 via PackageKit.
 
 %files -n cockpit-packagekit -f packagekit.list
+%license COPYING
 
 # The changelog is automatically generated and merged
 %changelog

@@ -1,0 +1,35 @@
+#!/bin/sh
+bad_users_groups=("cockpit-wsinstance-socket" "cockpit-session-socket")
+failed=false
+
+for gu in "${bad_users_groups[@]}"; do
+    grep -q "$gu" /etc/passwd
+    if [ $? -eq 0 ]; then
+        echo "user ${gu} exists, cockpit will fail to start up if this user exists, please run userdel ${gu} to resolve this"
+        failed=true
+    fi
+
+    grep -q "$gu" /etc/group
+    if [ $? -eq 0 ]; then
+         echo "group ${gu} exists, cockpit will fail to start up if this group exists, please run groupdel ${gu} to resolve this"
+         failed=true
+     fi
+done
+
+grep -q cockpit-systemd-service /etc/passwd
+if [ $? -eq 0 ]; then
+    echo "user cockpit-systemd-service exists, cockpit will fail to start up if this group exists, please run userdel cockpit-systemd-service to resolve this"
+    failed=true
+fi
+
+if [ -f /etc/nsswitch.conf ]; then
+    grep -Exq "passwd:.*?compat systemd" /etc/nsswitch.conf
+    if [ $? -ne 0 ]; then
+        echo "/etc/nsswitch.conf is out of date, please update it from /usr/etc/nsswitch.conf to use cockpit"
+        failed=true
+    fi
+fi
+
+if $failed; then
+    exit 1
+fi
