@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 19 19:43:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Hello 2.12.2:
+  * Update gnulib, and support latest versions of automake and
+    autoconf
+  * Remove outdated and irrelevant material from the contrib
+    directory, which is now itself removed.
+
+-------------------------------------------------------------------
 Mon May 30 10:21:23 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Hello 2.12.1:

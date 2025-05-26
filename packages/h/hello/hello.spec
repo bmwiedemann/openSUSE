@@ -2,6 +2,7 @@
 # spec file for package hello
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +20,10 @@
 # How to define macros
 %define hello echo "hello world"
 Name:           hello
-Version:        2.12.1
+Version:        2.12.2
 Release:        0
 Summary:        A Friendly Greeting Program
 License:        GPL-3.0-or-later
-Group:          Development/Tools/Other
 URL:            https://www.gnu.org/software/hello
 Source0:        https://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz.sig
@@ -33,12 +33,16 @@ BuildRequires:  makeinfo
 Provides:       mailreader
 
 %description
-The GNU hello program produces a familiar, friendly greeting.  It
-allows nonprogrammers to use a classic computer science tool that would
-otherwise be unavailable to them.  Because it is protected by the GNU
-General Public License, users are free to share and change it.
+The GNU Hello program produces a familiar, friendly greeting. Yes, this is
+another implementation of the classic program that prints “Hello, world!” when
+you run it.
 
-GNU hello supports many native languages.
+In the context of the GNU project, the program demonstrates standard argument
+parsing, multi-language support, the GNU coding standards and maintainer
+practices.
+
+For openSUSE, this package is a sample package demonstrating some rpm packaging
+methods.
 
 %lang_package
 
@@ -51,7 +55,10 @@ rm -f doc/*.info
 
 %build
 export CFLAGS="%{optflags}"
-%configure
+%configure \
+	--with-packager='openSUSE project' \
+	--with-packager-bug-reports='https://bugs.opensuse.org/' \
+	%{nil}
 %if %{do_profiling}
   %make_build CFLAGS="$CFLAGS %{cflags_profile_generate}" LDFLAGS="-fprofile-arcs"
   %make_build check
@@ -71,9 +78,9 @@ export CFLAGS="%{optflags}"
 %files
 %license COPYING
 %doc TODO NEWS README THANKS ABOUT-NLS
-%{_bindir}/*
-%{_infodir}/hello.info%{?ext_info}
-%{_mandir}/man1/hello.1%{?ext_man}
+%{_bindir}/hello
+%{_infodir}/*.info%{?ext_info}
+%{_mandir}/man1/*.1%{?ext_man}
 
 %files lang -f %{name}.lang
 %license COPYING
