@@ -28,6 +28,10 @@
 %define pname nlopt
 %define so_ver 1
 
+%if 0%{?suse_version} <= 1500
+%define gcc_ver 8
+%endif
+
 Name:           nlopt%{?psuffix}
 Version:        2.10.0
 Release:        0
@@ -35,9 +39,11 @@ Summary:        A library for nonlinear optimization
 License:        LGPL-2.1-or-later
 URL:            https://nlopt.readthedocs.io/en/latest/
 Source0:        https://github.com/stevengj/nlopt/archive/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM nlopt-dont-force-cxx-standard.patch gh#stevengj/nlopt#597 badshah400@gmail.com -- Do not force c++11 standard; this allows building octave bindings against octave 10+
+Patch0:         nlopt-dont-force-cxx-standard.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 %if %{with bindings}
@@ -99,7 +105,11 @@ library.
 %autosetup -p1 -n %{pname}-%{version}
 
 %build
-# Must be built with -D_FORTIFY_SOURCE=2 (not 3) for tests to pass, see <https://github.com/stevengj/nlopt/issues/563>
+%if 0%{?gcc_ver}
+export CC=gcc-%{gcc_ver}
+export CXX=g++-%{gcc_ver}
+%endif
+
 %if %{with bindings}
 %{python_expand # Necessary to run configure with all python flavors
 export PYTHON=$python
@@ -107,26 +117,27 @@ mkdir ../${PYTHON}_build
 cp -pr ./ ../${PYTHON}_build
 pushd ../${PYTHON}_build
 %cmake \
-   -DCMAKE_C_FLAGS="%(echo %optflags | sed 's/-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2/g')" \
-   -DCMAKE_CXX_FLAGS="%(echo %optflags | sed 's/-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2/g')" \
    -DCMAKE_SKIP_RPATH:BOOL=OFF \
    -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
    -DNLOPT_MATLAB=OFF \
-   -DNLOPT_CXX:BOOL=ON \
+   -DNLOPT_CXX:BOOL=OM \
    -DNLOPT_TESTS:BOOL=ON \
    -DNLOPT_PYTHON:BOOL=ON \
-   -DNLOPT_OCTAVE:BOOL=ON \
    -DNLOPT_SWIG:BOOL=ON \
-   -DNLOPT_JAVA:BOOL=ON \
    -DPython_EXECUTABLE=%{_bindir}/$python \
+%if "${python_flavor}" == "python3"  || "%{$python_provides}" == "python3"
+   -DNLOPT_JAVA:BOOL=ON \
+   -DNLOPT_OCTAVE:BOOL=ON \
+%else
+   -DNLOPT_JAVA:BOOL=OFF \
+   -DNLOPT_OCTAVE:BOOL=OFF \
+%endif
    %{nil}
 %cmake_build
 popd
 }
 %else
 %cmake \
-   -DCMAKE_C_FLAGS="%(echo %optflags | sed 's/-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2/g')" \
-   -DCMAKE_CXX_FLAGS="%(echo %optflags | sed 's/-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2/g')" \
    -DCMAKE_SKIP_RPATH:BOOL=OFF \
    -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
    -DNLOPT_MATLAB=OFF \

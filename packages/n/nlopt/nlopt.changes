@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 22 12:14:08 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add nlopt-dont-force-cxx-standard.patch: Don't force c++11 std
+  for builds to allow building octave bindings against octave 10+
+  [gh#stevengj/nlopt#616]; patch taken from upstream commit
+  [gh#stevengj/nlopt#597] and rebased for current version.
+- For default flavour, build non-python bindings only for default
+  python3 version. This reduces build times.
+- Do not force -D_FORTIFY_SOURCE=2 any more (fixed since version
+  2.9.1, see gh#stevengj/nlopt#563).
+
+-------------------------------------------------------------------
 Sun Feb  9 05:24:10 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use strip-nondeterminism to normalize jar mtimes for reproducible builds
