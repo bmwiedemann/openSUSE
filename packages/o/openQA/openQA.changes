@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon May 26 09:49:07 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1748004971.d2bfe8ce:
+  * CI: Enable Leap 16.0 OBS build checks
+  * systemd: Increase availability of openqa-webui with ordering
+  * systemd: Remove obsolete ordering of websockets after scheduler
+  * Update GettingStarted.asciidoc Fedora instructions
+  * Deprecate skip-checks and add check-repos option
+  * Switch overly verbose "Updating seen from worker" messages to trace
+  * t: Also use default test database in full-stack+deploy
+  * Fix quoting issue in run-tests-within-container script
+  * Bump eslint from 9.26.0 to 9.27.0
+  * Bump @modelcontextprotocol/sdk from 1.11.3 to 1.11.4
+  * Bump synckit from 0.11.5 to 0.11.6
+  * Create link to the common prove_wrapper
+  * Avoid repeated calls to $t->app->minion
+  * Add linear backoff in hook script
+  * Sync the subrepo external/os-autoinst-common
+  * Bump datatables.net-bs5 from 2.3.0 to 2.3.1
+  * Dependency cron 2025-05-16
+  * Bump @modelcontextprotocol/sdk from 1.11.2 to 1.11.3
+  * Bump eventsource-parser from 3.0.1 to 3.0.2
+  * Set TESTS_FAILED_FLAG to 1 instead of touching file
+  * Explain container execution and CONTAINER_TEST implications
+  * Remove section which checks unused variable
+  * Update checkstyle invocation in run-tests-within-container script
+
+-------------------------------------------------------------------
 Thu May 15 14:14:46 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1747282262.9a4e6bb5:
