@@ -92,4 +92,18 @@
     <comment>1</comment>
     <requestid>504920</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0d07d51ea010b63e5ddcf4e159dbbb28</srcmd5>
+    <version>0.16.0</version>
+    <time>1748277353</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1278676 from tinita
+
+- updated to 0.16.0 (0.016)
+   see /usr/share/doc/packages/perl-MooseX-Types-LoadableClass/Changes
+  0.016     2025-04-20 16:23:38Z
+    - remove unneeded call to -&gt;meta-&gt;make_immutable, now necessary with
+      MooseX::Types 0.51</comment>
+    <requestid>1279800</requestid>
+  </revision>
 </revisionlist>

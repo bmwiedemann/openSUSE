@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 21 05:36:42 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.16.0 (0.016)
+   see /usr/share/doc/packages/perl-MooseX-Types-LoadableClass/Changes
+
+  0.016     2025-04-20 16:23:38Z
+    - remove unneeded call to ->meta->make_immutable, now necessary with
+      MooseX::Types 0.51
+
+-------------------------------------------------------------------
 Sat Jun 17 05:56:42 UTC 2017 - coolo@suse.com
 
 - updated to 0.015

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MooseX-Types-LoadableClass
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-MooseX-Types-LoadableClass
-Version:        0.015
-Release:        0
 %define cpan_name MooseX-Types-LoadableClass
+Name:           perl-MooseX-Types-LoadableClass
+Version:        0.16.0
+Release:        0
+# 0.016 -> normalize -> 0.16.0
+%define cpan_version 0.016
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        ClassName type constraint with coercion to load the class
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/MooseX-Types-LoadableClass/
-Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Load)
-BuildRequires:  perl(Module::Build::Tiny) >= 0.034
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build::Tiny) >= 0.34.0
 BuildRequires:  perl(Module::Metadata)
 BuildRequires:  perl(Module::Runtime)
 BuildRequires:  perl(Moose)
@@ -41,11 +42,13 @@ BuildRequires:  perl(MooseX::Types::Moose)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(namespace::autoclean)
-BuildRequires:  perl(namespace::clean) >= 0.19
+BuildRequires:  perl(namespace::clean) >= 0.190
 Requires:       perl(Module::Runtime)
 Requires:       perl(MooseX::Types)
 Requires:       perl(MooseX::Types::Moose)
 Requires:       perl(namespace::autoclean)
+Provides:       perl(MooseX::Types::LoadableClass) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -60,10 +63,10 @@ of places.
 Now I don't have to.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Build.PL --installdirs=vendor
+perl Build.PL --installdirs=vendor
 ./Build build --flags=%{?_smp_mflags}
 
 %check
@@ -74,7 +77,7 @@ Now I don't have to.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes CONTRIBUTING LICENCE README
+%doc Changes CONTRIBUTING README
+%license LICENCE
 
 %changelog
