@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Fri May 23 04:57:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.6:
+  * fix: update import path for kubeconfig package to include
+    version suffix
+  * chore(go): retract versions prior to v2.2.6
+  * docs: update installation instructions and add Docker usage
+    details
+  * fix(go): add `/v2` suffix to module path for `go install`
+  * build(container): use distroless base image instead of alpine
+  * chore: update gitignore
+  * chore(mise): update renovate ( 40.16.0 → 40.17.0 )
+  * chore(mise): update renovate ( 40.15.0 → 40.16.0 )
+  * chore(mise): update renovate ( 40.14.6 → 40.15.0 )
+  * chore(mise): update renovate ( 40.14.5 → 40.14.6 )
+  * chore(mise): update renovate ( 40.14.4 → 40.14.5 )
+  * chore(mise): update renovate ( 40.14.3 → 40.14.4 )
+  * chore(mise): update renovate ( 40.14.2 → 40.14.3 )
+  * chore(mise): update renovate ( 40.14.1 → 40.14.2 )
+  * chore(mise): update renovate ( 40.14.0 → 40.14.1 )
+  * chore(mise): update renovate ( 40.13.1 → 40.14.0 )
+  * chore(mise): update renovate ( 40.13.0 → 40.13.1 )
+  * ci(github-action): update github/codeql-action ( v3.28.17 →
+    v3.28.18 )
+  * chore(mise): update renovate ( 40.12.3 → 40.13.0 )
+
+-------------------------------------------------------------------
+Wed May 21 05:23:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kubectl-switch: simple tool to help manage multiple
+  kubeconfig files

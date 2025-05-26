@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0f72ba7dace12f16e9769459375d2a2e</srcmd5>
+    <version>2.2.6</version>
+    <time>1748277476</time>
+    <user>anag_factory</user>
+    <comment>new package kubectl-switch: simple tool to help manage multiple kubeconfig files</comment>
+    <requestid>1279961</requestid>
+  </revision>
+</revisionlist>
