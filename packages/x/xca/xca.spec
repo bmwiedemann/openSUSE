@@ -26,27 +26,20 @@ Group:          Productivity/Networking/Security
 Summary(de):    Ein RSA-Schlüssel- und -Zertifikat-Managementprogramm
 URL:            https://www.hohnstaedt.de/xca/
 Source:         https://github.com/chris2511/xca/releases/download/RELEASE.%{version}/%{name}-%{version}.tar.gz
-%if 0%{?suse_version} <= 1600
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
-%else
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-linguist
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Help)
+BuildRequires:  cmake(Qt6Linguist)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Sql)
 BuildRequires:  cmake(Qt6Test)
-BuildRequires:  pkgconfig(Qt6Gui)
-BuildRequires:  pkgconfig(Qt6Help)
-BuildRequires:  pkgconfig(Qt6Linguist)
-BuildRequires:  pkgconfig(Qt6Sql)
-BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(openssl)
-#Requires:       libQt5Sql5-sqlite
+Requires:       qt6-sql-sqlite
 
 %description
 Graphical certification authority is an interface for managing RSA
@@ -82,20 +75,12 @@ Bash completion script for %{name}.
 %setup -q
 
 %build
-%if 0%{?suse_version} <= 1600
-export CC=gcc-12
-export CXX=g++-12
-%endif
-%if 0%{?suse_version} <= 1600
-%cmake
-%cmake_build
-%else
-%cmake xca
-%cmake_build
-%endif
+%cmake_qt6
+%qt6_build
 
 %install
-%cmake_install
+%qt6_install
+
 %fdupes %{buildroot}
 
 %files
