@@ -1929,4 +1929,12 @@ don't affect Linux. (forwarded request 1226975 from mgorse)</comment>
     <comment>will sync to SLE 15 again, and this simplifies the spec. (forwarded request 1270249 from dimstar)</comment>
     <requestid>1270250</requestid>
   </revision>
+  <revision rev="221" vrev="1">
+    <srcmd5>a3b3e93e864188b19f7b588278b87226</srcmd5>
+    <version>2.48.2</version>
+    <time>1748277132</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1279658</requestid>
+  </revision>
 </revisionlist>

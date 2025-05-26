@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May 18 12:05:40 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.48.2 (boo#1243282 boo#1243286 boo#1243288
+  boo#1243289 boo#1243424):
+  + Enable CSS Overscroll Behavior by default.
+  + Change threaded rendering implementation to use Skia API
+    instead of WebCore display list that is not thread safe.
+  + Fix rendering when device scale factor change comes before the
+    web view geometry update.
+  + Fix network process crash on exit.
+  + Fix the build with ENABLE_RESOURCE_USAGE=OFF.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2025-24223, CVE-2025-31204, CVE-2025-31205,
+    CVE-2025-31206, CVE-2025-31215, CVE-2025-31257.
+- Drop 8bee9eb9.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Wed Apr  9 18:11:08 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Remove conditionals related to SLE 15. It is unlikely that we
@@ -541,7 +558,8 @@ Fri Sep 15 19:04:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
     for data storage.
   + GBM is no longer required for WebGL implementation.
   + Security fixes: CVE-2023-39928, CVE-2023-41074, CVE-2023-32359,
-    CVE-2023-42890, CVE-2014-1745, CVE-2024-23226.
+    CVE-2023-42890, CVE-2014-1745, CVE-2024-23226, CVE-2023-42875,
+    CVE-2023-42970.
 
 -------------------------------------------------------------------
 Mon Sep 11 15:02:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
