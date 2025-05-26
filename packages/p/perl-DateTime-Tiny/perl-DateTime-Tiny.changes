@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 16 10:17:21 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.80.0 (1.08)
+   see /usr/share/doc/packages/perl-DateTime-Tiny/Changes
+
+  1.08      2025-04-15 07:14:23-04:00 America/New_York
+
+      - Fix tests with DateTime::Locale 1.33 and later
+
+-------------------------------------------------------------------
 Mon Apr 23 05:17:55 UTC 2018 - coolo@suse.com
 
 - updated to 1.07
