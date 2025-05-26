@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Wed May 21 10:19:36 UTC 2025 - Fuminobu TAKEYAMA <ftake@geeko.jp> - 2.31.5810.102
+
+- Upstream update to 2.31.5810.102
+  * Added 部首 annotation to the description (#1165)
+  * Added OOV words like インティマシー, PFAS
+  * Added romaji conversion rule from "tch" to "っ + ch".
+  * Updated the Zip code data as-of 2025-03-08.
+  * Added ".tsv" files to the default dictionary file types of the 
+    dictionary tool GUI
+  * Linux: fix the preedit string state when it's empty (#1174)
+  * Linux: fix configuration example for enabling JIS layout (#1237)
+- Upstream update to 2.31.5712.102
+  * Updated the LM dictionary
+  * Updated symbols (#1074, #1100)
+  * Updated emoji data to CLDR 46 (Emoji 16.0)
+  * Fixed conversion errors
+- Upstream update to 2.30.5618.102
+  * Updated zip code entries (#1063).
+  * Updated word entries (#1068, #1069)
+  * Linux: Enabled switching to the DIRECT mode from the menu (#1061)
+  * Linux: Enabled switching modes with Super+Space in Wayland
+    (#853, #1059)
+- Upstream update to 2.30.5595.102
+  * Added words based on the reports from contributors
+  * Updated the collocation data based on the reports from contributors
+- Upstream update to 2.30.5544.102
+  * Updated the word dictionary
+  * Added words based on the GitHub issues
+- Upstream update to 2.30.5520.102
+  * Improved the AD to Era conversion: "2024ねん" → "令和6年"
+  * Increased word vocabulary
+  * Updated the reading correction rules
+- Upstream update to 2.30.5490.102
+  * Added more symbol characters (#933)
+  * Added words of 対象内 / 対象外 by fixing the format error (#928)
+  * Fixed the crash issue on saving the user dictionary
+  * Fixed the crash issue on the debug build caused by converting
+    negative numbers (#878)
+- Upstream update to 2.30.5448.102
+  * Updated the word dictionary
+  * Improved the usability of era-to-ad conversion
+    (れいわ６ねん→2024年)
+  * Linux: Prevent executing multiple candidate windows (#912)
+- Upstream update to 2.30.5432.102
+  * Supported the conversion from "なう" to date/time
+    (i.e. 2024/12/31 23:59)
+  * Supported loading user dictionary files exported from Gboard
+  * Fixed voiced Katakana conversion from ゑ (ヸ → ヹ)
+  * Improved the about dialog with the dark mode (#897)
+  * Linux: Improved the candidate UI with HiDPI displays (#823)
+    * Remove ibus-mozc-candidate-window-qt-virtual-coordinate.patch
+      merged by the upstream
+- Upstream update to 2.29.5400.102
+  * Updated Emoji entries
+- Upstream update to 2.29.5346.102
+  * Updated the year to 2024
+  * Added 歲 (U+6B72) as a 旧字体 of 歳 (U+6B73) (#860)
+  * Updated the Emoji version to 15.1    
+- Upstream update to 2.29.5288.102
+  * Updated the word dictionary
+  * Adjusted the conversion with suffix numbers (e.g. 後に vs あと2).
+- Change the default Fcitx version to 5 for building
+- Update fcitx-mozc
+  * Refresh fcitx-mozc-bazel-build.patch
+- Fix file names of Fcitx5 icons
+  * Remove fcitx5-mozc-fix.patch
+- Migrate to Bazel Module
+  * Remove add-sha256sum-for-zipcode-archives.patch
+  * Remove support-python-3.6.patch
+  * Add use-system-python.patch
+  * Add use-system-python-3.12.patch
+
+-------------------------------------------------------------------
 Sat Feb 24 05:36:36 UTC 2024 - Fuminobu Takeyama <ftake@geeko.jp> - 2.29.5268.102
 
 - Upstream update to 2.29.5268

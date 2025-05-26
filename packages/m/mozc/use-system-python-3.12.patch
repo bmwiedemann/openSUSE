@@ -1,0 +1,55 @@
+diff --git a/src/MODULE.bazel b/src/MODULE.bazel
+index e432cdd16..a2019fd48 100644
+--- a/src/MODULE.bazel
++++ b/src/MODULE.bazel
+@@ -314,3 +314,5 @@ http_archive(
+     sha256 = "1c56e79ff4c7f709778e0bf4dfbffdf939efd170845feccae986d22cf4373988",
+     url = "https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/6ece210081fb73d0ea4a5ea8e13ac9584d03fd76/jigyosyo.zip",
+ )
++
++register_toolchains("//python_toolchain:all")
+diff --git a/src/python_toolchain/BUILD.bazel b/src/python_toolchain/BUILD.bazel
+new file mode 100644
+index 000000000..7e27670ea
+--- /dev/null
++++ b/src/python_toolchain/BUILD.bazel
+@@ -0,0 +1,39 @@
++package(default_visibility = ["//visibility:public"])
++
++load("@rules_python//python/cc:py_cc_toolchain.bzl", "py_cc_toolchain")
++load("@rules_python//python:py_exec_tools_toolchain.bzl", "py_exec_tools_toolchain")
++load("@rules_python//python:py_runtime.bzl", "py_runtime")
++load("@rules_python//python:py_runtime_pair.bzl", "py_runtime_pair")
++
++py_runtime(
++    name = "runtime",
++    interpreter_path = "/usr/bin/python3.12",
++    python_version = "PY3",
++)
++
++py_runtime_pair(
++    name = "runtime_pair",
++    py3_runtime = ":runtime",
++)
++
++py_exec_tools_toolchain(
++    name = "exec_tools_toolchain_impl",
++    exec_interpreter = None,
++)
++
++toolchain(
++    name = "runtime_toolchain",
++    toolchain = ":runtime_pair",
++    toolchain_type = "@rules_python//python:toolchain_type",
++)
++toolchain(
++    name = "py_cc_toolchain",
++    toolchain = "//toolchain_impl:py_cc_toolchain_impl",
++    toolchain_type = "@rules_python//python/cc:toolchain_type",
++)
++
++toolchain(
++    name = "py_exec_tools_toolchain",
++    toolchain = ":exec_tools_toolchain_impl",
++    toolchain_type = "@rules_python//python:exec_tools_toolchain_type",
++)
