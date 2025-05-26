@@ -443,4 +443,12 @@ Feel free to revert the update to submit it to Factory or to leave the request o
     <comment>Prepare for RPM 4.20 (forwarded request 1150690 from dimstar)</comment>
     <requestid>1150744</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>7366b38e821458a31508a835a6fb0a91</srcmd5>
+    <version>1.3.11</version>
+    <time>1748277119</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1279319</requestid>
+  </revision>
 </revisionlist>

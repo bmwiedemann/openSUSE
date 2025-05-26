@@ -1,8 +1,8 @@
 Index: makeinclude.in
 ===================================================================
---- makeinclude.in.orig
-+++ makeinclude.in
-@@ -130,9 +130,6 @@ INSTALL_SCRIPT	= $(INSTALL) -m 755
+--- a/makeinclude.in
++++ b/makeinclude.in
+@@ -144,9 +144,6 @@ INSTALL_SCRIPT	= $(INSTALL) -m 755
  INSTALL_DESKTOP	= @INSTALL_DESKTOP@
  UNINSTALL_DESKTOP = @UNINSTALL_DESKTOP@
  

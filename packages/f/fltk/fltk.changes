@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 15 15:11:56 UTC 2025 - pgajdos@suse.com
+
+- version update to 1.3.11
+  FLTK 1.3.11 is a maintenance release with fixes and enhancements.
+  No further releases are planned for the 1.3.x series. Please
+  consider updating to FLTK 1.4 or higher.
+  * Fix potential crash when backspace is typed in a menu (#1155)
+  * Fluid: output version for -v and --version command line args
+  * Fix Fl_Table_Row inconsistencies (#1187)
+  * Fix "Full screen broken on macOS in FLTK 1.3.10" (#1192),
+        improve transitions between fullscreen modes
+  * Fix potential buffer overflow in Fl_Help_View (#1196)
+  * Fix crash in test/fullscreen under macOS
+- modified patches
+  % fltk-1.3.2-verbose_build.patch (refreshed)
+
+-------------------------------------------------------------------
 Mon Feb 26 08:39:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

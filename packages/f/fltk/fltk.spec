@@ -1,7 +1,7 @@
 #
 # spec file for package fltk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define libname libfltk1_3
 Name:           fltk
-Version:        1.3.9
+Version:        1.3.11
 Release:        0
 Summary:        C++ GUI Toolkit for the X Window System, OpenGL, and WIN32
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.fltk.org/
-Source0:        https://www.fltk.org/pub/fltk/%{version}/fltk-%{version}-source.tar.bz2
+Source0:        https://github.com/fltk/fltk/releases/download/release-%{version}/fltk-%{version}-source.tar.bz2
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM fltk-1.3.4-fltk_config.patch tchvatal@suse.com -- obey libdir and other options in fltk-config taken from Fedora
 Patch0:         fltk-1.3.4-fltk_config.patch
@@ -87,9 +87,7 @@ OpenGL, and Microsoft Windows NT 4.0, 95, or 98. The
 installation of this package requires a 3D library such as Mesa.
 
 %prep
-%setup -q
-%patch -P 0 -p1
-%patch -P 2
+%autosetup -p1
 
 %build
 %configure \
