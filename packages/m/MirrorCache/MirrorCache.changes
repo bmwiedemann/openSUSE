@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 16 09:24:29 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.094:
+  * Cleanup agg_download_pkg (#589)
+  * Add BACKSTAGE_QUEUE parameter to backstage startup scripts (#583)
+  * Shard background jobs (#582)
+  * Fix workflow test-salt-package-from-obs (#578)
+  * Show package download statistics for month and week (#577)
+
+-------------------------------------------------------------------
 Wed Mar 26 12:16:45 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.093:
