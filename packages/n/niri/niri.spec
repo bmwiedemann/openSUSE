@@ -79,8 +79,20 @@ install -Dm644 -t %{buildroot}%{_datadir}/wayland-sessions resources/niri.deskto
 install -Dm644 -t %{buildroot}%{_datadir}/xdg-desktop-portal resources/niri-portals.conf
 install -Dm644 -t %{buildroot}%{_userunitdir} resources/niri{.service,-shutdown.target}
 
-%check
+comp="target/release/%{name} completions"
+$comp bash > "target/release/%{name}.bash"
+$comp fish > "target/release/%{name}.fish"
+$comp zsh > "target/release/_%{name}"
+
+install -Dm644 target/release/%{name}.bash -t \
+    %{buildroot}%{_datadir}/bash-completion/completions
+install -Dm644 target/release/%{name}.fish -t \
+    %{buildroot}%{_datadir}/fish/vendor_completions.d
+install -Dm644 target/release/_%{name} -t \
+    %{buildroot}%{_datadir}/zsh/site-functions
+
 %if %{with test}
+%check
 %cargo_test -- --workspace --exclude niri-visual-tests
 %endif
 
@@ -95,5 +107,8 @@ install -Dm644 -t %{buildroot}%{_userunitdir} resources/niri{.service,-shutdown.
 %{_datadir}/xdg-desktop-portal/niri-portals.conf
 %{_userunitdir}/niri.service
 %{_userunitdir}/niri-shutdown.target
+%{_datadir}/bash-completion/completions
+%{_datadir}/fish
+%{_datadir}/zsh
 
 %changelog
