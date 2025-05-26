@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 23 11:48:24 UTC 2025 - Wolfgang Engel <wolfgang.engel@suse.com>
+
+- Cleanup part in spec file where build for SLE-15-SP6 and above
+  is defined to make if condition more robust
+
+-------------------------------------------------------------------
+Wed May 21 18:42:55 UTC 2025 - Wolfgang Engel <wolfgang.engel@suse.com>
+
+- Allow to build for Package Hub for SLE-15-SP7 
+  (openSUSE:Backports:SLE-15-SP7) with g++-12/gcc-12
+  by checking for sle_version >= 150600 in spec file (bsc#1243438)
+
+-------------------------------------------------------------------
 Sat May 17 13:57:41 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.7.0:

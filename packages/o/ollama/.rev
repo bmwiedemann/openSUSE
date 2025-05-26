@@ -450,4 +450,17 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   * Various bug fixes and performance enhancements</comment>
     <requestid>1278142</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>e71a6525161995b875cd9766a7babd55</srcmd5>
+    <version>0.7.0</version>
+    <time>1748277157</time>
+    <user>anag_factory</user>
+    <comment>- Cleanup part in spec file where build for SLE-15-SP6 and above
+  is defined to make if condition more robust
+
+- Allow to build for Package Hub for SLE-15-SP7 
+  (openSUSE:Backports:SLE-15-SP7) with g++-12/gcc-12
+  by checking for sle_version &gt;= 150600 in spec file (bsc#1243438)</comment>
+    <requestid>1279778</requestid>
+  </revision>
 </revisionlist>

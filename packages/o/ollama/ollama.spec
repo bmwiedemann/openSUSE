@@ -16,6 +16,10 @@
 #
 
 
+%if 0%{?sle_version} && 0%{?sle_version} >= 150600
+%global force_gcc_version 12
+%endif
+
 Name:           ollama
 Version:        0.7.0
 Release:        0
@@ -37,11 +41,12 @@ Requires(pre):  %fillup_prereq
 # 32bit seems not to be supported anymore
 ExcludeArch:    %{ix86} %{arm}
 %sysusers_requires
-%if 0%{?sle_version} == 150600
-BuildRequires:  gcc12-c++
-BuildRequires:  libstdc++6-gcc12
+%if 0%{?force_gcc_version}
+BuildRequires:  gcc%{?force_gcc_version}-c++
+BuildRequires:  libstdc++6-gcc%{?force_gcc_version}
 %else
 BuildRequires:  gcc-c++ >= 11.4.0
+BuildRequires:  libstdc++6
 %endif
 
 %description
@@ -63,9 +68,9 @@ can be imported.
 %ifnarch ppc64
 export GOFLAGS="-buildmode=pie -mod=vendor"
 %endif
-%if 0%{?sle_version} == 150600
-export CXX=g++-12
-export CC=gcc-12
+%if 0%{?force_gcc_version}
+export CXX="g++-%{?force_gcc_version}"
+export CC="gcc-%{?force_gcc_version}"
 # pie doesn't work with gcc12 on leap
 export GOFLAGS="-mod=vendor"
 %endif
@@ -91,9 +96,9 @@ mkdir -p "%{buildroot}/%{_docdir}/%{name}"
 cp -Ra docs/* "%{buildroot}/%{_docdir}/%{name}"
 
 %check
-%if 0%{?sle_version} == 150600
-export CXX=g++-12
-export CC=gcc-12
+%if 0%{?force_gcc_version}
+export CXX="g++-%{?force_gcc_version}"
+export CC="gcc-%{?force_gcc_version}"
 # pie doesn't work with gcc12 on leap
 export GOFLAGS="-mod=vendor"
 %endif
