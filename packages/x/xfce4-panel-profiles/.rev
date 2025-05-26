@@ -64,4 +64,27 @@
     <comment></comment>
     <requestid>1234318</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2c607260888c642c28a3302fafe3a5b6</srcmd5>
+    <version>1.1.1</version>
+    <time>1748277216</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.1
+  - build: Allow skip checking runtime dependencies
+  - Parameterize version and copyright year in man page
+  - Bump version in configure
+- Update to version 1.1.0
+  - Update README after switchover to meson
+  - build: Automate copyright year management
+  - org.xfce.PanelProfiles.desktop: Unbreak desktop-file-validate
+  - build: Require libxfce4ui 4.16.0
+  - Add about dialog
+  - Add meson build
+  - Deprecated exo with libxfce4ui 4.21.0 
+  - I18n: Update po/LINGUAS list
+  - Save and restore launchers as is
+  - Translation Updates
+- Removed obsolete Libxfce4ui.patch (forwarded request 1279461 from mauriziogalli)</comment>
+    <requestid>1279466</requestid>
+  </revision>
 </revisionlist>

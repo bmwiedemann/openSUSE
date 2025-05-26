@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-panel-profiles
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,30 @@
 #
 
 
+%define xfce_version 4.16
 Name:           xfce4-panel-profiles
-Version:        1.0.15
+Version:        1.1.1
 Release:        0
 Summary:        Simple application to manage Xfce panel layouts
 License:        GPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://git.xfce.org/apps/xfce4-panel-profiles/about/
 #Git-Clone:     https://gitlab.xfce.org/apps/xfce4-panel-profiles.git
-Source:         https://archive.xfce.org/src/apps/xfce4-panel-profiles/1.0/%{name}-%{version}.tar.bz2
-# PATCH-FEATURE-OPENSUSE Libxfce4ui.patch maurizio.galli@gmail.com -- OBS gets confused which typelib to require as dependency and we only need Libxfce4ui
-Patch0:         Libxfce4ui.patch
+Source:         https://archive.xfce.org/src/apps/xfce4-panel-profiles/1.1/%{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  findutils
 BuildRequires:  gobject-introspection
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  python3
 BuildRequires:  python3-base
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
-BuildRequires:  sed
-BuildRequires:  xfce4-panel
+BuildRequires:  python3-psutil
+BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{xfce_version}
+BuildRequires:  pkgconfig(libxfce4ui-2) >= %{xfce_version}
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{xfce_version}
 Requires:       python3
 Requires:       python3-base
 Requires:       python3-gobject
@@ -55,22 +59,11 @@ This tool makes it possible to backup, restore, import, and export panel layouts
 %autosetup -p1
 
 %build
-# configure macro not working due to it using unsupported options
-./configure \
-    --prefix=%{_prefix} \
-    --python=python3
-%make_build
+%meson
+%meson_build
 
 %install
-# fix shebangs - convert to /usr/bin/python3
-for dir in %{name}; do
-    # find *.py, filter to files that contain bad shebangs
-    find $dir -name '*.py' -type f -print0 \
-        | xargs -0 grep -lE '^#!%{_bindir}/env' \
-        | xargs sed -i '1s|#!%{_bindir}/env\>|#!%{_bindir}/python3|'
-
-done
-%make_install
+%meson_install
 
 # Remove not needed doc files
 rm %{buildroot}%{_datadir}/doc/%{name}/{AUTHORS,COPYING,INSTALL,NEWS,README.md}
