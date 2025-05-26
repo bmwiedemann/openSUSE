@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 21 16:27:11 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Upgrade to Elixir 1.18.4:
+  * Changelog available at https://hexdocs.pm/elixir/1.18.4/changelog.html
+
+-------------------------------------------------------------------
 Fri Mar  7 09:56:17 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Upgrade to Elixir 1.18.3:
@@ -3284,7 +3290,7 @@ Thu Feb  6 07:51:55 UTC 2014 - matwey.kornilov@gmail.com
   - see CHANGELOG.md for backward incompatibilities
 
 -------------------------------------------------------------------
-Sun Dec 29 16:25:59 FET 2013 - gonzih@gmail.com
+Sun Dec 29 13:25:59 UTC 2013 - gonzih@gmail.com
 
 - Update to 0.12.0
 

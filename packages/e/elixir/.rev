@@ -309,4 +309,12 @@
 </comment>
     <requestid>1251261</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>fec3eeaa2116d450427a5bc09628f429</srcmd5>
+    <version>1.18.4</version>
+    <time>1748277232</time>
+    <user>anag_factory</user>
+    <comment>Fix to the offending changes file</comment>
+    <requestid>1279512</requestid>
+  </revision>
 </revisionlist>
