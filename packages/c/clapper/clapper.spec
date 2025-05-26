@@ -46,7 +46,6 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  gcc
 BuildRequires:  gobject-introspection
 BuildRequires:  meson >= %{meson_version}
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib2_version}
 BuildRequires:  pkgconfig(gio-unix-2.0) >= %{glib2_version}
@@ -158,7 +157,6 @@ lib%{name}.
 
 %install
 %meson_install
-%suse_update_desktop_file %{uuid}
 
 %find_lang %{name}-app
 %find_lang %{name}-gtk
