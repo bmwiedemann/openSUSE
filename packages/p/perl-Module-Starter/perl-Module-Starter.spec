@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-Starter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-Name:           perl-Module-Starter
-Version:        1.77
-Release:        0
 %define cpan_name Module-Starter
-Summary:        Simple starter kit for any module
+Name:           perl-Module-Starter
+Version:        1.780.0
+Release:        0
+# 1.78 -> normalize -> 1.780.0
+%define cpan_version 1.78
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Simple starter kit for any module
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Runtime)
@@ -40,6 +40,12 @@ Requires:       perl(Software::License) >= 0.103005
 Requires:       perl(Test::More) >= 0.94
 Requires:       perl(parent)
 Requires:       perl(version) >= 0.77
+Provides:       perl(Module::Starter) = %{version}
+Provides:       perl(Module::Starter::App) = %{version}
+Provides:       perl(Module::Starter::BuilderSet) = %{version}
+Provides:       perl(Module::Starter::Plugin::Template) = %{version}
+Provides:       perl(Module::Starter::Simple) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -52,11 +58,11 @@ basic builder scripts, tests, documentation, and module code. This is done
 through just one method, 'create_distro'.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -67,8 +73,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes CONTRIBUTING.md getting-started.html prereqs.yml README
+%doc Changes CONTRIBUTING.md getting-started.html README
 %license LICENSE
 
 %changelog
