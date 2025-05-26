@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 22 11:28:58 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1747913329.a855b3a:
+  * t: Catch output in 23-baseclass.t
+  * ci: Ensure 100% coverage without threshold
+  * Fix coverage for package statements
+  * Create link to the common prove_wrapper
+  * Sync os-autoinst-common with the subrepo external/os-autoinst-common
+  * Try to increase pipe size for external video encoder
+  * Avoid warning about uninitialized value
+  * video_stream: add RGB<->BGR swapping support
+  * t: fix frame format used in video_stream
+  * video_stream: use ustreamer --persistent
+  * tinycv: scale starting search position if size is different
+  * Avoid sporadic test failures of fullstack test
+
+-------------------------------------------------------------------
 Thu Apr 24 15:52:23 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1745509934.49afb50:
