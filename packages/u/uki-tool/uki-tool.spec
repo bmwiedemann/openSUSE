@@ -20,7 +20,7 @@
 %define bin_name uki-tool
 
 Name:           uki-tool
-Version:        1.4.2+0.g1e31f3f
+Version:        1.5.0+1.g563332e
 Release:        0
 Summary:        Tool for the UKI and static-initrd project
 License:        MIT

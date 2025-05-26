@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>1250021</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f393309c59fe83cf6e067fcbe90b640a</srcmd5>
+    <version>1.5.0+1.g563332e</version>
+    <time>1748277315</time>
+    <user>anag_factory</user>
+    <comment>Release to 1.5.0 with SC2048 fix</comment>
+    <requestid>1279737</requestid>
+  </revision>
 </revisionlist>

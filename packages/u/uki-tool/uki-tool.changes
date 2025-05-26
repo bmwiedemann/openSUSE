@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat May 24 09:37:15 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to version 1.5.0+1.g563332e:
+  * fix SC2086 in common
+  * Release 1.5.0
+  * sdboot: remove entry only for installed uki
+  * sdboot: do not break with old version
+  * bootloader: remove carefully installed uki.
+  * snapper: add uki ver in conf for sorting entries
+  * add quiet verb
+  * sdboot: apply sort-key and version id
+  * common: improve getting data from uki
+  * sdboot: fix conf filename
+  * snapper: Improve uki snapshots entries
+  * bootloaders: trust uki's uname for kerver
+  * bootloader menu-entries pretty_name
+  * snapper: improve the snapper plugin
+  * common: install/remove uki extra dir
+  * fix: grub2: grep menuentry id
+  * bootloader: take the uki path for removing entry
+  * Add version argument
+
+-------------------------------------------------------------------
 Mon Mar 03 15:41:47 UTC 2025 - valentin.lefebvre@suse.com
 
 - Update to version 1.4.2+0.g1e31f3f:
