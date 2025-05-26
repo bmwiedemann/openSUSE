@@ -1,0 +1,11 @@
+--- guava-33.4.8/guava/src/module-info.java	2025-05-01 08:51:02.371894486 +0200
++++ guava-33.4.8/guava/src/module-info.java	2025-05-01 14:03:49.986207132 +0200
+@@ -17,7 +17,7 @@
+ /** Google Guava */
+ module com.google.common {
+   requires java.logging;
+-  requires transitive com.google.common.util.concurrent.internal;
++  // requires transitive com.google.common.util.concurrent.internal;
+   requires static jdk.unsupported;
+   requires static com.google.errorprone.annotations;
+   requires static com.google.j2objc.annotations;

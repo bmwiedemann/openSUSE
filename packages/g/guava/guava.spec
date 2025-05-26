@@ -1,7 +1,7 @@
 #
 # spec file for package guava
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           guava
-Version:        33.2.1
+Version:        33.4.8
 Release:        0
 Summary:        Google Core Libraries for Java
 License:        Apache-2.0 AND CC0-1.0
@@ -25,14 +25,16 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/google/guava
 Source0:        https://github.com/google/guava/archive/v%{version}.tar.gz
 Source1:        %{name}-build.tar.xz
+Patch0:         guava-modules-fix.patch
 BuildRequires:  ant
-BuildRequires:  checker-qual
 BuildRequires:  fdupes
 BuildRequires:  google-errorprone-annotations >= 2.21.0
 BuildRequires:  j2objc-annotations
 BuildRequires:  javapackages-local >= 6
+BuildRequires:  jspecify
 BuildRequires:  jsr-305
 BuildRequires:  junit
+BuildRequires:  jurand
 BuildArch:      noarch
 
 %description
@@ -59,6 +61,7 @@ guava-testlib provides additional functionality for conveninent unit testing
 
 %prep
 %setup -q -a1
+%patch -P 0 -p1
 
 find . -name '*.jar' -delete
 
@@ -74,7 +77,7 @@ find . -name '*.jar' -delete
 
 %build
 mkdir -p lib
-build-jar-repository -s lib junit jsr-305 google-errorprone/annotations checker-qual j2objc-annotations
+build-jar-repository -s lib junit jsr-305 google-errorprone/annotations j2objc-annotations jspecify
 %{ant} -Dproject.version=%{version} -Dtest.skip=true package javadoc
 
 %install

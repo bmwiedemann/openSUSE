@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Mon May 26 07:45:08 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to guava 33.4.8
+  * Changes of version 33.4.8
+    + util.concurrent: Removed our VarHandle code from
+      guava-android. While the code was never used at runtime under
+      Android, it was causing problems under the Android Gradle
+      Plugin with a minSdkVersion below 26. To continue to avoid
+      sun.misc.Unsafe under the JVM, guava-android will now always
+      use AtomicReferenceFieldUpdater when run there.
+  * Changes of version 33.4.7
+    + Modified the guava module's dependency on failureaccess to be
+      transitive. Also, modified the guava-testlib module to make
+      its dependency on guava transitive, to remove its dependency
+      on failureaccess, and to add a dependency (transitive) on
+      junit.
+    + util.concurrent: Modified our fast paths to ensure that they
+      continue to work when run through optimizers, such as those
+      commonly used by Android apps. This fixes problems that some
+      users may have seen since Guava 33.4.5.
+    + util.concurrent: Changed the guava-android copy of
+      AbstractFuture to try VarHandle before Unsafe, eliminating a
+      warning under newer JDKs.
+  * Changes of version 33.4.6
+    + Removed the extra copy of each class from the Guava jar. The
+      extra copies were an accidental addition from the
+      modularization work in Guava 33.4.5.
+    + Fixed annotation-related warnings when using Guava in modular
+      builds. The most common such warning is Cannot find annotation
+      method 'value()' in type 'DoNotMock': ....
+  * Changes of version 33.4.5
+    + Changed the Guava jar (plus guava-testlib and failureaccess
+      jars) to be a modular jar.
+    + Changed various classes to stop using sun.misc.Unsafe under
+      Java 9+.
+      ° Note that, if you use guava-android on the JVM (instead of
+        using guava-jre), Guava will still try to use
+        sun.misc.Unsafe. We will do further work on this in the
+        future.
+    + Belatedly updated the Public Suffix List data.
+  * Changes of version 33.4.4
+    + Migrated from Checker Framework annotations to JSpecify
+      annotations.
+    + Made our usages of nullness annotations available in our GWT
+      artifact. GWT users will need to upgrade to GWT 2.12.1, which
+      makes GWT as tolerant of Java 8 type-use annotations as it is
+      of other annotations.
+  * Changes of version 33.4.3
+    + Migrated from @CheckForNull to the Checker Framework
+      @Nullable. Most tools recognize both annotations, so we expect
+      this to be a no-op in almost all cases. This release removes
+      our dependency on JSR-305.
+  * Changes of version 33.4.2
+    + Changed @ParametricNullness into a no-op for Kotlin and
+      IntelliJ. Before now, it was forcing many usages of type
+      variables to have platform types, which meant that Kotlin
+      couldn't check those usages for nullness errors. With this
+      change, Kotlin can detect more errors.
+  * Changes of version 33.4.1
+    + Replaced our custom @ElementTypesAreNonnullByDefault
+      annotations with the JSpecify @NullMarked annotation.
+  * Changes of version 33.4.0
+    + Exposed additional Java 8 APIs to Android users.
+    + base: Deprecated Charsets constants in favor of
+      StandardCharsets. We will not remove the constants, but we
+      recommend using StandardCharsets for consistency.
+    + base: Added ToStringHelper.omitEmptyValues().
+    + collect: Added an optimized copyOf method to TreeRangeMap.
+    + collect.testing: Fixed @Require annotations so that features
+      implied by absent features are not also required to be absent.
+    + io: Changed ByteSink and CharSink to no longer call flush() in
+      some cases before close(). This is a no-op for well-behaved
+      streams, which internally flush their data as part of closing.
+      However, we have discovered some stream implementations that
+      have overridden close() to do nothing, including not to flush
+      some buffered data. If this change causes problems, the
+      simplest fix is usually to change the close() override to at
+      least call flush().
+    + net: Added HttpHeaders.ALT_SVC and MediaType.CBOR.
+  * Changes of version 33.3.1
+    + Added j2objc-annotations to the Gradle runtime classpath to
+      stop producing an Android Gradle Plugin error.
+  * Changes of version 33.3.0
+    + base: Removed @Beta from the Duration overload of
+      Suppliers.memoizeWithExpiration.
+    + cache: Added CacheBuilder Duration overloads to guava-android.
+    + collect: Removed @Beta from the guava-android Collector APIs.
+    + collect: Added ImmutableMultimap.builderWithExpectedKeys and
+      ImmutableMultimap.Builder.expectedValuesPerKey.
+    + graph: Improved Graphs.hasCycle to avoid causing
+      StackOverflowError for long paths.
+    + net: Added text/markdown to MediaType.
+    + net: Deprecated HttpHeaders constant for Sec-Ch-UA-Form-Factor
+      in favor of Sec-Ch-UA-Form-Factors to follow the latest spec.
+    + testing: Changed some test libraries to throw AssertionError
+      (instead of the more specific AssertionFailedError) in some
+      cases.
+- Added patch:
+  * guava-modules-fix.patch
+    + we are folding the failureaccess into the main guava.jar, so
+      we don't have a special module for it.
+
+-------------------------------------------------------------------
 Wed Oct 30 08:49:24 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add aliases for the failureaccess and listenablefuture
