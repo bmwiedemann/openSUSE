@@ -24,7 +24,7 @@ FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends MozillaFirefox xorg-x11-fonts libpulse0 MozillaFirefox-branding-openSUSE
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends MozillaFirefox xorg-x11-fonts libpulse0 MozillaFirefox-branding-openSUSE libavcodec58_134
 RUN set -euo pipefail; useradd -m user -u 1000
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
