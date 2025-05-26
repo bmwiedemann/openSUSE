@@ -1,4 +1,141 @@
 -------------------------------------------------------------------
+Thu May  1 05:35:26 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.008002
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  2.008002	2025-04-30
+   [ Bug Fixes ]
+   - MooseX-Types 0.51 broke Type::Tiny's ability to reliably detect if Moose
+     types were being used. This release fixes that.
+     Graham Knop++
+  2.008001	2025-04-15
+   [ Bug Fixes ]
+   - The Optional type constraint on its own, will now be treated the same as
+     Optional[Any]. Previously when used for named parameters, it would fail
+     to generate predicate methods.
+  2.008000	2025-03-31
+   [ Packaging ]
+   - Repackaged with a stable version number.
+  2.007_010	2025-03-23
+   [ Bug Fixes ]
+   - Warnings for unknown Type::Params signature options introduced in
+     2.007_008 broke Mite, which passes it a `is_wrapper` option and checks
+     no warnings are thrown in its test suite. That option is now silently
+     allowed, even though Type::Params makes no use of it.
+     <https://metacpan.org/dist/Mite>
+  2.007_009	2025-03-21
+   [ Bug Fixes ]
+   - Warnings for unknown Type::Params signature options introduced in
+     2.007_008 broke Mite, which passes it a `mite_signature` option and
+     checks no warnings are thrown in its test suite. That option is now
+     silently allowed, even though Type::Params makes no use of it.
+     <https://metacpan.org/dist/Mite>
+   [ Documentation ]
+   - Fix documentation for the coercion_generator attribute of Type::Tiny.
+   [ Other ]
+   - Added: Type::Params now has a per-parameter `default_on_undef` option.
+   - Added: Types::Standard::ArrayRef can now export shortcuts for
+     parameterized versions of the ArrayRef type constraint.
+   - Added: Types::Standard::CycleTuple can now export shortcuts for
+     parameterized versions of the CycleTuple type constraint.
+   - Added: Types::Standard::Dict can now export shortcuts for parameterized
+     versions of the Dict type constraint.
+   - Added: Types::Standard::HashRef can now export shortcuts for
+     parameterized versions of the HashRef type constraint.
+   - Added: Types::Standard::Map can now export shortcuts for parameterized
+     versions of the Map type constraint.
+   - Added: Types::Standard::ScalarRef can now export shortcuts for
+     parameterized versions of the ScalarRef type constraint.
+   - Added: Types::Standard::StrMatch can now export shortcuts for
+     parameterized versions of the StrMatch type constraint.
+   - Added: Types::Standard::Tuple can now export shortcuts for parameterized
+     versions of the Tuple type constraint.
+   - Added: When creating 'multi' signatures with Type::Params, the different
+     alternatives can now be given a string identifier.
+  2.007_008	2025-03-20
+   [ Bug Fixes ]
+   - Expressing return types for Type::Params as strings now works as
+     documented.
+   [ Documentation ]
+   - Use Perl's new `try` feature instead of Try::Tiny in SYNOPSIS for
+     Error::TypeTiny.
+   [ Test Suite ]
+   - Improved tests for the `ArgsObject` type constraint which is optionally
+     exported by Type::Params.
+   - Improved tests for the `goto_next` feature of Type::Params.
+   [ Other ]
+   - Added: Error::TypeTiny::WrongNumberOfParameters now has a `target`
+     attribute indicating what thing you provided the wrong number of
+     parameters for.
+   - Added: There's now a
+     Type::Tiny::check_parameter_count_for_parameterized_type utility
+     function intended to be used for parameterizable types to throw an error
+     when parameterized with the wrong number of parameters.
+   - Parameterizable types defined by Types::Standard, Types::Common::String,
+     Types::Common::Numeric, and Type::Params will throw an
+     Error::TypeTiny::WrongNumberOfParameters exception if parameterized with
+     the wrong number of parameters.
+   - Passing unknown options to Type::Params functions will now result in
+     warnings.
+  2.007_007	2025-03-18
+   [ Bug Fixes ]
+   - Localize $@ before stringifying Error::TypeTiny objects.
+     Karen Etheridge++
+  2.007_006	2025-03-14
+   - Added: Types::Standard::Dict::combine() function.
+     Branislav Zahradník++
+   - Type::Params named_to_list option now accepts blessed boolean objects.
+     Certain other options should be more permissive accepting them too.
+     XSven++
+   - Types::TypeTiny::BoolLike now accepts boolean.pm's bools.
+     Benct Philip Jonsson++
+  2.007_005	2025-03-07
+   [ Documentation ]
+   - Minor fixes and improvements for `Type::Params` documentation.
+  2.007_004	2025-03-07
+   [ Bug Fixes ]
+   - Avoid the `//` operator in `Type::Params::Parameter` as it isn't
+     supported in Perl 5.8. Fixes bug introduced in 2.007_003.
+   - Use `List::Util::sum` instead of `List::Util::sum0` which doesn't exist
+     in some older versions of List::Util. Fixes bug introduced in 2.007_003.
+   [ Documentation ]
+   - Major rewrite of `Type::Params` documentation to prioritize
+     `signature_for` and modern Perl, and some corresponding adjustments to
+     `Type::Tiny::Manual`.
+   [ Other ]
+   - The `goto_next` option in `Type::Params` is now just called `next`. The
+     original name is still supported for backwards compatibility.
+  2.007_003	2025-03-06
+   [ Documentation ]
+   - Minor pod fixed and improvements.
+   - Update copyright dates to 2025.
+   [ Other ]
+   - Added: New Type::Params feature allow_dash automatically supports `-foo`
+     as an alias for `foo`.
+   - Added: New Type::Params feature list_to_named automatically extracts
+     named parameters from a list of positional arguments.
+   - Added: Type::Params optionally exports two shortcut keywords:
+     `signature_for_func` and `signature_for_method`. The exact behaviour of
+     these may change in the future.
+  2.007_002	2024-12-23
+   [ Documentation ]
+   - Update most examples to use features (postfix derefs, sub signatures)
+     from more modern versions of Perl that allow for cleaner, tidier code.
+  2.007_001	2024-11-24
+   [ Bug Fixes ]
+   - If Perl has been built with -Dusequadmath then cowardly refuse to use
+     Type::Tiny::XS's implementation of is_Int.
+     Andreas J König++
+  2.007_000	2024-10-20
+   - Added: The `signature_for` function in Type::Params now includes most of
+     the functionality of Return::Type (a separate CPAN distribution not
+     bundled with Type::Tiny).
+   - Added: The `signature_for` function in Type::Params now returns a value,
+     though in most contexts you'll probably want to call it in void context
+     anyway.
+
+-------------------------------------------------------------------
 Mon Sep 30 05:34:15 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.006000
