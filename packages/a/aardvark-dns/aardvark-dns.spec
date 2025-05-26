@@ -17,16 +17,15 @@
 
 
 Name:           aardvark-dns
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        Authoritative dns server for A/AAAA container records
 License:        Apache-2.0
 URL:            https://github.com/containers/%{name}
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
-BuildRequires:  rust+cargo >= 1.70
-# Disable this line if you wish to support all platforms.
 
 %description
 Aardvark-dns is an authoritative dns server for A/AAAA container records.

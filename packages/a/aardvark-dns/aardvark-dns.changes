@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue May 20 05:15:12 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 1.15.0:
+  * release v1.15.0
+  * release notes for v1.15.0
+  * github: add automatic release action
+  * deps: update nix to 0.30.1
+  * fix(deps): update rust crate tokio to 1.45.0
+  * fix(deps): update hickory-dns monorepo to 0.25.2
+  * Makefile: use cargo --locked in CI
+  * ci: ensure tree is clean after build
+  * fix(deps): update rust crate clap to ~4.5.37
+  * chore(deps): update rust crate chrono to 0.4.41
+  * chore(deps): update dependency containers/automation_images to v20250422
+  * fix(deps): update rust crate libc to 0.2.172
+  * .github: check_cirrus_cron work around github bug
+  * fix(deps): update rust crate tokio to 1.44.2
+  * update hickory to 0.25.1
+  * fix(deps): update rust crate clap to ~4.5.34
+  * Add link to c/common contributor's guide
+  * chore(deps): update dependency containers/automation_images to v20250324
+  * update log to 0.4.27
+  * fix(deps): update rust crate tokio to 1.44.1
+  * test: use ncat not nc
+  * fix(deps): update rust crate libc to 0.2.171
+  * fix(deps): update rust crate tokio to 1.44.0
+  * .github: remove cirrus rerun action
+  * fix(deps): update rust crate clap to ~4.5.31
+  * [skip-ci] RPM: fix gating.yaml
+  * chore(deps): update rust crate chrono to 0.4.40
+  * fix(deps): update rust crate log to 0.4.26
+  * fix(deps): update rust crate libc to 0.2.170
+  * fix(deps): update hickory-dns monorepo to 0.24.4
+  * [skip-ci] RPM/TMT: use tests subpackage
+  * RPM: include empty check section to silence rpmlint
+  * test: do not force nftables
+  * fix(deps): update hickory-dns monorepo to 0.24.3
+  * Bump to v1.15.0-dev
+
+-------------------------------------------------------------------
+Thu May 15 08:01:05 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
+
+- spec: require cargo instead of rust+cargo; drop redundant comment
+
+-------------------------------------------------------------------
 Tue Feb 11 08:36:39 UTC 2025 - madhankumar.chellamuthu@suse.com
 
 - Update to version 1.14.0:
@@ -119,7 +164,7 @@ Wed Aug 07 06:36:52 UTC 2024 - danish.prakash@suse.com
   * update upsteam resolvers on each refresh
   * fix(deps): update rust crate syslog to v7
   * fix(deps): update rust crate tokio to 1.39.2
-  * add tcp support for forwarding
+  * add tcp support for forwarding (bsc#1234660)
   * add tcp listening support
   * test: add new test to check for startup error
   * return bind error to caller on first start
