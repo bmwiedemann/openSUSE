@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 24 22:14:58 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Remove trailing .0 from required packages (0.39.0 is bigger than
+  0.39 for rpm)
+
+-------------------------------------------------------------------
 Tue Apr  1 17:15:29 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - initial package 0.190.0 (0.19)

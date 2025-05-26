@@ -31,16 +31,16 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(List::Util) >= 1.50
 BuildRequires:  perl(Module::Build)
-BuildRequires:  perl(Module::Build::Tiny) >= 0.39.0
+BuildRequires:  perl(Module::Build::Tiny) >= 0.39
 BuildRequires:  perl(PPIx::QuoteLike)
-BuildRequires:  perl(PPIx::Utils) >= 0.2.0
+BuildRequires:  perl(PPIx::Utils) >= 0.2
 BuildRequires:  perl(Perl::Critic)
 BuildRequires:  perl(Scalar::Util) >= 1.50
 BuildRequires:  perl(Test2::V0)
 BuildRequires:  perl(version) >= 0.77
 Requires:       perl(List::Util) >= 1.50
 Requires:       perl(PPIx::QuoteLike)
-Requires:       perl(PPIx::Utils) >= 0.2.0
+Requires:       perl(PPIx::Utils) >= 0.2
 Requires:       perl(Perl::Critic)
 Requires:       perl(Scalar::Util) >= 1.50
 Requires:       perl(version) >= 0.77

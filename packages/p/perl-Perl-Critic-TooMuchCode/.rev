@@ -7,4 +7,14 @@
     <comment>Useful module for style checks we want to use for openQA</comment>
     <requestid>1266850</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>682b8602d25efa301f64b0408cc85b76</srcmd5>
+    <version>0.190.0</version>
+    <time>1748277368</time>
+    <user>anag_factory</user>
+    <comment>- Remove trailing .0 from required packages (0.39.0 is bigger than
+  0.39 for rpm)
+</comment>
+    <requestid>1279870</requestid>
+  </revision>
 </revisionlist>
