@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-multi-writer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ BuildRequires:  gobject-introspection-devel >= 0.9.8
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0) >= 2.25.9
 BuildRequires:  pkgconfig(glib-2.0) >= 2.45.8
@@ -62,7 +61,6 @@ or a code sprint or to create hundreds of LiveUSB drives for a trade show.
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
-%suse_update_desktop_file org.gnome.MultiWriter Filesystem X-GNOME-Utilities
 
 %files
 %license COPYING
