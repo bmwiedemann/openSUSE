@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Mon May 26 06:33:21 UTC 2025 - pdostal@suse.com
+
+- Fixing boo#1237669 - CVE-2025-27144 -  Go JOSE's Parsing Vulnerable to Denial of Service
+- Do not skip the TestAccessiblePrompter tests
+- Update to version 2.73.0:
+  * refactor(api): inline struct definitions in RepoAssignableActors
+  * refactor(api): change CopilotActorLogin to constant
+  * fix(editable): include DefaultLogins in EditableAssignees clone
+  * doc(params): incorrect func name in comment
+  * refactor(api): use constant for Copilot login
+  * doc(issue/pr edit): clarify @copilot usage
+  * doc(issue/pr edit): doc `@copilot` assignee
+  * test(params): enhance Copilot replacer tests for edge cases
+  * fix(params): remove needless err return
+  * doc(editable): remove needless comment
+  * test(editable): prompts use assignee display names
+  * fix(pr edit): clarify error messages for assignee actors and users
+  * doc(pr edit): condense comment for reviewer/user filtering
+  * test(pr edit): fix typo in test name
+  * refactor(pr edit): move httpclient initialization
+  * feat(issue/pr edit): support @copilot in assignee flags
+  * doc(pr edit): Add comments describing the use of DefaultLogins
+  * fix(issues): fix non-interactive assignee matching to logins&IDs
+  * fix(pr edit): remove merge conflict artifact, extra detector
+  * feat(pr edit): fetch assignable actors
+  * feat(pr edit): fetch assigned actors
+  * fix(api): correct var name capitalization
+  * refactor(api): remove needless parenthesis
+  * fix(api): correct var name capitalization
+  * refactor(api): remove needless parenthesis
+  * doc(api): code comment typo
+  * feat(editable): update assigned actors to use display names
+  * feat(pr edit): fetch assignable actors
+  * feat(pr edit): fetch assigned actors
+  * doc(issue edit): clarify synchronous handling of assignees
+  * feat(issue edit): replacing actor assignee is done synchronously with updateIssue
+  * doc(api): remove needless comment
+  * refactor(api): rename assignable user types and methods
+  * fix(issue edit): revert rename of ActorAssignees
+  * fix(issue edit): use double quotes for assignedActors
+  * refactor(issue edit): add assignedActors to lookupFields
+  * refactor(issue edit): rename loop variable for clarity
+  * refactor(issue edit): rename AssignedActors to ActorAssignees
+  * Increase `beforePasswordSendTimeout` to 100 us (#10977)
+  * Update test case for removing all reviewers
+  * doc(repo queries): clarify reviewer actor fetching logic
+  * doc(issue): comment why assignable actors disabled
+  * refactor(issue edit): improve actor type handling
+  * Add test to verify removing all reviewers
+  * fix bug when removing all PR reviwers
+  * fix(issue edit): resolve race condition in actor assignment
+  * chore(issue edit): comments cleanup
+  * feat(issue edit): support assigning actors to issues
+  * feat(issue edit): fetch assignable actors
+  * feat(issue edit): fetch currently assigned actors
+  * Improve assertion for disabled echo mode (#10927)
+  * fix(a11y prompter): remove invalid defaults
+  * Release download handles missing archive URLs
+  * Fix release download test http stubbing
+  * feat(fd): add ActorIsAssignable to IssueFeatures
+  * Feature detect v1 projects on pr edit
+  * Add `closedByPullRequestsReferences` JSON field to `issue view` (#10941)
+  * fix(a11y prompter): confirm prompt default is readable
+  * fix(a11y prompter): multi select defaults are readable
+  * doc(prompter): remove TODO about default value panic
+  * fix(a11y prompter): select prompt default value is readable
+  * refactor(a11yprompter): shared method for prompt defaults
+  * fix(a11y prompter): Select prompt respects defaults
+  * fix(a11y prompter): input prompt default value is readable
+  * test(prompter): add timeout before password input
+  * Feature detect v1 projects for preview URL
+  * Feature detect v1 projects on interactive pr create
+  * Feature detect v1 projects on web mode pr create
+  * Feature detect v1 projects on non-interactive pr create
+  * Cleanup run command stubbed finders in tests
+  * Fix `StatusJSONResponse` usage (#10810)
+  * Feature detect v1 projects on pr view
+  * Add `--delete-last` option to `pr comment` and `issue comment` (#10596)
+  * Apply code review changes
+  * chore(deps): bump actions/attest-build-provenance from 2.2.2 to 2.3.0
+  * chore(deps): bump github.com/cpuguy83/go-md2man/v2 from 2.0.6 to 2.0.7
+  * Update the test code to align with latest changes
+  * test pr number 0
+  * handle find pr number 0
+  * restore deleted file
+  * move filterAttestations function
+  * getAttestations unit tests
+  * add test for predicate type filtering
+  * add missing nil struct checks and udpate error messages
+  * add check for nil api client
+  * clean up test fixtures
+  * reduce test duplication
+  * comment
+  * restructure api client methods
+  * simplify client methods
+  * remove duplicate predicate filtering code
+  * create single fetch by digest client method
+  * dedpulicate if else logic
+  * pass params object to api client methods
+  * move local and oci registry attestation filtering
+  * reorganize getAttestations func to check for remote gh api fetching first
+  * pass predicate type to get attestation api methods
+
+-------------------------------------------------------------------
 Mon May  5 06:44:10 UTC 2025 - Pavel Dostál <pdostal@suse.com>
 
 - Fix the package tests:
