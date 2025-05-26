@@ -18,10 +18,10 @@
 
 %define cpan_name IO-Interactive
 Name:           perl-IO-Interactive
-Version:        1.26.0
+Version:        1.27.0
 Release:        0
-# 1.026 -> normalize -> 1.26.0
-%define cpan_version 1.026
+# 1.027 -> normalize -> 1.27.0
+%define cpan_version 1.027
 License:        Artistic-2.0
 Summary:        Utilities for interactive I/O
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,6 +32,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::More) >= 1
+BuildRequires:  perl(version) >= 0.86
 Provides:       perl(IO::Interactive) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}

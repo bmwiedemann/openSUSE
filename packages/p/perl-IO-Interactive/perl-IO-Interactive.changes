@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 18 05:34:04 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.27.0 (1.027)
+   see /usr/share/doc/packages/perl-IO-Interactive/Changes
+
+  1.027 2025-04-17T10:00:24Z
+  	* require a newer version.pm for v5.10.1 tests
+
+-------------------------------------------------------------------
 Mon Jan 27 05:30:55 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.26.0 (1.026)

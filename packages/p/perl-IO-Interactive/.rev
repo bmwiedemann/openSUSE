@@ -104,4 +104,17 @@
     <comment></comment>
     <requestid>1241539</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>15f0aaec25e97c183fc70b920b432348</srcmd5>
+    <version>1.27.0</version>
+    <time>1748277347</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1278609 from tinita
+
+- updated to 1.27.0 (1.027)
+   see /usr/share/doc/packages/perl-IO-Interactive/Changes
+  1.027 2025-04-17T10:00:24Z
+  	* require a newer version.pm for v5.10.1 tests</comment>
+    <requestid>1279794</requestid>
+  </revision>
 </revisionlist>
