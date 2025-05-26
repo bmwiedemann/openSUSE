@@ -1,7 +1,7 @@
 #
 # spec file for package python-confluent-kafka
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,12 @@ Group:          Development/Languages/Python
 URL:            https://github.com/confluentinc/confluent-kafka-python
 Source:         https://files.pythonhosted.org/packages/source/c/confluent-kafka/confluent-kafka-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  librdkafka-devel >= %{version}
 BuildRequires:  python-rpm-macros
-
 %python_subpackages
 
 %description
@@ -41,16 +42,17 @@ Confluent's Apache Kafka client for Python
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 rm -v %{buildroot}/%{_prefix}/LICENSE.txt
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%{python_sitearch}/*
+%{python_sitearch}/confluent[_-]kafka
+%{python_sitearch}/confluent[_-]kafka-%{version}*-info
 
 %changelog
