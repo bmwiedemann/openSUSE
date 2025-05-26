@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 22 05:36:19 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.510.0 (0.51)
+   see /usr/share/doc/packages/perl-MooseX-Types/Changes
+
+  0.51      2025-04-19 18:55:03Z
+          - use Sub::Util rather than Sub::Name, since Sub::Util is in core
+
+-------------------------------------------------------------------
 Tue May 20 11:36:35 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

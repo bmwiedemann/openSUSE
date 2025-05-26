@@ -177,4 +177,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1279267</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>663b71e248fced549d573eb8bf756404</srcmd5>
+    <version>0.510.0</version>
+    <time>1748277364</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1279824 from tinita
+
+- updated to 0.510.0 (0.51)
+   see /usr/share/doc/packages/perl-MooseX-Types/Changes
+  0.51      2025-04-19 18:55:03Z
+          - use Sub::Util rather than Sub::Name, since Sub::Util is in core</comment>
+    <requestid>1279832</requestid>
+  </revision>
 </revisionlist>

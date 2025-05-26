@@ -18,10 +18,10 @@
 
 %define cpan_name MooseX-Types
 Name:           perl-MooseX-Types
-Version:        0.500.0
+Version:        0.510.0
 Release:        0
-# 0.50 -> normalize -> 0.500.0
-%define cpan_version 0.50
+# 0.51 -> normalize -> 0.510.0
+%define cpan_version 0.51
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Organise your Moose types in libraries
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -44,11 +44,12 @@ BuildRequires:  perl(Scalar::Util) >= 1.19
 BuildRequires:  perl(Sub::Exporter)
 BuildRequires:  perl(Sub::Exporter::ForMethods) >= 0.100052
 BuildRequires:  perl(Sub::Install)
-BuildRequires:  perl(Sub::Name)
+BuildRequires:  perl(Sub::Util)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.88
-BuildRequires:  perl(Test::Requires)
+BuildRequires:  perl(Test::Needs)
 BuildRequires:  perl(namespace::autoclean) >= 0.160
+BuildRequires:  perl(parent)
 Requires:       perl(Carp::Clan) >= 6.0.0
 Requires:       perl(Module::Runtime)
 Requires:       perl(Moose) >= 1.06
@@ -59,8 +60,9 @@ Requires:       perl(Scalar::Util) >= 1.19
 Requires:       perl(Sub::Exporter)
 Requires:       perl(Sub::Exporter::ForMethods) >= 0.100052
 Requires:       perl(Sub::Install)
-Requires:       perl(Sub::Name)
+Requires:       perl(Sub::Util)
 Requires:       perl(namespace::autoclean) >= 0.160
+Requires:       perl(parent)
 Provides:       perl(MooseX::Types) = %{version}
 Provides:       perl(MooseX::Types::Base) = %{version}
 Provides:       perl(MooseX::Types::CheckedUtilExports) = %{version}
