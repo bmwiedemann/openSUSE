@@ -51,4 +51,20 @@
     <comment></comment>
     <requestid>1223653</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6ea9078c09a7db92ba9ee34850bd2fd1</srcmd5>
+    <version>0.6.5</version>
+    <time>1748277376</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.6.5:
+  * fix for Ear Tag not working with GTK 4.17 or later
+  * widget for title/artist has been reworked
+  * Album cover handling now supports more file types
+- Changes from version to 0.6.4:
+  * fix selection mode toggling when removing file list item
+  * change Select all files button to Unselect all files when all
+    files are selected
+</comment>
+    <requestid>1279859</requestid>
+  </revision>
 </revisionlist>
