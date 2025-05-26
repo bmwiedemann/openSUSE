@@ -2146,4 +2146,11 @@ Fixes https://openqa.opensuse.org/tests/4663488#step/select_patterns/142</commen
     <time>1745052018</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="301" vrev="299">
+    <srcmd5>24b803a6ac2d727a4b631ff32656c8b8</srcmd5>
+    <version>unknown</version>
+    <time>1748272620</time>
+    <user>anag_factory</user>
+    <comment>remove all gimp help packages</comment>
+  </revision>
 </revisionlist>
