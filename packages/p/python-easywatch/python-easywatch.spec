@@ -1,7 +1,7 @@
 #
 # spec file for package python-easywatch
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-easywatch
 Version:        0.0.5
 Release:        0
 Summary:        Directory monitoring package for Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/Ceasar/easywatch
+URL:            https://github.com/Ceasar/easywatch
 Source:         https://files.pythonhosted.org/packages/source/e/easywatch/easywatch-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-watchdog
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -49,15 +49,16 @@ There are four types of events that the handler can be notified about:
 %setup -q -n easywatch-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/easywatch
+%{python_sitelib}/easywatch-%{version}*-info
 
 %changelog
