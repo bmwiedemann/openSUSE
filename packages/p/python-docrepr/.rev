@@ -71,4 +71,13 @@
   * Issue 22 - Update packaging metadata, release guide and infra</comment>
     <requestid>1131217</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7f76eb6322fadc0465f4512b94693848</srcmd5>
+    <version>0.2.0</version>
+    <time>1748277661</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build
+</comment>
+    <requestid>1280253</requestid>
+  </revision>
 </revisionlist>

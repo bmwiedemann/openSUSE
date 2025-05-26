@@ -1,7 +1,7 @@
 #
 # spec file for package python-docrepr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-docrepr
 Version:        0.2.0
 Release:        0
@@ -28,7 +27,9 @@ Source:         https://github.com/spyder-ide/docrepr/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
@@ -46,10 +47,10 @@ the utils.inspector module developed for the Spyder IDE.
 %setup -q -n docrepr-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # no upstream tests
@@ -58,6 +59,6 @@ the utils.inspector module developed for the Spyder IDE.
 %doc README.md RELEASE.md CHANGELOG.md
 %license LICENSE.txt
 %{python_sitelib}/docrepr
-%{python_sitelib}/docrepr-%{version}-*info
+%{python_sitelib}/docrepr-%{version}*info
 
 %changelog
