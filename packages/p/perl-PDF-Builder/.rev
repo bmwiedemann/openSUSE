@@ -56,4 +56,15 @@
 </comment>
     <requestid>1156501</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>24c0a251382c25386770a10ff6b68228</srcmd5>
+    <version>3.27.0</version>
+    <time>1748277351</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1278637 from tinita
+
+- updated to 3.27.0 (3.027)
+   see /usr/share/doc/packages/perl-PDF-Builder/Changes</comment>
+    <requestid>1279798</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 19 05:35:18 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.27.0 (3.027)
+   see /usr/share/doc/packages/perl-PDF-Builder/Changes
+
+-------------------------------------------------------------------
 Fri Mar  8 22:55:37 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

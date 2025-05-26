@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PDF-Builder
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,10 @@
 
 %define cpan_name PDF-Builder
 Name:           perl-PDF-Builder
-Version:        3.26.0
+Version:        3.27.0
 Release:        0
-%define cpan_version 3.026
+# 3.027 -> normalize -> 3.27.0
+%define cpan_version 3.027
 License:        LGPL-2.1-or-later
 Summary:        Facilitates the creation and modification of PDF files
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -31,11 +32,11 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Compress::Zlib) >= 1
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.66
-BuildRequires:  perl(Font::TTF) >= 1.04
+BuildRequires:  perl(Font::TTF) >= 1.40.0
 BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(Test::Memory::Cycle) >= 1
 Requires:       perl(Compress::Zlib) >= 1
-Requires:       perl(Font::TTF) >= 1.04
+Requires:       perl(Font::TTF) >= 1.40.0
 Provides:       perl(PDF::Builder) = %{version}
 Provides:       perl(PDF::Builder::Annotation) = %{version}
 Provides:       perl(PDF::Builder::Basic::PDF) = %{version}
@@ -139,6 +140,7 @@ Provides:       perl(PDF::Builder::Resource::XObject::Image::JPEG) = %{version}
 Provides:       perl(PDF::Builder::Resource::XObject::Image::PNG) = %{version}
 Provides:       perl(PDF::Builder::Resource::XObject::Image::PNG_IPL) = %{version}
 Provides:       perl(PDF::Builder::Resource::XObject::Image::PNM) = %{version}
+Provides:       perl(PDF::Builder::Resource::XObject::Image::SVG) = %{version}
 Provides:       perl(PDF::Builder::Resource::XObject::Image::TIFF) = %{version}
 Provides:       perl(PDF::Builder::Resource::XObject::Image::TIFF::File) = %{version}
 Provides:       perl(PDF::Builder::Resource::XObject::Image::TIFF::File_GT) = %{version}
@@ -146,6 +148,7 @@ Provides:       perl(PDF::Builder::Resource::XObject::Image::TIFF_GT) = %{versio
 Provides:       perl(PDF::Builder::UniWrap) = %{version}
 Provides:       perl(PDF::Builder::Util) = %{version}
 Provides:       perl(PDF::Builder::ViewerPreferences) = %{version}
+Provides:       perl(PDF::Builder::Win32) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 
@@ -153,7 +156,7 @@ Provides:       perl(PDF::Builder::ViewerPreferences) = %{version}
 Facilitates the creation and modification of PDF files
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
