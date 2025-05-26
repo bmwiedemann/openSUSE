@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Fri May 23 04:59:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.36.0:
+  * Features
+    - Support Kubernetes version v1.33.1 #20784
+    - New flag "-f" to allow passing a config file for addon
+      configure command. #20255
+    - vfkit: bump to Preferred driver on macOs #20808
+    - vfkit: new network option "--network vment-shared' for vfkit
+      driver #20501
+  * Bug Fixes:
+    - fix bootpd check on macOS >= 15 #20400
+    - fix bug in parsing proxies with dashes #20648
+    - fix waiting for all pods having specified labels to be Ready
+      #20315
+    - fix: incorrect finalImg affecting downloading kic form github
+      assets #20316
+    - fix: reference missing files in schema (Closes #20752) #20761
+    - Improvements:
+    - Additional checks for 9p support #20288
+    - vfkit: Graceful shutdown on stop #20504
+    - vfkit: More robust state management #20506
+    - vfkit vmnet: support running without sudoers configuration
+      #20719
+    - Revert "fix --wait's failure to work on coredns pods" #20313
+  * Languages:
+    - Add Indonesian translation #20494
+    - Add more french translation #20361
+    - Add more Korean translations #20634
+    - Add more Chinese translations #20543#20543
+    - fixed minor typo in german translation #20546
+    - Version Updates:
+    - Addon cloud-spanner: Update cloud-spanner-emulator/emulator
+      image from 1.5.28 to 1.5.34 #20451 #20539 #20602#20623 #20670
+      #20704 #20795
+    - Addon headlamp: Update headlamp-k8s/headlamp image from
+      v0.26.0 to v0.28.0 #20311
+    - Addon ingress: Update ingress-nginx/controller image from
+      v1.11.3 to v1.12.2 #20789
+    - Addon inspektor-gadget: Update inspektor-gadget image from
+      v0.36.0 to v0.40.0 #20325#20354#20512 #20736
+    - Addon kong: Update kong image from 3.8.0 to 3.9.0
+      #20151 #20384 #20728
+    - Addon kong: Update kong/kubernetes-ingress-controller image
+      from 3.3.1 to 3.4.5 #20319#20446#20788
+    - Addon kubevirt: Update bitnami/kubectl image from 1.31.3 to
+      1.33.1 #20321#20349#20665#20731#20790
+    - Addon nvidia-device-plugin: Update nvidia/k8s-device-plugin
+      image from v0.17.0 to v0.17.2 #20786#20534
+    - Addon registry: Update kube-registry-proxy image from 0.0.8
+      to 0.0.9 #20717
+    - Addon registry: Update registry image from 2.8.3 to 3.0.0
+      #20242 #20425
+    - Addon Volcano: Update volcano images from v1.10.0 to v1.11.2
+      #20318 #20616 #20697
+    - CNI: Update cilium from v1.17.0 to v3.30.0 #20419 #20390
+      #20584 #20734 #20317 #20383 #20535 #20637 #20787
+    - CNI: Update flannel from v0.26.2 to v0.26.7 #20385#20617
+      #20639
+    - CNI: Update kindnetd from v20241108-5c6d2daf to
+      v20250512-df8de77b #20327#20427 #20797
+    - HA (multi-control plane): Update kube-vip from v0.8.10 to
+      v0.9.1 #20638#20238#20598 #20699
+    - Kicbase: Bump ubuntu:jammy from 20240911.1 to 20250126
+      #20387 #20718
+    - Kicbase/ISO: Update buildroot from 2023.02.9 to 2025.2 #20720
+    - Kicbase/ISO: Update cni-plugins from v1.6.2 to v1.7.1 #20771
+    - Kicbase/ISO: Update cri-dockerd from v0.3.15 to v0.4.0 #20747
+    - Kicbase/ISO: Update docker from 27.4.0 to 28.0.4 #20436
+      #20523 #20591
+    - Kicbase/ISO: Update runc from v1.2.3 to v1.3.0#20433#20604
+      #20764
+
+-------------------------------------------------------------------
 Fri Jan 24 07:57:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - fix dependencies for fish and zsh completion subpackages
@@ -281,7 +355,7 @@ Fri Nov 10 08:35:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Hyper-V: Add memory validation for odd numbers #17325
   * QEMU: Improve cpu type and IP detection #17217
   * Mask http(s)_proxy password from startup output #17116
-  * `--delete-on-faliure` also recreates cluster for kubeadm
+  * `--delete-on-faliure` also recreates cluster for kubeadm
     failures #16890
   * Addon auto-pause: Configure intervals using `--auto-pause-
     interval` #17070

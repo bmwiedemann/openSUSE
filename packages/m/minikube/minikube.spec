@@ -17,7 +17,7 @@
 
 
 Name:           minikube
-Version:        1.35.0
+Version:        1.36.0
 Release:        0
 Summary:        Tool to run Kubernetes locally
 License:        Apache-2.0
@@ -32,7 +32,7 @@ BuildRequires:  git-core
 BuildRequires:  libvirt-devel >= 1.2.14
 BuildRequires:  zsh
 BuildRequires:  zstd
-BuildRequires:  golang(API) = 1.23
+BuildRequires:  golang(API) = 1.24
 Recommends:     docker-machine-driver-kvm2
 Recommends:     kubernetes-client
 Recommends:     libvirt
@@ -93,6 +93,9 @@ Optional zsh completion for minikube.
 
 %prep
 %autosetup -p 1 -a 1
+
+# remove hardcoded GOTOOLCHAIN in the Makefile
+sed -i '/^export GOTOOLCHAIN/d' Makefile
 
 %build
 export GOFLAGS="-buildmode=pie"
