@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  8 08:30:06 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add 7ecd58d.patch:
+  Initial fix for CVE-2025-3155 from parrot409.
+  (CVE-2025-3155 bsc#1240688)
+
+-------------------------------------------------------------------
 Wed Mar 20 15:31:44 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Add yelp-automake.patch to patch Makefile.in on SLE, rather than

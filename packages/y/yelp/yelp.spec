@@ -1,7 +1,7 @@
 #
 # spec file for package yelp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,8 @@ Patch0:         https://gitlab.gnome.org/GNOME/yelp/-/commit/dd69a1df8e660cf6cf2
 Patch1:         https://gitlab.gnome.org/GNOME/yelp/-/commit/855cae4a336f7676f093579c9a6b2d9fae7a1f80.patch
 # PATCH-FIX-SLED yelp-automake.patch mgorse@suse.com -- update Makefile.in for last patch
 Patch2:         yelp-automake.patch
-
+# PATCH-FIX-UPSTREAM 7ecd58d.patch CVE-2025-3155 bsc#1240688 qzhao@suse.com -- Initial fix for CVE-2025-3155 from parrot409.
+Patch3:         https://gitlab.gnome.org/GNOME/yelp/-/commit/7ecd58d.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
@@ -94,6 +95,7 @@ This package provides Yelp's development files.
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
 %patch -P 2 -p1
 %endif
+%patch -P 3 -p1
 
 %build
 %if !0%{?sle_version} || 0%{?sle_version} >= 160000
