@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 20 05:36:17 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.160.0 (0.16)
+   see /usr/share/doc/packages/perl-Statistics-CaseResampling/Changes
+
+  0.16  Mon May 19 12:37:00 2025
+    - Fix XS bug that made the build break under modern (stricter)
+      ExtUtils::ParseXS. (Thanks Dave!)
+
+-------------------------------------------------------------------
 Wed Sep 12 10:36:04 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - initial package 0.15

@@ -7,4 +7,18 @@
     <comment>for adi:60</comment>
     <requestid>635299</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>319fd4910269dfe56067b2cbfba738bc</srcmd5>
+    <version>0.160.0</version>
+    <time>1748277362</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1279816 from tinita
+
+- updated to 0.160.0 (0.16)
+   see /usr/share/doc/packages/perl-Statistics-CaseResampling/Changes
+  0.16  
+    - Fix XS bug that made the build break under modern (stricter)
+      ExtUtils::ParseXS. (Thanks Dave!)</comment>
+    <requestid>1279830</requestid>
+  </revision>
 </revisionlist>
