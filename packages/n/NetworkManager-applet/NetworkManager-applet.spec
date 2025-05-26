@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-applet
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,10 @@ URL:            https://gnome.org/projects/NetworkManager
 Source0:        %{_name}-%{version}.tar.zst
 # PATCH-FIX-UPSTREAM feature-app-indicator-desktop-file.patch sflees@suse.com --  nm-applet needs to be launched with --indicator and needs a startup delay incase its started before the systray
 Patch1:         feature-app-indicator-desktop-file.patch
+
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 %ifnarch ppc64le
 BuildRequires:  pkgconfig(ayatana-appindicator3-0.1)
 %endif
@@ -111,9 +111,11 @@ Provides translations for the "NetworkManager-connection-editor" package.
 
 %install
 %meson_install
-%suse_update_desktop_file -r nm-connection-editor GTK GNOME System X-SuSE-ServiceConfiguration
 %find_lang nm-applet %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}/icons/hicolor/
+
+%check
+%meson_test
 
 %files
 %license COPYING
