@@ -1,7 +1,7 @@
 #
 # spec file for package junction
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,12 +28,12 @@ Source99:       junction-rpmlintrc
 # PATCH-FEATURE-UPSTREAM junction-show-in-default-app-selector.patch gh#sunnyp/Junction!155, bsc#1223463 alynx.zhou@suse.com -- Show junction in default browser selector in GNOME Settings
 Patch1:         junction-show-in-default-app-selector.patch
 BuildRequires:  blueprint-compiler
+BuildRequires:  desktop-file-utils
 BuildRequires:  gjs
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
@@ -52,7 +52,6 @@ Junction will pop up and offer multiple options to handle it.
 
 %install
 %meson_install
-%suse_update_desktop_file %{appname}
 ln -rsf %{buildroot}%{_bindir}/%{appname} %{buildroot}%{_bindir}/%{name}
 
 %check
