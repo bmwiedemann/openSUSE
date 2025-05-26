@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 16 09:59:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix changelog format: the dashed line indicates the beginning of
+  a changelog entry. Entries without content are not permitted.
+
+-------------------------------------------------------------------
 Wed Sep 25 08:58:35 UTC 2024 - ming li <mli@suse.com>
 
 - update to 2024.1:
@@ -182,4 +188,3 @@ Tue May 24 15:55:00 UTC 2011 - gregkh@suse.de
 
  - initial creation of the batctl package, based on 2011.1.0 release.
 
-------------------------------------------------------------------
