@@ -8,4 +8,12 @@
 Update qtile package: https://build.opensuse.org/package/show/home:nyslay/qtile</comment>
     <requestid>922206</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d40da96f36def8413f4fbf3427055dd9</srcmd5>
+    <version>0.2.3</version>
+    <time>1748277655</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1280245</requestid>
+  </revision>
 </revisionlist>

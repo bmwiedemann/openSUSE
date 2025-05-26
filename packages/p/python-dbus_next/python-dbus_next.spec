@@ -1,7 +1,7 @@
 #
 # spec file for package python-dbus_next
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname python-dbus-next
 Name:           python-dbus_next
 Version:        0.2.3
@@ -27,11 +25,12 @@ License:        MIT
 URL:            https://github.com/altdesktop/python-dbus-next
 Source0:        https://github.com/altdesktop/python-dbus-next/archive/v%{version}/%{modname}-%{version}.tar.gz
 Source99:       python-dbus_next-rpmlintrc
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -55,10 +54,10 @@ Completely documented public API.
 %setup -q -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Test are only supported inside provided docker container. https://github.com/altdesktop/python-dbus-next/issues/94#issuecomment-881654674
@@ -66,6 +65,7 @@ Completely documented public API.
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/dbus_next
+%{python_sitelib}/dbus_next-%{version}*-info
 
 %changelog

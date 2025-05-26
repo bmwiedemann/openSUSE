@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 26 11:28:49 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed Sep 29 14:57:58 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add python-dbus_next-rpmlintrc as another Source.
