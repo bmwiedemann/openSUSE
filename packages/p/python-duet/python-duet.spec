@@ -1,7 +1,7 @@
 #
 # spec file for package python-duet
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,20 +25,14 @@ License:        Apache-2.0
 URL:            https://github.com/google/duet
 Source:         https://files.pythonhosted.org/packages/source/d/duet/duet-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions}
-%if 0%{suse_version} <= 1500
-BuildRequires:  %{python_module asyncio-contextmanager}
-BuildRequires:  %{python_module contextvars}
-%endif
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-typing_extensions
-%if %python_version_nodots <= 36
-Requires:       python-asyncio-contextmanager
-Requires:       python-contextvars
-%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,10 +43,10 @@ A simple future-based async library for python.
 %setup -q -n duet-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
