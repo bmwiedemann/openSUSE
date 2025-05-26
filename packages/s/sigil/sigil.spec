@@ -21,7 +21,7 @@
 %define pythons python311
 %endif
 Name:           sigil
-Version:        2.4.2
+Version:        2.5.0
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only
@@ -87,7 +87,8 @@ BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  cmake(Qt6Concurrent)
-BuildRequires:  cmake(Qt6Core5Compat)
+# Upstream use BuildRequires:  cmake(Qt6Core5Compat) >= 6.8.2
+BuildRequires:  cmake(Qt6Core5Compat) >= 6.6.3
 BuildRequires:  cmake(Qt6Linguist)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6PrintSupport)
@@ -98,7 +99,8 @@ BuildRequires:  cmake(Qt6WebEngineWidgets)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(hunspell)
-BuildRequires:  pkgconfig(libpcre2-8)
+# Upstream use BuildRequires:  pkgconfig(libpcre2-8) >= 10.45
+BuildRequires:  pkgconfig(libpcre2-8) >= 10.42
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(minizip)
 Requires:       %{python_flavor}-Pillow
