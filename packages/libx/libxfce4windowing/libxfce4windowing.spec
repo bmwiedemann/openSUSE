@@ -36,15 +36,13 @@
 
 Name:           libxfce4windowing
 Summary:        Windowing concept abstraction library for X11 and Wayland
-Version:        4.20.2
+Version:        4.20.3
 Release:        0
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://gitlab.xfce.org/xfce/libxfce4windowing
 Source0:        https://archive.xfce.org/src/xfce/libxfce4windowing/4.20/libxfce4windowing-%{version}.tar.bz2
-BuildRequires:  automake
 BuildRequires:  gettext >= 0.19.8
-BuildRequires:  meson
 BuildRequires:  xfce4-dev-tools >= 4.19.3
 BuildRequires:  pkgconfig(gdk-3.0) >= 3.24.10
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.42.8
@@ -146,11 +144,11 @@ windowing-system-independent manner.
 %build
 %configure \
 	--disable-static
-
 %make_build
 
 %install
 %make_install
+
 find %{buildroot} -name "*.la" -print -delete
 
 %find_lang %{name} %{?no_lang_C}
@@ -159,6 +157,7 @@ find %{buildroot} -name "*.la" -print -delete
 %ldconfig_scriptlets -n %{libnameui}
 
 %files -n %{libname}
+%doc NEWS
 %license COPYING
 %{_libdir}/libxfce4windowing-%{api}.so.%{major}{,.*}
 
@@ -175,16 +174,16 @@ find %{buildroot} -name "*.la" -print -delete
 %{_libdir}/girepository-1.0/Libxfce4windowingui-%{api}.%{major}.typelib
 
 %files -n %{devname}
-%dir %{_includedir}/xfce4/
-%{_includedir}/xfce4/libxfce4windowing{,ui}/
+%dir %{_includedir}/xfce4
 %{_libdir}/libxfce4windowing{,ui}-%{api}.so
 %{_libdir}/pkgconfig/libxfce4windowing{,ui}-%{api}.pc
 %{_libdir}/pkgconfig/libxfce4windowing-x11-%{api}.pc
 %{_datadir}/gir-1.0/Libxfce4windowing-%{api}.%{major}.gir
 %{_datadir}/gir-1.0/Libxfce4windowingui-%{api}.%{major}.gir
+%{_includedir}/xfce4/libxfce4windowing{,ui}/
 
 %files -n %{docname}
-%doc NEWS README*
+%doc README*
 %{_datadir}/gtk-doc/html/libxfce4windowingui
 %{_datadir}/gtk-doc/html/libxfce4windowing
 

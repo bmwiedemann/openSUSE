@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri May 23 07:35:16 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Removed leftover meson conditional from spec file. We stick with
+  autotools for now as there are some issues with the meson builds
+
+-------------------------------------------------------------------
+Thu May 22 05:14:20 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.20.3:
+  - Support absolute icon paths
+  - meson-build: Add GNU visibility files to sources
+  - I18n: Update po/LINGUAS list
+  - autotools-build: Search for xdt-gen-visibility also in the working
+    tree
+  - build: Automate copyright year management
+  - docs: Fix warnings
+  - XfwWindowX11: Fix memory leak
+  - Try to match the app id in lower case to find the .desktop file
+  - XfwWindowX11: Keep a ref on workspace
+  - XfwWnckIcon: Fix wrong compare func
+  - meson-build: Add missing conditional for ext-workspace
+  - meson-build: Reintroduce tests option
+  - meson-build: Use SPDX license expression
+  - meson-build: Specify wayland-scanner as a native dependency
+  - meson-build: Update debug/optimization flag management
+  - Translation Updates
+
+-------------------------------------------------------------------
 Tue Feb  4 09:03:34 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update to version 4.20.2:

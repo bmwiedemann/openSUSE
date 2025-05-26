@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>1243020</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bce4a19dc0f6a96fd4ed899dbf23ce45</srcmd5>
+    <version>4.20.3</version>
+    <time>1748277154</time>
+    <user>anag_factory</user>
+    <comment>- Removed leftover meson conditional from spec file. We stick with
+  autotools for now as there are some issues with the meson builds (forwarded request 1279468 from mauriziogalli)</comment>
+    <requestid>1279475</requestid>
+  </revision>
 </revisionlist>
