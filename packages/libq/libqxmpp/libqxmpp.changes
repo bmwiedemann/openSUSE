@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 25 11:24:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.10.4
+  * OutgoingClient: Fix not accepting stanzas while enabling SM
+    after bind
+  * OutgoingClient: Include task name in unexpected element
+    received error
+
+-------------------------------------------------------------------
 Tue Apr  1 11:25:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.10.3:
