@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri May 23 15:25:15 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  * Add documentation for nearly all features and settings to the
+    Sphinx documentation site
+  * Add support for Related Origin Requests, a feature defined in
+    the level 3 working draft of the WebAuthn specification. It
+    makes simple, cross-domain sharing of Passkeys possible
+  * Add support for redirecting after Passkey authentication by
+    reading a `next` url parameter from the current view
+  * Add support for Django 5.2 pending its final release
+  * All Python code is now 100% covered by tests
+  * Browser automation tests using Playwright and Chromium have
+    been added to ensure the JavaScript implementation works as
+    expected
+  * The API views provided now explicitly indicate they only
+    render JSON, disabling the browsable API (see #55 and #56, by
+    AlmerCarbonEquity)
+  * Fixed an issue where the display name of a Passkey would have
+    the username between parenthesis for users that have both an
+    empty `first_name` and `last_name`.
+  * **Noteworthy:** the way WebAuthn user handles are generated
+    has been changed to make them more privacy-friendly. There
+    should be no breaking backward-compatibility issues.
+  * For context: these are used by the browser to identify if it
+    already has a Passkey stored for a given user account.
+  * After registering a new Passkey, users are now automatically
+    marked as 'mfa verified' in the context of `django_otp.login`
+  * The default JavaScript implementation is now built using Node
+    22
+  * The default JavaScript implementation for interacting with
+    the browser api has been updated to use
+    `@simplewebauthn/browser` v13.1.0
+
+-------------------------------------------------------------------
 Sat Aug 31 11:36:50 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
-- Initial packaging (v0.4.0), needed by weblate 
+- Initial packaging (v0.4.0), needed by weblate
