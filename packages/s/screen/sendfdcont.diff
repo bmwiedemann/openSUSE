@@ -1,0 +1,44 @@
+--- attacher.c.orig	2025-05-22 09:23:03.861076640 +0000
++++ attacher.c	2025-05-22 09:29:29.060392092 +0000
+@@ -112,7 +112,7 @@ QueryResultFail SIGDEFARG
+  *  Understands  MSG_ATTACH, MSG_DETACH, MSG_POW_DETACH
+  *               MSG_CONT, MSG_WINCH and nothing else!
+  *
+- *  if type == MSG_ATTACH and sockets are used, attaches
++ *  if type == MSG_ATTACH or MSG_CONT and sockets are used, attaches
+  *  tty file descriptor.
+  */
+ 
+@@ -125,7 +125,7 @@ struct msg *m;
+   bool is_socket;
+ 
+   is_socket = IsSocket(SockPath);
+-  if (is_socket && m->type == MSG_ATTACH)
++  if (is_socket && (m->type == MSG_ATTACH || m->type == MSG_CONT))
+     return SendAttachMsg(s, m, attach_fd);
+ 
+   while(l > 0)
+--- socket.c.orig	2025-05-22 09:23:09.261067045 +0000
++++ socket.c	2025-05-22 09:25:24.044827531 +0000
+@@ -1169,7 +1169,7 @@ ReceiveMsg()
+     }
+ 
+   debug2("*** RecMsg: type %d tty %s\n", m.type, m.m_tty);
+-  if (m.type != MSG_ATTACH && recvfd != -1)
++  if (m.type != MSG_ATTACH && m.type != MSG_CONT && recvfd != -1)
+     {
+       close(recvfd);
+       recvfd = -1;
+@@ -1222,7 +1222,11 @@ ReceiveMsg()
+         break;
+       case MSG_CONT:
+         if (display && D_userpid != 0 && kill(D_userpid, 0) == 0)
+-          break; /* Intruder Alert */
++          {
++            if (recvfd != -1)
++              close(recvfd);
++            break; /* Intruder Alert */
++          }
+         debug2("RecMsg: apid=%d,was %d\n", m.m.attach.apid,
+                display ? D_userpid : 0);
+       /* FALLTHROUGH */

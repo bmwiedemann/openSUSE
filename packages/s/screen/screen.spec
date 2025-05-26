@@ -35,6 +35,9 @@ Source3:        https://savannah.gnu.org/people/viewgpg.php?user_id=99366#/%{nam
 Source4:        screen.pam
 Patch0:         global_screenrc.patch
 Patch6:         libtinfo.diff
+Patch7:         sendfdcont.diff
+Patch8:         nottychmod.diff
+Patch9:         multicont.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  makeinfo
@@ -60,6 +63,9 @@ Documentation: man page
 %patch -P 0
 # libtinfo.diff
 %patch -P 6
+%patch -P 7
+%patch -P 8
+%patch -P 9
 
 %build
 sh ./autogen.sh
@@ -69,6 +75,7 @@ CFLAGS="-DMAXWIN=1000 %{optflags} -std=gnu89" %configure --prefix=%{_prefix} --i
 				--with-socket-dir='(eff_uid ? "%{rundir}/uscreens" : "%{rundir}/screens")' \
 				--with-sys-screenrc=%{_sysconfdir}/screenrc \
 				--with-pty-group=5 \
+				--with-pty-mode=0620 \
 				--enable-use-locale \
 				--enable-telnet \
 				--enable-pam \

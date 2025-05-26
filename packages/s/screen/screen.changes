@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 22 13:30:23 CEST 2025 - mls@suse.de
+
+- also use tty fd passing after a suspend (MSG_CONT)
+  new patch: sendfdcont.diff
+- do not chmod the tty for multiattach, rely on tty fd passing
+  instead [bsc#1242269] [CVE-2025-46802]
+  new patch: nottychmod.diff
+- fix resume after suspend in multiuser mode
+  new patch: multicont.diff
+
+-------------------------------------------------------------------
 Fri Mar 21 12:37:40 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - K&R source is not ready for C23 used by default with GCC 15.

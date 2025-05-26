@@ -1,0 +1,44 @@
+--- attacher.c.orig	2025-05-22 11:29:37.805021734 +0000
++++ attacher.c	2025-05-22 11:29:42.281014540 +0000
+@@ -148,7 +148,7 @@ int how;
+   struct msg m;
+   struct stat st;
+   char *s;
+-  bool is_socket;
++  bool is_socket = 0;
+ 
+   debug2("Attach: how=%d, tty=%s\n", how, attach_tty);
+ #ifdef MULTIUSER
+@@ -225,9 +225,16 @@ int how;
+   strncpy(m.m_tty, attach_tty_is_in_new_ns ? attach_tty_name_in_ns : attach_tty, sizeof(m.m_tty) - 1);
+   m.m_tty[sizeof(m.m_tty) - 1] = 0;
+ 
+-  is_socket = IsSocket(SockPath);
+   if (how == MSG_WINCH)
+     {
++#if defined(MULTIUSER) && defined(USE_SETEUID)
++      if (multiattach)
++	{
++	  xseteuid(real_uid);
++	  xsetegid(real_gid);
++	}
++#endif
++      is_socket = IsSocket(SockPath);
+       if ((lasts = MakeClientSocket(0, is_socket)) >= 0)
+ 	{
+ 	  WriteMessage(lasts, &m);
+@@ -238,6 +245,14 @@ int how;
+ 
+   if (how == MSG_CONT)
+     {
++#if defined(MULTIUSER) && defined(USE_SETEUID)
++      if (multiattach)
++	{
++	  xseteuid(real_uid);
++	  xsetegid(real_gid);
++	}
++#endif
++      is_socket = IsSocket(SockPath);
+       if ((lasts = MakeClientSocket(0, is_socket)) < 0)
+         {
+           Panic(0, "Sorry, cannot contact session \"%s\" again.\r\n",
