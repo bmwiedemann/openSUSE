@@ -17,14 +17,14 @@
 
 
 Name:           hfsfuse
-Version:        0.289
+Version:        0.292
 Release:        0
 Summary:        FUSE driver for HFS+ filesystems
-License:        MIT
+License:        BSD-1-Clause AND BSD-2-Clause AND BSD-3-Clause AND MIT
 Group:          System/Filesystems
 URL:            https://github.com/0x09/hfsfuse
 Source:         https://github.com/0x09/hfsfuse/releases/download/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  fuse-devel
+BuildRequires:  fuse3-devel
 BuildRequires:  libarchive-devel
 BuildRequires:  lzfse-devel
 BuildRequires:  utf8proc-devel
@@ -65,7 +65,7 @@ Not supported
 %make_build WITH_UBILIO=local WITH_UTF8PROC=system
 
 %install
-%make_install PREFIX=%{_prefix}
+%make_install WITH_UBILIO=local WITH_UTF8PROC=system PREFIX=%{_prefix}
 
 %files
 %license COPYING

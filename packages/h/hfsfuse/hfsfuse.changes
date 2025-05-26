@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 26 14:22:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.292
+  * Adds support for the FUSE version 3 API. If available this
+    will be detected and used at build time. hfsfuse remains
+    compatible with FUSE version 2 implementations if v3 is
+    not available. (bsc#1243039)
+- Add missing license information for vendored libraries
+- Pass WITH_UBILIO=local WITH_UTF8PROC=system to %make_install
+
+-------------------------------------------------------------------
 Tue Apr 15 09:43:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial version 0.289

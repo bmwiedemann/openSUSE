@@ -7,4 +7,12 @@
     <comment>New read-only FUSE driver for accessing HFS+ filesystems</comment>
     <requestid>1271532</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0bc1ebadd20bcca2d0db83e25acaa71b</srcmd5>
+    <version>0.292</version>
+    <time>1748278006</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1280286</requestid>
+  </revision>
 </revisionlist>
