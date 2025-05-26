@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-taskmanager
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           xfce4-taskmanager
-Version:        1.5.8
+Version:        1.6.0
 Release:        0
 Summary:        Simple Taskmanager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://docs.xfce.org/apps/xfce4-taskmanager
-Source:         https://archive.xfce.org/src/apps/%{name}/1.5/%{name}-%{version}.tar.bz2
-# PATCH-FIX-OPENSUSE xfce4-taskmanager-relax-x11-version.patch lower required X11 version to allow building for Leap which only has 1.6.5, which is enough, though
-Patch0:         xfce4-taskmanager-relax-x11-version.patch
+Source:         https://archive.xfce.org/src/apps/%{name}/1.6/%{name}-%{version}.tar.xz
 BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo) >= 1.5.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
@@ -48,15 +47,14 @@ CPU and memory usage are displayed as a graph.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
-%configure \
-	--enable-gtk3
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %suse_update_desktop_file -r %{name} GTK System Monitor
 
