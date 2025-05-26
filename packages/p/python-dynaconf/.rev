@@ -237,4 +237,12 @@
   * Fix misspelled GitHub action names on main.yml (#1033).</comment>
     <requestid>1165872</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a4c593b05593daca78cf15293b113a08</srcmd5>
+    <version>3.2.5</version>
+    <time>1748277658</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1280249</requestid>
+  </revision>
 </revisionlist>

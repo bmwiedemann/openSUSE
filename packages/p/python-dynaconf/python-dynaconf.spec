@@ -1,7 +1,7 @@
 #
 # spec file for package python-dynaconf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,9 @@ Summary:        The dynamic configurator for your Python Project
 License:        MIT
 URL:            https://github.com/rochacbruno/dynaconf
 Source:         https://github.com/rochacbruno/dynaconf/archive/%{version}.tar.gz#/dynaconf-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 38.6.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
@@ -35,9 +37,9 @@ Requires:       python-python-dotenv
 Requires:       python-redis
 Requires:       python-setuptools
 Requires:       python-toml
+Requires(post): alts
+Requires(postun): alts
 Suggests:       python-Django
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django}
@@ -66,16 +68,16 @@ The dynamic configurator for your Python Project
 rm tests/test_vault.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/dynaconf
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
-/usr/sbin/redis-server --stop-writes-on-bgsave-error no &
+%{_sbindir}/redis-server --stop-writes-on-bgsave-error no &
 export DYNACONF_TEST_REDIS_URL==http://127.0.0.1:6379
 %pytest tests/
 
@@ -89,6 +91,7 @@ export DYNACONF_TEST_REDIS_URL==http://127.0.0.1:6379
 %doc CHANGELOG.md README.md
 %license LICENSE
 %python_alternative %{_bindir}/dynaconf
-%{python_sitelib}/*
+%{python_sitelib}/dynaconf
+%{python_sitelib}/dynaconf-%{version}*-info
 
 %changelog
