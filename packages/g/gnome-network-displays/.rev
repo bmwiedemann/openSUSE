@@ -106,4 +106,13 @@ This is more futureproof.
   + Fix XDP session free operation (forwarded request 1267609 from iznogood)</comment>
     <requestid>1267623</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f7233e1768a3b8e95c09946a818f8929</srcmd5>
+    <version>0.97.0</version>
+    <time>1748277532</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.97.0:
+  + p2p: correct p2p peer add and remove (forwarded request 1279173 from iznogood)</comment>
+    <requestid>1279998</requestid>
+  </revision>
 </revisionlist>
