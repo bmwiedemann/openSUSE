@@ -2,6 +2,7 @@
 # spec file for package vorbis-tools
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +18,23 @@
 
 
 Name:           vorbis-tools
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        Ogg Vorbis Tools
 License:        GPL-2.0-only
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://www.xiph.org/
 Source0:        https://downloads.xiph.org/releases/vorbis/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE vorbis-tools-cflags.diff bnc#93888 -- Remove -fsigned-char option
-Patch1:         vorbis-tools-cflags.diff
-# PATCH-FIX-UPSTREAM bsc#1215942 CVE-2023-43361
-Patch2:         vorbis-tools-CVE-2023-43361.patch
-# PATCH-FIX-OPENSUSE  vorbis-tools-cflags.diff -- fix gcc14 issues
-Patch3:         vorbis-tools-gcc14.patch
-BuildRequires:  flac-devel
 BuildRequires:  gettext-tools
-BuildRequires:  libao-devel
-BuildRequires:  libcurl-devel
-BuildRequires:  libkate-devel
-BuildRequires:  libtool
-BuildRequires:  libvorbis-devel
 BuildRequires:  pkgconfig
-BuildRequires:  speex-devel
+BuildRequires:  pkgconfig(ao) >= 1.0.0
+BuildRequires:  pkgconfig(flac)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(oggkate)
+BuildRequires:  pkgconfig(opus)
+BuildRequires:  pkgconfig(speex)
+BuildRequires:  pkgconfig(vorbis) >= 1.3.0
 
 %description
 This package contains some tools for Ogg Vorbis:
@@ -51,44 +47,27 @@ vcut (which allows you to cut up Vorbis files).
 %lang_package
 
 %prep
-%setup -q
-%patch -P 1
-%patch -P 2 -p1
-%patch -P 3 -p1
+%autosetup -p1
 
 %build
-# Because of patch vorbis-tools-cflags.diff regenerate build system
-cp %{_datadir}/gettext/config.rpath .
-autoreconf --force --install
-export CFLAGS="%{optflags} -fPIE"
-export LDFLAGS="-pie"
-%configure --disable-rpath
+%configure
 %make_build
 
 %install
 %make_install
-
-# Remove unneeded files (they will be included in /usr/share/doc/packages/vorbis-tools/)
-rm -rf %{buildroot}%{_datadir}/doc/%{name}-%{version}/
+rm %{buildroot}%{_datadir}/doc/vorbis-tools/ogg123rc-example
 %find_lang %{name}
+
+%check
+%make_build check
 
 %files
 %license COPYING
 %doc AUTHORS CHANGES README
-%doc ogg123/ogg123rc-example
-%{_bindir}/ogg123
-%{_bindir}/oggdec
-%{_bindir}/oggenc
-%{_bindir}/ogginfo
-%{_bindir}/vcut
-%{_bindir}/vorbiscomment
-%{_mandir}/man1/ogg123.1%{?ext_man}
-%{_mandir}/man1/oggdec.1%{?ext_man}
-%{_mandir}/man1/oggenc.1%{?ext_man}
-%{_mandir}/man1/ogginfo.1%{?ext_man}
-%{_mandir}/man1/vcut.1%{?ext_man}
-%{_mandir}/man1/vorbiscomment.1%{?ext_man}
+%{_bindir}/*
+%{_mandir}/man1/*.1%{?ext_man}
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %changelog

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 24 06:11:20 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.3:
+  * handle disappearing audio device more gracefully
+  * Compiler and portability fixes
+  * Fixed memory leaks
+  * Update translations
+- drop patches included upstream or not required:
+  * vorbis-tools-CVE-2023-43361.patch
+  * vorbis-tools-cflags.diff
+  * vorbis-tools-gcc14.patch
+
+-------------------------------------------------------------------
 Tue May 14 14:03:09 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - vorbis-tools-gcc14.patch: fix gcc14 build issues
