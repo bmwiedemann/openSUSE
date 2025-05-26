@@ -1,7 +1,7 @@
 #
 # spec file for package umoci
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define project github.com/opencontainers/umoci
 
 Name:           umoci
-Version:        0.4.7
+Version:        0.5.0
 Release:        0
 Summary:        Open Container Image manipulation tool
 License:        Apache-2.0
@@ -29,10 +29,8 @@ URL:            https://umo.ci
 Source0:        https://github.com/opencontainers/umoci/releases/download/v%{version}/umoci.tar.xz#/%{name}-%{version}.tar.xz
 Source1:        https://github.com/opencontainers/umoci/releases/download/v%{version}/umoci.tar.xz.asc#/%{name}-%{version}.tar.xz.asc
 Source2:        https://umo.ci/%{name}.keyring
-# OPENSUSE-FIX-UPSTREAM: Backport of <https://github.com/opencontainers/umoci/pull/369>.
-Patch1:         0001-makefile-fix-bad-build-flags.patch
 BuildRequires:  fdupes
-BuildRequires:  go
+BuildRequires:  go >= 1.23
 BuildRequires:  go-go-md2man
 ExcludeArch:    s390
 
@@ -43,8 +41,6 @@ provided by the OCI.
 
 %prep
 %setup -q
-# <https://github.com/opencontainers/umoci/pull/369>
-%patch -P 1 -p1
 
 %build
 export VERSION="$(cat ./VERSION)"
@@ -54,6 +50,15 @@ if [ "$VERSION" != "%{version}" ]; then
 fi
 # Build umoci and docs.
 make VERSION="$VERSION" umoci docs
+
+# Make sure that our keyring copy is identical to upstream.
+our_keyring=$(sha256sum <"%{SOURCE2}")
+src_keyring=$(sha256sum <umoci.keyring)
+if [ "$our_keyring" != "$src_keyring" ]; then
+	echo "keyring file doesn't match upstream"
+	diff -u "%{SOURCE2}" umoci.keyring
+	exit 1
+fi
 
 %install
 # Install the binary.
