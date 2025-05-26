@@ -68,4 +68,20 @@
   + Updated translatios. (forwarded request 1272312 from iznogood)</comment>
     <requestid>1272346</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>111023be6ba9067f8b78cd0d9c82611c</srcmd5>
+    <version>48.3</version>
+    <time>1748277546</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.3:
+  + Bugs fixed:
+    - shell: disable dual-odd-left action when dual mode is
+      disabled.
+    - libview: Rerender annotation when the icon property is
+      updated
+    - shell: Display the filename if the document title is only
+      whitespace
+  + Updated translations. (forwarded request 1278984 from iznogood)</comment>
+    <requestid>1280011</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 21 08:12:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.3:
+  + Bugs fixed:
+    - shell: disable dual-odd-left action when dual mode is
+      disabled.
+    - libview: Rerender annotation when the icon property is
+      updated
+    - shell: Display the filename if the document title is only
+      whitespace
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Apr 24 06:52:17 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.2:
