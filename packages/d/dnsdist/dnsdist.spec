@@ -32,11 +32,17 @@
 %else
 %bcond_with     dnsdist_re2
 %endif
+
+%ifarch ppc64le
+%bcond_with     dnsdist_luajit
+%else
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1599
 %bcond_without  dnsdist_luajit
 %else
 %bcond_with     dnsdist_luajit
 %endif
+%endif
+
 Name:           dnsdist
 Version:        1.9.10
 Release:        0

@@ -147,4 +147,14 @@
   https://www.dnsdist.org/changelog.html#change-1.9.10</comment>
     <requestid>1280131</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>576dbb01f66ecea4810fd69b1944e414</srcmd5>
+    <version>1.9.10</version>
+    <time>1748283410</time>
+    <user>anag_factory</user>
+    <comment>no change for TW
+
+- disable luajit on ppc64le for SLFO (bsc#1243566)</comment>
+    <requestid>1280332</requestid>
+  </revision>
 </revisionlist>
