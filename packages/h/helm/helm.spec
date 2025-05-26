@@ -76,7 +76,7 @@ Fish command line completion support for %{name}.
 %goprep %{goipath}
 export K8S_MINOR=$(grep k8s.io/client-go go.mod | cut -d. -f3)
 export GO111MODULE=on
-%ifnarch %ix86 s390x
+%ifnarch %ix86 s390x riscv64
 export CGO_ENABLED=0
 %endif
 %gobuild -trimpath -tags '' -mod vendor -buildmode pie -ldflags \

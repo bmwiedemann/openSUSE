@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 22 18:13:21 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Don't disable CGO on riscv64
+
+-------------------------------------------------------------------
 Tue May 20 19:29:23 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - reduce parallelism even more on tests 
