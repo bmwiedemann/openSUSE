@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 14 03:39:00 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update URL to HTTPS
+
+-------------------------------------------------------------------
 Wed Mar 20 19:29:54 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Provide fallback in case %_firmwaredir is not defined
