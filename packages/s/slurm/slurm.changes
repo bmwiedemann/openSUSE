@@ -1,26 +1,283 @@
 -------------------------------------------------------------------
+Mon May 26 08:17:32 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Update to version 24.11.5
+  * Fix security issue where a coordinator could add a user with
+	elevated privileges. CVE-2025-43904.
+  * Return error to `scontrol` reboot on bad nodelists.
+  * `slurmrestd` - Report an error when QOS resolution fails for
+	v0.0.40 endpoints.
+  * `slurmrestd` - Report an error when QOS resolution fails for
+	v0.0.41 endpoints.
+  * `slurmrestd` - Report an error when QOS resolution fails for
+	v0.0.42 endpoints.
+  * `data_parser/v0.0.42` - Added `+inline_enums` flag which
+	modifies the output when generating OpenAPI specification.
+	It causes enum arrays to not be defined in their own schema
+	with references (`$ref`) to them. Instead they will be dumped
+	inline.
+  * Fix binding error with `tres-bind map/mask` on partial node
+	allocations.
+  * Fix `stepmgr` enabled steps being able to request features.
+  * Reject step creation if requested feature is not available
+	in job.
+  * `slurmd` - Restrict listening for new incoming RPC requests
+	further into startup.
+  * `slurmd` - Avoid `auth/slurm` related hangs of CLI commands
+	during startup and shutdown.
+  * `slurmctld` - Restrict processing new incoming RPC requests
+	further into startup. Stop processing requests sooner during
+	shutdown.
+  * `slurmcltd` - Avoid auth/slurm related hangs of CLI commands
+	during startup and shutdown.
+  * `slurmctld` - Avoid race condition during shutdown or
+	ereconfigure that could result in a crash due delayed
+	processing of a connection while plugins are unloaded.
+  * Fix small memleak when getting the job list from the database.
+  * Fix incorrect printing of `%` escape characters when printing
+	stdio fields for jobs.
+  * Fix padding parsing when printing stdio fields for jobs.
+  * Fix printing `%A` array job id when expanding patterns.
+  * Fix reservations causing jobs to be held for `Bad Constraints`.
+  * `switch/hpe_slingshot` - Prevent potential segfault on failed
+	curl request to the fabric manager.
+  * Fix printing incorrect array job id when expanding stdio file
+	names. The `%A` will now be substituted by the correct value.
+  * Fix printing incorrect array job id when expanding stdio file
+	names. The `%A` will now be substituted by the correct value.
+  * `switch/hpe_slingshot` - Fix VNI range not updating on slurmctld
+	restart or reconfigre.
+  * Fix steps not being created when using certain combinations of
+	`-c` and `-n` inferior to the jobs requested resources, when
+	using stepmgr and nodes are configured with
+	`CPUs == Sockets*CoresPerSocket`.
+  * Permit configuring the number of retry attempts to destroy CXI
+	service via the new destroy_retries `SwitchParameter`.
+  * Do not reset `memory.high` and `memory.swap.max` in slurmd
+	startup or reconfigure as we are never really touching this
+	in `slurmd`.
+  * Fix reconfigure failure of slurmd when it has been started
+	manually and the `CoreSpecLimits` have been removed from
+	`slurm.conf`.
+  * Set or reset CoreSpec limits when slurmd is reconfigured and
+	it was started with systemd.
+  * `switch/hpe-slingshot` - Make sure the slurmctld can free
+	step VNIs after the controller restarts or reconfigures while
+	the job is running.
+  * Fix backup `slurmctld` failure on 2nd takeover.
+- Changes from version 24.11.4
+  * `slurmctld`,`slurmrestd` - Avoid possible race condition that
+    could have caused process to crash when listener socket was
+    closed while accepting a new connection.
+  * `slurmrestd` - Avoid race condition that could have resulted
+	in address logged for a UNIX socket to be incorrect.
+  * `slurmrestd` - Fix parameters in OpenAPI specification for the
+    following endpoints to have `job_id` field:
+    ```
+    GET /slurm/v0.0.40/jobs/state/
+    GET /slurm/v0.0.41/jobs/state/
+    GET /slurm/v0.0.42/jobs/state/
+    GET /slurm/v0.0.43/jobs/state/
+    ```
+  * `slurmd` - Fix tracking of thread counts that could cause
+	incoming connections to be ignored after burst of simultaneous
+	incoming connections that trigger delayed response logic.
+  * Avoid unnecessary `SRUN_TIMEOUT` forwarding to `stepmgr`.
+  * Fix jobs being scheduled on higher weighted powered down nodes.
+  * Fix how backfill scheduler filters nodes from the available
+	nodes based on exclusive user and `mcs_label` requirements.
+  * `acct_gather_energy/{gpu,ipmi}` - Fix potential energy
+	consumption adjustment calculation underflow.
+  * `acct_gather_energy/ipmi` - Fix regression introduced in 24.05.5
+	(which introduced the new way of preserving energy measurements
+	through slurmd restarts) when `EnergyIPMICalcAdjustment=yes`.
+  * Prevent `slurmctld` deadlock in the assoc mgr.
+  * Fix memory leak when `RestrictedCoresPerGPU` is enabled.
+  * Fix preemptor jobs not entering execution due to wrong
+	calculation of accounting policy limits.
+  * Fix certain job requests that were incorrectly denied with
+	node configuration unavailable error.
+  * `slurmd` - Avoid crash due when slurmd has a communications
+	failure with `slurmstepd`.
+  * Fix memory leak when parsing yaml input.
+  * Prevent `slurmctld` from showing error message about `PreemptMode=GANG`
+	being a cluster-wide option for `scontrol update part` calls
+	that don't attempt to modify partition PreemptMode.
+  * Fix setting `GANG` preemption on partition when updating
+	`PreemptMode` with `scontrol`.
+  * Fix `CoreSpec` and `MemSpec` limits not being removed
+	from previously configured slurmd.
+  * Avoid race condition that could lead to a deadlock when `slurmd`,
+	`slurmstepd`, `slurmctld`, `slurmrestd` or `sackd` have a fatal
+	event.
+  * Fix jobs using `--ntasks-per-node` and `--mem` keep pending
+	forever	when the requested mem divided by the number of CPUs
+	will surpass the configured `MaxMemPerCPU`.
+  * `slurmd` - Fix address logged upon new incoming RPC connection
+    from `INVALID` to IP address.
+  * Fix memory leak when retrieving reservations. This affects
+	`scontrol`, `sinfo`, `sview`, and the following `slurmrestd`
+	endpoints:
+    `GET /slurm/{any_data_parser}/reservation/{reservation_name}`
+    `GET /slurm/{any_data_parser}/reservations`
+  * Log warning instead of `debuflags=conmgr` gated log when
+	deferring new incoming connections when number of active
+	connections exceed `conmgr_max_connections`.
+  * Avoid race condition that could result in worker thread pool
+	not activating all threads at once after a reconfigure resulting
+	in lower utilization of available CPU threads until enough
+	internal activity wakes up all threads in the worker pool.
+  * Avoid theoretical race condition that could result in new
+	incoming RPC
+    socket connections being ignored after reconfigure.
+  * slurmd - Avoid race condition that could result in a state
+	where	new incoming RPC connections will always be ignored.
+  * Add ReconfigFlags=KeepNodeStateFuture to restore saved `FUTURE`
+	node state on restart and reconfig instead of reverting to
+	`FUTURE` state. This will be made the default in 25.05.
+  * Fix case where hetjob submit would cause `slurmctld` to crash.
+  * Fix jobs using `--cpus-per-gpu` and `--mem` keep pending forever
+	when the requested mem divided by the number of CPUs will surpass
+	the configured `MaxMemPerCPU`.
+  * Enforce that jobs using `--mem` and several `--*-per-*` options
+	do not violate the `MaxMemPerCPU` in place.
+  * `slurmctld` - Fix use-cases of jobs incorrectly pending held
+	when `--prefer` features are not initially satisfied.
+  * `slurmctld` - Fix jobs incorrectly held when `--prefer` not
+	satisfied in some use-cases.
+  * Ensure `RestrictedCoresPerGPU` and `CoreSpecCount` don't overlap.
+- Fix backward compatibility fallout from last update.
+
+-------------------------------------------------------------------
 Thu Apr 24 12:31:16 UTC 2025 - Christian Goll <cgoll@suse.com>
 
-- removed openmpi4-hpc dependency for test suite 
+- removed openmpi4-hpc dependency for test suite.
 
 -------------------------------------------------------------------
 Fri Mar  7 09:44:31 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 24.11.3:
   * Fix database cluster ID generation not being random.
-  * Fix a regression in which slurmd -G gave no output.
-  * Fix a long-standing crash in slurmctld after updating a
-    reservation with an empty nodelist.
-  * Other minor to moderate bugs.
-- Sync upgrades file to relfect last updated versions.
-- Pass '-DH5_USE_112_API -DDH5Oget_info_vers=1' to CFLAGS to allow
+  * Fix a regression in which `slurmd -G` gave no output.
+  * Fix a long-standing crash in `slurmctld` after updating a
+    reservation with an empty nodelist. The crash could occur
+	after restarting slurmctld, or if downing/draining a node
+	in the reservation with the `REPLACE` or `REPLACE_DOWN` flag.
+  * Avoid changing process name to "`watch`" from original daemon name.
+    This could potentially breaking some monitoring scripts.
+  * Avoid `slurmctld` being killed by `SIGALRM` due to race condition
+    at startup.
+  * Fix race condition in slurmrestd that resulted in "`Requested
+    data_parser plugin does not support OpenAPI plugin`" error being
+	returned for valid endpoints.
+  * Fix race between `task/cgroup` CPUset and `jobacctgather/cgroup`.
+    The first was removing the pid from `task_X` cgroup directory
+	causing memory limits to not being applied.
+  * If multiple partitions are requested, set the `SLURM_JOB_PARTITION`
+    output environment variable to the partition in which the job is
+	running for `salloc` and `srun` in order to match the documentation
+	and the behavior of `sbatch`.
+  * `srun` - Fixed wrongly constructed `SLURM_CPU_BIND` env variable
+    that could get propagated to downward srun calls in certain mpi
+    environments, causing launch failures.
+  * Don't print misleading errors for stepmgr enabled steps.
+  * `slurmrestd` - Avoid connection to slurmdbd for the following
+    endpoints:
+	```
+    GET /slurm/v0.0.41/jobs
+    GET /slurm/v0.0.41/job/{job_id}
+	```
+  * `slurmrestd` - Avoid connection to slurmdbd for the following
+    endpoints:
+	```
+    GET /slurm/v0.0.40/jobs
+    GET /slurm/v0.0.40/job/{job_id}
+	```
+  * `slurmrestd` - Fix possible memory leak when parsing arrays with
+    `data_parser/v0.0.40`.
+  * `slurmrestd` - Fix possible memory leak when parsing arrays with
+    `data_parser/v0.0.41`.
+  * `slurmrestd` - Fix possible memory leak when parsing arrays with
+    `data_parser/v0.0.42`.
+
+- Changes from version 24.11.2:
+  * Fix segfault when submitting `--test-only` jobs that can
+    preempt.
+  * Fix regression introduced in 23.11 that prevented the
+    following flags from being added to a reservation on an
+    update: `DAILY`, `HOURLY`, `WEEKLY`, `WEEKDAY`, and `WEEKEND`.
+  * Fix crash and issues evaluating job's suitability for running
+    in nodes with already suspended job(s) there.
+  * `slurmctld` will ensure that healthy nodes are not reported as
+    `UnavailableNodes` in job reason codes.
+  * Fix handling of jobs submitted to a current reservation with
+    flags `OVERLAP,FLEX` or `OVERLAP,ANY_NODES` when it overlaps nodes
+    with a future maintenance reservation. When a job submission
+    had a time limit that overlapped with the future maintenance
+    reservation, it was rejected. Now the job is accepted but
+    stays pending with the reason "`ReqNodeNotAvail, Reserved for
+    maintenance`".
+  * `pam_slurm_adopt` - avoid errors when explicitly setting some
+    arguments to the default value.
+  * Fix QOS preemption with `PreemptMode=SUSPEND`.
+  * `slurmdbd` - When changing a user's name update lineage at the
+    same time.
+  * Fix regression in 24.11 in which `burst_buffer.lua` does not
+    inherit the `SLURM_CONF` environment variable from `slurmctld` and
+    fails to run if slurm.conf is in a non-standard location.
+  * Fix memory leak in slurmctld if `select/linear` and the
+    `PreemptParameters=reclaim_licenses` options are both set in
+    `slurm.conf`.  Regression in 24.11.1.
+  * Fix running jobs, that requested multiple partitions, from
+    potentially being set to the wrong partition on restart.
+  * `switch/hpe_slingshot` - Fix compatibility with newer cxi
+    drivers, specifically when specifying `disable_rdzv_get`.
+  * Add `ABORT_ON_FATAL` environment variable to capture a backtrace
+    from any `fatal()` message.
+  * Fix printing invalid address in rate limiting log statement.
+  * `sched/backfill` - Fix node state `PLANNED` not being cleared from
+    fully allocated nodes during a backfill cycle.
+  * `select/cons_tres` - Fix future planning of jobs with
+    `bf_licenses`.
+  * Prevent redundant "`on_data returned rc: Rate limit exceeded,
+    please retry momentarily`" error message from being printed in
+    slurmctld logs.
+  * Fix loading non-default QOS on pending jobs from pre-24.11
+    state.
+  * Fix pending jobs displaying `QOS=(null)` when not explicitly
+    requesting a QOS.
+  * Fix segfault issue from job record with no `job_resrcs`.
+  * Fix failing `sacctmgr delete/modify/show` account operations
+    with `where` clauses.
+  * Fix regression in 24.11 in which Slurm daemons started
+    catching several `SIGTSTP`, `SIGTTIN` and `SIGUSR1` signals and
+    ignored them, while before they were not ignoring them. This
+    also caused slurmctld to not being able to shutdown after a
+    `SIGTSTP` because slurmscriptd caught the signal and stopped
+    while slurmctld ignored it. Unify and fix these situations and
+    get back to the previous behavior for these signals.
+  * Document that `SIGQUIT` is no longer ignored by `slurmctld`,
+    `slurmdbd`, and slurmd in 24.11. As of 24.11.0rc1, `SIGQUIT` is
+    identical to `SIGINT` and `SIGTERM` for these daemons, but this
+    change was not documented.
+  * Fix not considering nodes marked for reboot without ASAP in
+    the scheduler.
+  * Remove the `boot^` state on unexpected node reboot after return
+    to service.
+  * Do not allow new jobs to start on a node which is being
+    rebooted with the flag `nextstate=resume`.
+  * Prevent lower priority job running after cancelling an ASAP
+    reboot.
+  * Fix srun jobs starting on `nextstate=resume` rebooting nodes.
+- Sync upgrades file to reflect last updated versions.
+- Pass `-DH5_USE_112_API -DDH5Oget_info_vers=1` to CFLAGS to allow
   building with hdf5 1.14 as slurm does not yet support HDF5 v114
   API.
 
 -------------------------------------------------------------------
 Fri Feb  7 11:51:59 UTC 2025 - Egbert Eich <eich@suse.com>
 
-Update to version 24.11.1:
+- Update to version 24.11.1:
   * With client commands `MIN_MEMORY` will show `mem_per_tres` if
     specified.
   * Fix errno message about bad constraint.

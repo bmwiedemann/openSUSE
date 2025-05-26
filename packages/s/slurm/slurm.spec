@@ -18,8 +18,8 @@
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 42
-# Make sure to update `upgrades` as well!
-%define ver 24.11.3
+# Make sure to update `upgrades` as well if version is to be released with SLES!
+%define ver 24.11.5
 %define _ver _24_11
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
@@ -597,6 +597,9 @@ Requires:       bzip2
 Requires:       expect
 Requires:       gcc-c++
 Requires:       libnuma-devel
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%ts_depends:     openmpi4-gnu-hpc-devel
+%endif
 Requires:       pam
 Requires:       pdsh
 Requires:       perl-%{name} = %version
@@ -801,7 +804,7 @@ Cflags: -I\${includedir}
 Libs: -L\${libdir} -lslurm
 Description: Slurm API
 Name:           %{pname}
-Version:        24.11.2
+Version:        %{ver}
 EOF
 
 # Enable rotation of log files
