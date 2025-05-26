@@ -1,7 +1,7 @@
 #
 # spec file for package caribou
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,6 @@
 Name:           caribou
 Version:        0.4.21
 Release:        0
-# FIXME: Stop hiding the .desktop file with %%suse_update_desktop_file -u if launching caribou finally works
 Summary:        On-screen Keyboard for GNOME
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
@@ -44,7 +43,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-gobject >= 3.18
 BuildRequires:  python3-xml
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.13
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(atspi-2)
@@ -175,8 +173,6 @@ make %{?_smp_mflags}
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
-# FIXME: We have to unhide this when the application gets its icon (bnc#726954, bgo#618293) and when caribou actually works
-%suse_update_desktop_file %{name}-autostart
 %fdupes %{buildroot}
 
 %post -n libcaribou0 -p /sbin/ldconfig

@@ -345,4 +345,15 @@
     <comment></comment>
     <requestid>1195158</requestid>
   </revision>
+  <revision rev="44" vrev="10">
+    <srcmd5>bbef8579c1801458d3093d89d491dbb4</srcmd5>
+    <version>0.4.21</version>
+    <time>1748277549</time>
+    <user>anag_factory</user>
+    <comment>- Drop obsolete update-desktop-files BuildRequires and macro.
+The FIXME should have been dropped 12 years ago :-)
+
+https://build.opensuse.org/package/rdiff/GNOME:Factory/caribou?linkrev=base&amp;rev=30 (forwarded request 1279500 from iznogood)</comment>
+    <requestid>1280015</requestid>
+  </revision>
 </revisionlist>
