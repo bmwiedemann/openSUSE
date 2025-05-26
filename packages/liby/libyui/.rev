@@ -781,4 +781,12 @@ build/package/libyui.spec:Version:        3.0.13</comment>
 - Bump version to 4.7.0 to avoid conflicts with the SLE15-SP6 version</comment>
     <requestid>1277165</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>4854c1a38e3fce8a8a911010bc2c5817</srcmd5>
+    <version>4.7.2</version>
+    <time>1748277129</time>
+    <user>anag_factory</user>
+    <comment>submit new version 4.7.2</comment>
+    <requestid>1279580</requestid>
+  </revision>
 </revisionlist>

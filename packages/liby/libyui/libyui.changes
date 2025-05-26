@@ -1,11 +1,15 @@
 -------------------------------------------------------------------
+Fri May 23 08:11:46 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Use %make_build instead of %jobs to improve reproducible builds (boo#1237231)
+
+-------------------------------------------------------------------
 Tue May 13 12:19:32 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Fix build failure with gcc-15:
   Don't build libyui-rest-api with -Werror to complain about
   wstring_convert that was deprecated without any replacement
   (bsc#1241933)
-- 4.7.1
 
 -------------------------------------------------------------------
 Thu Sep 19 08:08:26 UTC 2024 - Ladislav Slezák <lslezak@suse.com>

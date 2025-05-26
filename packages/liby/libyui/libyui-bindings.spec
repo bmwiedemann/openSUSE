@@ -20,7 +20,7 @@
 Name:           libyui-bindings
 
 # DO NOT manually bump the version here; instead, use rake version:bump
-Version:        4.7.1
+Version:        4.7.2
 Release:        0
 Summary:        Bindings for libyui
 License:        LGPL-2.1-only OR LGPL-3.0-only
@@ -68,7 +68,7 @@ cmake -DYPREFIX=%{prefix} \
       -DCMAKE_SKIP_RPATH=1 \
       -DBUILD_RUBY_GEM=no \
       ..
-make %{?jobs:-j %jobs}
+%make_build
 popd
 
 %install
