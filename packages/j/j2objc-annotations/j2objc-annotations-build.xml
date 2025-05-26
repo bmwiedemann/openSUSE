@@ -8,7 +8,7 @@
 
   <property name="project.groupId" value="com.google.j2objc"/>
   <property name="project.artifactId" value="j2objc-annotations"/>
-  <property name="project.version" value="2.2"/>
+  <property name="project.version" value="3.0.0"/>
 
   <property name="compiler.source" value="1.8"/>
   <property name="compiler.target" value="${compiler.source}"/>
@@ -35,19 +35,38 @@
 
   <target name="compile" description="Compile the code">
     <mkdir dir="${build.outputDir}"/>
-    <javac destdir="${build.outputDir}" 
-           nowarn="false" 
-           debug="true" 
-           encoding="UTF-8" 
-           optimize="false" 
-           deprecation="true" 
-           target="${compiler.target}" 
-           verbose="false" 
-           fork="false" 
+    <javac destdir="${build.outputDir}"
+           nowarn="false"
+           debug="true"
+           encoding="UTF-8"
+           optimize="false"
+           deprecation="true"
+           target="${compiler.target}"
+           verbose="false"
+           fork="false"
            source="${compiler.source}">
+	  <exclude name="**/module-info.java"/>
       <src>
         <pathelement location="${build.srcDir}"/>
       </src>
+    </javac>
+    <javac destdir="${build.outputDir}"
+           nowarn="false"
+           debug="true"
+           encoding="utf-8"
+           optimize="false"
+           deprecation="true"
+           target="9"
+           verbose="false"
+           fork="false"
+           source="9">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+      </src>
+	  <include name="**/module-info.java"/>
+      <modulepath>
+        <pathelement location="${build.outputDir}"/>
+      </modulepath>
     </javac>
   </target>
 
@@ -56,25 +75,25 @@
   <!-- ====================================================================== -->
 
   <target name="javadoc" description="Generates the Javadoc of the application">
-    <javadoc sourcepath="${build.srcDir}" 
-             packagenames="*" 
-             destdir="${reporting.outputDirectory}/apidocs" 
-             access="protected" 
-             source="${compiler.source}" 
-             verbose="false" 
-             version="true" 
-             use="true" 
-             author="true" 
-             splitindex="false" 
-             nodeprecated="false" 
-             nodeprecatedlist="false" 
-             notree="false" 
-             noindex="false" 
-             nohelp="false" 
-             nonavbar="false" 
-             serialwarn="false" 
-             encoding="UTF-8" 
-             linksource="false" 
+    <javadoc sourcepath="${build.srcDir}"
+             packagenames="*"
+             destdir="${reporting.outputDirectory}/apidocs"
+             access="protected"
+             source="${compiler.source}"
+             verbose="false"
+             version="true"
+             use="true"
+             author="true"
+             splitindex="false"
+             nodeprecated="false"
+             nodeprecatedlist="false"
+             notree="false"
+             noindex="false"
+             nohelp="false"
+             nonavbar="false"
+             serialwarn="false"
+             encoding="UTF-8"
+             linksource="false"
              breakiterator="false"/>
   </target>
 
@@ -83,10 +102,10 @@
   <!-- ====================================================================== -->
 
   <target name="package" depends="compile" description="Package the application">
-    <jar jarfile="${build.dir}/${build.finalName}.jar" 
-         compress="true" 
-         index="false" 
-         basedir="${build.outputDir}" 
+    <jar jarfile="${build.dir}/${build.finalName}.jar"
+         compress="true"
+         index="false"
+         basedir="${build.outputDir}"
          excludes="**/package.html"/>
   </target>
 

@@ -1,7 +1,7 @@
 #
 # spec file for package j2objc-annotations
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           j2objc-annotations
-Version:        2.2
+Version:        3.0.0
 Release:        0
 Summary:        J2ObjC Annotations
 License:        Apache-2.0
@@ -47,8 +47,6 @@ This package provides %{summary}.
 %setup -q
 cp %{SOURCE1} .
 cp %{SOURCE2} build.xml
-
-%pom_remove_parent
 
 %build
 %{ant} jar javadoc
