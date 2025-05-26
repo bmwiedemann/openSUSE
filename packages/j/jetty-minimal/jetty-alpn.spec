@@ -1,7 +1,7 @@
 #
 # spec file for package jetty-alpn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,10 +18,10 @@
 
 
 %global base_name jetty
-%global addver  .v20240826
+%global addver  .v20241219
 %define src_name %{base_name}.project-%{base_name}-%{version}%{addver}
 Name:           %{base_name}-alpn
-Version:        9.4.56
+Version:        9.4.57
 Release:        0
 Summary:        The alpn modules for Jetty
 License:        Apache-2.0 OR EPL-1.0

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 26 10:30:44 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 9.4.57.v20241219
+  * Security fixes:
+    + CVE-2024-6763, bsc#1231652: the HttpURI class does
+      insufficient validation on the authority segment of a URI
+    + CVE-2024-13009, bsc#1243271: Gzip Request Body Buffer
+      Corruption
+  * Changes:
+    + #12268 - IteratingCallback may iterate too much when process()
+      returns Action.IDLE
+    + #12648 - Backport improved handling of bad Gzip content (and
+      Gzip Exceptions)
+    + #12532 - Backport of deprecation of UserInfo on URI (in
+      violation of RFC2616 spec)
+
+-------------------------------------------------------------------
 Tue Oct 15 21:27:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 9.4.56.v20240826

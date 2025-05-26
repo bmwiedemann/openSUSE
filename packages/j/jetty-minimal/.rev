@@ -215,4 +215,12 @@
     <comment>Allow building against servlet api 4</comment>
     <requestid>1226462</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1f99caa431623057e9c72db264eab3d7</srcmd5>
+    <version>9.4.57</version>
+    <time>1748277628</time>
+    <user>anag_factory</user>
+    <comment>security fixes</comment>
+    <requestid>1280113</requestid>
+  </revision>
 </revisionlist>
