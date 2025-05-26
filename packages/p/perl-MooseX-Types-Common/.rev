@@ -139,4 +139,18 @@
     <comment>1</comment>
     <requestid>451965</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1dd7d7cf5a7289836452b31c6f1227a6</srcmd5>
+    <version>0.001015</version>
+    <time>1748277349</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1278613 from tinita
+
+- updated to 0.001015
+   see /usr/share/doc/packages/perl-MooseX-Types-Common/Changes
+  0.001015  2025-04-20 16:59:58Z
+    - fix warnings caused by Moose no longer being loaded (since MooseX::Types
+      0.51)</comment>
+    <requestid>1279796</requestid>
+  </revision>
 </revisionlist>
