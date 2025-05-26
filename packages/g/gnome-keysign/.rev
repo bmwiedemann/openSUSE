@@ -188,4 +188,12 @@ Binary file gnome-keysign-0.9.tar.xz (revision 3) deleted</comment>
     <comment>Prepare for RPM 4.20</comment>
     <requestid>1145232</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>6e8b8ec28a4dd9a0c746e88a2bc0b681</srcmd5>
+    <version>0.9.7.2</version>
+    <time>1748277533</time>
+    <user>anag_factory</user>
+    <comment>- Drop obsolete update-desktop-files BuildRequires and macro. (forwarded request 1279533 from iznogood)</comment>
+    <requestid>1279999</requestid>
+  </revision>
 </revisionlist>

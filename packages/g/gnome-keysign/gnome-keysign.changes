@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 23 12:11:11 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete update-desktop-files BuildRequires and macro.
+
+-------------------------------------------------------------------
 Thu Feb  8 16:02:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Prepare for RPM 4.20: use autosetup.

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-keysign
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ BuildRequires:  gobject-introspection
 BuildRequires:  python3-Babel
 BuildRequires:  python3-lxml
 BuildRequires:  python3-setuptools
-BuildRequires:  update-desktop-files
 %ifarch aarch64 ppc64 ppc64le riscv64 s390x x86_64
 Requires:       gstreamer1(element-zbar)()(64bit)
 %else
@@ -63,7 +62,6 @@ python3 setup.py build
 
 %install
 python3 setup.py install -O1 --skip-build --root %{buildroot}
-%suse_update_desktop_file -r org.gnome.Keysign System Security
 
 %files
 %license COPYING
