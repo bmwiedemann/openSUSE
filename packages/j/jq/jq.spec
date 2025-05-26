@@ -25,6 +25,7 @@ License:        CC-BY-3.0 AND MIT
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/jqlang
 Source:         https://github.com/jqlang/jq/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
+Patch0:         CVE-2024-53427.patch
 BuildRequires:  chrpath
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(oniguruma)

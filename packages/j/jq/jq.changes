@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 20 17:19:29 UTC 2025 - Nathan Cutler <ncutler@suse.com>
+
+- Add patch CVE-2024-53427.patch (CVE-2024-53427, bsc#1238078)
+
+-------------------------------------------------------------------
 Tue May  6 20:43:03 UTC 2025 - Martin Jambor <mjambor@suse.com>
 
 - Build with compiler option -std=gnu17 to avoid issues with code
