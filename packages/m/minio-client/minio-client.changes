@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May 25 07:51:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 20250521T015954Z:
+  * Fix deletion of previously sync'd buckets and objects during
+    mc-mirror (#5205)
+  * Add STATUS column to batch job list table output (#5202)
+  * fix: remove check if lock config exists before set (#5203)
+  * removing config cmd (#5201)
+  * fix: support chained mirror properly for delete propagation
+    #4558 (#5197)
+  * Change support profile defaults (#5198)
+  * Explicitly set file permissions for
+    admin-cluster-{bucket,iam}-export… (#5194)
+  * Add support for catalog batch job type (#5150)
+  * Add `idp openid accesskey` commands (#5182)
+
+-------------------------------------------------------------------
 Tue Apr 22 22:39:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 20250416T181326Z:
