@@ -91,10 +91,10 @@
     <package name="cockpit-networkmanager" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="cockpit-packagekit" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:expansion -->
     <package name="cockpit-podman" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:expansion -->
-    <package name="cockpit-selinux-policies" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="cockpit-system" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="cockpit-tukit" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:expansion -->
     <package name="cockpit-ws" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="cockpit-ws-selinux" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="colord" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="colord-color-profiles" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="compat-usrmerge-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->

@@ -102,6 +102,7 @@ unsorted:
   - KEALib-devel 
   - Komikku 
   - Komikku-lang 
+  - KubeNodeUsage 
   - LHAPDF-devel 
   - LHAPDF-doc 
   - LaTeXML 
@@ -146,6 +147,8 @@ unsorted:
   - Mesa-vulkan-overlay-32bit 
   - MicroOS-release-dvd 
   - MirrorCache 
+  - MistServer 
+  - MistServer-devel 
   - ModemManager-devel 
   - Modules 
   - Modules-doc 
@@ -1923,8 +1926,6 @@ unsorted:
   - callaudiod 
   - callaudiod-devel 
   - callaudiod-doc 
-  - calligra-plan 
-  - calligra-plan-lang 
   - calls 
   - calls-lang 
   - calls-ofono 
@@ -1961,6 +1962,7 @@ unsorted:
   - cargo1.84 
   - cargo1.85 
   - cargo1.86 
+  - cargo1.87 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -2998,6 +3000,7 @@ unsorted:
   - cyreal-alice-fonts 
   - cyreal-junge-fonts 
   - cyreal-lora-fonts 
+  - cyreal-lora-variable-fonts 
   - cyreal-marko-horobchyk-fonts 
   - cyreal-marmelad-fonts 
   - cyreal-wire-fonts 
@@ -7411,7 +7414,6 @@ unsorted:
   - gns3-gui 
   - gns3-server 
   - gnu-cobol 
-  - gnu-crypto 
   - gnu-efi-apps 
   - gnu-efi-devel 
   - gnu-free-fonts 
@@ -10283,7 +10285,6 @@ unsorted:
   - klp-build 
   - kmailtransport-devel 
   - kmbox-devel 
-  - kmediaplayer-devel 
   - kmime-devel 
   - kmix 
   - kmix-lang 
@@ -10367,8 +10368,6 @@ unsorted:
   - kphotoalbum 
   - kphotoalbum-lang 
   - kpimtextedit-devel 
-  - kpipewire-devel 
-  - kpipewire-imports 
   - kpipewire6-devel 
   - kpkpass-devel 
   - kplotting-devel 
@@ -10428,7 +10427,6 @@ unsorted:
   - kross-lang 
   - kruler 
   - kruler-lang 
-  - krunner-devel 
   - krunvm 
   - krusader 
   - krusader-doc 
@@ -10524,6 +10522,10 @@ unsorted:
   - kubectl-foreach 
   - kubectl-gather 
   - kubectl-gather-bash-completion 
+  - kubectl-klock 
+  - kubectl-klock-bash-completion 
+  - kubectl-klock-fish-completion 
+  - kubectl-klock-zsh-completion 
   - kubectl-neat 
   - kubectl-node-shell 
   - kubectl-np-viewer 
@@ -10534,6 +10536,10 @@ unsorted:
   - kubectl-retina-fish-completion 
   - kubectl-retina-zsh-completion 
   - kubectl-rook-ceph 
+  - kubectl-switch 
+  - kubectl-switch-bash-completion 
+  - kubectl-switch-fish-completion 
+  - kubectl-switch-zsh-completion 
   - kubectl-tree 
   - kubectl-validate 
   - kubectl-view-allocations 
@@ -10705,7 +10711,6 @@ unsorted:
   - kwave 
   - kwave-lang 
   - kwayland-devel 
-  - kwayland-integration 
   - kwayland6-devel 
   - kwctl 
   - kweather 
@@ -11146,11 +11151,6 @@ unsorted:
   - libKF5ItemModels5 
   - libKF5KDELibs4Support5 
   - libKF5KDcraw5 
-  - libKF5MediaPlayer5 
-  - libKF5ModemManagerQt-devel 
-  - libKF5ModemManagerQt6 
-  - libKF5NetworkManagerQt-devel 
-  - libKF5NetworkManagerQt6 
   - libKF5NewStuff5 
   - libKF5NewStuff5-lang 
   - libKF5NewStuffCore5 
@@ -11161,7 +11161,6 @@ unsorted:
   - libKF5Plotting5 
   - libKF5Pty5 
   - libKF5Pty5-lang 
-  - libKF5Runner5 
   - libKF5Su5 
   - libKF5Su5-lang 
   - libKF5Syndication5 
@@ -11178,10 +11177,6 @@ unsorted:
   - libKPim6GAPILatitude6 
   - libKPim6GAPIMaps6 
   - libKPim6IdentityManagementQuick6 
-  - libKPipeWire5 
-  - libKPipeWire5-lang 
-  - libKPipeWireDmaBuf5 
-  - libKPipeWireRecord5 
   - libKPropertyCore3-4 
   - libKPropertyWidgets3-4 
   - libKPublicTransport1 
@@ -11301,7 +11296,6 @@ unsorted:
   - libQCoro6Qml0 
   - libQCoro6Quick0 
   - libQCoro6WebSockets0 
-  - libQMatrixClient0_5_3 
   - libQXmppQt5-5 
   - libQXmppQt5-devel 
   - libQXmppQt6-5 
@@ -15336,7 +15330,6 @@ unsorted:
   - libqimageblitz5-devel 
   - libqjack-devel 
   - libqjack0 
-  - libqmatrixclient-devel 
   - libqmi-devel 
   - libqmmp-devel 
   - libqmmp-plugins 
@@ -16764,6 +16757,7 @@ unsorted:
   - libwireshark18 
   - libwiretap15 
   - libwlroots-0_18 
+  - libwlroots-0_19 
   - libwlroots12 
   - libwmf-0_2-7-32bit 
   - libwmf-devel 
@@ -19674,6 +19668,7 @@ unsorted:
   - obs-service-replace_using_env 
   - obs-service-replace_using_package_version 
   - obs-service-roast 
+  - obs-service-roast_scm 
   - obs-service-set_version 
   - obs-service-snapcraft 
   - obs-service-source_validator 
@@ -20063,6 +20058,7 @@ unsorted:
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
   - openSUSE-repos-Leap 
+  - openSUSE-repos-Leap-NVIDIA 
   - openSUSE-repos-MicroOS 
   - openSUSE-repos-MicroOS-NVIDIA 
   - openSUSE-repos-Slowroll 
@@ -21364,7 +21360,6 @@ unsorted:
   - perl-Font-TTF 
   - perl-FreezeThaw 
   - perl-Furl 
-  - perl-Fuse 
   - perl-Future 
   - perl-Future-IO 
   - perl-GD-Barcode 
@@ -26054,8 +26049,6 @@ unsorted:
   - python311-pony 
   - python311-pooch 
   - python311-pook 
-  - python311-poppler-qt5 
-  - python311-poppler-qt5-devel 
   - python311-port-for 
   - python311-portalocker 
   - python311-portend 
@@ -29792,8 +29785,6 @@ unsorted:
   - python312-policycoreutils 
   - python312-pooch 
   - python312-pook 
-  - python312-poppler-qt5 
-  - python312-poppler-qt5-devel 
   - python312-port-for 
   - python312-portalocker 
   - python312-portend 
@@ -33501,8 +33492,6 @@ unsorted:
   - python313-polib 
   - python313-pooch 
   - python313-pook 
-  - python313-poppler-qt5 
-  - python313-poppler-qt5-devel 
   - python313-port-for 
   - python313-portalocker 
   - python313-portend 
@@ -36325,6 +36314,8 @@ unsorted:
   - rust1.85-src 
   - rust1.86 
   - rust1.86-src 
+  - rust1.87 
+  - rust1.87-src 
   - rustdesk-server 
   - rustdesk-server-hbbr 
   - rustdesk-server-hbbs 
@@ -37795,8 +37786,6 @@ unsorted:
   - tetragon-cli-zsh-completion 
   - tetrinet-server 
   - tevent-man 
-  - texamator 
-  - texamator-lang 
   - texi2html 
   - texi2html-lang 
   - texi2roff 
@@ -48715,6 +48704,7 @@ unsorted:
   - wlr-sunclock 
   - wlrctl 
   - wlroots-0_17-devel 
+  - wlroots-0_18-devel 
   - wlroots-devel 
   - wlsunset 
   - wm-icons 
