@@ -1,7 +1,7 @@
 #
 # spec file for package python-dbfread
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dbfread
 Version:        2.0.7
 Release:        0
@@ -28,8 +27,10 @@ Source:         https://files.pythonhosted.org/packages/source/d/dbfread/dbfread
 # gh#olemb/dbfread#33
 Patch0:         pytest4.patch
 Patch1:         field_parser.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -45,10 +46,10 @@ batch jobs and one-off scripts.
 %autosetup -p1 -n dbfread-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +58,7 @@ batch jobs and one-off scripts.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/dbfread
+%{python_sitelib}/dbfread-%{version}*-info
 
 %changelog

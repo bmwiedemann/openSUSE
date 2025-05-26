@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 26 11:27:21 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Jul 23 11:06:07 UTC 2024 - Berthold Gunreben <azouhr@opensuse.org>
 
 - Add field_parser.patch to ensure that fields are parsed with
