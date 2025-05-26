@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 23 18:33:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.36.2:
+  * Fixes
+    - Run ContainerStart sequentially by @ndeloof in #12851
+    - Only use attestation when building image outside the
+      development inner loop by @glours in #12853
+    - Report error (re)creating container by @ndeloof in #12859
+    - Fix up --build with additional_context dependency by @ndeloof
+      in #12863
+  * Internal
+    - Add example provider implementation by @ndeloof in #12848
+    - Add up --build e2e test by @ndeloof in #12864
+  * Dependencies
+    - Build(deps): bump github.com/containerd/containerd/v2 from
+      2.1.0 to 2.1.1 by @dependabot in #12857
+    - Bump compose-go to v2.6.4 by @glours in #12867
+    - Bump buildkit v0.22.0 and buildx v0.24.0 by @glours in #12868
+
+-------------------------------------------------------------------
 Mon May 19 13:36:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.36.1:
