@@ -80,4 +80,12 @@
   * Fix plugin manager verifyRunning function to avoid false positives, which lead to failure to start the plugin manager. Fixes #4507 (forwarded request 1277749 from ph03nix)</comment>
     <requestid>1277802</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d81e841b61eb464106278d08038bd2bd</srcmd5>
+    <version>1.1.3</version>
+    <time>1748283401</time>
+    <user>anag_factory</user>
+    <comment>- Fixed _service: Switch revision from main to actual version (forwarded request 1279214 from ph03nix)</comment>
+    <requestid>1280311</requestid>
+  </revision>
 </revisionlist>
