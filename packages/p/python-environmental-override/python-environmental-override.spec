@@ -1,7 +1,7 @@
 #
 # spec file for package python-environmental-override
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-environmental-override
 Version:        0.1.2
 Release:        0
@@ -26,7 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/coddingtonbear/environmental-override
 Source:         https://files.pythonhosted.org/packages/source/e/environmental-override/environmental-override-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -40,13 +41,14 @@ environment variables.
 %setup -q -n environmental-override-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/environmental[-_]override
+%{python_sitelib}/environmental[-_]override-%{version}*-info
 
 %changelog
