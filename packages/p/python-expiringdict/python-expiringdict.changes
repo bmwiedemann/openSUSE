@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 27 10:22:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Feb 13 13:07:40 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip broken test "test_repr" in python3.12+

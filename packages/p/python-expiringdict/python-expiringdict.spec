@@ -1,7 +1,7 @@
 #
 # spec file for package python-expiringdict
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-expiringdict
 Version:        1.2.2
 Release:        0
@@ -28,7 +26,9 @@ URL:            https://www.mailgun.com/
 Source:         https://github.com/mailgun/expiringdict/archive/refs/tags/v%{version}.tar.gz#/expiringdict-%{version}.tar.gz
 Patch0:         remove-nose.patch
 BuildRequires:  %{python_module dill}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-dill
@@ -51,10 +51,10 @@ max_len elements - the oldest will be deleted.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
