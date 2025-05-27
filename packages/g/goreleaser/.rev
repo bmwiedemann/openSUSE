@@ -116,4 +116,12 @@
   * fix: upx properly handle skips (#5720) (forwarded request 1273570 from ph03nix)</comment>
     <requestid>1273639</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4c4bf493cd1020c6e8149effc3016a3f</srcmd5>
+    <version>2.9.0</version>
+    <time>1748364137</time>
+    <user>anag_factory</user>
+    <comment>- Fixed _service: Switch revision from main to actual version (forwarded request 1279215 from ph03nix)</comment>
+    <requestid>1280339</requestid>
+  </revision>
 </revisionlist>
