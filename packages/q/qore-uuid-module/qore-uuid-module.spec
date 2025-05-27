@@ -26,7 +26,7 @@ License:        LGPL-2.1-or-later OR MIT
 Group:          Development/Languages
 URL:            https://qore.org
 Source:         https://github.com/qorelanguage/module-uuid/archive/refs/tags/v%{version}.tar.gz#/%{src_name}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -34,6 +34,7 @@ BuildRequires:  graphviz
 BuildRequires:  libuuid-devel
 BuildRequires:  qore >= 1.12.4
 BuildRequires:  qore-devel >= 1.12.4
+BuildRequires:  (qore-stdlib if qore >= 2.0)
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 
 %description
@@ -44,6 +45,7 @@ UUIDs are universally unique identifiers that can be used for any purpose.
 %package doc
 Summary:        Documentation and examples for the Qore UUID module
 Group:          Development/Languages
+BuildArch:      noarch
 
 %description doc
 This package contains the HTML documentation and example programs for the Qore
@@ -53,6 +55,9 @@ uuid module.
 %setup -q -n %{src_name}
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake
 %make_build docs
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 12 15:57:01 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Add CMAKE Policy for CMAKE 4.0
+- Update for qore >= 2.0
+
+-------------------------------------------------------------------
 Mon Jul  1 10:40:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Remove BuildRequirement qore-stdlib after the move of qore-stdlib
