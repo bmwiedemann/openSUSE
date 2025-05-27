@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 23 13:03:09 UTC 2025 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to 2025.4
+  * Fix error in narwhals hook when typing-extensions is not available 
+    in the build environment (neither stand-alone version is installed 
+    nor it is provided as part of setuptools). (#908)
+  * For versions 2025.0-3 see the complete changelog in CHANGELOG.rst.
+- Update runtime requirements
+
+-------------------------------------------------------------------
 Tue Jan  7 09:49:19 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2024.11

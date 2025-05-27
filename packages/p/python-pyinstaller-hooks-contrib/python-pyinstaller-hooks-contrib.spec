@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyinstaller-hooks-contrib%{psuffix}
-Version:        2024.11
+Version:        2025.4
 Release:        0
 Summary:        Community maintained hooks for PyInstaller
 License:        Apache-2.0 OR GPL-2.0-only
@@ -34,10 +34,13 @@ URL:            https://github.com/pyinstaller/pyinstaller-hooks-contrib
 Source:         https://files.pythonhosted.org/packages/source/p/pyinstaller_hooks_contrib/pyinstaller_hooks_contrib-%{version}.tar.gz
 # conftest.py not present in the tarball
 Source1:        https://raw.githubusercontent.com/pyinstaller/pyinstaller-hooks-contrib/refs/heads/master/tests/conftest.py
-BuildRequires:  %{python_module setuptools >= 30.3.0}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 30.3.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-packaging
+Requires:       python-setuptools
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module PyInstaller}

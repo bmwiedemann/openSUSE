@@ -128,4 +128,18 @@
   * See the complete changelog in CHANGELOG.rst.</comment>
     <requestid>1235754</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f4f29fbbadb1e65fc17952b2f12110ac</srcmd5>
+    <version>2025.4</version>
+    <time>1748364233</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2025.4
+  * Fix error in narwhals hook when typing-extensions is not available 
+    in the build environment (neither stand-alone version is installed 
+    nor it is provided as part of setuptools). (#908)
+  * For versions 2025.0-3 see the complete changelog in CHANGELOG.rst.
+- Update runtime requirements
+</comment>
+    <requestid>1280564</requestid>
+  </revision>
 </revisionlist>
