@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 15 12:52:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+- Add missing Requires: python-requests
+
+-------------------------------------------------------------------
 Thu Oct 13 07:14:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use https for urls

@@ -25,4 +25,13 @@
     <comment>- use https for urls</comment>
     <requestid>1010391</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>48c637feb13c1593d76df90ebcd2081d</srcmd5>
+    <version>0.2.1</version>
+    <time>1748364214</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build
+- Add missing Requires: python-requests</comment>
+    <requestid>1280547</requestid>
+  </revision>
 </revisionlist>
