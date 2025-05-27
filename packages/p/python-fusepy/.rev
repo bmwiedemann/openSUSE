@@ -33,4 +33,14 @@ benefits:
   to make the plugin actually work</comment>
     <requestid>743984</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>fd155c7401b680dc9804b9888f8a4d88</srcmd5>
+    <version>3.0.1</version>
+    <time>1748364267</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build
+- Add LICENSE file
+</comment>
+    <requestid>1280642</requestid>
+  </revision>
 </revisionlist>
