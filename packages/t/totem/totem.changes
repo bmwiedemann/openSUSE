@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 21 15:16:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.2:
+  + Implement a gtksink video output fallback if native OpenGL
+    support is not available.
+  + Fix a lot of thumbnailing failures caused by memory hungry
+    video decoders.
+  + Hide the rotate menu items if rotation is not supported.
+  + Fix some AVI files not being associated correctly.
+  + Fix widget focus when starting video playback.
+  + Fix left-over files when streaming a video and the player is
+    closed.
+  + Fix window not being matched to the application under Wayland.
+  + Stop using gnome-shell to flash the screenshot area, that
+    stopped working a long time ago.
+  + Stop thumbnailing m3u playlists.
+  + Remove obsolete plugins (apple-trailers, vimeo).
+  + Fix a number of possible crashers.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Mar 27 21:43:44 UTC 2025 - bjorn.lie@gmail.com
 
 - Update to version 43.1+35:

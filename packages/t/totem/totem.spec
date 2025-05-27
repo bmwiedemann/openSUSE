@@ -17,7 +17,7 @@
 
 
 Name:           totem
-Version:        43.1+35
+Version:        43.2
 Release:        0
 Summary:        Movie Player for the GNOME Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
