@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 26 18:17:16 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.6.9:
+  * Implement go mod edit -require using _service params
+
+-------------------------------------------------------------------
 Thu May 22 04:46:05 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.6.8:

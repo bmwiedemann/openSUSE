@@ -219,4 +219,13 @@
   * cmd_go_mod() use list for arg cmd and new arg subcmd refs #57 (forwarded request 1279146 from jfkw)</comment>
     <requestid>1279150</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>703c9ac78ef76b1d08a8666a375e2018</srcmd5>
+    <version>0.6.9</version>
+    <time>1748364161</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.6.9:
+  * Implement go mod edit -require using _service params (forwarded request 1280343 from jfkw)</comment>
+    <requestid>1280345</requestid>
+  </revision>
 </revisionlist>
