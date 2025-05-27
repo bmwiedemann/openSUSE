@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May 26 14:21:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.3:
+  + Use opaque dma-buf formats substitutes for scanout
+  + Restore tiled/maximized windows to the correct monitor
+  + Do not leak session manager file to launched processes
+  + Use frame-sync candidate that likely matches scanout candidate
+  + Propagate all touchpad gesture events to apps
+  + Update window decorations on override-redirect attribute
+  + Load initial _NET_WM_FULLSCREEN_MONITORS value
+  + Fix race when registering implicit grab
+  + Skip multiple refresh intervals if necessary
+  + box-layout: Update actor-request-mode on orientation changes
+  + Do not take control of logind session on Xorg
+  + Fixed crashes
+  + Plugged leaks
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Apr 14 08:20:04 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.2:

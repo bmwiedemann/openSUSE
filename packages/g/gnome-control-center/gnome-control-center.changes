@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon May 26 09:21:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.2:
+  + Wrap settings panel names in small window sizes
+  + Call g_type_ensure for a custom class
+  + Add rounded borders to illustrations
+  + About: Fix multiple GPU name display with NVIDIA GPU on Desktop
+    PC
+  + Apps:
+    - Set bold style to the app name
+    - Hide preference group if no permissions are shown
+  + Notifications: Fix crash when modifying app settings multiple
+    times
+  + Power: Change power saver icon to leaf (matching GNOME Shell)
+  + System:
+    - Improve password generation logic
+    - Use EFF's Wordlists for Random Passphrases for password
+      generator
+  + Users: Don't crash when failing to crop avatar images
+  + Wacom: Get motion history from tablets in test drawing area
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 15 05:51:57 UTC 2025 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Fix UI issues in "Identity" tab of a connection setting dialog
+  (bsc#1243127).
+
+-------------------------------------------------------------------
 Wed May 07 15:01:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1+15:

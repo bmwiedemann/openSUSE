@@ -2681,4 +2681,21 @@ New stable rel</comment>
   sub-package. (forwarded request 1268547 from iznogood)</comment>
     <requestid>1269662</requestid>
   </revision>
+  <revision rev="287" vrev="1">
+    <srcmd5>3fd0830fe702dbe72d6c387bd28eb6ce</srcmd5>
+    <version>3.56.2</version>
+    <time>1748364703</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.56.2:
+  + Bug Fixes:
+    - Check return value of CamelDataWrapper calculate size
+      functions
+    - Cannot add actions in 'Customize User Interface' dialog
+    - Ensure &quot;New&quot; button action in Calendar view
+    - Mail: Do not strip signature for Edit as New in Sent folder
+  + Miscellaneous: Calendar: Cannot show/hide Tasks and Memos pane
+
+- Drop obsolete update-desktop-files BuildRequires and macro. (forwarded request 1279663 from iznogood)</comment>
+    <requestid>1280044</requestid>
+  </revision>
 </revisionlist>

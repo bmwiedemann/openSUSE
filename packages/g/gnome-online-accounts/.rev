@@ -850,4 +850,16 @@
   + Updated translations. (forwarded request 1268940 from iznogood)</comment>
     <requestid>1269679</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>e4e965562b2f7a8e14ded67abc6eedad</srcmd5>
+    <version>3.54.3</version>
+    <time>1748364720</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.54.3:
+  + Bugs fixed:
+    - Authentication failure in goa IMAP accounts
+    - Handle unexpected casing in domain names
+  + Updated translations. (forwarded request 1279874 from iznogood)</comment>
+    <requestid>1280055</requestid>
+  </revision>
 </revisionlist>

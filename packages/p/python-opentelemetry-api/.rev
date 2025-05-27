@@ -290,4 +290,25 @@
   * semantic-conventions: Bump to 1.30.0</comment>
     <requestid>1248488</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e35cb63029760bedb1b73076dd105f67</srcmd5>
+    <version>1.33.1</version>
+    <time>1748364755</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1280061 from nkrapp
+
+- Update to 1.33.1
+    * Remove log messages from BatchLogRecordProcessor.emit, this caused the
+      program to crash at shutdown with a max recursion error
+  - Update to 1.33.0
+    * Fix intermittent Connection aborted error when using otlp/http exporters
+    * opentelemetry-sdk: use stable code attributes:
+      code.function -&gt; code.function.name, code.lineno -&gt; code.line.number,
+      code.filepath -&gt; code.file.path
+    * Fix serialization of extended attributes for logs signal
+    * Handle OTEL_PROPAGATORS contains None
+    * docs: updated and added to the metrics and log examples
+    * Bump semantic conventions to 1.33.0</comment>
+    <requestid>1280592</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,4 @@
-From 493841c19ca1a006f8e040612918dd0942693566 Mon Sep 17 00:00:00 2001
+From dd67ef23c12b124fab5f3657b440b42fb45f606e Mon Sep 17 00:00:00 2001
 From: Jonathan Kang <jonathankang@gnome.org>
 Date: Wed, 19 Mar 2025 10:09:42 +0800
 Subject: [PATCH] gnome-control-center-bring-back-firewall-zone.patch
@@ -239,41 +239,42 @@ index 48892b1b4..453d5b897 100644
  
  static void
 diff --git a/panels/network/connection-editor/ethernet-page.ui b/panels/network/connection-editor/ethernet-page.ui
-index 89cdf8f3d..d6c6ad085 100644
+index 89cdf8f3d..9076620f5 100644
 --- a/panels/network/connection-editor/ethernet-page.ui
 +++ b/panels/network/connection-editor/ethernet-page.ui
-@@ -127,5 +127,31 @@
+@@ -123,6 +123,32 @@
+                 </layout>
+               </object>
+             </child>
++            <child>
++              <object class="GtkLabel" id="firewall_heading">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="xalign">1</property>
++                <property name="label" translatable="yes">Firewall _Zone</property>
++                <property name="use_underline">True</property>
++                <property name="mnemonic_widget">firewall_combo</property>
++                <layout>
++                  <property name="column">0</property>
++                  <property name="row">4</property>
++                </layout>
++              </object>
++            </child>
++            <child>
++              <object class="GtkComboBoxText" id="firewall_combo">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="entry_text_column">0</property>
++                <property name="id_column">1</property>
++                <layout>
++                  <property name="column">1</property>
++                  <property name="row">4</property>
++                </layout>
++              </object>
++            </child>
+           </object>
          </child>
        </object>
-     </child>
-+    <child>
-+      <object class="GtkLabel" id="firewall_heading">
-+        <property name="visible">True</property>
-+        <property name="can_focus">False</property>
-+        <property name="xalign">1</property>
-+        <property name="label" translatable="yes">Firewall _Zone</property>
-+        <property name="use_underline">True</property>
-+        <property name="mnemonic_widget">firewall_combo</property>
-+        <layout>
-+          <property name="column">0</property>
-+          <property name="row">4</property>
-+        </layout>
-+      </object>
-+    </child>
-+    <child>
-+      <object class="GtkComboBoxText" id="firewall_combo">
-+        <property name="visible">True</property>
-+        <property name="can_focus">False</property>
-+        <property name="entry_text_column">0</property>
-+        <property name="id_column">1</property>
-+        <layout>
-+          <property name="column">1</property>
-+          <property name="row">4</property>
-+        </layout>
-+      </object>
-+    </child>
-   </template>
- </interface>
 diff --git a/panels/network/connection-editor/firewall-helpers.c b/panels/network/connection-editor/firewall-helpers.c
 new file mode 100644
 index 000000000..2e2c29f5a
@@ -529,5 +530,5 @@ index d087e5e29..614e26582 100644
                <object class="GtkLabel" id="failure_label">
                  <property name="xalign">0</property>
 -- 
-2.48.1
+2.49.0
 

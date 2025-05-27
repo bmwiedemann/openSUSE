@@ -421,4 +421,24 @@
   + Updated translations. (forwarded request 1269161 from iznogood)</comment>
     <requestid>1269686</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>dba7c0f74e2a31afde3dda37f2137406</srcmd5>
+    <version>1.7.3</version>
+    <time>1748364713</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.7.2:
+  + Fix a crash with empty window layouts
+  + AdwExpanderRow: Fix grab_focus() behavior
+  + AdwSettings: Move yellow/green boundary for accent color
+  + Docs:
+    - Fix window radius value
+    - Fix missing AdwCarouselIndicatorLines image
+  + Inspector: Disable markup on window rows
+  + Stylesheet
+    - Fix icon padding for .default-decoration too
+    - Fix .property for expander rows
+    - Fix disabled styles for various .view widgets
+  + Updated translations. (forwarded request 1279727 from iznogood)</comment>
+    <requestid>1280047</requestid>
+  </revision>
 </revisionlist>

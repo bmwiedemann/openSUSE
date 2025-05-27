@@ -373,4 +373,12 @@
     <comment>- skip empty post/postuninstalls on SLE15+ (forwarded request 970913 from dirkmueller)</comment>
     <requestid>971096</requestid>
   </revision>
+  <revision rev="52" vrev="8">
+    <srcmd5>b1376e5c8b3108fd5c4b4e561d77e752</srcmd5>
+    <version>3.20.0</version>
+    <time>1748364677</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1279616 from iznogood)</comment>
+    <requestid>1280025</requestid>
+  </revision>
 </revisionlist>

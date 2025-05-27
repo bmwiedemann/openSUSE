@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 26 14:28:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.2:
+  + windowsNavigator: Fix handling keyboard shortcuts
+  + build: Allow disabling the X11 session
+
+-------------------------------------------------------------------
 Sun Apr 13 16:43:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1:

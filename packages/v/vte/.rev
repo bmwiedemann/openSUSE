@@ -1376,4 +1376,13 @@ New upstream release</comment>
   * ci: Update from master (forwarded request 1268942 from iznogood)</comment>
     <requestid>1269680</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>7f02d5231bd97312be8544e54ea69c16</srcmd5>
+    <version>0.80.2</version>
+    <time>1748364715</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.80.2:
+  * emulation: Fix OSC 111 (forwarded request 1279862 from iznogood)</comment>
+    <requestid>1280051</requestid>
+  </revision>
 </revisionlist>

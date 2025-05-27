@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 26 07:49:21 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.54b1
+  * Remove log messages from BatchLogRecordProcessor.emit, this caused the
+    program to crash at shutdown with a max recursion error
+- Update to 0.54b0
+  * Fix intermittent Connection aborted error when using otlp/http exporters
+  * opentelemetry-sdk: use stable code attributes:
+    code.function -> code.function.name, code.lineno -> code.line.number,
+    code.filepath -> code.file.path
+  * Fix serialization of extended attributes for logs signal
+  * Handle OTEL_PROPAGATORS contains None
+  * docs: updated and added to the metrics and log examples
+  * Bump semantic conventions to 1.33.0
+
+-------------------------------------------------------------------
 Tue Feb 25 20:46:00 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.51b0:

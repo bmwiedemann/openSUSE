@@ -851,4 +851,23 @@
     <comment>Fix date format in changelog (forwarded request 1277757 from dimstar)</comment>
     <requestid>1277947</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>dadcbb44167256e3266b616d92e3a86d</srcmd5>
+    <version>48.3</version>
+    <time>1748364712</time>
+    <user>anag_factory</user>
+    <comment>- Updated to version 48.3:
+  + Fix showing incorrect coordinates when printing routes
+  + Clear route details when starting a new route search (avoids
+    showing details about a previously selected transit itinerary
+    when running a new search)
+  + Use the Adwaita Sans font in the map style
+  + Don't show place popover when starting a map drag gesture by
+    clicking on a marker or label
+  + Close OpenStreetMap POI edit dialog when failing to download
+    data. Avoids having the dialog stuck with the loading spinner
+    in such situations
+  + Updated translations. (forwarded request 1279726 from iznogood)</comment>
+    <requestid>1280046</requestid>
+  </revision>
 </revisionlist>

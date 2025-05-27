@@ -2433,4 +2433,12 @@ New stable release</comment>
   These are not desired haviours anymore. (forwarded request 1268009 from JonathanKang)</comment>
     <requestid>1268056</requestid>
   </revision>
+  <revision rev="281" vrev="3">
+    <srcmd5>bb58d3befd7895d739ff44da063877c5</srcmd5>
+    <version>1.52.0</version>
+    <time>1748364730</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1280300</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-packagekit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,6 @@ BuildRequires:  docbook-utils-minimal
 BuildRequires:  gettext-devel
 BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
@@ -92,10 +91,6 @@ YaST Software Management.
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
-%suse_update_desktop_file org.gnome.Packages
-%suse_update_desktop_file gpk-log Settings
-%suse_update_desktop_file gpk-prefs X-GNOME-SystemSettings
-%suse_update_desktop_file org.gnome.PackageUpdater
 
 %files
 %license COPYING

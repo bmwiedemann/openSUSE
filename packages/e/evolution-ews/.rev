@@ -1327,4 +1327,15 @@
     - m365: Cannot unset message label (forwarded request 1268548 from iznogood)</comment>
     <requestid>1269663</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>1cc13828cb9fb501e94288f184455e31</srcmd5>
+    <version>3.56.2</version>
+    <time>1748364710</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.56.2:
+  + Bug Fixes:
+    - Cannot accept meeting invitations (duplicated attendee)
+    - m365: GOA account rejects creating meetings (forwarded request 1279664 from iznogood)</comment>
+    <requestid>1280045</requestid>
+  </revision>
 </revisionlist>

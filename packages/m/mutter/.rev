@@ -2253,4 +2253,12 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1269164 from iznogood)</comment>
     <requestid>1269687</requestid>
   </revision>
+  <revision rev="250" vrev="1">
+    <srcmd5>d4151fb292354334bca3da1f9109cf3d</srcmd5>
+    <version>48.3</version>
+    <time>1748364736</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1280301</requestid>
+  </revision>
 </revisionlist>

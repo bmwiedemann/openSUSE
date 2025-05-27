@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-logs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,12 +27,12 @@ URL:            https://wiki.gnome.org/Apps/Logs
 Source0:        %{name}-%{version}.tar.zst
 
 
+BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  xsltproc
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.43.90
@@ -59,7 +59,6 @@ A utility for viewing detailed event logs for the system.
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
-%suse_update_desktop_file -r org.gnome.Logs GTK GNOME System Monitor
 %fdupes %{buildroot}%{_datadir}
 
 %check

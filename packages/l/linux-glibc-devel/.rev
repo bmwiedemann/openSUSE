@@ -804,4 +804,12 @@
     <comment>- Update to kernel headers 6.14 (forwarded request 1256018 from Andreas_Schwab)</comment>
     <requestid>1256020</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>cf11413d30b849b3cf956e54efeca590</srcmd5>
+    <version>6.15</version>
+    <time>1748364759</time>
+    <user>anag_factory</user>
+    <comment>- Update to kernel headers 6.15 (forwarded request 1279993 from Andreas_Schwab)</comment>
+    <requestid>1279994</requestid>
+  </revision>
 </revisionlist>

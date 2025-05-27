@@ -17,7 +17,7 @@
 
 
 Name:           gnome-user-docs
-Version:        48.1
+Version:        48.2
 Release:        0
 Summary:        GNOME Desktop Documentation
 License:        CC-BY-3.0

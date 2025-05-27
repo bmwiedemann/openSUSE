@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-menus
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ Source0:        https://download.gnome.org/sources/gnome-menus/3.36/%{name}-%{ve
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.29.15
 Requires:       %{name}-branding = %{version}
 
@@ -110,13 +109,9 @@ http://www.freedesktop.org/Standards/menu-spec
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
-for dotdirectory in %{buildroot}%{_datadir}/desktop-directories/*.directory; do
-  %suse_update_desktop_file $dotdirectory
-done
-%fdupes %{buildroot}
+%fdupes %{buildroot}%{_prefix}
 
-%post -n libgnome-menu-3-0 -p /sbin/ldconfig
-%postun -n libgnome-menu-3-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgnome-menu-3-0
 
 %files
 %license COPYING

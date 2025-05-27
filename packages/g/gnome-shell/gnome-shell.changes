@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 26 14:25:28 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.2:
+  + Only enable surrounding-text IM capability when needed
+  + Fix launching command from terminal in run dialog
+  + Ignore offset changes caused by suspend for screen time
+  + Fix app folders sometimes not closing after outside clicks
+  + Fixed crash
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Apr 24 08:58:07 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Drop gnome-shell-executable-path-not-absolute.patch: The original

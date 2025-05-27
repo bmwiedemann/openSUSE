@@ -49,7 +49,6 @@ BuildRequires:  meson >= 1.0
 BuildRequires:  openssh
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gck-1) >= 3.3.4
 BuildRequires:  pkgconfig(gcr-base-3) >= 3.27.90
 BuildRequires:  pkgconfig(glib-2.0) >= 2.80.0
@@ -140,8 +139,6 @@ for i in %{buildroot}%{_sysconfdir}/xdg/autostart/*.desktop ; do
  desktop-file-install --dir=%{buildroot}%{_sysconfdir}/xdg/autostart --add-only-show-in=XFCE $i
 done
 %find_lang %{name}
-%suse_update_desktop_file gnome-keyring-pkcs11
-%suse_update_desktop_file gnome-keyring-secrets
 %fdupes %{buildroot}%{_datadir}
 
 ###

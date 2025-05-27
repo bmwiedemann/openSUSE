@@ -828,4 +828,13 @@ New stable release</comment>
   + Updated translations. (forwarded request 1268784 from iznogood)</comment>
     <requestid>1269671</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>490eec6436d3f915e0ee871c8dc5c116</srcmd5>
+    <version>48.2</version>
+    <time>1748364719</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.2:
+  + Updated translations. (forwarded request 1279873 from iznogood)</comment>
+    <requestid>1280053</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 23 19:28:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.56.2:
+  + Bug Fixes:
+    - Cannot accept meeting invitations (duplicated attendee)
+    - m365: GOA account rejects creating meetings
+
+-------------------------------------------------------------------
 Fri Apr 11 07:17:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.56.1:

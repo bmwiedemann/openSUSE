@@ -2561,4 +2561,13 @@
   * Updated translations. (forwarded request 1268943 from iznogood)</comment>
     <requestid>1269681</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>193444ca1c9b7636453c3758fd7aa904</srcmd5>
+    <version>3.56.2</version>
+    <time>1748364717</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.56.2:
+  * client: legacy: Initialise --wait to false (forwarded request 1279863 from iznogood)</comment>
+    <requestid>1280052</requestid>
+  </revision>
 </revisionlist>

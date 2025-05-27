@@ -1142,4 +1142,12 @@ New upstream release. (forwarded request 341747 from Zaitor)</comment>
   keyring is properly registered (glgo#GNOME/gnome-keyring!78). (forwarded request 1266893 from fcrozat)</comment>
     <requestid>1267260</requestid>
   </revision>
+  <revision rev="152" vrev="4">
+    <srcmd5>50d94874f37201b1557923ed47a1c89e</srcmd5>
+    <version>48.0</version>
+    <time>1748364697</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1279642 from iznogood)</comment>
+    <requestid>1280040</requestid>
+  </revision>
 </revisionlist>

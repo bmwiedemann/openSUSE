@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 23 08:03:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete update-desktop-files BuildRequires.
+- Replace gcc-c++ with generic c++_compiler BuildRequires.
+- Modernize spec, use autosetup, make_build and ldconfig_scriptlets
+  macros.
+
+-------------------------------------------------------------------
 Mon Dec 19 08:44:06 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: there is no known consumer of the -32bit

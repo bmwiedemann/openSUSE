@@ -2449,4 +2449,18 @@ New stable rel</comment>
     <comment>Fix date format in old changelog entries (forwarded request 1277764 from dimstar)</comment>
     <requestid>1278229</requestid>
   </revision>
+  <revision rev="266" vrev="1">
+    <srcmd5>091e4baaf673008cd3e41253c58c94ef</srcmd5>
+    <version>3.56.2</version>
+    <time>1748364699</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.56.2:
+  + Bug Fixes:
+    - Handle changed server pool in WebDAV collection sources ][
+    - CamelDataWrapper: Correct return value of size calculate
+      functions
+    - GOA EWS: Fallback to likely EWS host URL when autodicovery
+      fails (forwarded request 1279662 from iznogood)</comment>
+    <requestid>1280042</requestid>
+  </revision>
 </revisionlist>

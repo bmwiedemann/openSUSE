@@ -39,7 +39,6 @@ BuildRequires:  python3-brlapi >= 0.5.1
 BuildRequires:  python3-gobject >= 3.18
 BuildRequires:  python3-louis
 BuildRequires:  python3-speechd
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(atk-bridge-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(atspi-2) >= 2.2.50.0

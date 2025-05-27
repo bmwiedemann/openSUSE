@@ -32,7 +32,6 @@ Patch0:         libcanberra-multi-backend.patch
 BuildRequires:  gtk-doc
 BuildRequires:  libltdl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32
 BuildRequires:  pkgconfig(gtk+-2.0)
@@ -232,17 +231,11 @@ make %{?_smp_mflags} V=1
 install -Dpm 0755 libcanberra-gtk-module.sh \
   %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d/libcanberra-gtk-module.sh
 
-%suse_update_desktop_file %{buildroot}%{_datadir}/gnome/autostart/libcanberra-login-sound.desktop
-%suse_update_desktop_file %{buildroot}%{_datadir}/gdm/autostart/LoginWindow/libcanberra-ready-sound.desktop
-
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libcanberra0 -p /sbin/ldconfig
-%postun -n libcanberra0 -p /sbin/ldconfig
-%post gtk0 -p /sbin/ldconfig
-%postun gtk0 -p /sbin/ldconfig
-%post gtk3-0 -p /sbin/ldconfig
-%postun gtk3-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcanberra0
+%ldconfig_scriptlets gtk0
+%ldconfig_scriptlets gtk3-0
 
 %files -n libcanberra0
 %license LGPL

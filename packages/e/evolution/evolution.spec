@@ -20,7 +20,7 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution
-Version:        3.56.1
+Version:        3.56.2
 Release:        0
 # FIXME: check if note on license is still valid (comment before license)
 Summary:        The Integrated GNOME Mail, Calendar, and Address Book Suite
@@ -45,7 +45,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  psmisc
 BuildRequires:  spamassassin
 BuildRequires:  sqlite3-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo-gobject)
@@ -176,7 +175,6 @@ to develop applications that require these.
 
 %install
 %cmake_install
-%suse_update_desktop_file -r -G "Mail and Calendar" org.gnome.Evolution GNOME GTK Network Email Calendar ContactManagement
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 

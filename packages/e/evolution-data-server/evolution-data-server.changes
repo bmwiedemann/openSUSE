@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 23 19:20:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.56.2:
+  + Bug Fixes:
+    - Handle changed server pool in WebDAV collection sources ][
+    - CamelDataWrapper: Correct return value of size calculate
+      functions
+    - GOA EWS: Fallback to likely EWS host URL when autodicovery
+      fails
+
+-------------------------------------------------------------------
 Fri Apr 11 06:54:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.56.1:

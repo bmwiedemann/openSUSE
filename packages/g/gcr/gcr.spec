@@ -40,7 +40,6 @@ BuildRequires:  libgcrypt-devel >= 1.4.5
 BuildRequires:  meson >= 0.59
 BuildRequires:  openssh-clients
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.18.0.22
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cairo)

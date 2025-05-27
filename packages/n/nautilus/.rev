@@ -1754,4 +1754,18 @@ Hence, recommended to be added to 12.3</comment>
   + Updated translations. (forwarded request 1268956 from iznogood)</comment>
     <requestid>1269683</requestid>
   </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>844ca7a77f6c5b0d7eaf3b4d6f5bf455</srcmd5>
+    <version>48.2</version>
+    <time>1748364722</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.2:
+  + Bugfixes:
+    - Load directory before thumbnail attributes are ready
+    - Fix trash banner visibiltiy
+    - Fix sporadic crash when loading new view
+    - Improve container-related media property handling
+  + Updated translations. (forwarded request 1279908 from iznogood)</comment>
+    <requestid>1280056</requestid>
+  </revision>
 </revisionlist>

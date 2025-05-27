@@ -1,7 +1,7 @@
 #
 # spec file for package gcr3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,6 @@ BuildRequires:  pkgconfig(gi-docgen)
 # configure is looking for the gpg2 path
 BuildRequires:  openssh-clients
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.18.0.22
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cairo)
@@ -213,14 +212,10 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 
 %install
 %meson_install
-%suse_update_desktop_file gcr-prompter
-%suse_update_desktop_file gcr-viewer
 %find_lang %{_name}
 
-%post -n libgcr-3-1 -p /sbin/ldconfig
-%postun -n libgcr-3-1 -p /sbin/ldconfig
-%post -n libgck-1-0 -p /sbin/ldconfig
-%postun -n libgck-1-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgcr-3-1
+%ldconfig_scriptlets -n libgck-1-0
 
 %post -n %{name}-ssh-agent
 %systemd_user_post gcr-ssh-agent.service

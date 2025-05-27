@@ -1,7 +1,7 @@
 #
 # spec file for package cairomm1_0
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,8 @@ URL:            http://cairographics.org
 Source:         http://cairographics.org/releases/%{_name}-%{version}.tar.gz
 # needs doxygen for the documentation
 BuildRequires:  doxygen
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(sigc++-2.0) >= 2.5.1
 
@@ -60,18 +59,17 @@ Group:          Documentation/HTML
 This package provides documentation for the Cairo C++ interface.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -n %{_name}-%{version}
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libcairomm-1_0-1 -p /sbin/ldconfig
-%postun -n libcairomm-1_0-1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcairomm-1_0-1
 
 %files -n libcairomm-1_0-1
 %license COPYING

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 26 09:15:36 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Stop relying on the UsrMerge symlinks and ensure we look directly
+  in /usr:
+  + Use _firmwaredir for kernel_firmware_dir
+  + Use /usr/sbin/modprobe (was /sbin/modprobe)
+
+-------------------------------------------------------------------
 Wed Apr  9 02:42:56 UTC 2025 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Remove '-Dhostname_persist=suse' compile option, as it's not

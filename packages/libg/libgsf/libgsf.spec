@@ -1,7 +1,7 @@
 #
 # spec file for package libgsf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,10 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://www.gnome.org
 Source:         https://download.gnome.org/sources/libgsf/1.14/%{name}-%{version}.tar.xz
+
 BuildRequires:  intltool
 BuildRequires:  libbz2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.26.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.26.0
@@ -94,20 +94,19 @@ with structured file formats.
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure --disable-static \
         --enable-introspection
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 %find_lang %{name}
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post 1-114 -p /sbin/ldconfig
-%postun 1-114 -p /sbin/ldconfig
+%ldconfig_scriptlets 1-114
 
 %files tools
 %license COPYING

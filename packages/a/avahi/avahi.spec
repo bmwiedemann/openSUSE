@@ -1,7 +1,7 @@
 #
 # spec file for package avahi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,7 +72,6 @@ Source14:       avahi-autoipd.sysusers
 # File missing from 0.8 tarball
 Source12:       https://raw.githubusercontent.com/lathiat/avahi/master/service-type-database/build-db
 Source100:      attributes
-Source101:      update_spec.pl
 Source102:      baselibs.conf
 Source103:      avahi-rpmlintrc
 # PATCH-FIX-OPENSUSE avahi-gacdir.patch -- Mono libs are in $prefix/lib on suse
@@ -147,10 +146,10 @@ Obsoletes:      mDNSResponder < 107.5
 #Conflicts:      avahi-utils <= 0.6.31-9.2
 %endif
 %if %{build_glib2}
+BuildRequires:  desktop-file-utils
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  libavahi-devel = %{version}
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(pygobject-3.0)
 %endif
 %if %{build_qt5}
@@ -425,7 +424,6 @@ Obsoletes:      avahi-glib2-utils-gtk < %{version}
 Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
-
 # This is the avahi-discover command, only provided for the primary python3 flavor
 
 %package -n python3-avahi-gtk
@@ -673,11 +671,6 @@ rm %{buildroot}/%{_datadir}/avahi/interfaces/avahi-discover.ui
 rmdir %{buildroot}/%{_datadir}/avahi/interfaces
 rmdir %{buildroot}/%{_datadir}/avahi
 %endif
-%endif
-%if %{build_glib2}
-%suse_update_desktop_file avahi-discover
-%suse_update_desktop_file bvnc
-%suse_update_desktop_file bssh
 %endif
 %fdupes %{buildroot}/%{_libdir}
 
