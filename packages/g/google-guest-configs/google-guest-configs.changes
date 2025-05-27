@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 26 15:09:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20250516.00
+  * Merge pull request #109 from xiliuxyz:master
+  * Remove unused fset
+  * Remove unused lines
+  * Update google_set_multiqueue to unpack IRQ ranges before core assignment
+
+-------------------------------------------------------------------
 Wed May 14 06:58:28 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20250501.00

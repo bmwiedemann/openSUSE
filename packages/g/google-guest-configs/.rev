@@ -330,4 +330,16 @@
   * Update comments for get_vcpu_ranges_on_accelerator_platform (forwarded request 1277317 from glaubitz)</comment>
     <requestid>1277403</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0acdff8f77698bdb41d69ec7d0945ffa</srcmd5>
+    <version>20250516.00</version>
+    <time>1748364213</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250516.00
+  * Merge pull request #109 from xiliuxyz:master
+  * Remove unused fset
+  * Remove unused lines
+  * Update google_set_multiqueue to unpack IRQ ranges before core assignment (forwarded request 1280294 from glaubitz)</comment>
+    <requestid>1280541</requestid>
+  </revision>
 </revisionlist>
