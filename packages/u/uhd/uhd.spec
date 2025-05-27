@@ -26,10 +26,9 @@ URL:            https://files.ettus.com/manual/
 Source0:        https://github.com/EttusResearch/uhd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/EttusResearch/uhd/releases/download/v%{version}/uhd-images_%{version}.tar.xz
 Patch0:         reproducible.patch
-# PATCH-FIX-UPSTREAM fix-boost1.85-one.patch -- https://github.com/EttusResearch/uhd/commit/ea586168c596d13d05d145832519755794649ba0
-# Patch0:         fix-boost1.85-one.patch
-# PATCH-FIX-UPSTREAM fix-boost1.85-two.patch -- https://github.com/EttusResearch/uhd/commit/c4863b9b9f8b639260f7797157e8ac4dd81fef93
-# Patch1:         fix-boost1.85-two.patch
+# PATCH_FIX_UPSTREAM uhd-new-boost.patch -- https://github.com/EttusResearch/uhd/commit/2725c664ce617ec949670d449fe6172b7661a3bd
+Patch1:         uhd-new-boost.patch
+
 BuildRequires:  cmake >= 3.5
 BuildRequires:  docutils
 BuildRequires:  doxygen
