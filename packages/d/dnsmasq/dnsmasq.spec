@@ -27,7 +27,7 @@ Requires(pre):  group(nogroup)
 %define dnsmasq_group nogroup
 %endif
 Name:           dnsmasq
-Version:        2.90
+Version:        2.91
 Release:        0
 Summary:        DNS Forwarder and DHCP Server
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -133,7 +133,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now -pie"
 %make_build AWK=gawk all-i18n CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" COPTS=%{_copts}
 # Make sure that compile time options don't change unnoticed
 ./src/dnsmasq --version |
-grep -q "Compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 Lua TFTP conntrack ipset %{!?with_nftset:no-}nftset auth cryptohash DNSSEC loop-detect inotify dumpfile"
+grep -q "Compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 Lua TFTP conntrack ipset %{!?with_nftset:no-}nftset auth DNSSEC loop-detect inotify dumpfile"
 %if %{with tftp_user_package}
 %sysusers_generate_pre %{SOURCE6} dnsmasq system-user-dnsmasq.conf
 %endif

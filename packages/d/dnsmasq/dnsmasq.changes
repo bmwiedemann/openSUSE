@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sun May 18 03:21:42 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
+
+- update to 2.91:
+  * Fix spurious "resource limit exceeded messages".
+  * Fix out-of-bounds heap read in order_qsort().
+  * Fix buffer overflow when configured lease-change script name
+    is too long.
+  * Improve behaviour in the face of non-responsive upstream TCP DNS
+    servers. Without shorter timeouts, clients are blocked for too long
+    and fail with their own timeouts.
+  * Set --fast-dns-retries by default when doing DNSSEC. A single
+    downstream query can trigger many upstream queries. On an
+    unreliable network, there may not be enough downstream retries
+    to ensure that all these queries complete.
+  * Improve behaviour in the face of truncated answers to queries
+    for DNSSEC records. Getting these answers by TCP doesn't now
+    involve a faked truncated answer to the downstream client to
+    force it to move to TCP. This improves performance and robustness
+    in the face of broken clients which can't fall back to TCP.
+  * No longer remove data from truncated upstream answers. If an
+    upstream replies with a truncated answer, but the answer has some
+    RRs included, return those RRs, rather than returning and
+    empty answer.
+  * Fix handling of EDNS0 UDP packet sizes.
+  * Modify the behaviour of --synth-domain for IPv6.
+  * Fix broken dhcp-relay on *BSD.
+  * Add --dhcp-option-pxe config. This acts almost exactly like
+    --dhcp-option except that the defined option is only sent when
+    replying to PXE clients. More importantly, these options are sent
+    in reply PXE clients when dnsmasq in acting in PXE proxy mode. In
+    PXE proxy mode, the set of options sent is defined by the PXE standard
+    and the normal set of options is not sent. This config allows arbitrary
+    options in PXE-proxy replies. A typical use-case is to send option
+    175 to iPXE.
+  * Support PXE proxy-DHCP and DHCP-relay at the same time.
+  * Fix erroneous "DNSSEC validated" state with non-DNSSEC
+    upstream servers.
+  * Handle queries with EDNS client subnet fields better. If dnsmasq
+    is configured to add an EDNS client subnet to a query, it is careful
+    to suppress use of the cache, since a cached answer may not be valid
+    for a query with a different client subnet. Extend this behaviour
+    to queries which arrive a dnsmasq already carrying an EDNS client
+    subnet.
+  * Handle DS queries to auth zones. When dnsmasq is configured to
+    act as an authoritative server and has an authoritative zone
+    configured, and receives a query for that zone _as_forwarder_
+    it answers the query directly rather than forwarding it. This
+    doesn't affect the answer, but it saves dnsmasq forwarding the
+    query to the recursor upstream, which then bounces it back to dnsmasq
+    in auth mode. The exception should be when the query is for the root
+    of zone, for a DS RR. The answer to that has to come from the parent,
+    via the recursor, and will typically be a proof-of-non-existence
+    since dnsmasq doesn't support signed zones. This patch suppresses
+    local answers and forces forwarding to the upstream recursor for such
+    queries. It stops breakage when a DNSSEC validating client makes
+    queries to dnsmasq acting as forwarder for a zone for which it is
+    authoritative.
+  * Implement "DNS-0x20 encoding", for extra protection against
+    reply-spoof attacks. Since DNS queries are case-insensitive,
+    it's possible to randomly flip the case of letters in a query
+    and still get the correct answer back.
+  * Fix a long-standing problem when two queries which are identical
+    in every repect _except_ case, get combined by dnsmasq. If
+    dnsmasq gets eg, two queries for example.com and Example.com
+    in quick succession it will get the answer for example.com from
+    upstream and send that answer to both requestors. This means that
+    the query for Example.com will get an answer for example.com, and
+    in the modern DNS, that answer may not be accepted.
+
+
+-------------------------------------------------------------------
 Wed Jan 22 15:23:15 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).
