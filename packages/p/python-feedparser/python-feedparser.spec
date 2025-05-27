@@ -1,7 +1,7 @@
 #
 # spec file for package python-feedparser
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-feedparser
 Version:        6.0.11
@@ -30,8 +29,10 @@ Source:         https://files.pythonhosted.org/packages/source/f/feedparser/feed
 # Fix crash on Python 3.10
 Patch0:         304_python310-crash.patch
 BuildRequires:  %{python_module chardet}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sgmllib3k}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-sgmllib3k
@@ -50,10 +51,10 @@ A universal feed parser module for Python that handles RSS 0.9x, RSS 1.0, RSS
 sed -i -e 's/verbosity=1/verbosity=2/' tests/runtests.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +66,6 @@ $python tests/runtests.py
 %license LICENSE
 %doc NEWS README.rst
 %{python_sitelib}/feedparser/
-%{python_sitelib}/feedparser-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/feedparser-%{version}*-info
 
 %changelog
