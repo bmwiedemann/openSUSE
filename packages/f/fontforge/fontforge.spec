@@ -17,21 +17,16 @@
 
 
 Name:           fontforge
-Version:        20230101
+Version:        20230101+git59.770356c9b
 Release:        0
 Summary:        A Font Editor
 License:        GPL-3.0-or-later
 URL:            https://fontforge.org/
-Source0:        https://github.com/fontforge/fontforge/archive/%{version}.tar.gz
+Source0:        fontforge-20230101+git59.770356c9b.tar.zst
 # workaround for bug 930076, imho upstream should fix this
 # https://github.com/fontforge/fontforge/issues/2270
 Patch0:         fontforge-version.patch
 Patch1:         add-bitmap-transform-support.patch
-# PATCH-FIX-UPSTREAM fontforge-CVE-2024-25081-CVE-2024-25082.patch CVE-2024-25081 CVE-2024-25082 bsc#1220404 bsc#1220405 qzhao@suse.com -- Fix Splinefont shell invocation.
-Patch2:         fontforge-CVE-2024-25081-CVE-2024-25082.patch
-Patch3:         https://github.com/fontforge/fontforge/commit/642d8a3db6d4bc0e70b429622fdf01ecb09c4c10.patch
-# PATCH-FIX-UPSTREAM: taken from https://github.com/fontforge/fontforge/commit/8c75293e924602ed09a9481b0eeb67ba6c623a81
-Patch4:         use-sysconfig-not-distutils.patch
 BuildRequires:  cairo-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -51,7 +46,7 @@ BuildRequires:  libxml2-devel
 BuildRequires:  pango-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
-BuildRequires:  python3-devel
+BuildRequires:  python3-devel >= 3.8
 BuildRequires:  readline-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  woff2-devel

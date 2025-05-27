@@ -569,4 +569,41 @@
     <comment></comment>
     <requestid>1268125</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>6c435b0b78eca336d84ce055e078325b</srcmd5>
+    <version>20230101+git59.770356c9b</version>
+    <time>1748364592</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20230101+git59.770356c9b:
+  * Add contour draw option to H.Metrics. (#5496)
+  * Fix memory corruption in SFUnicodeRanges() (#5537)
+  * Bump GitHub CI runner to Ubuntu 22 (#5551)
+  * Fix CI for Ubuntu 24 (#5531)
+  * Avoid crashes in Python scripts when objects are accessed in
+    invalid state (#5483)
+  * fix memleak in function utf7toutf8_copy (#5495)
+  * Modernize fixed pitch flag computation (#5506)
+  * Segfault fix and complete implementation of &quot;Don't generate
+    FFTM tables&quot; (#5509)
+  * Make SmallCaps() translate symbols, too.  Update
+    documentation accordingly. (#5517)
+  * Fix function PyFFFont_addSmallCaps. (#5519)
+  * Warning rollup (probably some hidden bugs!) from clang trunk
+    (#5492)
+  * Update mm.c (#5386)
+  * fix memleak in function DlgCreate8 (#5491)
+  * Fix Python font.appendSFNTName() function (#5494)
+  * Allow hyphen and special characters in Feature File glyph names
+    (#5358)
+  * Update CI runner to macOS 13 (#5482)
+  * add math device tables to Python API (#5348)
+  * Only install GUI-specific files if ENABLE_GUI is set (#5451)
+  * Fix resource leak in unParseTTInstrs (#5476)
+  * Use PyConfig API on Python 3.8 (#5404)
+  * Use sysconfig for Python module locations (#5423)
+  * More crowdin fix
+  * Python script shall trigger no asserts (#5410)
+  * crowdin: update to java 17 (#5447)</comment>
+    <requestid>1280084</requestid>
+  </revision>
 </revisionlist>

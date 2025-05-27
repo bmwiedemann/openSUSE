@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Mon May 26 06:39:39 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 20230101+git59.770356c9b:
+  * Add contour draw option to H.Metrics. (#5496)
+  * Fix memory corruption in SFUnicodeRanges() (#5537)
+  * Bump GitHub CI runner to Ubuntu 22 (#5551)
+  * Fix CI for Ubuntu 24 (#5531)
+  * Avoid crashes in Python scripts when objects are accessed in
+    invalid state (#5483)
+  * fix memleak in function utf7toutf8_copy (#5495)
+  * Modernize fixed pitch flag computation (#5506)
+  * Segfault fix and complete implementation of "Don't generate
+    FFTM tables" (#5509)
+  * Make SmallCaps() translate symbols, too.  Update
+    documentation accordingly. (#5517)
+  * Fix function PyFFFont_addSmallCaps. (#5519)
+  * Warning rollup (probably some hidden bugs!) from clang trunk
+    (#5492)
+  * Update mm.c (#5386)
+  * fix memleak in function DlgCreate8 (#5491)
+  * Fix Python font.appendSFNTName() function (#5494)
+  * Allow hyphen and special characters in Feature File glyph names
+    (#5358)
+  * Update CI runner to macOS 13 (#5482)
+  * add math device tables to Python API (#5348)
+  * Only install GUI-specific files if ENABLE_GUI is set (#5451)
+  * Fix resource leak in unParseTTInstrs (#5476)
+  * Use PyConfig API on Python 3.8 (#5404)
+  * Use sysconfig for Python module locations (#5423)
+  * More crowdin fix
+  * Python script shall trigger no asserts (#5410)
+  * crowdin: update to java 17 (#5447)
+  * try fix crowdin
+  * Fix generated feature file bugs (#5384)
+  * Defer crowdin update to the end of the pipeline (#5409)
+  * Fix export of supplementary plane characters in font name to
+    TTF (#5396)
+  * Don't attempt to copy anchors into NULL font (#5405)
+  * Treat FT_PIXEL_MODE_MONO as 2 grey levels (#5379)
+  * Compare vertical metrics check when generating TTC (#5372)
+  * Fix data corruption on SFD reading (#5380)
+  * doc: added missing sudo to installation instructions (#5300)
+  * Remove `psaltnames` for multi-code-point names (#5305)
+  * Support suplementary planes in SFD (emojis etc.) (#5364)
+  * Fix the lists of Windows language IDs (#5359)
+  * fix splinefont shell command injection (#5367)
+  * Bulk tester (#5365)
+  * add `font.style_set_names` attribute to Python API (#5354)
+  * Fix typos in the FAQ (#5355)
+  * Autoselect internal WOFF2 format (#5346)
+  * fix segfault triggered by Python `del c[i:j]` (#5352)
+  * add `font` attributes, method to Python docs (#5353)
+  * Always set `usDefaultChar` to 0 (.notdef) (#5242)
+  * Fix generateFontPostHook being called instead of
+    generateFontPreHook (#5226)
+  * nltransform of anchor points (#5345)
+  * Don't require individual tuple encapsulation in
+    fontforge.font.bitmapSizes setter (#5138)
+  * Fix CMake function _get_git_version() (#5342)
+  * Handle failed iconv conversion. Unhandled execution path was
+    UB, causing a segfault for me (#5329)
+  * Fix crash in parsegvar() due to insufficient buffer (#5339)
+  * Quiet strict prototypes warnings. (#5313)
+  * harmonizing can now no longer produce zero handles, the
+    computation of harmonization is now numerically robust (#5262)
+  * Fix glyph file names uXXXXX (#5333)
+  * Fix lookup flags parsing (#5338)
+  * Duplicate libfontforge.dll for "py" and "pyhook" tests. (#5335)
+  * Use consistent Python in MacOS GitHub runner (#5331)
+  * Update po files from Croudin sources after fixing problems
+  * Fix GinHub CI runners (#5328)
+  * Update local scripts directory (#5180)
+- Remove patches already included by upstream:
+  * fontforge-CVE-2024-25081-CVE-2024-25082.patch
+  * 642d8a3db6d4bc0e70b429622fdf01ecb09c4c10.patch
+  * use-sysconfig-not-distutils.patch
+
+-------------------------------------------------------------------
 Thu Nov 21 20:31:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add use-sysconfig-not-distutils.patch: fix build with python 3.13
@@ -722,7 +800,7 @@ Tue Apr 10 2001 - Scott Pakin <pakin@uiuc.edu>
 - Upgraded from 210301 to 020401.
 
 -------------------------------------------------------------------
-Thu Mar 22 2001 Scott Pakin <pakin@uiuc.edu>
+Thu Mar 22 2001 - Scott Pakin <pakin@uiuc.edu>
 
 - Initial release
 
