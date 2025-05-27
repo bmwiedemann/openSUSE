@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastimport
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?sle15_python_module_pythons}
-%global skip_python2 1
 Name:           python-fastimport
 Version:        0.9.14
 Release:        0
@@ -26,11 +25,13 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/Python
 URL:            https://github.com/jelmer/python-fastimport
 Source:         https://files.pythonhosted.org/packages/source/f/fastimport/fastimport-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,17 +46,17 @@ git-remote-hg use a slightly modified version of it.
 %setup -q -n fastimport-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/fast-import-query
 %python_clone -a %{buildroot}%{_bindir}/fast-import-info
 %python_clone -a %{buildroot}%{_bindir}/fast-import-filter
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m unittest fastimport.tests.test_suite
+%pyunittest fastimport.tests.test_suite
 
 %post
 %python_install_alternative fast-import-query

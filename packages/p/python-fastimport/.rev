@@ -75,4 +75,12 @@
     <comment>- add sle15_python_module_pythons (jsc#PED-68)</comment>
     <requestid>1082310</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>f09076c9793f365c01a06a369c60e955</srcmd5>
+    <version>0.9.14</version>
+    <time>1748364168</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1280522</requestid>
+  </revision>
 </revisionlist>
