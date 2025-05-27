@@ -1,7 +1,7 @@
 #
 # spec file for package python-exrex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,14 @@ URL:            https://github.com/asciimoo/exrex
 #Source:         https://files.pythonhosted.org/packages/source/e/exrex/exrex-%%{version}.tar.gz
 # pypi has no tests
 Source:         https://github.com/asciimoo/exrex/archive/v%{version}.tar.gz#/exrex-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -43,10 +45,10 @@ A command line tool and python module that generates all or random matching stri
 sed -i '1s/^#!.*//' exrex.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/exrex
 rm %{buildroot}%{_bindir}/exrex.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
