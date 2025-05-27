@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 27 12:46:15 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to version 11.6.1+security-01:
+  * Security:
+    CVE-2025-4123: Fix cross-site scripting vulnerability
+                   (bsc#1243714)
+- CVE-2025-22872: Bump golang.org/x/net/html (bsc#1241809)
+  * Add 0003-Bump-x-net.patch
+- CVE-2025-3580: Prevent unauthorized server admin deletion
+  (bsc#1243672)
+  * Add 0004-Fix-CVE-2025-3580.patch
+
+-------------------------------------------------------------------
 Wed May 14 09:47:29 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update to version 11.6.1:
