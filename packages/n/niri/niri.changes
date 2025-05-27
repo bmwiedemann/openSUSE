@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 26 19:01:42 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 25.05.1:
+  * Fixed handling of layer surfaces unmapped through a null buffer
+    commit: they will now receive an initial configure as necessary
+    This makes the kitty quick access terminal work.
+  * Fixed unmapped layer surfaces preventing popups from appearing.
+  * Fixed brief hover events when the cursor is hidden.
+  * Renamed un/set/toggle-urgent to un/set/toggle-window-urgent,
+    their intended name. This was my oversight.
+  * Fixed screen not always redrawing on niri msg set-window-urgent
+    and other urgency actions.
+  * Fixed numlock activating only after pressing another modifier
+    key.
+  * Fixed incorrect reporting of tablet pen tilt.
+  * Fixed certain clients like fcitx causing frequent keyboard
+    keymap events to clients.
+
+-------------------------------------------------------------------
 Sat May 24 05:20:31 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Add completions shell script
