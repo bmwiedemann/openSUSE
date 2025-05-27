@@ -1,16 +1,16 @@
-From b1284ef4a2ba97447e24fda4d12cdfbfa0bea6cd Mon Sep 17 00:00:00 2001
+From a2bb8e7fe0d80943ab561343b0ab14de08f84b1b Mon Sep 17 00:00:00 2001
 From: Mat Booth <mat.booth@redhat.com>
 Date: Thu, 9 Jul 2020 17:13:18 +0100
 Subject: [PATCH 1/2] Avoid reliance on groovy
 
 ---
- archetype-common/pom.xml                      | 26 -----------------
- .../DefaultFilesetArchetypeGenerator.java     | 28 ++++---------------
+ archetype-common/pom.xml                      | 26 -------------------
+ .../DefaultFilesetArchetypeGenerator.java     | 23 ++--------------
  pom.xml                                       |  7 -----
- 3 files changed, 5 insertions(+), 56 deletions(-)
+ 3 files changed, 2 insertions(+), 54 deletions(-)
 
 diff --git a/archetype-common/pom.xml b/archetype-common/pom.xml
-index 5dab0721..f493a1d1 100644
+index 4a726102..b4406e1e 100644
 --- a/archetype-common/pom.xml
 +++ b/archetype-common/pom.xml
 @@ -47,32 +47,6 @@
@@ -47,7 +47,7 @@ index 5dab0721..f493a1d1 100644
        <groupId>org.apache.ivy</groupId>
        <artifactId>ivy</artifactId>
 diff --git a/archetype-common/src/main/java/org/apache/maven/archetype/generator/DefaultFilesetArchetypeGenerator.java b/archetype-common/src/main/java/org/apache/maven/archetype/generator/DefaultFilesetArchetypeGenerator.java
-index c57eb8f6..2bb6dec9 100644
+index 1e613531..edb40cf2 100644
 --- a/archetype-common/src/main/java/org/apache/maven/archetype/generator/DefaultFilesetArchetypeGenerator.java
 +++ b/archetype-common/src/main/java/org/apache/maven/archetype/generator/DefaultFilesetArchetypeGenerator.java
 @@ -42,8 +42,6 @@ import java.util.regex.Pattern;
@@ -59,13 +59,11 @@ index c57eb8f6..2bb6dec9 100644
  import org.apache.maven.archetype.ArchetypeGenerationRequest;
  import org.apache.maven.archetype.common.ArchetypeArtifactManager;
  import org.apache.maven.archetype.common.ArchetypeFilesResolver;
-@@ -213,27 +211,11 @@ public class DefaultFilesetArchetypeGenerator extends AbstractLogEnabled impleme
-                         context);
-             }
+@@ -226,25 +224,8 @@ public class DefaultFilesetArchetypeGenerator implements FilesetArchetypeGenerat
  
--            String postGenerationScript = archetypeArtifactManager.getPostGenerationScript(archetypeFile);
--            if (postGenerationScript != null) {
--                getLogger().info("Executing " + Constants.ARCHETYPE_POST_GENERATION_SCRIPT + " post-generation script");
+             String postGenerationScript = archetypeArtifactManager.getPostGenerationScript(archetypeFile);
+             if (postGenerationScript != null) {
+-                LOGGER.info("Executing " + Constants.ARCHETYPE_POST_GENERATION_SCRIPT + " post-generation script");
 -
 -                Binding binding = new Binding();
 -
@@ -84,16 +82,13 @@ index c57eb8f6..2bb6dec9 100644
 -
 -                GroovyShell shell = new GroovyShell(binding);
 -                shell.evaluate(postGenerationScript);
-+            String postGenerationScript = archetypeArtifactManager.getPostGenerationScript( archetypeFile );
-+            if ( postGenerationScript != null )
-+            {
-+                getLogger().info( "Skipping " + Constants.ARCHETYPE_POST_GENERATION_SCRIPT
-+                    + " post-generation script" );
++                LOGGER.info("Skipping " + Constants.ARCHETYPE_POST_GENERATION_SCRIPT
++                    + " post-generation script");
              }
  
              // ----------------------------------------------------------------------
 diff --git a/pom.xml b/pom.xml
-index 4ad675d5..6ed2a320 100644
+index 3196edd2..e6d41c00 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -83,13 +83,6 @@
@@ -103,7 +98,7 @@ index 4ad675d5..6ed2a320 100644
 -      <dependency>
 -        <groupId>org.apache.groovy</groupId>
 -        <artifactId>groovy-bom</artifactId>
--        <version>4.0.23</version>
+-        <version>4.0.26</version>
 -        <type>pom</type>
 -        <scope>import</scope>
 -      </dependency>
@@ -111,5 +106,5 @@ index 4ad675d5..6ed2a320 100644
          <groupId>org.apache.maven</groupId>
          <artifactId>maven-compat</artifactId>
 -- 
-2.47.0
+2.49.0
 

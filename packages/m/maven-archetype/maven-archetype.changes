@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue May 27 11:24:27 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.4.0
+  * New features and improvements
+    + Bump archetype descriptor version to 1.2.0
+    + Add property for outputDirectory in create-from-project mojo
+    + Lock down plugin versions in maven-archetype packaging
+    + Enable GitHUb Issues
+    + ARCHETYPE-274: Conditionally include or exclude a file from
+      archetype during generation
+  * Bug Fixes
+    + ARCHETYPE-674: Workaround for Maven 4
+    + Fix recognize project packaging by PomUtils
+  * Maintenance
+    + Update site descriptor
+    + Remove clean from the PR template
+    + MNGSITE-529: Rename "Goals" to "Plugin Documentation"
+    + Bump project version to 3.4.0-SNAPSHOT
+    + Add GitHub Actions to dependabot
+    + Add release-drafter configuration
+    + ARCHETYPE-691: Refactor FileCharsetDetector
+    + Remove a lot of old println detritus
+    + @Component --> @Inject
+    + refactor: Replace Plexus AbstractLogEnabled with SLF4J
+- Modified patches:
+  * 0001-Avoid-reliance-on-groovy.patch
+  * 0002-reproducible-from-environment.patch
+    + rediff
+
+-------------------------------------------------------------------
 Tue Oct 29 17:29:25 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.3.1
