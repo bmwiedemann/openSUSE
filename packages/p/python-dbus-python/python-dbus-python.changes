@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  3 17:08:18 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Remove require on dbus-1. This library is pulled in by dnf, which normally works inside WSL1,
+  but installing dbus-1 makes WSL1 unusable (bsc#1215538)
+
+-------------------------------------------------------------------
 Sat Jun 10 09:47:26 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

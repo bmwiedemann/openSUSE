@@ -41,7 +41,6 @@ BuildRequires:  pkgconfig(dbus-1) >= 1.8.0
 BuildRequires:  pkgconfig(dbus-glib-1)
 Requires:       python-gobject
 Requires:       python-xml
-%requires_ge    dbus-1
 Provides:       dbus-1-%{python_flavor} = %{version}
 Obsoletes:      dbus-1-%{python_flavor} < %{version}
 %if "%{?python_provides}" != ""
