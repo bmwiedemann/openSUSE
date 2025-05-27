@@ -39,4 +39,12 @@
     <comment>- python-six is not required</comment>
     <requestid>1033946</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>f2ea6cbe6045eda13703d271aa92ca55</srcmd5>
+    <version>1.1.11</version>
+    <time>1748364252</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1280623</requestid>
+  </revision>
 </revisionlist>

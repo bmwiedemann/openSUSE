@@ -1,7 +1,7 @@
 #
 # spec file for package python-genfire
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,10 +28,12 @@ BuildRequires:  %{python_module Pillow >= 4.1.1}
 BuildRequires:  %{python_module PyQt5 >= 5.5.0}
 BuildRequires:  %{python_module matplotlib >= 2.0.2}
 BuildRequires:  %{python_module numpy >= 1.12.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyFFTW}
 BuildRequires:  %{python_module pyparsing >= 2.2.0}
 BuildRequires:  %{python_module scipy >= 0.19.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow >= 4.1.1
@@ -41,9 +43,9 @@ Requires:       python-pyFFTW
 Requires:       python-pyparsing >= 2.2.0
 Requires:       python-scipy >= 0.19.0
 Requires:       python-setuptools
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -55,10 +57,10 @@ oriented projection images
 %setup -q -n %{packagename}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/genfire
 
