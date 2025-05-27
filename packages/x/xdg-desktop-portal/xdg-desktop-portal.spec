@@ -28,7 +28,7 @@
 %define oname xdg-desktop-portal
 
 Name:           %{oname}%{?psuffix}
-Version:        1.20.1
+Version:        1.20.3
 Release:        0
 %if "%{flavor}" == ""
 Summary:        A portal frontend service for Flatpak

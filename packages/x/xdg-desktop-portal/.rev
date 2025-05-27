@@ -512,4 +512,20 @@
     - Fix incorrect state tracking in input capture portal (forwarded request 1277803 from iznogood)</comment>
     <requestid>1278252</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>cff2b7b33e335934fe35821afc234234</srcmd5>
+    <version>1.20.3</version>
+    <time>1748364661</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.20.3:
+  + Bug Fixes:
+    - Add a fallback code path for GLib older than 2.76
+    - Don't require a .desktop file for Flatpak and Snap apps
+
+- Update to version 1.20.2:
+  + Bug Fixes:
+    - Fix a crash when loading information from Flatpak apps.
+    - Fix fd handling to prevent EBADF errors. (forwarded request 1278986 from iznogood)</comment>
+    <requestid>1280012</requestid>
+  </revision>
 </revisionlist>
