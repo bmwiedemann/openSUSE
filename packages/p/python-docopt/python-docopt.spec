@@ -1,7 +1,7 @@
 #
 # spec file for package python-docopt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            http://docopt.org
 Source:         https://files.pythonhosted.org/packages/source/d/docopt/docopt-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -44,16 +46,18 @@ and instead can write only the help message.
 sed -i "s|#! %{_bindir}/env python||" examples/git/git.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE-MIT
 %doc README.rst
 %doc examples/
-%{python_sitelib}/*
+%{python_sitelib}/docopt.py
+%{python_sitelib}/docopt-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/docopt*
 
 %changelog
