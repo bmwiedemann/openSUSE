@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 26 11:56:16 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 0.8.7:
+  * Fixed issue when running vmu zig mach on a clean install
+
+-------------------------------------------------------------------
 Sat Apr  5 13:25:17 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 0.8.6:
