@@ -1600,7 +1600,6 @@ unsorted:
   - brlemu 
   - brlist 
   - brltty-driver-espeak 
-  - brltty-driver-libbraille 
   - brltty-udev-generic 
   - brltty-utils 
   - broadvoice16 
@@ -3198,6 +3197,7 @@ unsorted:
   - dfu-util 
   - dh-autoreconf 
   - dh-make 
+  - dhcp-client 
   - dhcp-devel 
   - dhcp-doc 
   - dhcp-keama 
@@ -3267,7 +3267,6 @@ unsorted:
   - distcc-server 
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
-  - distribution-logos-openSUSE-Aeon 
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-Slowroll 
   - distribution-registry 
@@ -10434,7 +10433,6 @@ unsorted:
   - kryo 
   - kryo-javadoc 
   - ksanecore-devel 
-  - kscreenlocker-devel 
   - kscreenlocker6-devel 
   - kseexpr-devel 
   - kseexpr-lang 
@@ -10817,6 +10815,7 @@ unsorted:
   - latex2html-pngicons 
   - latex2rtf 
   - lato-fonts 
+  - layer-shell-qt5 
   - layer-shell-qt5-devel 
   - layer-shell-qt6-devel 
   - layer-shell-qt6-imports 
@@ -11143,6 +11142,7 @@ unsorted:
   - libKF5CalendarCore5 
   - libKF5CalendarEvents5 
   - libKF5Cddb5 
+  - libKF5ConfigQml5 
   - libKF5Contacts5 
   - libKF5Emoticons5 
   - libKF5Holidays5 
@@ -11182,7 +11182,6 @@ unsorted:
   - libKPublicTransport1 
   - libKPublicTransportOnboard1 
   - libKReport3-4 
-  - libKScreenLocker5 
   - libKSeExpr4 
   - libKTorrent6 
   - libKTorrent6-lang 
@@ -13987,8 +13986,8 @@ unsorted:
   - libkdegames-devel 
   - libkdepim-devel 
   - libkdevplatform62 
-  - libkdsingleapplication-qt6-1_1 
-  - libkdsingleapplication1_1 
+  - libkdsingleapplication-qt6-1_2 
+  - libkdsingleapplication1_2 
   - libkdsoap-server-qt6-2 
   - libkdsoap-server2 
   - libkdstatemachineeditor_core-qt6-2 
@@ -14078,8 +14077,6 @@ unsorted:
   - libkrunfw4 
   - libksane-devel 
   - libksba-devel 
-  - libkscreen2-devel 
-  - libkscreen2-plugin 
   - libkscreen6-devel 
   - libksi-devel 
   - libksi13 
@@ -14166,6 +14163,7 @@ unsorted:
   - libliftoff-devel 
   - libliftoff0 
   - liblightdm-qt5-3-0 
+  - liblightdm-qt6-3-0 
   - liblightgrep-devel 
   - liblightgrep0 
   - liblightmediascanner0 
@@ -15334,7 +15332,6 @@ unsorted:
   - libqmmp-devel 
   - libqmmp-plugins 
   - libqmmp2 
-  - libqmobipocket2 
   - libqoauth2 
   - libqobs-devel 
   - libqobs3 
@@ -17165,6 +17162,7 @@ unsorted:
   - lightdm-gobject-devel 
   - lightdm-gtk-greeter-branding-upstream 
   - lightdm-qt5-devel 
+  - lightdm-qt6-devel 
   - lightdm-slick-greeter 
   - lightdm-slick-greeter-branding-openSUSE 
   - lightdm-slick-greeter-branding-upstream 
@@ -18605,7 +18603,6 @@ unsorted:
   - moarvm 
   - moarvm-devel 
   - mobidict 
-  - mobipocket-devel 
   - moc 
   - mockery 
   - mockito 
@@ -24391,6 +24388,7 @@ unsorted:
   - python311-azure-mgmt-servicelinker 
   - python311-azure-mgmt-servicenetworking 
   - python311-azure-mgmt-signalr 
+  - python311-azure-mgmt-sitemanager 
   - python311-azure-mgmt-sphere 
   - python311-azure-mgmt-springappdiscovery 
   - python311-azure-mgmt-sql 
@@ -28087,6 +28085,7 @@ unsorted:
   - python312-azure-mgmt-servicelinker 
   - python312-azure-mgmt-servicenetworking 
   - python312-azure-mgmt-signalr 
+  - python312-azure-mgmt-sitemanager 
   - python312-azure-mgmt-sphere 
   - python312-azure-mgmt-springappdiscovery 
   - python312-azure-mgmt-sql 
@@ -31837,6 +31836,7 @@ unsorted:
   - python313-azure-mgmt-servicelinker 
   - python313-azure-mgmt-servicenetworking 
   - python313-azure-mgmt-signalr 
+  - python313-azure-mgmt-sitemanager 
   - python313-azure-mgmt-sphere 
   - python313-azure-mgmt-springappdiscovery 
   - python313-azure-mgmt-sql 
@@ -37423,6 +37423,7 @@ unsorted:
   - systemd-networkd 
   - systemd-portable 
   - systemd-presets-branding-transactional-server 
+  - systemd-presets-common-SUSE-devel 
   - systemd-repart-branding-Aeon 
   - systemd-repart-branding-tik 
   - systemd-repart-dracut 

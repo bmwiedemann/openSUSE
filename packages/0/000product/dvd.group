@@ -320,9 +320,9 @@
     <package name="desktop-translations" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="device-mapper" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="dhcp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
-    <package name="dhcp-client" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="dhcp-relay" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
     <package name="dhcp-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
+    <package name="dhcpcd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="dialog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="dialog-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="diffutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1135,8 +1135,6 @@
     <package name="kreversi-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kscreen6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kscreen6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kscreenlocker" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="kscreenlocker-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kscreenlocker6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kscreenlocker6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kservice" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1177,7 +1175,6 @@
     <package name="kwordquiz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kwordquiz-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="lastlog2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="layer-shell-qt5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="layer-shell-qt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ldmtool" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ldns" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -1230,7 +1227,6 @@
     <package name="libKF5ConfigCore5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5ConfigCore5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5ConfigGui5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5ConfigQml5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libKF5ConfigWidgets5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5ConfigWidgets5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5CoreAddons5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1264,9 +1260,6 @@
     <package name="libKF5Parts5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libKF5Parts5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libKF5QuickAddons5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="libKF5Screen8" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libKF5Screen8-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libKF5ScreenDpms8" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libKF5Solid5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Solid5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5SonnetCore5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
