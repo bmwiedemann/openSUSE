@@ -17,7 +17,7 @@
 
 
 Name:           rpcs3
-Version:        0.0.36~git20250515
+Version:        0.0.36~git20250523
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only
@@ -25,17 +25,17 @@ URL:            https://rpcs3.net
 Source0:        %{name}-%{version}.tar.xz
 Source1:        intel-ittapi.tar.xz
 Patch1:         fix-test-files.patch
-Patch2:         fix-toolbar-color.patch
-Patch3:         fix-build-glew-egl.patch
+Patch2:         fix-build-glew-egl.patch
+BuildRequires:  cmake >= 3.28.0
 BuildRequires:  gcc-c++
 BuildRequires:  llvm-devel >= 17
-BuildRequires:  cmake(x86-64) >= 3.28.0
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(opencv)
 BuildRequires:  pkgconfig(pugixml) >= 1.15
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(yaml-cpp)
@@ -128,15 +128,11 @@ echo "// This is a generated file.
 mv intel-ittapi ittapi && mkdir intel-ittapi && mv ittapi intel-ittapi/
 export ITTAPI_DIR="$(pwd)/intel-ittapi"
 
-mkdir ../%{name}_build
-cd ../%{name}_build
-# FIXME: you should use the %%cmake macros
-%__cmake ../%{name}-%{version} \
+# we disable shared libraries because FAudio disables the target if
+# shared libraries are enabled
+
+%cmake \
         -DITTAPI_SOURCE_DIR="${ITTAPI_DIR}" \
-        -DUSE_PCH=OFF \
-        -DENABLE_PCH=OFF \
-        -DSKIP_PRECOMPILE_HEADERS=ON \
-        -DUSE_PRECOMPILED_HEADERS=OFF \
         -DUSE_SYSTEM_CURL=ON \
         -DUSE_SYSTEM_FFMPEG=ON \
         -DUSE_SYSTEM_LIBPNG=ON \
@@ -148,9 +144,12 @@ cd ../%{name}_build
         -DCMAKE_INSTALL_LIBEXEC="%{_libexecdir}" \
         -DCMAKE_BUILD_TYPE="Release" \
         -DCMAKE_SKIP_RPATH="YES" \
-        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -DBUILD_SHARED_LIBS:BOOL="" \
+        -DDISABLE_LTO=TRUE \
+        %{nil}
 
-%make_jobs
+%cmake_build
 
 %post
 %desktop_database_post
@@ -161,8 +160,7 @@ cd ../%{name}_build
 %icon_theme_cache_postun
 
 %install
-cd ../%{name}_build
-%make_install
+%cmake_install
 
 %files
 %doc README.md

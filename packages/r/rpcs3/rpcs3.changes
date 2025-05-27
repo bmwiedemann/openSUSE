@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon May 26 15:14:15 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add OpenCV to the list of BuildRequires
+- Use %cmake macro instead of custom %__cmake call
+  and replace %make_jobs with %cmake_build
+- Replace %make_install with %cmake_install
+- Remove CMake options to not use precompiled headers
+
+-------------------------------------------------------------------
+Sat May 24 04:21:26 UTC 2025 - Yunhe Guo <i@guoyunhe.me>
+
+- Remove fix-toolbar-color.patch since upstream supports native ui
+- Update to version 0.0.36~git20250523:
+  * Sort bin attributes based on ID
+  * Update hidapi to 0.15.0
+  * rsx: Refactor CgBinaryProgram to avoid namespace collision with X11
+  * rsx-debugger: Extra safety checks for FP decompiler
+  * rsx-debugger: Show disassembly of the currently active VP and FP
+  * rsx: Use safe memory in RSX assembly decompiler
+  * vk: Force VMA to comply with Vulkan 1.0
+  * SDL: do not track emu state when initializing
+  * Always initialize SDL from main thread
+  * Logitech G27 log control transfers as todo
+  * Logitech G27 update bit 86 shifter_pressed behavior
+  * PPU debugger: Update CIA unconditionally if "PPU Debug" enabled
+  * Silence clang warning spam
+
+-------------------------------------------------------------------
 Mon May 19 19:05:29 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Fix log level of sdl pad handler log message
@@ -44,10 +72,10 @@ Wed May 14 20:23:14 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
     unlocked trophies
   * SPU: Evaluated Thread-blocked LR messaging
   * Emu: Track game termination progress better
-  * remove SDL_INIT_JOYSTICK since SDL_INIT_GAMEPAD implies 
+  * remove SDL_INIT_JOYSTICK since SDL_INIT_GAMEPAD implies
     SDL_INIT_JOYSTICK
   * initialize sdl haptic, log haptic device open errors
-  * cellSysutilCheckCallback: increase read_counter as soon as a 
+  * cellSysutilCheckCallback: increase read_counter as soon as a
     callback is about to be called
   * Use const for present_samples buf argument
   * overlays: Allow auto exit in home menu's exit game function
@@ -153,7 +181,7 @@ Sat May  3 17:42:52 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * vm_native.cpp: Fix possible weakness of map_self()
   * Fix sys_mmapper_unmap_shared_memory
   * vk: Prevent header internals from leaking
-  * vk: Stop using internal defines to structure platform-specific 
+  * vk: Stop using internal defines to structure platform-specific
         code
 
 -------------------------------------------------------------------
@@ -199,7 +227,7 @@ Mon Apr 28 06:30:23 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 -------------------------------------------------------------------
 Tue Apr 22 04:11:59 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
-- Update to 0.0.36~git20250420: 
+- Update to 0.0.36~git20250420:
   * types: Fix comment
   * vk: Properly initialize multi draw extension
   * rsx: de-uglify buffer upload restructure
@@ -1064,7 +1092,7 @@ Mon Dec 02 16:53:48 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * lockless.h: Fixup addressing
   * lockless.h: Fixup lf_array assert
   * Progress: Dialog: Fixup memory management
-  
+
 -------------------------------------------------------------------
 Mon Nov 18 12:03:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
@@ -1226,7 +1254,7 @@ Mon Oct 07 17:12:04 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 -------------------------------------------------------------------
 Mon Oct 02 13:31:40 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
-  
+
 - Update to version 0.0.33~git20241002:
   * Bump linux x64 docker to 1.7.1, Qt 6.7.3
   * Do not link intel JIT events when compiling LLVM for ARM64
@@ -1342,7 +1370,7 @@ Mon Sep 16 04:45:10 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * aarch64: Fix compilation for windows-on-arm
   * patch_manager: set config_key_role to current key after handle_item_selected
   * cellMic: add 16-bit PCM to 32-bit float conversion for DSP stream (#16030)
-  
+
 -------------------------------------------------------------------
 Mon Sep 03 17:27:36 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
@@ -1368,7 +1396,7 @@ Mon Aug 26 22:15:02 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
 - Update to version 0.0.32~git20240827:
   * Vk/Gl/Overlays: Do not blend the alpha channel when rendering overlays
   * RSX: Fix RSX Captures
-  
+
 -------------------------------------------------------------------
 Mon Aug 26 17:52:40 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
@@ -1703,7 +1731,7 @@ Thu Aug  8 00:07:01 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * Unix/Savestates: Fix savestates destination
   * sys_net: properly return error in sendto
   * SPU LLVM: Disable PUTLLC16 temporarily
-  * vk: Dump diagnostic messages if device creation fails 
+  * vk: Dump diagnostic messages if device creation fails
 
 -------------------------------------------------------------------
 Sun Jun 16 18:17:06 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
@@ -16706,5 +16734,3 @@ Sun Mar 26 15:25:38 UTC 2017 - pousaduarte@gmail.com
   * vk: Minor fixes to vertex counting and lower exception to notice if var does not exist
   * rsx: Support more base types for immediate rendering
   * rsx: Fix depth clears on z16 surfaces without stencil
-
-
