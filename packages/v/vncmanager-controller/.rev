@@ -107,4 +107,20 @@ Session manager for VNC. It listens on VNC port and spawns Xvnc processes for in
     <comment></comment>
     <requestid>1148041</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>0d18aab3f994f67ca6760b4a7feb9de1</srcmd5>
+    <version>1.0.2</version>
+    <time>1748364217</time>
+    <user>anag_factory</user>
+    <comment>- u_tigervnc-1.15.0.patch
+  * fixes build against tigervnc 1.15.0, i.e. adjusted to git commit
+    commit 2ce0d58ff85ecda29acfbaa6961b95439cc64ff3
+    Author: Pierre Ossman &lt;ossman@cendio.se&gt;
+    Date:   Tue Dec 3 15:50:09 2024 +0100
+      Separate parameter name and value in VNC extension
+    
+      Let's avoid using special string formats when we can send this data
+      structured instead.</comment>
+    <requestid>1280611</requestid>
+  </revision>
 </revisionlist>

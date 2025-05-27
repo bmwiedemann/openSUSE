@@ -1,0 +1,88 @@
+diff -u -r -p vncmanager-controller-1.0.1.orig/ManagerConnection.cpp vncmanager-controller-1.0.1/ManagerConnection.cpp
+--- vncmanager-controller-1.0.1.orig/ManagerConnection.cpp	2025-05-27 12:43:01.545048000 +0200
++++ vncmanager-controller-1.0.1/ManagerConnection.cpp	2025-05-27 13:16:23.042742000 +0200
+@@ -62,7 +62,7 @@ bool ManagerConnection::connect()
+     if (!XVncExtGetParam(m_display, "Desktop", &originalDesktopName, &originalDesktopNameLength)) {
+         return false;
+     }
+-    if (!XVncExtSetParam(m_display, (QString("Desktop=CONTROLLER_KEY:") + keyBase64).toLatin1())) {
++    if (!XVncExtSetParam(m_display, "Desktop", (QString("CONTROLLER_KEY:") + keyBase64).toLatin1())) {
+         return false;
+     }
+ 
+@@ -75,7 +75,7 @@ bool ManagerConnection::connect()
+     m_stream >> response;
+ 
+     // Set back the original name
+-    XVncExtSetParam(m_display, (QString("Desktop=") + QString::fromLatin1(originalDesktopName, originalDesktopNameLength)).toLatin1());
++    XVncExtSetParam(m_display, "Desktop", (QString::fromLatin1(originalDesktopName, originalDesktopNameLength)).toLatin1());
+     XFree(originalDesktopName);
+ 
+     // Check if the response was correct
+diff -u -r -p vncmanager-controller-1.0.1.orig/VncConfiguration.cpp vncmanager-controller-1.0.1/VncConfiguration.cpp
+--- vncmanager-controller-1.0.1.orig/VncConfiguration.cpp	2025-05-27 12:43:01.665029000 +0200
++++ vncmanager-controller-1.0.1/VncConfiguration.cpp	2025-05-27 13:01:23.762973000 +0200
+@@ -133,8 +133,8 @@ void VncConfiguration::apply()
+     // Sharing 1
+     switch (m_sharing) {
+     case Sharing::OneClient:
+-        XVncExtSetParam(m_display, "NeverShared=1");
+-        XVncExtSetParam(m_display, "DisconnectClients=1");
++        XVncExtSetParam(m_display, "NeverShared", "1");
++        XVncExtSetParam(m_display, "DisconnectClients", "1");
+         break;
+ 
+     case Sharing::MultipleClients:
+@@ -145,17 +145,17 @@ void VncConfiguration::apply()
+     // Security
+     switch (m_security) {
+     case Security::None:
+-        XVncExtSetParam(m_display, "SecurityTypes=None");
++        XVncExtSetParam(m_display, "SecurityTypes", "None");
+         break;
+ 
+     case Security::VncAuth:
+-        XVncExtSetParam(m_display, "SecurityTypes=VncAuth");
+-        XVncExtSetParam(m_display, (QString("PasswordFile=") + m_passwordFile).toLatin1());
++        XVncExtSetParam(m_display, "SecurityTypes", "VncAuth");
++        XVncExtSetParam(m_display, "PasswordFile", m_passwordFile.toLatin1());
+         break;
+ 
+     case Security::Plain:
+-        XVncExtSetParam(m_display, "SecurityTypes=Plain");
+-        XVncExtSetParam(m_display, (QString("PlainUsers=") + m_plainUsers.join(",")).toLatin1());
++        XVncExtSetParam(m_display, "SecurityTypes", "Plain");
++        XVncExtSetParam(m_display, "PlainUsers", m_plainUsers.join(",").toLatin1());
+         break;
+     }
+ 
+@@ -166,24 +166,24 @@ void VncConfiguration::apply()
+         break;
+ 
+     case Sharing::MultipleClients:
+-        XVncExtSetParam(m_display, "DisconnectClients=0");
+-        XVncExtSetParam(m_display, "NeverShared=0");
++        XVncExtSetParam(m_display, "DisconnectClients", "0");
++        XVncExtSetParam(m_display, "NeverShared", "0");
+         break;
+     }
+ 
+     // Persistence
+     switch (m_persistence) {
+     case Persistence::Persistent:
+-        XVncExtSetParam(m_display, "MaxDisconnectionTime=0");
++        XVncExtSetParam(m_display, "MaxDisconnectionTime", "0");
+         break;
+ 
+     case Persistence::NonPersistent:
+-        XVncExtSetParam(m_display, "MaxDisconnectionTime=5"); // XXX: Too hardcoded
++        XVncExtSetParam(m_display, "MaxDisconnectionTime", "5"); // XXX: Too hardcoded
+         break;
+     }
+ 
+     // Name
+-    XVncExtSetParam(m_display, ("Desktop=" + m_sessionName).toLatin1());
++    XVncExtSetParam(m_display, "Desktop", m_sessionName.toLatin1());
+ 
+     if (m_managerConnection.connected()) {
+         // Send session info

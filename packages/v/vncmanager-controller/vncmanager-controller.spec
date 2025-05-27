@@ -1,7 +1,7 @@
 #
 # spec file for package vncmanager-controller
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Group:          System/X11/Utilities
 URL:            https://github.com/openSUSE/vncmanager-controller
 Source:         %{name}-%{version}.tar
 Patch1:         n_UsrEtc.patch
-
+Patch2:         u_tigervnc-1.15.0.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libQt5Core-devel
@@ -35,7 +35,6 @@ BuildRequires:  libXvnc-devel
 BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xproto)
-
 Requires:       vncmanager
 
 %description
@@ -57,6 +56,7 @@ This is configuration application to configure sharing and security from inside 
 %if 0%{?suse_version} >= 1550
 %patch -P 1 -p1
 %endif
+%patch -P 2 -p1
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_VERBOSE_MAKEFILE=ON

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 27 11:05:18 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_tigervnc-1.15.0.patch
+  * fixes build against tigervnc 1.15.0, i.e. adjusted to git commit
+
+    commit 2ce0d58ff85ecda29acfbaa6961b95439cc64ff3
+    Author: Pierre Ossman <ossman@cendio.se>
+    Date:   Tue Dec 3 15:50:09 2024 +0100
+
+      Separate parameter name and value in VNC extension
+    
+      Let's avoid using special string formats when we can send this data
+      structured instead.
+
+-------------------------------------------------------------------
 Tue Feb 20 13:30:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
