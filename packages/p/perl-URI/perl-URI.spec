@@ -1,7 +1,7 @@
 #
 # spec file for package perl-URI
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name URI
 Name:           perl-URI
-Version:        5.310.0
+Version:        5.320.0
 Release:        0
-# 5.31 -> normalize -> 5.310.0
-%define cpan_version 5.31
+# 5.32 -> normalize -> 5.320.0
+%define cpan_version 5.32
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Uniform Resource Identifiers (absolute and relative)
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -84,6 +84,7 @@ Provides:       perl(URI::scp) = %{version}
 Provides:       perl(URI::sftp) = %{version}
 Provides:       perl(URI::sip) = %{version}
 Provides:       perl(URI::sips) = %{version}
+Provides:       perl(URI::smb) = %{version}
 Provides:       perl(URI::snews) = %{version}
 Provides:       perl(URI::ssh) = %{version}
 Provides:       perl(URI::telnet) = %{version}
@@ -125,7 +126,7 @@ components. The methods available for a specific 'URI' object depend on the
 scheme.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

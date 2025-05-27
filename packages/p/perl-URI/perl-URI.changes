@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 11 05:35:57 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.320.0 (5.32)
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  5.32      2025-05-10 21:26:50Z
+      - Add authority() to URI::otpauth (GH#152) (GH#153) (Lester Hightower)
+      - Implement URI::smb for Samba/CIFS (GH#149) (buralien)
+      - Silence warnings issued in t/otpauth.t (GH#154) (Olaf Alders)
+
+-------------------------------------------------------------------
 Thu Dec 12 16:45:26 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.310.0 (5.31)
