@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 19 05:36:48 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.89.0 (0.089)
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.089		2025-05-18	T. R. Wyant
+      The /x modifier should not affect the parse of the replacement
+      string in a substitution operator. That is, the '#' in s/x/#/x does
+      NOT introdice a comment.
+
+      Correct POD link in PPIx::Regexp::Token::Literal.
+
+      Annotate sub class(), since with Perl 5.38 it is a built-in.
+
+-------------------------------------------------------------------
 Wed Mar  1 03:07:18 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.088
