@@ -1,7 +1,7 @@
 #
 # spec file for package python-glean-parser
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ URL:            https://github.com/mozilla/glean_parser
 Source:         https://files.pythonhosted.org/packages/source/g/glean_parser/glean_parser-%{version}.tar.gz
 Patch1:         remove-pytest.patch
 Patch2:         fix-yaml-lint.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 7}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.10.1
@@ -37,8 +39,8 @@ Requires:       python-click >= 7
 Requires:       python-diskcache >= 4
 Requires:       python-jsonschema >= 3.0.2
 Requires:       python-yamllint >= 1.18.0
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(post): alts
+Requires(postun): alts
 Suggests:       python-iso8601 >= 0.1.10
 BuildArch:      noarch
 # SECTION test requirements
@@ -61,10 +63,10 @@ Parser tools for Mozilla's Glean telemetry
 %autosetup -p1 -n glean_parser-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/glean_parser
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
