@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May 26 08:07:42 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.10:
+  + This release adds the following features:
+    - Include the AGESA version as the summary of the AMD secure processor device
+    - Include the UEFI PK certificate key ID in the uploaded problem report
+    - Provide a way for the client to restrict the GUID list to an emulated device
+  + This release fixes the following bugs:
+    - Do not allow dbx updates on the HP Elitebook 845 Gen10
+    - Do not warn about BIOS bugs we can easily work around
+    - Fix a regression in fwupdmgr emulation-save when recording some devices
+    - Fix a regression preventing installation of KEKs
+    - Fix a small memory leak when getting security attributes
+    - Never write a UX capsule when using Capsule-On-Disk
+    - Use the 'OnBattery' property from upower to tell if plugged in
+  + This release adds support for the following hardware:
+    - Lenovo Legion Touchpad
+    - Logitech MX Mechanical
+    - Poly Studio V72 and V12
+
+-------------------------------------------------------------------
 Thu May  8 09:05:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.0.9:
