@@ -127,4 +127,12 @@
     <comment>KDE release gear 25.04.1</comment>
     <requestid>1275731</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>e1efe84b9462acee2c61e35404f41e94</srcmd5>
+    <version>25.04.1</version>
+    <time>1748364573</time>
+    <user>anag_factory</user>
+    <comment>- Drop the KF5 flavor, there are no user left</comment>
+    <requestid>1279907</requestid>
+  </revision>
 </revisionlist>
