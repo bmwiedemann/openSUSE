@@ -18,10 +18,10 @@
 
 %define cpan_name Test-File
 Name:           perl-Test-File
-Version:        1.994.0
+Version:        1.995.0
 Release:        0
-# 1.994 -> normalize -> 1.994.0
-%define cpan_version 1.994
+# 1.995 -> normalize -> 1.995.0
+%define cpan_version 1.995
 License:        Artistic-2.0
 Summary:        Test file attributes
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -33,6 +33,7 @@ BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::Builder) >= 1.001006
 BuildRequires:  perl(Test::Builder::Tester) >= 1.04
 BuildRequires:  perl(Test::More) >= 1
+BuildRequires:  perl(version) >= 0.86
 Provides:       perl(Test::File) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
@@ -56,7 +57,7 @@ The optional NAME parameter for every function allows you to specify a name
 for the test. If not supplied, a reasonable default will be generated.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

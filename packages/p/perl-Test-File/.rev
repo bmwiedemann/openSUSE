@@ -63,4 +63,17 @@
     <comment></comment>
     <requestid>1237570</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e20ce82b6303977d78dc994358298932</srcmd5>
+    <version>1.995.0</version>
+    <time>1748364561</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1278597 from tinita
+
+- updated to 1.995.0 (1.995)
+   see /usr/share/doc/packages/perl-Test-File/Changes
+  1.995 2025-04-13T23:56:59Z
+  	* require a newer version.pm for v5.10.1 tests</comment>
+    <requestid>1279784</requestid>
+  </revision>
 </revisionlist>
