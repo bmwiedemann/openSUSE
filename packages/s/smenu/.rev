@@ -300,4 +300,40 @@
     <comment></comment>
     <requestid>1273743</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8ad8d09ec69b7a5d6a1f1acdd6c26c47</srcmd5>
+    <version>1.5.0</version>
+    <time>1748364146</time>
+    <user>anag_factory</user>
+    <comment>- Typo: &quot;sles_version&quot; -&gt; &quot;sle_version&quot; in smenu.spec
+- Removal of the patch added in revision 34 (smenu-gcc15.patch, issue #46).
+  This patch is no longer required as the code has been reworked.
+- Version 1.5.0
+* Fixes
+  * Various modifications and corrections have been made to make the
+    substitution code more robust.
+  * Added several variable initializations that were missing.
+  * ^H and BS now work correctly in all cases.
+  * A stdin flush has been added before requesting the cursor's initial
+    position.
+  * Memory leaks have been fixed.
+  * Highlighting in search mode works correctly in all cases.
+  * Compilations problems with gcc-15 have been corrected.
+  * Compiler warnings have been fixed.
+  * The description of S-HOME/S-END in the manual has been corrected.
+* Improvements:
+  * The TAB key can now be used to automatically complete search patterns
+    until an ambiguity arises.
+  * A -hbar|-hor_scroll_bar option has been added to force the display of
+    the horizontal scroll bar.
+  * The quick help system has been rewritten.
+  * ZWSP, ZWNJ, ZWJ, LRM and RLM glyphs are now ignored.
+* Miscellaneous:
+  * The README and documentation have been improved and clarified.
+  * Some parts of the code have been removed or reorganized.
+  * New tests have been added.
+  * Improve smenu.spec.
+</comment>
+    <requestid>1280419</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           smenu
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        A standard input word picker
 License:        GPL-2.0-only
@@ -25,7 +25,6 @@ Group:          Productivity/Text/Utilities
 URL:            https://github.com/p-gen/%{name}
 Source:         https://github.com/p-gen/smenu/releases/download/v%{version}/smenu-%{version}.tar.bz2
 # https://github.com/p-gen/smenu/issues/46
-Patch0:         smenu-gcc15.patch
 BuildRequires:  ncurses-devel
 
 %description
@@ -38,12 +37,19 @@ selected words, if any, to standard output.
 
 %build
 %configure
+%if (0%{?sle_version} >= 150000 && !0%{?is_opensuse})
+    || (0%{?suse_version} >= 150000 && 0%{?is_opensuse})
+    || (0%{?rhel_version} > 600)
 %make_build
+%else
+make %{?_smp_mflags}
+%endif
 
 %package tests
 Summary:        Testing system for %{name}
 Group:          Productivity/Text/Utilities
 Requires:       smenu
+BuildArch:      noarch
 
 %description tests
 This packages contains some scripts and a number of tests to check the
