@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Find-Rule
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,26 @@
 #
 
 
-Name:           perl-File-Find-Rule
-Version:        0.34
-Release:        0
 %define cpan_name File-Find-Rule
+Name:           perl-File-Find-Rule
+Version:        0.340.0
+Release:        0
+# 0.34 -> normalize -> 0.340.0
+%define cpan_version 0.34
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Alternative interface to File::Find
-License:        GPL-1.0-or-later OR Artistic-1.0
-Group:          Development/Libraries/Perl
-URL:            https://search.cpan.org/dist/File-Find-Rule/
-Source0:        https://www.cpan.org/authors/id/R/RC/RCLAMP/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RC/RCLAMP/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Number::Compare)
-BuildRequires:  perl(Text::Glob) >= 0.07
+BuildRequires:  perl(Text::Glob) >= 0.70
 Requires:       perl(Number::Compare)
-Requires:       perl(Text::Glob) >= 0.07
+Requires:       perl(Text::Glob) >= 0.70
+Provides:       perl(File::Find::Rule) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -41,14 +43,14 @@ File::Find::Rule is a friendlier interface to File::Find. It allows you to
 build rules which specify the desired files and directories.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -56,7 +58,6 @@ build rules which specify the desired files and directories.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes findrule
 
 %changelog
