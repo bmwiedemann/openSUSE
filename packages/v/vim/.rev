@@ -8021,4 +8021,12 @@ always built-in because vim has direct perl dependencies anyway.
  * patch 9.1.1315: completion: issue with fuzzy completion and 'completefuzzycollect'</comment>
     <requestid>1271181</requestid>
   </revision>
+  <revision rev="386" vrev="1">
+    <srcmd5>c52823327b495bec56f3f3fe985137a2</srcmd5>
+    <version>9.1.1406</version>
+    <time>1748364559</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1279763</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 %define pkg_version 9.1
-%define patchlevel 1330
+%define patchlevel 1406
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim91
 %define site_runtimepath %{_datadir}/vim/site
@@ -228,9 +228,7 @@ cp %{SOURCE23} runtime/syntax/apparmor.vim
 cp %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} .
 
 %build
-## about -std=gnu17 see github.com/vim/vim/issues/16575;
-## use -std=gnu11 here to allow build on Leap 15.6
-export CFLAGS="%{optflags} -Wall -pipe -fno-strict-aliasing -std=gnu11"
+export CFLAGS="%{optflags} -Wall -pipe -fno-strict-aliasing"
 export CFLAGS=${CFLAGS/-D_FORTIFY_SOURCE=2/-D_FORTIFY_SOURCE=1}
 
 export COMMON_OPTIONS="\

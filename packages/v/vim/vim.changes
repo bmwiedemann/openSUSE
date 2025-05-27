@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Sat May 24 11:13:11 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 9.1.1406.
+  * 9.1.1406: crash when importing invalid tuple
+  * 9.1.1405: tests: no test for mapping with special keys in session file
+  * 9.1.1404: wrong link to Chapter 2 in new-tutor
+  * 9.1.1403: expansion of 'tabpanelopt' value adds wrong values
+  * 9.1.1402: multi-byte mappings not properly stored in session file
+  * 9.1.1401: list not materialized in prop_list()
+  * 9.1.1400: [security]: use-after-free when evaluating tuple fails
+  * 9.1.1399: tests: test_codestyle fails for auto-generated files
+  * 9.1.1398: completion: trunc does not follow Pmenu highlighting attributes
+  * 9.1.1397: tabpanel not correctly updated on :tabonly
+  * 9.1.1396: 'errorformat' is a global option
+  * 9.1.1395: search_stat not reset when pattern differs in case
+  * 9.1.1394: tabpanel not correctly redrawn on tabonly
+  * 9.1.1393: missing test for switching buffers and reusing curbuf
+  * 9.1.1392: missing patch number
+  * 9.1.1391: Vim does not have a vertical tabpanel
+  * 9.1.1390: style: more wrong indentation
+  * 9.1.1389: completion: still some issue when 'isexpand' contains a space
+  * 9.1.1388: Scrolling one line too far with 'nosmoothscroll' page scrolling
+  * 9.1.1387: memory leak when buflist_new() fails to reuse curbuf
+  * 9.1.1386: MS-Windows: some minor problems building on AARCH64
+  * 9.1.1385: inefficient loop for 'nosmoothscroll' scrolling
+  * 9.1.1384: still some problem with the new tutors filetype plugin
+  * 9.1.1383: completion: 'isexpand' option does not handle space char correct
+  * 9.1.1382: if_ruby: unused compiler warnings from ruby internals
+  * 9.1.1381: completion: cannot return to original text
+  * 9.1.1380: 'eventignorewin' only checked for current buffer
+  * 9.1.1379: MS-Windows: error when running evim when space in path
+  * 9.1.1378: sign without text overwrites number option
+  * 9.1.1377: patch v9.1.1370 causes some GTK warning messages
+  * 9.1.1376: quickfix dummy buffer may remain as dummy buffer
+  * 9.1.1375: [security]: possible heap UAF with quickfix dummy buffer
+  * 9.1.1374: completion: 'smartcase' not respected when filtering matches
+  * 9.1.1373: 'completeopt' checking logic can be simplified
+  * 9.1.1372: style: braces issues in various files
+  * 9.1.1371: style: indentation and brace issues in insexpand.c
+  * 9.1.1370: CI Tests favor GTK2 over GTK3
+  * 9.1.1369: configure still using autoconf 2.71
+  * 9.1.1368: GTK3 and GTK4 will drop numeric cursor support.
+  * 9.1.1367: too many strlen() calls in gui.c
+
+-------------------------------------------------------------------
+Tue May  6 21:29:28 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.1366:
+ * patch 9.1.1366: v9.1.1364 unintentionally changed sign.c and sound.c
+ * runtime(lua): update 'path' option in filetype plugin
+ * runtime(sh): Update syntax, match KornShell compound arrays
+ * runtime(doc): Tweak documentation style in develop.txt
+ * runtime(helptoc): the helptoc package can be improved
+ * runtime(spec): add more local macro names according to rpm 4.20
+ * runtime(sh): Update syntax, fix single-quoted strings in parameter expansions
+ * runtime(new-tutor): Update Serbian translation of chapter 1
+ * patch 9.1.1365: MS-Windows: compile warnings and too many strlen() calls
+ * patch 9.1.1364: style: more indentation issues
+ * runtime(vim): Update base-syntax, match quote separated numbers
+ * patch 9.1.1363: style: inconsistent indentation in various files
+ * patch 9.1.1362: Vim9: type ignored when adding tuple to instance list var
+ * runtime(tutor): Add Galician language versions of tutor1 and tutor2
+ * patch 9.1.1361: [security]: possible use-after-free when closing a buffer
+ * runtime(abnf): include ABNF filetype plugin
+ * patch 9.1.1360: filetype: GNU Radio companion files are not recognized
+ * patch 9.1.1359: filetype: GNU Radio config files are not recognized
+ * patch 9.1.1358: if_lua: compile warnings with gcc15
+ * runtime(vim): Update base-syntax, improve enum highlighting
+ * runtime(doc): update example ctags program and links
+ * patch 9.1.1357: Vim incorrectly escapes tags with "[" in a help buffer
+ * patch 9.1.1356: Vim9: crash when unletting variable
+ * runtime(sh): Update syntax, highlight escaped chars in test expressions
+ * runtime(doc): document that :b cannot handle buffer names starting with "+"
+ * runtime(doc): clarify the use of 'tagfunc', update a comment in tags.c
+ * runtime(doc): tweak documentation style in options.txt
+ * patch 9.1.1355: The pum_redraw() function is too complex
+ * patch 9.1.1354: tests: Test_terminalwinscroll_topline() fails on Windows
+ * patch 9.1.1353: missing change from v9.1.1350
+ * patch 9.1.1352: style: inconsistent indent in insexpand.c
+ * patch 9.1.1351: Return value of getcmdline() inconsistent in CmdlineLeavePre
+ * patch 9.1.1350: tests: typo in Test_CmdlineLeavePre_cabbr()
+ * runtime(java): Consent to HTML tags folding in Javadoc comments
+ * runtime(syntax-tests): Regenerate changed syntax test pages for vim
+ * patch 9.1.1349: CmdlineLeavePre may trigger twice
+ * runtime(vim): Update base-syntax, fix inline Vim9 dict comments at SOL
+ * patch 9.1.1348: still E315 with the terminal feature
+ * runtime(doc): Fix notation of "Vim script" and "Vim9 script"
+ * patch 9.1.1347: small problems with gui_w32.c
+ * runtime(doc): clarify complete_match() and 'isexpand' option
+ * runtime(vim): Update base-syntax, match continued strings and tail comments
+ * runtime(doc): tagfunc should refer to 'complete' option
+ * patch 9.1.1346: missing out-of-memory check in textformat.c
+ * patch 9.1.1345: tests: Test_xxd_color2() test failure dump diff is misleading
+ * runtime(debversions): Add questing (25.10) as Ubuntu release name
+ * patch 9.1.1344: double free in f_complete_match() (after v9.1.1341)
+ * patch 9.1.1343: filetype: IPython files are not recognized
+ * runtime(groff,nroff): improve ftplugin
+ * patch 9.1.1342: Shebang filetype detection can be improved
+ * patch 9.1.1341: cannot define completion triggers
+ * runtime(gleam): update filetype plugin, include new compiler and syntax script
+ * patch 9.1.1340: cannot complete :filetype arguments
+ * patch 9.1.1339: missing out-of-memory checks for enc_to_utf16()/utf16_to_enc()
+ * patch 9.1.1338: Calling expand() interferes with cmdcomplete_info()
+ * patch 9.1.1337: Undo corrupted with 'completeopt' "preinsert" when switching buffer
+ * runtime(yaml): fix wrong order of undo_ftplugin suboptions
+ * runtime(make): do not automatically indent after a special target
+ * patch 9.1.1336: comment plugin does not support case-insensitive 'commentstring'
+ * patch 9.1.1335: Coverity complains about Null pointer dereferences
+ * patch 9.1.1334: Coverity complains about unchecked return value
+ * patch 9.1.1333: Coverity: complains about unutilized variable
+ * patch 9.1.1332: Vim9: segfault when using super within a lambda
+ * patch 9.1.1331: Leaking memory with cmdcomplete()
+ * runtime(vim): Update base-syntax, improve :autocmd highlighting
+ * runtime(doc): update documentation
+ * runtime(doc): clarify return type for findfile()/finddir()
+
+-------------------------------------------------------------------
 Mon Apr 21 14:51:45 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.1.1330:
