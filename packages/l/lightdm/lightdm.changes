@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 25 13:52:35 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build on Leap 15: Use gcc 13 
+
+-------------------------------------------------------------------
+Thu May 15 13:10:57 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add lightdm-1.32.0-qt6-library.patch, support Qt6
+
+-------------------------------------------------------------------
 Tue Mar 25 10:18:19 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add lightdm.service to prepare for systemd control of display

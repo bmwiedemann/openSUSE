@@ -1,7 +1,7 @@
 #
 # spec file for package lightdm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2011 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,6 +30,8 @@
 %define qt4_lib         lib%{qt4_libname}-0
 %define qt5_libname     lightdm-qt5-3
 %define qt5_lib         lib%{qt5_libname}-0
+%define qt6_libname     lightdm-qt6-3
+%define qt6_lib         lib%{qt6_libname}-0
 %define typelibname     typelib-1_0-LightDM-1
 %define rundir          /run
 Name:           lightdm
@@ -63,6 +65,8 @@ Patch3:         lightdm-disable-utmp-handling.patch
 Patch4:         lightdm-use-run-dir.patch
 # PATCH-FIX-OPENSUSE ignore-known-symlink-sessions.patch boo#1030873 -- Ignore known synlink sessions.
 Patch5:         lightdm-ignore-known-symlink-sessions.patch
+# PATCH-FIX-UPSTREAM lightdm-1.32.0-qt6-library.patch -- Support Qt6
+Patch6:         lightdm-1.32.0-qt6-library.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -78,6 +82,9 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Gui)
 %if %{build_qt4}
 BuildRequires:  pkgconfig(QtCore)
 BuildRequires:  pkgconfig(QtDBus)
@@ -93,6 +100,9 @@ BuildRequires:  pkgconfig(libxklavier)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xdmcp)
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc13-c++
+%endif
 Requires:       gdmflexiserver
 # 3rd party greeters don't have to follow
 # the same versioning of lightdm.
@@ -194,6 +204,25 @@ Obsoletes:      %{name}-qt-devel < %{version}
 This package contains development files needed for developing
 Qt5-based LightDM clients.
 
+%package -n %{qt6_lib}
+Summary:        LightDM Qt6-based Client Library
+License:        LGPL-2.0-only OR LGPL-3.0-only
+Group:          System/Libraries
+
+%description -n %{qt6_lib}
+A Qt5-based library for LightDM clients to use to interface with
+LightDM.
+
+%package qt6-devel
+Summary:        Development Files for %{qt6_lib}
+License:        LGPL-2.0-only OR LGPL-3.0-only
+Group:          Development/Libraries/C and C++
+Requires:       %{qt6_lib} = %{version}
+
+%description qt6-devel
+This package contains development files needed for developing
+Qt6-based LightDM clients.
+
 %package bash-completion
 Summary:        Bash completion for lightdm
 Group:          System/Shells
@@ -209,6 +238,9 @@ bash command line completion support for lightdm.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} < 1600
+    export CXX=g++-13
+%endif
 %sysusers_generate_pre %{SOURCE10} lightdm lightdm.conf
 export MOC4='%{_bindir}/moc'
 export MOC5='%{_libqt5_bindir}/moc'
@@ -309,7 +341,7 @@ if [ -z "$DISPLAYMANAGER" -o "$DISPLAYMANAGER" = "lxdm" ] ; then
 fi
 %{_sbindir}/update-alternatives --install %{_prefix}/lib/X11/displaymanagers/default-displaymanager \
   default-displaymanager %{_prefix}/lib/X11/displaymanagers/lightdm 15
-  
+
 %preun
 %service_del_preun %{name}.service
 
@@ -337,6 +369,10 @@ fi
 %post -n %{qt5_lib} -p /sbin/ldconfig
 
 %postun -n %{qt5_lib} -p /sbin/ldconfig
+
+%post -n %{qt6_lib} -p /sbin/ldconfig
+
+%postun -n %{qt6_lib} -p /sbin/ldconfig
 
 %files
 %license COPYING.GPL3
@@ -418,6 +454,15 @@ fi
 %{_libdir}/lib%{qt5_libname}.so
 %{_libdir}/pkgconfig/lib%{qt5_libname}.pc
 %{_includedir}/%{qt5_libname}/
+
+%files -n %{qt6_lib}
+%license COPYING.LGPL2 COPYING.LGPL3
+%{_libdir}/lib%{qt6_libname}.so.*
+
+%files qt6-devel
+%{_libdir}/lib%{qt6_libname}.so
+%{_libdir}/pkgconfig/lib%{qt6_libname}.pc
+%{_includedir}/%{qt6_libname}/
 
 %files bash-completion
 %dir %{_datadir}/bash-completion/
