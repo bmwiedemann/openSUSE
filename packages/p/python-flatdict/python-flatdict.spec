@@ -1,7 +1,7 @@
 #
 # spec file for package python-flatdict
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-flatdict
 Version:        4.0.1
 Release:        0
@@ -25,8 +23,10 @@ Summary:        Python module for interacting with nested dicts
 License:        BSD-3-Clause
 URL:            https://github.com/gmr/flatdict
 Source:         https://github.com/gmr/flatdict/archive/%{version}.tar.gz#/flatdict-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -39,10 +39,10 @@ Python module for interacting with nested dicts as a single level dict with deli
 %setup -q -n flatdict-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -51,6 +51,8 @@ Python module for interacting with nested dicts as a single level dict with deli
 %files %{python_files}
 %doc CHANGELOG.md README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/flatdict.py
+%{python_sitelib}/flatdict-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/flatdict*
 
 %changelog
