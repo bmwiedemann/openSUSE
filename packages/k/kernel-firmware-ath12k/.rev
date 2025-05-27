@@ -33,4 +33,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * ath12k: QCN9274 hw2.0: update board-2.bin</comment>
     <requestid>1272716</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>117acb1518c139d8085b070f9de55edd</srcmd5>
+    <version>20250523</version>
+    <time>1748364600</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250523 (git commit f4e75db20a11):
+  * ath12k: WCN7850 hw2.0: update to WLAN.HMT.1.1.c5-00284.1-QCAHMTSWPL_V1.0_V2.0_SILICONZ-3</comment>
+    <requestid>1280089</requestid>
+  </revision>
 </revisionlist>
