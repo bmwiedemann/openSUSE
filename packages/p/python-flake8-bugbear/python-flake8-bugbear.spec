@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-bugbear
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,10 @@ BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flake8 >= 6.0.0}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module hypothesmith}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 19.2.0
@@ -48,10 +50,10 @@ pycodestyle.
 %setup -q -n flake8-bugbear-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +63,8 @@ pycodestyle.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/bugbear.py
+%{python_sitelib}/flake8[-_]bugbear-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/bugbear*
 
 %changelog
