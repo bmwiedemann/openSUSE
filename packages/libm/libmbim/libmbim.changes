@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat May 24 09:04:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.32.0:
+  + New Fibocom service
+  + New Compal service
+  + Extend the Quectel service
+  + New '--sms-read' and '--sms-delete' actions.
+  + New '--compal-query-at-command', '--fibocom-set-at-command',
+    and '--quectel-set-at-command' actions
+  + New MS Basic Connect '--ms-set-lte-attach-configuration'
+  + New Basic Connect '--set-register-state' to allow automatic or
+    manual registration configuration
+  + Renamed Basic Connect '--query-registration-state' to
+    '--query-register-state' to be consistent with other actions.
+    Old name is kept as an alias for compatibility
+
+-------------------------------------------------------------------
 Mon Sep 23 15:57:56 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.30.0:
