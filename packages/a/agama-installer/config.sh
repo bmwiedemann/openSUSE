@@ -12,6 +12,18 @@ echo "Configure image: [$kiwi_iname]..."
 # setup baseproduct link
 suseSetupProduct
 
+# save the current build data, the %VARIABLES% are replaced by the OBS
+# kiwi_metainfo_helper service before starting the build
+mkdir -p /var/log/build
+cat << EOF > /var/log/build/info
+Build date:    $(LC_ALL=C date -u "+%F %T %Z")
+Build number:  Build%RELEASE%
+Image profile: $kiwi_profiles
+Image version: $kiwi_iversion
+Image type:    $kiwi_type
+Source URL:    %SOURCEURL%
+EOF
+
 # enable the corresponding repository
 DISTRO=$(grep "^NAME" /etc/os-release | cut -f2 -d\= | tr -d '"' | tr " " "_")
 REPO="/etc/zypp/repos.d/agama-${DISTRO}.repo"
@@ -86,13 +98,14 @@ arch=$(uname -m)
 profile=$(echo "$kiwi_profiles" | tr "_" "-")
 label="Install-$profile-$arch"
 
-echo "Setting default live root: live:LABEL=$label"
-mkdir /etc/cmdline.d
-echo "root=live:LABEL=$label" >/etc/cmdline.d/10-liveroot.conf
-echo "root_disk=live:LABEL=$label" >>/etc/cmdline.d/10-liveroot.conf
-# if there's a default network location, add it here
-# echo "root_net=" >> /etc/cmdline.d/10-liveroot.conf
-echo 'install_items+=" /etc/cmdline.d/10-liveroot.conf "' >/etc/dracut.conf.d/10-liveroot-file.conf
+# Set the default live root except for PXE images
+if [[ "$kiwi_profiles" != *PXE* ]]; then
+  echo "Setting default live root: live:LABEL=$label"
+  mkdir /etc/cmdline.d
+  echo "root=live:LABEL=$label" >/etc/cmdline.d/10-liveroot.conf
+  echo "root_disk=live:LABEL=$label" >>/etc/cmdline.d/10-liveroot.conf
+  echo 'install_items+=" /etc/cmdline.d/10-liveroot.conf "' >/etc/dracut.conf.d/10-liveroot-file.conf
+fi
 echo 'add_dracutmodules+=" dracut-menu agama-cmdline "' >>/etc/dracut.conf.d/10-liveroot-file.conf
 
 # decrease the kernel logging on the console, use a dracut module to do it early in the boot process
@@ -187,19 +200,26 @@ mkdir -p /etc/agama.d
 ls -1 -d /usr/lib/locale/*.utf8 | sed -e "s#/usr/lib/locale/##" -e "s#utf8#UTF-8#" >/etc/agama.d/locales
 
 # delete translations and unsupported languages (makes ISO about 22MiB smaller)
-# build list of ignore options for "ls" with supported languages like "-I cs* -I de* -I es* ..."
-readarray -t IGNORE_OPTS < <(ls /usr/share/agama/web_ui/po.*.js.gz | sed -e "s#/usr/share/agama/web_ui/po\.\(.*\)\.js\.gz#-I\n\\1*#")
+# build list of ignore options for "ls" with supported languages like "-I cs -I cs_CZ ..."
+# languages.json is like: { "ca-ES": "Català", "de-DE": "Deutsch", ...}
+# jq prints ca-ES\nde-DE\n...
+readarray -t IGNORE_OPTS < <(jq -r keys[] < /usr/share/agama/web_ui/languages.json | sed -e "s/\(.*\)-\(.*\)/-I\n\\1\n-I\n\1_\2/")
 # additionally keep the en_US translations
 ls -1 "${IGNORE_OPTS[@]}" -I en_US /usr/share/locale/ | xargs -I% sh -c "echo 'Removing translations %...' && rm -rf /usr/share/locale/%"
 
 # delete locale definitions for unsupported languages (explicitly keep the C and en_US locales)
-ls -1 "${IGNORE_OPTS[@]}" -I "en_US*" -I "C.*" /usr/lib/locale/ | xargs -I% sh -c "echo 'Removing locale %...' && rm -rf /usr/lib/locale/%"
+readarray -t IGNORE_OPTS < <(jq -r keys[] < /usr/share/agama/web_ui/languages.json | sed -e "s/-/_/" -e "s/$/.utf8/" -e "s/^/-I\n/")
+ls -1 "${IGNORE_OPTS[@]}" -I "en_US.utf8" -I "C.utf8" /usr/lib/locale/ | xargs -I% sh -c "echo 'Removing locale %...' && rm -rf /usr/lib/locale/%"
 
 # delete unused translations (MO files)
 for t in zypper gettext-runtime p11-kit; do
   rm -f /usr/share/locale/*/LC_MESSAGES/$t.mo
 done
 du -h -s /usr/{share,lib}/locale/
+
+# remove printing support from GTK
+rm -rf /usr/lib64/gtk-3*/*/printbackends
+rpm -e --nodeps libcups2 cups-config || true
 
 # remove documentation
 du -h -s /usr/share/doc/packages/
