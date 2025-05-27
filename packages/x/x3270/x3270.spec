@@ -35,6 +35,9 @@ Patch100:       usr_local_bin.patch
 Patch102:       x026-offset.diff
 # fix build with gcc 15
 Patch103:       x3270-gcc15.patch
+# upstream commit to make it parallel build
+Patch104:       x3270-dependency.patch
+Patch105:       x3270-notparallel.patch
 BuildRequires:  bdftopcf
 BuildRequires:  fdupes
 BuildRequires:  fontpackages-devel
@@ -114,6 +117,8 @@ x026 is a fun toy which emulates an x026 puncher.
 %patch -P 100
 %patch -P 102
 %patch -P 103
+%patch -P 104 -p 1
+%patch -P 105 -p 1
 
 find . -name ".gitignore" -delete
 
@@ -139,8 +144,7 @@ then
     # there is a mistake in Common/mkersion.py
     SOURCE_DATE_EPOCH="$(date --date="@$SOURCE_DATE_EPOCH" +'%%a %%b %%d %%H:%%M:%%S %%Z %%Y')"
 fi
-# Choose -j 1 otherwise wrong order with missed dependencies
-%make_build -j 1 LIBX3270DIR=${LIBX3270DIR} unix CC="gcc ${CFLAGS}"
+%make_build LIBX3270DIR=${LIBX3270DIR} unix CC="gcc ${CFLAGS}"
 # the IBM 026 keypunch emulator
 cd x026-%{_x026ver}
     xmkmf

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 26 09:48:44 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add two upstream commits as patches
+  * x3270-dependency.patch
+  * x3270-notparallel.patch
+  to make it build in parallel again 
+
+-------------------------------------------------------------------
 Fri May 23 12:00:26 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Correct sourceforge load paths 
