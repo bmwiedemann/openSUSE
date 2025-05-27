@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-blind-except
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flake8-blind-except
 Version:        0.2.1
 Release:        0
@@ -26,7 +25,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/elijahandrews/flake8-blind-except
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-blind-except/flake8-blind-except-%{version}.tar.gz
 Source1:        LICENSE
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -40,17 +41,17 @@ A flake8 extension that checks for blind except: statements
 cp %{SOURCE1} LICENSE
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/flake8_blind_except.py
-%{python_sitelib}/flake8_blind_except-%{version}-py*.egg-info
+%{python_sitelib}/flake8_blind_except-%{version}*-info
 %pycache_only %{python_sitelib}/__pycache__
 
 %changelog
