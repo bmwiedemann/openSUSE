@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 28 12:23:41 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Create devel subpackage:
+  * Add RPM macros file
+  * Package to be used to develop preset packages
+    (distro, display manager etc.)
+- Move specfile scriptlets to the ones in macros.systemd-preset
+
+-------------------------------------------------------------------
 Tue Mar 25 10:17:09 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change display-manager.service to display-manager-legacy.service

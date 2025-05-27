@@ -327,4 +327,17 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
     <comment></comment>
     <requestid>1256281</requestid>
   </revision>
+  <revision rev="39" vrev="39">
+    <srcmd5>2b86ab17e86132b952b00f7137b5e440</srcmd5>
+    <version>15</version>
+    <time>1748364544</time>
+    <user>anag_factory</user>
+    <comment>- Create devel subpackage:
+  * Add RPM macros file
+  * Package to be used to develop preset packages
+    (distro, display manager etc.)
+- Move specfile scriptlets to the ones in macros.systemd-preset
+</comment>
+    <requestid>1279274</requestid>
+  </revision>
 </revisionlist>

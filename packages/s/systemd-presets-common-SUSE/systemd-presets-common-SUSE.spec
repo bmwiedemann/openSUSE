@@ -15,9 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define generic_name systemd-presets-branding
-
 Name:           systemd-presets-common-SUSE
 Version:        15
 Release:        0
@@ -28,6 +25,7 @@ Source0:        default-SUSE.preset
 Source2:        99-default-disable.preset
 Source3:        branding-preset-states
 Source4:        default-SUSE-user.preset
+Source5:        macros.systemd-preset
 BuildRequires:  pkgconfig(systemd)
 #!BuildIgnore:  systemd-presets-branding
 PreReq:         coreutils
@@ -38,8 +36,20 @@ BuildArch:      noarch
 Requires(pre):  bash
 Requires(post): bash
 
+%{load:%{SOURCE5}}
+%define generic_name %{__preset_generic_name}
+
 %description
 Default presets for systemd on SUSE based distributions.
+
+%package devel
+Summary:   Devel package for systemd presets
+Group:     System/Base
+Requires:  systemd-presets-common-SUSE
+
+%description devel
+This package provides the needed files to build preset
+packages
 
 %prep
 %setup -q -T -c
@@ -57,46 +67,27 @@ install -m644 %{SOURCE2}  %{buildroot}%{_prefix}/lib/systemd/system-preset/
 install -m755 %{SOURCE3}  %{buildroot}%{_prefix}/lib/%{generic_name}/
 install -m644 %{SOURCE4}  %{buildroot}%{_prefix}/lib/systemd/user-preset/95-default-SUSE.preset
 
+install -Dm0644 %{SOURCE5} %{buildroot}%{_rpmmacrodir}/macros.systemd-preset
+
 %pre
-# On initial installation, branding-preset-states does not yet exist,
-# which is why we also check for the file to be present/executable
-if [ $1 -gt 1 -a -x %{_prefix}/lib/%{generic_name}/branding-preset-states ] ; then
-	#
-	# Save the old state so we can detect which package have its
-	# default changed later.
-	#
-	# Note: the old version of the script is used here.
-	#
-	%{_prefix}/lib/%{generic_name}/branding-preset-states save
-	%{_prefix}/lib/%{generic_name}/branding-preset-states save user
-elif [ $1 -eq 1 ]; then
-  touch /run/rpm-%{name}-preset-all
-fi
+%systemd_preset_pre
+%systemd_user_preset_pre
 
 %post
-if [ $1 -gt 1 ] ; then
-	#
-	# Now that the updated presets are installed, find the ones
-	# that have been changed and apply "systemct preset" on them.
-	#
-	%{_prefix}/lib/%{generic_name}/branding-preset-states apply-changes
-	%{_prefix}/lib/%{generic_name}/branding-preset-states apply-changes user
-fi
+%systemd_preset_post
+%systemd_user_preset_post
 
 %posttrans
-if [ -f /run/rpm-%{name}-preset-all ]; then
-  # Enable all services, which were installed before systemd
-  # Don't disable services, since this would disable the
-  # complete network stack.
-  systemctl preset-all --preset-mode=enable-only
-  systemctl preset-all --preset-mode=enable-only --global
-fi
-rm -f /run/rpm-%{name}-preset-all
+%systemd_preset_posttrans
+%systemd_user_preset_posttrans
 
 %files
 %defattr(-,root,root)
 %{_prefix}/lib/%{generic_name}/
 %{_prefix}/lib/systemd/system-preset/*
 %{_prefix}/lib/systemd/user-preset/*
+
+%files devel
+%{_rpmmacrodir}/macros.systemd-preset
 
 %changelog

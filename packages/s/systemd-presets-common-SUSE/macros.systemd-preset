@@ -1,0 +1,96 @@
+%__preset_generic_name systemd-presets-branding
+
+%systemd_preset_requires \
+Requires(pre): systemd-presets-common-SUSE \
+Requires(post): systemd-presets-common-SUSE \
+Requires(posttrans): systemd-presets-common-SUSE \
+%{nil}
+
+%systemd_preset_pre \
+# On initial installation, branding-preset-states does not yet exist, \
+# which is why we also check for the file to be present/executable \
+if [ $1 -gt 1 -a -x %{_prefix}/lib/%{__preset_generic_name}/branding-preset-states ] ; then \
+	# \
+	# Save the old state so we can detect which package have its \
+	# default changed later. \
+	# \
+	# Note: the old version of the script is used here. \
+	# \
+	%{_prefix}/lib/%{__preset_generic_name}/branding-preset-states save \
+elif [ $1 -eq 1 ]; then \
+  touch /run/rpm-%{__preset_generic_name}-preset-system \
+fi \
+%{nil}
+
+%systemd_user_preset_pre \
+# On initial installation, branding-preset-states does not yet exist, \
+# which is why we also check for the file to be present/executable \
+if [ $1 -gt 1 -a -x %{_prefix}/lib/%{__preset_generic_name}/branding-preset-states ] ; then \
+	# \
+	# Save the old state so we can detect which package have its \
+	# default changed later. \
+	# \
+	# Note: the old version of the script is used here. \
+	# \
+	%{_prefix}/lib/%{__preset_generic_name}/branding-preset-states save user \
+elif [ $1 -eq 1 ]; then \
+  touch /run/rpm-%{__preset_generic_name}-preset-user \
+fi \
+%{nil}
+
+%systemd_preset_post \
+if [ $1 -gt 1 ] ; then \
+	# \
+	# Now that the updated presets are installed, find the ones \
+	# that have been changed and apply "systemct preset" on them. \
+	# \
+	%{_prefix}/lib/%{__preset_generic_name}/branding-preset-states apply-changes \
+fi \
+%{nil}
+
+%systemd_user_preset_post \
+if [ $1 -gt 1 ] ; then \
+	# \
+	# Now that the updated presets are installed, find the ones \
+	# that have been changed and apply "systemct preset" on them. \
+	# \
+	%{_prefix}/lib/%{__preset_generic_name}/branding-preset-states apply-changes user \
+fi \
+%{nil}
+
+%systemd_preset_posttrans \
+if [ -f /run/rpm-%{__preset_generic_name}-preset-system ]; then \
+  # Enable all services, which were installed before systemd \
+  # Don't disable services, since this would disable the \
+  # complete network stack. \
+  systemctl preset-all --preset-mode=enable-only \
+fi \
+rm -f /run/rpm-%{__preset_generic_name}-preset-system \
+%{nil}
+
+%systemd_user_preset_posttrans \
+if [ -f /run/rpm-%{__preset_generic_name}-preset-user ]; then \
+  # Enable all services, which were installed before systemd \
+  # Don't disable services, since this would disable the \
+  # complete network stack. \
+  systemctl preset-all --preset-mode=enable-only --global \
+fi \
+rm -f /run/rpm-%{__preset_generic_name}-preset-user \
+%{nil}
+
+%systemd_preset_force_post(de) \
+if [ "$(systemctl is-enabled %{1})" != "not-found" ]; then \
+systemctl preset %{-d:--preset-mode=disable-only} %{-e:--preset-mode=enable-only} %{1} \
+else \
+echo "%{1} doesn't exist: doing nothing." \
+fi \
+%{nil}
+
+%systemd_user_preset_force_post(de) \
+if [ "$(systemctl --global is-enabled %{1})" != "not-found" ]; then \
+systemctl --global preset %{-d:--preset-mode=disable-only} %{-e:--preset-mode=enable-only} %{1} \
+else \
+echo "%{1} doesn't exist: doing nothing." \
+fi \
+%{nil}
+
