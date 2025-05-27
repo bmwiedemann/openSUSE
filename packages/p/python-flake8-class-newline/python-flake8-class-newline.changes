@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 27 12:01:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed May 19 06:46:49 UTC 2021 - pgajdos@suse.com
 
 - use %pytest macro in %check

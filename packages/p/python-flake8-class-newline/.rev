@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>894225</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>698e6d13db4f7f88b60783a358827c5f</srcmd5>
+    <version>1.6.0</version>
+    <time>1748364209</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1280546 from mcalabkova
+
+- Convert to pip-based build</comment>
+    <requestid>1280600</requestid>
+  </revision>
 </revisionlist>
