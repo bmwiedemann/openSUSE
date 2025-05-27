@@ -1,7 +1,7 @@
 #
 # spec file for package python-ghp-import
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,14 @@ Group:          Development/Languages/Python
 URL:            https://pypi.org/project/ghp-import/
 Source:         https://files.pythonhosted.org/packages/source/g/ghp-import/ghp-import-%{version}.tar.gz
 BuildRequires:  %{python_module dateutil >= 2.8.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-dateutil >= 2.8.1
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,10 +49,10 @@ will lose your work.
 sed -i '1d' ghp_import.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/ghp-import
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
