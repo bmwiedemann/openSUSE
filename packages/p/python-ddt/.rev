@@ -211,4 +211,12 @@
   * Github actions to use tox for tests</comment>
     <requestid>1158948</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>7320c72ae0aa745280e81f8ee94a4a23</srcmd5>
+    <version>1.7.2</version>
+    <time>1748364632</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1280149</requestid>
+  </revision>
 </revisionlist>
