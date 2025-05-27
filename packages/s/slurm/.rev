@@ -1720,4 +1720,12 @@
     <comment></comment>
     <requestid>1280317</requestid>
   </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>4278a51d6ab66984cc96cf966ab52496</srcmd5>
+    <version>24.11.5</version>
+    <time>1748364192</time>
+    <user>anag_factory</user>
+    <comment>	elevated privileges (CVE-2025-43904, bsc#1243666).</comment>
+    <requestid>1280446</requestid>
+  </revision>
 </revisionlist>

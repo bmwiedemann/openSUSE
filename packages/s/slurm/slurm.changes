@@ -3,7 +3,7 @@ Mon May 26 08:17:32 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - Update to version 24.11.5
   * Fix security issue where a coordinator could add a user with
-	elevated privileges. CVE-2025-43904.
+	elevated privileges (CVE-2025-43904, bsc#1243666).
   * Return error to `scontrol` reboot on bad nodelists.
   * `slurmrestd` - Report an error when QOS resolution fails for
 	v0.0.40 endpoints.
