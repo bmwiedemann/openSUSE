@@ -104,4 +104,17 @@
   huffdec.c (bsc#1234837 CVE-2024-56431). (forwarded request 1268482 from mgorse)</comment>
     <requestid>1269660</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c077fe0be71f1027858e56cef8f3d460</srcmd5>
+    <version>128.10.1</version>
+    <time>1748364649</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 128.10.1:
+  + MFSA 2025-37:
+    - CVE-2025-4920 (bmo#1966612): Out-of-bounds access when
+      resolving Promise objects
+    - CVE-2025-4921 (bmo#1966614): Out-of-bounds access when
+      optimizing linear sums (forwarded request 1278661 from iznogood)</comment>
+    <requestid>1280010</requestid>
+  </revision>
 </revisionlist>
