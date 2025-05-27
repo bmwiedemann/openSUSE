@@ -17,7 +17,7 @@
 
 
 Name:           gnu-efi
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        Library for EFI Applications
 License:        BSD-3-Clause AND GPL-2.0-or-later

@@ -296,4 +296,20 @@
     <comment></comment>
     <requestid>1231643</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f24216db0807684f4c22e126a5786f04</srcmd5>
+    <version>4.0.1</version>
+    <time>1748364605</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.0.1:
+  * Add ms_abi va_list support
+  * Move _GNU_EFI define within header check
+  * Avoid integer promotion bug in memory functions
+  * [apps] Fix maybe uninitialized in bltgrid.c
+  * Clarify licensing
+  * Fix StrSize from AsciiVSPrint to UnicodeVSPrint
+  * Fixes needed to build shim with gnu-efi mainline
+</comment>
+    <requestid>1280123</requestid>
+  </revision>
 </revisionlist>

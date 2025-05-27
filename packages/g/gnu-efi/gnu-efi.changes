@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 26 10:57:02 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 4.0.1:
+  * Add ms_abi va_list support
+  * Move _GNU_EFI define within header check
+  * Avoid integer promotion bug in memory functions
+  * [apps] Fix maybe uninitialized in bltgrid.c
+  * Clarify licensing
+  * Fix StrSize from AsciiVSPrint to UnicodeVSPrint
+  * Fixes needed to build shim with gnu-efi mainline
+
+-------------------------------------------------------------------
 Sun Dec  8 15:28:22 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Split into apps and devel packages
