@@ -1,7 +1,7 @@
 #
 # spec file for package python-formats
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-formats
 Version:        0.1.1
 Release:        0
@@ -28,7 +27,9 @@ URL:            https://github.com/redodo/formats
 Source:         https://files.pythonhosted.org/packages/source/f/formats/formats-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/redodo/formats/master/LICENSE
 Source2:        https://raw.githubusercontent.com/redodo/formats/master/test_formats.py
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -43,14 +44,14 @@ cp %{SOURCE1} .
 cp %{SOURCE2} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand %python_exec -m unittest discover -v
+%pyunittest -v
 
 %files %{python_files}
 %license LICENSE
