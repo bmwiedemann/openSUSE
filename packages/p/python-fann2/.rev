@@ -24,4 +24,13 @@
   * Make setup.py robust to looking for FANN libraries in PREFIX</comment>
     <requestid>946658</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0e2e9f783b669564b038b7519c7c4746</srcmd5>
+    <version>1.2.0</version>
+    <time>1748364169</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build
+</comment>
+    <requestid>1280524</requestid>
+  </revision>
 </revisionlist>
