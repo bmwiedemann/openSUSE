@@ -1,4 +1,4 @@
-From 449c95558de43373c3628ff58b2c368cad269444 Mon Sep 17 00:00:00 2001
+From 94dac85c004f7fcd67b62e553734f599f86f2c61 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Wed, 22 May 2024 12:58:32 -0700
 Subject: [PATCH] BUILD: SLE12: revert "btrfs: depend on kernel UAPI instead of
@@ -29,30 +29,34 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  .../containerd/btrfs/{v2 => }/info.go         |   0
  .../containerd/btrfs/{v2 => }/ioctl.go        |   0
  vendor/golang.org/x/sys/cpu/asm_aix_ppc64.s   |  17 -
+ .../golang.org/x/sys/cpu/asm_darwin_x86_gc.s  |  17 -
  vendor/golang.org/x/sys/cpu/byteorder.go      |  66 ----
- vendor/golang.org/x/sys/cpu/cpu.go            | 290 ------------------
+ vendor/golang.org/x/sys/cpu/cpu.go            | 312 ------------------
  vendor/golang.org/x/sys/cpu/cpu_aix.go        |  33 --
- vendor/golang.org/x/sys/cpu/cpu_arm.go        |  73 -----
- vendor/golang.org/x/sys/cpu/cpu_arm64.go      | 172 -----------
- vendor/golang.org/x/sys/cpu/cpu_arm64.s       |  31 --
- vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go   |  11 -
+ vendor/golang.org/x/sys/cpu/cpu_arm.go        |  73 ----
+ vendor/golang.org/x/sys/cpu/cpu_arm64.go      | 194 -----------
+ vendor/golang.org/x/sys/cpu/cpu_arm64.s       |  39 ---
+ vendor/golang.org/x/sys/cpu/cpu_darwin_x86.go |  61 ----
+ vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go   |  12 -
  vendor/golang.org/x/sys/cpu/cpu_gc_s390x.go   |  21 --
  vendor/golang.org/x/sys/cpu/cpu_gc_x86.go     |  15 -
+ vendor/golang.org/x/sys/cpu/cpu_gc_x86.s      |  26 --
  .../golang.org/x/sys/cpu/cpu_gccgo_arm64.go   |  11 -
  .../golang.org/x/sys/cpu/cpu_gccgo_s390x.go   |  22 --
  vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.c   |  37 ---
- vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.go  |  31 --
+ vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.go  |  25 --
  vendor/golang.org/x/sys/cpu/cpu_linux.go      |  15 -
  vendor/golang.org/x/sys/cpu/cpu_linux_arm.go  |  39 ---
- .../golang.org/x/sys/cpu/cpu_linux_arm64.go   | 111 -------
+ .../golang.org/x/sys/cpu/cpu_linux_arm64.go   | 120 -------
  .../golang.org/x/sys/cpu/cpu_linux_mips64x.go |  22 --
  .../golang.org/x/sys/cpu/cpu_linux_noinit.go  |   9 -
  .../golang.org/x/sys/cpu/cpu_linux_ppc64x.go  |  30 --
+ .../golang.org/x/sys/cpu/cpu_linux_riscv64.go | 137 --------
  .../golang.org/x/sys/cpu/cpu_linux_s390x.go   |  40 ---
  vendor/golang.org/x/sys/cpu/cpu_loong64.go    |  12 -
  vendor/golang.org/x/sys/cpu/cpu_mips64x.go    |  15 -
  vendor/golang.org/x/sys/cpu/cpu_mipsx.go      |  11 -
- .../golang.org/x/sys/cpu/cpu_netbsd_arm64.go  | 173 -----------
+ .../golang.org/x/sys/cpu/cpu_netbsd_arm64.go  | 173 ----------
  .../golang.org/x/sys/cpu/cpu_openbsd_arm64.go |  65 ----
  .../golang.org/x/sys/cpu/cpu_openbsd_arm64.s  |  11 -
  vendor/golang.org/x/sys/cpu/cpu_other_arm.go  |   9 -
@@ -60,26 +64,27 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  .../golang.org/x/sys/cpu/cpu_other_mips64x.go |  11 -
  .../golang.org/x/sys/cpu/cpu_other_ppc64x.go  |  12 -
  .../golang.org/x/sys/cpu/cpu_other_riscv64.go |  11 -
+ vendor/golang.org/x/sys/cpu/cpu_other_x86.go  |  11 -
  vendor/golang.org/x/sys/cpu/cpu_ppc64x.go     |  16 -
- vendor/golang.org/x/sys/cpu/cpu_riscv64.go    |  11 -
- vendor/golang.org/x/sys/cpu/cpu_s390x.go      | 172 -----------
+ vendor/golang.org/x/sys/cpu/cpu_riscv64.go    |  20 --
+ vendor/golang.org/x/sys/cpu/cpu_s390x.go      | 172 ----------
  vendor/golang.org/x/sys/cpu/cpu_s390x.s       |  57 ----
  vendor/golang.org/x/sys/cpu/cpu_wasm.go       |  17 -
- vendor/golang.org/x/sys/cpu/cpu_x86.go        | 151 ---------
- vendor/golang.org/x/sys/cpu/cpu_x86.s         |  26 --
+ vendor/golang.org/x/sys/cpu/cpu_x86.go        | 149 ---------
  vendor/golang.org/x/sys/cpu/cpu_zos.go        |  10 -
  vendor/golang.org/x/sys/cpu/cpu_zos_s390x.go  |  25 --
  vendor/golang.org/x/sys/cpu/endian_big.go     |  10 -
  vendor/golang.org/x/sys/cpu/endian_little.go  |  10 -
- vendor/golang.org/x/sys/cpu/hwcap_linux.go    |  71 -----
+ vendor/golang.org/x/sys/cpu/hwcap_linux.go    |  71 ----
  vendor/golang.org/x/sys/cpu/parse.go          |  43 ---
- .../x/sys/cpu/proc_cpuinfo_linux.go           |  53 ----
+ .../x/sys/cpu/proc_cpuinfo_linux.go           |  53 ---
  vendor/golang.org/x/sys/cpu/runtime_auxv.go   |  16 -
- .../x/sys/cpu/runtime_auxv_go121.go           |  18 --
+ .../x/sys/cpu/runtime_auxv_go121.go           |  18 -
  .../golang.org/x/sys/cpu/syscall_aix_gccgo.go |  26 --
- .../x/sys/cpu/syscall_aix_ppc64_gc.go         |  35 ---
+ .../x/sys/cpu/syscall_aix_ppc64_gc.go         |  35 --
+ .../x/sys/cpu/syscall_darwin_x86_gc.go        |  98 ------
  vendor/modules.txt                            |   7 +-
- 65 files changed, 55 insertions(+), 2287 deletions(-)
+ 70 files changed, 55 insertions(+), 2674 deletions(-)
  rename vendor/github.com/containerd/btrfs/{v2 => }/.gitignore (100%)
  rename vendor/github.com/containerd/btrfs/{v2 => }/LICENSE (100%)
  rename vendor/github.com/containerd/btrfs/{v2 => }/Makefile (100%)
@@ -92,15 +97,18 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  rename vendor/github.com/containerd/btrfs/{v2 => }/info.go (100%)
  rename vendor/github.com/containerd/btrfs/{v2 => }/ioctl.go (100%)
  delete mode 100644 vendor/golang.org/x/sys/cpu/asm_aix_ppc64.s
+ delete mode 100644 vendor/golang.org/x/sys/cpu/asm_darwin_x86_gc.s
  delete mode 100644 vendor/golang.org/x/sys/cpu/byteorder.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_aix.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_arm.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_arm64.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_arm64.s
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_darwin_x86.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_gc_s390x.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_gc_x86.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_gc_x86.s
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_gccgo_arm64.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_gccgo_s390x.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.c
@@ -111,6 +119,7 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_linux_mips64x.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_linux_noinit.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_linux_ppc64x.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_linux_riscv64.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_linux_s390x.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_loong64.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_mips64x.go
@@ -123,13 +132,13 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_other_mips64x.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_other_ppc64x.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_other_riscv64.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_other_x86.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_ppc64x.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_riscv64.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_s390x.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_s390x.s
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_wasm.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_x86.go
- delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_x86.s
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_zos.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_zos_s390x.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/endian_big.go
@@ -141,9 +150,10 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  delete mode 100644 vendor/golang.org/x/sys/cpu/runtime_auxv_go121.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/syscall_aix_gccgo.go
  delete mode 100644 vendor/golang.org/x/sys/cpu/syscall_aix_ppc64_gc.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/syscall_darwin_x86_gc.go
 
 diff --git a/go.mod b/go.mod
-index 5a4aa880122d..558b93bae554 100644
+index a7bb372ad04d..404cf965f06f 100644
 --- a/go.mod
 +++ b/go.mod
 @@ -9,7 +9,7 @@ require (
@@ -154,12 +164,12 @@ index 5a4aa880122d..558b93bae554 100644
 +	github.com/containerd/btrfs v1.0.0
  	github.com/containerd/cgroups/v3 v3.0.2
  	github.com/containerd/console v1.0.3
- 	github.com/containerd/containerd/api v1.7.19
+ 	github.com/containerd/containerd/api v1.8.0
 diff --git a/go.sum b/go.sum
-index 3b1338998808..321006fb19c5 100644
+index a80a1f3fcc5c..911100a903c5 100644
 --- a/go.sum
 +++ b/go.sum
-@@ -133,8 +133,8 @@ github.com/containerd/aufs v0.0.0-20201003224125-76a6863f2989/go.mod h1:AkGGQs9N
+@@ -121,8 +121,8 @@ github.com/containerd/aufs v0.0.0-20201003224125-76a6863f2989/go.mod h1:AkGGQs9N
  github.com/containerd/aufs v1.0.0 h1:2oeJiwX5HstO7shSrPZjrohJZLzK36wvpdmzDRkL/LY=
  github.com/containerd/aufs v1.0.0/go.mod h1:kL5kd6KM5TzQjR79jljyi4olc1Vrx6XBlcyj3gNv2PU=
  github.com/containerd/btrfs v0.0.0-20201111183144-404b9149801e/go.mod h1:jg2QkJcsabfHugurUvvPhS3E08Oxiuh5W/g1ybB4e0E=
@@ -606,6 +616,29 @@ index 269e173ca469..000000000000
 -
 -TEXT ·rawSyscall6(SB),NOSPLIT,$0-88
 -	JMP	syscall·rawSyscall6(SB)
+diff --git a/vendor/golang.org/x/sys/cpu/asm_darwin_x86_gc.s b/vendor/golang.org/x/sys/cpu/asm_darwin_x86_gc.s
+deleted file mode 100644
+index ec2acfe540ea..000000000000
+--- a/vendor/golang.org/x/sys/cpu/asm_darwin_x86_gc.s
++++ /dev/null
+@@ -1,17 +0,0 @@
+-// Copyright 2024 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build darwin && amd64 && gc
+-
+-#include "textflag.h"
+-
+-TEXT libc_sysctl_trampoline<>(SB),NOSPLIT,$0-0
+-	JMP	libc_sysctl(SB)
+-GLOBL	·libc_sysctl_trampoline_addr(SB), RODATA, $8
+-DATA	·libc_sysctl_trampoline_addr(SB)/8, $libc_sysctl_trampoline<>(SB)
+-
+-TEXT libc_sysctlbyname_trampoline<>(SB),NOSPLIT,$0-0
+-	JMP	libc_sysctlbyname(SB)
+-GLOBL	·libc_sysctlbyname_trampoline_addr(SB), RODATA, $8
+-DATA	·libc_sysctlbyname_trampoline_addr(SB)/8, $libc_sysctlbyname_trampoline<>(SB)
 diff --git a/vendor/golang.org/x/sys/cpu/byteorder.go b/vendor/golang.org/x/sys/cpu/byteorder.go
 deleted file mode 100644
 index 271055be0b1e..000000000000
@@ -680,10 +713,10 @@ index 271055be0b1e..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu.go b/vendor/golang.org/x/sys/cpu/cpu.go
 deleted file mode 100644
-index 4756ad5f7951..000000000000
+index 02609d5b21d5..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu.go
 +++ /dev/null
-@@ -1,290 +0,0 @@
+@@ -1,312 +0,0 @@
 -// Copyright 2018 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
@@ -789,7 +822,10 @@ index 4756ad5f7951..000000000000
 -	HasASIMDDP  bool // Advanced SIMD double precision instruction set
 -	HasSHA512   bool // SHA512 hardware implementation
 -	HasSVE      bool // Scalable Vector Extensions
+-	HasSVE2     bool // Scalable Vector Extensions 2
 -	HasASIMDFHM bool // Advanced SIMD multiplication FP16 to FP32
+-	HasDIT      bool // Data Independent Timing support
+-	HasI8MM     bool // Advanced SIMD Int8 matrix multiplication instructions
 -	_           CacheLinePad
 -}
 -
@@ -882,6 +918,25 @@ index 4756ad5f7951..000000000000
 -	HasVX     bool // vector facility
 -	HasVXE    bool // vector-enhancements facility 1
 -	_         CacheLinePad
+-}
+-
+-// RISCV64 contains the supported CPU features and performance characteristics for riscv64
+-// platforms. The booleans in RISCV64, with the exception of HasFastMisaligned, indicate
+-// the presence of RISC-V extensions.
+-//
+-// It is safe to assume that all the RV64G extensions are supported and so they are omitted from
+-// this structure. As riscv64 Go programs require at least RV64G, the code that populates
+-// this structure cannot run successfully if some of the RV64G extensions are missing.
+-// The struct is padded to avoid false sharing.
+-var RISCV64 struct {
+-	_                 CacheLinePad
+-	HasFastMisaligned bool // Fast misaligned accesses
+-	HasC              bool // Compressed instruction-set extension
+-	HasV              bool // Vector extension compatible with RVV 1.0
+-	HasZba            bool // Address generation instructions extension
+-	HasZbb            bool // Basic bit-manipulation extension
+-	HasZbs            bool // Single-bit instructions extension
+-	_                 CacheLinePad
 -}
 -
 -func init() {
@@ -1094,10 +1149,10 @@ index 301b752e9c53..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_arm64.go b/vendor/golang.org/x/sys/cpu/cpu_arm64.go
 deleted file mode 100644
-index f3eb993bf24b..000000000000
+index af2aa99f9f06..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_arm64.go
 +++ /dev/null
-@@ -1,172 +0,0 @@
+@@ -1,194 +0,0 @@
 -// Copyright 2019 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
@@ -1128,6 +1183,7 @@ index f3eb993bf24b..000000000000
 -		{Name: "sm3", Feature: &ARM64.HasSM3},
 -		{Name: "sm4", Feature: &ARM64.HasSM4},
 -		{Name: "sve", Feature: &ARM64.HasSVE},
+-		{Name: "sve2", Feature: &ARM64.HasSVE2},
 -		{Name: "crc32", Feature: &ARM64.HasCRC32},
 -		{Name: "atomics", Feature: &ARM64.HasATOMICS},
 -		{Name: "asimdhp", Feature: &ARM64.HasASIMDHP},
@@ -1137,6 +1193,8 @@ index f3eb993bf24b..000000000000
 -		{Name: "dcpop", Feature: &ARM64.HasDCPOP},
 -		{Name: "asimddp", Feature: &ARM64.HasASIMDDP},
 -		{Name: "asimdfhm", Feature: &ARM64.HasASIMDFHM},
+-		{Name: "dit", Feature: &ARM64.HasDIT},
+-		{Name: "i8mm", Feature: &ARM64.HasI8MM},
 -	}
 -}
 -
@@ -1244,6 +1302,11 @@ index f3eb993bf24b..000000000000
 -		ARM64.HasLRCPC = true
 -	}
 -
+-	switch extractBits(isar1, 52, 55) {
+-	case 1:
+-		ARM64.HasI8MM = true
+-	}
+-
 -	// ID_AA64PFR0_EL1
 -	switch extractBits(pfr0, 16, 19) {
 -	case 0:
@@ -1264,6 +1327,20 @@ index f3eb993bf24b..000000000000
 -	switch extractBits(pfr0, 32, 35) {
 -	case 1:
 -		ARM64.HasSVE = true
+-
+-		parseARM64SVERegister(getzfr0())
+-	}
+-
+-	switch extractBits(pfr0, 48, 51) {
+-	case 1:
+-		ARM64.HasDIT = true
+-	}
+-}
+-
+-func parseARM64SVERegister(zfr0 uint64) {
+-	switch extractBits(zfr0, 0, 3) {
+-	case 1:
+-		ARM64.HasSVE2 = true
 -	}
 -}
 -
@@ -1272,10 +1349,10 @@ index f3eb993bf24b..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_arm64.s b/vendor/golang.org/x/sys/cpu/cpu_arm64.s
 deleted file mode 100644
-index fcb9a3888205..000000000000
+index 22cc99844a75..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_arm64.s
 +++ /dev/null
-@@ -1,31 +0,0 @@
+@@ -1,39 +0,0 @@
 -// Copyright 2019 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
@@ -1307,12 +1384,87 @@ index fcb9a3888205..000000000000
 -	WORD	$0xd5380400
 -	MOVD	R0, ret+0(FP)
 -	RET
+-
+-// func getzfr0() uint64
+-TEXT ·getzfr0(SB),NOSPLIT,$0-8
+-	// get SVE Feature Register 0 into x0
+-	// mrs	x0, ID_AA64ZFR0_EL1 = d5380480
+-	WORD $0xd5380480
+-	MOVD	R0, ret+0(FP)
+-	RET
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_darwin_x86.go b/vendor/golang.org/x/sys/cpu/cpu_darwin_x86.go
+deleted file mode 100644
+index b838cb9e956e..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_darwin_x86.go
++++ /dev/null
+@@ -1,61 +0,0 @@
+-// Copyright 2024 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build darwin && amd64 && gc
+-
+-package cpu
+-
+-// darwinSupportsAVX512 checks Darwin kernel for AVX512 support via sysctl
+-// call (see issue 43089). It also restricts AVX512 support for Darwin to
+-// kernel version 21.3.0 (MacOS 12.2.0) or later (see issue 49233).
+-//
+-// Background:
+-// Darwin implements a special mechanism to economize on thread state when
+-// AVX512 specific registers are not in use. This scheme minimizes state when
+-// preempting threads that haven't yet used any AVX512 instructions, but adds
+-// special requirements to check for AVX512 hardware support at runtime (e.g.
+-// via sysctl call or commpage inspection). See issue 43089 and link below for
+-// full background:
+-// https://github.com/apple-oss-distributions/xnu/blob/xnu-11215.1.10/osfmk/i386/fpu.c#L214-L240
+-//
+-// Additionally, all versions of the Darwin kernel from 19.6.0 through 21.2.0
+-// (corresponding to MacOS 10.15.6 - 12.1) have a bug that can cause corruption
+-// of the AVX512 mask registers (K0-K7) upon signal return. For this reason
+-// AVX512 is considered unsafe to use on Darwin for kernel versions prior to
+-// 21.3.0, where a fix has been confirmed. See issue 49233 for full background.
+-func darwinSupportsAVX512() bool {
+-	return darwinSysctlEnabled([]byte("hw.optional.avx512f\x00")) && darwinKernelVersionCheck(21, 3, 0)
+-}
+-
+-// Ensure Darwin kernel version is at least major.minor.patch, avoiding dependencies
+-func darwinKernelVersionCheck(major, minor, patch int) bool {
+-	var release [256]byte
+-	err := darwinOSRelease(&release)
+-	if err != nil {
+-		return false
+-	}
+-
+-	var mmp [3]int
+-	c := 0
+-Loop:
+-	for _, b := range release[:] {
+-		switch {
+-		case b >= '0' && b <= '9':
+-			mmp[c] = 10*mmp[c] + int(b-'0')
+-		case b == '.':
+-			c++
+-			if c > 2 {
+-				return false
+-			}
+-		case b == 0:
+-			break Loop
+-		default:
+-			return false
+-		}
+-	}
+-	if c != 2 {
+-		return false
+-	}
+-	return mmp[0] > major || mmp[0] == major && (mmp[1] > minor || mmp[1] == minor && mmp[2] >= patch)
+-}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go b/vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go
 deleted file mode 100644
-index a8acd3e3285d..000000000000
+index 6ac6e1efb208..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go
 +++ /dev/null
-@@ -1,11 +0,0 @@
+@@ -1,12 +0,0 @@
 -// Copyright 2019 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
@@ -1324,6 +1476,7 @@ index a8acd3e3285d..000000000000
 -func getisar0() uint64
 -func getisar1() uint64
 -func getpfr0() uint64
+-func getzfr0() uint64
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_gc_s390x.go b/vendor/golang.org/x/sys/cpu/cpu_gc_s390x.go
 deleted file mode 100644
 index c8ae6ddc156f..000000000000
@@ -1353,7 +1506,7 @@ index c8ae6ddc156f..000000000000
 -func klmdQuery() queryResult
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_gc_x86.go b/vendor/golang.org/x/sys/cpu/cpu_gc_x86.go
 deleted file mode 100644
-index 910728fb163f..000000000000
+index 32a44514e245..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_gc_x86.go
 +++ /dev/null
 @@ -1,15 +0,0 @@
@@ -1365,13 +1518,45 @@ index 910728fb163f..000000000000
 -
 -package cpu
 -
--// cpuid is implemented in cpu_x86.s for gc compiler
+-// cpuid is implemented in cpu_gc_x86.s for gc compiler
 -// and in cpu_gccgo.c for gccgo.
 -func cpuid(eaxArg, ecxArg uint32) (eax, ebx, ecx, edx uint32)
 -
--// xgetbv with ecx = 0 is implemented in cpu_x86.s for gc compiler
+-// xgetbv with ecx = 0 is implemented in cpu_gc_x86.s for gc compiler
 -// and in cpu_gccgo.c for gccgo.
 -func xgetbv() (eax, edx uint32)
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_gc_x86.s b/vendor/golang.org/x/sys/cpu/cpu_gc_x86.s
+deleted file mode 100644
+index ce208ce6d6a3..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_gc_x86.s
++++ /dev/null
+@@ -1,26 +0,0 @@
+-// Copyright 2018 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build (386 || amd64 || amd64p32) && gc
+-
+-#include "textflag.h"
+-
+-// func cpuid(eaxArg, ecxArg uint32) (eax, ebx, ecx, edx uint32)
+-TEXT ·cpuid(SB), NOSPLIT, $0-24
+-	MOVL eaxArg+0(FP), AX
+-	MOVL ecxArg+4(FP), CX
+-	CPUID
+-	MOVL AX, eax+8(FP)
+-	MOVL BX, ebx+12(FP)
+-	MOVL CX, ecx+16(FP)
+-	MOVL DX, edx+20(FP)
+-	RET
+-
+-// func xgetbv() (eax, edx uint32)
+-TEXT ·xgetbv(SB), NOSPLIT, $0-8
+-	MOVL $0, CX
+-	XGETBV
+-	MOVL AX, eax+0(FP)
+-	MOVL DX, edx+4(FP)
+-	RET
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_gccgo_arm64.go b/vendor/golang.org/x/sys/cpu/cpu_gccgo_arm64.go
 deleted file mode 100644
 index 7f1946780bd3..000000000000
@@ -1462,10 +1647,10 @@ index 3f73a05dcf32..000000000000
 -#pragma GCC pop_options
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.go b/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.go
 deleted file mode 100644
-index 99c60fe9f9c6..000000000000
+index 170d21ddfda4..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.go
 +++ /dev/null
-@@ -1,31 +0,0 @@
+@@ -1,25 +0,0 @@
 -// Copyright 2018 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
@@ -1490,12 +1675,6 @@ index 99c60fe9f9c6..000000000000
 -	var a, d uint32
 -	gccgoXgetbv(&a, &d)
 -	return a, d
--}
--
--// gccgo doesn't build on Darwin, per:
--// https://github.com/Homebrew/homebrew-core/blob/HEAD/Formula/gcc.rb#L76
--func darwinSupportsAVX512() bool {
--	return false
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_linux.go b/vendor/golang.org/x/sys/cpu/cpu_linux.go
 deleted file mode 100644
@@ -1565,10 +1744,10 @@ index 2057006dce4c..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_linux_arm64.go b/vendor/golang.org/x/sys/cpu/cpu_linux_arm64.go
 deleted file mode 100644
-index a968b80fa6ab..000000000000
+index f1caf0f78e24..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_linux_arm64.go
 +++ /dev/null
-@@ -1,111 +0,0 @@
+@@ -1,120 +0,0 @@
 -// Copyright 2018 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
@@ -1606,6 +1785,10 @@ index a968b80fa6ab..000000000000
 -	hwcap_SHA512   = 1 << 21
 -	hwcap_SVE      = 1 << 22
 -	hwcap_ASIMDFHM = 1 << 23
+-	hwcap_DIT      = 1 << 24
+-
+-	hwcap2_SVE2 = 1 << 1
+-	hwcap2_I8MM = 1 << 13
 -)
 -
 -// linuxKernelCanEmulateCPUID reports whether we're running
@@ -1675,6 +1858,11 @@ index a968b80fa6ab..000000000000
 -	ARM64.HasSHA512 = isSet(hwCap, hwcap_SHA512)
 -	ARM64.HasSVE = isSet(hwCap, hwcap_SVE)
 -	ARM64.HasASIMDFHM = isSet(hwCap, hwcap_ASIMDFHM)
+-	ARM64.HasDIT = isSet(hwCap, hwcap_DIT)
+-
+-	// HWCAP2 feature bits
+-	ARM64.HasSVE2 = isSet(hwCap2, hwcap2_SVE2)
+-	ARM64.HasI8MM = isSet(hwCap2, hwcap2_I8MM)
 -}
 -
 -func isSet(hwc uint, value uint) bool {
@@ -1710,7 +1898,7 @@ index 4686c1d541d8..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_linux_noinit.go b/vendor/golang.org/x/sys/cpu/cpu_linux_noinit.go
 deleted file mode 100644
-index cd63e7335573..000000000000
+index 7d902b6847bb..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_linux_noinit.go
 +++ /dev/null
 @@ -1,9 +0,0 @@
@@ -1718,7 +1906,7 @@ index cd63e7335573..000000000000
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
--//go:build linux && !arm && !arm64 && !mips64 && !mips64le && !ppc64 && !ppc64le && !s390x
+-//go:build linux && !arm && !arm64 && !mips64 && !mips64le && !ppc64 && !ppc64le && !s390x && !riscv64
 -
 -package cpu
 -
@@ -1758,6 +1946,149 @@ index 197188e67f34..000000000000
 -
 -func isSet(hwc uint, value uint) bool {
 -	return hwc&value != 0
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_linux_riscv64.go b/vendor/golang.org/x/sys/cpu/cpu_linux_riscv64.go
+deleted file mode 100644
+index cb4a0c572807..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_linux_riscv64.go
++++ /dev/null
+@@ -1,137 +0,0 @@
+-// Copyright 2024 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-package cpu
+-
+-import (
+-	"syscall"
+-	"unsafe"
+-)
+-
+-// RISC-V extension discovery code for Linux. The approach here is to first try the riscv_hwprobe
+-// syscall falling back to HWCAP to check for the C extension if riscv_hwprobe is not available.
+-//
+-// A note on detection of the Vector extension using HWCAP.
+-//
+-// Support for the Vector extension version 1.0 was added to the Linux kernel in release 6.5.
+-// Support for the riscv_hwprobe syscall was added in 6.4. It follows that if the riscv_hwprobe
+-// syscall is not available then neither is the Vector extension (which needs kernel support).
+-// The riscv_hwprobe syscall should then be all we need to detect the Vector extension.
+-// However, some RISC-V board manufacturers ship boards with an older kernel on top of which
+-// they have back-ported various versions of the Vector extension patches but not the riscv_hwprobe
+-// patches. These kernels advertise support for the Vector extension using HWCAP. Falling
+-// back to HWCAP to detect the Vector extension, if riscv_hwprobe is not available, or simply not
+-// bothering with riscv_hwprobe at all and just using HWCAP may then seem like an attractive option.
+-//
+-// Unfortunately, simply checking the 'V' bit in AT_HWCAP will not work as this bit is used by
+-// RISC-V board and cloud instance providers to mean different things. The Lichee Pi 4A board
+-// and the Scaleway RV1 cloud instances use the 'V' bit to advertise their support for the unratified
+-// 0.7.1 version of the Vector Specification. The Banana Pi BPI-F3 and the CanMV-K230 board use
+-// it to advertise support for 1.0 of the Vector extension. Versions 0.7.1 and 1.0 of the Vector
+-// extension are binary incompatible. HWCAP can then not be used in isolation to populate the
+-// HasV field as this field indicates that the underlying CPU is compatible with RVV 1.0.
+-//
+-// There is a way at runtime to distinguish between versions 0.7.1 and 1.0 of the Vector
+-// specification by issuing a RVV 1.0 vsetvli instruction and checking the vill bit of the vtype
+-// register. This check would allow us to safely detect version 1.0 of the Vector extension
+-// with HWCAP, if riscv_hwprobe were not available. However, the check cannot
+-// be added until the assembler supports the Vector instructions.
+-//
+-// Note the riscv_hwprobe syscall does not suffer from these ambiguities by design as all of the
+-// extensions it advertises support for are explicitly versioned. It's also worth noting that
+-// the riscv_hwprobe syscall is the only way to detect multi-letter RISC-V extensions, e.g., Zba.
+-// These cannot be detected using HWCAP and so riscv_hwprobe must be used to detect the majority
+-// of RISC-V extensions.
+-//
+-// Please see https://docs.kernel.org/arch/riscv/hwprobe.html for more information.
+-
+-// golang.org/x/sys/cpu is not allowed to depend on golang.org/x/sys/unix so we must
+-// reproduce the constants, types and functions needed to make the riscv_hwprobe syscall
+-// here.
+-
+-const (
+-	// Copied from golang.org/x/sys/unix/ztypes_linux_riscv64.go.
+-	riscv_HWPROBE_KEY_IMA_EXT_0   = 0x4
+-	riscv_HWPROBE_IMA_C           = 0x2
+-	riscv_HWPROBE_IMA_V           = 0x4
+-	riscv_HWPROBE_EXT_ZBA         = 0x8
+-	riscv_HWPROBE_EXT_ZBB         = 0x10
+-	riscv_HWPROBE_EXT_ZBS         = 0x20
+-	riscv_HWPROBE_KEY_CPUPERF_0   = 0x5
+-	riscv_HWPROBE_MISALIGNED_FAST = 0x3
+-	riscv_HWPROBE_MISALIGNED_MASK = 0x7
+-)
+-
+-const (
+-	// sys_RISCV_HWPROBE is copied from golang.org/x/sys/unix/zsysnum_linux_riscv64.go.
+-	sys_RISCV_HWPROBE = 258
+-)
+-
+-// riscvHWProbePairs is copied from golang.org/x/sys/unix/ztypes_linux_riscv64.go.
+-type riscvHWProbePairs struct {
+-	key   int64
+-	value uint64
+-}
+-
+-const (
+-	// CPU features
+-	hwcap_RISCV_ISA_C = 1 << ('C' - 'A')
+-)
+-
+-func doinit() {
+-	// A slice of key/value pair structures is passed to the RISCVHWProbe syscall. The key
+-	// field should be initialised with one of the key constants defined above, e.g.,
+-	// RISCV_HWPROBE_KEY_IMA_EXT_0. The syscall will set the value field to the appropriate value.
+-	// If the kernel does not recognise a key it will set the key field to -1 and the value field to 0.
+-
+-	pairs := []riscvHWProbePairs{
+-		{riscv_HWPROBE_KEY_IMA_EXT_0, 0},
+-		{riscv_HWPROBE_KEY_CPUPERF_0, 0},
+-	}
+-
+-	// This call only indicates that extensions are supported if they are implemented on all cores.
+-	if riscvHWProbe(pairs, 0) {
+-		if pairs[0].key != -1 {
+-			v := uint(pairs[0].value)
+-			RISCV64.HasC = isSet(v, riscv_HWPROBE_IMA_C)
+-			RISCV64.HasV = isSet(v, riscv_HWPROBE_IMA_V)
+-			RISCV64.HasZba = isSet(v, riscv_HWPROBE_EXT_ZBA)
+-			RISCV64.HasZbb = isSet(v, riscv_HWPROBE_EXT_ZBB)
+-			RISCV64.HasZbs = isSet(v, riscv_HWPROBE_EXT_ZBS)
+-		}
+-		if pairs[1].key != -1 {
+-			v := pairs[1].value & riscv_HWPROBE_MISALIGNED_MASK
+-			RISCV64.HasFastMisaligned = v == riscv_HWPROBE_MISALIGNED_FAST
+-		}
+-	}
+-
+-	// Let's double check with HWCAP if the C extension does not appear to be supported.
+-	// This may happen if we're running on a kernel older than 6.4.
+-
+-	if !RISCV64.HasC {
+-		RISCV64.HasC = isSet(hwCap, hwcap_RISCV_ISA_C)
+-	}
+-}
+-
+-func isSet(hwc uint, value uint) bool {
+-	return hwc&value != 0
+-}
+-
+-// riscvHWProbe is a simplified version of the generated wrapper function found in
+-// golang.org/x/sys/unix/zsyscall_linux_riscv64.go. We simplify it by removing the
+-// cpuCount and cpus parameters which we do not need. We always want to pass 0 for
+-// these parameters here so the kernel only reports the extensions that are present
+-// on all cores.
+-func riscvHWProbe(pairs []riscvHWProbePairs, flags uint) bool {
+-	var _zero uintptr
+-	var p0 unsafe.Pointer
+-	if len(pairs) > 0 {
+-		p0 = unsafe.Pointer(&pairs[0])
+-	} else {
+-		p0 = unsafe.Pointer(&_zero)
+-	}
+-
+-	_, _, e1 := syscall.Syscall6(sys_RISCV_HWPROBE, uintptr(p0), uintptr(len(pairs)), uintptr(0), uintptr(0), uintptr(flags), 0)
+-	return e1 == 0
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_linux_s390x.go b/vendor/golang.org/x/sys/cpu/cpu_linux_s390x.go
 deleted file mode 100644
@@ -2210,6 +2541,23 @@ index 5ab87808f710..000000000000
 -func archInit() {
 -	Initialized = true
 -}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_other_x86.go b/vendor/golang.org/x/sys/cpu/cpu_other_x86.go
+deleted file mode 100644
+index a0fd7e2f75d3..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_other_x86.go
++++ /dev/null
+@@ -1,11 +0,0 @@
+-// Copyright 2024 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build 386 || amd64p32 || (amd64 && (!darwin || !gc))
+-
+-package cpu
+-
+-func darwinSupportsAVX512() bool {
+-	panic("only implemented for gc && amd64 && darwin")
+-}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_ppc64x.go b/vendor/golang.org/x/sys/cpu/cpu_ppc64x.go
 deleted file mode 100644
 index c14f12b14942..000000000000
@@ -2234,10 +2582,10 @@ index c14f12b14942..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_riscv64.go b/vendor/golang.org/x/sys/cpu/cpu_riscv64.go
 deleted file mode 100644
-index 7f0c79c004b4..000000000000
+index aca3199c9116..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_riscv64.go
 +++ /dev/null
-@@ -1,11 +0,0 @@
+@@ -1,20 +0,0 @@
 -// Copyright 2019 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
@@ -2248,7 +2596,16 @@ index 7f0c79c004b4..000000000000
 -
 -const cacheLineSize = 64
 -
--func initOptions() {}
+-func initOptions() {
+-	options = []option{
+-		{Name: "fastmisaligned", Feature: &RISCV64.HasFastMisaligned},
+-		{Name: "c", Feature: &RISCV64.HasC},
+-		{Name: "v", Feature: &RISCV64.HasV},
+-		{Name: "zba", Feature: &RISCV64.HasZba},
+-		{Name: "zbb", Feature: &RISCV64.HasZbb},
+-		{Name: "zbs", Feature: &RISCV64.HasZbs},
+-	}
+-}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_s390x.go b/vendor/golang.org/x/sys/cpu/cpu_s390x.go
 deleted file mode 100644
 index 5881b8833f5a..000000000000
@@ -2515,10 +2872,10 @@ index 384787ea3062..000000000000
 -func archInit() {}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_x86.go b/vendor/golang.org/x/sys/cpu/cpu_x86.go
 deleted file mode 100644
-index c29f5e4c5a6e..000000000000
+index 600a6807861e..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_x86.go
 +++ /dev/null
-@@ -1,151 +0,0 @@
+@@ -1,149 +0,0 @@
 -// Copyright 2018 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
@@ -2613,10 +2970,8 @@ index c29f5e4c5a6e..000000000000
 -		osSupportsAVX = isSet(1, eax) && isSet(2, eax)
 -
 -		if runtime.GOOS == "darwin" {
--			// Darwin doesn't save/restore AVX-512 mask registers correctly across signal handlers.
--			// Since users can't rely on mask register contents, let's not advertise AVX-512 support.
--			// See issue 49233.
--			osSupportsAVX512 = false
+-			// Darwin requires special AVX512 checks, see cpu_darwin_x86.go
+-			osSupportsAVX512 = osSupportsAVX && darwinSupportsAVX512()
 -		} else {
 -			// Check if OPMASK and ZMM registers have OS support.
 -			osSupportsAVX512 = osSupportsAVX && isSet(5, eax) && isSet(6, eax) && isSet(7, eax)
@@ -2670,38 +3025,6 @@ index c29f5e4c5a6e..000000000000
 -func isSet(bitpos uint, value uint32) bool {
 -	return value&(1<<bitpos) != 0
 -}
-diff --git a/vendor/golang.org/x/sys/cpu/cpu_x86.s b/vendor/golang.org/x/sys/cpu/cpu_x86.s
-deleted file mode 100644
-index 7d7ba33efb85..000000000000
---- a/vendor/golang.org/x/sys/cpu/cpu_x86.s
-+++ /dev/null
-@@ -1,26 +0,0 @@
--// Copyright 2018 The Go Authors. All rights reserved.
--// Use of this source code is governed by a BSD-style
--// license that can be found in the LICENSE file.
--
--//go:build (386 || amd64 || amd64p32) && gc
--
--#include "textflag.h"
--
--// func cpuid(eaxArg, ecxArg uint32) (eax, ebx, ecx, edx uint32)
--TEXT ·cpuid(SB), NOSPLIT, $0-24
--	MOVL eaxArg+0(FP), AX
--	MOVL ecxArg+4(FP), CX
--	CPUID
--	MOVL AX, eax+8(FP)
--	MOVL BX, ebx+12(FP)
--	MOVL CX, ecx+16(FP)
--	MOVL DX, edx+20(FP)
--	RET
--
--// func xgetbv() (eax, edx uint32)
--TEXT ·xgetbv(SB),NOSPLIT,$0-8
--	MOVL $0, CX
--	XGETBV
--	MOVL AX, eax+0(FP)
--	MOVL DX, edx+4(FP)
--	RET
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_zos.go b/vendor/golang.org/x/sys/cpu/cpu_zos.go
 deleted file mode 100644
 index 5f54683a22e3..000000000000
@@ -3085,8 +3408,112 @@ index e8b6cdbe9a7c..000000000000
 -	r1, _, e1 = syscall6(uintptr(unsafe.Pointer(&libc_getsystemcfg)), 1, uintptr(label), 0, 0, 0, 0, 0)
 -	return
 -}
+diff --git a/vendor/golang.org/x/sys/cpu/syscall_darwin_x86_gc.go b/vendor/golang.org/x/sys/cpu/syscall_darwin_x86_gc.go
+deleted file mode 100644
+index 4d0888b0c010..000000000000
+--- a/vendor/golang.org/x/sys/cpu/syscall_darwin_x86_gc.go
++++ /dev/null
+@@ -1,98 +0,0 @@
+-// Copyright 2024 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-// Minimal copy of x/sys/unix so the cpu package can make a
+-// system call on Darwin without depending on x/sys/unix.
+-
+-//go:build darwin && amd64 && gc
+-
+-package cpu
+-
+-import (
+-	"syscall"
+-	"unsafe"
+-)
+-
+-type _C_int int32
+-
+-// adapted from unix.Uname() at x/sys/unix/syscall_darwin.go L419
+-func darwinOSRelease(release *[256]byte) error {
+-	// from x/sys/unix/zerrors_openbsd_amd64.go
+-	const (
+-		CTL_KERN       = 0x1
+-		KERN_OSRELEASE = 0x2
+-	)
+-
+-	mib := []_C_int{CTL_KERN, KERN_OSRELEASE}
+-	n := unsafe.Sizeof(*release)
+-
+-	return sysctl(mib, &release[0], &n, nil, 0)
+-}
+-
+-type Errno = syscall.Errno
+-
+-var _zero uintptr // Single-word zero for use when we need a valid pointer to 0 bytes.
+-
+-// from x/sys/unix/zsyscall_darwin_amd64.go L791-807
+-func sysctl(mib []_C_int, old *byte, oldlen *uintptr, new *byte, newlen uintptr) error {
+-	var _p0 unsafe.Pointer
+-	if len(mib) > 0 {
+-		_p0 = unsafe.Pointer(&mib[0])
+-	} else {
+-		_p0 = unsafe.Pointer(&_zero)
+-	}
+-	if _, _, err := syscall_syscall6(
+-		libc_sysctl_trampoline_addr,
+-		uintptr(_p0),
+-		uintptr(len(mib)),
+-		uintptr(unsafe.Pointer(old)),
+-		uintptr(unsafe.Pointer(oldlen)),
+-		uintptr(unsafe.Pointer(new)),
+-		uintptr(newlen),
+-	); err != 0 {
+-		return err
+-	}
+-
+-	return nil
+-}
+-
+-var libc_sysctl_trampoline_addr uintptr
+-
+-// adapted from internal/cpu/cpu_arm64_darwin.go
+-func darwinSysctlEnabled(name []byte) bool {
+-	out := int32(0)
+-	nout := unsafe.Sizeof(out)
+-	if ret := sysctlbyname(&name[0], (*byte)(unsafe.Pointer(&out)), &nout, nil, 0); ret != nil {
+-		return false
+-	}
+-	return out > 0
+-}
+-
+-//go:cgo_import_dynamic libc_sysctl sysctl "/usr/lib/libSystem.B.dylib"
+-
+-var libc_sysctlbyname_trampoline_addr uintptr
+-
+-// adapted from runtime/sys_darwin.go in the pattern of sysctl() above, as defined in x/sys/unix
+-func sysctlbyname(name *byte, old *byte, oldlen *uintptr, new *byte, newlen uintptr) error {
+-	if _, _, err := syscall_syscall6(
+-		libc_sysctlbyname_trampoline_addr,
+-		uintptr(unsafe.Pointer(name)),
+-		uintptr(unsafe.Pointer(old)),
+-		uintptr(unsafe.Pointer(oldlen)),
+-		uintptr(unsafe.Pointer(new)),
+-		uintptr(newlen),
+-		0,
+-	); err != 0 {
+-		return err
+-	}
+-
+-	return nil
+-}
+-
+-//go:cgo_import_dynamic libc_sysctlbyname sysctlbyname "/usr/lib/libSystem.B.dylib"
+-
+-// Implemented in the runtime package (runtime/sys_darwin.go)
+-func syscall_syscall6(fn, a1, a2, a3, a4, a5, a6 uintptr) (r1, r2 uintptr, err Errno)
+-
+-//go:linkname syscall_syscall6 syscall.syscall6
 diff --git a/vendor/modules.txt b/vendor/modules.txt
-index 16ef26e49527..6137357d9831 100644
+index 533b56dda728..fc6d9c099d71 100644
 --- a/vendor/modules.txt
 +++ b/vendor/modules.txt
 @@ -85,9 +85,9 @@ github.com/cilium/ebpf/link
@@ -3102,14 +3529,14 @@ index 16ef26e49527..6137357d9831 100644
  # github.com/containerd/cgroups v1.1.0
  ## explicit; go 1.17
  github.com/containerd/cgroups/stats/v1
-@@ -570,7 +570,6 @@ golang.org/x/sync/errgroup
+@@ -568,7 +568,6 @@ golang.org/x/sync/errgroup
  golang.org/x/sync/semaphore
- # golang.org/x/sys v0.18.0
+ # golang.org/x/sys v0.28.0
  ## explicit; go 1.18
 -golang.org/x/sys/cpu
  golang.org/x/sys/plan9
  golang.org/x/sys/unix
  golang.org/x/sys/windows
 -- 
-2.47.0
+2.49.0
 

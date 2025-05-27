@@ -625,4 +625,12 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment></comment>
     <requestid>1225791</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>90bb52bff05c127cf28b82898d7b8d46</srcmd5>
+    <version>1.7.27</version>
+    <time>1748364541</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1268053</requestid>
+  </revision>
 </revisionlist>
