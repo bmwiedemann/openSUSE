@@ -1,7 +1,7 @@
 #
 # spec file for package python-fuzzywuzzy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fuzzywuzzy
 Version:        0.18.0
 Release:        0
@@ -26,9 +25,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/seatgeek/fuzzywuzzy
 Source:         https://files.pythonhosted.org/packages/source/f/fuzzywuzzy/fuzzywuzzy-%{version}.tar.gz
 BuildRequires:  %{python_module Levenshtein}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-Levenshtein >= 0.12
@@ -42,10 +43,10 @@ Fuzzy string matching in python
 %setup -q -n fuzzywuzzy-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +55,7 @@ Fuzzy string matching in python
 %files %{python_files}
 %doc CHANGES.rst README README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/fuzzywuzzy
+%{python_sitelib}/fuzzywuzzy-%{version}*-info
 
 %changelog
