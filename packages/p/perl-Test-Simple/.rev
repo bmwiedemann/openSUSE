@@ -423,4 +423,15 @@
     <comment></comment>
     <requestid>1270601</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>b9f9f932ba318c19bb5af7e91b85f566</srcmd5>
+    <version>1.302213</version>
+    <time>1748364565</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1279814 from tinita
+
+- updated to 1.302213
+   see /usr/share/doc/packages/perl-Test-Simple/Changes</comment>
+    <requestid>1279825</requestid>
+  </revision>
 </revisionlist>
