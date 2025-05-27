@@ -598,7 +598,7 @@ export CFLAGS_SHARED
 
     touch --reference=README config.sub config.guess
 
-    # must not use %jobs here (would lead to: ln: ncurses.h already exists)
+    # must not use %%jobs here (would lead to: ln: ncurses.h already exists)
     find man/ -name '*.[1-8]x.*' -print -delete
     mkdir pc
 

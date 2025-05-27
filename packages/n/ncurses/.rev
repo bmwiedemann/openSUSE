@@ -5161,4 +5161,12 @@
   + add rlogin-color -TD</comment>
     <requestid>1276730</requestid>
   </revision>
+  <revision rev="298" vrev="71">
+    <srcmd5>dc37031b4800ea1d9697916f29852651</srcmd5>
+    <version>unknown</version>
+    <time>1748364525</time>
+    <user>anag_factory</user>
+    <comment>Avoid expanding %jobs in comment (boo#1237231) (forwarded request 1277853 from bmwiedemann)</comment>
+    <requestid>1277962</requestid>
+  </revision>
 </revisionlist>
