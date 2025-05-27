@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed May 14 06:22:25 UTC 2025 - thod_@gmx.de
+
+- Update to version 1.4.2+1:
+  * Fix a number of problems when 'context-stroke' and 'context-fill' are set on <group> elements. Backport.
+  * Inkscape 1.4.2, due to a signficant bug that was only discovered shortly before its planned release, 1.4.1 has been merged with 1.4.2
+    + A new splash screen, providing a visual cue while Inkscape loads in the background
+    + Initial support for importing Vectornator / Linearity Curve files
+    + A new extension to Clean up Paths
+    + Substantially improved Affinity Designer files (.afdesign) import
+    + 20 crash/freeze fixes, many of which affected PDF import
+    + more than 50 other bug fixes and small improvements, including improvements to Boolean operations, layer selection, minimal window width and restoration of Spray tool buttons' functionality
+    + and 15 updated translations!
+  * Fix crash when opening file (backport 1.4.x)
+  * Update man page + translations
+  * Update versions on welcome screen graphics
+  * Fix opening recent PDFs from Command Palette
+  * Fix bugs dealing with empty paths: "M 0,0", "M 0,0 z".
+  * Make status bar resilient against desktop changing
+  * Fix Layers & Objects context menu when floating
+  * Update graphics for 1.4.2
+
+-------------------------------------------------------------------
 Fri May  2 18:10:57 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Remove dependency on libsoup-2.4: no longer needed.
