@@ -1,7 +1,7 @@
 #
 # spec file for package python-evilunit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-evilunit
 Version:        0.2.1
@@ -26,8 +25,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/podhmo/evilunit
 Source:         https://github.com/podhmo/evilunit/archive/%{version}.tar.gz#/evilunit-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
@@ -43,10 +44,10 @@ and nested test classes.
 %setup -q -n evilunit-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +56,7 @@ and nested test classes.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/evilunit
+%{python_sitelib}/evilunit-%{version}*-info
 
 %changelog
