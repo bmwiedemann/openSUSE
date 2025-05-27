@@ -458,4 +458,39 @@
     <comment></comment>
     <requestid>1244959</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b82bddc8c0495dd480cb67c64d0e0ca4</srcmd5>
+    <version>20250521.1.0</version>
+    <time>1748364567</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1279822 from tinita
+
+- updated to 20250521.1.0 (20250521.001)
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+  20250521.001 2025-05-21T11:37:03Z
+  	* data update for 2025-05-21
+  20250516.001 2025-05-16T04:40:11Z
+  	* data update for 2025-05-16
+  20250502.001 2025-05-02T14:14:49Z
+  	* data update for 2025-05-02
+  20250426.001 2025-04-28T13:04:20Z
+  	* data update for 2025-04-26
+  20250418.001 2025-04-18T08:10:56Z
+  	* data update for 2025-04-18
+  20250416.001 2025-04-16T05:46:53Z
+  	* data update 2025-04-16
+  20250411.001 2025-04-11T17:39:39Z
+  	* Data update for 205-04-11
+  20250322.001 2025-03-22T05:59:36Z
+  	* data update for 2025-03-21
+  20250315.001 2025-03-15T04:51:26Z
+  	* data update for 2025-03-14
+  20250309.001 2025-03-10T02:14:14Z
+  	* data update for 2025-03-09
+  20250226.001 2025-02-26T13:54:49Z
+  	* data update for 2025-02-26
+  20250220.001 2025-02-20T09:13:32Z
+  	* data update for 2025-02-19</comment>
+    <requestid>1279831</requestid>
+  </revision>
 </revisionlist>
