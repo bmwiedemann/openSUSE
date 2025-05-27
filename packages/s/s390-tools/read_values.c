@@ -37,9 +37,9 @@ enum datatypes {
 #define	WITHOUT_KEY	0
 #define	WITH_KEY	1
 
-static char *versionstring	= "Version 1.0.5 2024-06-20 14:30";
+static char *versionstring	= "Version 1.0.6 2025-05-07 08:30";
 
-static char *version	   	= "1.0.5";
+static char *version	   	= "1.0.6";
 
 void	*configuration_handle	= NULL;
 int	layers			= -1;
@@ -80,6 +80,8 @@ struct machinetype {
 	{ QC_TYPE_FAMILY_LINUXONE, "3931", "3931 = IBM LinuxONE Emperor 4" },
 	{ QC_TYPE_FAMILY_IBMZ,     "3932", "3932 = z16 A02 IBM z16 A02" },
 	{ QC_TYPE_FAMILY_LINUXONE, "3932", "3932 = IBM LinuxONE Rockhopper 4" },
+        { QC_TYPE_FAMILY_IBMZ,     "9175", "9175 = z17     IBM z17    " },
+        { QC_TYPE_FAMILY_LINUXONE, "9175", "9175 = IBM LinuxONE 5" },
 	};
 
 int	debug = 0;

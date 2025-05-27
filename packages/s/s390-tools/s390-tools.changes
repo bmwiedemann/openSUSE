@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 23 17:19:07 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Revendored vendor.tar.zst (bsc#1242622 (CVE-2025-3416))
+- Updated 'cputype' and 'read_value.c'
+ * Added the new IBM z17 (9175) processor type
+
+-------------------------------------------------------------------
 Fri May  2 12:08:25 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file
