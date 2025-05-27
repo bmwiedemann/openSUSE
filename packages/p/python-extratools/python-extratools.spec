@@ -1,7 +1,7 @@
 #
 # spec file for package python-extratools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-extratools
 Version:        0.8.2.1
 Release:        0
@@ -26,7 +24,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/chuanconggao/extratools
 Source:         https://files.pythonhosted.org/packages/source/e/extratools/extratools-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-RegexOrder >= 0.2
@@ -34,8 +34,8 @@ Requires:       python-TagStats >= 0.1.2
 Requires:       python-sh >= 1.12.13
 Requires:       python-sortedcontainers >= 1.5.10
 Requires:       python-toolz >= 0.9.0
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module RegexOrder >= 0.2}
@@ -58,10 +58,10 @@ sed -i -e '/^#!\s*\//, 1d' extratools/*/*.js
 chmod a-x extratools/*/*.js
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/extratools-teststats
 %python_clone -a %{buildroot}%{_bindir}/extratools-remap
 %python_clone -a %{buildroot}%{_bindir}/extratools-flatten
@@ -83,6 +83,7 @@ chmod a-x extratools/*/*.js
 %python_alternative %{_bindir}/extratools-flatten
 %python_alternative %{_bindir}/extratools-remap
 %python_alternative %{_bindir}/extratools-teststats
-%{python_sitelib}/*
+%{python_sitelib}/extratools
+%{python_sitelib}/extratools-%{version}*-info
 
 %changelog
