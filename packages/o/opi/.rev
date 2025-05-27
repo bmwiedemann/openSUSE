@@ -736,4 +736,13 @@
   * Gracefully handle zypper exit code 106 (repos without cache present)</comment>
     <requestid>1271861</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>0f2a694e5fb4c289c770b531994a9809</srcmd5>
+    <version>5.8.4</version>
+    <time>1748364131</time>
+    <user>anag_factory</user>
+    <comment>- Version 5.8.4
+  * Use arm64 rpm for libation on aarch64</comment>
+    <requestid>1280114</requestid>
+  </revision>
 </revisionlist>
