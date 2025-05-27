@@ -1,7 +1,7 @@
 #
 # spec file for package python-dbf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dbf
 Version:        0.99.3
 Release:        0
@@ -25,8 +24,10 @@ License:        BSD-3-Clause
 URL:            https://pypi.org/project/dbf/
 Source:         https://files.pythonhosted.org/packages/source/d/dbf/dbf-%{version}.tar.gz
 BuildRequires:  %{python_module aenum}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aenum
@@ -44,12 +45,13 @@ fields are supported.
 
 %prep
 %setup -q -n dbf-%{version}
+chmod -x dbf/LICENSE dbf/README.md dbf/WHATSNEW
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,7 +59,7 @@ fields are supported.
 
 %files %{python_files}
 %license dbf/LICENSE
-%{python_sitelib}/dbf-%{version}-py*.egg-info
+%{python_sitelib}/dbf-%{version}*-info
 %{python_sitelib}/dbf
 
 %changelog
