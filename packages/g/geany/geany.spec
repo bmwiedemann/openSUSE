@@ -35,6 +35,7 @@ Patch3:         geany-2.0-gcc15.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  desktop-file-utils
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -42,7 +43,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
 %lang_package
 
@@ -92,7 +92,6 @@ make %{?_smp_mflags}
 # FIXME: add lb to filesystem?
 rm %{buildroot}%{_datadir}/locale/lb/LC_MESSAGES/*
 find %{buildroot} -type f -name "*.la" -delete -print
-%suse_update_desktop_file %{name}
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
