@@ -19,7 +19,7 @@
 
 %define _soname libqmi-glib5
 Name:           libqmi
-Version:        1.34.0
+Version:        1.36.0
 Release:        0
 # NOTE: The file headers state LESSER GPL, which is a mistake. The upstream intended license is LIBRARY GPL 2.0+
 Summary:        Library to control QMI devices
@@ -27,7 +27,6 @@ License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Hardware/Modem
 URL:            https://gitlab.freedesktop.org/mobile-broadband/libqmi
 Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
-Patch0:         0001-message-fix-16bit-service-on-big-endian.patch
 
 BuildRequires:  help2man
 BuildRequires:  pkgconfig

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 24 09:09:04 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.36.0:
+  * New request/response/indications
+  * New TLVs supported in existing messages
+  * libqmi-glib:
+    ** Fix for 16-bit service indications on big-endian (BE)
+       architectures
+    ** Fix qmi_wwan sysfs attr ownership to match that of the
+       control device
+- Drop 0001-message-fix-16bit-service-on-big-endian.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Tue Jan 23 15:14:21 UTC 2024 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - Add patch:
