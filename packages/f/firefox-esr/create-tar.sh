@@ -370,7 +370,7 @@ function download_release_or_candidate_file() {
 
   if ! wget --quiet --show-progress --progress=bar "$FTP_URL/$upstream_file"; then
       local CANDIDATE_TARBALL_LOCATION=""
-      PARSED_CANDIDATES_URL="$(printf "%s/%s/" "$(get_ftp_candidates_url "$PRODUCT" "$VERSION$VERSION_SUFFIX")" "$BUILD_ID")"
+      PARSED_CANDIDATES_URL="$(printf "%s/%s" "$(get_ftp_candidates_url "$PRODUCT" "$VERSION$VERSION_SUFFIX")" "$BUILD_ID")"
       CANDIDATE_TARBALL_LOCATION="$(printf "%s/source/%s" "$PARSED_CANDIDATES_URL" "$upstream_file" )"
       wget --quiet --show-progress --progress=bar "$CANDIDATE_TARBALL_LOCATION"
   fi
@@ -580,11 +580,15 @@ function clean_up_old_tarballs() {
 function update_key_file() {
   if [ -e "mozilla.keyring" ]; then
     local UPSTREAM_KEYFILE=""
-    if [ -z "$PARSED_CANDIDATES_URL"]; then
-      local UPSTREAM_KEYFILE=$(curl --silent --fail "$KEY_FTP_URL") || return 1;
+    if [ -z "$PARSED_CANDIDATES_URL" ]; then
+      local UPSTREAM_KEYFILE=$(curl --silent --fail "$KEY_FTP_URL");
     else
       CANDIDATES_KEY_URL="$(printf "%s/KEY" "$PARSED_CANDIDATES_URL")"
-      local UPSTREAM_KEYFILE=$(curl --silent --fail "$CANDIDATES_KEY_URL") || return 1;
+      local UPSTREAM_KEYFILE=$(curl --silent --fail "$CANDIDATES_KEY_URL");
+    fi
+    if [ -z "$UPSTREAM_KEYFILE" ]; then
+      echo "Failed to get upstream keyfile. Skipping."
+      return
     fi
     diff -y --suppress-common-lines -d <(cat mozilla.keyring) <(echo "$UPSTREAM_KEYFILE") > /dev/null
     local KEYRING_CHANGED=$?
@@ -593,7 +597,7 @@ function update_key_file() {
       echo "Keyring changed. Updating it."
       echo "$UPSTREAM_KEYFILE" > mozilla.keyring
     else
-      echo "Keyring did not changed."
+      echo "Keyring did not change."
     fi
   else
     echo "No local keyring found. Skipping keyring-check."
