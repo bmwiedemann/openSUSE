@@ -283,4 +283,41 @@
   (gh#agama-project/agama#2235).</comment>
     <requestid>1272125</requestid>
   </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>30aaf66c18781513b966c90b3b9d7da1</srcmd5>
+    <version>0</version>
+    <time>1748364183</time>
+    <user>anag_factory</user>
+    <comment>- Version 15
+
+- Handle reused MD RAIDs that are already included at the storage
+  configuration (gh/agama-project/agama#2346).
+
+- Allow to resolve in web UI software conflicts
+  (gh#agama-project/agama#2348)
+
+- Do not crash when navigating to a Wi-Fi network (bsc#1243415)
+
+- Keep margin between sidebar and main content in all breakpoints
+  (gh/agama-project/agama#2370).
+
+- Rework the installer l10n settings (gh#agama-project/agama#2359):
+  - Improve discoverability of language and keyboard layout settings.
+  - Add contextual messages to help users differentiate between
+    installer and product localization settings.
+  - Add the ability to reuse installer settings for the product
+    to install.
+  - In local connections, keyboard layout change is now available
+    directly from modal dialogs holding password inputs.
+  - Password inputs now include a reminder of the active layout
+    (only in local connections) and a CAPS LOCK warning when active.
+
+- Fixed navigation to avoid quickly switching between two paths
+  in a loop causing &quot;Too many calls to Location or  History APIs
+  within a short timeframe&quot; error in Firefox and crashing the UI
+  (the proper fix for gh#agama-project/agama#2274)
+
+- MenuButton no longer opens unexpectedly when navigating</comment>
+    <requestid>1280475</requestid>
+  </revision>
 </revisionlist>
