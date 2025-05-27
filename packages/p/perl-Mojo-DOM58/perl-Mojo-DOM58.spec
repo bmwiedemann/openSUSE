@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-DOM58
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,23 @@
 
 %define cpan_name Mojo-DOM58
 Name:           perl-Mojo-DOM58
-Version:        3.001
+Version:        3.2.0
 Release:        0
-Summary:        Minimalistic HTML/XML DOM parser with CSS selectors
+# 3.002 -> normalize -> 3.2.0
+%define cpan_version 3.002
 License:        Artistic-2.0
+Summary:        Minimalistic HTML/XML DOM parser with CSS selectors
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(JSON::PP)
 BuildRequires:  perl(Test::More) >= 0.96
+Provides:       perl(Mojo::DOM58) = %{version}
+Provides:       perl(Mojo::DOM58::Entities) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -40,7 +45,7 @@ https://www.w3.org/TR/selectors/. It will even try to interpret broken HTML
 and XML, so you should not use it for validation.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -55,7 +60,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING.md examples prereqs.yml README
+%doc Changes CONTRIBUTING.md examples README
 %license LICENSE
 
 %changelog

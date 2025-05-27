@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 20 05:35:35 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.2.0 (3.002)
+   see /usr/share/doc/packages/perl-Mojo-DOM58/Changes
+
+  3.002     2025-05-19 19:29:08 EDT
+    - Added EXPERIMENTAL support for :text pseudo-class. (from Mojolicious 9.14)
+    - Fixed Mojo::DOM58 not to auto-close tags in <svg> and <math> blocks.
+      (from Mojolicious 9.21)
+    - Fixed multiple "<script>" parsing issues. (from Mojolicious 9.31)
+    - Fixed a bug where strings like "<.>" were considered valid tags.
+      (from Mojolicious 9.31)
+    - Fixed various CSS selector equation bugs. (from Mojolicious 9.32)
+
+-------------------------------------------------------------------
 Thu Jun 17 03:07:09 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.001

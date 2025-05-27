@@ -23,4 +23,23 @@
     <comment></comment>
     <requestid>900791</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>becc56424b586ec6a0247025c278bd15</srcmd5>
+    <version>3.2.0</version>
+    <time>1748364566</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1279815 from tinita
+
+- updated to 3.2.0 (3.002)
+   see /usr/share/doc/packages/perl-Mojo-DOM58/Changes
+  3.002     2025-05-19 19:29:08 EDT
+    - Added EXPERIMENTAL support for :text pseudo-class. (from Mojolicious 9.14)
+    - Fixed Mojo::DOM58 not to auto-close tags in &lt;svg&gt; and &lt;math&gt; blocks.
+      (from Mojolicious 9.21)
+    - Fixed multiple &quot;&lt;script&gt;&quot; parsing issues. (from Mojolicious 9.31)
+    - Fixed a bug where strings like &quot;&lt;.&gt;&quot; were considered valid tags.
+      (from Mojolicious 9.31)
+    - Fixed various CSS selector equation bugs. (from Mojolicious 9.32)</comment>
+    <requestid>1279827</requestid>
+  </revision>
 </revisionlist>
