@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu May 22 07:17:17 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Switch to obscpio
+
+-------------------------------------------------------------------
+Thu May 22 07:11:23 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 0.2:
+  * Add the --noformat option
+  * Don't filter image names and improve output
+  * Spelling correction
+  * Move Usage before Build
+  * Switch to go
+  * Improve documentation
+  * Improve the region handling
+  * Add name and install instructions
+
+-------------------------------------------------------------------
 Mon Oct  2 04:58:40 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
