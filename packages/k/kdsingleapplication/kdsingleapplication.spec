@@ -21,12 +21,12 @@
 %if "%{flavor}" == "qt6"
 %define qt6 1
 %define pkg_suffix -qt6
-%define sover -1_1
+%define sover -1_2
 %else
-%define sover 1_1
+%define sover 1_2
 %endif
 Name:           kdsingleapplication%{?pkg_suffix}
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Helper class for single-instance policy applications
 License:        MIT
@@ -73,17 +73,18 @@ Requires:       cmake(Qt5Widgets)
 Development files for libkdsingleapplication%{?pkg_suffix}.
 
 %prep
-%autosetup -p1 -n %{rname}-%{version}
+%autosetup -p1 -n KDSingleApplication-%{version}
 
 %build
 %if 0%{?qt6}
 %cmake_qt6 \
-  -DKDSingleApplication_QT6:BOOL=TRUE \
   -DKDSingleApplication_TESTS:BOOL=TRUE
 
 %qt6_build
 %else
-%cmake -DKDSingleApplication_TESTS:BOOL=TRUE
+%cmake \
+  -DKDSingleApplication_QT6:BOOL=FALSE \
+  -DKDSingleApplication_TESTS:BOOL=TRUE
 
 %cmake_build
 %endif

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 27 06:19:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.2.0
+  * KDSingleApplication now looks for Qt6 by default, rather than Qt5
+  * Do not exceed maximum socket name length
+  * Fix maximum socket length on Windows
+
+-------------------------------------------------------------------
 Tue Jan 16 10:33:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.1.0
