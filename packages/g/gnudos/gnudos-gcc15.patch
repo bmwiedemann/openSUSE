@@ -1,0 +1,37 @@
+diff -upr gnudos-2.0.orig/src/mino/main.c gnudos-2.0/src/mino/main.c
+--- gnudos-2.0.orig/src/mino/main.c	2025-05-06 13:31:46.993761252 +0000
++++ gnudos-2.0/src/mino/main.c	2025-05-06 13:33:13.663788279 +0000
+@@ -47,7 +47,7 @@
+ #include "modules/modules.h"
+ 
+ extern char *STARTUP_FILE_NAME;     /* init.c */
+-extern void checkFileExtension();
++extern void checkFileExtension(char *open_file_name);
+ 
+ static void drawMenuBar(int x, int y, int w);
+ static void drawScrollBar(void);
+diff -upr gnudos-2.0.orig/src/mino/menu.c gnudos-2.0/src/mino/menu.c
+--- gnudos-2.0.orig/src/mino/menu.c	2025-05-06 13:31:46.993824453 +0000
++++ gnudos-2.0/src/mino/menu.c	2025-05-06 13:34:37.826784027 +0000
+@@ -61,7 +61,7 @@ int endme;
+ int menuIndex;
+ struct menustruct *curMenu;
+ 
+-char *(*fileFuncs[])() =
++char *(*fileFuncs[])(char *) =
+ {
+     fileMenu_New, fileMenu_Open, fileMenu_Save, fileMenu_SaveAs, 
+     fileMenu_Print, fileMenu_Exit
+diff -upr gnudos-2.0.orig/src/prime/menu.c gnudos-2.0/src/prime/menu.c
+--- gnudos-2.0.orig/src/prime/menu.c	2025-05-06 13:31:46.992608406 +0000
++++ gnudos-2.0/src/prime/menu.c	2025-05-06 13:41:23.759034259 +0000
+@@ -59,7 +59,7 @@ void (*fileFuncs[])() =
+ 
+ void (*editFuncs[])() =
+ {
+-    cutMarked, copyMarked, pasteMarked, markAll, unMarkAll, 
++    cutMarked, copyMarked, pasteMarked, (void(*)(void))markAll, (void(*)(void))unMarkAll, 
+     clearSelection, editMenu_Find,
+     editMenu_Properties
+ };
+

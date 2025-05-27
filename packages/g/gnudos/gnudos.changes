@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  6 13:43:49 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + gnudos-gcc15.patch
+
+-------------------------------------------------------------------
 Sun Aug 11 17:08:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU GnuDOS initial package, packaged as a joke

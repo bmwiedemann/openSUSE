@@ -1,6 +1,7 @@
 #
 # spec file for package gnudos
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +27,8 @@ URL:            https://www.gnu.org/software/gnudos/
 Source:         https://ftp.gnu.org/pub/gnu/gnudos/%{name}-2.0.tar.gz
 Source2:        https://ftp.gnu.org/pub/gnu/gnudos/%{name}-2.0.tar.gz.sig
 Source3:        https://savannah.gnu.org/people/viewgpg.php?user_id=94484#/%{name}.keyring
+# fix build with gcc15
+Patch0:         gnudos-gcc15.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ncursesw)
 

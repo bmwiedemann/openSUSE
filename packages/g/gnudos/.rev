@@ -7,4 +7,14 @@
     <comment>DOS compatibility lib and tools, package for general amusement</comment>
     <requestid>1194210</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5d58b431ec23c045411489ebd53dca70</srcmd5>
+    <version>2.0</version>
+    <time>1748364264</time>
+    <user>anag_factory</user>
+    <comment>- added patches
+  fix build with gcc15
+  + gnudos-gcc15.patch</comment>
+    <requestid>1280638</requestid>
+  </revision>
 </revisionlist>
