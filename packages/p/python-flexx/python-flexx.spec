@@ -1,7 +1,7 @@
 #
 # spec file for package python-flexx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
 Name:           python-flexx
 Version:        0.8.4
 Release:        0
@@ -31,21 +28,23 @@ BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module dialite >= 0.5.2}
 BuildRequires:  %{python_module imageio}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pscript >= 0.7.3}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pscript}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module selenium}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado >= 4}
 BuildRequires:  %{python_module webruntime >= 0.5.6}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-dialite >= 0.5.2
-Requires:       python-pscript >= 0.7.3
+Requires:       python-pscript
 Requires:       python-tornado
 Requires:       python-webruntime >= 0.5.6
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 Recommends:     python-imageio
 Recommends:     python-numpy
 Recommends:     python-vispy
@@ -66,10 +65,10 @@ document. It also works in the Jupyter notebook.
 %setup -q -n flexx-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/flexx
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -87,6 +86,8 @@ document. It also works in the Jupyter notebook.
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/flexx
-%{python_sitelib}/*
+%{python_sitelib}/flexx
+%{python_sitelib}/flexxamples
+%{python_sitelib}/flexx-%{version}*-info
 
 %changelog
