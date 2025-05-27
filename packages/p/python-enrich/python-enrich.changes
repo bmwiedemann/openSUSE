@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 26 12:47:47 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed May 10 02:46:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Actually run the testsuite.

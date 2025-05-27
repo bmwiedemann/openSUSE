@@ -24,4 +24,12 @@
 - Add a missing Requires on python-rich</comment>
     <requestid>1085937</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>93e579748b202c56f942bea49900e5f4</srcmd5>
+    <version>1.2.7</version>
+    <time>1748364635</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1280250</requestid>
+  </revision>
 </revisionlist>

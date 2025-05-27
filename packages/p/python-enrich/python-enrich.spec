@@ -1,7 +1,7 @@
 #
 # spec file for package python-enrich
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?sle15_python_module_pythons}
-%{?python_enable_dependency_generator}
 Name:           python-enrich
 Version:        1.2.7
 Release:        0
@@ -35,6 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-rich
 BuildArch:      noarch
+%{?python_enable_dependency_generator}
 %python_subpackages
 
 %description
@@ -43,14 +43,14 @@ with a set of changes that were not accepted to rich itself.
 
 %prep
 %autosetup -p1 -n enrich-%{version}
-sed -i 's/__VERSION__/%version/' setup.py
+sed -i 's/__VERSION__/%{version}/' setup.py
 sed -i '/_scm/ d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
