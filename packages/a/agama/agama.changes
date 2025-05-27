@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Mon May 26 19:51:52 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 15
+
+-------------------------------------------------------------------
+Fri May 23 13:22:15 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Proper handling of WebSocket secure connections (gh#agama-project/agama#2391):
+  - "agama monitor" does not use "insecure" by default.
+  - Do not encrypt the connection when using ws: URLs.
+
+-------------------------------------------------------------------
+Fri May 23 10:17:32 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Cache progress reporting to avoid blocking the clients
+  (gh#agama-project/agama#2389).
+
+-------------------------------------------------------------------
+Thu May 22 17:19:10 UTC 2025 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Update schema of the storage model (gh#agama-project/agama#2346).
+
+-------------------------------------------------------------------
+Thu May 22 16:16:54 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Provide software conflicts HTTP API (gh#agama-project/agama#2348)
+
+-------------------------------------------------------------------
+Thu May 22 13:16:49 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Cache issues to avoid blocking the clients
+  (gh#agama-project/agama#2379).
+
+-------------------------------------------------------------------
+Tue May 20 14:54:17 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Cache the software configuration and products in the web server,
+  the software backend is blocked during package installation
+  (bsc#1241208)
+
+-------------------------------------------------------------------
+Wed May 19 15:20:42 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
+
+- Add support for bridge connections (gh#openSUSE/agama#2258).
+
+-------------------------------------------------------------------
+Mon May 19 14:02:04 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not crash when network events do not contain "addresses",
+  "nameservers", "dnsSearchlist", "routes4" or "routes6"
+  (gh#agama-project/agama#2371).
+
+-------------------------------------------------------------------
+Mon May 19 12:02:46 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Adapt "install", "probe" and "finish" to use the HTTP API
+  (gh#agama-project/agama#2368).
+- Add commands for monitoring Agama (gh#agama-project/agama#2368):
+  - "monitor": to display the progress.
+  - "events": to display the events in JSON format.
+
+-------------------------------------------------------------------
+Wed May 14 15:17:25 UTC 2025 - José Iván López González <jlopez@suse.com>
+
+- Add search conditions to storage schema
+  (gh#agama-project/agama#2338).
+
+-------------------------------------------------------------------
+Wed May 14 12:28:57 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Extract network and utilities to the new agama-network and agama-utils
+  packages (gh#agama-project/agama#2357).
+
+-------------------------------------------------------------------
+Tue May 13 09:28:46 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix setting the mode for questions (bsc#1242441).
+
+-------------------------------------------------------------------
+Mon May 12 12:55:40 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Remove the delay between selecting the product and registering it,
+  the problem has been fixed in the web UI
+  (removed workaround for gh#agama-project/agama#2274)
+
+-------------------------------------------------------------------
+Wed May  7 21:04:24 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix automatic answer of questions with password (gh#agama-project/agama#2332).
+
+-------------------------------------------------------------------
+Wed May  7 15:08:36 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix agama-dbus-server to write to journald logs (gh#agama-project/agama#2339).
+
+-------------------------------------------------------------------
+Wed May  7 12:52:42 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add validation of the product/addons section (gh#agama-project/agama#2336).
+
+-------------------------------------------------------------------
+Wed May  7 06:35:19 UTC 2025 - José Iván López González <jlopez@suse.com>
+
+- Add MD RAIDs to the storage schema (gh#agama-project/agama#2286).
+
+-------------------------------------------------------------------
+Mon May  5 06:38:07 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add the iscsi.schema.json to the agama-cli package (gh#agama-project/agama#2324).
+
+-------------------------------------------------------------------
+Fri May  2 07:42:21 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update dependencies (gh#agama-project/agama#2317).
+
+-------------------------------------------------------------------
+Wed Apr 30 08:18:10 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add support for relative URLs in files and scripts definitions
+  (gh#agama-project/agama#2305).
+
+-------------------------------------------------------------------
+Fri Apr 25 10:50:01 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Refactor HTTP clients to simplify error handling
+  (gh#agama-project/agama#2292).
+
+-------------------------------------------------------------------
+Thu Apr 24 14:13:19 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Allow to specify in Agama profile SSL certificate fingerprint
+  to handle self-signed certificates used for non default
+  registration server
+- Allow to specify registration server URL via Agama profile
+  gh#agama-project/agama#2270
+
+
+-------------------------------------------------------------------
 Tue Apr 22 14:14:52 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Version 14
@@ -1075,7 +1213,6 @@ Wed Nov 15 12:35:32 UTC 2023 - José Iván López González <jlopez@suse.com>
 - Adapt to changes in software D-Bus API (gh#openSUSE/agama#869).
 
 -------------------------------------------------------------------
-
 Wed Nov 15 11:27:10 UTC 2023 - Michal Filka <mfilka@suse.com>
 
 - Improved "agama logs store" (gh#openSUSE/agama#823)

@@ -320,4 +320,41 @@
   - Backend errors include causes</comment>
     <requestid>1272124</requestid>
   </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>afebacc9603ed992cf91e23fe817d4dd</srcmd5>
+    <version>0</version>
+    <time>1748364191</time>
+    <user>anag_factory</user>
+    <comment>- Version 15
+
+- Proper handling of WebSocket secure connections (gh#agama-project/agama#2391):
+  - &quot;agama monitor&quot; does not use &quot;insecure&quot; by default.
+  - Do not encrypt the connection when using ws: URLs.
+
+- Cache progress reporting to avoid blocking the clients
+  (gh#agama-project/agama#2389).
+
+- Update schema of the storage model (gh#agama-project/agama#2346).
+
+- Provide software conflicts HTTP API (gh#agama-project/agama#2348)
+
+- Cache issues to avoid blocking the clients
+  (gh#agama-project/agama#2379).
+
+- Cache the software configuration and products in the web server,
+  the software backend is blocked during package installation
+  (bsc#1241208)
+
+- Add support for bridge connections (gh#openSUSE/agama#2258).
+
+- Do not crash when network events do not contain &quot;addresses&quot;,
+  &quot;nameservers&quot;, &quot;dnsSearchlist&quot;, &quot;routes4&quot; or &quot;routes6&quot;
+  (gh#agama-project/agama#2371).
+
+- Adapt &quot;install&quot;, &quot;probe&quot; and &quot;finish&quot; to use the HTTP API
+  (gh#agama-project/agama#2368).
+- Add commands for monitoring Agama (gh#agama-project/agama#2368):
+  - &quot;monitor&quot;: to display the progress.</comment>
+    <requestid>1280489</requestid>
+  </revision>
 </revisionlist>
