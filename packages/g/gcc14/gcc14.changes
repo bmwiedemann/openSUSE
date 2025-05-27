@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 23 11:18:54 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC 14.3 release, bb24b4c804f3d95b0ba95b7496, git11799
+- Remove gcc14-pr120061.patch which is now included upstream.
+
+-------------------------------------------------------------------
+Tue May  6 11:11:04 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Add gcc14-pr120061.patch to fix the PR108900 fix instead of
+  reverting it.
+- Remove gcc14-pr108900.patch
+
+-------------------------------------------------------------------
 Fri May  2 08:58:43 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Add gcc14-pr108900.patch to revert it, fixing libqt6webengine build.

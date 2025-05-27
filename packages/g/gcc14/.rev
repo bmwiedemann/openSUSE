@@ -206,4 +206,17 @@ next week.  Gcc7 can pick it up from there.
 - Fix build on s390x [bsc#1241549]</comment>
     <requestid>1273971</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e098a0a6d9687a29a5cc973d06642263</srcmd5>
+    <version>14.3.0+git11799</version>
+    <time>1748364526</time>
+    <user>anag_factory</user>
+    <comment>- Update to GCC 14.3 release, bb24b4c804f3d95b0ba95b7496, git11799
+- Remove gcc14-pr120061.patch which is now included upstream.
+
+- Add gcc14-pr120061.patch to fix the PR108900 fix instead of
+  reverting it.
+- Remove gcc14-pr108900.patch</comment>
+    <requestid>1280088</requestid>
+  </revision>
 </revisionlist>
