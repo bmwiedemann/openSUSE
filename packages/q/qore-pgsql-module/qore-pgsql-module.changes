@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 12 14:26:59 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Remove clean section
+
+-------------------------------------------------------------------
+Mon May 12 14:03:38 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Add if case for qore >= 2.0 regarding qore-stdlib
+
+-------------------------------------------------------------------
+Sun May 11 20:22:18 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Adopt configuration for cmake4.0 and new qore 
+
+-------------------------------------------------------------------
 Mon Jul  1 10:39:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Remove BuildRequirement qore-stdlib after the move of qore-stdlib
