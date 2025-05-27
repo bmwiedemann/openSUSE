@@ -20,7 +20,7 @@ Name:           zypp-boot-plugin
 Version:        0.0.13
 Release:        0
 Summary:        Zypp plugin for checking if a reboot is needed
-License:        AGPL-3.0-or-later
+License:        GPL-2.0-or-later
 Group:          System/Packages
 URL:            https://github.com/openSUSE/zypp-boot-plugin
 Source:         zypp-boot-plugin-%{version}.tar.xz
