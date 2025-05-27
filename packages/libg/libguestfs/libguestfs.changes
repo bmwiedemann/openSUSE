@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 27 08:43:54 MDT 2025 - carnold@suse.com
+
+- bsc#1243351 - guestfs-appliance still requires ISC dhcp
+  Conditionally replace usage of dhcp-client with dhcpcd in
+  libguestfs.spec
+
+-------------------------------------------------------------------
 Wed May 21 05:42:04 MDT 2025 - carnold@suse.com
 
 - Update to version 1.55.13 (jsc#PED-12706)

@@ -331,7 +331,11 @@ BuildRequires:  bzip2
 BuildRequires:  coreutils
 BuildRequires:  cpio
 BuildRequires:  cryptsetup
+%if 0%{?suse_version} < 1600
 BuildRequires:  dhcp-client
+%else
+BuildRequires:  dhcpcd
+%endif
 BuildRequires:  diffutils
 BuildRequires:  dosfstools
 BuildRequires:  e2fsprogs
@@ -383,7 +387,11 @@ BuildRequires:  xz
 # the appliance will fail to start the guestfsd.
 Requires:       augeas
 Requires:       augeas-lenses
+%if 0%{?suse_version} < 1600
 Requires:       dhcp-client
+%else
+Requires:       dhcpcd
+%endif
 Requires:       libaugeas0
 Requires:       libcap2
 Requires:       libguestfs0

@@ -1254,4 +1254,12 @@
     <comment>Update libguestfs to version 1.55.13. This version required for virt-v2v 2.7.16.</comment>
     <requestid>1279328</requestid>
   </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>257afc6e9bee563b9e1b0acc45f20278</srcmd5>
+    <version>1.55.13</version>
+    <time>1748364272</time>
+    <user>anag_factory</user>
+    <comment>Fix for bsc#1243351 - guestfs-appliance still requires ISC dhcp</comment>
+    <requestid>1280654</requestid>
+  </revision>
 </revisionlist>
