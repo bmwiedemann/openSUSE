@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May 24 05:33:55 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 7.76
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.76    Fri 23 May 20:14:03 BST 2025
+      No changes since v7.75_01
+  7.75_01 Fri 23 May 15:03:40 BST 2025
+      Core fixes:
+      - Allow dotted decimal versions in absence of CPAN::Meta::Requirements
+
+-------------------------------------------------------------------
 Wed Apr 16 12:48:17 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Update Do_not_set_RPATH_by_default.patch

@@ -365,4 +365,12 @@
       - Add DISTVNAME to tests (forwarded request 1270027 from tinita)</comment>
     <requestid>1270271</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7277e428646f08d9db74d954e7d804af</srcmd5>
+    <version>7.76</version>
+    <time>1748364584</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1279973</requestid>
+  </revision>
 </revisionlist>
