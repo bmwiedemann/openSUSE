@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 24 06:45:42 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- remove Requires from -devel that are already auto-generated
+- update description
+- Fix Leap 15.x build
+
+-------------------------------------------------------------------
 Mon Mar 31 09:03:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Fix devel package Requires, so name of shared libs was changed in
