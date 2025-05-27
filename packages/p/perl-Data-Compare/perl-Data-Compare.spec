@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-Compare
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,29 @@
 
 %define cpan_name Data-Compare
 Name:           perl-Data-Compare
-Version:        1.29
+Version:        1.290.0
 Release:        0
+# 1.29 -> normalize -> 1.290.0
+%define cpan_version 1.29
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Compare perl data structures
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DC/DCANTRELL/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DC/DCANTRELL/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Clone) >= 0.43
+BuildRequires:  perl(Clone) >= 0.430
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.48
-BuildRequires:  perl(File::Find::Rule) >= 0.1
+BuildRequires:  perl(File::Find::Rule) >= 0.100
 BuildRequires:  perl(Test::More) >= 0.88
-Requires:       perl(Clone) >= 0.43
-Requires:       perl(File::Find::Rule) >= 0.1
+Requires:       perl(Clone) >= 0.430
+Requires:       perl(File::Find::Rule) >= 0.100
 Requires:       perl(Test::More) >= 0.88
+Provides:       perl(Data::Compare) = %{version}
+Provides:       perl(Data::Compare::Plugins::Scalar::Properties) = 1.250.0
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -83,7 +88,7 @@ an arrayref of strings. When comparing two hashes, any keys mentioned in
 this list will be ignored.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
