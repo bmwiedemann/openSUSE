@@ -18,10 +18,10 @@
 
 %define cpan_name Test-Output
 Name:           perl-Test-Output
-Version:        1.35.0
+Version:        1.36.0
 Release:        0
-# 1.035 -> normalize -> 1.35.0
-%define cpan_version 1.035
+# 1.036 -> normalize -> 1.36.0
+%define cpan_version 1.036
 License:        Artistic-2.0
 Summary:        Utilities to test STDOUT and STDERR messages
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -30,12 +30,13 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Capture::Tiny) >= 0.17
+BuildRequires:  perl(Capture::Tiny) >= 0.170
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(File::Temp) >= 0.17
 BuildRequires:  perl(Test::More) >= 1
 BuildRequires:  perl(Test::Tester) >= 0.107
-Requires:       perl(Capture::Tiny) >= 0.17
+BuildRequires:  perl(version) >= 0.86
+Requires:       perl(Capture::Tiny) >= 0.170
 Requires:       perl(File::Temp) >= 0.17
 Provides:       perl(Test::Output) = %{version}
 %undefine       __perllib_provides
@@ -50,7 +51,7 @@ Likewise, Capture::Tiny provides a much more robust capture mechanism
 without than the original Test::Output::Tie.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

@@ -170,4 +170,17 @@
     <comment></comment>
     <requestid>1237571</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>fa2df2c4c579d3ba763175d068161556</srcmd5>
+    <version>1.36.0</version>
+    <time>1748364561</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1278605 from tinita
+
+- updated to 1.36.0 (1.036)
+   see /usr/share/doc/packages/perl-Test-Output/Changes
+  1.036 2025-04-14T19:24:32Z
+  	* require a newer version.pm for v5.10.1 tests</comment>
+    <requestid>1279792</requestid>
+  </revision>
 </revisionlist>
