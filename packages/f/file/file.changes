@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 25 06:23:18 UTC 2025 - munix9@googlemail.com
+
+- Add file-zipdata.patch
+  * Fix "Some zip files are misclassified as data"
+    see https://bugs.astron.com/view.php?id=571
+    based on https://github.com/file/file/commit/60b2032b96fc185b37fb0f2152e834efb2edad6e
+
+-------------------------------------------------------------------
 Wed Mar 26 14:21:59 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - baselibs.conf: drop it

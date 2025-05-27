@@ -67,6 +67,7 @@ Patch39:        file-5.28-btrfs-image.dif
 Patch42:        boo1237209.patch
 Patch43:        file-seccomp.patch
 Patch44:        file-seccomp-ppc.patch
+Patch45:        file-zipdata.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
 %global         magicdir    %{_datadir}/file
@@ -133,6 +134,7 @@ to develop applications that require the magic "file" interface.
 %patch -P 42 -p1
 %patch -P 43 -p1 -b .seccomp
 %patch -P 44 -p1 -b .ppc
+%patch -P 45 -p1 -b .zipdata
 test -s src/magic.h.in || cp -p src/magic.h src/magic.h.in
 rm -fv src/magic.h
 

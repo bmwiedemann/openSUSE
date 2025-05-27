@@ -1737,4 +1737,15 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
   * Minimal patch to work around of wrong provide of used TCGETS</comment>
     <requestid>1256270</requestid>
   </revision>
+  <revision rev="142" vrev="4">
+    <srcmd5>25fd6bd2bd601d5b892330825075c659</srcmd5>
+    <version>5.46</version>
+    <time>1748364533</time>
+    <user>anag_factory</user>
+    <comment>- Add file-zipdata.patch
+  * Fix &quot;Some zip files are misclassified as data&quot;
+    see https://bugs.astron.com/view.php?id=571
+    based on https://github.com/file/file/commit/60b2032b96fc185b37fb0f2152e834efb2edad6e (forwarded request 1279890 from munix9)</comment>
+    <requestid>1279982</requestid>
+  </revision>
 </revisionlist>
