@@ -1,7 +1,7 @@
 #
 # spec file for package python-eradicate
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,13 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/myint/eradicate
 Source:         https://files.pythonhosted.org/packages/source/e/eradicate/eradicate-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,10 +47,10 @@ which is valid Python syntax, but is probably not code.)
 %setup -q -n eradicate-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/eradicate

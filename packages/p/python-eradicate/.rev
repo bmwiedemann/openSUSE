@@ -48,4 +48,12 @@
   * New console script</comment>
     <requestid>1112072</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>8942b164a8da0ecb5f44121c3a87c591</srcmd5>
+    <version>2.3.0</version>
+    <time>1748364167</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1280506</requestid>
+  </revision>
 </revisionlist>
