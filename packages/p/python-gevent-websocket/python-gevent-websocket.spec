@@ -1,7 +1,7 @@
 #
 # spec file for package python-gevent-websocket
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,9 @@ Summary:        Websocket handler for the gevent pywsgi server, a Python network
 License:        Apache-2.0
 URL:            https://www.gitlab.com/noppo/gevent-websocket
 Source:         https://files.pythonhosted.org/packages/source/g/gevent-websocket/gevent-websocket-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-gevent
@@ -37,10 +39,10 @@ Websocket handler for the gevent pywsgi server, a Python network library
 %setup -q -n gevent-websocket-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
