@@ -48,7 +48,6 @@ BuildRequires:  orc >= 0.4.24
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa) >= 0.9.1
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(freetype2) >= 2.0.9
