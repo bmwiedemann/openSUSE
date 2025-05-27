@@ -71,4 +71,12 @@
 - Initial package (v1.3.5)</comment>
     <requestid>1133908</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>70bf3915b1dee06fe10bc8b17bd46a62</srcmd5>
+    <version>1.6.2</version>
+    <time>1748364257</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1280629</requestid>
+  </revision>
 </revisionlist>
