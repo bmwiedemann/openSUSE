@@ -3,14 +3,16 @@
     <param name="url">https://github.com/suse-edge/nm-configurator.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">v0.3.2</param>
+    <param name="revision">v0.3.3</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service mode="buildtime" name="tar">
-    <param name="obsinfo">nm-configurator.obsinfo</param>
+  <service mode="manual" name="tar"/>
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
   </service>
   <service mode="buildtime" name="set_version"/>
   <service mode="manual" name="cargo_vendor">

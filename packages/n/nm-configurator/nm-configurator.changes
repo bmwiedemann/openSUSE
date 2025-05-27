@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 27 12:54:59 UTC 2025 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- Use gz compression for source package (fixes rpm lint warning)
+- Update to version 0.3.3:
+  * Bump crate version (#165)
+  * Match using either interface name or mac address (#164)
+  * Bump clap from 4.5.37 to 4.5.38 (#162)
+  * Bump clap from 4.5.36 to 4.5.37 (#161)
+  * Bump nmstate from 2.2.43 to 2.2.44 (#160)
+  * Bump anyhow from 1.0.97 to 1.0.98 (#159)
+  * Bump clap from 4.5.35 to 4.5.36 (#158)
+
+-------------------------------------------------------------------
 Fri May  9 16:02:13 UTC 2025 - Sai Karthik Karra <kskarthik@disroot.org>
 
 - clone isv:SUSE:Edge:Factory/nm-configurator

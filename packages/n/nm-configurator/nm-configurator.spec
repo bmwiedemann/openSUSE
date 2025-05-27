@@ -17,13 +17,13 @@
 
 
 Name:           nm-configurator
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        NM Configurator
 License:        Apache-2.0
 Group:          Productivity/Networking/System
 URL:            https://github.com/suse-edge/nm-configurator
-Source:         nm-configurator-%{version}.tar
+Source:         nm-configurator-%{version}.tar.gz
 Source1:        vendor.tar.xz
 BuildRequires:  cargo-packaging
 
