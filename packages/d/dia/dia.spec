@@ -59,7 +59,6 @@ BuildRequires:  libtool
 BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig
 BuildRequires:  swig
-BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(freetype2)
@@ -123,7 +122,6 @@ make  VERBOSE=1 %{?_smp_mflags}
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-%suse_update_desktop_file -r -N Dia -C "" -G "Diagram Editor" dia Office FlowChart
 %find_lang %{name} %{?no_lang_C}
 # No need for mime-info-to-mime, application/x-dia-diagram is defined in freedesktop.org.xml
 rm -r %{buildroot}%{_datadir}/mime-info

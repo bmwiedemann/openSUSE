@@ -396,4 +396,12 @@ https://bugzilla.redhat.com/996759) (forwarded request 224089 from mgorse)</comm
     <comment>add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to still allow build on Leap 15.6 (forwarded request 1268893 from hsk17)</comment>
     <requestid>1269787</requestid>
   </revision>
+  <revision rev="54" vrev="15">
+    <srcmd5>5dc62bd0f6309f364ca247b25e7bdd48</srcmd5>
+    <version>0.97.3</version>
+    <time>1748364648</time>
+    <user>anag_factory</user>
+    <comment>- Drop obsolete update-desktop-files BuildRequires and macro. (forwarded request 1279656 from iznogood)</comment>
+    <requestid>1280008</requestid>
+  </revision>
 </revisionlist>
