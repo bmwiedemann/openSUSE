@@ -1,7 +1,7 @@
 #
 # spec file for package python-espeak
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,6 @@
 
 
 %{!?python_sitearch: %global python_sitearch %(python -c "from setuptools.sysconfig import get_python_lib; print(get_python_lib(1))")}
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-espeak
 Version:        0.5
 Release:        0
@@ -28,7 +27,9 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-espeak
 Source0:        https://launchpad.net/python-espeak/trunk/0.5/+download/python-espeak-0.5.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  espeak-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -44,16 +45,16 @@ sed -i 's/distutils.core/setuptools/' setup.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %fdupes %{buildroot}
 
 %files %{python_files}
 %license COPYING
 %doc NEWS
 %{python_sitearch}/espeak/
-%{python_sitearch}/python_espeak-%{version}-py%{python_version}.egg-info
+%{python_sitearch}/python_espeak-%{version}*-info
 
 %changelog
