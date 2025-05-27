@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 27 11:01:51 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 7.4.3:
+  * fix bug in option -x and regex ^$-anchors used in certain short
+    patterns
+  * mark likely/unlikely branches for performance
+
+-------------------------------------------------------------------
 Wed Apr 30 09:17:39 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 7.4.2:
