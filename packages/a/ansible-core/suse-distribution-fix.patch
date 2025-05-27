@@ -1,0 +1,42 @@
+From 23f6105d9598c56c153ec637775a4579f8a8fe19 Mon Sep 17 00:00:00 2001
+From: HVSharma12 <harshvardhan.sharma@suse.com>
+Date: Mon, 26 May 2025 18:28:37 +0530
+Subject: [PATCH] Adjust distribution detection logic for SUSE
+
+---
+ .../module_utils/facts/system/distribution.py | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
+
+diff --git a/lib/ansible/module_utils/facts/system/distribution.py b/lib/ansible/module_utils/facts/system/distribution.py
+index 7554ef1ae3..5ec94c92d1 100644
+--- a/lib/ansible/module_utils/facts/system/distribution.py
++++ b/lib/ansible/module_utils/facts/system/distribution.py
+@@ -311,9 +311,22 @@ class DistributionFiles:
+                         suse_facts['distribution_release'] = release.group(1)
+                         suse_facts['distribution_version'] = collected_facts['distribution_version'] + '.' + release.group(1)
+ 
+-        # See https://www.suse.com/support/kb/doc/?id=000019341 for SLES for SAP
+-        if os.path.islink('/etc/products.d/baseproduct') and os.path.realpath('/etc/products.d/baseproduct').endswith('SLES_SAP.prod'):
+-            suse_facts['distribution'] = 'SLES_SAP'
++        # Check VARIANT_ID first for SLES4SAP or SL-Micro
++        variant_id_match = re.search(r'^VARIANT_ID="?([^"\n]*)"?', data, re.MULTILINE)
++        if variant_id_match:
++            variant_id = variant_id_match.group(1)
++            if variant_id in ('server-sap', 'sles-sap'):
++                suse_facts['distribution'] = 'SLES_SAP'
++            elif variant_id == 'transactional':
++                suse_facts['distribution'] = 'SL-Micro'
++        else:
++            # Fallback for older SLES 15 using baseproduct symlink
++            if os.path.islink('/etc/products.d/baseproduct'):
++                resolved = os.path.realpath('/etc/products.d/baseproduct')
++                if resolved.endswith('SLES_SAP.prod'):
++                    suse_facts['distribution'] = 'SLES_SAP'
++                elif resolved.endswith('SL-Micro.prod'):
++                    suse_facts['distribution'] = 'SL-Micro'
+ 
+         return True, suse_facts
+ 
+-- 
+2.49.0
+

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 26 13:03:25 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Add patch suse-distribution-fix.patch to fix distribution.py
+  to identify the correct distribution for server-sap and micro
+  (#PED-12643) 
+
+-------------------------------------------------------------------
 Tue May 20 04:53:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.18.6:

@@ -56,6 +56,9 @@ Patch1:         https://github.com/ansible/ansible/commit/771f7ad29ca4d259761eaa
 # Upstream commit: d500354798beb9bf8341eb8e84e1e2046bbfd21b
 # Reference: https://github.com/ansible/ansible/commit/d500354798beb9bf8341eb8e84e1e2046bbfd21b
 Patch2:         unarchive-test-fix.patch
+# Patch to fix distribution.py to identify the correct distribution for server-sap and micro
+# Upstream pr https://github.com/ansible/ansible/pull/85152
+Patch3:         suse-distribution-fix.patch
 BuildArch:      noarch
 
 # cannot be installed with ansible < 3 or ansible-base
