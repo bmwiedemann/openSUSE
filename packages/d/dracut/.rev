@@ -2486,4 +2486,12 @@ and stuff that has no relevance to the end user (i.e CI related commits) (forwar
   * fix(dracut.spec): require jq for nvmf (bsc#1239603)</comment>
     <requestid>1270158</requestid>
   </revision>
+  <revision rev="242" vrev="1">
+    <srcmd5>81eee2548020776b7e90a180cb17a8a8</srcmd5>
+    <version>059+suse.732.g739e1c2f</version>
+    <time>1748364543</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1279057</requestid>
+  </revision>
 </revisionlist>
