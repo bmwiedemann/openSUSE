@@ -63,4 +63,12 @@
     * Fix registering of options with Flake8 &gt;= 6.0</comment>
     <requestid>1040555</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fa9e3640cfc7ce4e258815d78cd48de1</srcmd5>
+    <version>0.18.2</version>
+    <time>1748364207</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1280544</requestid>
+  </revision>
 </revisionlist>

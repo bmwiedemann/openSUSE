@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-import-order
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-flake8-import-order
 Version:        0.18.2
@@ -27,10 +26,12 @@ Group:          Development/Languages/Python
 URL:            https://github.com/public/flake8-import-order
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-import-order/flake8-import-order-%{version}.tar.gz
 BuildRequires:  %{python_module flake8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pylama}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-flake8
@@ -51,10 +52,10 @@ Flake8 and pylama plugin that checks the ordering of import statements.
 %setup -q -n flake8-import-order-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,6 +65,6 @@ Flake8 and pylama plugin that checks the ordering of import statements.
 %license COPYING
 %doc README.rst CHANGELOG.rst
 %{python_sitelib}/flake8_import_order/
-%{python_sitelib}/flake8_import_order-%{version}-py*.egg-info
+%{python_sitelib}/flake8_import_order-%{version}*-info
 
 %changelog
