@@ -1,7 +1,7 @@
 #
 # spec file for package python-fb-re2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,10 @@ Source:         https://github.com/facebook/pyre2/archive/v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM cpp17.patch gh#facebook/pyre2#25
 Patch0:         cpp17.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
@@ -46,10 +48,10 @@ sed -i 's/assertRaisesRegexp/assertRaisesRegex/g' tests/test_match.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
