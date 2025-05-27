@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 26 12:17:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Thu Nov 23 14:03:17 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add python-setuptools Requires: Version 3.0 has been ported to

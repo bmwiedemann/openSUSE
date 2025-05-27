@@ -1,7 +1,7 @@
 #
 # spec file for package python-distutils-extra
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-distutils-extra
 Version:        3.0
 Release:        0
@@ -25,7 +24,9 @@ License:        GPL-2.0-only
 Group:          Development/Libraries/Python
 URL:            https://salsa.debian.org/python-team/packages/python-distutils-extra
 Source:         %{url}/-/archive/%{version}/python-distutils-extra-%{version}.tar.bz2
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
@@ -44,15 +45,16 @@ This includes the following:
 %setup -q
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc debian/changelog doc/*
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/DistUtilsExtra
+%{python_sitelib}/python[-_]distutils[-_]extra-%{version}*-info
 
 %changelog
