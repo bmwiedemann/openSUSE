@@ -1,7 +1,7 @@
 #
 # spec file for package python-feedgen
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,11 @@ Group:          Development/Languages/Python
 URL:            https://lkiesow.github.io/python-feedgen
 Source:         https://files.pythonhosted.org/packages/source/f/feedgen/feedgen-%{version}.tar.gz
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml
@@ -43,10 +45,10 @@ format. It has support for extensions.
 %setup -q -n feedgen-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

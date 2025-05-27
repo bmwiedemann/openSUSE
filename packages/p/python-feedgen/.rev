@@ -45,4 +45,12 @@
     gh#lkiesow/python-feedgen#131</comment>
     <requestid>1135206</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d33777255004f62c50f97a83af49c976</srcmd5>
+    <version>1.0.0</version>
+    <time>1748364170</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1280525</requestid>
+  </revision>
 </revisionlist>
