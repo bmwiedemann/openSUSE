@@ -1,7 +1,7 @@
 #
 # spec file for package tcpd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -154,7 +154,7 @@ install -d -m 755 %{buildroot}%{_sbindir}
 install -d -m 755 %{buildroot}%{_mandir}/man{1,3,5,8}
 install -m 644 ip6utils.h tcpd.h %{buildroot}%{_includedir}
 install -m 644 libwrap.a %{buildroot}/%{_libdir}
-install -m 755 safe_finger tcpd tcpdchk tcpdmatch try-from %{buildroot}%{_sbindir}
+install -m 755 tcpd tcpdchk tcpdmatch try-from %{buildroot}%{_sbindir}
 install -m 644 hosts_access.3 %{buildroot}%{_mandir}/man3
 install -m 644 hosts_access.5 hosts_options.5 %{buildroot}%{_mandir}/man5
 install -m 644 tcpd.8 tcpdchk.8 tcpdmatch.8 %{buildroot}%{_mandir}/man8

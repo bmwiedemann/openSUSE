@@ -293,4 +293,12 @@
     <comment>drop -std=gnu11, add tcp_wrappers_7.6-gcc15.patch, adapted from debian, to support dependant packages such as quota or rpcbind (forwarded request 1269246 from hsk17)</comment>
     <requestid>1269249</requestid>
   </revision>
+  <revision rev="40" vrev="900">
+    <srcmd5>95ccc23e57ca96d61943b22c1896f2b7</srcmd5>
+    <version>7.6</version>
+    <time>1748364530</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1279742</requestid>
+  </revision>
 </revisionlist>
