@@ -23,7 +23,6 @@
 Name:           brltty
 Version:        6.7
 Release:        0
-# FIXME libbraille driver when libbraille is in factory
 Summary:        Braille display driver for Linux/Unix
 License:        LGPL-2.1-or-later
 Group:          System/Daemons
@@ -45,7 +44,6 @@ BuildRequires:  gettext
 BuildRequires:  gpm-devel
 BuildRequires:  java-devel >= 1.6.0
 BuildRequires:  jpackage-utils
-BuildRequires:  libbraille-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  ocaml
 BuildRequires:  ocaml-rpm-macros >= 20231101
@@ -105,20 +103,6 @@ refreshable braille display. It drives the braille display and provides
 complete screen review functionality.
 
 This package contains the BrlAPI braille driver.
-
-%package driver-libbraille
-Summary:        Libbraille driver for BRLTTY
-Group:          System/Daemons
-Requires:       %name = %version
-Supplements:    (brltty and libbraille)
-
-%description driver-libbraille
-BRLTTY is a background process (daemon) which provides access to the
-Linux/Unix console (when in text mode) for a blind person using a
-refreshable braille display. It drives the braille display and provides
-complete screen review functionality.
-
-This package contains the libbraille braille driver.
 
 %package driver-espeak
 Summary:        ESpeak driver for BRLTTY
@@ -498,9 +482,6 @@ rm -f %_localstatedir/adm/update-messages/%name-%version-%release-something
 %files driver-brlapi
 %doc Drivers/Braille/BrlAPI/README
 %_libdir/brltty/libbrlttybba.so
-
-%files driver-libbraille
-%_libdir/brltty/libbrlttyblb.so
 
 %files driver-espeak
 %doc Drivers/Speech/eSpeak/README

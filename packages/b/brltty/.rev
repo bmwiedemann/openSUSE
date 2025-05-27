@@ -649,4 +649,14 @@
   having the file temporarily world-readable (bsc#1235438). (forwarded request 1274687 from mgorse)</comment>
     <requestid>1274711</requestid>
   </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>468fbd676e4d155104dfdb52ac7d8359</srcmd5>
+    <version>6.7</version>
+    <time>1748364574</time>
+    <user>anag_factory</user>
+    <comment>- Drop libbraille plugin. Libbraille is unmaintained and unlikely
+  to be used nowadays, and it links against an old version of
+  libusb (jsc#PED-10531). (forwarded request 1279095 from mgorse)</comment>
+    <requestid>1279936</requestid>
+  </revision>
 </revisionlist>
