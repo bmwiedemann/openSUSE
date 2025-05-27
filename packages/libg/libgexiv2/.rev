@@ -418,4 +418,15 @@
   + Bugs fixed: https://gitlab.gnome.org/GNOME/gexiv2/issues/81 (forwarded request 1183903 from iznogood)</comment>
     <requestid>1184263</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>b32af95541e4f7be6e1c400265dc619c</srcmd5>
+    <version>0.14.5</version>
+    <time>1748364649</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.14.5:
+  + Add a .def file and tool to generate it
+  + Do not return bool for std::string on windows
+  + Change license of GExiv2.py to GPL-2.0-or-later (forwarded request 1279990 from dimstar)</comment>
+    <requestid>1280009</requestid>
+  </revision>
 </revisionlist>
