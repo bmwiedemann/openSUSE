@@ -2395,4 +2395,20 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
     <comment>Update the changelog to add CVE bugID: gdatetime: Fix integer overflow when parsing very long ISO8601 inputs (CVE-2025-3360, bsc#1240897) (forwarded request 1269415 from qzhao)</comment>
     <requestid>1269691</requestid>
   </revision>
+  <revision rev="293" vrev="1">
+    <srcmd5>3f250c559a50f38eee1d944bc4a8da32</srcmd5>
+    <version>2.84.2</version>
+    <time>1748364663</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.84.2:
+  + Bugs fixed:
+    - gclosure: fix ATOMIC_CHANGE_FIELD to read vint atomically
+    - Windows: fix wrong typelib path
+    - gstring: carefully handle gssize parameters
+    - Update macOS job for new CI runner
+    - gdate: Call tzset before localtime_r
+    - Backport -Wsign-conversion fixes for g_get_locale_variants()
+    - glocalfile: Disable faccessat()-based query_exists on Android (forwarded request 1278988 from iznogood)</comment>
+    <requestid>1280013</requestid>
+  </revision>
 </revisionlist>
