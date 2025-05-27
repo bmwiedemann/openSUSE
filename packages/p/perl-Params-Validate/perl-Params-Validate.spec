@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Params-Validate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,28 @@
 
 %define cpan_name Params-Validate
 Name:           perl-Params-Validate
-Version:        1.31
+Version:        1.310.0
 Release:        0
+# 1.31 -> normalize -> 1.310.0
+%define cpan_version 1.31
 License:        Artistic-2.0
 Summary:        Validate method/function parameters
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.422700
+BuildRequires:  perl(Module::Build) >= 0.4227
 BuildRequires:  perl(Module::Implementation)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Requires)
 Requires:       perl(Module::Implementation)
+Provides:       perl(Params::Validate) = %{version}
+Provides:       perl(Params::Validate::Constants) = %{version}
+Provides:       perl(Params::Validate::PP) = %{version}
+Provides:       perl(Params::Validate::XS) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -51,21 +58,21 @@ that it is an object of a certain class hierarchy, that it possesses
 certain methods, or applying validation callbacks to arguments.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-perl Build.PL installdirs=vendor optimize="%{optflags}"
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor optimize="%{optflags}"
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md TODO
+%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md TODO
 %license LICENSE
 
 %changelog
