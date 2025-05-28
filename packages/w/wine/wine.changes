@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 27 12:12:16 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- remove pkgconfig(osmesa) buildrequires
+
+-------------------------------------------------------------------
 Thu Feb 20 11:51:39 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Fixes for adding the debuginfo package for Windows binaries as

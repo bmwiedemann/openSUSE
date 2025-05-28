@@ -5493,4 +5493,11 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1242879</comment>
     <requestid>1275544</requestid>
   </revision>
+  <revision rev="462" vrev="4">
+    <srcmd5>e47a317d348ea14a58c19d32cb380e4a</srcmd5>
+    <version>10.0</version>
+    <time>1748441840</time>
+    <user>dimstar_suse</user>
+    <comment>Manually merge osmesa drop from devel prj</comment>
+  </revision>
 </revisionlist>
