@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 19 13:49:14 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.2.2
+  * Do not include docs/conf.py & scripts in wheel (#328)
+  * Let OS select an available port when running TestInstalledAppFlow (#407)
+  * Remove setup.cfg configuration for creating universal wheels (#405)
+- Refresh python-google-auth-oauthlib-no-mock.patch
+
+-------------------------------------------------------------------
 Mon Jul 15 13:24:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.2.1
