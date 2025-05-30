@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May 29 14:29:28 UTC 2025 - Caleb Crane (caleb.crane@suse.com)
+
+- Update to version 0.9.1:
+  * Updating SEV library to 6.1.0 and updating version to 0.9.1
+  * Update version (0.9.0)
+  * HyperV: Fixing report command failure on Azure confidential VM
+  * Removing intird and append requirement for kernel measurements (#93)
+  * Updating to version 6 of library and fixing attestation (#89)
+  * CI: Fixing create_release workflow (#91)
+  * Minor update (0.8.3)
+  * Adding build script
+  * Update preattestation.rs
+  * Fix certificate fetch bug for Turin
+  * Minor update
+  * Update bitfield to 0.15.0
+  * Update to 0.8.1
+  * Update asn1-rs and x509-parser
+  * Update to 0.8.0
+  * key: Fix guest_field_select typo
+  * Adding Turin support and updating ASK cn
+
+-------------------------------------------------------------------
 Thu Oct  3 19:15:29 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
 
 - Spec: Add direct dependency on cargo in addition to cargo-packaging.

@@ -1,7 +1,7 @@
 #
 # spec file for package snpguest
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (C) 2023 VirTEE
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           snpguest
-Version:        0.7.1
+Version:        0.9.1
 Release:        0
 Summary:        A Rust command-line tool for interacting with the AMD Secure Processor
 License:        Apache-2.0
