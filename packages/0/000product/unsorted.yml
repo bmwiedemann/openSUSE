@@ -726,6 +726,7 @@ unsorted:
   - apache-commons-jxpath-javadoc 
   - apache-commons-lang3 
   - apache-commons-lang3-javadoc 
+  - apache-commons-logging 
   - apache-commons-math 
   - apache-commons-math-javadoc 
   - apache-commons-net 
@@ -4307,6 +4308,7 @@ unsorted:
   - fluidsynth 
   - fluidsynth-devel 
   - fluidsynth-dssi 
+  - flute 
   - flute-javadoc 
   - flux2-cli 
   - flux2-cli-bash-completion 
@@ -9255,8 +9257,10 @@ unsorted:
   - java-1_8_0-openjdk-headless 
   - java-1_8_0-openjdk-javadoc 
   - java-1_8_0-openjdk-src 
+  - java-21-openj9 
   - java-21-openj9-demo 
   - java-21-openj9-devel 
+  - java-21-openj9-headless 
   - java-21-openj9-javadoc 
   - java-21-openj9-jmods 
   - java-21-openj9-src 
@@ -9275,6 +9279,7 @@ unsorted:
   - java-24-openjdk-jmods 
   - java-24-openjdk-src 
   - java-atk-wrapper 
+  - java-binfmt-misc 
   - java-cup 
   - java-cup-bootstrap 
   - java-cup-manual 
@@ -9298,8 +9303,10 @@ unsorted:
   - javahelp2-manual 
   - javamail 
   - javamail-javadoc 
+  - javapackages-filesystem 
   - javapackages-ivy 
   - javapackages-local 
+  - javapackages-tools 
   - javaparser 
   - javaparser-javadoc 
   - javapoet 
@@ -11980,6 +11987,7 @@ unsorted:
   - libbandicoot1 
   - libbaresip20 
   - libbarvinok23 
+  - libbase 
   - libbase-javadoc 
   - libbaseencode-devel 
   - libbaseencode1 
@@ -13079,7 +13087,9 @@ unsorted:
   - libfontenc-devel 
   - libfontenc-devel-32bit 
   - libfontenc1-32bit 
+  - libfonts 
   - libfonts-javadoc 
+  - libformula 
   - libformula-javadoc 
   - libfparser-4_5_2 
   - libfplist-devel 
@@ -14115,6 +14125,7 @@ unsorted:
   - liblastlog2-devel 
   - liblaszip8 
   - liblaszip_api8 
+  - liblayout 
   - liblayout-javadoc 
   - liblazy-devel 
   - liblazy1 
@@ -14201,6 +14212,7 @@ unsorted:
   - liblo-devel 
   - liblo10k1-0 
   - liblo7 
+  - libloader 
   - libloader-javadoc 
   - libloadpng44-devel 
   - libloadpng4_4 
@@ -15599,6 +15611,7 @@ unsorted:
   - librelp-devel 
   - librelp0 
   - librem6 
+  - libreoffice-base 
   - libreoffice-base-drivers-postgresql 
   - libreoffice-branding-upstream 
   - libreoffice-calc-extensions 
@@ -15742,6 +15755,7 @@ unsorted:
   - libreport-web_2 
   - libreport-web_2-devel 
   - libreport_2 
+  - librepository 
   - librepository-javadoc 
   - libreproc++14 
   - libreproc14 
@@ -15885,6 +15899,7 @@ unsorted:
   - libserf-1-1 
   - libserf-devel 
   - libserialdv1 
+  - libserializer 
   - libserializer-javadoc 
   - libserialport-devel 
   - libserialport0 
@@ -20914,7 +20929,9 @@ unsorted:
   - pegtl-devel-doc 
   - peksystray 
   - pen 
+  - pentaho-libxml 
   - pentaho-libxml-javadoc 
+  - pentaho-reporting-flow-engine 
   - pentaho-reporting-flow-engine-javadoc 
   - pentobi 
   - percona-toolkit 
@@ -36358,6 +36375,7 @@ unsorted:
   - s3fs 
   - sablot 
   - sablot-devel 
+  - sac 
   - sac-javadoc 
   - sacad 
   - sad 
@@ -49006,6 +49024,7 @@ unsorted:
   - xmgrace-devel 
   - xmh 
   - xmined 
+  - xml-commons-apis 
   - xml-commons-apis-bootstrap 
   - xml-commons-apis-javadoc 
   - xml-commons-apis-manual 
