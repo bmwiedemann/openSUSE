@@ -1,7 +1,7 @@
 #
 # spec file for package python-hexdump
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hexdump
 Version:        3.3
 Release:        0
@@ -26,7 +25,9 @@ Group:          Development/Languages/Python
 URL:            https://bitbucket.org/techtonik/hexdump/
 Source0:        https://files.pythonhosted.org/packages/source/h/hexdump/hexdump-%{version}.zip
 Source1:        https://bitbucket.org/techtonik/hexdump/raw/66325cb5fed890df4a345e25ea8f107fd31b60d8/UNLICENSE
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -46,21 +47,21 @@ sed -i '/^#!/d' hexdump.py
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-# Copy the data directory ourselves to the correct location
-%python_expand cp -av data %{buildroot}%{$python_sitelib}
-# and remove the other
-rm -rf %{buildroot}/usr/data
+%pyproject_install
+# this folder is needed only for tests
+rm -rf %{buildroot}%{_prefix}/data
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand $python %{buildroot}%{$python_sitelib}/hexdump.py --test
+%python_expand $python hexdump.py --test
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/hexdump.py
+%{python_sitelib}/hexdump-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/hexdump*
 %doc README.txt
 %license UNLICENSE
 
