@@ -19,7 +19,7 @@
 %define         qt6ver 6.7.0
 %define         appid org.deskflow.deskflow
 Name:           deskflow
-Version:        1.21.2
+Version:        1.22.0
 Release:        0
 Summary:        Share a single keyboard and mouse between multiple computers
 License:        GPL-2.0-only AND MIT AND SUSE-GPL-2.0-with-openssl-exception AND LGPL-2.1-only
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(CLI11)
 BuildRequires:  pkgconfig(Qt6Core) >= %{qt6ver}
 BuildRequires:  pkgconfig(Qt6DBus) >= %{qt6ver}
 BuildRequires:  pkgconfig(Qt6Network) >= %{qt6ver}
+BuildRequires:  pkgconfig(Qt6Test) >= %{qt6ver}
 BuildRequires:  pkgconfig(Qt6Widgets) >= %{qt6ver}
 BuildRequires:  pkgconfig(Qt6Xml) >= %{qt6ver}
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
@@ -92,8 +93,7 @@ install -Dm0644 ./deploy/linux/%{name}.png %{buildroot}%{_datadir}/icons/hicolor
 %fdupes %{buildroot}%{_docdir}
 
 %check
-./build/bin/unittests
-./build/bin/integtests
+./build/bin/legacytests
 
 %files
 %license LICENSE LICENSE_EXCEPTION
