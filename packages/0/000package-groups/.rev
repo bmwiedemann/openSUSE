@@ -2160,4 +2160,11 @@ Fixes https://openqa.opensuse.org/tests/4663488#step/select_patterns/142</commen
     <user>dimstar_suse</user>
     <comment>Save space, no java-21-openjdk-headless (i.e no libreoffice database)</comment>
   </revision>
+  <revision rev="303" vrev="301">
+    <srcmd5>8402819c5feedaa92ab857a9b642ac96</srcmd5>
+    <version>unknown</version>
+    <time>1748589344</time>
+    <user>dimstar_suse</user>
+    <comment>Save space, no java-21-openjdk-headless (i.e no libreoffice database)</comment>
+  </revision>
 </revisionlist>
