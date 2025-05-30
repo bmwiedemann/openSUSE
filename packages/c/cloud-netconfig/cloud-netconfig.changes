@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 16 13:48:50 UTC 2025 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update to version 1.15
+  + Add support for creating IPv6 default route in GCE (bsc#1240869)
+  + Minor fix when looking up IPv6 default route
+
+-------------------------------------------------------------------
 Wed Mar 20 14:44:20 UTC 2024 - Joachim Gleissner <jgleissner@suse.com>
 
 - Update to version 1.14
