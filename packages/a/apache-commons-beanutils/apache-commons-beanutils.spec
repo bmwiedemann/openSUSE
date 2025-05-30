@@ -19,7 +19,7 @@
 %define base_name	beanutils
 %define short_name	commons-%{base_name}
 Name:           apache-commons-beanutils
-Version:        1.10.1
+Version:        1.11.0
 Release:        0
 Summary:        Utility methods for accessing and modifying the properties of JavaBeans
 License:        Apache-2.0
@@ -68,7 +68,7 @@ touch README.txt
 
 %build
 export CLASSPATH=%(build-classpath commons-collections commons-logging)
-%{ant} -Dbuild.sysclasspath=first dist
+ant -Dbuild.sysclasspath=first -Dcomponent.version=%{version} dist
 
 %install
 # jars

@@ -176,4 +176,12 @@
     <comment>Update to 1.10.1</comment>
     <requestid>1265174</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3532ce064551280935acefae66d31d18</srcmd5>
+    <version>1.11.0</version>
+    <time>1748608694</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1243793, CVE-2025-48734</comment>
+    <requestid>1281179</requestid>
+  </revision>
 </revisionlist>
