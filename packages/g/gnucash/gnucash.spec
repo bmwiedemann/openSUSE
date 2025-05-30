@@ -48,6 +48,8 @@ Patch0:         gnucash-cpan-warning.patch
 # PATCH-FIX-UPSTREAM gnucash-libm.patch gh#gnucash/gnucash#632 dimstar@opensuse.org -- Link libm: gnucash uses e.g. log10 without explicitly requesting libm
 Patch1:         gnucash-libm.patch
 Patch2:         gnucash-4.1-fix-gtest-path.patch
+# PATCH-FIX-UPSTREAM https://github.com/Gnucash/gnucash/commit/99f86d31ed52bafada4d0b4036cada89b1ccdfaf
+Patch3:         fix_build_with_boost_1_88.patch
 
 BuildRequires:  cmake >= 3.14
 BuildRequires:  doxygen
@@ -178,6 +180,12 @@ export CXX=g++-13
 %fdupes %{buildroot}%{_datadir}
 # Remove MS-Windows-related files and auto-installed LICENSE file
 rm %{buildroot}%{_docdir}/%{name}/LICENSE
+
+%check
+# Tweak path so that the tests can find all the libraries
+export LD_LIBRARY_PATH="%{buildroot}%{_libdir}:%{buildroot}%{_libdir}/gnucash:$PWD/build/%{_lib}/gnucash/test"
+pushd build
+%cmake_build check
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
