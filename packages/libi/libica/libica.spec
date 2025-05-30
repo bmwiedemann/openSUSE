@@ -22,7 +22,7 @@
 %endif
 
 Name:           libica
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 Summary:        Library interface for the IBM Cryptographic Accelerator device driver
 License:        CPL-1.0
@@ -37,7 +37,6 @@ Source5:        %{name}-rpmlintrc
 ###
 Patch01:        libica-FIPS-make-it-possible-to-specify-fipshmac-binary.patch
 Patch02:        libica-sles15sp5-FIPS-hmac-key.patch
-Patch03:        libica-fips-update-Fix-bug-in-condition-logic.patch
 ###
 
 BuildRequires:  autoconf
