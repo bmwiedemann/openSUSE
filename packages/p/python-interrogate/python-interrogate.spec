@@ -1,7 +1,7 @@
 #
 # spec file for package python-interrogate
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-interrogate
 Version:        1.7.0
 Release:        0
@@ -25,7 +24,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/econchick/interrogate
 Source:         https://files.pythonhosted.org/packages/source/i/interrogate/interrogate-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs
@@ -33,12 +34,12 @@ Requires:       python-click
 Requires:       python-colorama
 Requires:       python-py
 Requires:       python-tabulate
+Requires(post): alts
+Requires(postun): alts
+BuildArch:      noarch
 %if 0%{python_version_nodots} < 311
 Requires:       python-tomli
 %endif
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module click}
@@ -59,10 +60,10 @@ Interrogate a codebase for docstring coverage.
 rm tox.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/interrogate
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -79,6 +80,7 @@ rm tox.ini
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/interrogate
-%{python_sitelib}/*
+%{python_sitelib}/interrogate
+%{python_sitelib}/interrogate-%{version}*-info
 
 %changelog

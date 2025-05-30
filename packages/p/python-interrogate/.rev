@@ -39,4 +39,13 @@
   * Support for Python 3.6 &amp; 3.7.</comment>
     <requestid>1169387</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>412e915e0ae1551b2b1a621911e14a20</srcmd5>
+    <version>1.7.0</version>
+    <time>1748608458</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build
+</comment>
+    <requestid>1280875</requestid>
+  </revision>
 </revisionlist>
