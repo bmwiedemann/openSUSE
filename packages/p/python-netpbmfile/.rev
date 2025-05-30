@@ -43,4 +43,15 @@
   * Add py.typed marker.</comment>
     <requestid>1224104</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fdc981c1b63a9581cdbf80ae1af97393</srcmd5>
+    <version>2025.5.8</version>
+    <time>1748608656</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2025.5.8:
+  * Remove doctest command line option.
+  * Improve type hints.
+  * Drop support for Python 3.9, support Python 3.13.</comment>
+    <requestid>1281101</requestid>
+  </revision>
 </revisionlist>
