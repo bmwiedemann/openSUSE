@@ -1,0 +1,748 @@
+
+release notes for versions prior to 5.31, cf. github.com/rofl0r/mp-5.x
+
+--- a/RELEASE_NOTES	2024-12-07 08:52:00.000000000 +0100
++++ b/RELEASE_NOTES	2025-05-27 16:07:11.957738688 +0200
+@@ -562,3 +562,742 @@
+ The ANSI driver now accepts alt-letter keycodes.
+ 
+ The execute MPSL code function always dumps its output to the dump window.
++
++5.3.0
++-----
++
++ - Architectural changes:
++   - Major refactoring; old code pruned and cleaned, memory
++     management improved.
++   - MPSL code is no longer deployed as separate files, but
++     embedded in a tar file or inside the program binary itself.
++   - Some MPSL code is loaded on demand.
++   - New "portable" (i.e. no installation needed) versions for
++     MS Windows.
++ - New features:
++   - New action `insert_m_dash', bound by default to `alt-minus'.
++   - New action `replace_tabs_with_spaces'.
++   - New action `replace_spaces_with_tabs'.
++   - New action `open_recent', to pick the file to open from
++     the previosly opened ones.
++ - Other changes:
++   - Versioning have changed from x.x.x to x.yyy.
++   - The coloring theme for GUI drivers has changed to something
++     with dark background and softer colors. If you want to revert
++     the classic, bright colors on white background theme, copy
++     and paste the following into the configuration file:
++
++    /* Minimum Profit Classic */
++    mp.colors.normal.gui        = [ 0x000000, 0xffffff ];
++    mp.colors.cursor.gui        = mp.colors.normal.gui;
++    mp.colors.selection.gui     = [ 0xff0000, 0xffffff ];
++    mp.colors.comments.gui      = [ 0x00cc77, 0xffffff ];
++    mp.colors.documentation.gui = [ 0x8888ff, 0xffffff ];
++    mp.colors.quotes.gui        = [ 0x0000ff, 0xffffff ];
++    mp.colors.matching.gui      = [ 0x000000, 0xffff00 ];
++    mp.colors.word1.gui         = [ 0x00aa00, 0xffffff ];
++    mp.colors.word2.gui         = [ 0xff6666, 0xffffff ];
++    mp.colors.word3.gui         = [ 0x000088, 0xffffff ];
++    mp.colors.tag.gui           = [ 0x8888ff, 0xffffff ];
++    mp.colors.spell.gui         = [ 0xff8888, 0xffffff ];
++    mp.colors.search.gui        = [ 0x000000, 0x00cc77 ];
++
++5.2.15
++------
++
++ - Fixes:
++   - A severe bug in the GTK driver. Sometimes comboboxes
++     in forms do not correctly show the default value. This
++     can be specially troublesome in the "Line options"
++     form because the end-of-line separator can be
++     accidentally set to an empty string and destroy
++     newly created files.
++
++5.2.14
++------
++
++ - Fixes:
++   - In Qt5, as there is no equivalent of Qt4's
++     QApplication() creator with an X11 Display object as
++     argument, there is no other way of detecting a
++     non-functioning X11 environment than checking the
++     existence of the DISPLAY environment variable, so that
++     is what is used to fall back to text mode.
++   - Cancellation of the opening of hexadecimal dumps
++     works again.
++   - The "git checkout" option in the VCS has been removed,
++     as I keep constantly hitting it by error.
++   - The `scroll_up' and `scroll_down' actions has been
++     swapped, so they make much more sense.
++   - After a word-wrapping is done, the horizontal visual
++     column is set to 0, as it's expected to do.
++   - Makefile output is left at the end of the file (where
++     fail / success information is most probably found instead
++     of the beginning of the file).
++   - GTK driver uses GDK_SELECTION_CLIPBOARD instead of
++     GDK_SELECTION_PRIMARY for copy / paste.
++   - GTK form lists are correctly scrolled to show the
++     selected item.
++   - Text in GTK is correctly copied to the clipboard as
++     utf-8 encoded.
++- New features:
++   - A new `export_as_rtf' action, to write current text
++     as a very basic RTF file. Words surrounded by asterisks
++     are written as strong text and surrounded by underscores
++     as emphasized text. Also, form feeds (ascii 0C) are
++     converted to page breaks.
++   - A new `insert_page_break' action, to insert an ASCII
++     page break character (FF, 0x0C).
++
++5.2.13
++------
++
++ - New features:
++   - This release includes Qt5 support.
++
++5.2.12
++------
++
++ - New features:
++   - This version includes a new driver for raw ANSI terminals,
++     for systems who don't (want to) have libncursesw.
++   - The cursor position for every file is remembered from
++     session to session.
++ - Fixed bugs:
++   - Fixed action `open_under_cursor' (again).
++   - Fixed behaviour inconsistency between actions `seek' and
++     `seek-next'.
++   - Fixed action `sync' (save all modified files).
++ - Other features:
++   - Version numbering convention has changed: development
++     versions shall no longer have (CURRENTVERSION+1)-dev,
++     but (CURRENTVERSION)-patch.
++
++5.2.11
++------
++
++ - This version includes the following lot of features by
++   fellow developer X-Ryl669:
++    - New cut line action (copy and delete line), bound by
++      default to ctrl-k.
++    - New key assignation to document list (ctrl-e).
++    - Fix ncurses detection for recent distributions.
++    - Added suspension (bound to ctrl-l) for curses driver.
++    - Added word selection with mouse double-click.
++    - Paste in ncurses prompt.
++    - New seek matching brace feature, bound to ctrl-j.
++    - Text search wraps to the top of the document as many
++      other text editors do.
++    - Several miscellaneous fixes.
++ - Other features:
++    - Window position and size is saved in all GUI interfaces.
++
++5.2.10
++------
++
++ - New features:
++   - New configuration directive mp.config.show_line_numbers,
++     to show line numbers to the left of each line.
++
++5.2.9
++-----
++
++ - New features:
++   - New configuration directive mp.config.emacs_scrolling, to
++     enable/disable emacs-like scrolling (half screen jumps
++     instead of line-by-line).
++   - New actions `scroll_up' and `scroll_down', bound by
++     default to `alt-cursor-up' and `alt-cursor-down'.
++   - New syntax highlight for JSON files.
++
++5.2.8
++-----
++
++ - New features:
++   - Mouse support on text interfaces (it can be disabled by
++     setting mp.config.no_text_mouse to 1).
++   - Support for the MS Windows console. Two win32 binaries are
++     now deployed: the classic, windowed mp-5.exe and the new,
++     console-based, mp-5c.exe.
++   - Added column to action `grep'.
++
++5.2.7
++-----
++
++ - New features:
++   - File format dependent build targets (to be used if a Makefile
++     is not found in the current directory).
++   - `open_under_cursor' also works over diff file marks (those
++     starting with @@).
++   - New configuration directive `make_opts', for command line
++     options to be added to `make'.
++   - Search and replace accepts Unicode chars in \x{HHHH} format.
++   - The status line format string can also include the %u token
++     to show the Unicode codepoint of the character under the cursor.
++ - Fixed bugs:
++   - Fixed hexdump search.
++   - Avoid having zero-size marks.
++
++5.2.6
++-----
++
++ - Fixed grep.
++
++5.2.5
++-----
++
++ - New features:
++   - Hex view is searchable.
++   - New syntax highlight for JavaScript.
++ - Fixed bugs:
++   - Avoid crashes in `play_macro' action.
++   - Fixed failing menus on Qt4.
++   - Fixed file renaming errors in the directory editor.
++ - Important changes:
++   - Default tab settings has been changed to convert to 4 spaces.
++
++5.2.4
++-----
++
++ - New features:
++   - A new directory editor, linked to the new `open_folder'
++     action, that allows file deletion and renaming.
++   - New configuration directive `font_weight'.
++   - New action `insert_time_stamp', that inserts the current
++     timestamp according to the format in the
++     `mp.config.time_stamp_format' configuration directive.
++ - Changes:
++   - mp.add_keyseq() has been reimplemented and no longer needs
++     the initial [, as it already assumes it's used only for ANSI
++     sequences (so you may need to tweak your own definitions).
++ - Fixes:
++   - Dynamic tab tweking.
++   - Avoid hangups when trying to highlight 0 size regexes.
++   - Minor VCS fixes.
++   - Revert can be undone.
++
++5.2.3
++-----
++
++ - New improvements:
++   - New actions `move_section_up' and `move_section_down'
++     (bound by default to `alt-cursor-up' and `alt-cursor-down').
++   - VCS commands can have a common or private log.
++   - The menu has been reorganized.
++   - Keycode targets can also be other keycodes (not only editor
++     actions), so they can be used as aliases.
++   - Encodings are now selected from a list.
++   - The Curses interface now includes a read-only scrollbar.
++   - A much faster hexadecimal viewer.
++ - Other changes:
++   - Al MP code has been refactored to use new MPSL object-oriented
++     capabilities.
++
++5.2.2
++-----
++
++ - Major improvements:
++   - Added Version Control commands (bound by default to `ctrl-p').
++     The supported systems are (adding new ones is very easy):
++     - Git
++     - Subversion
++     - Mercurial
++   - If any file being edited is modified externally, the situation
++     is detected and the user is prompted for file reloading.
++   - GTK library detection: Uses 3.x if available, then 2.x.
++   - Special information gathering on help: if the file being edited
++     is C/C++ and asking for help (by pressing `F1') do not return
++     a `man' page, a special routine inspects all source files and
++     headers looking for structures, variables and function prototypes
++     to be shown as help.
++   - If a template name starts with #!, the template body is assumed
++     to be MPSL code, that will be executed and its value returned
++     as the template to be inserted.
++   - New "Pipes" game.
++   - New `check_for_updates' action.
++ - Fixed bugs:
++   - Make `keep_eol' behaviour more intuitive (bug #1294).
++
++5.2.1
++-----
++
++ - New actions:
++   - `indent_block': Indents the current line or the selected block.
++   - `unindent_block': Reverse of `indent_block'.
++ - New features:
++   - ~/.mp_templates can be a directory. If it is, the `global' file
++   there is always read (and those templates put at the top) and it
++   will also read a file named like the current syntax highlight
++   definition (so different templates appear if your editing C, Perl,
++   etc.).
++ - New configuration options:
++   - `mp.config.smart_bol': if set to nonzero, the `move_bol' action
++     now moves to the first non-blank character in the line instead of
++     to column 0 (unless the cursor is already on the first non-blank).
++ - Other improvements:
++   - The following actions accept additional arguments when called
++     as functions (and do not ask for them, if present):
++     - `goto'
++     - `save_as'
++     - `exec_command'
++     - `filter_selection'
++
++5.2.0
++-----
++
++ - New actions:
++   - `filter_selection': to filter the selection (or the
++     full document if no selection is done) through a system command.
++   - `exec_action': that shows a list of actions to execute
++     on the current document.
++   - `cut_lines_with_string': that cuts to the clipboard all lines
++     in a document or block that matches a regular expression.
++   - `insert_real_tab': bound to `shift-tab', to insert a tab
++     character (\t) regardless of whatever is set in the
++     `tabs_as_spaces' configuration variable.
++   - `insert_next_item': to insert a new enumeration item in
++     a document.
++ - Bugfixes:
++   - Fixed insert / overwrite mode.
++   - If a selection is invisible (incomplete or with the start and end
++     in the same character), a new keystroke does not jump to it.
++ - New configuration options:
++   - `mp.config.hw_cursor': to activate the hardware cursor in
++     text environments (disabled by default).
++ - Text user interface improvements:
++   - File opening list is fully navegable (directories up and down),
++   - Selection lists accept letter keys to jump to elements,
++   - If a text mode menu panel do not fit vertically on the screen,
++     menu items are scrolled as needed.
++ - New command line options:
++   - `-txt': force text mode (instead of GUI).
++ - General improvements:
++   - If a block is selected, actions `word_wrap_paragraph',
++     `join_paragraph' and `eval_doc' act only on it.
++   - The internal engine has been partly rewritten, so it requires
++     less memory and it's a bit faster.
++
++5.1.4
++-----
++
++ * If a block is selected, any keystroke substitutes it.
++ * Support for Alt + keys (ASCII and movement) has been added,
++   and mostly left unbound to be used by the user for his own
++   keybindings.
++ * A new tab mode, which uses the previous line as a template
++   for tab columns.
++ * Fixed action `open_under_cursor'.
++ * The `mp.paste()' function returns the clipboard content
++   as a string if called without arguments.
++ * New Grutatxt syntax highlighter.
++ * Fix F10 in Win32.
++ * Fix a bug when calculating the drawing position in the
++   selected block, that were leading to crashes.
++
++5.1.3
++-----
++
++ * A new Qt4 driver (adapted from the KDE4 driver).
++ * A new hexadecimal viewer.
++ * New action `open_dropped_files', to open files dropped from
++   the underlying system GUI.
++ * Improved file encoding autodetection by looking at the
++   UTF BOM marks.
++ * New configuration option `keep_eol', to keep the original
++   end of line sequence each document had.
++ * Fixed some clipboard issues, as replacing the selected block
++   when pasting and some crashes.
++ * win32 executable has been renamed to `mp-5.exe'.
++ * The status line format string can also include the %e token
++   to show the encoding used by the document.
++ * Fixed win32 input processing in non-latin environments.
++ * Setting an empty encoding (to fall back to system defaults)
++   always work.
++
++5.1.2
++-----
++
++ * The `grep' action can now be recursive.
++ * New syntax color for special documentation blocks.
++ * Fix searching into empty selected blocks (this was bug #1269).
++ * New action `section_list', that shows a list of _sections_
++   in the current document to jump to. Sections are usually
++   function definitions and special marks in programming
++   languages.
++ * New action `seek_misspelled', to search the next
++   misspelled word. It has been assigned to keycode `f5'.
++ * New action `ignore_last_misspell', to add the last misspelled
++   word found by `seek_misspelled' to a whitelist so it won't
++   be found again.
++ * New action `seek_repeated_word', to search for words starting
++   or ending with the same number of letters up to a maximum
++   distance. It's controlled by the new configuration directives
++   `mp.config.rw_num_chars' and `mp.config.rw_max_dist'.
++   It has been assigned to keycode `f6' (this keycode was
++   previously assigned to `join_paragraph', which has no
++   keybinding now).
++ * The action `open_templates_file' has been fixed.
++ * Several GTK interface updates by fellow developer Sebastian Vöcking.
++ * New command line option `-d', to change the working directory.
++ * Several fixes to the win32 driver; word wrapping, combobox
++   drop-down sizes, underlined text.
++ * Avoid hanging if the external ispell program is broken.
++ * The `dump()' function now dumps its argument as MPSL code.
++
++5.1.1
++-----
++
++ * Internationalization works in all platforms (including KDE4,
++   were it was faulty, and win32, where it was non-existent since
++   the 3.x series).
++ * The status line format string can also include the %w token
++   to show the number of words in the current document or selection
++   (can be slow).
++ * Search and replace is now limited to the selected block, if any.
++
++5.1.0
++-----
++
++Fixes to the KDE4 driver:
++
++ * Underlined text works.
++ * Text fields in forms now have history.
++ * If no xserver can be contacted, fall back to the curses interface.
++
++5.1.0-rc1
++---------
++
++ * KDE4 support.
++ * Rectangular block copy/paste support.
++ * New syntax highlight for the Euphoria language.
++
++5.0.3
++-----
++
++ * New action `open_under_cursor', that picks the word in the
++   current document under the cursor, accepts it as a document
++   name and tries to open it. If it's in the format string:number,
++   is accepted as a file name and a line number. It's bound by
++   default to `ctrl-enter' (`alt-enter' under Curses).
++ * The `grep' action bevahaviour has changed; instead of in a form,
++   matches are shown in a read-only document that is only closed
++   explicitly. Each change can be moved to by using the new
++   `open_under_cursor' (`ctrl-enter' or `alt-enter') action shown above.
++ * In a similar way, the `build' action also shows its output in a
++   read-only document instead of a form that is not automatically closed,
++   making the browsing and editing of compilation errors more useful.
++ * Forms in the Curses driver have changed their look. All fields in a
++   form are shown simultaneously on screen. This is one step to close
++   bug #1249.
++ * A set of character encoding converters have been natively implemented,
++   improving those platforms where the 'iconv' library is not available
++   (i.e. Windows and old Unix systems). The available encodings can be
++   shown by executing
++
++	dump(EMBEDDED_ENCODINGS);
++
++5.0.2
++-----
++
++ * New option to mark end of line characters, with its associated
++   configuration directive (mp.config.mark_eol).
++ * The end of line string (mp.config.eol) is now system-dependent (so,
++   on win32, it's set by default to \r\n).
++ * Copy and paste on GTK has been fixed (this was bug #1205).
++ * Fixed some redrawing issues (bug #1236 and others).
++ * Ctrl-keys no longer fail on GTK (bug #1252).
++ * New document _Minimum Profit Action Reference_.
++ * New action `build', for building Makefile-based projects. See the
++   action reference for details.
++
++5.0.1
++-----
++
++ * Improved line edition in the Curses interface (full edition plus file
++   expansion using the `tab' key in open / save file prompts).
++ * Auto-indenting is temporarily disabled while pasting (bug #1250).
++ * New document _Minimum Profit Function Reference_ (contributed by Lee Page).
++
++5.0.0
++-----
++
++ * The search hit is highlighted.
++ * When invoked from the menu, the `record_macro' action dropped
++   the last key (bug #1245).
++ * A Curses configuration detection has been fixed that made
++   some things behave strangely, as the drop-down menu not
++   responding under some terminal configurations (bug #1247).
++ * The Curses menu no longer crashes if it doesn't fit on
++   the screen (bug #1195).
++ * The -f (execute script) command line argument really works
++   (bug #1240).
++ * New manual page (bug #1219) and README files (bug #1218).
++ * Updated documents, _MPSL Overview_ and _Minimum Profit Cookbook_.
++ * New documents, _Minimum Profit Data Model_ and
++   _Creating interactive dialog boxes_.
++
++5.0.0-rc3
++---------
++
++ * New session support. All open documents and its current position
++   can be stored / retrieved with the new `save_session' and
++   `load_session' actions. Two new configuration flags has
++   been added: `mp.config.auto_sessions', to automatically load / save
++   sessions, and `mp.config.local_sessions', to save sessions in the
++   currently active directory instead of in the home directory.
++ * Multiple key sequences for invoking actions (ala Emacs) are
++   now possible. To create them, just assign a hash to a keycode
++   instead of an action. For example, to assign the key sequence
++   Ctrl-x Ctrl-f to `open' and Ctrl-x Ctrl-s to `save', you can use
++
++	mp.keycodes['ctrl-x'] = {
++		'ctrl-f'	=> 'open',
++		'ctrl-s'	=> 'save'
++	};
++
++ * In the curses version, confirmations now have default values
++   (shown in brackets), activated with the ENTER key.
++ * New action `close_all', that closes all documents.
++
++5.0.0-rc2
++---------
++
++ * New `complete' action, that asks for completion on the current
++   word using any of the words found in the same document.
++ * New `redo' action, to revert undo operations.
++ * The global configuration file `/etc/mp.mpsl' is also executed.
++ * In the `replace' action, the substitution string can contain
++   the special character &, that will be replaced by the matched
++   string (as in the `sed' command line tool).
++
++5.0.0-rc1
++---------
++
++ * New support for translating key sequences into MP keycodes, mainly
++   for redefining ANSI sequences not supported by current terminfo /
++   termcap. For example, if your terminal sends the ANSI sequence [6;5~
++   whenever you press Ctrl+page down, you can add to your config file
++   the following line:
++
++	mp.add_keyseq("[6;5~", 'ctrl-page-down');
++
++ * A new `system_command' action, to pipe from and to system commands
++   (Closed bug #1120).
++ * A new `word_count' action, to count the number of lines and words
++   in a document (or in the selected block).
++ * Incorrect word wrapping has been fixed (Closed bug #1137).
++ * Search and replace expand backslashed characters like \n and \t
++   (Closed bug #1214).
++ * New timer functionality has been added; a user function can be called
++   each time a specified period of milliseconds have elapsed. If, for
++   example, you want to print a string on standard output each two
++   seconds, you can run
++
++	mp.timer(2000, sub { print("Hi, world!\n"); });
++
++5.0.0-pre1
++----------
++
++ * Password-protected files fully work.
++ * Moving to next / previous instance of character (bound to ctrl-page-down
++   and ctrl-page-up) works (Closed bug #1131).
++ * Files open MUCH faster.
++ * Selection can be done by pressing shift + any movement key (Closed bug #1182).
++ * Dialog boxes work under Windows 98 (Closed bugs #1196, #1197).
++ * Block selection can be done by dragging the mouse (Closed bugs #1200, #1201).
++ * New `grep' functionality (Closed bug #1116).
++ * New action `sync' (save all modified documents, closed bug #1206).
++ * New action `document_list' (show a box with all open documents, allowing
++   the selection of the active one; closed bug #1211).
++ * Translations ported from mp 3.x (closed bug #1169).
++ * Most syntax highlight definitions ported from mp 3.x (closed bug #1168).
++
++4.99.12
++-------
++
++ * The menu in the Curses interface has been (finally) implemented.
++ * Interfaces have changed internally; a new driver function, mp.drv.form()
++   serves as a dialog box generic generator, resulting in more useful queries
++   for data (for example, all data required for a `replace' operation is
++   queried in only one dialog box). The Curses implementation, though
++   functional, is still just a wrapper to the old interface functions
++   and fields are queried one-by-one (which is annoying). This is an example
++   of a call to mp.drv.form(); the r variable will contain an array of 5
++   elements (one per widget) containing the values, or NULL if user cancelled:
++
++	local r = mp.drv.form( [
++	
++		/* a 'text' widget */
++		{ 'label'	=> "Replace this:",
++		  'type'	=> 'text',
++		  'history'	=> 'search',
++		  'value'	=> 'THIS' },
++	
++		/* another one */
++		{ 'label'	=> "With:",
++		  'type'	=> 'text',
++		  'history'	=> 'replace',
++		  'value'	=> 'THAT' },
++	
++		/* a 'password' widget */
++		{ 'label'	=> 'Password:',
++		  'type'	=> 'password' },
++	
++		/* a 'checkbox' widget */
++		{ 'label'	=> "Case sensitive:",
++		  'type'	=> 'checkbox',
++		  'value'	=> mp.config.case_sensitive_search },
++	
++		/* a 'list' widget */
++		{ 'label'	=> 'All C files:',
++		  'type'	=> 'list',
++		  'list'	=> glob('*.c'),
++		  'value'	=> 10 }
++	] );
++
++ * Password protecting files works (but they cannot be opened yet, so this
++   is far from useful, unless you use mp 3.x to open them).
++ * Case sensitivity in searches can be controlled with the new
++   config flag mp.config.case_sensitive_search.
++ * Replace (and global replace by use of the new config flag
++   `mp.config.global_replace') works.
++
++4.99.11
++-------
++
++ * Syntax highlight definition have changed (again, hopefully for the last
++   time). Definitions are now an array of attribute name / regexes in which
++   the order is significative.
++ * Template insertion works.
++ * Tag selection (open the file where a symbol is defined) works.
++ * Symbol completion (using tags) works.
++ * Closed bugs #1159, #1158, #1153, #1161.
++
++4.99.10
++-------
++
++ * A big advance in the Curses interface; alerts, confirmations, and open
++   file, save file, search and generic prompts are working. Still lacking
++   the selection lists (as the rest of interfaces) and the menu.
++ * Improved menus; if an invalid action is added to a menu, it's shown
++   followed by a ?; if a key is bound to that action, it's shown between
++   square brackets.
++ * For systems lacking iconv support (MS Windows), a crappy, ad-hoc utf-8
++   converter has been added. This means that hitting `escape' and typing
++   `encoding('utf-8');' makes reading and writing utf-8 encoded files
++   possible on every system.
++ * New action `join_paragraph', to join current paragraph all in one line.
++ * New action `word_wrap_paragraph', that re-word-wraps current paragraph.
++   Word wrapping must be set ('mp.config.word_wrap = number;') for this to
++   work.
++
++4.99.9
++------
++
++ * The GTK and win32 drivers now include a native open/save file dialog.
++ * Interactive help (help for the word under the cursor, triggered by
++   pressing `f1') works.
++ * The menu in GTK and win32 works.
++ * New icon!
++ * Some bugs that caused random crashes has been fixed.
++ * New action `exec-doc', that executes the active open document as
++   MPSL code.
++
++4.99.8
++------
++
++ * New configuration option `mp.config.tabs_as_spaces', to store tabs
++   as spaces.
++ * Each syntax highlight definition can contain an optional function
++   called detect() that receives the document as argument and can be used
++   to tailor special detection rules.
++ * A big part of the internal storage of colors and attributes have
++   been rewritten to make it more dynamic.
++ * Tag target for the word over the cursor is shown in the status line.
++ * Move word left works.
++ * Opening an already open file makes it the active one instead of
++   re-opening it.
++ * The `execute code' action has been remapped from `ctrl-f1' to escape.
++ * Spellchecking via ispell works (though it's SLOW!). Activate it by
++   hitting escape and typing:
++
++	mp.ispell(1);
++
++ * By default, files are now unlinked before (re)written. File permissions
++   and ownership are restored if available. This behaviour can be disabled
++   by setting `mp.config.unlink' to zero.
++ * The GTK driver drawing code has been optimized, so it's much more
++   responsive now.
++
++4.99.7
++------
++
++ * The `modified' flag of documents is maintained, so now closing files
++   with pending modifications ask for confirmation. Also, the %m status
++   line directive works (marking modified files with an asterisk).
++ * Flex and bison are no longer needed to build.
++ * The `close window' button in GUIs (win32 and GTK) now generate the
++   special keycode `close-window'.
++ * The `exit' action now closes all open documents, asking for saving
++   confirmation on those modified.
++ * Temporary versions of the `open' ans `save' actions (using
++   mp.drv.readline() instead of an ad-hoc open file dialog) have
++   been implemented.
++ * The GUI interfaces now can have their font preferences configured
++   by using mp.config.font_face and mp.config.font_size.
++ * The actions `zoom-in' and `zoom-out' (font size rescaling, bound to
++   `f11/f12' and `ctrl-kp-minus/ctrl-kp-plus') have been implemented.
++ * New mouse-related actions; `move-to-mouse-position', `move-mouse-wheel-up'
++   and `move-mouse-wheel-down'.
++
++4.99.6
++------
++
++This is an EXPERIMENTAL version for evaluation purposes only. There are
++many things that aren't implemented, others fail miserably and many more
++do it incorrectly. Basically, what is known to work is:
++
++ * Basic text editing fully works. I've been using it for six months or so
++   to maintain itself, and there has not been a crash in three months,
++   more or less.
++ * Scripting works fine (90% of Minimum Profit 5.x itself is implemented
++   in MPSL, its internal scripting language).
++ * Undo works fine. It's bound to ctrl-z.
++ * Works cleanly in an UTF-8 environment.
++
++I do development on the GTK version, so it's where it works best. The
++curses version lacks many of the interface (alerts, confirmations,
++asking for text, etc.), so it's barely usable. The win32 version seem
++to work, but it needs to be manually installed and probably need some
++tweaking.
++
++What it doesn't work:
++
++ * The dialogs to open or save a file by its name aren't implemented.
++   There are workarounds for this: files can be opened from the command
++   line and save works correctly if the edited file has a name. Also,
++   files can be opened by hitting `ctrl-f1' (execute script code) and
++   typing:
++
++	mp.open("file-to-be-opened");
++
++ * There is no menu.
++ * No ispell support.
++ * No password protected files.
++ * No grep.
++ * No external commands (so no support for help, tags, etc.).
++ * Some movement commands as moving a word left, moving to matching
++   brackets, etc. are still not implemented.
++ * Only a few syntax highlight definitions are implemented.
++ * Many other things I cannot remember.
++
++Documentation is still scarce: the more interesting bits are inside the
++mpsl/doc directory. This is where the scripting language is documented,
++with some basic overviews and implementation notes (there is even an
++embryo of a PostScript quick reference guide).
++
++Customizing can be done by writing MPSL commands in the ~/.mp.mpsl file,
++which is read on startup.
++
++I have not tried to optimize the internal engine, so it's probably some
++magnitudes slower than the 3.x version.

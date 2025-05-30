@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 28 15:49:58 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Update to 5.62
+- See RELEASE_NOTES for notes on releases since 5.31, and
+  mp-5.62-releasenotes.patch for notes on releases prior to 5.31
+- Drop mp-docdir.patch, add mp-5.62-installdirs.patch
+- Drop mp-scrollevent.patch, upstreamed
+- Drop desktop and icon source files in favour of upstream
+  provided files
+- Add mp-5.62-config-msgfmt.patch to fix install of lang files
+- To build docs and man page, add grutatxt and mp_doccer, add
+  mp-5.62-mpdm-config.patch, mp-5.62-mpsl-make-quickref.patch
+- Qt5 is EOL, replace Qt5Widgets by Qt6Widgets:  add
+  mp-5.62-config-qt6.patch, mp-5.62-qt6-isnull.patch,
+  mp-5.62-qt6-weight.patch
+
+-------------------------------------------------------------------
 Wed Dec  4 08:23:42 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file and remove obsolete rpmlintrc filters 

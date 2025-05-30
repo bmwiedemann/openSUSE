@@ -1,0 +1,39 @@
+
+reflect Qt6 changes to QFont::Weight enumeration and setWeight()
+
+--- a/mpv_qk_common.cpp	2024-12-07 08:52:47.000000000 +0100
++++ b/mpv_qk_common.cpp	2025-05-28 16:10:32.584350324 +0200
+@@ -168,10 +168,16 @@
+         else
+             mpdm_set_wcs(c, MPDM_I(font_size), L"font_size");
+ 
++#if QT_VERSION_MAJOR<6
++#define WEIGHT_FACTOR 100.0
++#else
++#define WEIGHT_FACTOR 1000.0
++#endif
++
+         if ((v = mpdm_get_wcs(c, L"font_weight")) != NULL)
+-            font_weight = mpdm_rval(v) * 100.0;
++            font_weight = mpdm_rval(v) * WEIGHT_FACTOR;
+         else
+-            mpdm_set_wcs(c, MPDM_R(font_weight / 100.0), L"font_weight");
++            mpdm_set_wcs(c, MPDM_R(font_weight / WEIGHT_FACTOR), L"font_weight");
+ 
+         if ((v = mpdm_get_wcs(c, L"font_face")) != NULL) {
+             w = mpdm_ref(MPDM_2MBS(mpdm_string(v)));
+@@ -187,7 +193,14 @@
+     font->setFixedPitch(true);
+ 
+     if (font_weight > 0.0)
++    {
++#if QT_VERSION_MAJOR<6
+         font->setWeight((int) font_weight);
++#else
++        if (font_weight < 1.0) { font_weight = 1.0; }
++        font->setWeight(static_cast<QFont::Weight>(font_weight));
++#endif
++    }
+ 
+     mpdm_unref(w);
+ 

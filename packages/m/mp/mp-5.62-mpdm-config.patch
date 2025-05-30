@@ -1,0 +1,14 @@
+
+fix failing mp_doccer detection
+
+--- a/mpdm/config.sh	2024-12-07 08:52:47.000000000 +0100
++++ b/mpdm/config.sh	2025-05-26 22:59:11.465842766 +0200
+@@ -657,7 +657,7 @@
+ 
+ # test for mp_doccer
+ echo -n "Testing if mp_doccer is installed... "
+-MP_DOCCER=$(which mp_doccer > /dev/null 2>&1||which mp-doccer > /dev/null 2>&1)
++MP_DOCCER=$(which mp_doccer 2>/dev/null || which mp-doccer 2>/dev/null)
+ 
+ if [ $? = 0 ] ; then
+ 

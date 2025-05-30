@@ -1,0 +1,40 @@
+
+fix / adapt installation directories to opensuse habits
+
+--- a/makefile.in	2024-12-07 08:52:47.000000000 +0100
++++ b/makefile.in	2025-05-26 13:26:01.945038290 +0200
+@@ -141,22 +141,24 @@
+ 	install -m 644 $(ARCH_FILE) $(PREFIX)/share/$(APPNAME)/ || true
+ 
+ install: $(INSTALL_MSG) installdoc $(INSTALLMO) $(MORE_INSTALL_TARGETS)
++	./mkinstalldirs -m 755 $(PREFIX)/bin
+ 	install -m 755 $(APPNAME) $(PREFIX)/bin/$(APPNAME)
+-	./mkinstalldirs $(PREFIX)/share/man/man1
++	./mkinstalldirs -m 755 $(PREFIX)/share/man/man1
+ 	[ -f $(APPNAME).1 ] && install -m 644 $(APPNAME).1 $(PREFIX)/share/man/man1/$(APPNAME).1 || true
+-	[ -d /usr/share/applications ] && install -m 644 minimum-profit.desktop /usr/share/applications || true
+-	[ -d /usr/share/metainfo ] && install -m 644 metainfo.xml /usr/share/metainfo/com.triptico.minimum_profit.metainfo.xml || true
+-	[ -d /usr/share/icons/hicolor/48x48/apps/ ] && install -m 644 minimum-profit.png /usr/share/icons/hicolor/48x48/apps/ || true
++	./mkinstalldirs -m 755 $(PREFIX)/share/applications
++	install -m 644 minimum-profit.desktop $(PREFIX)/share/applications
++	./mkinstalldirs -m 755 $(PREFIX)/share/metainfo
++	install -m 644 metainfo.xml $(PREFIX)/share/metainfo/com.triptico.minimum_profit.metainfo.xml
++	./mkinstalldirs -m 755 $(PREFIX)/share/icons/hicolor/48x48/apps
++	install -m 644 minimum-profit.png $(PREFIX)/share/icons/hicolor/48x48/apps
+ 
+ installdoc:
+-	./mkinstalldirs $(PREFIX)/share/doc/$(APPNAME)
+-	chmod 755 $(PREFIX)/share/doc/
+-	chmod 755 $(PREFIX)/share/doc/$(APPNAME)
++	./mkinstalldirs -m 755 $(PREFIX)/share/doc/packages/$(APPNAME)
+ 	( cd $(MPDM); $(MAKE) installdoc )
+ 	( cd $(MPSL); $(MAKE) installdoc )
+-	install -m 644 doc/* $(PREFIX)/share/doc/$(APPNAME)
+-	install -m 644 $(ADD_DOCS) $(PREFIX)/share/doc/$(APPNAME)
+-	[ -f doc/mp_index.html ] && install -m 644 doc/mp_index.html $(PREFIX)/share/doc/$(APPNAME)/index.html || true
++	install -m 644 doc/* $(PREFIX)/share/doc/packages/$(APPNAME)
++	install -m 644 $(ADD_DOCS) $(PREFIX)/share/doc/packages/$(APPNAME)
++	[ -f doc/mp_index.html ] && install -m 644 doc/packages/mp_index.html $(PREFIX)/share/doc/packages/$(APPNAME)/index.html || true
+ 
+ uninstall: $(UNINSTALLMO)
+ 	rm -f $(PREFIX)/bin/$(APPNAME)

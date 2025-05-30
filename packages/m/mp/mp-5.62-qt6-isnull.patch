@@ -1,0 +1,14 @@
+
+fix test that still worked in Qt5 but does not in Qt6
+
+--- a/mpv_qk_common.cpp	2024-12-07 08:52:47.000000000 +0100
++++ b/mpv_qk_common.cpp	2025-05-26 10:39:15.220655492 +0200
+@@ -70,7 +70,7 @@
+ {
+     mpdm_t r = NULL;
+ 
+-    if (s != NULL) {
++    if (!s.isNull()) {
+         int t = s.size();
+         wchar_t *wptr = (wchar_t *) calloc((t + 1), sizeof(wchar_t));
+ 

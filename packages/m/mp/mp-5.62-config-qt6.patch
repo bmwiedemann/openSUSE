@@ -1,0 +1,21 @@
+
+Qt5 is out of support as of 2025-05-26.  usage of Qt in mp sources
+seems simple enough to just replace Qt5Widgets by Qt6Widgets.
+Older Qt6Widgets.pc files are missing "Requires: Qt6Core Qt6Gui".
+
+--- a/config.sh	2024-12-07 08:52:47.000000000 +0100
++++ b/config.sh	2025-05-26 10:23:37.309979419 +0200
+@@ -449,10 +449,10 @@
+ if [ "$WITHOUT_QT5" = "1" ] ; then
+     echo "Disabled"
+ else
+-    if chk_pkgconfig Qt5Widgets
++    if chk_pkgconfig Qt6Widgets
+     then
+-        TMP_CFLAGS="$(${PKG_CONFIG} --cflags Qt5Widgets 2>/dev/null) -fPIC"
+-        TMP_LDFLAGS="$(${PKG_CONFIG} --libs Qt5Widgets 2>/dev/null)"
++        TMP_CFLAGS="$(${PKG_CONFIG} --cflags Qt6Widgets Qt6Core Qt6Gui 2>/dev/null) -fPIC"
++        TMP_LDFLAGS="$(${PKG_CONFIG} --libs Qt6Widgets Qt6Core Qt6Gui 2>/dev/null)"
+ 
+         if USE_CXX=true chk_compiles "$(cat <<EOF
+ #include <QtWidgets>

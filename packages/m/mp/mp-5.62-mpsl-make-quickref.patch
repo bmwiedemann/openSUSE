@@ -1,0 +1,23 @@
+
+fix building of doc/mpsl_quickref.ps, and add it to docsclean target
+
+--- a/mpsl/makefile.in	2024-12-07 08:52:47.000000000 +0100
++++ b/mpsl/makefile.in	2025-05-26 17:09:43.643633225 +0200
+@@ -78,7 +78,7 @@
+ .txt.html:
+ 	grutatxt < $< > $@
+ 
+-doc/mpsl_quickref.ps: doc/mpsl_quickref.txt
++doc/mpsl_quickref.ps: doc/mpsl_quickref.txt mpsl
+ 	-./mpsl scripts/mkquickref.mpsl < doc/mpsl_quickref.txt > $@
+ 
+ doc/mpsl_api.txt: mpsl_c.c mpsl.y
+@@ -96,7 +96,7 @@
+ docs: $(DOCS)
+ 
+ docsclean:
+-	rm -f $(MP_DOCCER_DOCS) doc/*.html
++	rm -f $(MP_DOCCER_DOCS) doc/*.html doc/*.ps
+ 
+ distcopy: distclean
+ 	mkdir -p $(DIST_TARGET) ; \

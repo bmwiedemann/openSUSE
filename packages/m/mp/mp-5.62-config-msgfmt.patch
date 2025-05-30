@@ -1,0 +1,15 @@
+
+fix unconditional setting of WITHOUT_MSGFMT that results in always
+building without msgfmt
+
+--- a/config.sh	2024-12-07 08:52:47.000000000 +0100
++++ b/config.sh	2025-05-27 13:20:44.129796033 +0200
+@@ -25,7 +25,7 @@
+ WITHOUT_KDE4=1
+ 
+ # No msgfmt by default
+-WITHOUT_MSGFMT=1
++WITHOUT_MSGFMT=${WITHOUT_MSGFMT:=1}
+ 
+ WITH_EXTERNAL_ARCH=0
+ 
