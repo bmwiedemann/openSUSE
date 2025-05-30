@@ -121,4 +121,17 @@
     <comment></comment>
     <requestid>1271877</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fa7d1e354a81e4bbc58e89c9d726afa5</srcmd5>
+    <version>25.5.0</version>
+    <time>1748608632</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 25.5.0:
+  * Fix repr_unknown logic for not splitting long values affecting
+    all plain strings
+    Only intended to keep e.g. &quot;&lt;SomeClass ...&gt; # python SomeType&quot;
+    values that have comments in them oneline, not all plain
+    strings.</comment>
+    <requestid>1281079</requestid>
+  </revision>
 </revisionlist>

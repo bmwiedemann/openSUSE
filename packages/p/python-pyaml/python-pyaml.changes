@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 29 08:16:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 25.5.0:
+  * Fix repr_unknown logic for not splitting long values affecting
+    all plain strings
+    Only intended to keep e.g. "<SomeClass ...> # python SomeType"
+    values that have comments in them oneline, not all plain
+    strings.
+
+-------------------------------------------------------------------
 Tue Apr 22 12:19:15 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
