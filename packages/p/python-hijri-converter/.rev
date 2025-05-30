@@ -41,4 +41,12 @@
 - Stop using python_sitelib/*</comment>
     <requestid>1069085</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fc5dfa0fd427a34e534a9b5bc3479b3f</srcmd5>
+    <version>2.2.4</version>
+    <time>1748608310</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1280674</requestid>
+  </revision>
 </revisionlist>
