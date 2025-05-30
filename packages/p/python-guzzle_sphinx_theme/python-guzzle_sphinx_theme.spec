@@ -1,7 +1,7 @@
 #
 # spec file for package python-guzzle_sphinx_theme
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/guzzle/guzzle_sphinx_theme
 Source:         https://files.pythonhosted.org/packages/source/g/guzzle_sphinx_theme/guzzle_sphinx_theme-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx >= 1.2b1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 1.2b1
 BuildArch:      noarch
@@ -41,14 +43,15 @@ find guzzle_sphinx_theme/guzzle_sphinx_theme/static -type f -exec chmod -x "{}" 
 find . -iname .DS_Store -delete
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/guzzle_sphinx_theme
+%{python_sitelib}/guzzle_sphinx_theme-%{version}*-info
 
 %changelog
