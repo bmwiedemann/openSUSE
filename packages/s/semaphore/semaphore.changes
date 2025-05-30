@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu May 29 05:37:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.12:
+  * Bugfix
+    - Sorting output by time
+
+-------------------------------------------------------------------
+Thu May 29 05:34:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.11:
+  * fix(be): read permissions
+  * fix(be): empty Limit param overrides null of params.Limit
+  * fix(ui): skip tag in task form
+  * ci: fix hosts in ssh config
+  * docs: fix openapi
+  * docs: update rest api desc
+  * fix(ui): cli args in task
+  * fix(ui): load task data
+  * fix(be): check task params by null
+  * fix: disable known_hosts by global config
+  * fix(ui): link to raw log
+    https://github.com/semaphoreui/semaphore/issues/3013
+  * fix(logging): ignore read |0 error
+  * fix(logging): do not write error for killed process
+  * fix(tasks): stop process if stdout is broken
+  * fix(be): do not close ws on error
+
+-------------------------------------------------------------------
 Thu May 08 08:25:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.14.10:
