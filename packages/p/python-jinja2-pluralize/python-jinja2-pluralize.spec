@@ -1,7 +1,7 @@
 #
 # spec file for package python-jinja2-pluralize
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jinja2-pluralize
 Version:        0.3.0
 Release:        0
@@ -25,7 +24,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/audreyr/jinja2_pluralize
 Source:         https://files.pythonhosted.org/packages/source/j/jinja2_pluralize/jinja2_pluralize-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.4
@@ -44,10 +45,10 @@ Jinja2 pluralize filters.
 %setup -q -n jinja2_pluralize-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +57,7 @@ Jinja2 pluralize filters.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/jinja2[-_]pluralize
+%{python_sitelib}/jinja2[-_]pluralize-%{version}*-info
 
 %changelog
