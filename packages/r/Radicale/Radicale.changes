@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 21 06:40:59 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+
+- Update to 3.5.3
+  * Add: [auth] htpasswd: support for Argon2 hashes
+  * Add: [auth] urldecode_username: optional decode provided username (e.g. encoded email address)
+  * Improve: catch error on calendar collection upload and display problematic item content on debug level
+
+-------------------------------------------------------------------
 Thu May  1 06:31:41 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
 
 - Update to 3.5.2
