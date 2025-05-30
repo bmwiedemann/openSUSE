@@ -22,7 +22,7 @@
 %bcond_without redis
 %bcond_without postgresql
 Name:           luanti
-Version:        5.11.0
+Version:        5.12.0
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
 License:        CC-BY-SA-3.0 AND LGPL-2.1-or-later
@@ -61,6 +61,7 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(luajit)
 BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(x11)
@@ -179,8 +180,8 @@ rm -rf lib/jsoncpp lib/lua lib/gmp
 # Install the wrapper.
 ln -s opengl-game-wrapper.sh %{buildroot}%{_bindir}/%{name}-wrapper
 sed -i 's/^Exec=.*$/Exec=%{name}-wrapper/' \
-  %{buildroot}%{_datadir}/applications/net.minetest.minetest.desktop
-%suse_update_desktop_file -r net.minetest.minetest Game Simulation
+  %{buildroot}%{_datadir}/applications/org.luanti.luanti.desktop
+%suse_update_desktop_file -r org.luanti.luanti Game Simulation
 
 # Replace fonts with symlinks (we use the system ones).
 for font in Arimo-Regular Cousine-Regular DroidSansFallbackFull; do
@@ -206,7 +207,7 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/%{name}/
 %find_lang luanti
 
 %post
-desktop-file-validate %{_datadir}/applications/net.minetest.minetest.desktop
+desktop-file-validate %{_datadir}/applications/org.luanti.luanti.desktop
 
 %pre -n %{name}server
 getent group %{name} > /dev/null || %{_sbindir}/groupadd -r %{luantigroup}
@@ -229,10 +230,10 @@ getent passwd %{name} > /dev/null || \
 %{_bindir}/%{name}
 %{_bindir}/%{name}-wrapper
 %{_bindir}/minetest
-%{_datadir}/applications/net.minetest.minetest.desktop
+%{_datadir}/applications/org.luanti.luanti.desktop
 %{_datadir}/icons/hicolor/*/apps/luanti.*
 %dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/net.minetest.minetest.metainfo.xml
+%{_datadir}/metainfo/org.luanti.luanti.metainfo.xml
 %{_mandir}/man6/luanti.6%{?ext_man}
 
 %files lang -f luanti.lang

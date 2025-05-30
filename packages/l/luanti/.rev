@@ -7,4 +7,12 @@
     <comment>Should replace minetest package, which then can be deleted.</comment>
     <requestid>1247190</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5708baa0775d74a5ef6a8948dec82a8b</srcmd5>
+    <version>5.12.0</version>
+    <time>1748608325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1280696</requestid>
+  </revision>
 </revisionlist>

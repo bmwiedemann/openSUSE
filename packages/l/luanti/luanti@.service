@@ -22,7 +22,7 @@ User=luanti
 Group=luanti
 Type=simple
 EnvironmentFile=/etc/luanti/%i.env
-ExecStart=/usr/bin/luantiserver --config /etc/minetest/%i.conf --world /var/lib/minetest/%i/ $MINETEST_OPTIONS $LUANTI_OPTIONS
+ExecStart=/usr/bin/luantiserver --config /etc/luanti/%i.conf --world /var/lib/luanti/%i/ $MINETEST_OPTIONS $LUANTI_OPTIONS
 
 [Install]
 WantedBy=multi-user.target
