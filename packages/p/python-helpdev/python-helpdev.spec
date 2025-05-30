@@ -1,7 +1,7 @@
 #
 # spec file for package python-helpdev
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-helpdev
 Version:        0.7.1
 Release:        0
 Summary:        HelpDev - Extracts information about the Python environment easily
-License:        MIT AND CC-BY-4.0
+License:        CC-BY-4.0 AND MIT
 Group:          Development/Languages/Python
 URL:            https://gitlab.com/dpizetta/helpdev
 Source0:        https://gitlab.com/dpizetta/helpdev/-/archive/v%{version}/helpdev-v%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata
 Requires:       python-psutil >= 5.4.8
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module importlib-metadata}
@@ -49,10 +50,10 @@ sed -i '1{\,^#!%{_bindir}/env python,d}' helpdev/*.py
 sed -i -e "s/psutil>=5.6/psutil>=5.4.8/" setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/helpdev
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -69,6 +70,7 @@ sed -i -e "s/psutil>=5.6/psutil>=5.4.8/" setup.py
 %files %{python_files}
 %doc README.rst
 %python_alternative %{_bindir}/helpdev
-%{python_sitelib}/*
+%{python_sitelib}/helpdev
+%{python_sitelib}/helpdev-%{version}*-info
 
 %changelog

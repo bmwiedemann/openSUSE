@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 27 15:24:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue May 26 07:33:07 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - python-psutil is only used to call its "swap_memory" and
