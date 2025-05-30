@@ -17,9 +17,8 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-
 Name:           zoxide
-Version:        0.9.7
+Version:        0.9.8
 Release:        0
 Summary:        A smarter cd command
 License:        MIT
@@ -28,7 +27,9 @@ URL:            https://github.com/ajeetdsouza/zoxide
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 BuildRequires:  cargo
-BuildRequires:  rust >= 1.31
+BuildRequires:  cargo-packaging
+BuildRequires:  gzip
+BuildRequires:  rust >= 1.85.0
 
 %description
 zoxide is a smarter cd command, inspired by z and autojump. It remembers
@@ -45,15 +46,20 @@ cargo build --release %{?_smp_mflags}
 %install
 export RUSTFLAGS=%{rustflags}
 RUSTFLAGS=%{rustflags} cargo install --path . --root=%{buildroot}%{_prefix} %{?_smp_mflags}
+# compress manpages
+gzip man/man1/%{name}*.1
 
 # install manpages
 ls -la
-install -Dpm 644 man/man1/%{name}*.1 -t %{buildroot}%{_mandir}/man1/
+install -Dpm 644 man/man1/%{name}*.1%{?ext_man} -t %{buildroot}%{_mandir}/man1/
 
 # install shell completions
 install -Dpm 644 contrib/completions/%{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 install -Dpm 644 contrib/completions/_%{name} -t %{buildroot}%{_datadir}/zsh/site-functions/
 install -Dpm 644 contrib/completions/%{name}.fish -t %{buildroot}/%{_datadir}/fish/vendor_completions.d/
+
+%check
+%{cargo_test}
 
 # remove residue crate file
 rm -f %{buildroot}%{_prefix}/.crates*
@@ -62,7 +68,7 @@ rm -f %{buildroot}%{_prefix}/.crates*
 %license LICENSE
 %doc CHANGELOG.md README.md
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}*.1*
+%{_mandir}/man1/%{name}*.1%{?ext_man}
 %{_datadir}/bash-completion/completions/%{name}
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
