@@ -23,7 +23,7 @@ Thu May 22 07:33:23 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
   * New environment variables
     * Improved Log Output Setting
     * New Repo Lock Optional Wait
-  * Updated golang.org/x/net to 0.39.0 (boo#1241776, CVE-2025-22872)
+  * Updated golang.org/x/net to 0.40.0 (boo#1241776, CVE-2025-22872)
 
 -------------------------------------------------------------------
 Tue Apr  1 14:52:01 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
