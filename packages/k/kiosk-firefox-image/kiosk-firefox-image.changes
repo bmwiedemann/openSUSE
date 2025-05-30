@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 23 14:23:23 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- create home directory for firefox
+
+-------------------------------------------------------------------
+Fri May 23 11:23:16 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- use SOURCEURL_WITH to generate proper artifacthub urls
+
+-------------------------------------------------------------------
 Thu May 15 08:00:09 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - install ffmpeg for video support
