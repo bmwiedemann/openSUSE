@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 29 17:37:49 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 35.5.0
+  * Node 22.15.1
+  * Added innerWidth and innerHeight options for window.open. #47045 (Also in 36, 37)
+  * Added support for screen.dipToScreenPoint(point) and screen.screenToDipPoint(point) on Linux X11.
+  * Added support for node option --experimental-network-inspection.
+  * Security fixes for for CVE-2025-4609 CVE-2025-4664 (bsc#1243205)
+- Do not build Chromium extensions support as it's not used by us
+  * reduce-gn-tree.patch
+  * build-without-extensions.patch
+  * build-without-guest-view.patch
+  * extensions-common-assert.patch
+
+-------------------------------------------------------------------
+Sat May 24 13:25:36 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Fedora 43+: bacport change to fix build with llhttp 9.3 (node-llhttp9.3.patch)
+
+-------------------------------------------------------------------
 Sat May 17 09:18:14 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 35.4.0

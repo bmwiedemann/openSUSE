@@ -1,0 +1,32 @@
+Run gn starting at only the targets we want to build (//electron:blah), not at (//...) to avoid hitting asserts in dead code.
+This makes this overriden build argument dead code which causes a warning during `gen` and more importantly `desc`. Remove it.
+
+--- src/electron/build/args/all.gn	2025-05-22 20:03:50.586242102 +0200
++++ src/electron/build/args/all.gn	2025-05-22 21:32:07.485697337 +0200
+@@ -1,5 +1,4 @@
+ is_electron_build = true
+-root_extra_deps = [ "//electron" ]
+ 
+ # Registry of NMVs --> https://github.com/nodejs/node/blob/main/doc/abi_version_registry.json
+ node_module_version = 133
+
+All gn list calls must be also fixed because otherwise they fail just as gn gen does
+
+
+--- src/third_party/electron_node/tools/generate_config_gypi.py.orig	2025-05-22 20:19:41.558145459 +0200
++++ src/third_party/electron_node/tools/generate_config_gypi.py	2025-05-22 22:01:23.213518671 +0200
+@@ -30,7 +30,13 @@ def bool_string_to_number(v):
+ def get_gn_config(out_dir):
+   # Read args from GN configurations.
+   gn_args = subprocess.check_output(
+-      [GN, 'args', '--list', '--short', '-C', out_dir])
++      [GN, 'args', '--list',
++       '--root-target=//electron:electron_app', 
++       '--root-pattern=//electron:electron_app',
++       '--root-pattern=//electron:chromium_licenses',
++       '--root-pattern=//electron:copy_node_headers',
++       '--root-pattern=//electron:electron_version_file',
++       '--short', '-C', out_dir])
+   config = dict(re.findall(GN_RE, gn_args.decode()))
+   # Get napi_build_version from Node, which is not part of GN args.
+   config['napi_build_version'] = getnapibuildversion.get_napi_version()

@@ -124,6 +124,11 @@ ExcludeArch: %arm
 %bcond_with system_ada
 %endif
 
+%if 0%{?fedora} >= 43
+%bcond_without llhttp_93
+%else
+%bcond_with llhttp_93
+%endif
 
 # requires `base64_options`
 %if 0%{?fedora} >= 42
@@ -189,7 +194,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        35.4.0
+Version:        35.5.0
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -245,6 +250,7 @@ Patch86:        enable_stack_trace_line_numbers-symbol_level.patch
 Patch97:        chromium-127-cargo_crate.patch
 Patch98:        gn-logspam-breaks-install.patch
 Patch99:        torque-debuginfo.patch
+Patch100:       reduce-gn-tree.patch
 
 
 # PATCHES that remove code we don't want. Most of them can be reused verbatim by other distributors,
@@ -279,6 +285,8 @@ Patch602:       remove-ai-language-detection-factory-which-requires-tflite-and-l
 Patch603:       build-without-mesage-center.patch
 Patch604:       disable-avif-really.patch
 Patch605:       permission-gcc14.2.patch
+Patch606:       build-without-extensions.patch
+Patch607:       build-without-guest-view.patch
 
 
 
@@ -339,7 +347,11 @@ Patch2062:      wayland_version.patch
 Patch2063:      fix-building-with-pipewire-1.3.82.patch
 #Conditionably disable feature which requires new highway
 Patch2064:      blink-shape_result-highway.patch
-
+%if %{with system_llhttp} && %{with llhttp_93}
+Patch2065:      node-llhttp9.3.patch
+%else
+Source2065:      node-llhttp9.3.patch
+%endif
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
 # Fix blink nodestructor
@@ -384,6 +396,7 @@ Patch3207:      unexportable_key_service_impl-Wlto-type-mismatch.patch
 Patch3208:      to_vector-std-projected-gcc119888.patch
 Patch3209:      file_dialog-missing-uint32_t.patch
 Patch3211:      html_permission_element_strings_map-reproducible.patch
+Patch3212:      extensions-common-assert.patch
 
 # Patches to re-enable upstream force disabled features.
 # There's no sense in submitting them but they may be reused as-is by other packagers.
@@ -426,6 +439,11 @@ BuildRequires:  libpng-devel
 BuildRequires:  libXNVCtrl-devel
 %if %{with system_llhttp}
 BuildRequires:  llhttp-devel >= 8
+%if %{with llhttp_93}
+BuildRequires:  llhttp-devel >= 9.3
+%else
+BuildRequires:  llhttp-devel < 9.3
+%endif
 %endif
 %if %{with swiftshader} && %{without subzero}
 BuildRequires:  llvm-devel >= 16
@@ -1035,7 +1053,7 @@ unset MALLOC_PERTURB_
 
 %if %{with lto}
 %ifarch aarch64
-export LDFLAGS="$LDFLAGS -flto=auto --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=3 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+export LDFLAGS="$LDFLAGS -flto=auto --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=4 "
 %else
 # x64 is fine with the the default settings (the machines have 30GB+ ram)
 export LDFLAGS="$LDFLAGS -flto=auto"
@@ -1163,7 +1181,11 @@ myconf_gn+=' enable_platform_apps=false'
 %if 0%{?fedora}
 myconf_gn+=' symbol_level=1' #OOM during linking
 %else
+%ifarch aarch64 #OOM or logidlelimit, pick your poison
+myconf_gn+=' symbol_level=1'
+%else
 myconf_gn+=' symbol_level=2'
+%endif
 %endif
 myconf_gn+=' blink_symbol_level=1'
 myconf_gn+=' v8_symbol_level=1'
@@ -1178,7 +1200,6 @@ myconf_gn+=' use_debug_fission=true'
 # do not build some chrome features not used by electron
 # (some of these only go to buildflag_headers and are dead code rn, but disabling them preemptively as long as they're visible)
 myconf_gn+=" enable_vr=false"
-myconf_gn+=" enable_reading_list=false"
 myconf_gn+=" enable_reporting=false"
 myconf_gn+=" build_with_tflite_lib=false"
 myconf_gn+=" build_tflite_with_xnnpack=false"
@@ -1196,7 +1217,6 @@ myconf_gn+=" enable_click_to_call=false"
 myconf_gn+=" enable_webui_tab_strip=false"
 myconf_gn+=" enable_webui_certificate_viewer=false"
 myconf_gn+=" enable_background_contents=false"
-myconf_gn+=" enable_extractors=false"
 myconf_gn+=" ozone_platform_headless=false"
 myconf_gn+=" angle_enable_gl_null=false"
 myconf_gn+=" enable_paint_preview=false"
@@ -1214,10 +1234,18 @@ myconf_gn+=' enterprise_content_analysis=true'
 myconf_gn+=' enable_video_effects=false'
 myconf_gn+=' use_fake_screen_ai=true'
 myconf_gn+=' webnn_use_tflite=false'
-myconf_gn+=' structured_metrics_enabled=false'
-myconf_gn+=' structured_metrics_debug_enabled=false'
 myconf_gn+=' build_dawn_tests=false'
 myconf_gn+=' enable_compute_pressure=false'
+
+
+#These can only be disabled if we don't start at //... but at //electron:...
+myconf_gn+=' absl_build_tests=false'
+myconf_gn+=' build_with_model_execution=false'
+myconf_gn+=' enable_extensions=false'
+myconf_gn+=' enable_guest_view=false'
+myconf_gn+=' enable_extensions_core=true' #cannot be disabled yet
+myconf_gn+=' enable_on_device_translation=false'
+myconf_gn+=' enable_session_service=false'
 
 
 
@@ -1230,8 +1258,6 @@ myconf_gn+=' enable_chromium_prelude=false'
 myconf_gn+=' chrome_root_store_cert_management_ui=false'
 myconf_gn+=' use_kerberos=false'
 
-myconf_gn+=' disable_histogram_support=true'
-
 
 #Do not build Chromecast
 myconf_gn+=" enable_remoting=false"
@@ -1240,7 +1266,6 @@ myconf_gn+=" enable_service_discovery=false"
 myconf_gn+=' enable_mdns=false'
 
 #disable some debug/tracing hooks, they increase size and we do not build chrome://tracing anyway (see disable-catapult.patch)
-myconf_gn+=" enable_trace_logging=false"
 myconf_gn+=" optional_trace_events_enabled=false"
 myconf_gn+=" rtc_disable_logging=true"
 myconf_gn+=" rtc_disable_metrics=true"
@@ -1348,7 +1373,13 @@ myconf_gn+=" ffmpeg_branding=\"Chrome\""
 
 # GN does not support passing cflags:
 #  https://bugs.chromium.org/p/chromium/issues/detail?id=642016
-gn gen out/Release --testonly=false --args="import(\"//electron/build/args/release.gn\") ${myconf_gn}"
+gn gen out/Release --testonly=false \
+--root-target=//electron:electron_app \
+--root-pattern=//electron:electron_app \
+--root-pattern=//electron:chromium_licenses \
+--root-pattern=//electron:copy_node_headers \
+--root-pattern=//electron:electron_version_file \
+--args="import(\"//electron/build/args/release.gn\") ${myconf_gn}"
 
 
 # dump the linker command line (if any) in case of failure
@@ -1379,7 +1410,13 @@ desktop-file-install --dir %{buildroot}%{_datadir}/applications/ %{SOURCE11}
 pushd out/Release
 install -pm 0644 version                 -t %{buildroot}%{_libdir}/electron/
 
-gn desc . //electron:electron_app runtime_deps | grep -v ^gen/ | sort | uniq | xargs -t cp -a -v --parents -t %{buildroot}%{_libdir}/electron/ --
+gn desc \
+--root-target=//electron:electron_app \
+--root-pattern=//electron:electron_app \
+--root-pattern=//electron:chromium_licenses \
+--root-pattern=//electron:copy_node_headers \
+--root-pattern=//electron:electron_version_file \
+. //electron:electron_app runtime_deps | grep -v ^gen/ | sort | uniq | xargs -t cp -a -v --parents -t %{buildroot}%{_libdir}/electron/ --
 
 
 popd
@@ -1472,11 +1509,11 @@ EOF
 chmod -v 644 %{buildroot}%{_rpmconfigdir}/macros.d/macros.electron
 
 #help debugedit find the source files
-ln -srv third_party/emoji-segmenter/src/emoji_presentation_scanner.c -t out/Release
-ln -srv third_party/emoji-segmenter/src/emoji_presentation_scanner.rl -t out/Release
-ln -srv third_party/angle/src/compiler/translator/glslang.l -t out/Release
-ln -srv third_party/angle/src/compiler/preprocessor/preprocessor.l -t out/Release
-ln -srv third_party -t out/Release
+ln -srvf third_party/emoji-segmenter/src/emoji_presentation_scanner.c -t out/Release
+ln -srvf third_party/emoji-segmenter/src/emoji_presentation_scanner.rl -t out/Release
+ln -srvf third_party/angle/src/compiler/translator/glslang.l -t out/Release
+ln -srvf third_party/angle/src/compiler/preprocessor/preprocessor.l -t out/Release
+ln -srvf third_party -t out/Release
 
 %files
 %license electron/LICENSE out/Release/LICENSES.chromium.html
