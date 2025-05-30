@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 29 07:45:46 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 2.8.0
+  - Update README after switchover to meson
+  - autotools-build: Explicitly require glib, gtk3, libxfce4util
+  - build: Automate copyright year management
+  - meson-build: Use shared_module()
+  - Add meson build
+  - I18n: Update po/LINGUAS list
+  - Translation Updates
+
+-------------------------------------------------------------------
 Tue Feb  4 11:48:05 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - License is BSD-2-Clause, not GPL-2.0-or-later!
