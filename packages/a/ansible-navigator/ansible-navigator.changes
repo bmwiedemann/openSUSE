@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu May 29 05:34:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.5.0:
+  * Bugfixes
+    - Improve path normalization with a fallback for non-existent
+      paths (#1979) @shatakshiiii
+  * Maintenance
+    - Update dependencies (#1994) @shatakshiiii
+    - Bump cryptography from 45.0.2 to 45.0.3 in /.config in the
+      dependencies group (#1993) @dependabot[bot]
+    - [pre-commit.ci] pre-commit autoupdate (#1991)
+      @pre-commit-ci[bot]
+    - Bump the dependencies group in /.config with 6 updates
+      (#1992) @dependabot[bot]
+    - Bump codecov/codecov-action from 5.4.2 to 5.4.3 (#1990)
+      @dependabot[bot]
+    - Bump the dependencies group in /.config with 6 updates
+      (#1989) @dependabot[bot]
+    - Add merge_group handler for tox workflow (#1983) @Qalthos
+    - chore: Fix codecov use_oidc setting (#1988) @Qalthos
+    - Ignore the untracked files in the codecov scan (#1986)
+      @shatakshiiii
+    - [pre-commit.ci] pre-commit autoupdate (#1987)
+      @pre-commit-ci[bot]
+    - Bump the dependencies group in /.config with 5 updates
+      (#1985) @dependabot[bot]
+    - [pre-commit.ci] pre-commit autoupdate (#1981)
+      @pre-commit-ci[bot]
+    - Bump the dependencies group in /.config with 6 updates
+      (#1978) @dependabot[bot]
+    - [pre-commit.ci] pre-commit autoupdate (#1976)
+      @pre-commit-ci[bot]
+    - Bump the dependencies group in /.config with 5 updates
+      (#1975) @dependabot[bot]
+
+-------------------------------------------------------------------
 Tue Apr 29 06:13:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.4.1:
