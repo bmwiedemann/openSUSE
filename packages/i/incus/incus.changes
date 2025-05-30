@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 22 15:03:34 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Add backport of <https://github.com/lxc/incus/pull/2136> to fix a bug with
+  proxy devices using bind=container and listen=unix:... addresses.
+  + 0001-incusd-forkproxy-join-the-correct-mntns-for-listen.patch
+
+-------------------------------------------------------------------
 Tue Apr 29 05:12:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 6.12:
