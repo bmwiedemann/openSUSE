@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 29 20:11:02 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ack 3.9.0:
+  * The --not option can be used with either --and or --or
+  * The -g option can now use any of the boolean options, --and,
+    --or or --not.
+  * When using --output='$f', the filename would be colorized in
+    the output line, but should not have been
+
+-------------------------------------------------------------------
 Fri May 16 09:53:53 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix changelog format: the line immediately after the dashed line

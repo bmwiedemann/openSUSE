@@ -18,7 +18,7 @@
 
 
 Name:           ack
-Version:        3.8.2
+Version:        3.9.0
 Release:        0
 Summary:        Grep-Like Text Finder
 License:        Artistic-2.0
