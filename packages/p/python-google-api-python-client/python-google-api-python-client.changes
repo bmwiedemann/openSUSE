@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Fri May 30 06:45:08 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.170.0
+  * **aiplatform:** Update the api
+  * **aiplatform:** Update the api
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **alloydb:** Update the api
+  * **analyticshub:** Update the api
+  * **analyticshub:** Update the api
+  * **androidmanagement:** Update the api
+  * **androidmanagement:** Update the api
+  * **androidpublisher:** Update the api
+  * **appengine:** Update the api
+  * **artifactregistry:** Update the api
+  * **backupdr:** Update the api
+  * **bigqueryreservation:** Update the api
+  * **bigqueryreservation:** Update the api
+  * **bigquery:** Update the api
+  * **bigquery:** Update the api
+  * **bigtableadmin:** Update the api
+  * **certificatemanager:** Update the api
+  * **chat:** Update the api
+  * **civicinfo:** Update the api
+  * **cloudbuild:** Update the api
+  * **cloudfunctions:** Update the api
+  * **cloudresourcemanager:** Update the api
+  * **compute:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **containeranalysis:** Update the api
+  * **container:** Update the api
+  * **dataflow:** Update the api
+  * **datamigration:** Update the api
+  * **dataplex:** Update the api
+  * **datastream:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **discoveryengine:** Update the api
+  * **discoveryengine:** Update the api
+  * **documentai:** Update the api
+  * **drive:** Update the api
+  * **drive:** Update the api
+  * **firebaseml:** Update the api
+  * **firebaseml:** Update the api
+  * **gkebackup:** Update the api
+  * **gkeonprem:** Update the api
+  * **iam:** Update the api
+  * **integrations:** Update the api
+  * **integrations:** Update the api
+  * **lifesciences:** Update the api
+  * **managedkafka:** Update the api
+  * **memcache:** Update the api
+  * **metastore:** Update the api
+  * **migrationcenter:** Update the api
+  * **migrationcenter:** Update the api
+  * **monitoring:** Update the api
+  * **netapp:** Update the api
+  * **networkconnectivity:** Update the api
+  * **networkconnectivity:** Update the api
+  * **networkservices:** Update the api
+  * **networkservices:** Update the api
+  * **notebooks:** Update the api
+  * **ondemandscanning:** Update the api
+  * **oracledatabase:** Update the api
+  * **osconfig:** Update the api
+  * **places:** Update the api
+  * **places:** Update the api
+  * **recaptchaenterprise:** Update the api
+  * **recaptchaenterprise:** Update the api
+  * **retail:** Update the api
+  * **retail:** Update the api
+  * **run:** Update the api
+  * **run:** Update the api
+  * **sheets:** Update the api
+  * **sqladmin:** Update the api
+  * **sqladmin:** Update the api
+  * **storagetransfer:** Update the api
+  * **storagetransfer:** Update the api
+  * **storage:** Update the api
+  * **texttospeech:** Update the api
+  * **trafficdirector:** Update the api
+  * **workloadmanager:** Update the api
+  * **artifactregistry:** Update the api
+  * **cloudkms:** Update the api
+  * **storage:** Update the api
+  * **sts:** Update the api
+
+-------------------------------------------------------------------
 Wed May 14 09:46:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.169.0
