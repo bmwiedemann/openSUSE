@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-cpufreq-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,19 @@
 %define plugin cpufreq
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.2.9
+Version:        1.3.0
 Release:        0
 Summary:        CPU Frequency Scaling Monitor Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-cpufreq-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.2/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.3/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
@@ -76,14 +78,14 @@ NOCONFIGURE=1 ./autogen.sh
   --enable-maintainer-mode \
   --disable-static
 %else
-%configure --disable-static
+%meson
 %endif
-%make_build
+%meson_build
 
 %install
-%make_install
+%meson_install
 
-rm %{buildroot}%{_libdir}/xfce4/panel/plugins/libcpufreq.la
+rm -f %{buildroot}%{_libdir}/xfce4/panel/plugins/libcpufreq.la
 
 %find_lang %{name} %{name}.lang %{?no_lang_C}
 
