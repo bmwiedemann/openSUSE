@@ -17,7 +17,7 @@
 
 
 Name:           eppic
-Version:        4.99.git.1682279748.c294e5b
+Version:        4.99.git.1748503906.6cb0c2a
 Release:        0
 Summary:        Embeddable Pre-Processor and Interpreter for C
 License:        GPL-2.0-or-later

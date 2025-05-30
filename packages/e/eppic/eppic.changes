@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 29 07:34:48 UTC 2025 - Petr Tesařík <ptesarik@suse.com>
+
+- Update to 6cb0c2ad3ac2de988c02378766ef53302726abf3
+  o Fix build with gcc-15
+
+-------------------------------------------------------------------
 Mon Apr 24 08:26:22 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
 
 - Update to c294e5bf89cab01f3c5316474cfc5104af7e6a60
