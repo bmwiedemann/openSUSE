@@ -1,7 +1,7 @@
 #
 # spec file for package python-grpclib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,34 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-grpclib
-Version:        0.4.7
+Version:        0.4.8
 Release:        0
 Summary:        Pure-Python gRPC implementation for asyncio
 License:        BSD-3-Clause
 URL:            https://github.com/vmagamedov/grpclib
 Source:         https://github.com/vmagamedov/grpclib/archive/v%{version}.tar.gz#/grpclib-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.6.0}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module h2 >= 3.1.0}
-BuildRequires:  %{python_module multidict}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module async-timeout}
 BuildRequires:  %{python_module certifi}
-BuildRequires:  %{python_module Faker}
+BuildRequires:  %{python_module multidict}
 BuildRequires:  %{python_module protobuf}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-h2 >= 3.1.0
 Requires:       python-multidict
 Suggests:       python-protobuf >= 3.20.0
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

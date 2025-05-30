@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 30 08:00:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.4.8
+  * Fixed ``authority`` header for the case when Channel's ``host``
+    argument is the IPv6 address
+  * Fixed ``Channel`` for the case when ``ssl`` module is not available
+  * Dropped Python 3.7 support
+  * Added "wheel" packaging format
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Thu Oct 31 08:44:44 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Initial version (0.4.7)
