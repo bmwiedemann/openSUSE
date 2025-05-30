@@ -1,7 +1,7 @@
 #
 # spec file for package libdiscid
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libdiscid0
 Name:           libdiscid
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        Library for gathering DiscIDs and ISRCs from audio CDs
 License:        LGPL-2.1-or-later

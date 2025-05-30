@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 27 13:02:45 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
+
+- Update to version 0.6.5:
+  * CMake: Restore includedir and libdir
+  * Code sign Windows and macOS binaries
+
+-------------------------------------------------------------------
 Thu Feb 29 16:08:57 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
