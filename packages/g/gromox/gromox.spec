@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.45
+Version:        2.46
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -237,7 +237,6 @@ fi
 %attr(0755,grommunio,gromoxcf) %dir %_sysconfdir/%name/
 %_sbindir/gromox-*
 %_libdir/*.so.*
-%_libdir/%name/
 %_libdir/php*/
 %_libexecdir/%name/
 %_pamdir/
