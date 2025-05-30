@@ -1,7 +1,7 @@
 #
 # spec file for package python-fixtures
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ URL:            https://github.com/testing-cabal/fixtures
 Source:         https://files.pythonhosted.org/packages/source/f/fixtures/fixtures-%{version}.tar.gz
 Patch0:         handle-no-external-mock.patch
 BuildRequires:  %{python_module pbr >= 5.7.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 #TESTS
 BuildRequires:  %{python_module extras}
 BuildRequires:  %{python_module testtools >= 2.5.0}
@@ -50,10 +52,10 @@ compatible test cases easy and straight forward.
 %autosetup -p1 -n fixtures-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,6 +65,6 @@ compatible test cases easy and straight forward.
 %license COPYING
 %doc Apache-2.0 BSD NEWS README.rst
 %{python_sitelib}/fixtures
-%{python_sitelib}/fixtures-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/fixtures-%{version}*-info
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 26 15:41:47 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Disable build of the converted flavor in Tumbleweed and SLE16.
+  It's time to leave those converted fonts behind. 
+
+-------------------------------------------------------------------
 Thu Feb 27 21:45:25 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim old specfile constructs

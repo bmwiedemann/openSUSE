@@ -49,7 +49,7 @@ LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
-LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/stunnel-image/README.md"
+LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
 COPY entrypoint.sh /usr/local/bin/
 COPY stunnel.conf /etc/stunnel/stunnel.conf
 RUN set -euo pipefail; chmod 0755 /usr/local/bin/entrypoint.sh;     chown --recursive stunnel /etc/stunnel

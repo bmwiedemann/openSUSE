@@ -2,7 +2,10 @@
 <constraints>
   <hardware>
     <disk>
-      <size unit="G">5</size>
+      <size unit="G">25</size>
     </disk>
+    <physicalmemory>
+       <size unit="M">5000</size>
+    </physicalmemory>
   </hardware>
 </constraints>

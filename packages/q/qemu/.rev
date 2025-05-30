@@ -4419,4 +4419,18 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1275616</requestid>
   </revision>
+  <revision rev="291" vrev="2">
+    <srcmd5>453f45b1714ddcb86997c63276922169</srcmd5>
+    <version>10.0.0</version>
+    <time>1748607736</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building opensbi with gcc-15:
+  * [openSUSE] Fix bsc#1241473 (in opensbi)
+- Fixes for bsc#1241240 and bsc#1243585:
+  * vfio/spapr: Fix L2 crash with PCI device passthrough and memory &gt; 128G (bsc#1241240)
+  * vfio/spapr: Enhance error handling in vfio_spapr_create_window() (bsc#1241240)
+  * tests/functional: Use -no-shutdown in the hppa_seabios test (bsc#1243585)
+</comment>
+    <requestid>1280947</requestid>
+  </revision>
 </revisionlist>

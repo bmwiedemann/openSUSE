@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-extras
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # A build cycle exists between python-extras and python-testtools.
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -34,7 +33,9 @@ Summary:        Extra bits for Python
 License:        MIT
 URL:            https://github.com/testing-cabal/extras
 Source:         https://files.pythonhosted.org/packages/source/e/extras/extras-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Break cycle
@@ -55,17 +56,17 @@ general use outside of a testing context.
 %setup -q -n extras-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %if %{with test}
 %check
-%python_exec -m unittest discover
+%pyunittest
 %endif
 
 %if !%{with test}
@@ -73,7 +74,7 @@ general use outside of a testing context.
 %license LICENSE
 %doc NEWS README.rst
 %{python_sitelib}/extras
-%{python_sitelib}/extras-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/extras-%{version}*-info/
 %endif
 
 %changelog

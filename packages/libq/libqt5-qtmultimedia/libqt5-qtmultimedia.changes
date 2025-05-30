@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 28 08:35:21 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.17+kde2, rebased upstream:
+  * qmake: Don't add audiocapture directory twice when targeting QNX
+  * Fix device file contention when setting parameters on v4l cameras
+  * Bump version to 5.15.17
+
+-------------------------------------------------------------------
 Mon Nov 25 15:43:04 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.16+kde2, rebased upstream:

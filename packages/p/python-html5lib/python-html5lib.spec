@@ -1,7 +1,7 @@
 #
 # spec file for package python-html5lib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-html5lib
 Version:        1.1
@@ -33,11 +32,13 @@ Patch1:         python-html5lib-no-mock.patch
 Patch2:         pytest74.patch
 BuildRequires:  %{python_module Genshi}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module pytest-expect}
 BuildRequires:  %{python_module setuptools >= 18.5}
 BuildRequires:  %{python_module six >= 1.9}
 BuildRequires:  %{python_module webencodings}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six >= 1.9
@@ -62,10 +63,10 @@ simple custom format
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -75,6 +76,6 @@ simple custom format
 %license LICENSE
 %doc CHANGES.rst README.rst
 %{python_sitelib}/html5lib/
-%{python_sitelib}/html5lib-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/html5lib-%{version}*-info
 
 %changelog

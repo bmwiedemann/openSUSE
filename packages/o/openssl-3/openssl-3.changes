@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 29 06:46:14 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix P-384 curve on lower-than-P9 PPC64 targets [bsc#1243014]
+  * Add openssl-Fix-P384-on-P8-targets.patch [a72f753c]
+
+-------------------------------------------------------------------
+Mon May 26 10:16:09 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Security fix: [bsc#1243564, CVE-2025-4575]
+  * Fix the x509 application adding trusted use instead of rejected use
+  * Add openssl-CVE-2025-4575.patch
+
+-------------------------------------------------------------------
 Thu May 15 09:41:20 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - FIPS: Fix the speed command in FIPS mode for KMAC
@@ -19,6 +32,8 @@ Mon May 12 10:47:50 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 Fri Apr  4 13:34:27 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 3.5.0:
+  * Security fixes:
+    - [bsc#1243459, CVE-2025-27587] Minerva side channel vulnerability in P-384
   * Changes:
     - Default encryption cipher for the req, cms, and smime applications
       changed from des-ede3-cbc to aes-256-cbc.

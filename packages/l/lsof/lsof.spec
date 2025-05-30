@@ -25,6 +25,8 @@ License:        Zlib
 Group:          System/Monitoring
 URL:            https://github.com/lsof-org/lsof
 Source:         https://github.com/lsof-org/lsof/releases/download/%{version}/lsof-%{version}.tar.gz
+# PATCH-FIX-BUILD lsof-skip-nfs-test.patch bsc1243577 sbrabec@suse.com -- Skip NFS test, as it cannot complete properly in OBS.
+Patch1:         lsof-skip-nfs-test.patch
 Patch3:         reproducible.patch
 BuildRequires:  autoconf
 BuildRequires:  automake

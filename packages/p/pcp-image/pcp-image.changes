@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 26 09:38:47 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- create all users in PCP container
+
+-------------------------------------------------------------------
+Fri May 23 11:23:16 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- use SOURCEURL_WITH to generate proper artifacthub urls
+
+-------------------------------------------------------------------
+Wed May 14 09:45:04 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- preallocate users with fixed uids
+
+-------------------------------------------------------------------
 Mon Apr 28 10:47:42 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - zypper clean also the system repository from the container

@@ -88,4 +88,12 @@
 - Do not provide bundled certificate;</comment>
     <requestid>1124088</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>bb1df4d462423e39883c05a62bea2e2f</srcmd5>
+    <version>0.8.1</version>
+    <time>1748607723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1280886</requestid>
+  </revision>
 </revisionlist>

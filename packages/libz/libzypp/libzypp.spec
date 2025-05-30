@@ -15,6 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# Switched to single_rpmtrans as default install backed.
+# SUSE distros stay with classic_rpmtrans as default.
+%if 0%{?suse_version}
+%bcond_without classic_rpmtrans_as_default
+%else
+%bcond_with classic_rpmtrans_as_default
+%endif
+
 # In Code16 libsolv moved the static libs from -devel to -devel-static.
 # Those are needed while cmake -DSUSE enforces linking libsolv statically.
 %if 0%{?suse_version} >= 1600
@@ -61,11 +69,8 @@
 %bcond_with visibility_hidden
 %endif
 
-# Distros using just zypper may want to enable this as default earlier
-%bcond_with enable_preview_single_rpmtrans_as_default_for_zypper
-
 Name:           libzypp
-Version:        17.36.7
+Version:        17.37.2
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -314,9 +319,16 @@ CMAKE_FLAGS="-DSUSE=1"
 EXTRA_CMAKE_OPTIONS=
 %if 0%{?suse_version}
 EXTRA_CMAKE_OPTIONS="${EXTRA_CMAKE_OPTIONS} -DLIBZYPP_CODESTREAM=0%{?suse_version}:0%{?sle_version}:0%{?is_opensuse}"
-%endif
+
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150600
 EXTRA_CMAKE_OPTIONS="${EXTRA_CMAKE_OPTIONS} -DLIBZYPP_CONFIG_USE_DELTARPM_BY_DEFAULT=1"
+%endif
+
+%if 0%{?suse_version} < 1600
+EXTRA_CMAKE_OPTIONS="${EXTRA_CMAKE_OPTIONS} -DLIBZYPP_CONFIG_USE_LEGACY_CURL_BACKEND_BY_DEFAULT=1"
+EXTRA_CMAKE_OPTIONS="${EXTRA_CMAKE_OPTIONS} -DLIBZYPP_CONFIG_USE_SERIAL_PACKAGE_DOWNLOAD_BY_DEFAULT=1"
+%endif
+
 %endif
 
 cmake .. $CMAKE_FLAGS \
@@ -331,7 +343,7 @@ cmake .. $CMAKE_FLAGS \
       %{?with_zstd:-DENABLE_ZSTD_COMPRESSION=1} \
       %{?with_sigc_block_workaround:-DENABLE_SIGC_BLOCK_WORKAROUND=1} \
       %{!?with_mediabackend_tests:-DDISABLE_MEDIABACKEND_TESTS=1} \
-      %{?with enable_preview_single_rpmtrans_as_default_for_zypper:-DENABLE_PREVIEW_SINGLE_RPMTRANS_AS_DEFAULT_FOR_ZYPPER=1} \
+      %{?with_classic_rpmtrans_as_default:-DLIBZYPP_CONFIG_USE_CLASSIC_RPMTRANS_BY_DEFAULT=1} \
       ${EXTRA_CMAKE_OPTIONS}
 
 make %{?_smp_mflags} VERBOSE=1

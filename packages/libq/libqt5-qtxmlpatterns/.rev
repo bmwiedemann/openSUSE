@@ -485,4 +485,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.16, untested. Try #2. (forwarded request 1226586 from favogt)</comment>
     <requestid>1226624</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>55d737489095b414c69c9d0b525ef392</srcmd5>
+    <version>5.15.17+kde0</version>
+    <time>1748607686</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.17, try #2 (forwarded request 1280892 from favogt)</comment>
+    <requestid>1280933</requestid>
+  </revision>
 </revisionlist>

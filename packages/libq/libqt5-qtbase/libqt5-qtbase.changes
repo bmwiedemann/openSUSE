@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed May 28 08:27:35 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.17+kde122, rebased upstream:
+  * QFileSystemEngine/Win: Use GetTempPath2 when available
+  * XML/QDom: speedup encodeText()
+  * Update Harfbuzz to 8.4.0
+  * SQLite: Update SQLite to v3.45.3
+  * Avoid detection of heading in tst_QTextMarkdownImporter::thematicBreaks
+  * Update md4c to 0.5.2
+  * xcb: Avoid recreating xcb window in QXcbWindow::requestActivateWindow()
+  * QMetaMethod: document that fromSignal(nullptr) is ok
+  * PCRE2: upgrade to 10.43
+  * SQLite: Update SQLite to v3.45.2
+  * Update bundled libpng to version 1.6.43
+  * androiddeployqt: fix QDirIterator::next() usage
+  * SQLite: Update SQLite to v3.45.1
+  * QDBusUtil: document the D-Bus signature grammar
+  * Windows: clean up System Tray Icon message icon
+  * Windows 7: blacklist tests that fail from low screen resolution
+  * Update bundled libjpeg-turbo to version 3.0.2
+  * QXcbWindow::handleLeaveNotifyEvent(): Consume when leaving geometry
+  * [docs] Fix C'n'P error in QTRY_VERIFY2 example
+  * tst_bench_QImageReader: add a benchmark for raw QFatoryLoader operations
+  * Update bundled libpng to version 1.6.42
+  * Update bundled libpng to version 1.6.41
+  * Fix license header for update_public_suffix_list.sh
+  * PSL: add changelog entry to the suggested commit message
+  * windows: Avoid infinite recursion with certain fonts
+  * SQLite: Update SQLite to v3.45.0
+  * Update Zlib to 1.3.1
+  * [docs] QVersionNumber: fix a typo
+  * QTextEngine: also round x-offset for non-subpixel text render
+  * tst_moc: DRY QProcess success verification
+  * [docs] Remove references to C++11 feature availability
+  * Doc: Replace 'saveFile' with 'saveFileContent'
+  * QObject: Make it clear we don't install duplicated event filters
+  * Rename QImageReader benchmark to tst_bench_
+  * tst_QString: explain TransientDefaultLocale better
+  * SQLite: Update SQLite to v3.44.2
+  * Fix Japan locale not showing japanese fonts correctly
+  * Bump supported macOS SDK version to version 14
+  * SQLite: Update SQLite to v3.44.1
+  * Bump version to 5.15.17
+  * [doc] QBENCHMARK_ONCE: fix typos
+  * xcb: update WM_TRANSIENT_FOR on transientParent native window recreation
+  * xcb: make QXcbWindow inherit QObject
+  * Upgrade to Harfbuzz 8.3.0
+  * QStringList: improve benchmark code
+  * Fix compilation with MSVC 17.8
+  * SQLite: Update SQLite to v3.44.0
+  * tst_QMetaEnum: add round-trip testing to valueToKeys()
+
+-------------------------------------------------------------------
 Mon Nov 25 15:32:55 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.16+kde130, rebased upstream:

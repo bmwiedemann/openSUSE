@@ -112,6 +112,8 @@ Wed Oct  2 08:20:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
   * avcodec/mpegvideo_enc: Add check for av_packet_new_side_data (CVE-2024-12361, bsc#1237358)
   * avformat/dump: print only the actual streams in a tile grid group (CVE-2025-22920, bsc#1237380)
   * avcodec/rkmppdec: Fix double-free on error (CVE-2024-35368, bsc#1234028)
+  * avcodec/wavarc: fix signed integer overflow in block type 6/19 (CVE-2024-36619, bsc#1234023)
+  * avcodec/vp9: Fix race when attaching side-data for show-existing frame (CVE-2024-36615, bsc#1234017)
 - Delete patches/ffmpeg-7-fix-crashes.patch,
   0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch (merged)
 
@@ -176,6 +178,9 @@ Wed Aug  7 07:37:24 UTC 2024 - Cliff Zhao <qzhao@suse.com>
   * avfilter/vf_gradfun: Do not overread last line (CVE-2023-50010, bsc#1223256)
   * avfilter/af_stereowiden: Check length (CVE-2023-51794, bsc#1223437)
   * avutil/hwcontext: Don't assume frames_uninit is reentrant (CVE-2024-31578, bsc#1223070)
+  * avformat/avidec: Fix integer overflow iff ULONG_MAX < INT64_MAX (CVE-2024-36618, bsc#1234020)
+  * avformat/cafdec: dont seek beyond 64bit (CVE-2024-36617, bsc#1234019)
+  * avformat/westwood_vqa: Fix 2g packets (CVE-2024-36616, bsc#1234018)
 - Drop ffmpeg-7-CVE-2024-32228.patch:
   The fix has been merged.
 - Drop ffmpeg-7-CVE-2024-32229.patch:

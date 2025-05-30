@@ -1597,4 +1597,14 @@ which haven't landed upstream yet
 - Add dependency on suse-module-tools for SLE15 (bsc#1242696)</comment>
     <requestid>1275591</requestid>
   </revision>
+  <revision rev="156" vrev="5">
+    <srcmd5>eae12df1c68b3247fcc911b705b22db9</srcmd5>
+    <version>4.4</version>
+    <time>1748608077</time>
+    <user>dimstar_suse</user>
+    <comment>- monitor: Add MAILFROM address to email envelope to avoid smtp auth
+  errors (bsc#1241474)
+  * add 1008-mdmonitor-use-MAILFROM-to-set-sendmail-envelope-send.patch</comment>
+    <requestid>1280604</requestid>
+  </revision>
 </revisionlist>

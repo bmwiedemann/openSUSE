@@ -1,7 +1,7 @@
 #
 # spec file for package ccache
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,7 @@ BuildRequires:  pkgconfig(cpp-httplib)
 # SLE15 requires gcc11 for std::filesystem
 %else
 BuildRequires:  gcc11
+BuildRequires:  gcc11-PIE
 BuildRequires:  gcc11-c++
 %endif
 BuildRequires:  libzstd-devel

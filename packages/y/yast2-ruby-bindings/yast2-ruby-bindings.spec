@@ -17,7 +17,7 @@
 
 
 Name:           yast2-ruby-bindings
-Version:        5.0.2
+Version:        5.0.4
 Release:        0
 URL:            https://github.com/yast/yast-ruby-bindings
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -80,7 +80,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{prefix} \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_SKIP_RPATH=1 \
       ..
-make %{?jobs:-j %jobs} VERBOSE=1
+%make_build
 
 %install
 cd build

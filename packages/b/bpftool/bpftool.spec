@@ -74,7 +74,7 @@ sed -i -e 's/CFLAGS += -O2/CFLAGS = $(RPM_OPT_FLAGS)/' src/Makefile
 %make_build -C src V=1 \
     feature-reallocarray=1 \
     feature-libbfd-liberty=1 \
-%if %(if gcc -lsframe -shared 2>/dev/null ; then echo 1 ; else echo 0; fi; )
+%if %(if gcc -lsframe -shared -o /dev/null 2>/dev/null ; then echo 1 ; else echo 0; fi; )
     feature-libbfd-liberty-sframe=1 \
 %endif
     feature-disassembler-four-args=1 \

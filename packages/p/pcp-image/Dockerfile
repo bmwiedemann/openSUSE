@@ -43,7 +43,7 @@ LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
-LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/pcp-image/README.md"
+LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
 ENTRYPOINT ["/usr/local/bin/container-entrypoint"]
 CMD ["/usr/lib/systemd/systemd"]
 EXPOSE 44321/tcp 44322/tcp 44323/tcp
@@ -54,8 +54,8 @@ RUN set -euo pipefail; chmod +x /usr/local/bin/container-entrypoint /usr/local/b
 COPY pmproxy.conf.template 10-host_mount.conf.template /usr/share/container-scripts/pcp/
 COPY pmcd pmlogger /etc/sysconfig/
 
-# This can be removed after the pcp dependency on sysconfig is removed
-RUN set -euo pipefail; systemctl disable wicked wickedd || :
+# Create all the users
+RUN set -euo pipefail; systemd-sysusers
 
 HEALTHCHECK --start-period=30s --timeout=20s --interval=10s --retries=3     CMD /usr/local/bin/healthcheck
 

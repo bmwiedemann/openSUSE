@@ -19,6 +19,11 @@
 
 %bcond_with extras
 %{?sle15_python_module_pythons}
+%if 0%{suse_version} < 1600
+%define pytestjobs %{?jobs: -n %jobs}
+%else
+%define pytestjobs -n ${RPM_BUILD_NCPUS:-1}
+%endif
 Name:           python-pytest-localserver
 Version:        0.8.1
 Release:        0
@@ -71,7 +76,7 @@ sed -i "1d" pytest_localserver/{plugin,smtp}.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest %{?jobs: -n %jobs}
+%pytest %{?pytestjobs}
 
 %files %{python_files}
 %doc README.rst

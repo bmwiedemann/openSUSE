@@ -1,7 +1,7 @@
 #
 # spec file for package python-shtab
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,14 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-shtab
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Automagic shell tab completion for Python CLI applications
 License:        Apache-2.0
 URL:            https://github.com/iterative/shtab
-Source:         https://files.pythonhosted.org/packages/source/s/shtab/shtab-1.7.1.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/shtab/shtab-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module setuptools_scm >= 3.4}

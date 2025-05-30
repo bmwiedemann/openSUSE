@@ -1,7 +1,7 @@
 #
 # spec file for package console-setup
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,24 @@
 
 
 Name:           console-setup
-Version:        1.223
+Version:        1.237
 Release:        0
 Summary:        Tools for configuring the console using X Window System key maps
 License:        GPL-2.0-or-later AND MIT AND SUSE-Public-Domain
 Group:          System/Console
 URL:            https://salsa.debian.org/installer-team/console-setup
-Source:         https://deb.debian.org/debian/pool/main/c/%{name}/%{name}_%{version}.tar.xz
+# Download here: https://salsa.debian.org/installer-team/console-setup/-/tags
+Source:         %{name}/%{name}-%{version}.tar.bz2
+# unifont.bdf from git tree before it was removed
+Source1:        unifont.tar.bz2
 # PATCH-FIX-OPENSUSE console-setup-1.76-fsf-address.patch -- Fix the FSF address.
 Patch0:         console-setup-1.76-fsf-address.patch
 # PATCH-FIX-OPENSUSE console-setup-paths.patch -- Change installing paths to SUSE-style.
 Patch1:         console-setup-paths.patch
+Patch2:         console-setup-no-dejavu-fonts.patch
+BuildRequires:  bdfresize
 BuildRequires:  perl
+BuildRequires:  perl-XML-Parser
 BuildRequires:  perl(encoding)
 Suggests:       xkeyboard-config
 BuildArch:      noarch
@@ -55,7 +61,8 @@ glyph position in the console font is not wasted but used for
 another symbol.
 
 %prep
-%autosetup -p1
+%autosetup -a 1 -p1
+make maintainer-clean
 
 cp -a debian/changelog ChangeLog
 cp -a debian/copyright COPYING

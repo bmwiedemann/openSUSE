@@ -254,4 +254,12 @@
     warnings as part of their tests, before restoring said filters.</comment>
     <requestid>1089350</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>aacd064b34c367f4c4aabe9744f3ae77</srcmd5>
+    <version>4.1.0</version>
+    <time>1748608072</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1280532</requestid>
+  </revision>
 </revisionlist>

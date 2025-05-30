@@ -77,4 +77,12 @@
     <comment></comment>
     <requestid>1221129</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>dfd5c6d795fad0908e4bebfc3b3b27d7</srcmd5>
+    <version>1.4.0</version>
+    <time>1748607729</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid embedding build machine CPU core count (boo#1237231) (forwarded request 1280894 from bmwiedemann)</comment>
+    <requestid>1280896</requestid>
+  </revision>
 </revisionlist>

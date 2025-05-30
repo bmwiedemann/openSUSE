@@ -1138,4 +1138,12 @@ Send to Staging:E.
     `DeprecationWarning`` added in lxml 5.3.0 when parsing HTML.</comment>
     <requestid>1269361</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>79de8f819da44edfabf60185801f64c5</srcmd5>
+    <version>5.4.0</version>
+    <time>1748608090</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1280666</requestid>
+  </revision>
 </revisionlist>

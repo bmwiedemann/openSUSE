@@ -53,6 +53,7 @@ Patch1004:      1004-call-mdadm_env.sh-from-usr-libexec-mdadm.patch
 Patch1005:      1005-mdadm-enable-Intel-Alderlake-RSTe-configuration.patch
 Patch1006:      1006-imsm-Fix-RAID0-to-RAID10-migration.patch
 Patch1007:      1007-mdadm-allow-any-valid-minor-number-in-md-device-name.patch
+Patch1008:      1008-mdmonitor-use-MAILFROM-to-set-sendmail-envelope-send.patch
 
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define _systemdshutdowndir %{_unitdir}/../system-shutdown

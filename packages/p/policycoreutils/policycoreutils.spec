@@ -149,13 +149,13 @@ Summary:        SELinux policy core policy devel utilities
 Group:          Productivity/Security
 Requires:       %{_bindir}/make
 Requires:       %{python_for_executables}-%{name} = %{version}-%{release}
+Requires:       (selinux-policy-devel if selinux-policy)
 %if 0%{?sle_version} <= 150400
 Requires:       python3-distro
 %else
 Requires:       %{python_for_executables}-distro
 %endif
 Recommends:     %{_sbindir}/ausearch
-Recommends:     selinux-policy-devel
 Conflicts:      %{name}-python <= 2.6
 
 %description devel
@@ -183,6 +183,7 @@ Requires:       %{python_for_executables}-%{name} = %{version}
 Requires:       %{python_for_executables}-gobject-Gdk
 Requires:       selinux-policy
 Requires:       setools-console
+Requires:       policycoreutils-devel
 BuildArch:      noarch
 
 %description gui
@@ -386,8 +387,11 @@ done
 %{_datadir}/bash-completion/completions/setsebool
 
 %files %{python_files policycoreutils}
-%{python_sitelib}/sepolicy
 %{python_sitelib}/sepolgen
+%{python_sitelib}/sepolicy
+%exclude %{python_sitelib}/sepolicy/gui.py
+%exclude %{python_sitelib}/sepolicy/__pycache__
+%pycache_only %{python_sitelib}/sepolicy/__pycache__
 %{python_sitelib}/sepolicy-%{version}.dist-info
 %{python_sitelib}/seobject.py
 
@@ -465,6 +469,7 @@ done
 %config(noreplace) %{_sysconfdir}/pam.d/system-config-selinux
 %config(noreplace) %{_sysconfdir}/pam.d/selinux-polgengui
 %endif
+%{python_sitelib}/sepolicy/gui.py
 
 %files dbus
 %{_datadir}/dbus-1/system.d/org.selinux.conf

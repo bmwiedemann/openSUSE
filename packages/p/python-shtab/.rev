@@ -7,4 +7,12 @@
     <comment>Needed for power-profiles-daemon update to version 0.21.</comment>
     <requestid>1166473</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>311bab80a4d1702d5deade840165508a</srcmd5>
+    <version>1.7.2</version>
+    <time>1748607689</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1280826</requestid>
+  </revision>
 </revisionlist>

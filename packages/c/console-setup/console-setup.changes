@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 28 09:07:27 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Updated to version 1.237
+  * updated translations
+- refreshed console-setup-paths.patch
+- unifont.tar.bz2: 
+  * package unifont.bdf since we don't have unifont.hex sources on
+    on our distribution
+- console-setup-no-dejavu-fonts.patch
+  * don't try to generate dejavu fonts (new feature)
+- switched to tarball format and name of main sources you can
+  actually download from the git webpage
+
+-------------------------------------------------------------------
 Sun Oct  1 11:32:44 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 1.223:

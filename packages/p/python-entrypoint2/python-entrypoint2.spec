@@ -1,7 +1,7 @@
 #
 # spec file for package python-entrypoint2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,9 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ponty/entrypoint2
 Source:         https://github.com/ponty/entrypoint2/archive/%{version}.tar.gz#/entrypoint2-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-EasyProcess
@@ -60,12 +62,12 @@ off entrypoint.
 
 %if !%{with test}
 %build
-%python_build
+%pyproject_wheel
 %endif
 
 %if !%{with test}
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -78,7 +80,8 @@ off entrypoint.
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/entrypoint2
+%{python_sitelib}/entrypoint2-%{version}*-info
 %endif
 
 %changelog

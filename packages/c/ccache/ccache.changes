@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 27 10:04:17 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Added BuildRequires: gcc11-PIE
+  (bsc#1239963)
+
+-------------------------------------------------------------------
 Thu Oct 10 07:38:46 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Really run tests and Unit tests in %check

@@ -1,5 +1,7 @@
---- a/Keyboard/ckbcomp
-+++ b/Keyboard/ckbcomp
+Index: console-setup-1.237/Keyboard/ckbcomp
+===================================================================
+--- console-setup-1.237.orig/Keyboard/ckbcomp
++++ console-setup-1.237/Keyboard/ckbcomp
 @@ -3273,14 +3273,14 @@ if ($keycodes =~ /(^|\+|\|)ataritt(\([^\
  ########### READ ACM ###############################################
  
@@ -23,8 +25,10 @@
                       "${charmap}") {
  	if (-f $acmfile) {
  	    $acm = $acmfile;
---- a/Keyboard/compose_translator
-+++ b/Keyboard/compose_translator
+Index: console-setup-1.237/Keyboard/compose_translator
+===================================================================
+--- console-setup-1.237.orig/Keyboard/compose_translator
++++ console-setup-1.237/Keyboard/compose_translator
 @@ -51,10 +51,10 @@ my %uni2acm;
  my %acm2uni;
  if ($acm) {
@@ -40,8 +44,10 @@
  	if (-f $acmfile) {
  	    $acm = $acmfile;
  	    last;
---- a/Makefile
-+++ b/Makefile
+Index: console-setup-1.237/Makefile
+===================================================================
+--- console-setup-1.237.orig/Makefile
++++ console-setup-1.237/Makefile
 @@ -11,9 +11,9 @@ include Fonts/Makefile
  ~ := main
  
@@ -81,20 +87,9 @@
  	install -d $(etcdir)/console-setup
  	install -m 644 Keyboard/compose.*.inc $(etcdir)/console-setup/
  	install -m 644 Keyboard/remap.inc $(etcdir)/console-setup/
-@@ -53,8 +54,8 @@ install-common-freebsd: build-freebsd
- 	install -m 644 Fonts/*.fnt $(prefix)/share/syscons/fonts/
- 	install -d $(prefix)/share/syscons/scrnmaps/
- 	install -m 644 Fonts/*.scm $(prefix)/share/syscons/scrnmaps/
--	install -d $(prefix)/share/consoletrans
--	install -m 644 acm/*.acm $(prefix)/share/consoletrans/
-+	install -d $(prefix)/share/kbd/consoletrans
-+	install -m 644 acm/*.acm $(prefix)/share/kbd/consoletrans/
- 	install -d $(etcdir)/console-setup
- 	install -m 644 Fonts/terminfo $(etcdir)/console-setup/
- 	install -m 644 Fonts/termcap $(etcdir)/console-setup/
-@@ -99,10 +100,10 @@ install-mini-freebsd: install-common ins
+@@ -78,10 +79,10 @@ install-mini-linux: install-common insta
  
- common-uninstall: | build-linux build-mini-linux build-freebsd build-mini-freebsd
+ common-uninstall: | build-linux build-mini-linux
  	-for font in Fonts/*.psf.gz; do \
 -		rm $(prefix)/share/consolefonts/$${font##*/}; \
 +		rm $(prefix)/share/kbd/consolefonts/$${font##*/}; \
@@ -105,7 +100,7 @@
  	done
  	-for font in Fonts/*.fnt; do \
  		rm $(prefix)/share/syscons/fonts/$${font##*/}; \
-@@ -119,7 +120,7 @@ common-uninstall: | build-linux build-mi
+@@ -98,7 +99,7 @@ common-uninstall: | build-linux build-mi
  	-rm $(etcdir)/default/keyboard
  	-rm $(etcdir)/default/console-setup
  	-rm $(prefix)/bin/ckbcomp
@@ -114,8 +109,10 @@
  
  .PHONY: uninstall-linux
  uninstall-linux: build-linux common-uninstall
---- a/man/ckbcomp.1
-+++ b/man/ckbcomp.1
+Index: console-setup-1.237/man/ckbcomp.1
+===================================================================
+--- console-setup-1.237.orig/man/ckbcomp.1
++++ console-setup-1.237/man/ckbcomp.1
 @@ -46,7 +46,7 @@ Print a usage message and exit.
  .BI -charmap\  charmap
  The encoding to use for the output keymap.  There should be an
@@ -149,9 +146,11 @@
  .br
  .I /usr/share/X11/xkb
  .br
---- a/man/console-setup.5
-+++ b/man/console-setup.5
-@@ -403,16 +403,16 @@ Completely covered by the following font
+Index: console-setup-1.237/man/console-setup.5
+===================================================================
+--- console-setup-1.237.orig/man/console-setup.5
++++ console-setup-1.237/man/console-setup.5
+@@ -404,16 +404,16 @@ Completely covered by the following font
  The standard location of the
  .B console-setup
  configuration file is
@@ -172,8 +171,10 @@
  
  .SH NOTES
  The aim of the Terminus font is to reduce the eyes-fatigue when one
---- a/man/keyboard.5
-+++ b/man/keyboard.5
+Index: console-setup-1.237/man/keyboard.5
+===================================================================
+--- console-setup-1.237.orig/man/keyboard.5
++++ console-setup-1.237/man/keyboard.5
 @@ -154,12 +154,12 @@ on FreeBSD.
  The standard location of the
  .B keyboard
@@ -190,8 +191,10 @@
  you will find several keymaps that can be used with the variable
  .BR KMAP .
  
---- a/man/setupcon.1
-+++ b/man/setupcon.1
+Index: console-setup-1.237/man/setupcon.1
+===================================================================
+--- console-setup-1.237.orig/man/setupcon.1
++++ console-setup-1.237/man/setupcon.1
 @@ -22,11 +22,11 @@ the console.  Most of the time you invok
  without arguments.  The keyboard configuration is specified in
  .I ~/.keyboard
@@ -224,9 +227,11 @@
  .br
  .I /etc/console-setup/
  
---- a/setupcon
-+++ b/setupcon
-@@ -644,9 +644,9 @@ esac
+Index: console-setup-1.237/setupcon
+===================================================================
+--- console-setup-1.237.orig/setupcon
++++ console-setup-1.237/setupcon
+@@ -621,9 +621,9 @@ esac
  # mapdir, fontdir, stdfont, stdfontfallback
  case "$kernel" in
      linux)
@@ -238,7 +243,7 @@
          stdfont=$CODESET-$FONTFACE$FONTSIZE.psf.gz
          # [A-WXYZa-wyz] is a funny way to say [A-Za-wyz].  In some locales 
          # [A-Z] includes x and we don't want this.
-@@ -716,7 +716,7 @@ fi
+@@ -672,7 +672,7 @@ fi
  # FONTMAPFILE
  FONTMAPFILE=''
  if [ "$kernel" = linux -a -n "$FONT_MAP" ]; then

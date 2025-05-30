@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 28 13:17:22 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Avoid embedding build machine CPU core count (boo#1237231)
+
+-------------------------------------------------------------------
 Wed Oct 30 10:52:01 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Skip elliptical-arc-test and polynomial-test also on ppc64le, riscv64, s390x

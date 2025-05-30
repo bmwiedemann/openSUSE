@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 28 08:30:00 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.17+kde21, rebased upstream:
+  * Flickable: don't allow dragging with mouse buttons other than left
+  * Fix deadlock in long-running particle system
+  * Increase the timeout for tst_qmlmin
+  * Windows 7: blacklist tests that fail from low screen resolution
+  * QtQml: Clear context objects more thoroughly on destruction
+  * Avoid crashing in the quickwidgets example after closing the subwindow
+  * doc: Fix type of fontInfo.pixelSize property
+  * QtQuick.Shapes: Mark Shape properties as readonly
+  * doc: Mention that Window.visible is false by default
+  * Bump version to 5.15.17
+  * Add license headers to shader source
+
+-------------------------------------------------------------------
 Mon Nov 25 15:36:59 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.16+kde22, rebased upstream:

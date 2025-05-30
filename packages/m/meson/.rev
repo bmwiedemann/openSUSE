@@ -1077,4 +1077,12 @@ Smoketest in GNOME:Next passed</comment>
     <comment></comment>
     <requestid>1273466</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>8b441ea90eb8942d2417a81b0d3e5fea</srcmd5>
+    <version>1.8.1</version>
+    <time>1748608099</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.1.</comment>
+    <requestid>1280344</requestid>
+  </revision>
 </revisionlist>

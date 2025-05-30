@@ -46,7 +46,7 @@ LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
-LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/grafana-image/README.md"
+LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
 ENV GF_PATHS_DATA="/var/lib/grafana"
 ENV GF_PATHS_HOME="/usr/share/grafana"
 ENV GF_PATHS_LOGS="/var/log/grafana"

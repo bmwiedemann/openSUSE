@@ -133,7 +133,7 @@ ctest_exclude_regex="bezier-test|ellipse-test|line-test|polynomial-test|self-int
 %endif
 # END deactivate failling test
 pushd build
-ctest --output-on-failure --force-new-ctest-process --parallel %{_smp_build_ncpus} \
+ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags} \
       %{?excluded_tests:--exclude-regex "($ctest_exclude_regex)"}
 popd
 

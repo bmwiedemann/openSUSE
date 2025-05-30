@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed May 28 09:36:23 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.14.0:
+  * Security fixes:
+    - [CVE-2025-4947, bsc#1243397] QUIC certificate check skip with wolfSSL
+    - [CVE-2025-5025, bsc#1243706] No QUIC certificate pinning with wolfSSL
+  * Changes:
+    - mqtt: send ping at upkeep interval
+    - schannel: handle pkcs12 client certificates containing CA certificates
+    - TLS: add CURLOPT_SSL_SIGNATURE_ALGORITHMS and --sigalgs
+    - vquic: ngtcp2 + openssl support
+    - wcurl: import v2025.04.20 script + docs
+    - websocket: add option to disable auto-pong reply
+  * Bugfixes:
+    - asny-thrdd: fix detach from running thread
+    - async-threaded resolver: use ref counter
+    - async: DoH improvements
+    - build: enable gcc-12/13+, clang-10+ picky warnings
+    - build: enable gcc-15 picky warnings
+    - certs: drop unused `default_bits` from `.prm` files
+    - cf-https-connect: use the passed in dns struct pointer
+    - cf-socket: fix FTP accept connect
+    - cfilters: remove assert
+    - cmake: fix nghttp3 static linking with `USE_OPENSSL_QUIC=ON`
+    - cmake: prefer `COMPILE_OPTIONS` over `CMAKE_C_FLAGS` for custom C options
+    - cmake: revert `CURL_LTO` behavior for multi-config generators
+    - configure: fix --disable-rt
+    - CONTRIBUTE: add project guidelines for AI use
+    - cpool/cshutdown: force close connections under pressure
+    - curl: fix memory leak when -h is used in config file
+    - curl_get_line: handle lines ending on the buffer boundary
+    - headers: enforce a max number of response header to accept
+    - http: fix HTTP/2 handling of TE request header using "trailers"
+    - lib: include files using known path
+    - lib: unify conversions to/from hex
+    - libssh: add NULL check for Curl_meta_get()
+    - libssh: fix memory leak
+    - mqtt: use conn/easy meta hash
+    - multi: do transfer book keeping using mid
+    - multi: init_do(): check result
+    - netrc: avoid NULL deref on weird input
+    - netrc: avoid strdup NULL
+    - netrc: deal with null token better
+    - openssl-quic: avoid potential `-Wnull-dereference`, add assert
+    - openssl-quic: fix shutdown when stream not open
+    - openssl: enable builds for *both* engines and providers
+    - openssl: set the cipher string before doing private cert
+    - progress: avoid integer overflow when gathering total transfer size
+    - rand: update comment on Curl_rand_bytes weak random
+    - rustls: make max size of cert and key reasonable
+    - smb: avoid integer overflow on weird input date
+    - urlapi: redirecting to "" is considered fine
+  * Remove curl-8.13.0-CloseSocket.patch upstream
+  * Rebase libcurl-ocloexec.patch
+
+-------------------------------------------------------------------
 Fri Apr 11 17:36:27 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix Leap build add curl-8.13.0-CloseSocket.patch

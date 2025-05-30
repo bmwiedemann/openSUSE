@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 15 13:31:05 UTC 2025 - pgajdos@suse.com
+
+- added patches [bsc#1241940]:
+  fix build with gcc15, sent to STBEY@cpan.org
+  * perl-Bit-Vector-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Feb  6 22:16:07 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

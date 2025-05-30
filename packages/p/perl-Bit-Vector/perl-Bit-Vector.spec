@@ -29,6 +29,8 @@ URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/ST/STBEY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         Bit-Vector-7.1.diff
+# build with gcc15, sent to STBEY@cpan.org
+Patch1:         perl-Bit-Vector-gcc15.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp::Clan) >= 5.300
@@ -44,9 +46,7 @@ Provides:       perl(Bit::Vector::String) = %{version}
 %description
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -N
-
-%patch -P0
+%autosetup -p0 -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

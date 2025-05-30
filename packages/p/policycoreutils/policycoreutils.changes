@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon May 26 11:59:36 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Remove misleading comment from spec file about reuqires for
+  policycoreutils-devel
+
+-------------------------------------------------------------------
+Thu May 15 12:14:03 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Improve policycoreutils-devel package dependencies (bsc#1236193).
+
+-------------------------------------------------------------------
+Tue May  6 15:07:51 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Change Recommends for policycoreutils-devel to the gui package to
+  Requires. This causees some system bloat for people that only
+  want to use the config GUI, but prevents errors when building
+  policy packages
+
+-------------------------------------------------------------------
+Tue May  6 07:06:59 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Properly exclude gui.py file (bsc#1242096)
+- Added Recommends for policycoreutils-devel to the gui package
+
+-------------------------------------------------------------------
+Fri Apr 11 08:06:35 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Move gui.py file to gui sub-package to prevent policycoreutil python
+  packages from having excessive requirements
+
+-------------------------------------------------------------------
 Fri Mar  7 14:12:08 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.8.1

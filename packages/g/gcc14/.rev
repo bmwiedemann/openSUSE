@@ -219,4 +219,13 @@ next week.  Gcc7 can pick it up from there.
 - Remove gcc14-pr108900.patch</comment>
     <requestid>1280088</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>df0e54cc14567127a3f87d3157cb1025</srcmd5>
+    <version>14.3.0+git11799</version>
+    <time>1748607635</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable build of glibc cross to loongarch64 and hppa in SLFO
+  and SLE15.</comment>
+    <requestid>1280776</requestid>
+  </revision>
 </revisionlist>

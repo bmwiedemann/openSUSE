@@ -6,5 +6,6 @@ library, designed to make it easier to write foolproof applications”.
 LibreTLS aims to make the libtls API more easily and widely available for
 OpenSSL based systems. Specifically it uses the default CA locations of
 OpenSSL.</description>
+  <devel project="security:tls" package="libretls"/>
   <url>https://git.causal.agency/libretls/about/</url>
 </package>

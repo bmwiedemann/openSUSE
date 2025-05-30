@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 27 13:28:42 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- monitor: Add MAILFROM address to email envelope to avoid smtp auth
+  errors (bsc#1241474)
+  * add 1008-mdmonitor-use-MAILFROM-to-set-sendmail-envelope-send.patch
+
+-------------------------------------------------------------------
 Wed May  7 15:59:57 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Allow any valid minor name in md device name (bsc#1240789)

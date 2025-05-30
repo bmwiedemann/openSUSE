@@ -124,6 +124,10 @@ Patch42:        openssl-FIPS-Deny-SHA-1-sigver-in-FIPS-provider.patch
 Patch43:        openssl-FIPS-Allow-SHA1-in-seclevel-2-if-rh-allow-sha1-signatures.patch
 # PATCH-FIX-FEDORA FIPS: Fix the speed command in FIPS mode for KMAC
 Patch44:        openssl-FIPS-Fix-openssl-speed-KMAC.patch
+# PATCH-FIX-UPSTREAM bsc#1243564 CVE-2025-4575 The x509 application adds trusted use instead of rejected use
+Patch45:        openssl-CVE-2025-4575.patch
+# PATCH-FIX-UPSTREAM bsc#1243014 Fix P-384 curve on lower-than-P9 PPC64 targets
+Patch46:        openssl-Fix-P384-on-P8-targets.patch
 
 # ulp-macros is available according to SUSE version.
 %ifarch x86_64

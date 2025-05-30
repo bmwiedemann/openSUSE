@@ -5169,4 +5169,24 @@
     <comment>Avoid expanding %jobs in comment (boo#1237231) (forwarded request 1277853 from bmwiedemann)</comment>
     <requestid>1277962</requestid>
   </revision>
+  <revision rev="299" vrev="72">
+    <srcmd5>7a0800ab95fdbe96c45eed2dbaa8b79e</srcmd5>
+    <version>unknown</version>
+    <time>1748608106</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20250524
+  + correct option-name used in configure script, which resulted in size
+    change for cchar_t (cf: 20250517).
+
+- Add ncurses patch 20250517
+  + initial changes for some ABI 7 features:
+    + disable wgetch-events
+    + add feature for extending mouse-buttons
+    + add feature for extending direct-color support
+  + use bracketed+paste in nsterm, rlogin-color, screen, terminology -TD
+- First steps to support ABI 7
+- Update to tack-1.11-20250503
+  * 2025/04/29 Add checks for RV/rv and XR/xr</comment>
+    <requestid>1280830</requestid>
+  </revision>
 </revisionlist>

@@ -106,4 +106,12 @@ make use of %ldconfig_scriptlets</comment>
     <comment>- update to version 570.144 (boo#1241231)</comment>
     <requestid>1270903</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>217298084e51c8f152db22d3de42865a</srcmd5>
+    <version>570.153.02</version>
+    <time>1748608025</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1280349</requestid>
+  </revision>
 </revisionlist>

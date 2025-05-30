@@ -1,0 +1,35 @@
+commit 4883b2bac4e2bb5cee49b2efdf0f77dfc2b5b77c
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Fri May 9 11:36:03 2025 +0200
+
+    macros: use smp_mflags
+    
+    to avoid embedding the number of CPU cores
+    in the .src.rpm header's expanded SPEC field.
+    
+    See also https://github.com/rpm-software-management/rpm/issues/2343
+    
+    This patch was done while working on reproducible builds for openSUSE.
+
+Index: meson-1.8.0/data/macros.meson
+===================================================================
+--- meson-1.8.0.orig/data/macros.meson
++++ meson-1.8.0/data/macros.meson
+@@ -28,7 +28,7 @@
+ %meson_build \
+     %{shrink:%{__meson} compile \
+         -C %{_vpath_builddir} \
+-        -j %{_smp_build_ncpus} \
++        %{_smp_mflags} \
+         %{?__meson_verbose:--verbose} \
+         %{nil}}
+ 
+@@ -42,7 +42,7 @@
+ %meson_test \
+     %{shrink:%{__meson} test \
+         -C %{_vpath_builddir} \
+-        --num-processes %{_smp_build_ncpus} \
++        %{_smp_mflags} \
+         --print-errorlogs \
+         %{?qemu_user_space_build: -t 10} \
+         %{nil}}

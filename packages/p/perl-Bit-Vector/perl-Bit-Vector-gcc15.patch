@@ -1,0 +1,13 @@
+Index: ToolBox.h
+===================================================================
+--- ToolBox.h.orig
++++ ToolBox.h
+@@ -85,7 +85,7 @@ typedef  Z_longword         *Z_longwordp
+ #undef  TRUE
+ #define TRUE        (0==0)
+ 
+-#ifdef __cplusplus
++#if defined(__cplusplus) ||  (__STDC_VERSION__ >= 202311L)
+     typedef bool boolean;
+ #else
+     #ifdef MACOS_TRADITIONAL

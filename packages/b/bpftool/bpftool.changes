@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 25 04:18:20 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Change .spec to not write files
+
+-------------------------------------------------------------------
 Tue Feb 25 10:01:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Simplify the LLVM version conditions

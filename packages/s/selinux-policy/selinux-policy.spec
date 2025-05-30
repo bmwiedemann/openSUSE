@@ -36,7 +36,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20250512
+Version:        20250528
 Release:        0
 Source0:        %{name}-%{version}.tar.xz
 Source1:        container.fc
@@ -54,7 +54,7 @@ Source60:       selinux-policy.conf
 Source91:       Makefile.devel
 Source95:       macros.selinux-policy
 
-URL:            https://github.com/fedora-selinux/selinux-policy.git
+URL:            https://github.com/openSUSE/selinux-policy
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %if 0%{?suse_version} < 1600

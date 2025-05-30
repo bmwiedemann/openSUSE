@@ -1,7 +1,7 @@
 #
 # spec file for package python-imagesize
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-imagesize
 Version:        1.4.1
@@ -26,13 +25,14 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/shibukawa/imagesize_py
 Source:         https://files.pythonhosted.org/packages/source/i/imagesize/imagesize-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -48,17 +48,18 @@ Supported formats:
 %setup -q -n imagesize-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %check
 rm -v test/test_get_filelike.py
 %pytest
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/imagesize
+%{python_sitelib}/imagesize-%{version}*-info
 %doc README.rst
 
 %changelog

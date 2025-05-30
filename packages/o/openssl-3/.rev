@@ -424,4 +424,20 @@
     <comment></comment>
     <requestid>1278744</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>f8ce07e1a28811c02495945876b3b552</srcmd5>
+    <version>3.5.0</version>
+    <time>1748607640</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix P-384 curve on lower-than-P9 PPC64 targets [bsc#1243014]
+  * Add openssl-Fix-P384-on-P8-targets.patch [a72f753c]
+
+- Security fix: [bsc#1243564, CVE-2025-4575]
+  * Fix the x509 application adding trusted use instead of rejected use
+  * Add openssl-CVE-2025-4575.patch
+
+  * Security fixes:
+    - [bsc#1243459, CVE-2025-27587] Minerva side channel vulnerability in P-384</comment>
+    <requestid>1281096</requestid>
+  </revision>
 </revisionlist>

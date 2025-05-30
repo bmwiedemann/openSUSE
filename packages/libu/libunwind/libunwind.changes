@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 26 07:27:57 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.8.2:
+  * Rework inline aarch64 as for setcontext
+  * Fixed miscompilation of unw_getcontext() on ARM
+  * Support -mbranch-protection=pac-ret on aarch64
+  * Add unw_is_plt_entry() to public API (fixes FTBFS on QNX)
+  * Fix signal handling for QNX aarch64
+
+-------------------------------------------------------------------
 Sat Apr  5 14:20:12 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Add malloc-prototype.patch to fix gcc15 compile time error

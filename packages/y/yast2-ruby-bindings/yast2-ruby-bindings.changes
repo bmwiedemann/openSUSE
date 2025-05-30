@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 28 11:44:30 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Revert the last change (drop cli):
+  This caused build errors in other YaST packages.
+  (bsc##1243018)
+- 5.0.4
+
+-------------------------------------------------------------------
+Tue May 13 11:42:11 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Drop the YaST command line interface (CLI) (bsc#1243018)
+- 5.0.3
+
+-------------------------------------------------------------------
 Wed Jan 15 08:39:02 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
 
 - Disable integration tests with libyui

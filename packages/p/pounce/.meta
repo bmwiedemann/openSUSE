@@ -8,5 +8,6 @@ single buffer for all IRC messages, which acts as a queue from which each
 client reads messages independently. Pounce speaks regular modern IRC to both
 servers and clients, using the server-time extension to indicate when messages
 originally occurred.</description>
+  <devel project="server:irc" package="pounce"/>
   <url>https://git.causal.agency/pounce/about/</url>
 </package>

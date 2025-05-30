@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 28 08:37:34 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.17+kde57, rebased upstream:
+  * bradient: Use QWaylandWindow actual window title
+  * Revert "Add license headers to shader files"
+  * Only remove initialized extensions in ExtContainer
+  * Doc: Fix license info for Qt Wayland QPA plugin
+  * Bump version to 5.15.17
+
+-------------------------------------------------------------------
 Mon Nov 25 15:47:02 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.16+kde59, rebased upstream:

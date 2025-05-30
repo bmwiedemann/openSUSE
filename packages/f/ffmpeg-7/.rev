@@ -132,4 +132,13 @@ retry submit due to git-&gt;obs autosync delays</comment>
     <comment>reorder changelog for ascending time [boo#1242310]</comment>
     <requestid>1274746</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>59de5dc2d1589159a574ac7fedaf5241</srcmd5>
+    <version>7.1.1</version>
+    <time>1748607725</time>
+    <user>dimstar_suse</user>
+    <comment>Update changelog to add CVE fix entry for CVE-2024-36618 CVE-2024-36617 CVE-2024-36616 CVE-2024-36619 CVE-2024-36615
+(fwd from qzhao)</comment>
+    <requestid>1280891</requestid>
+  </revision>
 </revisionlist>

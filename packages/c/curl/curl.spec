@@ -30,7 +30,7 @@
 %endif
 
 Name:           curl%{?psuffix}
-Version:        8.13.0
+Version:        8.14.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
@@ -44,8 +44,6 @@ Patch1:         dont-mess-with-rpmoptflags.patch
 Patch2:         curl-secure-getenv.patch
 # PATCH-FIX-OPENSUSE bsc#1076446 protocol redirection not supported or disabled
 Patch3:         curl-disabled-redirect-protocol-message.patch
-# PATCH-FIX-UPSTREAM curl-8.13.0-CloseSocket.patch fix Leap build
-Patch4:         curl-8.13.0-CloseSocket.patch
 BuildRequires:  groff
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -226,6 +224,9 @@ popd
 %files -n libcurl%{?psuffix}4
 %license COPYING
 %{_libdir}/libcurl.so.4*
+%if %{with mini}
+%exclude %{_bindir}/wcurl
+%endif
 
 %if !%{with mini}
 %files
@@ -234,6 +235,8 @@ popd
 %doc docs/{BUGS.md,FAQ,FEATURES.md,TODO,TheArtOfHttpScripting.md}
 %{_bindir}/curl
 %{_mandir}/man1/curl.1%{?ext_man}
+%{_bindir}/wcurl
+%{_mandir}/man1/wcurl.1%{?ext_man}
 
 %files zsh-completion
 %license COPYING

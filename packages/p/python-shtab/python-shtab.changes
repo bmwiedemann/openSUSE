@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 28 08:23:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.7.2
+  * bump deps
+  * add Python 3.12 support
+  * chore: bump linters & fix CI
+  * Add to bash support for completing paths after redirection
+  * Support unnecessary if conditions and support '[12]>>' cases
+  * docs: minor updates
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Tue Apr  9 11:29:05 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.

@@ -1,0 +1,12 @@
+diff -u lsof-4.99.4.orig/Makefile.am lsof-4.99.4/Makefile.am
+--- lsof-4.99.4.orig/Makefile.am	2023-11-15 02:04:56.000000000 +0100
++++ lsof-4.99.4/Makefile.am	2025-05-28 15:30:06.629701140 +0200
+@@ -180,7 +180,7 @@
+ endif
+ 
+ # Testing programs
+-TESTS += tests/LTbasic tests/LTbigf tests/LTdnlc tests/LTlock tests/LTnfs tests/LTnlink tests/LTsock tests/LTszoff tests/LTunix
++TESTS += tests/LTbasic tests/LTbigf tests/LTdnlc tests/LTlock tests/LTnlink tests/LTsock tests/LTszoff tests/LTunix
+ 
+ check_PROGRAMS += tests/LTbasic tests/LTbigf tests/LTdnlc tests/LTlock tests/LTnfs tests/LTnlink tests/LTsock tests/LTszoff tests/LTunix
+ tests_LTbasic_SOURCES = tests/LTbasic.c tests/LTlib.c

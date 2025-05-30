@@ -4,5 +4,6 @@
 working in C++. It is written in ANSI C++ and implemented using the C++
 Standard Library with namespaces, exception handling, and member template
 functions.</description>
+  <devel project="science" package="CCfits"/>
   <url>https://heasarc.gsfc.nasa.gov/docs/software/fitsio/ccfits/</url>
 </package>

@@ -84,6 +84,9 @@ Requires(postun): fonts-config
 # doesn't support Type1 fonts (boo#1169444)
 Supplements:    (xorg-x11-fonts and libpango-1_0-0)
 %endif
+%if 0%{?suse_version} >= 1600
+ExclusiveArch:  donotbuild
+%endif
 %else
 # "%%{flavor}" != "converted"
 BuildRequires:  bdftopcf

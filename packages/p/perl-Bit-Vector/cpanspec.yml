@@ -5,7 +5,8 @@
 #  - source1
 #  - source2
 patches:
-  Bit-Vector-7.1.diff: 
+  Bit-Vector-7.1.diff:
+  perl-Bit-Vector-gcc15.patch:  build with gcc15, sent to STBEY@cpan.org
 #preamble: |-
 # BuildRequires:  gcc-c++
 #post_prep: |-

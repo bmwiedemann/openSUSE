@@ -25,6 +25,7 @@
 %bcond_with     memleakck
 %bcond_without  onlytinfo
 %bcond_without  abi5
+%bcond_with     abi7
 %bcond_with     ada
 %bcond_with     libbsd
 %bcond_with     usepcre2
@@ -43,8 +44,8 @@
 
 %global patchlvl %(bash %{_sourcedir}/get_version_number.sh %{_sourcedir})
 %global basevers 6.5
-%global tackvers 1.10
-%global tacklvl  20240501
+%global tackvers 1.11
+%global tacklvl  20250503
 
 Name:           ncurses
 #!BuildIgnore: terminfo
@@ -606,7 +607,7 @@ export CFLAGS_SHARED
     export PKG_CONFIG_PATH
     echo PKG_CONFIG_PATH=$PKG_CONFIG_PATH
 
-    for abi in 6 %{?with_abi5:5}
+    for abi in 6 %{?with_abi5:5} %{?with_abi7:7}
     do
 	for wide in w ""
 	do
@@ -622,13 +623,13 @@ export CFLAGS_SHARED
 
 		map=ncurses${pthreads}${wide}
 		tic=tic${wide}
-		test "$abi" = 6 -a -n "$pthreads" -a -n "$wide" && progs=with || progs=without
+		test "$abi" = %{?with_abi7:7}%{!?with_abi7:6} -a -n "$pthreads" -a -n "$wide" && progs=with || progs=without
 
 		configure="${common} $(
 		    echo --with-abi-version=$abi
 		    echo --with-versioned-syms=${PWD}/package/${map}.map --with-ticlib=${tic}
 		    echo --${progs}-manpages --${progs}-progs --${progs}-tack
-		    test "$abi" = 6 && \
+		    test "$abi" = 6 -o "$abi" = 7 && \
 			echo  --enable-opaque-curses  --enable-opaque-form  --enable-opaque-menu  --enable-opaque-panel  --enable-ext-mouse  --enable-ext-colors || \
 			echo --disable-opaque-curses --disable-opaque-form --disable-opaque-menu --disable-opaque-panel --disable-ext-mouse --disable-ext-colors
 		    #
@@ -641,7 +642,7 @@ export CFLAGS_SHARED
 		    test -n "$wide" && \
 			echo  --enable-widec  --enable-wattr-macros || \
 			echo --disable-widec --disable-wattr-macros
-		    test -z "$pthreads" -a "$abi" = 6 && echo --libdir=%{_libdir}/%{name}${wide} || :
+		    test -z "$pthreads" -a "$abi" = 6 && echo --libdir=%{_libdir}/%{name}${abi}nt || :
 		    test "$abi" = 5 && echo --includedir=%{_incdir}/%{name}${abi} || :
 		)"
 

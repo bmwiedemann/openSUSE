@@ -1,5 +1,6 @@
 <package name="catgirl" project="openSUSE:Factory">
   <title>IRC client</title>
   <description>catgirl is a terminal IRC client.</description>
+  <devel project="server:irc" package="catgirl"/>
   <url>https://git.causal.agency/catgirl/about/</url>
 </package>

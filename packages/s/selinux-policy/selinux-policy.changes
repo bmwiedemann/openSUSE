@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed May 28 14:12:57 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20250528:
+  * Move 'logging_mounton_syslog_pid_socket' to end of file
+  * Revert "Allow init_t create syslog files (bsc#1230134)"
+  * Allow mdadm nosuid_transition
+  * Label plasma user service files as xdm_unit_file_t.
+  * Revert "Allow systemd-homed to start services."
+  * Allow virtstoraged write qemu runtime files
+  * Allow virtqemud read/write/setattr input event devices
+  * Allow systemd create journal pid files
+  * Allow networkmanager send a general signal to iptables
+  * Allow syslogd watch syslog_conf_t directories
+  * Allow systemd-machined work with its private tmp and tmpfs files
+  * Allow geoclue read virt lib files
+  * Fix files_dontaudit_delete_all_files()
+  * Label /run/polkit-1 with policykit_var_run_t
+  * Label /dev/diag as diagnostic_device_t
+  * Allow systemd-homed to start services.
+  * Allow named_t to read NetworkManager's runtime files
+  * Improve README* documentation
+  * Add missing permissions for ftpd_anon_write to manage NFS directories
+  * Add missing permissions for ftpd_anon_write to manage CIFS directories
+  * Allow nut-upsmon write systemd inhibit pipes
+  * Allow systemd-user-runtime-dir connect to systemd-userdbd over a unix socket
+  * Remove permissive domain for systemd_vsftpd_generator_t
+  * Change generator-specific rules to apply to systemd_generator
+  * Define file equivalency for /var/etc
+  * Allow tuned-ppd create ppd_base_profile with a file transition
+  * Allow lldpd connect to systemd-homed over a unix socket
+  * Allow sysadm_sudo_t signal rpm script
+  * Fix the "/var/cache/systemd/home(/.*)?" regex
+- Syncing with upstream rawhide selinux-policy up to:
+  * 45d07f4abe86d31efabdff15ed3c99645f5ccefd
+
+-------------------------------------------------------------------
 Thu May 15 12:14:03 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Improve selinux-policy-devel dependencies and add post script to
