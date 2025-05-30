@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May 27 05:53:14 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.0
+  Note: This release is not backwards compatible to the 0.8.x
+  series. The widget is and remains available with the previous
+  API on git branch 0.8.xx.
+  * Warn before losing user data
+  * Use QPalette for Widget Colors
+  * Programatically highlight/select some regions
+  * Blinking Read-Only cursor flag option
+  * dynamic bytesPerLine property depends on the widget size
+  version 0.8.11:
+  * Upload PyQt5 and PyQt6 bindings to PyPi
+  * Migrate from Distutils to PyQt-builder for PyQt Bindings
+  * Cleanup structure and build scripts
+  * Fix strange behavior of the cursor
+  * Fix translation of the example doesn't work
+  * Fix address display of last Line
+- Drop revive-qt5.patch and Qt5 in general
+
+-------------------------------------------------------------------
 Thu Jan 23 11:08:12 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - properly handle the Q_UNREACHABLE_RETURN in a Qt5 build

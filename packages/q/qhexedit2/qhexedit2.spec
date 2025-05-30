@@ -16,35 +16,21 @@
 #
 
 
-%global qt_version 5
-%if 0%{qt_version} == 6
-%global qmake qmake6
-%else
-%global qmake qmake-qt5
-%endif
-
-%define _libver 4
+%define _libver 0
 Name:           qhexedit2
-Version:        0.8.10
+Version:        0.9.0
 Release:        0
 Summary:        Qt-based hex editor
 License:        LGPL-2.0-only
-Group:          Development/Tools/Other
 URL:            https://github.com/Simsys/qhexedit2
 Source0:        https://github.com/Simsys/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        qhexedit.desktop
-Patch1:         revive-qt5.patch
 BuildRequires:  ImageMagick
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-%if 0%{qt_version} == 6
 BuildRequires:  pkgconfig(Qt6Widgets)
-%else
-BuildRequires:  pkgconfig(Qt5Widgets)
-%endif
 
 %description
 QHexEdit is a hex editor widget written in C++ for the Qt framework.
@@ -69,11 +55,11 @@ BuildArch:      noarch
 The %{name}-doc package contains the documentation and examples for %{name}.
 
 %package -n libqhexedit%{_libver}
-Summary:        Qt5 %{name} library
+Summary:        Qt6 %{name} library
 Group:          System/Libraries
 
 %description -n libqhexedit%{_libver}
-Qt5 library for %{name}.
+Qt6 library for %{name}.
 
 %prep
 %autosetup -p1
@@ -81,15 +67,15 @@ Qt5 library for %{name}.
 %build
 mkdir build-lib
 pushd build-lib
-%{qmake} QMAKE_CXXFLAGS="%{optflags}" ../src/qhexedit.pro
-make %{?_smp_mflags}
+%qmake6 ../src/qhexedit.pro
+%qmake6_build
 popd
 
 # Build application
 mkdir build-example
 pushd build-example
-%{qmake} QMAKE_CXXFLAGS="%{optflags}" ../example/qhexedit.pro
-make %{?_smp_mflags}
+%qmake6 ../example/qhexedit.pro
+%qmake6_build
 popd
 
 %install
@@ -117,7 +103,6 @@ EOF
 # Application
 install -Dpm 0755 build-example/qhexedit %{buildroot}%{_bindir}/qhexedit
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications/ %{SOURCE1}
-%suse_update_desktop_file %{buildroot}%{_datadir}/applications/qhexedit.desktop
 
 # Fix docs
 %fdupes -s doc/html
@@ -126,30 +111,23 @@ desktop-file-install --dir=%{buildroot}%{_datadir}/applications/ %{SOURCE1}
 install -d %{buildroot}%{_datadir}/pixmaps
 convert -strip doc/html/qhexedit.png -resize 128x128! %{buildroot}%{_datadir}/pixmaps/qhexedit.png
 
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-
 %post -n libqhexedit%{_libver} -p /sbin/ldconfig
 
 %postun -n libqhexedit%{_libver} -p /sbin/ldconfig
 
 %files
-%license src/license.txt
+%license license.txt
 %doc readme.md
 %{_bindir}/qhexedit
 %{_datadir}/applications/qhexedit.desktop
 %{_datadir}/pixmaps/qhexedit.png
 
 %files doc
-%license src/license.txt
-%doc doc/html readme.md
+%license license.txt
+%doc doc/html readme.md changelog.md
 
 %files -n libqhexedit%{_libver}
-%license src/license.txt
-%doc doc/release.txt
+%license license.txt
 %{_libdir}/libqhexedit.so.%{_libver}*
 
 %files devel
