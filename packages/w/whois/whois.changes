@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 19 15:22:31 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
+
+- Update to version 5.6.1:
+  * Added the .pg TLD server.
+  * Updated the .gov, .mu, .中国 (.xn--fiqs8s) and .中國 (.xn--fiqz9s)
+    TLD servers.
+  * Removed the .jobs TLD server.
+  * Added the encodings for whois.afrinic.net and whois.apnic.net.
+  * Enabled the UTF-8 encoding for whois.ripe.net.
+  * Use the last ReferralServer returned by the ARIN server instead of
+    the first, because we want to follow the referral for the most
+    specific record returned.
+  * Make sure to avoid trivial referral loops.
+
+-------------------------------------------------------------------
 Mon May  5 12:27:48 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
 
 - Update to version 5.6.0:
