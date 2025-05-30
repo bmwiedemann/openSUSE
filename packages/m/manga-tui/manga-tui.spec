@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           manga-tui
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Terminal manga reader and downloader
 License:        MIT
@@ -50,7 +50,7 @@ install -Dm755 target/release/%{name} -t %{buildroot}%{_bindir}
 
 %files
 %license LICEN*
-%doc README*
+%doc README* docs
 %{_bindir}/%{name}
 
 %changelog
