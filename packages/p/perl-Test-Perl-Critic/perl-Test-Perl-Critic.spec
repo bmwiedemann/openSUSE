@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Perl-Critic
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Test-Perl-Critic
-Version:        1.04
-Release:        0
 %define cpan_name Test-Perl-Critic
-Summary:        Use Perl::Critic in test programs
+Name:           perl-Test-Perl-Critic
+Version:        1.40.0
+Release:        0
+# 1.04 -> normalize -> 1.40.0
+%define cpan_version 1.04
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Test-Perl-Critic/
-Source0:        https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/%{cpan_name}-%{version}.tar.gz
+Summary:        Use Perl::Critic in test programs
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(MCE) >= 1.827
-BuildRequires:  perl(Module::Build) >= 0.400000
+BuildRequires:  perl(Module::Build) >= 0.4
 BuildRequires:  perl(Perl::Critic) >= 1.105
 BuildRequires:  perl(Perl::Critic::Utils) >= 1.105
 BuildRequires:  perl(Perl::Critic::Violation) >= 1.105
@@ -41,6 +41,8 @@ Requires:       perl(Perl::Critic) >= 1.105
 Requires:       perl(Perl::Critic::Utils) >= 1.105
 Requires:       perl(Perl::Critic::Violation) >= 1.105
 Requires:       perl(Test::Builder) >= 0.88
+Provides:       perl(Test::Perl::Critic) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -61,21 +63,20 @@ Perl::Critic API, but it should give you a good idea of what Perl::Critic
 can do.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 
