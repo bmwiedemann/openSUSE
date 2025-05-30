@@ -41,7 +41,7 @@ LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
-LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/openjdk-11-devel-image/README.md"
+LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
 ENV JAVA_BINDIR="/usr/lib64/jvm/java-11-openjdk-11/bin"
 ENV JAVA_HOME="/usr/lib64/jvm/java-11-openjdk-11"
 ENV JAVA_ROOT="/usr/lib64/jvm/java-11-openjdk-11"
