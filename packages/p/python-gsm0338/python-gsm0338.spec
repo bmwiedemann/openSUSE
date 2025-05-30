@@ -1,7 +1,7 @@
 #
 # spec file for package python-gsm0338
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gsm0338
 Version:        1.0.0
 Release:        0
@@ -26,15 +25,17 @@ License:        MIT
 URL:            https://github.com/dsch/gsm0338
 #GIT-Clone:     https://github.com/dsch/gsm0338.git
 Source:         https://github.com/dsch/gsm0338/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM parts of https://github.com/dsch/gsm0338/commit/94bcadca630d498ce8b33295c617acb1a75b39da Remove support for Python 2.7
+Patch:          no-six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-six
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -44,13 +45,13 @@ stateless codecs.Codec class. With loading the module the
 codec get's automatically registered.
 
 %prep
-%setup -q -n gsm0338-%{version}
+%autosetup -p1 -n gsm0338-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/test
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
