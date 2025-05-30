@@ -310,6 +310,7 @@ find . -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env python3,#!%{__mypython},"
 
 %install
 %cmake_install
+%python3_fix_shebang
 %fdupes %{buildroot}%{mypython_sitearch}
 #remove duplicate license file
 rm -f %{buildroot}%{_datadir}/%{name}/LICENSE.TXT

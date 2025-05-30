@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 28 10:27:23 UTC 2025 - Max Lin <mlin@suse.com>
+
+- Fix wrong-script-interpreter rpmlint error
+  * Run %python3_fix_shebang macro
+
+-------------------------------------------------------------------
 Mon Apr  7 11:55:38 UTC 2025 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to bugfix release version 3.10.3
