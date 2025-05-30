@@ -20,15 +20,16 @@
 %define plugin calculator
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        0.7.3
+Version:        0.8.0
 Release:        0
 Summary:        Calculator plugin for the Xfce4 panel
 License:        GPL-2.0-only
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-calculator-plugin
-Source:         https://archive.xfce.org/src/panel-plugins/%{name}/0.7/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/panel-plugins/%{name}/0.8/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
@@ -71,12 +72,12 @@ NOCONFIGURE=1 ./autogen.sh
   --enable-maintainer-mode \
   --disable-static
 %else
-%configure --disable-static
+%meson
 %endif
-%make_build
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %find_lang %{name} %{?no_lang_C}
 
@@ -85,7 +86,6 @@ NOCONFIGURE=1 ./autogen.sh
 %files
 %license COPYING
 %doc AUTHORS NEWS README.md
-%{_libdir}/xfce4/panel/plugins/libcalculator.la
 %{_libdir}/xfce4/panel/plugins/libcalculator.so
 %{_datadir}/icons/hicolor/*
 %{_datadir}/xfce4/panel/plugins/calculator.desktop
