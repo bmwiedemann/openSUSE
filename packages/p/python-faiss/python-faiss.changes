@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Thu Apr  3 15:31:42 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- enable C_API 
+
+-------------------------------------------------------------------
+Tue Mar 18 17:46:46 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- install softlink to libfaiss_python_callbacks.so in %{_libdir}
+
+-------------------------------------------------------------------
+Mon Mar  3 14:32:36 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- initial commit of faiss 1.10.0 which is a library that allows developers to
+  quickly search for embeddings of multimedia documents that are similar to
+  each other
