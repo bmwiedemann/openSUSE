@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu May 22 15:18:21 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Drop the _service file
+- Use Source Urls instead of obs_scm
+- Add option to build with the vulkan experimental device
+- Build with level0 experimental device
+- Update to version 7.0:
+  * PoCL received the official OpenCL 3.0 conformance stamp with the
+    CPU (x86-64) and Level Zero drivers.
+  * Support for LLVM versions 19 and 20
+  * Support for dynamic device addition and network discovery.
+    This new feature allows discovery of remote servers located in
+    LAN or WAN environments and enables runtime addition of
+    discovered devices to the remote client's platform. Network
+    discovery is performed thorugh mDNS, unicast-DNS-SD, and
+    DHT-based mechanisms, using Avahi and OpenDHT libraries.
+  * New experimental support for Defined Built-in Kernels (DBK) has
+    been added to the CPU drivers
+  * The old "work-item replication" work-group function generation
+    method was removed to clean up the kernel compiler.
+  * Full changes at
+    /usr/share/doc/packages/pocl/notes_7_0.rst
+
+-------------------------------------------------------------------
 Mon Jan  6 13:30:37 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Disable SPIR-V Support on Leap 15.x (missing llvm-spirv)

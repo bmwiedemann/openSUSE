@@ -17,19 +17,29 @@
 #
 
 
-%define sover  2
+%global sover  2
+
 %if 0%{?suse_version} >= 1600
-%bcond_without  spirv
+  %bcond_without  spirv
 %else
-%bcond_with     spirv
+  %bcond_with     spirv
+%endif
+
+%if 0%{?suse_version} >= 1600
+  %bcond_without  ttb
+%else
+  %bcond_with     ttb
 %endif
 %if 0%{?suse_version} >= 1600
-%bcond_without  ttb
+  %bcond_without  levelzero
 %else
-%bcond_with     ttb
+  %bcond_with     levelzero
 %endif
+
+%bcond_with vulkan
+
 Name:           pocl
-Version:        6.0
+Version:        7.0
 Release:        0
 Summary:        Portable Computing Language - an OpenCL implementation
 # The whole code is under MIT
@@ -40,23 +50,31 @@ URL:            https://portablecl.org/
 Source0:        https://github.com/pocl/pocl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source98:       maint.README
 Source99:       pocl-rpmlintrc
-# Version 6.0: Supports LLVM versions 14.0 to 18.0
-BuildRequires:  ((clang-devel >= 14 with clang-devel < 19) or clang18-devel)
-BuildRequires:  cmake
+# Version 7.0: Supports LLVM versions 19 and 20
+BuildRequires:  ((clang-devel >= 19 with clang-devel < 21) or clang20-devel)
+BuildRequires:  cmake >= 3.15
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
-BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(hwloc)
+BuildRequires:  pkgconfig(ocl-icd)
 # PPC has limited support/testing from upstream
 # s390(x) is also not supported, so use ExclusiveArch
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 %if %{with ttb}
-BuildRequires:  tbb-devel
+BuildRequires:  pkgconfig(tbb)
 %endif
 %if %{with spirv}
 BuildRequires:  libLLVMSPIRVLib-devel
+BuildRequires:  spirv-tools
+%endif
+%if %{with levelzero}
+BuildRequires:  pkgconfig(level-zero)
+%endif
+%if %{with vulkan}
+BuildRequires:  pkgconfig(vulkan)
 %endif
 
 %description
@@ -85,10 +103,8 @@ heterogenous GPUs/accelerators.
 
 This subpackage contains the shared library part of pocl.
 
-%if %{with ttb}
 %package -n libpocl-devices-tbb
 Summary:        TBB device for pocl
-Group:          System/Libraries
 
 %description -n libpocl-devices-tbb
 Portable Computing Language (pocl) is an implementation of the OpenCL standard
@@ -96,7 +112,16 @@ which can be adapted for new targets and devices, both for homogeneous CPU and
 heterogenous GPUs/accelerators.
 
 This subpackage contains the Thread Building Blocks (TBB) device for pocl.
-%endif
+
+%package -n libpocl-devices-levelzero
+Summary:        Level Zero device for pocl
+
+%description -n libpocl-devices-levelzero
+Portable Computing Language (pocl) is an implementation of the OpenCL standard
+which can be adapted for new targets and devices, both for homogeneous CPU and
+heterogenous GPUs/accelerators.
+
+This subpackage contains the Level Zero device for pocl.
 
 %package devel
 Summary:        Development files for the Portable Computing Language
@@ -116,17 +141,31 @@ This subpackage provides the development files needed for pocl.
 %autosetup -p1
 
 %build
-%define __builder ninja
+%global __builder ninja
 %cmake \
+  -DPOCL_INSTALL_ICD_VENDORDIR=%{_datadir}/OpenCL/vendors \
+  -DENABLE_LLVM=ON \
+  -DWITH_LLVM_CONFIG=%{_bindir}/llvm-config \
+  -DENABLE_ICD=ON \
+  -DSTATIC_LLVM=OFF \
+  -DENABLE_REMOTE_DISCOVERY_AVAHI=ON \
+  -DENABLE_REMOTE_ADVERTISEMENT_AVAHI=ON \
+  -DENABLE_REMOTE_DISCOVERY_DHT=ON \
+  -DENABLE_REMOTE_ADVERTISEMENT_DHT=ON \
   -DENABLE_CUDA=OFF \
+  -DINSTALL_OPENCL_HEADERS=OFF \
 %if %{with spirv}
   -DENABLE_SPIRV=ON \
 %endif
-  -DENABLE_ICD=ON \
 %if %{with ttb}
   -DENABLE_TBB_DEVICE=ON \
 %endif
-  -DPOCL_INSTALL_ICD_VENDORDIR=%{_datadir}/OpenCL/vendors \
+%if %{with levelzero}
+  -DENABLE_LEVEL0=ON \
+%endif
+%if %{with vulkan}
+  -DENABLE_VULKAN=ON \
+%endif
 %ifarch %{ix86} x86_64
   -DKERNELLIB_HOST_CPU_VARIANTS=distro \
 %endif
@@ -142,7 +181,7 @@ This subpackage provides the development files needed for pocl.
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
   -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
 %endif
-  -DWITH_LLVM_CONFIG=%{_bindir}/llvm-config
+  %{nil}
 
 %cmake_build
 
@@ -174,6 +213,11 @@ This subpackage provides the development files needed for pocl.
 %if %{with ttb}
 %files -n libpocl-devices-tbb
 %{_libdir}/pocl/libpocl-devices-tbb.so
+%endif
+
+%if %{with levelzero}
+%files -n libpocl-devices-levelzero
+%{_libdir}/pocl/libpocl-devices-level0.so
 %endif
 
 %changelog
