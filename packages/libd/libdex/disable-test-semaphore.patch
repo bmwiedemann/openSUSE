@@ -1,0 +1,12 @@
+Index: libdex-0.10.0/testsuite/meson.build
+===================================================================
+--- libdex-0.10.0.orig/testsuite/meson.build
++++ libdex-0.10.0/testsuite/meson.build
+@@ -23,7 +23,6 @@ testsuite = {
+   'test-fiber': {},
+   'test-future': {},
+   'test-scheduler': {},
+-  'test-semaphore': {},
+   'test-stream': {},
+ }
+ 

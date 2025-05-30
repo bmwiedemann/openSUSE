@@ -74,4 +74,12 @@
     <comment>New stable rel (forwarded request 1253460 from iznogood)</comment>
     <requestid>1253708</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>3ece3d45b2ac752d59fb755b9c304389</srcmd5>
+    <version>0.10.0</version>
+    <time>1748608351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1280745</requestid>
+  </revision>
 </revisionlist>

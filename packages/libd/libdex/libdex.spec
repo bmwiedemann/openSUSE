@@ -26,6 +26,8 @@ Summary:        Library supporting "Deferred Execution" for GNOME and GTK
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/chergert/libdex
 Source0:        %{name}-%{version}.tar.zst
+# PATCH-FIX-SLE disable-test-semaphore.patch bsc#1242053 -- temporarily disable the unit test on IBS
+Patch1000:      disable-test-semaphore.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  meson
@@ -89,7 +91,11 @@ This package contains developer documentation for writing
 applications with libdex.
 
 %prep
-%autosetup -p1
+%autosetup -N
+%autopatch -p1 -M 999
+%if !0%{?is_opensuse} || 0%{?suse_version} <= 1600
+%autopatch -p1 -m 1000
+%endif
 
 %build
 %meson \
