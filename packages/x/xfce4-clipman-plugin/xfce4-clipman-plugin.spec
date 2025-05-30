@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-clipman-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,27 @@
 #
 
 
-%define panel_version 4.16.0
+%define panel_version 4.18.0
 %define plugin clipman
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.6.7
+Version:        1.7.0
 Release:        0
 Summary:        Clipboard Manager Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-clipman-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.6/%{name}-%{version}.tar.bz2
-# PATCH-FIX-OPENSUSE xfce4-clipman-plugin-relax-x11-version.patch lower required X11 version to allow building for Leap which only has 1.6.5, which is enough, though
-Patch0:         xfce4-clipman-plugin-relax-x11-version.patch
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.7/%{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson >= 0.61.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.22.29
 BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.22.29
 BuildRequires:  pkgconfig(gio-2.0) >= 2.60.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.60.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.60.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.29
 BuildRequires:  pkgconfig(libqrencode) >= 3.3.0
@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{panel_version}
 BuildRequires:  pkgconfig(libxfconf-0) >= %{panel_version}
 BuildRequires:  pkgconfig(wayland-client) >= 1.15.0
 BuildRequires:  pkgconfig(wayland-scanner) >= 1.15.0
-BuildRequires:  pkgconfig(x11) >= 1.6.5
+BuildRequires:  pkgconfig(x11) >= 1.6.7
 BuildRequires:  pkgconfig(xproto) >= 7.0.0
 BuildRequires:  pkgconfig(xtst) >= 1.0.0
 %if %{with git}
@@ -85,7 +85,7 @@ BuildArch:      noarch
 Provides translations for the "%{name}" package.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %if %{with git}
@@ -94,12 +94,12 @@ NOCONFIGURE=1 ./autogen.sh
   --enable-maintainer-mode \
   --disable-static
 %else
-%configure --disable-static
+%meson
 %endif
-%make_build
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 rm -f %{buildroot}%{_libdir}/xfce4/panel/plugins/libclipman.la
 rm -f %{buildroot}%{_libdir}/debug/usr/bin/%{name}-%{version}-0.x86_64.debug
