@@ -29,4 +29,19 @@ sense to provide it as the main implementation.</comment>
   * Lots of internal tooling and CI updates</comment>
     <requestid>1277280</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9e2971381792dc6f4b865b066a81326b</srcmd5>
+    <version>3.1.2</version>
+    <time>1748608334</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.2
+  * BGP: Fix warnings for roa_check
+  * MRT: Fix typo in assert
+  * ASPA: Fix table subscriptions
+  * ASPA: Fix filter parse crash
+  * Table: Fix several race conditions
+  * Shutdown: Do not export routes
+  * Logs: Fix logs reopening on configure undo</comment>
+    <requestid>1280707</requestid>
+  </revision>
 </revisionlist>
