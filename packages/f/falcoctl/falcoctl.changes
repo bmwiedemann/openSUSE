@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 29 05:19:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.2:
+  * chore(build): update golang and net packages
+  * chore(deps): Bump the actions group with 2 updates
+  * feat: change aws-sdk-go from v1 to v2
+  * chore(deps): Bump the actions group with 2 updates
+  * chore(deps): Bump the actions group with 2 updates
+  * chore(deps): Bump goreleaser/goreleaser-action in the actions
+    group
+
+-------------------------------------------------------------------
 Tue Mar 25 09:28:35 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.1:
