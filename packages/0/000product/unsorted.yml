@@ -9255,10 +9255,8 @@ unsorted:
   - java-1_8_0-openjdk-headless 
   - java-1_8_0-openjdk-javadoc 
   - java-1_8_0-openjdk-src 
-  - java-21-openj9 
   - java-21-openj9-demo 
   - java-21-openj9-devel 
-  - java-21-openj9-headless 
   - java-21-openj9-javadoc 
   - java-21-openj9-jmods 
   - java-21-openj9-src 
@@ -9269,8 +9267,10 @@ unsorted:
   - java-21-openjdk-javadoc 
   - java-21-openjdk-jmods 
   - java-21-openjdk-src 
+  - java-24-openjdk 
   - java-24-openjdk-demo 
   - java-24-openjdk-devel 
+  - java-24-openjdk-headless 
   - java-24-openjdk-javadoc 
   - java-24-openjdk-jmods 
   - java-24-openjdk-src 
@@ -18787,6 +18787,7 @@ unsorted:
   - mozilla-nss-32bit 
   - mozilla-nss-certs-32bit 
   - mozilla-nss-devel 
+  - mozilla-nss-sysinit 
   - mozilla-nss-sysinit-32bit 
   - mozilla-zilla-slab-fonts 
   - mozjs115 
