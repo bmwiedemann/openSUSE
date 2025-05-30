@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of micro-fips-image</comment>
     <requestid>1274073</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c0aa0fe96c8653a7cd3dafcc1094e7be</srcmd5>
+    <version>unknown</version>
+    <time>1748608211</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1280201</requestid>
+  </revision>
 </revisionlist>
