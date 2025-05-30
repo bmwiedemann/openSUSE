@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 27 16:49:31 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.14.6
+  - CVE-2025-48057: Prevent invalid certificates from being renewed with OpenSSL older than v1.1.0.
+  - Fix use-after-free in VerifyCertificate(): Additionally, a use-after-free was found in the same
+    function which is fixed as well, but in case it is triggered, typically only a wrong error code
+    may be shown in a log message.
+  - Windows: Update OpenSSL shipped on Windows to v3.0.16.
+- Rebase icinga-pr10278.patch.
+
+-------------------------------------------------------------------
 Thu May 15 14:59:42 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Clean up merge-conflict markers in the changelog.

@@ -9,10 +9,10 @@ Subject: [PATCH] Don't use removed boost::asio::spawn() overload if Boost >=
  test/base-io-engine.cpp | 10 +++++-----
  2 files changed, 18 insertions(+), 5 deletions(-)
 
-diff --git a/lib/base/io-engine.hpp b/lib/base/io-engine.hpp
-index 55a06fb6a6..2083b62f87 100644
---- a/lib/base/io-engine.hpp
-+++ b/lib/base/io-engine.hpp
+Index: icinga2-2.14.6/lib/base/io-engine.hpp
+===================================================================
+--- icinga2-2.14.6.orig/lib/base/io-engine.hpp
++++ icinga2-2.14.6/lib/base/io-engine.hpp
 @@ -16,11 +16,16 @@
  #include <utility>
  #include <vector>
@@ -30,7 +30,7 @@ index 55a06fb6a6..2083b62f87 100644
  namespace icinga
  {
  
-@@ -102,6 +107,10 @@ class IoEngine
+@@ -102,21 +107,32 @@ public:
  	static void SpawnCoroutine(Handler& h, Function f) {
  
  		boost::asio::spawn(h,
@@ -41,8 +41,23 @@ index 55a06fb6a6..2083b62f87 100644
  			[f](boost::asio::yield_context yc) {
  
  				try {
-@@ -125,7 +125,11 @@ class IoEngine
- 					Log(LogCritical, "IoEngine", "Exception in coroutine!");
+ 					f(yc);
+-				} catch (const boost::coroutines::detail::forced_unwind &) {
+-					// Required for proper stack unwinding when coroutines are destroyed.
+-					// https://github.com/boostorg/coroutine/issues/39
+-					throw;
+ 				} catch (const std::exception& ex) {
+ 					Log(LogCritical, "IoEngine") << "Exception in coroutine: " << DiagnosticInformation(ex);
+ 				} catch (...) {
+-					Log(LogCritical, "IoEngine", "Exception in coroutine!");
++					try {
++						Log(LogCritical, "IoEngine", "Exception in coroutine!");
++					} catch (...) {
++					}
++
++					// Required for proper stack unwinding when coroutines are destroyed.
++					// https://github.com/boostorg/coroutine/issues/39
++					throw;
  				}
  			},
 +#if BOOST_VERSION >= 108700
@@ -53,10 +68,10 @@ index 55a06fb6a6..2083b62f87 100644
  		);
  	}
  
-diff --git a/test/base-io-engine.cpp b/test/base-io-engine.cpp
-index 869688b1a6..3a251b1b42 100644
---- a/test/base-io-engine.cpp
-+++ b/test/base-io-engine.cpp
+Index: icinga2-2.14.6/test/base-io-engine.cpp
+===================================================================
+--- icinga2-2.14.6.orig/test/base-io-engine.cpp
++++ icinga2-2.14.6/test/base-io-engine.cpp
 @@ -17,7 +17,7 @@ BOOST_AUTO_TEST_CASE(timeout_run)
  	boost::asio::io_context::strand strand (io);
  	int called = 0;
@@ -84,7 +99,7 @@ index 869688b1a6..3a251b1b42 100644
  		boost::asio::deadline_timer timer (io);
  
  		{
-@@ -100,7 +100,7 @@ BOOST_AUTO_TEST_CASE(timeout_due_cancelled)
+@@ -100,7 +100,7 @@ BOOST_AUTO_TEST_CASE(timeout_due_cancell
  	boost::asio::io_context::strand strand (io);
  	int called = 0;
  
@@ -102,56 +117,11 @@ index 869688b1a6..3a251b1b42 100644
  		boost::asio::deadline_timer timer (io);
  
  		{
-From 5e058f46289f603338d02ad61524886d6cc3e26a Mon Sep 17 00:00:00 2001
-From: "Alexander A. Klimov" <alexander.klimov@icinga.com>
-Date: Fri, 7 Mar 2025 16:22:50 +0100
-Subject: [PATCH] In a coroutine, re-throw everything ex. std::exception (and
- inheritors)
-
-not just boost::coroutines::detail::forced_unwind.
-
-This is needed because as of Boost 1.87, boost::asio::spawn() uses Fiber, not Coroutine v1.
-https://github.com/boostorg/asio/commit/df973a85ed69f021
-
-This is safe because every actual exception shall inherit from std::exception. Except forced_unwind and its Fiber equivalent, so that `catch(const std::exception&)` doesn't catch them and only them.
----
- lib/base/io-engine.hpp           | 13 ++++++----
- lib/icingadb/redisconnection.cpp | 41 ++++----------------------------
- lib/icingadb/redisconnection.hpp |  8 ++-----
- 3 files changed, 14 insertions(+), 48 deletions(-)
-
-diff --git a/lib/base/io-engine.hpp b/lib/base/io-engine.hpp
-index 0350d45b83..55a06fb6a6 100644
---- a/lib/base/io-engine.hpp
-+++ b/lib/base/io-engine.hpp
-@@ -115,14 +115,17 @@ class IoEngine
- 
- 				try {
- 					f(yc);
--				} catch (const boost::coroutines::detail::forced_unwind &) {
--					// Required for proper stack unwinding when coroutines are destroyed.
--					// https://github.com/boostorg/coroutine/issues/39
--					throw;
- 				} catch (const std::exception& ex) {
- 					Log(LogCritical, "IoEngine") << "Exception in coroutine: " << DiagnosticInformation(ex);
- 				} catch (...) {
--					Log(LogCritical, "IoEngine", "Exception in coroutine!");
-+					try {
-+						Log(LogCritical, "IoEngine", "Exception in coroutine!");
-+					} catch (...) {
-+					}
-+
-+					// Required for proper stack unwinding when coroutines are destroyed.
-+					// https://github.com/boostorg/coroutine/issues/39
-+					throw;
- 				}
- 			},
- #if BOOST_VERSION >= 108700
-diff --git a/lib/icingadb/redisconnection.cpp b/lib/icingadb/redisconnection.cpp
-index a6b82187dd..c1f73f5a0e 100644
---- a/lib/icingadb/redisconnection.cpp
-+++ b/lib/icingadb/redisconnection.cpp
-@@ -377,8 +377,6 @@ void RedisConnection::Connect(asio::yield_context& yc)
+Index: icinga2-2.14.6/lib/icingadb/redisconnection.cpp
+===================================================================
+--- icinga2-2.14.6.orig/lib/icingadb/redisconnection.cpp
++++ icinga2-2.14.6/lib/icingadb/redisconnection.cpp
+@@ -377,8 +377,6 @@ void RedisConnection::Connect(asio::yiel
  			}
  
  			break;
@@ -160,7 +130,7 @@ index a6b82187dd..c1f73f5a0e 100644
  		} catch (const std::exception& ex) {
  			Log(LogCritical, "IcingaDB")
  				<< "Cannot connect to " << m_Host << ":" << m_Port << ": " << ex.what();
-@@ -408,17 +406,10 @@ void RedisConnection::ReadLoop(asio::yield_context& yc)
+@@ -408,18 +406,11 @@ void RedisConnection::ReadLoop(asio::yie
  						for (auto i (item.Amount); i; --i) {
  							ReadOne(yc);
  						}
@@ -170,15 +140,16 @@ index a6b82187dd..c1f73f5a0e 100644
  						Log(LogCritical, "IcingaDB")
  							<< "Error during receiving the response to a query which has been fired and forgotten: " << ex.what();
  
--						continue;
+ 						continue;
 -					} catch (...) {
 -						Log(LogCritical, "IcingaDB")
 -							<< "Error during receiving the response to a query which has been fired and forgotten";
 -
- 						continue;
+-						continue;
  					}
  
-@@ -432,9 +423,7 @@ void RedisConnection::ReadLoop(asio::yield_context& yc)
+ 					break;
+@@ -432,9 +423,7 @@ void RedisConnection::ReadLoop(asio::yie
  
  						try {
  							reply = ReadOne(yc);
@@ -189,7 +160,7 @@ index a6b82187dd..c1f73f5a0e 100644
  							promise.set_exception(std::current_exception());
  
  							continue;
-@@ -455,9 +444,7 @@ void RedisConnection::ReadLoop(asio::yield_context& yc)
+@@ -455,9 +444,7 @@ void RedisConnection::ReadLoop(asio::yie
  						for (auto i (item.Amount); i; --i) {
  							try {
  								replies.emplace_back(ReadOne(yc));
@@ -200,7 +171,7 @@ index a6b82187dd..c1f73f5a0e 100644
  								promise.set_exception(std::current_exception());
  								break;
  							}
-@@ -551,19 +538,11 @@ void RedisConnection::WriteItem(boost::asio::yield_context& yc, RedisConnection:
+@@ -551,20 +538,12 @@ void RedisConnection::WriteItem(boost::a
  
  		try {
  			WriteOne(item, yc);
@@ -211,16 +182,17 @@ index a6b82187dd..c1f73f5a0e 100644
  			LogQuery(item, msg);
  			msg << " which has been fired and forgotten: " << ex.what();
  
--			return;
+ 			return;
 -		} catch (...) {
 -			Log msg (LogCritical, "IcingaDB", "Error during sending query");
 -			LogQuery(item, msg);
 -			msg << " which has been fired and forgotten";
 -
- 			return;
+-			return;
  		}
  
-@@ -587,19 +566,11 @@ void RedisConnection::WriteItem(boost::asio::yield_context& yc, RedisConnection:
+ 		if (m_Queues.FutureResponseActions.empty() || m_Queues.FutureResponseActions.back().Action != ResponseAction::Ignore) {
+@@ -587,20 +566,12 @@ void RedisConnection::WriteItem(boost::a
  				WriteOne(query, yc);
  				++i;
  			}
@@ -231,16 +203,17 @@ index a6b82187dd..c1f73f5a0e 100644
  			LogQuery(item[i], msg);
  			msg << " which has been fired and forgotten: " << ex.what();
  
--			return;
+ 			return;
 -		} catch (...) {
 -			Log msg (LogCritical, "IcingaDB", "Error during sending query");
 -			LogQuery(item[i], msg);
 -			msg << " which has been fired and forgotten";
 -
- 			return;
+-			return;
  		}
  
-@@ -618,9 +589,7 @@ void RedisConnection::WriteItem(boost::asio::yield_context& yc, RedisConnection:
+ 		if (m_Queues.FutureResponseActions.empty() || m_Queues.FutureResponseActions.back().Action != ResponseAction::Ignore) {
+@@ -618,9 +589,7 @@ void RedisConnection::WriteItem(boost::a
  
  		try {
  			WriteOne(item.first, yc);
@@ -251,7 +224,7 @@ index a6b82187dd..c1f73f5a0e 100644
  			item.second.set_exception(std::current_exception());
  
  			return;
-@@ -645,9 +614,7 @@ void RedisConnection::WriteItem(boost::asio::yield_context& yc, RedisConnection:
+@@ -645,9 +614,7 @@ void RedisConnection::WriteItem(boost::a
  			for (auto& query : item.first) {
  				WriteOne(query, yc);
  			}
@@ -262,11 +235,11 @@ index a6b82187dd..c1f73f5a0e 100644
  			item.second.set_exception(std::current_exception());
  
  			return;
-diff --git a/lib/icingadb/redisconnection.hpp b/lib/icingadb/redisconnection.hpp
-index 3f963f3d37..acc6e43810 100644
---- a/lib/icingadb/redisconnection.hpp
-+++ b/lib/icingadb/redisconnection.hpp
-@@ -389,9 +389,7 @@ RedisConnection::Reply RedisConnection::ReadOne(StreamPtr& stream, boost::asio::
+Index: icinga2-2.14.6/lib/icingadb/redisconnection.hpp
+===================================================================
+--- icinga2-2.14.6.orig/lib/icingadb/redisconnection.hpp
++++ icinga2-2.14.6/lib/icingadb/redisconnection.hpp
+@@ -388,9 +388,7 @@ RedisConnection::Reply RedisConnection::
  
  	try {
  		return ReadRESP(*strm, yc);
@@ -277,7 +250,7 @@ index 3f963f3d37..acc6e43810 100644
  		if (m_Connecting.exchange(false)) {
  			m_Connected.store(false);
  			stream = nullptr;
-@@ -427,9 +425,7 @@ void RedisConnection::WriteOne(StreamPtr& stream, RedisConnection::Query& query,
+@@ -426,9 +424,7 @@ void RedisConnection::WriteOne(StreamPtr
  	try {
  		WriteRESP(*strm, query, yc);
  		strm->async_flush(yc);
@@ -288,22 +261,11 @@ index 3f963f3d37..acc6e43810 100644
  		if (m_Connecting.exchange(false)) {
  			m_Connected.store(false);
  			stream = nullptr;
-From 6e1bafad83a1d5cbd646a947575b29f00c23d130 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Alexander=20Aleksandrovi=C4=8D=20Klimov?=
- <alexander.klimov@icinga.com>
-Date: Tue, 7 Jan 2025 17:53:42 +0100
-Subject: [PATCH] Don't use boost::asio::io_context::strand method removed in
- Boost 1.87
-
----
- lib/remote/jsonrpcconnection.cpp | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/lib/remote/jsonrpcconnection.cpp b/lib/remote/jsonrpcconnection.cpp
-index d49c0b359a..8e95325feb 100644
---- a/lib/remote/jsonrpcconnection.cpp
-+++ b/lib/remote/jsonrpcconnection.cpp
-@@ -212,7 +212,7 @@ void JsonRpcConnection::SendMessage(const Dictionary::Ptr& message)
+Index: icinga2-2.14.6/lib/remote/jsonrpcconnection.cpp
+===================================================================
+--- icinga2-2.14.6.orig/lib/remote/jsonrpcconnection.cpp
++++ icinga2-2.14.6/lib/remote/jsonrpcconnection.cpp
+@@ -212,7 +212,7 @@ void JsonRpcConnection::SendMessage(cons
  
  	Ptr keepAlive (this);
  
@@ -312,7 +274,7 @@ index d49c0b359a..8e95325feb 100644
  }
  
  void JsonRpcConnection::SendRawMessage(const String& message)
-@@ -223,7 +223,7 @@ void JsonRpcConnection::SendRawMessage(const String& message)
+@@ -223,7 +223,7 @@ void JsonRpcConnection::SendRawMessage(c
  
  	Ptr keepAlive (this);
  
@@ -321,23 +283,11 @@ index d49c0b359a..8e95325feb 100644
  		if (m_ShuttingDown) {
  			return;
  		}
-From 69e4f295a6bd5cdafb295379b207ab611c8501a6 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Alexander=20Aleksandrovi=C4=8D=20Klimov?=
- <al2klimov@gmail.com>
-Date: Tue, 7 Jan 2025 15:53:20 +0100
-Subject: [PATCH] Don't use boost::asio::ip::tcp::resolver::query
-
-It was removed in Boost 1.87.
----
- lib/base/tcpsocket.hpp     | 6 ++----
- lib/remote/apilistener.cpp | 4 +---
- 2 files changed, 3 insertions(+), 7 deletions(-)
-
-diff --git a/lib/base/tcpsocket.hpp b/lib/base/tcpsocket.hpp
-index 471ad8d2394..1cf1a235010 100644
---- a/lib/base/tcpsocket.hpp
-+++ b/lib/base/tcpsocket.hpp
-@@ -41,8 +41,7 @@ void Connect(Socket& socket, const String& node, const String& service)
+Index: icinga2-2.14.6/lib/base/tcpsocket.hpp
+===================================================================
+--- icinga2-2.14.6.orig/lib/base/tcpsocket.hpp
++++ icinga2-2.14.6/lib/base/tcpsocket.hpp
+@@ -41,8 +41,7 @@ void Connect(Socket& socket, const Strin
  	using boost::asio::ip::tcp;
  
  	tcp::resolver resolver (IoEngine::Get().GetIoContext());
@@ -347,7 +297,7 @@ index 471ad8d2394..1cf1a235010 100644
  	auto current (result.begin());
  
  	for (;;) {
-@@ -72,8 +71,7 @@ void Connect(Socket& socket, const String& node, const String& service, boost::a
+@@ -72,8 +71,7 @@ void Connect(Socket& socket, const Strin
  	using boost::asio::ip::tcp;
  
  	tcp::resolver resolver (IoEngine::Get().GetIoContext());
@@ -357,11 +307,11 @@ index 471ad8d2394..1cf1a235010 100644
  	auto current (result.begin());
  
  	for (;;) {
-diff --git a/lib/remote/apilistener.cpp b/lib/remote/apilistener.cpp
-index 519469aafa4..7ef3acddda7 100644
---- a/lib/remote/apilistener.cpp
-+++ b/lib/remote/apilistener.cpp
-@@ -439,9 +439,7 @@ bool ApiListener::AddListener(const String& node, const String& service)
+Index: icinga2-2.14.6/lib/remote/apilistener.cpp
+===================================================================
+--- icinga2-2.14.6.orig/lib/remote/apilistener.cpp
++++ icinga2-2.14.6/lib/remote/apilistener.cpp
+@@ -439,9 +439,7 @@ bool ApiListener::AddListener(const Stri
  
  	try {
  		tcp::resolver resolver (io);
@@ -372,36 +322,24 @@ index 519469aafa4..7ef3acddda7 100644
  		auto current (result.begin());
  
  		for (;;) {
-From de5fba199c4f9f2401ff3f924b2438f294410454 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Alexander=20Aleksandrovi=C4=8D=20Klimov?=
- <al2klimov@gmail.com>
-Date: Thu, 2 Jan 2025 15:43:13 +0100
-Subject: [PATCH] Bump Boost shipped for Windows to v1.87
-
----
- doc/win-dev.ps1               | 2 +-
- tools/win32/configure-dev.ps1 | 4 ++--
- tools/win32/configure.ps1     | 4 ++--
- 3 files changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/doc/win-dev.ps1 b/doc/win-dev.ps1
-index f64017bb0cb..e3b4e595570 100644
---- a/doc/win-dev.ps1
-+++ b/doc/win-dev.ps1
+Index: icinga2-2.14.6/doc/win-dev.ps1
+===================================================================
+--- icinga2-2.14.6.orig/doc/win-dev.ps1
++++ icinga2-2.14.6/doc/win-dev.ps1
 @@ -13,7 +13,7 @@ function ThrowOnNativeFailure {
  
  $VsVersion = 2019
  $MsvcVersion = '14.2'
 -$BoostVersion = @(1, 86, 0)
 +$BoostVersion = @(1, 87, 0)
- $OpensslVersion = '3_0_15'
+ $OpensslVersion = '3_0_16'
  
  switch ($Env:BITS) {
-diff --git a/tools/win32/configure-dev.ps1 b/tools/win32/configure-dev.ps1
-index 12cc004c891..fcb8176b566 100644
---- a/tools/win32/configure-dev.ps1
-+++ b/tools/win32/configure-dev.ps1
-@@ -31,10 +31,10 @@ if (-not (Test-Path env:OPENSSL_ROOT_DIR)) {
+Index: icinga2-2.14.6/tools/win32/configure-dev.ps1
+===================================================================
+--- icinga2-2.14.6.orig/tools/win32/configure-dev.ps1
++++ icinga2-2.14.6/tools/win32/configure-dev.ps1
+@@ -34,10 +34,10 @@ if (-not (Test-Path env:OPENSSL_ROOT_DIR
    $env:OPENSSL_ROOT_DIR = 'c:\local\OpenSSL-Win64'
  }
  if (-not (Test-Path env:BOOST_ROOT)) {
@@ -414,12 +352,12 @@ index 12cc004c891..fcb8176b566 100644
  }
  if (-not (Test-Path env:FLEX_BINARY)) {
    $env:FLEX_BINARY = 'C:\ProgramData\chocolatey\bin\win_flex.exe'
-diff --git a/tools/win32/configure.ps1 b/tools/win32/configure.ps1
-index 1fb83c11800..754cb51377e 100644
---- a/tools/win32/configure.ps1
-+++ b/tools/win32/configure.ps1
-@@ -33,10 +33,10 @@ if (-not (Test-Path env:OPENSSL_ROOT_DIR)) {
-   $env:OPENSSL_ROOT_DIR = "c:\local\OpenSSL_3_0_15-Win${env:BITS}"
+Index: icinga2-2.14.6/tools/win32/configure.ps1
+===================================================================
+--- icinga2-2.14.6.orig/tools/win32/configure.ps1
++++ icinga2-2.14.6/tools/win32/configure.ps1
+@@ -36,10 +36,10 @@ if (-not (Test-Path env:OPENSSL_ROOT_DIR
+   $env:OPENSSL_ROOT_DIR = "c:\local\OpenSSL_3_0_16-Win${env:BITS}"
  }
  if (-not (Test-Path env:BOOST_ROOT)) {
 -  $env:BOOST_ROOT = "c:\local\boost_1_86_0-Win${env:BITS}"
