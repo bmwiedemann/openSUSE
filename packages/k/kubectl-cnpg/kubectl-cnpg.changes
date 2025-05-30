@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 23 12:33:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.26.0:
+  * Important Changes
+  - Hibernation Command Changes: The hibernate on and hibernate off
+    commands in the cnpg plugin for kubectl now serve as shortcuts
+    for declarative hibernation. The previous imperative approach
+    has been removed in favor of this method. Additionally, the
+    hibernate status command has been removed, as its functionality
+    is now covered by the standard status command. Warning: Do not
+    upgrade to version 1.26 of both the plugin and the operator
+    unless you are prepared to migrate to the declarative
+    hibernation method. (#7155)
+  Find the full changelog here:
+  https://github.com/cloudnative-pg/cloudnative-pg/releases/tag/v1.26.0
+
+-------------------------------------------------------------------
 Fri May 23 12:19:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.25.2:
