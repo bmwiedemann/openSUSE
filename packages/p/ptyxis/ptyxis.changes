@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 27 19:06:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.4:
+  + Fix incorrect use of mnemonics in the new-terminal menu
+  + Don't add additional tabs with --new-window when restoring
+    session
+  + Fix session restore directory URI for tabs which have never
+    been visited
+
+-------------------------------------------------------------------
 Wed May  7 19:29:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.3:
