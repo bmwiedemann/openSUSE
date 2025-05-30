@@ -1,7 +1,7 @@
 #
 # spec file for package static-initrd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,6 +13,8 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 %define build_signed %{?signed_override}%{!?signed_override:0}
 
@@ -24,8 +26,8 @@
 # -------------------------
 %define ver 0.1
 %define patch_ver 0
-%define ker_flavor default
 # -------------------------
+
 # Kernel name
 # -------------------------
 %ifarch %ix86 x86_64
@@ -44,6 +46,12 @@
 %define ker_name Image
 %endif
 # -------------------------
+
+# Kernel flavors
+# -------------------------
+%global kernel_flavors "default vanilla"
+# -------------------------
+
 # Flavors conditions
 # -------------------------
 %define flavor @BUILD_FLAVOR@%{nil}
@@ -51,17 +59,16 @@
 %define name_suffix -%{?flavor}
 %endif
 # -------------------------
+
 # Useful variables
 # -------------------------
 %define project_version %{ver}.%{patch_ver}
-%define uname $(ls /lib/modules | head -n 1)
 %global kernel_version %(rpm -q --queryformat '%{VERSION}' kernel-default)
-%define grub_config_file /etc/grub.d/43_initrd-dracut
 %define initrd_name static-initrd%{?name_suffix}
 %define certs_name %{initrd_name}
 # -------------------------
 
-Name:           %{initrd_name}
+Name:           static-initrd
 Version:        %{project_version}_k%{kernel_version}
 Release:        0
 Summary:        Pre-build static initrd
@@ -77,8 +84,11 @@ Source3:        packages-network
 BuildRequires:  binutils
 BuildRequires:  dracut
 BuildRequires:  grub2
-BuildRequires:  kernel-%{ker_flavor}
+BuildRequires:  kernel-default
 BuildRequires:  kernel-firmware
+BuildRequires:  kernel-vanilla
+BuildRequires:  uki-tool >= 1.5.0
+Requires:       uki-tool >= 1.5.0
 %if %{build_signed}
 BuildRequires:  pesign-obs-integration
 %endif
@@ -86,6 +96,7 @@ BuildRequires:  update-bootloader
 %ifnarch s390 s390x
 BuildRequires:  rng-tools
 %endif
+
 # Dependencies for a base initrd
 # -------------------------
 BuildRequires:  bash
@@ -102,6 +113,7 @@ BuildRequires:  util-linux-systemd
 BuildRequires:  xfsprogs
 BuildRequires:  zstd
 # -------------------------
+
 # Dependencies for a generic initrd
 # -------------------------
 %if "%{flavor}" == "generic"
@@ -142,6 +154,7 @@ BuildRequires:  tpm2.0-tools
 BuildRequires:  tpm2-0-tss-devel
 %endif
 # -------------------------
+
 # Dependencies for a network initrd
 # -------------------------
 %if "%{flavor}" == "network"
@@ -155,22 +168,81 @@ BuildRequires:  nfs-client
 BuildRequires:  rpcbind
 %endif
 # -------------------------
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-Requires:       kernel-%{ker_flavor} = %{kernel_version}
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       shim >= 11
 
-%description
-The static %{flavor} Initrd build for kernel %{kernel_version}
-in efi format.
+# With Default kernel flavor
+# -------------------------
+%package -n static-initrd-%{?flavor}-default
+Provides:       static-initrd-%{?flavor} = %{version}-%{release}
+Obsoletes:      static-initrd-%{?flavor} < %{version}-%{release}
+Summary:        Pre-build static %{?flavor} initrd with kernel default.
+Requires:       kernel-default = %{kernel_version}
 
-%package unsigned
-Summary:        Unsigned static %{flavor} initrd
-Requires:       kernel-%{ker_flavor} = %{kernel_version}
+%description -n static-initrd-%{?flavor}-default
+The signed static %{flavor} Initrd build for kernel-default %{kernel_version}.
 
-%description unsigned
-The Unsigned static %{flavor} Initrd build for kernel
+%package -n static-initrd-%{?flavor}-default-unsigned
+Provides:       static-initrd-%{?flavor}-unsigned = %{version}-%{release}
+Obsoletes:      static-initrd-%{?flavor}-unsigned < %{version}-%{release}
+Summary:        Unsigned static %{flavor} initrd with kernel default.
+Requires:       kernel-default = %{kernel_version}
+
+%description -n static-initrd-%{?flavor}-default-unsigned
+The Unsigned static %{flavor} Initrd build for kernel-default
 %{kernel_version}.
+
+%if %{build_signed}
+%files -n static-initrd-%{?flavor}-default
+%defattr(-,root,root)
+/boot/%{name}-*-default
+%dir %{_datarootdir}/initrd/
+%dir %{_datarootdir}/initrd/certs
+%{_datarootdir}/initrd/certs/*-%{name}.crt
+%endif
+
+%files -n static-initrd-%{?flavor}-default-unsigned
+%defattr(-,root,root)
+%dir %{_datarootdir}/initrd/
+%{_datarootdir}/initrd/%{name}-*-default.unsigned
+# -------------------------
+
+# With vanilla kernel flavor
+# -------------------------
+%package -n static-initrd-%{?flavor}-vanilla
+Summary:        Pre-build static %{?flavor} initrd with kernel vanilla.
+Requires:       kernel-vanilla = %{kernel_version}
+
+%description -n static-initrd-%{?flavor}-vanilla
+The Unsigned static %{flavor} Initrd build for kernel-vanilla
+%{kernel_version}.
+
+%package -n static-initrd-%{?flavor}-vanilla-unsigned
+Summary:        Unsigned static %{flavor} initrd with kernel vanilla.
+Requires:       kernel-vanilla = %{kernel_version}
+
+%description -n static-initrd-%{?flavor}-vanilla-unsigned
+The Unsigned static %{flavor} Initrd build for kernel-vanilla
+%{kernel_version}.
+
+%if %{build_signed}
+%files -n static-initrd-%{?flavor}-vanilla
+%defattr(-,root,root)
+/boot/%{name}-*-vanilla
+%dir %{_datarootdir}/initrd/
+%dir %{_datarootdir}/initrd/certs
+%{_datarootdir}/initrd/certs/*-%{name}.crt
+%endif
+
+%files -n static-initrd-%{?flavor}-vanilla-unsigned
+%defattr(-,root,root)
+%dir %{_datarootdir}/initrd/
+%{_datarootdir}/initrd/%{name}-*-vanilla.unsigned
+# -------------------------
+
+%description
+The static %{flavor} Initrd build for kernel %{kernel_version} in efi format.
 
 %prep
 %if %{build_signed}
@@ -185,6 +257,14 @@ openssl x509 -in ./%{certs_name}.crt -outform DER -out ./%{certs_name}.der
 %endif
 
 %build
+omit_modules="iscsi lunmask multipath memstrack"
+%ifnarch x86_64 aarch64
+omit_modules="$omit_modules connman biosdevname systemd-pcrphase"
+%endif
+%ifarch s390x s390
+omit_modules="$omit_modules rngd"
+%endif
+
 # Create the config file to the list of packages according the flavors
 conf_file="./dracut.conf"
 list_packages=""
@@ -195,39 +275,34 @@ list_packages=""
     list_packages="%{SOURCE3}"
 %endif
 touch $conf_file
-if [[ "$list_packages" != "" ]]; then
-    echo "dracutmodules+=\" \\" > "$conf_file"
-    while IFS= read -r line; do
-        check=$(dracut --list-modules --kver=%{uname} | grep -x "$line")
-        if [[ "$check" == "$line" ]]; then
-            echo "$line \\" >> "$conf_file"
-        else
-            echo "Warning $line is not in the dracut modules list"
-        fi
-    done <"$list_packages"
-else
-    echo "add_dracutmodules+=\" \\" > "$conf_file"
-    echo "systemd-pcrphase \\" >> "$conf_file"
-    echo "tpm2-tss \\" >> "$conf_file"
-fi
-echo "\"" >> "$conf_file"
 
-omit_modules="iscsi lunmask multipath memstrack"
-%ifnarch x86_64 aarch64
-omit_modules="$omit_modules connman biosdevname systemd-pcrphase"
-%endif
-%ifarch s390x s390
-omit_modules="$omit_modules rngd"
-%endif
-
-# Build the initramfs
-mkdir ~/dracut.tmp
-dracut \
+[ -d ~/dracut.tmp ] || mkdir ~/dracut.tmp
+flavors=$(echo "%kernel_flavors" | tr "\n" " ")
+for k_flavor in $flavors; do
+  uname="$(ls /usr/lib/modules/ | grep "${k_flavor}" | tail -n1)"
+  if [[ "$list_packages" != "" ]]; then
+      echo "dracutmodules+=\" \\" > "$conf_file"
+      while IFS= read -r line; do
+          check=$(dracut --list-modules --kver=${uname} | grep -x "$line")
+          if [[ "$check" == "$line" ]]; then
+              echo "$line \\" >> "$conf_file"
+          else
+              echo "Warning $line is not in the dracut modules list"
+          fi
+      done <"$list_packages"
+  else
+      echo "add_dracutmodules+=\" \\" > "$conf_file"
+      echo "systemd-pcrphase \\" >> "$conf_file"
+      echo "tpm2-tss \\" >> "$conf_file"
+  fi
+  echo "\"" >> "$conf_file"
+  # Build the initramfs for each kernel flavor
+  dracut \
     --confdir ~/dracut.tmp \
     --reproducible \
-    --kernel-image /boot/%{ker_name} \
-    --kver %{uname} \
-    --kmoddir /lib/modules/%{uname} \
+    --kernel-image /lib/modules/${uname}/%{ker_name} \
+    --kver ${uname} \
+    --kmoddir /lib/modules/${uname} \
     --fwdir /lib/firmware \
     --no-hostonly \
     --no-hostonly-cmdline \
@@ -239,77 +314,60 @@ dracut \
     --show-modules \
     --add-drivers="fat vfat" \
     --filesystems="vfat ext4 xfs btrfs overlay" \
-    ./initrd-%{uname}
+    ./initrd-${uname}
+done
 rm -rf ~/dracut.tmp
 
 %install
 mkdir %{buildroot}/boot
 mkdir -p %{buildroot}%{_datarootdir}/initrd
+flavors=$(echo "%kernel_flavors" | tr "\n" " ")
+for k_flavor in $flavors; do
+  uname="$(ls /usr/lib/modules/ | grep "${k_flavor}" | tail -n1)"
 %if %{build_signed}
-grub2-wrap -O x86_64-efi -n .GRUBini -i "./initrd-%{uname}" -o "./initrd-%{uname}.dll"
-install -m 0600 ./initrd-%{uname}.dll %{buildroot}/boot/%{initrd_name}-%{uname}
-export BRP_PESIGN_FILES="/boot/%{initrd_name}-%{uname}"
-# install certs
-if test -e ./%{certs_name}.der ; then
-    mkdir -p %{buildroot}%{_datarootdir}/initrd/certs
-    fpr=$(openssl x509 -sha1 -fingerprint -inform DER -noout -in ./%{certs_name}.der\
-        | cut -c 18- | cut -d ":" -f 1,2,3,4 | sed 's/://g')
-    install -m 644 ./%{certs_name}.der %{buildroot}%{_datarootdir}/initrd/certs/${fpr}-%{initrd_name}.crt
-fi
+  grub2-wrap -O x86_64-efi \
+    -n .GRUBini \
+    -i "./initrd-${uname}" \
+    -o "./initrd-${uname}.dll"
+  install -m 0600 \
+    ./initrd-${uname}.dll \
+    %{buildroot}/boot/%{initrd_name}-${uname}
+  export BRP_PESIGN_FILES="/boot/%{initrd_name}-${uname}"
+  # install certs
+  if test -e ./%{certs_name}.der ; then
+      mkdir -p %{buildroot}%{_datarootdir}/initrd/certs
+      fpr=$(openssl x509 -sha1 -fingerprint -inform DER -noout \
+            -in ./%{certs_name}.der \
+            | cut -c 18- \
+            | cut -d ":" -f 1,2,3,4 \
+            | sed 's/://g')
+      install -m 644 \
+        ./%{certs_name}.der \
+        %{buildroot}%{_datarootdir}/initrd/certs/${fpr}-%{initrd_name}.crt
+  fi
 %endif
-install -m 0600 ./initrd-%{uname} %{buildroot}%{_datarootdir}/initrd/%{initrd_name}-%{uname}.unsigned
+  install -m 0600 \
+    ./initrd-${uname} \
+    %{buildroot}%{_datarootdir}/initrd/%{initrd_name}-${uname}.unsigned
+done
 
 %post
 if [[ -d /etc/grub.d ]];then
     initrd_file=$(basename /boot/%{name}-*)
     uname=${initrd_file#%{name}-}
     # Create the grub entry
-    dev_name=$(df -h / | tail -1 | cut -d ' ' -f1)
-    blk_id=$(blkid $dev_name | cut -d " " -f2 | cut -d "\"" -f2)
-    eof="EOF"
-    cat > %{grub_config_file} <<EOF
-#!/bin/sh
-#set -e
-cat << $eof
-menuentry 'openSUSE Tumbleweed, with static initrd with Linux ${uname}' {
-    load_video
-    set gfxpayload=keep
-    insmod gzio
-    insmod part_gpt
-    insmod btrfs
-    search --no-floppy --fs-uuid --set=root ${blk_id}
-    echo "Loading Linux ${uname} ..."
-    linux /boot/vmlinuz-${uname} root=UUID=${blk_id}
-    echo "Loading OBS generated static initrd ..."
-    initrd /boot/${initrd_file}
-}
-$eof
-EOF
-    chmod +x %{grub_config_file}
-    grub2-mkconfig -o /boot/grub2/grub.cfg
+    uki-tool grub2 \
+      --add \
+      --initrd /boot/${initrd_file} \
+      --kerver /boot/vmlinuz-${uname}
 fi
 
 %postun
 if [[ -d /etc/grub.d ]];then
     initrd_file=$(basename /boot/%{name}-*)
-    if [[ -f %{grub_config_file} ]]; then
-        rm "%{grub_config_file}"
-        grub2-mkconfig -o /boot/grub2/grub.cfg
-    fi
+    uki-tool grub2 \
+      --remove \
+      --initrd /boot/${initrd_file}
 fi
-
-%if %{build_signed}
-%files
-%defattr(-,root,root)
-/boot/%{name}-*
-%dir %{_datarootdir}/initrd/
-%dir %{_datarootdir}/initrd/certs
-%{_datarootdir}/initrd/certs/*-%{name}.crt
-%endif
-
-%files unsigned
-%defattr(-,root,root)
-%dir %{_datarootdir}/initrd/
-%{_datarootdir}/initrd/%{name}-*.unsigned
 
 %changelog

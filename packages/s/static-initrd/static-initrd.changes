@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 23 22:01:38 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Build all static dedicated initrd against each kernel flavors.
+  - package name change to static-initrd-%{dedicated_name}-%{kernerl_flavor}
+
+-------------------------------------------------------------------
 Thu Dec 19 15:28:09 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Remove the needsrootforbuild not needed anymore
