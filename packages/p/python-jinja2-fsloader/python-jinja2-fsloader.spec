@@ -1,7 +1,7 @@
 #
 # spec file for package python-jinja2-fsloader
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jinja2-fsloader
 Version:        0.3.0
 Release:        0
@@ -25,7 +24,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/althonos/jinja2-fsloader/
 Source:         https://files.pythonhosted.org/packages/source/j/jinja2-fsloader/jinja2-fsloader-%{version}.zip
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 39.2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -50,10 +51,10 @@ WebDAV servers, ZIP and Tar archives and others.
 sed -i 's/,<[0-9.]*$//' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %fdupes %{buildroot}%{$python_sitelib}
 }
@@ -64,6 +65,7 @@ sed -i 's/,<[0-9.]*$//' setup.cfg
 %files %{python_files}
 %license COPYING
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/jinja2[-_]fsloader
+%{python_sitelib}/jinja2[-_]fsloader-%{version}*-info
 
 %changelog

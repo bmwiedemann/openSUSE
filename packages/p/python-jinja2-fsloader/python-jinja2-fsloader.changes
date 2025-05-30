@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 30 08:47:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed Mar 23 13:09:55 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build
