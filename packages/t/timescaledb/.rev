@@ -357,4 +357,18 @@
   https://github.com/timescale/timescaledb/releases/tag/2.19.3</comment>
     <requestid>1269732</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c1bfbadc31e01d332fd41b2e77b61f00</srcmd5>
+    <version>2.20.1</version>
+    <time>1748608291</time>
+    <user>dimstar_suse</user>
+    <comment>- drop pg 14
+
+- Update to version 2.20.1
+  https://github.com/timescale/timescaledb/releases/tag/2.20.1
+
+- Update to version 2.20.0
+  https://github.com/timescale/timescaledb/releases/tag/2.20.0</comment>
+    <requestid>1280645</requestid>
+  </revision>
 </revisionlist>
