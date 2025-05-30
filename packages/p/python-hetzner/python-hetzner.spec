@@ -1,7 +1,7 @@
 #
 # spec file for package python-hetzner
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hetzner
 Version:        0.8.3
 Release:        0
@@ -26,11 +25,13 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/aszlig/hetzner
 Source:         https://github.com/aszlig/hetzner/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -41,10 +42,10 @@ A high-level Python API for accessing the Hetzner robot.
 %setup -q -n hetzner-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/hetznerctl
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -61,6 +62,7 @@ A high-level Python API for accessing the Hetzner robot.
 %doc README.md
 %license COPYING
 %python_alternative %{_bindir}/hetznerctl
-%{python_sitelib}/*
+%{python_sitelib}/hetzner
+%{python_sitelib}/hetzner-%{version}*-info
 
 %changelog
