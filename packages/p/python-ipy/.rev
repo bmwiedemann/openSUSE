@@ -135,4 +135,13 @@
   * Update to support up to Python 3.9</comment>
     <requestid>867592</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e3a6176f3f5a273f251ca85bb4e934a2</srcmd5>
+    <version>1.01</version>
+    <time>1748608466</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build
+</comment>
+    <requestid>1281303</requestid>
+  </revision>
 </revisionlist>

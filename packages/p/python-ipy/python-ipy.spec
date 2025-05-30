@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define pkg_version 1.1
 Name:           python-ipy
 Version:        1.01
 Release:        0
@@ -25,11 +25,12 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/autocracy/python-ipy
 Source:         https://files.pythonhosted.org/packages/source/I/IPy/IPy-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -43,14 +44,17 @@ so funky stuff like a netmask of 0xffffff0f can't be done here.
 %setup -q -n IPy-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/IPy.py
+%{python_sitelib}/[Ii][Pp]y-%{pkg_version}*-info
+%pycache_only %{python_sitelib}/__pycache__/IPy*
+%doc README.rst
 %license COPYING
 
 %check
