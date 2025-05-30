@@ -1,7 +1,7 @@
 #
 # spec file for package python-j2gen
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-j2gen
 Version:        0.1.0
 Release:        0
@@ -27,13 +25,15 @@ Group:          Development/Languages/Python
 URL:            https://github.com/toabctl/j2gen
 Source:         https://files.pythonhosted.org/packages/source/j/j2gen/j2gen-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
 Requires:       python-PyYAML
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
@@ -51,10 +51,10 @@ Jinja2 template renderer with yaml input files
 %setup -q -n j2gen-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/j2gen
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -71,6 +71,7 @@ Jinja2 template renderer with yaml input files
 %doc AUTHORS ChangeLog README.rst
 %license LICENSE
 %python_alternative %{_bindir}/j2gen
-%{python_sitelib}/*
+%{python_sitelib}/j2gen
+%{python_sitelib}/j2gen-%{version}*-info
 
 %changelog

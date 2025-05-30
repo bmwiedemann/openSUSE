@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 30 08:35:58 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed Nov  3 08:08:50 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
