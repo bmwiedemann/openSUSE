@@ -68,4 +68,12 @@
   * MANIFEST.in: Add tests to sdist</comment>
     <requestid>1131708</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>cfcaa4ae1fdb2f61cc38ce0c09af25ae</srcmd5>
+    <version>0.8.1</version>
+    <time>1748608454</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1280869</requestid>
+  </revision>
 </revisionlist>
