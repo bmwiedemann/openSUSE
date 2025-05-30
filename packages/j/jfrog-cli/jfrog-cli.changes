@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 29 05:26:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.76.1:
+  * Improvements
+    - Support for JFrog Advanced Security (JAS) in scan command by
+      @guyshe-jfrog in jfrog-cli-security#407
+    - Add support for non-standard package.json locations in npm
+      tarballs by @agrasth in jfrog-cli-artifactory#78
+  * Bug Fixes
+    - Pass Project key to xray api if provided by @attiasas in
+      jfrog-cli-security#454
+    - Fixed a failure when trying to read if spec flag is set by
+      @bhanurp in jfrog-cli-artifactory#77
+
+-------------------------------------------------------------------
 Mon May 19 04:35:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.76.0:
