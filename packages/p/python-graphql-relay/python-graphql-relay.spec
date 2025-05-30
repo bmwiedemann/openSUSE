@@ -1,7 +1,7 @@
 #
 # spec file for package python-graphql-relay
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/graphql-python/graphql-relay-py
 Source:         https://files.pythonhosted.org/packages/source/g/graphql-relay/graphql-relay-%{version}.tar.gz
 BuildRequires:  %{python_module graphql-core >= 3.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module promise}
 BuildRequires:  %{python_module pytest >= 6.2}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-describe}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-promise
@@ -48,10 +50,10 @@ the GraphQL Python reference implementation of a GraphQL server.
 %setup -q -n graphql-relay-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
