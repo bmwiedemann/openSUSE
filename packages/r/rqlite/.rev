@@ -112,4 +112,12 @@
     <comment>rqlite 8.37.0 (forwarded request 1274186 from AndreasStieger)</comment>
     <requestid>1274187</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>00f4c06f42d28183ac7488812b0e5cfc</srcmd5>
+    <version>8.37.1</version>
+    <time>1748608662</time>
+    <user>dimstar_suse</user>
+    <comment>rqlite 8.37.1</comment>
+    <requestid>1281115</requestid>
+  </revision>
 </revisionlist>

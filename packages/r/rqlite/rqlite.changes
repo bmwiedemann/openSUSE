@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 29 10:29:38 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.37.1:
+  * Prevent single-node cluster from joining another cluster
+  * update dependencies
+
+-------------------------------------------------------------------
 Sun May  4 06:54:08 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 8.37.0:
