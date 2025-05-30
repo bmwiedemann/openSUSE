@@ -28,15 +28,11 @@ Source0:        https://github.com/PeterFeicht/%{name}/releases/download/v%{vers
 Patch0:         cppreference-doc-premailer-3.9-compat.patch
 BuildRequires:  devhelp
 BuildRequires:  fdupes
-BuildRequires:  libqt5-qttools
-%if 0%{?suse_version} < 1550
-BuildRequires:  python3-cssutils
-%else
-# At least version 2.0.0 of cssutils is required for building on oS 1550
 BuildRequires:  python3-cssutils >= 2.0.0
-%endif
 BuildRequires:  python3-lxml
 BuildRequires:  python3-premailer
+BuildRequires:  qt6-macros
+BuildRequires:  qt6-tools-helpgenerators
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -68,7 +64,7 @@ This package provides the documentation in the qhelp format.
 %autosetup -p1
 
 %build
-make %{?_smp_mflags} qhelpgenerator=qhelpgenerator-qt5
+make %{?_smp_mflags} qhelpgenerator=%{_qt6_libexecdir}/qhelpgenerator
 
 %install
 %make_install

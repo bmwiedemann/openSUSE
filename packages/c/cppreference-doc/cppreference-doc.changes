@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 25 15:53:47 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use Qt6 qhelpgenerator to build qch files.
+- Drop support for Leap 15.6 and older: builds fail anyway due to
+  at least python 3.8 being required.
+
+-------------------------------------------------------------------
 Sun Feb 23 06:02:09 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 20250209:
