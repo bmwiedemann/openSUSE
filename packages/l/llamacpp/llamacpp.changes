@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May 27 22:51:38 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to 5516:
+  * llama : remove llama_kv_cache_view API
+  * model : disable SWA for Phi models
+  * kv-cache : simplify the interface
+  * server : Add the endpoints /api/tags and /api/chat
+  * ggml : add ggml_gelu_erf()
+  * hparams : support models for which all layers use SWA
+  * opencl: fix couple crashes
+  * opencl: Add support for multiple devices
+  * mtmd : add ultravox audio input
+  * server : support audio input
+  * server: streaming of tool calls and thoughts when jinja is on
+  * mtmd : support Qwen 2.5 Omni
+  * ggml : riscv: add xtheadvector support
+  * opencl : various optimizations
+  * Full changelog:
+    https://github.com/ggml-org/llama.cpp/compare/b5426...b5516
+
+-------------------------------------------------------------------
 Mon May 19 20:03:14 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to 5426:

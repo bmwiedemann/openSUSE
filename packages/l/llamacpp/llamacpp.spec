@@ -17,9 +17,9 @@
 
 
 Name:           llamacpp
-Version:        5426
+Version:        5516
 Release:        0
-Summary:        llama-cli tool to run inference using the llama.cpp library
+Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT
 URL:            https://github.com/ggml-org/llama.cpp
 Source:         https://github.com/ggml-org/llama.cpp/archive/b%{version}/%{name}-%{version}.tar.gz
