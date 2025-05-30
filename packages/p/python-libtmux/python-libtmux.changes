@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 29 06:01:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.46.2:
+  * Fix new_window argument typing in Session by @Data5tream in #596
+    - types: Add StrPath typing, fix new_session by @tony in #597
+      -  types: Add StrPath typing, fix new_session, part 2 by @tony
+         in #598
+
+-------------------------------------------------------------------
 Sun Mar 16 17:05:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.46.1:
