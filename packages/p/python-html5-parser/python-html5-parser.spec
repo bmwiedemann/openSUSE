@@ -1,7 +1,7 @@
 #
 # spec file for package python-html5-parser
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,9 @@ BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lxml >= 3.8.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -45,10 +47,10 @@ about thirty times faster than the "html5lib" pure Python based parser.
 
 %build
 find . -name '*.py' -exec sed -i '/#.*usr.bin.env.*python/d' {} \;
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %check
 %if 0%{?suse_version} > 1500
@@ -61,6 +63,6 @@ find . -name '*.py' -exec sed -i '/#.*usr.bin.env.*python/d' {} \;
 %license LICENSE
 %doc README.rst
 %{python_sitearch}/html5_parser/
-%{python_sitearch}/html5_parser-%{version}-py%{python_version}.egg-info
+%{python_sitearch}/html5_parser-%{version}*-info
 
 %changelog
