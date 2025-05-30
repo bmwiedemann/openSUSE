@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 29 08:38:32 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 1.2.0
+  - Update README after switchover to meson
+  - autotools-build: Explicitly require glib, gtk3
+  - build: Automate copyright year management
+  - meson-build: Use shared_module()
+  - Replace deprecated exo with libxfce4ui 4.21.0
+  - Add about dialog
+  - Add meson build
+  - Fix memory leak
+  - Translation Updates 
+
+-------------------------------------------------------------------
 Sun Dec 29 11:14:52 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.1.4

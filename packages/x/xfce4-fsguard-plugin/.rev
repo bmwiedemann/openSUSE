@@ -40,4 +40,21 @@
     <comment></comment>
     <requestid>1234330</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0d30b8cb87be383fe389239cf21d30cf</srcmd5>
+    <version>1.2.0</version>
+    <time>1748608645</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0
+  - Update README after switchover to meson
+  - autotools-build: Explicitly require glib, gtk3
+  - build: Automate copyright year management
+  - meson-build: Use shared_module()
+  - Replace deprecated exo with libxfce4ui 4.21.0
+  - Add about dialog
+  - Add meson build
+  - Fix memory leak
+  - Translation Updates (forwarded request 1281092 from mauriziogalli)</comment>
+    <requestid>1281093</requestid>
+  </revision>
 </revisionlist>
