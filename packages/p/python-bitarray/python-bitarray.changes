@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 30 06:40:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.4.2
+  * extend documentation of
+    [compression of sparse bitarrays](sparse_compression.rst)
+  * `util.sc_decode()` and `util.vl_decode()` now raise `StopIteration`
+    instead of `ValueError` when unexpected end of stream is encountered
+  * add debug mode tests for `read_n()`, `write_n()` and `count_from_word()`
+
+-------------------------------------------------------------------
 Sat May 17 18:02:05 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.4.1
