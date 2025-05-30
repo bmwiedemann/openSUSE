@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 27 15:22:32 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Thu Oct 13 07:19:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use https for urls
