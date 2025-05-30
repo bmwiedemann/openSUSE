@@ -831,8 +831,8 @@
       <repopackage name="issue-generator"/>
       <repopackage name="iw"/>
       <repopackage name="jack-dbus"/>
-      <repopackage name="java-21-openjdk"/>
-      <repopackage name="java-21-openjdk-headless"/>
+      <repopackage name="java-24-openjdk"/>
+      <repopackage name="java-24-openjdk-headless"/>
       <repopackage name="java-binfmt-misc"/>
       <repopackage name="javapackages-filesystem"/>
       <repopackage name="javapackages-tools"/>

@@ -829,8 +829,8 @@
     <package name="issue-generator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="iw" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="jack-dbus" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="java-21-openjdk" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="java-21-openjdk-headless" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="java-24-openjdk" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="java-24-openjdk-headless" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="java-binfmt-misc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="javapackages-filesystem" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="javapackages-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
