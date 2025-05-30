@@ -1,7 +1,7 @@
 #
 # spec file for package python-jinja2-time
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %bcond_without test
+%{?sle15_python_module_pythons}
 Name:           python-jinja2-time
 Version:        0.2.0
 Release:        0
@@ -26,7 +26,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hackebrot/jinja2-time
 Source:         https://files.pythonhosted.org/packages/source/j/jinja2-time/jinja2-time-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
@@ -47,10 +49,10 @@ A Jinja2 extension providing support for dates and times.
 %setup -q -n jinja2-time-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
@@ -63,6 +65,7 @@ A Jinja2 extension providing support for dates and times.
 %files %{python_files}
 %license LICENSE
 %doc HISTORY.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/jinja2[-_]time
+%{python_sitelib}/jinja2[-_]time-%{version}*-info
 
 %changelog
