@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Wed May 28 05:08:37 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 1.2:
+  * Re-implement Monotional on top of DejaVu Sans Mono from scratch 
+    to fix display bug in MS Word. Glyphs for ~ and @ still need to 
+    be re-implemented
+  * Revert ` glyph width from 1.1 so that legibility is preserved for 
+    accented characters 
+
+-------------------------------------------------------------------
+Sat May 24 07:29:51 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Move license and copyright notice into archive
+
+-------------------------------------------------------------------
+Sat May 24 05:44:04 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update spec file
+
+-------------------------------------------------------------------
+Sat May 24 05:28:22 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update readme and add copyright notice
+
+-------------------------------------------------------------------
+Sat May 24 04:48:58 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 1.1:
+  * Widen ` glyph for all fonts
+
+-------------------------------------------------------------------
+Sat May 24 01:30:42 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update README.md
+
+-------------------------------------------------------------------
+Fri May 23 22:22:28 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Initial 1.0 release:
+  * Based on DejaVu Sans Mono 2.37.
+  * The main differences are with the following characters: 
+    1 i - _ = ' " ^ # * % @ ~
+
