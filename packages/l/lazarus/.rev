@@ -258,4 +258,13 @@
 </comment>
     <requestid>1239255</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>797023fd1d5e636896b8dddf8e8870c0</srcmd5>
+    <version>4.0</version>
+    <time>1748608688</time>
+    <user>dimstar_suse</user>
+    <comment>- Corrected date format in the changelog to solve source validator errors.
+</comment>
+    <requestid>1281190</requestid>
+  </revision>
 </revisionlist>

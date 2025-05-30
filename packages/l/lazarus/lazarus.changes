@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 29 13:38:21 UTC 2025 - PragmaticLinux <info@pragmaticlinux.com>
+
+- Add lazarus-4.0-qt6-app-close-sigsegv-fix.patch to fix SIGSEGV crash
+  when closing an application that uses the QT6 LCL widgetset, per
+  upstream issue #41470
+
+-------------------------------------------------------------------
+Thu May 29 10:07:03 UTC 2025 - PragmaticLinux <info@pragmaticlinux.com>
+
+- Update to 4.0
+  * For a complete list of changes see:
+    https://wiki.freepascal.org/Lazarus_4.0_release_notes 
+
+-------------------------------------------------------------------
 Tue Jan 21 10:31:50 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.8:
@@ -413,12 +427,12 @@ Fri Apr  1 22:54:14 UTC 2011 - termim@gmail.com
 - Update to 0.9.30
 
 -------------------------------------------------------------------
-Tue Nov 03 2009 Toni Graffy <toni@links2linux.de> - 0.9.28.2-1.pm.1
+Tue Nov  3 12:23:44 UTC 2009 - Toni Graffy <toni@links2linux.de>
 
 - fixed configfile environmentoptions.xml
 
 -------------------------------------------------------------------
-Sun Nov 01 2009 Toni Graffy <toni@links2linux.de> - 0.9.28.2-0.pm.1
+Sun Nov  1 12:23:43 UTC 2009 - Toni Graffy <toni@links2linux.de>
 
 - update to 0.9.28.2
 - This release fixes compiling a test application without saving (missing
@@ -426,7 +440,7 @@ Sun Nov 01 2009 Toni Graffy <toni@links2linux.de> - 0.9.28.2-0.pm.1
   Some other small fixes are also included.
 
 -------------------------------------------------------------------
-Tue Oct 27 2009 Toni Graffy <toni@links2linux.de> - 0.9.28-0.pm.1
+Tue Oct 27 12:23:42 UTC 2009 - Toni Graffy <toni@links2linux.de>
 
 - update to 0.9.28
 -  In this major release, the IDE has many source editor improvements like display
@@ -439,28 +453,28 @@ Tue Oct 27 2009 Toni Graffy <toni@links2linux.de> - 0.9.28-0.pm.1
    you can visually nest designers in the IDE.
 
 -------------------------------------------------------------------
-Mon May 04 2009 Toni Graffy <toni@links2linux.de> - 0.9.26.2-0.pm.3
+Mon May  4 12:23:41 UTC 2009 - Toni Graffy <toni@links2linux.de>
 
 - rebuild against fpc-2.2.4
 
 -------------------------------------------------------------------
-Mon Mar 23 2009 Toni Graffy <toni@links2linux.de> - 0.9.26.2-0.pm.2
+Mon Mar 23 12:23:40 UTC 2009 - Toni Graffy <toni@links2linux.de>
 
 - update to 0.9.26.2 (release-tarball)
 
 -------------------------------------------------------------------
-Sat Feb 28 2009 Toni Graffy <toni@links2linux.de> - 0.9.26.2-0.pm.1
+Sat Feb 28 12:23:39 UTC 2009 - Toni Graffy <toni@links2linux.de>
 
 - update to 0.9.26.2
   svn co https://lazarus.svn.sourceforge.net/svnroot/lazarus/tags/lazarus_0_9_26_2 lazarus
 
 -------------------------------------------------------------------
-Sat Nov 01 2008 Toni Graffy <toni@links2linux.de> - 0.9.26-0.pm.2
+Sat Nov  1 12:23:38 UTC 2008 - Toni Graffy <toni@links2linux.de>
 
 - rebuild against fpc-2.2.2-0.pm.2
 
 -------------------------------------------------------------------
-Thu Oct 30 2008 Toni Graffy <toni@links2linux.de> - 0.9.26-0.pm.1
+Thu Oct 30 12:23:37 UTC 2008 - Toni Graffy <toni@links2linux.de>
 
 - initial build for packman (fpc-2.2.2 is working with this version)
 - based on fedora spec-file from Lubomir Rintel <lkundrak@v3.sk>
