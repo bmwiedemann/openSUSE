@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-QtAwesome
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        FontAwesome icons in PyQt and PySide applications
 License:        MIT
 URL:            https://github.com/spyder-ide/qtawesome
-Source:         https://files.pythonhosted.org/packages/source/Q/QtAwesome/QtAwesome-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/q/qtawesome/qtawesome-%{version}.tar.gz
 BuildRequires:  %{python_module QtPy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -33,8 +33,7 @@ BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 # Choose one of the many backend options for pytest-qt,
-# only PyQt5 available for all flavors and supported by QtPy
-BuildRequires:  %{python_module qt5}
+BuildRequires:  %{python_module PyQt6}
 # /SECTION
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -54,8 +53,10 @@ It is a port to Python - PyQt / PySide of the QtAwesome C++
 library by Rick Blommers.
 
 %prep
-%setup -q -n QtAwesome-%{version}
+%setup -q -n qtawesome-%{version}
 dos2unix CHANGELOG.md README.md
+#  remove entrypoint only for windows
+sed -i '/qta-install-fonts-all-users/d' setup.py
 
 %build
 %pyproject_wheel
@@ -66,7 +67,8 @@ dos2unix CHANGELOG.md README.md
 %python_clone -a %{buildroot}%{_bindir}/qta-browser
 
 %check
-%pytest -v qtawesome/tests
+export PYTHONPATH="."
+%pytest -v
 
 %post
 %python_install_alternative qta-browser

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu May 29 18:33:51 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.4.0
+  ## Issues Closed
+  * Issue 275 - Update Codicon to 0.0.36 and fix update script (PR
+    276 by @dalthviz)
+  * Issue 264 - FileNotFoundError on fonts due to Windows Font
+    Blocking policy (PR 273 by @dalthviz)
+  * Issue 230 - Add Font Awesome 6 and remove deprecated Font
+    Awesome 4 (PR 274 by @dalthviz)
+  ## Pull Requests Merged
+  * PR 277 - PR: Revert Qt binging conditional to run example.py
+    and fix animations start/stop logic (CI), by @dalthviz (254)
+  * PR 276 - PR: Update Codicon to 0.0.36, by @dalthviz (275)
+  * PR 274 - PR: Add FontAwesome 6 icons (6.7.2) and change font
+    update command, by @dalthviz (230)
+  * PR 273 - PR: Return original font directory when font user
+    installation load fails, by @dalthviz (264)
+  * PR 272 - PR: Remove FontAwesome 4 font support, by @dalthviz
+  * PR 270 - PR: Add fallback to try to load fonts from the system
+    ones and add method to check info about bundled fonts, by
+    @dalthviz
+- Remove windows script entrypoint to install fonts systemwide
+
+-------------------------------------------------------------------
 Thu Mar 27 02:00:24 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Normalize metadata directory name.
