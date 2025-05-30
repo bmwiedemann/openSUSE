@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 28 18:36:08 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Replace usage of %jobs for reproducible builds (boo#1237231)
+
+-------------------------------------------------------------------
 Wed Mar 19 23:23:30 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch mach-use-python-311.patch:

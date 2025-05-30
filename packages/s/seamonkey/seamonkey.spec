@@ -244,7 +244,7 @@ cat << EOF > .mozconfig
 mk_add_options MOZILLA_OFFICIAL=1
 mk_add_options BUILD_OFFICIAL=1
 mk_add_options MOZ_MILESTONE_RELEASE=1
-mk_add_options MOZ_MAKE_FLAGS=%{?jobs:-j%jobs}
+mk_add_options MOZ_MAKE_FLAGS=%{?_smp_mflags}
 #mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../obj
 ac_add_options --enable-application=comm/suite
 ac_add_options --libdir=%{_libdir}
