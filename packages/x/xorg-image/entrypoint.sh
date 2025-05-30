@@ -15,10 +15,16 @@ trap 'log "Received SIGINT, initiating shutdown"; cleanup' SIGINT
 cleanup() {
     log "Cleaning up and stopping processes"
 
-    pkill -SIGTERM Xorg
-    pkill -SIGTERM icewm-session-lite
+    pkill -TERM -f "/usr/bin/Xorg" || true
+    pkill -TERM -f icewm-session-lite || true
+    pkill -TERM -f icewmbg || true
+    pkill -TERM -f icewm || true
 
     sleep 3
+
+    # Force kill if needed
+    pkill -KILL -f "/usr/bin/Xorg" || true
+    pkill -KILL -f icewm || true
 
     log "Cleanup complete, exiting"
     exit 0
