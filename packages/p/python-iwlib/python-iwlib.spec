@@ -1,7 +1,7 @@
 #
 # spec file for package python-iwlib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-iwlib
 Version:        1.6.2
 Release:        0
@@ -27,8 +26,10 @@ URL:            https://github.com/nathan-hoad/python-iwlib
 Source:         https://files.pythonhosted.org/packages/source/i/iwlib/iwlib-%{version}.tar.gz
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libiw-devel
 BuildRequires:  python-rpm-macros
@@ -46,10 +47,10 @@ back from a device.
 %setup -q -n iwlib-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -60,6 +61,7 @@ PYTHONPATH=FIX-ME
 %files %{python_files}
 %license COPYING
 %doc AUTHORS README.rst
-%{python_sitearch}/*
+%{python_sitearch}/iwlib
+%{python_sitearch}/iwlib-%{version}*-info
 
 %changelog
