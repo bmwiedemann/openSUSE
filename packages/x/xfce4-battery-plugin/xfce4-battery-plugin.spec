@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-battery-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,16 @@
 %define plugin battery
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.1.6
+Version:        1.2.0
 Release:        0
 Summary:        Battery Monitoring Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-battery-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.1/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.2/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
@@ -76,14 +77,14 @@ NOCONFIGURE=1 ./autogen.sh
   --enable-maintainer-mode \
   --disable-static
 %else
-%configure --disable-static
+%meson
 %endif
-%make_build
+%meson_build
 
 %install
-%make_install
+%meson_install
 
-rm %{buildroot}%{_libdir}/xfce4/panel/plugins/libbattery.la
+rm -f %{buildroot}%{_libdir}/xfce4/panel/plugins/libbattery.la
 
 rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 
