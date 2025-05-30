@@ -3918,6 +3918,7 @@ unsorted:
   - faenza-icon-theme-mint 
   - faenza-icon-theme-radiance 
   - fail2ban 
+  - faiss-devel 
   - fake-gcs-server 
   - fake-hwclock 
   - fakechroot 
@@ -12943,6 +12944,7 @@ unsorted:
   - libfactory-4_4_1 
   - libfactory-devel 
   - libfactory-gftables 
+  - libfaiss 
   - libfakekey-devel 
   - libfaketime 
   - libfallocate-devel 
@@ -14010,29 +14012,29 @@ unsorted:
   - libkdstatemachineeditor_view2 
   - libkdumpfile-devel 
   - libkdumpfile12 
-  - libkea-asiodns48 
-  - libkea-asiolink71 
+  - libkea-asiodns49 
+  - libkea-asiolink72 
   - libkea-cc68 
-  - libkea-cfgclient65 
+  - libkea-cfgclient66 
   - libkea-cryptolink50 
-  - libkea-d2srv46 
+  - libkea-d2srv47 
   - libkea-database62 
-  - libkea-dhcp++91 
-  - libkea-dhcp_ddns56 
-  - libkea-dhcpsrv110 
-  - libkea-dns++56 
+  - libkea-dhcp++92 
+  - libkea-dhcp_ddns57 
+  - libkea-dhcpsrv111 
+  - libkea-dns++57 
   - libkea-eval69 
   - libkea-exceptions33 
-  - libkea-hooks99 
-  - libkea-http71 
+  - libkea-hooks100 
+  - libkea-http72 
   - libkea-log61 
   - libkea-mysql71 
   - libkea-pgsql71 
-  - libkea-process73 
+  - libkea-process74 
   - libkea-stats41 
-  - libkea-tcp18 
+  - libkea-tcp19 
   - libkea-util-io0 
-  - libkea-util85 
+  - libkea-util86 
   - libkea1_5 
   - libkeccak-devel 
   - libkeccak1 
@@ -15171,6 +15173,7 @@ unsorted:
   - libpng16-tools 
   - libpnglite0 
   - libpocketsphinx5 
+  - libpocl-devices-levelzero 
   - libpocl-devices-tbb 
   - libpocl2 
   - libpodofo-devel 
@@ -15334,7 +15337,7 @@ unsorted:
   - libqgpgme15 
   - libqgpgme15-32bit 
   - libqgpgmeqt6-devel 
-  - libqhexedit4 
+  - libqhexedit0 
   - libqhull_r8_0 
   - libqimageblitz5-1 
   - libqimageblitz5-devel 
@@ -17103,7 +17106,7 @@ unsorted:
   - libz-ng-compat1-32bit 
   - libz-ng2 
   - libz-ng2-32bit 
-  - libz3-4_14 
+  - libz3-4_15 
   - libzarchive0_1 
   - libzbar-devel 
   - libzbar0-32bit 
@@ -17119,7 +17122,6 @@ unsorted:
   - libzdb13 
   - libze_intel_gpu1 
   - libzeitgeist-1_0-1 
-  - libzeitgeist-2_0-0 
   - libzeitgeist-devel 
   - libzen-devel 
   - libzen0 
@@ -22833,7 +22835,6 @@ unsorted:
   - postgresql14-server 
   - postgresql14-server-devel 
   - postgresql14-test 
-  - postgresql14-timescaledb 
   - postgresql15 
   - postgresql15-contrib 
   - postgresql15-devel 
@@ -24319,6 +24320,9 @@ unsorted:
   - python311-azure-mgmt-iotoperations 
   - python311-azure-mgmt-keyvault 
   - python311-azure-mgmt-kubernetesconfiguration 
+  - python311-azure-mgmt-kubernetesconfiguration-extensions 
+  - python311-azure-mgmt-kubernetesconfiguration-extensiontypes 
+  - python311-azure-mgmt-kubernetesconfiguration-fluxconfigurations 
   - python311-azure-mgmt-kusto 
   - python311-azure-mgmt-labservices 
   - python311-azure-mgmt-lambdatesthyperexecute 
@@ -25020,6 +25024,7 @@ unsorted:
   - python311-ezdxf 
   - python311-fabio 
   - python311-factory_boy 
+  - python311-faiss 
   - python311-fake-useragent 
   - python311-fakeredis 
   - python311-falcon 
@@ -28016,6 +28021,9 @@ unsorted:
   - python312-azure-mgmt-iotoperations 
   - python312-azure-mgmt-keyvault 
   - python312-azure-mgmt-kubernetesconfiguration 
+  - python312-azure-mgmt-kubernetesconfiguration-extensions 
+  - python312-azure-mgmt-kubernetesconfiguration-extensiontypes 
+  - python312-azure-mgmt-kubernetesconfiguration-fluxconfigurations 
   - python312-azure-mgmt-kusto 
   - python312-azure-mgmt-labservices 
   - python312-azure-mgmt-lambdatesthyperexecute 
@@ -28731,6 +28739,7 @@ unsorted:
   - python312-ezdxf 
   - python312-fabio 
   - python312-factory_boy 
+  - python312-faiss 
   - python312-fake-useragent 
   - python312-fakeredis 
   - python312-falcon 
@@ -31767,6 +31776,9 @@ unsorted:
   - python313-azure-mgmt-iotoperations 
   - python313-azure-mgmt-keyvault 
   - python313-azure-mgmt-kubernetesconfiguration 
+  - python313-azure-mgmt-kubernetesconfiguration-extensions 
+  - python313-azure-mgmt-kubernetesconfiguration-extensiontypes 
+  - python313-azure-mgmt-kubernetesconfiguration-fluxconfigurations 
   - python313-azure-mgmt-kusto 
   - python313-azure-mgmt-labservices 
   - python313-azure-mgmt-lambdatesthyperexecute 
@@ -32464,6 +32476,7 @@ unsorted:
   - python313-ezdxf 
   - python313-fabio 
   - python313-factory_boy 
+  - python313-faiss 
   - python313-fake-useragent 
   - python313-fakeredis 
   - python313-falcon 
@@ -35636,6 +35649,7 @@ unsorted:
   - regexploit 
   - registries-conf-suse 
   - regreet 
+  - regularhunter-monotional-fonts 
   - rehex 
   - reimage 
   - reimage-bash-completion 
@@ -36888,7 +36902,7 @@ unsorted:
   - soapysdr0.8-3-module-remote 
   - soapysdr0.8-3-module-rtlsdr 
   - soapysdr0.8-3-module-uhd 
-  - soapysdr0.8-module-xtrx 
+  - soapysdr0.8-3-module-xtrx 
   - sobby 
   - socat-extra 
   - soci-devel 
@@ -37100,9 +37114,12 @@ unsorted:
   - starship 
   - startup-notification-devel 
   - statgrab 
-  - static-initrd-base-unsigned 
-  - static-initrd-generic-unsigned 
-  - static-initrd-network-unsigned 
+  - static-initrd-base-default-unsigned 
+  - static-initrd-base-vanilla-unsigned 
+  - static-initrd-generic-default-unsigned 
+  - static-initrd-generic-vanilla-unsigned 
+  - static-initrd-network-default-unsigned 
+  - static-initrd-network-vanilla-unsigned 
   - statserial 
   - stax-ex 
   - stax-ex-javadoc 
@@ -47948,7 +47965,6 @@ unsorted:
   - typelib-1_0-XreaderDocument-1_5 
   - typelib-1_0-XreaderView-1_5 
   - typelib-1_0-Xviewer-3_0 
-  - typelib-1_0-Zeitgeist-2_0 
   - typelib-1_0-kkc-1_0 
   - typelib-1_0-libdazzle-1_0 
   - typelib-1_0-libmirage-3_2 
