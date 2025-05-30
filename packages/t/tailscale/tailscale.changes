@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 30 06:23:15 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.84.1:
+  * net/dns: cache dns.Config for reuse when compileConfig fails
+
+-------------------------------------------------------------------
 Thu May 22 08:27:09 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.84.0:
