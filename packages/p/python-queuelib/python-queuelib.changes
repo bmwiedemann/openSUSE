@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May 28 08:41:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.8.0
+  * Added support for Python 3.13 and PyPy 3.11
+  * Removed support for Python 3.8
+  * Queue classes now accept ``os.PathLike`` paths
+  * Fixed test failures on Windows
+  * Switched the build system to ``hatchling``
+  * Improved linting and CI configuration
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Mon Jun 10 09:52:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.0:

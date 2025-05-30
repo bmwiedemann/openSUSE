@@ -52,4 +52,12 @@
   * Improved linting and CI configuration</comment>
     <requestid>1179672</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e799fb0227ff5f587cd0b4d1f116a251</srcmd5>
+    <version>1.8.0</version>
+    <time>1748608491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1280954</requestid>
+  </revision>
 </revisionlist>
