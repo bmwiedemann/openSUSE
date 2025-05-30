@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu May 29 07:56:08 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 0.5.0
+  - Update README after switchover to meson
+  - Add missing files to translate and fix about dialog
+  - Fix licensing
+  - GroupMenuItem: Show window action menu as context menu
+  - Group: Remove window action menu from context menu
+  - x11: Add exceptions where instance-id should be preferred to class-id
+  - Group: Don't show group menu when context menu is shown
+  - Allow user to create a launcher if not found
+  - AppInfos: Print a warning if app launch fails
+  - cleanup: AppInfos: Use class member instead of creating new object
+  - cleanup: AppInfos: Use naming conventions of other objects
+  - AppInfos: Avoid using hard-coded aliases
+  - Allow user to manually select a launcher if not found
+  - Helpers: Extend String::pathBasename and use it everywhere
+  - AppInfos: Extend excluded binary list and use a container
+  - cleanup: Replace NULL/TRUE with nullptr/true
+  - autotools-build: Explicitly require libxfce4util
+  - build: Automate copyright year management
+  - meson-build: Use shared_module()
+  - Activate/minimize all group windows on left click on the group icon
+  - Replace deprecated exo with libxfce4ui 4.21.0
+  - Group: Reset mTopWindowIndex when it becomes out of bounds
+  - Revert "Group: Reset mTopWindowIndex when active window becomes
+    inactive"
+  - Group: Reset mTopWindowIndex when active window becomes inactive
+  - Fix several issues with context menu for undockable apps
+  - Fix memory leak when getting indicator color from theme
+  - Add meson build
+  - autotools-build: Require libXi
+  - {State,Store}.ipp: Renamed from {State,Store}.tpp
+  - I18n: Update po/LINGUAS list
+  - Translation Updates
+- Removed obsolete relax-x11-version.patch
+
+-------------------------------------------------------------------
 Tue Feb  4 11:42:40 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - License is GPL-3.0-or-later, not GPL-2.0-or-later!

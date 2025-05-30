@@ -16,22 +16,21 @@
 #
 
 
-%define panel_version 4.16.0
+%define xfce_version 4.16.0
 %define plugin docklike
-%bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        0.4.3
+Version:        0.5.0
 Release:        0
 Summary:        Docklike Taskbar
 License:        GPL-3.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-docklike-plugin/start
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/0.4/%{name}-%{version}.tar.bz2
-Patch0:         relax-x11-version.patch
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/0.5/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo) >= 1.16.0
@@ -42,18 +41,16 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gtk-layer-shell-0) >= 0.7.0
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.30.0
-BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.16.0
+BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{xfce_version}
+BuildRequires:  pkgconfig(libxfce4ui-2) >= %{xfce_version}
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{xfce_version}
 BuildRequires:  pkgconfig(libxfce4windowing-0) >= 4.19.4
 BuildRequires:  pkgconfig(libxfce4windowingui-0) >= 4.19.4
-BuildRequires:  pkgconfig(x11) >= 1.6.5
-%if %{with git}
-BuildRequires:  xfce4-dev-tools
-%endif
+BuildRequires:  pkgconfig(x11) >= 1.6.7
+BuildRequires:  pkgconfig(xi) >= 1.2.0
 # uses exo-open
 Requires:       exo-tools
-Requires:       xfce4-panel >= %{panel_version}
+Requires:       xfce4-panel >= %{xfce_version}
 Recommends:     %{name}-lang = %{version}
 
 %description
@@ -74,23 +71,14 @@ BuildArch:      noarch
 Provides translations for the "%{name}" package.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
-%if %{with git}
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-  --enable-maintainer-mode \
-  --disable-static
-%else
-%configure --disable-static
-%endif
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-
-rm %{buildroot}%{_libdir}/xfce4/panel/plugins/libdocklike.la
+%meson_install
 
 %find_lang %{name} %{name}.lang %{?no_lang_C}
 
