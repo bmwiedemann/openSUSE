@@ -27,11 +27,9 @@ Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  sddm-qt6
-Requires:       (sddm-qt6 or sddm)
-Requires:       (layer-shell-qt6 if sddm-qt6)
-Requires:       (layer-shell-qt5 if sddm)
-Requires:       (qt6-wayland if sddm-qt6)
-Requires:       (libqt5-qtwayland if sddm)
+Requires:       sddm-qt6
+Requires:       layer-shell-qt6
+Requires:       qt6-wayland
 Requires:       magpie-1
 # Future move to labwc
 Provides:       budgie-session-manager = %{version}
