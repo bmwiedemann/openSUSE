@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 30 06:01:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.3:
+  + Fix visual column position in overlay label
+  + Defer gtk/gsv initialization to GtkApplication startup so that
+    GApplication may determine proper app-id for process without
+    relying on systemd/dbus conventions
+  + Fix name in properties panel after save-as
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar 25 08:03:53 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.2:
