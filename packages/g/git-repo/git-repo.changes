@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Tue May 27 18:54:58 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.54:
+  * project: use --netrc-optional instead of --netrc
+  * launcher: switch command quoting to shlex.quote
+  * sync: Warn about excessive job counts
+  * run_tests: fix running when cwd is not the root
+  * run_tests: enable Python 3.8 CI coverage
+  * Fix EROFS error when root fs is mounted read-only
+  * pager: drop unused global vars
+  * launcher: change RunError to subprocess.CalledProcessError
+  * launcher: change collections.namedtuple to typing.NamedTuple
+  * tox: sync black settings with run_tests
+  * black: update to v25
+  * run_tests: move test filtering to pytest markers
+  * run_tests: move CQ test skips here
+  * run_tests: run all tests all the time
+  * launcher: change RunResult to subprocess.CompletedProcess
+  * Sync: Fix full submodule sync while shallow specified
+  * sync: Refresh index before updating repo
+  * gc: Add tags to remote pack list
+  * Activate submodules
+  * Use 'gitfile' in submodule checkouts
+  * Update internal filesystem layout for submodules
+  * Revert "sync: skip network half on repo upgrade"
+  * docs: smart-sync: split out & expand details
+  * run_tests: update to python 3.11 & pytest 8.3.4
+  * git_config: prefer XDG config location
+  * sync: Recover from errors during read-tree
+  * gc: Add repack option
+  * gc: extract deletion from Execute method
+  * sync: Handle KeyboardInterrupt during checkout
+  * sync: skip network half on repo upgrade
+  * gc: Introduce new command to remove old projects
+  * sync: Delete symlinks relative to client topdir
+  * Add smoke test for subcmd forall
+  * Remove gitc support from repo
+  * branches: Escape percent signs in branch names
+  * sync: Do not fail to sync a manifest with no projects
+  * Fix event log command event hierarchy.
+  * Make repo installation work without .git
+  * sync: fix connection error on macOS
+  * upload: Return correct tuple values in _ProcessResults
+  * worktree: Do not try to fix relative paths
+  * forall: Fix returning results early
+  * Use full name of the revision when checking dest-branch
+  * Add REPO_SKIP_SELF_UPDATE check in sync
+  * manifest: add optional base check on remove and extend
+  * [event_log] Stop leaking semaphore resources
+  * progress: always show done message
+  * subcmds: reduce multiprocessing serialization overhead
+  * sync: reduce multiprocessing serialization overhead
+  * Fix incremental syncs for prjs with submodules
+  * sync: Always use WORKER_BATCH_SIZE
+  * project: Handle git sso auth failures as repo exit
+  * superproject: Remove notice about beta
+  * project: run fetch --refetch on unable to not parse commit
+  * Disable git terminal prompt during fetch/clone
+  * init: add --manifest-upstream-branch
+  * man: regenerate man pages
+  * project: Copy and link files even with local branches
+  * sync: include TARGET_RELEASE when constructing smart sync target.
+  * color: fix have_fg not re assign to true
+  * tox.ini: Make the lint and format environments run black for all code
+  * tox.ini, constraints.txt: Lock the version of black to <24
+  * project: run fetch --refetch onacould not parse commit
+  * Add a `--rebase` option to sync command
+  * sync: Fix git command for aborting rebase being called incorrectly.
+  * project: ignore more curl failure modes
+  * logging: Fix log formatting with colored output
+  * upload: add a --topic option for setting topic explicitly
+  * sync: Abort rebase in progress if force-checkout is set
+  * ssh: Set git protocol version 2 on SSH ControlMaster
+  * upload: drop check for uncommitted local changes
+  * git: raise hard version to 1.9.1
+  * release: update-hooks: helper for automatically syncing hooks
+  * gitc: delete a few more dead references
+  * man: regenerate man pages
+  * Remove platform_utils.realpath
+  * Fix drive mounted directory on Windows
+  * git_command: unify soft/hard versions with requirements.json
+- increase the required version of python3-pytest to 8.3.4
+- increase the required version of git to 1.9.1
+
+-------------------------------------------------------------------
 Mon Apr 15 20:09:30 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 2.45:
