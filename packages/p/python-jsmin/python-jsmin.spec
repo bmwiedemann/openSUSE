@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsmin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %global skip_python2 1
 Name:           python-jsmin
 Version:        3.0.1
@@ -27,7 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/tikitu/jsmin/
 Source:         https://files.pythonhosted.org/packages/source/j/jsmin/jsmin-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -40,10 +41,10 @@ JavaScript minifier.
 %setup -q -n jsmin-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -52,6 +53,7 @@ JavaScript minifier.
 %files %{python_files}
 %doc CHANGELOG.txt README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/jsmin
+%{python_sitelib}/jsmin-%{version}*-info
 
 %changelog

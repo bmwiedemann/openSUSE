@@ -25,4 +25,12 @@
   * Removed usage of use_2to3 in setup.py</comment>
     <requestid>952804</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>70ba49b4a4320364b2f5a8e07913b2e4</srcmd5>
+    <version>3.0.1</version>
+    <time>1748608791</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1281312</requestid>
+  </revision>
 </revisionlist>
