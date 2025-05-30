@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 29 05:35:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.102:
+  - add self hosting docs for azure by @mintlify in #1954
+  - update mint.json by @mintlify in #1955
+  - fix mint.json by @mintlify in #1956
+  - support setting log level for backend by @motatoes in #1958
+  - add more debug logs in deletes by @motatoes in #1960
+
+-------------------------------------------------------------------
 Wed May 21 04:40:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.101:
