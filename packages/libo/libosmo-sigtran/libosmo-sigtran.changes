@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 30 09:31:21 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.1
+  * asp: Avoid double-free of received msg if conn is teared down
+
+-------------------------------------------------------------------
 Thu Feb 13 14:40:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Renamed libosmo-sccp to libosmo-sigtran

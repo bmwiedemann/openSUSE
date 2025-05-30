@@ -17,7 +17,7 @@
 
 
 Name:           libosmo-sigtran
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 %define libversion 2_0_0
 Summary:        Osmocom library for the A-bis interface between BTS and BSC
