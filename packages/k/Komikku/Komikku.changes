@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 30 05:55:35 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.78.0:
+  * [Card] Details page: Redesign
+  * [Servers] Local: Added support of CBT archive format (TAR)
+  * [Servers] Added Blue Solo (FR)
+  * [Servers] SMBC (EN): Re-enabled
+  * [Servers] Poseidon Scans (FR): Disabled
+  * [L10n] Updated Arabic, Bulgarian, Catalan and Portuguese translations
+
+-------------------------------------------------------------------
 Sat May 24 16:53:56 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.77.0:

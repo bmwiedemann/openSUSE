@@ -455,4 +455,18 @@
     <comment></comment>
     <requestid>1279860</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>23aaee6fa93fc9c78dd803fe8da08083</srcmd5>
+    <version>1.78.0</version>
+    <time>1748608787</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.78.0:
+  * [Card] Details page: Redesign
+  * [Servers] Local: Added support of CBT archive format (TAR)
+  * [Servers] Added Blue Solo (FR)
+  * [Servers] SMBC (EN): Re-enabled
+  * [Servers] Poseidon Scans (FR): Disabled
+  * [L10n] Updated Arabic, Bulgarian, Catalan and Portuguese translations (forwarded request 1281244 from rrahl0)</comment>
+    <requestid>1281325</requestid>
+  </revision>
 </revisionlist>
