@@ -1,7 +1,7 @@
 #
 # spec file for package python-httmock
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-httmock
 Version:        1.4.0
 Release:        0
@@ -25,15 +24,16 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/patrys/httmock
 Source:         https://github.com/patrys/httmock/archive/%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-requests >= 1.0.0
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module requests >= 1.0.0}
 # /SECTION
-Requires:       python-requests >= 1.0.0
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -47,18 +47,20 @@ You can use it to mock third-party APIs and test libraries that use
 %setup -q -n httmock-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest discover
+%pyunittest
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/httmock.py
+%{python_sitelib}/httmock-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/httmock*
 
 %changelog
