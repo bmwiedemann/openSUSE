@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu May 29 09:44:26 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.9:
+  * Fix `DateFromTicks` and `TimeFromTicks` return values to return
+    a date and a time referred to the UTC timezone rather than to
+    the local timezone. For consistency, `TimestampFromTicks` to
+    return a datetime in UTC rather than in the local timezone
+  * Fix `~Cursor.rownumber` after using  `~AsyncServerCursor.scroll()`
+    on `AsyncServerCursor` (:ticket:`#1066`).
+  * Fix interval parsing with days or other parts and negative time
+    in C module
+  * Don't process further connection attempts after Ctrl-C
+  * Fix cursors to correctly iterate over rows even if their row
+    factory returns `None` (:ticket:`#1073`).
+  * Fix `ConnectionInfo.port` when the port is specified as an
+    empty string
+  * Report all the attempts error messages in the exception raised
+    for a connection failure (:ticket:`#1069`).
+  * Improve logging on connection (:ticket:`#1085`).
+  * Add support for PostgreSQL 18 libpq (:ticket:`#1082`).
+  * Add SRID support to shapely dumpers/loaders (:ticket:`#1028`).
+  * Add support for binary hstore (:ticket:`#1030`).
+
+-------------------------------------------------------------------
 Wed Apr  9 06:53:27 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - update to 3.2.6:
