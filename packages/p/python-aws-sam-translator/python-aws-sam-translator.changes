@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 28 05:39:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.97.0
+  * chore(schema): update by @mbfreder in (#3742)
+  * feat: Correctly support custom domain in private apis
+    by @valerena in (#3750)
+  * chore: bump version to 1.97.0 by @Vandita2020 in (#3752)
+
+-------------------------------------------------------------------
 Mon Apr  7 08:11:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.96.0
