@@ -17,17 +17,16 @@
 
 
 Name:           parole
-Version:        4.18.2
+Version:        4.20.0
 Release:        0
 Summary:        Media Player for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://docs.xfce.org/apps/parole/start
-Source0:        https://archive.xfce.org/src/apps/parole/4.18/%{name}-%{version}.tar.bz2
-# PATCH-FEATURE-UPSTREAM parole-add-uri-scheme-handler-support.patch gber@opensuse.org -- Adds support for URI scheme handlers
-Patch1:         parole-add-uri-scheme-handler-support.patch
+Source0:        https://archive.xfce.org/src/apps/parole/4.20/%{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(clutter-1.0) >= 1.16.4
 BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.4.4
@@ -48,9 +47,9 @@ BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libnotify) >= 0.7.8
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.11.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.10.0
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.10.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.16.0
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.16.0
 BuildRequires:  pkgconfig(taglib) >= 1.4
 BuildRequires:  pkgconfig(x11) >= 1.6.7
 Recommends:     %{name}-lang = %{version}
@@ -78,15 +77,14 @@ This package contains development files for developing plugins for parole.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
-# the plugin documentation does not build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
