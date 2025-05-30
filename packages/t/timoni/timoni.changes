@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu May 29 05:20:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.25.0:
+  Timoni's CUE engine has been updated to v0.13.0.
+  * What's Changed
+    - docs: Remove reference to non-existent flag --prune by
+      @edeustua in #485
+    - build(deps): bump github.com/distribution/distribution/v3
+      from 3.0.0-rc.2 to 3.0.0-rc.3 by @dependabot in #483
+    - fix: use list.Concat() to concatenate lists by @ccmtaylor in
+      #490
+    - build(deps): bump golang.org/x/net from 0.34.0 to 0.36.0 by
+      @dependabot in #492
+    - build(deps): bump the ci group across 1 directory with 5
+      updates by @dependabot in #493
+    - build(deps): bump the ci group across 1 directory with 3
+      updates by @dependabot in #496
+    - Add GitHub App auth to flux-aio docs by @stefanprodan in #494
+    - Update Go to 1.24 by @stefanprodan in #505
+    - Update cuelang.org/go to v0.13.0 by @stefanprodan in #506
+    - build(deps): bump the ci group across 1 directory with 4
+      updates by @dependabot in #502
+    - Update Kubernetes dependencies by @stefanprodan in #507
+
+-------------------------------------------------------------------
 Sat Feb 08 17:10:09 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.24.0:
