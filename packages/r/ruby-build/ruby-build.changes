@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 29 12:53:55 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20250529.1.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250529.1
+  * Mark Ruby 3.1 as EOL by @CamJN in #2536
+  * Document examples of using custom defs by @jasonkarns in #2537
+  * Cleanups for truffleruby-dev and truffleruby+graalvm-dev by @eregon in #2538
+
+-------------------------------------------------------------------
 Sat May 17 11:23:33 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20250516.
