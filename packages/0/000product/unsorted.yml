@@ -10823,8 +10823,6 @@ unsorted:
   - latex2html-pngicons 
   - latex2rtf 
   - lato-fonts 
-  - layer-shell-qt5 
-  - layer-shell-qt5-devel 
   - layer-shell-qt6-devel 
   - layer-shell-qt6-imports 
   - lazarus 
@@ -11226,6 +11224,10 @@ unsorted:
   - libMyGUIEngine3_4_3 
   - libOIS-devel 
   - libOIS1_5_0 
+  - libOSMesa-devel 
+  - libOSMesa-devel-32bit 
+  - libOSMesa8 
+  - libOSMesa8-32bit 
   - libOgreBites-devel 
   - libOgreBites13_6 
   - libOgreBitesQt13_6 
@@ -23260,6 +23262,7 @@ unsorted:
   - python-debtcollector-doc 
   - python-designateclient-doc 
   - python-django-pipeline-doc 
+  - python-ec2imgutils 
   - python-ec2metadata 
   - python-efl-doc 
   - python-efl-examples 
@@ -24958,7 +24961,6 @@ unsorted:
   - python311-easypysmb 
   - python311-easywatch 
   - python311-ebcdic 
-  - python311-ec2imgutils 
   - python311-ecdsa 
   - python311-ed25519 
   - python311-edgegrid-python 
@@ -28673,7 +28675,6 @@ unsorted:
   - python312-easypysmb 
   - python312-easywatch 
   - python312-ebcdic 
-  - python312-ec2imgutils 
   - python312-ecdsa 
   - python312-ed25519 
   - python312-edgegrid-python 
@@ -32411,7 +32412,6 @@ unsorted:
   - python313-easypysmb 
   - python313-easywatch 
   - python313-ebcdic 
-  - python313-ec2imgutils 
   - python313-ecdsa 
   - python313-ed25519 
   - python313-edgegrid-python 
@@ -37262,6 +37262,7 @@ unsorted:
   - suru-plus-dark-icon-theme 
   - suse-build-key 
   - suse-fonts 
+  - suse-kabi-tools 
   - suse-prime 
   - suse-xsl-stylesheets 
   - suseconnect-ng 
