@@ -67,4 +67,13 @@
 - update to 1.14.0</comment>
     <requestid>1131726</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2557ed793c265b78495360ac3d586bfc</srcmd5>
+    <version>1.15.0</version>
+    <time>1748608801</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build
+</comment>
+    <requestid>1281318</requestid>
+  </revision>
 </revisionlist>
