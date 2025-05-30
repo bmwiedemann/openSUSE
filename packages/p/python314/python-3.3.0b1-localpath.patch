@@ -1,9 +1,11 @@
-Index: Python-3.13.0a3/Lib/site.py
-===================================================================
---- Python-3.13.0a3.orig/Lib/site.py
-+++ Python-3.13.0a3/Lib/site.py
-@@ -77,7 +77,7 @@ import io
- import stat
+---
+ Lib/site.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/Lib/site.py
++++ b/Lib/site.py
+@@ -78,7 +78,7 @@ import stat
+ import errno
  
  # Prefixes for site-packages; add additional prefixes like /usr/local here
 -PREFIXES = [sys.prefix, sys.exec_prefix]

@@ -1890,4 +1890,41 @@
   vulnerability, which could lead to DoS.</comment>
     <requestid>1278108</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8e588e8e354aacc727c57ab8a292f185</srcmd5>
+    <version>3.14.0~b2</version>
+    <time>1748608670</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.14.0~b2:
+  - Tools/Demos
+    - gh-134215: REPL import autocomplete only suggests private
+      modules when explicitly specified.
+  - Tests
+    - gh-133744: Fix multiprocessing interrupt test. Add an event
+      to synchronize the parent process with the child process:
+      wait until the child process starts sleeping. Patch by
+      Victor Stinner.
+    - gh-133682: Fixed test case
+      test.test_annotationlib.TestStringFormat.test_displays
+      which ensures proper handling of complex data structures
+      (lists, sets, dictionaries, and tuples) in string
+      annotations.
+    - gh-133639: Fix
+      TestPyReplAutoindent.test_auto_indent_default() doesn’t run
+      input_code.
+  - Security
+    - gh-133767: Fix use-after-free in the “unicode-escape”
+      decoder with a non-“strict” error handler (CVE-2025-4516
+      bsc#1243273).
+    - gh-128840: Short-circuit the processing of long IPv6
+      addresses early in ipaddress to prevent excessive memory
+      consumption and a minor denial-of-service.
+  - Library
+    - gh-132710: If possible, ensure that uuid.getnode()
+      returns the same result even across different
+      processes. Previously, the result was constant only within
+      the same process. Patch by Bénédikt Tran.
+    - gh-80334: multiprocessing.freeze_support() now checks for</comment>
+    <requestid>1281134</requestid>
+  </revision>
 </revisionlist>
