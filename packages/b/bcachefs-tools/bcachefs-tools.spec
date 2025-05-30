@@ -1,7 +1,7 @@
 #
 # spec file for package bcachefs-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           bcachefs-tools
-Version:        1.20.0
+Version:        1.25.2
 Release:        0
 Summary:        Configuration utilities for bcachefs
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://bcachefs.org/
+#Git-Clone:     https://evilpiepirate.org/git/bcachefs-tools.git
 Source0:        https://evilpiepirate.org/%name/%name-vendored-%version.tar.zst
 Source1:        https://evilpiepirate.org/%name/%name-vendored-%version.tar.sign
 Source2:        %{name}.keyring

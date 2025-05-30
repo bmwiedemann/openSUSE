@@ -155,4 +155,12 @@
     <comment>- Update to 1.20.0:</comment>
     <requestid>1243600</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>be38c76660512a29b6e3ab7b243e87e5</srcmd5>
+    <version>1.25.2</version>
+    <time>1748608727</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.25.2 [boo#1243231]</comment>
+    <requestid>1281234</requestid>
+  </revision>
 </revisionlist>
