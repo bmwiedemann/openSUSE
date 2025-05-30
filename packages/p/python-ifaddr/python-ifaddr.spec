@@ -1,7 +1,7 @@
 #
 # spec file for package python-ifaddr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pydron/ifaddr
 Source:         https://files.pythonhosted.org/packages/source/i/ifaddr/ifaddr-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,10 +55,10 @@ sed -i -e "s/install_requires = \['ipaddress'\],//" setup.py
 dos2unix README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
