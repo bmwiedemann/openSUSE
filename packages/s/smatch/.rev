@@ -173,4 +173,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1153111</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3b18eb6bc91f47d6b7a71dd54a5b7f9a</srcmd5>
+    <version>1.73+20250528</version>
+    <time>1748608814</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.73+20250528:
+  * return_efault: don't rely on the cross function DB
+  * bits: add support for left shift
+  * bits: change 1/0 to true/false
+  * unlikely_parens: ignore verifier_bug()
+  * bits: fix build error
+  * db/kernel.return_fixes: update get_device() for 32bit builds
+  * inconsistent_locking: check bool type functions differently
+  * implied: move common code into get_tf_states()
+  * validation/sm_bits: Add a check to validate that smatch_bits.c works
+  * power_of_two: use sval_it_power_of_two()
+  * bits: use sval_is_power_of_two()
+  * and much more...</comment>
+    <requestid>1281317</requestid>
+  </revision>
 </revisionlist>

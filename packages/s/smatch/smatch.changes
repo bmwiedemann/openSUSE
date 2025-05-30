@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 30 08:46:21 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 1.73+20250528:
+  * return_efault: don't rely on the cross function DB
+  * bits: add support for left shift
+  * bits: change 1/0 to true/false
+  * unlikely_parens: ignore verifier_bug()
+  * bits: fix build error
+  * db/kernel.return_fixes: update get_device() for 32bit builds
+  * inconsistent_locking: check bool type functions differently
+  * implied: move common code into get_tf_states()
+  * validation/sm_bits: Add a check to validate that smatch_bits.c works
+  * power_of_two: use sval_it_power_of_two()
+  * bits: use sval_is_power_of_two()
+  * and much more...
+
+-------------------------------------------------------------------
 Thu Feb 22 07:20:02 UTC 2024 - jslaby@suse.cz
 
 - Update to version 1.73+20240222:
