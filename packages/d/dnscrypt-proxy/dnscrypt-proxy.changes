@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 29 12:00:00 UTC 2025 - cunix@mail.de
+
+- Update to version 2.1.12
+  * weighted Power of Two (WP2) load balancing strategy has been
+    implemented as the default
+  * optional Prometheus metrics endpoint has been added for monitoring
+  * additional records in queries are now properly removed before forwarding
+  * simple view UI has been removed
+
+-------------------------------------------------------------------
 Wed May 21 12:00:00 UTC 2025 - cunix@mail.de
 
 - Update to version 2.1.11
