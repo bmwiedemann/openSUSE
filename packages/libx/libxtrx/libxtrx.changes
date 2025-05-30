@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 29 21:23:42 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- SOAPY_SDR_ABI_VERSION bump -> "0.8-3"
+
+-------------------------------------------------------------------
 Fri Mar  1 10:33:29 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

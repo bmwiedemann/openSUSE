@@ -19,7 +19,7 @@
 
 %define sover   0
 %define libname libxtrx%{sover}
-%define soapy_modver 0.8
+%define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-xtrx
 
 Name:           libxtrx
