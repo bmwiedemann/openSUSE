@@ -1,7 +1,36 @@
 -------------------------------------------------------------------
+Mon May 26 16:54:33 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird ESR 128.11.0
+  MFSA 2025-46 (boo#1243353)
+  * CVE-2025-5262 (bmo#1962421)
+    Double-free in libvpx encoder
+  * CVE-2025-5263 (bmo#1960745)
+    Error handling for script execution was incorrectly isolated
+    from web content
+  * CVE-2025-5264 (bmo#1950001)
+    Potential local code execution in “Copy as cURL” command
+  * CVE-2025-5265 (bmo#1962301)
+    Potential local code execution in “Copy as cURL” command
+  * CVE-2025-5266 (bmo#1965628)
+    Script element events leaked cross-origin resource status
+  * CVE-2025-5267 (bmo#1954137)
+    Clickjacking vulnerability could have led to leaking saved
+    payment card details
+  * CVE-2025-5268 (bmo#1950136, bmo#1958121, bmo#1960499,
+    bmo#1962634)
+    Memory safety bugs fixed in Firefox 139, Thunderbird 139,
+    Firefox ESR 128.11, and Thunderbird 128.11
+  * CVE-2025-5269 (bmo#1924108)
+    Memory safety bug fixed in Firefox ESR 128.11 and Thunderbird
+    128.11
+  * fixed: Thunderbird could crash if message copying to Sent
+    folder was interrupted (bmo#1965304)
+
+-------------------------------------------------------------------
 Wed May 21 05:23:25 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Mozilla Thunderbird ESR 128.0.2
+- Mozilla Thunderbird ESR 128.10.2
   MFSA 2025-40 (boo#1243303)
   * CVE-2025-4918 (bmo#1966612)
     Out-of-bounds access when resolving Promise objects
