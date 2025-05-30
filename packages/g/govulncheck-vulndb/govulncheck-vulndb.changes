@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 27 20:47:17 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.0.20250527T204717 2025-05-27T20:47:17Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3699 CVE-2025-47290 GHSA-cm76-qm8v-3j95
+  * GO-2025-3701 CVE-2025-47291 GHSA-cxfp-7pvr-95ff
+  * GO-2025-3704 CVE-2025-4123 GHSA-q53q-gxq9-mgrj
+  * GO-2025-3705 CVE-2025-48374 GHSA-c37v-3c8w-crq8
+  * GO-2025-3706 CVE-2025-48075 GHSA-hg3g-gphw-5hhm
+  * GO-2025-3707 CVE-2025-48371
+
+-------------------------------------------------------------------
 Fri May 23 15:18:56 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.0.20250523T151856 2025-05-23T15:18:56Z.
