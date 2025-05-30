@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 30 08:22:16 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- add python-use-non-devel-so.patch (bsc#1243028)
+
+-------------------------------------------------------------------
+Fri May 30 07:12:24 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 4.15.0
+  * see: https://github.com/Z3Prover/z3/releases/tag/z3-4.15.0
+
+-------------------------------------------------------------------
 Fri Mar 28 09:24:36 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 4.14.1

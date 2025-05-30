@@ -1,0 +1,135 @@
+From: https://github.com/sertonix
+Patch-mainline: submitted https://github.com/Z3Prover/z3/issues/7518
+Subject: Use sover for python bindings
+
+Don't use libz3.so, but use versioned lib like libz3.so.4.15.0
+
+---
+ scripts/update_api.py         |   33 +++++++++++++++++++++++++--------
+ src/api/python/CMakeLists.txt |    2 ++
+ 2 files changed, 27 insertions(+), 8 deletions(-)
+
+--- a/scripts/update_api.py
++++ b/scripts/update_api.py
+@@ -1823,9 +1823,10 @@ del _lib
+ del _default_dirs
+ del _all_dirs
+ del _ext
++del _sover
+ """)
+ 
+-def write_core_py_preamble(core_py):
++def write_core_py_preamble(core_py, z3py_soversion):
+   core_py.write(
+ """
+ # Automatically generated file
+@@ -1842,6 +1843,11 @@ from .z3consts import *
+ 
+ _file_manager = contextlib.ExitStack()
+ atexit.register(_file_manager.close)
++"""
++  )
++  core_py.write("_sover=\"%s\"\n" % z3py_soversion)
++  core_py.write(
++"""
+ _ext = 'dll' if sys.platform in ('win32', 'cygwin') else 'dylib' if sys.platform == 'darwin' else 'so'
+ _lib = None
+ _z3_lib_resource = importlib_resources.files('z3').joinpath('lib')
+@@ -1877,7 +1883,7 @@ for d in _all_dirs:
+   try:
+     d = os.path.realpath(d)
+     if os.path.isdir(d):
+-      d = os.path.join(d, 'libz3.%s' % _ext)
++      d = os.path.join(d, 'libz3.%s.%s' % (_ext, _sover))
+       if os.path.isfile(d):
+         _lib = ctypes.CDLL(d)
+         break
+@@ -1888,24 +1894,24 @@ for d in _all_dirs:
+ if _lib is None:
+   # If all else failed, ask the system to find it.
+   try:
+-    _lib = ctypes.CDLL('libz3.%s' % _ext)
++    _lib = ctypes.CDLL('libz3.%s.%s' % (_ext, _sover))
+   except Exception as e:
+     _failures += [e]
+     pass
+ 
+ if _lib is None:
+-  print("Could not find libz3.%s; consider adding the directory containing it to" % _ext)
++  print("Could not find libz3.%s.%s; consider adding the directory containing it to" % (_ext, _sover))
+   print("  - your system's PATH environment variable,")
+   print("  - the Z3_LIBRARY_PATH environment variable, or ")
+   print("  - to the custom Z3_LIB_DIRS Python-builtin before importing the z3 module, e.g. via")
+   if sys.version < '3':
+     print("    import __builtin__")
+-    print("    __builtin__.Z3_LIB_DIRS = [ '/path/to/z3/lib/dir' ] # directory containing libz3.%s" % _ext)
++    print("    __builtin__.Z3_LIB_DIRS = [ '/path/to/z3/lib/dir' ] # directory containing libz3.%s.%s" % (_ext, _sover))
+   else:
+     print("    import builtins")
+-    print("    builtins.Z3_LIB_DIRS = [ '/path/to/z3/lib/dir' ] # directory containing libz3.%s" % _ext)
++    print("    builtins.Z3_LIB_DIRS = [ '/path/to/z3/lib/dir' ] # directory containing libz3.%s.%s" % (_ext, _sover))
+   print(_failures)
+-  raise Z3Exception("libz3.%s not found." % _ext)
++  raise Z3Exception("libz3.%s.%s not found." % (_ext, _sover))
+ 
+ 
+ if sys.version < '3':
+@@ -1970,6 +1976,7 @@ core_py = None
+ def generate_files(api_files,
+                    api_output_dir=None,
+                    z3py_output_dir=None,
++                   z3py_soversion=None,
+                    dotnet_output_dir=None,
+                    java_input_dir=None,
+                    java_output_dir=None,
+@@ -2026,7 +2033,7 @@ def generate_files(api_files,
+           write_log_h_preamble(log_h)
+           write_log_c_preamble(log_c)
+           write_exe_c_preamble(exe_c)
+-          write_core_py_preamble(core_py)
++          write_core_py_preamble(core_py, z3py_soversion)
+ 
+           # FIXME: these functions are awful
+           apiTypes.def_Types(api_files)
+@@ -2069,6 +2076,10 @@ def main(args):
+                       dest="z3py_output_dir",
+                       default=None,
+                       help="Directory to emit z3py files. If not specified no files are emitted.")
++  parser.add_argument("--z3py-soversion",
++                      dest="z3py_soversion",
++                      default=None,
++                      help="SOVERSION for loading libz3 library.")
+   parser.add_argument("--dotnet-output-dir",
+                       dest="dotnet_output_dir",
+                       default=None,
+@@ -2095,6 +2106,11 @@ def main(args):
+                       help="Directory to emit OCaml files. If not specified no files are emitted.")
+   pargs = parser.parse_args(args)
+ 
++  if pargs.z3py_output_dir:
++    if pargs.z3py_soversion is None:
++      logging.error('--z3py-soversion must be specified')
++      return 1
++
+   if pargs.java_output_dir:
+     if pargs.java_package_name == None:
+       logging.error('--java-package-name must be specified')
+@@ -2116,6 +2132,7 @@ def main(args):
+   generate_files(api_files=pargs.api_files,
+                  api_output_dir=pargs.api_output_dir,
+                  z3py_output_dir=pargs.z3py_output_dir,
++                 z3py_soversion=pargs.z3py_soversion,
+                  dotnet_output_dir=pargs.dotnet_output_dir,
+                  java_input_dir=pargs.java_input_dir,
+                  java_output_dir=pargs.java_output_dir,
+--- a/src/api/python/CMakeLists.txt
++++ b/src/api/python/CMakeLists.txt
+@@ -36,6 +36,8 @@ add_custom_command(OUTPUT "${z3py_bindin
+   COMMAND "${Python3_EXECUTABLE}"
+     "${PROJECT_SOURCE_DIR}/scripts/update_api.py"
+     ${Z3_FULL_PATH_API_HEADER_FILES_TO_SCAN}
++    "--z3py-soversion"
++    ${Z3_VERSION_MAJOR}.${Z3_VERSION_MINOR}
+     "--z3py-output-dir"
+     "${z3py_bindings_build_dest}"
+   DEPENDS

@@ -401,4 +401,15 @@
   * Include start of sls-smt functionality SLS modulo theories</comment>
     <requestid>1266082</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ce39032c71e1325d889a297f55cf6a83</srcmd5>
+    <version>4.15.0</version>
+    <time>1748608784</time>
+    <user>dimstar_suse</user>
+    <comment>- add python-use-non-devel-so.patch (bsc#1243028)
+
+- update to 4.15.0
+  * see: https://github.com/Z3Prover/z3/releases/tag/z3-4.15.0</comment>
+    <requestid>1281304</requestid>
+  </revision>
 </revisionlist>

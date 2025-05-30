@@ -1,7 +1,7 @@
 #
 # spec file for package z3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,16 @@
 #
 
 
-%define sover 4_14
+%define sover %(echo %version | sed 's@\\([0-9]*\\)\\.\\([0-9]*\\)\\..*@\\1_\\2@')
 Name:           z3
-Version:        4.14.1
+Version:        4.15.0
 Release:        0
 Summary:        Theorem prover from Microsoft Research
 License:        MIT
 Group:          Productivity/Scientific/Other
 URL:            https://github.com/Z3Prover/z3/wiki
 Source0:        https://github.com/Z3Prover/z3/archive/z3-%{version}.tar.gz
+Patch0:         python-use-non-devel-so.patch
 %if 0%{suse_version} < 1600
 BuildRequires:  gcc13-c++
 %else
@@ -33,7 +34,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
+BuildRequires:  python3
 %if 0%{?suse_version} > 1600
 BuildRequires:  pkgconfig(gmpxx)
 %else
@@ -83,7 +84,6 @@ Python bindings for the Z3 library.
 export CXX=g++-13
 %endif
 %cmake \
-  -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
   -DZ3_BUILD_LIBZ3_SHARED=true \
   -DZ3_USE_LIB_GMP=true \
   -DZ3_BUILD_PYTHON_BINDINGS=true \
