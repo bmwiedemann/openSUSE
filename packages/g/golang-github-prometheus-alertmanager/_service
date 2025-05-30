@@ -4,9 +4,9 @@
     <param name="url">https://github.com/prometheus/alertmanager</param>
     <param name="exclude">.git</param>
     <param name="exclude">.github</param>
-    <param name="revision">refs/tags/v0.28.1</param>
+    <param name="revision">v0.28.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="versionrewrite-pattern">^\D*([\d.]+)$</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="set_version" mode="manual">
     <param name="basename">alertmanager</param>

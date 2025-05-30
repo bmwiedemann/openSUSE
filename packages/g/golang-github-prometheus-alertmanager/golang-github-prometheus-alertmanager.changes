@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 27 16:18:58 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Security: Fix proxy bypassing using IPv6 zone IDs
+  (CVE-2025-22870, bsc#1238686):
+  * Add 0002-Bump-x-net.patch
+- Use `manual` build service
+- Drop Go packaging macros
+- Add testing
+
+-------------------------------------------------------------------
 Fri Mar  7 17:32:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.28.1:
