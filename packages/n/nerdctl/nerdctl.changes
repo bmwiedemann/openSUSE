@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue May 27 07:48:27 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 2.1.2:
+  * update buildg (0.5.3)
+  * update containerd-fuse-overlayfs (2.1.6)
+  * update containerd (2.1.1)
+  * build(deps): bump github.com/containerd/containerd/v2
+  * [feature] enable --security-opt writable-cgroups=true|false as an option
+  * build(deps): bump github.com/fluent/fluent-logger-golang
+  * build(deps): bump github.com/containerd/console from 1.0.4 to 1.0.5
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * test: refactor TestTestParseFlagPWithPlatformSpec and TestParsePortsLabel
+  * Rewrite logs tests and fix flakyness
+  * Reduce RunSigProxyContainer refresh frequency
+  * Rewrite some compose tests
+  * Revamp lock
+  * test: update test logic in TestTestParseFlagPWithPlatformSpec
+  * test: update test logic in TestParsePortsLabel
+  * Use only one build base in Dockerfile
+  * Add support for compose AdditionalContexts
+  * Relax --runtime restrictions
+  * build(deps): bump docker/build-push-action from 6.16.0 to 6.17.0
+  * Fix use on non unique identifier
+  * Re-enable tests following fixes
+  * Cleanup containers tests
+  * Cleanup leftover on build test
+  * Consolidate filesystem ops into pkg
+  * feat: add --no-stdin flag to container attach
+  * MAINTAINERS: add Shubharanshu Mahapatra (Shubhranshu153) as a REVIEWER
+
+-------------------------------------------------------------------
 Tue May 13 11:49:09 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 2.1.1:
