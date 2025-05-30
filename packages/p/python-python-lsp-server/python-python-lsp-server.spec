@@ -33,9 +33,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros >= 20210628
 # SECTION test requirements
 BuildRequires:  %{python_module docstring-to-markdown}
-BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module autopep8 >= 2.0.4}
-BuildRequires:  %{python_module flake8 >= 7.1 with %python-flake8 < 8}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module importlib_metadata > 4.8.3 if %python-base < 3.10}
 BuildRequires:  %{python_module jedi >= 0.17.2 with %python-jedi < 0.20}
@@ -51,6 +49,11 @@ BuildRequires:  %{python_module rope >= 1.2.0}
 BuildRequires:  %{python_module ujson >= 3.0.0}
 BuildRequires:  %{python_module whatthepatch >= 1.0.2 with %python-whatthepatch < 2}
 BuildRequires:  %{python_module yapf >= 0.33}
+# flake8 is special, see below
+BuildRequires:  %{python_module flake8 >= 7.2 with %python-flake8 < 8}
+BuildRequires:  %{python_module mccabe >= 0.7.0 with %python-mccabe < 0.8.0}
+BuildRequires:  %{python_module pycodestyle >= 2.13.0 with %python-pycodestyle < 2.14.0}
+BuildRequires:  %{python_module pyflakes >= 3.3.0 with %python-pyflakes < 3.4.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-docstring-to-markdown
@@ -85,17 +88,18 @@ will be enabled:
 
 %package all
 Summary:        The python-lsp-server[all] extra
-# Note: check flake8 pins as well
-Requires:       python-rope >= 1.2.0
 Requires:       python-autopep8 >= 2.0.4
+Requires:       python-rope >= 1.2.0
 Requires:       python-yapf >= 0.33
-Requires:       (python-flake8 >= 7.1 with python-flake8 < 8)
-Requires:       (python-mccabe >= 0.7.0 with python-mccabe < 0.8.0)
-Requires:       (python-pycodestyle >= 2.12.0 with python-pycodestyle < 2.13.0)
-Requires:       (python-pydocstyle >= 6.3.0 with python-pydocstyle < 6.4.0)
-Requires:       (python-pyflakes >= 3.2.0 with python-pyflakes < 3.3.0)
+Requires:       (python-pycodestyle >= 2.13.0 with python-pycodestyle < 2.14.0)
 Requires:       (python-pylint >= 3.1 with python-pylint < 4)
 Requires:       (python-whatthepatch >= 1.0.2 with python-whatthepatch < 2)
+# Let's bump this in sync with flake8 and ignore pylsp upstream being still behind
+# https://flake8.pycqa.org/en/latest/faq.html#why-does-flake8-use-ranges-for-its-dependencies
+Requires:       (python-flake8 >= 7.2 with python-flake8 < 8)
+Requires:       (python-mccabe >= 0.7.0 with python-mccabe < 0.8.0)
+Requires:       (python-pydocstyle >= 6.3.0 with python-pydocstyle < 6.4.0)
+Requires:       (python-pyflakes >= 3.3.0 with python-pyflakes < 3.4.0)
 
 %description all
 Python Language Server for the Language Server Protocol
@@ -107,6 +111,11 @@ python-lsp-server[all] extra requirement
 %autosetup -p1 -n python_lsp_server-%{version}
 # Remove pytest addopts
 sed -i '/addopts/d' pyproject.toml
+# see flake8 comment above
+sed -i  pyproject.toml \
+    -e 's/flake8>=7.1,<8/flake8>=7.2,<8/' \
+    -e 's/pycodestyle>=2.12.0,<2.13.0/pycodestyle>=2.13.0,<2.14.0/' \
+    -e 's/pyflakes>=3.2.0,<3.3.0/pyflakes>=3.3.0,<3.4.0/'
 
 %build
 %pyproject_wheel
@@ -117,7 +126,8 @@ sed -i '/addopts/d' pyproject.toml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# PyQt5 not maintained anymore. Reenable when upstream moves to PyQt6
+%pytest -k "not test_pyqt_completion"
 
 %post
 %python_install_alternative pylsp
