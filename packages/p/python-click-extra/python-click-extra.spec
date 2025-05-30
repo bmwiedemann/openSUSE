@@ -19,7 +19,7 @@
 %define module_name click-extra
 %{?sle15_python_module_pythons}
 Name:           python-click-extra
-Version:        4.15.0
+Version:        5.0.1
 Release:        0
 Summary:        Drop-in replacement for Click to make user-friendly and colorful CLI
 License:        GPL-2.0-or-later
@@ -33,9 +33,9 @@ BuildRequires:  %{python_module wheel}
 # https://github.com/kdeldycke/click-extra/blob/v4.8.3/pyproject.toml#L67
 BuildRequires:  %{python_module PyYAML >= 6.0.0}
 BuildRequires:  %{python_module boltons >= 25.0.0}
-BuildRequires:  %{python_module click >= 8.1.8}
+BuildRequires:  %{python_module click >= 8.2.0}
 BuildRequires:  %{python_module cloup >= 3.0.5}
-BuildRequires:  %{python_module extra-platforms >= 2.0.0}
+BuildRequires:  %{python_module extra-platforms >= 3.1.0}
 BuildRequires:  %{python_module mergedeep >= 1.3.4}
 BuildRequires:  %{python_module requests >= 2.32.3}
 BuildRequires:  %{python_module tabulate >= 0.9}
@@ -56,9 +56,9 @@ BuildRequires:  python-rpm-macros
 # https://github.com/kdeldycke/click-extra/blob/v4.8.3/pyproject.toml#L67
 Requires:       python-PyYAML >= 6.0.0
 Requires:       python-boltons >= 25.0.0
-Requires:       python-click >= 8.1.4
+Requires:       python-click >= 8.2.0
 Requires:       python-cloup >= 3.0.5
-Requires:       python-extra-platforms >= 2.0.0
+Requires:       python-extra-platforms >= 3.1.0
 Requires:       python-mergedeep >= 1.3.4
 Requires:       python-requests >= 2.32.3
 Requires:       python-tabulate >= 0.9
@@ -88,7 +88,11 @@ BuildArch:      noarch
 # remove coverage configuration
 sed -i '/--cov.*",/d' pyproject.toml
 # ignore test that requires network connectivity
-%pytest -k 'not (test_ansi_lexers_candidates)'
+IGNORED_CHECKS="test_ansi_lexers_candidates"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_keyword_collection"
+# Failing test with click 8.2.1 gh#kdeldycke/click-extra#1264
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_auto_envvar_parsing"
+%pytest -k "not (${IGNORED_CHECKS})"
 
 %files %{python_files}
 %{python_sitelib}/click_extra

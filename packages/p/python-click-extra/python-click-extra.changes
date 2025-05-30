@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu May 29 05:55:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 5.0.1:
+  * Fix highlighting of deprecated messages.
+  * Use ASCII characters instead of unicode for prompt rendering in
+    messages.
+
+-------------------------------------------------------------------
+Tue May 27 12:36:44 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip failing tests with python-click 8.2.1
+  gh#kdeldycke/click-extra#1264
+
+-------------------------------------------------------------------
+Fri May 16 04:56:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 5.0.0:
+  * Upgrade to Click 8.2.0.
+  * Add support for custom deprecated messages on commands and
+    parameters.
+  * Remove ExtraOption.get_help_default() and rely on new
+    Option.get_help_extra().
+  * Remove dependency on pallets-sphinx-themes.
+  * Drop supports for Python 3.10.
+  * Add windows-11-arm to the test matrix.
+  * Remove tests on ubuntu-22.04-arm, ubuntu-22.04 and windows-2022 to
+    keep matrix small.
+
+-------------------------------------------------------------------
 Wed Mar  5 13:05:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 4.15.0:
