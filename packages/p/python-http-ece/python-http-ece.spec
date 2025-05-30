@@ -1,7 +1,7 @@
 #
 # spec file for package python-http-ece
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-http-ece
 Version:        1.1.0
 Release:        0
@@ -27,7 +26,9 @@ URL:            https://github.com/martinthomson/encrypted-content-encoding
 Source:         https://files.pythonhosted.org/packages/source/h/http_ece/http_ece-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/web-push-libs/encrypted-content-encoding/v%{version}/python/http_ece/tests/test_ece.py
 Source2:        https://raw.githubusercontent.com/web-push-libs/encrypted-content-encoding/master/LICENSE
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 2.5
@@ -46,10 +47,10 @@ Encrypted Content Encoding for HTTP.
 cp %{SOURCE1} %{SOURCE2} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +59,7 @@ cp %{SOURCE1} %{SOURCE2} .
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/http[-_]ece
+%{python_sitelib}/http[-_]ece-%{version}*-info
 
 %changelog

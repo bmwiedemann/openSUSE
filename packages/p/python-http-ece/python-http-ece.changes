@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 28 11:29:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Feb 21 04:21:52 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Stop test_ece.py using removed cryptography methods. 

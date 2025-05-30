@@ -31,4 +31,13 @@
     <comment>- Stop test_ece.py using removed cryptography methods.</comment>
     <requestid>1066900</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>6b35019b918bb5bdf94086ccb62e5fc0</srcmd5>
+    <version>1.1.0</version>
+    <time>1748608423</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build
+</comment>
+    <requestid>1280839</requestid>
+  </revision>
 </revisionlist>
