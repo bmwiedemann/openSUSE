@@ -1,7 +1,7 @@
 #
 # spec file for package python-i3ipc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-i3ipc
 # Before upgrading, verify compatibility with bumblebee-status module title
 Version:        2.2.1
@@ -27,12 +25,14 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/altdesktop/i3ipc-python
 Source0:        https://github.com/altdesktop/i3ipc-python/archive/v%{version}.tar.gz#/i3ipc-%{version}.tar.gz
+BuildRequires:  %{python_module asyncio}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-xlib}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 # for tests we need i3 at build time
-BuildRequires:  %{python_module python-xlib}
-BuildRequires:  %{python_module asyncio}
 BuildRequires:  i3
 BuildRequires:  python-rpm-macros
 BuildRequires:  xvfb-run
@@ -62,10 +62,10 @@ sed -i '/^#!\/usr\/bin\/env.*/d' examples/*.py examples/i3-focus/*.py
 find examples/ -name \*.py -exec chmod -x '{}' \;
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -82,6 +82,7 @@ xvfb-run --server-args "-screen 0 1920x1080x24" \
 %license LICENSE
 %doc README.rst CHANGELOG.md docs/*.rst
 %doc examples/
-%{python_sitelib}/*
+%{python_sitelib}/i3ipc
+%{python_sitelib}/i3ipc-%{version}*-info
 
 %changelog

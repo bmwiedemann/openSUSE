@@ -48,4 +48,12 @@
     <comment></comment>
     <requestid>959364</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>f2603c16b9ef304e4d941821f4594bd3</srcmd5>
+    <version>2.2.1</version>
+    <time>1748608433</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1280847</requestid>
+  </revision>
 </revisionlist>

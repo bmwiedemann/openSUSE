@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 28 11:44:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri Mar  4 08:27:56 UTC 2022 - pgajdos@suse.com
 
 - disable flaky test_detailed_window_event (stucks on obs for x86_64)
