@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 29 10:17:16 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Removed BuildRequires: sysuser-shadow, exit 0, added %sysusers_requires macro according to packaging guidelines and 
+  %restart_on_update apache2 to remove the manual restart
+- Added disable-https.patch: Disable https to fix the shibboleth-sp is not being served by apache
+  (bsc#1241702)  
+
+-------------------------------------------------------------------
 Wed Nov  6 21:16:56 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 3.5.0:

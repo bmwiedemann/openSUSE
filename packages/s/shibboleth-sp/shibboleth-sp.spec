@@ -1,7 +1,7 @@
 #
 # spec file for package shibboleth-sp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Source1:        https://shibboleth.net/downloads/service-provider/%{version}/%{n
 Source2:        %{name}.keyring
 Source3:        shibd.service
 Patch0:         shibboleth-sp-2.5.5-doxygen_timestamp.patch
+Patch1:         disable-https.patch
 BuildRequires:  apache2-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -49,7 +50,6 @@ BuildRequires:  libxml-security-c-devel >= 2.0.0
 BuildRequires:  libxmltooling-devel >= 3.1.0
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  unixODBC-devel
 BuildRequires:  zlib-devel
@@ -60,6 +60,7 @@ Requires(pre):  xmltooling-schemas >= 3.1.0
 Requires(pre):  shadow
 Obsoletes:      shibboleth-sp = 2.5.0
 %{?systemd_requires}
+%sysusers_requires
 
 %description
 Shibboleth is a Web Single Sign-On implementations based on OpenSAML
@@ -177,7 +178,6 @@ install -Dpm0644 %{realname}.sysusers %{buildroot}%{_sysusersdir}/%{name}.conf
 
 %pre -f %{name}.pre
 %service_add_pre shibd.service
-exit 0
 
 %post -n libshibsp%{libvers} -p /sbin/ldconfig
 %post -n libshibsp-lite%{libvers_lite} -p /sbin/ldconfig
@@ -199,9 +199,8 @@ fi
 # On final removal, stop shibd and remove service, restart Apache if running.
 %service_del_preun shibd.service
 if [ $1 -eq 0 ] ; then
-	/sbin/service apache2 status 1>/dev/null && /sbin/service apache2 restart 1>/dev/null
+	%restart_on_update apache2
 fi
-exit 0
 
 %postun -n libshibsp%{libvers} -p /sbin/ldconfig
 %postun -n libshibsp-lite%{libvers_lite} -p /sbin/ldconfig
@@ -217,7 +216,6 @@ exit 0
 # will stop doing the final restart.
 %{_bindir}/systemctl try-restart shibd >/dev/null 2>&1 || :
 %{_bindir}/systemctl try-restart apache2 >/dev/null 2>&1 || :
-exit 0
 
 %files -f rpm.filelist
 %{_sbindir}/shibd

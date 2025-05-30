@@ -191,4 +191,16 @@
     <comment></comment>
     <requestid>1223781</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>02af0096ee1df9fafb075b89e675eec7</srcmd5>
+    <version>3.5.0</version>
+    <time>1748608415</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed BuildRequires: sysuser-shadow, exit 0, added %sysusers_requires macro according to packaging guidelines and 
+  %restart_on_update apache2 to remove the manual restart
+- Added disable-https.patch: Disable https to fix the shibboleth-sp is not being served by apache
+  (bsc#1241702)  
+</comment>
+    <requestid>1281119</requestid>
+  </revision>
 </revisionlist>

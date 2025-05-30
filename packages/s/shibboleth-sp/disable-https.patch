@@ -1,0 +1,13 @@
+Index: shibboleth-sp-3.5.0/configs/shibboleth2.xml
+===================================================================
+--- shibboleth-sp-3.5.0.orig/configs/shibboleth2.xml
++++ shibboleth-sp-3.5.0/configs/shibboleth2.xml
+@@ -23,7 +23,7 @@
+         stolen in transit easier for attackers to misuse.
+         -->
+        <Sessions lifetime="28800" timeout="3600" relayState="ss:mem"
+-                  checkAddress="false" handlerSSL="true" cookieProps="https"
++                  checkAddress="false" handlerSSL="false" cookieProps="http"
+                   redirectLimit="exact">
+ 
+             <!--
