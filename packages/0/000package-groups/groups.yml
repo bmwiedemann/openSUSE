@@ -254,6 +254,7 @@ dvd:
   ## More space needed - 2017-02-02
   - ant: [locked]
   - java-1_8_0-openjdk-devel: [locked]
+  - java-21-openjdk-headless: [locked]
   - java-15-openjdk-headless: [locked]
   - java-14-openjdk-headless: [locked]
 

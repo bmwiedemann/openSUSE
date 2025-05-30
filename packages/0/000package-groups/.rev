@@ -2153,4 +2153,11 @@ Fixes https://openqa.opensuse.org/tests/4663488#step/select_patterns/142</commen
     <user>anag_factory</user>
     <comment>remove all gimp help packages</comment>
   </revision>
+  <revision rev="302" vrev="300">
+    <srcmd5>6515bc4c118cb0f47bc7b5c577a85233</srcmd5>
+    <version>unknown</version>
+    <time>1748586459</time>
+    <user>dimstar_suse</user>
+    <comment>Save space, no java-21-openjdk-headless (i.e no libreoffice database)</comment>
+  </revision>
 </revisionlist>
