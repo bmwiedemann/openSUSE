@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 30 08:42:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.11.1
+  * lapd, lapdm: Take talloc msgb ownership when enqueueing it
+
+-------------------------------------------------------------------
 Thu Feb 13 12:54:48 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.11.0

@@ -287,4 +287,12 @@
     <comment>- Update to release 1.11.0</comment>
     <requestid>1245643</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>61bd1bc369a5dfa8663cf60cb5b0946f</srcmd5>
+    <version>1.11.1</version>
+    <time>1748608819</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.11.1</comment>
+    <requestid>1281332</requestid>
+  </revision>
 </revisionlist>
