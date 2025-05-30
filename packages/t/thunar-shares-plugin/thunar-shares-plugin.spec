@@ -19,18 +19,19 @@
 %define thunar_version 4.18
 
 Name:           thunar-shares-plugin
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 URL:            https://docs.xfce.org/xfce/thunar/custom-actions
-Source0:        https://archive.xfce.org/src/thunar-plugins/%{name}/0.4/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/thunar-plugins/%{name}/0.5/%{name}-%{version}.tar.xz
 Summary:        Thunar Plugin for Sharing Files Using Samba
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 BuildRequires:  gettext >= 0.19.8
-BuildRequires:  pkgconfig(glib-2.0) >= 2.26.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
-BuildRequires:  pkgconfig(thunarx-3) >= 1.0.1
+BuildRequires:  meson >= 0.56.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(libxfconf-0) >= %{thunar_version}
+BuildRequires:  pkgconfig(thunarx-3) >= %{thunar_version}
 Requires:       samba
 Requires:       thunar >= %{thunar_version}
 Recommends:     %{name}-lang = %{version}
@@ -47,11 +48,11 @@ from within Thunar without requiring root access.
 %autosetup
 
 %build
-%configure --disable-static
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 rm -rf %{buildroot}%{_libdir}/thunarx-3/thunar-shares-plugin.la
 
