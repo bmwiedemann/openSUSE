@@ -31,4 +31,13 @@
     <comment>- Update to snapshot 1.6.0~git533.c99e57c</comment>
     <requestid>1255132</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a0f52834f590726140b170f78a03de99</srcmd5>
+    <version>1.6.0~git533.c99e57c</version>
+    <time>1748608659</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fstream.patch to resolve source build failure with new
+  compiler</comment>
+    <requestid>1281103</requestid>
+  </revision>
 </revisionlist>

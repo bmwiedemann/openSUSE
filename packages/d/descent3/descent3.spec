@@ -27,6 +27,7 @@ URL:            https://github.com/DescentDevelopers/Descent3
 Source:         https://github.com/jengelh/descent3/archive/%commit.tar.gz
 Source2:        https://github.com/SergiusTheBest/plog/archive/e21baecd4753f14da64ede979c5a19302618b752.tar.gz
 Patch1:         system-libacm.patch
+Patch2:         fstream.patch
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 BuildRequires:  gcc13-c++
 Provides:       bundled(plog)
