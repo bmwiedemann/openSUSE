@@ -1,7 +1,7 @@
 #
 # spec file for package catfish
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,23 @@
 
 
 %bcond_with git
-%define series 4.18
+%define series 4.20
+%define xfce_version 4.16
+
 Name:           catfish
-Version:        4.18.0
+Version:        4.20.1
 Release:        0
 Summary:        Versatile File Searching Tool
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            https://docs.xfce.org/apps/catfish/start
-Source:         https://archive.xfce.org/src/apps/%{name}/%{series}/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/apps/%{name}/%{series}/%{name}-%{version}.tar.xz
+%if 0%{?suse_version} < 1600
 # PATCH-FIX-OPENSUSE: Force-disable Zeitgeist
 Patch0:         0001-Force-disable-Zeitgeist-support.patch
+# PATCH-FIX-OPENSUSE: Relax python3 requirement for Leap 15.6
+Patch1:         relax-python-requirement.patch
+%endif
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -37,20 +43,34 @@ BuildRequires:  rsvg-convert
 %else
 BuildRequires:  rsvg-view
 %endif
-BuildRequires:  update-desktop-files
-# Needed for typelib() - Requires.
 BuildRequires:  gobject-introspection
-# Checking module dependencies...
 BuildRequires:  gtk3-devel >= 3.22
+BuildRequires:  meson >= 0.54.0
+BuildRequires:  python3
+BuildRequires:  python3-dbus-python
+BuildRequires:  python3-dbus-python-devel
 BuildRequires:  python3-distutils-extra
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
 BuildRequires:  python3-pexpect
 BuildRequires:  python3-xml
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.42.8
+BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(libxfce4ui-2) >= %{xfce_version}
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{xfce_version}
+BuildRequires:  pkgconfig(libxfconf-0) >= %{xfce_version}
+BuildRequires:  pkgconfig(pango) >= 1.38.0
+%if 0%{?suse_version} > 1600
+BuildRequires:  pkgconfig(zeitgeist-2.0) >= 1.0
+%endif
 # ...OK
 Requires:       findutils-locate
 Requires:       gdk-pixbuf-loader-rsvg
 Requires:       gsettings-backend-dconf
+Requires:       python3
+Requires:       python3-dbus-python
 Requires:       python3-cairo
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
@@ -69,25 +89,19 @@ zeitgeist.
 %lang_package
 
 %prep
+%if 0%{?suse_version} > 1600
+%autosetup
+%else
 %autosetup -p1
+%endif
 
 %build
-python3 ./setup.py build -g
+%meson
+%meson_build
 
 %install
-python3 ./setup.py install -O1 \
-    --prefix="%{_prefix}" \
-    --root="%{buildroot}"
+%meson_install
 rm -rf %{buildroot}%{_datadir}/doc/%{name}
-# Fix: non-executable-script
-pushd %{buildroot}
-for _file in $(grep -rl '^\#\!\/'); do
-  find -name ${_file##*/} -type f -not -perm /111 -exec sed '/^\#\!\//d' -i {} \+
-  find -name ${_file##*/} -type f -perm /111 -exec sed '/^\#\!\/.\+py/s/env\ \+//' -i {} \+
-done
-%py3_compile -O .%{python3_sitelib}
-popd
-sed -i "s/\(Exec=\).*/\1%{name}/" %{buildroot}%{_datadir}/applications/org.xfce.Catfish.desktop
 
 %suse_update_desktop_file -r org.xfce.Catfish GNOME Utility Filesystem
 
@@ -107,7 +121,6 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 %{_datadir}/icons/hicolor/*/apps/org.xfce.catfish.*
 %{python3_sitelib}/%{name}
 %{python3_sitelib}/%{name}_lib
-%{python3_sitelib}/%{name}-%{version}-py%{py3_ver}.egg-info
 %{_mandir}/man?/%{name}.?%{ext_man}
 
 %files lang -f %{name}.lang

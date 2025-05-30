@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu May 22 03:50:45 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.20.1
+  - build: Require defs.py
+  - build: Relax meson requirements
+  - build: Document dependency version requirements
+  - Prevent selection change on right-click
+  - Support opening multiple files with enter key
+  - Improve TreeView performance
+  - Deprecated exo with libxfce4ui 4.21.0
+  - Update files found in real time
+  - Display search time in status bar
+  - Fix unintended search
+  - Add hotkey for copy location
+  - Add delete hotkey
+  - Rename Files
+  - Add a context menu option to send selected files to a folder
+  - Complete copyright in about dialog
+  - Translation Updates
+- Do not use 0001-Force-disable-Zeitgeist-support.patch on Tumbleweed 
+  as we can now use zeitgeist support
+- Added relax-python-requirement.patch needed to relax Python3 version
+  on Leap 15.6
+
+-------------------------------------------------------------------
 Tue Feb  6 13:45:08 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - As long as a new Python version does not ship a broken

@@ -1,0 +1,14 @@
+diff -rub a/meson.build b/meson.build
+--- a/meson.build	2025-05-21 14:30:55.000000000 +0800
++++ b/meson.build	2025-05-22 12:59:47.721519813 +0800
+@@ -13,8 +13,8 @@
+   modules: python3_required_modules,
+ )
+ 
+-if not python3.language_version().version_compare('>= 3.7')
+-  error('Python 3.7 or newer is required.')
++if not python3.language_version().version_compare('>= 3.6')
++  error('Python 3.6 or newer is required.')
+ endif
+ 
+ dependency_versions = {
