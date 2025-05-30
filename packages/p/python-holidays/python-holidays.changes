@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 30 07:54:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.73
+  * Add Cocos Islands holidays
+  * Add Grenada holidays
+  * Add Nepal holidays
+  * Add Togo holidays
+  * Update Andorra holidays, add l10n support
+  * Update Argentina holidays: add 2018 G20 Leaders' Summit for Buenos Aires
+  * Update Philippines holidays: add special holiday May 12, 2025
+  * Update Vatican City holidays: add election and name day of Pope Leo XIV
+  * Update documentation build: make PR links in changelog
+  * Update pre-commit config
+
+-------------------------------------------------------------------
 Mon May 12 12:02:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.72
