@@ -1557,4 +1557,12 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
   * 453044  gbserver_tests failures in aarch64</comment>
     <requestid>1241367</requestid>
   </revision>
+  <revision rev="154" vrev="2">
+    <srcmd5>306f94f83f7835b74dc08fd1ad7db6aa</srcmd5>
+    <version>3.24.0</version>
+    <time>1748608514</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.23.0 (jsc#PED-10260) (bsc#1243671):</comment>
+    <requestid>1280825</requestid>
+  </revision>
 </revisionlist>
