@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 28 08:12:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.5.2
+  * Better error if frames/channels are non-integers
+
+-------------------------------------------------------------------
 Wed Oct 23 13:30:14 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.5.1
