@@ -75,4 +75,12 @@
 - update to 3.1.4</comment>
     <requestid>1181244</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d82c0b8f94c88036dd7cffe78a8ecdd4</srcmd5>
+    <version>3.3.0</version>
+    <time>1748608447</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1280858</requestid>
+  </revision>
 </revisionlist>
