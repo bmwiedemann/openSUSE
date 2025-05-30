@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu May 29 05:34:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.5.0:
+  * Bugfixes
+    - Add merge_group handler for tox workflow (#452) @Qalthos
+  * Maintenance
+    - Bump the dependencies group in /.config with 2 updates (#459)
+      @dependabot[bot]
+    - Bump the dependencies group in /.config with 8 updates (#458)
+      @dependabot[bot]
+    - Bump the dependencies group in /.config with 11 updates
+      (#456) @dependabot[bot]
+    - Enable junit.xml reporting to codecov.io (#449) @Qalthos
+    - chore: disable mkdocs-material social plugin (#454) @Qalthos
+    - Bump the dependencies group in /.config with 9 updates (#453)
+      @dependabot[bot]
+    - chore: pre-commit autoupdate (#451) @pre-commit-ci[bot]
+    - Bump the dependencies group in /.config with 5 updates (#450)
+      @dependabot[bot]
+
+-------------------------------------------------------------------
 Tue Apr 29 19:47:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.4.1:
