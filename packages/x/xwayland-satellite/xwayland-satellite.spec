@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           xwayland-satellite
-Version:        0.5.1
+Version:        0.6
 Release:        0
 Summary:        Rootless Xwayland integration for Wayland compositors
 License:        MPL-2.0
@@ -49,20 +49,7 @@ install -Dm644 resources/%{name}.service -t %{buildroot}%{_userunitdir}
 
 %if %{with test}
 %check
-%{cargo_test} -- \
-    --skip=copy_from_wayland \
-    --skip=quick_delete \
-    --skip=copy_from_x11 \
-    --skip=input_focus \
-    --skip=close_window \
-    --skip=reparent \
-    --skip=toplevel_flow \
-    --skip=bad_clipboard_data \
-    --skip=different_output_position \
-    --skip=funny_window_title \
-    --skip=fake_selection_targets \
-    --skip=primary_output \
-    --skip=wayland_then_x11_clipboard_owner
+%{cargo_test} -- server::tests
 %endif
 
 %files

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 29 04:25:11 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.6
+  * Add supports the XDG activation protocol
+  * Add supports server-side XDG decorations
+  * Improved window type detection
+  * Now Xwayland applications will no longer be blurry on scaled
+    outputs
+- only test server::tests: too much errors on tests/integration.rs
+
+-------------------------------------------------------------------
 Wed May 14 09:29:52 UTC 2025 - Tudor Roman <tudor@tudorr.ro>
 
 - Build with systemd support
