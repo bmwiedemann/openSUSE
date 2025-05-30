@@ -1,7 +1,7 @@
 #
 # spec file for package python-gql
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-gql
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 Summary:        GraphQL client for Python
 License:        MIT
@@ -39,6 +40,7 @@ BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module graphql-core >= 3.2 with %python-graphql-core < 3.4}
 BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module parse}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pylama}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -49,12 +51,13 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-toolbelt}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module websockets}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module yarl}
 # /SECTION
 Requires:       python-anyio
 Requires:       python-backoff >= 1.11.1
-Requires:       (python-graphql-core >= 3.2 with python-graphql-core < 3.4)
 Requires:       python-yarl >= 1.6
+Requires:       (python-graphql-core >= 3.2 with python-graphql-core < 3.4)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -71,10 +74,10 @@ GraphQL client for Python.
 rm -Rf gql-checker
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/gql-cli
 
@@ -95,6 +98,6 @@ rm -Rf gql-checker
 %doc README.md
 %python_alternative %{_bindir}/gql-cli
 %{python_sitelib}/gql
-%{python_sitelib}/gql-%{version}*-py*.egg-info
+%{python_sitelib}/gql-%{version}.dist-info
 
 %changelog
