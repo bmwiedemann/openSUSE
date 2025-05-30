@@ -17,20 +17,20 @@
 
 
 Name:           thunar-archive-plugin
-Version:        0.5.3
+Version:        0.6.0
 Release:        0
 URL:            https://docs.xfce.org/xfce/thunar/archive
-Source0:        https://archive.xfce.org/src/thunar-plugins/%{name}/0.5/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/thunar-plugins/%{name}/0.6/%{name}-%{version}.tar.xz
 Summary:        Thunar Plugin Providing Integration with Archive Managers
 License:        LGPL-2.0-only
 Group:          System/GUI/XFCE
 BuildRequires:  intltool
-BuildRequires:  pkgconfig(exo-2) >= 0.10.0
+BuildRequires:  meson >= 0.61.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
-BuildRequires:  pkgconfig(thunarx-3) >= 0.4.0
-Requires:       thunar >= 1.7.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.18.0
+BuildRequires:  pkgconfig(thunarx-3) >= 4.18.0
+Requires:       thunar >= 4.18.0
 Recommends:     %{name}-lang = %{version}
 Provides:       thunar-plugin-archive = %{version}
 Obsoletes:      thunar-plugin-archive < %{version}
@@ -47,11 +47,11 @@ different archive managers.
 %autosetup
 
 %build
-%configure --disable-static
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 rm -rf %{buildroot}%{_libdir}/thunarx-3/thunar-archive-plugin.la
 
