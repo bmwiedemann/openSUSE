@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 30 08:59:24 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed Aug 12 17:11:58 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Replace pypi.python.org Source URL with the canonical files.pythonhosted.org

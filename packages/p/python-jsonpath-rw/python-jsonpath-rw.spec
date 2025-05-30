@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonpath-rw
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,7 @@
 %define __os_install_post %(echo '%__os_install_post; \
   rm -f %{buildroot}%{_sysconfdir}/alternatives/jsonpath.pyo; \
   rm -f %{buildroot}%{_sysconfdir}/alternatives/jsonpath.pyc')
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname jsonpath-rw
-
 Name:           python-jsonpath-rw
 Version:        1.4.0
 Release:        0
@@ -32,15 +29,17 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/kennknowles/python-jsonpath-rw
 Source:         https://files.pythonhosted.org/packages/source/j/jsonpath-rw/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ply}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator
 Requires:       python-ply >= 3.4
 Requires:       python-six
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,10 +58,10 @@ extend. (You can also execute them :-)
 sed -i '/^#!/ d' jsonpath_rw/bin/jsonpath.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/jsonpath.py
 
 %post
@@ -74,6 +73,7 @@ sed -i '/^#!/ d' jsonpath_rw/bin/jsonpath.py
 %files %{python_files}
 %doc README.rst
 %python_alternative %{_bindir}/jsonpath.py
-%{python_sitelib}/*
+%{python_sitelib}/jsonpath[-_]rw
+%{python_sitelib}/jsonpath[-_]rw-%{version}*-info
 
 %changelog
