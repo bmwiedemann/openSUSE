@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 27 18:51:36 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to version 0.10.5:
+  * v0.10.5
+  * update dependencies
+  * update libdrm_amdgpu_sys rev
+  * pre-release
+  * lib: get the fw version of SMC from Vec<FwVer>
+  * update dependencies
+  * add dynamically linked musl binary to release Closes: #128
+  * fix build without tui feature
+  * cleanup dump_info
+  * lib: add fw_versions fieled to AppDeviceInfo
+
+-------------------------------------------------------------------
 Mon Mar 17 14:48:44 UTC 2025 - ecsos@opensuse.org
 
 - Update to version 0.10.4:
