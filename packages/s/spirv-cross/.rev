@@ -135,4 +135,12 @@
     <comment>- Update to release SDK-1.4.309.1</comment>
     <requestid>1252817</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9d09cb59a6780a0c6156eec5143de95c</srcmd5>
+    <version>1.4.313.0</version>
+    <time>1748608719</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release SDK-1.4.313.0</comment>
+    <requestid>1281223</requestid>
+  </revision>
 </revisionlist>

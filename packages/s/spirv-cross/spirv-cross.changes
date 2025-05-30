@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 29 20:35:04 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.4.313.0
+  * MSL: Apply input override on all flattened members in
+    interface block
+  * GLSL: Implement SPV_KHR_cooperative_matrix
+  * MSL: Support broader tessellation I/O matching for
+    VK_KHR_maintenance4
+  * Add support for KHR_expect_assume
+
+-------------------------------------------------------------------
 Thu Mar 13 17:15:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.4.309.1

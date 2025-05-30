@@ -23,7 +23,7 @@
 %endif
 
 Name:           spirv-cross
-Version:        1.4.309.0
+Version:        1.4.313.0
 Release:        0
 Summary:        Tool and library for SPIR-V reflection and disassembly
 License:        Apache-2.0 OR MIT
