@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Tue May 20 21:50:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.26.0:
+  * make version info in bug template more explicit
+  * add git hash to binary, print on startup
+  * remove oidc migration
+  * use helper function for constructing state updates
+  * use tsweb debugger
+  * set 0.25.0 changelog date
+  * activate json logs
+  * use tailscale version in all unsupported errs
+  * handle register auth errors
+  * fix routes not being saved when new nodes registers
+  * fix double login URL with OIDC
+  * Redo route code
+  * Experimental implementation of Policy v2
+  * Drop routes table
+  * Add usage example to routes flag
+  * Remove leftover printf
+  * remove policy handling for old capver
+  * Container images are also available on GHCR
+  * add faq section on scaling/performance
+  * Add a FAQ entry about two nodes seeing each other
+  * update bug template with debug
+  * Set content-type to JSON for some debug endpoints
+  * Remove coderabbit
+  * add third-party tool headscale-pf
+  * Explicitly handle /headscale/{config,lib,run} in container docs
+  * Mention that private keys generated if needed
+  * Multi network integration tests
+  * OIDC: Fetch UserInfo to get EmailVerified if necessary
+  * populate serving from primary routes
+  * allow users to be defined with @ in v1
+  * fix auto approver on register and new policy
+  * Add unraid-headscale-admin web UI to docs
+  * Only read relevant nodes from database in PeerChangedResponse
+  * ensure final dot on node name
+  * Restore support for "Override local DNS"
+  * some clarifications for tags
+  * Update oidc.md
+  * flake: add golang-lint lsp
+  * policy/v2: fix host validation, consistent pattern
+  * integration: clean up unreferenced hs- networks
+  * Mention "Network flow logs" as a missing feature
+  * Fix goroutine leak in EphemeralGC on node cancel
+  * Fix panic on fast reconnection of node
+  * add casbin user test
+  * config: disallow same server url and base_domain
+  * policy/v2: make default
+  * integration: remove failing resolvconf tests
+  * fix webauth + autoapprove routes
+  * types/authkey: include user object in response
+  * oidc: try to get username from userinfo
+  * notify nodes after owner change
+  * auth: ensure that routes are autoapproved when the node is stored
+  * Make matchers part of the Policy interface
+  * cli/nodes: filter nodes without any routes
+  * error on undefined host in policy
+  * Update source.md
+  * policy/v2: validate autogroup:interet only in dst
+  * cmd: add policy check command
+  * policy/matcher: fix bug using contains instead of overlap
+  * update capmap and deps for release
+  * Add documentation for routes
+  * Fix deprecation warnings
+  * feat: Create headscale user and group as system user/groups
+  * Update container.md
+  * go.mod: update rest of deps
+  * Make more granular SSH tests for both Policies
+  * policy: reduce routes sent to peers based on packetfilter
+  * Misc doc fixes
+  * app: throw away not found body
+  * Remove subnet router visibility workaround from docs
+  * policy/v2: validate that no undefined group or tag is used
+  * cli: policy check, dont require config or log
+  * policy/v2: separate exit node and 0.0.0.0/0 routes
+  * Add migration steps when policy is stored in the database
+  * Simplify policy migration
+  * bring back last_seen in database
+  * Remove map_legacy_users from example configuration
+  * fix: change FormatUint base from 64 to 10 in preauthkeys list command
+  * users: harden, test, and add cleaner of identifier
+- remove patches fix-CVE-2025-30204.patch and fix-CVEs.patch, as upstream
+  updated their dependencies
+
+-------------------------------------------------------------------
 Thu Apr 24 17:13:47 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update fix-CVEs.patch for fixing bsc#1241801

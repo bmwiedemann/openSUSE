@@ -17,7 +17,7 @@
 
 
 Name:           headscale
-Version:        0.25.1
+Version:        0.26.0
 Release:        0
 Summary:        An open source, self-hosted implementation of the Tailscale control server
 License:        BSD-3-Clause
@@ -29,8 +29,6 @@ Source3:        headscale.tmpfs.conf
 Source4:        headscale.systemd.service
 Source5:        config-example.yaml
 Source6:        derp-example.yaml
-Patch0:         fix-CVE-2025-30204.patch
-Patch1:         fix-CVEs.patch
 BuildRequires:  golang-packaging
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools

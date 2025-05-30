@@ -131,4 +131,12 @@
     <comment>- update fix-CVEs.patch for fixing bsc#1241801 (forwarded request 1272491 from rrahl0)</comment>
     <requestid>1272492</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f2a5977dba7312e518fd273546ba9412</srcmd5>
+    <version>0.26.0</version>
+    <time>1748608339</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1280712</requestid>
+  </revision>
 </revisionlist>
