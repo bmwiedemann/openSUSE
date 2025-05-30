@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 28 17:15:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update apparmor profile to allow new cpu binding handling
+
+-------------------------------------------------------------------
+Wed May 28 16:37:31 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.2.0+git0.e134140d2:
+  https://www.haproxy.com/blog/announcing-haproxy-3-2 
+  https://www.mail-archive.com/haproxy@formilux.org/msg45917.html
+
+-------------------------------------------------------------------
 Fri Apr 18 12:38:48 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.1.7+git0.c3f408945:
@@ -7644,7 +7656,6 @@ Wed Mar  9 12:00:23 UTC 2011 - mrueckert@suse.de
   - update the url_param regression test to test check_post too
 
 -------------------------------------------------------------------
->>>>>>> ./haproxy.changes.r40
 Tue Feb 15 14:30:53 UTC 2011 - mrueckert@suse.de
 
 - update to 1.4.11
