@@ -1,10 +1,36 @@
 -------------------------------------------------------------------
+Tue May 27 08:31:08 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Rebase 0001-Bump-x-net.patch.
+- Upgrade to version 0.26.0 (jsc#PED-12872):
+  * Changes:
+    Replace go-kit/log with log/slog module.
+  * Features:
+    Add metric to record tls ciphersuite negotiated during
+      handshake.
+    Add a way to export labels with content matched by the probe.
+    Reports Certificate Serial number.
+  * Enhancement:
+    Add stale workflow to start sync with stale.yaml in Prometheus.
+  * Bug fixes:
+    Only register grpc TLS metrics on successful handshake.
+
+- Upgrade to version 0.25.0:
+  * Features:
+    Allow to get Probe logs by target.
+    Log errors from probe.
+  * Bug fixes:
+    Prevent logging confusing error message.
+    Explicit registration of internal exporter metrics.
+
+-------------------------------------------------------------------
 Fri May 16 12:42:50 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
-- Security: Fix proxy bypassing using IPv6 zone IDs
-  (CVE-2025-22870, bsc#1238680)
-- Security: Fix closing connections when receiving too many headers
-  (CVE-2023-45288, bsc#1236515)
+- Security:
+  * CVE-2025-22870: Fix proxy bypassing using IPv6 zone IDs
+    (bsc#1238680)
+  * CVE-2023-45288: Fix closing connections when receiving too many
+    headers (bsc#1236515)
 - Add 0001-Bump-x-net.patch
 - Use `manual` build service
 - Build with `promu`

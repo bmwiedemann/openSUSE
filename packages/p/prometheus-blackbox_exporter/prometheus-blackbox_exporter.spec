@@ -26,7 +26,7 @@
 %endif
 
 Name:           prometheus-blackbox_exporter
-Version:        0.24.0
+Version:        0.26.0
 Release:        0
 Summary:        Prometheus blackbox prober exporter
 License:        Apache-2.0
