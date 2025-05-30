@@ -7,6 +7,7 @@ After=remote-fs.target network.target nss-lookup.target time-sync.target ldap.se
 User=keadhcp
 Environment=KEA_PIDFILE_DIR=/run/kea
 RuntimeDirectory=kea
+RuntimeDirectoryMode=0750
 ExecStart=/usr/sbin/kea-ctrl-agent -c /etc/kea/kea-ctrl-agent.conf
 ExecReload=kill -HUP $MAINPID
 ProtectSystem=full

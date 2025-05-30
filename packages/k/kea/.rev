@@ -170,4 +170,19 @@ AFAICT these packages aren't needed for generating the docs and the official doc
 - Tighten access to state and log directories.</comment>
     <requestid>1274560</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>76a11c342a59646f835141347c1d0579</srcmd5>
+    <version>2.6.3</version>
+    <time>1748608523</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.6.3
+  (CVE-2025-32801, CVE-2025-32802, CVE-2025-32803)
+  [bsc#1243240]
+- Remove /run/kea from systemd tmpfiles as the creation of this
+  directory is handled by the services.
+- Replace 'chmod -h' and 'chown -h' with 'find' as the '-h' isn't
+  present in Leap/SLE.
+- /run/kea now has mode 0750 for all services.</comment>
+    <requestid>1280982</requestid>
+  </revision>
 </revisionlist>

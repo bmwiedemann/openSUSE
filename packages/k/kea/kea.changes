@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon May 26 15:07:13 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 2.6.3
+  Security Fixes:
+  * The default configuration for the Kea Control Agent (CA) has
+    been updated to enable basic HTTP authentication.  Access to
+    the Kea API will thus require a password.
+    (CVE-2025-32801, CVE-2025-32802, CVE-2025-32803)
+    [bsc#1243240]
+  * `kea-dhcp4`, `kea-dhcp6`, `kea-dhcp-ddns`, and
+    `kea-ctrl-agent` now only load hook libraries from the
+    default installation directory. For ease of use, the path may
+    be omitted.
+    (CVE-2025-32801)
+    [bsc#1243240]
+  * The API command `config-write` will now only write to the same
+    directory as the configuration file used when Kea was started
+    (passed as a `-c` argument).
+    (CVE-2025-32802)
+    [bsc#1243240]
+  * Lease files can now only be loaded from the data directory
+    `/var/lib/kea`. This path may be overridden at startup by
+    setting the environment variable `KEA_DHCP_DATA_DIR` to the
+    desired path. If a path outside the defined data directory is
+    used in `lease-database.name`, Kea returns an error and refuses
+    to start or, if already running, aborts and exits. For ease of
+    use in specifying a custom file name, simply omit the path
+    component from `name`.
+    (CVE-2025-32802)
+    [bsc#1243240]
+  * Log files can now only be written to a defined output directory
+    `/var/log/kea`. This path may be overridden at startup by
+    setting the environment variable `KEA_LOG_FILE_DIR` to the
+    desired path. If a path outside the defined output directory is
+    used in `loggers.output_options.output`, Kea returns an error
+    and refuses to start or, if already running, aborts and exits.
+    For ease of use, simply omit the path component from `output`
+    and specify only the file name.
+    (CVE-2025-32802)
+    [bsc#1243240]
+  * Files created by Kea now have more restrictive file
+    permissions. Write access by group and any access by others is
+    now forbidden.
+    (CVE-2025-32803)
+    [bsc#1243240]
+  * Sockets can no longer be created in a world-writable directory,
+    such as `/tmp`. Sockets must now be created in the more
+    restricted `/var/run/kea`.
+    (CVE-2025-32802)
+    [bsc#1243240]
+  * Many sample configuration files have been updated to reflect
+    changes introduced in this release. In the ARM, the Kea
+    Security section has been moved to a more prominent location,
+    and a new section concerning securing the Kea Control Agent has
+    been added.
+    (CVE-2025-32801, CVE-2025-32802, CVE-2025-32803)
+    [bsc#1243240]
+
+  Other changes:
+  * Fix build with the latest Boost 1.87.
+    (Obsoletes patch `kea-2.6.1-boost_1.87-compat.patch`)
+  * Backported a clarification in the ARM about subnet4-delta-add.
+
+- Remove /run/kea from systemd tmpfiles as the creation of this
+  directory is handled by the services.
+- Replace 'chmod -h' and 'chown -h' with 'find' as the '-h' isn't
+  present in Leap/SLE.
+- /run/kea now has mode 0750 for all services.
+
+-------------------------------------------------------------------
 Wed Apr 30 13:21:39 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update owner and perms in %post on modified config files

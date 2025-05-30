@@ -16,36 +16,36 @@
 #
 
 
-%define asiodns_sover 48
-%define asiolink_sover 71
+%define asiodns_sover 49
+%define asiolink_sover 72
 %define cc_sover 68
-%define cfgclient_sover 65
+%define cfgclient_sover 66
 %define cryptolink_sover 50
-%define d2srv_sover 46
+%define d2srv_sover 47
 %define database_sover 62
-%define dhcppp_sover 91
-%define dhcp_ddns_sover 56
-%define dhcpsrv_sover 110
-%define dnspp_sover 56
+%define dhcppp_sover 92
+%define dhcp_ddns_sover 57
+%define dhcpsrv_sover 111
+%define dnspp_sover 57
 %define eval_sover 69
 %define exceptions_sover 33
-%define hooks_sover 99
-%define http_sover 71
+%define hooks_sover 100
+%define http_sover 72
 %define log_sover 61
 %define mysql_sover 71
 %define pgsql_sover 71
-%define process_sover 73
+%define process_sover 74
 %define stats_sover 41
-%define tcp_sover 18
+%define tcp_sover 19
 %define util_io_sover 0
-%define util_sover 85
+%define util_sover 86
 %if 0%{?suse_version} >= 1600
 %bcond_without regen_files
 %else
 %bcond_with    regen_files
 %endif
 Name:           kea
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        Dynamic Host Configuration Protocol daemon
 License:        MPL-2.0
@@ -61,7 +61,6 @@ Source4:        kea-dhcp4.service
 Source5:        kea-dhcp6.service
 Source6:        kea-dhcp-ddns.service
 Source7:        kea-ctrl-agent.service
-Patch0:         kea-2.6.1-boost_1.87-compat.patch
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
 %if %{with regen_files}
@@ -377,11 +376,8 @@ make %{?_smp_mflags}
 b=%buildroot
 %make_install
 find %buildroot -type f -name "*.la" -delete -print
-mkdir -p "$b/%_unitdir" "$b/%_tmpfilesdir" "$b/%_sysusersdir"
+mkdir -p "$b/%_unitdir" "$b/%_sysusersdir"
 cp %_sourcedir/*.service "$b/%_unitdir/"
-cat <<-EOF >"$b/%_tmpfilesdir/kea.conf"
-	d /run/kea 0775 keadhcp keadhcp -
-EOF
 echo 'u keadhcp - "Kea DHCP server" /var/lib/kea' >system-user-keadhcp.conf
 cp -a system-user-keadhcp.conf "$b/%_sysusersdir/"
 %sysusers_generate_pre system-user-keadhcp.conf random system-user-keadhcp.conf
@@ -396,7 +392,6 @@ find "%buildroot/%_libdir" -name "*.so.*" -type l -delete
 rm -Rf "%buildroot/%python3_sitelib/kea/__pycache__"
 
 %pre -f random.pre
-systemd-tmpfiles --create kea.conf || :
 %service_add_pre kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service kea-ctrl-agent.service
 
 %post
@@ -404,8 +399,8 @@ systemd-tmpfiles --create kea.conf || :
 if [ "$1" -gt 1 ]; then
 	chown -R keadhcp:keadhcp "%_localstatedir/lib/kea"
 	chown -R keadhcp:keadhcp "%_localstatedir/log/kea"
-	chown -h root:keadhcp %_sysconfdir/kea/*.conf
-	chmod -h 640 %_sysconfdir/kea/*.conf
+	find %_sysconfdir/kea/ -type f -name '*.conf' -exec chown root:keadhcp {} +
+	find %_sysconfdir/kea/ -type f -name '*.conf' -exec chmod 640 {} +
 fi
 bigkea_enabled=$(/usr/bin/systemctl is-enabled kea.service 2>/dev/null || :)
 bigkea_active=$(/usr/bin/systemctl is-active kea.service 2>/dev/null || :)
@@ -477,7 +472,7 @@ fi
 %ldconfig_scriptlets -n libkea-util%util_sover
 
 %files
-%dir %_sysconfdir/kea
+%dir %attr(0755,root,root) %_sysconfdir/kea
 %config(noreplace) %attr(0640,root,keadhcp) %_sysconfdir/kea/*.conf
 %_mandir/man8/*.8%{?ext_man}
 %_sbindir/kea*
@@ -485,7 +480,6 @@ fi
 %_datadir/kea/
 %_unitdir/*.service
 %dir %attr(0750,keadhcp,keadhcp) %_localstatedir/lib/kea
-%_tmpfilesdir/*
 %_sysusersdir/*
 %attr(0750,keadhcp,keadhcp) %_localstatedir/log/kea/
 
