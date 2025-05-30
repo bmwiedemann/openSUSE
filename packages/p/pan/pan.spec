@@ -18,7 +18,7 @@
 
 %define __builder ninja
 Name:           pan
-Version:        0.162
+Version:        0.163
 Release:        0
 Summary:        A Newsreader for GNOME
 License:        GPL-2.0-or-later
