@@ -1,4 +1,127 @@
 -------------------------------------------------------------------
+Thu May 29 12:58:19 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 3.16.11:
+  * steamcompmgr: workaround bug with mangohud repaints when VRR is active
+  * DRMBackend: Fix IsPaused
+  * submodules: bump misyl-wlroots to 54e8447
+  * WaylandBackend: Fix IsPaused return value
+  * steamcompmgr: Fix IsPaused check
+  * OpenVRBackend: initialize visibility state when creating the overlay.
+  * backend: Split IsVisible out into IsPaused
+  * vram cgroup: don't crash on startup if not present
+  * steamcompmgr: Use cgroup VRAM protection for focused windows
+  * steamcompmgr: Only do SteamControlled behaviour for true steam controlled, not just SteamMode
+  * steamcompmgr: Fix SteamControlled strategy for context focus behaviour
+  * steamcompmgr: Fix lifetime for previous virtual connector global focus
+  * steamcompmgr: Fix removing single connector virtual connector outputs
+  * wlserver: hack-y fix for tab character sometimes not working in global bindings
+  * wlserver: fix hotkey processing being broken in gamemode
+  * OpenVRBackend: Workaround for VREvent_ScrollSmooth events being dropped.
+  * OpenVRBackend: Add comment wrt. thread constructor ordering
+  * OpenVRBackend: Fix initialization order for atomics/threads
+- stb and glm are now meson subprojects
+  * Pull the upstream pinned revisions with tar_scm service
+  * Unpack the sources manually
+  * Remove BuildRequires for system glm and stb
+  * Remove set_version service as it was choosing the stb version string as main package version
+
+-------------------------------------------------------------------
+Wed May 14 20:02:04 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 3.16.7:
+  * build: ensure the same glm dependency is used for gamescope and layer
+  * build: Pull in glm in the same way we pull in stb
+  * steamcompmgr: Don't force vulkan_wait for the current seq no after pre-emption
+  * steamcompmgr: Fix corruption when getting out of pre-emptive upscaling
+  * steamcompmgr: Fix pre-emptive upscaling with scRGB
+  * Add support for broadcast RGB mode setting + DPMS
+  * build: Ship color-management-v1 ourselves
+  * WaylandBackend: fix scaling for TargetPrimaries
+  * WaylandBackend: Add wayland_hdr10_saturation_scale to play with
+  * WaylandBackend: Forward HDR Metadata to compositor
+  * WaylandBackend: Fix cursor grabbing
+  * WaylandBackend: Fix keyboard shortcuts
+  * WaylandBackend: Finish hooking up release WP Color Mgmt
+  * wlserver: Re-hook pausing on session pause
+  * protocol: Add gamescope-action-binding protocol
+  * main: Give error message on invalid integer or float argument
+  * WaylandBackend: Don't assert on non-xkb-v1 keymaps
+  * wlserver: Create a keyboard group to keep all externally connected keyboards in sync
+  * WaylandBackend: Support wp-color-management-v1
+  * script: add additional BOE panel
+  * script: Lenovo Legion Go S LCD display configuration
+  * Force wrap file usage for stb and glm dependencies
+  * steamcompmgr: Set receivedDoneCommit even if the commit is not for current surface in update_wayland_res().
+  * scripts: Search GAMESCOPE_SCRIPT_PATH for scripts
+  * script: fixup Ally config to support BOE panels
+  * WaylandBackend: prevent crash after closing window
+  * rendervulkan: Append VK_STRUCTURE_TYPE_WSI_MEMORY_ALLOCATE_INFO_MESA when creating scanout VkImages
+  * WaylandBackend: Set empty functions for unused data source events
+  * WaylandBackend: Fix initial scale for Wayland surfaces
+  * build: add workaround to build with CMake 4.0
+  * steamcompmgr: avoid a crash with pipewire+magnification
+  * steamcompmgr: check for connector before presenting
+  * DRMBackend: Expose data string from EDID to matches function
+  * wlserver: wlserver_run(): ensure waylock is released when wl_event_loop_dispatch returns ret<0
+  * DRMBackend: Read the EDID's modes for dynamic refresh rate modes by default
+  * script: GPD Win 4 display configuration
+  * script: Lenovo Legion Go LCD display configuration
+  * scripts: Derive script path from meson prefix
+  * steamcompmgr: VRR frame limiting
+  * steamcompmgr: Fix pipewire stream being incorrect size on external displays when scaled up
+  * DRMBackend: Fix crash when there are no connectors
+  * rendervulkan: Fix scaled YUV coming out weird
+  * steamcompmgr: Fix Steam sidebars with recent icon fix
+  * steamcompmgr: Fix some crashes with global focus
+  * wlserver: Fix synthetic cursor warps not triggering mouse visibility
+  * steamcompmgr: Fix icon/title being spam set
+  * steamcompmgr: Fix HDR/output caps enablement post-virtual connector refactor
+  * steamcompmgr: Accept any requested iconic state change.
+  * steamcompmgr: Set WM_STATE property on map and unmap notify events.
+  * main: cleanup args
+  * layer: Fix 32-bit layer crash
+  * backend: Fix assigning connector IDs
+  * WaylandBackend: copying to primary selection
+  * WaylandBackend: copying to clipboard
+  * nested: fix forwarding selections to the host
+  * WaylandBackend: Fix grabbing cursor since virtual connector refactor
+  * OpenVRBackend: Add command-line support for overlay click stabilization
+  * OpenVRBackend: disable special steamui controlbar. This functionality did not ship in steamvr.
+  * steamcompmgr: Fix warning
+  * Revert "OpenVRBackend: Disable explicit sync for now"
+  * OpenVRBackend: Handle quit more robustly
+  * mangoapp: plumb engineName
+  * OpenVRBackend: Add mutex around fb id tracking
+  * backend: Hack
+  * Revert "steamcompmgr: Fix crash when using magnifier and game recording"
+  * OpenVRBackend: Disable explicit sync for now
+  * GAMESCOPE_MANGOAPP_SOCKET_DISABLE added
+  * OpenVRBackend: Fix FPS limit not updating
+  * OpenVRBackend: Fix for dual/double frame jitter
+  * messagey: Add GAMESCOPE_ZENITY_DISABLE
+  * OpenVRBackend: Fix OverlayClosed when not in steam mode
+  * OpenVRBackend: Only override cursor if not in relative mode.
+  * OpenVRBackend: Support for physical mouse input controlling cursor
+  * LibInputHandler: Add support for scroll wheel
+  * LibInputHandler: add, hook up to vr-session-manager
+  * steamcompmgr: Fix Steam intergration with multiple virtual connectors
+  * SDLBackend: Fix with virtual connector backend
+  * OpenVRBackend: Fix crash with SteamVR input thread
+  * OpenVRBackend: Add logging for creating a new dashboard overlay
+  * steamcompmgr: Clean up g_VirtualConnectorFocuses before closing backend off
+  * OpenVRBackend: Add vr-app-overlay-key
+  * OpenVRBackend: Consider visible when an appid's scene app is visible
+  * OpenVRBackend: Add logging for overlay visible count
+  * OpeNVRBackend: Add vr_nudge_to_visible_per_connector
+  * main: Add --virtual-connector-strategy
+  * all: Support for multiple virtual connectors
+  * reshade: Add gamescope_always_paint flag
+  * reshade: Add gamescope_refresh_mhz
+  * rendervulkan: Fix initializing drm formats
+  * WaylandBackend: Fix hotkeys failing to bind on Wayland desktops
+
+-------------------------------------------------------------------
 Fri Jan 10 14:32:30 UTC 2025 - me@levitati.ng
 
 - Update to version 3.16.1:

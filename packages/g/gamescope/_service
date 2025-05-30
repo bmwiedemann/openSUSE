@@ -1,8 +1,19 @@
 <?xml version="1.0"?>
 <services>
+   <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/nothings/stb.git</param>
+    <param name="revision">5736b15f7ea0ffb08dd38af21067c314d6a3aae9</param>
+    <param name="scm">git</param>
+  </service>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/g-truc/glm.git</param>
+    <param name="revision">0af55ccecd98d4e5a8d1fad7de25ba429d60e863</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+  </service>
   <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/Plagman/gamescope.git</param>
-    <param name="revision">refs/tags/3.16.1</param>
+    <param name="revision">refs/tags/3.16.11</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
     <param name="versionrewrite-pattern">([\.\d]+)</param>
@@ -13,5 +24,4 @@
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="disabled" name="set_version"/>
 </services>

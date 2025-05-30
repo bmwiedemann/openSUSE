@@ -18,13 +18,15 @@
 
 %bcond_without  intree_libs
 Name:           gamescope
-Version:        3.16.1
+Version:        3.16.11
 Release:        0
 Summary:        Micro-compositor optimized for running video games on Wayland
 License:        BSD-2-Clause
 Group:          Amusements/Games/Other
 URL:            https://github.com/Plagman/gamescope
 Source:         %{name}-%{version}.tar.xz
+Source1:        stb-1675018027.5736b15.tar.xz
+Source2:        glm-1.0.1.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  glslang-devel
@@ -32,7 +34,6 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 # for git describe
 BuildRequires:  git
-BuildRequires:  stb-devel
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xmu)
 # for xxd
@@ -45,7 +46,6 @@ BuildRequires:  pkgconfig(libliftoff)
 BuildRequires:  pkgconfig(openvr)
 %endif
 BuildRequires:  pkgconfig(benchmark)
-BuildRequires:  pkgconfig(glm)
 BuildRequires:  pkgconfig(hwdata)
 BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libcap)
@@ -109,11 +109,23 @@ BuildRequires:  pkgconfig(xkbcommon)
 %prep
 %autosetup -p1
 
+pushd subprojects || exit 1
+# Unpack stb
+mkdir stb
+tar -xf %{SOURCE1} -C stb --strip-components=1
+
+# Unpack glm
+mkdir glm
+tar -xf %{SOURCE2} -C glm --strip-components=1
+popd || exit 1
+
 %build
 %if 0%{?suse_version} < 1599
 sed -i "s|dependency('stb')|declare_dependency(include_directories: include_directories('/usr/include/stb'))|g" src/meson.build
 %endif
 sed -i "s|#include <libei-1.0/libeis.h>|#include <libeis.h>|g" src/InputEmulation.cpp
+meson subprojects packagefiles --apply
+
 %meson \
   -Dpipewire=enabled \
 %{nil}
