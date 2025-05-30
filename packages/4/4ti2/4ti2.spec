@@ -17,13 +17,13 @@
 
 
 Name:           4ti2
-Version:        1.6.11
+Version:        1.6.12
 Release:        0
 Summary:        Package for algebraic, geometric and combinatorial problems on linear spaces
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://4ti2.github.io/
-Source:         https://github.com/4ti2/4ti2/releases/download/Release_1_6_11/4ti2-%version.tar.gz
+Source:         https://github.com/4ti2/4ti2/releases/download/Release_1_6_12/4ti2-%version.tar.gz
 Patch2:         4ti2-handle-prefix.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 4.3

@@ -89,4 +89,14 @@
     <comment>- Update to release 1.6.11</comment>
     <requestid>1274081</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>855d1d71f35ef9f2c3a31a7c26002e7a</srcmd5>
+    <version>1.6.12</version>
+    <time>1748608532</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.6.12
+  * Remove Allegro Common Lisp interface (not built in openSUSE
+    anyway); current SWIG no longer supports it.</comment>
+    <requestid>1280998</requestid>
+  </revision>
 </revisionlist>
