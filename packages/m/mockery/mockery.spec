@@ -1,7 +1,7 @@
 #
 # spec file for package mockery
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           mockery
-Version:        2.36.0
+Version:        2.53.4
 Release:        0
 Summary:        A mock code autogenerator for Go
 License:        BSD-3-Clause
 URL:            https://github.com/vektra/mockery
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.22
+BuildRequires:  golang(API) >= 1.23
 
 %description
 mockery provides the ability to easily generate mocks for Golang interfaces
@@ -42,7 +42,10 @@ go build \
    -ldflags="-X github.com/vektra/mockery/v2/pkg/logging.SemVer=v%{version}"
 
 %install
-install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
+
+%check
+%{buildroot}/%{_bindir}/%{name} --version | grep v%{version}
 
 %files
 %doc README.md

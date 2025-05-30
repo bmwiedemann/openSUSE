@@ -1,4 +1,320 @@
 -------------------------------------------------------------------
+Fri May 23 05:09:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.53.4:
+  * Fix go.work.sum for tagging command
+  * Bump version for Go build on latest stable
+  * Fix v2 docs javascript for installation command
+  * Fix CICD for master->v2 branch rename.
+  * Remove `latest` docs alias from v2
+  * v2: Update release and docs for v3 GA
+  * Bump golang.org/x/net from 0.33.0 to 0.36.0 in /tools (#947)
+  * v2: Add k8s as user of mockery (#965)
+  * Create FUNDING.yml
+
+-------------------------------------------------------------------
+Mon May 19 07:21:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.53.3:
+  * Move to docker/login-action@v3 by @LandonTClipp in #944
+  * Fix documentation CI workflow by @LandonTClipp in #945
+  * Remove redundant typecheck linter by @alexandear in #948
+  * Bump viper for remove hashicorp dependencies by @RainbowMango
+    in #951
+
+-------------------------------------------------------------------
+Mon May 19 06:16:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.53.2:
+  * Build Go binary with 1.24 by @LandonTClipp in #943
+- Update to version 2.53.1:
+  * Fix profiling by @mat007 in #926
+  * fix: include-auto-generated option to work with multi-line
+    comment by @hpurmann in #940
+  * Revert to Go 1.23 in go.mod by @LandonTClipp in #941
+- Update to version 2.53.0:
+  * Remove homebrew tap by @LandonTClipp in #933
+  * feat(fail-on-missing): Allow mockery to return non-zero on
+    missing interfaces by @LandonTClipp in #934
+- Update to version 2.52.4:
+  * 0c0f6fc Fix disable-version-string bool check (#927)
+  * 3761289 Update mockery-tools.env
+  * 45d41e8 fix: include-auto-generated option (#928)
+- Update to version 2.52.3:
+  * b4291cf Build Docker from Go 1.24 (#923)
+  * 44293f3 Bump debug version
+- Update to version 2.52.2:
+  * 252f27c Support go 1.24 and upgrade dependencies (#915)
+  * c644c45 docs: fix go mod download command (#908)
+- Update to version 2.52.1:
+  * 2becc15 Fix dependency issue in zerolog (#910)
+- Update to version 2.52.0:
+  * 812a888 Add latest-v2 alias in docs.
+  * ed09f71 Add link to v3 docs. (#904)
+  * 25182ae Bump github.com/go-git/go-git/v5 from 5.12.0 to 5.13.0
+    in /tools (#903)
+  * 3f90943 Bump golang.org/x/net from 0.28.0 to 0.33.0 in /tools
+    (#902)
+  * eb84be5 Bump version
+  * 14a9cc6 feat: Error message for nonexistent mocks (#907)
+- Update to version 2.51.1:
+  * 52c9c25 Fix config issue with type conversion and deprecation
+    warnings (#897)
+- Update to version 2.51.0:
+  This release adds a number of deprecation warnings in preparation
+  for the v3 release. If you would like to disable these warnings,
+  you can use the disable-deprecation-warnings parameter, or to
+  disable only specific warnings, the disabled-deprecation-warnings
+  parameter. Details on these are in the configuration section of
+  the docs.
+  *  0f55ecb Add enhanced deprecation logging support. (#894)
+- Update to version 2.50.4 (2.50.3 does not exist):
+  * cd34e8b Fix tagging
+  * d5bc859 Support *ast.SelectorExpr aliases (#881)
+  * fe58af4 bump version
+  * bb1e69e updates to CICD
+- Update to version 2.50.2:
+  * 6a54b28 Fix empty build tags adding a tags parameter (#874)
+  * afe092f Update mockery-tools.env
+- Update to version 2.50.1:
+  * ede4f2c Add new expressions to allowed types (#863)
+  * f6c261b Bump version
+- Update to version 2.50.0:
+  * 13d696b Bump to 2.50.0
+  * 0ba6fad Make the parser accept index list expressions (#857)
+- Update to version 2.49.2:
+  * 3a3fb6e Add reusable Github action for testing (#855)
+  * 715d9a3 Fix minor typos in parser debug logs (#858)
+  * dc47fdb Fix(generator): run functions with empty return (#842)
+  * 7d8df22 Update mockery-tools.env
+- Update to version 2.49.1:
+  * 8da7022 Add deprecation warning for with-expecter.
+  * 63a14b5 Add tagging Github action
+  * 314381f Docs: Make deprecations clearer
+  * 55e1e90 Docs: Simplify/modernize index page
+  * 3cef7fd Fix bug with type aliases to structs
+  * cba8aa0 Fix dirty git state caused by built tool
+  * 5c75177 Fix tag action
+  * 37383a4 Merge pull request #849 from
+    LandonTClipp/LandonTClipp/tagging
+  * 88830e8 Merge pull request #850 from
+    LandonTClipp/LandonTClipp/deprecation_docs
+  * bc56391 Merge pull request #851 from
+    LandonTClipp/LandonTClipp/expecter
+  * 773408f Merge pull request #853 from
+    LandonTClipp/LandonTClipp/bugfix
+  * 971ce32 Merge pull request #854 from LandonTClipp/master
+  * b1145cb bump debug
+  * 198df07 formatting
+- Update to version 2.49.0:
+  In this release, mockery will resolve aliases down to their
+  underlying type in order to maintain backwards compatibility.
+  Please see the deprecations page for details on why this change
+  was introduced and how to configure mockery to not resolve type
+  aliases.
+  * 13fc607 Add resolve-type-alias parameter
+  * a27cb03 Merge pull request #843 from
+    LandonTClipp/LandonTClipp/issue_839
+- Update to version 2.48.0:
+  * 04c4dc1 Fix outpkg not being respected when inpackage: True.
+  * 3ae14ef Merge pull request #846 from
+    LandonTClipp/LandonTClipp/issue_845
+- Update to version 2.47.0:
+  * f48ddc0 Enable gofumpt linter and cleanup formatting
+  * c9614e7 Fix unreachable links in docs
+  * 97ba6f2 Fix(recursive): use packages.Load support for recursive
+    search instead of manual - Fix(Parsepackages): Ignore packages
+    with no Go files
+  * 01a68ea Merge pull request #825 from
+    alexandear/refactor/yaml.v3
+  * 4ce1908 Merge pull request #826 from
+    alexandear/github-update-pr-template
+  * e9539f2 Merge pull request #827 from
+    alexandear/docs/replace-godoc-pkg-go-dev
+  * 08deb2d Merge pull request #828 from
+    alexandear/refactor/enable-gofumpt
+  * 146f48b Merge pull request #829 from
+    alexandear/refactor/redundant-var-decl
+  * 33886a9 Merge pull request #830 from alexandear/docs/fix-links
+  * f9da2b6 Merge pull request #831 from
+    alexandear/refactor/test-asserts
+  * f1e8da9 Merge pull request #833 from
+    alexandear/refactor/simplify-parse-config-templates
+  * 5a0ad1c Merge pull request #834 from
+    alexandear/refactor/dont-use-underscores
+  * f6ecb44 Merge pull request #835 from
+    jfragosoperez/fix/support-for-interface-typed-params
+  * 057cf5e Merge pull request #838 from sonalys/fix/recursive
+  * f66028a Refactor test asserts
+  * a79c303 Refactor to avoid undersore in var names
+  * 7ea7946 Refactor to use only gopkg.in/yaml.v3
+  * 6f99c60 Remove redundant variable declarations
+  * 86ae19b Replace godoc.org with pkg.go.dev
+  * e314ba8 Simplify parseConfigTemplates implementation
+  * d374c68 Update Go versions in GitHub PR template
+  * 6c7fb6b fix(generator): support nil returns when using
+    interface typed params
+- Update to version 2.46.3:
+  * 4d3bfa7 Merge pull request #824 from DimaGolomozy/patch-1
+  * 2e2b9bc add git
+  * f55598e add ssh
+- Update to version 2.46.2:
+  * 87fdecc Merge pull request #819 from pieter-irsan/patch-1
+  * 0d1b1a2 Merge pull request #821 from Link512/master
+  * 2e2c85b check nillable property for type aliases as well
+  * ce9adb6 docs: update typo in README.md
+- Update to version 2.46.1:
+  * afe04a5 Merge pull request #808 from
+    RangelReale/fix-go123-aliastype
+  * 720caa9 Undo go:build statements, make code a little DRY
+  * cf26d69 Update to go1.23
+  * c05a755 remove Go 1.23 testing
+  * 6f7960f support types.Alias
+  * 42d905a support types.Alias
+  * 66dba08 support types.Alias
+  * e4b095f upgrade go task
+- Update to version 2.46.0:
+  * 6423255 Merge pull request #807 from tobby-s/FEAT-configdir
+  * 7c9f776 add documentation
+  * 8fae460 propagate config file name into template
+- Update to version 2.45.1:
+  * 1790d6a Bump Go v1.22 to v1.23 in Dockerfile
+  * 38070f7 Merge pull request #812 from colega/patch-1
+  * 2abbb49 Merge pull request #814 from khaifazil/patch-1
+  * b2c2927 Update index.md: capitalize "Grafana"
+- Update to version 2.45.0:
+  * 56379c8 Add disable-func-mocks parameter
+  * a03d1ff Merge pull request #809 from
+    LandonTClipp/disable_func_mocks
+  * 1e69719 updates
+- Update to version 2.44.2:
+  * 4bee898 Ensure generated imports doesn't start with digit
+  * 910874a Merge pull request #806 from leitzler/master
+- Update to version 2.44.1 (2.44.0 does not exist):
+  * c6d2a9e Fix release workflow
+  * Fixes #769 : Mock files getting created in disk when dry-run is
+    enabled by @snopan in #789
+  * chore: fix typos and style by @ccoVeille in #794
+  * Allow types defined as instantiated generic interfaces to
+    generate mocks by @LandonTClipp in #790
+- Update to version 2.43.2:
+  * 4544845 Fix an issue with using exclude on windows
+  * 5a3e47a Merge pull request #780 from iangregsondev/debugging
+- Update to version 2.43.1:
+  * 2065d36 Update migrating_to_packages.md
+- Update to version 2.43.0:
+  * 514021e Add docs about InterfaceFile
+  * 527c0c4 Added InterfaceFile
+  * 25d2eb0 Merge pull request #773 from istrau2/patch-1
+  * 0229bd4 Merge pull request #776 from LandonTClipp/master
+  * dff9d54 added .InterfaceFile test
+  * 314f11a fixed .InterfaceFile test
+- Update to version 2.42.3:
+  * 9b4107f Fix bug when last argument is a function with multiple
+    return values
+  * b1c5f6e Merge pull request #774 from LandonTClipp/issue_766
+  * adedaa2 Update codecov.yml
+  * a382dd5 remove unnecessary config
+- Update to version 2.42.2:
+  * 4ac0c5e Bump google.golang.org/protobuf from 1.28.0 to 1.33.0
+    in /tools
+  * f500645 Merge pull request #768 from
+    vektra/dependabot/go_modules/tools/google.golang.org/protobuf-1.33.0
+  * 59f7d94 Merge pull request #771 from dlwyatt/patch-1
+  * dc80845 Merge pull request #772 from testwill/close_cpu_profile
+  * 9820fbb Update features.md
+  * bdfbb23 fix: close cpu profile
+- Update to version 2.42.1:
+  * 4ac0c5e Bump google.golang.org/protobuf from 1.28.0 to 1.33.0
+    in /tools
+  * f500645 Merge pull request #768 from
+    vektra/dependabot/go_modules/tools/google.golang.org/protobuf-1.33.0
+  * 59f7d94 Merge pull request #771 from dlwyatt/patch-1
+  * dc80845 Merge pull request #772 from testwill/close_cpu_profile
+  * 9820fbb Update features.md
+  * bdfbb23 fix: close cpu profile
+- Update to version 2.42.0:
+  * 29471fe Add more users of mockery to docs
+  * e420a13 Add typeset plugin for docs
+  * 8d53849 Factor out logic to exclude sub-modules
+  * b915439 Fix issue with file ordering
+  * 601d297 Merge branch 'master' into replace-generic
+  * 528d354 Merge branch 'master' into users
+  * 8b86cf2 Merge pull request #750 from
+    DustinJSilk/replace-generic
+  * 92afb14 Merge pull request #759 from LandonTClipp/users
+  * 3b25f39 Merge pull request #760 from LandonTClipp/fix_ordering
+  * f0789fb Merge pull request #761 from
+    LandonTClipp/file_ordering_gomod
+  * e724b8a Show support for pointer type replacements
+  * 78755a1 fixes
+  * d39a2a2 make codecov more permissive
+  * 4b08243 use replace-type config
+- Update to version 2.41.0:
+  * d4e7f57 Merge pull request #757 from
+    LandonTClipp/go_mod_version
+  * 2c2727b Set go.mod to go 1.22
+- Update to version 2.40.3:
+  * 3b76444 Dockerfile: up go version to 1.22
+  * cd5cc5a Merge pull request #755 from ifross89/patch-1
+- Update to version 2.40.2:
+  * f513d5d Merge pull request #753 from
+    viktorasm/fix-upgrade-x-tools
+  * 116a183 update pipeline to test on current ant previous
+    versions
+  * 2147419 upgrade X tools to fix panic crash in go 1.22
+- Update to version 2.40.1:
+  * d119c66 Add test that asserts mocks on variadic return
+    functions are behaving correctly
+  * b6625de Merge branch 'master' into nicovak/fix-707
+  * 4854efd Merge pull request #719 from nicovak/nicovak/fix-707
+  * a032aa0 fix: issue 707
+- Update to version 2.40.0:
+  * 1c18f44 Generate mock build constraints
+  * 2502f52 Merge pull request #693 from mcdoker18/fix/691
+  * 58b0c4c code review fixes
+- Update to version 2.39.2:
+  * 0267602 Merge pull request #746 from LandonTClipp/master
+  * 138d507 Update mkdocs.yml
+  * 6630b9e Update mkdocs.yml
+  * f5f6808 add google analytics env to build step
+  * 05ac09b fix GOOGLE_ANALYTICS_KEY
+- Update to version 2.39.1:
+  * 5c62fda Add MongoDB as user of mockery
+  * a199cfb Add clarification on internal error
+  * 5254b81 Merge pull request #741 from LandonTClipp/clarification
+  * b9df18e Merge pull request #742 from LandonTClipp/mongo
+- Update to version 2.39.0:
+  * b248492 Don't recurse into submodules on recursive: true
+  * 4f9dc15 Merge pull request #740 from LandonTClipp/monorepo
+- Update to version 2.38.0:
+  * 446e0bf Merge pull request #736 from mateusmarquezini/issue_729
+  * 445f73c added new check for no return values
+  * 8e778e0 created a new test to cover the new condition when the
+    test panics #729
+  * d0fa1f9 improvements after code review #729
+  * 432134c improvements after code review #729
+- Update to version 2.37.1:
+  * c7a65e2 Merge pull request #734 from
+    vektra/revert-731-walk-skips-modules
+  * fa5b6cb Revert "Don't recurse into submodules"
+- Update to version 2.37.0:
+  * fc10b9c Don't recurse into submodule
+  * 0e27e93 Merge pull request #731 from devnev/walk-skips-modules
+  * 0c5b6a4 add note in docs about go.mod skipping
+- Update to version 2.36.1:
+  * b648c23 Add additional test
+  * 0310201 Add fix for showconfig command
+  * d3515d1 Fix bug with sub-package inheritance
+  * 77064ad Fix config bug where mockery crashes when package map
+    is nil
+  * 5978bc5 Fix test with config initialization
+  * deb4860 Merge pull request #730 from LandonTClipp/issue_726
+  * e86d230 Simplifying some config in interface copying code
+  * 726d76c Update running.md
+  * 2dd8f00 Use gotestsum for better testing output
+
+-------------------------------------------------------------------
 Thu Sep 26 18:10:41 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
