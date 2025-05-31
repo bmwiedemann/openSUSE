@@ -1,7 +1,7 @@
 #
 # spec file for package python-kismetdb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define binaries kismet_log_devices_to_filebeat_json kismet_log_to_pcap kismet_log_to_csv kismet_log_devices_to_json kismet_log_to_kml
+%define pkg_version 2019.5.5
 Name:           python-kismetdb
 Version:        2019.05.05
 Release:        0
@@ -26,13 +26,15 @@ Summary:        A python wrapper for the Kismet database
 License:        GPL-2.0-only
 URL:            https://github.com/kismetwireless/python-kismet-db
 Source:         https://github.com/kismetwireless/python-kismet-db/archive/%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil
 Requires:       python-simplekml
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -43,10 +45,10 @@ Kismet database wrapper.
 %setup -q -n python-kismet-db-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 for b in %{binaries}; do
   %python_clone -a %{buildroot}%{_bindir}/$b
 done
@@ -74,6 +76,7 @@ done
 %python_alternative %{_bindir}/kismet_log_to_csv
 %python_alternative %{_bindir}/kismet_log_to_pcap
 %python_alternative %{_bindir}/kismet_log_devices_to_filebeat_json
-%{python_sitelib}/*
+%{python_sitelib}/kismetdb
+%{python_sitelib}/kismetdb-%{pkg_version}*-info
 
 %changelog
