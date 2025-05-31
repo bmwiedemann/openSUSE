@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat May 31 06:06:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.61.0:
+  * Bug Fixes
+    - ed0ff0a: fix(test): clean updated policies after test run
+      (#1109) (@kirecek)
+    - f82f556: fix: Use v1 as rego version for fmt, too (#1128)
+      (@msw-kialo)
+  * OPA Changes
+    - bcba55e: build(deps): bump github.com/open-policy-agent/opa
+      from 1.4.2 to 1.5.0 (#1134) (@dependabot[bot])
+  * Other Changes
+    - a826a0b: build(deps): bump cuelang.org/go from 0.12.1 to
+      0.13.0 (#1131) (@dependabot[bot])
+    - d44b480: build(deps): bump github.com/moby/buildkit from
+      0.21.1 to 0.22.0 (#1129) (@dependabot[bot])
+    - f09428f: build(deps): bump golang from 1.24.2-alpine to
+      1.24.3-alpine (#1124) (@dependabot[bot])
+    - 1e43dc0: deps: update jsonc import path (#1133) (@st3penta)
+    - docs: update examples to v1 syntax (#1126)
+    - docs: Update README.md to make it compatible with v1 syntax
+      (#1122)
+
+-------------------------------------------------------------------
 Sat May 10 09:03:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.60.0:
