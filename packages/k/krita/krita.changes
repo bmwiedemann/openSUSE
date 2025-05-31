@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 30 11:51:38 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- backport 5d44af277b005692241a09f30e11bb0d16166823.patch:
+  Fix Python invalid escape sequence warnings boo#1243841 
+
+-------------------------------------------------------------------
 Thu Jan 30 07:56:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.2.9

@@ -1,7 +1,7 @@
 #
 # spec file for package krita
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,8 @@ Source2:        krita.keyring
 %endif
 # PATCH-FIX-UPSTREAM
 Patch0:         0004-Fix-build-with-sip6.8.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         5d44af277b005692241a09f30e11bb0d16166823.patch
 BuildRequires:  %{pyver}-devel
 BuildRequires:  %{pyver}-qt5-devel
 BuildRequires:  %{pyver}-sip-devel

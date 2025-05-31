@@ -833,4 +833,12 @@
     <comment>Update to 5.2.9</comment>
     <requestid>1241300</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>3acf282dc71d97aa09c914ae2cafbbb4</srcmd5>
+    <version>5.2.9</version>
+    <time>1748711785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1281425</requestid>
+  </revision>
 </revisionlist>
