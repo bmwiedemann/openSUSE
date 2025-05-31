@@ -1554,4 +1554,41 @@ FIXES (LSP):
     <comment></comment>
     <requestid>1275539</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>8e23fe671a66949a9a2805f647d4f884</srcmd5>
+    <version>0.11.2</version>
+    <time>1748711807</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.2:
+  * lsp: Vim.lsp.is_enabled()
+  * lsp: root_markers can control priority
+  * lsp: Start/stop LSPs as necessary during vim.lsp.enable()
+  * lsp: Detach LSP clients when 'filetype' changes
+  * checkhealth: Trigger FileType event after showing report
+  * health: Summary in section heading
+  * lsp: Detect if Client:request resolved synchronously
+  * lsp: Use bufnr when getting clients in symbols_to_items
+  * lsp: Improper diagnostic end_col computation
+  * lsp: Only auto-detach lsp.config clients
+  * lsp: Improve error completion message
+  * lsp: Check if client is stopping before reuse
+  * lsp: Fix error with InsertReplaceEdit events
+  * :print: Don't use schar_from_ascii() for illegal byte
+  * cmdline: Do not move UI cursor when entering cmdline
+  * decor: Extmark highlight not applied
+  * display: Adjust setting winline info for concealed lines
+  * folds: Avoid unnecessary loop with horizontal scrolling
+  * folds: Adjust filler text drawing for transparent folds
+  * health: Checkhealth float opens extra empty buffer
+  * lua: Vim.validate message param
+  * move: Consume skipcol before revealing filler lines
+  * runtime: Cpoptions is reset in Lua file
+  * runtime: Conceal paths in help, man ToC loclist
+  * runtime: 'includeexpr' with non-Nvim-style Lua modules
+  * system: Don't treat NUL at start as no input
+  * terminal: Check size when switching buffers
+  * termkey: Out-of-bounds write in array
+  * treesitter: Close :InspectTree with q (forwarded request 1281527 from rrahl0)</comment>
+    <requestid>1281528</requestid>
+  </revision>
 </revisionlist>
