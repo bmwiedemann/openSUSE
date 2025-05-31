@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 30 07:39:04 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.4.4:
+  * Highlights
+    - Provide better compatibility with 1.2 for MIDI.
+    - Fix mpv buffer negotiation regression.
+    - Improve GStreamer compatibility with libcamera.
+  * SPA
+    - Provide conversions to old style midi in the ALSA sequencer.
+    - Negotiate only to UMP when using a newer library.
+    - Fix negotiation direction for buffers, prefer the converter
+      suggestion instead of the application until we can be sure
+      applications make good suggestions.
+  * GStreamer
+    - Allow a minimum of 1 buffers again instead of 8. libcamera
+      will allocate only 4 buffers so we need to support this. 
+
+-------------------------------------------------------------------
 Thu May 22 10:45:36 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.4.3:
