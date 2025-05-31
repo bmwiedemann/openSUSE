@@ -487,4 +487,13 @@
   * kst-cmake4.patch</comment>
     <requestid>1266219</requestid>
   </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>78704dc77417ef44a7c912caf3730f36</srcmd5>
+    <version>2.1.0</version>
+    <time>1748711741</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not BuildRequire netcdf_cxx in Leap 16 where it's not
+  available .</comment>
+    <requestid>1281148</requestid>
+  </revision>
 </revisionlist>

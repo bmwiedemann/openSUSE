@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 29 12:37:05 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not BuildRequire netcdf_cxx in Leap 16 where it's not
+  available .
+
+-------------------------------------------------------------------
 Tue Apr  1 14:03:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patch:

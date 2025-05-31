@@ -1,7 +1,7 @@
 #
 # spec file for package kst
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2011 Christian Trippe ctrippe@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,7 +34,9 @@ BuildRequires:  fdupes
 BuildRequires:  gsl-devel
 BuildRequires:  hdf5-devel
 BuildRequires:  libmatio-devel
+%if 0%{?suse_version} != 1600
 BuildRequires:  libnetcdf_c++-devel
+%endif
 BuildRequires:  libqt5-linguist
 BuildRequires:  netcdf-devel
 BuildRequires:  pkgconfig
