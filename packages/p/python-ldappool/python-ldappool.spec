@@ -1,7 +1,7 @@
 #
 # spec file for package python-ldappool
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,19 +26,21 @@ Group:          Development/Languages/Python
 URL:            https://git.openstack.org/cgit/openstack/ldappool
 Source:         https://files.pythonhosted.org/packages/source/l/ldappool/ldappool-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM remove-six-dep.patch https://review.opendev.org/c/openstack/ldappool/+/805495
-Patch:          remove-six-dep.patch
+Patch0:         remove-six-dep.patch
 BuildRequires:  %{python_module ldap >= 3.0.0}
 BuildRequires:  %{python_module pbr}
-# SECTION stestr is only available for primary python3 flavor (openstack package)
-BuildRequires:  %{python_module stestr}
-BuildRequires:  %{python_module testresources}
-BuildRequires:  %{python_module testtools}
-# /SECTION
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ldap >= 3.0.0
 Requires:       python-prettytable
 BuildArch:      noarch
+# SECTION stestr is only available for primary python3 flavor (openstack package)
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module testresources}
+BuildRequires:  %{python_module testtools}
+# /SECTION
 %python_subpackages
 
 %description
@@ -59,10 +61,10 @@ The pool has useful features like:
 sed -i 's/PrettyTable<0.8,>=0.7.2/prettytable>=0.7.2/' requirements.txt
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/ldappool/tests
 
