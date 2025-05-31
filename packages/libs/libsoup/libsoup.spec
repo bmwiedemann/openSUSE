@@ -32,6 +32,12 @@ Patch0:         libsoup-CVE-2025-32914.patch
 Patch1:         libsoup-CVE-2025-32908.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2025-32907.patch boo#1241222 mgorse@suse.com -- correct merge of ranges.
 Patch2:         libsoup-CVE-2025-32907.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-4476.patch boo#1243422 mgorse@suse.com -- fix crash in soup_auth_digest_get_protection_space.
+Patch3:         libsoup-CVE-2025-4476.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-4948.patch boo#1243332 mgorse@suse.com -- verify boundary limits for multipart body.
+Patch4:         libsoup-CVE-2025-4948.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-4969.patch boo#1243423 mgorse@suse.com -- soup-multipart: Verify array bounds before accessing its members.
+Patch5:         libsoup-CVE-2025-4969.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.53
@@ -145,7 +151,7 @@ mv %{buildroot}%{_datadir}/doc/%{name}-%{api_version} %{buildroot}%{_docdir}
 %check
 # Run the regression tests using GnuTLS NORMAL priority
 export G_TLS_GNUTLS_PRIORITY=NORMAL
-%ifarch s390x
+%ifarch s390x ppc64le
 %meson_test -t 5 || (%meson_test -t 5)
 %else
 %meson_test
