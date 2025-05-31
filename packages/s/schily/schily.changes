@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 27 21:35:22 UTC 2025 - Martin Jambor <mjambor@suse.com>
+
+- Add -std=gnu17 to compilation flags in order to allow building with
+  GCC 15. [boo#1241945]
+
+-------------------------------------------------------------------
 Tue Nov  5 19:13:23 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile

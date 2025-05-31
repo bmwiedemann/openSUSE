@@ -474,4 +474,12 @@ make glibc-2.34 happy</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1223776</requestid>
   </revision>
+  <revision rev="52" vrev="52">
+    <srcmd5>50879b05e276b9dc683392647554a272</srcmd5>
+    <version>unknown</version>
+    <time>1748711661</time>
+    <user>dimstar_suse</user>
+    <comment>- Add -std=gnu17 to compilation flags in order to allow building with GCC 15. [boo#1241945]</comment>
+    <requestid>1280716</requestid>
+  </revision>
 </revisionlist>
