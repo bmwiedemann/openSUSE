@@ -1,7 +1,7 @@
 #
 # spec file for package cyrus-imapd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %global _servicename    cyrus-imapd
 %define _sover 0
 Name:           cyrus-imapd
-Version:        3.8.4
+Version:        3.8.5
 Release:        0
 Summary:        The Cyrus IMAP and POP Mail Server
 License:        BSD-3-Clause
@@ -46,7 +46,7 @@ Source10:       cyrus-imapd-rc-3.tar.gz
 Source11:       cyrus-user.conf
 
 # PATCH-FIX-OPENSUSE -- Use the right syslog facility in docs
-Patch7:         cyrus-imapd-3.8.2_syslog-facility-doc.patch
+Patch7:         cyrus-imapd-3.8.5_syslog-facility-doc.patch
 
 # PATCH-FIX-FEDORA -- Link Perl components against pcre2
 # pending upstream discussion

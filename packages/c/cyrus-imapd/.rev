@@ -18,4 +18,12 @@ https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/CUQSL
   Adapt backup-cyrus.service to run as user cyrus:mail</comment>
     <requestid>1273379</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0d95a390c606f7bd71986cadcdbbe7d5</srcmd5>
+    <version>3.8.5</version>
+    <time>1748711783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1281382</requestid>
+  </revision>
 </revisionlist>

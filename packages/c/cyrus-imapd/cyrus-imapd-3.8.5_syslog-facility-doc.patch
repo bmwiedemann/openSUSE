@@ -1,0 +1,40 @@
+diff '--color=auto' -ru cyrus-imapd-3.8.5.orig/doc/legacy/install-configure.html cyrus-imapd-3.8.5/doc/legacy/install-configure.html
+--- cyrus-imapd-3.8.5.orig/doc/legacy/install-configure.html	2025-01-22 00:32:31.000000000 +0100
++++ cyrus-imapd-3.8.5/doc/legacy/install-configure.html	2025-05-28 18:14:06.503515889 +0200
+@@ -45,10 +45,10 @@
+ 
+ If you do not copy the "<tt>syslog/syslog.conf</tt>" file to the
+ "<tt>/etc</tt>" directory, be sure to add support for
+-"<tt>local6.debug</tt>".  The file should include a line like:
++"<tt>daemon.debug</tt>".  The file should include a line like:
+ 
+ <pre>
+-   local6.debug  /var/log/imapd.log
++   daemon.debug  /var/log/imapd.log
+ </pre>
+ 
+ You probably also want to log SASL messages with a line like:
+diff '--color=auto' -ru cyrus-imapd-3.8.5.orig/doc/legacy/overview.html cyrus-imapd-3.8.5/doc/legacy/overview.html
+--- cyrus-imapd-3.8.5.orig/doc/legacy/overview.html	2025-01-22 01:26:18.000000000 +0100
++++ cyrus-imapd-3.8.5/doc/legacy/overview.html	2025-05-28 18:14:29.215118793 +0200
+@@ -623,7 +623,7 @@
+ 
+ <h3><a name="syslog">The <TT>syslog</TT> facility</a></h3>
+ 
+-The Cyrus IMAP server software sends log messages to the "<TT>local6</TT>"
++The Cyrus IMAP server software sends log messages to the "<TT>daemon</TT>"
+ syslog facility.  The severity levels used are:
+ 
+ <UL>
+diff '--color=auto' -ru cyrus-imapd-3.8.5.orig/docsrc/imap/concepts/overview_and_concepts.rst cyrus-imapd-3.8.5/docsrc/imap/concepts/overview_and_concepts.rst
+--- cyrus-imapd-3.8.5.orig/docsrc/imap/concepts/overview_and_concepts.rst	2025-01-22 01:26:18.000000000 +0100
++++ cyrus-imapd-3.8.5/docsrc/imap/concepts/overview_and_concepts.rst	2025-05-28 18:15:19.388701124 +0200
+@@ -411,7 +411,7 @@
+ The syslog facility
+ *******************
+ 
+-The Cyrus IMAP server software sends log messages to the ``local6``
++The Cyrus IMAP server software sends log messages to the ``daemon``
+ syslog facility.  The severity levels used are:
+ 
+ * **CRIT** - Critical errors which probably require prompt administrator action

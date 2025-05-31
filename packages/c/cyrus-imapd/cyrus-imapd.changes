@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 27 22:43:21 UTC 2025 - Aeneas Jaißle <aj@ajaissle.de>
+
+- update to version 3.8.5 (bugfix release)
+  * Fixed Issue #5029: check for unexpected extra tiny-tests directories
+  * Fixed Issue #5148: added --enable-release-checks configure option for use when building releases
+  * Fixed Issue #4489: calendar-color "changes" namespace (thanks Дилян Палаузов)
+  * Fixed Issue #5009: various portability warnings and nits
+  * Fixed Issue #5050: iTIP line endings (thanks Дилян Палаузов)
+  * Fixed Issue #5052: iMIP line endings (thanks Дилян Палаузов)
+  * Fixed Issue #5072: http_cgi use after free (thanks Дилян Палаузов)
+  * Fixed Issue #5094: httpd crash when PROPFIND url is /dav/calendars
+  * Fixed Issue #5118: broken language checks for "zr-hant" and "sr-me"
+  * Fixed Issue #5047: proxying UID SEARCH
+
+- rebased patches:
+  - cyrus-imapd-3.8.2_syslog-facility-doc.patch
+  + cyrus-imapd-3.8.5_syslog-facility-doc.patch
+
+-------------------------------------------------------------------
 Mon Apr 28 11:06:47 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - CVE-2025-23394: cyrus-imapd: daily-backup.sh allows escalation from 
