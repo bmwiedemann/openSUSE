@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 24 13:45:04 UTC 2025 - Olav Reinert <seroton10@gmail.com>
+
+- update to 1.12.0:
+  * added bats::on_failure hook that gets called when a test or setup* function fails (#1031)
+  * increase compatibility with Solaris (#1043)
+  * fix noclobber breaking bats-gather-tests (#1042)
+  * fix exiting with 0 despite bats:focus when all tests have been filtered out (#1058)
+  * remove deprecated ubuntu 20.04 from CI config (#1083)
+
+-------------------------------------------------------------------
 Sun Dec 15 16:53:50 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.11.1:
