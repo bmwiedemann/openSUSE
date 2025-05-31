@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu May 29 21:18:38 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+  * backtracegenerator: convert memoryfence to qglobalstatic (kde#504386)
+  * coredump/gui: add keywords to desktop file
+  * 🍒backtracegenerator: don't crash when the proc was already deleted (kde#504389)
+  * Fix minimum systemd requirement
+  * preamble: improve log message a tad
+  * preamble: leave a breadcrumb behind when loading a solib
+  * preamble: pull thread into scope for debugging
+  * preamble: make comment clearer
+  * preamble: pull pc into scope so we can diagnose it easily
+  * preamble: don't trip over undefined variables
+
+-------------------------------------------------------------------
+Mon May 19 19:35:04 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  6 20:07:15 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
