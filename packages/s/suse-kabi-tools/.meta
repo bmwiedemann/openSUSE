@@ -1,0 +1,5 @@
+<package name="suse-kabi-tools" project="openSUSE:Factory">
+  <title>A set of ABI tools for the Linux kernel</title>
+  <description>suse-kabi-tools is a set of Application Binary Interface (ABI) tools for the Linux kernel.</description>
+  <url>https://github.com/SUSE/suse-kabi-tools</url>
+</package>
