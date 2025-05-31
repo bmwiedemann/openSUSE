@@ -1,7 +1,7 @@
 #
 # spec file for package python-lesscpy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,15 +25,17 @@ URL:            https://github.com/lesscpy/lesscpy
 Source:         https://files.pythonhosted.org/packages/source/l/lesscpy/lesscpy-%{version}.tar.gz
 # https://github.com/lesscpy/lesscpy/pull/126
 Patch0:         python-lesscpy-no-six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ply}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ply
 Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -52,10 +54,10 @@ This program uses PLY (Python Lex-Yacc) to tokenize/parse the input.
 rm test/test_{bootstrap3,less,issues}.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/lesscpy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -73,6 +75,6 @@ rm test/test_{bootstrap3,less,issues}.py
 %doc README.rst
 %python_alternative %{_bindir}/lesscpy
 %{python_sitelib}/lesscpy
-%{python_sitelib}/lesscpy-%{version}-py*.egg-info
+%{python_sitelib}/lesscpy-%{version}*-info
 
 %changelog
