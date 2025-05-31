@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 28 08:27:06 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.17+kde0, rebased upstream:
+  * Windows 7: blacklist tests that fail from low screen resolution
+  * Bump version to 5.15.17
+
+-------------------------------------------------------------------
 Mon Nov 25 15:31:49 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.16+kde0, rebased upstream:
