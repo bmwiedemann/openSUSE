@@ -1,6 +1,7 @@
 #
 # spec file for package python-kismet-rest
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,27 +13,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?sle15_python_module_pythons}
+%define pkg_version 2019.5.2
 Name:           python-kismet-rest
 Version:        2019.05.02
 Release:        0
-License:        GPL-2.0
 Summary:        Python wrapper for the Kismet REST interface
-Url:            https://www.kismetwireless.net
+License:        GPL-2.0-only
 Group:          Development/Languages/Python
+URL:            https://www.kismetwireless.net
 Source:         https://github.com/kismetwireless/python-kismet-rest/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-requests
+BuildArch:      noarch
 # SECTION test requirements
 #BuildRequires:  %%{python_module requests}
 #BuildRequires:  %%{python_module pytest}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-requests
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -42,10 +47,10 @@ Simplified Python API for the Kismet REST interface.
 %setup -q
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +60,7 @@ Simplified Python API for the Kismet REST interface.
 %files %{python_files}
 %license LICENSE
 %doc README.rst CHANGELOG.rst
-%{python_sitelib}/*
+%{python_sitelib}/kismet[-_]rest
+%{python_sitelib}/kismet[-_]rest-%{pkg_version}*-info
 
 %changelog
