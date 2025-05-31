@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 28 08:36:25 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.17+kde0, rebased upstream:
+  * QConnectedReplicaImplementation: don't call deleteLater() on a nullptr
+  * Bump version to 5.15.17
+  * Fix a crash due to null QHostAddress in the TCP/IP backend
+
+-------------------------------------------------------------------
 Mon Nov 25 15:45:50 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.16+kde0, rebased upstream:
