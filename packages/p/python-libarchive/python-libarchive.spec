@@ -1,7 +1,7 @@
 #
 # spec file for package python-libarchive
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,9 @@ Source:         https://files.pythonhosted.org/packages/source/l/libarchive/liba
 # PATCH-FEATURE-UPSTREAM denose_tests.patch gh#dsoprea/PyEasyArchive#44 mcepl@suse.com
 # Removes the need for nose test requirement
 Patch0:         denose_tests.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libarchive-devel
 BuildRequires:  python-rpm-macros
@@ -54,14 +56,14 @@ sed -i "s/'tests'/'tests','tests.adapters','tests.types'/" setup.py
 ln -sf libarchive/resources/README.rst README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %check
 export LANG=en_US.UTF8
 %pytest
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}

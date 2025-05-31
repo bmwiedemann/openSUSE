@@ -58,4 +58,12 @@
 - Do not distribute any test file.</comment>
     <requestid>1166159</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>c12733750d0c5ee3add8d16a15327958</srcmd5>
+    <version>0.4.7</version>
+    <time>1748711794</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1281434</requestid>
+  </revision>
 </revisionlist>
