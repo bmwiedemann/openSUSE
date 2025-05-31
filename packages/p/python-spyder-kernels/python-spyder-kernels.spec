@@ -19,7 +19,7 @@
 # flaky for obs, only test locally
 %bcond_with dasktest
 Name:           python-spyder-kernels
-Version:        3.0.3
+Version:        3.0.5
 Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT
@@ -51,6 +51,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyxdg >= 0.26}
 BuildRequires:  %{python_module pyzmq >= 24}
 BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module traitlets >= 5.14.3}
 BuildRequires:  %{python_module wurlitzer >= 1.0.3}
 BuildRequires:  %{python_module xarray}
 %if %{with dasktest}
@@ -60,6 +61,7 @@ BuildRequires:  %{python_module dask-distributed}
 Requires:       python-cloudpickle
 Requires:       python-pyxdg >= 0.26
 Requires:       python-pyzmq >= 24
+Requires:       python-traitlets >= 5.14.3
 Requires:       python-wurlitzer >= 1.0.3
 Requires:       (python-ipykernel >= 6.29.3 with python-ipykernel < 7)
 Requires:       (python-ipython >= 8.13 with python-ipython < 9)

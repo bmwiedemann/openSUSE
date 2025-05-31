@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 29 19:13:05 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.5
+  * PR 544: Add minimal required version of traitlets, by
+    @ccordoba12
+  * PR 536: Preserve case sensitivity of working directory when
+    running files, by @jsbautista (v3.0.4)
+
+-------------------------------------------------------------------
 Sun Feb  9 14:08:22 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.0.3

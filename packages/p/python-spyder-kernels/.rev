@@ -693,4 +693,16 @@
     <comment></comment>
     <requestid>1244501</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>cadcabbba3f6c763db5eab0a4d131ae6</srcmd5>
+    <version>3.0.5</version>
+    <time>1748711745</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.5
+  * PR 544: Add minimal required version of traitlets, by
+    @ccordoba12
+  * PR 536: Preserve case sensitivity of working directory when
+    running files, by @jsbautista (v3.0.4) (forwarded request 1281206 from bnavigator)</comment>
+    <requestid>1281210</requestid>
+  </revision>
 </revisionlist>
