@@ -143,4 +143,15 @@ I tested the upgrade path and this will not break anybody relying on the package
 - Switch to autosetup macros.</comment>
     <requestid>1277915</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e579a5ab4933cde87e8b1fe12547677e</srcmd5>
+    <version>0.16.0</version>
+    <time>1748711659</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0
+  * Add compatibility with Click 8.2.
+- Remove support-click-8.2.patch as it is no longer needed.
+</comment>
+    <requestid>1280710</requestid>
+  </revision>
 </revisionlist>

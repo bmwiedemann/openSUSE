@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-typer-slim
-Version:        0.15.3
+Version:        0.16.0
 Release:        0
 Summary:        Typer, build great CLIs. Easy to code. Based on Python type hints
 License:        MIT
@@ -27,8 +27,6 @@ URL:            https://github.com/tiangolo/typer
 Source:         https://files.pythonhosted.org/packages/source/t/typer_slim/typer_slim-%{version}.tar.gz
 Source2:        %{name}-rpmlintrc
 Patch0:         set-proper-pythonpath-for-tutorial-script-tests.patch
-# PATCH-FIX-UPSTREAM Based on gh#fastapi/typer#1222
-Patch1:         support-click-8.2.patch
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pdm-backend}
@@ -71,10 +69,8 @@ This package provides the Typer Python package required to build and run Typer-b
 
 %check
 # the completion tests fail as build runs in sh which is not supported
-# Broken with click 8.2.0:
-# - test_enum/test_tutorial003
-# - test_script_completion_run and test_completion_show_invalid_shell
-%pytest -k 'not (test_show_completion or test_install_completion or (test_enum and test_tutorial003) or test_script_completion_run or test_completion_show_invalid_shell)'
+# test_invalid_score stumbles over linebreaks in the output
+%pytest -k 'not (test_show_completion or test_install_completion or test_invalid_score)'
 
 %files %{python_files}
 %doc README.md

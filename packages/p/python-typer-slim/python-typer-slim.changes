@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 27 19:13:12 UTC 2025 - Matthias Bach <marix@marix.org> - 0.16.0
+
+- Update to 0.16.0
+  * Add compatibility with Click 8.2.
+- Remove support-click-8.2.patch as it is no longer needed.
+
+-------------------------------------------------------------------
 Fri May 16 04:59:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-click-8.2.patch:
