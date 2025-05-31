@@ -615,4 +615,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1280100</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>77d128fc48ee35f81c809fbb71b278cd</srcmd5>
+    <version>3.13.6</version>
+    <time>1748711684</time>
+    <user>dimstar_suse</user>
+    <comment>- only use python311 on suse platforms</comment>
+    <requestid>1281446</requestid>
+  </revision>
 </revisionlist>

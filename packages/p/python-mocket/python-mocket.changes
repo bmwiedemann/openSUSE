@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 28 07:06:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- only use python311 on suse platforms
+
+-------------------------------------------------------------------
+Tue May 27 07:38:10 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use python3-httpx in pkg_vcmp for Tumbleweed to do not have a fixed
+  python version in that check.
+
+-------------------------------------------------------------------
 Mon May 19 09:09:53 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to 3.13.6:

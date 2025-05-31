@@ -20,6 +20,15 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
+
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+# Modern stack for Leap 15
+%global mypython python311
+%else
+# primary python for Tumbleweed and Leap 16
+%global mypython python3
+%endif
+
 %else
 %define psuffix %{nil}
 %bcond_with test
@@ -104,7 +113,7 @@ sleep 2
 # Checks the ability to record a real request and response. Not available inside obs.
 donttest="test_asyncio_record_replay or test_truesendall_with_dump_from_recording or test_no_dangling_fds"
 # The reference recording has different headers in this case
-%if %{pkg_vcmp python311-httpx < 0.23}
+%if %{pkg_vcmp %{mypython}-httpx < 0.23}
 donttest="$donttest or test_truesendall_with_dump_from_recording"
 %endif
 # fails with new incompatible aiohttp version https://github.com/mindflayer/python-mocket/issues/247
