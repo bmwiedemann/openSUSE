@@ -172,4 +172,12 @@
     codebase (mostly more Python 2 leftover cleanups).</comment>
     <requestid>1133655</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>e3361571a4aabdd8c7b3eb052eefa12e</srcmd5>
+    <version>1.10.0</version>
+    <time>1748711776</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1281363</requestid>
+  </revision>
 </revisionlist>
