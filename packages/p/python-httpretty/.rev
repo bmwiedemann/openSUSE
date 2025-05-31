@@ -254,4 +254,16 @@
     <comment></comment>
     <requestid>1239458</requestid>
   </revision>
+  <revision rev="31" vrev="13">
+    <srcmd5>c665e661f1712ad91667d6e6490356dd</srcmd5>
+    <version>1.1.4</version>
+    <time>1748711662</time>
+    <user>dimstar_suse</user>
+    <comment>To Staging:D, Fix compatibility with latest python-urllib3 in
+sr#1280514
+
+- Add 0001-Mock-socket.shutdown-for-compatibility-with-urllib3-.patch:
+  * Mock socket.shutdown for compatibility with urllib3 &gt;= 2.3</comment>
+    <requestid>1280753</requestid>
+  </revision>
 </revisionlist>

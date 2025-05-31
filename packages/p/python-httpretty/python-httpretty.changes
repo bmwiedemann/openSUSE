@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 28 06:01:26 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add 0001-Mock-socket.shutdown-for-compatibility-with-urllib3-.patch:
+  * Mock socket.shutdown for compatibility with urllib3 >= 2.3
+
+-------------------------------------------------------------------
 Tue Jan 21 14:46:01 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Skip test_httpretty_provides_easy_access_to_querystrings as it is
