@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 31 07:05:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.26.1:
+  https://istio.io/latest/news/releases/1.26.x/announcing-1.26.1/
+  * Changes
+    - Fixed false positives when istioctl analyze raised error IST0134
+      even when PILOT_ENABLE_IP_AUTOALLOCATE was set to true.
+	  (Issue #56083)
+	
+-------------------------------------------------------------------
 Fri May  9 05:44:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.26.0:
