@@ -143,4 +143,12 @@
     <comment>Qt 5.15.16, untested. Try #2. (forwarded request 1226586 from favogt)</comment>
     <requestid>1226608</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>dc03d3ccf065bba86a9a1b231187b75c</srcmd5>
+    <version>5.15.17+kde0</version>
+    <time>1748711730</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.17, try #2 (forwarded request 1280892 from favogt)</comment>
+    <requestid>1280917</requestid>
+  </revision>
 </revisionlist>
