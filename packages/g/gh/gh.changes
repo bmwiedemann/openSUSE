@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri May 30 04:56:52 UTC 2025 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.74.0:
+  * Update `go-gh` to v2.12.1
+  * fixup release asset digest tests
+  * remove nolint comment for release header
+  * Update pkg/cmd/release/view/view.go
+  * chore(deps): bump github.com/sigstore/protobuf-specs from 0.4.1 to 0.4.2
+  * chore(deps): bump github.com/yuin/goldmark from 1.7.8 to 1.7.12
+  * fix: `gh gist edit` panic when no file in a gist (#10627)
+  * docs(pr list): mention `--head` does not support `<owner>:<branch>` syntax
+  * add Digest to ReleaseAsset struct
+  * doc(update): improve comments on updaterEnabled
+  * Refactor build tag logic
+  * replace deprecated func
+  * replace deprecated type
+  * update sigstore-go to v1
+  * feat(update): add `updateable` build tag for update notifications
+  * Update README.md
+  * test(run): add tests for `RenderJobs` and `RenderJobsCompact`
+  * Add `--compact` flag to `run watch` (#10629)
+  * test: improve test case naming
+  * chore: run `go mod tidy`
+  * test: ensure proper usage of pipes in docs
+  * Revert "[gh config] Escape pipe symbol in Long desc for website manual"
+  * doc(pr): format allowed values and defaults in help
+  * Mention created PR's URL will be printed upon success
+  * Add example usage of `--head` option
+  * doc(preview): add long description
+  * fix(prompter): print to iostreams stdout
+  * fix(prompter): update prompter create for changes in trunk
+  * fix(preview): remove needless newlines
+  * import sigstore-go at a more recent commit
+  * use constructor
+  * include http client in verifier setup
+  * add missing http client field in sigstoreConfig
+  * simplify test
+  * alphabetize fields
+  * move live inspect test to integration test file
+  * fetch http client from factory
+  * set custom fetcher in options
+  * pass http client for use with tuf
+  * get the latest go-tuf release
+  * get latest go-tuf version
+  * create fetcher with custom http client and retry options
+  * chore(deps): bump github.com/gabriel-vasile/mimetype from 1.4.8 to 1.4.9
+  * feat(preview): enforce fixed order for prompts
+  * feat(preview): add `preview prompter` command
+
+-------------------------------------------------------------------
 Mon May 26 06:33:21 UTC 2025 - pdostal@suse.com
 
 - Fixing boo#1237669 - CVE-2025-27144 -  Go JOSE's Parsing Vulnerable to Denial of Service
