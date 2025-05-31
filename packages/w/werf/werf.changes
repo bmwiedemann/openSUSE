@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 31 07:01:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.36.4:
+  * Bug Fixes
+    - build, compose, run, kube-run, plan: respect graceful
+      shutdown in follow mode (42a82af)
+    - deploy: hide traces from --log-debug output by default
+      (0d03bcf)
+    - handle interruptions during git clone and auto host cleanup
+      gracefully (#6887) (0d94e79)
+    - kube-run: handle SIGINT/SIGTERM properly (#6888) (1aa8d54)
+    - make termination context-bounded (#6885) (600b7a5)
+
+-------------------------------------------------------------------
 Fri May 23 12:18:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.36.3:
