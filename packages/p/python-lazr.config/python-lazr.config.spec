@@ -1,7 +1,7 @@
 #
 # spec file for package python-lazr.config
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,9 @@ Summary:        Create configuration schemas, and process and validate configura
 License:        LGPL-3.0-only
 URL:            https://launchpad.net/lazr.config
 Source:         https://files.pythonhosted.org/packages/source/l/lazr.config/lazr.config-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lazr.delegates
@@ -44,10 +46,10 @@ Create configuration schemas, and process and validate configurations.
 %setup -q -n lazr.config-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,6 +66,9 @@ export PYTEST_ADDOPTS="--doctest-glob='*.rst' --import-mode=importlib"
 %files %{python_files}
 %doc README.rst
 %license COPYING.txt
-%{python_sitelib}/*
+%dir %{python_sitelib}/lazr
+%{python_sitelib}/lazr/config
+%{python_sitelib}/lazr[._]config-%{version}*-info
+%{python_sitelib}/lazr[._]config-%{version}*-nspkg.pth
 
 %changelog
