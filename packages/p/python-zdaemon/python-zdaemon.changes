@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 30 08:54:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.2
+  * Add support for Python 3.13.
+  * Drop support for Python 3.7, 3.8.
+  * Fix a deprecation warning by using logger.warning
+    rather than logger.warn (fixes #40).
+  * Fix logging to compute the message lazily.
+
+-------------------------------------------------------------------
 Sun Sep  8 16:41:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-zdaemon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define modname zdaemon
 Name:           python-%{modname}
-Version:        5.1
+Version:        5.2
 Release:        0
 Summary:        Daemon process control library and tools
 License:        ZPL-2.1

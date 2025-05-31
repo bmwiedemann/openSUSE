@@ -223,4 +223,12 @@ Sorry I didn't realize it had a pending request until now. (forwarded request 22
 - drop obs-timeout.patch (obsolete)</comment>
     <requestid>1199499</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>99d9c2bc6a8984bd9ab01659462232d2</srcmd5>
+    <version>5.2</version>
+    <time>1748711757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1281337</requestid>
+  </revision>
 </revisionlist>
