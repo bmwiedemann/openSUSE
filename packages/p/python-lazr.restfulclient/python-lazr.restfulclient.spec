@@ -1,7 +1,7 @@
 #
 # spec file for package python-lazr.restfulclient
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,23 +28,25 @@ Source:         https://launchpad.net/lazr.restfulclient/trunk/%{version}/+downl
 Patch1:         fix_readfp.patch
 BuildRequires:  %{python_module distro}
 BuildRequires:  %{python_module fixtures}
-BuildRequires:  %{python_module testtools}
 BuildRequires:  %{python_module httplib2}
 BuildRequires:  %{python_module oauthlib}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module testtools}
 BuildRequires:  %{python_module wadllib}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module wsgi_intercept}
 BuildRequires:  %{python_module zope.testrunner}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-distro
 Requires:       python-httplib2
 Requires:       python-oauthlib
 Requires:       python-setuptools
 Requires:       python-six
 Requires:       python-wadllib >= 1.1.4
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,10 +58,10 @@ web services to provide added functionality on top of wadllib.
 %autosetup -n lazr.restfulclient-%{version} -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -71,6 +73,6 @@ web services to provide added functionality on top of wadllib.
 %doc README.rst NEWS.rst
 %dir %{python_sitelib}/lazr
 %{python_sitelib}/lazr/restfulclient*
-%{python_sitelib}/lazr.restfulclient*
+%{python_sitelib}/lazr[._]restfulclient*
 
 %changelog
