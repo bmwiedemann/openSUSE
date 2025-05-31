@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat May 31 06:40:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.28:
+  * docs: update CLI reference documentation (#1036)
+  * chore(deps): update dependency siderolabs/talos to v1.10.3
+  * chore(container): update alpine docker tag to v3.22.0
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.27
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.10.3
+  * chore(container): update
+    mcr.microsoft.com/devcontainers/go:1.24-bookworm docker digest
+    to f7a7406 (#1034)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1033)
+  * feat(CI): update script to show error and fix deprecation
+    warnings
+  * feat: update Scoop for talhelper version v3.0.27
+  * feat: update flake (#1029)
+
+-------------------------------------------------------------------
+Sat May 31 06:27:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.27:
+  * chore(deps): update dependency go to v1.24.3
+  * feat(CI): update script to show error and fix depreciation
+    warnings
+  * feat(flake): update flake
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v0.7.1
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * fix(deps): update module github.com/gookit/validate to v1.5.5
+  * chore(github-action): update renovatebot/github-action action
+    to v42.0.4
+  * chore(schema): update talos-extensions.yaml JSON schema (#1025)
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.26
+  * feat: update Scoop for talhelper version v3.0.26
+  * feat: update flake (#1022)
+
+-------------------------------------------------------------------
 Sun May 25 07:52:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.26:
