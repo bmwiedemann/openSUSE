@@ -125,4 +125,12 @@
 - Update to v0.20.0, linking against libsass 3.6.4</comment>
     <requestid>1138502</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>2db97c8e52fddf7d9a9076f31e08faf6</srcmd5>
+    <version>0.23.0</version>
+    <time>1748711801</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1281442</requestid>
+  </revision>
 </revisionlist>

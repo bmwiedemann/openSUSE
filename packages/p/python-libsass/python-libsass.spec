@@ -1,7 +1,7 @@
 #
 # spec file for package python-libsass
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %define _name   libsass-python
+%{?sle15_python_module_pythons}
 Name:           python-libsass
 Version:        0.23.0
 Release:        0
@@ -28,14 +28,16 @@ URL:            https://github.com/sass/libsass-python
 Source:         https://github.com/sass/libsass-python/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libsass-devel >= 3.6.4
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 # SECTION test requirements
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module pytest}
@@ -52,11 +54,11 @@ with no Ruby stack at all!
 %build
 sed -i -e '/^#!\//, 1d' *.py
 export SYSTEM_SASS=true
-%python_build
+%pyproject_wheel
 
 %install
 export SYSTEM_SASS=true
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pysassc
 %{python_expand \
 # We don't want to install tests
