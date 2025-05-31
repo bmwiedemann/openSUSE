@@ -1,7 +1,7 @@
 #
 # spec file for package python-lazr.uri
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/lazr.uri
 Source:         https://files.pythonhosted.org/packages/source/l/lazr.uri/lazr.uri-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -38,10 +40,10 @@ The lazr.uri package includes code for parsing and dealing with URIs.
 %setup -q -n lazr.uri-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -50,6 +52,9 @@ The lazr.uri package includes code for parsing and dealing with URIs.
 %files %{python_files}
 %license COPYING.txt
 %doc README.rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/lazr
+%{python_sitelib}/lazr/uri
+%{python_sitelib}/lazr[._]uri-%{version}*-info
+%{python_sitelib}/lazr[._]uri-%{version}*nspkg.pth
 
 %changelog
