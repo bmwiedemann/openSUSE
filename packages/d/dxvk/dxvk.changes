@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri May 23 21:28:27 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
+
+- Add missing tarball from service manualrun to fix build failure
+
+-------------------------------------------------------------------
+Sun May 18 09:40:19 UTC 2025 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to 2.6.1:
+  * Removed sparse buffer usage that was introduced in DXVK 2.6.
+    This caused all sorts of driver issues that would cause hangs
+    and instability on AMD Vega GPUs and others. (PR gh#doitsujin/dxvk#4763)
+    Note: This may increase peak memory usage in some games again.
+  * Worked around an RTSS bug that would cause the overlay to render incorrectly if the Vulkan
+    swapchain uses an sRGB format. (gh#doitsujin/dxvk#4777, PR gh#doitsujin/dxvk#4778)
+  * Worked around an issue where multisample resolves would lead to visual issues
+    on Nvidia in certain Unity Engine games. (gh#doitsujin/dxvk#4817, PR gh#doitsujin/dxvk#4818)
+  * Worked around an Intel ANV issue that would cause terrain to misrender
+    in games such as Assassin's Creed Origins.
+  * Note: This driver bug was fixed in Mesa 25.0.3.
+  * Worked around a RADV issue that would cause hangs on RDNA4 GPUs prior to Mesa 25.0.2.
+  * Note: Please keep your drivers up to date when using these newer GPUs.
+  * Further improved render pass efficiency for tiling GPUs in some cases,
+    especially if VK_KHR_load_store_op_none is supported.
+  * Note: This change does not affect desktop GPUs in any meaningful way.
+  * Fixed a potential issue with display mode handling on uncommon monitor setups. (PR gh#doitsujin/dxvk#4764)
+  * Fixed various issues with the SDL3 backend in dxvk-native.
+    (PR gh#doitsujin/dxvk#4825, PR gh#doitsujin/dxvk#4826)
+  * Fixed compatibility of MSVC builds with very old CPUs. (PR gh#doitsujin/dxvk#4811)
+  * Fixed various minor issues that would cause Vulkan validation errors in rare scenarios.
+  * Hitman 2: Worked around poor CPU-bound performance in certain areas. (PR gh#doitsujin/dxvk#4796)
+  * Note: This may slightly regress GPU-bound performance.
+  * LEGO Batman: The Video Game and LEGO Indiana Jones: The Original Adventures:
+    Worked around a game issue causing horrible UI performance.
+    (PR gh#doitsujin/dxvk#4798, PR gh#doitsujin/dxvk#4810)
+  * Need For Speed: Most Wanted (2005): Worked around a crash on Windows. (gh#doitsujin/dxvk#4624)
+
+-------------------------------------------------------------------
 Fri Mar 14 03:16:11 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to 2.6:

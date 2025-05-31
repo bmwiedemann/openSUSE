@@ -6,11 +6,11 @@
 	<param name="scm">git</param>
     <param name="revision">@PARENT_TAG@</param>
   </service>
-  <service mode="manual" name="tar" />
-  <service mode="manual" name="recompress">
+  <service mode="manual" name="download_files"/>
+  <service mode="manual" name="set_version"/>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
-  <service mode="manual" name="set_version"/>
-  <service mode="manual" name="download_files"/>
 </services>
