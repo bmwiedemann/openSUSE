@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 31 05:46:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.80.4:
+  * New Features
+    The exec command has gained support for use of the --tf-path
+    flag. This can be important when Terragrunt incidentally uses
+    OpenTofu/Terraform to do things like fetch outputs from
+    dependencies.
+  * What's Changed
+    - Add tf-path flag to exec command (#4343)
+    - fix: Optimizing CI cache keys (#4362)
+    - docs: gcp docs update (#4361)
+
+-------------------------------------------------------------------
 Thu May 29 05:39:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.80.3:
