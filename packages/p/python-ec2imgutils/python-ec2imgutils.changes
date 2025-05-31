@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May 29 15:56:54 UTC 2025 - João Mello <joao.mello@suse.com>
+
+- Create subnet and security-group when they are not provided via config
+  file nor command line options. (bsc#1214626)
+- Add support for building AWS Nitro Enclave images. (bsc#1230401)
+- The translation of the `ssd` value for the backing_store param changes
+  from `gp2` to `gp3`.
+
+
+-------------------------------------------------------------------
+Fri Apr 18 19:11:34 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
+
+- Change the build to use a specific Python interpreter rather than building
+  multiple versions.
+
+-------------------------------------------------------------------
 Wed Apr 24 11:23:49 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Fix the distro condition, Python 3.11 starts with 15 SP4 and
