@@ -1,7 +1,7 @@
 #
 # spec file for package python-kerberos
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %bcond_without test
+%{?sle15_python_module_pythons}
 Name:           python-kerberos
 Version:        1.3.1
 Release:        0
@@ -28,7 +28,9 @@ URL:            https://github.com/apple/ccs-pykerberos
 Source:         https://files.pythonhosted.org/packages/source/k/kerberos/kerberos-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/apple/ccs-pykerberos/master/LICENSE.txt
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -50,15 +52,16 @@ cp %{SOURCE1} .
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
 %doc README.md
-%{python_sitearch}/*
+%{python_sitearch}/kerberos.cpython*
+%{python_sitearch}/kerberos-%{version}*-info
 %license LICENSE.txt
 
 %changelog
