@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat May 31 06:27:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.101.0:
+  * Changes
+    - test(report): switch to testing report Merge instead of
+      FromString @mcwarman (#5216)
+  * Features
+    - feat(bitbucket): support pull request updates @mcwarman
+      (#5133)
+  * Bug Fixes
+    - fix(reports): ensure latest title and description are used
+      @mcwarman (#5189)
+    - fix(dockerfile): typo in yaml specification @loispostula
+      (#5137)
+  * Maintenance
+    - deps(go): bump module cuelang.org/go to v0.13.0
+      @updateclibot[bot] (#5280)
+    - deps(go): bump module gitlab.com/gitlab-org/api/client-go to
+      v0.129.0 @updateclibot[bot] (#5271)
+    - deps(go): bump module helm.sh/helm/v3 to v3.18.1
+      @updateclibot[bot] (#5261)
+    - deps(github/action): bump all dependencies @updateclibot[bot]
+      (#5258)
+    - deps(go): bump module github.com/zclconf/go-cty to v1.16.3
+      @updateclibot[bot] (#5249)
+    - deps(go): bump module github.com/goccy/go-yaml to v1.18.0
+      @updateclibot[bot] (#5239)
+    - deps(go): bump module github.com/fluxcd/helm-controller/api
+      to v1.3.0 @updateclibot[bot] (#5217)
+    - chore: remove Dependabot configuration @olblak (#5175)
+    - deps(go): bump module github.com/google/go-containerregistry
+      to v0.20.5 @updateclibot[bot] (#5162)
+    - deps(go): bump module github.com/yuin/goldmark to v1.7.12
+      @updateclibot[bot] (#5147)
+    - deps(go): bump module github.com/google/go-containerregistry
+      to v0.20.4 @updateclibot[bot] (#5138)
+    - deps: bump updatecli version to v0.100.0 (#5118)
+
+-------------------------------------------------------------------
 Thu May 15 04:54:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.100.0:
