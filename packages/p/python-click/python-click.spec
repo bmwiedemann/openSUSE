@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click
-Version:        8.1.8
+Version:        8.2.1
 Release:        0
 Summary:        A wrapper around optparse for command line utilities
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-URL:            https://github.com/mitsuhiko/click
+URL:            https://github.com/pallets/click
 Source:         https://files.pythonhosted.org/packages/source/c/click/click-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

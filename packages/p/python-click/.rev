@@ -246,4 +246,41 @@
     <comment></comment>
     <requestid>1236135</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>228ff7faf0b55b7b79e843a2902fe667</srcmd5>
+    <version>8.2.1</version>
+    <time>1748711649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.2.1:
+  * Fix flag value handling for flag options with a provided type.
+    #2894 #2897
+  * Fix shell completion for nested groups. #2906
+  * Flush sys.stderr at the end of CliRunner.invoke. #2682
+  * Fix EOF handling for stdin input in CliRunner. #2787
+- Update URL.
+
+- Update to version 8.2.0:
+  * Drop support for Python 3.7, 3.8, and 3.9. #2588 #2893
+  * Use modern packaging metadata with pyproject.toml instead of setup.cfg.
+    #2438
+  * Use flit_core instead of setuptools as build backend. #2543
+  * Deprecate the __version__ attribute. Use feature detection, or
+    importlib.metadata.version(&quot;click&quot;), instead. #2598
+  * BaseCommand is deprecated. Command is the base class for all
+    commands. #2589
+  * MultiCommand is deprecated. Group is the base class for all group
+    commands. #2590
+  * The current parser and related classes and methods, are deprecated.
+    #2205
+    - OptionParser and the parser module, which is a modified copy of
+      optparse in the standard library.
+    - Context.protected_args is unneeded. Context.args contains any
+      remaining arguments while parsing.
+    - Parameter.add_to_parser (on both Argument and Option) is
+      unneeded. Parsing works directly without building a separate parser.
+    - split_arg_string is moved from parser to shell_completion.
+  * Enable deferred evaluation of annotations with
+    from __future__ import annotations. #2270</comment>
+    <requestid>1278968</requestid>
+  </revision>
 </revisionlist>
