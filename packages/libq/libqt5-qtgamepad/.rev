@@ -255,4 +255,12 @@
     <comment>- Use pkgconfig(sdl2) (forwarded request 1254962 from favogt)</comment>
     <requestid>1254963</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0dffcc1035933665bd91c3182bdb8700</srcmd5>
+    <version>5.15.17+kde0</version>
+    <time>1748711720</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.17, try #2 (forwarded request 1280892 from favogt)</comment>
+    <requestid>1280907</requestid>
+  </revision>
 </revisionlist>
