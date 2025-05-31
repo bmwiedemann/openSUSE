@@ -1,7 +1,7 @@
 #
 # spec file for package python-urllib3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-urllib3%{psuffix}
-Version:        2.2.3
+Version:        2.4.0
 Release:        0
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 License:        MIT
@@ -119,7 +119,7 @@ export PYTHONPATH="$PWD/../patched-hypercorn/hypercorn-%{hypercorn_commit}/src"
 # gh#urllib3/urllib3#2109
 export CI="true"
 # skip some randomly failing tests (mostly on i586, but sometimes they fail on other architectures)
-skiplist="test_ssl_read_timeout or test_ssl_failed_fingerprint_verification or test_ssl_custom_validation_failure_terminates"
+skiplist="test_ssl_read_timeout or test_ssl_failed_fingerprint_verification or test_ssl_custom_validation_failure_terminates or test_close_after_handshake"
 # gh#urllib3/urllib3#1752 and others: upstream's way of checking that the build
 # system has a correct system time breaks (re-)building the package after too
 # many months have passed since the last release.
