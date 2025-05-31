@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 31 11:17:18 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 4.1:
+  * gallery: Added multithreded thumbnails loader;
+  * gallery: Fixed loading queue constructor;
+  * gallery: Fixed segfault on skipping current image;
+  * gallery: Fixed bug with unlimited cache;
+  * viewer: "zoom" action can handle absolute percent value;
+  * Optimized image list loader;
+  * Fixed bug with freezing when performing the "exec" action;
+  * Fixed bug with absolute coordinates in Sway.
+
+-------------------------------------------------------------------
 Sun May 18 10:04:54 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 4.0:
