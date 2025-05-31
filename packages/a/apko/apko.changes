@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 31 06:27:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.27.9 (0.27.8 was yanked):
+  * Add an OperatingSystem package to our image SBOMs (#1690)
+  * build(deps): bump chainguard-dev/actions from 1.1.0 to 1.1.1
+    (#1688)
+  * build(deps): bump chainguard-dev/actions from 1.0.8 to 1.1.0
+    (#1687)
+  * Add support for the =~ constraint (#1681)
+
+-------------------------------------------------------------------
 Thu May 22 04:37:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.27.7:
