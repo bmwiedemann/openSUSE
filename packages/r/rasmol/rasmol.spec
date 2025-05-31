@@ -33,6 +33,8 @@ Patch2:         RasMol_%{version}-decrement_var.patch
 # this patch ommit downloading CBFlib tarball which is copied from source2
 Patch3:         RasMol_%{version}-no_wget_CBFlib.patch
 Patch4:         RasMol_%{version}-CBFlib_rpmoptflags.patch
+# build with gcc15
+Patch5:         rasmol-gcc15.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       RasMol
 BuildRequires:  imake

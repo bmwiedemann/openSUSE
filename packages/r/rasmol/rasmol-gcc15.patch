@@ -1,0 +1,61 @@
+--- src/cif_fract.c	2025-05-20 09:10:32.902245777 +0000
++++ src/cif_fract.c	2025-05-20 10:39:28.903481837 +0000
+@@ -348,8 +348,6 @@ int invxfrm(double __far mato2f[3][3], d
+ {
+     static int ii, jj;
+     register double newvol, xdet;
+-    
+-    extern double det();
+ 
+ 
+ 
+--- src/x11win.c	2025-05-20 09:10:32.903264813 +0000
++++ src/x11win.c	2025-05-20 10:52:30.481374700 +0000
+@@ -2820,7 +2820,7 @@ int CreateImage( void )
+     register int format;
+     register Pixel *ptr;
+ #ifdef MITSHM
+-    register int (*handler)();
++    register XErrorHandler handler;
+ #endif
+ 
+     if( !Interactive )
+@@ -3080,7 +3080,7 @@ static void HandleIPCCommand( void )
+ 
+     register size_t rlen;
+     register int result;
+-    register int (*handler)();
++    register XErrorHandler handler;
+     register char *cmnd;
+     register char *ptr;
+ 
+@@ -3168,22 +3168,22 @@ static void HandleIPCCommand( void )
+ }
+ 
+ 
+-void SetMouseUpdateStatus( int bool )
++void SetMouseUpdateStatus( int boolean )
+ {
+-    if( MouseUpdateStatus != bool )
++    if( MouseUpdateStatus != boolean )
+     {   /* Enable/Disable Pointer Motion Events! */
+         attr.event_mask = ExposureMask | ButtonPressMask | ButtonMotionMask 
+                         | ButtonReleaseMask;
+-        if( bool ) attr.event_mask |= PointerMotionMask;
++        if( boolean ) attr.event_mask |= PointerMotionMask;
+         XChangeWindowAttributes( dpy, CanvWin, CWEventMask, &attr );
+     }
+-    MouseUpdateStatus = bool;
++    MouseUpdateStatus = boolean;
+ }
+ 
+ 
+-void SetMouseCaptureStatus( int bool )
++void SetMouseCaptureStatus( int boolean )
+ {
+-    MouseCaptureStatus = bool;
++    MouseCaptureStatus = boolean;
+ }
+                          
+ 
+

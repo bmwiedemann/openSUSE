@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 20 10:57:51 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  build with gcc15
+  + rasmol-gcc15.patch
+
+-------------------------------------------------------------------
 Fri Feb 23 11:46:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
