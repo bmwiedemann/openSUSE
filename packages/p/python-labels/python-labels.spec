@@ -1,7 +1,7 @@
 #
 # spec file for package python-labels
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-labels
 Version:        20.1.0
 Release:        0
@@ -26,15 +24,17 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hackebrot/labels
 Source:         https://github.com/hackebrot/labels/archive/%{version}.tar.gz#/labels-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs
 Requires:       python-click
 Requires:       python-pytoml
 Requires:       python-requests
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module attrs}
@@ -54,10 +54,10 @@ CLI app for managing GitHub labels.
 %setup -q -n labels-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/labels
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -75,6 +75,7 @@ export LANG=en_US.UTF-8
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/labels
-%{python_sitelib}/*
+%{python_sitelib}/labels
+%{python_sitelib}/labels-%{version}*-info
 
 %changelog
