@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Tue May 27 08:05:01 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 1.19.0:
+  * Bump to v1.19.0
+  * fix(deps): update module github.com/containers/common to v0.63.0
+  * fix(deps): update module github.com/containers/image/v5 to v5.35.0
+  * Disable Packit builds on ELN
+  * [skip-ci] Packit: set fedora-all after F40 EOL
+  * [CI:DOCS] README.md: Add openssf passing badge
+  * proxy: Move defer() higher up
+  * proxy: Add GetRawBlob
+  * [CI:DOCS] README.md: Add badges
+  * [CI:DOCS] CONTRIBUTING.md: Update communication channels
+  * fix(deps): update module golang.org/x/term to v0.32.0
+  * chore(deps): update dependency golangci/golangci-lint to v2.1.6
+  * chore(deps): update dependency golangci/golangci-lint to v2.1.5
+  * chore(deps): update dependency containers/automation_images to v20250422
+  * chore(deps): update module golang.org/x/net to v0.38.0 [security]
+  * Stop setting libdm_no_deferred_remove
+  * Stop setting btrfs_noversion
+  * Don't require BUILDTAGS to be non-empty
+  * fix(deps): update module github.com/containers/storage to v1.58.0
+  * chore(deps): update dependency golangci/golangci-lint to v2.1.2
+  * Makefile: add linting with --tests=false
+  * Remove hack/validate-lint.sh wrapper
+  * integration: add unix tag to non-windows tests
+  * integration: add _test suffix to files
+  * chore(deps): update dependency golangci/golangci-lint to v2.1.1
+  * .github: check_cirrus_cron work around github bug
+  * GHA: remove .github/labeler.yaml
+  * .golangci.yml: simplify
+  * Add MAINTAINERS.md and Governance, update OWNERS
+  * fix(deps): update module golang.org/x/term to v0.31.0
+  * chore: fix some function names in comment
+  * fix(deps): update module github.com/containers/common to v0.62.3
+  * chore(deps): update dependency golangci/golangci-lint to v2.0.2
+  * [skip-ci] TMT: keep PR-label independent tests
+  * chore(deps): update dependency golangci/golangci-lint to v2
+  * Rely on golangci-lint exit code instead of expecting empty output
+  * Satisfy staticcheck
+  * chore(deps): update dependency containers/automation_images to v20250324
+  * Remove obsolete build tag syntax
+  * Use the new maps.Keys and slices.Sorted
+  * Use slices.Backward
+  * proxy: Add GetLayerInfoPiped
+  * Update github.com/hashicorp/go-multierror
+  * Update github.com/dsnet/compress
+  * Complete paths for some transports
+  * Don't complete a space after '<transport>:'
+  * In (skopeo inspect), validate the manifest against a digest reference
+  * In (skopeo layers), validate the blob against the expected digest
+  * Always close the blob we are reading from a registry
+  * fix(deps): update module golang.org/x/term to v0.30.0
+  * chore(deps): update dependency golangci/golangci-lint to v1.64.8
+  * ROADMAP: new file
+  * chore(deps): update module golang.org/x/net to v0.36.0 [security]
+  * Update to Go 1.23
+  * fix(deps): update module github.com/containers/common to v0.62.2
+  * chore(deps): update dependency golangci/golangci-lint to v1.64.7
+  * fix(deps): update module github.com/containers/image/v5 to v5.34.2
+  * fix(deps): update module github.com/containers/storage to v1.57.2
+  * .github: remove cirrus rerun action
+  * fix(deps): update module github.com/opencontainers/image-spec to v1.1.1
+  * chore(deps): update dependency golangci/golangci-lint to v1.64.6
+  * chore(deps): update module github.com/go-jose/go-jose/v4 to v4.0.5 [security]
+  * chore(deps): update module github.com/go-jose/go-jose/v3 to v3.0.4 [security]
+  * fix(deps): update module github.com/containers/common to v0.62.1
+  * fix(deps): update module github.com/containers/image/v5 to v5.34.1
+  * Update for cobra API change
+  * fix(deps): update module github.com/spf13/cobra to v1.9.1
+  * chore(deps): update dependency golangci/golangci-lint to v1.64.5
+  * chore(deps): update dependency golangci/golangci-lint to v1.64.4
+  * chore(deps): update dependency golangci/golangci-lint to v1.64.3
+  * [skip-ci] Packit/TMT: Run system tests
+  * PR Labels: apply release label to release- branch PRs
+  * chore(deps): update dependency golangci/golangci-lint to v1.64.2
+  * Bump Skopeo to v1.19.0-dev
+
+-------------------------------------------------------------------
 Thu Feb 13 08:54:02 UTC 2025 - dcermak@suse.com
 
 - Update to version 1.18.0:
