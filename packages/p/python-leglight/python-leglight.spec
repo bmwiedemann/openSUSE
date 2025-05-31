@@ -1,7 +1,7 @@
 #
 # spec file for package python-leglight
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-leglight
 Version:        0.2.0
 Release:        0
@@ -26,7 +24,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pypi.org/project/leglight/
 Source:         https://files.pythonhosted.org/packages/source/l/leglight/leglight-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.22.0
 Requires:       python-zeroconf >= 0.24.3
@@ -41,13 +41,14 @@ platform).
 %setup -q -n leglight-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/leglight
+%{python_sitelib}/leglight-%{version}*-info
 
 %changelog
