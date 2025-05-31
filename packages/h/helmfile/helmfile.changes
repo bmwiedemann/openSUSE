@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 31 07:14:59 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.1.1:
+  What's Changed
+  * Update README.md by @mumoshu in #2046
+  * build(deps): bump github.com/helmfile/vals from 0.41.0 to
+    0.41.1 by @dependabot in #2048
+  * build(helm) update to v3.18.0 by @yxxhero in #2044
+  * build(deps): bump github.com/helmfile/chartify from 0.23.0 to
+    0.24.1 by @dependabot in #2049
+  * build: update Helm and plugin versions in CI and Dockerfiles
+    by @yxxhero in #2059
+
+-------------------------------------------------------------------
 Tue May 20 06:26:38 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.1.0:
