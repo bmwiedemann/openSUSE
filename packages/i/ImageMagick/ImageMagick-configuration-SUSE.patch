@@ -1,7 +1,5 @@
-Index: ImageMagick-7.1.1-30/config/policy-secure.xml
-===================================================================
---- ImageMagick-7.1.1-30.orig/config/policy-secure.xml
-+++ ImageMagick-7.1.1-30/config/policy-secure.xml
+--- ImageMagick-7.1.1-30/config/policy.xml
++++ ImageMagick-7.1.1-30/config/policy.xml
 @@ -62,7 +62,7 @@
    <policy domain="resource" name="disk" value="1GiB"/>
    <!-- Set the maximum length of an image sequence.  When this limit is
@@ -11,26 +9,39 @@ Index: ImageMagick-7.1.1-30/config/policy-secure.xml
    <!-- Set the maximum width of an image.  When this limit is exceeded, an
         exception is thrown. -->
    <policy domain="resource" name="width" value="8KP"/>
-@@ -83,17 +83,19 @@
+@@ -83,11 +83,11 @@
    <!-- Replace passphrase for secure distributed processing -->
    <!-- <policy domain="cache" name="shared-secret" value="secret-passphrase" stealth="true"/> -->
    <!-- Do not permit any delegates to execute. -->
 -  <policy domain="delegate" rights="none" pattern="*"/>
-+  <!--policy domain="delegate" rights="none" pattern="*"/-->
++  <!--policy domain="delegate" rights="none" pattern="*"/ -->
    <!-- Do not permit any image filters to load. -->
    <policy domain="filter" rights="none" pattern="*"/>
    <!-- Don't read/write from/to stdin/stdout. -->
 -  <policy domain="path" rights="none" pattern="-"/>
-+  <!--policy domain="path" rights="none" pattern="-"/-->
++  <!--policy domain="path" rights="none" pattern="-"/ -->
    <!-- don't read sensitive paths. -->
    <policy domain="path" rights="none" pattern="/etc/*"/>
    <!-- Indirect reads are not permitted. -->
-   <policy domain="path" rights="none" pattern="@*"/>
-+  <!-- These image types can expose risks on read and write -->
-+  <policy domain="module" rights="none" pattern="{EPHEMERAL,URL,HTTPS,MVG,MSL,TEXT,SHOW,WIN,PLT}"/>
-   <!-- These image types are security risks on read, but write is fine -->
--  <policy domain="module" rights="write" pattern="{MSL,MVG,PS,SVG,URL,XPS}"/>
-+  <policy domain="module" rights="write" pattern="{MSL,MVG,PS,URL,XPS,PDF,EPI,EPS,PCL,PS1,PS2,PS3}"/>
-   <!-- This policy sets the number of times to replace content of certain
-        memory buffers and temporary files before they are freed or deleted. -->
-   <policy domain="system" name="shred" value="1"/>
+@@ -103,4 +103,20 @@
+   <!-- Set the maximum amount of memory in bytes that are permitted for
+        allocation requests. -->
+   <policy domain="system" name="max-memory-request" value="256MiB"/>
++  <!-- Disable insecure coders by default -->
++  <policy domain="coder" rights="none" pattern="EPHEMERAL" />
++  <policy domain="coder" rights="none" pattern="URL" />
++  <policy domain="coder" rights="none" pattern="HTTPS" />
++  <policy domain="coder" rights="none" pattern="MVG" />
++  <policy domain="coder" rights="none" pattern="MSL" />
++  <policy domain="coder" rights="none" pattern="TEXT" />
++  <policy domain="coder" rights="none" pattern="SHOW" />
++  <policy domain="coder" rights="none" pattern="WIN" />
++  <policy domain="coder" rights="none" pattern="PLT" />
++  <policy domain="coder" rights="write" pattern="PS" />
++  <policy domain="coder" rights="write" pattern="PS2" />
++  <policy domain="coder" rights="write" pattern="PS3" />
++  <policy domain="coder" rights="write" pattern="PDF" />
++  <policy domain="coder" rights="write" pattern="XPS" />
++  <policy domain="coder" rights="write" pattern="PCL" />
+ </policymap>
+

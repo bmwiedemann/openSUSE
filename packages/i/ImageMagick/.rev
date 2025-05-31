@@ -4048,4 +4048,23 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1267894</requestid>
   </revision>
+  <revision rev="309" vrev="2">
+    <srcmd5>28d9aeaaad5f5c506c26d6d9715fa157</srcmd5>
+    <version>7.1.1.47</version>
+    <time>1748711657</time>
+    <user>dimstar_suse</user>
+    <comment>- fix config policies [bsc#1243622]
+- modified patches
+  % ImageMagick-configuration-SUSE.patch (refreshed)
+
+- drop update-alternatives usage, configuration alternative packages
+  now conflict
+- modified patches
+  % ImageMagick-configuration-SUSE.patch (refreshed)
+- added sources
+  + _multibuild
+- remove ImageMagick-filter.t-disable-Contrast.patch needed for i586
+  testing</comment>
+    <requestid>1280708</requestid>
+  </revision>
 </revisionlist>

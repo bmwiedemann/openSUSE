@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 26 09:10:06 UTC 2025 - pgajdos@suse.com
+
+- fix config policies [bsc#1243622]
+- modified patches
+  % ImageMagick-configuration-SUSE.patch (refreshed)
+
+-------------------------------------------------------------------
+Thu May 15 20:20:16 UTC 2025 - pgajdos@suse.com
+
+- drop update-alternatives usage, configuration alternative packages
+  now conflict
+- modified patches
+  % ImageMagick-configuration-SUSE.patch (refreshed)
+- added sources
+  + _multibuild
+- remove ImageMagick-filter.t-disable-Contrast.patch needed for i586
+  testing
+
+-------------------------------------------------------------------
 Tue Apr  1 11:44:59 UTC 2025 - pgajdos@suse.com
 
 - version update to 7.1.1.47

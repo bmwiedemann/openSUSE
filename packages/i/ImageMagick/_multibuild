@@ -1,0 +1,6 @@
+<multibuild>
+  <package>config_open</package>
+  <package>config_limited</package>
+  <package>config_secure</package>
+  <package>config_websafe</package>
+</multibuild>
