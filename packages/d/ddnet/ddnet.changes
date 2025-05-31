@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat May 17 11:02:45 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 19.2:
+  * [Client] Improvements to recoloring of skins
+  * [Client] Update Discord rich presence
+  * [Client] Dynamic skin loading and unloading
+  * [Client] Improve envelope rendering (more FPS)
+  * [Editor] Add live game tiles
+  * [Client] Dragger visual update
+  * [Client] Optimize map layers
+  * [Client] Fix multi-view zoom
+  * [Client] Improved debug rendering
+  * [Client] Add more options to show and hide text overlays
+    for entities
+  * [Client] Limit dyncam offset for auto-sync camera
+  * [Client] Make dragger color customizable
+  * [Client] Add console commands to go to the latest/newest line
+  * [Client] Improve skin and map name validation
+  * [Client] Fix switch door twitching
+  * [Client] Fix winter_day menu theme background in widescreen
+    resolutions
+  * [Client] Name plate fixes
+  * [Client] Fix heart pickup prediction
+  * [Client] Fix spec charactor visibility
+  * [Client] Change laser door heads to squares
+  * [Client] Consistently order favorite skins in config
+  * [Client] Fix 0.7 connect string for servers with multiple
+    addresses
+  * [Client] Fix incorrect connect address for local servers
+  * [Client] Add laser door prediction
+  * [Client] Improve graphics log messages
+  * [Client] Show error message when saving files with invalid
+    filename
+  * [Client] Allow key release events during IME composition
+  * [Client] Allow rendering of force 0 speedtiles
+  * [Client] Fix incorrect global tunes in demo player
+  * [Client] Ensure demo playback starts at time 00:00
+  * [Editor] Add map-create-pixelart tool to tool bar
+  * [Editor] Hide proof view while selecting tiles
+  * [Editor] Prevent placing invalid speed tiles
+  * [Editor] Add doors to preview
+  * [Editor] Fix crash when replacing/re-importing sound
+  * [Editor] Fix crash when sorting
+  * [Server] Fix 0.7 server info too large with many player and
+    long names
+  * [Server] Ignore port when limiting connections
+  * [Server] Fix border not killing when overlapped with death
+    tile in practice mode
+  * [Server] Remove freezehammer command
+  * [Server] Pass more data to the antibot
+  * [Server] Fix global jetpack tune
+  * [Client&Server] Add validation to CDataFileReader, add
+    map_test tool
+  * [Build] Fixes for Emscripten build
+
+-------------------------------------------------------------------
 Sun Apr  6 15:18:18 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add BuildRequires pkgconfig(gl), pkgconfig(glu)
