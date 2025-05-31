@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu May 29 18:28:19 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.0.7
+  * Fix failure to show plots in the Plots pane due to faulty
+    traitlets versions.
+- Release 6.0.6
+  ## New features
+  * Make Editor annotations (like FIXME or HINT) work in lowercase.
+  * Retore Quit action to the the IPython console context menu.
+  * Don't advance line when running code if there's selected text
+    in the Editor.
+  ## Important fixes
+  * Prevent breakpoints from disappearing when formatting code.
+  * Fix remote connections error when using the Key file
+    authentication method.
+  * Respect case sensitivity of working directory when running
+    code.
+  * Disable fullscreen mode when running on the Windows Subsystem
+    for Linux.
+  * Several fixes to prevent the Editor and Find panes from taking
+    too much horizontal space.
+  * Show a better error message when failing to open objects in the
+    Variable Explorer due to a mismatch of Python versions.
+  * Fix opening Files pane context menu when clicking on its blank
+    area.
+  * Remove QtWebEngine requirement to show the Help Spyder action.
+  * Prevent Matplotlib cache font message from being displayed.
+  * Ensure color scheme changes are applied to all the open files.
+- Release 6.0.5
+  ## New features
+  * Add option to the Projects options menu to disable file
+    searches in the Switcher.
+  * Support displaying environments with the same name in the
+    IPython Console New console in environment menu.
+  ## Important fixes
+  * Fix Check for updates at startup option when an update is
+    declined.
+  * Remove mamba from Spyder installers.
+  * Several improvements to the Variable Explorer messages shown
+    when a variable can't be displayed.
+  * Prevent error in Connect to an existing kernel dialog when the
+    connection file doesn't exist.
+  * Several fixes related to the Run plugin and working directory
+    options used to run and debug files.
+  * Fix conda executable validation when creating kernels and
+    improve feedback in case it's not found.
+  * Add message related to support for Pixi environments when
+    starting kernels.
+  * Improve message related to loading the Spyder icon theme not
+    being possible.
+  * Prevent Spyder softlock when lossing focus while the tour is
+    being shown.
+  * Fixes to better handle errors when trying to load .spydata
+    files in the Variable Explorer.
+  * Fix Editor code folding and indent guides for cloned editors.
+- Switch to PyQt6
+
+-------------------------------------------------------------------
 Sun Feb  9 14:03:26 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.0.4

@@ -21,7 +21,7 @@
 # You MUST checkout the app in your live system and play with it before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        6.0.4
+Version:        6.0.7
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -36,14 +36,15 @@ BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools >= 49.6.0
 BuildRequires:  python3-wheel
 Requires:       %{name}-lang
-Requires:       python3-PyQt5 >= 5.15
-Requires:       python3-PyQtWebEngine >= 5.15
+Requires:       python3-PyQt6 >= 6.5
+Requires:       python3-PyQt6-WebEngine >= 6.5
 Requires:       python3-Pygments >= 2.0
 Requires:       python3-QtPy >= 2.4
 Requires:       python3-Rtree >= 0.9.7
 Requires:       python3-Sphinx >= 0.6.6
 Requires:       python3-aiohttp >= 3.9.3
 Requires:       python3-atomicwrites >= 1.2.0
+Requires:       python3-bcrypt >= 4.3.0
 Requires:       python3-chardet >= 2.0.0
 Requires:       python3-cloudpickle >= 0.5.0
 Requires:       python3-cookiecutter >= 1.6.0
@@ -55,6 +56,7 @@ Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-keyring >= 17.0.0
 Requires:       python3-nbconvert >= 4.0
 Requires:       python3-numpydoc >= 0.6.0
+Requires:       python3-packaging >= 20.0
 Requires:       python3-parso >= 0.7.0
 Requires:       python3-pexpect >= 4.4.0
 Requires:       python3-pickleshare >= 0.4
@@ -66,13 +68,12 @@ Requires:       python3-pyuca >= 1.2
 Requires:       python3-pyxdg >= 0.26
 Requires:       python3-pyzmq >= 24
 Requires:       python3-qstylizer >= 0.2.2
-Requires:       python3-setuptools >= 49.6.0
 Requires:       python3-textdistance >= 4.2.0
 Requires:       python3-three-merge >= 0.1.1
 Requires:       python3-watchdog
 Requires:       python3-yarl >= 1.9.4
 Requires:       (python3-QDarkStyle >= 3.2.0 with python3-QDarkStyle < 3.3.0)
-Requires:       (python3-QtAwesome >= 1.3.1 with python3-QtAwesome < 1.4)
+Requires:       (python3-QtAwesome >= 1.4 with python3-QtAwesome < 1.5)
 Requires:       (python3-asyncssh >= 2.14 with python3-asyncssh < 3)
 Requires:       (python3-ipython >= 8.13 with python3-ipython < 9)
 Requires:       (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
@@ -80,7 +81,7 @@ Requires:       (python3-pylint >= 3.1 with python3-pylint < 4)
 Requires:       (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
 Requires:       (python3-python-lsp-server-all >= 1.12.0 with python3-python-lsp-server-all < 1.13)
 Requires:       (python3-qtconsole >= 5.6.1 with python3-qtconsole < 5.7)
-Requires:       (python3-spyder-kernels >= 3.0.3 with python3-spyder-kernels < 3.1)
+Requires:       (python3-spyder-kernels >= 3.0.5 with python3-spyder-kernels < 3.1)
 Requires:       (python3-superqt >= 0.6.2 with python3-superqt < 1)
 Recommends:     git-core
 Recommends:     python3-Cython
@@ -138,13 +139,14 @@ BuildRequires:  python3-sympy
 %endif
 # runtime
 BuildRequires:  python3-Pygments >= 2.0
-BuildRequires:  python3-PyQt5 >= 5.15
-BuildRequires:  python3-PyQtWebEngine >= 5.15
+BuildRequires:  python3-PyQt6 >= 6.5
+BuildRequires:  python3-PyQt6-WebEngine >= 6.5
 BuildRequires:  python3-QtPy >= 2.4
 BuildRequires:  python3-Rtree >= 0.9.7
 BuildRequires:  python3-Sphinx >= 0.6.6
 BuildRequires:  python3-aiohttp >= 3.9.3
 BuildRequires:  python3-atomicwrites >= 1.2.0
+BuildRequires:  python3-bcrypt >= 4.3.0
 BuildRequires:  python3-chardet >= 2.0.0
 BuildRequires:  python3-cloudpickle >= 0.5.0
 BuildRequires:  python3-cookiecutter >= 1.6.0
@@ -156,6 +158,7 @@ BuildRequires:  python3-jsonschema >= 3.2.0
 BuildRequires:  python3-keyring >= 17.0.0
 BuildRequires:  python3-nbconvert >= 4.0
 BuildRequires:  python3-numpydoc >= 0.6.0
+BuildRequires:  python3-packaging >= 20.0
 BuildRequires:  python3-parso >= 0.7.0
 BuildRequires:  python3-pexpect >= 4.4.0
 BuildRequires:  python3-pickleshare >= 0.4
@@ -167,13 +170,12 @@ BuildRequires:  python3-pyuca >= 1.2
 BuildRequires:  python3-pyxdg >= 0.26
 BuildRequires:  python3-pyzmq >= 24
 BuildRequires:  python3-qstylizer >= 0.2.2
-BuildRequires:  python3-setuptools >= 49.6.0
 BuildRequires:  python3-textdistance >= 4.2.0
 BuildRequires:  python3-three-merge >= 0.1.1
 BuildRequires:  python3-watchdog
 BuildRequires:  python3-yarl >= 1.9.4
 BuildRequires:  (python3-QDarkStyle >= 3.2.0 with python3-QDarkStyle < 3.3.0)
-BuildRequires:  (python3-QtAwesome >= 1.3.1 with python3-QtAwesome < 1.4)
+BuildRequires:  (python3-QtAwesome >= 1.4 with python3-QtAwesome < 1.5)
 BuildRequires:  (python3-asyncssh >= 2.14 with python3-asyncssh < 3)
 BuildRequires:  (python3-ipython >= 8.13 with python3-ipython < 9)
 BuildRequires:  (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
@@ -181,7 +183,7 @@ BuildRequires:  (python3-pylint >= 3.1 with python3-pylint < 4)
 BuildRequires:  (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
 BuildRequires:  (python3-python-lsp-server-all >= 1.12.0 with python3-python-lsp-server-all < 1.13)
 BuildRequires:  (python3-qtconsole >= 5.6.1 with python3-qtconsole < 5.7)
-BuildRequires:  (python3-spyder-kernels >= 3.0.3 with python3-spyder-kernels < 3.1)
+BuildRequires:  (python3-spyder-kernels >= 3.0.5 with python3-spyder-kernels < 3.1)
 BuildRequires:  (python3-superqt >= 0.6.2 with python3-superqt < 1)
 # /SECTION
 
@@ -234,6 +236,7 @@ sed -i "s/installer = 'pip'/installer = 'openSUSE RPM'/" spyder/__init__.py
 echo "# Unique config __init__.pyc" >> spyder/config/__init__.py
 
 %build
+export SPYDER_QT_BINDING=pyqt6
 %python3_pyproject_wheel
 
 %install
