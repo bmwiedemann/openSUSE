@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 26 14:00:56 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.4.2
+  * --expansion-bay: Print PCIe config by @JohnAZoidberg in #138
+  * --get-gpio: Return all GPIOs if no name was passed
+    by @JohnAZoidberg in #142
+  * --sensors: Get information about sensors by @JohnAZoidberg in #143
+  * Add --ps2-enable to control ps2 emulation by @JohnAZoidberg in #139
+  * Cleanup --versions command to hide unnecessary details
+    by @JohnAZoidberg in #146
+  * Allow keyboard remapping by @JohnAZoidberg in #145
+  * Build Rufus compatible ISO by @JohnAZoidberg in #149
+  * Allow installing with cargo install by @JohnAZoidberg in #147
+  * Allow flashing EC RW region by @JohnAZoidberg in #150
+
+-------------------------------------------------------------------
 Thu May  8 13:05:24 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.4.1
