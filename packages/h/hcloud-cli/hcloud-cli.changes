@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Sat May 31 05:26:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.51.0:
+  * Features
+    - load-balancer: allow specifying network on create (#1013)
+    - context: add unset commmand (#1017)
+    - publish image to Docker Hub (#1043)
+  * Bug Fixes
+    - allow getting resources with number as name
+    - some list flags are not correctly parsed (#987)
+    - load-balancer: allow certificate names in addition to IDs
+      when creating/updating (#1026)
+    - config option flags sometimes not parsed correctly (#1025)
+  * Dependencies
+    - deps: update module github.com/goccy/go-yaml to v1.18.0
+      (#1063)
+    - deps: update apricote/releaser-pleaser action to v0.5.1
+      (#1054)
+    - deps: update module golang.org/x/crypto to v0.38.0 (#1038)
+    - deps: update module github.com/spf13/cast to v1.8.0 (#1037)
+    - deps: update dependency go to v1.24.3 (#1041)
+    - deps: update module go.uber.org/mock to v0.5.2 (#1035)
+    - deps: update module golang.org/x/crypto to v0.37.0 (#1032)
+    - deps: update module go.uber.org/mock to v0.5.1 (#1033)
+    - deps: update module github.com/goccy/go-yaml to v1.17.1
+      (#1022)
+    - deps: update dependency go to v1.24.2 (#1024)
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.21.0 (#1020)
+    - deps: update module github.com/spf13/viper to v1.20.1 (#1015)
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.20.1 (#1012)
+    - deps: update module github.com/burntsushi/toml to v1.5.0
+      (#1011)
+    - deps: update module github.com/goccy/go-yaml to v1.16.0
+      (#1009)
+    - deps: update module github.com/spf13/viper to v1.20.0 (#1008)
+    - deps: update dependency golangci/golangci-lint to v1.64.8
+      (#1010)
+    - deps: update dependency golangci/golangci-lint to v1.64.7
+      (#1005)
+    - deps: update module golang.org/x/crypto to v0.36.0 (#991)
+    - deps: update dependency go to v1.24.1 (#1002)
+    - deps: update dependency go to v1.23.7 (#1000)
+    - deps: update dependency golangci/golangci-lint to v1.64.6
+      (#998)
+    - deps: update module github.com/jedib0t/go-pretty/v6 to v6.6.7
+      (#997)
+    - deps: update module github.com/spf13/cobra to v1.9.1 (#990)
+    - deps: update module github.com/cheggaaa/pb/v3 to v3.1.7
+      (#993)
+    - deps: update module github.com/goccy/go-yaml to v1.15.23
+      (#989)
+    - deps: update dependency golangci/golangci-lint to v1.64.5
+      (#988)
+    - deps: update dependency golangci/golangci-lint to v1.64.4
+      (#985)
+    - deps: update module golang.org/x/crypto to v0.33.0 (#979)
+    - deps: update module github.com/goccy/go-yaml to v1.15.22
+      (#982)
+    - deps: update dependency golangci/golangci-lint to v1.64.2
+      (#983)
+    - deps: update module github.com/jedib0t/go-pretty/v6 to v6.6.6
+      (#981)
+    - deps: update module github.com/anchore/quill to v0.5.1 (#980)
+    - deps: update module github.com/goccy/go-yaml to v1.15.19
+      (#978)
+    - deps: update dependency go to v1.23.6 (#976)
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.19.1 (#975)
+    - deps: update module github.com/goccy/go-yaml to v1.15.17
+      (#973)
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.19.0 (#970)
+    - deps: update module github.com/goccy/go-yaml to v1.15.16
+      (#971)
+    - deps: update module github.com/spf13/pflag to v1.0.6 (#968)
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.18.0 (#964)
+    - deps: update module github.com/cheggaaa/pb/v3 to v3.1.6
+      (#962)
+    - deps: update module github.com/goccy/go-yaml to v1.15.15
+      (#959)
+    - deps: update dependency go to v1.23.5 (#957)
+
+-------------------------------------------------------------------
 Fri Jan 17 06:36:11 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.50.0:
