@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat May 31 06:29:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.5.5:
+  * no CLI-related changes (other than dependencies)
+  * Dependencies
+    - build(deps): bump openssl-sys from 0.9.108 to 0.9.109
+      (#14078)
+    - build(deps): bump openssl from 0.10.72 to 0.10.73 (#14079)
+    - build(deps): bump crazy-max/ghaction-github-runtime (#14070)
+    - build(deps): bump docker/setup-qemu-action (#14071)
+    - build(deps): bump docker/setup-buildx-action (#14072)
+    - build(deps): bump google-github-actions/setup-gcloud (#14073)
+    - build(deps-dev): bump @babel/core from 7.27.1 to 7.27.3 in
+      /web/app (#14076)
+    - build(deps-dev): bump @babel/runtime from 7.27.1 to 7.27.3 in
+      /web/app (#14077)
+    - deps: have dependabot update composite actions (#14060)
+    - build(deps): bump the clap group with 2 updates (#14067)
+    - build(deps): bump hyper-util from 0.1.12 to 0.1.13 (#14068)
+    - build(deps): bump socket2 from 0.5.9 to 0.5.10 (#14062)
+    - build(deps): bump tj-actions/changed-files (#14064)
+    - build(deps): bump google.golang.org/grpc from 1.72.1 to
+      1.72.2 (#14063)
+    - build(deps-dev): bump @babel/preset-env in /web/app (#14052)
+    - build(deps): bump query-string from 9.1.1 to 9.2.0 in
+      /web/app (#14053)
+    - build(deps-dev): bump webpack from 5.99.8 to 5.99.9 in
+      /web/app (#14051)
+    - build(deps): bump rustversion from 1.0.20 to 1.0.21 (#14048)
+    - build(deps-dev): bump @babel/eslint-parser in /web/app
+      (#14054)
+    - build(deps): bump tokio from 1.45.0 to 1.45.1 (#14055)
+    - build(deps): bump mio from 1.0.3 to 1.0.4 (#14056)
+    - build(deps): bump cc from 1.2.23 to 1.2.24 (#14057)
+    - build(deps): bump hyper-rustls from 0.27.5 to 0.27.6 (#14058)
+    - build(deps): bump tj-actions/changed-files (#14049)
+
+-------------------------------------------------------------------
 Fri May 23 05:12:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.5.4:
