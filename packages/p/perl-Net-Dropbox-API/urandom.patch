@@ -1,0 +1,60 @@
+commit e3a854a4305004b1b930dcde16e609ebccc9d78b
+Author: Tina Müller <cpan2@tinita.de>
+Date:   Wed May 28 16:21:08 2025 +0200
+
+    Use Crypt::URandom for generation of nonce
+    
+    See https://nvd.nist.gov/vuln/detail/CVE-2024-58036
+    
+    The result is a string of hex digits with the same length as before, 16.
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 0865ac2..301aac2 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -12,7 +12,7 @@ requires 'JSON';
+ requires 'Mouse';
+ requires 'Encode';
+ requires 'Net::OAuth';
+-requires 'Data::Random';
++requires 'Crypt::URandom';
+ requires 'common::sense';
+ requires 'File::Basename';
+ requires 'LWP::UserAgent';
+diff --git a/lib/Net/Dropbox/API.pm b/lib/Net/Dropbox/API.pm
+index bcdec21..3d53799 100644
+--- a/lib/Net/Dropbox/API.pm
++++ b/lib/Net/Dropbox/API.pm
+@@ -8,7 +8,7 @@ use Net::OAuth;
+ use LWP::UserAgent;
+ use URI;
+ use HTTP::Request::Common;
+-use Data::Random qw(rand_chars);
++use Crypt::URandom qw(urandom);
+ use Encode;
+ 
+ =head1 NAME
+@@ -382,7 +382,7 @@ Generate a different nonce for every request.
+ 
+ =cut
+ 
+-sub nonce { join( '', rand_chars( size => 16, set => 'alphanumeric' )); }
++sub nonce { unpack("H*", urandom(8)); }
+ 
+ sub _talk {
+     my $self    = shift;
+diff --git a/t/nonce.t b/t/nonce.t
+new file mode 100644
+index 0000000..7be9762
+--- /dev/null
++++ b/t/nonce.t
+@@ -0,0 +1,9 @@
++use strict;
++use warnings;
++use Test::More;
++use Net::Dropbox::API;
++
++my $nonce = Net::Dropbox::API::nonce();
++like $nonce, qr{^[a-zA-Z0-9]{16}\z}, 'expected nonce content';
++
++done_testing;

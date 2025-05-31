@@ -26,6 +26,9 @@ License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Dropbox API interface
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/N/NO/NORBU/%{cpan_name}-%{cpan_version}.tar.gz
+Source1:        cpanspec.yml
+# PATCH-FIX-OPENSUSE https://github.com/norbu09/Net--Dropbox/pull/20 CVE-2024-58036
+Patch0:         urandom.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -49,12 +52,16 @@ Requires:       perl(common::sense)
 Provides:       perl(Net::Dropbox::API) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  perl(Crypt::URandom)
+Requires:       perl(Crypt::URandom)
+# MANUAL END
 
 %description
 A dropbox API interface
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

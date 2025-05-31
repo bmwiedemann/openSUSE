@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 28 14:58:49 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Add urandom.patch for secure tokens
+  https://github.com/norbu09/Net--Dropbox/pull/20 CVE-2024-58036 bsc#1240884
+  Add cpanspec.yml file used by cpanspec for autogenerating the spec.
+
+-------------------------------------------------------------------
 Thu Feb  6 22:27:01 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version
