@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat May 31 06:29:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.3:
+  * linter: usrmerge add trailing '/' to denote directory for
+    prefix check (#2014)
+
+-------------------------------------------------------------------
+Sat May 31 06:25:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.2:
+  * fix: fallback to aio=threads for macos (#2012)
+  * qemu: do some little CPU and IO optimization (#2011)
+  * fix: try to fix weird MacOS sizing (#2010)
+  * Fix/respect additional mounts (#2009)
+  * Fix detection of available memory. (#2005)
+  * fix: improve SSH command handling (#2006)
+
+-------------------------------------------------------------------
 Mon May 26 04:45:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.1:
