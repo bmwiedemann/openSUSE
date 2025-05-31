@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 31 12:39:03 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.10.0:
+  * full changelog: https://github.com/nvim-treesitter/nvim-treesitter/compare/v0.9.3...v0.10.0
+  * updated languages
+  * minimum neovim version 0.10.0
+
+-------------------------------------------------------------------
 Sat Dec 14 01:07:46 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

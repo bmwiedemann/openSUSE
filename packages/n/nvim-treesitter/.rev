@@ -7,4 +7,15 @@
     <comment></comment>
     <requestid>1233159</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b04537c3c0ba55dfec7f519818d2f289</srcmd5>
+    <version>0.10.0</version>
+    <time>1748711897</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.0:
+  * full changelog: https://github.com/nvim-treesitter/nvim-treesitter/compare/v0.9.3...v0.10.0
+  * updated languages
+  * minimum neovim version 0.10.0 (forwarded request 1281609 from rrahl0)</comment>
+    <requestid>1281610</requestid>
+  </revision>
 </revisionlist>
