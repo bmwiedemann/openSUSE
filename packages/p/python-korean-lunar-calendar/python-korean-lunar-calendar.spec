@@ -1,7 +1,7 @@
 #
 # spec file for package python-korean-lunar-calendar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname korean_lunar_calendar
 Name:           python-korean-lunar-calendar
 Version:        0.3.1
@@ -26,11 +25,13 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pypi.org/project/korean-lunar-calendar/
 Source:         https://files.pythonhosted.org/packages/source/k/korean_lunar_calendar/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 Provides:       python-%{modname} = %{version}-%{release}
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -43,15 +44,15 @@ use without mouse.
 %setup -q -n korean_lunar_calendar-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
 %doc *.rst
 %license LICENSE
 %{python_sitelib}/korean_lunar_calendar
-%{python_sitelib}/korean_lunar_calendar-%{version}-py*.egg-info
+%{python_sitelib}/korean_lunar_calendar-%{version}*-info
 
 %changelog
