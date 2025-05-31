@@ -789,4 +789,13 @@ build/package/libyui.spec:Version:        3.0.13</comment>
     <comment>submit new version 4.7.2</comment>
     <requestid>1279580</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>b9363f5d9aa9e353e054f2b8cb79ebbf</srcmd5>
+    <version>4.7.3</version>
+    <time>1748711665</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build failure with gcc-15:
+  Prevent complaint about hidden base class method (bsc#1243732)</comment>
+    <requestid>1280827</requestid>
+  </revision>
 </revisionlist>

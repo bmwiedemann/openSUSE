@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 28 08:58:26 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Fix build failure with gcc-15:
+  Prevent complaint about hidden base class method (bsc#1243732)
+
+-------------------------------------------------------------------
 Fri May 23 08:11:46 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Use %make_build instead of %jobs to improve reproducible builds (boo#1237231)
