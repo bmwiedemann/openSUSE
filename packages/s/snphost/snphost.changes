@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 30 16:08:31 UTC 2025 - Caleb Crane (caleb.crane@suse.com)
+
+- Update to version 0.6.0:
+  * Update to 0.6.0
+  * config: Add settable FMC for Turin generation processors
+  * Update sev library to 6.0.0
+  * snphost: add a new option arg "url" to fetch vcek command
+  * deps/sev: Point to upstream git commit
+  * ok: Move SEV firmware version check
+  * ok: Modify various test messages
+  * ok: Move SNP platform tests
+  * ok: Add test for ALIAS_CHECK_COMPLETE
+  * ok: Update RMP_INIT check to account for other bitflags
+
+-------------------------------------------------------------------
 Thu Oct  3 19:23:31 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
 
 - Spec: Add direct dependency on cargo in addition to cargo-packaging.
