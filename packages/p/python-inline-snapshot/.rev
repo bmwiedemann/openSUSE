@@ -76,4 +76,29 @@ Please stage with python-pydantic, python-pydantic-core
 and python-pydantic-settings</comment>
     <requestid>1241019</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2efe04ce2ba94f8e873839e128b081bb</srcmd5>
+    <version>0.23.1</version>
+    <time>1748711655</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.23.1
+  * pytest assert rewriting works now together with inline-snapshot
+    if you use cpython&gt;=3.11
+  * ... is now a special value to create snapshot values. The value
+    change in assert [5,4] == snapshot([5,...]) is now a create
+    (previously it was a fix)
+  * Tests with failed snapshot comparisons now always result in a
+    pytest Error, even if snapshots have been fixed or created.
+  * inline-snapshot uses now --inline-snapshot=disable during CI runs
+    by default
+  * The default flags have changed for cpython &gt;= 3.11
+  * The categories in the terminal output are now links to the documentation
+    if it is supported by the terminal
+  * You can now use the config option skip-snapshot-updates-for-now
+    to skip the reporting of updates
+  * snapshot updates are now disabled by default. They be enabled with
+    show-updates=true in your config
+- Add no-readline.patch to fix test error in pydantic-core</comment>
+    <requestid>1280586</requestid>
+  </revision>
 </revisionlist>

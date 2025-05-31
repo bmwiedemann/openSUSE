@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon May 26 14:14:35 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.23.1
+  * pytest assert rewriting works now together with inline-snapshot
+    if you use cpython>=3.11
+  * ... is now a special value to create snapshot values. The value
+    change in assert [5,4] == snapshot([5,...]) is now a create
+    (previously it was a fix)
+  * Tests with failed snapshot comparisons now always result in a
+    pytest Error, even if snapshots have been fixed or created.
+  * inline-snapshot uses now --inline-snapshot=disable during CI runs
+    by default
+  * The default flags have changed for cpython >= 3.11
+  * The categories in the terminal output are now links to the documentation
+    if it is supported by the terminal
+  * You can now use the config option skip-snapshot-updates-for-now
+    to skip the reporting of updates
+  * snapshot updates are now disabled by default. They be enabled with
+    show-updates=true in your config
+- Add no-readline.patch to fix test error in pydantic-core
+
+-------------------------------------------------------------------
 Wed Jan 29 02:19:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Inject multibuild to break a build cycle. 

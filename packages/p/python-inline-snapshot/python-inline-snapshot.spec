@@ -26,12 +26,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-inline-snapshot%{psuffix}
-Version:        0.19.3
+Version:        0.23.1
 Release:        0
 Summary:        Create and update inline snapshots in your Python code
 License:        MIT
 URL:            https://github.com/15r10nk/inline-snapshot/
 Source:         https://files.pythonhosted.org/packages/source/i/inline-snapshot/inline_snapshot-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/15r10nk/inline-snapshot/pull/245 also accept ImportError when attempting to import readline
+Patch:          no-readline.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
