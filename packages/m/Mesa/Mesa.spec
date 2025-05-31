@@ -43,7 +43,7 @@
 %define glamor 1
 %define _name_archive mesa
 %ifnarch s390x
-%define _version 25.1.1
+%define _version 25.0.5
 %else
 %define _version 24.1.7
 %endif
@@ -89,13 +89,9 @@
   %ifarch %{arm} aarch64
     %define with_vulkan 1
     %if 0%{?suse_version} > 1600
-      %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau,panfrost
+    %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau,panfrost
     %else
-      %if 0%{?suse_version} == 1600 && 0%{?is_opensuse}
-        %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,panfrost
-      %else
-        %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk
-      %endif
+    %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk
     %endif
   %endif
   %ifarch riscv64
@@ -160,7 +156,7 @@
 
 Name:           Mesa%{psuffix}
 %ifnarch s390x
-Version:        25.1.1
+Version:        25.0.5
 %else
 Version:        24.1.7
 %endif
@@ -191,8 +187,8 @@ Source9:        manual-pages.tar.bz2
 Source10:       Mesa-rpmlintrc
 Source11:       Mesa.keyring
 Source12:       README-suse-maintenance.md
-Source20:       https://archive.mesa3d.org/%{_name_archive}-25.1.1.tar.xz
-Source21:       https://archive.mesa3d.org/%{_name_archive}-25.1.1.tar.xz.sig
+Source20:       https://archive.mesa3d.org/%{_name_archive}-25.0.5.tar.xz
+Source21:       https://archive.mesa3d.org/%{_name_archive}-25.0.5.tar.xz.sig
 Patch2:         n_add-Mesa-headers-again.patch
 Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patch
 Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
@@ -201,6 +197,7 @@ Patch13:        python36-buildfix1.patch
 %else
 Patch13:        python36-buildfix1-s390x.patch
 %endif
+Patch14:        python36-buildfix2.patch
 Patch17:        tlsdesc_test.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
@@ -213,6 +210,8 @@ Patch500:       u_dep_xcb-s390x.patch
 %endif
 %ifnarch s390x
 Patch700:       u_meson-lower-python-version-requirement.patch
+Patch701:       u_intel-drop-annotations-from-spv2hex.patch
+Patch702:       U_clover-Don-t-include-libclc-headers.patch
 %endif
 %ifnarch s390x
 Patch1222040:   u_mesa-CVE-2023-45913.patch
@@ -397,6 +396,7 @@ Requires:       Mesa-libGLESv2-devel = %{version}
 %ifarch s390x
 Requires:       Mesa-libglapi-devel = %{version}
 %endif
+Requires:       libOSMesa-devel = %{version}
 Requires:       libgbm-devel = %{version}
 Provides:       Mesa-devel-static = %{version}
 Provides:       xorg-x11-Mesa-devel = %{version}
@@ -553,6 +553,18 @@ extensions for the special needs of embedded systems.
 This package provides a development environment for building
 applications using the OpenGL|ES 3.x APIs.
 
+%package -n libOSMesa8
+Summary:        Mesa Off-screen rendering extension
+# Wrongly named package shipped .so.8
+Group:          System/Libraries
+Obsoletes:      libOSMesa9 < %{version}
+Provides:       libOSMesa9 = %{version}
+
+%description -n libOSMesa8
+OSmesa is a Mesa extension that allows programs to render to an
+off-screen buffer using the OpenGL API without having to create a
+rendering context on an X Server. It uses a pure software renderer.
+
 %package libglapi0
 Summary:        Free implementation of the GL API
 Group:          System/Libraries
@@ -571,6 +583,16 @@ Requires:       Mesa-libglapi0 = %{version}
 Development files for the Mesa GL API module which is responsible for
 dispatching all the gl* functions. It is intended to be mainly used by
 the Mesa-libGLES* packages.
+
+%package -n libOSMesa-devel
+Summary:        Development files for the Mesa Offscreen Rendering extension
+Group:          Development/Libraries/C and C++
+Requires:       libOSMesa8 = %{version}
+
+%description -n libOSMesa-devel
+Development files for the OSmesa Mesa extension that allows programs to render to an
+off-screen buffer using the OpenGL API without having to create a
+rendering context on an X Server. It uses a pure software renderer.
 
 %package -n Mesa-dri
 Summary:        DRI plug-ins for 3D acceleration
@@ -871,6 +893,9 @@ cp %{SOURCE6} subprojects/packagecache/
 %patch -P 11 -p1
 %patch -P 12 -p1
 %patch -P 13 -p1
+%if 0%{?suse_version} < 1550
+%patch -P 14 -p1
+%endif
 %patch -P 17 -p1
 # no longer needed since gstreamer-plugins-vaapi 1.18.4
 %if 0%{?suse_version} < 1550
@@ -881,6 +906,8 @@ cp %{SOURCE6} subprojects/packagecache/
 %patch -P 500 -p1
 %ifnarch s390x
 %patch -P 700 -p1
+%patch -P 701 -p1
+%patch -P 702 -p1
 %endif
 %patch -P 1222040 -p1
 %patch -P 1222041 -p1
@@ -915,11 +942,13 @@ egl_platforms=x11,wayland
 %meson \
             --auto-features=disabled \
 %if "%{flavor}" == "drivers"
+            -Dosmesa=false \
             -Dglx=disabled \
             -Dxmlconfig=enabled \
             -Dexpat=enabled \
             -Dshader-cache=enabled \
 %else
+            -Dosmesa=true \
             -Dglx=auto \
             -Dllvm=disabled \
             -Dvulkan-drivers= \
@@ -970,9 +999,7 @@ egl_platforms=x11,wayland
 %endif
   %ifarch %{ix86} x86_64
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,svga,virgl,iris,crocus,i915,d3d12,zink \
-          %if %{vdpau_d3d12}
             -Dgallium-d3d12-video=enabled \
-          %endif
             -Dgallium-d3d12-graphics=enabled \
             -Dintel-rt=enabled \
   %else
@@ -1067,7 +1094,6 @@ rm -Rfv %{buildroot}/%{_includedir}/KHR
 
 # in libgbm-devel
 rm -fv %{buildroot}%{_includedir}/gbm.h \
-	%{buildroot}%{_includedir}/gbm_backend_abi.h \
 	%{buildroot}%{_libdir}/libgbm.so* \
 	%{buildroot}%{_libdir}/pkgconfig/gbm.pc
 
@@ -1109,6 +1135,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %ldconfig_scriptlets
 %ldconfig_scriptlets libEGL1
 %ldconfig_scriptlets libGL1
+%ldconfig_scriptlets -n libOSMesa8
 %ldconfig_scriptlets -n libgbm1
 %ldconfig_scriptlets -n libxatracker2
 %ldconfig_scriptlets libglapi0
@@ -1139,6 +1166,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %files libGL-devel
 %dir %{_includedir}/GL
 %{_includedir}/GL/*.h
+%exclude %{_includedir}/GL/osmesa.h
 %{_libdir}/pkgconfig/gl.pc
 %{_mandir}/man3/gl[A-Z]*
 
@@ -1153,12 +1181,20 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %files libGLESv3-devel
 %{_includedir}/GLES3
 
+%files -n libOSMesa8
+%{_libdir}/libOSMesa.so.8.0.0
+%{_libdir}/libOSMesa.so.8
+
+%files -n libOSMesa-devel
+%{_includedir}/GL/osmesa.h
+%{_libdir}/libOSMesa.so
+%{_libdir}/pkgconfig/osmesa.pc
+
 %files -n libgbm1
 %{_libdir}/libgbm.so.1*
 
 %files -n libgbm-devel
 %{_includedir}/gbm.h
-%{_includedir}/gbm_backend_abi.h
 %{_libdir}/libgbm.so
 %{_libdir}/pkgconfig/gbm.pc
 %endif

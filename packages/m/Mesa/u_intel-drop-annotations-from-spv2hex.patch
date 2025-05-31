@@ -1,0 +1,25 @@
+From 93d7b176c290c8fce39349d9f320b1b302d79e83 Mon Sep 17 00:00:00 2001
+From: Mikhail Paulyshka <me@mixaill.net>
+Date: Thu, 20 Feb 2025 15:53:39 +0300
+Subject: [PATCH 1/1] intel: drop annotations from spv2hex
+
+fixes compatibility with python 2.6
+---
+ src/intel/shaders/spv2hex.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/intel/shaders/spv2hex.py b/src/intel/shaders/spv2hex.py
+index f07e4bfa375..59a66e05a79 100644
+--- a/src/intel/shaders/spv2hex.py
++++ b/src/intel/shaders/spv2hex.py
+@@ -2,7 +2,6 @@
+ # Copyright © 2025 Intel Corporation
+ # SPDX-License-Identifier: MIT
+ 
+-from __future__ import annotations
+ import argparse
+ import binascii
+ 
+-- 
+2.48.1
+

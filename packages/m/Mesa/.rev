@@ -6291,4 +6291,12 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   surfaceless</comment>
     <requestid>1279001</requestid>
   </revision>
+  <revision rev="544" vrev="416">
+    <srcmd5>288d26ab5470fdd79001223493a4bbf1</srcmd5>
+    <version>unknown</version>
+    <time>1748711702</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1243884</comment>
+    <requestid>1281613</requestid>
+  </revision>
 </revisionlist>
