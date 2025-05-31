@@ -17,10 +17,10 @@
 # nodebuginfo
 
 
-%define real_version 5.15.15
-%define tar_version qt-everywhere-opensource-src-5.15.15
+%define real_version 5.15.17
+%define tar_version qt-everywhere-opensource-src-5.15.17
 Name:           libqt5-qtdoc
-Version:        5.15.15
+Version:        5.15.17
 Release:        0
 Summary:        Qt 5 API Documentation
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only
@@ -52,6 +52,7 @@ BuildRequires:  libqt5-qttools-devel >= %{version}
 BuildRequires:  libqt5-qttools-doc >= %{version}
 BuildRequires:  libtiff-devel
 BuildRequires:  lksctp-tools-devel
+BuildRequires:  ninja
 BuildRequires:  openssl-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig

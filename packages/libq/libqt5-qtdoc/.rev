@@ -472,4 +472,12 @@
 - Remove obsolete BuildRequires on pcre-devel (forwarded request 1254389 from favogt)</comment>
     <requestid>1254394</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>f0d59ff23fa04fbeb0f0ccc1c4f2e9cd</srcmd5>
+    <version>5.15.17</version>
+    <time>1748711719</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.17, try #2 (forwarded request 1280892 from favogt)</comment>
+    <requestid>1280906</requestid>
+  </revision>
 </revisionlist>
