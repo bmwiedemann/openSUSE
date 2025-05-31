@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Sat May 31 07:05:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.34.0:
+  After a month of development, we're happy to announce Regal
+  v0.34. This version of the OPA community's favorite linter and
+  language server brings you new 3 linter rules, performance
+  improvements and much more.
+  With the v0.34.0 release, Regal now ships with more than 100
+  linter rules!
+  Which is pretty close to one new week per rule since the project
+  started.
+  * New rules
+    - unresolved-reference
+      This one is particularly exciting! The new
+      unresolved-reference rule reports any references (like
+      data.users.permissions) that cannot be resolved (i.e. found)
+      anywhere in the project. Some projects will have valid
+      references that can't be resolved at the time Regal lints the
+      project, and the rule provides configuration options to mark
+      certain references, or entire paths (like data.users.*) as
+      resolved. See the docs for the rule for more details.
+    - pointless-import
+      Category: imports
+      The new pointless-import rule will flags imports of the same
+      package, and other import forms where the import has no real
+      effect.
+    - single-item-in
+      Category: idiomatic
+      The single-item-in rule reports cases of in being used on a
+      single item collection, and suggests using an equality check
+      instead.
+  * Performance
+    - Use OPA v1.5.0, which brings performance improvements to walk
+      reducing linting time by about 10%.
+    - Faster linting by avoiding walk in a few locations where
+      possible.
+    - Improve performance of aggregate rules.
+    - Several performance optimizations to Regal's linter rules.
+  * API
+    - The linter API now has a new Prepare method that can be used
+      to prepare the linter before reusing it across several runs.
+  * Various
+    - Some rules that would previously only scan the topmost level
+      of a rule body will now recursively scan the whole rule.
+    - The input completions provider has been rewritten in Rego
+      (previously Go).
+    - The automatic version check has been rewritten in Rego
+      (previously Go).
+  * Bugs
+    - Fix false positive in custom one-liner-rule.
+  * Docs
+    - Updated roadmap. Go check it out!
+    - Move rules table from README and into a more interactive form
+      on the Styra docs. Take a look!
+    - Add link to Renovating Rego blog.
+    - README: add link to KubeCon London talk, which prominently
+      featured Regal.
+    - Update links to adapt to OPA's new documentation.
+    - Update outdated information in README.
+  * Dependencies
+    - build(deps): bump the dependencies group with 2 updates
+      (#1551)
+    - build(deps): bump the dependencies group with 2 updates
+      (#1544)
+    - build(deps): bump the dependencies group with 2 updates
+      (#1521)
+    - build(deps): bump github/codeql-action in the dependencies
+      group (#1507)
+
+-------------------------------------------------------------------
 Thu Apr 24 15:08:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.33.1:
