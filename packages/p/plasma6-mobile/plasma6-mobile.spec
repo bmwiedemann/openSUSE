@@ -20,8 +20,8 @@
 # MeeGo.QOfono is optional and not packaged yet
 %global __requires_exclude qmlimport\\((org\\.kde\\.phone\\.homescreen|org\\.kde\\.plasma\\.phone\\.taskpanel|org\\.kde\\.private\\.mobile\\.homescreen\\.folio|MeeGo\\.QOfono|).*
 
-%define kf6_version 6.10.0
-%define qt6_version 6.7.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %define rname plasma-mobile
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -30,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-mobile
-Version:        6.3.5
+Version:        6.3.91
 Release:        0
 # Full Plasma 6 version (e.g. 5.9.3)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -39,9 +39,9 @@ Release:        0
 Summary:        Plasma shell for mobile devices
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/unstable/plasma/%{version}/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/unstable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -80,6 +80,7 @@ BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(xcb)
 # For plasma-open-settings
@@ -128,13 +129,9 @@ Plasma shell for mobile devices.
 
 %files
 %license LICENSES/*
-%{_kf6_applicationsdir}/kcm_cellular_network.desktop
-%{_kf6_applicationsdir}/kcm_mobile_hotspot.desktop
 %{_kf6_applicationsdir}/kcm_mobile_info.desktop
 %{_kf6_applicationsdir}/kcm_mobile_onscreenkeyboard.desktop
-%{_kf6_applicationsdir}/kcm_mobile_power.desktop
 %{_kf6_applicationsdir}/kcm_mobile_time.desktop
-%{_kf6_applicationsdir}/kcm_mobile_wifi.desktop
 %{_kf6_applicationsdir}/kcm_mobileshell.desktop
 %{_kf6_appstreamdir}/org.kde.breeze.mobile.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.mobile.defaultNavigationPanel.appdata.xml
@@ -152,9 +149,11 @@ Plasma shell for mobile devices.
 %{_kf6_appstreamdir}/org.kde.plasma.mobileshell.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.airplanemode.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.audio.appdata.xml
+%{_kf6_appstreamdir}/org.kde.plasma.quicksetting.autohidepanels.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.battery.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.bluetooth.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.caffeine.appdata.xml
+%{_kf6_appstreamdir}/org.kde.plasma.quicksetting.docked.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.donotdisturb.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.flashlight.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.hotspot.appdata.xml
@@ -167,7 +166,6 @@ Plasma shell for mobile devices.
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.screenshot.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.settingsapp.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.wifi.appdata.xml
-%{_kf6_appstreamdir}/org.kde.plasma.quicksettings.docked.appdata.xml
 %{_kf6_bindir}/plasma-mobile-envmanager
 %{_kf6_bindir}/plasma-mobile-initial-start
 %{_kf6_bindir}/startplasmamobile
@@ -194,9 +192,11 @@ Plasma shell for mobile devices.
 %dir %{_kf6_plasmadir}/quicksettings
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.airplanemode/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.audio/
+%{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.autohidepanels/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.battery/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.bluetooth/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.caffeine/
+%{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.docked/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.donotdisturb/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.flashlight/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.hotspot/
@@ -204,12 +204,11 @@ Plasma shell for mobile devices.
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.mobiledata/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.nightcolor/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.powermenu/
+%{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.record/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.screenrotation/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.screenshot/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.settingsapp/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.wifi/
-%{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksettings.docked/
-%{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.record/
 %dir %{_kf6_plasmadir}/shells
 %{_kf6_plasmadir}/shells/org.kde.plasma.mobileshell/
 %{_kf6_plugindir}/kf6/kded/kded_plasma_mobile_autodetect_apn.so
@@ -218,13 +217,9 @@ Plasma shell for mobile devices.
 %{_kf6_plugindir}/plasma/applets/org.kde.plasma.mobile.homescreen.halcyon.so
 %{_kf6_plugindir}/plasma/applets/org.kde.plasma.mobile.panel.so
 %{_kf6_plugindir}/plasma/applets/org.kde.plasma.mobile.taskpanel.so
-%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_cellular_network.so
-%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_hotspot.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_info.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_onscreenkeyboard.so
-%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_power.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_time.so
-%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_wifi.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobileshell.so
 %dir %{_kf6_qmldir}/org/kde/plasma/
 %{_kf6_qmldir}/org/kde/plasma/mm/
