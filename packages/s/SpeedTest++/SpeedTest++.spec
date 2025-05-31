@@ -1,7 +1,7 @@
 #
 # spec file for package SpeedTest++
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           SpeedTest++
-Version:        1.11+git20210829.0f63cfb
+Version:        1.11+git20240407.b743996
 Release:        0
 Summary:        Yet another unofficial speedtest.net client cli interface
 License:        MIT
 URL:            https://github.com/taganaka/SpeedTest
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(libcrypto)
