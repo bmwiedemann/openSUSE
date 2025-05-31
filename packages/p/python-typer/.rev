@@ -259,4 +259,15 @@
 - Switch to autosetup macro.</comment>
     <requestid>1277916</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1c7e70e63c17d1fd0d2f9a4be8d164c3</srcmd5>
+    <version>0.16.0</version>
+    <time>1748711659</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0
+  * Add compatibility with Click 8.2.
+- Remove support-click-8.2.patch as it is no longer needed.
+</comment>
+    <requestid>1280711</requestid>
+  </revision>
 </revisionlist>
