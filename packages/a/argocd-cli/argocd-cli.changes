@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat May 31 07:16:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.5:
+  * Changelog
+    - fe5869d: fix(hydrator): increase max msg size (cherry-pick
+      #23190) (#23191) (@gcp-cherry-pick-bot[bot])
+    - 0e20cb6: fix: add cooldown to prevent resetting autoheal exp
+      backoff preemptively (cherry-pick #23057) (#23189)
+      (@gdsoumya)
+
+-------------------------------------------------------------------
+Sat May 31 07:04:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.4:
+  * Changelog
+    This release fixes a critical security issue:
+    GHSA-2hj5-g64g-fp6p
+  * Other work
+    - 040ed44: Merge commit from fork (@crenshaw-dev)
+    - c27a9d3: fix(commit-server): apply image override
+      (cherry-pick #22916) (#22917) (@gcp-cherry-pick-bot[bot])
+
+-------------------------------------------------------------------
 Thu May 22 04:47:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.3:
