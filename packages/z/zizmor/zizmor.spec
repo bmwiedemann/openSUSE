@@ -17,11 +17,11 @@
 
 
 Name:           zizmor
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        A static analysis tool for GitHub Actions
 License:        MIT
-URL:            https://github.com/woodruffw/zizmor
+URL:            https://github.com/zizmorcore/zizmor
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  bash-completion

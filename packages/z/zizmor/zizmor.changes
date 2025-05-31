@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat May 31 06:09:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.9.0:
+  * New Features
+    - zizmor now supports generating completions for Nushell (#838)
+  * Enhancements
+    - The template-injection audit has been rewritten, and is now
+      significantly more precise and general over contexts supplied
+      via GitHub's webhook payloads (i.e. github.event.*) (#745)
+    - The template-injection audit now detects vulnerable template
+      injections in more actions inputs, thanks to an integration
+      with CodeQL's sink metadata (#849)
+  * Bug Fixes
+    - The insecure-commands now correctly detects different truthy
+      values in ACTIONS_ALLOW_UNSECURE_COMMANDS (#840)
+    - The template-injection audit now correctly emits pedantic
+      findings in a blanket manner, rather than filtering them
+      based on the presence of other findings (#745)
+    - CLI: Fixed a misleading error message when zizmor is used
+      with a GitHub host other than github.com (#863)
+  * Dependencies
+    - chore(deps): bump the cargo group with 3 updates (#860)
+    - chore(deps): bump astral-sh/setup-uv in the github-actions
+      group (#859)
+
+-------------------------------------------------------------------
 Wed May 21 04:29:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.8.0:
