@@ -1,0 +1,187 @@
+Add support for LoaderEntryOneshot EFI variable
+
+Index: grub-2.12/grub-core/normal/menu.c
+===================================================================
+--- grub-2.12.orig/grub-core/normal/menu.c
++++ grub-2.12/grub-core/normal/menu.c
+@@ -36,6 +36,16 @@
+ #ifdef GRUB_MACHINE_IEEE1275
+ #include <grub/ieee1275/ieee1275.h>
+ #endif
++#ifdef GRUB_MACHINE_EFI
++#include <grub/charset.h>
++#include <grub/efi/api.h>
++#include <grub/efi/efi.h>
++
++#define GRUB_EFI_LOADER_GUID \
++        { 0x4a67b082, 0x0a4c, 0x41cf, { 0xb6, 0xc7, 0x44, 0x0b, 0x29, 0xbb, 0x8c, 0x4f } }
++static grub_guid_t grub_efi_loader_guid = GRUB_EFI_LOADER_GUID;
++
++#endif
+ 
+ /* Time to delay after displaying an error message about a default/fallback
+    entry failing to boot.  */
+@@ -562,6 +572,62 @@ menuentry_eq (const char *id, const char
+     }
+ }
+ 
++/* Search for an entry in the menu by its name */
++static int
++search_entry (grub_menu_t menu, const char* name)
++{
++  /* See if the variable matches the title of a menu entry.  */
++  grub_menu_entry_t e = menu->entry_list;
++  int i;
++  int entry;
++
++  /* Skip hidden entries */
++  while (e && e->hidden)
++  e = e->next;
++
++  grub_errno = GRUB_ERR_NONE;
++
++  for (i = 0; e; i++)
++  {
++	if (menuentry_eq (e->title, name)
++		|| menuentry_eq (e->id, name))
++	  {
++		entry = i;
++		break;
++	  }
++
++	if (e->bls)
++	  {
++		char *v, *ext;
++
++		if ((v = grub_strdup (name)) &&
++			(ext = grub_strrchr (v, '.')) &&
++			grub_strcmp (ext, ".conf") == 0)
++		  {
++			*ext = '\0';
++			if (menuentry_eq (e->id, v))
++			  {
++				entry = i;
++				grub_free (v);
++				break;
++			  }
++		  }
++		grub_free (v);
++	  }
++
++	e = e->next;
++
++	/* Skip hidden entries */
++	while (e && e->hidden)
++	  e = e->next;
++  }
++
++  if (! e)
++	entry = -1;
++
++  return entry;
++}
++
+ 
+ /* Get the entry number from the variable NAME.  */
+ static int
+@@ -580,53 +646,7 @@ get_entry_number (grub_menu_t menu, cons
+ 
+   if (grub_errno == GRUB_ERR_BAD_NUMBER)
+     {
+-      /* See if the variable matches the title of a menu entry.  */
+-      grub_menu_entry_t e = menu->entry_list;
+-      int i;
+-
+-      /* Skip hidden entries */
+-      while (e && e->hidden)
+-	e = e->next;
+-
+-      grub_errno = GRUB_ERR_NONE;
+-
+-      for (i = 0; e; i++)
+-	{
+-	  if (menuentry_eq (e->title, val)
+-	      || menuentry_eq (e->id, val))
+-	    {
+-	      entry = i;
+-	      break;
+-	    }
+-
+-	  if (e->bls)
+-	    {
+-	      char *v, *ext;
+-
+-	      if ((v = grub_strdup (val)) &&
+-		  (ext = grub_strrchr (v, '.')) &&
+-		  grub_strcmp (ext, ".conf") == 0)
+-		{
+-		  *ext = '\0';
+-		  if (menuentry_eq (e->id, v))
+-		    {
+-		      entry = i;
+-		      grub_free (v);
+-		      break;
+-		    }
+-		}
+-	      grub_free (v);
+-	    }
+-
+-	  e = e->next;
+-
+-	  /* Skip hidden entries */
+-	  while (e && e->hidden)
+-	    e = e->next;
+-	}
+-
+-      if (! e)
+-	entry = -1;
++      entry = search_entry (menu, val);
+     }
+ 
+   if (grub_errno != GRUB_ERR_NONE)
+@@ -724,6 +744,45 @@ run_menu (grub_menu_t menu, int nested,
+ 
+   default_entry = get_entry_number (menu, "default");
+ 
++#ifdef GRUB_MACHINE_EFI
++  /* verify we are using blscfg */
++  const char* val = grub_env_get ("enable_blscfg");
++  if (val && (val[0] == '1' || val[0] == 'y'))
++	{
++	  grub_efi_status_t status;
++	  int oneshot_entry_index;
++	  grub_efi_char16_t *oneshot_entry_efi = NULL;
++	  char *oneshot_entry = NULL;
++	  grub_size_t oneshot_entry_size;
++	  status = grub_efi_get_variable("LoaderEntryOneShot",
++									 &grub_efi_loader_guid,
++									 &oneshot_entry_size,
++									 (void**) &oneshot_entry_efi);
++	  if (status == GRUB_EFI_SUCCESS)
++		{
++		  grub_efi_char16_t *src = oneshot_entry_efi;
++		  int size = 0;
++		  while (*src++)
++			size++;
++		  if (size == 0)
++			{
++			  oneshot_entry = grub_malloc (size * sizeof (char));
++			  grub_utf16_to_utf8 ((grub_uint8_t*) oneshot_entry,
++								  (grub_uint16_t*) oneshot_entry_efi, size);
++			  oneshot_entry_index = search_entry (menu, oneshot_entry);
++			  if (oneshot_entry_index != -1)
++				{
++				  default_entry = oneshot_entry_index;
++				  grub_efi_set_variable_to_string("LoaderEntryOneShot",
++						  						  &grub_efi_loader_guid, "", 0);
++				}
++			  grub_free(oneshot_entry);
++			}
++		  grub_free(oneshot_entry_efi);
++		}
++	}
++#endif
++
+   workaround_snapshot_menu_default_entry (menu, "default", &default_entry);
+ 
+   /* If DEFAULT_ENTRY is not within the menu entries, fall back to

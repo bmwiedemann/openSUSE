@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 29 04:06:14 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Use /etc/SUSE-brand to display OS label (bsc#1239169)
+  * 0001-mkconfig-Determine-GRUB_DISTRIBUTOR-from-etc-SUSE-br.patch
+
+-------------------------------------------------------------------
+Wed May 25 13:31:57 UTC 2025 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Add support for LoaderEntryOneshot
+  * grub2-bls-loader-entry-oneshot.patch
+
+-------------------------------------------------------------------
 Tue May 20 07:00:09 UTC 2025 - Michael Chang <mchang@suse.com>
 
 - Fix product name missing in snapshot list (bsc#1243162)

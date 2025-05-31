@@ -479,6 +479,8 @@ Patch307:       0007-disk-cryptodisk-Wipe-the-passphrase-from-memory.patch
 Patch308:       0008-cryptocheck-Add-quiet-option.patch
 Patch309:       0001-Improve-TPM-key-protection-on-boot-interruptions.patch
 Patch310:       0004-Key-revocation-on-out-of-bound-file-access.patch
+Patch311:       grub2-bls-loader-entry-oneshot.patch
+Patch312:       0001-mkconfig-Determine-GRUB_DISTRIBUTOR-from-etc-SUSE-br.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime
