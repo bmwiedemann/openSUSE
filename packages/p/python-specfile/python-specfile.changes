@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 30 08:43:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.35.1
+  * We have fixed a bug that caused changes to get lost when a
+    spec file passed as a path was replaced or deleted. (#470)
+
+-------------------------------------------------------------------
 Wed May 14 12:17:22 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.35.0
