@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 29 18:09:58 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.2
+  Fixed:
+  * Qt6 deprecation warnings;
+  * No such signal QComboBox::currentIndexChanged(const QString);
+  * Ignoring return value of function declared with 'nodiscard'
+    attribute [-Wunused-result];
+  * No such signal SingleApplication::messageReceived(const QString);
+  * Wine variables are not parsed properly for wine prefix kill action;
+  * Invalid qm file location for cmake 4.x and qt6.9.x
+
+-------------------------------------------------------------------
 Sat Apr 19 08:36:38 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.1

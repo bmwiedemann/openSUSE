@@ -17,7 +17,7 @@
 
 
 Name:           q4wine
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Qt GUI for WINE
 License:        GPL-3.0-only
