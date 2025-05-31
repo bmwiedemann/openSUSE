@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 31 07:19:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.2:
+  Release notes:
+  https://github.com/openbao/openbao/blob/v2.2.2/CHANGELOG.md
+  * SECURITY:
+    - sdk/framework: prevent information disclosure on invalid
+      request. HCSEC-2025-09 / CVE-2025-4166. [GH-1323]
+  * BUG FIXES:
+    - ui: Fix description of Organizational Unit (OU) field in PKI.
+      [GH-1333]
+
+-------------------------------------------------------------------
 Thu Apr 24 06:58:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.1:
