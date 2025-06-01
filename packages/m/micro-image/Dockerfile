@@ -18,7 +18,8 @@
 #!BuildTag: opensuse/bci/bci-micro:%OS_VERSION_ID_SP%-%RELEASE%
 #!BuildTag: opensuse/bci/bci-micro:%OS_VERSION_ID_SP%
 #!BuildTag: opensuse/bci/bci-micro:latest
-
+#!BuildName: opensuse-bci-bci-micro
+#!BuildVersion: %OS_VERSION_ID_SP%.0.0
 FROM scratch AS target
 FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
