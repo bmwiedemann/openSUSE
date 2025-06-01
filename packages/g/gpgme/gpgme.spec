@@ -28,6 +28,9 @@
 %define psuffix qt
 %bcond_with python3
 %bcond_without qt
+%if 0%{suse_version} == 1600 && ! 0%{?is_opensuse}
+ExclusiveArch:  donotbuild
+%endif
 %endif
 %if "%{flavor}" == "qt6"
 %define psuffix qt6

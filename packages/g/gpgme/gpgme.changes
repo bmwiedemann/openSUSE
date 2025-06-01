@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 29 16:36:13 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not build the qt5 flavor in SLE16 where Qt5 won't be
+  available.
+
+-------------------------------------------------------------------
 Fri May 23 20:56:43 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.24.3:
