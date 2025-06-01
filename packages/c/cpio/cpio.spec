@@ -61,8 +61,8 @@ Summary:        Tape drive control utility
 Group:          Productivity/Archiving/Backup
 Requires:       %{name} = %{version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Provides:       mt
+Conflicts:      mt
 
 %description mt
 This package includes the 'mt', a local tape drive control program.
@@ -88,9 +88,6 @@ make %{?_smp_mflags}
 %install
 mkdir -p %{buildroot}/{usr/bin,bin}
 %make_install
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -sf %{_sysconfdir}/alternatives/mt %{buildroot}%{_bindir}/mt
-ln -sf %{_sysconfdir}/alternatives/mt.1%{ext_man} %{buildroot}%{_mandir}/man1/mt.1%{ext_man}
 %if 0%{?suse_version} < 1550
 ln -sf %{_bindir}/cpio %{buildroot}/bin
 %endif
@@ -101,20 +98,15 @@ ln -sf %{_bindir}/cpio %{buildroot}/bin
 make %{?_smp_mflags} check
 
 %post mt
-%{_sbindir}/update-alternatives --force \
-    --install %{_bindir}/mt mt %{_bindir}/gnumt 10 \
-    --slave %{_mandir}/man1/mt.1%{ext_man} mt.1%{ext_man} %{_mandir}/man1/gnumt.1%{ext_man}
+if [ ! -f %{_bindir}/gnumt ] ; then
+   "%{_sbindir}/update-alternatives" --remove mt %{_bindir}/gnumt
+fi
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
 
 %preun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-
-%postun mt
-if [ ! -f %{_bindir}/gnumt ] ; then
-   "%{_sbindir}/update-alternatives" --remove mt %{_bindir}/gnumt
-fi
 
 %files
 %license COPYING
@@ -131,8 +123,6 @@ fi
 %{_bindir}/gnumt
 %ghost %{_mandir}/man1/mt.1%{ext_man}
 %{_mandir}/man1/gnumt.1%{?ext_man}
-%ghost %{_sysconfdir}/alternatives/mt
-%ghost %{_sysconfdir}/alternatives/mt.1%{ext_man}
 
 %files lang -f %{name}.lang
 

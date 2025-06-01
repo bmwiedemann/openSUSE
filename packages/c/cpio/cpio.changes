@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 29 05:28:30 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Migrate away from update-alternatives (bsc#1240092).
+  cpio-mt now conflicts with other providers of /usr/bin/mt.
+- Upon installation of the newer packages, the cpio-mt alternatives
+  are purged from the system.
+
+-------------------------------------------------------------------
 Fri Mar 21 12:15:31 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Use -std=gnu11 to avoid extra diagnostics when calling an
