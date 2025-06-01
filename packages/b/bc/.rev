@@ -197,4 +197,12 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1149154 from dimstar)</comment>
     <requestid>1149164</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c30589f47f3a08ab55b8a0e6d3743c97</srcmd5>
+    <version>1.08.2</version>
+    <time>1748806566</time>
+    <user>dimstar_suse</user>
+    <comment>GNU bc 1.08.2 (forwarded request 1281193 from AndreasStieger)</comment>
+    <requestid>1281277</requestid>
+  </revision>
 </revisionlist>

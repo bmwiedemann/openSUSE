@@ -2,6 +2,7 @@
 # spec file for package bc
 #
 # Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +18,22 @@
 
 
 Name:           bc
-Version:        1.07.1
+Version:        1.08.2
 Release:        0
 Summary:        GNU Command Line Calculator
-License:        GPL-2.0-or-later
+License:        GFDL-1.2-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://www.gnu.org/software/bc/
 Source0:        https://ftp.gnu.org/gnu/bc/bc-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/bc/bc-%{version}.tar.gz.sig
+# from https://src.fedoraproject.org/rpms/bc/blob/rawhide/f/kevin_pizzini.asc
 Source2:        %{name}.keyring
-# Correct return value after 'q' [bsc#1129038]
-Patch2:         bc-dc-correct-return-value.patch
 BuildRequires:  bison
 BuildRequires:  ed
 BuildRequires:  flex
 BuildRequires:  makeinfo
-BuildRequires:  ncurses-devel
-BuildRequires:  readline-devel
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(readline)
 
 %description
 bc is an interpreter that supports numbers of arbitrary precision and
@@ -62,28 +60,22 @@ and "pushes" its results back onto the stack.
 %configure \
   --with-readline \
   --without-libedit
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/bc.info%{ext_info}
-%install_info --info-dir=%{_infodir} %{_infodir}/dc.info%{ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/bc.info%{ext_info}
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/dc.info%{ext_info}
+%check
+%make_build check
 
 %files
-%defattr(-,root,root)
-%license COPYING.LIB COPYING
+%license COPYING
 %doc NEWS README FAQ
 %{_bindir}/bc
 %{_bindir}/dc
-%{_infodir}/bc.info%{ext_info}
-%{_infodir}/dc.info%{ext_info}
-%{_mandir}/man1/bc.1%{ext_man}
-%{_mandir}/man1/dc.1%{ext_man}
+%{_infodir}/bc.info%{?ext_info}
+%{_infodir}/dc.info%{?ext_info}
+%{_mandir}/man1/bc.1%{?ext_man}
+%{_mandir}/man1/dc.1%{?ext_man}
 
 %changelog

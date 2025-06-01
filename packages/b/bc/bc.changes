@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 29 17:53:58 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU bc 1.08.2
+  * GCC 15 compatibility
+  * Plug a small memory leak in dc
+  * Fix a formatting botch in doc/bc.1
+- drop upstreamed bc-dc-correct-return-value.patch
+- drop unneeded info macros
+
+-------------------------------------------------------------------
 Thu Feb 22 10:08:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
