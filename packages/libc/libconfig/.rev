@@ -151,4 +151,12 @@ Redesigned the directory-include feature to avoid using
     <comment>add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to still allow build on Leap 15.6 (forwarded request 1267435 from hsk17)</comment>
     <requestid>1267512</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ffa77f80e6b3caeb4c489ed1e09b7594</srcmd5>
+    <version>1.8.1</version>
+    <time>1748806568</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.8.1</comment>
+    <requestid>1281073</requestid>
+  </revision>
 </revisionlist>

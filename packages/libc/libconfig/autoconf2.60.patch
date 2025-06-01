@@ -1,0 +1,23 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2025-05-29 09:03:06.799019252 +0200
+Upstream: no
+
+openSUSE Leap 15.6 does not have autoconf 2.70
+(AC_CHECK_INCLUDES_DEFAULT).
+---
+ configure.ac |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: libconfig-1.8/configure.ac
+===================================================================
+--- libconfig-1.8.orig/configure.ac
++++ libconfig-1.8/configure.ac
+@@ -70,7 +70,7 @@ fi;
+ 
+ 
+ dnl Checks for header files.
+-AC_CHECK_INCLUDES_DEFAULT
++AC_HEADER_STDC
+ 
+ AC_CHECK_HEADERS(unistd.h stdint.h xlocale.h)
+ 
