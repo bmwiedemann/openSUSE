@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 29 09:55:08 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Add a dependency on device-mapper to libcryptsetup12 to install
+  the required device-mapper udev rules. [bsc#1241612]
+
+-------------------------------------------------------------------
 Fri Mar 14 10:06:24 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Set pbkdf2 as the default PBKDF algorithm in LUKS2 format.

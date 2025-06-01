@@ -89,6 +89,7 @@ Documentation and man pages for cryptsetup
 Summary:        Library for setting up dm-crypt Based Encrypted Block Devices
 License:        LGPL-2.0-or-later WITH cryptsetup-OpenSSL-exception
 Group:          System/Libraries
+Requires:       device-mapper
 Provides:       libcryptsetup%{so_ver}-hmac = %{version}
 Obsoletes:      libcryptsetup%{so_ver}-hmac < %{version}
 
