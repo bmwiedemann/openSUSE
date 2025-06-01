@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 29 16:30:56 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
+
+- Sync containers.conf & storage.conf with the current c/* versions
+- Rename storage-conf-prio-list.patch to 0002-storage-conf-prio-list.patch
+- Add patch to set SUSE defaults to containers.conf:
+  * 0003-containers-conf-suse-defaults.patch
+
+-------------------------------------------------------------------
 Wed Apr  9 05:50:02 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
 
 - containers.conf default configuration modifications:

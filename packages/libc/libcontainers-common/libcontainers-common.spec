@@ -52,7 +52,8 @@ Source11:       https://raw.githubusercontent.com/containers/shortnames/%{shortn
 Source12:       openSUSE-policy.json
 Patch100:       0001-containers.conf-SUSE-clear-cni-config-dir-for-ALP.patch
 # Downstream patch to add the commented out storage driver priority list
-Patch101:       storage-conf-prio-list.patch
+Patch101:       0002-storage-conf-prio-list.patch
+Patch102:       0003-containers-conf-suse-defaults.patch
 BuildRequires:  go-go-md2man
 Requires(post): %{_bindir}/sed
 # add SLE-specific mounts for only SLES systems
@@ -121,14 +122,14 @@ Ships the upstream registries.conf with registry.opensuse.org and registry.suse.
 
 %prep
 cp %{SOURCE9} .
-# Apply CNI config on streams other than ALP (bsc#1213556)
-# https://github.com/containers/podman/issues/19327
+# Apply CNI config to streams that support CNI networking backend for podman i.e SLE-15
+# bsc#1213556 (https://github.com/containers/podman/issues/19327)
 %if 0%{?suse_version} < 1600 && !0%{?is_opensuse}
 %patch -P100 -p3
 sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %_builddir/containers.conf
 %endif
 cp %{SOURCE4} .
-%patch -P101
+%patch -P101 -P102
 
 %setup -q -Tcq -b0 -b1 -b8
 # copy the LICENSE file in the build root

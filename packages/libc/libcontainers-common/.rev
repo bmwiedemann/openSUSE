@@ -645,4 +645,12 @@
 * set nftables as the default firewall driver for netavark (forwarded request 1268039 from danishprakash)</comment>
     <requestid>1268065</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>a5658c99a15baa231cb8dfbd851aa624</srcmd5>
+    <version>20250409</version>
+    <time>1748806576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1281182</requestid>
+  </revision>
 </revisionlist>

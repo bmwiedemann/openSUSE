@@ -1,0 +1,22 @@
+Index: containers.conf
+===================================================================
+--- containers.conf	(revision 71490d8c0a9096277f3511c4adb298db)
++++ containers.conf	(working copy)
+@@ -378,7 +378,7 @@
+ # drivers are "iptables", "nftables", "none" (no firewall rules will be created) and "firewalld" (firewalld is
+ # experimental at the moment and not recommend outside of testing).
+ #
+-#firewall_driver = ""
++firewall_driver = "nftables"
+ 
+ 
+ # The network name of the default network to attach pods to.
+@@ -715,7 +715,7 @@
+ 
+ # Default OCI runtime
+ #
+-#runtime = "crun"
++runtime = "runc"
+ 
+ # List of the OCI runtimes that support --format=json. When json is supported
+ # engine will use it for reporting nicer errors.

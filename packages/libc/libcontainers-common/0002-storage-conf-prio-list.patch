@@ -1,0 +1,13 @@
+Index: storage.conf
+===================================================================
+--- storage.conf	(revision 71490d8c0a9096277f3511c4adb298db)
++++ storage.conf	(working copy)
+@@ -21,7 +21,7 @@
+ 
+ # Priority list for the storage drivers that will be tested one
+ # after the other to pick the storage driver if it is not defined.
+-# driver_priority = ["overlay", "btrfs"]
++# driver_priority = ["btrfs", "overlay"]
+ 
+ # Primary Read/Write location of container storage
+ # When changing the graphroot location on an SELinux system, you must
