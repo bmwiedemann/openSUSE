@@ -88,6 +88,7 @@ Source5:        mpivars.csh
 Patch1:         romio341-backport-fixes-from-mpich.patch
 Patch2:         mtl-ofi-fix-missing-definition-of-container_of.patch
 Patch3:         Fix-type-mismatch-error.patch
+Patch4:         Force-alignment-of-opal_atomic_int128_t-to-be-16B.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Exclude 32b archs
@@ -310,7 +311,7 @@ echo FLAVOR %{flavor}
 %autosetup -p0 -n openmpi-%{version}
 
 # Live patch the VERSION file
-sed -i -e 's/^greek=.*$/greek=%{git_ver}/' -e 's/^repo_rev=.*$/repo_rev=%{version}%{git_ver}/' \
+sed -i -e 's/^greek=.*$/greek=/' -e 's/^repo_rev=.*$/repo_rev=%{version}/' \
        -e 's/^date=.*$/date="OpenMPI %{version} Distribution for SUSE"/' VERSION
 
 #############################################################################

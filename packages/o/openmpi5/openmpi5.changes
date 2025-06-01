@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 26 15:52:53 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Fix bad git_ver appearing in VERSION
+- Add Force-alignment-of-opal_atomic_int128_t-to-be-16B.patch to fix a 128b CAS issue on
+  s390x (bsc#1243680)
+
+-------------------------------------------------------------------
 Tue Apr 15 11:18:46 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Remove bad dependency from openmpi5-testsuite to openmpi5-testsuite-libs
