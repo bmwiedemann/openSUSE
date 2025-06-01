@@ -18,7 +18,8 @@
 #!BuildTag: opensuse/bci/bci-init:%OS_VERSION_ID_SP%-%RELEASE%
 #!BuildTag: opensuse/bci/bci-init:%OS_VERSION_ID_SP%
 #!BuildTag: opensuse/bci/bci-init:latest
-
+#!BuildName: opensuse-bci-bci-init-%OS_VERSION_ID_SP%
+#!BuildVersion: %OS_VERSION_ID_SP%.0.0
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
