@@ -1,7 +1,7 @@
 #
 # spec file for package tar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,8 +88,8 @@ Upstream testsuite for the package
 Summary:        Remote tape drive control server by GNU
 Group:          Productivity/Archiving/Backup
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Provides:       rmt
+Conflicts:      rmt
 
 %description rmt
 Provides remote access to files and devices for tar, cpio
@@ -152,10 +152,6 @@ cp -r tests %{buildroot}%{_localstatedir}/lib/tests/tar
 rm %{buildroot}%{_localstatedir}/lib/tests/tar/*.{c,h,o}
 rm %{buildroot}%{_localstatedir}/lib/tests/tar/package.m4
 rm %{buildroot}%{_localstatedir}/lib/tests/tar/{atconfig,atlocal,Makefile}*
-# Alternatives system
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -sf %{_sysconfdir}/alternatives/rmt %{buildroot}%{_bindir}/rmt
-ln -sf %{_sysconfdir}/alternatives/rmt.1%{ext_man} %{buildroot}%{_mandir}/man1/rmt.1%{ext_man}
 %if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/bin
 ln -s %{_bindir}/%{name} %{buildroot}/bin
@@ -163,11 +159,6 @@ ln -s %{_bindir}/%{name} %{buildroot}/bin
 %find_lang %{name}
 
 %post rmt
-%{_sbindir}/update-alternatives --force \
-    --install %{_bindir}/rmt rmt %{_bindir}/gnurmt 10 \
-    --slave %{_mandir}/man1/rmt.1%{ext_man} rmt.1%{ext_man} %{_mandir}/man1/gnurmt.1%{ext_man}
-
-%postun rmt
 if [ ! -f %{_bindir}/gnurmt ] ; then
    "%{_sbindir}/update-alternatives" --remove rmt %{_bindir}/gnurmt
 fi
@@ -191,8 +182,6 @@ fi
 %{_bindir}/gnurmt
 %ghost %{_mandir}/man1/rmt.1%{ext_man}
 %{_mandir}/man1/gnurmt.1%{?ext_man}
-%ghost %{_sysconfdir}/alternatives/rmt
-%ghost %{_sysconfdir}/alternatives/rmt.1%{ext_man}
 
 %files doc
 %dir %{_docdir}/%{name}
