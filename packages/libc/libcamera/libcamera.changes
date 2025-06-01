@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 29 16:21:24 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove Qt5 BuildRequires which aren't really needed nor used. 
+
+-------------------------------------------------------------------
 Tue Apr  8 13:52:10 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Also bump the soname in baselibs.conf

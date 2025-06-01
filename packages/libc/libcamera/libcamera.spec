@@ -39,9 +39,6 @@ BuildRequires:  c++_compiler
 BuildRequires:  gcc11
 BuildRequires:  gcc11-c++
 %endif
-BuildRequires:  libQt5Core-devel
-BuildRequires:  libQt5Gui-devel
-BuildRequires:  libQt5Widgets-devel
 BuildRequires:  meson >= 0.56
 BuildRequires:  pkg-config
 BuildRequires:  python3-Jinja2
