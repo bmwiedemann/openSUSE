@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 16 12:09:29 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/PerlGameDev/SDL/pull/309
+  + perl-SDL-gcc15.patch
+  + perl-SDL-fix-tests.patch
+
+-------------------------------------------------------------------
 Wed May  1 19:55:41 UTC 2024 - munix9@googlemail.com
 
 - Add 299.patch: Fix implicit declaration of _calc_offset,

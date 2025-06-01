@@ -1,7 +1,7 @@
 #
 # spec file for package perl-SDL
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,9 @@ Patch0:         https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pul
 Patch1:         https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pull/304.patch
 # PATCH-FIX-UPSTREAM 308.patch -- based on PR 308
 Patch2:         https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pull/308.patch
+# https://github.com/PerlGameDev/SDL/pull/309
+Patch3:         perl-SDL-gcc15.patch
+Patch4:         perl-SDL-fix-tests.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Alien::SDL) >= 1.446
