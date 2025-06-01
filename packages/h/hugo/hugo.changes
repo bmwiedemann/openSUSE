@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat May 31 12:41:12 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.147.7:
+  * releaser: Bump versions for release of 0.147.7
+  * Fix language handling in shortcode templates
+  * Handle KaTeX warnings (#13760)
+  * build(deps): bump golang.org/x/image from 0.26.0 to 0.27.0
+  * build(deps): bump golang.org/x/text from 0.24.0 to 0.25.0
+  * build(deps): bump github.com/spf13/cast from 1.7.1 to 1.8.0
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.17.2 to 2.18.0
+  * resources/page: Respect disablePathToLower for permalink tokens
+  * common/collections: Increase test coverage
+  * parser/pageparser: Add coverage for all IsX methods of Item
+  * resources: Remove unused interface
+  * Make sure that unreferenced but changed bundle resources gets republished
+  * deps: Upgrade github.com/olekukonko/tablewriter v0.0.5 => v1.0.7
+  * releaser: Prepare repository for 0.148.0-DEV
+
+-------------------------------------------------------------------
+Tue May 27 11:17:16 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.147.6:
+  * releaser: Bump versions for release of 0.147.6
+  * Improve warning message on superfluous prefix when using function 'partials.Include'
+  * Fix recent regression with cascading of params to content adapters
+  * Fix it so e.g. de in layouts/_shortcodes/de.html is not interpreted as a language code
+  * commands: Make sure the browser gets refreshed on changes when --disableFastRender is set
+  * tpl/transform: Expose the KaTeX strict option
+  * releaser: Prepare repository for 0.148.0-DEV
+
+-------------------------------------------------------------------
+Thu May 22 11:37:19 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.147.5:
+  * releaser: Bump versions for release of 0.147.5
+  * Fix live reload when editing inline partials
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.20.37 to 2.23.5
+  * releaser: Prepare repository for 0.148.0-DEV
+
+-------------------------------------------------------------------
 Wed May 21 02:26:58 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.147.4:
