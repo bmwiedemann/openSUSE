@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 01 12:36:22 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.13.0+git5.g2ee969a:
+  * Update dependencies
+  * Added support for `ctrl_h` and `ctrl_i` in keymap config (#444)
+  * Untangles the keystrokes ctrl-h and backspace (#445)
+  * Auto-fix some recent lints
+  * Update tiny version in Cargo.lock
+
+-------------------------------------------------------------------
 Sun Apr 06 15:46:09 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.13.0+git2:
