@@ -17,11 +17,10 @@
 
 
 Name:           android-udev-rules
-Version:        20250314
+Version:        20250525
 Release:        0
 Summary:        Udev rules for Android Debug Bridge
 License:        GPL-3.0-or-later
-Group:          Hardware/Mobile
 URL:            https://github.com/M0Rf30/android-udev-rules
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  sysuser-shadow
