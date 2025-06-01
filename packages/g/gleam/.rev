@@ -143,4 +143,16 @@
  * Changelog: https://gleam.run/news/gleam-gets-rename-variable/</comment>
     <requestid>1246040</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>68956666a8d10c8770386d7597932171</srcmd5>
+    <version>1.10.0</version>
+    <time>1748806619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.0:
+  * Changelog: https://gleam.run/news/global-rename-and-find-references/
+- skip unit tests that requires networking upon build
+- Update to 1.9.0:
+  * Changelog: https://gleam.run/news/hello-echo-hello-git/</comment>
+    <requestid>1281636</requestid>
+  </revision>
 </revisionlist>

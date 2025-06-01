@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 20 09:10:09 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.10.0:
+  * Changelog: https://gleam.run/news/global-rename-and-find-references/
+
+- skip unit tests that requires networking upon build
+
+- Update to 1.9.0:
+  * Changelog: https://gleam.run/news/hello-echo-hello-git/
+
+-------------------------------------------------------------------
 Sat Feb 15 03:56:00 UTC 2025 - litma leung <pi_cla@disroot.org>
 
 - Update to 1.8.1:

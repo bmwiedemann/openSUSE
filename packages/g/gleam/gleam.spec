@@ -17,7 +17,7 @@
 
 
 Name:           gleam
-Version:        1.8.1
+Version:        1.10.0
 Release:        0
 Summary:        A friendly language for building type-safe, scalable systems!
 License:        Apache-2.0
@@ -50,7 +50,7 @@ install -D -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/gleam %{buildroot}%{_bindir}/gleam
 
 %check
-%{cargo_test}
+%{cargo_test} -- --skip tests::echo
 
 %files
 %license LICENCE
