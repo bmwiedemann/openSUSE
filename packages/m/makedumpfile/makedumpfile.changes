@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 29 11:10:50 UTC 2025 - Petr Tesařík <ptesarik@suse.com>
+
+- Update to 1.7.7:
+  * Support for kernels up to v6.14 (x86_64)
+  * Fix gcc-15 compile errors
+  * Improve message readability and fix typos
+- Drop upstreamed patches:
+  * makedumpfile-fix-detection-of-typed-compound-pages-Linux-6.12.patch
+
+-------------------------------------------------------------------
+Thu May 29 10:54:22 UTC 2025 - Petr Tesařík <ptesarik@suse.com>
+
+- Update bundled eppic to 63c2a2072464d774097a1a6cc1d2e98290f89c49.
+
+-------------------------------------------------------------------
 Thu Feb 27 10:09:29 UTC 2025 - Petr Tesařík <ptesarik@suse.com>
 
 - Update to 1.7.5:

@@ -1237,4 +1237,19 @@ See README.static for an explanation why static linking is preferred for some li
 </comment>
     <requestid>1248947</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>4c807a32d448d58c2f141d00fe78b043</srcmd5>
+    <version>1.7.7</version>
+    <time>1748806581</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.7:
+  * Support for kernels up to v6.14 (x86_64)
+  * Fix gcc-15 compile errors
+  * Improve message readability and fix typos
+- Drop upstreamed patches:
+  * makedumpfile-fix-detection-of-typed-compound-pages-Linux-6.12.patch
+
+- Update bundled eppic to 63c2a2072464d774097a1a6cc1d2e98290f89c49.</comment>
+    <requestid>1281243</requestid>
+  </revision>
 </revisionlist>

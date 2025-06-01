@@ -17,7 +17,7 @@
 
 
 %define build_eppic 1
-%define eppic_commit 21808c78596d6d80c67eeaa08a618570ae0d886d
+%define eppic_commit 63c2a2072464d774097a1a6cc1d2e98290f89c49
 
 %if 0%{!?have_zstd:1}
 %if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
@@ -28,19 +28,18 @@
 %endif
 
 Name:           makedumpfile
-Version:        1.7.6
+Version:        1.7.7
 Release:        0
 Summary:        Partial kernel dump
 License:        GPL-2.0-only
 Group:          System/Kernel
 URL:            https://github.com/makedumpfile/makedumpfile
-Source:         https://github.com/makedumpfile/makedumpfile/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/makedumpfile/makedumpfile/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.xz
 Source1:        https://github.com/lucchouina/eppic/archive/%{eppic_commit}.tar.gz#/eppic-%{eppic_commit}.tar.gz
 Source99:       %{name}-rpmlintrc
 Patch0:         %{name}-override-libtinfo.patch
 Patch1:         %{name}-ppc64-VA-range-SUSE.patch
 Patch2:         %{name}-PN_XNUM.patch
-Patch3:         %{name}-fix-detection-of-typed-compound-pages-Linux-6.12.patch
 BuildRequires:  libbz2-devel
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
