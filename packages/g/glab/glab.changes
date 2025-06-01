@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu May 29 05:18:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.58.0:
+  * feat(deploy-key): Deploy key functionality
+  * fix(auth): fix CI JOB TOKEN with custom CA file
+  * chore: Adding initial git function mocks
+  * chore(usage-ping): Add configuration option to opt out of usage
+    data
+  * feat(securefile): add project secure file get support
+  * chore: Update command examples following new style guide, fixes
+    #7833
+  * chore: Make scopes of non-admin PATs clearer
+  * chore(docs): update example to $># format
+  * chore(deps): update module k8s.io/client-go to v0.33.1
+  * chore(deps): update module k8s.io/apimachinery to v0.33.1
+  * chore(deps): update dependency markdownlint-cli2 to v0.18.1
+  * docs: Add mise as an install method
+  * chore: Update go to 1.24.3
+  * chore(deps): update dependency markdownlint-cli2 to v0.18.0
+  * chore(deps): update dependency @commitlint/read to ^19.8.1
+  * chore(deps): update dependency @commitlint/format to ^19.8.1
+  * chore(deps): update dependency @commitlint/lint to ^19.8.1
+  * feat(cluster): add FluxCD environment creation during agent
+    bootstrap
+  * chore(deps): update dependency golang to v1.24.3
+  * refactor(auth): Move auth helper to its own location
+  * chore(deps): update module golang.org/x/oauth2 to v0.30.0
+  * chore(docs): update example tro $># format
+  * fix: try to update ref head only if remote has diverged
+  * chore(deps): update module golang.org/x/crypto to v0.38.0
+  * docs: improve help text for `ci run` `--variables-from`
+  * feat: Add iteration command
+  * chore: Update links to docs.gitlab.com
+  * chore(docs): update example to $># format
+  * test(stacked-diffs): adding missing test for stack save
+  * refactor(cmdutils): remove used once function
+
+-------------------------------------------------------------------
 Fri May 02 07:51:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.57.0:
