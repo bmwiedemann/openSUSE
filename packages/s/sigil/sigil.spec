@@ -21,7 +21,7 @@
 %define pythons python311
 %endif
 Name:           sigil
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only

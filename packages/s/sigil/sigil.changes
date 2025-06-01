@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun  1 09:44:14 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.5.1
+  * Bug Fixes
+    - fix CodeView to Preview syncing when cursor on empty lines
+    - fix build warnings related to overloaded-virtual
+  * New Features
+    - Add AppImage .desktop file with version information
+    - strip AppImage bins when possible
+    - update docs to include Sigil_Plugin_Framework version 15
+
+-------------------------------------------------------------------
 Fri May 23 12:23:11 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update ot 2.5.0
