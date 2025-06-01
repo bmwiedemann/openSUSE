@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 28 17:20:09 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- spec: Drop dependencies on the nwfilter driver (which requires
+  iptables) for Factory and SLFO
+  boo#1231798, jsc#PED-12034
+
+-------------------------------------------------------------------
 Mon May  5 15:47:51 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 11.3.0

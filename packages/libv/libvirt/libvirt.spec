@@ -50,6 +50,7 @@
 %define with_wireshark     0%{!?_without_wireshark:1}
 %define with_libssh2       0%{!?_without_libssh2:1}
 %define with_numactl       0%{!?_without_numactl:1}
+%define with_nwfilter      0%{!?_without_nwfilter:1}
 %define with_modular_daemons 0%{!?_without_modular_daemons:1}
 %define with_userfaultfd_sysctl 0%{!?_without_userfaultfd_sysctl:1}
 
@@ -132,6 +133,15 @@
     %define with_storage_rbd     0
 %endif
 
+# 
+# Factory and SLFO strive to drop iptables. The nwfilter driver has a runtime
+# dependency on iptables, but no build-time one. The driver will be built
+# unconditionally, but will no longer be required/recommended by the meta
+# subpackages in Factory and SLFO.
+%if 0%{?suse_version} >= 1600
+    %define with_nwfilter  0
+%endif
+
 # Prefer nftables if available
 %if "%{?default_firewall_backend}" == "nftables"
     %define prefer_nftables 1
@@ -164,7 +174,10 @@ License:        LGPL-2.1-or-later
 
 Requires:       %{name}-daemon = %{version}-%{release}
 Requires:       %{name}-daemon-config-network = %{version}-%{release}
+%if %{with_nwfilter}
 Requires:       %{name}-daemon-config-nwfilter = %{version}-%{release}
+Requires:       %{name}-daemon-driver-nwfilter = %{version}-%{release}
+%endif
 %if %{with_libxl}
 Requires:       %{name}-daemon-driver-libxl = %{version}-%{release}
 %endif
@@ -181,7 +194,6 @@ Requires:       %{name}-daemon-driver-interface = %{version}-%{release}
 %endif
 Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nodedev = %{version}-%{release}
-Requires:       %{name}-daemon-driver-nwfilter = %{version}-%{release}
 Requires:       %{name}-daemon-driver-secret = %{version}-%{release}
 Requires:       %{name}-daemon-driver-storage = %{version}-%{release}
 Requires:       %{name}-libs = %{version}-%{release}
@@ -705,7 +717,9 @@ Requires:       %{name}-daemon-driver-interface = %{version}-%{release}
 %endif
 Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nodedev = %{version}-%{release}
+%if %{with_nwfilter}
 Recommends:     %{name}-daemon-driver-nwfilter = %{version}-%{release}
+%endif
 Requires:       %{name}-daemon-driver-qemu = %{version}-%{release}
 Requires:       %{name}-daemon-driver-secret = %{version}-%{release}
 Requires:       %{name}-daemon-driver-storage = %{version}-%{release}
@@ -729,7 +743,9 @@ Requires:       %{name}-daemon-driver-interface = %{version}-%{release}
 Requires:       %{name}-daemon-driver-lxc = %{version}-%{release}
 Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nodedev = %{version}-%{release}
+%if %{with_nwfilter}
 Recommends:     %{name}-daemon-driver-nwfilter = %{version}-%{release}
+%endif
 Requires:       %{name}-daemon-driver-secret = %{version}-%{release}
 Requires:       %{name}-daemon-driver-storage = %{version}-%{release}
 
@@ -773,7 +789,9 @@ Requires:       %{name}-daemon-driver-interface = %{version}-%{release}
 %endif
 Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nodedev = %{version}-%{release}
+%if %{with_nwfilter}
 Recommends:     %{name}-daemon-driver-nwfilter = %{version}-%{release}
+%endif
 Requires:       %{name}-daemon-driver-secret = %{version}-%{release}
 Requires:       %{name}-daemon-driver-storage = %{version}-%{release}
 Requires:       %{name}-daemon-driver-vbox = %{version}-%{release}

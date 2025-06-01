@@ -4861,4 +4861,14 @@ make it easier to directly use the Factory package in SUSE projects.</comment>
   boo#1242081</comment>
     <requestid>1274735</requestid>
   </revision>
+  <revision rev="423" vrev="2">
+    <srcmd5>a0aa0eb15914dd855dab0fb2d20617f9</srcmd5>
+    <version>11.3.0</version>
+    <time>1748806566</time>
+    <user>dimstar_suse</user>
+    <comment>- spec: Drop dependencies on the nwfilter driver (which requires
+  iptables) for Factory and SLFO
+  boo#1231798, jsc#PED-12034</comment>
+    <requestid>1280995</requestid>
+  </revision>
 </revisionlist>
