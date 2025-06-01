@@ -17,7 +17,7 @@
 
 
 Name:           apache-commons-csv
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        A library to read and write files in variations of the Comma Separated Value (CSV) format
 License:        Apache-2.0

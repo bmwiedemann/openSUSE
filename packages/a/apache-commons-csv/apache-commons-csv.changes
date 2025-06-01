@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri May 30 10:46:37 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to version 1.14.0
+  * New Features
+    + Define and use Maven property commons.jmh.version.
+    + Add CSVFormat.Builder.setMaxRows(long).
+    + Add CSVFormat.getMaxRows().
+    + CSVPrinter.printRecords(ResultSet) knows how to use
+      CSVFormat's maxRows.
+    + CSVPrinter.printRecords(Iterable) knows how to use
+      CSVFormat's maxRows.
+    + CSVPrinter.printRecords(Stream) knows how to use CSVFormat's
+      maxRows.
+    + CSVParser.stream() knows how to use CSVFormat's maxRows.
+    + CSVParser.getRecords() knows how to use CSVFormat's maxRows.
+    + CSVParser.iterator() knows how to use CSVFormat's maxRows.
+  * Fixed Bugs
+    + CSV-317:  Release history link changed from
+      changes-report.html to changes.html #516.
+    + Remove -nouses directive from maven-bundle-plugin. OSGi
+      package imports now state 'uses' definitions for package
+      imports, this doesn't affect JPMS (from
+      org.apache.commons:commons-parent:80).
+    + CSVParser.parse(URL, Charset, CSVFormat) with a null
+      CSVFormat maps to CSVFormat.DEFAULT (like
+      CSVParser.parse(Reader, CSVFormat)).
+    + CSVParser.parse(String, CSVFormat) with a null CSVFormat maps
+      to CSVFormat.DEFAULT (like CSVParser.parse(Reader,
+      CSVFormat)).
+    + CSVParser.parse(File, Charset, CSVFormat) with a null
+      CSVFormat maps to CSVFormat.DEFAULT (like
+      CSVParser.parse(Reader, CSVFormat)).
+    + CSVParser.parse(Path, Charset, CSVFormat) with a null
+      CSVFormat maps to CSVFormat.DEFAULT (like
+      CSVParser.parse(Reader, CSVFormat)).
+    + CSVParser.parse(InputStream, Charset, CSVFormat) with a null
+      CSVFormat maps to CSVFormat.DEFAULT (like
+      CSVParser.parse(Reader, CSVFormat)).
+    + CSVParser.parse(*) methods with a null Charset maps to
+      Charset.defaultCharset().
+    + Fix possible NullPointerException in Token.toString().
+  * Changes
+    + Bump com.opencsv:opencsv from 5.9 to 5.10.
+    + Bump commons-codec:commons-codec from 1.17.2 to 1.18.0 #522.
+    + Bump org.apache.commons:commons-parent from 79 to 81.
+
+-------------------------------------------------------------------
 Fri Jan 24 15:23:21 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
 
 - Update to version 1.13.0
