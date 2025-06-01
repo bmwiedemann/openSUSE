@@ -16,9 +16,9 @@
 #
 
 
-%define libver  4_8_3
+%define libver  4_8_5
 Name:           rssguard
-Version:        4.8.3
+Version:        4.8.5
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 Group:          Productivity/Networking/News/Clients
@@ -28,6 +28,8 @@ Source0:        https://github.com/martinrotter/rssguard/archive/%{version}.tar.
 Source1:        %{name}.changes
 # PATCH-FIX-OPENSUSE rssguard-4.8.1-add_library_version.patch aloisio@gmx.com -- add version to shared library
 Patch0:         rssguard-4.8.1-add_library_version.patch
+# PATCH-FIX-OPENSUSE https://github.com/martinrotter/rssguard/pull/1740
+Patch1:         fix_missing_returns.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  cmake(Qt6Concurrent)

@@ -549,4 +549,49 @@
 </comment>
     <requestid>1269250</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>60e8ee3eea85a12bfcaffd6b1e1e95ff</srcmd5>
+    <version>4.8.5</version>
+    <time>1748806609</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.8.5
+  + Added:
+    - All dropdown filters (for both feed and article lists) can now be
+      assigned to keyboard shortcuts.
+    - &quot;Add account&quot; dialog was bit updated.
+  + Fixed:
+    - Fixed unwanted &quot;feed error&quot; dialog, now properly configurable.
+    - Fixed text-based filtering for feed list.
+    - Dropdown feed list filtering now properly filters out categories and
+      labels too.
+    - Selected item behavior when filtering is enabled was refined.
+- Update to version 4.8.4
+  + Added:
+    - Notification when feed fetch fails was added.
+      (gh#martinrotter/rssguard#1698)
+    - Application can now start in minimized state even without tray icon being
+      enabled. (gh#martinrotter/rssguard#1713)
+    - Columns in feed list are now resizeable.
+    - Feed list now also offers filtering dropdown toolbar button. This allows
+      easy filtering of feed list the same way as article list already does.
+    - User can now explicitly disable showing of modal dialogs depending on
+      notification type.
+    - Added option to manually reload active skin without restarting the app.
+    - Unread article dot color is now taken from active skin.
+  + Fixed:
+    - HTML formatting was kind of broken for some specific feeds including
+      bracket symbols. (gh#martinrotter/rssguard#1692)
+    - AdBlock was not sometimes working. (gh#martinrotter/rssguard#1702)
+    - Fix blank window upstream bug when doing specific stuff with tray icon.
+      (gh#martinrotter/rssguard#1672)
+    - Export folder for database/configuration files is properly remembered.
+      (gh#martinrotter/rssguard#1667)
+    - More forgiving OPML parsing. (gh#martinrotter/rssguard#1688,
+      gh#martinrotter/rssguard#1719)
+    - Clear eTag headers when feed is purged.
+    - OpenSSL Qt plugin is properly copied.
+- Add fix_missing_returns.patch
+</comment>
+    <requestid>1281628</requestid>
+  </revision>
 </revisionlist>
