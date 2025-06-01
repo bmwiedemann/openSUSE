@@ -81,4 +81,88 @@ package called `obs-service-recomprizz`.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1279948</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>38fb25f50dc7d8d6bd148c99958cff02</srcmd5>
+    <version>7.1.0</version>
+    <time>1748806606</time>
+    <user>dimstar_suse</user>
+    <comment>- Ignore test for scm.
+- Update to version 7.1.0:
+  * chore(release): bump to v7.1.0
+  * fix: date format now fixed
+  * chore(release): bump to v7.0.0
+  * docs: update README
+  * docs: update roast_scm.service file
+  * format: run `cargo +nightly fmt`
+  * fix: apply clippy suggestions
+  * fix: disable `obs` feature for now in tests
+  * tests: add tests for roast scm
+  * add space
+  * misc: cleanup and whether to disable or enable code for `obs` feature
+  * docs: document the `obs` feature in Cargo.toml
+  * docs: update wording
+  * fix: change alias for changesemail
+  * ci: seems it needs to be more specific where with this blob for *.rs
+  * clippy: remove needless borrow
+  * ci: test if CI runs with this config
+  * refactor: put set_version logic inside `map` as well. create separate function for changelog file generation.
+  * refactor: move changelog file generator code inside `map`
+  * Merge branch '20250523-improve-scm'
+  * fix: add the last newline
+  * feat: append email if `changesemail` passed.
+  * feat: add `changesemail` field for cli
+  * cleanup
+  * misc: add optional obs feature in roast-cli
+  * feat: implement update version in specfile
+  * feat: cli has new fields, `set_name` and `set_version` for obs feature
+  * misc: add optional obs feature
+  * misc: apply `trim()` first for strings before checking if they're empty
+  * misc: `split('\n')` -&gt; `lines()`
+  * misc: use the `to_extension()` method
+  * misc: change this to an iterator
+  * refactor: use `any` since it returns at the first true, otherwise, false.
+  * refactor: use iterators over for loops
+  * misc: change wording
+  * misc: cleanup code for feature, changelog generation.
+  * feat: changelog generation is now implemented.
+  * dependencies: add hifitime
+  * misc: add initial logic for `changesgenerate` feature
+  * feat: add new cli arguments and fieldnames for `RoastScmArgs` related to `changesgenerate`
+  * fix: `remote_checkout_branch` creating a branch from remote branch with incorrect name
+  * api: cleanup visibility and privacy of certain functions
+  * misc: more cleanup
+  * begin iterating for a new future version
+  * misc: add cliff.toml for changelog generation config
+  * fixes: the refactor caused the commit hash to be skipped
+  * docs: add where the final filename is based on.
+  * format: run `cargo +nightly fmt`
+  * improvements: replace dumb lookup by reading config instead
+  * fix: `versionrewriteregex` should require `versionrewritepattern`
+  * feat: `versionrewriteregex` and `versionrewritepattern` implemented
+  * dependencies: add regex crate
+  * fix: it should be prefixed with `g`
+  * fix: version format improvements and fixes
+  * feat: initial versionformat prefix
+  * fixes: checkout should not error if branch is HEAD. sorting in revwalk should not be reversed.
+  * refactor: more cleanup. remove redundant logic
+  * misc: cleanup code
+  * misc: make it clear what depth was set in the warnings
+  * performance: do a dumb revision lookup to check if a revision is a branch
+  * fix: use set_head_detached since we want it to point to a commit
+  * fix: add condition if branch ref is the current HEAD
+  * improvements: if there is no changelog, warn the user
+  * format: run `cargo +nightly fmt`
+  * improvements: roast_scm now is able to generate some changelog
+  * roast_scm: generate changelog improvements
+  * common: add `to_extension` method for Compression
+  * improvements: describe string is implemented alongside improved log messages
+  * fix: set this to 0
+  * clippy: remove redundant &amp;
+  * roast_scm: initial refactor of the cloning process and finding the revision
+  * dependencies: add semver
+  * docs: update README
+  * fmt: run \`cargo +nightly fmt\`
+</comment>
+    <requestid>1281621</requestid>
+  </revision>
 </revisionlist>
