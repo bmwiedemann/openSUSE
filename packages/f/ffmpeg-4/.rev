@@ -748,4 +748,12 @@
     <comment></comment>
     <requestid>1256073</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>4e7155a82272559e1d6e42f4a43c69f3</srcmd5>
+    <version>4.4.6</version>
+    <time>1748806593</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.4.6</comment>
+    <requestid>1281551</requestid>
+  </revision>
 </revisionlist>

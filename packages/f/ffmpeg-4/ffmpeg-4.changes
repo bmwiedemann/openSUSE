@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 29 20:43:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.4.6
+  * lavc/libx265: unbreak build for X265_BUILD >= 210
+  * ARM: vp9mc: Load only 12 pixels in the 4 pixel wide
+    horizontal filter
+  * rtmpproto: Avoid rare crashes in the `fail:` codepath in
+    rtmp_open
+  * avcodec/snow: Fix off by 1 error in run_buffer
+  * avcodec/mpegvideo_enc: Check FLV1 resolution limits
+- Delete ffmpeg-CVE-2023-49502.patch,
+  0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch,
+  ffmpeg-4-CVE-2025-0518.patch, ffmpeg-4-CVE-2025-22919.patch (merged)
+
+-------------------------------------------------------------------
 Wed Mar  5 09:46:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
@@ -903,7 +918,6 @@ Tue Nov 06 01:39:11 UTC 2018 - sean@suspend.net
   remove cve-2017-17555.diff (fixed upstream).
 
 -------------------------------------------------------------------
-
 Sat Nov 03 14:48:35 UTC 2018 - sean@suspend.net
 
 - Remove 0001-avformat-fivenc-Check-audio-packet-size.patch (fixed upstream (bsc#8591d16)
