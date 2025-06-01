@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 23 22:09:56 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update persistent to version 2.17.0.0.
+  # 2.17.0.0
+
+  * [#1595](https://github.com/yesodweb/persistent/pull/1595)
+      * Add `tabulateEntityApply` to `PersistEntity` class similar to
+        `tabulateEntityA` but that works on `Apply` type instead of `Applicative`.
+        This allows you to use `foldMap1` and other non-empty structures with
+        tabulating and manipulating records.
+
+-------------------------------------------------------------------
 Tue May 20 01:50:03 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update persistent to version 2.16.0.0.

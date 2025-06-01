@@ -365,4 +365,12 @@
     <comment>version update</comment>
     <requestid>1279249</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>a3958dd62bad942eadb771fdfe4f2f65</srcmd5>
+    <version>2.17.0.0</version>
+    <time>1748806617</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1281638</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.16.0.0
+Version:        2.17.0.0
 Release:        0
 Summary:        Type-safe, multi-backend data serialization
 License:        MIT
@@ -70,6 +70,8 @@ BuildRequires:  ghc-resourcet-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-scientific-devel
 BuildRequires:  ghc-scientific-prof
+BuildRequires:  ghc-semigroupoids-devel
+BuildRequires:  ghc-semigroupoids-prof
 BuildRequires:  ghc-silently-devel
 BuildRequires:  ghc-silently-prof
 BuildRequires:  ghc-template-haskell-devel
