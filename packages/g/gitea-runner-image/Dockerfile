@@ -18,7 +18,8 @@
 #!BuildTag: opensuse/bci/bci-gitea-runner:%OS_VERSION_ID_SP%-%RELEASE%
 #!BuildTag: opensuse/bci/bci-gitea-runner:%OS_VERSION_ID_SP%
 #!BuildTag: opensuse/bci/bci-gitea-runner:latest
-
+#!BuildName: opensuse-bci-bci-gitea-runner-%OS_VERSION_ID_SP%
+#!BuildVersion: %OS_VERSION_ID_SP%.0.0
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
