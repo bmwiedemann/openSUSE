@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 29 17:11:39 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not build the Qt flavor in SLE16 where Qt5 will not be
+  available.
+
+-------------------------------------------------------------------
 Mon Apr 28 09:39:40 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.8

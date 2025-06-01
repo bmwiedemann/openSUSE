@@ -304,4 +304,14 @@
     <comment>- Update to release 3.2.8</comment>
     <requestid>1274082</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>feece7364a196a515762a17e08b558f0</srcmd5>
+    <version>3.2.8</version>
+    <time>1748806579</time>
+    <user>dimstar_suse</user>
+    <comment>deactivate qt5 backend; SLE won't have qt5,
+and in TW it's not used by anything either so just make
+the two distros behave the same</comment>
+    <requestid>1281236</requestid>
+  </revision>
 </revisionlist>

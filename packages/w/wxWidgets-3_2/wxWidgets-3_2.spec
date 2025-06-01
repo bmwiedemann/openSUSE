@@ -119,6 +119,9 @@ BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.2.1
 BuildRequires:  pkgconfig(Qt5Test) >= 5.2.1
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.1
 BuildRequires:  pkgconfig(cairo)
+%if 0%{?suse_version} >= 1600
+ExclusiveArch:  donotbuild
+%endif
 %endif
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(liblzma)
