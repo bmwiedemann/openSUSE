@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 28 21:28:03 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add more CVE fixes:
+  + libsoup-CVE-2025-32913.patch (boo#1241162 boo#1241238
+    CVE-2025-32913 CVE-2025-32911)
+  + libsoup-CVE-2025-32910.patch (boo#1241252 CVE-2025-32910)
+  + libsoup-CVE-2025-32906.patch (boo#1241263 CVE-2025-32906)
+  + libsoup-CVE-2025-32912.patch (boo#1241214 CVE-2025-32912)
+  + libsoup-CVE-2025-32909.patch (boo#1241226 CVE-2025-32909)
+  + libsoup-CVE-2025-4948.patch (boo#1243332 CVE-2025-4948)
+  + libsoup-CVE-2025-4969.patch (boo#1243423 CVE-2025-4969)
+
+-------------------------------------------------------------------
 Tue Apr 29 17:04:13 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Add more CVE fixes:

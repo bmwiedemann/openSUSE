@@ -64,6 +64,20 @@ Patch17:        libsoup-CVE-2025-32914.patch
 Patch18:        libsoup-CVE-2025-32907.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2025-46421.patch boo#1241688 mgorse@suse.com -- strip authentication credentials on cross-origin redirect.
 Patch19:        libsoup-CVE-2025-46421.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-32913.patch boo#1241162 mgorse@suse.com -- fix NULL deref in soup_message_headers_get_content_disposition.
+Patch20:        libsoup-CVE-2025-32913.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-32910.patch boo#1241252 mgorse@suse.com -- fix NULL deref with missing realm in authenticate header.
+Patch21:        libsoup-CVE-2025-32910.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-32912.patch boo#1241214 mgorse@suse.com -- fix NULL pointer deref in SoupAuthDigest.
+Patch22:        libsoup-CVE-2025-32912.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-32906.patch boo#1241263 mgorse@suse.com -- fix an out-of-bounds read parsing headers.
+Patch23:        libsoup-CVE-2025-32906.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-32909.patch boo#1241226 mgorse@suse.com -- handle sniffing resource shorter than 4 bytes.
+Patch24:        libsoup-CVE-2025-32909.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-4948.patch boo#1243332 mgorse@suse.com -- verify boundary limits for multipart body.
+Patch25:        libsoup-CVE-2025-4948.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-4969.patch boo#1243423 mgorse@suse.com -- soup-multipart: Verify array bounds before accessing its members.
+Patch26:        libsoup-CVE-2025-4969.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50
