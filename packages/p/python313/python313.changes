@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 28 09:46:40 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Don't use %elif, it is supported only from rpm 4.15.0, which is
+  not in SLE-15.
+
+-------------------------------------------------------------------
 Fri May 16 13:44:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2025-4516-DecodeError-handler.patch fixing

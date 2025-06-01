@@ -648,4 +648,14 @@
 </comment>
     <requestid>1278136</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>8d99858aa9b9b4b9c05805b3ae4cb807</srcmd5>
+    <version>3.13.3</version>
+    <time>1748806561</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use %elif, it is supported only from rpm 4.15.0, which is
+  not in SLE-15.
+</comment>
+    <requestid>1281135</requestid>
+  </revision>
 </revisionlist>
