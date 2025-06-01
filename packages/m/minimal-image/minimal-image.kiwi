@@ -49,7 +49,7 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
         </labels>
       </containerconfig>
     </type>
-    <version>2025.0.0</version>
+    <version>%OS_VERSION_ID_SP%.0.0</version>
     <packagemanager>zypper</packagemanager>
     <rpm-excludedocs>true</rpm-excludedocs>
   </preferences>
