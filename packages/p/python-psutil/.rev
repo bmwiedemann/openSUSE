@@ -869,4 +869,30 @@ It does not make sense to double the whole HISTORY of upstream source in .change
     <comment></comment>
     <requestid>1235896</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>dfa6826ed5dfec7917fd05b186245080</srcmd5>
+    <version>7.0.0</version>
+    <time>1748806569</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.0:
+  * 669_, [Windows]: `net_if_addrs()`_ also returns the broadcast
+    address instead of None.
+  * 2480_: Python 2.7 is no longer supported. Latest version
+    supporting Python 2.7 is psutil 6.1.X. Install it with: pip2
+    install psutil==6.1.*.
+  * 2490_: removed long deprecated Process.memory_info_ex()
+    method. It was deprecated in psutil 4.0.0, released 8 years
+    ago. Substitute is Process.memory_full_info().
+  * 2496_, [Linux]: Avoid segfault (a cPython bug) on
+    Process.memory_maps() for processes that use hundreds of GBs
+    of memory.
+  * 2502_, [macOS]: `virtual_memory()`_ now relies on
+    host_statistics64 instead of host_statistics. This is the
+    same approach used by vm_stat CLI tool, and should grant more
+    accurate results.
+  * 2480_: Python 2.7 is no longer supported.
+  * 2490_: removed long deprecated Process.memory_info_ex()
+    method.</comment>
+    <requestid>1281077</requestid>
+  </revision>
 </revisionlist>

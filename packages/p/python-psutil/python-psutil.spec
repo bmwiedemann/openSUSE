@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-psutil
-Version:        6.1.1
+Version:        7.0.0
 Release:        0
 Summary:        A process utilities module for Python
 License:        BSD-3-Clause
