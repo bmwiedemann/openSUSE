@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 28 11:43:16 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- set a buildname to avoid constant have-choice errors
+
+-------------------------------------------------------------------
 Fri May 23 11:23:16 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - use SOURCEURL_WITH to generate proper artifacthub urls
