@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 29 18:21:28 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Migrate away from update-alternatives (bsc#1240102).
+- Leverage the existing conflict with the 'ftp' package. Only one
+  implementation may be installed at the same time.
+- Upon installation of the newer packages, the old alternatives are
+  purged from the system.
+
+-------------------------------------------------------------------
 Sat May 13 18:52:31 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 20230507

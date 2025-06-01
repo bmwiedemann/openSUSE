@@ -1,7 +1,7 @@
 #
 # spec file for package tnftp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,11 +29,9 @@ Source2:        tnftp.keyring
 BuildRequires:  libopenssl-devel >= 1.1
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  update-alternatives
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(ncurses)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
 Conflicts:      ftp
 Provides:       lukemftp = 1.6
 Provides:       nkitb:%{_bindir}/ftp
@@ -59,20 +57,10 @@ rm -rf libedit
 
 %install
 %make_install
-
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-%if 0%{?suse_version} <= 1310
-touch %{buildroot}%{_sysconfdir}/alternatives/ftp
-touch %{buildroot}%{_sysconfdir}/alternatives/ftp.1.gz
-%endif
-ln -sf %{_sysconfdir}/alternatives/ftp %{buildroot}%{_bindir}/ftp
-ln -sf %{_sysconfdir}/alternatives/ftp.1.gz %{buildroot}%{_mandir}/man1/ftp.1.gz
+ln -sf %{_bindir}/%{name} %{buildroot}%{_bindir}/ftp
+ln -sf %{_mandir}/man1/ftp.1%{?ext_man} %{buildroot}%{_mandir}/man1/ftp.1%{?ext_man}
 
 %post
-update-alternatives --install %{_bindir}/ftp ftp %{_bindir}/%{name} 10 \
-  --slave %{_mandir}/man1/ftp.1.gz ftp.1 %{_mandir}/man1/%{name}.1.gz
-
-%postun
 if [ "$1" = 0 ] ; then
   update-alternatives --remove ftp %{_bindir}/%{name}
 fi
@@ -80,8 +68,6 @@ fi
 %files
 %license COPYING
 %doc ChangeLog NEWS README THANKS
-%ghost %{_sysconfdir}/alternatives/ftp
-%ghost %{_sysconfdir}/alternatives/ftp.1.gz
 %{_bindir}/ftp
 %{_mandir}/man1/ftp.1%{?ext_man}
 %{_bindir}/%{name}
