@@ -1,7 +1,7 @@
 #
 # spec file for package unzip
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,19 @@
 
 %define _name unzip
 %define fileversion 60
+
 %bcond_with rcc
 %if %{with rcc}
-%define update_weight 20
-%define _suffix rcc
 BuildRequires:  librcc-devel
 Suggests:       librcc0
 Provides:       %{_name} = %{version}
+Conflicts:      %{_name}
 %else
-%define update_weight 10
-%define _suffix plain
+Conflicts:      %{_name}-rcc
 %endif
 # NOTE: unzip.spec is the major file, if you want to update unzip-rcc.spec
 # call pre_checkin.sh after editing unzip.spec
+
 Name:           unzip
 Version:        6.00
 Release:        0
@@ -67,7 +67,6 @@ Patch24:        CVE-2022-0530.patch
 Patch25:        CVE-2022-0529.patch
 Patch26:        unzip-time-decl.patch
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     %{_name}-doc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -82,6 +81,11 @@ functionality. This version can also extract encrypted archives.
 Summary:        Documentation files for unzip
 Group:          Productivity/Archiving/Compression
 BuildArch:      noarch
+%if %{with rcc}
+Conflicts:      %{_name}-doc
+%else
+Conflicts:      %{_name}-rcc-doc
+%endif
 
 %description doc
 UnZip is an extraction utility for archives compressed in .zip format
@@ -131,60 +135,45 @@ make %{?_smp_mflags}  -f unix/Makefile LF2="-ldl -pie" linux_noasm
 make %{?_smp_mflags} -f unix/Makefile check
 
 %install
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-mkdir -p %{buildroot}{%{_bindir},%{_mandir}/man1}
+mkdir -p %{buildroot}%{_bindir}
+# unzip funzip unzipsfx
 for i in unzip funzip unzipsfx;	do
-	install $i "%{buildroot}%{_bindir}/$i-"%{_suffix}
-done
-ln -s unzip %{buildroot}%{_bindir}/zipinfo
-install unix/zipgrep "%{buildroot}%{_bindir}/zipgrep-"%{_suffix}
-for i in unzip funzip unzipsfx zipgrep; do
-  touch %{buildroot}%{_sysconfdir}/alternatives/$i
-  ln -s %{_sysconfdir}/alternatives/$i %{buildroot}%{_bindir}/$i
+	install $i "%{buildroot}%{_bindir}/$i"
 done
 
-# do not have the docu in both packages
-%if %{without rcc}
- for i in man/*.1; do
-  install -m 644 $i %{buildroot}%{_mandir}/man1/
- done
-%endif
+# zipinfo is just a symlink to unzip
+ln -s unzip %{buildroot}%{_bindir}/zipinfo
+
+# zipgrep comes from elsewhere in the build environment
+install unix/zipgrep "%{buildroot}%{_bindir}/zipgrep"
+
+# as both unzip and unzip-rcc now conflict, we provide the man
+# packages through both packages
+mkdir -p %{buildroot}%{_mandir}/man1
+for i in man/*.1; do
+ install -m 644 $i %{buildroot}%{_mandir}/man1/
+done
 
 %post
+# remove old alternatives from when we were using update-alternatives
+# zipinfo was never provided as an alternative
 for bin in unzip funzip unzipsfx zipgrep; do
-  %{_sbindir}/update-alternatives --install %{_bindir}/$bin $bin "%{_bindir}/$bin-"%{_suffix} %{update_weight}
+  %{_sbindir}/update-alternatives --remove $bin "%{_bindir}/$bin"-plain
+  %{_sbindir}/update-alternatives --remove $bin "%{_bindir}/$bin"-rcc
 done
-
-%postun
-if [ "$1" = 0 ] ; then
-  for bin in unzip funzip unzipsfx zipgrep; do
-    %{_sbindir}/update-alternatives --remove $bin "%{_bindir}/$bin"-%{_suffix}
-  done
-fi
 
 %files
 %defattr(-,root,root)
-%ghost %{_sysconfdir}/alternatives/unzip
 %{_bindir}/unzip
-%{_bindir}/unzip-%{_suffix}
-%ghost %{_sysconfdir}/alternatives/funzip
 %{_bindir}/funzip
-%{_bindir}/funzip-%{_suffix}
-%ghost %{_sysconfdir}/alternatives/unzipsfx
 %{_bindir}/unzipsfx
-%{_bindir}/unzipsfx-%{_suffix}
 %{_bindir}/zipinfo
-%ghost %{_sysconfdir}/alternatives/zipgrep
 %{_bindir}/zipgrep
-%{_bindir}/zipgrep-%{_suffix}
 
-%if %{without rcc}
 %files doc
 %defattr(-,root,root)
 %{_mandir}/man1/*
 %doc BUGS Contents History.* LICENSE README ToDo WHERE
 %doc *.txt proginfo
-
-%endif
 
 %changelog

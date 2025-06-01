@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 29 04:36:02 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Migrate away from update-alternatives (bsc#1240103).
+- 'unzip' and 'unzip-rcc' now conflict with each other, meaning only
+  one of them can be installed at the same time.
+- 'unzip-rcc-doc' now provides man pages as well.
+- Upon installation of the newer packages, the old alternatives
+  are purged from the system.
+
+-------------------------------------------------------------------
 Wed Apr  2 14:03:26 UTC 2025 - Friedrich Haubensak < hsk17@mail.de>
 
 - Add unzip-time-decl.patch from debian to fix gcc-15 compile time
