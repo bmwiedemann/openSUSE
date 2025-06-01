@@ -569,4 +569,12 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>6.12.30</comment>
     <requestid>1279465</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>b5e6775b09477e5f08bab2d29517e8af</srcmd5>
+    <version>6.12.31</version>
+    <time>1748806587</time>
+    <user>dimstar_suse</user>
+    <comment>6.12.31</comment>
+    <requestid>1281281</requestid>
+  </revision>
 </revisionlist>
