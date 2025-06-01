@@ -21,7 +21,7 @@
 %bcond_without test
 %{?sle15_python_module_pythons}
 Name:           python-mypy
-Version:        1.14.1
+Version:        1.16.0
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -33,10 +33,9 @@ Source1:        https://files.pythonhosted.org/packages/source/t/types_psutil/ty
 # License Source2: Apache-2.0. Only for the test suite, not packaged here.
 Source2:        https://files.pythonhosted.org/packages/source/t/types_setuptools/types_setuptools-%{types_setuptools_version}.tar.gz
 Source99:       python-mypy-rpmlintrc
-# PATCH-FIX-UPSTREAM
-Patch1:         mypy-1.14.1-gcc15.patch
 BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module mypy_extensions >= 1.0.0}
+BuildRequires:  %{python_module pathspec}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli >= 1.1.0}
@@ -45,6 +44,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mypy_extensions >= 0.4.3
+Requires:       python-pathspec
 Requires:       python-typing_extensions >= 3.10
 Requires:       (python-tomli >= 1.1.0 if python-base < 3.11)
 Requires(post): update-alternatives

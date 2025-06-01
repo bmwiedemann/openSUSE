@@ -1,4 +1,254 @@
 -------------------------------------------------------------------
+Thu May 29 15:25:57 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove upstreamed mypy-1.14.1-gcc15.patch
+- Update to 1.16.0:
+    Different Property Getter and Setter Types
+
+    Mypy now supports using different types for a property getter and setter:
+
+    class A:
+        _value: int
+
+        @property
+        def foo(self) -> int:
+            return self._value
+
+        @foo.setter
+        def foo(self, x: str | int) -> None:
+            try:
+                self._value = int(x)
+            except ValueError:
+                raise Exception(f"'{x}' is not a valid value for 'foo'")
+
+    This was contributed by Ivan Levkivskyi (PR 18510).
+    Flexible Variable Redefinitions (Experimental)
+
+    Mypy now allows unannotated variables to be freely redefined
+    with different types when using the experimental
+    --allow-redefinition-new flag. You will also need to enable
+    --local-partial-types. Mypy will now infer a union type when
+    different types are assigned to a variable:
+
+    # mypy: allow-redefinition-new, local-partial-types
+
+    def f(n: int, b: bool) -> int | str:
+        if b:
+            x = n
+        else:
+            x = str(n)
+        # Type of 'x' is int | str here.
+        return x
+
+    Without the new flag, mypy only supports inferring optional
+    types (X | None) from multiple assignments, but now mypy can
+    infer arbitrary union types.
+
+    An unannotated variable can now also have different types in
+    different code locations:
+
+    # mypy: allow-redefinition-new, local-partial-types
+    ...
+
+    if cond():
+        for x in range(n):
+            # Type of 'x' is 'int' here
+            ...
+    else:
+        for x in ['a', 'b']:
+            # Type of 'x' is 'str' here
+            ...
+
+    We are planning to turn this flag on by default in mypy 2.0,
+    along with --local-partial-types. The feature is still
+    experimental and has known issues, and the semantics may
+    still change in the future. You may need to update or add
+    type annotations when switching to the new behavior, but if
+    you encounter anything unexpected, please create a GitHub
+    issue.
+
+    This was contributed by Jukka Lehtosalo (PR 18727, PR 19153).
+    Stricter Type Checking with Imprecise Types
+
+    Mypy can now detect additional errors in code that uses Any
+    types or has missing function annotations.
+
+    When calling dict.get(x, None) on an object of type dict[str,
+    Any], this now results in an optional type (in the past it
+    was Any):
+
+    def f(d: dict[str, Any]) -> int:
+        # Error: Return value has type "Any | None" but expected "int"
+        return d.get("x", None)
+
+    Type narrowing using assignments can result in more precise
+    types in the presence of Any types:
+
+    def foo(): ...
+
+    def bar(n: int) -> None:
+        x = foo()
+        # Type of 'x' is 'Any' here
+        if n > 5:
+            x = str(n)
+            # Type of 'x' is 'str' here
+
+    When using --check-untyped-defs, unannotated overrides are
+    now checked more strictly against superclass definitions.
+
+    Related PRs:
+
+        Use union types instead of join in binder (Ivan Levkivskyi, PR 18538)
+        Check superclass compatibility of untyped methods if
+        --check-untyped-defs is set (Stanislav Terliakov, PR
+        18970)
+
+    Improvements to Attribute Resolution
+
+    This release includes several fixes to inconsistent
+    resolution of attribute, method and descriptor types.
+
+        Consolidate descriptor handling (Ivan Levkivskyi, PR 18831)
+        Make multiple inheritance checking use common semantics (Ivan Levkivskyi, PR 18876)
+        Make method override checking use common semantics (Ivan Levkivskyi, PR 18870)
+        Fix descriptor overload selection (Ivan Levkivskyi, PR 18868)
+        Handle union types when binding self (Ivan Levkivskyi, PR 18867)
+        Make variable override checking use common semantics (Ivan Levkivskyi, PR 18847)
+        Make descriptor handling behave consistently (Ivan Levkivskyi, PR 18831)
+
+    Make Implementation for Abstract Overloads Optional
+
+    The implementation can now be omitted for abstract overloaded methods, even outside stubs:
+
+    from abc import abstractmethod
+    from typing import overload
+
+    class C:
+        @abstractmethod
+        @overload
+        def foo(self, x: int) -> int: ...
+
+        @abstractmethod
+        @overload
+        def foo(self, x: str) -> str: ...
+
+        # No implementation required for "foo"
+
+    This was contributed by Ivan Levkivskyi (PR 18882).
+    Option to Exclude Everything in .gitignore
+
+    You can now use --exclude-gitignore to exclude everything in
+    a .gitignore file from the mypy build. This behaves similar
+    to excluding the paths using --exclude. We might enable this
+    by default in a future mypy release.
+
+    This was contributed by Ivan Levkivskyi (PR 18696).
+    Selectively Disable Deprecated Warnings
+
+    It's now possible to selectively disable warnings generated
+    from warnings.deprecated using the --deprecated-calls-exclude
+    option:
+
+    # mypy --enable-error-code deprecated
+    #      --deprecated-calls-exclude=foo.A
+    import foo
+
+    foo.A().func()  # OK, the deprecated warning is ignored
+
+    # file foo.py
+
+    from typing_extensions import deprecated
+
+    class A:
+        @deprecated("Use A.func2 instead")
+        def func(self): pass
+
+        ...
+
+    Contributed by Marc Mueller (PR 18641)
+    Annotating Native/Non-Native Classes in Mypyc
+
+    You can now declare a class as a non-native class when
+    compiling with mypyc. Unlike native classes, which are
+    extension classes and have an immutable structure, non-native
+    classes are normal Python classes at runtime and are fully
+    dynamic. Example:
+
+    from mypy_extensions import mypyc_attr
+
+    @mypyc_attr(native_class=False)
+    class NonNativeClass:
+        ...
+
+    o = NonNativeClass()
+
+    # Ok, even if attribute "foo" not declared in class body
+    setattr(o, "foo", 1)
+
+    Classes are native by default in compiled modules, but
+    classes that use certain features (such as most metaclasses)
+    are implicitly non-native.
+
+    You can also explicitly declare a class as native. In this
+    case mypyc will generate an error if it can't compile the
+    class as a native class, instead of falling back to
+    a non-native class:
+
+    from mypy_extensions import mypyc_attr
+    from foo import MyMeta
+
+    # Error: Unsupported metaclass for a native class
+    @mypyc_attr(native_class=True)
+    class C(metaclass=MyMeta):
+        ...
+
+    Since native classes are significantly more efficient that
+    non-native classes, you may want to ensure that certain
+    classes always compiled as native classes.
+
+- Update to 1.15.0:
+
+    By default, mypy treats bytearray and memoryview values as
+    assignable to the bytes type, for historical reasons. Use the
+    --strict-bytes flag to disable this behavior. PEP 688
+    specified the removal of this special case. The flag will be
+    enabled by default in mypy 2.0.
+
+    Contributed by Ali Hamdan (PR 18263) and Shantanu Jain (PR 13952).
+    Improvements to Reachability Analysis and Partial Type Handling in Loops
+
+    This change results in mypy better modelling control flow
+    within loops and hence detecting several previously ignored
+    issues. In some cases, this change may require additional
+    explicit variable annotations.
+
+    Contributed by Christoph Tyralla (PR 18180, PR 18433).
+
+    (Speaking of partial types, remember that we plan to enable
+    --local-partial-types by default in mypy 2.0.)
+    Better Discovery of Configuration Files
+
+    Mypy will now walk up the filesystem (up until a repository
+    or file system root) to discover configuration files. See the
+    mypy configuration file documentation for more details.
+
+    Contributed by Mikhail Shiryaev and Shantanu Jain (PR 16965, PR 18482)
+    Better Line Numbers for Decorators and Slice Expressions
+
+    Mypy now uses more correct line numbers for decorators and
+    slice expressions. In some cases, you may have to change the
+    location of a # type: ignore comment.
+
+    Contributed by Shantanu Jain (PR 18392, PR 18397).
+    Drop Support for Python 3.8
+
+    Mypy no longer supports running with Python 3.8, which has
+    reached end-of-life. When running mypy with Python 3.9+, it
+    is still possible to type check code that needs to support
+    Python 3.8 with the --python-version 3.8 argument. Support
+    for this will be dropped in the first half of 2025!
+
+-------------------------------------------------------------------
 Mon May  5 13:29:04 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Add mypy-1.14.1-gcc15.patch from upstream to fix gcc15 compile
