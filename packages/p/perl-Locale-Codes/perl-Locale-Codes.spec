@@ -18,10 +18,10 @@
 
 %define cpan_name Locale-Codes
 Name:           perl-Locale-Codes
-Version:        3.820.0
+Version:        3.830.0
 Release:        0
-# 3.82 -> normalize -> 3.820.0
-%define cpan_version 3.82
+# 3.83 -> normalize -> 3.830.0
+%define cpan_version 3.83
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Distribution of modules to handle locale codes
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -30,7 +30,7 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Test::Inter) >= 1.90.0
+BuildRequires:  perl(Test::Inter) >= 1.90
 Provides:       perl(Locale::Codes) = %{version}
 Provides:       perl(Locale::Codes::Constants) = %{version}
 Provides:       perl(Locale::Codes::Country) = %{version}
@@ -110,7 +110,7 @@ that occur, so if any of the standards change, and you want a new release
 sooner, just email me and I'll get one out.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

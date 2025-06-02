@@ -120,4 +120,17 @@
     <comment></comment>
     <requestid>1269368</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1a6a9319604ec89e65c513a5d0534517</srcmd5>
+    <version>3.830.0</version>
+    <time>1748894527</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1281919 from tinita
+
+- updated to 3.830.0 (3.83)
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+  3.83  2025-06-01  sbeck
+    -  NEW CODE(s)</comment>
+    <requestid>1282013</requestid>
+  </revision>
 </revisionlist>
