@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun  2 05:41:07 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  New features:
+  * Add support for exporting presentations as HTML files (#566) (#595) (#575) (#599)
+  * Snippet execution output now contains configurable padding and built-in themes
+    default to the same padding as snippets (2 spaces horizontally, one line
+    vertically) (#592) (#593).
+  * Add highlighting and execution support for Jsonnet (#585)
+  * Allow configuring snippets to be executed sequentially during exports (#584).
+  Fixes:
+  * Skip slides with pauses correctly (#598).
+  * Avoid printing text if there's no vertical space for it, which otherwise looks
+    bad particularly when using font size > 1 (#594).
+  * Execute snippets only once during export (#583).
+  * Don't add an extra pause after lists if there's nothing left (#580).
+  * Allow interleaved spans and variables in footer (#577).
+  * Truly center +exec_replace snippet output (#572).
+
+-------------------------------------------------------------------
 Fri Apr 25 13:28:01 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.13.0:
