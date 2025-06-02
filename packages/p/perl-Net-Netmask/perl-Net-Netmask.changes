@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 18 05:34:39 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.0003
+   see /usr/share/doc/packages/perl-Net-Netmask/Changes
+
+  2.0003 2025-05-17
+   - Quiet warning (thanks, Todd Rinaldo!)
+
+-------------------------------------------------------------------
 Thu Sep  1 03:07:12 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.0002

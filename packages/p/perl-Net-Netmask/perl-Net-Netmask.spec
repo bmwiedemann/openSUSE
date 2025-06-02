@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-Netmask
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Net-Netmask
 Name:           perl-Net-Netmask
-Version:        2.0002
+Version:        2.0003
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Understand and manipulate IP netmasks
@@ -30,9 +30,9 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Math::BigInt) >= 1.999811
 BuildRequires:  perl(Test2::V0) >= 0.000111
-BuildRequires:  perl(Test::UseAllModules) >= 0.17
+BuildRequires:  perl(Test::UseAllModules) >= 0.170
 Requires:       perl(Math::BigInt) >= 1.999811
-Recommends:     perl(AnyEvent) >= 7.14
+Recommends:     perl(AnyEvent) >= 7.140
 %{perl_requires}
 
 %description
@@ -58,8 +58,9 @@ address.
 IPv6 support was added in 1.9104.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -74,7 +75,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING errors.err README TODO
+%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING README TODO
 %license LICENSE
 
 %changelog

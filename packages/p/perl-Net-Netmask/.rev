@@ -224,4 +224,17 @@ Package is licensed under the same terms as Perl (forwarded request 111334 from 
     <comment></comment>
     <requestid>1000727</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9699b90b2759b7fe050dc3f488504d96</srcmd5>
+    <version>2.0003</version>
+    <time>1748894528</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1281921 from tinita
+
+- updated to 2.0003
+   see /usr/share/doc/packages/perl-Net-Netmask/Changes
+  2.0003 2025-05-17
+   - Quiet warning (thanks, Todd Rinaldo!)</comment>
+    <requestid>1282015</requestid>
+  </revision>
 </revisionlist>
