@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  2 12:53:55 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.33.0
+  * bump github.com/quic-go/quic-go from 0.51.0 to 0.52.0(boo#1243946 and CVE-2025-297850)
+  * Update other vendor source
+
+-------------------------------------------------------------------
 Sun May  4 08:35:24 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.31.0

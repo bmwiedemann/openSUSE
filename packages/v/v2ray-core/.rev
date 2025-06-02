@@ -438,4 +438,14 @@
     <comment></comment>
     <requestid>1274232</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>94c030ca752dcc8ebc424e25c1b8f311</srcmd5>
+    <version>5.33.0</version>
+    <time>1748894478</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 5.33.0
+  * bump github.com/quic-go/quic-go from 0.51.0 to 0.52.0(boo#1243946 and CVE-2025-297850)
+  * Update other vendor source (forwarded request 1281928 from hillwood)</comment>
+    <requestid>1281929</requestid>
+  </revision>
 </revisionlist>
