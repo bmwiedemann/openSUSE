@@ -38,7 +38,7 @@ Index: Python-3.11.12/Lib/test/test_ssl.py
 @@ -2651,10 +2650,6 @@
                      self.close()
                      self.running = False
- 
+
 -                    # normally, we'd just stop here, but for the test
 -                    # harness, we want to stop the server
 -                    self.server.stop()
@@ -51,7 +51,7 @@ Index: Python-3.11.12/Lib/test/test_ssl.py
          threading.Thread.__init__(self)
          self.daemon = True
 +        self._in_context = False
- 
+
      def __enter__(self):
 +        if self._in_context:
 +            raise ValueError('Re-entering ThreadedEchoServer context')
@@ -59,20 +59,20 @@ Index: Python-3.11.12/Lib/test/test_ssl.py
          self.start(threading.Event())
          self.flag.wait()
          return self
- 
+
      def __exit__(self, *args):
 +        assert self._in_context
 +        self._in_context = False
          self.stop()
          self.join()
- 
+
      def start(self, flag=None):
 +        if not self._in_context:
 +            raise ValueError(
 +                'ThreadedEchoServer must be used as a context manager')
          self.flag = flag
          threading.Thread.start(self)
- 
+
      def run(self):
 +        if not self._in_context:
 +            raise ValueError(

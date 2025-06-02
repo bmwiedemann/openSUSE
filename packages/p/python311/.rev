@@ -1592,4 +1592,41 @@ C API
   since kernel 3.6-rc1)</comment>
     <requestid>1276662</requestid>
   </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>92fa41b0a86757a6bb0d799849f5fb2f</srcmd5>
+    <version>3.11.12</version>
+    <time>1748894324</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2025-4516-DecodeError-handler.patch fixing
+  CVE-2025-4516 (bsc#1243273) blocking DecodeError handling
+  vulnerability, which could lead to DoS.
+
+- Use extended %autopatch.
+
+  attributes on /usr/bin/ scripts (bsc#1227378).
+  %%files.
+- restrict PEP668 to ALP/Tumbleweed
+- add externally_managed.in to label this build as PEP-668 managed
+  * Support Expat &gt;= 2.4.5
+- allow build with Sphinx &gt;= 3.x
+  * remove importlib_resources and importlib-metadata
+  - bpo-41304: Fixes python3x._pth being ignored on Windows, caused
+  - bpo-29778: Ensure python3.dll is loaded from correct locations
+  - bpo-39603: Prevent http header injection by rejecting control
+    “__setattr__” in a multi-inheritance setup and
+  - bpo-41247: Always cache the running loop holder when running
+  - bpo-41252: Fix incorrect refcounting in
+  - bpo-41215: Use non-NULL default values in the PEG parser
+  - bpo-41218: Python 3.8.3 had a regression where compiling with
+    ast.PyCF_ALLOW_TOP_LEVEL_AWAIT would
+  - bpo-41175: Guard against a NULL pointer dereference within
+  - bpo-39960: The “hackcheck” that prevents sneaking around a type’s
+    __setattr__() by calling the superclass method was
+  - bpo-41288: Unpickling invalid NEWOBJ_EX opcode with the
+  - bpo-39017: Avoid infinite loop when reading specially crafted
+  - bpo-41207: In distutils.spawn, restore expectation that
+  - bpo-41194: Fix a crash in the _ast module: it can no longer be
+  - bpo-39384: Fixed email.contentmanager to allow set_content() to set a</comment>
+    <requestid>1281358</requestid>
+  </revision>
 </revisionlist>

@@ -189,6 +189,9 @@ Patch24:        add-loongarch64-support.patch
 # PATCH-FIX-UPSTREAM gh-126572-test_ssl-no-stop-ThreadedEchoServer-OSError.patch bsc#1241067 mcepl@suse.com
 # don't stop ThreadedEchoServer on OSError, makes test_ssl fail with OpenSSL 3.5
 Patch25:        gh-126572-test_ssl-no-stop-ThreadedEchoServer-OSError.patch
+# PATCH-FIX-UPSTREAM CVE-2025-4516-DecodeError-handler.patch bsc#1243273 mcepl@suse.com
+# this patch makes things totally awesome
+Patch26:        CVE-2025-4516-DecodeError-handler.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  crypto-policies-scripts
@@ -432,27 +435,11 @@ other applications.
 %prep
 %setup -q -n %{tarname}
 
-%patch -p1 -P 02
-%patch -p1 -P 03
-%patch -p1 -P 04
-%patch -p1 -P 05
-%patch -p1 -P 07
-%patch -p1 -P 08
-
+%autopatch -p1 -M 08
 %if 0%{?suse_version} <= 1500
 %patch -P 09 -p1
 %endif
-
-%patch -p1 -P 10
-%patch -p1 -P 11
-%patch -p1 -P 13
-%patch -p1 -P 15
-%patch -p1 -P 16
-%patch -p1 -P 17
-%patch -p1 -P 19
-%patch -p1 -P 22
-%patch -p1 -P 24
-%patch -p1 -P 25
+%autopatch -p1 -m 10
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
