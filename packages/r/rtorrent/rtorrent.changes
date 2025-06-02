@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun  2 08:38:29 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.15.4
+  * Refactoring of threads, polling and scheduler code.
+  * Added `system.files.advise_random.hashing.set` for speeding
+    up initial hashing of files in a torrent. This can be used in
+    conjunction with `system.files.advise_random.set` to reduce
+    disk I/O on SSDs.
+  * Enabling `system.files.advise_random.set` will reduce
+    unnecessary disk I/O on SSDs, while disabling
+    `system.files.advise_random.hashing.set` ensures that the
+    initial hashing retains the benefits of sequential disk
+    read-ahead.
+
+-------------------------------------------------------------------
 Fri May  2 10:02:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.15.3
