@@ -53,4 +53,13 @@
   * Allow to write multiline string via triple quotes (&quot;&quot;&quot; ... &quot;&quot;&quot;)</comment>
     <requestid>990240</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>217f402df3054d95c9f7751c457fe127</srcmd5>
+    <version>3.0.0</version>
+    <time>1748894495</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build
+</comment>
+    <requestid>1281974</requestid>
+  </revision>
 </revisionlist>
