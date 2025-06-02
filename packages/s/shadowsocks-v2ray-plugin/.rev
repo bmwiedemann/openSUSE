@@ -50,4 +50,14 @@
     <comment> (forwarded request 1181013 from hillwood)</comment>
     <requestid>1181014</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>78774d8295c9f72093c4961be0cf7ab6</srcmd5>
+    <version>5.25.0</version>
+    <time>1748894480</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 5.25.0
+  * Update v2ray-core to v5.25.0
+- Add update-vendor.patch, update v2ray-core to v5.33.0 (boo#1243954 and CVE-2025-297850) (forwarded request 1281932 from hillwood)</comment>
+    <requestid>1281933</requestid>
+  </revision>
 </revisionlist>
