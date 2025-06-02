@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 27 06:32:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.32.6
+  * Remove clang-3 from CI by @sbSteveK in (#736)
+  * Fix Endpoint Resolver Test By Escpaing "-" by @waahm7 in (#737)
+
+-------------------------------------------------------------------
 Tue May  6 13:00:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.32.5
