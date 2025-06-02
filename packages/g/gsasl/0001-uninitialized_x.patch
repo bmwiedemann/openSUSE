@@ -1,0 +1,132 @@
+Fixes this warning
+
+make[2]: Entering directory '/home/abuild/rpmbuild/BUILD/libgsasl-1.10.0/digest-md5'
+/usr/bin/bash ../libtool  --tag=CC   --mode=link gcc -Werror -fanalyzer -fno-common -Wall -Warith-conversion -Wbad-function-cast -Wcast-align=strict -Wdate-time -Wdisabled-optimization -Wdouble-promotion -Wduplicated-branches -Wduplicated-cond -Wextra -Wformat-signedness -Winit-self -Winline -Winvalid-pch -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wnested-externs -Wnull-dereference -Wold-style-definition -Wopenmp-simd -Woverlength-strings -Wpacked -Wpointer-arith -Wshadow -Wstack-protector -Wstrict-overflow -Wstrict-prototypes -Wsuggest-attribute=cold -Wsuggest-attribute=format -Wsuggest-attribute=malloc -Wsuggest-attribute=noreturn -Wsuggest-final-methods -Wsuggest-final-types -Wsync-nand -Wtrampolines -Wuninitialized -Wunknown-pragmas -Wunsafe-loop-optimizations -Wunused-macros -Wvariadic-macros -Wvector-operation-performance -Wvla -Wwrite-strings -Warray-bounds=2 -Wattribute-alias=2 -Wformat-overflow=2 -Wformat=2 -Wformat-truncation=2 -Wimplicit-fallthrough=5 -Wshift-overflow=2 -Wunused-const-variable=2 -Wvla-larger-than=4031 -Wno-analyzer-double-free -Wno-analyzer-malloc-leak -Wno-analyzer-null-dereference -Wno-analyzer-use-after-free -O2 -Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type -flto=auto -g  -flto=auto -o test-parser test_parser-test-parser.o libgsasl-digest_md5.la ../gl/libgl.la 
+libtool: link: gcc -Werror -fanalyzer -fno-common -Wall -Warith-conversion -Wbad-function-cast -Wcast-align=strict -Wdate-time -Wdisabled-optimization -Wdouble-promotion -Wduplicated-branches -Wduplicated-cond -Wextra -Wformat-signedness -Winit-self -Winline -Winvalid-pch -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wnested-externs -Wnull-dereference -Wold-style-definition -Wopenmp-simd -Woverlength-strings -Wpacked -Wpointer-arith -Wshadow -Wstack-protector -Wstrict-overflow -Wstrict-prototypes -Wsuggest-attribute=cold -Wsuggest-attribute=format -Wsuggest-attribute=malloc -Wsuggest-attribute=noreturn -Wsuggest-final-methods -Wsuggest-final-types -Wsync-nand -Wtrampolines -Wuninitialized -Wunknown-pragmas -Wunsafe-loop-optimizations -Wunused-macros -Wvariadic-macros -Wvector-operation-performance -Wvla -Wwrite-strings -Warray-bounds=2 -Wattribute-alias=2 -Wformat-overflow=2 -Wformat=2 -Wformat-truncation=2 -Wimplicit-fallthrough=5 -Wshift-overflow=2 -Wunused-const-variable=2 -Wvla-larger-than=4031 -Wno-analyzer-double-free -Wno-analyzer-malloc-leak -Wno-analyzer-null-dereference -Wno-analyzer-use-after-free -O2 -Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type -flto=auto -g -flto=auto -o test-parser test_parser-test-parser.o  ./.libs/libgsasl-digest_md5.a ../gl/.libs/libgl.a -lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err
+../gl/sha256.c: In function 'sha256_process_block':
+../gl/sha256.c:462:7: error: use of uninitialized value 'x[1]' [CWE-457] [-Werror=analyzer-use-of-uninitialized-value]
+  462 |       R( h, a, b, c, d, e, f, g, K( 1), x[ 1] );
+      |       ^
+  'hmac_sha256': events 1-2
+    |
+    |../gl/hmac.c:59:1:
+    |   59 | GL_HMAC_FN (const void *key, size_t keylen,
+    |      | ^
+    |      | |
+    |      | (1) entry to 'hmac_sha256'
+    |......
+    |   81 |   hmac_hash (key, keylen, in, inlen, IPAD, innerhash);
+    |      |   ~
+    |      |   |
+    |      |   (2) calling 'hmac_hash' from 'hmac_sha256'
+    |
+    +--> 'hmac_hash': events 3-4
+           |
+           |   42 | hmac_hash (const void *key, size_t keylen,
+           |      | ^
+           |      | |
+           |      | (3) entry to 'hmac_hash'
+           |......
+           |   50 |   memxor (block, key, keylen);
+           |      |   ~
+           |      |   |
+           |      |   (4) calling 'memxor' from 'hmac_hash'
+           |
+           +--> 'memxor': events 5-9
+                  |
+                  |../gl/memxor.c:25:1:
+                  |   25 | memxor (void *restrict dest, const void *restrict src, size_t n)
+                  |      | ^
+                  |      | |
+                  |      | (5) entry to 'memxor'
+                  |......
+                  |   30 |   for (; n > 0; n--)
+                  |      |            ~
+                  |      |            |
+                  |      |            (6) following 'true' branch (when 'n_3 != 0')...
+                  |      |            (8) following 'false' branch (when 'n_3 == 0')...
+                  |   31 |     *d++ ^= *s++;
+                  |      |     ~
+                  |      |     |
+                  |      |     (7) ...to here
+                  |   32 | 
+                  |   33 |   return dest;
+                  |      |   ~
+                  |      |   |
+                  |      |   (9) ...to here
+                  |
+           <------+
+           |
+         'hmac_hash': events 10-11
+           |
+           |../gl/hmac.c:50:3:
+           |   50 |   memxor (block, key, keylen);
+           |      |   ^
+           |      |   |
+           |      |   (10) returning to 'hmac_hash' from 'memxor'
+           |......
+           |   53 |   GL_HMAC_FN_BLOC (block, sizeof block, &hmac_ctx);
+           |      |   ~
+           |      |   |
+           |      |   (11) calling 'sha256_process_block' from 'hmac_hash'
+           |
+           +--> 'sha256_process_block': events 12-14
+                  |
+                  |../gl/sha256.c:409:1:
+                  |  409 | sha256_process_block (const void *buffer, size_t len, struct sha256_ctx *ctx)
+                  |      | ^
+                  |      | |
+                  |      | (12) entry to 'sha256_process_block'
+                  |......
+                  |  414 |   uint32_t x[16];
+                  |      |            ~
+                  |      |            |
+                  |      |            (13) region created on stack here
+                  |......
+                  |  449 |   while (words < endp)
+                  |      |                ~
+                  |      |                |
+                  |      |                (14) following 'true' branch (when 'words_1902 < endp_1916')...
+                  |
+                'sha256_process_block': event 15
+                  |
+                  |lto1:
+                  | (15): ...to here
+                  |
+                'sha256_process_block': events 16-20
+                  |
+                  |  455 |       for (t = 0; t < 16; t++)
+                  |      |                     ^
+                  |      |                     |
+                  |      |                     (16) following 'true' branch (when 't_1911 != 16')...
+                  |      |                     (18) following 'false' branch (when 't_1911 == 16')...
+                  |  456 |         {
+                  |  457 |           x[t] = SWAP (*words);
+                  |      |           ~          
+                  |      |           |
+                  |      |           (17) ...to here
+                  |......
+                  |  461 |       R( a, b, c, d, e, f, g, h, K( 0), x[ 0] );
+                  |      |       ~              
+                  |      |       |
+                  |      |       (19) ...to here
+                  |  462 |       R( h, a, b, c, d, e, f, g, K( 1), x[ 1] );
+                  |      |       ~              
+                  |      |       |
+                  |      |       (20) use of uninitialized value 'x[1]' here
+                  |
+lto1: all warnings being treated as errors
+
+Index: gsasl-2.2.1/lib/gl/sha256.c
+===================================================================
+--- gsasl-2.2.1.orig/lib/gl/sha256.c
++++ gsasl-2.2.1/lib/gl/sha256.c
+@@ -446,6 +446,8 @@ sha256_process_block (const void *buffer
+                                      D += t1;  H = t0 + t1; \
+                                } while(0)
+ 
++  memset(x, 0, sizeof(x));
++
+   while (words < endp)
+     {
+       uint32_t tm;

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 27 09:43:28 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
+
+- Rename patch uninitialized_x.patch to 0001-uninitialized_x.patch
+  and update it for version 2.2.1
+- Reenable compilation warnings. Add patches
+  * 0002-Fix-calloc-transposed-arguments.patch
+  * 0003-Fix-more-transposed-calloc-arguments.patch
+ 
+-------------------------------------------------------------------
+Thu Mar 27 13:14:47 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %autosetup to work with rpm-4.20 (bsc#1240154)
+
+-------------------------------------------------------------------
 Mon Dec 16 00:58:46 UTC 2024 - David Disseldorp <ddiss@suse.com>
 
 - Disable support for insecure NTLM authentication; jsc#PED-11790
@@ -32,6 +46,7 @@ Tue May 30 09:21:12 UTC 2023 - Adam Majer <adam.majer@suse.de>
 - fixes compilation on s390x by not turning on additional compilation
   warnings which in turn results in -fanalyze resulting false
   analysis
+- uninitialized_x.patch: fixes compilation on s390x
 
 -------------------------------------------------------------------
 Tue Oct 25 08:36:11 UTC 2022 - Dirk Müller <dmueller@suse.com>

@@ -1,7 +1,7 @@
 #
 # spec file for package gsasl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,9 @@ Source:         https://ftp.gnu.org/gnu/gsasl/%{name}-%{version}.tar.gz
 Source2:        https://ftp.gnu.org/gnu/gsasl/%{name}-%{version}.tar.gz.sig
 # https://josefsson.org/54265e8c.txt#/libgsasl.keyring
 Source3:        %{name}.keyring
+Patch1:         0001-uninitialized_x.patch
+Patch2:         0002-Fix-calloc-transposed-arguments.patch
+Patch3:         0003-Fix-more-transposed-calloc-arguments.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel >= 0.19.8
 BuildRequires:  pkgconfig
@@ -77,6 +80,7 @@ from clients, and in clients to authenticate against servers.
 	--disable-static \
 	--disable-ntlm \
 	--with-gssapi-impl=mit \
+	--enable-gcc-warnings=error \
 #
 %make_build
 
