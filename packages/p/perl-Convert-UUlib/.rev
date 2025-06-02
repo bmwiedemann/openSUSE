@@ -253,4 +253,14 @@
 </comment>
     <requestid>1244028</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>061d946809518a4dd0073ace80cd49ed</srcmd5>
+    <version>1.800.0</version>
+    <time>1748894411</time>
+    <user>anag_factory</user>
+    <comment>- -std=gnu11 to fix build with gcc15
+- modified sources
+  % cpanspec.yml (forwarded request 1281154 from pgajdos)</comment>
+    <requestid>1281764</requestid>
+  </revision>
 </revisionlist>

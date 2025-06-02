@@ -63,7 +63,8 @@ this document and especially the non-trivial decoder program at the end.
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+# https://bugzilla.redhat.com/show_bug.cgi/show_bug.cgi?id=2341023
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags} -std=gnu11"
 %make_build
 
 %check
