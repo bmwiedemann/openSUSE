@@ -1,7 +1,7 @@
 #
 # spec file for package python-magicalimport
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-magicalimport
 Version:        0.9.1
 Release:        0
@@ -26,8 +24,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/podhmo/magicalimport
 Source:         https://github.com/podhmo/magicalimport/archive/%{version}.tar.gz#/magicalimport-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,11 +41,11 @@ Importing Python modules by physical file path.
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/examples
  %fdupes %{buildroot}%{$python_sitelib}
 }
