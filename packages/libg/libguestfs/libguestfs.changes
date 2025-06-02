@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 28 09:50:06 MDT 2025 - carnold@suse.com
+
+- Upstream bug fix for BTRFS based images (SLES and openSUSE)
+  004-Add-more-debugging-to-list_filesystems.patch
+  005-Pipeline-style-when-mapping-and-filtering-filesystems.patch
+  007-inspection-Ignore-btrfs-snapshots-of-roots.patch
+- Adjustment to use fusermount3 when fuse3 is required by distro.
+  use-fuse3-for-build.patch
+
+-------------------------------------------------------------------
 Tue May 27 08:43:54 MDT 2025 - carnold@suse.com
 
 - bsc#1243351 - guestfs-appliance still requires ISC dhcp

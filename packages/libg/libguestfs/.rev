@@ -1262,4 +1262,12 @@
     <comment>Fix for bsc#1243351 - guestfs-appliance still requires ISC dhcp</comment>
     <requestid>1280654</requestid>
   </revision>
+  <revision rev="122" vrev="3">
+    <srcmd5>ca404245d3de25bb41bb6c99c7d154ee</srcmd5>
+    <version>1.55.13</version>
+    <time>1748894491</time>
+    <user>anag_factory</user>
+    <comment>Upstream patches to fix how BTRFS based images (SLES and openSUSE) are handled</comment>
+    <requestid>1281953</requestid>
+  </revision>
 </revisionlist>

@@ -33,6 +33,9 @@ Source101:      README
 
 # Patches
 Patch1:         use-rtc-driftfix-slew-for-x86-only.patch
+Patch2:         004-Add-more-debugging-to-list_filesystems.patch
+Patch3:         005-Pipeline-style-when-mapping-and-filtering-filesystems.patch
+Patch4:         007-inspection-Ignore-btrfs-snapshots-of-roots.patch
 Patch100:       use-fuse3-for-build.patch
 
 BuildRequires:  bison
