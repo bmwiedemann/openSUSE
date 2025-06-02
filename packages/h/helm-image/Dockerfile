@@ -17,7 +17,7 @@
 #!ExclusiveArch: aarch64 ppc64le s390x x86_64
 #!BuildTag: opensuse/helm:%%helm_version%%-%RELEASE%
 #!BuildTag: opensuse/helm:%%helm_version%%
-#!BuildTag: opensuse/helm:3.17
+#!BuildTag: opensuse/helm:3.18
 #!BuildTag: opensuse/helm:3
 #!BuildTag: opensuse/helm:latest
 
@@ -30,7 +30,7 @@ RUN set -euo pipefail; \
 # sanity check that the version from the tag is equal to the version of helm that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' helm | \
-    cut -d '.' -f -2)" = "3.17" ]
+    cut -d '.' -f -2)" = "3.18" ]
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 FROM opensuse/bci/bci-micro:latest
@@ -50,6 +50,6 @@ LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
-LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/helm-image/README.md"
+LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
 ENTRYPOINT ["/usr/bin/helm"]
 CMD ["help"]
