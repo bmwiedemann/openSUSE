@@ -63,4 +63,12 @@
   * Add rst-linter pre-commit hook to prevent committing errors to HISTORY.rst #50</comment>
     <requestid>1158397</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7cfc240892ed7668cce610bbd34cac69</srcmd5>
+    <version>1.1.17</version>
+    <time>1748894500</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1281984</requestid>
+  </revision>
 </revisionlist>

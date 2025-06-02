@@ -1,7 +1,7 @@
 #
 # spec file for package python-openwrt-luci-rpc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ URL:            https://github.com/fbradyirl/openwrt-luci-rpc
 Source:         https://files.pythonhosted.org/packages/source/o/openwrt-luci-rpc/openwrt-luci-rpc-%{version}.tar.gz
 BuildRequires:  %{python_module click >= 6.0}
 BuildRequires:  %{python_module packaging >= 19.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.21}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 6.0
@@ -51,14 +53,14 @@ https://openwrt-luci-rpc.readthedocs.io
 sed -i -e 's:==:>=:g' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest discover -v
+%pyunittest -v
 
 %files %{python_files}
 %license LICENSE
