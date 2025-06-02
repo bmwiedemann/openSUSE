@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 14:15:16 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed Apr 14 05:33:14 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop broken %ifpython3 macro

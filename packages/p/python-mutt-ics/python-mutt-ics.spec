@@ -1,7 +1,7 @@
 #
 # spec file for package python-mutt-ics
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mutt-ics
 Version:        0.9.2
 Release:        0
@@ -25,16 +24,18 @@ License:        MIT
 URL:            https://github.com/dmedvinsky/mutt-ics
 Source0:        https://files.pythonhosted.org/packages/source/m/mutt_ics/mutt_ics-%{version}.tar.gz
 BuildRequires:  %{python_module icalendar >= 3.9.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-icalendar >= 3.9.0
 Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-BuildArch:      noarch
+Requires(post): alts
+Requires(postun): alts
 Provides:       mutt-ics
 Provides:       mutt_ics
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -44,18 +45,18 @@ A tool to show calendar event details in Mutt.
 %setup -q -n mutt_ics-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/mutt-ics
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 exit_code=0
-%python_exec build/lib/mutt_ics/mutt_ics.py samples/1.ics | grep Subject   || exit_code=1
-%python_exec build/lib/mutt_ics/mutt_ics.py samples/2.ics | grep Start     || exit_code=2
-%python_exec build/lib/mutt_ics/mutt_ics.py samples/3.ics | grep Organizer || exit_code=3
+%python_exec mutt_ics/mutt_ics.py samples/1.ics | grep Subject   || exit_code=1
+%python_exec mutt_ics/mutt_ics.py samples/2.ics | grep Start     || exit_code=2
+%python_exec mutt_ics/mutt_ics.py samples/3.ics | grep Organizer || exit_code=3
 exit $exit_code
 
 %post
@@ -67,6 +68,7 @@ exit $exit_code
 %files %{python_files}
 %doc README.md
 %python_alternative %{_bindir}/mutt-ics
-%{python_sitelib}/*
+%{python_sitelib}/mutt[-_]ics
+%{python_sitelib}/mutt[-_]ics-%{version}*-info
 
 %changelog
