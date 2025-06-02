@@ -1,0 +1,23 @@
+<services>
+	<service name="tar_scm" mode="manual">
+		<param name="url">https://github.com/elixir-lang/ex_doc</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="revision">v0.38.1</param>
+		<param name="scm">git</param>
+		<param name="changesgenerate">enable</param>
+		<param name="versionrewrite-pattern">v(.+)</param>
+		<param name="versionrewrite-replacement">\1</param>
+	</service>
+	<service name="set_version" mode="manual">
+		<param name="basename">ex_doc</param>
+	</service>
+	<service name="recompress" mode="manual">
+		<param name="compression">xz</param>
+		<param name="file">*.tar</param>
+	</service>
+	<service name="elixir_mix_deps" mode="manual">
+		<param name="subdir">ex_doc</param>
+		<param name="archivename">vendor.tar.gz</param>
+		<param name="compression">gz</param>
+	</service>
+</services>
