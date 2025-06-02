@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Jun 01 19:05:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 8.27.0:
+  * Archive Scanning
+  Sometimes secrets are packaged within archive files like zip
+  files or tarballs, making them difficult to discover. Now you can
+  tell gitleaks to automatically extract and scan the contents of
+  archives. The flag --max-archive-depth enables this feature for
+  both dir and git scan types. The default value of "0" means this
+  feature is disabled by default.
+  Recursive scanning is supported since archives can also contain
+  other archives.  The --max-archive-depth flag sets the recursion
+  limit. Recursion stops when there are no new archives to extract,
+  so setting a very high max depth just sets the potential to go
+  that deep. It will only go as deep as it needs to.
+  The findings for secrets located within an archive will include
+  the path to the file inside the archive. Inner paths are
+  separated with !.  This means a secret was detected on line 4 of
+  files/.env.prod. which is in archives/files.tar which is in
+  testdata/archives/nested.tar.gz.
+  Currently supported formats:
+    The compression and archive formats supported by mholt's
+    archives package are supported.
+  * Changelog
+    - Archive support (#1872)
+    - Update README.md
+    - Reduce aws-access-token false positives (#1876)
+    - Set `pass_filenames` to `false` for Docker hook (#1850)
+    - unicode decoding (#1854)
+    - Diagnostics (#1856)
+    - chore: include decoder in debug log (#1853)
+
+-------------------------------------------------------------------
 Tue May 13 04:29:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 8.26.0:
