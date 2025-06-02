@@ -1,7 +1,7 @@
 #
 # spec file for package python-linetable
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-linetable
 Version:        0.0.3
 Release:        0
@@ -24,7 +23,9 @@ Summary:        library to manage Python Locations Table (co_linetable)
 License:        MIT
 URL:            https://github.com/amol-/linetable
 Source:         https://files.pythonhosted.org/packages/source/l/linetable/linetable-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -37,14 +38,15 @@ library to manage Python Locations Table (co_linetable)
 %setup -q -n linetable-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/linetable
+%{python_sitelib}/linetable-%{version}*-info
 
 %changelog
