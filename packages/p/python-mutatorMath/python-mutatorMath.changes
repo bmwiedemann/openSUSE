@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 14:11:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri Dec 17 14:36:28 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Make tests verbose

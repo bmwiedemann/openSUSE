@@ -1,7 +1,7 @@
 #
 # spec file for package python-mutatorMath
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-mutatorMath
 Version:        3.0.1
 Release:        0
@@ -27,19 +24,21 @@ License:        BSD-3-Clause
 URL:            https://github.com/LettError/MutatorMath
 Source:         https://files.pythonhosted.org/packages/source/M/MutatorMath/MutatorMath-%{version}.zip
 Source99:       https://raw.githubusercontent.com/LettError/MutatorMath/master/LICENSE
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-BuildArch:      noarch
 Requires:       python-FontTools
 Requires:       python-defcon
 Requires:       python-fontMath
 # requires fonttools' extras_require[ufo] for the "ufo subpackage", despite not specified by setup.py
 Requires:       python-fs
+BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module defcon}
 BuildRequires:  %{python_module FontTools}
+BuildRequires:  %{python_module defcon}
 BuildRequires:  %{python_module fontMath}
 BuildRequires:  %{python_module fs}
 # Full stdlib required to avoid resource warnings in test suite.
@@ -58,10 +57,10 @@ arithmetic object.
 cp %{SOURCE99} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -71,6 +70,6 @@ export PYTHONDONTWRITEBYTECODE=1
 %files %{python_files}
 %license LICENSE
 %{python_sitelib}/mutatorMath
-%{python_sitelib}/MutatorMath-%{version}*-info
+%{python_sitelib}/[Mm]utator[Mm]ath-%{version}*-info
 
 %changelog
