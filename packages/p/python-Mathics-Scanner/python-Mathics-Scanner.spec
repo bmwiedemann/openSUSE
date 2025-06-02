@@ -85,6 +85,6 @@ sed -i "s|/usr/bin/env python3|/usr/bin/python3|" mathics_scanner/generate/rl_in
 %python_alternative %{_bindir}/mathics3-generate-operator-json-table
 %python_alternative %{_bindir}/mathics3-tokens
 %{python_sitelib}/%{modname}/
-%{python_sitelib}/Mathics_Scanner-%{version}*.*-info/
+%{python_sitelib}/[Mm]athics_[Ss]canner-%{version}*.*-info/
 
 %changelog
