@@ -1,7 +1,7 @@
 #
 # spec file for package python-parallax
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define oldpython python
 Name:           python-parallax
 Version:        1.0.8
 Release:        0
@@ -26,17 +26,17 @@ Group:          Development/Languages/Python
 URL:            https://github.com/krig/parallax/
 Source:         https://files.pythonhosted.org/packages/source/p/parallax/parallax-%{version}.tar.gz
 Patch1:         0001-Fix-manager-writer-thread-can-only-be-started-once-b.patch
-
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%define oldpython python
-Obsoletes:      %{oldpython}-parallax < %{version}
 Requires:       openssh
+Obsoletes:      %{oldpython}-parallax < %{version}
 BuildArch:      noarch
 %if 0%{?suse_version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(post): alts
+Requires(postun): alts
 %else
 Requires(post): %{_sbindir}/update-alternatives
 Requires(postun): %{_sbindir}/update-alternatives
@@ -52,10 +52,10 @@ multiple nodes using SCP.
 %autosetup -p1 -n parallax-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/parallax-askpass
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -70,7 +70,7 @@ multiple nodes using SCP.
 %doc AUTHORS README.md
 %license COPYING
 %{python_sitelib}/parallax
-%{python_sitelib}/parallax-%{version}*.egg-info
+%{python_sitelib}/parallax-%{version}*-info
 %python_alternative %{_bindir}/parallax-askpass
 
 %changelog
