@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-CIDR-Set
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Net-CIDR-Set
-Version:        0.13
-Release:        0
 %define cpan_name Net-CIDR-Set
+Name:           perl-Net-CIDR-Set
+Version:        0.150.0
+Release:        0
+# 0.15 -> normalize -> 0.150.0
+%define cpan_version 0.15
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Manipulate sets of IP addresses
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Net-CIDR-Set/
-Source:         http://www.cpan.org/authors/id/A/AN/ANDYA/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RR/RRWO/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.42
+Provides:       perl(Net::CIDR::Set) = %{version}
+Provides:       perl(Net::CIDR::Set::IPv4) = %{version}
+Provides:       perl(Net::CIDR::Set::IPv6) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -49,21 +52,21 @@ Normally this isn't necessary - the set will guess its personality from the
 first data that is added to it.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-./Build test
+make test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+%perl_make_install
+%perl_process_packlist
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog

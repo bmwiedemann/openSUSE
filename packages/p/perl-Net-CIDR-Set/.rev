@@ -43,4 +43,15 @@
     <comment>1</comment>
     <requestid>296666</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8d8f2a48666821bd14208eb3aecf79a8</srcmd5>
+    <version>0.150.0</version>
+    <time>1748894518</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1281913 from tinita
+
+- updated to 0.150.0 (0.15)
+   see /usr/share/doc/packages/perl-Net-CIDR-Set/Changes</comment>
+    <requestid>1282008</requestid>
+  </revision>
 </revisionlist>
