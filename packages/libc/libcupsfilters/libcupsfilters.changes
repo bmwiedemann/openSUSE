@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue May 27 12:18:56 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
+
+- Conflict with the old 'cups-filters' version 1.x RPM and
+  conflict with the old 'cups-filters-devel' version 1.x RPM
+
+-------------------------------------------------------------------
+Wed Feb 19 12:14:15 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to libcupsfilters version 2.1.1, see
+  https://github.com/OpenPrinting/libcupsfilters/releases/tag/2.1.1
+
+-------------------------------------------------------------------
+Tue Feb 18 11:40:20 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
+
+- Initial package libcupsfilters version 2.1.0
+

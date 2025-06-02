@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8244232445969155b599a03c4ad14f45</srcmd5>
+    <version>2.1.1</version>
+    <time>1748894375</time>
+    <user>anag_factory</user>
+    <comment>Conflict with the old cups-filters and cups-filters-devel version 1.x RPMs</comment>
+    <requestid>1280576</requestid>
+  </revision>
+</revisionlist>
