@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun  2 05:37:14 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.718.0 (1.718)
+   see /usr/share/doc/packages/perl-Log-Any/Changes
+
+  1.718     2025-06-01 09:59:59-05:00 America/Chicago
+
+    [Fixed]
+
+    - Fixed Log::Any::Adapter::Multiplex not loading its child adapter
+      modules.
+
+-------------------------------------------------------------------
 Fri Mar  8 22:41:15 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

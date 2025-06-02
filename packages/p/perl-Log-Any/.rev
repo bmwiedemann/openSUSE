@@ -273,4 +273,19 @@
 </comment>
     <requestid>1156487</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a556ebd72d8aefc8162c6205a39a3545</srcmd5>
+    <version>1.718.0</version>
+    <time>1748894528</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1281920 from tinita
+
+- updated to 1.718.0 (1.718)
+   see /usr/share/doc/packages/perl-Log-Any/Changes
+  1.718     2025-06-01 09:59:59-05:00 America/Chicago
+    [Fixed]
+    - Fixed Log::Any::Adapter::Multiplex not loading its child adapter
+      modules.</comment>
+    <requestid>1282014</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Log-Any
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,10 @@
 
 %define cpan_name Log-Any
 Name:           perl-Log-Any
-Version:        1.717.0
+Version:        1.718.0
 Release:        0
-%define cpan_version 1.717
+# 1.718 -> normalize -> 1.718.0
+%define cpan_version 1.718
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Bringing loggers and listeners together
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -29,24 +30,24 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-Provides:       perl(Log::Any) = 1.717.0
-Provides:       perl(Log::Any::Adapter) = 1.717.0
-Provides:       perl(Log::Any::Adapter::Base) = 1.717.0
-Provides:       perl(Log::Any::Adapter::Capture) = 1.717.0
-Provides:       perl(Log::Any::Adapter::File) = 1.717.0
-Provides:       perl(Log::Any::Adapter::Multiplex) = 1.717.0
-Provides:       perl(Log::Any::Adapter::Null) = 1.717.0
-Provides:       perl(Log::Any::Adapter::Stderr) = 1.717.0
-Provides:       perl(Log::Any::Adapter::Stdout) = 1.717.0
-Provides:       perl(Log::Any::Adapter::Syslog) = 1.717.0
-Provides:       perl(Log::Any::Adapter::Test) = 1.717.0
-Provides:       perl(Log::Any::Adapter::Util) = 1.717.0
-Provides:       perl(Log::Any::Manager) = 1.717.0
-Provides:       perl(Log::Any::Proxy) = 1.717.0
-Provides:       perl(Log::Any::Proxy::Null) = 1.717.0
-Provides:       perl(Log::Any::Proxy::Test) = 1.717.0
-Provides:       perl(Log::Any::Proxy::WithStackTrace) = 1.717.0
-Provides:       perl(Log::Any::Test) = 1.717.0
+Provides:       perl(Log::Any) = %{version}
+Provides:       perl(Log::Any::Adapter) = %{version}
+Provides:       perl(Log::Any::Adapter::Base) = %{version}
+Provides:       perl(Log::Any::Adapter::Capture) = %{version}
+Provides:       perl(Log::Any::Adapter::File) = %{version}
+Provides:       perl(Log::Any::Adapter::Multiplex) = %{version}
+Provides:       perl(Log::Any::Adapter::Null) = %{version}
+Provides:       perl(Log::Any::Adapter::Stderr) = %{version}
+Provides:       perl(Log::Any::Adapter::Stdout) = %{version}
+Provides:       perl(Log::Any::Adapter::Syslog) = %{version}
+Provides:       perl(Log::Any::Adapter::Test) = %{version}
+Provides:       perl(Log::Any::Adapter::Util) = %{version}
+Provides:       perl(Log::Any::Manager) = %{version}
+Provides:       perl(Log::Any::Proxy) = %{version}
+Provides:       perl(Log::Any::Proxy::Null) = %{version}
+Provides:       perl(Log::Any::Proxy::Test) = %{version}
+Provides:       perl(Log::Any::Proxy::WithStackTrace) = %{version}
+Provides:       perl(Log::Any::Test) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 
@@ -90,7 +91,7 @@ See http://www.openswartz.com/2007/09/06/standard-logging-api/ for the
 original post proposing this module.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
