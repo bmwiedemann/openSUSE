@@ -18,18 +18,19 @@
 
 %define X_display ":98"
 %{?sle15_python_module_pythons}
+%define modname veusz
 Name:           python-veusz
-Version:        3.6.2
+Version:        4.0
 Release:        0
 Summary:        Scientific plotting library for Python
 # The entire source code is GPL-2.0+ except helpers/src/_nc_cntr.c which is Python-2.0
 License:        GPL-2.0-or-later AND Python-2.0
 URL:            https://veusz.github.io/
 Source0:        https://files.pythonhosted.org/packages/source/v/veusz/veusz-%{version}.tar.gz
+BuildRequires:  %{python_module PyQt6-devel}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module qt5-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sip-devel}
 BuildRequires:  %{python_module tomli}
@@ -39,10 +40,9 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  man
 BuildRequires:  python-rpm-macros
-BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-server-Xvfb
+Requires:       python-PyQt6
 Requires:       python-numpy
-Requires:       python-qt5
 Requires:       veusz-common
 Recommends:     python-astropy
 Recommends:     python-h5py

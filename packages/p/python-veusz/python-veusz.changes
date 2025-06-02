@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun  1 18:11:26 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.0:
+  * Update to using Qt6.
+  * Documentation updates.
+  * Copying SVG or image widgets copies image data.
+  * Bug fixes:
+    - HDF5 import
+    - 3D rotation
+    - Swap attributes for 2D data if transposing
+    - Hide stderr from embedded usage unless debug=True
+    - Fix histogram2d fro normed to density
+    - Fix for datasets of different lengths if using
+      gap_handling='ignore'
+    - Rename nan_handling to gap_handling
+    - Continue loading if error in plugins
+- Switch to PyQt6 instead of PyQt5 for builds.
+- Drop unnecessary update-desktop-file BuildRequires.
+
+-------------------------------------------------------------------
 Wed Mar 12 16:22:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - use modern python for sle15
