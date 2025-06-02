@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          138
-%define mainver        %major.0.4
-%define orig_version   138.0.4
+%define major          139
+%define mainver        %major.0.1
+%define orig_version   139.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -432,7 +432,7 @@ source ./.obsenv.sh
 cat << EOF > $MOZCONFIG
 mk_add_options MOZILLA_OFFICIAL=1
 mk_add_options BUILD_OFFICIAL=1
-mk_add_options MOZ_MAKE_FLAGS=%{?jobs:-j%jobs}
+mk_add_options MOZ_MAKE_FLAGS=%{?_smp_mflags}
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../obj
 . \$topsrcdir/browser/config/mozconfig
 ac_add_options --disable-bootstrap
@@ -550,7 +550,11 @@ ac_add_options --enable-official-branding
 %endif
 EOF
 
+%if 0%{?suse_version} >= 1600
+%define njobs ${RPM_BUILD_NCPUS:-0}
+%else
 %define njobs 0%{?jobs:%jobs}
+%endif
 mkdir -p $RPM_BUILD_DIR/langpacks_artifacts/
 sed -r '/^(ja-JP-mac|ga-IE|en-US|)$/d;s/ .*$//' $RPM_BUILD_DIR/%{srcname}-%{orig_version}/browser/locales/shipped-locales \
     | xargs -n 1 %{?njobs:-P %njobs} -I {} /bin/sh -c '
@@ -726,6 +730,7 @@ exit 0
 %{progdir}/%{progname}
 %{progdir}/%{progname}-bin
 %{progdir}/application.ini
+%{progdir}/crashhelper
 %{progdir}/dependentlibs.list
 %{progdir}/*.so
 %{progdir}/glxtest

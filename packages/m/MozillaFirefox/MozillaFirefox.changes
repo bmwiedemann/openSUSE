@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat May 31 19:39:11 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 139.0.1
+  https://www.mozilla.org/en-US/firefox/139.0.1/releasenotes/
+  * Fixed graphics corruption with certain NVIDIA graphics adapters
+    and multiple monitors running at mixed refresh rates after
+    updating to Firefox 139. (bmo#1968876)
+
+-------------------------------------------------------------------
+Mon May 26 17:41:31 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 139.0
+  https://www.mozilla.org/en-US/firefox/139.0/releasenotes/
+  MFSA 2025-42 (bsc#1243353)
+  * MFSA-TMP-2025-0001 (bmo#1962421)
+    Double-free in libvpx encoder
+  * CVE-2025-5263 (bmo#1960745)
+    Error handling for script execution was incorrectly isolated
+    from web content
+  * CVE-2025-5264 (bmo#1950001)
+    Potential local code execution in “Copy as cURL” command
+  * CVE-2025-5265 (bmo#1962301)
+    Potential local code execution in “Copy as cURL” command
+  * CVE-2025-5266 (bmo#1965628)
+    Script element events leaked cross-origin resource status
+  * CVE-2025-5270 (bmo#1910298)
+    SNI was sometimes unencrypted
+  * CVE-2025-5271 (bmo#1920348)
+    Devtools' preview ignored CSP headers
+  * CVE-2025-5267 (bmo#1954137)
+    Clickjacking vulnerability could have led to leaking saved
+    payment card details
+  * CVE-2025-5268 (bmo#1950136, bmo#1958121, bmo#1960499, bmo#1962634)
+    Memory safety bugs fixed in Firefox 139, Thunderbird 139,
+    Firefox ESR 128.11, and Thunderbird 128.11
+  * CVE-2025-5272 (bmo#1726254, bmo#1742738, bmo#1960121)
+    Memory safety bugs fixed in Firefox 139 and Thunderbird 139
+
+-------------------------------------------------------------------
 Sun May 18 17:04:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 138.0.4
@@ -19,6 +58,11 @@ Sun May 18 17:04:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
   * Fixed: Fixed an issue where the "Match Case" shortcut `Alt+C`
     in the find-in-page toolbar did not toggle the checkbox as
     expected. (bmo#1952611)
+
+-------------------------------------------------------------------
+Fri May 16 05:39:13 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Replace usage of %jobs for reproducible builds (boo#1237231)
 
 -------------------------------------------------------------------
 Mon May 12 05:56:15 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>

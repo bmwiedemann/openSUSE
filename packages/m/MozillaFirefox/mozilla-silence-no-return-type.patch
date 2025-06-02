@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  9ffe1fea48c514ef323c1e238a516ed01f78362b
+# Parent  4fbe42370941f5652d0735686debee5f4b0d6e0e
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -178,7 +178,7 @@ diff --git a/gfx/skia/skia/src/core/SkTypeface_remote.h b/gfx/skia/skia/src/core
          const SkScalerContextEffects& effects, const SkDescriptor* desc) const override
      {
          return std::make_unique<SkScalerContextProxy>(
-                 sk_ref_sp(const_cast<SkTypefaceProxy*>(this)), effects, desc, fDiscardableManager);
+                 *const_cast<SkTypefaceProxy*>(this), effects, desc, fDiscardableManager);
      }
      void onFilterRec(SkScalerContextRec* rec) const override {
          // The rec filtering is already applied by the server when generating
@@ -264,26 +264,10 @@ diff --git a/gfx/skia/skia/src/sksl/ir/SkSLType.h b/gfx/skia/skia/src/sksl/ir/Sk
      virtual SkSpan<const Type* const> coercibleTypes() const {
          SkDEBUGFAIL("Internal error: not a generic type");
          return {};
-diff --git a/gfx/skia/skia/src/sksl/tracing/SkSLDebugTracePriv.cpp b/gfx/skia/skia/src/sksl/tracing/SkSLDebugTracePriv.cpp
---- a/gfx/skia/skia/src/sksl/tracing/SkSLDebugTracePriv.cpp
-+++ b/gfx/skia/skia/src/sksl/tracing/SkSLDebugTracePriv.cpp
-@@ -196,11 +196,12 @@ void DebugTracePriv::dump(SkWStream* o) 
-         }
-     }
- }
- 
- void DebugTracePriv::writeTrace(SkWStream* w) const {
- }
- 
- bool DebugTracePriv::readTrace(SkStream* r) {
-+  return false;
- }
- 
- }  // namespace SkSL
 diff --git a/gfx/skia/skia/src/utils/SkShadowUtils.cpp b/gfx/skia/skia/src/utils/SkShadowUtils.cpp
 --- a/gfx/skia/skia/src/utils/SkShadowUtils.cpp
 +++ b/gfx/skia/skia/src/utils/SkShadowUtils.cpp
-@@ -136,16 +136,17 @@ struct SpotVerticesFactory {
+@@ -137,16 +137,17 @@ struct SpotVerticesFactory {
                  }
                  return false;
              case OccluderType::kDirectional:
@@ -482,7 +466,7 @@ diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallb
 diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
 --- a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
 +++ b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
-@@ -164,16 +164,17 @@ const char* Adaptation::StatusToString(A
+@@ -163,16 +163,17 @@ const char* Adaptation::StatusToString(A
      case Status::kInsufficientInput:
        return "kInsufficientInput";
      case Status::kAdaptationDisabled:
@@ -500,7 +484,7 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
                         VideoStreamInputState input_state)
      : validation_id_(validation_id),
        status_(Status::kValid),
-@@ -386,16 +387,17 @@ VideoStreamAdapter::RestrictionsOrState 
+@@ -385,16 +386,17 @@ VideoStreamAdapter::RestrictionsOrState 
      case DegradationPreference::MAINTAIN_RESOLUTION: {
        // Scale up framerate.
        return IncreaseFramerate(input_state, current_restrictions_);
@@ -518,7 +502,7 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
    ++adaptation_validation_id_;
    RestrictionsOrState restrictions_or_state =
        GetAdaptationDownStep(input_state, current_restrictions_);
-@@ -468,16 +470,17 @@ VideoStreamAdapter::GetAdaptationDownSte
+@@ -467,16 +469,17 @@ VideoStreamAdapter::GetAdaptationDownSte
      }
      case DegradationPreference::MAINTAIN_RESOLUTION: {
        return DecreaseFramerate(input_state, current_restrictions);
@@ -536,7 +520,7 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
    int target_pixels =
        GetLowerResolutionThan(input_state.frame_size_pixels().value());
    // Use single active stream if set, this stream could be lower than the input.
-@@ -621,16 +624,18 @@ Adaptation VideoStreamAdapter::GetAdaptD
+@@ -620,16 +623,18 @@ Adaptation VideoStreamAdapter::GetAdaptD
      case DegradationPreference::MAINTAIN_FRAMERATE:
        return GetAdaptationDown();
      case DegradationPreference::BALANCED: {
@@ -602,7 +586,7 @@ diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwe
 diff --git a/third_party/libwebrtc/media/base/codec_comparators.cc b/third_party/libwebrtc/media/base/codec_comparators.cc
 --- a/third_party/libwebrtc/media/base/codec_comparators.cc
 +++ b/third_party/libwebrtc/media/base/codec_comparators.cc
-@@ -333,16 +333,17 @@ bool MatchesWithCodecRules(const Codec& 
+@@ -334,16 +334,17 @@ bool MatchesWithCodecRules(const Codec& 
                  left_codec.bitrate == right_codec.bitrate) &&
                 ((right_codec.channels < 2 && left_codec.channels < 2) ||
                  left_codec.channels == right_codec.channels);
@@ -654,7 +638,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_st
  
  metrics::Histogram* CreateVolumeHistogram(InputVolumeType input_volume_type) {
    char buffer[64];
-   rtc::SimpleStringBuilder builder(buffer);
+   SimpleStringBuilder builder(buffer);
    builder << MetricNamePrefix(input_volume_type) << "OnChange";
    return metrics::HistogramFactoryGetCountsLinear(/*name=*/builder.str(),
                                                    /*min=*/1,
@@ -1103,16 +1087,16 @@ diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resourc
 diff --git a/third_party/libwebrtc/video/config/encoder_stream_factory.cc b/third_party/libwebrtc/video/config/encoder_stream_factory.cc
 --- a/third_party/libwebrtc/video/config/encoder_stream_factory.cc
 +++ b/third_party/libwebrtc/video/config/encoder_stream_factory.cc
-@@ -106,16 +106,17 @@ int GetDefaultMaxQp(webrtc::VideoCodecTy
-       return kDefaultVideoMaxQpH26x;
+@@ -105,16 +105,17 @@ int GetDefaultMaxQp(VideoCodecType codec
+       return cricket::kDefaultVideoMaxQpH26x;
      case webrtc::kVideoCodecVP8:
      case webrtc::kVideoCodecVP9:
      case webrtc::kVideoCodecGeneric:
-       return kDefaultVideoMaxQpVpx;
+       return cricket::kDefaultVideoMaxQpVpx;
      case webrtc::kVideoCodecAV1:
-       return kDefaultVideoMaxQpAv1;
+       return cricket::kDefaultVideoMaxQpAv1;
    }
-+  return kDefaultVideoMaxQpVpx; // fake return for hopefully not reached
++  return cricket::kDefaultVideoMaxQpAv1; // fake return for hopefully not reached
  }
  
  // Round size to nearest simulcast-friendly size.
