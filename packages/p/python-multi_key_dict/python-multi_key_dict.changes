@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 13:32:43 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed Aug 12 22:41:26 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Run SPEC file through spec-cleaner

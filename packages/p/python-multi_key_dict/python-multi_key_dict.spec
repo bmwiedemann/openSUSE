@@ -1,7 +1,7 @@
 #
 # spec file for package python-multi_key_dict
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-multi_key_dict
 Version:        2.0.3
 Release:        0
@@ -25,7 +24,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/formiaczek/multi_key_dict
 Source:         https://files.pythonhosted.org/packages/source/m/multi_key_dict/multi_key_dict-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
@@ -42,13 +43,15 @@ to the number of keys used to map to the value.
 %setup -q -n multi_key_dict-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
 %doc README.txt
-%{python_sitelib}/*
+%{python_sitelib}/multi_key_dict.py
+%{python_sitelib}/multi_key_dict-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/multi_key_dict*
 
 %changelog
