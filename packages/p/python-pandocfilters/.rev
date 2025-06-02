@@ -87,4 +87,12 @@
     already exists (#104, Augusto Zanellato).</comment>
     <requestid>1140200</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>a4c693409c005a4ee2eadf84ee46b647</srcmd5>
+    <version>1.5.1</version>
+    <time>1748894529</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282017</requestid>
+  </revision>
 </revisionlist>

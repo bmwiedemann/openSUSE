@@ -1,7 +1,7 @@
 #
 # spec file for package python-pandocfilters
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,14 @@ Summary:        Python module for writing pandoc filters
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jgm/pandocfilters
-Source:         https://pypi.io/packages/source/p/pandocfilters/pandocfilters-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pandocfilters/pandocfilters-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     pandoc >= 1.16
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -45,15 +46,17 @@ or using the --filter (or -F) command-line option.
 %setup -q -n pandocfilters-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pandocfilters.py
+%{python_sitelib}/pandocfilters-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/pandocfilters*
 
 %changelog
