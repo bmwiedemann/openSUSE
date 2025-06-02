@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun  2 10:24:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.5:
+  This release fixes a bug in nk3 secrets when handling base32 
+  secrets if the length is a multiple of 8.
+  * Changelog
+    - helpers.b32padding: avoid adding 8 pads when none needed by
+      @AmitAronovitch in #654
+
+-------------------------------------------------------------------
 Wed May 21 05:20:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.4:
