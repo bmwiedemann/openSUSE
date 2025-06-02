@@ -1,0 +1,26 @@
+<package name="cups-filters2" project="openSUSE:Factory">
+  <title>OpenPrinting CUPS filters 2.x for CUPS 2.x</title>
+  <description>This package cups-filters2 contains backends, filters, and other software
+that was once part of CUPS, but during the time when CUPS
+was developed at Apple, Apple stopped maintaining these
+parts as they were not needed by Mac OS.
+In addition it contains more filters and software developed
+independently of Apple, especially filters for the PDF-centric
+printing workflow introduced by OpenPrinting.
+Since CUPS 1.6.0 cups-filters is required for using printer
+drivers (and also driverless printing) with CUPS under Linux.
+This version 2.x of cups-filters is only for CUPS 2.2.2 or newer
+(for older CUPS versions use cups-filters version 1.x).
+This package cups-filters2 requires the new packages libcupsfilters and libppd.
+Additionally Ghostscript and poppler are usually needed but not strictly required.
+Because automated (driverless) printer setup is as generic security issue
+(cf. https://en.opensuse.org/SDB:CUPS_and_SANE_Firewall_settings)
+we provide the driverless parts as separated sub-package cups-filters2-driverless
+so users who do not need it can keep it away from their systems.
+We do not specify &quot;Recommends: cups-filters2-driverless&quot;
+because a recommended package gets automatically (and silently) installed
+when it is available to be installed so software which is a generic security issue
+would get automatically installed in most cases without an explicit user request.
+</description>
+  <url>https://github.com/OpenPrinting/cups-filters</url>
+</package>

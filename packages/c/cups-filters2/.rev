@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f3dc6f76ad032ff6f141372e290953f0</srcmd5>
+    <version>2.0.1</version>
+    <time>1748894372</time>
+    <user>anag_factory</user>
+    <comment>New package cups-filters2 major version upgrade to version 2.x partially backward incompatible so as separated RPM cups-filters2 to keep version 1.x in cups-filters also installable</comment>
+    <requestid>1280477</requestid>
+  </revision>
+</revisionlist>
