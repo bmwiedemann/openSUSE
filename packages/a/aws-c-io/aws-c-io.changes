@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 27 06:48:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.19.1
+  * Fix casing on Windows header files by @waahm7 in (#730)
+  * Acquire/Release Event Loop by @xiazhvera in (#725)
+  * Remove clang-3 from CI by @sbSteveK in (#731)
+  * Fix warnings in iOS Cross Compile CI by @waahm7 in (#733)
+
+-------------------------------------------------------------------
 Tue May  6 13:19:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.19.0
