@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 27 06:50:14 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.1
+  * dlopen(NULL) returns NULL on static linked executable
+    by @TingDaoK in (#215)
+  * Fix casing on Windows header files by @ianbotsf in (#217)
+  * Remove clang-3 from CI by @sbSteveK in (#218)
+
+-------------------------------------------------------------------
 Tue Apr 15 10:13:01 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Updare to version 0.9.0
