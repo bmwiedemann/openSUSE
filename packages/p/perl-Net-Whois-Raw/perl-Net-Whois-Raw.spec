@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-Whois-Raw
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Net-Whois-Raw
 Name:           perl-Net-Whois-Raw
-Version:        2.99040
+Version:        2.99041
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Get Whois information of domains and IP addresses
@@ -58,7 +58,7 @@ search failed and return undef in such a case.
 several servers but certainly not on all of them.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

@@ -471,4 +471,17 @@
     <comment></comment>
     <requestid>1184868</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>ee992247159992e9e08425471fd5d55f</srcmd5>
+    <version>2.99041</version>
+    <time>1748894519</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1281914 from tinita
+
+- updated to 2.99041
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+  2.99041 May 28 2025 Alexander Nalobin
+      - Fix whois server for .by</comment>
+    <requestid>1282010</requestid>
+  </revision>
 </revisionlist>
