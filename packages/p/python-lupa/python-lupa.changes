@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 07:58:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Oct 17 10:12:44 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
 
 - Add upstream patches to built with Cython 3.0.3:

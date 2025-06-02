@@ -1,7 +1,7 @@
 #
 # spec file for package python-lupa
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,18 +31,20 @@ Patch1:         no-bundle.patch
 Patch2:         noexcept.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(lua)
 Suggests:       lua
-%if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150400
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+Recommends:     luajit
 # Synchronized with archs where luajit is build
 %ifnarch riscv64 ppc64 ppc64le s390x
 BuildRequires:  pkgconfig(luajit)
 %endif
-Recommends:     luajit
 # /suse_version
 %endif
 %python_subpackages
@@ -57,10 +59,10 @@ rm -rf third-party/
 
 %build
 export CFLAGS="-fno-strict-aliasing %{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
