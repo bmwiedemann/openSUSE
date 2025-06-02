@@ -194,4 +194,15 @@
     <comment></comment>
     <requestid>979793</requestid>
   </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>71676c0aac6df48c1fe41c8edded25fa</srcmd5>
+    <version>1.7.4</version>
+    <time>1748894441</time>
+    <user>anag_factory</user>
+    <comment>- Update default-to-xclip.patch it unfortunately contains the
+  cgit version
+
+- Work around too long socket name during testsuite run</comment>
+    <requestid>1281809</requestid>
+  </revision>
 </revisionlist>

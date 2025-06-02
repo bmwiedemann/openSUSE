@@ -66,6 +66,11 @@ A dmenu interface to "pass", a password manager.
 for shell_script in src/%{name}.sh contrib/dmenu/passmenu; do
     sed -i "s|#\!%{_bindir}/env bash|#\!/bin/bash|" $shell_script
 done
+# move tests/gnupg to /tmp to avoid too long socket name
+d=$(mktemp -d)
+mv tests/gnupg $d/.gnupg
+ln -s $d/.gnupg tests/gnupg
+echo GNUPGHOME=$d/.gnupg >> tests/setup.sh
 
 %build
 
