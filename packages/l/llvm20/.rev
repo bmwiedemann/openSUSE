@@ -76,4 +76,18 @@
 - Enable build of libc++ for ppc64le</comment>
     <requestid>1278295</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b6c1d8a61da78d37610732bd93b1c0db</srcmd5>
+    <version>20.1.6</version>
+    <time>1748894327</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20.1.6.
+  * This release contains bug-fixes for the LLVM 20.1.0 release.
+    This release is API and ABI compatible with 20.1.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Remove obsolete llvm-fix-hexagon-test.patch.
+- Use generic python3 for SLES 16 as python 3.11 is dropped there.
+  [bsc#1243630]</comment>
+    <requestid>1281435</requestid>
+  </revision>
 </revisionlist>
