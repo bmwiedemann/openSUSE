@@ -265,4 +265,48 @@
 </comment>
     <requestid>1268913</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>afa368af8db4ebab319d3db3de6a8c81</srcmd5>
+    <version>2.9.0</version>
+    <time>1748894481</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.9.0:
+  * chore(release): prepare for v2.9.0
+  * docs(website): add highlights for 2.9.0 (#1153)
+  * chore(deps-dev): bump typescript in /website in the patch group (#1139)
+  * chore(docs): fix some typos (#1149)
+  * fix(template): correctly serialize JSON for the commit fields (#1145)
+  * docs(security): extend security policy (#1142)
+  * chore(deps): bump the minor group in /website with 2 updates (#1116)
+  * refactor(lint): apply clippy suggestions
+  * feat(context): add release commit range (#1138)
+  * fix(submodules): fix submodules handling when using custom range (#1136)
+  * docs(config): fix typo on commit.links (#1132)
+  * chore(deps): upgrade dependencies (#1129)
+  * chore(project): migrate to Rust 2024 edition (#1128)
+  * feat(changelog): support recursing into submodules (#1082)
+  * feat(remote): fetch commits from non-default branches using remotes (#1086)
+  * feat(git): support disabling sorting commits topologically (#804) (#1121)
+  * refactor(config): initialize config structs with default values (#1090)
+  * chore(dependabot): make dependency updates less noisy
+  * chore(dependabot): check dependency updates weekly
+  * fix(bump): check the next version against tag_pattern regex (#1070)
+  * feat(config): support configuring with a remote URL (#1083)
+  * fix(fixtures): evaluate the rc of git-cliff correctly (#1104)
+  * fix(bump): accept lowercase values for bump_type config (#1101)
+  * docs(readme): add blog posts from the community (#1102)
+  * fix(fixtures): use the correct syntax while checking fixture results (#1099)
+  * docs(website): remove references of tj-actions (#1097)
+  * feat(config): add `require_conventional` option (#1061)
+  * docs(release): fix Docker Hub URL
+  * refactor(lint): use IOError::other (#1074)
+  * doc(config): update comments for all configuration options (#1057)
+  * docs(quickstart): clarify git-cliff command (#1051)
+  * fix(git): handle worktrees while retrieving the path of repository (#1054)
+  * chore(npm): update yarn.lock
+  * fix(remote): fix detection of GitLab merge request sha if commits were squashed (#1043)
+  * fix(deps): make glob dependency mandatory (#1035)
+</comment>
+    <requestid>1281940</requestid>
+  </revision>
 </revisionlist>

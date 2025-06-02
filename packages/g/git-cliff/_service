@@ -1,8 +1,12 @@
 <services>
-  <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
-     <param name="src">git-cliff-*.tar.gz</param>
+     <param name="src">https://github.com/orhun/git-cliff</param>
      <param name="update">true</param>
+     <param name="revision">v2.9.0</param>
+     <param name="versionrewriteregex">^v?(.*)</param>
+     <param name="versionrewritepattern">${1}</param>
+     <param name="changesgenerate">true</param>
+     <param name="changesauthor">Soc Virnyl Estela</param>
+     <param name="changesemail">uncomfyhalomacro@opensuse.org</param>
   </service>
-  <service name="cargo_audit" mode="manual" />
 </services>
