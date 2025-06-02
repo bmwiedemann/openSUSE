@@ -1,7 +1,7 @@
 #
 # spec file for package python-ovirt-engine-sdk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ovirt-engine-sdk
-Version:    4.4.9
+Version:        4.4.9
 Release:        0
 Summary:        Python SDK for oVirt Engine API
 License:        Apache-2.0
@@ -26,7 +25,9 @@ Group:          Development/Languages/Python
 URL:            https://ovirt.org/
 Source:         https://files.pythonhosted.org/packages/source/o/ovirt-engine-sdk-python/ovirt-engine-sdk-python-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -43,15 +44,16 @@ Python SDK for oVirt Engine API
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
 %doc README.adoc
 %license LICENSE.txt
-%{python_sitearch}/*
+%{python_sitearch}/ovirtsdk4
+%{python_sitearch}/ovirt_engine_sdk_python-%{version}*-info
 
 %changelog
