@@ -1231,4 +1231,15 @@
    see /usr/share/doc/packages/perl-CPAN-Perl-Releases/Changes</comment>
     <requestid>1279797</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>ce90add0fe6551dd215c742679aa1f3b</srcmd5>
+    <version>5.20250528</version>
+    <time>1748894519</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1281915 from tinita
+
+- updated to 5.20250528
+   see /usr/share/doc/packages/perl-CPAN-Perl-Releases/Changes</comment>
+    <requestid>1282011</requestid>
+  </revision>
 </revisionlist>
