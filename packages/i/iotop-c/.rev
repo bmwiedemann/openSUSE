@@ -92,4 +92,17 @@
   * fix batch mode</comment>
     <requestid>1275421</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ee23fd8d2bdbddfeac8f6285a44983be</srcmd5>
+    <version>1.30</version>
+    <time>1748894387</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.30:
+  * kernel commit 0bf2d83 fixes the problem with struct taskstats,
+    now iotop 1.30 handles only v15 of the struct in a different way,
+    retaining compatibility with both old and new kernels
+  * show zero current values for exited processes
+  * flush stdout after each batch run</comment>
+    <requestid>1281728</requestid>
+  </revision>
 </revisionlist>

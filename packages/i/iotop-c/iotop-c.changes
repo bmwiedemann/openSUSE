@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun  2 05:32:41 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.30:
+  * kernel commit 0bf2d83 fixes the problem with struct taskstats,
+    now iotop 1.30 handles only v15 of the struct in a different way,
+    retaining compatibility with both old and new kernels
+  * show zero current values for exited processes
+  * flush stdout after each batch run
+
+-------------------------------------------------------------------
 Thu May  8 07:02:33 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.29:
