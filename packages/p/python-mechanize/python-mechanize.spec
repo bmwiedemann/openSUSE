@@ -1,7 +1,7 @@
 #
 # spec file for package python-mechanize
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,9 @@ URL:            https://github.com/python-mechanize/mechanize
 Source:         https://files.pythonhosted.org/packages/source/m/mechanize/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module html5lib}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,10 +49,10 @@ sed -i -e '1{/^#!/d}' examples/forms/{echo.cgi,example.py,simple.py}
 chmod -x examples/forms/{echo.cgi,example.py,simple.py}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

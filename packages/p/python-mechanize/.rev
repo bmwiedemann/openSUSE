@@ -320,4 +320,12 @@
   * Fix overly long MIME multipart separator on 64 bit systems</comment>
     <requestid>1171542</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>96d9414ee4b683468508d12f2320dd96</srcmd5>
+    <version>0.4.10</version>
+    <time>1748894430</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1281826</requestid>
+  </revision>
 </revisionlist>
