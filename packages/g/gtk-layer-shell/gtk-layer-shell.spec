@@ -17,7 +17,7 @@
 
 
 Name:           gtk-layer-shell
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Library to create desktop components for Wayland
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -25,7 +25,7 @@ Group:          System/GUI/Other
 URL:            https://github.com/wmww/gtk-layer-shell
 Source:         %{url}/archive/v%{version}.tar.gz
 BuildRequires:  gcc
-BuildRequires:  meson >= 0.45.1
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gail-3.0)
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
-BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.16.0
 
 %description
 A library to create panels and other desktop components for Wayland using the Layer Shell protocol.
