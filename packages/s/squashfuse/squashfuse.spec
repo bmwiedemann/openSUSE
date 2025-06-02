@@ -2,6 +2,7 @@
 # spec file for package squashfuse
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +19,16 @@
 
 %define so_version 0
 Name:           squashfuse
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        FUSE module to mount squashfs images
 License:        BSD-2-Clause
 Group:          System/Filesystems
 URL:            https://github.com/vasi/squashfuse
 Source:         %{url}/releases/download/%{version}/squashfuse-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  libattr-devel
-BuildRequires:  libtool
-BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  sed
 BuildRequires:  pkgconfig(fuse3)
@@ -80,7 +77,6 @@ This package contains development files.
 %autosetup
 
 %build
-./autogen.sh
 %configure \
 	--disable-static \
 	%{nil}
@@ -111,10 +107,12 @@ install -m 0755 .libs/squashfuse_ls .libs/squashfuse_extract %{buildroot}/%{_bin
 %{_bindir}/squashfuse_ll
 
 %files tools
+%license LICENSE
 %{_bindir}/squashfuse_ls
 %{_bindir}/squashfuse_extract
 
 %files devel
+%license LICENSE
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
 %{_includedir}/squashfuse
