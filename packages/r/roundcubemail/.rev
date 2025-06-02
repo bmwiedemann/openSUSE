@@ -809,4 +809,12 @@ Security Update, [bsc#1228900]  [bsc#1228901]</comment>
     <comment></comment>
     <requestid>1244513</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>b17b1057e547f2e5a32850f4368db521</srcmd5>
+    <version>1.6.11</version>
+    <time>1748894443</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1281843</requestid>
+  </revision>
 </revisionlist>
