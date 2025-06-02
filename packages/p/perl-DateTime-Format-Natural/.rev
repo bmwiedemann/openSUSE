@@ -104,4 +104,20 @@
     <comment></comment>
     <requestid>1272891</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>86e603ca0e55d6ca89dae3ec9b42b970</srcmd5>
+    <version>1.210.0</version>
+    <time>1748894515</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1281905 from tinita
+
+- updated to 1.210.0 (1.21)
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+  1.21  2025-05-18  &lt;schubiger@cpan.org&gt;
+   - Merged development version to stable.
+  1.20_01  2025-04-28  &lt;schubiger@cpan.org&gt;
+   - ::Duration::Checks: mark all subroutines as internal.
+   - Un-exclude Duration::Checks in pod{-coverage}.t.</comment>
+    <requestid>1282003</requestid>
+  </revision>
 </revisionlist>

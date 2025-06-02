@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 19 05:35:13 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.210.0 (1.21)
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.21  2025-05-18  <schubiger@cpan.org>
+   - Merged development version to stable.
+  1.20_01  2025-04-28  <schubiger@cpan.org>
+   - ::Duration::Checks: mark all subroutines as internal.
+   - Un-exclude Duration::Checks in pod{-coverage}.t.
+
+-------------------------------------------------------------------
 Sun Mar 23 05:32:25 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.200.0 (1.20)

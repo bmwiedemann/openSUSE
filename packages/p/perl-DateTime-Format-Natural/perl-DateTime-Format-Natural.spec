@@ -18,10 +18,10 @@
 
 %define cpan_name DateTime-Format-Natural
 Name:           perl-DateTime-Format-Natural
-Version:        1.200.0
+Version:        1.210.0
 Release:        0
-# 1.20 -> normalize -> 1.200.0
-%define cpan_version 1.20
+# 1.21 -> normalize -> 1.210.0
+%define cpan_version 1.21
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse informal natural language date/time strings
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -37,7 +37,7 @@ BuildRequires:  perl(DateTime::TimeZone)
 BuildRequires:  perl(List::Util) >= 1.33
 BuildRequires:  perl(Module::Build) >= 0.42
 BuildRequires:  perl(Module::Util)
-BuildRequires:  perl(Params::Validate) >= 1.15
+BuildRequires:  perl(Params::Validate) >= 1.150
 BuildRequires:  perl(Test::MockTime::HiRes)
 BuildRequires:  perl(boolean)
 Requires:       perl(Clone)
@@ -45,13 +45,13 @@ Requires:       perl(DateTime)
 Requires:       perl(DateTime::HiRes)
 Requires:       perl(DateTime::TimeZone)
 Requires:       perl(List::Util) >= 1.33
-Requires:       perl(Params::Validate) >= 1.15
+Requires:       perl(Params::Validate) >= 1.150
 Requires:       perl(boolean)
 Provides:       perl(DateTime::Format::Natural) = %{version}
 Provides:       perl(DateTime::Format::Natural::Calc) = 1.460.0
 Provides:       perl(DateTime::Format::Natural::Compat) = 0.70.0
-Provides:       perl(DateTime::Format::Natural::Duration) = 0.70.0
-Provides:       perl(DateTime::Format::Natural::Duration::Checks) = 0.60.0
+Provides:       perl(DateTime::Format::Natural::Duration) = 0.80.0
+Provides:       perl(DateTime::Format::Natural::Duration::Checks) = 0.70.0
 Provides:       perl(DateTime::Format::Natural::Expand) = 0.40.0
 Provides:       perl(DateTime::Format::Natural::Extract) = 0.130.0
 Provides:       perl(DateTime::Format::Natural::Formatted) = 0.120.0
