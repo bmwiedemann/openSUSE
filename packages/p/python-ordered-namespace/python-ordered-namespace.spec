@@ -1,7 +1,7 @@
 #
 # spec file for package python-ordered-namespace
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ordered-namespace
 Version:        2019.6.8
 Release:        0
@@ -26,7 +25,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/who8mylunch/OrderedNamespace
 Source:         https://files.pythonhosted.org/packages/source/o/ordered_namespace/ordered_namespace-%{version}.tar.gz
 Source99:       https://raw.githubusercontent.com/Who8MyLunch/OrderedNamespace/master/LICENSE
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,10 +42,10 @@ including tab-completion
 cp %{SOURCE99} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +55,7 @@ cp %{SOURCE99} .
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/ordered[-_]namespace
+%{python_sitelib}/ordered[-_]namespace-%{version}*-info
 
 %changelog

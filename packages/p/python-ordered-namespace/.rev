@@ -44,4 +44,12 @@ including tab-completion</comment>
   * Full support for pickle serialization/deserialization.</comment>
     <requestid>717901</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>af1c23b20e9a1a27e7693393d6f26c6a</srcmd5>
+    <version>2019.6.8</version>
+    <time>1748894505</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1281985</requestid>
+  </revision>
 </revisionlist>
