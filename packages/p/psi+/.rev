@@ -797,4 +797,38 @@
 - add 0001-fix-uint_32_t-build-error.patch to fix build</comment>
     <requestid>1118007</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>a5be0cf5aefc9f00428c859b0b97d279</srcmd5>
+    <version>1.5.2076+0</version>
+    <time>1748894410</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.5.2073+1
+
+- update to 1.5.2076+0
+  * Iris relinked
+  * An attempt to fix build with Qt 6.9.0
+  * Qt6 warnings fixed
+  * Added short CMake option USE_QT6 to enable Qt6 support
+  * Conceal some rare crash on start
+  * generated header config.h renamed to psi_config.h
+  * Fixed paths for including qtkeychain library header files when compiling
+    with Qt6
+  * cmake: use stable version of bundled qtkeychain instead of development one
+  * cmake: fix build if bundled qtkeychain using gcc 9.x and older
+  * An attempt to fix #856. Fix for idle mechanism in linux systems
+  * Don't reset muc avatar for old servers compatibility
+  * Don't detach iconsets
+  * Bring back early Date conversion for date/time fields to fix groupping
+  * Split date format and time format in Psi webkit themes
+  * Fixed lastDate message
+  * and more
+- switch to Qt6
+- avoid %suse_update_desktop_file -- it is deprecated and adds duplicate
+  entries
+- spec cleanup
+- plugins-screenshotplugin was dropped
+- drop (upstream)
+  * 0001-fix-uint_32_t-build-error.patch</comment>
+    <requestid>1281756</requestid>
+  </revision>
 </revisionlist>

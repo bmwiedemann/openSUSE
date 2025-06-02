@@ -18,51 +18,48 @@
 
 %define __builder ninja
 
-%define version_unconverted 1.5.1650+2
+%define version_unconverted 1.5.2076+0
 
 Name:           psi+
 URL:            https://github.com/psi-plus
-Version:        1.5.1650+2
+Version:        1.5.2076+0
 Release:        0
 Summary:        Jabber client using Qt
 License:        Apache-2.0 AND GPL-2.0-or-later
 Group:          Productivity/Networking/Talk/Clients
 Source0:        psi+-%{version}.tar.xz
-Patch0:         0001-fix-uint_32_t-build-error.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake >= 3.1
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  hunspell-devel
-BuildRequires:  libXScrnSaver-devel
-BuildRequires:  libgpg-error-devel
-BuildRequires:  libidn-devel
-BuildRequires:  libotr-devel
-BuildRequires:  libproxy-devel
-BuildRequires:  libsignal-protocol-c-devel
-BuildRequires:  libtidy-devel
 BuildRequires:  ninja
-BuildRequires:  openssl-devel
-BuildRequires:  tar
-BuildRequires:  update-desktop-files
-BuildRequires:  usrsctp-devel
 BuildRequires:  xz
 BuildRequires:  zlib-devel
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Keychain)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Multimedia)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5WebEngine)
-BuildRequires:  cmake(Qt5X11Extras)
-BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  pkgconfig(qca2-qt5)
+BuildRequires:  cmake(Qca-qt6)
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Keychain)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Multimedia)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Sql)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6WebEngineCore)
+BuildRequires:  cmake(Qt6WebEngineWidgets)
+BuildRequires:  cmake(Qt6Xml)
+BuildRequires:  pkgconfig(gpg-error)
+BuildRequires:  pkgconfig(hunspell)
+BuildRequires:  pkgconfig(libidn)
+BuildRequires:  pkgconfig(libomemo-c)
+BuildRequires:  pkgconfig(libopenssl)
+BuildRequires:  pkgconfig(libotr)
+BuildRequires:  pkgconfig(libproxy-1.0)
+BuildRequires:  pkgconfig(libsignal-protocol-c)
+BuildRequires:  pkgconfig(tidy)
+BuildRequires:  pkgconfig(usrsctp)
+BuildRequires:  pkgconfig(xscrnsaver)
 Recommends:     %{name}-lang
 Requires:       %{name}-data = %{version}
 Obsoletes:      psi < 1.3
@@ -96,6 +93,7 @@ Icons, sounds, and themes for Psi+.
 Summary:        Headers for Psi plugins
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description plugins-devel
 Headers and qmake project include files for developing Psi+ plugins.
@@ -181,15 +179,6 @@ Requires:       %{name} = %{version}
 
 %description plugins-omemoplugin
 OMEMO Multi-End Message and Object Encryption.
-
-%package plugins-screenshotplugin
-Summary:        Plugin for Psi
-Group:          Productivity/Networking/Talk/Clients
-Requires:       %{name} = %{version}
-
-%description plugins-screenshotplugin
-This plugin allows you to make screenshots and save them to your hard drive or
-upload them to an FTP or HTTP server.
 
 %package plugins-stopspamplugin
 Summary:        Plugin for Psi
@@ -364,6 +353,7 @@ other resources for Psi+.
 
 %build
 %cmake \
+	-DUSE_QT6=ON \
 	-DPRODUCTION=ON \
 	-DCHAT_TYPE=WEBENGINE \
 	-DENABLE_PLUGINS=ON \
@@ -373,13 +363,11 @@ other resources for Psi+.
 %install
 %cmake_install
 
-%suse_update_desktop_file psi-plus
-
 # these are in %%doc and %%license
 rm -f %{buildroot}%{_datadir}/psi-plus/COPYING
 rm -f %{buildroot}%{_datadir}/psi-plus/README.html
 
-%fdupes $RPM_BUILD_ROOT/%{_datadir}
+%fdupes %{buildroot}%{_datadir}
 
 %files plugins-juickplugin
 %defattr(-,root,root)
@@ -400,10 +388,6 @@ rm -f %{buildroot}%{_datadir}/psi-plus/README.html
 %files plugins-omemoplugin
 %defattr(-,root,root)
 %{pluginspath}/libomemoplugin.so
-
-%files plugins-screenshotplugin
-%defattr(-,root,root)
-%{pluginspath}/libscreenshotplugin.so
 
 %files plugins-birthdayreminderplugin
 %defattr(-,root,root)
@@ -506,6 +490,7 @@ rm -f %{buildroot}%{_datadir}/psi-plus/README.html
 %license COPYING 3rdparty/qite/LICENSE
 %{_bindir}/psi-plus
 %{_datadir}/applications/psi-plus.desktop
+%dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/*
 %dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/psi-plus.png
