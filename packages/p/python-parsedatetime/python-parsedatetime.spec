@@ -1,7 +1,7 @@
 #
 # spec file for package python-parsedatetime
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ License:        Apache-2.0
 Group:          Development/Libraries/Python
 URL:            https://github.com/regebro/parsedatetime
 Source:         https://files.pythonhosted.org/packages/source/p/parsedatetime/parsedatetime-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -39,10 +41,10 @@ A Python module to parse human-readable date/time strings.
 %setup -q -n parsedatetime-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -52,6 +54,6 @@ A Python module to parse human-readable date/time strings.
 %license LICENSE.txt
 %doc AUTHORS.txt CHANGES.txt README.rst
 %{python_sitelib}/parsedatetime/
-%{python_sitelib}/parsedatetime-%{version}-py*.egg-info
+%{python_sitelib}/parsedatetime-%{version}*-info
 
 %changelog
