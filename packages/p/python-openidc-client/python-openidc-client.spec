@@ -1,7 +1,7 @@
 #
 # spec file for package python-openidc-client
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-openidc-client
 Version:        0.6.0
 Release:        0
@@ -26,9 +24,11 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/puiterwijk/python-openidc-client
 Source0:        https://github.com/puiterwijk/python-openidc-client/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests
@@ -42,10 +42,10 @@ Python client for OpenID including token caching and management.
 %setup -q -n python-openidc-client-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +54,7 @@ Python client for OpenID including token caching and management.
 %files %{python_files}
 %license COPYING
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/openidc[-_]client
+%{python_sitelib}/openidc[-_]client-%{version}*-info
 
 %changelog
