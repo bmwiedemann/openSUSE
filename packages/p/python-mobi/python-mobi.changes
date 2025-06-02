@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 12:53:24 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed Jan 10 17:24:04 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Build for python 3.11 on Leap

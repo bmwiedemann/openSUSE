@@ -1,7 +1,7 @@
 #
 # spec file for package python-mobi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,9 @@ Summary:        Library for unpacking unencrypted mobi files
 License:        GPL-3.0-only
 URL:            https://github.com/iscc/mobi
 Source:         https://files.pythonhosted.org/packages/source/m/mobi/mobi-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-loguru >= 0.4
@@ -38,10 +40,10 @@ Python library for unpacking unencrypted mobi files (forked from KindleUnpack)
 %setup -q -n mobi-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/mobiunpack
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -58,6 +60,7 @@ Python library for unpacking unencrypted mobi files (forked from KindleUnpack)
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/mobiunpack
-%{python_sitelib}/*
+%{python_sitelib}/mobi
+%{python_sitelib}/mobi-%{version}*-info
 
 %changelog
