@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 14:09:59 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed Apr 27 02:31:39 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Re-enable the test suite, it uses fakes to avoid network access.

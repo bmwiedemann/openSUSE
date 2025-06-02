@@ -32,4 +32,12 @@
 - Switch to using pytest.</comment>
     <requestid>972989</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3628b337a149b432acbae21eed6ba28e</srcmd5>
+    <version>0.7.1</version>
+    <time>1748894488</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1281948</requestid>
+  </revision>
 </revisionlist>

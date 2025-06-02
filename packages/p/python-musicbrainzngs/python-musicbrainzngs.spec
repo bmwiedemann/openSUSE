@@ -1,7 +1,7 @@
 #
 # spec file for package python-musicbrainzngs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-musicbrainzngs
 Version:        0.7.1
 Release:        0
@@ -25,8 +24,10 @@ Summary:        Python bindings for musicbrainz NGS webservice
 License:        BSD-2-Clause
 URL:            https://python-musicbrainzngs.readthedocs.org/
 Source:         https://files.pythonhosted.org/packages/source/m/musicbrainzngs/musicbrainzngs-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -40,10 +41,10 @@ known as /ws/2.
 %setup -q -n musicbrainzngs-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,6 +54,6 @@ known as /ws/2.
 %license COPYING
 %doc CHANGES README.rst
 %{python_sitelib}/musicbrainzngs/
-%{python_sitelib}/musicbrainzngs-%{version}-py*.egg-info
+%{python_sitelib}/musicbrainzngs-%{version}*-info
 
 %changelog
