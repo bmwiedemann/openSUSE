@@ -2084,4 +2084,30 @@
    * [pylint] Fix docs example that produced different output (PLW0603)</comment>
     <requestid>1279586</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>e2325b9f4efbb6e001e8f8435c6cb2d7</srcmd5>
+    <version>0.11.12</version>
+    <time>1748894342</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.12:
+ * Preview features
+   * [airflow] Revise fix titles (AIR3) 
+   * [pylint] Implement missing-maxsplit-arg (PLC0207) 
+   * [pyupgrade] New rule UP050 (useless-class-metaclass-type) 
+   * [flake8-use-pathlib] Replace os.symlink with Path.symlink_to (PTH211) 
+ * Bug fixes
+   * [flake8-bugbear] Ignore __debug__ attribute in B010 
+   * [flake8-async] Fix anyio.sleep argument name (ASYNC115, ASYNC116) 
+   * [refurb] Fix FURB129 autofix generating invalid syntax 
+ * Rule changes
+   * [flake8-implicit-str-concat] Add autofix for ISC003 
+   * [pycodestyle] Improve the diagnostic message for E712 
+   * [flake8-2020] Fix diagnostic message for != comparisons (YTT201) 
+   * [pyupgrade] Make fix unsafe if it deletes comments (UP010) 
+ * Documentation
+   * Simplify rules table to improve readability 
+   * Update editor integrations link in README 
+   * [flake8-bugbear] Add fix safety section (B006)</comment>
+    <requestid>1281460</requestid>
+  </revision>
 </revisionlist>

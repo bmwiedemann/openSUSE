@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri May 30 15:05:44 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.11.12:
+ * Preview features
+   * [airflow] Revise fix titles (AIR3) 
+   * [pylint] Implement missing-maxsplit-arg (PLC0207) 
+   * [pyupgrade] New rule UP050 (useless-class-metaclass-type) 
+   * [flake8-use-pathlib] Replace os.symlink with Path.symlink_to (PTH211) 
+ * Bug fixes
+   * [flake8-bugbear] Ignore __debug__ attribute in B010 
+   * [flake8-async] Fix anyio.sleep argument name (ASYNC115, ASYNC116) 
+   * [refurb] Fix FURB129 autofix generating invalid syntax 
+ * Rule changes
+   * [flake8-implicit-str-concat] Add autofix for ISC003 
+   * [pycodestyle] Improve the diagnostic message for E712 
+   * [flake8-2020] Fix diagnostic message for != comparisons (YTT201) 
+   * [pyupgrade] Make fix unsafe if it deletes comments (UP010) 
+ * Documentation
+   * Simplify rules table to improve readability 
+   * Update editor integrations link in README 
+   * [flake8-bugbear] Add fix safety section (B006) 
+
+-------------------------------------------------------------------
 Fri May 23 15:14:16 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.11:
