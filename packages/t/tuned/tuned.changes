@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  2 08:53:25 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Fix newlines in changelog
+
+-------------------------------------------------------------------
+Mon May 12 20:13:17 UTC 2025 - Gabriel Krisman Bertazi <gabriel.bertazi@suse.com>
+
+- Add hardened profile (PED-12781)
+A 0001-hardened-Introduce-hardened-profile.patch
+
+-------------------------------------------------------------------
 Wed Mar 26 22:30:46 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - Add BuildRequires:
@@ -263,13 +274,11 @@ Sun Feb 11 18:29:24 UTC 2024 - trenn@suse.de
   * Fix TextView to expand with window
 
 -------------------------------------------------------------------
-
 Mon Dec 04 11:28:35 CET 2023 - aschnell@suse.com
 
 - do not package inoperable plugins (bsc#1217758)
 
 -------------------------------------------------------------------
-
 Wed Nov 15 09:42:09 UTC 2023 - trenn@suse.de
 
 - Update to version 2.21.0.17+git.5d3b469:
@@ -284,7 +293,6 @@ Wed Nov 15 09:42:09 UTC 2023 - trenn@suse.de
   * Converted SPEC file license to SPDX
 
 -------------------------------------------------------------------
-
 Fri Sep 15 15:27:32 UTC 2023 - trenn@suse.de
 
 - Update to version 2.21.0.0+git.670541d:

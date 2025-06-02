@@ -31,6 +31,7 @@ Source1:        tuned.rpmlintrc
 # not needed as that is the default --<p.drouand@gmail.com>
 Patch0:         fix-allow-receive_sender-default.patch
 Patch1:         0001-tuned-consts-Fix-grub.cfg-path-in-SLE.patch
+Patch2:         0001-hardened-Introduce-hardened-profile.patch
 BuildRequires:  bash-completion
 BuildRequires:  desktop-file-utils
 BuildRequires:  gobject-introspection-devel
@@ -105,6 +106,16 @@ Requires:       %{name} = %{version}
 
 %description profiles-atomic
 Additional profile(s) for the tuned daemon, targeted to Atomic host and guest.
+
+%package profiles-security
+Summary:        Security related tuned daemon profiles
+Group:          System/Base
+Requires:       %{name} = %{version}
+
+%description profiles-security
+Security tuning collection providing tuned profiles related to system security and hardening.
+These profiles typically provide a set of security settings that belong and should be applied
+together. They can be combined with other profiles via include= statement as needed.
 
 %package profiles-nfv
 Summary:        Additional tuned profiles targeted to Network Function Virtualization (NFV)
@@ -364,6 +375,9 @@ done
 %{profile_dir}/atomic-host
 %{profile_dir}/atomic-guest
 %{_mandir}/man7/tuned-profiles-atomic.7%{?ext_man}
+
+%files profiles-security
+%{profile_dir}/hardened
 
 %files profiles-realtime
 %config(noreplace) %{_sysconfdir}/tuned/realtime-variables.conf

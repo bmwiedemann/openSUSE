@@ -1,0 +1,26 @@
+From 27182273c10c84e30789f478be8d83817ab2d40a Mon Sep 17 00:00:00 2001
+From: Gabriel Krisman Bertazi <krisman@suse.de>
+Date: Mon, 3 Feb 2025 17:00:49 -0500
+Subject: [PATCH] hardened: Introduce hardened profile
+
+This profile provides an easy way to enable some basic Linux kernel
+hardening techniques for security-focused users.
+---
+ profiles/hardened/tuned.conf |   11 +++++++++++
+ 1 file changed, 11 insertions(+)
+ create mode 100644 profiles/hardened/tuned.conf
+
+--- /dev/null
++++ b/profiles/hardened/tuned.conf
+@@ -0,0 +1,11 @@
++#
++# tuned configuration
++#
++
++[main]
++summary=Enable basic Linux kernel hardening techniques
++
++[bootloader]
++cmdline=hardened_usercopy=on init_on_free=1 init_on_alloc=1 page_poison=on page_table_check=on
++description=Read kernel parameter documentation for details.
++    This could introduce slight (less than 5%) network performance penalties on extreme workloads.

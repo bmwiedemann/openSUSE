@@ -435,4 +435,15 @@ openSUSE:Factory
     <comment></comment>
     <requestid>1256352</requestid>
   </revision>
+  <revision rev="47" vrev="4">
+    <srcmd5>560ca52d4ef91725e96d6a83445b735b</srcmd5>
+    <version>2.25.1.0+git.889387b</version>
+    <time>1748894467</time>
+    <user>anag_factory</user>
+    <comment>- Fix newlines in changelog
+
+- Add hardened profile (PED-12781)
+A 0001-hardened-Introduce-hardened-profile.patch</comment>
+    <requestid>1281893</requestid>
+  </revision>
 </revisionlist>
