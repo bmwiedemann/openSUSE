@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Jun 02 15:40:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.13.0:
+  * build(deps): Bump helm.sh/helm/v3 in the gomod group (#744)
+  * build(deps): Bump alpine from 3.21 to 3.22 in the docker group
+    (#743)
+  * feat: add --wait flag to helm uninstall (#721)
+  * Add release-name option (#735)
+  * Fix chart_schema.yaml import-values rule (#725)
+  * feat(upgrade): using the values instead of --reuse-values
+    (#742)
+  * Bump helm.sh/helm/v3 from 3.16.4 to 3.18.0 (#740)
+  * Bump anchore/sbom-action from 0.19.0 to 0.20.0 in the actions
+    group (#741)
+  * Bump actions/setup-go from 5.4.0 to 5.5.0 in the actions group
+    (#739)
+  * Bump github.com/spf13/viper from 1.20.0 to 1.20.1 in the gomod
+    group (#729)
+  * Bump golangci/golangci-lint-action from 6.5.2 to 8.0.0 (#736)
+  * Bump the actions group across 1 directory with 3 updates (#733)
+  * Bump actions/setup-go from 5.3.0 to 5.4.0 in the actions group
+    (#727)
+  * Bump github.com/spf13/viper from 1.19.0 to 1.20.0 (#723)
+  * Bump the actions group with 2 updates (#724)
+  * Bump the actions group with 2 updates (#719)
+  * Bump the actions group with 2 updates (#718)
+  * Bump the actions group with 2 updates (#717)
+  * Bump github.com/spf13/cobra from 1.8.1 to 1.9.1 (#716)
+  * Bump the actions group with 4 updates (#714)
+  * Bump github.com/spf13/pflag from 1.0.5 to 1.0.6 in the gomod
+    group (#712)
+  * Bump the actions group with 3 updates (#711)
+  * Bump golangci/golangci-lint-action in the actions group (#710)
+  * bump alpine and tools (#704)
+  * Bump docker/setup-qemu-action from 3.2.0 to 3.3.0 in the
+    actions group (#705)
+
+-------------------------------------------------------------------
 Mon Jan 13 13:49:04 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.12.0:
