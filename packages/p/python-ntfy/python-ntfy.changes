@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 14:43:25 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Mon May 20 09:46:03 UTC 2024 - Matthias Bach <marix@marix.org>
 
 - Stop building for Python 3.6 as python-emoji no longer supports

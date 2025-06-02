@@ -1,7 +1,7 @@
 #
 # spec file for package python-ntfy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,18 +35,20 @@ Patch4:         python-312-compat.patch
 BuildRequires:  %{python_module appdirs}
 # test requirements
 BuildRequires:  %{python_module emoji >= 1.6.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-appdirs
 Requires:       python-requests
 Requires:       python-ruamel.yaml
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(post): alts
+Requires(postun): alts
 Suggests:       python-dnspython3
 Suggests:       python-emoji >= 1.6.2
 Suggests:       python-instapush
@@ -75,10 +77,10 @@ Quickstart
 %autosetup -p1 -n ntfy-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/ntfy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/ntfy*
 
