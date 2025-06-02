@@ -22,13 +22,14 @@ License:        MPL-2.0
 Group:          Development/Tools/Building
 # Repository name subject to change
 URL:            https://github.com/openSUSE-Rust/%{name}
-Version:        5.1.0
+Version:        6.0.1
 Release:        0
-Source0:        https://github.com/openSUSE-Rust/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(openssl)
 # Version with fixed vendor filterer
 Requires:       cargo-vendor-filterer >= 0.5.16
 Requires:       (cargo or rustup)

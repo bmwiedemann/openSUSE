@@ -510,4 +510,162 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1269202</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>72ac71f952b1ac72d57016219fe4df62</srcmd5>
+    <version>6.0.1</version>
+    <time>1748894384</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.0.1:
+  * chore(release): v6.0.1
+  * improvement: just pass the current workdir instead
+  * docs: behaviour changed. i don't want TMPDIR to be filled up like crazy.
+  * docs: update README.md
+- Update to version 5.1.0+git31.geaa15d9:
+  * remove: woah this test file has not been removed since lol
+  * dependencies: update libroast to 7.1.2
+  * tests: update bonk to v0.4.0
+  * Merge branch '20250518-do-everything-at-once'
+  * dependencies: bump libroast to 6.1.0
+  * chore(release): bump to v5.1.0
+  * tests: make `segments` mutable
+  * clippy: apply fix for &quot;double_ended_iterator_last&quot; clippy error here too
+  * clippy: apply fix for clippy error &quot;double_ended_iterator_last&quot;
+  * misc: remove unnecessary newlines in Cargo.toml configuration.
+  * ci: run also when lockfile is updated.
+  * ci: set TOOLCHAIN_VERSION to stable
+  * cargo: update Cargo.lock
+  * toolchain: always select stable
+  * chore(release): v5.0.0
+  * cargo: update Cargo.lock
+  * Merge branch 'Pi-Cla-update-deps'
+  * refactor: update code to Rust 2024 edition
+  * chore: update MSRV to 1.85 and Rust edition to 2024
+  * chore(release): v4.5.0
+  * test: update sources for roast.
+  * security: update gix-worktree-state to 0.17.0
+  * fix(doc): missing last double quote now added.
+  * ci: install rust with \`rustup show\` command
+  * toolchain: add most used components for rust development
+  * chore(release): v4.4.1
+  * fix: avoid infinite recursion causing stack overflow
+  * tests: add just to the test vendored files
+  * chore(release): v4.4.0
+  * chore: apply clippy suggestions
+  * improvement: ensure paths are handled. also output the hashes of lockfiles before and after.
+  * revert: trying to patch gix-worktree-state
+  * chore: bump deps
+  * refactor: update code to Rust 2024 edition
+  * chore: update MSRV to 1.85 and Rust edition to 2024
+  * chore(release): v4.5.0
+  * test: update sources for roast.
+  * security: update gix-worktree-state to 0.17.0
+  * fix(doc): missing last double quote now added.
+  * ci: install rust with \`rustup show\` command
+  * toolchain: add most used components for rust development
+  * chore(release): v4.4.1
+  * fix: avoid infinite recursion causing stack overflow
+  * tests: add just to the test vendored files
+  * chore(release): v4.4.0
+  * tests: ignored -&gt; ignore
+  * tests: fix tests by ignoring those that change directories in the environment
+  * misc: apply clippy suggestions
+  * dependencies: update libroast to v7.1.1
+  * tests: add tests that points to a URL
+  * tests: add test file
+  * tests: update struct fields of `Opts` in tests
+  * fix: revision should be an `Option&lt;String&gt;` in obs service cargo
+  * docs: update service file definition
+  * docs: update wording in code docs
+  * improvement: port over roast scm specific fields to obs service cargo
+  * dependencies: update libroast to v7.1.0
+  * dunno why target.rs is there
+  * dependencies: update Cargo.lock
+  * dependencies: only use git sources for libroast
+  * dependencies: get libroast from registry now
+  * format: run `cargo fmt`
+  * fix: clippy lint fixes + adding missing fields in tests.
+  * feature: roast_scm + obs-service-cargo_vendor in one go
+  * dependencies: use another fixed change in libroast
+  * dependencies: add url crate
+  * dependencies: use another fixed change in libroast
+  * dependency: update libroast to the working commit
+  * docs: update doc comments to match intention
+  * refactor: change this field to `String` instead of `PathBuf`.
+  * dependencies: use git source at a specific commit hash for libroast.
+  * dependencies: bump libroast to 6.1.0
+- Add openssl as new build dependency
+- Update to version 5.1.0+git29.g2fedf31:
+  * tests: update bonk to v0.4.0
+  * Merge branch '20250518-do-everything-at-once'
+  * dependencies: bump libroast to 6.1.0
+  * chore(release): bump to v5.1.0
+  * tests: make `segments` mutable
+  * clippy: apply fix for &quot;double_ended_iterator_last&quot; clippy error here too
+  * clippy: apply fix for clippy error &quot;double_ended_iterator_last&quot;
+  * misc: remove unnecessary newlines in Cargo.toml configuration.
+  * ci: run also when lockfile is updated.
+  * ci: set TOOLCHAIN_VERSION to stable
+  * cargo: update Cargo.lock
+  * toolchain: always select stable
+  * chore(release): v5.0.0
+  * cargo: update Cargo.lock
+  * Merge branch 'Pi-Cla-update-deps'
+  * refactor: update code to Rust 2024 edition
+  * chore: update MSRV to 1.85 and Rust edition to 2024
+  * chore(release): v4.5.0
+  * test: update sources for roast.
+  * security: update gix-worktree-state to 0.17.0
+  * fix(doc): missing last double quote now added.
+  * ci: install rust with \`rustup show\` command
+  * toolchain: add most used components for rust development
+  * chore(release): v4.4.1
+  * fix: avoid infinite recursion causing stack overflow
+  * tests: add just to the test vendored files
+  * chore(release): v4.4.0
+  * chore: apply clippy suggestions
+  * improvement: ensure paths are handled. also output the hashes of lockfiles before and after.
+  * revert: trying to patch gix-worktree-state
+  * chore: bump deps
+  * refactor: update code to Rust 2024 edition
+  * chore: update MSRV to 1.85 and Rust edition to 2024
+  * chore(release): v4.5.0
+  * test: update sources for roast.
+  * security: update gix-worktree-state to 0.17.0
+  * fix(doc): missing last double quote now added.
+  * ci: install rust with \`rustup show\` command
+  * toolchain: add most used components for rust development
+  * chore(release): v4.4.1
+  * fix: avoid infinite recursion causing stack overflow
+  * tests: add just to the test vendored files
+  * chore(release): v4.4.0
+  * tests: ignored -&gt; ignore
+  * tests: fix tests by ignoring those that change directories in the environment
+  * misc: apply clippy suggestions
+  * dependencies: update libroast to v7.1.1
+  * tests: add tests that points to a URL
+  * tests: add test file
+  * tests: update struct fields of `Opts` in tests
+  * fix: revision should be an `Option&lt;String&gt;` in obs service cargo
+  * docs: update service file definition
+  * docs: update wording in code docs
+  * improvement: port over roast scm specific fields to obs service cargo
+  * dependencies: update libroast to v7.1.0
+  * dunno why target.rs is there
+  * dependencies: update Cargo.lock
+  * dependencies: only use git sources for libroast
+  * dependencies: get libroast from registry now
+  * format: run `cargo fmt`
+  * fix: clippy lint fixes + adding missing fields in tests.
+  * feature: roast_scm + obs-service-cargo_vendor in one go
+  * dependencies: use another fixed change in libroast
+  * dependencies: add url crate
+  * dependencies: use another fixed change in libroast
+  * dependency: update libroast to the working commit
+  * docs: update doc comments to match intention
+  * refactor: change this field to `String` instead of `PathBuf`.
+  * dependencies: use git source at a specific commit hash for libroast.
+  * dependencies: bump libroast to 6.1.0
+</comment>
+    <requestid>1281717</requestid>
+  </revision>
 </revisionlist>
