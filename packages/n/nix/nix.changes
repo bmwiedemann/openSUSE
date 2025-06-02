@@ -1,0 +1,173 @@
+-------------------------------------------------------------------
+Sun Jun  1 01:50:10 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Enable -Dembedded-sandbox-shell to allow building packages that
+  depends on bash, as it is default in NixOS  
+
+-------------------------------------------------------------------
+Sat May 24 13:33:49 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Do not require fish-completion and zsh-completion as they do not
+  exist 
+
+-------------------------------------------------------------------
+Wed May 14 20:32:13 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Split into subpackages: nix-bash-completion, nix-fish-completion,
+  nix-zsh-completition
+
+- Move Perl bindings to the right folder
+
+- Remove 0003-default-to-readline.patch: pass argument via Meson
+  setup command
+
+-------------------------------------------------------------------
+Mon May 12 20:52:11 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add --localstatedir=%{_sharedstatedir}/nix to save files inside
+  /var/lib/nix (instead of /var/nix, which does not respect FHS)
+
+- Add /nix to the list of files installed
+
+-------------------------------------------------------------------
+Sun May 11 16:25:09 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add %check section
+
+- Remove possibility to build without meson
+  * The meson build system is now the only supported build system.
+
+- Use common URL format for source urls
+
+- Update to 2.28.3:
+  * https://github.com/NixOS/nix/compare/2.28.0...2.28.3
+
+- Update to 2.28.0:
+  * Unstable C++ API reworked
+  * C API nix_flake_init_global removed
+
+- Update to 2.27:
+  * inputs.self.submodules flake attribute
+  * Git LFS support
+  * Handle the case where a chroot store is used and some inputs
+    are in the "host" /nix/store
+  * nix flake prefetch now has a --out-link option
+  * Set FD_CLOEXEC on sockets created by curl
+  * https://nix.dev/manual/nix/2.28/release-notes/rl-2.27
+
+- Add /usr/lib64/nix/ to ldconfig paths
+
+-------------------------------------------------------------------
+Wed Mar  5 18:51:56 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.26.3
+  https://github.com/NixOS/nix/releases/tag/2.26.3
+
+-------------------------------------------------------------------
+Wed Feb 12 21:06:18 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.26.2
+  https://github.com/NixOS/nix/releases/tag/2.26.2
+
+-------------------------------------------------------------------
+Sun Feb  9 20:40:36 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.26.1
+  https://github.com/NixOS/nix/releases/tag/2.26.1
+  https://github.com/NixOS/nix/releases/tag/2.26.0
+  https://github.com/NixOS/nix/releases/tag/2.25.5
+  https://github.com/NixOS/nix/releases/tag/2.25.4
+  https://github.com/NixOS/nix/releases/tag/2.25.3
+  https://github.com/NixOS/nix/releases/tag/2.25.2
+  https://github.com/NixOS/nix/releases/tag/2.25.1
+  https://github.com/NixOS/nix/releases/tag/2.25.0
+
+-------------------------------------------------------------------
+Thu Jan 23 07:51:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- use optflags to pass the define for lowdown 1.4 as the autotools
+  based build wasnt update and meson isnt usable for us
+
+-------------------------------------------------------------------
+Wed Jan 22 10:47:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.24.12
+  https://github.com/NixOS/nix/releases/tag/2.24.12
+- drop 0002-handle-lowdown-1.4-API-change.patch
+
+-------------------------------------------------------------------
+Sun Dec 29 18:39:01 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- switch to meson as build system
+  - add add_option_to_disable_tests.patch
+    meson didnt have an option yet to disable the testsuite
+  - Adapt to the lowdown 1.4 API
+    lowdown14.patch
+
+    based on https://github.com/NixOS/nix/pull/12115
+
+-------------------------------------------------------------------
+Sun Dec 29 18:31:09 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.24.11
+  https://github.com/NixOS/nix/releases/tag/2.24.11
+
+-------------------------------------------------------------------
+Tue Nov 12 18:52:40 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Switch back to the 2.24 branch
+
+-------------------------------------------------------------------
+Mon Nov 11 16:35:49 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.25.0
+  https://github.com/NixOS/nix/releases/tag/2.25.0
+
+-------------------------------------------------------------------
+Thu Oct 31 11:39:56 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.24.10
+  https://github.com/NixOS/nix/releases/tag/2.24.10
+
+-------------------------------------------------------------------
+Fri Sep 27 22:51:47 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.24.9
+  https://github.com/NixOS/nix/releases/tag/2.24.9
+
+-------------------------------------------------------------------
+Thu Sep 26 16:41:14 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Check if we can build with meson
+  - adds meson.readline.patch
+  - meson build has no option to disable testsuites
+
+-------------------------------------------------------------------
+Thu Sep 26 16:11:49 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Import sysusers file from Arch Linux
+
+-------------------------------------------------------------------
+Thu Sep 26 09:38:38 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.24.8
+
+-------------------------------------------------------------------
+Tue Sep 24 15:26:06 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.24.7
+
+-------------------------------------------------------------------
+Sat Sep  7 12:25:17 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.24.5
+
+-------------------------------------------------------------------
+Mon May 20 22:55:49 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update the seccomp.patch to match my pull request
+
+-------------------------------------------------------------------
+Mon May 20 14:30:28 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

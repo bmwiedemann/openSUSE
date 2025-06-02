@@ -1,0 +1,5 @@
+<package name="nix" project="openSUSE:Factory">
+  <title>The purely functional package manager</title>
+  <description>Nix is a powerful package manager for Linux and other Unix systems that makes package management reliable and reproducible. Please refer to the Nix manual for more details.</description>
+  <url>https://nixos.org/</url>
+</package>
