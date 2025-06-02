@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  2 05:45:59 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.3:
+  * This adds support for macOS multi-generation which can be invoked with
+    -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64". #185 #185
+  * This also adds the -fPIC flag to the library to generate position
+    independent code.
+
+-------------------------------------------------------------------
 Fri Mar  7 07:00:35 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.21.2:

@@ -17,4 +17,16 @@
   * This fixes a bug that results in coding all-zero codeblocks #183</comment>
     <requestid>1251112</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>836018d65eb7be696723213a7b7def25</srcmd5>
+    <version>0.21.3</version>
+    <time>1748894402</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.21.3:
+  * This adds support for macOS multi-generation which can be invoked with
+    -DCMAKE_OSX_ARCHITECTURES=&quot;arm64;x86_64&quot;. #185 #185
+  * This also adds the -fPIC flag to the library to generate position
+    independent code.</comment>
+    <requestid>1281735</requestid>
+  </revision>
 </revisionlist>
