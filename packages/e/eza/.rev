@@ -1117,4 +1117,28 @@
   * Add support for .ipynb file icons</comment>
     <requestid>1273961</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>9a95daaeca82312c46a65c727082b770</srcmd5>
+    <version>0.21.4</version>
+    <time>1748894388</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.21.4:
+  Bug Fixes:
+  * Escape spaces in file path to make them work correctly
+  * List inside working dir with --list-dirs and no path passed
+  * Ignore incorrect Unicode path instead of crashing on Windows
+  Miscellaneous Tasks:
+  * Add Visual Studio icon for *.suo
+  * Add swift icon for *.xcplayground
+  * Add dropbox icon
+  * Eza v0.21.4 changelogs, version bump
+  Refactor:
+  * Clippy lints
+  Styling:
+  * Update formatting
+
+- Update to 0.21.3:
+- Update to 0.21.2:</comment>
+    <requestid>1281734</requestid>
+  </revision>
 </revisionlist>

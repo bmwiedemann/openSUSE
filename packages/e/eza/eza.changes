@@ -1,13 +1,31 @@
 -------------------------------------------------------------------
+Mon Jun  2 05:16:27 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.4:
+  Bug Fixes:
+  * Escape spaces in file path to make them work correctly
+  * List inside working dir with --list-dirs and no path passed
+  * Ignore incorrect Unicode path instead of crashing on Windows
+  Miscellaneous Tasks:
+  * Add Visual Studio icon for *.suo
+  * Add swift icon for *.xcplayground
+  * Add dropbox icon
+  * Eza v0.21.4 changelogs, version bump
+  Refactor:
+  * Clippy lints
+  Styling:
+  * Update formatting
+
+-------------------------------------------------------------------
 Fri May  2 07:43:02 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.22.3:
+- Update to 0.21.3:
   * Add support for .ipynb file icons
 
 -------------------------------------------------------------------
 Fri Apr 25 13:25:09 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.22.2:
+- Update to 0.21.2:
   * Make clippy work again
   * Specify perf improvements
   * Remove dependency on once_cell
