@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-moban-ansible
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,6 @@
 %define pkg_suffix %{nil}
 %bcond_with test
 %endif
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-moban-ansible%{pkg_suffix}
 Version:        0.0.2
 Release:        0
@@ -39,7 +36,9 @@ Source:         https://files.pythonhosted.org/packages/source/m/moban-ansible/m
 # https://github.com/moremoban/moban-ansible/pull/2
 Patch0:         python-moban-ansible-remove-nose.patch
 Patch1:         remove-mock.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-moban >= 0.8.1
@@ -60,12 +59,12 @@ Ansible filters, tests and utility functions for moban users
 
 %if !%{with test}
 %build
-%python_build
+%pyproject_wheel
 %endif
 
 %if !%{with test}
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -78,7 +77,8 @@ Ansible filters, tests and utility functions for moban users
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/moban[-_]ansible
+%{python_sitelib}/moban[-_]ansible-%{version}*-info
 %endif
 
 %changelog

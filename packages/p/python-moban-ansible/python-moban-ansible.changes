@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 12:32:32 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri Aug 19 06:53:34 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-mock.patch:
