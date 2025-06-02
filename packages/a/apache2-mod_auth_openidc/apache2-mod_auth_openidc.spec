@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(openssl) >= 1.0.1
 Requires:       %{apache_mmn}
 Requires:       %{apache_suse_maintenance_mmn}
-%if 0%{?suse_version} >= 1550
+%if 0%{?is_opensuse}
 BuildRequires:  hiredis-devel
 %endif
 
@@ -47,10 +47,10 @@ This module enables an Apache 2.x web server to operate as an OpenID Connect Rel
 
 %build
 %configure \
-%if 0%{?is_opensuse} > 0
-  %{?_with_hiredis}    \
+%if 0%{?is_opensuse}
+  --with-hiredis
 %else
-  %{?_without_hiredis} \
+  --without-hiredis
 %endif
 
 %make_build

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 11:27:59 UTC 2025 - pgajdos@suse.com
+
+- build with hiredis for openSUSE only [bsc#1243922]
+
+-------------------------------------------------------------------
 Wed Apr 30 06:21:42 UTC 2025 - pgajdos@suse.com
 
 - version update to 2.4.17
