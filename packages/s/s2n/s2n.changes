@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue May 27 06:59:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.5.19
+  * Remove unused negotiate_kem function causing build failure (#5316)
+  * chore: Bump nixpkgs version to 24.11 (#5294)
+  * tests: policy snapshot test (#5309)
+  * fix(benches): use session ticket for resumption (#5305)
+  * feature: release ML-DSA support (#5307)
+  * feature: support for ML-DSA handshake signatures (#5303)
+  * tests: turn verbose mode off by default in integ tests (#5286)
+  * Revert "build: add pull requests limit for dependabot" (#5302)
+  * chore: Update Apache test certificates from RSA1024 to RSA2048 (#5285)
+  * feature: add crypto support for mldsa signing (#5272)
+  * refactor: remove conn->client_hello_version (#5278)
+  * build(deps): unpin test-log because of MSRV updates (#5300)
+  * build: add pull requests limit for dependabot (#5299)
+  * chore: bindings release 0.3.19 (#5298)
+  * build(deps): update strum requirement from 0.25 to 0.27
+    in /bindings/rust/standard (#5292)
+  * build(deps): update test-log-macros requirement from =0.2.14
+    to =0.2.17 in /bindings/rust/standard (#5290)
+  * feat: Add `as_ptr()` API for Config (#5274)
+  * tests: reduce integ test flakiness + improve debugability (#5282)
+  * build(deps): update env_logger requirement from 0.10 to 0.11
+    in /bindings/rust/standard (#5296)
+  * build(deps): bump aws-actions/configure-aws-credentials from 4.1.0
+    to 4.2.0 in /.github/workflows in the all-gha-updates group (#5297)
+  * tests: fix flaky test_serialization (#5288)
+  * chore: bump standard MSRV to 1.82.0 (#5295)
+  * chore: Add comments to track dependency requirements (#5287)
+  * tests: improve coverage for s2n_stream_cipher_null (#5268)
+  * build(deps): bump astral-sh/setup-uv from 5 to 6 in /.github/workflows
+    in the all-gha-updates group (#5273)
+  * chore: bindings release 0.3.18 (#5284)
+  * ci: fix expectations when using system default libcrypto (#5279)
+  * ci: handle 429 from yahoo.com network integ test (#5280)
+
+-------------------------------------------------------------------
 Tue May  6 12:44:35 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.5.18
