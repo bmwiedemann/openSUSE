@@ -180,4 +180,17 @@
     <comment>- Version 14</comment>
     <requestid>1272123</requestid>
   </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>ce58b5cfe70dc80cb3989e00f3fdd169</srcmd5>
+    <version>0</version>
+    <time>1748894456</time>
+    <user>anag_factory</user>
+    <comment>- Version 15
+
+- Bump openSUSE Leap 16.0 to Beta 
+
+- Add NetworkManager-config-server package to SLES 16.0 and 
+  SLES_SAP 16.0 as mandatory (bsc#1241224, bsc#1224868).</comment>
+    <requestid>1280445</requestid>
+  </revision>
 </revisionlist>
