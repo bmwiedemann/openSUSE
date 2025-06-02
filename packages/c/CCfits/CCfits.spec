@@ -16,7 +16,7 @@
 #
 
 
-%define sover   2_6
+%define sover   2_7
 Name:           CCfits
 Version:        2.7
 Release:        0
@@ -69,6 +69,8 @@ application that use %{name}.
 
 %install
 %cmake_install
+# Executable to run tests, no need to be installed
+rm %{buildroot}%{_bindir}/cookbook
 
 %check
 %ctest
@@ -81,7 +83,9 @@ application that use %{name}.
 %{_libdir}/lib%{name}.so.*
 
 %files devel
+%{_includedir}/ccfits_export.h
 %{_includedir}/%{name}/
+%{_libdir}/cmake/CCfits/
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 

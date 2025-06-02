@@ -1,22 +1,299 @@
----
- CMakeLists.txt |   10 ++++++++++
- 1 file changed, 10 insertions(+)
+From 65eaf9ac82b20436b156fbc33a3f331cc7ce87cd Mon Sep 17 00:00:00 2001
+From: Atri Bhattacharya <badshah400@gmail.org>
+Date: Sat, 10 May 2025 11:35:25 +0530
+Subject: [PATCH] Fix pkg-config installation when using cmake.
 
-Index: CCfits-2.7/CMakeLists.txt
-===================================================================
---- CCfits-2.7.orig/CMakeLists.txt
-+++ CCfits-2.7/CMakeLists.txt
-@@ -139,3 +139,13 @@ IF (TESTS)
-     #FILE(COPY ${CMAKE_SOURCE_DIR}/testprog.tpt DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+---
+ CCfits.pc.cmake          |  12 +++
+ CCfits.pc.in             |   6 +-
+ CMakeLists.txt           | 202 +++++++++++++++++++++++++++++----------
+ cmake/CCfitsConfig.cmake |   1 +
+ 4 files changed, 166 insertions(+), 55 deletions(-)
+ create mode 100644 CCfits.pc.cmake
+ create mode 100644 cmake/CCfitsConfig.cmake
+
+diff --git a/CCfits.pc.cmake b/CCfits.pc.cmake
+new file mode 100644
+index 0000000..7fd6d44
+--- /dev/null
++++ b/CCfits.pc.cmake
+@@ -0,0 +1,12 @@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@/CCfits
++
++Name: CCfits
++Description: Object-Oriented Interface to the CFITSIO Library
++URL: https://heasarc.gsfc.nasa.gov/fitsio/ccfits
++Requires.private: cfitsio >= 3.08
++Version: @CCFITS_MAJOR@.@CCFITS_MINOR@
++Libs: -L${libdir} -lCCfits
++Cflags: -I${includedir}
+diff --git a/CCfits.pc.in b/CCfits.pc.in
+index 1874c4e..4d86006 100644
+--- a/CCfits.pc.in
++++ b/CCfits.pc.in
+@@ -4,9 +4,9 @@ libdir=@libdir@
+ includedir=@includedir@
  
- ENDIF(TESTS)
+ Name: CCfits
+-Description: Object Oriented C++ Interface to CFITSIO Library
++Description: Object-Oriented Interface to the CFITSIO Library
++URL: https://heasarc.gsfc.nasa.gov/fitsio/ccfits
+ Requires.private: cfitsio >= 3.08
+-Version: 2.7
++Version: @PACKAGE_VERSION@
+ Libs: -L${libdir} -lCCfits
+ Cflags: -I${includedir}
+-
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5a16906..8d09385 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,52 +1,47 @@
+-PROJECT(CCfits)
++#==============================================================================
++# CCFITS CMakeLists.txt
++#==============================================================================
++
++# Ensure that build directory is not the source directory:
++IF(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
++	message(FATAL_ERROR
++		"Please create a separate directory for building CCFITS."
++		)
++ENDIF()
++
+ CMAKE_MINIMUM_REQUIRED(VERSION 3.8)
+ 
+-# Allow the developer to select whether to build Dynamic or Static libraries
+-OPTION (BUILD_SHARED_LIBS "Build Shared Libraries" OFF)
++# Suppress warning about WIN32 no longer being defined on Cygwin:
++SET(CMAKE_LEGACY_CYGWIN_WIN32 0)
+ 
+-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}")
+-set (LIB_DESTINATION "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}")
+-set (BIN_DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
+-set (INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/include/CCfits")
++PROJECT(CCFITS
++	DESCRIPTION "An object-oriented interface to the CFITSIO library"
++	LANGUAGES CXX
++	)
+ 
+-# Define project version
+-SET(${PROJECT_NAME}_MAJOR_VERSION 2)
+-SET(${PROJECT_NAME}_MINOR_VERSION 6)
+-SET(${PROJECT_NAME}_VERSION ${${PROJECT_NAME}_MAJOR_VERSION}.${${PROJECT_NAME}_MINOR_VERSION})
++set(CMAKE_INCLUDE_CURRENT_DIR ON)
++set(CMAKE_INCLUDE_CURRENT_DIR_IN_INTERFACE ON)
+ 
++# Define project version
++#SET(${PROJECT_NAME}_SONAME _)
++SET(${PROJECT_NAME}_MAJOR 2)
++SET(${PROJECT_NAME}_MINOR 7)
++#SET(${PROJECT_NAME}_MICRO _)
++SET(${PROJECT_NAME}_VERSION ${${PROJECT_NAME}_MAJOR}.${${PROJECT_NAME}_MINOR})
++#SET(${PROJECT_NAME}_VERSION ${${PROJECT_NAME}_MAJOR}.${${PROJECT_NAME}_MINOR}.${${PROJECT_NAME}_MICRO})
+ SET(LIB_NAME CCfits)
+-SET (LIB_TYPE STATIC)
+-IF (BUILD_SHARED_LIBS)
+-  SET (LIB_TYPE SHARED)
+-ENDIF (BUILD_SHARED_LIBS)
+ 
+-#==============================================================================
+-# Source code:
+-#==============================================================================
++# Allow @rpath token in target install name on Macs.
++# See "cmake --help-policy CMP0042" for more information.
++IF(POLICY CMP0042)
++  CMAKE_POLICY(SET CMP0042 NEW)
++ENDIF()
+ 
+-FILE(GLOB H_FILES "*.h")
+-SET(H_FILES ${H_FILES} CCfits)
+-
+-SET(SRC_FILES
+-    AsciiTable.cxx
+-    BinTable.cxx
+-    ColumnCreator.cxx
+-    Column.cxx
+-    ColumnData.cxx
+-    ColumnVectorData.cxx
+-    ExtHDU.cxx
+-    FITS.cxx
+-    FitsError.cxx
+-    FITSUtil.cxx
+-    GroupTable.cxx
+-    HDUCreator.cxx
+-    HDU.cxx
+-    KeyData.cxx
+-    KeywordCreator.cxx
+-    Keyword.cxx
+-    PHDU.cxx
+-    Table.cxx
+-)
++INCLUDE(CheckLibraryExists)
++INCLUDE(CheckFunctionExists)
++INCLUDE(CheckSymbolExists)
++INCLUDE(CheckCSourceCompiles)
++INCLUDE(GNUInstallDirs)
+ 
+ #==============================================================================
+ # Dependencies:
+@@ -76,7 +71,55 @@ ELSE()
+ ENDIF (${PkgConfig_FOUND})
+ 
+ #==============================================================================
+-# Target:
++# Build options:
++#==============================================================================
++
++# Allow the developer to select if Dynamic or Static libraries are built
++OPTION(BUILD_SHARED_LIBS "Build Shared Libraries" ON)
++#OPTION(BUILD_SHARED_LIBS "Build Shared Libraries" OFF)
++
++OPTION(TESTS "Build cookbook test program" ON)
++
++IF(BUILD_SHARED_LIBS)
++  SET (LIB_TYPE SHARED)
++ELSE()
++  SET (LIB_TYPE STATIC)
++ENDIF(BUILD_SHARED_LIBS)
 +
 +#==============================================================================
-+# pkgconfig:
++# CCFITS source code:
 +#==============================================================================
-+set(prefix ${CMAKE_INSTALL_PREFIX})
-+set(exec_prefix "\${prefix}")
-+set(libdir ${LIB_DESTINATION})
-+set(includedir ${INCLUDE_INSTALL_DIR})
-+configure_file(CCfits.pc.in ${CMAKE_CURRENT_BINARY_DIR}/CCfits.pc @ONLY)
-+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/CCfits.pc DESTINATION ${LIB_DESTINATION}/pkgconfig)
++
++include(GenerateExportHeader)
++
++FILE(GLOB H_FILES "*.h")
++SET(H_FILES ${H_FILES} CCfits)
++
++SET(SRC_FILES
++    AsciiTable.cxx
++    BinTable.cxx
++    ColumnCreator.cxx
++    Column.cxx
++    ColumnData.cxx
++    ColumnVectorData.cxx
++    ExtHDU.cxx
++    FITS.cxx
++    FitsError.cxx
++    FITSUtil.cxx
++    GroupTable.cxx
++    HDUCreator.cxx
++    HDU.cxx
++    KeyData.cxx
++    KeywordCreator.cxx
++    Keyword.cxx
++    PHDU.cxx
++    Table.cxx
++)
++
++set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}")
++
++#==============================================================================
++# Add libraries:
+ #==============================================================================
+ 
+ ADD_LIBRARY(${LIB_NAME} ${LIB_TYPE} ${H_FILES} ${SRC_FILES})
+@@ -112,15 +155,69 @@ ELSE()
+ ENDIF (${PkgConfig_FOUND})
+ 
+ #==============================================================================
+-# Install:
++# Targets
+ #==============================================================================
+-include(GNUInstallDirs)
+-install(TARGETS ${LIB_NAME}
+-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++
++generate_export_header(CCfits)
++set_property(TARGET CCfits PROPERTY VERSION ${CCFITS_VERSION})
++#set_property(TARGET CCfits PROPERTY SOVERSION 10)
++set_property(TARGET CCfits PROPERTY INTERFACE_CCfits_MAJOR_VERSION ${${PROJECT_NAME}_MAJOR})
++set_property(TARGET CCfits APPEND PROPERTY
++  COMPATIBLE_INTERFACE_STRING CCfits_MAJOR_VERSION
++)
++
++install(TARGETS CCfits EXPORT CCfitsTargets
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++  INCLUDES DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/CCfits"
+ )
+-install(FILES ${H_FILES} DESTINATION ${INCLUDE_INSTALL_DIR})
++
++install(FILES "${CMAKE_CURRENT_BINARY_DIR}/ccfits_export.h"
++  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} COMPONENT Devel)
++
++# Install standard header files in a "CCfits" subdirectory:
++install(FILES ${H_FILES}
++  DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/CCfits" COMPONENT Devel)
++
++include(CMakePackageConfigHelpers)
++write_basic_package_version_file(
++  "${CMAKE_CURRENT_BINARY_DIR}/CCfits/CCfitsConfigVersion.cmake"
++  VERSION ${CCFITS_VERSION}
++  COMPATIBILITY AnyNewerVersion
++)
++
++export(EXPORT CCfitsTargets
++  FILE "${CMAKE_CURRENT_BINARY_DIR}/CCfits/CCfitsTargets.cmake"
++  NAMESPACE CCFITS::
++)
++configure_file(cmake/CCfitsConfig.cmake
++  "${CMAKE_CURRENT_BINARY_DIR}/CCfits/CCfitsConfig.cmake"
++  COPYONLY
++)
++
++set(ConfigPackageLocation ${CMAKE_INSTALL_LIBDIR}/cmake/CCfits)
++install(EXPORT CCfitsTargets
++  FILE
++    CCfitsTargets.cmake
++  NAMESPACE
++    CCFITS::
++  DESTINATION
++    ${ConfigPackageLocation}
++)
++install(
++  FILES
++    cmake/CCfitsConfig.cmake
++    "${CMAKE_CURRENT_BINARY_DIR}/CCfits/CCfitsConfigVersion.cmake"
++  DESTINATION
++    ${ConfigPackageLocation}
++  COMPONENT
++    Devel
++)
++
++# CCfits.pc:
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/CCfits.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/CCfits.pc @ONLY)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/CCfits.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ 
+ #==============================================================================
+ # Tests:
+@@ -134,8 +231,9 @@ IF (TESTS)
+     TARGET_LINK_LIBRARIES(cookbook ${LIB_NAME} ${CFITSIO_LIBRARIES})
+     ADD_TEST(cookbook cookbook)
+ 
+-    SET(TEST_FILES file1.pha)
+-    FILE(COPY ${TEST_FILES} DESTINATION ${CCfits_BINARY_DIR})
+-    #FILE(COPY ${CMAKE_SOURCE_DIR}/testprog.tpt DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
++    # Copy file1.pha to build directory to allow quick test
++    FILE(COPY ${CMAKE_SOURCE_DIR}/file1.pha DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
++
++    install(TARGETS cookbook RUNTIME DESTINATION bin)
+ 
+ ENDIF(TESTS)
+diff --git a/cmake/CCfitsConfig.cmake b/cmake/CCfitsConfig.cmake
+new file mode 100644
+index 0000000..83cb804
+--- /dev/null
++++ b/cmake/CCfitsConfig.cmake
+@@ -0,0 +1 @@
++include("${CMAKE_CURRENT_LIST_DIR}/CCfitsTargets.cmake")
+-- 
+2.49.0
+

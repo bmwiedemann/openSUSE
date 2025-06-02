@@ -7,4 +7,12 @@
     <comment> An object oriented interface to the cfitsio library</comment>
     <requestid>1276417</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>627ce90c22d356cee29988861b40878d</srcmd5>
+    <version>2.7</version>
+    <time>1748894455</time>
+    <user>anag_factory</user>
+    <comment>Update patch to version obtained from upstream.</comment>
+    <requestid>1281851</requestid>
+  </revision>
 </revisionlist>
