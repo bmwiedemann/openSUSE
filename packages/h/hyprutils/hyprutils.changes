@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 19 01:32:14 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.7.1:
+  * string: add ConstVarList
+  * os/process: add exitCode()
+  * os/process: add fd control for async
+  * animations: minor follow-up fix for std::string (#49)
+  * animation: avoid using constexpr std::string
+
+-------------------------------------------------------------------
 Sun Mar 23 22:32:57 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.5.2:
