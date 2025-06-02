@@ -198,4 +198,12 @@ See setup.py (forwarded request 137513 from babelworx)</comment>
     <comment></comment>
     <requestid>1134475</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>2fd66d6ef51f609892393eae13997bd8</srcmd5>
+    <version>1.4.2</version>
+    <time>1748894496</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1281972</requestid>
+  </revision>
 </revisionlist>

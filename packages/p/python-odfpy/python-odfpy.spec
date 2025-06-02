@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-odfpy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,13 +29,15 @@ Group:          Development/Languages/Python
 URL:            https://github.com/eea/odfpy
 Source:         https://github.com/eea/odfpy/archive/refs/tags/release-%{version}.tar.gz
 BuildRequires:  %{python_module defusedxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-defusedxml
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -71,10 +73,10 @@ Visit https://github.com/eea/odfpy for documentation and examples.
 sed -i "1d" odf/{userfield,odf2xhtml,manifest,element,elementtypes,load,odfmanifest,thumbnail}.py # Fix non-executable scripts
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 for b in %{binaries}; do
   %python_clone -a %{buildroot}%{_mandir}/man1/$b.1
   %python_clone -a %{buildroot}%{_bindir}/$b
