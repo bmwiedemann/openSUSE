@@ -1,7 +1,7 @@
 #
 # spec file for package python-mohawk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mohawk
 Version:        1.1.0
 Release:        0
@@ -25,12 +24,14 @@ License:        MPL-2.0
 URL:            https://github.com/kumar303/mohawk
 Source:         https://files.pythonhosted.org/packages/source/m/mohawk/mohawk-%{version}.tar.gz
 Patch0:         remove-nose.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
 BuildArch:      noarch
-BuildRequires:  %{python_module six}
 %python_subpackages
 
 %description
@@ -41,10 +42,10 @@ authorization scheme.
 %autosetup -p1 -n mohawk-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -52,6 +53,7 @@ authorization scheme.
 
 %files %{python_files}
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/mohawk
+%{python_sitelib}/mohawk-%{version}*-info
 
 %changelog
