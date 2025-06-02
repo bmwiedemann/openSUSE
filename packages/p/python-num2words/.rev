@@ -81,4 +81,12 @@
 - Initial release of python-num2words 0.5.6</comment>
     <requestid>1131692</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>4f6a642b9699ed99b4b688419723dd47</srcmd5>
+    <version>0.5.13</version>
+    <time>1748894494</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1281970</requestid>
+  </revision>
 </revisionlist>

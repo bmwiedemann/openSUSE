@@ -1,7 +1,7 @@
 #
 # spec file for package python-num2words
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-num2words
 Version:        0.5.13
 Release:        0
@@ -25,12 +24,14 @@ License:        LGPL-2.1-only
 Group:          Development/Languages/Python
 URL:            https://github.com/savoirfairelinux/num2words
 Source:         https://files.pythonhosted.org/packages/source/n/num2words/num2words-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docopt >= 0.6.2
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module delegator.py}
@@ -48,10 +49,10 @@ It supports multiple languages and can even generate ordinal numbers like "forty
 %setup -q -n num2words-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/num2words
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -68,7 +69,8 @@ It supports multiple languages and can even generate ordinal numbers like "forty
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license COPYING
-%{python_sitelib}/*
+%{python_sitelib}/num2words
+%{python_sitelib}/num2words-%{version}*-info
 %python_alternative %{_bindir}/num2words
 
 %changelog
