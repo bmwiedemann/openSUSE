@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonpatch
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,6 @@
 %else
 %bcond_with libalternatives
 %endif
-
 %{?sle15_python_module_pythons}
 Name:           python-jsonpatch
 Version:        1.33
@@ -32,18 +31,20 @@ Group:          Development/Languages/Python
 URL:            https://github.com/stefankoegl/python-json-patch
 Source:         https://files.pythonhosted.org/packages/source/j/jsonpatch/jsonpatch-%{version}.tar.gz
 BuildRequires:  %{python_module jsonpointer >= 1.9}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-%if %{with libalternatives}
-Requires:       alts
-BuildRequires:  alts
-%else
-Requires(post): update-alternatives
-Requires(preun):update-alternatives
-%endif
 Requires:       python-jsonpointer >= 1.9
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(preun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -53,10 +54,10 @@ Python module to apply JSON-Patches (according to RFC 6902).
 %setup -q -n jsonpatch-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Prepare for update-alternatives usage

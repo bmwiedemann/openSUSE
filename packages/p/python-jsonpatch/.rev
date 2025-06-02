@@ -250,4 +250,12 @@
   * first stable release, some bugfixes</comment>
     <requestid>1129226</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>bc29558338230fe81b25853b36c45697</srcmd5>
+    <version>1.33</version>
+    <time>1748894320</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1281320</requestid>
+  </revision>
 </revisionlist>
