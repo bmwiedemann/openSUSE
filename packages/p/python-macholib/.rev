@@ -77,4 +77,13 @@
 - version update to 1.16</comment>
     <requestid>1131727</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>0cf42f6d8f88b1422ae785a9dcf86b7c</srcmd5>
+    <version>1.16.3</version>
+    <time>1748894427</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build
+</comment>
+    <requestid>1281789</requestid>
+  </revision>
 </revisionlist>

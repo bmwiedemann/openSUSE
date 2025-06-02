@@ -1,7 +1,7 @@
 #
 # spec file for package python-macholib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,15 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/ronaldoussoren/macholib/
 Source:         https://files.pythonhosted.org/packages/source/m/macholib/macholib-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-altgraph >= 0.15
 Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module altgraph >= 0.15}
@@ -56,10 +58,10 @@ sed -i -e '/^#!\//, 1d' macholib/macho_find.py
 sed -i -e '/^#!\//, 1d' macholib/macho_standalone.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/macho_dump
 %python_clone -a %{buildroot}%{_bindir}/macho_standalone
 %python_clone -a %{buildroot}%{_bindir}/macho_find
@@ -86,6 +88,7 @@ rm macholib_tests/test_{command_line,dyld}.py
 %python_alternative %{_bindir}/macho_find
 %python_alternative %{_bindir}/macho_standalone
 %python_alternative %{_bindir}/macho_dump
-%{python_sitelib}/*
+%{python_sitelib}/macholib
+%{python_sitelib}/macholib-%{version}*-info
 
 %changelog
