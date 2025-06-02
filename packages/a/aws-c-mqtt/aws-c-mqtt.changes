@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 27 06:39:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.1
+  * Fix casing on Windows header files by @ianbotsf in (#393)
+  * Update test to check time lower bound by @xiazhvera in (#395)
+  * Fix handling stream operation after client shutdown
+    by @sfod in (#396)
+  * Request response client: acquire event loop group
+    by @xiazhvera in (#392)
+  * Remove clang-3 from CI by @sbSteveK in (#397)
+  * Handle NULL connect field on mqtt5 client options destruction
+    by @sfod in (#398)
+  * Force TUNNEL proxy type in MQTT5 client by @sfod in (#399)
+
+-------------------------------------------------------------------
 Tue May  6 13:03:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.13.0
