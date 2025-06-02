@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 16 09:57:08 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- The dashed line in the changelog is the beginning of a changelog
+  entry. Content is expected after it.
+
+-------------------------------------------------------------------
 Fri Apr 22 16:49:40 CEST 2022 - hare@suse.de
 
 - Version bump to 1.7 (bsc#1198760). Some changes are
@@ -97,4 +103,3 @@ Fri Jan 11 16:49:19 CET 2008 - bwalle@suse.de
 
 - initial SUSE package
 
--------------------------------------------------------------------
