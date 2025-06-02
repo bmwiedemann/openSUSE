@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-moban
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Tests have dependency loop with moban-ansible
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -27,9 +26,6 @@
 %define pkg_suffix %{nil}
 %bcond_with test
 %endif
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-moban%{pkg_suffix}
 Version:        0.8.2
 Release:        0
@@ -41,7 +37,9 @@ Source:         https://files.pythonhosted.org/packages/source/m/moban/moban-%{v
 Patch0:         remove_nose.patch
 Patch1:         stop-using-jinja-extensions.patch
 Patch2:         remove-mock.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
@@ -53,8 +51,8 @@ Requires:       python-fs >= 2.4.11
 Requires:       python-jinja2-fsloader >= 0.2.0
 Requires:       python-lml >= 0.0.9
 Requires:       python-ruamel.yaml >= 0.15.98
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 Suggests:       python-ansible
 Suggests:       python-gitfs2
 Suggests:       python-pypifs
@@ -88,12 +86,12 @@ consistent across the documentations of individual libraries.
 
 %if !%{with test}
 %build
-%python_build
+%pyproject_wheel
 %endif
 
 %if !%{with test}
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/moban
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
@@ -136,7 +134,8 @@ export SKIP_TESTS
 
 %if !%{with test}
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/moban
+%{python_sitelib}/moban-%{version}*-info
 %license LICENSE
 %doc README.rst CHANGELOG.rst
 %python_alternative %{_bindir}/moban

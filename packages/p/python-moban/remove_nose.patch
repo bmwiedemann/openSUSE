@@ -2311,6 +2311,3 @@ index 9f9983c4..320c5298 100644
 -        os.chdir(os.path.join(self.base_folder, working_directory))
 +        os.chdir(fs.path.join(self.base_folder, working_directory))
          run_moban_with_fs(moban_cli, None, assertions)
- 
- 
-

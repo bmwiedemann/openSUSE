@@ -68,4 +68,13 @@
   * Switch to using unittest.mock.</comment>
     <requestid>978215</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>7183e96905520ccc4619f3430e0e8057</srcmd5>
+    <version>0.8.2</version>
+    <time>1748894469</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build
+</comment>
+    <requestid>1281910</requestid>
+  </revision>
 </revisionlist>

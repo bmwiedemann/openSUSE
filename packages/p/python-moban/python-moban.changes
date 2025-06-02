@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 12:30:05 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri May 20 06:37:52 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch stop-using-jinja-extensions.patch
