@@ -1,7 +1,7 @@
 #
 # spec file for package bird
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,17 @@
 %define bird_home %{_localstatedir}/lib/bird
 %define bird_runtimedir %{_rundir}/%{name}
 Name:           bird
-Version:        2.16
+Version:        2.17.1
 Release:        0
 Summary:        The BIRD Internet Routing Daemon
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Routing
 URL:            https://bird.network.cz/
-Source:         ftp://bird.network.cz/pub/bird/bird-%{version}.tar.gz
+Source:         https://bird.nic.cz/download/bird-%{version}.tar.gz
 Source1:        bird.service
 Source3:        bird.tmpfiles.d
+Source4:        system-user-bird.conf
+Source5:        https://bird.nic.cz/download/bird-doc-%{version}.tar.gz
 Patch1:         log-commit.patch
 BuildRequires:  bison
 BuildRequires:  flex
@@ -37,38 +39,48 @@ BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 Requires(pre):  shadow
 Provides:       bird6 = %{version}
 Provides:       bird6:%{_sbindir}/bird6
 Obsoletes:      bird6 < %{version}
 Provides:       bird-common = %{version}
 Obsoletes:      bird-common < %{version}
-Provides:       group(%{bird_group})
-Provides:       user(%{bird_user})
 
 %description
-BIRD is an implementation for routing Internet Protocol packets. IPv4
-and IPv6 are supported by running separate daemons. It establishes
-multiple routing tables, and uses BGP, RIP, and OSPF routing
-protocols, as well as statically defined routes.
+The BIRD project aims to develop a fully functional dynamic IP routing daemon
+primarily targeted on (but not limited to) Linux, FreeBSD and other UNIX-like
+systems and distributed under the GNU General Public License.
 
-This package holds the IPv4+IPv6 binaries.
+Supports the following:
 
-This package holds common files and directories.
+* Both IPv4 and IPv6
+* Multiple routing tables
+* BGP
+* RIP
+* OSPF
+* BFD
+* Babel
+* Static routes
+* IPv6 Router Advertisements
+* Inter-table protocol
+* Command-line interface (using the `birdc' client; to get some help, just press `?')
+* Powerful language for route filtering
 
 %package doc
 Summary:        Documentation for the BIRD Internet Routing Daemon
 Group:          Documentation/HTML
-BuildRequires:  perl-FindBin-Real
 BuildArch:      noarch
 
 %description doc
-BIRD is an implementation for routing Internet Protocol packets.
+The BIRD project aims to develop a fully functional dynamic IP routing daemon
+primarily targeted on (but not limited to) Linux, FreeBSD and other UNIX-like
+systems and distributed under the GNU General Public License.
 
-This package holds the HTML documentation.
+This package holds the PDF documentation.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a 5
 
 %build
 export CFLAGS="%{optflags} -fpic -DPIC -fno-strict-aliasing -Wno-parentheses -Wno-pointer-sign"
@@ -78,6 +90,7 @@ export LDFLAGS="-Wl,-z,relro -pie"
 %make_build all
 # requires linuxdoctools
 # make docs
+%sysusers_generate_pre %{SOURCE4} bird system-user-bird.conf
 
 %install
 %make_install
@@ -87,21 +100,19 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rcbird
 install -D -d -m 0750 %{buildroot}%{bird_home}
 install -D -d -m 0750 %{buildroot}%{_docdir}/%{name}/
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/system-user-bird.conf
 
 %check
 %make_build test
 
-%pre
-# Create bird user/group
-getent group %{bird_group} >/dev/null || groupadd -r %{bird_group}
-getent passwd %{bird_user} >/dev/null || useradd -r -g %{bird_group} -d %{bird_home} -s /sbin/nologin -c "Bird routing daemon" %{bird_user}
+%pre -f bird.pre
 %service_add_pre bird.service
 
 %preun
 %service_del_preun bird.service
 
 %post
-systemd-tmpfiles --create %{_tmpfilesdir}/%{name}.conf || true
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 %service_add_post bird.service
 
 %postun
@@ -114,12 +125,13 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}.conf || true
 %{_sbindir}/birdcl
 %{_sbindir}/rcbird
 %{_unitdir}/bird.service
-%dir %attr(750,%{bird_user},%{bird_group}) %{bird_home}
+%{_sysusersdir}/system-user-bird.conf
 %{_tmpfilesdir}/%{name}.conf
 %dir %attr(-,%{bird_user},%{bird_group}) %ghost %{bird_runtimedir}
 
 %files doc
 %doc NEWS README
 %doc doc/bird.conf.*
+%doc bird-doc-%{version}/doc/*.pdf
 
 %changelog
