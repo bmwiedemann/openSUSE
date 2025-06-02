@@ -18,7 +18,7 @@
 
 
 Name:           sslh
-Version:        2.2.3
+Version:        2.2.4
 Release:        0
 Summary:        SSL/SSH multiplexer
 License:        GPL-2.0-or-later
