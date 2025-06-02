@@ -745,4 +745,17 @@
   * Use arm64 rpm for libation on aarch64</comment>
     <requestid>1280114</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>333f7a0527563cf862fbbb34757740bb</srcmd5>
+    <version>5.8.5</version>
+    <time>1748894457</time>
+    <user>anag_factory</user>
+    <comment>- Version 5.8.5
+  * add librewolf plugin (#205)
+  * Install .NET 9
+  * Add verbose mode
+  * Change the order of the process in the github module
+  * Add rustdesk plugin</comment>
+    <requestid>1281865</requestid>
+  </revision>
 </revisionlist>
