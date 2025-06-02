@@ -1,7 +1,7 @@
 #
 # spec file for package python-pan-python
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017-2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pan-python
 Version:        0.16.0
 Release:        0
@@ -26,11 +25,13 @@ License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/kevinsteves/pan-python
 Source:         https://files.pythonhosted.org/packages/source/p/pan-python/pan-python-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 #BuildRequires:  %%{python_module pytest}
@@ -49,10 +50,10 @@ Firewalls, WildFire and AutoFocus.  It provides:
 %setup -q -n pan-python-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # remove .py suffix from binaries
 cd %{buildroot}/%{_bindir}
 for f in panxapi panconf panlicapi panwfapi panafapi; do mv "$f.py" "$f"; done
@@ -92,6 +93,7 @@ rm -f %{buildroot}%{_bindir}/_current_flavor
 %python_alternative %{_bindir}/panlicapi
 %python_alternative %{_bindir}/panwfapi
 %python_alternative %{_bindir}/panxapi
-%{python_sitelib}/*
+%{python_sitelib}/pan
+%{python_sitelib}/pan[-_]python-%{version}*-info
 
 %changelog
