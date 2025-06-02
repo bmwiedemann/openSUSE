@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun  2 09:29:18 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.6.0:
+  * obsolete schema dependency again and rely on pydantic
+  * support AppStream generation
+  * support packageset selections in flavors via content and unpack
+  * allow overwrite of supportstatus via = prefix
+  * larger code refactoring for first unit tests
+
+-------------------------------------------------------------------
+Wed May 21 10:38:30 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- add missing dependency to python schema module
+
+-------------------------------------------------------------------
 Fri May 16 13:28:58 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.5.16:

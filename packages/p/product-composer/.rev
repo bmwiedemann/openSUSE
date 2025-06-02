@@ -410,4 +410,19 @@
   * Fix handover of multiple --build-option cli parameters</comment>
     <requestid>1278080</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>cbabd7a1ac3ccb9b6e84ee010cc9c687</srcmd5>
+    <version>0.6.0</version>
+    <time>1748894454</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.6.0:
+  * obsolete schema dependency again and rely on pydantic
+  * support AppStream generation
+  * support packageset selections in flavors via content and unpack
+  * allow overwrite of supportstatus via = prefix
+  * larger code refactoring for first unit tests
+
+- add missing dependency to python schema module</comment>
+    <requestid>1281849</requestid>
+  </revision>
 </revisionlist>
