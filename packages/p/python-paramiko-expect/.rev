@@ -49,4 +49,12 @@
   * add term option to SSHClientInteraction and use to call invoke_shell</comment>
     <requestid>1085966</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8106342454cc8982e24716cdbf534bfe</srcmd5>
+    <version>0.3.5</version>
+    <time>1748894532</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282029</requestid>
+  </revision>
 </revisionlist>
