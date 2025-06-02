@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 30 17:43:38 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 3.88.35:
+  * Remove Snowflake Driver  (#4173)
+  * Better Postman API request timeout logging (#4186)
+  * Alias custom context in Postman Client (#4185)
+  * Bump the Postman client timeout (#4183)
+  * Skip Intermittently Failing Git Tests (#4187)
+  * (fix) Auth0 Management token flaky test (#4179)
+  * Update GitHub analyzer to use correct AnalyzerType in results (#4188)
+  * Rename url parameter in Postman client to urlString (#4184)
+  * Added deepseek support (#3980)
+  * (fix) Leading = in gitlab v1 token  (#4156)
+  * added response body check in okta verification (#4180)
+  * Updated LaunchDarkly Analyzer and Detector (#4178)
+  * Github and Gitlab Authentication via `http.extraHeader` for cloning Repositories (#4139)
+  * Improved JIRA detector (#4155)
+  * chore: fix some function names (#4175)
+
+-------------------------------------------------------------------
 Mon May 26 07:09:24 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 3.88.34:
