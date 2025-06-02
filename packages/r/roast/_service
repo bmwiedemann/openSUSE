@@ -1,16 +1,12 @@
 <services>
-  <service name="roast_scm" mode="manual">
+  <service name="cargo_vendor" mode="manual">
      <param name="url">https://codeberg.org/Rusty-Geckos/roast</param>
-     <param name="revision">v7.1.0</param>
+     <param name="revision">v7.2.0</param>
      <param name="versionrewriteregex">v(.*)</param>
      <param name="versionrewritepattern">${1}</param>
      <param name="changesgenerate">true</param>
      <param name="changesauthor">Soc Virnyl Estela</param>
      <param name="changesemail">uncomfyhalomacro@opensuse.org</param>
-  </service>
-  <service name="cargo_vendor" mode="manual">
-     <param name="src">roast*.tar.zst</param>
-     <param name="update">true</param>
   </service>
 </services>
 

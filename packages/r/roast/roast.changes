@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jun 02 02:06:05 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 7.2.0:
+  * chore(release): bump to version 7.2.0
+  * tests: roast_scm_opts should have `None` as the first parameter
+  * improvement: add a possibility to pass a custom workdir
+
+-------------------------------------------------------------------
+Sun Jun 01 13:29:06 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 7.1.2:
+  * chore(release): bump to version 7.1.2
+  * improvement: only update the changelog header if possible
+  * ci: forgot to enable obs in the feature flag
+
+-------------------------------------------------------------------
+Sun Jun 01 07:00:58 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 7.1.1:
+  * chore(release): bump to v7.1.1
+  * ci: forgot to specify which test to run
+  * ci: include a test for feature `obs`
+  * misc: update only once the version string.
+  * tests: test feature `obs`
+
+-------------------------------------------------------------------
 Sat May 31 14:50:08 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Ignore test for scm.
