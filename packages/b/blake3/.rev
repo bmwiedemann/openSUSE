@@ -19,4 +19,14 @@
   on the SRPM name.</comment>
     <requestid>1278164</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f915aec74a557fe75fc555d170cd058c</srcmd5>
+    <version>1.8.2</version>
+    <time>1748894472</time>
+    <user>anag_factory</user>
+    <comment>- Remove ExclusiveArch: %{rust_tier1_arches} to allow building
+  the c lib on more arches
+</comment>
+    <requestid>1281897</requestid>
+  </revision>
 </revisionlist>

@@ -39,7 +39,6 @@ Source0:        https://github.com/BLAKE3-team/BLAKE3/archive/refs/tags/%{versio
 Source1:        vendor.tar.zst
 BuildRequires:  tbb-devel
 BuildRequires:  zstd
-ExclusiveArch:  %{rust_tier1_arches}
 %if 0%{?with_b3sum}
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
