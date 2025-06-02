@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 22 13:01:17 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2025-4516-DecodeError-handler.patch fixing
+  CVE-2025-4516 (bsc#1243273) blocking DecodeError handling
+  vulnerability, which could lead to DoS.
+
+-------------------------------------------------------------------
+Sat May 17 10:02:27 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Use extended %autopatch.
+
+-------------------------------------------------------------------
 Sat May 10 11:38:22 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Remove python-3.3.0b1-test-posix_fadvise.patch (not needed
@@ -349,7 +361,7 @@ Fri Feb 23 01:06:42 UTC 2024 - Matej Cepl <mcepl@suse.com>
 Tue Feb 20 22:14:02 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Remove double definition of /usr/bin/idle%%{version} in
-  %%files. 
+  %%files.
 
 -------------------------------------------------------------------
 Thu Feb 15 10:29:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>

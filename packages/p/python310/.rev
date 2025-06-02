@@ -1061,4 +1061,18 @@
   since kernel 3.6-rc1)</comment>
     <requestid>1276661</requestid>
   </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>544eb5dd95b632547d8c62d98312a2b8</srcmd5>
+    <version>3.10.17</version>
+    <time>1748894461</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2025-4516-DecodeError-handler.patch fixing
+  CVE-2025-4516 (bsc#1243273) blocking DecodeError handling
+  vulnerability, which could lead to DoS.
+
+- Use extended %autopatch.
+
+  %%files.</comment>
+    <requestid>1281886</requestid>
+  </revision>
 </revisionlist>

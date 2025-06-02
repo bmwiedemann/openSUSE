@@ -205,6 +205,9 @@ Patch28:        sphinx-802.patch
 # PATCH-FIX-UPSTREAM gh-126572-test_ssl-no-stop-ThreadedEchoServer-OSError.patch bsc#1241067 mcepl@suse.com
 # don't stop ThreadedEchoServer on OSError, makes test_ssl fail with OpenSSL 3.5
 Patch29:        gh-126572-test_ssl-no-stop-ThreadedEchoServer-OSError.patch
+# PATCH-FIX-UPSTREAM CVE-2025-4516-DecodeError-handler.patch bsc#1243273 mcepl@suse.com
+# this patch makes things totally awesome
+Patch30:        CVE-2025-4516-DecodeError-handler.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -462,32 +465,15 @@ other applications.
 
 %prep
 %setup -q -n %{tarname}
-%patch -p1 -P 01
-%patch -p1 -P 02
-%patch -p1 -P 03
-%patch -p1 -P 04
-%patch -p1 -P 06
-%patch -p1 -P 07
-
+%autopatch -p1 -M 07
 %if 0%{?sle_version} && 0%{?sle_version} <= 150300
-%patch -P 11 -p1
+%patch -p1 -P 11
 %endif
-
-%patch -p1 -P 15
-%patch -p1 -P 16
-%patch -p1 -P 17
-%patch -p1 -P 18
-%patch -p1 -P 19
-
+%autopatch -p1 -m 12 -M 20
 %if ! 0%{?sle_version} || 0%{?sle_version} >= 160000
 %patch -p1 -P 21
 %endif
-
-%patch -p1 -P 22
-%patch -p1 -P 24
-%patch -p1 -P 27
-%patch -p1 -P 28
-%patch -p1 -P 29
+%autopatch -p1 -m 22
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

@@ -20,14 +20,12 @@ calls from ConnectionHandler.
 
 Co-authored-by: Petr Viktorin <encukou@gmail.com>
 ---
- Lib/test/test_ssl.py | 17 ++++++++++++-----
+ Lib/test/test_ssl.py |   17 ++++++++++++-----
  1 file changed, 12 insertions(+), 5 deletions(-)
 
-diff --git a/Lib/test/test_ssl.py b/Lib/test/test_ssl.py
-index 9b59ddd887aa0b..b6421c7a3c827b 100644
 --- a/Lib/test/test_ssl.py
 +++ b/Lib/test/test_ssl.py
-@@ -2300,7 +2300,6 @@ def wrap_conn(self):
+@@ -2488,7 +2488,6 @@ class ThreadedEchoServer(threading.Threa
                  # See also http://erickt.github.io/blog/2014/11/19/adventures-in-debugging-a-potential-osx-kernel-bug/
                  if e.errno != errno.EPROTOTYPE and sys.platform != "darwin":
                      self.running = False
@@ -35,7 +33,7 @@ index 9b59ddd887aa0b..b6421c7a3c827b 100644
                      self.close()
                  return False
              else:
-@@ -2435,10 +2434,6 @@ def run(self):
+@@ -2623,10 +2622,6 @@ class ThreadedEchoServer(threading.Threa
                      self.close()
                      self.running = False
  
@@ -46,7 +44,7 @@ index 9b59ddd887aa0b..b6421c7a3c827b 100644
      def __init__(self, certificate=None, ssl_version=None,
                   certreqs=None, cacerts=None,
                   chatty=True, connectionchatty=False, starttls_server=False,
-@@ -2472,21 +2467,33 @@ def __init__(self, certificate=None, ssl_version=None,
+@@ -2660,21 +2655,33 @@ class ThreadedEchoServer(threading.Threa
          self.conn_errors = []
          threading.Thread.__init__(self)
          self.daemon = True
