@@ -1,7 +1,7 @@
 #
 # spec file for package python-misaka
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-misaka
 Version:        2.1.1
 Release:        0
@@ -27,13 +26,15 @@ URL:            https://github.com/FSX/misaka
 Source:         https://files.pythonhosted.org/packages/source/m/misaka/misaka-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 1.12.0}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  tidy
 Requires:       python-cffi >= 1.12.0
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(post): alts
+Requires(postun): alts
 %python_subpackages
 
 %description
@@ -43,10 +44,10 @@ A CFFI binding for Hoedown_ (version 3), a markdown parsing library.
 %setup -q -n misaka-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/misaka
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
@@ -65,6 +66,7 @@ $python tests/run_tests.py
 %license LICENSE.txt
 %doc README.rst
 %python_alternative %{_bindir}/misaka
-%{python_sitearch}/*
+%{python_sitearch}/misaka
+%{python_sitearch}/misaka-%{version}*-info
 
 %changelog
