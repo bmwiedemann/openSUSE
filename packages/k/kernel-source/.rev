@@ -7016,4 +7016,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1243700</comment>
     <requestid>1280473</requestid>
   </revision>
+  <revision rev="783" vrev="1">
+    <srcmd5>2bcbea4f83ac7f241e11e9a48c3636ee</srcmd5>
+    <version>6.15.0</version>
+    <time>1748894366</time>
+    <user>anag_factory</user>
+    <comment>6.15 with fixed compiler version &amp; fixes for acpica &amp; DRM fix &amp; &quot;nosmt&quot; power fix; bugs: bsc#1012628 bsc#1241057 bsc#1241193 bsc#1243081 bsc#1243782 bsc#1243907</comment>
+    <requestid>1281773</requestid>
+  </revision>
 </revisionlist>
