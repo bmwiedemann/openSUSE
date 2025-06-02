@@ -1,7 +1,7 @@
 #
 # spec file for package python-mss
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-mss
 Version:        7.0.1
 Release:        0
@@ -27,16 +25,18 @@ Group:          Development/Languages/Python
 URL:            https://github.com/BoboTiG/python-mss
 Source:         https://files.pythonhosted.org/packages/source/m/mss/mss-%{version}.tar.gz
 BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  lsof
 BuildRequires:  python-rpm-macros
 BuildRequires:  xrandr
 BuildRequires:  xvfb-run
 Requires:       xrandr
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,10 +47,10 @@ An ultra fast cross-platform multiple screenshots module in pure Python using ct
 %setup -q -n mss-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/mss
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
