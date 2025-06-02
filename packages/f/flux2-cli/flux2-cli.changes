@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Mon Jun 02 07:08:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.6.1:
+  Flux v2.6.1 is a patch release that comes with various fixes.
+  Users are encouraged to upgrade for the best experience.
+  * Fixes:
+    - Fix a bug introduced in image-reflector-controller v0.35.0
+      that was causing spurious error events for policies during
+      image repository reconciliation.
+    - Fix excessive logging in image-automation-controller after a
+      restart when the image tags cache is empty.
+  * Components changelog
+    - image-reflector-controller v0.35.1
+  * What's Changed
+    - [release/v2.6.x] Update image-reflector-controller to v0.35.1
+      by @fluxcdbot in #5382
+    - [release/v2.6.x] Add digest pinning to image automation
+      testing by @fluxcdbot in #5384
+
+-------------------------------------------------------------------
+Mon Jun 02 07:01:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.6.0:
+  https://github.com/fluxcd/flux2/releases/tag/v2.6.0
+  Flux v2.6.0 is a feature release. Users are encouraged to upgrade
+  for the best experience.
+  For a compressive overview of new features and API changes
+  included in this release, please refer to the Announcing Flux 2.6
+  GA blog post.
+  https://fluxcd.io/blog/2025/05/flux-v2.6.0/
+  Overview of the new features:
+  * General availability release for the Flux OCI Artifacts APIs
+    and flux artifact commands
+  * Support for OCI digests pinning (ImagePolicy,
+    ImageUpdateAutomation)
+  * Object-level workload identity authentication (OCIRepository,
+    ImageRepository, Kustomization, Alert Provider)
+  * Cache registry credentials for cloud providers (OCIRepository,
+    ImageRepository)
+  * Git HTTP/S Mutual TLS authentication (GitRepository,
+    ImageUpdateAutomation)
+  * Support for sparse checkout (GitRepository)
+  * Support for GitHub App authentication (Alert Provider)
+  * Support for managed Identity authentication to Azure Event Hub
+    (Alert Provider)
+  * Customize the ID of the Git commit status with CEL expressions
+    (Alert Provider)
+  * WaitForTermination deletion policy (Kustomization)
+  * DisableChartDigestTracking feature gate (HelmRelease)
+  * OpenShift compatibility
+    Flux can be installed on Red Hat OpenShift cluster directly
+    from OperatorHub using Flux Operator.
+    The operator allows the configuration of Flux multi-tenancy
+    lockdown, network policies, persistent storage, sharding,
+    vertical scaling and the synchronization of the cluster state
+    from Git repositories, OCI artifacts, and S3-compatible
+    storage.
+  * Components changelog
+    - source-controller v1.6.0
+    - kustomize-controller v1.6.0
+    - notification-controller v1.6.0
+    - helm-controller v1.3.0
+    - image-reflector-controller v0.35.0
+    - image-automation-controller v0.41.0
+  * CLI-related changes
+    - Update CLI to OCIRepository v1 (GA)
+    - Add --interval and --reflect-digest flags to flux create
+      image policy
+    - Fix `flux trace` for HRs from `OCIRepository`s
+    - fix: allow recursive dry-run over local sources
+    - build(deps): bump helm.sh/helm/v3 from 3.17.0 to 3.17.3
+    - Fix command debug hr not taking targetPath into account
+
+-------------------------------------------------------------------
 Tue Feb 25 17:28:41 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.5.1:
