@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  2 08:07:03 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.15.4
+  * Threads were not rejoined, which has been fixed
+  * Moved TrackerList and TrackerController out of the public API
+  * Use poll interrupting callbacks for SCGI requests
+  * Updated ThrottleList to use new Scheduler
+
+-------------------------------------------------------------------
 Fri May  2 09:54:42 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.15.3

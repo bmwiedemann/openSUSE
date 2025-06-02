@@ -16,11 +16,10 @@
 #
 
 
-#common.m4 depends on a bashism in <=0.15.2
 %define _buildshell /bin/sh
-%define lname	libtorrent24
+%define lname	libtorrent25
 Name:           libtorrent
-Version:        0.15.3
+Version:        0.15.4
 Release:        0
 Summary:        A BitTorrent library written in C++
 License:        SUSE-GPL-2.0+-with-openssl-exception
