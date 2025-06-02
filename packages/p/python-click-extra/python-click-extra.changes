@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 31 13:26:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 5.0.2:
+  * Set ExtraCommand default prog_name to CLI's name to avoid it to be
+    named python -m <module_name> if invoked out of a module.
+  * Tweak exit code rendering of CLI runs.
+
+-------------------------------------------------------------------
 Thu May 29 05:55:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 5.0.1:
