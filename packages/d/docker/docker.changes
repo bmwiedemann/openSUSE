@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri May 30 17:55:22 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 28.2.2-ce. See upstream changelog online at
+  <https://github.com/moby/moby/releases/tag/v28.2.2>
+- Rebase patches:
+ * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+ * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+ * 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+ * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+ * 0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+
+-------------------------------------------------------------------
+Fri May 30 09:26:40 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 28.2.1-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/28/#2820> bsc#1243833
+  <https://github.com/moby/moby/releases/tag/v28.2.1>
+- Rebase patches:
+ * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+ * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+ * 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+ * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+ * 0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+
+-------------------------------------------------------------------
+Thu May 22 12:48:59 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to docker-buildx v0.24.0. Upstream changelog:
+  <https://github.com/docker/buildx/releases/tag/v0.24.0>
+
+-------------------------------------------------------------------
 Thu May  1 16:27:28 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 28.1.1-ce. See upstream changelog online at
