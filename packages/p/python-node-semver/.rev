@@ -84,4 +84,12 @@
   * pre release range fix</comment>
     <requestid>1068310</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>10d4ada2769e057695264f30fb9f2193</srcmd5>
+    <version>0.9.0</version>
+    <time>1748894492</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1281967</requestid>
+  </revision>
 </revisionlist>

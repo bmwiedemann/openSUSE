@@ -1,7 +1,7 @@
 #
 # spec file for package python-node-semver
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-node-semver
 Version:        0.9.0
 Release:        0
@@ -27,8 +25,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/podhmo/python-node-semver
 Source:         https://github.com/podhmo/python-node-semver/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # See https://github.com/k-bx/python-semver/issues/67 for why conflicts is needed
@@ -43,10 +43,10 @@ python version of node-semver (https://github.com/isaacs/node-semver)
 %setup -q -n python-node-semver-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,7 +55,7 @@ python version of node-semver (https://github.com/isaacs/node-semver)
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/node_semver-%{version}-py*.egg-info
+%{python_sitelib}/node_semver-%{version}*-info
 %{python_sitelib}/nodesemver
 
 %changelog
