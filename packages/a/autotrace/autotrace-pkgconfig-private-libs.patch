@@ -1,0 +1,28 @@
+From eeeb813a416ff309804f6833729fab20d036e667 Mon Sep 17 00:00:00 2001
+From: Peter Lemenkov <lemenkov@gmail.com>
+Date: Mon, 19 Feb 2024 19:33:04 +0100
+Subject: [PATCH] [pkgconfig] Move some libraries to Libs.private
+
+Fixes #124.
+
+See this link for pkgconfig file syntax:
+
+* https://people.freedesktop.org/~dbn/pkg-config-guide.html
+
+Signed-off-by: Peter Lemenkov <lemenkov@gmail.com>
+---
+ autotrace.pc.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/autotrace.pc.in b/autotrace.pc.in
+index 4c2e581..d718c77 100644
+--- a/autotrace.pc.in
++++ b/autotrace.pc.in
+@@ -7,5 +7,6 @@ Name: Autotrace
+ Description: a utility that converts bitmap to vector graphics
+ Version: @VERSION@
+ Requires:
+-Libs: -L@libdir@ -lautotrace @LIBPNG_LIBS@ @MAGICK_LIBS@ @LIBSWF_LIBS@ @LIBPSTOEDIT_LIBS@ @GLIB2_LIBS@
++Libs.private: -L@libdir@ @LIBPNG_LIBS@ @MAGICK_LIBS@ @LIBSWF_LIBS@ @LIBPSTOEDIT_LIBS@ @GLIB2_LIBS@
++Libs: -L@libdir@ -lautotrace
+ Cflags: -I@includedir@ @MAGICK_CFLAGS@ @LIBPSTOEDIT_CFLAGS@ @GLIB2_CFLAGS@

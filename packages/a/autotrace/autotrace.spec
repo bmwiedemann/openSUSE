@@ -1,7 +1,7 @@
 #
 # spec file for package autotrace
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,31 @@
 #
 
 
+%define so_ver 3
+%define sh_lib lib%{name}%{so_ver}
 Name:           autotrace
-BuildRequires:  gcc-c++
-BuildRequires:  libtool
-BuildRequires:  pstoedit-devel
+Version:        0.31.10
+Release:        0
 Summary:        Program for Converting Bitmaps to Vector Graphics
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Productivity/Graphics/Convertors
+URL:            https://github.com/autotrace/autotrace
+Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM autotrace-pkgconfig-private-libs.patch gh#autotrace/autotrace#124 badshah400@gmail.com -- [pkgconfig] Move some libraries to Libs.private
+Patch0:         https://github.com/autotrace/autotrace/commit/eeeb813a416ff309804f6833729fab20d036e667.patch#/autotrace-pkgconfig-private-libs.patch
+# PATCH-FIX-UPSTREAM autotrace-ac_subst-magick-vars.patch gh#autotrace/autotrace#160 badshah400@gmail.com -- Fix unexpanded MAGICK_* variables in pkgconfig file
+Patch1:         autotrace-ac_subst-magick-vars.patch
+BuildRequires:  gcc-c++
+BuildRequires:  intltool
+BuildRequires:  libtool
+BuildRequires:  pkgconfig
+# Tests need pkill
+BuildRequires:  procps
+BuildRequires:  pkgconfig(ImageMagick)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gmodule-2.0)
+BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(pstoedit)
 Provides:       bitmap_tracing
-Version:        0.31.1
-Release:        0
-Source:         %{name}-%{version}.tar.bz2
-Source1:        pstoedit.m4
-Patch0:         %{name}-%{version}-quotefix.diff
-# PATCH-FIX-OPENSUSE 0001-fix_input_png.patch sfalken@opensuse.org -- fixes build failure against libpng15
-Patch1:         0001-fix_input_png.patch
-# PATCH-FIX-SECURITY CVE-2019-19004.patch bsc1182158 CVE-2019-19004 -- biWidth*biBitCnt integer overflow fix
-Patch2:         CVE-2019-19004.patch
-# PATCH-FIX-SECURITY CVE-2019-19005.patch bsc1182159 CVE-2019-19005 CVE-2017-9182, CVE-2017-9190 -- bitmap double free fix
-Patch3:         CVE-2019-19005.patch
-# PATCH-FIX-SECURITY CVE-2022-32323.patch bsc1201529 -- Heap overflow
-Patch4:         CVE-2022-32323.patch
-URL:            http://autotrace.sourceforge.net/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ImageMagick-devel
-# FIXME: Broken with the latest pstoedit. See Fedora patches for partial fix.
-#BuildConflicts: pstoedit-devel
 
 %description
 AutoTrace is a program for converting bitmaps to vector graphics. The
@@ -51,11 +50,11 @@ it is already better. Originally created as a plug-in for the GIMP,
 AutoTrace is now a stand-alone program and can be compiled on any UNIX
 platform using GCC.
 
-%package -n libautotrace3
+%package -n %{sh_lib}
 Summary:        Library for converting bitmaps to vector graphics
 Group:          System/Libraries
 
-%description -n libautotrace3
+%description -n %{sh_lib}
 AutoTrace is a program for converting bitmaps to vector graphics. The
 aim of the AutoTrace project is the development of a freely-available
 application similar to CorelTrace or Adobe Streamline. In some aspects,
@@ -64,10 +63,15 @@ AutoTrace is now a stand-alone program and can be compiled on any UNIX
 platform using GCC.
 
 %package devel
-
 Summary:        Library for converting bitmaps to vector graphics
 Group:          Development/Libraries/C and C++
-Requires:       libautotrace3 = %{version}
+Requires:       %{sh_lib} = %{version}
+Requires:       pkgconfig
+Requires:       pkgconfig(ImageMagick)
+Requires:       pkgconfig(glib-2.0)
+Requires:       pkgconfig(gmodule-2.0)
+Requires:       pkgconfig(gobject-2.0)
+Requires:       pkgconfig(pstoedit)
 
 %description devel
 AutoTrace is a program for converting bitmaps to vector graphics. The
@@ -77,47 +81,45 @@ it is already better. Originally created as a plug-in for the GIMP,
 AutoTrace is now a stand-alone program and can be compiled on any UNIX
 platform using GCC.
 
+%lang_package
+
 %prep
-%setup -q
-%patch -P 0
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
+%autosetup -p1
 
 %build
-export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -fno-tree-sra"
-cat %{SOURCE1} >>acinclude.m4
-autoreconf -f -i
-%configure\
-	--disable-static
-%{__make} %{?jobs:-j%jobs}
+./autogen.sh
+%configure \
+  --enable-magick-readers \
+  --disable-static \
+  %{nil}
+%make_build
 
 %install
 %make_install
-%{__rm} -f %{buildroot}%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
+%find_lang %{name} %{?no_lang_C}
 
-%post -n libautotrace3 -p /sbin/ldconfig
+%check
+%make_build check
 
-%postun -n libautotrace3 -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{sh_lib}
 
 %files
-%defattr(-, root, root)
-%doc AUTHORS COPYING FAQ NEWS README README.MING THANKS TODO
+%license COPYING
+%doc AUTHORS FAQ NEWS README.md THANKS TODO
 %{_bindir}/autotrace
-%{_mandir}/man1/autotrace.1*
+%{_mandir}/man1/autotrace.1%{?ext_man}
 
-%files -n libautotrace3
-%defattr(-, root, root)
-%doc COPYING.LIB
+%files -n %{sh_lib}
+%license COPYING.LIB
 %{_libdir}/*.so.*
 
 %files devel
-%defattr(-, root, root)
-%{_bindir}/*-config
-%{_datadir}/aclocal/*.m4
+%license COPYING.LIB COPYING
 %{_includedir}/autotrace
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
+
+%files lang -f %{name}.lang
 
 %changelog

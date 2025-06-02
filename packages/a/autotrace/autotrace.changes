@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jun  1 14:22:54 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.31.10:
+  * ImageMagick 7 support (gh#autotrace/autotrace#105,
+    gh#autotrace/autotrace#106).
+  * HKUST CVEs addressed (gh#autotrace/autotrace#110).
+- Drop upstreamed or otherwise unnecessary patches:
+  * autotrace-0.31.1-quotefix.diff (autotrace.m4 dropped, commit
+    64823fa).
+  * 0001-fix_input_png.patch (commit 70b315a).
+  * CVE-2019-19004.patch (commit 64c5833).
+  * CVE-2019-19005.patch (commit 268aee4).
+  * CVE-2022-32323.patch (comimt aaf410d).
+- Add autotrace-pkgconfig-private-libs.patch: [pkgconfig] Move
+  some libraries to Libs.private (gh#autotrace/autotrace#124).
+- Add autotrace-ac_subst-magick-vars.patch: Fix unexpanded
+  MAGICK_* automake variables in pkgconfig file
+  (gh#autotrace/autotrace#160).
+- Drop additional pstoedit.m4 file source as not needed any more.
+- Use full URL for Source0.
+- Split off separate lang package.
+- Run tests as part of %check section; add BuildRequires: procps
+  for pkill command used in some tests.
+- Specfile cleanups.
+
+-------------------------------------------------------------------
 Tue Feb 20 10:45:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
