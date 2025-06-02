@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  2 11:23:04 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducibledocs.patch and reproducibletar.patch
+  to make package build reproducible
+
+-------------------------------------------------------------------
 Wed May 28 15:49:58 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Update to 5.62

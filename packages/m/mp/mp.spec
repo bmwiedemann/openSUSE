@@ -26,6 +26,7 @@ Source0:        https://github.com/ttcdt/mp-5.x/archive/refs/tags/%{version}.tar
 Source5:        %{name}-rpmlintrc
 Source101:      https://triptico.com/download/grutatxt.tar.gz
 Source102:      https://triptico.com/download/mp_doccer-1.2.2.tar.gz
+Source103:      reproducibledocs.patch
 Patch2:         mp-5.62-releasenotes.patch
 Patch3:         mp-5.62-installdirs.patch
 Patch4:         mp-5.62-config-msgfmt.patch
@@ -34,6 +35,7 @@ Patch6:         mp-5.62-mpsl-make-quickref.patch
 Patch7:         mp-5.62-config-qt6.patch
 Patch8:         mp-5.62-qt6-isnull.patch
 Patch9:         mp-5.62-qt6-weight.patch
+Patch10:        reproducibletar.patch
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
@@ -110,6 +112,7 @@ cd ..
 cd ..
 mv helpers/Grutatxt*/{Grutatxt.pm,grutatxt} helpers/mp_doccer*/mp_doccer helpers
 sed -e "s:use lib '.':use lib '%{_builddir}/helpers':" -i helpers/grutatxt
+patch -p1 < %{S:103}
 
 %autosetup -p1 -n mp-5.x-%{version}
 

@@ -1,0 +1,35 @@
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Date: 2025-06-02
+
+Patch Grutatxt to not add varying timestamps
+into .html files and man-pages, if $SOURCE_DATE_EPOCH is set
+so that we can have reproducible-builds.
+
+This patch was done while working on reproducible builds for openSUSE.
+
+diff --git a/grutatxt b/grutatxt
+index 78e4327..6a68dcf 100755
+--- a/grutatxt
++++ b/helpers/grutatxt
+@@ -167,7 +167,7 @@ unless ($no_body) {
+     print O "<title>$title</title>\n";
+ 
+     printf O "<!-- converted from text by grutatxt $VERSION on %s -->\n", scalar(localtime)
+-        unless $no_time_sig;
++        unless $no_time_sig or $ENV{SOURCE_DATE_EPOCH};
+ 
+     if ($css) {
+         if ($embed_css) {
+diff --git a/Grutatxt.pm b/Grutatxt.pm
+index cc0834d..7352fdd 100644
+--- a/Grutatxt.pm
++++ b/helpers/Grutatxt.pm
+@@ -1426,7 +1426,7 @@ sub _prefix
+ {
+     my ($gh) = @_;
+ 
+-    $gh->_push(".TH \"$gh->{'page-name'}\" \"$gh->{'section'}\" \"" . localtime() . "\"");
++    $gh->_push(".TH \"$gh->{'page-name'}\" \"$gh->{'section'}\" \"" . localtime($ENV{SOURCE_DATE_EPOCH} || time) . "\"");
+ }
+ 
+ 

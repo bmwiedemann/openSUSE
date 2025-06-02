@@ -1,0 +1,29 @@
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Date: 2025-06-02
+
+Make tar-file creation fully deterministic
+using the snippet from
+https://reproducible-builds.org/docs/archives/
+
+note: will fail if SOURCE_DATE_EPOCH is not set.
+If mtime does not matter, we can use '1' there instead.
+
+This patch was done while working on reproducible builds for openSUSE.
+
+diff --git a/makefile.in b/makefile.in
+index 8ee95fd..289f849 100644
+--- a/makefile.in
++++ b/makefile.in
+@@ -37,7 +37,11 @@ dep:
+ 			-e 's;$(MPSL)/;$$(MPSL)/;g' > makefile.depend
+ 
+ mp.tar: $(ARCHFILES)
+-	$(TAR) cvf $@ $(ARCHFILES)
++	$(TAR) --sort=name \
++	  --mtime="@${SOURCE_DATE_EPOCH}" \
++	  --owner=0 --group=0 --numeric-owner \
++	  --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
++	  -cvf $@ $(ARCHFILES)
+ 
+ mp.tar.o: mp.tar
+ 	$(LD) -r -b binary mp.tar -o $@
