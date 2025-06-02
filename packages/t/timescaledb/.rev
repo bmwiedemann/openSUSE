@@ -371,4 +371,13 @@
   https://github.com/timescale/timescaledb/releases/tag/2.20.0</comment>
     <requestid>1280645</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1e11e89408ac702f36fd123a39f699bf</srcmd5>
+    <version>2.20.2</version>
+    <time>1748894485</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.20.2
+  https://github.com/timescale/timescaledb/releases/tag/2.20.2</comment>
+    <requestid>1281943</requestid>
+  </revision>
 </revisionlist>
