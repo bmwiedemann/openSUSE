@@ -7,4 +7,12 @@
     <comment>noiseprotocol implemantation in Python3 , new dependency of magic-wormhole</comment>
     <requestid>1112223</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>627661cc6241f8f983935ac6d9d8ce7b</srcmd5>
+    <version>0.3.1</version>
+    <time>1748894493</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1281968</requestid>
+  </revision>
 </revisionlist>

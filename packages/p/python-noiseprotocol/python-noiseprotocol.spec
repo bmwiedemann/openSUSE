@@ -1,7 +1,7 @@
 #
 # spec file for package python-noiseprotocol
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,14 @@ Release:        0
 Summary:        Implementation of Noise Protocol Framework
 License:        MIT
 URL:            https://github.com/plizonczyk/noiseprotocol
-Source:         https://github.com/plizonczyk/noiseprotocol/archive/refs/tags/v0.3.1.tar.gz#/noiseprotocol-%{version}.tar.gz 
-BuildRequires:  python-rpm-macros
+Source:         https://github.com/plizonczyk/noiseprotocol/archive/refs/tags/v0.3.1.tar.gz#/noiseprotocol-%{version}.tar.gz
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-cryptography
 BuildArch:      noarch
 %python_subpackages
@@ -39,10 +41,10 @@ A Python 3 implementation of Noise Protocol Framework. Compatible with revisions
 %setup -q -n noiseprotocol-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
