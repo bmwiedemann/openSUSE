@@ -3543,6 +3543,7 @@ unsorted:
   - ebizzy 
   - eblook 
   - ebook-tools 
+  - ebtables 
   - ebumeter 
   - echomixer 
   - ecj 
@@ -12509,10 +12510,9 @@ unsorted:
   - libcomps-devel 
   - libcomps-doc 
   - libcomps0 
-  - libconfig++-devel 
-  - libconfig++11-32bit 
+  - libconfig++15-32bit 
   - libconfig-devel 
-  - libconfig11-32bit 
+  - libconfig15-32bit 
   - libconfini-devel 
   - libconfini0 
   - libconfuse-devel 
@@ -12808,6 +12808,7 @@ unsorted:
   - libeantic3 
   - libeb16 
   - libebml-devel 
+  - libebtc0 
   - libebur128-1-32bit 
   - libebur128-devel 
   - libecap-devel 
@@ -15800,7 +15801,7 @@ unsorted:
   - librsb0 
   - librseq-devel 
   - librseq0 
-  - librssguard-4_8_3 
+  - librssguard-4_8_5 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -16623,6 +16624,7 @@ unsorted:
   - libvirt-daemon 
   - libvirt-daemon-config-nwfilter 
   - libvirt-daemon-driver-lxc 
+  - libvirt-daemon-driver-nwfilter 
   - libvirt-daemon-driver-storage-gluster 
   - libvirt-daemon-hooks 
   - libvirt-daemon-lxc 
@@ -16866,18 +16868,6 @@ unsorted:
   - libwx_gtk3u_webview-suse16_0_0 
   - libwx_gtk3u_xrc-suse-nostl16_0_0 
   - libwx_gtk3u_xrc-suse16_0_0 
-  - libwx_qtu_adv-suse16_0_0 
-  - libwx_qtu_aui-suse16_0_0 
-  - libwx_qtu_core-suse16_0_0 
-  - libwx_qtu_gl-suse16_0_0 
-  - libwx_qtu_html-suse16_0_0 
-  - libwx_qtu_media-suse16_0_0 
-  - libwx_qtu_propgrid-suse16_0_0 
-  - libwx_qtu_qa-suse16_0_0 
-  - libwx_qtu_ribbon-suse16_0_0 
-  - libwx_qtu_richtext-suse16_0_0 
-  - libwx_qtu_stc-suse16_0_0 
-  - libwx_qtu_xrc-suse16_0_0 
   - libwxcode_gtk2u_wxsqlite3-3_2-0 
   - libwxlua 
   - libwxlua-wx32-3_1_0_0 
@@ -48106,6 +48096,7 @@ unsorted:
   - unshield 
   - unshield-devel 
   - unzip-rcc 
+  - unzip-rcc-doc 
   - unzix 
   - uom-lib 
   - uom-lib-assertj 
@@ -48804,7 +48795,6 @@ unsorted:
   - wxGTK3-3_2-devel 
   - wxMaxima 
   - wxMaxima-lang 
-  - wxQt-3_2-devel 
   - wxWidgets-3_2-devel 
   - wxWidgets-3_2-doc-html 
   - wxWidgets-3_2-doc-xml 
