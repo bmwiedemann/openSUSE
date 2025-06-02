@@ -1,7 +1,7 @@
 #
 # spec file for package python-opencensus-context
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,10 +48,10 @@ contextvars is used for Python >= 3.6, which provides asyncio support.
 touch tests/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{python_expand # delete common files
 rm -rf %{buildroot}%{$python_sitelib}/opencensus/__init__.*
