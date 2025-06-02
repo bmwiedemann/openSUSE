@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 02 05:30:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.4:
+  * [StepSecurity] Apply security best practices (#2019)
+  * fix: handle CACHEDIR properly (#2021)
+  * Add rust-src directories to ignoredPaths (#2017)
+
+-------------------------------------------------------------------
 Sat May 31 06:29:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.3:
