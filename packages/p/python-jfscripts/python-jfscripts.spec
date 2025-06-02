@@ -1,7 +1,7 @@
 #
 # spec file for package python-jfscripts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-jfscripts
 Version:        1.1.0
 Release:        0
@@ -27,15 +25,16 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Josef-Friedrich/python-scripts
 Source:         https://files.pythonhosted.org/packages/source/j/jfscripts/jfscripts-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyPDF2
-Requires:       python-sphinx-argparse
 Requires:       python-termcolor
+Requires:       python-typing-extensions
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -53,15 +52,15 @@ A collection of various tools written by Josef Friedrich
 find jfscripts/ -name "*.py" -exec sed -i 's|#! %{_bindir}/env python3|#!%{_bindir}/python3|g' {} \;
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand find %{buildroot}/%{$python_sitelib}/jfscripts/ -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} \;
 %python_expand cd %{buildroot}%{_bindir} && find . -name "*.py" -exec sh -c 'mv $0 `basename "$0" .py`' '{}' \;
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 rm -f %{buildroot}%{_bindir}/_current_flavor
-# Prepare for update-alternatives usage
+# Prepare for alts usage
 for p in dns-ipv6-prefix extract-pdftext find-dupes-by-size image-into-pdf \
     list-files mac-to-eui64 pdf-compress ; do
     %python_clone -a %{buildroot}%{_bindir}/$p
