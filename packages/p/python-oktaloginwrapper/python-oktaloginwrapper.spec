@@ -1,7 +1,7 @@
 #
 # spec file for package python-oktaloginwrapper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-oktaloginwrapper
 Version:        0.2.2
 Release:        0
@@ -25,7 +24,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/eliroca/OktaLoginWrapper
 Source:         https://github.com/eliroca/OktaLoginWrapper/archive/%{version}.tar.gz#/OktaLoginWrapper-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml
@@ -41,13 +42,14 @@ an Okta SSO solution, without the need for an API token.
 %autosetup -n OktaLoginWrapper-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/oktaloginwrapper
+%{python_sitelib}/oktaloginwrapper-%{version}*-info
 
 %changelog
