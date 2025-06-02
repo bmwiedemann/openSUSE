@@ -25,6 +25,8 @@ URL:            https://github.com/OpenVPN/ovpn-dco
 Source:         ovpn-dco-%{version}.tar.gz
 Source1:        ovpn-dco-preamble
 Patch0:         do-not-redefine-symbols-when-they-are-upstream.patch
+Patch1:         use-new-timer-api.patch
+Patch2:         6.15-newlink-proto.patch
 BuildRequires:  %kernel_module_package_buildreqs
 
 # Releases prior to 15.2 don't have a new enough kernel

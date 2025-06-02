@@ -1,0 +1,27 @@
+---
+ drivers/net/ovpn-dco/main.c |   10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+--- a/drivers/net/ovpn-dco/main.c
++++ b/drivers/net/ovpn-dco/main.c
+@@ -163,10 +163,20 @@ static const struct nla_policy ovpn_poli
+ 					    __OVPN_MODE_AFTER_LAST - 1),
+ };
+ 
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0)
++static int ovpn_newlink(struct net_device *dev,
++			struct rtnl_newlink_params *params,
++			struct netlink_ext_ack *extack)
++#else
+ static int ovpn_newlink(struct net *src_net, struct net_device *dev, struct nlattr *tb[],
+ 			struct nlattr *data[], struct netlink_ext_ack *extack)
++#endif
+ {
+ 	struct ovpn_struct *ovpn = netdev_priv(dev);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0)
++	struct nlattr **data = params->data;
++#endif
+ 	int ret;
+ 
+ 	ret = security_tun_dev_create();

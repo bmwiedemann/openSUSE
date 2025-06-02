@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 28 16:20:41 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- add patches for 6.15
+  * use-new-timer-api.patch
+  * 6.15-newlink-proto.patch
+
+-------------------------------------------------------------------
 Thu Mar 20 07:21:34 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - add: do-not-redefine-symbols-when-they-are-upstream.patch
