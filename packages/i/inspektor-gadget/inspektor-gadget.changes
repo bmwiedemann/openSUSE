@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Mon Jun 02 15:48:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.41.0:
+  Welcome to the v0.41.0 release of Inspektor Gadget!
+  * The most relevant changes in this release are:
+    - gadgets: port profile_cpu to image based gadget by @flyth in
+      #4142
+    - Add advise_networkpolicy as image based gadget by @burak-ok
+      in #4191
+    - introduce process operator and top_process gadget by @flyth
+      in #4446
+  * General Improvements
+    - Artifact Hub: Update gadgets version to v0.40.0 by
+      @github-actions in #4427
+    - Adding the path for gadget to find the runc of k0s in
+      finder.go by @entlein in #4419
+    - maintainers: Add Maya by @mauriciovasquezbernal in #4435
+    - Always print warnings when compiling gadget by @AdvH039 in
+      #4434
+    - Adding runc path of Bottlerocket OS by @amirmalka in #4448
+    - version: detect when IG is used as a library by @alban in
+      #4431
+    - Give error when incorrect build by @AdvH039 in #4376
+    - trace_dns: Add nameserver field by @mqasimsarfraz in #4440
+    - Port syscall filtering by @AdvH039 in #4418
+    - gadgets/bpfstats: Do not require --enable-bpfstats by
+      @mauriciovasquezbernal in #4438
+    - chart: Adding runtimeClassName to the daemonSet by @etiennnr
+      in #4394
+    - user_stack_map.h: fix compilation warnings by @alban in #4457
+    - Fix compilation warnings in some gadgets by @eiffel-fl in
+      #4465
+    - operators: ebpf: Use Info() for --trace-pipe. by @eiffel-fl
+      in #4466
+    - gadgets/bpfstats: Add comm, pid and progtype fields by
+      @mauriciovasquezbernal in #4442
+    - cmd: Specify run and attach short help for the needed gadget.
+      by @eiffel-fl in #4470
+    - k8s.io/client-go: add user agent by @alban in #4469
+    - inspect: improves utility and command ux by @KapilSareen in
+      #4373
+    - operators: wasm: Fix error message for config test. by
+      @eiffel-fl in #4484
+    - inspect: adds datasources and fields by @KapilSareen in #4473
+    - container-collection: publish oci config as a string by
+      @alban in #4482
+    - inspect: fixes inconsistent sorting of datasources by
+      @KapilSareen in #4491
+    - deploy: Update prometheus annotation according to
+      --otel-metrics-listen-address by @ghinks in #4474
+    - Refactor configmapstore to accept namespace as a parameter by
+      @dhruv695-sketch in #4479
+    - GadgetContext: Close local operators after remote operators
+      are all closed by @burak-ok in #4396
+    - combiner: Disable timeout if interval and count is zero by
+      @burak-ok in #4493
+    - pkg/params: allow escaping comma characters for string slices
+      by @flyth in #4501
+    - operator/combiner: Move DS creation to Instantiate by
+      @burak-ok in #4492
+    - ig, ig-k8s: ensure that $NODE_NAME is set by @alban in #4518
+    - ig: add --kubeconfig option for --enrich-with-k8s-apiserver
+      by @alban in #4516
+    - container-collection: improve error messages by @alban in
+      #4521
+    - introduce internal metrics by @flyth in #4462
+    - metadata: Continue validation w/o ebpf layer by
+      @mqasimsarfraz in #4505
+    - container-collection/k8s: Set PodLabels with the method by
+      @burak-ok in #4523
+    - built-in/trace_exec: Add parent_exepath by
+      @mauriciovasquezbernal in #4524
+    - wasmapi/go: define constants for "containers" datasource by
+      @alban in #4531
+    - gadgets: Fix ebpf compilation warnings by @burak-ok in #4533
+    - container-collection: Handle OciConfig for initial containers
+      by @mqasimsarfraz in #4520
+    - daemonset: add startup probe by @alban in #4535
+    - oci: Avoid using internet to get gadget signature by
+      @mauriciovasquezbernal in #4526
+  * Bug Fixes
+    - Fix: Add global replacement of underscores in
+      check-artifacthub workflow by @4rivappa in #4480
+  * Documentation Improvements
+    - gadget: traceloop: Remove limitations from documentation as
+      it is no … by @eiffel-fl in #4432
+    - pkg/operators/filter: Update documentation to include
+      negative regex by @blanquicet in #4433
+    - Document filter quoting by @johananl in #4400
+    - docs: Add extra information regarding commit history by
+      @mauriciovasquezbernal in #4486
+    - docs: Fix softlink for advise_networkpolicy by
+      @mauriciovasquezbernal in #4538
+    - docs/kubectl-debug: Fix running with
+      --enrich-with-k8s-apiserver by @mqasimsarfraz in #4539
+    - docs/reference/export-metrics: Fix typo by @blanquicet in
+      #4542
+  * Testing and Continue Integration
+    - ci: Remove unit tests from integration test needs. by
+      @eiffel-fl in #4430
+    - pkg/kallsyms: re-enable test for kernel module symbol by
+      @alban in #4429
+    - Unit Tests for Trace Exec Gadget by @Shaheer-Ahmd in #4348
+    - ci: Enable cache for building helper images by
+      @mauriciovasquezbernal in #4447
+    - ci: Fix storing test reports by @mqasimsarfraz in #4463
+    - docs: Fix OCI helm chart URL by @mqasimsarfraz in #4460
+    - Update fields in filter examples by @johananl in #4401
+    - Add Trace Bind Unit Tetsts by @Shaheer-Ahmd in #4413
+    - Unit Tests for Trace Capabilities Gadget by @Shaheer-Ahmd in
+      #4403
+    - testing: Add WithOutputMode by @burak-ok in #4497
+    - ci: Improve gadget building time by @mauriciovasquezbernal in
+      #4471
+    - bpfstats/unittest: Set values to normalized values by
+      @burak-ok in #4509
+    - ci: Fix key calculation for gadget-builder-image cache by
+      @mauriciovasquezbernal in #4513
+    - Add unit tests for trace_signal by @Shaheer-Ahmd in #4453
+    - gha:Remove update website trigger by @burak-ok in #4534
+
+-------------------------------------------------------------------
 Tue May 06 05:04:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.40.0:
