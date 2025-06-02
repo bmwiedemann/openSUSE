@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 08:48:06 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri Feb 26 04:11:20 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop ifpython3 guard for the Provides for md2workflow 

@@ -83,4 +83,13 @@
     <comment>- Drop ifpython3 guard for the Provides for md2workflow</comment>
     <requestid>875251</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>c41f5dfb8a20502d1a35078f41bc1261</srcmd5>
+    <version>1.4.18</version>
+    <time>1748894428</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build
+</comment>
+    <requestid>1281825</requestid>
+  </revision>
 </revisionlist>

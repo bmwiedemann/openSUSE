@@ -1,7 +1,7 @@
 #
 # spec file for package python-md2workflow
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-md2workflow
 Version:        1.4.18
 Release:        0
@@ -31,17 +30,19 @@ Source3:        suse-devel.conf
 Source6:        opensuse-prod.conf
 BuildRequires:  %{python_module icalendar}
 BuildRequires:  %{python_module jira}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-redmine}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-icalendar
 Requires:       python-md2workflow-common
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-BuildArch:      noarch
+Requires(post): alts
+Requires(postun): alts
 Provides:       md2workfow = %{version}
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -83,13 +84,13 @@ cp %{_sourcedir}/{suse-prod,suse-devel,opensuse-prod}.conf  config/
 cp %{_sourcedir}/LICENSE LICENSE
 
 %build
-%python_build
+%pyproject_wheel
 
 %check
 %pytest
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/md2workflow
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 ln -s -f %{_datadir}/md2workflow/config %{buildroot}%{_sysconfdir}/md2workflow
@@ -114,7 +115,7 @@ ln -s -f %{_datadir}/md2workflow/config %{buildroot}%{_sysconfdir}/md2workflow
 %{python_sitelib}/md2workflow/backend/*.py*
 %dir %{python_sitelib}/md2workflow/validation
 %{python_sitelib}/md2workflow/validation/*.py*
-%{python_sitelib}/md2workflow*.egg-info
+%{python_sitelib}/md2workflow-%{version}*-info
 
 %files %{python_files plugins-jira}
 %dir %{python_sitelib}/md2workflow/backend/jirabackend
