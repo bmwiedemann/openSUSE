@@ -1,7 +1,7 @@
 #
 # spec file for package python-mkdocs-bootstrap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,9 @@ License:        BSD-2-Clause
 URL:            https://mkdocs.github.io/mkdocs-bootstrap/
 Source:         https://files.pythonhosted.org/packages/source/m/mkdocs-bootstrap/mkdocs-bootstrap-%{version}.tar.gz
 BuildRequires:  %{python_module mkdocs >= 1.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mkdocs >= 1.1
@@ -38,10 +40,10 @@ Bootstrap theme for MkDocs
 %setup -q -n mkdocs-bootstrap-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
