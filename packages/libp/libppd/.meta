@@ -1,0 +1,15 @@
+<package name="libppd" project="openSUSE:Factory">
+  <title>OpenPrinting libppd is a legacy support library for PPD files</title>
+  <description>This package libppd provides the libppd library,
+the legacy support library for PPD files, 
+which is by 95% code overtaken from CUPS 2.x,
+only what is needed to handle PPD files
+(and also *.drv PPD generator files)
+for retro-fitting legacy printer drivers.
+As libppd is only for legacy PPD file support
+no new features will be add to it.
+The package libppd2 provides the actual libppd 2.x version library.
+Both libppd and libppd2 are required by cups-filters2.
+The sub-package libppd- provides development files for libppd.</description>
+  <url>https://github.com/OpenPrinting/libppd</url>
+</package>
