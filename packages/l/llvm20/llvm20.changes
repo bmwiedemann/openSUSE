@@ -1,19 +1,4 @@
 -------------------------------------------------------------------
-Fri May 30 13:09:52 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
-
-- Update to version 20.1.6.
-  * This release contains bug-fixes for the LLVM 20.1.0 release.
-    This release is API and ABI compatible with 20.1.0.
-- Rebase llvm-do-not-install-static-libraries.patch.
-- Remove obsolete llvm-fix-hexagon-test.patch.
-
--------------------------------------------------------------------
-Mon May 26 08:06:27 UTC 2025 - Richard Biener <rguenther@suse.com>
-
-- Use generic python3 for SLES 16 as python 3.11 is dropped there.
-  [bsc#1243630]
-
--------------------------------------------------------------------
 Sun May 18 12:00:54 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 20.1.5.
