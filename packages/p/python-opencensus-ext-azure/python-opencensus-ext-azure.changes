@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 15:01:34 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Thu Feb  6 12:38:45 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Refresh opencensus-pr1002-remove-mock.patch with latest code

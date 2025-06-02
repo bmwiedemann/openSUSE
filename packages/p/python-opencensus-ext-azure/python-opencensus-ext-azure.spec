@@ -17,7 +17,6 @@
 
 
 %define repo_version 0.11.4-1.1.14
-
 %{?sle15_python_module_pythons}
 Name:           python-opencensus-ext-azure
 Version:        1.1.14
@@ -33,17 +32,19 @@ Patch1:         python313.patch
 BuildRequires:  %{python_module azure-core >= 1.12.0}
 BuildRequires:  %{python_module azure-identity >= 1.5.0}
 BuildRequires:  %{python_module opencensus >= 0.11.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil >= 5.6.3}
 BuildRequires:  %{python_module requests >= 2.19.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 Requires:       python-azure-core >= 1.12.0
 Requires:       python-azure-identity >= 1.5.0
 Requires:       python-opencensus >= 0.11.0
 Requires:       python-psutil >= 5.6.3
 Requires:       python-requests >= 2.19.0
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -58,10 +59,10 @@ popd
 touch tests/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{python_expand # delete common files
 rm -rf %{buildroot}%{$python_sitelib}/opencensus/__init__.*
@@ -73,7 +74,7 @@ rm -rf %{buildroot}%{$python_sitelib}/opencensus/ext/__pycache__
 }
 
 %check
-%python_exec -m unittest discover -v
+%pyunittest -v
 
 %files %{python_files}
 %doc CHANGELOG.md README.rst
