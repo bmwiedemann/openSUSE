@@ -1,0 +1,11 @@
+diff -rup a/tvp-svn-helper/tsh-common.c b/tvp-svn-helper/tsh-common.c
+--- a/tvp-svn-helper/tsh-common.c	2025-05-20 16:33:43.000000000 +0200
++++ b/tvp-svn-helper/tsh-common.c	2025-05-27 17:03:29.266585586 +0200
+@@ -729,6 +729,7 @@ tsh_action_to_string(svn_wc_notify_actio
+       break;
+     default:
+       /* do nothing */
++      break;
+   }
+   return _(action_string);
+ }
