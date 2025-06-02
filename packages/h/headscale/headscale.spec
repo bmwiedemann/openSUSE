@@ -50,9 +50,12 @@ a small open-source organisation.
 %autosetup -a1 -p1
 
 %build
-go build -v -buildmode=pie -mod=vendor -tags "ts2019" -ldflags "-X github.com/juanfont/headscale/cmd/headscale/cli.Version=%{version}" ./cmd/headscale
+go build -v -buildmode=pie -mod=vendor -tags "ts2019" -ldflags "-X github.com/juanfont/headscale/hscontrol/types.Version=%{version} -X github.com/juanfont/headscale/hscontrol/types.GitCommitHash=v%{version}" ./cmd/headscale
 
 %sysusers_generate_pre %{SOURCE2} %{name} %{name}.conf
+
+%check
+./headscale version
 
 %install
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}

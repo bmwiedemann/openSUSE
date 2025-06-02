@@ -139,4 +139,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1280712</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>648a566bd9073651dfa8d40a1de0c325</srcmd5>
+    <version>0.26.0</version>
+    <time>1748894416</time>
+    <user>anag_factory</user>
+    <comment>Just wondering: couldnt we just use the 2 yaml files that come with the tarball? (forwarded request 1281640 from darix)</comment>
+    <requestid>1281788</requestid>
+  </revision>
 </revisionlist>
