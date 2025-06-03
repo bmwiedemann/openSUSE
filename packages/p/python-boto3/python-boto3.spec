@@ -17,6 +17,11 @@
 
 
 %{?sle15_python_module_pythons}
+%if 0%{suse_version} < 1600
+%define pytestjobs %{?jobs: -n %jobs}
+%else
+%define pytestjobs -n ${RPM_BUILD_NCPUS:-1}
+%endif
 Name:           python-boto3
 Version:        1.38.23
 Release:        0
@@ -79,7 +84,7 @@ http://boto3.readthedocs.org/en/latest/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest %{?jobs: -n %jobs} --ignore tests/integration -k "not no_bare_six_imports"
+%pytest %{?pytestjobs} --ignore tests/integration -k "not no_bare_six_imports"
 
 %files %{python_files}
 %license LICENSE
