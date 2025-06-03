@@ -80,4 +80,12 @@
 - Remove unneeded BuildRequires on python-python-memcached.</comment>
     <requestid>1135256</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f2a05c5f97a6c46809764960c8314719</srcmd5>
+    <version>0.10.0</version>
+    <time>1748965999</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282138</requestid>
+  </revision>
 </revisionlist>
