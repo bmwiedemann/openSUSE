@@ -826,4 +826,12 @@
     <comment>- config.sh/disk.sh: Support for new read-only-root-fs with /etc as subvolume</comment>
     <requestid>1272418</requestid>
   </revision>
+  <revision rev="91" vrev="91">
+    <srcmd5>755b273267343b01d05b983a95a19a54</srcmd5>
+    <version>16.0.0</version>
+    <time>1748965846</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1281875</requestid>
+  </revision>
 </revisionlist>
