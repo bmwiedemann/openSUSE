@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 28 13:09:40 UTC 2025 - Reinhard Max <max@suse.com>
+
+- bsc#1243565: Add clamav-freshclam_test.patch to fix a race
+  condition between the mockup servers started by different test
+  cases in freshclam_test.py.
+
+-------------------------------------------------------------------
 Mon Mar 24 11:17:03 UTC 2025 - Reinhard Max <max@suse.com>
 
 - bsc#1239957: Build with PIE.

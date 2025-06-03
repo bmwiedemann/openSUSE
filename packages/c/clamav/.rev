@@ -1308,4 +1308,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1265932</requestid>
   </revision>
+  <revision rev="133" vrev="5">
+    <srcmd5>287c51637a3c948fd20f6f81a2696e24</srcmd5>
+    <version>1.4.2</version>
+    <time>1748966116</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1243565: Add clamav-freshclam_test.patch to fix a race
+  condition between the mockup servers started by different test
+  cases in freshclam_test.py.</comment>
+    <requestid>1282251</requestid>
+  </revision>
 </revisionlist>
