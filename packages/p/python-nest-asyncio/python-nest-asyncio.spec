@@ -1,7 +1,7 @@
 #
 # spec file for package python-nest-asyncio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,9 @@ Summary:        Patch asyncio to allow nested event loops
 License:        BSD-2-Clause
 URL:            https://github.com/erdewit/nest_asyncio
 Source:         https://files.pythonhosted.org/packages/source/n/nest_asyncio/nest_asyncio-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -48,10 +50,10 @@ This module patches asyncio to allow nested use of ``asyncio.run`` and
 %setup -q -n nest_asyncio-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

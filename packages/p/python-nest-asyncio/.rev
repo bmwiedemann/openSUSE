@@ -83,4 +83,12 @@
     tasks</comment>
     <requestid>1142841</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>18be8a8a6ab358386b0aa9dc2f735cf9</srcmd5>
+    <version>1.6.0</version>
+    <time>1748965832</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1281964</requestid>
+  </revision>
 </revisionlist>
