@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 02 16:21:34 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1748615746.d50d8e24:
+  * Bump synckit from 0.11.6 to 0.11.8
+  * Bump eslint-plugin-prettier from 5.4.0 to 5.4.1
+  * Support repeated query params in filter parsing
+  * Replace deprecated ingress class annotation with ingressClassName
+  * CI: Update python version in check-helm-chart
+  * Avoid database error when more than one limit parameter is specified
+  * Use signatures in all functions of `t/ui/18-tests-details.t`
+  * Improve details of test details test
+  * Refactor search_args construction for multi-valued query parameters
+  * Allow comma-separated filtering of flavor
+  * Dependency cron 2025-05-26
+  * t: Test if flavor options from URL are carried over to the form
+  * t: Add more testing of comma-separated values
+  * t: Check URL contains single flavor
+  * Apply macro to support upcoming opensuse/sle 16 build
+
+-------------------------------------------------------------------
 Mon May 26 09:49:07 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1748004971.d2bfe8ce:
