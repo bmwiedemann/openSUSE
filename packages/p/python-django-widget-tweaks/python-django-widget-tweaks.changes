@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  3 07:03:40 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Sat Jun 27 01:28:20 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite
