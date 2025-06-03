@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Protocol-WebSocket
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,39 @@
 #
 
 
-Name:           perl-Protocol-WebSocket
-Version:        0.26
-Release:        0
 %define cpan_name Protocol-WebSocket
-Summary:        WebSocket protocol
+Name:           perl-Protocol-WebSocket
+Version:        0.260.0
+Release:        0
+# 0.26 -> normalize -> 0.260.0
+%define cpan_version 0.26
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/V/VT/VTI/%{cpan_name}-%{version}.tar.gz
+Summary:        WebSocket protocol
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/V/VT/VTI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Digest::SHA)
-BuildRequires:  perl(Module::Build::Tiny) >= 0.035
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build::Tiny) >= 0.35
 Requires:       perl(Digest::SHA)
+Provides:       perl(Protocol::WebSocket) = %{version}
+Provides:       perl(Protocol::WebSocket::Client)
+Provides:       perl(Protocol::WebSocket::Cookie)
+Provides:       perl(Protocol::WebSocket::Cookie::Request)
+Provides:       perl(Protocol::WebSocket::Cookie::Response)
+Provides:       perl(Protocol::WebSocket::Frame)
+Provides:       perl(Protocol::WebSocket::Handshake)
+Provides:       perl(Protocol::WebSocket::Handshake::Client)
+Provides:       perl(Protocol::WebSocket::Handshake::Server)
+Provides:       perl(Protocol::WebSocket::Message)
+Provides:       perl(Protocol::WebSocket::Request)
+Provides:       perl(Protocol::WebSocket::Response)
+Provides:       perl(Protocol::WebSocket::Stateful)
+Provides:       perl(Protocol::WebSocket::URL)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -55,8 +71,9 @@ Protocol::WebSocket itself does not contain any code and cannot be used
 directly. Instead the following modules should be used:
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Build.PL --installdirs=vendor
@@ -70,8 +87,7 @@ perl Build.PL --installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes examples minil.toml README.md util
+%doc Changes examples README.md util
 %license LICENSE
 
 %changelog
