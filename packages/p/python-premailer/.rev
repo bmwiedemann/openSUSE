@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1008169</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2d64d81d7821bdcf05ddcc3d9bb13741</srcmd5>
+    <version>3.10.0</version>
+    <time>1748966178</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282301</requestid>
+  </revision>
 </revisionlist>

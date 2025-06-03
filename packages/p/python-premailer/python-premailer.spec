@@ -1,7 +1,7 @@
 #
 # spec file for package python-premailer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-premailer
 Version:        3.10.0
 Release:        0
-License:        Python-2.0
 Summary:        Turns CSS blocks into style attributes
-URL:            https://premailer.io
+License:        Python-2.0
 Group:          Development/Languages/Python
+URL:            https://premailer.io
 Source:         https://files.pythonhosted.org/packages/source/p/premailer/premailer-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cachetools
@@ -35,7 +36,6 @@ Requires:       python-cssutils
 Requires:       python-lxml
 Requires:       python-requests
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -48,10 +48,10 @@ attributes in instead.
 %setup -q -n premailer-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # THERE ARE NO TESTS TO RUN, SO NO %%check SECTION
@@ -59,6 +59,7 @@ attributes in instead.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/premailer
+%{python_sitelib}/premailer-%{version}*-info
 
 %changelog
