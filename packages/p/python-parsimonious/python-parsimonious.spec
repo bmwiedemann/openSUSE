@@ -1,7 +1,7 @@
 #
 # spec file for package python-parsimonious
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-parsimonious
 Version:        0.10.0
 Release:        0
@@ -25,9 +24,11 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/erikrose/parsimonious
 Source:         https://files.pythonhosted.org/packages/source/p/parsimonious/parsimonious-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module regex}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-regex
@@ -43,10 +44,10 @@ means you feed it a simplified sort of EBNF notation.
 %autosetup -p1 -n parsimonious-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +56,7 @@ means you feed it a simplified sort of EBNF notation.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/parsimonious
+%{python_sitelib}/parsimonious-%{version}*-info
 
 %changelog

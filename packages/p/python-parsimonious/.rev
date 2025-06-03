@@ -47,4 +47,12 @@
 - drop replace-nose.patch (upstream)</comment>
     <requestid>1070105</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ab7cbf2aa06298d4abd54837afd1ed75</srcmd5>
+    <version>0.10.0</version>
+    <time>1748966094</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282198</requestid>
+  </revision>
 </revisionlist>
