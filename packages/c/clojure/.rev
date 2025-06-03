@@ -329,4 +329,13 @@
   * Also accept file for -Sdeps, and check it for staleness</comment>
     <requestid>1269300</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b99dba16a56cabdf26f0f9f12b0e4e8c</srcmd5>
+    <version>1.12.1.1538</version>
+    <time>1748965909</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.12.1.1538:
+  * No changelog provided</comment>
+    <requestid>1282048</requestid>
+  </revision>
 </revisionlist>
