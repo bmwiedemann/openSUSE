@@ -312,4 +312,12 @@
     <comment>Add another patch + bug refs</comment>
     <requestid>1266068</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1025383ba4990d762de6dd06fe3d1821</srcmd5>
+    <version>6.0.1</version>
+    <time>1748965874</time>
+    <user>anag_factory</user>
+    <comment>Update to 6.0.1</comment>
+    <requestid>1282033</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package assimp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,38 +16,19 @@
 #
 
 
+# https://github.com/assimp/assimp/issues/6204, soversion is still 5
 %define sover 5
 Name:           assimp
-Version:        5.4.3
+Version:        6.0.1
 Release:        0
 Summary:        Library to load and process 3D scenes from various data formats
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com/assimp/assimp
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-SplitLargeMeshes-Fix-crash-5799.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-leak-5762.patch
-Patch2:         CVE-2024-48423.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         CVE-2024-48424.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         CVE-2024-53425.patch
-# Cumulative upstream changes
-Patch5:         0001-ASE-Fix-possible-out-of-bound-access.patch
-Patch6:         0001-MDL-Limit-max-texture-sizes.patch
-Patch7:         0001-MDL-Fix-overflow-check.patch
-Patch8:         CVE-2025-2151.patch
-Patch9:         0001-Bugfix-Fix-possible-nullptr-dereferencing.patch
-Patch10:        0001-Potential-use-after-free.patch
-Patch11:        0001-ASE-Use-correct-vertex-container.patch
-Patch12:        0001-CMS-Fix-possible-overflow-access.patch
-# PATCH-FIX-UPSTREAM
-Patch13:        0001-NDO-Fix-possible-overflow-access.patch
+# PATCH-FIX-UPSTREAM -- don't reject 'find_package(assimp 5)' calls
+Patch0:         0001-Accept-find_package-Assimp-5.x-calls.patch
 BuildRequires:  cmake >= 3.22
-BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
-BuildRequires:  irrlicht-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(zlib)
@@ -128,6 +109,7 @@ gtest_filter="${gtest_filter}:utMD5Importer.importBoarMan"
 gtest_filter="${gtest_filter}:utMD5Importer.importBob"
 gtest_filter="${gtest_filter}:utPMXImporter.importTest"
 gtest_filter="${gtest_filter}:utQ3BSPImportExport.importerTest"
+gtest_filter="${gtest_filter}:utX3DImportExport.importX3DChevyTahoe"
 gtest_filter="${gtest_filter}:utXImporter.importDwarf"
 
 %ifnarch x86_64
@@ -148,7 +130,7 @@ popd
 
 %files -n lib%{name}%{sover}
 %license LICENSE
-%{_libdir}/libassimp.so.%{sover}*
+%{_libdir}/libassimp.so.*
 
 %files devel
 %doc CHANGES CREDITS

@@ -1,0 +1,26 @@
+From 97f58ac8d173736ede30a952f34506c55771fe92 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Mon, 2 Jun 2025 18:02:46 +0200
+Subject: [PATCH] Accept find_package(Assimp 5.x) calls
+
+With assimp 6.0.x, the library SOVERSION is still 5 and should still be backward compatible
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7acaf7476..0c103bd7e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -502,7 +502,7 @@ set(INCLUDE_INSTALL_DIR "include")
+ include(CMakePackageConfigHelpers)
+ 
+ # Note: PROJECT_VERSION is used as a VERSION
+-write_basic_package_version_file("${VERSION_CONFIG}" COMPATIBILITY SameMajorVersion)
++write_basic_package_version_file("${VERSION_CONFIG}" COMPATIBILITY AnyNewerVersion)
+ 
+ configure_package_config_file(
+     ${CMAKE_CONFIG_TEMPLATE_FILE}
+-- 
+2.49.0
+
