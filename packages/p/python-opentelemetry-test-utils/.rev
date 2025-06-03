@@ -88,4 +88,12 @@
     * Bump semantic conventions to 1.33.0</comment>
     <requestid>1280591</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d91aee468727a5689cb7e09a815b9fe1</srcmd5>
+    <version>0.54b1</version>
+    <time>1748965815</time>
+    <user>anag_factory</user>
+    <comment>- Add missing requirement on opentelemetry-sdk.</comment>
+    <requestid>1281747</requestid>
+  </revision>
 </revisionlist>

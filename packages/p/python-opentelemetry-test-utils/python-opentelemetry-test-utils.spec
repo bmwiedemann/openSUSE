@@ -32,6 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-asgiref
 Requires:       python-opentelemetry-api == 1.33.1
+Requires:       python-opentelemetry-sdk == 1.33.1
 BuildArch:      noarch
 %python_subpackages
 

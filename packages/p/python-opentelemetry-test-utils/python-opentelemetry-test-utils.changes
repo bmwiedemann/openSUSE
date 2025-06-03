@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 06:07:36 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing requirement on opentelemetry-sdk.
+
+-------------------------------------------------------------------
 Mon May 26 07:43:10 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.54b1
