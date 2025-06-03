@@ -63,4 +63,13 @@
     error.</comment>
     <requestid>1082315</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e0b32031ebaaa5d2e68a0e1e027f67cf</srcmd5>
+    <version>1.11</version>
+    <time>1748965963</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1282112</requestid>
+  </revision>
 </revisionlist>
