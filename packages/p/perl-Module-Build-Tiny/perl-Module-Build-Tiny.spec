@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-Build-Tiny
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Module-Build-Tiny
 Name:           perl-Module-Build-Tiny
-Version:        0.51.0
+Version:        0.52.0
 Release:        0
-# 0.051 -> normalize -> 0.51.0
-%define cpan_version 0.051
+# 0.052 -> normalize -> 0.52.0
+%define cpan_version 0.052
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tiny replacement for Module::Build
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -31,9 +31,9 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN::Meta)
 BuildRequires:  perl(ExtUtils::CBuilder)
-BuildRequires:  perl(ExtUtils::Config) >= 0.003
-BuildRequires:  perl(ExtUtils::Helpers) >= 0.020
-BuildRequires:  perl(ExtUtils::InstallPaths) >= 0.002
+BuildRequires:  perl(ExtUtils::Config) >= 0.3
+BuildRequires:  perl(ExtUtils::Helpers) >= 0.20
+BuildRequires:  perl(ExtUtils::InstallPaths) >= 0.2
 BuildRequires:  perl(ExtUtils::ParseXS)
 BuildRequires:  perl(Getopt::Long) >= 2.36
 BuildRequires:  perl(JSON::PP) >= 2
@@ -42,9 +42,9 @@ BuildRequires:  perl(TAP::Harness::Env)
 BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(CPAN::Meta)
 Requires:       perl(ExtUtils::CBuilder)
-Requires:       perl(ExtUtils::Config) >= 0.003
-Requires:       perl(ExtUtils::Helpers) >= 0.020
-Requires:       perl(ExtUtils::InstallPaths) >= 0.002
+Requires:       perl(ExtUtils::Config) >= 0.3
+Requires:       perl(ExtUtils::Helpers) >= 0.20
+Requires:       perl(ExtUtils::InstallPaths) >= 0.2
 Requires:       perl(ExtUtils::ParseXS)
 Requires:       perl(Getopt::Long) >= 2.36
 Requires:       perl(JSON::PP) >= 2
@@ -64,7 +64,7 @@ Whereas Module::Build has over 6,700 lines of code; this module has less
 than 200, yet supports the features needed by most distributions.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor

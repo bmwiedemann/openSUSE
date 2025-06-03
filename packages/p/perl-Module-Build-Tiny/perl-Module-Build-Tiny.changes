@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 25 05:33:31 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.52.0 (0.052)
+   see /usr/share/doc/packages/perl-Module-Build-Tiny/Changes
+
+  0.052     2025-05-12 19:51:31+02:00 Europe/Brussels
+            - Add extra_compiler_flags and extra_linker_flags command line arguments
+
+-------------------------------------------------------------------
 Sat Sep  7 05:31:02 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.51.0 (0.051)

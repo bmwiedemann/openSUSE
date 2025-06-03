@@ -131,4 +131,17 @@
             - Make CPAN::Requirements::Dynamic an optional dependency (forwarded request 1203088 from tinita)</comment>
     <requestid>1204046</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c84a3327aeb9d9e69dda6d8c58841aac</srcmd5>
+    <version>0.52.0</version>
+    <time>1748965861</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1281906 from tinita
+
+- updated to 0.52.0 (0.052)
+   see /usr/share/doc/packages/perl-Module-Build-Tiny/Changes
+  0.052     2025-05-12 19:51:31+02:00 Europe/Brussels
+            - Add extra_compiler_flags and extra_linker_flags command line arguments</comment>
+    <requestid>1282005</requestid>
+  </revision>
 </revisionlist>
