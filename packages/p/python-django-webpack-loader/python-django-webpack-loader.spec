@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-webpack-loader
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-django-webpack-loader
 Version:        3.1.1
@@ -28,8 +27,10 @@ URL:            https://github.com/owais/django-webpack-loader
 Source:         https://github.com/owais/django-webpack-loader/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 1.10}
 BuildRequires:  %{python_module django-jinja}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 # tests are not currently run; transition unittest2
 #BuildRequires:  %%{python_module unittest2}
 BuildRequires:  fdupes
@@ -47,10 +48,10 @@ staticfiles or opaque wrappers.
 %setup -q -n django-webpack-loader-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,6 +64,7 @@ popd
 %files %{python_files}
 %doc README.md CHANGELOG.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/webpack_loader
+%{python_sitelib}/django_webpack_loader-%{version}.dist-info
 
 %changelog

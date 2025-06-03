@@ -149,4 +149,13 @@
   * Add support for Django 5.1</comment>
     <requestid>1198092</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>19020c25d7ed3d9d24e405b6ce098d90</srcmd5>
+    <version>3.1.1</version>
+    <time>1748966012</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1282144</requestid>
+  </revision>
 </revisionlist>
