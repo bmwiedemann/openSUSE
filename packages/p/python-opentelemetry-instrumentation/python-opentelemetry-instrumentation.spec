@@ -18,19 +18,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-instrumentation
-Version:        0.51b0
+Version:        0.54b1
 Release:        0
 Summary:        Instrumentation Tools & Auto Instrumentation for OpenTelemetry Python
 License:        Apache-2.0
-URL:            https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-instrumentation
+URL:            https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation
 Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry-instrumentation/opentelemetry_instrumentation-%{version}.tar.gz
-BuildRequires:  %{python_module packaging >= 18.0}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module opentelemetry-api >= 1.4}
-BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module opentelemetry-semantic-conventions = %{version}}
+BuildRequires:  %{python_module opentelemetry-test-utils = %{version}}
+BuildRequires:  %{python_module packaging >= 18.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wrapt >= 1.0.0}
 # /SECTION
@@ -38,6 +39,8 @@ BuildRequires:  fdupes
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Requires:       python-opentelemetry-api >= 1.4
+Requires:       python-opentelemetry-semantic-conventions = %{version}
+Requires:       python-packaging >= 18.0
 Requires:       python-wrapt >= 1.0.0
 BuildArch:      noarch
 %python_subpackages
@@ -57,9 +60,8 @@ Instrumentation Tools & Auto Instrumentation for OpenTelemetry Python
 %python_clone -a %{buildroot}%{_bindir}/opentelemetry-bootstrap
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# Tests disabled because they're not shipped with the sources
-#%%check
-#%%pytest
+%check
+%pytest
 
 %post
 %python_install_alternative opentelemetry-instrument opentelemetry-bootstrap

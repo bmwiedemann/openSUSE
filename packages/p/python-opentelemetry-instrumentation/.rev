@@ -70,4 +70,17 @@
   * semantic-conventions: Bump to 1.30.0</comment>
     <requestid>1248492</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b1c97d698d9b4c97ce1b209a1514093c</srcmd5>
+    <version>0.54b1</version>
+    <time>1748965888</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.54b1:
+  * Make auto instrumentation use the same dependency resolver as manual
+    instrumentation does
+  * make it simpler to initialize auto-instrumentation programmatically
+- Update URL.
+- Run the testsuite again.</comment>
+    <requestid>1281748</requestid>
+  </revision>
 </revisionlist>
