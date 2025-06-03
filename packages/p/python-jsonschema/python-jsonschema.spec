@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonschema
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,13 +33,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonschema%{psuffix}
-Version:        4.23.0
+Version:        4.24.0
 Release:        0
 Summary:        An implementation of JSON-Schema validation for Python
 License:        MIT
 URL:            https://github.com/python-jsonschema/jsonschema
 Source:         https://files.pythonhosted.org/packages/source/j/jsonschema/jsonschema-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
@@ -57,17 +57,8 @@ BuildRequires:  git-core
 %endif
 Requires:       python-attrs >= 17.4.0
 Requires:       python-jsonschema-specifications
-Requires:       python-pyrsistent >= 0.14.0
 Requires:       python-referencing
 Requires:       python-rpds-py
-%if 0%{python_version_nodots} < 38
-Requires:       python-importlib-metadata
-Requires:       python-typing-extensions
-%endif
-%if 0%{python_version_nodots} < 39
-Requires:       python-importlib-resources >= 1.4.0
-Requires:       python-pkgutil-resolve-name >= 1.3.10
-%endif
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
