@@ -1,7 +1,7 @@
 #
 # spec file for package python-portpicker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-portpicker
 Version:        1.6.0
 Release:        0
@@ -25,12 +24,14 @@ License:        Apache-2.0
 Group:          Development/Libraries/Python
 URL:            https://github.com/google/python_portpicker
 Source0:        https://files.pythonhosted.org/packages/source/p/portpicker/portpicker-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  net-tools-deprecated
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,10 +45,10 @@ harnesses that launch local servers.
 test -f setup.py || echo "import setuptools; setuptools.setup()" > setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/portserver.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -63,7 +64,9 @@ test -f setup.py || echo "import setuptools; setuptools.setup()" > setup.py
 %files %{python_files}
 %license LICENSE
 %doc CONTRIBUTING.md README.md
-%{python_sitelib}/*
+%{python_sitelib}/portpicker.py
+%pycache_only %{python_sitelib}/__pycache__/portpicker*
+%{python_sitelib}/portpicker-%{version}*-info
 # import asyncio
 %python_alternative %{_bindir}/portserver.py
 

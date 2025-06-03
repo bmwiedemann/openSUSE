@@ -95,4 +95,12 @@
     guarantees. Using an old Python? Use an old portpicker.</comment>
     <requestid>1137821</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d7a6762c9e37f94763c1f41570fdd0df</srcmd5>
+    <version>1.6.0</version>
+    <time>1748966168</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282295</requestid>
+  </revision>
 </revisionlist>
