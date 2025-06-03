@@ -87,6 +87,6 @@ donttest+=" or test_wmts_example_informatievlaanderen"
 %doc AUTHORS.rst README.md SECURITY.md
 %license LICENSE
 %{python_sitelib}/owslib
-%{python_sitelib}/OWSLib-%{version}*-info
+%{python_sitelib}/[Oo][Ww][Ss][Ll]ib-%{version}*-info
 
 %changelog
