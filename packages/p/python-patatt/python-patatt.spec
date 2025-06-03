@@ -1,7 +1,7 @@
 #
 # spec file for package python-patatt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,15 +26,17 @@ URL:            https://git.kernel.org/pub/scm/utils/patatt/patatt.git/
 Source0:        https://git.kernel.org/pub/scm/utils/patatt/patatt.git/snapshot/patatt-%{version}.tar.gz
 Source1:        https://git.kernel.org/pub/scm/utils/patatt/patatt.git/snapshot/patatt-%{version}.tar.asc
 Source2:        python-patatt.keyring
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyNaCl}
 BuildRequires:  git-core
 # /SECTION
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -49,10 +51,10 @@ need this and should simply start signing your tags and commits.
 %autosetup -n patatt-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/patatt
 %python_clone -a %{buildroot}%{_mandir}/man5/patatt.5
 
@@ -71,6 +73,7 @@ need this and should simply start signing your tags and commits.
 %license COPYING
 %python_alternative %{_bindir}/patatt
 %python_alternative %{_mandir}/man5/patatt.5%{?ext_man}
-%{python_sitelib}/*
+%{python_sitelib}/patatt
+%{python_sitelib}/patatt-%{version}*-info
 
 %changelog

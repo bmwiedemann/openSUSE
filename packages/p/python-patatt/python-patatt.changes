@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  3 09:03:08 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Thu Jul 27 07:34:09 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - use %{?sle15_python_module_pythons}

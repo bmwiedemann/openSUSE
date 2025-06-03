@@ -70,4 +70,12 @@
 - drop py2 pieces</comment>
     <requestid>1100999</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>3d2e05461111913bb81205ab9b6ffaf9</srcmd5>
+    <version>0.6.3</version>
+    <time>1748966097</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282204</requestid>
+  </revision>
 </revisionlist>
