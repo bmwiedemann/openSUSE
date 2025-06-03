@@ -320,4 +320,15 @@
 - MenuButton no longer opens unexpectedly when navigating</comment>
     <requestid>1280475</requestid>
   </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>aaf9d8351dd2d425481d01f625b667cd</srcmd5>
+    <version>0</version>
+    <time>1748970694</time>
+    <user>anag_factory</user>
+    <comment>- Allow to select which connections will be used only for
+  installation and warn the user in case that there is no one
+  expected to be copied to the target system (no network).
+  (gh#agama-project/agama#2402).</comment>
+    <requestid>1282416</requestid>
+  </revision>
 </revisionlist>
