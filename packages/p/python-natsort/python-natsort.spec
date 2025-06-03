@@ -1,7 +1,7 @@
 #
 # spec file for package python-natsort
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?sle15_python_module_pythons}
+%{?sle15_python_module_pythons}
 Name:           python-natsort
 Version:        8.4.0
 Release:        0
@@ -26,19 +27,20 @@ URL:            https://github.com/SethMMorton/natsort
 Source:         https://files.pythonhosted.org/packages/source/n/natsort/natsort-%{version}.tar.gz
 BuildRequires:  %{python_module fastnumbers >= 5.0.1}
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 4.3}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  help2man
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 Recommends:     python-PyICU >= 1.0.0
 Recommends:     python-fastnumbers >= 5.0.1
 BuildArch:      noarch
-%{?sle15_python_module_pythons}
 %python_subpackages
 
 %description
@@ -51,10 +53,10 @@ sorting based on meaning and not computer code point).
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 export PYTHONPATH=%{buildroot}%{python_sitelib}
 help2man -o natsort.1 -N %{buildroot}%{_bindir}/natsort

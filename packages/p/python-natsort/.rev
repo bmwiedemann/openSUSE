@@ -219,4 +219,12 @@
     <comment></comment>
     <requestid>1098030</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>4884d1c5e564ef3b8ddd616582431ab4</srcmd5>
+    <version>8.4.0</version>
+    <time>1748965829</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1281961</requestid>
+  </revision>
 </revisionlist>
