@@ -205,14 +205,12 @@
       <repopackage name="btrfsprogs-udev-rules"/>
       <repopackage name="bubblewrap"/>
       <repopackage name="busybox"/>
-      <repopackage name="busybox-bzip2"/>
       <repopackage name="busybox-coreutils"/>
       <repopackage name="busybox-diffutils"/>
       <repopackage name="busybox-ed"/>
       <repopackage name="busybox-gawk"/>
       <repopackage name="busybox-grep"/>
       <repopackage name="busybox-gzip"/>
-      <repopackage name="busybox-misc"/>
       <repopackage name="busybox-procps"/>
       <repopackage name="busybox-psmisc"/>
       <repopackage name="busybox-sed"/>
@@ -321,7 +319,6 @@
       <repopackage name="dhcp"/>
       <repopackage name="dhcp-relay"/>
       <repopackage name="dhcp-server"/>
-      <repopackage name="dhcpcd"/>
       <repopackage name="dialog"/>
       <repopackage name="dialog-lang"/>
       <repopackage name="diffutils"/>
@@ -728,7 +725,6 @@
       <repopackage name="gtksourceview5-lang"/>
       <repopackage name="gucharmap"/>
       <repopackage name="gucharmap-lang"/>
-      <repopackage name="guestfs-tools"/>
       <repopackage name="guile"/>
       <repopackage name="guile-modules-3_0"/>
       <repopackage name="gupnp-av"/>
@@ -1171,7 +1167,6 @@
       <repopackage name="kwordquiz-lang"/>
       <repopackage name="lastlog2"/>
       <repopackage name="layer-shell-qt6"/>
-      <repopackage name="ldmtool"/>
       <repopackage name="ldns"/>
       <repopackage name="lensfun-data"/>
       <repopackage name="less"/>
@@ -1367,7 +1362,6 @@
       <repopackage name="libcom_err2-32bit"/>
       <repopackage name="libcomposefs1"/>
       <repopackage name="libconfig++15"/>
-      <repopackage name="libconfig15"/>
       <repopackage name="libcpuinfo-suse0"/>
       <repopackage name="libcpupower1"/>
       <repopackage name="libcrack2"/>
@@ -1699,11 +1693,6 @@
       <repopackage name="libgtop-lang"/>
       <repopackage name="libgucharmap_2_90-7"/>
       <repopackage name="libgudev-1_0-0"/>
-      <repopackage name="libguestfs"/>
-      <repopackage name="libguestfs-appliance"/>
-      <repopackage name="libguestfs-winsupport"/>
-      <repopackage name="libguestfs-xfs"/>
-      <repopackage name="libguestfs0"/>
       <repopackage name="libguile-3_0-1"/>
       <repopackage name="libgupnp-1_6-0"/>
       <repopackage name="libgupnp-av-1_0-3"/>
@@ -1733,7 +1722,6 @@
       <repopackage name="libheif-svtenc"/>
       <repopackage name="libheif1"/>
       <repopackage name="libhidapi-hidraw0"/>
-      <repopackage name="libhivex0"/>
       <repopackage name="libhns1"/>
       <repopackage name="libhogweed6"/>
       <repopackage name="libhogweed6-32bit"/>
@@ -2143,7 +2131,6 @@
       <repopackage name="libldapcpp0"/>
       <repopackage name="libldb2"/>
       <repopackage name="libldb2-32bit"/>
-      <repopackage name="libldm-1_0-0"/>
       <repopackage name="libldns3"/>
       <repopackage name="liblensfun1"/>
       <repopackage name="liblhasa0"/>
@@ -2240,8 +2227,6 @@
       <repopackage name="libmysofa1"/>
       <repopackage name="libmythes-1_2-0"/>
       <repopackage name="libnautilus-extension4"/>
-      <repopackage name="libnbd"/>
-      <repopackage name="libnbd0"/>
       <repopackage name="libncurses6"/>
       <repopackage name="libndctl6"/>
       <repopackage name="libndp0"/>
@@ -2823,7 +2808,6 @@
       <repopackage name="libvirt-daemon-plugin-lockd"/>
       <repopackage name="libvirt-daemon-qemu"/>
       <repopackage name="libvirt-daemon-xen"/>
-      <repopackage name="libvirt-glib-1_0-0"/>
       <repopackage name="libvirt-libs"/>
       <repopackage name="libvisio-0_1-1"/>
       <repopackage name="libvisual-0_4-0"/>
@@ -3149,15 +3133,6 @@
       <repopackage name="nautilus-share"/>
       <repopackage name="nautilus-share-lang"/>
       <repopackage name="nbd"/>
-      <repopackage name="nbdkit"/>
-      <repopackage name="nbdkit-basic-filters"/>
-      <repopackage name="nbdkit-basic-plugins"/>
-      <repopackage name="nbdkit-curl-plugin"/>
-      <repopackage name="nbdkit-nbd-plugin"/>
-      <repopackage name="nbdkit-python-plugin"/>
-      <repopackage name="nbdkit-server"/>
-      <repopackage name="nbdkit-ssh-plugin"/>
-      <repopackage name="nbdkit-vddk-plugin"/>
       <repopackage name="ncompress"/>
       <repopackage name="ncurses-utils"/>
       <repopackage name="net-snmp"/>
@@ -3327,7 +3302,6 @@
       <repopackage name="patterns-server-directory_server"/>
       <repopackage name="patterns-server-file_server"/>
       <repopackage name="patterns-server-kvm_server"/>
-      <repopackage name="patterns-server-kvm_tools"/>
       <repopackage name="patterns-server-lamp_server"/>
       <repopackage name="patterns-server-mail_server"/>
       <repopackage name="patterns-server-printing"/>
@@ -3973,7 +3947,6 @@
       <repopackage name="sudo"/>
       <repopackage name="sudo-plugin-python"/>
       <repopackage name="sunpinyin-data"/>
-      <repopackage name="supermin"/>
       <repopackage name="suse-module-tools"/>
       <repopackage name="suse-module-tools-scriptlets"/>
       <repopackage name="susepaste"/>
@@ -4146,9 +4119,7 @@
       <repopackage name="typelib-1_0-GtkClutter-1_0"/>
       <repopackage name="typelib-1_0-GtkSource-300"/>
       <repopackage name="typelib-1_0-GtkSource-4"/>
-      <repopackage name="typelib-1_0-GtkVnc-2_0"/>
       <repopackage name="typelib-1_0-GUdev-1_0"/>
-      <repopackage name="typelib-1_0-GVnc-1_0"/>
       <repopackage name="typelib-1_0-GWeather-4_0"/>
       <repopackage name="typelib-1_0-Handy-1_0"/>
       <repopackage name="typelib-1_0-HarfBuzz-0_0"/>
@@ -4156,7 +4127,6 @@
       <repopackage name="typelib-1_0-JavaScriptCore-4_1"/>
       <repopackage name="typelib-1_0-Json-1_0"/>
       <repopackage name="typelib-1_0-Libosinfo-1_0"/>
-      <repopackage name="typelib-1_0-LibvirtGLib-1_0"/>
       <repopackage name="typelib-1_0-Libxfce4ui-2_0"/>
       <repopackage name="typelib-1_0-Libxfce4util-1_0"/>
       <repopackage name="typelib-1_0-LunarCalendar-3_0"/>
@@ -4175,15 +4145,12 @@
       <repopackage name="typelib-1_0-Secret-1"/>
       <repopackage name="typelib-1_0-Shumate-1_0"/>
       <repopackage name="typelib-1_0-Soup-3_0"/>
-      <repopackage name="typelib-1_0-SpiceClientGlib-2_0"/>
-      <repopackage name="typelib-1_0-SpiceClientGtk-3_0"/>
       <repopackage name="typelib-1_0-Spiel-1_0"/>
       <repopackage name="typelib-1_0-TelepathyGlib-0_12"/>
       <repopackage name="typelib-1_0-Tepl-6"/>
       <repopackage name="typelib-1_0-TotemPlParser-1_0"/>
       <repopackage name="typelib-1_0-Tracker-3_0"/>
       <repopackage name="typelib-1_0-UpowerGlib-1_0"/>
-      <repopackage name="typelib-1_0-Vte-2_91"/>
       <repopackage name="typelib-1_0-WebKit2-4_1"/>
       <repopackage name="typelib-1_0-Wnck-3_0"/>
       <repopackage name="typelib-1_0-Xdp-1_0"/>
@@ -4224,11 +4191,7 @@
       <repopackage name="vinagre"/>
       <repopackage name="vinagre-lang"/>
       <repopackage name="virt-install"/>
-      <repopackage name="virt-manager"/>
       <repopackage name="virt-manager-common"/>
-      <repopackage name="virt-v2v"/>
-      <repopackage name="virt-v2v-bash-completion"/>
-      <repopackage name="virt-viewer"/>
       <repopackage name="virt-what"/>
       <repopackage name="virtiofsd"/>
       <repopackage name="virtualbox-guest-tools"/>
@@ -4304,7 +4267,6 @@
       <repopackage name="xen"/>
       <repopackage name="xen-libs"/>
       <repopackage name="xen-tools"/>
-      <repopackage name="xen-tools-domU"/>
       <repopackage name="xf86-input-evdev"/>
       <repopackage name="xf86-input-joystick"/>
       <repopackage name="xf86-input-libinput"/>
@@ -4436,7 +4398,6 @@
       <repopackage name="xkeyboard-config-lang"/>
       <repopackage name="xmessage"/>
       <repopackage name="xmlcharent"/>
-      <repopackage name="xmlstarlet"/>
       <repopackage name="xmodmap"/>
       <repopackage name="xorg-x11-driver-video"/>
       <repopackage name="xorg-x11-essentials"/>
@@ -4600,7 +4561,6 @@
       <repopackage name="zd1211-firmware"/>
       <repopackage name="zenity"/>
       <repopackage name="zenity-lang"/>
-      <repopackage name="zerofree"/>
       <repopackage name="zeromq-tools"/>
       <repopackage name="zip"/>
       <repopackage name="zisofs-tools"/>

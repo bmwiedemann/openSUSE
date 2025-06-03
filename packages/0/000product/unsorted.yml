@@ -1764,6 +1764,7 @@ unsorted:
   - busybox-attr 
   - busybox-bc 
   - busybox-bind-utils 
+  - busybox-bzip2 
   - busybox-cpio 
   - busybox-dos2unix 
   - busybox-findutils 
@@ -1776,6 +1777,7 @@ unsorted:
   - busybox-less 
   - busybox-links 
   - busybox-man 
+  - busybox-misc 
   - busybox-ncurses-utils 
   - busybox-net-tools 
   - busybox-netcat 
@@ -8301,6 +8303,7 @@ unsorted:
   - gude-mouseclock-udev 
   - gudev-sharp 
   - gudev-sharp-devel 
+  - guestfs-tools 
   - guestfs-tools-bash-completion 
   - guestfs-tools-man-pages-ja 
   - guestfs-tools-man-pages-uk 
@@ -10869,6 +10872,7 @@ unsorted:
   - ldc-phobos-devel 
   - ldc-runtime-devel 
   - ldirectord 
+  - ldmtool 
   - ldns-devel 
   - leafnode 
   - leafpad 
@@ -13634,6 +13638,8 @@ unsorted:
   - libgudev-1_0-devel 
   - libguess-devel 
   - libguess1 
+  - libguestfs 
+  - libguestfs-appliance 
   - libguestfs-bash-completion 
   - libguestfs-devel 
   - libguestfs-gobject-1_0 
@@ -13644,6 +13650,9 @@ unsorted:
   - libguestfs-rescue 
   - libguestfs-rsync 
   - libguestfs-typelib-Guestfs-1_0 
+  - libguestfs-winsupport 
+  - libguestfs-xfs 
+  - libguestfs0 
   - libguestfsd 
   - libguile-cairo0 
   - libguile-srfi-srfi-1-v-3-3 
@@ -13746,6 +13755,7 @@ unsorted:
   - libhinawa-devel 
   - libhinawa2 
   - libhiredis1_3_0 
+  - libhivex0 
   - libhl1 
   - libhmac-devel 
   - libhmac-tools 
@@ -14154,6 +14164,7 @@ unsorted:
   - libldc-jit110 
   - libldl-doc 
   - libldl3 
+  - libldm-1_0-0 
   - libldm-1_0-0-devel 
   - libleancrypto-fips1 
   - libleancrypto1 
@@ -14613,8 +14624,10 @@ unsorted:
   - libnauty-2_8_9 
   - libnbcompat-devel 
   - libnbcompat0 
+  - libnbd 
   - libnbd-bash-completion 
   - libnbd-devel 
+  - libnbd0 
   - libnblib_gmx0 
   - libnco-5_2_9 
   - libnco-devel 
@@ -16638,6 +16651,7 @@ unsorted:
   - libvirt-dbus 
   - libvirt-devel 
   - libvirt-doc 
+  - libvirt-glib-1_0-0 
   - libvirt-glib-devel 
   - libvirt-nss 
   - libvirt-ssh-proxy 
@@ -19255,15 +19269,24 @@ unsorted:
   - nauty 
   - nauty-devel 
   - nbdfuse 
+  - nbdkit 
   - nbdkit-bash-completion 
+  - nbdkit-basic-filters 
+  - nbdkit-basic-plugins 
   - nbdkit-bzip2-filter 
+  - nbdkit-curl-plugin 
   - nbdkit-devel 
   - nbdkit-example-plugins 
   - nbdkit-gcs-plugin 
   - nbdkit-linuxdisk-plugin 
+  - nbdkit-nbd-plugin 
+  - nbdkit-python-plugin 
+  - nbdkit-server 
+  - nbdkit-ssh-plugin 
   - nbdkit-stats-filter 
   - nbdkit-tar-filter 
   - nbdkit-tmpdisk-plugin 
+  - nbdkit-vddk-plugin 
   - nbdkit-xz-filter 
   - nbsdgames 
   - ncdu 
@@ -20750,6 +20773,7 @@ unsorted:
   - patterns-server-file_server-32bit 
   - patterns-server-gateway_server 
   - patterns-server-gateway_server-32bit 
+  - patterns-server-kvm_tools 
   - patterns-server-lamp_server-32bit 
   - patterns-server-mail_server-32bit 
   - patterns-server-printing-32bit 
@@ -37250,6 +37274,7 @@ unsorted:
   - superlu-devel 
   - superlu-doc 
   - superlu-examples 
+  - supermin 
   - superpaper 
   - supertux2 
   - supertuxkart 
@@ -47805,6 +47830,7 @@ unsorted:
   - typelib-1_0-GUPnPDLNAGst-2_0 
   - typelib-1_0-GUPnPIgd-1_6 
   - typelib-1_0-GUsb-1_0 
+  - typelib-1_0-GVnc-1_0 
   - typelib-1_0-GVncPulse-1_0 
   - typelib-1_0-GXPS-0_1 
   - typelib-1_0-Gck-1 
@@ -47875,6 +47901,7 @@ unsorted:
   - typelib-1_0-GtkSource-3_0 
   - typelib-1_0-GtkSource-5 
   - typelib-1_0-GtkSpell-3_0 
+  - typelib-1_0-GtkVnc-2_0 
   - typelib-1_0-Gucharmap-2_90 
   - typelib-1_0-Hasl-1_0 
   - typelib-1_0-Hex-4 
@@ -47895,6 +47922,7 @@ unsorted:
   - typelib-1_0-Libmsi-1_0 
   - typelib-1_0-Libproxy-1_0 
   - typelib-1_0-LibvirtGConfig-1_0 
+  - typelib-1_0-LibvirtGLib-1_0 
   - typelib-1_0-LibvirtGObject-1_0 
   - typelib-1_0-Libxfce4panel-2_0 
   - typelib-1_0-Libxfce4windowing-0_0 
@@ -47939,6 +47967,8 @@ unsorted:
   - typelib-1_0-Soup-2_4 
   - typelib-1_0-SpeechProvider-1_0 
   - typelib-1_0-Spelling-1 
+  - typelib-1_0-SpiceClientGlib-2_0 
+  - typelib-1_0-SpiceClientGtk-3_0 
   - typelib-1_0-TelepathyFarstream-0_6 
   - typelib-1_0-TelepathyLogger-0_2 
   - typelib-1_0-Template-1_0 
@@ -47949,6 +47979,7 @@ unsorted:
   - typelib-1_0-Uhm-1_0 
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8.0 
+  - typelib-1_0-Vte-2_91 
   - typelib-1_0-Vte-3_91 
   - typelib-1_0-WebKit-6_0 
   - typelib-1_0-WebKit2-4_0 
@@ -48408,11 +48439,15 @@ unsorted:
   - virglrenderer-test-server 
   - virt-bridge-setup 
   - virt-firmware 
+  - virt-manager 
   - virt-p2v 
   - virt-scenario-gtk 
   - virt-top 
+  - virt-v2v 
+  - virt-v2v-bash-completion 
   - virt-v2v-man-pages-ja 
   - virt-v2v-man-pages-uk 
+  - virt-viewer 
   - virt-win-reg 
   - virtme 
   - virtualbox 
@@ -48935,6 +48970,7 @@ unsorted:
   - xeme-doc 
   - xen-devel 
   - xen-doc-html 
+  - xen-tools-domU 
   - xen-tools-xendomains-wait-disk 
   - xerces-c 
   - xerces-c-doc 
@@ -49084,6 +49120,7 @@ unsorted:
   - xmlsec1-gnutls-devel 
   - xmlsec1-nss-devel 
   - xmlsec1-openssl-devel 
+  - xmlstarlet 
   - xmlstreambuffer 
   - xmlstreambuffer-javadoc 
   - xmlto 
@@ -49445,6 +49482,7 @@ unsorted:
   - zellij-zsh-completion 
   - zenith 
   - zerobranestudio 
+  - zerofree 
   - zeromq-devel 
   - zfp 
   - zfp-devel 
