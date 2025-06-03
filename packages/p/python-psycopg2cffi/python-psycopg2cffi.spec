@@ -1,7 +1,7 @@
 #
 # spec file for package python-psycopg2cffi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,11 @@ License:        LGPL-3.0-or-later
 URL:            https://github.com/chtd/psycopg2cffi
 Source:         https://files.pythonhosted.org/packages/source/p/psycopg2cffi/psycopg2cffi-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE allow-rc-versions.patch to allow 15rc2 pg version
-Patch:          allow-rc-versions.patch
+Patch0:         allow-rc-versions.patch
 BuildRequires:  %{python_module devel >= 3.5}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  postgresql-server-devel
 BuildRequires:  python-rpm-macros
@@ -48,10 +50,10 @@ This is a implementation of the psycopg2 module using cffi.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -r %{buildroot}%{$python_sitearch}/psycopg2cffi/tests
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
@@ -63,6 +65,6 @@ rm psycopg2cffi/tests/__init__.py
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/psycopg2cffi
-%{python_sitearch}/psycopg2cffi-%{version}-py*.egg-info
+%{python_sitearch}/psycopg2cffi-%{version}*-info
 
 %changelog

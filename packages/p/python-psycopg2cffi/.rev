@@ -32,4 +32,12 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092397</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>66cebe1c38e9203a51524559c328b96c</srcmd5>
+    <version>2.9.0</version>
+    <time>1748966207</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282315</requestid>
+  </revision>
 </revisionlist>
