@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Jun  2 17:07:08 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.16.1:
+  * Bug fixes:
+    #282 Fish completion not included in release tarball
+    #283 Piping and redirection are broken in Windows
+
+-------------------------------------------------------------------
+Mon Jun  2 05:24:20 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.16.0:
+ * Added terminal probing. Currently we can determine geometry, colors
+   and sixel capabilities this way. This supplements the existing heuristics.
+ * The internal terminal database and heuristics were refactored for
+   clarity, with new API added to simplify the configuration process.
+ * I/O is now threaded, resulting in improved responsiveness and pipelining.
+ * New option: --grid=WxH, --grid=[auto|on|off] or -g. This lays out
+   multiple images in a grid for easy browsing.
+ * New option: --label=[on|off] or -l. Labels each image with its filename.
+   Works in both continuous and grid layouts.
+ * New option: --probe=[auto|on|off]. Controls whether to actively probe the
+   terminal. Can take a real number denoting how long to wait for a response.
+ * Sixel quality improved significantly. The quantizer was reimplemented with modern algorithms
+   (#174), and blue noise dithering was introduced (#238).
+ * The new blue noise dithering is also available in symbols mode, and can be turned on with
+    --dither noise. It can be turned off with --dither none.
+ * Numerous small improvements were made to sixel handling:
+   + Terminal cursor placement quirks are now represented and handled.
+   + Images can now cover their cell extents completely.
+   + Workaround for animations "walking up the screen" on quirky terminals.
+ * The JPEG XL loader was improved with optional memory mapping and better container support
+ * Enabled wildcard expansion in Windows builds (#266).
+ * Added completions for the fish shell and updated those for zsh.
+ * Bug fixes:
+   + #111 Provide auto detection of background for perception of transparency
+   + #228 Sixel capability not detected in foot + tmux
+   + #236 Ghostty shows pwd/lock indicator when using Chafa
+   + #238 Sixel image quality significantly different from img2sixel and ImageMagick
+   + #239 Chafa leaves echo on
+   + #245 JPEG file not recognized
+   + #246 Examples using deprecated functions
+   + #249 Sixel detection doesn't set default values
+   + #254 -t 1 doesn't work with -f iterm
+   + #255 Animations scroll/walk up the screen
+   + #265 Enable Kitty image protocol for Warp
+   + #266 On Windows, in a cmd.exe window, filename wildcard expansion is broken
+   + #273 -t 1 messes up some images
+   + #274 -f {kitty,iterm} swaps BG color channels for SVG
+   + #278 Images not always padded to cell boundary
+   + [unfiled] Fix broken bashisms resulting in logic failure
+   + [unfiled] Small leak in chafa_canvas_print_rows()
+   + [unfiled] Uninitialized histogram in nearest-neighbor interp.
+
+-------------------------------------------------------------------
 Sun Nov  3 08:32:44 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 1.14.5:
