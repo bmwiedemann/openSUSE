@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-orderly-set
-Version:        5.3.2
+Version:        5.4.1
 Release:        0
 Summary:        Orderly set
 License:        MIT

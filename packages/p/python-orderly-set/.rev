@@ -17,4 +17,18 @@
   * adding the ability to make a stableset immutable</comment>
     <requestid>1269362</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>67f33d80ebe07f3d681396eb861e969b</srcmd5>
+    <version>5.4.1</version>
+    <time>1748966252</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1281895 from glaubitz
+
+- Update to 5.4.1
+    * Making it compatible with python 3.8
+  - from versiom 5.4.0
+    * index() is not compatible with pandas anymore. Instead use
+      indexes when you need to get the indexes for multiple items.</comment>
+    <requestid>1282343</requestid>
+  </revision>
 </revisionlist>
