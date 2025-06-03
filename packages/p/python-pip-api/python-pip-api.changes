@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  3 11:33:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri Nov 24 08:08:45 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Skip more tests that need network access
