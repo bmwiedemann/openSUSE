@@ -25,4 +25,14 @@
   * bump for opentelmetry 1.30.0 release</comment>
     <requestid>1248509</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ae30cfb6399f4aa1525e46c45b6c22cd</srcmd5>
+    <version>0.54b1</version>
+    <time>1748965893</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.54b1:
+  * Bump for opentelemetry 1.33.1 release.
+- Remove BuildRequires on setuptools and wheel.</comment>
+    <requestid>1281752</requestid>
+  </revision>
 </revisionlist>
