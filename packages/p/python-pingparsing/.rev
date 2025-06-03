@@ -136,4 +136,12 @@
   * Improve type annotations</comment>
     <requestid>1172527</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>beee51c4b6aa39ca308da80e3a06ace4</srcmd5>
+    <version>1.4.2</version>
+    <time>1748966142</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282277</requestid>
+  </revision>
 </revisionlist>
