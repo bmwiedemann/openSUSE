@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-velocity
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
+BuildRequires:  objectweb-asm
 BuildRequires:  sisu-inject
 BuildRequires:  velocity-engine-core
 BuildArch:      noarch
@@ -57,7 +58,12 @@ cp -p %{SOURCE1} build.xml
 cp -p %{SOURCE2} LICENSE
 
 mkdir -p lib
-build-jar-repository -s lib atinject commons-collections org.eclipse.sisu.inject velocity-engine/velocity-engine-core
+build-jar-repository -s lib \
+    atinject \
+    commons-collections \
+    objectweb-asm/asm \
+    org.eclipse.sisu.inject \
+    velocity-engine/velocity-engine-core
 
 %build
 ant jar javadoc
