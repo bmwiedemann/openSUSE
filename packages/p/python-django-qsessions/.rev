@@ -50,4 +50,12 @@
   * Drop support for Django 2.2, 3.0, 3.1.</comment>
     <requestid>1058209</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>fc19fb60c2c4e5b942d1b3f6cac8e236</srcmd5>
+    <version>1.1.4</version>
+    <time>1748965993</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282133</requestid>
+  </revision>
 </revisionlist>
