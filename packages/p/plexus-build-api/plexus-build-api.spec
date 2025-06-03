@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-build-api
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
+BuildRequires:  objectweb-asm
 BuildRequires:  plexus-build-api0
 BuildRequires:  plexus-utils
 BuildRequires:  sisu-inject
@@ -54,6 +55,7 @@ cp -p %{SOURCE1} build.xml
 mkdir -p lib
 build-jar-repository -s lib \
     atinject \
+    objectweb-asm/asm \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
     plexus/utils \
