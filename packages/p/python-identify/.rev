@@ -181,4 +181,19 @@
     <comment></comment>
     <requestid>1273196</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a45564b2f645d4b0034e3429ecb59b39</srcmd5>
+    <version>2.6.12</version>
+    <time>1748970647</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1282169 from glaubitz
+
+- Update to 2.6.12
+    * Identify common MSBuild files
+    * Drop ambiguous .proj extension
+  - from version 2.6.11
+    * Add support for `.sqlfluff`
+    * Identify XSLT files</comment>
+    <requestid>1282362</requestid>
+  </revision>
 </revisionlist>
