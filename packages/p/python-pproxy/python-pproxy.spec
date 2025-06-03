@@ -1,7 +1,7 @@
 #
 # spec file for package python-pproxy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ Summary:        Proxy server that can tunnel among remote servers by regex rules
 License:        MIT
 URL:            https://github.com/qwj/python-proxy
 Source:         https://files.pythonhosted.org/packages/source/p/pproxy/pproxy-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-aioquic >= 0.9.7
@@ -54,10 +56,10 @@ Proxy server that can tunnel among remote servers by regex rules.
 rm tests/api_*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pproxy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 

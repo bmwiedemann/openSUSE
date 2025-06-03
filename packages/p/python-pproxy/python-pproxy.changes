@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  3 12:02:35 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Oct 24 12:13:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - use the versioned metadata (requires setuptools_scm)

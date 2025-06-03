@@ -39,4 +39,12 @@
     <comment>- use the versioned metadata (requires setuptools_scm)</comment>
     <requestid>1119969</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>6348406b5da2b6607c151f47e74c69be</srcmd5>
+    <version>2.7.8</version>
+    <time>1748966176</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282300</requestid>
+  </revision>
 </revisionlist>
