@@ -1,5 +1,19 @@
 -------------------------------------------------------------------
-Mon Dec  6 12:51:14 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Tue Jun  3 06:31:31 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.3.0
+  - Update README after switchover to meson
+  - autotools-build: Explicitly require glib, gtk3
+  - meson-build: Use shared_module()
+  - Replace deprecated exo with libxfce4ui 4.21.0
+  - build: Automate copyright year management
+  - Add meson build
+  - autotools-build: Explicitly require libxfce4util
+  - Fix libxfce4panel include
+  - Translation Updates
+
+-------------------------------------------------------------------
+Mon Dec  6 12:51:14 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.2.1
   * Update copyright year

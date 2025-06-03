@@ -72,4 +72,150 @@
     <comment></comment>
     <requestid>1236992</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d0c3ff97c17cae5e7c545e4b9a25d42b</srcmd5>
+    <version>4.3.0</version>
+    <time>1748966072</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.3.0
+  - Update README after switchover to meson
+  - autotools-build: Explicitly require glib, gtk3
+  - meson-build: Use shared_module()
+  - Replace deprecated exo with libxfce4ui 4.21.0
+  - build: Automate copyright year management
+  - Add meson build
+  - autotools-build: Explicitly require libxfce4util
+  - Fix libxfce4panel include
+  - Translation Updates
+- Update to version 4.2.1
+  * Update copyright year
+  * build: Bump dependency versions and fix deprecation warnings
+  * I18n: Update po/LINGUAS list
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: clang: Fix -Wsometimes-uninitialized
+  * build: Get rid of intltool
+  * Install scripts dir when building
+  * Fix copyright string
+  * Update copyright year and info
+  * Fix type in xfconf migration script
+  * Translation Updates
+- Add installed scripts to the rpm filelist.
+- Update to version 4.2.0
+  * Add shell script to migrate settings to xfconf
+  * Fix GDK_Critical
+  * Fixed deskbar support. Issue #8
+  * Add Update Now menu option to right-click menu
+  * build: Add GLib requirement
+  * build: Fix autotools warnings
+  * Use &quot;logo-icon-name&quot; instead of &quot;logo&quot; in about dialog
+  * ***Migrate settings to xfconf
+  * Remove unused variable
+  * Fix intltool lock file bug in make distcheck
+  * Remove closing of standard file descriptors in the child process
+  * Update COPYING
+  * Add &lt;css&gt; tag support
+  * fixed .genmon_label and -gtk-icon transform bugs
+  * Fix code indentation and readalility
+  * Add support for single and multi-row panel layout options
+  * Added support for &lt;css&gt;&lt;/css&gt; XML tag. Changed default
+    progressbar width to 4px
+  * automake: Modernize following other projects
+  * autoconf: Some updates
+  * Update `.gitignore`
+  * Add missing comments to code functions
+  * Fix indentation
+  * Translation updates
+- Remove _service file
+- Update to version 4.1.1
+  * Update configure.ac.in syntax
+  * Add help button to configuration dialog
+  * Add filechooser dialog option to select command
+  * Add new genmon icon
+  * Remove GSourceFunc casts
+  * update prototype of UpdateConf
+  * Set labels to center justify by default
+  * Translation updates
+- Update to version 4.1.0
+  - Add basic GitLab pipeline
+  - Updated README file
+  - Add DBG anchors
+  - Add &lt;icon&gt; amd &lt;iconclick&gt; elements
+  - Make Save translatable
+  - Fix config values sometimes going to default
+  - Fix label sometimes re-appearing
+  - Enable multi-row support
+  - Remove unused variables and code
+  - Fix indentation
+  - Catch some edge cases
+  - Set tmp variable default values
+  - Fix period spinner display when cancelled
+  - Fix label toggle display when cancelled
+  - Fix font display when cancelled
+  - Support new libxfce4ui API
+  - Change close to save
+  - Closing config window cancels changes
+  - Change layout of config dialog
+  - Make tooltips translatable
+  - Update support URLs to docs.xfce.org
+  - Allow compilation with panel 4.15
+  - Replace deprecated xfce_create_panel_button
+  - Translation Updates 
+- Fixed sources in spec file
+- Update to version 4.0.2
+  - Change font to use pt instead of px to match system font setting
+  - Simplify and standardize spacing
+  - Adjust tooltip such that period is shown as float (2) number 
+  - Translation updates
+- Package renamed to follow upstream name xfce4-foo-plugin
+- Use lang subpackage for manual edits instead of %lang_package macro 
+- Cleaned up spec file
+- Added bcond for git master builds
+- Only add NEWS and omi Changelog
+- update to version 4.0.1
+  - Allow pango markup in tooltip as well
+  - Fix progressbar wrong direction
+- update to version 4.0.0
+  - Port to Gtk3
+  - Fix font styling to work with Gtk 3.22
+  - Add support for &quot;genmon&quot; in 'xfce4-panel --plugin-event' (bxo#10734)
+  - Fix default tooltip does not work (bxo#11284)
+  - Add &lt;txtclick&gt; functionality (bxo#3437)
+- packaging: do not package ChangeLog, NEWS is good enough
+- update to version 3.4.0
+  - port from libxfcegui4 to libxfce4ui
+  - install as a shared library rather than an executable
+  - no longer uses troublesome fixed-length text buffers
+  - bug fixes
+- corrected license
+- added documentation files
+- corrected source URL
+- specfile cleanup
+- correct dependencies
+- split off -lang subpackage
+- updated to version 3.3.1
+  - change icon to &quot;utilities-system-monitor&quot;
+  - fix problems when changing panel orientation
+  - fix timer not started at startup (bnc#737801)
+  - remove obsolete samples.txt
+- dropped obsolete
+  xfce4-panel-plugin-genmon-initialize-timer-on-startup.patch
+- added xfce4-panel-plugin-genmon-initialize-timer-on-startup.patch
+  which fixes a bug introduced in 3.3.0 where the display timer
+  was not initialized on startup (bnc#737801)
+- fix missing icon
+- remove unncessary xdt-autogen run
+- use suse_update_desktop_file to translate
+- update to version 3.3.0
+  + Support for xfce 4.8
+  + Translated to 29 languages
+  + Introduces new markup for colored and styled text
+  + Various small bug fixes
+  + Build and package fixes
+- dropped obsolete
+  xfce4-panel-plugin-genmon-3.2-fix-build-with-4.7.patch,
+  xfce4-panel-plugin-genmon-3.2-prevent-zombies.patch, and
+  xfce4-panel-plugin-genmon-3.2-close-unused-pipes.patch
+- new package (split off from xfce4-panel-plugins) (forwarded request 1282108 from mauriziogalli)</comment>
+    <requestid>1282180</requestid>
+  </revision>
 </revisionlist>
