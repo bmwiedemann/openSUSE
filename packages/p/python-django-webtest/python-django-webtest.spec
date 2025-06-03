@@ -22,18 +22,20 @@ Version:        1.9.13
 Release:        0
 Summary:        Django integration for WebTest
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/django-webtest/django-webtest
 Source:         https://files.pythonhosted.org/packages/source/d/django-webtest/django_webtest-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module WebTest >= 1.3.3}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 4.2
 Requires:       python-WebTest >= 1.3.3
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -43,10 +45,10 @@ Instant integration of Ian Bicking's WebTest with django's testing framework.
 %setup -q -n django_webtest-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +59,7 @@ popd
 %files %{python_files}
 %license LICENSE.txt
 %doc AUTHORS.txt CHANGES.rst README.rst
-%{python_sitelib}/*[Ww]ebtest*/
+%{python_sitelib}/django_webtest
+%{python_sitelib}/django_webtest-%{version}.dist-info
 
 %changelog
