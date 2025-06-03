@@ -66,4 +66,12 @@
 - Add upstream dj5.patch to fix tests with new Django</comment>
     <requestid>1223457</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>1819608c9add01ecd6aa6b0f1b992946</srcmd5>
+    <version>4.0</version>
+    <time>1748965982</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282126</requestid>
+  </revision>
 </revisionlist>

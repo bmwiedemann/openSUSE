@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-localflavor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ URL:            https://github.com/django/django-localflavor
 Source:         https://github.com/django/django-localflavor/archive/%{version}.tar.gz#/django-localflavor-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/django/django-localflavor/commit/a0bb1b5b56be1d3f1a4ebb886621961b458ab74e Fix # 502 -- Update Python and Django versions
 Patch0:         dj5.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.2
@@ -47,10 +49,10 @@ Country-specific Django helpers.
 %autosetup -p1 -n django-localflavor-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
