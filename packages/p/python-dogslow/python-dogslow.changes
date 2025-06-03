@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  3 07:03:54 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Sat Nov 30 10:07:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Initial commit, needed by weblate
