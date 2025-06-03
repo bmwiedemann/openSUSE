@@ -1,7 +1,7 @@
 #
 # spec file for package python-pdd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,6 @@
 
 
 # pdd is not available for Python 2
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pdd
 Version:        1.7
 Release:        0
@@ -28,13 +26,15 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jarun/pdd
 Source:         https://files.pythonhosted.org/packages/source/p/pdd/pdd-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil
 Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -52,10 +52,10 @@ pdd (Python3 Date Diff) is a small cmdline utility to calculate date and time di
 # this seems to be fixed in github (there is pdd instead of pdd.py,
 # what setup.py expects, if I have not missed anything)
 mv pdd.py pdd
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pdd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -73,6 +73,8 @@ chmod 755 pdd
 %doc README.md CHANGELOG
 %license LICENSE
 %python_alternative %{_bindir}/pdd
-%{python_sitelib}/*
+%{python_sitelib}/pdd.py
+%{python_sitelib}/pdd-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/pdd*
 
 %changelog

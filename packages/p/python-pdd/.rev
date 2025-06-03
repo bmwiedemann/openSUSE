@@ -52,4 +52,12 @@
   * makefile option to install completion scripts</comment>
     <requestid>1040426</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c5e60134b3b28c4626311efc452aec1b</srcmd5>
+    <version>1.7</version>
+    <time>1748966102</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282229</requestid>
+  </revision>
 </revisionlist>
