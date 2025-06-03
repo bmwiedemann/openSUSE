@@ -28,7 +28,9 @@ URL:            https://github.com/AndrewIngram/django-extra-views
 Source:         django-extra-views-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/AndrewIngram/django-extra-views/pull/272 make tests compatible with Django 5.2
 Patch:          django52.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.2
@@ -46,10 +48,10 @@ Extra class-based views for Django.
 %autosetup -p1 -n django-extra-views-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

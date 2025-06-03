@@ -56,4 +56,12 @@
   - Convert to _service workflow since the new release is not tagged</comment>
     <requestid>1272115</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5298f8c9fc895d2e720b8458e90e20d5</srcmd5>
+    <version>0.15.0</version>
+    <time>1748965975</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282120</requestid>
+  </revision>
 </revisionlist>
