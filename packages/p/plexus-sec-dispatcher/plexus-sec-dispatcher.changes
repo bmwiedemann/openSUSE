@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  3 08:25:56 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Add dependency on objectweb-asm to build with sisu 0.9.0.M4
+
+-------------------------------------------------------------------
 Fri Mar  7 11:35:37 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - The injection is happening using javax.inject.Named index and 

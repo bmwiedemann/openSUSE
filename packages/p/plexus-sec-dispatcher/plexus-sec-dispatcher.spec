@@ -32,6 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  modello >= 2.0.0
+BuildRequires:  objectweb-asm
 BuildRequires:  plexus-cipher
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
@@ -63,6 +64,7 @@ build-jar-repository -s lib \
     plexus/xml \
     plexus/plexus-cipher \
     org.eclipse.sisu.inject \
+    objectweb-asm/asm \
     javax.inject
 %{ant} \
   jar javadoc
