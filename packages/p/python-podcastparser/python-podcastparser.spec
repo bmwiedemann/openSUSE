@@ -1,7 +1,7 @@
 #
 # spec file for package python-podcastparser
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,11 @@ Summary:        A podcast parser
 License:        ISC
 URL:            https://github.com/gpodder/podcastparser
 Source:         https://files.pythonhosted.org/packages/source/p/podcastparser/podcastparser-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,10 +44,10 @@ way of parsing RSS- and Atom-based podcast feeds in Python.
 %setup -q -n podcastparser-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +56,8 @@ way of parsing RSS- and Atom-based podcast feeds in Python.
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/podcastparser.py
+%{python_sitelib}/podcastparser*-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/podcastparser*
 
 %changelog
