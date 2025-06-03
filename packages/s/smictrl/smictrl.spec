@@ -48,7 +48,8 @@ Authors:
 %autosetup -p1 -n smictrl
 
 %build
-CFLAGS=$RPM_OPT_FLAGS make %{?jobs:-j%jobs}
+export CFLAGS=$RPM_OPT_FLAGS
+%make_build
 
 %install
 mkdir  -p $RPM_BUILD_ROOT%{_sbindir}
