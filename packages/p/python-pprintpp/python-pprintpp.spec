@@ -1,7 +1,7 @@
 #
 # spec file for package python-pprintpp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,12 +31,14 @@ Patch1:         python-pprintpp-remove-nose.patch
 # PATCH-FIX-OPENSUSE python-311.patch small fix to support python 3.11
 Patch2:         python-311.patch
 BuildRequires:  %{python_module parameterized}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,11 +50,11 @@ A drop-in replacement for pprint that is arguably prettier.
 
 %build
 export LANG=en_US.utf-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.utf-8
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pypprint
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
