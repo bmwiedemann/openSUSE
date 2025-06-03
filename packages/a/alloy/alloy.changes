@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Jun  2 15:41:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.9.0:
+  Breaking changes
+  * The prometheus.exporter.windows component has been update to
+    version v0.30.6. This update includes a significant rework of
+    the exporter and includes some breaking changes. (@dehaansa)
+    The msmq and service collectors can no longer be configured
+    with a WMI where clause. Any filtering previously done in a
+    where clause will need to be done in a prometheus.relabel
+    component.
+    The service collector no longer provides enable_v2_collector
+    and use_api configuration options.
+    The mscluster_* and netframework_* collectors are now replaced
+    with one mscluster and netframework collector that allows you
+    to enable the separate metric groupings individually.
+    The teradici_pcoip and vmware_blast collectors have been
+    removed from the exporter.
+  * The prometheus.exporter.oracledb component now embeds the
+    oracledb_exporter from oracle instead of the deprecated
+    oracledb_exporter from iamseth for collecting metrics from an
+    OracleDB server: (@wildum)
+    The arguments username, password, default_metrics, and
+    custom_metrics are now supported.
+    The previously undocumented argument custom_metrics is now
+    expecting a list of paths to custom metrics files.
+    The following metrics are no longer available by default:
+    oracledb_sessions_activity, oracledb_tablespace_free_bytes
+    (Experimental) The enable_context_propagation argument in
+    beyla.ebpf has been replaced with the context_propagation
+    argument.
+  * Set enable_context_propagation to all to get the same behaviour
+    as enable_context_propagation being set to true.
+  Features
+  * Bump snmp_exporter and embedded modules in
+    prometheus.exporter.snmp to v0.29.0, add cisco_device module
+    support (@v-zhuravlev)
+  * Add the otelcol.storage.file extension to support persistent
+    sending queues and otelcol.receiver.filelog file state tracking
+    between restarts. (@dehaansa)
+  * Add otelcol.exporter.googlecloud community component to export
+    metrics, traces, and logs to Google Cloud. (@motoki317)
+  * Add support to configure basic authentication for alloy http
+    server. (@kalleep)
+  * Add validate command to alloy that will perform limited
+    validation of alloy configuration files. (@kalleep)
+  * Add support to validate foreach block when using validate
+    command. (@kalleep)
+  * Add otelcol.receiver.splunkhec component to receive events in
+    splunk hec format and forward them to other otelcol.*
+    components. (@kalleep)
+  * Add support for Mimir federated rule groups in
+    mimir.rules.kubernetes (@QuentinBisson)
+
+-------------------------------------------------------------------
 Mon May  5 11:06:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.8.3:
