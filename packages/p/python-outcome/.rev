@@ -86,4 +86,12 @@
   (see https://github.com/python-trio/outcome/issues/12)</comment>
     <requestid>1132685</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>65ba322b9b41316c23141637fc71980b</srcmd5>
+    <version>1.3.0.post0</version>
+    <time>1748965838</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1281987</requestid>
+  </revision>
 </revisionlist>
