@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Pipely
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name IO-Pipely
 Name:           perl-IO-Pipely
-Version:        0.006
+Version:        0.6.0
 Release:        0
-Summary:        Portably create pipe() or pipe-like handles, one way or another
+# 0.006 -> normalize -> 0.6.0
+%define cpan_version 0.006
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Portably create pipe() or pipe-like handles, one way or another
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RC/RCAPUTO/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RC/RCAPUTO/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -32,13 +34,15 @@ BuildRequires:  perl(Carp) >= 1.42
 BuildRequires:  perl(Exporter) >= 5.72
 BuildRequires:  perl(Fcntl) >= 1.13
 BuildRequires:  perl(IO::Socket) >= 1.38
-BuildRequires:  perl(Scalar::Util) >= 1.46_02
+BuildRequires:  perl(Scalar::Util) >= 1.46
 BuildRequires:  perl(Symbol) >= 1.08
 BuildRequires:  perl(Test::More) >= 1.302120
 Requires:       perl(Exporter) >= 5.72
 Requires:       perl(Fcntl) >= 1.13
 Requires:       perl(IO::Socket) >= 1.38
 Requires:       perl(Symbol) >= 1.08
+Provides:       perl(IO::Pipely) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -64,7 +68,7 @@ operating system's capabilities and the number of directions requested. The
 autodetection may be overridden by specifying a particular pipe type.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
