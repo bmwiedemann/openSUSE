@@ -52,7 +52,9 @@ case ${type#"$SRC": } in
 	*"compress'd data"*|\
 	*"packed data"*)
 		CMD="gzip -dc" ;;
-	*"Zip archive data"*)
+	*"Zip archive data"*|\
+	*"Java archive data"*|\
+	*"Android package"*)
 		CMD="unzip -v" ;;
 	*"bzip"*" compressed data"*)
 		CMD="bzip2 -dc" ;;
@@ -61,6 +63,8 @@ case ${type#"$SRC": } in
 		CMD="xz -dc" ;;
 	*"Zstandard compressed data"*)
 		CMD="zstd -dc" ;;
+	*"ASCII cpio archive"*)
+		CMD="cpio -ictvF" ;;
 	*)
 		rm -f "$TMPF_pre"
 		TMPF_pre="$SRC" ;;
@@ -83,11 +87,11 @@ test -n "$CMD" && $CMD "$SRC" >"$TMPF_pre" 2>/dev/null
 		*RPM*)
 			if [ -x "`/usr/bin/which rpm 2>/dev/null`" ]; then
 			(echo -e "=============================== Information ====================================\n";
-			rpm -qip "\"$TMPF_pre\"";
+			rpm -qip "$TMPF_pre";
 			echo -e "\n\n================================= Changelog (head) =============================\n";
-			rpm -qp --changelog "\"$TMPF_pre\"" | head -n 16
+			rpm -qp --changelog "$TMPF_pre" | head -n 16
 			echo -e "\n\n================================= Content ======================================\n";
-			rpm -qlp "\"$TMPF_pre\""
+			rpm -qlp "$TMPF_pre"
                         ) >"$TMPF" 2>/dev/null
 			else echo "rpm is not available for preprocessing" 1>&2; rm -f "$TMPF"; TMPF="$TMPF_pre"; fi
 			;;

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 25 06:23:18 UTC 2025 - munix9@googlemail.com
+
+- Extend detection and preview for "Java archive data" (eg. .jar),
+  "Android package" (eg. .apk) and "ASCII cpio archive"
+  (eg. .obscpio) in lessopen.sh
+- Fix rpm preprocessing: Remove escaped quotes from $TMPF_pre in
+  lessopen.sh
+
+-------------------------------------------------------------------
 Fri Apr 25 11:32:43 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 676
