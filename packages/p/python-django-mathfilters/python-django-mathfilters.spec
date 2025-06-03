@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-mathfilters
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-django-mathfilters
 Version:        1.0.0
@@ -26,7 +25,9 @@ License:        MIT
 URL:            https://github.com/dbrgn/django-mathfilters
 Source:         https://files.pythonhosted.org/packages/source/d/django-mathfilters/django-mathfilters-%{version}.tar.gz
 BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
@@ -42,10 +43,10 @@ mv mathfilters/tests.py .
 sed -i 's/from .templatetags/from mathfilters.templatetags/' tests.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +55,7 @@ sed -i 's/from .templatetags/from mathfilters.templatetags/' tests.py
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/mathfilters
+%{python_sitelib}/django_mathfilters-%{version}.dist-info
 
 %changelog
