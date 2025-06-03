@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 02 16:26:57 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1748859519.44e4a9e:
+  * ci: Remove workaround for Devel::Cover
+  * Require Inline::Lua
+  * Add support for lua test modules
+  * Use CPAN module Test::CheckGitStatus
+  * Apply macro to support upcoming opensuse/sle 16 build
+
+-------------------------------------------------------------------
 Thu May 22 11:28:58 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1747913329.a855b3a:
