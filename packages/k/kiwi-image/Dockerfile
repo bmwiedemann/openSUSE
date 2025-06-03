@@ -49,4 +49,4 @@ LABEL usage="This container requires an openSUSE/SUSE host kernel for full funct
 RUN set -euo pipefail; \
     [ "$(rpm -q --qf '%{version}' python3-kiwi | \
     cut -d '.' -f -2)" = "10.2" ]
-RUN set -euo pipefail; printf "mapper:\n  - part_mapper: kpartx\n" > /etc/kiwi.yml
+RUN set -euo pipefail; printf "runtime_checks:\n  - disable:\n    - check_target_dir_on_unsupported_filesystem\n\nmapper:\n  - part_mapper: kpartx\n" > /etc/kiwi.yml

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  3 09:04:29 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- disable runtime checks for the filesystem temporarily until next kiwi release
+
+-------------------------------------------------------------------
 Fri May 23 11:23:16 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - use SOURCEURL_WITH to generate proper artifacthub urls
