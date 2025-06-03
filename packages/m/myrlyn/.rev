@@ -26,4 +26,24 @@
   * Added doc for OBS packaging</comment>
     <requestid>1276607</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>344f7e9482a9530c0aa2304ebf77f453</srcmd5>
+    <version>0.9.5</version>
+    <time>1748966262</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.9.5:
+  * Version bump to 0.9.5
+  * Added (preliminary!) community repos for Leap 16.0 / SLES-16.0
+  * Giving up on Qt-internal messages
+  * Use the 'myrlyn' textdomain and the default locale dir (issue #45)
+  * Added infrastructure for program translations (issue #45)
+  * Use QObject::tr() instead of gettext() directly
+  * Added missing member initialization
+  * Adapt new program name in exported dependency list
+  * Require zypp in CMakeLists.txt (Closes #95)
+  * Removed unneeded include
+  * Fix: pass functor directly instead of using boost::ref
+  * Include &lt;boost/ref.hpp&gt; (Closes #92)</comment>
+    <requestid>1282351</requestid>
+  </revision>
 </revisionlist>
