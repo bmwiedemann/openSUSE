@@ -2605,4 +2605,12 @@ let build start it or we will get libvirt errors.
     <comment></comment>
     <requestid>1278376</requestid>
   </revision>
+  <revision rev="174" vrev="38">
+    <srcmd5>14c03d01f992a161c61b0580681c8577</srcmd5>
+    <version>3006.0</version>
+    <time>1748965826</time>
+    <user>anag_factory</user>
+    <comment>Update to latest version (forwarded request 1280482 from mczernek)</comment>
+    <requestid>1281960</requestid>
+  </revision>
 </revisionlist>

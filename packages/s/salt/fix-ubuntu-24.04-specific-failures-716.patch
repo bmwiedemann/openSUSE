@@ -1,0 +1,81 @@
+From 9639129b9b6fb495e7c4eec6062ef6eb4253c007 Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Tue, 27 May 2025 10:18:59 +0200
+Subject: [PATCH] Fix Ubuntu 24.04 specific failures (#716)
+
+Co-authored-by: Pedro Algarvio <pedro@algarvio.me>
+---
+ tests/pytests/functional/modules/test_pkg.py | 7 +++++--
+ tests/pytests/unit/modules/test_aptpkg.py    | 9 +++++----
+ 2 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/tests/pytests/functional/modules/test_pkg.py b/tests/pytests/functional/modules/test_pkg.py
+index 72b8695512..c80bb3b0c3 100644
+--- a/tests/pytests/functional/modules/test_pkg.py
++++ b/tests/pytests/functional/modules/test_pkg.py
+@@ -204,11 +204,14 @@ def test_mod_del_repo_multiline_values(modules, refresh_db):
+ 
+ 
+ @pytest.mark.requires_salt_modules("pkg.owner")
+-def test_owner(modules):
++def test_owner(modules, grains):
+     """
+     test finding the package owning a file
+     """
+-    binary = shutil.which("ls")
++    binary = "/bin/ls"
++    if grains["os"] == "Ubuntu" and grains["osmajorrelease"] >= 24:
++        binary = "/usr/bin/ls"
++
+     ret = modules.pkg.owner(binary)
+     assert len(ret) != 0
+ 
+diff --git a/tests/pytests/unit/modules/test_aptpkg.py b/tests/pytests/unit/modules/test_aptpkg.py
+index fe4dd63eee..3d7c004ef7 100644
+--- a/tests/pytests/unit/modules/test_aptpkg.py
++++ b/tests/pytests/unit/modules/test_aptpkg.py
+@@ -924,7 +924,7 @@ def test_mod_repo_enabled(tmp_path):
+     """
+     Checks if a repo is enabled or disabled depending on the passed kwargs.
+     """
+-    file = tmp_path / "repo.list"
++    file = str(tmp_path / "repo.list")
+     with patch.dict(
+         aptpkg.__salt__,
+         {"config.option": MagicMock(), "no_proxy": MagicMock(return_value=False)},
+@@ -954,7 +954,7 @@ def test_mod_repo_enabled(tmp_path):
+                             data_is_true.assert_called_with(False)
+ 
+ 
+-def test_mod_repo_match():
++def test_mod_repo_match(tmp_path):
+     """
+     Checks if a repo is matched without taking into account any ending "/" in the uri.
+     """
+@@ -967,6 +967,7 @@ def test_mod_repo_match():
+     )
+     mock_source_list = MockSourceList()
+     mock_source_list.list = [mock_source]
++    file = str(tmp_path / "repo.list")
+ 
+     with patch.dict(
+         aptpkg.__salt__,
+@@ -999,13 +1000,13 @@ def test_mod_repo_match():
+                             )
+                             if salt.utils.path.which("apt-key"):
+                                 repo = aptpkg.mod_repo(
+-                                    source_line_no_slash, enabled=False
++                                    source_line_no_slash, file=file, enabled=False
+                                 )
+                                 assert repo[source_line_no_slash]["uri"] == source_uri
+                             else:
+                                 with pytest.raises(Exception) as err:
+                                     repo = aptpkg.mod_repo(
+-                                        source_line_no_slash, enabled=False
++                                        source_line_no_slash, file=file, enabled=False
+                                     )
+                                 assert (
+                                     "missing 'signedby' option when apt-key is missing"
+-- 
+2.49.0
+

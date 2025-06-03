@@ -548,6 +548,9 @@ Patch169:       fix-refresh-of-osrelease-and-related-grains-on-pytho.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/86245dc12c0705b5579a15dcb70724244e574d73
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/715
 Patch170:       fix-debian-tests-715.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/790304df995ad2415bf550cc8489230360da1bd7
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/716
+Patch171:       fix-ubuntu-24.04-specific-failures-716.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END
