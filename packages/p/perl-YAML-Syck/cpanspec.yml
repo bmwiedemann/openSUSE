@@ -22,7 +22,8 @@ summary: Perl YAML loader and dumper
 #license: SUSE-NonFree
 #skip_noarch: 1
 custom_build: |-
- perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags} -DI_STDLIB -DI_STRING"
+ # https://github.com/cpan-authors/YAML-Syck/issues/61
+ perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags} -DI_STDLIB -DI_STRING -std=gnu11"
  make %{?_smp_mflags}
 #custom_test: |-
 #startserver && make test
