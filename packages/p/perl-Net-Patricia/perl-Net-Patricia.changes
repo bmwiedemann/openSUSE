@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 26 19:32:01 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Remove no-libnsl.diff, fixed upstream
+  https://rt.cpan.org/Ticket/Display.html?id=124088
+  Add cpanspec.yml used by cpanspec to autogenerate the spec
+
+-------------------------------------------------------------------
+Mon Apr 28 05:47:50 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.230.0 (1.23)
+   see /usr/share/doc/packages/perl-Net-Patricia/Changes
+
+-------------------------------------------------------------------
 Mon Mar  4 13:46:11 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-Patricia
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,26 @@
 #
 
 
-#disable test suite as it doesn't work at all without being online
-#and our build hosts are completly without network interfaces
-%bcond_with test
-
-Name:           perl-Net-Patricia
-Version:        1.22
-Release:        0
 %define cpan_name Net-Patricia
-Summary:        Patricia Trie perl module for fast IP address lookups
+Name:           perl-Net-Patricia
+Version:        1.230.0
+Release:        0
+# 1.23 -> normalize -> 1.230.0
+%define cpan_version 1.23
+#Upstream: SUSE-Public-Domain
 License:        BSD-2-Clause AND GPL-2.0-or-later
-Group:          Development/Libraries/Perl
-URL:            http://search.cpan.org/dist/Net-Patricia/
-Source:         http://www.cpan.org/authors/id/G/GR/GRUBER/%{cpan_name}-%{version}.tar.gz
-Patch1:         no-libnsl.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Summary:        Patricia Trie for fast IP address lookups
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/G/GR/GRUBER/%{cpan_name}-%{cpan_version}.tar.gz
+Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Net::CIDR::Lite) >= 0.20
+BuildRequires:  perl(Net::CIDR::Lite) >= 0.200
 BuildRequires:  perl(Socket6)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(version)
-Requires:       perl(Net::CIDR::Lite) >= 0.20
+Requires:       perl(Net::CIDR::Lite) >= 0.200
 Requires:       perl(Socket6)
-Requires:       perl(Test::More) >= 0.88
 Requires:       perl(version)
 %{perl_requires}
 
@@ -60,16 +56,14 @@ The BSD radix code is thoroughly described in "TCP/IP Illustrated, Volume
 Table for Berkeley Unix'' by Keith Sklower.
 
 %prep
-%autosetup -p1 -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
 
-%if %{with test}
 %check
-%{__make} test
-%endif
+make test
 
 %install
 %perl_make_install
@@ -77,7 +71,7 @@ Table for Berkeley Unix'' by Keith Sklower.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes COPYING MYMETA.json MYMETA.yml README
+%doc Changes README
+%license COPYING
 
 %changelog
