@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-hatch_vcs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hatch_vcs%{psuffix}
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Hatch plugin for versioning with your preferred VCS
 License:        MIT
@@ -34,23 +34,23 @@ URL:            https://github.com/ofek/hatch-vcs
 Source:         https://files.pythonhosted.org/packages/source/h/hatch_vcs/hatch_vcs-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-# https://github.com/ofek/hatch-vcs/issues/8
-Requires:       (python-setuptools_scm >= 6.4.0)
-Requires:       python-hatchling >= 0.21.0
-Provides:       python-hatch-vcs = %{version}-%{release}
-BuildArch:      noarch
 # SECTION build
-BuildRequires:  %{python_module hatchling >= 0.21.0}
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module hatchling >= 1.1.0}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm >= 8.2.0}
 # /SECTION
 %if %{with test}
 # SECTION test
 BuildRequires:  %{python_module hatch_vcs = %{version}}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm >= 6.4.0}
 BuildRequires:  git
 # /SECTION
 %endif
+Requires:       python-hatchling >= 1.1.0
+Requires:       python-setuptools_scm >= 8.2.0
+Provides:       python-hatch-vcs = %{version}-%{release}
+BuildArch:      noarch
 %python_subpackages
 
 %description
