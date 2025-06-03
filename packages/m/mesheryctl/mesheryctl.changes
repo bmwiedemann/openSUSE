@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Jun  3 05:18:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.94:
+  * General
+    - Update MAINTAINERS.md: Add Ian Whitney @miacycle (#14886)
+    - chore: unlink Layer5 member profiles in MAINTAINERS.md
+      @codered-lgtm (#14889)
+    - add reference relationship @aabidsofi19 (#14890)
+    - cleanup old components and relationships @aabidsofi19
+      (#14865)
+  * Meshery CLI
+    - Chore: Update docker hub org name @hortison (#14893)
+    - migrate meshkit to meshery/meshkit @aabidsofi19 (#14891)
+    - saves the output of the component view. @VinayCheripally
+      (#14864)
+  * Maintenance
+    - Chore: Update docker hub org name @hortison (#14893)
+    - migrate meshkit to meshery/meshkit @aabidsofi19 (#14891)
+  * Documentation
+    - upadte docker images to meshsync and meshery-operator
+      @aabidsofi19 (#14897)
+    - Update contributing-ui-sistent.md @jamieplu (#14896)
+    - form update @codered-lgtm (#14892)
+    - Chore: Update docker hub org name @hortison (#14893)
+    - migrate meshkit to meshery/meshkit @aabidsofi19 (#14891)
+- update to 0.8.93:
+  * no CLI-related changes in this release
+- update to 0.8.92:
+  * no CLI-related changes in this release
+- update to 0.8.91:
+  * no CLI-related changes in this release
+- update to 0.8.90:
+  * no CLI-related changes in this release
+- update to 0.8.89:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
 Sun May 25 08:07:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.88:
