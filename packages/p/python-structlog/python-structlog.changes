@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun  2 17:09:13 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 25.4.0:
+  Added:
+  * Support for Python 3.14 and Python 3.13.4.
+  * Python 3.14 has an backwards-incompatible change to logging.Logger.isEnabledFor()
+    (it now always returns False if a log entry is in flight) that has been backported
+    to 3.13.4 (expected on 2025-06-03). It mainly affects structlog.stdlib.filter_by_level(). #723
+  * structlog.tracebacks now handles exception groups. structlog.tracebacks.Stack has two
+    new fields, is_group: bool and exceptions: list[Trace]. This works similarly to what
+    Rich v14.0.0 does. #720
+  Fixed:
+  * structlog.processors.ExceptionPrettyPrinter now respects the exception_formatter
+    arguments instead of always using the default formatter. #724
+
+-------------------------------------------------------------------
 Mon Apr 28 10:25:13 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 25.3.0:

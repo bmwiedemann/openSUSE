@@ -294,4 +294,23 @@
     had the timestamp from the local timezone when passing utc=True #713</comment>
     <requestid>1273073</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a7b836ffb3184f021d3df7e67fe29b54</srcmd5>
+    <version>25.4.0</version>
+    <time>1748965912</time>
+    <user>anag_factory</user>
+    <comment>- Update to 25.4.0:
+  Added:
+  * Support for Python 3.14 and Python 3.13.4.
+  * Python 3.14 has an backwards-incompatible change to logging.Logger.isEnabledFor()
+    (it now always returns False if a log entry is in flight) that has been backported
+    to 3.13.4 (expected on 2025-06-03). It mainly affects structlog.stdlib.filter_by_level(). #723
+  * structlog.tracebacks now handles exception groups. structlog.tracebacks.Stack has two
+    new fields, is_group: bool and exceptions: list[Trace]. This works similarly to what
+    Rich v14.0.0 does. #720
+  Fixed:
+  * structlog.processors.ExceptionPrettyPrinter now respects the exception_formatter
+    arguments instead of always using the default formatter. #724</comment>
+    <requestid>1282044</requestid>
+  </revision>
 </revisionlist>
