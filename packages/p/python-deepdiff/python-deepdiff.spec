@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-deepdiff
-Version:        8.4.1
+Version:        8.5.0
 Release:        0
 Summary:        Deep Difference and Search of any Python object/data
 License:        MIT
@@ -26,9 +26,10 @@ URL:            https://github.com/seperman/deepdiff
 Source:         https://github.com/seperman/deepdiff/archive/%{version}.tar.gz#/deepdiff-%{version}-gh.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module jsonpickle}
 #BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module orderly-set >= 5.2.2}
+BuildRequires:  %{python_module orderly-set >= 5.4.1}
 BuildRequires:  %{python_module orjson}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pip}
@@ -42,7 +43,7 @@ BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-orderly-set >= 5.2.2
+Requires:       python-orderly-set >= 5.4.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-PyYAML

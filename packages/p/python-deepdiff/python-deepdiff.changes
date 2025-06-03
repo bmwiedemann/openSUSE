@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  2 11:57:35 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.5.0
+  * Updating deprecated pydantic calls
+  * Switching to pyproject.toml
+  * Fix for moving nested tables when using iterable_compare_func
+  * Fix recursion depth limit when hashing numpy.datetime64
+  * Moving from legacy setuptools use to pyproject.toml
+- Update BuildRequires and Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Thu Mar 27 12:24:09 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 8.4.1

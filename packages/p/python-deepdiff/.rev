@@ -213,4 +213,20 @@
     <comment></comment>
     <requestid>1265204</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>90086cd32637b44552bacae84564d636</srcmd5>
+    <version>8.5.0</version>
+    <time>1748966251</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1281894 from glaubitz
+
+- Update to 8.5.0
+    * Updating deprecated pydantic calls
+    * Switching to pyproject.toml
+    * Fix for moving nested tables when using iterable_compare_func
+    * Fix recursion depth limit when hashing numpy.datetime64
+    * Moving from legacy setuptools use to pyproject.toml
+  - Update BuildRequires and Requires from pyproject.toml</comment>
+    <requestid>1282338</requestid>
+  </revision>
 </revisionlist>
