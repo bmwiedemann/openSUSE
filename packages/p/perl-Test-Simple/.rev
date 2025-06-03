@@ -434,4 +434,17 @@
    see /usr/share/doc/packages/perl-Test-Simple/Changes</comment>
     <requestid>1279825</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>40e7647090e76794e9e1a8210d5bd7f1</srcmd5>
+    <version>1.302214</version>
+    <time>1748965864</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1281908 from tinita
+
+- updated to 1.302214
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+  1.302214  2025-05-24 15:02:44-07:00 America/Los_Angeles
+      - Minor doc fix</comment>
+    <requestid>1282006</requestid>
+  </revision>
 </revisionlist>
