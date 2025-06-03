@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Crypt-MySQL
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Crypt-MySQL
-Version:        0.04
-Release:        0
 %define cpan_name Crypt-MySQL
-Summary:        Emulate the MySQL PASSWORD() function
-License:        GPL-1.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Crypt-MySQL/
-Source:         http://www.cpan.org/authors/id/I/IK/IKEBE/%{cpan_name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Name:           perl-Crypt-MySQL
+Version:        0.40.0
+Release:        0
+# 0.04 -> normalize -> 0.40.0
+%define cpan_version 0.04
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Emulate MySQL PASSWORD() function
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/I/IK/IKEBE/%{cpan_name}-%{cpan_version}.tar.gz
+Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Digest::SHA1)
+BuildRequires:  perl(ExtUtils::CBuilder)
 BuildRequires:  perl(Module::Build)
-#BuildRequires: perl(Crypt::MySQL)
-#BuildRequires: perl(DBD::mysql)
-#BuildRequires: perl(DBI)
 Requires:       perl(Digest::SHA1)
+Provides:       perl(Crypt::MySQL) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -42,21 +43,20 @@ libmysqlclient. You can compare encrypted passwords, without real MySQL
 environment.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Build.PL installdirs=vendor optimize="%{optflags}"
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor optimize="%{optflags}"
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
