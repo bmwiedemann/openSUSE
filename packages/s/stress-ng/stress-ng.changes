@@ -1,44 +1,54 @@
 -------------------------------------------------------------------
+Mon Jun  2 07:39:12 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- update to 0.19.01:
+  * many procfs stressor fixes
+  * Cygwin porting fixes (Kudos to Christian Franke)
+  * Improvements to manual
+  * Fix missing optimisation flags in eigen stressor (2-15x speed improvement)
+  * NUMA fixes
+
+-------------------------------------------------------------------
 Thu May  1 13:51:13 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - update to 0.19.00:
-    stress-gpu: remove sigalrm handler
-    stress-af-alg: prevent unsafe longjmp
-    stress-sysinval: prevent unsafe longjmp
-    stress-memrate: prevent unsafe longjmp
-    core-config-check: Fix segfault cause by uninitialized namelist
-    Manual: Fix spelling mistake "occuring" -> "occurring"
-    stress-brk: move brk stats to shared page, reset brk on out of memory
-    stress-brk: make brk reset work correctly for --brk-bytes option
-    stress-sigbus: make unaligned pointers volatile to force stores
-    stress-sigbus: disabled x86 misaligned SIGBUS feature
-    stress-sigbus: avoid infinite longjmp spin loops
-    stress-sigbus: ensure AC bit in EFLAGS is cleared in all signal handlers
-    stress-cachehammer: add extra checking for failed temp dir creat failures
-    stress-ng.h: make stress_continue() a macro
-    stress-ng: re-work stress_continue() to just check bogo-ops
-    Add new --buildinfo option to show build time information
-    Manual: describe the duplication of stdout in the --log-file option
-    stress-ng: ensure no child processes are forked on --dry-run
-    stress-dirmany: maximize dirmany_bytes to 1TB if variable is wide enough
-    stress-rdrand: fix ppc random issue, generate 64 bit value
-    stress-lockbus: SIGILL on s390 should disable misaligned locks
-    stress-fractal: use faster atomic inc on larger row counter
-    Manual: remove discards metrics from iostat description
-    stress-nop: add x86 floating point fnop instruction
-    stress-sigbus: generate SIGBUS on x86 with misaligned memory access
-    stress-lockbus: add SIGILL detection, skip with no resources warning
-    stress-fractal: move row lock from global struct to stressor shared page
-    stress-fractal: manually unroll julia set for vectorization
-    stress-fractal: manually unroll mandlebrot for vectorization
-    stress-fractal: remove unrolling, minor optimization fixes
-    stress-acl: delete acls using acl_delete_def_file
-    stress-revio: add a readahead option to revio-opts
-    stress-iomix: add a readahead iomix method
-    kernel-coverage: only set iosched if it's available
-    stress-filerace: add a new file race stressor
-    stress-fanotify: add 4 more report types
-    stress-prctl: add support for prctl commands 71 to 77
+  * stress-gpu: remove sigalrm handler
+  * stress-af-alg: prevent unsafe longjmp
+  * stress-sysinval: prevent unsafe longjmp
+  * stress-memrate: prevent unsafe longjmp
+  * core-config-check: Fix segfault cause by uninitialized namelist
+  * Manual: Fix spelling mistake "occuring" -> "occurring"
+  * stress-brk: move brk stats to shared page, reset brk on out of memory
+  * stress-brk: make brk reset work correctly for --brk-bytes option
+  * stress-sigbus: make unaligned pointers volatile to force stores
+  * stress-sigbus: disabled x86 misaligned SIGBUS feature
+  * stress-sigbus: avoid infinite longjmp spin loops
+  * stress-sigbus: ensure AC bit in EFLAGS is cleared in all signal handlers
+  * stress-cachehammer: add extra checking for failed temp dir creat failures
+  * stress-ng.h: make stress_continue() a macro
+  * stress-ng: re-work stress_continue() to just check bogo-ops
+  * Add new --buildinfo option to show build time information
+  * Manual: describe the duplication of stdout in the --log-file option
+  * stress-ng: ensure no child processes are forked on --dry-run
+  * stress-dirmany: maximize dirmany_bytes to 1TB if variable is wide enough
+  * stress-rdrand: fix ppc random issue, generate 64 bit value
+  * stress-lockbus: SIGILL on s390 should disable misaligned locks
+  * stress-fractal: use faster atomic inc on larger row counter
+  * Manual: remove discards metrics from iostat description
+  * stress-nop: add x86 floating point fnop instruction
+  * stress-sigbus: generate SIGBUS on x86 with misaligned memory access
+  * stress-lockbus: add SIGILL detection, skip with no resources warning
+  * stress-fractal: move row lock from global struct to stressor shared page
+  * stress-fractal: manually unroll julia set for vectorization
+  * stress-fractal: manually unroll mandlebrot for vectorization
+  * stress-fractal: remove unrolling, minor optimization fixes
+  * stress-acl: delete acls using acl_delete_def_file
+  * stress-revio: add a readahead option to revio-opts
+  * stress-iomix: add a readahead iomix method
+  * kernel-coverage: only set iosched if it's available
+  * stress-filerace: add a new file race stressor
+  * stress-fanotify: add 4 more report types
+  * stress-prctl: add support for prctl commands 71 to 77
 
 -------------------------------------------------------------------
 Mon Mar 31 08:36:25 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
