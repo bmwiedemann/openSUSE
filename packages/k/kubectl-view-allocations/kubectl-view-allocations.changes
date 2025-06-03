@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 03 11:26:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.21.2:
+  * (cargo-release) version 0.21.2
+  * Bump kube from 0.99.0 to 1.1.0
+  * Bump color-eyre from 0.6.4 to 0.6.5
+  * Bump tokio from 1.45.0 to 1.45.1
+  * Bump clap from 4.5.38 to 4.5.39
+  * add link to another alternative
+
+-------------------------------------------------------------------
 Sun May 11 16:37:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.21.1:
