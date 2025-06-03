@@ -35,4 +35,19 @@ Requires python-setuptools 78 to build successfully.
 </comment>
     <requestid>1264843</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2b51cb9a68f027afece06b399cc9f621</srcmd5>
+    <version>1.4.0</version>
+    <time>1748970645</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1282153 from glaubitz
+
+- Update to 1.4.0
+    * Python 3.9+ is now required (#321)
+    * Add support for array-based bulk insert with NumPy (#340)
+    * Upgrade binary wheels with libspatialindex-2.1.0 (#353)
+    * Rename project and other build components to “rtree” (#350)
+  - Refresh Rtree-opensuse-noarch.patch</comment>
+    <requestid>1282361</requestid>
+  </revision>
 </revisionlist>

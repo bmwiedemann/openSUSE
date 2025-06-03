@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  3 07:16:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.4.0
+  * Python 3.9+ is now required (#321)
+  * Add support for array-based bulk insert with NumPy (#340)
+  * Upgrade binary wheels with libspatialindex-2.1.0 (#353)
+  * Rename project and other build components to “rtree” (#350)
+- Refresh Rtree-opensuse-noarch.patch
+
+-------------------------------------------------------------------
 Tue Mar 25 08:01:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Lowercase metadata directory name.
