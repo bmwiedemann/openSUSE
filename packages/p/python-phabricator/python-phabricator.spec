@@ -1,7 +1,7 @@
 #
 # spec file for package python-phabricator
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-phabricator
 Version:        0.9.1
 Release:        0
@@ -25,15 +24,17 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/disqus/python-phabricator
 Source:         https://github.com/disqus/python-phabricator/archive/refs/tags/%{version}.tar.gz#/phabricator-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-# SECTION test requirements
-BuildRequires:  %{python_module requests >= 2.22}
-BuildRequires:  %{python_module responses >= 0.12}
-# /SECTION
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.22
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module requests >= 2.22}
+BuildRequires:  %{python_module responses >= 0.12}
+# /SECTION
 %python_subpackages
 
 %description
@@ -43,10 +44,10 @@ Phabricator API Bindings
 %setup -q -n python-phabricator-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +56,7 @@ Phabricator API Bindings
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/phabricator
+%{python_sitelib}/phabricator-%{version}*-info
 
 %changelog
