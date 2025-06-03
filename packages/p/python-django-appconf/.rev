@@ -200,4 +200,12 @@
   * Updated some old code to use more modern conventions.</comment>
     <requestid>1269474</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>e868c184ec2fce84e4d3c7223bb5f4b5</srcmd5>
+    <version>1.1.0</version>
+    <time>1748965962</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282111</requestid>
+  </revision>
 </revisionlist>

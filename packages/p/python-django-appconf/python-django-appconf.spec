@@ -26,8 +26,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/django-compressor/django-appconf
 Source:         https://github.com/django-compressor/django-appconf/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
@@ -42,10 +44,10 @@ gracefully.
 %setup -q -n django-appconf-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
