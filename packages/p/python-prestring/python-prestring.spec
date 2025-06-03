@@ -1,7 +1,7 @@
 #
 # spec file for package python-prestring
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# evilunit is failing on py3
-%define skip_python2 1
 Name:           python-prestring
 Version:        0.9.0
 Release:        0
@@ -28,7 +25,9 @@ URL:            https://github.com/podhmo/prestring
 Source:         https://github.com/podhmo/prestring/archive/%{version}.tar.gz#/prestring-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/podhmo/prestring/commit/55165f7b1a622577801f8d6c2bd3d0f16555be4b Fix test for py39 (#75)
 Patch0:         py39.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -46,10 +45,10 @@ Python source code generation library (with overuse with-syntax).
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +57,7 @@ Python source code generation library (with overuse with-syntax).
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/prestring
+%{python_sitelib}/prestring-%{version}*-info
 
 %changelog

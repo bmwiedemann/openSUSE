@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  3 12:07:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed Apr 28 11:48:04 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Add py39.patch to fix tests
