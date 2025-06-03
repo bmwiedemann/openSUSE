@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 08:49:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Drop pyside2 support (boo#1243916)
+
+-------------------------------------------------------------------
 Tue Mar 11 12:35:39 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.7.1

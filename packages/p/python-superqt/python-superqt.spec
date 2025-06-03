@@ -43,7 +43,6 @@ BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing-extensions >= 3.7.4.3}
-BuildRequires:  python3-pyside2
 BuildRequires:  python3-pyside6
 #BuildRequires:  %%{python_module cmap}
 #BuildRequires:  %%{python_module pyconify}
@@ -74,8 +73,6 @@ for PYTEST_QT_API in pyqt5 pyqt6; do
   %pytest
 done
 # The pysides are only for the primary python
-# pyside2 is currently broken on python313
-# for PYTEST_QT_API in pyside2 pyside6; do
 for PYTEST_QT_API in pyside6; do
   export PYTEST_QT_API
   %python3_pytest
