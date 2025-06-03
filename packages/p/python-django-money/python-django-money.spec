@@ -37,10 +37,12 @@ BuildArch:      noarch
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module django-reversion}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module py-moneyed >= 2.0}
 BuildRequires:  %{python_module pytest >= 8.2}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 # /SECTION
 %python_subpackages
 
@@ -53,10 +55,10 @@ Django money and currency fields in models and forms.
 sed -i -e '/^addopts/d' pytest.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
