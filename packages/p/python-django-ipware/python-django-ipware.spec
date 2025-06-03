@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-ipware
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/un33k/django-ipware
 Source:         https://github.com/un33k/django-ipware/archive/refs/tags/v%{version}.tar.gz#/django-ipware-%{version}.tar.gz
 BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
@@ -40,10 +42,10 @@ A Django utility application that returns client's real IP address.
 %setup -q -n django-ipware-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,6 +55,7 @@ export DJANGO_SETTINGS_MODULE=ipware.tests.testsettings
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/ipware
+%{python_sitelib}/django_ipware-%{version}.dist-info
 
 %changelog

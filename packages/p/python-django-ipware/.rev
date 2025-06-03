@@ -60,4 +60,13 @@
     instead of `django-ipware` (thx: rposborne)</comment>
     <requestid>1124973</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5996fcf2db7d6f590c14c7588c84a252</srcmd5>
+    <version>5.0.2</version>
+    <time>1748965979</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1282124</requestid>
+  </revision>
 </revisionlist>
