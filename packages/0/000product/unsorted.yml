@@ -8042,6 +8042,7 @@ unsorted:
   - grub2-theme-breeze 
   - grub2-x86_64-efi-debug 
   - grub2-x86_64-efi-extras 
+  - grub2-x86_64-xen 
   - grub2-x86_64-xen-debug 
   - grub2-x86_64-xen-extras 
   - grype 
@@ -16641,6 +16642,7 @@ unsorted:
   - libvirt-client-qemu 
   - libvirt-daemon 
   - libvirt-daemon-config-nwfilter 
+  - libvirt-daemon-driver-libxl 
   - libvirt-daemon-driver-lxc 
   - libvirt-daemon-driver-nwfilter 
   - libvirt-daemon-driver-storage-gluster 
@@ -16648,6 +16650,7 @@ unsorted:
   - libvirt-daemon-lxc 
   - libvirt-daemon-plugin-sanlock 
   - libvirt-daemon-proxy 
+  - libvirt-daemon-xen 
   - libvirt-dbus 
   - libvirt-devel 
   - libvirt-doc 
@@ -20777,6 +20780,7 @@ unsorted:
   - patterns-server-lamp_server-32bit 
   - patterns-server-mail_server-32bit 
   - patterns-server-printing-32bit 
+  - patterns-server-xen_server 
   - patterns-server-xen_tools 
   - patterns-sway-sway 
   - patterns-tik-base 
@@ -32494,6 +32498,7 @@ unsorted:
   - python313-extension-helpers 
   - python313-extra-platforms 
   - python313-extract-msg 
+  - python313-extras 
   - python313-extratools 
   - python313-eyed3 
   - python313-ezdxf 
@@ -33071,6 +33076,7 @@ unsorted:
   - python313-libusbsio 
   - python313-libversion 
   - python313-libvhdi 
+  - python313-libvirt-python 
   - python313-libvmdk 
   - python313-libvsapm 
   - python313-libvsgpt 
@@ -33078,6 +33084,7 @@ unsorted:
   - python313-libvslvm 
   - python313-libvsmbr 
   - python313-libwrc 
+  - python313-libxml2 
   - python313-license-expression 
   - python313-ligo-lw 
   - python313-ligo-segments 
@@ -47920,6 +47927,7 @@ unsorted:
   - typelib-1_0-Libags-7_0 
   - typelib-1_0-Libinsane-1_0 
   - typelib-1_0-Libmsi-1_0 
+  - typelib-1_0-Libosinfo-1_0 
   - typelib-1_0-Libproxy-1_0 
   - typelib-1_0-LibvirtGConfig-1_0 
   - typelib-1_0-LibvirtGLib-1_0 
@@ -48439,7 +48447,9 @@ unsorted:
   - virglrenderer-test-server 
   - virt-bridge-setup 
   - virt-firmware 
+  - virt-install 
   - virt-manager 
+  - virt-manager-common 
   - virt-p2v 
   - virt-scenario-gtk 
   - virt-top 
@@ -48968,8 +48978,10 @@ unsorted:
   - xemacs-packages-info 
   - xeme-devel 
   - xeme-doc 
+  - xen 
   - xen-devel 
   - xen-doc-html 
+  - xen-tools 
   - xen-tools-domU 
   - xen-tools-xendomains-wait-disk 
   - xerces-c 

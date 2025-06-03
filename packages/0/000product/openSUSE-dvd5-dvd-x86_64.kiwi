@@ -667,7 +667,6 @@
       <repopackage name="grub2-systemd-sleep-plugin"/>
       <repopackage name="grub2-x86_64-efi"/>
       <repopackage name="grub2-x86_64-efi-bls"/>
-      <repopackage name="grub2-x86_64-xen"/>
       <repopackage name="gsettings-backend-dconf"/>
       <repopackage name="gsettings-desktop-schemas"/>
       <repopackage name="gsettings-desktop-schemas-lang"/>
@@ -2789,7 +2788,6 @@
       <repopackage name="libvirt-client"/>
       <repopackage name="libvirt-daemon-common"/>
       <repopackage name="libvirt-daemon-config-network"/>
-      <repopackage name="libvirt-daemon-driver-libxl"/>
       <repopackage name="libvirt-daemon-driver-network"/>
       <repopackage name="libvirt-daemon-driver-nodedev"/>
       <repopackage name="libvirt-daemon-driver-qemu"/>
@@ -2807,7 +2805,6 @@
       <repopackage name="libvirt-daemon-log"/>
       <repopackage name="libvirt-daemon-plugin-lockd"/>
       <repopackage name="libvirt-daemon-qemu"/>
-      <repopackage name="libvirt-daemon-xen"/>
       <repopackage name="libvirt-libs"/>
       <repopackage name="libvisio-0_1-1"/>
       <repopackage name="libvisual-0_4-0"/>
@@ -3305,7 +3302,6 @@
       <repopackage name="patterns-server-lamp_server"/>
       <repopackage name="patterns-server-mail_server"/>
       <repopackage name="patterns-server-printing"/>
-      <repopackage name="patterns-server-xen_server"/>
       <repopackage name="patterns-xfce-xfce"/>
       <repopackage name="patterns-xfce-xfce_basis"/>
       <repopackage name="patterns-xfce-xfce_laptop"/>
@@ -3679,7 +3675,6 @@
       <repopackage name="python313-dbus-python"/>
       <repopackage name="python313-decorator"/>
       <repopackage name="python313-distro"/>
-      <repopackage name="python313-extras"/>
       <repopackage name="python313-gobject"/>
       <repopackage name="python313-gobject-cairo"/>
       <repopackage name="python313-gobject-Gdk"/>
@@ -3689,8 +3684,6 @@
       <repopackage name="python313-hyperframe"/>
       <repopackage name="python313-idna"/>
       <repopackage name="python313-ldap"/>
-      <repopackage name="python313-libvirt-python"/>
-      <repopackage name="python313-libxml2"/>
       <repopackage name="python313-linux-procfs"/>
       <repopackage name="python313-lxml"/>
       <repopackage name="python313-mysqlclient"/>
@@ -4126,7 +4119,6 @@
       <repopackage name="typelib-1_0-IBus-1_0"/>
       <repopackage name="typelib-1_0-JavaScriptCore-4_1"/>
       <repopackage name="typelib-1_0-Json-1_0"/>
-      <repopackage name="typelib-1_0-Libosinfo-1_0"/>
       <repopackage name="typelib-1_0-Libxfce4ui-2_0"/>
       <repopackage name="typelib-1_0-Libxfce4util-1_0"/>
       <repopackage name="typelib-1_0-LunarCalendar-3_0"/>
@@ -4190,8 +4182,6 @@
       <repopackage name="vim-data-common"/>
       <repopackage name="vinagre"/>
       <repopackage name="vinagre-lang"/>
-      <repopackage name="virt-install"/>
-      <repopackage name="virt-manager-common"/>
       <repopackage name="virt-what"/>
       <repopackage name="virtiofsd"/>
       <repopackage name="virtualbox-guest-tools"/>
@@ -4264,9 +4254,7 @@
       <repopackage name="xdm"/>
       <repopackage name="xdmbgrd"/>
       <repopackage name="xdpyinfo"/>
-      <repopackage name="xen"/>
       <repopackage name="xen-libs"/>
-      <repopackage name="xen-tools"/>
       <repopackage name="xf86-input-evdev"/>
       <repopackage name="xf86-input-joystick"/>
       <repopackage name="xf86-input-libinput"/>
