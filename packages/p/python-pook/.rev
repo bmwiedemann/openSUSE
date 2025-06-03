@@ -82,4 +82,12 @@
   * feat(History): add release changes</comment>
     <requestid>1135870</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>201e32e8a88be3ba829a067ee32b6e1a</srcmd5>
+    <version>1.1.1</version>
+    <time>1748966182</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282302</requestid>
+  </revision>
 </revisionlist>

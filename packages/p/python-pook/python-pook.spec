@@ -1,7 +1,7 @@
 #
 # spec file for package python-pook
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ Summary:        HTTP traffic mocking and expectations
 License:        MIT
 URL:            https://github.com/h2non/pook
 Source:         https://files.pythonhosted.org/packages/source/p/pook/pook-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp
@@ -38,6 +40,7 @@ BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module furl >= 0.5.6}
 BuildRequires:  %{python_module jsonschema >= 2.5.1}
 BuildRequires:  %{python_module mocket >= 1.6.0}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module urllib3 >= 1.19.1}
@@ -56,10 +59,10 @@ rm -f setup.cfg pytest.ini tox.ini
 touch tests/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %fdupes %{buildroot}%{$python_sitelib}
 }
