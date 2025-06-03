@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  3 12:25:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Thu Jul 20 16:46:22 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
 
 - add sle15_python_module_pythons (jsc#PED-68)
