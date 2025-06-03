@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  2 21:07:50 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.37.2:
+  * Upgrade SQL parser
+  * Update Go dependencies
+
+-------------------------------------------------------------------
 Thu May 29 10:29:38 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 8.37.1:
