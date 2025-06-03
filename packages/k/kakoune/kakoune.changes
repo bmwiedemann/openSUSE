@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Jun  3 11:12:01 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2025.06.03:
+  * Expose env vars that are mentioned in the arguments passed to
+    shell expansions
+  * Support for colored double underlines
+  * git apply can now operate on selected changes in the current
+    buffer's file (useful for quick (un)staging and reverting)
+  * exec/eval -client switch accepts '*' for all clients and comma
+    separated list of client names.
+
+-------------------------------------------------------------------
+Sun May 19 08:52:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2024.05.18:
+  * Fixed tests on Alpine Linux and *BSD
+
+-------------------------------------------------------------------
+Mon May 13 06:18:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2024.05.09:
+  * flag-lines -after switch to display text after the line
+  * shell-script-candidates completion now runs the script asynchronously
+    while displaying and updating results live.
+  * val{window_range} elements are now emitted as different strings
+  * + only duplicates identical selections a single time to avoid surprising
+    and slow exponential growth in the number of selections.
+  * daemonize-session command makes it possible to convert the current session
+    to a daemon one (which will not exit on last client disconnecting)
+  * View mode commands and mouse scrolling no longer change selections when those go off-screen.
+  * New commands git apply, git blame-jump, git edit and git grep.
+  * git blame now also works in git-diff and git-log buffers.
+  * Completions provided via shell-script-candidates or completers are no longer sorted if the typed text is
+    empty.
+  * The terminal alias has been replaced with a command that selects terminal program and placement based on
+    windowing options.
+  * local scopes in commands and evaluate-commands.
+
+-------------------------------------------------------------------
 Mon Aug  7 06:35:06 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2023.08.05:

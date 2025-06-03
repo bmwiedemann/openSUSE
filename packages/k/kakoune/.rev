@@ -317,4 +317,12 @@
   * Fix compilation errors on FreeBSD and MacOS using clang</comment>
     <requestid>1102629</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>41cd6d3850a60094b969f9461b6f07e2</srcmd5>
+    <version>2025.06.03</version>
+    <time>1748966132</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1282269</requestid>
+  </revision>
 </revisionlist>

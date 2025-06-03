@@ -1,7 +1,7 @@
 #
 # spec file for package kakoune
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kakoune
-Version:        2023.08.05
+Version:        2025.06.03
 Release:        0
 Summary:        A code editor heavily inspired by Vim
 License:        Unlicense
@@ -36,28 +36,16 @@ It's faster as in less keystrokes, supports multiple selections and uses orthogo
 %autosetup -p1
 
 %build
-pushd src
-
 %make_build CXXFLAGS="%{optflags} -std=gnu++20"
 
-popd
-
 %install
-pushd src
-
 make %{?_smp_mflags} install PREFIX=%{buildroot}%{_prefix}
-
-popd
 
 rm -r %{buildroot}%{_datadir}/doc
 %fdupes %{buildroot}
 
 %check
-pushd src
-
 LANG=en_US.utf8 make %{?_smp_mflags} test
-
-popd
 
 %files
 %license UNLICENSE
