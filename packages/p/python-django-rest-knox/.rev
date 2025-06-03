@@ -122,4 +122,13 @@
     when AUTO_REFRESH = True</comment>
     <requestid>1217045</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a1a088163ca46248e0b9903b994eb5dc</srcmd5>
+    <version>5.0.2</version>
+    <time>1748965998</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1282137</requestid>
+  </revision>
 </revisionlist>
