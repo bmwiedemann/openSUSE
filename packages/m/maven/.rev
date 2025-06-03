@@ -216,4 +216,12 @@ put into adi:2</comment>
     <comment>3.9.9</comment>
     <requestid>1196271</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>8cf736409bfe2c0deb08dac52ae7e493</srcmd5>
+    <version>3.9.9</version>
+    <time>1748966024</time>
+    <user>anag_factory</user>
+    <comment>Link also the objectweb-asm/asm to the lib directory</comment>
+    <requestid>1282171</requestid>
+  </revision>
 </revisionlist>
