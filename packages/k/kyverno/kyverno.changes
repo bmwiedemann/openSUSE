@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun 03 05:10:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.14.2:
+  CLI-related changes and dependency updates
+  * fix(cli): ensure JMESPath expressions handle number types
+    correctly  (#12037) (#13214)
+  * fix: apply IVPs in cluster mode in the CLI (#13101) (#13116)
+  * fix: apply VPs in cluster mode in the CLI (#13084) (#13098)
+  * test: add cli test with namespaceObject (#13083) (#13096)
+  * refactor: use resource fetcher in the CLI (#13080)
+  * chore(deps): bump github.com/golang-jwt/jwt/v5 from 5.2.1 to
+    5.2.2 (#12495) (#13071)
+  * chore: remove unused function in CLI (cherry-pick #13053)
+    (#13078)
+  * chore: update CLI warning messages (#13060) (#13066)
+  * fix: use the generic policy in the CLI (#13059)
+
+-------------------------------------------------------------------
 Wed Apr 30 21:13:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.14.1:
