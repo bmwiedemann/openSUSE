@@ -1,4 +1,193 @@
 -------------------------------------------------------------------
+Tue Jun 03 05:00:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.40.0:
+  * Additions
+    - (go/v4) For Go-based operators, a devcontainer is now
+      available to allow users to develop and test the operator in
+      a local environment and leverage on solutions such as VS Code
+      Remote Containers and GitHub Codespaces to have a consistent
+      development environment. (#6928)
+    - (go/v4) For Go-based operators, new GitHub Actions are
+      available to ensure better quality of their code. (#6928)
+    - (go/v4) For Go-based operators, controllers now use
+      .Named("<Kind>") in SetupWithManager to prevent naming
+      conflicts in multi-group projects. (More info). (#6928)
+    - (go/v4) For Go-based operators, a new Makefile target named
+      lint-config has been added to verify that your .golangci.yaml
+      configuration file is valid. This helps catch issues early
+      when customizing lint rules.
+    - (More info). (#6928)
+    - For ALL-based operators, scaffolded resources now include the
+      app.kubernetes.io/name label to support Kubernetes best
+      practices for app identification. (More info). (#6928)
+    - For ALL-based operators, new role manifests are now
+      scaffolded under the config/rbac/ directory to assist cluster
+      administrators. For each API defined in the project, three
+      role files are generated: <kind>_admin_role.yaml,
+      <kind>_editor_role.yaml, and <kind>_viewer_role.yaml.
+      These roles are not applied by default. Instead, they are
+      provided as helpers, allowing cluster administrators to
+      customize and apply appropriate permissions as needed.
+      The primary motivation for scaffolding these roles is to
+      simplify integration with Kubernetes' aggregated roles
+      mechanism. By including annotations such as
+      rbac.authorization.k8s.io/aggregate-to-admin: "true",
+      rbac.authorization.k8s.io/aggregate-to-edit: "true", and
+      rbac.authorization.k8s.io/aggregate-to-view: "true", these
+      role definitions can automatically contribute permissions to
+      the default admin, edit, and view roles in a cluster when
+      applied.
+      For more information on Kubernetes RBAC and aggregated roles,
+      see:
+      https://kubernetes.io/docs/reference/access-authn-authz/rbac/.
+      (#6928)
+    - For ALL-based operators, new role manifests are now
+      scaffolded under the config/rbac/ directory to assist cluster
+      administrators. For each API defined in the project, three
+      role files are generated: <kind>_admin_role.yaml,
+      <kind>_editor_role.yaml, and <kind>_viewer_role.yaml.
+      These roles are not applied by default. Instead, they are
+      provided as helpers, allowing cluster administrators to
+      customize and apply appropriate permissions as needed.
+      The primary motivation for scaffolding these roles is to
+      simplify integration with Kubernetes' aggregated roles
+      mechanism. By including annotations such as
+      rbac.authorization.k8s.io/aggregate-to-admin: "true",
+      rbac.authorization.k8s.io/aggregate-to-edit: "true", and
+      rbac.authorization.k8s.io/aggregate-to-view: "true", these
+      role definitions can automatically contribute permissions to
+      the default admin, edit, and view roles in a cluster when
+      applied.
+      For more information on Kubernetes RBAC and aggregated roles,
+      see:
+      https://kubernetes.io/docs/reference/access-authn-authz/rbac/.
+      (#6928)
+  * Changes
+    - The bundle build target now respects the CONTAINER_TOOL
+      variable, allowing users to use alternative container tools
+      like podman instead of docker. (#6932)
+    - For All-based Operators, upgrade OPM to version from v1.23.0
+      to v1.55.0, which includes several bug fixes and
+      improvements. For further information, see:
+      https://github.com/operator-framework/operator-registry/releases.
+      (#6953)
+    - (go/v4) For Go-based Operators, the main.go file has been
+      enhanced to support real TLS certificates for both webhooks
+      and the metrics server, with automated certificate rotation
+      via cert-manager. This change improves security and aligns
+      with production-grade best practices.
+      Previously, setups relied on kube-rbac-proxy (deprecated in
+      Operator SDK and Kubebuilder, see:
+      kubebuilder/discussions/3907), which generated TLS
+      certificates dynamically — a method no longer recommended for
+      secure environments. The updated approach adopts static
+      certificates managed by cert-manager.
+      Additionally, integrations with Prometheus now support
+      scraping metrics using the cert-manager generated
+      certificates. A related fix was introduced to ensure that CA
+      injection patches are only applied to CRDs with a conversion
+      webhook, avoiding unnecessary annotations.
+      To support these improvements, changes to
+      config/default/kustomization.yaml are required. These
+      include: configuring webhook and metrics server certificates,
+      enabling Prometheus scraping with TLS, and correcting CA
+      injection behavior.
+      These updates also introduce flexible opt-in mechanisms,
+      allowing users to selectively enable or disable: - TLS for
+      the metrics server via cert-manager - TLS for webhooks via
+      cert-manager - TLS configuration for Prometheus scraping
+      Together, these changes are part of a broader effort to
+      elevate the default security posture and configurability of
+      Go-based operators. (#6928)
+    - (go/v4) For Go-based operators, a fix has been implemented to
+      ensure that the Prometheus configuration can properly scrape
+      metrics from the operator's metrics server when TLS is
+      enabled. (#6928)
+    - (go/v4) For Go-based operators, a fix has been implemented to
+      ensure that CA injection patches are applied only to CRDs
+      that define a conversion webhook.
+      Previously, the CA injection patch logic was overly broad —
+      applying injection annotations to all CRDs whenever a webhook
+      was scaffolded with the --conversion flag. This behavior was
+      introduced in Kubebuilder release v3.5.0 when replacements
+      were introduced in place of legacy vars and the
+      kustomize/v2-alpha plugin was adopted.
+      The incorrect behavior likely went unnoticed due to
+      incomplete support for conversion webhooks in earlier
+      versions. This release addresses that gap, enabling proper
+      scaffolding and CA injection behavior specifically for CRDs
+      with conversion webhooks.
+      To support this improvement, a new marker has been
+      introduced: +kubebuilder:scaffold:crdkustomizecainjectionns.
+      This marker ensures that the correct replacements are
+      generated in config/default/kustomization.yaml for CA
+      injection. Additionally, the
+      kubebuilder:scaffold:crdkustomizewebhookpatch marker was
+      created to ensure that the webhook patch is only applied to
+      CRDs that have a conversion webhook in the
+      config/crd/kustomization.yaml file.
+      For more information on this and other scaffolding markers,
+      refer to the official Kubebuilder documentation:
+      https://book.kubebuilder.io/reference/markers/scaffold.
+      (#6928)
+    - (go/v4) For Go-based operators, ENVTEST version management is
+      now automated by deriving values from go.mod, and controller
+      tests now locate binaries dynamically. (More info)
+      These updates improve the developer experience by: - Reducing
+      manual configuration for ENVTEST. - Ensuring IDEs or test
+      runners can locate the binaries reliably. - Making controller
+      test scaffolding more robust and portable. (#6928)
+    - (go/v4) For Go-based operators, updated GolangCI-Lint
+      configuration to replace the deprecated exportloopref linter
+      with the copyloopvar linter. (#6928)
+    - (go/v4) For Go-based operators, upgraded project scaffolding
+      to Go 1.23, Kubernetes v0.32.1, and controller-runtime
+      v0.20.4.
+    - The default project scaffolding for Go-based operators has
+      been updated to use:
+      - Go 1.23
+      - Kubernetes modules v0.32.1
+      - controller-runtime v0.20.4
+      - Ginkgo v2.22.0 and Gomega v1.36.1. (#6928)
+    - Breaking change: (go/v4) For Go-based operators, upgraded
+      controller-runtime from v0.19.4 to v0.20.0 and added support
+      for Kubernetes 1.32. Removed deprecated webhook.Validator and
+      webhook.Defaulter interfaces from the runtime. Webhooks
+      should no longer reside under the api/ directory—this has
+      been the default behavior since Kubebuilder rlease
+      [v4.3.0)(https://github.com/kubernetes-sigs/kubebuilder/releases/tag/v4.3.0).
+      A --legacy=true flag was added to support scaffolding
+      webhooks in the old layout when needed. (More info ·
+      Migration guide). (#6928)
+  * Changelog
+    - Release v1.40.0 (#6956)
+    - moving 1.23 website from netlify to gh
+    - updating ansible-operator-plugin to v1.38.1 (#6955)
+    - Upgrade OPM to version from  to (#6953)
+    - updating dependencies to latest allowable version(s) (#6951)
+    - Upgrade k8s version used by SDK from 1.30.0 to 1.32.2 (#6941)
+    - Upgrade kubebuilder scaffold from v4.2.0 to v4.5.2 (#6928)
+    - The comment has a spelling error. (#6948)
+    - feat: generalize container tool usage (#6932)
+    - Bump ubi9/ubi-minimal from 9.5 to 9.6 in /images/operator-sdk
+      (#6945)
+    - Bump ubi9/ubi-minimal from 9.5 to 9.6 in
+      /images/helm-operator (#6943)
+    - Bump ubi9/ubi-minimal from 9.5 to 9.6 in
+      /images/scorecard-test (#6944)
+    - Bump ubi9/ubi-minimal from 9.5 to 9.6 in
+      /images/custom-scorecard-tests (#6946)
+    - Bump golang.org/x/net from 0.37.0 to 0.38.0 (#6926)
+    - Upgrade golangci from 1.63.4 to 1.64.8 (#6940)
+    - (ci)- Update workflows ubuntu-22.04 to ubuntu-24.04 (#6938)
+    - fix: update kubectl fetch URL to official dl.k8s.io endpoint
+      (#6939)
+    - (fix) fis GOBIN to allow run make install in Mac Os (#6936)
+    - fixing CI post 1.39.2 release (#6937)
+    - OWNER-ALIAS: Update to ensure current state (#6935)
+
+-------------------------------------------------------------------
 Fri Mar 21 06:26:22 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.39.2:
@@ -155,7 +344,6 @@ Fri Mar 15 21:52:37 UTC 2024 - opensuse_buildservice@ojkastl.de
   * refactor: change './bin' to 'LOCALBIN' (#6655)
   * fix: migrate apis directory to api per standard (#6646)
 
--------------------------------------------------------------------
 -------------------------------------------------------------------
 Tue Jan 30 16:54:14 UTC 2024 - andrea.manzini@suse.com
 

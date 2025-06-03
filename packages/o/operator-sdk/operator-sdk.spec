@@ -17,7 +17,7 @@
 
 
 Name:           operator-sdk
-Version:        1.39.2
+Version:        1.40.0
 Release:        0
 Summary:        CLI for installing the Operator Lifecycle Manager
 License:        Apache-2.0
@@ -28,15 +28,23 @@ BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  go >= 1.19
 BuildRequires:  zsh
+BuildRequires:  pkgconfig(gpgme)
 
 %description
-This project is a component of the Operator Framework, an open source toolkit to manage Kubernetes native applications, called Operators, in an effective, automated, and scalable way. Read more in the introduction blog post.
+This project is a component of the Operator Framework, an open source toolkit
+to manage Kubernetes native applications, called Operators, in an effective,
+automated, and scalable way. Read more in the introduction blog post.
 
-Operators make it easy to manage complex stateful applications on top of Kubernetes. However writing an Operator today can be difficult because of challenges such as using low level APIs, writing boilerplate, and a lack of modularity which leads to duplication.
+Operators make it easy to manage complex stateful applications on top of
+Kubernetes. However writing an Operator today can be difficult because of
+challenges such as using low level APIs, writing boilerplate, and a lack of
+modularity which leads to duplication.
 
-The Operator SDK is a framework that uses the controller-runtime library to make writing operators easier by providing:
+The Operator SDK is a framework that uses the controller-runtime library to
+make writing operators easier by providing:
 
-* High level APIs and abstractions to write the operational logic more intuitively
+* High level APIs and abstractions to write the operational logic more
+  intuitively
 * Tools for scaffolding and code generation to bootstrap a new project fast
 * Extensions to cover common Operator use cases
 
