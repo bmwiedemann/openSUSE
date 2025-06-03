@@ -187,4 +187,15 @@ package called `obs-service-recomprizz`.</comment>
 </comment>
     <requestid>1281718</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0c0a79d7e3f436c47dfc7734bb2192ff</srcmd5>
+    <version>7.2.3</version>
+    <time>1748966239</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 7.2.3:
+  * chore(release): bump to version 7.2.3
+  * fix: refactor so that after a deletion of tag does not cause an error
+</comment>
+    <requestid>1282337</requestid>
+  </revision>
 </revisionlist>

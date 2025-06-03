@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 03 13:14:23 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 7.2.3:
+  * chore(release): bump to version 7.2.3
+  * fix: refactor so that after a deletion of tag does not cause an error
+
+-------------------------------------------------------------------
 Mon Jun 02 02:06:05 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 7.2.0:
