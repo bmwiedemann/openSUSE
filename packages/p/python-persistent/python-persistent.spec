@@ -1,7 +1,7 @@
 #
 # spec file for package python-persistent
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013-2023 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,9 @@ Source:         https://files.pythonhosted.org/packages/source/p/persistent/pers
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module manuel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  %{python_module zope.testrunner}
 BuildRequires:  fdupes
@@ -58,10 +60,10 @@ sed -i 's|test__p_repr_exception|tst__p_repr_exception|' src/persistent/tests/te
 sed -i 's|test__p_repr_in_instance_ignored|tst__p_repr_in_instance_ignored|' src/persistent/tests/test_persistence.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # don't bother with development files
 %{python_expand rm %{buildroot}%{$python_sitearch}/persistent/*.c
   %fdupes %{buildroot}%{$python_sitearch}
@@ -74,7 +76,8 @@ sed -i 's|test__p_repr_in_instance_ignored|tst__p_repr_in_instance_ignored|' src
 %license LICENSE.txt
 %doc CHANGES.rst COPYRIGHT.txt README.rst
 %exclude %{python_sitearch}/persistent/*.h
-%{python_sitearch}/*
+%{python_sitearch}/persistent
+%{python_sitearch}/persistent-%{version}*-info
 
 %files %{python_files devel}
 %dir %{python_sysconfig_path include}/persistent
