@@ -46,9 +46,9 @@
     <package name="NetworkManager-vpnc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="NetworkManager-vpnc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="NetworkManager-wwan" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="OpenPrintingPPDs-ghostscript" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
-    <package name="OpenPrintingPPDs-hpijs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
-    <package name="OpenPrintingPPDs-postscript" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
+    <package name="OpenPrintingPPDs-ghostscript" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="OpenPrintingPPDs-hpijs" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="OpenPrintingPPDs-postscript" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="PackageKit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="PackageKit-backend-zypp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="PackageKit-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -283,7 +283,8 @@
     <package name="cups-backends" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
     <package name="cups-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cups-config" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="cups-filters" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="cups-filters" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="cups-filters2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cups-pk-helper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cups-pk-helper-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="curl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1826,6 +1827,8 @@
     <package name="libctf0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libcue2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcups2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libcupsfilters" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libcupsfilters2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcupsimage2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcurl4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcyrus0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -2533,6 +2536,8 @@
     <package name="libpostproc55_9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libpostproc58" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpotrace0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
+    <package name="libppd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libppd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpq5" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
     <package name="libpresage1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libproc2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

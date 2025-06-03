@@ -1121,6 +1121,7 @@ unsorted:
   - autossh 
   - autotrace 
   - autotrace-devel 
+  - autotrace-lang 
   - autotrash 
   - autoyast_xml_validator 
   - avahi-autoipd 
@@ -2971,6 +2972,7 @@ unsorted:
   - cups-devel 
   - cups-devel-32bit 
   - cups-filters-devel 
+  - cups-filters2-driverless 
   - cups-pdf 
   - cups-rpm-helper 
   - cura-engine 
@@ -3857,6 +3859,7 @@ unsorted:
   - evolution-plugin-text-highlight 
   - evtest 
   - eww 
+  - ex_doc 
   - exaile 
   - exaile-lang 
   - examine 
@@ -11055,7 +11058,7 @@ unsorted:
   - libBulletInverseDynamicsUtils3_17 
   - libBulletWorldImporter3_17 
   - libBulletXmlWorldImporter3_17 
-  - libCCfits2_6 
+  - libCCfits2_7 
   - libCLHEP-2_4_7_1 
   - libCLHEP-Cast-2_4_7_1 
   - libCLHEP-Evaluator-2_4_7_1 
@@ -12593,6 +12596,7 @@ unsorted:
   - libcuefile0 
   - libcunit1 
   - libcups2-32bit 
+  - libcupsfilters-devel 
   - libcupsimage2-32bit 
   - libcurl-devel 
   - libcurl-devel-32bit 
@@ -13775,7 +13779,7 @@ unsorted:
   - libhyprcursor0 
   - libhyprgraphics0 
   - libhyprlang2 
-  - libhyprutils4 
+  - libhyprutils6 
   - libi2c0 
   - libi2c0-devel 
   - libibdm1 
@@ -15213,6 +15217,7 @@ unsorted:
   - libpostproc58-32bit 
   - libpostquantumcryptoengine1 
   - libpowerman0 
+  - libppd-devel 
   - libppl14 
   - libppl_c4 
   - libpplite5 
@@ -16354,7 +16359,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent24 
+  - libtorrent25 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm_unseal1 
@@ -19455,6 +19460,11 @@ unsorted:
   - niri 
   - nitrogen 
   - nitrogen-lang 
+  - nix 
+  - nix-bash-completion 
+  - nix-devel 
+  - nix-fish-completion 
+  - nix-zsh-completion 
   - nload 
   - nlohmann_json-devel 
   - nlopt-devel 
@@ -23112,7 +23122,6 @@ unsorted:
   - psi+-plugins-otrplugin 
   - psi+-plugins-pepchangenotifyplugin 
   - psi+-plugins-qipxstatusesplugin 
-  - psi+-plugins-screenshotplugin 
   - psi+-plugins-skinsplugin 
   - psi+-plugins-stopspamplugin 
   - psi+-plugins-storagenotesplugin 
@@ -36499,6 +36508,7 @@ unsorted:
   - sccs 
   - scdl 
   - scdoc 
+  - schedctl 
   - schemaspy 
   - scheme48 
   - scheme48-devel 
@@ -47651,6 +47661,7 @@ unsorted:
   - tuned-profiles-realtime 
   - tuned-profiles-sap 
   - tuned-profiles-sap-hana 
+  - tuned-profiles-security 
   - tuned-profiles-spectrumscale 
   - tuned-utils 
   - tuned-utils-systemtap 

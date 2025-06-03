@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20250601" schemaversion="4.1">
+<image name="OBS__openSUSE___20250602" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250601</productvar>
+      <productvar name="VERSION">20250602</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250601,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250602,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250601/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250602/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -284,6 +284,7 @@
       <repopackage name="cups-client"/>
       <repopackage name="cups-config"/>
       <repopackage name="cups-filters"/>
+      <repopackage name="cups-filters2"/>
       <repopackage name="cups-pk-helper"/>
       <repopackage name="cups-pk-helper-lang"/>
       <repopackage name="curl"/>
@@ -1384,6 +1385,8 @@
       <repopackage name="libctf0"/>
       <repopackage name="libcue2"/>
       <repopackage name="libcups2"/>
+      <repopackage name="libcupsfilters"/>
+      <repopackage name="libcupsfilters2"/>
       <repopackage name="libcupsimage2"/>
       <repopackage name="libcurl4"/>
       <repopackage name="libcyrus0"/>
@@ -2387,6 +2390,8 @@
       <repopackage name="libpostproc55_9"/>
       <repopackage name="libpostproc58"/>
       <repopackage name="libpotrace0"/>
+      <repopackage name="libppd"/>
+      <repopackage name="libppd2"/>
       <repopackage name="libpq5"/>
       <repopackage name="libpresage1"/>
       <repopackage name="libproc2-1"/>
