@@ -82,4 +82,12 @@
     error about GET requests in Django &gt;= 5.0</comment>
     <requestid>1269475</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>82f4d313a63ab062fa9c2c8e4b5c22c8</srcmd5>
+    <version>1.17.0</version>
+    <time>1748965964</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282113</requestid>
+  </revision>
 </revisionlist>

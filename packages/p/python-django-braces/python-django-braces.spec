@@ -26,9 +26,11 @@ Source:         https://files.pythonhosted.org/packages/source/d/django_braces/d
 Patch1:         testhack.patch
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module factory_boy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.2
@@ -45,10 +47,10 @@ Reusable, generic mixins for Django.
 rm conftest.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
