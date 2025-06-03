@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Authen-DecHpwd
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Authen-DecHpwd
-Version:        2.007
-Release:        0
-#Upstream: GPL-1.0+
 %define cpan_name Authen-DecHpwd
+Name:           perl-Authen-DecHpwd
+Version:        2.7.0
+Release:        0
+# 2.007 -> normalize -> 2.7.0
+%define cpan_version 2.007
+#Upstream: GPL-1.0-or-later
+License:        GPL-2.0-or-later
 Summary:        DEC VMS password hashing
-License:        GPL-2.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Authen-DecHpwd/
-Source0:        https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Data::Integer) >= 0.003
-BuildRequires:  perl(Digest::CRC) >= 0.14
+BuildRequires:  perl(Data::Integer) >= 0.3
+BuildRequires:  perl(Digest::CRC) >= 0.140
 BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Scalar::String)
 BuildRequires:  perl(parent)
-Requires:       perl(Data::Integer) >= 0.003
-Requires:       perl(Digest::CRC) >= 0.14
+Requires:       perl(Data::Integer) >= 0.3
+Requires:       perl(Digest::CRC) >= 0.140
 Requires:       perl(Scalar::String)
 Requires:       perl(parent)
+Provides:       perl(Authen::DecHpwd) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -50,21 +52,20 @@ The password hashing function is implemented in XS, with a hideously slow
 pure Perl backup version for systems that can't handle XS.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Build.PL installdirs=vendor optimize="%{optflags}"
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor optimize="%{optflags}"
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
