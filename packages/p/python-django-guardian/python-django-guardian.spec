@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-django-guardian
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,10 @@ URL:            https://github.com/lukaszb/django-guardian
 Source:         https://files.pythonhosted.org/packages/source/d/django-guardian/django-guardian-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module django-environ}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.2
@@ -44,10 +46,10 @@ authorization backend.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -r %{buildroot}%{$python_sitelib}/guardian/testapp
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -56,6 +58,7 @@ authorization backend.
 
 %files %{python_files}
 %doc CHANGES README.rst
-%{python_sitelib}/*
+%{python_sitelib}/guardian
+%{python_sitelib}/django_guardian-%{version}.dist-info
 
 %changelog

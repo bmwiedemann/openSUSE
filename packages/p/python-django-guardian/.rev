@@ -196,4 +196,13 @@ SPDX syntax (http://www.spdx.org/licenses) (forwarded request 83930 from babelwo
     <comment></comment>
     <requestid>1095392</requestid>
   </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>9341a9d9feb64b05a77ef0b6b489071e</srcmd5>
+    <version>2.4.0</version>
+    <time>1748965977</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1282123</requestid>
+  </revision>
 </revisionlist>
