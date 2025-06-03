@@ -1,7 +1,7 @@
 #
 # spec file for package python-pilkit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,17 @@ Summary:        A collection of utilities and processors for the Python Imaging 
 License:        BSD-3-Clause
 URL:            https://github.com/matthewwithanm/pilkit/
 Source:         https://files.pythonhosted.org/packages/source/p/pilkit/pilkit-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Pillow
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-Pillow
 %python_subpackages
 
 %description
@@ -47,10 +49,10 @@ interface for performing manipulations on PIL images.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
