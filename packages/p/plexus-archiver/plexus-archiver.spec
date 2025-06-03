@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-archiver
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsr-305
+BuildRequires:  objectweb-asm
 BuildRequires:  plexus-io >= 3.2
 BuildRequires:  plexus-utils >= 3.3
 BuildRequires:  sisu-inject
@@ -85,7 +86,16 @@ rm -rf src/test/java/org/codehaus/plexus/archiver/tar/TarZstdUnArchiverTest.java
 
 %build
 mkdir -p lib
-build-jar-repository -s lib atinject slf4j/api org.eclipse.sisu.inject jsr-305 commons-compress commons-io plexus/utils plexus/io
+build-jar-repository -s lib \
+    atinject \
+    commons-compress \
+    commons-io \
+    jsr-305 \
+    objectweb-asm/asm \
+    org.eclipse.sisu.inject \
+    plexus/io \
+    plexus/utils \
+    slf4j/api
 %{ant} \
   jar javadoc
 

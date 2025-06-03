@@ -72,4 +72,12 @@
     <comment>Fix Year 2038 bug</comment>
     <requestid>1203351</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>82b171e6eb15f48e7c5cdbc4419d5121</srcmd5>
+    <version>4.10.0</version>
+    <time>1748966035</time>
+    <user>anag_factory</user>
+    <comment>Add dependency on objectweb-asm to build with sisu 0.9.0.M4</comment>
+    <requestid>1282181</requestid>
+  </revision>
 </revisionlist>
