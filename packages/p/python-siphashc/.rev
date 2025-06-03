@@ -86,4 +86,13 @@
   * Python 3.13 compatiblity.</comment>
     <requestid>1222992</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f883f8ed34bde8d88788be5f9095f21f</srcmd5>
+    <version>2.5</version>
+    <time>1748966020</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1282149</requestid>
+  </revision>
 </revisionlist>
