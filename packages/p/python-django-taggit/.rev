@@ -50,4 +50,12 @@ jazzband maintained project
     <comment></comment>
     <requestid>1238965</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>4ba29bfd7b142e9950eb4ce5b7622a26</srcmd5>
+    <version>5.0.1</version>
+    <time>1748966008</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282142</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-django-taggit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,10 @@ URL:            https://github.com/alex/django-taggit
 Source:         https://pypi.python.org/packages/source/d/django-taggit/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module djangorestframework}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytz}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 4.2
@@ -47,10 +49,10 @@ Django-taggit is a reusable Django application for simple tagging.
 %setup -q -n django-taggit-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %find_lang django
 %python_expand grep -F %{$python_sitelib} django.lang > django_%{$python_bin_suffix}.lang
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
