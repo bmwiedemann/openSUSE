@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-murmurhash
-Version:        1.0.12
+Version:        1.0.13
 Release:        0
 Summary:        Cython bindings for MurmurHash
 License:        MIT

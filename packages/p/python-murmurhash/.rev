@@ -26,4 +26,17 @@
     repos, so we can build Linux ARM wheels once more.</comment>
     <requestid>1268607</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>702462bc8bdbbf7460e6a5c79466ae58</srcmd5>
+    <version>1.0.13</version>
+    <time>1748970685</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1282245 from glaubitz
+
+- Update to 1.0.13
+    * Cython 3 requires nogil function to have an explicit exception
+      value, or the gil will be acquired within the function, impacting
+      performance. This patch makes the required modifications.</comment>
+    <requestid>1282374</requestid>
+  </revision>
 </revisionlist>

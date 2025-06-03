@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  3 09:54:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.13
+  * Cython 3 requires nogil function to have an explicit exception
+    value, or the gil will be acquired within the function, impacting
+    performance. This patch makes the required modifications.
+
+-------------------------------------------------------------------
 Fri Apr 11 12:44:50 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to elease-v1.0.12:
