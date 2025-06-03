@@ -1,7 +1,7 @@
 #
 # spec file for package python-py-vapid
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-py-vapid
 Version:        1.9.0
 Release:        0
@@ -24,12 +23,14 @@ Summary:        VAPID header generation library
 License:        MPL-2.0
 URL:            https://github.com/mozilla-services/vapid
 Source:         https://files.pythonhosted.org/packages/source/p/py-vapid/py-vapid-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 2.5
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module cryptography >= 2.5}
@@ -45,10 +46,10 @@ VAPID header generation library.
 sed -i 's/from mock import/from unittest.mock import/' py_vapid/tests/test_vapid.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/vapid
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -65,6 +66,7 @@ sed -i 's/from mock import/from unittest.mock import/' py_vapid/tests/test_vapid
 %doc README.md README.rst
 %license LICENSE
 %python_alternative %{_bindir}/vapid
-%{python_sitelib}/*
+%{python_sitelib}/py[-_]vapid
+%{python_sitelib}/py[-_]vapid-%{version}*-info
 
 %changelog
