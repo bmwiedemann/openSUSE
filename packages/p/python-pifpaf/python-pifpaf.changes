@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  3 11:22:03 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Mon Dec  5 01:21:59 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded Requires on mock and six. 

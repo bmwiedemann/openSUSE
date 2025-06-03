@@ -178,4 +178,12 @@
     <comment>- Remove unneeded Requires on mock and six.</comment>
     <requestid>1040108</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>6d91c6f56f2b0c50b334d14925c0e21b</srcmd5>
+    <version>3.1.5</version>
+    <time>1748966146</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282278</requestid>
+  </revision>
 </revisionlist>

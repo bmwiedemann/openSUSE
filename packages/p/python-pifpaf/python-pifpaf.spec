@@ -1,7 +1,7 @@
 #
 # spec file for package python-pifpaf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pifpaf
 Version:        3.1.5
 Release:        0
 Summary:        Suite of tools and fixtures to manage daemons for testing
 License:        Apache-2.0
 URL:            https://github.com/jd/pifpaf
-Source:         https://pypi.io/packages/source/p/pifpaf/pifpaf-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pifpaf/pifpaf-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
@@ -36,11 +37,9 @@ Requires:       python-requests
 Requires:       python-testrepository
 Requires:       python-testtools
 Requires:       python-xattr
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -54,11 +53,11 @@ its precussor `overtest`_.
 
 %build
 export LC_ALL=en_US.utf8
-%python_build
+%pyproject_wheel
 
 %install
 export LC_ALL=en_US.utf8
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pifpaf
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -74,7 +73,8 @@ export LC_ALL=en_US.utf8
 %files %{python_files}
 %license LICENSE
 %doc ChangeLog README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pifpaf
+%{python_sitelib}/pifpaf-%{version}*-info
 %python_alternative %{_bindir}/pifpaf
 
 %changelog
