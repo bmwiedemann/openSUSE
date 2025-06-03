@@ -12,6 +12,8 @@ Fri May 30 16:08:31 UTC 2025 - Caleb Crane (caleb.crane@suse.com)
   * ok: Move SNP platform tests
   * ok: Add test for ALIAS_CHECK_COMPLETE
   * ok: Update RMP_INIT check to account for other bitflags
+  * Updating dependencies and fixing fetch CA bug for turin
+  * CI: Patching lint rust version
 
 -------------------------------------------------------------------
 Thu Oct  3 19:23:31 UTC 2024 - Caleb Crane <caleb.crane@suse.com>

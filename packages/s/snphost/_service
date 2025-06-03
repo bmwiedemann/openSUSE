@@ -1,6 +1,6 @@
 <services>
   <service mode="disabled" name="obs_scm">
-    <param name="url">https://gitlab.suse.de/virtualization/snphost.git</param>
+    <param name="url">https://github.com/virtee/snphost.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
     <param name="revision">v0.6.0</param>
