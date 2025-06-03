@@ -361,6 +361,9 @@ install -m 0644 %{SOURCE2} %{buildroot}%{_distconfdir}/logrotate.d/exim
 %else
 install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/exim
 %endif
+%if 0%{?suse_version}
+install -D -m 0644 %{SOURCE12} %{buildroot}%{_sysconfdir}/permissions.d/%{name}
+%endif
 # man pages
 mv doc/exim.8 %{buildroot}/%{_mandir}/man8/
 cp $RPM_SOURCE_DIR/exim_db.8.gz %{buildroot}/%{_mandir}/man8
@@ -441,6 +444,7 @@ done
 %run_permissions
 %else
 %set_permissions %{_sbindir}/exim
+%set_permissions /var/spool/mail
 %endif
 if ! test -s etc/exim/exim.conf; then
 	if test -s etc/exim.conf; then
@@ -510,7 +514,7 @@ exit 0
 %else
 %config(noreplace) %{_sysconfdir}/logrotate.d/exim
 %endif
-%if %{?suse_version:%suse_version}%{?!suse_version:99999} < 1000
+%if 0%{?suse_version}
 %config(noreplace) %{_sysconfdir}/permissions.d/exim
 %endif
 %dir %{_datadir}/apparmor

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 20 14:13:09 UTC 2025 - Wolfgang Engel <wolfgang.engel@suse.com>
+
+- fix issues with permissions (bsc#1240755):
+  * remove /usr/sbin/exim from permissions.exim file
+  * add set_permissions entry for /var/spool/mail to spec file in
+    post section
+
+-------------------------------------------------------------------
+Fri May 16 10:18:21 UTC 2025 - Wolfgang Engel <wolfgang.engel@suse.com>
+
+- fix installation of permissions.exim file in /etc/permissions.d/ directory if
+  suse_version is set (bsc#1240755)
+
+-------------------------------------------------------------------
 Thu Mar 27 14:41:49 UTC 2025 - Alexander Bergmann <abergmann@suse.com>
 
 - security release 4.98.2 for CVE-2025-30232 (bsc#1239794)
