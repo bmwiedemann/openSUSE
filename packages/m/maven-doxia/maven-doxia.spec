@@ -1,7 +1,7 @@
 #
 # spec file for package maven-doxia
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jetbrains-annotations
 BuildRequires:  modello
+BuildRequires:  objectweb-asm
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
 BuildRequires:  sisu-inject
@@ -128,6 +129,7 @@ build-jar-repository -s lib \
     atinject \
     commons-io \
     jetbrains-annotations \
+    objectweb-asm/asm \
     org.eclipse.sisu.inject \
     plexus/utils \
     plexus/xml \
