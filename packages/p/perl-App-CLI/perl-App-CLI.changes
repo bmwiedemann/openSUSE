@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  3 15:24:08 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
 Thu Dec 17 09:22:01 UTC 2020 - Tina Müller <tina.mueller@suse.com>
 
 - Ignore Test::Kwalitee dependency (not needed)
