@@ -1,7 +1,7 @@
 #
 # spec file for package maven-filtering
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-lib
+BuildRequires:  objectweb-asm
 BuildRequires:  plexus-build-api0
 BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-utils
@@ -67,6 +68,7 @@ build-jar-repository -s lib \
     maven/maven-core \
     maven/maven-model \
     maven/maven-settings \
+    objectweb-asm/asm \
     org.eclipse.sisu.inject \
     plexus/utils \
     plexus/interpolation \

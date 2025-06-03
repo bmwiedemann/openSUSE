@@ -64,4 +64,12 @@
     <comment>plexus-build-api 1.2.0 + dependent changes</comment>
     <requestid>1171147</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>569c5db90c8cb4d1472062abbe6dcf45</srcmd5>
+    <version>3.3.2</version>
+    <time>1748966031</time>
+    <user>anag_factory</user>
+    <comment>Add dependency on objectweb-asm to build with sisu 0.9.0.M4</comment>
+    <requestid>1282176</requestid>
+  </revision>
 </revisionlist>
