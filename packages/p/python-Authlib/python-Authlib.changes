@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun  3 06:26:39 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.6.2
+  * Fix issue when RFC9207 is enabled and the authorization endpoint
+    response is not a redirection. pull request #733
+  * Fix missing state parameter in authorization error responses.
+    issue #525
+  * Support for acr and amr claims in id_token. issue #734
+  * Support for the none JWS algorithm.
+  * Fix response_types strict order during dynamic client
+    registration. issue #760
+  * Implement RFC9101 The OAuth 2.0 Authorization Framework:
+    JWT-Secured Authorization Request (JAR). issue #723
+  * OIDC UserInfo endpoint support. issue #459
+- Drop 767-skip-xc20p-tests.patch, merged upstream
+
+-------------------------------------------------------------------
 Fri May  2 21:29:54 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add 767-skip-xc20p-tests.patch to skip unavailable tests

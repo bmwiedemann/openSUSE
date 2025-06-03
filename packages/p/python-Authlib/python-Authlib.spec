@@ -19,15 +19,12 @@
 %define modname authlib
 %{?sle15_python_module_pythons}
 Name:           python-Authlib
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        Python library for building OAuth and OpenID Connect servers
 License:        BSD-3-Clause
 URL:            https://authlib.org/
 Source:         https://github.com/lepture/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 767-skip-xc20p-tests.patch bsc#[0-9]+ mcepl@suse.com
-# skip unavailable tests
-Patch0:         767-skip-xc20p-tests.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
