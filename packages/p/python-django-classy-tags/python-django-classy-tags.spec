@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-classy-tags
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        MIT
 URL:            https://github.com/ojii/django-classy-tags
 Source:         https://github.com/divio/django-classy-tags/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 3.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 3.2
@@ -41,10 +43,10 @@ which is fully compatible with the current Django templating infrastructure.
 sed -i 's/verbosity=1/verbosity=2/' tests/settings.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,7 +56,7 @@ export PYTHONPATH='.'
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/classytags/
-%{python_sitelib}/django_classy_tags*egg-info/
+%{python_sitelib}/classytags
+%{python_sitelib}/django_classy_tags-%{version}.dist-info
 
 %changelog

@@ -85,4 +85,12 @@
 - initial build</comment>
     <requestid>1129784</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1f5e62964d8bd03b727a133ba40eb4dd</srcmd5>
+    <version>4.1.0</version>
+    <time>1748965968</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282116</requestid>
+  </revision>
 </revisionlist>
