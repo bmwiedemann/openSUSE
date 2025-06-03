@@ -314,4 +314,13 @@ and in TW it's not used by anything either so just make
 the two distros behave the same</comment>
     <requestid>1281236</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>28fcaf7cdd54de84571f2a99a0faf282</srcmd5>
+    <version>3.2.8</version>
+    <time>1748965805</time>
+    <user>anag_factory</user>
+    <comment>Make SLFO staging-bot happy
+remove patch file no longer references</comment>
+    <requestid>1281712</requestid>
+  </revision>
 </revisionlist>
