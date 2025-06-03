@@ -1,7 +1,7 @@
 #
 # spec file for package python-poyo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %bcond_without test
+%{?sle15_python_module_pythons}
 Name:           python-poyo
 Version:        0.5.0
 Release:        0
@@ -26,7 +26,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hackebrot/poyo
 Source:         https://files.pythonhosted.org/packages/source/p/poyo/poyo-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -49,10 +51,10 @@ types are str, bool, int, float, NoneType as well as dict and list values.
 %setup -q -n poyo-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
@@ -65,6 +67,7 @@ py.test-%{$python_bin_suffix}
 %files %{python_files}
 %license LICENSE
 %doc CHANGES.md COMMUNITY.md CONTRIBUTING.md README.md
-%{python_sitelib}/*
+%{python_sitelib}/poyo
+%{python_sitelib}/poyo-%{version}*-info
 
 %changelog
