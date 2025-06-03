@@ -28,4 +28,12 @@
   * Fix various typos</comment>
     <requestid>686315</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1e1173c0dcfaaaf4243f936bed8964ee</srcmd5>
+    <version>0.1.8</version>
+    <time>1748966214</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282319</requestid>
+  </revision>
 </revisionlist>
