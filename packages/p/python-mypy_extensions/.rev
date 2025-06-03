@@ -44,4 +44,12 @@
   * Add mypyc native int types ia64, i32, i16 and u8</comment>
     <requestid>1085015</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ff9c0b2fbce05f13b1ae2e6131f9ae31</srcmd5>
+    <version>1.0.0</version>
+    <time>1748965824</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1281959</requestid>
+  </revision>
 </revisionlist>

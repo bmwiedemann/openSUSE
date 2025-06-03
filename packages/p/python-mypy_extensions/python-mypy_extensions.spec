@@ -1,7 +1,7 @@
 #
 # spec file for package python-mypy_extensions
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,12 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://www.mypy-lang.org/
 Source:         https://files.pythonhosted.org/packages/source/m/mypy_extensions/mypy_extensions-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -40,14 +41,16 @@ standard "typing" module that are supported by the mypy typechecker.
 %setup -q -n mypy_extensions-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/mypy_extensions.py
+%{python_sitelib}/mypy_extensions-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/mypy_extensions*
 
 %changelog
