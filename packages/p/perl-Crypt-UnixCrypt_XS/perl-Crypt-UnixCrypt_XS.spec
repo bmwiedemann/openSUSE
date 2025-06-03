@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Crypt-UnixCrypt_XS
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Crypt-UnixCrypt_XS
-Version:        0.11
-Release:        0
 %define cpan_name Crypt-UnixCrypt_XS
-Summary:        Perl Xs Interface for a Portable Traditional
-License:        GPL-1.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Crypt-UnixCrypt_XS/
-Source0:        http://www.cpan.org/authors/id/B/BO/BORISZ/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Crypt-UnixCrypt_XS
+Version:        0.110.0
+Release:        0
+# 0.11 -> normalize -> 0.110.0
+%define cpan_version 0.11
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Perl xs interface for a portable traditional  F<crypt> function.
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/B/BO/BORISZ/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Crypt::UnixCrypt_XS) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -37,14 +39,14 @@ need to construct non-standard variants of _crypt_, the various building
 blocks used in _crypt_ are also supplied separately.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -52,7 +54,6 @@ blocks used in _crypt_ are also supplied separately.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
