@@ -1,7 +1,7 @@
 #
 # spec file for package maven-doxia-sitetools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ BuildRequires:  maven-lib
 BuildRequires:  maven-reporting-api
 BuildRequires:  maven-resolver-api
 BuildRequires:  modello
+BuildRequires:  objectweb-asm
 BuildRequires:  plexus-i18n
 BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-metadata-generator
@@ -86,6 +87,7 @@ build-jar-repository -s lib \
     maven/maven-model \
     maven-reporting-api/maven-reporting-api \
     maven-resolver/maven-resolver-api \
+    objectweb-asm/asm \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
     plexus-i18n/plexus-i18n \
