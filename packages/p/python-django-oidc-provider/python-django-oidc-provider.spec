@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-oidc-provider
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ URL:            https://github.com/juanifioren/django-oidc-provider
 Source:         https://github.com/juanifioren/django-oidc-provider/archive/v%{version}.tar.gz#/django-oidc-provider-%{version}.tar.gz
 # https://github.com/juanifioren/django-oidc-provider/issues/401
 Patch2:         python-django-oidc-provider-no-mock.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 3.2
@@ -47,10 +49,10 @@ OpenID Connect Provider implementation for Django.
 %autosetup -p1 -n django-oidc-provider-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

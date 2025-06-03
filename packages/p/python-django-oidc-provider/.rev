@@ -47,4 +47,12 @@
 - Skip more failing tests, issue is known to upstream</comment>
     <requestid>1223458</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>5fc5c6f6959590af1481e493c5c4d98e</srcmd5>
+    <version>0.8.2</version>
+    <time>1748965989</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282130</requestid>
+  </revision>
 </revisionlist>
