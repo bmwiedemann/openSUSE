@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  3 07:03:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Sun Dec 26 04:58:11 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Use django-codemod to make test suite Django 4 compatible
