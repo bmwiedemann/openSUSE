@@ -8655,6 +8655,7 @@ unsorted:
   - hxtools-man 
   - hxtools-profile 
   - hxtools-scripts 
+  - hydra 
   - hydrogen 
   - hylafax+ 
   - hylafax+-client 
@@ -16586,7 +16587,7 @@ unsorted:
   - libvamp-hostsdk3-32bit 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit 
-  - libvapoursynth-70 
+  - libvapoursynth-72 
   - libvapoursynth-script0 
   - libvarlink-devel 
   - libvarlink0 
@@ -33826,6 +33827,7 @@ unsorted:
   - python313-pyroma 
   - python313-pyroomacoustics 
   - python313-pyroute2 
+  - python313-pyrsistent 
   - python313-pysaml2 
   - python313-pyscard 
   - python313-pyscreenshot 
