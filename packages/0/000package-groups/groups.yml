@@ -128,12 +128,8 @@ dvd:
   - patterns-yast-yast2_server: [required]
   # gedit is tested as part of staging
   - gedit
-  # for now xen_server
-  - patterns-server-kvm_server
-  - patterns-server-kvm_tools
   - patterns-base-minimal_base: [required]
   - patterns-yast-x11_yast: [required]
-  - patterns-server-xen_server: [x86_64]
   # bnc#431280 (Japanese fonts)
   - clicfs
   - createrepo_c
@@ -370,7 +366,6 @@ dvd:
   - system-user-upsd
   - technisat-usb2-firmware
   - virtualbox-guest-tools: [x86_64]
-  - xen-tools-domU
   - bind
   - Mesa-demo-x
   # requires by zypper_in test suite in openQA
