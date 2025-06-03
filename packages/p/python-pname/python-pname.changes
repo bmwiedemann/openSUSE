@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  3 11:45:51 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Mar 10 15:06:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Initial commit, used by PyTorch

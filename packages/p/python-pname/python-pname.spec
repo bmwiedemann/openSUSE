@@ -1,7 +1,7 @@
 #
 # spec file for package python-pname
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pname
 Version:        1.0.2
 Release:        0
@@ -25,7 +24,9 @@ License:        MIT
 URL:            https://gitlab.com/yo/pname
 Source:         https://files.pythonhosted.org/packages/source/p/pname/pname-%{version}.tar.gz
 Source99:       https://gitlab.com/yo/pname/-/raw/master/LICENSE
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -39,10 +40,10 @@ Check whether a package name is available on PyPI
 cp %{SOURCE99} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -51,6 +52,7 @@ cp %{SOURCE99} .
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pname
+%{python_sitelib}/pname-%{version}*-info
 
 %changelog
