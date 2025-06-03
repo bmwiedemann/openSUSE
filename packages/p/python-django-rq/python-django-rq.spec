@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-rq
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/rq/django-rq
 Source:         https://github.com/rq/django-rq/archive/v%{version}/django-rq-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.0
@@ -51,10 +53,10 @@ in django's settings.py and easily use them in your project.
 %setup -q -n django-rq-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -r %{buildroot}%{$python_sitelib}/django_rq/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 

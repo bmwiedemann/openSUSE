@@ -104,4 +104,12 @@ already being maintained over a long period by https://build.opensuse.org/users/
     <comment></comment>
     <requestid>1226829</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>e6ccf577b6c29d262b4f34fa961e5549</srcmd5>
+    <version>3.0</version>
+    <time>1748966001</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282139</requestid>
+  </revision>
 </revisionlist>
