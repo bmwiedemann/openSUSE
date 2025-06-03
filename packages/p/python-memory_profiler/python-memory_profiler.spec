@@ -1,7 +1,7 @@
 #
 # spec file for package python-memory_profiler
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-memory_profiler
 Version:        0.57.0
 Release:        0
@@ -28,12 +27,14 @@ Source:         https://files.pythonhosted.org/packages/source/m/memory_profiler
 # PATCH-FIX-UPSTREAM revert-5fe38da92673.patch gh#pythonprofilers/memory_profiler#226 mcepl@suse.com
 # Revert broken patch, leading to the failure of spyder-memory-profiler
 Patch0:         revert-5fe38da92673.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-psutil
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 # SECTION tests
 BuildRequires:  %{python_module psutil}
@@ -51,13 +52,12 @@ module as optional (but highly recommended) dependencies.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/mprof
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_expand chmod -x %{buildroot}%{$python_sitelib}/memory_profiler-%{version}-py%{$python_bin_suffix}.egg-info/*
 
 %check
 export LANG="en_US.UTF8"
@@ -67,8 +67,7 @@ export LANG="en_US.UTF8"
 %python_exec -m memory_profiler test/test_global.py
 %python_exec -m memory_profiler test/test_precision_command_line.py
 %python_exec -m memory_profiler test/test_gen.py
-# unicode handling only proper in python3
-python3 -m memory_profiler test/test_unicode.py
+%python_exec -m memory_profiler test/test_unicode.py
 %python_exec -m memory_profiler test/test_tracemalloc.py
 %python_exec -m memory_profiler test/test_import.py
 %python_exec -m memory_profiler test/test_memory_usage.py
@@ -84,6 +83,10 @@ python3 -m memory_profiler test/test_unicode.py
 %doc README.rst
 %license COPYING
 %python_alternative %{_bindir}/mprof
-%{python_sitelib}/*
+%{python_sitelib}/memory_profiler.py
+%{python_sitelib}/mprof.py
+%{python_sitelib}/memory_profiler-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/memory_profiler*
+%pycache_only %{python_sitelib}/__pycache__/mprof*
 
 %changelog
