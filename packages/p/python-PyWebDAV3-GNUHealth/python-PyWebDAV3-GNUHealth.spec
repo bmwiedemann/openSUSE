@@ -96,6 +96,6 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/py
 %doc README.rst doc/Changes doc/TODO
 %python_alternative %{_bindir}/davserver
 %{python_sitelib}/pywebdav
-%{python_sitelib}/PyWebDAV3_GNUHealth-%{version}.dist-info
+%{python_sitelib}/[Pp]y[Ww]eb[Dd][Aa][Vv]3_[Gg][Nn][Uu][Hh]ealth-%{version}.dist-info
 
 %changelog
