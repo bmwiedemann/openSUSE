@@ -298,7 +298,6 @@ Recommends:     pattern() = xfce_laptop
 Recommends:     pattern() = xfce_office
 Requires:       pattern() = yast2_basis
 Requires:       pattern() = yast2_install_wf
-# for now xen_server
 Requires:       thai-fonts
 Requires:       un-fonts
 Requires:       yast2-trans-af
@@ -362,7 +361,6 @@ Recommends:     pattern() = kvm_server
 Recommends:     pattern() = minimal_base
 Recommends:     pattern() = minimal_base-conflicts
 Recommends:     pattern() = x11_yast
-Recommends:     pattern() = xen_server
 # bluncks 2nd baby
 Recommends:     apport-gtk
 Recommends:     apport-qt

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  3 09:43:19 UTC 2025 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop xen from the DVD.
+
+-------------------------------------------------------------------
 Mon Feb 24 16:38:12 CET 2025 - ro@suse.de
 
 - drop crda, obsolete since kernel 4.15 
