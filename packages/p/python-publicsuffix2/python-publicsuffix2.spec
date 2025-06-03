@@ -1,7 +1,7 @@
 #
 # spec file for package python-publicsuffix2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ Summary:        Get a public suffix for a domain name using the Public Suffix Li
 License:        MIT AND MPL-2.0
 URL:            https://github.com/nexb/python-publicsuffix2
 Source:         https://files.pythonhosted.org/packages/source/p/publicsuffix2/publicsuffix2-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.7.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -39,15 +41,16 @@ Forked from and using the same API as the publicsuffix package.
 %setup -q -n publicsuffix2-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license publicsuffix2.LICENSE
 %doc CHANGELOG.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/publicsuffix2
+%{python_sitelib}/publicsuffix2-%{version}*-info
 
 %changelog
