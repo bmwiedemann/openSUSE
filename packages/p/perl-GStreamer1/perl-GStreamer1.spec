@@ -1,7 +1,7 @@
 #
 # spec file for package perl-GStreamer1
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,42 +12,56 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define cpan_name GStreamer1
 Name:           perl-GStreamer1
-Version:        0.003
+Version:        0.3.0
 Release:        0
-Summary:        Perl interface to the GStreamer library
+# 0.003 -> normalize -> 0.3.0
+%define cpan_version 0.003
+#Upstream:  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: conditions and the following disclaimer. conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 License:        BSD-2-Clause
-Group:          Development/Languages/Perl
-Url:            https://metacpan.org/pod/GStreamer1
-Source:         https://cpan.metacpan.org/authors/id/T/TM/TMURRAY/%{cpan_name}-%{version}.tar.gz
+Summary:        Bindings for GStreamer 1.0, the open source multimedia framework
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/T/TM/TMURRAY/%{cpan_name}-%{cpan_version}.tar.gz
+Source1:        cpanspec.yml
+BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Devel::CheckLib)
-BuildRequires:  perl(Glib::Object::Introspection) >= 0.009
+BuildRequires:  perl(Devel::CheckLib) >= 0.900
+BuildRequires:  perl(Glib::Object::Introspection) >= 0.9
+BuildRequires:  perl(Test::Pod)
+Requires:       perl(Glib::Object::Introspection) >= 0.9
+Provides:       perl(GStreamer1) = %{version}
+Provides:       perl(GStreamer1::Caps::Simple) = %{version}
+%undefine       __perllib_provides
+%{perl_requires}
+# MANUAL BEGIN
 BuildRequires:  pkgconfig(gstreamer-1.0)
-Requires:       perl(Glib::Object::Introspection) >= 0.009
 Requires:       typelib-1_0-Gst-1_0
 Requires:       typelib-1_0-GstApp-1_0
-%{perl_requires}
+# MANUAL END
 
 %description
-This package provides perl bindings for GStreamer 1.x.
-GStreamer is a library for constructing graphs of media-handling
-components. The applications it supports range from simple
-OGG Vorbis playback, audio/video streaming to complex audio
-(mixing) and video (non-linear editing) processing.
+GStreamer1 implements a framework that allows for processing and encoding
+of multimedia sources in a manner similar to a shell pipeline.
+
+Because it's introspection-based, most of the classes follow directly from
+the C API. Therefore, most of the documentation is by example rather than a
+full breakdown of the class structure.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE='%{optflags}'
-make %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
+
+%check
+#make test
 
 %install
 %perl_make_install
@@ -55,7 +69,6 @@ make %{?_smp_mflags}
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root)
 %doc CHANGELOG examples
 
 %changelog
