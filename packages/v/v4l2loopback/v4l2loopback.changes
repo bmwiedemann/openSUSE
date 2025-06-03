@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jun 03 06:44:50 UTC 2025 - munix9@googlemail.com
+
+- Update to version 0.15.0:
+  * Release v0.15.0
+  * DKMS: dummy 'clean' rule
+  * Replace 'Skype' with 'Zoom'
+  * [github] note on "exact" v4l2loopback version
+  * [github] fix name of ArchLinux job
+  * publish build-state.svg directly to the Wiki
+  * [github] use current data for rolling releaeses
+  * [github] case-insensitive sort
+  * [github] drop openSUSE/leap
+  * [github] build more Fedora releases, and ArchLinux
+  * [github] support ArchLinux
+  * [github] DNF>=5 supports the "--skip-unavailable" flag
+  * [github] build on openSUSE
+  * [github] rename "not_${os}" to "not_${packager}"
+  * run CI against more kernels
+  * Create a badge with all kernels tested in the CI
+  * [github] 2nd attempt on testing with more kernels
+  * [github] also install kernels without a debrevision in the name
+  * only use `timer_delete_sync` compat macro for linux<6.2.0
+  * added functionality for linux 6.15+ (#626)
+  * use fixed-size types in public API
+  * [meta] pre-commit config to automatically run clang-format before committing
+  * v4l2loopback-ctl: (also) query the module version via ioctl
+  * change public ioctl numbers!
+  * V4L2LOOPBACK_CTL_VERSION ioctl
+  * order ioctl's by value
+  * dkms.conf updates
+
+-------------------------------------------------------------------
 Thu Mar 13 07:09:44 UTC 2025 - ecsos@opensuse.org
 
 - Update to version 0.14.0:
