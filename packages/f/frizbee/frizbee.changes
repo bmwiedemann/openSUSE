@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 02 17:21:21 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.1.7:
+  * Bump dependencies
+  * feat: implement --error
+  * chore: fix typos 
+  * Resolve commit ref correctly. 
+
+-------------------------------------------------------------------
 Tue Sep 10 08:37:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.1.2:
