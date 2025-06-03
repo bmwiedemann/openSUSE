@@ -5189,4 +5189,14 @@
   * 2025/04/29 Add checks for RV/rv and XR/xr</comment>
     <requestid>1280830</requestid>
   </revision>
+  <revision rev="300" vrev="73">
+    <srcmd5>8370ca3926824c5bf7f33331a99ab9f2</srcmd5>
+    <version>unknown</version>
+    <time>1748965885</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20250531
+  + improve logic in misc/run_tic.in for constructing symbolic link
+    when $DESTDIR is set.</comment>
+    <requestid>1281755</requestid>
+  </revision>
 </revisionlist>

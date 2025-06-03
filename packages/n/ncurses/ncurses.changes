@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  2 06:15:52 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250531
+  + improve logic in misc/run_tic.in for constructing symbolic link
+    when $DESTDIR is set.
+
+-------------------------------------------------------------------
 Mon May 26 06:42:05 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250524
