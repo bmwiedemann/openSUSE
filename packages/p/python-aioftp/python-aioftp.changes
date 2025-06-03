@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  3 06:47:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.25.1
+  * do not start explicit tls if implicit mode used (fixes #184) (#185)
+- from version 0.25.0
+  * client: add partial client support for explicit tls (#183)
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Wed Jan 22 10:03:34 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.24.1

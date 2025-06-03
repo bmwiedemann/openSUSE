@@ -91,4 +91,18 @@
     <comment></comment>
     <requestid>1239508</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0d82c6bc7d90feb9aaf832c58cf01d74</srcmd5>
+    <version>0.25.1</version>
+    <time>1748970644</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1282110 from glaubitz
+
+- Update to 0.25.1
+    * do not start explicit tls if implicit mode used (fixes #184) (#185)
+  - from version 0.25.0
+    * client: add partial client support for explicit tls (#183)
+  - Update BuildRequires from pyproject.toml</comment>
+    <requestid>1282358</requestid>
+  </revision>
 </revisionlist>
