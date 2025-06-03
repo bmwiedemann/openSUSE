@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-coverage-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,9 @@ Summary:        Django template coveragepy plugin
 License:        Apache-2.0
 URL:            https://github.com/nedbat/django_coverage_plugin
 Source:         https://github.com/nedbat/django_coverage_plugin/archive/v%{version}.tar.gz#/django_coverage_plugin-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
@@ -46,10 +48,10 @@ Django template coverage.py plugin
 %autosetup -p1 -n django_coverage_plugin-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +60,7 @@ Django template coverage.py plugin
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/django_coverage_plugin*
+%{python_sitelib}/django_coverage_plugin
+%{python_sitelib}/django_coverage_plugin-%{version}.dist-info
 
 %changelog

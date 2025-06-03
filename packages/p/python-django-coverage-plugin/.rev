@@ -59,4 +59,12 @@
     support for Python 3.12.</comment>
     <requestid>1102870</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>bb05bf48266eef1449545f7df4c45d3f</srcmd5>
+    <version>3.1.0</version>
+    <time>1748965971</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282118</requestid>
+  </revision>
 </revisionlist>
