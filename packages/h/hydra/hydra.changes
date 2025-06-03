@@ -1,0 +1,229 @@
+-------------------------------------------------------------------
+Thu May  8 17:25:29 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Replace #!/bin/sh with #!/bin/bash in hydra-wizard.sh
+- Remove unused BuildRequires
+- Remove old / broken conditional BuildRequires
+- Fix file permissions
+
+-------------------------------------------------------------------
+Tue May  6 17:17:19 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Fix freerdp version to 2, as hydra does not compile with
+  freerdp 3 (https://github.com/vanhauser-thc/thc-hydra/issues/935)
+- Use common URL format in source URL
+- Use pkgconfig when possible to specify BuildRequires
+
+-------------------------------------------------------------------
+Mon Jun 12 19:47:10 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 9.5
+  * http-form:
+    + The help for http-form was wrong. the condition variable
+       must always be the last parameter, not the third.
+    +  Proxy support was not working correctly.
+  * smb2: fix for updated libsmb2 which resulted in correct
+    guessing attempts not being detected.
+  * smtp: break early if the server does not allow authentication.
+  * rdp: detect more return codes that say a user is disabled etc.
+
+-------------------------------------------------------------------
+Thu Sep  8 08:47:50 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 9.4
+  * Switched from pcre/pcre3 to pcre2
+  * Small fix for weird RTSP servers
+  * Added "2=" optional parameter to http-post-form module to tell
+    hydra that a "302" HTTP return code means success
+  * replaced wait3 with waitpid for better compatability
+- Drop patch:
+  * hydra-9.3-hydra-http-form.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Mon Jun 20 09:28:30 UTC 2022 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Update to version 9.3
+  * new module: cobaltstrike by ultimaiiii, thank you!
+  * fix for ssh to support -M or ip/range
+  * fix for rdp to detect empty passwords
+  * fix for http-form to no send empty headers
+  * fix for http on non-default ports when using with a proxy
+  * for vnc/cisco/... protocols that only check for a password, skip host
+    after the password is found
+  * fix to support IPv6 addresses in -M
+  * fix to test all entries in -C files, not exiting after the first found
+  * make disappearing targets faster to terminate on
+- fix URL: use the Github page instead of the old, lost homepage
+- adjust filelist: README.md -> README, add xhydra.png logo
+- For new enough distributions (>= 15.1):
+  + enable freeRDP(2)    -> BuildRequires: freerdp-devel
+  + enable memcached     -> BuildRequires: libmemcached-devel
+- enable Samba(client) -> BuildRequires: libsmbclient-devel
+- enable MySQL/MariaDB -> BuildRequires: libmariadbd-devel
+- ran spec-cleaner
+- add hydra-9.3-hydra-http-form.patch: fix a missing return value
+
+-------------------------------------------------------------------
+Mon Mar 15 22:02:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 9.2
+  * fix for http-post-form optional parameters.
+  * enable gcc 10 support for xhydra too.
+  * removed rain mode (-r) because of inefficiency.
+  * IPv6 support for Host: header for http based modules.
+- Update to version 9.1
+  * rdb: support for libfreerdp3.
+  * new module: smb2 which also supports smb3 (uses
+    libsmbclient-dev).
+  * oracle: added success condition.
+  * rtsp: fixed crash in MD5 auth.
+  * svn: updated to support past and new API.
+  * http: now supports F=/S= string matching conditions.
+  * http-proxy: buffer fix, 404 success condition.
+  * mysql: changed not to use mysql db as a default. if the user
+    has not access to this db auth fails.
+  * sasl: buffer fix.
+  * fixed help for https modules.
+  * added -K command line switch to disable redo attempts.
+  * forgot to have the -m option in the hydra help output.
+  * gcc-10 support and various cleanups.
+  * added .clang-format and formatted all code
+- Build with support for firebird
+
+-------------------------------------------------------------------
+Fri May 17 08:54:17 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 9.0
+  * rdp: Revamped rdp module to use FreeRDP library
+  * Added memcached module
+  * Added mongodb module
+  * http: http module now supports a= option to select http
+    authentication type
+  * JSON output does now truncate the file if exists.
+  * Fixed svn module memory leaks
+  * Fixed rtsp module potential buffer overflow
+  * Fixed http module DIGEST-MD5 mode
+
+-------------------------------------------------------------------
+Tue Feb 26 15:00:00 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.9.1
+  * Clarification for rdp error message
+  * CIDR notation (hydra -l test -p test 192.168.0.0/24 ftp)
+    was not detected, fixed
+
+-------------------------------------------------------------------
+Wed Jan  2 21:53:33 UTC 2019 - mardnh@gmx.de
+
+- Update to version 8.8
+  * New web page: https://github.com/vanhauser-thc/thc-hydra
+  * added PROBLEMS file with known issues
+  * rdp: disabled the module as it does not support the current
+    protocol.
+  * ldap: fixed a dumb strlen on a potential null pointer
+  * http-get/http-post:
+     - now supports H=/h= parameters same as http-form
+     - 403/404 errors are now always registered as failed attempts
+  * mysql module: a non-default port was not working, fixed
+  * added -w timeout support to ssh module
+  * fixed various memory leaks in http-form module
+  * corrected hydra return code to be 0 on success
+  * added patch from debian maintainers which fixes spellings
+  * fixed weird crash on x64 systems
+  * many warning fixes by crondaemon
+
+-------------------------------------------------------------------
+Sat Jul 22 09:21:09 UTC 2017 - mardnh@gmx.de
+
+- Update to version 8.6
+  * added radmin2 module by catatonic prime - great work!
+  * smb module now checks if SMBv1 is supported by the server and
+    if signing is required
+  * http-form module now supports URLs up to 6000 bytes
+  * Fix for SSL connections that failed with
+    error:00000000:lib(0):func(0):reason(0)
+  * Added new command line option:
+     -c TIME: seconds between login attempts (over all threads,
+     so -t 1 is recommended)
+  * Options put after -R (for loading a restore file) are now
+    honored (and were disallowed before)
+  * merged several patches by Diadlo@github to make the code
+    easier readable.
+  * merged a patch by Diadlo@github that moves the help output
+    to the invididual module
+
+- Remove patch (fixed upstream):
+  - 0001-Fix-no-return-in-nonvoid-function-in-bfg.c-41.patch
+
+-------------------------------------------------------------------
+Wed May  3 19:10:49 UTC 2017 - mardnh@gmx.de
+
+- Update to version 8.5
+  * New command line option:
+     -b : format option for -o output file (json only so far, happy for patches
+          supporting others :) ) - thanks to veggiespam for the patch
+  * ./configure now honors the CC enviroment variable if present
+  * Fix for the restore file crash on some x64 platforms (finally! thanks to lukas227!)
+  * Changed the format of the restore file to detect cross platform copies
+  * Fixed a bug in the NCP module
+  * Favor strrchr() over rindex()
+  * Added refactoring patch by diadlo
+  * Updated man page with missing command line options
+
+-------------------------------------------------------------------
+Fri Jan 27 18:24:37 UTC 2017 - mardnh@gmx.de
+
+- Update to version 8.4
+  * Proxy support re-implemented:
+    - HYDRA_PROXY[_HTTP] environment can be a text file with up to 64 entries
+    - HYDRA_PROXY_AUTH was deprecated, set login/password in HTTP_PROXY[_HTTP]
+  * New protocol: adam6500 - this one is work in progress, please test and report
+  * New protocol: rpcap - thanks to Petar Kaleychev <petar.kaleychev@gmail.com>
+  * New command line options:
+     -y : disables -x 1aA interpretation, thanks to crondaemon for the patch
+     -I : ignore an existing hydra.restore file (dont wait for 10 seconds)
+  * hydra-svn: works now with the current libsvn version
+  * hydra-ssh: initial check for password auth support now uses login supplied
+  * Fixed dpl4hydra to be able to update from the web again
+  * Fixed crash when -U was used without any service (thanks to thecarterb for reporting)
+  * Updated default password lists
+  * The protocols vnc, xmpp, telnet, imap, nntp and pcanywhere got accidentially long
+    sleep commands due a patch in 8.2, fixed
+  * Added special error message for clueless users :)
+- ran spec-cleaner
+- fixed Group
+- added patch:
+   - 0001-Fix-no-return-in-nonvoid-function-in-bfg.c-41.patch
+
+-------------------------------------------------------------------
+Fri Sep 23 18:37:46 UTC 2016 - ushamim@linux.com
+
+- Changed versioning to match upstream versioning
+- Fixed permissions, lets users read man pages
+
+-------------------------------------------------------------------
+Sun Apr 24 23:23:32 UTC 2016 - ushamim@linux.com
+
+- Changed file permissions so only privileged users can run hydra
+
+-------------------------------------------------------------------
+Sun Apr 24 22:27:59 UTC 2016 - ushamim@linux.com
+
+- Enabled building of xhydra GUI
+- Fixed permissions on some doc files (remove execute bit)
+
+-------------------------------------------------------------------
+Wed Apr 13 17:02:17 UTC 2016 - ushamim@linux.com
+
+- Updated source to version current as of 2016-04-13 
+
+-------------------------------------------------------------------
+Tue Feb 23 14:27:46 UTC 2016 - ushamim@linux.com
+
+- postgresql-devel is required instead of postgresql94-devel (allows build on SLES and 13.2) 
+
+-------------------------------------------------------------------
+Mon Feb 22 07:23:11 UTC 2016 - meissner@suse.com
+
+- hydra, a remote password scanner/cracker
+
