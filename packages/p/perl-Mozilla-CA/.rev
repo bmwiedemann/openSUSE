@@ -72,4 +72,40 @@
     <comment></comment>
     <requestid>1244964</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>50c9f9fbb88768dc0121a0c612852349</srcmd5>
+    <version>20250602.0.0</version>
+    <time>1748966114</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1282215 from tinita
+
+- Update Mozilla-CA-20240730-Redirect-to-ca-certificates-bundle.patch
+- updated to 20250602.0.0 (20250602)
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+  20250602
+    - Update from Mozilla repository to 2025-06-02
+    - Added certificates:
+      - D-TRUST BR Root CA 2 2023
+        sha256: 0552e6f83fdf65e8fa9670e666df28a4e21340b510cbe52566f97c4fb94b2bd1
+      - D-TRUST EV Root CA 2 2023
+        sha256: 8e8221b2e7d4007836a1672f0dcc299c33bc07d316f132fa1a206d587150f1ce
+    - Removed certificates:
+      - Baltimore CyberTrust Root
+        sha256: 16af57a9f676b0ab126095aa5ebadef22ab31119d644ac95cd4b93dbf3f26aeb
+      - Comodo AAA Services root
+        sha256: d7a7a0fb5d7e2731d771e9484ebcdef71d5f0c3e0a2948782bc83ee0ea699ef4
+      - Entrust.net Premium 2048 Secure Server CA
+        sha256: 6dc47172e01cbcb0bf62580d895fe2b8ac9ad4f873801e0c10b9c837d21eb177
+      - GlobalSign Root CA
+        sha256: ebd41040e4bb3ec742c9e381d31ef2a41a48b6685c96e7cef3c1df6cd4331c99
+      - Go Daddy Class 2 CA
+        sha256: c3846bf24b9e93ca64274c0ec67c1ecc5e024ffcacd2d74019350e81fe546ae4
+      - Starfield Class 2 CA
+        sha256: 1465fa205397b876faa6f0a9958e5590e40fcc7faa4fb7c2c8677521fb5fb658
+      - SwissSign Silver CA - G2
+        sha256: be6c4da2bbb9ba59b6f3939768374246c3c005993fa98f020d1dedbed48a81d5
+      - XRamp Global CA Root
+        sha256: cecddc905099d8dadfc5b1d209b737cbe2c18cfb2c10c0ff0bcf0d3286fc1aa2</comment>
+    <requestid>1282222</requestid>
+  </revision>
 </revisionlist>

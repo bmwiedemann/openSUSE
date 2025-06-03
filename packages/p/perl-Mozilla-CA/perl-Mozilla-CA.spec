@@ -18,10 +18,10 @@
 
 %define cpan_name Mozilla-CA
 Name:           perl-Mozilla-CA
-Version:        20250202.0.0
+Version:        20250602.0.0
 Release:        0
-# 20250202 -> normalize -> 20250202.0.0
-%define cpan_version 20250202
+# 20250602 -> normalize -> 20250602.0.0
+%define cpan_version 20250602
 #Upstream: SUSE-Public-Domain
 License:        GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later
 Summary:        Mozilla's CA cert bundle in PEM format
@@ -54,7 +54,7 @@ The module provide a single function:
 Returns the absolute path to the Mozilla's CA cert bundle PEM file.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
