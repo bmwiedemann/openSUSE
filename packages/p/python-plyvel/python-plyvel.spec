@@ -1,7 +1,7 @@
 #
 # spec file for package python-plyvel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
 Name:           python-plyvel
 Version:        1.5.1
 Release:        0
@@ -28,9 +26,11 @@ URL:            https://plyvel.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/p/plyvel/plyvel-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 0.17}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  leveldb-devel >= 1.21
@@ -50,10 +50,10 @@ cache sizes, custom comparators.
 mkdir tests
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %fdupes %{buildroot}
 
 %check
@@ -63,6 +63,7 @@ mv plyvel plyvel.hide
 %files %{python_files}
 %license LICENSE.rst
 %doc doc NEWS.rst README.rst
-%{python_sitearch}/*
+%{python_sitearch}/plyvel
+%{python_sitearch}/plyvel-%{version}*-info
 
 %changelog

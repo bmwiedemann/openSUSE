@@ -122,4 +122,12 @@
 - Initial package</comment>
     <requestid>1140742</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>67e60aed406cb4be66fd905288b2326b</srcmd5>
+    <version>1.5.1</version>
+    <time>1748966159</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282287</requestid>
+  </revision>
 </revisionlist>
