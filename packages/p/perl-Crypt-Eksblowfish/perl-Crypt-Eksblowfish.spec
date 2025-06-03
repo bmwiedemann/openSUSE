@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Crypt-Eksblowfish
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Crypt-Eksblowfish
-Version:        0.009
-Release:        0
 %define cpan_name Crypt-Eksblowfish
-Summary:        The Eksblowfish Block Cipher
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Crypt-Eksblowfish/
-Source0:        Crypt-Eksblowfish-0.009.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Name:           perl-Crypt-Eksblowfish
+Version:        0.9.0
+Release:        0
+# 0.009 -> normalize -> 0.9.0
+%define cpan_version 0.009
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        The Eksblowfish block cipher
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/%{cpan_name}-%{cpan_version}.tar.gz
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Class::Mix) >= 0.001
+BuildRequires:  perl(Class::Mix) >= 0.1
 BuildRequires:  perl(ExtUtils::CBuilder) >= 0.15
 BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(parent)
-Requires:       perl(Class::Mix) >= 0.001
+Requires:       perl(Class::Mix) >= 0.1
 Requires:       perl(parent)
+Provides:       perl(Crypt::Eksblowfish) = %{version}
+Provides:       perl(Crypt::Eksblowfish::Bcrypt) = %{version}
+Provides:       perl(Crypt::Eksblowfish::Blowfish) = %{version}
+Provides:       perl(Crypt::Eksblowfish::Family) = %{version}
+Provides:       perl(Crypt::Eksblowfish::Subkeyed) = %{version}
+Provides:       perl(Crypt::Eksblowfish::Uklblowfish) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -45,33 +52,32 @@ setup very expensive. ("Eks" stands for "expensive key schedule".) This
 doesn't make it significantly cryptographically stronger, but is intended
 to hinder brute-force attacks. It also makes it unsuitable for any
 application requiring key agility. It was designed by Niels Provos and
-David Mazieres for password hashing in OpenBSD. See the
-Crypt::Eksblowfish::Bcrypt manpage for the hash algorithm. See the
-Crypt::Eksblowfish::Blowfish manpage for the unmodified Blowfish cipher.
+David Mazieres for password hashing in OpenBSD. See
+Crypt::Eksblowfish::Bcrypt for the hash algorithm. See
+Crypt::Eksblowfish::Blowfish for the unmodified Blowfish cipher.
 
 Eksblowfish is a parameterised (family-keyed) cipher. It takes a cost
 parameter that controls how expensive the key scheduling is. It also takes
 a family key, known as the "salt". Cost and salt parameters together define
 a cipher family. Within each family, a key determines an encryption
-function in the usual way. See the Crypt::Eksblowfish::Family manpage for a
-way to encapsulate an Eksblowfish cipher family.
+function in the usual way. See Crypt::Eksblowfish::Family for a way to
+encapsulate an Eksblowfish cipher family.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Build.PL installdirs=vendor optimize="%{optflags}"
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor optimize="%{optflags}"
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog

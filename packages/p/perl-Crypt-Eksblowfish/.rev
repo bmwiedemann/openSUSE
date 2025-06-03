@@ -7,4 +7,14 @@
     <comment>Dochazka dependency</comment>
     <requestid>355463</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2e84e449741bd66d6794162fa0611c25</srcmd5>
+    <version>0.9.0</version>
+    <time>1748970654</time>
+    <user>anag_factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+</comment>
+    <requestid>1282369</requestid>
+  </revision>
 </revisionlist>
