@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May 29 10:34:18 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250529.307d6ff:
+  * Remove noarch for main package
+  * Copy measure-pcr-prediction if missing in ESP
+  * Compile and install uhmac
+  * Use uhmac instead of openssl for HMAC
+  * uhmac: add Rust tool for HMAC
+  * Re-enable riscv64 arch
+  * Support non-secure boot installations
+  * Rework removable media detection
+  * jeos-firstboot-enroll: fix typo in msgbox
+  * Measure GPT of the disk with ESP, not the disk with root
+  * jeos-firstboot-enroll: show final error message
+
+-------------------------------------------------------------------
 Mon May 05 12:49:05 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250505.f4890e9:

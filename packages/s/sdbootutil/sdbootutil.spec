@@ -16,13 +16,19 @@
 #
 
 
+%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           sdbootutil
-Version:        1+git20250505.f4890e9
+Version:        1+git20250529.307d6ff
 Release:        0
 Summary:        bootctl wrapper for BLS boot loaders
 License:        MIT
 URL:            https://github.com/openSUSE/sdbootutil
 Source:         %{name}-%{version}.tar
+Source1:        vendor.tar.zst
+Source2:        config.toml
+BuildRequires:  cargo
+BuildRequires:  cargo-packaging
+BuildRequires:  libopenssl-devel
 BuildRequires:  systemd-rpm-macros
 Requires:       %{name}-dracut-measure-pcr
 Requires:       dialog
@@ -44,8 +50,9 @@ Requires:       tpm2.0-tools
 Requires:       udev
 Supplements:    (grub2-x86_64-efi-bls and shim)
 Supplements:    (systemd-boot and shim)
-BuildArch:      noarch
-ExclusiveArch:  aarch64 x86_64
+# Because uhmac it is not a noarch package
+# BuildArch:      noarch
+ExclusiveArch:  aarch64 riscv64 x86_64
 %{?systemd_requires}
 
 %description
@@ -126,12 +133,20 @@ BuildArch:      noarch
 Dracut module from sdbootutil to measure PCR 15 in non-UKIs systems
 
 %prep
-%setup -q
+%autosetup -a1 -p1
+mv vendor uhmac
+cd uhmac
+mkdir .cargo
+install -D -m 644 %{SOURCE2} .cargo/config.toml
 
 %build
+cd uhmac
+sed -i 's/edition = "2024"/edition = "2018"/' Cargo.toml
+%{cargo_build}
 
 %install
 install -D -m 755 %{name} %{buildroot}%{_bindir}/%{name}
+install -D -m 755 uhmac/target/release/uhmac %{buildroot}%{_libexecdir}/%{name}/uhmac
 
 # Update prediction service
 install -D -m 644 %{name}-update-predictions.service \
@@ -226,6 +241,8 @@ fi
 %dir %{_sharedstatedir}/%{name}
 %{_bindir}/%{name}
 %{_unitdir}/%{name}-update-predictions.service
+%dir %{_libexecdir}/%{name}
+%{_libexecdir}/%{name}/uhmac
 
 %files snapper
 %dir %{_prefix}/lib/snapper
