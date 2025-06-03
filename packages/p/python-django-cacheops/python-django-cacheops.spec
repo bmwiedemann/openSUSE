@@ -21,10 +21,11 @@ Version:        7.2
 Release:        0
 Summary:        Django ORM cache with automatic granular event-driven invalidation
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            http://github.com/Suor/django-cacheops
 Source:         https://files.pythonhosted.org/packages/source/d/django_cacheops/django_cacheops-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 3.2
@@ -54,10 +55,10 @@ filesystem for simple time-invalidated one.
 %autosetup -p1 -n django_cacheops-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
