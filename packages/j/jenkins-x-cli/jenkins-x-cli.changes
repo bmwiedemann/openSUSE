@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue Jun 03 05:08:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.90:
+  * chore(deps): upgrade jenkins-x-plugins/jx-promote to version
+    0.6.22
+
+-------------------------------------------------------------------
+Mon Jun 02 19:25:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.89:
+  * chore(deps): upgrade jenkins-x-plugins/jx-application to
+    version 0.3.8
+
+-------------------------------------------------------------------
+Mon Jun 02 18:38:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.88:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.0.0
+
+-------------------------------------------------------------------
+Mon Jun 02 18:34:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.87:
+  * chore(deps): upgrade jenkins-x-plugins/jx-admin to version
+    0.3.18
+
+-------------------------------------------------------------------
+Mon Jun 02 17:24:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.86:
+  * chore(deps): upgrade jenkins-x-plugins/jx-test to version 0.4.9
+
+-------------------------------------------------------------------
+Mon Jun 02 15:55:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.85:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.21
+
+-------------------------------------------------------------------
+Mon Jun 02 15:52:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.84:
+  * chore(deps): upgrade jenkins-x-plugins/jx-secret to version
+    0.4.14
+
+-------------------------------------------------------------------
+Mon Jun 02 15:49:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.83:
+  * chore(deps): upgrade jenkins-x-plugins/jx-health to version
+    0.0.80
+
+-------------------------------------------------------------------
+Mon Jun 02 15:47:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.82:
+  * chore(deps): upgrade jenkins-x-plugins/jx-changelog to version
+    0.10.14
+
+-------------------------------------------------------------------
 Tue Apr 29 08:05:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.81:
