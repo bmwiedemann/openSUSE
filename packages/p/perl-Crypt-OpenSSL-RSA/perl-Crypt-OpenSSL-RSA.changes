@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu May  8 05:35:00 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.350.0 (0.35)
+   see /usr/share/doc/packages/perl-Crypt-OpenSSL-RSA/Changes
+
+  0.35 May 7 2025
+      - Disable PKCS#1 v1.5 padding. It's not practical to mitigate marvin attacks so we will instead disable this and require alternatives to address the issue.
+        - Resolves #42 - CVE-2024-2467.
+  0.34 May 5 2025
+      - Production release.
+  0.34_03 May 4 2025
+      - Fix bug in rsa_crypt. Need to pass NULL
+  0.34_02 May 4 2025
+      - t/rsa.t needs to tolerate sha1 being disabled on rhel.
+  0.34_01 May 3 2025
+      - docs - plaintext = decrypt(cyphertext)
+      - #44 - Fix issue when libz is not linked on AIX
+      - #50 - Correct openssl version may not be found
+      - #52 - Out of memory on openssl 1.1.1w hpux
+      - #47 - Update FSF address and LGPL name in LICENSE
+      - #55 - stop using AutoLoader
+      - #48 - Whirlpool is missing the header
+      - Move github repo to cpan-authors
+      - Fully support openSSL 3.x API
+
+-------------------------------------------------------------------
 Sat Jul  9 03:06:13 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.33
