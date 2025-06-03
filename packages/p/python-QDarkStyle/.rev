@@ -100,4 +100,14 @@
     <comment></comment>
     <requestid>1181543</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>82fe7242f2e1076645ede2ac55904af4</srcmd5>
+    <version>3.2.1</version>
+    <time>1748966248</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1281835 from krop
+
+- Drop pyside2 support for Leap 16 and factory (boo#1243916)</comment>
+    <requestid>1282335</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 08:54:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Drop pyside2 support for Leap 16 and factory (boo#1243916)
+
+-------------------------------------------------------------------
 Thu May 23 08:16:14 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Fix test on Leap 15.6
