@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-compiler
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ BuildRequires:  atinject
 BuildRequires:  ecj
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
+BuildRequires:  objectweb-asm
 BuildRequires:  plexus-utils
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
@@ -86,6 +87,7 @@ mkdir -p lib
 build-jar-repository -s lib \
   atinject \
   ecj \
+  objectweb-asm/asm \
   org.eclipse.sisu.inject \
   org.eclipse.sisu.plexus \
   plexus/utils \

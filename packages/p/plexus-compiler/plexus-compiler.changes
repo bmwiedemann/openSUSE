@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  3 08:24:10 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Add dependency on objectweb-asm to build with sisu 0.9.0.M4
+
+-------------------------------------------------------------------
 Wed Jan 31 12:43:57 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream release 2.14.2
