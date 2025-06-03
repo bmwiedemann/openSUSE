@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jun 03 04:55:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.23:
+  * What's new in this release 🎉
+    - This release adds support for better handling of Mullvad exit
+      nodes, bug fixes and minor tweaks.
+      It's also the first release that officially package for
+      Ubuntu 25.04
+  * Commits
+    - e55b78e: Issue #77 - Support for Ubuntu 25.04 (Plucky Puffin)
+      (Marcus Grenängen)
+    - 8994b79: Build from source: knotifications instructions
+      (Marcus Grenängen)
+    - c5a40a4: Let's see if this is the correct path ref inside the
+      container (Marcus Grenängen)
+    - 19639bb: More tests to see if it solves it (Marcus Grenängen)
+    - b2ffba4: And fix 24.04 and Debian Trixie builds as well
+      (Marcus Grenängen)
+    - 03d3e4b: And some more minor workflow fixes (Marcus
+      Grenängen)
+    - fb9e088: More workflow fixes (Marcus Grenängen)
+    - 8099605: Permission fixes for 24.04 and Trixie outputs
+      (Marcus Grenängen)
+    - 5b97ed5: Extra install deps for builds (Marcus Grenängen)
+    - c0640f0: Fix Trixie build & build names (Marcus Grenängen)
+    - af40020: [Issue #76] - First pass on getting basic support
+      for Mullvad exit nodes (#78) (Marcus Grenängen) #78
+    - 1dbe121: Fix for windows build uploads (Marcus Grenängen)
+    - 0664616: Add ubuntu-25.04-plucky to tagged release builds
+      (Marcus Grenängen)
+    - b693b3c: Bump version to 0.2.23 (Marcus Grenängen)
+
+-------------------------------------------------------------------
 Wed May 07 15:43:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.22:

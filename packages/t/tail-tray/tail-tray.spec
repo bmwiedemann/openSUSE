@@ -17,7 +17,7 @@
 
 
 Name:           tail-tray
-Version:        0.2.22
+Version:        0.2.23
 Release:        0
 Summary:        Tailscale tray menu and UI for the KDE Plasma Desktop
 License:        GPL-3.0-only
@@ -34,6 +34,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  cmake(Qt6Core) >= 6.7
 BuildRequires:  cmake(Qt6Linguist) >= 6.7
 BuildRequires:  cmake(Qt6Network) >= 6.7
+BuildRequires:  cmake(Qt6Test) >= 6.7
 BuildRequires:  cmake(Qt6Tools) >= 6.7
 BuildRequires:  cmake(Qt6Widgets) >= 6.7
 BuildRequires:  pkgconfig(openssl)
