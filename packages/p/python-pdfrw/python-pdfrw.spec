@@ -1,7 +1,7 @@
 #
 # spec file for package python-pdfrw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,9 @@ License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://code.google.com/p/pdfrw/
 Source:         https://files.pythonhosted.org/packages/source/p/pdfrw/pdfrw-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -43,21 +45,21 @@ pdfrw is a Python library and utility that reads and writes PDF files.
 %setup -q -n pdfrw-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
 %check
-%python_expand py.test-%{$python_bin_suffix}
+%pytest
 %endif
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/pdfrw/
-%{python_sitelib}/pdfrw-%{version}-py*.egg-info
+%{python_sitelib}/pdfrw-%{version}*-info
 
 %changelog
