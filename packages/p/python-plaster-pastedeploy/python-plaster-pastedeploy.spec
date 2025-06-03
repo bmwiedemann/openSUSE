@@ -1,7 +1,7 @@
 #
 # spec file for package python-plaster-pastedeploy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Pylons/plaster_pastedeploy
 Source0:        https://files.pythonhosted.org/packages/source/p/plaster_pastedeploy/plaster_pastedeploy-%{version}.tar.gz
 BuildRequires:  %{python_module PasteDeploy >= 2.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module plaster >= 0.5}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PasteDeploy >= 2.0
@@ -48,10 +50,10 @@ plaster.protocols.IWSGIProtocol interface.
 rm -rf src/plaster_pastedeploy.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +62,7 @@ rm -rf src/plaster_pastedeploy.egg-info
 %files %{python_files}
 %doc CHANGES.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/plaster[-_]pastedeploy
+%{python_sitelib}/plaster[-_]pastedeploy-%{version}*-info
 
 %changelog
