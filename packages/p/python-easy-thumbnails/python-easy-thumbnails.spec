@@ -1,7 +1,7 @@
 #
 # spec file for package python-easy-thumbnails
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ URL:            https://github.com/SmileyChris/easy-thumbnails
 Source:         https://files.pythonhosted.org/packages/source/e/easy_thumbnails/easy_thumbnails-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/SmileyChris/easy-thumbnails/pull/650 Add support for Python 3.13
 Patch:          py313.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,10 +54,10 @@ sed -i '1 { /^#!/ d }' easy_thumbnails/tests/mock*.py
 dos2unix README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

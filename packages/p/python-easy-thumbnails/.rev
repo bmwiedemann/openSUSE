@@ -61,4 +61,12 @@
   - skip optimize tests, there is some problem with it</comment>
     <requestid>1223786</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>550c7d9232996af4af36eb7ee6f6434c</srcmd5>
+    <version>2.10</version>
+    <time>1748966018</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282148</requestid>
+  </revision>
 </revisionlist>
