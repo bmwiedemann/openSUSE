@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-TieCombine
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,39 +12,43 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-IO-TieCombine
-Version:        1.005
-Release:        0
 %define cpan_name IO-TieCombine
-Summary:        Produce Tied (and Other) Separate but Combined Variables
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/IO-TieCombine/
-Source0:        http://www.cpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Name:           perl-IO-TieCombine
+Version:        1.5.0
+Release:        0
+# 1.005 -> normalize -> 1.5.0
+%define cpan_version 1.005
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Produce tied (and other) separate but combined variables
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.96
+Provides:       perl(IO::TieCombine) = %{version}
+Provides:       perl(IO::TieCombine::Handle) = %{version}
+Provides:       perl(IO::TieCombine::Scalar) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
 produce tied (and other) separate but combined variables
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -52,7 +56,7 @@ produce tied (and other) separate but combined variables
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes LICENSE README
+%doc Changes README
+%license LICENSE
 
 %changelog
