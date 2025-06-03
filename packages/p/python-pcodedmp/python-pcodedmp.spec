@@ -1,7 +1,7 @@
 #
 # spec file for package python-pcodedmp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pcodedmp
 Version:        1.2.6
 Release:        0
@@ -24,15 +23,17 @@ Summary:        A VBA p-code disassembler
 License:        GPL-3.0-only
 URL:            https://github.com/bontchev/pcodedmp
 Source:         https://files.pythonhosted.org/packages/source/p/pcodedmp/pcodedmp-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module oletools >= 0.54}
-# /SECTION
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-oletools >= 0.54
 Suggests:       python-win_unicode_console
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module oletools >= 0.54}
+# /SECTION
 %python_subpackages
 
 %description
@@ -46,10 +47,10 @@ Office 2009) and VBA7 (Office 2010 and higher).
 sed -i '1{/\/bin\/env python/d;}' pcodedmp/pcodedmp.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pcodedmp
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -63,6 +64,7 @@ sed -i '1{/\/bin\/env python/d;}' pcodedmp/pcodedmp.py
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/pcodedmp
-%{python_sitelib}/*
+%{python_sitelib}/pcodedmp
+%{python_sitelib}/pcodedmp-%{version}*-info
 
 %changelog
