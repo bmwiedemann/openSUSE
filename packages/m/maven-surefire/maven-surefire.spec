@@ -53,6 +53,7 @@ BuildRequires:  maven-resolver-impl
 BuildRequires:  maven-resolver-named-locks
 BuildRequires:  maven-resolver-util
 BuildRequires:  maven-shared-utils
+BuildRequires:  objectweb-asm
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-i18n
 BuildRequires:  plexus-interpolation
@@ -197,6 +198,7 @@ build-jar-repository -s -p lib \
     maven-resolver/maven-resolver-named-locks \
     maven-resolver/maven-resolver-util \
     maven-shared-utils/maven-shared-utils \
+    objectweb-asm/asm \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
     plexus-containers/plexus-component-annotations \
