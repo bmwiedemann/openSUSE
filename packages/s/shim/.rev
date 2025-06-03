@@ -1501,4 +1501,12 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment></comment>
     <requestid>1276758</requestid>
   </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>48d83bb7c21c980d762da9c4716dc70b</srcmd5>
+    <version>16.0</version>
+    <time>1748965811</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1281737</requestid>
+  </revision>
 </revisionlist>

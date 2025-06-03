@@ -77,6 +77,7 @@ Source57:       revoked-SLES-UEFI-SIGN-Certificate-2016-02.crt
 Source58:       revoked-SLES-UEFI-SIGN-Certificate-2020-07.crt
 Source59:       revoked-SLES-UEFI-SIGN-Certificate-2021-05.crt
 Source60:       revoked-SLES-UEFI-SIGN-Certificate-2022-05.crt
+Source61:       revoked-SLES-UEFI-SIGN-Certificate-2022-06.crt
 ###
 Source99:       SIGNATURE_UPDATE.txt
 # PATCH-FIX-SUSE shim-arch-independent-names.patch glin@suse.com -- Use the Arch-independent names
@@ -156,7 +157,7 @@ ls -al *.esl
 
 # first, build MokManager and fallback as they don't depend on a
 # specific certificate
-make RELEASE=0 ENABLE_CODESIGN_EKU=1 \
+make RELEASE=0 \
      MMSTEM=MokManager FBSTEM=fallback \
      MokManager.efi.debug fallback.efi.debug \
      MokManager.efi fallback.efi
@@ -219,7 +220,7 @@ for suffix in "${suffixes[@]}"; do
     fi
 
     openssl x509 -in $cert -outform DER -out shim-$suffix.der
-    make RELEASE=0 SHIMSTEM=shim \
+    make RELEASE=0 ENABLE_CODESIGN_EKU=1 SHIMSTEM=shim \
          VENDOR_CERT_FILE=shim-$suffix.der ENABLE_HTTPBOOT=1 \
          DEFAULT_LOADER="\\\\\\\\grub.efi" \
          VENDOR_DBX_FILE=$vendor_dbx \
