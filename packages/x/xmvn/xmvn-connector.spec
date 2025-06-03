@@ -1,7 +1,7 @@
 #
 # spec file for package xmvn-connector
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  javapackages-local
 BuildRequires:  maven-lib
 BuildRequires:  maven-resolver-api
+BuildRequires:  objectweb-asm
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  xmvn-install
@@ -98,6 +99,7 @@ build-jar-repository -s lib \
     maven/maven-model-builder \
     maven/maven-plugin-api \
     maven-resolver/maven-resolver-api \
+    objectweb-asm/asm \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
     %{parent}/%{parent}-api
