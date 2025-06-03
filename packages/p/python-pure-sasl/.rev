@@ -61,4 +61,12 @@
   * Fix GSSAPI wrapping using in Python 3</comment>
     <requestid>741632</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f272d7bf87db555632317eb0f139185d</srcmd5>
+    <version>0.6.2</version>
+    <time>1748966211</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282317</requestid>
+  </revision>
 </revisionlist>
