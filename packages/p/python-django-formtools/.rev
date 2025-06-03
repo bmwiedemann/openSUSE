@@ -99,4 +99,13 @@
     Django 4.2.</comment>
     <requestid>1088118</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f875781d40735561ff1dde7667e0d0ad</srcmd5>
+    <version>2.4.1</version>
+    <time>1748965975</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1282121</requestid>
+  </revision>
 </revisionlist>

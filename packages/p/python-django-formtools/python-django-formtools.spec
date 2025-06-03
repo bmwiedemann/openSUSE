@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-formtools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        BSD-3-Clause
 URL:            https://github.com/jazzband/django-formtools
 Source:         https://files.pythonhosted.org/packages/source/d/django-formtools/django-formtools-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.2
@@ -40,10 +42,10 @@ Currently for form previews and multi-step forms.
 %setup -q -n django-formtools-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +56,7 @@ export PYTHONPATH=`pwd`
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/formtools
+%{python_sitelib}/django_formtools-%{version}.dist-info
 
 %changelog
