@@ -1,10 +1,10 @@
-Index: rofi-1.7.6/config/config.c
+Index: rofi-1.7.9/config/config.c
 ===================================================================
---- rofi-1.7.6.orig/config/config.c
-+++ rofi-1.7.6/config/config.c
-@@ -50,16 +50,16 @@ Settings config = {
-     .preview_cmd = NULL,
- 
+--- rofi-1.7.9.orig/config/config.c
++++ rofi-1.7.9/config/config.c
+@@ -62,16 +62,16 @@ Settings config = {
+     /** Custom command to call when menu screenshot is taken */
+     .on_screenshot_taken = NULL,
      /** Terminal to use. (for ssh and open in terminal) */
 -    .terminal_emulator = "rofi-sensible-terminal",
 +    .terminal_emulator = "xdg-terminal",

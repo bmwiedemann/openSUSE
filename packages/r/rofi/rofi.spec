@@ -17,13 +17,14 @@
 
 
 Name:           rofi
-Version:        1.7.8
+Version:        1.7.9
+%define ARCHIVE_VERSION %{version}.1
 Release:        0
 Summary:        A window switcher, run dialog and dmenu replacement
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/davatorium/rofi
-Source:         https://github.com/davatorium/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source:         https://github.com/davatorium/%{name}/releases/download/%{version}/%{name}-%{ARCHIVE_VERSION}.tar.xz
 Patch0:         xdg-terminal.patch
 # Required version 0.11 is not yet in TW BuildRequires:  check-devel
 BuildRequires:  bison
@@ -62,7 +63,7 @@ Group:          Development/Libraries/C and C++
 Development files and headers for rofi
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{ARCHIVE_VERSION}
 
 %build
 sed -i "s|%{_bindir}/env bash|/bin/bash|g" ./script/rofi-sensible-terminal
@@ -91,6 +92,7 @@ sed -i "s|%{_bindir}/env bash|/bin/bash|g" ./script/rofi-theme-selector
 %{_mandir}/man1/rofi-sensible-terminal.1%{?ext_man}
 %{_mandir}/man1/rofi-theme-selector.1%{?ext_man}
 %{_mandir}/man5/rofi-theme.5%{?ext_man}
+%{_mandir}/man5/rofi-actions.5%{?ext_man}
 %{_mandir}/man5/rofi-script.5%{?ext_man}
 %{_mandir}/man5/rofi-dmenu.5%{?ext_man}
 %{_mandir}/man5/rofi-keys.5%{?ext_man}
