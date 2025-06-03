@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Fennec-Lite
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name:           perl-Fennec-Lite
-Version:        0.004
-Release:        0
+
 %define cpan_name Fennec-Lite
-Summary:        Minimalist Fennec, the commonly used bits.
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Fennec-Lite/
-Source:         http://www.cpan.org/authors/id/E/EX/EXODIST/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Fennec-Lite
+Version:        0.4.0
+Release:        0
+# 0.004 -> normalize -> 0.4.0
+%define cpan_version 0.004
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Minimalist Fennec, the commonly used bits
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/E/EX/EXODIST/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build)
-#BuildRequires: perl(Fennec::Lite)
+BuildRequires:  perl(Module::Build) >= 0.36
+Provides:       perl(Fennec::Lite) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
-the Fennec manpage does a ton, but it may be hard to adopt it all at once.
-It also is a large project, and has not yet been fully split into component
-projects. Fennec::Lite takes a minimalist approach to do for Fennec what
-Mouse does for Moose.
+Fennec does a ton, but it may be hard to adopt it all at once. It also is a
+large project, and has not yet been fully split into component projects.
+Fennec::Lite takes a minimalist approach to do for Fennec what Mouse does
+for Moose.
 
 Fennec::Lite is a single module file with no non-core dependencies. It can
 easily be used by any project, either directly, or by copying it into your
@@ -50,21 +52,20 @@ name or line number to run a specific test group only. Test::Builder is
 used under the hood for TAP output.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc README
 
 %changelog
