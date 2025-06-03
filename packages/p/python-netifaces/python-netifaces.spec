@@ -1,7 +1,7 @@
 #
 # spec file for package python-netifaces
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2011 Novell
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-netifaces
 Version:        0.11.0
@@ -26,13 +25,13 @@ Summary:        Portable network interface information
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/al45tair/netifaces
-Source0:        https://pypi.io/packages/source/n/netifaces/netifaces-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/n/netifaces/netifaces-%{version}.tar.gz
 Source2:        https://raw.githubusercontent.com/al45tair/netifaces/master/test.py
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 %python_subpackages
 
 %description
@@ -53,10 +52,10 @@ provided by the socket options is normally less complete.
 cp %{SOURCE2} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python test.py | grep 'Interface lo'
@@ -64,6 +63,7 @@ cp %{SOURCE2} .
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitearch}/*
+%{python_sitearch}/netifaces.cpython*
+%{python_sitearch}/netifaces-%{version}*-info
 
 %changelog
