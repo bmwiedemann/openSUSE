@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  3 14:04:45 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
 Thu Aug 29 17:11:56 CEST 2019 - Tina Mueller <tina.mueller@suse.com>
 
 - Add license to cpanspec.yaml and spec
