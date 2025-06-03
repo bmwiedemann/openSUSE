@@ -17,16 +17,14 @@
 
 
 Name:           iputils
-Version:        20240905
+Version:        20250602
 Release:        0
 Summary:        IPv4 and IPv6 Networking Utilities
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://github.com/iputils/iputils
 Source0:        https://github.com/iputils/iputils/releases/download/%{version}/iputils-%{version}.tar.xz
-Patch0:         0001-Fix-ping-man-page-syntax-error.patch
-# PATCH-FIX-UPSTREAM: bcs#1242300 CVE-2025-47268  integer overflow in RTT calculation can lead to undefined behavior
-Patch1:         iputils-CVE-2025-47268.patch
+# PATCH-FIX-SUSE: Work around localhost resolving to 127.0.0.1 even on ip6 in build
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  docbook_5
 BuildRequires:  iproute2
@@ -63,6 +61,10 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 
 %install
 %meson_install
+
+# -DBUILD_HTML_MANS=false does not help due
+# https://github.com/iputils/iputils/issues/595
+rm -fv %{buildroot}/usr/share/iputils/*.html
 
 # boo#1017616
 ln -sf %{_bindir}/ping %{buildroot}/%{_bindir}/ping6

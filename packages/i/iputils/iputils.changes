@@ -1,8 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun  2 10:13:36 UTC 2025 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 20250602
+  Security release, fixes CVE-2025-47268 and CVE-2025-48964.
+  https://github.com/iputils/iputils/releases/tag/20250602
+- Remove html man page (required to avoid a build failure)
+- Remove patches from this release (iputils-CVE-2025-47268.patch,
+  0001-Fix-ping-man-page-syntax-error.patch)
+
+-------------------------------------------------------------------
+Fri May 16 12:22:58 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Fix bsc#1243284 - ping on s390x prints invalid ttl
+  * Add iputils-invalid-ttl-s390x.patch
+  * Fix ipv4 ttl value when using SOCK_DGRAM on big endian systems
+
+-------------------------------------------------------------------
 Mon May 12 15:38:14 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
 
-- Security fix [bsc#1242300, CVE-2025-47268] 
-  * integer overflow in RTT calculation can lead to undefined behavior 
+- Security fix [bsc#1242300, CVE-2025-47268]
+  * integer overflow in RTT calculation can lead to undefined behavior
   * Add iputils-CVE-2025-47268.patch
 
 -------------------------------------------------------------------
