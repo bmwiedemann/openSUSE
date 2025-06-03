@@ -54,4 +54,15 @@
   * bump for opentelemetry 1.30.0 release</comment>
     <requestid>1248510</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>800d727adce87c3cebcf6338e6ab8568</srcmd5>
+    <version>0.54b1</version>
+    <time>1748965890</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.54b1:
+  * Bump for opentelemetry 1.33.1 release.
+- Update URL.
+- Adjust {Build,}Requires to reflect reality.</comment>
+    <requestid>1281749</requestid>
+  </revision>
 </revisionlist>

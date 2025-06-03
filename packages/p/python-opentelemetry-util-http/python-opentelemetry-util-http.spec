@@ -18,33 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-util-http
-Version:        0.51b0
+Version:        0.54b1
 Release:        0
 Summary:        Instrumentation Tools & Auto Instrumentation for OpenTelemetry Python
 License:        Apache-2.0
-URL:            https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-util-http
+URL:            https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/util/opentelemetry-util-http
 Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry_util_http/opentelemetry_util_http-%{version}.tar.gz
 Source1:        LICENSE
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-opentelemetry-api = 1.30.0
-Requires:       python-opentelemetry-instrumentation = %{version}
-Requires:       python-opentelemetry-sdk = 1.30.0
-Requires:       python-opentelemetry-semantic-conventions = %{version}
-Requires:       python-wrapt >= 1.0.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module opentelemetry-api = 1.30.0}
 BuildRequires:  %{python_module opentelemetry-instrumentation = %{version}}
-BuildRequires:  %{python_module opentelemetry-sdk = 1.30.0}
 BuildRequires:  %{python_module opentelemetry-semantic-conventions = %{version}}
 BuildRequires:  %{python_module opentelemetry-test-utils = %{version}}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module wrapt >= 1.0.0}
 # /SECTION
 %python_subpackages
 
