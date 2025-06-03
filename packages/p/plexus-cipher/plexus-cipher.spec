@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-cipher
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
+BuildRequires:  objectweb-asm
 BuildRequires:  sisu-inject
 BuildArch:      noarch
 
@@ -52,10 +53,13 @@ cp %{SOURCE1} build.xml
 
 %build
 mkdir -p lib
-build-jar-repository -s lib atinject org.eclipse.sisu.inject
+build-jar-repository -s lib \
+    atinject \
+    objectweb-asm/asm \
+    org.eclipse.sisu.inject
 
-%{ant} compile
-%{ant} jar javadoc
+ant compile
+ant jar javadoc
 
 %install
 # jar
