@@ -129,4 +129,12 @@
   * Fixed the assumption that UID can only be an integer</comment>
     <requestid>1225367</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>08e04873617ea08c122857fd049a95b1</srcmd5>
+    <version>5.4.2</version>
+    <time>1748966021</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282151</requestid>
+  </revision>
 </revisionlist>

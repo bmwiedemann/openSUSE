@@ -1,7 +1,7 @@
 #
 # spec file for package python-social-auth-app-django
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-social-auth-app-django
 Version:        5.4.2
@@ -28,9 +27,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/python-social-auth/social-app-django
 Source:         https://files.pythonhosted.org/packages/source/s/social-auth-app-django/social-auth-app-django-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-jose}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module social-auth-core >= 4.1.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.2
@@ -48,10 +49,10 @@ in a Django based project.
 %setup -q -n social-auth-app-django-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
