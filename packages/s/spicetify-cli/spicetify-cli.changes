@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 01 13:38:10 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Update to version 2.40.10:
+  * ci(wrapper): run linter
+  * fix(wrapper): filter children items via `shouldAdd`
+  * feat(ci): add Windows signing process for executable in build workflow (#3417)
+
+-------------------------------------------------------------------
 Mon May 19 17:15:24 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Update to version 2.40.9:
