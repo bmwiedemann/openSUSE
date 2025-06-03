@@ -18,7 +18,7 @@
 
 %global reltype milestones
 Name:           sisu-mojos
-Version:        0.9.0.M3
+Version:        0.9.0.M4
 Release:        0
 Summary:        Sisu plugin for Apache Maven
 License:        EPL-1.0 AND EPL-2.0
@@ -67,8 +67,10 @@ This package contains %{summary}.
 %patch -P 4 -p2
 
 %pom_remove_plugin -r :maven-enforcer-plugin
+%pom_remove_plugin -r :maven-invoker-plugin
 # it is scope "import" but used only for tests that we don't run
 %pom_remove_dep :junit-bom
+%pom_xpath_remove pom:project/pom:build/pom:extensions
 
 pushd org.eclipse.sisu.mojos
 %pom_add_dep org.eclipse.sisu:org.eclipse.sisu.plexus:%{version}

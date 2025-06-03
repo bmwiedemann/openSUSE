@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jun  3 10:39:53 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream milestone 0.9.0.M4
+  * Most important change
+    + ASM is "demoted" to plain dependency, hence, consumer is able
+      to override/update it the usual "Maven way". This applies to
+      all components: inject, plexus and sisu-maven-plugin as well.
+    + Historically, Sisu shaded in ASM just like Guice did. Later
+      Sisu started shipping "main" JAR with shaded ASM but also
+      "no_asm" classified artifact without ASM (just like Guice did
+      with  "classes" classified JAR). Starting from this version,
+      Sisu does not shade ASM anymore, it is "demoted" to transitive
+      dependency.
+  * Changes
+    + Disable shallow clones for sonarcloud analysis
+    + Remove spurious asserts
+    + Post release cleanup
+    + Fix jacoco + code coverage
+    + Enable code coverage again for all modules
+    + Use default property for the jacoco agent
+    + Add documentation on Plexus Configurator API
+    + Remove about.html as only relevant for Eclipse plugins
+    + Document Lifecycle support
+    + Call TypeAwareExpressionEvaluator.evaluate(String,Class) if
+      available
+    + Pass strict flag also via "discoverComponents"
+    + Embed/relocate ASM via m-shade-p
+    + Update to ASM 9.8
+    + Increase coverage
+    + Align subproject names (and naming)
+    + Build infra updates
+    + Reproducible
+    + Fix sisu-maven-plugin
+    + Lax array converter
+    + Update dependencies
+    + Publishing to Central
+
+-------------------------------------------------------------------
 Thu Mar 13 20:38:57 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Add alias to org.eclipse.sisu:org.eclipse.sisu.inject::no_asm:

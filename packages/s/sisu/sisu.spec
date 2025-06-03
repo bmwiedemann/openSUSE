@@ -18,7 +18,7 @@
 
 %global reltype milestones
 Name:           sisu
-Version:        0.9.0.M3
+Version:        0.9.0.M4
 Release:        0
 Summary:        Eclipse dependency injection framework
 License:        BSD-3-Clause AND EPL-1.0 AND EPL-2.0
@@ -40,6 +40,7 @@ BuildRequires:  jakarta-inject
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit
 BuildRequires:  junit5-minimal
+BuildRequires:  objectweb-asm
 BuildRequires:  osgi-core
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-containers-component-annotations
@@ -97,6 +98,7 @@ build-jar-repository -s lib \
   jakarta-inject \
   junit \
   junit5 \
+  objectweb-asm/asm \
   osgi-core/osgi.core \
   plexus/utils \
   plexus/xml \
