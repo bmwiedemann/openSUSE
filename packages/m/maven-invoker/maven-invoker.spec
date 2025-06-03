@@ -1,7 +1,7 @@
 #
 # spec file for package maven-invoker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-shared-utils >= 3.3.3
+BuildRequires:  objectweb-asm
 BuildRequires:  sisu-inject
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -58,7 +59,11 @@ cp %{SOURCE1} build.xml
 
 %build
 mkdir -p lib
-build-jar-repository -s lib maven-shared-utils org.eclipse.sisu.inject atinject
+build-jar-repository -s lib \
+    atinject \
+    maven-shared-utils \
+    objectweb-asm/asm \
+    org.eclipse.sisu.inject
 %{ant} jar javadoc
 
 %install

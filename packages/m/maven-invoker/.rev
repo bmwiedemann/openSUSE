@@ -55,4 +55,12 @@
     <comment>3.3.0 (will be needed for security fix upgrade of maven-archetype)</comment>
     <requestid>1204134</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fae6ca26da35452a476f2e673ac19110</srcmd5>
+    <version>3.3.0</version>
+    <time>1748966032</time>
+    <user>anag_factory</user>
+    <comment>Add dependency on objectweb-asm to build with sisu 0.9.0.M4</comment>
+    <requestid>1282177</requestid>
+  </revision>
 </revisionlist>
