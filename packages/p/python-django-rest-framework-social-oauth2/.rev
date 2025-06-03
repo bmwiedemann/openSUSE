@@ -33,4 +33,13 @@
   * Added compatibility with Django 2.0</comment>
     <requestid>1138691</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ee1320a87c4b80ffdc2e95ce1a5befc1</srcmd5>
+    <version>1.2.0</version>
+    <time>1748965995</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1282135</requestid>
+  </revision>
 </revisionlist>
