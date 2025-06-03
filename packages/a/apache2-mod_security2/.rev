@@ -345,4 +345,14 @@ Many of the files in the rules/ subdirectory are GPL-2.0 licensed (forwarded req
     <comment>- build with pcre2 (test suite disabled temporarily) (forwarded request 1253263 from AndreasStieger)</comment>
     <requestid>1265135</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9f359e4ae4d1be2614f7e0dc092d1873</srcmd5>
+    <version>2.9.10</version>
+    <time>1748966234</time>
+    <user>anag_factory</user>
+    <comment>apache2-mod_security2 2.9.10
+CVE-2025-48866 (boo#1243976)
+CVE-2025-47947 (boo#1243978) (forwarded request 1282154 from AndreasStieger)</comment>
+    <requestid>1282334</requestid>
+  </revision>
 </revisionlist>

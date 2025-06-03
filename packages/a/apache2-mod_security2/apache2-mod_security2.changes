@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun  2 19:14:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.9.10:
+  * CVE-2025-48866: excessive number of arguments in sanitiseArg
+    can lead to a denial of service due to high memory consumption
+    (boo#1243976)
+- includes changes from 2.9.9:
+  * CVE-2025-47947: DoS through sanitiseMatchedBytes (boo#1243978)
+  * log error codes for global mutex failure modes
+  * Fix error logging for standalone module
+  * improved XMLArgs processing
+  * Incorrect utf8toUnicode transformation for 00xx
+  * PCRE2 compatibility fixes
+  * gcc14 fixes, developer visible fixes
+- drop apache2-mod_security2-gcc14.patch
+- run tests again as they are now fixed with pcre2
+
+-------------------------------------------------------------------
 Fri Mar 14 22:31:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with pcre2 (test suite disabled temporarily)
