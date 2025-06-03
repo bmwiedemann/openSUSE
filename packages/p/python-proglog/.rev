@@ -16,4 +16,12 @@
   * Test and build on Python 3.9</comment>
     <requestid>1085849</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c805ad5897623e34cce849cf29ae2c13</srcmd5>
+    <version>0.1.10</version>
+    <time>1748966193</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282310</requestid>
+  </revision>
 </revisionlist>

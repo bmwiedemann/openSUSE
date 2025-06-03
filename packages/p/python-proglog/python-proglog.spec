@@ -1,7 +1,7 @@
 #
 # spec file for package python-proglog
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-proglog
 Version:        0.1.10
 Release:        0
@@ -25,15 +24,16 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Edinburgh-Genome-Foundry/Proglog
 Source:         https://files.pythonhosted.org/packages/source/p/proglog/proglog-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-tqdm
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module tqdm}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-tqdm
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -46,16 +46,16 @@ logs, callbacks and progress bars.
 chmod a-x LICENSE README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/proglog
-%{python_sitelib}/proglog-%{version}-py3*.egg-info
+%{python_sitelib}/proglog-%{version}*-info
 
 %changelog
