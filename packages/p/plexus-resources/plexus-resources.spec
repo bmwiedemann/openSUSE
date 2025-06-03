@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-resources
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
+BuildRequires:  objectweb-asm
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
 BuildRequires:  sisu-inject
@@ -55,7 +56,13 @@ cp %{SOURCE1} build.xml
 
 %build
 mkdir -p lib
-build-jar-repository -s lib atinject org.eclipse.sisu.inject plexus/utils plexus/xml slf4j/api
+build-jar-repository -s lib \
+    atinject \
+    objectweb-asm/asm \
+    org.eclipse.sisu.inject \
+    plexus/utils \
+    plexus/xml \
+    slf4j/api
 %{ant} jar javadoc
 
 %install

@@ -39,4 +39,12 @@
     <comment>1.3</comment>
     <requestid>1206235</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>43ade7414077d78f67ab890b8a044eae</srcmd5>
+    <version>1.3.0</version>
+    <time>1748966044</time>
+    <user>anag_factory</user>
+    <comment>Add dependency on objectweb-asm to build with sisu 0.9.0.M4</comment>
+    <requestid>1282190</requestid>
+  </revision>
 </revisionlist>
