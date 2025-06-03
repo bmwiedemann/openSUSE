@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 29 11:27:33 UTC 2025 - pgajdos@suse.com
+
+- build with -std=gnu11 to fix build with gcc15
+- modified sources
+  % cpanspec.yml
+
+-------------------------------------------------------------------
 Tue Feb 11 18:28:54 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

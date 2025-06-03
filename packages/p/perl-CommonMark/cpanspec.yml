@@ -21,8 +21,10 @@ preamble: |-
 # sed on %{name}.files
 #license: SUSE-NonFree
 #skip_noarch: 1
-#custom_build: |-
-#./Build build flags=%{?_smp_mflags} --myflag
+custom_build: |-
+  # https://github.com/Perl/perl5/issues/23192
+  perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags} -std=gnu11"
+  %make_build
 #custom_test: |-
 #startserver && make test
 #ignore_requires: Bizarre::Module

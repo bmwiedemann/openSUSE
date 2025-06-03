@@ -53,7 +53,8 @@ CommonMark::Parser provides a push parser interface.
 %autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+# https://github.com/Perl/perl5/issues/23192
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags} -std=gnu11"
 %make_build
 
 %check
