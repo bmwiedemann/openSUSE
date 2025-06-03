@@ -1,7 +1,7 @@
 #
 # spec file for package python-patiencediff
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,14 @@ Group:          Development/Languages/Python
 URL:            https://github.com/breezy-team/patiencediff
 Source:         https://files.pythonhosted.org/packages/source/p/patiencediff/patiencediff-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(post): alts
+Requires(preun): alts
 %python_subpackages
 
 %description
@@ -41,10 +43,10 @@ Python implementation of the patiencediff algorithm.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_clone -a %{buildroot}%{_bindir}/patiencediff
 

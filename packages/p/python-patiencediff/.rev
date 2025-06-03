@@ -119,4 +119,12 @@
   * Drop python 3.7 support</comment>
     <requestid>1172448</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>206e05210e4ed2c69eb1d3e5d4811f6d</srcmd5>
+    <version>0.2.15</version>
+    <time>1748966100</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282219</requestid>
+  </revision>
 </revisionlist>
