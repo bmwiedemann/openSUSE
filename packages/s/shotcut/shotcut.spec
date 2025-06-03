@@ -26,7 +26,7 @@
 # NOTE: Appears there are no .pc files in qt6
 #%%(pkg-config --modversion Qt6Core)
 Name:           shotcut
-Version:        25.03.29
+Version:        25.05.11
 Release:        0
 Summary:        Video and audio editor and creator
 License:        GPL-3.0-or-later
@@ -38,11 +38,11 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libebur128-devel >= 1.2.6
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-declarative-private-devel >= 6.4.3
+BuildRequires:  qt6-declarative-private-devel >= 6.8.3
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6Charts)
-BuildRequires:  cmake(Qt6Concurrent) >= 6.4.3
-BuildRequires:  cmake(Qt6Core) >= 6.4.3
+BuildRequires:  cmake(Qt6Concurrent) >= 6.8.4
+BuildRequires:  cmake(Qt6Core) >= 6.8.3
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Multimedia)
@@ -57,7 +57,7 @@ BuildRequires:  cmake(Qt6UiTools)
 BuildRequires:  cmake(Qt6WebSockets)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(fftw3)
-BuildRequires:  pkgconfig(mlt++-7) >= 7.3
+BuildRequires:  pkgconfig(mlt++-7) >= 7.32
 BuildRequires:  pkgconfig(mlt-framework-7)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vpx)
