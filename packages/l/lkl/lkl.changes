@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  3 14:17:23 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- Merge opensuse-kernel/SLE15-SP6 67d36a6f389e
+- Fix s390x builds (bsc#1243897)
+  * arch/lkl: use archprepare rule to generate config.h
+  * arch/lkl: fix "make olddefconfig" with CONFIG_CPU_BIG_ENDIAN=y
+  * arch/lkl: drop BIG_ENDIAN from kconfig
+  * tools/lkl: fix s390x and big endian detection
+
+-------------------------------------------------------------------
 Mon Apr 28 12:10:39 UTC 2025 - David Disseldorp <ddiss@suse.de>
 
 - Merge opensuse-kernel/SLE15-SP6 78686786c024

@@ -17,7 +17,7 @@
 
 Name:           lkl
 # Downstream made-up version number, reflects corrseponding kernel version.
-Version:        0.6.4+git.8cb35d4bbc9
+Version:        0.6.4+git.e52e7a33bcb
 Release:        0
 Summary:        EXPERIMENTAL: Linux Kernel Library (LKL) utilities
 License:        GPL-2.0-only
