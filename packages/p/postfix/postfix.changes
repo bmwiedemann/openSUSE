@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  2 10:41:43 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Fix place of pam file
+- [Build 20250527] postfix mail delivery fails (bsc#1243886)
+- move /var/spool/mail/ to separate package (bsc#1179574)
+  Revert last bad change
+- Adapt rpmlint
+
+-------------------------------------------------------------------
 Wed May 21 11:47:54 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 -  [sle16][postfix] postfix service failed to start due to

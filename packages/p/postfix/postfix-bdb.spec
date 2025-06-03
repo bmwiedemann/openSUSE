@@ -97,6 +97,9 @@ BuildRequires:  mysql-devel
 %if %{with ldap}
 BuildRequires:  openldap2-devel
 %endif
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pam-devel
+%endif
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
@@ -286,8 +289,13 @@ mkdir -p %{buildroot}/%{conf_backup_dir}
 mkdir -p %{buildroot}/%{pf_sample_directory}
 mkdir -p %{buildroot}/%{pf_html_directory}
 mkdir -p %{buildroot}%{_includedir}/postfix
-mkdir -p %{buildroot}%{_sysconfdir}/pam.d
-install -m 644 postfix-SUSE/smtp %{buildroot}%{_sysconfdir}/pam.d/smtp
+%if 0%{?suse_version} >= 1600
+    mkdir -p %{buildroot}/%{_pam_vendordir}
+    install -pm 0644 postfix-SUSE/smtp %{buildroot}/%{_pam_vendordir}/smtp
+%else
+    mkdir -p %{buildroot}%{_sysconfdir}/pam.d
+    install -m 644 postfix-SUSE/smtp %{buildroot}%{_sysconfdir}/pam.d/smtp
+%endif
 mkdir -p %{buildroot}%{_fillupdir}
 sed -e 's;@lib@;%{_lib};g' postfix-SUSE/sysconfig.postfix > %{buildroot}%{_fillupdir}/sysconfig.postfix
 install -m 644 postfix-SUSE/sysconfig.mail-postfix %{buildroot}%{_fillupdir}/sysconfig.mail-postfix
@@ -474,7 +482,11 @@ fi
 %files
 %license LICENSE TLS_LICENSE
 %doc RELEASE_NOTES
+%if 0%{?suse_version} >= 1600
+/%{_pam_vendordir}/*
+%else
 %config %{_sysconfdir}/pam.d/*
+%endif
 %{_fillupdir}/sysconfig.postfix
 %{_fillupdir}/sysconfig.mail-postfix
 %dir %{_sysconfdir}/postfix

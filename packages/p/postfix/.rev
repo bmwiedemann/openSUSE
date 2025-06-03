@@ -2459,4 +2459,22 @@ successfully tested on Tumbleweed x86_64</comment>
 - move /var/spool/mail/ to separate package (bsc#1179574)</comment>
     <requestid>1279040</requestid>
   </revision>
+  <revision rev="254" vrev="4">
+    <srcmd5>22b23814c718ed5f323df32e9bdda6c6</srcmd5>
+    <version>3.10.2</version>
+    <time>1748965870</time>
+    <user>anag_factory</user>
+    <comment>- Fix place of pam file
+- [Build 20250527] postfix mail delivery fails (bsc#1243886)
+- move /var/spool/mail/ to separate package (bsc#1179574)
+  Revert last bad change
+- Adapt rpmlint
+
+- Fix place of pam file
+- [Build 20250527] postfix mail delivery fails (bsc#1243886)
+- move /var/spool/mail/ to separate package (bsc#1179574)
+  Revert last bad change
+- Adapt rpmlint</comment>
+    <requestid>1282030</requestid>
+  </revision>
 </revisionlist>

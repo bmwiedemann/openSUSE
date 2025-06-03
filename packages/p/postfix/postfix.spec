@@ -81,6 +81,9 @@ BuildRequires:  libopenssl-devel >= 1.1.1
 BuildRequires:  lmdb-devel
 BuildRequires:  m4
 BuildRequires:  mysql-devel
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pam-devel
+%endif
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
@@ -301,8 +304,16 @@ mkdir -p %{buildroot}/%{conf_backup_dir}
 mkdir -p %{buildroot}/%{pf_sample_directory}
 mkdir -p %{buildroot}/%{pf_html_directory}
 mkdir -p %{buildroot}%{_includedir}/%{name}
-mkdir -p %{buildroot}%{_sysconfdir}/pam.d
-install -pm 0644 %{name}-SUSE/smtp %{buildroot}%{_sysconfdir}/pam.d/smtp
+%if 0%{?suse_version} >= 1600
+    mkdir -p %{buildroot}%{_pam_vendordir}
+    install -pm 0644 %{name}-SUSE/smtp %{buildroot}%{_pam_vendordir}/smtp
+%else
+    mkdir -p %{buildroot}%{_sysconfdir}/pam.d
+    install -pm 0644 %{name}-SUSE/smtp %{buildroot}%{_sysconfdir}/pam.d/smtp
+%endif
+mkdir -p %{buildroot}/%{pf_queue_directory}
+mkdir -p %{buildroot}/var/spool/mail
+ln -s spool/mail %{buildroot}/var/mail
 mkdir -p %{buildroot}%{_fillupdir}
 sed -e 's;@lib@;%{_lib};g' %{name}-SUSE/sysconfig.%{name} > %{buildroot}%{_fillupdir}/sysconfig.%{name}
 install -pm 0644 %{name}-SUSE/sysconfig.mail-%{name} %{buildroot}%{_fillupdir}/sysconfig.mail-%{name}
@@ -509,7 +520,11 @@ fi
 %files
 %license LICENSE TLS_LICENSE
 %doc RELEASE_NOTES
+%if 0%{?suse_version} >= 1600
+%{_pam_vendordir}/smtp
+%else
 %config %{_sysconfdir}/pam.d/*
+%endif
 %{_fillupdir}/sysconfig.%{name}
 %{_fillupdir}/sysconfig.mail-%{name}
 %dir %{_sysconfdir}/%{name}
@@ -610,6 +625,8 @@ fi
 %dir %attr(0700,%{name},root) /%{pf_queue_directory}/trace
 %dir %attr(0730,%{name},maildrop) /%{pf_queue_directory}/maildrop
 %dir %attr(0710,%{name},maildrop) /%{pf_queue_directory}/public
+%dir %attr(1777,root,root) /var/spool/mail
+/var/mail
 %{_sysusersdir}/postfix-user.conf
 
 %files devel
