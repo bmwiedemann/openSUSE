@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun  2 08:37:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Drop pyside2 support for Leap 16 and factory (boo#1243916)
+
+-------------------------------------------------------------------
+Fri Mar 28 02:09:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Normalize metadata directory name.
+
+-------------------------------------------------------------------
 Wed Feb 19 13:25:19 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.4.3

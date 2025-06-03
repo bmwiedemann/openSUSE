@@ -28,11 +28,10 @@ BuildArch:      noarch
 %bcond_without pyqt5
 %bcond_without pyqt6
 %ifnarch %power64 s390x
+%if 0%{?suse_version} < 1600
 %bcond_without pyside2
+%endif
 %bcond_without pyside6
-%else
-%bcond_with pyside2
-%bcond_with pyside6
 %endif
 # make sure using pytest-3.11 on Leap 15.6
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150500
@@ -91,11 +90,7 @@ BuildRequires:  %{python_module PyQt6-WebEngine}
 %endif
 %endif
 %if %{with pyside2}
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150500
 BuildRequires:  %{python_module pyside2}
-%else
-BuildRequires:  python3-pyside2
-%endif
 %endif
 %if %{with pyside6}
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150500
@@ -211,7 +206,7 @@ popd
 %license LICENSE.txt
 %{python_sitelib}/qtpy
 %exclude %{python_sitelib}/qtpy/tests
-%{python_sitelib}/QtPy-%{version}.dist-info
+%{python_sitelib}/[qQ]t[pP]y-%{version}.dist-info
 %python_alternative %{_bindir}/qtpy
 
 %files %{python_files test}
