@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Inline-Python
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,31 @@
 
 %define cpan_name Inline-Python
 Name:           perl-Inline-Python
-Version:        0.57
+Version:        0.580.0
 Release:        0
+# 0.58 -> normalize -> 0.580.0
+%define cpan_version 0.58
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Write Perl subs and classes in Python
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/N/NI/NINE/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/N/NI/NINE/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         initperl_prototype.diff
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Digest::MD5) >= 2.5
-BuildRequires:  perl(Inline) >= 0.46
-BuildRequires:  perl(Proc::ProcessTable) >= 0.53
+BuildRequires:  perl(Inline) >= 0.460
+BuildRequires:  perl(Proc::ProcessTable) >= 0.530
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::Number::Delta)
 Requires:       perl(Digest::MD5) >= 2.5
-Requires:       perl(Inline) >= 0.46
+Requires:       perl(Inline) >= 0.460
+Provides:       perl(Inline::Python) = %{version}
+Provides:       perl(Inline::Python::Boolean)
+Provides:       perl(Inline::Python::Function)
+Provides:       perl(Inline::Python::Object)
+Provides:       perl(Inline::Python::Object::Data)
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  python3-devel
@@ -55,7 +63,7 @@ also gives you instructions on how to use 'perlmodule', the Python package
 which gives you access to the Perl interpreter.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 export INLINE_PYTHON_EXECUTABLE=/usr/bin/python3

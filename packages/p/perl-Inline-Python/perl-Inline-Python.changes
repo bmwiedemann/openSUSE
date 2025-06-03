@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 15 05:36:11 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.580.0 (0.58)
+   see /usr/share/doc/packages/perl-Inline-Python/Changes
+
+  0.58 Wed  May 14 14:17:00 CEST 2025 (Stefan Seifert)
+          - Fix compilation with Python 3.13 (Mattias Ellert)
+          - Fix compiler warnings (Mattias Ellert)
+          - Improve compatibility with strict(er) C99 compilers (Florian Weimer)
+          - Fix Makefile logic (Mattias Ellert)
+          - Fix build on Windows (Yaribz)
+
+-------------------------------------------------------------------
 Wed Dec 18 09:05:08 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - add initperl_prototype.diff to fix compiler issue
@@ -173,15 +186,22 @@ Thu Dec  3 23:33:12 UTC 2009 - jw@novell.com
   added happy_gcc.patch
 
 -------------------------------------------------------------------
-* Wed Mar 22 2006 Dries Verachtert <dries@ulyssis.org> - 0.22-1.2
+Wed Mar 22 2006 - Dries Verachtert <dries@ulyssis.org> - 0.22-1.2
+
 - Rebuild for Fedora Core 5.
 
-* Fri Mar  4 2005 Dries Verachtert <dries@ulyssis.org> - 0.22-1
+-------------------------------------------------------------------
+Fri Mar  4 2005 - Dries Verachtert <dries@ulyssis.org> - 0.22-1
+
 - Updated to release 0.22.
 
-* Wed Dec 29 2004 Dries Verachtert <dries@ulyssis.org> - 0.21-1
+-------------------------------------------------------------------
+Wed Dec 29 2004 - Dries Verachtert <dries@ulyssis.org> - 0.21-1
+
 - Updated to release 0.21.
 
-* Thu Jul 22 2004 Dries Verachtert <dries@ulyssis.org> - 0.20-1
+-------------------------------------------------------------------
+Thu Jul 22 2004 - Dries Verachtert <dries@ulyssis.org> - 0.20-1
+
 - Initial package.
 
