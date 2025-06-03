@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-q
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ URL:            https://django-q.readthedocs.org
 Source:         https://files.pythonhosted.org/packages/source/d/django-q/django-q-%{version}.tar.gz
 # pkg_resources is broken since the flufl.lock update in Factory
 Patch:          gh-pr-737_importlib.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-arrow
@@ -76,10 +78,10 @@ dos2unix README.rst
 sed -i '/HiredisParser/d' django_q/tests/settings.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -r %{buildroot}%{$python_sitelib}/django_q/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
