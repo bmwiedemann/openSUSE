@@ -114,4 +114,16 @@
   * **ci**: Macos for old python versions</comment>
     <requestid>1217082</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>419dce6570001ad4216511aeb15432de</srcmd5>
+    <version>0.6.3</version>
+    <time>1748966254</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1282049 from glaubitz
+
+- Update to 0.6.3
+    * Refresh lockfile and fix deprecation warnings
+    * Prefer 64bit Python interpreters</comment>
+    <requestid>1282348</requestid>
+  </revision>
 </revisionlist>

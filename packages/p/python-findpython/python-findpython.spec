@@ -1,7 +1,7 @@
 #
 # spec file for package python-findpython
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-findpython
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Utility to find python versions on your system
 License:        MIT
