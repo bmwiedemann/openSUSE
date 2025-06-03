@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 16 10:56:19 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + perl-Session-Token-gcc15.patch
+
+-------------------------------------------------------------------
 Sun May 10 10:41:55 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
 
 - initial version of package (version 1.503)

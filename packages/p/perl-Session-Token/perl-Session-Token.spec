@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Session-Token
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,10 +21,12 @@ Version:        1.503
 Release:        0
 %define cpan_name Session-Token
 Summary:        Secure, efficient, simple random session token generation
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Session-Token/
+URL:            http://search.cpan.org/dist/Session-Token/
 Source0:        https://cpan.metacpan.org/authors/id/F/FR/FRACTAL/%{cpan_name}-%{version}.tar.gz
+# fix build with gcc15
+Patch0:         perl-Session-Token-gcc15.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -63,7 +65,7 @@ in ISAAC is '2**40', although no cycles this short have ever been found
 (and probably don't exist at all). On average, ISAAC cycles are '2**8295'.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -p1 -n %{cpan_name}-%{version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
