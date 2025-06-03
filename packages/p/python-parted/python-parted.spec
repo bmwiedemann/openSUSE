@@ -1,7 +1,7 @@
 #
 # spec file for package python-parted
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,16 +28,18 @@ Source0:        https://github.com/dcantrell/pyparted/archive/v%{version}.tar.gz
 Patch0:         pyparted-3.10.patch
 Patch1:         python-parted-parted-binary.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 # tests requires
 BuildRequires:  e2fsprogs
-BuildRequires:  parted
-Requires:       parted
 BuildRequires:  fdupes
+BuildRequires:  parted
 BuildRequires:  parted-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+Requires:       parted
 %python_subpackages
 
 %description
@@ -48,14 +50,14 @@ partition tables.
 %autosetup -p1 -n %{srcname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m unittest discover -v
+%pyunittest_arch -v
 
 %files %{python_files}
 %license LICENSE
