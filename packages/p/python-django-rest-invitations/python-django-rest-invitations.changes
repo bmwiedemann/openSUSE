@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  3 07:01:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue Mar  1 07:41:45 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch django-4.0.patch:

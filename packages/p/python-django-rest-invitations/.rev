@@ -31,4 +31,13 @@
   * Support Django 4.0</comment>
     <requestid>958200</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5e13852fa1beb606540f07d5e5d876d6</srcmd5>
+    <version>0.1.2</version>
+    <time>1748965996</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1282136</requestid>
+  </revision>
 </revisionlist>
