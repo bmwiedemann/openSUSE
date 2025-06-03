@@ -627,4 +627,18 @@
            Newest zoneinfo data (tzdata 2025a). (forwarded request 1268702 from tinita)</comment>
     <requestid>1269244</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>2339da61e734e1f08d5f040f417578c2</srcmd5>
+    <version>6.980.0</version>
+    <time>1748965867</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1281918 from tinita
+
+- updated to 6.980.0 (6.98)
+   see /usr/share/doc/packages/perl-Date-Manip/Changes
+  6.98  2025-06-01
+    -  Time zone fixes
+           Newest zoneinfo data (tzdata 2025b).</comment>
+    <requestid>1282012</requestid>
+  </revision>
 </revisionlist>
