@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-ckeditor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,9 @@ Source:         https://files.pythonhosted.org/packages/source/d/django_ckeditor
 # PATCH-FIX-UPSTREAM https://github.com/ckeditor/ckeditor4/commit/8ed1a3c93d0ae5f49f4ecff5738ab8a2972194cb https://github.com/ckeditor/ckeditor4/security/advisories/GHSA-fq6h-4g8v-qqvm
 Patch:          CVE-2024-24815.patch
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
@@ -44,10 +46,10 @@ support included.
 %autosetup -p1 -n django_ckeditor-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,7 +58,9 @@ support included.
 %files %{python_files}
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %license LICENSE
-%{python_sitelib}/ckeditor*
-%{python_sitelib}/django_ckeditor-%{version}*info
+%{python_sitelib}/ckeditor
+%{python_sitelib}/ckeditor_demo
+%{python_sitelib}/ckeditor_uploader
+%{python_sitelib}/django_ckeditor-%{version}.dist-info
 
 %changelog
