@@ -1,7 +1,7 @@
 #
 # spec file for package maven-javadoc-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,6 +56,7 @@ BuildRequires:  maven-resolver-impl
 BuildRequires:  maven-resolver-util
 BuildRequires:  maven-shared-utils
 BuildRequires:  maven-wagon-provider-api
+BuildRequires:  objectweb-asm
 BuildRequires:  plexus-archiver
 BuildRequires:  plexus-interactivity-api
 BuildRequires:  plexus-io
@@ -148,6 +149,7 @@ build-jar-repository -s lib \
     maven-reporting-api/maven-reporting-api \
     maven-shared-utils/maven-shared-utils \
     maven-wagon/provider-api \
+    objectweb-asm/asm \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
     plexus/archiver \

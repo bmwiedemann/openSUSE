@@ -153,4 +153,12 @@ put into adi:2</comment>
     <comment>3.11.2</comment>
     <requestid>1229147</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>53c85223420d90126a7ad87ee7b07ca8</srcmd5>
+    <version>3.11.2</version>
+    <time>1748966049</time>
+    <user>anag_factory</user>
+    <comment>Add dependency on objectweb-asm to build with sisu 0.9.0.M4</comment>
+    <requestid>1282193</requestid>
+  </revision>
 </revisionlist>
