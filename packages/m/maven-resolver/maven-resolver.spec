@@ -38,6 +38,7 @@ BuildRequires:  httpcomponents-core
 BuildRequires:  javapackages-local
 BuildRequires:  jcl-over-slf4j
 BuildRequires:  maven-wagon-provider-api
+BuildRequires:  objectweb-asm
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
@@ -52,7 +53,6 @@ BuildArch:      noarch
 BuildRequires:  ant-junit
 BuildRequires:  cglib
 BuildRequires:  mockito
-BuildRequires:  objectweb-asm
 BuildRequires:  objenesis
 BuildRequires:  plexus-containers-component-annotations
 %endif
@@ -209,6 +209,7 @@ build-jar-repository -s lib \
   httpcomponents/httpclient \
   httpcomponents/httpcore \
   maven-wagon/provider-api \
+  objectweb-asm/asm \
   org.eclipse.sisu.inject \
   org.eclipse.sisu.plexus \
   plexus-classworlds \
@@ -219,7 +220,6 @@ build-jar-repository -s lib \
 build-jar-repository -s lib \
   cglib/cglib \
   mockito/mockito-core \
-  objectweb-asm/asm \
   objenesis/objenesis \
   plexus-containers/plexus-component-annotations \
   slf4j/simple
