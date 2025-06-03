@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  3 06:57:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Add patch skip-broken-test.patch:
+  * Skip broken test with Django 5.2.
+
+-------------------------------------------------------------------
 Fri Nov 10 13:37:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.11.0:

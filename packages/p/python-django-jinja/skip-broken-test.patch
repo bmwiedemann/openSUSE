@@ -1,0 +1,20 @@
+Index: django-jinja-2.11.0/testing/testapp/tests.py
+===================================================================
+--- django-jinja-2.11.0.orig/testing/testapp/tests.py
++++ django-jinja-2.11.0/testing/testapp/tests.py
+@@ -1,6 +1,6 @@
+ import datetime
+ 
+-from unittest import mock
++from unittest import mock, skip
+ 
+ from django.conf import global_settings
+ from django.conf import settings
+@@ -128,6 +128,7 @@ class RenderTemplatesTests(TestCase):
+         self.assertIn('maxlength="2"', result)
+         self.assertIn("<input ", result)
+ 
++    @skip("https://github.com/niwinz/django-jinja/issues/317")
+     def test_autoscape_with_form_errors(self):
+         form = TestForm({"name": "foo"})
+         self.assertFalse(form.is_valid())

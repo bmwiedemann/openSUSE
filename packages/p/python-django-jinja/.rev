@@ -113,4 +113,14 @@
   * Provide a better default template engine NAME than 'backend'</comment>
     <requestid>1124988</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9de4acf068412164ac4947bf5afe7a25</srcmd5>
+    <version>2.11.0</version>
+    <time>1748965980</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Add patch skip-broken-test.patch:
+  * Skip broken test with Django 5.2.</comment>
+    <requestid>1282125</requestid>
+  </revision>
 </revisionlist>
