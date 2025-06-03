@@ -100,4 +100,15 @@
     * fix(patch): patch only while sending request</comment>
     <requestid>1273675</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9477d8df525439d929fc285fabb632a7</srcmd5>
+    <version>8.0.2</version>
+    <time>1748966259</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1282050 from glaubitz
+
+- Update to 8.0.2
+    * fix(DDGS.text): update headers by @deedy5 in #305</comment>
+    <requestid>1282353</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-duckduckgo-search
-Version:        8.0.1
+Version:        8.0.2
 Release:        0
 Summary:        Search using the DuckDuckGo.com search engine
 License:        MIT
