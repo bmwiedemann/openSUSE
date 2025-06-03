@@ -169,4 +169,12 @@
     <comment>enable velocity generator command line attributes</comment>
     <requestid>1253902</requestid>
   </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>ddc4e6ca4f115582097532bbd4dff116</srcmd5>
+    <version>2.4.0</version>
+    <time>1748966054</time>
+    <user>anag_factory</user>
+    <comment>Add dependency on objectweb-asm to build with sisu 0.9.0.M4</comment>
+    <requestid>1282196</requestid>
+  </revision>
 </revisionlist>
