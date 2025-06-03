@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jun 03 11:54:46 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 2.7.0+git20250603.a9db0eb9:
+  * BuildRootAndDateCheck: More specific buildroot check
+  * Add openQA users to users-groups.toml
+
+-------------------------------------------------------------------
+Mon Jun 02 15:08:09 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 2.7.0+git20250602.ed1e5f38:
+  * sysctl-whitelist: adjust 50-coredump.conf digest for systemd (bsc#1243959)
+  * SUIDPermissionsCheck: Check for permctl instead of chkstat
+
+-------------------------------------------------------------------
+Fri May 23 12:20:12 UTC 2025 - matthias.gerstner@suse.com
+
+- Update to version 2.7.0+git20250523.2bcb1b9f:
+  * permissions-whitelist: add exim drop-in file (bsc#1240755)
+  * SpecCheck: warn also for py3_install macro usage
+  * SpecCheck: Add new warning for setup.py install usage
+  * test: Fix spellchecking
+  * When Declarative BuildSystem is used, assume patches are auto-applied
+  * SpecCheck: Add shared-dir-glob-in-files warning
+  * Tests: Accept long GPG key ids (for RPM 6)
+  * Avoid unnecessary backslashes
+  * Fixup fallback regexp for buildroot detection
+  * SpecCheck: Report rpm warnings on spec files
+
+-------------------------------------------------------------------
 Thu May 15 11:16:41 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.7.0+git20250515.1368c7ea:

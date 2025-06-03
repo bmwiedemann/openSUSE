@@ -5226,4 +5226,30 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * somehow the format was invalid and the source_validator now detects it</comment>
     <requestid>1277753</requestid>
   </revision>
+  <revision rev="505" vrev="1">
+    <srcmd5>da0cda62174bdde7a749483826592c56</srcmd5>
+    <version>2.7.0+git20250603.a9db0eb9</version>
+    <time>1748965883</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.7.0+git20250603.a9db0eb9:
+  * BuildRootAndDateCheck: More specific buildroot check
+  * Add openQA users to users-groups.toml
+
+- Update to version 2.7.0+git20250602.ed1e5f38:
+  * sysctl-whitelist: adjust 50-coredump.conf digest for systemd (bsc#1243959)
+  * SUIDPermissionsCheck: Check for permctl instead of chkstat
+
+- Update to version 2.7.0+git20250523.2bcb1b9f:
+  * permissions-whitelist: add exim drop-in file (bsc#1240755)
+  * SpecCheck: warn also for py3_install macro usage
+  * SpecCheck: Add new warning for setup.py install usage
+  * test: Fix spellchecking
+  * When Declarative BuildSystem is used, assume patches are auto-applied
+  * SpecCheck: Add shared-dir-glob-in-files warning
+  * Tests: Accept long GPG key ids (for RPM 6)
+  * Avoid unnecessary backslashes
+  * Fixup fallback regexp for buildroot detection
+  * SpecCheck: Report rpm warnings on spec files</comment>
+    <requestid>1282294</requestid>
+  </revision>
 </revisionlist>
