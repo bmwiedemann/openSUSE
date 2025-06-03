@@ -1,7 +1,7 @@
 #
 # spec file for package browserpass-native
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,11 +37,11 @@ Messaging API.
 %setup -qa1
 
 %build
-export GOFLAGS="-mod=vendor"
+export CGO_ENABLED=1 GOFLAGS=-mod=vendor
 %make_build browserpass
 
 %check
-export GOFLAGS=-mod=vendor
+export CGO_ENABLED=1 GOFLAGS=-mod=vendor
 make test
 
 %install

@@ -68,4 +68,12 @@
 - Update vendor.tar.gz (forwarded request 1069488 from tux93)</comment>
     <requestid>1070014</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d7163100bfb22a676c054a0e0af8d679</srcmd5>
+    <version>3.1.0</version>
+    <time>1748966188</time>
+    <user>anag_factory</user>
+    <comment>- Added CGO_ENABLED=1 (forwarded request 1282290 from fl4nn)</comment>
+    <requestid>1282291</requestid>
+  </revision>
 </revisionlist>
