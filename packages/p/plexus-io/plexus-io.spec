@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-io
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsr-305
+BuildRequires:  objectweb-asm
 BuildRequires:  plexus-utils >= 3.3.0
 BuildRequires:  sisu-inject
 BuildArch:      noarch
@@ -54,7 +55,13 @@ cp %{SOURCE2} .
 
 %build
 mkdir -p lib
-build-jar-repository -s lib atinject org.eclipse.sisu.inject plexus/utils commons-io jsr-305
+build-jar-repository -s lib \
+    atinject \
+    commons-io \
+    jsr-305 \
+    objectweb-asm/asm \
+    org.eclipse.sisu.inject \
+    plexus/utils
 
 %{ant} \
   jar javadoc
