@@ -1,7 +1,7 @@
 #
 # spec file for package python-ndg-httpsclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ndg-httpsclient
 Version:        0.5.1
 Release:        0
@@ -25,13 +24,15 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/cedadev/ndg_httpsclient/
 Source:         https://files.pythonhosted.org/packages/source/n/ndg_httpsclient/ndg_httpsclient-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyOpenSSL
 Requires:       python-pyasn1 >= 0.1.1
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,10 +46,10 @@ SSL peer.
 %setup -q -n ndg_httpsclient-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/ndg_httpclient
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -63,7 +64,8 @@ SSL peer.
 %files %{python_files}
 %doc README.md
 %license ndg/httpsclient/LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/ndg
+%{python_sitelib}/ndg[-_]httpsclient-%{version}*-info
 %python_alternative %{_bindir}/ndg_httpclient
 
 %changelog
