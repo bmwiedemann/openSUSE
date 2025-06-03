@@ -22,7 +22,7 @@ License:        MPL-2.0
 Group:          Development/Tools/Building
 # Repository name subject to change
 URL:            https://github.com/openSUSE-Rust/%{name}
-Version:        6.0.1
+Version:        6.0.3
 Release:        0
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst

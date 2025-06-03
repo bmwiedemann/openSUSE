@@ -668,4 +668,15 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1281717</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c1c30e7538cf7f7a53537cd8f2ef1a31</srcmd5>
+    <version>6.0.3</version>
+    <time>1748970641</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.0.3:
+  * chore(release): bump to version 6.0.3
+  * fix: bring in libroast fixes from newer version
+</comment>
+    <requestid>1282352</requestid>
+  </revision>
 </revisionlist>
