@@ -1,7 +1,7 @@
 #
 # spec file for package maven-dependency-tree
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-lib
 BuildRequires:  maven-resolver-api
 BuildRequires:  maven-resolver-util
+BuildRequires:  objectweb-asm
 BuildRequires:  sisu-inject
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -59,6 +60,7 @@ build-jar-repository -s lib \
   maven/maven-model \
   maven-resolver/maven-resolver-api \
   maven-resolver/maven-resolver-util \
+  objectweb-asm/asm \
   org.eclipse.sisu.inject \
   slf4j/api
 
