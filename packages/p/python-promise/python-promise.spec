@@ -1,7 +1,7 @@
 #
 # spec file for package python-promise
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,10 +31,12 @@ Patch0:         pytest-7-support.patch
 Patch1:         python-311.patch
 # https://github.com/syrusakbary/promise/issues/101
 Patch2:         python-promise-no-six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -47,10 +49,10 @@ This is an implementation of Promises in Python
 %autosetup -p1 -n promise-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
