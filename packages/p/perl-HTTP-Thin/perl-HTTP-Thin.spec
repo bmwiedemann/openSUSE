@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Thin
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-HTTP-Thin
-Version:        0.006
-Release:        0
 %define cpan_name HTTP-Thin
-Summary:        A Thin Wrapper around HTTP::Tiny to play nice with HTTP::Message
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/HTTP-Thin/
-Source:         HTTP-Thin-0.006.tar.gz
+Name:           perl-HTTP-Thin
+Version:        0.6.0
+Release:        0
+# 0.006 -> normalize -> 0.6.0
+%define cpan_version 0.006
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Thin Wrapper around HTTP::Tiny to play nice with HTTP::Message
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/P/PE/PERIGRIN/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Method::Modifiers)
@@ -35,14 +35,14 @@ BuildRequires:  perl(HTTP::Tiny)
 BuildRequires:  perl(Hash::MultiValue)
 BuildRequires:  perl(Safe::Isa)
 BuildRequires:  perl(parent)
-#BuildRequires: perl(HTTP::Request::Common)
-#BuildRequires: perl(HTTP::Thin)
 Requires:       perl(Class::Method::Modifiers)
 Requires:       perl(HTTP::Response)
 Requires:       perl(HTTP::Tiny)
 Requires:       perl(Hash::MultiValue)
 Requires:       perl(Safe::Isa)
 Requires:       perl(parent)
+Provides:       perl(HTTP::Thin) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -50,22 +50,21 @@ WARNING: This module is untested beyond the very basics. The implementation
 is simple enough that it shouldn't do evil things but, yeah it's still not
 approved for use by small children.
 
-'HTTP::Thin' is a thin wrapper around the HTTP::Tiny manpage adding the
-ability to pass in the HTTP::Request manpage objects and get back the
-HTTP::Response manpage objects. The maintainers of the HTTP::Tiny manpage,
-justifiably, don't want to have to maintain compatibility but many other
-projects already consume the the HTTP::Message manpage objects. This is
-just glue code doing what it does best.
+'HTTP::Thin' is a thin wrapper around HTTP::Tiny adding the ability to pass
+in HTTP::Request objects and get back HTTP::Response objects. The
+maintainers of HTTP::Tiny, justifiably, don't want to have to maintain
+compatibility but many other projects already consume the HTTP::Message
+objects. This is just glue code doing what it does best.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -73,7 +72,7 @@ just glue code doing what it does best.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc CHANGES LICENSE README weaver.ini
+%doc CHANGES README
+%license LICENSE
 
 %changelog
