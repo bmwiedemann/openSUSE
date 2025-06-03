@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  2 08:51:14 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.36.0
+  * We have fixed a bug that caused specfile to traceback when
+    section names with conditional macro expansions containing
+    spaces were present in the spec file. (#476)
+
+-------------------------------------------------------------------
 Fri May 30 08:43:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.35.1

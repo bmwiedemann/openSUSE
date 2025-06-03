@@ -371,4 +371,17 @@
     <comment></comment>
     <requestid>1281331</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a23cf02d99678777a442dd31cd34eb74</srcmd5>
+    <version>0.36.0</version>
+    <time>1748966246</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1281832 from glaubitz
+
+- Update to 0.36.0
+    * We have fixed a bug that caused specfile to traceback when
+      section names with conditional macro expansions containing
+      spaces were present in the spec file. (#476)</comment>
+    <requestid>1282332</requestid>
+  </revision>
 </revisionlist>
