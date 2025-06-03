@@ -7606,4 +7606,14 @@ handle manual pages that consist only of a .so directive such as
     18dde3dd2a umount: do not move busy network mounts (bsc#1236177)</comment>
     <requestid>1278063</requestid>
   </revision>
+  <revision rev="448" vrev="1">
+    <srcmd5>7e45767af440f088b874c3a73c62272c</srcmd5>
+    <version>257.6</version>
+    <time>1748965881</time>
+    <user>anag_factory</user>
+    <comment>- Import commit c929295b4c1fb3cd6b9963bc7588fbc3e597ab86 (merge of v257.6)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/8e9840a2897e36ae3f926f8d10a2b0d7e4102c67...c929295b4c1fb3cd6b9963bc7588fbc3e597ab86</comment>
+    <requestid>1281804</requestid>
+  </revision>
 </revisionlist>

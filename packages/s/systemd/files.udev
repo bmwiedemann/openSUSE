@@ -275,6 +275,9 @@
 %{_udevhwdbdir}/70-mouse.hwdb
 %{_udevhwdbdir}/70-pda.hwdb
 %{_udevhwdbdir}/70-pointingstick.hwdb
+%if %{with upstream}
+%{_udevhwdbdir}/70-software-radio.hwdb
+%endif
 %{_udevhwdbdir}/70-sound-card.hwdb
 %{_udevhwdbdir}/70-touchpad.hwdb
 %{_udevhwdbdir}/80-ieee1394-unit-function.hwdb
