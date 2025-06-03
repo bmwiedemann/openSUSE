@@ -67,4 +67,12 @@
   * Drop support for Python 3.7</comment>
     <requestid>1160834</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>da881aff0e80f039324d62535e9d9062</srcmd5>
+    <version>30.4.1</version>
+    <time>1748966226</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1282326</requestid>
+  </revision>
 </revisionlist>

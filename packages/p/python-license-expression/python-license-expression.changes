@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 30 14:17:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 30.4.1
+  * Use latest skeleton
+  * Update license list to latest ScanCode and SPDX 3.26
+  * Drop support for Python 3.8
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri Mar 22 20:44:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 30.3.0:
