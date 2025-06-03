@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 26 11:53:07 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Add script to delete some 3rd party libraries from the src tar
+  that are not needed to build the unix port in order to
+  make the legal review easier
+
+-------------------------------------------------------------------
 Wed Apr 16 11:59:42 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Update to 1.25.0
