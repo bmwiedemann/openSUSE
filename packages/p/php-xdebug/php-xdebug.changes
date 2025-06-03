@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May 14 21:03:29 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to Xdebug 3.4.2
+  * Fixed bug #2322: Xdebug tries to open debugging connection in
+    destructors during shutdown
+  * Fixed bug #2325: Referred chrome browser extension is no longer
+    working
+  * Fixed bug #2326: Step debugger finishes if property debugging
+    handler in PHP throws an exception
+  * Fixed bug #2331: Segmentation fault with 'invalid' variable names
+  * Fixed bug #2339: Trying to throw an exception can cause a
+    zend_mm_heap corrupted error under specific circumstances
+  * Fixed bug #2340: Xdebug case sensitivity issues on some files
+    introduced since 3.3.0
+  * Fixed bug #2343: Fatal error on virtual property hook step debugging
+  * Fixed bug #2348: Xdebug does not resolve breakpoints in property hooks
+
+-------------------------------------------------------------------
 Sun Mar  9 18:29:37 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to Xdebug 3.4.2
