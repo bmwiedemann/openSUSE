@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  2 13:28:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Updated to 1.28.0:
+  * Fixed -Wunterminated-string-initialization with gcc15
+  * HTTP/3: fixed NGX_HTTP_V3_VARLEN_INT_LEN value
+
+-------------------------------------------------------------------
 Thu May 22 13:53:07 UTC 2025 - Oliver Kurz <okurz@suse.com>
 
 - Changed service to prevent "timed out. Killing" messages on service stopping

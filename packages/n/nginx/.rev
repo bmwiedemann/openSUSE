@@ -1238,4 +1238,14 @@
     <comment>- Changed service to prevent &quot;timed out. Killing&quot; messages on service stopping</comment>
     <requestid>1279422</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>dc9456c2140430b83ff0fbf5e312574a</srcmd5>
+    <version>1.28.0</version>
+    <time>1749061656</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.28.0:
+  * Fixed -Wunterminated-string-initialization with gcc15
+  * HTTP/3: fixed NGX_HTTP_V3_VARLEN_INT_LEN value</comment>
+    <requestid>1281951</requestid>
+  </revision>
 </revisionlist>
