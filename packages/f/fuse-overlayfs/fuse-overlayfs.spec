@@ -17,7 +17,7 @@
 
 
 Name:           fuse-overlayfs
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        FUSE implementation for overlayfs
 License:        GPL-2.0-or-later
@@ -33,7 +33,7 @@ BuildRequires:  gcc
 An implementation of overlay+shiftfs in FUSE for rootless containers.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 env NOCONFIGURE=1 ./autogen.sh
@@ -49,6 +49,6 @@ env NOCONFIGURE=1 ./autogen.sh
 %{_bindir}/fuse-overlayfs
 %doc README.md
 %license COPYING
-%doc %{_mandir}/man1/%{name}.1.gz
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog
