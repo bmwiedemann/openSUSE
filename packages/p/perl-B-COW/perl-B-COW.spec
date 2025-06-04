@@ -1,7 +1,7 @@
 #
 # spec file for package perl-B-COW
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,19 @@
 
 %define cpan_name B-COW
 Name:           perl-B-COW
-Version:        0.007
+Version:        0.7.0
 Release:        0
+# 0.007 -> normalize -> 0.7.0
+%define cpan_version 0.007
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        B::COW additional B helpers to check COW status
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(B::COW) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -34,7 +38,7 @@ B::COW provides some naive additional B helpers to check the COW status of
 one SvPV.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
