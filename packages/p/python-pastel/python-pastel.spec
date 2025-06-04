@@ -1,7 +1,7 @@
 #
 # spec file for package python-pastel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/sdispater/pastel
 Source:         https://files.pythonhosted.org/packages/source/p/pastel/pastel-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,11 +43,10 @@ Pastel is a library to colorize strings in the terminal.
 %setup -q -n pastel-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +55,7 @@ Pastel is a library to colorize strings in the terminal.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pastel
+%{python_sitelib}/pastel-%{version}*-info
 
 %changelog
