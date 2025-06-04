@@ -1,6 +1,6 @@
 name:                tasty-quickcheck
 version:             0.11.1
-x-revision: 1
+x-revision: 2
 synopsis:            QuickCheck support for the Tasty test framework.
 description:         QuickCheck support for the Tasty test framework.
                      .
@@ -28,7 +28,7 @@ library
                        tasty >= 1.5.1 && < 1.6,
                        random < 1.4,
                        QuickCheck >= 2.10 && < 2.16,
-                       optparse-applicative < 0.19
+                       optparse-applicative < 0.20
 
   default-language:    Haskell2010
   default-extensions: CPP
