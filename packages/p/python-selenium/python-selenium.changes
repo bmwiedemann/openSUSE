@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 15:32:37 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update vendor tarball to fix CVE-2024-12224 (bsc#1243866) 
+
+-------------------------------------------------------------------
 Sun Apr 20 21:37:53 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
 
 - Drop ExclusiveArch - at least s390x and ppc64le also build
