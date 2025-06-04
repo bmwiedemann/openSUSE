@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-bashate
@@ -32,14 +33,14 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # OpenStack package: stestr is only available for primary python3, only test on this flavor
 BuildRequires:  python3-stestr
+Requires:       alts
 Requires:       python-Babel >= 0.9.6
 Requires:       python-pbr
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 %ifpython2
 Requires:       python-argparse
@@ -77,11 +78,9 @@ sed -i -e '/^#!\//, 1d' %{buildroot}%{$python_sitelib}/bashate/bashate.py
 %check
 python3 -m stestr.cli run
 
-%post
-%python_install_alternative bashate
-
-%postun
-%python_uninstall_alternative bashate
+%pre
+# Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative bashate
 
 %files %{python_files}
 %license LICENSE
