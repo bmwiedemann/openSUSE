@@ -401,4 +401,12 @@
 - Drop ibus-libpinyin-revert-python-3.2.patch, merged by upstream (forwarded request 1266919 from hillwood)</comment>
     <requestid>1266922</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>085fda258c655cf9b0c28fa2de464583</srcmd5>
+    <version>1.16.3</version>
+    <time>1749061691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1282481</requestid>
+  </revision>
 </revisionlist>
