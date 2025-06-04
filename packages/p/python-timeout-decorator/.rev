@@ -18,4 +18,13 @@
   * drop support for 2.6, 3.4, 3.5 and add support for 3.7, 3.8, 3.9</comment>
     <requestid>1086742</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5a6bba4c03cbf9965f66abeb0b7d5973</srcmd5>
+    <version>0.5.0</version>
+    <time>1749061714</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1282515</requestid>
+  </revision>
 </revisionlist>
