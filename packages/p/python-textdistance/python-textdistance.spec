@@ -1,7 +1,7 @@
 #
 # spec file for package python-textdistance
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ URL:            https://github.com/life4/textdistance
 Source:         https://github.com/life4/textdistance/archive/refs/tags/%{version}.tar.gz#/textdistance-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE hypothesis-profile-conftest.patch -- add hypothesis profile for slow OBS executions, code@bnavigator.de
 Patch1:         hypothesis-profile-conftest.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-distance
@@ -51,10 +53,10 @@ implementation, common interface, optional external libs usage.
 chmod a-x README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
