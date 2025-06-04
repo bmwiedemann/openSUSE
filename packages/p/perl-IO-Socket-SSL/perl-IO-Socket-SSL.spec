@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Socket-SSL
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name IO-Socket-SSL
 Name:           perl-IO-Socket-SSL
-Version:        2.89.0
+Version:        2.90.0
 Release:        0
-# 2.089 -> normalize -> 2.89.0
-%define cpan_version 2.089
+# 2.090 -> normalize -> 2.90.0
+%define cpan_version 2.090
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Nearly transparent SSL encapsulation for IO::Socket::INET
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -31,11 +31,11 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 #BuildRequires:  perl(Mozilla::CA)
-BuildRequires:  perl(Net::SSLeay) >= 1.46
+BuildRequires:  perl(Net::SSLeay) >= 1.460
 #Requires:       perl(Mozilla::CA)
-Requires:       perl(Net::SSLeay) >= 1.46
+Requires:       perl(Net::SSLeay) >= 1.460
 Provides:       perl(IO::Socket::SSL) = %{version}
-Provides:       perl(IO::Socket::SSL::Intercept) = 2.056
+Provides:       perl(IO::Socket::SSL::Intercept) = 2.56.0
 Provides:       perl(IO::Socket::SSL::OCSP_Cache)
 Provides:       perl(IO::Socket::SSL::OCSP_Resolver)
 Provides:       perl(IO::Socket::SSL::PublicSuffix)
@@ -43,7 +43,7 @@ Provides:       perl(IO::Socket::SSL::SSL_Context)
 Provides:       perl(IO::Socket::SSL::SSL_HANDLE)
 Provides:       perl(IO::Socket::SSL::Session_Cache)
 Provides:       perl(IO::Socket::SSL::Trace)
-Provides:       perl(IO::Socket::SSL::Utils) = 2.015
+Provides:       perl(IO::Socket::SSL::Utils) = 2.15.0
 %undefine       __perllib_provides
 %{perl_requires}
 
@@ -87,7 +87,7 @@ Additional documentation can be found in
 * * IO::Socket::SSL::Utils - Useful functions for certificates etc
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

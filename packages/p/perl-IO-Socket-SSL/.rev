@@ -917,4 +917,18 @@
     <comment></comment>
     <requestid>1203940</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>4e59925de42fe1223574759d24e4cf80</srcmd5>
+    <version>2.90.0</version>
+    <time>1749061599</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1282201 from tinita
+
+- updated to 2.90.0 (2.090)
+   see /usr/share/doc/packages/perl-IO-Socket-SSL/Changes
+  2.090 2025/06/03
+  - fix OCSP live test after Let's Encrypt has disabled OCSP support #169
+  - public_suffix now preserves trailing dot #167</comment>
+    <requestid>1282221</requestid>
+  </revision>
 </revisionlist>

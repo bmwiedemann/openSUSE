@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  3 05:35:44 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.90.0 (2.090)
+   see /usr/share/doc/packages/perl-IO-Socket-SSL/Changes
+
+  2.090 2025/06/03
+  - fix OCSP live test after Let's Encrypt has disabled OCSP support #169
+  - public_suffix now preserves trailing dot #167
+
+-------------------------------------------------------------------
 Sat Aug 31 05:33:49 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.89.0 (2.089)
