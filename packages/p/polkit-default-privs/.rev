@@ -2342,4 +2342,14 @@ for 12.3</comment>
 </comment>
     <requestid>1277421</requestid>
   </revision>
+  <revision rev="253" vrev="1">
+    <srcmd5>e45359a5282ff998e1839f46ef807d02</srcmd5>
+    <version>1550+20250603.5d84a17</version>
+    <time>1749061602</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20250603.5d84a17:
+  * profiles: add ModemManager CellBroadcast action (bsc#1243684)
+</comment>
+    <requestid>1282236</requestid>
+  </revision>
 </revisionlist>

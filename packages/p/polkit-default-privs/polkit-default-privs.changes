@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 03 09:56:41 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1550+20250603.5d84a17:
+  * profiles: add ModemManager CellBroadcast action (bsc#1243684)
+
+-------------------------------------------------------------------
 Wed May 14 12:37:25 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 1550+20250514.1208790:
