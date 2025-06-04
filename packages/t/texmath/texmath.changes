@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 28 21:47:08 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.10.3.
+  texmath (0.12.10.3)
+
+    * MathML writer: fix rendering of EScaled (#264, Ewan Davies).
+      Use `%` values for `maxwidth` and `minwidth`, and set `stretchy` to
+      `true`. Otherwise browsers do not rescale.
+
+    * TeX reader: Support all r/l variants of `\big`, `\bigg`, `\Big` (#266).
+
+    * Require typst-symbols >= 0.1.8.1.
+
+-------------------------------------------------------------------
 Mon May 12 18:12:26 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update texmath to version 0.12.10.2.
