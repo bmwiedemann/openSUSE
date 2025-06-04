@@ -166,4 +166,12 @@ privileges and the file did not have any effect. (boo#1125425)</comment>
     <comment></comment>
     <requestid>1226565</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>05d0bb97f0dc55be6b12003f73c23e05</srcmd5>
+    <version>0.9.9</version>
+    <time>1749061605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1282239</requestid>
+  </revision>
 </revisionlist>
