@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 30 17:44:37 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- 0001-Fix-unw_is_signal_frame-for-RISC-V.patch: Fix unw_is_signal_frame
+  for RISC-V
+
+-------------------------------------------------------------------
 Mon May 26 07:27:57 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.8.2:

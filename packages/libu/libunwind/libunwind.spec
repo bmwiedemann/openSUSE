@@ -38,6 +38,8 @@ Source3:        baselibs.conf
 Patch1:         dont-disable-documentation-without-latex2man.patch
 # PATCH-FIX-UPSTREAM https://github.com/libunwind/libunwind/pull/831
 Patch2:         malloc-prototype.patch
+# PATCH-FIX-UPSTREAM https://github.com/libunwind/libunwind/commit/3705baed
+Patch3:         0001-Fix-unw_is_signal_frame-for-RISC-V.patch
 BuildRequires:  automake >= 1.14
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
