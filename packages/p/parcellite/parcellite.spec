@@ -29,6 +29,8 @@ Patch0:         parcellite-1.1.7-defaults.patch
 Patch1:         parcellite-1.1.9_no_kde_start.patch
 Patch2:         parcellite-1.2.4.0-simple.patch
 Patch3:         fix-manpage-name.patch
+# https://github.com/rickyrockrat/parcellite/issues/113
+Patch4:         parcellite-gcc15.patch
 BuildRequires:  gnome-icon-theme
 BuildRequires:  intltool >= 0.23
 BuildRequires:  pkgconfig
@@ -41,7 +43,7 @@ Requires:       xdotool
 Parcellite is a stripped down, basic-features-only clipboard manager with a
 small memory footprint for those who like simplicity.
 
-In GNOME and Xfce the clipboard manager will be started automatically. For
+In GNOME and Xfce, parcellite will be started automatically. For
 other desktops or window managers you should also install a panel with a
 system tray or notification area if you want to use this package.
 

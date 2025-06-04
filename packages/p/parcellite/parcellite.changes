@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 20 08:21:41 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/rickyrockrat/parcellite/issues/113
+  + parcellite-gcc15.patch
+
+-------------------------------------------------------------------
 Mon Mar 17 09:26:00 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - fix-manpage-name.patch: fix name of installed manual page
