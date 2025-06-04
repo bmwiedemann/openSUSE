@@ -302,4 +302,14 @@
     <comment></comment>
     <requestid>732302</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8f6ffb6420bff746184dac8865301953</srcmd5>
+    <version>7.170.0</version>
+    <time>1749061636</time>
+    <user>dimstar_suse</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+</comment>
+    <requestid>1282404</requestid>
+  </revision>
 </revisionlist>

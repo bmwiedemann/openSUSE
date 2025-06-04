@@ -1,7 +1,7 @@
 #
 # spec file for package perl-AnyEvent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,75 @@
 #
 
 
-Name:           perl-AnyEvent
-Version:        7.17
-Release:        0
-#Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 %define cpan_name AnyEvent
+Name:           perl-AnyEvent
+Version:        7.170.0
+Release:        0
+# 7.17 -> normalize -> 7.170.0
+%define cpan_version 7.17
+#Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        The DBI of event loop programming
-License:        GPL-1.0-or-later OR Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 # MANUAL
 #BuildArch:     noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Canary::Stability)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.52
+Provides:       perl(AE)
+Provides:       perl(AE::Log::COLLECT)
+Provides:       perl(AE::Log::FILTER)
+Provides:       perl(AE::Log::LOG)
+Provides:       perl(AnyEvent) = %{version}
+Provides:       perl(AnyEvent::Base)
+Provides:       perl(AnyEvent::CondVar)
+Provides:       perl(AnyEvent::CondVar::Base)
+Provides:       perl(AnyEvent::DNS)
+Provides:       perl(AnyEvent::Debug)
+Provides:       perl(AnyEvent::Debug::Backtrace)
+Provides:       perl(AnyEvent::Debug::Wrap)
+Provides:       perl(AnyEvent::Debug::Wrapped)
+Provides:       perl(AnyEvent::Debug::shell)
+Provides:       perl(AnyEvent::Handle)
+Provides:       perl(AnyEvent::IO)
+Provides:       perl(AnyEvent::IO::IOAIO)
+Provides:       perl(AnyEvent::IO::Perl)
+Provides:       perl(AnyEvent::Impl::Cocoa)
+Provides:       perl(AnyEvent::Impl::EV)
+Provides:       perl(AnyEvent::Impl::Event)
+Provides:       perl(AnyEvent::Impl::EventLib)
+Provides:       perl(AnyEvent::Impl::FLTK)
+Provides:       perl(AnyEvent::Impl::Glib)
+Provides:       perl(AnyEvent::Impl::IOAsync)
+Provides:       perl(AnyEvent::Impl::Irssi)
+Provides:       perl(AnyEvent::Impl::POE)
+Provides:       perl(AnyEvent::Impl::Perl)
+Provides:       perl(AnyEvent::Impl::Qt)
+Provides:       perl(AnyEvent::Impl::Qt::Io)
+Provides:       perl(AnyEvent::Impl::Qt::Timer)
+Provides:       perl(AnyEvent::Impl::Tk)
+Provides:       perl(AnyEvent::Impl::UV)
+Provides:       perl(AnyEvent::Log)
+Provides:       perl(AnyEvent::Log::COLLECT)
+Provides:       perl(AnyEvent::Log::Ctx)
+Provides:       perl(AnyEvent::Log::FILTER)
+Provides:       perl(AnyEvent::Log::LOG)
+Provides:       perl(AnyEvent::Loop)
+Provides:       perl(AnyEvent::Socket)
+Provides:       perl(AnyEvent::Strict)
+Provides:       perl(AnyEvent::TLS)
+Provides:       perl(AnyEvent::Util)
+Provides:       perl(DB)
+%undefine       __perllib_provides
 Recommends:     perl(Async::Interrupt) >= 1
 Recommends:     perl(EV) >= 4
-Recommends:     perl(Guard) >= 1.02
-Recommends:     perl(JSON) >= 2.09
-Recommends:     perl(JSON::XS) >= 2.2
-Recommends:     perl(Net::SSLeay) >= 1.33
+Recommends:     perl(Guard) >= 1.20
+Recommends:     perl(JSON) >= 2.90
+Recommends:     perl(JSON::XS) >= 2.200
+Recommends:     perl(Net::SSLeay) >= 1.330
 Recommends:     perl(Task::Weaken)
 %{perl_requires}
 
@@ -77,12 +123,13 @@ other event modules you can load it explicitly and enjoy the high
 availability of that event loop :)
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -93,7 +140,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes mktest README util
 %license COPYING
 
