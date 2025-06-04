@@ -33,11 +33,16 @@ BuildRequires:  ImageMagick
 BuildRequires:  automake
 BuildRequires:  cairo-devel
 BuildRequires:  fdupes
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc13-PIE
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  glib2-devel
-BuildRequires:  libqt5-linguist-devel
 BuildRequires:  lua-devel
 BuildRequires:  netpbm
+BuildRequires:  qt6-linguist-devel
 %if 0%{?is_opensuse}
 BuildRequires:  openspecfun-devel
 %endif
@@ -46,11 +51,12 @@ BuildRequires:  plotutils-devel
 BuildRequires:  readline-devel
 BuildRequires:  wxGTK3-devel >= 3
 BuildRequires:  zziplib
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Core5Compat)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6Svg)
 BuildRequires:  pkgconfig(caca)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gdlib)
@@ -181,6 +187,10 @@ autoreconf -fi
     export  CFLAGS="$CFLAGS -DDIST_CONTACT='https://bugzilla.suse.com/'"
 %endif
 %endif
+%if 0%{?suse_version} == 1500
+    export CC=gcc-13
+    export CXX=g++-13
+%endif
 
 %if "%{flavor}" == ""
     mkdir bin
@@ -222,10 +232,10 @@ autoreconf -fi
 	--with-metapost		\
 	--with-regis		\
         --with-amos=%{_libdir}  \
-	--with-qt=qt5
+	--with-qt=qt6
 
 %if "%{flavor}" == ""
-  make %{?_smp_mflags} UIC=/usr/bin/uic-qt5  MOC=/usr/bin/moc-qt5 RCC=/usr/bin/rcc-qt5 LRELEASE=/usr/bin/lrelease-qt5
+  make %{?_smp_mflags} UIC=%{_qt6_libexecdir}/uic  MOC=%{_qt6_libexecdir}/moc RCC=%{_qt6_libexecdir}/rcc LRELEASE=/usr/bin/lrelease6
 %endif
 
 %if "%{flavor}" == "doc"

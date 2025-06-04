@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 28 08:56:43 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Build with qt6 instead of qt5
+- Add _constraints file to make sure there's enough disk space
+  for building
+- Use gcc-13 when building for Leap since qt6 needs a C++17
+  compiler
+
+-------------------------------------------------------------------
 Mon May 12 12:14:33 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add patches
