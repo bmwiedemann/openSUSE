@@ -1,7 +1,7 @@
 #
 # spec file for package python-pkgconfig
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,10 @@ URL:            https://github.com/matze/pkgconfig
 Source0:        https://files.pythonhosted.org/packages/source/p/pkgconfig/pkgconfig-%{version}.tar.gz
 # .. get the tests from github
 Source1:        https://github.com/matze/pkgconfig/archive/v%{version}.tar.gz#/pkgconfig-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
@@ -47,10 +49,10 @@ command line tool
 (cd ..; tar xf %{SOURCE1} pkgconfig-%{version}/{test_pkgconfig.py,data})
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

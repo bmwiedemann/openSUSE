@@ -91,4 +91,13 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092233</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>4bfade052626d438f32e2f38191f0903</srcmd5>
+    <version>1.5.5</version>
+    <time>1749061629</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build
+</comment>
+    <requestid>1282331</requestid>
+  </revision>
 </revisionlist>
