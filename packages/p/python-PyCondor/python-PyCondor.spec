@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-PyCondor
 Version:        0.6.0
 Release:        0
@@ -26,11 +27,11 @@ Source:         https://files.pythonhosted.org/packages/source/P/PyCondor/PyCond
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-click >= 7.0
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 # SECTION For tests
 BuildRequires:  %{python_module click >= 7.0}
@@ -54,11 +55,9 @@ sed -Ei "1{/^#!\/usr\/bin\/env python/d}" pycondor/tests/example_script.py
 
 %python_clone -a %{buildroot}%{_bindir}/pycondor
 
-%post
-%python_install_alternative pycondor
-
-%postun
-%python_uninstall_alternative pycondor
+%pre
+# Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative pycondor
 
 %check
 # We cannot actually submit jobs, so disable these tests
