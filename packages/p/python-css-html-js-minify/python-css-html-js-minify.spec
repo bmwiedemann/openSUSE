@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %define pkg_version 2.5.5
 Name:           python-css-html-js-minify
 Version:        2.5.5.git.1523718195.8f72452
@@ -28,10 +29,10 @@ Source:         css-html-js-minify-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): alts
-Requires(postun): alts
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -39,7 +40,7 @@ BuildArch:      noarch
 Async single-file cross-platform no-dependencies Minifier for the Web
 
 %prep
-%setup -q -n css-html-js-minify-%{version}
+%autosetup -p1 -n css-html-js-minify-%{version}
 
 %build
 %pyproject_wheel
@@ -49,11 +50,11 @@ Async single-file cross-platform no-dependencies Minifier for the Web
 %python_clone -a %{buildroot}%{_bindir}/css-html-js-minify
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative css-html-js-minify
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative css-html-js-minify
 
-%postun
-%python_uninstall_alternative css-html-js-minify
+# post and postun macro call is not needed with only libalternatives
 
 %check
 %pyunittest tests.test_html_minifier
