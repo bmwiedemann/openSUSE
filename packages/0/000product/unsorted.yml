@@ -5124,6 +5124,10 @@ unsorted:
   - ghc-QuickCheck-devel 
   - ghc-QuickCheck-doc 
   - ghc-QuickCheck-prof 
+  - ghc-RSA 
+  - ghc-RSA-devel 
+  - ghc-RSA-doc 
+  - ghc-RSA-prof 
   - ghc-SHA 
   - ghc-SHA-devel 
   - ghc-SHA-doc 
@@ -5216,6 +5220,10 @@ unsorted:
   - ghc-attoparsec-devel 
   - ghc-attoparsec-doc 
   - ghc-attoparsec-prof 
+  - ghc-authenticate-oauth 
+  - ghc-authenticate-oauth-devel 
+  - ghc-authenticate-oauth-doc 
+  - ghc-authenticate-oauth-prof 
   - ghc-auto-update 
   - ghc-auto-update-devel 
   - ghc-auto-update-doc 
@@ -5475,6 +5483,10 @@ unsorted:
   - ghc-crypto-cipher-types-devel 
   - ghc-crypto-cipher-types-doc 
   - ghc-crypto-cipher-types-prof 
+  - ghc-crypto-pubkey-types 
+  - ghc-crypto-pubkey-types-devel 
+  - ghc-crypto-pubkey-types-doc 
+  - ghc-crypto-pubkey-types-prof 
   - ghc-crypto-token 
   - ghc-crypto-token-devel 
   - ghc-crypto-token-doc 
@@ -5707,6 +5719,10 @@ unsorted:
   - ghc-generically-devel 
   - ghc-generically-doc 
   - ghc-generically-prof 
+  - ghc-generics-sop 
+  - ghc-generics-sop-devel 
+  - ghc-generics-sop-doc 
+  - ghc-generics-sop-prof 
   - ghc-ghc 
   - ghc-ghc-bignum 
   - ghc-ghc-bignum-devel 
@@ -6369,6 +6385,10 @@ unsorted:
   - ghc-replace-megaparsec-devel 
   - ghc-replace-megaparsec-doc 
   - ghc-replace-megaparsec-prof 
+  - ghc-req 
+  - ghc-req-devel 
+  - ghc-req-doc 
+  - ghc-req-prof 
   - ghc-resolv 
   - ghc-resolv-devel 
   - ghc-resolv-doc 
@@ -9615,7 +9635,6 @@ unsorted:
   - jpnevulator 
   - jrnl 
   - jrosetta 
-  - jrtplib-devel 
   - js-technology-fonts 
   - jsch 
   - jsch-agent-proxy-connector-factory 
@@ -11575,7 +11594,7 @@ unsorted:
   - libSingular-devel 
   - libSoQt20 
   - libSoapyOsmoSDR0 
-  - libSoapySDR0_8 
+  - libSoapySDR0_8-3 
   - libSoundTouch1-32bit 
   - libSoundTouchDll1 
   - libStatTimer2 
@@ -13977,7 +13996,6 @@ unsorted:
   - libjpgalleg44-devel 
   - libjpgalleg4_4 
   - libjq-devel 
-  - libjrtp3_11_1 
   - libjson-c-devel 
   - libjson-c-doc 
   - libjson-c5-32bit 
@@ -15252,13 +15270,13 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprometheus-cpp0_13 
-  - libprotobuf-lite29_3_0-32bit 
+  - libprotobuf-lite30_2_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-nanopb0 
-  - libprotobuf29_3_0-32bit 
+  - libprotobuf30_2_0-32bit 
   - libprotobuf3_21_12 
-  - libprotoc29_3_0 
-  - libprotoc29_3_0-32bit 
+  - libprotoc30_2_0 
+  - libprotoc30_2_0-32bit 
   - libprotoc3_21_12 
   - libproxy-devel 
   - libproxy-devel-doc 
@@ -16101,8 +16119,6 @@ unsorted:
   - libsratom-0-0-32bit 
   - libsrecord0 
   - libsrt1_5-32bit 
-  - libsrtp-devel 
-  - libsrtp1 
   - libsrtp2-1-32bit 
   - libsrtp2-devel 
   - libsrtp2-linphone-devel 
@@ -16547,7 +16563,7 @@ unsorted:
   - libusrp1 
   - libusrsctp2 
   - libut1 
-  - libutf8_range-29_3_0-32bit 
+  - libutf8_range-30_2_0-32bit 
   - libutf8proc3 
   - libuuid-devel 
   - libuuid-devel-32bit 
@@ -20281,6 +20297,7 @@ unsorted:
   - openssl-3-doc 
   - openssl-engine-libp11 
   - openssl-pkcs11-sign-provider 
+  - openssl-provider-libp11 
   - openssl_tpm2_engine 
   - openssl_tpm_engine 
   - openstack-macros 
@@ -21068,6 +21085,7 @@ unsorted:
   - perl-CPAN-Requirements-Dynamic 
   - perl-CPAN-Uploader 
   - perl-CSS-Minifier-XS 
+  - perl-CSS-Sass 
   - perl-CSS-Tiny 
   - perl-Cache-Cache 
   - perl-Cache-LRU 
