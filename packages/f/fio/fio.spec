@@ -17,8 +17,13 @@
 #
 
 
+%if 0%{?suse_version} >= 1600 && !0%{?is_opensuse}
+# Disable librbd in SLES16.0 and higher, see bsc#1241271
+%bcond_with librbd
+%else
 %ifnarch s390x s390 ppc64le ppc64 ppc %{ix86} %{arm}
 %bcond_without librbd
+%endif
 %endif
 %ifarch x86_64
 %bcond_without libpmem

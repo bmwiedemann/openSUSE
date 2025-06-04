@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  3 14:50:56 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Disable librbd on SLES16.0 and higher (bsc#1241271) 
+
+-------------------------------------------------------------------
 Tue Apr 29 13:13:47 UTC 2025 - Avinesh Kumar <avinesh.kumar@suse.com>
 
 - update to 3.38:
