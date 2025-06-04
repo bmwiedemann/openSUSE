@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybluez
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %define rev 5096047f90a1f6a74ceb250aef6243e144170f92
+%define pkg_version 0.30
 %{?sle15_python_module_pythons}
 Name:           python-pybluez
 Version:        0.23+git%{rev}
@@ -27,7 +28,9 @@ Group:          Development/Libraries/Python
 URL:            https://pybluez.github.io/
 Source:         https://github.com/pybluez/pybluez/archive/%{rev}.tar.gz#/pybluez-%{rev}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  bluez-devel
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,10 +48,10 @@ Bluetooth applications.
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 #%%check
@@ -58,6 +61,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %license COPYING
 %doc CHANGELOG README.md
 %{python_sitearch}/bluetooth/
-%{python_sitearch}/PyBluez-*.egg-info
+%{python_sitearch}/[Pp]y[Bb]luez-%{pkg_version}*-info
 
 %changelog

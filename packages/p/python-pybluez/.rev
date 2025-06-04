@@ -151,4 +151,12 @@
     <comment></comment>
     <requestid>1101024</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>94f127215acec21b9f5dbb57cc219c48</srcmd5>
+    <version>0.23+git5096047f90a1f6a74ceb250aef6243e144170f92</version>
+    <time>1749061758</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282613</requestid>
+  </revision>
 </revisionlist>
