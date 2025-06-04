@@ -55,4 +55,12 @@
     rule not the exception</comment>
     <requestid>990217</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>44bc16537bbb9cfa532a196cf2070795</srcmd5>
+    <version>2.1.1</version>
+    <time>1749061760</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282665</requestid>
+  </revision>
 </revisionlist>

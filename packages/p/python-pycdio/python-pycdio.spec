@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycdio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/pycdio/
 Source:         https://files.pythonhosted.org/packages/source/p/pycdio/pycdio-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libcdio-devel >= 2.0.0
 BuildRequires:  python-rpm-macros
@@ -44,15 +46,21 @@ properties of a CD-ROM can use this library.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
 %license COPYING
 %doc ChangeLog README.rst THANKS
-%{python_sitearch}/*
+%{python_sitearch}/*cdio.py
+%{python_sitearch}/_pycdio.cpython*
+%{python_sitearch}/*iso9660.py
+%{python_sitearch}/_pyiso9660.cpython*
+%{python_sitearch}/pycdio-%{version}*-info
+%pycache_only %{python_sitearch}/__pycache__/*cdio*
+%pycache_only %{python_sitearch}/__pycache__/*iso9660*
 
 %changelog
