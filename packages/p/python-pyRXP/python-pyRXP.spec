@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyRXP
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-pyRXP
 Version:        3.0.1
 Release:        0
@@ -27,7 +26,9 @@ Source0:        https://files.pythonhosted.org/packages/source/p/pyRXP/pyRXP-%{v
 # LICENSE MISSING IN SOURCE TARBALL
 Source1:        https://hg.reportlab.com/hg-public/pyRXP/raw-file/9ee8c8d7cc04/LICENSE.txt
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -42,10 +43,10 @@ cp %{SOURCE1} .
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -54,6 +55,7 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitearch}/*
+%{python_sitearch}/pyRXPU.cpython*
+%{python_sitearch}/py[Rr][Xx][Pp]-%{version}*-info
 
 %changelog

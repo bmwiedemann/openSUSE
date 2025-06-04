@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  4 08:11:39 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Thu Feb 17 14:12:13 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable python2 builds: no longer supported by upstream.
