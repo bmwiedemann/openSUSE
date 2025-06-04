@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-bowler
 Version:        0.9.0
 Release:        0
@@ -33,15 +34,15 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 38.6.0}
 BuildRequires:  %{python_module volatile}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-attrs
 Requires:       python-click
 Requires:       python-fissix
 Requires:       python-moreorless
 Requires:       python-volatile
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -58,7 +59,7 @@ modifiers as needed to build more complex or custom refactorings.  See the
 [Query Reference](https://pybowler.io/docs/api-query) for more details.
 
 %prep
-%setup -q -n bowler-%{version}
+%autosetup -p1 -n bowler-%{version}
 
 %build
 %pyproject_wheel
@@ -71,11 +72,11 @@ modifiers as needed to build more complex or custom refactorings.  See the
 %check
 %python_exec -m bowler.tests
 
-%post
-%python_install_alternative bowler
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative bowler
 
-%postun
-%python_uninstall_alternative bowler
+# post and postun macro call is not needed with only libalternatives
 
 %files %{python_files}
 %doc README.md
