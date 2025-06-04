@@ -730,7 +730,6 @@ exit 0
 %{progdir}/%{progname}
 %{progdir}/%{progname}-bin
 %{progdir}/application.ini
-%{progdir}/crashhelper
 %{progdir}/dependentlibs.list
 %{progdir}/*.so
 %{progdir}/glxtest
@@ -745,6 +744,7 @@ exit 0
 %{progdir}/pingsender
 %{progdir}/platform.ini
 %if %crashreporter
+%{progdir}/crashhelper
 %{progdir}/crashreporter
 #%%{progdir}/crashreporter.ini
 #%%{progdir}/Throbber-small.gif
