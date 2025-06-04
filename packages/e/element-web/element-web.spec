@@ -1,7 +1,7 @@
 #
 # spec file for package element-web
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           element-web
-Version:        1.11.99
+Version:        1.11.102
 Release:        0
 Summary:        A glossy Matrix collaboration client - web files
-License:        AGPL-3.0-only or GPL-3.0-only
+License:        AGPL-3.0-only OR GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://github.com/vector-im/element-web
 Source0:        https://github.com/vector-im/element-web/archive/v%{version}.tar.gz#/element-web-%{version}.tar.gz
@@ -28,11 +28,11 @@ Source1:        vendor.tar.zst
 Source2:        jitsi_external_api.min.js
 Source3:        prepare.sh
 Patch0:         fix-webpack-oom.patch
+BuildRequires:  cargo
 BuildRequires:  fdupes
 BuildRequires:  nodejs-packaging
-BuildRequires:  yarn
 BuildRequires:  rust
-BuildRequires:  cargo
+BuildRequires:  yarn
 BuildRequires:  zstd
 BuildArch:      noarch
 

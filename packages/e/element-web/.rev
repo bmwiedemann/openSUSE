@@ -1226,4 +1226,41 @@ Version 1.11.98
   *  Fix truncated emoji label during emoji SAS (https://github.com/element-hq/element-web/pull/29643). Contributed by @florianduros.</comment>
     <requestid>1272177</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>347ab256b767f8dc3d0361e3f6841c24</srcmd5>
+    <version>1.11.102</version>
+    <time>1749061749</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.11.102
+  ## ✨ Features
+  * EW: Modernize the recovery key input modal (https://github.com/element-hq/element-web/pull/29819). Contributed by @uhoreg.
+  * New room list: move secondary filters into primary filters (https://github.com/element-hq/element-web/pull/29972). Contributed by @florianduros.
+  * Prompt the user when key storage is unexpectedly off (https://github.com/element-hq/element-web/pull/29912). Contributed by @andybalaam.
+  * New room list: move sort menu in room list header (https://github.com/element-hq/element-web/pull/29983). Contributed by @florianduros.
+  * New room list: rework spacing of room list item (https://github.com/element-hq/element-web/pull/29965). Contributed by @florianduros.
+  * RLS: Remove forgotten room from skiplist (https://github.com/element-hq/element-web/pull/29933). Contributed by @MidhunSureshR.
+  * Add room list sorting (https://github.com/element-hq/element-web/pull/29951). Contributed by @dbkr.
+  * Don't use the minimised width(68px) on the new room list (https://github.com/element-hq/element-web/pull/29778). Contributed by @langleyd.
+  ## 🐛 Bug Fixes
+  * https://github.com/element-hq/element-web/pull/30054). Contributed by @RiotRobot.
+  * RoomListStoreV3: Only add new rooms that pass `VisibilityProvider` check (https://github.com/element-hq/element-web/pull/29974). Contributed by @MidhunSureshR.
+  * Re-order primary filters (https://github.com/element-hq/element-web/pull/29957). Contributed by @dbkr.
+  * Fix leaky CSS adding `!` to all H1 elements (https://github.com/element-hq/element-web/pull/29964). Contributed by @t3chguy.
+  * Fix extensions panel style (https://github.com/element-hq/element-web/pull/29273). Contributed by @langleyd.
+  * Fix state events being hidden from widgets in read\_events actions (https://github.com/element-hq/element-web/pull/29954). Contributed by @robintown.
+  * Remove old filter test (https://github.com/element-hq/element-web/pull/29963). Contributed by @dbkr.
+Version 1.11.101
+  ## ✨ Features
+  * New room list: add keyboard navigation support (https://github.com/element-hq/element-web/pull/29805). Contributed by @florianduros.
+  * Use the JoinRuleSettings component for the guest link access prompt. (https://github.com/element-hq/element-web/pull/28614). Contributed by @toger5.
+  * Add loading state to the new room list view (https://github.com/element-hq/element-web/pull/29725). Contributed by @langleyd.
+  * Make OIDC identity reset consistent with EX (https://github.com/element-hq/element-web/pull/29854). Contributed by @andybalaam.
+  * Support error code for email / phone adding unsupported (MSC4178) (https://github.com/element-hq/element-web/pull/29855). Contributed by @dbkr.
+  * Update identity reset UI (Make consistent with EX) (https://github.com/element-hq/element-web/pull/29701). Contributed by @andybalaam.
+  * Add secondary filters to the new room list (https://github.com/element-hq/element-web/pull/29818). Contributed by @dbkr.
+  * Fix battery drain from Web Audio (https://github.com/element-hq/element-web/pull/29203). Contributed by @mbachry.
+  ## 🐛 Bug Fixes
+  * Fix go home shortcut on macos and change toggle action events shortcut (https://github.com/element-hq/element-web/pull/29929). Contributed by @florianduros.</comment>
+    <requestid>1282724</requestid>
+  </revision>
 </revisionlist>
