@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 20:05:57 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Drop upper version bound in pythran BuildRequires
+
+-------------------------------------------------------------------
 Mon Mar 24 16:07:22 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Disable and remove support of gnu-hpc build flavours (bsc#1239982)
@@ -2291,31 +2296,31 @@ Sun May 11 18:11:16 CEST 2008 - lars@linux-schulserver.de
 - beautify specfile
 
 -------------------------------------------------------------------
-Tue Nov 06 00:00:00 CEST 2007 Felix Richter <felix.richter2@uni-rostock.de>
+Tue Nov 06 00:00:00 CEST 2007 - Felix Richter <felix.richter2@uni-rostock.de>
 
 - version bump to 0.6.0
 
 -------------------------------------------------------------------
-Fri Oct 19 00:00:00 CEST 2007 Werner Hoch <werner.ho@gmx.de>
+Fri Oct 19 00:00:00 CEST 2007 - Werner Hoch <werner.ho@gmx.de>
 
 - removed blas/lapack-devel packages for newer distributions
 
 -------------------------------------------------------------------
-Sat Sep 08 00:00:00 CEST 2007 Werner Hoch <werner.ho@gmx.de>
+Sat Sep 08 00:00:00 CEST 2007 - Werner Hoch <werner.ho@gmx.de>
 
 - new version 0.5.2.1
 
 -------------------------------------------------------------------
-Fri Jan 19 00:00:00 CEST 2007 Werner Hoch <werner.ho@gmx.de>
+Fri Jan 19 00:00:00 CEST 2007 - Werner Hoch <werner.ho@gmx.de>
 
 - version upgraded to 0.5.2
 
 -------------------------------------------------------------------
-Thu Dec 05 00:00:00 CEST 2006 Werner Hoch <werner.ho@gmx.de>
+Thu Dec 05 00:00:00 CEST 2006 - Werner Hoch <werner.ho@gmx.de>
 
 - added blas-devel and lapack-devel to BuildRequires
 
 -------------------------------------------------------------------
-Thu Sep 28 00:00:00 CEST 2006 Werner Hoch <werner.ho@gmx.de>
+Thu Sep 28 00:00:00 CEST 2006 - Werner Hoch <werner.ho@gmx.de>
 
 - Initial build.

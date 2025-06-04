@@ -61,8 +61,8 @@ BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python < 0.20}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel >= 2.13.2 with %python-pybind11-devel < 2.14}
-# Upstream's pre-emptive pin to < 0.16 is not necessary
-BuildRequires:  %{python_module pythran >= 0.14 with %python-pythran < 0.18}
+# Upstream's pre-emptive pin to < 0.18 is not necessary
+BuildRequires:  %{python_module pythran >= 0.14}
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.62.2
 BuildRequires:  pkg-config
