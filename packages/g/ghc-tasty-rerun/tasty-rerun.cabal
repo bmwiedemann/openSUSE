@@ -1,0 +1,51 @@
+cabal-version:   2.2
+name:            tasty-rerun
+version:         1.1.20
+x-revision: 1
+license:         BSD-3-Clause
+license-file:    LICENSE
+copyright:
+    Oliver Charles (c) 2014,
+    Andrew Lelechenko (c) 2019
+
+maintainer:      ollie@ocharles.org.uk
+author:          Oliver Charles
+tested-with:
+    ghc ==9.12.1 ghc ==9.10.1 ghc ==9.8.4 ghc ==9.6.6 ghc ==9.4.8
+
+homepage:        http://github.com/ocharles/tasty-rerun
+synopsis:        Rerun only tests which failed in a previous test run
+description:
+    This ingredient
+    for the <https://hackage.haskell.org/package/tasty tasty> testing framework
+    allows filtering a test tree depending
+    on the outcome of the previous run.
+    This may be useful in many scenarios,
+    especially when a test suite grows large.
+
+category:        Testing
+build-type:      Simple
+extra-doc-files:
+    Changelog.md
+    README.md
+
+source-repository head
+    type:     git
+    location: https://github.com/ocharles/tasty-rerun
+
+library
+    exposed-modules:  Test.Tasty.Ingredients.Rerun
+    hs-source-dirs:   src
+    default-language: GHC2021
+    ghc-options:      -Wall -Wcompat
+    build-depends:
+        base >=4.17 && <4.22,
+        containers >=0.5.0.0 && <0.9,
+        filepath <1.6,
+        mtl >=2.1.2 && <2.4,
+        optparse-applicative >=0.6 && <0.20,
+        split >=0.1 && <0.3,
+        stm >=2.4.2 && <2.6,
+        tagged >=0.7 && <0.9,
+        tasty >=1.5 && <1.6,
+        transformers >=0.3.0.0 && <0.7
