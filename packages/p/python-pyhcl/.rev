@@ -34,4 +34,13 @@
 - Switch from python3_only to python_alternative for hcltool.</comment>
     <requestid>1133191</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>42f9293325723142e8f06f1bdee12fea</srcmd5>
+    <version>0.4.5</version>
+    <time>1749061765</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build
+- Convert to libalternatives</comment>
+    <requestid>1282695</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyhcl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without libalternatives
 Name:           python-pyhcl
 Version:        0.4.5
 Release:        0
@@ -24,13 +24,15 @@ Summary:        HCL configuration parser for python
 License:        MPL-2.0
 URL:            https://github.com/virtuald/pyhcl
 Source:         https://files.pythonhosted.org/packages/source/p/pyhcl/pyhcl-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 BuildArch:      noarch
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -40,26 +42,27 @@ HCL configuration parser for python
 %setup -q -n pyhcl-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/hcltool
 
 %check
 %pytest
 
-%post
-%python_install_alternative hcltool
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative hcltool
 
-%postun
-%python_uninstall_alternative hcltool
+# post and postun alternatives calls are not needed with libalternatives
 
 %files %{python_files}
 %doc CHANGELOG.md README.rst
 %license LICENSE
 %python_alternative %{_bindir}/hcltool
-%{python_sitelib}/*
+%{python_sitelib}/hcl
+%{python_sitelib}/pyhcl-%{version}*-info
 
 %changelog
