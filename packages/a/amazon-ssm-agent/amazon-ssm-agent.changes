@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  2 09:26:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.2471.0
+  * Improve unit tests
+  * Agent hibernation reason is logged to EC2 system logs
+  * Add metrics for the EC2Detector and IMDS EC2 status findings
+  * Change Linux DomainJoin plugin parameter KeepHostName to accept
+    both boolean and string
+  * Upgrade GoLang to version 1.23.8
+
+-------------------------------------------------------------------
 Tue Apr 15 10:41:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.2299.0
