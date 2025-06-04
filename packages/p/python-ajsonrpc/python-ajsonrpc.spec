@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-ajsonrpc
 Version:        1.2.0
 Release:        0
@@ -27,8 +28,10 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -36,7 +39,7 @@ BuildArch:      noarch
 Async JSON-RPC 2.0 protocol + server powered by asyncio.
 
 %prep
-%setup -q -n ajsonrpc-%{version}
+%autosetup -p1 -n ajsonrpc-%{version}
 
 %build
 %pyproject_wheel
@@ -49,11 +52,11 @@ Async JSON-RPC 2.0 protocol + server powered by asyncio.
 %check
 %pytest
 
-%post
-%python_install_alternative async-json-rpc-server
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative async-json-rpc-server
 
-%postun
-%python_uninstall_alternative async-json-rpc-server
+# post and postun macro call is not needed with only libalternatives
 
 %files %{python_files}
 %doc README.md

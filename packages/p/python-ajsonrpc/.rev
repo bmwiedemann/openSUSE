@@ -33,4 +33,13 @@
     <comment></comment>
     <requestid>1277185</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>b6521516e0a3e2d018408aa956208359</srcmd5>
+    <version>1.2.0</version>
+    <time>1749061814</time>
+    <user>dimstar_suse</user>
+    <comment>- Migrate to libalternatives
+</comment>
+    <requestid>1282835</requestid>
+  </revision>
 </revisionlist>

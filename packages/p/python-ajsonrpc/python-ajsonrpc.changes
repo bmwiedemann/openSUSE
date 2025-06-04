@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  4 15:18:22 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Migrate to libalternatives
+
+-------------------------------------------------------------------
 Tue May 13 13:05:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
