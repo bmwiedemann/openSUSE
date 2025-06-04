@@ -1,7 +1,7 @@
 #
 # spec file for package python-tap.py
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tap.py
 Version:        3.1
 Release:        0
 Summary:        Test Anything Protocol (TAP) tools
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/python-tap/tappy
 Source:         https://files.pythonhosted.org/packages/source/t/tap.py/tap.py-%{version}.tar.gz
 BuildRequires:  %{python_module Babel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-PyYAML
 Recommends:     python-more-itertools
 BuildArch:      noarch
@@ -51,11 +50,11 @@ Test Anything Protocol (TAP) tools.
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/tap
 %python_clone -a %{buildroot}%{_bindir}/tappy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -77,6 +76,7 @@ export LANG=en_US.UTF-8
 %license LICENSE
 %python_alternative %{_bindir}/tappy
 %python_alternative %{_bindir}/tap
-%{python_sitelib}/*
+%{python_sitelib}/tap
+%{python_sitelib}/tap[._]py-%{version}.dist-info
 
 %changelog
