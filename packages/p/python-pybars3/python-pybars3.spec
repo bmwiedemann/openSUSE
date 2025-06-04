@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybars3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,6 @@
 
 
 %define base_name pybars3
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{base_name}
 Version:        0.9.7
 Release:        0
@@ -28,12 +26,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/wbond/%{base_name}
 Source:         https://github.com/wbond/%{base_name}/archive/%{version}.tar.gz
 BuildRequires:  %{python_module PyMeta3 >= 0.5.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyMeta3 >= 0.5.1
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -45,10 +44,10 @@ compatibility and numerous features from Handlebars.js 2.0.
 %setup -q -n pybars3-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +56,7 @@ compatibility and numerous features from Handlebars.js 2.0.
 %files %{python_files}
 %license LICENSE
 %doc readme.md changelog.md
-%{python_sitelib}/*
+%{python_sitelib}/pybars
+%{python_sitelib}/pybars3-%{version}*-info
 
 %changelog
