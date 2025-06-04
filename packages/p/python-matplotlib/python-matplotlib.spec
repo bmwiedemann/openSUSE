@@ -95,7 +95,7 @@ BuildRequires:  %{python_module matplotlib-cairo = %{version}}
 BuildRequires:  %{python_module matplotlib-gtk3 = %{version}}
 BuildRequires:  %{python_module matplotlib-gtk4 = %{version}}
 %if %{with qt}
-BuildRequires:  %{python_module matplotlib-qt5 = %{version}}
+BuildRequires:  %{python_module matplotlib-qt6 = %{version}}
 %endif
 BuildRequires:  %{python_module matplotlib-testdata = %{version}}
 BuildRequires:  %{python_module matplotlib-tk = %{version}}
@@ -128,13 +128,12 @@ BuildRequires:  %{python_module nbconvert if %python-base >= 3.10}
 BuildRequires:  %{python_module nbformat if %python-base >= 3.10}
 %endif
 # /SECTION nbagg
-# SECTION qt backends: Only test PyQt5 in Minimal-X
+# SECTION qt backends: Only test PyQt6 in Minimal-X
 %if %{with qt}
-BuildRequires:  %{python_module qt5}
+BuildRequires:  %{python_module PyQt6}
 %if %{without ringdisabled}
 %if 0%{?suse_version} > %SLE_VERSION
 BuildRequires:  %{python_module PyQt6}
-BuildRequires:  python3-pyside2
 BuildRequires:  python3-pyside6
 %endif
 %endif
@@ -240,9 +239,9 @@ and figures.
 %package        qt
 Summary:        Qt backend for %{name}
 Requires:       %{name} = %{version}
-Requires:       (python-qt5 or python-PyQt6 >= 6.1 or python-pyside2 or python-pyside6)
+Requires:       (python-PyQt6 >= 6.1 or python-pyside6)
 Provides:       %{name}-qt-shared = %{version}
-Provides:       %{name}-qt5 = %{version}
+Provides:       %{name}-qt6 = %{version}
 Obsoletes:      %{name}-qt-shared < %{version}
 # Renamed at upgrade from MPL 3.6.3 to 3.8.2
 Obsoletes:      %{name}-qt5 < 3.8.2

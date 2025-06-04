@@ -1025,4 +1025,15 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
     <comment></comment>
     <requestid>1266936</requestid>
   </revision>
+  <revision rev="117" vrev="3">
+    <srcmd5>a8b542e3745a14408da5d80be4d12b70</srcmd5>
+    <version>3.10.1</version>
+    <time>1749061597</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to generate Qt6 bindings as Qt5 is going EOL
+
+  * Fix modifying Axes' position also alters the original Bbox object
+  * Data in 3D plots can now be dynamically clipped to the axes</comment>
+    <requestid>1282157</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  2 07:48:07 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- switch to generate Qt6 bindings as Qt5 is going EOL
+
+-------------------------------------------------------------------
 Thu Apr  3 15:16:55 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Disable two more tests in SLFO that use Qt bindings.
@@ -16,7 +21,7 @@ Fri Mar 21 08:55:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
   * Respect array alpha with interpolation_stage='rgba'
   * Remove md5 usage to prevent issues on FIPS enabled systems
   * Fix pyplot.matshow figure handling
-  * Fix modifying Axes' position also alters the original Bbox object 
+  * Fix modifying Axes' position also alters the original Bbox object
     used for initialization
   * Fix title position for polar plots
   * Add version gate to GTK4 calls when necessary
@@ -43,7 +48,7 @@ Mon Feb  3 11:21:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
   * InsetIndicator artist
   * FillBetweenPolyCollection
   * Fill between 3D lines
-  * Data in 3D plots can now be dynamically clipped to the axes 
+  * Data in 3D plots can now be dynamically clipped to the axes
     view limits
   * Rotating 3d plots with the mouse
   * Increased Figure limits with Agg renderer
