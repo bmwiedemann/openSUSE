@@ -1,7 +1,7 @@
 #
 # spec file for package python-tinyrpc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-tinyrpc
 Version:        1.1.7
 Release:        0
@@ -28,10 +27,12 @@ BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pika >= 1.2.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -51,10 +52,10 @@ WebSockets or ZeroMQ).
 %autosetup -p1 -n tinyrpc-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 %python_expand find %{buildroot}%{$python_sitelib}/tinyrpc -name "*.py" | xargs sed -i '1 {/^#!/ d}'
@@ -66,6 +67,7 @@ WebSockets or ZeroMQ).
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/tinyrpc*
+%{python_sitelib}/tinyrpc
+%{python_sitelib}/tinyrpc-%{version}.dist-info
 
 %changelog
