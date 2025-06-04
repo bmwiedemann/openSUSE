@@ -1,7 +1,7 @@
 #
 # spec file for package python-txZMQ
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-txZMQ
 Version:        1.0.0
 Release:        0
@@ -25,7 +24,9 @@ License:        MPL-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/smira/txZMQ
 Source:         https://files.pythonhosted.org/packages/source/t/txZMQ/txZMQ-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Twisted >= 10.0
@@ -46,10 +47,10 @@ It supports both CPython and PyPy, and ZeroMQ library versions 2.2.x or 3.2.x.
 %setup -q -n txZMQ-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +59,7 @@ It supports both CPython and PyPy, and ZeroMQ library versions 2.2.x or 3.2.x.
 %files %{python_files}
 %license LICENSE.txt
 %doc AUTHORS.txt README.rst
-%{python_sitelib}/*
+%{python_sitelib}/tx[Zz][Mm][Qq]
+%{python_sitelib}/tx[Zz][Mm][Qq]-%{version}.dist-info
 
 %changelog
