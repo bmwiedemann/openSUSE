@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyacoustid
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyacoustid
 Version:        1.3.0
 Release:        0
@@ -26,8 +25,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/sampsyo/pyacoustid
 Source:         https://files.pythonhosted.org/packages/source/p/pyacoustid/pyacoustid-%{version}.tar.gz
 BuildRequires:  %{python_module audioread}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-audioread
@@ -47,15 +48,19 @@ in C but portable, and the Web service, which provides fingerprint lookups.
 %setup -q -n pyacoustid-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/acoustid.py
+%{python_sitelib}/chromaprint.py
+%{python_sitelib}/pyacoustid-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/acoustid*
+%pycache_only %{python_sitelib}/__pycache__/chromaprint*
 
 %changelog
