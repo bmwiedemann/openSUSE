@@ -1,7 +1,7 @@
 #
 # spec file for package python-tox-wheel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tox-wheel
 Version:        1.0.0
 Release:        0
 Summary:        A Tox plugin that builds and installs wheels instead of sdist
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/ionelmc/tox-wheel
 Source:         https://files.pythonhosted.org/packages/source/t/tox-wheel/tox-wheel-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-tox >= 3.9
@@ -46,10 +46,10 @@ A Tox plugin that builds and installs wheels instead of sdist.
 %setup -q -n tox-wheel-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +59,7 @@ A Tox plugin that builds and installs wheels instead of sdist.
 %files %{python_files}
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/tox_wheel
+%{python_sitelib}/tox_wheel-%{version}.dist-info
 
 %changelog
