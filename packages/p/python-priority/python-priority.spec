@@ -1,7 +1,7 @@
 #
 # spec file for package python-priority
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-priority
 Version:        2.0.0
@@ -27,8 +26,10 @@ URL:            https://github.com/python-hyper/priority/
 Source:         https://files.pythonhosted.org/packages/source/p/priority/priority-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.6.1}
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -45,10 +46,10 @@ connection.
 %setup -q -n priority-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
