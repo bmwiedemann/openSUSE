@@ -1,7 +1,7 @@
 #
 # spec file for package python-process-tests
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,9 @@ Summary:        Tools for testing processes
 License:        BSD-2-Clause
 URL:            https://github.com/ionelmc/python-process-tests
 Source:         https://files.pythonhosted.org/packages/source/p/process-tests/process-tests-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,10 +42,10 @@ Testcase classes and assertions for testing processes.
 dos2unix LICENSE src/process_tests.egg-info/dependency_links.txt
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
@@ -51,6 +53,6 @@ dos2unix LICENSE src/process_tests.egg-info/dependency_links.txt
 %doc README.rst
 %pycache_only %{python_sitelib}/__pycache__
 %{python_sitelib}/process_tests.py*
-%{python_sitelib}/process_tests-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/process_tests-%{version}*-info
 
 %changelog
