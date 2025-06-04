@@ -41,12 +41,14 @@ Patch5:         wpa_supplicant-dump-certificate-as-PEM-in-debug-mode.diff
 Patch6:         Revert-Mark-authorization-completed-on-driver-indica.patch
 # PATCH-FIX-UPSTREAM CVE-2025-24912.patch, bsc#1239461, CVE-2025-24912
 Patch7:         CVE-2025-24912.patch
+# PATCH-FIX-UPSTREAM https://w1.fi/cgit/hostap/commit/?id=2ed9806275f9ae37545ca30d9bcce1e94fba1d97
+Patch8:         0001-wpa_gui-Port-to-Qt6.patch
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(openssl)
@@ -76,7 +78,7 @@ cd wpa_supplicant
 CFLAGS="%{optflags}" make V=1 %{?_smp_mflags}
 CFLAGS="%{optflags}" make V=1 %{?_smp_mflags} eapol_test
 cd wpa_gui-qt4
-%qmake5
+%qmake6
 make %{?_smp_mflags}
 
 %install
