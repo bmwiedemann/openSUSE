@@ -17,6 +17,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-ZODB
 Version:        6.0.1
 Release:        0
@@ -37,8 +38,10 @@ BuildRequires:  %{python_module zodbpickle >= 1.0.1}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  %{python_module zope.testing}
 BuildRequires:  %{python_module zope.testrunner >= 4.4.6}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-BTrees >= 4.2.0
 Requires:       python-ZConfig
 Requires:       python-persistent >= 4.4.0
@@ -46,8 +49,6 @@ Requires:       python-transaction >= 2.4.0
 Requires:       python-zc.lockfile
 Requires:       python-zodbpickle >= 1.0.1
 Requires:       python-zope.interface
-Requires(post): alts
-Requires(preun): alts
 Conflicts:      fstail
 BuildArch:      noarch
 %python_subpackages
@@ -67,7 +68,7 @@ Provides:       %{python_module ZODB-doc = %{version}}
 This package contains documentation files for %{name}.
 
 %prep
-%setup -q -n zodb-%{version}
+%autosetup -p1 -n zodb-%{version}
 # delete backup files
 find . -name "*~" -print -delete
 # remove unwanted shebang
@@ -96,11 +97,11 @@ cp -r docs/* %{buildroot}%{_defaultdocdir}/python-ZODB-doc/docs/
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} zope-testrunner-%{$python_bin_suffix} --test-path=src
 
-%post
-%python_install_alternative fsdump fsoids fsrefs fstail repozo
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative fsdump fsoids fsrefs fstail repozo
 
-%postun
-%python_uninstall_alternative fsdump
+# post and postun macro call is not needed with only libalternatives
 
 %files %{python_files}
 %license LICENSE.txt COPYRIGHT.txt
