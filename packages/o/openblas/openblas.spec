@@ -219,8 +219,12 @@ sed -i -e '/FLDFLAGS = \|$(CC)\|$(CXX)/s@$@ $(LDFLAGS_TESTS)@' \
 grep -q .note.GNU-stack cpuid.S || echo '.section        .note.GNU-stack,"",@progbits' >> cpuid.S
 # Disable sgemmt and dgemmt tests on ppc64le when using gcc13
 %if "%{?_arch}" == "ppc64le" && 0%{?gcc_version} == 13
+%if %{suse_version} >= 1600 && !0%{?is_opensuse}
+# with openblas_target POWER9 the tests work fine
+%else
 sed -i -e '/^OBJS_EXT+=/s@[^= ]*/test_sgemmt.o *@@' utest/Makefile
 sed -i -e '/^OBJS_EXT+=/s@[^= ]*/test_dgemmt.o *@@' utest/Makefile
+%endif
 %endif
 
 cp %{SOURCE1} .
@@ -274,7 +278,11 @@ EOF
 %global openblas_target %openblas_target TARGET=ZARCH_GENERIC
 %endif
 %ifarch ppc64le
+%if %{suse_version} >= 1600 && !0%{?is_opensuse}
+%global openblas_target %openblas_target TARGET=POWER9
+%else
 %global openblas_target %openblas_target TARGET=POWER8
+%endif
 %define openblas_opt BUILD_BFLOAT16=1
 %endif
 %ifarch ppc64

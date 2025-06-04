@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 30 08:46:09 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- For SLES16 target POWER9 instead of POWER8 which fixes the
+  issue with the reported sgemm testsuite fails.  [bsc#1239545]
+
+-------------------------------------------------------------------
 Mon Mar 24 13:16:09 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Disable and remove support for gnu-hpc build flavours (bsc#1239982)
