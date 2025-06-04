@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  3 15:05:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Drop runtime dependency on pyside2 for Leap 16 and factory
+  (boo#1243916)
+
+-------------------------------------------------------------------
 Wed Nov  6 15:37:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.18.0

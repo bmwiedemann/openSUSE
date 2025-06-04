@@ -43,7 +43,11 @@ Requires:       python-ply
 Requires:       python-QtPy >= 2.1.0
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 # pyside is python3 only, PyQt5 (-qt5) and PyQt6 are multiflavored
+%if 0%{?suse_version} > 1500
+Requires:       (python-qt5 or python-PyQt6 >= 6.3.1 or python3-pyside6 >= 6.2.3)
+%else
 Requires:       (python-qt5 or python-PyQt6 >= 6.3.1 or python3-pyside2 or python3-pyside6 >= 6.2.3)
+%endif
 %else
 Requires:       (python-qt5 or python-PyQt6 >= 6.3.1)
 %endif
