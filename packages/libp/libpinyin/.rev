@@ -333,4 +333,12 @@
     <comment>- Drop obsolete and unused gnome-common BuildRequires. (forwarded request 1274239 from iznogood)</comment>
     <requestid>1274532</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>de4ca84dbe717ce07eab34c38a4634a6</srcmd5>
+    <version>2.10.2</version>
+    <time>1749061692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1282482</requestid>
+  </revision>
 </revisionlist>

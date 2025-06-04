@@ -18,7 +18,7 @@
 
 %define sover 15
 Name:           libpinyin
-Version:        2.10.1
+Version:        2.10.2
 Release:        0
 Summary:        Intelligent Pinyin IME
 License:        GPL-3.0-or-later
