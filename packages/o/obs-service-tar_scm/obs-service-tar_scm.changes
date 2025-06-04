@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 27 12:55:30 UTC 2025 - Frank Schreiner <FSchreiner@suse.com>
+
+- Update to version 0.10.50:
+  * remove check if obsinfo is None from tar service
+
+-------------------------------------------------------------------
 Mon Mar 24 14:28:43 UTC 2025 - Frank Schreiner <FSchreiner@suse.com>
 
 - Update to version 0.10.49:

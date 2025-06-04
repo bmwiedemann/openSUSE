@@ -6,14 +6,8 @@
     <param name="changesgenerate">enable</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="extract">dist/obs-service-tar_scm.spec</param>
-    <param name="extract">dist/debian.dsc</param>
-    <param name="revision">0.10.49</param>
-
-<!--
     <param name="latest-signed-tag">true</param>
     <param name="maintainers-asc">_maintainers</param>
--->
-
   </service>
   <service name="set_version" mode="manual">
     <param name="basename">obs-service-tar_scm</param>

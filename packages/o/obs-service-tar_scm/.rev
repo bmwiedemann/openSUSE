@@ -1525,4 +1525,12 @@ They are not in common use these days. (forwarded request 1191834 from iznogood)
   build service can determine dependencies properly</comment>
     <requestid>1255662</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>eab59bc9d753e7a4acfdda825309f071</srcmd5>
+    <version>0.10.50</version>
+    <time>1749061623</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1282327</requestid>
+  </revision>
 </revisionlist>
