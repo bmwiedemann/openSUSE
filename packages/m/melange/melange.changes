@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 03 19:27:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.5:
+  * Update mount paths to use DefaultCacheDir instead of
+    cfg.CacheDir (#2022)
+  * qemu runner: define static mount tag for mount_cache (#2023)
+
+-------------------------------------------------------------------
 Mon Jun 02 05:30:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.4:
