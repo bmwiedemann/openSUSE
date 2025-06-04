@@ -23,14 +23,15 @@ Version:        0.9.2
 Release:        0
 Summary:        A lightweight, object-oriented Python state machine implementation
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pytransitions/transitions
 Source:         https://files.pythonhosted.org/packages/source/t/transitions/transitions-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/pytransitions/transitions/pull/653 remove Python 2 crumbs
 Patch0:         remove-py2-crumbs.patch
 # PATCH-FIX-UPSTREAM https://github.com/a-detiste/transitions/pull/1 remove more python crumbs
 Patch1:         iteritems.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-pygraphviz
@@ -58,10 +59,10 @@ find . -type f -exec chmod -x {} \;
 sed -i 's/\r$//' LICENSE Changelog.md README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -71,6 +72,6 @@ sed -i 's/\r$//' LICENSE Changelog.md README.md
 %license LICENSE
 %doc Changelog.md README.md
 %{python_sitelib}/transitions
-%{python_sitelib}/transitions-%{version}*-info
+%{python_sitelib}/transitions-%{version}.dist-info
 
 %changelog

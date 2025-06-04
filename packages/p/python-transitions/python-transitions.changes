@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  4 06:08:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Mon Apr 14 12:22:35 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Enable sle15_python_module_pythons (align with pygraphviz)
