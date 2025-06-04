@@ -20,7 +20,7 @@
 
 %define sover 1
 Name:           protobuf-c
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        C bindings for Google's Protocol Buffers
 License:        BSD-3-Clause
