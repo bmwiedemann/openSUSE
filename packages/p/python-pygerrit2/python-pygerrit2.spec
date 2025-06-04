@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygerrit2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pygerrit2
 Version:        2.0.15
 Release:        0
@@ -26,7 +25,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/dpursehouse/pygerrit2
 Source:         https://files.pythonhosted.org/packages/source/p/pygerrit2/pygerrit2-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pbr >= 0.8.0
@@ -50,10 +51,10 @@ See also: https://gerritcodereview.com/
 %setup -q -n pygerrit2-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,6 +65,7 @@ sed -i 's:from mock:from unittest.mock:' unittests.py
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS ChangeLog README.md
-%{python_sitelib}/*
+%{python_sitelib}/pygerrit2
+%{python_sitelib}/pygerrit2-%{version}*-info
 
 %changelog
