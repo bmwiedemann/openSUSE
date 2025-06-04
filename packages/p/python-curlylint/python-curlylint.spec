@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-curlylint
 Version:        0.13.1
 Release:        0
@@ -26,8 +27,10 @@ Source:         https://files.pythonhosted.org/packages/source/c/curlylint/curly
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-attrs >= 17.2.0
 Requires:       python-click >= 6.5
 Requires:       python-parsy >= 1.1.0
@@ -48,7 +51,7 @@ BuildRequires:  %{python_module toml >= 0.9.4}
 HTML templates linting for Jinja, Nunjucks, Django templates, Twig, Liquid.
 
 %prep
-%setup -q -n curlylint-%{version}
+%autosetup -p1 -n curlylint-%{version}
 
 %build
 %pyproject_wheel
@@ -61,11 +64,11 @@ HTML templates linting for Jinja, Nunjucks, Django templates, Twig, Liquid.
 %check
 %pytest
 
-%post
-%python_install_alternative curlylint
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative curlylint
 
-%postun
-%python_uninstall_alternative curlylint
+# post and postun macro call is not needed with only libalternatives
 
 %files %{python_files}
 %doc README.md
