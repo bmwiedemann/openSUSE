@@ -1,7 +1,7 @@
 #
 # spec file for package python-thLib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-thLib
@@ -24,17 +23,18 @@ Version:        0.12.2
 Release:        0
 Summary:        Collection of Python utilities for signal analysis
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            http://work.thaslwanter.at
 Source:         https://files.pythonhosted.org/packages/source/t/thLib/thLib-%{version}.tar.gz
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scikit-image}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module statsmodels}
 BuildRequires:  %{python_module sympy}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-matplotlib
@@ -68,10 +68,10 @@ sed -i 's/\r$//' docs/_build/html/_sources/*.txt
 sed -i 's/\r$//' docs/_build/html/_static/pygments.css
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %{python_expand mkdir -p %{buildroot}%{_docdir}/%{$python_prefix}-thLib
@@ -87,6 +87,7 @@ cp -r docs/_build/doctrees %{buildroot}%{_docdir}/%{$python_prefix}-thLib/
 %doc CHANGES.txt README.txt
 %{_docdir}/%{python_prefix}-thLib/html/
 %{_docdir}/%{python_prefix}-thLib/doctrees/
-%{python_sitelib}/*
+%{python_sitelib}/thLib
+%{python_sitelib}/th[Ll]ib-%{version}.dist-info
 
 %changelog
