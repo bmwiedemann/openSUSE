@@ -1,7 +1,7 @@
 #
 # spec file for package libupnp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2011, Sascha Peilicke <saschpe@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,14 +20,15 @@
 %define pnpver 17
 %define ixmlver 11
 Name:           libupnp
-Version:        1.14.20
+Version:        1.14.22
 Release:        0
 Summary:        An implementation of Universal Plug and Play (UPnP)
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/pupnp/pupnp
-Source:         https://github.com/pupnp/pupnp/releases/download/release-%version/%name-%version.tar.bz2
+Source:         https://github.com/pupnp/pupnp/archive/refs/tags/release-%version.tar.gz
 Source3:        baselibs.conf
+BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 
@@ -65,7 +66,8 @@ UPnP-compliant control points, devices, and bridges on several operating
 systems.
 
 %prep
-%autosetup
+%autosetup -n pupnp-release-%version
+autoreconf -fi
 
 %build
 # the openssl simply does not compile

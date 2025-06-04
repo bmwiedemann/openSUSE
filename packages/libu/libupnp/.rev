@@ -320,4 +320,12 @@
     <comment>- Update to release 1.14.20</comment>
     <requestid>1206272</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>afe7b63f76efa4aa6e335ff9a9b9fe87</srcmd5>
+    <version>1.14.22</version>
+    <time>1749061660</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.4.22</comment>
+    <requestid>1282072</requestid>
+  </revision>
 </revisionlist>
