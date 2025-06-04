@@ -17,16 +17,14 @@
 
 
 Name:           python-rstcheck
-Version:        6.2.4
+Version:        6.2.5
 Release:        0
 Summary:        Python module to check syntax of reStructuredText
 License:        MIT
-URL:            https://github.com/myint/rstcheck
+URL:            https://github.com/rstcheck/rstcheck
 Source:         https://files.pythonhosted.org/packages/source/r/rstcheck/rstcheck-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#rstcheck/rstcheck#244
-Patch0:         support-click-8.2.patch
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rstcheck-core >= 1.2}

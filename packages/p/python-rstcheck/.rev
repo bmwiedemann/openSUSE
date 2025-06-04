@@ -112,4 +112,18 @@
   * Support click 8.2 changes.</comment>
     <requestid>1279039</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8256a78833253a7d3c7b3738555a2c33</srcmd5>
+    <version>6.2.5</version>
+    <time>1749061704</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.2.5:
+  * Dropped support for python 3.8
+  * Added python 3.13 to tox config.
+  * Dropped support for sphinx 5
+  * Add sphinx 8 to test pool for python version &gt; 3.9
+- Drop patch support-click-8.2.patch, included upstream.
+- Update URL.</comment>
+    <requestid>1282478</requestid>
+  </revision>
 </revisionlist>
