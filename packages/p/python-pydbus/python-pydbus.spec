@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydbus
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pydbus
 Version:        0.6.0
 Release:        0
-License:        LGPL-2.1+
 Summary:        Pythonic DBus library
-Url:            https://github.com/LEW21/pydbus
+License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
+URL:            https://github.com/LEW21/pydbus
 Source:         https://files.pythonhosted.org/packages/source/p/pydbus/pydbus-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-Requires:       python-gobject
+BuildRequires:  python-rpm-macros
 Requires:       girepository-1_0
+Requires:       python-gobject
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -40,14 +41,15 @@ A dbus library for Python.
 %setup -q -n pydbus-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/pydbus
+%{python_sitelib}/pydbus-%{version}*-info
 %license LICENSE
 %doc README.rst
 

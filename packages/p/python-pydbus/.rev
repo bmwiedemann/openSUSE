@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>643643</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d7102238ebd93121bce2d9ea6e62be3c</srcmd5>
+    <version>0.6.0</version>
+    <time>1749061761</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282680</requestid>
+  </revision>
 </revisionlist>
