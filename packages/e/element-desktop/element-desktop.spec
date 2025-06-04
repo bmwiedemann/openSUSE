@@ -1,7 +1,7 @@
 #
 # spec file for package element-desktop
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           element-desktop
-Version:        1.11.99
+Version:        1.11.102
 Release:        0
 Summary:        A glossy Matrix collaboration client - desktop
-License:        AGPL-3.0-only or GPL-3.0-only
+License:        AGPL-3.0-only OR GPL-3.0-only
 URL:            https://github.com/vector-im/element-desktop
 Source0:        https://github.com/vector-im/element-desktop/archive/v%{version}.tar.gz#/element-desktop-%{version}.tar.gz
 Source2:        vendor.tar.zst
@@ -33,25 +33,25 @@ Patch2:         cc-link-lib-no-static.patch
 Patch3:         remove-fuses.patch
 Patch4:         no-walrus-operator.patch
 Patch5:         break-esbuild-for-good.patch
-BuildRequires:  element-web = %{version}
 BuildRequires:  app-builder
 BuildRequires:  cargo
+BuildRequires:  element-web = %{version}
+BuildRequires:  esbuild
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jq
 BuildRequires:  nodejs-electron-devel
-BuildRequires:  pkgconfig(openssl)
 BuildRequires:  zstd
-BuildRequires:  esbuild
+BuildRequires:  pkgconfig(openssl)
 %if 0%{?fedora}
 BuildRequires:  rust-srpm-macros
 %else
-BuildRequires:  cargo-packaging >= 1.2.0+3
 BuildRequires:  cargo-auditable
+BuildRequires:  cargo-packaging >= 1.2.0+3
 %endif
 
 BuildRequires:  libsecret-devel
-%if 0%{?sle_version} <= 150600 
+%if 0%{?sle_version} <= 150600
 BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
@@ -67,7 +67,6 @@ BuildArch:      i686
 %{expand:%%global build_rustflags %(echo "%build_rustflags") -C target-cpu=pentium4 -Z tune-cpu=generic}
 %endif
 
-
 %description
 A glossy Matrix collaboration client - desktop
 
@@ -81,16 +80,13 @@ echo > ./node_modules/electron-winstaller/script/select-7z-arch.js
 # don't run the broken postinstall script
 sed -i -e 's/^.*postinstall.*$/"foo":"bar"/' package.json
 
-
 # https://blogs.gnome.org/mcatanzaro/2020/05/18/patching-vendored-rust-dependencies/
 for i in cc libloading libsqlite3-sys openssl-src rustix seshat vcpkg; do
 pushd .hak/hakModules/matrix-seshat/vendor/$i
 jq -cj '.files={}' .cargo-checksum.json >tmp && mv tmp .cargo-checksum.json && popd
 done
 
-
 jq -cj '.piwik=false | .update_base_url=null' < element.io/release/config.json > tmp && mv -v tmp element.io/release/config.json
-
 
 %build
 export CFLAGS="%{optflags} -fpic -fno-semantic-interposition -fno-fat-lto-objects -fvisibility=hidden"
@@ -101,7 +97,7 @@ export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 export USE_SYSTEM_APP_BUILDER=true
 export OPENSSL_NO_VENDOR=1
-%if 0%{?sle_version} <= 150600 
+%if 0%{?sle_version} <= 150600
 mkdir -p /tmp/bin
 ln -sf /usr/bin/gcc-13 /tmp/bin/gcc
 ln -sf /usr/bin/g++-13 /tmp/bin/g++
@@ -110,7 +106,6 @@ export PATH="/tmp/bin:$PATH"
 # The `cc` crate tries to be too clever and passes some default cflags when building sqlcipher.
 # Disable these and use only the ones from CFLAGS env. variable
 export CRATE_CC_NO_DEFAULTS=1
-
 
 %ifarch %ix86
 export RUSTC_BOOTSTRAP=1
@@ -124,7 +119,6 @@ export ESBUILD_BINARY_PATH=/usr/bin/esbuild
 
 %electron_rebuild
 
-
 pushd .hak/hakModules/matrix-seshat
 %if 0%{?suse_version}
 auditable='auditable -vv'
@@ -133,15 +127,11 @@ cargo -vv $auditable rustc --offline --release --features=bundled-sqlcipher --li
 ln -Tv target/release/*.so index.node
 popd
 
-
 #Compare definition of `build:universal` in package.json
 npm run build:ts
 npm run build:res
 npx --no-install electron-builder --linux dir --universal -c.electronDist=%{_libdir}/electron -c.asar=false -c.nodeGypRebuild=false -c.npmRebuild=false
 rm -rf "/tmp/bin"
-
-
-
 
 %install
 #Remove sources an other files that should not be shipped
@@ -187,8 +177,6 @@ find -type f -name ".*" -print -delete
 find . -type f -exec chmod 0644 {} \;
 find . -name '*.node' -exec chmod 0755 {} \;
 popd
-
-
 
 # Install the app content, replace the webapp with a symlink to the system package
 install -vd -m 0755 "%{buildroot}%{_datadir}/element/"
