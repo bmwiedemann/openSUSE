@@ -224,4 +224,12 @@
     <comment>- Add Obsoletes for predecessor python3 package on SLE-15 (forwarded request 1172497 from glaubitz)</comment>
     <requestid>1172502</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d872b8ad672894e52521a0e814701a47</srcmd5>
+    <version>7.0.0~b1</version>
+    <time>1749061774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1282713</requestid>
+  </revision>
 </revisionlist>
