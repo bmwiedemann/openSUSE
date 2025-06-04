@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           stunnel
-Version:        5.74
+Version:        5.75
 Release:        0
 Summary:        Universal TLS Tunnel
 License:        GPL-2.0-or-later
@@ -106,6 +106,7 @@ sed -i 's/-m 1770//g' tools/Makefile.in
 mkdir -p %{buildroot}%{_docdir}
 mv %{buildroot}%{_datadir}/doc/stunnel %{buildroot}%{_docdir}/
 mkdir -p %{buildroot}%{_docdir}/stunnel/tools
+cp tools/openssl.cnf %{buildroot}%{_docdir}/stunnel/tools
 mkdir -p %{buildroot}%{_fillupdir}
 cp -p %{SOURCE3} %{buildroot}%{_fillupdir}/
 install -D -m 0644 %{buildroot}%{_docdir}/stunnel/examples/stunnel.service %{buildroot}/%{_unitdir}/stunnel.service
@@ -177,5 +178,6 @@ fi
 
 %files doc
 %doc %{_docdir}/%{name}
+%doc %{_docdir}/%{name}/tools
 
 %changelog

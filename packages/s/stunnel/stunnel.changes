@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun  3 11:37:37 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 5.75:
+  * Security bugfixes
+    - OpenSSL FIPS Provider updated to version 3.1.2.
+  * Bugfixes
+    - Fixed infinite loop triggered by OCSP URL parsing errors
+    - Fixed OPENSSL_NO_OCSP build issues
+    - Fixed default curve selection in FIPS mode with OpenSSL 3.4+.
+    - Fixed tests with modern Python versions.
+    - Fixed tests with multiple OpenSSL versions installed.
+  * Features
+    - Added provider URI support for "cert" and "key" options.
+    - Added new "CAstore" service-level option (OpenSSL 3.0+).
+    - Added "provider" (OpenSSL 3.0+), "providerParameter"
+      (OpenSSL 3.5+), and "setEnv" global options.
+    - Key file/URI path added to passphrase prompt on Unix.
+
+-------------------------------------------------------------------
 Tue Jan  7 09:32:26 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to version 5.74:
