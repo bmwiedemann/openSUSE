@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 30 16:34:35 UTC 2025 - Caleb Crane <caleb.crane@suse.com>
+
+- Update to version 0.6.2:
+  * Bump version to 0.6.2
+  * Update sev dependency to 6.0.0
+  * build: use io::Error::other to make clippy happy
+  * Fix ownership in flags loop
+  * validate: change parameters, now accept a full cert chain
+  * Updated Ok to include support for all current proccessors. (#204)
+  * Update to 0.6.0
+  * session: Use anyhow macro for error return
+  * Update sev crate to 4.0.0
+  * secret: Use From::from conversion
+
+-------------------------------------------------------------------
 Wed Oct 23 14:53:56 UTC 2024 - caleb.crane@suse.com
 
 - Update to version 0.6.0:
