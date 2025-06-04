@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-stone
 Version:        3.3.9
 Release:        0
@@ -37,11 +38,11 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testsuite}
 # /SECTION
 BuildRequires:  fdupes
+BuildRequires:  alts
+Requires:       alts
 Requires:       python-Jinja2 >= 3.0.3
 Requires:       python-packaging >= 21.0
 Requires:       python-ply >= 3.4
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -62,11 +63,11 @@ Stone is an interface description language (IDL) for APIs.
 %check
 %pytest
 
-%post
-%python_install_alternative stone
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative stone
 
-%postun
-%python_uninstall_alternative stone
+# post and postun macro call is not needed with only libalternatives
 
 %files %{python_files}
 %doc README.rst
