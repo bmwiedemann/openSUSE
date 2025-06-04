@@ -104,37 +104,38 @@ Source900:      docker-integration.sh
 #       branch and then git-format-patch the patch here.
 # SUSE-FEATURE: Adds the /run/secrets mountpoint inside all Docker containers
 #               which is not snapshotted when images are committed.
-Patch100:       0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
-Patch101:       0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+Patch100:       0001-SECRETS-SUSE-always-clear-our-internal-secrets.patch
+Patch101:       0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+Patch102:       0003-SECRETS-SUSE-implement-SUSE-container-secrets.patch
 # UPSTREAM: Revert of upstream patch to keep SLE-12 build working.
-Patch200:       0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+Patch200:       0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
 # UPSTREAM: Backport of <https://github.com/moby/moby/pull/41954>.
-Patch201:       0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+Patch201:       0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
 # UPSTREAM: Revert of upstream patches to make apparmor work on SLE 12.
-Patch202:       0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+Patch202:       0006-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
 # UPSTREAM: Backport of several BuildKit patches:
 #           (Various patches.) CVE-2024-23650
 #           <https://github.com/moby/buildkit/pull/4604> CVE-2024-23651
 #           <https://github.com/moby/buildkit/pull/4603> CVE-2024-23652
 #           <https://github.com/moby/buildkit/pull/4602> CVE-2024-23653
-Patch203:       0006-CVE-2024-2365x-update-buildkit-to-include-CVE-patche.patch
+Patch203:       0007-CVE-2024-2365x-update-buildkit-to-include-CVE-patche.patch
 # UPSTREAM: Backport of <https://github.com/moby/buildkit/pull/4896> and
 #           <https://github.com/moby/buildkit/pull/5060>. bsc#1221916
-Patch204:       0007-bsc1221916-update-to-patched-buildkit-version-to-fix.patch
+Patch204:       0008-bsc1221916-update-to-patched-buildkit-version-to-fix.patch
 # UPSTREAM: Backport of <https://github.com/moby/moby/pull/48034>. bsc#1214855
-Patch205:       0008-bsc1214855-volume-use-AtomicWriteFile-to-save-volume.patch
+Patch205:       0009-bsc1214855-volume-use-AtomicWriteFile-to-save-volume.patch
 # UPSTREAM: Backport of <https://github.com/moby/moby/security/advisories/GHSA-v23v-6jw2-98fq>
 #           fix. CVE-2024-41110
-Patch206:       0009-CVE-2024-41110-AuthZ-plugin-securty-fixes.patch
+Patch206:       0010-CVE-2024-41110-AuthZ-plugin-securty-fixes.patch
 # UPSTREAM: Backport of <https://github.com/moby/moby/pull/46609>. CVE-2024-29018
-Patch207:       0010-CVE-2024-29018-libnet-Don-t-forward-to-upstream-reso.patch
+Patch207:       0011-CVE-2024-29018-libnet-Don-t-forward-to-upstream-reso.patch
 # UPSTREAM: Backport of <https://go-review.googlesource.com/c/oauth2/+/652155>. CVE-2025-22868
-Patch208:       0011-CVE-2025-22868-vendor-jws-split-token-into-fixed-num.patch
+Patch208:       0012-CVE-2025-22868-vendor-jws-split-token-into-fixed-num.patch
 # UPSTREAM: Backport of <https://go-review.googlesource.com/c/crypto/+/652135>. CVE-2025-22869
-Patch209:       0012-CVE-2025-22869-vendor-ssh-limit-the-size-of-the-inte.patch
+Patch209:       0013-CVE-2025-22869-vendor-ssh-limit-the-size-of-the-inte.patch
 # UPSTREAM: Backport of <https://github.com/moby/moby/pull/46307> and
 #                       <https://github.com/moby/moby/pull/49061>.
-Patch299:       0013-TESTS-backport-fixes-for-integration-tests.patch
+Patch299:       0014-TESTS-backport-fixes-for-integration-tests.patch
 # UPSTREAM: Backport of <https://github.com/docker/cli/pull/4228>.
 Patch900:       cli-0001-docs-include-required-tools-in-source-tree.patch
 BuildRequires:  audit
@@ -386,10 +387,12 @@ Fish command line completion support for %{name}.
 # README_SUSE.md for documentation.
 cp %{SOURCE130} .
 
+# bsc#1244035 (secrets patch to remove unreferenced secrets -- always applies).
+%patch -P100 -p1
 %if %{with suseconnect}
 # PATCH-SUSE: Secrets patches.
-%patch -P100 -p1
 %patch -P101 -p1
+%patch -P102 -p1
 %endif
 %if 0%{?sle_version} == 120000
 # Patches to build on SLE-12.
