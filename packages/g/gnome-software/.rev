@@ -1293,4 +1293,12 @@ New stable release</comment>
   + Updated translations. (forwarded request 1268456 from iznogood)</comment>
     <requestid>1269657</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>015f94321799c9d5ebac482064d687c7</srcmd5>
+    <version>48.2</version>
+    <time>1749061657</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1281963</requestid>
+  </revision>
 </revisionlist>
