@@ -28,7 +28,7 @@ Name:           %{__pkg_name}
 Summary:        A Script to Build SUSE Linux RPMs
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Tools/Building
-Version:        20250331
+Version:        20250602
 Release:        0
 Source:         obs-build-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -181,6 +181,10 @@ make DESTDIR=%{buildroot} install
 cd %{buildroot}/usr/lib/build/configs/
 SUSE_V=%{?suse_version}
 SLE_V=%{?sle_version}
+%if %suse_version == 1600
+# We should switch to some slfo_version code stream definition maybe
+ln -s slfo1.2.conf default.conf
+%endif
 %if 0%{?sle_version} && 0%{?is_opensuse} && %suse_version == 1315
 # this is SUSE Leap 42.X
 ln -s sl42.${SLE_V:3:1}.conf default.conf
@@ -203,10 +207,6 @@ ln -s sle${SLE_V:0:2}.${SLE_V:3:1}.conf default.conf
 %if 0%{?sles_version} == 1110
 # this is SUSE SLE 11
 ln -s sles11sp2.conf default.conf
-%endif
-%if 0%{?suse_version} == 1600
-# this is SUSE ALP
-ln -s alp.conf default.conf
 %endif
 # make sure that we have a config
 test -e default.conf || exit 1

@@ -1966,4 +1966,28 @@ Changes:
 - RemoteAsset code cleanup</comment>
     <requestid>1265885</requestid>
   </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>623a8444d98968857b715a0be76b3055</srcmd5>
+    <version>20250602</version>
+    <time>1749061652</time>
+    <user>dimstar_suse</user>
+    <comment>- fix slfo 1.2 build config
+- Disable selinuxfs mount during builds (bsc#1231252)
+- productcomposer: support version 0.6.0 extensions
+- mkosi: also fetch InitrdPackages= dependencies
+- qemu 10.0 compability fix
+- rpm 
+  * Fix querying the pkgid from rpm packages
+  * Support new %span macro
+  * Fall back to the sha256 signature header if there is no md5 header
+    for rpm v6
+- pbuild: define _is_this_project/_is_in_project macros
+- support the &quot;nouseforbuild&quot; buildflag
+- Use Compress::Stream::Zstd for zstd decompression of debian binaries
+- Fix parsing of remoteasseturls with digests
+- provenance data handling:
+  * extend SLSA provenance data with buildfalvor, distul and vcs
+  * Fix handling of replaced golang modules</comment>
+    <requestid>1281885</requestid>
+  </revision>
 </revisionlist>
