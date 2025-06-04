@@ -2,7 +2,7 @@
 # spec file for package protobuf
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define tarname protobuf
 # see cmake/abseil-cpp.cmake and src/google/protobuf/port_def.inc
 %define abseil_min_version 20230125.3
-%global         sover 29_3_0
+%global         sover 30_2_0
 %if 0%{?gcc_version} < 11
 %define with_gcc 11
 %endif
@@ -66,7 +66,7 @@
 %global protoc_arch sparc_64
 %endif
 Name:           protobuf
-Version:        29.3
+Version:        30.2
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause
@@ -74,7 +74,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/protocolbuffers/protobuf
 Source0:        https://github.com/protocolbuffers/protobuf/releases/download/v%{version}/%{tarname}-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch1:         versionize-shlibs.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?with_gcc}-c++
@@ -100,12 +99,15 @@ BuildRequires:  pkgconfig(absl_flat_hash_set) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_function_ref) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_hash) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_layout) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_log_globals) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_log_initialize) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_log_severity) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_memory) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_node_hash_map) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_node_hash_set) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_optional) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_random_distributions) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_random_random) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_span) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_status) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_statusor) >= %{abseil_min_version}
@@ -203,9 +205,6 @@ export CC=gcc-%{with_gcc}
 %install
 %cmake_install
 install -Dm 0644 editors/proto.vim %{buildroot}%{_datadir}/vim/site/syntax/proto.vim
-# manual ln that we could not manage to get into versionize-shlibs.patch
-ln -s libutf8_range-%{version}.0.so %{buildroot}/%{_libdir}/libutf8_range.so
-ln -s libutf8_validity-%{version}.0.so %{buildroot}/%{_libdir}/libutf8_validity.so
 install -D java/core/src/main/resources/google/protobuf/java_features.proto %{buildroot}%{_includedir}/java/core/src/main/resources/google/protobuf/java_features.proto
 
 # create maven metadata for the protoc executable
@@ -258,8 +257,8 @@ __PROTOBUF__
 
 %files -n libutf8_range-%{sover}
 %license LICENSE
-%{_libdir}/libutf8_range-%{version}.0.so
-%{_libdir}/libutf8_validity-%{version}.0.so
+%{_libdir}/libutf8_range.so.%{version}.0
+%{_libdir}/libutf8_validity.so.%{version}.0
 
 %files devel
 %license LICENSE
@@ -276,7 +275,6 @@ __PROTOBUF__
 %dir %{_includedir}/java/core/src/main/resources/google/protobuf
 %{_includedir}/java/core/src/main/resources/google/protobuf/java_features.proto
 %{_includedir}/upb
-%{_includedir}/upb_generator
 %{_includedir}/*.h
 %{_libdir}/cmake/protobuf
 %{_libdir}/cmake/utf8_range

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun May 25 16:38:17 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 30.2:
+  * return types in descriptor (such as full_name) to be
+    absl::string_view. This opens up memory savings in descriptors.
+  * stop exposing the ctype from FieldDescriptor options.
+  * debug API redacts sensitive fields
+  * Remove MutableRepeatedFieldRef<T>::Reserve().
+  * Removal of previously deprecated API, for replacements see
+    https://protobuf.dev/news/v30/#remove-deprecated
+  * C++17 support required
+  * Python 3.8 support dropped
+  * Python deprecated API sremoved, for replacements see
+    https://protobuf.dev/news/v30/#python-remove-apis
+  * compatibility with abseil-cpp: Remove if_constexpr usage
+- drop versionize-shlibs.patch, related change included upstream
+- includes changes from 29.4:
+  * Fix Java concurrency issue in feature resolution for old
+    <=3.25.x gencode using lazy feature resolution
+
+-------------------------------------------------------------------
 Thu May  1 09:05:08 UTC 2025 - Antonello Tartamo <antonello.tartamo@suse.com>
 
 - update to 29.3

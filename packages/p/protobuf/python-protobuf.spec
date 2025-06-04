@@ -2,7 +2,7 @@
 # spec file for package python-protobuf
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 #
 
 
-%define baseversion 29.3
+%define baseversion 30.2
 %{?sle15_python_module_pythons}
 Name:           python-protobuf
-Version:        5.%{baseversion}
+Version:        6.%{baseversion}
 Release:        0
 Summary:        Python Bindings for Google Protocol Buffers
 License:        BSD-3-Clause
@@ -65,7 +65,6 @@ sed -i -e '/env python/d' google/protobuf/internal/*.py
 %files %{python_files}
 %license LICENSE
 %{python_sitearch}/google
-%{python_sitearch}/protobuf*nspkg.pth
 %{python_sitearch}/protobuf-%{version}.dist-info
 
 %changelog

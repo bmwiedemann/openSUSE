@@ -2,7 +2,7 @@
 # spec file for package protobuf-java
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define tarname protobuf
 %define patchjuname protobuf-java-util-removescope.patch
 Name:           protobuf-java
-Version:        29.3
+Version:        30.2
 Release:        0
 Summary:        Java Bindings for Google Protocol Buffers
 License:        BSD-3-Clause
