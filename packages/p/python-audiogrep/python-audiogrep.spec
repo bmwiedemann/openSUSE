@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-audiogrep
 Version:        0.1.5
 Release:        0
@@ -27,13 +28,13 @@ Source:         https://files.pythonhosted.org/packages/source/a/audiogrep/audio
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       ffmpeg
 Requires:       pocketsphinx
 Requires:       python-pydub
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pydub}
@@ -55,11 +56,9 @@ based on search phrases.
 %python_clone -a %{buildroot}%{_bindir}/audiogrep
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative audiogrep
-
-%postun
-%python_uninstall_alternative audiogrep
+%pre
+# Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative audiogrep
 
 %files %{python_files}
 %doc README.md

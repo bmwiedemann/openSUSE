@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  4 15:15:00 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- fix usage of libalternatives
+
+-------------------------------------------------------------------
 Tue May 13 16:07:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
