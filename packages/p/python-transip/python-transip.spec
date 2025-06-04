@@ -1,7 +1,7 @@
 #
 # spec file for package python-transip
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,27 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-transip
 Version:        2.1.2
 Release:        0
 Summary:        TransIP API Connector
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/benkonrath/transip-api
 Source:         https://github.com/benkonrath/transip-api/archive/%{version}.tar.gz
 BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module suds}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography
 Requires:       python-requests
-Requires:       python-setuptools
 Requires:       python-suds
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,10 +47,10 @@ This library implements part of the TransIP API in Python.
 %setup -q -n transip-api-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/transip-api
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -67,7 +66,8 @@ This library implements part of the TransIP API in Python.
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/transip
+%{python_sitelib}/transip-%{version}.dist-info
 %python_alternative %{_bindir}/transip-api
 
 %changelog

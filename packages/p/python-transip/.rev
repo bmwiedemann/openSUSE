@@ -64,4 +64,13 @@
     <comment>- move to suds</comment>
     <requestid>980816</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>6d76f3c2be8472e27c70adb1d93d4f7d</srcmd5>
+    <version>2.1.2</version>
+    <time>1749061728</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1282527</requestid>
+  </revision>
 </revisionlist>
