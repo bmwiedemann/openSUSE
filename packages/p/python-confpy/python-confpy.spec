@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-confpy
 Version:        0.11.0
 Release:        0
@@ -28,6 +29,8 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
+Requires:       alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-Jinja2
@@ -52,11 +55,9 @@ find . -name '*.pyc' -delete
 %check
 %pytest
 
-%post
-%python_install_alternative confpy-generate
-
-%postun
-%python_uninstall_alternative confpy-generate
+%pre
+# Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative confpy-generate
 
 %files %{python_files}
 %doc README.rst
