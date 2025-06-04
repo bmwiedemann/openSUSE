@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-base58
@@ -32,10 +33,10 @@ BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): alts
-Requires(postun): alts
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,11 +57,9 @@ Base58 and Base58Check implementation compatible with what is used by the bitcoi
 %check
 %pytest
 
-%post
-%python_install_alternative base58
-
-%postun
-%python_uninstall_alternative base58
+%pre
+# Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative base58
 
 %files %{python_files}
 %doc README.md
