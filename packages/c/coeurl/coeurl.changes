@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  4 10:19:24 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Remove workaround_libcurl8.13_issues.patch as libcurl 8.14
+  has been fixed
+
+-------------------------------------------------------------------
 Tue May 13 16:36:25 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Quickfix to get nheko working again post libcurl 8.13:

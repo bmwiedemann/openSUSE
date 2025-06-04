@@ -1,7 +1,7 @@
 #
 # spec file for package coeurl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global libname libcoeurl0_3
 Name:           coeurl
 Version:        0.3.1
@@ -23,19 +24,18 @@ Summary:        A simple async wrapper around CURL for C++
 License:        MIT
 URL:            https://nheko.im/nheko-reborn/coeurl
 Source:         %{url}/-/archive/v%{version}/%{name}-v%{version}.tar.gz
-Patch:          workaround_libcurl8.13_issues.patch
 BuildRequires:  meson
 %if 0%{?suse_version} < 1600
-BuildRequires: gcc12
-BuildRequires: gcc12-c++
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
 %else
-BuildRequires: gcc
-BuildRequires: gcc-c++
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 %endif
 BuildRequires:  cmake >= 3.12
 BuildRequires:  meson >= 0.55
+BuildRequires:  ((pkgconfig(libcurl) >= 7.77.0 and pkgconfig(libcurl) < 8.13.0) or pkgconfig(libcurl) >= 8.14.0)
 BuildRequires:  pkgconfig(fmt) >= 10.0.0
-BuildRequires:  pkgconfig(libcurl) >= 7.77.0
 BuildRequires:  pkgconfig(libevent) >= 2.1.12
 BuildRequires:  pkgconfig(spdlog) >= 1.14.0
 
@@ -87,4 +87,3 @@ export CXX=g++-12
 %{_libdir}/libcoeurl.so.*
 
 %changelog
-

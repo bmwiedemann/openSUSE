@@ -24,4 +24,14 @@
   * Add workaround_libcurl8.13_issues.patch</comment>
     <requestid>1277229</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b6b147c46c1ab7fc48e5ebe4707b7b0f</srcmd5>
+    <version>0.3.1</version>
+    <time>1749061775</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove workaround_libcurl8.13_issues.patch as libcurl 8.14
+  has been fixed
+</comment>
+    <requestid>1282729</requestid>
+  </revision>
 </revisionlist>
