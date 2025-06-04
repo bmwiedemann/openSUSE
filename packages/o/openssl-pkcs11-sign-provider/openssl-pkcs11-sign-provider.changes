@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun  4 16:23:48 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 1.0.2:
+  * various fixes and cleanups
+  * update man-pages
+  * fix key management registration and key typing
+  * fix several double frees
+- Don't install libtool archives (*.la)
+
+-------------------------------------------------------------------
 Mon Sep 30 11:56:24 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Version update 1.0.1:

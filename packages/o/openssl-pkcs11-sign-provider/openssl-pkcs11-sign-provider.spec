@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-pkcs11-sign-provider
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global modulesdir %(pkg-config --variable=modulesdir libcrypto)
 
 Name:           openssl-pkcs11-sign-provider
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        OpenSSL Provider for asymmetric operations with private PKCS#11 keys
 License:        Apache-2.0
@@ -71,6 +71,8 @@ for file in openssl-*.cnf.sample; do mv $file $file.%{_arch}; done
 
 %install
 %make_install
+# Don't install libtool archives
+find %{buildroot} -name "*.la" -type f -delete -print
 
 %post
 
