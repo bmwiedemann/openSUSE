@@ -1,7 +1,7 @@
 #
 # spec file for package python-termstyle
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-termstyle
 Version:        0.1.11
 Release:        0
 Summary:        Console colouring for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/gfxmonk/termstyle
 Source:         https://files.pythonhosted.org/packages/source/t/termstyle/termstyle-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
 BuildArch:      noarch
 %ifpython2
 Obsoletes:      %{oldpython}-python-termstyle < %{version}
@@ -48,10 +49,10 @@ terminal (console) programs.  The definitions come from ECMA-048, the
 sed -i '1s/^#!.*//' termstyle.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +62,8 @@ PYTHONPATH=. %python_exec -c 'from termstyle import *; print(green("unicod\xe9!"
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/termstyle.py
+%pycache_only %{python_sitelib}/__pycache__/termstyle.*.pyc
+%{python_sitelib}/termstyle-%{version}.dist-info
 
 %changelog
