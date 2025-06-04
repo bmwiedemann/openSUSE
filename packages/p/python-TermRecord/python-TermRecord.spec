@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-TermRecord
 Version:        1.2.5
 Release:        0
@@ -26,11 +27,11 @@ Source:         https://files.pythonhosted.org/packages/source/T/TermRecord/Term
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-Jinja2 >= 2.6
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2 >= 2.6}
@@ -55,11 +56,9 @@ it can be shipped to anyone that has a browser. Fonts are embedded, too.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/TermRecord
 
-%post
-%python_install_alternative TermRecord
-
-%postun
-%python_uninstall_alternative TermRecord
+%pre
+# Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative TermRecord
 
 %files %{python_files}
 %license LICENSE
