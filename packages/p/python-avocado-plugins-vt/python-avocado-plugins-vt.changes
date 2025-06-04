@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  4 00:58:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Tidy up %files.
+
+-------------------------------------------------------------------
 Thu Jun 24 06:50:20 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to version 88:

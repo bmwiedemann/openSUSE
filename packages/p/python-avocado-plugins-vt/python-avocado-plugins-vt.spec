@@ -1,7 +1,7 @@
 #
 # spec file for package python-avocado-plugins-vt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define pythons python3
 Name:           python-avocado-plugins-vt
 Version:        88.0
@@ -26,7 +25,9 @@ License:        GPL-2.0-only
 URL:            https://avocado-framework.readthedocs.org/
 Source0:        https://github.com/avocado-framework/avocado-vt/archive/%{version}.tar.gz#/avocado-vt-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       attr
@@ -80,10 +81,10 @@ sed -E -i "1s|^(#\!/usr/bin/python)$|\13|" \
     virttest/staging/*py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 # Reduce duplicities
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -92,16 +93,10 @@ sed -E -i "1s|^(#\!/usr/bin/python)$|\13|" \
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%dir %{python_sitelib}/avocado_vt
-%dir %{python_sitelib}/avocado_vt/conf.d
-%dir %{python_sitelib}/avocado_vt/plugins
-%dir %{python_sitelib}/avocado_vt/__pycache__
 %config(noreplace)%{python_sitelib}/avocado_vt/conf.d/vt.conf
 %config(noreplace)%{python_sitelib}/avocado_vt/conf.d/vt_joblock.conf
-%{python_sitelib}/avocado_framework_plugin_vt*egg-info
-%{python_sitelib}/avocado_vt/*py
-%{python_sitelib}/avocado_vt/__pycache__/*
-%{python_sitelib}/avocado_vt/plugins/*
-%{python_sitelib}/virttest*
+%{python_sitelib}/avocado_vt
+%{python_sitelib}/virttest
+%{python_sitelib}/avocado_framework_plugin_vt-%{version}.dist-info
 
 %changelog

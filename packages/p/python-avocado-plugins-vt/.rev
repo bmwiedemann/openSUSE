@@ -59,4 +59,13 @@ sc
 - Switch fdupes macro to using hardlinks</comment>
     <requestid>901629</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f44c6c5fdf7b4ee2e9a1523dc9ba2856</srcmd5>
+    <version>88.0</version>
+    <time>1749061737</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.
+- Tidy up %files.</comment>
+    <requestid>1282464</requestid>
+  </revision>
 </revisionlist>
