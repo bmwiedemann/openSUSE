@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycdlib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pycdlib
 Version:        1.14.0
 Release:        0
@@ -25,8 +24,10 @@ License:        LGPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/clalancette/pycdlib
 Source:         https://files.pythonhosted.org/packages/source/p/pycdlib/pycdlib-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  mkisofs
 BuildRequires:  python-rpm-macros
@@ -62,10 +63,10 @@ This package includes the common files.
 %setup -q -n pycdlib-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/pycdlib-explorer
 %python_clone -a %{buildroot}%{_bindir}/pycdlib-extract-files
@@ -88,7 +89,8 @@ export TZ=Asia/Tokyo
 %python_alternative %{_bindir}/pycdlib-explorer
 %python_alternative %{_bindir}/pycdlib-extract-files
 %python_alternative %{_bindir}/pycdlib-genisoimage
-%{python_sitelib}/*
+%{python_sitelib}/pycdlib
+%{python_sitelib}/pycdlib-%{version}*-info
 
 %files -n python3-pycdlib-common
 %{_mandir}/man1/pycdlib-explorer.1%{?ext_man}
