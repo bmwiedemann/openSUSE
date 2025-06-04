@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 26 12:26:54 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 0.4.14:
+  * Added the "pkcs11prov" provider for OpenSSL 3.x (Małgorzata Olszówka)
+  * Added generic keypair generation interface and engine ctrl command (Rafael Junio da Cruz)
+  * Added static engine support (Lucas Mülling)
+  * Added PKCS11_FORCE_CLEANUP env variable to force cleanup on exit and stop memory leaks with certain PKCS#11 modules (Małgorzata Olszówka)
+  * Fixed a number of resource leaks (Małgorzata Olszówka, Hazem Zaghloul, Michał Trojnara)
+  * Fixed C_OpenSession error handling (Rafael Junio da Cruz)
+  * Fixed handling of uninitialized tokens (Michał Trojnara)
+  * Removed support for OpenSSL older than 1.0.2 (Michał Trojnara)
+- Create new subpackage openssl-provider-libp11
+- Removed patch fix-wrong-non-static-lib.patch
+
+-------------------------------------------------------------------
 Tue Apr  1 13:15:35 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Add Provides: openssl-pkcs11:

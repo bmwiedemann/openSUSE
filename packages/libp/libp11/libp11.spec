@@ -25,7 +25,7 @@
 %define libname libp11-3
 %endif
 Name:           libp11
-Version:        0.4.13
+Version:        0.4.14
 Release:        0
 Summary:        Library Implementing a Small Layer on Top of PKCS#11 API
 License:        LGPL-2.1-or-later
@@ -36,8 +36,6 @@ Source1:        https://github.com/OpenSC/libp11/releases/download/%{name}-%{ver
 Source2:        %{name}.keyring
 Source3:        %{name}-rpmlintrc
 Source4:        baselibs.conf
-# FIX-UPSTREAM
-Patch0:         fix-wrong-non-static-lib.patch
 BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  p11-kit-devel
@@ -101,6 +99,21 @@ Libp11 source code includes the official header files (version 2.20)
 and thus is "derived from the RSA Security Inc. PKCS #11 Cryptographic
 Token Interface (Cryptoki)".
 
+%package -n openssl-provider-%{name}
+Summary:        Library Implementing a Small Layer on Top of PKCS#11 API
+Group:          Productivity/Security
+
+%description -n openssl-provider-%{name}
+Libp11 is a library implementing a small layer on top of PKCS#11 API to
+make using PKCS#11 implementations easier.
+
+The official name for PKCS#11 is "RSA Security Inc. PKCS #11
+Cryptographic Token Interface (Cryptoki)".
+
+Libp11 source code includes the official header files (version 2.20)
+and thus is "derived from the RSA Security Inc. PKCS #11 Cryptographic
+Token Interface (Cryptoki)".
+
 %package devel
 Summary:        Library Implementing a Small Layer on Top of PKCS#11 API
 Group:          Development/Libraries/C and C++
@@ -153,6 +166,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %else
 %{_libdir}/engines
 %endif
+
+%files -n openssl-provider-%{name}
+%{_libdir}/ossl-modules
 
 %files devel
 %{_includedir}/*.h
