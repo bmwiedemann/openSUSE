@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun  4 12:42:25 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.62.5:
+  - Features
+    * feat: Remove X.509 fallback roots
+  - Fixes
+    * fix: Exit with failure when apply is cancelled
+    * fix: Fix ignoring exit code 1 from external diff commands for non-files
+
+-------------------------------------------------------------------
 Thu May 15 16:54:15 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
-- Update to version 2.62.4:.
+- Update to version 2.62.4:
   - Fixes
     * fix: Make toStrings template function flatten arguments
   - Documentation updates

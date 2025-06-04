@@ -832,4 +832,17 @@
 </comment>
     <requestid>1277859</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>1e129aabfad52ca883771a120fe0e5d7</srcmd5>
+    <version>2.62.5</version>
+    <time>1749061821</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.62.5:
+  - Features
+    * feat: Remove X.509 fallback roots
+  - Fixes
+    * fix: Exit with failure when apply is cancelled
+    * fix: Fix ignoring exit code 1 from external diff commands for non-files</comment>
+    <requestid>1282738</requestid>
+  </revision>
 </revisionlist>
