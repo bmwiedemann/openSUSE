@@ -1,7 +1,7 @@
 #
 # spec file for package python-tkreadonly
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tkreadonly
 Version:        0.6.1
 Release:        0
 Summary:        A set of Tkinter widgets to display readonly text and code
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            http://github.org/pybee/tkreadonly
 Source:         https://files.pythonhosted.org/packages/source/t/tkreadonly/tkreadonly-%{version}.tar.gz
 BuildRequires:  %{python_module idle}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tk}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pygments >= 1.5
@@ -47,10 +47,10 @@ A set of Tkinter widgets to display readonly text and code.
 %setup -q -n tkreadonly-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +59,8 @@ A set of Tkinter widgets to display readonly text and code.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/tkreadonly.py
+%pycache_only %{python_sitelib}/__pycache__/tkreadonly.*.pyc
+%{python_sitelib}/tkreadonly-%{version}.dist-info
 
 %changelog
