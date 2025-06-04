@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 04 05:14:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.105:
+  * have env variable GENERATE_PROJECTS for sops decrypt workaround
+    by @motatoes in #1968
+
+-------------------------------------------------------------------
 Sun Jun 01 09:16:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.104:
