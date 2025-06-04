@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Jun 03 19:31:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 52.7.7 (52.7.6 does not exist):
+  * Release Highlights
+    - This release includes several key bug fixes and feature
+      enhancements. Notably, it adds support for external secret
+      managers and improves Helm chart semantic versioning (semver)
+      compliance.
+  * Bug Fixes & New Features
+    - Fixed a bug where eBPF traffic capture did not work when
+      persistent volume storage was used. (#1757).
+    - Fixed a bug where Kubeshark stopped processing traffic when
+      Workers restarted (#1760).
+    - Added an option to configure secrets to be read from
+      environment variables, enabling the use of external secret
+      managers for storing items such as licenses or SAML/OIDC
+      secrets.
+    - Updated Chart.yaml to use the full semantic version, ensuring
+      the Helm chart is semver compliant (#1752).
+    - Improved calculations for throughput, bandwidth, and latency
+      in the service map.
+
+-------------------------------------------------------------------
+Tue Jun 03 19:30:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 52.7.5 (52.7.4 does not exist):
+  * :bookmark: Bump the Helm chart version to 52.7.5
+  * Set tap.docker.tag to minor version of release (#1761)
+
+-------------------------------------------------------------------
+Tue Jun 03 19:29:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 52.7.3 (52.7.1 and 52.7.2 do not exist):
+  * Bump the Helm chart version to 52.7.3
+  * disabled sctp by default as it is part of debug protocols.
+  * disable watchdog by default (#1759)
+  * eBPF capture didn't work in case of persistent storage (#1757)
+  * Add secret names to inject env variables from (#1756)
+  * Use full semver version in Chart.yaml (#1754)
+  * Incerased storage limit from 500Mi to 5Gi (#1755)
+  * Add kubeshark_dropped_chunks_total metric description (#1753)
+
+-------------------------------------------------------------------
 Fri Apr 18 05:29:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 52.7.0:
