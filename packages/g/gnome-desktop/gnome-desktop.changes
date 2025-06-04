@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun  1 06:12:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.3:
+  + Stop using ratio character for time in the wall-clock.
+  + Fix variable initialization.
+  + Only parse XML files as slideshows.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Aug 21 05:52:55 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.1:
