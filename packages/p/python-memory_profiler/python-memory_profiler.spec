@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-memory_profiler
 Version:        0.57.0
 Release:        0
@@ -30,11 +31,11 @@ Patch0:         revert-5fe38da92673.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-psutil
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 # SECTION tests
 BuildRequires:  %{python_module psutil}
@@ -48,8 +49,7 @@ programs. It is a pure python module and has the psutil
 module as optional (but highly recommended) dependencies.
 
 %prep
-%setup -q -n memory_profiler-%{version}
-%autopatch -p1
+%autosetup -p1 -n memory_profiler-%{version}
 
 %build
 %pyproject_wheel
@@ -73,11 +73,11 @@ export LANG="en_US.UTF8"
 %python_exec -m memory_profiler test/test_memory_usage.py
 %python_exec -m memory_profiler test/test_precision_import.py
 
-%post
-%python_install_alternative mprof
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative mprof
 
-%postun
-%python_uninstall_alternative mprof
+# post and postun macro call is not needed with only libalternatives
 
 %files %{python_files}
 %doc README.rst
