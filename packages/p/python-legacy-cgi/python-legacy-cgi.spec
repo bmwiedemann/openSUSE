@@ -18,15 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-legacy-cgi
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        Fork of the standard library cgi and cgitb modules
 License:        Python-2.0
 URL:            https://github.com/jackrosenthal/legacy-cgi
 Source:         https://files.pythonhosted.org/packages/source/l/legacy-cgi/legacy_cgi-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

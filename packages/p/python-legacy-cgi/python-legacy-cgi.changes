@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  3 08:19:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.3
+  * README updated
+  * Switched build system uv (hatchling is the PEP-517 backend)
+  * Supports back to Python 3.8 (not that this is useful, see
+    the README for information on recommended markers)
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Wed Feb  5 08:08:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.6.2

@@ -23,4 +23,19 @@
     <comment></comment>
     <requestid>1243317</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>57cb03a81f88b57379a54db65d660b3b</srcmd5>
+    <version>2.6.3</version>
+    <time>1749061631</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1282179 from glaubitz
+
+- Update to 2.6.3
+    * README updated
+    * Switched build system uv (hatchling is the PEP-517 backend)
+    * Supports back to Python 3.8 (not that this is useful, see
+      the README for information on recommended markers)
+  - Update BuildRequires from pyproject.toml</comment>
+    <requestid>1282372</requestid>
+  </revision>
 </revisionlist>
