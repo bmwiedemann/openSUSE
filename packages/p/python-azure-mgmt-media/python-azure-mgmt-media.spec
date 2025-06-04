@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-media
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-media
-Version:        10.2.0
+Version:        10.2.1
 Release:        0
 Summary:        Microsoft Azure Media Services Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-media/azure-mgmt-media-%{version}.zip
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_media/azure_mgmt_media-%{version}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -57,10 +56,9 @@ replace the old Azure Service Management (ASM).
 This package has been tested with Python 2.7, 3.5, 3.6, 3.7 and 3.8.
 
 %prep
-%setup -q -n azure-mgmt-media-%{version}
+%setup -q -n azure_mgmt_media-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-media-%{version}
 %pyproject_wheel
 
 %install
@@ -75,7 +73,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/mgmt/media
 %{python_sitelib}/azure_mgmt_media-*.dist-info
 
