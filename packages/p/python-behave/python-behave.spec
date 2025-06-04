@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-behave
 Version:        1.2.6
@@ -35,13 +36,13 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-parse >= 1.8.2
 Requires:       python-parse_type >= 0.4.2
 Requires:       python-six >= 1.11
-Requires(post): alts
-Requires(postun): alts
 Suggests:       python-argparse
 Suggests:       python-coverage
 Suggests:       python-enum34
@@ -92,11 +93,11 @@ code.
 %check
 %pytest tests
 
-%post
-%python_install_alternative behave
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative behave
 
-%postun
-%python_uninstall_alternative behave
+# post and postun macro call is not needed with only libalternatives
 
 %files %{python_files}
 %license LICENSE

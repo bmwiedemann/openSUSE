@@ -55,4 +55,13 @@
     <comment></comment>
     <requestid>1277704</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>dd77fe018f7cd8dfddf4afbc8e58625f</srcmd5>
+    <version>1.2.6</version>
+    <time>1749061812</time>
+    <user>dimstar_suse</user>
+    <comment>- fix usage of libalternatives
+</comment>
+    <requestid>1282828</requestid>
+  </revision>
 </revisionlist>
