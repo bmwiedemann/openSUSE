@@ -425,4 +425,22 @@
 - add missing dependency to python schema module</comment>
     <requestid>1281849</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e1ef797e55bf66f53ad357bcf0bf0aea</srcmd5>
+    <version>0.6.2</version>
+    <time>1749061820</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.6.2
+  * crash fix for agama builds
+  * Rework package set calculation
+    
+    The new code allows to reference package sets that are defined
+    later in the recipe. It also allows to specify a flavor or
+    architecture in the reference, so that a flavor can reuse the
+    package set of a different flavor.
+
+- update to version 0.6.1:
+  * fixing a crash when no 'iso' tag is defined</comment>
+    <requestid>1282796</requestid>
+  </revision>
 </revisionlist>

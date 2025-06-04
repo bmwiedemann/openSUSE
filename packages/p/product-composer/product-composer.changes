@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun  4 14:34:39 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.6.2
+  * crash fix for agama builds
+  * Rework package set calculation
+    
+    The new code allows to reference package sets that are defined
+    later in the recipe. It also allows to specify a flavor or
+    architecture in the reference, so that a flavor can reuse the
+    package set of a different flavor.
+
+-------------------------------------------------------------------
+Wed Jun  4 13:33:43 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.6.1:
+  * fixing a crash when no 'iso' tag is defined
+
+-------------------------------------------------------------------
 Mon Jun  2 09:29:18 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.6.0:
