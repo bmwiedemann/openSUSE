@@ -1649,4 +1649,15 @@
   https://www.mail-archive.com/haproxy@formilux.org/msg45917.html</comment>
     <requestid>1280971</requestid>
   </revision>
+  <revision rev="159" vrev="2">
+    <srcmd5>b7a3728a8343ec7cf3f23a792dba2c57</srcmd5>
+    <version>3.2.0+git0.e134140d2</version>
+    <time>1749061649</time>
+    <user>dimstar_suse</user>
+    <comment>  VUL-0: CVE-2025-32464: haproxy: HAProxy 2.2 through 3.1.6, in certain
+  uncommon configurations, has a sample_conv_regsub heap-based buffer
+  overflow because of mishandling of the replacement of multiple short
+  patterns with a longer one. (bsc#1240971)</comment>
+    <requestid>1282598</requestid>
+  </revision>
 </revisionlist>
