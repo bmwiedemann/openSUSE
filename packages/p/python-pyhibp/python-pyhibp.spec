@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyhibp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-pyhibp
 Version:        4.2.0
 Release:        0
@@ -26,8 +24,10 @@ License:        AGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://gitlab.com/kitsunix/pyHIBP/pyHIBP
 Source:         https://files.pythonhosted.org/packages/source/p/pyhibp/pyhibp-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.20.0 }
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.20.0
@@ -41,10 +41,10 @@ A Python interface to Troy Hunt's 'Have I Been Pwned?' (HIBP) public API.
 %setup -q -n pyhibp-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 ### Tests need network access to https://haveibeenpwned.com
@@ -54,6 +54,7 @@ A Python interface to Troy Hunt's 'Have I Been Pwned?' (HIBP) public API.
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.md
-%{python_sitelib}/*
+%{python_sitelib}/pyhibp
+%{python_sitelib}/pyhibp-%{version}*-info
 
 %changelog
