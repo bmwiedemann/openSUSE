@@ -1,7 +1,7 @@
 #
 # spec file for package python-time-travel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-time-travel
 Group:          Development/Languages/Python
@@ -27,7 +26,9 @@ License:        MIT
 URL:            https://github.com/snudler6/time-travel
 # pypi archive does not contain the tests
 Source:         https://github.com/snudler6/time-travel/archive/refs/tags/v%{version}.tar.gz#/time_travel-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION tests
 BuildRequires:  %{python_module pytest}
@@ -43,10 +44,10 @@ A python library that helps users write deterministic tests for time sensitive a
 %setup -q -n time-travel-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +58,7 @@ sed -i 's:import mock:from unittest import mock:' src/tests/example/test_wait_an
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/time_travel
+%{python_sitelib}/time_travel-%{version}.dist-info
 
 %changelog
