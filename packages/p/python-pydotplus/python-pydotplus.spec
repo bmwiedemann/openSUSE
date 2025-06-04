@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydotplus
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without tests
 Name:           python-pydotplus
 Version:        2.0.2
@@ -24,10 +23,12 @@ Release:        0
 Summary:        Python interface to Graphviz's Dot language
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://pydotplus.readthedocs.org/
+URL:            https://pydotplus.readthedocs.org/
 Source:         https://files.pythonhosted.org/packages/source/p/pydotplus/pydotplus-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyparsing >= 2.0.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       graphviz
@@ -46,10 +47,10 @@ Python Interface to Graphviz's Dot language.
 %setup -q -n pydotplus-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with tests}
@@ -62,6 +63,7 @@ $python test/pydot_unittest.py
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pydotplus
+%{python_sitelib}/pydotplus-%{version}*-info
 
 %changelog
