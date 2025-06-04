@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-anthy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,13 @@
 
 
 Name:           ibus-anthy
+Version:        1.5.17
+Release:        0
+Summary:        The Anthy engine for IBus input platform
+License:        GPL-2.0-or-later
+Group:          System/I18n/Japanese
+URL:            https://github.com/ibus/ibus-anthy
+Source:         https://github.com/ibus/ibus-anthy/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  anthy-devel
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -29,13 +36,6 @@ BuildRequires:  pkgconfig(ibus-1.0) >= 1.4.99
 BuildRequires:  pkgconfig(python3)
 Requires:       anthy
 Requires:       python3-gobject >= 3
-Version:        1.5.16
-Release:        0
-Summary:        The Anthy engine for IBus input platform
-License:        GPL-2.0-or-later
-Group:          System/I18n/Japanese
-URL:            https://github.com/ibus/ibus-anthy
-Source:         https://github.com/ibus/ibus-anthy/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

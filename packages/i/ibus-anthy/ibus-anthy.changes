@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 23 13:28:59 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 1.16.3:
+  * Feature & Bug Fixes:
+    Ignore Super modifier key 9ae92d7
+    Update era.t with 2025 9231389
+    Fix to load EN compose file 14b2759
+    Revise CI e62e754 09cbef4 ff1a07a 8cbe542
+  * Translation contributors:
+    po: Update translation (French) (Léane GRASSER) d43b91b
+    po: Update translation (Greek) (Giannis Antypas) 2919215
+    po: Update translation (Kabyle) (ButterflyOfFire) 96e0da5
+    po: Update translation (Indonesian) (Andika Triwidada) c529f8b
+
+-------------------------------------------------------------------
 Sun Apr 28 06:35:29 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 1.5.16
