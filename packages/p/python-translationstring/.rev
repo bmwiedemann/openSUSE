@@ -79,4 +79,13 @@ New dependency of python-Pyramid</comment>
     <comment></comment>
     <requestid>1092204</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>f362a2a3c4bf528d494eca6458697a10</srcmd5>
+    <version>1.4</version>
+    <time>1749061730</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1282529</requestid>
+  </revision>
 </revisionlist>
