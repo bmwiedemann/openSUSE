@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-cfgdiff
 Version:        0.0.0+git.1641843506.dc1234a
 Release:        0
@@ -29,8 +30,10 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 ## /SECTION
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Provides:       cfgdiff
 BuildArch:      noarch
 %python_subpackages
@@ -58,11 +61,9 @@ cfgdiff currently supports the following formats:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/cfgdiff
 
-%post
-%python_install_alternative cfgdiff
-
-%postun
-%python_uninstall_alternative cfgdiff
+%pre
+# Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative cfgdiff
 
 %check
 export PYTHONPATH=.
