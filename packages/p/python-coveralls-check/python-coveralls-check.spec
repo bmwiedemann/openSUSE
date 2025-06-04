@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-coveralls-check
 Version:        1.2.1
@@ -30,13 +31,13 @@ Patch0:         python-coveralls-check-no-mock.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-backoff
 Requires:       python-requests
 Requires:       python-setuptools
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module backoff}
@@ -65,11 +66,9 @@ A helper to check https://coveralls.io for a given commit hash.
 %check
 %pytest tests.py
 
-%post
-%python_install_alternative coveralls-check
-
-%postun
-%python_uninstall_alternative coveralls-check
+%pre
+# Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative coveralls-check
 
 %files %{python_files}
 %doc README.rst
