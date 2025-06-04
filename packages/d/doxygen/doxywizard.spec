@@ -17,7 +17,7 @@
 
 
 Name:           doxywizard
-Version:        1.13.2
+Version:        1.14.0
 Release:        0
 Summary:        Graphical User Interface for Doxygen
 # qtools are used for building and they are GPL-3.0 licensed
@@ -35,10 +35,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xml)
 Requires:       doxygen = %{version}
 # for make tests
 BuildRequires:  libxml2-tools

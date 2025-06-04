@@ -2469,4 +2469,12 @@
   * Drop related patch doxygen-no-libclang-cpp.patch (forwarded request 1236969 from mathletic)</comment>
     <requestid>1237886</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>309a31dae1ad6bc317e406f471beb84e</srcmd5>
+    <version>1.14.0</version>
+    <time>1749061595</time>
+    <user>dimstar_suse</user>
+    <comment>- Doxywizard: Use Qt 6 instead of Qt5. (forwarded request 1281162 from mathletic)</comment>
+    <requestid>1281276</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May 29 14:07:05 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Doxywizard: Use Qt 6 instead of Qt5.
+
+-------------------------------------------------------------------
+Sat May 24 18:24:12 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 1.14.0
+  * HTML output has gotten a fresh, more modern look. It makes
+    better use of CSS and uses fewer bitmaps.
+  * Added page outline navigation panel to the HTML output
+  * Added new layout option: full height side bar + navigation tabs
+  * Improved flexibility of `\cite` command
+  * Support for Plus sign code fence directives - GitHub flavor
+
+-------------------------------------------------------------------
 Sat Jan 11 07:07:53 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - update to Doxygen 1.13.2
