@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-HTML
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,23 @@
 #
 
 
-Name:           perl-IO-HTML
-Version:        1.004
-Release:        0
 %define cpan_name IO-HTML
-Summary:        Open an HTML file with automatic charset detection
+Name:           perl-IO-HTML
+Version:        1.4.0
+Release:        0
+# 1.004 -> normalize -> 1.4.0
+%define cpan_version 1.004
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Open an HTML file with automatic charset detection
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/C/CJ/CJM/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/C/CJ/CJM/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.88
+Provides:       perl(IO::HTML) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -75,11 +77,11 @@ different value. Note: 'sniff_encoding' does not apply this step; only
 'html_file' does that.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -90,7 +92,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes examples README
 %license LICENSE
 
