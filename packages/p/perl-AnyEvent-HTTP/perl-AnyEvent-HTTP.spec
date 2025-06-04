@@ -1,7 +1,7 @@
 #
 # spec file for package perl-AnyEvent-HTTP
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,26 @@
 #
 
 
-Name:           perl-AnyEvent-HTTP
-Version:        2.25
-Release:        0
 %define cpan_name AnyEvent-HTTP
-Summary:        Simple but non-blocking HTTP/HTTPS client
+Name:           perl-AnyEvent-HTTP
+Version:        2.250.0
+Release:        0
+# 2.25 -> normalize -> 2.250.0
+%define cpan_version 2.25
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/%{cpan_name}-%{version}.tar.gz
+Summary:        Simple but non-blocking HTTP/HTTPS client
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(AnyEvent) >= 5.33
-BuildRequires:  perl(common::sense) >= 3.3
-Requires:       perl(AnyEvent) >= 5.33
-Requires:       perl(common::sense) >= 3.3
+BuildRequires:  perl(AnyEvent) >= 5.330
+BuildRequires:  perl(common::sense) >= 3.300
+Requires:       perl(AnyEvent) >= 5.330
+Requires:       perl(common::sense) >= 3.300
+Provides:       perl(AnyEvent::HTTP) = %{version}
+%undefine       __perllib_provides
 Recommends:     perl(URI)
 %{perl_requires}
 
@@ -57,11 +59,11 @@ other high-level protocol details for which this module offers only limited
 support.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -72,7 +74,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license COPYING
 
