@@ -1,7 +1,7 @@
 #
 # spec file for package perl-AnyEvent-WebSocket-Server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name AnyEvent-WebSocket-Server
 Name:           perl-AnyEvent-WebSocket-Server
-Version:        0.10
+Version:        0.100.0
 Release:        0
-Summary:        WebSocket server for AnyEvent
+# 0.10 -> normalize -> 0.100.0
+%define cpan_version 0.10
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        WebSocket server for AnyEvent
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TO/TOSHIOITO/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TO/TOSHIOITO/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -31,9 +33,9 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(AnyEvent)
 BuildRequires:  perl(AnyEvent::Handle)
 BuildRequires:  perl(AnyEvent::Socket)
-BuildRequires:  perl(AnyEvent::WebSocket::Client) >= 0.37
-BuildRequires:  perl(Module::Build) >= 0.420000
-BuildRequires:  perl(Module::Build::Prereqs::FromCPANfile) >= 0.02
+BuildRequires:  perl(AnyEvent::WebSocket::Client) >= 0.370
+BuildRequires:  perl(Module::Build) >= 0.42
+BuildRequires:  perl(Module::Build::Prereqs::FromCPANfile) >= 0.20
 BuildRequires:  perl(Protocol::WebSocket::Frame)
 BuildRequires:  perl(Protocol::WebSocket::Handshake::Client)
 BuildRequires:  perl(Protocol::WebSocket::Handshake::Server)
@@ -41,9 +43,11 @@ BuildRequires:  perl(Test::Memory::Cycle)
 BuildRequires:  perl(Test::Requires)
 BuildRequires:  perl(Try::Tiny)
 Requires:       perl(AnyEvent::Handle)
-Requires:       perl(AnyEvent::WebSocket::Client) >= 0.37
+Requires:       perl(AnyEvent::WebSocket::Client) >= 0.370
 Requires:       perl(Protocol::WebSocket::Handshake::Server)
 Requires:       perl(Try::Tiny)
+Provides:       perl(AnyEvent::WebSocket::Server) = %{version}
+%undefine       __perllib_provides
 Recommends:     perl(Net::SSLeay)
 %{perl_requires}
 
@@ -55,18 +59,19 @@ context.
 https://tools.ietf.org/html/rfc6455 for detail.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
