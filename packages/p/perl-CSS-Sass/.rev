@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c9d8d0993710a0cd5c28e6b9be054f1f</srcmd5>
+    <version>3.6.4</version>
+    <time>1749061824</time>
+    <user>dimstar_suse</user>
+    <comment>We are using rubygem-sass in openQA, which is deprecated and unmaintained and not supported in SLE 16 anymore, so we want to switch to libsass / perl-CSS-Sass</comment>
+    <requestid>1282852</requestid>
+  </revision>
+</revisionlist>

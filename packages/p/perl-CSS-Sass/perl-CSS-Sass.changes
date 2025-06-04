@@ -1,0 +1,171 @@
+-------------------------------------------------------------------
+Sat May 22 03:06:59 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.6.4
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+-------------------------------------------------------------------
+Tue May  5 03:07:37 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 3.6.3
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+
+-------------------------------------------------------------------
+Sat May  2 03:09:04 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 3.6.2
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+
+-------------------------------------------------------------------
+Mon May 20 05:02:38 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.6.0
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+  CSS::Sass (3.6.0)
+  
+    First release with next major libsass version
+    This may cause your existing sass code to break
+    Please check the libsass changelog for breaking changes
+    https://github.com/sass/libsass/releases/tag/3.6.0
+  
+    * Bumped libsass version to latest 3.6 stable branch (3.6.0)
+    * Added digest plugin to compute md5/base64/crc checksums
+    * Adjusted a few test cases to match new 3.6 behaviors
+  
+  -- Marcel Greter <perl-libsass@ocbnet.ch>  Thu, 19 May 2019 17:49:32 +0100
+
+-------------------------------------------------------------------
+Fri Apr 12 05:06:29 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.4.13
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+  CSS::Sass (3.4.13)
+  
+    * Fix build failures when using clang
+    * Fix detection of installed modules
+  
+  -- Marcel Greter <perl-libsass@ocbnet.ch>  Thu, 11 Apr 2019 22:14:04 +0100
+
+-------------------------------------------------------------------
+Thu Apr 11 05:03:14 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.4.12
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+  CSS::Sass (3.4.12)
+  
+    * Maintenance release (no libsass upgrade)
+    * Add unit tests for included plugins
+    * Changed plugin locations and auto loading
+    * Implement support for HRX spec tests
+    * Fix issue with newer ExtUtils::CppGuess
+    * Update ppport.h and adjust makefile
+    * Update sassc plugin to latest version
+    * Update img-size plugin to latest version
+    * Add loading of alternate spec output file names
+    * Fix spec test by trimming trailing white-space
+    * Add appveyor for windows/strawberry perl testing
+  
+  -- Marcel Greter <perl-libsass@ocbnet.ch>  Thu, 10 Apr 2019 01:44:42 +0100
+  
+  CSS::Sass (3.4.11)
+  
+    * Bumped libsass version to latest 3.4 stable branch (3.4.9)
+    * Improve spec-runner to normalize nth-child binomial spacing
+    * Fix sass operation overloads for inverted operands
+  
+  -- Marcel Greter <perl-libsass@ocbnet.ch>  Mon, 05 Feb 2018 23:31:14 +0200
+
+-------------------------------------------------------------------
+Fri Jan 19 06:08:32 UTC 2018 - coolo@suse.com
+
+- updated to 3.4.10
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+-------------------------------------------------------------------
+Mon Nov  6 06:23:31 UTC 2017 - coolo@suse.com
+
+- updated to 3.4.8
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+-------------------------------------------------------------------
+Tue Oct 17 05:07:35 UTC 2017 - coolo@suse.com
+
+- updated to 3.4.7
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+-------------------------------------------------------------------
+Sun Oct  8 08:39:31 UTC 2017 - coolo@suse.com
+
+- updated to 3.4.6
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+-------------------------------------------------------------------
+Mon Apr 10 05:12:28 UTC 2017 - coolo@suse.com
+
+- updated to 3.4.5
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+-------------------------------------------------------------------
+Wed Mar  8 06:11:33 UTC 2017 - coolo@suse.com
+
+- updated to 3.4.4
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+-------------------------------------------------------------------
+Sat Feb 25 06:09:35 UTC 2017 - coolo@suse.com
+
+- updated to 3.4.3
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+-------------------------------------------------------------------
+Thu Feb 16 06:10:11 UTC 2017 - coolo@suse.com
+
+- updated to 3.4.2
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+-------------------------------------------------------------------
+Mon Feb 13 11:19:26 UTC 2017 - coolo@suse.com
+
+- updated to 3.4.1
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+-------------------------------------------------------------------
+Sun Dec 11 06:08:23 UTC 2016 - coolo@suse.com
+
+- updated to 3.4.0
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+-------------------------------------------------------------------
+Wed Jul 13 05:06:00 UTC 2016 - coolo@suse.com
+
+- updated to 3.3.6
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+Mon Jul  4 12:18:45 UTC 2016 - coolo@suse.com
+
+- updated to 3.3.5
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+-------------------------------------------------------------------
+Mon Jun 27 07:45:15 UTC 2016 - coolo@suse.com
+
+- updated to 3.3.4
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+-------------------------------------------------------------------
+Sun Jun 12 12:28:21 UTC 2016 - coolo@suse.com
+
+- updated to 3.3.3
+   see /usr/share/doc/packages/perl-CSS-Sass/Changes
+
+-------------------------------------------------------------------
+Wed Mar 18 21:28:27 UTC 2015 - coolo@suse.com
+
+- initial package 3.1.1
+    * created by cpanspec 1.78.08
+
