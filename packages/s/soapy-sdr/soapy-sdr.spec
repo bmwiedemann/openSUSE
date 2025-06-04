@@ -17,7 +17,7 @@
 #
 
 
-%define sover 0_8
+%define sover 0_8-3
 Name:           soapy-sdr
 Version:        0.8.1+git20250223.6e99da1
 Release:        0
@@ -40,6 +40,7 @@ A vendor neutral and platform independent SDR support library.
 %package -n libSoapySDR%{sover}
 Summary:        Vendor and platform neutral SDR support library
 Group:          System/Libraries
+Obsoletes:      libSoapySDR0_8
 
 %description -n libSoapySDR%{sover}
 A vendor neutral and platform independent SDR support library.
@@ -70,7 +71,7 @@ applications that want to make use of libSoapySDR.
 %cmake \
   -DSOAPY_SDR_VERSION=%{version} \
   -DBUILD_PYTHON3=ON
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
