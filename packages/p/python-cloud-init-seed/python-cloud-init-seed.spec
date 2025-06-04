@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-cloud-init-seed
 Version:        0.3.0
 Release:        0
@@ -29,11 +30,11 @@ BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       mkisofs
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,11 +52,9 @@ Create cloud-init compatible image seeds
 %python_clone -a %{buildroot}%{_bindir}/cloud-init-seed
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative cloud-init-seed
-
-%postun
-%python_uninstall_alternative cloud-init-seed
+%pre
+# Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative cloud-init-seed
 
 %files %{python_files}
 %doc AUTHORS ChangeLog README.rst
