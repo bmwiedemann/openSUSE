@@ -67,4 +67,12 @@
     <comment>- Update to 10.2.3</comment>
     <requestid>1278054</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0268f8da12f5cc00d83028958ccee52c</srcmd5>
+    <version>10.2.4</version>
+    <time>1749061651</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.2.4</comment>
+    <requestid>1281877</requestid>
+  </revision>
 </revisionlist>

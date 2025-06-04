@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  2 10:36:32 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 10.2.4
+  * compat: use timingsafe_bcmp if available
+  * IPv6: Sort routers by reachability correctly.
+  * definitions: define ND Route Information option
+  * IPv6: Clear previous address RA flags on receipt of a RA.
+
+-------------------------------------------------------------------
 Fri May 16 12:39:20 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 10.2.3
