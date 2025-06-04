@@ -1,7 +1,7 @@
 #
 # spec file for package python-tri.struct
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-tri.struct
 Version:        4.1.0
 Release:        0
 Summary:        Python dictionaries with attribute access
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/TriOptima/tri.struct
 Source:         https://github.com/TriOptima/tri.struct/archive/%{version}.tar.gz#/tri.struct-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 
@@ -43,10 +42,10 @@ objects with attribute access at the same time.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -56,6 +55,6 @@ export CFLAGS="%{optflags}"
 %doc AUTHORS.rst README.rst
 %license LICENSE
 %{python_sitearch}/tri_struct
-%{python_sitearch}/tri.struct-%{version}*-info
+%{python_sitearch}/tri[._]struct-%{version}.dist-info
 
 %changelog
