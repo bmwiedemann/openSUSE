@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  3 19:51:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Check that %{_sysconfdir}/sysconfig/network/ifcfg-eth0 actually
+  exists before making any modifications to it (bsc#1241112)
+
+-------------------------------------------------------------------
 Mon May 26 15:09:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20250516.00

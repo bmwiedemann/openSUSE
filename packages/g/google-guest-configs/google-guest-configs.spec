@@ -68,11 +68,15 @@ mkdir -p %{buildroot}%{_bindir}
 cp -av src/usr/bin/* %{buildroot}%{_bindir}/
 
 %post
-grep 'POST_UP_SCRIPT="compat:suse:google_up.sh"' %{_sysconfdir}/sysconfig/network/ifcfg-eth0 >/dev/null \
-     || echo 'POST_UP_SCRIPT="compat:suse:google_up.sh"' >> %{_sysconfdir}/sysconfig/network/ifcfg-eth0
+if [ -f %{_sysconfdir}/sysconfig/network/ifcfg-eth0 ] && \
+    ! grep 'POST_UP_SCRIPT="compat:suse:google_up.sh"' %{_sysconfdir}/sysconfig/network/ifcfg-eth0 >/dev/null ; then
+    echo 'POST_UP_SCRIPT="compat:suse:google_up.sh"' >> %{_sysconfdir}/sysconfig/network/ifcfg-eth0
+fi
 
 %postun
-sed -i '/POST_UP_SCRIPT="compat:suse:google_up.sh"/d' %{_sysconfdir}/sysconfig/network/ifcfg-eth0
+if [ -f %{_sysconfdir}/sysconfig/network/ifcfg-eth0 ] ; then
+    sed -i '/POST_UP_SCRIPT="compat:suse:google_up.sh"/d' %{_sysconfdir}/sysconfig/network/ifcfg-eth0
+fi
 
 %files
 %defattr(0644,root,root,0755)

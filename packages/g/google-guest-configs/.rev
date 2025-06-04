@@ -342,4 +342,12 @@
   * Update google_set_multiqueue to unpack IRQ ranges before core assignment (forwarded request 1280294 from glaubitz)</comment>
     <requestid>1280541</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>8693870e2efa3677acb32f77008b5490</srcmd5>
+    <version>20250516.00</version>
+    <time>1749061770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1282707</requestid>
+  </revision>
 </revisionlist>
