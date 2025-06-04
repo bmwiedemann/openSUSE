@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %define commands create_pkg find_pkg generate_changelog package_version prepare_release tag_changelog test_changelog
 Name:           python-catkin-pkg
 Version:        1.0.0
@@ -28,14 +29,14 @@ Source99:       python-catkin-pkg.rpmlintrc
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-docutils
 Requires:       python-pyparsing
 Requires:       python-python-dateutil
 Requires:       python-setuptools
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module docutils}
@@ -50,8 +51,7 @@ BuildRequires:  %{python_module python-dateutil}
 Library for retrieving information about catkin packages.
 
 %prep
-%setup -q -n catkin_pkg-%{version}
-%autopatch -p1
+%autosetup -p1 -n catkin_pkg-%{version}
 
 %build
 %pyproject_wheel
@@ -68,15 +68,13 @@ export PYTHONPATH=$PWD/src
 # flake8 line length checks failing (E501)
 %pytest -k 'not test_flake8'
 
-%post
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
 for c in %{commands}; do
-  %python_install_alternative catkin_$c
+  %python_libalternatives_reset_alternative catkin_$c
 done
 
-%postun
-for c in %{commands}; do
-  %python_uninstall_alternative catkin_$c
-done
+# post and postun macro call is not needed with only libalternatives
 
 %files %{python_files}
 %license LICENSE

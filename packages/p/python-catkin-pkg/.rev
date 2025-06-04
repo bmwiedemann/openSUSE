@@ -113,4 +113,13 @@
     infrastructure/catkin_pkg/pull/337&gt;`_</comment>
     <requestid>1277898</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c4b96bc7720da06d652ba47faf5daa57</srcmd5>
+    <version>1.0.0</version>
+    <time>1749061805</time>
+    <user>dimstar_suse</user>
+    <comment>- fix usage of libalternatives
+</comment>
+    <requestid>1282805</requestid>
+  </revision>
 </revisionlist>
