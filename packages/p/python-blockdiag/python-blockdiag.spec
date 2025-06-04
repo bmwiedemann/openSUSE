@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-blockdiag
 Version:        3.0.0
@@ -37,14 +38,14 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module webcolors}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-Pillow >= 3
 Requires:       python-funcparserlib >= 1.0.0~a0
 Requires:       python-setuptools
 Requires:       python-webcolors
-Requires(post): alts
-Requires(preun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module docutils}
@@ -73,11 +74,11 @@ from spec-text files.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/blockdiag
 
-%post
-%python_install_alternative blockdiag
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative blockdiag
 
-%postun
-%python_uninstall_alternative blockdiag
+# post and postun macro call is not needed with only libalternatives
 
 %check
 pushd src
