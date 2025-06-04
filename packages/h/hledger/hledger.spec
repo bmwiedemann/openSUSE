@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        1.42.2
+Version:        1.43
 Release:        0
 Summary:        Command-line interface for the hledger accounting system
 License:        GPL-3.0-or-later
@@ -60,6 +60,10 @@ BuildRequires:  ghc-haskeline-devel
 BuildRequires:  ghc-haskeline-prof
 BuildRequires:  ghc-hledger-lib-devel
 BuildRequires:  ghc-hledger-lib-prof
+BuildRequires:  ghc-http-client-devel
+BuildRequires:  ghc-http-client-prof
+BuildRequires:  ghc-http-types-devel
+BuildRequires:  ghc-http-types-prof
 BuildRequires:  ghc-lucid-devel
 BuildRequires:  ghc-lucid-prof
 BuildRequires:  ghc-math-functions-devel
@@ -76,6 +80,8 @@ BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-process-prof
 BuildRequires:  ghc-regex-tdfa-devel
 BuildRequires:  ghc-regex-tdfa-prof
+BuildRequires:  ghc-req-devel
+BuildRequires:  ghc-req-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-safe-devel
 BuildRequires:  ghc-safe-prof
