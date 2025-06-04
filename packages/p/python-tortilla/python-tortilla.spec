@@ -1,7 +1,7 @@
 #
 # spec file for package python-tortilla
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,16 +17,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tortilla
 Version:        0.5.0
 Release:        0
 Summary:        A library for creating wrappers around web APIs
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jcarbaugh/python-tortilla
 Source:         https://github.com/tortilla/tortilla/archive/v%{version}.tar.gz#/tortilla-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -53,10 +53,10 @@ A tiny library for creating wrappers around web APIs.
 %setup -q -n tortilla-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +65,7 @@ A tiny library for creating wrappers around web APIs.
 %files %{python_files}
 %license LICENSE
 %doc CHANGES.rst README.rst
-%{python_sitelib}/tortilla*
+%{python_sitelib}/tortilla
+%{python_sitelib}/tortilla-%{version}.dist-info
 
 %changelog
