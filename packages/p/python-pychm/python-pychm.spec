@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pychm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %define pkgname pychm
+%{?sle15_python_module_pythons}
 Name:           python-%{pkgname}
 Version:        0.8.6
 Release:        0
@@ -26,7 +26,9 @@ License:        GPL-2.0-or-later
 URL:            https://github.com/dottedmag/pychm
 Source0:        https://files.pythonhosted.org/packages/source/p/pychm/pychm-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  chmlib-devel
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -44,10 +46,10 @@ files - Compressed Html Help files (.chm).
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %fdupes %{buildroot}
 
 %files %{python_files}
