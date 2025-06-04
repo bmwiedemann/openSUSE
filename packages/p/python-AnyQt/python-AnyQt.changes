@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  3 09:10:53 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Recommend PyQt6 for TW, add note about pyside in check section.
+- Fix build for Leap <=16
+
+-------------------------------------------------------------------
+Mon Jun  2 09:57:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Drop pyside2 support (boo#1243916)
+
+-------------------------------------------------------------------
 Thu May 16 15:12:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated

@@ -16,14 +16,14 @@
 #
 
 
-%if 0%{?suse_version} > 1500
-%define pysidepython python3
-%else
 %{?sle15_python_module_pythons}
-%define pysidepython %pythons
+%if %{suse_version} > 1600
+%bcond_with pyqt5
+%bcond_without pyqt6
+%else
+%bcond_without pyqt5
+%bcond_with pyqt6
 %endif
-%define pysidepython_sitelib %{expand:%%%{pysidepython}_sitelib}
-%define pysidepython_version %{expand:%%%{pysidepython}_version}
 
 Name:           python-AnyQt
 Version:        0.2.0
@@ -40,15 +40,21 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Recommends:     python-qt5
+Recommends:     python-PyQt6
 BuildArch:      noarch
+# Mirror with qt6-webengine
+ExclusiveArch:  aarch64 x86_64 riscv64
 # SECTION test requirements
+%if %{with pyqt5}
 BuildRequires:  %{python_module qt5}
-BuildRequires:  %{pysidepython}-pyside2
+BuildRequires:  %{python_module qtwebengine-qt5}
+%endif
+%if %{with pyqt6}
 BuildRequires:  %{python_module PyQt6}
+BuildRequires:  %{python_module PyQt6-WebEngine}
+%endif
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-xvfb}
-BuildRequires:  %{python_module qtwebengine-qt5}
 # /SECTION
 %python_subpackages
 
@@ -81,15 +87,18 @@ rm AnyQt/QtMacExtras.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-for q in pyqt5 pyqt6; do
+# we do not test pyside2 anymore
+# TODO enable pyside6, which is in the module but maybe not up to date
+qtset=""
+%if %{with pyqt5}
+qtset+=" pyqt5"
+%endif
+%if %{with pyqt6}
+qtset+=" pyqt6"
+%endif
+for q in $qtset; do
   export QT_API=$q
   %pytest --ignore test/
-done
-# not ready for pyside6 yet
-for q in pyside2; do
-  export QT_API=$q
-  export PYTHONPATH=%{buildroot}%{pysidepython_sitelib}
-  pytest-%{pysidepython_version} --ignore test/
 done
 # this doesn't return error codes, check output manually
 unset QT_API
@@ -99,6 +108,6 @@ unset QT_API
 %doc README.txt
 %license LICENSE.txt
 %{python_sitelib}/AnyQt
-%{python_sitelib}/AnyQt-%{version}.dist-info
+%{python_sitelib}/[aA]ny[qQ]t-%{version}.dist-info
 
 %changelog
