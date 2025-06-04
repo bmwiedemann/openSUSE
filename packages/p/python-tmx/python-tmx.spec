@@ -1,7 +1,7 @@
 #
 # spec file for package python-tmx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tmx
 Version:        1.10
 Release:        0
@@ -25,7 +24,9 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            http://python-tmx.nongnu.org
 Source:         http://download.savannah.gnu.org/releases/python-tmx/%{version}/tmx-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six >= 1.4.0
@@ -41,10 +42,10 @@ Tiled to edit a game's levels.
 %setup -q -n tmx-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,6 +54,7 @@ Tiled to edit a game's levels.
 %files %{python_files}
 %doc README
 %license tmx/COPYING
-%{python_sitelib}/*
+%{python_sitelib}/tmx
+%{python_sitelib}/tmx-%{version}.dist-info
 
 %changelog
