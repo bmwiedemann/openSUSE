@@ -1,7 +1,7 @@
 #
 # spec file for package python-pickleshare
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ Summary:        Tiny shelve-like database with concurrency support
 License:        MIT
 URL:            https://github.com/vivainio/pickleshare
 Source:         https://files.pythonhosted.org/packages/source/p/pickleshare/pickleshare-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -53,10 +55,10 @@ Installation guide: pip install path pickleshare
 sed -i '1{\@^#!%{_bindir}/env python@d}' pickleshare.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -67,7 +69,7 @@ export LANG=en_US.UTF-8
 %doc README.md
 %license LICENSE
 %{python_sitelib}/pickleshare.py*
-%{python_sitelib}/pickleshare-%{version}-py*.egg-info
+%{python_sitelib}/pickleshare-%{version}*-info
 %pycache_only %{python_sitelib}/__pycache__/pickleshare.*.py*
 
 %changelog
