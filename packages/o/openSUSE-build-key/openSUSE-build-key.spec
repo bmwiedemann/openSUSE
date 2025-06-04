@@ -60,6 +60,10 @@ Source8:        build-container-d4ade9c3-5a2e9669.asc
 Source9:        gpg-pubkey-25db7ae0-645bae34.asc
 # obsoletes old RSA 2k backports key
 Obsoletes:      gpg-pubkey-65176565
+
+# openSUSE Backports key for SLE 16.0
+Source20:       gpg-pubkey-287a0027-682477e3.asc
+
 # Container key SUSE Linux Enterprise in PEM format
 Source11:       build-container-d4ade9c3-5a2e9669.pem
 
@@ -120,7 +124,7 @@ cp %{SOURCE17} .
 
 %install
 mkdir -p %{buildroot}%{keydir}
-for i in %{SOURCE10} %{SOURCE2} \
+for i in %{SOURCE20} %{SOURCE10} %{SOURCE2} \
 %if 0%{?sle_version}
 %{SOURCE9} \
 %endif

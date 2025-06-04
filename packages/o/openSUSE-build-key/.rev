@@ -436,4 +436,13 @@ However, it would be good to have these out before we do switch. (forwarded requ
   (bsc#1243135) (forwarded request 1277127 from msmeissn)</comment>
     <requestid>1277128</requestid>
   </revision>
+  <revision rev="49" vrev="58">
+    <srcmd5>b8bb8cf137e4506c2c4547cad53f044d</srcmd5>
+    <version>1.0</version>
+    <time>1749061645</time>
+    <user>dimstar_suse</user>
+    <comment>- added gpg-pubkey-287a0027-682477e3.asc: New RSA 4k Backports 
+  for SLE 16.x series. (forwarded request 1281780 from msmeissn)</comment>
+    <requestid>1281781</requestid>
+  </revision>
 </revisionlist>
