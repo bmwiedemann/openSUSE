@@ -1,7 +1,7 @@
 #
 # spec file for package python-resultsdb_api
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-resultsdb_api
 Version:        2.1.5
 Release:        0
@@ -24,7 +23,9 @@ Summary:        Library for simplifying the communication with ResultsDB
 License:        GPL-2.0-or-later
 URL:            https://pagure.io/taskotron/resultsdb_api
 Source:         https://files.pythonhosted.org/packages/source/r/resultsdb_api/resultsdb_api-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.2.1
@@ -47,10 +48,10 @@ and parameters skipping.
 %setup -q -n resultsdb_api-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,7 +60,8 @@ and parameters skipping.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/resultsdb_api*
-%pycache_only %{python_sitelib}/__pycache__/
+%{python_sitelib}/resultsdb_api.py
+%pycache_only %{python_sitelib}/__pycache__/resultsdb_api*.pyc
+%{python_sitelib}/resultsdb_api-%{version}.dist-info
 
 %changelog
