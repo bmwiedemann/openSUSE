@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun  1 06:20:28 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 32c7d07664dc37765100285d1202d488cd6a27e8.patch: Fix
+  insufficiently quoted regular expressions. These went under the
+  radar until Python 3.12 started warning about them.
+
+-------------------------------------------------------------------
 Thu Apr 11 10:45:34 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 [bsc#1212476]

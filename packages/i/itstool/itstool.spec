@@ -1,7 +1,7 @@
 #
 # spec file for package itstool
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            http://itstool.org
 Source:         http://files.itstool.org/itstool/%{name}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM 32c7d07664dc37765100285d1202d488cd6a27e8.patch -- Fix insufficiently quoted regular expressions
+Patch:          https://github.com/itstool/itstool/commit/32c7d07664dc37765100285d1202d488cd6a27e8.patch
 BuildRequires:  python3-base
 BuildArch:      noarch
 %if 0%{?sle_version}

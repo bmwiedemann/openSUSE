@@ -193,4 +193,12 @@
 - remove dependency on /usr/bin/python3 [bsc#1212476] (forwarded request 1166859 from pgajdos)</comment>
     <requestid>1166865</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>7eae0faf3262910bcc06855f967cc663</srcmd5>
+    <version>2.0.7</version>
+    <time>1749061655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1281938</requestid>
+  </revision>
 </revisionlist>
