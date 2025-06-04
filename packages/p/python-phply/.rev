@@ -43,4 +43,13 @@
 - drop remove-nose.patch (upstream)</comment>
     <requestid>1073577</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f629481667c110e61e62837a32574f64</srcmd5>
+    <version>1.2.6</version>
+    <time>1749061609</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build
+</comment>
+    <requestid>1282263</requestid>
+  </revision>
 </revisionlist>

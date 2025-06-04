@@ -1,7 +1,7 @@
 #
 # spec file for package python-phply
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-phply
 Version:        1.2.6
 Release:        0
@@ -25,14 +24,16 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/viraptor/phply
 Source:         https://files.pythonhosted.org/packages/source/p/phply/phply-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ply}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ply
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -43,10 +44,10 @@ phply is a parser for the PHP programming language written using PLY, a Lex/YACC
 %autosetup -p1 -n phply-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/phpparse
 %python_clone -a %{buildroot}%{_bindir}/phplex
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -68,6 +69,8 @@ phply is a parser for the PHP programming language written using PLY, a Lex/YACC
 %doc README.md
 %python_alternative %{_bindir}/phplex
 %python_alternative %{_bindir}/phpparse
-%{python_sitelib}/*
+%{python_sitelib}/phply
+%{python_sitelib}/phply-%{version}*-info
+%{python_sitelib}/phply-%{version}*nspkg.pth
 
 %changelog
