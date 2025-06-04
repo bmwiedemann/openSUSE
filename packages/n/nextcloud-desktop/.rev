@@ -663,4 +663,12 @@
     <comment>Update to version 3.16.4.</comment>
     <requestid>1273200</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>7e728d8b46b4a6b9b9966d7f0b099004</srcmd5>
+    <version>3.16.5</version>
+    <time>1749061684</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.16.5</comment>
+    <requestid>1282434</requestid>
+  </revision>
 </revisionlist>

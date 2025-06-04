@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jun  3 15:57:21 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
+
+- Update to version 3.16.5:
+   * revert: remove duplicated code when copying legacy config 
+     to new path. (gh#nextcloud/desktop#8233)
+   * fix(migration): migrate general network settings. 
+     (gh#nextcloud/desktop#8308)
+   * fix(delete): fix move to trash in read-only folders 
+     (gh#nextcloud/desktop#8312)
+   * fix(AppImage): bundle client translations 
+     (gh#nextcloud/desktop#8313) 
+   * fix(appimage): move VFS plugins to AppDir 
+     (gh#nextcloud/desktop#8317)
+   * feat(mac-crafter): retry code-signing attempts 
+     (gh#nextcloud/desktop#8316)
+   * fix(rename): avoid failing hard when rename is rejected 
+     by server (gh#nextcloud/desktop#8323)
+   * fix(readonly): enable MOVE rollback when folder is 
+     read-only (gh#nextcloud/desktop#8324)
+   * fix(readonly): apply ACL also to files inside read-only 
+     folders (gh#nextcloud/desktop#8325)
+   * fix(permissions): handle properly CanRead permission from 
+     server (gh#nextcloud/desktop#8327)
+   * fix(filesystem): only change folder permissions if required 
+     (gh#nextcloud/desktop#8328)
+   * fix(lockfilejobs): ensure using correct file path 
+     (gh#nextcloud/desktop#8332)
+    
+-------------------------------------------------------------------
 Mon Apr 28 14:41:16 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to version 3.16.4:
