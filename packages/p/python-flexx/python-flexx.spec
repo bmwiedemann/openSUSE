@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-flexx
 Version:        0.8.4
 Release:        0
@@ -36,15 +37,15 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado >= 4}
 BuildRequires:  %{python_module webruntime >= 0.5.6}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+Requires:       alts
 Requires:       python-dialite >= 0.5.2
 Requires:       python-pscript
 Requires:       python-tornado
 Requires:       python-webruntime >= 0.5.6
-Requires(post): alts
-Requires(postun): alts
 Recommends:     python-imageio
 Recommends:     python-numpy
 Recommends:     python-vispy
@@ -76,11 +77,9 @@ document. It also works in the Jupyter notebook.
 # Do not run tests, they require online access to jquery/etc.
 #%%pytest
 
-%post
-%python_install_alternative flexx
-
-%postun
-%python_uninstall_alternative flexx
+%pre
+# Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative flexx
 
 %files %{python_files}
 %doc README.md
