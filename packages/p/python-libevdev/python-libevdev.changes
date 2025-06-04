@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun  3 09:28:19 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12
+  * doc: add a readthedocs config file
+  * docs: install the rtd sphinx theme for readthedocs
+  * readthedocs: fix path to requirements.txt
+  * setup.cfg: Replace dashes with underscores
+  * CI: add required workflow rules
+  * Fix intersphinx mapping
+- Limit Python files matched in %files section
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+
+-------------------------------------------------------------------
 Mon Jan  6 13:13:38 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Avoid usage of %{_libdir}: a noarch package cannot rely on libdir

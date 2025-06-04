@@ -34,4 +34,28 @@
     <comment></comment>
     <requestid>1235193</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0bb5433c5085528cd493441e0e566bcb</srcmd5>
+    <version>0.12</version>
+    <time>1749061632</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1282226 from glaubitz
+
+- Update to 0.12
+    * doc: add a readthedocs config file
+    * docs: install the rtd sphinx theme for readthedocs
+    * readthedocs: fix path to requirements.txt
+    * setup.cfg: Replace dashes with underscores
+    * CI: add required workflow rules
+    * Fix intersphinx mapping
+  - Limit Python files matched in %files section
+  - Switch package to modern Python Stack on SLE-15
+    * Use Python 3.11 on SLE-15 by default
+    * Drop support for older Python versions
+  - Switch build system from setuptools to pyproject.toml
+    * Add python-pip and python-wheel to BuildRequires
+    * Replace %python_build with %pyproject_wheel
+    * Replace %python_install with %pyproject_install</comment>
+    <requestid>1282373</requestid>
+  </revision>
 </revisionlist>

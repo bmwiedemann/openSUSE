@@ -16,20 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 %global modname libevdev
 %define libevdev_reqver 1.6.0
 Name:           python-%{modname}
-Version:        0.11
+Version:        0.12
 Release:        0
 Summary:        Python wrapper around the libevdev C library
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://python-libevdev.readthedocs.io/
 Source0:        https://files.pythonhosted.org/packages/source/l/libevdev/libevdev-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libevdev-devel >= %{libevdev_reqver}
 BuildRequires:  python-rpm-macros
@@ -46,10 +47,10 @@ pythonic API.
 %autosetup -p1 -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +60,7 @@ cd test
 %files %{python_files}
 %license COPYING
 %doc README.md
-%{python_sitelib}/libevdev*
+%{python_sitelib}/libevdev
+%{python_sitelib}/libevdev-%{version}.dist-info
 
 %changelog
