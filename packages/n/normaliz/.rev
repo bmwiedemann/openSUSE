@@ -215,4 +215,12 @@ systems
     <comment>- Update to release 3.10.4</comment>
     <requestid>1206139</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0ef11373764b6245c9dc0bac13295ede</srcmd5>
+    <version>3.10.5</version>
+    <time>1749061825</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.10.5</comment>
+    <requestid>1282851</requestid>
+  </revision>
 </revisionlist>
