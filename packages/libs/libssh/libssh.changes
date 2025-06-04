@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 29 19:31:17 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Fix hang in torture_session test (bsc#1243799)
+  * Add patch libssh-tests-Fix-an-issue-where-torture_session-request-a-SIGTERM-too-early.patch
+
+-------------------------------------------------------------------
 Wed Apr 23 19:59:55 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Fix build and tests with OpenSSH >= 10.0

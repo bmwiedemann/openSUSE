@@ -50,6 +50,8 @@ Patch0:         libssh-cmake-Add-option-WITH_HERMETIC_USR.patch
 Patch1:         libssh-CmakeLists-Fix-multiple-digit-major-version-for-OpenSSH.patch
 # PATCH-FIX-UPSTREAM: fix OpenSSH banner parsing
 Patch2:         libssh-misc-Fix-OpenSSH-banner-parsing.patch
+# PATCH-FIX-SUSE: fix hang in torture_channel tests (bsc#1243799)
+Patch3:         libssh-tests-Fix-an-issue-where-torture_session-request-a-SIGTERM-too-early.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  krb5-devel

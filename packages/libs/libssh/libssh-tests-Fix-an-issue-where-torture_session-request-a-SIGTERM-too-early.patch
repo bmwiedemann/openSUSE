@@ -1,0 +1,46 @@
+From 886e0288a7f27d11fc0020b48c5d4be997293b04 Mon Sep 17 00:00:00 2001
+From: Lucas Mulling <lucas.mulling@suse.com>
+Date: Mon, 2 Jun 2025 11:48:58 -0300
+Subject: [PATCH] tests: Fix an issue where torture_session request a SIGTERM
+ too early
+
+Signed-off-by: Lucas Mulling <lucas.mulling@suse.com>
+---
+ tests/client/torture_session.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/tests/client/torture_session.c b/tests/client/torture_session.c
+index f95002f4..93d86995 100644
+--- a/tests/client/torture_session.c
++++ b/tests/client/torture_session.c
+@@ -447,15 +447,25 @@ static void torture_channel_exit_signal(void **state)
+     /* Make the request, read parts with close */
+     rc = ssh_channel_request_exec(channel, request);
+     assert_ssh_return_code(session, rc);
++
++    /* FIX-SUSE bsc#1243799: Wait a bit before sending the SIGTERM. In real
++     * world use chases this should not happen has there will be network delays,
++     * since we are running the tests locally, it can happen that the server has
++     * yet to spawn the child (by this setting the correct group id). Meaning
++     * when we request TERM the correct gids are not setup and killpg will not
++     * work.
++     */
++    sleep(1);
++
+     rc = ssh_channel_request_send_signal(channel, "TERM");
+     assert_ssh_return_code(session, rc);
+ 
+-    exit_status = ssh_channel_get_exit_state(channel,
++    rc = ssh_channel_get_exit_state(channel,
+                                              &exit_status,
+                                              &exit_signal,
+                                              &core_dumped);
+     assert_ssh_return_code(session, rc);
+-    assert_int_equal(exit_status, 0);
++    assert_int_equal(exit_status, (uint32_t)-1);
+     assert_string_equal(exit_signal, "TERM");
+     SAFE_FREE(exit_signal);
+ }
+-- 
+2.49.0
+
