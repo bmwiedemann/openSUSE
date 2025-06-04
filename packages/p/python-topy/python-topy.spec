@@ -1,7 +1,7 @@
 #
 # spec file for package python-topy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-topy
 Version:        1.1.0
 Release:        0
 Summary:        Tool for fixing typos in text using regular expressions
-License:        MIT AND CC-BY-SA-4.0
+License:        CC-BY-SA-4.0 AND MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/intgr/topy
 Source:         https://github.com/intgr/topy/archive/%{version}.tar.gz#/topy-%{version}.tar.gz
 BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module regex >= 2016.07.14}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-beautifulsoup4
@@ -48,10 +49,10 @@ based on RegExTypoFix from Wikipedia.
 sed -i '1 { /^#!/ d }' topy/topy.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/topy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -69,6 +70,7 @@ export LANG=en_US.UTF-8
 %doc README.rst
 %license LICENSE.txt
 %python_alternative %{_bindir}/topy
-%{python_sitelib}/*
+%{python_sitelib}/topy
+%{python_sitelib}/topy-%{version}.dist-info
 
 %changelog
