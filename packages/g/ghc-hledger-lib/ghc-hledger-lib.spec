@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.42.2
+Version:        1.43
 Release:        0
 Summary:        A library providing the core functionality of hledger
 License:        GPL-3.0-or-later
@@ -39,8 +39,6 @@ BuildRequires:  ghc-ansi-terminal-devel
 BuildRequires:  ghc-ansi-terminal-prof
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-array-prof
-BuildRequires:  ghc-base-compat-devel
-BuildRequires:  ghc-base-compat-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-blaze-html-devel
