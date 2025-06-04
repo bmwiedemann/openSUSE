@@ -1,7 +1,7 @@
 #
 # spec file for package ntfs-3g_ntfsprogs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,6 @@ Provides:       ntfsprogs-fuse = 1.13.1
 Obsoletes:      ntfsprogs-fuse < 1.13.1
 %if 0%{?suse_version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Supplements:    filesystem(ntfs-3g)
 %endif
 
@@ -132,10 +131,8 @@ export LDFLAGS="-pie"
 mv %{buildroot}/sbin/* %{buildroot}%{_sbindir}
 %endif
 rm -v %{buildroot}%{_libdir}/libntfs-3g.la
-# Alternatives for mount.ntfs (binary and manpage)
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -s -f %{_sysconfdir}/alternatives/mount.ntfs %{buildroot}%{sbindir}/mount.ntfs
-ln -s -f %{_sysconfdir}/alternatives/mount.ntfs.8%{ext_man} %{buildroot}%{_mandir}/man8/mount.ntfs.8%{?ext_man}
+ln -s -f %{sbindir}/mount.ntfs-3g %{buildroot}%{sbindir}/mount.ntfs
+ln -s -f %{_mandir}/man8/mount.ntfs-3g.8%{?ext_man} %{buildroot}%{_mandir}/man8/mount.ntfs.8%{?ext_man}
 
 %check
 TESTFS=$(mktemp) || exit 1
@@ -145,12 +142,6 @@ src/ntfs-3g.probe --readwrite $TESTFS
 rm -v $TESTFS
 
 %post -n ntfs-3g
-# If the mount.ntfs group is in automatic mode, then this will also switch all
-# symlinks automatically
-update-alternatives --install %{sbindir}/mount.ntfs mount.ntfs %{sbindir}/mount.ntfs-3g 10 \
-  --slave %{_mandir}/man8/mount.ntfs.8%{?ext_man} mount.ntfs.8%{?ext_man} %{_mandir}/man8/mount.ntfs-3g.8%{?ext_man}
-
-%postun -n ntfs-3g
 # Note: we don't use "$1 -eq 0", to avoid issues if the package gets renamed
 if [ ! -f %{sbindir}/mount.ntfs-3g ]; then
   update-alternatives --remove mount.ntfs %{sbindir}/mount.ntfs-3g
@@ -168,8 +159,6 @@ fi
 %{_bindir}/ntfsusermap
 %{_bindir}/lowntfs-3g
 %{sbindir}/mount.ntfs
-%ghost %{_sysconfdir}/alternatives/mount.ntfs
-%ghost %{_sysconfdir}/alternatives/mount.ntfs.8%{?ext_man}
 %{sbindir}/mount.ntfs-3g
 %{sbindir}/mount.lowntfs-3g
 %{_mandir}/man8/mount.lowntfs-3g.8%{?ext_man}

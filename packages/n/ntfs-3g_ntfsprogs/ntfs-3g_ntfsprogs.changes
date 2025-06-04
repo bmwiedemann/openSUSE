@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  2 21:54:55 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Migrate away from update-alternatives (bsc#1240095).
+- Upon installation of the newer packages, the old alternatives
+  are purged from the system.
+
+-------------------------------------------------------------------
 Mon Jun 10 17:13:06 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Add ntfs3g-unistr-use-after-free.patch: fix a use after free in
