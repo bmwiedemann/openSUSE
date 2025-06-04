@@ -38,4 +38,13 @@
     <comment></comment>
     <requestid>1009902</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d96f35555005186b3fa3a5f9ff00f384</srcmd5>
+    <version>3.9.1</version>
+    <time>1749061732</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1282532</requestid>
+  </revision>
 </revisionlist>

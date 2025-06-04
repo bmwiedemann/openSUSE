@@ -1,7 +1,7 @@
 #
 # spec file for package python-twython
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-twython
 Version:        3.9.1
 Release:        0
@@ -27,11 +26,13 @@ URL:            https://github.com/ryanmcgrath/twython
 Source:         https://files.pythonhosted.org/packages/source/t/twython/twython-%{version}.tar.gz
 # PyJWT 1.4.2 isnt compatible with single-spec
 BuildRequires:  %{python_module PyJWT > 1.4.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.1.0}
 BuildRequires:  %{python_module requests-oauthlib >= 0.4.0}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.1.0
@@ -63,10 +64,10 @@ Features include:
 %setup -q -n twython-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -76,6 +77,7 @@ Features include:
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/twython
+%{python_sitelib}/twython-%{version}.dist-info
 
 %changelog
