@@ -38,4 +38,12 @@
   * libzmf-old-boost.patch</comment>
     <requestid>530392</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>43216438120f7b48dee593917d57a8e5</srcmd5>
+    <version>0.0.2</version>
+    <time>1749061603</time>
+    <user>dimstar_suse</user>
+    <comment>Even more elegant solution (pushed upstream)</comment>
+    <requestid>1282237</requestid>
+  </revision>
 </revisionlist>

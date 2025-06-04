@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jun  3 09:59:45 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * 0001-automake-Conditional-installation-of-PNG-and-JS-file.patch
+    + Replaced by better solution
+- Added patch:
+  * 0001-Install-all-files-generated-by-doxygen.patch
+    + Install all doxygen-generated files regardless of their file
+      type. This makes the doxygen installation more robust and less
+      dependent on doxygen internals.
+
+-------------------------------------------------------------------
+Mon Jun  2 09:09:59 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * 0001-automake-Conditional-installation-of-PNG-and-JS-file.patch
+    + test -f cannot be used with wildcards, since they are expanded
+
+-------------------------------------------------------------------
+Wed May 28 19:37:12 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Call autoreconf because configure script uses hardcoded
+  automake-1.15
+- for compilation with Doxygen 1.14 add patch
+  0001-automake-Conditional-installation-of-PNG-and-JS-file.patch
+
+-------------------------------------------------------------------
 Mon Oct  2 10:43:46 UTC 2017 - tchvatal@suse.com
 
 - Version update to 0.0.2:

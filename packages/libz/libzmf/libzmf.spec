@@ -1,7 +1,7 @@
 #
 # spec file for package libzmf
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,11 +23,14 @@ Release:        0
 Summary:        A library for import of Zoner document formats
 License:        MPL-2.0
 Group:          Productivity/Publishing/Word
-Url:            http://wiki.documentfoundation.org/DLP/Libraries/libzmf
+URL:            http://wiki.documentfoundation.org/DLP/Libraries/libzmf
 Source:         http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
+Patch0:         0001-Install-all-files-generated-by-doxygen.patch
+BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(cppunit)
@@ -80,9 +83,10 @@ Group:          Productivity/Publishing/Word
 Tools to work with the Zoner ZMF files, based on librevenge.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+autoreconf -fi
 %configure \
     --disable-werror \
     --disable-static \
