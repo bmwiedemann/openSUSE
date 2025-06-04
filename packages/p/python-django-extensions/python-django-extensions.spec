@@ -18,16 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-extensions
-Version:        3.2.3
+Version:        4.1
 Release:        0
 Summary:        Extensions for Django
 License:        BSD-3-Clause
 URL:            https://github.com/django-extensions/django-extensions
 Source:         https://github.com/django-extensions/django-extensions/archive/%{version}.tar.gz#/django-extensions-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-# not compatible with Django 5.1 yet
-Requires:       (python-Django >= 3.2 with python-Django < 5.1)
+Requires:       python-Django >= 4.2
 Recommends:     python-Pygments
 Recommends:     python-Werkzeug
 Recommends:     python-django-json-widget
@@ -42,15 +43,16 @@ BuildArch:      noarch
 # SECTION test requirements
 # See https://github.com/django-extensions/django-extensions/issues/1617
 # for optional dependency django-pdb
-BuildRequires:  %{python_module Django >= 3.2 with %python-Django < 5.1}
+BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module Werkzeug}
+BuildRequires:  %{python_module aiosmtpd}
 BuildRequires:  %{python_module django-json-widget}
 BuildRequires:  %{python_module djangorestframework >= 3.0.0}
 BuildRequires:  %{python_module factory_boy}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydot}
 BuildRequires:  %{python_module pygraphviz}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module requests}
@@ -65,18 +67,14 @@ additions for Django projects.
 
 %prep
 %autosetup -p1 -n django-extensions-%{version}
-rm setup.cfg
-
-# Most PipCheckerTests tests fail when using network to connect to PyPI
-sed -i 's/djangorestframework==[0-9.]*/djangorestframework/g;s/pip==[0-9.]*/pip/g' tests/management/commands/test_pipchecker.py
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -84,16 +82,11 @@ export LANG=en_US.UTF-8
 export DJANGO_SETTINGS_MODULE=tests.testapp.settings
 export PYTHONPATH=${PWD}
 
-# mail_debug depends on asyncore and smtpd, which have been removed from Python 3.12
-# There is a PR upstream for this already, but it isnt well tested.
-# Remove this when https://github.com/django-extensions/django-extensions/issues/1831 is resolved.
-rm django_extensions/management/commands/mail_debug.py tests/management/commands/test_mail_debug.py
-
 skips="(PipCheckerTests and not test_pipchecker_when_requirements_file_does_not_exist)"
 # test_no_models_dot_py fails to generate a .dot file
 skips="$skips or test_no_models_dot_py"
 # missing fixtures in sdist
-skips="$skips or test_migration_is_last_applied or test_installed_apps_no_resolve_conflicts_function or test_validate_templates"
+skips="$skips or test_validate_templates"
 
 # test_should_colorize_noclasses_with_default_lexer can sometimes fail with minor html output differences
 # when pygments is updated.  Uncomment this when that occurs, and raise an issue upstream.
@@ -102,15 +95,12 @@ skips="$skips or test_migration_is_last_applied or test_installed_apps_no_resolv
 # many DumpScriptTests fail with pytest 8 https://github.com/django-extensions/django-extensions/issues/1877
 skips="$skips or DumpScriptTests"
 
-# skip failing test with latest pygments, related to https://github.com/django-extensions/django-extensions/pull/1797
-skips="$skips or test_should_highlight_python_syntax_with_name"
-
-# test_export_emails, test_set_fake_emails and test_set_fake_emails fail in setup due to missing fixtures in sdist
-%pytest -rs -v -k "not ($skips)" --ignore tests/management/commands/test_set_fake_passwords.py --ignore tests/management/commands/test_set_fake_emails.py --ignore tests/management/commands/test_export_emails.py
+%pytest -rs -v -k "not ($skips)"
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.rst docs/*.rst
-%{python_sitelib}/*django[-_]extensions*/
+%{python_sitelib}/django_extensions
+%{python_sitelib}/django_extensions-%{version}.dist-info
 
 %changelog

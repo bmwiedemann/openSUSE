@@ -223,4 +223,36 @@
     <comment>- Skip failing test with latest pygments</comment>
     <requestid>1248129</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>92dac6f14da2c25063f7cdaae1ff6811</srcmd5>
+    <version>4.1</version>
+    <time>1749061739</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1:
+  * Add: show_permissions command (#1920)
+  * Improvement: graph_models, style per app (#1848)
+  * Fix: JSONField, bulk_update's (#1924)
+  * Improvement: Support for Python 3.12 and 3.13
+  * Improvement: Support for Django 5.x
+  * Improvement: Switch from setup.{cfg,py} to pyproject.toml
+  * Improvement: graph_models, Add option to display field choices in
+    graph_models (#1854)
+  * Improvement: graph_models, Add webp support (#1857)
+  * Improvement: graph_models, Support for ordering edges on
+    pydot/dot/graphviz (#1914)
+  * Improvement: mail_debug, Update mail_debug command to use aiosmtpd (#1880)
+  * Improvement: shell_plus, Improve error message for missing import (#1898)
+  * Improvement: reset_db, Add reset_db support for django_tenants (#1855)
+  * Improvement: jobs, Handle non-package modules when looking for job
+    definitions (#1887)
+  * Improvement: Add django-prometheus DB backends support (#1800)
+  * Improvement: Call post_command when the command raises an unhandled
+    exception (#1837)
+  * Fix: sqldiff, do not consider ('serial', 'integer') nor ('bigserial',
+    'bigint') as a field-type-differ (#1867)
+  * Fix: shell_plus, Fix start up order and add history (#1869)
+  * Following Django's release numbering style more closely.
+- Switch to pyproject macros.</comment>
+    <requestid>1282463</requestid>
+  </revision>
 </revisionlist>
