@@ -1,7 +1,7 @@
 #
 # spec file for package python-mccabe
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,10 @@ URL:            https://github.com/flintwork/mccabe
 Source:         https://files.pythonhosted.org/packages/source/m/mccabe/mccabe-%{version}.tar.gz
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module hypothesmith}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -44,10 +46,10 @@ This module provides a plugin for flake8, the Python code checker.
 sed -i 's:pytest-runner::' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +58,8 @@ sed -i 's:pytest-runner::' setup.py
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/mccabe.py
+%{python_sitelib}/mccabe-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/mccabe*
 
 %changelog
