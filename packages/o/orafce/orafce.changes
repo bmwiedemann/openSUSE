@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 04 09:25:28 UTC 2025 - Emiliano Langella <emiliano.langella@suse.com>
+
+- Update to version 4.14.4+git0.6d279e3:
+  * prepare for 4.14.4
+  * Fix pg_upgrade failure after updating orafce from version 3.13 or earlier to 3.14 or later.
+  * fix white space
+  * In PostgreSQL 18, the constant HAVE_LONG_INT_64 is removed. Instead the check SIZEOF_LONG == 8 should be used. HAVE_LONG_INT_64 was used to reduce useless comparation on some 32bit systems. Instead using check SIZEOF_LONG == 8, remove this condition completely and force check for int4 overflow everytime.
+
+-------------------------------------------------------------------
 Thu Mar 20 08:42:51 UTC 2025 - emiliano.langella@suse.com
 
 - Update to version 4.14.3+git0.f2afa97:
