@@ -1,7 +1,7 @@
 #
 # spec file for package perl-AnyEvent-WebSocket-Client
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,34 +18,47 @@
 
 %define cpan_name AnyEvent-WebSocket-Client
 Name:           perl-AnyEvent-WebSocket-Client
-Version:        0.55
+Version:        0.550.0
 Release:        0
+# 0.55 -> normalize -> 0.550.0
+%define cpan_version 0.55
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        WebSocket client for AnyEvent
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(AnyEvent) >= 7.13
-BuildRequires:  perl(AnyEvent::Connector) >= 0.03
+BuildRequires:  perl(AnyEvent) >= 7.130
+BuildRequires:  perl(AnyEvent::Connector) >= 0.30
 BuildRequires:  perl(Moo) >= 2.0
-BuildRequires:  perl(PerlX::Maybe) >= 0.003
-BuildRequires:  perl(Protocol::WebSocket) >= 0.20
+BuildRequires:  perl(PerlX::Maybe) >= 0.3
+BuildRequires:  perl(Protocol::WebSocket) >= 0.200
 BuildRequires:  perl(Test2::API) >= 1.302015
 BuildRequires:  perl(Test2::Require) >= 0.000121
 BuildRequires:  perl(Test2::Require::Module) >= 0.000121
 BuildRequires:  perl(Test2::V0) >= 0.000121
-BuildRequires:  perl(URI) >= 1.53
+BuildRequires:  perl(URI) >= 1.530
 BuildRequires:  perl(URI::ws)
-Requires:       perl(AnyEvent) >= 7.13
-Requires:       perl(AnyEvent::Connector) >= 0.03
+Requires:       perl(AnyEvent) >= 7.130
+Requires:       perl(AnyEvent::Connector) >= 0.30
 Requires:       perl(Moo) >= 2.0
-Requires:       perl(PerlX::Maybe) >= 0.003
-Requires:       perl(Protocol::WebSocket) >= 0.20
-Requires:       perl(URI) >= 1.53
+Requires:       perl(PerlX::Maybe) >= 0.3
+Requires:       perl(Protocol::WebSocket) >= 0.200
+Requires:       perl(URI) >= 1.530
 Requires:       perl(URI::ws)
+Provides:       perl(AnyEvent::WebSocket::Client) = %{version}
+Provides:       perl(AnyEvent::WebSocket::Connection) = %{version}
+Provides:       perl(AnyEvent::WebSocket::Message) = %{version}
+Provides:       perl(Test2::Plugin::AnyEvent::Timeout)
+Provides:       perl(Test2::Plugin::EV)
+Provides:       perl(Test2::Require::NotWindows)
+Provides:       perl(Test2::Require::SSL)
+Provides:       perl(Test2::Tools::WebSocket::Connection)
+Provides:       perl(Test2::Tools::WebSocket::Mojo)
+Provides:       perl(Test2::Tools::WebSocket::Server)
+%undefine       __perllib_provides
 Recommends:     perl(EV)
 Recommends:     perl(IO::Socket::SSL)
 Recommends:     perl(Math::Random::Secure)
@@ -67,7 +80,7 @@ using this module. The older version of the API has since been deprecated
 and removed.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
