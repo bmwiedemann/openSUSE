@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.72.0
+Version:        2.73.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -61,7 +61,7 @@ Requires:       %{pythons}-azure-data-tables >= 12.4.0
 Requires:       %{pythons}-azure-datalake-store >= 1.0.0~a0
 Requires:       %{pythons}-azure-keyvault-administration >= 4.4.0~b2
 Requires:       %{pythons}-azure-keyvault-certificates >= 4.7.0
-Requires:       %{pythons}-azure-keyvault-keys >= 4.9.0~b3
+Requires:       %{pythons}-azure-keyvault-keys >= 4.11.0~b1
 Requires:       %{pythons}-azure-keyvault-secrets >= 4.7.0
 Requires:       %{pythons}-azure-mgmt-advisor >= 9.0.0
 Requires:       %{pythons}-azure-mgmt-apimanagement >= 4.0.0
@@ -77,7 +77,7 @@ Requires:       %{pythons}-azure-mgmt-cdn >= 12.0.0
 Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.5.0
 Requires:       %{pythons}-azure-mgmt-compute >= 34.1.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.2.0~b1
-Requires:       %{pythons}-azure-mgmt-containerregistry >= 11.0.0
+Requires:       %{pythons}-azure-mgmt-containerregistry >= 14.0.0
 Requires:       %{pythons}-azure-mgmt-containerservice >= 35.0.0
 Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.7.0
 Requires:       %{pythons}-azure-mgmt-databoxedge >= 1.0.0
@@ -99,7 +99,7 @@ Requires:       %{pythons}-azure-mgmt-managementgroups >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-maps >= 2.0.0
 Requires:       %{pythons}-azure-mgmt-marketplaceordering >= 1.1.0
 Requires:       %{pythons}-azure-mgmt-media >= 9.0
-Requires:       %{pythons}-azure-mgmt-monitor >= 5.0.0
+Requires:       %{pythons}-azure-mgmt-monitor >= 7.0.0~b1
 Requires:       %{pythons}-azure-mgmt-msi >= 7.0.0
 Requires:       %{pythons}-azure-mgmt-mysqlflexibleservers >= 1.0.0~b3
 Requires:       %{pythons}-azure-mgmt-netapp >= 10.1.0
@@ -112,7 +112,7 @@ Requires:       %{pythons}-azure-mgmt-recoveryservicesbackup >= 9.1.0
 Requires:       %{pythons}-azure-mgmt-redhatopenshift >= 1.5.0
 Requires:       %{pythons}-azure-mgmt-redis >= 14.5.0
 Requires:       %{pythons}-azure-mgmt-reservations >= 2.0.0
-Requires:       %{pythons}-azure-mgmt-resource >= 23.1.1
+Requires:       %{pythons}-azure-mgmt-resource >= 23.3.0
 Requires:       %{pythons}-azure-mgmt-search >= 9.0
 Requires:       %{pythons}-azure-mgmt-security >= 6.0.0
 Requires:       %{pythons}-azure-mgmt-servicebus >= 8.2.0
