@@ -23,4 +23,12 @@
     <comment>- Disable python2 build</comment>
     <requestid>796429</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>aa3b04bd949e3aa90ce4224a1d6106c7</srcmd5>
+    <version>1.7</version>
+    <time>1749061736</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282594</requestid>
+  </revision>
 </revisionlist>

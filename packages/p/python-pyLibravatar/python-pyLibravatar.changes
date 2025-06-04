@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  4 07:58:47 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Thu Apr 23 07:27:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable python2 build
