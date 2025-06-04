@@ -35,4 +35,12 @@
     <comment></comment>
     <requestid>1089826</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>e4b23bfe03d05c7a36058a0b3cda4eba</srcmd5>
+    <version>0.9.1</version>
+    <time>1749061733</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282534</requestid>
+  </revision>
 </revisionlist>
