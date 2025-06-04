@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 31 18:42:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.4.1:
+  * [BUGFIX] Parser: Add reproducer for a dangling-reference issue in
+    parsers. #16633
+
+-------------------------------------------------------------------
 Sat May 17 09:20:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.4.0:
