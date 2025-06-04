@@ -1,7 +1,7 @@
 #
 # spec file for package xapp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         sover   1
 %define         typelib typelib-1_0-XApp-1_0
 Name:           xapp
-Version:        2.8.5
+Version:        2.8.9
 Release:        0
 Summary:        Library files for the Xapp ecosystem
 License:        GPL-3.0-or-later
