@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pydenticon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
-
+%define         modname pydenticon
 # tests on big endian systems fail due to https://github.com/azaghal/pydenticon/issues/10 , disabled until fixed"
 # can not use "ifarch" when BuildArch is set to noarch
-%if "%_arch" == "s390x" || "%_arch" == "s390x" || "%_arch" == "ppc" || "%_arch" == "ppc64"
+%if "%{_arch}" == "s390x" || "%{_arch}" == "s390x" || "%{_arch}" == "ppc" || "%{_arch}" == "ppc64"
 %bcond_with test
 %else
 %bcond_without test
 %endif
-%define         modname pydenticon
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
 Version:        0.3.1
@@ -33,19 +32,19 @@ Summary:        Library for generating identicons
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/azaghal/%{modname}
-Source:         https://pypi.io/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pydenticon/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-Pillow
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
-Requires:       python-Pillow
-
 %python_subpackages
 
 %description
@@ -67,10 +66,10 @@ original Sigil implementation, like:
 %setup -q -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/%{modname}
 
 %check
@@ -81,9 +80,9 @@ sed -i 's:^import mock:from unittest import mock:' tests/test_pydenticon.py
 %endif
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pydenticon
+%{python_sitelib}/pydenticon-%{version}*-info
 
 %changelog
