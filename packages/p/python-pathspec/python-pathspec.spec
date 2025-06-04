@@ -1,7 +1,7 @@
 #
 # spec file for package python-pathspec
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,10 @@ License:        MPL-2.0
 URL:            https://github.com/cpburnz/python-path-specification
 Source:         https://files.pythonhosted.org/packages/source/p/pathspec/pathspec-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,10 +44,10 @@ files.
 %setup -q -n pathspec-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,6 +56,7 @@ files.
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pathspec
+%{python_sitelib}/pathspec-%{version}*-info
 
 %changelog
