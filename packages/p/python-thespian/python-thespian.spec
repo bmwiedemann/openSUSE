@@ -1,7 +1,7 @@
 #
 # spec file for package python-thespian
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-thespian
 Version:        3.10.7
 Release:        0
 Summary:        Python Actor concurrency library
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://thespianpy.com
 Source0:        https://files.pythonhosted.org/packages/source/t/thespian/thespian-%{version}.zip
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setproctitle}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -61,10 +61,10 @@ added and removed from the environment dynamically.
 sed -i -e '1{\@^#!%{_bindir}/.*python@d}' thespian/{director,shell}.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand mv %{buildroot}%{$python_sitelib}/{contrib,thespian}
 %fdupes %{buildroot}%{$python_sitelib}
 }
@@ -75,6 +75,7 @@ sed -i -e '1{\@^#!%{_bindir}/.*python@d}' thespian/{director,shell}.py
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst doc/*.org
-%{python_sitelib}/thespian*
+%{python_sitelib}/thespian
+%{python_sitelib}/thespian-%{version}.dist-info
 
 %changelog

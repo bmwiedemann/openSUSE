@@ -42,4 +42,12 @@
 - version update to 3.10.6</comment>
     <requestid>1132082</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>dce48e8a80fbba1e277307756c13d38e</srcmd5>
+    <version>3.10.7</version>
+    <time>1749061710</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282512</requestid>
+  </revision>
 </revisionlist>
