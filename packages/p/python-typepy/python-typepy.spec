@@ -22,10 +22,12 @@ Version:        1.3.4
 Release:        0
 Summary:        Python library for run time variable type checker
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/thombashi/typepy
 Source:         https://files.pythonhosted.org/packages/source/t/typepy/typepy-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools >= 38.3.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 64}
+BuildRequires:  %{python_module setuptools_scm >= 8}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module mbstrdecoder >= 1.0.0}
@@ -49,16 +51,15 @@ typepy is a Python library for variable type checker/validator/converter at run 
 
 %prep
 %setup -q -n typepy-%{version}
-echo > requirements/test_requirements.txt
 
 # Remove build alias
 sed -i '/build =/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -67,6 +68,7 @@ sed -i '/build =/d' setup.cfg
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/typepy*
+%{python_sitelib}/typepy
+%{python_sitelib}/typepy-%{version}.dist-info
 
 %changelog
