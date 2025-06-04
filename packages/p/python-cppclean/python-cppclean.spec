@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-cppclean
 Version:        0.13
 Release:        0
@@ -27,11 +28,11 @@ Source:         https://github.com/myint/cppclean/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  bash
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): alts
-Requires(postun): alts
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,11 +57,9 @@ considerable extra compiles increasing the edit-compile-run cycle.
 %check
 %python_expand PYTHON=%{__$python} bash test.bash
 
-%post
-%python_install_alternative cppclean
-
-%postun
-%python_uninstall_alternative cppclean
+%pre
+# Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative cppclean
 
 %files %{python_files}
 %license COPYING
