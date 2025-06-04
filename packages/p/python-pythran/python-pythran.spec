@@ -1,7 +1,7 @@
 #
 # spec file for package python-pythran
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,6 @@
 %else
 %define psuffix -%{flavor}
 %bcond_without test
-%if "%{flavor}" != "test-py310"
-%define skip_python310 1
-%endif
 %if "%{flavor}" != "test-py311"
 %define skip_python311 1
 %endif
@@ -47,7 +44,7 @@ ExclusiveArch:  x86_64
 %endif
 
 Name:           python-pythran%{psuffix}
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        Ahead of Time compiler for numeric kernels
 License:        BSD-3-Clause
@@ -134,8 +131,10 @@ libs=openblas
 EOF
 export PYTHRANRC=$PWD/config.pythranrc
 %endif
+# gh#serge-sans-paille/pythran#2317 -- changed AST in Py3.13
+python313_skip_tests=("-k" "not test_tutorial")
 # pytest_extra_args is for debug builds with local defines on command line
-%pytest %{?jobs:-n %jobs} %{?pytest_extra_args}
+%pytest %{?jobs:-n %jobs} %{?pytest_extra_args} "${$python_skip_tests[@]}"
 %endif
 
 %if !%{with test}

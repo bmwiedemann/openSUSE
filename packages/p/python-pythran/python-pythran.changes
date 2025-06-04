@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu May 29 19:47:43 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.18.0 - balafenn
+  * no upstream changelog.
+  ## git commits (a few non-relevant filtered)
+  * Fix uninitialized iexpr assignment
+  * Fix folding of comparison operators
+  * Take augassign into account when removing nested functions
+  * Fix local processing in presence of else: clause in for loop
+  * Fix detection of c++ compiler
+  * Traverse augassign when computing scopes
+  * Reproducible ContainerOf iteration
+  * Fix overload handling for NoneType
+  * Fix type inference in presence of augassign
+  * Improve forward substitution in presence of augassign
+  * Remove dead code in tests
+  * Faster (and common!) implementation of make_integer_sequence
+  * Only register a node in name_to_nodes if the combiner was
+    succesful
+  * Reproducible aliasing ordering
+  * Reproducible nested functions removal
+  * Reproducible topological order
+  * Verify reproducibility of c++ output
+  * Reproducible (because sortable) alias order
+  * Stateless PType
+  * Reproducible local declaration order
+  * Reproducible identifiers generation
+  * Reproducible include order
+  * More flexible implementation of default list
+  * Fix typing issue under complex slice combination
+  * Add support for nonlocal keyword
+  * Fix bug in nested function remover
+  * Cope with numpy.bool deprecation
+  * Be more informative about UnboundIdentifierError
+  * Optimize generation of cxx types
+  * Use inheritance instead of member type for __combined
+    specialization
+  * Remove redundant extra combiner for Assigned Subscript
+  * Improve nested functions support
+  * Harden error reporting: Do not trap when no lineno is available
+  * Handle folding of static_if
+  * Fix constness of std::get on an array_base r-value
+  * Make none_type hashable
+  * Get rid of clang workaround for containers of one element
+  * Simplify backend type cache & fix handling of LTypes
+  * Fix constness of dict's bool operator
+  * Specialize dict for None Key
+  * Drop support for builtins.None in favor of None
+  * Add handling of numpy.bool in tog
+  * replace quansight-labs/setup-python with actions/setup-python
+  * [ci] Dump more info when compiling system dep
+  * [test] Fix sign comparison code
+  * [ci] Test unvendoring of xsimd and boost
+  * Disable inlining in while test
+  * Python 3.13 compat: detect removed find_exe
+  * Fix test portability issue for ipython magic
+  * Adjust --cflags-pythran-only implementation
+  * ENH: improvements to pythran-config for build system
+    integration
+  * Have FastGExpr load its dependency in a lazy manner
+  * Move GIL manipulation right after module creation
+  * Better modeling of analyse and transformations
+  * Fix pythran support for numpy.float128
+  * Defer initialisation of global variables until the module is
+    actually created
+  * Fix interaction between static if and nested loop / function
+  * Allow tuple with combinable items as array initializer
+  * Have pythran generate freethreading compatible code
+  * Remove legacy logic that handled py2/py3 compatibility
+  * Remove any usage of __PYTHRAN__ macro
+  * Make sure blas function argument actually have an associated
+    buffer
+  * Provide user hint when trying to use c-style type names in
+    pythran spec
+  * [typing] Support union type in annotation
+  * Restore type qualifiers dropped by
+    b8cd84b5a5ab5222d65781a0194916ad555bf70c
+  * Add basic support for type annotation
+  * [constant folding] Correctly model restrict_assign in constant
+    folding
+- Update test flavors
+
+-------------------------------------------------------------------
 Mon Nov 18 18:01:06 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.17.0
