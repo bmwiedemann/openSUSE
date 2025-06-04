@@ -22,8 +22,7 @@
 %if %{with use_poetry_for_dependencies}
 %global Twisted_version               24.7.0
 %global Jinja2_version                3.1.5
-# TODO: 11.2.1
-%global Pillow_version                11.1.0
+%global Pillow_version                11.2.1
 %global PyYAML_version                6.0.2
 %global attrs_version                 23.2.0
 %global bcrypt_version                4.2.0
@@ -57,7 +56,8 @@
 %global packaging_version             24.0
 %global psycopg2_version              2.9.9
 %global pysaml2_version               7.5.0
-%global Authlib_version               1.5.1
+%global Authlib_version               1.5.2
+# TODO: 5.4.0
 %global lxml_version                  5.3.0
 %global sentry_sdk_version            2.20.0
 %global PyJWT_version                 2.6.0
@@ -158,7 +158,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.130.0
+Version:        1.131.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
