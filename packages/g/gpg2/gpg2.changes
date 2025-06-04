@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun  2 22:56:06 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 2.5.7:
+  * gpg: Allow updating a SHA-1 key certification w/o using
+    the --force-sign-key option.  [T7663]
+  * gpg: The group key flag has now been fully implemented.
+    [rG8833a34bf0]
+  * gpg: Make combination of show-only-fpr-mbox and show-unusable-uid
+    work.  [rGd5a4a2dc89]
+  * gpg: Do not allow compressed key packets on import.  [T7014]
+  * gpgsm: Allow an empty subject DN also during import.  [T7171]
+  * agent: Recover the old behavior with max-cache-ttl=0.  [T6681]
+  * agent: Fix ECC key on smartcard for composite KEM with PQC.
+    [T7648]
+  * scd: Fix a harmless read buffer over-read in a function used by
+    PKCS#15 cards.  [T7662]
+  * gpg-mail-tube,wks: Support templates for mail content.  [T7381]
+  * Use the KEM interface of Libgcrypt for encryption/decryption.
+    [T7649]
+- Remove patches:
+  * gnupg-agent-Recover-the-old-behavior-with-max-cache-ttl-0.patch
+  * gnupg-dirmngr-Don-t-install-expired-sks-certificate.patch
+- Update gpg2.keyring
+
+-------------------------------------------------------------------
 Tue May 13 19:47:52 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Don't install expired sks certificate [bsc#1243069]

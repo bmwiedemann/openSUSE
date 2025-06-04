@@ -18,7 +18,7 @@
 
 
 Name:           gpg2
-Version:        2.5.6
+Version:        2.5.7
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
@@ -47,10 +47,6 @@ Patch11:        gnupg-allow-large-rsa.patch
 Patch12:        gnupg-revert-rfc4880bis.patch
 #PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
 Patch13:        gnupg-nobetasuffix.patch
-#PATCH-FIX-UPSTREAM Recover the old behavior with max-cache-ttl=0 [bsc#1241656]
-Patch14:        gnupg-agent-Recover-the-old-behavior-with-max-cache-ttl-0.patch
-#PATCH-FIX-SUSE Don't install expired sks cert [bsc#1243069]
-Patch15:        gnupg-dirmngr-Don-t-install-expired-sks-certificate.patch
 
 BuildRequires:  expect
 BuildRequires:  fdupes
