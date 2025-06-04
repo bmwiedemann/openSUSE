@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun  4 13:08:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.4.32:
+  * rename binary to protonplus
+  * Translations updates
+  * data/meson.build: modify AppData validation
+  * README.md: update Fedora dependencies
+- add rudimentary tests
+- switch to download_files service
+
+-------------------------------------------------------------------
 Mon May 26 12:39:35 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.4.31:
