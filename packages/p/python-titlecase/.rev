@@ -68,4 +68,12 @@
   * Fix MAC/emcee/MacHine casing; add test cases</comment>
     <requestid>1120008</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d8d2f189ee3cdf87c80007526e821a9e</srcmd5>
+    <version>2.4.1</version>
+    <time>1749061717</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282518</requestid>
+  </revision>
 </revisionlist>
