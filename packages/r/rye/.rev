@@ -38,4 +38,24 @@
   * Upgrade bundled uv version to v0.5.7 by @github-actions in #1424</comment>
     <requestid>1277153</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>24f2071b56833227fb1943c7a011544c</srcmd5>
+    <version>0.44.0</version>
+    <time>1749148499</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.44.0:
+  * Attempt to build against Rust 1.84 (#1464)
+  * Upgrade to `actions/upload-artifact@v4` (#1463)
+  * Prep for v0.44.0 release (#1462)
+  * Sync UV Releases (#1461)
+  * Sync Python Releases (#1450)
+  * Update bundled uv version to v0.6.2 (#1445)
+  * Set Rust toolchain in `rust-toolchain.toml` (#1460)
+  * Bump bundled Ruff version to 0.9.6 (#1457)
+  * Fix lint errors from Rust 1.85 (#1459)
+  * fix linter errors (unnecessary_map_or) (#1458)
+  * Upgrade runners to `macos-14` (#1443)
+</comment>
+    <requestid>1283022</requestid>
+  </revision>
 </revisionlist>

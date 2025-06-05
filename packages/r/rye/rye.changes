@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 05 07:17:07 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.44.0:
+  * Attempt to build against Rust 1.84 (#1464)
+  * Upgrade to `actions/upload-artifact@v4` (#1463)
+  * Prep for v0.44.0 release (#1462)
+  * Sync UV Releases (#1461)
+  * Sync Python Releases (#1450)
+  * Update bundled uv version to v0.6.2 (#1445)
+  * Set Rust toolchain in `rust-toolchain.toml` (#1460)
+  * Bump bundled Ruff version to 0.9.6 (#1457)
+  * Fix lint errors from Rust 1.85 (#1459)
+  * fix linter errors (unnecessary_map_or) (#1458)
+  * Upgrade runners to `macos-14` (#1443)
+
+-------------------------------------------------------------------
 Tue May 13 12:50:50 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 0.43.0 (bsc#1243086):

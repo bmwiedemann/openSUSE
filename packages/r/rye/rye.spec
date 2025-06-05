@@ -17,12 +17,12 @@
 
 
 Name:           rye
-Version:        0.43.0
+Version:        0.44.0
 Release:        0
 Summary:        Hassle-free Python project manager in Rust
 License:        MIT
 URL:            https://github.com/astral-sh/rye
-Source0:        https://github.com/astral-sh/rye/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        https://github.com/spdx/license-list-data/archive/refs/tags/v3.25.0.tar.gz#/licenses.tar.gz
 BuildRequires:  cargo >= 1.77

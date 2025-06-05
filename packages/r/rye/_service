@@ -1,8 +1,12 @@
 <?xml version="1.0"?>
 <services>
-  <service mode="manual" name="download_files" />
+  <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
-     <param name="src">rye*.tar.gz</param>
+     <param name="src">https://github.com/astral-sh/rye</param>
+     <param name="revision">0.44.0</param>
+     <param name="changesgenerate">true</param>
+     <param name="changesauthor">Soc Virnyl Estela</param>
+     <param name="changesemail">uncomfyhalomacro@opensuse.org</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
   </service>
