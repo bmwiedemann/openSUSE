@@ -10,7 +10,7 @@
 
   <property name="project.artifactId" value="plexus-interpolation"/>
   <property name="project.groupId" value="org.codehaus.plexus"/>
-  <property name="project.version" value="1.27.0"/>
+  <property name="project.version" value="1.28"/>
 
   <property name="compiler.release" value="8"/>
   <property name="compiler.source" value="1.${compiler.release}"/>

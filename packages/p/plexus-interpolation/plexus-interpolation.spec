@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-interpolation
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           plexus-interpolation
-Version:        1.27.0
+Version:        1.28
 Release:        0
 Summary:        Plexus Interpolation API
 License:        Apache-1.1 AND Apache-2.0 AND MIT

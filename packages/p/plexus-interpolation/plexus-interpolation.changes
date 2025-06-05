@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun  4 14:59:17 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.28
+  * New features and improvements
+    + Fix #16: StringSearchInterpolator does not cache answers.
+    + Add FeedbackingValueSource
+    + Pass delimiter information to ValueSource
+    + Apply spotless re-formatting
+
+-------------------------------------------------------------------
 Wed Oct  2 15:58:55 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Spec file cleanup
