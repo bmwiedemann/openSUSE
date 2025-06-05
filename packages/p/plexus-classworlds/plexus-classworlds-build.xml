@@ -10,7 +10,7 @@
   
   <property name="project.groupId" value="org.codehaus.plexus"/>
   <property name="project.artifactId" value="plexus-classworlds"/>
-  <property name="project.version" value="2.8.0"/>
+  <property name="project.version" value="2.9.0"/>
   <property name="project.name" value="Plexus Classworlds"/>
   <property name="project.description" value="A class loader framework"/>
   <property name="project.organization.name" value="Codehaus Plexus"/>
