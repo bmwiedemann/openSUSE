@@ -1,7 +1,7 @@
 #
 # spec file for package uucp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,6 +54,8 @@ Patch16:        spelling.patch
 Patch17:        wait-for-correct-parent.patch
 Patch18:        pipe-command-hostname-not-null.patch
 Patch19:        uucp-fix-gcc14.patch
+# build with gcc15
+Patch20:        uucp-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  makeinfo
@@ -75,8 +77,8 @@ Requires(pre):  shadow
 Requires(post): %{install_info_prereq}
 Requires(post): fileutils
 Requires(post): permissions
-Requires(preun):%{install_info_prereq}
-Requires(verify):permissions
+Requires(preun): %{install_info_prereq}
+Requires(verify): permissions
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 
@@ -130,6 +132,7 @@ service units.
 %patch -P 17 -p0 -b .p17
 %patch -P 18 -p0 -b .p18
 %patch -P 19 -p1 -b .p19
+%patch -P 20 -p1
 
 %build
 autoreconf -fvi

@@ -1,0 +1,189 @@
+--- uucp-1.07.orig/uuconf/cmdarg.c	2003-05-29 06:08:49.000000000 +0000
++++ uucp-1.07/uuconf/cmdarg.c	2025-06-05 09:20:37.455602091 +0000
+@@ -34,7 +34,7 @@ const char _uuconf_cmdarg_rcsid[] = "$Id
+ #if HAVE_STRCASECMP
+ #undef strcasecmp
+ #endif
+-extern int strcmp (), strcasecmp ();
++extern int strcmp (const char *, const char *), strcasecmp (const char *, const char *);
+ 
+ /* Look up a command with arguments in a table and execute it.  */
+ 
+--- uucp-1.07.orig/unix/init.c	2025-06-05 09:19:33.620355712 +0000
++++ uucp-1.07/unix/init.c	2025-06-05 09:20:37.464187331 +0000
+@@ -98,7 +98,7 @@ extern struct passwd *getpwuid ();
+ #endif
+ #if HAVE_GETCWD
+ #ifndef getcwd
+-extern char *getcwd ();
++extern char *getcwd (char *buf, size_t size);
+ #endif
+ #endif
+ #if HAVE_GETWD
+@@ -108,7 +108,7 @@ extern char *getwd ();
+ #endif
+ #if HAVE_SYSCONF
+ #ifndef sysconf
+-extern long sysconf ();
++extern long sysconf (int name);
+ #endif
+ #endif
+ 
+--- uucp-1.07.orig/unix/opensr.c	2003-05-29 06:08:49.000000000 +0000
++++ uucp-1.07/unix/opensr.c	2025-06-05 09:20:37.464699017 +0000
+@@ -58,7 +58,7 @@
+ #endif
+ 
+ #ifndef time
+-extern time_t time ();
++extern time_t time (time_t *tloc);
+ #endif
+ 
+ /* Open a file to send to another system, and return the mode and
+--- uucp-1.07.orig/unix/filnam.c	2003-05-29 06:08:49.000000000 +0000
++++ uucp-1.07/unix/filnam.c	2025-06-05 09:20:37.464075172 +0000
+@@ -74,7 +74,7 @@
+ 
+ /* External functions.  */
+ #ifndef lseek
+-extern off_t lseek ();
++extern off_t lseek (int fd, off_t offset, int whence);
+ #endif
+ 
+ #define ZCHARS \
+--- uucp-1.07.orig/unix/portnm.c	2025-06-05 09:19:33.606934752 +0000
++++ uucp-1.07/unix/portnm.c	2025-06-05 09:20:37.464863016 +0000
+@@ -14,7 +14,7 @@
+ #endif
+ 
+ #ifndef ttyname
+-extern char *ttyname ();
++extern char *ttyname (int fd);
+ #endif
+ 
+ /* Get the port name of standard input.  I assume that Unix systems
+--- uucp-1.07.orig/unix/proctm.c	2003-05-29 06:08:49.000000000 +0000
++++ uucp-1.07/unix/proctm.c	2025-06-05 09:20:37.464928220 +0000
+@@ -99,11 +99,11 @@ extern long times ();
+ #endif /* HAVE_TIMES */
+ 
+ #ifndef time
+-extern time_t time ();
++extern time_t time (time_t *tloc);
+ #endif
+ #if HAVE_SYSCONF
+ #ifndef sysconf
+-extern long sysconf ();
++extern long sysconf (int name);
+ #endif
+ #endif
+ 
+--- uucp-1.07.orig/unix/time.c	2003-05-29 06:08:49.000000000 +0000
++++ uucp-1.07/unix/time.c	2025-06-05 09:20:37.465775333 +0000
+@@ -10,7 +10,7 @@
+ #include "system.h"
+ 
+ #ifndef time
+-extern time_t time ();
++extern time_t time (time_t *tloc);
+ #endif
+ 
+ /* Get the time in seconds since the epoch, with optional
+--- uucp-1.07.orig/unix/fsusg.c	2025-06-05 09:19:33.618069916 +0000
++++ uucp-1.07/unix/fsusg.c	2025-06-05 09:20:37.464114039 +0000
+@@ -23,8 +23,6 @@
+ #include "sysdep.h"
+ #include "fsusg.h"
+ 
+-int statfs ();
+-
+ #if HAVE_SYS_PARAM_H
+ #include <sys/param.h>
+ #endif
+@@ -47,6 +45,7 @@ int statfs ();
+ 
+ #if HAVE_SYS_STATFS_H
+ #include <sys/statfs.h>
++extern int statfs (const char *, struct statfs *);
+ #endif
+ 
+ #if HAVE_SYS_DUSTAT_H		/* AIX PS/2.  */
+@@ -55,7 +54,7 @@ int statfs ();
+ 
+ #if HAVE_SYS_STATVFS_H		/* SVR4.  */
+ #include <sys/statvfs.h>
+-int statvfs ();
++int statvfs (const char * restrict,  struct statvfs * restrict);
+ #endif
+ 
+ #if HAVE_USTAT_H		/* SVR2 and others.  */
+--- uucp-1.07.orig/unix/wldcrd.c	2003-05-29 06:08:49.000000000 +0000
++++ uucp-1.07/unix/wldcrd.c	2025-06-05 09:20:37.466191134 +0000
+@@ -64,7 +64,7 @@ fsysdep_wildcard_start (zfile)
+     ulog (LOG_FATAL, "fsysdep_wildcard: %s: Can't happen", zfile);
+ #endif
+ 
+-  if (glob (zfile, 0, (int (*) ()) NULL, &sSglob) != 0)
++  if (glob (zfile, 0, (int (*) (const char *, int)) NULL, &sSglob) != 0)
+     sSglob.gl_pathc = 0;
+   iSglob = 0;
+   return TRUE;
+--- uucp-1.07.orig/unix/loctim.c	2003-05-29 06:08:49.000000000 +0000
++++ uucp-1.07/unix/loctim.c	2025-06-05 09:20:37.464487091 +0000
+@@ -12,7 +12,7 @@
+ #include "system.h"
+ 
+ #ifndef localtime
+-extern struct tm *localtime ();
++extern struct tm *localtime (const time_t *timep);
+ #endif
+ 
+ void
+--- uucp-1.07.orig/unix/lock.c	2025-06-05 09:19:33.606808042 +0000
++++ uucp-1.07/unix/lock.c	2025-06-05 09:20:37.464517448 +0000
+@@ -71,7 +71,7 @@ const char lock_rcsid[] = "$Id: lock.c,v
+ #endif
+ 
+ #ifndef localtime
+-extern struct tm *localtime ();
++extern struct tm *localtime (const time_t *timep);
+ #endif
+ 
+ #if HAVE_QNX_LOCKFILES
+--- uucp-1.07.orig/unix/trunc.c	2003-05-29 06:08:49.000000000 +0000
++++ uucp-1.07/unix/trunc.c	2025-06-05 09:20:37.465887449 +0000
+@@ -27,7 +27,7 @@
+ 
+ /* External functions.  */
+ #ifndef lseek
+-extern off_t lseek ();
++extern off_t lseek (int fd, off_t offset, int whence);
+ #endif
+ 
+ /* Truncate a file to zero length.  If this fails, it closes and
+--- uucp-1.07.orig/unix/mail.c	2003-05-29 06:08:49.000000000 +0000
++++ uucp-1.07/unix/mail.c	2025-06-05 09:20:37.464557221 +0000
+@@ -35,7 +35,7 @@
+ #endif
+ 
+ #ifndef ctime
+-extern char *ctime ();
++extern char *ctime (const time_t *timep);
+ #endif
+ 
+ /* Mail a message to a user.  */
+--- uucp-1.07.orig/time.c	2003-05-29 06:08:46.000000000 +0000
++++ uucp-1.07/time.c	2025-06-05 09:20:37.477128853 +0000
+@@ -41,10 +41,10 @@ const char time_rcsid[] = "$Id: time.c,v
+ 
+ /* External functions.  */
+ #ifndef time
+-extern time_t time ();
++extern time_t time (time_t *tloc);
+ #endif
+ #ifndef localtime
+-extern struct tm *localtime ();
++extern struct tm *localtime (const time_t *timer);
+ #endif
+ 
+ /* See if the current time matches a time span.  If it does, return

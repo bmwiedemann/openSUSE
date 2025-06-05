@@ -83,4 +83,14 @@
     <comment>- uucp-fix-gcc14.patch: fix build with gcc14 (forwarded request 1189597 from msmeissn)</comment>
     <requestid>1189601</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>b120c986b1c489a2826e33f460a71c09</srcmd5>
+    <version>1.07</version>
+    <time>1749148533</time>
+    <user>anag_factory</user>
+    <comment>- added patches
+  build with gcc15
+  + uucp-gcc15.patch (forwarded request 1283031 from pgajdos)</comment>
+    <requestid>1283334</requestid>
+  </revision>
 </revisionlist>
