@@ -416,4 +416,12 @@
   crashes.</comment>
     <requestid>1273986</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>a646591d7e3e549ab15712721324c28a</srcmd5>
+    <version>6.9.1</version>
+    <time>1749148322</time>
+    <user>anag_factory</user>
+    <comment>Qt 6.9.1 (forwarded request 1282452 from krop)</comment>
+    <requestid>1282557</requestid>
+  </revision>
 </revisionlist>
