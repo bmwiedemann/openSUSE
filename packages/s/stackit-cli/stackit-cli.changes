@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Jun 04 18:39:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.33.1 (0.33.0 was not released):
+  * feat(ci): add check for goreleaser configuration (#766)
+  * chore(deps): bump github.com/lmittmann/tint from 1.1.0 to 1.1.1
+    (#769)
+  * chore(deps): bump github.com/goccy/go-yaml from 1.17.1 to
+    1.18.0 (#771)
+  * fix(deps): update module github.com/goccy/go-yaml to v1.18.0
+    (#772)
+  * chore(deps): bump renovatebot/github-action from 42.0.3 to
+    42.0.4 (#767)
+  * chore(deps): update renovatebot/github-action action to v42.0.4
+    (#768)
+  * chore(deps): bump github.com/stackitcloud/stackit-sdk-go/core
+    (#765)
+  * fix(deps): update stackit sdk modules (#761)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/logme (#762)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serviceaccount
+    (#763)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/secretsmanager
+    (#764)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/dns (#760)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/redis (#759)
+  * fix(deps): update stackit sdk modules (#750)
+  * chore(deps): update renovatebot/github-action action to v42.0.3
+    (#757)
+  * fix(deps): update module github.com/lmittmann/tint to v1.1.0
+    (#758)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mariadb (#753)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/rabbitmq (#754)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mongodbflex
+    (#755)
+  * fix(deps): update module
+    github.com/stackitcloud/stackit-sdk-go/services/ske to v0.22.4
+    (#746)
+  * fix(postgresql): Display correct error message when project id
+    is not set (#745)
+
+-------------------------------------------------------------------
 Tue May 13 12:29:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.32.0:
