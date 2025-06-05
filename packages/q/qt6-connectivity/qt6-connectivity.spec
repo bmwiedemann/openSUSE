@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.0
+%define real_version 6.9.1
 %define short_version 6.9
 %define tar_name qtconnectivity-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\((HeartRateGame|NdefEditor.*)\\)
 #
 Name:           qt6-connectivity%{?pkg_suffix}
-Version:        6.9.0
+Version:        6.9.1
 Release:        0
 Summary:        Qt 6 connectivity tools and libraries
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
