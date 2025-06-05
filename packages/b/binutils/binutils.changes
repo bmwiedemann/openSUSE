@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  3 09:07:07 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Drop aarch64-common-pagesize.patch, aarch64 no longer uses 64K page size
+
+-------------------------------------------------------------------
 Tue May  6 14:33:48 UTC 2025 - Michael Matz <matz@suse.com>
 
 - Add -std=gnu17 to move gcc15 forward, as temporary measure until

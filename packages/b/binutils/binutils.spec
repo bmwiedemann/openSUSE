@@ -143,7 +143,6 @@ Patch12:        s390-pic-dso.diff
 Patch14:        binutils-build-as-needed.diff
 Patch15:        binutils-znow.patch
 Patch22:        binutils-bfd_h.patch
-Patch34:        aarch64-common-pagesize.patch
 Patch37:        binutils-revert-plt32-in-branches.diff
 Patch38:        binutils-fix-invalid-op-errata.diff
 Patch39:        binutils-revert-nm-symversion.diff
@@ -268,7 +267,6 @@ cp ld/ldgram.y ld/ldgram.y.orig
 %patch -P 14
 %patch -P 15
 %patch -P 22
-%patch -P 34 -p1
 %if %{suse_version} < 1550
 %patch -P 37 -p1
 %endif
