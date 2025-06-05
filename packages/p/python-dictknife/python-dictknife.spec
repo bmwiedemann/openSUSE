@@ -1,7 +1,7 @@
 #
 # spec file for package python-dictknife
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,12 @@ BuildRequires:  %{python_module google-api-python-client}
 BuildRequires:  %{python_module google-auth-oauthlib}
 BuildRequires:  %{python_module jsonpatch}
 BuildRequires:  %{python_module magicalimport}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module prestring}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -57,10 +59,10 @@ JSON pointer syntax.
 %autosetup -p1 -n dictknife-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/dictknife
 %python_clone -a %{buildroot}%{_bindir}/jsonknife
 %python_clone -a %{buildroot}%{_bindir}/swaggerknife

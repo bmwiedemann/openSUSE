@@ -56,4 +56,12 @@
     yaml library is not installed</comment>
     <requestid>1158959</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>44e33850755e2bb9f6f735651eb1126f</srcmd5>
+    <version>0.14.1</version>
+    <time>1749148479</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282970</requestid>
+  </revision>
 </revisionlist>
