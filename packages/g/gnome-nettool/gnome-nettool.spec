@@ -17,18 +17,19 @@
 
 
 Name:           gnome-nettool
-Version:        42.0
+Version:        42.0+24
 Release:        0
 Summary:        GNOME Interface for Various Networking Tools
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            http://www.gnome.org
-Source:         https://download.gnome.org/sources/gnome-nettool/42/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 # PATCH-FIX-UPSTREAM gnome-nettool-bnc866643-predictable-name.patch bnc#866643 glin@suse.com -- Detect the predictable network device name
 Patch1:         gnome-nettool-bnc866643-predictable-name.patch
+
 BuildRequires:  fdupes
-BuildRequires:  gnome-common
 BuildRequires:  intltool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
@@ -55,14 +56,12 @@ tools, like ping, netstat, ifconfig, whois, traceroute, and finger.
 %autosetup -p1
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-	--disable-scrollkeeper \
+%meson \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
@@ -76,7 +75,7 @@ NOCONFIGURE=1 ./autogen.sh
 %{_datadir}/gnome-nettool/
 %{_datadir}/icons/hicolor/*/apps/gnome-nettool.png
 %{_datadir}/icons/hicolor/scalable/apps/gnome-nettool*.svg
-%{_datadir}/appdata/gnome-nettool.appdata.xml
+%{_datadir}/metainfo/gnome-nettool.appdata.xml
 
 %files lang -f %{name}.lang
 

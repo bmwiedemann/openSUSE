@@ -404,4 +404,20 @@
     <comment> (forwarded request 1279638 from iznogood)</comment>
     <requestid>1280037</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>9a18afdb801e3c581e61dc04275b876f</srcmd5>
+    <version>42.0+24</version>
+    <time>1749148404</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 42.0+24:
+  + appdata: Replace defunct Bugzilla with GNOME GitLab
+  + desktop: Remove obsolete Bugzilla entries
+  + meson: drop unused positional arguments
+  + Updated translations.
+- Switch to meson buildsystem, add meson BuildRequires and macros.
+  Following this, drop gnome-common BuildRequires, no longer
+  needed.
+- Switch to source service for tarball, use current current head. (forwarded request 1282870 from iznogood)</comment>
+    <requestid>1282881</requestid>
+  </revision>
 </revisionlist>
