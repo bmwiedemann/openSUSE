@@ -25,7 +25,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/softwarefactory-project/distroinfo
 Source:         https://files.pythonhosted.org/packages/source/d/distroinfo/distroinfo-%{version}.tar.gz
 BuildRequires:  %{python_module pbr >= 0.5.6}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
@@ -49,10 +51,10 @@ metadata stored in human readable and reviewable text/YAML files.
 %setup -q -n distroinfo-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,7 +63,7 @@ metadata stored in human readable and reviewable text/YAML files.
 %files %{python_files}
 %doc AUTHORS ChangeLog README.rst
 %license LICENSE
-%{python_sitelib}/distroinfo-%{version}-*-info
 %{python_sitelib}/distroinfo
+%{python_sitelib}/distroinfo-%{version}.dist-info
 
 %changelog
