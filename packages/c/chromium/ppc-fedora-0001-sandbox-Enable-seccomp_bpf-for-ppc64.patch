@@ -11,13 +11,10 @@ Index: chromium-128.0.6613.113/sandbox/features.gni
 ===================================================================
 --- chromium-128.0.6613.113.orig/sandbox/features.gni
 +++ chromium-128.0.6613.113/sandbox/features.gni
-@@ -9,7 +9,8 @@
+@@ -9,4 +9,5 @@
  use_seccomp_bpf = (is_linux || is_chromeos || is_android) &&
                    (current_cpu == "x86" || current_cpu == "x64" ||
                     current_cpu == "arm" || current_cpu == "arm64" ||
 -                   current_cpu == "mipsel" || current_cpu == "mips64el")
 +                   current_cpu == "mipsel" || current_cpu == "mips64el" ||
 +                   current_cpu == "ppc64")
- 
- # SSBD (Speculative Store Bypass Disable) is a mitigation of Spectre Variant 4.
- # As Spectre Variant 4 can be mitigated by site isolation, opt-out SSBD on site

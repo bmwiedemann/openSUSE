@@ -5653,4 +5653,41 @@ boo#1224178</comment>
     ppc-fedora-0002-Add-PPC64-generated-files-for-boringssl.patch</comment>
     <requestid>1277583</requestid>
   </revision>
+  <revision rev="463" vrev="1">
+    <srcmd5>eff7c9e3769c17a7fdfde92d097c03c2</srcmd5>
+    <version>137.0.7151.68</version>
+    <time>1749148399</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 137.0.7151.68
+  (stable release 2025-06-03) (boo#1244019)
+  * CVE-2025-5419: Out of bounds read and write in V8
+  * CVE-2025-5068: Use after free in Blink
+  - Google is aware that an exploit for CVE-2025-5419
+    exists in the wild.
+
+- added patches:
+  ppc-fedora-0001-add-xnn-ppc64el-support.patch 
+  ppc-fedora-0002-regenerate-xnn-buildgn.patch
+
+- Chromium 137.0.7151.55
+  (stable release 2025-05-27) (boo#1243741)
+  * CVE-2025-5063: Use after free in Compositing
+  * CVE-2025-5280: Out of bounds write in V8
+  * CVE-2025-5064: Inappropriate implementation in Background Fetch API
+  * CVE-2025-5065: Inappropriate implementation in FileSystemAccess API
+  * CVE-2025-5066: Inappropriate implementation in Messages
+  * CVE-2025-5281: Inappropriate implementation in BFCache
+  * CVE-2025-5283: Use after free in libvpx
+  * CVE-2025-5067: Inappropriate implementation in Tab Strip
+- dropped patches:
+  chromium-135-gperf-output.patch (upstream)
+- modified patches:
+  chromium-125-compiler.patch (context)
+  chromium-127-rust-clanglib.patch (context)
+  ffmpeg-new-channel-layout.patch
+  (drop one hunk where upstream dropped the code)
+  system-libdrm.patch (context)
+  ppc-fedora-fix-partition-alloc-compile.patch (context)</comment>
+    <requestid>1282255</requestid>
+  </revision>
 </revisionlist>

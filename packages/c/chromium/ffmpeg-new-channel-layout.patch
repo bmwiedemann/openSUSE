@@ -269,20 +269,6 @@ index 6a56c675f7d..4615fdeb3fb 100644
    if (channel_layout == CHANNEL_LAYOUT_UNSUPPORTED &&
        config_.channel_layout() == CHANNEL_LAYOUT_DISCRETE) {
      channel_layout = CHANNEL_LAYOUT_DISCRETE;
-@@ -348,11 +348,11 @@ bool FFmpegAudioDecoder::ConfigureDecoder(const AudioDecoderConfig& config) {
-   // Success!
-   av_sample_format_ = codec_context_->sample_fmt;
- 
--  if (codec_context_->channels != config.channels()) {
-+  if (codec_context_->ch_layout.nb_channels != config.channels()) {
-     MEDIA_LOG(ERROR, media_log_)
-         << "Audio configuration specified " << config.channels()
-         << " channels, but FFmpeg thinks the file contains "
--        << codec_context_->channels << " channels";
-+        << codec_context_->ch_layout.nb_channels << " channels";
-     ReleaseFFmpegResources();
-     state_ = DecoderState::kUninitialized;
-     return false;
 @@ -403,7 +403,7 @@ int FFmpegAudioDecoder::GetAudioBuffer(struct AVCodecContext* s,
    if (frame->nb_samples <= 0)
      return AVERROR(EINVAL);

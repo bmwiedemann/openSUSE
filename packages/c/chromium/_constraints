@@ -21,4 +21,14 @@
       </memory>
     </hardware>
   </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>ppc64le</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">50</size>
+      </disk>
+    </hardware>
+  </overwrite>
 </constraints>

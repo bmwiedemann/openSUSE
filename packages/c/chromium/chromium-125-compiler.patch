@@ -1,6 +1,6 @@
---- chromium-136.0.7103.17/build/config/compiler/BUILD.gn	2025/04/04 13:01:25	1.1
-+++ chromium-136.0.7103.17/build/config/compiler/BUILD.gn	2025/04/04 13:02:18
-@@ -307,9 +307,7 @@
+--- chromium-137.0.7151.15/build/config/compiler/BUILD.gn	2025/05/08 22:34:27	1.1
++++ chromium-137.0.7151.15/build/config/compiler/BUILD.gn	2025/05/08 22:36:47
+@@ -308,9 +308,7 @@
  
    configs += [
      # See the definitions below.
@@ -10,7 +10,7 @@
      ":compiler_codegen",
      ":compiler_deterministic",
      ":clang_warning_suppression",
-@@ -567,62 +565,6 @@
+@@ -569,69 +567,6 @@
      ldflags += [ "-Wl,-z,keep-text-section-prefix" ]
    }
  
@@ -64,16 +64,23 @@
 -
 -    # Enable ELF CREL (see crbug.com/357878242) for all platforms that use ELF
 -    # (excluding toolchains that use an older version of LLVM).
--    if (is_linux && !llvm_android_mainline &&
+-    if (is_linux && use_lld && !llvm_android_mainline &&
 -        default_toolchain != "//build/toolchain/cros:target") {
 -      cflags += [ "-Wa,--crel,--allow-experimental-crel" ]
+-    }
+-
+-    # TODO(crbug.com/413427035): Remove once
+-    # https://github.com/llvm/llvm-project/pull/136867/ is landed.
+-    if (!is_win && !llvm_android_mainline &&
+-        default_toolchain != "//build/toolchain/cros:target") {
+-      cflags += [ "-fextend-variable-liveness=none" ]
 -    }
 -  }
 -
    # C11/C++11 compiler flags setup.
    # ---------------------------
    if (is_linux || is_chromeos || is_android || (is_nacl && is_clang) ||
-@@ -1554,52 +1496,6 @@
+@@ -1569,52 +1504,6 @@
      }
    }
  
@@ -126,36 +133,88 @@
    # Tells the compiler not to use absolute paths when passing the default
    # paths to the tools it invokes. We don't want this because we don't
    # really need it and it can mess up the RBE cache entries.
-@@ -1618,28 +1514,6 @@
+@@ -1633,80 +1522,6 @@
    }
  }
  
 -config("clang_revision") {
 -  if (is_clang && clang_base_path == default_clang_base_path &&
 -      current_os != "zos") {
--    update_args = [
--      "--print-revision",
--      "--verify-version=$clang_version",
--    ]
+-    _perform_consistency_checks = current_toolchain == default_toolchain
 -    if (llvm_force_head_revision) {
--      update_args += [ "--llvm-force-head-revision" ]
+-      _head_revision_stamp_path = "//third_party/llvm-build/force_head_revision"
+-      _head_revision = ""
+-      if (path_exists(_head_revision_stamp_path)) {
+-        _head_revision = read_file(_head_revision_stamp_path, "trim string")
+-      }
+-      assert(
+-          _head_revision != "",
+-          "llvm_force_head_revision=true, but no locally built version was detected.")
+-      _clang_revision = _head_revision
+-    } else {
+-      _clang_revision = read_file(
+-              "//third_party/llvm-build/Release+Asserts/cr_build_revision",
+-              "trim string")
+-
+-      # Ensure that the synced clang version matches what's in git.
+-      if (_perform_consistency_checks) {
+-        # Parse the clang version from the Python script.
+-        _clang_version_lines = filter_include(
+-                read_file("//tools/clang/scripts/update.py", "list lines"),
+-                [ "CLANG_*REVISION = *" ])
+-        _py_revision =
+-            string_replace(_clang_version_lines[0], "CLANG_REVISION = '", "")
+-        _py_revision = string_replace(_py_revision, "'", "")
+-        _py_subrevision =
+-            string_replace(_clang_version_lines[1], "CLANG_SUB_REVISION = ", "")
+-        _expected_clang_revision = "$_py_revision-$_py_subrevision"
+-
+-        assert(
+-            _clang_revision == _expected_clang_revision,
+-            "clang_revision=\"$_clang_revision\" but update.py expected \"$_expected_clang_revision\". Did you forget to gclient sync?")
+-      }
 -    }
--    clang_revision = exec_script("//tools/clang/scripts/update.py",
--                                 update_args,
--                                 "trim string")
+-
+-    if (_perform_consistency_checks) {
+-      # Ensure that the revision matches the version major expected by GN.
+-      _versions_match = filter_include([ _clang_revision ],
+-                                       [ "llvmorg-$clang_version-*" ]) != []
+-      assert(
+-          _versions_match,
+-          "clang_revision=\"$_clang_revision\" but clang_version=\"$clang_version\". clang_version in build/toolchain/toolchain.gni is likely outdated.")
+-    }
+-
+-    if (toolchain_has_rust && _perform_consistency_checks) {
+-      # Ensure that the synced rust version matches what's in git.
+-      _rust_revision_lines =
+-          filter_include(read_file("//tools/rust/update_rust.py", "list lines"),
+-                         [ "RUST_*REVISION = *" ])
+-      _py_revision =
+-          string_replace(_rust_revision_lines[0], "RUST_REVISION = '", "")
+-      _py_revision = string_replace(_py_revision, "'", "")
+-      _py_subrevision =
+-          string_replace(_rust_revision_lines[1], "RUST_SUB_REVISION = ", "")
+-      _expected_rust_revision = "$_py_revision-$_py_subrevision"
+-
+-      # Ensure the rust version matches the clang version.
+-      assert(
+-          filter_include([ rustc_revision ],
+-                         [ "*-$_expected_rust_revision-*" ]) != [],
+-          "rustc_revision=\"$rustc_revision\" but update_rust.py expected \"$_expected_rust_revision\". Run \"gclient sync\"?")
+-    }
 -
 -    # This is here so that all files get recompiled after a clang roll and
 -    # when turning clang on or off. (defines are passed via the command line,
 -    # and build system rebuild things when their commandline changes). Nothing
 -    # should ever read this define.
--    defines = [ "CR_CLANG_REVISION=\"$clang_revision\"" ]
+-    defines = [ "CR_CLANG_REVISION=\"$_clang_revision\"" ]
 -  }
 -}
 -
  # Controls the usage of a warning suppression mapping (WSM) file to suppress
  # warnings based on the path of the file they come from. It's controlled by the
  # `clang_warning_suppression_file` gn argument , which points to a text file
-@@ -2112,10 +1986,6 @@
+@@ -2180,10 +1995,6 @@
      }
    } else {
      cflags = [ "-Wall" ]
@@ -166,7 +225,7 @@
  
      # In Chromium code, we define __STDC_foo_MACROS in order to get the
      # C99 macros on Mac and Linux.
-@@ -2124,24 +1994,6 @@
+@@ -2192,24 +2003,6 @@
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -191,7 +250,7 @@
      if (is_apple) {
        cflags_objc = [ "-Wimplicit-retain-self" ]
        cflags_objcc = [ "-Wimplicit-retain-self" ]
-@@ -2564,7 +2416,8 @@
+@@ -2625,7 +2418,8 @@
  # [0]: https://pinpoint-dot-chromeperf.appspot.com/job/147634a8be0000
  # [1]: https://pinpoint-dot-chromeperf.appspot.com/job/132bc772be0000
  # [2]: https://crrev.com/c/5447532
@@ -201,7 +260,7 @@
    if (is_win) {
      # clang-cl's /O2 corresponds to clang's -O3, and really want -O2 for
      # consistency with the other platforms.
-@@ -2613,7 +2466,8 @@
+@@ -2674,7 +2468,8 @@
  }
  
  # Turn off optimizations.
@@ -211,7 +270,7 @@
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -2648,7 +2502,8 @@
+@@ -2709,7 +2504,8 @@
  # Turns up the optimization level. Used to explicitly enable -O2 instead of
  # -Os for select targets on platforms that use optimize_for_size. No-op
  # elsewhere.
@@ -221,7 +280,7 @@
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2681,7 +2536,8 @@
+@@ -2742,7 +2538,8 @@
  #
  # TODO(crbug.com/41259697) - rework how all of these configs are related
  # so that we don't need this disclaimer.
@@ -231,7 +290,7 @@
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2710,7 +2566,8 @@
+@@ -2771,7 +2568,8 @@
    }
  }
  
@@ -241,7 +300,7 @@
    cflags = [ "-O1" ] + common_optimize_on_cflags
    rustflags = [ "-Copt-level=1" ]
    ldflags = common_optimize_on_ldflags
-@@ -2841,7 +2698,8 @@
+@@ -2902,7 +2700,8 @@
  }
  
  # Full symbols.
@@ -251,7 +310,7 @@
    rustflags = []
    configs = []
    if (is_win) {
-@@ -3003,7 +2861,8 @@
+@@ -3064,7 +2863,8 @@
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
@@ -261,7 +320,7 @@
    rustflags = []
    if (is_win) {
      # Functions, files, and line tables only.
-@@ -3088,7 +2947,8 @@
+@@ -3149,7 +2949,8 @@
  # This configuration contains function names only. That is, the compiler is
  # told to not generate debug information and the linker then just puts function
  # names in the final debug information.

@@ -1,7 +1,7 @@
 diff -up chromium-127.0.6533.72/build/rust/rust_bindgen.gni.me chromium-127.0.6533.72/build/rust/rust_bindgen.gni
 --- chromium-127.0.6533.72/build/rust/rust_bindgen.gni.me	2024-07-25 16:11:18.754551595 +0200
 +++ chromium-127.0.6533.72/build/rust/rust_bindgen.gni	2024-07-25 16:11:33.997837660 +0200
-@@ -22,7 +22,7 @@ _libclang_path = rust_bindgen_root
+@@ -23,7 +23,7 @@
  if (host_os == "win") {
    _libclang_path += "/bin"
  } else {
@@ -10,11 +10,10 @@ diff -up chromium-127.0.6533.72/build/rust/rust_bindgen.gni.me chromium-127.0.65
  }
  
  # Template to build Rust/C bindings with bindgen.
-@@ -105,6 +105,14 @@
-       # it's declared.
-       deps = [ ":${_rust_bindgen_generator_name}_static_fns" ]
+@@ -111,6 +111,13 @@
+       deps += [ ":${_rust_bindgen_generator_name}_static_fns" ]
      }
-+
+ 
 +    # Default configs include "-fvisibility=hidden", and for some reason this
 +    # causes bindgen not to emit function bindings. Override it.
 +    args = []

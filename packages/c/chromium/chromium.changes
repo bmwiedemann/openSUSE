@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Jun  3 12:48:01 CEST 2025 - ro@suse.de
+
+- Chromium 137.0.7151.68
+  (stable release 2025-06-03) (boo#1244019)
+  * CVE-2025-5419: Out of bounds read and write in V8
+  * CVE-2025-5068: Use after free in Blink
+  - Google is aware that an exploit for CVE-2025-5419
+    exists in the wild.
+
+-------------------------------------------------------------------
+Fri May 30 00:25:43 CEST 2025 - ro@suse.de
+
+- added patches:
+  ppc-fedora-0001-add-xnn-ppc64el-support.patch 
+  ppc-fedora-0002-regenerate-xnn-buildgn.patch
+
+-------------------------------------------------------------------
+Wed May 28 01:08:19 CEST 2025 - ro@suse.de
+
+- Chromium 137.0.7151.55
+  (stable release 2025-05-27) (boo#1243741)
+  * CVE-2025-5063: Use after free in Compositing
+  * CVE-2025-5280: Out of bounds write in V8
+  * CVE-2025-5064: Inappropriate implementation in Background Fetch API
+  * CVE-2025-5065: Inappropriate implementation in FileSystemAccess API
+  * CVE-2025-5066: Inappropriate implementation in Messages
+  * CVE-2025-5281: Inappropriate implementation in BFCache
+  * CVE-2025-5283: Use after free in libvpx
+  * CVE-2025-5067: Inappropriate implementation in Tab Strip
+
+- dropped patches:
+  chromium-135-gperf-output.patch (upstream)
+- modified patches:
+  chromium-125-compiler.patch (context)
+  chromium-127-rust-clanglib.patch (context)
+  ffmpeg-new-channel-layout.patch
+  (drop one hunk where upstream dropped the code)
+  system-libdrm.patch (context)
+  ppc-fedora-fix-partition-alloc-compile.patch (context)
+  ppc-fedora-0002-third_party-libvpx-Remove-bad-ppc64-config.patch (context)
+  ppc-fedora-0001-sandbox-Enable-seccomp_bpf-for-ppc64.patch (context)
+- added patches:
+  chromium-137-pdfium_fix_pattribute.patch
+  (fix typo in pAttribute attributes)
+  chromium-137-heuristics_missing_includes.patch
+  (upstream patch 4c736420952f355f18bdc4f4ea2d16e4514fa034)
+  chromium-137-disruptive_notification_permissions_manager-missing_include.patch
+  (missing include)
+  - revert last skia patches for gather_unaligned until we have a port for ppc64le
+    ppc-skia-revert-1.patch
+    ppc-skia-revert-2.patch
+    ppc-skia-revert-3.patch
+- keeplibs:
+  added third_party/compiler-rt
+
+-------------------------------------------------------------------
 Thu May 15 00:07:25 CEST 2025 - ro@suse.de
 
 - Chromium 136.0.7103.113

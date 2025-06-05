@@ -33,6 +33,9 @@
 %bcond_with qt5
 %endif
 %ifarch aarch64 ppc64le riscv64
+# ERROR Unresolved dependencies.
+# //third_party/swiftshader/src/Reactor:swiftshader_reactor(//build/toolchain/linux/unbundle:default)
+#   needs //third_party/swiftshader/src/Reactor:swiftshader_subzero_reactor(//build/toolchain/linux/unbundle:default)
 %bcond_with swiftshader
 %else
 %bcond_without swiftshader
@@ -107,7 +110,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        136.0.7103.113
+Version:        137.0.7151.68
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -157,7 +160,9 @@ Patch371:       chromium-133-bring_back_and_disable_allowlist.patch
 Patch373:       chromium-134-type-mismatch-error.patch
 Patch375:       chromium-131-fix-qt-ui.pach
 Patch376:       chromium-135-add_map_droppable.patch
-Patch377:       chromium-135-gperf-output.patch
+Patch377:       chromium-137-pdfium_fix_pattribute.patch
+Patch378:       chromium-137-heuristics_missing_includes.patch
+Patch379:       chromium-137-disruptive_notification_permissions_manager-missing_include.patch
 # conditionally applied patches ppc64le only
 Patch401:       ppc-fedora-add-ppc64-architecture-string.patch
 Patch402:       ppc-fedora-0001-linux-seccomp-bpf-ppc64-glibc-workaround-in-SIGSYS-h.patch
@@ -216,6 +221,8 @@ Patch454:       ppc-fedora-fix-unknown-warning-option-messages.diff
 Patch455:       ppc-fedora-add-ppc64-pthread-stack-size.patch
 Patch456:       ppc-fedora-fix-ppc64-rust_png-build-error.patch
 Patch457:       ppc-chromium-136-clang-config.patch
+Patch458:       ppc-fedora-0001-add-xnn-ppc64el-support.patch
+Patch459:       ppc-fedora-0002-regenerate-xnn-buildgn.patch
 # conditionally applied patches
 # patch where ffmpeg < 5
 Patch1002:      chromium-125-ffmpeg-5.x-reordered_opaque.patch
@@ -231,6 +238,9 @@ Patch1030:      chromium-134-revert-rust-adler2.patch
 Patch1040:      gtk-414.patch
 # clang is too old
 Patch1050:      chromium-warning-suppression-mappings.patch
+#Patch1061:      ppc-skia-revert-1.patch
+Patch1062:      ppc-skia-revert-2.patch
+Patch1063:      ppc-skia-revert-3.patch
 # end conditionally applied patches
 BuildRequires:  SDL-devel
 BuildRequires:  bison
@@ -522,6 +532,13 @@ if [ "$clang_version" -lt 20 ] ; then
 %patch -p1 -R -P 1050
 fi
 
+%ifarch ppc64le
+pushd third_party/skia
+%patch -p1 -R -P 1062
+%patch -p1 -R -P 1063
+popd
+%endif
+
 %build
 # esbuild
 rm third_party/devtools-frontend/src/third_party/esbuild/esbuild
@@ -628,6 +645,7 @@ keeplibs=(
     third_party/ced
     third_party/cld_3
     third_party/closure_compiler
+    third_party/compiler-rt
     third_party/content_analysis_sdk
     third_party/cpuinfo
     third_party/crashpad

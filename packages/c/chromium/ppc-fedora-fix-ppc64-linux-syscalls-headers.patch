@@ -2,7 +2,7 @@ Index: chromium-128.0.6613.113/sandbox/linux/system_headers/ppc64_linux_syscalls
 ===================================================================
 --- chromium-128.0.6613.113.orig/sandbox/linux/system_headers/ppc64_linux_syscalls.h
 +++ chromium-128.0.6613.113/sandbox/linux/system_headers/ppc64_linux_syscalls.h
-@@ -8,5 +8,18 @@
+@@ -8,5 +8,21 @@
  #include <asm/unistd.h>
  
  //TODO: is it necessary to redefine syscall numbers for PPC64?
@@ -18,6 +18,9 @@ Index: chromium-128.0.6613.113/sandbox/linux/system_headers/ppc64_linux_syscalls
 +#endif
 +#if !defined(__NR_shmat)
 +#define __NR_shmat      397
++#endif
++#if !defined(__NR_mseal)
++#define __NR_mseal      462
 +#endif
  
  #endif  // SANDBOX_LINUX_SYSTEM_HEADERS_PPC64_LINUX_SYSCALLS_H_
