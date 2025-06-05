@@ -7,4 +7,12 @@
     <comment>Dependency of python-tablib</comment>
     <requestid>753787</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e638e764ece2d2b2c7b841da4ceccbf6</srcmd5>
+    <version>1.14</version>
+    <time>1749148440</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282929</requestid>
+  </revision>
 </revisionlist>

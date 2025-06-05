@@ -1,7 +1,7 @@
 #
 # spec file for package python-MarkupPy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-MarkupPy
 Version:        1.14
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        An HTML/XML generator
-Url:            https://github.com/tylerbakke/MarkupPy
-Group:          Development/Languages/Python
+URL:            https://github.com/tylerbakke/MarkupPy
 Source:         https://files.pythonhosted.org/packages/source/M/MarkupPy/MarkupPy-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 
 %python_subpackages
@@ -40,15 +41,15 @@ for Python programs.
 %setup -q -n MarkupPy-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license %{python_sitelib}/MarkupPy/markup.py
 %{python_sitelib}/MarkupPy/
-%{python_sitelib}/MarkupPy-%{version}-py*.egg-info
+%{python_sitelib}/[Mm]arkup[Pp]y-%{version}.dist-info
 
 %changelog
