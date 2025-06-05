@@ -25,4 +25,12 @@
   * Replaced travis com github actions and Python 3.12 support</comment>
     <requestid>1138699</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e3a57ba5201a805d8fc8cee3ef9ef361</srcmd5>
+    <version>0.8.4</version>
+    <time>1749148478</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282969</requestid>
+  </revision>
 </revisionlist>

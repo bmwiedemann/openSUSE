@@ -1,7 +1,7 @@
 #
 # spec file for package python-derpconf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,10 @@ URL:            https://github.com/globocom/derpconf
 Source:         https://github.com/globocom/derpconf/archive/refs/tags/%{version}.tar.gz
 # https://github.com/globocom/derpconf/issues/26
 Patch0:         python-derpconf-no-six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyVows}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,10 +43,10 @@ derpconf abstracts loading configuration files for your app.
 
 %build
 sed -i '1{/^#!/ d}' derpconf/*.py
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
