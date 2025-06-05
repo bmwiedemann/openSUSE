@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 05 04:18:03 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250605.a553c49e:
+  * Dev: behave: Add functional test for previous commit
+  * Dev: bootstrap: Improve configuration for admin IP
+
+-------------------------------------------------------------------
+Mon May 26 11:32:19 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250526.0d5733b5:
+  * Dev: migration: use atomic write to modify corosync.conf on remote nodes (jsc#PED-8252)
+
+-------------------------------------------------------------------
+Mon May 26 06:36:05 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250526.64725c30:
+  * Dev: Dockerfile: Install pacemaker-remote package
+
+-------------------------------------------------------------------
 Thu May 22 09:37:52 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250522.ffecd6cb:
