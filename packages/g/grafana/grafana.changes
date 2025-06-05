@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  4 14:38:01 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Exclude ix86 architectures. They are not supported and fail to
+  build.
+
+-------------------------------------------------------------------
 Tue May 27 12:46:15 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update to version 11.6.1+security-01:

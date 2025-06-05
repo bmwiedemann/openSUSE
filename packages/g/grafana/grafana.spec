@@ -53,6 +53,8 @@ Requires:       user(grafana)
 %if 0%{?suse_version} == 1315
 ExcludeArch:    s390
 %endif
+# Exclue ix86 architectures as they are not supported and do not build
+ExcludeArch:    %{ix86}
 
 %description
 A graph and dashboard builder for visualizing time series metrics.
