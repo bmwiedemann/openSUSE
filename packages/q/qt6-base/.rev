@@ -590,4 +590,12 @@
   * 0001-Rename-variable-being-shadowed.patch (forwarded request 1268057 from alarrosa)</comment>
     <requestid>1268098</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>f306110fa089eb9872d7d45a15076c40</srcmd5>
+    <version>6.9.1</version>
+    <time>1749148313</time>
+    <user>anag_factory</user>
+    <comment>Qt 6.9.1 (forwarded request 1282452 from krop)</comment>
+    <requestid>1282552</requestid>
+  </revision>
 </revisionlist>

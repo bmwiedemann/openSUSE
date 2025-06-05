@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  3 07:49:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.1:
+  * https://www.qt.io/blog/qt-6.9.1-released
+
+-------------------------------------------------------------------
 Wed Apr  9 06:04:33 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to rename a variable that was being shadowed and which
