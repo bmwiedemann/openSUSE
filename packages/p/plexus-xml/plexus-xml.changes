@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun  4 15:26:12 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.0.2
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus from 19 to 20
+    + Bump org.codehaus.plexus:plexus from 18 to 19
+    + Bump org.codehaus.plexus:plexus-utils from 4.0.1 to 4.0.2
+  * Maintenance
+    + Cleanup tests and drop dependency to plexus-utils
+
+-------------------------------------------------------------------
 Wed Jun  5 11:54:36 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 3.0.1
