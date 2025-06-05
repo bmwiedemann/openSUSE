@@ -1,7 +1,7 @@
 #
 # spec file for package python-mutf8
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,13 @@ Version:        1.0.6
 Release:        0
 Summary:        Python/C encoders/decoders for MUTF-8/CESU-8
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/TkTech/mutf8
 Source:         https://github.com/TkTech/mutf8/archive/refs/tags/v%{version}.tar.gz#/mutf8-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -39,10 +40,10 @@ Pure-python and optional C encoders/decoders for MUTF-8/CESU-8.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -52,6 +53,6 @@ export CFLAGS="%{optflags}"
 %license LICENCE
 %doc README.md
 %{python_sitearch}/mutf8
-%{python_sitearch}/mutf8-%{version}-py%{python_version}.egg-info
+%{python_sitearch}/mutf8-%{version}.dist-info
 
 %changelog

@@ -7,4 +7,12 @@
     <comment>needed by something (dukpy or whatever)</comment>
     <requestid>1183302</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>191a96cd336a5fe94b5bc7e87c66857e</srcmd5>
+    <version>1.0.6</version>
+    <time>1749148446</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282936</requestid>
+  </revision>
 </revisionlist>
