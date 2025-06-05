@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-defcon
@@ -26,8 +25,10 @@ Summary:        A set of UFO based objects for use in font editing applications
 License:        MIT
 URL:            https://github.com/robotools/defcon
 Source:         https://files.pythonhosted.org/packages/source/d/defcon/defcon-%{version}.zip
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -56,10 +57,10 @@ A set of UFO based objects optimized for use in font editing applications.
 sed -i -e '1{\,^#!%{_bindir}/env python,d}' Lib/defcon/test/tools/test_unicodeTools.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

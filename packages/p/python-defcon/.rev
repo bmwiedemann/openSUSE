@@ -132,4 +132,12 @@
   * Update tested python versions</comment>
     <requestid>1269476</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>5ae6d0e37c1d23d937307335dd17c785</srcmd5>
+    <version>0.12.1</version>
+    <time>1749148477</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282966</requestid>
+  </revision>
 </revisionlist>
