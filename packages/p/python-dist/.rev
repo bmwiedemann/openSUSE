@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>1079121</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e2b086f79007a747f65c4fed6d4abd74</srcmd5>
+    <version>1.0.3</version>
+    <time>1749148480</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.
+- Add patch fix-version-number.patch:
+  * Actually have this report itself as the correct version.</comment>
+    <requestid>1282972</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  5 06:03:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+- Add patch fix-version-number.patch:
+  * Actually have this report itself as the correct version.
+
+-------------------------------------------------------------------
 Thu Apr 13 10:37:20 UTC 2023 - pgajdos@suse.com
 
 - do not require six

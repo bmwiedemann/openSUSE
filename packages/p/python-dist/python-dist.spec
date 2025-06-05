@@ -1,7 +1,7 @@
 #
 # spec file for package python-dist
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dist
 Version:        1.0.3
 Release:        0
 Summary:        Compute distance between two coordinates on the map
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/duboviy/dist
 Source:         https://github.com/duboviy/dist/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#duboviy/dist#dc41696801eb78ce47ef3964fd5e057ef4a971b5
+Patch0:         fix-version-number.patch
 # https://github.com/duboviy/dist/issues/8
-Patch0:         python-dist-no-six.patch
+Patch1:         python-dist-no-six.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -47,10 +49,10 @@ that is almost 3 times faster than similar fast pure python implementation.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -59,6 +61,7 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%{python_sitearch}/*
+%{python_sitearch}/dist.cpython-*-linux-gnu.so
+%{python_sitearch}/dist-%{version}.dist-info
 
 %changelog

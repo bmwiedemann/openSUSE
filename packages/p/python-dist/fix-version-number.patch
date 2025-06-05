@@ -1,0 +1,44 @@
+From dc41696801eb78ce47ef3964fd5e057ef4a971b5 Mon Sep 17 00:00:00 2001
+From: Eugene Dubovoy <eugene.dubovoy@gmail.com>
+Date: Mon, 30 Jan 2017 22:57:09 +0200
+Subject: [PATCH] Prepare to PyPI release of version 1.0.2
+
+---
+ README.md | 3 +++
+ setup.py  | 4 ++--
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/README.md b/README.md
+index c9bb451..2c5b363 100644
+--- a/README.md
++++ b/README.md
+@@ -17,7 +17,10 @@ Installation
+ ------------
+ 
+     python setup.py install
++    
++Or using alternative command:
+ 
++    pip install https://github.com/duboviy/dist/archive/master.zip
+ 
+ Input and output data
+ ----------
+diff --git a/setup.py b/setup.py
+index bd264d3..ba865f3 100644
+--- a/setup.py
++++ b/setup.py
+@@ -12,12 +12,12 @@
+ 
+ setup(
+     name="dist",
+-    version="1.0.2",
++    version="1.0.3",
+     description="Compute distance between two coordinates on the map",
+     author='Eugene Duboviy',
+     author_email='eugene.dubovoy@gmail.com',
+     url='https://github.com/duboviy/dist',
+-    download_url = 'https://github.com/duboviy/dist/tarball/1.0.2',
++    download_url = 'https://github.com/duboviy/dist/tarball/1.0.3',
+     keywords = ['distance', 'coordinates', 'map', 'performance'],
+     classifiers=[
+       "Programming Language :: Python",
