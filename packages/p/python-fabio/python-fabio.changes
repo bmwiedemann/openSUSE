@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  5 13:02:36 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- switch to Qt6 bindings as Qt5 is going EOL. Add upstream patch to
+  support qt6, qt6.patch, gh#silx-kit/fabio#605
+
+-------------------------------------------------------------------
 Fri Jan 10 12:36:15 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 2024.09.0

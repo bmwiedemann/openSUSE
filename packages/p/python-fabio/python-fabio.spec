@@ -24,9 +24,11 @@ Summary:        Image IO for images produced by 2D X-ray detectors
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
 URL:            https://github.com/silx-kit/fabio
 Source:         https://github.com/silx-kit/fabio/archive/v%{version}.tar.gz#/fabio-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM qt6.patch gh#silx-kit/fabio#605
+Patch0:         qt6.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module PyQt5}
+BuildRequires:  %{python_module PyQt6}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module hdf5plugin}
@@ -48,7 +50,7 @@ Requires:       python-h5py
 Requires:       python-hdf5plugin
 Requires:       python-lxml
 Requires:       python-numpy
-Recommends:     python-PyQt5
+Recommends:     python-PyQt6
 Recommends:     python-matplotlib
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -60,7 +62,7 @@ ExcludeArch:    %{ix86} %{arm}
 FabIO is an I/O library for images produced by 2D X-ray detectors.
 
 %prep
-%autosetup -n fabio-%{version}
+%autosetup -p1 -n fabio-%{version}
 find src -name '*.py' -and ! -path src/fabio/_version.py -exec sed -i '1{/^#!/d}' '{}' ';' -exec chmod -x '{}' ';'
 
 %build

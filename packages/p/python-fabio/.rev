@@ -96,4 +96,13 @@
     <comment></comment>
     <requestid>1236888</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>fe3bcae716dce5196eeb1dfeb8e098a1</srcmd5>
+    <version>2024.9.0</version>
+    <time>1749148542</time>
+    <user>anag_factory</user>
+    <comment>- switch to Qt6 bindings as Qt5 is going EOL. Add upstream patch to
+  support qt6, qt6.patch, gh#silx-kit/fabio#605</comment>
+    <requestid>1283368</requestid>
+  </revision>
 </revisionlist>
