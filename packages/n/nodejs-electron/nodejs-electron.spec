@@ -194,7 +194,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        35.5.0
+Version:        35.5.1
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -1230,7 +1230,7 @@ myconf_gn+=' enable_compose=false'
 myconf_gn+=' enterprise_cloud_content_analysis=false'
 myconf_gn+=' enterprise_local_content_analysis=false'
 myconf_gn+=' enterprise_watermark=false'
-myconf_gn+=' enterprise_content_analysis=true'
+myconf_gn+=' enterprise_content_analysis=false'
 myconf_gn+=' enable_video_effects=false'
 myconf_gn+=' use_fake_screen_ai=true'
 myconf_gn+=' webnn_use_tflite=false'
@@ -1246,6 +1246,8 @@ myconf_gn+=' enable_guest_view=false'
 myconf_gn+=' enable_extensions_core=true' #cannot be disabled yet
 myconf_gn+=' enable_on_device_translation=false'
 myconf_gn+=' enable_session_service=false'
+myconf_gn+=' enterprise_client_certificates=false'
+myconf_gn+=' enterprise_data_controls=false'
 
 
 

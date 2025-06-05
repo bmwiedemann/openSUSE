@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  5 05:14:29 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 35.5.1
+  * Fixed addChildView() crashes when adding a closed WebContentsView.
+  * Fixed crash when pausing in loops due to missing context when desugared.
+  * Fixed out of bounds read and write in V8 (CVE-2025-5419 bsc#1244020)
+
+-------------------------------------------------------------------
 Thu May 29 17:37:49 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 35.5.0
