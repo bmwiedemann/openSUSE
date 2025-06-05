@@ -193,4 +193,12 @@
   SLES_SAP 16.0 as mandatory (bsc#1241224, bsc#1224868).</comment>
     <requestid>1280445</requestid>
   </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>56ad5429dc2361c1f8572b8a3cb2fa1e</srcmd5>
+    <version>0</version>
+    <time>1749148485</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1282965</requestid>
+  </revision>
 </revisionlist>
