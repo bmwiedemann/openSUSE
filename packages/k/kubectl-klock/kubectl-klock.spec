@@ -17,7 +17,7 @@
 
 
 Name:           kubectl-klock
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Kubectl plugin to render watch output in a more readable fashion
 License:        GPL-3.0-or-later AND Apache-2.0 AND CC-BY-4.0 AND CC0-1.0

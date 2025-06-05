@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 04 18:35:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.8.1:
+  * Fix ANSI coloring issue (#159)
+    Issue was that kubectl-klock always converted to (what it
+    thought was the correct) RGB version of the kubecolor color.
+    But the kubecolor color may use ANSI color codes that can be
+    changed via the terminal emulator's theme settings, whereas RGB
+    versions are not changed to fit the terminal emulator theme.
+    With this change kubectl-klock will preseve the ANSI color
+    codes correctly.
+    Screenshots see
+    https://github.com/applejag/kubectl-klock/releases/tag/v0.8.1
+
+-------------------------------------------------------------------
 Mon May 26 04:58:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.8.0:
