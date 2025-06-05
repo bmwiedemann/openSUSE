@@ -47,4 +47,24 @@
     <comment></comment>
     <requestid>1272967</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>508756d64c6a3e29a6e31bdf1bc6e6ea</srcmd5>
+    <version>2.1.1</version>
+    <time>1749148451</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.1.1:
+  * fix all linting issues (@andreynering)
+  * watch for dir instead of file to work on all scenarios (#734)
+    (@Ktrod)
+  * handle case when selected md is nil (@MarkusBillharz)
+  * only show edit if documents are available (@MarkusBillharz)
+  * sync viewport on half page up/down to prevent duplicate strings
+    in render (#756) (@Ktrod)
+  * tui mode handling of remote urls (#744) (@glwbr)
+  * update .golangci.yml for v2 (@andreynering)
+- Remove fix_cve_2025_22872.patch (solved upstream)
+  * bump golang.org/x/net from 0.27.0 to 0.40.0
+</comment>
+    <requestid>1282925</requestid>
+  </revision>
 </revisionlist>

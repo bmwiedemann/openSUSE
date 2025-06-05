@@ -21,7 +21,7 @@
 %global _lto_cflags %nil
 
 Name:           glow
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Render markdown on the CLI
 License:        MIT
@@ -30,7 +30,6 @@ Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 # vendoring obtained by `osc service manualrun`. See README.suse-maint.md for details.
 Source1:        vendor.tar.zst
 Source2:        README.suse-maint.md
-Source3:        fix_cve_2025_22872.patch
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
 BuildRequires:  golang(API) >= 1.23
@@ -78,38 +77,38 @@ Zsh command-line completion support for %{name}.
 
 %prep
 %autosetup -p1 -a1
-patch -d vendor/golang.org/x/net/ -p1 -i %{SOURCE3}
 
 %build
-%ifarch ppc64
-BUILDMOD=""
-%else
+%ifnarch ppc64
 BUILDMOD="-buildmode=pie"
 %endif
 export CGO_CFLAGS="%{optflags}"
 export CGO_CXXFLAGS="%{optflags}"
 export CGO_CPPFLAGS="%{optflags}"
-go build -v -x -mod=vendor $BUILDMOD -a -ldflags "-s -X main.Version=%{version}"
+export GOFLAGS="-mod=vendor $BUILDMOD -trimpath -ldflags=-linkmode=external"
+mkdir -p build
+go build -v -ldflags "-s -X main.Version=%{version}" -o build .
 
 %install
-install -Dm755 %{name} %{buildroot}%{_bindir}/%{name}
+install -D -m 0755 -t %{buildroot}%{_bindir} build/%{name}
 
 # man page (and fix date)
 install -d -m 0755 %{buildroot}%{_mandir}/man1
-_date1=$(date '+%%F')
-_date2=$(date -u -d@$SOURCE_DATE_EPOCH '+%%F')
-./%{name} man | sed -e "s/$_date1/$_date2/g" > %{buildroot}%{_mandir}/man1/%{name}.1
+_d="$(date -u -d@$SOURCE_DATE_EPOCH '+%%B %%Y')"
+./build/%{name} man | \
+  sed -e "s/^\.TH GLOW 1 \".*\" \"glow/.TH GLOW 1 \"$_d\" \"glow %{version}/" \
+  > %{buildroot}%{_mandir}/man1/%{name}.1
 
 # Completions
-for sh in bash zsh fish; do
-  ./%{name} completion $sh > %{name}.${sh}
+for sh in bash fish zsh; do
+  ./build/%{name} completion $sh > %{name}.${sh}
 done
-install -Dm644 %{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
-install -Dm644 %{name}.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
-install -Dm644 %{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
+install -D -m 0644 %{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -D -m 0644 %{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
+install -D -m 0644 %{name}.zsh  %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 
 %check
-./%{name} --version
+./build/%{name} --version
 # Skip TestGlowSources and TestURLParser as they can both fail without internet.
 go test -v ./... -skip 'TestGlowSources|TestURLParser'
 

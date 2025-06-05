@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jun  1 20:36:38 UTC 2025 - munix9@googlemail.com
+
+- Update to 2.1.1:
+  * fix all linting issues (@andreynering)
+  * watch for dir instead of file to work on all scenarios (#734)
+    (@Ktrod)
+  * handle case when selected md is nil (@MarkusBillharz)
+  * only show edit if documents are available (@MarkusBillharz)
+  * sync viewport on half page up/down to prevent duplicate strings
+    in render (#756) (@Ktrod)
+  * tui mode handling of remote urls (#744) (@glwbr)
+  * update .golangci.yml for v2 (@andreynering)
+
+- Remove fix_cve_2025_22872.patch (solved upstream)
+  * bump golang.org/x/net from 0.27.0 to 0.40.0
+
+-------------------------------------------------------------------
 Sun Apr 27 15:54:21 UTC 2025 - munix9@googlemail.com
 
 - Add fix_cve_2025_22872.patch to patch CVE-2025-22872 (bsc#1241812)
