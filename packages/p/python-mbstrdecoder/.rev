@@ -121,4 +121,13 @@
   * Improve type annotations</comment>
     <requestid>1274712</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>26c1ae781f9547f2a81239556d0eb29f</srcmd5>
+    <version>1.1.4</version>
+    <time>1749148441</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1282930</requestid>
+  </revision>
 </revisionlist>

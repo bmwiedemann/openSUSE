@@ -22,16 +22,17 @@ Version:        1.1.4
 Release:        0
 Summary:        Multi-byte character string decoder
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/thombashi/mbstrdecoder
 Source:         https://files.pythonhosted.org/packages/source/m/mbstrdecoder/mbstrdecoder-%{version}.tar.gz
 BuildRequires:  %{python_module Faker >= 1.0.2}
 BuildRequires:  %{python_module chardet >= 3.0.4}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 64}
+BuildRequires:  %{python_module setuptools_scm >= 8}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Faker >= 1.0.2
 Requires:       python-chardet >= 3.0.4
 BuildArch:      noarch
 %python_subpackages
@@ -45,10 +46,10 @@ Python library for multi-byte character string decoding.
 sed -i '/build =/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +58,7 @@ sed -i '/build =/d' setup.cfg
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/mbstrdecoder
+%{python_sitelib}/mbstrdecoder-%{version}.dist-info
 
 %changelog
