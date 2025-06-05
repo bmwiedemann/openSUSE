@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  5 11:48:59 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.2.2
+  * .gitignore list got extended with temporary directories of pbuild
+
+-------------------------------------------------------------------
 Fri Apr 11 07:05:52 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - fix the URL, gitea.opensuse.org yields NXDOMAIN

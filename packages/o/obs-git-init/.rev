@@ -24,4 +24,13 @@
     <comment></comment>
     <requestid>1269540</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>706d62a9f4908d19be88533f2129c7cf</srcmd5>
+    <version>0.2.2</version>
+    <time>1749148544</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.2.2
+  * .gitignore list got extended with temporary directories of pbuild</comment>
+    <requestid>1283378</requestid>
+  </revision>
 </revisionlist>
