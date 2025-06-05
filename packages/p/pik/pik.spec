@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           pik
-Version:        0.18.1
+Version:        0.23.1
 Release:        0
 Summary:        Process Interactive Kill
 License:        MIT
