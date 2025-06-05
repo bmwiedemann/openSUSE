@@ -1,7 +1,7 @@
 #
 # spec file for package python-MouseInfo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-MouseInfo
 Version:        0.1.3
 Release:        0
@@ -27,8 +26,10 @@ URL:            https://github.com/asweigart/mouseinfo
 Source:         https://files.pythonhosted.org/packages/source/M/MouseInfo/MouseInfo-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/asweigart/mouseinfo/master/LICENSE.txt
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyperclip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
@@ -46,14 +47,15 @@ automation planning.
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/mouseinfo
+%{python_sitelib}/[Mm]ouse[Ii]nfo-%{version}.dist-info
 
 %changelog

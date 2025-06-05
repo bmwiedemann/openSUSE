@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  5 04:38:54 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Mon May  4 14:05:21 UTC 2020 - Johannes Grassler <johannes.grassler@suse.com>
 
 - Initial package 
