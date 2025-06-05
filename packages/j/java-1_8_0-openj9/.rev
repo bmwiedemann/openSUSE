@@ -239,4 +239,12 @@
     <comment>April 2025 CPU</comment>
     <requestid>1276562</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>c34fc048e1fde86152ec50abb1e774ed</srcmd5>
+    <version>1.8.0.452</version>
+    <time>1749148379</time>
+    <user>anag_factory</user>
+    <comment>Forgotten a bug number</comment>
+    <requestid>1283371</requestid>
+  </revision>
 </revisionlist>

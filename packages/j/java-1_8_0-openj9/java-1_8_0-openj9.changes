@@ -3,6 +3,7 @@ Sun May 11 03:50:29 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 8u452 build 09 with OpenJ9 0.51.0 virtual
   machine
+- Fixes OpenJ9 security vulnerability CVE-2025-4447 (bsc#1243429)
 - Including Oracle April 2025 CPU changes
   * CVE-2025-21587 (bsc#1241274), CVE-2025-30691 (bsc#1241275),
     CVE-2025-30698 (bsc#1241276)
