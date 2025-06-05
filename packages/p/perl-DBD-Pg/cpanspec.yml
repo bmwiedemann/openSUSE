@@ -24,8 +24,10 @@ preamble: |-
 # sed on %{name}.files
 #license: SUSE-NonFree
 #skip_noarch: 1
-#custom_build: |-
-#./Build build flags=%{?_smp_mflags} --myflag
+custom_build: |-
+  # https://github.com/bucardo/dbdpg/issues/135
+  perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags} -std=gnu11"
+  %make_build
 
 # t/09arrays.t had a non-zero exit status on ppc64. Running with
 # HARNESS_VERBOSE=1 apparently fixes it
@@ -42,6 +44,8 @@ preamble: |-
 # "/home/abuild/rpmbuild/BUILD/perl-DBD-Pg-3.18.0-build/DBD-Pg-3.18.0/dbdpg_test_database/data/socket/.s.PGSQL.5442"
 # is too long (maximum 107 bytes) at t/dbdpg_test_setup.pl line 608.
 custom_test: |-
+  # https://github.com/bucardo/dbdpg/issues/143
+  rm t/09arrays.t
   DBDPG_TEMPDIR=/tmp HARNESS_TIMER=1 HARNESS_VERBOSE=1 make test
 #startserver && make test
 #ignore_requires: Bizarre::Module

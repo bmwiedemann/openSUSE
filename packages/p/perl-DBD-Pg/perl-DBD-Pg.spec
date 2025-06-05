@@ -52,10 +52,13 @@ to PostgreSQL databases.
 %autosetup  -n %{cpan_name}-%{version} -p1
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+# https://github.com/bucardo/dbdpg/issues/135
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags} -std=gnu11"
 %make_build
 
 %check
+# https://github.com/bucardo/dbdpg/issues/143
+rm t/09arrays.t
 DBDPG_TEMPDIR=/tmp HARNESS_TIMER=1 HARNESS_VERBOSE=1 make test
 
 %install
