@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun  3 07:49:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.1:
+  * https://www.qt.io/blog/qt-6.9.1-released
+- Drop patches, merged upstream:
+  * 0001-Do-not-force-gl-egl-ANGLE-backend-on-Linux.patch
+  * 0001-Do-not-list-GLX-frame-buffer-configurations-unnecess.patch
+  * 0001-NativeSkiaOutputDeviceOpenGL-Fix-leaking-X11-Pixmap.patch
+  * 0001-NativeSkiaOutputDeviceVulkan-Use-minimal-set-of-usag.patch
+  * 0001-Add-default-and-gl-ANGLE-implementation-support-to-O.patch
+  * 0001-Avoid-crash-due-to-long-dictionary-commands.patch
+  * 0001-angle-Always-use-primary-GPU.patch
+  * 0001-gbm-Add-fallback-for-drmPrimeHandleToFD.patch
+  * qtwebengine-glibc_2.41.patch
+  * qtwebengine-pipewire-1.4.patch
+
+-------------------------------------------------------------------
 Tue May  6 09:02:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fixes:

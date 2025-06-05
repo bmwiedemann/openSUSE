@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.0
+%define real_version 6.9.1
 %define short_version 6.9
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
@@ -55,7 +55,7 @@
 %global lts_version 6.8.0
 #
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.9.0
+Version:        6.9.1
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -63,19 +63,9 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         qtwebengine-glibc_2.41.patch
-Patch1:         0001-Do-not-force-gl-egl-ANGLE-backend-on-Linux.patch
-Patch2:         0001-gbm-Add-fallback-for-drmPrimeHandleToFD.patch
-Patch3:         0001-Do-not-list-GLX-frame-buffer-configurations-unnecess.patch
-Patch4:         0001-angle-Always-use-primary-GPU.patch
-Patch5:         0001-NativeSkiaOutputDeviceOpenGL-Fix-leaking-X11-Pixmap.patch
-Patch6:         0001-NativeSkiaOutputDeviceVulkan-Use-minimal-set-of-usag.patch
-Patch7:         0001-Add-default-and-gl-ANGLE-implementation-support-to-O.patch
-Patch8:         0001-Avoid-crash-due-to-long-dictionary-commands.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
 Patch101:       QtWebEngine_6.8_skip_xnnpack.patch
-Patch102:       qtwebengine-pipewire-1.4.patch
 BuildRequires:  %{pyver}
 BuildRequires:  %{pyver}-devel
 BuildRequires:  %{pyver}-html5lib
