@@ -25,8 +25,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/amol-/dukpy
 Source:         https://github.com/amol-/dukpy/archive/%{version}.tar.gz#/dukpy-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -60,10 +62,10 @@ sed -i 's:import mock:from unittest import mock:' tests/test_evaljs.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/dukpy
 %python_clone -a %{buildroot}%{_bindir}/dukpy-install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}

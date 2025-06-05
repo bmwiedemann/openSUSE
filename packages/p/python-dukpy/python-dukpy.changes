@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  5 06:01:38 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Jan 21 12:23:21 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Avoid the webassets dependency on Leap 16
