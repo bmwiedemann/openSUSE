@@ -228,4 +228,17 @@ next week.  Gcc7 can pick it up from there.
   and SLE15.</comment>
     <requestid>1280776</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>ade884aaf2ed8f7de571146a5bb9cda3</srcmd5>
+    <version>14.3.0+git11799</version>
+    <time>1749148289</time>
+    <user>anag_factory</user>
+    <comment>- Exclude shared objects present for link editing in the GCC specific
+  subdirectory from provides processing via __provides_exclude_from.
+  [bsc#1244050][bsc#1243991]
+
+- Make cross-*-gcc14-bootstrap package conflict with the non-bootstrap
+  variant conflict with the unversioned cross-*-gcc package.</comment>
+    <requestid>1282742</requestid>
+  </revision>
 </revisionlist>

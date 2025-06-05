@@ -1799,6 +1799,8 @@ mkdir ../testresults
 ../contrib/test_summary | tee ../testresults/test_summary.txt
 %endif
 
+%define __provides_exclude_from ^%{libsubdir}/.*\.so.*$
+
 %install
 # Make sure libtool re-linking libasan at install time doesn't drop the
 # libstdc++ reference to make asan of C++ modules in python work

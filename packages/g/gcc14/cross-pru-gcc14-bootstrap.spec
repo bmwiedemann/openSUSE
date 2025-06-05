@@ -284,7 +284,7 @@ Conflicts:      %{gcc_target_arch}-gcc
 # The -bootstrap packages file-conflict with the non-bootstrap variants.
 # Even if we don't actually (want to) distribute the bootstrap variants
 # the following avoids repo-checker spamming us endlessly.
-Conflicts:      cross-%{cross_arch}-gcc14
+Conflicts:      %{gcc_target_arch}-gcc
 %endif
 #!BuildIgnore: gcc-PIE
 %if 0%{build_cp:1}
