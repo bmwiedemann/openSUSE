@@ -2,7 +2,9 @@
 
 # Monotional
 
-### Version 1.2
+### Version 1.6
+
+https://github.com/regularhunter/monotional-font
 
 Monotional is a humanist, monospace font based on 
 [DejaVu Sans Mono](https://github.com/dejavu-fonts/dejavu-fonts) and 
@@ -28,10 +30,27 @@ See the [latest release](https://github.com/regularhunter/monotional-font/releas
 for more information.
 
 
+**v1.6**
+
+ * Remove fi and fl ligature
+ * Fix swapped italic characters U+04CB/U+04CC <-> U+04F6/U+04F7
+
+**v1.5**
+
+ * Small adjustment to ` 4 ` glyph
+
+**v1.4**
+
+ * Small adjustment to ` @ ` glyph
+
+**v1.3**
+
+ * Small adjustment to ` % ` glyph
+
 **v1.2**
 
  * Re-implement Monotional on top of DejaVu Sans Mono from scratch to 
-fix display bug in MS Word. ` ~ @ ` glyphs still need to be re-implemented
+fix display bug in MS Word. ` ~ @ ` glyphs not re-implemented
  * Revert \` glyph width from v1.1 so that legibility is preserved for accented 
 characters
 

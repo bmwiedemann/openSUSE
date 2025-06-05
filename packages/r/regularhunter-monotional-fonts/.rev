@@ -9,4 +9,26 @@ and inspired by André Berg's Meslo. It is intended for programmers
 and those that do technical work.</comment>
     <requestid>1280986</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>05a25d06985aa71c0e73747415fe80d6</srcmd5>
+    <version>1.6</version>
+    <time>1749148439</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.6:
+  * Remove fi and fl ligature
+  * Fix swapped italic characters U+04CB/U+04CC &lt;-&gt; U+04F6/U+04F7
+
+
+
+- Update to 1.5:
+* Small adjustment to 4 glyph
+
+- Update to 1.4:
+* Small adjustment to @ glyph
+
+- Update to 1.3:
+* Small adjustment to % glyph
+</comment>
+    <requestid>1282918</requestid>
+  </revision>
 </revisionlist>
