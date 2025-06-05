@@ -1,7 +1,7 @@
 #
 # spec file for package python-dpkt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15allpythons}
 Name:           python-dpkt
 Version:        1.9.8
@@ -26,8 +25,10 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/kbandla/dpkt
 Source:         https://github.com/kbandla/dpkt/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -45,10 +46,10 @@ the basic TCP/IP protocols.
 sed -i -e '/addopts=/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +58,7 @@ sed -i -e '/addopts=/d' setup.cfg
 %files %{python_files}
 %license LICENSE
 %doc examples AUTHORS README.md docs
-%{python_sitelib}/*
+%{python_sitelib}/dpkt
+%{python_sitelib}/dpkt-%{version}.dist-info
 
 %changelog
