@@ -1,7 +1,7 @@
 #
 # spec file for package usbguard
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Source2:        usbguard.keyring
 Source3:        usbguard-daemon.conf
 Source4:        usbguard-rpmlintrc
 Patch0:         usbguard-pthread.patch
+# PATCH-FIX-UPSTREAM usbguard-protobuf-30.patch -- based on PR 650
+Patch1:         usbguard-protobuf-30.patch
 BuildRequires:  asciidoc
 BuildRequires:  audit-devel
 BuildRequires:  autoconf
@@ -152,8 +154,7 @@ find %{buildroot} \( -name '*.la' -o -name '*.a' \) -delete
 %pre
 %service_add_pre usbguard.service usbguard-dbus.service
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files
 %doc README.adoc CHANGELOG.md

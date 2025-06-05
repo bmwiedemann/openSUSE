@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  4 20:14:00 UTC 2025 - munix9@googlemail.com
+
+- Add usbguard-protobuf-30.patch
+  * Adapt for protobuf 30.0 API changes
+    based on https://github.com/USBGuard/usbguard/pull/650
+
+-------------------------------------------------------------------
 Thu Jun  6 18:02:42 UTC 2024 - Robert Frohl <rfrohl@suse.com>
 
 - update to 1.1.3
