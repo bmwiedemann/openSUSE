@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May 24 09:54:45 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Remove global uki extra dir
+  * Global extra dir will be manage in another package.
+
+-------------------------------------------------------------------
+Fri May 23 22:20:17 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Add vanilla flavor
+  - BuildRequires to the new initrd package.
+
+-------------------------------------------------------------------
+Wed May 14 08:31:42 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- multi-versioning
+  - Add source_rel and use it for adding Provides with good versioning. 
+  - Add uname in files
+  - Provides multiversion(kernel)
+
+-------------------------------------------------------------------
 Wed Jan  8 09:38:31 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Fix posttrans script condition
