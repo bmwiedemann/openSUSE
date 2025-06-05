@@ -1,7 +1,7 @@
 #
 # spec file for package python-mycli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        BSD-3-Clause
 URL:            http://mycli.net
 Source:         https://files.pythonhosted.org/packages/source/m/mycli/mycli-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION runtime requirements for tests
@@ -73,10 +75,10 @@ CLI for MySQL Database. With auto-completion and syntax highlighting.
 %setup -q -n mycli-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/mycli
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 

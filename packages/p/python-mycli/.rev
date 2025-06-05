@@ -59,4 +59,12 @@
     <comment>- use modern python for sle15</comment>
     <requestid>1193897</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>7e44a9e58806efee13251f3bae68398a</srcmd5>
+    <version>1.27.2</version>
+    <time>1749148447</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282937</requestid>
+  </revision>
 </revisionlist>

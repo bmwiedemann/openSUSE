@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  5 04:38:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Aug 14 14:53:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - use modern python for sle15
