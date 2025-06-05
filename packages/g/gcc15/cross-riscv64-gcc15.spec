@@ -22,7 +22,7 @@
 %define gcc_target_glibc 1
 # nospeccleaner
 
-%define build_cp 0%{!?gcc_accel:1}
+%define build_cp 1
 %if 0%{?gcc_libc_bootstrap:1} || "%{cross_arch}" == "bpf"
 %define build_cp 0
 %endif
@@ -102,7 +102,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        15.1.1+git9642
+Version:        15.1.1+git9739
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -257,7 +257,11 @@ ExcludeArch:    %{cross_arch}
 %endif
 %endif
 %if 0%{?gcc_icecream:1}%{?gcc_libc_bootstrap:1}
+%if %{suse_version} < 1699 && "%{cross_arch}" == "loongarch64"
+ExclusiveArch:  do-not-build
+%else
 ExclusiveArch:  i586 ppc64le x86_64 s390x aarch64  loongarch64
+%endif
 %endif
 %define _binary_payload w.ufdio
 # Obsolete cross-ppc-gcc49 from cross-ppc64-gcc49 which has
@@ -275,7 +279,7 @@ Conflicts:      %{gcc_target_arch}-gcc
 # The -bootstrap packages file-conflict with the non-bootstrap variants.
 # Even if we don't actually (want to) distribute the bootstrap variants
 # the following avoids repo-checker spamming us endlessly.
-Conflicts:      cross-%{cross_arch}-gcc15
+Conflicts:      %{gcc_target_arch}-gcc
 %endif
 #!BuildIgnore: gcc-PIE
 %if %{build_cp}
@@ -284,10 +288,12 @@ Conflicts:      cross-%{cross_arch}-gcc15
 # the libs, though)
 Requires:       libstdc++6-devel-gcc15
 %endif
+%if !0%{?gcc_target_newlib:1}%{?gcc_target_glibc:1}
 %if 0%{!?gcc_accel:1}
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
+%endif
 %endif
 Summary:        The GNU Compiler Collection targeting %{cross_arch}
 License:        GPL-3.0-or-later
@@ -838,6 +844,7 @@ rm -rf $RPM_BUILD_ROOT%{_infodir}
 # for accelerators remove all frontends but lto1 and also install-tools
 %if 0%{?gcc_accel:1}
 rm -f $RPM_BUILD_ROOT%{libsubdir}/accel/%{gcc_target_arch}/cc1
+rm -f $RPM_BUILD_ROOT%{libsubdir}/accel/%{gcc_target_arch}/f951
 rm -f $RPM_BUILD_ROOT%{libsubdir}/accel/%{gcc_target_arch}/cc1plus
 rm -rf $RPM_BUILD_ROOT%{libsubdir}/accel/%{gcc_target_arch}/install-tools
 rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}/install-tools
@@ -845,6 +852,8 @@ rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}/install-tools
 # that is the place where we later search for (only)
 ( cd $RPM_BUILD_ROOT%{targetlibsubdir} && tar cf - . ) | ( cd $RPM_BUILD_ROOT%{libsubdir}/accel/%{gcc_target_arch} && tar xf - )
 rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}
+# also remove installed libstdc++ headers
+rm -rf $RPM_BUILD_ROOT%{_prefix}/include/c++
 %endif
 # for amdgcn install the symlinks to the llvm tools
 # follow alternatives symlinks to the hardcoded version requirement
@@ -910,6 +919,20 @@ rm -r env
 # we provide update-alternatives for selecting a compiler version for
 # crosses
 %if 0%{!?gcc_accel:1}
+%if 0%{?gcc_target_newlib:1}%{?gcc_target_glibc:1}
+for ex in gcc cpp \
+%if %{build_cp}
+          c++ g++ \
+%endif
+          gcc-ar gcc-nm gcc-ranlib lto-dump \
+%if 0%{!?gcc_libc_bootstrap:1} && "%{cross_arch}" != "bpf"
+          gcov gcov-dump gcov-tool \
+%endif
+	  ; do
+  ln -s %{_bindir}/%{gcc_target_arch}-$ex%{binsuffix} \
+	%{buildroot}%{_bindir}/%{gcc_target_arch}-$ex
+done
+%else
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 for ex in gcc cpp \
 %if %{build_cp}
@@ -946,6 +969,7 @@ done
 if [ ! -f %{_bindir}/%{gcc_target_arch}-gcc ] ; then
   %{_sbindir}/update-alternatives --remove %{gcc_target_arch}-gcc %{_bindir}/%{gcc_target_arch}-gcc%{binsuffix}
 fi
+%endif
 %endif
 
 %files
@@ -984,6 +1008,7 @@ fi
 %{_prefix}/bin/%{gcc_target_arch}-gcc-nm
 %{_prefix}/bin/%{gcc_target_arch}-gcc-ranlib
 %{_prefix}/bin/%{gcc_target_arch}-lto-dump
+%if !0%{?gcc_target_newlib:1}%{?gcc_target_glibc:1}
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcc
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-cpp
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcc-ar
@@ -995,13 +1020,16 @@ fi
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcov-dump
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcov-tool
 %endif
+%endif
 %if %{build_cp}
 %{_prefix}/bin/%{gcc_target_arch}-c++%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-g++%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-c++
 %{_prefix}/bin/%{gcc_target_arch}-g++
+%if !0%{?gcc_target_newlib:1}%{?gcc_target_glibc:1}
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-c++
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-g++
+%endif
 %if 0%{!?gcc_libc_bootstrap:1}
 %if "%{cross_arch}" == "avr" || 0%{?gcc_target_newlib:1} || 0%{?gcc_target_glibc:1}
 %{_prefix}/include/c++

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jun  4 07:53:48 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Exclude shared objects present for link editing in the GCC specific
+  subdirectory from provides processing via __provides_exclude_from.
+  [bsc#1244050][bsc#1243991]
+
+-------------------------------------------------------------------
+Tue Jun  3 12:36:35 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Make cross-*-gcc15-bootstrap package conflict with the non-bootstrap
+  variant conflict with the unversioned cross-*-gcc package.
+
+-------------------------------------------------------------------
+Fri May 30 06:59:37 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Enable C++ for offload compilers.  [bsc#1243794]
+
+-------------------------------------------------------------------
+Wed May 28 08:40:24 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC 15 branch head, 15.1.1+git9739
+- Do not build any loongarch64 compiler for distros where we do
+  not have cross-binutils.
+
+-------------------------------------------------------------------
+Tue May 13 11:20:45 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Prune set of cross-compilers that conflict with different
+  versions from the set using update-alternatives.
+
+-------------------------------------------------------------------
 Thu May  8 09:10:35 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Update to GCC 15 branch head, 15.1.1+git9642

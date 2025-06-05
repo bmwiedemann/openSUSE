@@ -238,7 +238,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        15.1.1+git9642
+Version:        15.1.1+git9739
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -981,6 +981,8 @@ make -k check %{?_smp_mflags} || true
 mkdir ../testresults
 ../contrib/test_summary | tee ../testresults/test_summary.txt
 %endif
+
+%define __provides_exclude_from ^%{libsubdir}/.*\.so.*$
 
 %install
 # Make sure libtool re-linking libasan at install time doesn't drop the

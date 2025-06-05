@@ -84,4 +84,26 @@ since we bumped libgo SONAME as well for 15</comment>
   package.</comment>
     <requestid>1275527</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2d2e6ae82327be6f2d8ca088da716844</srcmd5>
+    <version>15.1.1+git9739</version>
+    <time>1749148285</time>
+    <user>anag_factory</user>
+    <comment>- Exclude shared objects present for link editing in the GCC specific
+  subdirectory from provides processing via __provides_exclude_from.
+  [bsc#1244050][bsc#1243991]
+
+- Make cross-*-gcc15-bootstrap package conflict with the non-bootstrap
+  variant conflict with the unversioned cross-*-gcc package.
+
+- Enable C++ for offload compilers.  [bsc#1243794]
+
+- Update to GCC 15 branch head, 15.1.1+git9739
+- Do not build any loongarch64 compiler for distros where we do
+  not have cross-binutils.
+
+- Prune set of cross-compilers that conflict with different
+  versions from the set using update-alternatives.</comment>
+    <requestid>1282740</requestid>
+  </revision>
 </revisionlist>
