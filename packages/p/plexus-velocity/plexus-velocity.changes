@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun  4 16:07:09 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.2.1
+  * Dependency updates
+    + Bump org.apache.velocity:velocity-engine-core from 2.4 to
+      2.4.1
+    + Bump org.apache.velocity:velocity-engine-core from 2.3 to 2.4
+    + Bump org.eclipse.sisu:org.eclipse.sisu.inject from 0.9.0.M2 to
+      0.9.0.M3
+    + Bump org.codehaus.plexus:plexus from 19 to 20
+    + Bump org.codehaus.plexus:plexus from 18 to 19
+    + Bump org.codehaus.plexus:plexus from 17 to 18
+    + Bump org.codehaus.plexus:plexus from 16 to 17
+    + Bump release-drafter/release-drafter from 5 to 6
+
+-------------------------------------------------------------------
 Tue Jun  3 08:26:14 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on objectweb-asm to build with sisu 0.9.0.M4

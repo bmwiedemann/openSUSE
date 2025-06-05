@@ -17,7 +17,7 @@
 
 
 Name:           plexus-velocity
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        Plexus Velocity Component
 License:        Apache-2.0
