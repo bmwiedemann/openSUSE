@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-labels
 Version:        20.1.0
 Release:        0
@@ -29,12 +30,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-attrs
 Requires:       python-click
 Requires:       python-pytoml
 Requires:       python-requests
-Requires(post): alts
-Requires(postun): alts
+BuildRequires:  alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module attrs}
@@ -65,11 +66,9 @@ CLI app for managing GitHub labels.
 export LANG=en_US.UTF-8
 %pytest
 
-%post
-%python_install_alternative labels
-
-%postun
-%python_uninstall_alternative labels
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative labels
 
 %files %{python_files}
 %doc README.md
