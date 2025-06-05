@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun  4 15:35:44 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.5.0
+  * New features and improvements
+    + Read only first 8 bytes of class in JavaClassfileVersion
+    + Bump org.ow2.asm:asm from 9.6 to 9.7 - JDK 23 support
+    + Bump org.ow2.asm:asm from 9.7 to 9.7.1 - JDK 24 support
+    + Bump org.ow2.asm:asm from 9.7.1 to 9.8
+  * Maintenance
+    + Project cleanups
+    + Rename resources of test data
+    + Bump release-drafter/release-drafter from 5 to 6
+    + Reuse plexus-pom action for CI
+    + Disable deploy job on GitHub
+    + Added CI for JDK 24-ea
+- Modified patch:
+  * plexus-languages-atinject.patch
+    + rediff
+
+-------------------------------------------------------------------
 Mon Apr 29 11:45:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - The binaries are compatible with java 1.8

@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-languages
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # binaries are java 8 compatible
 %define __requires_exclude java-headless
 Name:           plexus-languages
-Version:        1.2.0
+Version:        1.5.0
 Release:        0
 Summary:        Plexus Languages
 License:        Apache-2.0
