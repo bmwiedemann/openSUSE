@@ -1,35 +1,23 @@
 <services>
-    <service name="obs_scm" mode="manual">
-        <param name="url">https://gitlab.torproject.org/tpo/core/arti.git</param>
-        <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
-        <param name="scm">git</param>
-        <param name="revision">arti-v1.3.1</param>
-        <param name="match-tag">*</param>
-        <param name="versionrewrite-pattern">arti-v(\d+\.\d+\.\d+)</param>
-        <param name="versionrewrite-replacement">\1</param>
-        <param name="changesgenerate">enable</param>
-    </service>
+    <service name="download_files" mode="manual" />
 
-    <service name="set_version" mode="manual" />
     <service name="cargo_vendor" mode="manual">
-        <param name="srcdir">arti</param>
+        <param name="srcdir">arti-*.tar.gz</param>
         <param name="compression">zst</param>
         <param name="update">true</param>
 
         <!--
-        From https://gitlab.torproject.org/tpo/core/arti/-/blob/2db5ccf16d2f977c073ba3f142513b920fb7b6a1/maint/cargo_audit
+        From https://gitlab.torproject.org/tpo/core/arti/-/blob/arti-v1.4.2/maint/cargo_audit
         -->
 
         <!--
-        This is a real but theoretical unaligned read.  It might happen only on
+        This is a real but theoretical unaligned read. It might happen only on
         Windows and only with a custom global allocator, which we don't do in our
-        arti binary.  The bad crate is depended on by env-logger and clap.
+        arti binary. The bad crate is depended on by env-logger.
         This is being discussed by those crates' contributors here:
-            https://github.com/clap-rs/clap/pull/4249
             https://github.com/rust-cli/env_logger/pull/246
         -->
         <param name="i-accept-the-risk">RUSTSEC-2021-0145</param>
-
         <!--
         As of 28 Nov 2023, all versions of the rsa crate have a variable
         timing attack that can leak private keys.
@@ -38,21 +26,37 @@
         we only use it to verify signatures.
         -->
         <param name="i-accept-the-risk">RUSTSEC-2023-0071</param>
-
-
         <!--
-        This is not a vulnerability but an unmaintained warning for
-        `generational-arena`. It is only used by arti-rpcserver (which is
-        experimental).
-        -->
-        <param name="i-accept-the-risk">RUSTSEC-2024-0014</param>
+        instant is unmaintained.
 
+        The current dependency path is:
+        arti -> signal-hook-async-std -> futures-lite -> fastrand -> instant
+
+        The 'signal-hook-async-std' lib hasn't been updated in three years and depends on `futures-lite = "~1"`.
+        The latest 'futures-lite' 2.6.0 uses a version of 'fastrand' that does not depend on instant.
+
+        We should consider trying to upstream patches for 'signal-hook-async-std',
+        or remove arti's dependence on it.
+
+        https://gitlab.torproject.org/tpo/core/arti/-/issues/1867
+        -->
+        <param name="i-accept-the-risk">RUSTSEC-2024-0384</param>
+        <!--
+        paste is unmaintained.
+
+        We depend on it directly in crates like tor-error, tor-persist, tor-config,
+        and also transitively, for example via
+        futures-rustls -> rustls -> aws-lc-rc -> paste
+        and slotmap-careful -> paste.
+
+        In the long run, we should consider replacing it with another crate
+        (concat-idents?).
+        -->
+        <param name="i-accept-the-risk">RUSTSEC-2024-0436</param>
     </service>
 
     <service name="cargo_audit" mode="manual">
         <param name="srcdir">arti</param>
     </service>
 
-
-    <service name="tar" mode="buildtime" />
 </services>

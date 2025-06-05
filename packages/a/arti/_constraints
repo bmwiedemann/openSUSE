@@ -1,8 +1,8 @@
 <constraints>
   <hardware>
-    <memory>
-     <size unit="G">20</size>
-    </memory>
+    <physicalmemory>
+     <size unit="G">16</size>
+    </physicalmemory>
     <disk>
       <size unit="G">35</size>
     </disk>

@@ -119,4 +119,18 @@ It doesn't build on 15.5 because of rust being too old
     from building new channels to their target relays.</comment>
     <requestid>1230951</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>465323da929dec9757e634a6dbe7711f</srcmd5>
+    <version>1.4.3</version>
+    <time>1749148436</time>
+    <user>anag_factory</user>
+    <comment>- Re-run vendoring via obs-service-cargo 
+- Increment rustc memory to 8GB/worker 
+
+- Use source urls to fetch sources
+- Update to version 1.4.3:
+
+- Update to version 1.4.2:</comment>
+    <requestid>1282900</requestid>
+  </revision>
 </revisionlist>

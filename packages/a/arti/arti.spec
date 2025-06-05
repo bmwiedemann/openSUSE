@@ -1,7 +1,7 @@
 #
 # spec file for package arti
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,14 @@
 #
 
 
+%define git_hash 37c0c70ac5cacf49960b4ad91fddcd695708d6c2
 Name:           arti
-Version:        1.3.1~0
+Version:        1.4.3
 Release:        0
 Summary:        An implementation of Tor, in Rust.
 License:        Apache-2.0 OR MIT
 URL:            https://gitlab.torproject.org/tpo/core/arti
-Source0:        %{name}-%{version}.tar
+Source0:        https://gitlab.torproject.org/tpo/core/arti/-/archive/arti-v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  memory-constraints
@@ -35,10 +36,10 @@ ExclusiveArch:  %{rust_tier1_arches}
 An implementation of Tor, in Rust
 
 %prep
-%autosetup -p1 -a1
+%autosetup -p1 -a1 -n arti-arti-v%{version}-%{git_hash}
 
 %build
-%limit_build -m 5000
+%limit_build -m 8000
 %{cargo_build}
 
 %install
