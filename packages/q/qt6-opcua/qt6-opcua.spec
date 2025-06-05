@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.0
+%define real_version 6.9.1
 %define short_version 6.9
 %define tar_name qtopcua-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\(OpcUaMachineBackend\\)
 #
 Name:           qt6-opcua%{?pkg_suffix}
-Version:        6.9.0
+Version:        6.9.1
 Release:        0
 Summary:        Qt wrapper for existing OPC UA stacks
 # src/plugins/opcua is GPL-3.0-or-later, rest is dual licensed
