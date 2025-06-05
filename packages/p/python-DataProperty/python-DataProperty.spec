@@ -22,10 +22,12 @@ Version:        1.1.0
 Release:        0
 Summary:        Python library for extract property from data
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/thombashi/DataProperty
 Source:         https://files.pythonhosted.org/packages/source/d/dataproperty/dataproperty-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 38.3.0}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mbstrdecoder >= 1.0.0
@@ -48,10 +50,10 @@ Python library for extract property from data.
 %setup -q -n dataproperty-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,7 +64,7 @@ export FORCE_COLOR=1
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/dataproperty*
-%{python_sitelib}/DataProperty*
+%{python_sitelib}/dataproperty
+%{python_sitelib}/[Dd]ata[Pp]roperty-%{version}.dist-info
 
 %changelog
