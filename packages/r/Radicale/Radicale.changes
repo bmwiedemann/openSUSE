@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 28 20:02:32 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+
+- Update to 3.5.4
+  * item filter enhanced for 3rd level supporting VALARM and honoring TRIGGER (offset or absolute)
+  * add Caddy config file example (see contrib directory)
+
+-------------------------------------------------------------------
 Wed May 21 06:40:59 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
 
 - Update to 3.5.3
