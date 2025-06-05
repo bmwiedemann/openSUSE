@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  5 08:53:51 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Enable sle15allpythons to additionally build for modern Python
+
+-------------------------------------------------------------------
 Tue May 27 12:22:41 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

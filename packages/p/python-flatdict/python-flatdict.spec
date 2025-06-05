@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15allpythons}
 Name:           python-flatdict
 Version:        4.0.1
 Release:        0
