@@ -32,6 +32,12 @@ Mon Jun  2 15:41:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
     argument.
   * Set enable_context_propagation to all to get the same behaviour
     as enable_context_propagation being set to true.
+  Security
+  * CVE-2025-22872: Fix tokenizer incorrectly interpretting tags
+    (bsc#1241863).
+  * CVE-2025-46327: Fix race condition when checking access
+    permissions to the Easy Logging configuration file
+    (bsc#1242020).
   Features
   * Bump snmp_exporter and embedded modules in
     prometheus.exporter.snmp to v0.29.0, add cisco_device module
