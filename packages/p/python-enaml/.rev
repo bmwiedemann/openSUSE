@@ -147,4 +147,12 @@
     <comment></comment>
     <requestid>1282547</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>b9023af35e6f7d686d072f195668dfed</srcmd5>
+    <version>0.18.0</version>
+    <time>1749148531</time>
+    <user>anag_factory</user>
+    <comment>- switch to use Qt6 bindings as Qt5 is going EOL</comment>
+    <requestid>1283316</requestid>
+  </revision>
 </revisionlist>

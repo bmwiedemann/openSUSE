@@ -1,7 +1,7 @@
 #
 # spec file for package python-enaml
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,20 +42,21 @@ Requires:       python-ply
 # SECTION The Qt variants are optional variants in the python metadata, but probably either one is required and they all require QtPy
 Requires:       python-QtPy >= 2.1.0
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
-# pyside is python3 only, PyQt5 (-qt5) and PyQt6 are multiflavored
+# pyside is python3 only, PyQt6 are multiflavored
 %if 0%{?suse_version} > 1500
-Requires:       (python-qt5 or python-PyQt6 >= 6.3.1 or python3-pyside6 >= 6.2.3)
+Requires:       (python-PyQt6 >= 6.3.1 or python3-pyside6 >= 6.2.3)
 %else
 Requires:       (python-qt5 or python-PyQt6 >= 6.3.1 or python3-pyside2 or python3-pyside6 >= 6.2.3)
 %endif
 %else
-Requires:       (python-qt5 or python-PyQt6 >= 6.3.1)
+Requires:       python-PyQt6 >= 6.3.1
 %endif
 # /SECTION
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # SECTION test requirements
 BuildRequires:  %{python_module QtPy >= 2.1.0}
+BuildRequires:  %{python_module PyQt6}
 BuildRequires:  %{python_module atom >= 0.8.0}
 BuildRequires:  %{python_module bytecode >= 0.13.0}
 BuildRequires:  %{python_module kiwisolver >= 1.2.0}
@@ -64,7 +65,6 @@ BuildRequires:  %{python_module ply}
 BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module qt5}
 BuildRequires:  xauth
 BuildRequires:  xorg-x11-fonts
 # /SECTION
@@ -80,7 +80,7 @@ applications can be run on any platform which supports
 Python and Qt.
 
 %prep
-%setup -q -n enaml-%{version}
+%autosetup -p1 -n enaml-%{version}
 
 %build
 export CFLAGS="%{optflags}"
