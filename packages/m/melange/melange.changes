@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 04 18:30:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.6:
+  * qemu: ensure CacheDir exists when specified (#2025)
+  * build(deps): bump the actions group across 1 directory with 4
+    updates (#1980)
+  * Upgrade everything (#2020)
+
+-------------------------------------------------------------------
 Tue Jun 03 19:27:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.5:
