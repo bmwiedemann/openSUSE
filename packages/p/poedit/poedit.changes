@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  3 18:07:29 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Poedit 3.6 (3.6.3):
+  * Support for Apple XCLOC localization bundles.
+  * Significantly improved updating and merging UI, with detailed
+    changes reporting and error handling.
+  * Long-running operations such as export/import now all report progress.
+  * Added Serbian (Latin) and Uyghur translations.
+  * Performance and UI responsiveness improvements.
+
+-------------------------------------------------------------------
 Tue Apr 22 11:01:57 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Drop build requires on cpprest, it's being removed 
