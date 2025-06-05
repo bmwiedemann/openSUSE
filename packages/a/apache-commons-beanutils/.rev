@@ -184,4 +184,12 @@
     <comment>bsc#1243793, CVE-2025-48734</comment>
     <requestid>1281179</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>9b9f8846685ad3f743331dd9d0c2591f</srcmd5>
+    <version>1.11.0</version>
+    <time>1749148452</time>
+    <user>anag_factory</user>
+    <comment>sync with sle</comment>
+    <requestid>1282983</requestid>
+  </revision>
 </revisionlist>

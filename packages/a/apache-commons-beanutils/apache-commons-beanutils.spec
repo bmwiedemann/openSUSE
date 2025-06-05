@@ -16,6 +16,7 @@
 #
 
 
+%{?!mvn_install_pom:%global mvn_install_pom install -pm 0644}
 %define base_name	beanutils
 %define short_name	commons-%{base_name}
 Name:           apache-commons-beanutils
@@ -32,8 +33,11 @@ BuildRequires:  ant
 BuildRequires:  commons-collections
 BuildRequires:  commons-logging
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local >= 6
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local
 BuildRequires:  xml-commons-apis
+Requires:       commons-collections >= 2.0
+Requires:       commons-logging >= 1.0
 Provides:       %{short_name} = %{version}-%{release}
 Obsoletes:      %{short_name} < %{version}-%{release}
 Provides:       jakarta-%{short_name} = %{version}-%{release}

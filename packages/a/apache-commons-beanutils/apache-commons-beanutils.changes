@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  5 06:22:08 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Adapt the spec file, so that it can be used for building on
+  SLE12SP1 and Factory alike.
+
+-------------------------------------------------------------------
 Thu May 29 15:56:24 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 1.11.0
@@ -128,7 +134,7 @@ Fri Sep 21 07:44:23 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Thu Sep 20 10:45:41 UTC 2018 - pmonrealgonzalez@suse.com
 
-- Updated to 1.9.3 
+- Updated to 1.9.3
   * This is a bug fix release, which also improves the tests for
     building on Java 8.
   * Note that Java 8 and later no longer support indexed bean
@@ -137,22 +143,22 @@ Thu Sep 20 10:45:41 UTC 2018 - pmonrealgonzalez@suse.com
     and PropertyUtils.getPropertyDescriptor(); their javadoc have
     therefore been updated to reflect this change in the JDK.
   * Changes in this version include:
-    - Fixed Bugs: 
+    - Fixed Bugs:
       * BEANUTILS-477: Changed log level in FluentPropertyBeanIntrospector
       * BEANUTILS-492: Fixed exception when setting indexed properties
           on DynaBeans.
       * BEANUTILS-470: Precision lost when converting BigDecimal.
       * BEANUTILS-465: Indexed List Setters fixed.
     - Changes:
-      * BEANUTILS-433: Update dependency from JUnit 3.8.1 to 4.12. 
-      * BEANUTILS-469: Update commons-logging from 1.1.1 to 1.2. 
+      * BEANUTILS-433: Update dependency from JUnit 3.8.1 to 4.12.
+      * BEANUTILS-469: Update commons-logging from 1.1.1 to 1.2.
       * BEANUTILS-474: FluentPropertyBeanIntrospector does not use the
       	same naming algorithm as DefaultBeanIntrospector.
-      * BEANUTILS-490: Update Java requirement from Java 5 to 6. 
+      * BEANUTILS-490: Update Java requirement from Java 5 to 6.
       * BEANUTILS-482: Update commons-collections from 3.2.1 to 3.2.2
         (CVE-2015-4852).
       * BEANUTILS-490: Update java requirement to Java 6.
-      * BEANUTILS-492: IndexedPropertyDescriptor tests now pass on Java 8. 
+      * BEANUTILS-492: IndexedPropertyDescriptor tests now pass on Java 8.
       * BEANUTILS-495: DateConverterTestBase fails on M/d/yy in Java 9.
       * BEANUTILS-496: testGetDescriptorInvalidBoolean fails on Java 9.
     - Historical list of changes:
@@ -201,7 +207,7 @@ Mon Jul  7 08:04:04 UTC 2014 - dmacvicar@suse.de
 -------------------------------------------------------------------
 Mon Apr  2 13:23:15 UTC 2012 - mvyskocil@suse.cz
 
-- update to 1.8.3 and rename to apache- to follow the upstream 
+- update to 1.8.3 and rename to apache- to follow the upstream
 - fixes in this release
   * memory leak in jdk5/jdk6 BEANUTILS-291, BEANUTILS-366
   * BEANUTILS-373 MethodUtils is not thread safe because WeakFastHashMap which
