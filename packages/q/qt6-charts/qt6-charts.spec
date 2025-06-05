@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.0
+%define real_version 6.9.1
 %define short_version 6.9
 %define short_name qtcharts
 %define tar_name qtcharts-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-charts%{?pkg_suffix}
-Version:        6.9.0
+Version:        6.9.1
 Release:        0
 Summary:        Qt 6 Charts library
 License:        GPL-3.0-only
