@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-misaka
 Version:        2.1.1
 Release:        0
@@ -29,12 +30,12 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  tidy
+Requires:       alts
 Requires:       python-cffi >= 1.12.0
-Requires(post): alts
-Requires(postun): alts
 %python_subpackages
 
 %description
@@ -56,11 +57,11 @@ A CFFI binding for Hoedown_ (version 3), a markdown parsing library.
 $python tests/run_tests.py
 }
 
-%post
-%python_install_alternative misaka
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative misaka
 
-%postun
-%python_uninstall_alternative misaka
+# post and postun calls are not needed with libalternatives only
 
 %files %{python_files}
 %license LICENSE.txt
