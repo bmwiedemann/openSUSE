@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  5 06:09:43 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add Requires: python3-packaging (boo#1244106).
+
+-------------------------------------------------------------------
 Thu Mar 20 09:21:07 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.

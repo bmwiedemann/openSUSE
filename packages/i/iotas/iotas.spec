@@ -27,13 +27,14 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  python3
-BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(gtksourceview-5)
+BuildRequires:  pkgconfig(libadwaita-1)
 Requires:       python3-gobject-Gdk
+Requires:       python3-packaging
 Requires:       python3-pygtkspellcheck
 BuildArch:      noarch
 
