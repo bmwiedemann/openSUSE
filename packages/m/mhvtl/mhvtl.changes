@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 03 18:16:05 UTC 2025 - lduncan@suse.com
+
+- Update to version 1.72_release+6.a11b6777660b:
+  * Add SET/GET TIMESTAMP op code support
+  * RPM SPEC: Update to require tar 1.28
+  * LBP: verify_lbp_crc should return a signed value
+  * library: Fix vendor 'QUANTUM' not 'SCALAR'
+- Add 4 patches submitted upstream, to fix build issues:
+  * 0001-kernel-config-replace-fgrep-with-grep-F.patch
+  * 0002-kernel-config-put-braces-around-debug-stmnt.patch
+  * 0003-Fix-external-declarations-of-crc32c.patch
+  * 0004-kernel-config-handle-del_timer_sync-kABI-rename.patch
+
+-------------------------------------------------------------------
 Mon May 12 14:30:12 UTC 2025 - lduncan@suse.com
 
 - Update to version 1.72_release+2.94d8d07c8d71:
@@ -472,4 +486,3 @@ Tue May 22 21:59:11 UTC 2018 - lduncan@suse.com
 
 - Initial creation of package, from version 1.5-3_release
 
--------------------------------------------------------------------

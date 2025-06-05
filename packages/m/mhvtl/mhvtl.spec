@@ -26,7 +26,7 @@
 
 Name:           mhvtl
 URL:            http://sites.google.com/site/linuxvtl2/
-Version:        1.72_release+2.94d8d07c8d71
+Version:        1.72_release+6.a11b6777660b
 Release:        0
 Requires:       mhvtl-kmp
 Requires:       module-init-tools
@@ -39,6 +39,7 @@ BuildRequires:  module-init-tools
 BuildRequires:  fdupes
 BuildRequires:  modutils
 BuildRequires:  openssl-devel
+BuildRequires:  policycoreutils-python-utils
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 Summary:        Virtual Tape Library system
@@ -46,6 +47,10 @@ License:        GPL-2.0-only
 Group:          System/Daemons
 Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}.preamble
+Patch1:         0001-kernel-config-replace-fgrep-with-grep-F.patch
+Patch2:         0002-kernel-config-put-braces-around-debug-stmnt.patch
+Patch3:         0003-Fix-external-declarations-of-crc32c.patch
+Patch4:         0004-kernel-config-handle-del_timer_sync-kABI-rename.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
