@@ -385,4 +385,12 @@
   * 0001-Client-Reset-mFrameCallbackTimedOut-when-showing-a-w.patch</comment>
     <requestid>1270197</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>557d6afcfa780fd9f49b846563d6d703</srcmd5>
+    <version>6.9.1</version>
+    <time>1749148359</time>
+    <user>anag_factory</user>
+    <comment>Qt 6.9.1 (forwarded request 1282452 from krop)</comment>
+    <requestid>1282586</requestid>
+  </revision>
 </revisionlist>
