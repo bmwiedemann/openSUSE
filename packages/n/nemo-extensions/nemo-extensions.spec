@@ -29,7 +29,6 @@ Patch1:         gnome-installer-removal.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
-BuildRequires:  gnome-common
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  meld
