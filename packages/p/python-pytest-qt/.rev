@@ -226,4 +226,14 @@
     <comment></comment>
     <requestid>1249316</requestid>
   </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>e13fddd364d32fd761fce9a376691db2</srcmd5>
+    <version>4.4.0</version>
+    <time>1749148505</time>
+    <user>anag_factory</user>
+    <comment>- Drop tests for python3-pyside2 and python-qt5 as Standard Qt 5
+  support officially ends after 26th of may 2025.
+  (boo#1243916)</comment>
+    <requestid>1283039</requestid>
+  </revision>
 </revisionlist>

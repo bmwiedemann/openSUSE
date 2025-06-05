@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  5 10:11:48 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Drop tests for python3-pyside2 and python-qt5 as Standard Qt 5
+  support officially ends after 26th of may 2025.
+  (boo#1243916)
+
+-------------------------------------------------------------------
 Thu Feb 27 09:22:15 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to fix a test that fails when building with the latest

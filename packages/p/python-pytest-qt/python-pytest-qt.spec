@@ -24,33 +24,12 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%if "%{flavor}" == "test-pyqt5"
-%define psuffix -%{flavor}
-%define test_qtapi pyqt5
-%bcond_without test
-BuildRequires:  %{python_module qt5}
-BuildConflicts: %{python_module PyQt6}
-BuildConflicts: %{python_module pyside2}
-BuildConflicts: %{python_module pyside6}
-%endif
 %if "%{flavor}" == "test-pyqt6"
 %define psuffix -%{flavor}
 %define test_qtapi pyqt6
 %bcond_without test
 BuildRequires:  %{python_module PyQt6}
-BuildConflicts: %{python_module pyside2}
 BuildConflicts: %{python_module pyside6}
-BuildConflicts: %{python_module qt5}
-%endif
-%if "%{flavor}" == "test-pyside2"
-%define psuffix -%{flavor}
-%{!?sle15_python_module_pythons:%define pythons python3}
-%define test_qtapi pyside2
-%bcond_without test
-BuildRequires:  %{python_module pyside2}
-BuildConflicts: %{python_module PyQt6}
-BuildConflicts: %{python_module pyside6}
-BuildConflicts: %{python_module qt5}
 %endif
 %if "%{flavor}" == "test-pyside6"
 %define psuffix -%{flavor}
@@ -61,8 +40,6 @@ BuildConflicts: %{python_module qt5}
 %bcond_without test
 BuildRequires:  %{python_module pyside6}
 BuildConflicts: %{python_module PyQt6}
-BuildConflicts: %{python_module pyside2}
-BuildConflicts: %{python_module qt5}
 %endif
 Name:           python-pytest-qt%{psuffix}
 Version:        4.4.0
@@ -85,9 +62,7 @@ BuildRequires:  python-rpm-macros >= 20210608
 Requires:       bitstream-vera-fonts
 Requires:       python-pytest >= 3.0
 Suggests:       python-PyQt6
-Suggests:       python-pyside2
 Suggests:       python-pyside6
-Suggests:       python-qt5
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module pytest-qt = %{version}}
