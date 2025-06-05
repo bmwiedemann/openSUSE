@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jun  4 12:00:01 UTC 2025 - Cor Blom <cornelis@solcon.nl>
+
+- Add Gentium Book (now separate download)
+
+-------------------------------------------------------------------
+Wed Jun  4 11:20:10 UTC 2025 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 7.000:
+  This is a major update:
+  * New font family name: Gentium. This allows for 6.200 (Gentium-Plus)
+    and 7.000 to be installed at the same time. We don't package 
+    the old version, but it can easily be downloaded.
+  * Decreased default line spacing
+  * Additional intermediate weights: Medium & SemiBold
+  * Extensive kerning for all languages and generally improved spacing
+  * Oldstyle figures
+  * Enhancements to Greek including small caps and support for rare
+    and uncommon combinations
+  * Improved autohinting for better screen appearance and consistency
+  * Many fixes, character additions, and feature improvements
+- Drop 31-sil-gentium.conf: in light of the major changes, users
+  should see that the old version is not available, therefore we
+  will not use fontconfig to hide this
+
+-------------------------------------------------------------------
 Thu Feb  2 19:34:19 UTC 2023 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 6.200:

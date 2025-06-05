@@ -1,7 +1,7 @@
 #
 # spec file for package sil-gentium-fonts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           sil-gentium-fonts
-Version:        6.200
+Version:        7.000
 Release:        0
 Summary:        A International Typeface for Languages Using the Latin Script
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://software.sil.org/gentium/
-Source0:        https://software.sil.org/downloads/r/gentium/GentiumPlus-%{version}.zip
-Source1:        31-sil-gentium.conf
+Source0:        https://software.sil.org/downloads/r/gentium/Gentium-%{version}.zip
+Source1:        https://software.sil.org/downloads/r/gentium/GentiumBook-%{version}.zip
 BuildRequires:  fontconfig
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
@@ -40,7 +40,7 @@ alphabets and includes glyphs that correspond to all the Latin ranges
 of Unicode.
 
 %prep
-%setup -q -n GentiumPlus-%{version}
+%autosetup -n Gentium-%{version} -a 1
 chmod 644 *.txt *.ttf
 # Remove DOS line endings:
 for i in *.txt; do
@@ -52,7 +52,8 @@ done
 %install
 install -d %{buildroot}%{_ttfontsdir}
 install -c -m 644 *.ttf %{buildroot}%{_ttfontsdir}
-%install_fontsconf %{SOURCE1}
+# Also install Gentium Book
+install -c -m 644 */*.ttf %{buildroot}%{_ttfontsdir}
 
 %reconfigure_fonts_scriptlets
 
@@ -61,7 +62,5 @@ install -c -m 644 *.ttf %{buildroot}%{_ttfontsdir}
 %license OFL.txt
 %doc FONTLOG.txt OFL-FAQ.txt README.txt
 %{_ttfontsdir}
-%files_fontsconf_availdir
-%files_fontsconf_file -l 31-sil-gentium.conf
 
 %changelog
