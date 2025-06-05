@@ -271,4 +271,12 @@
     <comment>Qt 6.9.0</comment>
     <requestid>1266638</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c6a1c45b04430033fd667a24e7e88700</srcmd5>
+    <version>6.9.1</version>
+    <time>1749148385</time>
+    <user>anag_factory</user>
+    <comment>build with -j1 if deterministic build results are wanted (bsc#1228131) (forwarded request 1282734 from bmwiedemann)</comment>
+    <requestid>1282856</requestid>
+  </revision>
 </revisionlist>

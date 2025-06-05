@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun  4 12:05:22 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- build with -j1 if deterministic build results are wanted (bsc#1228131)
+
+-------------------------------------------------------------------
+Tue Jun  3 07:49:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.1:
+  * https://www.qt.io/blog/qt-6.9.1-released
+
+-------------------------------------------------------------------
 Wed Apr  2 11:03:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.0:
