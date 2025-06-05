@@ -19,7 +19,7 @@
 %define sover 0
 
 Name:           hyprgraphics
-Version:        0.1.1
+Version:        0.1.3
 Release:        0
 Summary:        Hyprland graphics / resource utilities
 License:        BSD-3-Clause
@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig(libjxl_threads)
 BuildRequires:  pkgconfig(libmagic)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(pixman-1)
+BuildRequires:  pkgconfig(spng)
 
 %define _description %{expand:
 Hyprgraphics is a small C++ library with graphics / resource related

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May  9 09:59:41 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.1.3:
+  + A minor update with some fixes and new CM-related math
+  + Additions:
+    - CM structs, constants & math
+
+- Changes from version 0.1.2:
+  + This release adds a few small fixes, and moves to a more robust
+    and fast png parser.
+  + Changes:
+    - move to libspng for png parsing
+    - Allow compiling without JXL support
+  + Fixes:
+    - add symlink support for image
+
+-------------------------------------------------------------------
 Tue Dec 17 13:15:53 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Initial packaging of hyprgraphics-0.1.1
