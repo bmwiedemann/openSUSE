@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 04 18:31:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.0:
+  * Features
+    - NELM_FEAT_PREVIEW_V2 feature gate (f7ad0ab)
+    - native release list command (ff9e1f0)
+    - native release uninstall command (4d85484)
+  * Bug Fixes
+    - show stack traces with NELM_FEAT_PERIODIC_STACK_TRACES=true
+      (20310db)
+
+-------------------------------------------------------------------
 Fri May 23 12:17:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.1:
