@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 05 12:14:22 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250605.889b8ca0:
+  * Dev: bootstrap: do not hide ssh-copy-id outputs in debug mode
+  * Fix: bootstrap: add sleeps to avoid triggering sshd PerSourcePenalties (bsc#1243141)
+
+-------------------------------------------------------------------
 Thu Jun 05 04:18:03 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250605.a553c49e:
