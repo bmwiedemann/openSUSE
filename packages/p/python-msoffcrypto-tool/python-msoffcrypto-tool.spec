@@ -1,7 +1,7 @@
 #
 # spec file for package python-msoffcrypto-tool
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +22,15 @@ Version:        4.10.2
 Release:        0
 Summary:        Library for decrypting MS Office files
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/nolze/msoffcrypto-tool
 Source:         https://files.pythonhosted.org/packages/source/m/msoffcrypto-tool/msoffcrypto-tool-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 2.3
 Requires:       python-olefile >= 0.45
-Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -52,10 +52,10 @@ files with passwords or other keys.
 wc -c msoffcrypto/method/xor_obfuscation.py | sed -n '/^0/{s/^0\s//;p}' | xargs rm
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/msoffcrypto-tool
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -73,6 +73,7 @@ wc -c msoffcrypto/method/xor_obfuscation.py | sed -n '/^0/{s/^0\s//;p}' | xargs 
 %doc README.md
 %license LICENSE.txt
 %python_alternative %{_bindir}/msoffcrypto-tool
-%{python_sitelib}/*
+%{python_sitelib}/msoffcrypto
+%{python_sitelib}/msoffcrypto_tool-%{version}.dist-info
 
 %changelog
