@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  5 04:39:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Do not mark everything as pycache_only.
+
+-------------------------------------------------------------------
 Wed Nov 27 11:40:39 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.5.7

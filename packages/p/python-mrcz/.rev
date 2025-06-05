@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>1226942</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a22fee87f3a182a9c521ebde7adf1799</srcmd5>
+    <version>0.5.7</version>
+    <time>1749148443</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Do not mark everything as pycache_only.</comment>
+    <requestid>1282932</requestid>
+  </revision>
 </revisionlist>
