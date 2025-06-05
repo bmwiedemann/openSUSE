@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.0
+%define real_version 6.9.1
 %define short_version 6.9
 %define tar_name qtgraphs-everywhere-src
 %define tar_suffix %{nil}
