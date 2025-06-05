@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun  4 18:51:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.98:
+  * Meshery CLI
+    - redirect to provider page when not selected @aabidsofi19
+      (#14921)
+- update to 0.8.97:
+  * Meshery CLI
+    - [meshery] [mesheryctl] chore: update repo from layer5 to
+      meshery: server and mesheryctl @n2h9 (#14917)
+  * Documentation
+    - rename remote provider @aabidsofi19 (#14918)
+    - [docs] chore: remove old adapter labs @leecalcote (#14909)
+    - [meshery] [mesheryctl] chore: update repo from layer5 to
+      meshery: server and mesheryctl @n2h9 (#14917)
+    - update docker user @vishalvivekm (#14915)
+- update to 0.8.96:
+  * no CLI-related changes in this release
+- update to 0.8.95:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
 Tue Jun  3 05:18:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.94:
