@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.0
+%define real_version 6.9.1
 %define short_version 6.9
 %define tar_name qt3d-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-3d%{?pkg_suffix}
-Version:        6.9.0
+Version:        6.9.1
 Release:        0
 Summary:        Qt 6 3D Library
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -96,6 +96,7 @@ Requires:       cmake(Qt63DLogicPrivate) = %{real_version}
 Requires:       cmake(Qt63DQuickAnimationPrivate) = %{real_version}
 Requires:       cmake(Qt63DQuickExtrasPrivate) = %{real_version}
 Requires:       cmake(Qt63DQuickInputPrivate) = %{real_version}
+Requires:       cmake(Qt63DQuickLogic) = %{real_version}
 Requires:       cmake(Qt63DQuickPrivate) = %{real_version}
 Requires:       cmake(Qt63DQuickRenderPrivate) = %{real_version}
 Requires:       cmake(Qt63DQuickScene2DPrivate) = %{real_version}
@@ -487,6 +488,23 @@ Requires:       cmake(Qt6CorePrivate) = %{real_version}
 This package provides private headers of libQt63DRender that do not have any
 ABI or API guarantees.
 
+
+
+### Private only libraries ###
+%package -n libQt63DQuickLogic6
+Summary:        Qt 6 3dQuickLogic library
+
+%description -n libQt63DQuickLogic6
+The Qt 6 3dQuickLogic library.
+
+%package -n qt6-3dquicklogic-private-devel
+Summary:        Non-ABI stable API for the Qt 6 3DQuickLogic library
+Requires:       libQt63DQuickLogic6 = %{version}
+
+%description -n qt6-3dquicklogic-private-devel
+This package provides private headers of libQt63DQuickLogic that do not have any
+ABI or API guarantees.
+
 %package imports
 Summary:        Qt 6 3D Library - QML imports
 %requires_ge    libQt6Quick6
@@ -534,6 +552,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %ldconfig_scriptlets -n libQt63DQuickAnimation6
 %ldconfig_scriptlets -n libQt63DQuickExtras6
 %ldconfig_scriptlets -n libQt63DQuickInput6
+%ldconfig_scriptlets -n libQt63DQuickLogic6
 %ldconfig_scriptlets -n libQt63DQuickRender6
 %ldconfig_scriptlets -n libQt63DQuickScene2D6
 %ldconfig_scriptlets -n libQt63DQuickScene3D6
@@ -799,6 +818,23 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %{_qt6_cmakedir}/Qt63DRenderPrivate/
 %{_qt6_includedir}/Qt3DRender/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_3drender_private.pri
+
+### Private only libraries ###
+
+%files -n libQt63DQuickLogic6
+%{_qt6_libdir}/libQt63DQuickLogic.so.*
+
+%files -n qt6-3dquicklogic-private-devel
+%{_qt6_cmakedir}/Qt63DQuickLogic/
+%{_qt6_cmakedir}/Qt63DQuickLogicPrivate/
+%{_qt6_descriptionsdir}/3DQuickLogic.json
+%{_qt6_includedir}/Qt3DQuickLogic/
+%{_qt6_libdir}/libQt63DQuickLogic.prl
+%{_qt6_libdir}/libQt63DQuickLogic.so
+%{_qt6_metatypesdir}/qt63dquicklogic_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_3dquicklogic.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_3dquicklogic_private.pri
+%{_qt6_pkgconfigdir}/Qt63DQuickLogic.pc
 
 %files imports
 %{_qt6_qmldir}/Qt3D/
