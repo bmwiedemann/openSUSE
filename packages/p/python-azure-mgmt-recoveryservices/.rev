@@ -179,4 +179,19 @@
 - Update Requires from setup.py (forwarded request 1170679 from glaubitz)</comment>
     <requestid>1170790</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>273133a545897e8170eadebcb354dcc8</srcmd5>
+    <version>3.1.0</version>
+    <time>1749148535</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 3.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from setup.py (forwarded request 1282985 from glaubitz)</comment>
+    <requestid>1283345</requestid>
+  </revision>
 </revisionlist>
