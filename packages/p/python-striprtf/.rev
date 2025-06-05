@@ -26,4 +26,12 @@
     * Now documents with multiple charsets should be parsed correctly</comment>
     <requestid>1228382</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>438e8a6e9f77238808c1bc8e1e6eaeaf</srcmd5>
+    <version>0.0.29</version>
+    <time>1749148540</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1283380</requestid>
+  </revision>
 </revisionlist>
