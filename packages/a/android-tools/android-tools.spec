@@ -33,6 +33,8 @@ URL:            https://developer.android.com/studio/releases/platform-tools
 Source0:        https://github.com/nmeum/android-tools/releases/download/%{version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE fix-install-completion.patch boo#1185883 munix9@googlemail.com -- Simplify completion
 Patch0:         fix-install-completion.patch
+# PATCH-FIX-UPSTREAM fix-protobuf-30-compat.patch -- based on commit 0c4d799
+Patch1:         fix-protobuf-30-compat.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  go
 BuildRequires:  llvm-gold

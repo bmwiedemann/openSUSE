@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 27 09:28:29 UTC 2025 - munix9@googlemail.com
+
+- Add fix-protobuf-30-compat.patch
+  * vendor/extras/libjsonpb: Fix incompatibility with protobuf v30
+    based on https://github.com/nmeum/android-tools/commit/0c4d799
+
+-------------------------------------------------------------------
 Sat Mar 29 10:34:35 UTC 2025 - munix9@googlemail.com
 
 - Use system libusb library (>= 1.0.28 with SuperSpeedPlus
