@@ -17,7 +17,7 @@
 
 
 Name:           modello
-Version:        2.4.0
+Version:        2.5.1
 Release:        0
 Summary:        Modello Data Model toolkit
 License:        Apache-2.0 AND MIT
@@ -26,10 +26,8 @@ URL:            https://codehaus-plexus.github.io/modello
 Source0:        https://repo1.maven.org/maven2/org/codehaus/%{name}/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
 Source100:      %{name}-build.tar.xz
-Patch0:         0001-Upgrade-to-SnakeYaml-2.2-439.patch
-Patch1:         0002-Update-build-get-rid-of-legacy-fix-CLI-452.patch
-Patch2:         0003-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
-Patch3:         0004-Handle-also-the-velocity-stuff-in-ModelloCli.patch
+Patch0:         0001-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
+Patch1:         0002-Handle-also-the-velocity-stuff-in-ModelloCli.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes

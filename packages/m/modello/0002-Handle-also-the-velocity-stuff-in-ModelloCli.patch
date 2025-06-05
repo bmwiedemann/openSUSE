@@ -1,14 +1,14 @@
-From 657c19a00046377ec0706329856df919603c965e Mon Sep 17 00:00:00 2001
+From bd8485edf7adec243890deaaeb20f45bd539e8b9 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
 Date: Sat, 15 Mar 2025 08:04:34 +0100
-Subject: [PATCH 4/4] Handle also the velocity stuff in ModelloCli
+Subject: [PATCH 2/2] Handle also the velocity stuff in ModelloCli
 
 ---
  .../java/org/codehaus/modello/ModelloCli.java | 22 +++++++++++++++++--
  1 file changed, 20 insertions(+), 2 deletions(-)
 
 diff --git a/modello-core/src/main/java/org/codehaus/modello/ModelloCli.java b/modello-core/src/main/java/org/codehaus/modello/ModelloCli.java
-index db40052ce..0dcd13f7f 100644
+index db40052ce..7bed3863a 100644
 --- a/modello-core/src/main/java/org/codehaus/modello/ModelloCli.java
 +++ b/modello-core/src/main/java/org/codehaus/modello/ModelloCli.java
 @@ -23,8 +23,10 @@ package org.codehaus.modello;
@@ -35,7 +35,7 @@ index db40052ce..0dcd13f7f 100644
 +            parameters.put("modello.velocity.templates", args[9]);
 +        }
 +
-+        if (args.length > 10 && args[10].length() > 0) {
++        if (args.length > 10) {
 +            parameters.put(
 +                    "modello.velocity.parameters", (HashMap<String, String>) Arrays.asList(args[10].split(",")).stream()
 +                            .map(s -> s.split("="))
@@ -56,5 +56,5 @@ index db40052ce..0dcd13f7f 100644
      }
  }
 -- 
-2.48.1
+2.49.0
 

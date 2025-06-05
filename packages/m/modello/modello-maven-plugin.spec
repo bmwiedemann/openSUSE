@@ -19,7 +19,7 @@
 %global parent modello
 %global subname maven-plugin
 Name:           %{parent}-%{subname}
-Version:        2.4.0
+Version:        2.5.1
 Release:        0
 Summary:        Modello Maven Plugin
 License:        Apache-2.0 AND MIT
@@ -27,10 +27,8 @@ Group:          Development/Libraries/Java
 URL:            https://codehaus-plexus.github.io/modello/modello-maven-plugin
 Source0:        https://repo1.maven.org/maven2/org/codehaus/%{parent}/%{parent}/%{version}/%{parent}-%{version}-source-release.zip
 Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
-Patch0:         0001-Upgrade-to-SnakeYaml-2.2-439.patch
-Patch1:         0002-Update-build-get-rid-of-legacy-fix-CLI-452.patch
-Patch2:         0003-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
-Patch3:         0004-Handle-also-the-velocity-stuff-in-ModelloCli.patch
+Patch0:         0001-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
+Patch1:         0002-Handle-also-the-velocity-stuff-in-ModelloCli.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip

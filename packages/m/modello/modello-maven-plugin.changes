@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun  4 15:13:12 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.5.1
+  * New features and improvements
+    + Improve and add exceptions for singular method
+    + Fix Snakeyaml
+    + Restore singular method behavior like was in version 2.4.0
+  * Maintenance
+    + Partially migrate to JUnit 5
+    + Apply spotless re-formatting
+    + Update build, get rid of legacy, fix CLI
+    + Use distributionManagement from parent pom
+- Removed patches:
+  * 0001-Upgrade-to-SnakeYaml-2.2-439.patch
+  * 0002-Update-build-get-rid-of-legacy-fix-CLI-452.patch
+    + integrated in this version
+- Modified patches:
+  * 0003-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
+    -> 0001-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
+  * 0004-Handle-also-the-velocity-stuff-in-ModelloCli.patch
+    -> 0002-Handle-also-the-velocity-stuff-in-ModelloCli.patch
+    + rediff
+
+-------------------------------------------------------------------
 Sun Mar 16 20:11:46 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
