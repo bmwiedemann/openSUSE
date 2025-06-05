@@ -284,4 +284,26 @@ for menus;
     file copying. Improved documentation on leaving compare and custom views.</comment>
     <requestid>1275420</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>064ac8cc0698bfb07df8b662a049782c</srcmd5>
+    <version>0.14.3</version>
+    <time>1749148486</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.14.3:
+  Documentation:
+  * Improved documentation on the use of registers.
+  Menus and dialogs:
+  * Say primary instead of default in the title of :colorscheme menu.
+  Other changes:
+  * Provided more details on file handlers and viewers in sample vifmrc files.
+  Fixes:
+  * Fixed picking trash directory when rooted trash is included in 'trashdir'
+    and root is writable.  Regression in v0.14.2 (unfortunately, testing this
+    automatically is problematic).
+  * Fixed unlimited growth of directory histories when 'history' is set to its
+    default value or not set at all in vifmrc.
+  * Fixed abort due to assertion on displaying a statusbar message with a
+    newline when 'shortmess' includes T.</comment>
+    <requestid>1282943</requestid>
+  </revision>
 </revisionlist>
