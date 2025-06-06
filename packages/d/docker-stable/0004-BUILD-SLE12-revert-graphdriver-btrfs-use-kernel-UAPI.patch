@@ -1,4 +1,4 @@
-From 0d214508ce09867edfd3cf05404a094db5a0cf49 Mon Sep 17 00:00:00 2001
+From ba2fbfac1b3001d2e4e874b30456546f07039f2b Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Mon, 22 May 2023 15:44:54 +1000
 Subject: [PATCH 04/14] BUILD: SLE12: revert "graphdriver/btrfs: use kernel

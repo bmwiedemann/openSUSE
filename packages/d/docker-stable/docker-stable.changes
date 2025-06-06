@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun  5 16:12:14 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Do not try to inject SUSEConnect secrets when in Rootless Docker mode, as
+  Docker does not have permission to access the host zypper credentials in this
+  mode (and unprivileged users cannot disable the feature using
+  /etc/docker/suse-secrets-enable.) bsc#1240150
+
+  * 0003-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+
+- Rebase patches:
+  * 0001-SECRETS-SUSE-always-clear-our-internal-secrets.patch
+  * 0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0006-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+  * 0007-CVE-2024-2365x-update-buildkit-to-include-CVE-patche.patch
+  * 0008-bsc1221916-update-to-patched-buildkit-version-to-fix.patch
+  * 0009-bsc1214855-volume-use-AtomicWriteFile-to-save-volume.patch
+  * 0010-CVE-2024-41110-AuthZ-plugin-securty-fixes.patch
+  * 0011-CVE-2024-29018-libnet-Don-t-forward-to-upstream-reso.patch
+  * 0012-CVE-2025-22868-vendor-jws-split-token-into-fixed-num.patch
+  * 0013-CVE-2025-22869-vendor-ssh-limit-the-size-of-the-inte.patch
+  * 0014-TESTS-backport-fixes-for-integration-tests.patch
+
+-------------------------------------------------------------------
 Wed Jun  4 05:21:19 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Always clear SUSEConnect suse_* secrets when starting containers regardless
