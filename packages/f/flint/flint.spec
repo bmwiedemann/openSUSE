@@ -19,7 +19,7 @@
 Name:           flint
 %define lname	libflint20
 %define _lto_cflags %nil %dnl ASM in source
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        C library for doing number theory
 License:        LGPL-3.0-or-later
@@ -33,7 +33,11 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+%if 0%{?suse_version} < 1600
 BuildRequires:  gmp-devel >= 6.1.2
+%else
+BuildRequires:  gmp-devel >= 6.2.1
+%endif
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(mpfr) >= 4
 BuildRequires:  ntl-devel

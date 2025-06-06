@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 31 09:19:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.2
+  * Ditch assumption that the rbit instruction exists on aarch64
+  * Fix assertion failure because of an unitialized variable
+
+-------------------------------------------------------------------
 Sun Mar 16 09:04:11 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.1
