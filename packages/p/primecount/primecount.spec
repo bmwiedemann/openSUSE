@@ -17,7 +17,7 @@
 
 
 Name:           primecount
-Version:        7.18
+Version:        7.19
 Release:        0
 Summary:        Count the number of primes
 License:        BSD-2-Clause
