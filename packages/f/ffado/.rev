@@ -414,4 +414,16 @@ Update to release 2.4.1 Fix build with ffado-mixer-fixbuild.patch. Removed uneed
     <comment></comment>
     <requestid>1255607</requestid>
   </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>7d3fbfbba33d8b6a85866a59f164b419</srcmd5>
+    <version>2.4.9</version>
+    <time>1749242120</time>
+    <user>anag_factory</user>
+    <comment>- Combine ffado.spec, ffado-mixer.spec to form a multibuild
+  package instead. Compact description. Trim constructs for old
+  distros.
+- Follow standard practice of naming subpackage X -&gt; X-devel.
+</comment>
+    <requestid>1282829</requestid>
+  </revision>
 </revisionlist>

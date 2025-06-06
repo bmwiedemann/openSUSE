@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  2 11:37:30 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Combine ffado.spec, ffado-mixer.spec to form a multibuild
+  package instead. Compact description. Trim constructs for old
+  distros.
+- Follow standard practice of naming subpackage X -> X-devel.
+
+-------------------------------------------------------------------
 Thu Jan 23 13:11:14 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - BuildRequires python3-setuptools, distutils is deprecated and is
