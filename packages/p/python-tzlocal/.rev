@@ -170,4 +170,12 @@
     for a symlink.</comment>
     <requestid>1084231</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>25904777e09659887580b513cacdb23e</srcmd5>
+    <version>4.3</version>
+    <time>1749242106</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282538</requestid>
+  </revision>
 </revisionlist>
