@@ -23,4 +23,13 @@
     <comment>- Make specfile conform to POSIX sh</comment>
     <requestid>1249102</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ca3b90f3483ab30112614b5da4059fac</srcmd5>
+    <version>1.8.21</version>
+    <time>1749242535</time>
+    <user>anag_factory</user>
+    <comment>- Remove BIBL
+- Switch to ncurses6</comment>
+    <requestid>1283438</requestid>
+  </revision>
 </revisionlist>

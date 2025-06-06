@@ -23,7 +23,9 @@ Summary:        GAP: ncurses interface and browsing applications
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://www.math.rwth-aachen.de/homes/Browse/
-Source:         https://www.math.rwth-aachen.de/homes/Browse/Browse-%version.tar.bz2
+#Source:         https://www.math.rwth-aachen.de/homes/Browse/Browse-%version.tar.bz2
+Source:         Browse-%version.tar.xz
+Source9:        sanitize_source.sh
 BuildRequires:  gap-devel >= 4.12
 BuildRequires:  gap-rpm-devel >= 4.12
 BuildRequires:  gmp-devel
@@ -48,10 +50,9 @@ The Browse package provides three levels of functionality
 
 %build
 ./configure "%gapdir"
-# Browse must be compiled with ncurses-5 or -w5. Crashes with ncurses-6.
-make %{?_smp_mflags} \
-	CFLAGS="%optflags -DWIDECHARS $(ncursesw5-config --cflags)" \
-	LOPTS="$(ncursesw5-config --libs) -lpanelw"
+%make_build \
+	CFLAGS="%optflags -DWIDECHARS $(ncursesw6-config --cflags)" \
+	LOPTS="$(ncursesw6-config --libs) -lpanelw"
 
 %install
 %gappkg_simple_install

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  5 18:52:24 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove BIBL
+- Switch to ncurses6
+
+-------------------------------------------------------------------
 Thu Feb 27 23:00:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Make specfile conform to POSIX sh
