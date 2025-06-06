@@ -904,4 +904,12 @@
   * 0001-todoviewsortfilterproxymodel.cpp-fix-regression-in-f.patch</comment>
     <requestid>1278390</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>682258ed9dd64b23b4fb50ec2124e50b</srcmd5>
+    <version>25.04.2</version>
+    <time>1749241968</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.04.2 (forwarded request 1282457 from krop)</comment>
+    <requestid>1283082</requestid>
+  </revision>
 </revisionlist>

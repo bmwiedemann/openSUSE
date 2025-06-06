@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  3 21:11:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.2/
+- Changes since 25.04.1:
+  * todoviewsortfilterproxymodel.cpp - fix regression in filterAcceptsRow (kde#473847)
+- Drop patch, merged upstream:
+  * 0001-todoviewsortfilterproxymodel.cpp-fix-regression-in-f.patch
+
+-------------------------------------------------------------------
 Mon May 19 11:37:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change (kde#473847)
