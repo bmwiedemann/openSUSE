@@ -185,4 +185,12 @@
     <comment></comment>
     <requestid>1081742</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>5dc0cc6ef08464d665dd2ca0d4692b30</srcmd5>
+    <version>0.10.2</version>
+    <time>1749242101</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282522</requestid>
+  </revision>
 </revisionlist>

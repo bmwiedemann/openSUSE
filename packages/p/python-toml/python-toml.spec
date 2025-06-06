@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-toml
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -37,7 +36,9 @@ Source:         https://files.pythonhosted.org/packages/source/t/toml/toml-%{ver
 Source1:        https://github.com/BurntSushi/toml-test/archive/280497f.tar.gz#/toml-test-280497f.tar.gz
 # Missing file https://github.com/uiri/toml/pull/231
 Source2:        https://raw.githubusercontent.com/uiri/toml/%{version}/test.toml
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  coreutils
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -72,11 +73,11 @@ ln -s toml-test*/ toml-test
 cp %{SOURCE2} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
