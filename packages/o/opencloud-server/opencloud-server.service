@@ -1,0 +1,31 @@
+[Unit]
+Description=OpenCloud Server
+Documentation=https://github.com/opencloud-eu/opencloud
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of hardening entries
+User=opencloud-server
+EnvironmentFile=/etc/default/opencloud-server
+Environment="OC_CONFIG_DIR=/etc/opencloud-server/"
+Environment="OC_BASE_DATA_PATH=/var/lib/opencloud-server/"
+WorkingDirectory=/var/lib/opencloud-server
+ExecStart=/usr/bin/opencloud server
+ExecReload=/usr/bin/env kill -HUP $MAINPID
+TimeoutStopSec=20s
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target

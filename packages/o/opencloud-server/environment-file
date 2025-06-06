@@ -1,0 +1,24 @@
+## Path:
+## Description: OpenCloud Server settings
+## Type:        string
+## Default:     ""
+#
+# Command line options for opencloud-server.
+#
+# Please note:
+# OC_CONFIG_DIR and OC_BASE_DATA_PATH are already set in the
+# systemd unit for this service and should be set again here
+#
+OC_LOG_LEVEL=warning
+
+#
+# Settings for a non-productive example setup including the
+# demo users
+#
+# Please check the documentation for the whole list of settings
+# https://docs.opencloud.eu/docs/admin/configuration
+#
+# OC_INSECURE=true
+# OC_URL=https://127.0.0.1:9200
+# IDM_CREATE_DEMO_USERS=true
+# PROXY_ENABLE_BASIC_AUTH=true
