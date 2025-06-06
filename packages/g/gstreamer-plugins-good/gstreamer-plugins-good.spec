@@ -33,7 +33,7 @@
 %endif
 
 Name:           gstreamer-plugins-good
-Version:        1.26.1
+Version:        1.26.2
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -66,15 +66,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
 BuildRequires:  zlib-devel
-
-BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  libqt5-linguist
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5WaylandClient)
-BuildRequires:  pkgconfig(Qt5X11Extras)
 
 %if %{with qt6}
 BuildRequires:  qt6-gui-private-devel
@@ -171,15 +162,6 @@ Enhances:       gstreamer-plugins-good
 %description gtk
 This package provides the gtksink output plugin for gstreamer-plugins-good.
 
-%package qtqml
-Summary:        Qmlglsink plugin for gstreamer-plugins-good
-Group:          Productivity/Multimedia/Other
-Requires:       %{name} = %{version}
-Enhances:       gstreamer-plugins-good
-
-%description qtqml
-This package provides the qmlglsink output plugin for gstreamer-plugins-good.
-
 %if %{with qt6}
 %package qtqml6
 Summary:        Qml6glsink plugin for gstreamer-plugins-good
@@ -211,6 +193,7 @@ export PYTHON=%{_bindir}/python3
 	-Ddoc=disabled \
 	-Drpicamsrc=disabled \
 	-Dv4l2-probe=true \
+	-Dqt5=disabled \
 %if %{with qt6}
 	-Dqt6=enabled \
 %else
@@ -324,9 +307,6 @@ fi
 
 %files gtk
 %{_libdir}/gstreamer-%{gst_branch}/libgstgtk.so
-
-%files qtqml
-%{_libdir}/gstreamer-%{gst_branch}/libgstqmlgl.so
 
 %if %{with qt6}
 %files qtqml6
