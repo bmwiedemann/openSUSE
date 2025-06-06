@@ -229,4 +229,37 @@ See Request#518161</comment>
  - Fix confusion when using multiple Python versions and</comment>
     <requestid>1225395</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>be05d121f44fc37fc68ec91af8c2a80c</srcmd5>
+    <version>4.1.10</version>
+    <time>1749242572</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.1.10:
+  * Breaking changes:
+    + Drop Python 3.8 support. Require 3.9 as minimum.
+    + Add dependency on packaging.
+    + Require setuptools &gt;= 49.0.0.
+    + Remove support for distribute, which was probably already broken.
+    + Drop support for Python 2. Require Python 3.8 as minimum.
+  * New features:
+    + In the ls testing method, add keyword argument
+      lowercase_and_sort_output.
+  * Bug fixes:
+    + Fix accidental changes to PYTHONPATH in os.environ when calling pip
+      install.
+    + Use the canonical name of a package when checking for a version
+      constraint.
+    + Get actual project name from dist.
+    + Prevent getting package pages twice.
+    + No longer recompile py files if we moved the dist. This code was never
+      updated for Python 3.
+    + Require at least packaging version 23.2.
+    + Implement PEP 503: request normalized package url on PyPI servers.
+    + Fix error adding minimum zc.buildout version as requirement.
+    + Support Python 3.12 and 3.13. This only needed a few test fixes.
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+- Run at least a portion of the testsuite.</comment>
+    <requestid>1283477</requestid>
+  </revision>
 </revisionlist>

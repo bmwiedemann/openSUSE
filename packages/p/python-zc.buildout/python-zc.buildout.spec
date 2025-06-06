@@ -1,7 +1,7 @@
 #
 # spec file for package python-zc.buildout
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,30 +18,29 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zc.buildout
-Version:        3.3
+Version:        4.1.10
 Release:        0
 Summary:        System for managing development buildouts
 License:        ZPL-2.1
-Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/zc.buildout
-Source:         https://files.pythonhosted.org/packages/source/z/zc.buildout/zc.buildout-%{version}.tar.gz
+Source:         https://github.com/buildout/buildout/archive/refs/tags/%{version}.tar.gz#/zc_buildout-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
+Requires:       python-packaging >= 23.2
+Requires:       python-pip
+Requires:       python-setuptools >= 49
+Requires:       python-wheel
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Provides:       python-zc_buildout = %{version}
 Obsoletes:      python-zc_buildout < %{version}
 BuildArch:      noarch
 # SECTION test requirements
-# disabled because of unprovideable requirements and not shipped test files
-#BuildRequires:  %%{python_module bobo}
-#BuildRequires:  %%{python_module manuel}
-#BuildRequires:  %%{python_module zc.recipe.deployment}
-#BuildRequires:  %%{python_module zc.zdaemonrecipe}
-#BuildRequires:  %%{python_module zdaemon}
-#BuildRequires:  %%{python_module zope.testing}
+BuildRequires:  %{python_module manuel}
+BuildRequires:  %{python_module zope.testing}
 # /SECTION
 %python_subpackages
 
@@ -53,19 +52,18 @@ Buildout is a project designed to solve 2 problems:
  * Repeatable assembly of programs from Python software distributions
 
 %prep
-%setup -q -n zc.buildout-%{version}
+%setup -q -n buildout-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/buildout
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/zc/buildout
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/zc.buildout-2.9.5-py%{$python_version}.egg-info
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-#%%check
-#%%python_exec setup.py test
+%check
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python src/zc/buildout/tests/test_all.py
 
 %post
 %python_install_alternative buildout
@@ -76,7 +74,10 @@ Buildout is a project designed to solve 2 problems:
 %files %{python_files}
 %doc README.rst CHANGES.rst COPYRIGHT.txt
 %license LICENSE.txt
-%{python_sitelib}/*
+%dir %{python_sitelib}/zc
+%{python_sitelib}/zc/buildout
+%{python_sitelib}/zc.buildout-%{version}-py*-nspkg.pth
+%{python_sitelib}/zc[._]buildout-%{version}.dist-info
 %python_alternative %{_bindir}/buildout
 
 %changelog
