@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun 05 20:10:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.23.1:
+  * Bug Fixes
+    - api/gitlab/v1: fix repository cache initialization (d135234)
+    - remmove cloudsql incompatible migrations (ef66c26)
+    - Stat call should properly handle unprefixed configurations in
+      s3_v2 storage driver (4b67a75)
+  * Reverts
+    - revert 7fed33f9 (ede0ad3)
+    - revert ef66c261 (d00e168)
+  * Build
+    - deps: update module github.com/alicebob/miniredis/v2 to
+      v2.35.0 (f554f29)
+    - deps: update module google.golang.org/api to v0.235.0
+      (5313f8f)
+    - deps: update module google.golang.org/api to v0.236.0
+      (38034e4)
+
+-------------------------------------------------------------------
 Mon Jun 02 15:31:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.23.0:
