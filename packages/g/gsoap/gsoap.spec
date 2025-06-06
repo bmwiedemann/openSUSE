@@ -1,7 +1,7 @@
 #
 # spec file for package gsoap
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gsoap
-%define lname	libgsoap-2_8_135
-Version:        2.8.135
+%define lname	libgsoap-2_8_138
+Version:        2.8.138
 Release:        0
 Summary:        Toolkit for SOAP/REST-based C/C++ server and client web service applications
 License:        SUSE-GPL-2.0+-with-openssl-exception
