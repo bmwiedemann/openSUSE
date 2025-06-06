@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Thu Jun 05 16:43:42 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.21
+  * Unable to load JSON Bookmarks file, Open/Cancel do the same thing
+    bug 1940204.
+  * Move replaceVars helper into menu-manager.js for cZ bug 1937379.
+  * Remove dumpObject helper from utils.js in cZ bug 1937380.
+  * Remove toOpenWindowByType helper from utils.js in cZ bug 1937382.
+  * Fix makeLogName helper to not encode twice in prefs.js in cZ bug
+    1937387.
+  * Remove use of escapeFileName helper and tidy up pref_mungeName
+    helper in cZ bug 1937395.
+  * Add helper to file-utils.js for ensuring an nsIFile is returned in
+    cZ bug 1937397.
+  * Remove unused http.js file from cZ bug 1937890.
+  * Remove unused IRC tests from static.js in cZ bug 1937896.
+  * Switch from deprecated escape/unescape in cZ bug 1938933.
+  * Tidy up use of prefBranch outside of pref-manager in cZ bug
+    1938935.
+  * Make use of pref fallbacks in pref-manager in cZ bug 1938937.
+  * Remove unused edit context menu from cZ bug 1939929.
+  * Use XPCOMUtils.generateQI in connection-xpcom in cZ bug 1939930.
+  * Merge menus.xul, popups.xul and scripts.xul into chatzilla.xul bug
+    1939958.
+  * Make use of toSOutputStream and toSInputStream helpers in DCC code
+    in cZ bug 1939965.
+  * Stop hard-coding commandkey for reloadui in cZ bug 1939968.
+  * Use suite's FillInHTMLTooltip helper instead of having own version
+    in cZ bug 1939969.
+  * Split custom-away from other away/back commands in cZ bug 1942655.
+  * Remove ChatZilla Homepage link from Help menu and about command in
+    cZ bug 1942916.
+  * Re-arrange toolbar menus in cZ bug 1943783.
+  * Remove ChatZilla Homepage link from about and prefs dialogs in cZ
+    bug 1943844.
+  * Use custom controller for userlist and tidy up some controller use
+    in cZ bug 1945325.
+  * Make use of observes for show/hide elements in cZ bug 1945378.
+  * Don't dynamically create focus-input key element in cZ bug
+    1947028.
+  * Remove unused toolbar creation code in cZ bug 1947030.
+  * Remove unused updateMenus code from cZ bug 1947031.
+  * Clean up whitespaces in cZ package manifest bug 1947040.
+  * Remove unused uninstallKeys code from cZ bug 1950002.
+  * Use node.remove(), especially instead of
+    node.parentNode.removeChild(node) in cZ bug 1951250.
+  * Remove __cz_condition from cZ bug 1951253.
+  * Remove outputWindowURL pref from cZ bug 1951256.
+  * Remove unused JS tests in cZ bug 1951297.
+  * Use includes, startsWith and endsWith instead of indexOf and
+    substr in cZ bug 1951302.
+  * Use {} and [] instead of new Object() and new Array() in cZ bug
+    1951303.
+  * Fixup function naming for lint in cZ bug 1955141.
+  * Fixup method naming for lint in cZ bug 1955767.
+  * Remove old Mozilla 1.0 code from updateAppMotif in cZ bug 1955771.
+  * Use throw Components.Exception in cZ bug 1955774.
+  * Migrate output-window from HTML to XHTML to make localisation more
+    standard in cZ bug 1955825.
+  * Merge munger.js into mungers.js in cZ bug 1956373.
+  * Remove unused tagName from mungers.js in cZ bug 1956374.
+  * Flatten directory structure in cZ bug 1956375.
+  * Tidy up about dialog page in cZ bug 1956376.
+  * Add helper to commands.js for sending CTCP commands in cZ bug
+    1956377.
+  * Migrate to standard menus for menu toolbar in cZ bug 1957763.
+  * Install plugin dialog broken in cZ bug 1961599.
+  * cZ change nick menu not working bug 1962112.
+  * Away status isn't reflected correctly in all channels in cZ bug
+    1962234.
+  * Fix dark motif userlist in cZ bug 1967072.
+  * SeaMonkey Composer adds moz-do-not-send attribute for links and
+    images bug 1827146.
+  * Use menu_Toolbars overlay for navigatorOverlay and console bug
+    1945335.
+  * Remove defunct 2.53 prerelease builds from debugQA extension bug
+    1947043.
+  * Handling of MOZ_LANGPACK_CONTRIBUTORS in defines.inc files should
+    be less custom bug 1951101.
+  * Control + U shortcut for underlined text is not working bug
+    1872514.
+  * Context menu search (with default search engine) does not work in
+    the content area of a message compose or SM-Composer window bug
+    1062092.
+  * on FreeBSD sqlite3 fails to link for missing math functions bug
+    1944954.
+  * Expand init.configure to use version_package.txt to set
+    MOZ_PKG_VERSION bug 1952757.
+  * Change supported msvc Compilers for SeaMonkey 2.53 bug 1954176.
+  * SeaMonkey 2.53.21 uses the same backend as Firefox and contains
+    the relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.21 shares most parts of the mail and news code with
+    Thunderbird. Please read the Thunderbird 60.8.0 release notes for
+    specific security fixes in this release.
+  * Additional important security fixes up to Current Firefox 115.23
+    and Thunderbird 115.23 ESR plus many enhancements have been
+    backported. We will continue to enhance SeaMonkey security in
+    subsequent 2.53.x beta and release versions as fast as we are able
+    to.
+- request inclusion in Leap 15.6:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1244149
+
+-------------------------------------------------------------------
 Wed May 28 18:36:08 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Replace usage of %jobs for reproducible builds (boo#1237231)
