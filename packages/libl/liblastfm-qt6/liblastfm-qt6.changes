@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  5 05:20:51 UTC 2025 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Added liblastfm-qt6-Fix-use-after-free-in-platform-calling-code.diff.
+
+-------------------------------------------------------------------
 Tue Apr 15 08:27:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Init liblastfm-qt6, a Qt 6 port of liblastfm.

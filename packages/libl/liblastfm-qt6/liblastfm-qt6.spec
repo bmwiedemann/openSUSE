@@ -23,6 +23,10 @@ Summary:        Qt 6 port of liblastfm
 License:        GPL-3.0-or-later
 URL:            https://github.com/Mazhoon/liblastfm
 Source:         %{name}-%{version}.tar.xz
+# As per Qt docs, the return value of qPrintable() is only valid until the
+# end of the expression. In fact, asan did catch this in the calling code.
+# PATCH-FIX-UPSTREAM https://github.com/drfiemost/liblastfm/pull/10
+Patch0:         liblastfm-qt6-Fix-use-after-free-in-platform-calling-code.diff
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)

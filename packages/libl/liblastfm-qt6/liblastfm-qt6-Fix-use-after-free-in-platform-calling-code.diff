@@ -1,0 +1,32 @@
+diff --git a/src/misc.cpp b/src/misc.cpp
+index 36f73a8a..de48c52e 100644
+--- a/src/misc.cpp
++++ b/src/misc.cpp
+@@ -163,11 +163,11 @@ lastfm::CFStringToUtf8( CFStringRef s )
+ #endif
+ 
+ 
+-const char*
++QByteArray
+ lastfm::platform()
+ {
+-    static QString platform = QSysInfo::prettyProductName();
+-    return qPrintable(platform);
++    static const auto platform = QSysInfo::prettyProductName().toUtf8();
++    return platform;
+ }
+ 
+ QString lastfm::
+diff --git a/src/misc.h b/src/misc.h
+index d0f6765b..a5935301 100644
+--- a/src/misc.h
++++ b/src/misc.h
+@@ -47,7 +47,7 @@ namespace lastfm
+     LASTFM_DLLEXPORT CFStringRef QStringToCFString( const QString& );
+     LASTFM_DLLEXPORT QString CFStringToQString( CFStringRef s );
+ #endif
+-    LASTFM_DLLEXPORT const char* platform();
++    LASTFM_DLLEXPORT QByteArray platform();
+     LASTFM_DLLEXPORT QString md5( const QByteArray& src );
+ }
+ #endif //LASTFM_MISC_H
