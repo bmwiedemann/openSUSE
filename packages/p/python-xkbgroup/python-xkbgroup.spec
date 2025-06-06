@@ -1,7 +1,7 @@
 #
 # spec file for package python-xkbgroup
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xkbgroup
 Version:        0.2.0
 Release:        0
@@ -25,7 +24,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hcpl/xkbgroup
 Source:         https://files.pythonhosted.org/packages/source/x/xkbgroup/xkbgroup-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  xvfb-run
@@ -58,11 +59,11 @@ sed -Ei '/_X(Data|Read)32/d' xkbgroup/xkb.py
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/xkbgroup
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -89,6 +90,7 @@ sleep 5
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/xkbgroup
-%{python_sitelib}/*
+%{python_sitelib}/xkbgroup
+%{python_sitelib}/xkbgroup-%{version}.dist-info
 
 %changelog

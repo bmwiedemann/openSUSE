@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  6 04:20:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Thu Aug 19 00:58:58 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Stop writing mtime-based pyc files during tests (boo#1047218)
