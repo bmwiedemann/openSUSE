@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jun  3 21:12:27 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.2/
+- Changes since 25.04.1:
+  * Fix Eurostar ticket extraction for French language tickets
+  * Handle checkout time ranges in German booking.com emails
+  * Add booking.com extractor for PDF confirmations
+  * Add copyright/licensing information
+  * Add Stena Line extractor
+  * Add Viking Line extractor
+  * Add IHG extractor
+  * Fix Tallink extractor for English language
+  * Don't require an arrival time for boat reservations
+  * Improve Flixbus PDF ticket extractor
+  * Support extracting an alternate Flixbus pkpass variant
+  * Extend pkpass preprocessing for bus tickets
+  * Update static extractor build documentation
+  * Give published static extractor builds the release service version
+
+-------------------------------------------------------------------
 Wed May  7 21:00:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.1
