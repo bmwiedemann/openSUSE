@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun  3 21:12:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.2/
+- Changes since 25.04.1:
+  * Remove ownCloud pre version5 from the setup wizard
+  * Add Zoho to the setup wizard
+  * Add fastmail to the setup wizard
+  * Fix crash when finishing keychain jobs
+  * Fix notification id
+  * Fix crash when trying to load account with invalid authentification type
+  * Fix crash when accessing KWallet
+  * Fix crash in outlook password requester when request was cancelled
+
+-------------------------------------------------------------------
 Wed May  7 21:00:05 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.1
