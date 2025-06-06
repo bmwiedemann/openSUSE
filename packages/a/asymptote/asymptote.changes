@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  5 19:16:02 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.04
+  * TINYEXR: Disable thread usage as it is causing issues with libgc.
+  * Removed some obsolete code.
+  * Fix race condition between embedded WebGL scenes.
+
+-------------------------------------------------------------------
 Fri Mar 14 08:01:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.01

@@ -18,7 +18,7 @@
 
 %bcond_with lsp
 Name:           asymptote
-Version:        3.01
+Version:        3.04
 Release:        0
 Summary:        2D & 3D TeX-Aware vector graphics language
 License:        LGPL-3.0-or-later
