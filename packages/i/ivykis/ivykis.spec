@@ -1,7 +1,7 @@
 #
 # spec file for package ivykis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname   libivykis0
 Name:           ivykis
-Version:        0.43
+Version:        0.43.2
 Release:        0
 Summary:        An event dispatching library
 License:        LGPL-2.1-only
