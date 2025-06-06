@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  3 18:12:39 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- replace workaround for boo#853019 with using %restart_on_update -
+  apparmor.service now contains a workaround to survive restart
+  (boo#1237462)
+- get posttrans of profiles and abstractions in sync
+- add dovecot24.diff to fix the profile for dovecot 2.4 (boo#1243008)
+
+-------------------------------------------------------------------
 Tue May 13 14:54:59 UTC 2025 - David Disseldorp <ddiss@suse.com>
 
 - Purge potentially stale profile cache during rpm posttrans via

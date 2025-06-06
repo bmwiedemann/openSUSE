@@ -82,6 +82,9 @@ Patch6:         apache-extra-profile-include-if-exists.diff
 # add path for precompiled cache (only done/applied if precompiled_cache is enabled)
 Patch7:         apparmor-enable-precompiled-cache.diff
 
+# dovecot24: doveconf writes /tmp/doveconf.* (boo#1243008)
+Patch10:        dovecot24.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -350,6 +353,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %if %{with precompiled_cache}
 %patch -P 7
 %endif
+%patch -P 10
 
 %build
 export SUSE_ASNEEDED=0
@@ -851,10 +855,9 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %service_del_postun apparmor.service
 
 %posttrans abstractions
-# workaround for bnc#904620#c8 / lp#1392042
-rm -f /var/cache/apparmor/* 2>/dev/null
-#restart_on_update apparmor - but non-broken (bnc#853019)
-systemctl is-active -q apparmor && systemctl reload apparmor ||:
+# workaround for bnc#904620#c8 / lp#1392042 and bnc#1242553
+apparmor_parser --purge-cache
+%restart_on_update apparmor
 
 %post profiles
 # delete old cache (location up to 2.12)
@@ -878,8 +881,7 @@ done
 %posttrans profiles
 # workaround for bnc#904620#c8 / lp#1392042 and bnc#1242553
 apparmor_parser --purge-cache
-#restart_on_update apparmor - but non-broken (bnc#853019)
-systemctl is-active -q apparmor && systemctl reload apparmor ||:
+%restart_on_update apparmor
 
 %if %{with tomcat}
 %post -n tomcat_apparmor -p /sbin/ldconfig

@@ -2973,4 +2973,16 @@ Note: I checked the GPG signature with both the expired and the refreshed key, a
   &quot;apparmor_parser --purge-cache&quot; (boo#1242553) (forwarded request 1277180 from dmdiss)</comment>
     <requestid>1277890</requestid>
   </revision>
+  <revision rev="223" vrev="3">
+    <srcmd5>2d54f59239b7a3f7b286114b04ee9681</srcmd5>
+    <version>4.1.0</version>
+    <time>1749242074</time>
+    <user>anag_factory</user>
+    <comment>- replace workaround for boo#853019 with using %restart_on_update -
+  apparmor.service now contains a workaround to survive restart
+  (boo#1237462)
+- get posttrans of profiles and abstractions in sync
+- add dovecot24.diff to fix the profile for dovecot 2.4 (boo#1243008) (forwarded request 1282446 from cboltz)</comment>
+    <requestid>1282447</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,12 @@
+Index: profiles/apparmor.d/usr.sbin.dovecot
+===================================================================
+--- profiles/apparmor.d/usr.sbin.dovecot.orig	2025-04-08 18:20:05.000000000 +0200
++++ profiles/apparmor.d/usr.sbin.dovecot	2025-06-03 20:28:58.853907837 +0200
+@@ -46,6 +46,7 @@ profile dovecot /usr/{bin,sbin}/dovecot
+   @{PROC}/@{pid}/mounts r,
+   @{PROC}/sys/fs/suid_dumpable r,
+   @{PROC}/sys/kernel/core_pattern r,
++  owner /tmp/doveconf.* rw,
+   /usr/bin/doveconf rix,
+   /usr/lib*/dovecot/anvil mrPx,
+   /usr/lib*/dovecot/auth mrPx,
