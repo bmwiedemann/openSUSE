@@ -11,13 +11,13 @@ nginx (pronounced "engine-x") is an open-source reverse proxy server for the HTT
 By default, the image launches nginx with the same configuration that comes with the SUSE Linux Enterprise Server.
 
 ```ShellSession
-$ podman run -it --rm -p 8080:80 registry.opensuse.org/opensuse/nginx:1.27
+$ podman run -it --rm -p 8080:80 registry.opensuse.org/opensuse/nginx:1.28
 ```
 
 Or:
 
 ```ShellSession
-$ podman run -it --rm -p 8080:80 -v /path/to/html/:/srv/www/htdocs/:Z registry.opensuse.org/opensuse/nginx:1.27
+$ podman run -it --rm -p 8080:80 -v /path/to/html/:/srv/www/htdocs/:Z registry.opensuse.org/opensuse/nginx:1.28
 ```
 
 **Note:** The directory `/srv/www/htdocs/` is the root directory used by the default server. Additional servers can use any other path.
