@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-iuh
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           osmo-iuh
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
 License:        AGPL-3.0-or-later
 Group:          Hardware/Mobile
 URL:            https://osmocom.org/projects/osmohnbgw/wiki
-
 Source:         https://github.com/osmocom/osmo-iuh/archive/%version.tar.gz
 BuildRequires:  automake >= 1.9
 BuildRequires:  libtool >= 2
@@ -32,12 +31,12 @@ BuildRequires:  pkg-config >= 0.20
 # python3 for asn1tostruct.py
 BuildRequires:  python3
 BuildRequires:  pkgconfig(libasn1c) >= 0.9.30
-BuildRequires:  pkgconfig(libosmo-netif) >= 1.5.0
-BuildRequires:  pkgconfig(libosmo-sigtran) >= 1.9.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.10.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 1.10.0
-BuildRequires:  pkgconfig(libosmogb) >= 1.10.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.10.0
+BuildRequires:  pkgconfig(libosmo-netif) >= 1.6.0
+BuildRequires:  pkgconfig(libosmo-sigtran) >= 2.1.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.11.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.11.0
+BuildRequires:  pkgconfig(libosmogb) >= 1.11.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.11.0
 BuildRequires:  pkgconfig(libosmovty) >= 1.10.0
 
 %description
@@ -122,10 +121,8 @@ applications that want to make use of libosmo-sabp.
 %build
 echo "%version" >.tarball-version
 autoreconf -fi
-%configure \
-    --disable-static \
-    --docdir="%_docdir/%name" \
-    --with-systemdsystemunitdir="%_unitdir"
+%configure --disable-static --docdir="%_docdir/%name" \
+	--with-systemdsystemunitdir="%_unitdir"
 %make_build
 
 %install
