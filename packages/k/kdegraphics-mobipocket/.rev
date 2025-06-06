@@ -135,4 +135,12 @@
     <comment>- Drop the KF5 flavor, there are no user left</comment>
     <requestid>1279907</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>30319c288275ce24bb1ef72c896b50aa</srcmd5>
+    <version>25.04.2</version>
+    <time>1749241986</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.04.2 (forwarded request 1282457 from krop)</comment>
+    <requestid>1283131</requestid>
+  </revision>
 </revisionlist>
