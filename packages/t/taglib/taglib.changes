@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun  2 15:34:45 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1
+  * Support for Shorten (SHN) files.
+  * Compile time configuration of supported formats: WITH_APE,
+    WITH_ASF, ...
+  * Compile time configuration of data and temporary directories
+    for unit tests: TESTS_DIR and TESTS_TMPDIR.
+  * C bindings: Added taglib_file_new_wchar() and
+    taglib_file_new_type_wchar().
+  * Preserve unicode encoding when downgrading to ID3v2.3.
+  * Do not store FLAC metadata blocks which are too large.
+  * Fix segfaults with String and ByteVector nullptr arguments.
+
+-------------------------------------------------------------------
 Tue Aug 27 17:26:46 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 2.0.2:
@@ -636,7 +651,7 @@ Thu May 10 01:11:38 UTC 2012 - crrodriguez@opensuse.org
 - No dont use -ansi gcc flag.
 
 -------------------------------------------------------------------
-Thu Mar  8 01:01:13 YEKT 2012 - avm-xandry@yandex.ru
+Wed Mar 07 20:01:13 UTC 2012 - avm-xandry@yandex.ru
 
 - Add rusxmms patch to be fixed https://features.opensuse.org/313273
 
