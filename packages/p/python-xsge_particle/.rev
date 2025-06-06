@@ -26,4 +26,13 @@
   * relicensed to LGPL</comment>
     <requestid>1135601</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2fdcafabe82ddcab298b709cd51b6c0d</srcmd5>
+    <version>1.0.1</version>
+    <time>1749242592</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1283488</requestid>
+  </revision>
 </revisionlist>
