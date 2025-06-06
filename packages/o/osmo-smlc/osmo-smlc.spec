@@ -17,7 +17,7 @@
 
 
 Name:           osmo-smlc
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        Osmocom Serving Mobile Location Centre
 License:        AGPL-3.0-or-later
