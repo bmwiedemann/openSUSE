@@ -164,4 +164,12 @@
 - drop fix-lexer-build.patch (upstream)</comment>
     <requestid>1169471</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a28d201e66fbc261ecb1246d5101a5f6</srcmd5>
+    <version>2.22</version>
+    <time>1749242113</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1282619</requestid>
+  </revision>
 </revisionlist>
