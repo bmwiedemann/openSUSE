@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 06 05:07:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.4:
+  * Fix metrics authorization middleware bleed (#3183)
+  * fix: parse public key as fallback for certificate for bearer
+    authentication (#3180)
+  * chore: fix dependabot alerts (#3155)
+  * fix: license copyright update (#3167)
+  * Revert "feat(mcp): add MCP extension support with routes and
+    configur… (#3166)
+  * feat(mcp): add MCP extension support with routes and
+    configuration
+
+-------------------------------------------------------------------
 Fri May 23 04:59:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.3:

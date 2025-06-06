@@ -23,7 +23,7 @@
 %define zui_version commit-303dfb3
 
 Name:           zot-registry
-Version:        2.1.3
+Version:        2.1.4
 Release:        0
 Summary:        Scale-out production-ready vendor-neutral OCI-native container image registry
 License:        Apache-2.0
