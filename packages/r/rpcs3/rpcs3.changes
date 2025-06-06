@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Jun  5 12:05:56 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.37~git20250602:
+  * Update VMA vulkan version to 1.2
+  * vk: Raise min API version to 1.2
+  * input: move copilot code to pad_thread
+  * Fix some static analysis warnings, including c-style cast
+  * Logs: use thread_local
+  * restore ffmpeg dependencies on linux
+  * rpcs3_version: Bump to 0.0.37
+  * Fixing the two upload commit hashes got switched around
+  * Suggested review changes
+  * Readd Homebrew Cache (used to be on Cirrus), silence more warnings
+  * Silence warnings
+  * Move Mac builds to GH Actions
+  * input: implement basic copiloting
+  * multithreaded version_check
+  * Fix codestyle
+  * cmake: add option to use system cubeb
+  * fix Windows build with GCC/Clang
+  * stdafx.h: fix clang warnings
+  * Update curl to 8.14.0
+  * rsx/util/test: Cover edge cases in address_range test suite
+  * rsx: Use address_range64 to simplify MM intersection tests
+  * rsx/util: Split address_range into a sized address_range template
+  * utils: Rename address_range to address_range32 to allow implementation of 
+    address_range16 and address_range64
+  * rsx/util: Add unit tests for address ranges
+  * rsx: Flush MM queue before applying nv3089 block transfers
+  * Minor struct memory layout optimization
+  * rsx: Fix use after move warning
+  * rsx: use more const ref
+  * Fix some static analysis warnings
+  * Remove roadmap link from README
+
+-------------------------------------------------------------------
 Mon May 26 15:14:15 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Add OpenCV to the list of BuildRequires

@@ -17,7 +17,7 @@
 
 
 Name:           rpcs3
-Version:        0.0.36~git20250523
+Version:        0.0.37~git20250602
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only
@@ -49,7 +49,7 @@ BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(sdl3)
 
 ##vulkan:
-BuildRequires:  pkgconfig(vulkan) >= 1.1.126
+BuildRequires:  pkgconfig(vulkan) >= 1.2.0
 #-------------------------------------------------
 
 #audio backend dependencies:
