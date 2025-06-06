@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun  1 08:03:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.2:
+  + This release includes important fixes for the GStreamer Python
+    bindings.
+  + Since pygobject 3.13 around 10 years ago, it wasn't possible
+    anymore to modify GStreamer miniobjects, e.g. modify caps or
+    set buffer timestamps, as an implicit copy of the original
+    would always be made. This should finally work again now.
+  + Fix new warnings on Fedora 42, various meson warnings, and
+    other small meson build/wrap fixes.
+  + python: Add overrides to be able to handle writability of
+    MiniObjects.
+  + python: Convert buffer metadata API to use @property
+    decorators.
+  + REGRESSION: pygobject 3.13 now copies the GstStructure when
+    getting them from a GstCaps, making it impossible to properly
+    modify structures from caps in place.
+
+-------------------------------------------------------------------
 Wed Apr 30 10:52:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.1:
