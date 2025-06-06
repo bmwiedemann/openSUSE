@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Jun 05 16:53:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.37.0:
+  * What's Changed
+    - bake is now used as the default images builder, if you don't
+      want to use it you could opt-out by setting the COMPOSE_BAKE
+      env variable to false
+  * Improvements
+    - Add compose bridge by @glours in #12866
+    - Include platform and creation date listing image by @ndeloof
+      in #12856
+    - Add support of metadata subcommand for provider services by
+      @glours in #12903
+    - Use bake by default by @ndeloof in #12699
+  * Fixes
+    - (Re)start dependent services after watch rebuilt image by
+      @ndeloof in #12879
+    - Resolve symlinks while making dockerfile path absolute by
+      @ndeloof in #12884
+    - Fix support for BUILDKIT_PROGRESS by @ndeloof in #12894
+    - Build dependent service images when required by @ndeloof in
+      #12896
+    - Fix recreate network (and connected containers) on config
+      updates by @ndeloof in #12899
+    - pull does not require env_file being resolved by @ndeloof in
+      #12904
+  * Internal
+    - Refactor: use slices.Contains to simplify code by
+      @tongjicoder in #12877
+    - Remove utils.Contains to prefer slice.ContainsFunc by
+      @ndeloof in #12878
+    - Fix typo in suggestion log by @Carlos-err406 in #12893
+    - Replace uses of golang.org/x/exp/(maps|slices) for stdlib and
+      fix linting by @thaJeztah in #12885
+    - Debug message to help diagnose platform mismatch by @ndeloof
+      in #12905
+    - (refactoting) Move watch logic into a dedicated Watcher type
+      by @ndeloof in #12865
+  * Dependencies
+    - Bump cli-doc-tools to v0.10.0 by @glours in #12855
+    - Bump github.com/docker/docker, docker/cli v28.2.2 by
+      @thaJeztah in #12875
+    - Build(deps): bump google.golang.org/grpc from 1.72.1 to
+      1.72.2 by @dependabot in #12872
+
+-------------------------------------------------------------------
 Fri May 23 18:33:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.36.2:
