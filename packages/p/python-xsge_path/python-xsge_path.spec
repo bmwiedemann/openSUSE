@@ -1,7 +1,7 @@
 #
 # spec file for package python-xsge_path
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,9 @@ Summary:        xSGE Path
 License:        LGPL-3.0-or-later
 URL:            https://python-sge.github.io/
 Source:         https://files.pythonhosted.org/packages/source/x/xsge_path/xsge_path-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-sge-pygame >= 1.0
@@ -43,15 +45,16 @@ objects move in a certain way.
 %setup -q -n xsge_path-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README
 %license xsge_path/COPYING
-%{python_sitelib}/*
+%{python_sitelib}/xsge_path
+%{python_sitelib}/xsge_path-%{version}.dist-info
 
 %changelog
