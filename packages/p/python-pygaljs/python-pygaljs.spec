@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygaljs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-pygaljs
 Version:        1.0.2
@@ -26,8 +25,10 @@ License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/ionelmc/python-pygaljs
 Source:         https://files.pythonhosted.org/packages/source/p/pygaljs/pygaljs-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,10 +42,10 @@ Python package providing assets from https://github.com/Kozea/pygal.js
 sed -i -e 's/\[pytest\]/\[tools:pytest\]/g' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,6 +54,7 @@ sed -i -e 's/\[pytest\]/\[tools:pytest\]/g' setup.cfg
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pygaljs
+%{python_sitelib}/pygaljs-%{version}*-info
 
 %changelog
