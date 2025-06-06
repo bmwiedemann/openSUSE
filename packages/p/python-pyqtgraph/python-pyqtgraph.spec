@@ -17,6 +17,7 @@
 
 
 %bcond_without  test
+%{?sle15_python_module_pythons}
 Name:           python-pyqtgraph
 Version:        0.13.7
 Release:        0
@@ -41,6 +42,7 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  python3-sphinx-autodoc-typehints
 BuildRequires:  python3-sphinx-qt-documentation
 Requires:       python-numpy >= 1.17
+Requires:       (python-qt5 >= 5.12 or python-PyQt6 >= 6.1)
 Recommends:     python-colorcet
 Recommends:     python-cupy
 Recommends:     python-h5py
@@ -48,24 +50,20 @@ Recommends:     python-numba
 Recommends:     python-opengl
 Recommends:     python-scipy
 BuildArch:      noarch
+# Tests fauil. These arches should get the noarch package
+ExcludeArch:    %arm %ix86 aarch64
 %if %{with test}
 BuildRequires:  %{python_module PyQt6 >= 6.1}
 BuildRequires:  %{python_module h5py}
-BuildRequires:  %{python_module matplotlib-qt5}
+BuildRequires:  %{python_module matplotlib-qt}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module opengl}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
-BuildRequires:  python3-pyside2 >= 5.12
 # Tests fail
 #BuildRequires:  python3-pyside6
-%endif
-%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
-Requires:       (python-qt5 >= 5.12 or python-PyQt6 >= 6.1 or python3-pyside2 >= 5.12)
-%else
-Requires:       (python-qt5 >= 5.12 or python-PyQt6 >= 6.1)
 %endif
 %python_subpackages
 
@@ -120,19 +118,6 @@ cp -r pyqtgraph/examples %{buildroot}%{_docdir}/%{name}/
 %check
 # reload happens but is not detected by pytest or pytest-xdist
 donttest="test_reload"
-# no pyside2-uic
-donttest+=" or (testExamples and (QtDesigner or designerExample) and PySide2)"
-# use shell expressions instead of rpm macros: we build a noarch package but tests are arch specific
-if [ $(getconf LONG_BIT) -eq 32 -o "${RPM_ARCH}" = "aarch64" ]; then
-  # Crashes and timeouts
-  donttest+=" or (testExamples and PyQt6)"
-  # images different, due to precision errors
-  donttest+=" or (test_ROI and test_PolyLineROI)"
-fi
-# Qt on ARM uses openGL ES, which is not supported by pyqtgraph
-if [ "${RPM_ARCH}" = "arm" -o "${RPM_ARCH}" = "aarch64" ]; then
-  donttest+=" or (testExamples and GL)"
-fi
 %pytest -ra -n auto -k "not (${donttest})"
 %endif
 

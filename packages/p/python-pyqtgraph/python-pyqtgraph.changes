@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  5 16:55:55 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Remove pyside2 requirement
+- Update qt submodule requirement for matplotlib
+- Disable package for ARM and i586 due to failing tests
+
+-------------------------------------------------------------------
 Fri May  9 05:14:30 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

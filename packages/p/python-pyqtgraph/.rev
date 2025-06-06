@@ -95,4 +95,15 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1276011</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>fd838f550f9357c2e0d619d17ca5a442</srcmd5>
+    <version>0.13.7</version>
+    <time>1749242532</time>
+    <user>anag_factory</user>
+    <comment>- Remove pyside2 requirement
+- Update qt submodule requirement for matplotlib
+- Disable package for ARM and i586 due to failing tests
+</comment>
+    <requestid>1283436</requestid>
+  </revision>
 </revisionlist>
