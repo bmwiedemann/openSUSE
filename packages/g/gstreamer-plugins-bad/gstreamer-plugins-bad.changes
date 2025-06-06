@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Jun  1 07:10:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.2:
+  + alphacombine: Fix seeking after EOS
+  + cuda: Fix runtime PTX compile, fix example code build with old
+    CUDA SDK
+  + curl: Fix build with MSVC
+  + curl: small fixups p3
+  + d3d12: Fix gstreamer-full subproject build with gcc
+  + d3d12: Generate gir file
+  + d3d12decoder: Workaround for NVIDIA crash on resolution change
+  + d3d12memory: Allow set_fence() only against writable memory
+  + d3d12memory: Make D3D12 map flags inspectable
+  + d3d12screencapturesrc: Fix desktop handle leak
+  + dash: mpdclient: Don't pass terminating NUL to adapter
+  + dvbsuboverlay: Actually make use of subtitle running time
+    instead of using PTS
+  + dvbsuboverlay: No subtitles after seek
+  + h264parse: Never output stream-format=avc/avc3 caps without
+    codec_data
+  + lcevc: Use portable printf formatting macros
+  + midiparse: Consider tempo changes when calculating duration
+  + nvencoder: Fix GstVideoCodecFrame leak on non-flow-ok return
+  + play: Improve stream selection
+  + properties: add G_PARAM_STATIC_STRINGS where missing
+  + rtpsender: fix 'priority' GValue get/set
+  + va: Fix H264 profile decision logic
+  + vulkan/wayland: Init debug category before usage
+  + Ensure properties are freed before (re)setting with
+    g_value_dup_object() or g_value_dup_boxed() and during cleanup
+  + Fix new warnings on Fedora 42, various meson warnings, and
+    other small meson build/wrap fixes
+  + Fixes for big endian
+  + Fix Qt detection in various places
+  + Switch to GST_AUDIO_NE()
+  + Valgrind fixes
+
+-------------------------------------------------------------------
 Wed Apr 30 10:36:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.1:
