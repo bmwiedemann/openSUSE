@@ -18,7 +18,7 @@
 
 
 Name:           level-zero
-Version:        1.21.9
+Version:        1.22.3
 Release:        0
 Summary:        oneAPI Level Zero Specification Headers and Loader
 License:        MIT
@@ -40,12 +40,12 @@ functions, unified memory, and I/O capabilities.
 Summary:        The oneAPI Level Zero Specification Headers and Loader development package
 Requires:       %{name} = %{version}-%{release}
 
-%description   devel
+%description devel
 The %{name}-devel package contains library and header files for developing
 applications that use %{name}.
 
 %prep
-%autosetup -n level-zero-%{version}
+%autosetup
 
 %build
 %define __builder ninja
@@ -60,16 +60,12 @@ applications that use %{name}.
 
 %files
 %license LICENSE
-%{_libdir}/libze_loader.so.*
-%{_libdir}/libze_validation_layer.so.*
-%{_libdir}/libze_tracing_layer.so.*
+%{_libdir}/libze_*.so.*
 
 %files devel
 %dir %{_includedir}/level_zero
 %{_includedir}/level_zero/*
-%{_libdir}/libze_loader.so
-%{_libdir}/libze_validation_layer.so
-%{_libdir}/libze_tracing_layer.so
+%{_libdir}/libze_*.so
 %{_libdir}/pkgconfig/libze_loader.pc
 %{_libdir}/pkgconfig/level-zero.pc
 

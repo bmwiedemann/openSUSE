@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun  2 09:57:10 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Replace explicit declarations in %files with wildcards
+- Remove default -n parameter from %autosetup macro 
+- Update to version 1.22.3:
+  * Fix sysman only init to disallow retrieval of loader context
+    due to version compatibility
+  * Fix GUID gen and update to v1.22.3
+  * Add ability to Register a TeardownCallback to notify release of
+    L0 resources
+- Update to version 1.22.1/1.22.2:
+  * Bug fixes
+- Update to version 1.22.0:
+  * Update Level Zero Loader and Headers to support v1.13.1 of
+    L0 Spec
+
+-------------------------------------------------------------------
 Tue Apr 22 03:00:24 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Update to version 1.21.9:
