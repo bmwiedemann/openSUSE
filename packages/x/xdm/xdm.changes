@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  4 19:13:52 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer require xinit so it can be dropped from SLE16
+
+-------------------------------------------------------------------
 Tue Mar 25 10:15:20 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move display-manager.service to display-manager-legacy.service

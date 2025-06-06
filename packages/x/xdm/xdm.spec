@@ -64,8 +64,8 @@ Requires:       cpp
 Requires:       logrotate
 Requires:       sessreg
 Requires:       xconsole
-Requires:       xinit
 Recommends:     feh
+Recommends:     xinit
 Requires:       xmessage
 Requires:       xrdb
 Requires:       xset
