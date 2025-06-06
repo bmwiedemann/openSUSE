@@ -47,4 +47,13 @@
   * Handle non-indexed generics</comment>
     <requestid>1103744</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>18214ccabf583da476b7688c68a242a2</srcmd5>
+    <version>0.9.0</version>
+    <time>1749242103</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1282537</requestid>
+  </revision>
 </revisionlist>

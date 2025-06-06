@@ -1,7 +1,7 @@
 #
 # spec file for package python-typing-inspect
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,11 @@ Version:        0.9.0
 Release:        0
 Summary:        Python runtime inspection utilities for typing
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ilevkivskyi/typing_inspect
 Source:         https://files.pythonhosted.org/packages/source/t/typing_inspect/typing_inspect-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mypy_extensions >= 0.3.0
@@ -46,10 +47,10 @@ Python runtime inspection utilities for typing module.
 %autosetup -p1 -n typing_inspect-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +59,8 @@ Python runtime inspection utilities for typing module.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/typing_inspect.py
+%pycache_only %{python_sitelib}/__pycache__/typing_inspect.*.pyc
+%{python_sitelib}/typing_inspect-%{version}.dist-info
 
 %changelog
