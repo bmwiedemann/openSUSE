@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sat May 31 22:31:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.2:
+  + Highlighted bugfixes:
+    - Various security fixes and playback fixes
+    - aggregator base class fixes to not produce buffers too early
+      in live mode
+    - AWS translate element improvements
+    - D3D12 video decoder workarounds for crashes on NVIDIA cards
+      on resolution changes
+    - dav1d AV1-decoder performance improvements
+    - fmp4mux: tfdt and composition time offset fixes, plus AC-3 /
+      EAC-3 audio support
+    - GStreamer editing services fixes for sources with non-1:1
+      aspect ratios
+    - MIDI parser improvements for tempo changes
+    - MP4 demuxer atom parsing improvements and security fixes
+    - New skia-based video compositor element
+    - Subtitle parser security fixes
+    - Subtitle rendering and seeking fixes
+    - Playbin3 and uridecodebin3 stability fixes
+    - GstPlay stream selection improvements
+    - WAV playback regression fix
+    - GTK4 paintable sink colorimetry support and other
+      improvements
+    - WebRTC: allow webrtcsrc to wait for a webrtcsink producer to
+      initiate the connection
+    - WebRTC: new Janus Video Room WebRTC source element
+    - vah264enc profile decision making logic fixes
+    - Python bindings gained support for handling mini object
+      writability (buffers, caps, etc.)
+    - Various bug fixes, build fixes, memory leak fixes, and other
+      stability and reliability improvements
+  + gstreamer:
+    - aggregator: Various state related fixes
+    - element: ref-sink the correct pad template when replacing an
+      existing one
+    - pipeline: Store the actual latency even if no static latency
+      was configured
+    - structure: Add gst_structure_is_writable() API to allow
+      python bindings to be able to handle writability of
+      MiniObjects
+    - tracerutils: Do not warn on empty string as tracername
+    - tracerutils: Fix leak in gst_tracer_utils_create_tracer()
+    - Ensure properties are freed before (re)setting with
+      g_value_dup_object() or g_value_dup_boxed() and during
+      cleanup
+    - Fix new warnings on Fedora 42, various meson warnings, and
+      other small meson build/wrap fixes
+
+-------------------------------------------------------------------
 Wed Apr 30 08:08:12 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.1:
