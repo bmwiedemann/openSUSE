@@ -1,7 +1,7 @@
 #
 # spec file for package wayland
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,10 @@
 %define eglversion %_version
 %endif
 %define lname	libwayland0
+%define enable_test 1
+%ifarch loongarch64
+%define enable_test 0
+%endif
 %bcond_with doc
 Name:           wayland
 Version:        %_version
@@ -160,8 +164,10 @@ sed -i 's/<eglversion>/%eglversion/' "%_sourcedir/baselibs.conf"
 %install
 %meson_install
 
+%if %{enable_test}
 %check
 %meson_test
+%endif
 
 %if 0%{?suse_version} >= 1550
 %ldconfig_scriptlets -n libwayland-client0

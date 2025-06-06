@@ -444,4 +444,12 @@ Thus there's no need for the parsing or extra dependency. (forwarded request 580
     <comment>- Update to release 1.23.1:</comment>
     <requestid>1201530</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>601559bcc85b498242f67bce3d3f7c9c</srcmd5>
+    <version>1.23.1</version>
+    <time>1749242117</time>
+    <user>anag_factory</user>
+    <comment>- Disable test on loongarch.</comment>
+    <requestid>1282720</requestid>
+  </revision>
 </revisionlist>
