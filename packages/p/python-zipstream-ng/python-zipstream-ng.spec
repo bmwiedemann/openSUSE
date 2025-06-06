@@ -1,7 +1,7 @@
 #
 # spec file for package python-zipstream-ng
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,10 @@ Summary:        Modern and easy to use streamable zip file generator
 License:        LGPL-3.0-only
 URL:            https://github.com/pR0Ps/zipstream-ng
 Source:         https://files.pythonhosted.org/packages/source/z/zipstream-ng/zipstream_ng-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -60,10 +62,10 @@ Features:
 find . -type f -name "*.py" -exec sed -i '/^#!.*env python.*/d' {} ';'
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/zipserver
 

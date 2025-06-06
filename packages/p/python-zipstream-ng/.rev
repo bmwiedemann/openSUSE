@@ -21,4 +21,12 @@
       incorrect size to be calculated.</comment>
     <requestid>1208565</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3a54fe3cf5be364844b98dfaeacb51d8</srcmd5>
+    <version>1.8.0</version>
+    <time>1749242576</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1283480</requestid>
+  </revision>
 </revisionlist>
