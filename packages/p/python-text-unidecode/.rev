@@ -53,4 +53,13 @@ https://build.opensuse.org/request/show/536025</comment>
     <comment></comment>
     <requestid>1081743</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>ea454cbaabb4e6feb4bae547e2d3aa7e</srcmd5>
+    <version>1.3</version>
+    <time>1749242101</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1282511</requestid>
+  </revision>
 </revisionlist>
