@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  5 16:51:06 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Correct license to GPL-2.0-or-later 
+
+-------------------------------------------------------------------
 Mon Jan 20 04:27:59 UTC 2025 - munix9@googlemail.com
 
 - Add fix-kernel-6_12-include.patch: Fix build on kernel 6.12+

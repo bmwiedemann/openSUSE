@@ -26,7 +26,7 @@ Name:           vendor-reset
 Version:        0.1.0+084881c
 Release:        0
 Summary:        Kernel module for resetting devices used by VFIO
-License:        Apache-2.0
+License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://github.com/gnif/vendor-reset
 Source0:        %{name}-%{version}.tar.xz
