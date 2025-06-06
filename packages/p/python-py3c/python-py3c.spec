@@ -1,7 +1,7 @@
 #
 # spec file for package python-py3c
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-py3c
 Version:        1.4
 Release:        0
 Summary:        Python compatibility headers
 License:        MIT
-URL:            http://py3c.readthedocs.io/
+URL:            https://py3c.readthedocs.io/
 Source:         https://github.com/encukou/py3c/archive/v%{version}.tar.gz#/py3c-%{version}.tar.gz
 Source99:       python-py3c-rpmlintrc
 # Needed for test build
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
@@ -50,10 +51,10 @@ py3c helps porting C extensions to Python 3.
 %setup -q -n py3c-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # we will use the make install to deploy includes
 rm -r %{buildroot}%{_includedir}/*
 %make_install prefix=%{_prefix}
@@ -62,7 +63,7 @@ rm -r %{buildroot}%{_includedir}/*
 %check
 pushd test
 # Test C extension
-%python_build
+%pyproject_wheel
 %{python_expand # copy the lib and run the test
 cp ./build/lib.linux*/test_py3c* ./
 $python __main__.py -v
@@ -71,7 +72,7 @@ rm -rf build
 }
 # Test Cpp extension
 export TEST_USE_CPP="yes"
-%python_build
+%pyproject_wheel
 %{python_expand # copy the lib and run the test
 cp ./build/lib.linux*/test_py3c* ./
 $python __main__.py -v
