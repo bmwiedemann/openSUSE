@@ -11496,6 +11496,7 @@ unsorted:
   - libQt63DQuickAnimation6 
   - libQt63DQuickExtras6 
   - libQt63DQuickInput6 
+  - libQt63DQuickLogic6 
   - libQt63DQuickRender6 
   - libQt63DQuickScene2D6 
   - libQt63DQuickScene3D6 
@@ -20962,6 +20963,7 @@ unsorted:
   - pdns-recursor 
   - pdnsd 
   - pdnsd-doc 
+  - pdpmake 
   - pdsh 
   - pdsh-dshgroup 
   - pdsh-genders 
@@ -35103,6 +35105,7 @@ unsorted:
   - qt6-3dquickextras-private-devel 
   - qt6-3dquickinput-devel 
   - qt6-3dquickinput-private-devel 
+  - qt6-3dquicklogic-private-devel 
   - qt6-3dquickrender-devel 
   - qt6-3dquickrender-private-devel 
   - qt6-3dquickscene2d-devel 
@@ -48110,6 +48113,7 @@ unsorted:
   - uki-default 
   - uki-tool 
   - uki-tool-doc 
+  - uki-vanilla 
   - ulfius-devel 
   - ulogd 
   - ulogd-json 
