@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  3 21:12:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.2/
+- Changes since 25.04.1:
+  * Check whether item is an object (kde#505044)
+  * S&R: Fix canceling search in current file
+
+-------------------------------------------------------------------
 Wed May  7 20:59:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.1
