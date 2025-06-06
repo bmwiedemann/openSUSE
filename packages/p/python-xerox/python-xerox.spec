@@ -1,7 +1,7 @@
 #
 # spec file for package python-xerox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 #%%define skip_python2 1
 Name:           python-xerox
 Version:        0.4.1
@@ -26,8 +25,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/kennethreitz/xerox
 Source:         https://files.pythonhosted.org/packages/source/x/xerox/xerox-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  xclip
@@ -45,10 +46,10 @@ Python copy and paste library supporting OS X, X11 (Linux, BSD, etc.), and Windo
 %setup -q -n xerox-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/xerox
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -65,6 +66,7 @@ Python copy and paste library supporting OS X, X11 (Linux, BSD, etc.), and Windo
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/xerox
-%{python_sitelib}/*
+%{python_sitelib}/xerox
+%{python_sitelib}/xerox-%{version}.dist-info
 
 %changelog
