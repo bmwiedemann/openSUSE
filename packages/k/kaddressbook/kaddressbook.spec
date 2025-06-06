@@ -18,11 +18,11 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.4.1
+%define kpim6_version 6.4.2
 
 %bcond_without released
 Name:           kaddressbook
-Version:        25.04.1
+Version:        25.04.2
 Release:        0
 Summary:        Address book application to manage contacts
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
