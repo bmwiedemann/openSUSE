@@ -237,4 +237,12 @@
     <comment></comment>
     <requestid>1267912</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ef3e0d7f9a6add739cd4d72bc4e3ad20</srcmd5>
+    <version>1.229</version>
+    <time>1749242110</time>
+    <user>anag_factory</user>
+    <comment>update to netcat version 1.229</comment>
+    <requestid>1282595</requestid>
+  </revision>
 </revisionlist>

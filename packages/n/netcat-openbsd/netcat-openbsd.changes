@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Jun  4 07:38:37 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update netcat to upstream version 1.229.
+  * Fix build failure with GCC-15.
+
+  * In UDP mode, do not test the connection (by writing "XXX" junk)
+    when ‘-z’ is unset and the standard input is not a TTY.
+
+  * rsync: Replace ‘-v’ flag with ‘-P’.
+
+  * udp-scan-timeout.patch: Call connection_info() and udptest()
+    call when ‘-z’ flag is set. This is the upstream behavior.
+
+  * Add support for abstract namespace sockets in the AF_UNIX family.
+
+  * Make getnameinfo(3) errors non-fatal in report_sock():
+    report_sock() is used to show the peer's address/name and port
+    when the '-v' flag is set. Reverse resolution errors need not
+    be fatal.
+
+  * Fix TCP MD5 signature support. The feature now requires the
+    TCP_MD5SIG_EXT socket option, available since Linux 4.13.
+
+  * Make -q0 quit immediately also with UDP sockets.
+
+  * Re-enable specifying client socket for UNIX-domain datagram
+    sockets. Regression introduced in version 1.187.
+
+- Added "abstract-unix-domain-socket.patch": when using '-U' to
+  connect() or bind() to a UNIX domain socket, if the address
+  (path) starts with "@", it is read as an abstract namespace
+  socket.
+
+- Added "make-getnameinfo-errors-nonfatal-in-report_sock.patch":
+  report_sock() is used to show the peer's address/name and port
+  when the ‘-v’ flag is set. Reverse resolution errors need not be
+  fatal.
+
+- Renamed the misspelled "port-to-linux-with-libsd.patch" to
+  "port-to-linux-with-libbsd.patch".
+
+- Refreshed patches:
+  * broadcast-support.patch
+  * build-without-TLS-support.patch
+  * connect-timeout.patch
+  * dccp-support.patch
+  * destination-port-list.patch
+  * enable-udp-ip_recverr.patch
+  * get-sev-by-name.patch
+  * misc-failures-and-features.patch
+  * port-select-on-connect.patch
+  * port-to-linux-with-libbsd.patch
+  * quit-timer.patch
+  * send-crlf.patch
+  * serialized-handling-multiple-clients.patch
+  * set-TCP-MD5SIG-correctly-for-client-connections.patch
+  * udp-scan-timeout.patch
+  * use-flags-to-specify-listen-address.patch
+
+-------------------------------------------------------------------
 Tue Apr  8 13:01:27 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu99 to CFLAGS to fix gcc15 compile time errors
@@ -12,7 +72,7 @@ Mon Nov 22 10:16:15 UTC 2021 - Peter Simons <psimons@suse.com>
 -------------------------------------------------------------------
 Tue Dec 15 13:15:37 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
-- Build with hidden visibility since no symbols should be exported 
+- Build with hidden visibility since no symbols should be exported
 
 -------------------------------------------------------------------
 Tue Dec 15 13:05:05 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
@@ -117,7 +177,7 @@ Mon Jul 17 13:11:34 UTC 2017 - tchvatal@suse.com
 -------------------------------------------------------------------
 Fri Jan 17 23:36:07 UTC 2014 - crrodriguez@opensuse.org
 
-- drop dependency on glib, strlcpy can be implemented with 
+- drop dependency on glib, strlcpy can be implemented with
   snprintf with glibc/linux
 - drop "quilt" from buildrequires, no longer used.
 - Use fvisibiliy=hidden to build, this is a program not
@@ -163,25 +223,24 @@ Fri Jun 25 16:55:06 UTC 2010 - lmuelle@suse.de
 -------------------------------------------------------------------
 Fri May 28 16:27:34 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- Obsolete nc6 
+- Obsolete nc6
 
 -------------------------------------------------------------------
 Tue May 18 18:10:16 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- sync recent bugfixes from Ubuntu 
+- sync recent bugfixes from Ubuntu
 
 -------------------------------------------------------------------
 Fri Feb 20 15:19:28 CET 2009 - crrodriguez@suse.de
 
-- sync most recent bugfixes from debian/Ubuntu 
+- sync most recent bugfixes from debian/Ubuntu
 
 -------------------------------------------------------------------
 Sat Jul  5 19:30:39 CEST 2008 - crrodriguez@suse.de
 
--  netcat-openbsd conflicts with netcat but it should not [BNC#406581] 
+-  netcat-openbsd conflicts with netcat but it should not [BNC#406581]
 
 -------------------------------------------------------------------
 Sun Apr 13 05:08:48 CEST 2008 - crrodriguez@suse.de
 
-- initial version for the OBS 
-
+- initial version for the OBS

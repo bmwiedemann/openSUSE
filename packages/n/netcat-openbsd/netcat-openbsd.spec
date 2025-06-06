@@ -1,7 +1,7 @@
 #
 # spec file for package netcat-openbsd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           netcat-openbsd
-Version:        1.203
+Version:        1.229
 Release:        0
 Summary:        TCP/IP swiss army knife
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Other
 URL:            https://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/nc/
-Source0:        http://old.kali.org/kali/pool/main/n/netcat-openbsd/netcat-openbsd_%{version}.orig.tar.gz
-#Patches from: http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_%{version}-2.debian.tar.xz
-Patch0:         port-to-linux-with-libsd.patch
+Source0:        http://deb.debian.org/debian/pool/main/n/netcat-openbsd/netcat-openbsd_%{version}.orig.tar.gz
+# Debian patches from: http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_%{version}-2.debian.tar.xz
+Patch0:         port-to-linux-with-libbsd.patch
 Patch1:         build-without-TLS-support.patch
 Patch2:         connect-timeout.patch
 Patch3:         get-sev-by-name.patch
@@ -38,9 +38,12 @@ Patch9:         serialized-handling-multiple-clients.patch
 Patch10:        set-TCP-MD5SIG-correctly-for-client-connections.patch
 Patch11:        destination-port-list.patch
 Patch12:        use-flags-to-specify-listen-address.patch
-Patch13:        misc-failures-and-features.patch
-Patch14:        port-select-on-connect.patch
-Patch15:        enable-udp-ip_recverr.patch
+Patch13:        make-getnameinfo-errors-nonfatal-in-report_sock.patch
+Patch14:        abstract-unix-domain-socket.patch
+Patch15:        misc-failures-and-features.patch
+# SUSE patches
+Patch20:        port-select-on-connect.patch
+Patch21:        enable-udp-ip_recverr.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libbsd)
 Provides:       nc6 = %{version}
@@ -61,12 +64,11 @@ This package contains the OpenBSD rewrite of netcat, including support
 for IPv6, proxies, and Unix sockets.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 make %{?_smp_mflags} \
-  CFLAGS="%{optflags} -fvisibility=hidden -std=gnu99"
+  CFLAGS="%{optflags} -fvisibility=hidden"
 
 %install
 install -D -m0755 nc %{buildroot}%{_bindir}/nc

@@ -1,11 +1,13 @@
 From: Aron Xu <aron@debian.org>
 Date: Mon, 13 Feb 2012 15:29:37 +0800
-Subject: udp scan timeout
+Subject: Fix UDP scan timeout
 
 ---
- netcat.c |   23 +++++++++++++++--------
- 1 file changed, 15 insertions(+), 8 deletions(-)
+ netcat.c | 21 ++++++++++++++-------
+ 1 file changed, 14 insertions(+), 7 deletions(-)
 
+diff --git a/netcat.c b/netcat.c
+index 03d339c..dd893ac 100644
 --- a/netcat.c
 +++ b/netcat.c
 @@ -129,6 +129,8 @@
@@ -17,21 +19,16 @@ Subject: udp scan timeout
  /* Command Line Options */
  int	dflag;					/* detached, no stdin */
  int	Fflag;					/* fdpass sock to stdout */
-@@ -822,7 +824,7 @@ main(int argc, char *argv[])
- 				continue;
- 
- 			ret = 0;
--			if (vflag || zflag) {
-+			if (vflag) {
- 				/* For UDP, make sure we are connected. */
- 				if (uflag) {
- 					if (udptest(s) == -1) {
-@@ -1767,15 +1769,20 @@ build_ports(char *p)
+@@ -1794,19 +1796,24 @@ build_ports(char *p)
  int
  udptest(int s)
  {
 -	int i, ret;
 +	int i, t;
+ 
+ 	/* Only write to the socket in scan mode or interactive mode. */
+ 	if (!zflag && !isatty(STDIN_FILENO))
+ 		return 0;
  
 -	for (i = 0; i <= 3; i++) {
 -		if (write(s, "X", 1) == 1)
