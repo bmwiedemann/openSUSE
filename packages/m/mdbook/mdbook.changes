@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 05 11:41:31 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.4.43:
+  * Merge pull request #2497 from ehuss/bump-version
+  * Update to 0.4.43
+  * Merge pull request #2495 from ehuss/stabilize-2024
+  * Stabilize 2024 flag
+  * Merge pull request #2486 from eureka-cpu/eureka-cpu/2485
+  * fix init --title option failure when git user is not configured
+  * Add regression test for mdbook init title with no git config
+  * Merge pull request #2478 from rust-lang/ehuss-patch-1
+  * Add note about updating `index.hbs`
+
+-------------------------------------------------------------------
 Mon Nov 11 02:07:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.4.42:
