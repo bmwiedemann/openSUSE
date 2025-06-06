@@ -135,6 +135,9 @@ Recommends:     malcontent-control
 Suggests:       power-profiles-daemon
 # To ensure that the distribution icon is always displayed in the About section, even for minimal installations
 Recommends:     distribution-logos-openSUSE-icons
+%if !0%{?is_opensuse}
+Recommends:     distribution-logos-branding-SLE
+%endif
 
 %description
 The control center is GNOME's main interface for configuration of

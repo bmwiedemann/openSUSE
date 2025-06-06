@@ -2377,4 +2377,14 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1280097</requestid>
   </revision>
+  <revision rev="269" vrev="2">
+    <srcmd5>58512e9344d2c0f06619f8b57dfb0041</srcmd5>
+    <version>48.2</version>
+    <time>1749242437</time>
+    <user>anag_factory</user>
+    <comment>- Add Recommends distribution-logos-branding-SLE for SLE
+  (bsc#1243104).
+</comment>
+    <requestid>1283012</requestid>
+  </revision>
 </revisionlist>
