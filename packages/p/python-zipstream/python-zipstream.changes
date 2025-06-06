@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  6 03:08:41 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Sun Aug 16 02:25:00 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite, replacing nose with pytest

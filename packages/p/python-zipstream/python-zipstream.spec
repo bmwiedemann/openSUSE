@@ -1,7 +1,7 @@
 #
 # spec file for package python-zipstream
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zipstream
 Version:        1.1.4
 Release:        0
@@ -25,7 +24,9 @@ License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/allanlei/python-zipstream
 Source:         https://github.com/allanlei/python-zipstream/archive/v%{version}.tar.gz#/zipstream-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -42,10 +43,10 @@ disk first.
 %setup -q -n python-zipstream-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +55,7 @@ disk first.
 %files %{python_files}
 %doc README.markdown
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/zipstream
+%{python_sitelib}/zipstream-%{version}.dist-info
 
 %changelog
