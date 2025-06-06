@@ -1,7 +1,7 @@
 #
 # spec file for package python-zxcvbn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,14 @@ Summary:        Python password strength estimator
 License:        MIT
 URL:            https://github.com/dwolfhub/zxcvbn-python
 Source:         https://github.com/dwolfhub/zxcvbn-python/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -39,10 +43,10 @@ Python password strength estimator.
 %setup -q -n %{modname}-python-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/zxcvbn
 
@@ -58,7 +62,8 @@ Python password strength estimator.
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}.dist-info
 %python_alternative %{_bindir}/zxcvbn
 
 %changelog
