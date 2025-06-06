@@ -1,7 +1,7 @@
 #
 # spec file for package python-xsge_tiled
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-xsge_tiled
 Version:        2.0
@@ -27,7 +26,9 @@ License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://python-sge.github.io
 Source:         https://files.pythonhosted.org/packages/source/x/xsge_tiled/xsge_tiled-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-sge-pygame >= 1.0
@@ -52,10 +53,10 @@ Tiled Map Editor. This allows you to use Tiled to edit your game’s world
 %setup -q -n xsge_tiled-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
