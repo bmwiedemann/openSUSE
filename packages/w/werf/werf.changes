@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 05 17:04:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.37.1:
+  * Bug Fixes
+    - release, werf-in-image: fix overlayfs errors (5d77bbd)
+
+-------------------------------------------------------------------
+Thu Jun 05 16:57:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.37.0:
+  * Features
+    - release, werf-in-image: add user for GitHub Actions
+      compatibility (da3489e)
+    - deploy: new experimental werf dismiss (274ff85)
+  * Bug Fixes
+    - kube-run: handle SIGINT/SIGTERM properly (v2) (#6893)
+      (315be8b)
+
+-------------------------------------------------------------------
 Sat May 31 07:01:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.36.4:
