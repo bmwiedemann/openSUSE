@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Jun  3 14:15:07 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 4.11.3:
+  * Fixed handling of Apple Clang `-Xpreprocessor -fopenmp` options (regression in
+  ccache 4.10).
+  * Adapted unit test code to compile with doctest 2.4.12.
+  * Silenced benign compiler warning in the profiling_gcc_10+ suite.
+  * Reset signal mask and signal defaults when executing compiler. This fixes a
+  problem where interrupting the compilation (e.g. with Ctrl+C) wouldn't kill
+  the compiler (regression in ccache 4.11).
+  * Fixed erroneous log file locking on Windows (regression in ccache 4.11).
+  * Added ability to send arbitrary HTTP headers to HTTP storage.
+  * Added support for MSVC's `/TC` and `/TP` options. 
+  * Made the `absolute_paths_in_stderr` feature also handle MSVC diagnostics
+    messages.
+  * Absolute paths in MSVC diagnostics messages are now rewritten to relative if
+  `base_dir` is in effect.
+  * Added support for NVCC's `--compile` option.
+  * `posix_spawn` is now used instead `execv` to execute the compiler on POSIX
+  systems.
+  * Added support for GCC's `-fprofile-prefix-path` option.
+  * Added `response_file_format` config option to control response file format.
+  * Added support for Clang `-frandomize-layout-seed-file` option. 
+  * Improved `absolute_paths_in_stderr` to recognize more paths patterns.
+  * Added support for the clang-cl option `/showIncludes:user`.
+  * Added support for Intel's LLVM-based compilers `icx` and `icx-cl`.
+  * A stat call for `~/.ccache` is now avoided if `CCACHE_DIR` is set.
+  * Added Support for `.bat` and `.cmd` scripts as the compiler on Windows.
+  * Added support for Clang's `-f{debug,file}-compilation-dir` options.
+  * Added knowledge about Clang's `--offload-compress` option. This will avoid
+  errors when ccache runs the compiler in preprocessor mode.
+  * Added knowledge about Clang options `-fmodules-cache-path`,
+  `-fmodule-map-file` and `-fbuild-session-file`.
+  * Improved handling of paths internally, thereby fixing some issues on Windows
+  (for example when using non-ASCII paths).
+  * Fixed interpretation of non-ASCII paths in environment variables on Windows.
+  * Made sure that remote storage `keep-alive` can be overridden as expected. 
+  * Fixed detection of compiler type for hard-linked generic compiler name.
+  * Fixed problems with matching a path with `base_dir` if either ends with a
+  slash.
+  * The `-fprofile-abs-path` option is now correctly passed through to GCC.
+  * Writes to the log file are now synchronized.
+  * Command line config options ending with "`/ccache`" are now handled properly.
+  * Made `--trim-method mtime` actually use mtime instead of atime. +
+  * Fixed a bug where ccache failed to rename raw files correctly for large caches
+  that have more than two cache levels.
+  * Instructed MSVC to accept UTF-8 characters in ccache's own source code.
+  * Fixed binary patching of `sysconfdir` for the prebuilt Linux binary.
+  * Added an `HTTP_STORAGE_BACKEND` build option to make it possible to turn off
+  the http storage backend.
+  * Fixed call to `sha256sum` on macOS.
+  * Made tests pass in year 2038.
+  * Refreshed some Dockerfiles.
+
+-------------------------------------------------------------------
 Tue May 27 10:04:17 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - Added BuildRequires: gcc11-PIE
