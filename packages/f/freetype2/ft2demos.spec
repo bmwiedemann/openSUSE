@@ -64,6 +64,9 @@ Requires:       ftstring = %{version}-%{release}
 Requires:       ftvalid = %{version}-%{release}
 Requires:       ftview = %{version}-%{release}
 Conflicts:      dtc < 1.4.0
+%if 0%{?suse_version} == 1600 && ! 0%{?is_opensuse}
+ExclusiveArch:  donotbuild
+%endif
 
 %description
 Freetype2 utilities and demo programs.
