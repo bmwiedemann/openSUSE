@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 04 10:49:45 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
+
+- Continue trying to fix building with GCC15:
+  * roms/edk2: continue to try fixing building with GCC15 (bsc#1241473)
+  * roms/ipxe: fix building with GCC15 (bsc#1241473)
+
+-------------------------------------------------------------------
 Wed May 28 13:09:23 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fix building opensbi with gcc-15:

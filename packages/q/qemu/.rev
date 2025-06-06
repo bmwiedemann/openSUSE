@@ -4433,4 +4433,15 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1280947</requestid>
   </revision>
+  <revision rev="292" vrev="3">
+    <srcmd5>70e91baa119876fa9553bd85af5923e6</srcmd5>
+    <version>10.0.0</version>
+    <time>1749242132</time>
+    <user>anag_factory</user>
+    <comment>- Continue trying to fix building with GCC15:
+  * roms/edk2: continue to try fixing building with GCC15 (bsc#1241473)
+  * roms/ipxe: fix building with GCC15 (bsc#1241473)
+</comment>
+    <requestid>1282885</requestid>
+  </revision>
 </revisionlist>
