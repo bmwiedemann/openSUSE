@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun  1 08:11:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.2:
+  + Fix new warnings on Fedora 42, various meson warnings, and
+    other small meson build/wrap fixes
+  + validate: baseclasses: Reset Test timeouts between iterations
+  + validate: scenario: Fix race condition when ignoring EOS
+
+-------------------------------------------------------------------
 Wed Apr 30 11:15:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.1:
