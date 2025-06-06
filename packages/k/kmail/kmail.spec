@@ -18,11 +18,11 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.4.1
+%define kpim6_version 6.4.2
 
 %bcond_without released
 Name:           kmail
-Version:        25.04.1
+Version:        25.04.2
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
