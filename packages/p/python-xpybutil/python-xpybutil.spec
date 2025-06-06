@@ -1,7 +1,7 @@
 #
 # spec file for package python-xpybutil
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xpybutil
 Version:        0.0.6
 Release:        0
@@ -27,7 +26,9 @@ URL:            https://github.com/BurntSushi/xpybutil
 Source:         https://github.com/BurntSushi/xpybutil/archive/%{version}.tar.gz
 Patch0:         python-xpybutil-0.0.5-remove-selftest.patch
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xcffib}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,15 +43,16 @@ xpybutil is an abstraction over the X Python Binding (xpyb). It exists because x
 %autosetup -p1 -n xpybutil-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
 %files %{python_files}
 %license COPYING
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/xpybutil
+%{python_sitelib}/xpybutil-%{version}.dist-info
 
 %changelog
