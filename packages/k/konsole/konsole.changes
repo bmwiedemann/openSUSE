@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  3 21:12:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.2/
+- Changes since 25.04.1:
+  * Clear the arguments if the command is not found
+
+-------------------------------------------------------------------
 Wed May  7 21:00:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.1
@@ -2389,8 +2399,8 @@ Sat Nov 24 12:49:07 UTC 2012 - tittiatcoke@gmail.com
 
 - Update to 4.9.80
   * See http://www.kde.org/announcements/announce-4.10-beta1.php
--------------------------------------------------------------------
 
+-------------------------------------------------------------------
 Fri Nov  2 16:46:34 UTC 2012 - tittiatcoke@gmail.com
 
 - Update to 4.9.3
@@ -2407,7 +2417,6 @@ Wed Sep  5 12:05:03 UTC 2012 - dmueller@suse.com
 
 - update to 4.9.1
   * see http://kde.org/announcements/4.9.1/ for details
-
 
 -------------------------------------------------------------------
 Mon Jul 30 16:57:14 UTC 2012 - dmueller@suse.com
@@ -3634,12 +3643,12 @@ Tue Oct  2 14:36:09 CEST 2007 - stbinner@suse.de
 
 - update to 3.93.0.svn720100
 
-------------------------------------------------------------------
+-------------------------------------------------------------------
 Wed Sep 26 13:50:40 CEST 2007 - stbinner@suse.de
 
 - update to 3.93.0.svn717244
 
---------------------------------------------------------------------
+-------------------------------------------------------------------
 Fri Sep 21 23:12:54 CEST 2007 - stbinner@suse.de
 
 - don't remove icons anymore after build check got fixed (#307017)
