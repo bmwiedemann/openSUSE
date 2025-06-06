@@ -14,12 +14,11 @@ Signed-off-by: Martin Wilck <mwilck@suse.com>
  libmount/src/context_mount.c | 41 ++++++++++++++++++++++++++++++++----
  1 file changed, 37 insertions(+), 4 deletions(-)
 
-diff --git a/libmount/src/context_mount.c b/libmount/src/context_mount.c
-index f914c9b..a48483f 100644
---- a/libmount/src/context_mount.c
-+++ b/libmount/src/context_mount.c
-@@ -1423,6 +1423,32 @@ done:
- 	return rc;
+diff -ur util-linux-2.41.orig/libmount/src/context_mount.c util-linux-2.41/libmount/src/context_mount.c
+--- util-linux-2.41.orig/libmount/src/context_mount.c	2025-03-04 19:14:02.587173600 +0100
++++ util-linux-2.41/libmount/src/context_mount.c	2025-04-08 14:03:59.173505340 +0200
+@@ -1469,6 +1469,32 @@
+ 	}
  }
  
 +/*
@@ -51,7 +50,7 @@ index f914c9b..a48483f 100644
  int mnt_context_get_mount_excode(
  			struct libmnt_context *cxt,
  			int rc,
-@@ -1670,10 +1696,17 @@ int mnt_context_get_mount_excode(
+@@ -1772,10 +1798,17 @@
  	case ENODEV:
  		if (!buf)
  			break;
@@ -73,6 +72,3 @@ index f914c9b..a48483f 100644
  			snprintf(buf, bufsz, _("unknown filesystem type"));
  		break;
  
--- 
-2.19.2
-

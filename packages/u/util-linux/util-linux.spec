@@ -85,18 +85,18 @@ Group:          Development/Languages/Python
 %endif
 # ulbuild == python
 
-Version:        2.40.4
+Version:        2.41
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://www.kernel.org/pub/linux/utils/util-linux/
-Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.40/util-linux-%{version}.tar.xz
+Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.41/util-linux-%{version}.tar.xz
 Source2:        util-linux-login_defs-check.sh
 Source7:        baselibs.conf
 Source8:        login.pamd
 Source9:        remote.pamd
 Source10:       su.pamd
 Source11:       su.default
-Source12:       https://www.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-%{version}.tar.sign
+Source12:       https://www.kernel.org/pub/linux/utils/util-linux/v2.41/util-linux-%{version}.tar.sign
 Source13:       %{_name}.keyring
 Source14:       runuser.pamd
 Source15:       runuser-l.pamd
@@ -110,6 +110,16 @@ Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
 # PATCH-FIX-SUSE util-linux-bash-completion-su-chsh-l.patch bsc1172427 -- Fix "su -s" bash completion.
 Patch3:         util-linux-bash-completion-su-chsh-l.patch
 Patch5:         static_lib.patch
+# PATCH-FIX-UPSTREAM util-linux-libblkid-econf-parse.patch boo1242705 gh#util-linux/util-linux#3574 sbrabec@suse.com -- Prevent segfault of findmnt caused by incorrect parsing of config file by libeconf.
+Patch6:         util-linux-libblkid-econf-parse.patch
+# PATCH-FIX-UPSTREAM util-linux-rename-common-symbols-1.patch gh#util-linux/util-linux#3603 sbrabec@suse.com -- Add ul_ prefix to functions with common names. Fixes btrfsprogs build failure.
+Patch7:         util-linux-rename-common-symbols-1.patch
+# PATCH-FIX-UPSTREAM util-linux-rename-common-symbols-2.patch gh#util-linux/util-linux#3603 sbrabec@suse.com -- Add ul_ prefix to functions with common names.
+Patch8:         util-linux-rename-common-symbols-2.patch
+# PATCH-FIX-UPSTREAM util-linux-rename-common-symbols-3.patch gh#util-linux/util-linux#3603 sbrabec@suse.com -- Add ul_ prefix to functions with common names.
+Patch9:         util-linux-rename-common-symbols-3.patch
+# PATCH-FIX-UPSTREAM util-linux-rename-common-symbols-4.patch gh#util-linux/util-linux#3603 sbrabec@suse.com -- Add ul_ prefix to functions with common names.
+Patch10:        util-linux-rename-common-symbols-4.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel
@@ -185,7 +195,8 @@ Supplements:    filesystem(minix)
 # All login.defs variables require support from shadow side.
 # Upgrade this symbol version only if new variables appear!
 # Verify by shadow-login_defs-check.sh from shadow source package.
-Recommends:     login_defs-support-for-util-linux >= 2.37
+# Use downstream version. Upstream may accept the patch later.
+Recommends:     login_defs-support-for-util-linux >= 4.17.4
 %endif
 # ulsubset == core
 
@@ -560,7 +571,6 @@ configure_options="$configure_options --with-systemd "
 	--enable-fs-paths-default="/sbin:/usr/sbin"\
 	--enable-static\
 	--with-vendordir=%{_distconfdir}\
-	--disable-libmount-mountfd-support\
 	$configure_options
 %make_build
 }
@@ -1020,7 +1030,9 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_bindir}/kill
 %core %verify(not mode) %attr(%ul_suid,root,root) %{_bindir}/su
 %core %{_bindir}/eject
+%core %{_bindir}/bits
 %core %{_bindir}/cal
+%core %{_bindir}/coresched
 %core %{_bindir}/chmem
 %core %{_bindir}/choom
 %core %{_bindir}/chrt
@@ -1232,6 +1244,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 
 %core %{_mandir}/man1/kill.1.gz
 %core %{_mandir}/man1/su.1.gz
+%core %{_mandir}/man1/bits.1.gz
 %core %{_mandir}/man1/cal.1.gz
 %core %{_mandir}/man1/choom.1.gz
 %core %{_mandir}/man1/chrt.1.gz
@@ -1239,6 +1252,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_mandir}/man1/colcrt.1.gz
 %core %{_mandir}/man1/colrm.1.gz
 %core %{_mandir}/man1/column.1.gz
+%core %{_mandir}/man1/coresched.1.gz
 %core %{_mandir}/man1/dmesg.1.gz
 %core %{_mandir}/man1/enosys.1.gz
 %core %{_mandir}/man1/eject.1.gz

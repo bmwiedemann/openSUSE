@@ -2693,4 +2693,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
 - Drop bashisms from build recipe</comment>
     <requestid>1248301</requestid>
   </revision>
+  <revision rev="296" vrev="1">
+    <srcmd5>ae9c9a1e8797b76b50b43643ff6e3188</srcmd5>
+    <version>2.41</version>
+    <time>1749241943</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1283407</requestid>
+  </revision>
 </revisionlist>

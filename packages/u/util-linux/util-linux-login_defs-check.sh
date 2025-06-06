@@ -15,7 +15,7 @@ echo -n "Checking login.defs variables in util-linux... " >&2
 		sed -n 's/^.*logindefs_setenv*("[A-Z0-9_]*", "\([A-Z0-9_]*\)".*$/\1/p'
 ) | LC_ALL=C sort -u >util-linux-login_defs-vars.lst
 
-if test $(sha1sum util-linux-login_defs-vars.lst | sed 's/ .*$//') != 8516ca34e059b2dee1d4421a3ab07e88331b1674 ; then
+if test $(sha1sum util-linux-login_defs-vars.lst | sed 's/ .*$//') != 713b442bf6d16353b7f74538ece165b424f90932 ; then
 
 	echo "does not match!" >&2
 	echo "Checksum is: $(sha1sum util-linux-login_defs-vars.lst | sed 's/ .*$//')" >&2
@@ -32,10 +32,13 @@ If it is false positive:
 - The same fix is needed in shadow package in shadow-login_defs-check.sh.
 
 If it is true positive:
-- Check-out shadow package and call shadow-login_defs-check.sh.
-- Compare its output shadow-login_defs-check-util-linux.lst with
-  util-linux-login_defs-vars.lst in the util-linux build directory.
+
+- Check-out shadow package and call shadow-login_defs-check.sh. If it
+  fails, check the output.
 - Update shadow shadow-login_defs-util-linux.patch, if needed.
+- Verify that the new variable is included in FOREIGNDEFS in lib/getdef.c.
+  If not, add it to shadow-login_defs-util-linux.patch and send the chunk
+  to the upstream.
 - If shadow-login_defs-util-linux.patch was updated, update
   login_defs-support-for-util-linux symbol version in both shadow and
   util-linux spec files accordingly.

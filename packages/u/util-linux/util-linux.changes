@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Thu May 29 15:21:59 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Add ul_ prefix to functions with common names. Fixes btrfsprogs
+  build failure (gh#util-linux/util-linux#3603,
+  util-linux-rename-common-symbols-1.patch,
+  util-linux-rename-common-symbols-2.patch,
+  util-linux-rename-common-symbols-3.patch,
+  util-linux-rename-common-symbols-4.patch).
+
+-------------------------------------------------------------------
+Tue May 20 14:27:14 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix segfault of findmnt (boo#1242705,
+  gh#util-linux/util-linux#3574,
+  util-linux-libblkid-econf-parse.patch).
+
+-------------------------------------------------------------------
+Thu Apr 17 18:33:03 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Enable mountfd support again (jsc#PED-9752).
+  BREAKING CHANGE
+  Mountfd is nearly completely compatible with the old mount. There
+  is a special case that cannot be handled by mountfd, and it needs
+  to be handled by applications:
+  Mountfd discriminates between physical mount layer and virtual
+  mount layer. Once the physical mount layer is read-only,
+  read-write mount on the virtual layer is not possible.
+  If the first mount is read only, then the physical filesystem is
+  mounted read-only, and later mount of the same file system as
+  read-write is not possible. To solve this problem, the first
+  mount needs to be read-only only on the virtual layer, keeping
+  the physical layer read-write.
+  The user space fix is simple:
+  Instead of
+    mount -oro
+  use
+    mount -oro=vfs
+  This will keep the physical layer read-write, but the virtual
+  file system layer (and the user space access) will be read-only.
+
+-------------------------------------------------------------------
+Mon Apr  7 21:00:58 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.41:
+  * agetty: Fixed an issue where issue files were not being printed
+    from additional locations, such as /run or /usr/lib. This
+    change now allows for the use of local information from /etc,
+    in addition to generated files from /run and
+    distribution-specific files from /usr/lib.
+  * cfdisk and sfdisk: Added support for the --sector-size command
+    line option.
+  * sfdisk: Added a new option, --discard-free.
+  * fdisk: Added a new command, 'T', to discard sectors.
+  * chrt: The --sched-runtime now supports SCHED_{OTHER,BATCH}
+    policies.
+  * column: Can now handle ANSI SGR colors inside OSC 8 hyperlink
+    escape codes and sequences.
+  * enosys: Can now dump defined filters.
+  * libmount:
+    * Added experimental support for statmount() and listmount()
+      syscalls.
+    * This new functionality can be accessed using "findmnt
+      --kernel=listmount".
+    * Added a new mount option,
+      X-mount.nocanonicalize[=source|target].
+    * Added new mount extensions to the "ro" flag (ro[=vfs,fs]).
+    * Added a new option, X-mount.noloop, to disable automatic loop
+      device creation.
+    * Now supports bind symlinks over symlinks.
+    * Reads all kernel info/warning/error messages from new API
+      syscalls (and mount(8) prints them).
+  * libuuid: Now supports RFC9562 UUIDs.
+  * findmnt, lsblk, and lsfd: Added a new --hyperlink command line
+    option to print paths as terminal hyperlinks.
+  * findmnt: Can now address filesystems using --id and --uniq-id
+    (requires listmount() kernel support).
+  * flock: Added support for the --fcntl command line option.
+  * hardlink: Can now prioritize specified trees on the command
+    line using --prioritize-trees.
+    * Can exclude sub-trees using --exclude-subtree or keep them in
+      the current mount using --mount.
+    * Duplicates can now be printed using --list-duplicates.
+  * hwclock: Added a new --param-index option to address position
+    for RTC_PARAM_{GET,SET} ioctls.
+  * kill: Can now decode signal masks (e.g. as used in /proc) to
+    signal names.
+  * libblkid: Made many changes to improve detection, including
+    exfat, GPT, LUKS2, bitlocker, etc.
+  * login: Added support for LOGIN_ENV_SAFELIST in /etc/login.def.
+  * lsfd: Now supports pidfs and AF_VSOCK sockets.
+  * lsipc, ipcmk, ipcrm: Now supports POSIX ipc.
+  * lslogins: Now supports lastlog2.
+  * lsns: Added support for the --filter option.
+  * build by meson: Now supports translated man pages and has fixed
+    many bugs.
+  * mkswap: The option --file should now be usable on btrfs.
+  * nsenter: Improved support for pidfd and can now join target
+    process's socket net namespace.
+  * scriptlive: Added a new option, --echo <never|always|auto>.
+  * zramctl: Now supports COMP-RATIO and --algorithm-params.
+  * Many other new features and fixes. For complete list see
+    https://kernel.org/pub/linux/utils/util-linux/v2.41/v2.41-ReleaseNotes
+- Update util-linux-login_defs-check.sh:
+  * Make instructions up to date.
+  * Update checksum reflecting the shadow update.
+- Refresh libmount-print-a-blacklist-hint-for-unknown-filesyst.patch.
+
+-------------------------------------------------------------------
 Mon Feb 24 17:16:49 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Delete /usr/sbin/rc* symlinks
