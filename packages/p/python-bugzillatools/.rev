@@ -107,4 +107,12 @@
     <comment>- Add python312.patch to fix tests with python3.12</comment>
     <requestid>1148327</requestid>
   </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>99ce3011680c5f27fa7647274cf7eed1</srcmd5>
+    <version>0.5.5</version>
+    <time>1749242619</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1283510</requestid>
+  </revision>
 </revisionlist>

@@ -169,6 +169,7 @@ install -D -m 755 files/nagios/check_fail2ban %{buildroot}%{nagios_plugindir}/ch
 # install docs using the macro
 rm -r %{buildroot}%{_docdir}/%{name}
 
+%python3_fix_shebang
 # remove duplicates
 %fdupes -s %{buildroot}%{python3_sitelib}
 

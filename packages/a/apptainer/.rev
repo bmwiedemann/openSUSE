@@ -385,4 +385,41 @@
     <comment>* GO-2024-3321 CVE-2024-45337 (bsc#1234595) (forwarded request 1254798 from eeich)</comment>
     <requestid>1254799</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>32f8dd2d5e6f998528890925b5837025</srcmd5>
+    <version>1.4.1</version>
+    <time>1749242663</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.1
+  * Fix the use of libsubid which had been broken by the revision
+    applied in 1.4.0-rc.2.
+  * Fix a bug introduced in 1.4.0 that caused arm64 to be
+    mis-converted to arm64v8 and resulted in a failure when pulling
+    OCI containers.
+  * Fix user database lookup in master process preventing instance
+    from starting correctly on systems using winbind.
+  * Check for existence of `/run/systemd/system` when verifying
+    cgroups can be used via systemd manager.
+  * Add a clear error message if someone tries to use privileged
+    network options while not using setuid mode.
+  * Allow multi-arch oci-archive files that have a nested index
+    with the manifest. This is the default format (both for Docker
+    and OCI) when using `nerdctl save`.
+  * Test if docker-archive is actually an oci-archive (since Docker
+    version 25), and if it is oci then use the OCI parser to avoid
+    bugs in the Docker parser. Save the daemon-daemon references
+    to a temporary docker-archive, to benefit from the same
+    improvements also for those references. Parse as oci-archive.
+- New Features &amp; Functionality in from ineherited 1.4.0
+  * Add new build option `--mksquashfs-args` to pass additional
+    arguments to the `mksquashfs` command when building SIF files.
+    If a compression method other than gzip is selected, the SIF
+    file might not work with older installations of Apptainer
+    or Singularity, so an INFO message about that is printed. On
+    the other hand, an INFO message that was printed (twice) when
+    running an image with non-gzip compression has been removed.
+  * If the `mksquashfs` version is new enough (version 4.6 in
+    Leaep 16.0), then show a percentage progress bar (with ETA)</comment>
+    <requestid>1283596</requestid>
+  </revision>
 </revisionlist>

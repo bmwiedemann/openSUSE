@@ -759,4 +759,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1280347</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>a3994b6d558519fa4517045ab4984d92</srcmd5>
+    <version>570.153.02</version>
+    <time>1749242688</time>
+    <user>anag_factory</user>
+    <comment>- update CUDA variant to 575.57.08
+- supersedes persistent-nvidia-id-string.patch</comment>
+    <requestid>1283674</requestid>
+  </revision>
 </revisionlist>

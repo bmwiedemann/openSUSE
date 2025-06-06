@@ -18,7 +18,7 @@
 
 %define         appname re.sonny.Junction
 Name:           junction
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        Application/browser chooser
 License:        GPL-3.0-only
@@ -27,6 +27,7 @@ Source0:        %{name}-%{version}.tar.zst
 Source99:       junction-rpmlintrc
 # PATCH-FEATURE-UPSTREAM junction-show-in-default-app-selector.patch gh#sunnyp/Junction!155, bsc#1223463 alynx.zhou@suse.com -- Show junction in default browser selector in GNOME Settings
 Patch1:         junction-show-in-default-app-selector.patch
+Patch2:         fix-metainfo.xml.patch
 BuildRequires:  blueprint-compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  gjs
@@ -63,12 +64,12 @@ ln -rsf %{buildroot}%{_bindir}/%{appname} %{buildroot}%{_bindir}/%{name}
 %doc README.md notes.md
 %{_bindir}/%{appname}
 %{_bindir}/%{name}
+%{_datadir}/%{appname}
 %{_datadir}/applications/%{appname}.desktop
 %{_datadir}/dbus-1/services/%{appname}.service
 %{_datadir}/glib-2.0/schemas/%{appname}.gschema.xml
+%{_datadir}/metainfo/%{appname}.metainfo.xml
 %{_iconsdir}/hicolor/scalable/apps/%{appname}.svg
 %{_iconsdir}/hicolor/symbolic/apps/%{appname}-symbolic.svg
-%{_datadir}/metainfo/%{appname}.metainfo.xml
-%{_datadir}/%{appname}
 
 %changelog

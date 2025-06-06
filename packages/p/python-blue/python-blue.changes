@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  6 05:32:39 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Simplify docs build.
+
+-------------------------------------------------------------------
 Mon Mar 10 12:59:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add black-25.1.patch to support changes in black 25.1

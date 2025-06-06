@@ -679,4 +679,447 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1282352</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a6c9f44ce577446bd2af2273a56387ec</srcmd5>
+    <version>6.0.3+git3.gd6be731aa98a3603236a5b8b3ed60cbedd895c01</version>
+    <time>1749242644</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.0.3+git3.gd6be731aa98a3603236a5b8b3ed60cbedd895c01:
+  * docs: update cargo_vendor service documentation
+  * fix: error message caused confusion here. changed it so that it passes any general kind of errors.
+  * docs: update README
+- Update to version 6.0.3:
+  * chore(release): bump to version 6.0.3
+  * fix: bring in libroast fixes from newer version
+- Update to version 6.0.1:
+  * chore(release): v6.0.1
+  * improvement: just pass the current workdir instead
+  * docs: behaviour changed. i don't want TMPDIR to be filled up like crazy.
+  * docs: update README.md
+- Update to version 5.1.0+git31.geaa15d9:
+  * remove: woah this test file has not been removed since lol
+  * dependencies: update libroast to 7.1.2
+  * tests: update bonk to v0.4.0
+  * Merge branch '20250518-do-everything-at-once'
+  * dependencies: bump libroast to 6.1.0
+  * chore(release): bump to v5.1.0
+  * tests: make `segments` mutable
+  * clippy: apply fix for &quot;double_ended_iterator_last&quot; clippy error here too
+  * clippy: apply fix for clippy error &quot;double_ended_iterator_last&quot;
+  * misc: remove unnecessary newlines in Cargo.toml configuration.
+  * ci: run also when lockfile is updated.
+  * ci: set TOOLCHAIN_VERSION to stable
+  * cargo: update Cargo.lock
+  * toolchain: always select stable
+  * chore(release): v5.0.0
+  * cargo: update Cargo.lock
+  * Merge branch 'Pi-Cla-update-deps'
+  * refactor: update code to Rust 2024 edition
+  * chore: update MSRV to 1.85 and Rust edition to 2024
+  * chore(release): v4.5.0
+  * test: update sources for roast.
+  * security: update gix-worktree-state to 0.17.0
+  * fix(doc): missing last double quote now added.
+  * ci: install rust with \`rustup show\` command
+  * toolchain: add most used components for rust development
+  * chore(release): v4.4.1
+  * fix: avoid infinite recursion causing stack overflow
+  * tests: add just to the test vendored files
+  * chore(release): v4.4.0
+  * chore: apply clippy suggestions
+  * improvement: ensure paths are handled. also output the hashes of lockfiles before and after.
+  * revert: trying to patch gix-worktree-state
+  * chore: bump deps
+  * refactor: update code to Rust 2024 edition
+  * chore: update MSRV to 1.85 and Rust edition to 2024
+  * chore(release): v4.5.0
+  * test: update sources for roast.
+  * security: update gix-worktree-state to 0.17.0
+  * fix(doc): missing last double quote now added.
+  * ci: install rust with \`rustup show\` command
+  * toolchain: add most used components for rust development
+  * chore(release): v4.4.1
+  * fix: avoid infinite recursion causing stack overflow
+  * tests: add just to the test vendored files
+  * chore(release): v4.4.0
+  * tests: ignored -&gt; ignore
+  * tests: fix tests by ignoring those that change directories in the environment
+  * misc: apply clippy suggestions
+  * dependencies: update libroast to v7.1.1
+  * tests: add tests that points to a URL
+  * tests: add test file
+  * tests: update struct fields of `Opts` in tests
+  * fix: revision should be an `Option&lt;String&gt;` in obs service cargo
+  * docs: update service file definition
+  * docs: update wording in code docs
+  * improvement: port over roast scm specific fields to obs service cargo
+  * dependencies: update libroast to v7.1.0
+  * dunno why target.rs is there
+  * dependencies: update Cargo.lock
+  * dependencies: only use git sources for libroast
+  * dependencies: get libroast from registry now
+  * format: run `cargo fmt`
+  * fix: clippy lint fixes + adding missing fields in tests.
+  * feature: roast_scm + obs-service-cargo_vendor in one go
+  * dependencies: use another fixed change in libroast
+  * dependencies: add url crate
+  * dependencies: use another fixed change in libroast
+  * dependency: update libroast to the working commit
+  * docs: update doc comments to match intention
+  * refactor: change this field to `String` instead of `PathBuf`.
+  * dependencies: use git source at a specific commit hash for libroast.
+  * dependencies: bump libroast to 6.1.0
+- Add openssl as new build dependency
+- Update to version 5.1.0+git29.g2fedf31:
+  * tests: update bonk to v0.4.0
+  * Merge branch '20250518-do-everything-at-once'
+  * dependencies: bump libroast to 6.1.0
+  * chore(release): bump to v5.1.0
+  * tests: make `segments` mutable
+  * clippy: apply fix for &quot;double_ended_iterator_last&quot; clippy error here too
+  * clippy: apply fix for clippy error &quot;double_ended_iterator_last&quot;
+  * misc: remove unnecessary newlines in Cargo.toml configuration.
+  * ci: run also when lockfile is updated.
+  * ci: set TOOLCHAIN_VERSION to stable
+  * cargo: update Cargo.lock
+  * toolchain: always select stable
+  * chore(release): v5.0.0
+  * cargo: update Cargo.lock
+  * Merge branch 'Pi-Cla-update-deps'
+  * refactor: update code to Rust 2024 edition
+  * chore: update MSRV to 1.85 and Rust edition to 2024
+  * chore(release): v4.5.0
+  * test: update sources for roast.
+  * security: update gix-worktree-state to 0.17.0
+  * fix(doc): missing last double quote now added.
+  * ci: install rust with \`rustup show\` command
+  * toolchain: add most used components for rust development
+  * chore(release): v4.4.1
+  * fix: avoid infinite recursion causing stack overflow
+  * tests: add just to the test vendored files
+  * chore(release): v4.4.0
+  * chore: apply clippy suggestions
+  * improvement: ensure paths are handled. also output the hashes of lockfiles before and after.
+  * revert: trying to patch gix-worktree-state
+  * chore: bump deps
+  * refactor: update code to Rust 2024 edition
+  * chore: update MSRV to 1.85 and Rust edition to 2024
+  * chore(release): v4.5.0
+  * test: update sources for roast.
+  * security: update gix-worktree-state to 0.17.0
+  * fix(doc): missing last double quote now added.
+  * ci: install rust with \`rustup show\` command
+  * toolchain: add most used components for rust development
+  * chore(release): v4.4.1
+  * fix: avoid infinite recursion causing stack overflow
+  * tests: add just to the test vendored files
+  * chore(release): v4.4.0
+  * tests: ignored -&gt; ignore
+  * tests: fix tests by ignoring those that change directories in the environment
+  * misc: apply clippy suggestions
+  * dependencies: update libroast to v7.1.1
+  * tests: add tests that points to a URL
+  * tests: add test file
+  * tests: update struct fields of `Opts` in tests
+  * fix: revision should be an `Option&lt;String&gt;` in obs service cargo
+  * docs: update service file definition
+  * docs: update wording in code docs
+  * improvement: port over roast scm specific fields to obs service cargo
+  * dependencies: update libroast to v7.1.0
+  * dunno why target.rs is there
+  * dependencies: update Cargo.lock
+  * dependencies: only use git sources for libroast
+  * dependencies: get libroast from registry now
+  * format: run `cargo fmt`
+  * fix: clippy lint fixes + adding missing fields in tests.
+  * feature: roast_scm + obs-service-cargo_vendor in one go
+  * dependencies: use another fixed change in libroast
+  * dependencies: add url crate
+  * dependencies: use another fixed change in libroast
+  * dependency: update libroast to the working commit
+  * docs: update doc comments to match intention
+  * refactor: change this field to `String` instead of `PathBuf`.
+  * dependencies: use git source at a specific commit hash for libroast.
+  * dependencies: bump libroast to 6.1.0
+- Update to version 5.1.0:
+  * Bump toolchain version to stable
+  * Apply fix for clippy error &quot;double_ended_iterator_last&quot;
+  * Make `segments` mutable in testing code
+  * Update Cargo.lock
+- Update to version 5.0.0:
+  * Update MSRV to 1.85 and Rust edition to 2024
+  * Update Cargo.lock
+  * revert: trying to patch gix-worktree-state
+  * refactor code for Rust edition 2024
+- Update vendored dependencies.
+  * This also updates Cargo.lock so openssl is set to version
+    &quot;0.10.70&quot;. Avoids CVE-2025-24898 alerts. This CVE does not
+    really affect us.
+- Update to version 4.5.0:
+  * test: update sources for roast.
+  * security: update gix-worktree-state to 0.17.0
+  * fix(doc): missing last double quote now added.
+  * toolchain: add most used components for rust development
+- Set rust toolchain to version 1.83
+- Update to version 4.4.1:
+  * fix: avoid infinite recursion causing stack overflow
+  * tests: add just to the test vendored files
+- Update to version 4.4.0:
+  * chore: apply clippy suggestions
+  * improvement: ensure paths are handled. also output the hashes of lockfiles before and after.
+  * fix: it should be using custom_root and not setup_workdir
+  * fix tests
+  * tests: from_str to from in PathBuf
+  * chore: set MSRV to 1.83
+  * chore: update Cargo.lock
+  * tests: add tokenizers for registry method testing
+- Update to version 4.3.6:
+  * improvement: ensure to communicate well to users when a &quot;No space left on device occurs&quot;
+- Update vendored dependencies.
+- Update to version 4.3.5:
+  * fix: finally added the alias. 🫠
+  * chore: update roast to 5.1.7. update other dependencies as well.
+- Update to version 4.3.3:
+  * fix: let cargo just put where the vendor directory is by default which is the curdir
+- Update to version 4.3.2:
+  * fix: updating specific crates was not properly implemented. now resolved.
+- Update to version 4.3.1:
+  * fix: correctly use setup_workdir and custom_root
+  * fix: resolve location for the vendor directory
+  * remove: it's not our bug. using `--target` for multiple triples now removed
+  * fix: do not canonicalize in first_manifest
+  * fix: remove the wrongly used else-clause
+  * improvements: ensure that the additional manifest paths ends with `Cargo.toml`
+  * docs: update docs to include the new feature with feature additions
+  * improvements: parent path of Cargo.toml files are now set as current directory when invoking commands
+- Update to version 4.2.2:
+  * fix: add more info
+  * fix: add warning
+  * fix: ignore error when crate dependency does not exist for manifest path
+  * update description
+  * feat: update can now specify recursive or precise
+  * fix: can now determine a member that uses a glob pattern
+  * feat: add all target triples as no opt for cargo-fetch
+  * docs(fix): if set to true
+  * fix: correct error message for lockfiles
+  * docs: replace underscore with dash
+- Update to version 4.1.1:
+  * Remove unnecessary if-elses
+- Update to version 4.1.0:
+  * tests: readd tests for lockfile hash comparisons between update false and update true
+  * fix: this should pass a valid manifest path-like-string
+  * improvements: use new dependency detection and return properly
+  * fix: this if-else condition is stupid. fixed
+  * misc: update warning message and remove comment
+  * docs: update README explaining how respect-lockfile behaves
+  * improvements: fix issues with how we respect lockfile
+  * docs: include respect-lockfile, and allowedvalue should be allowedvalues
+  * improvements: introduce the new dependency detection
+  * improvements: properly detect dependencies
+  * improvements: adjust where we pass around the update variable
+  * fix: reintroduce respect-lockfile flag
+  * misc: make vendor have a separate registry as well
+  * misc: move over the env initialisation to here
+- Update to version 4.0.2:
+  * refactor: check if all manifest needs to get vendored
+  * refactor: properly cleanup directories and exit if there are actually no dependencies
+  * docs: put the xml service to readme as well
+  * chore: improve descriptions of each flag
+  * deps: replace sha3 with sha2
+  * fmt: fix spaces and tabs and parentheses
+- Update to version 4.0.0:
+  * update service description file
+  * docs: improve explainer about lockfiles
+  * fix: added trace feature
+  * minor: check the else clause
+  * improvements in the service file metadata
+  * remove bulk-updater
+  * refactor: This is a major refactor by combining home registry and vendor.
+  * refactor: implemented cargo vendor
+  * tests: update test suite in CI to conform with new code changes
+  * fix: remove unnecessary if-else that broke the vendor logic
+  * fix: again, vendor filterer does not support --locked
+  * improvements + filterer fixes
+  * fix: typoed a dash. it was an underscore
+  * fix: rework where we put vendor
+  * improvement: set env before everything for registry
+  * improvement: improve messages
+  * tests: add test of the output tarball
+  * do tests in release mode
+  * fix: change how custom root behaves on &quot;regular&quot; vendor
+  * ci(fix): properly alias the tests instead to run tests in release mode
+  * fix: create the paths first
+  * fix: 🎉 squashed all bugs and ready for user testing
+  * rename field from manifest-paths to manifest-path
+  * docs: update service file
+  * add one more test case
+  * docs: enhance README
+  * remove unstable-doc feature
+  * docs: remove cargo_audit in the examples
+  * docs: fix typo
+  * docs: spelling plus make alias clear
+  * remove cargo_audit.service. not needed anymore
+  * fix: if-else to check if it is a workspace or not has been corrected
+  * docs: update README. outdated statement removed
+  * docs: update README
+  * docs: explain how cargotoml behaviour works between methods
+  * tests: test bonk that it really has no dependencies
+  * tests: adjust if-else as without it will lead to failure since we are testing that raw cannot find a vendor tarball
+- Update to version 3.6.1:
+  * docs: improve explainer about lockfiles
+  * update service description file
+  * ensure lockfile creation
+  * minor: small refactor in generate_lockfile and vendor
+  * fix: forgot to use clap::ArgAction::Set. now finally added
+- Update to version 3.6.0:
+  * chore: release v3.6.0
+  * fix: used a different cargotoml. now using the correct one for flux
+  * find cargo vendor filterer by exporting PATH in container
+  * add forgotten run
+  * use traced test
+  * tests: add tests for cargotoml flag
+  * tests: lessen verbosity and rename nonexistent function to existing one
+  * tests: add tests for unfiltered and filtered option
+  * chore: update manifest and dependencies
+  * refactor: migrates almost all logic to libroast. 🎉
+  * fix: rectify mismatched types
+  * chore: remove dependencies since libroast is used internally
+  * add COC and CONTRIBUTING
+  * update changelog
+  * chore: release v3.5.4
+  * Bump rustsec to fix #99 and quick-xml because why not
+  * chore: release v3.5.2
+  * feat: add versioned-dirs flag
+- Update to version 3.5.4
+  * Bump rustsec to fix #99 and quick-xml because why not
+  * feat: add versioned-dirs flag
+    * Note: This is a BREAKING CHANGE
+  * refactor: migrate some ideas and move the compression logic to roast internally
+- Set version of vendor-filterer to &gt;= 0.5.16. Contains a fix for the versioned-dirs
+- Update to version 3.3.3:
+  * Use versioned-dirs only for unfiltered vendoring, as cargo-vendor-filterer does not support this flag yet
+  * crates: get libroast dep from crates.io
+  * feat: support uncompressed tarballs or with `.tar` extension
+  * cli: improve description
+  * cargo: update lockfile and bump crate versions
+  * fix changelog
+  * fix: properly set which version to set in the manifest
+- Update to version 2.0.0
+  * refactor: successful move to use libroast
+  * minor: add `--versioned-dirs` flag
+- Update vendor.tar.zst: gix-path improper path resolution
+  (bsc#1230688 CVE-2024-45405).
+- Update vendored deps to resolve boo#1230083
+- Bump constraints, zsystems still keeps failing due to OOM
+- Add _constraints to stop s390x out of memory build fails
+- Fix build failures caused by the topmost folder being renamed
+  from obs-service-cargo_vendor to obs-service-cargo
+- Update to version 1.3.6
+  * Fix Clippy error and add Clippy CI
+  * fix: vendor-filterer --all-features rather than --all-features=true
+  * internet_points: Add Pi-Cla
+  * 20240523 ensure to regenerate lockfiles if vendor set to false
+  * doc: fix warning indicator
+  * fix again warn indicator
+- Update to version 1.3.2:
+  * dependencies update
+- Update resolves security incidents. I believe this does not really affect
+  how obs-service-cargo behaves but for now, I just want to avoid the alerts.
+- Update to version 1.3.1:
+  * docs: update CHANGELOG
+  * docs: add CONTRIBUTORS.md
+  * cargo-vendor-filterer now supports --sync
+- Add cargo vendor-filterer as requirement.
+- Set `filter` to true in _service file.
+- Update vendored dependencies with filterer.
+- Update to version 1.2.1:
+  * Add experimental vendor_filterer support
+- Update to version 1.1.0:
+  * make tarballs reproducible
+- Update to 1.0.0:
+  * No code change *
+- Update to 0.9.0:
+  * No code change *
+- Update to version 0.8.21:
+  * Improve errors with outpath
+- Update to version 0.8.20:
+  * added bz2 mime
+  * add fixes to make bz2 mime supported
+- Update to version 0.8.18:
+  * (de)compress: add Bz2 compression
+  * refactor return types and initial boilerplate for bz2 compress
+  * nitpick. slight refactor because Ok(()) looks yuck in some contexts
+  * it should be `--output` if we want to download a file
+- Update to version 0.8.15:
+  * fix: we also include build_dependencies
+  * test: add VBox-Starter in runtests.sh
+  * fix: check also the targets section
+  * misc: nitpick. remove small space
+  * fix typo
+  * docs: put warning on README
+- Update to version 0.8.12:
+  * improv: reintroduced tag in README
+  * Add tagging
+  * docs: add possible vendor failures in README
+  * make cargotoml usage clearer
+- Update to version 0.8.10:
+  * docs: update README
+  * move lints to configuration manifest
+  * an improvement of commit 24aaa0056
+  * configure rust version and toolchain&quot;
+  * check if there are lockfiles from aforementioned manifest paths
+  * fix: check if dependencies section is empty or not
+  * misc: remove redundant messages
+  * improvement: better handling on when and when not to vendor
+  
+- Remove cargo_config. Part of vendored tarball now
+- Update to 0.8.9:
+  * dummy determine the path of the lockfile
+- Update to 0.8.8:
+  * clippy: change match to if let
+  * docs: add dependencies section in the README
+  * fix: just warn and don't return an error
+  * fix: hasdeps should inherit should_vendor value
+  * fix: also join the paths from `prjdir`
+  * Remove tags, fix multitoml vendor, automatically add .cargo/config
+  * fix multi cargo issue
+  * do not exit process when terminfo is not found.
+- Disable update. Cargo cannot find glob crate when trying to update.
+- Update to version 0.8.4:
+  * fix: also check attempt to vendor if it is also a workspace
+- Update to version 0.8.3:
+  * misc: add stop sign in error message
+  * improve error handling impl
+  * fix: also make sure it really has no deps
+  * utils: exit vendor step if no dependencies found
+  * update README again
+  * update README
+  * docs: update README regarding the new flag
+  * all: apply clippy lint suggestions
+  * fix: also copy top-level folder if src is a directory
+  * Rework of compression and vendoring to be clearer
+  * Minor output improvements
+  * fix: also copy top-level folder if src is a directory
+  * update email address in manifest file
+  * remove unused dead code
+  * clippy: apply clippy suggestions
+- Update to release 0.8.0:
+  * audit is no-op and it is now part of vendor process.
+  * cargo_audit binary will execute nothing now.
+- Update to release 0.7.5:
+  * globbed tar now supports lexicographical order
+  * improved rustsec output
+- Update to release 0.7.4:
+  * fix: decompressed tarball may or may not have a top-level folder
+- Change obsoletes to not list a version as we obsolete all versions.
+- Update to release 0.7.3.
+  * small fixes and changes
+- Update to version 0.7.1. No changes.
+- Update to 0.7.0:
+  * refactor cargo vendor
+  * feature audit
+- Change to 0.6.0 release
+- Initial spec for obs-service-cargo. 0.6.0-alpha</comment>
+    <requestid>1283571</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-billiard
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,11 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/celery/billiard
 Source:         https://files.pythonhosted.org/packages/source/b/billiard/billiard-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil >= 5.9.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Documentation requirements
@@ -56,14 +58,14 @@ Documentation and help files for %{name}.
 %autosetup -p1 -n billiard-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 pushd Doc
 sphinx-build -b html . html
 rm -r html/.buildinfo html/.doctrees
 popd
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
@@ -73,7 +75,8 @@ popd
 %files %{python_files}
 %doc CHANGES.txt README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/billiard
+%{python_sitelib}/billiard-%{version}.dist-info
 
 %files -n %{name}-doc
 %doc Doc/html

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  4 10:55:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.7.7. Check the ChangeLog file for the full list of
+  changes.
+- Start using Qt 6 to build kstars
+- Add patch:
+  * 0001-Fix-installation-with-Qt6.patch
+
+-------------------------------------------------------------------
 Tue Apr  1 12:05:24 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.7.6:

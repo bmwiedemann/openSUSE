@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Mon Jun  2 10:13:00 UTC 2025 - Christian Goll <cgoll@suse.com>
+- Update to 1.4.1
+  * Fix the use of libsubid which had been broken by the revision
+    applied in 1.4.0-rc.2.
+  * Fix a bug introduced in 1.4.0 that caused arm64 to be
+    mis-converted to arm64v8 and resulted in a failure when pulling
+    OCI containers.
+  * Fix user database lookup in master process preventing instance
+    from starting correctly on systems using winbind.
+  * Check for existence of `/run/systemd/system` when verifying
+    cgroups can be used via systemd manager.
+  * Add a clear error message if someone tries to use privileged
+    network options while not using setuid mode.
+  * Allow multi-arch oci-archive files that have a nested index
+    with the manifest. This is the default format (both for Docker
+    and OCI) when using `nerdctl save`.
+  * Test if docker-archive is actually an oci-archive (since Docker
+    version 25), and if it is oci then use the OCI parser to avoid
+    bugs in the Docker parser. Save the daemon-daemon references
+    to a temporary docker-archive, to benefit from the same
+    improvements also for those references. Parse as oci-archive.
+- New Features & Functionality in from ineherited 1.4.0
+  * Add new build option `--mksquashfs-args` to pass additional
+    arguments to the `mksquashfs` command when building SIF files.
+    If a compression method other than gzip is selected, the SIF
+    file might not work with older installations of Apptainer
+    or Singularity, so an INFO message about that is printed. On
+    the other hand, an INFO message that was printed (twice) when
+    running an image with non-gzip compression has been removed.
+  * If the `mksquashfs` version is new enough (version 4.6 in
+    Leaep 16.0), then show a percentage progress bar (with ETA)
+    during SIF creation in the default log level. If the `mksquashfs`
+    version is older, then in verbose or debug log level show the
+    output of mksquashfs with its own progress bar.
+  * Statistics are now normally available for instances that are
+    started by non-root users on cgroups v2 systems. The instance
+    will be started in the current cgroup. Information about
+    configuration issues that prevent collection of statistics are
+    displayed as INFO messages by default.
+  * Add a `--sandbox` option to `apptainer pull`.
+  * Add configuration file binding to the `--nv` option. Files
+    that are recognized in the NVIDIA Container Toolkit, including
+    files for EGL ICD, were added to the default `nvliblist.conf`.
+  * It is now possible to use multiple environment variable files
+    using the `--env-file` flag. Files can be specified as a
+    comma-separated list or by using the flag multiple times.
+    Variables defined in later files take precedence over earlier
+    files.
+  * The registry login and registry logout commands now support a
+    `--authfile <path>` option, which causes OCI credentials to be
+    written to / removed from a custom file located at `<path>`
+    instead of the default location (`$HOME/.apptainer/docker-config.json`).
+    The commands `pull`, `push`, `run`, `exec`, `shell` and
+    instance start can now also be passed a `--authfile <path>`
+    option, to read OCI registry credentials from this custom file.
+  * A new `--netns-path` option takes a path to a network
+    namespace to join when starting a container. The root user
+    may join any network namespace. An unprivileged user can only
+    join a network namespace specified in the new `allow netns
+    paths` directive in `apptainer.conf`, if they are also listed
+    in `allow net users` / `allow net groups` and apptainer is
+    installed with setuid privileges. Not supported with
+    `--fakeroot`.
+  * `apptainer.conf` now accepts setting the following options:
+        `allow ipc ns` -- Default value is `yes`; when set to `no`,
+	it will disable the use of the `--ipc` flag.
+        `allow uts ns` -- Default value is `yes`; when set to `no`,
+	it will invalidate the use of the `--uts` and `--hostname`
+	flags.
+        `allow user ns` -- Default value is `yes`; when set to
+	`no`, it will disable creation of user namespaces. Note
+	that this will prevent execution of containers with the
+	`--userns` or `--fakeroot` flags and with unprivileged
+	installations of Apptainer.
+- Changed defaults / behaviours
+  * Label the starter process seen in `ps` with the image filename,
+    for example: Apptainer runtime parent: `example.sif`.
+  * Remove runtime and compute libraries from `rocmliblist.conf`.
+    They should instead be provided by the container image.
+  * Allow overriding the build architecture with `--arch` and
+    `--arch-variant`, to build images for another architecture
+    than the current host arch. This requires that the host has
+    been set up to support multiple architectures (`binfmt_misc`).
+  * Complete the previously partial support for the riscv64
+    architecture.
+  * Show a warning message if changing directory to the cwd
+    fails, instead of silently switching to the home directory
+    or `/`.
+  * Write starter messages to stderr when an instance fails to
+    start. Previously they were incorrectly written to stdout.
+  * Skip attempting to bind inaccessible mount points when
+    handling the `mount hostfs = yes` configuration option.
+  * Fix storage of credentials for `docker.io` to behave the same
+    as for `index.docker.io`.
+  * Change message log level from warning to debug when environment
+    variables set inside a container or by `APPTAINERENV` have a
+    different value than the environment variable on the host.
+  * Change the default message level from silent to the normal
+    level in the nested apptainer that executes a build's `%post`
+    section, and suppress an unnecessary warning message.
+  * Ignore invalid environment variables when pulling oci/docker
+    containers.
+  * Remove the little-known `fakerootcallback` functionality.
+  * Update the default pacman confURL for `Bootstrap: arch`
+    container builds.
+  * Update the bundled fuse programs to their latest releases.
+- Bug fixes
+  * Fix the `mconfig -s` option to build the apptainer and starter
+    binaries statically as documented.
+  * `%files from` in a definition file will now correctly copy
+    symlinks that `%point` to a target above the destination
+    directory but inside the `%destination` stage root filesystem.
+  * Fixed typo in `nvliblist.conf` (`libnvoptix.so.1` -> `libnvoptix.so`).
+  * Avoid timeouts when cleaning up from building gocryptfs-encrypted
+    SIF files.
+  * Fix bug that prevented build with `--passphrase` or
+    `--pem-path` but without `--encrypt` from implying fakeroot.
+  * Fix hang when copying files between build stages while using
+    suid mode without user namespaces.
+  * Fix running and building containers of different architectures
+    than the host via binfmt_misc when using rootless fakeroot.
+  * Fix `target: no such file or directory` error when extracting
+    layers from certain OCI images that manipulate hard links
+    across layers.
+  * Fix the crash that happened when executing a privilege-encrypted
+    container as root.
+
+-------------------------------------------------------------------
 Tue Mar 18 18:15:41 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - Fix CVE-2024-45338, CVE-2025-22870, CVE-2024-45337, CVE-2025-22869, CVE-2025-27144 CVE-2024-41110

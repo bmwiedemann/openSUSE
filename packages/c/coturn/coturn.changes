@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Mon May 12 13:54:59 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Upgrade to coturn 4.6.3
+  * Release highlights:
+    - Multiple memory fixes
+    - New drain feature
+    - Better support for new versions of Redis
+    - Add support for raw public keys
+
+  * Complete change list
+    - Add clang-tidy, include-what-you-use, and msvc-analyzer github actions
+    - Add CodeQL workflow
+    - added missing function prototype of turn_random_number()
+    - Added sessionID to some log lines
+    - added support for amazon linux and renamed tests.yml
+    - added warnings for prometheus apt unavailability
+    - Add github action that runs tests with compiler sanitizers
+    - Additional refactoring of ns_turn_allocation.* to address security
+      scanner concerns
+    - Add MariaDB support to README.md
+    - Add new Drain feature
+    - Add prometheus setting suggestions on turn.conf in example folder
+    - Address clang-tidy warnings in db files
+    - Address some build issues introduced by api changes
+    - Add support for raw public keys
+    - Add the InsertBraces command for clang-format to ensure that all
+      conditionals always have braces
+    - Add warning and disable web admin if no-tls option used
+    - Adjust wording in cmake message when prometheous cannot be found.
+    - Allow authenticating with a username to redis
+    - Always run lint, regardless of branch
+    - Avoid nullptr dereference of server variable in various functions
+    - avoid potential nullptr derefernence in udp_create_server_socket
+    - Avoid read-past-end of string in get_bold_admin_title
+    - Avoid writing potentially uninitialized data to aes_128 key file
+    - changed variables in stunclient.c to bool
+    - Change minimal required cmake version to 3.16
+    - Change printf() to TURN_LOG_FUNC() for --no-stdout-log
+    - Change the various map functions to return bool instead of
+      inconsistantly return 0, 1, or -1
+    - Check allocation results in add_static_user_account
+    - Check the result of calloc in handle_logon_request
+    - Check the result of malloc in del_alt_server
+    - Check the result of malloc in mongo_set_realm_option_one
+    - Check the result of malloc in send_message_to_redis
+    - Check the result of malloc in string_list_add
+    - Check the result of realloc and calloc in ch_map_get
+    - CMake: Declare the variable nearby
+    - configure: data files shouldn't be executable
+    - defined a magic number for stun fingerprinting
+    - Delete dead code
+    - Delete unused variable
+    - Doc: add flowchart
+    - Easy installation of coturn on AWS
+    - Fix buffer overflow in generate_enc_password with increase rsalt by 2
+    - Fix build with libressl 3.6+
+    - Fix clang-format lint warnings
+    - Fix cli auth
+    - Fix Cmake find issue in libevent
+    - Fix cmake find prometheus(fix #1304)
+    - Fix compiler warnings from continuous integration
+    - Fix const during free warning in rfc5769check app
+    - Fix error of make command in Cygwin environment
+    - Fix formatting to fix lint error
+    - Fix lint complaint about comment
+    - Fix lint errors
+    - Fix linting error in mainrelay.c
+    - Fix make lint
+    - Fix memcpy len checks stun_is_challenge_response_str
+    - Fix memleak in pgsql_reread_realms
+    - Fix memory leak in netengine.c
+    - Fix memory leak in rfc5769check.c
+    - Fix memory leak on http_server.c
+    - Fix mingw build
+    - Fix missing strncpy in fix_stun_check_message_integrity_str
+    - Fix msvc analyzer error on goto label on rfc5769check
+    - Fix nodejs/glibc problem with old container images.
+    - Fix no-tls warning typo
+    - Fix potential null passed to function expecting nonnull
+    - Fix recursive call in delete alternate server
+    - Fix return correct error code for `create_relay_connection` in case
+      of `RESERVATION-TOKEN` failure
+    - Fix rpm version scripts
+    - Fix run cmake.yml in any github action
+    - Fix typos
+    - Fix ubuntu 16 build with GH action checkout version to v3
+    - Implement custom prometheus http handler
+    - Include what you use
+    - Install openssl-1.1.1 on amazonlinux:2 instead of openssl-1.0.1
+    - malloc now allocates space for string terminator
+    - Memset user_db before reading conf file, not after
+    - Missing session ID in coturn logs for denied IP - 1330
+    - Move the hiredis_libevent2 code from common to relay
+    - Only set MHD_USE_DUAL_STACK if IPv6 is available
+    - Print version only, no extra lines
+    - Reduce ifdefs in code: TURN_NO_PROMETHEUS
+    - Refactor: peer_input_handle
+    - Reformat code
+    - Remove unimplemented test folder reference from CMakeLists.txt
+    - Replace HeapAlloc with malloc
+    - Replace srand/rand with srandom/random
+    - Return a 400 response to HTTP requests
+    - Run all of the CI except for Docker builds on any change
+    - Simplify macOS detection macros
+    - Simplify workflow for codeql
+    - strncpy doesn't return size_t
+    - ubuntu build dependencies extracted to composite actions
+    - Update FlowChart
+    - Update libtelnet
+    - Update lukka/run
+    - Update SQLite.md
+    - Update turnserver.conf Example about listening-ip
+    - Update turnserver.spec
+    - Update version in vcpkg.json
+    - Use active CPU number instead of total number
+    - Use bool, instead of int, for the functions in ns_turn_msg.c
+    - Use bool over int for the turnutils_uclient program
+    - Use calloc where appropriate, avoid memset when normal buffer
+      initialization works
+    - Windows: Only attempt to bind when the network interface is up
+    - workflow tidying
+
+- Rebased coturn-turnserver_conf.patch
+
+-------------------------------------------------------------------
 Sat Jun 15 16:14:52 UTC 2024 - Adam Majer <amajer@suse.com>
 
 - Don't hard require systemd -- not needed in containers

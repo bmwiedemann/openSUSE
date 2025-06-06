@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst-distri-opensuse-deps
-Version:        1.1740494178.9877247a
+Version:        1.1749130322.047961dc
 Release:        0
 Summary:        Metapackage that contains the dependencies of os-autoinst-distri-opensuse
 License:        MIT
@@ -33,6 +33,7 @@ Requires:       perl(constant)
 Requires:       perl(Cwd)
 Requires:       perl(Data::Dump)
 Requires:       perl(Data::Dumper)
+Requires:       perl(Date::Parse)
 Requires:       perl(DateTime)
 Requires:       perl(Digest::file)
 Requires:       perl(Exporter)

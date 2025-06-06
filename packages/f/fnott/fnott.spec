@@ -77,7 +77,7 @@ Zsh command-line completion support for %{name}
 %files
 %{_bindir}/fnott
 %{_bindir}/fnottctl
-%if 0%{?suse_version} > 1600 && 0%{?is_opensuse}
+%if 0%{?suse_version} >= 1600 && 0%{?is_opensuse}
 %{_userunitdir}/fnott.service
 %endif
 

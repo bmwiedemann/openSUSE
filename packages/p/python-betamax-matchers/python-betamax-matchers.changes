@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  6 05:31:33 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Wed Nov 14 23:49:24 UTC 2018 - Todd R <toddrme2178@gmail.com>
 
 - Initial version

@@ -3,7 +3,7 @@
     <param name="url">https://github.com/jj-vcs/jj</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.29.0</param>
+    <param name="revision">v0.30.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">disable</param>
@@ -13,6 +13,7 @@
   </service>
   <service name="cargo_vendor" mode="manual">
     <param name="update">true</param>
+    <param name="respect-lockfile">false</param>
     <param name="srcdir">jj</param>
   </service>
   <service name="tar" mode="buildtime"/>

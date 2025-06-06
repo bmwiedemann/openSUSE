@@ -256,4 +256,13 @@
   - Fix compatibility with Python 2.7 on Windows (#283)</comment>
     <requestid>1206440</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>b9679054103ac4520f5160b005b56ec2</srcmd5>
+    <version>4.2.1</version>
+    <time>1749242608</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1283505</requestid>
+  </revision>
 </revisionlist>

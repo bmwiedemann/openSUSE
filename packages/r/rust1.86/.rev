@@ -7,4 +7,13 @@
     <comment>Submit rust 1.86</comment>
     <requestid>1269413</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>16bef0873b1ec69ce02674f4defaac29</srcmd5>
+    <version>1.86.0</version>
+    <time>1749242683</time>
+    <user>anag_factory</user>
+    <comment>accept and fast-forward to Factory so the GCC15 fix can be submitted.
+Changes checker is a bit exagerated, I'm afraid.</comment>
+    <requestid>1283644</requestid>
+  </revision>
 </revisionlist>

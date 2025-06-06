@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun  5 02:52:33 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.14:
+  * Add --interactive command line switch for username and password prompts
+  * add support for searching for addresses in CC field
+  * Use mimetype of encoding if there is one
+  * utils: use builtin way to get terminal width
+  * change build system to flit
+  * fix output of UTF-8 characters in limited locales
+  * fix multiple warnings
+  * remove unused readline import
+- Switch to pyproject macros.
+- Specify module directories explicitly.
+
+-------------------------------------------------------------------
 Thu Apr  8 13:57:58 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Spec-cleaner & rewrite broken %ifpython3

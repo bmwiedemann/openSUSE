@@ -1,7 +1,7 @@
 #
 # spec file for package python-betamax-matchers
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-betamax-matchers
 Version:        0.4.0
 Release:        0
@@ -25,7 +24,9 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/sigmavirus24/betamax_matchers
 Source:         https://files.pythonhosted.org/packages/source/b/betamax-matchers/betamax-matchers-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-betamax >= 0.3.2
@@ -45,15 +46,16 @@ main package.
 %setup -q -n betamax-matchers-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/betamax_matchers
+%{python_sitelib}/betamax_matchers-%{version}.dist-info
 
 %changelog

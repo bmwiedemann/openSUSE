@@ -19,7 +19,7 @@
 %define binary_name jj
 
 Name:           jujutsu
-Version:        0.29.0
+Version:        0.30.0
 Release:        0
 Summary:        Git-compatible DVCS that is both simple and powerful
 License:        MIT
@@ -32,8 +32,6 @@ BuildRequires:  git-core
 BuildRequires:  gnupg
 BuildRequires:  gpgme
 BuildRequires:  openssh-common
-BuildRequires:  openssl-devel
-BuildRequires:  zstd
 # dependencies for completion subpackages
 BuildRequires:  bash-completion
 BuildRequires:  fish
@@ -41,7 +39,10 @@ BuildRequires:  zsh
 
 # serde_bser fails to compile on s390x
 # error[E0599]: no method named `put_f64_be` found for struct `Vec<u8>` in the current scope
-ExcludeArch:    s390x
+#
+# armv7l
+# rustc-LLVM ERROR: out of memory
+ExcludeArch:    s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
 
 %description
 Jujutsu is a Git-compatible DVCS. It combines features from Git (data model,

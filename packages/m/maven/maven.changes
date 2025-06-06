@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jun  4 08:06:58 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.9.10
+  * Bug
+    + MNG-8096: Inconsistent dependency resolution behaviour for
+      concurrent multi-module build can cause failures
+    + MNG-8169: MINGW support requires
+      --add-opens java.base/java.lang=ALL-UNNAMED
+    + MNG-8170: Maven 3.9.8 contains weird native library for Jansi
+      on Windows/arm64
+    + MNG-8211: Maven should fail builds that use CI Friendly
+      versions but have no values set
+    + MNG-8248: WARNING: A restricted method in java.lang.System has
+      been called
+    + MNG-8256: ProjectDependencyGraph bug: in case of filtering,
+      non-direct module links are lost
+    + MNG-8315: Failure of mvn.cmd if a .mvn directory is located at
+      drive root
+    + MNG-8396: Maven takes forever to resume
+    + MNG-8711: "Duplicate artifact" in LifecycleDependencyResolver
+  * Improvement
+    + MNG-8370: Introduce maven.repo.local.head
+    + MNG-8399: JDK 24+ issues warning about usage of
+      sun.misc.Unsafe
+    + MNG-8707: Add methods to remove compile and test source roots
+    + MNG-8712: improve dependency version explanation: it's a
+      requirement, not always effective version
+    + MNG-8717: Remove maven-plugin-plugin:addPluginArtifactMetadata
+      from default binding
+    + MNG-8722: Use a single standalone version of asm
+    + MNG-8731: Use https for xsi:schemaLocation in generated
+      descriptors
+    + MNG-8734: Simplify scripting like "get project version" cases
+  * Task
+    + MNG-8728: Bump Eclipse Sisu from 0.9.0.M3 to 0.9.0.M4 and use
+      Java 24 on CI
+
+-------------------------------------------------------------------
 Tue Jun  3 08:15:35 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Link also the objectweb-asm/asm to the lib directory
@@ -12,7 +50,7 @@ Tue Aug 27 08:46:19 UTC 2024 - Fridrich Strba <fstrba@suse.com>
     for Maven 3.9.x
     + MNG-8165: Maven does not find extensions for -f when current
       dir is root
-    + MNG-8177: Warning 
+    + MNG-8177: Warning
       "'dependencyManagement.dependencies.dependency.systemPath' for
       com.sun:tools:jar refers to a non-existing file
       C:\Temp\jdk-11.0.23\..\lib\tools.jar"

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  6 11:15:38 UTC 2025 - Max Lin <mlin@suse.com>
+
+- Add %python3_fix_shebang macro
+
+-------------------------------------------------------------------
 Sat Mar 29 13:31:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - distutils (provided by python3-setuptools) is also needed during

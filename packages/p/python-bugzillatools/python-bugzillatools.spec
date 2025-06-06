@@ -1,7 +1,7 @@
 #
 # spec file for package python-bugzillatools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,9 @@ Patch0:         0001-Working-on-both-2.7-and-3.4.patch
 Patch1:         no-bzrlib-py3k.patch
 # PATCH-FIX-OPENSUSE python312.patch
 Patch2:         python312.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -57,10 +59,10 @@ systems that enable interaction with Bugzilla installations.
 sed -i "/.bugzillarc.sample/d" setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/bugzilla
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -78,6 +80,6 @@ sed -i "/.bugzillarc.sample/d" setup.py
 %python_alternative %{_bindir}/bugzilla
 %{python_sitelib}/bzlib
 %{python_sitelib}/bzrlib
-%{python_sitelib}/bugzillatools-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/bugzillatools-%{version}.dist-info
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-elixir_mix_deps
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           obs-service-elixir_mix_deps
 #               This will be set by osc services, that will run after this.
-Version:        0.2.0~0
+Version:        0.3.0~0
 Release:        0
 Summary:        OBS Source Service for Elixir software packaging
 License:        GPL-2.0-only

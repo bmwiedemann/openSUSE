@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  4 10:05:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.7
+  * StellarSolver new use different names for Qt6 and Qt5 libraries
+- Start using Qt 6 for building stellarsolver
+
+-------------------------------------------------------------------
 Tue Aug 20 08:27:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.6:

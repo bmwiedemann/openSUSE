@@ -251,4 +251,12 @@
   * Fix additional &lt; followed by characters and EOF issues.</comment>
     <requestid>1225083</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>9ebedfa5e955f8802f8f45bba2e8841e</srcmd5>
+    <version>6.2.0</version>
+    <time>1749242614</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1283507</requestid>
+  </revision>
 </revisionlist>

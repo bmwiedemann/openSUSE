@@ -7,4 +7,13 @@
     <comment>A group of experimental matchers for Betamax</comment>
     <requestid>652712</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>27eea6d8ce6f2fe8ba4fc3d950552269</srcmd5>
+    <version>0.4.0</version>
+    <time>1749242606</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1283504</requestid>
+  </revision>
 </revisionlist>

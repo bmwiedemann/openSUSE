@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  3 09:08:38 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.32.8
+  * Replace std::make_shared with Crt::MakeShared by @sfod in (#740)
+  * Fix warnings for latest LLVM compiler update by @xiazhvera in (#743)
+- from version 0.32.7
+  * Update submodules by @sfod in (#739)
+
+-------------------------------------------------------------------
 Tue May 27 06:32:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.32.6

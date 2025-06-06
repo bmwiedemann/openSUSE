@@ -25,7 +25,7 @@ Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL AND OpenSSL
 Group:          Productivity/Clustering/Computing
 Name:           apptainer
-Version:        1.3.6
+Version:        1.4.1
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://apptainer.org
@@ -33,8 +33,7 @@ Obsoletes:      singularity <= 3.8.5
 Conflicts:      singularity
 Conflicts:      singularity-ce
 Conflicts:      singularity-runtime
-#Source0:        https://github.com/apptainer/apptainer/archive/v%{version}%{?vers_suffix}/apptainer-%{version}%{?vers_suffix}.tar.gz
-Source0:        apptainer-%{version}%{?vers_suffix}.tar.gz
+Source0:        https://github.com/apptainer/apptainer/archive/v%{version}%{?vers_suffix}/apptainer-%{version}%{?vers_suffix}.tar.gz
 Source1:        README.SUSE
 Source2:        SUSE.def
 Source3:        SLE-15SP5.def
@@ -114,13 +113,8 @@ The package provides a definition file template for Apptainer containers
 based on the latest openSUSE Leap release.
 
 %prep
-%setup -q -n %{name}-%{version}%{?vers_suffix}
-%autopatch -p1
+%autosetup -n %{name}-%{version}%{?vers_suffix} -a21
 cp %{S:1} .
-# For reproducible builds derive the GNU build ID from the Go one.
-# See discussion in https://github.com/apptainer/apptainer/issues/1623
-# as well as https://pkg.go.dev/cmd/link
-sed -i -e "s/\(GO_LDFLAGS += -ldflags=\"\).*\(\"\)/\1-B gobuildid\2/" mlocal/frags/go_normal_opts.mk
 
 %build
 
@@ -128,7 +122,6 @@ sed -i -e "s/\(GO_LDFLAGS += -ldflags=\"\).*\(\"\)/\1-B gobuildid\2/" mlocal/fra
 echo %version > VERSION
 # Not all of these parameters currently have an effect, but they might be
 # used someday.  They are the same parameters as in the configure macro.
-tar xzf %{S:21}
 ./mconfig -V %{version}-%{release} \
         -P release \
         --prefix=%{_prefix} \

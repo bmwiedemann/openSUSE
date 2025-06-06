@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jun 06 13:32:09 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.18:
+  * prepare 0.2.18
+  * fix data padding for layer
+
+-------------------------------------------------------------------
+Tue Jun 03 15:21:09 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.17:
+  * prepare 0.2.17
+  * use decorations default for macos
+  * docs: Mention Terra package for Fedora users (#1128)
+  * flake.lock: Update (#1127)
+  * Support f16 (#1124)
+  * update release rules
+  * disambiguate english in config docs (#1123)
+  * updatw wgpu to 25.0.2
+  * Add branding colors to metainfo (#1121)
+  * flake.lock: Update (#1119)
+  * add flatpak file
+  * fix windows crash for old versions and update wayland deps
+  * Skip passing sandbox env to spawned shell in Flatpak (#1116)
+  * flake.lock: Update
+  * add flathub post
+  * update info about flathub
+  * docs: add new mention (abhimanyu003)
+  * Update using-cargo.md
+
+-------------------------------------------------------------------
 Thu May 15 13:58:27 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 0.2.16:

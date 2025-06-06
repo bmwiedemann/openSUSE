@@ -1,7 +1,7 @@
 #
 # spec file for package python-bleach
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,11 +29,14 @@ Patch0:         de-vendor.patch
 # https://github.com/mozilla/bleach/pull/706
 Patch1:         strip-spaces.patch
 BuildRequires:  %{python_module html5lib >= 1.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-html5lib >= 1.1
+Requires:       python-webencodings
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,10 +59,10 @@ Documentation is at http://bleach.readthedocs.org/ .
 rm -rf bleach/_vendor
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

@@ -132,4 +132,13 @@
     <comment></comment>
     <requestid>1251874</requestid>
   </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>9c8f153a6cb023fc4918f31cf62e7845</srcmd5>
+    <version>0.9.1</version>
+    <time>1749242618</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Simplify docs build.</comment>
+    <requestid>1283508</requestid>
+  </revision>
 </revisionlist>

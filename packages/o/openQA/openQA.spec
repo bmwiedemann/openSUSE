@@ -1,7 +1,7 @@
 #
 # spec file for package openQA
 #
-# Copyright 2018-2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,10 +12,10 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# can't use linebreaks here!
+
 %define openqa_main_service openqa-webui.service
 %define openqa_extra_services openqa-gru.service openqa-websockets.service openqa-scheduler.service openqa-enqueue-audit-event-cleanup.service openqa-enqueue-audit-event-cleanup.timer openqa-enqueue-asset-cleanup.service openqa-enqueue-git-auto-update.service openqa-enqueue-asset-cleanup.timer openqa-enqueue-result-cleanup.service openqa-enqueue-result-cleanup.timer openqa-enqueue-bug-cleanup.service openqa-enqueue-bug-cleanup.timer openqa-enqueue-git-auto-update.timer openqa-enqueue-needle-ref-cleanup.service openqa-enqueue-needle-ref-cleanup.timer
 %define openqa_services %{openqa_main_service} %{openqa_extra_services}
@@ -67,8 +67,15 @@
 %define client_requires curl git-core jq perl(Getopt::Long::Descriptive) perl(IO::Socket::SSL) >= 2.009 perl(IPC::Run) perl(JSON::Validator) perl(LWP::Protocol::https) perl(LWP::UserAgent) perl(Test::More) perl(YAML::PP) >= 0.020 perl(YAML::XS)
 # The following line is generated from dependencies.yaml
 %define worker_requires bsdtar openQA-client optipng os-autoinst perl(Capture::Tiny) perl(File::Map) perl(Minion::Backend::SQLite) >= 5.0.7 perl(Mojo::IOLoop::ReadWriteProcess) >= 0.26 perl(Mojo::SQLite) psmisc sqlite3 >= 3.24.0
-# The following line is generated from dependencies.yaml
+%if 0%{?suse_version} < 1570
+# SLE <= 15 has older Perl not providing a sufficiently recent
+# ExtUtils::ParseXS needed by ExtUtils::CppGuess
+# See https://progress.opensuse.org/issues/162500 for details
 %define build_requires %assetpack_requires npm rubygem(sass) >= 3.7.4
+%else
+# The following line is generated from dependencies.yaml
+%define build_requires %assetpack_requires npm perl(CSS::Sass)
+%endif
 
 # All requirements needed by the tests executed during build-time.
 # Do not require on this in individual sub-packages except for the devel
@@ -90,11 +97,11 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1748615746.d50d8e24
+Version:        5.1749214996.3536da99
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
-Url:            http://os-autoinst.github.io/openQA/
+URL:            http://os-autoinst.github.io/openQA/
 Source0:        %{name}-%{version}.tar.xz
 Source2:        node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
@@ -109,10 +116,10 @@ BuildRequires:  sles-release
 BuildRequires:  %{build_requires}
 BuildRequires:  apparmor-rpm-macros
 BuildRequires:  local-npm-registry
-Requires:       perl(Minion) >= 10.0
 Requires:       %{main_requires}
 Requires:       openQA-client = %{version}
 Requires:       openQA-common = %{version}
+Requires:       perl(Minion) >= 10.0
 # we need to have the same sha1 as expected
 %requires_eq    perl-Mojolicious-Plugin-AssetPack
 Recommends:     %{name}-local-db
@@ -214,8 +221,8 @@ The openQA worker manages test engine (provided by os-autoinst package).
 
 %package client
 Summary:        Client tools for remote openQA management
-Requires:       openQA-common = %{version}
 Requires:       %client_requires
+Requires:       openQA-common = %{version}
 
 %description client
 Tools and support files for openQA client script. Client script is
@@ -245,8 +252,8 @@ next to the webui.
 Summary:        Convenience package for a single-instance setup using apache proxy
 Provides:       %{name}-single-instance-apache
 Provides:       %{name}-single-instance-apache2
-Requires:       %{name}-local-db
 Requires:       %{name} = %{version}
+Requires:       %{name}-local-db
 Requires:       %{name}-worker = %{version}
 Requires:       apache2
 
@@ -255,8 +262,8 @@ Use this package to setup a local instance with all services provided together.
 
 %package single-instance-nginx
 Summary:        Convenience package for a single-instance setup using nginx proxy
-Requires:       %{name}-local-db
 Requires:       %{name} = %{version}
+Requires:       %{name}-local-db
 Requires:       %{name}-worker = %{version}
 Requires:       nginx
 
@@ -304,16 +311,15 @@ regardless of whether devel:openQA contains updates.
 %if %{with munin_package}
 %package munin
 Summary:        Munin scripts
+Requires:       curl
 Requires:       munin
 Requires:       munin-node
-Requires:       curl
 Requires:       perl
 
 %description munin
 Use this package to install munin scripts that allow to monitor some openQA
 statistics.
 %endif
-
 
 %prep
 %setup -q
@@ -427,6 +433,7 @@ install -m 0644 %{_sourcedir}/openQA.changes %{buildroot}%{_datadir}/openqa/publ
 %if 0%{?suse_version} > 1500
 %pre -f %{name}.pre
 %else
+
 %pre
 if ! getent passwd geekotest > /dev/null; then
     %{_sbindir}/useradd -r -g nogroup -c "openQA user" \
@@ -453,6 +460,7 @@ fi
 %if 0%{?suse_version} > 1500
 %pre worker -f openQA-worker.pre
 %else
+
 %pre worker
 if ! getent passwd _openqa-worker > /dev/null; then
   %{_sbindir}/useradd -r -g nogroup -c "openQA worker" \
@@ -713,7 +721,7 @@ fi
 %{_sbindir}/rcopenqa-slirpvde
 %{_sbindir}/rcopenqa-vde_switch
 %{_sbindir}/rcopenqa-worker
-%ghost %config(noreplace) %{_sysconfdir}/openqa/workers.ini
+%ghost %config(noreplace) %attr(0644,root,root) %{_sysconfdir}/openqa/workers.ini
 %ghost %config(noreplace) %attr(0400,_openqa-worker,root) %{_sysconfdir}/openqa/client.conf
 %dir %{_sysconfdir}/openqa/workers.ini.d
 %dir %{_sysconfdir}/openqa/client.conf.d
@@ -742,7 +750,7 @@ fi
 %{_datadir}/openqa/script/openqa-slirpvde
 %{_datadir}/openqa/script/openqa-vde_switch
 %{_tmpfilesdir}/openqa.conf
-%ghost %dir %{_rundir}/openqa
+%ghost %dir %attr(0755,_openqa-worker,root) %{_rundir}/openqa
 # worker libs
 %dir %{_datadir}/openqa
 %dir %{_datadir}/openqa/script

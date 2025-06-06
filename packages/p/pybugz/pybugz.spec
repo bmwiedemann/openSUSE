@@ -1,7 +1,7 @@
 #
 # spec file for package pybugz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           pybugz
-Version:        0.13
+Version:        0.14
 Release:        0
 Summary:        Python Bugzilla Interface
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Web/Utilities
 URL:            http://www.liquidx.net/pybugz
 Source0:        https://github.com/williamh/pybugz/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module base}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -67,18 +66,14 @@ This package contains common files for %{name}.
 %setup -q
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/bugz
 %python_clone -a %{buildroot}%{_mandir}/man1/bugz.1
 %fdupes %{buildroot}
 
-install -Dpm 0644  contrib/bash-completion \
-  %{buildroot}%{_datadir}/bash-completion/completions/bugz
-install -Dpm 0644  contrib/zsh-completion  \
-  %{buildroot}%{_datadir}/zsh/site-functions/_bugz
 install -d -m 0755  %{buildroot}%{_sysconfdir}/pybugz.d
 
 %post
@@ -92,7 +87,8 @@ install -d -m 0755  %{buildroot}%{_sysconfdir}/pybugz.d
 %doc README
 %python_alternative %{_bindir}/bugz
 %python_alternative %{_mandir}/man1/bugz.1%{ext_man}
-%{python_sitelib}/*
+%{python_sitelib}/bugz
+%{python_sitelib}/pybugz-%{version}.dist-info
 
 %files -n %{name}-common
 %dir %{_sysconfdir}/pybugz.d

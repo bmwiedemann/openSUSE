@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jun 05 04:59:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.59.2:
+  * Revert "fix(telemetry): remove data race in telemetry hook"
+
+-------------------------------------------------------------------
+Wed Jun 04 18:34:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.59.1:
+  * fix(telemetry): remove data race in telemetry hook
+
+-------------------------------------------------------------------
+Wed Jun 04 18:30:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.59.0:
+  * refactor: do not use the global client
+  * refactor: do not use api.GetClient() in commands/api
+  * fix: make HttpClient always safe to use
+  * chore(usage-ping): Add telemetry data for
+    commands/projects/namespaces
+  * feat(config): added GitDir to get proper location to put local
+    configs
+  * chore: Update command examples following new style guide
+  * feat: add pagination to ci trigger command
+  * docs(api): add simple GraphQL oneliner
+
+-------------------------------------------------------------------
 Thu May 29 05:18:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.58.0:

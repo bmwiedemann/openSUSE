@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 06 13:51:38 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1749214996.3536da99:
+  * Bump @types/estree from 1.0.7 to 1.0.8
+  * Support sass generation in all product versions
+  * Avoid sporadic test failures due to warning about closed ws connection
+  * Increase chart testing verbosity for better log trace
+  * Bump ace-builds from 1.41.0 to 1.42.0
+  * Bump eslint from 9.27.0 to 9.28.0
+  * Bump @pkgr/core from 0.2.4 to 0.2.7
+  * Remove nested .gitignore from openQA rpm
+  * Add permissions to avoid the warnings in openQA build
+
+-------------------------------------------------------------------
 Mon Jun 02 16:21:34 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1748615746.d50d8e24:

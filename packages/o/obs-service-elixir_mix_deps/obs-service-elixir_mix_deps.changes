@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jun 06 14:18:43 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.3.0~0:
+  * doc: change rpmspec to spec annotation in README
+  * doc: replace examples with actual ex_doc usage from Factory
+  * Bump clap from 4.5.38 to 4.5.39
+  * Bump clap from 4.5.36 to 4.5.38
+  * Bump assert_cmd from 2.0.16 to 2.0.17
+  * Bump anyhow from 1.0.97 to 1.0.98
+  * Bump clap from 4.5.34 to 4.5.36
+  * Bump flate2 from 1.1.0 to 1.1.1
+  * Bump thiserror from 2.0.9 to 2.0.12
+  * Bump clap from 4.5.23 to 4.5.34
+  * Bump anyhow from 1.0.95 to 1.0.97
+  * Bump zstd from 0.13.2 to 0.13.3
+  * Bump flate2 from 1.0.35 to 1.1.0
+  * Bump tar from 0.4.43 to 0.4.44
+  * Move dependabot config to the right location
+  * Add dependabot
+  * Start working on 0.3.0
+  * End to end testing using assert_cmd
+  * Bump deps, 2024 12 25
+  * Add CI badge to the README file
+  * Give the CI job the right name
+  * Add Factory build status badge
+
+-------------------------------------------------------------------
 Sat Nov 30 19:03:19 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
 
 - Change the URL from the original one to the actual official openSUSE git repo

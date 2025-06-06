@@ -56,6 +56,10 @@ log:
   # Set traefik's log-level
   # Default: ERROR
   #level: DEBUG
+  #
+  # Set a filePath if you want to send traefik logs to a file instead of
+  # the systemd journal. Access logs are handled seperately
+  #filePath: /var/log/traefik/traefik.log
 
 
 # ------------------------------------------------------------------------
@@ -65,9 +69,9 @@ log:
 # ------------------------------------------------------------------------
 #accessLog:
   # ------------------------------------------------------------------------
-  # Set the filepath for the traefik log-file.
+  # Set the filepath for the access log file.
   # Default: os.Stdout
-  #filePath: /var/log/traefik/traefik.log
+  #filePath: /var/log/traefik/access.log
   # ------------------------------------------------------------------------
   # Write logs in the 'common' or 'json' format.
   # Default: common
@@ -150,4 +154,10 @@ providers:
 #      storage: /var/lib/traefik/acme.json
 #      httpChallenge:
 #        entryPoint: web
+#  acmeDnsResolver:
+#    acme:
+#      email: "??@??.??"
+#      storage: /var/lib/traefik/acme-dns.json
+#      dnsChallenge:
+#        provider: ???????
 

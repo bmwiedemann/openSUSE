@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Fri Jun  6 13:26:41 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Removed manual download service and manual checksum verification
+
+-------------------------------------------------------------------
+Fri Jun  6 08:48:27 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.4.1
+
+  - fix for CVE-2025-47952 boo#1243818
+  - docker
+    * Do not warn network missing if connected to a container network
+      (#11698 by holysoles)
+  - k8s/crd
+    * Fix CEL validation for RootCA in ServersTransport (#11775 by rtribotte)
+  - middleware
+    * Scope the rate limit counter key by source and by middleware
+      (#11753 by aromeyer)
+  - server
+    * Use routing path in v3 matchers (#11790 by kevinpollet)
+  - service
+    * Make P2C strategy thread-safe (#11762 by lbenguigui)
+  - webui
+    * Do not display RemoveHeader option when not defined (#11782 by kevinpollet)
+
+-------------------------------------------------------------------
+Tue May 13 04:44:40 UTC 2025 - Eric Torres <eric.torres@its-et.me>
+
+- Important: please read the migration guide in regards to v3.4.0 changes
+
+- Version 3.4.0 changes
+  - acme
+    * Add acme.profile and acme.emailAddresses options (#11597 by ldez)
+  - docker,ecs,docker/swarm,consulcatalog,nomad
+    * Allow configuring server URLs with label providers (#11374 by yelvert)
+  - k8s/crd
+    * Improve CEL validation on Ingress CRD resources (#11311 by mloiseleur)
+    * Remove default load-balancing strategy from CRD (#11701 by kevinpollet)
+    * Restrict regex validation of HTTP status codes for Ingress CRD resources (#11670 by jnoordsij)
+  - k8s/gatewayapi
+    * Set rule priority in Gateway API TLSRoute (#11443 by augustozanellato)
+  - k8s/ingress
+    * Add ingress status for ClusterIP and NodePort Service Type (#11100 by mlec1)
+  - middleware,authentication
+    * Add option to preserve request method in forwardAuth (#11473 by an09mous)
+  - middleware
+    * Support rewriting status codes in error page middleware (#11520 by sevensolutions)
+    * Add Redis rate limiter (#10211 by longquan0104)
+  - service
+    * Add p2c load-balancing strategy for servers load-balancer (#11547 by rtribotte)
+  - sticky-session
+    * Support domain configuration for sticky cookies (#11556 by jleal52)
+  - tls,k8s/crd,service
+    * Allow root CA to be added through config maps (#11475 by Nelwhix)
+  - tls
+    * Add support to disable session ticket (#11609 by avdhoot)
+  - udp
+    * Add support for UDP routing in systemd socket activation (#11022 by tsiid)
+  - webui
+    * Add auto webui theme option and default to it (#11455 by zizzfizzix)
+  - Replace experimental maps and slices with stdlib (#11350 by Juneezee)
+  - Bump github.com/redis/go-redis/v9 to v9.7.3 (#11687 by kevinpollet)
+
+-------------------------------------------------------------------
 Sat Apr 19 22:05:31 UTC 2025 - Eric Torres <eric.torres@its-et.me>
 
 - Important: Please read the migration guide in regards to v3.3.6 changes
@@ -8,10 +72,15 @@ Sat Apr 19 22:05:31 UTC 2025 - Eric Torres <eric.torres@its-et.me>
     match the router rules and sent to the backends. Any /../, /./ or duplicate
     slash segments in the request path is interpreted and/or collapsed.
 
+- fix for boo#1239233 CVE-2025-22868
+- fix for boo#1241731 CVE-2025-22872
+
 -------------------------------------------------------------------
 Sat Apr 19 22:04:38 UTC 2025 - Eric Torres <eric.torres@its-et.me>
 
 - Please read the migration guide in regards to v3.3.5 changes
+- fix for boo#1237636 CVE-2025-27144
+- fix for boo#1239383 CVE-2025-22869
 
 - Version 3.3.5 changes
   - k8s/gatewayapi
@@ -45,6 +114,9 @@ Mon Mar 10 00:27:19 UTC 2025 - Eric Torres <eric.torres@its-et.me>
   - tracing
     * Use ResourceAttributes instead of GlobalAttributes (#11515 by bruno-de-queiroz)
     * Fix panic when calling Tracer (#11479 by basgys)
+
+- Upgrade fixed boo#1235167
+- Package mentioned in boo#1235270 CVE-2024-45338 has been upgraded
 
 -------------------------------------------------------------------
 Mon Mar 10 00:25:30 UTC 2025 - Eric Torres <eric.torres@its-et.me>
@@ -134,6 +206,7 @@ Mon Jan  6 12:57:27 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 Mon Dec 16 13:27:07 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 3.2.3 
+  - Fix for boo#1234513 CVE-2024-4533
   - acme
     * Update go-acme/lego to v4.20.4 (gh#traefik/traefik#11295)
   - http3

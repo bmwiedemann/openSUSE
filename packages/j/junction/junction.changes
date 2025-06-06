@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 31 14:42:32 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.9:
+  * Use appstream for metainfo validation test
+  * Set color scheme later
+  * Call set_as_last_used_for_type() if the application has been opened
+- add fix-metainfo.xml.patch, as there is a mistake in it
+
+-------------------------------------------------------------------
 Fri May 23 13:45:41 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and macro.

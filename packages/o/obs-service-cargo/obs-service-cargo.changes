@@ -1,5 +1,13 @@
 -------------------------------------------------------------------
-Tue Jun 03 13:13:27 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+Fri Jun 06 06:01:20 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 6.0.3+git3.gd6be731aa98a3603236a5b8b3ed60cbedd895c01:
+  * docs: update cargo_vendor service documentation
+  * fix: error message caused confusion here. changed it so that it passes any general kind of errors.
+  * docs: update README
+
+-------------------------------------------------------------------
+Fri Jun 06 05:17:14 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 6.0.3:
   * chore(release): bump to version 6.0.3

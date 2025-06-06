@@ -25,7 +25,9 @@ License:        Python-2.0
 URL:            https://github.com/ilanschnell/bitarray
 Source:         https://github.com/ilanschnell/bitarray/archive/%{version}.tar.gz#/bitarray-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 # SECTION test requirements
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module pytest}
@@ -52,10 +54,10 @@ length encoding, you may find this module useful.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 rm examples/resize/.gitignore examples/puff/.gitignore
 
@@ -67,6 +69,6 @@ rm examples/resize/.gitignore examples/puff/.gitignore
 %license LICENSE
 %doc examples CHANGE_LOG README.rst
 %{python_sitearch}/bitarray
-%{python_sitearch}/bitarray-%{version}*.egg-info
+%{python_sitearch}/bitarray-%{version}.dist-info
 
 %changelog

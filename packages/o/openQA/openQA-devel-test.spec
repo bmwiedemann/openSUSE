@@ -1,7 +1,7 @@
 #
 # spec file for package openQA-devel-test
 #
-# Copyright SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define         short_name openQA-devel
 Name:           %{short_name}-test
-Version:        5.1748615746.d50d8e24
+Version:        5.1749214996.3536da99
 Release:        0
 Summary:        Test package for %{short_name}
 License:        GPL-2.0-or-later
 BuildRequires:  %{short_name} == %{version}
-ExcludeArch:   %{ix86} 
+ExcludeArch:    %{ix86}
 %ifarch ppc ppc64 ppc64le s390x
 # missing chromedriver dependency
 ExclusiveArch:  do_not_build

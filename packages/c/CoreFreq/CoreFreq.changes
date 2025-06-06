@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jun  5 19:47:58 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 2.0.7
+  * [Kernel]
+    -  Defer the cpufreq get_policy and asm/amd/nb.h changes to v6.16
+
+-------------------------------------------------------------------
+Wed Jun  4 19:05:58 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 2.0.6
+  * [Kernel]
+    - Fix missing cpufreq_get_policy and asm/amd/nb.h in kernel 6.15
+    - Use VM_DONTEXPAND in mmap() for stability and isolation
+  * [AMD]
+    - Decodes voltages of Phoenix families using Rembrandt SVI
+    - Attempt to read the SoC voltage in Raphael architecture
+    - Don't probe the HSMP on Raphael' Desktop/Mobile/Embedded
+  * [Intel]
+    - Added the Bartlett Lake/S entry
+    - Clearwater Forest architecture name fix
+  * [AArch64] [RISC-V] [PowerPC]
+    - Use exclusive load/store for selected shared variables
+  * [Doc]
+    - Obfuscate support email format in README and CLI usage
+    - Added command line usage instructions to the README
+
+-------------------------------------------------------------------
 Sat May 24 11:52:27 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 2.0.5

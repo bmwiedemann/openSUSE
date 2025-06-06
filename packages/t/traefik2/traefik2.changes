@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Jun  6 09:04:25 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+Important: Please read the migration guide at 
+https://doc.traefik.io/traefik/v2.11/migration/v2/#v21125
+
+- Version 2.11.25
+  - Fix for boo#1243818 CVE-2025-47952
+  - k8s/ingress
+    * Fix panic for ingress with backend resource (#11777 by rtribotte)
+  - server
+    * Normalize request path (#11768 by kevinpollet)
+
+- Version 2.11.24
+
+  CVE's fixed:
+    CVE-2025-32431 (Advisory GHSA-6p68-w45g-48j7)
+    CVE-2025-22868 (Advisory GHSA-3wqc-mwfx-672p)
+    CVE-2025-22871 (Advisory GHSA-5423-jcjm-2gpv)
+
+  The incoming request path is now cleaned before being used to match the
+  router rules and sent to the backends. Any /../, /./ or duplicate slash
+  segments in the request path is interpreted and/or collapsed.
+  Please read the migration guide:
+  https://doc.traefik.io/traefik/v2.11/migration/v2/#request-path-sanitization
+
+  * middleware
+    - add Content-Length header to preflight response 
+  * server
+    - Sanitize request path (#11684 by rtribotte)
+
+- Version 2.11.23
+  * Fix for boo#1239233 CVE-2025-22868
+
+  * ecs,logs
+    - Bump AWS SDK to v2
+  * logs,tls
+    - Error level log for configuration-related TLS errors with backends
+  * rules
+    - Allow underscore character in HostSNI matcher
+  * webui
+    - Change boolean module properties default value to undefined
+  * Upgrades
+    - Bump golang.org/x/net to v0.38.0
+      fix for boo#1241731 CVE-2025-22872
+
+- Version 2.11.22
+  * fix for boo#1239383 CVE-2025-22869
+  * logs,tls
+    - Error level log for configuration-related TLS errors with backends
+  * rules
+    - Allow underscore character in HostSNI matcher
+  * webui
+    - Change boolean module properties default value to undefined
+  * Updates
+    - Bump github.com/go-jose/go-jose/v4 to v4.0.5
+      fix boo#1237636 CVE-2025-27144
+
+- Version 2.11.21
+  - middleware
+    * Enable the retry middleware in the proxy (#11536 by kevinpollet)
+    * Retry should send headers on Write (#11534 by kevinpollet)
+
+-------------------------------------------------------------------
+Fri Feb  7 09:21:15 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Fix for boo#1235401
+
+- Version 2.11.20
+  * acme
+    - Graceful shutdown for ACME JSON write operation
+  * middleware
+    - Changing log message when client cert is not available to debug
+  * service
+    - Do not create a logger instance for each proxy
+  * webui
+    - Fix auto refresh not clearing on component unmount
+
+-------------------------------------------------------------------
 Tue Jan  7 15:45:48 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 2.11.18
@@ -16,12 +94,14 @@ Mon Jan  6 12:50:10 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
     * Fix typo in basicauth note (gh#traefik/traefik#11397)
   - service
     * Configure ErrorLog in httputil.ReverseProxy (gh#traefik/traefik#11344)
-  Bump golang.org/x/net to v0.33.0 (gh#traefik/traefik#11365)
+  Bump golang.org/x/net to v0.33.0 (gh#traefik/traefik#11365) 
+  mentioned in boo#1235270 CVE-2024-45338
 
 -------------------------------------------------------------------
 Mon Dec 16 13:42:39 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 2.11.16
+  - Fix for boo#1234513 CVE-2024-45337
   - acme
     * Update go-acme/lego to v4.20.4 (gh#traefik/traefik#11295)
   - http3
@@ -158,6 +238,8 @@ Fri May  3 15:14:17 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 - Removed traefik-fix-int-overflow-with-go-generate-10452.patch
 
 - Update to version 2.11.2
+  * Fix for boo#1235167 CVE-2024-28180
+  
   * Important
     * Read the migration guide at https://doc.traefik.io/traefik/migration/v2/#v2112
 

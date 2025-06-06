@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-blue
 Version:        0.9.1
 Release:        0
@@ -36,7 +35,9 @@ BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module black >= 21.7}
 BuildRequires:  %{python_module flake8 >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION doc and test requirements
@@ -74,12 +75,13 @@ HTML Documentation and examples for %name.
 sed -i '/--cov/d' tox.ini
 
 %build
-%python_build
-( cd docs ; PYTHONPATH=../build/lib make html )
+%pyproject_wheel
+make -C docs html
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/blue
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # gh#grantjenks/blue#72
@@ -96,7 +98,7 @@ sed -i '/--cov/d' tox.ini
 %license LICENSE
 %python_alternative %{_bindir}/blue
 %{python_sitelib}/blue
-%{python_sitelib}/blue-%{version}*-info
+%{python_sitelib}/blue-%{version}.dist-info
 
 %files -n python-blue-doc
 %doc docs/_build/html

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  4 18:21:31 UTC 2025 - Martin Jambor <mjambor@suse.com>
+
+- Add rust-build-onig_sys-as-C17.patch so that the package can be
+  built with GCC 15. [boo#1241943]
+
+-------------------------------------------------------------------
 Thu Apr 10 07:40:08 UTC 2025 - William Brown <william.brown@suse.com>
 
 - Ignore broken platform test
@@ -26,7 +32,6 @@ Compiler
 - [Fix emission of `overflowing_literals` under certain macro environments.](https://github.com/rust-lang/rust/pull/136393)
 
 Platform Support
-----------------
 - [Replace `i686-unknown-redox` target with `i586-unknown-redox`.](https://github.com/rust-lang/rust/pull/136698)
 - [Increase baseline CPU of `i686-unknown-hurd-gnu` to Pentium 4.](https://github.com/rust-lang/rust/pull/136700)
 - New tier 3 targets:
@@ -54,7 +59,6 @@ Libraries
 - [On recent versions of Windows, `std::fs::remove_file` will now remove read-only files.](https://github.com/rust-lang/rust/pull/134679)
 
 Stabilized APIs
----------------
 
 - [`{float}::next_down`](https://doc.rust-lang.org/stable/std/primitive.f64.html#method.next_down)
 - [`{float}::next_up`](https://doc.rust-lang.org/stable/std/primitive.f64.html#method.next_up)
@@ -92,7 +96,6 @@ Rustdoc
 - [Add a sans-serif font setting.](https://github.com/rust-lang/rust/pull/133636)
 
 Compatibility Notes
--------------------
 - [The `wasm_c_abi` future compatibility warning is now a hard error.](https://github.com/rust-lang/rust/pull/133951)
   Users of `wasm-bindgen` should upgrade to at least version 0.2.89, otherwise compilation will fail.
 - [Remove long-deprecated no-op attributes `#![no_start]` and `#![crate_id]`.](https://github.com/rust-lang/rust/pull/134300)
@@ -101,7 +104,6 @@ Compatibility Notes
   To compile for pre-SSE2 32-bit x86, use a "i586" target instead.
 
 Internal Changes
-----------------
 
 These changes do not affect any public interfaces of Rust, but they represent
 significant improvements to the performance or internals of rustc and related
