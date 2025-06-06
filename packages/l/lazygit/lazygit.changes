@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Mon May 26 13:54:30 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Update to version 0.51.1:
+  * Use PTY also with credentialStrategy=FAIL
+  * Add ContextMgr.NextInStack and use it to access side panel of focused main view
+  * Cleanup: pass target context to focusMainView directly
+  * Fix crash when clicking in the status view
+  * Make home and end keys work in prompts
+  * Bump gocui
+  * Render the main view only for the side context that it belongs to
+  * Include migration changes in the error message if we can't log them
+  * Log a list of migration changes to the console
+  * Make RenameYamlKey return a bool
+  * Cleanup: remove redundant if statement
+  * Print migration hints only when GUI hasn't started yet
+  * Add tests for migrating null keybindings to <disabled>
+  * Add tests for migration of renamed keys
+  * Cleanup: return didChange bool from computeMigratedConfig
+  * Cleanup: fix formatting of test cases
+  * Cleanup: flip conditions for less indentation
+  * Cleanup: use assert.NoError
+  * Bump generics dependency
+  * Fix possible crash with auto-forwarding branches
+  * Split behavior of rendering allBranchesLogCmd and switching to next cmd
+  * Clear preserved commit message when entering CommitEditorPanel
+  * Rename OnCommitSuccess to ClearPreservedCommitMessage
+  * Remove the if statement from OnCommitSuccess
+  * Remove the call to OnCommitSuccess from tag creation
+  * Add an alternate keybinding (default <c-s>) for ConfirmInEditor
+  * Make '>' first jump to the beginning of the branch, and only then to the first commit
+  * Remove unused keybinding handler
+  * Add custom patch command "Move patch into new commit before the original commit"
+  * Use 'break' instead of 'edit' for BeginInteractiveRebaseForCommit with merge commit
+  * Add test for rewording a merge commit
+  * Regression test for moving custom patch to new commit from last commit of a stacked branch
+  * Regression test for renaming the last commit of a stacked branch
+  * Shorten commit hash in custom patch menu
+  * Cleanup: remove unnecessary setup steps
+  * reword documentation for git.autoForwardBranches
+  * Migrate deprecated AllBranchesLogCmd to AllBranchesLogCmds
+  * Move Loader to presentation package
+  * Move NewDummyCommon to pkg/common
+  * Add breaking change notice about 'stream: true' being converted to not use a pty any more
+  * Combine customCommand's subprocess, stream, and showOutput fields into a single output enum
+  * Add yaml_utils.RemoveKey
+  * Remove unused function UpdateYamlValue
+  * Add separate UsePty flag for CmdObj
+  * Rename getCmdHandler to getCmdHandlerPty, and add getCmdHandlerNonPty
+  * Remove ICmdObj interface
+  * Validate custom commands in sub menus
+  * Add test demonstrating missing validation for custom commands in sub menus
+  * Add comments in tests to explain what they test
+  * Store fromPos/toPos as 16-bit ints, and reorder fields for better packing
+  * Store TextStyle in Pipe struct as pointer
+  * Store Pipe objects by value in slice of Pipes
+  * Simplify equalHashes
+  * Store fromHash/toHash in Pipe struct as pointers
+  * Pack the models.Commit struct a little tighter
+  * Store Commit.Parents in the pool too
+  * Make Commit.Parents a getter for an unexported parents field
+  * Store Commit.Hash by pointer (kept in a pool of hashes)
+  * Make Commit.Hash a getter for an unexported hash field
+  * Rewrite generateCommits to avoid write access to commit.Parents
+  * Cleanup: use IsMerge instead of counting Parents
+  * Simplify code and fix comment
+  * Fix confusing variable name
+  * Remove unused function
+  * Modernize benchmarks
+  * Bump git-todo-parser
+  * fix wording of random tip
+  * Strip the '+' and '-' characters when copying parts of a diff to the clipboard
+  * Remove space after rebase todo
+  * Disallow creating custom patches when the diff context size is 0
+  * Fix nvim-remote commands for fish shell
+  * Fix race condition when starting several command tasks in quick succession
+  * Allow closing issues via github actions
+  * Add Debian installation instructions alongside Ubuntu
+  * Allow changing diff context size and rename threshold when main view is focused
+  * Update config docs and schema
+  * Add new command "Move commits to new branch"
+  * Add free-standing function IsWorkingTreeDirty
+  * Remove MergeAndRebaseHelper's dependency on RefsHelper
+  * Use Model().Branches[0] instead of refsHelper.GetCheckedOutRef() in MergeAndRebaseHelper
+  * Cleanup: remove unnecessary indirection
+  * Add a breaking changes hint for the new auto-forward behavior
+  * Add config for auto-forwarding branches after fetching
+  * Inline fetchAux into call site
+  * Remove double Refresh
+  * Re-render focused main view on refresh if needed
+  * Allow clicking in the respective other main view to switch focus to it
+  * Allow clicking in focused main view to go to staging
+  * Allow clicking in main view to focus it
+  * Read all lines from task when starting to search
+  * Make the main view searchable
+  * Read all lines from task when jumping to bottom
+  * Use readLines channel only for command tasks
+  * Add navigation keybindings to focused main view
+  * Update keybindings, config docs, and schema
+  * Allow focussing the main view
+  * Add class MainContext
+  * Always render diffs to the main/secondary context pair, even for files
+  * Add IGuiCommon.GetViewBufferManagerForView
+  * Remove utils.Clamp, use lo.Clamp instead
+  * Bump gocui
+  * Remove the "YOU ARE HERE" marker
+  * Add section headers for rebase todos, cherry-picks, reverts, and actual commits
+  * Add new commit status StatusCherryPickingOrReverting
+  * Fix view selection running out of sync with list selection when view isn't focused
+  * Support range selection for reverting commits
+  * Inline afterRevertCommit
+  * Remove the "Select parent commit" prompt when reverting a merge commit
+  * Allow cherry-picking merge commits
+  * Remove unused cherry-picking code in daemon
+  * Use "git cherry-pick" for implementing copy/paste of commits
+  * Reference original commits in CherryPicking mode instead of synthesizing new ones
+  * Disallow any changes to commits or todos when cherry-picking or reverting
+  * Fix the bug described in the previous commit
+  * Add test demonstrating problem with revert (or cherry-pick) during a rebase
+  * Add test to check that an "edit" entry correctly shows a conflict
+  * Show todos (and conflicting commit) for cherry-pick and revert
+  * Simplify the MergeRebasingCommits call in GetCommits (slightly)
+  * Show original todo action instead of "conflict", and show `<-- CONFLICT` instead
+  * Use commit.IsTODO instead of comparing Status against models.StatusRebasing
+  * Remove unused enum entry StatusSelected
+  * Add DisabledReason for rebase options when not rebasing or merging
+  * Check for conflicts after reverting a commit
+  * Add test for reverting a commit that conflicts
+  * Mention which command is continued in PromptToContinueRebase
+  * Make WorkingTreeState a struct, and add cherry-picking and reverting states
+  * Move types/enums/enums.go to working_tree_state.go
+  * Add test for a special situation in rebases involving empty commits
+  * Centralize logic regarding WorkingTreeState close to its definition
+  * Rename RebaseMode to WorkingTreeState
+  * Simplify the RebaseMode enum
+  * Use WorkingTreeState instead of RebaseMode in CommitLoader
+  * Remove rebaseMode field from TestGetCommits scenario
+  * Don't wait for debugger in daemon mode
+  * Rerender views if necessary when scrolling horizontally
+  * Fix truncating branches to the right edge of the view when scrolled to the left
+  * README.md: Update Sponsors
+- Packaging improvements:
+  * Add version to binary via Go linker ldflags, refs boo#1241105.
+    Necessary for correct output with --version:
+    commit=v0.51.1, build date=, build source=binaryRelease, version=0.51.1, os=linux, arch=amd64, git version=2.49.0
+    before change:
+    commit=, build date=, build source=unknown, version=unversioned, os=linux, arch=amd64, git version=2.49.0
+
+-------------------------------------------------------------------
 Tue Apr 15 09:57:43 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.49.0:

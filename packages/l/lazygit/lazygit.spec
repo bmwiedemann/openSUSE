@@ -17,7 +17,7 @@
 
 
 Name:           lazygit
-Version:        0.49.0
+Version:        0.51.1
 Release:        0
 Summary:        Simple terminal UI for git commands
 License:        MIT
@@ -40,7 +40,9 @@ command line.
 %ifnarch ppc64
 export GOFLAGS="-buildmode=pie"
 %endif
-go build
+ldflags="${SOURCE_DATE_EPOCH:+-X main.date=$(date --date=@${SOURCE_DATE_EPOCH} -u +%%Y-%%m-%%dT%%H:%%M:%%SZ)} \
+  -X main.buildSource=binaryRelease -X main.version=%{version} -X main.commit=v%{version}"
+go build -ldflags "$ldflags"
 
 %install
 install -Dm755 %{name} %{buildroot}%{_bindir}/%{name}

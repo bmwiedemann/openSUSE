@@ -116,4 +116,18 @@ expertise with the git command line.</comment>
   * Enable AutoRenderHyperLinks for the tooltip view (forwarded request 1269569 from alarrosa)</comment>
     <requestid>1269700</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ac42bafa0c8d76e22210d2491a25918c</srcmd5>
+    <version>0.51.1</version>
+    <time>1749242583</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.51.1:
+- Packaging improvements:
+  * Add version to binary via Go linker ldflags, refs boo#1241105.
+    Necessary for correct output with --version:
+    commit=v0.51.1, build date=, build source=binaryRelease, version=0.51.1, os=linux, arch=amd64, git version=2.49.0
+    before change:
+    commit=, build date=, build source=unknown, version=unversioned, os=linux, arch=amd64, git version=2.49.0 (forwarded request 1283491 from jfkw)</comment>
+    <requestid>1283492</requestid>
+  </revision>
 </revisionlist>
