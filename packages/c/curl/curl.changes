@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun  4 07:06:46 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.14.1:
+  * Security fixes:
+    - [bsc#1243933, CVE-2025-5399] libcurl can possibly get
+      trapped in an endless busy-loop when processing specially
+      crafted packets [d1145df2]
+  * Bugfixes:
+    - asyn-thrdd: fix cleanup when RR fails due to OOM
+    - ftp: fix teardown of DATA connection in done
+    - http: fail early when rewind of input failed when following redirects
+    - multi: fix add_handle resizing
+    - tls BIOs: handle BIO_CTRL_EOF correctly
+    - tool_getparam: make --no-anyauth not be accepted
+    - wolfssl: fix sending of early data
+    - ws: handle blocked sends better
+    - ws: tests and fixes
+
+-------------------------------------------------------------------
 Wed May 28 09:36:23 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.14.0:
