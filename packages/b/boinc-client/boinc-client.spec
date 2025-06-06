@@ -1,7 +1,7 @@
 #
 # spec file for package boinc-client
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016 by Aaron Puchert <aaronpuchert@alice-dsl.net>
 # Copyright (c) 2011 by Sascha Manns <saigkill@opensuse.org>
 #
@@ -23,6 +23,8 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
+# There are some raw asm() statements that interfere with LTO
+%define _lto_cflags %nil
 %define sonum 8
 %define boinc_dir %{_localstatedir}/lib/boinc
 
@@ -35,8 +37,8 @@
 
 Name:           boinc-client
 %define rel_name        %{name}_release
-%define minor_version   8.0
-Version:        %minor_version.4
+%define minor_version   8.2
+Version:        %minor_version.2
 Release:        0
 Summary:        Client for Berkeley Open Infrastructure for Network Computing
 License:        GPL-3.0-or-later OR LGPL-3.0-or-later
