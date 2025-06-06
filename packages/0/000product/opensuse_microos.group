@@ -1805,7 +1805,6 @@
     <package name="selinux-policy-targeted" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="selinux-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="sessreg" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="setxkbmap" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="sg3_utils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="sgml-skel" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="shadow" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -1947,7 +1946,6 @@
     <package name="wireplumber" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="wpa_supplicant" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="wtmpdb" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="xauth" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="xbitmaps" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="xconsole" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="xdg-dbus-proxy" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -1963,12 +1961,10 @@
     <package name="xen-libs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="xf86-input-libinput" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="xfsprogs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
-    <package name="xinit" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="xkbcomp" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="xkeyboard-config" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="xmessage" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="xmlcharent" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="xmodmap" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="xorg-x11-fonts-core" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="xorg-x11-server" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="xorg-x11-server-Xvfb" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->

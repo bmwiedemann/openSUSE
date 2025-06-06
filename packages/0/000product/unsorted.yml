@@ -4163,6 +4163,7 @@ unsorted:
   - fetchmailconf 
   - fetchmsttfonts 
   - ffado 
+  - ffado-devel 
   - ffado-mixer 
   - ffcall 
   - fflas-ffpack-devel 
@@ -8125,7 +8126,6 @@ unsorted:
   - gstreamer-plugins-good-extra-32bit 
   - gstreamer-plugins-good-jack 
   - gstreamer-plugins-good-jack-32bit 
-  - gstreamer-plugins-good-qtqml 
   - gstreamer-plugins-good-qtqml6 
   - gstreamer-plugins-libav-32bit 
   - gstreamer-plugins-libcamera 
@@ -13021,7 +13021,6 @@ unsorted:
   - libff-1_0_0 
   - libff-1_0_0-x86-64-v3 
   - libff-devel 
-  - libffado-devel 
   - libffado2-32bit 
   - libffcall0 
   - libffi-devel 
@@ -13580,7 +13579,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit 
   - libgsmsd8 
-  - libgsoap-2_8_135 
+  - libgsoap-2_8_138 
   - libgssdp-1_6-0-32bit 
   - libgssdp-devel 
   - libgstadaptivedemux-1_0-0-32bit 
@@ -16162,7 +16161,7 @@ unsorted:
   - libstdc++6-pp-gcc13-32bit 
   - libstdc++6-pp-gcc14 
   - libstdc++6-pp-gcc14-32bit 
-  - libstellarsolver2 
+  - libstellarsolver6-2 
   - libstfl-devel 
   - libstfl0 
   - libstilview-devel 
@@ -19649,10 +19648,10 @@ unsorted:
   - nvidia-libXNVCtrl-devel 
   - nvidia-modprobe 
   - nvidia-open-driver-G06-signed-cuda-default-devel 
-  - nvidia-open-driver-G06-signed-cuda-kmp-default 
   - nvidia-open-driver-G06-signed-cuda-kmp-longterm 
   - nvidia-open-driver-G06-signed-cuda-longterm-devel 
   - nvidia-open-driver-G06-signed-default-devel 
+  - nvidia-open-driver-G06-signed-kmp-default 
   - nvidia-open-driver-G06-signed-kmp-longterm 
   - nvidia-open-driver-G06-signed-longterm-devel 
   - nvidia-settings 
@@ -20176,6 +20175,7 @@ unsorted:
   - opencensus-proto-source 
   - opencl-cpp-headers 
   - opencl-headers 
+  - opencloud-server 
   - openconnect-devel 
   - openconnect-doc 
   - opencsg-devel 
@@ -23674,9 +23674,6 @@ unsorted:
   - python3-pynest2d 
   - python3-pyprompter 
   - python3-pysearpc 
-  - python3-pyside2 
-  - python3-pyside2-devel 
-  - python3-pyside2-examples 
   - python3-pytest-ansible 
   - python3-pytest-cookies 
   - python3-rados 
