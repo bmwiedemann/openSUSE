@@ -62,7 +62,7 @@
 %endif
 
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.1.8
+Version:        7.1.10
 %define rversion %version
 Release:        0
 Summary:        %{package_summary}
@@ -126,11 +126,7 @@ Patch9:         vbox-usb-warning.diff
 Patch10:        fix_for_leap15.5.patch
 Patch11:        cxx17.patch
 Patch12:        host-source.patch
-Patch15:        kernel-6-15-EXTRA_CFLAGS.patch
-Patch16:        kernel-6-15-timer.patch
-Patch17:        kernel-6-15-mkdir.patch
-Patch18:        kernel-6-15-mode_valid.patch
-Patch19:        kernel-6-15-fb_probe.patch
+Patch20:        gentoo-C23.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -202,7 +198,6 @@ BuildRequires:  pkgconfig(fontsproto)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(glx)
 BuildRequires:  pkgconfig(gsoap) >= 2.8.50
-BuildRequires:  pkgconfig(libIDL-2.0)
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpulse)

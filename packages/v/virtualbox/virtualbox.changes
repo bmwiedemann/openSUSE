@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jun  4 21:09:42 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1.10
+  * Linux host: Fixed issue which caused VM Selector process crash
+    due to missing libdl.so and libpthread.so libraries
+    [boo#1231346, boo#1231456, boo#1233145, boo#1233164,
+    boo#1233498, boo#1240833]
+  * RDP: Fixed issue when it was not possible to paste clipboard
+    buffer into a guest over RDP remote session
+  * Linux 6.15 support
+- Delete kernel-6-15-EXTRA_CFLAGS.patch kernel-6-15-fb_probe.patch
+  kernel-6-15-mkdir.patch kernel-6-15-mode_valid.patch
+  kernel-6-15-timer.patch (merged/obsolete)
+
+-------------------------------------------------------------------
+Tue Jun  3 16:34:33 UTC 2025 - Martin Jambor <mjambor@suse.com>
+
+- Adjust gentoo-C23.patch to fix building the kmp flavor which was
+  broken by the previous patch by keeping the bool typedef when
+  building a kmp. [boo#1242085]
+
+-------------------------------------------------------------------
+Tue May 27 15:19:29 UTC 2025 - Martin Jambor <mjambor@suse.cz>
+
+- Add gentoo-C23.patch, taken from the corresponding gentoo
+  package, to fix building with GCC 15 where the C language
+  defaults to standard C23. [boo#1242085]
+
+-------------------------------------------------------------------
 Wed Apr 16 13:59:59 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.1.8

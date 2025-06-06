@@ -2741,4 +2741,15 @@ rpmfusion/debian patches did not work ultimately
     <comment>- Update to release 7.1.8</comment>
     <requestid>1270106</requestid>
   </revision>
+  <revision rev="292" vrev="1">
+    <srcmd5>5a6f96908878e92bd68ef26cec9d66b0</srcmd5>
+    <version>7.1.10</version>
+    <time>1749242430</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 7.1.10
+
+vb7.1.18 + kernel 6.15 is unable to start VMs,
+we must have vb7.1.10.</comment>
+    <requestid>1282914</requestid>
+  </revision>
 </revisionlist>

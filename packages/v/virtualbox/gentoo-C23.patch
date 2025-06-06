@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/946955
+
+--- a/include/iprt/types.h
++++ b/include/iprt/types.h
+@@ -282,7 +282,10 @@
+ #   endif
+ #  else
+-#   undef bool /* see above netbsd explanation */
++#   if defined (__KERNEL__)
+ typedef _Bool bool;
++#   else
++#     include <stdbool.h>
++#   endif
+ #  endif
+ # else
+ #  if RT_MSC_PREREQ(RT_MSC_VER_VC120)
