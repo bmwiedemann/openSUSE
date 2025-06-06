@@ -191,4 +191,12 @@
     <comment>Plasma 6.4 Beta 2 (forwarded request 1281333 from Vogtinator)</comment>
     <requestid>1281513</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>39e4a27080c8f1d815b53f50b4f48dda</srcmd5>
+    <version>6.3.5</version>
+    <time>1749194809</time>
+    <user>dimstar_suse</user>
+    <comment>Revert accidental update to version 6.4 beta</comment>
+    <requestid>1283552</requestid>
+  </revision>
 </revisionlist>
