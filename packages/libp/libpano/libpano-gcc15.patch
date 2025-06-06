@@ -1,0 +1,62 @@
+Index: libpano13-2.9.22/filter.h
+===================================================================
+--- libpano13-2.9.22.orig/filter.h
++++ libpano13-2.9.22/filter.h
+@@ -410,7 +410,7 @@ struct LMStruct{								// Parameters us
+ 
+ // function to minimize in Levenberg-Marquardt solver
+ 
+-typedef		int (*lmfunc)();	
++typedef int (*lmfunc)(int m, int n, double x[], double fvec[], int *iflag);
+ 
+ struct triangle
+ {
+@@ -776,13 +776,19 @@ PANO13_IMPEX void 	matrix_mult			( doubl
+ PANO13_IMPEX void 	matrix_inv_mult		( double m[3][3], double vector[3] );
+ PANO13_IMPEX double 	smallestRoot		( double *p );
+ PANO13_IMPEX void 	SetCorrectionRadius	( cPrefs *cP );
+-PANO13_IMPEX int		lmdif				();
++PANO13_IMPEX int    lmdif(int m, int n, double x[], double fvec[],
++                          double ftol, double xtol, double gtol,
++                          int maxfev, double epsfcn, double diag[],
++                          int mode, double factor, int nprint,
++                          int *info, int *nfev, double fjac[],
++                          int ldfjac, int ipvt[], double qtf[],
++                          double wa1[], double wa2[], double wa3[], double wa4[]);
+ PANO13_IMPEX void	fourier				( TrformStr *TrPtr, cPrefs *cP );
+ PANO13_IMPEX unsigned short 	gamma_correct( double pix );
+ PANO13_IMPEX int 	EqualCPrefs( cPrefs *c1, cPrefs *c2 );
+ PANO13_IMPEX double 	OverlapRMS			( MultiLayerImage *mim );
+ PANO13_IMPEX double 	distSquared			( int num ); 
+-PANO13_IMPEX int		fcnPano();
++PANO13_IMPEX int    fcnPano(int m, int n, double x[], double fvec[], int *iflag);
+ PANO13_IMPEX int		EvaluateControlPointError ( int num, double *errptr, double errComponent[2]);
+ PANO13_IMPEX void 	doCoordinateTransform( CoordInfo *c, tMatrix *t );
+ PANO13_IMPEX void 	findOptimumtMatrix( transformCoord *tP, tMatrix *tM, lmfunc f);
+--- libpano13-2.9.22.orig/lmdif.c	2025-06-05 11:11:03.600393341 +0000
++++ libpano13-2.9.22/lmdif.c	2025-06-05 11:15:03.737777100 +0000
+@@ -11,6 +11,7 @@
+  */
+ #include "filter.h"
+ #include <float.h>
++#include <math.h>
+ 
+ extern lmfunc fcn;
+ 
+@@ -1222,7 +1223,6 @@ double cos,cotan,qtbpj,sin,sum,tan,temp;
+ static double zero = 0.0;
+ static double p25 = 0.25;
+ static double p5 = 0.5;
+-double fabs(), sqrt();
+ 
+ /*
+ *     copy r and (q transpose)*b to preserve input and initialize s.
+@@ -1416,7 +1416,6 @@ static double rdwarf = 3.834e-20;
+ static double rgiant = 1.304e19;
+ static double zero = 0.0;
+ static double one = 1.0;
+-double fabs(), sqrt();
+ 
+ s1 = zero;
+ s2 = zero;
+

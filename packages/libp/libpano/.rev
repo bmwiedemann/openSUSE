@@ -193,4 +193,14 @@ Deleted obsolete parts of descriptions and updated descriptions.</comment>
     <comment></comment>
     <requestid>1127466</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>cf84e72087cf35f6ef2097d53c6318d1</srcmd5>
+    <version>2.9.22</version>
+    <time>1749242498</time>
+    <user>anag_factory</user>
+    <comment>- added patches
+  https://sourceforge.net/p/panotools/libpano13/ci/e21a089e92377916977abcc2d73701527a31a8a8/
+  + libpano-gcc15.patch</comment>
+    <requestid>1283385</requestid>
+  </revision>
 </revisionlist>
