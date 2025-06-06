@@ -72,6 +72,8 @@ Patch5:         gdm-switch-to-tty1.patch
 Patch6:         gdm-initial-setup-hardening.patch
 # PATCH-FIX-UPSTREAM gdm-settings-utils_rename-variable.patch -- Rename variable to fix build with gcc 15
 Patch7:         gdm-settings-utils_rename-variable.patch
+# PATCH-FIX-UPSTREAM gdm-fix-wrong-path-gdm-config.patch bsc#1232669, glgo#GNOME/gdm!282 alynx.zhou@suse.com -- Add missing slash when gdm-config building dconf database path
+Patch8:         gdm-fix-wrong-path-gdm-config.patch
 
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
@@ -206,6 +208,7 @@ This package provides the upstream default configuration for gdm.
 
 %package xdm-integration
 Summary:        GDM integration into the xdm wrapper script
+Group:          System/GUI/GNOME
 Requires:       gdm
 Requires:       xdm
 Requires(post): update-alternatives
@@ -269,6 +272,7 @@ running display manager.
         -Dipv6=true \
         -Dpam-mod-dir=%{_pam_moduledir} \
         -Ddbus-sys=%{_datadir}/dbus-1/system.d \
+	-Ddistro=generic \
         -Dplymouth=enabled \
         -Drun-dir=/run/gdm \
 %if %{enable_split_authentication}

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 30 06:47:55 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gdm-fix-wrong-path-gdm-config.patch: Add missing slash when
+  gdm-config building dconf database path (bsc#1232669).
+
+-------------------------------------------------------------------
+Fri May 30 06:42:32 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add -Ddistro=generic to make gdm-config work (bsc#1232669).
+
+-------------------------------------------------------------------
 Sun May  4 10:07:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete gnome-common BuildRequires. Add itstool

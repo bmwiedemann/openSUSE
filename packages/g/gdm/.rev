@@ -2190,4 +2190,14 @@
     <comment>Fix date format in old changelog entries (forwarded request 1277768 from dimstar)</comment>
     <requestid>1278233</requestid>
   </revision>
+  <revision rev="282" vrev="9">
+    <srcmd5>23f2eef2e9720132e1efeea9d6fa1a56</srcmd5>
+    <version>48.0</version>
+    <time>1749242128</time>
+    <user>anag_factory</user>
+    <comment>- Add gdm-fix-wrong-path-gdm-config.patch: Add missing slash when
+  gdm-config building dconf database path (bsc#1232669).
+- Add -Ddistro=generic to make gdm-config work (bsc#1232669). (forwarded request 1282078 from AZhou)</comment>
+    <requestid>1282878</requestid>
+  </revision>
 </revisionlist>
