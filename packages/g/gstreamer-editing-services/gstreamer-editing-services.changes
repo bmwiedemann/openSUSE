@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun  1 08:07:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.2:
+  + Fix frame position for sources with par < 1
+  + Fix video position for sources with pixel-aspect-ratio > 1
+  + Valgrind fixes
+  + properties: add G_PARAM_STATIC_STRINGS where missing
+  + Switch to GST_AUDIO_NE() to make things work properly on Big
+    Endian systems
+
+-------------------------------------------------------------------
 Wed Apr 30 11:01:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.1:
