@@ -2,7 +2,7 @@
 # spec file for package gnu-unifont-fonts
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           gnu-unifont-fonts
-Version:        15.1.05
+Version:        16.0.04
 Release:        0
 Summary:        GNU Unifont fonts
 License:        GPL-2.0-or-later OR OFL-1.1
