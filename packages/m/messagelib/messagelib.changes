@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  3 21:12:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.2/
+- Changes since 25.04.1:
+  * Also strip out absolute paths for icon images
+
+-------------------------------------------------------------------
 Wed May  7 21:00:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.1
