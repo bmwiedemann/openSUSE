@@ -26,6 +26,7 @@
 %define pkg_suffix %{nil}
 %bcond_with test
 %endif
+%bcond_without libalternatives
 Name:           python-moban%{pkg_suffix}
 Version:        0.8.2
 Release:        0
@@ -40,9 +41,11 @@ Patch2:         remove-mock.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       git-core
 Requires:       python-Jinja2 >= 2.7.1
 Requires:       python-appdirs >= 1.4.3
@@ -51,8 +54,6 @@ Requires:       python-fs >= 2.4.11
 Requires:       python-jinja2-fsloader >= 0.2.0
 Requires:       python-lml >= 0.0.9
 Requires:       python-ruamel.yaml >= 0.15.98
-Requires(post): alts
-Requires(postun): alts
 Suggests:       python-ansible
 Suggests:       python-gitfs2
 Suggests:       python-pypifs
@@ -123,13 +124,11 @@ export SKIP_TESTS
 %endif
 
 %if !%{with test}
-%post
-%python_install_alternative moban
 %endif
 
 %if !%{with test}
-%postun
-%python_uninstall_alternative moban
+%pre
+%python_libalternatives_reset_alternative moban
 %endif
 
 %if !%{with test}
