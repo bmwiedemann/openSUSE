@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 07 04:46:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.7:
+  * sbom: generate downloadLocations for unknown gits (#2028)
+
+-------------------------------------------------------------------
 Wed Jun 04 18:30:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.6:
