@@ -1,7 +1,7 @@
 #
 # spec file for package openmw
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,15 @@
 # are not compatible with it
 # 1.69 is the first boost version that is supposed to work with C++ 20:
 %define min_boost_version 1.69
+%define archive_version 49-rc8
 Name:           openmw
-Version:        0.48.0+git20240913
+Version:        0.49rc8
 Release:        0
 Summary:        Reimplementation of The Elder Scrolls III: Morrowind
 License:        GPL-3.0-only AND MIT
 Group:          Amusements/Games/RPG
 URL:            https://www.openmw.org
-Source:         %{name}-%{version}.tar.bz2
+Source:         https://github.com/OpenMW/openmw/archive/refs/tags/%{name}-%{archive_version}.tar.gz
 Source2:        %{name}.rpmlintrc
 BuildRequires:  MyGUI-devel >= 3.2.1
 BuildRequires:  cmake
@@ -106,7 +107,7 @@ The OpenCS is not based on the editing tool which came with the original Morrowi
  * customisable GUI
 
 %prep
-%autosetup -p1 -n %{name}-master
+%autosetup -p1 -n %{name}-%{name}-%{archive_version}
 cp 'files/data/fonts/DejaVuFontLicense.txt' ./DejaVuFontLicense.txt
 
 ## fix __DATE__ and __TIME__
