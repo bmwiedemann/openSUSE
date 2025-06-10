@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 06 18:21:11 UTC 2025 - ed@s5h.net
+
+- Update to version 0.5.6~git0.3ca6938:
+  * Bump uzers
+  * Set source file environment in exitcmd
+  * Bump packages and include edit file in message
+  * support nix 0.27
+  * Use drop-in replacement for users crate
+  * please-0.5.1_fix_syslog.patch removed as no longer needed
+
+-------------------------------------------------------------------
 Thu Feb 29 15:10:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

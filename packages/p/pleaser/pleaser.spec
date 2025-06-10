@@ -1,7 +1,7 @@
 #
 # spec file for package pleaser
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %global crate pleaser
 
 Name:           pleaser
-Version:        0.5.1~git0.ce9627c
+Version:        0.5.6~git0.3ca6938
 Release:        0%{?dist}
 Group:          Productivity/Security
 Summary:        Alternative to sudo (root command execution) with regex support
@@ -36,7 +36,6 @@ URL:            https://gitlab.com/edneville/please/-/archive/v%{version}/please
 Source0:        please-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-Patch0:         please-0.5.1_fix_syslog.patch
 ExclusiveArch:  %{rust_arches}
 
 BuildRequires:  cargo
@@ -45,7 +44,7 @@ BuildRequires:  pam-devel
 Requires:       pam
 
 Requires(post): permissions
-Requires(verify):permissions
+Requires(verify): permissions
 
 %description
 please is a regex-capable alternative to sudo, a command for allowing
@@ -57,9 +56,6 @@ elevation.
 
 %prep
 %autosetup -p1 -a1 -n please-%{version}
-
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 RUSTFLAGS=%{rustflags} cargo build --release

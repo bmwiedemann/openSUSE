@@ -97,4 +97,18 @@
     <comment></comment>
     <requestid>1154025</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c3ecc3843feb885d5f53c6d9ae75759d</srcmd5>
+    <version>0.5.6~git0.3ca6938</version>
+    <time>1749539317</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5.6~git0.3ca6938:
+  * Bump uzers
+  * Set source file environment in exitcmd
+  * Bump packages and include edit file in message
+  * support nix 0.27
+  * Use drop-in replacement for users crate
+  * please-0.5.1_fix_syslog.patch removed as no longer needed</comment>
+    <requestid>1284267</requestid>
+  </revision>
 </revisionlist>
