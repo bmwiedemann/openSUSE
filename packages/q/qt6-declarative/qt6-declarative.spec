@@ -36,6 +36,8 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-declarative-rpmlintrc
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-qmlimportscanner-Include-module-versions-again.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-qmlcachegen-fix-crash-on-unresolved-type-with-requir.patch
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base

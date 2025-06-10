@@ -424,4 +424,13 @@
     <comment>Qt 6.9.1 (forwarded request 1282452 from krop)</comment>
     <requestid>1282557</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>f442a884113cef9e28b543d07aac1d64</srcmd5>
+    <version>6.9.1</version>
+    <time>1749538598</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream fix (QTBUG-137196):
+  * 0001-qmlcachegen-fix-crash-on-unresolved-type-with-requir.patch</comment>
+    <requestid>1283939</requestid>
+  </revision>
 </revisionlist>
