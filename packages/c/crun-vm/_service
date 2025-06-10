@@ -1,0 +1,17 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/containers/crun-vm.git</param>
+    <param name="scm">git</param>
+    <param name="revision">refs/tags/0.3.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+  </service>
+  <service name="tar" mode="buildtime" />
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">zstd</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">crun-vm</param>
+  </service>
+  <service name="set_version" mode="manual" />
+</services>

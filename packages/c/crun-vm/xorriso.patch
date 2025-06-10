@@ -1,0 +1,25 @@
+diff --git a/src/commands/create/first_boot.rs b/src/commands/create/first_boot.rs
+index 941ba4c..1442250 100644
+--- a/src/commands/create/first_boot.rs
++++ b/src/commands/create/first_boot.rs
+@@ -207,7 +207,7 @@ impl FirstBootConfig<'_> {
+                 .open(out_config_dir_path.as_ref().join(file))?;
+         }
+ 
+-        let status = Command::new("genisoimage")
++        let status = Command::new("xorrisofs")
+             .arg("-output")
+             .arg(out_config_iso_file_path.as_ref())
+             .arg("-volid")
+@@ -220,9 +220,9 @@ impl FirstBootConfig<'_> {
+             .arg(out_config_dir_path.as_ref().join("vendor-data"))
+             .spawn()
+             .and_then(|mut child| child.wait())
+-            .context("Invoking genisoimage")?;
++            .context("Invoking xorrisofs")?;
+ 
+-        ensure!(status.success(), "genisoimage failed");
++        ensure!(status.success(), "xorrisofs failed");
+ 
+         Ok(())
+     }
