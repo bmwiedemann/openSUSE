@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 09 07:23:27 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 1.15.2:
+  * release v1.15.2
+  * release notes for v1.15.2
+  * dhcp_proxy: set timeout_sender only if required
+  * cargo: bump mozim to 0.2.6
+  * release v1.15.1
+  * release notes for v1.15.1
+  * Revert "remove search domain from response"
+
+-------------------------------------------------------------------
 Tue May 20 04:51:45 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 1.15.0:
