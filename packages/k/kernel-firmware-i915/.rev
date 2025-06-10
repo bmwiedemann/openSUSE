@@ -81,4 +81,17 @@ After this PR, there will be a delete request for kernel-firmware.
   * i915: Update Xe3LPD DMC to v2.23</comment>
     <requestid>1276103</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ac3f514675dcabad321068b5e48de98b</srcmd5>
+    <version>20250603</version>
+    <time>1749538658</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases
+
+- Update to version 20250603 (git commit 3b75d677f898):
+  * xe: Update GUC to v70.45.2 for BMG, LNL
+  * i915: Update GUC to v70.45.2 for DG2
+  * xe: Update LNL GSC to v104.0.5.1429</comment>
+    <requestid>1283310</requestid>
+  </revision>
 </revisionlist>
