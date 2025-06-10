@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  5 11:15:53 CEST 2025 - mls@suse.de
+
+- do not change the current directory when cloning an open
+  directory handle [bnc#1244079] [CVE-2025-40909]
+  new patch: perl-dirdup.diff
+
+-------------------------------------------------------------------
 Mon Apr 14 11:17:06 CEST 2025 - mls@suse.de
 
 - update to 5.40.2

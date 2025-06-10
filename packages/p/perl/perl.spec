@@ -55,6 +55,7 @@ Patch12:        perl-reproducible.patch
 Patch13:        perl_skip_flaky_tests_powerpc.patch
 # PATCH-FIX-UPSTREAM unmerged https://www.nntp.perl.org/group/perl.perl5.porters/2018/12/msg253240.html
 Patch18:        perl-reproducible2.patch
+Patch19:        perl-dirdup.diff
 BuildRequires:  gdbm-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  ncurses-devel
@@ -136,6 +137,7 @@ cp -p %{SOURCE3} .
 %patch -P 9 -p1
 %patch -P 12 -p1
 %patch -P 18
+%patch -P 19
 
 %build
 %define _lto_cflags %{nil}
