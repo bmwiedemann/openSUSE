@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 # pdd is not available for Python 2
 Name:           python-pdd
 Version:        1.7
@@ -29,12 +30,12 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-python-dateutil
 Requires:       python-setuptools
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -63,11 +64,8 @@ mv pdd.py pdd
 chmod 755 pdd
 %pytest test.py
 
-%post
-%python_install_alternative pdd
-
-%postun
-%python_uninstall_alternative pdd
+%pre
+%python_libalternatives_reset_alternative pdd
 
 %files %{python_files}
 %doc README.md CHANGELOG
