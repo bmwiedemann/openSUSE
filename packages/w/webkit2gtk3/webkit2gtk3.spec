@@ -444,8 +444,13 @@ sed -i 's|/gst-plugin-scanner|/gst-plugin-scanner-%{_target_cpu}|' ./Source/WebK
 
 %build
 # Here we must muzzle our dog so it doesn't eat all the memory
+%if 0%{?suse_version} >= 1600
+max_link_jobs="${RPM_BUILD_NCPUS:-1}"
+max_compile_jobs="${RPM_BUILD_NCPUS:-4}"
+%else
 max_link_jobs="%{?jobs}%{!?jobs:1}"
 max_compile_jobs="%{?jobs}%{!?jobs:4}"
+%endif
 echo "Available memory:"
 cat /proc/meminfo
 echo "System limits:"
