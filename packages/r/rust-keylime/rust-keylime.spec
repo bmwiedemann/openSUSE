@@ -25,13 +25,13 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           rust-keylime
-Version:        0.2.7+1
+Version:        0.2.7+70
 Release:        0
 Summary:        Rust implementation of the keylime agent
 License:        (Apache-2.0 OR MIT) AND BSD-3-Clause AND (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND ISC AND MIT
 URL:            https://github.com/keylime/rust-keylime
 Source:         rust-keylime-%{version}.tar.zst
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 Source3:        keylime.xml
 Source4:        keylime-user.conf
@@ -41,6 +41,7 @@ Source7:        ima-policy.service
 Source8:        README.suse
 # PATCH-FIX-OPENSUSE keylime-agent.conf.diff
 Patch1:         keylime-agent.conf.diff
+Patch2:         Cargo_lock.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  firewall-macros
@@ -72,7 +73,7 @@ Subpackage of %{name} to provide an suggested IMA policy for Keylime agent
 %prep
 %autosetup -a1 -p1
 mkdir .cargo
-install -D -m 644 %{SOURCE2} .cargo/config
+install -D -m 644 %{SOURCE2} .cargo/config.toml
 
 %build
 %{cargo_build} --no-default-features

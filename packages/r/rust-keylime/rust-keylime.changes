@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Thu Jun 05 11:48:58 UTC 2025 - aplanas@suse.com
+
+- Update vendored crates (bsc#1243861, CVE-2024-12224)
+  * idna 1.0.3
+
+- Add Cargo_lock.patch to adjust versions that will allow the
+  compilation of mbox crate
+
+- Update to version 0.2.7+70: 
+  * build(deps): bump wiremock from 0.6.2 to 0.6.3
+  * build(deps): bump uuid from 1.16.0 to 1.17.0
+  * lib: Introduce AgentIdentity structure
+  * gitignore: Add *.swp and *.orig to be ignored
+  * build(deps): bump clap from 4.5.38 to 4.5.39
+  * build(deps): bump tokio from 1.45.0 to 1.45.1
+  * Unify Push Model structures time formats to UTC (#1016)
+  * Add Quote related structures to Keylime library
+  * Remove configuration file trailing whitespaces (#1012)
+  * keylime-agent.conf: add all accepted TPM encryption algs
+  * tpm: add policy auth for EK to activate crendential
+  * Enable non standard key sizes and curves for EK and AK
+  * config: Use next_back() instead of last() for iterators
+  * Update to tss-esapi v7.6.0
+  * Avoid duplicated call to ctx.create_ek
+  * build(deps): bump clap from 4.5.23 to 4.5.38
+  * Add registration for Push Model client
+  * build(deps): bump tokio from 1.44.2 to 1.45.0
+  * build(deps): bump chrono from 0.4.40 to 0.4.41
+  * build(deps): bump tempfile from 3.17.1 to 3.20.0
+  * Refactor code: move error, registration to lib
+  * Move structure filling and URL selection code (#999)
+  * build(deps): bump pest_derive from 2.7.15 to 2.8.0
+  * build(deps): bump pest from 2.7.15 to 2.8.0
+  * build(deps): bump libc from 0.2.169 to 0.2.172
+  * Add Evidence/Authentication messages to prototype
+  * build(deps): bump uuid from 1.15.1 to 1.16.0
+  * build(deps): bump thiserror from 2.0.11 to 2.0.12
+  * build(deps): bump signal-hook from 0.3.17 to 0.3.18
+  * build(deps): bump log from 0.4.25 to 0.4.27
+  * build(deps): bump assert_cmd from 2.0.16 to 2.0.17
+  * build(deps): bump actix-web from 4.9.0 to 4.10.2
+  * build(deps): bump reqwest from 0.12.12 to 0.12.15
+  * build(deps): bump serde from 1.0.217 to 1.0.219
+  * Add unit tests for sessions.rs structures
+  * Add auth(sessions) structures
+  * Fix minor README.md issue (#988)
+  * Define EvidenceHandling structures (#971)
+  * Add mockoon test scenario
+  * Add client certificates to push-attestation prototype
+  * Cargo: bump url crate to version 2.5.4
+  * Add logging to the push attestation prototype
+  * Do not use certificate on insecure mode
+  * common: Move the EncryptedData structure from common to the library
+  * common: Move AuthTag from common to the library
+  * build(deps): bump openssl from 0.10.71 to 0.10.72
+  * common: Move Symmkey to library as crypto::symmkey
+  * common: Remove unused constants and static values
+  * build(deps): bump tokio from 1.43.0 to 1.44.2
+  * Refactor code: Include AgentIdentity structure
+  * Push model prototype
+  * Add support for ek certificate chain, stored in TPM NVRAM.
+  * Recover key_class field and set it as "asymmetric"
+  * Update push model structures to latest values
+  * build(deps): bump serde_json from 1.0.138 to 1.0.140
+  * packit: Add identifier for each copr_build job
+  * keylime-agent.conf: only mention ecdsa and rsassa for signing
+  * build(deps): bump openssl from 0.10.70 to 0.10.71
+  * build(deps): bump uuid from 1.13.2 to 1.15.1
+  * Add capabilities_negotiation structures
+  * packit: Add compatibility/api_version_compatibility test
+  * build(deps): bump uuid from 1.11.0 to 1.13.2
+  * build(deps): bump serde_json from 1.0.135 to 1.0.138
+  * build(deps): bump thiserror from 2.0.9 to 2.0.11
+  * build(deps): bump tempfile from 3.14.0 to 3.17.1
+  * Allow agent to start as non-root
+  * scripts: Fix coverage information downloading script
+  * build(deps): bump openssl from 0.10.68 to 0.10.70
+  * build(deps): bump tokio from 1.42.0 to 1.43.0
+
+-------------------------------------------------------------------
 Mon Jan 27 09:43:30 UTC 2025 - aplanas@suse.com
 
 - Update to version 0.2.7+1:
