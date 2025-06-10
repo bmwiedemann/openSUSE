@@ -1,7 +1,7 @@
 #
 # spec file for package python-json5
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-json5
-Version:        0.9.28
+Version:        0.12.0
 Release:        0
 Summary:        A Python implementation of the JSON5 data format
 License:        Apache-2.0
