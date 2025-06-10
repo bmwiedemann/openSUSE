@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jun  3 21:12:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.2/
+- Changes since 25.04.1:
+  * Fix moving subtitle with grab (kde#474193)
+  * Fix empty gradient in config causes crash (kde#505014)
+  * Backport missing effects xml
+  * Fix quick markers not taking clip crop in in timeline
+  * Fix marker dialog not allowing to add marker if only 1 category exists (kde#504993)
+  * Fix merge error causing freeze on exit
+  * Fix crash in HistogramGenerator when running on a white color clip
+  * Fix whisper model dir not being created if asked to do so
+  * Fix canceling quit on rendering leaves kdenlive in unstable state
+  * Only clear undo stack when we delete a timeline sequence, not a standard bin clip
+  * Fix misalignment of monitor tools
+  * Fix OTIO path issue on import (kde#504708)
+  * Fix bin clip effects disappear after disabling a timeline clip (kde#439194)
+  * Fix keyframe in monitor not correctly reported on clip selection
+  * Fix monitor scene not correcty activated on clip selection
+  * Fix small error causing offset in long audio thumbnails
+  * Fix guides list buttons not working on app opening
+  * Fix built-in effects disabled state changes on cut
+  * Fix render widget target file can have no extension or incorrect path.
+  * SAM2: show message and full log if the python script crashes, try to auto reinstall if the venv python exe is missing
+  * Save and restore titler tool panel width
+
+-------------------------------------------------------------------
 Wed May  7 21:00:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.1
