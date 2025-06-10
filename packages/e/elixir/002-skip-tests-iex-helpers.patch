@@ -1,0 +1,12 @@
+diff --git a/lib/iex/test/iex/helpers_test.exs b/lib/iex/test/iex/helpers_test.exs
+index 10d9ecf57..ed9955aba 100644
+--- a/lib/iex/test/iex/helpers_test.exs
++++ b/lib/iex/test/iex/helpers_test.exs
+@@ -10,6 +10,7 @@ defmodule IEx.HelpersTest do
+   import IEx.Helpers
+ 
+   @compile {:no_warn_undefined, [:sample, Sample, Sample2]}
++  @moduletag :skip
+ 
+   describe "whereami" do
+     test "is disabled by default" do

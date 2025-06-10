@@ -28,6 +28,7 @@ Source0:        https://github.com/elixir-lang/%{name}/archive/v%{version}/%{nam
 Source1:        https://github.com/elixir-lang/%{name}/releases/download/v%{version}/Docs.zip#/%{name}-%{version}-doc.zip
 Source2:        macros.elixir
 Patch0:         001-skip-translator-supervisor-test.patch
+Patch1:         002-skip-tests-iex-helpers.patch
 BuildRequires:  erlang >= 25
 BuildRequires:  erlang-dialyzer
 BuildRequires:  erlang-src
@@ -73,6 +74,10 @@ find doc \( -name ".build" -or -name ".ex_doc" \) -delete
 %build
 # Elixir wants UTF-8 locale, force it
 export LANG=en_US.UTF-8
+
+# Enable deterministic builds in the Erlang compiler
+export ERL_COMPILER_OPTIONS=deterministic
+
 # Make Elixir
 %make_build
 

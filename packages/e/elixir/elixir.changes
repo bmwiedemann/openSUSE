@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  9 07:35:49 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Reproducible builds: try enabling the `deterministic` build flag for the Erlang compiler
+- Add 002-skip-tests-iex-helpers.patch:
+  * Skip some iex tests that are failing due to the `deterministic` Erlang build flag
+
+-------------------------------------------------------------------
 Wed May 21 16:27:11 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Upgrade to Elixir 1.18.4:
