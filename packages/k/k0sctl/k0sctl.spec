@@ -18,7 +18,7 @@
 
 
 Name:           k0sctl
-Version:        0.24.0
+Version:        0.25.1
 Release:        0
 Summary:        A bootstrapping and management tool for k0s clusters
 License:        Apache-2.0
