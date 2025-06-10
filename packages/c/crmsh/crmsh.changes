@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 09 06:22:32 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250609.4f272e67:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: behave: Add functional test for previous commit
+  * Dev: bootstrap: Improve node removal handling and messaging
+  * Dev: behave: Add functional test for previous commits
+  * Dev: ui_corosync: Write changes made by `corosync.set` to temporary file first
+  * Dev: doc: Update help text for `corosync set` command
+  * Dev: corosync_config_format: Skip comment key
+  * ui_corosync: Add push reminder after called `corosync set`
+  * Dev: ui_corosync: Call `corosync -t` to do verification
+
+-------------------------------------------------------------------
 Thu Jun 05 12:14:22 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250605.889b8ca0:
