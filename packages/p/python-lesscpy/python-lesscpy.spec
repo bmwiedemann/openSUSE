@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-lesscpy
 Version:        0.15.1
 Release:        0
@@ -30,12 +31,12 @@ BuildRequires:  %{python_module ply}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-ply
 Requires:       python-setuptools
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -61,11 +62,9 @@ rm test/test_{bootstrap3,less,issues}.py
 %python_clone -a %{buildroot}%{_bindir}/lesscpy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative lesscpy
-
-%postun
-%python_uninstall_alternative lesscpy
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative lesscpy
 
 %check
 %pytest
