@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 10 00:19:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2025.06.09
+  * adobepass: add Fubo MSO, fix Philo MSO authentication
+  * yt: Add tv_simply player client
+  * yt: Extract srt subtitles
+  * yt: Rework nsig function name extraction
+
+-------------------------------------------------------------------
 Thu May 22 14:36:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2025.05.22
