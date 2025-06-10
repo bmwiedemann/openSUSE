@@ -113,6 +113,10 @@ BuildRequires:  qt6-macros
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Widgets)
+%if 0%{?suse_version} < 1600
+# for #include <filesystem>
+BuildRequires:  gcc12-c++
+%endif
 %endif
 %if %{with qhelp}
 BuildRequires:  qt6-tools-helpgenerators
@@ -161,6 +165,11 @@ export PATH+=":%{_qt6_libexecdir}"
 %endif
 export CFLAGS="%{optflags}"
 export CXXFLAGS="$CFLAGS"
+%if %{with gui}
+%if 0%{?suse_version} < 1600
+export CXX=g++-12
+%endif
+%endif
 %if "%{flavor}" != ""
 # This is not autotools configure
 ./configure \
@@ -176,7 +185,11 @@ export CXXFLAGS="$CFLAGS"
     --no-system-jsoncpp \
     --no-system-libarchive \
 %endif
-    --parallel=0%{jobs} \
+%if 0%{?suse_version} < 1600
+     --parallel=0%{jobs} \
+%else
+    --parallel=${RPM_BUILD_NCPUS:-1} \
+%endif
     --verbose \
 %if 0%{?suse_version} > 1500
     --system-libuv \

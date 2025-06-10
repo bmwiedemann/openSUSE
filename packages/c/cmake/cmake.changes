@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 28 18:49:13 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+ 
+ - Replace usage of %jobs for reproducible builds (boo#1237231)
+ 
+-------------------------------------------------------------------
+Tue May 20 20:45:39 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix GUI build on openSUSE Leap 15.x
+
+-------------------------------------------------------------------
 Fri Apr 11 15:23:54 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.31.7:
