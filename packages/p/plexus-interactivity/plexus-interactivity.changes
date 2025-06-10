@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  6 15:04:00 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.4
+  * Changes
+    + Bump org.jline:jline-reader from 3.25.1 to 3.29.0
+    + Bump org.eclipse.sisu:org.eclipse.sisu.inject from 0.9.0.M2
+      to 0.9.0.M3
+    + Apply spotless re-formatting
+    + Bump org.codehaus.plexus:plexus from 16 to 20
+    + Bump release-drafter/release-drafter from 5 to 6
+
+-------------------------------------------------------------------
 Tue Jun  3 08:24:37 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on objectweb-asm to build with sisu 0.9.0.M4
