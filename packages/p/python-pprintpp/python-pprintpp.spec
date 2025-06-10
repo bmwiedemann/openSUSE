@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-pprintpp
 Version:        0.4.0
 Release:        0
@@ -35,10 +36,10 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): alts
-Requires(postun): alts
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -62,11 +63,8 @@ export LANG=en_US.utf-8
 export LANG=en_US.utf-8
 %pytest -v test.py
 
-%post
-%python_install_alternative pypprint
-
-%postun
-%python_uninstall_alternative pypprint
+%pre
+%python_libalternatives_reset_alternative pypprint
 
 %files %{python_files}
 %doc CHANGELOG.txt README.rst
