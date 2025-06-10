@@ -17,6 +17,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-ntfy
 Version:        2.7.0
@@ -42,13 +43,13 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-appdirs
 Requires:       python-requests
 Requires:       python-ruamel.yaml
-Requires(post): alts
-Requires(postun): alts
 Suggests:       python-dnspython3
 Suggests:       python-emoji >= 1.6.2
 Suggests:       python-instapush
@@ -87,11 +88,8 @@ Quickstart
 %check
 %pytest --ignore 'tests/test_xmpp.py' -k 'not test_xmpp'
 
-%post
-%python_install_alternative ntfy
-
-%postun
-%python_uninstall_alternative ntfy
+%pre
+%python_libalternatives_reset_alternative ntfy
 
 %files %{python_files}
 %doc README.rst
