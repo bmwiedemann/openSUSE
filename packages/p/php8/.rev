@@ -1289,4 +1289,41 @@
         Fix memory leak when handling a too long path in ZipArchive::addGlob(). (forwarded request 1276314 from adkorte)</comment>
     <requestid>1276711</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>922a9eea69ca8be6bcb0a41b80950f32</srcmd5>
+    <version>8.4.8</version>
+    <time>1749538763</time>
+    <user>anag_factory</user>
+    <comment>- version update to 8.4.8
+    Core:
+        Fixed GH-18480 (array_splice with large values for offset/length arguments).
+        Partially fixed GH-18572 (nested object comparisons leading to stack overflow).
+        Fixed OSS-Fuzz #417078295.
+        Fixed OSS-Fuzz #418106144.
+    Curl:
+        Fixed GH-18460 (curl_easy_setopt with CURLOPT_USERPWD/CURLOPT_USERNAME/ CURLOPT_PASSWORD set the Authorization header when set to NULL).
+    Date:
+        Fixed bug GH-18076 (Since PHP 8, the date_sun_info() function returns inaccurate sunrise and sunset times, but other calculated times are correct) (JiriJozif).
+        Fixed bug GH-18481 (date_sunrise with unexpected nan value for the offset).
+    DOM:
+        Backport lexbor/lexbor#274.
+    Intl:
+        Fix various reference issues.
+    LDAP:
+        Fixed bug GH-18529 (ldap no longer respects TLS_CACERT from ldaprc in ldap_start_tls()).
+    Opcache:
+        Fixed bug GH-18417 (Windows SHM reattachment fails when increasing memory_consumption or jit_buffer_size).
+        Fixed bug GH-18297 (Exception not handled when jit guard is triggered).
+        Fixed bug GH-18408 (Snapshotted poly_func / poly_this may be spilled).
+        Fixed bug GH-18567 (Preloading with internal class alias triggers assertion failure).
+        Fixed bug GH-18534 (FPM exit code 70 with enabled opcache and hooked properties in traits).
+        Fix leak of accel_globals-&gt;key.
+    OpenSSL:
+        Fix missing checks against php_set_blocking() in xp_ssl.c.
+    SPL:
+        Fixed bug GH-18421 (Integer overflow with large numbers in LimitIterator).
+    Standard:
+        Fixed bug GH-17403 (Potential deadlock when putenv fails).</comment>
+    <requestid>1283579</requestid>
+  </revision>
 </revisionlist>

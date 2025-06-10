@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Jun  6 08:25:15 UTC 2025 - pgajdos@suse.com
+
+- version update to 8.4.8
+    Core:
+        Fixed GH-18480 (array_splice with large values for offset/length arguments).
+        Partially fixed GH-18572 (nested object comparisons leading to stack overflow).
+        Fixed OSS-Fuzz #417078295.
+        Fixed OSS-Fuzz #418106144.
+    Curl:
+        Fixed GH-18460 (curl_easy_setopt with CURLOPT_USERPWD/CURLOPT_USERNAME/ CURLOPT_PASSWORD set the Authorization header when set to NULL).
+    Date:
+        Fixed bug GH-18076 (Since PHP 8, the date_sun_info() function returns inaccurate sunrise and sunset times, but other calculated times are correct) (JiriJozif).
+        Fixed bug GH-18481 (date_sunrise with unexpected nan value for the offset).
+    DOM:
+        Backport lexbor/lexbor#274.
+    Intl:
+        Fix various reference issues.
+    LDAP:
+        Fixed bug GH-18529 (ldap no longer respects TLS_CACERT from ldaprc in ldap_start_tls()).
+    Opcache:
+        Fixed bug GH-18417 (Windows SHM reattachment fails when increasing memory_consumption or jit_buffer_size).
+        Fixed bug GH-18297 (Exception not handled when jit guard is triggered).
+        Fixed bug GH-18408 (Snapshotted poly_func / poly_this may be spilled).
+        Fixed bug GH-18567 (Preloading with internal class alias triggers assertion failure).
+        Fixed bug GH-18534 (FPM exit code 70 with enabled opcache and hooked properties in traits).
+        Fix leak of accel_globals->key.
+    OpenSSL:
+        Fix missing checks against php_set_blocking() in xp_ssl.c.
+    SPL:
+        Fixed bug GH-18421 (Integer overflow with large numbers in LimitIterator).
+    Standard:
+        Fixed bug GH-17403 (Potential deadlock when putenv fails).
+        Fixed bug GH-18400 (http_build_query type error is inaccurate).
+        Fixed bug GH-18509 (Dynamic calls to assert() ignore zend.assertions).
+    Windows:
+        Fix leak+crash with sapi_windows_set_ctrl_handler().
+    Zip:
+        Fixed bug GH-18431 (Registering ZIP progress callback twice doesn't work).
+        Fixed bug GH-18438 (Handling of empty data and errors in ZipArchive::addPattern).
+
+-------------------------------------------------------------------
 Fri May  9 16:20:20 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - version update to 8.4.7
