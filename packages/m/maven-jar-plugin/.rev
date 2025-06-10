@@ -87,4 +87,12 @@
     <comment>switch on reproducible also with SOURCE_DATE_EPOCH in the plugin</comment>
     <requestid>1202687</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>02bd8f9ac9cd318c1889cdc57555008f</srcmd5>
+    <version>3.4.2</version>
+    <time>1749539010</time>
+    <user>anag_factory</user>
+    <comment>3.4.2</comment>
+    <requestid>1283732</requestid>
+  </revision>
 </revisionlist>

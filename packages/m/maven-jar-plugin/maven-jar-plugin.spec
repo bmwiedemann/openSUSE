@@ -1,7 +1,7 @@
 #
 # spec file for package maven-jar-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with bootstrap
 %endif
 %global base_name maven-jar-plugin
-Version:        3.3.0
+Version:        3.4.2
 Release:        0
 Summary:        Maven JAR Plugin
 License:        Apache-2.0
@@ -34,6 +34,7 @@ Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
 Patch1:         01-allow-replacing-artifacts.patch
 Patch2:         reproducible-from-environment.patch
+BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
@@ -41,8 +42,11 @@ BuildRequires:  maven-archiver >= 3.5.0
 BuildRequires:  maven-file-management
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
+BuildRequires:  objectweb-asm
 BuildRequires:  plexus-archiver >= 4.2.0
 BuildRequires:  plexus-utils >= 3.3.0
+BuildRequires:  sisu-inject
+BuildRequires:  slf4j
 BuildRequires:  unzip
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
@@ -60,6 +64,7 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-resources-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-surefire-plugin)
+BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
 Obsoletes:      %{base_name}-bootstrap
 #!BuildRequires: maven-compiler-plugin-bootstrap
 #!BuildRequires: maven-jar-plugin-bootstrap
@@ -99,22 +104,25 @@ cp %{SOURCE1} build.xml
 %if %{with bootstrap}
 mkdir -p lib
 build-jar-repository -s lib \
+    atinject \
     maven-file-management/file-management \
     maven-archiver/maven-archiver \
     maven/maven-artifact \
     maven/maven-core \
     maven/maven-plugin-api \
     maven-plugin-tools/maven-plugin-annotations \
+    objectweb-asm/asm \
+    org.eclipse.sisu.inject \
     plexus/archiver \
-    plexus/utils
+    plexus/utils \
+    slf4j/api
 %{ant} -Dtest.skip=true jar
 %else
 xmvn --batch-mode --offline \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif
-    -Dmaven.test.skip=true -DmavenVersion=3.1.1 \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Dmaven.test.skip=true \
     package org.apache.maven.plugins:maven-javadoc-plugin:aggregate
 %endif
 

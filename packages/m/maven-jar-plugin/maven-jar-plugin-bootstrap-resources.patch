@@ -1,7 +1,8 @@
---- maven-jar-plugin-3.3.0//src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-jar-plugin/plugin-help.xml	1970-01-01 01:00:00.000000000 +0100
-+++ maven-jar-plugin-3.3.0/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-jar-plugin/plugin-help.xml	2023-09-14 14:04:13.990051552 +0200
-@@ -0,0 +1,274 @@
+--- maven-jar-plugin-3.4.2/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-jar-plugin/plugin-help.xml	1970-01-01 01:00:00.000000000 +0100
++++ maven-jar-plugin-3.4.2/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-jar-plugin/plugin-help.xml	2025-06-06 17:21:28.384603798 +0200
+@@ -0,0 +1,343 @@
 +<?xml version="1.0" encoding="UTF-8"?>
++
 +<plugin>
 +  <name>${project.name}</name>
 +  <description>${project.description}</description>
@@ -20,7 +21,7 @@
 +      <aggregator>false</aggregator>
 +      <requiresOnline>false</requiresOnline>
 +      <inheritedByDefault>true</inheritedByDefault>
-+      <implementation>org.apache.maven.plugins.jar.HelpMojo</implementation>
++      <implementation>org.apache.maven.plugins.maven_jar_plugin.HelpMojo</implementation>
 +      <language>java</language>
 +      <instantiationStrategy>per-lookup</instantiationStrategy>
 +      <executionStrategy>once-per-session</executionStrategy>
@@ -31,32 +32,28 @@
 +          <type>boolean</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Display help information on maven-jar-plugin.
-+Call mvn jar:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter details.</description>
++          <description>If true, display all settable properties for each goal.</description>
 +        </parameter>
 +        <parameter>
 +          <name>goal</name>
 +          <type>java.lang.String</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Display help information on maven-jar-plugin.
-+Call mvn jar:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter details.</description>
++          <description>The name of the goal for which to show help. If unspecified, all goals will be displayed.</description>
 +        </parameter>
 +        <parameter>
 +          <name>indentSize</name>
 +          <type>int</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Display help information on maven-jar-plugin.
-+Call mvn jar:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter details.</description>
++          <description>The number of spaces per indentation level, should be positive.</description>
 +        </parameter>
 +        <parameter>
 +          <name>lineLength</name>
 +          <type>int</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Display help information on maven-jar-plugin.
-+Call mvn jar:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter details.</description>
++          <description>The maximum length of a display line, should be positive.</description>
 +        </parameter>
 +      </parameters>
 +      <configuration>
@@ -84,53 +81,87 @@
 +      <threadSafe>true</threadSafe>
 +      <parameters>
 +        <parameter>
++          <name>addDefaultExcludes</name>
++          <type>boolean</type>
++          <since>3.4.0</since>
++          <required>false</required>
++          <editable>true</editable>
++          <description>If set to false, the files and directories that by default are excluded from the resulting archive, like .gitignore, .cvsignore etc. will be included. This means all files like the following will be included. 
++* Misc: **/*~, **/#*#, **/.#*, **/%*%, **/._* 
++* CVS: **/CVS, **/CVS/**, **/.cvsignore 
++* RCS: **/RCS, **/RCS/** 
++* SCCS: **/SCCS, **/SCCS/** 
++* VSSercer: **/vssver.scc 
++* MKS: **/project.pj 
++* SVN: **/.svn, **/.svn/** 
++* GNU: **/.arch-ids, **/.arch-ids/** 
++* Bazaar: **/.bzr, **/.bzr/** 
++* SurroundSCM: **/.MySCMServerInfo 
++* Mac: **/.DS_Store 
++* Serena Dimension: **/.metadata, **/.metadata/** 
++* Mercurial: **/.hg, **/.hg/** 
++* Git: **/.git, **/.git/** 
++* Bitkeeper: **/BitKeeper, **/BitKeeper/**, **/ChangeSet, **/ChangeSet/** 
++* Darcs: **/_darcs, **/_darcs/**, **/.darcsrepo, **/.darcsrepo/****/-darcs-backup*, **/.darcs-temp-mail 
++See also: DEFAULTEXCLUDES &lt;https://codehaus-plexus.github.io/plexus-utils/apidocs/org/codehaus/plexus/util/AbstractScanner.html#DEFAULTEXCLUDES&gt;</description>
++        </parameter>
++        <parameter>
 +          <name>archive</name>
 +          <type>org.apache.maven.archiver.MavenArchiveConfiguration</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>The archive configuration to use. See Maven Archiver Reference &lt;http://maven.apache.org/shared/maven-archiver/index.html&gt;.</description>
 +        </parameter>
 +        <parameter>
 +          <name>classesDirectory</name>
 +          <type>java.io.File</type>
 +          <required>true</required>
 +          <editable>true</editable>
-+          <description>Build a JAR from the current project.</description>
++          <description>Directory containing the classes and resource files that should be packaged into the JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>classifier</name>
 +          <type>java.lang.String</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Build a JAR from the current project.</description>
++          <description>Classifier to add to the artifact generated. If given, the artifact will be attached as a supplemental artifact. If not given this will create the main artifact which is the default behavior. If you try to do that a second time without using a classifier the build will fail.</description>
++        </parameter>
++        <parameter>
++          <name>detectMultiReleaseJar</name>
++          <type>boolean</type>
++          <since>3.4.0</since>
++          <required>false</required>
++          <editable>true</editable>
++          <description>If the JAR contains the META-INF/versions directory it will be detected as a multi-release JAR file (&quot;MRJAR&quot;), adding the Multi-Release: true attribute to the main section of the JAR MANIFEST.MF.</description>
 +        </parameter>
 +        <parameter>
 +          <name>excludes</name>
 +          <type>java.lang.String[]</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>List of files to exclude. Specified as fileset patterns which are relative to the input directory whose contents is being packaged into the JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>forceCreation</name>
 +          <type>boolean</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Require the jar plugin to build a new JAR even if none of the contents appear to have changed. By default, this plugin looks to see if the output jar exists and inputs have not changed. If these conditions are true, the plugin skips creation of the jar. This does not work when other plugins, like the maven-shade-plugin, are configured to post-process the jar. This plugin can not detect the post-processing, and so leaves the post-processed jar in place. This can lead to failures when those plugins do not expect to find their own output as an input. Set this parameter to true to avoid these problems by forcing this plugin to recreate the jar every time.
++Starting with 3.0.0 the property has been renamed from jar.forceCreation to maven.jar.forceCreation.</description>
 +        </parameter>
 +        <parameter>
 +          <name>includes</name>
 +          <type>java.lang.String[]</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>List of files to include. Specified as fileset patterns which are relative to the input directory whose contents is being packaged into the JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>outputDirectory</name>
 +          <type>java.io.File</type>
 +          <required>true</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Directory containing the generated JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>outputTimestamp</name>
@@ -138,14 +169,14 @@
 +          <since>3.2.0</since>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Timestamp for reproducible output archive entries, either formatted as ISO 8601 extended offset date-time (e.g. in UTC such as &apos;2011-12-03T10:15:30Z&apos; or with an offset &apos;2019-10-05T20:37:42+06:00&apos;), or as an int representing seconds since the epoch (like SOURCE_DATE_EPOCH &lt;https://reproducible-builds.org/docs/source-date-epoch/&gt;).</description>
 +        </parameter>
 +        <parameter>
 +          <name>skipIfEmpty</name>
 +          <type>boolean</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Skip creating empty archives.</description>
 +        </parameter>
 +        <parameter>
 +          <name>useDefaultManifestFile</name>
@@ -153,11 +184,13 @@
 +          <deprecated>For version 3.0.0 this parameter is only defined here to break the build if you use it!</deprecated>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Using this property will fail your build cause it has been removed from the plugin configuration. See the Major Version Upgrade to version 3.0.0 &lt;https://maven.apache.org/plugins/maven-jar-plugin/&gt; for the plugin.</description>
 +        </parameter>
 +      </parameters>
 +      <configuration>
++        <addDefaultExcludes implementation="boolean" default-value="true"/>
 +        <classesDirectory implementation="java.io.File" default-value="${project.build.outputDirectory}"/>
++        <detectMultiReleaseJar implementation="boolean" default-value="true">${maven.jar.detectMultiReleaseJar}</detectMultiReleaseJar>
 +        <forceCreation implementation="boolean" default-value="false">${maven.jar.forceCreation}</forceCreation>
 +        <outputDirectory implementation="java.io.File" default-value="${project.build.directory}"/>
 +        <outputTimestamp implementation="java.lang.String" default-value="${project.build.outputTimestamp}"/>
@@ -183,46 +216,80 @@
 +      <threadSafe>true</threadSafe>
 +      <parameters>
 +        <parameter>
++          <name>addDefaultExcludes</name>
++          <type>boolean</type>
++          <since>3.4.0</since>
++          <required>false</required>
++          <editable>true</editable>
++          <description>If set to false, the files and directories that by default are excluded from the resulting archive, like .gitignore, .cvsignore etc. will be included. This means all files like the following will be included. 
++* Misc: **/*~, **/#*#, **/.#*, **/%*%, **/._* 
++* CVS: **/CVS, **/CVS/**, **/.cvsignore 
++* RCS: **/RCS, **/RCS/** 
++* SCCS: **/SCCS, **/SCCS/** 
++* VSSercer: **/vssver.scc 
++* MKS: **/project.pj 
++* SVN: **/.svn, **/.svn/** 
++* GNU: **/.arch-ids, **/.arch-ids/** 
++* Bazaar: **/.bzr, **/.bzr/** 
++* SurroundSCM: **/.MySCMServerInfo 
++* Mac: **/.DS_Store 
++* Serena Dimension: **/.metadata, **/.metadata/** 
++* Mercurial: **/.hg, **/.hg/** 
++* Git: **/.git, **/.git/** 
++* Bitkeeper: **/BitKeeper, **/BitKeeper/**, **/ChangeSet, **/ChangeSet/** 
++* Darcs: **/_darcs, **/_darcs/**, **/.darcsrepo, **/.darcsrepo/****/-darcs-backup*, **/.darcs-temp-mail 
++See also: DEFAULTEXCLUDES &lt;https://codehaus-plexus.github.io/plexus-utils/apidocs/org/codehaus/plexus/util/AbstractScanner.html#DEFAULTEXCLUDES&gt;</description>
++        </parameter>
++        <parameter>
 +          <name>archive</name>
 +          <type>org.apache.maven.archiver.MavenArchiveConfiguration</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>The archive configuration to use. See Maven Archiver Reference &lt;http://maven.apache.org/shared/maven-archiver/index.html&gt;.</description>
 +        </parameter>
 +        <parameter>
 +          <name>classifier</name>
 +          <type>java.lang.String</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Build a JAR of the test classes for the current project.</description>
++          <description>Classifier to use for test-jar.</description>
++        </parameter>
++        <parameter>
++          <name>detectMultiReleaseJar</name>
++          <type>boolean</type>
++          <since>3.4.0</since>
++          <required>false</required>
++          <editable>true</editable>
++          <description>If the JAR contains the META-INF/versions directory it will be detected as a multi-release JAR file (&quot;MRJAR&quot;), adding the Multi-Release: true attribute to the main section of the JAR MANIFEST.MF.</description>
 +        </parameter>
 +        <parameter>
 +          <name>excludes</name>
 +          <type>java.lang.String[]</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>List of files to exclude. Specified as fileset patterns which are relative to the input directory whose contents is being packaged into the JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>forceCreation</name>
 +          <type>boolean</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Require the jar plugin to build a new JAR even if none of the contents appear to have changed. By default, this plugin looks to see if the output jar exists and inputs have not changed. If these conditions are true, the plugin skips creation of the jar. This does not work when other plugins, like the maven-shade-plugin, are configured to post-process the jar. This plugin can not detect the post-processing, and so leaves the post-processed jar in place. This can lead to failures when those plugins do not expect to find their own output as an input. Set this parameter to true to avoid these problems by forcing this plugin to recreate the jar every time.
++Starting with 3.0.0 the property has been renamed from jar.forceCreation to maven.jar.forceCreation.</description>
 +        </parameter>
 +        <parameter>
 +          <name>includes</name>
 +          <type>java.lang.String[]</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>List of files to include. Specified as fileset patterns which are relative to the input directory whose contents is being packaged into the JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>outputDirectory</name>
 +          <type>java.io.File</type>
 +          <required>true</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Directory containing the generated JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>outputTimestamp</name>
@@ -230,28 +297,28 @@
 +          <since>3.2.0</since>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Timestamp for reproducible output archive entries, either formatted as ISO 8601 extended offset date-time (e.g. in UTC such as &apos;2011-12-03T10:15:30Z&apos; or with an offset &apos;2019-10-05T20:37:42+06:00&apos;), or as an int representing seconds since the epoch (like SOURCE_DATE_EPOCH &lt;https://reproducible-builds.org/docs/source-date-epoch/&gt;).</description>
 +        </parameter>
 +        <parameter>
 +          <name>skip</name>
 +          <type>boolean</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Build a JAR of the test classes for the current project.</description>
++          <description>Set this to true to bypass test-jar generation. Its use is NOT RECOMMENDED, but quite convenient on occasion.</description>
 +        </parameter>
 +        <parameter>
 +          <name>skipIfEmpty</name>
 +          <type>boolean</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Skip creating empty archives.</description>
 +        </parameter>
 +        <parameter>
 +          <name>testClassesDirectory</name>
 +          <type>java.io.File</type>
 +          <required>true</required>
 +          <editable>true</editable>
-+          <description>Build a JAR of the test classes for the current project.</description>
++          <description>Directory containing the test classes and resource files that should be packaged into the JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>useDefaultManifestFile</name>
@@ -259,11 +326,13 @@
 +          <deprecated>For version 3.0.0 this parameter is only defined here to break the build if you use it!</deprecated>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Using this property will fail your build cause it has been removed from the plugin configuration. See the Major Version Upgrade to version 3.0.0 &lt;https://maven.apache.org/plugins/maven-jar-plugin/&gt; for the plugin.</description>
 +        </parameter>
 +      </parameters>
 +      <configuration>
++        <addDefaultExcludes implementation="boolean" default-value="true"/>
 +        <classifier implementation="java.lang.String" default-value="tests"/>
++        <detectMultiReleaseJar implementation="boolean" default-value="true">${maven.jar.detectMultiReleaseJar}</detectMultiReleaseJar>
 +        <forceCreation implementation="boolean" default-value="false">${maven.jar.forceCreation}</forceCreation>
 +        <outputDirectory implementation="java.io.File" default-value="${project.build.directory}"/>
 +        <outputTimestamp implementation="java.lang.String" default-value="${project.build.outputTimestamp}"/>
@@ -275,10 +344,11 @@
 +    </mojo>
 +  </mojos>
 +</plugin>
---- maven-jar-plugin-3.3.0//src/main/filtered-resources/META-INF/maven/plugin.xml	1970-01-01 01:00:00.000000000 +0100
-+++ maven-jar-plugin-3.3.0/src/main/filtered-resources/META-INF/maven/plugin.xml	2023-09-14 14:03:04.266238892 +0200
-@@ -0,0 +1,556 @@
+--- maven-jar-plugin-3.4.2/src/main/filtered-resources/META-INF/maven/plugin.xml	1970-01-01 01:00:00.000000000 +0100
++++ maven-jar-plugin-3.4.2/src/main/filtered-resources/META-INF/maven/plugin.xml	2025-06-06 17:27:59.026728612 +0200
+@@ -0,0 +1,517 @@
 +<?xml version="1.0" encoding="UTF-8"?>
++
 +<plugin>
 +  <name>${project.name}</name>
 +  <description>${project.description}</description>
@@ -288,18 +358,20 @@
 +  <goalPrefix>jar</goalPrefix>
 +  <isolatedRealm>false</isolatedRealm>
 +  <inheritedByDefault>true</inheritedByDefault>
++  <requiredJavaVersion>1.8</requiredJavaVersion>
++  <requiredMavenVersion>3.6.3</requiredMavenVersion>
 +  <mojos>
 +    <mojo>
 +      <goal>help</goal>
-+      <description>Display help information on maven-jar-plugin.&lt;br&gt;
-+Call &lt;code&gt;mvn jar:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/code&gt; to display parameter details.</description>
++      <description>Display help information on maven-jar-plugin.
++Call mvn jar:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter details.</description>
 +      <requiresDirectInvocation>false</requiresDirectInvocation>
 +      <requiresProject>false</requiresProject>
 +      <requiresReports>false</requiresReports>
 +      <aggregator>false</aggregator>
 +      <requiresOnline>false</requiresOnline>
 +      <inheritedByDefault>true</inheritedByDefault>
-+      <implementation>org.apache.maven.plugins.jar.HelpMojo</implementation>
++      <implementation>org.apache.maven.plugins.maven_jar_plugin.HelpMojo</implementation>
 +      <language>java</language>
 +      <instantiationStrategy>per-lookup</instantiationStrategy>
 +      <executionStrategy>once-per-session</executionStrategy>
@@ -310,32 +382,28 @@
 +          <type>boolean</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Display help information on maven-jar-plugin.&lt;br&gt;
-+Call &lt;code&gt;mvn jar:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/code&gt; to display parameter details.</description>
++          <description>If true, display all settable properties for each goal.</description>
 +        </parameter>
 +        <parameter>
 +          <name>goal</name>
 +          <type>java.lang.String</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Display help information on maven-jar-plugin.&lt;br&gt;
-+Call &lt;code&gt;mvn jar:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/code&gt; to display parameter details.</description>
++          <description>The name of the goal for which to show help. If unspecified, all goals will be displayed.</description>
 +        </parameter>
 +        <parameter>
 +          <name>indentSize</name>
 +          <type>int</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Display help information on maven-jar-plugin.&lt;br&gt;
-+Call &lt;code&gt;mvn jar:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/code&gt; to display parameter details.</description>
++          <description>The number of spaces per indentation level, should be positive.</description>
 +        </parameter>
 +        <parameter>
 +          <name>lineLength</name>
 +          <type>int</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Display help information on maven-jar-plugin.&lt;br&gt;
-+Call &lt;code&gt;mvn jar:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/code&gt; to display parameter details.</description>
++          <description>The maximum length of a display line, should be positive.</description>
 +        </parameter>
 +      </parameters>
 +      <configuration>
@@ -363,60 +431,94 @@
 +      <threadSafe>true</threadSafe>
 +      <parameters>
 +        <parameter>
++          <name>addDefaultExcludes</name>
++          <type>boolean</type>
++          <since>3.4.0</since>
++          <required>false</required>
++          <editable>true</editable>
++          <description>If set to false, the files and directories that by default are excluded from the resulting archive, like .gitignore, .cvsignore etc. will be included. This means all files like the following will be included. 
++* Misc: **/*~, **/#*#, **/.#*, **/%*%, **/._* 
++* CVS: **/CVS, **/CVS/**, **/.cvsignore 
++* RCS: **/RCS, **/RCS/** 
++* SCCS: **/SCCS, **/SCCS/** 
++* VSSercer: **/vssver.scc 
++* MKS: **/project.pj 
++* SVN: **/.svn, **/.svn/** 
++* GNU: **/.arch-ids, **/.arch-ids/** 
++* Bazaar: **/.bzr, **/.bzr/** 
++* SurroundSCM: **/.MySCMServerInfo 
++* Mac: **/.DS_Store 
++* Serena Dimension: **/.metadata, **/.metadata/** 
++* Mercurial: **/.hg, **/.hg/** 
++* Git: **/.git, **/.git/** 
++* Bitkeeper: **/BitKeeper, **/BitKeeper/**, **/ChangeSet, **/ChangeSet/** 
++* Darcs: **/_darcs, **/_darcs/**, **/.darcsrepo, **/.darcsrepo/****/-darcs-backup*, **/.darcs-temp-mail 
++See also: DEFAULTEXCLUDES &lt;https://codehaus-plexus.github.io/plexus-utils/apidocs/org/codehaus/plexus/util/AbstractScanner.html#DEFAULTEXCLUDES&gt;</description>
++        </parameter>
++        <parameter>
 +          <name>archive</name>
 +          <type>org.apache.maven.archiver.MavenArchiveConfiguration</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>The archive configuration to use. See Maven Archiver Reference &lt;http://maven.apache.org/shared/maven-archiver/index.html&gt;.</description>
 +        </parameter>
 +        <parameter>
 +          <name>classesDirectory</name>
 +          <type>java.io.File</type>
 +          <required>true</required>
 +          <editable>true</editable>
-+          <description>Build a JAR from the current project.</description>
++          <description>Directory containing the classes and resource files that should be packaged into the JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>classifier</name>
 +          <type>java.lang.String</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Build a JAR from the current project.</description>
++          <description>Classifier to add to the artifact generated. If given, the artifact will be attached as a supplemental artifact. If not given this will create the main artifact which is the default behavior. If you try to do that a second time without using a classifier the build will fail.</description>
++        </parameter>
++        <parameter>
++          <name>detectMultiReleaseJar</name>
++          <type>boolean</type>
++          <since>3.4.0</since>
++          <required>false</required>
++          <editable>true</editable>
++          <description>If the JAR contains the META-INF/versions directory it will be detected as a multi-release JAR file (&quot;MRJAR&quot;), adding the Multi-Release: true attribute to the main section of the JAR MANIFEST.MF.</description>
 +        </parameter>
 +        <parameter>
 +          <name>excludes</name>
 +          <type>java.lang.String[]</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>List of files to exclude. Specified as fileset patterns which are relative to the input directory whose contents is being packaged into the JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>finalName</name>
 +          <type>java.lang.String</type>
 +          <required>false</required>
 +          <editable>false</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Name of the generated JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>forceCreation</name>
 +          <type>boolean</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Require the jar plugin to build a new JAR even if none of the contents appear to have changed. By default, this plugin looks to see if the output jar exists and inputs have not changed. If these conditions are true, the plugin skips creation of the jar. This does not work when other plugins, like the maven-shade-plugin, are configured to post-process the jar. This plugin can not detect the post-processing, and so leaves the post-processed jar in place. This can lead to failures when those plugins do not expect to find their own output as an input. Set this parameter to true to avoid these problems by forcing this plugin to recreate the jar every time.
++Starting with 3.0.0 the property has been renamed from jar.forceCreation to maven.jar.forceCreation.</description>
 +        </parameter>
 +        <parameter>
 +          <name>includes</name>
 +          <type>java.lang.String[]</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>List of files to include. Specified as fileset patterns which are relative to the input directory whose contents is being packaged into the JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>outputDirectory</name>
 +          <type>java.io.File</type>
 +          <required>true</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Directory containing the generated JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>outputTimestamp</name>
@@ -424,28 +526,28 @@
 +          <since>3.2.0</since>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Timestamp for reproducible output archive entries, either formatted as ISO 8601 extended offset date-time (e.g. in UTC such as &apos;2011-12-03T10:15:30Z&apos; or with an offset &apos;2019-10-05T20:37:42+06:00&apos;), or as an int representing seconds since the epoch (like SOURCE_DATE_EPOCH &lt;https://reproducible-builds.org/docs/source-date-epoch/&gt;).</description>
 +        </parameter>
 +        <parameter>
 +          <name>project</name>
 +          <type>org.apache.maven.project.MavenProject</type>
 +          <required>true</required>
 +          <editable>false</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>The org.apache.maven.project.MavenProject.</description>
 +        </parameter>
 +        <parameter>
 +          <name>session</name>
 +          <type>org.apache.maven.execution.MavenSession</type>
 +          <required>true</required>
 +          <editable>false</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>The org.apache.maven.execution.MavenSession.</description>
 +        </parameter>
 +        <parameter>
 +          <name>skipIfEmpty</name>
 +          <type>boolean</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Skip creating empty archives.</description>
 +        </parameter>
 +        <parameter>
 +          <name>useDefaultManifestFile</name>
@@ -453,11 +555,13 @@
 +          <deprecated>For version 3.0.0 this parameter is only defined here to break the build if you use it!</deprecated>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Using this property will fail your build cause it has been removed from the plugin configuration. See the Major Version Upgrade to version 3.0.0 &lt;https://maven.apache.org/plugins/maven-jar-plugin/&gt; for the plugin.</description>
 +        </parameter>
 +      </parameters>
 +      <configuration>
++        <addDefaultExcludes implementation="boolean" default-value="true"/>
 +        <classesDirectory implementation="java.io.File" default-value="${project.build.outputDirectory}"/>
++        <detectMultiReleaseJar implementation="boolean" default-value="true">${maven.jar.detectMultiReleaseJar}</detectMultiReleaseJar>
 +        <finalName implementation="java.lang.String" default-value="${project.build.finalName}"/>
 +        <forceCreation implementation="boolean" default-value="false">${maven.jar.forceCreation}</forceCreation>
 +        <outputDirectory implementation="java.io.File" default-value="${project.build.directory}"/>
@@ -475,6 +579,14 @@
 +        <requirement>
 +          <role>org.apache.maven.project.MavenProjectHelper</role>
 +          <field-name>projectHelper</field-name>
++        </requirement>
++        <requirement>
++          <role>org.apache.maven.toolchain.ToolchainManager</role>
++          <field-name>toolchainManager</field-name>
++        </requirement>
++        <requirement>
++          <role>org.apache.maven.plugins.jar.ToolchainsJdkSpecification</role>
++          <field-name>toolchainsJdkSpecification</field-name>
 +        </requirement>
 +      </requirements>
 +    </mojo>
@@ -496,53 +608,87 @@
 +      <threadSafe>true</threadSafe>
 +      <parameters>
 +        <parameter>
++          <name>addDefaultExcludes</name>
++          <type>boolean</type>
++          <since>3.4.0</since>
++          <required>false</required>
++          <editable>true</editable>
++          <description>If set to false, the files and directories that by default are excluded from the resulting archive, like .gitignore, .cvsignore etc. will be included. This means all files like the following will be included. 
++* Misc: **/*~, **/#*#, **/.#*, **/%*%, **/._* 
++* CVS: **/CVS, **/CVS/**, **/.cvsignore 
++* RCS: **/RCS, **/RCS/** 
++* SCCS: **/SCCS, **/SCCS/** 
++* VSSercer: **/vssver.scc 
++* MKS: **/project.pj 
++* SVN: **/.svn, **/.svn/** 
++* GNU: **/.arch-ids, **/.arch-ids/** 
++* Bazaar: **/.bzr, **/.bzr/** 
++* SurroundSCM: **/.MySCMServerInfo 
++* Mac: **/.DS_Store 
++* Serena Dimension: **/.metadata, **/.metadata/** 
++* Mercurial: **/.hg, **/.hg/** 
++* Git: **/.git, **/.git/** 
++* Bitkeeper: **/BitKeeper, **/BitKeeper/**, **/ChangeSet, **/ChangeSet/** 
++* Darcs: **/_darcs, **/_darcs/**, **/.darcsrepo, **/.darcsrepo/****/-darcs-backup*, **/.darcs-temp-mail 
++See also: DEFAULTEXCLUDES &lt;https://codehaus-plexus.github.io/plexus-utils/apidocs/org/codehaus/plexus/util/AbstractScanner.html#DEFAULTEXCLUDES&gt;</description>
++        </parameter>
++        <parameter>
 +          <name>archive</name>
 +          <type>org.apache.maven.archiver.MavenArchiveConfiguration</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>The archive configuration to use. See Maven Archiver Reference &lt;http://maven.apache.org/shared/maven-archiver/index.html&gt;.</description>
 +        </parameter>
 +        <parameter>
 +          <name>classifier</name>
 +          <type>java.lang.String</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Build a JAR of the test classes for the current project.</description>
++          <description>Classifier to use for test-jar.</description>
++        </parameter>
++        <parameter>
++          <name>detectMultiReleaseJar</name>
++          <type>boolean</type>
++          <since>3.4.0</since>
++          <required>false</required>
++          <editable>true</editable>
++          <description>If the JAR contains the META-INF/versions directory it will be detected as a multi-release JAR file (&quot;MRJAR&quot;), adding the Multi-Release: true attribute to the main section of the JAR MANIFEST.MF.</description>
 +        </parameter>
 +        <parameter>
 +          <name>excludes</name>
 +          <type>java.lang.String[]</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>List of files to exclude. Specified as fileset patterns which are relative to the input directory whose contents is being packaged into the JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>finalName</name>
 +          <type>java.lang.String</type>
 +          <required>false</required>
 +          <editable>false</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Name of the generated JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>forceCreation</name>
 +          <type>boolean</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Require the jar plugin to build a new JAR even if none of the contents appear to have changed. By default, this plugin looks to see if the output jar exists and inputs have not changed. If these conditions are true, the plugin skips creation of the jar. This does not work when other plugins, like the maven-shade-plugin, are configured to post-process the jar. This plugin can not detect the post-processing, and so leaves the post-processed jar in place. This can lead to failures when those plugins do not expect to find their own output as an input. Set this parameter to true to avoid these problems by forcing this plugin to recreate the jar every time.
++Starting with 3.0.0 the property has been renamed from jar.forceCreation to maven.jar.forceCreation.</description>
 +        </parameter>
 +        <parameter>
 +          <name>includes</name>
 +          <type>java.lang.String[]</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>List of files to include. Specified as fileset patterns which are relative to the input directory whose contents is being packaged into the JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>outputDirectory</name>
 +          <type>java.io.File</type>
 +          <required>true</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Directory containing the generated JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>outputTimestamp</name>
@@ -550,42 +696,42 @@
 +          <since>3.2.0</since>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Timestamp for reproducible output archive entries, either formatted as ISO 8601 extended offset date-time (e.g. in UTC such as &apos;2011-12-03T10:15:30Z&apos; or with an offset &apos;2019-10-05T20:37:42+06:00&apos;), or as an int representing seconds since the epoch (like SOURCE_DATE_EPOCH &lt;https://reproducible-builds.org/docs/source-date-epoch/&gt;).</description>
 +        </parameter>
 +        <parameter>
 +          <name>project</name>
 +          <type>org.apache.maven.project.MavenProject</type>
 +          <required>true</required>
 +          <editable>false</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>The org.apache.maven.project.MavenProject.</description>
 +        </parameter>
 +        <parameter>
 +          <name>session</name>
 +          <type>org.apache.maven.execution.MavenSession</type>
 +          <required>true</required>
 +          <editable>false</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>The org.apache.maven.execution.MavenSession.</description>
 +        </parameter>
 +        <parameter>
 +          <name>skip</name>
 +          <type>boolean</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Build a JAR of the test classes for the current project.</description>
++          <description>Set this to true to bypass test-jar generation. Its use is NOT RECOMMENDED, but quite convenient on occasion.</description>
 +        </parameter>
 +        <parameter>
 +          <name>skipIfEmpty</name>
 +          <type>boolean</type>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Skip creating empty archives.</description>
 +        </parameter>
 +        <parameter>
 +          <name>testClassesDirectory</name>
 +          <type>java.io.File</type>
 +          <required>true</required>
 +          <editable>true</editable>
-+          <description>Build a JAR of the test classes for the current project.</description>
++          <description>Directory containing the test classes and resource files that should be packaged into the JAR.</description>
 +        </parameter>
 +        <parameter>
 +          <name>useDefaultManifestFile</name>
@@ -593,11 +739,13 @@
 +          <deprecated>For version 3.0.0 this parameter is only defined here to break the build if you use it!</deprecated>
 +          <required>false</required>
 +          <editable>true</editable>
-+          <description>Base class for creating a jar from project classes.</description>
++          <description>Using this property will fail your build cause it has been removed from the plugin configuration. See the Major Version Upgrade to version 3.0.0 &lt;https://maven.apache.org/plugins/maven-jar-plugin/&gt; for the plugin.</description>
 +        </parameter>
 +      </parameters>
 +      <configuration>
++        <addDefaultExcludes implementation="boolean" default-value="true"/>
 +        <classifier implementation="java.lang.String" default-value="tests"/>
++        <detectMultiReleaseJar implementation="boolean" default-value="true">${maven.jar.detectMultiReleaseJar}</detectMultiReleaseJar>
 +        <finalName implementation="java.lang.String" default-value="${project.build.finalName}"/>
 +        <forceCreation implementation="boolean" default-value="false">${maven.jar.forceCreation}</forceCreation>
 +        <outputDirectory implementation="java.io.File" default-value="${project.build.directory}"/>
@@ -618,153 +766,35 @@
 +          <role>org.apache.maven.project.MavenProjectHelper</role>
 +          <field-name>projectHelper</field-name>
 +        </requirement>
++        <requirement>
++          <role>org.apache.maven.toolchain.ToolchainManager</role>
++          <field-name>toolchainManager</field-name>
++        </requirement>
++        <requirement>
++          <role>org.apache.maven.plugins.jar.ToolchainsJdkSpecification</role>
++          <field-name>toolchainsJdkSpecification</field-name>
++        </requirement>
 +      </requirements>
 +    </mojo>
 +  </mojos>
 +  <dependencies>
 +    <dependency>
-+      <groupId>org.eclipse.sisu</groupId>
-+      <artifactId>org.eclipse.sisu.plexus</artifactId>
++      <groupId>org.codehaus.plexus</groupId>
++      <artifactId>plexus-utils</artifactId>
 +      <type>jar</type>
-+      <version>0.9.0.M2</version>
++      <version>4.0.1</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
-+      <artifactId>plexus-classworlds</artifactId>
++      <artifactId>plexus-xml</artifactId>
 +      <type>jar</type>
-+      <version>2.7.0</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven.resolver</groupId>
-+      <artifactId>maven-resolver-spi</artifactId>
-+      <type>jar</type>
-+      <version>1.9.10</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven.resolver</groupId>
-+      <artifactId>maven-resolver-util</artifactId>
-+      <type>jar</type>
-+      <version>1.9.10</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven</groupId>
-+      <artifactId>maven-settings</artifactId>
-+      <type>jar</type>
-+      <version>3.9.2</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.slf4j</groupId>
-+      <artifactId>slf4j-api</artifactId>
-+      <type>jar</type>
-+      <version>1.7.36</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven.resolver</groupId>
-+      <artifactId>maven-resolver-api</artifactId>
-+      <type>jar</type>
-+      <version>1.9.10</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven</groupId>
-+      <artifactId>maven-model-builder</artifactId>
-+      <type>jar</type>
-+      <version>3.9.2</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.codehaus.plexus</groupId>
-+      <artifactId>plexus-component-annotations</artifactId>
-+      <type>jar</type>
-+      <version>2.1.0</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven</groupId>
-+      <artifactId>maven-resolver-provider</artifactId>
-+      <type>jar</type>
-+      <version>3.9.2</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven.shared</groupId>
-+      <artifactId>maven-shared-utils</artifactId>
-+      <type>jar</type>
-+      <version>3.3.4</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.eclipse.sisu</groupId>
-+      <artifactId>org.eclipse.sisu.inject</artifactId>
-+      <type>jar</type>
-+      <version>0.9.0.M2</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>javax.enterprise</groupId>
-+      <artifactId>cdi-api</artifactId>
-+      <type>jar</type>
-+      <version>1.1</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>jakarta.inject</groupId>
-+      <artifactId>jakarta.inject-api</artifactId>
-+      <type>jar</type>
-+      <version>1.0</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.jboss.spec.javax.interceptor</groupId>
-+      <artifactId>jboss-interceptors-api_1.2_spec</artifactId>
-+      <type>jar</type>
-+      <version>any</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven</groupId>
-+      <artifactId>maven-builder-support</artifactId>
-+      <type>jar</type>
-+      <version>3.9.2</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven</groupId>
-+      <artifactId>maven-repository-metadata</artifactId>
-+      <type>jar</type>
-+      <version>3.9.2</version>
++      <version>3.0.1</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-interpolation</artifactId>
 +      <type>jar</type>
-+      <version>1.26</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven.resolver</groupId>
-+      <artifactId>maven-resolver-impl</artifactId>
-+      <type>jar</type>
-+      <version>1.9.10</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven.resolver</groupId>
-+      <artifactId>maven-resolver-named-locks</artifactId>
-+      <type>jar</type>
-+      <version>1.9.12</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven</groupId>
-+      <artifactId>maven-settings-builder</artifactId>
-+      <type>jar</type>
-+      <version>3.9.2</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.codehaus.plexus</groupId>
-+      <artifactId>plexus-sec-dispatcher</artifactId>
-+      <type>jar</type>
-+      <version>2.0</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.codehaus.plexus</groupId>
-+      <artifactId>plexus-cipher</artifactId>
-+      <type>jar</type>
-+      <version>2.0</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>javax.inject</groupId>
-+      <artifactId>javax.inject</artifactId>
-+      <type>jar</type>
-+      <version>1</version>
++      <version>1.28</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.apache.maven.shared</groupId>
@@ -773,46 +803,28 @@
 +      <version>3.1.0</version>
 +    </dependency>
 +    <dependency>
-+      <groupId>org.apache.maven.shared</groupId>
-+      <artifactId>maven-shared-io</artifactId>
++      <groupId>commons-io</groupId>
++      <artifactId>commons-io</artifactId>
 +      <type>jar</type>
-+      <version>3.0.0</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven.wagon</groupId>
-+      <artifactId>wagon-provider-api</artifactId>
-+      <type>jar</type>
-+      <version>2.10</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven</groupId>
-+      <artifactId>maven-compat</artifactId>
-+      <type>jar</type>
-+      <version>3.0</version>
++      <version>2.16.1</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.apache.maven</groupId>
 +      <artifactId>maven-archiver</artifactId>
 +      <type>jar</type>
-+      <version>3.6.0</version>
++      <version>3.6.2</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-archiver</artifactId>
 +      <type>jar</type>
-+      <version>4.8.0</version>
++      <version>4.9.2</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-io</artifactId>
 +      <type>jar</type>
-+      <version>3.4.1</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>commons-io</groupId>
-+      <artifactId>commons-io</artifactId>
-+      <type>jar</type>
-+      <version>2.13.0</version>
++      <version>3.5.0</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.tukaani</groupId>
@@ -824,13 +836,483 @@
 +      <groupId>org.apache.commons</groupId>
 +      <artifactId>commons-compress</artifactId>
 +      <type>jar</type>
-+      <version>1.23.0</version>
++      <version>1.26.2</version>
 +    </dependency>
 +    <dependency>
-+      <groupId>org.codehaus.plexus</groupId>
-+      <artifactId>plexus-utils</artifactId>
++      <groupId>org.apache.commons</groupId>
++      <artifactId>commons-lang3</artifactId>
 +      <type>jar</type>
-+      <version>3.4.2</version>
++      <version>3.14.0</version>
++    </dependency>
++    <dependency>
++      <groupId>commons-codec</groupId>
++      <artifactId>commons-codec</artifactId>
++      <type>jar</type>
++      <version>1.16.1</version>
++    </dependency>
++    <dependency>
++      <groupId>javax.inject</groupId>
++      <artifactId>javax.inject</artifactId>
++      <type>jar</type>
++      <version>1</version>
++    </dependency>
++    <dependency>
++      <groupId>org.slf4j</groupId>
++      <artifactId>slf4j-api</artifactId>
++      <type>jar</type>
++      <version>1.7.36</version>
 +    </dependency>
 +  </dependencies>
 +</plugin>
+diff -urEbwBN maven-jar-plugin-3.4.2.orig/src/main/java/org/apache/maven/plugins/maven_jar_plugin/HelpMojo.java maven-jar-plugin-3.4.2/src/main/java/org/apache/maven/plugins/maven_jar_plugin/HelpMojo.java
+--- maven-jar-plugin-3.4.2.orig/src/main/java/org/apache/maven/plugins/maven_jar_plugin/HelpMojo.java	1970-01-01 01:00:00.000000000 +0100
++++ maven-jar-plugin-3.4.2/src/main/java/org/apache/maven/plugins/maven_jar_plugin/HelpMojo.java	2025-06-06 17:25:06.596757776 +0200
+@@ -0,0 +1,448 @@
++package org.apache.maven.plugins.maven_jar_plugin;
++
++import org.apache.maven.plugin.AbstractMojo;
++import org.apache.maven.plugin.MojoExecutionException;
++import org.apache.maven.plugins.annotations.Mojo;
++import org.apache.maven.plugins.annotations.Parameter;
++
++import org.w3c.dom.Document;
++import org.w3c.dom.Element;
++import org.w3c.dom.Node;
++import org.w3c.dom.NodeList;
++import org.xml.sax.SAXException;
++
++import javax.xml.parsers.DocumentBuilder;
++import javax.xml.parsers.DocumentBuilderFactory;
++import javax.xml.parsers.ParserConfigurationException;
++import java.io.IOException;
++import java.io.InputStream;
++import java.util.ArrayList;
++import java.util.List;
++
++/**
++ * Display help information on maven-jar-plugin.<br>
++ * Call <code>mvn jar:help -Ddetail=true -Dgoal=&lt;goal-name&gt;</code> to display parameter details.
++ * @author maven-plugin-tools
++ */
++@Mojo( name = "help", requiresProject = false, threadSafe = true )
++public class HelpMojo
++    extends AbstractMojo
++{
++    /**
++     * If <code>true</code>, display all settable properties for each goal.
++     *
++     */
++    @Parameter( property = "detail", defaultValue = "false" )
++    private boolean detail;
++
++    /**
++     * The name of the goal for which to show help. If unspecified, all goals will be displayed.
++     *
++     */
++    @Parameter( property = "goal" )
++    private java.lang.String goal;
++
++    /**
++     * The maximum length of a display line, should be positive.
++     *
++     */
++    @Parameter( property = "lineLength", defaultValue = "80" )
++    private int lineLength;
++
++    /**
++     * The number of spaces per indentation level, should be positive.
++     *
++     */
++    @Parameter( property = "indentSize", defaultValue = "2" )
++    private int indentSize;
++
++    // /META-INF/maven/<groupId>/<artifactId>/plugin-help.xml
++    private static final String PLUGIN_HELP_PATH =
++                    "/META-INF/maven/org.apache.maven.plugins/maven-jar-plugin/plugin-help.xml";
++
++    private static final int DEFAULT_LINE_LENGTH = 80;
++
++    private Document build()
++        throws MojoExecutionException
++    {
++        getLog().debug( "load plugin-help.xml: " + PLUGIN_HELP_PATH );
++        try ( InputStream is = getClass().getResourceAsStream( PLUGIN_HELP_PATH ) )
++        {
++            if ( is == null )
++            {
++                throw new MojoExecutionException( "Could not find plugin descriptor at " + PLUGIN_HELP_PATH );
++            }
++            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
++            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
++            return dBuilder.parse( is );
++        }
++        catch ( IOException e )
++        {
++            throw new MojoExecutionException( e.getMessage(), e );
++        }
++        catch ( ParserConfigurationException e )
++        {
++            throw new MojoExecutionException( e.getMessage(), e );
++        }
++        catch ( SAXException e )
++        {
++            throw new MojoExecutionException( e.getMessage(), e );
++        }
++    }
++
++    /**
++     * {@inheritDoc}
++     */
++    @Override
++    public void execute()
++        throws MojoExecutionException
++    {
++        if ( lineLength <= 0 )
++        {
++            getLog().warn( "The parameter 'lineLength' should be positive, using '80' as default." );
++            lineLength = DEFAULT_LINE_LENGTH;
++        }
++        if ( indentSize <= 0 )
++        {
++            getLog().warn( "The parameter 'indentSize' should be positive, using '2' as default." );
++            indentSize = 2;
++        }
++
++        Document doc = build();
++
++        StringBuilder sb = new StringBuilder();
++        Node plugin = getSingleChild( doc, "plugin" );
++
++
++        String name = getValue( plugin, "name" );
++        String version = getValue( plugin, "version" );
++        String id = getValue( plugin, "groupId" ) + ":" + getValue( plugin, "artifactId" ) + ":" + version;
++        if ( isNotEmpty( name ) && !name.contains( id ) )
++        {
++            append( sb, name + " " + version, 0 );
++        }
++        else
++        {
++            if ( isNotEmpty( name ) )
++            {
++                append( sb, name, 0 );
++            }
++            else
++            {
++                append( sb, id, 0 );
++            }
++        }
++        append( sb, getValue( plugin, "description" ), 1 );
++        append( sb, "", 0 );
++
++        //<goalPrefix>plugin</goalPrefix>
++        String goalPrefix = getValue( plugin, "goalPrefix" );
++
++        Node mojos1 = getSingleChild( plugin, "mojos" );
++
++        List<Node> mojos = findNamedChild( mojos1, "mojo" );
++
++        if ( goal == null || goal.length() <= 0 )
++        {
++            append( sb, "This plugin has " + mojos.size() + ( mojos.size() > 1 ? " goals:" : " goal:" ), 0 );
++            append( sb, "", 0 );
++        }
++
++        for ( Node mojo : mojos )
++        {
++            writeGoal( sb, goalPrefix, (Element) mojo );
++        }
++
++        if ( getLog().isInfoEnabled() )
++        {
++            getLog().info( sb.toString() );
++        }
++    }
++
++
++    private static boolean isNotEmpty( String string )
++    {
++        return string != null && string.length() > 0;
++    }
++
++    private static String getValue( Node node, String elementName )
++        throws MojoExecutionException
++    {
++        return getSingleChild( node, elementName ).getTextContent();
++    }
++
++    private static Node getSingleChild( Node node, String elementName )
++        throws MojoExecutionException
++    {
++        List<Node> namedChild = findNamedChild( node, elementName );
++        if ( namedChild.isEmpty() )
++        {
++            throw new MojoExecutionException( "Could not find " + elementName + " in plugin-help.xml" );
++        }
++        if ( namedChild.size() > 1 )
++        {
++            throw new MojoExecutionException( "Multiple " + elementName + " in plugin-help.xml" );
++        }
++        return namedChild.get( 0 );
++    }
++
++    private static List<Node> findNamedChild( Node node, String elementName )
++    {
++        List<Node> result = new ArrayList<Node>();
++        NodeList childNodes = node.getChildNodes();
++        for ( int i = 0; i < childNodes.getLength(); i++ )
++        {
++            Node item = childNodes.item( i );
++            if ( elementName.equals( item.getNodeName() ) )
++            {
++                result.add( item );
++            }
++        }
++        return result;
++    }
++
++    private static Node findSingleChild( Node node, String elementName )
++        throws MojoExecutionException
++    {
++        List<Node> elementsByTagName = findNamedChild( node, elementName );
++        if ( elementsByTagName.isEmpty() )
++        {
++            return null;
++        }
++        if ( elementsByTagName.size() > 1 )
++        {
++            throw new MojoExecutionException( "Multiple " + elementName + "in plugin-help.xml" );
++        }
++        return elementsByTagName.get( 0 );
++    }
++
++    private void writeGoal( StringBuilder sb, String goalPrefix, Element mojo )
++        throws MojoExecutionException
++    {
++        String mojoGoal = getValue( mojo, "goal" );
++        Node configurationElement = findSingleChild( mojo, "configuration" );
++        Node description = findSingleChild( mojo, "description" );
++        if ( goal == null || goal.length() <= 0 || mojoGoal.equals( goal ) )
++        {
++            append( sb, goalPrefix + ":" + mojoGoal, 0 );
++            Node deprecated = findSingleChild( mojo, "deprecated" );
++            if ( ( deprecated != null ) && isNotEmpty( deprecated.getTextContent() ) )
++            {
++                append( sb, "Deprecated. " + deprecated.getTextContent(), 1 );
++                if ( detail && description != null )
++                {
++                    append( sb, "", 0 );
++                    append( sb, description.getTextContent(), 1 );
++                }
++            }
++            else if ( description != null )
++            {
++                append( sb, description.getTextContent(), 1 );
++            }
++            append( sb, "", 0 );
++
++            if ( detail )
++            {
++                Node parametersNode = getSingleChild( mojo, "parameters" );
++                List<Node> parameters = findNamedChild( parametersNode, "parameter" );
++                append( sb, "Available parameters:", 1 );
++                append( sb, "", 0 );
++
++                for ( Node parameter : parameters )
++                {
++                    writeParameter( sb, parameter, configurationElement );
++                }
++            }
++        }
++    }
++
++    private void writeParameter( StringBuilder sb, Node parameter, Node configurationElement )
++        throws MojoExecutionException
++    {
++        String parameterName = getValue( parameter, "name" );
++        String parameterDescription = getValue( parameter, "description" );
++
++        Element fieldConfigurationElement = null;
++        if ( configurationElement != null )
++        {
++          fieldConfigurationElement =  (Element) findSingleChild( configurationElement, parameterName );
++        }
++
++        String parameterDefaultValue = "";
++        if ( fieldConfigurationElement != null && fieldConfigurationElement.hasAttribute( "default-value" ) )
++        {
++            parameterDefaultValue = " (Default: " + fieldConfigurationElement.getAttribute( "default-value" ) + ")";
++        }
++        append( sb, parameterName + parameterDefaultValue, 2 );
++        Node deprecated = findSingleChild( parameter, "deprecated" );
++        if ( ( deprecated != null ) && isNotEmpty( deprecated.getTextContent() ) )
++        {
++            append( sb, "Deprecated. " + deprecated.getTextContent(), 3 );
++            append( sb, "", 0 );
++        }
++        if ( isNotEmpty( parameterDescription ) ) {
++            append( sb, parameterDescription, 3 );
++        }
++        if ( "true".equals( getValue( parameter, "required" ) ) )
++        {
++            append( sb, "Required: Yes", 3 );
++        }
++        if ( ( fieldConfigurationElement != null ) && isNotEmpty( fieldConfigurationElement.getTextContent() ) )
++        {
++            String property = getPropertyFromExpression( fieldConfigurationElement.getTextContent() );
++            append( sb, "User property: " + property, 3 );
++        }
++
++        append( sb, "", 0 );
++    }
++
++    /**
++     * <p>Repeat a String <code>n</code> times to form a new string.</p>
++     *
++     * @param str    String to repeat
++     * @param repeat number of times to repeat str
++     * @return String with repeated String
++     * @throws NegativeArraySizeException if <code>repeat &lt; 0</code>
++     * @throws NullPointerException       if str is <code>null</code>
++     */
++    private static String repeat( String str, int repeat )
++    {
++        StringBuilder buffer = new StringBuilder( repeat * str.length() );
++
++        for ( int i = 0; i < repeat; i++ )
++        {
++            buffer.append( str );
++        }
++
++        return buffer.toString();
++    }
++
++    /**
++     * Append a description to the buffer by respecting the indentSize and lineLength parameters.
++     * <b>Note</b>: The last character is always a new line.
++     *
++     * @param sb          The buffer to append the description, not <code>null</code>.
++     * @param description The description, not <code>null</code>.
++     * @param indent      The base indentation level of each line, must not be negative.
++     */
++    private void append( StringBuilder sb, String description, int indent )
++    {
++        for ( String line : toLines( description, indent, indentSize, lineLength ) )
++        {
++            sb.append( line ).append( '\n' );
++        }
++    }
++
++    /**
++     * Splits the specified text into lines of convenient display length.
++     *
++     * @param text       The text to split into lines, must not be <code>null</code>.
++     * @param indent     The base indentation level of each line, must not be negative.
++     * @param indentSize The size of each indentation, must not be negative.
++     * @param lineLength The length of the line, must not be negative.
++     * @return The sequence of display lines, never <code>null</code>.
++     * @throws NegativeArraySizeException if <code>indent &lt; 0</code>
++     */
++    private static List<String> toLines( String text, int indent, int indentSize, int lineLength )
++    {
++        List<String> lines = new ArrayList<String>();
++
++        String ind = repeat( "\t", indent );
++
++        String[] plainLines = text.split( "(\r\n)|(\r)|(\n)" );
++
++        for ( String plainLine : plainLines )
++        {
++            toLines( lines, ind + plainLine, indentSize, lineLength );
++        }
++
++        return lines;
++    }
++
++    /**
++     * Adds the specified line to the output sequence, performing line wrapping if necessary.
++     *
++     * @param lines      The sequence of display lines, must not be <code>null</code>.
++     * @param line       The line to add, must not be <code>null</code>.
++     * @param indentSize The size of each indentation, must not be negative.
++     * @param lineLength The length of the line, must not be negative.
++     */
++    private static void toLines( List<String> lines, String line, int indentSize, int lineLength )
++    {
++        int lineIndent = getIndentLevel( line );
++        StringBuilder buf = new StringBuilder( 256 );
++
++        String[] tokens = line.split( " +" );
++
++        for ( String token : tokens )
++        {
++            if ( buf.length() > 0 )
++            {
++                if ( buf.length() + token.length() >= lineLength )
++                {
++                    lines.add( buf.toString() );
++                    buf.setLength( 0 );
++                    buf.append( repeat( " ", lineIndent * indentSize ) );
++                }
++                else
++                {
++                    buf.append( ' ' );
++                }
++            }
++
++            for ( int j = 0; j < token.length(); j++ )
++            {
++                char c = token.charAt( j );
++                if ( c == '\t' )
++                {
++                    buf.append( repeat( " ", indentSize - buf.length() % indentSize ) );
++                }
++                else if ( c == '\u00A0' )
++                {
++                    buf.append( ' ' );
++                }
++                else
++                {
++                    buf.append( c );
++                }
++            }
++        }
++        lines.add( buf.toString() );
++    }
++
++    /**
++     * Gets the indentation level of the specified line.
++     *
++     * @param line The line whose indentation level should be retrieved, must not be <code>null</code>.
++     * @return The indentation level of the line.
++     */
++    private static int getIndentLevel( String line )
++    {
++        int level = 0;
++        for ( int i = 0; i < line.length() && line.charAt( i ) == '\t'; i++ )
++        {
++            level++;
++        }
++        for ( int i = level + 1; i <= level + 4 && i < line.length(); i++ )
++        {
++            if ( line.charAt( i ) == '\t' )
++            {
++                level++;
++                break;
++            }
++        }
++        return level;
++    }
++
++    private static String getPropertyFromExpression( String expression )
++    {
++        if ( expression != null && expression.startsWith( "${" ) && expression.endsWith( "}" )
++            && !expression.substring( 2 ).contains( "${" ) )
++        {
++            // expression="${xxx}" -> property="xxx"
++            return expression.substring( 2, expression.length() - 1 );
++        }
++        // no property can be extracted
++        return null;
++    }
++}

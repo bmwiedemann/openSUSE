@@ -1,11 +1,12 @@
---- maven-jar-plugin-3.3.0/src/main/java/org/apache/maven/plugins/jar/AbstractJarMojo.java	2023-09-14 08:41:53.495070762 +0200
-+++ maven-jar-plugin-3.3.0/src/main/java/org/apache/maven/plugins/jar/AbstractJarMojo.java	2023-09-14 08:46:56.323819346 +0200
-@@ -312,7 +312,7 @@
-             {
-                 if ( projectHasAlreadySetAnArtifact() )
-                 {
--                    throw new MojoExecutionException( "You have to use a classifier "
-+                    getLog().warn( "You have to use a classifier "
-                         + "to attach supplemental artifacts to the project instead of replacing them." );
+diff -urEbwB maven-jar-plugin-3.4.2.orig/src/main/java/org/apache/maven/plugins/jar/AbstractJarMojo.java maven-jar-plugin-3.4.2/src/main/java/org/apache/maven/plugins/jar/AbstractJarMojo.java
+--- maven-jar-plugin-3.4.2.orig/src/main/java/org/apache/maven/plugins/jar/AbstractJarMojo.java	2025-06-06 18:06:45.024404142 +0200
++++ maven-jar-plugin-3.4.2/src/main/java/org/apache/maven/plugins/jar/AbstractJarMojo.java	2025-06-06 18:08:10.461673694 +0200
+@@ -348,7 +348,7 @@
+                 projectHelper.attachArtifact(getProject(), getType(), getClassifier(), jarFile);
+             } else {
+                 if (projectHasAlreadySetAnArtifact()) {
+-                    throw new MojoExecutionException("You have to use a classifier "
++                    getLog().warn("You have to use a classifier "
+                             + "to attach supplemental artifacts to the project instead of replacing them.");
                  }
-                 getProject().getArtifact().setFile( jarFile );
+                 getProject().getArtifact().setFile(jarFile);

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jun  6 15:40:16 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.4.2
+  * New features and improvements
+    + MJAR-292: Detect MRJAR and add Multi-Release manifest entry
+    + MJAR-296: Allow including files excluded by default.
+    + MJAR-302: Require Maven 3.6.3
+    + MJAR-307: Wrong version of commons-io cause a ClassNotFound
+      o.a.commons.io.file.attribute.FileTimes
+    + MJAR-310: fixed toolchain version detection when toolchain
+      paths contain white spaces
+  * Bug Fixes
+    + MJAR-62: Set Build-Jdk according to used toolchain
+  * Dependency updates
+    + MJAR-306: Use properties for plugins versions in
+      LifecycleMapping
+    + Bump org.junit:junit-bom from 5.10.1 to 5.10.2
+    + MJAR-298: Update Maven-Archiver to 3.6.2
+    + Bump apache/maven-gh-actions-shared from 2 to 4
+    + Bump commons-io:commons-io from 2.14.0 to 2.15.1
+    + MJAR-297: Update Parent to 40
+    + MJAR-308: Bump org.apache.maven.plugins:maven-plugins from 41
+      to 42
+  * Maintenance
+    + MJAR-304: Refresh download page
+    + MJAR-303: Cleanup declared dependencies
+    + Remove dependency on plexus
+    + Build with Maven 4
+- Modified patches:
+  * maven-jar-plugin-bootstrap-resources.patch
+    + regenerate from the non-bootstrap build
+  * 01-allow-replacing-artifacts.patch
+  * reproducible-from-environment.patch
+    + rediff
+
+-------------------------------------------------------------------
 Mon Sep 23 10:09:21 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use SOURCE_DATE_EPOCH for reproducible builds
