@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-fastimport
 Version:        0.9.14
@@ -28,10 +29,10 @@ Source:         https://files.pythonhosted.org/packages/source/f/fastimport/fast
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): alts
-Requires(postun): alts
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -58,15 +59,10 @@ git-remote-hg use a slightly modified version of it.
 %check
 %pyunittest fastimport.tests.test_suite
 
-%post
-%python_install_alternative fast-import-query
-%python_install_alternative fast-import-info
-%python_install_alternative fast-import-filter
-
-%postun
-%python_uninstall_alternative fast-import-query
-%python_uninstall_alternative fast-import-info
-%python_uninstall_alternative fast-import-filter
+%pre
+%python_libalternatives_reset_alternative fast-import-query
+%python_libalternatives_reset_alternative fast-import-info
+%python_libalternatives_reset_alternative fast-import-filter
 
 %files %{python_files}
 %doc NEWS README.md
