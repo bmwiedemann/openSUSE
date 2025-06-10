@@ -1,6 +1,6 @@
-diff -Nru oci-cli-3.54.4.orig/requirements.txt oci-cli-3.54.4/requirements.txt
---- oci-cli-3.54.4.orig/requirements.txt	2025-04-22 09:44:26.000000000 +0200
-+++ oci-cli-3.54.4/requirements.txt	2025-04-27 10:12:22.794835966 +0200
+diff -Nru oci-cli-3.56.0.orig/requirements.txt oci-cli-3.56.0/requirements.txt
+--- oci-cli-3.56.0.orig/requirements.txt	2025-05-13 06:44:15.000000000 +0200
++++ oci-cli-3.56.0/requirements.txt	2025-06-10 09:28:20.711069768 +0200
 @@ -2,47 +2,47 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
@@ -23,7 +23,7 @@ diff -Nru oci-cli-3.54.4.orig/requirements.txt oci-cli-3.54.4/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.150.2
+-oci==2.152.0
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.11.0
@@ -34,7 +34,7 @@ diff -Nru oci-cli-3.54.4.orig/requirements.txt oci-cli-3.54.4/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.150.2
++oci>=2.152.0
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.11.0
@@ -54,11 +54,10 @@ diff -Nru oci-cli-3.54.4.orig/requirements.txt oci-cli-3.54.4/requirements.txt
  requests==2.31.0; python_version == '3.7'
  requests>=2.32.0; python_version > '3.7'
  six>=1.15.0
--sphinx==3.3.0
+ sphinx==3.3.0
 -sphinx-rtd-theme==0.4.3
 -terminaltables==3.1.10
 -tox==3.23.0
-+sphinx>=3.3.0
 +sphinx-rtd-theme>=0.4.3
 +terminaltables>=3.1.10
 +tox>=3.23.0
@@ -78,15 +77,15 @@ diff -Nru oci-cli-3.54.4.orig/requirements.txt oci-cli-3.54.4/requirements.txt
  prompt-toolkit==3.0.29; python_version == '3.6'
  prompt-toolkit>=3.0.38,<=3.0.43; python_version > '3.6'
  setuptools>70.0.0; python_version > '3.7'
-diff -Nru oci-cli-3.54.4.orig/setup.py oci-cli-3.54.4/setup.py
---- oci-cli-3.54.4.orig/setup.py	2025-04-22 09:44:26.000000000 +0200
-+++ oci-cli-3.54.4/setup.py	2025-04-27 10:10:09.498854817 +0200
+diff -Nru oci-cli-3.56.0.orig/setup.py oci-cli-3.56.0/setup.py
+--- oci-cli-3.56.0.orig/setup.py	2025-05-13 06:44:15.000000000 +0200
++++ oci-cli-3.56.0/setup.py	2025-06-10 09:26:11.321036530 +0200
 @@ -30,21 +30,21 @@
      readme = f.read()
  
  requires = [
--    'oci==2.150.2',
-+    'oci>=2.150.2',
+-    'oci==2.152.0',
++    'oci>=2.152.0',
      'arrow>=1.0.0',
      'certifi>=2025.1.31',
 -    'click==8.0.4',
@@ -101,15 +100,15 @@ diff -Nru oci-cli-3.54.4.orig/setup.py oci-cli-3.54.4/setup.py
      'six>=1.15.0',
 -    'terminaltables==3.1.10',
 -    'pyOpenSSL>=17.5.0,<25.0.0',
--    'PyYAML>=5.4,<=6.0.1',
 +    'terminaltables>=3.1.10',
 +    'pyOpenSSL>=17.5.0',
-+    'PyYAML>=5.4',
-     'prompt-toolkit>=3.0.38,<=3.0.43; python_version > "3.6"',
+     'PyYAML>=5.4,<=6.0.1',
+-    'prompt-toolkit>=3.0.38,<=3.0.43; python_version > "3.6"',
 -    'prompt-toolkit==3.0.29; python_version == "3.6"',
 -    'setuptools>70.0.0; python_version == "3.12"'
-+    'prompt-toolkit>=3.0.29; python_version == "3.6"',
-+    'setuptools>70.0.0; python_version >= "3.12"'
++    'prompt-toolkit>=3.0.38',
++    'prompt-toolkit>=3.0.29',
++    'setuptools>70.0.0'
  ]
  
  extras = {
