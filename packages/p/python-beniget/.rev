@@ -76,4 +76,12 @@
   * Require gast 0.4.0</comment>
     <requestid>1226001</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>383826a6d4d6426b7eed70fd965d9fb2</srcmd5>
+    <version>0.4.2.post1</version>
+    <time>1749538688</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1283503</requestid>
+  </revision>
 </revisionlist>

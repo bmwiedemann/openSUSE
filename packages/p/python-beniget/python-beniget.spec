@@ -1,7 +1,7 @@
 #
 # spec file for package python-beniget
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,9 @@ Summary:        Module to extract semantic information about static Python code
 License:        BSD-3-Clause
 URL:            https://github.com/serge-sans-paille/beniget/
 Source:         https://files.pythonhosted.org/packages/source/b/beniget/beniget-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-gast >= 0.6.0
@@ -41,10 +43,10 @@ A module to extract semantic information about static Python code.
 %setup -q -n beniget-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +56,6 @@ A module to extract semantic information about static Python code.
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/beniget
-%{python_sitelib}/beniget-%{version}*-info
+%{python_sitelib}/beniget-%{version}.dist-info
 
 %changelog
