@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-pingparsing
 Version:        1.4.2
@@ -28,8 +29,10 @@ Source:         https://github.com/thombashi/pingparsing/archive/v%{version}.tar
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 38.3.0}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-humanreadable >= 0.3
 Requires:       python-loguru >= 0.4.1
 Requires:       python-pyparsing >= 2.0.3
@@ -38,8 +41,6 @@ Requires:       python-setuptools >= 38.3.0
 Requires:       python-simplejson
 Requires:       python-subprocrunner >= 1.2.2
 Requires:       python-typepy >= 1.3.2
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module humanreadable >= 0.3}
@@ -71,11 +72,8 @@ sed -i -e '/^#!\//, 1d' pingparsing/__main__.py
 %check
 %pytest
 
-%post
-%python_install_alternative pingparsing
-
-%postun
-%python_uninstall_alternative pingparsing
+%pre
+%python_libalternatives_reset_alternative pingparsing
 
 %files %{python_files}
 %license LICENSE
