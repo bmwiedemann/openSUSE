@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-exrex
 Version:        0.11.0
 Release:        0
@@ -29,11 +30,11 @@ Source:         https://github.com/asciimoo/exrex/archive/v%{version}.tar.gz#/ex
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-setuptools
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,11 +58,8 @@ rm %{buildroot}%{_bindir}/exrex.py
 %{python_expand # comment
 LANG=C.UTF-8 PYTHONPATH=%{buildroot}%{$python_sitelib} $python ./tests.py}
 
-%post
-%python_install_alternative exrex
-
-%postun
-%python_uninstall_alternative exrex
+%pre
+%python_libalternatives_reset_alternative exrex
 
 %files %{python_files}
 %{python_sitelib}/exrex*
