@@ -1,7 +1,7 @@
 #
 # spec file for package libetebase
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        A C library for Etebase
 License:        (Apache-2.0 OR MIT) AND BSD-2-Clause AND BSD-3-Clause AND Apache-2.0 WITH LLVM-exception AND CC-BY-SA-4.0 AND MPL-2.0 AND CC0-1.0 AND (Apache-2.0 OR BSL-1.0) AND (GPL-2.0-or-later OR MIT) AND GPL-2.0-or-later WITH Autoconf-exception-3.0 AND GPL-2.0-or-later WITH Libtool-exception
 URL:            https://github.com/etesync/libetebase
 #               This will be set by osc services, that will run after this.
-Version:        0.5.5
+Version:        0.5.8
 Source0:        libetebase-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        cargo_config
@@ -43,7 +43,6 @@ Etebase makes it easy to build end-to-end encrypted applications by taking care 
 
 %prep
 %autosetup -a1 -n libetebase-%{version}
-mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
