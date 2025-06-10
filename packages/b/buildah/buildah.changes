@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 09 07:09:39 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 1.40.1:
+  * Tag v1.40.1
+  * vendor: update c/common to v0.63.1
+  * CI: run integration tests on Fedora with both crun and runc
+  * buildah-build(1): clarify that --cgroup-parent affects RUN instructions
+  * runUsingRuntime: use named constants for runtime states
+  * Add a dummy "runtime" that just dumps its config file
+  * run: handle relabeling bind mounts ourselves
+  * Tweak our handling of variant values, again
+
+-------------------------------------------------------------------
 Tue Apr 22 04:53:45 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 1.40.0:
