@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-patiencediff
 Version:        0.2.15
 Release:        0
@@ -29,10 +30,10 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): alts
-Requires(preun): alts
+Requires:       alts
 %python_subpackages
 
 %description
@@ -50,11 +51,8 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_clone -a %{buildroot}%{_bindir}/patiencediff
 
-%post
-%python_install_alternative patiencediff
-
-%postun
-%python_uninstall_alternative patiencediff
+%pre
+%python_libalternatives_reset_alternative patiencediff
 
 %check
 %pytest
