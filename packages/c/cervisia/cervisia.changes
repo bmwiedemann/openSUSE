@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  3 21:11:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.2/
+- No code change since 25.04.1
+
+-------------------------------------------------------------------
 Wed May  7 20:59:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.1
@@ -2042,7 +2051,7 @@ Wed Dec 22 11:40:17 CET 2010 - dmueller@suse.de
   * no upstream changelog available.
 
 -------------------------------------------------------------------
-Fri Dec  8 19:18:53 UCT 2010 - toddrme2178@gmail.com
+Fri Dec  8 19:18:53 UTC 2010 - toddrme2178@gmail.com
 
 - Add optional dependency
   * QCA2 -- Needed for most of the algorithms of the checksum tool in Okteta.
