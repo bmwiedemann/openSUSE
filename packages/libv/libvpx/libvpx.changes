@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  6 17:02:43 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.15.1:
+  * This release bumps up the SO major version and fixes the
+    language about ABI compatibility in the previous release
+    changelog
+
+-------------------------------------------------------------------
 Mon Jan 27 07:19:33 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 1.15.0:

@@ -2,6 +2,7 @@
 # spec file for package libvpx
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +17,10 @@
 #
 
 
-%define         sover 9
+%define         sover 11
 %define use_gcc13 0%{?suse_version} < 1600
 Name:           libvpx
-Version:        1.15.0
+Version:        1.15.1
 Release:        0
 Summary:        VP8/VP9 codec library
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -28,15 +29,15 @@ URL:            https://www.webmproject.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1000:     baselibs.conf
 Patch2:         libvpx-configure-add-arch.patch
-%if %use_gcc13
-BuildRequires:  gcc13-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 # only needed for test suite
 # Needed to be able to create pkgconfig() provides.
 BuildRequires:  pkgconfig
 BuildRequires:  yasm
+%if %{use_gcc13}
+BuildRequires:  gcc13-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 # add curl and do not copy it in to get an updated test-data.sha1 file
 #BuildRequires:  curl
 
@@ -102,7 +103,7 @@ sed -i~ /ssse3/d configure
 sed -i~ 's@ssse3@@' build/make/rtcd.pl
 %endif
 cd build
-%if %use_gcc13
+%if %{use_gcc13}
 export CXX=g++-13
 export CC=gcc-13
 %endif
@@ -154,12 +155,13 @@ make %{?_smp_mflags} verbose=yes GEN_EXAMPLES= DESTDIR=%{buildroot} install
 %ldconfig_scriptlets -n %{name}%{sover}
 
 %files -n vpx-tools
-%{_bindir}/*
+%{_bindir}/vpxenc
+%{_bindir}/vpxdec
 
 %files -n %{name}%{sover}
 %license LICENSE
 %doc AUTHORS README CHANGELOG
-%{_libdir}/libvpx.so.*
+%{_libdir}/libvpx.so.%{sover}{,.*}
 
 %files devel
 %{_includedir}/vpx/
