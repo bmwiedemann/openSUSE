@@ -7,4 +7,16 @@
     <comment>New package see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/ZY6TQDYQIWXFIY64XIB7BVQ4VOROJ4TL/ </comment>
     <requestid>1281992</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aff8617665b6323ee9eb4f6c067251ed</srcmd5>
+    <version>1.0.1</version>
+    <time>1749539119</time>
+    <user>anag_factory</user>
+    <comment>- Update the summary to capitalize the first letter
+- Update to version 1.0.1:
+  * doc: please run as root when needed
+  * doc: update readme with container engine setup instructions
+  * chore: add new schedulers to the schedulers list</comment>
+    <requestid>1283877</requestid>
+  </revision>
 </revisionlist>

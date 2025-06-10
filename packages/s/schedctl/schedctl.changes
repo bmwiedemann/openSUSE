@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 07 18:28:29 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update the summary to capitalize the first letter
+- Update to version 1.0.1:
+  * doc: please run as root when needed
+  * doc: update readme with container engine setup instructions
+  * chore: add new schedulers to the schedulers list
+
+-------------------------------------------------------------------
 Mon Jun  2 15:12:47 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Fixed package summary
