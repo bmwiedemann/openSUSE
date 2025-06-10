@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun  5 19:42:00 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.30
+  * dwarf_loader: Add support for DW_TAG_GNU_formal_parameter_pack
+    and DW_TAG_GNU_template_parameter_pack.
+  * dwarf_loader: Check DW_OP_[GNU_]entry_value for possible
+    parameter matching.
+  * pahole: Introduce new options --with_embedded_flexible_array
+    and --btf_feature=attributes.
+  * pahole: Add --padding N to show only structs with N bytes of
+    padding at its end.
+  * pahole: Add --padding_ge N to show only structs with at least N
+    bytes of padding at its end.
+
+-------------------------------------------------------------------
 Wed Apr 16 13:37:28 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Make package build succeed with cmake 4.0

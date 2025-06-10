@@ -366,4 +366,12 @@
     <comment>- Make package build succeed with cmake 4.0</comment>
     <requestid>1270043</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>503ffd210af6d455f9baa02d489ddff8</srcmd5>
+    <version>1.30</version>
+    <time>1749538673</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.30</comment>
+    <requestid>1283445</requestid>
+  </revision>
 </revisionlist>
