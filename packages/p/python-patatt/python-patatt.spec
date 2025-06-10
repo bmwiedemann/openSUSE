@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-patatt
 Version:        0.6.3
@@ -29,9 +30,9 @@ Source2:        python-patatt.keyring
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  python-rpm-macros
-Requires(post): alts
-Requires(postun): alts
+Requires:       alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyNaCl}
@@ -62,11 +63,8 @@ need this and should simply start signing your tags and commits.
 # try at least a simple runtime test
 %python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" %{buildroot}%{_bindir}/patatt-%{$python_bin_suffix} --version | grep -q %{version}
 
-%post
-%{python_install_alternative patatt patatt.5}
-
-%postun
-%python_uninstall_alternative patatt
+%pre
+%python_libalternatives_reset_alternative patatt
 
 %files %{python_files}
 %doc README.rst
