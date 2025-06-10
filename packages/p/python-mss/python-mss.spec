@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-mss
 Version:        7.0.1
 Release:        0
@@ -29,14 +30,14 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  lsof
 BuildRequires:  python-rpm-macros
 BuildRequires:  xrandr
 BuildRequires:  xvfb-run
+Requires:       alts
 Requires:       xrandr
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,11 +55,8 @@ An ultra fast cross-platform multiple screenshots module in pure Python using ct
 %python_clone -a %{buildroot}%{_bindir}/mss
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative mss
-
-%postun
-%python_uninstall_alternative mss
+%pre
+%python_libalternatives_reset_alternative mss
 
 %check
 export LANG=en_US.UTF-8
