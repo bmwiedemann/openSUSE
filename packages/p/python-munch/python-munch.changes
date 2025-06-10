@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  5 04:38:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Jul 30 11:14:38 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Cherry-pick upstream patch to adjust tests for Python 3.13

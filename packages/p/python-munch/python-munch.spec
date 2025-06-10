@@ -1,7 +1,7 @@
 #
 # spec file for package python-munch
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,14 @@ Version:        4.0.0
 Release:        0
 Summary:        A dot-accessible dictionary
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/Infinidat/munch
 Source:         https://files.pythonhosted.org/packages/source/m/munch/munch-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM - gh/Infinidat/munch#104 - Adjust tests for Python 3.13
 Patch:          https://patch-diff.githubusercontent.com/raw/Infinidat/munch/pull/104.patch#/adjust-tests-for-python3.13.patch
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -44,10 +45,10 @@ A dot-accessible dictionary (a la JavaScript objects).
 %autosetup -p1 -n munch-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +58,6 @@ A dot-accessible dictionary (a la JavaScript objects).
 %license LICENSE.txt
 %doc README.md
 %{python_sitelib}/munch
-%{python_sitelib}/munch-*.egg-info
+%{python_sitelib}/munch-%{version}.dist-info
 
 %changelog
