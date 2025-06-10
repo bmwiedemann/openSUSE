@@ -1213,4 +1213,23 @@
     dynamic-undefined-weak option. (0fdffad)</comment>
     <requestid>1279984</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>73b5015c929bf591ae19afcd3b530511</srcmd5>
+    <version>2.40.1</version>
+    <time>1749539194</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.40.1
+  * We've eliminated unnecessary memory zero-initialization for the
+    --compress-debug-sections option to make debug section compression faster. With
+    this change, mold sometimes runs faster with --compress-debug-sections than
+    without it due to reduced file I/O. (d59c559)
+  * Previously, mold used an exponential pattern-matching algorithm for glob
+    matching, which could significantly slow down version scripts or dynamic list
+    processing for certain glob patterns. Now, we use a linear-time algorithm that
+    is guaranteed to run efficiently for any glob pattern. (dac20fa)
+  * mold now reports an error if the output .dynsym refers to a section whose
+    section index is ≥65280, since such a dynamic symbol is not representable in
+    ELF. Previously, mold crashed with an assertion failure. (0d8334e)</comment>
+    <requestid>1283993</requestid>
+  </revision>
 </revisionlist>

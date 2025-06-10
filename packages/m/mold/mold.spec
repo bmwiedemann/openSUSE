@@ -17,7 +17,7 @@
 
 
 Name:           mold
-Version:        2.40.0
+Version:        2.40.1
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        MIT

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun  9 06:57:11 UTC 2025 - Martin Liška <martin.liska@hey.com>
+
+- Update to version 2.40.1
+
+  * We've eliminated unnecessary memory zero-initialization for the
+    --compress-debug-sections option to make debug section compression faster. With
+    this change, mold sometimes runs faster with --compress-debug-sections than
+    without it due to reduced file I/O. (d59c559)
+  * Previously, mold used an exponential pattern-matching algorithm for glob
+    matching, which could significantly slow down version scripts or dynamic list
+    processing for certain glob patterns. Now, we use a linear-time algorithm that
+    is guaranteed to run efficiently for any glob pattern. (dac20fa)
+  * mold now reports an error if the output .dynsym refers to a section whose
+    section index is ≥65280, since such a dynamic symbol is not representable in
+    ELF. Previously, mold crashed with an assertion failure. (0d8334e)
+
+-------------------------------------------------------------------
 Mon May 26 06:52:40 UTC 2025 - Martin Liška <martin.liska@hey.com>
 
 - Update to version 2.40.0
