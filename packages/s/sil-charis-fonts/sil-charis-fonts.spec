@@ -1,7 +1,7 @@
 #
 # spec file for package sil-charis-fonts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           sil-charis-fonts
-Version:        6.200
+Version:        7.000
 Release:        0
 Summary:        Smart Unicode Font for Latin and Cyrillic Scripts
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://software.sil.org/charis/
-Source0:        https://software.sil.org/downloads/r/charis/CharisSIL-%{version}.zip
+Source0:        https://software.sil.org/downloads/r/charis/Charis-%{version}.zip
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 %reconfigure_fonts_prereq
@@ -49,7 +49,7 @@ issues, such as the need to position arbitrary combinations of base
 glyphs and diacritics optimally.
 
 %prep
-%setup -q -n CharisSIL-%{version}
+%autosetup -n Charis-%{version}
 chmod 644 *.txt
 # Remove DOS line endings:
 perl -i -pe 's{\r}{}g' *.txt

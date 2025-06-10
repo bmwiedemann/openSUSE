@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun  5 13:02:05 UTC 2025 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 7.000:
+  This is a major update:
+  * New font family name: Charis. This allows for 6.200 (Gentium-SIL)
+    and 7.000 to be installed at the same time. We don't package 
+    the old version, but it can easily be downloaded.
+  * Decreased default line spacing
+  * Additional intermediate weights: Medium & SemiBold
+  * Extensive kerning for all languages and generally improved spacing
+  * Oldstyle figures
+  * Improved autohinting for better screen appearance and consistency
+  * Many fixes, character additions, and feature improvements
+
+-------------------------------------------------------------------
 Thu Feb  2 19:42:31 UTC 2023 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 6.200:
