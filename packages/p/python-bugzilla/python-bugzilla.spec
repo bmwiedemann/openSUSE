@@ -1,7 +1,7 @@
 #
 # spec file for package python-bugzilla
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,10 +30,12 @@ Source:         python-bugzilla-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM 106-basic-auth.diff bsc#1098219 mcepl@suse.com
 # Fix basic authentication on bugzilla.suse.com
 Patch0:         106-basic-auth.diff
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests
@@ -60,10 +62,10 @@ sed -i -e '1{/^#!\/usr\/bin\/env python/d}' bugzilla/_cli.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/bugzilla
 %python_clone -a %{buildroot}%{_mandir}/man1/bugzilla.1
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
