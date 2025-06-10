@@ -34,4 +34,17 @@
   This patch renames the driver's function to rtw_get_ra() to avoid the conflict. (forwarded request 1278081 from hillwood)</comment>
     <requestid>1278082</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a40f000b6fcae2e2587f50987f1d41b5</srcmd5>
+    <version>6.15</version>
+    <time>1749539297</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 6.15
+  * *Support kernel 6.15+
+- Drop fix-build-on-kernel-6_14.patch, fix-build-on-kernel-6_13.patch,
+  fix-build-on-kernel-6_13.patch, fix-build-on-kernel-6_4.patch,
+  fix-build-on-kernel-6_5.patch, fix-build-on-kernel-6_8.patch and
+  rtl8188gu-rename-get_ra-to-rtw_get_ra-to-fix-ppc64le-build.patch, merged</comment>
+    <requestid>1284189</requestid>
+  </revision>
 </revisionlist>

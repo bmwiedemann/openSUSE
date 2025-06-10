@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun  5 08:27:39 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 6.15
+  * *Support kernel 6.15+
+- Drop fix-build-on-kernel-6_14.patch, fix-build-on-kernel-6_13.patch,
+  fix-build-on-kernel-6_13.patch, fix-build-on-kernel-6_4.patch,
+  fix-build-on-kernel-6_5.patch, fix-build-on-kernel-6_8.patch and
+  rtl8188gu-rename-get_ra-to-rtw_get_ra-to-fix-ppc64le-build.patch, merged
+
+-------------------------------------------------------------------
 Fri May 16 13:45:32 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add rtl8188gu-rename-get_ra-to-rtw_get_ra-to-fix-ppc64le-build.patch

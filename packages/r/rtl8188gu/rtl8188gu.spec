@@ -20,25 +20,14 @@
 %define   shortcommit     c2b79fc
 
 Name:           rtl8188gu
-Version:        0.0.0+git20230112.%{shortcommit}
+Version:        6.15
 Release:        0
 Summary:        Driver for Linux RTL8188GU
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
-URL:            https://github.com/McMCCRU/rtl8188gu
-Source0:        https://github.com/McMCCRU/rtl8188gu/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
-Source1:        LICENSE
-# PATCH-FIX-UPSTREAM fix-build-on-kernel-6_4.patch hillwood@opensuse.org - Support Kernel 6.5+
-Patch0:         fix-build-on-kernel-6_4.patch
-# PATCH-FIX-UPSTREAM fix-build-on-kernel-6_5.patch hillwood@opensuse.org - Support Kernel 6.5+
-Patch1:         fix-build-on-kernel-6_5.patch
-# PATCH-FIX-UPSTREAM fix-build-on-kernel-6_8.patch hillwood@opensuse.org - Support Kernel 6.8+
-Patch2:         fix-build-on-kernel-6_8.patch
-# PATCH-FIX-UPSTREAM fix-build-on-kernel-6_13.patch hillwood@opensuse.org - Support Kernel 6.13+
-Patch3:         fix-build-on-kernel-6_13.patch
-# PATCH-FIX-UPSTREAM fix-build-on-kernel-6_14.patch hillwood@opensuse.org - Support Kernel 6.14+
-Patch4:         fix-build-on-kernel-6_14.patch
-Patch5:         rtl8188gu-rename-get_ra-to-rtw_get_ra-to-fix-ppc64le-build.patch
+URL:            https://github.com/hillwoodroc/rtl8188gu
+Source0:        https://github.com/hillwoodroc/rtl8188gu/archive/%{version}/%{name}-%{version}.tar.gz
+ExcludeArch:    s390 s390x
 BuildRequires:  bc
 BuildRequires:  binutils
 BuildRequires:  fdupes
@@ -66,8 +55,7 @@ Group:          System/Kernel
 These packages contain Anything Module for RTL8188GU.
 
 %prep
-%autosetup -p1 -n %{name}-%{commit}
-cp %{SOURCE1} .
+%autosetup -p1
 set -- *
 mkdir source
 cp -r "$@" source/
@@ -90,11 +78,12 @@ export ARCH=riscv
 export ARCH=i386
 %endif
 for flavor in %{flavors_to_build} ; do
+    rm -rf obj/$flavor
     cp -a source obj/$flavor
-        pushd obj/$flavor
-        sed -i -e "s,^KSRC := /lib/modules/\$(KVER)/build$,KSRC := %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor," Makefile
-        make -O V=1 %{?_smp_mflags}
-        popd
+    pushd obj/$flavor
+    sed -i -e "s,^KSRC := /lib/modules/\$(KVER)/build$,KSRC := %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor," Makefile
+    %make_build
+    popd
 done
 
 %install
