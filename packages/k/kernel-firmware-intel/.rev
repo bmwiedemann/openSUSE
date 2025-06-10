@@ -73,4 +73,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * intel_vpu: Update NPU firmware</comment>
     <requestid>1277004</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>15b8278f482f5de791c94a659432ccda</srcmd5>
+    <version>20250603</version>
+    <time>1749538651</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250603 (git commit 3b75d677f898):
+  * Intel IPU7: Add firmware binary files</comment>
+    <requestid>1283303</requestid>
+  </revision>
 </revisionlist>

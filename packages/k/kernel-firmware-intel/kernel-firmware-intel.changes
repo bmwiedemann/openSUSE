@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  5 10:38:12 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250603 (git commit 3b75d677f898):
+  * Intel IPU7: Add firmware binary files
+
+-------------------------------------------------------------------
 Tue May 13 05:13:33 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250512 (git commit 9f8e520fd736):
@@ -5256,7 +5262,6 @@ Wed Nov 24 20:02:38 UTC 2010 - coolo@novell.com
 - update to 20101113 tarball for 2.6.36+ kernel
 
 -------------------------------------------------------------------
-
 Thu Jul  1 17:11:34 UTC 2010 - gregkh@suse.de
 
 - update to the 20100617 tarball, which has lots of updates that
