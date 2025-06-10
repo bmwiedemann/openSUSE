@@ -1,7 +1,7 @@
 #
 # spec file for package python-zc.lockfile
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,10 +23,11 @@ Version:        3.0.post1
 Release:        0
 Summary:        Basic inter-process locks
 License:        ZPL-2.1
-Group:          Development/Libraries/Python
 URL:            https://pypi.python.org/pypi/zc.lockfile
 Source:         https://files.pythonhosted.org/packages/source/z/zc.lockfile/zc.lockfile-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.testing}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -35,6 +36,7 @@ BuildRequires:  python2-mock
 %endif
 Provides:       python-zc-lockfile = %{version}
 Obsoletes:      python-zc-lockfile < %{version}
+Requires:       python-setuptools
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,25 +55,29 @@ rm -rf src/zc.lockfile.egg-info
 find -name *~ -delete
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # concatenate both README.txt
 cat %{buildroot}%{python_sitelib}/zc/lockfile/README.txt >> README.txt
 rm %{buildroot}%{python_sitelib}/zc/lockfile/README.txt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-cd build/lib
-%{python_expand export PYTHONPATH='.'
-$python -m unittest -v zc.lockfile.tests
-$python -m doctest -v zc/lockfile/README.txt
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
+touch %{buildroot}%{$python_sitelib}/zc/__init__.py
+$python -B -m unittest -v zc.lockfile.tests
+$python -B -m doctest -v src/zc/lockfile/README.txt
+rm %{buildroot}%{$python_sitelib}/zc/__init__.py
 }
 
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst COPYRIGHT.txt README.txt
-%{python_sitelib}/*
+%dir %{python_sitelib}/zc
+%{python_sitelib}/zc/lockfile
+%{python_sitelib}/zc.lockfile-%{version}-py*-nspkg.pth
+%{python_sitelib}/zc[._]lockfile-%{version}.dist-info
 
 %changelog

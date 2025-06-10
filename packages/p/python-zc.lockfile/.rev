@@ -82,4 +82,14 @@
 - Initial Package, Version 1.0.0</comment>
     <requestid>1135598</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>2ee5799d4239f0f2992629dd47a4acb6</srcmd5>
+    <version>3.0.post1</version>
+    <time>1749538683</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Run the testsuite in the buildroot.
+- No more greedy globs in %files.</comment>
+    <requestid>1283478</requestid>
+  </revision>
 </revisionlist>
