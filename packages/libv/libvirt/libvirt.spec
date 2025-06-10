@@ -36,7 +36,7 @@
 # The gluster storage backend is built for both openSUSE and SLE, but it is
 # not supported
 %define with_storage_gluster  0%{!?_without_storage_gluster:1}
-%define with_storage_iscsi_direct 0%{!?_without_storage_iscsi_direct:0}
+%define with_storage_iscsi_direct 0%{!?_without_storage_iscsi_direct:1}
 %define with_apparmor      0%{!?_without_apparmor:1}
 # The udev interface backend is the only one that works across SUSE distros.
 # It supports just a handful of read-only operations, has a history of
@@ -48,17 +48,17 @@
 %define with_sanlock       0%{!?_without_sanlock:1}
 %define with_polkit_rules  0%{!?_without_polkit_rules:1}
 %define with_wireshark     0%{!?_without_wireshark:1}
+%define with_libssh        0%{!?_without_libssh:1}
 %define with_libssh2       0%{!?_without_libssh2:1}
 %define with_numactl       0%{!?_without_numactl:1}
 %define with_nwfilter      0%{!?_without_nwfilter:1}
 %define with_modular_daemons 0%{!?_without_modular_daemons:1}
 %define with_userfaultfd_sysctl 0%{!?_without_userfaultfd_sysctl:1}
+%define with_firewalld_zone 0%{!?_without_firewalld_zone:1}
 
 # A few optional bits off by default, we enable later
 %define with_fuse          0%{!?_without_fuse:0}
 %define with_numad         0%{!?_without_numad:0}
-%define with_firewalld_zone 0%{!?_without_firewalld_zone:0}
-%define with_libssh        0%{!?_without_libssh:0}
 %define with_nbdkit        0%{!?_without_nbdkit:0}
 %define with_nbdkit_config_default 0%{!?_without_nbdkit_config_default:0}
 
@@ -74,35 +74,19 @@
     %define with_numactl   0
 %endif
 
-# Tumbleweeed is new enough to support /dev/userfaultfd, which
-# does not require enabling vm.unprivileged_userfaultfd sysct
-%if 0%{?suse_version} > 1500
-    %define with_userfaultfd_sysctl 0
-%endif
-
 # vbox is available only on i386 x86_64
 %ifnarch %{ix86} x86_64
     %define with_vbox      0
-%endif
-
-# The 'libvirt' zone must be used with firewalld >= 0.7.0
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
-    %define with_firewalld_zone 0%{!?_without_firewalld_zone:1}
-%endif
-
-# Enable libssh support in newer code bases
-%if 0%{?suse_version} >= 1500
-    %define with_libssh    0%{!?_without_libssh:1}
 %endif
 
 %ifarch x86_64 aarch64
     %define with_storage_rbd 0%{!?_without_storage_rbd:1}
 %endif
 
-# libiscsi storage backend needs libiscsi >= 1.18.0 which is only available
-# in suse_version >= 1500
-%if 0%{?suse_version} >= 1500
-    %define with_storage_iscsi_direct 0%{!?_without_storage_iscsi_direct:1}
+# Tumbleweeed is new enough to support /dev/userfaultfd, which
+# does not require enabling vm.unprivileged_userfaultfd sysct
+%if 0%{?suse_version} > 1500
+    %define with_userfaultfd_sysctl 0
 %endif
 
 # numad is used to manage the CPU and memory placement dynamically for
@@ -133,7 +117,6 @@
     %define with_storage_rbd     0
 %endif
 
-# 
 # Factory and SLFO strive to drop iptables. The nwfilter driver has a runtime
 # dependency on iptables, but no build-time one. The driver will be built
 # unconditionally, but will no longer be required/recommended by the meta
@@ -167,7 +150,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        11.3.0
+Version:        11.4.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -479,9 +462,7 @@ Summary:        Nodedev driver plugin for the libvirtd daemon
 Requires:       %{name}-daemon-common = %{version}-%{release}
 Requires:       %{name}-libs = %{version}-%{release}
 # For managing persistent mediated devices
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 Requires:       mdevctl
-%endif
 # For modprobe of pci devices
 Requires:       modutils
 
@@ -643,9 +624,7 @@ Requires:       /usr/bin/zstd
 Requires:       qemu
 Requires:       systemd-container
 # swtp is needed to manage <tpm> devices.
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 Requires:       swtpm
-%endif
 %ifarch x86_64
 Requires:       qemu-ovmf-x86_64
 %endif
@@ -1015,26 +994,6 @@ Allows SSH into domains via VSOCK without need for network.
 
 %define arg_selinux_mount -Dselinux_mount="/selinux"
 
-# UEFI firmwares
-# For SLE15 SP2 (Leap 15.2) and newer, use firmware descriptor files from the
-# firmware packages, otherwise define firmwares via configure option
-%if ! (0%{?suse_version} > 1500 || 0%{?sle_version} > 150100)
-    # x86_64 UEFI firmwares
-    # To more closely resemble actual hardware, we use the firmwares with
-    # embedded Microsoft keys
-    #
-    # The Windows HCK test requires a bigger variable store, so 4MB firmware
-    # images have been introduced. They are advertised first and will be
-    # used by default for new VM installations. The 2MB images are still
-    # available for existing VMs, and can be selected for new installations
-    # as well.
-    LOADERS="/usr/share/qemu/ovmf-x86_64-ms-4m-code.bin:/usr/share/qemu/ovmf-x86_64-ms-4m-vars.bin"
-    LOADERS="$LOADERS:/usr/share/qemu/ovmf-x86_64-ms-code.bin:/usr/share/qemu/ovmf-x86_64-ms-vars.bin"
-    # aarch64 UEFI firmwares
-    LOADERS="$LOADERS:/usr/share/qemu/aavmf-aarch64-code.bin:/usr/share/qemu/aavmf-aarch64-vars.bin"
-    %define arg_loader_nvram -Dloader-nvram="$LOADERS"
-%endif
-
 # Macros for moving vendor provided configuration from /etc to /usr
 %if 0%{?suse_version} > 1500
     %define logrotate_prefix %nil
@@ -1134,7 +1093,6 @@ Allows SSH into domains via VSOCK without need for network.
            -Dqemu_moddir=%{qemu_moddir} \
            -Dqemu_datadir=%{qemu_datadir} \
            -Dexpensive_tests=enabled \
-           %{?arg_loader_nvram} \
            -Dinit_script=systemd \
            -Dfirewall_backend_priority=%{firewall_backend_priority} \
            -Ddocs=enabled \
