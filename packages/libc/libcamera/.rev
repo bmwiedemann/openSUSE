@@ -240,4 +240,12 @@
     <comment>- Remove Qt5 BuildRequires which aren't really needed nor used.</comment>
     <requestid>1281191</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a2eab0408f5a34e54492cab7dd1d6c40</srcmd5>
+    <version>0.5.1</version>
+    <time>1749538682</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 0.5.1</comment>
+    <requestid>1283468</requestid>
+  </revision>
 </revisionlist>
