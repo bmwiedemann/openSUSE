@@ -157,4 +157,12 @@
   * Fix configuration for AppVeyor: simplify the test scripts and</comment>
     <requestid>1242827</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>f80cc7645455746385e5682680d7c004</srcmd5>
+    <version>1.2.18</version>
+    <time>1749538630</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282967</requestid>
+  </revision>
 </revisionlist>

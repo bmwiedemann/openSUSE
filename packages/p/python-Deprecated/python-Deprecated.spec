@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-Deprecated
 Version:        1.2.18
@@ -26,8 +25,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/tantale/deprecated
 Source:         https://files.pythonhosted.org/packages/source/d/deprecated/deprecated-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module wrapt >= 1.10}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -44,15 +45,10 @@ you can use the ``@deprecated`` decorator.
 %setup -q -n deprecated-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-# Fix python-bytecode-inconsistent-mtime
-pushd %{buildroot}%{python_sitelib}
-find . -name '*.pyc' -exec rm -f '{}' ';'
-python%python_bin_suffix -m compileall *.py ';'
-popd
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +58,6 @@ popd
 %doc CHANGELOG.rst README.md
 %license LICENSE.rst
 %{python_sitelib}/deprecated
-%{python_sitelib}/Deprecated-%{version}*-info
+%{python_sitelib}/[Dd]eprecated-%{version}.dist-info
 
 %changelog
