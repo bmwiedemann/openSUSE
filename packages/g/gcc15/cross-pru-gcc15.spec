@@ -288,12 +288,10 @@ Conflicts:      %{gcc_target_arch}-gcc
 # the libs, though)
 Requires:       libstdc++6-devel-gcc15
 %endif
-%if !0%{?gcc_target_newlib:1}%{?gcc_target_glibc:1}
 %if 0%{!?gcc_accel:1}
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
-%endif
 %endif
 Summary:        The GNU Compiler Collection targeting %{cross_arch}
 License:        GPL-3.0-or-later
@@ -919,20 +917,6 @@ rm -r env
 # we provide update-alternatives for selecting a compiler version for
 # crosses
 %if 0%{!?gcc_accel:1}
-%if 0%{?gcc_target_newlib:1}%{?gcc_target_glibc:1}
-for ex in gcc cpp \
-%if %{build_cp}
-          c++ g++ \
-%endif
-          gcc-ar gcc-nm gcc-ranlib lto-dump \
-%if 0%{!?gcc_libc_bootstrap:1} && "%{cross_arch}" != "bpf"
-          gcov gcov-dump gcov-tool \
-%endif
-	  ; do
-  ln -s %{_bindir}/%{gcc_target_arch}-$ex%{binsuffix} \
-	%{buildroot}%{_bindir}/%{gcc_target_arch}-$ex
-done
-%else
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 for ex in gcc cpp \
 %if %{build_cp}
@@ -969,7 +953,6 @@ done
 if [ ! -f %{_bindir}/%{gcc_target_arch}-gcc ] ; then
   %{_sbindir}/update-alternatives --remove %{gcc_target_arch}-gcc %{_bindir}/%{gcc_target_arch}-gcc%{binsuffix}
 fi
-%endif
 %endif
 
 %files
@@ -1008,7 +991,6 @@ fi
 %{_prefix}/bin/%{gcc_target_arch}-gcc-nm
 %{_prefix}/bin/%{gcc_target_arch}-gcc-ranlib
 %{_prefix}/bin/%{gcc_target_arch}-lto-dump
-%if !0%{?gcc_target_newlib:1}%{?gcc_target_glibc:1}
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcc
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-cpp
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcc-ar
@@ -1020,16 +1002,13 @@ fi
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcov-dump
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcov-tool
 %endif
-%endif
 %if %{build_cp}
 %{_prefix}/bin/%{gcc_target_arch}-c++%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-g++%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-c++
 %{_prefix}/bin/%{gcc_target_arch}-g++
-%if !0%{?gcc_target_newlib:1}%{?gcc_target_glibc:1}
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-c++
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-g++
-%endif
 %if 0%{!?gcc_libc_bootstrap:1}
 %if "%{cross_arch}" == "avr" || 0%{?gcc_target_newlib:1} || 0%{?gcc_target_glibc:1}
 %{_prefix}/include/c++

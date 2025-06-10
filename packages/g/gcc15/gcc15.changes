@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  6 12:18:16 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Revert pruning the set of cross-compilers that conflict with different
+  versions from the set using update-alternatives.  This causes
+  endless headache with file conflicts with older GCC releases.
+
+-------------------------------------------------------------------
 Wed Jun  4 07:53:48 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Exclude shared objects present for link editing in the GCC specific

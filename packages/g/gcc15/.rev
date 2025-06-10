@@ -106,4 +106,14 @@ since we bumped libgo SONAME as well for 15</comment>
   versions from the set using update-alternatives.</comment>
     <requestid>1282740</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c174e634ebcc23b8383a7f2d60758129</srcmd5>
+    <version>15.1.1+git9739</version>
+    <time>1749538558</time>
+    <user>anag_factory</user>
+    <comment>- Revert pruning the set of cross-compilers that conflict with different
+  versions from the set using update-alternatives.  This causes
+  endless headache with file conflicts with older GCC releases.</comment>
+    <requestid>1283660</requestid>
+  </revision>
 </revisionlist>
