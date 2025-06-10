@@ -789,4 +789,38 @@
    * Restore retention of credentials for direct URLs in uv export</comment>
     <requestid>1282811</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>252defaf5d4be347c2137765a99979ed</srcmd5>
+    <version>0.7.12</version>
+    <time>1749539236</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.7.12: 
+ * Enhancements
+   * Add uv python pin --rm to remove .python-version pins 
+   * Don't hint at versions removed by excluded-newer 
+   * Add hint to use tool.uv.environments on resolution error 
+   * Add hint to use tool.uv.required-environments on resolution error 
+   * Improve python pin error messages 
+ * Bug fixes
+   * Lock environments during uv sync, uv add and uv remove to prevent race conditions 
+   * Add --no-editable to uv export for pylock.toml 
+ * Documentation
+   * List .gitignore in project init files 
+   * Move the pip interface documentation into the concepts section 
+   * Remove the configuration section in favor of concepts / reference 
+   * Update Git and GitHub Actions docs to mention gh auth login 
+ * Preview
+   * Fix directory glob traversal fallback preventing exclusion of all files 
+
+- update to 0.7.11:
+ * Enhancements
+   * Add Pyodide support 
+   * Better error message for version specifier with missing operator 
+ * Bug fixes
+   * Downgrade reqwest and hyper-util to resolve connection reset errors over IPv6 
+   * Prefer uv's binary's version when checking if it's up to date 
+ * Documentation
+   * Use &quot;terminal driver&quot; instead of &quot;shell&quot; in SIGINT docs</comment>
+    <requestid>1284045</requestid>
+  </revision>
 </revisionlist>
