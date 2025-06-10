@@ -162,4 +162,19 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: update dcn 4.01 firmware to 0.1.8.0</comment>
     <requestid>1276608</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ebd91d579e6b8f239ef8c24a3c177455</srcmd5>
+    <version>20250606</version>
+    <time>1749538748</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250606 (git commit 4f0106cf1943):
+  * amdgpu: DMCUB updates for various ASICs
+
+- Update to version 20250603 (git commit 3b75d677f898):
+  * amdgpu: DMCUB updates for various ASICs
+
+- Update to version 20250516 (git commit 759c4acafb4a):
+  * amdgpu: DMCUB updates for various ASICs</comment>
+    <requestid>1283856</requestid>
+  </revision>
 </revisionlist>
