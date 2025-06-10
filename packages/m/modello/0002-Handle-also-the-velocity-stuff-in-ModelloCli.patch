@@ -27,15 +27,15 @@ index db40052ce..7bed3863a 100644
              parameters.put(ModelloParameterConstants.DOM_AS_XPP3, args[7]);
          }
 +
-+        if (args.length > 8) {
++        if (args.length > 8 && StringUtils.equalsIgnoreCase(outputType, "velocity")) {
 +            parameters.put("modello.velocity.basedir", args[8]);
 +        }
 +
-+        if (args.length > 9) {
++        if (args.length > 9 && StringUtils.equalsIgnoreCase(outputType, "velocity")) {
 +            parameters.put("modello.velocity.templates", args[9]);
 +        }
 +
-+        if (args.length > 10) {
++        if (args.length > 10 && StringUtils.equalsIgnoreCase(outputType, "velocity")) {
 +            parameters.put(
 +                    "modello.velocity.parameters", (HashMap<String, String>) Arrays.asList(args[10].split(",")).stream()
 +                            .map(s -> s.split("="))

@@ -185,4 +185,12 @@
     <comment>2.5.1</comment>
     <requestid>1283015</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>440cb840e068ca8b44ec3b658f608d80</srcmd5>
+    <version>2.5.1</version>
+    <time>1749539014</time>
+    <user>anag_factory</user>
+    <comment>Do not bomb on empty velocity parameters</comment>
+    <requestid>1283740</requestid>
+  </revision>
 </revisionlist>
