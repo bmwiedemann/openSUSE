@@ -1,7 +1,7 @@
 #
 # spec file for package flashrom
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(libusb)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     %{name}-doc = %{version}
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 BuildRequires:  python3-Sphinx
 %else
 BuildRequires:  python311-Sphinx

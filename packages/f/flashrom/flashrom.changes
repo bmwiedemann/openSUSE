@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  4 13:59:53 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Fix build error for Leap 16.0
+
+-------------------------------------------------------------------
 Sun Dec 22 10:48:46 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.1
@@ -353,5 +358,3 @@ Sun Jan 20 00:02:19 CET 2008 - bwalle@suse.de
 Thu Jan 10 11:41:16 CET 2008 - bwalle@suse.de
 
 - initial package
-
--------------------------------------------------------------------
