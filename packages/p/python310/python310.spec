@@ -108,7 +108,7 @@ Obsoletes:      python39%{?1:-%{1}}
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.10.17
+Version:        3.10.18
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -202,12 +202,6 @@ Patch27:        gh120226-fix-sendfile-test-kernel-610.patch
 # PATCH-FIX-UPSTREAM sphinx-802.patch mcepl@suse.com
 # status_iterator method moved between the Sphinx versions
 Patch28:        sphinx-802.patch
-# PATCH-FIX-UPSTREAM gh-126572-test_ssl-no-stop-ThreadedEchoServer-OSError.patch bsc#1241067 mcepl@suse.com
-# don't stop ThreadedEchoServer on OSError, makes test_ssl fail with OpenSSL 3.5
-Patch29:        gh-126572-test_ssl-no-stop-ThreadedEchoServer-OSError.patch
-# PATCH-FIX-UPSTREAM CVE-2025-4516-DecodeError-handler.patch bsc#1243273 mcepl@suse.com
-# this patch makes things totally awesome
-Patch30:        CVE-2025-4516-DecodeError-handler.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
