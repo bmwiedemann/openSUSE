@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Jun  8 09:18:13 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.33.0
+  mpg123:
+  * Fix printout of filenames at end (convert/limit text
+    encoding).
+  * Treat HTTP header encoding as unknown/ASCII and formally
+    convert to UTF-8.
+  * Make --continue mode work with --random.
+  out123:
+  * Finally give zero exit code when generating sounds, not
+    indicating spurious failure.
+  build:
+  * Use CCASFLAGS for assembler tests, to enable builds that
+    enable instruction sets that way.
+  * PIC for compat libs (convenience libs used during build)
+    only if building shared libs.
+  compat:
+  * Map strtok use to strtok_r or strtok_s (MS platforms), if
+    possible. users only in control_generic and libout123 so far.
+    Out123 itself uses mytok.
+  * Enable build on PSP by merging in the hotfix of opmitting
+    signal code.
+  libmpg123:
+  * API version 49 with added mpg123_open_handle64(),
+    mpg123_open64(), and mpg123_open_fixed64() that are not
+    subject to largefile renaming. This means you can still
+    access internal I/O with MPG123_PORTABLE_API. The code has
+    been there before, anyway.
+  * With MPG123_PORTABLE_API, mpg123_open_handle() is hidden now
+    (use mpg123_open_handle64() instead).
+  * more silence on errors (sideband limit message)
+
+-------------------------------------------------------------------
 Wed Mar 12 07:38:13 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace pkgconfig(sdl) BuildRequires with pkgconfig(sdl2): build
