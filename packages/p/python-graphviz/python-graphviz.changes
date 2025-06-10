@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  6 09:21:15 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Fix tests with latest graphviz update to 12.x
+
+-------------------------------------------------------------------
 Thu May 23 01:59:56 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.20.3:

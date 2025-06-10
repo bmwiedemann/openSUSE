@@ -33,6 +33,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  graphviz
+BuildRequires:  graphviz-gd
 BuildRequires:  graphviz-gnome
 BuildRequires:  noto-sans-fonts
 BuildRequires:  python-rpm-macros
