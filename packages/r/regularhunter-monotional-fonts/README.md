@@ -2,7 +2,7 @@
 
 # Monotional
 
-### Version 1.6
+### Version 1.9
 
 https://github.com/regularhunter/monotional-font
 
@@ -29,6 +29,28 @@ Bitstream Vera Sans Mono.
 See the [latest release](https://github.com/regularhunter/monotional-font/releases) 
 for more information.
 
+
+**v1.9**
+
+ * Rework bold, italic, and bold-italic 1 glyph to match regular version
+ * Rework bold-italic # glyph to match bold version
+ * Slight adjustment to italic ' and * glyph
+ * Slight adjustment to bold and bold-italic - glyph
+ * Slight adjustment to italic and bold-italic 4 glyph
+
+**v1.8**
+
+ * Increase regular and italic ` ~ ` glyph weight
+
+**v1.7**
+
+ * Change license to SIL OFL 1.1
+ * Remove font instructions inherited from DejaVu Sans Mono causing 
+rendering issues in Windows (issue #1)
+ * Small adjustment to italic ` @ ` glyph
+ * Rework italic and bold-italic ` # ` glyphs to match non-italic 
+versions
+ * Change ` ~ ` glyph style to emulate Fira Code
 
 **v1.6**
 
@@ -69,6 +91,10 @@ characters
 
 Copyright © 2025 Hunter Wardlaw
 
+**Fira Code**
+
+Copyright © 2014 The Fira Code Project Authors.
+
 **Bitstream Vera Sans Mono / DejaVu Sans Mono**
 
 Copyright © 2003 Bitstream Vera is a trademark of Bitstream, Inc., designed by Jim Lyles.
@@ -90,16 +116,9 @@ To George Williams for the free font editing program
 
 ### License
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+Licensed under the SIL Open Font License Version 1.1
 
-http://www.apache.org/licenses/LICENSE-2.0
+You may not use this file except in compliance with the License. 
+You may obtain a copy of the License at:
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-
+https://openfontlicense.org/documents/OFL.txt

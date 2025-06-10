@@ -31,4 +31,30 @@ and those that do technical work.</comment>
 </comment>
     <requestid>1282918</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f10caabd240896366f33a51791584992</srcmd5>
+    <version>1.9</version>
+    <time>1749539021</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.9:
+  * Rework bold, italic, and bold-italic 1 glyph to match regular 
+    version
+  * Rework bold-italic # glyph to match bold version
+  * Slight adjustment to italic ' and * glyph
+  * Slight adjustment to bold and bold-italic - glyph
+  * Slight adjustment to italic and bold-italic 4 glyph
+
+- Update to 1.8:
+  * Increase regular and italic ~ glyph weight
+
+- Update to 1.7:
+  * Change license to SIL OFL 1.1
+  * Remove font instructions inherited from DejaVu Sans Mono causing 
+    rendering issues in Windows (issue #1)
+  * Small adjustment to italic @ glyph
+  * Rework italic and bold-italic # glyph to match non-italic version
+  * Change ~ glyph style to emulate Fira Code
+</comment>
+    <requestid>1283756</requestid>
+  </revision>
 </revisionlist>

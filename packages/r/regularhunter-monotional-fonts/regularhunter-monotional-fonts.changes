@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Jun  7 00:01:50 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 1.9:
+  * Rework bold, italic, and bold-italic 1 glyph to match regular 
+    version
+  * Rework bold-italic # glyph to match bold version
+  * Slight adjustment to italic ' and * glyph
+  * Slight adjustment to bold and bold-italic - glyph
+  * Slight adjustment to italic and bold-italic 4 glyph
+
+-------------------------------------------------------------------
+Fri Jun  6 21:42:06 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 1.8:
+  * Increase regular and italic ~ glyph weight
+
+-------------------------------------------------------------------
+Fri Jun  6 20:40:07 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update readme
+
+-------------------------------------------------------------------
+Fri Jun  6 18:26:00 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 1.7:
+  * Change license to SIL OFL 1.1
+  * Remove font instructions inherited from DejaVu Sans Mono causing 
+    rendering issues in Windows (issue #1)
+  * Small adjustment to italic @ glyph
+  * Rework italic and bold-italic # glyph to match non-italic version
+  * Change ~ glyph style to emulate Fira Code
+
+-------------------------------------------------------------------
 Wed Jun  4 23:56:41 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 1.6:
