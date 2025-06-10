@@ -930,4 +930,17 @@
   * GO-2025-3737 CVE-2025-48494 GHSA-95rc-wc32-gm53 (forwarded request 1283374 from jfkw)</comment>
     <requestid>1283375</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>392b19ccb66df180da66051cb94ac57f</srcmd5>
+    <version>0.0.20250609T181436</version>
+    <time>1749549967</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20250609T181436 2025-06-09T18:14:36Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3740 CVE-2025-3260 GHSA-3px7-c4j3-576r
+  * GO-2025-3741 CVE-2025-48710 GHSA-7633-x85h-5mqh
+  * GO-2025-3742 CVE-2025-3454 GHSA-9j65-rv5x-4vrf (forwarded request 1284282 from jfkw)</comment>
+    <requestid>1284284</requestid>
+  </revision>
 </revisionlist>
