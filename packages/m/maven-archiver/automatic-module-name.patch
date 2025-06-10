@@ -1,0 +1,14 @@
+--- maven-archiver-3.6.3/src/main/java/org/apache/maven/archiver/MavenArchiver.java	2025-06-06 16:23:04.815330137 +0200
++++ maven-archiver-3.6.3/src/main/java/org/apache/maven/archiver/MavenArchiver.java	2025-06-06 16:23:13.234776465 +0200
+@@ -597,7 +597,10 @@
+ 
+         String automaticModuleName = manifest.getMainSection().getAttributeValue("Automatic-Module-Name");
+         if (automaticModuleName != null) {
+-            if (!isValidModuleName(automaticModuleName)) {
++            if (automaticModuleName.isEmpty()) {
++                manifest.getMainSection().removeAttribute("Automatic-Module-Name");
++            }
++            else if (!isValidModuleName(automaticModuleName)) {
+                 throw new ManifestException("Invalid automatic module name: '" + automaticModuleName + "'");
+             }
+         }

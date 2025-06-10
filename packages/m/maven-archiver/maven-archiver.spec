@@ -1,7 +1,7 @@
 #
 # spec file for package maven-archiver
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/shared/maven-archiver/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
+Patch0:         automatic-module-name.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -52,6 +53,7 @@ Javadoc for %{name}.
 %prep
 %setup -q
 cp %{SOURCE1} build.xml
+%patch -P 0 -p1
 
 %pom_xpath_remove pom:project/pom:parent/pom:relativePath
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  6 14:33:31 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * automatic-module-name.patch
+    + Do not throw exception on empty Automatic-Module-Name. Just
+      ignore it.
+
+-------------------------------------------------------------------
 Tue Oct 29 18:24:29 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to maven-archiver 3.6.3
