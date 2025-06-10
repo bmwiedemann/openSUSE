@@ -1,0 +1,18 @@
+<package name="neocmakelsp" project="openSUSE:Factory">
+  <title>NeoCmakeLSP</title>
+  <description>NeoCmakeLSP is another Cmake LSP. It differs from other LSP implementations as it uses
+TreeSitter and Tower, crates that are written in Rust.
+
+It provides the following features such as:
+
+* Intelligent Code Completion: Provides precise code completions by analyzing CMake files, enhancing development efficiency.
+
+* Real-time Error Detection: Integrates linting functionality to check for potential issues in your code, help maintaining code quality.
+
+* Support for Neovim, Emacs, VSCode, Helix: Compatible with these popular editors, catering to diverse developer needs.
+
+* Simple Configuration: Easy to set up and use, minimizing configuration time so you can focus on development.
+
+* CLI Integration: Not only an LSP, but also includes command-line tools for code formatting, making it convenient for different environments.</description>
+  <url>https://github.com/neocmakelsp/neocmakelsp</url>
+</package>

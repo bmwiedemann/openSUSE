@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Sat Jun 07 14:31:02 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.8.17:
+  * chore: bump version
+  * chore: update deps
+  * chore: bump deps
+  * fix: typo
+  * feat: less normalize during format and complete
+  * chore: do fmt
+  * fix: check in project path
+  * fix: unit test
+  * fix: clippy
+  * feat: init_options also use once_cell
+  * feat: use once_cell to late init root_path
+  * chore: update deps
+
+-------------------------------------------------------------------
+Sun Jan 12 12:37:33 UTC 2025 - Jianhua Lu <lujianhua000@gmail.com>
+
+- Update to version 0.8.16:
+  * fix format problem in #139
+  * better highlight in if
+  * document_link support c, cpp files
+
+-------------------------------------------------------------------
+Wed Dec 18 07:56:02 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.8.13:
+  * use forked tower-lsp
+  * update dependencies
+  * little to no changes are in this version bump
+
+-------------------------------------------------------------------
+Tue Nov 19 06:53:20 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Initial spec for neocmakelsp
