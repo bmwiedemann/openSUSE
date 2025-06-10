@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  6 14:47:29 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Drop usage of %jobs (boo#1237231) for reproducible builds
+  (by Bernhard M. Wiedemann).
+- 5.0.2
+
+-------------------------------------------------------------------
 Mon Sep 16 08:11:39 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Add "which" to the list of dependencies
