@@ -17,7 +17,7 @@
 
 
 Name:           iputils
-Version:        20250602
+Version:        20250605
 Release:        0
 Summary:        IPv4 and IPv6 Networking Utilities
 License:        BSD-3-Clause AND GPL-2.0-or-later

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  5 14:16:43 UTC 2025 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 20250605
+  Fixing regression in ping.
+  https://github.com/iputils/iputils/releases/tag/20250605
+
+-------------------------------------------------------------------
 Mon Jun  2 10:13:36 UTC 2025 - Petr Vorel <pvorel@suse.cz>
 
 - Update to version 20250602
