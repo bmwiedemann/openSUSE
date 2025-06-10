@@ -244,4 +244,12 @@
     <comment></comment>
     <requestid>1279755</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>3a976ed59857c0abd917a6e5cf3cf12f</srcmd5>
+    <version>1.5.1</version>
+    <time>1749538664</time>
+    <user>anag_factory</user>
+    <comment>Workaround kernel module size increase due to BTF deduplication issue since the introduction of TYPEOF_UNQUAL (poo#183503)</comment>
+    <requestid>1283405</requestid>
+  </revision>
 </revisionlist>

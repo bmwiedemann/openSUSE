@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  5 14:34:05 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Workaround kernel module size increase due to BTF deduplication
+  issue since the introduction of TYPEOF_UNQUAL (poo#183503)
+  * add 0001-libbpf-Add-identical-pointer-detection-to-btf_dedup_.patch
+
+-------------------------------------------------------------------
 Tue May 20 11:29:45 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - update to 1.5.1:
