@@ -1173,4 +1173,12 @@
     <comment>KDE release gear 25.04.1</comment>
     <requestid>1275885</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>cccb196f6d54ee3faa91129c6bd10f53</srcmd5>
+    <version>25.04.2</version>
+    <time>1749538990</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.04.2</comment>
+    <requestid>1283336</requestid>
+  </revision>
 </revisionlist>
