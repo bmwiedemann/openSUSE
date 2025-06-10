@@ -76,4 +76,12 @@
     <comment>- Added CGO_ENABLED=1 (forwarded request 1282290 from fl4nn)</comment>
     <requestid>1282291</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>c18c97d1c4a39964616af254212dbd18</srcmd5>
+    <version>3.1.0</version>
+    <time>1749538999</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1283719</requestid>
+  </revision>
 </revisionlist>

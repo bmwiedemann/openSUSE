@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  3 19:34:14 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Enable cgo
+
+-------------------------------------------------------------------
 Tue May 27 16:39:18 UTC 2025 - Holger Rauch <holger.rauch@posteo.de>
 
 - Added CGO_ENABLED=1 

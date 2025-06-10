@@ -37,12 +37,10 @@ Messaging API.
 %setup -qa1
 
 %build
-export CGO_ENABLED=1 GOFLAGS=-mod=vendor
-%make_build browserpass
+%make_build browserpass CGO_ENABLED=1
 
 %check
-export CGO_ENABLED=1 GOFLAGS=-mod=vendor
-make test
+make test CGO_ENABLED=1
 
 %install
 make configure
