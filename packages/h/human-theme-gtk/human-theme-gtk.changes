@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jun  6 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (2.5.0)
+   * (gtk 3 & 4) fix statusbar and progressbar in statusbar
+     when window is fullscreen with Mate & Xfce
+   * (gtk 3) update design for Mate panel buttons
+     PR => github.com/mate-desktop/mate-panel/pull/1474
+   * (gtk 3) fix Xfce desktop icons
+   * (gtk 3) update design of caja/thunar/nemo tabs
+   * (gtk 3) add experimental support for Cinnamon desktop
+   * (gtk 3) fix headerbar for cinnamon/muffin/mutter (.ssd)
+   * (gtk 3) update design of compact menu button applet,
+     clock applet, window selector button => same as main menu bar
+   * (gtk 4) fix design of print dialog
+   * (gtk 3) ready for the future scrollbar__extra_zone.patch
+     for gtk3-classic
+
+-------------------------------------------------------------------
 Mon May  5 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.4.0)
