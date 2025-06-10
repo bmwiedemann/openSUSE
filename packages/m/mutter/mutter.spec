@@ -23,7 +23,7 @@
 %define libmutter libmutter-%{api_major}-%{api_minor}
 
 Name:           mutter
-Version:        48.3
+Version:        48.3.1
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
