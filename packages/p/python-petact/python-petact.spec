@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-petact
 Version:        0.1.2
 Release:        0
@@ -28,11 +29,11 @@ Source99:       https://raw.githubusercontent.com/MatthewScholefield/petact/mast
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-setuptools
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -58,11 +59,8 @@ cp %{SOURCE99} .
 %check
 # no upstream tests
 
-%post
-%python_install_alternative petact
-
-%postun
-%python_uninstall_alternative petact
+%pre
+%python_libalternatives_reset_alternative petact
 
 %files %{python_files}
 %doc README.md
