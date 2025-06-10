@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Jun 09 19:34:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.27.0:
+  * Added Features
+    - add syft schema version to version command [#3949 @spiffcs]
+  * Bug Fixes
+    - Remove CPE product candidates for phf, prometheus, hyper and
+      Rust crates [#3967 @jayvdb]
+    - Remove CPE product candidates for opentelemetry and redis
+      Rust crates [#3962 @jayvdb]
+    - Harden Container Runtime with Non-Root User [#3941
+      @MikeTheCyberGuy]
+    - terraform provider lock entries should not require
+      constraints [#3934 @ghouscht]
+    - sbom cataloger returning upstream package [#3662 #3981
+      @kzantow]
+    - Syft missing md5 sums and list data for dpkg packages under
+      status.d/ [#3912]
+    - Failure to detect dependency relationships between Python
+      packages [#3958 #3965 @christoph-blessing]
+    - Heavy memory consumption when directory scanning deb source
+      [#3928 #3953 @kzantow]
+    - In versions 1.25.0 and later, graalvm-native-image-cataloger
+      adds 3-6 hours to Syft [#3942 #3944 @kzantow]
+    - Syft incorrectly reports multiple APKs as parents of
+      symlinked files [#3847 #3923 @luhring]
+  * Dependencies
+    - chore(deps): bump modernc.org/sqlite from 1.37.1 to 1.38.0
+      (#3979)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.16.1 to
+      5.16.2 (#3978)
+    - chore(deps): update tools to latest versions (#3977)
+    - chore(deps): update CPE dictionary index (#3976)
+    - chore(deps): bump golang.org/x/net from 0.40.0 to 0.41.0
+      (#3970)
+    - chore(deps): bump github.com/sergi/go-diff (#3971)
+    - chore(deps): bump golang.org/x/mod from 0.24.0 to 0.25.0
+      (#3963)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.12
+      to 0.5.13 (#3964)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.16.0 to
+      5.16.1 (#3960)
+    - chore(deps): bump github/codeql-action from 3.28.18 to
+      3.28.19 (#3952)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.11
+      to 0.5.12 (#3943)
+    - chore(deps): update tools to latest versions (#3945)
+    - chore(deps): update CPE dictionary index (#3947)
+    - chore(deps): bump github.com/google/go-containerregistry
+      (#3933)
+    - chore(deps): update CPE dictionary index (#3935)
+    - chore(deps): bump modernc.org/sqlite from 1.37.0 to 1.37.1
+      (#3926)
+
+-------------------------------------------------------------------
 Thu May 22 13:31:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.26.1:
