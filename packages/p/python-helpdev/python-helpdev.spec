@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-helpdev
 Version:        0.7.1
 Release:        0
@@ -27,12 +28,12 @@ Source0:        https://gitlab.com/dpizetta/helpdev/-/archive/v%{version}/helpde
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-importlib-metadata
 Requires:       python-psutil >= 5.4.8
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module importlib-metadata}
@@ -61,11 +62,8 @@ sed -i -e "s/psutil>=5.6/psutil>=5.4.8/" setup.py
 #test_check_python_packages needs the binary
 %pytest -k 'not test_check_python_packages'
 
-%post
-%python_install_alternative helpdev
-
-%postun
-%python_uninstall_alternative helpdev
+%pre
+%python_libalternatives_reset_alternative helpdev
 
 %files %{python_files}
 %doc README.rst
