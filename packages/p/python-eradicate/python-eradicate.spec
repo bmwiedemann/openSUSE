@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-eradicate
 Version:        2.3.0
@@ -28,10 +29,10 @@ Source:         https://files.pythonhosted.org/packages/source/e/eradicate/eradi
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): alts
-Requires(postun): alts
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,11 +56,8 @@ which is valid Python syntax, but is probably not code.)
 
 %python_clone -a %{buildroot}%{_bindir}/eradicate
 
-%post
-%python_install_alternative eradicate
-
-%postun
-%python_uninstall_alternative eradicate
+%pre
+%python_libalternatives_reset_alternative eradicate
 
 %check
 %pyunittest -v
