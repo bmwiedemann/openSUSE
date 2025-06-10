@@ -1,7 +1,7 @@
 #
 # spec file for package eww
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,14 +19,14 @@
 
 %bcond_without test
 Name:           eww
-Version:        0.6.0+git53
+Version:        0.6.0+git86.g98c220126d912b935987766f56650b55f3e226eb
 Release:        0
 Summary:        ElKowars wacky widgets
 License:        MIT
 URL:            https://github.com/elkowar/eww
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-BuildRequires:  cargo >= 1.70.0
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  gtk-layer-shell-devel
 BuildRequires:  gtk3-devel
@@ -39,7 +39,6 @@ allows you to implement your own, custom widgets in any window manager.
 
 %prep
 %autosetup -a1 -p1
-rm docs/.gitignore
 sed -i '1s|#!/bin/sh|#!/usr/bin/sh|' examples/eww-bar/scripts/getvol
 
 %build

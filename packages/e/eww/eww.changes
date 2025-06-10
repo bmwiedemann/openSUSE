@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Mon Jun 09 02:24:18 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.6.0+git86.g98c220126d912b935987766f56650b55f3e226eb:
+  * Fix crash on invalid formattime (#1317)
+  * Add wordchar wrap mode (#1306)
+  * Fix crash on NaN or infinite graph value (#1318)
+  * fix documentation of ceil and floor (fixes #1319)
+  * Add floor() and ceil() (#1315)
+  * Add warning for invalid exclusive and anchor combination (#1316)
+  * Add wikipedia link to widget essay
+  * Revert hot-reloading regressions (#1296)
+  * Add value-pos to scale widget (#1285)
+  * Force recreating windows on config change (#1284)
+  * Avoid recreating windows when only duration changes (#1236)
+  * fix: Load systray items that are registered without a path (#1230)
+  * feat: add subcommand to force-poll variable (#1227)
+  * add lines and wrap-mode properties to label widget (#1278)
+  * add `log` to expressions (#1271)
+  * fix: get_locale follows posix standard (#1264)
+  * feat: add `raw-output` for `jq` (#1199)
+  * fix: improve scope handling (#1189)
+  * feat: Add support for on-demand window focus on wayland (#1215)
+  * Fixing examples.md (#1257)
+  * `powi`/`powf` simplexpr functions (#1255)
+  * Reference yolk in Readme
+  * Add "Activate Linux" to README.md (#1242)
+  * Update expression_language.md (#1231)
+  * feat: support empty string for safe access operator (#1176)
+  * fix bug_report issue template even more
+  * Fix bug_report issue template
+  * Add platform section to bug-report issue template
+  * feat: button improvements (#1187)
+  * Some docs updates (#1179)
+  * feat: update toolchain to 1.81.0 (#1195)
+  * nix: update flake-compat (#1197)
+  * revert: zbus 4 -> 3 (#1203)
+  * Implement explicitly setting a center of rotation (#783)
+  * Clean up example SCSS file (#644)
+  * fix: demote two logging statements to debug (#1183)
+  * fix: fix system tray not displaying anything (#1181)
+  * Fixing missing commas in example (#1174)
+  * docs(readme): improve spacing (#886)
+  * fix: make formattime follow system locale (#1177)
+  * fix: remove unused import (#1168)
+  * Fix Typo ("procent" -> "percent") (#1169)
+  * add `EWW_BATTERY` support in (free|open|net)bsd (#645)
+  * docs: Add example for data structures (#595)
+  * feat: Add option for graph drawing direction (#1113)
+  * Add scss support for style property (#1121)
+  * Use gdk_screen_get_monitor_plug_name to provide more consistent monitor names on wayland (#1129)
+  * fix: fix changelog, warnings and lints (#1155)
+  * Fix: EWW_NET wrong values for TX/RX stats (#1108)
+  * docs: changed kB to bytes in `EWW_RAM` description (#1075)
+  * feat: add fill-svg and preserve-aspect-ratio attributes to image widget (#1148)
+  * Fix: the gtk `expander` widget bugfix (#1132)
+  * Fix: the gtk `stack` widget bugfix (#1119)
+  * chore: automatically update a few dependencies
+  * chore: update toolchain to 1.80.1
+  * chore: automatically update a few dependencies
+  * chore: automatically update a few dependencies
+  * chore: automatically update a few dependencies
+  * chore: automatically update a few dependencies
+  * chore: update derive_more to 1.0
+  * chore: automatically update a few dependencies
+  * fix: update grass; re-enable default features for grass
+  * chore: automatically update a few dependencies
+  * docs: update changelog
+  * chore: automatically update a few dependencies
+  * docs: update zbus-xmlgen generation commands; add zbus-xmlgen to development shell
+  * chore: update zbus
+  * fix: fix lints
+  * chore(cargo): move gtk, zbus to workspace
+  * chore: update itertools; update zbus
+  * chore: update a few dependencies
+  * nix: switch to nixfmt-rfc-style
+  * chore: use cargo to update almost all dependencies
+  * chore: update gtk and related dependencies to 0.18
+  * chore: update toolchain to 1.80.0
+  * chore: update flake.lock
+  * Typo in configuration.md
+  * Set GDK_BACKEND env var on wayland
+  * Add `min` and `max` simplexpr functions (#1123)
+  * systray: fix remove items (#1098)
+  * remove sysinfo/linux-netdevs feature (#1096)
+  * systray: add `:hover` attribute to tray items (#1091)
+  * Fix string truncation (#1084)
+  * fix: refactor and fix flake (#1038)
+  * fix: bump cargo version (#1080)
+  * Update ahash to fix yanked version (#1079)
+
+-------------------------------------------------------------------
 Thu Sep 26 14:27:51 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update to version 0.6.0+git53:
@@ -37,4 +128,5 @@ Mon Apr 22 07:30:42 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 Sun Mar  3 09:34:30 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Initial package
+
 
