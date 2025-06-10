@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun  7 09:18:19 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Skip tests in qemu emulation
+
+-------------------------------------------------------------------
 Fri Mar 21 12:13:18 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Disable test on loongarch.

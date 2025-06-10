@@ -24,7 +24,8 @@
 %endif
 %define lname	libwayland0
 %define enable_test 1
-%ifarch loongarch64
+%if 0%{?qemu_user_space_build}
+# qemu linux-user emulation does not support ptrace
 %define enable_test 0
 %endif
 %bcond_with doc

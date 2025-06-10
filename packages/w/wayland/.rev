@@ -452,4 +452,12 @@ Thus there's no need for the parsing or extra dependency. (forwarded request 580
     <comment>- Disable test on loongarch.</comment>
     <requestid>1282720</requestid>
   </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>76f6cb9a0da96c071e853b5069b3c1d0</srcmd5>
+    <version>1.23.1</version>
+    <time>1749538597</time>
+    <user>anag_factory</user>
+    <comment>- Skip tests in qemu emulation</comment>
+    <requestid>1283928</requestid>
+  </revision>
 </revisionlist>
