@@ -2,6 +2,7 @@
 # spec file for package upmpdcli
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           upmpdcli
-Version:        1.9.5
+Version:        1.9.6
 Release:        0
 Summary:        UPnP AV and OpenHome Media Renderer front-end to MPD, the Music Player Daemon
 License:        GPL-2.0-or-later
@@ -135,6 +136,7 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 QT-based GUI for editing upmpdcli configuration files.
 
 %files config
+%license COPYING
 %{_bindir}/upmpdcli-config
 
 ########## MEDIA SERVER PLUGINS
@@ -151,6 +153,7 @@ BuildArch:      noarch
 Media Server plugin providing access to BBC radio streams.
 
 %files bbc
+%license COPYING
 %{_datadir}/%{name}/cdplugins/bbc
 
 %package hra
@@ -164,6 +167,7 @@ Media Server plugin providing access to the HIGHRESAUDIO
 music streaming service (https://www.highresaudio.com/en).
 
 %files hra
+%license COPYING
 %{_datadir}/%{name}/cdplugins/hra
 
 ####
@@ -178,6 +182,7 @@ BuildArch:      noarch
 Media Server plugin providing access to Mother Earth Radio streams.
 
 %files mother-earth-radio
+%license COPYING
 %{_datadir}/%{name}/cdplugins/mother-earth-radio
 
 ####
@@ -194,6 +199,7 @@ Media Server plugin providing access to the radio-browser site catalog
 You will need to install the pyradios Python3 module with pip3.
 
 %files radio-browser
+%license COPYING
 %{_datadir}/%{name}/cdplugins/radio-browser
 
 ####
@@ -208,6 +214,7 @@ BuildArch:      noarch
 Media Server plugin providing access to the Radio Paradise streams.
 
 %files radio-paradise
+%license COPYING
 %{_datadir}/%{name}/cdplugins/radio-paradise
 
 ####
@@ -223,6 +230,7 @@ It needs the installation of the subsonic-connector (version 0.3.10b3)
 and py-sonic (version 1.0.2) Python modules (not packaged, use Pypi).
 
 %files subsonic
+%license COPYING
 %{_datadir}/%{name}/cdplugins/subsonic
 
 ####
@@ -238,6 +246,7 @@ Media Server plugin providing access to the TIDAL music streaming service.
 You will need to install the tidalapi Python3 module with pip3.
 
 %files tidal
+%license COPYING
 %{_datadir}/%{name}/cdplugins/tidal
 
 ####
@@ -252,6 +261,7 @@ BuildArch:      noarch
 Media Server plugin providing access to radios managed by the OpenHome Radio Service.
 
 %files radios
+%license COPYING
 %{_datadir}/%{name}/cdplugins/upradios
 
 ####
@@ -269,6 +279,7 @@ Media Server plugin providing access to Recoll indexed media.
 For use with recoll package found in KDE:Extra
 
 %files uprcl
+%license COPYING
 %{_datadir}/%{name}/cdplugins/uprcl
 
 %changelog

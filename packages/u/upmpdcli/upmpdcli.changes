@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  6 17:41:18 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.9.6:
+  * Tidal and Subsonic plugins updates
+  * Fix Media Server crash in abnormal case where the proxy/
+    redirect interface was called with a bogus URL
+
+-------------------------------------------------------------------
 Fri May  9 15:36:58 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.9.5
