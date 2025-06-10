@@ -33,12 +33,13 @@ Source:         https://files.pythonhosted.org/packages/source/m/mako/mako-%{ver
 BuildRequires:  %{python_module MarkupSafe >= 0.9.2}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-MarkupSafe >= 0.9.2
-Requires:       python-setuptools
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
@@ -65,10 +66,10 @@ scoping semantics.
 %setup -q -n mako-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/mako-render
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -91,6 +92,6 @@ scoping semantics.
 %doc examples
 %python_alternative %{_bindir}/mako-render
 %{python_sitelib}/mako/
-%{python_sitelib}/Mako-%{version}-py*.egg-info
+%{python_sitelib}/[Mm]ako-%{version}.dist-info
 
 %changelog

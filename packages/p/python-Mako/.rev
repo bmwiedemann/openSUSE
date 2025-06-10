@@ -657,4 +657,12 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
     using a nested list comprehension.</comment>
     <requestid>1269360</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>d64f64fc5932fa35276d9d650cfce402</srcmd5>
+    <version>1.3.10</version>
+    <time>1749538625</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282928</requestid>
+  </revision>
 </revisionlist>
