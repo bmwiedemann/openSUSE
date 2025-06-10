@@ -132,4 +132,16 @@
     <comment> (forwarded request 1282773 from rrahl0)</comment>
     <requestid>1282774</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>eb9346faca460b459c67bd51d2f0be87</srcmd5>
+    <version>0.5.1+1</version>
+    <time>1749539151</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5.1+1:
+  * Fixed Kron4ek Proton downloads
+- update to 0.5.1:
+  * Fixed musl libc compilation
+  * Fixed Kron4ek Proton builds (forwarded request 1284174 from rrahl0)</comment>
+    <requestid>1284175</requestid>
+  </revision>
 </revisionlist>
