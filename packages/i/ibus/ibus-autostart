@@ -3,13 +3,25 @@
 test x"$INPUT_METHOD" = x"ibus" || exit 0
 
 # GNOME starts ibus by itself
-case "$WINDOWMANAGER" in
-    *gnome*)
-	exit 0;;
+case "$XDG_CURRENT_DESKTOP" in
+    *GNOME*)
+        exit 0;;
 esac
 
-# sleep for a little while to avoid duplicate startup
-# sleep 2
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    case "$XDG_CURRENT_DESKTOP" in
+        *KDE*)
+            ibus start --type=kde-wayland
+            exit 0;;
+        *)
+            ibus start --type=wayland
+            exit 0;;
+    esac
+else
+    # sleep for a little while to avoid duplicate startup
+    # sleep 2
 
-ibus start --service-file org.freedesktop.IBus.session.generic.service
-exit 0
+    # `ibus start` does not exit, so we use ibus-daemon
+    ibus-daemon --xim --daemonize
+    exit 0
+fi

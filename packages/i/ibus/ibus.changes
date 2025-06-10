@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May 31 13:37:22 UTC 2025 - Fuminobu Takeyama <ftake@geeko.jp> - 1.5.32
+
+- Upstream update to 1.5.32
+  * Send FocusIn signal again after delayed FocusId property
+  * Fix time lag of CandidatePanel in X11
+  * Update Unicode table with keysym
+  * Wayland input-method protocol version 1 and 2
+    * https://github.com/ibus/ibus/wiki/WaylandDesktop
+  * Additional Wayland input-method; XIM and GTK2, Key repeating, Compose
+  * ibus start --type wayland new option
+  * Compose feature updates
+  * Bug fixes of Wayland features
+  * Update simple.xml with xkeyboard-config 2.44
+- Revert not to use systemd to launch ibus
+  * Remove ibus-ui-gtk3-restart-via-systemd.patch
+- Remove patches merged by the upstream
+  * ibus-gcc15-1.patch
+  * ibus-gcc15-2.patch
+
+-------------------------------------------------------------------
 Sat Apr 12 14:22:05 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Add ibus-gcc15-1.patch and ibus-gcc15-2.patch from upstream to

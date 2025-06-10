@@ -1,7 +1,7 @@
 #
 # spec file for package ibus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,6 @@
 %define flavor @BUILD_FLAVOR@%nil
 
 %define with_gtk4 0
-%define with_wayland 1
 %define with_emoji 1
 
 %if "%{flavor}" == "gtk4"
@@ -35,7 +34,7 @@
 
 %define _name   ibus
 Name:           %{_name}%{?nsuffix}
-Version:        1.5.31
+Version:        1.5.32
 Release:        0
 Summary:        The "Intelligent Input Bus" input method
 License:        LGPL-2.1-or-later
@@ -73,19 +72,15 @@ Patch12:        ibus-disable-engines-preload-in-GNOME.patch
 # Qt5 does not be update to the new version and patch for ibus on Leap 15,
 # it still needs this patch on leap 15. (boo#1187202)
 Patch15:        ibus-socket-name-compatibility.patch
-# PATCH-FIX-UPSTREAM ibus-ui-gtk3-restart-via-systemd.patch
-# Allow ibus-ui-gtk3 to restart ibus-daemon when it is launched by systemd
-Patch16:        ibus-ui-gtk3-restart-via-systemd.patch
-# PATCH-FIX-UPSTREAM ibus-gcc15.patch
-Patch17:        ibus-gcc15-1.patch
-# PATCH-FIX-UPSTREAM ibus-gcc15-2.patch
-Patch18:        ibus-gcc15-2.patch
 BuildRequires:  pkgconfig(dbusmenu-glib-0.4)
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.84.0
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(wayland-client) >= 1.2.0
+BuildRequires:  pkgconfig(wayland-protocols)
 %if ! 0%{?with_gtk4}
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
@@ -99,7 +94,6 @@ BuildRequires:  unicode-ucd
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(dconf) >= 0.7.5
-BuildRequires:  pkgconfig(glib-2.0) >= 2.34.0
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(libnotify) >= 0.7
 BuildRequires:  pkgconfig(python3)
@@ -124,9 +118,6 @@ Requires:       python3-gobject-Gdk
 # versions to 3.0 only.
 Requires:       typelib-1_0-Gtk-3_0
 Provides:       locale(ja;ko;zh)
-%if %{with_wayland}
-BuildRequires:  pkgconfig(wayland-client) >= 1.2.0
-%endif
 %if %{with_emoji}
 BuildRequires:  unicode-emoji
 BuildRequires:  pkgconfig(cldr-emoji-annotation)
@@ -240,16 +231,11 @@ cp -r %{SOURCE11} .
 %if 0%{?suse_version} <= 1500
 %patch -P 15 -p1
 %endif
-%patch -P 16 -p1
-%patch -P 17 -p1
-%patch -P 18 -p1
 
 %build
 %configure --disable-static \
            --libexecdir=%{_libexecdir}/ibus \
-%if %{with_wayland}
            --enable-wayland \
-%endif
 %if %{with_emoji}
            --enable-emoji-dict \
 %else
@@ -273,7 +259,9 @@ cp -r %{SOURCE11} .
            --disable-xim \
            --disable-gtk2 \
            --disable-gtk3 \
-           --enable-gtk4 \
+           --disable-tests \
+           --enable-gtk4
+# test code fails to build without xim
 %endif
 
 # non-parallel to have reproducible results in spite of non-deterministic build scripts https://github.com/ibus/ibus/issues/2272
