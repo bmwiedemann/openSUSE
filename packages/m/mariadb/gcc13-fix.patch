@@ -1,19 +1,7 @@
-Index: mariadb-10.11.3/storage/rocksdb/rocksdb/db/compaction/compaction_iteration_stats.h
+Index: b/storage/rocksdb/rocksdb/env/composite_env_wrapper.h
 ===================================================================
---- mariadb-10.11.3.orig/storage/rocksdb/rocksdb/db/compaction/compaction_iteration_stats.h
-+++ mariadb-10.11.3/storage/rocksdb/rocksdb/db/compaction/compaction_iteration_stats.h
-@@ -5,6 +5,7 @@
- 
- #pragma once
- 
-+#include <cstdint>
- #include "rocksdb/rocksdb_namespace.h"
- 
- struct CompactionIterationStats {
-Index: mariadb-10.11.3/storage/rocksdb/rocksdb/env/composite_env_wrapper.h
-===================================================================
---- mariadb-10.11.3.orig/storage/rocksdb/rocksdb/env/composite_env_wrapper.h
-+++ mariadb-10.11.3/storage/rocksdb/rocksdb/env/composite_env_wrapper.h
+--- a/storage/rocksdb/rocksdb/env/composite_env_wrapper.h
++++ b/storage/rocksdb/rocksdb/env/composite_env_wrapper.h
 @@ -5,6 +5,7 @@
  
  #pragma once
@@ -21,11 +9,11 @@ Index: mariadb-10.11.3/storage/rocksdb/rocksdb/env/composite_env_wrapper.h
 +#include <cstdint>
  #include "rocksdb/env.h"
  #include "rocksdb/file_system.h"
- 
-Index: mariadb-10.11.3/storage/rocksdb/rocksdb/include/rocksdb/utilities/checkpoint.h
+ #include "rocksdb/system_clock.h"
+Index: b/storage/rocksdb/rocksdb/include/rocksdb/utilities/checkpoint.h
 ===================================================================
---- mariadb-10.11.3.orig/storage/rocksdb/rocksdb/include/rocksdb/utilities/checkpoint.h
-+++ mariadb-10.11.3/storage/rocksdb/rocksdb/include/rocksdb/utilities/checkpoint.h
+--- a/storage/rocksdb/rocksdb/include/rocksdb/utilities/checkpoint.h
++++ b/storage/rocksdb/rocksdb/include/rocksdb/utilities/checkpoint.h
 @@ -8,6 +8,7 @@
  #pragma once
  #ifndef ROCKSDB_LITE
@@ -34,10 +22,10 @@ Index: mariadb-10.11.3/storage/rocksdb/rocksdb/include/rocksdb/utilities/checkpo
  #include <string>
  #include <vector>
  #include "rocksdb/status.h"
-Index: mariadb-10.11.3/storage/rocksdb/rocksdb/table/block_based/data_block_hash_index.h
+Index: b/storage/rocksdb/rocksdb/table/block_based/data_block_hash_index.h
 ===================================================================
---- mariadb-10.11.3.orig/storage/rocksdb/rocksdb/table/block_based/data_block_hash_index.h
-+++ mariadb-10.11.3/storage/rocksdb/rocksdb/table/block_based/data_block_hash_index.h
+--- a/storage/rocksdb/rocksdb/table/block_based/data_block_hash_index.h
++++ b/storage/rocksdb/rocksdb/table/block_based/data_block_hash_index.h
 @@ -7,6 +7,7 @@
  
  #include <string>
@@ -46,10 +34,10 @@ Index: mariadb-10.11.3/storage/rocksdb/rocksdb/table/block_based/data_block_hash
  
  #include "rocksdb/slice.h"
  
-Index: mariadb-10.11.3/storage/rocksdb/rocksdb/util/string_util.h
+Index: b/storage/rocksdb/rocksdb/util/string_util.h
 ===================================================================
---- mariadb-10.11.3.orig/storage/rocksdb/rocksdb/util/string_util.h
-+++ mariadb-10.11.3/storage/rocksdb/rocksdb/util/string_util.h
+--- a/storage/rocksdb/rocksdb/util/string_util.h
++++ b/storage/rocksdb/rocksdb/util/string_util.h
 @@ -10,6 +10,7 @@
  #include <string>
  #include <unordered_map>

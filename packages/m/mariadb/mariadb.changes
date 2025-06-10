@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun  5 17:11:37 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 11.8.2:
+    https://mariadb.com/kb/en/mariadb-11-8-2-release-notes/
+    https://mariadb.com/kb/en/mariadb-11-8-2-changelog/
+- Remove patch included in upstream release
+  * mariadb-11.7.2-MDEV-36078-PCRE2-10.45-breaks-main.func_regexp_pcre-.patch
+- Refresh gcc13-fix.patch
+
+-------------------------------------------------------------------
 Wed May  7 14:04:55 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update list of skipped tests 

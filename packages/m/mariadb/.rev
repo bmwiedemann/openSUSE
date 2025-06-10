@@ -2008,4 +2008,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-01/msg00544.html for more co
     <comment></comment>
     <requestid>1275334</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>ea7bf65ae83f4adca36a6572f79ab745</srcmd5>
+    <version>11.8.2</version>
+    <time>1749538771</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1283657</requestid>
+  </revision>
 </revisionlist>
