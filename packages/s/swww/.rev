@@ -133,4 +133,15 @@
 </comment>
     <requestid>1269970</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0d717efdca3fdf0e26e41545ea4d47fa</srcmd5>
+    <version>0.10.3</version>
+    <time>1749539188</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1284273 from jlkDE
+
+- Update to version 0.10.3:
+  * check if wl_output contains the CURRENT mode</comment>
+    <requestid>1284274</requestid>
+  </revision>
 </revisionlist>

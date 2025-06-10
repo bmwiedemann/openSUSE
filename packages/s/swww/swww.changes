@@ -1,4 +1,238 @@
 -------------------------------------------------------------------
+Mon Jun  9 19:34:32 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.10.3:
+  * check if wl_output contains the CURRENT mode
+
+-------------------------------------------------------------------
+Mon Jun 09 11:19:09 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.10.2:
+  * do not accept wl_output modes that are not current
+  * prioritize fractional scale events
+  * update waybackend dependency
+  * fix fractional scaling
+  * use tiny-bench instead of criterion
+
+-------------------------------------------------------------------
+Mon Jun 09 02:04:10 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.10.0:
+  * version 0.10
+  * update swww-daemon man page
+  * update dependencies
+  * Merge pull request #423 from LGFae/configurable-layer
+  * allow the user to set which Layer they would prefer to render in
+  * Merge pull request #420 from LGFae/delete-nix-tests
+  * delete `build.nix` and the nix tests
+  * Merge pull request #410 from LGFae/waybackend
+  * fix cargo-clippy
+  * try to fix CI
+  * Merge pull request #415 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * update dependencies
+  * update .gitignore test_images path
+  * update README with new build dependencies
+  * fix most of CI
+  * rewrite using waybackend
+  * update dependencies
+  * Merge pull request #406 from Axlefublr/main
+  * Merge pull request #408 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * fix readme
+  * Merge pull request #395 from LGFae/update_flake_lock_action
+  * Merge pull request #391 from rubiefawn/updated_example_scripts
+  * Merge pull request #403 from filip-rs/main
+  * Updated swww_randomize_multi.sh to be executable
+  * flake.lock: Update
+  * Fix misuse of read(1) and unset(1)
+  * Restore deleted comment
+  * Make swww_randomize.sh and swww_randomize_multi.sh scripts more POSIX-friendly
+  * Merge pull request #387 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Merge pull request #383 from LGFae/remove-most-static-muts
+  * remote most static muts from globals
+  * fix warnings and update MSRV to 1.82
+  * Merge pull request #375 from kerty0/main
+  * Merge pull request #381 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Add wallpaper refresh on monitor configuration change
+  * Fix crush when changing monitor configuration
+  * Merge pull request #376 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Fix memory leak and stopped animation
+  * Merge pull request #372 from kerty0/main
+  * Fix swww restore error handling
+  * update MSRV
+  * update dependencies
+  * Merge pull request #373 from rexept/resize-features
+  * formatted + typo fix
+  * more concise definition
+  * added to docs
+  * added resize-stretch feature
+  * Update old cache handling
+  * Fix crush when using solid color
+  * Add filter caching
+  * Merge pull request #371 from mendess/mendess/fix-animation-cache
+  * Fix animation cache not working when image is behind a symlink
+  * Merge pull request #366 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Merge pull request #360 from iynaix/main
+  * fix reading image from stdin
+  * Merge pull request #358 from mstoeckl/fix-wayl-sock
+  * Merge pull request #359 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Fix connecting to Wayland via WAYLAND_SOCKET
+  * Merge pull request #352 from LGFae/nuke-multithreading
+  * FractionalScaleManager and PollTime structs
+  * small refactors
+  * stop animations when output disconnects
+  * Arc -> Rc; Mutex -> RefCell
+  * finish up first implementation
+  * step 1: structs for trantition's internal state
+  * fix autocompletion with swww img `file`
+  * debug assertion on ipc sending shm fd wildly wrong
+  * fix debug assertion of ipc Codes shm fds
+  * fix socket naming
+  * Merge pull request #327 from LGFae/better-socket-location-defaults
+  * update dependencies
+  * fix documentation indentation
+  * better defaults for when we can't read env vars
+  * Merge pull request #340 from cplir-c/cplir-c-randomize-multi
+  * Merge pull request #349 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Move `break 2` else clause to inside the "no image" check so it doesn't run every time
+  * Comment swww_randomize_multi.sh and normalize
+  * add example_scripts/swww_randomize_multi.sh
+  * Merge pull request #339 from LGFae/revert-333-main
+  * Revert "Refactor IPC handling in both client and daemon"
+  * Merge pull request #338 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Merge pull request #333 from rkuklik/main
+  * Merge pull request #334 from Not-Glunk/swww-fix-typos
+  * Fix typos
+  * fix(daemon): rt dir creation
+  * refactor(client): consolidate IPC logic
+  * fix(daemon): unused imports
+  * refactor(daemon): move init more to relevant structs
+  * refactor(daemon): extract `Daemon` into separate module
+  * Merge pull request #331 from rkuklik/main
+  * refactor(mmap): minor fonction movement
+  * refactor(mmap): unify `Mapped'thing'` with generic bool
+  * refactor(mmap): extract into top level module
+  * refactor(ipc): rework messaging format v1
+  * refactor(ipc): replace old methods with new
+  * refactor(socket): introduce new `IpcSocket` type
+  * refactor(ipc): get rid of unused `Answer::Err`
+  * fix: resolver should be set to "2" in top level manifest
+  * Merge pull request #330 from rkuklik/main
+  * fix(script): update singe file on version change
+  * fix(ci): nix build version extraction
+  * fix(ci): `rust-version` detection and formatting
+  * refactor(naming): rename utils to common
+  * refactor(workspace): separate project into 3 folders
+  * fix protocol error when destroying Wallpaper
+  * Merge pull request #230 from WhyNotHugo/main
+  * Drop 'init` command
+  * Merge pull request #195 from flick0/colour
+  * Merge pull request #324 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Merge pull request #323 from LGFae/trim-dev-dependencies
+  * trim dependencies: criterion features and fastrand
+  * Merge pull request #322 from ettancos/main
+  * daemon: guard against unnecessary blocking read if there is no payload
+  * fix conflicts
+  * Merge branch 'main' into colour
+  * workaround for not using Option<image::RgbImage>
+  * Merge pull request #319 from JohnRTitor/add-workflows
+  * Merge pull request #318 from LGFae/update_flake_lock_action
+  * workflows: add CI nix-tests workflow
+  * workflows: update-flake-lock should now run monthly
+  * pick a file starting with 0x if exists before using it as color
+  * add comment for Color
+  * nuke `spin_sleep` dependency
+  * do not use `image`'s default features
+  * flake.lock: Update
+  * update fast_image_resize to version 4.0.0
+  * Merge pull request #316 from LGFae/unmap-when-idle
+  * Merge pull request #315 from LGFae/custom-wayland-backend
+  * update libc
+  * Merge pull request #313 from kovidgoyal/patch-1
+  * Add kitty as an alternative
+  * Merge pull request #312 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * document `BumpPool` better
+  * unmap shared memory when idle
+  * wait for animation threads on normal exit
+  * ensure buffers are destroyed before the shm_pool
+  * better error handling
+  * send all draw-related requests in one single msg
+  * stop animations at exit
+  * remember to notify systemd
+  * fix animation timings
+  * improve ObjectManager to not use the BinaryHeap
+  * document our custom wayland implementation
+  * manual wayland implementation for swww-daemon
+  * bump master version to force rebuilding the cache
+  * Merge pull request #305 from LGFae/zero-copy-serialization
+  * fix rustix features and put utils in workspace
+  * increase MSRV to 1.75.0
+  * off by one error when caching animation frames
+  * refactor ipc into multiple modules
+  * serialize directly onto mmaped file
+  * mmap file when reading cache
+  * mmap only parts of the shm we care about
+  * do not copy over images and animations
+  * fix wrong inversion in y axis during transitions
+  * Merge pull request #309 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Merge pull request #306 from JohnRTitor/add-flake
+  * Merge pull request #308 from JaKooLit/main
+  * replaced deprecated swww init commands with swww-daemon
+  * README: add instructions for NixOS users
+  * workflows: add update-flake-lock workflow that will run weekly
+  * Nix: allow building swww from the source directly
+  * fix off by one error when receiving image request
+  * unwrap on thread::Builder::spawn
+  * nuke rayon from `swww-daemon`
+  * Merge pull request #302 from LGFae/faster-wave
+  * refactor transitions common byte changing code
+  * faster wave transition
+  * faster wipe transition
+  * Merge pull request #301 from LGFae/fix-output-transforms
+  * fix output transforms
+  * faster grow and outer transitions
+  * fix `clear` not flushing the wayland fd
+  * faster simple and fade transitions
+  * remove allow-git for bitcode
+  * nuke simplelog and use a custom log implementation
+  * Merge pull request #299 from LGFae/manual-serializer
+  * minor refactors
+  * use just one request for animated images
+  * fix loading cached animation frames
+  * return std::io::Result for the cache mod functions
+  * refactor out common socket code
+  * remove unsafe from deserializer
+  * move all memory map functions into utils/ipc
+  * delete extra prints
+  * only truncate the shared mem file when necessary
+  * do not copy to intermediate buffer
+  * use shared memory for large transfers
+  * use rustix sockets instead of std
+  * manually serialize answers
+  * manually serialize requests
+  * Merge pull request #298 from LGFae/remove-codecoverage-from-ci
+  * remove llvm-cov from CI
+  * v0.9.5
+  * flush the wayland_fd correctly from animations
+  * update TODO
+  * specialized function for `none` transition type
+  * Merge pull request #296 from LGFae/fix-initial-black-screen
+  * Merge pull request #297 from hkupty/remove-unused
+  * refactor: Remove unused mutable buffer
+  * fix initial black screen due to late configuration
+
+-------------------------------------------------------------------
 Wed Apr 16 09:01:56 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update vendored dependencies
@@ -304,3 +538,4 @@ Sun Oct 09 11:07:06 UTC 2022 - uncomfy+openbuildservice@uncomfyhalomacro.pl
 Sun Oct  9 06:37:58 UTC 2022 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Initial spec for swww version 0.4.3
+

@@ -26,7 +26,7 @@
 
 
 Name:           swww
-Version:        0.9.5
+Version:        0.10.3
 Release:        0
 Summary:        Wallpaper daemon for Wayland
 License:        GPL-3.0-only
@@ -38,6 +38,11 @@ BuildRequires:  rust+cargo >= 1.74.0
 BuildRequires:  scdoc
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-cursor)
+BuildRequires:  pkgconfig(wayland-egl)
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
+BuildRequires:  pkgconfig(wayland-server) >= 1.20.0
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description
