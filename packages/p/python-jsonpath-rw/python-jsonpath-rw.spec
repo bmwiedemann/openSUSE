@@ -16,11 +16,8 @@
 #
 
 
-# detritus in /etc/alternatives from brp-python-bytecompile must be removed
-%define __os_install_post %(echo '%__os_install_post; \
-  rm -f %{buildroot}%{_sysconfdir}/alternatives/jsonpath.pyo; \
-  rm -f %{buildroot}%{_sysconfdir}/alternatives/jsonpath.pyc')
 %define modname jsonpath-rw
+%bcond_without libalternatives
 Name:           python-jsonpath-rw
 Version:        1.4.0
 Release:        0
@@ -34,12 +31,12 @@ BuildRequires:  %{python_module ply}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-decorator
 Requires:       python-ply >= 3.4
 Requires:       python-six
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -64,11 +61,9 @@ sed -i '/^#!/ d' jsonpath_rw/bin/jsonpath.py
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/jsonpath.py
 
-%post
-%python_install_alternative jsonpath.py
-
-%postun
-%python_uninstall_alternative jsonpath.py
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative jsonpath.py
 
 %files %{python_files}
 %doc README.rst
