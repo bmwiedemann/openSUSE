@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-pifpaf
 Version:        3.1.5
 Release:        0
@@ -26,8 +27,10 @@ Source:         https://files.pythonhosted.org/packages/source/p/pifpaf/pifpaf-%
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-Jinja2
 Requires:       python-click
 Requires:       python-daiquiri
@@ -37,8 +40,6 @@ Requires:       python-requests
 Requires:       python-testrepository
 Requires:       python-testtools
 Requires:       python-xattr
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -61,11 +62,8 @@ export LC_ALL=en_US.utf8
 %python_clone -a %{buildroot}%{_bindir}/pifpaf
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative pifpaf
-
-%postun
-%python_uninstall_alternative pifpaf
+%pre
+%python_libalternatives_reset_alternative pifpaf
 
 %check
 # rather integration tests
