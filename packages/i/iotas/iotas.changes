@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat Jun  7 18:40:25 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.11.1:
+  * New features:
+    - Desktop action for "New Note".
+    - D-Bus activatability.
+    - Initial unit tests. 
+  * Changes:
+    - Improved error handling in shell search.
+    - Simplified action handling.
+    - CSS deprecations for libadwaita v1.7.
+  * Fixes:
+    - Wrong note could be used when jumping to previous note with
+      Ctrl + L.
+    - Short lived contextual header bars (eg. rename, search, etc)
+      have their right side title buttons hidden but not their
+      left.
+    - Link at the start of the first line in a note not being
+      correctly identified for the formatting toolbar/shortcut and
+      ctrl-click to open link in the editor.
+    - Race condition failure when starting search from CLI for the
+      shell provider.
+    - Preceding markup underscores not being stripped from
+      excerpt.
+  * Updated translations.
+- Changes from version 0.11.0:
+  * New features:
+    - Ability to jump to other sections of the note being edited
+      via an outline (glgo#World/iotas#188).
+    - Shortcut help to open previous note.
+  * Changes:
+    - Clearer wording for onboarding help (glgo#World/iotas#189).
+    - Consistency / HIG tweak to menu strings.
+    - Use provided timestamp when launching from shell search
+      results.
+    - The editor closes if the note is remotely deleted.
+  * Fix: Can't overwrite previous HTML exports.
+  * Updated translations.
+- Add iotas-optional-pypandoc.patch: Make pypandoc optional so
+  that app does not crash when it is unavailable on system
+  (glgo#World/iotas#291); upstream merge request.
+- Drop tests and %check section: now requires pandoc.
+- Promote python3-linkify-it-py to Requires; now necessary for
+  markdown preview.
+
+-------------------------------------------------------------------
+Thu Jun  5 14:39:38 UTC 2025 - Elisei Roca <eroca@suse.com>
+
+- Add recommends for built-in features
+  * sync with Nextcloud Notes 
+      Recommends: python3-requests
+  * export notes to various formats
+      Suggests: python3-linkify-it-py
+      Suggests: python3-markdown-it-py
+      Suggests: python3-mdit-py-plugins
+      Suggests: python3-pypandoc
+
+-------------------------------------------------------------------
 Thu Jun  5 06:09:43 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add Requires: python3-packaging (boo#1244106).

@@ -17,12 +17,14 @@
 
 
 Name:           iotas
-Version:        0.10.3
+Version:        0.11.1
 Release:        0
 Summary:        Distraction-free note taking app with optional cloud sync
 License:        GPL-3.0-or-later
 URL:            https://apps.gnome.org/Iotas/
 Source:         https://gitlab.gnome.org/World/iotas/-/archive/%{version}/%{name}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM iotas-optional-pypandoc.patch glgo#World/iotas#291 badshah400@gmail.com -- Make pypandoc optional so that app does not crash when it is unavailable on system
+Patch0:         iotas-optional-pypandoc.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
@@ -34,8 +36,14 @@ BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gtksourceview-5)
 BuildRequires:  pkgconfig(libadwaita-1)
 Requires:       python3-gobject-Gdk
+Requires:       python3-linkify-it-py
 Requires:       python3-packaging
 Requires:       python3-pygtkspellcheck
+Requires:       python3-urllib3
+Recommends:     python3-requests
+Suggests:       python3-markdown-it-py
+Suggests:       python3-mdit-py-plugins
+Suggests:       python3-pypandoc
 BuildArch:      noarch
 
 %description
@@ -75,14 +83,12 @@ sed -Ei "1{/^#\!@PYTHON@/d}" iotas/const.py.in
 # Remove build files from installed dirs
 rm %{buildroot}%{python3_sitelib}/markdown_it_*/meson.*
 
-%check
-%meson_test
-
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/iotas
 %{_datadir}/applications/org.gnome.World.Iotas.desktop
+%{_datadir}/dbus-1/services/org.gnome.World.Iotas.service
 %{_datadir}/glib-2.0/schemas/org.gnome.World.Iotas.gschema.xml
 %{_datadir}/gtksourceview-5/language-specs/iotas-markdown.lang
 %{_datadir}/gtksourceview-5/styles/iotas-*.xml
