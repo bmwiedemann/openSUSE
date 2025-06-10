@@ -40,7 +40,7 @@ Requires:       debootstrap
 Requires:       dirmngr
 Requires:       dosfstools
 Requires:       e2fsprogs
-Requires:       git
+Requires:       git-core
 Requires:       gpg2
 Requires:       gptfdisk
 Requires:       gzip

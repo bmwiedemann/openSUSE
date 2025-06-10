@@ -68,4 +68,13 @@
     <comment>- add fix-CVE-2025-22872.patch, for fixing bsc#1241834 (forwarded request 1272489 from rrahl0)</comment>
     <requestid>1272490</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>5ed528b3fae5ad3afbc0dbd18209136b</srcmd5>
+    <version>3.2</version>
+    <time>1749539149</time>
+    <user>anag_factory</user>
+    <comment>- require the smaller package git-core, not git (which includes
+  git gui) (forwarded request 1283923 from rrahl0)</comment>
+    <requestid>1283924</requestid>
+  </revision>
 </revisionlist>
