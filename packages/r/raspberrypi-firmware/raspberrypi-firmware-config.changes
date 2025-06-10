@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Jun  5 16:30:22 UTC 2025 - Matthias Brugger <mbrugger@suse.com>
+
+- Update to 46ddec9 (2025-06-05)
+  * firmware: filesystem: Fix booting from MBR partition 4
+    See: https://github.com/raspberrypi/rpi-eeprom/issues/705
+  * firmware: arm_loader: GET_CLOCKS: Set useful response length
+  * firmware: arm_loader: Correct some mailbox response lengths
+    See: https://github.com/raspberrypi/firmware/issues/1968
+  * firmware: bootloader: Ensure the initramfs matches the kernel (take 2)
+    See: https://github.com/raspberrypi/firmware/issues/1965
+  * firmware: Vl805 reset improvements
+  * firmware: platform: Rev 1.4 3B+ also needs the NO_BT_ON trait
+    https://github.com/raspberrypi/firmware/issues/1611#issuecomment-2730161321
+  * firmware: filesystem: Don't look for boot-partition inside hybrid-GPT partitions
+    See: https://github.com/raspberrypi/firmware/issues/1953
+  * firmware: Add support for the current_supply HAT+ property
+  * firmware: firmware: Add support for [partition=N] config.txt on Pi 4
+  * firmware: Add memory barrier to the mbox handler
+    See: https://github.com/raspberrypi/firmware/issues/1944
+  * firmware: support dts files with size-cells of 2
+  * firmware: arm_dt: Add support for a 64-bit serial number on Pi4 and older platforms
+  * firmware: platform: 2711: Prune the SPI EEPROM pins
+  * firmware: filesystem: GPT autoboot/reboot partition number fixes for Pi4 and older
+  * firmware: Add support for software uart using the second VPU core
+    See: https://github.com/raspberrypi/linux/pull/6502
+  * firmware: platform: Enable initial_turbo=60 by default
+  * firmware: arm_loader: Add system_heap.max_order=0 when needed
+  * firmware: imx500: selectively increase i2c_vc_baudrate based on FW version
+  * firmware: platform: 2711: Avoid increasing arm frequency when throttling
+    See: https://forums.raspberrypi.com/viewtopic.php?t=377384
+  * firmware: arm_loader: Populate number of numa nodes based on sdram configuration
+  * firmware: arm_dt: Support non-UUID HAT mapping
+    See: https://forums.raspberrypi.com/viewtopic.php?t=377333
+  * firmware: Switch to ffmpeg style interlace detection
+    See: https://github.com/LibreELEC/LibreELEC.tv/issues/8960
+
+-------------------------------------------------------------------
 Tue Sep  3 12:17:09 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to bf12222 (2024-08-30):
