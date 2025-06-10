@@ -16,8 +16,10 @@
 #
 
 
+%bcond_without libalternatives
+%{?sle15_python_module_pythons}
 Name:           python-meshtastic
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        A Python client for use with Meshtastic devices
 License:        GPL-3.0-only
@@ -28,8 +30,10 @@ BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-PyYAML >= 6.0.1
 Requires:       python-bleak >= 0.22.3
 Requires:       python-packaging
@@ -38,8 +42,6 @@ Requires:       python-pypubsub >= 4.0.3
 Requires:       python-pyserial >= 3.5
 Requires:       python-requests >= 2.31.0
 Requires:       python-tabulate >= 0.9.0
-Requires(post): alts
-Requires(postun): alts
 Recommends:     python-dbus-fast
 BuildArch:      noarch
 %python_subpackages
@@ -60,15 +62,10 @@ A Python client for use with Meshtastic devices. This small library (and example
 %python_clone -a %{buildroot}%{_bindir}/mesh-tunnel
 %python_clone -a %{buildroot}%{_bindir}/meshtastic
 
-%post
-%python_install_alternative mesh-analysis
-%python_install_alternative mesh-tunnel
-%python_install_alternative meshtastic
-
-%postun
-%python_uninstall_alternative mesh-analysis
-%python_uninstall_alternative mesh-tunnel
-%python_uninstall_alternative meshtastic
+%pre
+%python_libalternatives_reset_alternative mesh-analysis
+%python_libalternatives_reset_alternative mesh-tunnel
+%python_libalternatives_reset_alternative meshtastic
 
 %files %{python_files}
 %license LICENSES/GPL-3.0-only.txt

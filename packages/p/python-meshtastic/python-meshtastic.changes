@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun  9 12:29:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives
+
+-------------------------------------------------------------------
+Fri Jun  6 12:55:01 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.3
+  * This release updates protobufs to v2.6.7, and fixes a small
+    error in admin message handling (the prior code was not
+    properly requesting acknowledgements).
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Fri Apr 25 06:54:57 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to 2.6.2:

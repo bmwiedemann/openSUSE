@@ -46,4 +46,18 @@
     <comment></comment>
     <requestid>1272606</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3527ee7a1bdcaf9acd149e7231f7474f</srcmd5>
+    <version>2.6.3</version>
+    <time>1749539224</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives
+
+- Update to 2.6.3
+  * This release updates protobufs to v2.6.7, and fixes a small
+    error in admin message handling (the prior code was not
+    properly requesting acknowledgements).
+- Use Python 3.11 on SLE-15 by default</comment>
+    <requestid>1284172</requestid>
+  </revision>
 </revisionlist>
