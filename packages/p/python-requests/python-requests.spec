@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ URL:            https://docs.python-requests.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requests/requests-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#psf/requests#6731
 Patch0:         inject-default-ca-bundles.patch
+# PATCH-FIX-UPSTREAM CVE-2024-47081.patch gh#psf/requests#6965, bsc#1244039
+Patch1:         CVE-2024-47081.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

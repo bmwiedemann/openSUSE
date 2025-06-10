@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  5 07:22:39 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add CVE-2024-47081.patch upstream patch, fixes netrc credential leak
+  (gh#psf/requests#6965, CVE-2024-47081, bsc#1244039)
+
+-------------------------------------------------------------------
 Thu Oct 24 07:48:08 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros. 

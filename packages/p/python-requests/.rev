@@ -934,4 +934,13 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1217932</requestid>
   </revision>
+  <revision rev="86" vrev="5">
+    <srcmd5>57955e90c62b2ced36acd687e9cd68fe</srcmd5>
+    <version>2.32.3</version>
+    <time>1749538639</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2024-47081.patch upstream patch, fixes netrc credential leak
+  (gh#psf/requests#6965, CVE-2024-47081, bsc#1244039)</comment>
+    <requestid>1282999</requestid>
+  </revision>
 </revisionlist>
