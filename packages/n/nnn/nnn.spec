@@ -29,11 +29,7 @@ Source99:       nnn.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 Recommends:     sshfs
-%if 0%{?leap_version} == 420300
-BuildRequires:  ncurses-devel
-%else
 BuildRequires:  pkgconfig(ncursesw)
-%endif
 
 %description
 nnn is a fork of noice, a terminal file browser with keyboard

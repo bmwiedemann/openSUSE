@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  6 11:05:14 UTC 2025 - Max Lin <mlin@suse.com>
+
+- Remove leap_version macro
+  * leap_version is no available and Leap 42.x series is EOL
+
+-------------------------------------------------------------------
 Sat Feb  8 21:02:27 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0:
