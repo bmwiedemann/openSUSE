@@ -1,7 +1,7 @@
 #
 # spec file for package rav1e
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020 Andreas Schneider <asn@cryptomilk.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,10 @@
 #
 
 
+%define sover 0_8
+
 Name:           rav1e
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Fastest and safest AV1 encoder
 # rav1e is published under the terms of the BSD-2-Clause license,
@@ -62,11 +64,11 @@ rav1e features:
 * Variable speed settings
 * Near real-time encoding at high speed levels
 
-%package -n librav1e0_7
+%package -n librav1e%{sover}
 Summary:        AV1 encoder library
 Group:          System/Libraries
 
-%description -n librav1e0_7
+%description -n librav1e%{sover}
 rav1e is an AV1 video encoder libary. It is designed to eventually cover all
 use cases, though in its current form it is most suitable for cases where
 libaom (the reference encoder) is too slow.
@@ -74,7 +76,7 @@ libaom (the reference encoder) is too slow.
 %package devel
 Summary:        Development files for rav1e
 Group:          Development/Libraries/C and C++
-Requires:       librav1e0_7 = %{version}
+Requires:       librav1e%{sover} = %{version}
 
 %description devel
 The rav1e-devel package contains libraries and header files for
@@ -105,12 +107,12 @@ cargo cinstall \
 rm -f %{buildroot}%{_libdir}/librav1e.a
 rm -f %{buildroot}%{_prefix}/.crates*
 
-%ldconfig_scriptlets -n librav1e0_7
+%ldconfig_scriptlets -n librav1e%{sover}
 
 %files
 %{_bindir}/rav1e
 
-%files -n librav1e0_7
+%files -n librav1e%{sover}
 %license LICENSE
 %{_libdir}/librav1e.so.*
 
