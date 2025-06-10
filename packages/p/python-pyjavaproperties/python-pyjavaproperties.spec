@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyjavaproperties
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Abel Luck <abel@guardianproject.info>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://bitbucket.org/skeptichacker/pyjavaproperties
 Source0:        https://files.pythonhosted.org/packages/source/p/pyjavaproperties/pyjavaproperties-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-base
@@ -40,10 +42,10 @@ A python library for parsing Java properties files.
 sed -i '/^#!/d' pyjavaproperties.py pyjavaproperties_test.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # Upstream patch to not install test module
 # https://bitbucket.org/skeptichacker/pyjavaproperties/pull-requests/1
 %{python_expand rm %{buildroot}%{$python_sitelib}/pyjavaproperties_test.py
@@ -56,6 +58,8 @@ sed -i '/^#!/d' pyjavaproperties.py pyjavaproperties_test.py
 %files %{python_files}
 %license LICENSE
 %doc README.rst CHANGELOG.txt
-%{python_sitelib}/*
+%{python_sitelib}/pyjavaproperties.py
+%{python_sitelib}/pyjavaproperties-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/pyjavaproperties*
 
 %changelog

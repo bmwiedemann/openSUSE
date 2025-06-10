@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 10 07:25:47 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri Sep 11 10:44:33 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove pyjavaproperties_test.py from runtime package
