@@ -2673,4 +2673,13 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.17, try #2 (forwarded request 1280892 from favogt)</comment>
     <requestid>1280901</requestid>
   </revision>
+  <revision rev="159" vrev="2">
+    <srcmd5>c16f9549f00027775fa4e585beec64ee</srcmd5>
+    <version>5.15.17+kde122</version>
+    <time>1749538766</time>
+    <user>anag_factory</user>
+    <comment>- Add patch (CVE-2025-5455, boo#1243958)
+  * CVE-2025-5455.patch</comment>
+    <requestid>1283610</requestid>
+  </revision>
 </revisionlist>
