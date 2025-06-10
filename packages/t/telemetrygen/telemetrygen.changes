@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sun Jun 08 07:15:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to version 0.127.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.127.0
+- update to version 0.126.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.126.0
+- update to version 0.125.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.125.0
+- update to version 0.124.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.124.0
+- update to version 0.123.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.123.0
+- update to version 0.122.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.122.0
+- update to version 0.121.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.121.0
+- update to version 0.120.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.120.0
+- update to version 0.119.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.119.0
+- update to version 0.118.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.118.0
+- update to version 0.117.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.117.0
+- update to version 0.116.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.116.0
+- update to version 0.115.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.115.0
+- update to version 0.114.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.114.0
+- update to version 0.113.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.113.0
+- update to version 0.112.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.112.0
+- update to version 0.111.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.111.0
+- update to version 0.110.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.110.0
+- update to version 0.109.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.109.0
+- update to version 0.108.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.108.0
+- update to version 0.107.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.107.0
+- update to version 0.106.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.106.0
+- update to version 0.105.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.105.0
+- update to version 0.104.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.104.0
+- update to version 0.103.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.103.0
+- update to version 0.102.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.102.0
+- update to version 0.101.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.101.0
+- update to version 0.100.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.100.0
+- update to version 0.99.0:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.99.0
+
+-------------------------------------------------------------------
 Tue Apr 16 13:22:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package telemetrygen: Telemetry generator for OpenTelemetry

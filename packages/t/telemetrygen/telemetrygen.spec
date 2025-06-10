@@ -1,7 +1,7 @@
 #
 # spec file for package telemetrygen
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,23 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           telemetrygen
-Version:        0.98.0
+Version:        0.127.0
 Release:        0
 Summary:        Telemetry generator for OpenTelemetry
 License:        Apache-2.0
 URL:            https://github.com/open-telemetry/opentelemetry-collector-contrib
-Source0:        opentelemetry-collector-contrib-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source2:        LICENSE
-BuildRequires:  go >= 1.22
+BuildRequires:  golang(API) >= 1.23
 
 %description
-This utility simulates a client generating traces, metrics, and logs. It is useful for testing and demonstration purposes.
+This utility simulates a client generating traces, metrics, and logs. It is
+useful for testing and demonstration purposes.
 
 %prep
-%autosetup -p 1 -n opentelemetry-collector-contrib-%{version}
-%setup -a 1 -n opentelemetry-collector-contrib-%{version}/cmd/telemetrygen/
-
-cp %{SOURCE2} .
+%autosetup -p 1
+%setup -a 1 -n %{name}-%{version}/cmd/telemetrygen/
 
 %build
 go build \
@@ -47,6 +43,8 @@ go build \
 %install
 # Install the binary.
 install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
+
+cp ../../LICENSE .
 
 %check
 
