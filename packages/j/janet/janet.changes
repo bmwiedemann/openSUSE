@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun  8 12:49:45 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Use lua scriptlets to define somajor and sominor macros.
+- Cleanup and fix list of installed files
+
+-------------------------------------------------------------------
 Wed Apr 16 10:52:03 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 1.38.0:

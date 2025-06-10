@@ -16,13 +16,27 @@
 #
 
 
-%global somajor 1
-%global sominor 38
-%global revision 0
-%global libname libjanet%{somajor}_%{sominor}
-
 Name:           janet
-Version:        %{somajor}.%{sominor}.%{revision}
+Version:        1.38.0
+%{lua:
+local version = rpm.expand("%{version}")
+local i = 1
+local matches = string.gmatch(version, "%d+")
+for m in matches
+do
+	if i == 1 then
+	rpm.define("somajor " .. m)
+	end
+	if i == 2 then
+	rpm.define("sominor " .. m)
+	end
+	if i == 3 then
+	rpm.define("revision " .. m)
+	end
+	i = i + 1
+end
+}
+%define libname libjanet%{somajor}_%{sominor}
 Release:        0
 Summary:        Lisp-like functional and imperative programming language
 License:        MIT
@@ -99,7 +113,7 @@ rm %{buildroot}%{_libdir}/janet/.keep
 %dir %{_libdir}/janet
 %dir %{_includedir}/janet
 
-%if 0%{?suse_version} > 1600 || 0%{?sle_version} == 150500 && 0%{?is_opensuse}
+%if 0%{?suse_version} && 0%{?is_opensuse}
 %{_includedir}/janet.h
 %endif
 
