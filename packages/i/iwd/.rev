@@ -529,4 +529,12 @@
   * Add support for option to disable SAE for broken drivers. (forwarded request 1267385 from alois)</comment>
     <requestid>1267426</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>d4a465974ba2c5fde87c98033b993cea</srcmd5>
+    <version>3.8</version>
+    <time>1749539121</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.8</comment>
+    <requestid>1283888</requestid>
+  </revision>
 </revisionlist>

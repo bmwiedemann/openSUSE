@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun  6 17:55:19 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add iwd-dbus_policy.patch to address rpmlint complaints.
+
+-------------------------------------------------------------------
+Thu Jun  5 08:25:33 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.8
+  * Fix issue with handling unit tests and missing kernel
+    features.
+  version 3.7:
+  * Fix issue with handling length of EncryptedSecurity.
+  * Fix issue with handling empty affinities lists.
+  * Fix issue with handling survey scanning results.
+  * Fix issue with handling duplicate values in DPP URI.
+
+-------------------------------------------------------------------
 Sun Apr  6 09:06:50 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.6

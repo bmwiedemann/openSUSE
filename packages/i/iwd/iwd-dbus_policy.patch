@@ -1,0 +1,30 @@
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: 2025-06-07 05:54:10 +0000
+References: https://bugzilla.suse.com/show_bug.cgi?id=1244137
+
+Resolve a number of errors pointed out by rpmlint.
+
+```
+iwd.x86_64: E: dbus-policy-allow-without-destination <allow send_interface="net.connman.iwd.Agent"/> /usr/share/dbus-1/system.d/iwd-dbus.conf
+iwd.x86_64: E: dbus-policy-allow-without-destination <allow send_interface="net.connman.iwd.SignalLevelAgent"/> /usr/share/dbus-1/system.d/iwd-dbus.conf
+iwd.x86_64: E: dbus-policy-allow-without-destination <allow send_interface="net.connman.iwd.SharedCodeAgent"/> /usr/share/dbus-1/system.d/iwd-dbus.conf
+'allow' directives must always specify a 'send_destination'.
+```
+
+Index: iwd-3.8/src/iwd-dbus.conf
+===================================================================
+--- iwd-3.8.orig/src/iwd-dbus.conf
++++ iwd-3.8/src/iwd-dbus.conf
+@@ -10,9 +10,9 @@
+   <policy user="root">
+     <allow own="net.connman.iwd"/>
+     <allow send_destination="net.connman.iwd"/>
+-    <allow send_interface="net.connman.iwd.Agent"/>
+-    <allow send_interface="net.connman.iwd.SignalLevelAgent"/>
+-    <allow send_interface="net.connman.iwd.SharedCodeAgent"/>
++    <allow send_interface="net.connman.iwd.Agent" send_destination="net.connman.iwd"/>
++    <allow send_interface="net.connman.iwd.SignalLevelAgent" send_destination="net.connman.iwd"/>
++    <allow send_interface="net.connman.iwd.SharedCodeAgent" send_destination="net.connman.iwd"/>
+   </policy>
+ 
+   <policy group="wheel">
