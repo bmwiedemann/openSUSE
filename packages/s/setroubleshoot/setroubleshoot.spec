@@ -50,6 +50,7 @@ BuildRequires:  polkit-devel
 BuildRequires:  python3-dasbus
 BuildRequires:  pkgconfig(audit) >= 3.0.1
 BuildRequires:  pkgconfig(dbus-glib-1)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(python3)
 #BuildRequires:  python3-devel

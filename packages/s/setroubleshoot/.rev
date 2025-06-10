@@ -70,4 +70,14 @@
     <comment></comment>
     <requestid>1251222</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e0e05e57794ddcf90bcdd3843692299a</srcmd5>
+    <version>3.3.35</version>
+    <time>1749538760</time>
+    <user>anag_factory</user>
+    <comment>- Add pkgconfig(gobject-introspection-1.0) BuildRequires: inspect
+  the python code and detect typelib() dependencies.
+</comment>
+    <requestid>1283563</requestid>
+  </revision>
 </revisionlist>
