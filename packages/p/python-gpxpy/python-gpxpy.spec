@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-gpxpy
 Version:        1.6.2
 Release:        0
@@ -27,10 +28,10 @@ Source:         https://files.pythonhosted.org/packages/source/g/gpxpy/gpxpy-%{v
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): alts
-Requires(postun): alts
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -52,11 +53,8 @@ GPX is an XML based format for GPS tracks.
 %check
 %pyunittest discover -v
 
-%post
-%python_install_alternative gpxinfo
-
-%postun
-%python_uninstall_alternative gpxinfo
+%pre
+%python_libalternatives_reset_alternative gpxinfo
 
 %files %{python_files}
 %license LICENSE.txt
