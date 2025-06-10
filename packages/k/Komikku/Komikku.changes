@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jun  7 09:41:43 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.79.1:
+  * [Card] Fixed Pull-to-Update
+- update to 1.79.0:
+  * [Card] Added new backdrop method: Blurred cover
+  * [Servers] Dragon Ball Multiverse: Update
+  * [Servers] EZmanga (EN): Update
+  * [Servers] MangaCrab (ES): Update
+  * [Servers] MangaMana (FR): Update
+  * [Servers] MangaNato (EN): Update
+  * [Servers] Mangaowl (EN): Update
+  * [Servers] MangaReader (cc) (EN): Update
+  * [Servers] Neko Scans(ES): Update
+  * [Servers] Pepper&Carrot: Added support of Persian language
+  * [Servers] Rawdevart (JA): Update
+  * [Servers] Read Comic Online (EN): Update
+  * [Servers] Senpai Ediciones (ES): Disabled
+  * [Servers] Terco Scans (EN): Update
+  * [Servers] Usagi (RU): Disabled
+  * [L10n] Updated Arabic and Persian translations
+
+-------------------------------------------------------------------
 Fri May 30 05:55:35 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.78.0:
