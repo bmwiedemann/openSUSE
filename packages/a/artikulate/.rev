@@ -1091,4 +1091,12 @@ Fri May  9 17:13:53 UTC 2014 - tittiatcoke@gmail.com
     <comment>KDE release gear 25.04.1</comment>
     <requestid>1275667</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>e4de166cbd6d739cf15c92fb5b597237</srcmd5>
+    <version>25.04.2</version>
+    <time>1749538788</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.04.2 (forwarded request 1282457 from krop)</comment>
+    <requestid>1283066</requestid>
+  </revision>
 </revisionlist>
