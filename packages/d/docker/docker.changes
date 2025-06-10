@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Thu Jun  5 16:12:14 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Do not try to inject SUSEConnect secrets when in Rootless Docker mode, as
+  Docker does not have permission to access the host zypper credentials in this
+  mode (and unprivileged users cannot disable the feature using
+  /etc/docker/suse-secrets-enable.) bsc#1240150
+
+  * 0003-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+
+- Rebase patches:
+  * 0001-SECRETS-SUSE-always-clear-our-internal-secrets.patch
+  * 0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0006-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+
+-------------------------------------------------------------------
+Wed Jun  4 05:21:19 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Always clear SUSEConnect suse_* secrets when starting containers regardless
+  of whether the daemon was built with SUSEConnect support. Not doing this
+  causes containers from SUSEConnect-enabled daemons to fail to start when
+  running with SUSEConnect-disabled (i.e. upstream) daemons.
+
+  This was a long-standing issue with our secrets support but until recently
+  this would've required migrating from SLE packages to openSUSE packages
+  (which wasn't supported). However, as SLE Micro 6.x and SLES 16 will move
+  away from in-built SUSEConnect support, this is now a practical issue users
+  will run into. bsc#1244035
+
+  + 0001-SECRETS-SUSE-always-clear-our-internal-secrets.patch
+
+- Rearrange patches:
+  - 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  + 0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  - 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  + 0003-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  - 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  + 0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  - 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  + 0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  - 0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+  + 0006-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+
+-------------------------------------------------------------------
+Wed Jun  4 05:21:18 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+[NOTE: This update was only ever released in SLES and Leap.]
+
+- Always clear SUSEConnect suse_* secrets when starting containers regardless
+  of whether the daemon was built with SUSEConnect support. Not doing this
+  causes containers from SUSEConnect-enabled daemons to fail to start when
+  running with SUSEConnect-disabled (i.e. upstream) daemons.
+
+  This was a long-standing issue with our secrets support but until recently
+  this would've required migrating from SLE packages to openSUSE packages
+  (which wasn't supported). However, as SLE Micro 6.x and SLES 16 will move
+  away from in-built SUSEConnect support, this is now a practical issue users
+  will run into. bsc#1244035
+
+  + 0001-SECRETS-SUSE-always-clear-our-internal-secrets.patch
+
+- Rearrange patches:
+  - 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  + 0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  - 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  + 0003-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  - 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  + 0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  - 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  + 0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  - 0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+  + 0006-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+  - 0006-CVE-2025-22868-vendor-jws-split-token-into-fixed-num.patch
+  + 0007-CVE-2025-22868-vendor-jws-split-token-into-fixed-num.patch
+  - 0007-CVE-2025-22869-vendor-ssh-limit-the-size-of-the-inte.patch
+  + 0008-CVE-2025-22869-vendor-ssh-limit-the-size-of-the-inte.patch
+
+-------------------------------------------------------------------
 Fri May 30 17:55:22 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 28.2.2-ce. See upstream changelog online at

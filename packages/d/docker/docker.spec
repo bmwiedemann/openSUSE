@@ -96,14 +96,15 @@ Source900:      docker-integration.sh
 #       branch and then git-format-patch the patch here.
 # SUSE-FEATURE: Adds the /run/secrets mountpoint inside all Docker containers
 #               which is not snapshotted when images are committed.
-Patch100:       0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
-Patch101:       0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+Patch100:       0001-SECRETS-SUSE-always-clear-our-internal-secrets.patch
+Patch101:       0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+Patch102:       0003-SECRETS-SUSE-implement-SUSE-container-secrets.patch
 # UPSTREAM: Revert of upstream patch to keep SLE-12 build working.
-Patch200:       0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+Patch200:       0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
 # UPSTREAM: Backport of <https://github.com/moby/moby/pull/41954>.
-Patch201:       0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+Patch201:       0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
 # UPSTREAM: Revert of upstream patches to make apparmor work on SLE 12.
-Patch202:       0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+Patch202:       0006-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
 BuildRequires:  audit
 BuildRequires:  bash-completion
 BuildRequires:  ca-certificates
@@ -344,10 +345,12 @@ Fish command line completion support for %{name}.
 # README_SUSE.md for documentation.
 cp %{SOURCE130} .
 
+# bsc#1244035 (secrets patch to remove unreferenced secrets -- always applies).
+%patch -P100 -p1
 %if %{with suseconnect}
 # PATCH-SUSE: Secrets patches.
-%patch -P100 -p1
 %patch -P101 -p1
+%patch -P102 -p1
 %endif
 %if 0%{?sle_version} == 120000
 # Patches to build on SLE-12.
