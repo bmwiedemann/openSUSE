@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  5 06:01:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Oct  1 10:19:39 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Make Django build-requirement conditional and disable by default for

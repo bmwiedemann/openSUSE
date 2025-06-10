@@ -124,4 +124,12 @@
   SUSE:SLFO:Main, bsc#1231124</comment>
     <requestid>1204911</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>d7a9190c499c2e80b8f25f14c13d3e90</srcmd5>
+    <version>5.6.3</version>
+    <time>1749538633</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1282971</requestid>
+  </revision>
 </revisionlist>

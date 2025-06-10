@@ -1,7 +1,7 @@
 #
 # spec file for package python-diskcache
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,9 +31,11 @@ Summary:        Disk and file backed cache
 License:        Apache-2.0
 URL:            https://grantjenks.com/docs/diskcache/
 Source:         https://github.com/grantjenks/python-diskcache/archive/v%{version}.tar.gz#/diskcache-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -56,10 +58,10 @@ in pure Python, and compatible with Django.
 sed -i '/--cov/d' tox.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
