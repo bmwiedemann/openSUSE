@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun  6 11:23:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.4.1
+  * Drop support for Python 3.8/3.9
+  * Add support for Python 3.12/3.13
+  * Replace deprecated `abstractproperty`
+  * Modify to use `setuptools_scm` and `pypa/build` for package build
+  * Add GitHub Actions workflow for building and publishing to PyPI
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Wed May 28 11:37:23 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

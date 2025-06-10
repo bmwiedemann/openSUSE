@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-humanreadable
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        A Python library to convert from human-readable values to Python values
 License:        MIT
@@ -29,7 +30,6 @@ BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools >= 61
 Requires:       python-typepy >= 1.2.0
 BuildArch:      noarch
 # SECTION test requirements

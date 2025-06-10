@@ -50,4 +50,19 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1280841</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fd48137bbb761665052958c1d86f4053</srcmd5>
+    <version>0.4.1</version>
+    <time>1749539212</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.4.1
+  * Drop support for Python 3.8/3.9
+  * Add support for Python 3.12/3.13
+  * Replace deprecated `abstractproperty`
+  * Modify to use `setuptools_scm` and `pypa/build` for package build
+  * Add GitHub Actions workflow for building and publishing to PyPI
+- Use Python 3.11 on SLE-15 by default
+</comment>
+    <requestid>1284010</requestid>
+  </revision>
 </revisionlist>
