@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-xcffib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,11 +31,12 @@ Version:        1.5.0
 Release:        0
 Summary:        A drop in replacement for xpyb, an XCB python binding
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/tych0/xcffib
 Source:         https://files.pythonhosted.org/packages/source/x/xcffib/xcffib-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 1.1.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 %if %{with test}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module xcffib}
@@ -58,12 +59,12 @@ replacement for xpyb.
 
 %build
 %if !%{with test}
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -77,7 +78,7 @@ replacement for xpyb.
 %license LICENSE
 %doc README.md
 %{python_sitelib}/xcffib/
-%{python_sitelib}/xcffib-%{version}-py*.egg-info
+%{python_sitelib}/xcffib-%{version}.dist-info
 %endif
 
 %changelog
