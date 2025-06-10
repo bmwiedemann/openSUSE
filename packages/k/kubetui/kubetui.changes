@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jun 09 15:32:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.8.1:
+  * Fixed
+    - Updated README.md to document the --pod-columns feature
+      introduced in v1.8.0.
+      - Added usage examples for --pod-columns.
+      - Clarified behavior of the full keyword and required Name
+        column.
+    - No functional changes to the application.
+  * What's Changed
+    - Update docs by @sarub0b0 in #777
+- Update to version 1.8.0:
+  * Added
+    - --pod-columns flag to customize displayed pod columns
+      (name,status,age, etc.).
+    - Support for full keyword to show all available columns.
+    - ZSH/Bash completion for --pod-columns.
+    - Panic hook logging for better error traceability.
+  * Fixed
+    - Better error handling in internal column lookup logic.
+  * Dependencies
+    - Updated crates: flate2, clap, tokio, bitflags, ctrlc.
+  * What's Changed
+    - fix(deps): update rust crate clap to v4.5.38 by @renovate in
+      #768
+    - fix(deps): update rust crate ctrlc to v3.4.7 by @renovate in
+      #769
+    - fix(deps): update rust crate bitflags to v2.9.1 by @renovate
+      in #770
+    - fix(deps): update rust crate tokio to v1.45.1 by @renovate in
+      #773
+    - fix(deps): update rust crate clap to v4.5.39 by @renovate in
+      #774
+    - fix(deps): update rust crate flate2 to v1.1.2 by @renovate in
+      #775
+    - Add customizable pod columns via --pod-columns flag by
+      @sarub0b0 in #776
+
+-------------------------------------------------------------------
 Sat May 10 08:53:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.7.1:
