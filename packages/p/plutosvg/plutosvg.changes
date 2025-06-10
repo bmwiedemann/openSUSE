@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sat Jun  7 05:36:22 UTC 2025 - Yunhe Guo <i@guoyunhe.me>
+
+- Remove -m flags to improve compatibility
+
+-------------------------------------------------------------------
+Fri Jun  6 14:57:55 UTC 2025 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 0.0.7
+  * Replaced global FreeType usage with Freetype::Freetype target
+  * Added support for href as an alias for xlink:href in SVG parsing
+  * Fixed potential integer overflows in internal calculations
+  * Generate plutosvg.pc from CMake for pkg-config support @dg0yt
+  * Added FreeType dependency to plutosvgConfig.cmake.in for correct linkage
+
