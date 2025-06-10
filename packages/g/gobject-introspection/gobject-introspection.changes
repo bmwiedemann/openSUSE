@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  5 07:53:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add explicit python3-setuptools BuildRequires: this was already
+  used in the past, but was pulled in by python3-Mako. As meson
+  explicitly tests for it, it's our responsibility it's there.
+
+-------------------------------------------------------------------
 Sat Mar 15 14:06:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.84.0:

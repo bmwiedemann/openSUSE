@@ -43,6 +43,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-Mako
 BuildRequires:  python3-Markdown
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  python3-xml
 BuildRequires:  pkgconfig(libffi) >= 3.0.0
 # gi-find-deps makes use of 'file' to identify the types.
