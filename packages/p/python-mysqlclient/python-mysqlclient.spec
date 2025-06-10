@@ -34,7 +34,9 @@ License:        GPL-2.0-or-later
 URL:            https://github.com/PyMySQL/mysqlclient-python
 Source:         https://files.pythonhosted.org/packages/source/m/mysqlclient/mysqlclient-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  libmysqlclient-devel
@@ -83,7 +85,7 @@ dos2unix doc/*.rst README.md MANIFEST.in HISTORY.rst
 
 %build
 %if !%{with test}
-%python_build
+%pyproject_wheel
 
 sphinx-build -b html doc build/sphinx/html && rm -r build/sphinx/html/.{buildinfo,doctrees}
 %endif
@@ -114,7 +116,7 @@ exit $exit_code
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 mkdir -p %{buildroot}%{_docdir}/python-mysqlclient/
