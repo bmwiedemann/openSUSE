@@ -16,6 +16,8 @@
   /etc/forgejo/public/** r,
   /etc/forgejo/{conf,https,mailer}/ r,
 
+  /usr/share/forgejo/** r,
+
   /usr/lib{,exec}/git/git Px -> forgejo//git,
   /usr/lib{,exec}/git/git-write-tree Px -> forgejo//git,
 

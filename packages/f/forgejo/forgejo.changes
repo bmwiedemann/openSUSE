@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun  1 17:36:52 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- apparmor: allow reading of new data files
+
+-------------------------------------------------------------------
+Sat May 31 11:58:12 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- conflict with forgejo-longterm
+- require apparmor profile when apparmor is installed
+- use forgejo name rather than macro, sharing as much as possible with
+  forgejo-longterm
+
+-------------------------------------------------------------------
 Mon May  5 20:23:37 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 11.0.1:

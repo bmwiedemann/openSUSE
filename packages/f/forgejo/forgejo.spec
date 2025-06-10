@@ -36,19 +36,19 @@ Summary:        Self-hostable forge
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Version Control
 URL:            https://forgejo.org
-Source0:        https://codeberg.org/%{name}/%{name}/releases/download/v%{version}/%{name}-src-%{version}.tar.gz
-Source1:        https://codeberg.org/%{name}/%{name}/releases/download/v%{version}/%{name}-src-%{version}.tar.gz.asc
-Source2:        https://keys.openpgp.org/vks/v1/by-fingerprint/EB114F5E6C0DC2BCDD183550A4B61A2DC5923710#/%{name}.keyring
+Source0:        https://codeberg.org/forgejo/forgejo/releases/download/v%{version}/forgejo-src-%{version}.tar.gz
+Source1:        https://codeberg.org/forgejo/forgejo/releases/download/v%{version}/forgejo-src-%{version}.tar.gz.asc
+Source2:        https://keys.openpgp.org/vks/v1/by-fingerprint/EB114F5E6C0DC2BCDD183550A4B61A2DC5923710#/forgejo.keyring
 Source3:        package-lock.json
 Source4:        node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
-Source5:        %{name}.service
-Source6:        %{name}.sysusers
-Source7:        %{name}.fc
-Source8:        %{name}.if
-Source9:        %{name}.te
-Source10:       %{name}.apparmor
-Source11:       %{name}.firewalld
+Source5:        forgejo.service
+Source6:        forgejo.sysusers
+Source7:        forgejo.fc
+Source8:        forgejo.if
+Source9:        forgejo.te
+Source10:       forgejo.apparmor
+Source11:       forgejo.firewalld
 Source12:       forgejo-abstraction.apparmor
 Source13:       forgejo-hooks-abstraction.apparmor
 Source98:       README.SUSE
@@ -70,9 +70,10 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 Requires:       git-core
 Requires:       git-lfs
-Recommends:     (%{name}-apparmor if apparmor-abstractions)
-Requires:       (%{name}-firewalld if firewalld)
-Requires:       (%{name}-selinux if selinux-policy-targeted)
+Requires:       (forgejo-apparmor if apparmor-abstractions)
+Requires:       (forgejo-firewalld if firewalld)
+Requires:       (forgejo-selinux if selinux-policy-targeted)
+Conflicts:      forgejo-longterm
 %if %{with apparmor}
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
@@ -133,35 +134,39 @@ covered with its intuitive interface, light and easy hosting and a lot of
 builtin functionality.
 
 %prep
-%autosetup -p1 -n %{name}-src-%{version}
+%autosetup -p1 -n forgejo-src-%{version}
 local-npm-registry %{_sourcedir} install --also=dev --legacy-peer-deps
 cp %{SOURCE98} .
 
 %build
-%sysusers_generate_pre %{SOURCE6} %{name} %{name}.conf
-export TAGS="bindata timetzdata sqlite sqlite_unlock_notify"
+%sysusers_generate_pre %{SOURCE6} forgejo forgejo.conf
+export TAGS="timetzdata sqlite sqlite_unlock_notify"
 export EXTRA_GOFLAGS="-buildmode=pie -mod=vendor"
 STRIP=0 %make_build build
 go build ${EXTRA_GOFLAGS} -o contrib/environment-to-ini/environment-to-ini contrib/environment-to-ini/environment-to-ini.go
 
 %install
 install -d -D \
-  %{buildroot}%{_bindir} %{buildroot}%{_datadir}/%{name}/{conf,https,mailer}
+  %{buildroot}%{_bindir} %{buildroot}%{_datadir}/forgejo/{conf,https,mailer}
+
+cp -r options %{buildroot}%{_datadir}/forgejo/
+cp -r public %{buildroot}%{_datadir}/forgejo/
+cp -r templates %{buildroot}%{_datadir}/forgejo/
 
 install -d -m 0750 \
-  %{buildroot}%{_sharedstatedir}/%{name}/{data,https,indexers,queues,repositories} \
-  %{buildroot}%{_sharedstatedir}/%{name}/data/home/.ssh \
-  %{buildroot}%{_sysconfdir}/%{name} \
-  %{buildroot}%{_localstatedir}/log/%{name}
+  %{buildroot}%{_sharedstatedir}/forgejo/{data,https,indexers,queues,repositories} \
+  %{buildroot}%{_sharedstatedir}/forgejo/data/home/.ssh \
+  %{buildroot}%{_sysconfdir}/forgejo \
+  %{buildroot}%{_localstatedir}/log/forgejo
 
 install -D -m 0755 contrib/environment-to-ini/environment-to-ini %{buildroot}%{_bindir}
-install -D -m 0755 %{_builddir}/%{name}-src-%{version}/gitea     %{buildroot}%{_bindir}/%{name}
-ln -s %{name} %{buildroot}%{_bindir}/gitea
+install -D -m 0755 %{_builddir}/forgejo-src-%{version}/gitea     %{buildroot}%{_bindir}/forgejo
+ln -s forgejo %{buildroot}%{_bindir}/gitea
 
-install -D -m 0640 %{_builddir}/%{name}-src-%{version}/custom/conf/app.example.ini %{buildroot}%{_sysconfdir}/%{name}/conf/app.ini
+install -D -m 0640 %{_builddir}/forgejo-src-%{version}/custom/conf/app.example.ini %{buildroot}%{_sysconfdir}/forgejo/conf/app.ini
 
-install -D -m 0644 %{SOURCE5} %{buildroot}%{_unitdir}/%{name}.service
-install -D -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/%{name}.conf
+install -D -m 0644 %{SOURCE5} %{buildroot}%{_unitdir}/forgejo.service
+install -D -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/forgejo.conf
 
 %if %{with apparmor}
 install -D -d \
@@ -176,79 +181,80 @@ install -D -d \
   %{buildroot}%{_sysconfdir}/apparmor.d/forgejo.d/hooks-update.d \
   %{buildroot}%{_sysconfdir}/apparmor.d/forgejo.d/forgejo.d
 
-install -Dm0644 %{SOURCE10} %{buildroot}%{_sysconfdir}/apparmor.d/%{name}
-install -Dm0644 %{SOURCE12} %{buildroot}%{_sysconfdir}/apparmor.d/abstractions/%{name}
-install -Dm0644 %{SOURCE13} %{buildroot}%{_sysconfdir}/apparmor.d/abstractions/%{name}-hooks
+install -Dm0644 %{SOURCE10} %{buildroot}%{_sysconfdir}/apparmor.d/forgejo
+install -Dm0644 %{SOURCE12} %{buildroot}%{_sysconfdir}/apparmor.d/abstractions/forgejo
+install -Dm0644 %{SOURCE13} %{buildroot}%{_sysconfdir}/apparmor.d/abstractions/forgejo-hooks
 %endif
 
 %if %{with selinux}
 cd %{_sourcedir}
-make -f %{_datadir}/selinux/devel/Makefile %{name}.pp
-install -Dm0644 %{name}.pp %{buildroot}%{_datadir}/selinux/packages/%{name}/%{name}.pp
-install -Dm0644 %{name}.if %{buildroot}%{_datadir}/selinux/devel/include/distributed/%{name}.if
+make -f %{_datadir}/selinux/devel/Makefile forgejo.pp
+install -Dm0644 forgejo.pp %{buildroot}%{_datadir}/selinux/packages/forgejo/forgejo.pp
+install -Dm0644 forgejo.if %{buildroot}%{_datadir}/selinux/devel/include/distributed/forgejo.if
 %endif
 
 #firewalld service file
-install -D -m 0644 %{SOURCE11} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
+install -D -m 0644 %{SOURCE11} %{buildroot}%{_prefix}/lib/firewalld/services/forgejo.xml
 
-%pre -f %{name}.pre
-%service_add_pre %{name}.service
+%pre -f forgejo.pre
+%service_add_pre forgejo.service
 
 %post
-if [ -e %{_datadir}/%{name}/.ssh/authorized_keys ] ; then
-  mv %{_datadir}/%{name}/.ssh/authorized_keys %{_sharedstatedir}/%{name}/data/home/.ssh/authorized_keys
+if [ -e %{_datadir}/forgejo/.ssh/authorized_keys ] ; then
+  mv %{_datadir}/forgejo/.ssh/authorized_keys %{_sharedstatedir}/forgejo/data/home/.ssh/authorized_keys
 fi
-%service_add_post %{name}.service
+%service_add_post forgejo.service
 
 %post firewalld
 %firewalld_reload
 
 %if %{with apparmor}
 %post apparmor
-%apparmor_reload %{_sysconfdir}/apparmor.d/%{name}
+%apparmor_reload %{_sysconfdir}/apparmor.d/forgejo
 %endif
 
 %if %{with selinux}
 %post selinux
-semodule -i %{_datadir}/selinux/packages/%{name}/%{name}.pp 2>/dev/null || :
+semodule -i %{_datadir}/selinux/packages/forgejo/forgejo.pp 2>/dev/null || :
 
 %preun selinux
-semodule -r %{name} 2>/dev/null || :
+semodule -r forgejo 2>/dev/null || :
 %endif
 
 %preun
-%service_del_preun %{name}.service
+%service_del_preun forgejo.service
 
 %postun
-%service_del_postun %{name}.service
+%service_del_postun forgejo.service
 
 %files
 %license LICENSE
 %doc README.md RELEASE-NOTES.md CONTRIBUTING.md README.SUSE
-%{_unitdir}/%{name}.service
-%{_bindir}/%{name}
+%{_bindir}/forgejo
 %{_bindir}/gitea
-%{_sysusersdir}/%{name}.conf
-%{_datadir}/%{name}
+%{_datadir}/forgejo
+%{_sysusersdir}/forgejo.conf
+%{_unitdir}/forgejo.service
 %defattr(0640,root,forgejo,750)
-%{_sysconfdir}/%{name}
-%config(noreplace) %{_sysconfdir}/%{name}/conf/app.ini
+%config(noreplace) %{_sysconfdir}/forgejo/conf/app.ini
+%dir %{_sysconfdir}/forgejo
+%dir %{_sysconfdir}/forgejo/conf
 %defattr(0640,forgejo,forgejo,750)
-%{_localstatedir}/log/%{name}
-%{_sharedstatedir}/%{name}
+%{_localstatedir}/log/forgejo
+%{_sharedstatedir}/forgejo
 
 %if %{with apparmor}
 %files apparmor
+%config %{_sysconfdir}/apparmor.d/abstractions/forgejo*
+%config %{_sysconfdir}/apparmor.d/forgejo
 %dir %{_sysconfdir}/apparmor.d
-%config %{_sysconfdir}/apparmor.d/%{name}
-%config %{_sysconfdir}/apparmor.d/abstractions/%{name}*
 %dir %{_sysconfdir}/apparmor.d/forgejo.d
-%dir %{_sysconfdir}/apparmor.d/forgejo.d/forgejo.d
-%dir %{_sysconfdir}/apparmor.d/forgejo.d/forgejo-session-exec.d
 %dir %{_sysconfdir}/apparmor.d/forgejo.d/forgejo-hooks.d
+%dir %{_sysconfdir}/apparmor.d/forgejo.d/forgejo-session-exec.d
+%dir %{_sysconfdir}/apparmor.d/forgejo.d/forgejo.d
 %dir %{_sysconfdir}/apparmor.d/forgejo.d/git.d
-%dir %{_sysconfdir}/apparmor.d/forgejo.d/hooks-pre-receive.d
 %dir %{_sysconfdir}/apparmor.d/forgejo.d/hooks-post-receive.d
+%dir %{_sysconfdir}/apparmor.d/forgejo.d/hooks-pre-receive.d
 %dir %{_sysconfdir}/apparmor.d/forgejo.d/hooks-proc-receive.d
 %dir %{_sysconfdir}/apparmor.d/forgejo.d/hooks-update.d
 %endif
@@ -256,12 +262,12 @@ semodule -r %{name} 2>/dev/null || :
 %if %{with selinux}
 %files selinux
 %dir %{_datadir}/selinux/devel/include/distributed
-%{_datadir}/selinux/packages/%{name}
-%{_datadir}/selinux/devel/include/distributed/%{name}.if
+%{_datadir}/selinux/devel/include/distributed/forgejo.if
+%{_datadir}/selinux/packages/forgejo
 %endif
 
 %files firewalld
-%{_prefix}/lib/firewalld/services/%{name}.xml
+%{_prefix}/lib/firewalld/services/forgejo.xml
 
 %files environment-to-ini
 %{_bindir}/environment-to-ini

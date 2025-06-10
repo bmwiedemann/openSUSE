@@ -527,4 +527,12 @@
   * Update module github.com/mattn/go-sqlite3 to v1.14.28 (v11.0/forgejo) (forwarded request 1274876 from rrahl0)</comment>
     <requestid>1274877</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>5cc2f7865ed6c74dc2db713782980959</srcmd5>
+    <version>11.0.1</version>
+    <time>1749539162</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1283946</requestid>
+  </revision>
 </revisionlist>
