@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  5 10:37:46 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250603 (git commit 3b75d677f898):
+  * linux-firmware: Update firmware file for Intel Pulsar core
+  * linux-firmware: Update firmware file for Intel BlazarI core
+  * linux-firmware: Update firmware file for Intel Quasar core
+  * linux-firmware: Update firmware file for Intel Solar core
+  * linux-firmware: Update firmware file for Intel Magnetar core
+  * linux-firmware: Update firmware file for Intel BlazarU core
+
+-------------------------------------------------------------------
 Mon May 19 19:09:03 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250516 (git commit 759c4acafb4a):
