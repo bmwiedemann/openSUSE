@@ -1046,4 +1046,12 @@
     <comment>- Drop rcFOO symlinks (PED-266). (forwarded request 1208115 from dimstar)</comment>
     <requestid>1208160</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>37c17663f63b685aaa2b863eeb68deaa</srcmd5>
+    <version>1.24.0</version>
+    <time>1749538624</time>
+    <user>anag_factory</user>
+    <comment>Whitelisting now on its way to factory (forwarded request 1282869 from iznogood)</comment>
+    <requestid>1282880</requestid>
+  </revision>
 </revisionlist>

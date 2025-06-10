@@ -1,7 +1,7 @@
 #
 # spec file for package ModemManager
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           ModemManager
-Version:        1.22.0
+Version:        1.24.0
 Release:        0
 Summary:        DBus interface for modem handling
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -46,9 +46,9 @@ BuildRequires:  pkgconfig(gmodule-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gobject-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gudev-1.0) >= 147
 BuildRequires:  pkgconfig(libsystemd) >= 209
-BuildRequires:  pkgconfig(mbim-glib) >= 1.30.0
+BuildRequires:  pkgconfig(mbim-glib) >= 1.32.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.97
-BuildRequires:  pkgconfig(qmi-glib) >= 1.34.0
+BuildRequires:  pkgconfig(qmi-glib) >= 1.36.0
 BuildRequires:  pkgconfig(qrtr-glib)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
@@ -146,7 +146,7 @@ test -n "$pppddir" || exit 1
 
 %files
 %license COPYING
-%doc AUTHORS README
+%doc AUTHORS README.md
 %{_bindir}/mmcli
 %{_sbindir}/ModemManager
 %{_datadir}/dbus-1/system.d/org.freedesktop.ModemManager1.conf

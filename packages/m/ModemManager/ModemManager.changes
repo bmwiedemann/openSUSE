@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat May 24 09:53:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.0:
+  + API:
+    - Add new TIMEOUT, PROTOCOL, and THROTTLED core errors
+    - Add new MMCarrierLockError errors
+    - Add new Messaging interface SetDefaultStorage method
+    - Fix MM_BEARER_IP_FAMILY_ANY ABI break introduced in 1.20
+    - Add new Cell Broadcast API
+    - Report sub-system vendor and product IDs in Firmware device
+      IDs
+    - Add new ID_MM_TTY_AT_PROBE_TRIES udev tag to control number
+      of AT probes on a per-port basis for plugins that do not
+      override generic probing logic.
+    - Add new Cell Broadcast API
+  + Core:
+    - Improved handling of odd +CGDCONT responses
+    - Add support for putting modems in low-power mode during
+      suspend
+    - Retry AT+CNUM a couple times if the SIM is busy
+    - Fix probing of modems that only expect a single AT port
+    - Reprobe modems on late port additions; ensures modems use the
+      optimal control channel regardless of kernel/udev timing
+    - Ignore FASTBOOT ports during probing
+    - Better logging of user requests
+    - Fix probing of single-port devices by starting support check
+      on first port addition
+    - Don't crash as often due to assumption that a primary modem
+      port always exists
+    - Add support for loading and setting initial EPS bearer
+      settings
+    - Quite a few memory leak fixes
+    - Lay groundwork for Intel XMM7xxx RPC-based devices
+    - restart AT probing if a port is stuck in PPP mode when modem
+      is detected
+    - Serialize core modem operations to prevent multiple D-Bus
+      clients from interrupting each other's operations
+    - Work around elogind sometimes not sending the PrepareForSleep
+      signal
+    - Add generic Qualcomm Firehose and Sahara firmware update
+      support
+    - Fix SIM unlock behavior being treated at SIM hot-swaps
+    - Detect 4G & 5G modem capabilities with newer AT commands
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Oct 15 11:59:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks (PED-266).
