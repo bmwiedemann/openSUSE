@@ -17,7 +17,7 @@
 
 
 Name:           maven-clean-plugin
-Version:        3.4.1
+Version:        3.5.0
 Release:        0
 Summary:        Maven plugin to remove generated files
 License:        Apache-2.0
