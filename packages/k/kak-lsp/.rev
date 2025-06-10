@@ -321,4 +321,355 @@
     <comment>- Update registry.tar.zst. This fixes build issues after a Rust toolchain update.</comment>
     <requestid>1254270</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e9d95458335a46b7713a0ba2fde796dd</srcmd5>
+    <version>18.1.3</version>
+    <time>1749539070</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 18.1.3:
+  * v18.1.3
+  * Use the right language ID when [language.foo] is in effect
+  * Remove unused line-specs option
+  * Better variable name for code lens line-specs value
+  * lsp-object: don't send documentSymbol to servers that don't support it
+  * Include language server name in stderr logs
+  * Use rust-analyzer from PATH
+  * Work around lsp-rename didChange failing when using window scope
+  * Send texlab-specific requests only to servers that support them
+  * Fix dart language server command
+  * Add kak-lsp server PID to the closing log message
+  * Report more diagnostics information, in multiple lines
+  * Fix regression causing spurious/missing server name in hover
+  * Address clippy lints
+  * Config knob to override magic single-instance setting
+  * Back out &quot;Add curly underline to DiagnosticError face&quot;
+  * start new cycle
+- Update registry.tar.zst. This fixes build issues after a Rust toolchain update.
+- Update to version 18.1.2:
+  * Silence errors from non-default hooks
+  * Fix languageId for JSX/TSX files
+  * Silence deprecation warning
+  * Add curly underline to DiagnosticError face
+- Build now requires openssl because the dependency graph now has
+  openssl-sys.
+- Update to version 18.1.1:
+  * Make crash reporting optional for now
+  * Touch up installation instructions in readme
+  * Make force-exit code paths safer
+  * Extract function
+  * Rework &quot;Prevent buffer content logic from reading to much&quot;
+  * Don't send debug log about excessive progress reports to editor
+  * Make test/clangd-invalid-utf8.sh compatible with older clangd
+  * Fix crash when legacy &quot;language&quot; config option uses language IDs
+  * Set LAST_CLIENT earlier
+  * test/clangd-invalid-utf8.sh: fix for modern clang
+  * Add biome to CSS and GraphQL
+  * On crash, disable LSP hooks in current buffer
+  * Simplify sentry integration
+  * Work around crash on unsaved files after server restart
+  * Add context to crash report message
+  * Include formatted panic info and backtrace in crash report
+  * Crash reporting via sentry.io
+  * Make the default panic message a little less intimidating
+  * Generalize option change hook parsing code
+  * Back out &quot;Fix fake textDocument/didOpen for unsaved files&quot;
+  * Back out &quot;Make sure to call textDocument/didOpen when lsp_servers is set after BufCreate&quot;
+  * Prevent buffer content logic from reading to much
+  * Fix crash on &lt;c-c&gt; during -sync command
+  * Make sure to call textDocument/didOpen when lsp_servers is set after BufCreate
+  * Add commented config for tailwindcss-language-server
+  * Fix fake textDocument/didOpen for unsaved files
+  * Stop logging the lsp-show-error call
+  * Fix garbage languageId being sent on lsp-workspace-symbol
+  * Clean up editor command dispatch code
+  * Rename command sender type
+  * Fix corruption applying text edits to non-buffer, non-ASCII files
+  * Separate out function for applying text edits to in-memory data structure
+  * Apply clippy lints
+  * Update unit tests
+  * Consolidate error reporting
+  * Work around missing error on missing code lens after server restart
+  * Type for client name
+  * Rework editor-command sending
+  * Remove most uses of EditorMeta::session
+  * Remove vestiges of multi-session code
+  * Bravely remove obsolete command_fifo, make response_fifo handling more robust
+  * Fix flaky test/gopls-goto-definition.sh
+  * Remove unused function
+  * Add more details to fifo log
+  * Remove unused parameter
+  * Use a separate field for requests pending initialization resp. textDocument/didChange
+  * Fix hang when sync request is used in hook when LSP is disabled
+  * Fix lsp-did-change not being sent for lsp-code-actions-sync
+  * Fix lingering sync state when lsp is disabled
+  * Remove unused lsp-with-option command
+  * Stop printing panic backtrace twice
+  * Add badges for latest release and chat networks
+  * Fix stacktrace being printed on EPIPE, remove redundant error output
+  * Call out feedback/support channels a bit more
+  * Stop linking to the Wiki page for installing servers
+  * Only set javascriptreact/typescriptreact language ID for jsx/tsx files
+- Update to version 18.1.0:
+  * Fix mixed-up order in tailwindcss example
+  * Fix bell in modeline not being cleared on ShowMessage notifications
+  * Fix patttern typo
+  * Add markdown-oxide language-server
+  * Add ruby-lsp language-server
+  * Fix stale quoting in lsp-do-send-sync
+  * Add log statements for raw request, handle EWOULDBLOCK/EAGAIN
+  * Use write instead of %val{selection} to send buffer contents
+  * Use a nonblocking fifo instead of pykak-style alternating fifos
+  * Address clippy lint
+  * Extend macOS workarounds to buffer synchronization
+  * Fail early again on missing language.foo.command field
+  * Also use elixir-ls on eex files
+  * Fail startup if session state files already exists
+  * Don't create session state if session is already running
+  * Escalate failure if kak-lsp daemon fails to start
+  * Don't clean up parent of session directories
+  * Do not briefly start kak-lsp on KakEnd if lsp-enable has never been called
+  * Fix typo in lsp-exit
+  * Rectify inconsistent quoting in recommended mappings
+  * Don't block when language servers are slow to exit
+  * Work around hang due to lost fifo on macOS
+  * Restyle --help output
+  * Fix test/clangd-diagnostic-gutter.sh flakiness
+  * Fix test/run not finding python on macOS
+  * Remove bad text edit assertion
+  * Braces in commented out code must match too
+  * The correct validation setting for CSS is `css.validate = true`
+  * Add CSS, HTML and JSON options, add Haskell's static-ls
+  * Workaround macOS waitid() not zeroing si_signo
+  * Fix waitid() being called unnecessarily
+  * Fix formatting spuriously moving cursor with vscode-html-language-server
+  * Fix Rust version
+  * Workaround HTML/CSS language servers not enabling formatting
+  * Workaround HTML/CSS language server crashing due to missing validProperties
+  * Fix crash interpreting text edit without trailing newline
+  * Clean up a debug log
+  * Remove dependency on Rust 1.80
+  * Fix regression causing crash when language server command fails exec()
+  * Don't send SIGTERM to language server, remove obsolete wait()
+  * Simplify sending of initialization options
+  * Fix regression causing hangs on restart
+  * Fix regression causing server configuration to be sent as initialization option
+  * Fix regression causing &quot;kak -p&quot; to become a zombie
+  * Remove &quot;set-option -add&quot; from most commented default configs
+  * Back out &quot;lsp-start to wait until existing server has exited&quot;
+  * Fix race conditions reading kak-lsp PID file
+  * Send SIGTERM, not SIGKILL to shut down inert language server
+  * Speed up language server shutdown
+  * lsp-exit to wait until the session directory is removed
+  * Remove shell calls from async request sending
+  * Drain fifo on exit to unblock Kakoune
+  * Remove unnecssary environment variable
+  * Refactor temporary directory cleanup logic
+  * lsp-start to wait until existing server has exited
+  * Wait for PID file creation after start
+  * Move fifo into a per-session directory
+  * Remove errant semicolon
+  * Remove shell calls for code-actions and highlight-references hooks
+  * Move hook definition out of the way
+  * Stop using temporary file also for textDocument/didChange and textDocument/didOpen
+  * typst: add default configuration
+  * Mohamad Makki Copyright Waiver
+  * Update manual installation instructions for ARM macOS
+- Use only tier 1 arches. Never heard of kakoune being used in other arches.
+- Remove vendor.tar.zst.
+- Add registry.tar.zst
+- Update _service file
+  * Use registry method for vendoring
+- Update to version 18.0.3:
+  * Update changelog for release
+  * Disable CI runs for a special &quot;docs&quot; branch
+  * Scala Metals: turn off Unicode icons until Kakoune can handle emoji width
+  * Simply use stdout instead of fd 3 for request sending
+  * Remove redundant fifo re-creation
+  * Elide temporary file when writing to fifo
+  * Fix escaping if session name starts with a dash
+  * Move loop-invariant set-option out of the loop
+  * Fix window/showMessageRequest ID deserialization
+  * lsp-disable: unset LSP modeline
+  * Fix eslint workaround
+  * Fix crash when &quot;language&quot; key is used in legacy kak-lsp.toml
+  * julia lsp configuration: move root_globs
+  * minor: fix typo in julia lsp config
+  * cargo update
+  * cargo clippy
+  * Fix crash in lsp-selection-range
+  * Show error instead of crashing if lsp_servers root is not an absolute path
+  * Block LSP requests after KakEnd to work around delay on bad config
+  * lsp-do-send: also block SIGINT once we have acquired the fifo
+  * README: update &quot;Pre-built binaries&quot; section
+  * Fix state transition when lsp-enable{,-window} are accidentally mixed
+  * Remove shell call from lsp-if-no-servers
+  * Remove misleading &quot;set-option -add lsp_server&quot; from default hooks
+  * lsp-object: fix crash on invalid param, improve docs
+- Update _service file
+- Update to version 18.0.2:
+  * v18.0.2
+  * README: link to troubleshooting section
+  * Fix stale comment in test
+  * Update changelog
+  * Show panics in an info box
+  * Generate a core dump when crashing via a Rust panic
+  * lsp-definition: explain fallback in error message
+  * Fix crash in lsp-highlight-references
+  * Log kak-lsp daemon PID on startup
+  * Removed redundant error check
+- Update to version 17.1.2:
+  * Experimental LSP client capabilities can now be enabled via kak-lsp.toml.
+  * Fix crash on multiple language servers when one server doesn't support code actions.
+  * For consistency with our root_path project detection mechanism, the default config for Julia no longer supports the JULIA_PROJECT environment variable nor falls back on the global Julia environment.
+  * Fix build on Rust 1.80.
+- Update to version 17.1.1:
+  * Default configuration for Svelte via svelte-language-server.
+  * The language server stderr is logged eagerly instead of only after server exit; (useful for when servers like rust-analyzer crash).
+  * Support dynamic for registration semantic tokens via textDocument/semanticTokens.
+  * lsp-code-actions has learned to filter by code action kind. This should obsolete the lsp-code-action command which has been hidden and deprecated.
+  * lsp-code-actions learned the -auto-single switch to instantly run if there is only one matching code action.
+  * Fixed a case where a legacy `kak-lsp.toml` specifying the same server for multiple languages would drop all but one language.
+  * Some hover info had extra trailing whitespace, which is now trimmed properly.
+  * Hover info containing ASCII-art tables as popular in some flavors of Markdown is now rendered properly.    The default config now enables inlay hints also for recent version of Scala Metals.
+- Update to 17.0.1:
+  * New default server for Nix, nil, replacing rnix-lsp.
+  * The gopls usePlaceholders setting now defaults to true in the default config,
+    make sure to either add a mapping for lsp-snippets-select-next-placeholders
+    or disable snippets.
+  * gopls default config has been changed so inlay (type) hints require no
+    gopls-specific knobs to turn on. As with other servers, inlay hints are only
+    requested when lsp-inlay-hints-enabled is used.
+  * The default config for HTML/CSS/JSON has been updated to use
+    vscode-{html,css,json}-language-server as server command instead of
+    vscode-{html,css,json}-languageserver.
+  * Support for watching files (workspace/didChangeWatchedFiles) is now disabled
+    by default to avoid performance problems.
+  * Inlay code lenses (used by OCaml and Haskell language servers) are now
+    shown after the referenced line. This requires Kakoune version &gt;= 2024.
+  * lsp-auto-hover-enable no longer takes an argument; that functionality has
+    been moved to lsp-auto-hover-buffer-enable, and it no longer magically spawns
+    a client.
+  * Removed lsp-connect experimental command.
+  * New commands jump-{next,previous} (which have also been added to Kakoune)
+    replace and deprecate lsp-{next,previous}.
+  * lsp-document-symbol no longer renders the same filename in every single
+    line. Commands like jump-next and &lt;ret&gt; still work as before.
+  * New option lsp_hover_max_info_lines replaces and deprecates
+    lsp_hover_max_lines which now defaults to -1 which means
+    lsp_hover_max_info_lines is used to control lines of information in the
+    hover box.
+  * New option lsp_hover_max_diagnostic_lines to limit the lines for diagnostics
+    in the hover box.
+  * Fix gopls code actions like &quot;Extract function&quot;.
+  * Various improvements to compatibility with old Kakoune.
+  * Fix startup error when both lsp.kak and Kakoune's jump.kak are autoloaded.
+- Update specfile:
+  * kak-lsp is now called as kakoune-lsp so we add a Provides.
+  * update URL of sources.
+- Update specfile:
+  * top-level folder of extracted source is kakoune-lsp-16.0.0
+  * explicit build requirement of cargo
+- Update to version 16.0.0:
+  * The modeline shows breadcrumbs like somemodule &gt; someclass &gt; somefunction
+  to indicate the symbol around the main cursor.
+  * lsp-document-symbols now renders symbols in a tree.
+  * lsp_auto_show_code_actions (which renders a lightbulb in the modeline)
+  now defaults to true.
+  * lsp-code-lens can now run the test at cursor with rust-analyzer. Fixes:
+  * lsp-inlay-diagnostics no longer jump around when the cursor is moved
+  over the diagnostics. To use this feature, use Kakoune version &gt;= 2024
+  (not yet release, consider building from source).
+  * When LSP integration is enabled, then disabled and enabled again, the
+  KakEnd hook failed to ask the server to exit, which has been fixed.
+  * lsp-auto-hover-enable now only re-renders hover info when the main
+  selection changes. This means that :info is no longer shadowed immediately
+  by auto hover.
+  * Completion snippets (accessed via lsp-snippets-select-next-placeholders)
+  can now be nested, making it possible to cycle through the arguments of
+  nested function calls.
+  * In some cases, selecting completions provided by rust-analyzer would labels
+  with extra characters (like self.some_method(…)) which has been fixed.
+  * completionItem.additionalTextEdits are now applied also when the server
+  does not support completionItem/resolve.
+  * Snippet metacharacters are now properly escaped, removing spurious
+  backslashes from inserted completions.
+- Update to version 15.0.1:
+  * Additions:
+    - Default configuration for Markdown via [marksman](https://github.com/artempyanykh/marksman).
+    - Default configuration for Java via [jdtls](https://github.com/eclipse-jdtls/eclipse.jdt.ls).
+  * Fixes:
+    - Fix regression in &quot;lsp-show-message-error&quot; and friends.
+- Update to version 15.0.0:
+  * Additions:
+    - Support multiple language servers per filetype (#17).
+    - The `kak-lsp.toml` format for specifying language servers has changed. The old format is still supported (#686).
+    - `lsp-goto-document-symbol` learned to show a preview of the jump target.
+    - Default configuration for PureScript and Scala.
+  * Fixes:
+    - A regression broke resolving completion item documentation when cycling through completion candidates, which has been fixed (#674).
+    - New command `lsp-declaration`, implementing `textDocument/declaration`.
+- cargo_config is now part of vendored tarball
+- Update _service file
+- Replace obsoleted `disabled` option with `manual`
+- Updates to version 14.2.0:
+  * Additions:
+      - Default configuration for CMake.
+      - If there are no code actions in the main selection, lsp-code-actions will show code actions from anywhere on a selected line, to make it easier to perform quick-fixes.
+      - If requested by the language server, kak-lsp will recursively watch the entire root directory for file changes and forward them to the server via workspace/didChangeWatchedFiles (#649).
+      - kak-lsp now asks the server to cancel stale requests (#666).
+      - lsp-did-change is async again, which can improve performance (#667).
+      - kak-lsp is published to crates.io for easy installation (#660).
+  * Fixes:
+      - Fix race conditions when spinning up a new server in &quot;kak-lsp --request&quot; (#654), and in &quot;lsp-hover-buffer&quot; (#664).
+      - Send inlay hints and semantic tokens only after buffer changes (#663).
+- Use zstd compression for vendored dep tarball
+- Update to version 14.1.0:
+  * Additions:
+    - Default language server for protobuf.
+    - Added support for `codeAction/resolve`, which allows to use code 
+      actions sent by Deno for example.
+    - The recommended mappings have been augmented by new command 
+      `lsp-diagnostic-object` to jump to next/previous diagnostics.
+    - `lsp-auto-signature-help-enable` now shows an info box by default,
+      and formats the active parameter in a bold font.
+    - `lsp-definition` and friends now select the symbol name instead of merely 
+      placing the cursor at symbol start. Same for `lsp-find-error`.
+    - `lsp-highlight-references` now selects all references in the current buffer.
+    - New `lsp-inlay-code-lenses-enable` command allows to render code 
+      lenses as virtual text (#623).
+    - The support for `filterText` in completions no longer depends on an 
+      out-of-tree Kakoune feature.
+  * Fixes:
+    - Fix lags due to `rust-analyzer` sending a ton of progress reports.
+    - `lsp-rename` will now write hidden buffers that are affected by the rename, 
+      to give the language server and other external tools a more consistent 
+      view of affected files.
+    - Suppress &quot;language server not initialized&quot; errors that originate from hooks.
+    - Fix a glitch when a line has both a code lens and an inline diagnostic.
+    - When talking to servers that don't support UTF-8 byte-offsets, `kak-lsp` 
+      now adheres to the LSP specification by treating column-offsets 
+      as UTF-16 Code Units instead of Unicode Code Points.
+- Update to version 14.0.0:
+  * Update changelog for release
+  * lsp-goto-document-symbol: map to s instead of &lt;c-o&gt;
+  * test: work around &quot;unconfigured filetype&quot; error in tests
+  * test: remove unnecessary code for macOS-specific tests
+  * Advertise some more LSP capabilities
+  * capabilities: minor consistency change
+  * clippy
+  * lsp-goto-document-symbol: support nested symbols
+  * lsp-capabilities: also advertise more commands based on textDocument/documentSymbols
+- Update to version 12.2.1:
+  * v12.2.1
+  * Update changelog for release
+  * Test code lens from haskell-language-server
+  * lsp-code-lens: pass correct args to lsp-perform-code-lens
+  * start new cycle
+  * v12.2.0
+  * Update changelog for release
+  * README: clarify &quot;cargo install&quot; behavior and kak-lsp.toml creation when using plug.kak
+  * README: remove misleading warning
+  * lsp-hover: limit to 20 lines via lsp_hover_max_lines</comment>
+    <requestid>1283852</requestid>
+  </revision>
 </revisionlist>

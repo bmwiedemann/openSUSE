@@ -1,25 +1,14 @@
 <services>
-  <service mode="manual" name="obs_scm">
-    <param name="url">https://github.com/kakoune-lsp/kakoune-lsp.git</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="scm">git</param>
-    <param name="revision">v18.1.2</param>
-    <param name="match-tag">*</param>
-    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
-    <param name="versionrewrite-replacement">\1</param>
-    <param name="changesgenerate">enable</param>
-    <param name="changesauthor">gerald_chen@foxmail.com</param>
-  </service>
-  <service mode="manual" name="tar"/>
-  <service mode="manual" name="recomprizz">
-    <param name="target">*.tar</param>
-    <param name="compression">zst</param>
-  </service>
-  <service mode="manual" name="set_version"/>
-  <service name="cargo_vendor" mode="manual">
-    <param name="src">kakoune-lsp</param>
-    <param name="compression">zst</param>
-    <param name="update">true</param>
+  <service mode="manual" name="cargo_vendor">
     <param name="method">registry</param>
+    <param name="url">https://github.com/kakoune-lsp/kakoune-lsp.git</param>
+    <param name="versionrewriteregex">^v?(.*)</param>
+    <param name="versionrewritepattern">${1}</param>
+    <param name="revision">v18.1.3</param>
+    <param name="changesgenerate">true</param>
+    <param name="set-name">kak-lsp</param>
+    <param name="changesauthor">Soc Virnyl Estela</param>
+    <param name="changesemail">uncomfyhalomacro@opensuse.org</param>
+    <param name="changesoutfile">kak-lsp.changes</param>
   </service>
 </services>

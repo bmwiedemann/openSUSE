@@ -17,12 +17,12 @@
 
 
 Name:           kak-lsp
-Version:        18.1.2
+Version:        18.1.3
 Release:        0
 Summary:        Language Server Protocol client for Kakoune
 License:        (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR BSL-1.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR MPL-2.0) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND MIT AND Zlib AND Unlicense
 URL:            https://github.com/kakoune-lsp/kakoune-lsp
-Source0:        kakoune-lsp-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.zst
 Source1:        registry.tar.zst
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
@@ -35,14 +35,16 @@ Provides:       kakoune-lsp = %{version}
 kak-lsp is a Language Server Protocol client for Kakoune written in Rust.
 
 %prep
-%autosetup -a1 -n kakoune-lsp-%{version}
+%autosetup -a1
 
 %build
 export CARGO_HOME="$PWD/.cargo"
+export CARGO_TARGET_DIR="%{_buildir}/%{buildsubdir}/target"
 %{cargo_build} --all-features
 
 %install
 export CARGO_HOME="$PWD/.cargo"
+export CARGO_TARGET_DIR="%{_buildir}/%{buildsubdir}/target"
 %{cargo_install} --all-features
 mkdir -p %{buildroot}%{_datadir}/%{name}/rc
 install -Dm644 rc/lsp.kak %{buildroot}%{_datadir}/%{name}/rc/
