@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Wed Jun  4 14:27:37 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.12.1:
+  * Enables Fortran before including CheckFortranFunctionExists in
+    CMakeLists.txt (gh#Reference-LAPACK/lapack#948).
+  * Fixes for the NAG Fortran compiler
+    (gh#Reference-LAPACK/lapack#951).
+  * Fixed HAS_ATTRIBUTE_WEAK_SUPPORT flag for CBLAS objects
+    (gh#Reference-LAPACK/lapack#950).
+  * Fixed memory leak in testing framework
+    (gh#Reference-LAPACK/lapack#953).
+  * Fixed search phrase for determining the amount of successful
+    tests (gh#Reference-LAPACK/lapack#954).
+  * handle and document corner cases of lwork in lapack
+    (gh#Reference-LAPACK/lapack#942).
+  * Fix some DMD issues (gh#Reference-LAPACK/lapack#959).
+  * Remove executable permissions from source files
+    (gh#Reference-LAPACK/lapack#970).
+  * CMake: restore compatibility with v3.10 and older
+    (gh#Reference-LAPACK/lapack#976).
+  * Re-sync Doxyfile with CMake (gh#Reference-LAPACK/lapack#978).
+  * Fix Doxygen warnings (gh#Reference-LAPACK/lapack#979).
+  * {C,Z}LARFGP: re-scale input vector more often
+    (gh#Reference-LAPACK/lapack#981).
+  * Typo (gh#Reference-LAPACK/lapack#984).
+  * Add Index-64 API as extended API with _64 suffix for LAPACKE
+    (gh#Reference-LAPACK/lapack#888).
+  * Two small fixes of bdsqr (gh#Reference-LAPACK/lapack#989).
+  * xGEDMD(Q): silence warning with 64-bit integers
+    (gh#Reference-LAPACK/lapack#993).
+  * xSY/HEEVR: clarify use of multiple algorithms
+    (gh#Reference-LAPACK/lapack#998).
+  * Fix comments (gh#Reference-LAPACK/lapack#1004).
+  * Fix comments (gh#Reference-LAPACK/lapack#1007).
+  * Allow installing binaries to subdirectory while keeping CMake
+    package scripts in the same place
+    (gh#Reference-LAPACK/lapack#1009).
+  * Fix LARFB documentation (gh#Reference-LAPACK/lapack#1016).
+  * Fix out-of-bounds access in orhr_col
+    (gh#Reference-LAPACK/lapack#1018).
+  * Allow User Configuration of RPATH Settings
+    (gh#Reference-LAPACK/lapack#1002).
+  * Changing the order of loop to improve performance
+    (gh#Reference-LAPACK/lapack#1023).
+  * Use more modern CMake (gh#Reference-LAPACK/lapack#1022).
+  * Fix infinite loop when an error occurs in tests ddrvst and
+    sdrvst (gh#Reference-LAPACK/lapack#1024).
+  * Configurable type of hidden Fortran strlen arguments
+    (gh#Reference-LAPACK/lapack#1025).
+  * develop DLARF1F and implement in ORM2R, #1011
+    (gh#Reference-LAPACK/lapack#1019).
+  * Fix the wrong implementation of the new tests for xblat1.f
+    (gh#Reference-LAPACK/lapack#964).
+  * Implementation of dorm2r and dlarf1f
+    (gh#Reference-LAPACK/lapack#1020).
+  * Fix lto type mismatch (gh#Reference-LAPACK/lapack#1027).
+  * Fix NAG Fortran compiler flag
+    (gh#Reference-LAPACK/lapack#1028).
+  * align documentation of BDSQR workspace with code
+    (gh#Reference-LAPACK/lapack#1029).
+  * Fixed usage of uninitialized variables in TESTING
+    (gh#Reference-LAPACK/lapack#961).
+  * fix few typos and sytrd boundary workspace
+    (gh#Reference-LAPACK/lapack#1030).
+  * Implement xGEMMTR and cblas_xGEMMTR
+    (gh#Reference-LAPACK/lapack#887).
+  * Prevent compilers from using FMA instructions
+    (gh#Reference-LAPACK/lapack#1033).
+  * Clarify documentation of singularity/rank-deficiency checks
+    (gh#Reference-LAPACK/lapack#924).
+  * PR contains bug fixes found in ?tfsm (triangular solve for a
+    RFP matrix) (gh#Reference-LAPACK/lapack#1042).
+  * Remove CMake < 3 CMP0042 workarounds
+    (gh#Reference-LAPACK/lapack#1040).
+  * Declare project dependency on C to avoid the CMAKE default of
+    C,C++ (gh#Reference-LAPACK/lapack#1044).
+  * DOC:trsly3: Add dtrsyl3/strsyl3 grouping statements
+    (gh#Reference-LAPACK/lapack#1051).
+  * Add a few forgotten API_SUFFIX wrappers in the recently
+    changed LAPACKE ?TFSM (gh#Reference-LAPACK/lapack#1046).
+  * Revert "Add a few forgotten API_SUFFIX wrappers in the
+    recently changed LAPACKE ?TFSM"
+    (gh#Reference-LAPACK/lapack#1058).
+  * Revert "Revert "Add a few forgotten API_SUFFIX wrappers in the
+    recently changed LAPACKE ?TFSM""
+    (gh#Reference-LAPACK/lapack#1059).
+  * fix leading dimension for matrix B in test routine get52
+    (gh#Reference-LAPACK/lapack#1064).
+  * Remove comparison as these conditions are never true
+    (gh#Reference-LAPACK/lapack#1062).
+  * Use GEMMTR for SY/HE linear updates
+    (gh#Reference-LAPACK/lapack#1069).
+  * updating gitignore to ignore the mod files when we compile
+    (gh#Reference-LAPACK/lapack#1082).
+  * Fixing misspelling of 'triangular' in {s,d,c,z}gemmtr.f
+    (gh#Reference-LAPACK/lapack#1081).
+  * Fix line lengths for the extended API
+    (gh#Reference-LAPACK/lapack#1079).
+  * Adding a recursive xLARFT (gh#Reference-LAPACK/lapack#1080).
+- Drop fix-lapack-testing.patch: upstreamed (commit 5b0687f).
+- Add upstream commits to fix build when enabling deprecated mods:
+  * lapack-deprecated-lwork-use.patch: 'WORK( LWORK )' should be
+    'WORK( * )' everywhere (gh#Reference-LAPACK/lapack#1092).
+  * lapack-depcrecated-consistent-line-reflow-1.patch
+    (gh#Reference-LAPACK/lapack#1093).
+  * lapack-depcrecated-consistent-line-reflow-2.patch
+    (gh#Reference-LAPACK/lapack#1099).
+- Add lapack-update-patch-version.patch to update patch version in
+  source files.
+
+-------------------------------------------------------------------
 Mon Nov  4 16:48:42 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix previous commit for static build on aarch64

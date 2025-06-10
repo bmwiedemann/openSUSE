@@ -1,7 +1,7 @@
 #
 # spec file for package lapack
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,16 +38,22 @@
 %define a_x _%{_arch}
 %endif
 Name:           %{pname}%{?psuffix}
-Version:        3.12.0
+Version:        3.12.1
 Release:        0
 Summary:        Linear Algebra PACKage
 License:        BSD-3-Clause
 URL:            https://www.netlib.org/lapack/
 Source0:        https://github.com/Reference-LAPACK/lapack/archive/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-lapack-testing.patch gh#Reference-LAPACK/lapack@5b0687f429cf
-Patch1:         fix-lapack-testing.patch
 Source98:       lapack.rpmlintrc
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         https://github.com/Reference-LAPACK/lapack/commit/b054023.patch#/lapack-deprecated-lwork-use.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         https://github.com/Reference-LAPACK/lapack/commit/0799b59.patch#/lapack-depcrecated-consistent-line-reflow-1.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         https://github.com/Reference-LAPACK/lapack/commit/447fd4e.patch#/lapack-depcrecated-consistent-line-reflow-2.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         https://github.com/Reference-LAPACK/lapack/commit/cf2c440.patch#/lapack-update-patch-version.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -74,7 +80,13 @@ similar functionality is provided for real and complex matrices, in
 both single and double precision.
 
 
+
+
+
+
+
 # LAPACK
+
 %package     -n liblapack%{so_ver}
 Summary:        Linear Algebra PACKage: Shared Library
 Requires(post): update-alternatives
@@ -130,7 +142,13 @@ both single and double precision.
 This package provides the static library for LAPACK.
 
 
+
+
+
+
+
 # BLAS
+
 %package     -n libblas%{so_ver}
 Summary:        Basic Linear Algebra Subprograms: Shared Library
 Requires(post): update-alternatives
@@ -171,7 +189,13 @@ blas-man package.
 This package provides the static library for BLAS.
 
 
+
+
+
+
+
 # LAPACKE
+
 %package     -n liblapacke%{so_ver}
 Summary:        Native C Interface to LAPACK: shared library
 Requires(post): update-alternatives
@@ -207,7 +231,13 @@ for C programmers.
 This package provides the static library for LAPACKE.
 
 
+
+
+
+
+
 # CBLAS
+
 %package     -n libcblas%{so_ver}
 Summary:        Native C interface to BLAS: Shared Library
 Requires(post): update-alternatives
@@ -243,7 +273,13 @@ for C programmers.
 This package contains the CBLAS static libraries.
 
 
+
+
+
+
+
 # TMGLIB
+
 %package -n libtmglib%{so_ver}
 Summary:        Test Matrix Generator Library: shared library
 
@@ -268,7 +304,13 @@ This package provides the headers and sources needed to develop against the
 tmglib as a static library.
 
 
+
+
+
+
+
 # MAN Pages
+
 %package -n lapack-man
 Summary:        Man pages for BLAS, CBLAS, and LAPACK
 
@@ -341,8 +383,6 @@ rm -fr %{buildroot}%{_includedir}/*.h \
 %if %{with man}
 # Delete weirdly named man files
 rm %{__builddir}/DOCS/man/man3/_*_.3
-# Rename isnan to avoid conflict with libm's isnan man file (package man-pages)
-mv %{__builddir}/DOCS/man/man3/isnan{,-lapack}.3
 # Install man pages
 mkdir -p %{buildroot}%{_mandir}
 cp -r %{__builddir}/DOCS/man/man3 %{buildroot}%{_mandir}/

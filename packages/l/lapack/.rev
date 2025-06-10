@@ -541,4 +541,12 @@ An alternative would be to use the older manpages or to pre-generate them.
     <comment></comment>
     <requestid>1221152</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>d5ae54f21693629a8107e1978e9ec76f</srcmd5>
+    <version>3.12.1</version>
+    <time>1749538580</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1283891</requestid>
+  </revision>
 </revisionlist>
