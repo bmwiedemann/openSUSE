@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jun 07 14:56:45 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.18.0:
+  * chore: release 0.18.0 (#2128)
+  * chore: revert chore release 0.18.0 (#2106) (#2127)
+  * chore: release 0.18.0 (#2106)
+  * fix: rename tool version filename environment variable for clarity (#2101)
+  * docs: create dependencies page (#2124)
+  * docs: correct dangerous cleanup command in upgrade guide (#2123)
+  * fix: only return version starting with number when no filter is supplied (#2120)
+  * docs: correct link to ASDF_CONFIG_FILE environment variable (#2119)
+  * docs: upgrade upgrade guide to reference all available install methods (#2117)
+  * feat: `asdf list` exit with status code of 0 when no versions installed (#2116)
+  * fix: correct flag handling in commands run by `asdf exec` (#2115)
+  * docs: document cleanup of ASDF_DATA_DIR in upgrade guide (#2114)
+  * chore(deps): bump @types/node from 22.15.3 to 22.15.29 in /docs in the docs group (#2111)
+  * docs: document unexpected shims on faq page (#2110)
+  * fix: print all error output to stderr when shim can't be resolved (#2109)
+  * fix: upgrade urfave/cli to version 3 (#2105)
+  * docs: add missing information 0.16.0 upgrade instructions (#2103)
+
+-------------------------------------------------------------------
 Tue May 20 14:12:50 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 0.17.0:
