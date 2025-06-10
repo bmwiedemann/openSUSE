@@ -92,4 +92,14 @@
 </comment>
     <requestid>1281825</requestid>
   </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>7709c084fb2ca4774419ebfcdf9f6cd1</srcmd5>
+    <version>1.4.18</version>
+    <time>1749549973</time>
+    <user>anag_factory</user>
+    <comment>- Do not make symlinks to example configs copy them instead
+
+- Convert to libalternatives</comment>
+    <requestid>1284291</requestid>
+  </revision>
 </revisionlist>

@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-md2workflow
 Version:        1.4.18
 Release:        0
@@ -35,12 +36,12 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-redmine}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-icalendar
 Requires:       python-md2workflow-common
-Requires(post): alts
-Requires(postun): alts
 Provides:       md2workfow = %{version}
 BuildArch:      noarch
 %python_subpackages
@@ -93,13 +94,14 @@ cp %{_sourcedir}/LICENSE LICENSE
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/md2workflow
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-ln -s -f %{_datadir}/md2workflow/config %{buildroot}%{_sysconfdir}/md2workflow
+mkdir -p %{buildroot}%{_sysconfdir}/md2workflow
+cp -a config/* %{buildroot}%{_sysconfdir}/md2workflow/
 
-%post
-%python_install_alternative md2workflow
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative md2workflow
 
-%postun
-%python_uninstall_alternative md2workflow
+# post and postun alternatives calls are not needed anymore
 
 %files %{python_files}
 %license LICENSE
@@ -143,6 +145,7 @@ ln -s -f %{_datadir}/md2workflow/config %{buildroot}%{_sysconfdir}/md2workflow
 %{_datadir}/md2workflow/config/*
 %dir %{_datadir}/md2workflow/example/
 %{_datadir}/md2workflow/example/*
-%{_sysconfdir}/md2workflow
+%dir %{_sysconfdir}/md2workflow/
+%config(noreplace) %{_sysconfdir}/md2workflow/*.conf
 
 %changelog
