@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-extratools
 Version:        0.8.2.1
 Release:        0
@@ -27,15 +28,15 @@ Source:         https://files.pythonhosted.org/packages/source/e/extratools/extr
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-RegexOrder >= 0.2
 Requires:       python-TagStats >= 0.1.2
 Requires:       python-sh >= 1.12.13
 Requires:       python-sortedcontainers >= 1.5.10
 Requires:       python-toolz >= 0.9.0
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module RegexOrder >= 0.2}
@@ -67,15 +68,10 @@ chmod a-x extratools/*/*.js
 %python_clone -a %{buildroot}%{_bindir}/extratools-flatten
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative extratools-teststats
-%python_install_alternative extratools-remap
-%python_install_alternative extratools-flatten
-
-%postun
-%python_uninstall_alternative extratools-teststats
-%python_uninstall_alternative extratools-remap
-%python_uninstall_alternative extratools-flatten
+%pre
+%python_libalternatives_reset_alternative extratools-teststats
+%python_libalternatives_reset_alternative extratools-remap
+%python_libalternatives_reset_alternative extratools-flatten
 
 %files %{python_files}
 %doc README.md

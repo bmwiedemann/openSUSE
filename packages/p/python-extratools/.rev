@@ -40,4 +40,12 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1280515</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>88478d5148b557028883d51a70baf243</srcmd5>
+    <version>0.8.2.1</version>
+    <time>1749539283</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1284204</requestid>
+  </revision>
 </revisionlist>
