@@ -1,7 +1,7 @@
 #
 # spec file for package fuse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,7 +73,8 @@ the raw kernel interface.
 
 %package doc
 Summary:        Document package for FUSE (userspace filesystem)
-Group:          Development/Languages/C and C++
+Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description doc
 This package contains the documentation for FUSE (userspace filesystem).
@@ -82,7 +83,6 @@ This package contains the documentation for FUSE (userspace filesystem).
 Summary:        Development package for FUSE (userspace filesystem) modules
 Group:          Development/Languages/C and C++
 Requires:       fuse = %{version}
-Requires:       fuse-doc = %{version}
 Requires:       glibc-devel
 Requires:       libfuse2 = %{version}
 Requires:       libulockmgr1 = %{version}
@@ -94,15 +94,6 @@ implement file systems in user space.
 
 With fuse-devel, users can compile and install other user space file
 systems.
-
-%package devel-static
-Summary:        Development package for FUSE (userspace filesystem) modules
-Group:          Development/Languages/C and C++
-Requires:       fuse-devel = %{version}
-Provides:       fuse-devel:%{_libdir}/libfuse.a
-
-%description devel-static
-This package contains the static library variants of libfuse.
 
 %prep
 %autosetup -p1
@@ -116,7 +107,7 @@ autoreconf -fi
     --with-pkgconfigdir=%{_libdir}/pkgconfig \
     --enable-lib \
     --enable-util \
-    --enable-example
+    --enable-example --disable-static
 %make_build
 
 %install
@@ -155,10 +146,8 @@ rm -rf doc/Makefile.am doc/Makefile.in doc/Makefile
 %verifyscript
 %verify_permissions -e %{_bindir}/fusermount
 
-%post -n libfuse2 -p /sbin/ldconfig
-%postun -n libfuse2 -p /sbin/ldconfig
-%post -n libulockmgr1 -p /sbin/ldconfig
-%postun -n libulockmgr1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libfuse2
+%ldconfig_scriptlets -n libulockmgr1
 
 %files
 %license COPYING*
@@ -201,8 +190,5 @@ rm -rf doc/Makefile.am doc/Makefile.in doc/Makefile
 %{_includedir}/fuse
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/ulockmgr.h
-
-%files devel-static
-%{_libdir}/libfuse.a
 
 %changelog

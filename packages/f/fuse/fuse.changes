@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun  7 00:19:35 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop fuse-devel-static.
+- Modernize specfile.
+- Do not require installation of documentation for use of FUSE
+  headers.
+
+-------------------------------------------------------------------
 Tue Dec 27 10:36:59 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

@@ -598,4 +598,15 @@
     <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1053948 from lnussel)</comment>
     <requestid>1055738</requestid>
   </revision>
+  <revision rev="77" vrev="7">
+    <srcmd5>4bd3d6f41a6eceba86e4e49fb650bd9f</srcmd5>
+    <version>2.9.9</version>
+    <time>1749538565</time>
+    <user>anag_factory</user>
+    <comment>- Drop fuse-devel-static (last user perl-Fuse is gone since a week or so).
+- Modernize specfile.
+- Do not require installation of documentation for use of FUSE
+  headers.</comment>
+    <requestid>1283761</requestid>
+  </revision>
 </revisionlist>
