@@ -1,0 +1,35 @@
+%pre
+# ugly workaround for changing nvidia/ad103 & co to symlinks (bsc#1243843)
+for d in ad103 ad104 ad106 ad107; do
+  if [ ! -L %{_firmwaredir}/nvidia/$d ]; then
+    if [ -d %{_firmwaredir}/nvidia/$d ]; then
+      mv %{_firmwaredir}/nvidia/$d %{_firmwaredir}/nvidia/$d.xxxold
+    fi
+  fi
+done
+
+%post
+# ugly workaround (bsc#1243843)
+if [ -d %{_firmwaredir}/nvidia/ad103.xxxold ]; then
+  for d in ad103 ad104 ad106 ad107; do
+    mv %{_firmwaredir}/nvidia/$d %{_firmwaredir}/nvidia/$d.xxxnew
+    if [ -d %{_firmwaredir}/nvidia/$d.xxxold ]; then
+      mv %{_firmwaredir}/nvidia/$d.xxxold %{_firmwaredir}/nvidia/$d
+    fi
+  done
+else
+  %{?regenerate_initrd_post}
+fi
+
+%postun
+%{?regenerate_initrd_post}
+
+%posttrans
+# ugly workaround (bsc#1243843)
+for d in ad103 ad104 ad106 ad107; do
+  if [ -L %{_firmwaredir}/nvidia/$d.xxxnew ]; then
+    rm -rf %{_firmwaredir}/nvidia/$d
+    mv %{_firmwaredir}/nvidia/$d.xxxnew %{_firmwaredir}/nvidia/$d
+  fi
+done
+%{?regenerate_initrd_posttrans}

@@ -20,20 +20,21 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version aaae2fb60f75b07d9c249ebe668524f7ddf51243
+%define git_version 759c4acafb4a80d76885e4a1542229a27d677322
 
 Name:           kernel-firmware-nvidia
-Version:        20250206
+Version:        20250516
 Release:        0
 Summary:        Kernel firmware files for Nvidia Tegra and graphics drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250425.tar.gz#/kernel-firmware-tools-20250425.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250605.tar.gz#/kernel-firmware-tools-20250605.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
+Source11:       post
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
 Requires(post): %{_bindir}/touch
@@ -168,13 +169,40 @@ scripts/install-licenses.sh nvidia %{buildroot}%{_licensedir}/%{name}
 install -c -D -m 0644 WHENCE %{buildroot}%{_licensedir}/%{name}/WHENCE
 install -c -D -m 0644 README.md %{buildroot}%{_docdir}/%{name}/README.md
 
+%pre
+# ugly workaround for changing nvidia/ad103 & co to symlinks (bsc#1243843)
+for d in ad103 ad104 ad106 ad107; do
+  if [ ! -L %{_firmwaredir}/nvidia/$d ]; then
+    if [ -d %{_firmwaredir}/nvidia/$d ]; then
+      mv %{_firmwaredir}/nvidia/$d %{_firmwaredir}/nvidia/$d.xxxold
+    fi
+  fi
+done
+
 %post
-%{?regenerate_initrd_post}
+# ugly workaround (bsc#1243843)
+if [ -d %{_firmwaredir}/nvidia/ad103.xxxold ]; then
+  for d in ad103 ad104 ad106 ad107; do
+    mv %{_firmwaredir}/nvidia/$d %{_firmwaredir}/nvidia/$d.xxxnew
+    if [ -d %{_firmwaredir}/nvidia/$d.xxxold ]; then
+      mv %{_firmwaredir}/nvidia/$d.xxxold %{_firmwaredir}/nvidia/$d
+    fi
+  done
+else
+  %{?regenerate_initrd_post}
+fi
 
 %postun
 %{?regenerate_initrd_post}
 
 %posttrans
+# ugly workaround (bsc#1243843)
+for d in ad103 ad104 ad106 ad107; do
+  if [ -L %{_firmwaredir}/nvidia/$d.xxxnew ]; then
+    rm -rf %{_firmwaredir}/nvidia/$d
+    mv %{_firmwaredir}/nvidia/$d.xxxnew %{_firmwaredir}/nvidia/$d
+  fi
+done
 %{?regenerate_initrd_posttrans}
 
 %files

@@ -56,4 +56,15 @@ After this PR, there will be a delete request for kernel-firmware.
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1243843</comment>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c70ac16ea797cccbf63cfbb028696d63</srcmd5>
+    <version>20250516</version>
+    <time>1749538655</time>
+    <user>anag_factory</user>
+    <comment>- Add workaround for directory/symlink changes (bsc#1243843)
+
+- Update to version 20250516 (git commit 759c4acafb4a):
+  * nvidia: add GSP-RM version 570.144 firmware images</comment>
+    <requestid>1283307</requestid>
+  </revision>
 </revisionlist>
