@@ -16,8 +16,12 @@
 #
 
 
-%define modname pymol-open-source
+%ifarch x86_64
+# Only thest on this platform
+%bcond_without test
+%else
 %bcond_with test
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-pymol
 Version:        3.1.0
@@ -26,12 +30,11 @@ Summary:        A Molecular Viewer
 License:        Python-2.0
 Group:          Productivity/Scientific/Chemistry
 URL:            https://pymol.org/
-Source0:        https://github.com/schrodinger/%{modname}/archive/v%{version}/%{modname}-%{version}.tar.gz
+Source0:        https://github.com/schrodinger/pymol-open-source/archive/v%{version}/pymol-open-source-%{version}.tar.gz
 Patch0:         https://github.com/schrodinger/pymol-open-source/pull/404.patch#/reproducible.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module qt5-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -45,13 +48,14 @@ BuildRequires:  glew-devel
 BuildRequires:  glm-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libxml2-devel
+BuildRequires:  Mesa-libGL-devel
 BuildRequires:  mmtf-cpp-devel
 BuildRequires:  msgpack-cxx-devel
 BuildRequires:  netcdf-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
-Requires:       python-pmw
-Requires:       python-qt5
+Requires:       ( python-PyQt6 or python-pyside6 )
+Recommends:     python-pmw
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Obsoletes:      pymol < %{version}
@@ -59,6 +63,7 @@ Provides:       pymol = %{version}
 %if %{with test}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module PyQt6}
 BuildRequires:  Catch2-2-devel
 ## tests need recent biopython not available in Leap
 %if 0%{?sle_version} >= 150500 && 0%{?is_opensuse}
@@ -85,7 +90,7 @@ The file formats PyMOL can read include PDB, XYZ, CIF, MDL Molfile,
 ChemDraw, CCP4 maps, XPLOR maps and Gaussian cube maps.
 
 %prep
-%autosetup -p1 -n %{modname}-%{version}
+%autosetup -p1 -n pymol-open-source-%{version}
 
 %build
 %if 0%{?sle_version} >= 150500 && 0%{?is_opensuse}

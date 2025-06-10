@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun  8 15:58:57 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Enable test suite for x86_64
+
+-------------------------------------------------------------------
+Fri Jun  6 08:29:17 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- require Mesa-libGL-devel to build, require one of PyQt6 or
+  PySide6 to run, recommend Pmw (for legacy plugin manager)
+
+-------------------------------------------------------------------
 Fri Mar 14 17:31:28 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - changes to .spec file:
