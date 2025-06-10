@@ -46,4 +46,15 @@ After this PR, there will be a delete request for kernel-firmware.
   instructing zypp about the usrmerge is perfect for this use case.</comment>
     <requestid>1272732</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2322cff7b9a1d9caf5222a8d17bd44b2</srcmd5>
+    <version>20250603</version>
+    <time>1749538654</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250603 (git commit 3b75d677f898):
+  * ice: update wireless_edge package to 1.3.23.0
+  * ice: update comms package to 1.3.55.0
+  * ice: update package to 1.3.43.0</comment>
+    <requestid>1283306</requestid>
+  </revision>
 </revisionlist>
