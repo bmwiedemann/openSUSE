@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-iniconfig
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-iniconfig%{psuffix}
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        iniconfig: brain-dead simple config-ini parsing
 License:        MIT
@@ -35,7 +35,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/RonnyPfannschmidt/iniconfig
 Source:         https://files.pythonhosted.org/packages/source/i/iniconfig/iniconfig-%{version}.tar.gz
 Source1:        https://github.com/pytest-dev/iniconfig/archive/refs/tags/v%{version}.tar.gz#/iniconfig-%{version}-tests.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}

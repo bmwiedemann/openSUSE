@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  3 14:18:36 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2.1.0
+  * fix #26 - list individuals in license file by @RonnyPfannschmidt in #52
+  * Run tests in CI by @nicoddemus in #53
+  * Use pypa/gh-action-pypi-publish@release/v1 @ GHA by @webknjaz in #54
+  * Add support for Python 3.12-3.13 and drop EOL 3.7 by @hugovk in #56
+
+-------------------------------------------------------------------
 Mon May  1 19:02:20 UTC 2023 - Benjamin Greiner <code@bnavigator.de>
 
 - Don't catchall filelist
