@@ -1,8 +1,7 @@
-Index: xdg-desktop-portal-1.19.2/doc/conf.py
-===================================================================
---- xdg-desktop-portal-1.19.2.orig/doc/conf.py
-+++ xdg-desktop-portal-1.19.2/doc/conf.py
-@@ -26,9 +26,8 @@ exclude_patterns = ["_build", "Thumbs.db
+diff -urp xdg-desktop-portal-1.20.3.orig/doc/conf.py xdg-desktop-portal-1.20.3/doc/conf.py
+--- xdg-desktop-portal-1.20.3.orig/doc/conf.py	2025-05-20 12:07:14.000000000 -0500
++++ xdg-desktop-portal-1.20.3/doc/conf.py	2025-06-06 10:25:08.899407994 -0500
+@@ -26,14 +26,11 @@ exclude_patterns = ["_build", "Thumbs.db
  # -- Options for HTML output -------------------------------------------------
  # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
  
@@ -11,19 +10,17 @@ Index: xdg-desktop-portal-1.19.2/doc/conf.py
  # add custom files that are stored in _static
 -html_css_files = ["xdg.css"]
  html_static_path = ["_static"]
- html_favicon = "img/favicon.svg"
- html_logo = "img/logo.svg"
-@@ -37,5 +36,3 @@ html_logo = "img/logo.svg"
+ 
+ # -- Options for OpenGraph ---------------------------------------------------
  
  ogp_site_url = "https://flatpak.github.io/xdg-desktop-portal/docs/"
  ogp_image = "_static/card.png"
 -
 -html_permalinks_icon = "🔗"
-Index: xdg-desktop-portal-1.19.2/meson.build
-===================================================================
---- xdg-desktop-portal-1.19.2.orig/meson.build
-+++ xdg-desktop-portal-1.19.2/meson.build
-@@ -185,7 +185,7 @@ add_project_arguments(['-DGLIB_VERSION_M
+diff -urp xdg-desktop-portal-1.20.3.orig/meson.build xdg-desktop-portal-1.20.3/meson.build
+--- xdg-desktop-portal-1.20.3.orig/meson.build	2025-05-20 12:07:14.000000000 -0500
++++ xdg-desktop-portal-1.20.3/meson.build	2025-06-06 10:25:08.900242888 -0500
+@@ -175,7 +175,7 @@ add_project_arguments(['-DGLIB_VERSION_M
  build_documentation = false
  gdbus_codegen = find_program('gdbus-codegen', native: true, required: get_option('documentation'))
  sphinx_build = find_program('sphinx-build', native: true, required: get_option('documentation'))

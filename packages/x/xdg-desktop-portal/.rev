@@ -528,4 +528,12 @@
     - Fix fd handling to prevent EBADF errors. (forwarded request 1278986 from iznogood)</comment>
     <requestid>1280012</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>63cd5139d0e4674bc8c6a6ef9efe2001</srcmd5>
+    <version>1.20.3</version>
+    <time>1749538777</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1283734</requestid>
+  </revision>
 </revisionlist>
