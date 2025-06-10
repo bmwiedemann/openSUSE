@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-ntplib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define upstream_name ntplib
 Name:           python-%{upstream_name}
 Version:        0.4.0
@@ -24,14 +23,14 @@ Release:        0
 Summary:        Python NTP library
 License:        MIT
 Group:          Development/Libraries/Python
-URL:            http://pypi.python.org/pypi/ntplib
+URL:            https://pypi.python.org/pypi/ntplib
 Source0:        ntplib-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -44,15 +43,15 @@ modules, it should work on any platform with a decent Python implementation.
 %setup -q -n %{upstream_name}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc CHANGELOG
-%{python_sitelib}/ntplib*
-%pycache_only %{python_sitelib}/__pycache__
+%{python_sitelib}/ntplib.py
+%{python_sitelib}/ntplib-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/ntplib*
 
 %changelog
