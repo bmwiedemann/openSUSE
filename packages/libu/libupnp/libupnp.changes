@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun  7 18:16:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.23
+  * Improve SSDP initialization and error handling
+
+-------------------------------------------------------------------
 Mon Jun  2 21:24:49 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to release 1.4.22
+- Update to release 1.14.22
   * Resolve FTBFS on musl
 
 -------------------------------------------------------------------
