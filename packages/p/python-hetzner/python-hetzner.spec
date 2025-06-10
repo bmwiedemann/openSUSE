@@ -17,6 +17,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-hetzner
 Version:        0.8.3
 Release:        0
@@ -28,10 +29,10 @@ Source:         https://github.com/aszlig/hetzner/archive/v%{version}.tar.gz#/%{
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): alts
-Requires(postun): alts
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -52,11 +53,8 @@ A high-level Python API for accessing the Hetzner robot.
 %check
 %pyunittest discover -v hetzner/tests
 
-%post
-%python_install_alternative hetznerctl
-
-%postun
-%python_uninstall_alternative hetznerctl
+%pre
+%python_libalternatives_reset_alternative hetznerctl
 
 %files %{python_files}
 %doc README.md
