@@ -1,7 +1,7 @@
 #
 # spec file for package python-msgpack
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,10 @@ URL:            https://github.com/msgpack/msgpack-python
 Source:         https://files.pythonhosted.org/packages/source/m/msgpack/msgpack-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
@@ -47,10 +49,10 @@ focused on high performance. It is like JSON, but very fast and small.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -60,6 +62,6 @@ export CFLAGS="%{optflags}"
 %doc README.md
 %license COPYING
 %{python_sitearch}/msgpack
-%{python_sitearch}/msgpack-%{version}-py*.egg-info
+%{python_sitearch}/msgpack-%{version}.dist-info
 
 %changelog
