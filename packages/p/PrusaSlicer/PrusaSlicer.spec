@@ -55,6 +55,8 @@ Patch16:        PrusaSlicer-2.9.1-pr14440-glad.patch
 Patch17:        PrusaSlicer-2.9.1-pr14214-egl-support.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.9.1-pr14263-secretstorage.patch gh#prusa3d/PrusaSlicer#14263
 Patch18:        PrusaSlicer-2.9.1-pr14263-secretstorage.patch
+# PATCH-FIX-DOWNSTREAMS PrusaSlicer-2.9.2-issue14534-boost-1.88.patch gh#prusa3d/PrusaSlicer#14534 gentoo#955553
+Patch19:        PrusaSlicer-2.9.2-issue14534-boost-1.88.patch
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 5.6

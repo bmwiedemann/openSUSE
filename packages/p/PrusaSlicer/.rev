@@ -478,4 +478,15 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
     <comment></comment>
     <requestid>1273449</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>a265d933e850ef73ae075b310cc2b518</srcmd5>
+    <version>2.9.2</version>
+    <time>1749539157</time>
+    <user>anag_factory</user>
+    <comment>- Add patch for compatibility with Boost 1.88
+  * gh#prusa3d/PrusaSlicer#14534 gentoo#955553
+  * PrusaSlicer-2.9.2-issue14534-boost-1.88.patch
+</comment>
+    <requestid>1283943</requestid>
+  </revision>
 </revisionlist>
