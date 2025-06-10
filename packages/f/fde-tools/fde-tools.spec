@@ -30,6 +30,7 @@ URL:            https://github.com/openSUSE/fde-tools
 Source:         https://github.com/openSUSE/%{name}/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Source1:        fde-tools.service
 Patch0:         fde-tools-firstboot-alp-snapshot.patch
+Patch1:         fde-tools-bsc1243877-firstboot-remove-key-conf.patch
 BuildRequires:  help2man
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcryptsetup)

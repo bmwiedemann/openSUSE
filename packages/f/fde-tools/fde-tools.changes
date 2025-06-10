@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  5 02:58:15 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-bsc1243877-firstboot-remove-key-conf.patch to
+  remove the dracut conf for the key file to avoid the error from
+  dracut (bsc#1243877)
+
+-------------------------------------------------------------------
 Thu May 15 02:54:23 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to version 0.7.3

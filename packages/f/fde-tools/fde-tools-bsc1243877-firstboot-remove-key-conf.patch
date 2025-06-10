@@ -1,0 +1,31 @@
+From 80b2c20abfee7cc40d99c55bcc617de23abc4134 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 5 Jun 2025 10:49:45 +0800
+Subject: [PATCH] firstboot: remove the dracut conf for the key file
+
+KIWI inserts a dracut conf to include the default key file into initrd.
+Since the key file is not used after reencryption, the dracut conf
+should be removed to avoid the potential error from dracut.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ firstboot/fde | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/firstboot/fde b/firstboot/fde
+index 94bfb0a..c948e88 100755
+--- a/firstboot/fde
++++ b/firstboot/fde
+@@ -146,6 +146,9 @@ function fde_setup_encrypted {
+ 
+ 	rm -f "${luks_keyfile}"
+ 
++	# Remove the dracut conf for the key file
++	rm -f /etc/dracut.conf.d/99-luks-boot.conf
++
+ 	# Replace the key file path in /etc/crypttab with "/.virtual-root.key"
+ 	# to avoid errors when unmounting the LUKS partition (bsc#1218181)
+ 	sed -i "s,${luks_keyfile},/.virtual-root.key,g" /etc/crypttab
+-- 
+2.43.0
+
