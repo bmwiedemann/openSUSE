@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun  3 21:12:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.2/
+- Changes since 25.04.1:
+  * Fix space switching on mobile (kde#504166)
+  * Improve the UX for rooms that don't have a canonical alias
+  * Fix GlobalMenu initialization on other platforms
+  * Fix issues with global menu
+  * Add padding around file progress indicator, move it to the center
+  * Add duration to voice message delegate
+  * CI: Remove Linux Next (Qt 6.10) job
+  * Load stickers properly
+  * Check if RoomEvent is null before trying to insert a notification (kde#502687)
+  * Allow performing shortcuts while the completion menu is open
+  * Give completion popup a minimum size when editing an existing message (kde#503483)
+  * Fix crash when trying to edit your message on a wide screen (kde#503846)
+  * Fix undefined reference to webShortcutModel
+  * Fix the room list header margin in Kirigami >6.14
+  * Make sure that ChatDocumentHandler can handle the document being changed to a nullptr (kde#501950)
+
+-------------------------------------------------------------------
 Wed May  7 21:00:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.1
