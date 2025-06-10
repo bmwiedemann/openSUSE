@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 09 15:29:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 8.27.2:
+  * Add experimental allowlist optimizations (#1731)
+  * Detect Notion Public API Keys #1889 (#1890)
+
+-------------------------------------------------------------------
+Sun Jun 08 06:10:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 8.27.1:
+  * fix(atlassian): reduce false-positives for v1 pattern (#1892)
+  * Fix log suppresion issue (#1887)
+  * Added Heroku API Key New Version (#1883)
+  * Add Platform Bitbucket (#1886)
+  * Add Platform Gitea (#1884)
+  * prevent default warn message when max-archive-depth not set
+    (#1881)
+  * prevent default warn message when max-archive-depth not set
+
+-------------------------------------------------------------------
 Sun Jun 01 19:05:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 8.27.0:
