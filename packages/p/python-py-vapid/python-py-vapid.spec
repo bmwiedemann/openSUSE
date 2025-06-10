@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-py-vapid
 Version:        1.9.0
 Release:        0
@@ -26,11 +27,11 @@ Source:         https://files.pythonhosted.org/packages/source/p/py-vapid/py-vap
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-cryptography >= 2.5
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module cryptography >= 2.5}
@@ -56,11 +57,8 @@ sed -i 's/from mock import/from unittest.mock import/' py_vapid/tests/test_vapid
 %check
 %pytest
 
-%post
-%python_install_alternative vapid
-
-%postun
-%python_uninstall_alternative vapid
+%pre
+%python_libalternatives_reset_alternative vapid
 
 %files %{python_files}
 %doc README.md README.rst
