@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun  9 19:31:23 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 4.46.0:
+  - OTW(AO3): Don't attempt login with
+    use_archive_transformativeworks_org or open_pages_in_browser
+    #1210
+  - Ignore use_browser_cache_only when URL scheme is file
+  - Update translations.
+  - adapter_ficbooknet: Site changes, thanks dbhmw
+  - adapter_literotica: Fix date parsing. See #1208, thanks dbhmw
+  - Add Ctrl-Enter to AddDialog, consolidating code with INIEdit
+  - Split BG: Fixes for error column & showing meta collection
+    errors
+  - Single proc bg processing, optionally split by site &
+    accumulate results (See this post)
+  - Fix remove_empty_p regexp to work with nested tags and
+    whitespace.
+  - AO3 make use_(domain) options not replace
+    media.archiveofourown.org
+  - Include 'Add New Book' dialog when multiple existing found on
+    update.
+  - adapter_spiritfanfictioncom: Fix for author collection after
+    site change. Thanks, kilandra
+
+-------------------------------------------------------------------
 Fri May  2 23:44:26 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 4.45.0:
