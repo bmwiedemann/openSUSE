@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun  3 21:12:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.2/
+- Changes since 25.04.1:
+  * Fix OTP arrival platform parsing
+  * Fix parsing of EFA operator names
+  * Continue backend search until we find at least one that covers both sides
+  * Consider all higher coverage types as well for journey coverage checks
+  * Make line asset loading also work for stopovers without coordinates
+  * Retain trip identifiers in DB trip queries
+  * Add onboard API support for Ouigo ES
+  * Check type before reading a numeric JSON value
+  * Include Estonia in DB's coverage area
+  * Make mode filters work on the bwegt EFA endpoint
+
+-------------------------------------------------------------------
 Wed May  7 21:00:28 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.1
