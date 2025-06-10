@@ -49,4 +49,13 @@
     https://github.com/iterative/PyDrive2/compare/1.16.2...1.18.1</comment>
     <requestid>1135197</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f4b971b922615e7ea84d0e3660593bf3</srcmd5>
+    <version>1.18.1</version>
+    <time>1749539220</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build
+</comment>
+    <requestid>1284028</requestid>
+  </revision>
 </revisionlist>
