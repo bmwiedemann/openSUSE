@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  9 10:39:40 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.4.0
+  * Changes
+    + Bump apache/maven-gh-actions-shared from 3 to 4
+    + Bump org.apache.maven.shared:maven-shared-components from 41
+    + MSHARED-1412: Allow to customize Interpolator used by filter
+
+-------------------------------------------------------------------
 Tue Jun  3 08:18:21 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on objectweb-asm to build with sisu 0.9.0.M4

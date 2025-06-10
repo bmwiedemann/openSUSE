@@ -17,7 +17,7 @@
 
 
 Name:           maven-filtering
-Version:        3.3.2
+Version:        3.4.0
 Release:        0
 Summary:        Shared component providing resource filtering
 License:        Apache-2.0
