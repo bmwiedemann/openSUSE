@@ -16,16 +16,16 @@
 #
 
 
-%define git_commit 6cfd9be7a17bafc7ca2f347774881067177c3384
+%define git_commit 75f804ca5d3814f37c98b40c3da0713ea5fb963d
 %define variant -longterm%{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
 Name:           kernel-syms-longterm
-Version:        6.12.31
+Version:        6.12.32
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g6cfd9be
+Release:        <RELEASE>.g75f804c
 %else
 Release:        0
 %endif
