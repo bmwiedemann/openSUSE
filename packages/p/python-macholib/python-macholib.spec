@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-macholib
 Version:        1.16.3
@@ -28,12 +29,12 @@ Source:         https://files.pythonhosted.org/packages/source/m/macholib/machol
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-altgraph >= 0.15
 Requires:       python-setuptools
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module altgraph >= 0.15}
@@ -72,15 +73,10 @@ sed -i -e '/^#!\//, 1d' macholib/macho_standalone.py
 rm macholib_tests/test_{command_line,dyld}.py
 %pytest
 
-%post
-%python_install_alternative macho_dump
-%python_install_alternative macho_standalone
-%python_install_alternative macho_find
-
-%postun
-%python_uninstall_alternative macho_dump
-%python_uninstall_alternative macho_standalone
-%python_uninstall_alternative macho_find
+%pre
+%python_libalternatives_reset_alternative macho_dump
+%python_libalternatives_reset_alternative macho_standalone
+%python_libalternatives_reset_alternative macho_find
 
 %files %{python_files}
 %doc README.rst doc/*.rst
