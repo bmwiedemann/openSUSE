@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun  7 20:20:35 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.34:
+  * Linux: made demoShow () work again on GTK 3.
+  * Scripting: clock ().
+- Changes from version 6.4.33:
+  * H1-minus-H2 in the voice report.
+  * Repaired an old bug that made spectrogram computation in the
+    Sound window crash under some uncommon combinations of
+    settings.
+
+-------------------------------------------------------------------
 Wed Apr 30 08:02:37 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.30:
