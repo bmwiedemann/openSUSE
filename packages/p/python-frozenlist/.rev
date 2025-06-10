@@ -129,4 +129,12 @@
 - drop skip-some-attributes.patch (upstream)</comment>
     <requestid>1219202</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e5975a9a6493c9d9a1e387368218deab</srcmd5>
+    <version>1.6.2</version>
+    <time>1749538609</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1284011</requestid>
+  </revision>
 </revisionlist>

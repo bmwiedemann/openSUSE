@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jun  6 11:59:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.6.2
+  * No significant changes
+- from version 1.6.1
+  * Correctly use cimport for including PyBool_FromLong
+  * Exclude _frozenlist.cpp from bdists/wheels
+  * Updated to use Cython 3.1 universally across the build path
+- from version 1.6.0
+  * Stopped implicitly allowing the use of Cython pre-release versions
+    when building the distribution package
+  * Implemented support for the free-threaded build of CPython 3.13
+  * Started building armv7l wheels
+  * Stopped implicitly allowing the use of Cython pre-release versions
+    when building the distribution package
+  * Started building wheels for the free-threaded build of CPython 3.13
+  * The packaging metadata switched to including an SPDX license identifier
+    introduced in :pep:639
+  * GitHub Actions CI/CD is now configured to manage caching pip-ecosystem
+    dependencies using re-actors/cache-python-deps_ -- an action by
+    :user:webknjaz that takes into account ABI stability and the exact
+    version of Python runtime.
+  * .. _re-actors/cache-python-deps:
+    https://github.com/marketplace/actions/cache-python-deps
+  * Organized dependencies into test and lint dependencies so that no
+    unnecessary ones are installed during CI runs
+- Add gcc-c++ to BuildRequires
+- Refresh no-pytest-cov.patch
+
+-------------------------------------------------------------------
 Tue Oct 29 21:43:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.0:
