@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 16 09:58:14 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix changelog format: the dashed line indicates the beginning of
+  an entry. Entries without content are not permitted.
+
+-------------------------------------------------------------------
 Mon Apr 25 15:21:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rename libatlascpp-0_6-1 subpackage to libatlascpp-0_6-3, making
@@ -42,4 +48,3 @@ Tue May 22 16:36:02 UTC 2012 - joop.boonen@opensuse.org
 
 - Build version 0.6.2 using the provided spec file as a template
 
--------------------------------------------------------------------
