@@ -17,7 +17,7 @@
 
 
 Name:           DirectX-Headers
-Version:        1.615.0
+Version:        1.616.0
 Release:        0
 Summary:        DirectX Headers for Mesa
 License:        MIT
