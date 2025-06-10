@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 19 20:46:22 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 3.26.1
+  * Increment libgps version
+  * Update Debian Trixie in build.adoc
+  * Fix buffer overrun in cgps.
+  * Make gpsmon deprecation slightly more obvious.
+  * Fix some *BSD compiler warnings
+  * Fix numerous typos.
+
+-------------------------------------------------------------------
 Wed May 14 20:31:14 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 3.26

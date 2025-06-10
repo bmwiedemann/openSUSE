@@ -16,13 +16,13 @@
 #
 
 
-%define         sover 30
+%define         sover 31
 %define         libgps libgps%{sover}
 %define         libQgps libQgpsmm%{sover}
 %define         _udevdir %(pkg-config --variable udevdir udev)
 %bcond_without python2
 Name:           gpsd
-Version:        3.26
+Version:        3.26.1
 Release:        0
 Summary:        Service daemon for mediating access to a GPS
 License:        BSD-3-Clause
