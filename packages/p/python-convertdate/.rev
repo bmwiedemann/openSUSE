@@ -86,4 +86,12 @@
   * Remove pytz dependency (#49)</comment>
     <requestid>1084847</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>85cc3272b5a1108e3c1744edb8e6ccda</srcmd5>
+    <version>2.4.0</version>
+    <time>1749538611</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1284018</requestid>
+  </revision>
 </revisionlist>

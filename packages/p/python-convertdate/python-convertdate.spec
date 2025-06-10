@@ -61,7 +61,7 @@ export LC_ALL="en_US.UTF8"
 
 %check
 export LC_ALL="en_US.UTF8"
-%pytest %{?jobs:-n %jobs}
+%pytest -n $(echo %{?_smp_mflags} | cut -c 3-)
 
 %post
 %python_install_alternative censusgeocode
