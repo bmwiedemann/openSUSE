@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun  5 07:41:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add pkgconfig(libxml-2.0) BuildRequire which was previously
+  implicitly pulled in through SOUP. Move everything else to
+  pkgconfig() symbols as well.
+
+-------------------------------------------------------------------
+Tue Jun  3 17:45:03 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Disable soup fetcher. It is redundant with the curl fetcher, and
+  this allows us to drop the dependency on libsoup2.
+
+-------------------------------------------------------------------
 Tue May  6 14:01:21 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Add patches from upstream github.com/strongswan/strongswan

@@ -62,20 +62,20 @@ Patch13:        strongswan-gcc15-part3.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
-BuildRequires:  curl-devel
 BuildRequires:  flex
 BuildRequires:  gmp-devel
 BuildRequires:  gperf
 BuildRequires:  iptables
-BuildRequires:  libcap-devel
-BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
-BuildRequires:  openldap2-devel
-BuildRequires:  pam-devel
-BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(ldap)
+BuildRequires:  pkgconfig(libcap)
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libpcsclite)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(pam)
 %if %{with mysql}
 BuildRequires:  libmysqlclient-devel
 %endif
@@ -306,7 +306,6 @@ autoreconf --force --install
 	--enable-test-vectors \
 %endif
 	--enable-ldap \
-	--enable-soup \
 	--enable-curl \
 	--enable-bypass-lan \
 	--disable-static
@@ -551,7 +550,6 @@ fi
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/revocation.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/smp.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/socket-default.conf
-%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/soup.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/sql.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/sshkey.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/tnccs-11.conf
@@ -659,7 +657,6 @@ fi
 %{strongswan_plugins}/libstrongswan-revocation.so
 %{strongswan_plugins}/libstrongswan-smp.so
 %{strongswan_plugins}/libstrongswan-socket-default.so
-%{strongswan_plugins}/libstrongswan-soup.so
 %{strongswan_plugins}/libstrongswan-sql.so
 %{strongswan_plugins}/libstrongswan-sshkey.so
 %{strongswan_plugins}/libstrongswan-tnc-imc.so
@@ -755,7 +752,6 @@ fi
 %{strongswan_templates}/config/plugins/revocation.conf
 %{strongswan_templates}/config/plugins/smp.conf
 %{strongswan_templates}/config/plugins/socket-default.conf
-%{strongswan_templates}/config/plugins/soup.conf
 %{strongswan_templates}/config/plugins/sql.conf
 %{strongswan_templates}/config/plugins/sshkey.conf
 %{strongswan_templates}/config/plugins/tnc-imc.conf

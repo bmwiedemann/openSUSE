@@ -964,4 +964,13 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
   * strongswan-gcc15-part3.patch</comment>
     <requestid>1275031</requestid>
   </revision>
+  <revision rev="101" vrev="3">
+    <srcmd5>6603a747d8da0085206e5b177d4c6613</srcmd5>
+    <version>6.0.1</version>
+    <time>1749538640</time>
+    <user>anag_factory</user>
+    <comment>- Disable soup fetcher. It is redundant with the curl fetcher, and
+  this allows us to drop the dependency on libsoup2.</comment>
+    <requestid>1283000</requestid>
+  </revision>
 </revisionlist>
