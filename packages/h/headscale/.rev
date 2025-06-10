@@ -147,4 +147,14 @@
     <comment>Just wondering: couldnt we just use the 2 yaml files that come with the tarball? (forwarded request 1281640 from darix)</comment>
     <requestid>1281788</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0d12babdc789abcba940318c7fa213ad</srcmd5>
+    <version>0.26.1</version>
+    <time>1749539005</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.26.1:
+  * Ensure nodes are matching both node key and machine key when connecting
+  * Fix /machine/map endpoint vulnerability (forwarded request 1283728 from rrahl0)</comment>
+    <requestid>1283729</requestid>
+  </revision>
 </revisionlist>

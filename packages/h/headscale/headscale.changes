@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  6 16:05:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.26.1:
+  * Ensure nodes are matching both node key and machine key when connecting
+  * Fix /machine/map endpoint vulnerability
+
+-------------------------------------------------------------------
 Sun Jun  1 01:27:08 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Sync default configurations
