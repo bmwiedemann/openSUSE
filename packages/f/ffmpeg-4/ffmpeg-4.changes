@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 30 14:28:05 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2024-36618.patch:
+  Backport 7a089ed8 from upstream, avformat/avidec: Fix integer
+  overflow iff ULONG_MAX < INT64_MAX.
+  (CVE-2024-36618, bsc#1234020)
+
+-------------------------------------------------------------------
 Thu May 29 20:43:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.4.6
@@ -77,6 +85,8 @@ Mon Jan  6 11:53:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
   Fixes: 51896/clusterfuzz-testcase-minimized-ffmpeg_dem_DXA_fuzzer-5730576523198464
   Fixes: signed integer overflow: 2147483566 + 82 cannot be represented in type 'int'
   (CVE-2024-36613, bsc#1235092)
+  avformat/cafdec: dont seek beyond 64bit (CVE-2024-36617, bsc#1234019).
+  avformat/westwood_vqa: Fix 2g packets (CVE-2024-36616, bsc#1234018).
 - Delete
   0001-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch
   0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
@@ -714,6 +724,7 @@ Tue Aug  6 15:35:35 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
   * mov muxer writes tracks with unspecified language instead
     of English by default
   * added support for using clang to compile CUDA kernels
+  * avcodec/g729_parser: Check channels (CVE-2022-1475, bsc#1198898)
 - Drop ffmpeg-avcodec-libdav1d-AV1-decoder-wrapper.patch, merged
   upstream.
 - Rebase and rename

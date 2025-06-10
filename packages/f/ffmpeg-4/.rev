@@ -756,4 +756,12 @@
     <comment>- Update to release 4.4.6</comment>
     <requestid>1281551</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>f241b9f3c4907a8985e5d9d659d9cd9a</srcmd5>
+    <version>4.4.6</version>
+    <time>1749538666</time>
+    <user>anag_factory</user>
+    <comment>- Add ffmpeg-4-CVE-2024-36618.patch:</comment>
+    <requestid>1283411</requestid>
+  </revision>
 </revisionlist>
