@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs22
-Version:        22.14.0
+Version:        22.15.1
 Release:        0
 
 # Double DWZ memory limits
@@ -93,7 +93,7 @@ ExclusiveArch do_not_build
 %bcond_without intree_openssl
 %endif
 
-%if 0%{?suse_version} >= 1330 || 0%{?fedora_version} >= 35
+%if 0%{?suse_version} >= 1550 || 0%{?fedora_version} >= 35
 %bcond_with    intree_cares
 %else
 %bcond_without intree_cares
@@ -170,10 +170,9 @@ Patch132:       test-skip-y2038-on-32bit-time_t.patch
 Patch200:       versioned.patch
 
 Patch305:       qemu_timeouts_arches.patch
+Patch306:       icu_732.patch
 Patch307:       v8-i586.patch
 Patch309:       gcc13.patch
-Patch311:       old_cares.patch
-Patch312:       fab6906c5d1c16b046187485a7cb136b3659d42b.patch
 
 BuildRequires:  pkg-config
 BuildRequires:  fdupes
@@ -315,7 +314,7 @@ BuildRequires:  bundled_openssl_should_not_be_required
 %if ! 0%{with intree_cares}
 BuildRequires:  pkgconfig(libcares) >= 1.17.0
 %else
-Provides:       bundled(libcares2) = 1.34.4
+Provides:       bundled(libcares2) = 1.34.5
 %endif
 
 %if %node_version_number >= 22 && 0%{?suse_version} > 1500
@@ -398,13 +397,13 @@ Provides:       bundled(simdjson) = 3.10.1
 # bundled url-ada parser, not ada
 Provides:       bundled(ada) = 2.9.2
 
-Provides:       bundled(node-acorn) = 8.14.0
+Provides:       bundled(node-acorn) = 8.14.1
 Provides:       bundled(node-acorn-walk) = 8.3.4
-Provides:       bundled(node-amaro) = 0.3.0
-Provides:       bundled(node-cjs-module-lexer) = 1.4.1
-Provides:       bundled(node-corepack) = 0.31.0
+Provides:       bundled(node-amaro) = 0.4.1
+Provides:       bundled(node-cjs-module-lexer) = 2.1.0
+Provides:       bundled(node-corepack) = 0.32.0
 Provides:       bundled(node-minimatch) = 10.0.1
-Provides:       bundled(node-undici) = 6.21.1
+Provides:       bundled(node-undici) = 6.21.2
 
 %description
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js
@@ -701,10 +700,9 @@ popd
 %patch -P 200 -p1
 
 %patch -P 305 -p1
+%patch -P 306 -p1
 %patch -P 307 -p1
 %patch -P 309 -p1
-%patch -P 311 -p1
-%patch -P 312 -p1
 
 %if %{node_version_number} == 12
 # minimist security update - patch50

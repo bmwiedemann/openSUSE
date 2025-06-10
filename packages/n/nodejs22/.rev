@@ -181,4 +181,23 @@
   unused feature</comment>
     <requestid>1272221</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b9e09cfa3b82b3f32b451e26a74a374a</srcmd5>
+    <version>22.15.1</version>
+    <time>1749538776</time>
+    <user>anag_factory</user>
+    <comment>- Update to 22.15.1
+  * fix error handling on async crypto operation (bsc#1243218, CVE-2025-23166)
+  * add missing call to uv_fs_req_cleanup (bsc#1243217, CVE-2025-23165)
+- changes since 22.15.0:
+  * dns: add TLSA record query and parsing
+  * assert: improve partialDeepStrictEqual
+  * process: add execve
+  * tls: implement tls.getCACertificates()
+  * v8: add v8.getCppHeapStatistics() method
+- old_cares.patch: dropped in favour of bundling until we can update SLE15 cares
+- icu_732.patch: handle our ICU version in SLE15
+- fab6906c5d1c16b046187485a7cb136b3659d42b.patch: dropped, upstreamed</comment>
+    <requestid>1283716</requestid>
+  </revision>
 </revisionlist>
