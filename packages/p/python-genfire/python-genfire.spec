@@ -17,6 +17,7 @@
 
 
 %define packagename genfire
+%bcond_without libalternatives
 Name:           python-genfire
 Version:        1.1.11
 Release:        0
@@ -34,8 +35,10 @@ BuildRequires:  %{python_module pyparsing >= 2.2.0}
 BuildRequires:  %{python_module scipy >= 0.19.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-Pillow >= 4.1.1
 Requires:       python-PyQt5 >= 5.5.0
 Requires:       python-numpy >= 1.12.1
@@ -43,8 +46,6 @@ Requires:       python-pyFFTW
 Requires:       python-pyparsing >= 2.2.0
 Requires:       python-scipy >= 0.19.0
 Requires:       python-setuptools
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -67,11 +68,8 @@ oriented projection images
 %check
 # No test given
 
-%post
-%python_install_alternative genfire
-
-%postun
-%python_uninstall_alternative genfire
+%pre
+%python_libalternatives_reset_alternative genfire
 
 %files %{python_files}
 %doc README.md
