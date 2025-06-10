@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  6 08:48:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete and unused gnome-common BuildRequires.
+
+-------------------------------------------------------------------
 Tue Apr  5 12:11:14 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace libportal-devel BuildRequires with

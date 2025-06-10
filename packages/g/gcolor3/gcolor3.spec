@@ -28,7 +28,6 @@ Patch0:         gcolor3-suse.patch
 Patch1:         gcolor-libportal-gtk3.patch
 BuildRequires:  cmake
 BuildRequires:  git
-BuildRequires:  gnome-common
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  ninja
