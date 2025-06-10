@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun  3 21:12:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.2/
+- Changes since 25.04.1:
+  * change qtdbus-qt5 to qtdbus-qt6 in the sample commands logic to find the qdbus executable name
+  * kcm: fix memory leak in devicesRemoved()
+  * Fix mpris sessions changed event handler
+  * add plugin settings dep
+  * Make KF6DocTools optional
+  * sendnotifications: Add missing qRegisterMetaType<>()
+  * CI: Try disabling macOS jobs conditionally based on the branch
+  * Don't build for macOS on the release branch
+
+-------------------------------------------------------------------
 Wed May  7 21:00:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.1
