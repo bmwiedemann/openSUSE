@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Fri Jun  6 14:15:57 UTC 2025 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 1.1.0
+  * Enforce valid (0 < size < 32K) constraint on surface dimensions
+  * Clip lines to clip_box using Cyrus-Beck to prevent infinite loops in gray_render_line
+  * Generate plutovg.pc from cmake @dg0yt
+
