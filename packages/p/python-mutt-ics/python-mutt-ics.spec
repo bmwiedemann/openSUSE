@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-mutt-ics
 Version:        0.9.2
 Release:        0
@@ -27,12 +28,12 @@ BuildRequires:  %{python_module icalendar >= 3.9.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-icalendar >= 3.9.0
 Requires:       python-setuptools
-Requires(post): alts
-Requires(postun): alts
 Provides:       mutt-ics
 Provides:       mutt_ics
 BuildArch:      noarch
@@ -59,11 +60,8 @@ exit_code=0
 %python_exec mutt_ics/mutt_ics.py samples/3.ics | grep Organizer || exit_code=3
 exit $exit_code
 
-%post
-%python_install_alternative mutt-ics
-
-%postun
-%python_uninstall_alternative mutt-ics
+%pre
+%python_libalternatives_reset_alternative mutt-ics
 
 %files %{python_files}
 %doc README.md
