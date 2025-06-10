@@ -164,4 +164,13 @@
     <comment></comment>
     <requestid>1237434</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>76e0692a7e657bcd29f864f1edb4fa0c</srcmd5>
+    <version>2.3.1</version>
+    <time>1749549975</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.1:
+  * Specify mode type #134</comment>
+    <requestid>1284319</requestid>
+  </revision>
 </revisionlist>
