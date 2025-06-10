@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-j2gen
 Version:        0.1.0
 Release:        0
@@ -28,12 +29,12 @@ BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-Jinja2
 Requires:       python-PyYAML
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
@@ -61,11 +62,9 @@ Jinja2 template renderer with yaml input files
 %check
 %pyunittest discover -v
 
-%post
-%python_install_alternative j2gen
-
-%postun
-%python_uninstall_alternative j2gen
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative j2gen
 
 %files %{python_files}
 %doc AUTHORS ChangeLog README.rst
