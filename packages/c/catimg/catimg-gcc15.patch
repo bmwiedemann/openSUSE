@@ -1,0 +1,13 @@
+Index: catimg-2.7.0/src/catimg.c
+===================================================================
+--- catimg-2.7.0.orig/src/catimg.c
++++ catimg-2.7.0/src/catimg.c
+@@ -34,7 +34,7 @@ extern int optreset;
+ volatile int loops = -1, loop = -1;
+ volatile char stop = 0;
+ 
+-void intHandler() {
++void intHandler(int) {
+     loops = loop;
+     stop = 1;
+ }

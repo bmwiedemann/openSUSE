@@ -24,6 +24,8 @@ Summary:        Insanely fast image printing in your terminal
 Group:          Productivity/Graphics/Viewers
 URL:            http://posva.net/shell/retro/bash/2013/05/27/catimg
 Source:         https://github.com/posva/catimg/archive/refs/tags/%{version}.tar.gz
+# fix build with gcc15
+Patch0:          catimg-gcc15.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -41,7 +43,7 @@ BuildArch:      noarch
 The official zsh completion script for catimg.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5

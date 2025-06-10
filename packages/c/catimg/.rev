@@ -17,4 +17,16 @@ As pointed out the cmake macro is used instead of setting flags manually and the
     <comment></comment>
     <requestid>1255254</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6ef39b5d02d5573f66d113d3b15315cb</srcmd5>
+    <version>2.7.0</version>
+    <time>1749539261</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1284039 from pgajdos
+
+- added patches
+  fix build with gcc15
+  + catimg-gcc15.patch</comment>
+    <requestid>1284158</requestid>
+  </revision>
 </revisionlist>

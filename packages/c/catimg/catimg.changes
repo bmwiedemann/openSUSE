@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  9 09:22:55 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + catimg-gcc15.patch
+
+-------------------------------------------------------------------
 Fri Mar 21 01:30:02 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
