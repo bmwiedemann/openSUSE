@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun  9 10:24:18 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 4.2:
+  * Added support for creating overlay windows in Hyprland;
+  * viewer: Added new window background mode: "blur";
+  * viewer: Fixed image centering issue after rescaling;
+  * gallery: Added key binding to resize thumbnails in runtime;
+  * gallery: Fixed errors loading thumbnails from persistent
+    storage;
+  * gallery: Fixed display of meta data;
+  * image list: Fixed order to prevent mixing directories with
+    files;
+  * image list: Fixed searching for the first image in the
+    directory.
+
+-------------------------------------------------------------------
 Sat May 31 11:17:18 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 4.1:
