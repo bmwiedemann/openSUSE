@@ -48,6 +48,8 @@ Source2:        https://github.com/OpenChemistry/crystals/archive/%{crystals_rev
 Source3:        https://github.com/OpenChemistry/fragments/archive/refs/tags/%{fragments_rev}.tar.gz#/fragments-%{fragments_rev}.tar.gz
 # PATCH-FIX-UPSTREAM not-install-gwavi.patch -- Library only used locally so no need to install this helper
 Patch0:         not-install-gwavi.patch
+# PATCH-FIX-UPSTREAM fix-cmake-dependencies.patch -- Fix CMake dependencies
+Patch1:         fix-cmake-dependencies.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  eigen3-devel >= 2.91.0
 BuildRequires:  fdupes
@@ -125,6 +127,8 @@ Requires:       %{name}-plugins = %{version}
 Requires:       eigen3-devel >= 2.91.0
 Requires:       cmake(Qt6Concurrent)
 Requires:       cmake(Qt6Core)
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Network)
 Requires:       cmake(Qt6OpenGLWidgets)
 Requires:       cmake(Qt6Widgets)
 Requires:       pkgconfig(gl)

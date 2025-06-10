@@ -1,0 +1,28 @@
+From f0ffb29d6bdd6760f53e2241950e7e867e73071b Mon Sep 17 00:00:00 2001
+From: Geoff Hutchison <geoff.hutchison@gmail.com>
+Date: Sun, 8 Jun 2025 11:33:12 -0400
+Subject: [PATCH] Update find_dependency calls for Qt6
+
+Should fix #2021
+
+Signed-off-by: Geoff Hutchison <geoff.hutchison@gmail.com>
+---
+ cmake/AvogadroLibsConfig.cmake.in | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/cmake/AvogadroLibsConfig.cmake.in b/cmake/AvogadroLibsConfig.cmake.in
+index 3d45cfe9a7..ba2ecb2b99 100644
+--- a/cmake/AvogadroLibsConfig.cmake.in
++++ b/cmake/AvogadroLibsConfig.cmake.in
+@@ -23,6 +23,11 @@ include(CMakeFindDependencyMacro)
+ 
+ if (@QT_VERSION@ EQUAL 6)
+   find_dependency(Qt6OpenGLWidgets)
++  find_dependency(Qt6Widgets)
++  find_dependency(Qt6Core)
++  find_dependency(Qt6Gui)
++  find_dependency(Qt6Network)
++  find_dependency(Qt6Concurrent)
+ endif()
+ 
+ if(NOT TARGET AvogadroCore)
