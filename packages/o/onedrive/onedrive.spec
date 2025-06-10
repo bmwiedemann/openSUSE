@@ -28,7 +28,7 @@
 %endif
 
 Name:           onedrive
-Version:        2.5.5
+Version:        2.5.6
 Release:        0
 Summary:        Client for One Drive Service for Linux
 License:        GPL-3.0-only
@@ -46,6 +46,8 @@ BuildRequires:  help2man
 BuildRequires:  libcurl-devel
 BuildRequires:  libnotify-devel
 BuildRequires:  sqlite3-devel
+BuildRequires:  pkgconfig(dbus-1)
+Requires:       libdbus-1-3
 Requires:       libnotify4
 Recommends:     logrotate
 Suggests:       onedrive-completition-bash
