@@ -29,7 +29,7 @@
 Name:           suitesparse
 Summary:        A collection of sparse matrix libraries
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
-Version:        7.10.1
+Version:        7.10.3
 Release:        0
 Group:          Development/Libraries/C and C++
 URL:            https://people.engr.tamu.edu/davis/suitesparse.html
@@ -653,7 +653,7 @@ export CMAKE_OPTIONS='-DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
         -DSUITESPARSE_DEMOS=ON \
         -DBUILD_TESTING=ON'
 
-export JOBS="%(echo %{?_smp_mflags} | cut -c 3-)"
+export JOBS="$(echo %{?_smp_mflags} | cut -c 3-)"
 %make_build library
 
 %install
@@ -667,7 +667,7 @@ export JOBS="%(echo %{?_smp_mflags} | cut -c 3-)"
 export GRAPHBLAS_CACHE_PATH=$(mktemp -d GraphBlas_JIT_cache_XXX)
 #
 # Demos also include checks. These runs demos and their respective test suites.
-export JOBS="%(echo %{?_smp_mflags} | cut -c 3-)"
+export JOBS="$(echo %{?_smp_mflags} | cut -c 3-)"
 %make_build demos
 
 %ldconfig_scriptlets -n %{amdlib}

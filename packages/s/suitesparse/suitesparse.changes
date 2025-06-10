@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun  9 07:28:55 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 7.10.3. Changes from 7.10.1:
+  * SuiteSparse_config: do not print info about the BLAS if no BLAS used,
+    in the cmake build script.  
+  * GraphBLAS: cmake revisions and 2 bug fixes
+  * revised CI rules on github
+  * CAMD: minor typo in Makefile, for demos 
+  * GraphBLAS v10.0.3: performance of setElement.  Update to xxHash and
+    cpu_features.  Octave interface updated for the Mac.
+  * CHOLMOD 5.3.2: use CUDA as linker, if applicable
+  * SuiteSparse_config 7.10.2: allow the installer to compile without
+    the BLAS.
+
+-------------------------------------------------------------------
+Fri Jun  6 10:12:57 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Don't record number of cores into .src.rpm
+  for reproducible builds (boo#1237231)
+
+-------------------------------------------------------------------
 Sun Mar 23 21:53:38 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - update to version 7.10.1
