@@ -149,4 +149,13 @@
   * Minor update to fix a frequent crash (forwarded request 1266319 from rrahl0)</comment>
     <requestid>1266320</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>0a879ed017ec4d09e9da1c0254939972</srcmd5>
+    <version>0.6.3</version>
+    <time>1749539064</time>
+    <user>anag_factory</user>
+    <comment>- move back to the default optflags
+- switch over to the download_files service (forwarded request 1283846 from rrahl0)</comment>
+    <requestid>1283847</requestid>
+  </revision>
 </revisionlist>

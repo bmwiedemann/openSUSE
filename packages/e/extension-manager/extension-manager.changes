@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun  7 10:33:27 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- move back to the default optflags
+- switch over to the download_files service
+
+-------------------------------------------------------------------
 Tue Apr  1 20:44:55 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.6.3:

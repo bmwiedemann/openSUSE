@@ -23,7 +23,7 @@ Release:        0
 Summary:        A utility for browsing and installing GNOME Shell Extensions
 License:        GPL-3.0-or-later
 URL:            https://github.com/mjakeman/extension-manager
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  libbacktrace-devel
@@ -46,13 +46,11 @@ A native tool for browsing, installing, and managing GNOME Shell Extensions.
 %autosetup
 
 %build
-export CFLAGS="%{optflags} -Wno-error=return-type"
 %meson
 %meson_build
 
 %install
 %meson_install
-
 %find_lang %{name}
 
 %files
