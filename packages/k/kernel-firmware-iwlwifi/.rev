@@ -45,4 +45,17 @@ After this PR, there will be a delete request for kernel-firmware.
   * iwlwifi: add Bz-hr FW for core93-123 release</comment>
     <requestid>1272725</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d7b4286dcb6a075aa3124b9f6c1a93a1</srcmd5>
+    <version>20250603</version>
+    <time>1749538652</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250603 (git commit 3b75d677f898):
+  * iwlwifi: add Bz/gl FW for core96-76 release
+  * iwlwifi: update ty/So/Ma firmwares for core96-76 release
+  * iwlwifi: update cc/Qu/QuZ firmwares for core96-76 release
+  * iwlwifi: update firmwares for 8000 series
+  * iwlwifi: update 7265D firmware</comment>
+    <requestid>1283304</requestid>
+  </revision>
 </revisionlist>
