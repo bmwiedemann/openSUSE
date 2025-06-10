@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  4 21:29:06 UTC 2025 - Martin Jambor <mjambor@suse.com>
+
+- Add rust-build-onig_sys-as-C17.patch so that the package can be
+  built with GCC 15. [boo#1241943]
+
+-------------------------------------------------------------------
 Fri Mar  7 05:08:10 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 Version 1.84.1 (2025-01-30)
@@ -57,7 +63,6 @@ Libraries
 - [`std::os::darwin` has been made public](https://github.com/rust-lang/rust/pull/123723)
 
 Stabilized APIs
----------------
 
 - [`Ipv6Addr::is_unique_local`](https://doc.rust-lang.org/stable/core/net/struct.Ipv6Addr.html#method.is_unique_local)
 - [`Ipv6Addr::is_unicast_link_local`](https://doc.rust-lang.org/stable/core/net/struct.Ipv6Addr.html#method.is_unicast_link_local)
@@ -112,7 +117,6 @@ Rustdoc
 - [rustdoc-search: improve type-driven search](https://github.com/rust-lang/rust/pull/127589)
 
 Compatibility Notes
--------------------
 - [Enable by default the `LSX` target feature for LoongArch Linux targets](https://github.com/rust-lang/rust/pull/132140)
 - [The unstable `-Zprofile` flag (“gcov-style” coverage instrumentation) has been removed.](https://github.com/rust-lang/rust/pull/131829) This does not affect the stable flags for coverage instrumentation (`-Cinstrument-coverage`) and profile-guided optimization (`-Cprofile-generate`, `-Cprofile-use`), which are unrelated and remain available.
 - Support for the target named `wasm32-wasi` has been removed as the target is now named `wasm32-wasip1`. This completes the [transition](https://github.com/rust-lang/compiler-team/issues/607) [plan](https://github.com/rust-lang/compiler-team/issues/695) for this target following [the introduction of `wasm32-wasip1`](https://github.com/rust-lang/rust/pull/120468) in Rust 1.78. Compiler warnings on [use of `wasm32-wasi`](https://github.com/rust-lang/rust/pull/126662) introduced in Rust 1.81 are now gone as well as the target is removed.

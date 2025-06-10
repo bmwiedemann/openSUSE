@@ -284,6 +284,9 @@ Patch2:         tests-run-make-compiler-builtins-failed.patch
 Patch3:         0001-Disable-pidfs-tests-for-15SP3.patch
 %endif
 
+# PATCH-FIX-OPENSUSE boo#1241943 - obsoleted by upstream github.com/rust-lang/rust/pull/141684
+Patch4:         rust-build-onig_sys-as-C17.patch
+
 BuildRequires:  chrpath
 BuildRequires:  curl
 # BUG - fdupes on leap/sle causes issues with debug info
