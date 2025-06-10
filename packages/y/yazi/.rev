@@ -291,4 +291,74 @@ Changes from last request:
   * feat: file navigation wraparound with new `arrow prev` and `arrow next` commands (#2485)</comment>
     <requestid>1268089</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>28937d3ac4e2847347940cced019c5a6</srcmd5>
+    <version>25.5.31</version>
+    <time>1749539073</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 25.5.31:
+  * chore: bump version to 25.5.31 (#2815)
+  * fix: make every effort to carry hidden states for dummy files (#2814)
+  * fix: `forward --end-of-word` of the input should consider the mode's delta (#2811)
+  * fix: expose `ui.Wrap` (#2810)
+  * chore: bump version to 25.5.28 (#2804)
+  * refactor!: deprecate `[manager]` in favor of `[mgr]` (#2803)
+  * feat: new `ui.Align`, `ui.Wrap`, and `ui.Edge` (#2802)
+  * fix: update `rust-onig` to v6.5.1 for GCC 15 compatibility (#2794)
+  * refactor: use raw identifiers (#2783)
+  * feat: make custom tab bar easier (#2782)
+  * feat: add a `/` to the interactive cd auto-completion candidates (#2777)
+  * feat: truncate long paths in archive preview file list (#2778)
+  * feat: new `ya pkg` subcommand (#2770)
+  * fix: always try to create state directory before draining DDS data (#2769)
+  * chore: bump Rust version to 1.86.0 (#2766)
+  * feat: improve path auto-completion results (#2765)
+  * perf: remove intermediate variables in natural sorting algorithm to avoid unnecessary allocation (#2764)
+  * feat: show file extension for truncated file list items (#2759)
+  * fix: icon rules mixing (#2755)
+  * feat: truncate long items in the file list (#2754)
+  * perf: avoid unnecessary memory allocation in `ya.truncate()` (#2753)
+  * refactor: deprecate the `Command:args()` method (#2752)
+  * feat!: redesign tabs (#2745)
+  * feat: make `ui.Line` renderable (#2743)
+  * fix: `windows-sys` missing a `Win32_Security` feature (#2728)
+  * fix: avoid tmux interfering with kitty graphical sequences (#2734)
+  * fix: detach background and orphan processes from the controlling terminal with `setsid()` (#2723)
+  * feat: increase the granularity of `back`/`forward` history navigation to make its behavior more sensible (#2720)
+  * fix: missing a `hover` event after `cd` (#2719)
+  * docs: add icon contribution guide
+  * feat: add `--hovered` to the `copy` command (#2709)
+  * fix: `ya pub-to 0` checks if any peer is able to receive the message (#2697)
+  * fix: reset the cursor position with `arrow()` after deleting files (#2708)
+  * feat!: 9x faster Sixel image preview (#2707)
+  * feat: show error when image preview fails (#2706)
+  * refactor: move `tty` to the new `yazi-term` crate (#2701)
+  * fix: no title is set when starts the first time (#2700)
+  * feat: add `s` and `S` keybinds in the input component (#2678)
+  * feat: checks in `ya pub` and `ya emit` subcommands to verify receiver exists and has necessary abilities (#2696)
+  * feat: calculate real-time directory size in spotter (#2695)
+  * feat: promote `Id` to a first-class type (#2692)
+  * feat: new `fs.calc_size()` API (#2691)
+  * perf: double directory size calculation speed (#2683)
+  * feat: increase the maximum allowed value of `sixel_fraction` to `30` (#2682)
+  * feat: obscure input component for inputting passwords (#2675)
+  * feat: new `--no-dummy` option for `reveal` command (#2664)
+  * feat: make the hover state for `reveal`, `sort`, and `hidden` commands stable (#2657)
+  * feat: fine-grained `peek` and `watch` (#2655)
+  * feat: new `ya.emit()` API (#2653)
+  * refactor: switch to Rust 2024 edition (#2645)
+  * fix: lazily update files to avoid triggering issues dependent on sort order (#2643)
+  * feat: support embedded cover for video preview (#2640)
+  * ci: musl build should include commit hash
+  * feat: fall back to `CSI 16 t` when PowerShell OpenSSH returns a fake terminal size (#2636)
+  * feat: copy-on-write support for field caching (#2629)
+  * fix: do not change revision when package deployment fails (#2627)
+  * fix: ensure state synchronization even when the package update fails midway (#2613)
+  * feat: allow custom exit code with `quit --code` (#2609)
+  * fix: respect the user's `max_width` setting for the built-in video previewer (#2560)
+  * feat: limit memory usage for previewing large images (#2602)
+  * fix: reverse the mixing order of theme and flavor configuration (#2594)
+</comment>
+    <requestid>1283851</requestid>
+  </revision>
 </revisionlist>
