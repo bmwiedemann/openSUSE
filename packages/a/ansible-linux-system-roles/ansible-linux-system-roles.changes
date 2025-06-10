@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  9 09:58:40 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Fix: Ensure `certificate` role is included on SLE 16
+  - Introduced `%sle16` macro for version-based logic
+  - Cleaned up and simplified `%prep` section accordingly 
+
+-------------------------------------------------------------------
 Fri Apr 11 09:08:14 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Updated spec to require the use of the new Ansible version.

@@ -20,4 +20,14 @@ This package contains ansible roles from linux-system-roles project: https://git
   - Updated CI pipeline with new test requirements.</comment>
     <requestid>1268654</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f15ea10e0064edef5c6b50204dcc849b</srcmd5>
+    <version>1.0.0</version>
+    <time>1749539259</time>
+    <user>anag_factory</user>
+    <comment>- Fix: Ensure `certificate` role is included on SLE 16
+  - Introduced `%sle16` macro for version-based logic
+  - Cleaned up and simplified `%prep` section accordingly </comment>
+    <requestid>1284165</requestid>
+  </revision>
 </revisionlist>

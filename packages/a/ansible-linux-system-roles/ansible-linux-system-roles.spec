@@ -22,10 +22,16 @@
 %global crypto_policies_version 1.4.2
 %global systemd_version 1.3.1
 %global ha_cluster_version 1.22.1
-%global certificate_version 1.3.9
 %global mssql_version 2.5.2
 %global suseconnect_version 1.0.0
 %global auto_maintenance_version 1.94.2
+%global certificate_version 1.3.9
+
+%if 0%{?suse_version} >= 1600
+%global sle16 1
+%else
+%global sle16 0
+%endif
 
 %define ansible_collection_name linux_system_roles
 %define ansible_collection_path %{_datadir}/ansible/collections/ansible_collections/suse/%{ansible_collection_name}
@@ -43,10 +49,12 @@ Source3:        %{url}/ansible-ssh/archive/refs/tags/%{ssh_version}-suse.tar.gz#
 Source4:        %{url}/ansible-crypto_policies/archive/refs/tags/%{crypto_policies_version}-suse.tar.gz#/crypto_policies-%{crypto_policies_version}.tar.gz
 Source5:        %{url}/ansible-systemd/archive/refs/tags/%{systemd_version}-suse.tar.gz#/systemd-%{systemd_version}.tar.gz
 Source6:        %{url}/ansible-ha_cluster/archive/refs/tags/%{ha_cluster_version}-suse.tar.gz#/ha_cluster-%{ha_cluster_version}.tar.gz
-Source7:        %{url}/ansible-certificate/archive/refs/tags/%{certificate_version}-suse.tar.gz#/certificate-%{certificate_version}.tar.gz
-Source8:        %{url}/ansible-mssql/archive/refs/tags/%{mssql_version}-suse.tar.gz#/mssql-%{mssql_version}.tar.gz
-Source9:        %{url}/ansible-suseconnect/archive/refs/tags/%{suseconnect_version}-suse.tar.gz#/suseconnect-%{suseconnect_version}.tar.gz
-Source10:       %{url}/ansible-auto_maintenance/archive/refs/tags/%{auto_maintenance_version}-suse.tar.gz#/auto_maintenance-%{auto_maintenance_version}.tar.gz 
+Source7:        %{url}/ansible-mssql/archive/refs/tags/%{mssql_version}-suse.tar.gz#/mssql-%{mssql_version}.tar.gz
+Source8:        %{url}/ansible-suseconnect/archive/refs/tags/%{suseconnect_version}-suse.tar.gz#/suseconnect-%{suseconnect_version}.tar.gz
+Source9:        %{url}/ansible-auto_maintenance/archive/refs/tags/%{auto_maintenance_version}-suse.tar.gz#/auto_maintenance-%{auto_maintenance_version}.tar.gz 
+%if %{sle16}
+Source10:        %{url}/ansible-certificate/archive/refs/tags/%{certificate_version}-suse.tar.gz#/certificate-%{certificate_version}.tar.gz
+%endif
 Source999:      galaxy.yml
 
 BuildArch:      noarch
@@ -75,10 +83,12 @@ roles=(
   "crypto_policies:%{crypto_policies_version}"
   "systemd:%{systemd_version}"
   "ha_cluster:%{ha_cluster_version}"
-  "certificate:%{certificate_version}"
   "mssql:%{mssql_version}"
   "suseconnect:%{suseconnect_version}"
   "auto_maintenance:%{auto_maintenance_version}"
+%if %{sle16}
+  "certificate:%{certificate_version}"
+%endif
 )
 
 # Create a directory to store extracted roles
@@ -131,12 +141,6 @@ for role_entry in "${roles[@]}"; do
   # Exclude auto-maintenance role for processing
   if [[ "${role_name}" == "auto_maintenance" ]]; then
     echo "Skipping Python processing for auto-maintenance role..."
-    continue
-  fi
-
-  # Skip certificate role for SLE15
-  if [[ "${role_name}" == "certificate" && 0%{?suse_version} -lt 1600 ]]; then
-    echo "Skipping certificate role for SLE15..."
     continue
   fi
 
