@@ -1,3 +1,10 @@
+gpxsee (13.44) stable; urgency=low
+
+  * Added tracks/routes/areas legend option.
+  * Various minor fixes.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 07 Jun 2025 19:17:47 +0200
+
 gpxsee (13.43) stable; urgency=low
 
   * Improved marine charts (ENC,IMG) style/rendering.
