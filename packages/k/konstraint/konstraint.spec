@@ -17,7 +17,7 @@
 
 
 Name:           konstraint
-Version:        0.42.0
+Version:        0.43.0
 Release:        0
 Summary:        A policy management tool for interacting with Gatekeeper
 License:        Apache-2.0
