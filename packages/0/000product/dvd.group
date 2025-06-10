@@ -2061,7 +2061,7 @@
     <package name="libgpod-lang" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="libgpod-tools" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="libgpod4" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
-    <package name="libgps30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libgps31" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libgraphene-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgraphite2-3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgravatar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2475,7 +2475,7 @@
     <package name="libpcre2-32-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpcre2-8-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpcre2-8-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libpcre2-posix3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="libpcre2-posix3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libpcsclite1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpeas-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpeas-gtk-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2574,7 +2574,7 @@
     <package name="librados2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libraptor2-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="librasqal3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="librav1e0_7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="librav1e0_8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libraw1394-11" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libraw23" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librbd1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2850,7 +2850,7 @@
     <package name="libvorbisfile3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvorbisfile3-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libvpl2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libvpx9" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libvpx11" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvte-2_91-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libvterm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libvulkan1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

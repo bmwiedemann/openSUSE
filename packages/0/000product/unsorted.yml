@@ -2930,6 +2930,7 @@ unsorted:
   - crow-translate-lang 
   - crudini 
   - crun 
+  - crun-vm 
   - cryfs 
   - cryptctl 
   - cryptsetup-ssh 
@@ -4561,7 +4562,6 @@ unsorted:
   - fudo-policy-selfauth-wheel 
   - funcube-udev 
   - fuse-devel 
-  - fuse-devel-static 
   - fuse-doc 
   - fuse-oscfs 
   - fuse-zip 
@@ -11253,10 +11253,6 @@ unsorted:
   - libMyGUIEngine3_4_3 
   - libOIS-devel 
   - libOIS1_5_0 
-  - libOSMesa-devel 
-  - libOSMesa-devel-32bit 
-  - libOSMesa8 
-  - libOSMesa8-32bit 
   - libOgreBites-devel 
   - libOgreBites13_6 
   - libOgreBitesQt13_6 
@@ -11338,7 +11334,7 @@ unsorted:
   - libQXmppQt5-devel 
   - libQXmppQt6-5 
   - libQXmppQt6-devel 
-  - libQgpsmm30 
+  - libQgpsmm31 
   - libQt53DAnimation-devel 
   - libQt53DAnimation5 
   - libQt53DCore-devel 
@@ -13568,9 +13564,9 @@ unsorted:
   - libgretl-1_0-51 
   - libgromacs10 
   - libgromacs_mpi10 
-  - libgrpc++1_71 
-  - libgrpc1_71 
-  - libgrpc46 
+  - libgrpc++1_73 
+  - libgrpc1_73 
+  - libgrpc48 
   - libgsequencer0 
   - libgsf-devel 
   - libgsf-tools 
@@ -15179,6 +15175,8 @@ unsorted:
   - libplist-2_0-devel 
   - libplot2 
   - libplotter2 
+  - libplutosvg0 
+  - libplutovg1 
   - libply-boot-client5 
   - libpmem-devel 
   - libpmem2-1 
@@ -15601,7 +15599,7 @@ unsorted:
   - librasqal-devel-doc 
   - libratbag-devel 
   - libratbag-tools 
-  - librav1e0_7-32bit 
+  - librav1e0_8-32bit 
   - libraven0 
   - libraw-devel 
   - libraw-devel-static 
@@ -16523,7 +16521,7 @@ unsorted:
   - libunwind-setjmp0 
   - libunwind-setjmp0-32bit 
   - libunwind8-32bit 
-  - libupb46 
+  - libupb48 
   - libupnp-devel 
   - libupnpp-devel 
   - libupnpp17 
@@ -16723,7 +16721,7 @@ unsorted:
   - libvpl 
   - libvpl-devel 
   - libvpx-devel 
-  - libvpx9-32bit 
+  - libvpx11-32bit 
   - libvsapm-devel 
   - libvsapm-tools 
   - libvsapm1 
@@ -19367,6 +19365,10 @@ unsorted:
   - nemo-lang 
   - neochat 
   - neochat-lang 
+  - neocmakelsp 
+  - neocmakelsp-bash-completion 
+  - neocmakelsp-fish-completion 
+  - neocmakelsp-zsh-completion 
   - neomutt 
   - neomutt-contrib 
   - neomutt-doc 
@@ -22712,6 +22714,8 @@ unsorted:
   - pluto-bash-completion 
   - pluto-fish-completion 
   - pluto-zsh-completion 
+  - plutosvg-devel 
+  - plutovg-devel 
   - plymouth-branding-upstream 
   - plymouth-devel 
   - plymouth-plugin-breeze 
@@ -23827,7 +23831,6 @@ unsorted:
   - python311-MulticoreTSNE 
   - python311-OSMPythonTools 
   - python311-OWSLib 
-  - python311-PGet 
   - python311-PTable 
   - python311-Pallets-Sphinx-Themes 
   - python311-Parsley 
@@ -24112,7 +24115,6 @@ unsorted:
   - python311-audible 
   - python311-audio-degrader 
   - python311-audiogrep 
-  - python311-audiomate 
   - python311-audioread 
   - python311-augeas 
   - python311-authheaders 
@@ -25213,6 +25215,7 @@ unsorted:
   - python311-glucat 
   - python311-gmpy2 
   - python311-gns3fy 
+  - python311-gnureadline 
   - python311-gobject-Gdk 
   - python311-gobject-devel 
   - python311-google-ai-generativelanguage 
@@ -27517,7 +27520,6 @@ unsorted:
   - python312-MulticoreTSNE 
   - python312-OSMPythonTools 
   - python312-OWSLib 
-  - python312-PGet 
   - python312-PTable 
   - python312-Pallets-Sphinx-Themes 
   - python312-Parsley 
@@ -27812,7 +27814,6 @@ unsorted:
   - python312-audible 
   - python312-audio-degrader 
   - python312-audiogrep 
-  - python312-audiomate 
   - python312-audioread 
   - python312-augeas 
   - python312-authheaders 
@@ -28928,6 +28929,7 @@ unsorted:
   - python312-glucat 
   - python312-gmpy2 
   - python312-gns3fy 
+  - python312-gnureadline 
   - python312-gobject 
   - python312-gobject-Gdk 
   - python312-gobject-cairo 
@@ -31279,7 +31281,6 @@ unsorted:
   - python313-MulticoreTSNE 
   - python313-OSMPythonTools 
   - python313-OWSLib 
-  - python313-PGet 
   - python313-PTable 
   - python313-Pallets-Sphinx-Themes 
   - python313-Parsley 
@@ -31565,7 +31566,6 @@ unsorted:
   - python313-audible 
   - python313-audio-degrader 
   - python313-audiogrep 
-  - python313-audiomate 
   - python313-audioop-lts 
   - python313-audioread 
   - python313-augeas 
@@ -32666,6 +32666,7 @@ unsorted:
   - python313-glucat 
   - python313-gmpy2 
   - python313-gns3fy 
+  - python313-gnureadline 
   - python313-gobject-devel 
   - python313-google-ai-generativelanguage 
   - python313-google-api-core 
