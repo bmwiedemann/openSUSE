@@ -17,6 +17,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-jfscripts
 Version:        1.1.0
 Release:        0
@@ -28,12 +29,12 @@ Source:         https://files.pythonhosted.org/packages/source/j/jfscripts/jfscr
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-termcolor
 Requires:       python-typing-extensions
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -69,23 +70,15 @@ done
 #%%check
 # Upstream does not provide any tests
 
-%post
-%python_install_alternative dns-ipv6-prefix
-%python_install_alternative extract-pdftext
-%python_install_alternative find-dupes-by-size
-%python_install_alternative image-into-pdf
-%python_install_alternative list-files
-%python_install_alternative mac-to-eui64
-%python_install_alternative pdf-compress
-
-%postun
-%python_uninstall_alternative dns-ipv6-prefix
-%python_uninstall_alternative extract-pdftext
-%python_uninstall_alternative find-dupes-by-size
-%python_uninstall_alternative image-into-pdf
-%python_uninstall_alternative list-files
-%python_uninstall_alternative mac-to-eui64
-%python_uninstall_alternative pdf-compress
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative dns-ipv6-prefix
+%python_libalternatives_reset_alternative extract-pdftext
+%python_libalternatives_reset_alternative find-dupes-by-size
+%python_libalternatives_reset_alternative image-into-pdf
+%python_libalternatives_reset_alternative list-files
+%python_libalternatives_reset_alternative mac-to-eui64
+%python_libalternatives_reset_alternative pdf-compress
 
 %files %{python_files}
 %license LICENSE
