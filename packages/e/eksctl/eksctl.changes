@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 07 04:46:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.210.0:
+  * Improvements
+    - Change node role policy ReadOnly -> PullOnly (support ECR
+      pull-through cache) (#8386)
+  * Bug Fixes
+    - Fix Clusters Fail to Create Private Endpoint and Identity
+      Provider (#8411)
+
+-------------------------------------------------------------------
 Thu Jun 05 16:54:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.209.0:
