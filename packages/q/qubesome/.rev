@@ -157,4 +157,40 @@
   * Fix qubesome version (forwarded request 1256082 from jfkw)</comment>
     <requestid>1256083</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3aa989bb11d7b40209363e8ca817c274</srcmd5>
+    <version>0.0.11</version>
+    <time>1749539123</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.11:
+  * firecracker: Refactoring code Split image used for network setup from the image used as the source for the rootfs. In the future, some of the qubesome specific logic in the latter should also be transitioned over to the firecracker image, so that the requirements from the workload image are decreased.
+  * firecracker: Ensure docker is used for privileged ops The use of Firecracker is experimental and heavily relies on Docker for the initial creation of the rootfs and the creation of the firecracker network taps.
+  * firecracker: Bump kernel to 6.1.102
+  * run: Add workload name to error message
+  * Update to new cli.StringArg API
+  * build(deps): bump google.golang.org/grpc from 1.72.1 to 1.72.2
+  * build(deps): bump the github-actions-updates group with 4 updates
+  * build(deps): bump google.golang.org/grpc from 1.72.0 to 1.72.1
+  * build(deps): bump github.com/urfave/cli/v3 from 3.1.1 to 3.3.3
+  * build(deps): bump the golang-org group with 2 updates
+  * build(deps): bump the github-actions-updates group with 4 updates
+  * build(deps): bump google.golang.org/grpc from 1.71.1 to 1.72.0
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.14.0 to 5.15.0
+  * build(deps): bump golang.org/x/net in the go_modules group
+  * build(deps): bump the golang-org group with 2 updates
+  * build(deps): bump google.golang.org/grpc from 1.71.0 to 1.71.1
+  * build(deps): bump github.com/urfave/cli/v3 from 3.0.0-beta1 to 3.1.1
+  * build(deps): bump the github-actions-updates group with 5 updates
+  * build(deps): bump google.golang.org/protobuf from 1.36.5 to 1.36.6
+  * build(deps): bump golang.org/x/net in the go_modules group
+  * build: Add CodeQL workflow
+  * profiles: Add desktop entries for workloads Instead of relying on users to create and map their own desktop entries, qubesome auto generate them based on all the workloads configured for the given profile.
+  * build: Add OpenSSF Scorecard workflow
+  * build(deps): bump the golang-org group with 2 updates
+  * build(deps): bump google.golang.org/grpc from 1.70.0 to 1.71.0
+  * Improve AMD GPU support Depending on the ROCm version, the binaries are not added to the PATH. Checking for /dev/kfd seems to be a more consistent way to check whether the AMD Kernel Fusion Driver is in place, which is what AMD uses.
+  * build(deps): bump github.com/go-git/go-git/v5
+  * build(deps): bump the github-actions-updates group with 3 updates (forwarded request 1283883 from pjbgf)</comment>
+    <requestid>1283894</requestid>
+  </revision>
 </revisionlist>
