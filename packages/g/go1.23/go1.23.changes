@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun  5 18:34:47 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.23.10 (released 2025-06-05) includes security fixes to the
+  net/http and os packages, as well as bug fixes to the linker.
+  Refs boo#1229122 go1.23 release tracking
+  CVE-2025-0913 CVE-2025-4673
+  * go#73719 go#73612 boo#1244157 security: fix CVE-2025-0913 os: inconsistent handling of O_CREATE|O_EXCL on Unix and Windows
+  * go#73905 go#73816 boo#1244156 security: fix CVE-2025-4673 net/http: sensitive headers not cleared on cross-origin redirect
+  * go#73677 runtime/debug: BuildSetting does not document DefaultGODEBUG
+  * go#73831 cmd/link: Go 1.24.3 and 1.23.9 regression - duplicated definition of symbol dlopen
+
+-------------------------------------------------------------------
 Tue May  6 18:34:22 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.23.9 (released 2025-05-06) includes fixes to the runtime and
