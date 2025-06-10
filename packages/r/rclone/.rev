@@ -994,4 +994,13 @@ various additional features.</comment>
     <comment></comment>
     <requestid>1279177</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>a49a5169d413fcc74db1dc758667260d</srcmd5>
+    <version>1.69.3</version>
+    <time>1749539202</time>
+    <user>anag_factory</user>
+    <comment>- Install completion files in the right place.
+</comment>
+    <requestid>1283995</requestid>
+  </revision>
 </revisionlist>

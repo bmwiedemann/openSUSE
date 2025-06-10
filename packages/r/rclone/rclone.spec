@@ -86,8 +86,8 @@ go build -o %{name} \
 install -m0755 -D %{name} %{buildroot}%{_bindir}/%{name}
 install -m0644 -D %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
-install -m0644 -D completion.bash %{buildroot}%{_datadir}/bash/%{name}
-install -m0644 -D completion.zsh  %{buildroot}%{_datadir}/zsh/_%{name}
+install -m0644 -D completion.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -m0644 -D completion.zsh  %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 
 %fdupes %{buildroot}
 
@@ -98,9 +98,13 @@ install -m0644 -D completion.zsh  %{buildroot}%{_datadir}/zsh/_%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files bash-completion
-%{_datadir}/bash/
+%dir %{_datadir}/bash-completion/
+%dir %{_datadir}/bash-completion/completions/
+%{_datadir}/bash-completion/completions/%{name}
 
 %files zsh-completion
-%{_datadir}/zsh/
+%dir %{_datadir}/zsh/
+%dir %{_datadir}/zsh/site-functions/
+%{_datadir}/zsh/site-functions/_%{name}
 
 %changelog
