@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun  5 11:53:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.2.2 (bsc#1244095)
+  * CVE-2025-48432: Potential log injection via unescaped request path
+  * Fixed a crash when using select_related against a ForeignObject
+    originating from a model with a CompositePrimaryKey
+  * Fixed a regression in Django 5.2 that caused a crash when no
+    arguments were passed into QuerySet.union().
+  * Fixed a regression in Django 5.2 that caused a crash when using OuterRef
+    in PostgreSQL aggregate functions ArrayAgg, StringAgg, and JSONBAgg.
+  * Fixed a bug in Django 5.2 where HttpRequest.get_preferred_type() did not
+    account for media type parameters in Accept headers, reducing specificity
+    in content negotiation.
+
+-------------------------------------------------------------------
 Mon May 12 08:20:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.2.1 (bsc#1242210)
