@@ -95,4 +95,13 @@
     <comment></comment>
     <requestid>1280559</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>648d2024620e34db698ebe227b40a03c</srcmd5>
+    <version>128.11.0</version>
+    <time>1749539239</time>
+    <user>anag_factory</user>
+    <comment>- Replace usage of %jobs for reproducible builds (boo#1237231)
+</comment>
+    <requestid>1284035</requestid>
+  </revision>
 </revisionlist>

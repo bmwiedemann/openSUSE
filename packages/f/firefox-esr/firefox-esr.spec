@@ -424,7 +424,7 @@ source ./.obsenv.sh
 cat << EOF > $MOZCONFIG
 mk_add_options MOZILLA_OFFICIAL=1
 mk_add_options BUILD_OFFICIAL=1
-mk_add_options MOZ_MAKE_FLAGS=%{?jobs:-j%jobs}
+mk_add_options MOZ_MAKE_FLAGS=%{?_smp_mflags}
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../obj
 . \$topsrcdir/browser/config/mozconfig
 ac_add_options --disable-bootstrap
@@ -545,7 +545,7 @@ EOF
 
 # Let's not build the various langpacks in parallel. It may be the
 # reason for random build failures as can be seen in boo#1239446
-# %define njobs 0%{?jobs:%jobs}
+# %define njobs 0%{?jobs:%%jobs}
 # Unless the build failures will happen again even when building
 # sequentially, we'll define njobs to 1:
 %define njobs 1

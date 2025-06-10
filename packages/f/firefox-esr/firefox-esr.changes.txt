@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  8 14:58:17 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Replace usage of %jobs for reproducible builds (boo#1237231)
+
+-------------------------------------------------------------------
 Sun May 25 08:47:26 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Firefox Extended Support Release 128.11.0 ESR
