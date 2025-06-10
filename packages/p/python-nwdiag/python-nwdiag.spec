@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-nwdiag
 Version:        3.0.0
 Release:        0
@@ -27,12 +28,12 @@ Source:         https://files.pythonhosted.org/packages/source/n/nwdiag/nwdiag-%
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-blockdiag >= 1.5.0
 Requires:       python-setuptools
-Requires(post): alts
-Requires(postun): alts
 Suggests:       python-docutils
 Suggests:       python-nose
 Suggests:       python-reportlab
@@ -55,15 +56,10 @@ nwdiag generates network diagram images from text.
 %python_clone -a %{buildroot}%{_bindir}/nwdiag
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative packetdiag
-%python_install_alternative rackdiag
-%python_install_alternative nwdiag
-
-%postun
-%python_uninstall_alternative packetdiag
-%python_uninstall_alternative rackdiag
-%python_uninstall_alternative nwdiag
+%pre
+%python_libalternatives_reset_alternative packetdiag
+%python_libalternatives_reset_alternative rackdiag
+%python_libalternatives_reset_alternative nwdiag
 
 %files %{python_files}
 %doc README.rst
