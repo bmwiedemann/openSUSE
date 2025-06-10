@@ -86,4 +86,17 @@ After this PR, there will be a delete request for kernel-firmware.
   * mediatek MT7925: update bluetooth firmware to 20250425073330</comment>
     <requestid>1276104</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e8befc7e10f4d1f8bda21fd3d703e560</srcmd5>
+    <version>20250603</version>
+    <time>1749538749</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250603 (git commit 3b75d677f898):
+  * mediatek MT7925: update bluetooth firmware to 20250526153203
+  * linux-firmware: update firmware for MT7925 WiFi device
+
+- Update to version 20250520 (git commit 341b9e805613):
+  * mediatek: Add mt8196 VCP firmware</comment>
+    <requestid>1283857</requestid>
+  </revision>
 </revisionlist>
