@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-portpicker
 Version:        1.6.0
 Release:        0
@@ -27,11 +28,11 @@ Source0:        https://files.pythonhosted.org/packages/source/p/portpicker/port
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  net-tools-deprecated
 BuildRequires:  python-rpm-macros
-Requires(post): alts
-Requires(postun): alts
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,11 +56,8 @@ test -f setup.py || echo "import setuptools; setuptools.setup()" > setup.py
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python src/tests/portpicker_test.py
 
-%post
-%python_install_alternative portserver.py
-
-%postun
-%python_uninstall_alternative portserver.py
+%pre
+%python_libalternatives_reset_alternative portserver.py
 
 %files %{python_files}
 %license LICENSE
