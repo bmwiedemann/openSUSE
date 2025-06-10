@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-num2words
 Version:        0.5.13
 Release:        0
@@ -27,11 +28,11 @@ Source:         https://files.pythonhosted.org/packages/source/n/num2words/num2w
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-docopt >= 0.6.2
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module delegator.py}
@@ -60,11 +61,8 @@ It supports multiple languages and can even generate ordinal numbers like "forty
 # test_cli.py has 'python' command hardcoded
 %pytest -k "not test_cli" tests
 
-%post
-%python_install_alternative num2words
-
-%postun
-%python_uninstall_alternative num2words
+%pre
+%python_libalternatives_reset_alternative num2words
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
