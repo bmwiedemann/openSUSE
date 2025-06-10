@@ -130,4 +130,32 @@ expertise with the git command line.</comment>
     commit=, build date=, build source=unknown, version=unversioned, os=linux, arch=amd64, git version=2.49.0 (forwarded request 1283491 from jfkw)</comment>
     <requestid>1283492</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1d2ff39cf153600027c74b09a103cc6d</srcmd5>
+    <version>0.52.0</version>
+    <time>1749539030</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.52.0:
+  * Remove the pick vs. pull hack
+  * Optionally pass disabled commands on to next handler
+  * Cleanup: restructure code for clarity
+  * Bump gocui and adapt lazygit code
+  * Fix wrong inactive highlight when switching between repos
+  * Add integration test for resetting to upstream branch with duplicate name
+  * Use full refname instead of short to prevent disambiguation with tag
+  * Add integration tests showing resetting to duplicate named tags and branches
+  * Add FullRefName to all reset menus
+  * Print default option when prompting to create a new git repo
+  * Make PR template mention that PR titles will be used in release notes
+  * Replace literal with ConfigFilename constant
+  * Use branchPrefix on moving commits to a new branch
+  * Add a function to suggest a branch name based on branchPrefix
+  * Fix branch selection jumping back on background fetch
+  * Kill background fetch when it requests a passphrase
+  * Pass cmdObj instead of task to processOutput
+  * Bump gocui
+  * Add user config gui.addRootItemInFileTree
+  * Pass common.Common to file trees instead of just the Log (forwarded request 1283763 from jfkw)</comment>
+    <requestid>1283765</requestid>
+  </revision>
 </revisionlist>

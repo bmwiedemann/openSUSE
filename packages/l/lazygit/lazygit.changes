@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jun 07 02:45:51 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.52.0:
+  * Remove the pick vs. pull hack
+  * Optionally pass disabled commands on to next handler
+  * Cleanup: restructure code for clarity
+  * Bump gocui and adapt lazygit code
+  * Fix wrong inactive highlight when switching between repos
+  * Add integration test for resetting to upstream branch with duplicate name
+  * Use full refname instead of short to prevent disambiguation with tag
+  * Add integration tests showing resetting to duplicate named tags and branches
+  * Add FullRefName to all reset menus
+  * Print default option when prompting to create a new git repo
+  * Make PR template mention that PR titles will be used in release notes
+  * Replace literal with ConfigFilename constant
+  * Use branchPrefix on moving commits to a new branch
+  * Add a function to suggest a branch name based on branchPrefix
+  * Fix branch selection jumping back on background fetch
+  * Kill background fetch when it requests a passphrase
+  * Pass cmdObj instead of task to processOutput
+  * Bump gocui
+  * Add user config gui.addRootItemInFileTree
+  * Pass common.Common to file trees instead of just the Log
+
+-------------------------------------------------------------------
 Mon May 26 13:54:30 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Update to version 0.51.1:
