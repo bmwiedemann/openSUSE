@@ -17,7 +17,7 @@
 
 
 Name:           regal
-Version:        0.34.0
+Version:        0.34.1
 Release:        0
 Summary:        Linter and language server for Rego
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23
+BuildRequires:  go >= 1.24
 BuildRequires:  zsh
 
 %description

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jun 04 18:37:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.34.1:
+  This patch release fixes a bug found since v0.34.0 as well as it
+  bumps the OPA dependency to the v1.5.1 patch also released today.
+  While Regal's own policies were not affected by the regression in
+  walk, custom linter rules could very well be.
+  * Highlights
+    - OPA v1.5.0 -> v1.5.1
+    - Go 1.23 -> 1.24
+    - Fix false positive in sprintf-arguments-mismatch when the
+      %-*s pattern was used for padding.
+  * Changelog
+    - OPA v1.5.1 and some perf tweaks (#1580)
+    - docs: Update typo in link (#1581)
+    - deps: Revert 47c70f0 tablewriter changes (#1579)
+    - docs: Update to allow better regal docs generation (#1578)
+    - [create-pull-request] automated change (#1577)
+    - fix: consider padding pattern in sprintf-arguments-mismatch
+      (#1575)
+    - build(deps): bump ossf/scorecard-action in the dependencies
+      group (#1576)
+    - Fix deprecated notices in .goreleaser.yaml (#1570)
+    - Go 1.23 -> 1.24 (#1573)
+
+-------------------------------------------------------------------
 Sat May 31 07:05:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.34.0:
