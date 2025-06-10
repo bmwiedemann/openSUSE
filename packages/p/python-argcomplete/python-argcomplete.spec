@@ -1,7 +1,7 @@
 #
 # spec file for package python-argcomplete
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013 Darin Perusich.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-argcomplete%{psuffix}
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0
@@ -35,6 +35,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/kislyuk/argcomplete
 Source:         https://files.pythonhosted.org/packages/source/a/argcomplete/argcomplete-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 67.2}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
@@ -82,6 +83,7 @@ resources over the network).
 %python_clone -a %{buildroot}%{_bindir}/register-python-argcomplete
 %python_clone -a %{buildroot}%{_bindir}/python-argcomplete-check-easy-install-script
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %python3_fix_shebang_path %{buildroot}%{$python_sitelib}/argcomplete/scripts/*
 %endif
 
 %check

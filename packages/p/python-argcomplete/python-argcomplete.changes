@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun  7 08:06:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.5.3
+  * Use interactive shells and bind to make environment variable
+    name completions work in older Bash versions (#506)
+
+-------------------------------------------------------------------
 Tue Dec 10 11:12:48 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 3.5.2
-  * Fix _parse_known_args monkeypatching. This fix is required to restore 
+  * Fix _parse_known_args monkeypatching. This fix is required to restore
     compatibility with Python 3.12.8 and 3.13.1.
 
 -------------------------------------------------------------------
