@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Jun  9 16:14:05 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.9.23:
+  - Security
+    - gh-135034: Fixes multiple issues that allowed tarfile
+      extraction filters (filter="data" and filter="tar") to be
+      bypassed using crafted symlinks and hard links.
+      Addresses CVE-2024-12718 (bsc#1244056), CVE-2025-4138
+      (bsc#1244059), CVE-2025-4330 (bsc#1244060), and
+      CVE-2025-4517 (bsc#1244032).
+    - gh-133767: Fix use-after-free in the “unicode-escape”
+      decoder with a non-“strict” error handler (CVE-2025-4516,
+      bsc#1243273).
+    - gh-128840: Short-circuit the processing of long IPv6
+      addresses early in ipaddress to prevent excessive memory
+      consumption and a minor denial-of-service.
+    - gh-80222: Fix bug in the folding of quoted strings
+      when flattening an email message using a modern email
+      policy. Previously when a quoted string was folded so
+      that it spanned more than one line, the surrounding
+      quotes and internal escapes would be omitted. This could
+      theoretically be used to spoof header lines using a
+      carefully constructed quoted string if the resulting
+      rendered email was transmitted or re-parsed.
+  - Library
+    - gh-128840: Fix parsing long IPv6 addresses with embedded
+      IPv4 address.
+    - gh-134062: ipaddress: fix collisions in __hash__() for
+      IPv4Network and IPv6Network objects.
+    - gh-123409: Fix ipaddress.IPv6Address.reverse_pointer output
+      according to RFC 3596, §2.5. Patch by Bénédikt Tran.
+    - bpo-43633: Improve the textual representation of
+      IPv4-mapped IPv6 addresses (RFC 4291 Sections 2.2, 2.5.5.2)
+      in ipaddress. Patch by Oleksandr Pavliuk.
+    - bpo-25264: os.path.realpath() now accepts a strict
+      keyword-only argument. When set to True, OSError is raised
+      if a path doesn’t exist or a symlink loop is encountered.
+- Remove upstreamed patches:
+  - CVE-2025-4516-DecodeError-handler.patch
+
+-------------------------------------------------------------------
 Thu May 22 13:01:17 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2025-4516-DecodeError-handler.patch fixing

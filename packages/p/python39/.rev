@@ -1438,4 +1438,41 @@
     again directly the PyTypeObject.tp_flags</comment>
     <requestid>1281888</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>1fee799b6e219c338fcc6bd8b67689d5</srcmd5>
+    <version>3.9.23</version>
+    <time>1749551082</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.9.23:
+  - Security
+    - gh-135034: Fixes multiple issues that allowed tarfile
+      extraction filters (filter=&quot;data&quot; and filter=&quot;tar&quot;) to be
+      bypassed using crafted symlinks and hard links.
+      Addresses CVE-2024-12718 (bsc#1244056), CVE-2025-4138
+      (bsc#1244059), CVE-2025-4330 (bsc#1244060), and
+      CVE-2025-4517 (bsc#1244032).
+    - gh-133767: Fix use-after-free in the “unicode-escape”
+      decoder with a non-“strict” error handler (CVE-2025-4516,
+      bsc#1243273).
+    - gh-128840: Short-circuit the processing of long IPv6
+      addresses early in ipaddress to prevent excessive memory
+      consumption and a minor denial-of-service.
+    - gh-80222: Fix bug in the folding of quoted strings
+      when flattening an email message using a modern email
+      policy. Previously when a quoted string was folded so
+      that it spanned more than one line, the surrounding
+      quotes and internal escapes would be omitted. This could
+      theoretically be used to spoof header lines using a
+      carefully constructed quoted string if the resulting
+      rendered email was transmitted or re-parsed.
+  - Library
+    - gh-128840: Fix parsing long IPv6 addresses with embedded
+      IPv4 address.
+    - gh-134062: ipaddress: fix collisions in __hash__() for
+      IPv4Network and IPv6Network objects.
+    - gh-123409: Fix ipaddress.IPv6Address.reverse_pointer output
+      according to RFC 3596, §2.5. Patch by Bénédikt Tran.
+    - bpo-43633: Improve the textual representation of</comment>
+    <requestid>1284262</requestid>
+  </revision>
 </revisionlist>

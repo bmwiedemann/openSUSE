@@ -1,12 +1,10 @@
 ---
- Doc/tools/extensions/pyspecific.py |    8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+ Doc/tools/extensions/pyspecific.py |   10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
-Index: Python-3.9.22/Doc/tools/extensions/pyspecific.py
-===================================================================
---- Python-3.9.22.orig/Doc/tools/extensions/pyspecific.py	2025-04-11 09:50:56.818993764 +0200
-+++ Python-3.9.22/Doc/tools/extensions/pyspecific.py	2025-04-11 09:51:18.844485631 +0200
-@@ -28,7 +28,13 @@
+--- a/Doc/tools/extensions/pyspecific.py
++++ b/Doc/tools/extensions/pyspecific.py
+@@ -28,7 +28,13 @@ try:
  except ImportError:
      from sphinx.environment import NoUri
  from sphinx.locale import _ as sphinx_gettext
@@ -21,3 +19,12 @@ Index: Python-3.9.22/Doc/tools/extensions/pyspecific.py
  from sphinx.util.nodes import split_explicit_title
  from sphinx.writers.text import TextWriter, TextTranslator
  from sphinx.writers.latex import LaTeXTranslator
+@@ -338,7 +344,7 @@ class PyAbstractMethod(PyMethod):
+ def expand_version_arg(argument, release):
+     """Expand "next" to the current version"""
+     if argument == 'next':
+-        return translators['sphinx'].gettext('{} (unreleased)').format(release)
++        return sphinx_gettext('{} (unreleased)').format(release)
+     return argument
+ 
+ 
