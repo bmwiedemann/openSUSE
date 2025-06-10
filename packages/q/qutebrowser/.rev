@@ -2074,4 +2074,35 @@ Fixed:
   * Crash when trying to use the `DocumentPictureInPicture` JS API,</comment>
     <requestid>1269034</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>77f16035b034b891ff5bbfc7c5c7835d</srcmd5>
+    <version>3.5.1</version>
+    <time>1749539300</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.5.1:
+Deprecated:
+  * QtWebKit (legacy) support got removed from CI and is now
+    untested. If it breaks, it’s not going to be fixed, and support
+    will be removed over the next releases.
+  * Qt 5 support is currently still tested, but is also planned to
+    get removed over the next releases. Same goes for support for
+    older Qt 6 versions
+Fixed:
+  * A bogus &quot;wildcard call disconnects from destroyed signal&quot;
+    warning from Qt is now suppressed.
+  * A &quot;Ignoring new child …​&quot; debug log message which got spammy
+    with Qt 6.9 is now removed.
+  * A unknown crash (possibly related to using devtools) due to
+    weird (Py)Qt behavior now has a workaround.
+  * No &quot;QtWebEngine version mismatch&quot; warning is now logged anymore
+    with newer Qt 5.15 releases
+    (but you should still stop using Qt 5).
+  * The PDF.js version can now correctly be extracted/displayed
+    with newer PDF.js versions.
+  * The qute-bitwarden, -lastpass and -pass userscripts now
+    properly avoid a DeprecationWarning from the upcoming 6.0
+    release of tldextract.
+    The previous fix in v3.5.0 was insufficient.</comment>
+    <requestid>1284191</requestid>
+  </revision>
 </revisionlist>
