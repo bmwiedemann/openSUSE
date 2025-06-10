@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  9 09:09:47 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/Qucs/ADMS/issues/115
+  + adms-gcc15.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 12:55:56 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update URL to point to Github, Sourceforge repository is no

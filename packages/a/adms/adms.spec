@@ -27,6 +27,8 @@ URL:            https://github.com/Qucs/ADMS
 Source0:        https://github.com/Qucs/ADMS/archive/release-%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE adms-no-build-time.patch -- remove build time from binary
 Patch1:         adms-no-build-time.patch
+# https://github.com/Qucs/ADMS/issues/115
+Patch2:         adms-gcc15.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
