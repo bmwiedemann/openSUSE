@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.15
-%define patchversion 6.15.0
-%define git_commit 17ba886658141d7d6a7b6ad5145118ada68b4b7e
+%define patchversion 6.15.1
+%define git_commit 75961adba0a92812f18b49a1269d9c7e9194e902
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -39,9 +39,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-default
-Version:        6.15.0
+Version:        6.15.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g17ba886
+Release:        <RELEASE>.g75961ad
 %else
 Release:        0
 %endif

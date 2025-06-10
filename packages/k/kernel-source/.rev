@@ -7024,4 +7024,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.15 with fixed compiler version &amp; fixes for acpica &amp; DRM fix &amp; &quot;nosmt&quot; power fix; bugs: bsc#1012628 bsc#1241057 bsc#1241193 bsc#1243081 bsc#1243782 bsc#1243907</comment>
     <requestid>1281773</requestid>
   </revision>
+  <revision rev="784" vrev="1">
+    <srcmd5>76add58d2fa4502a314eac32bd1b08a7</srcmd5>
+    <version>6.15.1</version>
+    <time>1749538750</time>
+    <user>anag_factory</user>
+    <comment>6.15.1 &amp; fix for large modules; bugs: bsc#1012628 bsc#1244135</comment>
+    <requestid>1283391</requestid>
+  </revision>
 </revisionlist>
