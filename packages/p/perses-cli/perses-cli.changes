@@ -1,4 +1,167 @@
 -------------------------------------------------------------------
+Sat Jun 07 04:48:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.51.0:
+  This release is one of the biggest releases we ever made.
+  On top of many features and improvements, we are introducing a
+  new plugin architecture that allows you to develop external
+  plugins and load them in Perses.
+  As part of this change we are introducing a new repository
+  perses/plugins containing all default plugins supported by
+  Perses.
+  We have also improved the documentation, highlighting features
+  that were implemented some time ago already but not well
+  advertised (like datasource discovery and ephemeral dashboards)
+  Details and explanations can be found in our blog post:
+  https://perses.dev/blog/2025/06/06/release-v0510/
+
+  CLI-related changes
+  * [ENHANCEMENT] CLI: improve the "no args are supported" feedback
+    for several commands (#2974)
+  * [FEATURE] add percli plugin generate command and plugin
+    documentation (#2918)
+  * [FEATURE] CLI: list the plugins (#2889)
+  * [BREAKINGCHANGE] CLI/PLUGIN: implement start command and deep
+    review of how to load a dev plugin (#2831)
+  * [ENHANCEMENT] CLI/DAC: ignore a list of pre-defined folder when
+    building dashboard (#2800)
+  * [ENHANCEMENT] CLI/PLUGIN: build includes the version in the
+    archive name (#2804)
+  * [ENHANCEMENT] CLI/plugin: Improve the way to vendor cue
+    dependencies and rely on cue default caching (#2795)
+  * [BREAKINGCHANGE] `percli dac setup`: rely on CUE's new modules
+    for deps installation (#2724)
+  * [BUGFIX] CLI: plugin build should consider all subfolder when
+    getting the cue dependencies (#2748)
+  * [ENHANCEMENT] rework `percli plugin build` to vendor CUE
+    dependencies (#2695)
+  * [ignore] add tests for CLI command plugin lint and build
+    (#2700)
+  * [BUGFIX] CLI/plugin: Improve error returned when files are
+    missing in a plugin and fix loading default config file (#2690)
+  * [ENHANCEMENT] `percli dac preview`: add current dashboard URL
+    to the output when applicable (#2505)
+  * [BUGFIX] Login from percli (method not allowed) (#2577)
+  * BUGFIX: `percli dac setup`: fix useless requirement of go CLI
+    when using CUE (#2544)
+  * [ENHANCEMENT] : percli plugin lint: improve the way to find the
+    schema files (#2526)
+  * [DOC] User Guides and CLI section of the docs updated.  (#2532)
+  * [ENHANCEMENT] `percli dac diff`: add output + avoid early
+    return when processing a directory (#2500)
+  Dependencies
+  * Bump github.com/prometheus/common from 0.63.0 to 0.64.0 (#2934)
+  * Bump github.com/labstack/echo/v4 from 4.13.3 to 4.13.4 (#2944)
+  * Bump github.com/perses/plugins/table from 0.6.0 to 0.6.1 in
+    /go-sdk/test (#2963)
+  * upgrade vulnerable dependencies (#2970)
+  * Bump cuelang.org/go from 0.12.1 to 0.13.0 (#2946)
+  * Bump github.com/brunoga/deep from 1.2.4 to 1.2.5 (#2945)
+  * Bump github.com/perses/plugins/timeserieschart (#2961)
+  * Bump github.com/olekukonko/tablewriter from 1.0.6 to 1.0.7
+    (#2962)
+  * Bump github.com/perses/plugins/timeserieschart in /go-sdk/test
+    (#2964)
+  * Bump github.com/perses/plugins/staticlistvariable in
+    /go-sdk/test (#2965)
+  * Bump the k8s-io group across 1 directory with 3 updates (#2931)
+  * Bump github.com/olekukonko/tablewriter from 1.0.3 to 1.0.6
+    (#2933)
+  * Bump github.com/mholt/archives from 0.1.1 to 0.1.2 (#2932)
+  * Bump github.com/olekukonko/tablewriter from 0.0.5 to 1.0.3
+    (#2912)
+  * Bump github.com/perses/plugins/staticlistvariable in
+    /go-sdk/test (#2913)
+  * Bump github.com/perses/plugins/timeserieschart in /go-sdk/test
+    (#2895)
+  * Bump github.com/perses/plugins/timeserieschart (#2897)
+  * Bump github.com/perses/plugins/table from 0.5.0 to 0.6.0 in
+    /go-sdk/test (#2896)
+  * Bump golang.org/x/oauth2 from 0.28.0 to 0.30.0 (#2894)
+  * Bump golang.org/x/crypto from 0.36.0 to 0.38.0 (#2851)
+  * [ignore] bump go deps (#2900)
+  * Bump golangci/golangci-lint-action from 6.5.1 to 8.0.0 (#2828)
+  * Bump github.com/google/cel-go from 0.24.1 to 0.25.0 (#2883)
+  * Bump github.com/prometheus/client_model from 0.6.1 to 0.6.2
+    (#2870)
+  * Bump github.com/mholt/archives from 0.1.0 to 0.1.1 (#2854)
+  * Bump cuelang.org/go from 0.12.0 to 0.12.1 (#2853)
+  * Bump github.com/go-sql-driver/mysql from 1.9.1 to 1.9.2 (#2849)
+  * Bump github.com/prometheus/promu from 0.17.0 to 0.18.0 (#2848)
+  * [ignore] update go deps (#2836)
+  * Bump github.com/perses/plugins/table in /go-sdk/test (#2822)
+  * Bump github.com/perses/plugins/timeserieschart in /go-sdk/test
+    (#2824)
+  * Bump github.com/go-sql-driver/mysql from 1.9.0 to 1.9.1 (#2819)
+  * Bump github.com/huandu/go-sqlbuilder from 1.34.0 to 1.35.0
+    (#2820)
+  * Bump github.com/perses/plugins/timeserieschart (#2826)
+  * [ignore] bump go deps (#2798)
+  * Bump the k8s-io group across 1 directory with 3 updates (#2782)
+  * Bump github.com/perses/plugins/prometheus in /go-sdk/test
+    (#2742)
+  * Bump github.com/perses/plugins/prometheus (#2743)
+  * [IGNORE] Update date-fns and date-fns-tz (#2755)
+  * Bump golangci/golangci-lint-action from 6.5.0 to 6.5.1 (#2780)
+  * [ignore] bumps go deps (#2746)
+  * [ignore] update dependabot go mod directories (#2740)
+  * Bump github.com/prometheus/client_golang from 1.21.0 to 1.21.1
+    (#2736)
+  * [BUGFIX] Fix the interface impl of the datasource discovery
+    (#2714)
+  * [ignore] move datasource discovery test to the new plugin
+    system (#2712)
+  * [FEATURE] By configuration, disable datasource and variable
+    (#2673)
+  * [ignore] bumps go deps (#2707)
+  * [IGNORE] fix goreleaser archive format field used (#2706)
+  * [IGNORE] run all tests on windows (#2701)
+  * Bump github.com/google/cel-go from 0.23.2 to 0.24.1 (#2703)
+  * Bump github.com/PaesslerAG/gval from 1.2.2 to 1.2.4 (#2704)
+  * [ENHANCEMENT] CLI/Migrate: support CR as a migration format
+    (#2682)
+  * Bump golang.org/x/crypto from 0.34.0 to 0.35.0 (#2681)
+  * update go deps (#2679)
+  * Bump github.com/labstack/echo-jwt/v4 from 4.2.0 to 4.3.0
+    (#2479)
+  * [BREAKINGCHANGE] Remove `percli plugin update` command (#2660)
+  * Bump golangci/golangci-lint-action from 6.3.1 to 6.5.0 (#2650)
+  * Bump github.com/huandu/go-sqlbuilder from 1.33.1 to 1.34.0
+    (#2654)
+  * Bump perses/github-actions from 0.8.0 to 0.9.0 (#2651)
+  * Bump github.com/goreleaser/goreleaser/v2 from 2.6.1 to 2.7.0
+    (#2655)
+  * Bump the k8s-io group with 3 updates (#2652)
+  * Bump github.com/spf13/cobra from 1.8.1 to 1.9.1 (#2653)
+  * upgrade to node v22 (#2636)
+  * Bump golang.org/x/mod from 0.22.0 to 0.23.0 (#2620)
+  * Bump golang.org/x/crypto from 0.32.0 to 0.33.0 (#2621)
+  * Bump golang.org/x/oauth2 from 0.25.0 to 0.26.0 (#2622)
+  * Bump golangci/golangci-lint-action from 6.2.0 to 6.3.1 (#2623)
+  * Bump cuelang.org/go from 0.11.2 to 0.12.0 (#2599)
+  * bump github.com/perses/common to v0.27.0 to support TLS server
+    (#2605)
+  * Bump github.com/goreleaser/goreleaser/v2 from 2.5.1 to 2.6.1
+    (#2592)
+  * chore(deps): upgrade TanStack Query to version 5 [WIP] (#2588)
+  * Bump cuelang.org/go from 0.11.1 to 0.11.2 (#2591)
+  * bump turbo and module-federation version (#2590)
+  * bump rspack to last version
+  * Bump github.com/zitadel/oidc/v3 from 3.34.0 to 3.34.1 (#2572)
+  * Bump github.com/prometheus/common from 0.61.0 to 0.62.0 (#2571)
+  * Bump the k8s-io group with 3 updates (#2570)
+  * Bump golangci/golangci-lint-action from 6.1.1 to 6.2.0 (#2573)
+  * Bump github.com/goreleaser/goreleaser/v2 from 2.5.0 to 2.5.1
+    (#2536)
+  * Bump golang.org/x/crypto from 0.31.0 to 0.32.0 (#2550)
+  * Bump github.com/labstack/echo/v4 from 4.13.2 to 4.13.3 (#2527)
+  * Bump github.com/zitadel/oidc/v3 from 3.33.1 to 3.34.0 (#2537)
+  * Bump golang.org/x/oauth2 from 0.24.0 to 0.25.0 (#2538)
+  * Bump cuelang.org/go from 0.11.0 to 0.11.1 (#2528)
+  * Bump perses/github-actions from 0.7.1 to 0.8.0 (#2529)
+  * Bump github.com/mholt/archives (#2539)
+
+-------------------------------------------------------------------
 Fri Mar 21 08:43:37 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.50.3:
