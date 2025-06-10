@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  5 19:09:31 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove unused dependency on vulkan-volk
+
+-------------------------------------------------------------------
 Sun May 18 04:29:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.313.0

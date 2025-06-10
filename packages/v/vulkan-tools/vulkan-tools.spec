@@ -30,7 +30,6 @@ BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  glslang-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
-BuildRequires:  vulkan-volk-devel >= %version
 BuildRequires:  pkgconfig(vulkan) >= %version
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(x11)

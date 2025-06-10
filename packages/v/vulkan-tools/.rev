@@ -432,4 +432,12 @@
     <comment>- Update to tag SDK-1.4.313.0</comment>
     <requestid>1278225</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>f99f2e1cbfd44f1b24e59e8f838b3bd8</srcmd5>
+    <version>1.4.313</version>
+    <time>1749538672</time>
+    <user>anag_factory</user>
+    <comment>- Remove unused dependency on vulkan-volk</comment>
+    <requestid>1283444</requestid>
+  </revision>
 </revisionlist>
