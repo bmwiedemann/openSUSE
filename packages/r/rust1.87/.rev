@@ -7,4 +7,13 @@
     <comment>New package rust1.87</comment>
     <requestid>1278987</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a23cdf0eec626f36216de2e3f8cadf0c</srcmd5>
+    <version>1.87.0</version>
+    <time>1749538691</time>
+    <user>anag_factory</user>
+    <comment>- Add rust-build-onig_sys-as-C17.patch so that the package can be
+  built with GCC 15. [boo#1241943]</comment>
+    <requestid>1283512</requestid>
+  </revision>
 </revisionlist>

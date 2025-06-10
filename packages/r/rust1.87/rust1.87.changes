@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  4 20:21:37 UTC 2025 - Martin Jambor <mjambor@suse.com>
+
+- Add rust-build-onig_sys-as-C17.patch so that the package can be
+  built with GCC 15. [boo#1241943]
+
+-------------------------------------------------------------------
 Fri May 16 02:42:41 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 Version 1.87.0 (2025-05-15)
