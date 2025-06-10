@@ -1,0 +1,47 @@
+From fde915af1cf4b9166b68023899d41057baf95958 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Fri, 6 Jun 2025 14:13:05 +0900
+Subject: [PATCH] agent: Fix for the prefix 0x40 in the point representation.
+
+* agent/pkdecrypt.c (ECC_CURVE25519_INDEX): New.
+(ecc_pgp_kem_decap): Handle the prefix 0x40 for Curve25519.
+
+--
+
+GnuPG-bug-id: 7676
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+---
+ agent/pkdecrypt.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/agent/pkdecrypt.c b/agent/pkdecrypt.c
+index d712e7f28..99896939b 100644
+--- a/agent/pkdecrypt.c
++++ b/agent/pkdecrypt.c
+@@ -43,6 +43,9 @@ struct ecc_params
+   int scalar_reverse;
+ };
+ 
++/* The first entry must be Curve25519, to handle the prefix of 0x40 in
++   OpenPGP. */
++#define ECC_CURVE25519_INDEX 0
+ static const struct ecc_params ecc_table[] =
+   {
+     {
+@@ -484,6 +487,13 @@ ecc_pgp_kem_decap (ctrl_t ctrl, gcry_sexp_t s_skey0,
+     }
+   *r_ecc = ecc;
+ 
++  if (ecc == &ecc_table[ECC_CURVE25519_INDEX]
++      && ecc_point_len == ecc->point_len + 1 && *ecc_ct == 0x40)
++    {
++      ecc_ct++;
++      ecc_point_len--;
++    }
++
+   if (ecc->point_len != ecc_point_len)
+     {
+       if (opt.verbose)
+-- 
+2.30.2
+

@@ -47,6 +47,8 @@ Patch11:        gnupg-allow-large-rsa.patch
 Patch12:        gnupg-revert-rfc4880bis.patch
 #PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
 Patch13:        gnupg-nobetasuffix.patch
+#PATCH-FIX-UPSTREAM gnupg-agent-fix-for-prefix-0x40-in-the-point-representation.patch -- based on commit fde915af1cf4b9166b68023899d41057baf95958
+Patch14:        gnupg-agent-fix-for-prefix-0x40-in-the-point-representation.patch
 
 BuildRequires:  expect
 BuildRequires:  fdupes

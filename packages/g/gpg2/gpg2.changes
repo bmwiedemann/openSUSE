@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  6 10:06:29 UTC 2025 - Michal Hrusecky <michal@hrusecky.net>
+
+- Fix problems with decoding Curve25519
+- Added patch
+  * gnupg-agent-fix-for-prefix-0x40-in-the-point-representation.patch
+
+-------------------------------------------------------------------
 Mon Jun  2 22:56:06 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 2.5.7:
