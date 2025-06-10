@@ -1519,4 +1519,23 @@
   * releaser: Prepare repository for 0.148.0-DEV (forwarded request 1281630 from jfkw)</comment>
     <requestid>1281631</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>aca59331a6c0cead3adc9a25b8dd4c51</srcmd5>
+    <version>0.147.8</version>
+    <time>1749539076</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.147.8:
+  * releaser: Bump versions for release of 0.147.8
+  * hugolib: Emit ignorable warning when home page is a leaf bundle
+  * dockerfile: Update Alpine
+  * dockerfile: Update Go version
+  * build(deps): bump github.com/evanw/esbuild from 0.25.3 to 0.25.5
+  * build(deps): bump github.com/niklasfasching/go-org from 1.7.0 to 1.8.0
+  * build(deps): bump golang.org/x/net from 0.39.0 to 0.40.0
+  * build(deps): bump github.com/yuin/goldmark from 1.7.11 to 1.7.12
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.23.5 to 2.23.8
+  * all: Replace _build with build in tests
+  * releaser: Prepare repository for 0.148.0-DEV (forwarded request 1283860 from jfkw)</comment>
+    <requestid>1283861</requestid>
+  </revision>
 </revisionlist>
