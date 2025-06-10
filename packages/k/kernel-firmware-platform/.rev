@@ -87,4 +87,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * cnm: update chips&amp;media wave521c firmware.</comment>
     <requestid>1278692</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>437e339793c38c0798f12d784f2b2fde</srcmd5>
+    <version>20250520</version>
+    <time>1749538647</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250520 (git commit 341b9e805613):
+  * cnm: Add Chips&amp;Media wave633c firmware for NXP i.MX9</comment>
+    <requestid>1283299</requestid>
+  </revision>
 </revisionlist>
