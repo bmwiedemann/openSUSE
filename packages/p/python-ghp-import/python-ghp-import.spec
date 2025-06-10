@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-ghp-import
 Version:        2.1.0
@@ -29,11 +30,11 @@ BuildRequires:  %{python_module dateutil >= 2.8.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-dateutil >= 2.8.1
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,11 +58,8 @@ sed -i '1d' ghp_import.py
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative ghp-import
-
-%postun
-%python_uninstall_alternative ghp-import
+%pre
+%python_libalternatives_reset_alternative ghp-import
 
 %files %{python_files}
 %doc README.md
