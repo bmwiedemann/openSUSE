@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jun  6 14:38:17 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Update to 7.16.6
+  * Prevent leading whitespace in markdown code blocks from being
+    stripped
+  * Fix bullet list parsing in markdown
+  * Fix crash when running with optimization
+  * Maintenance and upkeep improvements
+- Update to 7.16.5
+  * Add support for mistune 3.1.0
+  * Allow including text/x-rst outputs in rst conversion,
+    transition away from text/restructuredtext
+  * Do not display mathjax overlay
+  * Work around pip 24.1 bug which prevents installing
+    pandocfilters 1.4.1
+  * Don't die if template path cannot be read
+  * Fix markdown2asciidoc function for pandoc >= 3.0
+  * Maintenance and upkeep improvements
+
+-------------------------------------------------------------------
 Thu Feb 27 12:47:52 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

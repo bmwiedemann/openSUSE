@@ -30,10 +30,10 @@
 %bcond_with libalternatives
 %endif
 # X.X.0 gets abbreviated by pythondistdeps
-%define shortversion 7.16.4
+%define shortversion 7.16.6
 %{?sle15_python_module_pythons}
 Name:           python-nbconvert%{psuffix}
-Version:        7.16.4
+Version:        7.16.6
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause AND MIT
@@ -57,8 +57,9 @@ Requires:       python-nbclient >= 0.5
 Requires:       python-nbformat >= 5.7
 Requires:       python-packaging
 Requires:       python-pandocfilters >= 1.4.1
-Requires:       python-tinycss2
 Requires:       python-traitlets >= 5.1
+Requires:       (python-tinycss2 >= 1.1.0 with python-tinycss2 < 1.5)
+## pyproject.toml says bleach[css], this is bleach w/ tinycss2, see above
 Requires:       (python-bleach without python-bleach = 5.0.0)
 Requires:       (python-mistune >= 2.0.3 with python-mistune < 4)
 Recommends:     pandoc >= 2.9.2

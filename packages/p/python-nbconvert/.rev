@@ -469,4 +469,28 @@
     <comment></comment>
     <requestid>1248989</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>65808e92f420f4d3487e6fd20d70e474</srcmd5>
+    <version>7.16.6</version>
+    <time>1749539160</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.16.6
+  * Prevent leading whitespace in markdown code blocks from being
+    stripped
+  * Fix bullet list parsing in markdown
+  * Fix crash when running with optimization
+  * Maintenance and upkeep improvements
+- Update to 7.16.5
+  * Add support for mistune 3.1.0
+  * Allow including text/x-rst outputs in rst conversion,
+    transition away from text/restructuredtext
+  * Do not display mathjax overlay
+  * Work around pip 24.1 bug which prevents installing
+    pandocfilters 1.4.1
+  * Don't die if template path cannot be read
+  * Fix markdown2asciidoc function for pandoc &gt;= 3.0
+  * Maintenance and upkeep improvements
+</comment>
+    <requestid>1283947</requestid>
+  </revision>
 </revisionlist>
