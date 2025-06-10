@@ -47,4 +47,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * brcmfmac: Add a couple of NanoPi devices</comment>
     <requestid>1278690</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8443fd0519c4676635d3506bbbdf3173</srcmd5>
+    <version>20250603</version>
+    <time>1749538649</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250603 (git commit 3b75d677f898):
+  * brcm: Add symlinks for Khadas VIM SDIO wifi config to AW-CM256SM.txt</comment>
+    <requestid>1283302</requestid>
+  </revision>
 </revisionlist>
