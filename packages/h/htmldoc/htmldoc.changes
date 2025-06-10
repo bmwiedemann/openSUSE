@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May 24 07:35:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.9.20:
+  * Fix a regression that caused spaces to disappear between some
+     words
+  * Fix resolution of relative links within a document
+- includes changes from 1.9.19:
+  * Add support for ‘file’ method in links
+  * Update markdown support code to mmd
+  * Fix hyperlinks to subfolders
+  * Fix export of UTF-8 HTML
+  * Fix handling of whitespace-only nodes
+  * Fix case sensitivity of link targets
+- drop security patches now included:
+  * htmldoc-CVE-2024-46478.patch
+  * htmldoc-CVE-2024-45508.patch
+- add upstream signing key and validate source signature
+- clean up spec file, drop some unneeded or deprecated constructs
+
+-------------------------------------------------------------------
 Tue Nov  5 07:31:53 UTC 2024 - pgajdos@suse.com
 
 - security update

@@ -300,4 +300,12 @@ Fixed buffer-overflow CVE-2021-20308 ( boo#1184424 ) (forwarded request 896478 f
   + htmldoc-CVE-2024-46478.patch (forwarded request 1221327 from pgajdos)</comment>
     <requestid>1221331</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f44669baa2b562afe26fe5f5df076719</srcmd5>
+    <version>1.9.20</version>
+    <time>1749538773</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1283664</requestid>
+  </revision>
 </revisionlist>

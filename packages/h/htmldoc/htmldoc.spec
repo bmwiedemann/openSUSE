@@ -2,6 +2,7 @@
 # spec file for package htmldoc
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +18,29 @@
 
 
 Name:           htmldoc
-Version:        1.9.18
+Version:        1.9.20
 Release:        0
 Summary:        HTML Processor that Generates HTML, PostScript, and PDF Files
 License:        LGPL-2.1-or-later
 Group:          Productivity/Publishing/HTML/Tools
 URL:            https://michaelrsweet.github.io/htmldoc/index.html
 Source:         https://github.com/michaelrsweet/htmldoc/releases/download/v%{version}/htmldoc-%{version}-source.tar.gz
-# CVE-2024-45508 [bsc#1230022], HTMLDOC before 1.9.19 has an out-of-bounds write in parse_paragraph in ps-pdf.cxx because of an attempt to strip leading whitespace from a whitespace-only node.
-Patch0:         htmldoc-CVE-2024-45508.patch
-# CVE-2024-46478 [bsc#1232380], buffer overflow when handling tabs through the parse_pre function (ps-pdf.cxx)
-Patch1:         htmldoc-CVE-2024-46478.patch
-BuildRequires:  cups-devel
+Source2:        https://github.com/michaelrsweet/htmldoc/releases/download/v%{version}/htmldoc-%{version}-source.tar.gz.sig
+# https://www.msweet.org/pgp.html
+Source3:        %{name}.keyring
+BuildRequires:  c++_compiler
 BuildRequires:  fltk-devel
-BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libXpm-devel
-BuildRequires:  libgcrypt-devel
-BuildRequires:  libgnutls-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  libpng-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(xpm)
+BuildRequires:  pkgconfig(zlib)
+%if 0%{?sle_version} <= 150600 && 0%{?is_opensuse}
+BuildRequires:  cups-devel
+%else
+BuildRequires:  pkgconfig(cups)
+%endif
 
 %description
 HTMLDOC converts HTML source files into indexed HTML, PostScript, or
@@ -58,10 +60,7 @@ Portable Document Format (PDF) files that can be viewed online or printed.
 mv -f %{buildroot}%{buildroot}/* \
   %{buildroot}
 # Get rid of unvanted files
-rm -rf %{buildroot}/home %{buildroot}%{_datadir}/doc/%{name}
-# Update desktop file
-%suse_update_desktop_file -r %{name} Development Documentation
-%suse_update_desktop_file %{name} -G%{name}
+rm -rf %{buildroot}%{_datadir}/doc/%{name}
 
 %files
 %license COPYING
