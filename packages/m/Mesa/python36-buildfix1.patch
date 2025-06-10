@@ -1,7 +1,7 @@
-Index: mesa-24.3.0-rc1/src/nouveau/headers/class_parser.py
+Index: mesa-25.1.0/src/nouveau/headers/class_parser.py
 ===================================================================
---- mesa-24.3.0-rc1.orig/src/nouveau/headers/class_parser.py
-+++ mesa-24.3.0-rc1/src/nouveau/headers/class_parser.py
+--- mesa-25.1.0.orig/src/nouveau/headers/class_parser.py
++++ mesa-25.1.0/src/nouveau/headers/class_parser.py
 @@ -11,6 +11,16 @@ import subprocess
  
  from mako.template import Template
@@ -19,25 +19,25 @@ Index: mesa-24.3.0-rc1/src/nouveau/headers/class_parser.py
  METHOD_ARRAY_SIZES = {
      'BIND_GROUP_CONSTANT_BUFFER'                            : 16,
      'CALL_MME_DATA'                                         : 256,
-@@ -425,7 +435,7 @@ def parse_header(nvcl, f):
+@@ -467,7 +477,7 @@ def parse_header(nvcl, f):
                  if ":" in list[2]:
                      state = 1
                  elif teststr in list[1]:
--                    curmthd.field_defs[curfield][list[1].removeprefix(teststr)] = list[2]
-+                    curmthd.field_defs[curfield][removeprefix(list[1], teststr)] = list[2]
+-                    curfield.defs[list[1].removeprefix(teststr)] = list[2]
++                    curfield.defs[removeprefix(list[1],teststr)] = list[2]
                  else:
                      state = 1
  
-@@ -435,7 +445,7 @@ def parse_header(nvcl, f):
+@@ -477,7 +487,7 @@ def parse_header(nvcl, f):
                      if ("0x" in list[2]):
                          state = 1
                      else:
 -                        field = list[1].removeprefix(teststr)
 +                        field = removeprefix(list[1], teststr)
                          bitfield = list[2].split(":")
-                         curmthd.field_name_start[field] = bitfield[1]
-                         curmthd.field_name_end[field] = bitfield[0]
-@@ -456,13 +466,13 @@ def parse_header(nvcl, f):
+                         f = Field(field, bitfield[1], bitfield[0])
+                         curmthd.fields.append(f)
+@@ -497,13 +507,13 @@ def parse_header(nvcl, f):
                  is_array = 0
                  if (':' in list[2]):
                      continue
@@ -51,17 +51,26 @@ Index: mesa-24.3.0-rc1/src/nouveau/headers/class_parser.py
                      is_array = 1
 -                    name = name.removesuffix("(j)")
 +                    name = removesuffix(name, "(j)")
-                 x = method()
-                 x.name = name
-                 x.addr = list[2]
-@@ -552,8 +562,8 @@ def main():
  
-     clheader = os.path.basename(args.in_h)
-     nvcl = clheader
--    nvcl = nvcl.removeprefix("cl")
--    nvcl = nvcl.removesuffix(".h")
-+    nvcl = removeprefix(nvcl, "cl")
-+    nvcl = removesuffix(nvcl, ".h")
-     nvcl = nvcl.upper()
-     nvcl = "NV" + nvcl
+                 curmthd = Method(name, list[2], is_array)
+                 methods[name] = curmthd
+@@ -512,8 +522,8 @@ def parse_header(nvcl, f):
+     return (version, methods)
+ 
+ def nvcl_for_filename(name):
+-    name = name.removeprefix("cl")
+-    name = name.removesuffix(".h")
++    name = removeprefix(name, "cl")
++    name = removesuffix(name, ".h")
+     return "NV" + name.upper()
+ 
+ def main():
+@@ -542,7 +552,7 @@ def main():
+     if args.prev_in_h is not None:
+         prev_clheader = os.path.basename(args.prev_in_h)
+         prev_nvcl = nvcl_for_filename(prev_clheader)
+-        prev_mod = prev_clheader.removesuffix(".h")
++        prev_mod = removesuffix(prev_clheader, ".h")
+         with open(args.prev_in_h, 'r', encoding='utf-8') as f:
+             (prev_version, prev_methods) = parse_header(prev_nvcl, f)
  
