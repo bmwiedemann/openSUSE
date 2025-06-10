@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat May 31 23:48:10 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.9.0:
+  * Ollama now has the ability to enable or disable thinking.
+    This gives users the flexibility to choose the model’s thinking
+    behavior for different applications and use cases.
+
+- Update to version 0.8.0:
+  * Ollama will now stream responses with tool calls
+  * Logs will now include better memory estimate debug information
+    when running models in Ollama's engine.
+
+- Update to version 0.7.1:
+  * Improved model memory management to allocate sufficient memory
+    to prevent crashes when running multimodal models in certain
+    situations
+  * Enhanced memory estimation for models to prevent unintended
+    memory offloading
+  * ollama show will now show ... when data is truncated
+  * Fixed crash that would occur with qwen2.5vl
+  * Fixed crash on Nvidia's CUDA for llama3.2-vision
+  * Support for Alibaba's Qwen 3 and Qwen 2 architectures in
+    Ollama's new multimodal engine
+
+-------------------------------------------------------------------
 Fri May 23 11:48:24 UTC 2025 - Wolfgang Engel <wolfgang.engel@suse.com>
 
 - Cleanup part in spec file where build for SLE-15-SP6 and above

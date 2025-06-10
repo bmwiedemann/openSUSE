@@ -463,4 +463,12 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   by checking for sle_version &gt;= 150600 in spec file (bsc#1243438)</comment>
     <requestid>1279778</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>56eab5e5619ba6752150019b2ec2dcb6</srcmd5>
+    <version>0.9.0</version>
+    <time>1749539127</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1283893</requestid>
+  </revision>
 </revisionlist>
