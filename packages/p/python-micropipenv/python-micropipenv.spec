@@ -1,7 +1,7 @@
 #
 # spec file for package python-micropipenv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %define modname micropipenv
+%bcond_without libalternatives
 Name:           python-micropipenv
 Version:        1.6.0
 Release:        0
@@ -27,11 +28,11 @@ URL:            https://github.com/thoth-station/micropipenv
 Source:         https://github.com/thoth-station/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-pip
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 Suggests:       python-toml
 BuildArch:      noarch
 # SECTION test requirements
@@ -60,11 +61,8 @@ sed -i '1{\@^#!%{_bindir}/env python@d}' micropipenv.py
 %check
 %pytest
 
-%post
-%python_install_alternative micropipenv
-
-%postun
-%python_uninstall_alternative micropipenv
+%pre
+%python_libalternatives_reset_alternative micropipenv
 
 %files %{python_files}
 %doc README.rst

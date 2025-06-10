@@ -27,4 +27,12 @@
     explicit 'version' in the Pipfile (#256)</comment>
     <requestid>1131718</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9796d741282c8c8d5317ca9573a29f2c</srcmd5>
+    <version>1.6.0</version>
+    <time>1749539264</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1284162</requestid>
+  </revision>
 </revisionlist>
