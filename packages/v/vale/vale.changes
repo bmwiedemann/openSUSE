@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 09 01:59:25 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.12.0:
+  * test: add more cases
+  * refactor: blueprint -> view
+  * chore: add `.well-known`
+  * chore: add funding.yml
+  * fix: remove erroneous "+1"
+  * chore(deps): bump golang.org/x/net from 0.36.0 to 0.38.0 (#996)
+
+-------------------------------------------------------------------
 Mon Apr 07 01:19:32 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.11.2:

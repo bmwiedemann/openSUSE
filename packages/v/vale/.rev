@@ -879,4 +879,18 @@
   * fix: don't error on duplicate fields (forwarded request 1267458 from jfkw)</comment>
     <requestid>1267459</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>ad37258a84f6b980082e0c9b71dffa18</srcmd5>
+    <version>3.12.0</version>
+    <time>1749539191</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.12.0:
+  * test: add more cases
+  * refactor: blueprint -&gt; view
+  * chore: add `.well-known`
+  * chore: add funding.yml
+  * fix: remove erroneous &quot;+1&quot;
+  * chore(deps): bump golang.org/x/net from 0.36.0 to 0.38.0 (#996) (forwarded request 1283968 from jfkw)</comment>
+    <requestid>1283969</requestid>
+  </revision>
 </revisionlist>
