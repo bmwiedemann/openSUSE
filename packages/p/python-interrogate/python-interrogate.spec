@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-interrogate
 Version:        1.7.0
 Release:        0
@@ -27,15 +28,15 @@ Source:         https://files.pythonhosted.org/packages/source/i/interrogate/int
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-attrs
 Requires:       python-click
 Requires:       python-colorama
 Requires:       python-py
 Requires:       python-tabulate
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 %if 0%{python_version_nodots} < 311
 Requires:       python-tomli
@@ -67,11 +68,9 @@ rm tox.ini
 %python_clone -a %{buildroot}%{_bindir}/interrogate
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative interrogate
-
-%postun
-%python_uninstall_alternative interrogate
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative interrogate
 
 %check
 %pytest
