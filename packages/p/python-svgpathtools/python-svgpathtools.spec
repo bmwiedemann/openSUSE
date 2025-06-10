@@ -18,13 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-svgpathtools
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Tools for manipulating and analyzing SVG Path objects and Bézier curves
 License:        MIT
 URL:            https://github.com/mathandy/svgpathtools
 Source:         https://files.pythonhosted.org/packages/source/s/svgpathtools/svgpathtools-%{version}.tar.gz
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
@@ -45,10 +46,10 @@ analyzing SVG Path objects and Bézier curves.
 %setup -q -n svgpathtools-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

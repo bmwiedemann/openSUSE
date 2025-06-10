@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun  9 13:55:49 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Switch to pip-based build
+- Update to 1.7.1
+Fixes:
+  * Rotation angle calculation when transforming arcs
+  * Converting rounded rect to a d-string path
+  * Floating point error in bezier bbox calculation
+  * Skip end path in polyline if no dedicated end path is provided
+Changes:
+  * When converting ellipses to d-string paths, use arcs by default
+  * Add various new test cases
+
+-------------------------------------------------------------------
 Fri May  9 11:36:43 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.7.0

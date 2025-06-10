@@ -117,4 +117,21 @@
 - Enable test suite</comment>
     <requestid>1276248</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d42ac9f7b84053073aa9132172e593f9</srcmd5>
+    <version>1.7.1</version>
+    <time>1749539296</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pip-based build
+- Update to 1.7.1
+Fixes:
+  * Rotation angle calculation when transforming arcs
+  * Converting rounded rect to a d-string path
+  * Floating point error in bezier bbox calculation
+  * Skip end path in polyline if no dedicated end path is provided
+Changes:
+  * When converting ellipses to d-string paths, use arcs by default
+  * Add various new test cases</comment>
+    <requestid>1284231</requestid>
+  </revision>
 </revisionlist>
