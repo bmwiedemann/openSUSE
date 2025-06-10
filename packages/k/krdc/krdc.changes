@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  3 21:12:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.2/
+- Changes since 25.04.1:
+  * RdpView: avoid multiple startQuitting() calls on the same connection (kde#504622)
+  * Fix config names mismatched between Ui and kcfg
+  * Fix parsing of user-supplied host:port preferences for proxy and gateway (kde#504282)
+
+-------------------------------------------------------------------
 Wed May  7 21:00:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.1
@@ -2152,7 +2164,7 @@ Wed Dec 22 11:39:28 CET 2010 - dmueller@suse.de
 
 
 -------------------------------------------------------------------
-Fri Dec  8 19:18:53 UCT 2010 - toddrme2178@gmail.com
+Fri Dec  8 19:18:53 UTC 2010 - toddrme2178@gmail.com
 
 - Add optional dependencies
   * KDE4Workspace -- Allows 'shutdown after downloads completed' in kget
