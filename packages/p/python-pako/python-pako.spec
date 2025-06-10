@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-pako
 Version:        0.3.1
 Release:        0
@@ -27,11 +28,11 @@ Source:         https://files.pythonhosted.org/packages/source/p/pako/pako-%{ver
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-appdirs
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,11 +60,8 @@ More on https://github.com/MycroftAI/pako
 %python_clone -a %{buildroot}%{_bindir}/pako
 rm -f %{buildroot}%{_prefix}/pako/LICENSE
 
-%post
-%python_install_alternative pako
-
-%postun
-%python_uninstall_alternative pako
+%pre
+%python_libalternatives_reset_alternative pako
 
 %files %{python_files}
 %license LICENSE
