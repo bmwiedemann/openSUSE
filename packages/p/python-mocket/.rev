@@ -623,4 +623,12 @@
     <comment>- only use python311 on suse platforms</comment>
     <requestid>1281446</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>42a098e08f4d6e089bc0ff16950d5367</srcmd5>
+    <version>3.13.7</version>
+    <time>1749538614</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1284032</requestid>
+  </revision>
 </revisionlist>

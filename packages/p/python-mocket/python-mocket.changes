@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  2 08:44:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.13.7
+  * Update README.rst
+  * Add methods for UDP sockets
+
+-------------------------------------------------------------------
 Wed May 28 07:06:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - only use python311 on suse platforms
