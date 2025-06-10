@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 07 05:07:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.6:
+  * Enable using boost::regex instead of std::regex
+  * Eliminate an avoidable std::regex and replace with RegexEngine
+
+-------------------------------------------------------------------
 Mon Apr 07 13:18:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.5:
