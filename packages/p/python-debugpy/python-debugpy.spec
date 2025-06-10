@@ -89,7 +89,7 @@ mv ../attach_${pyarch}.so ../attach_linux_amd64.so
 mv ../attach_${pyarch}.so ../attach_linux_x86.so
 %endif
 popd
-%{$python_build}
+%pyproject_wheel
 }
 %endif
 
@@ -97,7 +97,7 @@ popd
 %if !%{with test}
 # Dont compile pydevd again
 export SKIP_CYTHON_BUILD=1
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/debugpy
 %python_clone -a %{buildroot}%{_bindir}/debugpy-adapter
 %{python_expand # remove source files
