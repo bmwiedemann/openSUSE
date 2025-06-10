@@ -22,7 +22,7 @@
 %define with_gcc 11
 %endif
 Name:           netty-tcnative
-Version:        2.0.70
+Version:        2.0.72
 Release:        0
 Summary:        Fork of Tomcat Native with improved OpenSSL and mavenized build
 License:        Apache-2.0
@@ -102,6 +102,8 @@ sed "s;@PATH@;%{_libdir};g" < %{SOURCE1} | patch -p1
 %pom_remove_plugin :maven-dependency-plugin
 
 %pom_remove_plugin :maven-scm-plugin boringssl-static
+
+%pom_remove_plugin :maven-source-plugin openssl-classes
 
 # Tell xmvn to install attached artifact, which it does not
 # do by default. In this case install all attached artifacts with
