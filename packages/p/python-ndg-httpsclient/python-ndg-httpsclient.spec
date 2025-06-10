@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-ndg-httpsclient
 Version:        0.5.1
 Release:        0
@@ -27,12 +28,12 @@ Source:         https://files.pythonhosted.org/packages/source/n/ndg_httpsclient
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-pyOpenSSL
 Requires:       python-pyasn1 >= 0.1.1
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,11 +56,8 @@ SSL peer.
 
 # tests require internet connection
 
-%post
-%python_install_alternative ndg_httpclient
-
-%postun
-%python_uninstall_alternative ndg_httpclient
+%pre
+%python_libalternatives_reset_alternative ndg_httpclient
 
 %files %{python_files}
 %doc README.md
