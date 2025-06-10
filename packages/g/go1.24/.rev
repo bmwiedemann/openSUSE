@@ -155,4 +155,24 @@
     fixed in upstream release. (forwarded request 1275267 from jfkw)</comment>
     <requestid>1275268</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cfd126c11f365151037e23cc7aa6d248</srcmd5>
+    <version>1.24.4</version>
+    <time>1749538677</time>
+    <user>anag_factory</user>
+    <comment>- go1.24.4 (released 2025-06-05) includes security fixes to the
+  crypto/x509, net/http, and os packages, as well as bug fixes to
+  the linker, the go command, and the hash/maphash and os packages.
+  Refs boo#1236217 go1.24 release tracking
+  CVE-2025-22874 CVE-2025-0913 CVE-2025-4673
+  * go#73700 go#73702 boo#1244158 security: fix CVE-2025-22874 crypto/x509: ExtKeyUsageAny bypasses policy validation
+  * go#73720 go#73612 boo#1244157 security: fix CVE-2025-0913 os: inconsistent handling of O_CREATE|O_EXCL on Unix and Windows
+  * go#73906 go#73816 boo#1244156 security: fix CVE-2025-4673 net/http: sensitive headers not cleared on cross-origin redirect
+  * go#73570 os: Root.Mkdir creates directories with zero permissions on OpenBSD
+  * go#73669 hash/maphash: hashing channels with purego impl. of maphash.Comparable panics
+  * go#73678 runtime/debug: BuildSetting does not document DefaultGODEBUG
+  * go#73809 cmd/go: add fips140 module selection mechanism
+  * go#73832 cmd/link: Go 1.24.3 and 1.23.9 regression - duplicated definition of symbol dlopen (forwarded request 1283449 from jfkw)</comment>
+    <requestid>1283453</requestid>
+  </revision>
 </revisionlist>
