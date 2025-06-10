@@ -1,7 +1,7 @@
 #
 # spec file for package python-xattr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,18 @@ Version:        0.10.1
 Release:        0
 Summary:        Python wrapper for extended filesystem attributes
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/xattr/xattr
 Source:         https://files.pythonhosted.org/packages/source/x/xattr/xattr-%{version}.tar.gz
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cffi >= 1.11
-Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %ifpython2
 Provides:       pyxattr = %{version}
 Obsoletes:      pyxattr < %{version}
@@ -54,10 +54,10 @@ sed -i "/#\!\/usr\/bin\/env python/d" xattr/tool.py # Fix executable-bit rpmlint
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_clone -a %{buildroot}%{_bindir}/xattr
 
@@ -76,6 +76,6 @@ export LC_ALL=en_US.utf-8
 %doc README.rst
 %python_alternative %{_bindir}/xattr
 %{python_sitearch}/xattr
-%{python_sitearch}/xattr-*egg-info
+%{python_sitearch}/xattr-%{version}.dist-info
 
 %changelog
