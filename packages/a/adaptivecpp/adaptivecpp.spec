@@ -43,7 +43,7 @@ BuildRequires:  terminfo
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzstd)
-ExcludeArch:    i586
+ExcludeArch:    i586 armv7l armv6l
 
 %description
 AdaptiveCpp is an open implementation of SYCL and C++ standard parallelism
