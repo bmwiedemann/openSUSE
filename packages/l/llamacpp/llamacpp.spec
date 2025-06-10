@@ -17,7 +17,7 @@
 
 
 Name:           llamacpp
-Version:        5516
+Version:        5556
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT
@@ -195,6 +195,7 @@ rm %{buildroot}%{_bindir}/convert_hf_to_gguf.py
 %files devel
 %license LICENSE
 %{_includedir}/llama*
+%{_includedir}/mtmd*
 %{_libdir}/cmake/llama
 %{_libdir}/pkgconfig/llama.pc
 
@@ -206,6 +207,6 @@ rm %{buildroot}%{_bindir}/convert_hf_to_gguf.py
 
 %files -n libmtmd
 %license LICENSE
-%{_libdir}/libmtmd_shared.so
+%{_libdir}/libmtmd.so
 
 %changelog

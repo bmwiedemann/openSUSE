@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat May 31 23:17:14 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to 5556:
+  * mtmd : move helpers to dedicated library
+  * server: fix remove 'image_url'/'input_audio' json-object
+  * llama : add RobertaForSequenceClassification reranker support
+  * ggml: aarch64: Implement SVE F32 kernels for Mamba Sequential
+    Scan Algorithm
+  * llama : add support for jina-reranker-v2
+  * arm64: optimize q4_k_q8_k kernel with i8mm
+  * llama : use llm_build_granite for minicpm
+  * mtmd : drop _shared from libmtmd name, merge helpers into
+    libmtmd
+  * server: allow unclosed thinking tags
+  * llama : use n_swa + n_ubatch cells for SWA cache
+  * convert : fix rwkv bos/eos token
+  * llama : add support for DistilBert
+
+-------------------------------------------------------------------
 Tue May 27 22:51:38 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to 5516:
