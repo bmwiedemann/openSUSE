@@ -110,10 +110,14 @@ qaic: mhi:QAIC_TIMESYNC_PERIODIC
 qaic: pci:v000017CBd0000A080sv*sd*bc*sc*i*
 qaic: pci:v000017CBd0000A100sv*sd*bc*sc*i*
 qaic: pci:v000017CBd0000A110sv*sd*bc*sc*i*
+qcom_q6v5_mss: of:N*T*Cqcom%2Cmsm8226-mss-pil
+qcom_q6v5_mss: of:N*T*Cqcom%2Cmsm8226-mss-pilC*
 qcom_q6v5_mss: of:N*T*Cqcom%2Cmsm8909-mss-pil
 qcom_q6v5_mss: of:N*T*Cqcom%2Cmsm8909-mss-pilC*
 qcom_q6v5_mss: of:N*T*Cqcom%2Cmsm8916-mss-pil
 qcom_q6v5_mss: of:N*T*Cqcom%2Cmsm8916-mss-pilC*
+qcom_q6v5_mss: of:N*T*Cqcom%2Cmsm8926-mss-pil
+qcom_q6v5_mss: of:N*T*Cqcom%2Cmsm8926-mss-pilC*
 qcom_q6v5_mss: of:N*T*Cqcom%2Cmsm8953-mss-pil
 qcom_q6v5_mss: of:N*T*Cqcom%2Cmsm8953-mss-pilC*
 qcom_q6v5_mss: of:N*T*Cqcom%2Cmsm8974-mss-pil
@@ -260,6 +264,8 @@ qcom_q6v5_pas: of:N*T*Cqcom%2Csm8650-cdsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom%2Csm8650-cdsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom%2Csm8650-mpss-pas
 qcom_q6v5_pas: of:N*T*Cqcom%2Csm8650-mpss-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom%2Csm8750-mpss-pas
+qcom_q6v5_pas: of:N*T*Cqcom%2Csm8750-mpss-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom%2Cx1e80100-adsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom%2Cx1e80100-adsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom%2Cx1e80100-cdsp-pas

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun  5 11:12:03 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update aliases
+
+-------------------------------------------------------------------
+Thu Jun  5 10:39:16 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250603 (git commit 3b75d677f898):
+  * qcom: add QUPv3 firmware for QCS8300 platform
+  * qcom: sc8280xp: FW blob updates for X13s
+
+-------------------------------------------------------------------
+Tue May 20 14:24:56 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250520 (git commit 341b9e805613):
+  * Adjust QUPv3 driver name
+
+-------------------------------------------------------------------
 Sat May  3 16:06:02 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250502 (git commit 43dfb5fb64bb):
@@ -5283,7 +5301,6 @@ Wed Nov 24 20:02:38 UTC 2010 - coolo@novell.com
 - update to 20101113 tarball for 2.6.36+ kernel
 
 -------------------------------------------------------------------
-
 Thu Jul  1 17:11:34 UTC 2010 - gregkh@suse.de
 
 - update to the 20100617 tarball, which has lots of updates that

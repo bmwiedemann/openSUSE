@@ -104,4 +104,19 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Add link for SM8350 GPU firmware</comment>
     <requestid>1276106</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>815f43083fbc6f57f342c3512b5c0579</srcmd5>
+    <version>20250603</version>
+    <time>1749538657</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases
+
+- Update to version 20250603 (git commit 3b75d677f898):
+  * qcom: add QUPv3 firmware for QCS8300 platform
+  * qcom: sc8280xp: FW blob updates for X13s
+
+- Update to version 20250520 (git commit 341b9e805613):
+  * Adjust QUPv3 driver name</comment>
+    <requestid>1283309</requestid>
+  </revision>
 </revisionlist>

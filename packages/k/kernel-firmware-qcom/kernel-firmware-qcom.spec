@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 43dfb5fb64bb2707ba4fce1bc0fe835ad644b797
+%define git_version 3b75d677f898fe2aacc7b11763bbcd4732e71ce7
 
 Name:           kernel-firmware-qcom
-Version:        20250502
+Version:        20250603
 Release:        0
 Summary:        Kernel firmware files for Qualcomm device drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250425.tar.gz#/kernel-firmware-tools-20250425.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250605.tar.gz#/kernel-firmware-tools-20250605.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -58,12 +58,16 @@ Supplements:    modalias(of:N*T*Cqcom%2Cmdss_mdp)
 Supplements:    modalias(of:N*T*Cqcom%2Cmdss_mdpC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cmsm8226-adsp-pil)
 Supplements:    modalias(of:N*T*Cqcom%2Cmsm8226-adsp-pilC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cmsm8226-mss-pil)
+Supplements:    modalias(of:N*T*Cqcom%2Cmsm8226-mss-pilC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cmsm8909-mss-pil)
 Supplements:    modalias(of:N*T*Cqcom%2Cmsm8909-mss-pilC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cmsm8916-mss-pil)
 Supplements:    modalias(of:N*T*Cqcom%2Cmsm8916-mss-pilC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cmsm8917-mdp5)
 Supplements:    modalias(of:N*T*Cqcom%2Cmsm8917-mdp5C*)
+Supplements:    modalias(of:N*T*Cqcom%2Cmsm8926-mss-pil)
+Supplements:    modalias(of:N*T*Cqcom%2Cmsm8926-mss-pilC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cmsm8937-mdp5)
 Supplements:    modalias(of:N*T*Cqcom%2Cmsm8937-mdp5C*)
 Supplements:    modalias(of:N*T*Cqcom%2Cmsm8953-adsp-pil)
@@ -302,6 +306,8 @@ Supplements:    modalias(of:N*T*Cqcom%2Csm8650-mdss)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8650-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8650-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8650-mpss-pasC*)
+Supplements:    modalias(of:N*T*Cqcom%2Csm8750-mpss-pas)
+Supplements:    modalias(of:N*T*Cqcom%2Csm8750-mpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cx1e80100-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom%2Cx1e80100-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cx1e80100-cdsp-pas)
