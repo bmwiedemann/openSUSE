@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  5 07:12:18 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.4.7
+  * CVE-2025-5601: Dissection engine crash (boo#1244081).
+- Many more features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.4.7.html
+
+-------------------------------------------------------------------
 Wed Apr 16 20:40:21 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.4.6
