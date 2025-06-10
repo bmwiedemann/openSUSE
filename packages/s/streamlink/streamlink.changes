@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jun  8 11:42:15 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 7.4.0:
+  * Added: encoding keyword to all HTTP request methods to override the response content encoding
+  * Added: debug log message for the available DASH periods (id or index)
+  * Fixed: LookupError when selecting an invalid DASH period
+  * Updated plugins:
+     - blasttv: new plugin
+     - kick: fixed 403 API responses by solving the JS challenge using the webbrowser API
+     - nicolive: fixed plugin metadata by forcing UTF-8 encoding
+     - picarto: fixed validation schema and fixed multi-stream selection
+     - tvp: rewritten and fixed plugin
+     - twitcasting: fixed plugin by switching to new websocket+HLS streams
+     - vtvgo: removed plugin
+  * Tests: fixed py314 test failures
+  * Tests: fixed some HLS tests failing in rare cases
+- enable leap building (works only if we have the correct dependencies in the project)
+- switch over to using pyproject to build the package, as setup.py is deprecated and has an EOL date
+- switch tests over to pytest-asyncio, so we can deprecate trio-typing
+
+-------------------------------------------------------------------
 Tue Apr 29 03:20:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 7.3.0:
