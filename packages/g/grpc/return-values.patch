@@ -10,8 +10,8 @@ Fix some terrible code.
 
 Index: grpc-1.70.1/src/core/lib/transport/call_state.h
 ===================================================================
---- grpc-1.70.1.orig/src/core/lib/transport/call_state.h
-+++ grpc-1.70.1/src/core/lib/transport/call_state.h
+--- grpc-1.70.1.orig/src/core/call/call_state.h
++++ grpc-1.70.1/src/core/call/call_state.h
 @@ -154,6 +154,7 @@ class CallState {
        case ClientToServerPullState::kTerminated:
          return "Terminated";

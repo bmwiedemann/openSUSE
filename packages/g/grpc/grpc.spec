@@ -16,11 +16,11 @@
 #
 
 
-%define lver 46
-%define lverp 1_71
+%define lver 48
+%define lverp 1_73
 %define src_install_dir /usr/src/%name
 Name:           grpc
-Version:        1.71.0
+Version:        1.73.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0

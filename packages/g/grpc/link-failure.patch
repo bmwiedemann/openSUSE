@@ -11,20 +11,20 @@ happened since about 1.63 (last known good 1.62.x)
  CMakeLists.txt |    2 ++
  1 file changed, 2 insertions(+)
 
-Index: grpc-1.70.1/CMakeLists.txt
+Index: grpc-1.73.0/CMakeLists.txt
 ===================================================================
---- grpc-1.70.1.orig/CMakeLists.txt
-+++ grpc-1.70.1/CMakeLists.txt
-@@ -4054,6 +4054,7 @@ add_library(upb_json_lib ${_gRPC_STATIC_
+--- grpc-1.73.0.orig/CMakeLists.txt
++++ grpc-1.73.0/CMakeLists.txt
+@@ -4328,6 +4328,7 @@ add_library(upb_reflection_lib
    third_party/upb/upb/reflection/method_def.c
    third_party/upb/upb/reflection/oneof_def.c
    third_party/upb/upb/reflection/service_def.c
 +  src/core/ext/upb-gen/google/protobuf/descriptor.upb_minitable.c
  )
  
- target_compile_features(upb_json_lib PUBLIC cxx_std_17)
-@@ -4311,6 +4312,7 @@ add_library(upb_textformat_lib ${_gRPC_S
-   third_party/upb/upb/reflection/service_def.c
+ target_compile_features(upb_reflection_lib PUBLIC cxx_std_17)
+@@ -4382,6 +4383,7 @@ endif()
+ add_library(upb_textformat_lib ${_gRPC_STATIC_WIN32}
    third_party/upb/upb/text/encode.c
    third_party/upb/upb/text/internal/encode.c
 +  src/core/ext/upb-gen/google/protobuf/descriptor.upb_minitable.c

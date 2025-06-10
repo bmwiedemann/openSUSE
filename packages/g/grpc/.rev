@@ -664,4 +664,12 @@ fixed in that other package, after which it will trickle down.</comment>
     <comment>- Update to release 1.71</comment>
     <requestid>1256084</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>32c540cd8b89dff377acf6235167f509</srcmd5>
+    <version>1.73.0</version>
+    <time>1749538600</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.73.0:</comment>
+    <requestid>1283952</requestid>
+  </revision>
 </revisionlist>

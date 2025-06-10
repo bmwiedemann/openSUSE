@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Jun  8 16:09:54 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.73.0:
+  * Core: Added GPR_DISABLE_ABSEIL_SYNC (gh#grpc/grpc#39562).
+  * xds_override_host: pass through per-endpoint args when
+    creating subchannels (gh#grpc/grpc#39532).
+  * Expose GRPC_OPENSSL_CLEANUP_TIMEOUT to control shutdown grace
+    period (gh#grpc/grpc#39297).
+  * URI: fix parsing of user_info in proxy settings
+    (gh#grpc/grpc#39004).
+  * EventEngine: Fix busy loop in thread pool when shutting down
+    (gh#grpc/grpc#39258).
+  * Dep: Added a flag to build with openssl instead of boringssl
+    (gh#grpc/grpc#39188).
+  * EventEngine: Cleanup: EventEngine client, listener, and dns
+    experiments are on by default on all platforms
+    (gh#grpc/grpc#39079).
+  * C++: Mark OpenCensus and dependent APIs as deprecated
+    (gh#grpc/grpc#39554).
+- Minor rebase of patches for update:
+  * link-failure.patch.
+  * telemetry.patch.
+- Bump so version in shlib package name to 48, conforming to
+  upstream's.
+
+-------------------------------------------------------------------
+Thu Jun  5 21:46:40 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.72.1
+  * RLS: fix use-after-free from accessing config after LB policy
+    shutdown
+  * EventEngine: Fix busy loop in thread pool when shutting down
+
+-------------------------------------------------------------------
 Tue Mar 25 21:48:57 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.71
