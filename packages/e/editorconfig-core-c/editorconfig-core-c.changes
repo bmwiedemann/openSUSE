@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 23 16:28:56 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Fix intermittent build failure (bsc#1243568): Add
+  0001-Generate-output-directories-before-building-manpages.patch:
+
+-------------------------------------------------------------------
 Mon Jun 17 08:49:42 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.12.9:
