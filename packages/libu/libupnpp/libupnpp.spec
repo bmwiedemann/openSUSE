@@ -19,7 +19,7 @@
 
 %define so_ver  17
 Name:           libupnpp
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Library providing a higher level API over libnpupnp or libupnp
 License:        LGPL-2.1-or-later
@@ -86,7 +86,7 @@ developing applications that use %{name}.
 
 %files devel
 %license COPYING LICENSE
-%{_includedir}/*
+%{_includedir}/libupnpp
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 

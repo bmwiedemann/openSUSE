@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  6 17:35:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.0.3:
+  * Control: directory: fix issue sometimes causing duplicate
+    values in description, only affecting the Python binding
+  * Misc inocuous warnings suppression
+
+-------------------------------------------------------------------
 Fri Apr  4 12:52:31 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.0.2:

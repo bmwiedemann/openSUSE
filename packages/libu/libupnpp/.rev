@@ -90,4 +90,12 @@ Fix compilation with GCC 14
     <comment>update to 1.0.2</comment>
     <requestid>1267155</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>80b8798d184b2da2ee34c9aa6c538502</srcmd5>
+    <version>1.0.3</version>
+    <time>1749539012</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1283736</requestid>
+  </revision>
 </revisionlist>
