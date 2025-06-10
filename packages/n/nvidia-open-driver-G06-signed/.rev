@@ -768,4 +768,12 @@
 - supersedes persistent-nvidia-id-string.patch</comment>
     <requestid>1283674</requestid>
   </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>b542c61cf31f035c31cc2c8c1dd9919f</srcmd5>
+    <version>570.153.02</version>
+    <time>1749539232</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1284041</requestid>
+  </revision>
 </revisionlist>

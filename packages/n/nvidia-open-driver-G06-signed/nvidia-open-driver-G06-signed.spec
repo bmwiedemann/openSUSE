@@ -82,9 +82,6 @@ Source11:       pesign-copy-sources
 Source12:       pesign-spec-macros
 Source14:       group-source-files.pl
 Source15:       kmp-trigger.sh
-%if "%{flavor}" != "cuda"
-Patch0:         persistent-nvidia-id-string.patch
-%endif
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -197,7 +194,7 @@ for flavor in %{flavors_to_build}; do
 	  export SYSSRC=/usr/src/linux
 	fi
 	export SYSOUT=/usr/src/linux-obj/%_target_cpu/$flavor
-        make %{?_smp_mflags} modules
+        make %{?_smp_mflags} modules DATE="date -d @${SOURCE_DATE_EPOCH:-$(date +%s)}" NV_BUILD_HOST=OBS HOSTNAME=OBS
         popd
 done
 

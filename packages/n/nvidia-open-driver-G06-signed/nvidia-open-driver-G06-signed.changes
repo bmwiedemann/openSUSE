@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  9 08:04:22 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop persistent-nvidia-id-string.patch - solved via make params instead
+
+-------------------------------------------------------------------
 Fri Jun  6 12:09:30 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - update CUDA variant to 575.57.08
