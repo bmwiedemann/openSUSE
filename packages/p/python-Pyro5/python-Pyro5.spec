@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-Pyro5
 Version:        5.15
@@ -27,11 +28,11 @@ Source:         https://files.pythonhosted.org/packages/source/P/Pyro5/Pyro5-%{v
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-serpent >= 1.41
-Requires(post): alts
-Requires(postun): alts
 Recommends:     ca-certificates
 Recommends:     python-cloudpickle >= 0.4.0
 Recommends:     python-dill >= 0.2.6
@@ -78,11 +79,9 @@ runs on many different platforms and Python versions.
 %check
 %pytest -m "not network"
 
-%post
-%{python_install_alternative pyro5-check-config pyro5-echoserver pyro5-httpgateway pyro5-ns pyro5-nsc}
-
-%postun
-%python_uninstall_alternative pyro5-check-config
+%pre
+# Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative pyro5-check-config
 
 %files %{python_files}
 %license LICENSE
