@@ -51,6 +51,8 @@ Patch0:         0001-fix-cpu-compatibility.patch
 Patch1:         0001-examples-vm_power_manager-add-missing-header.patch
 # Fix inline error for < gcc14 (<=SLE16)
 Patch2:         0001-always_inline-fix.patch
+# Fix reproducable builds https://bugzilla.opensuse.org/show_bug.cgi?id=1244130
+Patch3:         0001-dts-generate-random-capture_name-per-call.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pyelftools >= 0.22}
 BuildRequires:  %{pythons}

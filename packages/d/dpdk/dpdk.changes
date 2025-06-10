@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  5 14:55:25 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Fix deterministic build [bsc#1244130]
+  [+ 0001-dts-generate-random-capture_name-per-call.patch]
+
+-------------------------------------------------------------------
 Tue Apr  1 09:54:21 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Change 0001-always_inline-fix.patch by replacing the function

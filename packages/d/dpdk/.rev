@@ -740,4 +740,13 @@
     <comment></comment>
     <requestid>1266170</requestid>
   </revision>
+  <revision rev="73" vrev="4">
+    <srcmd5>ca6f0634174a6ce2c833100e27ee877e</srcmd5>
+    <version>24.11.1</version>
+    <time>1749538765</time>
+    <user>anag_factory</user>
+    <comment>- Fix deterministic build [bsc#1244130]
+  [+ 0001-dts-generate-random-capture_name-per-call.patch]</comment>
+    <requestid>1283587</requestid>
+  </revision>
 </revisionlist>
