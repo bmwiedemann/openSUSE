@@ -1,7 +1,7 @@
 #
 # spec file for package python-repoze.lru
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        SUSE-Repoze
 Group:          Development/Languages/Python
 URL:            http://www.repoze.org
 Source:         https://files.pythonhosted.org/packages/source/r/repoze.lru/repoze.lru-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
@@ -40,13 +42,16 @@ Python 2.6, Python 2.7, and Python 3.2.
 %setup -q -n repoze.lru-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
 %license LICENSE.txt
-%{python_sitelib}/*
+%dir %{python_sitelib}/repoze
+%{python_sitelib}/repoze/lru
+%{python_sitelib}/repoze[._]lru-%{version}*-info
+%{python_sitelib}/repoze[._]lru-%{version}*nspkg.pth
 
 %changelog
