@@ -1,7 +1,7 @@
 #
 # spec file for package python-pykickstart
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,29 +18,27 @@
 
 
 %global mod_name pykickstart
-
+%bcond_without libalternatives
 # Python 2 isn't supported...
-%global skip_python2 1
-
 Name:           python-%{mod_name}
 Version:        3.54
 Release:        0
 Summary:        Python module for parsing and writing kickstart files
-Group:          Development/Libraries/Python
 License:        GPL-2.0-only AND MIT
-URL:            http://fedoraproject.org/wiki/pykickstart
+Group:          Development/Libraries/Python
+URL:            https://fedoraproject.org/wiki/pykickstart
 Source0:        https://github.com/pykickstart/pykickstart/releases/download/r%{version}/%{mod_name}-%{version}.tar.gz
-
-BuildArch:      noarch
-
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  python-rpm-macros
-
+Requires:       alts
 Requires:       python-requests
-
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -53,12 +51,12 @@ and a writer to generate kickstart files.
 
 %build
 # Build all the translations and such
-%make_build PYTHON=%{__python3}
+%make_build PYTHON=python3
 
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -74,17 +72,11 @@ and a writer to generate kickstart files.
 %check
 %python_expand PYTHONPATH=.. $python -m unittest discover -v
 
-%post
-%python_install_alternative ksflatten ksflatten.1%{?ext_man}
-%python_install_alternative ksshell ksshell.1%{?ext_man}
-%python_install_alternative ksvalidator ksvalidator.1%{?ext_man}
-%python_install_alternative ksverdiff ksverdiff.1%{?ext_man}
-
-%postun
-%python_uninstall_alternative ksflatten ksflatten.1%{?ext_man}
-%python_uninstall_alternative ksshell ksshell.1%{?ext_man}
-%python_uninstall_alternative ksvalidator ksvalidator.1%{?ext_man}
-%python_uninstall_alternative ksverdiff ksverdiff.1%{?ext_man}
+%pre
+%python_libalternatives_reset_alternative ksflatten
+%python_libalternatives_reset_alternative ksshell
+%python_libalternatives_reset_alternative ksvalidator
+%python_libalternatives_reset_alternative ksverdiff
 
 %files %{python_files}
 %license COPYING

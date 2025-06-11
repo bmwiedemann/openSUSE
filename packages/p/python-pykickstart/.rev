@@ -84,4 +84,12 @@
   * Deprecate network team options on RHEL 10 (rvykydal)</comment>
     <requestid>1171420</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b71f0fe926cf2a923b42941fef14a56f</srcmd5>
+    <version>3.54</version>
+    <time>1749651749</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build and libalternatives</comment>
+    <requestid>1284361</requestid>
+  </revision>
 </revisionlist>
