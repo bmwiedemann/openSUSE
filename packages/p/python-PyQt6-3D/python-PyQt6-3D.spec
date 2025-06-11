@@ -21,13 +21,13 @@
 %define plainpython python
 %{?sle15_python_module_pythons}
 Name:           python-PyQt6-%{qtlib}
-Version:        6.8.0
+Version:        6.9.0
 Release:        0
 Summary:        Python bindings for the Qt 3D framework
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt3d
-Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-%{qtlib}/PyQt6_%{qtlib}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-%{qtlib}/pyqt6_3d-%{version}.tar.gz
 BuildRequires:  %{python_module PyQt6-devel >= 6.2}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pyqt-builder >= 1.17 with %python-pyqt-builder < 2}
@@ -66,7 +66,7 @@ This package provides Qt6 API files for the Eric IDE and the SIP files
 used to generate the Python bindings for %{name}
 
 %prep
-%setup -q -n PyQt6_3D-%{version}
+%setup -q -n pyqt6_3d-%{version}
 
 %build
 %pyqt_build
@@ -91,7 +91,7 @@ $python -c 'from PyQt6 import Qt3DAnimation, Qt3DCore, Qt3DExtras, Qt3DInput, Qt
 %{python_sitearch}/PyQt6/Qt3DInput.*
 %{python_sitearch}/PyQt6/Qt3DLogic.*
 %{python_sitearch}/PyQt6/Qt3DRender.*
-%{python_sitearch}/PyQt6_%{qtlib}-%{version}.dist-info/
+%{python_sitearch}/[Pp]y[Qq]t6_3[Dd]-%{version}.dist-info/
 %exclude %{pyqt6_sipdir}
 
 %files %{python_files devel}
