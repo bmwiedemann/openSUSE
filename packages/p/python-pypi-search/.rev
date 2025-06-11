@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1094645</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d9865c5daf168be6befbe6cc7271bc8e</srcmd5>
+    <version>1.2.1</version>
+    <time>1749651764</time>
+    <user>anag_factory</user>
+    <comment>- Update packaging
+  * run spec-cleaner
+  * convert to pip-based build
+  * convert to libalternatives</comment>
+    <requestid>1284431</requestid>
+  </revision>
 </revisionlist>
