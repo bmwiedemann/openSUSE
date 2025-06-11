@@ -1,7 +1,9 @@
---- radvd-2.19/redhat/systemd/radvd.service.orig	2021-01-29 17:55:55.894674187 +0800
-+++ radvd-2.19/redhat/systemd/radvd.service	2021-01-29 17:56:28.194647566 +0800
-@@ -4,9 +4,8 @@
- Wants=network-online.target
+Index: radvd-2.20/redhat/systemd/radvd.service
+===================================================================
+--- radvd-2.20.orig/redhat/systemd/radvd.service	2022-09-06 17:56:59.000000000 +0200
++++ radvd-2.20/redhat/systemd/radvd.service	2025-06-10 15:06:02.824699836 +0200
+@@ -5,9 +5,8 @@ Wants=network-online.target
+ ConditionPathExists=/etc/radvd.conf
  
  [Service]
 -EnvironmentFile=/etc/sysconfig/radvd

@@ -3,10 +3,11 @@ From: Ludwig Nussel <ludwig.nussel@suse.de>
 Date: Tue, 3 May 2011 15:42:36 +0200
 Subject: [Patch 1/2] run as user radvd by default
 
-diff -rupN radvd-2.2.old/radvd.c radvd-2.2/radvd.c
---- radvd-2.2.old/radvd.c	2014-07-27 18:16:30.000000000 -0700
-+++ radvd-2.2/radvd.c	2014-07-29 19:15:33.711533262 -0700
-@@ -187,6 +187,9 @@ int main(int argc, char *argv[])
+Index: radvd-2.20/radvd.c
+===================================================================
+--- radvd-2.20.orig/radvd.c	2024-12-28 06:27:47.000000000 +0100
++++ radvd-2.20/radvd.c	2025-06-10 15:04:46.675364662 +0200
+@@ -269,6 +269,9 @@ int main(int argc, char *argv[])
  
  	/* TODO: Seems like this chroot'ing should happen *after* daemonizing for
  	 * the sake of the PID file. */
