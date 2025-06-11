@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun 11 05:52:55 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.28.0:
+  * Changes:
+    + Remove hypothesis test dependency
+    + Release the input buffer passed to ImageSurface.create_for_data() when
+      calling Surface.finish() already, not just when the underlying surface
+      is destroyed
+    + Return a PathDataType (int subtype) instead of int with Path.__iter__()
+    + Emit a DeprecationWarning in case ImageSurface.get_data() is called on
+      an already finished surface.
+    + Emit a DeprecationWarning for the undocumented num_glyphs parameter in
+      Context.glyph_extents(), Context.glyph_path(), Context.show_glyphs(),
+      ScaledFont.glyph_extents()
+  * Fixes:
+    + Remove the executable bit from cairo/__init__.py
+    + Remove usage of removed typing.ByteString to fix compatibility with
+      Python 3.14.0a1
+    + Drop support for Python 3.8
+    + Port PEP517/wheel build from setuptools to meson-python.
+    + meson: install the package metadata to .dist-info/METADATA instead
+      of .egg-info
+
+-------------------------------------------------------------------
 Mon Jul 29 14:49:40 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.26.1

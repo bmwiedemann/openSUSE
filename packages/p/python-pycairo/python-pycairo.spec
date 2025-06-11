@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycairo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,16 @@
 %{?sle15_python_module_pythons}
 %define         oldpython python
 Name:           python-pycairo
-Version:        1.26.1
+Version:        1.28.0
 Release:        0
 Summary:        Python Bindings for Cairo
 License:        LGPL-2.1-or-later OR MPL-1.1
 URL:            https://github.com/pygobject/pycairo
 Source:         %{url}/releases/download/v%{version}/pycairo-%{version}.tar.gz
-
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module meson-python}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  cairo-devel >= 1.15.10
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -74,28 +74,32 @@ packages that depend on Pycairo.
 %autosetup -n pycairo-%{version} -p1
 
 %build
-%python_build
+%{python_expand \
+dir="build.$python"
+mkdir $dir
+cat << EOF > $dir/native-file.ini
+[binaries]
+python = '$python'
+EOF
+meson setup . $dir -Dbuildtype=release -Db_ndebug=if-release -Db_vscrt=md -Dtests=false -Dwheel=false --prefix=/usr --native-file=$dir/native-file.ini
+ninja -C $dir
+}
 
 %install
-%python_install
-# Incorrectly installed by a python38-setuptools vendored distutils
-# which does not play well with the distro patched python38.
-# Later flavors installed the correct files into lib64 as well
-if [ "%{_libdir}" != "%{_prefix}/lib" -a -d %{buildroot}%{_prefix}/lib/pkgconfig ]; then
-  rm -r  %{buildroot}%{_prefix}/lib/pkgconfig
-fi
+%python_expand meson install -C build.$python --destdir %{buildroot}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# this is not the deprecated setuptools test call but a custom setup compiling stuff and running pytest
-%python_exec setup.py test
+mv cairo cairo-do-not-import-from
+%pytest_arch
+mv cairo-do-not-import-from cairo
 
 %files %{python_files}
 %doc NEWS docs
 %license COPYING COPYING-LGPL-2.1 COPYING-MPL-1.1
 %{python_sitearch}/cairo/
 %exclude %{python_sitearch}/cairo/include
-%{python_sitearch}/pycairo-*.egg-info
+%{python_sitearch}/pycairo-%{version}.dist-info
 
 %files %{python_files devel}
 %license COPYING COPYING-LGPL-2.1 COPYING-MPL-1.1
