@@ -71,4 +71,15 @@
     <comment></comment>
     <requestid>1279745</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>48edcf8fc4298716a7b4bc80ed44b847</srcmd5>
+    <version>11.2</version>
+    <time>1749651918</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 11.2 (boo#1244411):
+  + This version updates the matrix-sdk-crypto dependency to
+    include a fix for a high severity security issue
+    (CVE-2025-48937). (forwarded request 1284617 from iznogood)</comment>
+    <requestid>1284681</requestid>
+  </revision>
 </revisionlist>

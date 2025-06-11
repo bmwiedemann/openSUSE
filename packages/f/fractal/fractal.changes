@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 10 16:59:41 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 11.2 (boo#1244411):
+  + This version updates the matrix-sdk-crypto dependency to
+    include a fix for a high severity security issue
+    (CVE-2025-48937).
+
+-------------------------------------------------------------------
 Thu May 15 12:02:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 11.1:

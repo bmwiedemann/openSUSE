@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/World/fractal.git</param>
     <!-- FIXME FIXME enable update of vendors on next change -->
-    <param name="revision">refs/tags/11.1</param>
+    <param name="revision">refs/tags/11.2</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <!--
     <param name="changesgenerate">enable</param>
