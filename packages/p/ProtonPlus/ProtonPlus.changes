@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 10 15:16:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.5.2:
+  * Fixed Kron4ek Proton downloads
+  * Fix ProtonDB logo not appearing with light theme
+  * Fix shortcut button
+  * Allow to unselect a game by clicking on it
+  * Improve game library UX
+
+-------------------------------------------------------------------
 Mon Jun  9 12:27:33 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.5.1+1:

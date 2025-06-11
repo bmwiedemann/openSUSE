@@ -144,4 +144,17 @@
   * Fixed Kron4ek Proton builds (forwarded request 1284174 from rrahl0)</comment>
     <requestid>1284175</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e76744a0cf13161eb8a8eb86ca03aba2</srcmd5>
+    <version>0.5.2</version>
+    <time>1749651839</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5.2:
+  * Fixed Kron4ek Proton downloads
+  * Fix ProtonDB logo not appearing with light theme
+  * Fix shortcut button
+  * Allow to unselect a game by clicking on it
+  * Improve game library UX (forwarded request 1284532 from rrahl0)</comment>
+    <requestid>1284533</requestid>
+  </revision>
 </revisionlist>
