@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pypubsub
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,22 @@
 
 
 %global pypi_name pypubsub
-%global src_name Pypubsub
-%define skip_python2 1
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
 Name:           python-%{pypi_name}
 Version:        4.0.3
 Release:        0
 Summary:        Python Publish-Subscribe Package
-Group:          Development/Python
 License:        BSD-2-Clause
+# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
+Group:          Development/Python
 URL:            https://github.com/schollii/pypubsub
 Source:         https://github.com/schollii/%{pypi_name}/archive/refs/tags/v%{version}.tar.gz
-
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -53,10 +48,10 @@ messages in larger applications.
 %setup -q -n %{pypi_name}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -67,8 +62,7 @@ popd
 %files %{python_files}
 %doc README.rst src/pubsub/RELEASE_NOTES.txt
 %license src/pubsub/LICENSE_BSD_Simple.txt
-%dir %{python_sitelib}/%{src_name}-%{version}-py%{python_version}.egg-info
 %{python_sitelib}/pubsub
-%{python_sitelib}/%{src_name}-%{version}*-info
+%{python_sitelib}/[Pp]ypubsub-%{version}*-info
 
 %changelog

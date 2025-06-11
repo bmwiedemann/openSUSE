@@ -7,4 +7,12 @@
     <comment>The original maintainer says: I want to maintain python-pypubsub in Factory and would like to use devel:languages:python as the devel/feeder project.</comment>
     <requestid>934878</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>166660134d40d06782e256a22f5eb8bf</srcmd5>
+    <version>4.0.3</version>
+    <time>1749651777</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1284435</requestid>
+  </revision>
 </revisionlist>
