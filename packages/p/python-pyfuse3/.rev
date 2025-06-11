@@ -143,4 +143,13 @@
     annotations.</comment>
     <requestid>1198048</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>5ea185f6dcf424dca43fed6ad51a2265</srcmd5>
+    <version>3.4.0</version>
+    <time>1749651950</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Explicitly list files and directories in %files.</comment>
+    <requestid>1284635</requestid>
+  </revision>
 </revisionlist>
