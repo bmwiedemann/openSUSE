@@ -26,7 +26,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/mk-fg/python-pulse-control
 Source:         https://files.pythonhosted.org/packages/source/p/pulsectl/pulsectl-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
@@ -53,10 +55,10 @@ play, player-like client).
 %setup -q -n pulsectl-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
@@ -68,6 +70,6 @@ play, player-like client).
 %license COPYING
 %doc CHANGES.rst README.rst
 %{python_sitelib}/pulsectl
-%{python_sitelib}/pulsectl-%{version}*-info
+%{python_sitelib}/pulsectl-%{version}.dist-info
 
 %changelog
