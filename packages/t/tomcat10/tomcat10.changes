@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 10 12:56:25 UTC 2025 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Hardening permissions (bsc#1242722)
+
+-------------------------------------------------------------------
 Fri May  2 14:55:24 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Make conflicts and provides more generic

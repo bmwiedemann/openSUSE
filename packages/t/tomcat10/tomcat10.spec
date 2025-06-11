@@ -737,22 +737,22 @@ fi
 
 %files
 %doc {LICENSE,NOTICE,RELEASE*}
-%attr(0755,root,root) %{_bindir}/%{app_name}-digest
-%attr(0755,root,root) %{_bindir}/%{app_name}-tool-wrapper
-%attr(0755,root,root) %{_sbindir}/%{app_name}
-%attr(0644,root,root) %{_unitdir}/%{app_name}.service
+%{_bindir}/%{app_name}-digest
+%{_bindir}/%{app_name}-tool-wrapper
+%{_sbindir}/%{app_name}
+%{_unitdir}/%{app_name}.service
 %{_sbindir}/rc%{app_name}
-%attr(0644,root,root) %{_unitdir}/%{app_name}@.service
-%attr(0755,root,root) %dir %{_libexecdir}/%{app_name}
-%attr(0755,root,root) %dir %{_localstatedir}/lib/%{app_name}s
-%attr(0755,root,root) %{_libexecdir}/%{app_name}/functions
-%attr(0755,root,root) %{_libexecdir}/%{app_name}/preamble
-%attr(0755,root,root) %{_libexecdir}/%{app_name}/server
+%{_unitdir}/%{app_name}@.service
+%dir %{_libexecdir}/%{app_name}
+%dir %{_localstatedir}/lib/%{app_name}s
+%{_libexecdir}/%{app_name}/functions
+%{_libexecdir}/%{app_name}/preamble
+%{_libexecdir}/%{app_name}/server
 #bnc#565901
 %{bindir}/catalina.sh
-%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/logrotate.d/%{app_name}10
-%attr(0755,root,tomcat) %dir %{basedir}
-%attr(0755,root,tomcat) %dir %{confdir}
+%config(noreplace) %{_sysconfdir}/logrotate.d/%{app_name}10
+%dir %{basedir}
+%dir %{confdir}
 %attr(0775,root,tomcat) %dir %{appdir}
 %attr(0770,tomcat,tomcat) %dir %{logdir}
 %attr(0660,tomcat,tomcat) %{logdir}/catalina.out
@@ -765,29 +765,29 @@ fi
 %attr(0775,root,tomcat) %dir %{tomcatappdir}
 
 %{confdir}/Catalina
-%attr(0755,root,tomcat) %dir %{confdir}/conf.d
-%attr(0644,root,tomcat) %config(noreplace) %{confdir}/conf.d/README
-%attr(0644,root,tomcat) %config(noreplace) %{confdir}/%{app_name}.conf
-%attr(0644,root,tomcat) %config(noreplace) %{confdir}/*.policy
-%attr(0644,root,tomcat) %config(noreplace) %{confdir}/*.properties
-%attr(0644,root,tomcat) %config(noreplace) %{confdir}/context.xml
-%attr(0644,root,tomcat) %config(noreplace) %{confdir}/server.xml
+%dir %{confdir}/conf.d
+%config(noreplace) %{confdir}/conf.d/README
+%config(noreplace) %{confdir}/%{app_name}.conf
+%config(noreplace) %{confdir}/*.policy
+%config(noreplace) %{confdir}/*.properties
+%config(noreplace) %{confdir}/context.xml
+%config(noreplace) %{confdir}/server.xml
 # keep tomcat-users.xml readable only by root and tomcat group
 %attr(0640,root,tomcat) %config(noreplace) %{confdir}/tomcat-users.xml
-%attr(0644,root,tomcat) %config(noreplace) %{confdir}/web.xml
-%attr(0644,root,tomcat) %config(noreplace) %{confdir}/jaspic-providers.xml
-%attr(0755,root,tomcat) %dir %{homedir}
-%attr(0644,root,tomcat) %{bindir}/bootstrap.jar
-%attr(0644,root,tomcat) %{bindir}/catalina-tasks.xml
+%config(noreplace) %{confdir}/web.xml
+%config(noreplace) %{confdir}/jaspic-providers.xml
+%dir %{homedir}
+%{bindir}/bootstrap.jar
+%{bindir}/catalina-tasks.xml
 %{homedir}/lib
 %{homedir}/temp
 %{homedir}/webapps
 %{homedir}/work
 %{homedir}/logs
 %{homedir}/conf
-%attr(0644,root,tomcat) %{_fillupdir}/sysconfig.%{app_name}
-%attr(0644,root,tomcat) %{confdir}/allowLinking.xslt
-%attr(0644,root,tomcat) %{confdir}/valve.xslt
+%{_fillupdir}/sysconfig.%{app_name}
+%{confdir}/allowLinking.xslt
+%{confdir}/valve.xslt
 
 %files admin-webapps
 %defattr(0644,root,tomcat,0755)
@@ -852,7 +852,7 @@ fi
 
 %files jsvc
 %defattr(755,root,root,0755)
-%attr(0644,root,root) %{_unitdir}/%{app_name}-jsvc.service
+%{_unitdir}/%{app_name}-jsvc.service
 %{_sbindir}/rc%{app_name}-jsvc
 
 %changelog
