@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-phply
 Version:        1.2.6
 Release:        0
@@ -29,11 +30,11 @@ BuildRequires:  %{python_module ply}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-ply
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,13 +57,9 @@ phply is a parser for the PHP programming language written using PLY, a Lex/YACC
 %check
 %pytest
 
-%post
-%python_install_alternative phpparse
-%python_install_alternative phplex
-
-%postun
-%python_uninstall_alternative phpparse
-%python_uninstall_alternative phplex
+%pre
+%python_libalternatives_reset_alternative phpparse
+%python_libalternatives_reset_alternative phplex
 
 %files %{python_files}
 %license LICENSE
