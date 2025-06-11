@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-glean-parser
 Version:        6.3.0
 Release:        0
@@ -29,8 +30,10 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-Jinja2 >= 2.10.1
 Requires:       python-MarkupSafe >= 1.1.1
 Requires:       python-PyYAML >= 5.3.1
@@ -39,8 +42,6 @@ Requires:       python-click >= 7
 Requires:       python-diskcache >= 4
 Requires:       python-jsonschema >= 3.0.2
 Requires:       python-yamllint >= 1.18.0
-Requires(post): alts
-Requires(postun): alts
 Suggests:       python-iso8601 >= 0.1.10
 BuildArch:      noarch
 # SECTION test requirements
@@ -73,11 +74,8 @@ Parser tools for Mozilla's Glean telemetry
 %check
 %pytest
 
-%post
-%python_install_alternative glean_parser
-
-%postun
-%python_uninstall_alternative glean_parser
+%pre
+%python_libalternatives_reset_alternative glean_parser
 
 %files %{python_files}
 %python_alternative %{_bindir}/glean_parser
