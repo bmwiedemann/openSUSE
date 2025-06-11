@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  9 19:16:37 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Allow lowercase distinfo due to new pyqt-builder following PEP 639
+
+-------------------------------------------------------------------
 Thu Jan 25 20:49:31 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Enable SLE15 python module for more modern python in 15.x

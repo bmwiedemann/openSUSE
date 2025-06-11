@@ -109,4 +109,12 @@
     <comment></comment>
     <requestid>1141591</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>6c018ecc22d0faa9eb30526a2756debb</srcmd5>
+    <version>5.15.5</version>
+    <time>1749651690</time>
+    <user>anag_factory</user>
+    <comment>lowercase distinfo</comment>
+    <requestid>1284354</requestid>
+  </revision>
 </revisionlist>
