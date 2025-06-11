@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 10 12:22:14 UTC 2025 - Nathan Cutler <ncutler@suse.com>
+
+- Apply "use_cxx17_standard.patch" on 16.0, which is now shipping
+  ICU 77 (bsc#1244320) 
+
+-------------------------------------------------------------------
 Mon Jun 10 22:26:15 UTC 2024 - João Pedro Blos Lopes <jpblopes@gmail.com>
 
 - Fix build with ICU >= 75.

@@ -1,7 +1,7 @@
 #
 # spec file for package maim
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 # We must use the C++17 standard if we're using ICU >= 75
 Patch0:         use_cxx17_standard.patch
 %endif
