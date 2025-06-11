@@ -1176,6 +1176,7 @@ unsorted:
   - aws-crt-cpp-bin 
   - aws-crt-cpp-devel 
   - aws-efs-utils 
+  - aws-lc-benchmark 
   - aws-nitro-enclaves-binaryblobs-upstream 
   - aws-nitro-enclaves-cli 
   - aws-sdk-java 
@@ -2784,9 +2785,7 @@ unsorted:
   - cross-bpf-gcc15 
   - cross-epiphany-binutils 
   - cross-hppa-binutils 
-  - cross-hppa-gcc13 
   - cross-hppa-gcc13-bootstrap 
-  - cross-hppa-gcc13-icecream-backend 
   - cross-hppa-gcc14 
   - cross-hppa-gcc14-bootstrap 
   - cross-hppa-gcc15 
@@ -11908,7 +11907,7 @@ unsorted:
   - libaspell15-32bit 
   - libass-devel 
   - libass9-32bit 
-  - libassimp5 
+  - libassimp6 
   - libassuan-devel 
   - libassuan9-32bit 
   - libastro1 
@@ -12740,7 +12739,7 @@ unsorted:
   - libdisplay-info-devel 
   - libdisplaydevice0_0_0 
   - libdjvulibre-devel 
-  - libdlib19_24_9 
+  - libdlib20_0_0 
   - libdlm 
   - libdlm-devel 
   - libdlm3 
@@ -15804,6 +15803,7 @@ unsorted:
   - librepute1 
   - librespeed-cli 
   - libresprite 
+  - libressl 
   - libressl-devel 
   - libressl-devel-doc 
   - librest-0_7-0 
@@ -16317,7 +16317,7 @@ unsorted:
   - libtesseract5 
   - libtesseract5-x86-64-v3 
   - libtestshade1_13 
-  - libtestsweeper1 
+  - libtestsweeper2 
   - libtevent-devel 
   - libtexlua53-5 
   - libtexluajit2 
@@ -20469,6 +20469,7 @@ unsorted:
   - osslsigncode 
   - ossp-uuid 
   - osv-scanner 
+  - otf2bdf 
   - otpclient 
   - otter-browser 
   - otter-browser-lang 
@@ -20936,7 +20937,6 @@ unsorted:
   - pcsc-reflex60 
   - pcsc-tools 
   - pcsc-towitoko-devel 
-  - pcsx2 
   - pdf2djvu 
   - pdf2djvu-lang 
   - pdf2svg 
@@ -27153,7 +27153,6 @@ unsorted:
   - python311-treq 
   - python311-tri.struct 
   - python311-trio 
-  - python311-trio-typing 
   - python311-trio-websocket 
   - python311-trove-classifiers 
   - python311-trustme 
@@ -30914,7 +30913,6 @@ unsorted:
   - python312-treq 
   - python312-tri.struct 
   - python312-trio 
-  - python312-trio-typing 
   - python312-trio-websocket 
   - python312-trove-classifiers 
   - python312-trustme 
@@ -34601,7 +34599,6 @@ unsorted:
   - python313-treq 
   - python313-tri.struct 
   - python313-trio 
-  - python313-trio-typing 
   - python313-trio-websocket 
   - python313-trove-classifiers 
   - python313-trustme 
