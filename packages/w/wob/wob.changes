@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun  4 14:04:51 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to 0.16:
+  - Added
+    * Install systemd unit files
+    * Implement per output configuration & fractional scaling
+  - Removed
+    * Remove output_mode configuation option - wob is now always shown on focused output only
+  - Changed
+    * Do not exit on invalid input (issue warn only)
+- Drop wob.service and wob.socket now provided upstream
+- Improve systemd service packaging
+- Add %check section to run tests
+- Update wob.keyring
+
+-------------------------------------------------------------------
 Sun Sep 17 08:33:37 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to 0.15.1:
