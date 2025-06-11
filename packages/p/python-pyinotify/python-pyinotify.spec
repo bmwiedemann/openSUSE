@@ -34,7 +34,9 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyinotify/pyino
 Source1:        pyinotify
 # PATCH-FIX_UPSTREAM https://github.com/seb-m/pyinotify/pull/205
 Patch0:         make_asyncore_support_optional.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 %if %{with libalternatives}
 Requires:       alts
@@ -70,10 +72,10 @@ sed -i "s|#!%{_bindir}/env python|#!%__python2|" python2/examples/*py
 sed -i "s|#!%{_bindir}/env python|#!%__python3|" python3/examples/*py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 install -D -m 0755 %{SOURCE1} %{buildroot}%{_bindir}/pyinotify
 %python_clone -a %{buildroot}%{_bindir}/pyinotify
 
@@ -94,7 +96,7 @@ install -D -m 0755 %{SOURCE1} %{buildroot}%{_bindir}/pyinotify
 %doc python3/examples
 %python_alternative %{_bindir}/pyinotify
 %{python_sitelib}/pyinotify.py
-%{python_sitelib}/pyinotify-%{version}*.egg-info
-%pycache_only %{python_sitelib}/__pycache__
+%pycache_only %{python_sitelib}/__pycache__/pyinotify.*.pyc
+%{python_sitelib}/pyinotify-%{version}.dist-info
 
 %changelog
