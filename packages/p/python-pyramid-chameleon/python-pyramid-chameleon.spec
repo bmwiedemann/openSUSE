@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyramid-chameleon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyramid-chameleon
 Version:        0.3
 Release:        0
@@ -28,12 +27,14 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyramid_chamele
 Patch0:         pyramid2.patch
 BuildRequires:  %{python_module Chameleon}
 BuildRequires:  %{python_module hupper}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module plaster-pastedeploy}
 BuildRequires:  %{python_module plaster}
 BuildRequires:  %{python_module pyramid >= 1.4}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module virtualenv}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Chameleon
@@ -52,10 +53,10 @@ These are bindings for the `Chameleon templating system
 rm -rf docs/
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +66,7 @@ rm -rf docs/
 %files %{python_files}
 %doc CHANGES.txt README.rst
 %license LICENSE.txt COPYRIGHT.txt CONTRIBUTORS.txt
-%{python_sitelib}/*
+%{python_sitelib}/pyramid[-_]chameleon
+%{python_sitelib}/pyramid[-_]chameleon-%{version}*-info
 
 %changelog
