@@ -7,4 +7,14 @@
     <comment>New subpackage for PyQt6</comment>
     <requestid>1236049</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>19ee791149b2b84e8278c8688199021b</srcmd5>
+    <version>6.9.0</version>
+    <time>1749651673</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.9.0
+  - Added support for Qt v6.9.
+</comment>
+    <requestid>1284335</requestid>
+  </revision>
 </revisionlist>
