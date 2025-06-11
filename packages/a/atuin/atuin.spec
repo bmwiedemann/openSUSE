@@ -17,13 +17,13 @@
 
 
 Name:           atuin
-Version:        18.5.0
+Version:        18.6.0~beta1
 Release:        0
 Summary:        Magical shell history
 License:        MIT
 Group:          System/Console
 URL:            https://github.com/ellie/atuin
-Source0:        https://github.com/ellie/atuin/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
@@ -65,6 +65,8 @@ Zsh command line completion support for %{name}.
 
 %prep
 %autosetup -a1 -p1
+# Git does not resolve symlinks
+cp -v CONTRIBUTORS crates/atuin/src/command/CONTRIBUTORS
 
 %build
 # Omit feature "check-update" and disable defaults

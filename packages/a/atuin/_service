@@ -1,12 +1,16 @@
 <services>
-  <service mode="manual" name="download_files" />
   <service name="cargo_vendor" mode="manual">
-    <param name="srctar">atuin-*.tar.gz</param>
+    <param name="src">https://github.com/atuinsh/atuin</param>
     <param name="update">true</param>
+    <param name="revision">18.6.0-beta.1</param>
+    <param name="versionrewriteregex">^v?(.*)-(beta).(\d+)</param>
+    <param name="versionrewritepattern">${1}~${2}${3}</param>
+    <param name="changesgenerate">true</param>
+    <param name="changesemail">uncomfyhalomacro@opensuse.org</param>
+    <param name="changesauthor">Soc Virnyl Estela</param>
     <!-- param name="i-accept-the-risk">RUSTSEC-2023-0071</param -->
     <!-- param name="i-accept-the-risk">RUSTSEC-2022-0093</param -->
     <!-- param name="i-accept-the-risk">RUSTSEC-2021-0041</param -->
   </service>
-  <service name="cargo_audit" mode="manual" />
 </services>
 

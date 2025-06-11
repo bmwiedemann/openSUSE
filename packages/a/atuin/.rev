@@ -640,4 +640,23 @@
 </comment>
     <requestid>1274681</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6d3407c55714904294a7d7285a595b84</srcmd5>
+    <version>18.6.0~beta1</version>
+    <time>1749651870</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 18.6.0~beta1:
+  * chore(release): prepare for release 18.6.0-beta.1 (#2723)
+  * Revert &quot;feat(zsh): try to go to the position in zsh's history (#1469)&quot; (#2715)
+  * feat(stats): add jj to default common subcommands (#2708)
+  * chore(deps): bump fs-err from 2.11.0 to 3.1.0 (#2709)
+  * chore: fix typos (#2668)
+  * feat: delete duplicate history (#2697)
+  * Update dependencies (#2695)
+  * chore(deps): bump debian (#2699)
+  * chore(deps): bump tokio from 1.44.1 to 1.44.2 in the cargo group (#2681)
+  * ci: use native github arm64 runner (#2690)
+</comment>
+    <requestid>1284587</requestid>
+  </revision>
 </revisionlist>
