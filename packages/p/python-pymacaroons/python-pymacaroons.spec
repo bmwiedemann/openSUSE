@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymacaroons
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,9 +31,11 @@ BuildRequires:  %{python_module PyNaCl < 2.0}
 BuildRequires:  %{python_module PyNaCl >= 1.1.2}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.8.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyNaCl < 2.0
@@ -64,10 +66,10 @@ This is a Python implementation of Macaroons.
 rm -f tests/property_tests/macaroon_property_tests.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -76,6 +78,7 @@ rm -f tests/property_tests/macaroon_property_tests.py
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/pymacaroons
+%{python_sitelib}/pymacaroons-%{version}*-info
 
 %changelog
