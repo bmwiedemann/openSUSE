@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 09 07:50:06 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 4.9.1+1:
+  * Mention how to get debugging prints
+  * Release v4.9.1
+  * tcp: Fix starting the linger2 timer on socket shutdown
+  * tcp: Reduce linger time to two minutes
+  * tcp: on input during init, reset TCPT_KEEP to TCPTV_KEEP_INIT
+  * tcp: on input, reset TCPT_KEEP to TCPTV_KEEP_IDLE rather than TCPTV_KEEPINTVL
+  * Modified util.c to handle WSA function return values closer to specification. Explicit checks for INVALID_SOCKET and SOCKET_ERROR are made.
+  * apple: Fix getting IPv4 DNS server address when IPv4 and IPv4 are interleaved
+  * Do not link tests with libslirp.map
+
+-------------------------------------------------------------------
 Mon Feb 10 15:46:24 UTC 2025 - pgajdos@suse.com
 
 - Update to version 4.9.0+5:

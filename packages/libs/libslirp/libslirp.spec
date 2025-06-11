@@ -19,7 +19,7 @@
 %define libname libslirp0
 
 Name:           libslirp
-Version:        4.9.0+5
+Version:        4.9.1+1
 Release:        0
 Summary:        A general purpose TCP-IP emulator
 License:        MIT
