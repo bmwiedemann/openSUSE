@@ -24,4 +24,13 @@
     <comment>- add python-rpm-macros dependency</comment>
     <requestid>945682</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>1966bbcec9b731be80e70544ba6d6491</srcmd5>
+    <version>0.3.2</version>
+    <time>1749651973</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1284657</requestid>
+  </revision>
 </revisionlist>
