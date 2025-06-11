@@ -17,21 +17,21 @@
 
 
 Name:           epy
-Version:        2022.12.11+git.1686460830.6b0e9fe
+Version:        2025.5.27+git.1749648520.0d836a6
 Release:        0
 Summary:        CLI ebook reader
 License:        GPL-3.0-only
-URL:            https://github.com/wustho/epy
+URL:            https://git.sr.ht/~mcepl/epy
 # Source:         https://files.pythonhosted.org/packages/source/e/epy-reader/epy-reader-%%{version}.tar.gz#/epy-%%{version}.tar.gz
 Source:         epy-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  python3-curses
 BuildRequires:  python3-pip
-BuildRequires:  python3-poetry-core
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
 Requires:       python3-curses
+Requires:       python3-standard-imghdr
 Suggests:       dictd
 Suggests:       mimic
 Suggests:       sdcv
@@ -80,7 +80,7 @@ pytest -v tests
 %doc README.md
 %license LICENSE
 %{_bindir}/epy
-%{python3_sitelib}/epy_reader-2023.6.11.dist-info
+%{python3_sitelib}/epy_reader-2025.5.27.dist-info
 %{python3_sitelib}/epy_reader
 
 %changelog

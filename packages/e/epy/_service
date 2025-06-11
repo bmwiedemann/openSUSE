@@ -1,13 +1,13 @@
 <services>
-  <service name="obs_scm" mode="manual">
-    <param name="versionprefix">2022.12.11+git</param>
-    <param name="url">https://github.com/wustho/epy.git</param>
+  <service name="tar_scm" mode="manual">
+    <param name="versionprefix">2025.5.27+git</param>
+    <param name="url">https://git.sr.ht/~mcepl/epy</param>
+    <param name="revision">devel</param>
     <param name="scm">git</param>
     <param name="exclude">.git*</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">mcepl@cepl.eu</param>
   </service>
-  <service mode="manual" name="tar" />
   <service mode="manual" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>

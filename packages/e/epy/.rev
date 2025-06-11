@@ -176,4 +176,24 @@
 </comment>
     <requestid>1253877</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>242f18a3c602b4c33088ef481dc39b4d</srcmd5>
+    <version>2025.5.27+git.1749648520.0d836a6</version>
+    <time>1749652104</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2025.5.27+git.1749648520.0d836a6:
+  * chore: switch from poetry to ordinary setup (using setuptools)
+  * feat: make it configurable to use colors or be terminal neutral
+  * fix: remove all typing errors
+  * chore: move getter for default config directory out of class
+  * fix: handle the internal structure better, take care of multiprocessing
+  * ci: centralize DEBUG variable for debugging
+  * chore: switch DEBUG to True
+  * ci: simple .builds.yml for Sourcehut CI
+  * Use os.path.expanduser.
+  * Use contextlib.connect context manager instead of playing with try manually.
+
+- Change package name to epy as it better reflects the acutal package name on GitHub</comment>
+    <requestid>1284867</requestid>
+  </revision>
 </revisionlist>

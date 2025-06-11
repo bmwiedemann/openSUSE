@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 11 13:31:52 UTC 2025 - mcepl@cepl.eu
+
+- Update to version 2025.5.27+git.1749648520.0d836a6:
+  * chore: switch from poetry to ordinary setup (using setuptools)
+  * feat: make it configurable to use colors or be terminal neutral
+  * fix: remove all typing errors
+  * chore: move getter for default config directory out of class
+  * fix: handle the internal structure better, take care of multiprocessing
+  * ci: centralize DEBUG variable for debugging
+  * chore: switch DEBUG to True
+  * ci: simple .builds.yml for Sourcehut CI
+  * Use os.path.expanduser.
+  * Use contextlib.connect context manager instead of playing with try manually.
+
+-------------------------------------------------------------------
 Mon Mar 17 16:30:20 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Don't make the build specific to some particular version of
@@ -176,7 +191,7 @@ Sat Nov 27 10:19:32 UTC 2021 - mcepl@cepl.eu
 Wed Jul 28 23:20:26 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
 
 - Simplify spec, remove differing python versions from initial package generation
-- Change package name to epy as it better reflects the acutal package name on GitHub 
+- Change package name to epy as it better reflects the acutal package name on GitHub
 
 -------------------------------------------------------------------
 Wed Jul 28 22:33:02 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
