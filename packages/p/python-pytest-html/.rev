@@ -291,4 +291,14 @@
     <comment></comment>
     <requestid>1228572</requestid>
   </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>899ce898b075468e65750d06d9d440d0</srcmd5>
+    <version>4.1.1</version>
+    <time>1749652036</time>
+    <user>anag_factory</user>
+    <comment>- refresh node modules
+  * update brace-expansion to 1.1.12 and 2.0.2
+  CVE-2025-5889, gh#juliangruber/brace-expansion#65, bsc#1244343</comment>
+    <requestid>1284756</requestid>
+  </revision>
 </revisionlist>

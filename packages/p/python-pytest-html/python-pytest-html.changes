@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 11 08:31:22 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- refresh node modules
+  * update brace-expansion to 1.1.12 and 2.0.2
+  CVE-2025-5889, gh#juliangruber/brace-expansion#65, bsc#1244343
+
+-------------------------------------------------------------------
 Thu Dec  5 16:25:45 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - refresh node modules

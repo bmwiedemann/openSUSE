@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-html
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,7 +58,7 @@ A plugin for pytest that generates a HTML report for test results.
 
 %prep
 %autosetup -p1 -n pytest_html-%{version}
-rm package-lock.json
+cp %{SOURCE10} .
 local-npm-registry %{_sourcedir} install --also=dev
 sed -i '/npm ci/d' scripts/npm.py
 
