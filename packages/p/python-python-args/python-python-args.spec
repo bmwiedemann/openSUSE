@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-args
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-python-args
 Version:        1.0.2
 Release:        0
@@ -26,8 +24,10 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jyveapp/python-args
 Source:         https://files.pythonhosted.org/packages/source/p/python-args/python-args-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -40,10 +40,10 @@ Python argument design patterns in a composable interface.
 %setup -q -n python-args-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -52,6 +52,7 @@ Python argument design patterns in a composable interface.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/arg
+%{python_sitelib}/python[-_]args-%{version}*-info
 
 %changelog

@@ -7,4 +7,12 @@
     <comment>dependency of django-action-framework</comment>
     <requestid>849425</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>05d0d1e005ee19266cedf6e90b3d2ec8</srcmd5>
+    <version>1.0.2</version>
+    <time>1749651767</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1284458</requestid>
+  </revision>
 </revisionlist>
