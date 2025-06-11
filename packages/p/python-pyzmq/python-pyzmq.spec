@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyzmq
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,9 @@ Source1:        https://raw.githubusercontent.com/zeromq/pyzmq/v%{version}/pytes
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  zeromq-devel
@@ -105,10 +107,10 @@ no_libzmq_extension = True
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %if %{with tests}
@@ -135,7 +137,7 @@ popd
 %license LICENSE.BSD LICENSE.LESSER
 %doc AUTHORS.md README.md examples
 %{python_sitearch}/zmq
-%{python_sitearch}/pyzmq-%{version}-py*.egg-info
+%{python_sitearch}/pyzmq-%{version}.dist-info
 %exclude %{python_sitearch}/zmq/utils/*.h
 %exclude %{python_sitearch}/zmq/backend/cffi/_cdefs.h
 

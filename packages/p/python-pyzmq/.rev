@@ -517,4 +517,12 @@ update to latest version</comment>
     <comment></comment>
     <requestid>1164090</requestid>
   </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>e3aa427f59605d7ae2ac3339ddc28d51</srcmd5>
+    <version>25.1.2</version>
+    <time>1749651567</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284673</requestid>
+  </revision>
 </revisionlist>
