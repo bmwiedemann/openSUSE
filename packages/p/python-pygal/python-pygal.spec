@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygal
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,10 @@ BuildRequires:  %{python_module CairoSVG}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyquery}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata
@@ -55,10 +57,10 @@ It supports various chart types and CSS styling.
 sed -Ei 's:.pytest-runner.,?::' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 mv %{buildroot}%{_bindir}/pygal_gen.py %{buildroot}%{_bindir}/pygal_gen
@@ -77,6 +79,7 @@ mv %{buildroot}%{_bindir}/pygal_gen.py %{buildroot}%{_bindir}/pygal_gen
 %doc README
 %license COPYING
 %python_alternative %{_bindir}/pygal_gen
-%{python_sitelib}/*
+%{python_sitelib}/pygal
+%{python_sitelib}/pygal-%{version}.dist-info
 
 %changelog

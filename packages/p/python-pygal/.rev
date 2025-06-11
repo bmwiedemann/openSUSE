@@ -118,4 +118,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1199358</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>58f490fbdd8d8832664c53a8fa7f179e</srcmd5>
+    <version>3.0.5</version>
+    <time>1749651548</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1284636</requestid>
+  </revision>
 </revisionlist>
