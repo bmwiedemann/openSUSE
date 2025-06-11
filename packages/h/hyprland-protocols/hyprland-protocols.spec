@@ -20,7 +20,7 @@ Name:           hyprland-protocols
 Summary:        Wayland extension protocol for Hyprland
 Group:          Development/Libraries/Other
 License:        BSD-3-Clause
-Version:        0.6.2
+Version:        0.6.4
 Release:        0
 URL:            https://github.com/hyprwm/hyprland-protocols
 Source0:        https://github.com/hyprwm/hyprland-protocols/archive/refs/tags/v%{version}.tar.gz#/hyprland-protocols-%{version}.tar.gz

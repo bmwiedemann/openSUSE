@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  3 12:38:27 UTC 2025 - Michal Hrusecky <michal@hrusecky.net>
+
+- Update to version 0.6.4:
+  * Add hyprland-toplevel-mapping-v1 to meson build
+- Update to version 0.6.3:
+  * Add toplevel mapping protocol
+
+-------------------------------------------------------------------
 Fri Feb 14 15:20:33 UTC 2025 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 0.6.2:
