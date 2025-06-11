@@ -21,7 +21,7 @@
 %{pg_version_from_name}
 
 Name:           %{pg_name}-%{ext_name}
-Version:        2.20.2
+Version:        2.20.3
 Release:        0
 Summary:        A time-series database extension for PostgreSQL
 License:        Apache-2.0
@@ -52,7 +52,8 @@ TSL (timescale licenced modules are not built).
 %autosetup -p1 -n %{ext_name}-%{version}
 
 %build
-%cmake -DAPACHE_ONLY=1 -DSEND_TELEMETRY_DEFAULT=OFF -DREGRESS_CHECKS=OFF
+%cmake -DAPACHE_ONLY=1 -DSEND_TELEMETRY_DEFAULT=OFF -DREGRESS_CHECKS=OFF \
+    -DCMAKE_SYSTEM_VERSION=6.14.0-OBS
 %cmake_build
 
 %install

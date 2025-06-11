@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 11 10:36:39 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Stop storing build machine kernel version (boo#1101107)
+
+-------------------------------------------------------------------
+Wed Jun 11 10:25:50 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.20.3
+  https://github.com/timescale/timescaledb/releases/tag/2.20.3
+
+-------------------------------------------------------------------
 Mon Jun  2 14:00:15 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.20.2
