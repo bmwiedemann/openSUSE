@@ -291,4 +291,14 @@
   * net/dns: cache dns.Config for reuse when compileConfig fails (forwarded request 1281269 from rrahl0)</comment>
     <requestid>1281270</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0d45c0bc8e4650d8776ae0b106428aef</srcmd5>
+    <version>1.84.2</version>
+    <time>1749651841</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.84.2:
+  * Re-enable setting —accept-dns by using TS_EXTRA_ARGS. This issue resulted
+    from stricter CLI arguments parsing introduced in Tailscale v1.84.0 (forwarded request 1284534 from rrahl0)</comment>
+    <requestid>1284535</requestid>
+  </revision>
 </revisionlist>

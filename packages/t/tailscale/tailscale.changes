@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 10 15:36:55 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.84.2:
+  * Re-enable setting —accept-dns by using TS_EXTRA_ARGS. This issue resulted
+    from stricter CLI arguments parsing introduced in Tailscale v1.84.0
+
+-------------------------------------------------------------------
 Fri May 30 06:23:15 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.84.1:
