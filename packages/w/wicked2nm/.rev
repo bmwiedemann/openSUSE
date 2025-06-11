@@ -7,4 +7,22 @@
     <comment>wicked2nm is a tool that parses wicked show-config xml and netconfig to generate NetworkManager connections.</comment>
     <requestid>1274843</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b39900867db6966e795421605ba299a2</srcmd5>
+    <version>1.1.0</version>
+    <time>1749659712</time>
+    <user>anag_factory</user>
+    <comment>- Update to v1.1.0
+  * Use agama-network instead of agama-(lib|server)
+  * Only activate connections marked with autostart
+  * Give hint in error message how to ignore warnings
+  * Update README.md with updated installation and usage infos
+  * Add support for Leap 15
+- Remove BuildRequires that are no longer necessary due to the
+  agama-network switch.
+- The agama-network switch also removes the vulnerable and
+  unmaintained 'users' crate from the dependencies.
+  [bsc#1244188]</comment>
+    <requestid>1284881</requestid>
+  </revision>
 </revisionlist>

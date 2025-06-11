@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 11 13:54:11 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to v1.1.0
+  * Use agama-network instead of agama-(lib|server)
+  * Only activate connections marked with autostart
+  * Give hint in error message how to ignore warnings
+  * Update README.md with updated installation and usage infos
+  * Add support for Leap 15
+- Remove BuildRequires that are no longer necessary due to the
+  agama-network switch.
+- The agama-network switch also removes the vulnerable and
+  unmaintained 'users' crate from the dependencies.
+  [bsc#1244188]
+
+-------------------------------------------------------------------
 Wed Apr 16 09:40:07 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Initial packaging @ v1.0.0

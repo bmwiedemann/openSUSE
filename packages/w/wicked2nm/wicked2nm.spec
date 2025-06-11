@@ -16,7 +16,7 @@
 #
 
 Name:           wicked2nm
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Migration tool from wicked to NetworkManager
 License:        GPL-2.0-or-later
@@ -24,9 +24,6 @@ URL:            https://github.com/openSUSE/wicked2nm
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  cargo-packaging
-BuildRequires:  pkgconfig(openssl)
-BuildRequires:  clang-devel
-BuildRequires:  pam-devel
 ExclusiveArch:  %{rust_arches}
 
 %description
