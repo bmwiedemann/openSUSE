@@ -58,11 +58,11 @@ install -Dpm 644 contrib/completions/%{name}.bash %{buildroot}%{_datadir}/bash-c
 install -Dpm 644 contrib/completions/_%{name} -t %{buildroot}%{_datadir}/zsh/site-functions/
 install -Dpm 644 contrib/completions/%{name}.fish -t %{buildroot}/%{_datadir}/fish/vendor_completions.d/
 
-%check
-%{cargo_test}
-
 # remove residue crate file
 rm -f %{buildroot}%{_prefix}/.crates*
+
+%check
+%{cargo_test}
 
 %files
 %license LICENSE

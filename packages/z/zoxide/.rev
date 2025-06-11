@@ -116,4 +116,12 @@
 - compress manpages (forwarded request 1280897 from amanzini)</comment>
     <requestid>1280952</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>8b42835ee6af2922ee825add14a1e3d1</srcmd5>
+    <version>0.9.8</version>
+    <time>1749651720</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1284384</requestid>
+  </revision>
 </revisionlist>
