@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 10 08:35:06 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- update docker-entrypoint script in preparation of postgresql 18 upgrade
+
+-------------------------------------------------------------------
 Fri May 23 11:23:16 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - use SOURCEURL_WITH to generate proper artifacthub urls
