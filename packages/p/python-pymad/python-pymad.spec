@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymad
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2008 Pascal Bleser <guru@unixtech.be>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,11 +22,12 @@ Version:        0.11.3
 Release:        0
 Summary:        Python Module to use the MPEG Audio Decoder Library
 License:        LGPL-2.0-or-later
-Group:          Development/Libraries/Python
 URL:            http://spacepants.org/src/pymad
 Source:         https://files.pythonhosted.org/packages/source/p/pymad/pymad-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(mad)
@@ -41,14 +42,15 @@ allowing to read PCM data from MPEG audio streams.
 %autosetup -p1 -n pymad-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
 %doc AUTHORS NEWS README.md THANKS
 %license COPYING
-%{python_sitearch}/*
+%{python_sitearch}/mad.cpython-*-linux-gnu.so
+%{python_sitearch}/pymad-%{version}.dist-info
 
 %changelog
