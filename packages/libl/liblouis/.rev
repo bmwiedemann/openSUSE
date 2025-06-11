@@ -581,4 +581,21 @@ not all subpackages need the full blurb. (forwarded request 530874 from jengelh)
     <comment>- Update to version 3.33.0 (forwarded request 1253959 from mgorse)</comment>
     <requestid>1253992</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>e7ec9be44f06840aa6cb4de6e212b265</srcmd5>
+    <version>3.34.0</version>
+    <time>1749651574</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.34.0:
+  + This release brings significant improvements to various
+    language tables, particularly for Classical/Biblical Hebrew
+    where three main standards are now supported. We have a new
+    table for Thai Grade 2 contracted braille, and substantial
+    updates to Lithuanian braille tables. There are also
+    improvements to Hungarian, Dutch, Norwegian, and Turkish
+    tables. On the technical side, there's new support for building
+    macOS universal binaries and the pre-built html and plain text
+    documentation is no longer packaged with the released tarball. (forwarded request 1283994 from iznogood)</comment>
+    <requestid>1284678</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %define sover 20
 Name:           liblouis
-Version:        3.33.0
+Version:        3.34.0
 Release:        0
 Summary:        Two-way braille translator
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -139,8 +139,6 @@ popd
 # doc is only auto-installed when makeinfo is present
 %make_install -C doc
 find %{buildroot} -type f -name "*.la" -delete -print
-# We'll package them as rpm docs
-rm -f %{buildroot}%{_datadir}/doc/liblouis/liblouis.{html,txt}
 %fdupes %{buildroot}%{_datadir}
 %fdupes %{buildroot}%{_libdir}
 
@@ -176,7 +174,6 @@ popd
 %{_bindir}/lou_*
 
 %files doc
-%doc doc/liblouis.html doc/liblouis.txt
 %{_infodir}/%{name}.info%{?ext_info}
 
 %files devel
