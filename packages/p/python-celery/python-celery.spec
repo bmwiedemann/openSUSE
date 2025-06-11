@@ -28,7 +28,7 @@
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-celery%{psuffix}
-Version:        5.5.2
+Version:        5.5.3
 Release:        0
 Summary:        Distributed Task Queue module for Python
 License:        BSD-3-Clause

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jun 10 13:06:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.5.3
+  * Make the tests run on python 3.13 for gcs backend (#9677)
+  * Added DeepWiki to README (#9683)
+  * Limit redis to <=v5.2.1 to match Kombu (#9693)
+  * Use EX_OK instead of literal zero (#9684)
+  * Make wheel metadata reproducible (#9687)
+  * Let celery install from kombu dependencies for better align (#9696)
+  * Fix stamping documentation to clarify stamped_headers key is optional
+    in visitor methods (#9697)
+  * Support apply_async without queue argument on quorum queues (#9686)
+  * Updated rabbitmq doc about using quorum queues with task routes (#9707)
+  * Add: Dumper Unit Test (#9711)
+  * Add unit test for event.group_from (#9709)
+  * Refactor: add beat_cron_starting_deadline documentation warning (#9712)
+  * Fix: Resolve issue #9569 by supporting distinct broker transport
+    options for workers (#9695)
+  * Fixes issue with retry callback arguments in DelayedDelivery (#9708)
+  * get_exchange-unit-test (#9710)
+  * ISSUE-9704: Update documentation of result_expires, filesystem backend
+    is supported (#9716)
+  * Update to blacksmith ubuntu 24.04 (#9717)
+  * Added unit tests for celery.utils.iso8601 (#9725)
+  * Update introduction.rst docs (#9728)
+  * Prepare for release: v5.5.3 (#9732)
+
+-------------------------------------------------------------------
 Mon Apr 28 14:36:22 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.5.2
