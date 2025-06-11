@@ -26,6 +26,7 @@ Summary:        Bundle a Python application and all its dependencies into a sing
 License:        GPL-2.0-only
 URL:            https://www.pyinstaller.org
 Source:         https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v%{version}.tar.gz#/pyinstaller-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -67,10 +68,10 @@ rm -r PyInstaller/bootloader
 %build
 # -Wno-stringop-overflow only needed on ppc64
 export CFLAGS="%{optflags} -Wno-stringop-truncation -Wno-unused-variable -Wno-unused-function -Wno-unused-but-set-variable -Wno-stringop-overflow"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand  # Relocate to sitearch
 if [ "%{$python_sitearch}" != "%{$python_sitelib}" ]; then
   mkdir -p %{buildroot}%{$python_sitearch}

@@ -278,4 +278,12 @@
     time. This allows collection and discovery of source .py</comment>
     <requestid>1273209</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b18d9bc41ee4daac774d375e1075605a</srcmd5>
+    <version>6.13.0</version>
+    <time>1749651953</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284638</requestid>
+  </revision>
 </revisionlist>
