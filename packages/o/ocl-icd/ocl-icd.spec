@@ -1,7 +1,7 @@
 #
 # spec file for package ocl-icd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,19 @@
 
 
 Name:           ocl-icd
-Version:        2.3.1
+Version:        2.3.3
 Release:        0
 Summary:        OpenCL ICD Bindings
 License:        BSD-2-Clause
+Group:          System/Libraries
 URL:            https://github.com/OCL-dev/ocl-icd
 Source:         https://github.com/OCL-dev/ocl-icd/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 # PATCH-FEATURE-OPENSUSE n_UsrShare.patch boo#1173005, comment#8
 Patch0:         n_UsrShare.patch
+%ifarch dummy
+Patch1:         n_UsrShare-twopaths.patch
+%endif
 BuildRequires:  libtool
 BuildRequires:  opencl-headers >= 2.2
 BuildRequires:  pkgconfig
@@ -97,6 +101,7 @@ mv %{buildroot}%{_datadir}/doc/%{name} instdocs
 %doc README NEWS
 %license COPYING
 %doc instdocs/*
+%{_bindir}/cllayerinfo
 %{_libdir}/libOpenCL.so
 %{_libdir}/pkgconfig/OpenCL.pc
 %{_libdir}/pkgconfig/ocl-icd.pc

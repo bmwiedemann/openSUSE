@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jun 10 13:23:01 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.3.3
+  * Implement loader managed dispatch.
+
+-------------------------------------------------------------------
+Tue Jun 10 13:17:05 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.3.2
+  * pkconfig support depends on OpenCL-Headers.pc being installed
+    (since Khronos OpenCL Headers v2023.02.06)
+
+-------------------------------------------------------------------
+Tue Apr 29 09:01:21 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- improved previous changelog entry 
+- added group tag
+
+-------------------------------------------------------------------
+Fri Apr 11 12:06:32 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- n_UsrShare-twopaths.patch (disabled for now)
+  * first try to enable up to two paths for ICD files; i.e. 
+    /usr/share/OpenCL/vendors and /etc/OpenCL/vendors/ 
+    (https://github.com/openSUSE/nvidia-driver-G06/issues/75); since
+    it doesn't work, but just enables /usr/share/OpenCL/vendors
+    if available, but not in addition to /etc/OpenCL/vendors/ the
+    patch is disabled for now ...
+
+-------------------------------------------------------------------
 Mon Nov 11 11:52:00 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - nvidia-compute-G06: fixed conflicts to nvidia-compute-G06;

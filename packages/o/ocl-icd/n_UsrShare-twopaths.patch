@@ -1,0 +1,122 @@
+--- ocl-icd-2.3.1/ocl_icd_loader.c.old	2025-04-10 12:42:45.754857000 +0200
++++ ocl-icd-2.3.1/ocl_icd_loader.c	2025-04-10 17:47:11.576483000 +0200
+@@ -699,10 +699,14 @@ static void __initLayers( void ) {
+ static void __initClIcd( void ) {
+   debug_init();
+   cl_uint num_icds = 0;
++  cl_uint num_icds2 = 0;
+   int is_dir = 0;
+   DIR *dir = NULL;
++  DIR *dir2 = NULL;
+   const char* dir_path=getenv("OCL_ICD_VENDORS");
+   const char* vendor_path=getenv("OPENCL_VENDOR_PATH");
++  const char* vendor_path2="/usr/share/OpenCL/vendors";
++  const char* dir_path2=NULL;
+   if (! vendor_path || vendor_path[0]==0) {
+     struct stat buf;
+     int ret;
+@@ -711,14 +715,21 @@ static void __initClIcd( void ) {
+     ret=stat(vendor_path, &buf);
+     if (ret != 0) {
+       debug(D_WARN, "Cannot stat '%s'. Trying /usr/share/OpenCL/vendors", vendor_path);
+-      vendor_path="/usr/share/OpenCL/vendors";
++      vendor_path=vendor_path2;
++      vendor_path2=NULL; 
+     }
+   } else {
+     debug(D_DUMP, "OPENCL_VENDOR_PATH set to '%s', using it", vendor_path);
++    vendor_path2=NULL;
+   }
+   if (! dir_path || dir_path[0]==0) {
+     dir_path=vendor_path;
+-    debug(D_DUMP, "OCL_ICD_VENDORS empty or not defined, using vendors path '%s'", dir_path);
++    dir_path2=vendor_path2;
++    if (! dir_path2 || dir_path2[0] == 0) {
++      debug(D_DUMP, "OCL_ICD_VENDORS empty or not defined, using vendors path '%s'", dir_path);
++    } else {
++      debug(D_DUMP, "OCL_ICD_VENDORS empty or not defined, using vendors path '%s':'%s'", dir_path, dir_path2);
++    }
+     is_dir=1;
+   }
+   if (!is_dir) {
+@@ -737,7 +748,11 @@ static void __initClIcd( void ) {
+     num_icds = 1;
+     dir=NULL;
+   } else {
+-    debug(D_LOG,"Reading icd list from '%s'", dir_path);
++    if (! dir_path2 || dir_path2[0] == 0) {
++      debug(D_LOG,"Reading icd list from '%s'", dir_path);
++    } else {
++      debug(D_LOG,"Reading icd list from '%s':'%s'", dir_path, dir_path2);
++    }
+     dir = opendir(dir_path);
+     if(dir == NULL) {
+       if (errno == ENOTDIR) {
+@@ -748,12 +763,19 @@ static void __initClIcd( void ) {
+     }
+ 
+     num_icds = _find_num_icds(dir);
+-    if(num_icds == 0) {
++
++    if (dir_path2) {
++       dir2 = opendir(dir_path2);
++       if (dir2)
++         num_icds2 = _find_num_icds(dir2);
++    }
++
++    if((num_icds + num_icds2) == 0) {
+       goto abort;
+     }
+   }
+ 
+-  _icds = (struct vendor_icd*)malloc(num_icds * sizeof(struct vendor_icd));
++  _icds = (struct vendor_icd*)malloc((num_icds+num_icds2) * sizeof(struct vendor_icd));
+   if (_icds == NULL) {
+     goto abort;
+   }
+@@ -772,17 +794,22 @@ static void __initClIcd( void ) {
+     }
+   } else {
+     num_icds = _open_drivers(dir, dir_path);
++    if (dir2)
++      num_icds2 = _open_drivers(dir2, dir_path2);
+   }
+-  if(num_icds == 0) {
++  if((num_icds+num_icds2) == 0) {
+     goto abort;
+   }
+ 
+-  _find_and_check_platforms(num_icds);
++  _find_and_check_platforms(num_icds+num_icds2);
+   if(_num_icds == 0){
+     goto abort;
+   }
+ 
+-  if (_num_icds < num_icds) {
++  /* global variable magic ??? */
++  _num_icds = num_icds + num_icds2;
++
++  if (_num_icds < (num_icds+num_icds2)) {
+     _icds = (struct vendor_icd*)realloc(_icds, _num_icds * sizeof(struct vendor_icd));
+   }
+   debug(D_WARN, "%d valid vendor(s)!", _num_icds);
+@@ -790,6 +817,9 @@ static void __initClIcd( void ) {
+   if (dir != NULL){
+     closedir(dir);
+   }
++  if (dir2 != NULL){
++    closedir(dir2);
++  }
+   __initLayers();
+   return;
+  abort:
+@@ -801,6 +831,9 @@ static void __initClIcd( void ) {
+   if (dir != NULL){
+     closedir(dir);
+   }
++  if (dir2 != NULL){
++    closedir(dir2);
++  }
+   return;
+ }
+ 
