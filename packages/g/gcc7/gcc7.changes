@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun  6 11:50:14 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Exclude shared objects present for link editing in the GCC specific
+  subdirectory from provides processing via __provides_exclude_from.
+  [bsc#1244050][bsc#1243991]
+
+-------------------------------------------------------------------
+Tue Jun  3 12:36:35 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Make cross-*-gcc7-bootstrap package conflict with the non-bootstrap
+  variant conflict with the unversioned cross-*-gcc package.
+
+-------------------------------------------------------------------
 Mon Apr  7 12:36:11 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Make sure link editing is done against our own shared library

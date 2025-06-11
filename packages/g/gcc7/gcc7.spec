@@ -2242,6 +2242,8 @@ mkdir ../testresults
 ../contrib/test_summary | tee ../testresults/test_summary.txt
 %endif
 
+%define __provides_exclude_from ^%{libsubdir}/.*\.so.*$
+
 %install
 # Make sure libtool re-linking libasan at install time doesn't drop the
 # libstdc++ reference to make asan of C++ modules in python work
@@ -2770,8 +2772,7 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc7-locale.lang
 %versmainlib *crt*.o
 %versmainlib libgcc*.a
 %versmainlib libgcov.a
-%versmainlib libgcc_s*.so
-%versmainlib libgcc_s.so.%{libgcc_s}
+%versmainlib libgcc_s*.so*
 %versmainlib libgomp.so
 %versmainlib libgomp.a
 %versmainlib libgomp.spec
@@ -2842,8 +2843,7 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc7-locale.lang
 %versbiarchlib *crt*.o
 %versbiarchlib libgcc*.a
 %versbiarchlib libgcov.a
-%versbiarchlib libgcc_s*.so
-%versbiarchlib libgcc_s.so.%{libgcc_s}
+%versbiarchlib libgcc_s*.so*
 %versbiarchlib libgomp.so
 %versbiarchlib libgomp.a
 %versbiarchlib libgomp.spec

@@ -692,4 +692,17 @@ This is in preparation of Pointer Authentication enablement in Tumbleweed. (forw
   in the DWARF debug info DW_AT_producer string.  [bsc#1239566]</comment>
     <requestid>1267852</requestid>
   </revision>
+  <revision rev="46" vrev="21">
+    <srcmd5>5188925b029578deebf2750b6092c6c2</srcmd5>
+    <version>7.5.0+r278197</version>
+    <time>1749651657</time>
+    <user>anag_factory</user>
+    <comment>- Exclude shared objects present for link editing in the GCC specific
+  subdirectory from provides processing via __provides_exclude_from.
+  [bsc#1244050][bsc#1243991]
+
+- Make cross-*-gcc7-bootstrap package conflict with the non-bootstrap
+  variant conflict with the unversioned cross-*-gcc package.</comment>
+    <requestid>1283659</requestid>
+  </revision>
 </revisionlist>
