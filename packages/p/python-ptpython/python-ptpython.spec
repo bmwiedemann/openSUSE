@@ -1,7 +1,7 @@
 #
 # spec file for package python-ptpython
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jonathanslenders/ptpython
 Source:         https://files.pythonhosted.org/packages/source/p/ptpython/ptpython-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pygments
@@ -47,7 +49,7 @@ Recommends:     python-ptpython-ptipython
 %python_subpackages
 
 %description
-Ptpython is an advanced Python REPL.
+Ptpython is an advanced Python REPL, built using prompt_toolkit.
 
 %package ptipython
 Summary:        Python REPL build on top of prompt_toolkit - IPython support
@@ -65,10 +67,10 @@ This package provides IPython support to Ptpython.
 sed -i -e '/^#!\//, 1d' ptpython/entry_points/run_*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 rm %{buildroot}%{_bindir}/pt{,i}python?*
 %python_clone -a %{buildroot}%{_bindir}/ptpython
@@ -92,7 +94,8 @@ rm %{buildroot}%{_bindir}/pt{,i}python?*
 %files %{python_files}
 %doc CHANGELOG README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/ptpython
+%{python_sitelib}/ptpython-%{version}.dist-info
 %python_alternative %{_bindir}/ptpython
 
 %files %{python_files ptipython}

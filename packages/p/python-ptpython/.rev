@@ -154,4 +154,13 @@
   * Clean up signatures on control-c.</comment>
     <requestid>1198055</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>5c8fb3bc5789b7c8d84b1916215befdf</srcmd5>
+    <version>3.0.29</version>
+    <time>1749651941</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1284625</requestid>
+  </revision>
 </revisionlist>

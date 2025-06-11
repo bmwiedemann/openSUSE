@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 11 05:51:31 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Sat Aug 31 12:08:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.29:
