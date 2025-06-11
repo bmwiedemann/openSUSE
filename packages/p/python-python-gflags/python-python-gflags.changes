@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 10 13:05:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build and libalternatives
+
+-------------------------------------------------------------------
 Tue Dec  4 12:53:02 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

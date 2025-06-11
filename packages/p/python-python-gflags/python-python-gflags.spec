@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-gflags
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,27 @@
 
 
 %define oldpython python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without libalternatives
 Name:           python-python-gflags
 Version:        3.1.2
 Release:        0
-Url:            http://code.google.com/p/python-gflags
 Summary:        Google Commandline Flags Module
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://code.google.com/p/python-gflags
 Source:         https://files.pythonhosted.org/packages/source/p/python-gflags/python-gflags-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
+BuildArch:      noarch
 %ifpython2
 Provides:       %{oldpython}-gflags = %{version}
 Obsoletes:      %{oldpython}-gflags < %{version}
 %endif
-BuildArch:      noarch
-Requires(post):   update-alternatives
-Requires(preun):  update-alternatives
 %python_subpackages
 
 %description
@@ -56,25 +57,22 @@ difference from OptParse.)
 %setup -q -n python-gflags-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 mv %{buildroot}%{_bindir}/gflags2man.py %{buildroot}%{_bindir}/gflags2man
 %python_clone -a %{buildroot}%{_bindir}/gflags2man
 
-%post
-%python_install_alternative gflags2man
-
-%preun
-%python_uninstall_alternative gflags2man
+%pre
+%python_libalternatives_reset_alternative gflags2man
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %license COPYING
 %doc AUTHORS ChangeLog README.md
 %python_alternative %{_bindir}/gflags2man
-%{python_sitelib}/*
+%{python_sitelib}/gflags
+%{python_sitelib}/python[-_]gflags-%{version}*-info
 
 %changelog
