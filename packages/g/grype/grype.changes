@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Jun 11 04:33:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.93.0:
+  * Added Features
+    - Add support for MinimOS [#2627 @Daniel-Wachter]
+    - Use the upstream Bitmani vulndb data for matching [#1609
+      #2538 @juan131]
+    - Support rubygems specific version comparision [#2646 #2712
+      @willmurphyscode]
+  * Bug Fixes
+    - Harden Container Runtime with Non-Root User [#2716
+      @wagoodman]
+    - valid cpes in db search output [#2706 @westonsteimel]
+    - Always show results with json output for db search commands
+      [#2692 @wagoodman]
+    - False positive: CVE-2025-5702 reported with High severity on
+      glibc 2.34 (wrong severity and affected version) [#2718]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#2719)
+    - chore(deps): update tools to latest versions (#2717)
+    - chore(deps): bump golang.org/x/tools from 0.33.0 to 0.34.0
+      (#2713)
+    - chore(deps): bump github.com/sergi/go-diff (#2714)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.12
+      to 0.5.13 (#2708)
+    - chore(deps): bump golang.org/x/time from 0.11.0 to 0.12.0
+      (#2709)
+    - chore(deps): bump github/codeql-action from 3.28.18 to
+      3.28.19 (#2704)
+    - chore(deps): update tools to latest versions (#2696)
+    - chore(deps): bump ossf/scorecard-action from 2.4.1 to 2.4.2
+      (#2703)
+    - chore(deps): bump github.com/docker/docker (#2702)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.11
+      to 0.5.12 (#2693)
+    - chore(deps): bump github.com/docker/docker (#2694)
+    - chore(deps): update tools to latest versions (#2679)
+    - chore(deps): bump github.com/google/go-containerregistry
+      (#2681)
+    - chore(deps): bump gorm.io/gorm from 1.26.1 to 1.30.0 (#2687)
+    - chore(deps): bump github.com/anchore/syft from 1.26.0 to
+      1.26.1 (#2678)
+
+-------------------------------------------------------------------
 Wed May 21 04:29:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.92.2:
