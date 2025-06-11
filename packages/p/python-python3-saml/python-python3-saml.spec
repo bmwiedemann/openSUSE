@@ -22,14 +22,14 @@ Version:        1.16.0
 Release:        0
 Summary:        Python SAML support
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/SAML-Toolkits/python3-saml
 Source:         https://github.com/SAML-Toolkits/python3-saml/archive/v%{version}.tar.gz#/python3-saml-%{version}.tar.gz
 BuildRequires:  %{python_module freezegun >= 0.3.11}
 BuildRequires:  %{python_module isodate >= 0.6.1}
 BuildRequires:  %{python_module lxml >= 3.3.5}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xmlsec >= 1.3.9}
 BuildRequires:  fdupes
 BuildRequires:  libxmlsec1-openssl1
@@ -55,10 +55,10 @@ defined by the OASIS Security Services Technical Committee.
 sed -i 's/==/>=/;/dependency_links/d' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/onelogin
 
 %check
@@ -73,6 +73,6 @@ sed -i 's/==/>=/;/dependency_links/d' setup.py
 %{python_sitelib}/onelogin/saml2
 %{python_sitelib}/onelogin/__init__.py
 %pycache_only %{python_sitelib}/onelogin/__pycache__/
-%{python_sitelib}/python3_saml-%{version}*-info
+%{python_sitelib}/python3_saml-%{version}.dist-info
 
 %changelog
