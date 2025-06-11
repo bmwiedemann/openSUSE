@@ -320,4 +320,29 @@
     <comment>Update to 6.0.1</comment>
     <requestid>1282033</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>9a4cde909145976dae103ecddbaed7cb</srcmd5>
+    <version>6.0.2</version>
+    <time>1749651594</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.0.2
+  * Fix export fbx: Wrong Materials in LayerElementMaterial
+    if a node contains multi meshes
+  * Fix compile error when ASSIMP_DOUBLE_PRECISION enable
+  * Updated Inner Cone formula for Spot Lights in GLTF
+  * Update/update pugi xml
+  * Fixes CVE-2025-2751: Out-of-bounds Read in
+    Assimp::CSMImporter::InternReadFile (CVE-2025-2751, boo#1240016)
+  * Fixes CVE-2025-2757: Heap-based Buffer Overflow in
+    AI_MD5_PARSE_STRING_IN_QUOTATION (CVE-2025-2757, boo#1240027)
+  * Fixes CVE-2025-2750: out of bounds write by assigning to
+    wrong array element count tracking (CVE-2025-2750, boo#1240014)
+  * fix-CVE-2025-3158: Heap-based Buffer Overflow in
+    Assimp::LWO::AnimResolver::UpdateAnimRangeSetup (CVE-2025-3158, boo#1240773)
+  * Update SECURITY.md
+  * Fix the function aiGetMaterialColor when the flag ASSIMP_DOUBLE_PRECISION
+
+  * Fixes CVE-2025-3548, boo#1241364</comment>
+    <requestid>1284185</requestid>
+  </revision>
 </revisionlist>

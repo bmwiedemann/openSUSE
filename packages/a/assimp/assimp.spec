@@ -16,10 +16,9 @@
 #
 
 
-# https://github.com/assimp/assimp/issues/6204, soversion is still 5
-%define sover 5
+%define sover 6
 Name:           assimp
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        Library to load and process 3D scenes from various data formats
 License:        BSD-3-Clause AND MIT
