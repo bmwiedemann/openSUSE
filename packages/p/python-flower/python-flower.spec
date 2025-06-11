@@ -1,7 +1,7 @@
 #
 # spec file for package python-flower
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,8 +40,6 @@ Requires:       python-humanize
 Requires:       python-prometheus_client >= 0.8.0
 Requires:       python-pytz
 Requires:       python-tornado >= 5.0.0
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

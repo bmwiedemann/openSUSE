@@ -151,4 +151,12 @@
   * Fix py3 json serialization</comment>
     <requestid>1137292</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>adbc4a9d11354b8293d15053cd9127d6</srcmd5>
+    <version>2.0.1</version>
+    <time>1749651755</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1284429</requestid>
+  </revision>
 </revisionlist>
