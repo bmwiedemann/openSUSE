@@ -17,15 +17,14 @@
 
 
 Name:           gitea-tea
-Version:        0.9.2
+Version:        0.10.0
 Release:        0
 Summary:        A command line tool to interact with Gitea servers
 License:        MIT
 URL:            https://gitea.com/gitea/tea
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Patch0:         newer-dependencies.patch
-BuildRequires:  golang-packaging
+BuildRequires:  golang(API) >= 1.24
 Conflicts:      tea
 
 %description
@@ -67,11 +66,15 @@ Zsh command line completion support for Gitea's tea CLI.
 %autosetup -a1
 
 %build
-%ifnarch x86_64 aarch64
-CGO_ENABLED=1
-%endif
 go build \
    -o tea \
+   -mod=vendor \
+   -buildmode=pie \
+   -ldflags "-X main.Version=%{version}"
+
+# building docs
+go build \
+   -o docs/CLI.md \
    -mod=vendor \
    -buildmode=pie \
    -ldflags "-X main.Version=%{version}"
@@ -87,7 +90,7 @@ install -v -m 0644 -D contrib/autocomplete.zsh \
 
 %files
 %license LICENSE
-%doc CHANGELOG.md CONTRIBUTING.md README.md
+%doc CHANGELOG.md docs/CLI.md CONTRIBUTING.md README.md
 %{_bindir}/tea
 
 %files bash-completion

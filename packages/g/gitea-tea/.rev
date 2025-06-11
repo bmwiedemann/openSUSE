@@ -40,4 +40,37 @@
     <comment>- update newer-dependencies.patch, fixing bsc#1241819 (forwarded request 1272486 from rrahl0)</comment>
     <requestid>1272487</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>70dd5b037fca82896f8e25099a385627</srcmd5>
+    <version>0.10.0</version>
+    <time>1749652038</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.10.0:
+  * fix: support SSH remotes with non-standard ports
+  * minor helper fixes
+  * Bump Table Dep
+  * Login via oauth2 flow
+  * Feat: interactive issue edit command
+  * Use flakes vs devbox
+  * Fix helper panic
+  * Add --note-file flag to read release notes from a file
+  * Fix/Login Edit Use Editor Env
+  * Gitea Actions support
+  * Expose --labels option
+  * Add git helper
+  * Support auto detecting branch for PRs
+  * context: move human readable note to stderr
+  * Add repos rm/delete command
+  * Release Asset Management
+  * tea branches list/protect/unprotect
+  * Add OTP and scopes to login
+  * Initial CLI docs
+  * Fix for go tools called from make
+  * fix interactive login add
+  * issues list can show filtered by owner/org instead of repo too
+  * fix: non-standard ssh port URL's repo can't be recognized
+  * updated dependencies
+- remove newer-dependencies.patch, as upstream updated them</comment>
+    <requestid>1284760</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jun 10 18:06:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.10.0:
+  * fix: support SSH remotes with non-standard ports
+  * minor helper fixes
+  * Bump Table Dep
+  * Login via oauth2 flow
+  * Feat: interactive issue edit command
+  * Use flakes vs devbox
+  * Fix helper panic
+  * Add --note-file flag to read release notes from a file
+  * Fix/Login Edit Use Editor Env
+  * Gitea Actions support
+  * Expose --labels option
+  * Add git helper
+  * Support auto detecting branch for PRs
+  * context: move human readable note to stderr
+  * Add repos rm/delete command
+  * Release Asset Management
+  * tea branches list/protect/unprotect
+  * Add OTP and scopes to login
+  * Initial CLI docs
+  * Fix for go tools called from make
+  * fix interactive login add
+  * issues list can show filtered by owner/org instead of repo too
+  * fix: non-standard ssh port URL's repo can't be recognized
+  * updated dependencies
+- remove newer-dependencies.patch, as upstream updated them
+
+-------------------------------------------------------------------
 Thu Apr 24 16:47:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update newer-dependencies.patch, fixing bsc#1241819
