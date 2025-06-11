@@ -181,4 +181,12 @@ spec file cleaned from old TODO comments (forwarded request 174583 from HighwayS
 </comment>
     <requestid>1238445</requestid>
   </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>a20f26275d81453aecca3754e341e781</srcmd5>
+    <version>3.5</version>
+    <time>1749651555</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284647</requestid>
+  </revision>
 </revisionlist>

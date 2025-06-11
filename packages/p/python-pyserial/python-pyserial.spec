@@ -34,7 +34,9 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyserial/pyseri
 # PATCH-FIX-UPSTREAM - pyserial/pyserial#757 - Replace deprecated unittest.findTestCases function
 Patch1:         https://github.com/pyserial/pyserial/pull/757.patch#/replace-deprecated-unittest-function.patch
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
@@ -85,12 +87,12 @@ find serial -type f -not -name 'miniterm.py' -exec chmod a-x {} +
 touch test/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 make %{?_smp_mflags} -C documentation html && rm documentation/_build/html/.buildinfo # Build HTML documentation
 sed -i -e "1{s|^#![[:space:]]*\/.*bin.*$|#!%{_bindir}/python3|}" examples/*.py
 
 %install
-%python_install
+%pyproject_install
 
 %python_clone -a %{buildroot}%{_bindir}/pyserial-miniterm
 %python_clone -a %{buildroot}%{_bindir}/pyserial-ports
@@ -122,7 +124,7 @@ rm documentation/_build/doctrees/environment.pickle
 %python_alternative pyserial-miniterm
 %python_alternative pyserial-ports
 %{python_sitelib}/serial/
-%{python_sitelib}/pyserial-%{version}-py*.egg-info
+%{python_sitelib}/pyserial-%{version}.dist-info
 
 %if 0%{?suse_version} > 1500
 %files -n %{name}-doc
