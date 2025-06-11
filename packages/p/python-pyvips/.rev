@@ -45,4 +45,12 @@
   * Ensure compatibility with a single shared libvips library</comment>
     <requestid>1179076</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>06d9508099f2a98df472fd936bc46722</srcmd5>
+    <version>2.2.3</version>
+    <time>1749651987</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284667</requestid>
+  </revision>
 </revisionlist>

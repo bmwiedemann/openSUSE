@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyvips
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyvips
 Version:        2.2.3
 Release:        0
@@ -25,7 +24,9 @@ License:        MIT
 URL:            https://github.com/libvips/pyvips
 Source0:        https://pypi.io/packages/source/p/pyvips/pyvips-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 1.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cffi >= 1.0.0
@@ -39,10 +40,10 @@ This package contains the Python bindings for the VIPS library.
 %autosetup -n pyvips-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # NOTE: tests are not present in the pypi tarball
@@ -51,6 +52,6 @@ This package contains the Python bindings for the VIPS library.
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/pyvips
-%{python_sitelib}/pyvips-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/pyvips-%{version}.dist-info
 
 %changelog
