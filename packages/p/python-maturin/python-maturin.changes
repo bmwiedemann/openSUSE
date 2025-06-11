@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  9 14:34:52 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.8.7
+  * Allow specifying compression method and level, in both `build`
+    and `develop` modes
+    gh#PyO3/maturin#2625
+
+-------------------------------------------------------------------
 Tue May 13 15:37:19 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.8.6

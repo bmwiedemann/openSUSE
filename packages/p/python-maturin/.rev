@@ -1259,4 +1259,15 @@
   * Add --compression-level option to build command in #2572</comment>
     <requestid>1277201</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a2a44a87dc7fd62fb5a2a8b1a217e256</srcmd5>
+    <version>1.8.7</version>
+    <time>1749651603</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.8.7
+  * Allow specifying compression method and level, in both `build`
+    and `develop` modes
+    gh#PyO3/maturin#2625</comment>
+    <requestid>1284232</requestid>
+  </revision>
 </revisionlist>
