@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyclipper
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020 Xu Zhao (i@xuzhao.net).
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,9 +28,11 @@ URL:            https://github.com/fonttools/pyclipper
 Source:         https://files.pythonhosted.org/packages/source/p/pyclipper/pyclipper-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
@@ -50,10 +52,10 @@ library is based on Vatti's clipping algorithm.
 %setup -q -n pyclipper-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -63,6 +65,6 @@ library is based on Vatti's clipping algorithm.
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/pyclipper
-%{python_sitearch}/pyclipper-%{version}*-info
+%{python_sitearch}/pyclipper-%{version}.dist-info
 
 %changelog

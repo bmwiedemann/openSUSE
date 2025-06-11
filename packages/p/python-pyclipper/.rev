@@ -83,4 +83,12 @@
   * Build Python 3.13 wheels. No code changes.</comment>
     <requestid>1218843</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d3a9855b84c881b7ffe797d13500b699</srcmd5>
+    <version>1.3.0.post6</version>
+    <time>1749651948</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284632</requestid>
+  </revision>
 </revisionlist>
