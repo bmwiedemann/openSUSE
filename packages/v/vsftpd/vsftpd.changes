@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 11 09:05:12 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Apply "terminate-peers-on-quit.patch" to introduce the new
+  internal PRIV_SOCK_QUIT command which vsftpd sends to privileged
+  parent processes to properly shut down the TLS connection in case
+  we've received QUIT from the session client. This change avoids
+  misleading error messages in the servers log file. [bsc#1199250]
+
+-------------------------------------------------------------------
 Tue Apr  8 09:45:09 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu17 to CFLAGS to fix gcc15 compile time error

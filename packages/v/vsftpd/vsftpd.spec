@@ -1,7 +1,7 @@
 #
 # spec file for package vsftpd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,6 +101,7 @@ Patch45:        disable-tls13-to-support-older-openssl-versions.patch
 Patch46:        0001-Fix-default-value-of-strict_ssl_read_eof-in-man-page.patch
 #PATCH-FIX-OPENSUSE bsc#1211301 Enable crypto-policies support
 Patch47:        vsftpd-use-system-wide-crypto-policy.patch
+Patch48:        terminate-peers-on-quit.patch
 BuildRequires:  libcap-devel
 %if 0%{?suse_version} == 1315
 BuildRequires:  libopenssl-1_1-devel >= 1.1.1
@@ -189,6 +190,7 @@ tests.
 %endif
 %patch -P 46 -p1
 %patch -P 47 -p1
+%patch -P 48 -p1
 
 %build
 %define seccomp_opts -D_GNU_SOURCE -DUSE_SECCOMP

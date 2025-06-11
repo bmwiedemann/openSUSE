@@ -973,4 +973,16 @@ confusing &quot;failed to try-restart&quot; error message. [bsc#1093179, bsc#101
     <comment></comment>
     <requestid>1268459</requestid>
   </revision>
+  <revision rev="92" vrev="17">
+    <srcmd5>545b23d0d3865f4e1afb868184e9534f</srcmd5>
+    <version>3.0.5</version>
+    <time>1749659671</time>
+    <user>anag_factory</user>
+    <comment>- Apply &quot;terminate-peers-on-quit.patch&quot; to introduce the new
+  internal PRIV_SOCK_QUIT command which vsftpd sends to privileged
+  parent processes to properly shut down the TLS connection in case
+  we've received QUIT from the session client. This change avoids
+  misleading error messages in the servers log file. [bsc#1199250]</comment>
+    <requestid>1284733</requestid>
+  </revision>
 </revisionlist>
