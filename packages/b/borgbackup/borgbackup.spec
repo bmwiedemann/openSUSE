@@ -1,7 +1,7 @@
 #
 # spec file for package borgbackup
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016-2024 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -44,7 +44,7 @@
 %bcond_with     borg_sysblake2
 %endif
 Name:           borgbackup
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Deduplicating backup program with compression and authenticated encryption
 License:        BSD-3-Clause
