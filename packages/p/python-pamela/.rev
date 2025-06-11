@@ -25,4 +25,13 @@
     `authenticate` to call PAM_ACCT_MGMT</comment>
     <requestid>1194584</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>752cbf05601d3c5ce2f25ab2e97d5299</srcmd5>
+    <version>1.2.0</version>
+    <time>1749651929</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1284619</requestid>
+  </revision>
 </revisionlist>
