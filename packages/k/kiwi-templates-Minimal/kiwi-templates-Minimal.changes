@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  7 14:00:14 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- disk.sh: add SECURE_BOOT in /etc/sysconfig/bootloader
+
+-------------------------------------------------------------------
 Wed Apr 23 09:17:02 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Bump disk size of the Cloud flavor to 2GiB

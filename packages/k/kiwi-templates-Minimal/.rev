@@ -246,4 +246,12 @@
 - [EFI] resize ESP partition in Minimal-VM images (bsc#1240118)</comment>
     <requestid>1272107</requestid>
   </revision>
+  <revision rev="31" vrev="31">
+    <srcmd5>218c2622bbe6397d07659c54533c112e</srcmd5>
+    <version>84.87.1</version>
+    <time>1749651645</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1284453</requestid>
+  </revision>
 </revisionlist>

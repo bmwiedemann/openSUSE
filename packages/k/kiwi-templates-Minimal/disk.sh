@@ -13,11 +13,15 @@ if [ -x /usr/bin/sdbootutil ]; then
 
 	echo "install boot loader"
 	loader_type="grub2-bls"
+	secure_boot="no"
 	rpm -q systemd-boot && loader_type="systemd-boot"
+	rpm -q shim && secure_boot="yes"
 	if [ -s /etc/sysconfig/bootloader ]; then
 		sed -i "s/^LOADER_TYPE=.*$/LOADER_TYPE=\"$loader_type\"/g" /etc/sysconfig/bootloader
+		sed -i "s/^SECURE_BOOT=.*$/SECURE_BOOT=\"$secure_boot\"/g" /etc/sysconfig/bootloader
 	else
-		echo "LOADER_TYPE=\"${loader_type}\"" > /etc/sysconfig/bootloader
+		echo "LOADER_TYPE=\"${loader_type}\"" >> /etc/sysconfig/bootloader
+		echo "SECURE_BOOT=\"${secure_boot}\"" >> /etc/sysconfig/bootloader
 	fi
 
 	sdbootutil -v --no-random-seed --arch "$arch" --esp-path /boot/efi --entry-token=auto --no-variables install
