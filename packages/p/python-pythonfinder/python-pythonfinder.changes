@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 11 05:56:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Mon Feb  6 06:22:28 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-packaging-22.patch:

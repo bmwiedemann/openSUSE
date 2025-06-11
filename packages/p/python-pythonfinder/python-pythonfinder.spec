@@ -1,7 +1,7 @@
 #
 # spec file for package python-pythonfinder
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ URL:            https://github.com/sarugaku/pythonfinder
 Source:         https://github.com/sarugaku/pythonfinder/archive/refs/tags/v%{version}.tar.gz#/pythonfinder-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#sarugaku/pythonfinder#127
 Patch0:         support-packaging-22.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 36.2.2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs
@@ -34,7 +36,7 @@ Requires:       python-click
 Requires:       python-packaging >= 22.0
 Requires:       python-vistir >= 0.2.5
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module attrs}
@@ -61,10 +63,10 @@ sed -i '/addopts/d' setup.cfg
 rm -rf src/pythonfinder/_vendor/pep514tools
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pyfinder
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -83,6 +85,7 @@ rm -rf src/pythonfinder/_vendor/pep514tools
 %doc CHANGELOG.rst README.rst
 %license LICENSE.txt
 %python_alternative %{_bindir}/pyfinder
-%{python_sitelib}/*
+%{python_sitelib}/pythonfinder
+%{python_sitelib}/pythonfinder-%{version}.dist-info
 
 %changelog

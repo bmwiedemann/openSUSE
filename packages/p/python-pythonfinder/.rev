@@ -108,4 +108,13 @@
   * Support packaging &gt;= 22.</comment>
     <requestid>1063357</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>0faa7e573385e1b14b90f12cf9b23803</srcmd5>
+    <version>1.3.1</version>
+    <time>1749651969</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1284651</requestid>
+  </revision>
 </revisionlist>
