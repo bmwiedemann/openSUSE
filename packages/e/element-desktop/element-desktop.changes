@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 10 14:58:22 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.103
+  ## 🐛 Bug Fixes
+  
+  * Check the sender of an event matches owner of session, preventing sender spoofing by homeserver owners.
+    https://github.com/matrix-org/matrix-rust-sdk/security/advisories/GHSA-x958-rvg6-956w
+
+-------------------------------------------------------------------
 Wed Jun  4 10:24:37 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.102

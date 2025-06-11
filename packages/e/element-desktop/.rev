@@ -1362,4 +1362,16 @@ Version 1.11.100
 </comment>
     <requestid>1282787</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>dac01a80bc1d05421c9cbf2a03ab4d75</srcmd5>
+    <version>1.11.103</version>
+    <time>1749651813</time>
+    <user>anag_factory</user>
+    <comment>- Version 1.11.103
+  ## 🐛 Bug Fixes
+  
+  * Check the sender of an event matches owner of session, preventing sender spoofing by homeserver owners.
+    https://github.com/matrix-org/matrix-rust-sdk/security/advisories/GHSA-x958-rvg6-956w</comment>
+    <requestid>1284517</requestid>
+  </revision>
 </revisionlist>
