@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 10 19:02:19 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 4.6.3:
+  * JRC: Remove RIG_FUNC_FAGC from 535D as erroneous
+  * Add RIG_FUNC_NB2 functionality to both 535D and 545
+  * * Restore IC-7300 spectrum data callback - regression in 4.6
+  * Add locking to rig_[gs]et_level() - fixes sending CW from tlf
+  * Fix attempt to use memory returned by setlocale() after being freed
+  * Language bindings configuration and build fixes
+  * Various build system and compilation fixes
+  * IC-705 filter selection bandwidth for FM and WFM
+  * IC-705 COMP, VD, and ID meter calibration values
+  * Fix ACLog thousands separator
+  * Documentation updates, typo fixes, man page fixes
+  * Drop redundant token lookups and make local functions static
+  * Fix rigctl showing hamlib_verson when connecting to rigctld
+  * Add rig CODAN 2110
+
+-------------------------------------------------------------------
 Mon Feb 10 18:18:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 4.6.2:
