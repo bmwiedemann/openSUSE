@@ -93,7 +93,7 @@
  
 --- gnuplot-6.0.0/src/plot.c
 +++ gnuplot-6.0.0/src/plot.c	2024-01-08 09:16:58.124450437 +0000
-@@ -298,6 +298,22 @@ main(int argc_orig, char **argv)
+@@ -299,6 +299,22 @@ main(int argc_orig, char **argv)
      rl_getc_function = getc_wrapper;
  #endif
  

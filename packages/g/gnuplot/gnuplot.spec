@@ -91,7 +91,7 @@ BuildRequires:  tex(textgreek.sty)
 BuildRequires:  tex(upquote.sty)
 %endif
 URL:            https://www.gnuplot.info/
-Version:        6.0.2
+Version:        6.0.3
 Release:        0
 %global         underscore 6
 %if "%{flavor}" == ""
@@ -121,12 +121,7 @@ Patch4:         gnuplot-4.6.0-demo.diff
 Patch5:         gnuplot-wx3.diff
 Patch6:         gnuplot-QtCore-PIC.dif
 Patch7:         gnuplot-PIE.patch
-Patch25:        fix4bug1240325.patch
-Patch26:        fix4bug1240326.patch
-Patch27:        fix4bug1240327.patch
-Patch28:        fix4bug1240328.patch
-Patch29:        fix4bug1240329.patch
-Patch30:        fix4bug1240330.patch
+Patch8:         gnuplot-6.0.3-backward_compat.patch
 Patch84:        fix4bug1241684.patch
 %define _x11lib     %{_libdir}
 %define _x11data    %{_datadir}/X11
@@ -163,12 +158,7 @@ cp %{_sourcedir}/picins.sty docs
 %patch -P5 -p1 -b .w3x
 %patch -P6 -p0 -b .pic
 %patch -P7 -p1 -b .pie
-%patch -P25 -p0 -b .p25
-%patch -P26 -p0 -b .p26
-%patch -P27 -p0 -b .p27
-%patch -P28 -p0 -b .p28
-%patch -P29 -p0 -b .p29
-%patch -P30 -p0 -b .p30
+%patch -P8 -p0 -b .multiplot
 %patch -P84 -p0 -b .p84
 
 %build
