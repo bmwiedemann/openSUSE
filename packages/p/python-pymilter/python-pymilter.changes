@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 10 09:04:00 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Mar  5 18:22:42 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Actually run the correct tests

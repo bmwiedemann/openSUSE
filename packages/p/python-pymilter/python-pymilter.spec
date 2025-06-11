@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymilter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2018 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,8 +20,6 @@
 # we don't want to provide private python extension libs
 %global __provides_exclude_from ^(%{python2_sitearch}/.*\\.so|%{python3_sitearch}/.*\\.so)$
 # Python 2 module isn't building properly and we don't really need it right now anyway...
-%global skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pymilter
 Version:        1.0.5
 Release:        0
@@ -34,7 +32,9 @@ Source1:        tmpfiles-python-pymilter.conf
 Patch1:         0001-Remove-calls-to-the-deprecated-method-assertEquals.patch
 BuildRequires:  %{python_module bsddb3}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -64,10 +64,10 @@ This package contains the common files used for pymilter.
 %autosetup -n pymilter-pymilter-%{version} -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 mkdir -p %{buildroot}%{_localstatedir}/log/milter
 mkdir -p %{buildroot}%{_libexecdir}/milter
@@ -84,7 +84,11 @@ rm test.py testpolicy.py
 %files %{python_files}
 %doc README.md ChangeLog NEWS TODO CREDITS sample.py template.py
 %license COPYING
-%{python_sitearch}/*
+%{python_sitearch}/Milter
+%{python_sitearch}/milter.cpython*
+%{python_sitearch}/mime.py
+%{python_sitearch}/pymilter-%{version}*-info
+%pycache_only %{python_sitearch}/__pycache__/mime*
 
 %files -n pymilter-common
 %license COPYING
