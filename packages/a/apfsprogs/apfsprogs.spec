@@ -17,7 +17,7 @@
 
 
 Name:           apfsprogs
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        Experimental APFS tools for Linux
 License:        GPL-2.0-only
@@ -53,7 +53,17 @@ make %{?_smp_mflags} -C mkapfs
 %files
 %license LICENSE
 %doc README
-%{_sbindir}/*
-%{_mandir}/*
+%{_mandir}/apfs-label.8
+%{_mandir}/apfs-snap.8
+%{_mandir}/apfsck.8
+%{_mandir}/fsck.apfs.8
+%{_mandir}/mkapfs.8
+%{_mandir}/mkfs.apfs.8
+%{_sbindir}/apfs-label
+%{_sbindir}/apfs-snap
+%{_sbindir}/apfsck
+%{_sbindir}/fsck.apfs
+%{_sbindir}/mkapfs
+%{_sbindir}/mkfs.apfs
 
 %changelog

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 10 05:50:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.1
+  * apfsck: Implement more checks for fusion drives
+  * refactor: Remove redundant MIN macro in spaceman.c
+  * apfsck: Use DIV_ROUND_UP macro
+  * apfs-label: Get rid of mmap to support 16K pages
+  * apfs-label: Fix memory leak in read_latest_super()
+  * mkapfs: Get rid of mmap to support 16K pages
+- Explicitly list files matched in %files section
+
+-------------------------------------------------------------------
 Fri Jan 10 16:26:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.2.0
