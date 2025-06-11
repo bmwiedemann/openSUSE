@@ -1,7 +1,7 @@
 #
 # spec file for package testsweeper
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %global pname testsweeper
 %if "%{flavor}" == "test"
@@ -25,8 +26,9 @@
 %bcond_with test
 %endif
 %define __builder ninja
+%define so_ver 2
 Name:           testsweeper%{?psuffix}
-Version:        2024.05.31
+Version:        2025.05.28
 Release:        0
 Summary:        C++ testing framework for parameter sweeps
 License:        BSD-3-Clause
@@ -34,11 +36,11 @@ URL:            https://github.com/icl-utk-edu/testsweeper
 Source:         %{url}/releases/download/v%{version}/testsweeper-%{version}.tar.gz
 BuildRequires:  cmake >= 3.15
 BuildRequires:  gcc-c++
-BuildRequires:  ninja 
+BuildRequires:  ninja
 %if %{with test}
-BuildRequires:  python3
-BuildRequires:  lapack-devel
 BuildRequires:  cblas-devel
+BuildRequires:  lapack-devel
+BuildRequires:  python3
 BuildRequires:  cmake(testsweeper) = %{version}
 %endif
 
@@ -48,10 +50,10 @@ command line options, iterating over the test space, and printing results. This
 simplifies test functions by allowing them to concentrate on setting up and
 solving one problem at a time.
 
-%package -n lib%{name}1
+%package -n lib%{name}%{so_ver}
 Summary:        Shared library for testsweeper, a C++ testing framework for parameter sweeps
 
-%description -n lib%{name}1
+%description -n lib%{name}%{so_ver}
 TestSweeper is a C++ testing framework for parameter sweeps. It handles parsing
 command line options, iterating over the test space, and printing results. This
 simplifies test functions by allowing them to concentrate on setting up and
@@ -61,7 +63,7 @@ This package provides the share library for %{name}.
 
 %package -n %{name}-devel
 Summary:        Headers and sources for developing apps against testsweeper
-Requires:       lib%{name}1 = %{version}
+Requires:       lib%{name}%{so_ver} = %{version}
 
 %description -n %{name}-devel
 TestSweeper is a C++ testing framework for parameter sweeps. It handles parsing
@@ -86,11 +88,11 @@ testsweeper.
 %if %{without test}
 %cmake_install
 
-%ldconfig_scriptlets -n lib%{name}1
+%ldconfig_scriptlets -n lib%{name}%{so_ver}
 
-%files -n lib%{name}1
+%files -n lib%{name}%{so_ver}
 %license LICENSE
-%{_libdir}/lib%{name}.so.1*
+%{_libdir}/lib%{name}.so.%{so_ver}*
 
 %files -n %{name}-devel
 %license LICENSE
