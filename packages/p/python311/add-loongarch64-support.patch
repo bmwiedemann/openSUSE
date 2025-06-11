@@ -1,5 +1,9 @@
 Description: Add platform triplets for LoongArch.
 
+---
+ configure.ac |   14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
 --- a/configure.ac
 +++ b/configure.ac
 @@ -976,6 +976,20 @@ cat > conftest.c <<EOF

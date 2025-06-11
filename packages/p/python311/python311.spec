@@ -107,7 +107,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.11.12
+Version:        3.11.13
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -186,12 +186,6 @@ Patch19:        bso1227999-reproducible-builds.patch
 Patch22:        gh120226-fix-sendfile-test-kernel-610.patch
 # PATCH-FIX-UPSTREAM Add platform triplets for 64-bit LoongArch gh#python/cpython#30939 glaubitz@suse.com
 Patch24:        add-loongarch64-support.patch
-# PATCH-FIX-UPSTREAM gh-126572-test_ssl-no-stop-ThreadedEchoServer-OSError.patch bsc#1241067 mcepl@suse.com
-# don't stop ThreadedEchoServer on OSError, makes test_ssl fail with OpenSSL 3.5
-Patch25:        gh-126572-test_ssl-no-stop-ThreadedEchoServer-OSError.patch
-# PATCH-FIX-UPSTREAM CVE-2025-4516-DecodeError-handler.patch bsc#1243273 mcepl@suse.com
-# this patch makes things totally awesome
-Patch26:        CVE-2025-4516-DecodeError-handler.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  crypto-policies-scripts
