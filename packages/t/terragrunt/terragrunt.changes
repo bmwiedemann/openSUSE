@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Jun 11 04:47:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.81.3:
+  * Experiments Updated
+    - The reports experiment now supports generating reports in
+      JSON format
+      As part of delivering #3628 , the reports experiment has been
+      updated to support JSON report generation in addition to the
+      default of CSV report generation.
+      To generate a report using JSON formatting, either use the
+      --report-format flag to explicitly set the format to one of
+      csv or json or provide a --report-file with a .csv or .json
+      file extension to implicitly select the report format.
+    - The reports experiment now supports generating a JSON schema
+      for reports
+      As part of delivering #3628 , the reports experiment has been
+      updated to support generating a JSON schema following the
+      JSON Schema specification in addition to generating reports.
+      To generate a schema, use the --report-schema-file flag.
+  * What's Changed
+    - feat: Adding `--report-schema-file` (#4408)
+    - feat: Add JSON support to `report` experiment (#4403)
+    - fix: Avoid using interface pointer (#4405)
+    - fix: Addressing gopls updates (#4406)
+
+-------------------------------------------------------------------
+Wed Jun 11 04:35:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.81.2:
+  * Experiments Updated
+    The reports experiment now supports generating reports
+    As part of delivering #3628 , the reports experiment has been
+    updated to support CSV report generation.
+    When the reports experiment is enabled, and the --report-file
+    argument is passed to a run --all / run --graph / stack run
+    command, Terragrunt will generate a CSV report of the run in
+    addition to the summary that is emitted by default.
+    That report offers details on the outcome of each run in the
+    Run Queue.
+    https://terragrunt.gruntwork.io/docs/features/run-queue/
+    For more information, read the documentation on the Run Report.
+    https://terragrunt.gruntwork.io/docs/features/run-report/#run-report
+  * What's Changed
+    - feat: Allow users to save reports during runs (#4396)
+    - fix: Avoid installing D2 in Vercel (#4404)
+
+-------------------------------------------------------------------
 Mon Jun 09 15:30:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.81.1:
