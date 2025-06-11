@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Jun 10 14:48:39 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase for summary
+- Reset Release: line, overwritten by obs anyway
+
+-------------------------------------------------------------------
+Tue Jun 10 12:06:11 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- created package, which is needed by latest console-setup to
+  generate DejaVu BDF files from OTF fonts

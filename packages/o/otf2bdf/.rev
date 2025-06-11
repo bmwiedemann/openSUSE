@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6fefaaddfc112b1fcf8b2b105c9a3400</srcmd5>
+    <version>3.1</version>
+    <time>1749651650</time>
+    <user>anag_factory</user>
+    <comment>created package, which is needed by latest console-setup to
+generate DejaVu BDF files from OTF fonts</comment>
+    <requestid>1284519</requestid>
+  </revision>
+</revisionlist>
