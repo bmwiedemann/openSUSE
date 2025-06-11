@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-wsgi-adapter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,10 @@ License:        BSD-3-Clause
 URL:            https://github.com/seanbrant/requests-wsgi-adapter
 # no tests in PyPI sdist, no tags on GitHub
 Source:         https://github.com/seanbrant/requests-wsgi-adapter/archive/%{commit}.tar.gz#/requests-wsgi-adapter-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 1.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 1.0
@@ -41,10 +43,10 @@ WSGI Transport Adapter for Requests
 %setup -q -n requests-wsgi-adapter-%{commit}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
