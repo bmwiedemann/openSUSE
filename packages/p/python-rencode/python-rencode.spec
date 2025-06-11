@@ -1,7 +1,7 @@
 #
 # spec file for package python-rencode
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rencode
 Version:        1.0.6
 Release:        0
@@ -28,6 +27,7 @@ Source0:        https://github.com/aresch/rencode/archive/v%{version}.tar.gz
 Source1:        %{name}.changes
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -50,10 +50,10 @@ sed -i -e '/extra_compile_args/d' setup.py
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/rencode
 
 %check
@@ -62,6 +62,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %files %{python_files}
 %license COPYING
 %{python_sitearch}/rencode
-%{python_sitearch}/rencode-%{version}-py%{python_version}.egg-info
+%{python_sitearch}/rencode-%{version}*-info
 
 %changelog

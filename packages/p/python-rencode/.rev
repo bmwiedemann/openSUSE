@@ -18,4 +18,12 @@
 - Run tests</comment>
     <requestid>680414</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7deafb4bc9fd93e4423c42ce8f480baa</srcmd5>
+    <version>1.0.6</version>
+    <time>1749652070</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1284806</requestid>
+  </revision>
 </revisionlist>
