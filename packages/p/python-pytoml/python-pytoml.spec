@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytoml
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?sle15_python_module_pythons}
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytoml
 Version:        0.1.21
 Release:        0
@@ -27,7 +26,9 @@ URL:            https://github.com/avakar/pytoml
 Source0:        https://files.pythonhosted.org/packages/source/p/pytoml/pytoml-%{version}.tar.gz
 # toml-test for tests from author's fork with specific commit
 Source1:        https://github.com/avakar/toml-test/archive/b212790.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
@@ -48,10 +49,10 @@ cd test
 mv toml-test-b212790a6b7367489f389411bda009e5ff765f20 toml-test
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +62,6 @@ export PYTHONDONTWRITEBYTECODE=1
 %files %{python_files}
 %license LICENSE
 %{python_sitelib}/pytoml/
-%{python_sitelib}/pytoml-%{version}-py*.egg-info/
+%{python_sitelib}/pytoml-%{version}.dist-info/
 
 %changelog
