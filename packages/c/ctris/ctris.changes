@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  5 13:43:32 UTC 2025 - pgajdos@suse.com
+
+- add patches
+  fix build with gcc15
+  + ctris-gcc15.patch
+
+-------------------------------------------------------------------
 Sat Mar  8 21:58:03 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.43:

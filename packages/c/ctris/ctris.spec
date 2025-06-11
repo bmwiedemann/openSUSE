@@ -26,6 +26,8 @@ Group:          Amusements/Games/Action/Arcade
 URL:            https://github.com/0xminik/ctris
 #Git-Clone:     https://github.com/0xminik/ctris.git
 Source:         https://github.com/0xminik/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/0xminik/ctris/issues/5
+Patch0:          ctris-gcc15.patch
 BuildRequires:  ncurses-devel
 
 %description

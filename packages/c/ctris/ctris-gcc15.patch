@@ -1,0 +1,12 @@
+--- ctris-0.43.orig/screen.h	2025-06-05 13:34:14.688036147 +0000
++++ ctris-0.43/screen.h	2025-06-05 13:34:55.517163475 +0000
+@@ -17,7 +17,7 @@ void show_board_win(WINDOW *, char [BOAR
+ void show_brick(WINDOW *, char [4][4], const char, const unsigned char, const unsigned char);
+ void show_brick_preview(WINDOW *, const char);
+ int get_key(WINDOW *);
+-void put_key();
++void put_key(int value);
+ int old_get_key(WINDOW *);
+ void show_game_over(WINDOW *);
+ void show_score(WINDOW *, const unsigned int, const char, const unsigned long);
+
