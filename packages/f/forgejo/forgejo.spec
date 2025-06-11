@@ -89,6 +89,7 @@ BuildRequires:  selinux-policy-devel
 %package firewalld
 Summary:        Firewalld profile for %{name}
 BuildArch:      noarch
+Conflicts:      forgejo-longterm-firewalld
 
 %description firewalld
 This package adds a firewalld service profile to %{name}
@@ -97,6 +98,7 @@ This package adds a firewalld service profile to %{name}
 %package apparmor
 Summary:        Apparmor profile for %{name}
 BuildArch:      noarch
+Conflicts:      forgejo-longterm-apparmor
 Requires:       %{name} = %{version}-%{release}
 
 %description apparmor
@@ -107,6 +109,7 @@ This package adds the Apparmor profile to %{name}
 %package selinux
 Summary:        Selinux support for %{name}
 BuildArch:      noarch
+Conflicts:      forgejo-longterm-selinux
 Requires:       %{name} = %{version}-%{release}
 Requires:       selinux-policy-targeted
 
@@ -116,6 +119,7 @@ This package adds SELinux enforcement to %{name}.
 
 %package environment-to-ini
 Summary:        Configuration params via environment variables for %{name}
+Conflicts:      forgejo-longterm-environment-to-ini
 Requires:       %{name} = %{version}-%{release}
 
 %description environment-to-ini

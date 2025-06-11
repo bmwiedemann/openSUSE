@@ -535,4 +535,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1283946</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>b8dff5653607c960ba6d3c696a0c12d2</srcmd5>
+    <version>11.0.1</version>
+    <time>1749652054</time>
+    <user>anag_factory</user>
+    <comment>- conflict all subpackages to forgejoi-longterm equivilent packages (forwarded request 1284784 from rrahl0)</comment>
+    <requestid>1284786</requestid>
+  </revision>
 </revisionlist>
