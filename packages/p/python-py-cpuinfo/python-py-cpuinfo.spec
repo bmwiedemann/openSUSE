@@ -17,6 +17,7 @@
 
 
 %bcond_without tests
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-py-cpuinfo
 Version:        9.0.0
@@ -29,10 +30,10 @@ Source:         https://files.pythonhosted.org/packages/source/p/py-cpuinfo/py-c
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): alts
-Requires(postun): alts
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -73,11 +74,8 @@ sed -i '1{ /^#!/d; }' cpuinfo/*.py
 %python_exec test_suite.py
 %endif
 
-%post
-%python_install_alternative cpuinfo
-
-%postun
-%python_uninstall_alternative cpuinfo
+%pre
+%python_libalternatives_reset_alternative cpuinfo
 
 %files %{python_files}
 %license LICENSE
