@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-akismet
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-akismet
 Version:        0.4.3
 Release:        0
@@ -24,7 +23,9 @@ Summary:        Akismet v1.1 module for Python
 License:        MIT
 URL:            https://github.com/Nekmo/python-akismet
 Source:         https://files.pythonhosted.org/packages/source/p/python-akismet/python-akismet-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests
@@ -41,10 +42,10 @@ Akismet v1.1 module for Python.
 %autosetup -p1 -n python-akismet-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +56,7 @@ Akismet v1.1 module for Python.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/akismet
+%{python_sitelib}/python[-_]akismet-%{version}*-info
 
 %changelog
