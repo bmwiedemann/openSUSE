@@ -25,6 +25,8 @@ Summary:        Threaded poller for Cacti written in C
 License:        LGPL-2.1-or-later
 URL:            https://www.cacti.net/spine_info.php
 Source:         https://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
+# https://github.com/Cacti/spine/issues/368
+Patch0:          cacti-spine-gcc15.patch
 BuildRequires:  help2man
 BuildRequires:  libtool
 BuildRequires:  mysql-devel

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 10 13:28:27 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/Cacti/spine/issues/368
+  + cacti-spine-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Apr  3 13:46:58 UTC 2025 - Joel Baltazor <obs@mtlfab.com>
 
 - cacti-spine 1.2.30

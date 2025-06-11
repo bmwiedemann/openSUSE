@@ -1,0 +1,12 @@
+--- cacti-spine-1.2.30.orig/error.h	2025-06-10 13:21:00.747178193 +0000
++++ cacti-spine-1.2.30/error.h	2025-06-10 13:27:00.987984036 +0000
+@@ -34,6 +34,6 @@
+ extern void install_spine_signal_handler(void);
+ extern void uninstall_spine_signal_handler(void);
+ #ifdef HAVE_EXECINFO_H
+-extern char ** backtrace_symbols();
+-extern int backtrace();
++extern char ** backtrace_symbols(void *const buffer[], int size);
++extern int backtrace(void *buffer[], int size);
+ #endif
+
