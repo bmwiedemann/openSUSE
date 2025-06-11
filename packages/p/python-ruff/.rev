@@ -2110,4 +2110,41 @@
    * [flake8-bugbear] Add fix safety section (B006)</comment>
     <requestid>1281460</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>77ced93915f79e160c6ed3d7236539fe</srcmd5>
+    <version>0.11.13</version>
+    <time>1749651529</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.13:
+  * \[`airflow`\] Add unsafe fix for module moved cases
+    (`AIR301`,`AIR311`,`AIR312`,`AIR302`)
+  * \[`refurb`\] Add coverage of `set` and `frozenset` calls
+    (`FURB171`)
+  * \[`refurb`\] Mark `FURB180` fix unsafe when class has bases
+  * \[`fastapi`\] Avoid false positive for class dependencies
+    (`FAST003`)
+  * Support Python 3.14 template strings (t-strings) in formatter
+    and parser
+
+   * [airflow] Revise fix titles (AIR3)
+   * [pylint] Implement missing-maxsplit-arg (PLC0207)
+   * [pyupgrade] New rule UP050 (useless-class-metaclass-type)
+   * [flake8-use-pathlib] Replace os.symlink with Path.symlink_to (PTH211)
+   * [flake8-bugbear] Ignore __debug__ attribute in B010
+   * [flake8-async] Fix anyio.sleep argument name (ASYNC115, ASYNC116)
+   * [refurb] Fix FURB129 autofix generating invalid syntax
+   * [flake8-implicit-str-concat] Add autofix for ISC003
+   * [pycodestyle] Improve the diagnostic message for E712
+   * [flake8-2020] Fix diagnostic message for != comparisons (YTT201)
+   * [pyupgrade] Make fix unsafe if it deletes comments (UP010)
+   * Simplify rules table to improve readability
+   * Update editor integrations link in README
+   * [flake8-bugbear] Add fix safety section (B006)
+   * [airflow] Add autofixes for AIR302 and AIR312
+   * [airflow] Move rules from AIR312 to AIR302
+   * [airflow] Update AIR301 and AIR311 with the latest Airflow implementations
+   * [flake8-simplify] Enable fix in preview mode (SIM117)
+   * Fix inconsistent formatting of match-case on [] and _</comment>
+    <requestid>1284538</requestid>
+  </revision>
 </revisionlist>
