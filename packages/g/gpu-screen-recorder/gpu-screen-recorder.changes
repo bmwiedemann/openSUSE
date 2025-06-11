@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 10 12:30:49 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 20250610:
+  * Fix nvidia capture after switch to opengl es
+  * Fix screen and portal capture not working on some intel gpus
+  * Swap flush and memory barrier
+  * Disable cap_sys_nice which causes amd gpu crash for some people
+  * Remove swap buffer call
+  * Fix build for newer ffmpeg
+  * Support surround sound for application audio capture
+  * Consistent info/warning/error message structure
+  * Match gsr monitor name with wayland monitor name.
+
+-------------------------------------------------------------------
 Sat May 17 19:01:13 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 20250515:
