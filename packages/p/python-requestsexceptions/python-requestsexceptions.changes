@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 11 13:05:09 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed Nov  3 11:16:30 UTC 2021 - pgajdos@suse.com
 
 - %check: note that no testsuite have been found 
