@@ -88,4 +88,16 @@
     <comment>- Fixed _service: Switch revision from main to actual version (forwarded request 1279214 from ph03nix)</comment>
     <requestid>1280311</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>03deab2c54933fcc103f370a5ea13c64</srcmd5>
+    <version>1.1.4</version>
+    <time>1749651852</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.4:
+  * v1.1.4
+  * Upgrade FDW to v1.12.7 and SDK to v5.11.7
+  * Fix issue where steampipe was returning 0 exit code for API failures. Closes #4551
+  * [dep][go](deps): Bump github.com/go-jose/go-jose/v4 from 4.0.4 to 4.0.5 (#4538) (forwarded request 1284506 from ph03nix)</comment>
+    <requestid>1284570</requestid>
+  </revision>
 </revisionlist>
