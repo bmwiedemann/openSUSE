@@ -1,7 +1,7 @@
 #
 # spec file for package python-pykerberos
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pykerberos
 Version:        1.2.4
 Release:        0
@@ -24,15 +23,16 @@ Summary:        High-level interface to Kerberos
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/02strich/pykerberos/
-Source:         https://pypi.io/packages/source/p/pykerberos/pykerberos-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pykerberos/pykerberos-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(krb5)
 # https://github.com/02strich/pykerberos/issues/17
 Conflicts:      python-kerberos
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 %python_subpackages
 
 %description
@@ -46,15 +46,15 @@ Kerberos authentication based on <http://www.ietf.org/rfc/rfc4559.txt>.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.txt
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/kerberos.cpython*
+%{python_sitearch}/pykerberos-%{version}*-info
 
 %changelog
