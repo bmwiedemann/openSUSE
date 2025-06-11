@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-editor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-editor
 Version:        1.0.4
 Release:        0
@@ -25,7 +24,9 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/fmoo/python-editor
 Source:         https://files.pythonhosted.org/packages/source/p/python-editor/python-editor-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if 0%{?is_opensuse}
@@ -43,10 +44,10 @@ environment variable.
 
 %build
 find -type f -exec chmod 644 {} +
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand sed -i -e '/^#!\/usr\/bin\/env/d' %{buildroot}%{$python_sitelib}/editor.py
 
 %if 0%{?is_opensuse}
@@ -59,6 +60,8 @@ find -type f -exec chmod 644 {} +
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/editor.py
+%{python_sitelib}/python[-_]editor-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/editor*
 
 %changelog
