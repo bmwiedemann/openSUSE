@@ -30,15 +30,23 @@ ExclusiveArch:  x86_64 aarch64
 %endif
 %bcond_with ringdisabled
 
+# Qt support through PyQt6 is in Leap16 but not SLFO
 %if 0%{?suse_version} == 1600 && !0%{?is_opensuse}
 %bcond_with qt
 %else
 %bcond_without qt
 %endif
 
+# Disable wxWidgets backend in Factory Ring 1 (Minimal-X) and SLE <= 16
+%if %{with ringdisabled} || 0%{?suse_version} <= %SLE_VERSION
+%bcond_with wx
+%else
+%bcond_without wx
+%endif
+
 %{?sle15_python_module_pythons}
 Name:           python-matplotlib%{psuffix}
-Version:        3.10.1
+Version:        3.10.3
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -91,12 +99,8 @@ Requires:       python-python-dateutil >= 2.7
 # SECTION test
 %if %{with test}
 BuildRequires:  %{python_module matplotlib = %{version}}
-BuildRequires:  %{python_module matplotlib-cairo = %{version}}
 BuildRequires:  %{python_module matplotlib-gtk3 = %{version}}
 BuildRequires:  %{python_module matplotlib-gtk4 = %{version}}
-%if %{with qt}
-BuildRequires:  %{python_module matplotlib-qt6 = %{version}}
-%endif
 BuildRequires:  %{python_module matplotlib-testdata = %{version}}
 BuildRequires:  %{python_module matplotlib-tk = %{version}}
 BuildRequires:  %{python_module matplotlib-web = %{version}}
@@ -105,12 +109,6 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
-%if 0%{?suse_version} > %SLE_VERSION
-BuildRequires:  %{python_module matplotlib-nbagg = %{version} if %python-base >= 3.10}
-%endif
-%if 0%{?suse_version} > %SLE_VERSION
-BuildRequires:  %{python_module matplotlib-wx = %{version}}
-%endif
 # SECTION latex test dependencies
 BuildRequires:  %{python_module matplotlib-latex = %{version}}
 BuildRequires:  Mesa-dri
@@ -119,26 +117,30 @@ BuildRequires:  inkscape
 BuildRequires:  poppler-tools
 # /SECTION latex
 # SECTION cairo backend options
+BuildRequires:  %{python_module matplotlib-cairo = %{version}}
 BuildRequires:  %{python_module cairo >= 1.14.0}
 BuildRequires:  %{python_module cairocffi >= 0.8}
 # /SECTION cairo
-# SECTION nbagg backend tests
+# SECTION nbagg backend tests: not in Minimal-X or SLE <= 16
 %if %{without ringdisabled} && 0%{?suse_version} > %SLE_VERSION
+BuildRequires:  %{python_module matplotlib-nbagg = %{version}}
 BuildRequires:  %{python_module nbconvert if %python-base >= 3.10}
 BuildRequires:  %{python_module nbformat if %python-base >= 3.10}
 %endif
 # /SECTION nbagg
-# SECTION qt backends: Only test PyQt6 in Minimal-X
+# SECTION qt backend tests
 %if %{with qt}
 BuildRequires:  %{python_module PyQt6}
-%if %{without ringdisabled}
-%if 0%{?suse_version} > %SLE_VERSION
-BuildRequires:  %{python_module PyQt6}
+BuildRequires:  %{python_module matplotlib-qt = %{version}}
+%if %{without ringdisabled} && 0%{?suse_version} > %SLE_VERSION
+# Don'test Pyside6 in Minimal-X or Leap <=16
 BuildRequires:  python3-pyside6
 %endif
 %endif
-%endif
 # /SECTION qt
+%if %{with wx}
+BuildRequires:  %{python_module matplotlib-wx = %{version}}
+%endif
 # /SECTION test
 %endif
 %python_subpackages
@@ -241,6 +243,7 @@ Summary:        Qt backend for %{name}
 Requires:       %{name} = %{version}
 Requires:       (python-PyQt6 >= 6.1 or python-pyside6)
 Provides:       %{name}-qt-shared = %{version}
+Provides:       %{name}-qt5 = %{version}
 Provides:       %{name}-qt6 = %{version}
 Obsoletes:      %{name}-qt-shared < %{version}
 # Renamed at upgrade from MPL 3.6.3 to 3.8.2
@@ -249,7 +252,8 @@ Obsoletes:      %{name}-qt5 < 3.8.2
 %description    qt
 This package includes the Qt-based backend
 for the %{name} plotting package
-PyQt5, PyQt6, Pyside2 or Pyside 6 may be used
+PyQt6 or Pyside 6 may be used.
+PyQt5 and Pyside2 still work, but are not supported by openSUSE anymore.
 %endif
 
 %package        testdata
@@ -280,7 +284,7 @@ Requires:       python-tornado
 This package includes the browser-based webagg backend
 for the %{name} plotting package
 
-%if 0%{?suse_version} > %SLE_VERSION
+%if %{with wx}
 %package        wx
 Summary:        WxWidgets backend for %{name}
 Requires:       %{name} = %{version}
@@ -358,6 +362,8 @@ skip_tests+=" or (test_backend_pgf and test_rcupdate)"
 # Timeout, this test freeze forever
 skip_tests+=" or test_determinism"
 skip_tests+=" or test_pcolormesh[png] or test_pcolormesh_alpha[png]"
+%endif
+%if %{without qt}
 # The next two tests fail when there's no python qt5 bindings, as in SLFO:Main
 skip_tests+=" or test_span_selector_animated_artists_callback"
 skip_tests+=" or test_qt_missing"
@@ -406,7 +412,10 @@ $python -m pytest --pyargs matplotlib.tests \
 %exclude %{python_sitearch}/matplotlib/backends/backend_gtk4agg.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_gtk4cairo.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_nbagg.*
+%exclude %{python_sitearch}/matplotlib/backends/backend_qt.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_qt5.*
+%exclude %{python_sitearch}/matplotlib/backends/backend_qtagg.*
+%exclude %{python_sitearch}/matplotlib/backends/backend_qtcairo.py*
 %exclude %{python_sitearch}/matplotlib/backends/backend_qt5agg.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_qt5cairo.py*
 %exclude %{python_sitearch}/matplotlib/backends/backend_tkagg.*
@@ -429,6 +438,9 @@ $python -m pytest --pyargs matplotlib.tests \
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_gtk4agg.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_gtk4cairo.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_nbagg.*.py*
+%exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt.*.py*
+%exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qtagg.*.py*
+%exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qtcairo.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5agg.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5cairo.*.py*
@@ -491,11 +503,17 @@ $python -m pytest --pyargs matplotlib.tests \
 %if %{with qt}
 %files %{python_files qt}
 %license LICENSE/
+%{python_sitearch}/matplotlib/backends/backend_qt.py*
+%{python_sitearch}/matplotlib/backends/backend_qtagg.py*
+%{python_sitearch}/matplotlib/backends/backend_qtcairo.py*
 %{python_sitearch}/matplotlib/backends/backend_qt5.py*
 %{python_sitearch}/matplotlib/backends/backend_qt5agg.py*
 %{python_sitearch}/matplotlib/backends/backend_qt5cairo.py*
 %{python_sitearch}/matplotlib/backends/qt_compat.py*
 %{python_sitearch}/matplotlib/backends/qt_editor/
+%pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt.*.py*
+%pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_qtagg.*.py*
+%pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_qtcairo.*.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5.*.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5agg.*.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5cairo.*.py*
@@ -534,7 +552,7 @@ $python -m pytest --pyargs matplotlib.tests \
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_webagg.*.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_webagg_core.*.py*
 
-%if 0%{?suse_version} > %SLE_VERSION
+%if %{with wx}
 %files %{python_files wx}
 %license LICENSE/
 %{python_sitearch}/matplotlib/backends/backend_wx.py*

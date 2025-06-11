@@ -1036,4 +1036,12 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
   * Data in 3D plots can now be dynamically clipped to the axes</comment>
     <requestid>1282157</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>2f13b359a664614746c839922c23f032</srcmd5>
+    <version>3.10.3</version>
+    <time>1749659666</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1284260</requestid>
+  </revision>
 </revisionlist>

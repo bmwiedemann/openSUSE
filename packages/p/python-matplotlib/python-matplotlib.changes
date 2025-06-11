@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun  9 15:35:10 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.10.3
+  * Two Bugfix releases. No notable changes beyond the GitHub
+    statistics of merged PRs.
+    (https://matplotlib.org/stable/users/github_stats.html#github-stats)
+- Remove wxPython backend from Ring1
+- Clarify Qt Support
+
+-------------------------------------------------------------------
 Mon Jun  2 07:48:07 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - switch to generate Qt6 bindings as Qt5 is going EOL
