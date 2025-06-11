@@ -1,7 +1,7 @@
 #
 # spec file for package transset
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,21 @@
 
 
 Name:           transset
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xrender)
 URL:            https://gitlab.freedesktop.org/xorg/app/transset
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Simple program to make windows transparent
 License:        MIT
 Group:          System/X11/Utilities
-Source:         transset-%{version}.tar.xz
+Source:         transset-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -39,6 +42,7 @@ windows transparent.
 %setup -n %{name}-%{version}
 
 %build
+autoreconf -fi
 %configure
 %make_build
 
@@ -51,7 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %license COPYING
-%doc README.md ChangeLog
+%doc README.md
 %{_bindir}/transset
 %{_mandir}/man1/transset.1%{?ext_man}
 
