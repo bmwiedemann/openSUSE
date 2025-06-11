@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-aiml
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without libalternatives
 Name:           python-python-aiml
 Version:        0.9.3
 Release:        0
@@ -24,13 +24,15 @@ Summary:        An interpreter package for AIML, the Artificial Intelligence Mar
 License:        BSD-2-Clause
 URL:            https://github.com/paulovn/python-aiml
 Source:         https://files.pythonhosted.org/packages/source/p/python-aiml/python-aiml-%{version}.zip
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+Requires:       alts
 Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 Provides:       python-aiml = %{version}-%{release}
 Obsoletes:      python-aiml < 0.9.0
 BuildArch:      noarch
@@ -48,10 +50,10 @@ for a long time.
 %setup -q -n python-aiml-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/aiml-bot
 %python_clone -a %{buildroot}%{_bindir}/aiml-validate
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -59,19 +61,16 @@ for a long time.
 %check
 %pyunittest discover -v
 
-%post
-%python_install_alternative aiml-bot
-%python_install_alternative aiml-validate
-
-%postun
-%python_uninstall_alternative aiml-bot
-%python_uninstall_alternative aiml-validate
+%pre
+%python_libalternatives_reset_alternative aiml-bot
+%python_libalternatives_reset_alternative aiml-validate
 
 %files %{python_files}
 %doc CHANGES.txt README.rst
 %license COPYING.txt
 %python_alternative %{_bindir}/aiml-validate
 %python_alternative %{_bindir}/aiml-bot
-%{python_sitelib}/*
+%{python_sitelib}/aiml
+%{python_sitelib}/python[-_]aiml-%{version}*-info
 
 %changelog
