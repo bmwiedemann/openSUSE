@@ -7,4 +7,12 @@
     <comment>new package, needed by some update</comment>
     <requestid>1136550</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5ccaf24952ca0b914e9b8338702d2789</srcmd5>
+    <version>1.7.1</version>
+    <time>1749651977</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284659</requestid>
+  </revision>
 </revisionlist>
