@@ -1,0 +1,12 @@
+diff -rub aws-lc/crypto/ocsp/ocsp_integration_test.cc aws-lc-patched/crypto/ocsp/ocsp_integration_test.cc
+--- aws-lc/crypto/ocsp/ocsp_integration_test.cc	2025-04-03 10:34:03.826821026 +0200
++++ aws-lc-patched/crypto/ocsp/ocsp_integration_test.cc	2025-04-03 11:44:44.113567892 +0200
+@@ -197,7 +197,7 @@
+ INSTANTIATE_TEST_SUITE_P(All, OCSPIntegrationTest,
+                          testing::ValuesIn(kIntegrationTestVectors));
+ 
+-TEST_P(OCSPIntegrationTest, AmazonTrustServices) {
++TEST_P(OCSPIntegrationTest, DISABLED_AmazonTrustServices) {
+   const IntegrationTestVector &t = GetParam();
+ 
+   // Connect to the specified endpoint. We do this to retrieve the

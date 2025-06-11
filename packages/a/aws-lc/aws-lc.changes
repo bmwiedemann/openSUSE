@@ -1,0 +1,115 @@
+-------------------------------------------------------------------
+Wed Jun 11 11:22:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- conflict the correct package
+
+-------------------------------------------------------------------
+Wed Jun  4 13:37:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to 1.52.1:
+  * Increase default salt from 8 to 16 bytes for PKCS#8 & PKCS#12
+  * fix(nix): Make sure bssl is in the PATH; workaround nix build failure…
+  * Fix path-has-spaces test
+  * Display X509 fingerprint after hash
+- Update to 1.52.0:
+  * Set OPENSSL_NO_EXTERNAL_PSK_TLS13 to indicate lack of TLS 1.3 PSK
+  * BIO datagram functions
+  * Reject NewSessionTicket messages with empty tickets in TLS 1.3
+  * Fix socket test issues
+  * Remove python CI patch for main
+  * Remove xmlsec patch
+  * Mark fallible container operations as nodiscard
+  * Remove extra va_end in err_add_error_vdata
+  * Check for QUIC in SSL_process_quic_post_handshake
+  * Add missing symbols for Unbound
+  * Update mlkem-native
+  * Squelch clang-tidy
+  * Clang-tidy is still noisy
+  * Add back two rules for clang-tidy
+  * Implement BIO_dump
+  * Make ASN1_get_object a direct call
+  * Rework memory BIOs and implement BIO_seek
+  * ML-DSA: ASN.1 Module - add parsing of BOTH private key format
+  * Detection of unused results
+  * Fix gtest_util.sh failure detection
+  * Remove unused docs/configs
+  * ML-DSA: Add ML-DSA keyGen to break-kat.go
+  * Bump AWSLC_API_VERSION for X509_STORE_CTX_set_verify_crit_oids
+  * Revert "Rework memory BIOs and implement BIO_seek
+  * Resolve SSL_PRIVATE_METHOD and certificate slots functionality
+- Update to 1.51.2:
+  * Fix prefix build when path has spaces
+- Update to 1.51.1:
+  * nothing of relevance
+- Update to 1.51.0:
+  * Fix ImplDispatchTest for 32-bit x86 build
+  * Revert "Update patch for Postgres
+  * Fix socat test
+  * Remove special s2n-bignum source code processing at buid-time
+  * Correct typo in malloc debug environment variable
+  * Fix PQ Integration tests
+  * Remove patch for IbmTpm
+  * Support allowing specific unknown critical extensions
+- Update to 1.50.1:
+  * Expand .clang-tidy configuration
+  * nginx-1.28.0 aws-lc-nginx.patch
+  * s2n bignum import method change
+  * Fix a theoretical overflow in BIO_printf
+  * Fix tpm2-tss integration tes
+- Update to 1.50.0:
+  * Remove FFDHE and SECLEVEL python test patches
+  * Remove unused ENABLE_DILITHIUM CMake option
+  * SSL_in_*_init macros
+  * Fix link to bcm.c in FIPS.md
+  * Make sure it builds with CMake v4.0
+  * Update formal verification section in README.md
+  * Implement legacy callback with BIO_set_callback
+  * Import mlkem-native
+  * Split out socket BIO tests
+  * Run clang tidy
+  * Reinstate indefinite length and [UNIVERSAL 0] support in crypto/asn1
+  * Implemented no-op CRYPTO_mem_ctrl
+  * SCRUTINICE Fixes
+  * Fix clang-tidy lints
+  * Reinstate support for constructed strings in crypto/asn1
+  * Add SecP384r1MLKEM1024
+  * Fix CMake (< v3.20) warning
+  * Add MLDSA44 and MLDSA87 to OBJ_find_sigid_algs
+  * Bump AWSLC_API_VERSION to account for OBJ_find_sigid_algs bug
+  * Add AES CBC cipher to speed.cc
+  * Add X509_VERIFY_PARAM_get_hostflags
+  * Enable IPv6 for curl integ
+  * Add null check for EVP_get_digestbyobj
+- Update to 1.49.1:
+  * FIPS Integrity Hash Tooling
+  * Add more build options to match callback build
+  * Add req to OpenSSL CLI tool
+- Update to 1.49.0:
+  * Revert "Allow constructed strings in BER parsing
+  * Add the rehash utility to the openssl CLI tool
+  * Documentation on service indicator
+  * Reject DSA trailing garbage in EVP layer, add test cases
+  * Add support for verifying PKCS7 signed attributes
+  * Add support for more SSL BIO functions
+  * Adding detection of out-of-bound pre-bound memory read to AES-XTS tests
+  * AES: Add function pointer trampoline to avoid delocator issue
+  * Cherrypick hardening DSA param checks from BoringSSL
+- move services from disabled to manual
+- add patches disable-integrationtest.patch (needs internet), vendor-fix.patch (go mod tidy)
+  and soname.patch (changes soname, so we can co-install the lib)
+- rework the packages we create
+
+-------------------------------------------------------------------
+Thu Mar 27 23:23:17 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to version 1.48.5
+- Package OpenSSL files
+- Move bssl out of devel subpackage
+- Switch to obs_scm
+- Cleanup
+
+-------------------------------------------------------------------
+Wed Oct 12 05:59:59 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.3.0
+
