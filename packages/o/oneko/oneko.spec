@@ -25,6 +25,8 @@ Group:          Amusements/Toys/Graphics
 URL:            https://www.daidouji.com/oneko/
 Source0:        %{URL}/distfiles/oneko-%{version}.tar.gz
 Patch0:         oneko-gcc14.patch
+# build with gcc15
+Patch1:         oneko-gcc15.patch
 BuildRequires:  imake
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
@@ -37,6 +39,7 @@ cursor.
 %prep
 %setup -q -b0
 %patch -P0 -b .p0
+%patch -P 1 -p1
 
 %build
 %global optflags %{optflags} -fpermissive

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  9 14:20:19 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  build with gcc15
+  + oneko-gcc15.patch
+
+-------------------------------------------------------------------
 Wed Nov  6 07:53:19 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch oneko-gcc14.patch

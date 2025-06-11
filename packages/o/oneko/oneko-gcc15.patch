@@ -1,0 +1,28 @@
+Index: oneko-1.2.sakura.5/oneko.c
+===================================================================
+--- oneko-1.2.sakura.5.orig/oneko.c
++++ oneko-1.2.sakura.5/oneko.c
+@@ -1333,7 +1333,7 @@ NullFunction()
+ {
+   /* No Operation */
+ #if defined(SYSV) || defined(SVR4)
+-  signal(SIGALRM, NullFunction);
++  signal(SIGALRM, (void (*)(int))NullFunction);
+ #endif /* SYSV || SVR4 */
+ }
+ 
+@@ -1556,10 +1556,10 @@ main(argc, argv)
+ 
+   InitScreen(theDisplayName);
+ 
+-  signal(SIGALRM, NullFunction);
+-  signal(SIGINT, RestoreCursor);
+-  signal(SIGTERM, RestoreCursor);
+-  signal(SIGQUIT, RestoreCursor);
++  signal(SIGALRM, (void (*)(int))NullFunction);
++  signal(SIGINT, (void (*)(int))RestoreCursor);
++  signal(SIGTERM, (void (*)(int))RestoreCursor);
++  signal(SIGQUIT, (void (*)(int))RestoreCursor);
+ 
+   SinPiPer8Times3 = sin(PI_PER8 * (double)3);
+   SinPiPer8 = sin(PI_PER8);
