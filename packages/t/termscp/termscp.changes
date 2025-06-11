@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 11 04:45:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.18.0:
+  * An Embedded shell for termscp:
+    - Issue 340: Replaced the Exec popup with a fully functional
+      terminal emulator embedded thanks to A-Kenji's tui-term.
+    - Command History
+    - Support for cd and exit commands as well.
+    - Exit just closes the terminal emulator.
+  * Issue 345: Default keys are used from ~/.ssh directory if no
+    keys are resolved for the host.
+  * Updated dependencies and updated the Rust edition to 2024
+
+-------------------------------------------------------------------
 Sun Mar 23 18:19:50 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.17.0:

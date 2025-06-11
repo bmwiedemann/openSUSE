@@ -17,7 +17,7 @@
 
 
 Name:           termscp
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        Feature rich terminal UI file transfer and explorer
 License:        MIT
@@ -28,6 +28,7 @@ BuildRequires:  cargo >= 1.84
 BuildRequires:  cargo-packaging
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(smbclient)
 
 # error[E0063]: missing fields `bavail`, `bfree`, `blocks` and 3 other fields in initializer of `types::stat::SmbStatVfs`
