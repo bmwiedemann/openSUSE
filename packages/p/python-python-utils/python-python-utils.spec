@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,18 +24,19 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/WoLpH/python-utils
 Source:         https://files.pythonhosted.org/packages/source/p/python-utils/python-utils-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing-extensions}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-loguru
+Requires:       python-typing-extensions
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module loguru}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-loguru
-Requires:       python-typing-extensions
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -46,10 +47,10 @@ classes which make common patterns shorter and easier.
 %setup -q -n python-utils-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +62,7 @@ mv pytest.ini{.hide,}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/python[-_]utils
+%{python_sitelib}/python[-_]utils-%{version}*-info
 
 %changelog

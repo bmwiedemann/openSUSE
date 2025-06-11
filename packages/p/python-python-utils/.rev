@@ -84,4 +84,12 @@
     for a `fromtimestamp` overflow</comment>
     <requestid>1144038</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a6b116d0bfac9e9f784a87b554342d28</srcmd5>
+    <version>3.8.2</version>
+    <time>1749651833</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1284527</requestid>
+  </revision>
 </revisionlist>
