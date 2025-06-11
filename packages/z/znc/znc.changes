@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jun 10 14:48:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.10.0:
+  * SASL v3.1 and v3.2 for clients
+  * Added a way to disable capabilities
+  * Warn user if flood protection is delaying the messages for too long
+  * Added experimental support for unix sockets
+  * `znc --makepem` now takes the CN from `gethostname()` and `uname()` if available
+  * Fixed high CPU usage when ZNC is connecting to a server
+  * Sped up capability negotiation with the server
+  * Don't forward client JOINs during registration
+  * Fixed the translation pipeline again
+  * Fixed sending server passwords with spaces in them
+  * CTCP sent to `*status` shouldn't reach server
+  * Made PING skip the flood protection queue just like PONG does
+  * Made CTCP flood timer use monotonic time
+  * certauth: it's no longer required to send a garbage password via `PASS` command, if
+    the client uses SASL EXTERNAL
+  * log: don't log user quits to logs of channels that are disabled
+  * modperl: removed usage of deprecated keywords `given`/`when`
+  * sasl: if RequireAuth is set, but SASL failed, don't disable the network anymore
+  * webadmin:
+    - fixed editing fields which are allowed to be edited while
+      `DenySetNetwork` is set.
+    - removed old compatibility code for pre-0.090 versions of parsing
+      arguments to module to open another web port.
+
+-------------------------------------------------------------------
 Tue Sep 17 16:12:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - build optional doxygen docs (add no-timestamp.patch, so __DATE__ and __TIME__ are not embedded)

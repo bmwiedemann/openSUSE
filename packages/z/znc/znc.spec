@@ -1,7 +1,7 @@
 #
 # spec file for package znc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           znc
-Version:        1.9.1
+Version:        1.10.0
 Release:        0
 Summary:        Advanced IRC Bouncer
 License:        Apache-2.0
@@ -32,7 +32,7 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
-BuildRequires:  libboost_locale-devel
+BuildRequires:  libboost_locale-devel >= 1.70
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  swig >= 4.0.1
@@ -160,86 +160,87 @@ getent passwd %{name} >/dev/null || useradd -r -g %{name} -s /bin/false -c "znc 
 %files
 %license LICENSE
 %doc README.md
-%{_unitdir}/%{name}.service
-%{_sbindir}/rc%{name}
-%{_bindir}/%{name}
+%attr(750,%{name},%{name}) %{_var}/lib/%{name}
 %dir %{_libdir}/%{name}
-%{_libdir}/%{name}/autoattach.so
+%{_bindir}/%{name}
+%{_datadir}/%{name}
 %{_libdir}/%{name}/admindebug.so
+%{_libdir}/%{name}/adminlog.so
 %{_libdir}/%{name}/alias.so
+%{_libdir}/%{name}/autoattach.so
 %{_libdir}/%{name}/autocycle.so
 %{_libdir}/%{name}/autoop.so
+%{_libdir}/%{name}/autoreply.so
+%{_libdir}/%{name}/autovoice.so
 %{_libdir}/%{name}/awaynick.so
+%{_libdir}/%{name}/awaystore.so
+%{_libdir}/%{name}/block_motd.so
+%{_libdir}/%{name}/blockuser.so
 %{_libdir}/%{name}/bouncedcc.so
+%{_libdir}/%{name}/buffextras.so
+%{_libdir}/%{name}/cert.so
+%{_libdir}/%{name}/certauth.so
 %{_libdir}/%{name}/chansaver.so
+%{_libdir}/%{name}/clearbufferonmsg.so
 %{_libdir}/%{name}/clientnotify.so
+%{_libdir}/%{name}/controlpanel.so
+%{_libdir}/%{name}/corecaps.so
 %{_libdir}/%{name}/crypt.so
+%{_libdir}/%{name}/ctcpflood.so
+%{_libdir}/%{name}/cyrusauth.so
 %{_libdir}/%{name}/dcc.so
+%{_libdir}/%{name}/disconkick.so
 %{_libdir}/%{name}/fail2ban.so
+%{_libdir}/%{name}/flooddetach.so
 %{_libdir}/%{name}/identfile.so
 %{_libdir}/%{name}/imapauth.so
 %{_libdir}/%{name}/keepnick.so
 %{_libdir}/%{name}/kickrejoin.so
-%{_libdir}/%{name}/nickserv.so
-%{_libdir}/%{name}/perform.so
-%{_libdir}/%{name}/raw.so
-%{_libdir}/%{name}/sample.so
-%{_libdir}/%{name}/savebuff.so
-%{_libdir}/%{name}/schat.so
-%{_libdir}/%{name}/shell.so
-%{_libdir}/%{name}/simple_away.so
-%{_libdir}/%{name}/stickychan.so
-%{_libdir}/%{name}/watch.so
-%{_libdir}/%{name}/webadmin.so
-%{_libdir}/%{name}/awaystore.so
-%{_libdir}/%{name}/controlpanel.so
-%{_libdir}/%{name}/cyrusauth.so
-%{_libdir}/%{name}/missingmotd.so
-%{_libdir}/%{name}/modules_online.so
-%{_libdir}/%{name}/sasl.so
-%{_libdir}/%{name}/adminlog.so
-%{_libdir}/%{name}/autoreply.so
-%{_libdir}/%{name}/autovoice.so
-%{_libdir}/%{name}/block_motd.so
-%{_libdir}/%{name}/blockuser.so
-%{_libdir}/%{name}/buffextras.so
-%{_libdir}/%{name}/cert.so
-%{_libdir}/%{name}/certauth.so
-%{_libdir}/%{name}/clearbufferonmsg.so
-%{_libdir}/%{name}/ctcpflood.so
-%{_libdir}/%{name}/disconkick.so
-%{_libdir}/%{name}/flooddetach.so
 %{_libdir}/%{name}/lastseen.so
 %{_libdir}/%{name}/listsockets.so
 %{_libdir}/%{name}/log.so
+%{_libdir}/%{name}/missingmotd.so
+%{_libdir}/%{name}/modules_online.so
+%{_libdir}/%{name}/nickserv.so
 %{_libdir}/%{name}/notes.so
 %{_libdir}/%{name}/notify_connect.so
+%{_libdir}/%{name}/perform.so
+%{_libdir}/%{name}/raw.so
 %{_libdir}/%{name}/route_replies.so
-%{_libdir}/%{name}/send_raw.so
-%{_libdir}/%{name}/stripcontrols.so
+%{_libdir}/%{name}/sample.so
 %{_libdir}/%{name}/samplewebapi.so
-%{_libdir}/%{name}/corecaps.so
-%{_datadir}/%{name}
+%{_libdir}/%{name}/sasl.so
+%{_libdir}/%{name}/saslplainauth.so
+%{_libdir}/%{name}/savebuff.so
+%{_libdir}/%{name}/schat.so
+%{_libdir}/%{name}/send_raw.so
+%{_libdir}/%{name}/shell.so
+%{_libdir}/%{name}/simple_away.so
+%{_libdir}/%{name}/stickychan.so
+%{_libdir}/%{name}/stripcontrols.so
+%{_libdir}/%{name}/watch.so
+%{_libdir}/%{name}/webadmin.so
 %{_mandir}/man?/%{name}.?%{?ext_man}
-%attr(750,%{name},%{name}) %{_var}/lib/%{name}
+%{_sbindir}/rc%{name}
+%{_unitdir}/%{name}.service
 
 %files lang -f %{name}.lang
 
 %files perl
-%{_libdir}/%{name}/modperl.so
 %dir %{_libdir}/%{name}/modperl
+%{_libdir}/%{name}/modperl.so
 %{_libdir}/%{name}/modperl/ZNC.pm
 %{_libdir}/%{name}/modperl/ZNC.so
 %{_libdir}/%{name}/modperl/startup.pl
 %{_libdir}/%{name}/perleval.pm
 
 %files python3
-%{_libdir}/%{name}/pyeval.py
-%{_libdir}/%{name}/modpython.so
 %dir %{_libdir}/%{name}/modpython/
+%{_libdir}/%{name}/modpython.so
 %{_libdir}/%{name}/modpython/_znc_core.so
 %{_libdir}/%{name}/modpython/znc.py
 %{_libdir}/%{name}/modpython/znc_core.py
+%{_libdir}/%{name}/pyeval.py
 
 %files tcl
 %{_libdir}/%{name}/modtcl.so
