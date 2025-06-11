@@ -18,13 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kubernetes
-Version:        31.0.0
+Version:        33.1.0
 Release:        0
 Summary:        Kubernetes python client
 License:        Apache-2.0
 URL:            https://github.com/kubernetes-client/python
 # Source tar - https://pypi.org/project/kubernetes/#files
 Source:         https://files.pythonhosted.org/packages/source/k/kubernetes/kubernetes-%{version}.tar.gz
+# Patch file to fix failing kubernetes.config.exec_provider_test.ExecProviderTest
+# in SLE-15 SP4 (Python 3.6.15, pytest-5.4.3, py-1.10.0, pluggy-0.13.1)
+Patch1:         fix-exec-provider-test-sle-15-sp4.patch
 BuildRequires:  %{python_module PyYAML >= 5.4.1}
 BuildRequires:  %{python_module certifi >= 14.05.14}
 BuildRequires:  %{python_module durationpy >= 0.7}
@@ -37,6 +40,7 @@ BuildRequires:  %{python_module setuptools >= 21.0.0}
 BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  %{python_module urllib3 >= 1.24.2}
 BuildRequires:  %{python_module websocket-client >= 0.32.0}
+BuildConflicts: %{python_module websocket-client = 0.40.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -68,7 +72,10 @@ BuildArch:      noarch
 Python client for kubernetes http://kubernetes.io/
 
 %prep
-%autosetup -p1 -n kubernetes-%{version}
+%setup -q -n kubernetes-%{version}
+%if 0%{?sle_version} && 0%{?sle_version} == 150400
+%patch -P 1 -p1
+%endif
 
 %build
 %if 0%{?sle_version} && 0%{?sle_version} >= 150500
@@ -96,6 +103,7 @@ Python client for kubernetes http://kubernetes.io/
 # 2. [End to end tests](kubernetes/e2e_test): these are tests that can only be verified with a live kubernetes server.
 rm kubernetes/dynamic/test_client.py
 rm kubernetes/dynamic/test_discovery.py
+cat kubernetes/config/exec_provider_test.py
 %pytest
 
 %files %{python_files}

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun 11 09:26:29 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- add patch: fix-exec-provider-test-sle-15-sp4.patch 
+  * Patch file to fix failing kubernetes.config.exec_provider_test.ExecProviderTest during package build against SLE-15 SP4 (w/ Python 3.6.15, pytest-5.4.3, py-1.10.0, pluggy-0.13.1)
+  * Patch fixes the following error:
+    ```
+    >  obj = json.loads(mock.call_args.kwargs['env']['KUBERNETES_EXEC_INFO'])
+    E  TypeError: tuple indices must be integers or slices, not str
+    ```
+
+
+-------------------------------------------------------------------
+Wed Jun 11 05:38:52 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- version update to 33.1.0
+  * please refer to the changelog at https://github.com/kubernetes-client/python/blob/v33.1.0/CHANGELOG.md#v3310 
+
+- update build requirements:
+  `BuildConflicts: %{python_module websocket-client = 0.40.0}`
+  * please refer: https://github.com/kubernetes-client/python/blob/v33.1.0/requirements.txt#L7
+
+-------------------------------------------------------------------
 Tue Feb  4 11:10:26 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - version update to 31.0.0

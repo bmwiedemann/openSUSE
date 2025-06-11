@@ -312,4 +312,16 @@ gh#kubernetes-client/python#2178 - merged upstream and released.
   * please refer to the changelog at https://github.com/kubernetes-client/python/blob/v31.0.0/CHANGELOG.md#v3100 </comment>
     <requestid>1243096</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7ac5323d39ec1065107f23b18b76d22d</srcmd5>
+    <version>33.1.0</version>
+    <time>1749651592</time>
+    <user>anag_factory</user>
+    <comment>- version update to 33.1.0
+* please refer to the changelog at https://github.com/kubernetes-client/python/blob/v33.1.0/CHANGELOG.md#v3310
+
+- add patch: fix-exec-provider-test-sle-15-sp4.patch
+* Patch file to fix failing kubernetes.config.exec_provider_test.ExecProviderTest during package build against SLE-15 SP4 (w/ Python 3.6.15, pytest-5.4.3, py-1.10.0, pluggy-0.13.1)</comment>
+    <requestid>1284759</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,51 @@
+Index: kubernetes-33.1.0/kubernetes/config/exec_provider.py
+===================================================================
+--- kubernetes-33.1.0.orig/kubernetes/config/exec_provider.py
++++ kubernetes-33.1.0/kubernetes/config/exec_provider.py
+@@ -58,15 +58,6 @@ class ExecProvider(object):
+         else:
+             self.cluster = None
+         self.cwd = cwd or None
+-    
+-    @property
+-    def shell(self):
+-        # for windows systems `shell` should be `True`
+-        # for other systems like linux or darwin `shell` should be `False`
+-        # referenes:
+-        # https://github.com/kubernetes-client/python/pull/2289
+-        # https://docs.python.org/3/library/sys.html#sys.platform
+-        return sys.platform in ("win32", "cygwin")
+ 
+     def run(self, previous_response=None):
+         is_interactive = hasattr(sys.stdout, 'isatty') and sys.stdout.isatty()
+@@ -91,7 +82,7 @@ class ExecProvider(object):
+             cwd=self.cwd,
+             env=self.env,
+             universal_newlines=True,
+-            shell=self.shell)
++            shell=True)
+         (stdout, stderr) = process.communicate()
+         exit_code = process.wait()
+         if exit_code != 0:
+Index: kubernetes-33.1.0/kubernetes/config/exec_provider_test.py
+===================================================================
+--- kubernetes-33.1.0.orig/kubernetes/config/exec_provider_test.py
++++ kubernetes-33.1.0/kubernetes/config/exec_provider_test.py
+@@ -180,8 +180,15 @@ class ExecProviderTest(unittest.TestCase
+         self.assertTrue(isinstance(result, dict))
+         self.assertTrue('token' in result)
+ 
+-        obj = json.loads(mock.call_args.kwargs['env']['KUBERNETES_EXEC_INFO'])
+-        self.assertEqual(obj['spec']['cluster']['server'], 'name.company.com')
++        #obj = json.loads(mock.call_args.kwargs['env']['KUBERNETES_EXEC_INFO'])
++        #self.assertEqual(obj['spec']['cluster']['server'], 'name.company.com')
++        # Check the KUBERNETES_EXEC_INFO env var
++        args, kwargs = mock.call_args
++        env = kwargs['env']
++        exec_info = json.loads(env['KUBERNETES_EXEC_INFO'])
++
++        self.assertIn('cluster', exec_info['spec'])
++        self.assertEqual(exec_info['spec']['cluster']['server'], 'name.company.com')
+ 
+ 
+ if __name__ == '__main__':
