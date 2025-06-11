@@ -1263,4 +1263,16 @@ Version 1.11.101
   * Fix go home shortcut on macos and change toggle action events shortcut (https://github.com/element-hq/element-web/pull/29929). Contributed by @florianduros.</comment>
     <requestid>1282724</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>c4e6cd75e28686a0708858db99c5cace</srcmd5>
+    <version>1.11.103</version>
+    <time>1749651810</time>
+    <user>anag_factory</user>
+    <comment>- Version 1.11.103
+  ## 🐛 Bug Fixes
+  
+  * Check the sender of an event matches owner of session, preventing sender spoofing by homeserver owners.
+    https://github.com/matrix-org/matrix-rust-sdk/security/advisories/GHSA-x958-rvg6-956w</comment>
+    <requestid>1284516</requestid>
+  </revision>
 </revisionlist>
