@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-yubico
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-yubico
 # there are three repos:
 #               https://pypi.org/project/python-yubico/ (1.3.3)
@@ -30,8 +29,10 @@ Group:          Development/Languages/Python
 URL:            https://developers.yubico.com/python-yubico/Releases/
 Source:         https://developers.yubico.com/python-yubico/Releases/python-yubico-%{version}.tar.gz
 Source1:        https://developers.yubico.com/python-yubico/Releases/python-yubico-%{version}.tar.gz.sig
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module usb}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-usb
@@ -55,10 +56,10 @@ but there are things one can do with bi-directional communication:
 %setup -q -n python-yubico-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -69,6 +70,7 @@ rm -r test/usb
 %files %{python_files}
 %license COPYING
 %doc README NEWS
-%{python_sitelib}/*
+%{python_sitelib}/yubico
+%{python_sitelib}/python[-_]yubico-%{version}*-info
 
 %changelog

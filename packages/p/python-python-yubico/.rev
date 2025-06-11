@@ -16,4 +16,12 @@ around in openSUSE:Factory and needs to be replaced by this one.</comment>
     <comment></comment>
     <requestid>895933</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>52930b9ee07d0185bdd20293a1a8e0cc</srcmd5>
+    <version>1.3.3</version>
+    <time>1749651835</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1284528</requestid>
+  </revision>
 </revisionlist>
