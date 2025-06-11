@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 11 04:52:47 UTC 2025 - William Brown <william.brown@suse.com>
+
+- Add wasm32-unknown-unknown support
+
+-------------------------------------------------------------------
+Wed Jun 11 03:34:45 UTC 2025 - William Brown <william.brown@suse.com>
+
+- Support SLE12 for Firefox LTS
+
+-------------------------------------------------------------------
 Wed Jun  4 18:21:31 UTC 2025 - Martin Jambor <mjambor@suse.com>
 
 - Add rust-build-onig_sys-as-C17.patch so that the package can be

@@ -30,6 +30,13 @@
 %global need_gcc_version 13
 %endif
 
+# Use correct python-version for SLE-12
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
+%define python python3.9
+%else
+%define python python3
+%endif
+
 #KEEP NOSOURCE DEBUGINFO
 
 %define obsolete_rust_versioned() \
@@ -100,7 +107,7 @@ Obsoletes:      %{1}1.62%{?2:-%{2}}
 %global rust_triple %{rust_arch}-unknown-linux-%{abi}
 
 # Web Assembly targets
-%define rust_wasm_targets %{?with_wasi:,wasm32-wasip1}
+%define rust_wasm_targets %{?with_wasi:,wasm32-wasip1,wasm32-unknown-unknown}
 
 # Base Rust targets for all architectures
 %define rust_base_targets %{rust_triple}%{rust_wasm_targets}
@@ -297,7 +304,11 @@ BuildRequires:  fdupes
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  procps
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
+BuildRequires:  python39-base
+%else
 BuildRequires:  python3-base
+%endif
 BuildRequires:  util-linux
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(openssl)
@@ -471,7 +482,7 @@ rm -rf src/tools/clang
 rm -rf src/tools/lldb
 
 # Fix rpmlint error "This script uses 'env' as an interpreter"
-sed -i '1s|#!%{_bindir}/env python|#!%{_bindir}/python3|' library/core/src/unicode/printable.py
+sed -i '1s|#!%{_bindir}/env python|#!%{_bindir}/%{python}|' library/core/src/unicode/printable.py
 chmod +x library/core/src/unicode/printable.py
 
 %if %{with wasi}
@@ -593,7 +604,7 @@ RUSTC_LOG=rustc_codegen_ssa::back::link=info %{rust_root}/bin/rustc -C link-args
 # the same version (they did previous ver)
 
 %if %{without test}
-python3 ./x.py build
+%{python} ./x.py build
 # Debug for post build
 free -h
 df -h
@@ -604,7 +615,7 @@ df -h
 %if %{without test}
 . ./.env.sh
 
-python3 ./x.py install
+%{python} ./x.py install
 
 # bsc#1199126 - rust-lld contains an rpath, which is invalid.
 chrpath -d %{buildroot}%{rustlibdir}/%{rust_triple}/bin/rust-lld
@@ -679,7 +690,7 @@ ln -s %{rust_root} %{_builddir}/rustc-%{version}-src/build/%{rust_triple}/stage0
 # Exclude mte-ffi as aarch64-linux-gnu-gcc isn't available
 
 %ifarch aarch64
-python3 ./x.py test --target=%{rust_triple} \
+%{python} ./x.py test --target=%{rust_triple} \
     --exclude tests/run-make/issue-71519 \
     --exclude tests/run-make/pgo-branch-weights \
     --exclude src/tools/tidy \
@@ -694,7 +705,7 @@ python3 ./x.py test --target=%{rust_triple} \
     --exclude tests/run-make/linker-warning \
     --exclude src/bootstrap
 %else
-python3 ./x.py test --target=%{rust_triple} \
+%{python} ./x.py test --target=%{rust_triple} \
     --exclude tests/run-make/issue-71519 \
     --exclude tests/run-make/pgo-branch-weights \
     --exclude src/tools/tidy \
@@ -752,6 +763,9 @@ python3 ./x.py test --target=%{rust_triple} \
 %{rustlibdir}/wasm32-wasip1/lib/*.rlib
 %{rustlibdir}/wasm32-wasip1/lib/self-contained/*.o
 %{rustlibdir}/wasm32-wasip1/lib/self-contained/*.a
+%dir %{rustlibdir}/wasm32-unknown-unknown
+%dir %{rustlibdir}/wasm32-unknown-unknown/lib
+%{rustlibdir}/wasm32-unknown-unknown/lib/*.rlib
 %endif
 %ifarch x86_64
 %dir %{rustlibdir}/x86_64-unknown-none
