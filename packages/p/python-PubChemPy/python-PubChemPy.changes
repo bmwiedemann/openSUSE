@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 11 05:52:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Fri May 29 07:18:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Refetch the tarball to match the url

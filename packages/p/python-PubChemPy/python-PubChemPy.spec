@@ -1,7 +1,7 @@
 #
 # spec file for package python-PubChemPy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define packagename PubChemPy
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PubChemPy
 Version:        1.0.4
 Release:        0
@@ -25,8 +24,10 @@ Summary:        A simple Python wrapper around the PubChem PUG REST API
 License:        MIT
 URL:            https://github.com/mcs07/PubChemPy
 Source:         https://github.com/mcs07/PubChemPy/archive/v%{version}.tar.gz#/PubChemPy-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -42,10 +43,10 @@ properties.
 %setup -q -n %{packagename}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +56,8 @@ properties.
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pubchempy.py
+%pycache_only %{python_sitelib}/__pycache__/pubchempy.*.pyc
+%{python_sitelib}/[Pp]ub[Cc]hem[Pp]y-%{version}.dist-info
 
 %changelog
