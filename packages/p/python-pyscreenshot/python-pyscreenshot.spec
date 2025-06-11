@@ -32,7 +32,9 @@ Summary:        Python screenshots
 License:        BSD-3-Clause
 URL:            https://github.com/ponty/pyscreenshot
 Source:         https://files.pythonhosted.org/packages/source/p/pyscreenshot/pyscreenshot-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-EasyProcess
@@ -59,7 +61,6 @@ BuildRequires:  %{python_module pygame}
 BuildRequires:  %{python_module pyscreenshot >= %{version}}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-xlib}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wxPython}
 BuildRequires:  ImageMagick
 BuildRequires:  gnome-screenshot
@@ -82,11 +83,11 @@ Replacement for the ImageGrab Module.
 %autosetup -p1 -n pyscreenshot-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -106,7 +107,7 @@ rm -rf /tmp/fillscreen*
 %doc README.md
 %license LICENSE.txt
 %{python_sitelib}/pyscreenshot
-%{python_sitelib}/pyscreenshot-%{version}*-info
+%{python_sitelib}/pyscreenshot-%{version}.dist-info
 %endif
 
 %changelog
