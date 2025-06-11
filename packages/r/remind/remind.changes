@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Wed Jun  4 08:39:43 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.4 Patch 0 - 2025-06-03
+
+- MAJOR IMPROVEMENT: remind: Track which expressions and variables
+  Remind can prove to its satisfaction are "constant" - that is, that
+  will always have the same value on any Remind run as long as the
+  files are not edited.  This allows "Purge Mode" to purge more
+  reminders than before.
+
+  See the new remind(1) man page section "NON-CONSTANT EXPRESSIONS"
+
+- MINOR NEW FEATURE: remind: add the "nonconst" built-in function (to
+  force an expression to be interpreted as non-constant), the "const"
+  function to force an expression to be interpreted as constant, and
+  the "isconst" function to test if an expression is constant.
+
+- MINOR NEW FEATURE: remind: Add eval() built-in function that takes a
+  string argument and evaluates it as an expression.  For safety, the
+  "shell" function is disabled inside an eval().
+
+- MINOR NEW FEATURE: remind: add the "u" debugging flag to warn you if
+  you set a variable that is not subsequently used.
+
+- MINOR NEW FEATURE: remind: Add the trigbase() function and
+  corresponding $Tb system variable.  See the remind(1) man page for
+  details.
+
+- MINOR IMPROVEMENT: remind: make value("var", default) evaluate the
+  second argument lazily: If "var" is defined, then the second
+  argument is never evaluated.
+
+- MINOR IMPROVEMENT: remind: Add syntax for redefining a function
+  without issuing a warning.  The syntax:
+
+      FSET - func(x) expr
+
+  is equivalent to:
+
+      FUNSET func
+      FSET func(x) expr
+
+- MINOR IMPROVEMENT: include/holidays: Update a bunch of files to use
+  isany(n, a, b, c) rather than (n == a || n == b || n == c)
+
+- MINOR IMPROVEMENT: remind: Make $Tu a synonym for triguntil().
+
+- MINOR IMPROVEMENT: remind: If coerce() fails, issue a more detailed
+  error message.
+
+- MINOR IMPROVEMENT: remind: Using Hush mode "-h" with purge mode "-j"
+  suppresses the normal purge-mode diagnostics about reminders that
+  might not be purged.  Instead, only the "#!P: Expired" purge-mode
+  lines are emitted.
+
+- NEW FEATURE: remind: Add the catch() built-in function.  This lets
+  you catch errors in expression evaluation.  For example:
+  catch(2/0, "oops") returns "oops".  The catcherr() function returns
+  the error message from the last catch() expression that failed, in
+  this case "Division by zero".
+
+- IMPROVEMENT: remind: Remind can handle dates that require UTC to
+  Local conversion (and vice-versa) for years greater than 2038, even
+  on systems with a 32-bit time_t.
+
+- MINOR IMPROVEMENT: remind: Allow the argument to monnum() to be a
+  string, in which case it's parsed as a month name and the
+  corresponding month number returned.
+
+- MINOR IMPROVEMENT: remind: Allow the argument to wkdaynum() to be a
+  string, in which case it's parsed as a weekday name and the
+  corresponding weekday number returned.
+
+- MINOR IMPROVEMENT: remind: Make the expression parser optimize away
+  the unary "-" and "!" operators when followed by an integer constant.
+
+- BUG FIX: tests: Don't use the obsolete "tail +2" syntax in test-rem.
+  Fix courtesy of Dick Marinus.
+
+-------------------------------------------------------------------
 Wed May  7 07:32:41 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 5.3 Patch 7 - 2025-05-06
