@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-haproxyctl
 Version:        0.5
 Release:        0
@@ -31,6 +36,13 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 Requires:       haproxy
 BuildArch:      noarch
 %python_subpackages
@@ -42,7 +54,7 @@ info from the running instance and list available servers, together
 with their status.
 
 %prep
-%setup -q -n haproxyctl-%{version}
+%autosetup -p1 -n haproxyctl-%{version}
 # The package is under GPL-3.0, as expressed in setup.py, but the
 # license file is not included in the source code.
 cp %{SOURCE1} .
@@ -61,11 +73,18 @@ cp -a conf %{buildroot}%{_datadir}/$python-haproxyctl/}
 %check
 %{python_expand $python -m unittest discover -s haproxy/tests}
 
+%if %{with libalternatives}
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative <package-name>
+%else
+
 %post
 %python_install_alternative haproxyctl
 
 %postun
 %python_uninstall_alternative haproxyctl
+%endif
 
 %files %{python_files}
 %doc README.md

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  4 13:16:23 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Add missing requirement on update-alternatives
+- Migrate to libalternatives on Tumbleweed and Leap 16
+
+-------------------------------------------------------------------
 Tue May 27 15:22:32 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
