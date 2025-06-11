@@ -76,4 +76,12 @@
     <comment>- Enable ZYPP_SINGLE_RPMTRANS</comment>
     <requestid>1277378</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>481db0022ce2d75b9d61a29f59a5af81</srcmd5>
+    <version>0.1.0</version>
+    <time>1749651796</time>
+    <user>anag_factory</user>
+    <comment>- Install bootloader with Secure Boot support (boo#1244248)</comment>
+    <requestid>1284481</requestid>
+  </revision>
 </revisionlist>
