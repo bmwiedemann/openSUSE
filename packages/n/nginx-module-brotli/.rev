@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>998112</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>35e266cf233448759d2465164b2bdb96</srcmd5>
+    <version>1.0.0~rc+git9</version>
+    <time>1749652091</time>
+    <user>anag_factory</user>
+    <comment>- Update to snapshot 1.0.0~rc+git9 (a71f931)
+  * check if Accept-Encoding is non-empty
+- Provide a module autoloading config fragment</comment>
+    <requestid>1284816</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package nginx-module-brotli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,48 +17,54 @@
 
 
 Name:           nginx-module-brotli
-Version:        1.0.0rc+g1
+Version:        1.0.0~rc+git9
 Release:        0
 Summary:        NGINX module for Brotli compression
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://github.com/google/ngx_brotli
-Source:         %{name}-%{version}.tar.xz
+Source:         %name-%version.tar.xz
 BuildRequires:  libbrotli-devel
 BuildRequires:  nginx-source
-%{ngx_conditionals}
-%{ngx_requires}
+%ngx_conditionals
+%ngx_requires
 
 %description
 ngx_brotli is a set of two nginx modules:
 
-ngx_brotli filter module - used to compress responses on-the-fly,
-ngx_brotli static module - used to serve pre-compressed files.
+* ngx_brotli filter module - used to compress responses on-the-fly,
+* ngx_brotli static module - used to serve pre-compressed files.
 
 Brotli is a generic-purpose lossless compression algorithm that
 compresses data using a combination of a modern variant of the LZ77
-algorithm, Huffman coding and 2nd order context modeling, with a
-compression ratio comparable to the best currently available
-general-purpose compression methods. It is similar in speed with
-deflate but offers more dense compression.
+algorithm, Huffman coding and 2nd order context modeling.
 
 %prep
 %autosetup -p1
-cp -r %{_prefix}/src/nginx .
+cp -r %_prefix/src/nginx .
 
 %build
+mkdir -p deps/brotli/c/include
+ln -s /usr/include/brotli deps/brotli/c/include/
+
 cd nginx
-%{ngx_configure} --add-dynamic-module=..
+%ngx_configure --add-dynamic-module=..
 %make_build modules
 
 %install
-mkdir -p %{buildroot}%{ngx_module_dir}
-install -Dpm0755 nginx/objs/ngx_http_brotli*_module.so %{buildroot}%{ngx_module_dir}
+b="%buildroot"
+mkdir -p "$b/%ngx_module_dir" "$b/%_datadir/nginx/modules"
+install -Dpm0755 nginx/objs/ngx_http_brotli*_module.so "$b/%ngx_module_dir/"
+cat >"$b/%_datadir/nginx/modules/mod-brotli.conf" <<-EOF
+	load_module %ngx_module_dir/ngx_http_brotli_filter_module.so;
+	load_module %ngx_module_dir/ngx_http_brotli_static_module.so;
+EOF
 
 %files
 %license LICENSE
 %doc *.md
-%{ngx_module_dir}/ngx_http_brotli_filter_module.so
-%{ngx_module_dir}/ngx_http_brotli_static_module.so
+%ngx_module_dir/ngx_http_brotli_filter_module.so
+%ngx_module_dir/ngx_http_brotli_static_module.so
+%_datadir/nginx/
 
 %changelog

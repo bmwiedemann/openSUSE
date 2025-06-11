@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 15 06:27:15 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 1.0.0~rc+git9 (a71f931)
+  * check if Accept-Encoding is non-empty
+- Provide a module autoloading config fragment
+
+-------------------------------------------------------------------
 Tue Jan  4 15:31:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to 1.0.0rc+g1 (9aec15e)
