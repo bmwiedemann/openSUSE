@@ -1,7 +1,7 @@
 #
 # spec file for package python-retry_decorator
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-retry_decorator
 Version:        1.1.1
 Release:        0
@@ -27,8 +26,10 @@ URL:            https://github.com/pnpnpn/retry-decorator
 # https://github.com/pnpnpn/retry-decorator/issues/15
 Source:         https://github.com/pnpnpn/retry-decorator/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,16 +42,17 @@ Decorator to support retry when an exception occurs.
 %setup -q -n retry-decorator-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst CHANGES.txt
-%{python_sitelib}/*
+%{python_sitelib}/retry_decorator
+%{python_sitelib}/retry_decorator-%{version}*-info
 
 %check
 %pytest
