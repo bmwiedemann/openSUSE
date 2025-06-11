@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jun  9 19:41:07 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.12.11:
+  - Security
+    - gh-135034: Fixes multiple issues that allowed tarfile
+      extraction filters (filter="data" and filter="tar") to be
+      bypassed using crafted symlinks and hard links.
+      Addresses CVE-2024-12718 (bsc#1244056), CVE-2025-4138
+      (bsc#1244059), CVE-2025-4330 (bsc#1244060), and
+      CVE-2025-4517 (bsc#1244032).
+    - gh-133767: Fix use-after-free in the “unicode-escape”
+      decoder with a non-“strict” error handler (CVE-2025-4516,
+      bsc#1243273).
+    - gh-128840: Short-circuit the processing of long IPv6
+      addresses early in ipaddress to prevent excessive memory
+      consumption and a minor denial-of-service.
+  - Library
+    - gh-128840: Fix parsing long IPv6 addresses with embedded
+      IPv4 address.
+    - gh-134062: ipaddress: fix collisions in __hash__() for
+      IPv4Network and IPv6Network objects.
+    - gh-123409: Fix ipaddress.IPv6Address.reverse_pointer output
+      according to RFC 3596, §2.5. Patch by Bénédikt Tran.
+    - bpo-43633: Improve the textual representation of
+      IPv4-mapped IPv6 addresses (RFC 4291 Sections 2.2, 2.5.5.2)
+      in ipaddress. Patch by Oleksandr Pavliuk.
+- Remove upstreamed patches:
+  - CVE-2025-4516-DecodeError-handler.patch
+
+-------------------------------------------------------------------
 Fri May 16 13:44:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2025-4516-DecodeError-handler.patch fixing
@@ -1218,7 +1248,7 @@ Wed Aug  7 18:05:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 -------------------------------------------------------------------
 Wed Aug  7 13:40:44 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
- 
+
 - %{profileopt} variable is set according to the variable
   %{do_profiling} (bsc#1227999)
 - Update bluez-devel-vendor.tar.xz
@@ -1859,7 +1889,7 @@ Mon Feb 12 13:32:43 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
   indicate the parsing error (old API). Add an optional 'strict'
   parameter to getaddresses() and parseaddr() functions. Patch by
   Thomas Dwyer.
-  
+
 -------------------------------------------------------------------
 Thu Feb  8 07:08:51 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
@@ -2937,7 +2967,7 @@ Wed Sep 20 07:14:17 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Thu Aug 10 09:33:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- restrict PEP668 to ALP/Tumbleweed 
+- restrict PEP668 to ALP/Tumbleweed
 
 -------------------------------------------------------------------
 Mon Aug  7 07:31:27 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
@@ -4470,7 +4500,7 @@ Sat Mar 26 22:52:45 UTC 2022 - Matej Cepl <mcepl@suse.com>
 Tue Feb 22 05:53:06 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-expat-245.patch:
-  * Support Expat >= 2.4.5 
+  * Support Expat >= 2.4.5
 
 -------------------------------------------------------------------
 Tue Feb 15 23:05:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
@@ -4660,7 +4690,7 @@ Sat Jun  5 21:21:38 UTC 2021 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Fri Jun  4 21:36:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- allow build with Sphinx >= 3.x 
+- allow build with Sphinx >= 3.x
 
 -------------------------------------------------------------------
 Wed Jun  2 13:12:04 UTC 2021 - Dan Čermák <dcermak@suse.com>
@@ -5212,7 +5242,7 @@ Sat Dec 12 14:29:33 UTC 2020 - Matej Cepl <mcepl@suse.com>
 Thu Dec 10 00:26:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Last try before this results in an editwar:
-  * remove importlib_resources and importlib-metadata 
+  * remove importlib_resources and importlib-metadata
     provides/obsoletes
   * import importlib_resources is not the same as
     import importlib.resources, same for metadata
@@ -5329,54 +5359,54 @@ Tue Jul 21 09:53:06 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 - Removed CVE-2019-20907_tarfile-inf-loop.patch: fixed in upstream
 - Removed recursion.tar: contained in upstream
 - Update to 3.9.0b5:
-  - bpo-41304: Fixes python3x._pth being ignored on Windows, caused 
+  - bpo-41304: Fixes python3x._pth being ignored on Windows, caused
     by the fix for bpo-29778 (CVE-2020-15801).
   - bpo-41162: Audit hooks are now cleared later during
     finalization to avoid missing events.
-  - bpo-29778: Ensure python3.dll is loaded from correct locations 
+  - bpo-29778: Ensure python3.dll is loaded from correct locations
     when Python is embedded (CVE-2020-15523).
-  - bpo-39603: Prevent http header injection by rejecting control 
+  - bpo-39603: Prevent http header injection by rejecting control
     characters in http.client.putrequest(…).
   - bpo-41295: Resolve a regression in CPython 3.8.4 where defining
-    “__setattr__” in a multi-inheritance setup and 
+    “__setattr__” in a multi-inheritance setup and
     calling up the hierarchy chain could fail if builtins/extension
     types were involved in the base types.
-  - bpo-41247: Always cache the running loop holder when running 
+  - bpo-41247: Always cache the running loop holder when running
     asyncio.set_running_loop.
-  - bpo-41252: Fix incorrect refcounting in 
+  - bpo-41252: Fix incorrect refcounting in
     _ssl.c’s _servername_callback().
-  - bpo-41215: Use non-NULL default values in the PEG parser 
+  - bpo-41215: Use non-NULL default values in the PEG parser
     keyword list to overcome a bug that was '
     preventing Python from being properly compiled when using the
     XLC compiler. Patch by Pablo Galindo.
-  - bpo-41218: Python 3.8.3 had a regression where compiling with 
-    ast.PyCF_ALLOW_TOP_LEVEL_AWAIT would 
+  - bpo-41218: Python 3.8.3 had a regression where compiling with
+    ast.PyCF_ALLOW_TOP_LEVEL_AWAIT would
     aggressively mark list comprehension with CO_COROUTINE. Now only
     list comprehension making use of async/await will tagged as so.
-  - bpo-41175: Guard against a NULL pointer dereference within 
+  - bpo-41175: Guard against a NULL pointer dereference within
     bytearrayobject triggered by the bytearray() + bytearray() operation.
-  - bpo-39960: The “hackcheck” that prevents sneaking around a type’s 
-    __setattr__() by calling the superclass method was 
+  - bpo-39960: The “hackcheck” that prevents sneaking around a type’s
+    __setattr__() by calling the superclass method was
     rewritten to allow C implemented heap types.
-  - bpo-41288: Unpickling invalid NEWOBJ_EX opcode with the 
+  - bpo-41288: Unpickling invalid NEWOBJ_EX opcode with the
     C implementation raises now UnpicklingError instead of crashing.
-  - bpo-39017: Avoid infinite loop when reading specially crafted 
+  - bpo-39017: Avoid infinite loop when reading specially crafted
     TAR files using the tarfile module (CVE-2019-20907, bsc#1174091).
   - bpo-41235: Fix the error handling in ssl.SSLContext.load_dh_params().
-  - bpo-41207: In distutils.spawn, restore expectation that 
+  - bpo-41207: In distutils.spawn, restore expectation that
     DistutilsExecError is raised when the command is not found.
   - bpo-39168: Remove the __new__ method of typing.Generic.
-  - bpo-41194: Fix a crash in the _ast module: it can no longer be 
+  - bpo-41194: Fix a crash in the _ast module: it can no longer be
     loaded more than once. It now uses a global state rather than a module state.
-  - bpo-39384: Fixed email.contentmanager to allow set_content() to set a 
+  - bpo-39384: Fixed email.contentmanager to allow set_content() to set a
     null string.
-  - bpo-41300: Save files with non-ascii chars. 
+  - bpo-41300: Save files with non-ascii chars.
     Fix regression released in 3.9.0b4 and 3.8.4.
-  - bpo-37765: Add keywords to module name completion list. 
+  - bpo-37765: Add keywords to module name completion list.
     Rewrite Completions section of IDLE doc.
-  - bpo-40170: Revert PyType_HasFeature() change: it reads 
-    again directly the PyTypeObject.tp_flags 
-    member when the limited C API is not used, rather than always calling 
+  - bpo-40170: Revert PyType_HasFeature() change: it reads
+    again directly the PyTypeObject.tp_flags
+    member when the limited C API is not used, rather than always calling
     PyType_GetFlags() which hides implementation details.
 
 -------------------------------------------------------------------
@@ -5897,7 +5927,7 @@ Wed Jun  5 12:19:09 CEST 2019 - Matej Cepl <mcepl@suse.com>
     pickling costs between processes
   - typed_ast is merged back to CPython
   - LOAD_GLOBAL is now 40% faster
-  - pickle now uses Protocol 4 by default, improving performance 
+  - pickle now uses Protocol 4 by default, improving performance
 - Remove patches which were included in the upstream:
   - 00251-change-user-install-location.patch
   - 00316-mark-bdist_wininst-unsupported.patch
@@ -6042,7 +6072,7 @@ Mon Dec 17 17:24:49 CET 2018 - mcepl@suse.com
 
 - Upgrade to 3.7.2rc1:
     * bugfix release, for the full list of all changes see
-      https://docs.python.org/3.7/whatsnew/changelog.html#changelog 
+      https://docs.python.org/3.7/whatsnew/changelog.html#changelog
 - Make run of the test suite more verbose
 
 -------------------------------------------------------------------
@@ -6469,7 +6499,7 @@ Mon Mar 13 14:04:22 UTC 2017 - jmatejek@suse.com
 Sat Feb 25 20:55:57 UTC 2017 - bwiedemann@suse.com
 
 - Add 0001-allow-for-reproducible-builds-of-python-packages.patch
-  upstream https://github.com/python/cpython/pull/296 
+  upstream https://github.com/python/cpython/pull/296
 
 -------------------------------------------------------------------
 Wed Feb  8 12:30:20 UTC 2017 - jmatejek@suse.com
@@ -6535,7 +6565,7 @@ Mon Mar  7 20:38:11 UTC 2016 - toddrme2178@gmail.com
 
 - Add  Python-3.5.1-fix_lru_cache_copying.patch
   Fix copying the lru_cache() wrapper object.
-  Fixes deep-copying lru_cache regression, which worked on 
+  Fixes deep-copying lru_cache regression, which worked on
   previous versions of python but fails on python 3.5.
   This fixes a bunch of packages in devel:languages:python3.
   See: https://bugs.python.org/issue25447
@@ -6673,7 +6703,7 @@ Sun Jan 11 13:01:30 UTC 2015 - p.drouand@gmail.com
 -------------------------------------------------------------------
 Sat Oct 18 20:14:54 UTC 2014 - crrodriguez@opensuse.org
 
-- Only pkgconfig(x11) is required for build, not the whole 
+- Only pkgconfig(x11) is required for build, not the whole
   set of packages provided by xorg-x11-devel metapackage.
 
 -------------------------------------------------------------------
@@ -6733,7 +6763,7 @@ Wed Mar 26 15:24:46 UTC 2014 - jmatejek@suse.com
 -------------------------------------------------------------------
 Mon Mar 24 17:29:31 UTC 2014 - dmueller@suse.com
 
-- remove blacklisting of test_posix on aarch64: qemu bug is fixed 
+- remove blacklisting of test_posix on aarch64: qemu bug is fixed
 
 -------------------------------------------------------------------
 Mon Mar 17 18:26:58 UTC 2014 - jmatejek@suse.com
@@ -6836,7 +6866,7 @@ Tue Nov 19 14:28:41 UTC 2013 - jmatejek@suse.com
 -------------------------------------------------------------------
 Tue Oct 15 17:44:08 UTC 2013 - crrodriguez@opensuse.org
 
-- build with -DOPENSSL_LOAD_CONF for the same reasons 
+- build with -DOPENSSL_LOAD_CONF for the same reasons
   described in the python2 package.
 
 -------------------------------------------------------------------
@@ -6848,7 +6878,7 @@ Fri Aug 16 11:35:15 UTC 2013 - jmatejek@suse.com
 -------------------------------------------------------------------
 Thu Aug  8 14:54:49 UTC 2013 - dvaleev@suse.com
 
-- Exclue test_faulthandler from tests on powerpc due to bnc#831629 
+- Exclue test_faulthandler from tests on powerpc due to bnc#831629
 
 -------------------------------------------------------------------
 Thu Jun 13 15:05:34 UTC 2013 - jmatejek@suse.com
@@ -6907,7 +6937,7 @@ Fri Mar  1 07:42:21 UTC 2013 - dmueller@suse.com
 
 - add ctypes-libffi-aarch64.patch:
   * import aarch64 support for libffi in _ctypes module
-- add aarch64 to the list of lib64 based archs 
+- add aarch64 to the list of lib64 based archs
 - add movetogetdents64.diff:
   * port to getdents64, as SYS_getdents is not implemented everywhere
 
@@ -6961,9 +6991,9 @@ Mon Oct 29 18:21:45 UTC 2012 - dmueller@suse.com
 -------------------------------------------------------------------
 Thu Oct 25 08:14:36 UTC 2012 - Rene.vanPaassen@gmail.com
 
-- exclude test_math for SLE 11; math library fails on negative 
+- exclude test_math for SLE 11; math library fails on negative
   gamma function values close to integers and 0, probably
-  due to imprecision in -lm on SLE_11_SP2. 
+  due to imprecision in -lm on SLE_11_SP2.
 
 -------------------------------------------------------------------
 Tue Oct 16 12:15:34 UTC 2012 - coolo@suse.com
@@ -6987,7 +7017,7 @@ Mon Oct  1 08:53:03 UTC 2012 - idonmez@suse.com
 -------------------------------------------------------------------
 Thu Sep 27 12:35:01 UTC 2012 - idonmez@suse.com
 
-- Correct dependency for python3-testsuite, 
+- Correct dependency for python3-testsuite,
   python3-tkinter -> python3-tk
 
 -------------------------------------------------------------------
@@ -7020,7 +7050,7 @@ Fri Aug  3 12:09:34 UTC 2012 - jmatejek@suse.com
 -------------------------------------------------------------------
 Fri Jul 27 09:02:41 UTC 2012 - dvaleev@suse.com
 
-- skip test_io on ppc 
+- skip test_io on ppc
 - drop test_io ppc patch
 
 -------------------------------------------------------------------
@@ -7069,8 +7099,8 @@ Wed Jan 18 15:49:47 UTC 2012 - jmatejek@suse.com
 -------------------------------------------------------------------
 Sun Dec 25 13:25:01 UTC 2011 - idonmez@suse.com
 
-- Use system ffi, included one is broken see 
-  http://bugs.python.org/issue11729 and 
+- Use system ffi, included one is broken see
+  http://bugs.python.org/issue11729 and
   http://bugs.python.org/issue12081
 
 -------------------------------------------------------------------
