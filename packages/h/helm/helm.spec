@@ -19,7 +19,7 @@
 %define goipath helm.sh/helm/v3
 %define git_dirty clean
 Name:           helm
-Version:        3.18.0
+Version:        3.18.2
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
@@ -103,6 +103,11 @@ mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 # requires network
 rm -v pkg/plugin/installer/*installer_test.go
 rm -v pkg/engine/engine_test.go
+# skip flaky tests
+rm -v cmd/helm/dependency_build_test.go
+rm -v cmd/helm/dependency_update_test.go
+rm -v cmd/helm/pull_test.go
+rm -v cmd/helm/registry_login_test.go
 GO111MODULE=on go test -p 2 ./...
 
 %files

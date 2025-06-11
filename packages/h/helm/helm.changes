@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Jun 10 08:14:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- remove flaky test
+  * cmd/helm/pull_test.go
+  * cmd/helm/registry_login_test.go
+  * cmd/helm/dependency_update_test.go
+
+-------------------------------------------------------------------
+Mon Jun 02 15:44:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.18.2:
+  * fix: legacy docker support broken for login 04cad46 (Terry
+    Howe)
+  * Handle an empty registry config file. bc9f8a2 (Matt Farina)
+
+-------------------------------------------------------------------
+Sat May 31 05:20:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.18.1:
+  * Notes:
+    - This release fixes regressions around template generation and
+      OCI registry interaction in 3.18.0
+    - There are at least 2 known regressions unaddressed in this
+      release. They are being worked on.
+      - Empty registry configuration files. When the file exists
+        but it is empty.
+      - Login to Docker Hub on some domains fails.
+  * Changelog
+    - fix(client): skipnode utilization for PreCopy
+    - fix(client): layers now returns manifest - remove duplicate
+      from descriptors
+    - fix(client): return nil on non-allowed media types
+    - Prevent fetching newReference again as we have in calling
+      method
+    - Prevent failure when resolving version tags in oras memory
+      store
+    - Update pkg/plugin/plugin.go
+    - Update pkg/plugin/plugin.go
+    - Wait for Helm v4 before raising when platformCommand and
+      Command are set
+    - Fix 3.18.0 regression: registry login with scheme
+    - Revert "fix (helm) : toToml` renders int as float [ backport
+      to v3 ]"
+
+-------------------------------------------------------------------
 Thu May 22 18:13:21 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Don't disable CGO on riscv64
@@ -6,7 +51,7 @@ Thu May 22 18:13:21 UTC 2025 - Andreas Schwab <schwab@suse.de>
 -------------------------------------------------------------------
 Tue May 20 19:29:23 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
-- reduce parallelism even more on tests 
+- reduce parallelism even more on tests
 
 -------------------------------------------------------------------
 Tue May 20 04:35:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
