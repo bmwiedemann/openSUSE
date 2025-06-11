@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyxdg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-pyxdg
@@ -28,8 +27,10 @@ URL:            https://freedesktop.org/wiki/Software/pyxdg
 Source0:        https://files.pythonhosted.org/packages/source/p/pyxdg/pyxdg-%{version}.tar.gz
 # Test data: examples
 Source1:        https://gitlab.freedesktop.org/xdg/pyxdg/-/archive/rel-%{version}/pyxdg-rel-%{version}.tar.gz?path=test/example#/pyxdg-%{version}-test-example.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
@@ -57,10 +58,10 @@ cp -r ../pyxdg-rel-%{version}-test-example/test/example test/
 sed -i 's/imp /importlib /' test/test_basedirectory.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -70,6 +71,6 @@ sed -i 's/imp /importlib /' test/test_basedirectory.py
 %license COPYING
 %doc README AUTHORS ChangeLog
 %{python_sitelib}/xdg
-%{python_sitelib}/pyxdg-%{version}-py*.egg-info
+%{python_sitelib}/pyxdg-%{version}.dist-info
 
 %changelog
