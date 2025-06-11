@@ -1,7 +1,7 @@
 #
 # spec file for package python-podman-compose
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,14 @@ Version:        1.2.0
 Release:        0
 Summary:        A script to run docker-compose using podman
 License:        GPL-2.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/containers/%{src_name}
 Source0:        %{src_name}-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/containers/%{src_name}/v%{version}/LICENSE
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dotenv}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       podman
@@ -60,10 +61,10 @@ for `docker-compose`, and it's very useful for certain cases because:
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/podman-compose
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand sed -i '1d' %{buildroot}%{$python_sitelib}/podman_compose.py
@@ -82,7 +83,9 @@ cp %{SOURCE1} .
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/podman_compose.py
+%pycache_only %{python_sitelib}/__pycache__/podman_compose.*.pyc
+%{python_sitelib}/podman[_-]compose-%{version}.dist-info
 %python_alternative %{_bindir}/%{src_name}
 
 %changelog

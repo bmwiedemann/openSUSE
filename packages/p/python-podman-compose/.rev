@@ -41,4 +41,13 @@ update to 1.1.0</comment>
     <comment></comment>
     <requestid>1184323</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e7ec583710341ae1ce79ce97a63e2f0f</srcmd5>
+    <version>1.2.0</version>
+    <time>1749651933</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1284622</requestid>
+  </revision>
 </revisionlist>
