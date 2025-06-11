@@ -31,6 +31,8 @@ Source5:        gbdfed48x48.png
 Patch0:         %{name}-%{version}_array-index.patch
 Patch1:         %{name}-%{version}_64bit.patch
 Patch2:         %{name}-%{version}-new-gtk.patch
+# fix build with gcc15
+Patch3:         gbdfed-gcc15.patch
 BuildRequires:  freetype2-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-2.0)
@@ -50,6 +52,7 @@ install -m 644 %{SOURCE2} .
 %patch -P 0
 %patch -P 1
 %patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 %configure

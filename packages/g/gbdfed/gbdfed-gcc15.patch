@@ -1,0 +1,26 @@
+diff -upr gbdfed-1.6.orig/bdfgrab.c gbdfed-1.6/bdfgrab.c
+--- gbdfed-1.6.orig/bdfgrab.c	2025-06-10 09:59:59.306417624 +0000
++++ gbdfed-1.6/bdfgrab.c	2025-06-10 10:03:46.721603657 +0000
+@@ -244,7 +244,7 @@ bdf_load_server_font(Display *d, XFontSt
+     XCharStruct *cp;
+     bdf_property_t *pp, prop;
+     bdf_callback_struct_t cb;
+-    int (*old_error_handler)();
++    XErrorHandler old_error_handler;
+ 
+     if (f == 0)
+       return 0;
+diff -upr gbdfed-1.6.orig/hbf.c gbdfed-1.6/hbf.c
+--- gbdfed-1.6.orig/hbf.c	2025-06-10 09:59:59.306417624 +0000
++++ gbdfed-1.6/hbf.c	2025-06-10 10:04:48.723937792 +0000
+@@ -82,7 +82,9 @@
+ 
+ #define	reg	register
+ 
++#if __STDC_VERSION__ < 202311L
+ typedef	int	bool;
++#endif
+ #define	TRUE	1
+ #define	FALSE	0
+ 
+
