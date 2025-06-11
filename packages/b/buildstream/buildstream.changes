@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jun  9 06:48:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.5.0:
+  + Fix directory mtime to support latest buildbox-casd
+  + Fix test cases to work with latest buildbox
+  + Support gRPC retry and timeout configuration for all remote
+    services
+  + Fix our setup.py for surprise update of setuptools
+  + Add Source.collect_source_info() and
+    SourceFetcher.get_source_info() methods, support showing
+    introspected source provenance information in `bst show`, make
+    it possible for absence of implementations of these new methods
+    be fatal, and export some related utilities to help plugins
+    support such
+  + Some minor fixes to documentation
+  + Support showing artifact content digests in `bst show`
+  + Better support for parsing boolean configuration that is
+    exported from project options
+  + Better error handling in remote execution if services do not
+    support required sandbox options
+  + Fix pushing artifacts with remote caches
+  + Fix build warnings stemming from using outdated grpcio tools
+  + Fix additional jobs being scheduled after the user has asked to
+    quit
+
+-------------------------------------------------------------------
 Sun Mar 23 17:04:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.4.1:

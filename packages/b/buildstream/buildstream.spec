@@ -17,7 +17,7 @@
 
 
 Name:           buildstream
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        A framework for modelling build pipelines in YAML
 License:        LGPL-2.1-or-later
