@@ -19,13 +19,13 @@
 %global sover 1_2
 Name:           libmfx-gen
 %define lname   libmfx-gen%{sover}
-Version:        25.1.4
+Version:        25.2.4
 Release:        0
 Summary:        Intel oneVPL GPU Runtime
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/intel/vpl-gpu-rt
-Source0:        https://github.com/intel/vpl-gpu-rt/archive/refs/tags/intel-onevpl-%{version}.tar.gz
+Source0:        vpl-gpu-rt-intel-onevpl-%{version}.tar.gz
 Source1:        supplements.inc
 Source2:        generate-supplements.sh
 BuildRequires:  cmake

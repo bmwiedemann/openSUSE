@@ -192,4 +192,60 @@
     <comment></comment>
     <requestid>1276964</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3aa0a90c8abed19e78fda0189f918305</srcmd5>
+    <version>25.2.4</version>
+    <time>1749651823</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 25.2.4; changes since 25.1.4
+  * [Encode] Support negative QP for AVC
+  * Update Shift description for Decoder
+  * [Media Common] Bump up version to 25.2.0
+  * [RT Common] Upstream new BMG DIDs
+  * Define MFX_VARIANT_TYPE_QUERY as bitmask
+  * Add VVC_DEC STILL_PICTURE profile and Level 6.3
+  * [Decode] Fix VVC conformance window setting issue
+  * [Decode] Add latest VVC level 6.3 and MAIN10_STILL
+  * [RT Common] Add BMG Device ID for upstream
+  * Revert &quot;[Decode] Add latest VVC level 6.3 and MAIN10_STILL &quot;
+  * [RT Common] Update property-based query implementation
+  * Remove double copy to/from GPU in hwupload and hwdownload
+  * Refine for commit 618b2ed (#7828)
+  * Add new capability query information to VPL
+  * [Encode] Rename the feature block for close
+  * [RT Common] Remove duplicated codec IDs or VPP filters for query
+  * Revert &quot;Remove double copy to/from GPU in hwupload and hwdownload (#9488)&quot;
+  * [RT Common] Export MFXQueryImplsProperties as global symbol for Linux
+  * [Media Common] Bump up version to 25.2.1
+  * [Decode] Add latest VVC level 6.3 and Main10_STILL
+  * [VP] Add SR 444 420 Format Support
+  * [Decode] Reduce hevc status array size
+  * [Encode] Update Caps for AVC
+  * Fix XYUV color format handling
+  * remove fastpass for ip scan
+  * [RT Common] Mutex optimization for fast copy
+  * Updates from editor
+  * Update action runner to 22.04
+  * Update API version to 2.15
+  * [HEVCe] Export more information in QueryImplsDescription
+  * Remove clang12 from the github workflow
+  * [Media Common] Bump up version to 25.2.2
+  * [RT Common] Refine revenue build
+  * [RT Common] Refine BuildOptionsPlatform.cmake
+  * Fix bug when renderID not start from 128 will return error
+  * [Decode] Add R16 format into shift option
+  * [Media Common] Bump up version to 25.2.3
+  * Add AI assisted Encoder Control API
+  * Update FOURCC RGB4/BGR4/ARGB16/ABGR16 description
+  * [RT Common] Manage platform string in set for different build plan
+  * Add Panther Lake platform support in readme
+  * [RT Common] Minor style updates
+  * [Encode] 4k Low QP corruption issue fix.
+  * [Media Common] Bump up version to 25.2.4
+  * [encode] Upstream av1ehw/hevcehw for PTL
+  * [Encode] Enable HEVCe Saliency Control
+  * [RT Common] Upstream more device IDs for PTL
+  * [Common] Reclassify status message</comment>
+    <requestid>1284531</requestid>
+  </revision>
 </revisionlist>
