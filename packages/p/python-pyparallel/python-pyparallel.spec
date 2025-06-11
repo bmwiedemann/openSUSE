@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyparallel
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# For license file
+%define tag     b33995136e433839cb5cd139214d02c7c6dd2008
 Name:           python-pyparallel
 Version:        0.2.2
 Release:        0
-# For license file
-%define tag     b33995136e433839cb5cd139214d02c7c6dd2008
 Summary:        Python Parallel Port Extension
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/pyserial/pyparallel
+URL:            https://github.com/pyserial/pyparallel
 Source:         https://files.pythonhosted.org/packages/source/p/pyparallel/pyparallel-%{version}.tar.gz
 Source10:       https://raw.githubusercontent.com/pyserial/pyparallel/%{tag}/LICENSE.txt
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -45,15 +45,16 @@ sed -i -e '/^#!\//, 1d' parallel/parallelppdev.py
 cp %{SOURCE10} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/parallel
+%{python_sitelib}/pyparallel-%{version}*-info
 
 %changelog
