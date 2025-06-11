@@ -1,7 +1,7 @@
 #
 # spec file for package python-pure-eval
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-pure-eval
 Version:        0.2.3
@@ -25,6 +24,7 @@ Summary:        Safely evaluate AST nodes without side effects
 License:        MIT
 URL:            https://github.com/alexmojaki/pure_eval
 Source:         https://files.pythonhosted.org/packages/source/p/pure_eval/pure_eval-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 44}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
 BuildRequires:  %{python_module wheel}
@@ -43,16 +43,17 @@ Safely evaluate AST nodes without side effects
 %autosetup -p1 -n pure_eval-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
 %files %{python_files}
-%{python_sitelib}/pure_eval*
+%{python_sitelib}/pure_eval
+%{python_sitelib}/pure_eval-%{version}.dist-info
 
 %changelog

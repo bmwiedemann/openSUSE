@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 11 05:52:33 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Explicitly list files and directories in %files.
+
+-------------------------------------------------------------------
 Thu Jul 25 14:21:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.2.3
