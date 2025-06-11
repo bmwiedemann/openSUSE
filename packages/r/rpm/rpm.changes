@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  2 15:07:06 CEST 2025 - mls@suse.de
+
+- use the pubkey modification time instead of the creation time
+  as the release number, as it was with older rpm versions
+  * new patch: pgpreleasemtime.diff
+
+-------------------------------------------------------------------
 Wed May 21 15:40:57 CEST 2025 - mls@suse.de
 
 - fix posttrans scriptlet argument in the update case [bsc#1243279]

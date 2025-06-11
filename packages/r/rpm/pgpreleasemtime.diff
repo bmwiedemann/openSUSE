@@ -1,0 +1,38 @@
+--- include/rpm/rpmpgp.h.orig	2025-06-02 13:22:06.721991623 +0000
++++ include/rpm/rpmpgp.h	2025-06-02 13:25:58.441706775 +0000
+@@ -467,6 +467,14 @@ int pgpDigParamsVersion(pgpDigParams dig
+ uint32_t pgpDigParamsCreationTime(pgpDigParams digp);
+ 
+ /** \ingroup rpmpgp
++ * Retrieve the object's last modification time.
++ *
++ * param digp		parameter container
++ * return		seconds since the UNIX Epoch.
++ */
++uint32_t pgpDigParamsModificationTime(pgpDigParams digp);
++
++/** \ingroup rpmpgp
+  * Destroy parsed OpenPGP packet parameter(s).
+  * @param digp		parameter container
+  * @return		NULL always
+--- lib/rpmts.c.orig	2025-06-02 13:04:10.919297800 +0000
++++ lib/rpmts.c	2025-06-02 13:05:41.795192518 +0000
+@@ -468,7 +468,7 @@ static void initPgpData(pgpDigParams pub
+     if (! pd->userid) {
+         pd->userid = "none";
+     }
+-    pd->time = pgpDigParamsCreationTime(pubp);
++    pd->time = pgpDigParamsModificationTime(pubp);
+ 
+     rasprintf(&pd->timestr, "%x", pd->time);
+     rasprintf(&pd->verid, "%d:%s-%s", pgpDigParamsVersion(pubp), pd->signid, pd->timestr);
+--- rpmio/rpmpgp_legacy-1.1/rpmpgp_internal.h.orig	2025-06-02 13:27:51.345567394 +0000
++++ rpmio/rpmpgp_legacy-1.1/rpmpgp_internal.h	2025-06-02 13:28:59.425482575 +0000
+@@ -163,7 +163,4 @@ rpmpgpRC pgpMergeKeys(const uint8_t *pkt
+ RPM_GNUC_INTERNAL
+ uint32_t pgpCurrentTime(void);
+ 
+-RPM_GNUC_INTERNAL
+-uint32_t pgpDigParamsModificationTime(pgpDigParams digp);
+-
+ #endif /* _RPMPGP_INTERNAL_H */
