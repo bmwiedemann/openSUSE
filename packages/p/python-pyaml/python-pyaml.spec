@@ -22,13 +22,14 @@ Version:        25.5.0
 Release:        0
 Summary:        Python module to produce formatted YAML-serialized data
 License:        WTFPL
-Group:          Development/Languages/Python
 URL:            https://github.com/mk-fg/pretty-yaml
 Source:         https://files.pythonhosted.org/packages/source/p/pyaml/pyaml-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Unidecode}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
@@ -45,10 +46,10 @@ PyYAML-based python module to produce formatted YAML-serialized data.
 %setup -q -n pyaml-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}/%{_bindir}/pyaml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -66,6 +67,6 @@ PyYAML-based python module to produce formatted YAML-serialized data.
 %doc README.rst
 %python_alternative %{_bindir}/pyaml
 %{python_sitelib}/pyaml
-%{python_sitelib}/pyaml-%{version}*-info
+%{python_sitelib}/pyaml-%{version}.dist-info
 
 %changelog
