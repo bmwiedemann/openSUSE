@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 11 05:57:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue Aug 18 22:42:45 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - We can finally use %pyunittest macro

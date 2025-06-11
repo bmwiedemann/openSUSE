@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyuca
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyuca
 Version:        1.2
 Release:        0
@@ -27,7 +26,9 @@ URL:            https://github.com/jtauber/pyuca
 Source0:        https://files.pythonhosted.org/packages/source/p/pyuca/pyuca-%{version}.tar.gz
 # https://github.com/jtauber/pyuca/issues/21
 Source1:        https://raw.githubusercontent.com/jtauber/pyuca/master/test.py
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -43,10 +44,10 @@ variable-weighting setting of Non-ignorable.
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +56,7 @@ cp %{SOURCE1} .
 %files %{python_files}
 %license LICENSE*
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/pyuca
+%{python_sitelib}/pyuca-%{version}.dist-info
 
 %changelog
