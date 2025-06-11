@@ -360,4 +360,12 @@
   * avoid reloading `glob` in Python 3.13</comment>
     <requestid>1273204</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>dfe73b4022fc4145685b551771733921</srcmd5>
+    <version>5.8.0</version>
+    <time>1749651545</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284634</requestid>
+  </revision>
 </revisionlist>

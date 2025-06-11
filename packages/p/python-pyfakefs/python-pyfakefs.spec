@@ -32,7 +32,9 @@ Summary:        Fake file system that mocks the Python file system modules
 License:        Apache-2.0
 URL:            https://github.com/jmcgeheeiv/pyfakefs
 Source:         https://github.com/jmcgeheeiv/pyfakefs/archive/v%{version}.tar.gz#/python-pyfakefs-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
@@ -53,11 +55,11 @@ no modification to work with pyfakefs.
 %setup -q -n pyfakefs-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand rm -r %{buildroot}%{$python_sitelib}/pyfakefs/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
@@ -73,7 +75,7 @@ export LANG=C.UTF-8
 %doc CHANGES.md README.md
 %license COPYING
 %{python_sitelib}/pyfakefs
-%{python_sitelib}/pyfakefs-%{version}*-info
+%{python_sitelib}/pyfakefs-%{version}.dist-info
 %endif
 
 %changelog
