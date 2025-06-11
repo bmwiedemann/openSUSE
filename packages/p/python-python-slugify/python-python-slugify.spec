@@ -23,11 +23,12 @@ Version:        8.0.4
 Release:        0
 Summary:        Slugify application that handles Unicode
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/un33k/python-slugify
 Source:         %{short_name}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module text-unidecode >= 1.3}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-text-unidecode >= 1.3
@@ -45,10 +46,10 @@ A Python Slugify application that handles Unicode.
 %setup -q -n %{short_name}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/slugify
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -65,7 +66,7 @@ A Python Slugify application that handles Unicode.
 %doc CHANGELOG.md README.md
 %license LICENSE
 %python_alternative %{_bindir}/slugify
-%{python_sitelib}/python_slugify-%{version}-py*.egg-info
+%{python_sitelib}/python_slugify-%{version}.dist-info
 %{python_sitelib}/slugify/
 
 %changelog
