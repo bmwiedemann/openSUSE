@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.73.0
+Version:        2.74.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -63,6 +63,7 @@ Requires:       %{pythons}-azure-keyvault-administration >= 4.4.0~b2
 Requires:       %{pythons}-azure-keyvault-certificates >= 4.7.0
 Requires:       %{pythons}-azure-keyvault-keys >= 4.11.0~b1
 Requires:       %{pythons}-azure-keyvault-secrets >= 4.7.0
+Requires:       %{pythons}-azure-keyvault-securitydomain >= 1.0.0~b1
 Requires:       %{pythons}-azure-mgmt-advisor >= 9.0.0
 Requires:       %{pythons}-azure-mgmt-apimanagement >= 4.0.0
 Requires:       %{pythons}-azure-mgmt-appconfiguration >= 3.1.0
@@ -78,8 +79,8 @@ Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.5.0
 Requires:       %{pythons}-azure-mgmt-compute >= 34.1.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.2.0~b1
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 14.0.0
-Requires:       %{pythons}-azure-mgmt-containerservice >= 35.0.0
-Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.7.0
+Requires:       %{pythons}-azure-mgmt-containerservice >= 36.0.0
+Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.8.0
 Requires:       %{pythons}-azure-mgmt-databoxedge >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-datalake-store >= 1.1.0~b1
 Requires:       %{pythons}-azure-mgmt-datamigration >= 10.0.0
@@ -108,7 +109,7 @@ Requires:       %{pythons}-azure-mgmt-postgresqlflexibleservers >= 1.1.0~b2
 Requires:       %{pythons}-azure-mgmt-privatedns >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-rdbms >= 10.2.0b17
 Requires:       %{pythons}-azure-mgmt-recoveryservices >= 3.0.0
-Requires:       %{pythons}-azure-mgmt-recoveryservicesbackup >= 9.1.0
+Requires:       %{pythons}-azure-mgmt-recoveryservicesbackup >= 9.2.0
 Requires:       %{pythons}-azure-mgmt-redhatopenshift >= 1.5.0
 Requires:       %{pythons}-azure-mgmt-redis >= 14.5.0
 Requires:       %{pythons}-azure-mgmt-reservations >= 2.0.0
@@ -122,7 +123,7 @@ Requires:       %{pythons}-azure-mgmt-servicelinker >= 1.2.0~b3
 Requires:       %{pythons}-azure-mgmt-signalr >= 2.0.0~b2
 Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b21
 Requires:       %{pythons}-azure-mgmt-sqlvirtualmachine >= 1.0.0b5
-Requires:       %{pythons}-azure-mgmt-storage >= 21.2.0
+Requires:       %{pythons}-azure-mgmt-storage >= 23.0.0
 Requires:       %{pythons}-azure-mgmt-synapse >= 2.1.0b5
 Requires:       %{pythons}-azure-mgmt-trafficmanager >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-web >= 7.2.0
@@ -143,7 +144,7 @@ Requires:       %{pythons}-paramiko >= 2.0.8
 Requires:       %{pythons}-pycomposefile >= 0.0.32
 Requires:       %{pythons}-pygments >= 2.4
 Requires:       %{pythons}-scp >= 0.13.2
-Requires:       %{pythons}-semver >= 2.13.0
+Requires:       %{pythons}-semver >= 3.0
 Requires:       %{pythons}-six >= 1.10.0
 Requires:       %{pythons}-sshtunnel >= 0.1.4
 Requires:       %{pythons}-tabulate
