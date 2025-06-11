@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyls-spyder
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-pyls-spyder
 Version:        0.4.0
 Release:        0
@@ -27,15 +25,17 @@ URL:            https://github.com/spyder-ide/pyls-spyder
 # Use Github archive instead of PyPI sdist because of test files
 Source:         %{url}/archive/v%{version}.tar.gz#/pyls-spyder-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-python-lsp-server >= 1.0.1
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lsp-server >= 1.0.1}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-python-lsp-server >= 1.0.1
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -45,10 +45,10 @@ Spyder extensions for the python-lsp-server
 %setup -q -n pyls-spyder-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
