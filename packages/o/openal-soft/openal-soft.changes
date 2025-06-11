@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri May 30 16:44:11 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use the @TAG@~@VERSION@ format specifier in obs_scm service 
+
+-------------------------------------------------------------------
+Thu May 29 11:57:51 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to git version 1.24.3+git7f56dcdf. This includes the port
+  to Qt6 added as a patch previously and also other fixes that
+  let this build in Leap 15.6.
+- Drop patch that's already included in this version:
+  * 1132.patch
+
+-------------------------------------------------------------------
+Sun May 25 21:09:54 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use %cmake_build instead of %make_jobs
+- Add 1132.patch: port to Qt6
+- Apply spec-cleaner -ki changes
+- Replaced deprecated ALSOFT_CONFIG CMake option with
+  ALSOFT_INSTALL_UTILS
+
+- Update to version 1.24.3:
+  * Fixed handling WASAPI enumerated device changes
+  * Fixed a crash with UWP builds when __wargv is null
+  * Fixed using AL_FORMAT_BFORMAT3D_I32
+  * Improved the bsinc resamplers' cutoff frequencies
+  * Slightly reduced the aliasing noise in the cubic spline
+    resampler
+  * Added new bsinc48 and fast_bsinc48 resampler options.
+  * Added support for using NFC filters with UHJ output.
+
+-------------------------------------------------------------------
 Mon Mar  3 09:33:21 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.24.2
@@ -70,7 +103,7 @@ Mon Mar  3 09:33:21 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 Tue Aug 16 19:42:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - disable pipewire backend to avoid buildcycle
-  ffmpeg-4, libopenmpt, mpg123, openal-soft, pipewire 
+  ffmpeg-4, libopenmpt, mpg123, openal-soft, pipewire
 
 -------------------------------------------------------------------
 Mon Aug  1 22:21:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -86,7 +119,7 @@ Mon Aug  1 22:21:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Added checks for the runtime PipeWire version.
   * The same or newer version than is used for building will be needed at
     runtime for the backend to work.
-  * Separated 3D7.1 into its own speaker configuration. 
+  * Separated 3D7.1 into its own speaker configuration.
   * Implemented the ALC_SOFT_reopen_device extension.
   * This allows for moving devices to different outputs without losing object state.
   * Implemented the ALC_SOFT_output_mode extension.
@@ -410,36 +443,36 @@ Thu Feb 11 18:28:22 UTC 2016 - mpluskal@suse.com
     * Fixed building on FreeBSD.
     * Fixed the ALSA backend's allow-resampler option.
     * Fixed handling of inexact ALSA period counts.
-    * Altered device naming scheme on Windows backends to better 
+    * Altered device naming scheme on Windows backends to better
       match other drivers.
-    * Updated the CoreAudio backend to use the AudioComponent API. 
-      This clears up deprecation warnings for OSX 10.11, although 
+    * Updated the CoreAudio backend to use the AudioComponent API.
+      This clears up deprecation warnings for OSX 10.11, although
       requires OSX 10.6 or newer.
 - Changes for 1.17.0
     * Implemented a JACK playback backend.
-    * Implemented the AL_EXT_BFORMAT and AL_EXT_MULAW_BFORMAT 
+    * Implemented the AL_EXT_BFORMAT and AL_EXT_MULAW_BFORMAT
       extensions.
     * Implemented the ALC_SOFT_HRTF extension.
-    * Implemented C, SSE3, and SSE4.1 based 4- and 8-point Sinc 
+    * Implemented C, SSE3, and SSE4.1 based 4- and 8-point Sinc
       resamplers.
-    * Implemented a C and SSE based band-limited Sinc resampler. 
-      This does 12- to 24-point Sinc resampling, and performs 
+    * Implemented a C and SSE based band-limited Sinc resampler.
+      This does 12- to 24-point Sinc resampling, and performs
       anti-aliasing.
     * Implemented B-Format output support for the wave file writer.
-      This creates FuMa-style first-order Ambisonics wave files 
+      This creates FuMa-style first-order Ambisonics wave files
       (AMB format).
-    * Implemented a stereo-mode config option for treating stereo 
+    * Implemented a stereo-mode config option for treating stereo
       modes as either speakers or headphones.
     * Implemented per-device configuration options.
-    * Fixed handling of PulseAudio and MMDevAPI devices that have 
+    * Fixed handling of PulseAudio and MMDevAPI devices that have
       identical descriptions.
-    * Fixed a potential lockup when stopping playback of suspended 
+    * Fixed a potential lockup when stopping playback of suspended
       PulseAudio devices.
     * Fixed logging of Unicode characters on Windows.
     * Fixed 5.1 surround sound channels. By default it will now
-      use the side channels for the surround output. A 
+      use the side channels for the surround output. A
       configuration using rear channels is still available.
-    * Fixed the QSA backend potentially altering the capture 
+    * Fixed the QSA backend potentially altering the capture
       format.
 - Update project and download url
 - Dropped upstreamed fix-neon-build.patch
@@ -537,7 +570,7 @@ Tue Jan  8 12:31:06 UTC 2013 - reddwarf@opensuse.org
 -------------------------------------------------------------------
 Mon Jan  7 20:38:56 UTC 2013 - joop.boonen@opensuse.org
 
-- Fixed SLES build 
+- Fixed SLES build
 - Removed Requirements that are resolved automatically
 - Added missing openal-soft-devel Requirement libopenal1
 
@@ -828,4 +861,3 @@ Thu Jun  5 16:05:20 CEST 2008 - lnussel@suse.de
 Thu Jun  5 14:39:24 CEST 2008 - lnussel@suse.de
 
 - new package version 1.4.272 based on b-s-a's and ickruis' work
-

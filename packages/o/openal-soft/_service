@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/kcat/openal-soft.git</param>
+    <param name="revision">7f56dcdfbce02bea96894c688d48be574a55a41d</param>
+    <param name="match-tag">[0-9]*.[0-9]*.[0-9]*</param>
+    <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
+    <param name="filename">openal-soft</param>
+  </service>
+  <service name="set_version" mode="manual" />
+
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+
+</services>

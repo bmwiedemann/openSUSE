@@ -17,32 +17,33 @@
 
 
 Name:           openal-soft
-Version:        1.24.2
+Version:        1.24.3~179
 Release:        0
 Summary:        Audio library with an OpenGL-resembling API
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://www.openal-soft.org/
-Source0:        https://www.openal-soft.org/openal-releases/openal-soft-%{version}.tar.bz2
+#Source0:        https://www.openal-soft.org/openal-releases/openal-soft-%%{version}.tar.bz2
+Source0:        openal-soft-%{version}.tar.zst
 Source1:        libopenalcompat.c
 Source3:        baselibs.conf
 BuildRequires:  cmake >= 3.0
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(libmysofa)
+# BuildRequires:  pkgconfig(jack) # undefined reference to `jack_error_callback'
+BuildRequires:  pkgconfig(libpipewire-0.3)
+BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(portaudio-2.0)
+BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(zlib)
 %if 0%{?sle_version} >= 150600 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
 BuildRequires:  gcc13
 BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(alsa)
-# BuildRequires:  pkgconfig(jack) # undefined reference to `jack_error_callback'
-# BuildRequires:  pkgconfig(libpipewire-0.3)
-BuildRequires:  pkgconfig(libmysofa)
-BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(portaudio-2.0)
-BuildRequires:  pkgconfig(sdl2)
-BuildRequires:  pkgconfig(zlib)
 
 %description
 OpenAL is an audio library designed in the spirit of the OpenGL API.
@@ -83,9 +84,9 @@ Summary:        OpenAL Soft HRTF generation utility
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 Conflicts:      openal-soft-devel < %{version}
-Provides:       makehrtf = %version-%release
+Provides:       makehrtf = %{version}-%{release}
 Provides:       openal-soft-devel:%{_bindir}/makehrtf
-Obsoletes:      makehrtf < %version
+Obsoletes:      makehrtf < %{version}
 
 %description makemhr
 OpenAL is an audio library designed in the spirit of the OpenGL API.
@@ -150,13 +151,14 @@ export CXX="g++-13"
 %endif
 %cmake \
   -DCMAKE_BUILD_TYPE=Release \
-  -DALSOFT_CONFIG=ON \
   -DALSOFT_DLOPEN=OFF \
-%ifarch %ix86
+  -DALSOFT_UTILS=ON \
+  -DALSOFT_INSTALL_UTILS=ON \
+%ifarch %{ix86}
   -DALSOFT_CPUEXT_SSE2:BOOL=OFF \
 %endif
   -Wno-dev
-%make_jobs
+%cmake_build
 gcc -Wall %{optflags} -fPIC -DPIC -Wl,-soname,libopenal.so.0 -shared -Wl,--no-as-needed -L. -lopenal -o libopenal.so.0 %{SOURCE1}
 
 %install
