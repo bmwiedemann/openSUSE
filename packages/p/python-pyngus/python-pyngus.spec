@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyngus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_with test
 Name:           python-pyngus
 Version:        2.3.1
@@ -26,12 +25,14 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/kgiusti/pyngus
 Source:         https://files.pythonhosted.org/packages/source/p/pyngus/pyngus-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-qpid-proton}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-qpid-proton >= 0.9
 BuildArch:      noarch
-BuildRequires:  fdupes
 %if %{with test}
 BuildRequires:  %{python_module python-qpid-proton >= 0.9}
 %endif
@@ -45,10 +46,10 @@ provides a callback-based API for message passing
 %setup -q -n pyngus-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +63,7 @@ provides a callback-based API for message passing
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/pyngus
+%{python_sitelib}/pyngus-%{version}*-info
 
 %changelog
