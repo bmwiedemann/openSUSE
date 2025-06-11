@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 11 10:29:27 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build without %check (boo#1227364)
+
+-------------------------------------------------------------------
 Fri May  9 05:15:46 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

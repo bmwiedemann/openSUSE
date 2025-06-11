@@ -60,6 +60,8 @@ PYTHONPATH=src $mypython docs/genAll.py
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+export PYTHONPATH=%{buildroot}%{python_sitelib}
+( cd docs/userguide && python3 genuserguide.py )
 
 %check
 export CFLAGS="%{optflags}"
