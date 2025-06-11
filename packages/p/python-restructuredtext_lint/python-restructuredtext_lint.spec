@@ -1,7 +1,7 @@
 #
 # spec file for package python-restructuredtext_lint
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without libalternatives
 Name:           python-restructuredtext_lint
 Version:        1.4.0
 Release:        0
@@ -25,12 +25,14 @@ License:        Unlicense
 Group:          Development/Languages/Python
 URL:            https://github.com/twolfson/restructuredtext-lint
 Source:         https://files.pythonhosted.org/packages/source/r/restructuredtext_lint/restructuredtext_lint-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-docutils >= 0.11
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module docutils >= 0.11}
@@ -49,10 +51,10 @@ in junction with a Sublime Text linter.
 find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/rst-lint
 %python_clone -a %{buildroot}%{_bindir}/restructuredtext-lint
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -62,19 +64,16 @@ find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 $python -m unittest discover
 }
 
-%post
-%python_install_alternative rst-lint
-%python_install_alternative restructuredtext-lint
-
-%postun
-%python_uninstall_alternative rst-lint
-%python_uninstall_alternative restructuredtext-lint
+%pre
+%python_libalternatives_reset_alternative rst-lint
+%python_libalternatives_reset_alternative restructuredtext-lint
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license UNLICENSE
 %python_alternative %{_bindir}/restructuredtext-lint
 %python_alternative %{_bindir}/rst-lint
-%{python_sitelib}/*
+%{python_sitelib}/restructuredtext_lint
+%{python_sitelib}/restructuredtext_lint-%{version}*-info
 
 %changelog
