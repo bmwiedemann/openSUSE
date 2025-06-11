@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyu2f
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define pip_version 0.1.5
 %{?sle15_python_module_pythons}
 Name:           python-pyu2f
 Version:        0.1.5a
@@ -33,7 +33,9 @@ Patch1:         python-pyu2f-no-six.patch
 Patch2:         python312-1.patch
 # PATCH-FIX-UPSTREAM python312-2.patch gh#google/pyu2f@dad654010a03
 Patch3:         python312-2.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pyfakefs >= 2.4}
@@ -51,18 +53,19 @@ U2F host library for interacting with a U2F device over USB.
 sed -i 's/import mock/from unittest import mock/' pyu2f/tests/*_test.py pyu2f/tests/hid/*_test.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %check
 %pytest
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pyu2f
+%{python_sitelib}/pyu2f-%{pip_version}.dist-info
 
 %changelog

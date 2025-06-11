@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 11 05:57:12 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue Oct 17 07:32:00 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
 
 - Use upstream patches instead of custom one for python312
