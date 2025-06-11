@@ -49,15 +49,13 @@
 %endif
 
 Name:           bpftrace
-Version:        0.23.1
+Version:        0.23.5
 Release:        0
 Summary:        High-level tracing language for Linux eBPF
 License:        Apache-2.0
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/iovisor/bpftrace
 Source:         https://github.com/iovisor/bpftrace/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 0001-tools-runqlen.bt-rename-nr_running-to-nr_queued.patch bsc#1239774
-Patch0:         0001-tools-runqlen.bt-rename-nr_running-to-nr_queued.patch
 BuildRequires:  %cc_package
 BuildRequires:  binutils
 BuildRequires:  binutils-devel

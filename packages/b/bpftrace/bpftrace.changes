@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 10 06:09:39 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to 0.23.5
+  * Fix 32-bit build failures due to missing cast
+  * Fix biosnoop.bt to print comm from block_io_start probe
+  * Fix per-cpu map update warning
+  * Fix probe firing order for fexit and software
+  * Fix execution watchpoints
+  * Fix runqlen.bt script (bsc#1239774)
+  * Reduce delete warnings in runqlat.bt
+  * Fix crashes if kernel is built without PID namespaces
+  * Fix kstack/ustack on big-endian systems
+- Drop 0001-tools-runqlen.bt-rename-nr_running-to-nr_queued.patch
+  which is included since 0.23.3
+
+-------------------------------------------------------------------
 Mon Apr 14 05:40:35 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to 0.23.1
@@ -139,7 +155,6 @@ Wed Dec 18 07:43:13 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
   * Fix alignment issue for multi-key maps
 
 -------------------------------------------------------------------
-
 Mon Nov 11 11:33:27 UTC 2024 - Michal Suchanek <msuchanek@suse.de>
 
 - Use clang for build in Factory.
