@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 10 08:03:27 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build and libalternatives
+
+-------------------------------------------------------------------
 Thu Mar 21 07:55:17 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}

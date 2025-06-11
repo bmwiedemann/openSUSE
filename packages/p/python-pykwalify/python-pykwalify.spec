@@ -1,7 +1,7 @@
 #
 # spec file for package python-pykwalify
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-pykwalify
 Version:        1.8.0
@@ -26,15 +26,17 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/grokzen/pykwalify
 Source:         https://files.pythonhosted.org/packages/source/p/pykwalify/pykwalify-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-PyYAML >= 3.11
 Requires:       python-docopt >= 0.6.2
 Requires:       python-python-dateutil >= 2.4.2
 Requires:       python-ruamel.yaml >= 0.16.0
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 Suggests:       python-ruamel.yaml >= 0.11.0
 BuildArch:      noarch
 # SECTION test requirements
@@ -58,26 +60,24 @@ The schema this library is base and extended from: http://www.kuwata-lab.com/kwa
 %setup -q -n pykwalify-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pykwalify
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pyunittest discover -v
 
-%post
-%python_install_alternative pykwalify
-
-%postun
-%python_uninstall_alternative pykwalify
+%pre
+%python_libalternatives_reset_alternative pykwalify
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/pykwalify
-%{python_sitelib}/*
+%{python_sitelib}/pykwalify
+%{python_sitelib}/pykwalify-%{version}*-info
 
 %changelog
