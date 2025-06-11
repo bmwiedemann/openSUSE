@@ -39,4 +39,12 @@
     <comment>- Delete unused build dependency on PCRE [boo#1239998]</comment>
     <requestid>1256366</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>7a4870fa050a3fdef9889eda83b20c1d</srcmd5>
+    <version>0.2.4</version>
+    <time>1749652087</time>
+    <user>anag_factory</user>
+    <comment>- Provide a module autoloading config fragment</comment>
+    <requestid>1284814</requestid>
+  </revision>
 </revisionlist>

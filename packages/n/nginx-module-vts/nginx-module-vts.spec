@@ -45,11 +45,16 @@ cd nginx
 %make_build modules
 
 %install
-mkdir -p %buildroot/%ngx_module_dir
-install -D -m 0644 nginx/objs/ngx_http_vhost_traffic_status_module.so %buildroot/%ngx_module_dir
+b="%buildroot"
+mkdir -p "$b/%ngx_module_dir" "$b/%_datadir/nginx/modules"
+install -D -m 0644 nginx/objs/ngx_http_vhost_traffic_status_module.so "$b/%ngx_module_dir/"
+cat >"$b/%_datadir/nginx/modules/mod-vts.conf" <<-EOF
+	load_module %ngx_module_dir/ngx_http_vhost_traffic_status_module.so;
+EOF
 
 %files
 %license LICENSE
 %ngx_module_dir/*.so
+%_datadir/nginx/
 
 %changelog
