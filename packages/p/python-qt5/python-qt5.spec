@@ -295,7 +295,7 @@ fi
 %license LICENSE
 %doc README NEWS ChangeLog
 %{python_sitearch}/PyQt5/
-%{python_sitearch}/PyQt5-%{version}.dist-info/
+%{python_sitearch}/[Pp]y[Qq]t5-%{version}.dist-info/
 %exclude %pyqt5_sipdir
 %dir %{python_sitelib}/dbus
 %dir %{python_sitelib}/dbus/mainloop

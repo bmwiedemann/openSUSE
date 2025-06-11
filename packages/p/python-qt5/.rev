@@ -678,4 +678,12 @@ Thu May 29 20:49:46 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>- Fix requires_eq replacement gh#openSUSE/python-rpm-macros#185</comment>
     <requestid>1222706</requestid>
   </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>e3dba77f26b52be0ddfb2f2fc64ad99c</srcmd5>
+    <version>5.15.10</version>
+    <time>1749651618</time>
+    <user>anag_factory</user>
+    <comment>lowercase distinfo</comment>
+    <requestid>1284342</requestid>
+  </revision>
 </revisionlist>
