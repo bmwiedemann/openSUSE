@@ -1,5 +1,11 @@
---- configure.ac.orig
-+++ configure.ac
+---
+ configure.ac |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: alpine-2.26/configure.ac
+===================================================================
+--- alpine-2.26.orig/configure.ac
++++ alpine-2.26/configure.ac
 @@ -1964,7 +1964,7 @@ ac_cv_func_qsort_argtype,
  #endif
  

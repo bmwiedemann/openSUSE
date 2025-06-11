@@ -1,7 +1,7 @@
 #
 # spec file for package alpine
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,36 +35,37 @@ Source2:        https://alpineapp.email/alpine/release/src/sig/alpine-%version.t
 Source3:        %name.png
 Source4:        %name.desktop
 Source9:        UPDATING.txt
-Patch2:         make-use-of-strncat-safer.diff
-Patch3:         operation-may-be-undefined-warning.diff
-Patch4:         fix-implicit.patch
-Patch5:         alpine-gcc44.diff
-Patch6:         alpine-timestamp.patch
-Patch10:        pico-fix-spurious-undef-warnings.diff
-Patch20:        pine-expression-warnings.diff
-Patch60:        signal-and-panic-improvements.diff
-Patch61:        return-values.diff
-Patch62:        alpine-qsort.patch
 #
 # Eduardo Chappa's patches.
 # http://patches.freeiz.com/alpine/
 #
-Source600:      chappa-colortext.txt
-Patch600:       chappa-colortext.patch
-Source601:      chappa-fancy.txt
-Patch601:       chappa-fancy.patch
-Source603:      chappa-insertpat.txt
-Patch603:       chappa-insertpat.patch
-Source604:      chappa-maildir.txt
-Patch604:       chappa-maildir.patch
-Source614:      chappa-fillpara.txt
-Patch614:       chappa-fillpara.patch
-Source615:      chappa-fromheader.txt
-Patch615:       chappa-fromheader.patch
-Source616:      chappa-rules.txt
-Patch616:       chappa-rules.patch
-Source617:      chappa-DelText.txt
-Patch617:       chappa-DelText.patch
+Source10:       chappa-colortext.txt
+Patch10:        chappa-colortext.patch
+Source11:       chappa-fancy.txt
+Patch11:        chappa-fancy.patch
+Source12:       chappa-insertpat.txt
+Patch12:        chappa-insertpat.patch
+Source13:       chappa-maildir.txt
+Patch13:        chappa-maildir.patch
+Source14:       chappa-fillpara.txt
+Patch14:        chappa-fillpara.patch
+Source15:       chappa-fromheader.txt
+Patch15:        chappa-fromheader.patch
+Source16:       chappa-rules.txt
+Patch16:        chappa-rules.patch
+Source17:       chappa-DelText.txt
+Patch17:        chappa-DelText.patch
+# SUSE patches
+Patch40:        make-use-of-strncat-safer.diff
+Patch41:        operation-may-be-undefined-warning.diff
+Patch42:        fix-implicit.patch
+Patch43:        alpine-gcc44.diff
+Patch44:        alpine-timestamp.patch
+Patch45:        pico-fix-spurious-undef-warnings.diff
+Patch46:        pine-expression-warnings.diff
+Patch47:        signal-and-panic-improvements.diff
+Patch48:        return-values.diff
+Patch49:        alpine-qsort.patch
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  krb5-devel
 BuildRequires:  libtool
@@ -112,7 +113,7 @@ Pine message system composer. As with Pine, commands are displayed at
 the bottom of the screen, and context-sensitive help is provided.
 
 %prep
-%setup -q
+%autosetup -p1
 %if !0%{?build_vanilla}
 #
 # This is here to support checking if any patches add new warnings:
@@ -125,30 +126,9 @@ else
 	sed 's/:[0-9]*//' %{_sourcedir}/compile-warnings-%{suse_version}-%{_arch}.log \
 		>compile-warnings-allowed.log
 fi
-#
-# "Chappa" patches
-#
-%patch -P 600 -p1
-%patch -P 601 -p1
-%patch -P 603 -p1
-%patch -P 604 -p1
-%patch -P 614 -p1
-%patch -P 615 -p1
-%patch -P 616 -p1
-%patch -P 617 -p1
-#
-# SuSE patches - warning fixes, etc:
-#
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 6 -p1
-%patch -P 10 -p1
-%patch -P 20 -p1
-%patch -P 60 -p1
-%patch -P 61 -p1
-%patch -P 62
+%else
+%patch -P 10 -P 11 -P 12 -P 13 -P 14 -P 15 -P 16 -P 17 -R -p1
+%patch -P 40 -P 41 -P 42 -P 43 -P 44 -P 45 -P 46 -P 47 -P 48 -P 49 -p1
 %endif
 
 %build
@@ -159,6 +139,7 @@ fi
 export CFLAGS="${RPM_OPT_FLAGS/-O2/-Os} \
 		-Wno-unused-value -fno-strict-aliasing -Wno-pointer-sign -Wno-unused \
 		-Wno-address \
+                -std=gnu11 \
 "
 #
 # On -Waddress:
