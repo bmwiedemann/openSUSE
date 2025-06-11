@@ -114,4 +114,12 @@
     <comment>- Fix requires_eq replacement gh#openSUSE/python-rpm-macros#185</comment>
     <requestid>1222708</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>614e322c1a9bcc4b73df17fa384d7bd1</srcmd5>
+    <version>5.15.6</version>
+    <time>1749651689</time>
+    <user>anag_factory</user>
+    <comment>lowercase distinfo</comment>
+    <requestid>1284353</requestid>
+  </revision>
 </revisionlist>

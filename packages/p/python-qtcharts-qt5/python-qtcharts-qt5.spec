@@ -88,7 +88,7 @@ This package provides %{name} examples.
 %doc NEWS README
 %dir %{python_sitearch}/PyQt5/
 %{python_sitearch}/PyQt5/QtChart.*
-%{python_sitearch}/PyQtChart-%{version}.dist-info
+%{python_sitearch}/[Pp]y[Qq]t[Cc]hart-%{version}.dist-info
 
 %files %{python_files api}
 %license LICENSE
