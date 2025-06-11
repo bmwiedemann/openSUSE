@@ -95,4 +95,12 @@
     <comment>- Remove not needed BuildRequires tox</comment>
     <requestid>1241609</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>b94939e657095b84dd47e1b6c1e37452</srcmd5>
+    <version>8.0.3.0.1</version>
+    <time>1749651989</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284669</requestid>
+  </revision>
 </revisionlist>

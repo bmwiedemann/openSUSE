@@ -23,14 +23,15 @@ Version:        8.0.3.0.1
 Release:        0
 Summary:        VMware vSphere Python SDK
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/vmware/pyvmomi
 Source:         https://github.com/vmware/pyvmomi/archive/v%{version}.tar.gz#/pyvmomi-%{version}.tar.gz
 Patch0:         0001-pyVmomi-pinned-certificates-support.patch
 BuildRequires:  %{python_module fixtures >= 1.3.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.3.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.7.3}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -59,10 +60,10 @@ dos2unix README.rst LICENSE.txt NOTICE.txt
 sed -i 's/vcrpy<2/vcrpy/' test-requirements.txt
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -78,7 +79,7 @@ rm tests/test_pbm_check_compatibility.py
 %{python_sitelib}/pyVmomi
 %{python_sitelib}/vsanapiutils.py
 %{python_sitelib}/vsanmgmtObjects.py
-%{python_sitelib}/pyvmomi-%{version}*-py*.egg-info
+%{python_sitelib}/pyvmomi-%{version}.dist-info
 %pycache_only %{python_sitelib}/__pycache__
 
 %changelog

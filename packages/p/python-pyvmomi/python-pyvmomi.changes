@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 11 05:49:38 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Fri Jan 31 10:17:11 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed BuildRequires tox
