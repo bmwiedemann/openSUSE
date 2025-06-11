@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 10 09:44:09 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 2.5.4:
+  * Switch to sha256 from md5
+- use go's native fips module on tumbleweed
+
+-------------------------------------------------------------------
 Tue May 20 19:30:45 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 2.5.3 (bsc#1243360):
