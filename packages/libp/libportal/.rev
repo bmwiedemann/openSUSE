@@ -89,4 +89,14 @@
     <comment></comment>
     <requestid>1266804</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>b4b45d9628847f89d591b45e27ad9d77</srcmd5>
+    <version>0.9.1</version>
+    <time>1749651569</time>
+    <user>anag_factory</user>
+    <comment>- Fix qt devel sub-packages Requires.
+
+Not sure this is correct, but lets try it :-) (forwarded request 1283735 from iznogood)</comment>
+    <requestid>1284675</requestid>
+  </revision>
 </revisionlist>

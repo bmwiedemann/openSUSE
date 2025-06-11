@@ -16,42 +16,44 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
 %define sover 1
+%if "%{flavor}" == ""
+%define pkgsuffix %{nil}
+%else
+%define pkgsuffix -%{flavor}
+%endif
 
-Name:           libportal
+%if 0%{?suse_version} == 1600 && ! 0%{?is_openSUSE}
+%if "%{flavor}" == "qt5"
+ExclusiveArch:  donotbuild
+%endif
+%endif
+
+Name:           libportal%{pkgsuffix}
 Version:        0.9.1
 Release:        0
 Summary:        A GIO-style async API for most Flatpak portals
 License:        LGPL-3.0-or-later
 URL:            https://github.com/flatpak/libportal
-Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source0:        %{url}/releases/download/%{version}/libportal-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM -- Qt 6.9 compat
 Patch0:         libportal-qt69.patch
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  meson >= 0.55.0
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt6Core)
-BuildRequires:  pkgconfig(Qt6Gui)
-BuildRequires:  pkgconfig(Qt6Test)
-BuildRequires:  pkgconfig(Qt6Widgets)
-BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0)
+%if "%{flavor}" == ""
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(vapigen)
+%endif
 
 %description
 A GIO-style async API for most Flatpak portals.
 
+%if "%{flavor}" == ""
 %package     -n %{name}%{sover}
 Summary:        A GIO-style async API for most Flatpak portals
 Obsoletes:      libportal-1
@@ -63,6 +65,9 @@ This package contains the shared library of %{name}.
 
 %package     -n %{name}-gtk3-%{sover}
 Summary:        GTK3 integration for libportal
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(vapigen)
 
 %description -n %{name}-gtk3-%{sover}
 A GIO-style async API for most Flatpak portals.
@@ -70,25 +75,44 @@ This package contains the shared library of %{name}.
 
 %package     -n %{name}-gtk4-%{sover}
 Summary:        GTK4 integration for libportal
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(vapigen)
 
 %description -n %{name}-gtk4-%{sover}
 A GIO-style async API for most Flatpak portals.
 This package contains the shared library of %{name}.
+%endif
 
-%package     -n %{name}-qt5-%{sover}
+%if "%{flavor}" == "qt5"
+%package     -n %{name}-%{sover}
 Summary:        Qt5 integration for libportal
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5X11Extras)
 
-%description -n %{name}-qt5-%{sover}
+%description -n %{name}-%{sover}
 A GIO-style async API for most Flatpak portals.
 This package contains the shared library of %{name}.
+%endif
 
-%package     -n %{name}-qt6-%{sover}
+%if "%{flavor}" == "qt6"
+%package     -n %{name}-%{sover}
 Summary:        Qt6 integration for libportal
+BuildRequires:  qt6-gui-private-devel
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6Widgets)
 
-%description -n %{name}-qt6-%{sover}
+%description -n %{name}-%{sover}
 A GIO-style async API for most Flatpak portals.
 This package contains the shared library of %{name}.
+%endif
 
+%if "%{flavor}" == ""
 %package -n     typelib-1_0-Xdp-1_0
 Summary:        Introspections files for libportal
 
@@ -136,64 +160,86 @@ Requires:       typelib-1_0-XdpGtk4-1_0 = %{version}
 %description gtk4-devel
 The %{name}-gtk4-devel package contains libraries, build data, and
 header files for developing applications that use %{name}.
+%endif
 
-%package qt5-devel
+%if "%{flavor}" == "qt5"
+%package devel
 Summary:        Headers for libportal Qt5 integration library
-Requires:       %{name}-qt5-%{sover} = %{version}
+Requires:       libportal-qt5-%{sover} = %{version}
 
-%description qt5-devel
-The %{name}-qt5-devel package contains libraries, build data, and
+%description devel
+The %{name}-devel package contains libraries, build data, and
 header files for developing applications that use %{name}.
+%endif
 
-%package qt6-devel
+%if "%{flavor}" == "qt6"
+%package devel
 Summary:        Headers for libportal Qt6 integration library
-Requires:       %{name}-qt6-%{sover} = %{version}
+Requires:       libportal-qt6-%{sover} = %{version}
 
-%description qt6-devel
-The %{name}-qt6-devel package contains libraries, build data, and
+%description devel
+The %{name}-devel package contains libraries, build data, and
 header files for developing applications that use %{name}.
+%endif
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n libportal-%{version}
 
 %build
 %meson \
+%if "%{flavor}" == ""
+   -Dintrospection=true \
+   -Dvapi=true \
+   -Ddocs=true \
+   -Dbackend-gtk3=enabled \
+   -Dbackend-gtk4=enabled \
+%else
+   -Dintrospection=false \
+   -Dvapi=false \
+   -Ddocs=false \
+   -Dbackend-gtk3=disabled \
+   -Dbackend-gtk4=disabled \
+%endif
+%if "%{flavor}" == "qt5"
+   -Dbackend-qt5=enabled \
+%else
+   -Dbackend-qt5=disabled \
+%endif
+%if "%{flavor}" == "qt6"
+   -Dbackend-qt6=enabled \
+%else
+   -Dbackend-qt6=disabled \
+%endif
 	%{nil}
 %meson_build
 
 %install
 %meson_install
+%if "%{flavor}" != ""
+rm -Rf %{buildroot}%{_includedir}/libportal
+rm -Rf %{buildroot}%{_libdir}/libportal.so*
+rm -Rf %{buildroot}%{_libdir}/pkgconfig/libportal.pc
+%endif
 
+%if "%{flavor}" == ""
 %ldconfig_scriptlets -n %{name}%{sover}
 %ldconfig_scriptlets -n %{name}-gtk3-%{sover}
 %ldconfig_scriptlets -n %{name}-gtk4-%{sover}
-%ldconfig_scriptlets -n %{name}-qt5-%{sover}
-%ldconfig_scriptlets -n %{name}-qt6-%{sover}
+%endif
+%if "%{flavor}" == "qt5"
+%ldconfig_scriptlets -n %{name}-%{sover}
+%endif
+%if "%{flavor}" == "qt6"
+%ldconfig_scriptlets -n %{name}-%{sover}
+%endif
 
+%if "%{flavor}" == ""
 %files -n %{name}%{sover}
 %license COPYING
 %{_libdir}/libportal.so.%{sover}*
 
-%files -n %{name}-gtk3-%{sover}
-%{_libdir}/libportal-gtk3.so.%{sover}*
-
-%files -n %{name}-gtk4-%{sover}
-%{_libdir}/libportal-gtk4.so.%{sover}*
-
-%files -n %{name}-qt5-%{sover}
-%{_libdir}/libportal-qt5.so.%{sover}*
-
-%files -n %{name}-qt6-%{sover}
-%{_libdir}/libportal-qt6.so.%{sover}*
-
 %files -n typelib-1_0-Xdp-1_0
 %{_libdir}/girepository-1.0/Xdp-1.0.typelib
-
-%files -n typelib-1_0-XdpGtk3-1_0
-%{_libdir}/girepository-1.0/XdpGtk3-1.0.typelib
-
-%files -n typelib-1_0-XdpGtk4-1_0
-%{_libdir}/girepository-1.0/XdpGtk4-1.0.typelib
 
 %files devel
 %doc NEWS README.md
@@ -206,6 +252,12 @@ header files for developing applications that use %{name}.
 %{_datadir}/vala/vapi/libportal.vapi
 %{_datadir}/gir-1.0/Xdp-1.0.gir
 
+%files -n %{name}-gtk3-%{sover}
+%{_libdir}/libportal-gtk3.so.%{sover}*
+
+%files -n typelib-1_0-XdpGtk3-1_0
+%{_libdir}/girepository-1.0/XdpGtk3-1.0.typelib
+
 %files gtk3-devel
 %{_includedir}/libportal-gtk3
 %{_libdir}/libportal-gtk3.so
@@ -215,6 +267,12 @@ header files for developing applications that use %{name}.
 %{_datadir}/vala/vapi/libportal-gtk3.deps
 %{_datadir}/vala/vapi/libportal-gtk3.vapi
 
+%files -n %{name}-gtk4-%{sover}
+%{_libdir}/libportal-gtk4.so.%{sover}*
+
+%files -n typelib-1_0-XdpGtk4-1_0
+%{_libdir}/girepository-1.0/XdpGtk4-1.0.typelib
+
 %files gtk4-devel
 %{_includedir}/libportal-gtk4
 %{_libdir}/libportal-gtk4.so
@@ -223,15 +281,26 @@ header files for developing applications that use %{name}.
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/libportal-gtk4.deps
 %{_datadir}/vala/vapi/libportal-gtk4.vapi
+%endif
 
-%files qt5-devel
+%if "%{flavor}" == "qt5"
+%files -n %{name}-%{sover}
+%{_libdir}/libportal-qt5.so.%{sover}*
+
+%files devel
 %{_includedir}/libportal-qt5
 %{_libdir}/libportal-qt5.so
 %{_libdir}/pkgconfig/libportal-qt5.pc
+%endif
 
-%files qt6-devel
+%if "%{flavor}" == "qt6"
+%files -n %{name}-%{sover}
+%{_libdir}/libportal-qt6.so.%{sover}*
+
+%files devel
 %{_includedir}/libportal-qt6
 %{_libdir}/libportal-qt6.so
 %{_libdir}/pkgconfig/libportal-qt6.pc
+%endif
 
 %changelog

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun  6 18:13:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix qt devel sub-packages Requires.
+
+-------------------------------------------------------------------
+Wed May 28 16:33:37 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use _multibuild for qt5 and qt6 so we can disable building the
+  qt5 flavor in SLE16/SLFO and enable it in Leap 16.
+
+-------------------------------------------------------------------
 Thu Apr  3 08:09:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:
