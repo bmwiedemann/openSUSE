@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Jun  8 18:05:16 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.7.0:
+  * Update to image-rs 0.25 (gh#dnglab/dnglab#479).
+  * Add RawDecodeParams to Decoder::full_image()
+    (gh#dnglab/dnglab#481).
+  * Fix: Use same version for dnglab and dnglab-lib and provide
+    test case (gh#dnglab/dnglab#486).
+  * Cleanup compiler warnings and hints in newer Rust versions
+    (gh#dnglab/dnglab#490).
+  * Add Kodak RADC decompressor (gh#dnglab/dnglab#491).
+  * QTK support for Apple QuickTake 100 and 150
+    (gh#dnglab/dnglab#492).
+  * Add support for Kodak DC50 (gh#dnglab/dnglab#493).
+  * Show warning if lens is not found in lens database
+    (gh#dnglab/dnglab#495).
+  * Add DecoderCache for simple caching of data based on
+    RawDecodeParams (gh#dnglab/dnglab#496).
+  * Bump anstream from 0.6.5 to 0.6.15 (gh#dnglab/dnglab#489).
+  * Support for Canon RF 200-800mm F6.3-9 IS USM
+    (gh#dnglab/dnglab#497).
+  * Bump mio from 0.8.10 to 0.8.11 (gh#dnglab/dnglab#410).
+  * Update env_logger requirement from 0.9 to 0.11 in /rawler
+    (gh#dnglab/dnglab#399).
+  * Change RawFile to RawSource and add support for mmap() input
+    (gh#dnglab/dnglab#416).
+  * Add support for Canon RF-S 10-18mm F4.5-6.3 IS STM
+    (gh#dnglab/dnglab#508).
+  * Fix clean model name for EOS R5 Mark II
+    (gh#dnglab/dnglab#510).
+  * Fix: EXIF TimezoneOffset must be a vector because it contains
+    two values (gh#dnglab/dnglab#512).
+  * Fix: Use canonical address in FTP client address handling
+    (gh#dnglab/dnglab#513).
+  * Add --keep-mtime flag (gh#dnglab/dnglab#511).
+  * Update to multiversion 0.8 (gh#dnglab/dnglab#516).
+  * Update to Rust Edition 2024 (gh#dnglab/dnglab#517).
+  * Add fixed lens support (gh#dnglab/dnglab#518).
+  * Fix PhaseOne IIQ blacklevel correction (gh#dnglab/dnglab#519).
+  * Add Phase One P25 alias (gh#dnglab/dnglab#520).
+  * Phase One P45 support (gh#dnglab/dnglab#521).
+  * Add Sony UMC R10C Support (gh#dnglab/dnglab#522).
+  * Add hint to CONTRIBUTE_SAMPLES.md for unsupported files
+    (gh#dnglab/dnglab#523).
+  * Improve hint when camera raw file is unsupported
+    (gh#dnglab/dnglab#524).
+  * Bump tokio from 1.43.0 to 1.43.1 (gh#dnglab/dnglab#532).
+  * Support for Panasonic DC-S9 (gh#dnglab/dnglab#536).
+  * Fujifilm X-M5 support (gh#dnglab/dnglab#538).
+  * Update completions and manpages (gh#dnglab/dnglab#542).
+  * Nikon Z 50 II support (gh#dnglab/dnglab#543).
+  * Use SONYRAWIMAGESIZE EXIF tag for ARW files
+    (gh#dnglab/dnglab#544).
+  * Update E-Mount lens database (gh#dnglab/dnglab#545).
+- Minor rebase of dnglab-renamed-exec-usage-msg.patch for update.
+
+-------------------------------------------------------------------
 Mon Feb  3 11:24:16 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.

@@ -7,4 +7,12 @@
     <comment> Camera RAW to DNG file format converter (fixed missing `fish` shell dependency).</comment>
     <requestid>1245448</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>724432bad8430970d51b9efe149371c1</srcmd5>
+    <version>0.7.0</version>
+    <time>1749659693</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1284859</requestid>
+  </revision>
 </revisionlist>

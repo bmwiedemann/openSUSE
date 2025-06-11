@@ -16,8 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           dnglab
-Version:        0.6.3
+Version:        0.7.0
 Release:        0
 Summary:        Camera RAW to DNG file format converter
 License:        LGPL-2.1-only
