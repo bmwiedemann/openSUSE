@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  3 09:15:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Mon Jun  8 14:47:51 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - replace nose with pytest
