@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun  4 13:27:19 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update xmobar to version 0.50.
+  ## Version 0.50 (June, 2025)
+
+  - New plugins: `PacmanUpdates` (thanks, Alexander)
+  - `ArchUpdates` deprecated in favor of `PacmanUpdates`
+    - a deprecation notice will be shown to users of that plugin in the bar in
+      the zero updates case
+  - `Accordion`: new constructor to allow short version to have plugins too
+  - `Swap`: update for FreeBSD 15
+  - `MPD` compiled again by default with `all_extensions`.
+
+- Drop obsolete "re-enable-support-for-libmpd.patch".
+
+-------------------------------------------------------------------
 Tue Apr  1 17:19:52 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update xmobar to version 0.49.
