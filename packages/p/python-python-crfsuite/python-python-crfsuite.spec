@@ -22,13 +22,14 @@ Version:        0.9.11
 Release:        0
 Summary:        Python binding for CRFsuite
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/scrapinghub/python-crfsuite
 Source:         https://files.pythonhosted.org/packages/source/p/python_crfsuite/python_crfsuite-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,10 +43,10 @@ Python-crfsuite is a python binding to CRFsuite_.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -59,6 +60,6 @@ mv bak pycrfsuite
 %{python_sitearch}/pycrfsuite
 %exclude %{python_sitearch}/pycrfsuite/*.cpp
 %exclude %{python_sitearch}/pycrfsuite/*.hpp
-%{python_sitearch}/python_crfsuite-%{version}*-info
+%{python_sitearch}/python_crfsuite-%{version}.dist-info
 
 %changelog
