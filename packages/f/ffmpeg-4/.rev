@@ -764,4 +764,12 @@
     <comment>- Add ffmpeg-4-CVE-2024-36618.patch:</comment>
     <requestid>1283411</requestid>
   </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>0e944321e7cf91e91cc767b81d503151</srcmd5>
+    <version>4.4.6</version>
+    <time>1749651692</time>
+    <user>anag_factory</user>
+    <comment>fix bugIDs</comment>
+    <requestid>1284835</requestid>
+  </revision>
 </revisionlist>
