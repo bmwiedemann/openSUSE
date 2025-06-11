@@ -30,7 +30,7 @@ Thu Mar 20 12:11:36 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
   * Avoid repaint problems when using wxWindow::Update() with
     Wayland
   * Fix crash when connection is refused in wxWebRequestCURL
-   (gh#wxWidgets/wxWidgets#24885, bsc#1239902)
+   (gh#wxWidgets/wxWidgets#24885, CVE-2024-58249, bsc#1239902)
 - Delete doxygen111.patch (merged)
 
 -------------------------------------------------------------------
