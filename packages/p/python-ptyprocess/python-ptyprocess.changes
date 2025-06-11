@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 11 05:51:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue Sep 24 12:20:37 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix build error under Leap.
