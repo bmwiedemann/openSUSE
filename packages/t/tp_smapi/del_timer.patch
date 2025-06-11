@@ -1,0 +1,21 @@
+diff -rU 3 a/tp_smapi/hdaps.c b/tp_smapi/hdaps.c
+--- a/tp_smapi/hdaps.c	2018-02-24 16:59:51.000000000 +0100
++++ b/tp_smapi/hdaps.c	2025-06-11 12:26:58.509555650 +0200
+@@ -427,7 +427,7 @@
+ static int hdaps_suspend(struct platform_device *dev, pm_message_t state)
+ {
+ 	/* Don't do hdaps polls until resume re-initializes the sensor. */
+-	del_timer_sync(&hdaps_timer);
++	timer_delete_sync(&hdaps_timer);
+ 	hdaps_device_shutdown(); /* ignore errors, effect is negligible */
+ 	return 0;
+ }
+@@ -671,7 +671,7 @@
+ {
+ 	mutex_lock(&hdaps_users_mtx);
+ 	if (--hdaps_users == 0) /* no input users left */
+-		del_timer_sync(&hdaps_timer);
++		timer_delete_sync(&hdaps_timer);
+ 	mutex_unlock(&hdaps_users_mtx);
+ 
+ 	module_put(THIS_MODULE);

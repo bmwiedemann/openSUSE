@@ -1,7 +1,7 @@
 #
 # spec file for package tp_smapi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          System/Kernel
 URL:            https://github.com/linux-thinkpad/tp_smapi
 Source:         tp_smapi-%{version}.tar.gz
 Patch0:         kernel_64.diff
+Patch1:         del_timer.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %kernel_module_package_buildreqs
 BuildRequires:  kernel-source

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 11 10:35:43 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- del_timer.patch added to fix deprecated call
+
+-------------------------------------------------------------------
 Mon Feb 26 15:42:08 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
