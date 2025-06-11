@@ -257,4 +257,15 @@
     <comment></comment>
     <requestid>1281626</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>320c730766944d74562bda021a2e9624</srcmd5>
+    <version>5.7.2</version>
+    <time>1749651820</time>
+    <user>anag_factory</user>
+    <comment>
+- update to 5.7.2:
+  * Fix OTP connections for YubiKeys with all other USB interfaces
+    deactivated.</comment>
+    <requestid>1284505</requestid>
+  </revision>
 </revisionlist>
