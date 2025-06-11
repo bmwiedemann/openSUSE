@@ -18,7 +18,7 @@
 
 %define apiver  v60
 # Required for RC builds, in this case version contains ~rc, src_ver -rc
-%define pkg_ver 10.1.0
+%define pkg_ver 10.2.0
 %define src_ver %{pkg_ver}
 # Image processing library
 %if 0
@@ -349,7 +349,7 @@ xvfb-run -a -s "-screen 0 640x480x16" \
 %{_bindir}/mkoctfile
 %{_bindir}/mkoctfile-%{src_ver}
 %{_mandir}/man1/mkoctfile.1%{?ext_man}
-%{_includedir}/*
+%{_includedir}/octave-%{version}/
 %{_libdir}/%{name}/%{src_ver}/lib*.so
 %{_libdir}/%{name}/api-%{apiver}
 %{_libdir}/pkgconfig/octave.pc

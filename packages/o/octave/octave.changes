@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Fri Jun  6 22:16:36 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 10.2.0:
+  * Improvements and fixes:
+    - tensorprod: Fix error for certain tensor/vector combinations
+      (bug #66950).
+    - mkoctfile: Skip compiling object file with soversion for
+      --mex -c -o (bug #66972).
+    - Fix segmentation fault in octave-svgconvert when called with
+      no inputs.
+    - mkoctfile: Remove temporary C source files after
+      compilation.
+    - unicode2native: Fix conversion of short strings to UTF-16 or
+      UTF-32.
+    - Detect leading and trailing comments for all parse tree
+      elements (bug #67004).
+    - bar: Avoid listener error when replacing an existing bar
+      plot (bug #67006).
+    - Fix sparse matrix assignment with reverse range indexing
+      (bug #66516).
+    - ezplot: Enable polar and 2-D plots of constant functions
+      (bug #66563).
+    - Check for any kind of file not just regular files (bug
+      #67018).
+    - var/std: Issue an error for non-floating point inputs.
+      Previous versions accepted integer type inputs but could
+      produce erroneous outputs due to integer arithmetic and
+      under/overflow errors (bug #67016).
+    - annotation: Change "verticalalignment" default value (bug
+      #67033).
+    - Previously, symbols that are not actually callable by a user
+      might have been added to the list of callable functions when
+      loading .mex files. Remove these symbols from that list.
+      This fixes unloading .mex files with clear.
+    - Remove break points only from user functions (defined in .m
+      file). This fixes an infinite recursion issue when
+      re-loading updated .oct or .mex files.
+    - For improved Matlab compatibility the strncmp and strncmpi
+      functions now return true if the number of characters
+      specified by N is equal to 0 (bug #57879).
+    - Fix nargout in multi-output indexing expressions beginning
+      with function call (bug #67096).
+    - findobj: Do not match empty tags with [] (bug #67048).
+    - Check for undefined output when indexing function output
+      (bug #67111).
+    - perms: Fix buffer overflow and crash; minor code cleanup
+      (bug #67115).
+    - mkoctfile: Support spaces in output path of linker step.
+    - mkoctfile: Support spaces in path to binary when stripping
+      debug info.
+    - octave-svgconvert: Speed up printing to PDF (bug #66959).
+    - error: Fix segmentation fault on missing fields in err.stack
+      structure (bug #67143).
+    - Avoid parse error for empty lines in debug mode (bug
+      #67108).
+    - Check if effective SOVERSION is exported from .mex file
+      libraries (bug #67163).
+  * GUI:
+    - Fix build error without QScintilla installed (bug #66962).
+    - Avoid potential integer overflow on Windows.
+    - Make dialogs shown by inputdlg, listdlg, questdlg, uigetdir,
+      or uigetfile modal.
+  * Build system / Tests:
+    - Add visibility attributes for the octave::base_fcn_handle
+      class.
+    - Add visibility attributes to parse tree symbols (bug
+      #67056).
+    - Add visibility attributes to Array<T> template class member
+      functions.
+    - Use correct preprocessor macro when instantiating MArray
+      template class.
+    - Disable visibility flags by default.
+    - Support passing additional flags when linking octave*
+      executables.
+    - Single-quote path that might contain unescaped backslashes
+      in the generation of the doc cache.
+    - Ignore deprecation warning for std::wbuffer_convert in
+      header.
+    - error: Add more built-in self-tests.
+- Re-base octave_tools_pie.patch for update.
+
+-------------------------------------------------------------------
 Tue May 20 09:57:03 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add octave-reproducible-jar.patch: Set jar date to source
