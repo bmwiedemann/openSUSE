@@ -1,7 +1,7 @@
 #
 # spec file for package python-proxmoxer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ URL:            https://github.com/proxmoxer/proxmoxer/
 # the Pypi tarball does not contain the tests directory
 Source:         proxmoxer-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 
@@ -48,10 +50,10 @@ Python Wrapper for the Proxmox 2.x API (HTTP and SSH)
 %setup -q -n proxmoxer-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +67,6 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_repr_openssh"
 %doc CHANGELOG.md README.rst
 %license LICENSE.txt
 %{python_sitelib}/proxmoxer
-%{python_sitelib}/proxmoxer-%{version}*-info
+%{python_sitelib}/proxmoxer-%{version}.dist-info
 
 %changelog
