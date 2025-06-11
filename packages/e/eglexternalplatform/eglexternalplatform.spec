@@ -1,7 +1,7 @@
 #
 # spec file for package eglexternalplatform
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           eglexternalplatform
-Version:        1.2
+Version:        1.2.1
 Release:        0
 Summary:        The EGL External Platform interface
 License:        MIT
@@ -32,6 +32,7 @@ A work-in-progress specification of the EGL External Platform interface.
 %package devel
 Summary:        The EGL External Platform interface
 Group:          Development/Libraries/C and C++
+BuildArch:      noarch
 
 %description devel
 This is a work-in-progress specification of the EGL External Platform interface
@@ -53,7 +54,7 @@ EGL functions.
 %files devel
 %license COPYING
 %doc README.md
-%{_libdir}/pkgconfig/eglexternalplatform.pc
+%{_datadir}/pkgconfig/eglexternalplatform.pc
 %{_includedir}/*.h
 
 %changelog

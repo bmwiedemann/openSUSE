@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 10 14:59:57 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- removed again empty %check section
+
+-------------------------------------------------------------------
+Tue Jun 10 14:23:05 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to release 1.2.1
+  * Override the installation directory of the pkg-config file to
+    put it in the correct architecture-independent directory.
+
+-------------------------------------------------------------------
 Thu Sep 19 20:44:16 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to release 1.2

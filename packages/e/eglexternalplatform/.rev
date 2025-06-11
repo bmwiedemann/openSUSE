@@ -49,4 +49,16 @@
   * Interface version 1.2 is supported on 560.* and later drivers.</comment>
     <requestid>1204273</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e726c00afec45cabd60c4776fc0d575f</srcmd5>
+    <version>1.2.1</version>
+    <time>1749651526</time>
+    <user>anag_factory</user>
+    <comment>- removed again empty %check section
+
+- update to release 1.2.1
+  * Override the installation directory of the pkg-config file to
+    put it in the correct architecture-independent directory.</comment>
+    <requestid>1284518</requestid>
+  </revision>
 </revisionlist>
