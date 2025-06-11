@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymemcache
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2014 Thomas Bechtold <thomasbechtold@jpberlin.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,14 +26,16 @@ Summary:        A pure Python memcached client
 License:        Apache-2.0
 URL:            https://github.com/Pinterest/pymemcache
 Source:         https://files.pythonhosted.org/packages/source/p/pymemcache/pymemcache-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  memcached
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module Faker}
+BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module pylibmc}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module zstd}
@@ -57,10 +59,10 @@ pymemcache supports the following features:
 sed -i 's/tool:pytest/tool:ignore-pytest-cov/' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
