@@ -1,23 +1,25 @@
-From 263791566fbe25755aebde54c98d5aea061414f3 Mon Sep 17 00:00:00 2001
-From: Gary Ching-Pang Lin <glin@suse.com>
-Date: Tue, 24 Jun 2014 11:57:32 +0800
-Subject: [PATCH 1/3] Add DebugPkg
+From d4fc3987941016cba0a2cd1d4037b87bc5937f5e Mon Sep 17 00:00:00 2001
+From: Richard Lyu <richard.lyu@suse.com>
+Date: Thu, 29 May 2025 12:12:23 +0800
+Subject: [PATCH] Add DebugPkg
 
 ---
  DebugPkg/DebugPkg.dec        |  34 ++++
- DebugPkg/GdbSyms/GdbSyms.c   |  70 +++++++
+ DebugPkg/GdbSyms/GdbSyms.c   |  78 ++++++++
  DebugPkg/GdbSyms/GdbSyms.inf |  57 ++++++
- DebugPkg/Scripts/gdb_uefi.py | 348 +++++++++++++++++++++++++++++++++++
- 4 files changed, 509 insertions(+)
+ DebugPkg/Scripts/gdb_uefi.py | 350 +++++++++++++++++++++++++++++++++++
+ OvmfPkg/OvmfPkgX64.dsc       |   3 +
+ 5 files changed, 522 insertions(+)
  create mode 100644 DebugPkg/DebugPkg.dec
  create mode 100644 DebugPkg/GdbSyms/GdbSyms.c
  create mode 100644 DebugPkg/GdbSyms/GdbSyms.inf
  create mode 100644 DebugPkg/Scripts/gdb_uefi.py
 
-Index: edk2-edk2-stable202302/DebugPkg/DebugPkg.dec
-===================================================================
+diff --git a/DebugPkg/DebugPkg.dec b/DebugPkg/DebugPkg.dec
+new file mode 100644
+index 0000000000..b39a660e45
 --- /dev/null
-+++ edk2-edk2-stable202302/DebugPkg/DebugPkg.dec
++++ b/DebugPkg/DebugPkg.dec
 @@ -0,0 +1,34 @@
 +## @file
 +#  Debug package - various useful stuff for debugging.
@@ -53,10 +55,11 @@ Index: edk2-edk2-stable202302/DebugPkg/DebugPkg.dec
 +
 +[LibraryClasses]
 +
-Index: edk2-edk2-stable202302/DebugPkg/GdbSyms/GdbSyms.c
-===================================================================
+diff --git a/DebugPkg/GdbSyms/GdbSyms.c b/DebugPkg/GdbSyms/GdbSyms.c
+new file mode 100644
+index 0000000000..9780cff802
 --- /dev/null
-+++ edk2-edk2-stable202302/DebugPkg/GdbSyms/GdbSyms.c
++++ b/DebugPkg/GdbSyms/GdbSyms.c
 @@ -0,0 +1,78 @@
 +/** @file
 +
@@ -136,10 +139,11 @@ Index: edk2-edk2-stable202302/DebugPkg/GdbSyms/GdbSyms.c
 +}
 +
 +
-Index: edk2-edk2-stable202302/DebugPkg/GdbSyms/GdbSyms.inf
-===================================================================
+diff --git a/DebugPkg/GdbSyms/GdbSyms.inf b/DebugPkg/GdbSyms/GdbSyms.inf
+new file mode 100644
+index 0000000000..0a18a33c73
 --- /dev/null
-+++ edk2-edk2-stable202302/DebugPkg/GdbSyms/GdbSyms.inf
++++ b/DebugPkg/GdbSyms/GdbSyms.inf
 @@ -0,0 +1,57 @@
 +## @file
 +#
@@ -198,10 +202,11 @@ Index: edk2-edk2-stable202302/DebugPkg/GdbSyms/GdbSyms.inf
 +[Depex]
 +  TRUE
 +
-Index: edk2-edk2-stable202302/DebugPkg/Scripts/gdb_uefi.py
-===================================================================
+diff --git a/DebugPkg/Scripts/gdb_uefi.py b/DebugPkg/Scripts/gdb_uefi.py
+new file mode 100644
+index 0000000000..3db87a4de4
 --- /dev/null
-+++ edk2-edk2-stable202302/DebugPkg/Scripts/gdb_uefi.py
++++ b/DebugPkg/Scripts/gdb_uefi.py
 @@ -0,0 +1,350 @@
 +"""
 +Allows loading TianoCore symbols into a GDB session attached to EFI
@@ -553,13 +558,20 @@ Index: edk2-edk2-stable202302/DebugPkg/Scripts/gdb_uefi.py
 +ReloadUefi ()
 +
 +
-Index: edk2-edk2-stable202302/OvmfPkg/OvmfPkgX64.dsc
-===================================================================
---- edk2-edk2-stable202302.orig/OvmfPkg/OvmfPkgX64.dsc
-+++ edk2-edk2-stable202302/OvmfPkg/OvmfPkgX64.dsc
-@@ -1123,3 +1123,5 @@
-   # TPM support
+diff --git a/OvmfPkg/OvmfPkgX64.dsc b/OvmfPkg/OvmfPkgX64.dsc
+index 60fccc19d2..a2784bbd40 100644
+--- a/OvmfPkg/OvmfPkgX64.dsc
++++ b/OvmfPkg/OvmfPkgX64.dsc
+@@ -1063,6 +1063,9 @@
    #
  !include OvmfPkg/Include/Dsc/OvmfTpmComponentsDxe.dsc.inc
+ 
++  DebugPkg/GdbSyms/GdbSyms.inf
 +
-+  DebugPkg/GdbSyms/GdbSyms.inf
++
+   #
+   # Smbios Measurement support
+   #
+-- 
+2.43.0
+

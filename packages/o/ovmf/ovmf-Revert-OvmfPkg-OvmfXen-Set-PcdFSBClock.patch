@@ -1,6 +1,6 @@
-From b8324bc3d5d44e5b1644a66f1b6e07b6e4ad9350 Mon Sep 17 00:00:00 2001
-From: "Lee, Chun-Yi" <jlee@suse.com>
-Date: Wed, 15 Feb 2023 14:39:37 +0800
+From f059118317b6d3a1dfdeec45494d279842c855e4 Mon Sep 17 00:00:00 2001
+From: Richard Lyu <richard.lyu@suse.com>
+Date: Thu, 29 May 2025 13:22:47 +0800
 Subject: [PATCH] Revert "OvmfPkg/OvmfXen: Set PcdFSBClock"
 
 This reverts commit 71cdb91f313380152d7bf38cfeebe76f5b2d39ac.
@@ -10,13 +10,13 @@ This reverts commit 71cdb91f313380152d7bf38cfeebe76f5b2d39ac.
  OvmfPkg/XenPlatformPei/XenPlatformPei.inf | 1 -
  3 files changed, 3 insertions(+), 6 deletions(-)
 
-Index: edk2-edk2-stable202302/OvmfPkg/OvmfXen.dsc
-===================================================================
---- edk2-edk2-stable202302.orig/OvmfPkg/OvmfXen.dsc
-+++ edk2-edk2-stable202302/OvmfPkg/OvmfXen.dsc
-@@ -456,6 +456,9 @@
-   # Point to the MdeModulePkg/Application/UiApp/UiApp.inf
-   gEfiMdeModulePkgTokenSpaceGuid.PcdBootManagerMenuFile|{ 0x21, 0xaa, 0x2c, 0x46, 0x14, 0x76, 0x03, 0x45, 0x83, 0x6e, 0x8a, 0xb6, 0xf4, 0x66, 0x23, 0x31 }
+diff --git a/OvmfPkg/OvmfXen.dsc b/OvmfPkg/OvmfXen.dsc
+index 088c63f5c2..6f636a79a2 100644
+--- a/OvmfPkg/OvmfXen.dsc
++++ b/OvmfPkg/OvmfXen.dsc
+@@ -451,6 +451,9 @@
+   # Point to the MdeModulePkg/Application/BootManagerMenuApp/BootManagerMenuApp.inf
+   gEfiMdeModulePkgTokenSpaceGuid.PcdBootManagerMenuFile|{ 0xdc, 0x5b, 0xc2, 0xee, 0xf2, 0x67, 0x95, 0x4d, 0xb1, 0xd5, 0xf8, 0x1b, 0x20, 0x39, 0xd1, 0x1d }
  
 +  ## Xen vlapic's frequence is 100 MHz
 +  gEfiMdePkgTokenSpaceGuid.PcdFSBClock|100000000
@@ -24,7 +24,7 @@ Index: edk2-edk2-stable202302/OvmfPkg/OvmfXen.dsc
    # We populate DXE IPL tables with 1G pages preferably on Xen
    gEfiMdeModulePkgTokenSpaceGuid.PcdUse1GPageTable|TRUE
  
-@@ -486,7 +489,6 @@
+@@ -484,7 +487,6 @@
    gUefiOvmfPkgTokenSpaceGuid.PcdPciMmio64Base|0x0
    gUefiOvmfPkgTokenSpaceGuid.PcdPciMmio64Size|0x800000000
  
@@ -32,11 +32,11 @@ Index: edk2-edk2-stable202302/OvmfPkg/OvmfXen.dsc
    gEfiMdePkgTokenSpaceGuid.PcdPlatformBootTimeOut|0
  
    # Set video resolution for text setup.
-Index: edk2-edk2-stable202302/OvmfPkg/XenPlatformPei/Xen.c
-===================================================================
---- edk2-edk2-stable202302.orig/OvmfPkg/XenPlatformPei/Xen.c
-+++ edk2-edk2-stable202302/OvmfPkg/XenPlatformPei/Xen.c
-@@ -634,9 +634,5 @@ CalibrateLapicTimer (
+diff --git a/OvmfPkg/XenPlatformPei/Xen.c b/OvmfPkg/XenPlatformPei/Xen.c
+index a54fd55c70..68ae4801ae 100644
+--- a/OvmfPkg/XenPlatformPei/Xen.c
++++ b/OvmfPkg/XenPlatformPei/Xen.c
+@@ -613,9 +613,5 @@ CalibrateLapicTimer (
    Freq = DivU64x64Remainder (Dividend, TscTick2 - TscTick, NULL);
    DEBUG ((DEBUG_INFO, "APIC Freq % 8lu Hz\n", Freq));
  
@@ -46,10 +46,10 @@ Index: edk2-edk2-stable202302/OvmfPkg/XenPlatformPei/Xen.c
 -
    UnmapXenPage (SharedInfo);
  }
-Index: edk2-edk2-stable202302/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
-===================================================================
---- edk2-edk2-stable202302.orig/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
-+++ edk2-edk2-stable202302/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
+diff --git a/OvmfPkg/XenPlatformPei/XenPlatformPei.inf b/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
+index 20c27ff34b..790f4af551 100644
+--- a/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
++++ b/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
 @@ -86,7 +86,6 @@
    gEfiMdeModulePkgTokenSpaceGuid.PcdDxeIplSwitchToLongMode
    gEfiMdeModulePkgTokenSpaceGuid.PcdUse1GPageTable
@@ -58,3 +58,6 @@ Index: edk2-edk2-stable202302/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
    gEfiSecurityPkgTokenSpaceGuid.PcdOptionRomImageVerificationPolicy
    gUefiCpuPkgTokenSpaceGuid.PcdCpuLocalApicBaseAddress
  
+-- 
+2.43.0
+

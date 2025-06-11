@@ -27,7 +27,7 @@
 %endif
 
 Name:           ovmf
-Version:        202502
+Version:        202505
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
@@ -74,21 +74,8 @@ Patch10:        %{name}-Revert-Add-Stack-Cookie-Support-to-MSVC-and-GCC.patch
 Patch11:        %{name}-BaseTools-Using-gcc12-for-building-image.patch
 %endif
 %endif
-Patch12:        %{name}-Increase-FVMAIN-Size-for-Compatibility-with-2MB-Size.patch
 # Bug 1240420 - UEFI boot breaks: X64 Exception Type - 0E(#PF - Page-Fault) CPU Apic ID - 00000000
 Patch13:        %{name}-UefiCpuPkg-Disable-EFI-memory-attributes-protocol.patch
-# Add vTPM support for SVSM in OVMF (jsc#PED-12743, jsc#PED-12767)
-Patch14:        %{name}-Maintainers.txt-Add-reviewer-for-SVSM-vTPM-related-m.patch
-Patch15:        %{name}-UefiCpuPkg-AmdSvsmLib-Stub-the-SVSM-vTPM-protocol-fo.patch
-Patch16:        %{name}-OvmfPkg-AmdSvsmLib-Add-the-SVSM-vTPM-protocol.patch
-Patch17:        %{name}-OvmfPkg-Use-Tpm2Device-lib-with-SVSM-vTPM-support.patch
-Patch18:        %{name}-OvmfPkg-AmdSvmLib-Use-named-protocol-and-call-consta.patch
-Patch19:        %{name}-MdePkg-AmdSev-Add-SVSM-protocol-call-numbers.patch
-Patch20:        %{name}-MdePkg-AmdSev-Add-SVSM-protocol-vTPM-call-numbers.patch
-Patch21:        %{name}-SecurityPkg-Tpm2DeviceLibDTpm-Add-header-file-for-Tp.patch
-Patch22:        %{name}-SecurityPkg-Tpm2DeviceLibDTpm-Add-TPM2-lib-supportin.patch
-Patch23:        %{name}-SecurityPkg-Tpm2DeviceLibDTpm-Improve-spelling-gramm.patch
-Patch24:        %{name}-SecurityPkg-Tpm2DeviceLibDTpm-Check-SNP-enabled-prio.patch
 
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils

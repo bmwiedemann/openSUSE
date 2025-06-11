@@ -1,17 +1,18 @@
-From 7b9e33357945b23e6bcdb21fb9d0ba5859ad9b0b Mon Sep 17 00:00:00 2001
+From 772bda5290449d46546b7b19cda083ed50536e7b Mon Sep 17 00:00:00 2001
 From: Richard Lyu <richard.lyu@suse.com>
-Date: Tue, 14 Jan 2025 19:31:48 +0800
-Subject: [PATCH] ovmf Revert add stack cookie support to MSVC and GCC
+Date: Thu, 29 May 2025 14:25:56 +0800
+Subject: [PATCH] Revert "BaseTools: Add Stack Cookie Support to MSVC and GCC
+ IA32/X64/ARM/AARCH64"
 
 This reverts commit f53f029122d4493e9db95e2424dd8f067f247661.
 ---
- BaseTools/Conf/tools_def.template | 65 +++++++++++++++----------------
- 1 file changed, 31 insertions(+), 34 deletions(-)
+ BaseTools/Conf/tools_def.template | 41 ++++++++++++++-----------------
+ 1 file changed, 19 insertions(+), 22 deletions(-)
 
-Index: edk2-edk2-stable202502/BaseTools/Conf/tools_def.template
-===================================================================
---- edk2-edk2-stable202502.orig/BaseTools/Conf/tools_def.template
-+++ edk2-edk2-stable202502/BaseTools/Conf/tools_def.template
+diff --git a/BaseTools/Conf/tools_def.template b/BaseTools/Conf/tools_def.template
+index de86f96733..2a479365da 100755
+--- a/BaseTools/Conf/tools_def.template
++++ b/BaseTools/Conf/tools_def.template
 @@ -21,9 +21,8 @@
  #      - Add GCC and GCCNOLTO
  #      - Deprecate GCC48, GCC49 and GCC5.
@@ -23,7 +24,7 @@ Index: edk2-edk2-stable202502/BaseTools/Conf/tools_def.template
  
  IDENTIFIER = Default TOOL_CHAIN_CONF
  
-@@ -636,9 +635,9 @@ NOOPT_VS2017_AARCH64_DLINK_FLAGS   = /NO
+@@ -636,9 +635,9 @@ NOOPT_VS2017_AARCH64_DLINK_FLAGS   = /NOLOGO /NODEFAULTLIB /IGNORE:4001 /OPT:REF
  *_VS2019_IA32_PP_PATH      = DEF(VS2019_BIN_IA32)\cl.exe
  *_VS2019_IA32_ASM_PATH     = DEF(VS2019_BIN_IA32)\ml.exe
  
@@ -36,7 +37,7 @@ Index: edk2-edk2-stable202502/BaseTools/Conf/tools_def.template
  
    DEBUG_VS2019_IA32_ASM_FLAGS   = /nologo /c /WX /W3 /Cx /coff /Zd /Zi
  RELEASE_VS2019_IA32_ASM_FLAGS   = /nologo /c /WX /W3 /Cx /coff /Zd
-@@ -666,9 +665,9 @@ NOOPT_VS2019_IA32_DLINK_FLAGS   = /NOLOG
+@@ -666,9 +665,9 @@ NOOPT_VS2019_IA32_DLINK_FLAGS   = /NOLOGO /NODEFAULTLIB /IGNORE:4001 /OPT:REF /O
  *_VS2019_X64_DLINK_PATH    = DEF(VS2019_BIN_X64)\link.exe
  *_VS2019_X64_ASLDLINK_PATH = DEF(VS2019_BIN_X64)\link.exe
  
@@ -49,33 +50,7 @@ Index: edk2-edk2-stable202502/BaseTools/Conf/tools_def.template
  
    DEBUG_VS2019_X64_ASM_FLAGS    = /nologo /c /WX /W3 /Cx /Zd /Zi
  RELEASE_VS2019_X64_ASM_FLAGS    = /nologo /c /WX /W3 /Cx /Zd
-@@ -696,9 +695,9 @@ NOOPT_VS2019_X64_DLINK_FLAGS    = /NOLOG
- *_VS2019_ARM_ASLPP_PATH           = DEF(VS2019_BIN_ARM)\cl.exe
- *_VS2019_ARM_ASLDLINK_PATH        = DEF(VS2019_BIN_ARM)\link.exe
- 
--  DEBUG_VS2019_ARM_CC_FLAGS       = /nologo /c /WX /GS /W4 /Gs32768 /D UNICODE /O1b2 /GL /FIAutoGen.h /EHs-c- /GR- /GF /Gy /Zi /Gw /Oi-
--RELEASE_VS2019_ARM_CC_FLAGS       = /nologo /c /WX /GS /W4 /Gs32768 /D UNICODE /O1b2 /GL /FIAutoGen.h /EHs-c- /GR- /GF /Gw /Oi-
--NOOPT_VS2019_ARM_CC_FLAGS         = /nologo /c /WX /GS /W4 /Gs32768 /D UNICODE /FIAutoGen.h /EHs-c- /GR- /GF /Gy /Zi /Od /Oi-
-+  DEBUG_VS2019_ARM_CC_FLAGS       = /nologo /c /WX /GS- /W4 /Gs32768 /D UNICODE /O1b2 /GL /FIAutoGen.h /EHs-c- /GR- /GF /Gy /Zi /Gw /Oi-
-+RELEASE_VS2019_ARM_CC_FLAGS       = /nologo /c /WX /GS- /W4 /Gs32768 /D UNICODE /O1b2 /GL /FIAutoGen.h /EHs-c- /GR- /GF /Gw /Oi-
-+NOOPT_VS2019_ARM_CC_FLAGS         = /nologo /c /WX /GS- /W4 /Gs32768 /D UNICODE /FIAutoGen.h /EHs-c- /GR- /GF /Gy /Zi /Od /Oi-
- 
-   DEBUG_VS2019_ARM_ASM_FLAGS      = /nologo /g
- RELEASE_VS2019_ARM_ASM_FLAGS      = /nologo
-@@ -722,9 +721,9 @@ NOOPT_VS2019_ARM_DLINK_FLAGS      = /NOL
- *_VS2019_AARCH64_ASLPP_PATH        = DEF(VS2019_BIN_AARCH64)\cl.exe
- *_VS2019_AARCH64_ASLDLINK_PATH     = DEF(VS2019_BIN_AARCH64)\link.exe
- 
--  DEBUG_VS2019_AARCH64_CC_FLAGS    = /nologo /c /WX /GS /W4 /Gs32768 /D UNICODE /O1b2 /GL /FIAutoGen.h /EHs-c- /GR- /GF /Gy /Zi /Gw /Oi-
--RELEASE_VS2019_AARCH64_CC_FLAGS    = /nologo /c /WX /GS /W4 /Gs32768 /D UNICODE /O1b2 /GL /FIAutoGen.h /EHs-c- /GR- /GF /Gw /Oi-
--NOOPT_VS2019_AARCH64_CC_FLAGS      = /nologo /c /WX /GS /W4 /Gs32768 /D UNICODE /FIAutoGen.h /EHs-c- /GR- /GF /Gy /Zi /Od /Oi-
-+  DEBUG_VS2019_AARCH64_CC_FLAGS    = /nologo /c /WX /GS- /W4 /Gs32768 /D UNICODE /O1b2 /GL /FIAutoGen.h /EHs-c- /GR- /GF /Gy /Zi /Gw /Oi-
-+RELEASE_VS2019_AARCH64_CC_FLAGS    = /nologo /c /WX /GS- /W4 /Gs32768 /D UNICODE /O1b2 /GL /FIAutoGen.h /EHs-c- /GR- /GF /Gw /Oi-
-+NOOPT_VS2019_AARCH64_CC_FLAGS      = /nologo /c /WX /GS- /W4 /Gs32768 /D UNICODE /FIAutoGen.h /EHs-c- /GR- /GF /Gy /Zi /Od /Oi-
- 
-   DEBUG_VS2019_AARCH64_ASM_FLAGS   = /nologo /g
- RELEASE_VS2019_AARCH64_ASM_FLAGS   = /nologo
-@@ -779,9 +778,9 @@ NOOPT_VS2019_AARCH64_DLINK_FLAGS   = /NO
+@@ -779,9 +778,9 @@ NOOPT_VS2019_AARCH64_DLINK_FLAGS   = /NOLOGO /NODEFAULTLIB /IGNORE:4001 /OPT:REF
  *_VS2022_IA32_ASM_PATH     = DEF(VS2022_BIN_IA32)\ml.exe
  
        *_VS2022_IA32_MAKE_FLAGS  = /nologo
@@ -88,7 +63,7 @@ Index: edk2-edk2-stable202502/BaseTools/Conf/tools_def.template
  
    DEBUG_VS2022_IA32_ASM_FLAGS   = /nologo /c /WX /W3 /Cx /coff /Zd /Zi
  RELEASE_VS2022_IA32_ASM_FLAGS   = /nologo /c /WX /W3 /Cx /coff /Zd
-@@ -815,9 +814,9 @@ NOOPT_VS2022_IA32_DLINK_FLAGS   = /NOLOG
+@@ -815,9 +814,9 @@ NOOPT_VS2022_IA32_DLINK_FLAGS   = /NOLOGO /NODEFAULTLIB /IGNORE:4001 /OPT:REF /O
  *_VS2022_X64_DLINK_PATH    = DEF(VS2022_BIN_X64)\link.exe
  *_VS2022_X64_ASLDLINK_PATH = DEF(VS2022_BIN_X64)\link.exe
  
@@ -101,33 +76,7 @@ Index: edk2-edk2-stable202502/BaseTools/Conf/tools_def.template
  
    DEBUG_VS2022_X64_ASM_FLAGS    = /nologo /c /WX /W3 /Cx /Zd /Zi
  RELEASE_VS2022_X64_ASM_FLAGS    = /nologo /c /WX /W3 /Cx /Zd
-@@ -852,9 +851,9 @@ NOOPT_VS2022_X64_DLINK_FLAGS    = /NOLOG
- *_VS2022_ARM_ASLDLINK_PATH        = DEF(VS2022_BIN_ARM)\link.exe
- 
-       *_VS2022_ARM_MAKE_FLAGS     = /nologo
--  DEBUG_VS2022_ARM_CC_FLAGS       = /nologo /c /WX /GS /W4 /Gs32768 /D UNICODE /O1b2 /GL /FIAutoGen.h /EHs-c- /GR- /GF /Gy /Zi /Gw /Oi-
--RELEASE_VS2022_ARM_CC_FLAGS       = /nologo /c /WX /GS /W4 /Gs32768 /D UNICODE /O1b2 /GL /FIAutoGen.h /EHs-c- /GR- /GF /Gw /Oi-
--NOOPT_VS2022_ARM_CC_FLAGS         = /nologo /c /WX /GS /W4 /Gs32768 /D UNICODE /FIAutoGen.h /EHs-c- /GR- /GF /Gy /Zi /Od /Oi-
-+  DEBUG_VS2022_ARM_CC_FLAGS       = /nologo /c /WX /GS- /W4 /Gs32768 /D UNICODE /O1b2 /GL /FIAutoGen.h /EHs-c- /GR- /GF /Gy /Zi /Gw /Oi-
-+RELEASE_VS2022_ARM_CC_FLAGS       = /nologo /c /WX /GS- /W4 /Gs32768 /D UNICODE /O1b2 /GL /FIAutoGen.h /EHs-c- /GR- /GF /Gw /Oi-
-+NOOPT_VS2022_ARM_CC_FLAGS         = /nologo /c /WX /GS- /W4 /Gs32768 /D UNICODE /FIAutoGen.h /EHs-c- /GR- /GF /Gy /Zi /Od /Oi-
- 
-   DEBUG_VS2022_ARM_ASM_FLAGS      = /nologo /g
- RELEASE_VS2022_ARM_ASM_FLAGS      = /nologo
-@@ -885,9 +884,9 @@ NOOPT_VS2022_ARM_DLINK_FLAGS      = /NOL
- *_VS2022_AARCH64_ASLDLINK_PATH     = DEF(VS2022_BIN_AARCH64)\link.exe
- 
-       *_VS2022_AARCH64_MAKE_FLAGS  = /nologo
--  DEBUG_VS2022_AARCH64_CC_FLAGS    = /nologo /c /WX /GS /W4 /Gs32768 /D UNICODE /O1b2 /GL /FIAutoGen.h /EHs-c- /GR- /GF /Gy /Zi /Gw /Oi-
--RELEASE_VS2022_AARCH64_CC_FLAGS    = /nologo /c /WX /GS /W4 /Gs32768 /D UNICODE /O1b2 /GL /FIAutoGen.h /EHs-c- /GR- /GF /Gw /Oi-
--NOOPT_VS2022_AARCH64_CC_FLAGS      = /nologo /c /WX /GS /W4 /Gs32768 /D UNICODE /FIAutoGen.h /EHs-c- /GR- /GF /Gy /Zi /Od /Oi-
-+  DEBUG_VS2022_AARCH64_CC_FLAGS    = /nologo /c /WX /GS- /W4 /Gs32768 /D UNICODE /O1b2 /GL /FIAutoGen.h /EHs-c- /GR- /GF /Gy /Zi /Gw /Oi-
-+RELEASE_VS2022_AARCH64_CC_FLAGS    = /nologo /c /WX /GS- /W4 /Gs32768 /D UNICODE /O1b2 /GL /FIAutoGen.h /EHs-c- /GR- /GF /Gw /Oi-
-+NOOPT_VS2022_AARCH64_CC_FLAGS      = /nologo /c /WX /GS- /W4 /Gs32768 /D UNICODE /FIAutoGen.h /EHs-c- /GR- /GF /Gy /Zi /Od /Oi-
- 
-   DEBUG_VS2022_AARCH64_ASM_FLAGS   = /nologo /g
- RELEASE_VS2022_AARCH64_ASM_FLAGS   = /nologo
-@@ -919,13 +918,11 @@ NOOPT_*_*_OBJCOPY_ADDDEBUGFLAG     = --a
+@@ -919,13 +918,11 @@ NOOPT_*_*_OBJCOPY_ADDDEBUGFLAG     = --add-gnu-debuglink="$(DEBUG_DIR)/$(MODULE_
  *_*_*_DTCPP_PATH                   = DEF(DTCPP_BIN)
  *_*_*_DTC_PATH                     = DEF(DTC_BIN)
  
@@ -144,7 +93,7 @@ Index: edk2-edk2-stable202502/BaseTools/Conf/tools_def.template
  DEFINE GCC_AARCH64_CC_XIPFLAGS     = -mstrict-align -mgeneral-regs-only
  DEFINE GCC_RISCV64_CC_XIPFLAGS     = -mstrict-align -mgeneral-regs-only
  DEFINE GCC_DLINK2_FLAGS_COMMON     = -Wl,--script=$(EDK_TOOLS_PATH)/Scripts/GccBase.lds
-@@ -961,8 +958,8 @@ DEFINE GCC_DEPS_FLAGS              = -MM
+@@ -961,8 +958,8 @@ DEFINE GCC_DEPS_FLAGS              = -MMD -MF $@.deps
  
  DEFINE GCC48_ALL_CC_FLAGS            = DEF(GCC_ALL_CC_FLAGS) -ffunction-sections -fdata-sections -DSTRING_ARRAY_NAME=$(BASE_NAME)Strings
  DEFINE GCC48_IA32_X64_DLINK_COMMON   = -nostdlib -Wl,-n,-q,--gc-sections -z common-page-size=0x20
@@ -155,7 +104,7 @@ Index: edk2-edk2-stable202502/BaseTools/Conf/tools_def.template
  DEFINE GCC48_IA32_X64_ASLDLINK_FLAGS = DEF(GCC48_IA32_X64_DLINK_COMMON) -Wl,--entry,ReferenceAcpiTable -u ReferenceAcpiTable
  DEFINE GCC48_IA32_X64_DLINK_FLAGS    = DEF(GCC48_IA32_X64_DLINK_COMMON) -Wl,--entry,$(IMAGE_ENTRY_POINT) -u $(IMAGE_ENTRY_POINT) -Wl,-Map,$(DEST_DIR_DEBUG)/$(BASE_NAME).map,--whole-archive
  DEFINE GCC48_IA32_DLINK2_FLAGS       = -Wl,--defsym=PECOFF_HEADER_SIZE=0x220 DEF(GCC_DLINK2_FLAGS_COMMON)
-@@ -971,7 +968,7 @@ DEFINE GCC48_X64_DLINK2_FLAGS        = -
+@@ -971,7 +968,7 @@ DEFINE GCC48_X64_DLINK2_FLAGS        = -Wl,--defsym=PECOFF_HEADER_SIZE=0x228 DEF
  DEFINE GCC48_ASM_FLAGS               = DEF(GCC_ASM_FLAGS)
  DEFINE GCC48_ARM_ASM_FLAGS           = $(PLATFORM_FLAGS) DEF(GCC_ASM_FLAGS) -mlittle-endian
  DEFINE GCC48_AARCH64_ASM_FLAGS       = $(PLATFORM_FLAGS) DEF(GCC_ASM_FLAGS) -mlittle-endian
@@ -164,3 +113,6 @@ Index: edk2-edk2-stable202502/BaseTools/Conf/tools_def.template
  DEFINE GCC48_ARM_CC_XIPFLAGS         = DEF(GCC_ARM_CC_XIPFLAGS)
  DEFINE GCC48_AARCH64_CC_FLAGS        = $(PLATFORM_FLAGS) -mcmodel=large DEF(GCC_AARCH64_CC_FLAGS)
  DEFINE GCC48_AARCH64_CC_XIPFLAGS     = DEF(GCC_AARCH64_CC_XIPFLAGS)
+-- 
+2.43.0
+
