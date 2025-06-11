@@ -1065,4 +1065,18 @@ New upstream release</comment>
   + Updated translations. (forwarded request 1274185 from iznogood)</comment>
     <requestid>1274592</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>8065ca1f3d2ac7d43d0489e832ab24b4</srcmd5>
+    <version>4.18.6</version>
+    <time>1749651576</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.18.6:
+  + Bugs fixed:
+    - Wrong behavior of GdkKeymap on macOS
+    - cups: NULL-terminate array of choices
+    - Fix the android build
+    - icontheme: Load the missing image icon from the theme
+  + Updated translations. (forwarded request 1284320 from iznogood)</comment>
+    <requestid>1284679</requestid>
+  </revision>
 </revisionlist>
