@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 10 13:09:57 UTC 2025 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Hardening permissions (bsc#1242722)
+
+-------------------------------------------------------------------
 Fri May  9 07:06:53 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Do not require standalone versions of apis that tomcat itself
