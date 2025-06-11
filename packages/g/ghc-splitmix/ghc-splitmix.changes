@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  9 17:17:55 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update splitmix to version 0.1.2.
+  # 0.1.2
+
+  - Use `getentropy` for initialisation on unix-like systems (i.e. not Windows).
+
+-------------------------------------------------------------------
 Thu Dec 19 14:34:52 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update splitmix to version 0.1.1.
