@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-snappy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-snappy
 Version:        0.6.1
 Release:        0
@@ -26,7 +25,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/andrix/python-snappy
 Source:         https://files.pythonhosted.org/packages/source/p/python-snappy/python-snappy-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -43,10 +44,10 @@ sed -i -e '/^#!\//, 1d' src/snappy/snappy.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -63,6 +64,7 @@ popd
 %files %{python_files}
 %doc AUTHORS README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/snappy
+%{python_sitearch}/python[-_]snappy-%{version}*-info
 
 %changelog

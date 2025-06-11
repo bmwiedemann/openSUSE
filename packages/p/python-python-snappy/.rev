@@ -52,4 +52,12 @@ Used by a bunch of python numeric packages.</comment>
   * Port to python 3.11: use Py_SET_SIZE()</comment>
     <requestid>1066617</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a946b6662e44b6307f86e7c2a8d4cf7d</srcmd5>
+    <version>0.6.1</version>
+    <time>1749651833</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1284525</requestid>
+  </revision>
 </revisionlist>
