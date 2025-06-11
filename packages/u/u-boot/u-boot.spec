@@ -60,7 +60,7 @@
 %define rkimages rksd
 %endif
 %endif
-%if "%target" == "rock64-rk3328"
+%if "%target" == "rock64-rk3328" || "%target" == "roc-cc-rk3328"
 %define is_rk3328 1
 %define is_armv8 1
 %define rockchip_idb 1
