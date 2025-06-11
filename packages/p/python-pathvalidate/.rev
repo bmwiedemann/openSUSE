@@ -116,4 +116,13 @@
     <comment></comment>
     <requestid>1237820</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a47caea1696c8a6e8e1fd1e39c5e86d4</srcmd5>
+    <version>3.2.3</version>
+    <time>1749651930</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Specify files and directories explicitly in %files.</comment>
+    <requestid>1284621</requestid>
+  </revision>
 </revisionlist>

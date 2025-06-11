@@ -22,10 +22,12 @@ Version:        3.2.3
 Release:        0
 Summary:        Python library to sanitize/validate a string such as filenames
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/thombashi/pathvalidate
 Source:         https://files.pythonhosted.org/packages/source/p/pathvalidate/pathvalidate-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 38.3.0}
+BuildRequires:  %{python_module setuptools_scm >= 8}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -35,7 +37,6 @@ BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tcolorpy}
 # /SECTION
-Requires:       python-setuptools >= 38.3.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,10 +48,10 @@ filenames/file-paths/etc.
 %setup -q -n pathvalidate-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +60,7 @@ filenames/file-paths/etc.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/pathvalidate*
+%{python_sitelib}/pathvalidate
+%{python_sitelib}/pathvalidate-%{version}.dist-info
 
 %changelog
