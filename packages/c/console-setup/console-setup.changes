@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 10 12:23:56 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- console-setup-dejavu-fonts.patch
+  * generate also dejavu fonts
+- supersedes console-setup-no-dejavu-fonts.patch
+- buildrequire dejavu-fonts, otf2bdf (new package)
+
+-------------------------------------------------------------------
 Wed May 28 09:07:27 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Updated to version 1.237

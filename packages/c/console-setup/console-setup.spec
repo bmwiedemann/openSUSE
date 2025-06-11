@@ -31,8 +31,10 @@ Source1:        unifont.tar.bz2
 Patch0:         console-setup-1.76-fsf-address.patch
 # PATCH-FIX-OPENSUSE console-setup-paths.patch -- Change installing paths to SUSE-style.
 Patch1:         console-setup-paths.patch
-Patch2:         console-setup-no-dejavu-fonts.patch
+Patch2:         console-setup-dejavu-fonts.patch
 BuildRequires:  bdfresize
+BuildRequires:  dejavu-fonts
+BuildRequires:  otf2bdf
 BuildRequires:  perl
 BuildRequires:  perl-XML-Parser
 BuildRequires:  perl(encoding)
