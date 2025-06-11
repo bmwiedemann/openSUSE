@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-qet_tb_generator
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname qet_tb_generator
-%define skip_python2 1
+%bcond_without libalternatives
 Name:           python-%{modname}
 Version:        1.3.1
 Release:        0
@@ -27,13 +26,15 @@ License:        GPL-2.0-only
 URL:            https://pypi.python.org/pypi/qet-tb-generator
 Source0:        https://files.pythonhosted.org/packages/source/q/qet_tb_generator/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.5}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-qt5
 Requires:       qelectrotech
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,18 +52,15 @@ mv src qet_tb_generator
 sed -i 's/qet_tb_generator=src.main:main/qet_tb_generator=qet_tb_generator.main:main/' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/%{modname}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative %{modname}
-
-%postun
-%python_uninstall_alternative %{modname}
+%pre
+%python_libalternatives_reset_alternative %{modname}
 
 %files %{python_files}
 %doc README
