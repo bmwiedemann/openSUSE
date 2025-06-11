@@ -32,7 +32,9 @@ Summary:        Python wrapper for Xvfb, Xephyr and Xvnc
 License:        BSD-2-Clause
 URL:            https://github.com/ponty/PyVirtualDisplay
 Source:         https://files.pythonhosted.org/packages/source/P/PyVirtualDisplay/PyVirtualDisplay-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-EasyProcess
@@ -67,11 +69,11 @@ PyVirtualDisplay is a python wrapper for Xvfb, Xephyr and Xvnc.
 rm tests/test_xvnc.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -92,7 +94,7 @@ xvfb-run --server-args "-screen 0 1920x1080x24" \
 %license LICENSE.txt
 %doc README.md
 %{python_sitelib}/pyvirtualdisplay
-%{python_sitelib}/PyVirtualDisplay-%{version}-*info
+%{python_sitelib}/[Pp]y[Vv]irtual[Dd]isplay-%{version}.dist-info
 %endif
 
 %changelog

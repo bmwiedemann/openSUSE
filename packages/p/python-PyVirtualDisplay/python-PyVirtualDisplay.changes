@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 11 05:49:38 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Mon May 12 07:45:40 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python-vncdotool build dependency
