@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 10 07:35:25 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://savannah.gnu.org/bugs/index.php?67206
+  + cflow-gcc15.patch
+
+-------------------------------------------------------------------
 Tue Jan  4 21:52:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7:

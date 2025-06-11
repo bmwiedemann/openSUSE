@@ -26,6 +26,8 @@ URL:            https://www.gnu.org/software/cflow
 Source0:        https://ftp.gnu.org/gnu/cflow/cflow-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/cflow/cflow-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
+# https://savannah.gnu.org/bugs/index.php?67206
+Patch0:         cflow-gcc15.patch
 BuildRequires:  flex
 Requires(post): %{install_info_prereq}
 Requires(preun):%{install_info_prereq}
@@ -38,7 +40,7 @@ generated. Two output formats are implemented: POSIX and GNU (extended). Input
 files can optionally be preprocessed before analyzing.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
