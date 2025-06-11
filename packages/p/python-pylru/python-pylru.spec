@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylru
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pylru
 Version:        1.2.1
 Release:        0
@@ -25,7 +24,9 @@ License:        GPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/jlhutch/pylru
 Source:         https://files.pythonhosted.org/packages/source/p/pylru/pylru-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -38,10 +39,10 @@ Pylru implements a true LRU cache along with several support classes. The cache 
 %setup -q -n pylru-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -50,6 +51,8 @@ Pylru implements a true LRU cache along with several support classes. The cache 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pylru.py
+%pycache_only %{python_sitelib}/__pycache__/pylru*
+%{python_sitelib}/pylru-%{version}*-info
 
 %changelog
