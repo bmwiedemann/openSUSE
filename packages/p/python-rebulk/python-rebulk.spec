@@ -1,7 +1,7 @@
 #
 # spec file for package python-rebulk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-rebulk
 Version:        3.2.0
 Release:        0
@@ -24,12 +23,14 @@ Summary:        Library for defining bulk search patterns to perform advanced st
 License:        MIT
 URL:            https://github.com/Toilal/rebulk
 Source0:        https://files.pythonhosted.org/packages/source/r/rebulk/rebulk-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 Recommends:     python-regex
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -51,10 +52,10 @@ for i in {'default_rules_module','__init__','rebulk_rules_module','rules_module'
 done
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,6 +65,6 @@ done
 %doc CHANGELOG.md README.md
 %license LICENSE
 %{python_sitelib}/rebulk
-%{python_sitelib}/rebulk-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/rebulk-%{version}*-info
 
 %changelog
