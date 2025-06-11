@@ -110,7 +110,7 @@ find examples/assets -type f -print0 | xargs -0 dos2unix
 %{python_sitearch}/PyQt5/Qt3DInput.*
 %{python_sitearch}/PyQt5/Qt3DLogic.*
 %{python_sitearch}/PyQt5/Qt3DRender.*
-%{python_sitearch}/PyQt3D-%{version}.dist-info/
+%{python_sitearch}/[Pp]y[Qq]t3[Dd]-%{version}.dist-info/
 
 %files %{python_files devel}
 %license LICENSE

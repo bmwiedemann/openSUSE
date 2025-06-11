@@ -125,4 +125,12 @@ This is for backports derived from Factory. No effect on Tumbleweed.</comment>
     <comment></comment>
     <requestid>1141587</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>15cee740acda72891e97b0fc7c2f77f7</srcmd5>
+    <version>5.15.6</version>
+    <time>1749651681</time>
+    <user>anag_factory</user>
+    <comment>Lowercase distinfo </comment>
+    <requestid>1284349</requestid>
+  </revision>
 </revisionlist>
