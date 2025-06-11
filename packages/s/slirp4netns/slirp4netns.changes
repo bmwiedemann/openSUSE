@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  3 10:52:29 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to 1.3.3
+  * The official statically-linked binaries are updated to be linked with the new version of libslirp: v4.9.0 -> v4.9.1 (#357)
+  * Enabled GitHub Actions Attestations (#355, thanks to @takumin)
+
+-------------------------------------------------------------------
 Tue Feb 11 09:07:05 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to v1.13.2
