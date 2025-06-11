@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 11 05:49:24 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Oct 30 12:45:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip for python313

@@ -134,4 +134,12 @@
     <comment>- skip for python313</comment>
     <requestid>1219561</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>769c9c34a8f05321d08291b283fdfd46</srcmd5>
+    <version>0.7.19</version>
+    <time>1749651935</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284623</requestid>
+  </revision>
 </revisionlist>

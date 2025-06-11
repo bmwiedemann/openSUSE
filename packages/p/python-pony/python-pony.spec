@@ -1,7 +1,7 @@
 #
 # spec file for package python-pony
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,10 @@ License:        Apache-2.0
 URL:            https://ponyorm.com
 Source:         https://files.pythonhosted.org/packages/source/p/pony/pony-%{version}.tar.gz
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sqlite3}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,10 +51,10 @@ rm -rf pony/thirdparty/compiler
 dos2unix README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -r %{buildroot}%{$python_sitelib}/pony/*/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -65,6 +67,6 @@ rm pony/orm/tests/test_json.py
 %doc README.md
 %license LICENSE
 %{python_sitelib}/pony
-%{python_sitelib}/pony-%{version}*-info
+%{python_sitelib}/pony-%{version}.dist-info
 
 %changelog
