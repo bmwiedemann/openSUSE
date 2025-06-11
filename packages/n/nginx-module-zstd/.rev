@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1122666</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8e029c2683cddc7eadf071114a43275e</srcmd5>
+    <version>0.1.1</version>
+    <time>1749652089</time>
+    <user>anag_factory</user>
+    <comment>- Provide a module autoloading config fragment</comment>
+    <requestid>1284815</requestid>
+  </revision>
 </revisionlist>

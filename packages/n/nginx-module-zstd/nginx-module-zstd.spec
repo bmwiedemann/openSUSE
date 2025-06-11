@@ -1,7 +1,7 @@
 #
 # spec file for package nginx-module-zstd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,12 +46,18 @@ export CFLAGS="-Wno-error"
 %make_build modules
 
 %install
-mkdir -p %buildroot/%ngx_module_dir
-install -Dpm0755 nginx/objs/ngx_http_zstd*_module.so %buildroot%ngx_module_dir
+b="%buildroot"
+mkdir -p "$b/%ngx_module_dir" "$b/%_datadir/nginx/modules"
+install -Dpm0755 nginx/objs/ngx_http_zstd*_module.so "$b/%ngx_module_dir/"
+cat >"$b/%_datadir/nginx/modules/mod-zstd.conf" <<-EOF
+	load_module %ngx_module_dir/ngx_http_zstd_filter_module.so;
+	load_module %ngx_module_dir/ngx_http_zstd_static_module.so;
+EOF
 
 %files
 %license LICENSE
 %doc *.md
 %ngx_module_dir/ngx*.so
+%_datadir/nginx/
 
 %changelog
