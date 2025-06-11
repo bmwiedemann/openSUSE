@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylons-sphinx-themes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,9 @@ Summary:        Pylons Sphinx themes for documentation styling
 License:        SUSE-Repoze
 URL:            https://github.com/Pylons/pylons-sphinx-themes
 Source:         https://files.pythonhosted.org/packages/source/p/pylons-sphinx-themes/pylons-sphinx-themes-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pygments
@@ -48,16 +50,16 @@ To use a theme in your Sphinx documentation, follow the guide in README.md.
 %setup -q -n pylons-sphinx-themes-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.txt CONTRIBUTORS.txt README.md
 %{python_sitelib}/pylons_sphinx_themes
-%{python_sitelib}/pylons_sphinx_themes-%{version}-py*.egg-info
+%{python_sitelib}/pylons_sphinx_themes-%{version}*-info
 
 %changelog
