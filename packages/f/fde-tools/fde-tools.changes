@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 11 08:25:31 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-bsc1244323-firstboot-fix-lsinitrd.patch to fix the
+  empty LUKS header checksum from lsinitrd (bsc#1244323)
+
+-------------------------------------------------------------------
 Thu Jun  5 02:58:15 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fde-tools-bsc1243877-firstboot-remove-key-conf.patch to

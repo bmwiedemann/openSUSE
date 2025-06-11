@@ -1,0 +1,41 @@
+From 10b76aff260792314002f745915eaf56a60280b0 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 11 Jun 2025 15:19:56 +0800
+Subject: [PATCH] firstboot: use the real path to initrd
+
+When invoking 'lsinitrd' to fetch the LUKS header checksum, 'zstd' may
+ignore the symlink and 'lsinitrd' returned an empty checksum.
+
+To avoid the potential error, always use the real path to the initrd
+file when invoking 'lsinitrd'.
+
+FIX: bsc#1244323
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ firstboot/fde | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/firstboot/fde b/firstboot/fde
+index c948e88..1c81edf 100755
+--- a/firstboot/fde
++++ b/firstboot/fde
+@@ -114,10 +114,14 @@ function fde_setup_encrypted {
+ 	return 1
+     fi
+ 
++    # bsc#1244323 lsinitrd may not be able to deal with the symlink properly.
++    # To avoid the potential error, always use the real path to the initrd.
++    sys_initrd="`readlink -f /boot/initrd`"
++
+     # KIWI may save sha256sum of the LUKS header in initrd before reencrypting
+     # the root partition. If the checksum differs from the one of the current
+     # LUKS header, the root partition is already reencryted.
+-    luks_hdr_sum_kiwi="`lsinitrd --file root/.luks.header /boot/initrd`"
++    luks_hdr_sum_kiwi="`lsinitrd --file root/.luks.header ${sys_initrd}`"
+     if [ "${luks_hdr_sum_kiwi}" != "" ]; then
+ 	cryptsetup luksHeaderBackup ${luks_dev} --header-backup-file /root/.luks.header
+ 	luks_hdr_sum_cur="`sha256sum /root/.luks.header | cut -f1 -d' '`"
+-- 
+2.43.0
+
