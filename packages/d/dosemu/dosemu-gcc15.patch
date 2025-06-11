@@ -1,0 +1,32 @@
+Index: dosemu-1.4.0.1/src/arch/linux/dosext/sound/midid/midid.h
+===================================================================
+--- dosemu-1.4.0.1.orig/src/arch/linux/dosext/sound/midid/midid.h
++++ dosemu-1.4.0.1/src/arch/linux/dosext/sound/midid/midid.h
+@@ -8,7 +8,12 @@
+ #define _MIDID_H
+ 
+ typedef unsigned char byte;
++#if __STDC_VERSION__ < 202311L
+ typedef enum {FALSE, TRUE} bool;
++#else
++#define FALSE 0
++#define TRUE  1
++#endif
+ typedef enum {EMUMODE_MT32, EMUMODE_GM} Emumode;
+ 
+ /* Configuration */
+Index: dosemu-1.4.0.1/src/base/init/parser.y.in
+===================================================================
+--- dosemu-1.4.0.1.orig/src/base/init/parser.y.in
++++ dosemu-1.4.0.1/src/base/init/parser.y.in
+@@ -92,8 +92,8 @@ int dexe_running = 0;
+ static int dexe_forbid_disk = 1;
+ char own_hostname[128];
+ 
+-static struct printer nullptr;
+-static struct printer *pptr = &nullptr;
++static struct printer null_ptr;
++static struct printer *pptr = &null_ptr;
+ static int c_printers = 0;
+ 
+ static int ports_permission = IO_RDWR;

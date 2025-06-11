@@ -270,4 +270,14 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1150591 from dimstar)</comment>
     <requestid>1150688</requestid>
   </revision>
+  <revision rev="38" vrev="91">
+    <srcmd5>95e27e982c7916aa42a8147a9a0ffbff</srcmd5>
+    <version>1.4.0.1.r2065</version>
+    <time>1749651686</time>
+    <user>anag_factory</user>
+    <comment>- added patches
+  build with gcc15
+  + dosemu-gcc15.patch (forwarded request 1284358 from pgajdos)</comment>
+    <requestid>1284366</requestid>
+  </revision>
 </revisionlist>

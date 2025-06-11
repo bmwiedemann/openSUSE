@@ -31,6 +31,8 @@ Patch4:         dosemu-skip-glibc-test.patch
 # PATCH-FIX-UPSTREAM https://github.com/stsp/dosemu2/pull/386 https://github.com/stsp/dosemu2/commit/8d7ab25daf6f2d8ca09e1598fd11de2d8460255e
 Patch5:         reproducible.patch
 Patch6:         dosemu-LTO-fix.patch
+# build with gcc15
+Patch7:         dosemu-gcc15.patch
 BuildRequires:  bdftopcf
 BuildRequires:  bison
 BuildRequires:  flex
