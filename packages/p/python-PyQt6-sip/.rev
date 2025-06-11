@@ -144,4 +144,15 @@
 </comment>
     <requestid>1267014</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7d92aef29e6d518ca798ddb4f1f86cc1</srcmd5>
+    <version>13.10.2</version>
+    <time>1749659668</time>
+    <user>anag_factory</user>
+    <comment>- Update to 13.10.2
+  * Match python3-sip6-devel 6.11.1
+  * Changes WRT PEP 639. See python-sip6
+</comment>
+    <requestid>1284340</requestid>
+  </revision>
 </revisionlist>

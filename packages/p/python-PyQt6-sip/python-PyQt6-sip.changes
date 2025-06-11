@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  9 17:26:03 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 13.10.2
+  * Match python3-sip6-devel 6.11.1
+  * Changes WRT PEP 639. See python-sip6
+
+-------------------------------------------------------------------
 Fri Apr  4 01:19:59 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support older and current versions of setuptools WRT to the case of
