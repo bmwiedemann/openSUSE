@@ -63,9 +63,14 @@ convert between markup formats.
 
 %install
 %ghc_bin_install
+install -v -D -m 644 -t %{buildroot}/%{_mandir}/man1/ man/*.1
+gzip -v %{buildroot}%{_mandir}/man1/*.1
 
 %files
 %license COPYING.md
 %{_bindir}/pandoc
+%{_mandir}/man1/pandoc.1%{?ext_man}
+%{_mandir}/man1/pandoc-lua.1%{?ext_man}
+%{_mandir}/man1/pandoc-server.1%{?ext_man}
 
 %changelog

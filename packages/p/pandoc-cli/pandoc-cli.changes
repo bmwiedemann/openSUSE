@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 11 10:51:31 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Install man pages. [bsc#1172058]
+
+-------------------------------------------------------------------
 Thu May 29 07:14:22 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update pandoc-cli to version 3.7.0.2.
