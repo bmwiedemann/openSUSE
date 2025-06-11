@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun  7 21:12:30 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 20.0:
+  * Add reshape_to layer for flexible tensor reshaping/rescaling
+    (gh#davisking/dlib#3076).
+  * Updated documentation.
+
+-------------------------------------------------------------------
 Fri May 16 14:52:52 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 19.24.9:
