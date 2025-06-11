@@ -21,13 +21,13 @@
 %define plainpython python
 %{?sle15_python_module_pythons}
 Name:           python-PyQt6-%{qtlib}
-Version:        6.8.0
+Version:        6.9.0
 Release:        0
 Summary:        Python bindings for the Qt Network Authorization library
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtnetworkauth
-Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-%{qtlib}/PyQt6_%{qtlib}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-%{qtlib}/pyqt6_networkauth-%{version}.tar.gz
 BuildRequires:  %{python_module PyQt6-devel >= 6.2}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pyqt-builder >= 1.17 with %python-pyqt-builder < 2}
@@ -59,7 +59,7 @@ This package provides Qt6 API files for the Eric IDE and the SIP files
 used to generate the Python bindings for %{name}
 
 %prep
-%autosetup -p1 -n PyQt6_%{qtlib}-%{version}
+%autosetup -p1 -n pyqt6_networkauth-%{version}
 
 %build
 %pyqt_build
@@ -79,7 +79,7 @@ $python -c 'from PyQt6 import Qt%{qtlib}; assert Qt%{qtlib}.PYQT_NETWORKAUTH_VER
 %doc NEWS README.md
 %dir %{python_sitearch}/PyQt6/
 %{python_sitearch}/PyQt6/Qt%{qtlib}.*
-%{python_sitearch}/PyQt6_%{qtlib}-%{version}.dist-info/
+%{python_sitearch}/[Pp]y[Qq]t6_[Nn]etwork[Aa]uth-%{version}.dist-info/
 %exclude %{pyqt6_sipdir}
 
 %files %{python_files devel}
