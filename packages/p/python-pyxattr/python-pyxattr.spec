@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pyxattr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,10 @@ Source0:        %{github_url}/v%{version}/%{mod_name}-%{version}.tar.gz
 Source1:        %{github_url}/v%{version}/%{mod_name}-%{version}.tar.gz.asc
 Source2:        https://k1024.org/files/key.asc#/%{name}.keyring
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  libattr-devel
@@ -46,19 +48,19 @@ of the attr C library - see attr(5).
 %autosetup -n pyxattr-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %check
 # Tests are mostly disabled because for gh#iustin/pyxattr#34
 %pytest_arch tests || /bin/true
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
-%{python_sitearch}/xattr*
-%{python_sitearch}/pyxattr-%{version}*-info
+%{python_sitearch}/xattr.cpython-*-linux-gnu.so
+%{python_sitearch}/pyxattr-%{version}.dist-info
 %license COPYING
 %doc NEWS.md README.md
 

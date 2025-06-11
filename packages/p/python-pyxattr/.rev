@@ -47,4 +47,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1117825</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9f92e9f2be814087820d9292207b0ac1</srcmd5>
+    <version>0.8.1</version>
+    <time>1749651993</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284671</requestid>
+  </revision>
 </revisionlist>
