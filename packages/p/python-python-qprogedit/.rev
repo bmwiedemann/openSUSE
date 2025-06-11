@@ -39,4 +39,12 @@
     <comment>- Trim filler wording and fixup grammar within the description.</comment>
     <requestid>690285</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fc2821a369bd266143d86347a5289077</srcmd5>
+    <version>4.1.2</version>
+    <time>1749651831</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1284523</requestid>
+  </revision>
 </revisionlist>

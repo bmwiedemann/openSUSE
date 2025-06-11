@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-qprogedit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-qprogedit
 Version:        4.1.2
 Release:        0
 Summary:        A QScintilla-based text-editor component
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
-Url:            https://github.com/smathot/QProgEdit
+URL:            https://github.com/smathot/QProgEdit
 Source:         https://files.pythonhosted.org/packages/source/p/python-qprogedit/python-qprogedit-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/smathot/QProgEdit/master/copyright
 BuildRequires:  %{python_module QtPy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module qscintilla-qt5}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-QtPy
 Requires:       python-qscintilla-qt5
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -47,14 +47,15 @@ experiment builder.
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license copyright
-%{python_sitelib}/*
+%{python_sitelib}/QProgEdit
+%{python_sitelib}/python[-_]qprogedit-%{version}*-info
 
 %changelog
