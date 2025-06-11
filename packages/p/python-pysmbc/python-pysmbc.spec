@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysmbc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 # Tests need a running samba server
 %bcond_with     test
@@ -29,18 +28,20 @@ Group:          Development/Languages/Python
 URL:            https://github.com/hamano/pysmbc
 Source:         https://files.pythonhosted.org/packages/source/p/pysmbc/pysmbc-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(smbclient)
-%if %{with test}
-BuildRequires:  %{python_module pytest}
-%endif
 Obsoletes:      %{oldpython}-smbc < %{version}
 Provides:       %{oldpython}-smbc = %{version}
 Obsoletes:      python-smbc < %{version}-%{release}
 Provides:       python-smbc = %{version}-%{release}
+%if %{with test}
+BuildRequires:  %{python_module pytest}
+%endif
 %python_subpackages
 
 %description
@@ -53,10 +54,10 @@ sed -i '1{/^#!.*/ d}' smbc/xattr.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %if %{with test}

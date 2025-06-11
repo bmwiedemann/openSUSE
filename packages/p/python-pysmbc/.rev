@@ -88,4 +88,12 @@
 - Fix build with python 2.7, by fixing a filename in the file list.</comment>
     <requestid>1133194</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9b559abe803c16b133f1f0ccc3bc26ed</srcmd5>
+    <version>1.0.25.1</version>
+    <time>1749651640</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1284440</requestid>
+  </revision>
 </revisionlist>
