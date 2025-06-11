@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  9 16:44:10 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.18.2
+  * The licensing information in `pyproject.toml` now conforms to
+    PEP 639. This means that the minimum setuptools version is v77.
+    That in itself means that the wheel name conforms to the
+    current PyPI requirements.
+  * The wheels created by `pyqt-qt-wheel` now have lower case
+    names.
+
+-------------------------------------------------------------------
 Fri Apr  4 01:13:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support older and current versions of setuptools WRT to the case of

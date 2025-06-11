@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyqt-builder
-Version:        1.18.1
+Version:        1.18.2
 Release:        0
 Summary:        The PEP 517 compliant PyQt build system
 License:        BSD-2-Clause
@@ -27,9 +27,13 @@ Source0:        https://files.pythonhosted.org/packages/source/P/PyQt-builder/py
 Source99:       python-pyqt-builder.rpmlintrc
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
+%if 0%{suse_version} < 1600
 BuildRequires:  %{python_module setuptools >= 64}
-# Technically >= 8, but we make it compatible in prep.
 BuildRequires:  %{python_module setuptools_scm >= 7}
+%else
+BuildRequires:  %{python_module setuptools >= 77}
+BuildRequires:  %{python_module setuptools_scm >= 8}
+%endif
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -56,9 +60,12 @@ sip-install or pip can then be used to build and install the project.
 
 %prep
 %autosetup -p1 -n pyqt_builder-%{version}
-# Make it work with setuptools_scm < 8
+# Make it work with setuptools < 77 and setuptools_scm < 8
 %if 0%{suse_version} < 1600
-sed -i s/version_file/write_to/ pyproject.toml
+sed -i pyproject.toml \
+    -e 's/version_file/write_to/' \
+    -e 's/license = .*/license = { file = "LICENSE" }/' \
+    -e '/license-files/d'
 %endif
 
 %build
