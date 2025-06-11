@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 30 09:40:21 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Incus 6.13. See upstream changelog online at
+  <https://github.com/lxc/incus/releases/tag/v6.13.0>
+- Remove upstreamed patches:
+  + 0001-incusd-forkproxy-join-the-correct-mntns-for-listen.patch
+
+-------------------------------------------------------------------
 Thu May 22 15:03:34 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Add backport of <https://github.com/lxc/incus/pull/2136> to fix a bug with

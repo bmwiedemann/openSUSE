@@ -30,8 +30,8 @@
 %endif
 
 Name:           incus
-Version:        6.12
-%define tag_version 6.12.0
+Version:        6.13
+%define tag_version 6.13.0
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -56,8 +56,6 @@ Source121:      %{name}-startup.service
 Source130:      %{name}-config.yml
 # Additional runtime configuration.
 Source201:      %{name}.dnsmasq
-# FIX-UPSTREAM: Backport of <https://github.com/lxc/incus/pull/2136>.
-Patch1:         0001-incusd-forkproxy-join-the-correct-mntns-for-listen.patch
 BuildRequires:  fdupes
 BuildRequires:  file
 BuildRequires:  go >= 1.22.7
