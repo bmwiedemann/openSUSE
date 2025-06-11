@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 10 19:17:38 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed source line in specfile 
+
+-------------------------------------------------------------------
+Tue Jun 10 14:36:00 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 22.7.2
+  * Add BMG Device ID (#232)
+  * Add BMG Device ID (#233)
+  * Add new BMG Device ID (#234)
+  * Disable compression on GMM_FORMAT_I420 format (#236)
+  * Handle Coherent and compressible resources (#235)
+
+-------------------------------------------------------------------
 Wed Apr 16 14:28:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 22.7.1:

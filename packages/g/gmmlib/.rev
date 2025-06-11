@@ -334,4 +334,19 @@
     <comment></comment>
     <requestid>1270906</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>8aaf9418ba5785b4a5b38fec9bc836a9</srcmd5>
+    <version>22.7.2</version>
+    <time>1749651855</time>
+    <user>anag_factory</user>
+    <comment>- fixed source line in specfile 
+
+- Update to version 22.7.2
+  * Add BMG Device ID (#232)
+  * Add BMG Device ID (#233)
+  * Add new BMG Device ID (#234)
+  * Disable compression on GMM_FORMAT_I420 format (#236)
+  * Handle Coherent and compressible resources (#235)</comment>
+    <requestid>1284573</requestid>
+  </revision>
 </revisionlist>
