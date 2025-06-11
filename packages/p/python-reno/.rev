@@ -242,4 +242,12 @@
   * Update supported python versions</comment>
     <requestid>1158528</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>0dc38d98cba9bebf47acc8ca38c3fa5c</srcmd5>
+    <version>4.1.0</version>
+    <time>1749652083</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build and libalternatives</comment>
+    <requestid>1284811</requestid>
+  </revision>
 </revisionlist>
