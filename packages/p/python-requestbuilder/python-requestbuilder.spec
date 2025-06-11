@@ -1,7 +1,7 @@
 #
 # spec file for package python-requestbuilder
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requestbuilder
 Version:        0.7.1
 Release:        0
@@ -26,11 +25,12 @@ Group:          Development/Languages/Python
 URL:            https://github.com/boto/requestbuilder
 Source:         https://files.pythonhosted.org/packages/source/r/requestbuilder/requestbuilder-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -40,13 +40,14 @@ Command line-driven HTTP request builder
 %setup -q -n requestbuilder-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/requestbuilder
+%{python_sitelib}/requestbuilder-%{version}*-info
 
 %changelog
