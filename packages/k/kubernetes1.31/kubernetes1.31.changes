@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 10 12:42:20 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- add patch file: cve-2025-22872-x-net-html-properly-handle-trailing-solidus.patch
+  * fixes CVE-2025-22872, bsc#1241781
+  * Ref: https://github.com/golang/net/commit/e1fcd82abba34df74614020343be8eb1fe85f0d9
+
+-------------------------------------------------------------------
 Mon May 19 05:52:35 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.31.9:
