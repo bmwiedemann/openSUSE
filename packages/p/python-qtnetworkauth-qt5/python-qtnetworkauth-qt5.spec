@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-qtnetworkauth-qt5
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,7 +73,7 @@ and the SIP files used to generate the Python bindings for %{name}.
 %doc NEWS README
 %dir %{python_sitearch}/PyQt5/
 %{python_sitearch}/PyQt5/QtNetworkAuth.*
-%{python_sitearch}/PyQtNetworkAuth-%{version}.dist-info
+%{python_sitearch}/[Pp]y[Qq]t[Nn]etwork[Aa]uth-%{version}.dist-info
 
 %files %{python_files devel}
 %license LICENSE

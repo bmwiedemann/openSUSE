@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1141593</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>022a174990ccbe89808c65b013215cfb</srcmd5>
+    <version>5.15.5</version>
+    <time>1749651692</time>
+    <user>anag_factory</user>
+    <comment>- Allow lowercase distinfo due to new pyqt-builder following PEP 639
+</comment>
+    <requestid>1284356</requestid>
+  </revision>
 </revisionlist>
