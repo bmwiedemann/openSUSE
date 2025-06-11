@@ -49,6 +49,9 @@ Patch3:         opensuse-version-checks.patch
 Patch4:         kubeadm-opensuse-flexvolume.patch
 # Patch to revert renaming of coredns image location to match how it's done on download.opensuse.org
 Patch5:         revert-coredns-image-renaming.patch
+# Patch to fix CVE-2025-22872, properly handle trailing solidus in unquoted attribute value in foreign content
+# Ref: https://go.googlesource.com/net/+/e1fcd82abba34df74614020343be8eb1fe85f0d9
+Patch6:         cve-2025-22872-x-net-html-properly-handle-trailing-solidus.patch
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go >= 1.23.8
@@ -72,6 +75,7 @@ for management and discovery.
 
 
 # packages to build containerized control plane
+
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management
@@ -215,6 +219,7 @@ Fish command line completion support for %{name}-client.
 %patch -P 3 -p1
 %patch -P 4 -p0
 %patch -P 5 -p1
+%patch -P 6 -p1
 
 %build
 # This is fixing bug bsc#1065972
