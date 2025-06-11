@@ -73,4 +73,13 @@
 - six is needed by testsuite</comment>
     <requestid>1273214</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8b0c6a8c28429597ddbca483ebe40cdb</srcmd5>
+    <version>1.6.4</version>
+    <time>1749651948</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Explicitly list files and directories in %files.</comment>
+    <requestid>1284633</requestid>
+  </revision>
 </revisionlist>

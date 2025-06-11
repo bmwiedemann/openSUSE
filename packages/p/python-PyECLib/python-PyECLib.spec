@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyECLib
 Version:        1.6.4
 Release:        0
@@ -26,8 +25,10 @@ URL:            https://opendev.org/openstack/pyeclib/
 Source:         https://files.pythonhosted.org/packages/source/p/pyeclib/pyeclib-%{version}.tar.gz
 Source99:       https://opendev.org/openstack/pyeclib/raw/branch/master/LICENSE
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  liberasurecode-devel >= 1.4.0
 BuildRequires:  python-rpm-macros
@@ -48,10 +49,10 @@ reconstruction (think XOR-based LRC code).
 cp %{SOURCE99} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -60,6 +61,8 @@ cp %{SOURCE99} .
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitearch}/pyeclib*
+%{python_sitearch}/pyeclib
+%{python_sitearch}/pyeclib_c.abi3.so
+%{python_sitearch}/[Pp]y[Ee][Cc][Ll]ib-%{version}.dist-info
 
 %changelog
