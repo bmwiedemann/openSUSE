@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 10 12:20:03 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Sat Feb 13 10:29:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 build (requires scipy) 

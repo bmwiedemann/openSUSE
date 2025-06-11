@@ -31,4 +31,12 @@
     <comment>- skip python 3.6 build (requires scipy)</comment>
     <requestid>871637</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>bd20521c03d35439966a6a0d36a43a7a</srcmd5>
+    <version>2018.9.14.1501</version>
+    <time>1749651765</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1284432</requestid>
+  </revision>
 </revisionlist>
