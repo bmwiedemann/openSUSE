@@ -233,4 +233,12 @@ Can't create the python3 package in dlp, so whoever pulls this would have to do 
   - Refresh make_webtest_optional.patch</comment>
     <requestid>1224558</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>a694e907e09e9e56af8c4826a77601ec</srcmd5>
+    <version>2.0.1</version>
+    <time>1749651553</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284643</requestid>
+  </revision>
 </revisionlist>

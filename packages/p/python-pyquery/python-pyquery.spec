@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyquery
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,9 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyquery/pyquery
 Patch0:         make_webtest_optional.patch
 BuildRequires:  %{python_module cssselect >= 1.2.0}
 BuildRequires:  %{python_module lxml >= 2.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cssselect >= 1.2.0
@@ -63,11 +65,11 @@ XML and HTML manipulation.
 %autosetup -p1 -n pyquery-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -83,7 +85,7 @@ XML and HTML manipulation.
 %license LICENSE.txt
 %doc CHANGES.rst README.rst
 %{python_sitelib}/pyquery/
-%{python_sitelib}/pyquery-%{version}*-info
+%{python_sitelib}/pyquery-%{version}.dist-info
 %endif
 
 %changelog
