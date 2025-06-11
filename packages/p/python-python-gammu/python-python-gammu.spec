@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-gammu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-python-gammu
 Version:        3.2.4
 Release:        0
@@ -27,7 +25,9 @@ Group:          Development/Languages/Python
 URL:            https://wammu.eu/python-gammu/
 Source:         https://github.com/gammu/python-gammu/archive/refs/tags/%{version}.tar.gz#/python-gammu-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  gammu-devel >= 1.37.90
 BuildRequires:  libdbi-drivers-dbd-sqlite3
 BuildRequires:  pkgconfig
@@ -46,10 +46,10 @@ find . -type f -name "*.py" -exec sed -i -e 's|\/usr\/bin\/env python|\/usr\/bin
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %check
 # Need to limit tests due to brekage of libdbi
@@ -61,6 +61,7 @@ mv gammu gammu.hide
 %files %{python_files}
 %license COPYING
 %doc README.rst AUTHORS examples/
-%{python_sitearch}/*
+%{python_sitearch}/gammu
+%{python_sitearch}/python[-_]gammu-%{version}*-info
 
 %changelog

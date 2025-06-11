@@ -104,4 +104,12 @@
   * python 3.10 support</comment>
     <requestid>946777</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3ead50bb977454c9487ac7b458750e9b</srcmd5>
+    <version>3.2.4</version>
+    <time>1749651826</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1284464</requestid>
+  </revision>
 </revisionlist>
