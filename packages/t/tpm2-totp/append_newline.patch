@@ -1,0 +1,22 @@
+From 353a168132c35b1db0188c8919029a6b6b942ff7 Mon Sep 17 00:00:00 2001
+From: Dominik Heidler <dheidler@suse.de>
+Date: Tue, 25 Jun 2024 17:09:30 +0200
+Subject: [PATCH] Append newline after TOTP token
+
+---
+ src/tpm2-totp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/tpm2-totp.c b/src/tpm2-totp.c
+index 1b8eaed..49e5822 100644
+--- a/src/tpm2-totp.c
++++ b/src/tpm2-totp.c
+@@ -453,7 +453,7 @@ main(int argc, char **argv)
+                            &now_local);
+             chkrc(rc, goto err);
+         }
+-        printf("%s%06" PRIu64, timestr, totp);
++        printf("%s%06" PRIu64 "\n", timestr, totp);
+         break;
+     case CMD_RESEAL:
+         rc = tpm2totp_loadKey_nv(opt.nvindex, tcti_context, &keyBlob, &keyBlob_size);
