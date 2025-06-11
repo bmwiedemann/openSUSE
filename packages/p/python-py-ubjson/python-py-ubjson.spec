@@ -1,7 +1,7 @@
 #
 # spec file for package python-py-ubjson
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname py-ubjson
 Name:           python-py-ubjson
 Version:        0.16.1
 Release:        0
 Summary:        Universal Binary JSON encoder/decoder
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/Iotic-Labs/py-ubjson
 Source:         https://files.pythonhosted.org/packages/source/p/py-ubjson/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -41,17 +41,19 @@ encoder/decoder based on the `draft-12` specification.
 %setup -q -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %check
 touch test/__init__.py
 %pytest test/test.py
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
-%{python_sitearch}/*
+%{python_sitearch}/ubjson
+%{python_sitearch}/_ubjson.cpython-*-linux-gnu.so
+%{python_sitearch}/py_ubjson-%{version}.dist-info
 
 %changelog
