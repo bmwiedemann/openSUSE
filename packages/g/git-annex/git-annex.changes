@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jun  5 18:13:58 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20250605.
+  git-annex (10.20250605) upstream; urgency=medium
+
+    * sync: Push the current branch first, rather than a synced branch,
+      to better support git forges (gitlab, gitea, forgejo, etc.) which
+      use push-to-create with the first pushed branch becoming the default
+      branch.
+    * Added annex.fastcopy and remote.name.annex-fastcopy config setting.
+      When set, this allows the copy_file_range syscall to be used, which
+      can eg allow for server-side copies on NFS. (For fastest copying,
+      also disable annex.verify or remote.name.annex-verify.)
+    * map: Support --json option.
+    * map: Improve display of remote names.
+    * When annex.freezecontent-command or annex.thawcontent-command is
+      configured but fails, prevent initialization. This allows the user to
+      fix their configuration and avoid crippled filesystem detection
+      entering an adjusted branch.
+    * assistant: Avoid hanging at startup when a process has a *.lock file
+      open in the .git directory.
+    * Windows: Fix duplicate file bug that could occur when files were
+      supposed to be moved across devices.
+
+   -- Joey Hess <id@joeyh.name>  Thu, 05 Jun 2025 14:10:36 -0400
+
+-------------------------------------------------------------------
 Tue May 20 14:30:35 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20250520.
