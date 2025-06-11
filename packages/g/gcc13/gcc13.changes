@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jun  5 17:02:16 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC 13.4 release
+  * collects regression fixes from the last year
+- Remove hppa icecream backend to avoid conflicts with the
+  hppa bootstrap compiler
+
+-------------------------------------------------------------------
+Wed Jun  4 11:38:59 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Re-enable AutoReqProv for cross packages but filter files processed
+  via __requires_exclude_from and __provides_exclude_from.
+  [boo#1219031]
+- Exclude shared objects present for link editing in the GCC specific
+  subdirectory from provides processing via __provides_exclude_from.
+  [bsc#1244050][bsc#1243991]
+
+-------------------------------------------------------------------
+Tue Jun  3 12:36:35 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Make cross-*-gcc13-bootstrap package conflict with the non-bootstrap
+  variant conflict with the unversioned cross-*-gcc package.
+
+-------------------------------------------------------------------
+Fri May 30 13:49:58 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-13 branch head, ec78a0d9962f144b13c6da3ebe, git9730
+  * GCC 13.4 RC2
+  * Includes gcc13-bsc1216664.patch
+
+-------------------------------------------------------------------
 Tue Apr 22 14:31:57 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Fix s390x build by using a glob for installed libgcc_s.so and

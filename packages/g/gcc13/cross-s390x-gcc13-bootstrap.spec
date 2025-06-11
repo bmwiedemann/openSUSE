@@ -107,7 +107,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.3.1+git9426
+Version:        13.4.0+git9739
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -134,7 +134,6 @@ Patch18:        gcc10-amdgcn-llvm-as.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
 Patch21:        gdcflags.patch
-Patch23:        gcc13-bsc1216664.patch
 Patch24:        gcc13-sanitizer-remove-crypt-interception.patch
 Patch26:        gcc13-pr101523.patch
 Patch27:        gcc13-amdgcn-remove-fiji.patch
@@ -293,7 +292,7 @@ ExclusiveArch:  i586 ppc64le ppc64 x86_64  aarch64 riscv64
 %if "%pkgname" == "cross-ppc64-gcc49"
 Obsoletes:      cross-ppc-gcc49 <= 4.9.0+r209354
 %endif
-%if 0%{?gcc_target_newlib:1}%{?gcc_target_glibc:1}
+%if 0%{?gcc_target_newlib:1}%{?gcc_target_glibc:1} || "%{cross_arch}" == "avr"
 # Generally only one cross for the same target triplet can be installed
 # at the same time as we are populating a non-version-specific sysroot
 Provides:       %{gcc_target_arch}-gcc
@@ -303,7 +302,7 @@ Conflicts:      %selfconflict %{gcc_target_arch}-gcc
 # The -bootstrap packages file-conflict with the non-bootstrap variants.
 # Even if we don't actually (want to) distribute the bootstrap variants
 # the following avoids repo-checker spamming us endlessly.
-Conflicts:      cross-%{cross_arch}-gcc13
+Conflicts:      %{gcc_target_arch}-gcc
 %endif
 #!BuildIgnore: gcc-PIE
 %if 0%{build_cp:1}
@@ -312,7 +311,6 @@ Conflicts:      cross-%{cross_arch}-gcc13
 # the libs, though)
 Requires:       libstdc++6-devel-gcc13
 %endif
-AutoReqProv:    off
 %if 0%{!?gcc_accel:1}
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
@@ -365,7 +363,6 @@ ln -s newlib-4.3.0.20230120/newlib .
 %patch -P 19 -p1
 %endif
 %patch -P 21 -p1
-%patch -P 23 -p1
 %patch -P 24 -p1
 %patch -P 26 -p1
 %patch -P 27 -p1
@@ -835,6 +832,9 @@ Newlib development files for the amdgcn offload target compiler.
 %endif
 
 %define targetlibsubdir %{_libdir}/gcc/%{gcc_target_arch}/%{gcc_dir_version}
+
+%define __provides_exclude_from ^(%{targetlibsubdir}|%{libsubdir}|%{_prefix}/%{gcc_target_arch})/.*$
+%define __requires_exclude_from ^(%{targetlibsubdir}|%{libsubdir}|%{_prefix}/%{gcc_target_arch})/.*$
 
 %install
 cd obj-%{GCCDIST}

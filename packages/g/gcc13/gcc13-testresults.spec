@@ -226,7 +226,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.3.1+git9426
+Version:        13.4.0+git9739
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -407,7 +407,6 @@ Patch18:        gcc10-amdgcn-llvm-as.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
 Patch21:        gdcflags.patch
-Patch23:        gcc13-bsc1216664.patch
 Patch24:        gcc13-sanitizer-remove-crypt-interception.patch
 Patch26:        gcc13-pr101523.patch
 Patch27:        gcc13-amdgcn-remove-fiji.patch
@@ -554,7 +553,6 @@ ln -s newlib-4.3.0.20230120/newlib .
 %patch -P 19 -p1
 %endif
 %patch -P 21 -p1
-%patch -P 23 -p1
 %patch -P 24 -p1
 %patch -P 26 -p1
 %patch -P 27 -p1
@@ -1007,6 +1005,8 @@ make -k check %{?_smp_mflags} || true
 mkdir ../testresults
 ../contrib/test_summary | tee ../testresults/test_summary.txt
 %endif
+
+%define __provides_exclude_from ^%{libsubdir}/.*\.so.*$
 
 %install
 # Make sure libtool re-linking libasan at install time doesn't drop the

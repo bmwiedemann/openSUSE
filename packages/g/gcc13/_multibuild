@@ -20,7 +20,6 @@
 <flavor>cross-m68k-gcc13</flavor>
 <flavor>cross-mips-gcc13</flavor>
 <flavor>cross-hppa-gcc13-bootstrap</flavor>
-<flavor>cross-hppa-gcc13</flavor>
 <flavor>cross-arm-none-gcc13-bootstrap</flavor>
 <flavor>cross-arm-none-gcc13</flavor>
 <flavor>cross-riscv64-elf-gcc13-bootstrap</flavor>
