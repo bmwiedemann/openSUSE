@@ -1,4 +1,170 @@
 -------------------------------------------------------------------
+Wed Jun 11 07:00:49 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.4.23
+  * https://github.com/OpenRCT2/OpenRCT2/releases/tag/v0.4.23
+
+-------------------------------------------------------------------
+Mon May  5 04:42:35 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.4.22
+  * https://github.com/OpenRCT2/OpenRCT2/releases/tag/v0.4.22
+  * Feature: [#24206] [Plugin] Add APIs for breaking down rides,
+    reading the current breakdown, and for fixing broken down
+    rides.
+  * Improved: [#20073] The OpenGL drawing engine now supports
+    screen invalidation which avoids the redrawing of unchanged
+    regions.
+  * Improved: [#21767] RCT Classic for macOS can now be used as
+    the source game.
+  * Improved: [#23590] Title bars are now drawn bigger when
+    "Enlarged UI" is enabled.
+  * Improved: [#23626] Add small, medium and large flat and sloped
+    turns, S-bends and diagonal track to the Go-Karts.
+  * Improved: [#23982] The scenario objective window has been
+    merged into the scenario options window.
+  * Improved: [#24233] RCT Classic+ from Apple Arcade can now be
+    used as the source game, and is detected automatically.
+  * Improved: [#24260] Better performance on parks that have a lot
+    of Guests and Entertainers.
+  * Change: [#23803] Lightning strikes and thunder now happen at
+    the same frequency independently of the game speed.
+  * Change: [#23857] Replace display options tab with custom
+    sprites.
+  * Change: [#24069] [Plugin] Plugins are now available in the
+    scenario editor and track designer.
+  * Change: [#24135] Compress Emscripten js/wasm files.
+  * Change: [#24194] The advanced options tab has been reworked
+    to make it easier to find the RCT1 path setting.
+  * Change: [#24235] Small changes to RCT1 theme.
+  * Change: [#24236] Controls and Interface options now both have
+    their own tabs in the Options window.
+  * Change: [#24308] "Software" and "Software (hardware display)"
+    renderers have been merged into a single "Software" renderer.
+  * Change: [#24317] The scenery window now shows at least one row
+    of scenery objects, even if there are multiple rows of tabs.
+  * Fix: [#18479] Tile elements ordered beneath water do not
+    draw correctly.
+  * Fix: [#19782] Game stops counting inversions and golf holes
+    after 31 (original bug).
+  * Fix: [#21207] Track List window gets positioned incorrectly.
+  * Fix: [#21919] Non-recolourable cars still show colour picker
+    (original bug).
+  * Fix: [#22182] [Plugin] Crash when using
+    map.getAllEntities("car").
+  * Fix: [#22634] Asset packs with sound effect overrides are not
+    loaded correctly at startup.
+  * Fix: [#23108] Missing pieces on Hypercoaster and Hyper-Twister,
+    even with the ‘all drawable track pieces’ cheat enabled.
+  * Fix: [#24013] Failure to load a scenario preview image
+    (minimap) could lead to an uncaught exception error message.
+  * Fix: [#24045] [Plugin] Data storage is not cleared when
+    converting save game to scenario.
+  * Fix: [#24121] Checkbox labels run beyond the edge of the
+    window if they’re too long to fit.
+  * Fix: [#24142] [Plugin] Track origin is miscalculated on
+    downward slopes.
+  * Fix: [#24220] Narrow station platforms have missing sides on
+    certain rotations.
+  * Fix: [#24310] [Plugin] Missing invalidation on various plugin
+    api setters for entities.
+
+-------------------------------------------------------------------
+Wed Apr  9 16:27:38 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.4.21 
+  * https://github.com/OpenRCT2/OpenRCT2/releases/tag/v0.4.21
+  * Feature: [#22646] New scenario files now contain a minimap
+    image, shown in the scenario selection window.
+  * Feature: [#23774] Climates can now be customised using
+    objects.
+  * Feature: [#23876] New park save files now contain a preview
+    image, shown in the load/save window.
+  * Improved: [#24078] Handrails on Wooden Roller Coaster station
+    sprites with no platforms have been removed.
+  * Improved: [objects#379] Add additional colour schemes to
+    Mine Train.
+  * Change: [#23932] The land rights window now checks
+    "Land Owned" by default.
+  * Change: [#23936] The 'guests prefer less/more intense rides'
+    settings have been turned into a dropdown.
+  * Change: [#24059] The 'select other ride' button is now
+    available in the track designs manager.
+  * Change: [#24067] [Plugin] Registered menu items are now
+    listed alphabetically.
+  * Change: [#24070] Footpath selection menus now show object
+    names on hover using a tooltip.
+  * Change: [#24101] Frozen peeps are no longer removed when using
+    the 'remove all guests' cheat.
+  * Fix: [#4225] Ride Construction window offers non-existent
+    banked sloped to level curve (original bug).
+  * Fix: [#5281] Missing supports on miniature railways built
+    backwards.
+  * Fix: [#7222] Transparent pixels in sloped path tunnels
+    (original bug).
+  * Fix: [#10379] Banners outside the park can be renamed and
+    modified (original bug).
+  * Fix: [#10582] Low clearance tunnels below water are drawn
+    incorrectly (original bug).
+  * Fix: [#17524, #23710] Station bases are drawn on many ride
+    types when the "No entrance, no platform station" style is
+    selected.
+  * Fix: [#18309] Flying and Multi Dimension trains glitch when
+    changing between inverted and uninverted track when uncap
+    fps is on.
+  * Fix: [#19506] Queue paths can be placed on level crossings
+    by replacing an existing regular path.
+  * Fix: [#21803] The park fence is drawn differently in OpenGL
+    compared to software rendering when zoomed out.
+  * Fix: [#21824] Some sprites are drawn incorrectly when zoomed
+    out in OpenGL rendering.
+  * Fix: [#21908] Ride mode warnings when hovering track designs.
+  * Fix: [#22820] OpenGL does not draw masked sprites correctly.
+  * Fix: [#22961] Clicking on the construction preview places
+    duplicate flat rides and stalls.
+  * Fix: [#23359] Scripting: Add car.moveToTrack, an easier API
+    than setting car.trackLocation directly.
+  * Fix: [#23443] New GOG version of RCT2 is not extracted
+    correctly.
+  * Fix: [#23484] Stray coloured pixels on castle-themed stations
+    and Roman-themed entrances/exits (original bug).
+  * Fix: [#23486] Object selection minimum requirements can be
+    bypassed with close window hotkey.
+  * Fix: [#23743] Parks with guest goals over 32767 do not appear
+    in the scenario list.
+  * Fix: [#23844] Sound effects keep playing when loading
+    another save.
+  * Fix: [#23881] Compiling on Raspbian/arm-linux-gnueabihf fails.
+  * Fix: [#23891] Inverted Hairpin Coaster track can draw over
+    things above it (original bug).
+  * Fix: [#23892] Gentle banked Wooden Roller Coaster track
+    glitches as trains pass (original bug).
+  * Fix: [#23897] Reverse Freefall Coaster slope up to vertical
+    track piece does not draw a vertical tunnel.
+  * Fix: [#23910] Heartline Twister Coaster track can draw over
+    things above it (original bug).
+  * Fix: [#23939] Incorrect assertion when trying to load
+    heightmap.
+  * Fix: [#23941] Underflow in "Repay loan and achieve a certain
+    park value" objective when using Japanese.
+  * Fix: [#23949] Walls draw over sloped rear water edges and
+    those edge sprites are misaligned (original bug).
+  * Fix: [#23960] Corner path fences can draw over adjacent
+    sloped land (original bug).
+  * Fix: [#23961] Lamps and queue line tvs draw incorrectly on
+    paths with fences.
+  * Fix: [#23983] Ordering files by size does not work and
+    occasionally crashes the game.
+  * Fix: [#24009] [Plugin] The object manager API does not
+    identify recently introduced object types.
+  * Fix: [#24028] Giga and LSM Launched Coaster booster sprites
+    have pixels that draw over transparent pixels.
+  * Fix: [#24077] Track Designer crashes when clicking the
+    park fence.
+- Update dependencies
+  * objects_version 1.6.1 (1.5.1)
+
+-------------------------------------------------------------------
 Sun Mar 30 18:39:02 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 0.4.20

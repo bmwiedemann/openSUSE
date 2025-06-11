@@ -29,10 +29,10 @@
 %endif
 %define title_version 0.4.14
 %define title_version_url %{title_version}
-%define objects_version 1.5.1
+%define objects_version 1.6.1
 %define openmusic_version 1.6
 %define opensound_version 1.0.5
-%define openrct2_version 0.4.20
+%define openrct2_version 0.4.23
 
 Name:           openrct2
 Version:        %{openrct2_version}
@@ -47,12 +47,12 @@ Source2:        https://github.com/OpenRCT2/objects/archive/v%{objects_version}.
 Source3:        https://github.com/OpenRCT2/Openmusic/releases/download/v%{openmusic_version}/openmusic.zip#/openmusic-%{openmusic_version}.zip
 Source4:        https://github.com/OpenRCT2/OpenSoundEffects/releases/download/v%{opensound_version}/opensound.zip#/opensound-%{opensound_version}.zip
 Source5:        https://raw.githubusercontent.com/OpenRCT2/OpenMusic/master/COPYING
-BuildRequires:  cmake >= 3.9
+BuildRequires:  cmake >= 3.24
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  glibc-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  nlohmann_json-devel >= 3.6.0
+BuildRequires:  nlohmann_json-devel >= 3.9.0
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
 BuildRequires:  zip
@@ -140,7 +140,6 @@ export CXXFLAGS="%optflags -Wno-maybe-uninitialized"
 %make_build all
 # libopenrct2 is not installed when openrct2 is called by make, so set the LD_LIBRARY_PATH
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$(dirname $(find . -name libopenrct2.so))"
-%make_build g2
 # %%cmake changes directory into "build"
 cd ..
 
