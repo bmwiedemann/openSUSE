@@ -88,7 +88,7 @@ for flavor in %{flavors_to_build} ; do
     cp -a source obj/$flavor
     pushd obj/$flavor
     sed -i -e "s,^KSRC := /lib/modules/\$(KVER)/build$,KSRC := %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor," Makefile
-    %make_build
+    %make_build ${ARCH:+ARCH=$ARCH}
     popd
 done
 
