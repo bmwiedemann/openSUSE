@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          128
-%define mainver        %major.11.0
-%define orig_version   128.11.0
+%define mainver        %major.11.1
+%define orig_version   128.11.1
 %define orig_suffix    esr
 %define update_channel esr
 %define source_prefix  thunderbird-%{orig_version}
@@ -359,7 +359,7 @@ source ./.obsenv.sh
 cat << EOF > $MOZCONFIG
 mk_add_options MOZILLA_OFFICIAL=1
 mk_add_options BUILD_OFFICIAL=1
-mk_add_options MOZ_MAKE_FLAGS=%{?jobs:-j%jobs}
+mk_add_options MOZ_MAKE_FLAGS=%{?_smp_mflags}
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../obj
 ac_add_options --disable-bootstrap
 ac_add_options --prefix=%{_prefix}
@@ -470,7 +470,7 @@ ac_add_options --without-wasm-sandboxed-libraries
 ac_add_options --enable-official-branding
 EOF
 
-#%%define njobs 0%{?jobs:%jobs}
+#%%define njobs 0%{?jobs:%%jobs}
 # Weird race condition when building langpacks which comes and goes in OBS/IBS is hitting heavy with TB 128
 # so we have to build it sequentially, sadly.
 %define njobs 1

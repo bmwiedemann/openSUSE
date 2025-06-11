@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun  9 11:46:34 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird ESR 128.11.1
+  MFSA 2025-49
+  * CVE-2025-5986 (bmo#1958580, bmo#1968012)
+    Unsolicited File Download, Disk Space Exhaustion, and Credential
+    Leakage via mailbox:/// Links
+
+-------------------------------------------------------------------
+Sun Jun  8 14:58:03 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Replace usage of %jobs for reproducible builds (boo#1237231)
+
+-------------------------------------------------------------------
 Mon May 26 16:54:33 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird ESR 128.11.0
