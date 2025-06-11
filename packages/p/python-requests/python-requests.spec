@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-requests%{psuffix}
-Version:        2.32.3
+Version:        2.32.4
 Release:        0
 Summary:        Python HTTP Library
 License:        Apache-2.0
@@ -34,8 +34,6 @@ URL:            https://docs.python-requests.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requests/requests-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#psf/requests#6731
 Patch0:         inject-default-ca-bundles.patch
-# PATCH-FIX-UPSTREAM CVE-2024-47081.patch gh#psf/requests#6965, bsc#1244039
-Patch1:         CVE-2024-47081.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

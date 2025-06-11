@@ -943,4 +943,22 @@
   (gh#psf/requests#6965, CVE-2024-47081, bsc#1244039)</comment>
     <requestid>1282999</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>f98e466568aa47e0b0a6264a17110b35</srcmd5>
+    <version>2.32.4</version>
+    <time>1749651627</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.32.4:
+  * CVE-2024-47081 Fixed an issue where a maliciously crafted URL
+    and trusted environment will retrieve credentials for the wrong
+    hostname/machine from a netrc file
+  * Numerous documentation improvements
+  * Added support for pypy 3.11 for Linux and macOS.
+  * Dropped support for pypy 3.9 following its end of support.
+- drop CVE-2024-47081.patch (merged upstream)
+
+- Switch to pyproject macros.
+- Remove Requires on python-py, it should have been removed earlier.</comment>
+    <requestid>1284404</requestid>
+  </revision>
 </revisionlist>
