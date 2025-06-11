@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 11 07:32:47 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add --enable-release for reproducible builds (boo#1231626)
+
+-------------------------------------------------------------------
+Tue Jun 10 19:15:49 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Update to 2.9.1
+  * see https://downloads.scummvm.org/frs/scummvm/2.9.1/ReleaseNotes.html for notes
+
+-------------------------------------------------------------------
 Tue Apr 15 18:18:01 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - Add BuildRequires: libX11-devel

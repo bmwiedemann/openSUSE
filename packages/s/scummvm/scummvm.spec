@@ -20,7 +20,7 @@
 %bcond_without libmpeg2
 %bcond_without mad
 Name:           scummvm
-Version:        2.9.0
+Version:        2.9.1
 Release:        0
 Summary:        Interpreter for several adventure games
 License:        GPL-3.0-or-later
@@ -34,7 +34,7 @@ BuildRequires:  hicolor-icon-theme
 %if 0%{?suse_version} > 1500
 BuildRequires:  libieee1284-devel
 %endif
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(libopenmpt) >= 0.7
 %endif
 BuildRequires:  libjpeg-devel
@@ -120,6 +120,7 @@ CXXFLAGS="%{optflags}" ; export CXXFLAGS ; \
             --mandir=%{_mandir} \
             --libdir=%{_libdir} \
             --docdir=%{_docdir}/%{name} \
+            --enable-release \
             --enable-verbose-build \
             --enable-plugins \
             --enable-engine-dynamic=lastexpress \
@@ -139,7 +140,7 @@ rm %{buildroot}%{_docdir}/%{name}/COPYING*
 %license COPYING*
 %attr(0755,-,-) %{_bindir}/scummvm
 %{_datadir}/scummvm
-%{_mandir}/man6/scummvm.6*
+%{_mandir}/man6/scummvm.6%{?ext_man}
 %{_datadir}/applications/org.scummvm.scummvm.desktop
 %{_datadir}/metainfo/org.scummvm.scummvm.metainfo.xml
 %{_datadir}/icons/hicolor/*/*/*
