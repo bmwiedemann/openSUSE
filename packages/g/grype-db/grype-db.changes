@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun 11 04:33:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.34.0:
+  * Added Features
+    - Add support for MinimOS [#566 @Daniel-Wachter]
+    - enable bitnami and minimOS providers by default [#587
+      @willmurphyscode]
+  * Bug Fixes
+    - Version 5 vulnerability database no longer getting updates
+      [#578]
+  * Additional Changes
+    - enable bitnami vuln data [#581 @willmurphyscode]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#588)
+    - chore(deps): Bump golang.org/x/text from 0.25.0 to 0.26.0
+      (#584)
+    - chore(deps): Bump github.com/sergi/go-diff (#585)
+    - chore(deps): Bump golang.org/x/sync from 0.14.0 to 0.15.0
+      (#586)
+    - chore(deps): Bump gorm.io/gorm from 1.26.1 to 1.30.0 (#580)
+    - chore(deps): Bump github.com/anchore/grype from 0.92.0 to
+      0.92.1 (#576)
+
+-------------------------------------------------------------------
 Thu May 15 04:51:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.33.1:
