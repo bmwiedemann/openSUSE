@@ -1028,4 +1028,41 @@ Changes in 0.5.3:
   * DBM / IMF / MED: When merging pattern commands, allow to move</comment>
     <requestid>1253543</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>f52d895918809f2e033926815496846d</srcmd5>
+    <version>0.8.0</version>
+    <time>1749651599</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.0:
+  * [New] Can now read PumaTracker (PUMA) modules.
+  * [New] Can now read Face The Music (FTM) modules.
+  * [New] Can now read Future Composer (FC / FC13 / FC14 / SMOD)
+    modules.
+  * [New] Can now read Game Music Creator (GMC) modules.
+  * [New] Can now read Chuck Biscuits / Black Artist (CBA) modules
+    from the Expoze musicdisk by Heretics
+  * [New] Can now read Real Tracker 2 (RTM) modules.
+  * [New] Can now read Images Music System (IMS) modules.
+  * [New] Can now read ChipTracker (MOD) modules.
+  * [New] Can now read TCB Tracker (MOD) modules.
+  * [New] Can now read EasyTrax (ETX) modules.
+  * [New] Can now load UNIC Tracker v1 (UNIC) files.
+  * [New] MED: Synthesized and hybrid instruments are now
+    supported.
+  * [New] GT2: Better support for old “envelopes”, in particular
+    adding support for the previously missing
+    tremor / tremolo / vibrato.
+  * [New] NST: His Master’s Noise “Mupp” instruments are now
+    supported, as well as command 7 “mega-arp”.
+  * [New] libopenmpt: New APIs for determining whether order list
+    entries or pattern indices have a special meaning:
+      openmpt::module::is_order_skip_entry(),
+      openmpt::module::is_pattern_skip_item(),
+      openmpt::module::is_order_stop_entry(),
+      openmpt::module::is_pattern_stop_item() (C++),
+      and openmpt_module_is_order_skip_entry(),
+      openmpt_module_is_pattern_skip_item(),
+      openmpt_module_is_order_stop_entry(),</comment>
+    <requestid>1284201</requestid>
+  </revision>
 </revisionlist>
