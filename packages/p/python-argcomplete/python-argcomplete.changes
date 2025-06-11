@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 11 08:32:32 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove executable bit on files installed outside of the path. (bsc#1244435)
+
+-------------------------------------------------------------------
 Sat Jun  7 08:06:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.5.3

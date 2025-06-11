@@ -420,4 +420,12 @@
     <comment></comment>
     <requestid>1284019</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>546da1d44c76f9d3abd5839c964f0ae2</srcmd5>
+    <version>3.5.3</version>
+    <time>1749651591</time>
+    <user>anag_factory</user>
+    <comment>- Remove executable bit on files installed outside of the path. (bsc#1244435)</comment>
+    <requestid>1284723</requestid>
+  </revision>
 </revisionlist>

@@ -31,7 +31,6 @@ Version:        3.5.3
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/kislyuk/argcomplete
 Source:         https://files.pythonhosted.org/packages/source/a/argcomplete/argcomplete-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
@@ -83,7 +82,7 @@ resources over the network).
 %python_clone -a %{buildroot}%{_bindir}/register-python-argcomplete
 %python_clone -a %{buildroot}%{_bindir}/python-argcomplete-check-easy-install-script
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_expand %python3_fix_shebang_path %{buildroot}%{$python_sitelib}/argcomplete/scripts/*
+%python_expand chmod -x %{buildroot}%{$python_sitelib}/argcomplete/scripts/*.py
 %endif
 
 %check
