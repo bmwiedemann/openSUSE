@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypsexec
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,12 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jborean93/pypsexec
 Source:         https://github.com/jborean93/pypsexec/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/jborean93/pypsexec/pull/58 adapt to timezone-aware objects
-Patch:          datetime.patch
+Patch0:         datetime.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module smbprotocol}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-smbprotocol
@@ -45,10 +47,10 @@ executable commands in a similar fashion to the popular PsExec tool.
 %autosetup -p1 -n pypsexec-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
