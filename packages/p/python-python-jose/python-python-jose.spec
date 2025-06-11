@@ -44,7 +44,9 @@ Summary:        JOSE implementation in Python
 License:        MIT
 URL:            https://github.com/mpdavis/python-jose
 Source:         https://files.pythonhosted.org/packages/source/p/python-jose/python-jose-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 39.2.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ecdsa >= 0.16
@@ -95,10 +97,10 @@ This package provides the python-jose[cryptography] extra.
 
 %if ! %{with test}
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -111,7 +113,7 @@ This package provides the python-jose[cryptography] extra.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/python_jose-%{version}*-info
+%{python_sitelib}/python_jose-%{version}.dist-info
 %{python_sitelib}/jose
 
 %files %{python_files cryptography}
