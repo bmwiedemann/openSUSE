@@ -94,4 +94,12 @@
   * Added py.typed to the source archive and wheel files.</comment>
     <requestid>1133202</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>730a6a2b58eca979baa5ea622a2613dd</srcmd5>
+    <version>0.8.2</version>
+    <time>1749651783</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1284441</requestid>
+  </revision>
 </revisionlist>
