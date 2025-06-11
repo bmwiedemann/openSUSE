@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 10 13:16:25 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Install bootloader with Secure Boot support (boo#1244248) 
+
+-------------------------------------------------------------------
 Wed May 14 09:54:22 UTC 2025 - Richard Brown <rbrown@suse.com>
 
 - Enable ZYPP_SINGLE_RPMTRANS 

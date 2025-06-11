@@ -179,7 +179,7 @@ if rpm -q sdbootutil; then
         # FIXME: kiwi needs /boot/efi to exist before syncing the disk image
         mkdir -p /boot/efi
         mkdir -p /boot/efi/loader/entries
-    echo "LOADER_TYPE=systemd-boot" > /etc/sysconfig/bootloader
+        echo -e "LOADER_TYPE=systemd-boot\nSECURE_BOOT=yes" > /etc/sysconfig/bootloader
 fi
 
 #======================================

@@ -107,4 +107,12 @@
 - Use correct Aeon brand naming in shortcuts</comment>
     <requestid>1277377</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>7e49cdc69f08c60d069c5c8e12442d40</srcmd5>
+    <version>0.1.0</version>
+    <time>1749651797</time>
+    <user>anag_factory</user>
+    <comment>- Install bootloader with Secure Boot support (boo#1244248)</comment>
+    <requestid>1284482</requestid>
+  </revision>
 </revisionlist>
