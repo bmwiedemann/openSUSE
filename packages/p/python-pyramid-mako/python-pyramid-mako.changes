@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 10 12:30:14 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Aug  3 12:36:41 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Add pyramid2.patch for the compatibility with the new pyramid.

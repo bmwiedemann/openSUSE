@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyramid-mako
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-pyramid-mako
 Version:        1.1.0
 Release:        0
@@ -27,7 +25,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Pylons/pyramid_mako
 Source:         https://files.pythonhosted.org/packages/source/p/pyramid_mako/pyramid_mako-%{version}.tar.gz
 Patch0:         pyramid2.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Mako >= 1.1.0
@@ -48,10 +48,10 @@ Mako template bindings for the Pyramid web framework.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +60,7 @@ Mako template bindings for the Pyramid web framework.
 %files %{python_files}
 %doc CHANGES.txt README.rst docs/*.rst
 %license COPYRIGHT.txt LICENSE.txt CONTRIBUTORS.txt
-%{python_sitelib}/*
+%{python_sitelib}/pyramid[-_]mako
+%{python_sitelib}/pyramid[-_]mako-%{version}*-info
 
 %changelog
