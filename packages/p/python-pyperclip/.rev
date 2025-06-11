@@ -122,4 +122,12 @@
 - Add tests.patch to fix tests</comment>
     <requestid>1208665</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>94af807fba8e8709f2c4ba8b7b3f5fa4</srcmd5>
+    <version>1.9.0</version>
+    <time>1749651550</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284642</requestid>
+  </revision>
 </revisionlist>
