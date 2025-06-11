@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 10 15:01:50 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri Oct  7 07:39:38 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Add patch dont-check-builddir.patch

@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-prctl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-prctl
 Version:        1.8.1
 Release:        0
@@ -35,7 +34,9 @@ Patch6:         check-for-python310-correctly.patch
 Patch7:         skip-speculation.patch
 Patch8:         dont-check-builddir.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  iputils
 BuildRequires:  pkgconfig
@@ -58,10 +59,10 @@ and allows you to set the process name as seen in ps and top.
 cp %{SOURCE99} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -70,6 +71,9 @@ cp %{SOURCE99} .
 %files %{python_files}
 %license COPYING
 %doc README
-%{python_sitearch}/*
+%{python_sitearch}/prctl.py
+%{python_sitearch}/_prctl.cpython*
+%{python_sitearch}/python[-_]prctl-%{version}*-info
+%pycache_only %{python_sitearch}/__pycache__/prctl*
 
 %changelog
