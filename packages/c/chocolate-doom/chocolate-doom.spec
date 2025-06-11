@@ -28,6 +28,7 @@ URL:            http://chocolate-doom.org/
 Source:         https://github.com/chocolate-doom/chocolate-doom/archive/refs/tags/%name-%version.tar.gz
 Source3:        %name.keyring
 Patch1:         chdoom-iwaddir.diff
+Patch2:         declare_code_as_C99_compliant.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes

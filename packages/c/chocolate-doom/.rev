@@ -151,4 +151,13 @@
     <comment>- Update to release 3.1.0</comment>
     <requestid>1199837</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>f41bd5597b1a4d74ae07dcd7b2daad97</srcmd5>
+    <version>3.1.0</version>
+    <time>1749651866</time>
+    <user>anag_factory</user>
+    <comment>- Add declare_code_as_C99_compliant.patch so that the package builds
+  with GCC 15. [boo#1244418]</comment>
+    <requestid>1284581</requestid>
+  </revision>
 </revisionlist>
