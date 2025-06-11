@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-repoze.sphinx.autointerface
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,9 @@ License:        SUSE-Repoze
 Group:          Development/Languages/Python
 URL:            http://www.repoze.org
 Source:         https://files.pythonhosted.org/packages/source/r/repoze.sphinx.autointerface/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx
@@ -44,15 +45,23 @@ zope.interface instances in code.
 %setup -q -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+# do not install tests
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/repoze/sphinx/tests
 
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst COPYRIGHT.txt README.rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/repoze
+%dir %{python_sitelib}/repoze/sphinx
+%{python_sitelib}/repoze/sphinx/autointerface.py
+%{python_sitelib}/repoze[._]sphinx[._]autointerface-%{version}*-info
+%{python_sitelib}/repoze[._]sphinx[._]autointerface-%{version}*nspkg.pth
+%pycache_only %dir %{python_sitelib}/repoze/sphinx/__pycache__
+%pycache_only %{python_sitelib}/repoze/sphinx/__pycache__/autointerface*
 
 %changelog
