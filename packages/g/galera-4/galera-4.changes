@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jun  9 13:17:58 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 26.4.22:
+  * New feature for applications to define sequential consistency parameters for
+  the certification process, via wsrep_certify_v1() which takes an application
+  defined callback
+  * Fixed assertions in report_last_committed() that could cause issues under
+  certain thread scheduling conditions
+  * Removed unnecessary assertions that could trigger due to normal timing
+  variations in distributed environments
+  * Fixed string format warnings that were appearing during builds on Debian Sid
+- 26.4.21 changelog:
+  * remove the dependency on openssl/engine.h - fixes codership/galera#663
+  * writeset serialization during IST fails because the seqno locking mechanism
+  does not prevent underlying data stores from discarding released actions,
+  requiring the locked seqno to be passed to stores to enforce discard limits.
+  * fixed ssl_cipher parameter type to string
+  * when a node progresses from JOINED to SYNCED, a race condition may prevent it
+  from being counted in the commit cut; ensure it is included upon announcing
+  SYNCED and delay advancing the commit cut until the node's last applied value
+  exceeds the current commit cut. GCS protocol version bumped.
+  * expose versions of all protocols agreed on by quorum via status call.
+- 26.4.20 changelog:
+  * improve error and warning messages handling in the library. System error
+  numbers and messages are hidden from thrown exceptions, except for the cases
+  where the exception is thrown because of error from system call. Some warning
+  level messages in gcomm and GCS have been changed to info level in cases where
+  the message does not require action from the administrator.
+
+-------------------------------------------------------------------
 Tue Sep 24 16:12:12 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 26.4.19:
