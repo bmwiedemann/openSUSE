@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun  7 07:43:57 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.4:
+  + Fix search result popover not fitting on small screen (phone)
+    devices
+  + Show correct place type description for places of type "office"
+    that are tagged on an entire building in OpenStreetMap
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat May 24 08:15:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Updated to version 48.3:

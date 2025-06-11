@@ -870,4 +870,17 @@
   + Updated translations. (forwarded request 1279726 from iznogood)</comment>
     <requestid>1280046</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>5d85ccd993904f6016cd4fdcb04e9d33</srcmd5>
+    <version>48.4</version>
+    <time>1749651571</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.4:
+  + Fix search result popover not fitting on small screen (phone)
+    devices
+  + Show correct place type description for places of type &quot;office&quot;
+    that are tagged on an entire building in OpenStreetMap
+  + Updated translations. (forwarded request 1283839 from iznogood)</comment>
+    <requestid>1284676</requestid>
+  </revision>
 </revisionlist>
