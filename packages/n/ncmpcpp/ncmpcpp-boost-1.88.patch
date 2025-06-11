@@ -1,0 +1,33 @@
+diff -up ncmpcpp-0.10.1/src/curses/menu.h.omv~ ncmpcpp-0.10.1/src/curses/menu.h
+--- ncmpcpp-0.10.1/src/curses/menu.h.omv~	2025-04-12 02:32:34.262824636 +0200
++++ ncmpcpp-0.10.1/src/curses/menu.h	2025-04-12 02:32:44.295612077 +0200
+@@ -21,6 +21,7 @@
+ #ifndef NCMPCPP_MENU_H
+ #define NCMPCPP_MENU_H
+ 
++#include <boost/type_traits/add_const.hpp>
+ #include <boost/iterator/transform_iterator.hpp>
+ #include <boost/range/detail/any_iterator.hpp>
+ #include <cassert>
+diff -up ncmpcpp-0.10.1/src/interfaces.h.omv~ ncmpcpp-0.10.1/src/interfaces.h
+--- ncmpcpp-0.10.1/src/interfaces.h.omv~	2025-04-12 02:32:11.707437498 +0200
++++ ncmpcpp-0.10.1/src/interfaces.h	2025-04-12 02:32:21.182258298 +0200
+@@ -21,6 +21,7 @@
+ #ifndef NCMPCPP_INTERFACES_H
+ #define NCMPCPP_INTERFACES_H
+ 
++#include <boost/type_traits/add_const.hpp>
+ #include <boost/range/detail/any_iterator.hpp>
+ #include <boost/tuple/tuple.hpp>
+ #include <string>
+diff -up ncmpcpp-0.10.1/src/screens/search_engine.cpp.omv~ ncmpcpp-0.10.1/src/screens/search_engine.cpp
+--- ncmpcpp-0.10.1/src/screens/search_engine.cpp.omv~	2025-04-12 02:32:59.480908952 +0200
++++ ncmpcpp-0.10.1/src/screens/search_engine.cpp	2025-04-12 02:33:09.551002641 +0200
+@@ -19,6 +19,7 @@
+  ***************************************************************************/
+ 
+ #include <array>
++#include <boost/type_traits/add_const.hpp>
+ #include <boost/range/detail/any_iterator.hpp>
+ #include <iomanip>
+ 

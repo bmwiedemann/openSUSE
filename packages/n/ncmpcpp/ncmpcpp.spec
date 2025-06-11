@@ -26,6 +26,7 @@ URL:            https://rybczak.net/ncmpcpp
 Source:         https://github.com/ncmpcpp/ncmpcpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-compilation-with-taglib-2.0.patch
+Patch1:         ncmpcpp-boost-1.88.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  curl-devel

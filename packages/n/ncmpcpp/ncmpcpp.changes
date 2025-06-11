@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  9 10:59:12 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Add ncmpcpp-boost-1.88.patch: fix build with boost v1.88
+
+-------------------------------------------------------------------
 Thu Mar 21 15:03:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change to fix build with taglib 2.0:
