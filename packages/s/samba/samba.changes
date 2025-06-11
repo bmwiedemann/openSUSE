@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun  6 15:06:53 UTC 2025 - Noel Power <nopower@suse.com>
+
+- Update to 4.22.2
+  * (CVE-2025-0620) [SECURITY] CVE-2025-0620: smbd doesn't pick
+    up group membership changes when re-authenticating an expired
+    SMB session; (bso#15707); (bsc#1244136).
+  * Profile sync fails due to Directory Leases; (bso#15861).
+  * net ad join fails with "Failed to join domain: failed to
+    create kerberos keytab"; (bso#15727).
+  * dcerpcd not able to bind to listening port; (bso#15851).
+  * vfs_ceph_snapshots fails to list snapshots for entries at any
+    level beyond share root; (bso#15819).
+  * CTDB does not put nodes running NFS into grace on graceful
+    shutdown; (bso#15858).
+
+-------------------------------------------------------------------
 Fri May  9 10:37:16 UTC 2025 - Noel Power <nopower@suse.com>
 
 - Update and rename update-apparmor-samba-profile script to

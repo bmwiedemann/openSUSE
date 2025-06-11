@@ -168,7 +168,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.22.1+git.393.a3fcbaec1e5
+Version:        4.22.2+git.396.c752843dcf4
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
