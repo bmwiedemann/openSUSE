@@ -16,10 +16,10 @@
 #
 
 
-%define vers    24.12
+%define vers    25.06
 
 Name:           rosegarden
-Version:        24.12.1
+Version:        25.06
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Midi, Audio And Notation Editor
@@ -148,7 +148,6 @@ install -D -m 0644 "%{SOURCE2}" "%{buildroot}%{_mandir}/man1/"
 %dir %{_datadir}/%{name}/scripts
 %dir %{_datadir}/%{name}/styles
 %dir %{_datadir}/%{name}/templates
-%dir %{_datadir}/%{name}/templates
 %{_datadir}/icons/hicolor/*
 %{_datadir}/pixmaps/%{name}.xpm
 %{_datadir}/applications/com.rosegardenmusic.%{name}.desktop
@@ -157,18 +156,6 @@ install -D -m 0644 "%{SOURCE2}" "%{buildroot}%{_mandir}/man1/"
 %{_libdir}/lib%{name}private.so
 %{_mandir}/man1/*
 %{_datadir}/%{name}/*
-%{_datadir}/%{name}/presets/*
-%{_datadir}/%{name}/pixmaps/*
-%{_datadir}/%{name}/autoload/*
-%{_datadir}/%{name}/chords/*
-%{_datadir}/%{name}/examples/*
-%{_datadir}/%{name}/fonts/*
-%{_datadir}/%{name}/library/*
-%{_datadir}/%{name}/locale/*
-%{_datadir}/%{name}/profile/*
-%{_datadir}/%{name}/scripts/*
-%{_datadir}/%{name}/styles/*
-%{_datadir}/%{name}/templates/*
 %{_datadir}/mime/packages/%{name}.xml
 
 %changelog
