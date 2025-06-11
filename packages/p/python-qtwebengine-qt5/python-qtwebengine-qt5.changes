@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  9 19:18:32 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Allow lowercase distinfo due to new pyqt-builder following PEP 639
+
+-------------------------------------------------------------------
 Fri Nov  8 09:25:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Fix requires_eq replacement gh#openSUSE/python-rpm-macros#185

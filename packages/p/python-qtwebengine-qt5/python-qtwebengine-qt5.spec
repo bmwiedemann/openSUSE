@@ -80,7 +80,7 @@ and  the SIP files used to generate the Python bindings for %{name}
 %{python_sitearch}/PyQt5/QtWebEngine.*
 %{python_sitearch}/PyQt5/QtWebEngineCore.*
 %{python_sitearch}/PyQt5/QtWebEngineWidgets.*
-%{python_sitearch}/PyQtWebEngine-%{version}.dist-info/
+%{python_sitearch}/[Pp]y[Qq]t[Ww]eb[Ee]ngine-%{version}.dist-info/
 
 %files %{python_files devel}
 %license LICENSE

@@ -154,4 +154,12 @@ Required for python-AnyQt</comment>
     <comment>- Fix requires_eq replacement gh#openSUSE/python-rpm-macros#185</comment>
     <requestid>1222707</requestid>
   </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>6212da4876b0ea8fe854661c01eac918</srcmd5>
+    <version>5.15.6</version>
+    <time>1749651692</time>
+    <user>anag_factory</user>
+    <comment>lowercase distinfo</comment>
+    <requestid>1284357</requestid>
+  </revision>
 </revisionlist>
