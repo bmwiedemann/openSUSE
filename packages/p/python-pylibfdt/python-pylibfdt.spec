@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylibfdt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pylibfdt
 Version:        1.7.2
 Release:        0
 Summary:        Python binding for libfdt
 License:        BSD-2-Clause AND GPL-2.0-only
-Group:          Development/Languages/Python
 URL:            https://pypi.org/project/pylibfdt/
 Source:         https://files.pythonhosted.org/packages/source/p/pylibfdt/pylibfdt-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
 %python_subpackages
@@ -42,16 +43,17 @@ Python binding part.
 %setup -q -n pylibfdt-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
 %license BSD-2-Clause GPL
 %{python_sitearch}/libfdt.py
 %{python_sitearch}/_libfdt.*.so
 %{python_sitearch}/__pycache__
-%{python_sitearch}/pylibfdt*.egg-info
+%{python_sitearch}/pylibfdt-%{version}.dist-info
 
 %changelog
