@@ -737,6 +737,7 @@ Provides:       pattern-order() = 1360
 Provides:       pattern-visible()
 Recommends:     pattern() = sw_management_x11
 %if !0%{?is_opensuse}
+Recommends:     cockpit-packages
 Recommends:     lifecycle-data
 Recommends:     zypper-lifecycle-plugin
 %endif

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 10 14:31:01 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Add cockpit-packages to sw_management Recommends for SLES 16.0
+ (bsc#1240517).
+
+-------------------------------------------------------------------
 Thu Apr 17 10:13:32 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not force-require chrony, but rather ntp-daemon and Suggest

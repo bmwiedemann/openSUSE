@@ -1086,4 +1086,12 @@
   chrony as the default we want (boo#1233542).</comment>
     <requestid>1270252</requestid>
   </revision>
+  <revision rev="126" vrev="10">
+    <srcmd5>8436fe5841de1cd616e610942ebd8bf5</srcmd5>
+    <version>20241218</version>
+    <time>1749651530</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1284543</requestid>
+  </revision>
 </revisionlist>
