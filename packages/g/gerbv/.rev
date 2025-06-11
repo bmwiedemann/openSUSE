@@ -113,4 +113,12 @@ http://lists.opensuse.org/opensuse-factory/2012-12/msg00538.html</comment>
     <comment></comment>
     <requestid>1129871</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>3ea2256c25a5565eba9d57ff204d6cf3</srcmd5>
+    <version>2.10.0</version>
+    <time>1749651845</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1284542</requestid>
+  </revision>
 </revisionlist>

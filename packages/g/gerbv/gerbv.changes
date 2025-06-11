@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 10 10:46:26 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/gerbv/gerbv/issues/255
+  + gerbv-gcc15.patch
+
+-------------------------------------------------------------------
 Fri Nov 24 19:18:18 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to 2.10.0:

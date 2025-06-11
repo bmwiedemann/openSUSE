@@ -26,6 +26,8 @@ License:        GPL-2.0-only
 Group:          Productivity/Scientific/Electronics
 URL:            http://gerbv.geda-project.org/
 Source0:        https://github.com/gerbv/gerbv/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/gerbv/gerbv/issues/255
+Patch0:         gerbv-gcc15.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gtk2-devel
 BuildRequires:  libpng-devel
