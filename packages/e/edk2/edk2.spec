@@ -172,7 +172,7 @@ DSC_PATH="edk2-platforms/Platform/Sophgo/SG2042_EVB_Board/SG2042.dsc"
 %if "%{platform}" == "Shell"
 DSC_PATH="ShellPkg/ShellPkg.dsc"
 %endif
-BUILD_OPTIONS="-a %{ARCH} -p $DSC_PATH -b %{build_mode} -t GCC5 %{?jobs:-n %jobs}"
+BUILD_OPTIONS="-a %{ARCH} -p $DSC_PATH -b %{build_mode} -t GCC5 $(echo %{?_smp_mflags} | sed 's/-j/-n /')"
 # BaseTools does not support parallel builds, so no -jN here
 ARCH=%{ARCH} make -C BaseTools BUILD_CC=gcc BUILD_CXX=g++ BUILD_AS=gcc
 

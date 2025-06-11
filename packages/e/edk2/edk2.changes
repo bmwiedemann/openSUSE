@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  9 13:34:52 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Replace usage of %jobs for reproducible builds (boo#1237231)
+
+-------------------------------------------------------------------
 Mon Apr 14 06:32:43 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix CVE-2024-38797 - boo#1240985:
