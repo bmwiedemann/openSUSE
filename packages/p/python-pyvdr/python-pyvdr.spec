@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyvdr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,18 +17,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pyvdr
 Version:        0.3.1
 Release:        0
 Summary:        Python library for accessing a Linux VDR via SVDRP
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/baschno/pyvdr
 Source:         https://github.com/baschno/pyvdr/archive/%{version}.tar.gz#/pyvdr-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -42,10 +42,10 @@ Python library for accessing a Linux VDR via SVDRP.
 sed -i -e '/^#!\//, 1d' pyvdr/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +54,7 @@ sed -i -e '/^#!\//, 1d' pyvdr/*.py
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/pyvdr*
+%{python_sitelib}/pyvdr
+%{python_sitelib}/pyvdr-%{version}.dist-info
 
 %changelog

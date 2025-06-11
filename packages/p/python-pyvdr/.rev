@@ -47,4 +47,13 @@
     <comment></comment>
     <requestid>898208</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7abfb2c56b9654e70333ee3502a2b987</srcmd5>
+    <version>0.3.1</version>
+    <time>1749651986</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Explicitly list files and directories in %files.</comment>
+    <requestid>1284666</requestid>
+  </revision>
 </revisionlist>
