@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 11 04:42:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.8:
+  * Delete named pipes instead of broadly excluding fifo files
+    (#2035)
+  * bump containerd dep; disable ipset-build-test e2e test (#2034)
+  * qemu runner: fix embedded authorized key when debugging (#2031)
+  * Add split/bin pipeline (#2030)
+  * split/manpages: Manpage path expansion for better lookup
+    (#2029)
+
+-------------------------------------------------------------------
 Sat Jun 07 04:46:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.7:
