@@ -38,4 +38,12 @@
     <comment>- Add missing BuildRequires on typing_extensions.</comment>
     <requestid>1083177</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>4d648a518c0ead958bdcff4375f7c6cb</srcmd5>
+    <version>2022.1025</version>
+    <time>1749651703</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build and libalternatives</comment>
+    <requestid>1284372</requestid>
+  </revision>
 </revisionlist>

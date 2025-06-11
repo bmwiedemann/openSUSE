@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 10 08:11:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build and libalternatives
+
+-------------------------------------------------------------------
 Thu Apr 27 06:55:16 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on typing_extensions. 

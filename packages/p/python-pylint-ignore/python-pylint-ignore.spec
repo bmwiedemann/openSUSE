@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylint-ignore
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without libalternatives
 Name:           python-pylint-ignore
 Version:        2022.1025
 Release:        0
@@ -26,21 +26,23 @@ URL:            https://github.com/mbarkhau/pylint-ignore
 Source:         https://files.pythonhosted.org/packages/source/p/pylint-ignore/pylint-ignore-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#mbarkhau/pylint-ignore#15
 Patch0:         no-more-pathlib2.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
+Requires:       python-astroid > 2.1.0
+Requires:       python-pylev
+Requires:       python-pylint > 2.4
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pylev}
 BuildRequires:  %{python_module pylint > 2.4}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing_extensions}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-astroid > 2.1.0
-Requires:       python-pylev
-Requires:       python-pylint > 2.4
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -54,25 +56,19 @@ source code itself. It's similar to Rupocop's .rubocop_todo.yml.
 %autosetup -p1 -n pylint-ignore-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pylint-ignore
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_expand sed -i 's,/usr/bin/env python,,' %{buildroot}%{$python_sitelib}/pylint_ignore/__main__.py
+%python_expand sed -i 's,%{_bindir}/env python,,' %{buildroot}%{$python_sitelib}/pylint_ignore/__main__.py
 
 %check
-# Ignore failing tests in python3.8 and python3.9
-python38_donttest=(-k "not (test_selftest_no_ignore_update or test_selftest_ignore_update_noop)")
-python39_donttest=(-k "not (test_selftest_no_ignore_update or test_selftest_ignore_update_noop)")
-%pytest "${$python_donttest[@]}"
+%pytest
 
-%post
-%python_install_alternative pylint-ignore
-
-%postun
-%python_uninstall_alternative pylint-ignore
+%pre
+%python_libalternatives_reset_alternative pylint-ignore
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
