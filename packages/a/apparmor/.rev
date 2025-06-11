@@ -2985,4 +2985,16 @@ Note: I checked the GPG signature with both the expired and the refreshed key, a
 - add dovecot24.diff to fix the profile for dovecot 2.4 (boo#1243008) (forwarded request 1282446 from cboltz)</comment>
     <requestid>1282447</requestid>
   </revision>
+  <revision rev="224" vrev="4">
+    <srcmd5>d74f8c134ad672b89979030e2df60f91</srcmd5>
+    <version>4.1.0</version>
+    <time>1749651606</time>
+    <user>anag_factory</user>
+    <comment>- update dovecot24.diff - more permissions for dovecot 2.4 (boo#1243008)
+
+Note: If openQA still fails with more AppArmor denials in staging, feel free to decline - and point me to the openQA audit.log so that I can have a look and add more permissions. I'd prefer to have a single bigger change over 5 incremental fixes in Factory ;-)
+
+Also note that the &quot;mailserver_setup&quot; test in https://openqa.opensuse.org/tests/latest?arch=x86_64&amp;distri=opensuse&amp;flavor=DVD&amp;machine=64bit&amp;test=apparmor_profile&amp;version=Tumbleweed#step/mailserver_setup/165 fails for unrelated reasons - with dovecot 2.4, /etc/dovecot/conf.d/ doesn't exist by default anymore, which also makes creating a file in that directory hard.</comment>
+    <requestid>1284254</requestid>
+  </revision>
 </revisionlist>

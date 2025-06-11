@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  9 16:06:29 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- update dovecot24.diff - more permissions for dovecot 2.4 (boo#1243008)
+
+-------------------------------------------------------------------
 Tue Jun  3 18:12:39 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
 
 - replace workaround for boo#853019 with using %restart_on_update -

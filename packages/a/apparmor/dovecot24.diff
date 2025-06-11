@@ -1,7 +1,7 @@
 Index: profiles/apparmor.d/usr.sbin.dovecot
 ===================================================================
 --- profiles/apparmor.d/usr.sbin.dovecot.orig	2025-04-08 18:20:05.000000000 +0200
-+++ profiles/apparmor.d/usr.sbin.dovecot	2025-06-03 20:28:58.853907837 +0200
++++ profiles/apparmor.d/usr.sbin.dovecot	2025-06-09 18:01:25.539162656 +0200
 @@ -46,6 +46,7 @@ profile dovecot /usr/{bin,sbin}/dovecot
    @{PROC}/@{pid}/mounts r,
    @{PROC}/sys/fs/suid_dumpable r,
@@ -10,3 +10,29 @@ Index: profiles/apparmor.d/usr.sbin.dovecot
    /usr/bin/doveconf rix,
    /usr/lib*/dovecot/anvil mrPx,
    /usr/lib*/dovecot/auth mrPx,
+Index: profiles/apparmor.d/usr.lib.dovecot.config
+===================================================================
+--- profiles/apparmor.d/usr.lib.dovecot.config.orig	2025-04-08 18:20:05.000000000 +0200
++++ profiles/apparmor.d/usr.lib.dovecot.config	2025-06-09 18:04:34.457452088 +0200
+@@ -23,6 +23,7 @@ profile dovecot-config /usr/lib*/dovecot
+   capability dac_override,
+ 
+   /etc/dovecot/** r,
++  /tmp/doveconf.* rw,
+   /usr/bin/doveconf rix,
+   /usr/lib*/dovecot/config mr,
+   /usr/lib*/dovecot/managesieve Px,
+Index: profiles/apparmor.d/usr.lib.dovecot.log
+===================================================================
+--- profiles/apparmor.d/usr.lib.dovecot.log.orig	2025-06-09 18:05:05.994534375 +0200
++++ profiles/apparmor.d/usr.lib.dovecot.log	2025-06-09 18:05:14.456327370 +0200
+@@ -17,6 +17,9 @@ profile dovecot-log /usr/lib*/dovecot/lo
+   include <abstractions/base>
+   include <abstractions/dovecot-common>
+ 
++  /apparmor/.null rw,
++  /tmp/doveconf.* r,
++
+   /usr/lib*/dovecot/log mr,
+ 
+   # Site-specific additions and overrides. See local/README for details.
