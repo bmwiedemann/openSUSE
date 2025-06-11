@@ -30,11 +30,15 @@ BuildRequires:  python3-setuptools-git-versioning
 Requires:       python3-GitPython
 Requires:       python3-Mako
 Requires:       python3-MarkupSafe
+Requires:       python3-bugzilla
 Requires:       python3-cached-property
+Requires:       python3-filelock
 Requires:       python3-lxml
 Requires:       python3-natsort
 Requires:       python3-osc-tiny
+Requires:       python3-pyelftools
 Requires:       python3-requests
+Requires:       python3-zstandard
 BuildArch:      noarch
 
 %description
