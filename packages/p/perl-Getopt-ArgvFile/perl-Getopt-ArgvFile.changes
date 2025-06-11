@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  9 14:31:57 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Replace usage of %jobs for reproducible builds (boo#1237231)
+
+-------------------------------------------------------------------
 Sat May 26 10:53:51 UTC 2012 - coolo@suse.com
 
 - Aritistic 1 or later 
