@@ -2,6 +2,7 @@
 # spec file for package sqlite3
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +19,20 @@
 
 %define _buildshell /bin/bash
 %define oname sqlite
-%define tarversion 3490200
-%define docversion 3490200
+%define tarversion 3500100
+%define docversion 3500100
 %bcond_with icu
 %bcond_without check
 Name:           sqlite3
-Version:        3.49.2
+Version:        3.50.1
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
 Group:          Productivity/Databases/Servers
 URL:            https://www.sqlite.org/
-Source0:        https://www.sqlite.org/2023/sqlite-src-%{tarversion}.zip
+Source0:        https://www.sqlite.org/2025/sqlite-src-%{tarversion}.zip
 Source1:        baselibs.conf
-Source2:        https://www.sqlite.org/2023/sqlite-doc-%{docversion}.zip
+Source2:        https://www.sqlite.org/2025/sqlite-doc-%{docversion}.zip
 Source99:       %{name}-rpmlintrc
 Patch0:         sqlite-3.6.23-lemon-system-template.patch
 Patch1:         sqlite-3.49.0-fix-lemon-missing-cflags.patch
