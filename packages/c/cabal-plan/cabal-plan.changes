@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun  5 23:21:12 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update cabal-plan to version 0.7.6.0.
+  ## 0.7.6.0
+
+  * Use Cabal-syntax-3.12
+  * Support GHC-8.8.4...9.12.2
+
+-------------------------------------------------------------------
 Mon Jan 13 20:40:37 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update cabal-plan to version 0.7.5.0.
