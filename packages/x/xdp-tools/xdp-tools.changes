@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jun 10 06:26:07 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to v1.5.5
+  - added xdp-forward for forwarding traffic between interfaces
+  - libxdp: options-based API for more flexible af_xdp umem and
+	socket creation
+  - libxdp: added support for af_xdp tx metadata
+  - xdp-bench: improved reliability by removing packet header
+	location assumptions
+  - xdp-bench: new program for redirect benchmarking
+  - xdp-trafficgen: support for specifying udp packet size
+  - xdp-trafficgen: probe command can now target a specific
+	interface
+  - xdp-trafficgen: auto-load dummy xdp program to ensure packet
+	sending
+  - xdp-dump: increased max supported cpus to 512
+  - xdp-loader: allow loading xdp programs that modify the packet
+	pointer
+  - utils: improved pps statistics accuracy in xdp_sample
+  - utils: correctly print statistics summary on signal interruption
+	in xdp_sample
+  - xdp-trafficgen: fix failure to exit after packet transmission
+	loop
+  - libxdp: fix incorrect xdp_umem_reg setsockopt size
+  - libxdp: ensure correct error propagation by returning -errno
+  - utils: fix incorrect packet count calculation in xdp_sample
+- Drop fix-clang20-build.patch since upstream remedy is included
+  since v1.5.4
+
+-------------------------------------------------------------------
 Fri Mar 21 22:49:39 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add fix-clang20-build.patch to fix build with Clang 20.

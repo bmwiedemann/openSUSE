@@ -26,7 +26,7 @@
 # workaround binutils/strip issue with BPF object, see #boo#1217108
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 Name:           xdp-tools
-Version:        1.4.2
+Version:        1.5.5
 Release:        0
 Group:          Productivity/Networking/Other
 Summary:        Utilities and example programs for use with XDP
@@ -36,7 +36,6 @@ URL:            https://github.com/xdp-project/xdp-tools
 Source:         https://github.com/xdp-project/xdp-tools/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # Fixes "error: argument unused during compilation: '-c' [-Werror,-Wunused-command-line-argument]" with
 # Clang 20. The command lines have both -c and -S, but should only have -S as they're producing textual IR.
-Patch1:         fix-clang20-build.patch
 BuildRequires:  bpftool
 BuildRequires:  clang >= 10.0.0
 BuildRequires:  gcc
@@ -117,6 +116,7 @@ rm -rf %{buildroot}%{_datadir}/xdp-tools/
 %{_sbindir}/xdp-bench
 %{_sbindir}/xdp-monitor
 %{_sbindir}/xdp-trafficgen
+%{_sbindir}/xdp-forward
 %{_libdir}/bpf/xdpfilt_*.o
 %{_libdir}/bpf/xdpdump_*.o
 %{_mandir}/man8/*
