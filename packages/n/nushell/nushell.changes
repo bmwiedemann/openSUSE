@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Jun 11 04:20:53 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.105.1:
+  * One `where` to rule them all.
+  * Better deprecations.
+  * `oneof` the things.
+  * Case-sensitive cell-paths or not`!`.
+  * `recurse`'ively explore nested values.
+  * No more `openssl`.
+  * HTTP by default.
+  * More Polars.
+  * Changes:
+    + Additions:
+      - Ignore fields in simple `parse` patterns with `_`
+      - Lazy closure evaluation for `default`.
+      - `path join` can now read byte stream input.
+      - `run-external` spreads command if it's a list.
+      - Improvements to `bench`.
+      - `overlay new -r` can now reset overlays.
+      - See env variables as externals would.
+      - Use PowerShell scripts from the `$env.PATH`.
+      - Make your table look like they are from neovim.
+      - Center columns via `to md --center`.
+      - Disable expensive calculations with `gstat --disable-tag`.
+      - Know what `open` and `save` can do with `std/help`.
+      - Content type of `view span`.
+    + Breaking changes:
+      - Cell-paths with case-sensitivity and without`!`
+      - Paths on lazy frames now produce expressions.
+    + Notes for plugin developers:
+      - Construct `IoError` from `std::io::Error` instead 
+        of `std::io::ErrorKind`.
+  * For a full list of changes with detailed descriptions, see:
+    - https://www.nushell.sh/blog/2025-06-10-nushell_0_105_0.html
+
+-------------------------------------------------------------------
 Wed Apr 30 03:53:45 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.104.0:
