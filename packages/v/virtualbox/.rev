@@ -2752,4 +2752,12 @@ vb7.1.18 + kernel 6.15 is unable to start VMs,
 we must have vb7.1.10.</comment>
     <requestid>1282914</requestid>
   </revision>
+  <revision rev="293" vrev="2">
+    <srcmd5>f94776673516452878d6057b8720be4f</srcmd5>
+    <version>7.1.10</version>
+    <time>1749659670</time>
+    <user>anag_factory</user>
+    <comment>- fix build against 6.16, add:</comment>
+    <requestid>1284728</requestid>
+  </revision>
 </revisionlist>

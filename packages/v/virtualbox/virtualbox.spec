@@ -126,6 +126,9 @@ Patch9:         vbox-usb-warning.diff
 Patch10:        fix_for_leap15.5.patch
 Patch11:        cxx17.patch
 Patch12:        host-source.patch
+Patch13:        kernel-6.16-READ-WRITE.patch
+Patch14:        kernel-6.16-from_timer.patch
+Patch15:        kernel-6.16-page-index.patch
 Patch20:        gentoo-C23.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
