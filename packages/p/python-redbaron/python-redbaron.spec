@@ -1,7 +1,7 @@
 #
 # spec file for package python-redbaron
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-redbaron
 Version:        0.9.2
 Release:        0
@@ -26,7 +25,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/PyCQA/redbaron
 Source:         https://files.pythonhosted.org/packages/source/r/redbaron/redbaron-%{version}.tar.gz
 Patch0:         pytest4.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-baron >= 0.7
@@ -48,10 +49,10 @@ IPython.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +61,7 @@ rm -r tests/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG README.md
-%{python_sitelib}/*
+%{python_sitelib}/redbaron
+%{python_sitelib}/redbaron-%{version}*-info
 
 %changelog
