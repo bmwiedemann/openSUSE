@@ -32,11 +32,13 @@ BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyramid >= 1.4}
 BuildRequires:  %{python_module pyramid-mako >= 0.3.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sqlalchemy}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pygments
@@ -65,10 +67,10 @@ Documentation and examples for %{name}.
 rm -r demo/.gitignore demo/debugtoolbar_demo.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 #Fix spurious executable bit on js/css files
 %python_expand find %{buildroot}%{$python_sitelib} -type f -exec chmod 0644 {} \;
@@ -79,7 +81,7 @@ rm -r demo/.gitignore demo/debugtoolbar_demo.egg-info
 %files %{python_files}
 %license LICENSE.txt
 %{python_sitelib}/pyramid_debugtoolbar/
-%{python_sitelib}/pyramid_debugtoolbar-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/pyramid_debugtoolbar-%{version}.dist-info
 
 %files -n %{name}-doc
 %doc CHANGES.txt CONTRIBUTORS.txt README.rst TODO.txt docs/*.rst docs/*.png demo

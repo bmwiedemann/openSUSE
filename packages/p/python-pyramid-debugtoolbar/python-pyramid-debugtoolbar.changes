@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 11 05:49:31 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Feb 25 13:38:57 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add patch to fix tests with latest pyramid

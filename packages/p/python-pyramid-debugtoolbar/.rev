@@ -93,4 +93,12 @@
   0001-Adapt-tests-to-latest-pygments.patch</comment>
     <requestid>1248380</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>60116ebeb70f196a234d10d16403ed8c</srcmd5>
+    <version>4.12.1</version>
+    <time>1749651962</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284645</requestid>
+  </revision>
 </revisionlist>
