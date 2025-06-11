@@ -105,4 +105,17 @@
     <comment></comment>
     <requestid>1274231</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>eab0646b96d6e790da03b971a39de215</srcmd5>
+    <version>2025.6.0</version>
+    <time>1749659677</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 2025.6.0
+  * Remove dynamic reloading of features for datagram v3
+  * Add metric for unsupported RPC commands for datagram v3
+  * Add dynamic loading of features to connections via ConnectionOptionsSnapshot
+  * Use is_default_network instead of is_default to create vnet's
+  * Update go to 1.24 (forwarded request 1284820 from hillwood)</comment>
+    <requestid>1284821</requestid>
+  </revision>
 </revisionlist>
