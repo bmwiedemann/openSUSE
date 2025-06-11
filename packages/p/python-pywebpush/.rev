@@ -36,4 +36,12 @@
 - Do not use greedy globs in %files.</comment>
     <requestid>1095729</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>e67113da4cf5c645c219f25b847c3e63</srcmd5>
+    <version>1.14.0</version>
+    <time>1749651991</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284670</requestid>
+  </revision>
 </revisionlist>

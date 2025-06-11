@@ -1,7 +1,7 @@
 #
 # spec file for package python-pywebpush
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ URL:            https://github.com/web-push-libs/pywebpush
 Source:         https://files.pythonhosted.org/packages/source/p/pywebpush/pywebpush-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Do not require six module
 Patch0:         no-more-six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 2.6.1
@@ -33,7 +35,7 @@ Requires:       python-http-ece >= 1.1.0
 Requires:       python-py-vapid >= 1.5.0
 Requires:       python-requests >= 2.21.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module cryptography >= 2.6.1}
@@ -51,10 +53,10 @@ WebPush publication library.
 %autosetup -p1 -n pywebpush-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pywebpush
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -74,6 +76,6 @@ sed -i 's:from mock:from unittest.mock:' pywebpush/tests/test_webpush.py
 %license LICENSE
 %python_alternative %{_bindir}/pywebpush
 %{python_sitelib}/pywebpush
-%{python_sitelib}/pywebpush-%{version}*-*info
+%{python_sitelib}/pywebpush-%{version}.dist-info
 
 %changelog
