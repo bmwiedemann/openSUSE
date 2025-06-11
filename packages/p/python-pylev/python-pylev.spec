@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylev
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,9 @@ URL:            https://github.com/toastdriven/pylev
 Source:         https://files.pythonhosted.org/packages/source/p/pylev/pylev-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/toastdriven/pylev/master/LICENSE
 Source2:        https://raw.githubusercontent.com/toastdriven/pylev/master/tests.py
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,10 +43,10 @@ A pure Python Levenshtein implementation.
 cp %{SOURCE1} %{SOURCE2} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,6 +55,7 @@ cp %{SOURCE1} %{SOURCE2} .
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pylev
+%{python_sitelib}/pylev-%{version}*-info
 
 %changelog
