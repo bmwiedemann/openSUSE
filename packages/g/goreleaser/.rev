@@ -124,4 +124,41 @@
     <comment>- Fixed _service: Switch revision from main to actual version (forwarded request 1279215 from ph03nix)</comment>
     <requestid>1280339</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ceab5523c65d2c851fb19d6b00701247</srcmd5>
+    <version>2.10.2</version>
+    <time>1749651864</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.10.2:
+  * docs: improve install.md
+  * docs: update
+  * fix(cask): conflicts and depends still not quite right
+  * docs: update
+  * chore: auto-update generated files
+  * chore: keep license in the struct for now
+  * fix(homebrew_casks): many fixes
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * docs: v2.10
+  * docs: update
+  * chore(deps): update nfpm
+  * docs: update
+  * feat: mcp server (#5798)
+  * chore(deps): bump golang.org/x/tools from 0.33.0 to 0.34.0 (#5811)
+  * feat(ko): allow configuration of local domain to allow publishing to other local registries (e.g. kind) (#5809)
+  * chore(deps): bump golang.org/x/text from 0.25.0 to 0.26.0 (#5812)
+  * ci: rename job
+  * chore(deps): bump golang from 1.24.3-alpine to 1.24.4-alpine (#5815)
+  * chore(deps): bump golang.org/x/crypto from 0.38.0 to 0.39.0 (#5813)
+  * docs: update USERS.md (#5810)
+  * fix(dep): update gitlab, fix use of removed function (#5807)
+  * docs: update
+  * docs: update
+  * docs: improvements based on feedback
+  * fix: help case
+  * docs: improve casks docs and migration guide
+  * test: add test for #5783
+  * fix(gitlab): use CI_SERVER_VERSION when available (#5783) (forwarded request 1284520 from ph03nix)</comment>
+    <requestid>1284583</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Tue Jun 10 14:29:01 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.10.2:
+  * docs: improve install.md
+  * docs: update
+  * fix(cask): conflicts and depends still not quite right
+  * docs: update
+  * chore: auto-update generated files
+  * chore: keep license in the struct for now
+  * fix(homebrew_casks): many fixes
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * docs: v2.10
+  * docs: update
+  * chore(deps): update nfpm
+  * docs: update
+  * feat: mcp server (#5798)
+  * chore(deps): bump golang.org/x/tools from 0.33.0 to 0.34.0 (#5811)
+  * feat(ko): allow configuration of local domain to allow publishing to other local registries (e.g. kind) (#5809)
+  * chore(deps): bump golang.org/x/text from 0.25.0 to 0.26.0 (#5812)
+  * ci: rename job
+  * chore(deps): bump golang from 1.24.3-alpine to 1.24.4-alpine (#5815)
+  * chore(deps): bump golang.org/x/crypto from 0.38.0 to 0.39.0 (#5813)
+  * docs: update USERS.md (#5810)
+  * fix(dep): update gitlab, fix use of removed function (#5807)
+  * docs: update
+  * docs: update
+  * docs: improvements based on feedback
+  * fix: help case
+  * docs: improve casks docs and migration guide
+  * test: add test for #5783
+  * fix(gitlab): use CI_SERVER_VERSION when available (#5783)
+  * ci(dagger): failing zig tests (#5806)
+  * chore(deps): bump github/codeql-action from 3.28.18 to 3.28.19 (#5805)
+  * chore: schema update
+  * feat(cask): improve URL config (#5803)
+  * chore(deps): bump golang from `ef18ee7` to `b4f875e` (#5801)
+  * feat: support addtional url parameters in homebrew cask (#5800)
+  * chore(deps): bump mkdocs-rss-plugin from 1.17.2 to 1.17.3 in /www (#5802)
+  * chore: update schema
+  * fix: unneeded warnings
+  * chore(deps): bump mkdocs-rss-plugin from 1.17.1 to 1.17.2 in /www (#5791)
+  * ci: snapcraft token
+  * chore(deps): bump github.com/slack-go/slack from 0.16.0 to 0.17.0 (#5792)
+  * feat: sbom.disable (#5787)
+  * ci: fix zig action (#5789)
+  * docs: update
+  * chore: deprecate more stuff
+  * feat: homebrew casks (#5780)
+  * chore(deps): bump github.com/google/go-containerregistry from 0.20.4 to 0.20.5 (#5784)
+  * chore(deps): bump github.com/goreleaser/nfpm/v2 from 2.42.0 to 2.42.1 (#5782)
+  * chore(deps): bump github.com/google/go-containerregistry from 0.20.4-0.20250225234217-098045d5e61f to 0.20.4 (#5781)
+  * test: fix sbom test on newer syft versions
+  * fix(init): handle CRLF line endings in gitignore (#5775)
+  * chore(deps): bump codecov/codecov-action from 5.4.2 to 5.4.3 (#5776)
+  * chore(deps): bump github/codeql-action from 3.28.17 to 3.28.18 (#5777)
+  * chore(deps): bump anchore/sbom-action from 0.19.0 to 0.20.0 (#5774)
+  * chore(deps): bump mkdocs-material from 9.6.13 to 9.6.14 in /www (#5773)
+  * fix(bun,deno): duplicated build flags (#5771)
+  * feat(nfpm): support rpm.buildhost
+  * chore(deps): update go-github to v72
+  * docs: update git tag sort option
+  * docs: add blog post about packaging and publishing Go binaries on NPM which use GoReleaser as build tool (#5759)
+  * chore(deps): bump mkdocs-material from 9.6.12 to 9.6.13 in /www (#5769)
+  * chore(deps): bump dependabot/fetch-metadata from 2.3.0 to 2.4.0 (#5770)
+  * chore(deps): update ko and nfpm (#5767)
+  * docs: update
+  * chore(deps): bump dario.cat/mergo from 1.0.1 to 1.0.2 (#5765)
+  * chore(deps): bump actions/setup-go from 5.4.0 to 5.5.0 (#5764)
+  * chore(deps): bump mlugg/setup-zig from 1 to 2 (#5762)
+  * chore(deps): bump golang from 1.24.2-alpine to 1.24.3-alpine (#5761)
+  * ci: fix lint (#5757)
+  * fix(brew,nix): support txz, tgz, tzst, tar.zst (#5746)
+  * chore(deps): bump golang.org/x/tools from 0.32.0 to 0.33.0 (#5752)
+  * chore(deps): bump golang.org/x/oauth2 from 0.29.0 to 0.30.0 (#5753)
+  * chore(deps): bump golang.org/x/crypto from 0.37.0 to 0.38.0 (#5751)
+  * chore(deps): bump golang.org/x/sync from 0.13.0 to 0.14.0 (#5754)
+  * chore(deps): bump golangci/golangci-lint-action from 7.0.0 to 8.0.0 (#5750)
+  * chore(deps): bump github/codeql-action from 3.28.16 to 3.28.17 (#5749)
+  * docs: update
+  * docs: update homepage
+  * docs: use recommended SPDX SBOM filename in example (#5745)
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
 Thu May 22 08:14:30 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Fixed _service: Switch revision from main to actual version
