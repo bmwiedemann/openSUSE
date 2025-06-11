@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun 10 15:21:31 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 2.3.0:
+  * fix(fish_lsp): apply author suggestions
+  * feat(ast_grep): support multiple workspaces
+  * Update cairo ls config
+  * [feat] add OpenTofu language server
+  * fix(emmet_ls, emmet_language_server): standardized configs across both emmet lsps
+  * feat: cspell language server
+  * feat(helm_ls,yamlls): support custom filetype for helm-ls
+  * fix: enable :LspLog command in Nvim 0.11.2
+  * fix(eslint): LspEslintFixAll not running sync
+  * Add Postcss for Django
+  * fix(clangd): set offset_encoding correctly
+  * feat(bicep): add bicep-params filetype for bicep lsp
+  * fix(helm_ls,yamlls): support custom filetype for helm-ls
+  * fix: restore :LspStart/LspStop behaviour without arguments
+  * fix: support :LspRestart without arguments
+
+-------------------------------------------------------------------
 Mon May 26 15:43:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 2.2.0:

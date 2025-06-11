@@ -237,4 +237,27 @@
   * fix(configs): eliminate some usages of root_pattern (forwarded request 1280308 from rrahl0)</comment>
     <requestid>1280309</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c73ef6513b20c7497cfaf07d782b68c2</srcmd5>
+    <version>2.3.0</version>
+    <time>1749651838</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.3.0:
+  * fix(fish_lsp): apply author suggestions
+  * feat(ast_grep): support multiple workspaces
+  * Update cairo ls config
+  * [feat] add OpenTofu language server
+  * fix(emmet_ls, emmet_language_server): standardized configs across both emmet lsps
+  * feat: cspell language server
+  * feat(helm_ls,yamlls): support custom filetype for helm-ls
+  * fix: enable :LspLog command in Nvim 0.11.2
+  * fix(eslint): LspEslintFixAll not running sync
+  * Add Postcss for Django
+  * fix(clangd): set offset_encoding correctly
+  * feat(bicep): add bicep-params filetype for bicep lsp
+  * fix(helm_ls,yamlls): support custom filetype for helm-ls
+  * fix: restore :LspStart/LspStop behaviour without arguments
+  * fix: support :LspRestart without arguments (forwarded request 1284536 from rrahl0)</comment>
+    <requestid>1284537</requestid>
+  </revision>
 </revisionlist>
