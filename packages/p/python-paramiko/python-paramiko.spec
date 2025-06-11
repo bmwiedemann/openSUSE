@@ -35,11 +35,13 @@ BuildRequires:  %{python_module gssapi}
 BuildRequires:  %{python_module invocations}
 BuildRequires:  %{python_module invoke >= 2.0}
 BuildRequires:  %{python_module lexicon}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyasn1}
 BuildRequires:  %{python_module pytest-relaxed}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-gssapi
@@ -75,10 +77,10 @@ This package contains the documentation.
 find demos -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \; -exec chmod -x {} \;
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
