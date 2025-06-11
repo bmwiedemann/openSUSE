@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 10 15:19:14 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Thu Mar 28 05:55:04 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Use %{?sle15allpythons} to build with both python 3.6 and 3.11

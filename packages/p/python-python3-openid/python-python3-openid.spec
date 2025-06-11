@@ -1,7 +1,7 @@
 #
 # spec file for package python-python3-openid
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?sle15allpythons}
 # tests are partly broken
 %bcond_without     test
+%{?sle15allpythons}
 Name:           python-python3-openid
 Version:        3.2.0
 Release:        0
@@ -27,19 +27,21 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/necaris/python3-openid
 Source:         https://files.pythonhosted.org/packages/source/p/python3-openid/python3-openid-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-defusedxml
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module dbm}
+BuildRequires:  %{python_module defusedxml}
+BuildRequires:  %{python_module psycopg2}
 %if 0%{?suse_version} > 1500
 BuildRequires:  %{python_module mysqlclient}
 %endif
-BuildRequires:  %{python_module psycopg2}
 %endif
 %python_subpackages
 
@@ -52,20 +54,21 @@ Includes example code and support for a variety of storage back-ends.
 %setup -q -n python3-openid-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest openid.test.test_suite
+%pyunittest openid.test.test_suite
 %endif
 
 %files %{python_files}
 %license LICENSE
 %doc NEWS.md
-%{python_sitelib}/*
+%{python_sitelib}/openid
+%{python_sitelib}/python3[-_]openid-%{version}*-info
 
 %changelog
