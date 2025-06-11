@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun  6 13:33:05 UTC 2025 - Yifan Jiang <yfjiang@suse.com>
+
+- Update to version 48.1:
+  + Always tag JPEG-compressed PDF output as 8-bit RGB.
+  + Use "view-more-symbolic" for the "Scan Options" button icon.
+  + Add a test if the post-processing script path is empty
+    (boo#1244036).
+  + Fix the docker image name of the Arch Linux Distribution.
+  + Update Ubuntu documentation.
+  + metainfo: Fix wrong developer id.
+  + Correct issue tracker URL.
+  + Update minimum Meson version to 0.46.
+  + Use RDNN app ID.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar 19 07:44:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:

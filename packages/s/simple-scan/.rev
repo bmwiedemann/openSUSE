@@ -725,4 +725,23 @@
     <comment>GNOME 46 (forwarded request 1159256 from dimstar)</comment>
     <requestid>1159438</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>7229cc98cd900b3f8cfa41b78b760add</srcmd5>
+    <version>48.1</version>
+    <time>1749651586</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + Always tag JPEG-compressed PDF output as 8-bit RGB.
+  + Use &quot;view-more-symbolic&quot; for the &quot;Scan Options&quot; button icon.
+  + Add a test if the post-processing script path is empty
+    (boo#1244036).
+  + Fix the docker image name of the Arch Linux Distribution.
+  + Update Ubuntu documentation.
+  + metainfo: Fix wrong developer id.
+  + Correct issue tracker URL.
+  + Update minimum Meson version to 0.46.
+  + Use RDNN app ID.
+  + Updated translations. (forwarded request 1283704 from iznogood)</comment>
+    <requestid>1284680</requestid>
+  </revision>
 </revisionlist>
