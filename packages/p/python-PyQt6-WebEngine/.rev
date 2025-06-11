@@ -135,4 +135,14 @@
   https://www.riverbankcomputing.com/pipermail/pyqt/2024-December/046097.html (forwarded request 1236726 from bnavigator)</comment>
     <requestid>1236727</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>72a2c2f91105ac9895ec072f25f5a805</srcmd5>
+    <version>6.9.0</version>
+    <time>1749651678</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.9.0
+* Added support for Qt v6.9.
+</comment>
+    <requestid>1284338</requestid>
+  </revision>
 </revisionlist>

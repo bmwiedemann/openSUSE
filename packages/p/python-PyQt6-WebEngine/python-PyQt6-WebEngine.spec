@@ -21,13 +21,13 @@
 %define plainpython python
 %{?sle15_python_module_pythons}
 Name:           python-PyQt6-%{qtlib}
-Version:        6.8.0
+Version:        6.9.0
 Release:        0
 Summary:        Python bindings for the Qt WebEngine framework
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt3d
-Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-%{qtlib}/PyQt6_%{qtlib}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-%{qtlib}/pyqt6_webengine-%{version}.tar.gz
 BuildRequires:  %{python_module PyQt6-devel >= 6.2}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pyqt-builder >= 1.17 with %python-pyqt-builder < 2}
@@ -67,11 +67,10 @@ This package provides Qt6 API files for the Eric IDE and the SIP files
 used to generate the Python bindings for %{name}
 
 %prep
-%autosetup -p1 -n PyQt6_%{qtlib}-%{version}
+%autosetup -p1 -n pyqt6_webengine-%{version}
 
 %build
-# https://www.riverbankcomputing.com/pipermail/pyqt/2024-December/046097.html
-%pyqt_build -v -s %{quote:--concatenate 1}
+%pyqt_build
 
 %install
 %pyqt_install
@@ -90,7 +89,7 @@ $python -c 'from PyQt6 import QtWebEngineCore, QtWebEngineQuick, QtWebEngineWidg
 %{python_sitearch}/PyQt6/QtWebEngineCore.*
 %{python_sitearch}/PyQt6/QtWebEngineQuick.*
 %{python_sitearch}/PyQt6/QtWebEngineWidgets.*
-%{python_sitearch}/PyQt6_%{qtlib}-%{version}.dist-info/
+%{python_sitearch}/[Pp]y[Qq]t6_[Ww]eb[Ee]ngine-%{version}.dist-info/
 %exclude %{pyqt6_sipdir}
 
 %files %{python_files devel}
