@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  9 14:30:09 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Replace usage of %jobs for reproducible builds (boo#1237231)
+
+-------------------------------------------------------------------
 Thu Feb 17 01:06:04 CET 2011 - pascal.bleser@opensuse.org
 
 - initial version (0.01)

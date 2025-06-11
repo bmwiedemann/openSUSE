@@ -47,7 +47,7 @@ against it.
 
 %build
 %__perl Makefile.PL PREFIX="%{_prefix}"
-%__make %{?jobs:-j%{jobs}}
+%make_build
 
 %install
 %perl_make_install
