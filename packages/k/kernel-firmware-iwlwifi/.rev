@@ -58,4 +58,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * iwlwifi: update 7265D firmware</comment>
     <requestid>1283304</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>51d6a611e25dedf9e30fcf762f0111d7</srcmd5>
+    <version>20250609</version>
+    <time>1749651626</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250609 (git commit 0d92efb540f4):
+  * Revert &quot;iwlwifi: add Bz/gl FW for core96-76 release&quot;</comment>
+    <requestid>1284389</requestid>
+  </revision>
 </revisionlist>
