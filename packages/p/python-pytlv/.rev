@@ -7,4 +7,13 @@
     <comment>I want to maintain python-pytlv in Factory</comment>
     <requestid>630313</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5883a540a557e7932ea07cd70bccaa4e</srcmd5>
+    <version>0.71</version>
+    <time>1749651978</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1284660</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytlv
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,10 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytlv
 Version:        0.71
 Release:        0
@@ -24,7 +25,9 @@ License:        LGPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/timgabets/pytlv
 Source:         https://files.pythonhosted.org/packages/source/p/pytlv/pytlv-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -38,10 +41,10 @@ TLV (tag length value) data parser, especially useful for EMV tag parsing.
 sed -i -e '/^#!\//, 1d' pytlv/{TLV.py,tests.py}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -50,6 +53,7 @@ sed -i -e '/^#!\//, 1d' pytlv/{TLV.py,tests.py}
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/pytlv
+%{python_sitelib}/pytlv-%{version}.dist-info
 
 %changelog
