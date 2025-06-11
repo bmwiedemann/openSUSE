@@ -99,4 +99,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * mediatek: Add mt8196 VCP firmware</comment>
     <requestid>1283857</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9ab80b87e7e081d3ed21a978ab37753f</srcmd5>
+    <version>20250606</version>
+    <time>1749651588</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250606 (git commit 4f0106cf1943):
+  * mediatek MT7922: update bluetooth firmware to 20250523103438
+  * mediatek MT7921: update bluetooth firmware to 20250523111333
+  * linux-firmware: update firmware for MT7922 WiFi device
+  * linux-firmware: update firmware for MT7921 WiFi device</comment>
+    <requestid>1284702</requestid>
+  </revision>
 </revisionlist>
