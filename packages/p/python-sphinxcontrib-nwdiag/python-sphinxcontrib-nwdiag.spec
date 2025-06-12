@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-nwdiag
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
 Name:           python-sphinxcontrib-nwdiag
 Version:        2.0.0
 Release:        0
 Summary:        Sphinx "nwdiag" extension
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/blockdiag/sphinxcontrib-nwdiag
+URL:            https://github.com/blockdiag/sphinxcontrib-nwdiag
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-nwdiag/sphinxcontrib-nwdiag-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 0.6
 Requires:       python-blockdiag >= 1.5.0
 Requires:       python-nwdiag >= 1.0.3
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -45,15 +44,24 @@ diagrams. Network diagrams can be embedded with the "nwdiag",
 %setup -q -n sphinxcontrib-nwdiag-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc AUTHORS README.rst
 %license LICENSE
-%{python_sitelib}/*
+%dir %{python_sitelib}/sphinxcontrib
+%pycache_only %dir %{python_sitelib}/sphinxcontrib/__pycache__
+%{python_sitelib}/sphinxcontrib/nwdiag.py
+%pycache_only %{python_sitelib}/sphinxcontrib/__pycache__/nwdiag*
+%{python_sitelib}/sphinxcontrib/packetdiag.py
+%pycache_only %{python_sitelib}/sphinxcontrib/__pycache__/packetdiag*
+%{python_sitelib}/sphinxcontrib/rackdiag.py
+%pycache_only %{python_sitelib}/sphinxcontrib/__pycache__/rackdiag*
+%{python_sitelib}/sphinxcontrib[-_]nwdiag-%{version}*-info
+%{python_sitelib}/sphinxcontrib[-_]nwdiag-%{version}*-nspkg.pth
 
 %changelog

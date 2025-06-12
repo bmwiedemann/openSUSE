@@ -24,4 +24,12 @@
   * python 3.x only</comment>
     <requestid>780399</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a97bb761900dac74270f70f4d858924e</srcmd5>
+    <version>2.0.0</version>
+    <time>1749744696</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1285168</requestid>
+  </revision>
 </revisionlist>
