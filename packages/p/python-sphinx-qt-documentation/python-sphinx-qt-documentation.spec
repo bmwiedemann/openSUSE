@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-qt-documentation
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-sphinx-qt-documentation
 Version:        0.4.1
 Release:        0
@@ -24,8 +23,10 @@ Summary:        Sphinx Qt documentation
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://pypi.org/project/sphinx-qt-documentation/
-Source:         https://files.pythonhosted.org/packages/source/s/sphinx-qt-documentation/sphinx_qt_documentation-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/sphinx_qt_documentation/sphinx_qt_documentation-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx
@@ -39,10 +40,10 @@ This is plugin to add cross-link to qt documentation for python code created wit
 %setup -q -n sphinx_qt_documentation-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}

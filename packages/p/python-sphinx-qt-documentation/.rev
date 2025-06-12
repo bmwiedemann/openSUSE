@@ -7,4 +7,12 @@
     <comment>Add python-sphinx-qt-documentation needed to update python-pyqtgraph</comment>
     <requestid>1067273</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>30c405154c5ec095e6d19c9802cc928c</srcmd5>
+    <version>0.4.1</version>
+    <time>1749744689</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1285150</requestid>
+  </revision>
 </revisionlist>
