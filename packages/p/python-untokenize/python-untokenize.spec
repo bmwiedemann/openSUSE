@@ -1,7 +1,7 @@
 #
 # spec file for package python-untokenize
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-untokenize
 Version:        0.1.1
 Release:        0
 Summary:        Python module to transform tokens into original source code
 License:        MIT
-Group:          Development/Languages/Python
-Url:            https://github.com/myint/untokenize
+URL:            https://github.com/myint/untokenize
 Source:         https://files.pythonhosted.org/packages/source/u/untokenize/untokenize-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -40,10 +40,10 @@ tokenize.untokenize(), it preserves the original whitespace between tokens.
 %setup -q -n untokenize-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -52,6 +52,8 @@ tokenize.untokenize(), it preserves the original whitespace between tokens.
 %files %{python_files}
 %defattr(-,root,root,-)
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/untokenize.py
+%pycache_only %{python_sitelib}/__pycache__/untokenize.*.pyc
+%{python_sitelib}/untokenize-%{version}.dist-info
 
 %changelog
