@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 12 05:16:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.25.1:
+  * Update `cuelang.org/go` to v0.13.1
+  * build(deps): bump github/codeql-action in the ci group
+
+-------------------------------------------------------------------
 Thu May 29 05:20:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.25.0:
