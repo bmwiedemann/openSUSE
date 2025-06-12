@@ -57,4 +57,31 @@ and those that do technical work.</comment>
 </comment>
     <requestid>1283756</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dddb3bf3687be84ba012dffefa2d459e</srcmd5>
+    <version>2.4</version>
+    <time>1749736386</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4:
+  * Center italic and bold-italic glyph for |
+
+- Update to 2.3:
+  * Add unique italic and bold-italic glyph for |
+
+- Update to 2.2:
+  * Add unique italic and bold-italic glyph for ' and &quot;
+
+- Update to 2.1:
+  * Fix incorrect positioning of regular ^ glyph
+
+- Update to 2.0:
+  * Revise all dash glyphs for consistency
+  * Add unique italic and bold-italic + glyphs
+  * Add unique italic and bold-italic = glyphs
+  * Increase height of bold and bold-italic glyphs for ' and &quot;
+  * Slight adjustment to bold and bold-italic ^ glyph
+  * Slight adjustment to italic and bold-italic 4 glyph
+</comment>
+    <requestid>1284991</requestid>
+  </revision>
 </revisionlist>
