@@ -23,10 +23,11 @@ Version:        1.4.0
 Release:        0
 Summary:        ASCII transliterations of Unicode text
 License:        GPL-2.0-or-later
-Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/Unidecode
 Source:         https://files.pythonhosted.org/packages/source/U/Unidecode/Unidecode-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -76,10 +77,10 @@ Sean M. Burke <sburke@cpan.org>.
 %setup -q -n Unidecode-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/unidecode
@@ -97,7 +98,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %license LICENSE
 %doc ChangeLog README.rst
-%{python_sitelib}/Unidecode-%{version}*-info
+%{python_sitelib}/[Uu]nidecode-%{version}.dist-info
 %{python_sitelib}/unidecode
 %python_alternative %{_bindir}/unidecode
 
