@@ -785,4 +785,12 @@
     <comment></comment>
     <requestid>1277673</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>4c62c0b992ad342a3a7b5715aaa97143</srcmd5>
+    <version>3.3.7</version>
+    <time>1749739620</time>
+    <user>anag_factory</user>
+    <comment>Fix .changes file, osc service runall source_validator</comment>
+    <requestid>1285157</requestid>
+  </revision>
 </revisionlist>
