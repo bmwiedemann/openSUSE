@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 12 05:05:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.9:
+  * Add a linter for CUDA driver-specific libraries (#2033)
+
+-------------------------------------------------------------------
 Wed Jun 11 04:42:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.8:
