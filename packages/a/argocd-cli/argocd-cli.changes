@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 10 05:20:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.6:
+  No CLI-related changes in the changelog
+  * Dependencies
+    - chore: replace heptio-images with argocd-e2e-container
+      (cherry-pick #23040) (#23058) (@nitishfy)
+    - chore: upgrade Go from 1.24.1 to 1.24.4 (release-3.0)
+      (#23293) (@thevilledev)
+
+-------------------------------------------------------------------
 Sat May 31 07:16:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.5:
