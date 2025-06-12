@@ -1,7 +1,7 @@
 #
 # spec file for package python-ini2toml
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,8 +47,8 @@
 %bcond_without all
 %endif
 %bcond_with experimental
+%bcond_without libalternatives
 
-%define skip_python2 1
 Name:           python-ini2toml%{psuffix}
 Version:        0.15
 Release:        0
@@ -56,12 +56,14 @@ Summary:        Automatic conversion of .ini/cfg files to TOML equivalents
 License:        MPL-2.0
 URL:            https://github.com/abravalheri/ini2toml/
 Source:         https://files.pythonhosted.org/packages/source/i/ini2toml/ini2toml-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-packaging >= 20.7
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 %if %{with test}
 BuildRequires:  %{python_module packaging >= 20.7}
 BuildRequires:  %{python_module pytest}
@@ -146,10 +148,10 @@ sed -i 's/--cov ini2toml --cov-report term-missing//' setup.cfg
 
 %if !%{with test}
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/ini2toml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
@@ -180,11 +182,8 @@ donttest=(-k "not test_auto_formatting")
 %pytest "${ignoretests[@]}" "${donttest[@]}"
 %endif
 
-%post
-%python_install_alternative ini2toml
-
-%postun
-%python_uninstall_alternative ini2toml
+%pre
+%python_libalternatives_reset_alternative ini2toml
 
 %if !%{with test}
 %files %{python_files}
