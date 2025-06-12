@@ -33,7 +33,7 @@ Summary:        Configurable GPL-licensed FTP server software
 # We only accept updates for "STABLE" Versions
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Ftp/Servers
-Version:        1.3.8c
+Version:        1.3.8d
 Release:        0
 URL:            http://www.proftpd.org/
 Source0:        ftp://ftp.proftpd.org/distrib/source/%{name}-%{version}.tar.gz
@@ -60,8 +60,6 @@ Patch104:       %{name}-no_BuildDate.patch
 Patch105:       %{name}_env-script-interpreter.patch
 #openSUSE:Security_Features#Systemd_hardening_effort
 Patch106:       harden_proftpd.service.patch
-#PATCH-FIX-Upstream: Mitigation CVE-2024-57392 / GHSA-cf42-x7h8-3v3q #1866
-Patch200:       %{name}-null_pointer.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #BuildRequires:  gpg-offline
 BuildRequires:  cyrus-sasl-devel
