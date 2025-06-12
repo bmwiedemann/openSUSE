@@ -16,4 +16,12 @@
   built with GCC 15. [boo#1241943]</comment>
     <requestid>1283512</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>69c55e7a115178b4d7d2c10368ddb5b8</srcmd5>
+    <version>1.87.0</version>
+    <time>1749736052</time>
+    <user>anag_factory</user>
+    <comment>forward package</comment>
+    <requestid>1284764</requestid>
+  </revision>
 </revisionlist>
