@@ -46,4 +46,12 @@
   * Fixes concurrency issues with the cache invalidation mechanism.</comment>
     <requestid>1132083</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2a74a136cd1ff086719eb03a36167d96</srcmd5>
+    <version>0.18.0</version>
+    <time>1749736409</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284976</requestid>
+  </revision>
 </revisionlist>

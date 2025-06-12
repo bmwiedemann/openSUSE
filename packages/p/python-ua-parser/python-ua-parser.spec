@@ -1,7 +1,7 @@
 #
 # spec file for package python-ua-parser
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        Apache-2.0
 URL:            https://github.com/ua-parser/uap-python
 Source:         https://files.pythonhosted.org/packages/source/u/ua-parser/ua-parser-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -39,10 +41,10 @@ https://github.com/tobie/ua-parser)
 %setup -q -n ua-parser-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 %check
@@ -51,6 +53,6 @@ https://github.com/tobie/ua-parser)
 
 %files %{python_files}
 %{python_sitelib}/ua_parser
-%{python_sitelib}/ua_parser-%{version}*-info
+%{python_sitelib}/ua_parser-%{version}.dist-info
 
 %changelog
