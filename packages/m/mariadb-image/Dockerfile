@@ -17,7 +17,7 @@
 #!ExclusiveArch: aarch64 ppc64le s390x x86_64
 #!BuildTag: opensuse/mariadb:%%mariadb_version%%-%RELEASE%
 #!BuildTag: opensuse/mariadb:%%mariadb_version%%
-#!BuildTag: opensuse/mariadb:11.7
+#!BuildTag: opensuse/mariadb:11.8
 #!BuildTag: opensuse/mariadb:latest
 
 FROM opensuse/bci/bci-micro:latest AS target
@@ -29,7 +29,7 @@ RUN set -euo pipefail; \
 # sanity check that the version from the tag is equal to the version of mariadb that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' mariadb | \
-    cut -d '.' -f -2)" = "11.7" ]
+    cut -d '.' -f -2)" = "11.8" ]
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 FROM opensuse/bci/bci-micro:latest
