@@ -17,14 +17,13 @@
 
 
 Name:           lychee
-Version:        0.18.1~0
+Version:        0.19.0~0
 Release:        0
 Summary:        Fast, async, stream-based link checker written in Rust
 License:        Apache-2.0 OR MIT
 URL:            https://lychee.cli.rs
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Patch0:         reproducible.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  libopenssl-devel
 ExclusiveArch:  %{rust_tier1_arches}

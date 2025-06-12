@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Wed Jun 11 14:22:53 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Drop reproducible.patch since it got merged upstream in string_cache_codegen v0.5.4
+- Update to version 0.19.0~0:
+  * chore: release v0.19.0
+  * Keep supporting 'latest' in CI Dockerfiles
+  * Follow renaming: latest -> nightly
+  * Follow renaming: latest -> nightly
+  * Add cli test
+  * Add explanation
+  * Fix grammar
+  * Update docs
+  * Extract DEFAULT_ACCEPTED_STATUS_CODES & apply clippy's suggestions
+  * Use StatusCodeSelector default as default accepted StatusCodes
+  * Tiny improvements
+  * Remove dbg macro
+  * Pass accepted values by reference
+  * Make accepted codes non-optional
+  * Handle rejected TOO_MANY_REQUESTS
+  * Update Status::code
+  * Update tests
+  * Remove duplicated information from output
+  * Update test
+  * Change usage of ErrorKind::NetworkRequest, as it no longer represents rejected status codes
+  * Update test
+  * Update doc comment
+  * Make error message more user-friendly
+  * Remove hardcoded rule for handling erroneous status codes differently
+  * Move archive functionality to library (#1720)
+  * Bump the dependencies group across 1 directory with 3 updates (#1714)
+  * feat: respect the `disabled` property for stylesheet links (#1716)
+  * feat: raise error when the default config file is invalid (#1715)
+  * Upgrade to 2024 edition (#1711)
+  * fix: only check the fragment when it's a file (#1713)
+  * fix: ignore gitlab table of content in wikilinks (#1710)
+  * Fix `test_exclude_example_domains` (#1712)
+  * Add support for custom headers in input processing (#1561)
+  * chore: update CI to install and verify cargo-msrv (#1706)
+  * Fix lints (#1705)
+  * chore: verify the MSRV in CI lint (#1696)
+  * feat: detect website fragments (#1675)
+  * Update documentation
+  * Make Makefile more portable (make: /bin/bash: No such file or directory)
+  * Remove flag
+  * detect wikilinks, prevent plaintext extraction from links #1650 (#1679)
+  * Bump the dependencies group with 2 updates
+  * Add possible values for minimum TLS version in help message (#1693)
+  * Add TLS version option (#1655)
+  * Bump the dependencies group across 1 directory with 11 updates (#1692)
+  * Specify MSRV (#1676)
+  * Fix outdated link
+  * Remove once_cell as direct dependency
+  * Make clippy happy (#1681)
+  * Bump the dependencies group with 3 updates (#1670)
+  * Fix accept/exclude range syntax and docs (#1668)
+  * Add FreeBSD-Ask to users (#1662)
+  * Bump the dependencies group with 4 updates (#1664)
+  * Allow header values that contain equal signs (#1647)
+  * Bump the dependencies group with 11 updates (#1656)
+  * Bump the dependencies group across 1 directory with 14 updates (#1653)
+  * Add support for custom file extensions in link checking. (#1559)
+  * Update Docker Workflow To Support Version Tags (#1631)
+  * Format Markdown URLs with `<>` instead of `[]()` (#1638)
+  * Bump the dependencies group across 1 directory with 21 updates (#1643)
+  * test: add tests for URL extraction ending with a period (#1641)
+  * Release the macOS binaries also as `.tar.gz` (#1642)
+  * renamed `base` to `base_url` (fixes #1607) (#1629)
+  * Sort compact/detailed/markdown error output by file path (#1622)
+
+-------------------------------------------------------------------
 Wed Feb 19 10:24:27 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to avoid randomness from HashSet (boo#1062303)
