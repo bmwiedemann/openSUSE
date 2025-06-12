@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-unixsocket
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,9 @@ Patch0:         urllib3-2.patch
 # PATCH-FIX-UPSTREAM https://github.com/msabramo/requests-unixsocket/pull/72 adapters: fix for requests 2.32.2+
 Patch1:         requests232.patch
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 1.1
@@ -52,10 +54,10 @@ HTTP via a UNIX domain socket.
 sed -i -e '/addopts/d' pytest.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
