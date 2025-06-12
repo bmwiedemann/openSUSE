@@ -1,7 +1,7 @@
 #
 # spec file for package python-sadisplay
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without libalternatives
 Name:           python-sadisplay
 Version:        0.4.9
 Release:        0
@@ -25,12 +25,14 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://bitbucket.org/estin/sadisplay
 Source:         https://files.pythonhosted.org/packages/source/s/sadisplay/sadisplay-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-SQLAlchemy >= 0.5
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -41,23 +43,21 @@ SqlAlchemy schema display script
 %setup -q -n sadisplay-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/sadisplay
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative sadisplay
-
-%postun
-%python_uninstall_alternative sadisplay
+%pre
+%python_libalternatives_reset_alternative sadisplay
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/sadisplay
-%{python_sitelib}/*
+%{python_sitelib}/sadisplay
+%{python_sitelib}/sadisplay-%{version}*-info
 
 %changelog
