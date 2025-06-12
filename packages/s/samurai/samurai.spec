@@ -1,7 +1,7 @@
 #
 # spec file for package samurai
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,15 @@
 #
 
 
+%global git_ref  737f702fed670acb25e5e70b4b802690df7a4a8b
+
 Name:           samurai
-Version:        1.2+g24
+Version:        1.2+git41.g737f702
 Release:        0
 Summary:        C99 implementation of the ninja build tool
 License:        Apache-2.0
-Group:          Development/Tools/Building
 URL:            https://github.com/michaelforney/samurai
-Source0:        %name-%version.tar.xz
+Source0:        %{URL}/archive/%{git_ref}/%{name}-%{version}.tar.gz
 BuildRequires:  c_compiler
 BuildRequires:  make
 
@@ -36,18 +37,21 @@ except for MSVC dependency handling. It uses the same format for the
 and 4, respectively.
 
 %prep
-%autosetup
+%autosetup -n %{name}-%{git_ref} -p1
 
 %build
+export CC=cc
+%set_build_flags
+
 make clean
-%make_build CC=cc CFLAGS="%optflags" %{?_smp_mflags}
+%make_build
 
 %install
 %make_install PREFIX="%_prefix"
 
 %files
+%license LICENSE
 %_bindir/*
 %_mandir/man1/*.1*
-%license LICENSE
 
 %changelog

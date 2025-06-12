@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  9 23:41:32 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to 1.2+git41.737f702
+  * Implement load average option
+  * Include exit status in job failure message
+- Use %set_build_flags and enhance build script 
+
+-------------------------------------------------------------------
 Thu Feb 17 22:00:50 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Remove build artifacts
