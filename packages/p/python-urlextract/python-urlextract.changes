@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 12 05:01:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Mon Mar 25 09:00:45 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Avoid modification of build results by tests
