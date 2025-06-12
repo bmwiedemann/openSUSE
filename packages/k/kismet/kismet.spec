@@ -1,7 +1,7 @@
 #
 # spec file for package kismet
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,9 @@
 %bcond_with ubertooth
 %endif
 
-%define realver 2023-07-R1
+%define realver 2023-07-R2
 Name:           kismet
-Version:        2023_07_R1
+Version:        2023_07_R2
 Release:        0
 Summary:        An 802.11 Wireless Network Sniffer
 License:        GPL-2.0-or-later
@@ -34,7 +34,13 @@ Source2:        %{name}.sysusers
 Patch0:         kismet-fix-build.patch
 Patch1:         harden_kismet.service.patch
 BuildRequires:  fdupes
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libcap-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  libsensors4-devel
@@ -49,9 +55,10 @@ BuildRequires:  pkgconfig(libnl-3.0) >= 3.0
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libprotobuf-c)
+BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libwebsockets) >= 3.2.0
-BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(protobuf) >= 25.0.0
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
@@ -331,6 +338,10 @@ chmod a-x http_data/css/*.css
 %patch -P 1 -p1
 
 %build
+%if 0%{?suse_version} <= 1600
+export CC=gcc-12
+export CXX=g++-12
+%endif
 %limit_build -m 2500
 %configure \
     --sysconfdir=%{_sysconfdir}/kismet \

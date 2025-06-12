@@ -628,4 +628,12 @@ better packaging for distros, and various other quirks.
     <comment>drop unneeded build requirement on pcre (forwarded request 1254487 from AndreasStieger)</comment>
     <requestid>1254600</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>58475a6bce9436aafb3ccebff76094e2</srcmd5>
+    <version>2023_07_R2</version>
+    <time>1749744700</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1285161</requestid>
+  </revision>
 </revisionlist>
