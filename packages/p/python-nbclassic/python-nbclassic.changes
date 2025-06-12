@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jun 11 10:51:42 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.3.1 (CVE-2025-5889, bsc#1244343):
+  * Fix Hatch build fails in src directory #340 (@danyeaw)
+  * Fix mo translations missing from wheels #339 (@danyeaw)
+  * Support offline source distribution builds #337 (@danyeaw)
+  * Add CI workflow dispatch and timeouts #343 (@danyeaw)
+  * Reformat pyproject.toml #342 (@danyeaw)
+- 1.3.0:
+  * Improve build performance through improving artifact patterns #317 (@danyeaw)
+  * Save as improvements #267 (@andrewfulton9)
+  * Upload release artifacts on push #332 (@RRosio)
+  * Add Release workflows #331 (@RRosio)
+  * Fix set-output deprecation warnings #330 (@RRosio)
+  * Update JavaScript dependencies #329 (@danyeaw)
+  * Drop support for Python 3.8, Test with 3.12 and 3.13 #327 (@danyeaw)
+  * Automatically cancel concurrent workflows #326 (@danyeaw)
+  * Initial migration from Bower to Yarn #323 (@danyeaw)
+  * Fix CI Check Release job with deprecated action use #322 (@RRosio)
+  * Update JQuery, Bootstrap, Underscore, Backbone, and requirejs-text #321 (@danyeaw)
+  * Restore usage of flake8 and add to CI #316 (@danyeaw)
+  * Migrate from setup.py to pyproject.toml #315 (@danyeaw)
+  * Update macos action runner image to macos-13 #311 (@RRosio)
+  * Remove use of deprecated distutils #310 (@danyeaw)
+
+-------------------------------------------------------------------
 Wed Mar 12 13:13:13 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.2.0

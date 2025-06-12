@@ -27,9 +27,9 @@
 # this conditional is used in the python-rpm-macros, but `osc build --without libalternatives` won't work
 %bcond_without libalternatives
 # 1.1.0 gets abbreviated by pythondistdeps
-%define shortversion 1.2
+%define shortversion 1.3.1
 Name:           python-nbclassic%{psuffix}
-Version:        1.2.0
+Version:        1.3.1
 Release:        0
 Summary:        Jupyter Notebook as a Jupyter Server Extension
 License:        BSD-3-Clause
@@ -41,17 +41,17 @@ Source1:        node_modules.tar.xz
 Source2:        create_node_modules.sh
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module base >= 3.10}
-BuildRequires:  %{python_module jupyter-packaging >= 0.9}
+BuildRequires:  %{python_module hatch-jupyter-builder}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module jupyter-server >= 1.17}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jupyter-rpm-macros
 BuildRequires:  nodejs-common
-BuildRequires:  npm-default
 BuildRequires:  python-rpm-macros >= 20210929
 BuildRequires:  update-desktop-files
+BuildRequires:  yarn
 Requires:       jupyter-nbclassic = %{version}
 Requires:       python-ipykernel
 Requires:       python-ipython_genutils
@@ -100,11 +100,11 @@ This package contains the jupyterlab server configuration and desktop files
 
 %prep
 %autosetup -p1 -n nbclassic-%{version} -a1
-# wrong version info
-sed s/1.3.0.dev0/1.2.0/ -i nbclassic/_version.py
-python3 setup.py js css
+sed -i "s/npm run yarn && //" package.json
+ln -s $PWD/node_modules/@bower_components/ nbclassic/static/components
 
 %build
+export HATCH_JUPYTER_BUILDER_SKIP_NPM=1
 %pyproject_wheel
 
 %if !%{with test}
