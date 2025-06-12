@@ -24,4 +24,12 @@ MIT replacement for the GPL strict-rfc3339</comment>
     <comment></comment>
     <requestid>1090916</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>55ec45423a2a166f1248c3d5ca54b262</srcmd5>
+    <version>0.1.4</version>
+    <time>1749736058</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1284852</requestid>
+  </revision>
 </revisionlist>

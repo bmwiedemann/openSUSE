@@ -1,7 +1,7 @@
 #
 # spec file for package python-rfc3339-validator
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ URL:            https://github.com/naimetti/rfc3339-validator
 Source:         https://files.pythonhosted.org/packages/source/r/rfc3339_validator/rfc3339_validator-%{version}.tar.gz
 # https://github.com/naimetti/rfc3339-validator/issues/11
 Patch0:         python-rfc3339-validator-no-six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -44,10 +46,10 @@ A pure python RFC3339 validator
 %autosetup -p1 -n rfc3339_validator-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,7 +57,7 @@ A pure python RFC3339 validator
 
 %files %{python_files}
 %{python_sitelib}/rfc3339_validator.py
-%pycache_only %{python_sitelib}/__pycache__/
-%{python_sitelib}/rfc3339_validator-*.egg-info/
+%pycache_only %{python_sitelib}/__pycache__/rfc3339_validator*
+%{python_sitelib}/rfc3339_validator-%{version}*-info/
 
 %changelog
