@@ -1,7 +1,7 @@
 #
 # spec file for package python-ujson
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,11 @@ License:        BSD-3-Clause
 URL:            https://github.com/esnme/ultrajson
 Source:         https://files.pythonhosted.org/packages/source/u/ujson/ujson-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -40,18 +42,17 @@ An ultrafast JSON encoder and decoder written in pure C with
 bindings for Python 2.7 and 3.8+
 
 %prep
-%setup -q -n ujson-%{version}
-%autopatch -p1
+%autosetup -p1 -n ujson-%{version}
 
 %build
 rm -r deps
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export UJSON_BUILD_DC_INCLUDES='%{_includedir}/double-conversion'
 export UJSON_BUILD_DC_LIBS='-ldouble-conversion'
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -59,7 +60,7 @@ export UJSON_BUILD_DC_LIBS='-ldouble-conversion'
 
 %files %{python_files}
 %doc README.md
-%{python_sitearch}/ujson.*
-%{python_sitearch}/ujson-%{version}*-info
+%{python_sitearch}/ujson.cpython-*-linux-gnu.so
+%{python_sitearch}/ujson-%{version}.dist-info
 
 %changelog

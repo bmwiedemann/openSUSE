@@ -233,4 +233,12 @@
   * Add support for Python 3.13 (#628) @hugovk</comment>
     <requestid>1180736</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>858ab8f782ef9c74c7d90b08de9a1878</srcmd5>
+    <version>5.10.0</version>
+    <time>1749736413</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284979</requestid>
+  </revision>
 </revisionlist>
