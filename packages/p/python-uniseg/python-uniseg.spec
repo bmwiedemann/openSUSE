@@ -1,7 +1,7 @@
 #
 # spec file for package python-uniseg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,9 @@ Summary:        Python module for determining Unicode text segmentations
 License:        MIT
 URL:            https://bitbucket.org/emptypage/uniseg-py
 Source:         https://files.pythonhosted.org/packages/source/u/uniseg/uniseg-%{version}.zip
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,10 +42,10 @@ A pure Python module to determine Unicode text segmentations.
 sed -i -e '/^#!\//, 1d' uniseg/*test.py uniseg/samples/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -Rv %{buildroot}%{$python_sitelib}/uniseg/samples
 %python_expand rm -Rv %{buildroot}%{$python_sitelib}/uniseg/docs
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/uniseg/__pycache__
@@ -55,9 +57,7 @@ sed -i -e '/^#!\//, 1d' uniseg/*test.py uniseg/samples/*.py
 %license LICENSE
 %doc README.rst
 %doc uniseg/docs/uniseg.ja.html
-%{python_sitelib}/uniseg-*
-%{python_sitelib}/uniseg/*.py
-%dir %{python_sitelib}/uniseg
-%pycache_only %{python_sitelib}/uniseg/__pycache__
+%{python_sitelib}/uniseg
+%{python_sitelib}/uniseg-%{version}.dist-info
 
 %changelog

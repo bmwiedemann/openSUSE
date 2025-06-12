@@ -57,4 +57,12 @@
 - Drop uniseg-dbpath</comment>
     <requestid>1068328</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0d1ee82a81548effa112c0870e090bcc</srcmd5>
+    <version>0.7.2</version>
+    <time>1749736417</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284983</requestid>
+  </revision>
 </revisionlist>
