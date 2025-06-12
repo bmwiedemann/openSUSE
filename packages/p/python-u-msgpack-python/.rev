@@ -114,4 +114,12 @@
   * Improve length comparisons and instance checks for minor</comment>
     <requestid>1135352</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>5794395d8cd1605a10ea7fa0e0cd5830</srcmd5>
+    <version>2.8.0</version>
+    <time>1749736321</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284980</requestid>
+  </revision>
 </revisionlist>
