@@ -2613,4 +2613,17 @@ let build start it or we will get libvirt errors.
     <comment>Update to latest version (forwarded request 1280482 from mczernek)</comment>
     <requestid>1281960</requestid>
   </revision>
+  <revision rev="175" vrev="39">
+    <srcmd5>6682257be4301298d5c8611cba86b818</srcmd5>
+    <version>3006.0</version>
+    <time>1749736052</time>
+    <user>anag_factory</user>
+    <comment>- Add subsystem filter to udev.exportdb (bsc#1236621)
+- tornado.httputil: raise errors instead of logging in
+  multipart/form-data parsing (CVE-2025-47287, bsc#1243268)
+- Added:
+  * add-subsystem-filter-to-udev.exportdb-bsc-1236621-71.patch
+  * fix-of-cve-2025-47287-bsc-1243268-718.patch</comment>
+    <requestid>1284818</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 11 11:03:32 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Add subsystem filter to udev.exportdb (bsc#1236621)
+- tornado.httputil: raise errors instead of logging in
+  multipart/form-data parsing (CVE-2025-47287, bsc#1243268)
+
+- Added:
+  * add-subsystem-filter-to-udev.exportdb-bsc-1236621-71.patch
+  * fix-of-cve-2025-47287-bsc-1243268-718.patch
+
+-------------------------------------------------------------------
 Tue May 27 08:26:18 UTC 2025 - Marek Czernek <marek.czernek@suse.com>
 
 - Fix Ubuntu 24.04 edge-case test failures
