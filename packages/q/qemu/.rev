@@ -4444,4 +4444,39 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1282885</requestid>
   </revision>
+  <revision rev="293" vrev="1">
+    <srcmd5>fd96c54b56080c246e6d724f020f17a3</srcmd5>
+    <version>10.0.2</version>
+    <time>1749736066</time>
+    <user>anag_factory</user>
+    <comment>- Update to stable release 10.0.2:
+  Full list of backports here:
+   https://lore.kernel.org/qemu-devel/1748499690.323471.13081.nullmailer@localhost/
+    
+  A selection of them is reported here too:
+   Revert &quot;Drop support for Python 3.8&quot;
+   Update version for 10.0.1 release
+   Drop support for Python 3.8
+   target/hppa: Fix FPE exceptions
+   linux-user/hppa: Send proper si_code on SIGFPE exception
+   target/hppa: Copy instruction code into fr1 on FPU assist fault
+   migration: Allow caps to be set when preempt or multifd cap enabled
+   migration/multifd: Don't send device state packets with zerocopy flag
+   qapi/misc-target: Fix the doc to distinguish query-sgx and query-sgx-capabilities
+   hw/pci-host: Remove unused pci_host_data_be_ops
+   hw/pci-host/gt64120: Fix endianness handling
+   i386/hvf: Make CPUID_HT supported
+   i386/tcg: Make CPUID_HT and CPUID_EXT3_CMP_LEG supported
+   target/riscv/kvm: do not read unavailable CSRs
+   target/riscv/kvm: add kvm_csr_cfgs[]
+   target/riscv/kvm: turn kvm_riscv_reg_id_ulong() into a macro
+   target/riscv/kvm: turn u32/u64 reg functions into macros
+   target/riscv/kvm: fix leak in kvm_riscv_init_multiext_cfg()
+   target/riscv/kvm: minor fixes/tweaks
+   target/riscv: Fix vslidedown with rvv_ta_all_1s
+   target/riscv: Fix the rvv reserved encoding of unmasked instructions
+   ...
+</comment>
+    <requestid>1284889</requestid>
+  </revision>
 </revisionlist>
