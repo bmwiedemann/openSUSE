@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 05 05:52:31 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.096:
+  * Reduce stale-while-revalidate time (#596)
+  * Add more exceptions to folder mirrorlist (#597)
+  * Fix double repodata path in mirrorlist folder (#594)
+  * Improve performance of SQL query for folder mirrorlist (#594)
+
+-------------------------------------------------------------------
+Tue Jun 03 08:27:17 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.095:
+  * Show only mirrors having recent files in folder mirrorlist (#593)
+  * fix sql not showing mirrorlist for some folders (#591)
+
+-------------------------------------------------------------------
 Fri May 16 09:24:29 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.094:
