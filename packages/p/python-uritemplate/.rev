@@ -77,4 +77,12 @@
 - Use sle15_python_module_pythons</comment>
     <requestid>1095244</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>07637440ce46fe93e15b203cec443259</srcmd5>
+    <version>4.1.1</version>
+    <time>1749736419</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284985</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-uritemplate
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/uritemplate
 Source:         https://files.pythonhosted.org/packages/source/u/uritemplate/uritemplate-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -40,10 +42,10 @@ templates up to and including Level 4 in that specification
 %autosetup -p1 -n uritemplate-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with tests}
@@ -57,6 +59,6 @@ $python tests/test_uritemplate.py
 %license LICENSE LICENSE.*
 %doc AUTHORS.rst HISTORY.rst README.rst
 %{python_sitelib}/uritemplate
-%{python_sitelib}/uritemplate-%{version}*-info
+%{python_sitelib}/uritemplate-%{version}.dist-info
 
 %changelog
