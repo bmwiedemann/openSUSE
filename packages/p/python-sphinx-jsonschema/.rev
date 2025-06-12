@@ -39,4 +39,12 @@
   * added the ``:encoding:`` directive option.</comment>
     <requestid>1138556</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1a891a0717d08bdaaac113af827da6e2</srcmd5>
+    <version>1.19.1</version>
+    <time>1749744688</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1285144</requestid>
+  </revision>
 </revisionlist>
