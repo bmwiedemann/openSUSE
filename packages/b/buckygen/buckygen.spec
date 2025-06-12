@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            http://caagt.ugent.be/buckygen/
 Source:         http://caagt.ugent.be/buckygen/%name-%version.zip
+# fix build with gcc15
+Patch0:          buckygen-gcc15.patch
 BuildRequires:  unzip
 
 %description

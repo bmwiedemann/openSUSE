@@ -1,0 +1,15 @@
+diff -upr buckygen-1.1.orig/buckygen.c buckygen-1.1/buckygen.c
+--- buckygen-1.1.orig/buckygen.c	2025-06-09 09:59:49.330931863 +0000
++++ buckygen-1.1/buckygen.c	2025-06-09 10:00:22.007632022 +0000
+@@ -274,8 +274,8 @@ int comparenodes(unsigned char *canong,
+ #define PRESENT(p) old_splaynode(p, is_new_node)
+ 
+ 
+-void new_splaynode();
+-void old_splaynode();
++void new_splaynode(SPLAYNODE *el, unsigned char *canong, int codelength, int type, int *is_new_node);
++void old_splaynode(SPLAYNODE *el, int *is_new_node);
+ 
+ #include "splay.c"
+ 
+
