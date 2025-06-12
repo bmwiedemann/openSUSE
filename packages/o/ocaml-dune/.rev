@@ -495,4 +495,13 @@ I will submit the packages one by one once this is accepted.</comment>
   see included CHANGES.md file for details</comment>
     <requestid>1279985</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>c168ecda9bcedbd30a384ffc592a287b</srcmd5>
+    <version>3.19.1</version>
+    <time>1749736406</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.19.1
+  see included CHANGES.md file for details</comment>
+    <requestid>1284990</requestid>
+  </revision>
 </revisionlist>
