@@ -43,4 +43,12 @@
   * Fixes plistlib issues with Python 3.9</comment>
     <requestid>1225385</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b9ba27cfcde4cc20862cd7b3f5507667</srcmd5>
+    <version>0.6.2</version>
+    <time>1749736410</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284977</requestid>
+  </revision>
 </revisionlist>

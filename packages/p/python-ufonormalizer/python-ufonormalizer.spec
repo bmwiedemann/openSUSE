@@ -1,7 +1,7 @@
 #
 # spec file for package python-ufonormalizer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-ufonormalizer
 Version:        0.6.2
@@ -25,9 +24,11 @@ Summary:        Script to normalize the XML and other data inside of a UFO
 License:        BSD-3-Clause
 URL:            https://github.com/unified-font-object/ufoNormalizer
 Source:         https://files.pythonhosted.org/packages/source/u/ufonormalizer/ufonormalizer-%{version}.zip
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -45,10 +46,10 @@ Script to normalize the XML and other data inside of a UFO.
 sed -i -e '1{\,^#! %{_bindir}/env python,d}' src/ufonormalizer/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/ufonormalizer
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -66,6 +67,6 @@ sed -i -e '1{\,^#! %{_bindir}/env python,d}' src/ufonormalizer/__init__.py
 %license LICENSE.txt
 %python_alternative %{_bindir}/ufonormalizer
 %{python_sitelib}/ufonormalizer
-%{python_sitelib}/ufonormalizer-%{version}*-info
+%{python_sitelib}/ufonormalizer-%{version}.dist-info
 
 %changelog
