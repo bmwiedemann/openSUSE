@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 12 06:50:01 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- Adapt path to python_sitearch so file to fix ARM build.
+
+-------------------------------------------------------------------
+Tue Jun 10 02:42:32 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Specify files/dirs in python_sitearch directly 
+
+-------------------------------------------------------------------
 Tue Oct 26 03:31:21 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add remove-nose.patch:
@@ -10,7 +21,7 @@ Tue Jun  1 11:08:33 UTC 2021 - pgajdos@suse.com
 - %check: use %pytest_arch rpm macro
 
 -------------------------------------------------------------------
-Wed Oct  7 19:44:11 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Oct  7 19:44:11 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.7.3:
  * Improve the build system:
@@ -23,7 +34,7 @@ Wed May 20 07:26:46 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 - %python3_only -> %python_alternative
 
 -------------------------------------------------------------------
-Sat Mar 16 12:55:38 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Mar 16 12:55:38 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.7.2:
  * Document that multi-threaded code is not supported.
@@ -31,7 +42,7 @@ Sat Mar 16 12:55:38 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 - update Use-setuptools-and-use-test-command-for-setup.patch
 
 -------------------------------------------------------------------
-Sat Jul  7 08:50:22 UTC 2018 - sebix+novell.com@sebix.at
+Sat Jul  7 08:50:22 UTC 2018 - sebix@sebix.at
 
 - update Use-setuptools-and-use-test-command-for-setup.patch
 - update to version 0.7.1:
@@ -44,7 +55,7 @@ Sat Jul  7 08:50:22 UTC 2018 - sebix+novell.com@sebix.at
     This might fix build failures with future versions of Cython.
 
 -------------------------------------------------------------------
-Sun May  6 08:36:28 UTC 2018 - sebix+novell.com@sebix.at
+Sun May  6 08:36:28 UTC 2018 - sebix@sebix.at
 
 - update to version 0.7:
  * Fix stability issues in persistent mode.
@@ -65,7 +76,7 @@ Sun May  6 08:36:28 UTC 2018 - sebix+novell.com@sebix.at
  * Add the PYTHON_AFL_TSTL environment variable.
 
 -------------------------------------------------------------------
-Fri Sep 22 19:38:17 UTC 2017 - sebix+novell.com@sebix.at
+Fri Sep 22 19:38:17 UTC 2017 - sebix@sebix.at
 
 - initial package for version 0.6.1
 - add Use-setuptools-and-use-test-command-for-setup.patch to allow installation and test with setuptools
