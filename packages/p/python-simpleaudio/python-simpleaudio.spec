@@ -1,7 +1,7 @@
 #
 # spec file for package python-simpleaudio
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,43 +16,43 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-simpleaudio
 Version:        1.0.4
 Release:        0
 Summary:        Asynchronous audio playback for Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/hamiltron/py-simple-audio
+URL:            https://github.com/hamiltron/py-simple-audio
 Source:         https://files.pythonhosted.org/packages/source/s/simpleaudio/simpleaudio-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(alsa)
-
 %python_subpackages
 
 %description
 The simplaudio package provides audio playback capability for Python 3
 on OSX, Windows, and Linux.
 
-
 %prep
 %setup -q -n simpleaudio-%{version}
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitearch}/*
+%{python_sitearch}/simpleaudio
+%{python_sitearch}/simpleaudio-%{version}*-info
 
 %changelog
