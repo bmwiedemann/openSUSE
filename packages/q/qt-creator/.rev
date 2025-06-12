@@ -388,4 +388,12 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
     <comment>Update to 16.0.2</comment>
     <requestid>1277453</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>62e40b1151cbc935fd0b24edc10e7010</srcmd5>
+    <version>16.0.2</version>
+    <time>1749736432</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1285039</requestid>
+  </revision>
 </revisionlist>

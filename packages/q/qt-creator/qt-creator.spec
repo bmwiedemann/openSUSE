@@ -60,6 +60,7 @@ URL:            https://www.qt.io/product/development-tools
 Source:         https://download.qt.io/official_releases/qtcreator/%{short_version}/%{real_version}%{tar_suffix}/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source1:        qt-creator-rpmlintrc
 # Patches 0-10 are upstream changes
+Patch0:         0001-Debugger-Pass-unsigned-int-instead-of-size_t-to-ioct.patch
 # Patches 11-20 are openSUSE changes
 Patch11:        fix-application-output.patch
 Patch12:        0001-Disable-some-plugins.patch
@@ -130,9 +131,9 @@ Recommends:     qt6-base-devel
 Recommends:     qt6-base-docs-qch
 # Shows examples when starting qt-creator (related: boo#1218403)
 Recommends:     qt6-base-examples
-Recommends:     qt6-declarative-examples
 Recommends:     qt6-declarative-devel
 Recommends:     qt6-declarative-docs-qch
+Recommends:     qt6-declarative-examples
 Recommends:     qt6-translations
 # Generic name recommended by the KDE pattern
 Provides:       qt-creator = %{version}

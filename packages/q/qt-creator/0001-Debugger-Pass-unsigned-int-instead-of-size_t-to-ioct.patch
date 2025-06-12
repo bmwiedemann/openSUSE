@@ -1,0 +1,43 @@
+From: hjk <hjk@qt.io>
+Date: Tue, 10 Jun 2025 09:36:04 +0200
+Subject: Debugger: Pass unsigned int * instead of size_t * to ioctl(...,
+ FIONREAD, ...)
+References: https://bugreports.qt.io/browse/QTCREATORBUG-33049
+Git-repo: https://github.com/qt-creator/qt-creator#17.0
+Git-commit: 1de4e638b9447827e04b91395da6f421eb2a99df
+
+While the documention for FIONREAD e.g. on [1] mentions a (signed) int *,
+the actual implementation [2] on Linux uses an unsigned int *.
+
+[1] https://man7.org/linux/man-pages/man2/FIONREAD.2const.html
+[2] https://github.com/torvalds/linux/blob/f09079bd04a924c72d555cd97942d5f8d7eca98c/drivers/tty/n_tty.c#L2507
+
+Done-by: Jiri Slaby
+Fixes: QTCREATORBUG-33049
+Change-Id: I020242ff43c5b0c6b206edb7d9cd227680456769
+Reviewed-by: Christian Stenger <christian.stenger@qt.io>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ src/plugins/debugger/outputcollector.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/plugins/debugger/outputcollector.cpp b/src/plugins/debugger/outputcollector.cpp
+index c8b363da72a9..129ae2f57ea0 100644
+--- a/src/plugins/debugger/outputcollector.cpp
++++ b/src/plugins/debugger/outputcollector.cpp
+@@ -138,9 +138,11 @@ void OutputCollector::bytesAvailable()
+     if (m_socket)
+         emit byteDelivery(m_socket->readAll());
+ #else
+-    size_t nbytes = 0;
++    unsigned int nbytes = 0;
+     if (::ioctl(m_serverFd, FIONREAD, (char *) &nbytes) < 0)
+         return;
++    if (!nbytes)
++        return;
+     QVarLengthArray<char, 8192> buff(nbytes);
+     if (::read(m_serverFd, buff.data(), nbytes) != (int)nbytes)
+         return;
+-- 
+2.49.0
+

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 12 06:48:19 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- add 0001-Debugger-Pass-unsigned-int-instead-of-size_t-to-ioct.patch
+  (QTCREATORBUG-33049)
+
+-------------------------------------------------------------------
 Wed May 14 12:21:27 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 16.0.2
