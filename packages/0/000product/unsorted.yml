@@ -16391,6 +16391,8 @@ unsorted:
   - libtorrent25 
   - libtoxcore2 
   - libtpl-extensions3 
+  - libtpm2-totp0 
+  - libtpm2-totp0-devel 
   - libtpm_unseal1 
   - libtpms-devel 
   - libtqsllib2_6 
@@ -47431,6 +47433,7 @@ unsorted:
   - tpm2-0-tss-devel 
   - tpm2-openssl 
   - tpm2-pkcs11 
+  - tpm2-totp 
   - tpm2-tss-engine 
   - tpm2-tss-engine-bash-completion 
   - tpm2-tss-engine-devel 
