@@ -115,4 +115,12 @@
     <comment>- Install bootloader with Secure Boot support (boo#1244248)</comment>
     <requestid>1284482</requestid>
   </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>f5173dcf178840041b95eda0f7555287</srcmd5>
+    <version>0.1.0</version>
+    <time>1749736464</time>
+    <user>anag_factory</user>
+    <comment>- Force installation of shim at build time (boo#1244248)</comment>
+    <requestid>1285084</requestid>
+  </revision>
 </revisionlist>

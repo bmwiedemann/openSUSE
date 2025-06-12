@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 12 08:55:20 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Force installation of shim at build time (boo#1244248) 
+
+-------------------------------------------------------------------
 Tue Jun 10 13:16:25 UTC 2025 - Richard Brown <rbrown@suse.com>
 
 - Install bootloader with Secure Boot support (boo#1244248) 

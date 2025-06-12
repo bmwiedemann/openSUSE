@@ -16,7 +16,7 @@ case "$arch" in
         *) echo "Unsupported arch for Aeon - $arch"; exit 1 ;;
 esac
 echo "install boot loader"
-sdbootutil -v --no-random-seed --arch "$arch" --esp-path /boot/efi --portable --entry-token=auto --no-variables install
+sdbootutil -v --secure-boot --no-random-seed --arch "$arch" --esp-path /boot/efi --portable --entry-token=auto --no-variables install
 echo "add kernels"
 export hostonly_l=no # for dracut
 sdbootutil -v --arch "$arch" --esp-path /boot/efi --portable --entry-token=auto add-all-kernels
