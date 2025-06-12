@@ -1,7 +1,7 @@
 #
 # spec file for package python-urlgrabber
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,13 +34,15 @@ Patch2:         avoid_crashing_when_urlgrabber_debug_enabled.patch
 # PATCH-FIX_UPSTREAM gh#rpm-software-management/urlgrabber!37
 Patch3:         fix-urlgrab-file-schema-comparison.patch
 
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycurl}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pycurl
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -60,10 +62,10 @@ sed -i 's!/usr/libexec!%{_libexecdir}!' urlgrabber/grabber.py
 sed -i "s!libexec!$(echo %{_libexecdir}|cut -d/ -f 3)!" setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/urlgrabber
 %python_clone -a %{buildroot}%{_libexecdir}/urlgrabber-ext-down
 rm -rf %{buildroot}%{_datadir}/doc/urlgrabber-%{version} # Remove wrongly installed docs
@@ -85,6 +87,6 @@ fi
 %python_alternative %{_bindir}/urlgrabber
 %python_alternative %{_libexecdir}/urlgrabber-ext-down
 %{python_sitelib}/urlgrabber
-%{python_sitelib}/urlgrabber-%{version}*-info
+%{python_sitelib}/urlgrabber-%{version}.dist-info
 
 %changelog
