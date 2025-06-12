@@ -1,7 +1,7 @@
 #
 # spec file for package python-shijian
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,11 @@ Summary:        Python utility functions relating to time and filenames
 License:        GPL-3.0-only
 URL:            https://github.com/wdbm/shijian
 Source0:        https://files.pythonhosted.org/packages/source/s/shijian/shijian-%{version}.tar.gz
+Source1:        https://raw.githubusercontent.com/wdbm/shijian/refs/heads/master/shijian/__init__.py
 Source100:      python-shijian-rpmlintrc
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-matplotlib
@@ -48,12 +51,13 @@ sequences.
 
 %prep
 %setup -q -n shijian-%{version}
+cp %{SOURCE1} shijian.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +66,8 @@ sequences.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/shijian.py
+%pycache_only %{python_sitelib}/__pycache__/shijian*
+%{python_sitelib}/shijian-%{version}*-info
 
 %changelog

@@ -48,4 +48,13 @@
   * update dependency from sklearn to scikit-learn</comment>
     <requestid>1132833</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>297cc88b896fd523472f967cf1bab3fd</srcmd5>
+    <version>2023.10.19.215</version>
+    <time>1749736479</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build
+- Fix packaging</comment>
+    <requestid>1285123</requestid>
+  </revision>
 </revisionlist>

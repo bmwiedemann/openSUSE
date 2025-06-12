@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 12 11:02:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+- Fix packaging
+
+-------------------------------------------------------------------
 Wed Dec 13 10:10:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.10.19:
