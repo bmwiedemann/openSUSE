@@ -60,7 +60,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.11.1
+Version:        3.12.0
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -100,9 +100,16 @@ BuildRequires:  openblas-devel
 %endif
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
+%if %{with system_fmt}
 BuildRequires:  pkgconfig(fmt)
+%global with_system_fmt 1
 %if !%{pkg_vcmp fmt-devel > 11}
 Provides:       bundled(fmt) = 11.0.0
+%global with_system_fmt 0
+%endif
+%else
+Provides:       bundled(fmt) = 11.0.0
+%global with_system_fmt 0
 %endif
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
 %if %{with ext_hiredis}
@@ -243,7 +250,7 @@ export CXX="g++-%{?force_gcc_version}"
   %if %{with jemalloc}
   -DENABLE_JEMALLOC=ON                      \
   %endif
-  %if %{pkg_vcmp fmt-devel > 11}
+  %if 0%{?with_system_fmt}
   -DSYSTEM_FMT=ON                           \
   %else
   -DSYSTEM_FMT=OFF                          \
@@ -414,6 +421,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/bimi.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/chartable.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/clickhouse.conf
+%config(noreplace) %{_sysconfdir}/rspamd/modules.d/contextal.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/dcc.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/dkim.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/dkim_signing.conf
@@ -481,6 +489,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/plugins/asn.lua
 %{_datadir}/rspamd/plugins/bayes_expiry.lua
 %{_datadir}/rspamd/plugins/clickhouse.lua
+%{_datadir}/rspamd/plugins/contextal.lua
 %{_datadir}/rspamd/plugins/clustering.lua
 %{_datadir}/rspamd/plugins/dcc.lua
 %{_datadir}/rspamd/plugins/dkim_signing.lua

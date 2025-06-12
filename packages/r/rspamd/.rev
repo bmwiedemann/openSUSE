@@ -426,4 +426,14 @@ added https://github.com/rspamd/rspamd/commit/ccb45df90df60fae36b9438cfb2b0088e5
     <comment>- Update to 3.11.1</comment>
     <requestid>1251444</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a7f824d328d80a2a12077ec4b0bc06f6</srcmd5>
+    <version>3.12.0</version>
+    <time>1749736462</time>
+    <user>anag_factory</user>
+    <comment>- as it currently always uses the bundled fmt, disable the requires
+
+- Update to 3.12.0</comment>
+    <requestid>1285091</requestid>
+  </revision>
 </revisionlist>

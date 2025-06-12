@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Wed Jun 11 21:27:18 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- as it currently always uses the bundled fmt, disable the requires
+
+-------------------------------------------------------------------
+Wed Jun 11 21:25:25 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.12.0
+  - [Fix] Use bundled libfmt everywhere by @vstakhov in #5380
+  - [Minor] Fix and improve format string processing in
+    lua_logger_log_format() by @amulet1 in #5378
+  - [Fix] initialize ollama result table by @JensErat in #5385
+  - Update AUTHORS.md by @ertyu in #5391
+  - [Fix] Update default URL for openphish by @fatalbanana in #5389
+  - Allow CDB external maps by @vstakhov in #5390
+  - [WebUI] Fix map editor modal handling by @moisseev in #5388
+  - [Minor] gpt.lua improvements and one fix for reason_header by
+    @alex081512 in #5387
+  - [Minor] Lua logging improvements by @amulet1 in #5383
+  - Fix typo on "destionation" -> "destination" by @williamdes in
+    #5400
+  - [Feature] Plugin to integrate with Contextal platform by
+    @fatalbanana in #5360
+  - Improve maps status visibility by @vstakhov in #5386
+  - [WebUI] Update Maps table by @moisseev in #5408
+  - Add R_HTTP_URL_IN_FROM by @dragoangel in #5406
+  - [Project] Modernize cmake by @vstakhov in #5412
+  - [Fix] Greylist: Improve body hash calculations by @vstakhov in
+    #5417
+  - [Feature] Allow to specify Redis version by @vstakhov in #5419
+  - fix(lua_bit) : Prevent lua-bit stack buffer overflow by
+    @KIMDONGYEON00 in #5422
+  - [WebUI] Update Bootstrap, D3 and PrismJS libraries by @moisseev
+    in #5423
+  - [Minor] contextal: conditionally disable timer, minor changes
+    by @fatalbanana in #5426
+  - Add Sieve and cPanel forwarding symbols by @dragoangel in #5407
+  - [Minor] Use module name when calling set_pre_result by
+    @fatalbanana in #5434
+  - Fix writing rules tutorial link by @SuperSandro2000 in #5436
+  - Correct "file.conf" from dist config files by @SuperSandro2000
+    in #5444
+  - [Minor] RPM: fix log directory attributes by @fatalbanana in
+    #5435
+  - Allow to use different servers for fuzzy operations by
+    @vstakhov in #5453
+  - [WebUI] Add Delete hash button by @moisseev in #5454
+  - Added exclusion list for reputation by @kevinzb56 in #5443
+  - Fix librdns maxname limit by @dragoangel in #5455
+  - [Fix] libmime: doctest 2.4.12 compatibilty by @xandris in #5458
+  - [WebUI] Add deletion of specific fuzzy hashes by @moisseev in
+    #5457
+  - Some improvements to the proxy by @vstakhov in #5456
+  - Added --non-default Option to rspamadm configdump for Local
+    Configuration by @kevinzb56 in #5452
+  - gpt.lua: Remove "thinking" and fix errorlog by @NameWeb in
+    #5459
+  - [Minor] Update API docs RE: multiple HTTP headers by
+    @fatalbanana in #5468
+  - [Minor] Fix for docs of lua_redis.redis_make_request_taskless
+    by @left-try in #5470
+  - [Feature] Magic: Support HEIC files by @vstakhov in #5471
+  - Add FREEMAIL_REPLYTO_NEQ_FROM rule by @dragoangel in #5413
+  - Modify documentation for rspamc "-P" parameter by @TwizzyDizzy
+    in #5473
+  - fix(lua_redis): Improve Redis script loading by @jendis in
+    #5464
+  - [Minor] Fix Debian package build by @fatalbanana in #5475
+  - [Rework] Replies: consider all recipients and use smtp ones by
+    @vstakhov in #5428
+  - [Minor] Print error on multimap invalid type by @japc in #5477
+  - [Minor] Fix fuzzy lua callback when there are no shingles by
+    @fatalbanana in #5486
+  - [WebUI] Add file upload to Test selectors by @moisseev in #5483
+  - [Minor] Log the token usage for OpenAI (compatible) plain
+    conversion by @lucasRolff in #5488
+  - Reputation Plugin: Fix comment to correspond the code above by
+    @heptalium in #5489
+  - Fix some issues with libucl by @vstakhov in #5490
+  - [Minor] Correcting the index number for is_spam by @kevinzb56
+    in #5495
+  - Logging improvements by @vstakhov in #5492
+  - [Fix] Correct logic error in milter_headers.lua: skip_wanted()
+    by @drclau in #5496
+
+-------------------------------------------------------------------
 Sat Mar  8 19:52:57 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.11.1
