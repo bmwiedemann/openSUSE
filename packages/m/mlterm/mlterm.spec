@@ -27,25 +27,17 @@
 %bcond_with uim
 %endif
 Name:           mlterm
-Version:        3.9.3
+Version:        3.9.4
 Release:        0
 Summary:        Multilingual Terminal Emulator for X and Wayland
 License:        BSD-3-Clause
 Group:          System/X11/Terminals
 URL:            https://mlterm.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/project/mlterm/01release/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source10:       %{name}.desktop
+Source1:        %{name}.desktop
 Patch0:         etc.patch
-# https://github.com/arakiken/mlterm/commit/f971955cf54a721e6a53191c3b86fbdab4bfbfd5
-Patch1:         mlterm-gcc14-f971955.patch
-# https://github.com/arakiken/mlterm/commit/3d38b723e0e4a6dd434af2d49aca53890982a828
-Patch2:         mlterm-gcc14-3d38b72.patch
-# https://github.com/arakiken/mlterm/commit/08ba9859717ed27384675bd687a35f4504701f27
-Patch3:         mlterm-gcc14-08ba985.patch
-# https://github.com/arakiken/mlterm/commit/8aef4fae3add8e8acfafde831e0034f1b2879dea
-Patch4:         mlterm-gcc14-8aef4fa.patch
-# https://github.com/arakiken/mlterm/commit/20ab931d5055dc5835154a75ca672fade478549f
-Patch5:         mlterm-gcc14-20ab931.patch
+# https://github.com/arakiken/mlterm/commit/da9db7673ab7f5a9111533f7db7db2720643b35f
+Patch1:         mlterm-gcc15.patch
 BuildRequires:  ccache
 BuildRequires:  coreutils
 BuildRequires:  gcc-c++
@@ -56,7 +48,7 @@ BuildRequires:  scim-devel
 %if %{with uim}
 BuildRequires:  uim-devel
 %endif
-BuildRequires:  update-desktop-files
+#BuildRequires:  translate-suse-desktop
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(fribidi)
@@ -74,6 +66,7 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xkbcommon)
 Requires:       %{name}-common = %{version}-%{release}
 Provides:       locale(xorg-x11:ja;ko;zh;ar;he)
+Recommends:     %{name}-lang = %{version}
 %if 0%{?sle_version} && 0%{?sle_version} <= 150400
 BuildRequires:  pkgconfig(fcitx)
 %else
@@ -111,6 +104,8 @@ Other features:
 * background image (requires Imlib)
 * multiple pty windows
 * scrollbar plug-in API (unstable)
+
+%lang_package
 
 %package common
 Summary:        Multilingual Terminal Emulator common files
@@ -232,6 +227,8 @@ pushd $i
 %make_build -O
 popd
 done
+cp %{SOURCE1} .
+#%%translate_suse_desktop mlterm.desktop
 
 %install
 for i in %{flavors} ; do
@@ -254,7 +251,8 @@ cp -a %{buildroot}%{_mandir}/man1/mlterm.1 %{buildroot}%{_mandir}/man1/mlterm-sd
 mv %{buildroot}%{_libdir}/mlterm/mlterm/mlterm-zoom \
    %{buildroot}%{_bindir}/mlterm-zoom
 find %{buildroot} -type f -name "*.la" -delete -print
-%suse_update_desktop_file -i %{name} TerminalEmulator
+%find_lang mlconfig
+install -D -m 0644 mlterm.desktop %{buildroot}%{_datadir}/applications/mlterm.desktop
 
 %post -n %{name}-common -p /sbin/ldconfig
 %postun -n %{name}-common -p /sbin/ldconfig
@@ -285,6 +283,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/mlterm/mlterm/mlimgloader
 %{_libdir}/mlterm/mlterm/mlconfig
 %{_libdir}/mlterm/mlterm/mlmenu
+
+%files lang -f mlconfig.lang
 
 %files common
 %license LICENCE*

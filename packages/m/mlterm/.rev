@@ -859,4 +859,41 @@
     <comment>- let scim and uim be conditional, which are factory drop candidates (forwarded request 1253457 from MargueriteSu)</comment>
     <requestid>1253582</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>5bf6b855222d7c46e8d2eff01a8ba510</srcmd5>
+    <version>3.9.4</version>
+    <time>1749736435</time>
+    <user>anag_factory</user>
+    <comment>- remove %suse_update_desktop_file usage
+- modified sources
+  % mlterm.desktop
+
+- version update to 3.9.4
+  * Support Shift+Control+v and Shift+Control+c to copy&amp;paste via clipboard by default.
+    Drop -P/--clip/use_clipboard option.
+    Add --chsel/change_selection_immediately option in anything except xlib and wayland.
+  * Add COPY_CLIPBOARD shortcut key.
+  * Pressing '?' in copy mode searches for a string backward.
+    (https://github.com/arakiken/mlterm/issues/72)
+  * Support wp-primary-selection protocol in wayland.
+  * Support &quot;exesel:&quot; operation in ~/.mlterm/key in win32.
+  * Support libvte compatible library in win32. (See gtk/README)
+  * Support ConPTY in win32.
+  * Support Alternate Scroll Mode. (https://github.com/arakiken/mlterm/issues/80)
+  * Support P2=1 in sixel graphics. (https://github.com/arakiken/mlterm/issues/81)
+  * Support libpng to build mlimgloader if gdk-pixbuf is not found.
+    (https://github.com/arakiken/mlterm/issues/96)
+  * Support Emoji variation selectors 15 and 16. (https://github.com/arakiken/mlterm/issues/84)
+  * Add --conpty/use_conpty and --winsize/output_xtwinops_in_resizing options in win32.
+  * Add --norepkey/mod_keys_to_stop_mouse_report option.
+  * Add --clp/use_clipping option. (https://github.com/arakiken/mlterm/issues/132)
+  * Add tool/accessories/applycfg.sh and applyfontcfg.sh
+    (https://github.com/arakiken/mlterm/issues/71)
+  * Add &quot;de&quot;, &quot;fr&quot;, &quot;es&quot;, &quot;pt&quot; and &quot;jp106&quot; to available values for &quot;kbd&quot;
+    input method argument. 
+  * Add vte 0.78 API symbols to libvte compatible library.
+  * Change the default value of &quot;xterm&quot; entry in etc/termcap from &quot;ut&quot; to &quot;kb=^H:ut&quot;.
+  * Update unicode property table (generated from UnicodeData.txt and (forwarded request 1284817 from pgajdos)</comment>
+    <requestid>1285024</requestid>
+  </revision>
 </revisionlist>
