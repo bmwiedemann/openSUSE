@@ -1,7 +1,7 @@
 #
 # spec file for package cpupower
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -109,7 +109,9 @@ There is no reason to install this package.
 # copy necessary files from kernel-source since we need to modify them
 (cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib) | tar -xf -
 chmod +x tools/power/cpupower/utils/version-gen.sh
+%if %{pkg_vcmp kernel-source < 6.15.0}
 %patch -P 1 -p1
+%endif
 cd %{maindir}
 
 %build
