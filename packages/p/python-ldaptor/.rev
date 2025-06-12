@@ -64,4 +64,12 @@
   * Use non-deprecated configparser class.</comment>
     <requestid>1145314</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>7d8f22222739f7b7c0740dbf71a7f9fd</srcmd5>
+    <version>21.2.0</version>
+    <time>1749736345</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1284144</requestid>
+  </revision>
 </revisionlist>

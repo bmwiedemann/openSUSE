@@ -1,7 +1,7 @@
 #
 # spec file for package python-ldaptor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %define binaries ldaptor-fetchschema ldaptor-find-server ldaptor-getfreenumber ldaptor-ldap2dhcpconf ldaptor-ldap2dnszones ldaptor-ldap2maradns ldaptor-ldap2passwd ldaptor-ldap2pdns ldaptor-ldifdiff ldaptor-ldifpatch ldaptor-namingcontexts ldaptor-passwd ldaptor-rename ldaptor-search
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-ldaptor
 Version:        21.2.0
@@ -36,14 +37,14 @@ BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.interface}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-Twisted-tls
 Requires:       python-passlib
 Requires:       python-pyparsing
 Requires:       python-zope.interface
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -80,14 +81,9 @@ export PYTHONPATH=%{buildroot}/%{$python_sitelib}
 $python -m twisted.trial ldaptor
 }
 
-%post
+%pre
 %{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
-  print(rpm.expand("%python_install_alternative " .. b .. "\n"))
-end}
-
-%postun
-%{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
-  print(rpm.expand("%python_uninstall_alternative " .. b.. "\n"))
+  print(rpm.expand("%python_libalternatives_reset_alternative " .. b.. "\n"))
 end}
 
 %files %{python_files}
