@@ -100,4 +100,13 @@
   * [dep][go](deps): Bump github.com/go-jose/go-jose/v4 from 4.0.4 to 4.0.5 (#4538) (forwarded request 1284506 from ph03nix)</comment>
     <requestid>1284570</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4e1a79d65aa31fe12e2cb1cb5e67a7ec</srcmd5>
+    <version>2.0.1</version>
+    <time>1749744683</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.0.1:
+  * Fix pluginmanager not running error when starting steampipe via a symlink. Closes #4573 (#4574) (forwarded request 1285028 from ph03nix)</comment>
+    <requestid>1285160</requestid>
+  </revision>
 </revisionlist>

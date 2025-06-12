@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jun 12 06:09:29 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.0.1:
+  * Fix pluginmanager not running error when starting steampipe via a symlink. Closes #4573 (#4574)
+
+-------------------------------------------------------------------
+Wed Jun 11 13:44:10 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.0.0:
+  * FDW v2.0.0
+  * v2.0.0
+  * v1.2.0 (#4566)
+  * [dep][go](deps): Bump github.com/turbot/pipe-fittings/v2 (#4559)
+  * Update FDW to v1.13.0 to fix the issue where Steampipe did not correctly provide planning cost information for key-columns with an `any-of` requirement (#4565)
+  * [dep][actions](deps): Bump golangci/golangci-lint-action (#4524)
+  * [dep][go](deps): Bump github.com/spf13/viper from 1.20.0 to 1.20.1 (#4542)
+  * [dep][go](deps): Bump golang.org/x/sync from 0.13.0 to 0.15.0 (#4560)
+  * [dep][go](deps): Bump github.com/go-git/go-git/v5 from 5.15.0 to 5.16.2 (#4561)
+  * Improve logging for verifyRunning (#4562)
+  * exit 1 when a command does not exist (#4564)
+  * [dep][go](deps): Bump github.com/go-jose/go-jose/v4 from 4.0.4 to 4.0.5 (#4538) (#4539)
+
+-------------------------------------------------------------------
 Tue Jun 10 14:18:52 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 1.1.4:
