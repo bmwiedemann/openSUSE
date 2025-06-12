@@ -1,7 +1,7 @@
 #
 # spec file for package python-rfc3986
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-rfc3986
 Version:        2.0.0
@@ -26,7 +25,9 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://rfc3986.rtfd.org
 Source:         https://files.pythonhosted.org/packages/source/r/rfc3986/rfc3986-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -43,10 +44,10 @@ parsing. Coming soon: `Reference Resolution <http://tools.ietf.org/html/rfc3986#
 %setup -q -n rfc3986-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +56,7 @@ parsing. Coming soon: `Reference Resolution <http://tools.ietf.org/html/rfc3986#
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/rfc3986
+%{python_sitelib}/rfc3986-%{version}*-info
 
 %changelog
