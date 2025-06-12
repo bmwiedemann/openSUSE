@@ -19,19 +19,8 @@
 
 %define somajor 13
 %define libname libarchive%{somajor}
-%if 0%{?centos_version} || 0%{?rhel_version}
-%if 0%{?centos_version} <= 600 || 0%{?rhel_version <= 700}
-%bcond_without	static_libs
-%bcond_with	openssl
-%bcond_with	ext2fs
-%endif
-%else
-%bcond_with	static_libs
-%bcond_without	openssl
-%bcond_without	ext2fs
-%endif
 Name:           libarchive
-Version:        3.7.9
+Version:        3.8.1
 Release:        0
 Summary:        Utility and C library to create and read several streaming archive formats
 License:        BSD-2-Clause
@@ -41,24 +30,19 @@ Source0:        https://github.com/libarchive/libarchive/releases/download/v%{ve
 Source1:        https://github.com/libarchive/libarchive/releases/download/v%{version}/libarchive-%{version}.tar.xz.asc
 Source2:        libarchive.keyring
 Source1000:     baselibs.conf
-Patch1:         lib-suffix.patch
 BuildRequires:  cmake
-BuildRequires:  libacl-devel
-BuildRequires:  libbz2-devel
-BuildRequires:  liblz4-devel
-BuildRequires:  libtool
-BuildRequires:  libxml2-devel
-BuildRequires:  libzstd-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  xz-devel
-BuildRequires:  zlib-devel
-%if %{with ext2fs}
-BuildRequires:  libext2fs-devel
-%endif
-%if %{with openssl}
-BuildRequires:  libopenssl-devel
-%endif
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(ext2fs)
+BuildRequires:  pkgconfig(libacl)
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(zlib) >= 1.2.1
 
 %description
 Libarchive is a programming library that can create and read several
@@ -136,13 +120,12 @@ compression, archive format detection and decoding, and archive data
 I/O. It should be very easy to add new formats, new compression
 methods, or new ways of reading/writing archives.
 
-%package -n libarchive-devel
+%package devel
 Summary:        Development files for libarchive
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
-Requires:       glibc-devel
 
-%description -n libarchive-devel
+%description devel
 Libarchive is a programming library that can create and read several
 different streaming archive formats, including most popular tar
 variants and several cpio formats. It can also write shar archives and
@@ -153,37 +136,25 @@ and 6.
 
 This package contains the development files.
 
-%package static-devel
-Summary:        Static library for libarchive
-Group:          Development/Libraries/C and C++
-Requires:       %{name}-devel = %{version}
-
-%description static-devel
-Static library for libarchive
-
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %define __builder ninja
 %cmake
 %cmake_build
 
+%install
+%cmake_install
+rm "%{buildroot}%{_mandir}/man5/"{tar,cpio,mtree}.5*
+rm "%{buildroot}%{_libdir}/libarchive.a"
+
 %check
 exclude=""
-%ifarch %arm %ix86 ppc s390
+%ifarch %{arm} %{ix86} ppc s390
 exclude="-E test_write_filter"
 %endif
 %ctest $exclude
-
-%install
-%cmake_install
-
-find %{buildroot} -type f -name "*.la" -delete -print
-rm "%{buildroot}%{_libdir}/libarchive.a"
-rm "%{buildroot}%{_mandir}/man5/"{tar,cpio,mtree}.5*
-sed -i -e '/Libs.private/d' %{buildroot}%{_libdir}/pkgconfig/libarchive.pc
 
 %ldconfig_scriptlets -n %{libname}
 
@@ -193,26 +164,20 @@ sed -i -e '/Libs.private/d' %{buildroot}%{_libdir}/pkgconfig/libarchive.pc
 %{_bindir}/bsdcpio
 %{_bindir}/bsdtar
 %{_bindir}/bsdunzip
-%{_mandir}/man1/*
-%{_mandir}/man5/*
+%{_mandir}/man1/*.1%{?ext_man}
+%{_mandir}/man5/*.5%{?ext_man}
 
 %files -n %{libname}
 %license COPYING
 %doc NEWS
-%{_libdir}/libarchive.so.*
+%{_libdir}/libarchive.so.%{somajor}{,.*}
 
-%files -n libarchive-devel
+%files devel
 %license COPYING
 %doc examples/
-%{_mandir}/man3/*
+%{_mandir}/man3/*.3%{?ext_man}
 %{_libdir}/libarchive.so
 %{_includedir}/archive*
 %{_libdir}/pkgconfig/libarchive.pc
-
-%if %{with static_libs}
-%files static-devel
-%license COPYING
-%{_libdir}/%{name}.a
-%endif
 
 %changelog

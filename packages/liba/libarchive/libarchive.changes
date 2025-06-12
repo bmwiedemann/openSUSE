@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jun  5 21:05:40 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.8.1:
+  * libarchive: fix FILE_skip regression
+  * compress: Prevent call stack overflow
+  * iso9660: always check archive_string_ensure return value
+  * tar: Support negative time values with pax
+  * tar: Reset accumulated header state after reading macOS metadata blob
+  * tar: Keep block alignment after pax error
+  * tar: Handle extra bytes after sparse entries
+- includes changes from 3.8.0:
+  * bsdtar: support --mtime and --clamp-mtime
+  * 7-zip reader: improve self-extracting archive detection
+  * xar: xmllite support for the XAR reader and writer
+  * zip writer: added XZ, LZMA, ZSTD and BZIP2 support
+  * zip writer: added LZMA + RISCV BCJ filter
+  * rar: do not skip past EOF while reading (boo#1244159)
+  * rar: fix double free with over 4 billion nodes (boo#1244160)
+  * rar: fix heap-buffer-overflow (boo#1244161)
+  * warc: prevent signed integer overflow (boo#1244162)
+  * tar: fix overflow in build_ustar_entry (boo#1244163)
+  * bsdtar: don't hardlink negative inode files together
+  * gz: allow setting the original filename for gzip compressed files
+  * lib: improve lseek handling
+  * lib: support @-prefixed Unix epoch timestamps as date strings
+  * rar: support large headers on 32 bit systems
+  * tar reader: Improve LFS support on 32 bit systems
+- drop lib-suffix.patch, different implementation upstream
+- spec file clean-up, removing currently unused -static
+
+-------------------------------------------------------------------
 Sat Apr  5 08:28:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 3.7.9:

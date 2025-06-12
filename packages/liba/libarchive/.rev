@@ -494,4 +494,12 @@ The COPYING file shows that the package is predominantly BSD-2-Clause licensed (
     <comment>libarchive 3.7.9 (forwarded request 1267263 from AndreasStieger)</comment>
     <requestid>1267914</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>7a6a9993ae8151b1ce521ac993b8da35</srcmd5>
+    <version>3.8.1</version>
+    <time>1749736048</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1284694</requestid>
+  </revision>
 </revisionlist>
