@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 11 04:41:44 UTC 2025 - william.brown@suse.com
+
+- bsc#1244201 - CVE-2025-5791 - replace users crate
+- Update to version 0.1.3~0:
+  * Update users crate
+
+-------------------------------------------------------------------
 Tue Sep 05 00:50:56 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.1.2~1:
