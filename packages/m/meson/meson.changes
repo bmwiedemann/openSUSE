@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 10 06:56:52 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.8.2:
+  + Unbreak "Fix setuptools 49 test".
+  + cargo: set edition for build machine as well.
+  + Vala: Fix GResource source directories.
+  + Vala: Add test for generated UI in subdirectories.
+  + cmake: Fix target_link_libraries against project targets.
+  + vala: Pass --shared-library to valac when generating a .gir
+    file.
+  + tests: don't skip frameworks/17 mpi for auto/pkgconfig.
+
+-------------------------------------------------------------------
 Mon May 26 13:09:47 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.8.1:
