@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Jun 12 05:22:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.81.5:
+  * New Features
+    - Terragrunt now supports credentials stored in .terraformrc
+      files when fetching from private registries, in addition to
+      the fallback mechanism of using TG_TF_REGISTRY_TOKEN.
+  * What's Changed
+    - feat: support credential tokens for getter (#4047)
+
+-------------------------------------------------------------------
+Thu Jun 12 05:15:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.81.4:
+  * Experiments Updated
+    The reports experiment now supports the --summary-unit-duration
+    flag
+    As part of delivering #3628 , the reports experiment has been
+    updated to support optionally displaying unit-level duration
+    information in the Run Summary.
+    You can now optionally display the duration for each unit run
+    as part of the Run Summary by adding the
+    --summary-unit-duration flag to your run commands:
+      $ terragrunt run --all plan --summary-unit-duration
+
+      # Omitted for brevity...
+
+      ❯❯ Run Summary
+         Duration:   10m
+            long-running-unit:    10m
+            medium-running-unit:  12s
+            short-running-unit:   5ms
+         Units:      3
+         Succeeded:  3
+
+    By default, this information will be omitted.
+    For more information, see Showing unit durations in the docs.
+  * What's Changed
+    - feat: Adding `--summary-unit-duration` (#4410)
+    - feat: Improving testing & documentation (#4409)
+
+-------------------------------------------------------------------
 Wed Jun 11 04:47:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.81.3:
