@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without libalternatives
 Name:           python-certstream
 Version:        1.12
 Release:        0
@@ -30,10 +30,10 @@ BuildRequires:  %{python_module wheel}
 #SECTION tests
 BuildRequires:  %{python_module termcolor}
 BuildRequires:  %{python_module websocket-client >= 0.58.0}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): alts
-Requires(postun): alts
+Requires:       alts
 # /SECTION
 Requires:       python3-termcolor
 Requires:       python3-websocket-client >= 0.48.0
@@ -47,7 +47,7 @@ Certstream is a library to connect to the certstream network (certstream.calidog
 It supports automatic reconnection when networks issues occur, and should be stable for long-running jobs.
 
 %prep
-%setup -q -n certstream-%{version}
+%autosetup -p1 -n certstream-%{version}
 # do not hardcode dependencies
 sed -i -e 's:==:>=:g' requirements.txt
 
@@ -61,11 +61,11 @@ sed -i -e 's:==:>=:g' requirements.txt
 
 # there are no tests
 
-%post
-%python_install_alternative certstream
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative certstream
 
-%postun
-%python_uninstall_alternative certstream
+# post and postun macro call is not needed with only libalternatives
 
 %files %{python_files}
 %doc README.md
