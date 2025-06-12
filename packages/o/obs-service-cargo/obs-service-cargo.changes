@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 12 11:05:22 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 6.0.4:
+  * chore(release): bump to version 6.0.4
+  * dependencies: adjust libroast version and update dependencies.
+  * docs: update cargo_vendor service documentation
+  * fix: error message caused confusion here. changed it so that it passes any general kind of errors.
+  * docs: update README
+
+-------------------------------------------------------------------
 Fri Jun 06 06:01:20 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 6.0.3+git3.gd6be731aa98a3603236a5b8b3ed60cbedd895c01:

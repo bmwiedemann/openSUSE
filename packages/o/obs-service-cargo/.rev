@@ -1122,4 +1122,18 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 - Initial spec for obs-service-cargo. 0.6.0-alpha</comment>
     <requestid>1283571</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>258915d0d5925fd723a4a68b31404341</srcmd5>
+    <version>6.0.4</version>
+    <time>1749736477</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.0.4:
+  * chore(release): bump to version 6.0.4
+  * dependencies: adjust libroast version and update dependencies.
+  * docs: update cargo_vendor service documentation
+  * fix: error message caused confusion here. changed it so that it passes any general kind of errors.
+  * docs: update README
+</comment>
+    <requestid>1285115</requestid>
+  </revision>
 </revisionlist>
