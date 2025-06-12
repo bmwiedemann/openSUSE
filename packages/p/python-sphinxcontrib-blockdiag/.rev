@@ -64,4 +64,12 @@
     <comment>- Add patch remove-mock.patch.</comment>
     <requestid>1009250</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>1ebaedf9755b76801d52dd3bf16ece59</srcmd5>
+    <version>3.0.0</version>
+    <time>1749744691</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1285153</requestid>
+  </revision>
 </revisionlist>

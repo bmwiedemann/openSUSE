@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-blockdiag
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,6 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
-%bcond_with      test
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -28,7 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
+%bcond_with      test
 Name:           python-sphinxcontrib-blockdiag
 Version:        3.0.0
 Release:        0
@@ -42,7 +38,9 @@ Patch0:         https://patch-diff.githubusercontent.com/raw/blockdiag/sphinxcon
 Patch1:         remove-mock.patch
 BuildRequires:  %{python_module Sphinx >= 2.0}
 BuildRequires:  %{python_module blockdiag >= 1.5.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 2.0
@@ -54,7 +52,6 @@ BuildRequires:  %{python_module funcparserlib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-blockdiag = %{version}}
 %endif
-
 %python_subpackages
 
 %description
@@ -64,11 +61,11 @@ A sphinx extension for embedding block diagram using blockdiag.
 %autosetup -p1 -n sphinxcontrib-blockdiag-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -84,7 +81,7 @@ A sphinx extension for embedding block diagram using blockdiag.
 %{python_sitelib}/sphinxcontrib/blockdiag.py*
 %pycache_only %{python_sitelib}/sphinxcontrib/__pycache__
 %{python_sitelib}/sphinxcontrib_blockdiag-%{version}-py*-nspkg.pth
-%{python_sitelib}/sphinxcontrib_blockdiag-%{version}-py*.egg-info
+%{python_sitelib}/sphinxcontrib_blockdiag-%{version}*-info
 %endif
 
 %changelog
