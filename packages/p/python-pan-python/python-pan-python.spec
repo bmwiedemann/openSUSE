@@ -17,6 +17,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-pan-python
 Version:        0.16.0
 Release:        0
@@ -28,10 +29,10 @@ Source:         https://files.pythonhosted.org/packages/source/p/pan-python/pan-
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): alts
-Requires(postun): alts
+Requires:       alts
 BuildArch:      noarch
 # SECTION test requirements
 #BuildRequires:  %%{python_module pytest}
@@ -71,19 +72,12 @@ rm -f %{buildroot}%{_bindir}/_current_flavor
 # Upstream does not have any tests yet
 #%%pytest
 
-%post
-%python_install_alternative panxapi
-%python_install_alternative panwfapi
-%python_install_alternative panlicapi
-%python_install_alternative panconf
-%python_install_alternative panafapi
-
-%postun
-%python_uninstall_alternative panxapi
-%python_uninstall_alternative panwfapi
-%python_uninstall_alternative panlicapi
-%python_uninstall_alternative panconf
-%python_uninstall_alternative panafapi
+%pre
+%python_libalternatives_reset_alternative panxapi
+%python_libalternatives_reset_alternative panwfapi
+%python_libalternatives_reset_alternative panlicapi
+%python_libalternatives_reset_alternative panconf
+%python_libalternatives_reset_alternative panafapi
 
 %files %{python_files}
 %license LICENSE.txt
