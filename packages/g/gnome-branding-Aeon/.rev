@@ -100,4 +100,12 @@
     <comment></comment>
     <requestid>1277362</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>02fa9351d97c4d3c0420b0e45d26e2f0</srcmd5>
+    <version>20231005</version>
+    <time>1749739616</time>
+    <user>anag_factory</user>
+    <comment>- Rename &quot;openSUSE Aeon&quot; to &quot;Aeon&quot; in zenity titles to follow Aeon's Brand Guidelines.</comment>
+    <requestid>1285124</requestid>
+  </revision>
 </revisionlist>

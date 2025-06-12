@@ -2,7 +2,7 @@
 
 firstMSG() {
     #Insert Welcome message here
-    zenity --info --icon=distributor-logo-Aeon-symbolic --no-wrap --title 'Welcome to openSUSE Aeon' \
+    zenity --info --icon=distributor-logo-Aeon-symbolic --no-wrap --title 'Welcome to Aeon' \
       --text 'Almost done, there is one last step\n\nWe need perform some checks to make\nsure your migration has gone smoothly\n\nPlease click <b>OK</b> to Continue' \
       --width 300 --height 300
 }
@@ -41,8 +41,8 @@ install_locale() {
 
 lastMSG() {
     #Insert Welcome message here
-    zenity --info --icon=distributor-logo-Aeon-symbolic --no-wrap --title 'Welcome to openSUSE Aeon' \
-      --text 'Congratulations!\n\nYour system is ready to be used\n\nWe hope you enjoy using <b>openSUSE Aeon</b>' \
+    zenity --info --icon=distributor-logo-Aeon-symbolic --no-wrap --title 'Welcome to Aeon' \
+      --text 'Congratulations!\n\nYour system is ready to be used\n\nWe hope you enjoy using <b>Aeon</b>' \
       --width 300 --height 300
     rm ~/.config/autostart/aeon-mig-firstboot.desktop
 }
