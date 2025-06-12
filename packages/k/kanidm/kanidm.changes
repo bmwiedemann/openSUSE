@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jun 12 05:27:20 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.6.4~git2.a4b3b0f7b:
+  * Remove dead code
+  * OpenSUSE build fix
+
+-------------------------------------------------------------------
+Wed Jun 11 06:24:08 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.6.4~git0.e1d26ed10:
+  * Release 1.6.4
+  * Allow deferring spans in unixd
+  * Dark mode improvements (#3660)
+  * Fix SCIM filter parser for quoted values with spaces and escaped quotes (#3673)
+  * fix: strip comments from UNIX files before parsing (#3674)
+  * Fix healthcheck to use ENV for config path (#3656)
+  * Investigate and reduce memory consumption of unixd (#3645)
+  * Swap bytes mut at buffer limits (#3651)
+  * fix: Improve unixd & unixd-tasks startup coupling (#3638)
+  * reload schema before verify (#3643)
+  * Defend against split_at panic (#3636)
+
+-------------------------------------------------------------------
 Wed May 14 05:48:26 UTC 2025 - william.brown@suse.com
 
 - Update to version 1.6.3~git0.389493eb1:
