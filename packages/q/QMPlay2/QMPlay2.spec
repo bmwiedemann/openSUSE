@@ -19,11 +19,11 @@
 %define __builder Ninja
 %bcond_without qt6
 
-%define _mtime 1737296694
-%define _commit 09a3b95
+%define _mtime 1749676582
+%define _commit f450a3fe
 
 Name:           QMPlay2
-Version:        25.01.19
+Version:        25.06.11
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
@@ -34,6 +34,7 @@ Source:         %{name}-%{version}.%{_mtime}.%{_commit}.tar.gz
 Patch1:         0001-add-opensuse-customizations.patch
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.16
+BuildRequires:  llvm
 BuildRequires:  llvm-gold
 BuildRequires:  ninja
 BuildRequires:  pkgconfig

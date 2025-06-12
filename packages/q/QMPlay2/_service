@@ -1,8 +1,8 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="versionprefix">25.01.19</param>
+    <param name="versionprefix">25.06.11</param>
     <param name="url">https://github.com/zaps166/QMPlay2.git</param>
-    <param name="revision">09a3b9576a173076e32dcebfc9cc2faa4bb54702</param>
+    <param name="revision">f450a3feb6f60b632ca56121274b415aa20a9fd9</param>
     <param name="scm">git</param>
     <param name="submodules">enable</param>
     <param name="changesgenerate">disable</param>
