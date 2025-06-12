@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Jun 11 14:35:50 MDT 2025 - carnold@suse.com
+
+- Update to virt-v2v 2.8.0 (jsc#PED-12706)
+  * New virt-v2v-open(1) tool.
+  * Windows Server 2025 is supported (thanks Ming Xie).
+  * Two features have been added to enhance data integrity.
+  * The UEFI secureboot property is now modelled correctly, and
+    (for outputs which support it) is reflected in the output
+    metadata (thanks Daniel Berrange, Andrea Bolognani, Ming Xie).
+  * Parallel disk copies are now possible, using the --parallel=N
+    option. The default behaviour is still to do serial copies.
+  * virt-v2v-in-place(1) has a new -O option. This generates the
+    same output as virt-v2v-inspector(1), allowing callers to
+    combine both passes into one.
+  * Virtio-win driver selection has been made more robust.
+    (Cole Robinson)
+  * We now check filesystem integrity (using tools like fsck(8))
+    before and after conversion, to ensure both that we fully
+    understand the filesystem before conversion and that no
+    corruption has happened during conversion. At the moment this
+    is only implemented for Btrfs, ext4 and XFS.
+  * Removed features
+    Handling of kmod-xenpv has been removed. (Cole Robinson).
+    --compressed: Use -oo compressed instead.
+    --no-trim: This did nothing.
+    --password-file: Use --ip instead.
+    --qemu-boot: Use -oo qemu-boot instead.
+    --vddk-*: Use --io vddk-* instead.
+    --vdsm-*: Use --oo vdsm-* instead.
+    --vmtype: This did nothing.
+  * For a complete list of changes and bug fixes see,
+    https://www.libguestfs.org/virt-v2v-release-notes-2.8.1.html
+
+-------------------------------------------------------------------
+Fri Jun  6 11:24:33 MDT 2025 - carnold@suse.com
+
+- Update to virt-v2v 2.7.17 (jsc#PED-12706)
+  * convert: Use e2fsck -n flag when checking ext2/3/4 filesystems
+  * -o libvirt: use inspected osinfo short-id for libvirt XML
+    annotation
+
+-------------------------------------------------------------------
 Wed May 21 05:36:08 MDT 2025 - carnold@suse.com
 
 - Update to virt-v2v 2.7.16 (jsc#PED-12706)
