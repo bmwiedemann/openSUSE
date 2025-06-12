@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  5 13:23:03 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Security fix [bsc#1221107, CVE-2024-2236]
+  * Add --enable-marvin-workaround to spec to enable workaround
+  * Fix  timing based side-channel in RSA implementation ( Marvin attack ) 
+  * Add libgcrypt-CVE-2024-2236.patch
+
+-------------------------------------------------------------------
 Thu May  8 14:28:42 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 1.11.1: [jsc#PED-12227]

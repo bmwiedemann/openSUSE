@@ -56,6 +56,8 @@ Patch106:       libgcrypt-FIPS-jitter-errorcodes.patch
 Patch107:       libgcrypt-FIPS-jitter-whole-entropy.patch
 #PATCH-FIX-SUSE Remove not used rol64() definition after removing the built-in jitter rng
 Patch108:       libgcrypt-rol64-redefinition.patch
+#PATCH-FIX-CENTOS timing based side-channel in RSA implementation
+Patch109:       libgcrypt-CVE-2024-2236.patch
 
 BuildRequires:  automake >= 1.14
 BuildRequires:  libgpg-error-devel >= 1.49
@@ -128,6 +130,7 @@ export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
            --enable-digests="$DIGESTS" \
            --enable-kdfs="$KDFS" \
            --enable-noexecstack \
+           --enable-marvin-workaround \
            --disable-static \
 %ifarch %{sparc}
            --disable-asm \
