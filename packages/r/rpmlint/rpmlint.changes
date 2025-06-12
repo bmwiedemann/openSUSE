@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 10 09:45:34 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 2.7.0+git20250610.de7cb57e:
+  * AlternativesCheck: Fix .conf files regex
+  * BinariesCheck: also consider /usr/etc
+  * LogrotateCheck: consider configuration files in /usr/etc; add badness
+  * sysctl-whitelist: properly document the most recent review bug
+
+-------------------------------------------------------------------
 Tue Jun 03 11:54:46 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 2.7.0+git20250603.a9db0eb9:

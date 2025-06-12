@@ -5252,4 +5252,16 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * SpecCheck: Report rpm warnings on spec files</comment>
     <requestid>1282294</requestid>
   </revision>
+  <revision rev="506" vrev="1">
+    <srcmd5>654183423fa5234caa9c5a95fc99dd2f</srcmd5>
+    <version>2.7.0+git20250610.de7cb57e</version>
+    <time>1749736050</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.7.0+git20250610.de7cb57e:
+  * AlternativesCheck: Fix .conf files regex
+  * BinariesCheck: also consider /usr/etc
+  * LogrotateCheck: consider configuration files in /usr/etc; add badness
+  * sysctl-whitelist: properly document the most recent review bug</comment>
+    <requestid>1284408</requestid>
+  </revision>
 </revisionlist>
