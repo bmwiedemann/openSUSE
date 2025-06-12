@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Jun 10 23:52:30 UTC 2025 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Version 2.4.0:
+  * Added the ability to estimate the solar-illumination for a given
+    geolocation and time. 
+  * Added semi-automatic brightness adjustment proportional to 
+    geolocated solar-illumination.
+  * Ambient-light-level slider: when the slider is manually adjusted,
+    it has the side-effect of determining the ratio of 
+    indoor-illumination to solar-illumination (the the daylight-factor,
+    DF).
+  * Light-Metering dialog: semi-automatic metering replaces manual 
+    metering.
+  * Light-Metering dialog: added a display of estimated outdoor-lux (Eo)
+    and the current daylight-factor (DF).
+  * Light-Metering dialog: added a plot of the current day's estimated
+    solar and indoor illumination.
+  * Light-Metering dialog: replaced the profile-selector combo-box with
+    a list for easier accessibility.
+  * Light-Metering dialog: added the ability to dynamically adjust
+    for display DPI.
+  * Preset dialog: added an option to save/restore the daylight-factor.
+    This can be used to save daylight factors for various conditions,
+    or to activate them at a solar-elevation.
+  * Settings dialog: disabling protect-nvam now works properly for
+    adjustments due to light-metering.
+  * Duplicate Lux-profile points are filtered out to prevent confusing
+    the UI and lux evaluation process.
+  * DBus ddcutil-service: altered the detection parameters to request
+    only valid displays (prevents errors).
+  * Ambient-light brightness adjustment: prevent an infinite-loop if
+    no brightness controls are enabled.
+  * Preset-restoration and ambient-light brightness-adjustment now
+    share the same code for background operations.
+  * Model-only config files are no longer created, they're confusing
+    and likely not used (they can still be created manually with a 
+    text editor).
+
+-------------------------------------------------------------------
 Sat Apr 26 01:13:12 UTC 2025 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Update to version 2.3.0:
