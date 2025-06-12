@@ -198,7 +198,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 	    --enable-pcre2test-libedit \
 	    --enable-unicode
 
-%if 0%{?do_profiling}
+%if 0%{?do_profiling} && !0%{?want_reproducible_builds}
   %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
   export LANG=POSIX
   # do not run profiling in parallel for reproducible builds (boo#1040589 boo#1102408)

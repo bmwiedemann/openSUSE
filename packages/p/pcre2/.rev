@@ -315,4 +315,12 @@ Not source compatible. Installable in parallel with all packages.</comment>
     <comment></comment>
     <requestid>1269064</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>25d205e0238588ce9daad03c9fb28617</srcmd5>
+    <version>10.45</version>
+    <time>1749736342</time>
+    <user>anag_factory</user>
+    <comment>Mark profiling as non-deterministic (boo#1040589) (forwarded request 1284321 from bmwiedemann)</comment>
+    <requestid>1284336</requestid>
+  </revision>
 </revisionlist>
