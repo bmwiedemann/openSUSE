@@ -70,4 +70,12 @@
   * Updated to Unicode 16</comment>
     <requestid>1248029</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3c97813b1ab8b7f69685275fa31650b8</srcmd5>
+    <version>16.0.0</version>
+    <time>1749736415</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284981</requestid>
+  </revision>
 </revisionlist>

@@ -26,8 +26,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/fonttools/unicodedata2
 Source:         https://github.com/fonttools/unicodedata2/archive/%{version}.tar.gz#/unicodedata2-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -42,10 +44,10 @@ unicodedata2==%{version} is data from Unicode %{version}.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -55,6 +57,6 @@ export CFLAGS="%{optflags}"
 %doc README.md
 %license LICENSE
 %{python_sitearch}/unicodedata2.*.so
-%{python_sitearch}/unicodedata2-%{version}*-info
+%{python_sitearch}/unicodedata2-%{version}.dist-info
 
 %changelog
