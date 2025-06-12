@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun  6 08:26:03 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Sync spec file with SLE codestreams: [jsc#PED-13055, jsc#PED-13056]
+  * Add curl-mini.rpmlintrc to avoid rpmlint shlib-policy-name-error
+    when building the curl-mini package in SLE.
+  * Add libssh minimum version requirements.
+  * Use ldconfig_scriptlets when available.
+  * Remove unused option --disable-ntlm-wb.
+
+-------------------------------------------------------------------
 Wed Jun  4 07:06:46 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.14.1:

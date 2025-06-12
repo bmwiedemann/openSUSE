@@ -39,6 +39,7 @@ Source:         https://curl.se/download/curl-%{version}.tar.xz
 Source2:        https://curl.se/download/curl-%{version}.tar.xz.asc
 Source3:        baselibs.conf
 Source4:        https://daniel.haxx.se/mykey.asc#/curl.keyring
+Source5:        curl-mini.rpmlintrc
 Patch0:         libcurl-ocloexec.patch
 Patch1:         dont-mess-with-rpmoptflags.patch
 Patch2:         curl-secure-getenv.patch
@@ -62,7 +63,7 @@ BuildRequires:  pkgconfig(libssl)
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libbrotlidec)
-BuildRequires:  pkgconfig(libssh)
+BuildRequires:  pkgconfig(libssh) >= 0.9.0
 %endif
 %if 0%{?_with_stunnel:1}
 # used by the testsuite
@@ -168,7 +169,6 @@ sed -i 's/\(link_all_deplibs=\)unknown/\1no/' configure
     --disable-imap \
     --disable-mqtt \
     --disable-ntlm \
-    --disable-ntlm-wb \
     --disable-pop3 \
     --disable-rtsp \
     --disable-smtp \
@@ -219,7 +219,12 @@ pushd scripts
 popd
 %endif
 
+%if 0%{?sle_version} < 150400
+%post -n libcurl%{?psuffix}4 -p /sbin/ldconfig
+%postun -n libcurl%{?psuffix}4 -p /sbin/ldconfig
+%else
 %ldconfig_scriptlets -n libcurl%{?psuffix}4
+%endif
 
 %files -n libcurl%{?psuffix}4
 %license COPYING
