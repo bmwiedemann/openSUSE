@@ -1,7 +1,7 @@
 #
 # spec file for package python-serverfiles
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-serverfiles
 Version:        0.3.1
 Release:        0
@@ -25,7 +24,9 @@ License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/biolab/serverfiles
 Source:         https://files.pythonhosted.org/packages/source/s/serverfiles/serverfiles-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.11.1
@@ -43,10 +44,10 @@ locally for reuse.
 %setup -q -n serverfiles-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +55,7 @@ locally for reuse.
 
 %files %{python_files}
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/serverfiles
+%{python_sitelib}/serverfiles-%{version}*-info
 
 %changelog
