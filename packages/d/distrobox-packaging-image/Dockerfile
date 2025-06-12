@@ -24,7 +24,8 @@ RUN zypper --non-interactive install --no-recommends git \
     build \
     vim \
     vim-data \
-    scout-command-not-found \
+    cnf \
+    cnf-bash \
     cargo-vendor-filterer \
     obs-service-download_files \
     obs-service-tar \
