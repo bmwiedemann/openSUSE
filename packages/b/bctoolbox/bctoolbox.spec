@@ -39,7 +39,7 @@ BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bcunit) >= 5.3.0
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(mbedtls) < 3.0.0
 BuildRequires:  pkgconfig(mbedtls) >= 2.0.0
 %else
