@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools-git
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/wichert/setuptools-git
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools-git/setuptools-git-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -45,10 +47,10 @@ uniform naming convention.
 %setup -q -n setuptools-git-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %check
 export LANG=en_US.UTF-8
@@ -60,6 +62,7 @@ git config --global user.name "test"
 %files %{python_files}
 %license LICENSE.txt
 %doc AUTHORS.txt README.rst TODO.txt
-%{python_sitelib}/*
+%{python_sitelib}/setuptools[-_]git
+%{python_sitelib}/setuptools[-_]git-%{version}*-info
 
 %changelog
