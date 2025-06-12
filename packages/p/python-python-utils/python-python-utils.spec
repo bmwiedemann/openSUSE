@@ -21,7 +21,6 @@ Version:        3.8.2
 Release:        0
 Summary:        Utilities not included with the standard Python install
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/WoLpH/python-utils
 Source:         https://files.pythonhosted.org/packages/source/p/python-utils/python-utils-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
@@ -63,6 +62,6 @@ mv pytest.ini{.hide,}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/python[-_]utils
-%{python_sitelib}/python[-_]utils-%{version}*-info
+%{python_sitelib}/python[-_]utils-%{version}.dist-info
 
 %changelog

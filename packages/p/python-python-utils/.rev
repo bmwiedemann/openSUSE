@@ -92,4 +92,12 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1284527</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>fccd7e5b5cb2e29377479d0afe2d45d0</srcmd5>
+    <version>3.8.2</version>
+    <time>1749736408</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1284975</requestid>
+  </revision>
 </revisionlist>
