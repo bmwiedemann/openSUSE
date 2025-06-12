@@ -18,7 +18,7 @@
 
 Name:           libguestfs
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
-Version:        1.55.13
+Version:        1.56.0
 Release:        0
 Summary:        Access and modify virtual machine disk images
 License:        GPL-2.0-or-later
@@ -33,9 +33,7 @@ Source101:      README
 
 # Patches
 Patch1:         use-rtc-driftfix-slew-for-x86-only.patch
-Patch2:         004-Add-more-debugging-to-list_filesystems.patch
-Patch3:         005-Pipeline-style-when-mapping-and-filtering-filesystems.patch
-Patch4:         007-inspection-Ignore-btrfs-snapshots-of-roots.patch
+Patch2:         reproducible-builds.patch
 Patch100:       use-fuse3-for-build.patch
 
 BuildRequires:  bison
@@ -109,6 +107,8 @@ sed -i 's|RPMVSF_MASK_NOSIGNATURES|_RPMVSF_NOSIGNATURES|' daemon/rpm-c.c
 sed -i 's/tar zcf/tar -zcf/' appliance/Makefile.am
 
 %build
+###echo "CEA: mv /etc/hosts /tmp/hosts"
+###mv /etc/hosts /tmp/hosts
 # provide a wrapper to tar that creates bit-reproducible output (boo#1218191)
 # used in supermin for base.tar.gz, in %install for zz-winsupport.tar.gz zz-scripts.tar.gz and in appliance/Makefile.am for 3 more .tar.gz files
 SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH:-$(date -r %{SOURCE0} +%%s)}
@@ -216,6 +216,9 @@ make \
 }
 
 build_it %{?_smp_mflags} || build_it
+
+###echo "CEA: cp /tmp/hosts /etc/hosts"
+###cp /tmp/hosts /etc/hosts
 
 %install
 PATH=~/bin:$PATH

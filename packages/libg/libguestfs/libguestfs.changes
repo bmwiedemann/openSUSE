@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Jun 11 13:37:01 MDT 2025 - carnold@suse.com
+
+- Update to version 1.56.0 (jsc#PED-12706)
+  * Add support for Windows 2025 (thanks Ming Xie).
+  * Add support for TencentOS (Denise Cheng).
+  * Inspection of Ubuntu 22+ guests that use a split /usr
+    configuration now works properly (thanks Jaroslav Spanko,
+    Daniel Berrange).
+  * Inspecting guests that have duplicated root mountpoints now
+    works.
+  * Inspection of SUSE Linux guests using btrfs snapshots now
+    ignores snapshots that mirror content in the root filesystem
+    (thanks Ming Xie).
+  * Inspection of SUSE Linux >= 15 now returns the correct osinfo
+    short name (eg. "sle15") (thanks Ming Xie).
+  * New command_out and sh_out APIs which allow you to capture
+    output from guest commands that generate more output than the
+    protocol limit allows.
+  * New btrfs_scrub_full API which runs a full Btrfs scrub,
+    synchronously. It works more like fsck for other filesystems.
+  * The fstrim API has been modified to work around several issues
+    in upstream and RHEL 9 kernels related to XFS support (Eric
+    Sandeen, Dave Chinner).
+  * The existing e2fsck API has a new FORCENO option enabling use
+    of the command line -n flag.
+  * json-c is now required. This replaces Jansson which was
+    previously used for parsing JSON input files.
+  * OCaml ≥ 4.08 is now required.
+  * When using ./configure --disable-daemon we no longer require
+    augeas and hivex (thanks Mohamed Akram).
+  * zfs-fuse support has been dropped. The project is unmaintained
+    upstream (thanks Paul Bolle, Gwyn Ciesla, Timothée Ravier).
+  * Fix compatibility with GNU gettext 0.25.
+  * Fix dhcpcd failing on systemd-resolved stub (Thomas Wouters).
+  * Add support for dhcpcd and sfdisk on Debian (Daniel Gomez).
+  * Print the kernel utsname in debug output.
+  * We no longer emit a false warning about BLKDISCARD when
+    creating a block device.
+  * If qemu-img(1) commands fail during snapshot creation, make
+    sure we capture and print stderr from the qemu command (Cole
+    Robinson).
+  * For a complete list of changes and bug fixes see,
+    https://libguestfs.org/guestfs-release-notes-1.56.1.html
+- bsc#1216986 - libguestfs: embeds /etc/hosts
+  reproducible-builds.patch
+
+-------------------------------------------------------------------
+Fri Jun  6 11:18:27 MDT 2025 - carnold@suse.com
+
+- Update to version 1.55.14 (jsc#PED-12706)
+  * lib/create.c: Capture and raise qemu-img stderr
+  * inspection: Ignore btrfs snapshots of roots
+- Drop patches contained in new tarball
+  004-Add-more-debugging-to-list_filesystems.patch
+  005-Pipeline-style-when-mapping-and-filtering-filesystems.patch
+  007-inspection-Ignore-btrfs-snapshots-of-roots.patch
+
+-------------------------------------------------------------------
 Wed May 28 09:50:06 MDT 2025 - carnold@suse.com
 
 - Upstream bug fix for BTRFS based images (SLES and openSUSE)

@@ -1,0 +1,16 @@
+References: bsc#1216986 - libguestfs: embeds /etc/hosts (also bsc#1237212)
+Removes etc/hosts from base.tar.gz which will be different for each
+build environment.
+
+Index: libguestfs-1.56.0/appliance/Makefile.am
+===================================================================
+--- libguestfs-1.56.0.orig/appliance/Makefile.am
++++ libguestfs-1.56.0/appliance/Makefile.am
+@@ -62,6 +62,7 @@ stamp-supermin: make.sh packagelist supe
+ 	  supermin.d/hostfiles \
+ 	  supermin.d/init.tar.gz \
+ 	  supermin.d/udev-rules.tar.gz
++	gunzip supermin.d/base.tar.gz; tar --delete ./etc/hosts -f supermin.d/base.tar 2>/dev/null; gzip supermin.d/base.tar
+ 	touch $@
+ 
+ clean-supermin-appliance:

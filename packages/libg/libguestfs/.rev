@@ -1270,4 +1270,12 @@
     <comment>Upstream patches to fix how BTRFS based images (SLES and openSUSE) are handled</comment>
     <requestid>1281953</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>886905d09c35207433a02b7185d3e848</srcmd5>
+    <version>1.56.0</version>
+    <time>1749736381</time>
+    <user>anag_factory</user>
+    <comment>Update libguestfs to version 1.56.0. Fix bsc#1216986 for reproducible builds.</comment>
+    <requestid>1284945</requestid>
+  </revision>
 </revisionlist>
