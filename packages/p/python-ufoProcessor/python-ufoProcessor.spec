@@ -1,7 +1,7 @@
 #
 # spec file for package python-ufoProcessor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python36 1
 Name:           python-ufoProcessor
 Version:        1.9.0
@@ -25,8 +24,10 @@ Summary:        Read, write and generate UFOs with designspace data
 License:        MIT
 URL:            https://github.com/LettError/ufoProcessor
 Source:         https://files.pythonhosted.org/packages/source/u/ufoProcessor/ufoProcessor-%{version}.zip
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -59,10 +60,10 @@ Read, write and generate UFOs with designspace data.
 %setup -q -n ufoProcessor-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -71,6 +72,7 @@ Read, write and generate UFOs with designspace data.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/ufoProcessor
+%{python_sitelib}/ufo[Pp]rocessor-%{version}.dist-info
 
 %changelog

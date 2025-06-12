@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 12 05:07:20 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Wed Mar 17 15:11:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add missing BR python-fs
