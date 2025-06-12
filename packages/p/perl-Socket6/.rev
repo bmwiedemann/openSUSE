@@ -190,4 +190,14 @@ was plain wrong for years. (forwarded request 100045 from jnweiger)</comment>
     <comment></comment>
     <requestid>751736</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d40eacd1932b79715d750f8e4586a7bb</srcmd5>
+    <version>0.290.0</version>
+    <time>1749736286</time>
+    <user>anag_factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+</comment>
+    <requestid>1284906</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 11 15:24:11 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
 Thu Nov 28 20:22:50 UTC 2019 -  <tina.mueller@suse.com>
 
 - Add manual license BSD-3-Clause to cpanspec.yml
