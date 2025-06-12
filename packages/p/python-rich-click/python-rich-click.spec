@@ -1,7 +1,7 @@
 #
 # spec file for package python-rich-click
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without libalternatives
 Name:           python-rich-click
 Version:        1.7.4
 Release:        0
@@ -24,9 +24,13 @@ Summary:        Format click help output nicely with rich
 License:        MIT
 URL:            https://github.com/ewels/rich-click
 Source:         https://files.pythonhosted.org/packages/source/r/rich-click/rich-click-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-click >= 8
 Requires:       python-rich >= 10.7.0
 BuildArch:      noarch
@@ -43,18 +47,15 @@ Format click help output nicely with rich.
 %setup -q -n rich-click-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/rich-click
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative rich-click
-
-%postun
-%python_uninstall_alternative rich-click
+%pre
+%python_libalternatives_reset_alternative rich-click
 
 #%%check
 # No tests yet https://github.com/ewels/rich-click/issues/25

@@ -84,4 +84,12 @@
   * Set `legacy_windows` by default to `None`.</comment>
     <requestid>1158508</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6b65a37d566189d7d58b033641d7009b</srcmd5>
+    <version>1.7.4</version>
+    <time>1749736453</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build and libalternatives</comment>
+    <requestid>1285051</requestid>
+  </revision>
 </revisionlist>
