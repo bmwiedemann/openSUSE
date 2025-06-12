@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-book-theme
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python36 1
 %define modname sphinx-book-theme
 Name:           python-sphinx-book-theme
 Version:        0.1.3
@@ -25,18 +23,20 @@ Release:        0
 Summary:        Jupyter Book: Create an online book with Jupyter Notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/executablebooks/sphinx-book-theme
-Source0:        https://files.pythonhosted.org/packages/source/s/%{modname}/%{modname}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/s/sphinx-book-theme/%{modname}-%{version}.tar.gz
 Source98:       python-sphinx-book-theme-rpmlintrc
 Source99:       add_lang_files.lua
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-PyYAML
+Requires:       python-Sphinx >= 2
 Requires:       python-beautifulsoup4 >= 4.6.1
 Requires:       python-click
 Requires:       python-docutils >= 0.15
 Requires:       python-pydata-sphinx-theme
-Requires:       python-PyYAML
-Requires:       python-Sphinx >= 2
 Suggests:       python-ablog
 Suggests:       python-coverage
 Suggests:       python-folium
@@ -64,12 +64,12 @@ Suggests:       python-sphinxext-opengraph
 Suggests:       python-web-compile
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module Sphinx >= 2}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.6.1}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module docutils >= 0.15}
 BuildRequires:  %{python_module pydata-sphinx-theme >= 0.6.0}
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module Sphinx >= 2}
 # /SECTION
 %python_subpackages
 
@@ -80,10 +80,10 @@ Jupyter Book: Create an online book with Jupyter Notebooks
 %setup -q -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
