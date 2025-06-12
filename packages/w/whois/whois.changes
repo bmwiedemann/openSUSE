@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun  8 17:39:22 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 5.6.2:
+  * Update the .post and .in (and related IDN TLDs) TLD servers
+  * Remove 1 new gTLDs which is no longer active
+
+-------------------------------------------------------------------
 Mon May 19 15:22:31 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
 
 - Update to version 5.6.1:
