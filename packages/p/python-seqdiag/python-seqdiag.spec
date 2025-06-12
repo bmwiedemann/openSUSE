@@ -1,7 +1,7 @@
 #
 # spec file for package python-seqdiag
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without libalternatives
 Name:           python-seqdiag
 Version:        3.0.0
 Release:        0
@@ -27,12 +26,14 @@ Group:          Development/Languages/Python
 URL:            http://blockdiag.com/
 Source:         https://files.pythonhosted.org/packages/source/s/seqdiag/seqdiag-%{version}.tar.gz
 BuildRequires:  %{python_module blockdiag >= 1.5.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-blockdiag >= 1.5.0
 Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,22 +47,20 @@ BuildArch:      noarch
 %setup -q -n seqdiag-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/seqdiag
 
-%post
-%python_install_alternative seqdiag
-
-%postun
-%python_uninstall_alternative seqdiag
+%pre
+%python_libalternatives_reset_alternative seqdiag
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGES.rst README.rst
 %python_alternative %{_bindir}/seqdiag
-%{python_sitelib}/*
+%{python_sitelib}/seqdiag
+%{python_sitelib}/seqdiag-%{version}*-info
 
 %changelog

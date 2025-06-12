@@ -71,4 +71,12 @@
     - Separator does not support both default_fontsize and default_textcolor</comment>
     <requestid>980777</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>12ada43ef6567251704c388d0336d061</srcmd5>
+    <version>3.0.0</version>
+    <time>1749736468</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build and libalternatives</comment>
+    <requestid>1285101</requestid>
+  </revision>
 </revisionlist>
