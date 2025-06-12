@@ -954,4 +954,12 @@
     <comment>add qpdf-11.9.1-gcc15.patch from upstream to fix gcc-15 compile time error (forwarded request 1274144 from hsk17)</comment>
     <requestid>1274146</requestid>
   </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>bc93c0a218d3fff661f550402c35f8d1</srcmd5>
+    <version>11.9.1</version>
+    <time>1749736314</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1284933</requestid>
+  </revision>
 </revisionlist>
