@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:43:01 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed Jan  5 22:48:40 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Shorten Summary to silence rpmlint. 

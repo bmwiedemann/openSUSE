@@ -1,7 +1,7 @@
 #
 # spec file for package python-sdnotify
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sdnotify
 Version:        0.3.2
 Release:        0
@@ -25,11 +24,12 @@ License:        MIT
 URL:            https://github.com/bb4242/sdnotify
 Source:         https://files.pythonhosted.org/packages/source/s/sdnotify/sdnotify-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -39,14 +39,15 @@ A pure Python implementation of systemd's service notification protocol (sd_noti
 %setup -q -n sdnotify-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/sdnotify
+%{python_sitelib}/sdnotify-%{version}*-info
 
 %changelog

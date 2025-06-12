@@ -15,4 +15,12 @@
     <comment>- Shorten Summary to silence rpmlint.</comment>
     <requestid>944128</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c9cc8b9485ab25178301347699f6a59a</srcmd5>
+    <version>0.3.2</version>
+    <time>1749736468</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1285100</requestid>
+  </revision>
 </revisionlist>
