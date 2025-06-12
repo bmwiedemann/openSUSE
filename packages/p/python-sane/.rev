@@ -28,4 +28,12 @@
   - Add __next__ to _SaneIterator for Python 3</comment>
     <requestid>891897</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1bfa16d5163c6569083a21f134846aaa</srcmd5>
+    <version>2.9.1</version>
+    <time>1749736459</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1285067</requestid>
+  </revision>
 </revisionlist>
