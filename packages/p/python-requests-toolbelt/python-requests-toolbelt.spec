@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-toolbelt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,8 +32,10 @@ Patch0:         stop-using-pyopenssl-compat.patch
 # PATCH-FIX-UPSTREAM 356-add-missing-casette-files.patch gh#requests/toolbelt!356 mcepl@suse.com
 # add missing casette files
 Patch1:         356-add-missing-casette-files.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.12.2}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.12.2
@@ -63,10 +65,10 @@ cp %{SOURCE1} tests/certs
 rm -rf requests_toolbelt.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
