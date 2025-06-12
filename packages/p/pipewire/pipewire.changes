@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 11 13:54:00 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.4.5:
+  * Highlights
+    - Fix negotiation errors when using multichannel output.
+      Fixes audio in some games and mpv in some cases.
+    - 1 Small fix and 1 improvement.
+  * SPA
+    - Fix another bug caused by reversing the filter default
+      value preference. (#4722)
+  * pulse-server
+    - Implement STREAM_DONT_INHIBIT_AUTO_SUSPEND flags. This
+      can reduce power in pavucontrol when monitoring inactive
+      streams.  (#4255 #4726)
+  * ALSA
+    - Fix a potential deadlock when calling _drop and _drain at
+      the same time. (#4728)
+
+-------------------------------------------------------------------
 Fri May 30 07:39:04 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.4.4:
