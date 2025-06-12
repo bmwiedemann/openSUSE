@@ -1,7 +1,7 @@
 #
 # spec file for package python-robot-detection
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,10 @@ URL:            https://github.com/rory/robot-detection
 # https://github.com/rory/robot-detection/issues/2
 Source0:        https://github.com/rory/robot-detection/archive/v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/amandasaurus/robot-detection/pull/3 get rid of six
-Patch:          no-six.patch
+Patch0:         no-six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,14 +43,14 @@ Library for detecting if a HTTP User Agent header is likely to be a bot.
 %autosetup -p1 -n robot-detection-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m unittest discover
+%pyunittest
 
 %files %{python_files}
 %doc README.md

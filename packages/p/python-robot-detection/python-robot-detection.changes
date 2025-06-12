@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 12 08:13:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri Jun  7 12:24:11 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add no-six.patch to get rid of the six dependency

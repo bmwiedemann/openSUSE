@@ -33,4 +33,12 @@
 - Add no-six.patch to get rid of the six dependency</comment>
     <requestid>1179857</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>77d6fe3c0f7f4495e18e85448d8355fb</srcmd5>
+    <version>0.4.0</version>
+    <time>1749736453</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1285053</requestid>
+  </revision>
 </revisionlist>
