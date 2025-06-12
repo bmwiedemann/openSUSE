@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 21 12:47:07 UTC 2025 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.732.g739e1c2f:
+  * ci(suse.conf.example): change log levels (jsc#PED-12922)
+  * fix(rngd): adjust license to match the license of the whole project
+  * fix(dracut): kernel module name normalization in drivers lists (bsc#1241680)
+
+-------------------------------------------------------------------
 Thu Apr 17 05:40:51 UTC 2025 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.725.g1df2cbe1:

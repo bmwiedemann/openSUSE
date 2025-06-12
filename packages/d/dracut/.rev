@@ -2501,4 +2501,15 @@ and stuff that has no relevance to the end user (i.e CI related commits) (forwar
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1243843</comment>
   </revision>
+  <revision rev="244" vrev="2">
+    <srcmd5>81eee2548020776b7e90a180cb17a8a8</srcmd5>
+    <version>059+suse.732.g739e1c2f</version>
+    <time>1749736054</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 059+suse.732.g739e1c2f:
+  * ci(suse.conf.example): change log levels (jsc#PED-12922)
+  * fix(rngd): adjust license to match the license of the whole project
+  * fix(dracut): kernel module name normalization in drivers lists (bsc#1241680)</comment>
+    <requestid>1284830</requestid>
+  </revision>
 </revisionlist>
