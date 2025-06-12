@@ -1126,4 +1126,12 @@
 </comment>
     <requestid>1267958</requestid>
   </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>34e81901448a745459448009508e9fbb</srcmd5>
+    <version>1.15.0</version>
+    <time>1749736055</time>
+    <user>anag_factory</user>
+    <comment>- no longer require xinit so it can be dropped from SLE16</comment>
+    <requestid>1284838</requestid>
+  </revision>
 </revisionlist>

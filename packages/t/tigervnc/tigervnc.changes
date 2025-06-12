@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 11 11:20:38 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer require xinit so it can be dropped from SLE16
+
+-------------------------------------------------------------------
 Tue Apr  8 16:28:37 UTC 2025 - Joan Torres <joan.torres@suse.com>
 
 - Update to tigervnc 1.15.0

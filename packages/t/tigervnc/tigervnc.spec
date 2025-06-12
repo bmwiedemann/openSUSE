@@ -174,7 +174,7 @@ BuildRequires:  firewall-macros
 Requires:       windowmanager
 Requires:       /usr/bin/dbus-launch
 Requires:       xauth
-Requires:       xinit
+Recommends:     xinit
 Requires:       xkbcomp
 Requires:       xkeyboard-config
 Requires:       xorg-x11-fonts-core
