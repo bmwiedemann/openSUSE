@@ -35,4 +35,12 @@ Required by the latest version of python-audiomate, which is already in openSUSE
     * type hints (#129), @hadware and @rabitt</comment>
     <requestid>1173977</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b051cce0888888f91ec6808945188739</srcmd5>
+    <version>1.5.0</version>
+    <time>1749739620</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1285139</requestid>
+  </revision>
 </revisionlist>
