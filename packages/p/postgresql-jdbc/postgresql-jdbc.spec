@@ -18,7 +18,7 @@
 
 
 Name:           postgresql-jdbc
-Version:        42.7.5
+Version:        42.7.7
 Release:        0
 Summary:        JDBC driver for PostgreSQL
 License:        BSD-2-Clause

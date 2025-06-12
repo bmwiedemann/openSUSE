@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun 12 09:15:13 UTC 2025 - Michael Calmer <mc@suse.com>
+
+- Upgrade to upstream version 42.7.7
+  - security: Client Allows Fallback to Insecure Authentication Despite
+    channelBinding=require configuration - CVE-2025-49146 (bsc#1244490)
+  - fix: ensure Connection.isValid() returns true even if prepared
+    statements deallocate
+  - fix: isValid incorrectly called execute, instead of executeWithFlags
+  - add the ability to turn off automatic LSN flush
+  - Handle protocol 3.2 and wider cancel keys
+  - Use query to find the current catalog instead of relying on the
+    database in the connection URL or connection properties as this
+    could be different if connected through a pooler or proxy
+  - fix: ArrayIndexOutOfBounds when write big object into GSS enabled
+    connection, make GSSInputStream robust in face of streams that
+    produce incomplete reads
+  - fix: EOFException on PreparedStatement#toString with unset bytea
+    parameter
+
+-------------------------------------------------------------------
 Tue Apr  1 13:14:03 UTC 2025 - Michael Calmer <mc@suse.com>
 
 - Upgrade to upstream version 42.7.5
