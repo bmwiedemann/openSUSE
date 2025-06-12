@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-bootstrap-theme
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinx-bootstrap-theme
 Version:        0.8.1
 Release:        0
@@ -25,12 +24,13 @@ License:        Apache-2.0 AND MIT
 Group:          Development/Languages/Python
 URL:            http://ryan-roemer.github.com/sphinx-bootstrap-theme/README.html
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx-bootstrap-theme/sphinx-bootstrap-theme-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 1.6.1
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -43,15 +43,16 @@ can use any number of different Bootswatch CSS themes.
 %setup -q -n sphinx-bootstrap-theme-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE.txt
 %doc HISTORY.rst README.rst TODO.rst
-%{python_sitelib}/*
+%{python_sitelib}/sphinx[-_]bootstrap[-_]theme
+%{python_sitelib}/sphinx[-_]bootstrap[-_]theme-%{version}*-info
 
 %changelog

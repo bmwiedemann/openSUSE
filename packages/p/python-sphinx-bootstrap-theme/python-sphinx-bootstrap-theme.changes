@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 12 12:19:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Thu Mar 23 15:12:38 UTC 2023 - pgajdos@suse.com
 
 - Fabric not required
