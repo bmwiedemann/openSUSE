@@ -5690,4 +5690,15 @@ boo#1224178</comment>
   ppc-fedora-fix-partition-alloc-compile.patch (context)</comment>
     <requestid>1282255</requestid>
   </revision>
+  <revision rev="464" vrev="1">
+    <srcmd5>dbb0741ea5d51cb1ec55a10dbf98901b</srcmd5>
+    <version>137.0.7151.103</version>
+    <time>1749736351</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 137.0.7151.103
+  (stable release 2025-06-10) (boo#1244452)
+  * CVE-2025-5958: Use after free in Media
+  * CVE-2025-5959: Type Confusion in V8</comment>
+    <requestid>1284810</requestid>
+  </revision>
 </revisionlist>
