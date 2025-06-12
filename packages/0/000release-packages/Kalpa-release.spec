@@ -1,5 +1,5 @@
 #
-# spec file for package openSUSE-Kalpa-release.spec
+# spec file for package Kalpa-release.spec
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -17,9 +17,9 @@
 
 
 Name:           Kalpa-release
-Version:        20250611
+Version:        20250612
 Release:        0
-Summary:        openSUSE Kalpa 
+Summary:        Kalpa Desktop 
 License:        GPL-2.0-or-later
 Group:          System/Fhs
 Source100:      weakremovers.inc
@@ -174,9 +174,9 @@ ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 %include %{SOURCE100}
 Provides:       %name-%version
 Provides:       product() = Kalpa
-Provides:       product(Kalpa) = 20250611-0
-Provides:       product-label() = openSUSE%20Kalpa
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Akalpa%3A20250611
+Provides:       product(Kalpa) = 20250612-0
+Provides:       product-label() = Kalpa
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Akalpa%3A20250612
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
 Requires:       product_flavor(Kalpa)
@@ -184,20 +184,20 @@ Requires:       product_flavor(Kalpa)
 
 
 %description
-openSUSE Kalpa bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
-        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and opinionated desktop.
+Kalpa desktop bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
+        It inherits the benefits of openSUSE Tumbleweed and MicroOS while redefining the operating system into a small, efficient and opinionated desktop.
 
 %package -n Kalpa-release-appliance
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(Kalpa) = 20250611-0
-Summary:        openSUSE Kalpa%{?betaversion: %{betaversion}}
+Provides:       product_flavor(Kalpa) = 20250612-0
+Summary:        Kalpa Desktop%{?betaversion: %{betaversion}}
 
 %description appliance
-openSUSE Kalpa bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
-        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and opinionated desktop.
+Kalpa desktop bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
+        It inherits the benefits of openSUSE Tumbleweed and MicroOS while redefining the operating system into a small, efficient and opinionated desktop.
 
 %files appliance
 %defattr(-,root,root)
@@ -219,25 +219,25 @@ fi
 %install
 mkdir -p %{buildroot}%{_sysconfdir} %{buildroot}%{_prefix}/lib/issue.d %{buildroot}/run
 
-echo -e "\nWelcome to openSUSE Kalpa (%{_target_cpu}) - Kernel \\\r (\\\l).\n" > %{buildroot}%{_prefix}/lib/issue.d/10-OS
+echo -e "\nWelcome to Kalpa Desktop (%{_target_cpu}) - Kernel \\\r (\\\l).\n" > %{buildroot}%{_prefix}/lib/issue.d/10-OS
 echo -e "\n" > %{buildroot}%{_prefix}/lib/issue.d/90-OS
 
 VERSION_ID=`echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;'`
 # note: VERSION is an optional field and has no meaning other than informative on a rolling distro
 # We do thus not add it to the os-release file
 cat > %{buildroot}%{_prefix}/lib/os-release <<EOF
-NAME="openSUSE Kalpa"
+NAME="Kalpa Desktop"
 # VERSION="%{version}%{?betaversion: %{betaversion}}"
-ID="opensuse-kalpa"
-ID_LIKE="suse opensuse opensuse-tumbleweed opensuse-microos microos"
+ID="kalpa-desktop"
+ID_LIKE="suse opensuse opensuse-tumbleweed opensuse-microos opensuse-kalpa microos"
 VERSION_ID="$VERSION_ID"
-PRETTY_NAME="openSUSE Kalpa"
+PRETTY_NAME="Kalpa Desktop"
 ANSI_COLOR="0;32"
 CPE_NAME="cpe:/o:opensuse:kalpa:%{version}"
 BUG_REPORT_URL="https://bugzilla.opensuse.org"
 SUPPORT_URL="https://bugs.opensuse.org"
-HOME_URL="https://www.kalpadesktop.org/"
-DOCUMENTATION_URL="https://en.opensuse.org/Portal:Kalpa"
+HOME_URL="https://kalpadesktop.org/"
+DOCUMENTATION_URL="https://kalpadesktop.org/documentation"
 LOGO="distributor-logo-Kalpa"
 EOF
 ln -s ..%{_prefix}/lib/os-release %{buildroot}%{_sysconfdir}/os-release
@@ -257,11 +257,11 @@ cat >%{buildroot}%{_sysconfdir}/products.d/Kalpa.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>Kalpa</name>
-  <version>20250611</version>
+  <version>20250612</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:kalpa:20250611</cpeid>
+  <cpeid>cpe:/o:opensuse:kalpa:20250612</cpeid>
   <productline>Kalpa</productline>
   <register>
     <pool>
@@ -271,10 +271,10 @@ cat >%{buildroot}%{_sysconfdir}/products.d/Kalpa.prod << EOF
   </register>
   <repositories>
   </repositories>
-  <summary>openSUSE Kalpa</summary>
-  <shortsummary>openSUSE Kalpa</shortsummary>
-  <description>openSUSE Kalpa bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
-        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and opinionated desktop.</description>
+  <summary>Kalpa Desktop</summary>
+  <shortsummary>Kalpa</shortsummary>
+  <description>Kalpa desktop bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
+        It inherits the benefits of openSUSE Tumbleweed and MicroOS while redefining the operating system into a small, efficient and opinionated desktop.</description>
   <linguas>
     <language>en_US</language>
   </linguas>
@@ -308,6 +308,10 @@ EOF
 
 
 %post
+# Kalpa is a base product, link it properly
+if [ ! -e %{_sysconfdir}/products.d/baseproduct ]; then
+    ln -sf Kalpa.prod %{_sysconfdir}/products.d/baseproduct
+fi
 
 %files
 %defattr(644,root,root,755)
