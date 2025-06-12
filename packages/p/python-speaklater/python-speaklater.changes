@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 12 12:16:50 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri Dec  1 16:43:21 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add %{?sle15_python_module_pythons}

@@ -1,7 +1,7 @@
 #
 # spec file for package python-speaklater
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,11 @@ Release:        0
 Summary:        Implements a lazy string for python useful for use with gettext
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/mitsuhiko/speaklater
+URL:            https://github.com/mitsuhiko/speaklater
 Source:         https://files.pythonhosted.org/packages/source/s/speaklater/speaklater-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -40,16 +42,18 @@ time the value is evaluated based on a callable you provide.
 %setup -q -n speaklater-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/speaklater.py
+%pycache_only %{python_sitelib}/__pycache__/speaklater*
+%{python_sitelib}/speaklater-%{version}*-info
 
 %check
 # no testsuite found
