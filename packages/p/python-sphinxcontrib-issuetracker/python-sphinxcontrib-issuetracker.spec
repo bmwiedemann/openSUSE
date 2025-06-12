@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-issuetracker
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_with     test
 Name:           python-sphinxcontrib-issuetracker
 Version:        0.11
@@ -24,10 +23,12 @@ Release:        0
 Summary:        Sphinx integration with different issuetrackers
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-URL:            http://packages.python.org/sphinxcontrib-issuetracker
+URL:            https://packages.python.org/sphinxcontrib-issuetracker
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-issuetracker/sphinxcontrib-issuetracker-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx >= 1.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 1.1
@@ -49,10 +50,10 @@ plaintext.
 %setup -q -n sphinxcontrib-issuetracker-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
@@ -67,6 +68,6 @@ py.test-%{$python_bin_suffix}
 %doc CREDITS README.rst CHANGES.rst
 %{python_sitelib}/sphinxcontrib/issuetracker/
 %{python_sitelib}/sphinxcontrib_issuetracker-%{version}-py*-nspkg.pth
-%{python_sitelib}/sphinxcontrib_issuetracker-%{version}-py*.egg-info
+%{python_sitelib}/sphinxcontrib_issuetracker-%{version}*-info
 
 %changelog

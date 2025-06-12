@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 12 13:19:03 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri Dec  7 21:05:37 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove wrong BR on python-sphinxcontrib
