@@ -1,0 +1,9 @@
+    include <abstractions/base>
+    include <abstractions/bash>
+    include <abstractions/consoles>
+
+    /usr/bin/bash ix,
+
+    /usr/bin/env      rPx -> forgejo//simple_tool,
+    /usr/bin/cat      rPx -> forgejo//simple_tool,
+    /usr/bin/basename rPx -> forgejo//simple_tool,

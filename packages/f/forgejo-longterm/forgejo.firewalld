@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Forgejo</short>
+  <description>Forgejo is a self-hostable forge. It was forked from gitea, and has the old UI style from GitHub.</description>
+  <port protocol="tcp" port="3000"/>
+</service>

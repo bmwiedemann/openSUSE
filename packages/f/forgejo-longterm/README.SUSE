@@ -1,0 +1,40 @@
+ SUSE Specific Notes
+---------------------
+
+By default the package does not allow writing to `/etc/forgejo/conf/app.ini`.
+This is not a problem during normal runtime. But during the initial setup forgejo
+wants to write to this file. We can temporarily allow it with:
+
+```
+chown -R forgejo: /etc/forgejo/conf/
+```
+
+If apparmor is enabled as well, we need to temporarily allow writing there as well.
+You can check this with:
+
+```
+ps aufxZ | grep '^forgejo'
+forgejo (enforce) ...
+```
+
+If it is running in apparmor use this to allow the temporary permissions:
+
+```
+echo "/etc/forgejo/conf/app.ini rwlk," >> /etc/apparmor.d/local/forgejo
+apparmor_parser -r /etc/apparmor.d/forgejo
+```
+
+Once the initial installation is done you can use this to restore the permissions:
+
+```
+rpm --setugids --setperms forgejo
+```
+
+And remove the line from the `/etc/apparmor.d/local/forgejo`  file again and reload
+the profile with
+
+```
+apparmor_parser -r /etc/apparmor.d/forgejo
+```
+
+
