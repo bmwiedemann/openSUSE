@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 11 14:56:08 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.350.0 (0.35)
+   see /usr/share/doc/packages/perl-File-Find-Rule/Changes
+
+  0.35 Thursday 5th June, 2025
+    Fix for CVE-2011-10007 https://github.com/richardc/perl-file-find-rule/pull/4
+    bsc#1244148
+
+-------------------------------------------------------------------
 Sat May 24 16:27:42 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

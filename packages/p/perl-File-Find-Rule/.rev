@@ -109,4 +109,16 @@
   See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
     <requestid>1279836</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3d4af5e949d7ed4f92bab8d93ff24035</srcmd5>
+    <version>0.350.0</version>
+    <time>1749736324</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.350.0 (0.35)
+   see /usr/share/doc/packages/perl-File-Find-Rule/Changes
+  0.35 Thursday 5th June, 2025
+    Fix for CVE-2011-10007 https://github.com/richardc/perl-file-find-rule/pull/4
+    bsc#1244148 (forwarded request 1284892 from tinita)</comment>
+    <requestid>1285043</requestid>
+  </revision>
 </revisionlist>

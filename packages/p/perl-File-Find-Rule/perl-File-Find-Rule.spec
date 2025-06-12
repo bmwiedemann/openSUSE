@@ -18,10 +18,10 @@
 
 %define cpan_name File-Find-Rule
 Name:           perl-File-Find-Rule
-Version:        0.340.0
+Version:        0.350.0
 Release:        0
-# 0.34 -> normalize -> 0.340.0
-%define cpan_version 0.34
+# 0.35 -> normalize -> 0.350.0
+%define cpan_version 0.35
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Alternative interface to File::Find
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -43,7 +43,7 @@ File::Find::Rule is a friendlier interface to File::Find. It allows you to
 build rules which specify the desired files and directories.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
