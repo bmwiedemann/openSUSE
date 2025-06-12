@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Text-Soundex
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Text-Soundex
-Version:        3.05
-Release:        0
-#Upstream: Artistic-1.0 or GPL-1.0+
 %define cpan_name Text-Soundex
-Summary:        Implementation of the soundex algorithm
+Name:           perl-Text-Soundex
+Version:        3.50.0
+Release:        0
+# 3.05 -> normalize -> 3.50.0
+%define cpan_version 3.05
+#Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        HPND
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Text-Soundex/
-Source0:        http://www.cpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Summary:        Implementation of the soundex algorithm
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Text::Soundex) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -79,14 +81,14 @@ An example of where these algorithm differ follows:
     print soundex_nara("Ashcraft"), "\n";  # prints: A261
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -94,7 +96,7 @@ An example of where these algorithm differ follows:
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes LICENSE README
+%doc Changes README
+%license LICENSE
 
 %changelog
