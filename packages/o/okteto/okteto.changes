@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jun 12 05:16:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.8.0:
+  * New Features
+    - Adds the flag for redeploying dependencies in pipeline and
+      preview dependencies. by @jLopezbarb in #4715
+    - feat: add destroy with dependencies on CLI by @jLopezbarb in
+      #4718
+    - allow to get dependency builds env vars by @jLopezbarb in
+      #4716
+    - Fixes #4714. Added output option to namespace list command to
+      specify json or yaml by @ifbyol in #4722
+    - feat: enhance deploy and destroy pipelines with dependency
+      handling by @jLopezbarb in #4725
+  * Dependencies
+    - build(deps): bump github.com/containerd/containerd/v2 (#4721)
+    - build(deps): bump rack from 3.1.12 to 3.1.14 in /samples/ruby
+      (#4712)
+    - build(deps): bump rack-session from 2.0.0 to 2.1.1 in
+      /samples/ruby (#4713)
+    - fix: update SYNCTHING_VERSION to 1.29.6 and add syncthing
+      data volume mounts (#4711)
+    - fix: revert SYNCTHING_VERSION to 1.29.4 for compatibility
+      (#4707)
+
+-------------------------------------------------------------------
 Wed May 07 10:43:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.7.0:
