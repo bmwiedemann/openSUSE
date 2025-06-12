@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-documentedlist
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_with     test
 Name:           python-sphinxcontrib-documentedlist
 Version:        0.6
@@ -29,16 +28,17 @@ Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-d
 # https://github.com/sphinx-contrib/documentedlist/issues/5
 Patch0:         python-sphinxcontrib-documentedlist-no-six.patch
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with test}
-BuildRequires:  %{python_module six}
-%endif
 Requires:       python-Sphinx >= 0.6
 Requires:       python-six
 BuildArch:      noarch
-
+%if %{with test}
+BuildRequires:  %{python_module six}
+%endif
 %python_subpackages
 
 %description
@@ -56,18 +56,17 @@ providing a description for the item.
 %autosetup -p1 -n sphinxcontrib-documentedlist-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %{python_sitelib}/sphinxcontrib/documentedlist.py*
 %pycache_only %{python_sitelib}/sphinxcontrib/__pycache__
 %{python_sitelib}/sphinxcontrib_documentedlist-%{version}-py*-nspkg.pth
-%{python_sitelib}/sphinxcontrib_documentedlist-%{version}-py*.egg-info
+%{python_sitelib}/sphinxcontrib_documentedlist-%{version}*-info
 
 %changelog
