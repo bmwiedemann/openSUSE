@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-asyncio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_with     test
 Name:           python-sphinxcontrib-asyncio
 Version:        0.3.0
@@ -27,15 +26,16 @@ Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/sphinxcontrib-asyncio
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-asyncio/sphinxcontrib-asyncio-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Sphinx
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module pytest}
 %endif
-Requires:       python-Sphinx
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -45,14 +45,14 @@ Sphinx extension for adding asyncio-specific markups
 %setup -q -n sphinxcontrib-asyncio-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 #pushd docs
 #PYTHONPATH=.. make html
 #rm _build/html/.buildinfo
 #popd
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Remove sphinxcontrib namespace package files provided by python-Sphinx
@@ -65,6 +65,6 @@ Sphinx extension for adding asyncio-specific markups
 %{python_sitelib}/sphinxcontrib/asyncio.py*
 %pycache_only %dir %{python_sitelib}/sphinxcontrib/__pycache__/
 %pycache_only %{python_sitelib}/sphinxcontrib/__pycache__/asyncio*.py*
-%{python_sitelib}/sphinxcontrib_asyncio-%{version}-py*.egg-info
+%{python_sitelib}/sphinxcontrib_asyncio-%{version}*-info
 
 %changelog

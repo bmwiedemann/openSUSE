@@ -48,4 +48,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>951748</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>8975318dc417ab4ea0c4785161aabda0</srcmd5>
+    <version>0.3.0</version>
+    <time>1749744691</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1285152</requestid>
+  </revision>
 </revisionlist>
