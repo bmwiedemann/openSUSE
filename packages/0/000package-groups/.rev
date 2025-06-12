@@ -2181,4 +2181,12 @@ Fixes https://openqa.opensuse.org/tests/4663488#step/select_patterns/142</commen
     <user>dimstar_suse</user>
     <comment>Drop xen patterns from DVD</comment>
   </revision>
+  <revision rev="306" vrev="304">
+    <srcmd5>3f457b4f5c68abaf3ed50f94eab296a5</srcmd5>
+    <version>unknown</version>
+    <time>1749736329</time>
+    <user>anag_factory</user>
+    <comment>Minor edits for Kalpa branding</comment>
+    <requestid>1285108</requestid>
+  </revision>
 </revisionlist>

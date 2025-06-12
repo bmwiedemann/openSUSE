@@ -1,5 +1,5 @@
 #
-# spec file for package openSUSE-Kalpa-release.spec
+# spec file for package Kalpa-release.spec
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -201,18 +201,18 @@ VERSION_ID=`echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;'`
 # note: VERSION is an optional field and has no meaning other than informative on a rolling distro
 # We do thus not add it to the os-release file
 cat > %{buildroot}%{_prefix}/lib/os-release <<EOF
-NAME="openSUSE Kalpa"
+NAME="Kalpa Desktop"
 # VERSION="%{version}%{?betaversion: %{betaversion}}"
-ID="opensuse-kalpa"
-ID_LIKE="suse opensuse opensuse-tumbleweed opensuse-microos microos"
+ID="kalpa-desktop"
+ID_LIKE="suse opensuse opensuse-tumbleweed opensuse-microos opensuse-kalpa microos"
 VERSION_ID="$VERSION_ID"
-PRETTY_NAME="openSUSE Kalpa"
+PRETTY_NAME="Kalpa Desktop"
 ANSI_COLOR="0;32"
 CPE_NAME="cpe:/o:opensuse:kalpa:%{version}"
 BUG_REPORT_URL="https://bugzilla.opensuse.org"
 SUPPORT_URL="https://bugs.opensuse.org"
-HOME_URL="https://www.kalpadesktop.org/"
-DOCUMENTATION_URL="https://en.opensuse.org/Portal:Kalpa"
+HOME_URL="https://kalpadesktop.org/"
+DOCUMENTATION_URL="https://kalpadesktop.org/documentation"
 LOGO="distributor-logo-Kalpa"
 EOF
 ln -s ..%{_prefix}/lib/os-release %{buildroot}%{_sysconfdir}/os-release
@@ -229,6 +229,10 @@ done
 ___CREATE_PRODUCT_FILES___
 
 %post
+# Kalpa is a base product, link it properly
+if [ ! -e %{_sysconfdir}/products.d/baseproduct ]; then
+    ln -sf Kalpa.prod %{_sysconfdir}/products.d/baseproduct
+fi
 
 %files
 %defattr(644,root,root,755)
