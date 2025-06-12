@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 12 12:03:18 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri Dec 15 10:43:10 UTC 2017 - tchvatal@suse.com
 
 - Drop check phase again as upstream does not distribute the tests

@@ -1,7 +1,7 @@
 #
 # spec file for package python-simplebayes
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-simplebayes
 Version:        1.5.8
 Release:        0
 Summary:        A memory-based, optional-persistence naïve bayesian text classifier
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/hickeroar/simplebayes
+URL:            https://github.com/hickeroar/simplebayes
 Source:         https://files.pythonhosted.org/packages/source/s/simplebayes/simplebayes-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 
@@ -40,14 +41,16 @@ heavily inspired by the python "redisbayes" module.
 
 %build
 export LANG=C.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=C.UTF-8
-%python_install
+%pyproject_install
 
 %files %{python_files}
-%doc README.rst LICENSE
-%{python_sitelib}/*
+%license LICENSE
+%doc README.rst
+%{python_sitelib}/simplebayes
+%{python_sitelib}/simplebayes-%{version}*-info
 
 %changelog
