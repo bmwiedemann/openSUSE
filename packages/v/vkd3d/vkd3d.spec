@@ -18,7 +18,7 @@
 
 %define         major 1
 Name:           vkd3d
-Version:        1.15
+Version:        1.16
 Release:        0
 Summary:        Direct3D 12 to Vulkan translation library
 License:        LGPL-2.1-or-later
@@ -31,6 +31,8 @@ BuildRequires:  bison
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  flex
+BuildRequires:  perl
+BuildRequires:  perl-JSON
 BuildRequires:  spirv-headers
 BuildRequires:  pkgconfig(SPIRV-Tools)
 BuildRequires:  pkgconfig(egl)

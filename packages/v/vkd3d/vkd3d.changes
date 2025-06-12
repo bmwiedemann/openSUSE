@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Thu Jun 12 02:18:29 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 1.16:
+  - libvkd3d
+    DXIL shaders are supported in the default configuration.
+    Previously this required building vkd3d with the
+    ‘-DVKD3D_SHADER_UNSUPPORTED_DXIL’ preprocessor option. The
+    also raises the maximum supported shader model to version 6.0.
+    Graphics pipeline state objects can be created from shaders
+    with embedded root signatures. This was already possible for
+    compute pipeline state objects.
+    The SetEventOnMultipleFenceCompletion() method of the
+    ID3D12Device1 interface is implemented.
+    When the VK_KHR_zero_initialize_workgroup_memory extension is
+    supported, libvkd3d supports zero-initialising compute shader
+    thread group shared memory.
+    The VK_KHR_maintenance2 extension is now explicitly required.
+    libvkd3d already unconditionally used features provided by
+    this extension, but unfortunately didn't explicitly require it.
+    Support for this extension is widespread, and the extension is
+    part of Vulkan 1.1.
+  - libvkd3d-shader
+    The previously experimental support for compiling DXIL shaders
+    is now a supported feature and enabled by default. Please note
+    that this feature is nevertheless still far from perfect.
+    New features for the HLSL source type:
+      Initial support for geometry shaders.
+      Indirect addressing in shader model 1-3 target profiles.
+      Modulus and truncation operations in shader model 1-3 target
+      profiles.
+      Vectorised output code.
+      Further improved constant folding and propagation.
+      The following intrinsic functions are supported:
+        AllMemoryBarrier()
+        AllMemoryBarrierWithGroupSync()
+        DeviceMemoryBarrier()
+        DeviceMemoryBarrierWithGroupSync()
+        GroupMemoryBarrier()
+        GroupMemoryBarrierWithGroupSync()
+      The ‘.Length’ Texture object property.
+      The ‘SV_RenderTargetArrayIndex’ and ‘SV_ViewportArrayIndex’
+      semantics in tessellation shaders.
+    Disassembler support for binary ‘fx_2_0’ effects.
+    Experimental built-in support for disassembling SPIR-V
+    shaders, enabled by building vkd3d with the
+    ‘-DVKD3D_SHADER_UNSUPPORTED_SPIRV_PARSER’ preprocessor option.
+    When enabled, the built-in SPIR-V disassembler is used instead
+    of SPIRV-Tools for the ‘spirv-text’ target type, as well as
+    for the debug output enabled by the VKD3D_SHADER_DEBUG
+    environment variable.
+    The experimental OpenGL Shading Language (GLSL) target
+    supports indirect addressing of constant buffers.
+    The experimental Metal Shading Language (MSL) target supports
+    texture loads.
+    New interfaces:
+      The VKD3D_SHADER_COMPILE_OPTION_FEATURE_ZERO_INITIALIZE
+      _WORKGROUP_MEMORY flag indicates support for
+      zero-initialising workgroup memory in the SPIR-V target
+      environment.
+      The VKD3D_SHADER_COMPONENT_INT64 enumeration value indicates
+      a 64-bit signed integer value.
+      The VKD3D_SHADER_COMPONENT_FLOAT16 enumeration value
+      indicates a 16-bit IEEE floating-point value.
+      The VKD3D_SHADER_COMPONENT_UINT16 enumeration value
+      indicates a 16-bit unsigned integer value.
+      The VKD3D_SHADER_COMPONENT_INT16 enumeration value indicates
+      a 16-bit signed integer value.
+      When targeting VKD3D_SHADER_API_1_16, the
+      VKD3D_SHADER_RESOURCE_DATA_NONE enumeration value is
+      returned for the ‘resource_data_type’ field in the
+      vkd3d_shader_descriptor_info structure for sampler
+      descriptors. VKD3D_SHADER_API_1_15 and before use the
+      VKD3D_SHADER_RESOURCE_DATA_UINT enumeration value for this.
+  - demos
+    The vkd3d demos now work on both the Microsoft Windows and
+    Apple macOS builds. The macOS versions of the vkd3d demos are
+    completely new in vkd3d 1.16, while the Windows demos could
+    previously be built, but only worked on Wine. Note that the
+    vkd3d demos produced by a Windows build of vkd3d are distinct
+    from those produced by the ‘make crosstest’ target: the former
+    are Vulkan applications using vkd3d, while the latter are
+    Direct3D 12 applications.
+    The vkd3d demos have basic support for DPI scaling.
+  - build
+    Perl and the ‘JSON’ Perl module have been added as build
+    dependencies.
+    These are used for the experimental built-in SPIR-V
+    disassembler, as well as for the macOS versions of the vkd3d
+    demos.
+
+-------------------------------------------------------------------
 Wed Mar  5 13:52:20 UTC 2025 - llyyr <llyyr@yukari.in>
 
 - Update to version 1.15:

@@ -472,4 +472,14 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     ‘vkd3d-dxbc -x t:FX10 blob.dxbc | vkd3d-compiler -x fx’. (forwarded request 1250433 from llyyr)</comment>
     <requestid>1250439</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6471d0bbf5b0ed74ae3ab0ba0df30df7</srcmd5>
+    <version>1.16</version>
+    <time>1749736446</time>
+    <user>anag_factory</user>
+    <comment>Update to version 1.16
+
+If you have any suggestions for improvement, please let me know! (forwarded request 1284966 from DarkWav)</comment>
+    <requestid>1285025</requestid>
+  </revision>
 </revisionlist>
