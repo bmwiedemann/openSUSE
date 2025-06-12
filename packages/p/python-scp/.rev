@@ -129,4 +129,14 @@
     <comment></comment>
     <requestid>1099489</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5dca850df22ba6475cd7d45477e3e51b</srcmd5>
+    <version>0.15.0</version>
+    <time>1749736461</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build
+- Update to 0.15.0
+  * Add bandwidth control (limit_bw)</comment>
+    <requestid>1285090</requestid>
+  </revision>
 </revisionlist>

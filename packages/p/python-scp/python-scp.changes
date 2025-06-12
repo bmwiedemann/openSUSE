@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 12 09:24:05 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+- Update to 0.15.0
+  * Add bandwidth control (limit_bw)
+
+-------------------------------------------------------------------
 Tue Jul 18 18:53:34 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 0.14.5:

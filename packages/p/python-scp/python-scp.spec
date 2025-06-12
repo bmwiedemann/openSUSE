@@ -1,7 +1,7 @@
 #
 # spec file for package python-scp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-scp
-Version:        0.14.5
+Version:        0.15.0
 Release:        0
 Summary:        SSH scp module for paramiko
 License:        LGPL-2.1-or-later
@@ -27,7 +27,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jbardin/scp.py
 Source:         https://github.com/jbardin/scp.py/archive/refs/tags/v%{version}.tar.gz#/scp-%{version}.tar.gz
 BuildRequires:  %{python_module paramiko}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  openssh-clients
 BuildRequires:  openssh-server
@@ -45,21 +47,23 @@ and has only been tested with this implementation.
 %setup -q -n scp.py-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export SCPPY_PORT=10022
-./.ci/setup_ssh.sh
 # gh#jbardin/scp.py#167
-%pyunittest -v || /bin/true
+#export SCPPY_PORT=10022
+#./.ci/setup_ssh.sh
+#%pyunittest -v || /bin/true
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/scp.py
+%pycache_only %{python_sitelib}/__pycache__/scp*
+%{python_sitelib}/scp-%{version}*-info
 
 %changelog
