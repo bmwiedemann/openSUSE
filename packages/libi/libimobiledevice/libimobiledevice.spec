@@ -22,7 +22,7 @@
 # ... and python311 on SLE 15 derivates
 %{?sle15_python_module_pythons}
 Name:           libimobiledevice
-Version:        1.3.0+263git.20250123
+Version:        1.3.0+283git.20250610
 Release:        0
 Summary:        Native protocols library for iOS devices
 License:        LGPL-2.1-or-later

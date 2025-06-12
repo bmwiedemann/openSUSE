@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 11 17:13:32 UTC 2025 - msuchanek@suse.de
+
+- Update to version 1.3.0+283git.20250610:
+  * Use updated libplist API if available
+  * Use SHA256 signature instead of SHA1 for iOS 4 and newer when creating and signing pairing certificates
+
+-------------------------------------------------------------------
 Thu Mar 20 08:55:33 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix python packaging
