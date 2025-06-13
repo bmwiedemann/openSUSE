@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 13 12:33:09 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri Apr 21 12:38:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
