@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Spec
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,38 +12,49 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Test-Spec
-Version:        0.54
-Release:        0
 %define cpan_name Test-Spec
-Summary:        Write tests in a declarative specification style
+Name:           perl-Test-Spec
+Version:        0.540.0
+Release:        0
+# 0.54 -> normalize -> 0.540.0
+%define cpan_version 0.54
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Test-Spec/
-Source0:        https://cpan.metacpan.org/authors/id/A/AK/AKZHAN/%{cpan_name}-%{version}.tar.gz
+Summary:        Write tests in a declarative specification style
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/A/AK/AKZHAN/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Devel::GlobalPhase)
-BuildRequires:  perl(Package::Stash) >= 0.23
+BuildRequires:  perl(Package::Stash) >= 0.230
 BuildRequires:  perl(TAP::Parser)
 BuildRequires:  perl(Test::Deep) >= 0.103
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Trap)
 BuildRequires:  perl(Tie::IxHash)
 Requires:       perl(Devel::GlobalPhase)
-Requires:       perl(Package::Stash) >= 0.23
+Requires:       perl(Package::Stash) >= 0.230
 Requires:       perl(TAP::Parser)
 Requires:       perl(Test::Deep) >= 0.103
 Requires:       perl(Test::More) >= 0.88
 Requires:       perl(Test::Trap)
 Requires:       perl(Tie::IxHash)
+Provides:       perl(Test::Spec) = %{version}
+Provides:       perl(Test::Spec::Context)
+Provides:       perl(Test::Spec::Example)
+Provides:       perl(Test::Spec::ExportProxy)
+Provides:       perl(Test::Spec::Mocks)
+Provides:       perl(Test::Spec::Mocks::Expectation)
+Provides:       perl(Test::Spec::Mocks::MockObject)
+Provides:       perl(Test::Spec::Mocks::Stub)
+Provides:       perl(Test::Spec::SharedHash)
+Provides:       perl(Test::Spec::TodoExample)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -58,15 +69,16 @@ http://rspec.info/documentation, a BDD tool for the Ruby programming
 language.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -74,7 +86,6 @@ find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README.md
 
 %changelog
