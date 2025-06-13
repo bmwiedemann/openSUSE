@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CSS-Minifier-XS
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,21 @@
 
 %define cpan_name CSS-Minifier-XS
 Name:           perl-CSS-Minifier-XS
-Version:        0.13
+Version:        0.130.0
 Release:        0
-Summary:        XS based CSS minifier
+# 0.13 -> normalize -> 0.130.0
+%define cpan_version 0.13
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        XS based CSS minifier
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/G/GT/GTERMARS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/G/GT/GTERMARS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Test::DiagINC) >= 0.002
+BuildRequires:  perl(Test::DiagINC) >= 0.2
 BuildRequires:  perl(Test::More) >= 0.96
+Provides:       perl(CSS::Minifier::XS) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -39,7 +43,7 @@ whitespace and comments from CSS files, while also *not* breaking the CSS.
 substantially faster as its written in XS and not just pure Perl.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
