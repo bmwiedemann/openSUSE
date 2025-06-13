@@ -1,7 +1,7 @@
 #
 # spec file for package python-whatever
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/Suor/whatever
 Source:         https://github.com/Suor/whatever/archive/%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -40,10 +42,10 @@ It is inspired by the Perl 6 one, see http://perlcabal.org/syn/S02.html#The_What
 %setup -q -n whatever-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,7 +55,7 @@ It is inspired by the Perl 6 one, see http://perlcabal.org/syn/S02.html#The_What
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/whatever.py
-%{python_sitelib}/whatever-%{version}*-info
+%{python_sitelib}/whatever-%{version}.dist-info
 %pycache_only %{python_sitelib}/__pycache__
 
 %changelog
