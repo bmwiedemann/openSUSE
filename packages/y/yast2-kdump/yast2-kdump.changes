@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 20 11:29:08 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Fixed testsuite (a follow up of jsc#PED-10703)
+- 5.0.5
+
+-------------------------------------------------------------------
 Tue Apr 15 17:27:11 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Applied patch from jbohac for bsc#1240769, jsc#PED-9894,
