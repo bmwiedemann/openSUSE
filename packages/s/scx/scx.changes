@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Jun 12 20:29:11 UTC 2025 - fredrik.lonnegren@suse.com
+
+- Add llvm build dependency for llvm-strip
+- Update to version 1.0.13:
+  * scx_p2dq: Special case dual socket wakeups
+  * scx_chaos: Add stats interface for chaos injection metrics
+  * scx_layered: Replenish slice for protected layers
+  * scx_flash: Prevent potential ops.enqueue() stall
+  * scx_flash: Introduce --run-lag
+  * scx_flash: Always update task domain before proactive wakeup
+  * scx_chaos: initialize nr_cpu_ids variable during arena initialization
+  * scx_layered: Collect layer LLC DSQ enqueues statistics
+  * scx_p2dq: Add tracing on select_cpu
+  * scx_mitosis: Use local time for log timestamps
+  * scx_p2dq: Add affinitized per CPU DSQs
+  * scx_p2dq: Fix vtime handling for nice tasks
+  * scx_flash: Never charge more than slice_max
+  * scx_flash: Allow cross-LLC sync wakeups only for related pipeline tasks
+  * scx_flash: Introduce --native-priority
+  * scx_flash: Port --local-pcpu option from scx_bpfland
+  * scx_flash: Reintroduce voluntary context switch-based prioritization
+  * scx_flash: Always scale task's execution time by its normalized weight
+  * scx_flash: Do not allow negative slice_lag
+  * scx_lavd/stats: Align #PREEMPT column width with header
+  * scx_lavd: improve terminal readability
+  * scx_lavd: simplify conditional return in can_direct_dispatch()
+  * scx_utils: set gpu topology cpu affinity based on the same NUMA node.
+  * scx_bpfland: Support balance_power and balance_performance modes
+  * scxtop: fix bug bouncing between help/event
+  * scxtop: enabling filtering perf events via input
+  * layered: add cgrp contains matcher
+  * scx_bpfland: Introduce --throttle-us
+  * scxtop: adding search module with fuzzy search
+  * scx_layered: limit layer growth to within its cpumask
+  * scx_layered: associate each layer with a cpumask
+  * scx_chaos: Add degradation chaos trait
+  * scxtop: aggregate GLOBAL and LOCAL dsq's
+  * scx_rustland_core: Disable THP for user-space scheduler
+  * chaos: implement pid targeting
+  * scx_rustland: Introduce --percpu-local
+  * scx_layered: add layer spec generation out of template
+  * p2dq/chaos: add trait for skeletons that can have their arenas setup
+  * scx_lavd: Add --preempt-shift option.
+  * scx_layered: Remove loop workaround in pick_idle_cpu_from()
+  * scx_p2dq: Optimize the keep running path
+  * scx_lavd: Count runtime only once in lat_cri calculation.
+  * scx_p2dq: Add fifo scheduling for interactive tasks
+  * scx_rustland: Slightly penalize newly created tasks
+  * scx_lavd: Simplify CPU preference order setup
+  * scx_lavd: Change the min slice to 500us.
+  * scx_layered: Allow exclusive tasks to share siblings as the last resort
+  * scx_chaos: Add CPU frequency chaos
+  * scx_layered: Make pick_idle_cpu_from() consider exclusivity
+  * scx_loader: Add rustland scheduler
+  * scx_lavd: Make the load balancing core compaction- and capacity-aware.
+
+-------------------------------------------------------------------
 Sat May 10 17:57:09 UTC 2025 - fredrik.lonnegren@suse.com
 
 - Update to version 1.0.12:

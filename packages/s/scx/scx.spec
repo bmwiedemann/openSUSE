@@ -17,9 +17,10 @@
 
 
 %define libbpf_min_ver 1.5.0
+%define llvm_min_ver 20
 
 Name:           scx
-Version:        1.0.12
+Version:        1.0.13
 Release:        0
 Summary:        Sched_ext CPU schedulers
 License:        GPL-2.0-only
@@ -28,10 +29,11 @@ Source0:        scx-%version.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  bpftool >= 7.5.0
 BuildRequires:  cargo
-BuildRequires:  clang
+BuildRequires:  clang >= %llvm_min_ver
 BuildRequires:  jq
 BuildRequires:  libbpf-devel >= %libbpf_min_ver
 BuildRequires:  lld
+BuildRequires:  llvm >= %llvm_min_ver
 BuildRequires:  meson >= 1.3.0
 BuildRequires:  ninja
 BuildRequires:  protobuf-devel
