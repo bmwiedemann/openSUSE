@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-pecanwsme
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/dreamhost/sphinxcontrib-pecanwsme
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-pecanwsme/sphinxcontrib-pecanwsme-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sphinxcontrib-httpdomain}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires:       python-sphinxcontrib-httpdomain
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -40,10 +41,10 @@ Extension to Sphinx for documenting APIs built with Pecan and WSME
 %autosetup -p1 -n sphinxcontrib-pecanwsme-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
 %license LICENSE
