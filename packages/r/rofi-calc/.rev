@@ -173,4 +173,13 @@
   * Specify mode type #134</comment>
     <requestid>1284319</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f4e8372fa1dcdf55e8b08864cfcfed69</srcmd5>
+    <version>2.3.2</version>
+    <time>1749833187</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.2:
+  * Switched from autotools to meson #136</comment>
+    <requestid>1285356</requestid>
+  </revision>
 </revisionlist>

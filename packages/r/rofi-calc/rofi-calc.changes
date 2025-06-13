@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 13 06:03:36 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.3.2:
+  * Switched from autotools to meson #136
+
+-------------------------------------------------------------------
 Tue Jun 10 06:51:48 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.3.1:

@@ -17,16 +17,14 @@
 
 
 Name:           rofi-calc
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Calculator for rofi
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/svenstaro/rofi-calc
 Source0:        https://github.com/svenstaro/rofi-calc/archive/v%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  rofi-wayland-devel >= 1.5
 BuildRequires:  pkgconfig(cairo)
@@ -50,18 +48,16 @@ for instance.
 %setup -q
 
 %build
-autoreconf -i
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
-rm %{buildroot}%{_libdir}/rofi/calc.la
+%meson_install
 
 %files
 %license LICENSE
 %doc README.md
 %dir %{_libdir}/rofi
-%{_libdir}/rofi/calc.so
+%{_libdir}/rofi/libcalc.so
 
 %changelog
