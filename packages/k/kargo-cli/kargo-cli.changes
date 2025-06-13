@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun 13 05:04:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.3:
+  * no CLI-related changes
+  * no dependency-related changes
+
+-------------------------------------------------------------------
+Fri Jun 13 04:58:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.2:
+  * no CLI-related changes
+  * Dependencies
+    - chore(backport release-1.5): chore(deps): bump golang from
+      1.24.3-bookworm to 1.24.4-bookworm (#4362)
+
+-------------------------------------------------------------------
 Thu May 29 05:33:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.5.1:
