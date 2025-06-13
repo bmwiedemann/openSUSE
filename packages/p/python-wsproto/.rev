@@ -151,4 +151,12 @@
   * many changes in connection management, see CHANGELOG.rst</comment>
     <requestid>1142646</requestid>
   </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>5edcdc24db200748ca7ed24838c4caa4</srcmd5>
+    <version>1.2.0</version>
+    <time>1749833008</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1285289</requestid>
+  </revision>
 </revisionlist>

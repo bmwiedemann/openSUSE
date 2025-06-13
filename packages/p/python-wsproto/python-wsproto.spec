@@ -1,7 +1,7 @@
 #
 # spec file for package python-wsproto
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/wsproto
 Source:         https://files.pythonhosted.org/packages/source/w/wsproto/wsproto-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-h11 >= 0.9.0
@@ -55,10 +57,10 @@ RFC6455 and Compression Extensions for WebSocket via RFC7692
 %autosetup -p1 -n wsproto-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -68,6 +70,6 @@ RFC6455 and Compression Extensions for WebSocket via RFC7692
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/wsproto
-%{python_sitelib}/wsproto-%{version}*-info
+%{python_sitelib}/wsproto-%{version}.dist-info
 
 %changelog
