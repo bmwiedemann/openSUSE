@@ -1,7 +1,7 @@
 #
 # spec file for package python-spur
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,12 @@ Version:        0.3.23
 Release:        0
 Summary:        Run commands and manipulate files locally or over SSH
 License:        BSD-2-Clause
-URL:            http://github.com/mwilliamson/spur.py
+URL:            https://github.com/mwilliamson/spur.py
 Source:         https://github.com/mwilliamson/spur.py/archive/refs/tags/%{version}.tar.gz#/spur-%{version}-gh.tar.gz
 BuildRequires:  %{python_module paramiko >= 1.13.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-paramiko >= 1.13.1
@@ -39,10 +41,10 @@ Run commands and manipulate files locally or over SSH using the same interface
 %autosetup -p1 -n spur.py-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
