@@ -1,7 +1,7 @@
 #
 # spec file for package python-Whoosh
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        2.7.4
 Release:        0
 Summary:        Pure-Python full text indexing, search, and spell checking library
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/whoosh-community/whoosh/
 Source:         https://files.pythonhosted.org/packages/source/W/Whoosh/Whoosh-%{version}.tar.gz
 # upstream in completely unrelated https://github.com/whoosh-community/whoosh/commit/b43e5a432109
@@ -35,7 +34,9 @@ Patch2:         NullMatcherClass-hashable.patch
 # PATCH-FIX-UPSTREAM docs-Update-intersphinx_mapping.patch gh#whoosh-community/whoosh#582
 # fix intersphinx_mapping
 Patch3:         docs-Update-intersphinx_mapping.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
@@ -77,11 +78,11 @@ This package contains the documentation.
 sed -i -e 's/\r$//' docs/source/api/filedb/{filestore,filetables,structfile}.rst
 
 %build
-%python_build
+%pyproject_wheel
 sphinx-build -b html -d docs/build/doctrees docs/source docs/build/html
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -92,7 +93,8 @@ export LANG=en_US.UTF8
 %files %{python_files}
 %license LICENSE.txt
 %doc README.txt
-%{python_sitelib}/*
+%{python_sitelib}/whoosh
+%{python_sitelib}/[Ww]hoosh-%{version}.dist-info
 
 %if 0%{?suse_version} > 1500
 %files -n python-Whoosh-doc
