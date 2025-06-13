@@ -1,7 +1,7 @@
 #
 # spec file for package python-srcinfo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-srcinfo
 Version:        0.1.2
 Release:        0
@@ -25,11 +26,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/kyrias/python-srcinfo
 Source:         https://files.pythonhosted.org/packages/source/s/srcinfo/srcinfo-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-parse >= 1.19.0
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module parse >= 1.19.0}
@@ -55,11 +56,8 @@ mv test/__init__.py test_srcinfo.py
 %check
 %pytest
 
-%post
-%python_install_alternative parse_srcinfo
-
-%postun
-%python_uninstall_alternative parse_srcinfo
+%pre
+%python_libalternatives_reset_alternative parse_srcinfo
 
 %files %{python_files}
 %doc README.rst

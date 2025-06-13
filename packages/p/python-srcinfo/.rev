@@ -41,4 +41,13 @@
   * Add test to make sure architecture-specific arrays work</comment>
     <requestid>1132131</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>39c454be84db0dbb1864ae55ac598219</srcmd5>
+    <version>0.1.2</version>
+    <time>1749833222</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives
+</comment>
+    <requestid>1285422</requestid>
+  </revision>
 </revisionlist>
