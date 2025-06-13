@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 12 07:43:34 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 20250612
+- Added:
+  * 10-wayland.conf
+  * set-notification-priority.conf
+  * flatpak-update.service
+  * flatpak-update.timer
+
+-------------------------------------------------------------------
 Wed Oct  9 18:02:55 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Move servicemenus to %{_datadir}/kio/servicemenus

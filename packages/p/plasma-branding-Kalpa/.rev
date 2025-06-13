@@ -72,4 +72,17 @@
   ark-servicemenu.desktop (boo#1224070)</comment>
     <requestid>1206587</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e8d5d37475c4aba8ca1117d88ae43fa6</srcmd5>
+    <version>20250612</version>
+    <time>1749833020</time>
+    <user>anag_factory</user>
+    <comment>- Update to 20250612
+- Added:
+  * 10-wayland.conf
+  * set-notification-priority.conf
+  * flatpak-update.service
+  * flatpak-update.timer</comment>
+    <requestid>1285083</requestid>
+  </revision>
 </revisionlist>
