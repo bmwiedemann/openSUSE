@@ -1,0 +1,33 @@
+--- cardpeek-0.8.4.orig/lua_nodes.c	2025-06-09 14:34:14.842798983 +0000
++++ cardpeek-0.8.4/lua_nodes.c	2025-06-09 14:35:33.062310151 +0000
+@@ -275,7 +275,7 @@ static int subr_nodes_append(lua_State*
+ 
+ 	lua_push_node_ref(L,&node);
+ 	
+-	ui_update(1);
++	ui_update();
+ 
+ 	return 1;
+ }
+@@ -424,7 +424,7 @@ static int subr_nodes_remove(lua_State*
+   else
+     lua_pushboolean(L,1);
+   
+-  ui_update(1);
++  ui_update();
+   return 1;
+ }
+ 
+diff -upr cardpeek-0.8.4.orig/ui/gtk/gui_cardview.c cardpeek-0.8.4/ui/gtk/gui_cardview.c
+--- cardpeek-0.8.4.orig/ui/gtk/gui_cardview.c	2025-06-09 14:34:14.847492013 +0000
++++ cardpeek-0.8.4/ui/gtk/gui_cardview.c	2025-06-09 14:35:54.614663766 +0000
+@@ -79,7 +79,7 @@ static void menu_run_script_cb(GtkWidget
+     ui_set_title(script->script_name);
+     luax_run_script(script->script_file);
+     gtk_tree_view_expand_all (GTK_TREE_VIEW(CARDVIEW));
+-    ui_update(0);
++    ui_update();
+ }
+ 
+ static void menu_cardview_clear_cb(GtkWidget *w, gpointer user_data)
+

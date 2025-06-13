@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  9 14:40:49 UTC 2025 - pgajdos@suse.com
+
+- build with gcc15
+  https://github.com/L1L1/cardpeek/pull/136
+  + cardpeek-gcc15.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 10:34:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

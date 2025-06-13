@@ -27,6 +27,8 @@ Source:         http://downloads.pannetrat.com/install/%{name}-%{version}.tar.gz
 Patch0:         cardpeek-lua5.3.patch
 # PATCH-FIX-UPSTREAM https://github.com/L1L1/cardpeek/pull/97
 Patch1:         reproducible.patch
+# https://github.com/L1L1/cardpeek/pull/136
+Patch2:         cardpeek-gcc15.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  openssl-devel
