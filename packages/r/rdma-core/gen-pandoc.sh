@@ -1,8 +1,14 @@
 #!/bin/bash -x
 
+# Both pandoc-cli and python3-docutils are required to generate prebuilt docs
+# docutils is insidious as it won't complain but final build will
+# fail with missing prehashed doc
+which pandoc || exit 1
+which rst2man || exit 1
+
 TARBALL=$(rpmspec --parse rdma-core.spec | grep Source: |  awk '{ print $NF}')
 OUTDIR=$(tar tf $TARBALL | head -n 1)
-PATCHES=$(rpmspec --parse rdma-core.spec | egrep '^Patch[0-9]+:' | awk '{ print $NF}')
+PATCHES=$(rpmspec --parse rdma-core.spec | grep -E '^Patch[0-9]+:' | awk '{ print $NF}')
 BUILD_CMDS=$(python3 -c "
 import rpm
 

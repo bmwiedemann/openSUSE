@@ -705,4 +705,13 @@
     <comment></comment>
     <requestid>1266879</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>cd837627a1cca4a68a3a062d770d9c43</srcmd5>
+    <version>57.0</version>
+    <time>1749832976</time>
+    <user>anag_factory</user>
+    <comment>- Update to rdma-core v57.0
+  - No release notes available</comment>
+    <requestid>1285188</requestid>
+  </revision>
 </revisionlist>
