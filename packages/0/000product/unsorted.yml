@@ -1759,7 +1759,6 @@ unsorted:
   - bumblebee-status-module-yubikey 
   - bumblebee-status-module-zfs 
   - bumblebee-status-theme-powerline 
-  - bumpversion 
   - bup 
   - busybox-adduser 
   - busybox-attr 
@@ -3555,8 +3554,6 @@ unsorted:
   - ecl 
   - ecl-devel 
   - eclint 
-  - eclipse-anyedit 
-  - eclipse-anyedit-javadoc 
   - eclipse-collections 
   - eclipse-collections-javadoc 
   - eclipse-contributor-tools 
@@ -3572,9 +3569,6 @@ unsorted:
   - eclipse-emf-xsd 
   - eclipse-equinox-osgi 
   - eclipse-equinox-osgi-bootstrap 
-  - eclipse-gef 
-  - eclipse-gef-sdk 
-  - eclipse-gef-tests 
   - eclipse-jdt 
   - eclipse-jdt-bootstrap 
   - eclipse-jgit 
@@ -7575,6 +7569,10 @@ unsorted:
   - go1.24-doc 
   - go1.24-libstd 
   - go1.24-race 
+  - go1.25 
+  - go1.25-doc 
+  - go1.25-libstd 
+  - go1.25-race 
   - go1.9 
   - go1.9-doc 
   - go1.9-race 
@@ -10014,10 +10012,6 @@ unsorted:
   - kelbt 
   - kemoticons-devel 
   - kepler 
-  - kernel-debug 
-  - kernel-debug-devel 
-  - kernel-debug-livepatch-devel 
-  - kernel-debug-vdso 
   - kernel-default-base-rebuild 
   - kernel-default-devel 
   - kernel-default-livepatch-devel 
@@ -20316,6 +20310,7 @@ unsorted:
   - opensurge 
   - opensuse-migration-tool 
   - opensuse-welcome-lang 
+  - opensuse-welcome-launcher 
   - opentest4j 
   - opentest4j-javadoc 
   - opentimelineio-devel 
@@ -26723,6 +26718,7 @@ unsorted:
   - python311-redbaron 
   - python311-redfish 
   - python311-redis 
+  - python311-redis-entraid 
   - python311-reedsolo 
   - python311-referencing 
   - python311-regex 
@@ -30473,6 +30469,7 @@ unsorted:
   - python312-redbaron 
   - python312-redfish 
   - python312-redis 
+  - python312-redis-entraid 
   - python312-reedsolo 
   - python312-referencing 
   - python312-regex 
@@ -34168,6 +34165,7 @@ unsorted:
   - python313-redbaron 
   - python313-redfish 
   - python313-redis 
+  - python313-redis-entraid 
   - python313-reedsolo 
   - python313-regex 
   - python313-relatorio 
@@ -35742,6 +35740,7 @@ unsorted:
   - rendercheck 
   - renderdoc 
   - renderdoc-devel 
+  - renovate-pretty-log 
   - replacer 
   - replacer-javadoc 
   - replay-sorcery 
