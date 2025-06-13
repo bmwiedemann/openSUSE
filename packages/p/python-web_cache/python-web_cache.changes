@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 13 02:43:24 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Wed Jun  3 10:19:53 UTC 2020 - pgajdos@suse.com
 
 - remove unused unittest2 dependency

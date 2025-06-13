@@ -1,7 +1,7 @@
 #
 # spec file for package python-web_cache
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-web_cache
 Version:        1.1.0
 Release:        0
@@ -25,7 +24,9 @@ Summary:        Persistent cache storage python module
 License:        LGPL-2.1-only
 URL:            https://github.com/desbma/web_cache
 Source:         https://github.com/desbma/web_cache/archive/%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,10 +44,10 @@ strategies and optional compression.
 %setup -q -n web_cache-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +56,7 @@ strategies and optional compression.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/web_cache
+%{python_sitelib}/web_cache-%{version}.dist-info
 
 %changelog
