@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 13 10:08:32 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Sat May 15 21:05:31 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Skip test_end_to_end which fails due to recent changes in

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-trio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinxcontrib-trio
 Version:        1.1.2
 Release:        0
@@ -30,10 +28,12 @@ BuildRequires:  %{python_module Sphinx >= 1.7}
 BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module cssselect}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module urllib3 >= 1.21.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 1.6
@@ -51,10 +51,10 @@ for documenting Python functions and methods smarter.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +65,6 @@ for documenting Python functions and methods smarter.
 %doc README.rst
 %license LICENSE LICENSE.MIT LICENSE.APACHE2
 %{python_sitelib}/sphinxcontrib_trio
-%{python_sitelib}/sphinxcontrib_trio-%{version}-*.egg-info
+%{python_sitelib}/sphinxcontrib_trio-%{version}*-info
 
 %changelog
