@@ -51,4 +51,12 @@
 - Update to version 2.5.0</comment>
     <requestid>1132137</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b71383f60650739fd688d6530e8b4af5</srcmd5>
+    <version>2.6.0</version>
+    <time>1749833305</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1285493</requestid>
+  </revision>
 </revisionlist>
