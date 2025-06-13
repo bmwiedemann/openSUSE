@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-notifications
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %define         appid io.elementary.notifications
 Name:           pantheon-notifications
-Version:        8.0.0
+Version:        8.1.0
 Release:        0
 Summary:        Notification Server
 License:        GPL-3.0-or-later
 URL:            https://github.com/elementary/notifications
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         fix-leap.patch
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -52,9 +51,6 @@ This package contains a small demo app to send notifications.
 
 %prep
 %autosetup -N -n notifications-%{version}
-%if 0%{?suse_version} < 1600
-%patch -P0 -p1
-%endif
 
 %build
 %meson
