@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 11 20:43:07 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Packaging sanity
+  * Use libalternatives on > 1500
+  * Add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Wed Apr  3 07:24:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.8.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-jira
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+%{?sle15_python_module_pythons}
 Name:           python-jira
 Version:        3.8.0
 Release:        0
@@ -41,13 +47,21 @@ Requires:       python-requests >= 2.10.0
 Requires:       python-requests-oauthlib >= 0.6.1
 Requires:       python-requests-toolbelt
 Requires:       python-typing_extensions >= 3.7.4.2
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
 %description
 This library eases the use of the JIRA REST API from Python.
+
+%pre
+%python_libalternatives_reset_alternative jirashell
 
 %prep
 %setup -q -n jira-%{version}
