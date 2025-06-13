@@ -1,7 +1,7 @@
 #
 # spec file for package python-launchpadlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,14 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-launchpadlib
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Python client library for Launchpad's web service
 License:        LGPL-3.0-only
-URL:            https://pypi.org/project/launchpadlib/
-Source:         https://launchpad.net/launchpadlib/trunk/%{version}/+download/launchpadlib-%{version}.tar.gz
+URL:            https://help.launchpad.net/API/launchpadlib
+Source:         https://files.pythonhosted.org/packages/source/l/launchpadlib/launchpadlib-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module httplib2}
 BuildRequires:  %{python_module lazr.restfulclient}

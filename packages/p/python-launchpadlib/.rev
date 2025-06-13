@@ -17,4 +17,12 @@
 - Remove upstreamed patch 0001-Remove-support-for-Python-2.patch</comment>
     <requestid>1222644</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d011b0dc655b4ed3b461f6069df44f70</srcmd5>
+    <version>2.1.0</version>
+    <time>1749833319</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1285512</requestid>
+  </revision>
 </revisionlist>
