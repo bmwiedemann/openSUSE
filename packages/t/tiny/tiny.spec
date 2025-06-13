@@ -27,8 +27,6 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(dbus-1)
-Requires:       pkgconfig(dbus-1)
-Requires:       pkgconfig(openssl)
 
 %description
 A terminal IRC client written in Rust.

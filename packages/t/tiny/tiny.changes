@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 13 12:14:48 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not require pkgconfig(dbus-1) and pkgconfig(openssl): those
+  are devel packages and not needed at runtime.
+
+-------------------------------------------------------------------
 Sun Jun 01 12:36:22 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.13.0+git5.g2ee969a:
