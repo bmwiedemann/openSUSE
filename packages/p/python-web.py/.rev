@@ -176,4 +176,14 @@
 * Optimized web.cookies (tx benhoyt) - #148</comment>
     <requestid>1225614</requestid>
   </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>f0b05dc6ad5c5ed93fcda4fc95f673ad</srcmd5>
+    <version>0.62</version>
+    <time>1749833105</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.
+- Ship the README as docs.</comment>
+    <requestid>1285279</requestid>
+  </revision>
 </revisionlist>
