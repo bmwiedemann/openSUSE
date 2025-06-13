@@ -7,4 +7,12 @@
     <comment>Inital package.</comment>
     <requestid>811271</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6a6247960bfb18e4ec245bb1379e48ea</srcmd5>
+    <version>1.0.2</version>
+    <time>1749833294</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1285485</requestid>
+  </revision>
 </revisionlist>
