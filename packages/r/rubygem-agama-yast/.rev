@@ -317,4 +317,41 @@
   (bsc#1241868, gh#agama-project/agama#2328).</comment>
     <requestid>1274849</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6123954eeb0ab28c4e9bb0545e48002e</srcmd5>
+    <version>15.devel54.8e10affb2</version>
+    <time>1749833018</time>
+    <user>anag_factory</user>
+    <comment>- Propose to move existing connections to disk if there is no one 
+  to be persisted (custom config provided)
+  (gh#agama-project/agama#2402).
+  
+
+- Copy Agama generated systemd network link files to the target
+  system (bsc#1237327, bsc#1241969).
+
+- Version 15
+
+- Set stopOnBootMenu to &quot;true&quot; when a negative timeout is
+  set in the bootloader section of an AutoYaST profile
+  (bsc#1243623).
+
+- Add checks to the storage config to avoid using wrong devices as
+  target for boot partitions (gh#agama-project/agama#2390).
+
+- Introduce a new ProgressChanged signal which should be used
+  instead of PropertiesChanged (gh#agama-project/agama#2389).
+
+- Properly report if registration failed when adding new libzypp
+  service obtained from registration server (bsc#1238851)
+
+- Allow to specify a software RAID (mdRaids) as explicit boot
+  device (gh#agama-project/agama#2386).
+
+- Include RAIDs at the model for the storage UI
+  (gh#agama-project/agama#2346).
+
+- Provide software conflicts D-Bus API (gh#agama-project/agama#2348)</comment>
+    <requestid>1282418</requestid>
+  </revision>
 </revisionlist>
