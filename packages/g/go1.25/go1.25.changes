@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Wed Jun 11 18:56:35 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.25rc1 (released 2025-06-11) is a release candidate version of
+  go1.25 cut from the master branch at the revision tagged
+  go1.25rc1.
+  Refs boo#1244485 go1.25 release tracking
+  * go1.25 requires the final point release of go1.22 or later
+    for bootstrap.

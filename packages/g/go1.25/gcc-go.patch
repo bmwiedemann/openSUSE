@@ -1,0 +1,64 @@
+--- go.orig/src/cmd/dist/buildtool.go
++++ go/src/cmd/dist/buildtool.go
+@@ -203,7 +203,7 @@
+ 	// Use the purego build tag to disable other assembly code,
+ 	// such as in cmd/internal/notsha256.
+ 	cmd := []string{
+-		pathf("%s/bin/go", goroot_bootstrap),
++		pathf("%s/bin/go-$gcc_go_version", goroot_bootstrap),
+ 		"install",
+ 		"-tags=math_big_pure_go compiler_bootstrap purego",
+ 	}
+--- go.orig/src/make.bash
++++ go/src/make.bash
+@@ -175,8 +175,8 @@
+ 		fi
+ 	fi
+ done; unset IFS
+-if [ ! -x "$GOROOT_BOOTSTRAP/bin/go" ]; then
+-	echo "ERROR: Cannot find $GOROOT_BOOTSTRAP/bin/go." >&2
++if [ ! -x "$GOROOT_BOOTSTRAP/bin/go-$gcc_go_version" ]; then
++	echo "ERROR: Cannot find $GOROOT_BOOTSTRAP/bin/go-$gcc_go_version." >&2
+ 	echo "Set \$GOROOT_BOOTSTRAP to a working Go tree >= Go $bootgo." >&2
+ 	exit 1
+ fi
+@@ -194,7 +194,7 @@
+ 	exit 1
+ fi
+ rm -f cmd/dist/dist
+-GOROOT="$GOROOT_BOOTSTRAP" GOOS="" GOARCH="" GO111MODULE=off GOEXPERIMENT="" GOENV=off GOFLAGS="" "$GOROOT_BOOTSTRAP/bin/go" build -o cmd/dist/dist ./cmd/dist
++GOROOT="$GOROOT_BOOTSTRAP" GOOS="" GOARCH="" GO111MODULE=off GOEXPERIMENT="" GOENV=off GOFLAGS="" "$GOROOT_BOOTSTRAP/bin/go-$gcc_go_version" build -o cmd/dist/dist ./cmd/dist
+ 
+ # -e doesn't propagate out of eval, so check success by hand.
+ eval $(./cmd/dist/dist env -p || echo FAIL=true)
+--- go.orig/src/make.rc	
++++ go/src/make.rc
+@@ -58,7 +58,7 @@
+ 			GOROOT_BOOTSTRAP = $home/$d
+ }
+ for(p in $path){
+-	if(! test -x $GOROOT_BOOTSTRAP/bin/go){
++	if(! test -x $GOROOT_BOOTSTRAP/bin/go-$gcc_go_version){
+ 		if(go_exe = `{path=$p whatis go}){
+ 			goroot = `{GOROOT='' $go_exe env GOROOT}
+ 			if(! ~ $goroot $GOROOT){
+@@ -71,8 +71,8 @@
+ 		}
+ 	}
+ }
+-if(! test -x $GOROOT_BOOTSTRAP/bin/go){
+-	echo 'ERROR: Cannot find '$GOROOT_BOOTSTRAP'/bin/go.' >[1=2]
++if(! test -x $GOROOT_BOOTSTRAP/bin/go-$gcc_go_version){
++	echo 'ERROR: Cannot find '$GOROOT_BOOTSTRAP'/bin/go-$gcc_go_version.' >[1=2]
+ 	echo 'Set $GOROOT_BOOTSTRAP to a working Go tree >= Go '$bootgo'.' >[1=2]
+ 	exit bootstrap
+ }
+@@ -89,7 +89,7 @@
+ echo 'Building Go cmd/dist using '$GOROOT_BOOTSTRAP'. ('$"GOROOT_BOOTSTRAP_VERSION')'
+ if(~ $#vflag 1)
+ 	echo cmd/dist
+-GOROOT=$GOROOT_BOOTSTRAP GOOS='' GOARCH='' GOEXPERIMENT='' GO111MODULE=off GOENV=off GOFLAGS='' $GOROOT_BOOTSTRAP/bin/go build -o cmd/dist/dist ./cmd/dist
++GOROOT=$GOROOT_BOOTSTRAP GOOS='' GOARCH='' GOEXPERIMENT='' GO111MODULE=off GOENV=off GOFLAGS='' $GOROOT_BOOTSTRAP/bin/go-$gcc_go_version build -o cmd/dist/dist ./cmd/dist
+ 
+ eval `{./cmd/dist/dist env -9}
+ if(~ $#vflag 1)
