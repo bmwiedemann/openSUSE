@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 12 15:56:52 UTC 2025 - Frank Schreiner <FSchreiner@suse.com>
+
+- Update to version 0.10.51:
+  * [core] new options `--include-re/--exclude-re`
+  * [tests] disable test_tar_exclude_re and fix warnings
+  * [core] revert removal of fnmatch
+
+-------------------------------------------------------------------
 Tue May 27 12:55:30 UTC 2025 - Frank Schreiner <FSchreiner@suse.com>
 
 - Update to version 0.10.50:

@@ -1533,4 +1533,15 @@ They are not in common use these days. (forwarded request 1191834 from iznogood)
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1282327</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>82f4bc4b1e1556877becbb352a47889f</srcmd5>
+    <version>0.10.51</version>
+    <time>1749832978</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.10.51:
+  * [core] new options `--include-re/--exclude-re`
+  * [tests] disable test_tar_exclude_re and fix warnings
+  * [core] revert removal of fnmatch</comment>
+    <requestid>1285209</requestid>
+  </revision>
 </revisionlist>
