@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 12 08:48:41 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to version 82
+  * adds libcxl enumeration of FWCTL character devices - Linux 6.15 compatibility
+
+-------------------------------------------------------------------
 Mon Mar 31 10:35:11 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to version 81
