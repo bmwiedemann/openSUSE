@@ -10,7 +10,7 @@ Index: libguestfs-1.56.0/appliance/Makefile.am
  	  supermin.d/hostfiles \
  	  supermin.d/init.tar.gz \
  	  supermin.d/udev-rules.tar.gz
-+	gunzip supermin.d/base.tar.gz; tar --delete ./etc/hosts -f supermin.d/base.tar 2>/dev/null; gzip supermin.d/base.tar
++	gunzip supermin.d/base.tar.gz; tar --delete ./etc/hosts -f supermin.d/base.tar 2>/dev/null; gzip -n9 supermin.d/base.tar
  	touch $@
  
  clean-supermin-appliance:

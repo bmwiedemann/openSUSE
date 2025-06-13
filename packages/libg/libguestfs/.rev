@@ -1278,4 +1278,12 @@
     <comment>Update libguestfs to version 1.56.0. Fix bsc#1216986 for reproducible builds.</comment>
     <requestid>1284945</requestid>
   </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>a21104d8c8a8758e73ae2b2cd7914008</srcmd5>
+    <version>1.56.0</version>
+    <time>1749833267</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1285463</requestid>
+  </revision>
 </revisionlist>

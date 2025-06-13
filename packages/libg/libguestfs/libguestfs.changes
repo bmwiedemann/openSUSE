@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 13 06:40:24 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop gzip mtime from base.tar.gz (bsc#1216986)
+
+-------------------------------------------------------------------
 Wed Jun 11 13:37:01 MDT 2025 - carnold@suse.com
 
 - Update to version 1.56.0 (jsc#PED-12706)
