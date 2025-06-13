@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jun 12 08:35:43 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 5.0.8
+  - Functionality Enhancements
+    - UCC collective operations:
+      Improved handling of MPI_IN_PLACE in allgather, allgatherv, alltoall,
+      alltoallv, gather, gatherv, scatter, and scatterv operations
+    - UCX OSC: Added support for "no_locks" info key to disable lock table usage
+    - OFI MTL: Enhanced CXI provider support for better compatibility
+    - AARCH64: Added SVE detection alongside NEON in aarch64 op component
+    - Fortran: Fixed common symbol sizes and alignments for better compatibility
+  - Bug Fixes and Minor Enhancements
+    - Hugepage Mpool: Fixed sizing of hugepages for better memory management
+    - Configure: Fixed --with-prrte=internal option handling
+    - Documentation: Updated shared memory and networking documentation
+    - Build system: Fixed support for flang on OSX
+    - Removed unused spread contrib sample scripts
+    - Various documentation updates and improvements
+    - CI: Removed Ubuntu 18 and RHEL 7 from test matrix
+    - Fixed type mismatch errors in shared memory components
+    - Updated Java configuration for latest Fedora releases
+    - Fixed memory zone reference counting in UCX dynamic windows
+- Remove Fix-type-mismatch-error.patch to fix a compilation error
+  as it was merged upstream.
+
+-------------------------------------------------------------------
 Mon May 26 15:52:53 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Fix bad git_ver appearing in VERSION
