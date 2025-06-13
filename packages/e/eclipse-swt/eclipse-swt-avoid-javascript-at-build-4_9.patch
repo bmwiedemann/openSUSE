@@ -1,0 +1,42 @@
+--- eclipse.platform.swt-R4_9/bundles/org.eclipse.swt/buildSWT.xml	2025-03-28 12:10:40.847944301 +0100
++++ eclipse.platform.swt-R4_9/bundles/org.eclipse.swt/buildSWT.xml	2025-03-28 12:12:29.104620458 +0100
+@@ -298,7 +298,12 @@
+ 
+ 		<antcall target="replace64"></antcall>
+ 
+-		<javac includeantruntime="false" srcdir="${buildDir}"></javac>
++		<javac includeantruntime="false" srcdir="${buildDir}" encoding="utf8"></javac>
++		<javadoc destdir="docs/api" author="true" version="true" use="true" windowtitle="Eclipse SWT API" encoding="utf8">
++			<packageset dir="${buildDir}" defaultexcludes="yes">
++				<include name="**/**"/>
++			</packageset>
++		</javadoc>
+ 	</target>
+ 
+ 	<!-- common build tasks -->
+@@ -413,24 +418,8 @@
+ 	<!-- Set swt_version, new_version, (and min_ver, maj_ver, new_min_ver, new_maj_ver) from the make_common.mak  -->
+ 	<target name="get_version" unless="swt_version">
+ 		<loadproperties srcFile="${repo.src}/${file_make_common}"/>
+-		<script language="javascript">
+-		<![CDATA[
+-			min_ver = project.getProperty("min_ver");
+-			maj_ver = project.getProperty("maj_ver");
+-			new_min_ver = parseInt(min_ver) + 1;
+-			new_maj_ver = maj_ver;
+-			one = new_maj_ver;
+-			two = Math.floor(new_min_ver / 100);
+-			three = Math.floor((new_min_ver - (two * 100)) / 10);
+-			four = Math.floor(new_min_ver - (two * 100) - (three * 10));
+-			project.setProperty("new_min_ver", new_min_ver);
+-			project.setProperty("new_maj_ver", new_maj_ver);
+-			project.setProperty("new_comma_ver", one + "," + two + "," + three + "," + four);
+-   	 	]]>
+-		</script>
+ 		<property name="swt_version" value="${maj_ver}${min_ver}"/>
+-		<property name="new_version" value="${new_maj_ver}${new_min_ver}"/>
+-		<echo>Version=${swt_version}; New=${new_version}; New comma_ver=${new_comma_ver}</echo>
++		<echo>Version=${swt_version}</echo>
+ 	</target>
+ 
+ 	<target name="get_new_release_version" unless="min_ver">

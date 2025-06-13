@@ -1,0 +1,23 @@
+--- "eclipse.platform.swt-R4_29/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/build.sh"	2025-03-25 13:34:33.358155078 +0100
++++ "eclipse.platform.swt-R4_29/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/build.sh"	2025-03-25 13:36:47.743298383 +0100
+@@ -74,7 +74,8 @@
+ 
+ MAKE_TYPE=make
+ 
+-export CFLAGS='-O -Wall -fPIC'
++export CFLAGS="$CFLAGS"
++OUTPUT_DIR=../../..
+ 
+ # Determine which OS we are on
+ if [ "${OS}" = "" ]; then
+--- "eclipse.platform.swt-R4_29/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/make_linux.mak"	2025-03-25 13:34:33.358586549 +0100
++++ "eclipse.platform.swt-R4_29/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/make_linux.mak"	2025-03-25 13:36:47.742196543 +0100
+@@ -24,7 +24,7 @@
+ #SWT_LIB_DEBUG=1     # to debug glue code in /bundles/org.eclipse.swt/bin/library. E.g os_custom.c:swt_fixed_forall(..)
+ # Can be set via environment like: export SWT_LIB_DEBUG=1
+ ifdef SWT_LIB_DEBUG
+-SWT_DEBUG = -O0 -g3 -ggdb3
++#SWT_DEBUG = -O0 -g3 -ggdb3
+ NO_STRIP=1
+ endif
+ 

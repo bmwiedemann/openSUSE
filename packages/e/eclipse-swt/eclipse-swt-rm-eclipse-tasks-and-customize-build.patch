@@ -1,0 +1,58 @@
+--- a/bundles/org.eclipse.swt/build.xml
++++ b/bundles/org.eclipse.swt/build.xml
+@@ -26,6 +26,17 @@
+ 		<condition property="p2.publish.parts" value="true">
+ 			<istrue value="${p2.gathering}" />
+ 		</condition>
++		<property name="repo.src" value="../.."/>
++		<property name="file_make_common" value="bundles/org.eclipse.swt/Eclipse SWT/common/library/make_common.mak"/>
++	</target>
++	
++	<!-- Set swt_version, new_version, (and rev, min_ver, maj_ver, new_rev, new_min_ver, new_maj_ver) from the make_common.mak  -->
++	<target name="get_version"  depends="init" unless="swt_version">
++		<loadproperties srcFile="${repo.src}/${file_make_common}"/>
++		<condition property="swt_version" value="${maj_ver}${min_ver}r${rev}" else="${maj_ver}${min_ver}">
++		    <isset property="rev"/>
++		</condition>
++		<echo>Version=${swt_version}</echo>
+ 	</target>
+ 
+ 	<target name="build.update.jar" depends="init">
+@@ -42,15 +51,24 @@
+ 		<antcall target="gather.bin.parts">
+ 			<param name="destination.temp.folder" value="${build.result.folder}" />
+ 		</antcall>
+-		<eclipse.gatherBundle metadataRepository="${p2.build.repo}" artifactRepository="${p2.build.repo}" buildResultFolder="${build.result.folder}" targetFolder="${build.result.folder}/${full.name}" />
+ 	</target>
+ 
+-	<target name="gather.bin.parts" depends="init" if="destination.temp.folder">
++	<target name="gather.bin.parts" depends="get_version" if="destination.temp.folder">
+ 		<mkdir dir="${destination.temp.folder}/${full.name}" />
+ 		<copy todir="${destination.temp.folder}/${full.name}">
+-			<fileset dir="${basedir}" includes="plugin.properties,about.html,about_files/,META-INF/" />
++			<fileset dir="${basedir}" includes="plugin.properties,about.html,about_files/,META-INF/,version.txt" />
++			<fileset dir="../../../tmp/check.compile.master/build" includes="**/*.class"/>
++			<fileset dir="Eclipse SWT PI/gtk/library" includes="**/*.so" excludes="libswt-webkit2extension-*.so"/>
+ 		</copy>
+-		<eclipse.versionReplacer path="${destination.temp.folder}/${full.name}" version="${version.suffix}" />
++		<copy todir="${destination.temp.folder}/${full.name}/webkitextensions${swt_version}">
++			<fileset dir="Eclipse SWT PI/gtk/library" includes="libswt-webkit2extension-*.so"/>
++		</copy>
++		<copy todir="${destination.temp.folder}/${full.name}/org/eclipse/swt/internal">
++			<fileset dir="Eclipse SWT/common/org/eclipse/swt/internal" includes="**/SWTMessages.properties"/>
++		</copy>
++		<copy todir="${destination.temp.folder}/${full.name}/org/eclipse/swt/internal/gtk">
++			<fileset dir="Eclipse SWT PI/gtk/org/eclipse/swt/internal/gtk" includes="**/*.css"/>
++		</copy>
+ 	</target>
+ 
+ 	<target name="build.jars" />
+@@ -60,7 +78,6 @@
+ 
+ 	<target name="copy.classpath" unless="haveclasspath">
+ 		<copy file=".classpath_${osgi.ws}" tofile=".classpath" />
+-		<eclipse.refreshLocal resource="." depth="infinite" />
+ 	</target>
+ 
+ 	<target name="setup.classpath">
+

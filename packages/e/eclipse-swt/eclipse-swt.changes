@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun 12 18:00:48 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Clean the spec file and avoid fetching and modifying sources by
+  script. It is now possible to download from github tarballs of
+  submodules without having to fetch all eclipse sources.
+- Removed patches:
+  * eclipse-arm32.patch
+  * eclipse-is64.patch
+  * eclipse-jintlong.patch
+  * eclipse-ppc64.patch
+  * eclipse-secondary-arches.patch
+  * eclipse-swt-optflags.patch
+    + not needed after the cleanup
+- Added patches:
+  * eclipse-swt-fedora-build-native.patch
+    + patch from Fedora to avoid hardcoding of CFLAGS for the native
+      Build
+  * eclipse-swt-rm-eclipse-tasks-and-customize-build.patch
+    + remove from build the eclipse tasks that we cannot run and
+      that we don't need
+  * eclipse-swt-avoid-javascript-at-build-4_9.patch
+    + avoid using javascript to determine versions that we don't
+      need to know
+
+-------------------------------------------------------------------
 Fri Mar 28 06:15:35 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Do not require xmvn-tools for building

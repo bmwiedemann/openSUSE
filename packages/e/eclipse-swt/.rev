@@ -55,4 +55,12 @@
     <comment>Do not require xmvn-tools for building</comment>
     <requestid>1264942</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>64876a4ef8d6c0972d0ce05354ee633f</srcmd5>
+    <version>4.9</version>
+    <time>1749833089</time>
+    <user>anag_factory</user>
+    <comment>A huge cleanup</comment>
+    <requestid>1285242</requestid>
+  </revision>
 </revisionlist>
