@@ -1,0 +1,13 @@
+Index: cwstudio-0.9.7/src/cwcurses.c
+===================================================================
+--- cwstudio-0.9.7.orig/src/cwcurses.c
++++ cwstudio-0.9.7/src/cwcurses.c
+@@ -479,7 +479,7 @@ void cwstudio_repaintwindows()
+     This function is called to repaint everything in changed terminal after SIGWINCH signal (terminal resize).
+  =======================================================================================================================
+  */
+-void cwstudio_resizeterm()
++void cwstudio_resizeterm(int foo)
+ {
+ 	cwstudio_resetwindows();
+ 	cwstudio_repaintwindows();

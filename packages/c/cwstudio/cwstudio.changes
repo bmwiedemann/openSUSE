@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 12 13:20:14 UTC 2025 - pgajdos@suse.com
+
+- fix build with gcc15, add cwstudio-gcc15.patch
+
+-------------------------------------------------------------------
 Wed Feb 12 19:07:02 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.9.7:

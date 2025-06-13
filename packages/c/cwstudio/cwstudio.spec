@@ -26,6 +26,8 @@ License:        GPL-3.0-or-later
 URL:            https://cwstudio.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:         cwstudio-0.9.7-nonvoid-return.patch
+# fix build with gcc15
+Patch1:         cwstudio-gcc15.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(libpulse)
