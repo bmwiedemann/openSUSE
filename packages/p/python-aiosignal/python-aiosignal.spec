@@ -25,7 +25,9 @@ Summary:        a list of registered asynchronous callbacks
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/aiosignal
 Source:         https://files.pythonhosted.org/packages/source/a/aiosignal/aiosignal-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-frozenlist >= 1.1.0
@@ -46,10 +48,10 @@ Signal is a list of registered asynchronous callbacks.
 %setup -q -n aiosignal-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +61,6 @@ Signal is a list of registered asynchronous callbacks.
 %doc CHANGES.rst README.rst
 %license LICENSE
 %{python_sitelib}/aiosignal
-%{python_sitelib}/aiosignal-%{version}*-info
+%{python_sitelib}/aiosignal-%{version}.dist-info
 
 %changelog
