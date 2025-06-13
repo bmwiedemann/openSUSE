@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jun 12 01:25:33 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to 2.6.2:
+  * Added DXVK_FILTER_DEVICE_UUID environment variable to filter
+    devices by their reported driver UUID
+  * This may be useful on setups with multiple GPUs of the same model
+  * Improved vendor ID override logic for D3D9 and added
+    d3d9.hide{Amd,Intel,Nvidia}Gpu configuration options to
+    improve the out-of-the-box experience in games that refuse to
+    run on Intel GPUs, or only run with significantly reduced
+    graphics features
+  * Improved WSI backend selection in dxvk-native
+  * D3D9 vendor hack features are now only exposed when reporting
+    a GPU vendor that supports the given feature on Windows
+  * This may avoid issues in case games make assumptions based on
+    vendor IDs rather than format queries
+  * FIxed an issue that could lead to one eye not updating
+    properly in some VR games
+  * Fixed log spam for unsupported D3D8 render states
+  * Fixed log spam for frequent DXGI adapter queries
+  * osu! stable: Fixed black screen in D3D9 mode
+  * Pirate Hunter: Worked around out-of-memory crash
+  * Red Orchestra: Ostfront: Worked around alt+tab issues
+  * Rocketbirds 2: Worked around a game bug that would cause the
+    intro video to be garbled
+  * Thumper: Worked around track rendering issues on Intel
+- Hardcoded git tag in _service to fix downloading wrong version
+
+-------------------------------------------------------------------
 Fri May 23 21:28:27 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
 
 - Add missing tarball from service manualrun to fix build failure
