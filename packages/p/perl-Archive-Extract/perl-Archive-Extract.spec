@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Archive-Extract
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Archive-Extract
 Name:           perl-Archive-Extract
-Version:        0.88
+Version:        0.880.0
 Release:        0
-Summary:        Generic archive extracting mechanism
+# 0.88 -> normalize -> 0.880.0
+%define cpan_version 0.88
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Generic archive extracting mechanism
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BI/BINGOS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BI/BINGOS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -36,6 +38,8 @@ Requires:       perl(IPC::Cmd) >= 0.64
 Requires:       perl(Locale::Maketext::Simple)
 Requires:       perl(Module::Load::Conditional) >= 0.66
 Requires:       perl(Params::Check) >= 0.07
+Provides:       perl(Archive::Extract) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -49,7 +53,7 @@ either perl modules, or commandline tools on your system.
 See the 'HOW IT WORKS' section further down for details.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
