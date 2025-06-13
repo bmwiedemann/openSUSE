@@ -207,4 +207,13 @@ add explicit Requires for python-importlib_metadata for Python &lt; 3.8</comment
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1138472</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>bbe1679f32c17892ad8fe4b5f86aecb9</srcmd5>
+    <version>0.2.13</version>
+    <time>1749832997</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1285276</requestid>
+  </revision>
 </revisionlist>
