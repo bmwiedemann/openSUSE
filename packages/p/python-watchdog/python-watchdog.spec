@@ -26,7 +26,9 @@ License:        Apache-2.0
 URL:            https://github.com/gorakhargosh/watchdog
 Source:         https://files.pythonhosted.org/packages/source/w/watchdog/watchdog-%{version}.tar.gz
 BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
@@ -64,13 +66,13 @@ find src -name "*.py" | xargs sed -i -e '/^#!\//, 1d'
 sed -i '/^[[:space:]]\+--cov/d' pyproject.toml
 
 %build
-%python_build
+%pyproject_wheel
 %if 0%{?suse_version} > 1500
 cd docs && make html && rm -r build/html/.buildinfo build/html/objects.inv # Build HTML docs
 %endif
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/watchmedo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -93,7 +95,7 @@ export LANG=en_US.UTF-8
 %doc AUTHORS changelog.rst MANIFEST.in README.rst
 %python_alternative %{_bindir}/watchmedo
 %{python_sitelib}/watchdog
-%{python_sitelib}/watchdog-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/watchdog-%{version}.dist-info
 
 %if 0%{?suse_version} > 1500
 %files %{python_files doc}
