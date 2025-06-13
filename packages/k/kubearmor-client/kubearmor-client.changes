@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 13 11:31:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.3:
+  * Add profile docs for filtering by @harisudarsan1 in #497
+  * Reduce CPU usage in karmor profile by @harisudarsan1 in #498
+
+-------------------------------------------------------------------
 Fri Jun 06 05:49:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.2:
