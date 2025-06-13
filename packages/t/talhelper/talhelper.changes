@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jun 13 04:44:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.29:
+  * docs: update CLI reference documentation (#1054)
+  * chore(deps): update dependency siderolabs/talos to v1.10.4
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.10.4
+  * chore(schema): update talos-extensions.yaml JSON schema (#1052)
+  * docs: add section to installing from nixpkgs
+  * chore(github-action): update renovatebot/github-action action
+    to v42.0.5
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.10.2
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * feat(genurl): allow sprig functions for installer and iso
+    templates
+  * fix(deps): update module golang.org/x/mod to v0.25.0
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.11.0-alpha.1
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v0.7.3
+  * chore(schema): update talos-extensions.yaml JSON schema (#1044)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1040)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1039)
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.28
+  * feat: update Scoop for talhelper version v3.0.28
+  * feat: update flake (#1037)
+
+-------------------------------------------------------------------
 Sat May 31 06:40:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.28:
