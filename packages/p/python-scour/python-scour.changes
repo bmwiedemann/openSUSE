@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 12 09:21:47 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build and libalternatives
+
+-------------------------------------------------------------------
 Tue Jun  6 12:07:19 UTC 2023 - pgajdos@suse.com
 
 - drop python 2 support, do not require six
