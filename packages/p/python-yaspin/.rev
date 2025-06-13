@@ -59,4 +59,13 @@
   * Update dev dependencies to the most recent ones (compatible with Python 2.7)</comment>
     <requestid>824592</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a50d6c1d045f41574e2071db810a7f97</srcmd5>
+    <version>0.18.0</version>
+    <time>1749833306</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build
+</comment>
+    <requestid>1285503</requestid>
+  </revision>
 </revisionlist>
