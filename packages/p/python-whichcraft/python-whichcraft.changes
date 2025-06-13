@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 13 02:44:26 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Wed May 10 08:44:44 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

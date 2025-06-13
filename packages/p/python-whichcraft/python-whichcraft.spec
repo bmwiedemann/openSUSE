@@ -1,7 +1,7 @@
 #
 # spec file for package python-whichcraft
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,11 @@ Version:        0.6.1
 Release:        0
 Summary:        Cross-python shutil.which functionality
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/pydanny/whichcraft
 Source:         https://files.pythonhosted.org/packages/source/w/whichcraft/whichcraft-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -44,10 +45,10 @@ Python 3 code that was extracted from source.
 %setup -q -n whichcraft-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +57,8 @@ Python 3 code that was extracted from source.
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS.rst HISTORY.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/whichcraft.py
+%pycache_only %{python_sitelib}/__pycache__/whichcraft.*.pyc
+%{python_sitelib}/whichcraft-%{version}.dist-info
 
 %changelog
