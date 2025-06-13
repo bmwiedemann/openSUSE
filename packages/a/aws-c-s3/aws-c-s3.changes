@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 10 07:07:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.1
+  * Fix race condition between mem acquire and cancel
+    by @DmitriyMusatkin in (#521)
+- from version 0.8.0
+  * Remove clang-3 from CI by @sbSteveK in (#520)
+  * Memory pool interface by @DmitriyMusatkin in (#517)
+
+-------------------------------------------------------------------
 Mon May 19 08:47:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.18
