@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>154afc150278f457c093c264d08de1ed</srcmd5>
+    <version>1.0</version>
+    <time>1749833311</time>
+    <user>anag_factory</user>
+    <comment>Add opensuse-welcome-launcher replacement of Qt5 based opensuse-welcome
+
+* Support plasma-welcome, gnome-tour and legacy welcome
+  based on availability</comment>
+    <requestid>1285509</requestid>
+  </revision>
+</revisionlist>
