@@ -1,7 +1,7 @@
 #
 # spec file for package perl-B-Hooks-OP-PPAddr
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-B-Hooks-OP-PPAddr
-Version:        0.06
-Release:        0
 %define cpan_name B-Hooks-OP-PPAddr
+Name:           perl-B-Hooks-OP-PPAddr
+Version:        0.60.0
+Release:        0
+# 0.06 -> normalize -> 0.60.0
+%define cpan_version 0.06
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Hook into opcode execution
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/B-Hooks-OP-PPAddr/
-Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        perl-B-Hooks-OP-PPAddr-rpmlintrc
 Source2:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::Depends) >= 0.302
 BuildRequires:  perl(parent)
 Requires:       perl(parent)
+Provides:       perl(B::Hooks::OP::PPAddr) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -51,14 +53,14 @@ use. Include the following in your _Makefile.PL_:
 Your XS module can now include 'hook_op_ppaddr.h'.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -66,7 +68,7 @@ Your XS module can now include 'hook_op_ppaddr.h'.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes CONTRIBUTING LICENCE README
+%doc Changes CONTRIBUTING README
+%license LICENCE
 
 %changelog
