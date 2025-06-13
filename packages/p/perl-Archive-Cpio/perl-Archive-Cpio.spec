@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Archive-Cpio
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,40 +12,48 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Archive-Cpio
-Version:        0.10
-Release:        0
 %define cpan_name Archive-Cpio
-Summary:        Module for Manipulations of Cpio Archives
-License:        GPL-1.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Archive-Cpio/
-Source0:        http://www.cpan.org/authors/id/P/PI/PIXEL/%{cpan_name}-%{version}.tar.gz
-Source1:        cpanspec.yml
-Source2:        LICENSE
+Name:           perl-Archive-Cpio
+Version:        0.100.0
+Release:        0
+# 0.10 -> normalize -> 0.100.0
+%define cpan_version 0.10
+#Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Module for manipulations of cpio archives
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/P/PI/PIXEL/%{cpan_name}-%{cpan_version}.tar.gz
+Source1:        LICENSE
+Source2:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Archive::Cpio) = %{version}
+Provides:       perl(Archive::Cpio::Common)
+Provides:       perl(Archive::Cpio::File)
+Provides:       perl(Archive::Cpio::FileHandle_with_pushback)
+Provides:       perl(Archive::Cpio::NewAscii)
+Provides:       perl(Archive::Cpio::ODC)
+Provides:       perl(Archive::Cpio::OldBinary)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
 Archive::Cpio provides a few functions to read and write cpio files.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-cp -a %{SOURCE2} .
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -53,8 +61,6 @@ cp -a %{SOURCE2} .
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes
-%license LICENSE
 
 %changelog

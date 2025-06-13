@@ -9,4 +9,14 @@
 now with license information</comment>
     <requestid>494799</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>146b7f08f39c65a14a99d26feeafc629</srcmd5>
+    <version>0.100.0</version>
+    <time>1749832986</time>
+    <user>anag_factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+</comment>
+    <requestid>1285214</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 12 17:22:21 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
 Fri May 12 08:36:12 UTC 2017 - Bernhard M. Wiedemann <bwiedemann@suse.com>
 
 - Add LICENSE information
