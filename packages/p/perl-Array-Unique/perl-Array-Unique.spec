@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Array-Unique
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,24 @@
 
 %define cpan_name Array-Unique
 Name:           perl-Array-Unique
-Version:        0.09
+Version:        0.90.0
 Release:        0
+# 0.09 -> normalize -> 0.90.0
+%define cpan_version 0.09
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tie-able array that allows only unique values
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SZ/SZABGAB/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SZ/SZABGAB/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.420000
+BuildRequires:  perl(Module::Build) >= 0.42
+Provides:       perl(Array::Unique) = %{version}
+Provides:       perl(Array::Unique::Hash) = %{version}
+Provides:       perl(Array::Unique::IxHash) = %{version}
+Provides:       perl(Array::Unique::Quick) = %{version}
+Provides:       perl(Array::Unique::Std) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -46,17 +54,17 @@ case sensitive.
 As a side effect the module does not allow undef as a value in the array.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
