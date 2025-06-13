@@ -131,4 +131,12 @@
     from vistir.&lt;module&gt;.</comment>
     <requestid>1085850</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>846913f43ac47b8c4e0c255e78dddf6a</srcmd5>
+    <version>0.8.0</version>
+    <time>1749833301</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1285491</requestid>
+  </revision>
 </revisionlist>
