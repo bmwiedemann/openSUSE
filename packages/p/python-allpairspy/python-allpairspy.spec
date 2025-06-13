@@ -1,7 +1,7 @@
 #
 # spec file for package python-allpairspy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,10 @@ Release:        0
 License:        MIT
 Summary:        Pairwise test combinations generator
 URL:            https://github.com/thombashi/allpairspy
-Group:          Development/Languages/Python
 Source:         https://github.com/thombashi/allpairspy/archive/v%{version}.tar.gz#/allpairspy-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -45,10 +46,10 @@ Pairwise test combinations generator.
 %autosetup -p1 -n allpairspy-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +58,7 @@ Pairwise test combinations generator.
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/allpairspy*
+%{python_sitelib}/allpairspy
+%{python_sitelib}/allpairspy-%{version}.dist-info
 
 %changelog
