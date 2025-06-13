@@ -1,7 +1,7 @@
 #
 # spec file for package perl-B-Hooks-OP-Annotation
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-B-Hooks-OP-Annotation
-Version:        0.44
-Release:        0
 %define cpan_name B-Hooks-OP-Annotation
-Summary:        annotate and delegate hooked OPs
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/B-Hooks-OP-Annotation/
-Source:         http://www.cpan.org/authors/id/C/CH/CHOCOLATE/%{cpan_name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Name:           perl-B-Hooks-OP-Annotation
+Version:        0.440.0
+Release:        0
+# 0.44 -> normalize -> 0.440.0
+%define cpan_version 0.44
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Annotate and delegate hooked OPs
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/C/CH/CHOCOLATE/%{cpan_name}-%{cpan_version}.tar.gz
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::Depends) >= 0.304
 Requires:       perl(ExtUtils::Depends) >= 0.304
+Provides:       perl(B::Hooks::OP::Annotation) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -77,14 +79,14 @@ Makefile.PL:
     );
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -92,7 +94,6 @@ Makefile.PL:
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
