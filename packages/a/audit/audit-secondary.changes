@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jun 10 14:24:47 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Refresh systemd service patches:
+  - audit-allow-manual-stop.patch
+  - auditd.service-fix-plugin-termination.patch
+  - enable-stop-rules.patch
+  - fix-hardened-service.patch
+  - harden_auditd.service.patch
+
+- Update to 4.0.2
+  - Fix musl C builds
+  - Many code cleanups (Yugend)
+  - Use atomic variables if available for signal related flags
+  - Dont rotate audit logs when auditd is in debug mode
+  - Fix a couple memory leaks on error paths
+  - Correct output when displaying rules with exe/path/dir (Attila Lakatos)
+  - Fix auparse lookup test to not use the system libaupaurse
+  - Improve auparse metrics
+  - Update auparse normalizer for recent syscalls
+  - Make status report uniform
+
+- Update to 4.0.1
+  - Update TRUSTED_APP interpretation to look for known fields
+  - In auditd plugins, allow variable amount of arguments (Attila Lakatos)
+  - Fix augenrules to work correctly when kernel is in immutable mode
+  - Add ausearch_cur_event to auparse library (Attila Lakatos)
+  - Add audisp-filter plugin (Attila Lakatos)
+  - Improve sorting speed of aureport --summary reports
+  - auditd & audit-rules.service pick up paths automatically (Laurent Bigonville)
+  - Update auparse normalizer for new syscalls
+
+-------------------------------------------------------------------
 Fri Oct  4 16:06:06 UTC 2024 - Enzo Matsumiya <ematsumiya@suse.com>
 
 - Update audit.spec (bsc#1231236):

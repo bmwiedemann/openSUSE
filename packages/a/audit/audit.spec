@@ -1,7 +1,7 @@
 #
 # spec file for package audit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           audit
-Version:        4.0
+Version:        4.0.2
 Release:        0
 Summary:        Linux kernel audit subsystem utilities
 License:        GPL-2.0-or-later

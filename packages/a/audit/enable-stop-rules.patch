@@ -15,16 +15,16 @@ Signed-off-by: Enzo Matsumiya <ematsumiya@suse.de>
  init.d/auditd.service |    4 ++++
  1 file changed, 4 insertions(+)
 
---- a/init.d/auditd.service
-+++ b/init.d/auditd.service
-@@ -22,6 +22,10 @@ Documentation=man:auditd(8) https://gith
+--- audit-4.0.2.orig/init.d/auditd.service.in   2024-08-08 19:40:19.000000000 +0200
++++ audit-4.0.2/init.d/auditd.service.in        2025-06-12 12:04:22.896698211 +0200
+@@ -29,6 +29,10 @@
  Type=forking
- PIDFile=/run/auditd.pid
- ExecStart=/sbin/auditd
-+ExecStartPost=-/sbin/augenrules --load
+ PIDFile=@runstatedir@/auditd.pid
+ ExecStart=@sbindir@/auditd
++ExecStartPost=-@sbindir@/augenrules --load
 +# By default we clear the rules on exit. To disable this, comment
 +# the next line after copying the file to /etc/systemd/system/auditd.service
-+ExecStopPost=/sbin/auditctl -R /etc/audit/audit-stop.rules
++ExecStopPost=@sbindir@/auditctl -R /etc/audit/audit-stop.rules
  Restart=on-failure
- # Do not restart for intentional exits. See EXIT CODES section in auditd(8).
+ ## Do not restart for intentional exits. See EXIT CODES section in auditd(8).
  RestartPreventExitStatus=2 4 6

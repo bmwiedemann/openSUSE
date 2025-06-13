@@ -1,7 +1,7 @@
 #
 # spec file for package audit-secondary
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 # The seperation is required to minimize unnecessary build cycles.
 %define 	_name audit
 Name:           audit-secondary
-Version:        4.0
+Version:        4.0.2
 Release:        0
 Summary:        Linux kernel audit subsystem utilities
 License:        GPL-2.0-or-later
@@ -359,13 +359,17 @@ fi
 %attr(644,root,root) %{_mandir}/man5/auditd-plugins.5.gz
 %attr(644,root,root) %{_mandir}/man8/audisp-remote.8.gz
 %attr(644,root,root) %{_mandir}/man8/audisp-syslog.8.gz
+%attr(644,root,root) %{_mandir}/man8/audisp-filter.8.gz
 %attr(750,root,root) %dir %{_sysconfdir}/audit
 %attr(750,root,root) %dir %{_sysconfdir}/audit/plugins.d
 %config(noreplace) %attr(640,root,root) %{_sysconfdir}/audit/plugins.d/audispd-zos-remote.conf
 %config(noreplace) %attr(640,root,root) %{_sysconfdir}/audit/zos-remote.conf
 %attr(750,root,root) %{_sbindir}/audisp-remote
 %attr(750,root,root) %{_sbindir}/audispd-zos-remote
+%attr(750,root,root) %{_sbindir}/audisp-filter
 %config(noreplace) %attr(640,root,root) %{_sysconfdir}/audit/audisp-remote.conf
 %config(noreplace) %attr(640,root,root) %{_sysconfdir}/audit/plugins.d/au-remote.conf
+%config(noreplace) %attr(640,root,root) %{_sysconfdir}/audit/audisp-filter.conf
+%config(noreplace) %attr(640,root,root) %{_sysconfdir}/audit/plugins.d/filter.conf
 
 %changelog
