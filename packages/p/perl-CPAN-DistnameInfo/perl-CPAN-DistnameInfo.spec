@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CPAN-DistnameInfo
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-
-Name:           perl-CPAN-DistnameInfo
-Version:        0.12
-Release:        1
-License:        GPL-1.0+ or Artistic-1.0
 %define cpan_name CPAN-DistnameInfo
+Name:           perl-CPAN-DistnameInfo
+Version:        0.120.0
+Release:        0
+# 0.12 -> normalize -> 0.120.0
+%define cpan_version 0.12
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Extract distribution name and version from a distribution filename
-Url:            http://search.cpan.org/dist/CPAN-DistnameInfo/
-Group:          Development/Libraries/Perl
-#Source:         http://www.cpan.org/authors/id/G/GB/GBARR/CPAN-DistnameInfo-%{version}.tar.gz
-Source:         %{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/G/GB/GBARR/%{cpan_name}-%{cpan_version}.tar.gz
+BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
+Provides:       perl(CPAN::DistnameInfo) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -41,76 +41,72 @@ ExtUtils::MakeMaker or Module::Build to create the distribution, which
 results in a uniform name. But sadly not all uploads are created in this
 way.
 
-'CPAN::DistnameInfo' uses heuristics that have been learnt by the
-http://search.cpan.org/ manpage to extract the distribution name and
-version from filenames and also report if the version is to be treated as a
-developer release
+'CPAN::DistnameInfo' uses heuristics that have been learnt by
+http://search.cpan.org/ to extract the distribution name and version from
+filenames and also report if the version is to be treated as a developer
+release
 
 The constructor takes a single pathname, returning an object with the
 following methods
 
 * cpanid
 
-  If the path given looked like a CPAN authors directory path, then this
-  will be the the CPAN id of the author.
+If the path given looked like a CPAN authors directory path, then this will
+be the the CPAN id of the author.
 
 * dist
 
-  The name of the distribution
+The name of the distribution
 
 * distvname
 
-  The file name with any suffix and leading directory names removed
+The file name with any suffix and leading directory names removed
 
 * filename
 
-  If the path given looked like a CPAN authors directory path, then this
-  will be the path to the file relative to the detected CPAN author
-  directory. Otherwise it is the path that was passed in.
+If the path given looked like a CPAN authors directory path, then this will
+be the path to the file relative to the detected CPAN author directory.
+Otherwise it is the path that was passed in.
 
 * maturity
 
-  The maturity of the distribution. This will be either 'released' or
-  'developer'
+The maturity of the distribution. This will be either 'released' or
+'developer'
 
 * extension
 
-  The extension of the distribution, often used to denote the archive type
-  (e.g. 'tar.gz')
+The extension of the distribution, often used to denote the archive type
+(e.g. 'tar.gz')
 
 * pathname
 
-  The pathname that was passed to the constructor when creating the object.
+The pathname that was passed to the constructor when creating the object.
 
 * properties
 
-  This will return a list of key-value pairs, suitable for assigning to a
-  hash, for the known properties.
+This will return a list of key-value pairs, suitable for assigning to a
+hash, for the known properties.
 
 * version
 
-  The extracted version
+The extracted version
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
 %perl_process_packlist
 %perl_gen_filelist
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files -f %{name}.files
-%defattr(644,root,root,755)
 %doc Changes README
 
 %changelog
