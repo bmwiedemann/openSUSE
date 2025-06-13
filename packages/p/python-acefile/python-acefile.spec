@@ -1,7 +1,7 @@
 #
 # spec file for package python-acefile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-acefile
 Version:        0.6.13
 Release:        0
@@ -27,7 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://www.roe.ch/acefile
 Source:         https://files.pythonhosted.org/packages/source/a/acefile/acefile-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
@@ -44,10 +45,10 @@ sed -i '1 {/^#!/d}' acefile.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/acefile-unace
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
@@ -61,7 +62,10 @@ export CFLAGS="%{optflags}"
 %doc NEWS.md README.md
 %license LICENSE.md
 %python_alternative %{_bindir}/acefile-unace
-%{python_sitearch}/*
+%{python_sitearch}/acefile.py
+%pycache_only %{python_sitearch}/__pycache__/acefile.*.pyc
+%{python_sitearch}/acebitstream.cpython-*-linux-gnu.so
+%{python_sitearch}/acefile-%{version}.dist-info
 
 %check
 # no testsuite found

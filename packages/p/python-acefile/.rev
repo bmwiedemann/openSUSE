@@ -35,4 +35,13 @@
   * Minor maintainability and test improvements.</comment>
     <requestid>1225078</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4d52b2544b600c1162ea00ddbeb40bfb</srcmd5>
+    <version>0.6.13</version>
+    <time>1749833151</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1285322</requestid>
+  </revision>
 </revisionlist>
