@@ -444,7 +444,7 @@ done
 %run_permissions
 %else
 %set_permissions %{_sbindir}/exim
-%set_permissions /var/spool/mail
+%set_permissions /var/spool/mail/
 %endif
 if ! test -s etc/exim/exim.conf; then
 	if test -s etc/exim.conf; then
@@ -483,6 +483,7 @@ exit 0
 
 %verifyscript
 %verify_permissions -e %{_sbindir}/exim
+%verify_permissions -e /var/spool/mail/
 
 %files
 %ghost %{_docdir}/%{name}/doc/cve-2019-13917.rpmmoved

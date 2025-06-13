@@ -1,4 +1,5 @@
 /var/log/exim/main.log {
+        su mail mail
 	compress
 	dateext
 	notifempty
@@ -28,6 +29,7 @@
 }
 
 /var/log/exim/reject.log {
+        su mail mail
 	compress
 	dateext
 	notifempty
@@ -39,6 +41,7 @@
 }
 
 /var/log/exim/panic.log {
+        su mail mail
 	compress
 	dateext
 	notifempty
