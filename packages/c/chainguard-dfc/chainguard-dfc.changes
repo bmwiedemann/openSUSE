@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 13 05:02:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.0:
+  * Created Basic MCP Server for Dockerfile Converter by @rohitg00
+    in #70
+  * Cleanup mcp-server, add CI, add README about it by @jdolitsky
+    in #93
+  * feat: Add --warn-missing-packages flag to warn instead of
+    silently using original package names by @iamrajiv in #96
+
+-------------------------------------------------------------------
 Mon Jun 02 17:25:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.8.0:

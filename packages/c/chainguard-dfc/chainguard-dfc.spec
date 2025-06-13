@@ -19,7 +19,7 @@
 %define executable_name dfc
 
 Name:           chainguard-dfc
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Chainguard Dockerfile Converter
 License:        Apache-2.0
