@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Carp-Assert
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,20 @@
 
 %define cpan_name Carp-Assert
 Name:           perl-Carp-Assert
-Version:        0.22
+Version:        0.220.0
 Release:        0
+# 0.22 -> normalize -> 0.220.0
+%define cpan_version 0.22
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Executable comments
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/Y/YV/YVES/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/Y/YV/YVES/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.88
+Provides:       perl(Carp::Assert) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -110,7 +114,7 @@ you'd replace the comment with an assertion which *enforces* the comment.
     assert( $life =~ /!$/ );
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
