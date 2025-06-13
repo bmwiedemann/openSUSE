@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jun 12 11:56:30 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- grub2-bls/systemdboot: Writing kernel parameters before installing
+  the bootloader (bsc#1244399)
+- 5.0.20
+
+-------------------------------------------------------------------
+Wed May 14 14:30:17 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Selecting grub2-bls bootloader if a TPM2/FIDO2 device is used for
+  checking encryptions (jsc#PED-10703).
+- 5.0.19
+
+-------------------------------------------------------------------
+Tue May  6 07:33:02 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Fixed following bugs:
+  -- systemdboot_widgets shows undefined method >= for nil
+     (bsc#1234871)
+  -- Installer tries disabling sdboot timeout by setting -1
+     (bsc#1240896)
+  -- Error in Bootloader::Grub2Bls#grub2bls_architecture
+     Details: undefined method (bsc#1241651)
+  -- YaST installation with sd-boot: Disabling the menu
+     timeout is not possible (bsc#1216366)
+- 5.0.18
+
+-------------------------------------------------------------------
+Wed Apr 30 06:25:27 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Fixed typo "prefered_bootloader" (jsc#PED-1906).
+- 5.0.17
+
+-------------------------------------------------------------------
 Tue Apr 22 06:50:13 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - Calling "sdbootutil set-timeout" with the correct parameters
@@ -2300,8 +2334,8 @@ Tue Jul 29 09:23:34 UTC 2014 - jreidinger@suse.com
   avoid problems with other MBRs (bnc#887808, bnc#880439)
 - 3.1.73
 
--------------------------------------------------------------------
 
+-------------------------------------------------------------------
 Mon Jul 28 07:18:47 UTC 2014 - jreidinger@suse.com
 
 - fix proposing disabledos prober on certain products (SLES is
@@ -3852,7 +3886,7 @@ Tue Jul 29 18:18:38 CEST 2008 - juhliarik@suse.cz
   /etc/sysconfig/bootloader (fate#302245)
 - 2.17.6
 
-------------------------------------------------------------------
+-------------------------------------------------------------------
 Sun Jul 27 17:52:58 CEST 2008 - juhliarik@suse.cz
 
 - added powersaved=off to boot section for failsave (bnc#153345)
