@@ -1,7 +1,7 @@
 #
 # spec file for package python-webruntime
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-webruntime
 Version:        0.5.8
@@ -26,12 +25,14 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/flexxui/webruntime
 Source:         https://files.pythonhosted.org/packages/source/w/webruntime/webruntime-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-dialite
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module dialite}
@@ -49,10 +50,10 @@ desktop app, such as XUL (based on Firefox) or NW.js.
 %setup -q -n webruntime-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/webruntime
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -69,6 +70,7 @@ desktop app, such as XUL (based on Firefox) or NW.js.
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/webruntime
-%{python_sitelib}/*
+%{python_sitelib}/webruntime
+%{python_sitelib}/webruntime-%{version}.dist-info
 
 %changelog
