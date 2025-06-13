@@ -21,7 +21,7 @@
 %endif
 
 Name:           lyx
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        WYSIWYM (What You See Is What You Mean) document processor
 License:        GPL-2.0-or-later
@@ -32,7 +32,6 @@ Source1:        lyxrc.dist
 Source2:        lyx.keyring
 Source3:        http://ftp.lyx.org/pub/lyx/stable/2.4.x/lyx-%{version}.tar.xz.sig
 Source4:        README.SUSE
-Patch0:         qt69-fix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
