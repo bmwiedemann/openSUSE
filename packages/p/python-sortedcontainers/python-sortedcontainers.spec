@@ -1,7 +1,7 @@
 #
 # spec file for package python-sortedcontainers
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-sortedcontainers
 Version:        2.4.0
@@ -25,8 +24,10 @@ Summary:        Sorted container data types
 License:        Apache-2.0
 URL:            https://github.com/grantjenks/python-sortedcontainers
 Source:         https://github.com/grantjenks/python-sortedcontainers/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -52,10 +53,10 @@ has 100% coverage with unit tests and hours of stress.
 rm -rf sortedcontainers.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,6 +65,7 @@ rm -rf sortedcontainers.egg-info
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/sortedcontainers
+%{python_sitelib}/sortedcontainers-%{version}*-info
 
 %changelog
