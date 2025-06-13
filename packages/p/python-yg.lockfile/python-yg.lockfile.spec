@@ -1,7 +1,7 @@
 #
 # spec file for package python-yg.lockfile
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-yg.lockfile
 Version:        2.3
 Release:        0
@@ -28,10 +26,12 @@ Source0:        https://files.pythonhosted.org/packages/source/y/yg.lockfile/yg.
 # PyPI tarball does not contain a LICENSE file
 Source1:        https://raw.githubusercontent.com/yougov/yg.lockfile/master/LICENSE
 BuildRequires:  %{python_module jaraco.functools >= 1.16}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tempora}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zc.lockfile}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,10 +50,10 @@ of zc.lockfile, an excellent, cross-platorm implementation of file locking.
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -64,7 +64,7 @@ cp %{SOURCE1} .
 %license LICENSE
 %doc docs/*.rst README.rst CHANGES.rst
 %{python_sitelib}/yg/
-%{python_sitelib}/yg.lockfile-*.egg-info
-%{python_sitelib}/yg.lockfile-*nspkg.pth
+%{python_sitelib}/yg[._]lockfile-%{version}*-info
+%{python_sitelib}/yg[._]lockfile-%{version}*nspkg.pth
 
 %changelog

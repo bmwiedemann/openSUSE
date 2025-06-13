@@ -7,4 +7,12 @@
     <comment>Initial package for 2.3</comment>
     <requestid>879086</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8d03f3768eaffa6570b110ffe79152f4</srcmd5>
+    <version>2.3</version>
+    <time>1749833320</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1285514</requestid>
+  </revision>
 </revisionlist>
