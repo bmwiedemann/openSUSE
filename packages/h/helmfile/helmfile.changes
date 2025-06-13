@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun 13 07:47:36 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.1.2:
+  What's Changed
+  * build(deps): bump github.com/helmfile/chartify from 0.24.2 to
+    0.24.3 by @dependabot in #2065
+  * build: update Helm to v3.18.2 and adjust related configurations
+    by @yxxhero in #2064
+  * build(deps): bump github.com/helmfile/vals from 0.41.1 to
+    0.41.2 by @dependabot in #2067
+  * build(deps): bump golang.org/x/sync from 0.14.0 to 0.15.0
+    by @dependabot in #2068
+  * fix-insecure-flag by @anontrex in #2072
+  * build(deps): bump github.com/cloudflare/circl from 1.4.0 to
+    1.6.1 by @dependabot in #2074
+  * fix: update helm-diff to version 3.12.2 in CI and Dockerfiles
+    by @yxxhero in #2073
+  * fix: TestToYaml not working with 32-bit architectures by
+    @ProbstDJakob in #2075
+
+-------------------------------------------------------------------
 Sat May 31 07:14:59 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.1.1:
