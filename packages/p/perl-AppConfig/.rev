@@ -168,4 +168,15 @@
     <comment>1</comment>
     <requestid>296149</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3e3c81ed118140038ef8d55763592053</srcmd5>
+    <version>1.710.0</version>
+    <time>1749833044</time>
+    <user>anag_factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+- Add cpanspec.yml for automatic spec generation
+</comment>
+    <requestid>1285211</requestid>
+  </revision>
 </revisionlist>
