@@ -469,4 +469,13 @@
   * Prepare for release: 5.3.0 (#441)</comment>
     <requestid>1225084</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>0015d1c63a2aee931c9da3eb41535c84</srcmd5>
+    <version>5.3.1</version>
+    <time>1749833157</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1285328</requestid>
+  </revision>
 </revisionlist>
