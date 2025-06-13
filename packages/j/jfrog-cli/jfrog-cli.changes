@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun 13 04:56:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.77.0:
+  * Exciting New Features
+    - Added curation audit for gradle by @basel1322 in
+      jfrog/jfrog-cli-security#455
+    - Support new command (source-mcp) by @ilya-k-1 in
+      jfrog/jfrog-cli-security#448
+  * Bug Fixes
+    - Fix for mismatching cpu type for macos arm64 architecture by
+      @bhanurp in #2993
+  * Improvements
+    - Update to --watches flag documentation by @eranturgeman in
+      jfrog/jfrog-cli-security#461
+
+-------------------------------------------------------------------
 Thu May 29 05:26:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.76.1:
