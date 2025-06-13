@@ -1,7 +1,7 @@
 #
 # spec file for package python-system_hotkey
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-system_hotkey
 Version:        1.0.3
 Release:        0
@@ -25,9 +23,11 @@ Summary:        System wide hotkeys
 License:        BSD-3-Clause
 URL:            https://github.com/timeyyy/system_hotkey
 Source0:        https://github.com/timeyyy/system_hotkey/archive/%{version}.tar.gz#/system_hotkey-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xcffib}
 BuildRequires:  %{python_module xpybutil}
 BuildRequires:  fdupes
@@ -46,10 +46,10 @@ System wide hotkeys for python 3.
 %setup -q -n system_hotkey-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +60,6 @@ System wide hotkeys for python 3.
 %license LICENSE
 %doc HISTORY.rst README.rst
 %{python_sitelib}/system_hotkey
-%{python_sitelib}/*egg-info
+%{python_sitelib}/system_hotkey-%{version}*-info
 
 %changelog
