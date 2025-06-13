@@ -1,7 +1,7 @@
 #
 # spec file for package python-webencodings
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-webencodings
 Version:        0.5.1
@@ -26,7 +25,9 @@ License:        BSD-3-Clause
 URL:            https://github.com/SimonSapin/python-webencodings
 Source:         https://files.pythonhosted.org/packages/source/w/webencodings/webencodings-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/gsnedders/python-webencodings/v%{version}/LICENSE
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -52,16 +53,16 @@ implementation for encoders and decoders is Python’s.
 cp %{SOURCE1} ./
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/webencodings/
-%{python_sitelib}/webencodings-%{version}-py*.egg-info
+%{python_sitelib}/webencodings-%{version}.dist-info
 
 %changelog
