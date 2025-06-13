@@ -169,4 +169,12 @@
     * Bump semantic conventions to 1.33.0</comment>
     <requestid>1280593</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>85868f903bbc23b99d779d4ce9b9694b</srcmd5>
+    <version>1.33.1</version>
+    <time>1749833016</time>
+    <user>anag_factory</user>
+    <comment>- Inject multibuild to avoid a build cycle. (bsc#1244507)</comment>
+    <requestid>1285359</requestid>
+  </revision>
 </revisionlist>

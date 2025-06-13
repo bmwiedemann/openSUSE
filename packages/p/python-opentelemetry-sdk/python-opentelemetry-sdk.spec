@@ -16,23 +16,32 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-opentelemetry-sdk
+Name:           python-opentelemetry-sdk%{psuffix}
 Version:        1.33.1
 Release:        0
 Summary:        OpenTelemetry Python SDK
 License:        Apache-2.0
 URL:            https://github.com/open-telemetry/opentelemetry-python
 Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry-sdk/opentelemetry_sdk-%{version}.tar.gz
-BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module opentelemetry-api = %{version}}
-BuildRequires:  %{python_module opentelemetry-semantic-conventions = 0.54b1}
-BuildRequires:  %{python_module opentelemetry-test-utils = 0.54b1}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
+%if %{with test}
+BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module opentelemetry-sdk = %{version}}
+BuildRequires:  %{python_module opentelemetry-test-utils = 0.54b1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing-extensions >= 3.7.4}
-BuildRequires:  %{python_module wheel}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-opentelemetry-api = %{version}
@@ -51,17 +60,24 @@ OpenTelemetry Python SDK for the OpenTelemetry Project <https://opentelemetry.io
 %pyproject_wheel
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 rm -rvf tests/performance tests/trace/test_trace.py
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.rst
+%dir %{python_sitelib}/opentelemetry
 %{python_sitelib}/opentelemetry/sdk
 %{python_sitelib}/opentelemetry_sdk-%{version}.dist-info
+%endif
 
 %changelog
