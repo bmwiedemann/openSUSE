@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Cache-LRU
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Cache-LRU
-Version:        0.04
-Release:        0
 %define cpan_name Cache-LRU
-Summary:        Simple, Fast Implementation of Lru Cache in Pure Perl
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Cache-LRU/
-Source0:        https://cpan.metacpan.org/authors/id/K/KA/KAZUHO/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Cache-LRU
+Version:        0.40.0
+Release:        0
+# 0.04 -> normalize -> 0.40.0
+%define cpan_version 0.04
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Simple, fast implementation of LRU cache in pure perl
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/K/KA/KAZUHO/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         perl526.patch
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.42
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Requires)
+Provides:       perl(Cache::LRU) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -40,14 +43,14 @@ Cache::LRU is a simple, fast implementation of an in-memory LRU cache in
 pure perl.
 
 %prep
-%autosetup -p1 -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -55,7 +58,6 @@ pure perl.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
