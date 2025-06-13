@@ -1,7 +1,7 @@
 #
 # spec file for package python-accessible-pygments
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ Summary:        A collection of accessible pygments styles
 License:        BSD-3-Clause
 URL:            https://github.com/Quansight-Labs/accessible-pygments
 Source:         https://github.com/Quansight-Labs/accessible-pygments/archive/refs/tags/v%{version}.tar.gz#/accessible-pygments-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pygments >= 1.5
@@ -43,10 +45,10 @@ A collection of accessible pygments styles
 %setup -q -n accessible-pygments-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/test
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -58,6 +60,6 @@ export PYTHONPATH=$PWD
 %doc README.md
 %license LICENSE
 %{python_sitelib}/a11y_pygments
-%{python_sitelib}/accessible_pygments-%{version}*-info
+%{python_sitelib}/accessible_pygments-%{version}.dist-info
 
 %changelog
