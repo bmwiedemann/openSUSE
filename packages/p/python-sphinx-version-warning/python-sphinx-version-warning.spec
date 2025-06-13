@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-version-warning
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-version-warning
 Version:        1.1.2
@@ -26,7 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/humitos/sphinx-version-warning
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx-version-warning/sphinx-version-warning-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx
@@ -40,10 +41,10 @@ Sphinx extension to add a warning banner
 %setup -q -n sphinx-version-warning-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -52,6 +53,7 @@ Sphinx extension to add a warning banner
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/versionwarning
+%{python_sitelib}/sphinx[-_]version[-_]warning-%{version}*-info
 
 %changelog
