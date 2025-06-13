@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 13 04:43:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.6.2:
+  * no CLI-related changes (other than dependencies)
+  * Dependencies
+  * build(deps): bump tower-http from 0.6.4 to 0.6.6 (#14097)
+  * build(deps): bump headers from 0.4.0 to 0.4.1 (#14098)
+  * build(deps): bump hyper-util from 0.1.13 to 0.1.14 (#14101)
+  * build(deps): bump anstyle from 1.0.10 to 1.0.11 (#14102)
+
+-------------------------------------------------------------------
 Fri Jun 06 06:05:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.6.1:
