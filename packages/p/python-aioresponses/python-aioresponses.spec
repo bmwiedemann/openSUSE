@@ -28,9 +28,11 @@ Source:         https://files.pythonhosted.org/packages/source/a/aioresponses/ai
 BuildRequires:  %{python_module aiohttp >= 2.0.0}
 BuildRequires:  %{python_module ddt >= 1.1.0}
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.8.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module yarl}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,11 +52,11 @@ from the aiohttp package.
 
 %build
 export LC_ALL=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LC_ALL=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -69,6 +71,6 @@ skiptests+=" or test_pass_through_unmatched_requests"
 %doc AUTHORS AUTHORS.rst ChangeLog README.rst
 %license LICENSE
 %{python_sitelib}/aioresponses
-%{python_sitelib}/aioresponses-%{version}-py*.egg-info
+%{python_sitelib}/aioresponses-%{version}.dist-info
 
 %changelog
