@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun 12 08:28:59 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to ucx 1.18.1
+  - CUDA
+    - Added config keys to update cuda_copy bandwidth for coherent platforms
+    - Improved cache invalidation of memory allocated using CUDA memory pool
+  - AZP
+    - Added Ubuntu 24.04 to build and release pipeline
+  - UCP
+    - Fixed assertion failure when maximum lane fragment is smaller than AM header
+    - Fixed potential active message user header use after free with protocol reconfiguration
+  - CUDA
+    - Fixed registration of CUDA Fabric memory allocated by UCT
+    - Fixed VA recycling check of memory allocated using VMM and CUDA memory pool
+  - RDMA CORE (IB, ROCE, etc.)
+    - Do not use ConnectX-8 SMI subdevices for communication
+    - Fixed remote access error by disabling ODP when the device supports DDP
+    - Fixed configuration logic by disabling DDP when AR is disabled
+  - UCM
+    - Fixed crash with bistro hooks for CUDA 12.9 on amd64
+
+-------------------------------------------------------------------
 Wed May  2 14:16:35 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Add openucx-strict-headers.patch and openucx-extern-c.patch from
