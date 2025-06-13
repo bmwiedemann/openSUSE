@@ -48,4 +48,13 @@
     <comment></comment>
     <requestid>1207161</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ef841a69239dd872a29e85e34cb3ec49</srcmd5>
+    <version>0.1.7</version>
+    <time>1749833154</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1285324</requestid>
+  </revision>
 </revisionlist>
