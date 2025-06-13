@@ -25,12 +25,17 @@ Group:          Development/Tools/Debuggers
 URL:            https://www.radare.org
 Source:         https://github.com/radareorg/radare2/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         https://github.com/radareorg/radare2/commit/c6c772d2eab692ce7ada5a4227afd50c355ad545.patch#/CVE-2025-1378.patch
+Patch2:         https://github.com/radareorg/radare2/commit/e64c606b1342a4c0ab2c35ef5146b69667dcd43a.patch#/CVE-2025-1744.patch
+Patch3:         https://github.com/radareorg/radare2/commit/db6decd4bc90bb4a492129e70803136fa184f470.patch#/CVE-2025-1864.patch
+# From https://github.com/radareorg/radare2/commit/5705d99cc1f23f36f9a84aab26d1724010b97798.patch but needed a rediff
+Patch4:         CVE-2025-5641.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  git-core
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  python3
 BuildRequires:  pkgconfig(capstone)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libuv)
