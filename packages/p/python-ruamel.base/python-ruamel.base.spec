@@ -1,7 +1,7 @@
 #
 # spec file for package python-ruamel.base
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ruamel.base
 Version:        1.0.0+post1
 Release:        0
@@ -24,7 +23,9 @@ Summary:        Shared ruamel routines
 License:        MIT
 URL:            https://bitbucket.org/ruamel/base
 Source:         https://files.pythonhosted.org/packages/source/r/ruamel.base/ruamel.base-1.0.0.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -43,17 +44,17 @@ sed -i '/sys.exit/d' setup.py
 sed -i '/namespace_packages=/d' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 export RUAMEL_NO_PIP_INSTALL_CHECK=1
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/ruamel
-%{python_sitelib}/ruamel.base-1.0.0-py%{python_version}.egg-info
+%{python_sitelib}/ruamel[._]base-1.0.0*-info
 
 %changelog

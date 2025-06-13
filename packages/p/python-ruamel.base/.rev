@@ -32,4 +32,13 @@
     <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>743997</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d56cdf4e08eba022606ef76d426ae129</srcmd5>
+    <version>1.0.0+post1</version>
+    <time>1749833314</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build
+</comment>
+    <requestid>1285510</requestid>
+  </revision>
 </revisionlist>
