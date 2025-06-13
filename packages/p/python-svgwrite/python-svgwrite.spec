@@ -1,7 +1,7 @@
 #
 # spec file for package python-svgwrite
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,9 @@ Summary:        Python module for creating SVG drawings
 License:        MIT
 URL:            https://github.com/mozman/svgwrite
 Source:         https://files.pythonhosted.org/packages/source/s/svgwrite/svgwrite-%{version}.zip
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -45,10 +47,10 @@ find svgwrite -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} \; -exec sed -i 's/\
 sed -i 's/\r$//' LICENSE.TXT NEWS.rst README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +61,7 @@ sed -i 's/\r$//' LICENSE.TXT NEWS.rst README.rst
 %files %{python_files}
 %doc NEWS.rst README.rst
 %license LICENSE.TXT
-%{python_sitelib}/*
+%{python_sitelib}/svgwrite
+%{python_sitelib}/svgwrite-%{version}*-info
 
 %changelog
