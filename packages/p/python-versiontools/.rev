@@ -103,4 +103,12 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>659745</requestid>
   </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>cca91cbde3ec7aeea931dcf3c7b0fe85</srcmd5>
+    <version>1.9.1</version>
+    <time>1749833296</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1285487</requestid>
+  </revision>
 </revisionlist>

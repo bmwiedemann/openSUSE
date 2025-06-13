@@ -1,7 +1,7 @@
 #
 # spec file for package python-versiontools
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-versiontools
 Version:        1.9.1
 Release:        0
 Summary:        Smart replacement for plain tuple used in __version__
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-Url:            https://launchpad.net/versiontools
+URL:            https://launchpad.net/versiontools
 Source:         https://files.pythonhosted.org/packages/source/v/versiontools/versiontools-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,14 +48,14 @@ Smart replacement for plain tuple used in __version__.
 sed -i "1d" versiontools/{git_support,hg_support,bzr_support}.py # Fix non-executable scripts
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc doc/*
-%{python_sitelib}/*
+%{python_sitelib}/versiontools
+%{python_sitelib}/versiontools-%{version}*-info
 
 %changelog
