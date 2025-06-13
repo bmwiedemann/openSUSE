@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 10 07:03:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.10.2
+  * Remove clang-3 from CI by @sbSteveK in (#518)
+  * Stop sending empty data frame when input stream ends but
+    the request stream is not ending. by @TingDaoK in (#520)
+
+-------------------------------------------------------------------
 Wed May 14 08:51:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.10.1
