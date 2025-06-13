@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu May 22 07:49:04 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.13.0:
+  Added
+  * Added DSCP and ECN columns
+  * Added support for setting IPv6 traffic class from --tos 
+  * Added ability to read config from $XDG_CONFIG_HOME/trippy directory
+  * Added --tui-timezone flag to set a custom timezone
+  * Added support for --addr-family system to defer address family selection 
+    to the OS resolver
+  * Added tracing start and end timestamps to the json report
+  * Added the Trippy logo!
+  Changed
+  * Remove address family downgrade for dublin strategy
+  * Reduce verbosity of tracing for library users
+  * Increase MSRV to 1.78 (#1576)
+  Fixed
+  * Tracer panic for large icmp packets (#1561)
+  * Memory corruption on Windows (#1527)
+  * Socket being closed twice on Windows (#1443)
+  * The --tos (-Q) flag is ignored for IPv4/udp tracing
+  * Items missing from settings dialog
+
+  * Full changelog: https://github.com/fujiapple852/trippy/releases/tag/0.13.0
+
+-------------------------------------------------------------------
 Sat Jan  4 07:12:01 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.12.2:
