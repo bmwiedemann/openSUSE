@@ -27,7 +27,9 @@ Source:         https://files.pythonhosted.org/packages/source/a/av/av-%{version
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -47,10 +49,10 @@ Pythonic bindings for FFmpeg's libraries.
 %autosetup -p1 -n av-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pyav
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_expand rm %{buildroot}%{$python_sitearch}/av/filter/*.{c,h}
@@ -66,6 +68,6 @@ Pythonic bindings for FFmpeg's libraries.
 %doc README.md
 %python_alternative %{_bindir}/pyav
 %{python_sitearch}/av
-%{python_sitearch}/av-%{version}-py%{python_version}.egg-info
+%{python_sitearch}/av-%{version}.dist-info
 
 %changelog
