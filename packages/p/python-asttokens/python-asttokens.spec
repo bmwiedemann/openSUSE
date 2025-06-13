@@ -30,6 +30,7 @@ URL:            https://github.com/gristlabs/asttokens
 Source:         https://files.pythonhosted.org/packages/source/a/asttokens/asttokens-%{version}.tar.gz
 BuildRequires:  %{python_module astroid}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 44}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
@@ -48,11 +49,11 @@ Annotate AST trees with source code positions
 
 %build
 export LC_ALL=en_US.utf8
-%python_build
+%pyproject_wheel
 
 %install
 export LC_ALL=en_US.utf8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,7 +65,7 @@ donttest+=" or test_deep_recursion"
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/asttokens-%{version}-*-info
+%{python_sitelib}/asttokens-%{version}.dist-info
 %{python_sitelib}/asttokens
 
 %changelog

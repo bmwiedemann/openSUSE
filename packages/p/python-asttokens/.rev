@@ -98,4 +98,12 @@
   gh#gristlabs/asttokens#159</comment>
     <requestid>1273669</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>fc4d0d5bc91d75eed4910084fa44ac52</srcmd5>
+    <version>3.0.0</version>
+    <time>1749833015</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1285332</requestid>
+  </revision>
 </revisionlist>
