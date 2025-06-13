@@ -129,4 +129,12 @@
     <comment>- Add sphinx8.patch to support sphinx8</comment>
     <requestid>1223367</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>dc41cea71da8dd4b0d7311e886d6fd4d</srcmd5>
+    <version>1.4.1</version>
+    <time>1749833169</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1285334</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-atomicwrites
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,9 @@ URL:            https://github.com/untitaker/python-atomicwrites
 Source:         https://files.pythonhosted.org/packages/source/a/atomicwrites/atomicwrites-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE sphinx8.patch -- daniel.garcia@suse.com
 Patch0:         sphinx8.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -79,7 +81,7 @@ of python-atomicwrites
 
 %build
 %if %{without doc}
-%python_build
+%pyproject_wheel
 %else
 pushd docs
 make html
@@ -89,7 +91,7 @@ popd
 
 %install
 %if %{without doc}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -103,7 +105,8 @@ popd
 %defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/atomicwrites*
+%{python_sitelib}/atomicwrites
+%{python_sitelib}/atomicwrites-%{version}.dist-info
 
 %else
 

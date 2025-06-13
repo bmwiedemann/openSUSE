@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 13 05:35:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Mon Nov 11 13:34:27 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add sphinx8.patch to support sphinx8
