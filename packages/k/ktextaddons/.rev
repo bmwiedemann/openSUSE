@@ -49,4 +49,12 @@
   * 0001-Add-missing-include.patch</comment>
     <requestid>1266803</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8aae1ac7154100182de37ad9d905e1ae</srcmd5>
+    <version>1.6.0</version>
+    <time>1749832962</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.6.0</comment>
+    <requestid>1285148</requestid>
+  </revision>
 </revisionlist>

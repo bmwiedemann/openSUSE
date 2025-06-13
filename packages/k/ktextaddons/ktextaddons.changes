@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 12 12:01:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.6.0. No changelog.
+- Drop patch, merged upstream:
+  * 0001-Add-missing-include.patch
+
+-------------------------------------------------------------------
 Thu Apr  3 08:14:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add build fix for Qt 6.9:

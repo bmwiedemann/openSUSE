@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 5.246.0
-%define qt6_version 6.6.0
+%define kf6_version 6.11.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           ktextaddons
-Version:        1.5.4
+Version:        1.6.0
 Release:        0
 Summary:        Various text handling addons
 License:        LGPL-2.1-or-later
@@ -29,10 +29,9 @@ URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/ktextaddons/%{name}-%{version}.tar.xz
 %if %{with released}
 Source1:        https://download.kde.org/stable/ktextaddons/%{name}-%{version}.tar.xz.sig
+# https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/mlaurent@key1.asc?ref_type=heads
 Source2:        ktextaddons.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Add-missing-include.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -43,15 +42,18 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
 BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Keychain)
 BuildRequires:  cmake(Qt6MultimediaWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
 BuildRequires:  cmake(Qt6TextToSpeech) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6UiPlugin) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Requires:       qt6-sql-sqlite >= %{qt6_version}
 
 %description
 KTextAddons provides libraries to work with texts, such as grammar checks,
@@ -82,7 +84,6 @@ This package provides development files to use ktextaddons in other applications
 
 %build
 %cmake_kf6 \
-  -DBUILD_WITH_QT6:BOOL=TRUE \
   -DBUILD_QCH:BOOL=TRUE
 
 %kf6_build
@@ -101,6 +102,9 @@ This package provides development files to use ktextaddons in other applications
 %{_kf6_debugdir}/ktextaddons.categories
 %{_kf6_debugdir}/ktextaddons.renamecategories
 %{_kf6_plugindir}/kf6/translator/
+%{_kf6_plugindir}/kf6/speechtotext/
+%{_kf6_plugindir}/kf6/textautogeneratetext/
+%{_kf6_libdir}/libtextautogenerateollama.so.*
 
 %files lang -f %{name}.lang
 
@@ -108,6 +112,7 @@ This package provides development files to use ktextaddons in other applications
 %license LICENSES/*
 %{_kf6_libdir}/libKF6TextAutoCorrectionCore.so.*
 %{_kf6_libdir}/libKF6TextAutoCorrectionWidgets.so.*
+%{_kf6_libdir}/libKF6TextAutoGenerateText.so.*
 %{_kf6_libdir}/libKF6TextCustomEditor.so.*
 %{_kf6_libdir}/libKF6TextEmoticonsCore.so.*
 %{_kf6_libdir}/libKF6TextEmoticonsWidgets.so.*
@@ -116,37 +121,44 @@ This package provides development files to use ktextaddons in other applications
 %{_kf6_libdir}/libKF6TextTranslator.so.*
 %{_kf6_libdir}/libKF6TextAddonsWidgets.so.*
 %{_kf6_libdir}/libKF6TextUtils.so.*
+%{_kf6_libdir}/libKF6TextSpeechToText.so.*
 
 %files devel
 %doc %{_kf6_qchdir}/KF6Text*.*
 %{_kf6_cmakedir}/KF6TextAddonsWidgets/
 %{_kf6_cmakedir}/KF6TextAutoCorrectionCore/
 %{_kf6_cmakedir}/KF6TextAutoCorrectionWidgets/
+%{_kf6_cmakedir}/KF6TextAutoGenerateText/
 %{_kf6_cmakedir}/KF6TextCustomEditor/
 %{_kf6_cmakedir}/KF6TextEditTextToSpeech/
 %{_kf6_cmakedir}/KF6TextEmoticonsCore/
 %{_kf6_cmakedir}/KF6TextEmoticonsWidgets/
 %{_kf6_cmakedir}/KF6TextGrammarCheck/
+%{_kf6_cmakedir}/KF6TextSpeechToText/
 %{_kf6_cmakedir}/KF6TextTranslator/
 %{_kf6_cmakedir}/KF6TextUtils/
 %{_kf6_includedir}/TextAddonsWidgets/
 %{_kf6_includedir}/TextAutoCorrectionCore/
 %{_kf6_includedir}/TextAutoCorrectionWidgets/
+%{_kf6_includedir}/TextAutoGenerateText/
 %{_kf6_includedir}/TextCustomEditor/
 %{_kf6_includedir}/TextEditTextToSpeech/
 %{_kf6_includedir}/TextEmoticonsCore/
 %{_kf6_includedir}/TextEmoticonsWidgets/
 %{_kf6_includedir}/TextGrammarCheck/
+%{_kf6_includedir}/TextSpeechToText/
 %{_kf6_includedir}/TextTranslator/
 %{_kf6_includedir}/TextUtils/
 %{_kf6_libdir}/libKF6TextAddonsWidgets.so
 %{_kf6_libdir}/libKF6TextAutoCorrectionCore.so
 %{_kf6_libdir}/libKF6TextAutoCorrectionWidgets.so
+%{_kf6_libdir}/libKF6TextAutoGenerateText.so
 %{_kf6_libdir}/libKF6TextCustomEditor.so
 %{_kf6_libdir}/libKF6TextEditTextToSpeech.so
 %{_kf6_libdir}/libKF6TextEmoticonsCore.so
 %{_kf6_libdir}/libKF6TextEmoticonsWidgets.so
 %{_kf6_libdir}/libKF6TextGrammarCheck.so
+%{_kf6_libdir}/libKF6TextSpeechToText.so
 %{_kf6_libdir}/libKF6TextTranslator.so
 %{_kf6_libdir}/libKF6TextUtils.so
 %{_kf6_plugindir}/designer/textcustomeditor.so
