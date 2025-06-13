@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 13 07:06:24 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not (ever) use Epoch; it has devestating effects on version
+  comparisons. As Epoch was set to 1, removing indicates a
+  downgrade for installations, but better bite the bullet than keep
+  it.
+
+-------------------------------------------------------------------
 Fri Jun  6 11:50:08 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Initial checkin

@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2-totp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 Name:           tpm2-totp
-Epoch:          1
 Version:        20240326.33e1986
 Release:        0
 Summary:        Create TOTP tokens using a TPM2
@@ -30,15 +29,15 @@ Patch1:         allow_specify_custom_secret.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
+BuildRequires:  doxygen
 BuildRequires:  gcc
 BuildRequires:  libtool
 BuildRequires:  m4
 BuildRequires:  make
+BuildRequires:  pandoc
 BuildRequires:  pkgconfig
 BuildRequires:  qrencode-devel
 BuildRequires:  tpm2-0-tss-devel
-BuildRequires:  doxygen
-BuildRequires:  pandoc
 
 %description
 This is a reimplementation of Matthew Garrett's tpmtotp software for TPM 2.0 using the tpm2-tss software stack.
@@ -96,6 +95,5 @@ make check
 %{_includedir}/%{name}.h
 %{_libdir}/pkgconfig/%{name}.pc
 %{_mandir}/man3/%{name}.3%{?ext_man}
-
 
 %changelog
