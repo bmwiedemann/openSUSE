@@ -1,7 +1,7 @@
 #
 # spec file for package python-ara
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,9 @@ URL:            https://github.com/ansible-community/ara
 Source:         https://files.pythonhosted.org/packages/source/a/ara/ara-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cliff
@@ -76,11 +78,11 @@ tools and interfaces.
 %setup -q -n ara-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/ara
 %python_clone -a %{buildroot}%{_bindir}/ara-manage
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -105,7 +107,7 @@ ara-manage test -v 2 ara
 %license LICENSE
 %python_alternative %{_bindir}/ara
 %python_alternative %{_bindir}/ara-manage
-%{python_sitelib}/ara-%{version}*-info
+%{python_sitelib}/ara-%{version}.dist-info
 %{python_sitelib}/ara
 %endif
 
