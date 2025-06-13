@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 12 18:39:24 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.12.0
+  * Restore demo animation
+  * Change the license for documents and assets to CC BY 4.0
+  * Replace --generate-completion with completion subcommand
+  * Remove help text for after auto-generated --help
+  * Make the message for --version the same as the message for -V
+  * Allow partial matches of subcommand names
+- Removed cargo_audit from _service due that contains vendor now
+
+-------------------------------------------------------------------
 Tue Oct 29 22:19:53 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.11.6
