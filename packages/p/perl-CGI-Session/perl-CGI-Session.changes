@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 12 17:57:46 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
 Thu Aug 27 11:05:06 UTC 2015 - hsk@imb-jena.de
 
 - add "BuildRequires: CGI" to .spec file so "make test" succeeds
