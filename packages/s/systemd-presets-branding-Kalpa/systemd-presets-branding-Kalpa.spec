@@ -19,9 +19,9 @@
 %define generic_name systemd-presets-branding
 
 Name:           systemd-presets-branding-Kalpa
-Version:        20231005
+Version:        20250612
 Release:        0
-Summary:        Systemd default presets for openSUSE Kalpa 
+Summary:        Systemd default presets for Kalpa Desktop
 License:        MIT
 Group:          System/Base
 Source0:        50-default-Kalpa.preset
@@ -38,10 +38,11 @@ Conflicts:      systemd-presets-branding
 Provides:       systemd-presets-branding = %{version}
 Obsoletes:      systemd-presets-branding-CAASP < 15.1
 Obsoletes:	systemd-presets-branding-MicroOS < 20231005
+Conflicts:      systemd-presets-branding-MicroOS
 BuildArch:      noarch
 
 %description
-Default presets for systemd on openSUSE Kalpa 
+Default presets for systemd on openSUSE Kalpa
 
 %prep
 %setup -q -T -c

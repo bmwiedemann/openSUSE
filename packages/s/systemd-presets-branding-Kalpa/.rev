@@ -7,4 +7,12 @@
     <comment>New package for upcoming kalpa specific devel workflow and installation media</comment>
     <requestid>1129876</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9f1b1e17030856e60cf2d770c7e7e9b0</srcmd5>
+    <version>20250612</version>
+    <time>1749833022</time>
+    <user>anag_factory</user>
+    <comment>- Revised enabled services</comment>
+    <requestid>1285386</requestid>
+  </revision>
 </revisionlist>
