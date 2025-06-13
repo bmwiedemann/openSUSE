@@ -17,7 +17,7 @@
 
 
 Name:           hardinfo2
-Version:        2.2.10
+Version:        2.2.13
 Release:        0
 Summary:        A System Information and Benchmark for Linux
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-only
@@ -28,6 +28,8 @@ BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  glslang-devel
+BuildRequires:  libdecor-devel
 BuildRequires:  openSUSE-release
 BuildRequires:  pciutils
 BuildRequires:  pkgconfig

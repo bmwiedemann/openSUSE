@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jun 11 09:45:58 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 2.2.13:
+  * PACKAGING: Added vulkan-headers, glslang-tools, libdecor
+    (if wayland) IMPORTANT
+  * New Vulkan Benchmark - simple gears benchmark - but shows
+    that vulkan works for the machine.
+  * Added CLI topic to filter the CLI report and show
+    sections/parts only
+  * Added User Note to synchronize dialog to request certain
+    benchmarks
+  * Added HWCAPS to show which are supported by cpu+distro - eg.
+    x86-64-V2
+  * Added support for OpenSuse leap 15.6+16, fixed Tumbleweed,
+    fixed Alt Linux
+  * Turkish, Chinese, Danish & Russian Translations updated
+  * Speedup Application dialog handling and fixed crashes
+  * Improve StatusMessage & ProgressBar handling with correct
+    benchmark timing
+  * Fixed Close handling to avoid crashes when updating
+    information and closing.
+  * Updated Logo
+  * Minor Fixes: Crash in vendor match (fwupd on nuc6), Crash on
+    WSL1 missing network entries.
+  * Minor Fixes: Disable GPU benchmarks in CLI mode. Disable unused
+    lsscsi, lspci, lsusb.
+  * Minor Fixes: Treeview handling race issues, Cachemem benchmark
+    low mem machines
+  * Minor Fixes: Distro flavor detection, HTML report improved, 
+    Added support for more ARM
+- Add BuildRequires glslang-devel, libdecor-devel
+
+-------------------------------------------------------------------
 Fri Apr 11 15:14:01 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 2.2.10: 
