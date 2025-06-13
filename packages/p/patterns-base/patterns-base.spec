@@ -1063,7 +1063,6 @@ Requires:       xeyes
 # Drivers
 Requires:       xf86-input-evdev
 Requires:       xf86-input-libinput
-Requires:       xf86-video-fbdev
 Requires:       xfd
 Requires:       xfontsel
 Requires:       xgamma
