@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Archive-Any-Lite
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,29 +18,35 @@
 
 %define cpan_name Archive-Any-Lite
 Name:           perl-Archive-Any-Lite
-Version:        0.11
+Version:        0.110.0
 Release:        0
+# 0.11 -> normalize -> 0.110.0
+%define cpan_version 0.11
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple CPAN package extractor
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Archive::Tar) >= 1.76
 BuildRequires:  perl(Archive::Zip)
-BuildRequires:  perl(ExtUtils::MakeMaker::CPANfile) >= 0.07
+BuildRequires:  perl(ExtUtils::MakeMaker::CPANfile) >= 0.70
 BuildRequires:  perl(File::Temp) >= 0.19
 BuildRequires:  perl(IO::Uncompress::Bunzip2)
 BuildRequires:  perl(IO::Zlib)
 BuildRequires:  perl(Test::More) >= 0.82
-BuildRequires:  perl(Test::UseAllModules) >= 0.10
+BuildRequires:  perl(Test::UseAllModules) >= 0.100
 Requires:       perl(Archive::Tar) >= 1.76
 Requires:       perl(Archive::Zip)
 Requires:       perl(File::Temp) >= 0.19
 Requires:       perl(IO::Uncompress::Bunzip2)
 Requires:       perl(IO::Zlib)
+Provides:       perl(Archive::Any::Lite) = %{version}
+Provides:       perl(Archive::Any::Lite::Tar)
+Provides:       perl(Archive::Any::Lite::Zip)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -51,7 +57,7 @@ less memory to extract a tarball. On the other hand, this isn't pluggable
 doesn't check mime types (at least as of this writing).
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
