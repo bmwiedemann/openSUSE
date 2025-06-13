@@ -100,4 +100,12 @@
 - Update to version 2.0.0</comment>
     <requestid>1169319</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a4ec7b568c20064e19b34e200a963ba8</srcmd5>
+    <version>2.0.1</version>
+    <time>1749833284</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1285471</requestid>
+  </revision>
 </revisionlist>
