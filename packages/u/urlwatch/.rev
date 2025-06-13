@@ -321,4 +321,12 @@
   * Fix concurrency issue in Python 3.12 by upgrading to minidb 2.0.8 (fixes #779)</comment>
     <requestid>1218754</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>628130bd399d754f81ee2b92ac6f982e</srcmd5>
+    <version>2.29</version>
+    <time>1749833179</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1285336</requestid>
+  </revision>
 </revisionlist>

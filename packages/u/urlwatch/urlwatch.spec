@@ -1,7 +1,7 @@
 #
 # spec file for package urlwatch
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define pythons python3
 Name:           urlwatch
 Version:        2.29
 Release:        0
@@ -24,15 +25,19 @@ License:        BSD-3-Clause
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://thp.io/2008/urlwatch/
 Source0:        https://github.com/thp/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel >= 3.8
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 Requires:       python3-PyYAML
-Requires:       python3-appdirs
 Requires:       python3-cssselect
+Requires:       python3-keyring
 Requires:       python3-lxml
 Requires:       python3-minidb >= 2.0.6
+Requires:       python3-platformdirs
 Requires:       python3-requests
-Recommends:     python3-keyring
 BuildArch:      noarch
 
 %description
@@ -57,17 +62,18 @@ Please look in
 %setup -q
 
 %build
-python3 setup.py build
+%pyproject_wheel
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%pyproject_install
+%fdupes %{buildroot}%{python3_sitelib}
 
 %files
 %doc CHANGELOG* README*
 %license COPYING*
 %{_bindir}/%{name}
 %{python3_sitelib}/%{name}
-%{python3_sitelib}/%{name}-%{version}-py%{py3_ver}.egg-info
+%{python3_sitelib}/%{name}-%{version}.dist-info
 %{_datadir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man5/urlwatch-config.5%{?ext_man}
