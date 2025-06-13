@@ -19,7 +19,7 @@
 
 %define lname libdqlite0
 Name:           dqlite
-Version:        1.17.2
+Version:        1.18.0
 Release:        0
 Summary:        Distributed SQLite
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
@@ -30,8 +30,8 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.9.0
-BuildRequires:  pkgconfig(liblz4)
-BuildRequires:  pkgconfig(libuv) >= 1.34
+BuildRequires:  pkgconfig(liblz4) >= 1.7.1
+BuildRequires:  pkgconfig(libuv) >= 1.8.0
 BuildRequires:  pkgconfig(sqlite3) >= 3.22.0
 
 %description
@@ -78,6 +78,9 @@ autoreconf -fiv
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %ldconfig_scriptlets -n %{lname}
+
+%check
+make check %{?_smp_mflags}
 
 %files devel
 %license LICENSE
