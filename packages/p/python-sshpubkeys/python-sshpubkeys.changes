@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 13 10:14:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Jun 13 12:19:15 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
