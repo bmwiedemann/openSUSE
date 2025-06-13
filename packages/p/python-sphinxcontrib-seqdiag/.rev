@@ -53,4 +53,12 @@
   * add python 3.9+ support</comment>
     <requestid>945423</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>591325c29991b1c6372fd6f7d414f19e</srcmd5>
+    <version>3.0.0</version>
+    <time>1749833210</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1285403</requestid>
+  </revision>
 </revisionlist>
