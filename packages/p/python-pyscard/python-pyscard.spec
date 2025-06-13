@@ -23,12 +23,13 @@ Version:        2.2.1
 Release:        0
 Summary:        Python module adding smart card support
 License:        LGPL-2.0-or-later
-Group:          Development/Languages/Python
 URL:            https://pyscard.sourceforge.io/
 Source:         https://files.pythonhosted.org/packages/source/p/pyscard/pyscard-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkgconfig
@@ -48,10 +49,10 @@ python framework built on top of the raw PCSC API.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -60,7 +61,7 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %license LICENSE
 %doc ChangeLog README.md
-%{python_sitearch}/pyscard*
 %{python_sitearch}/smartcard
+%{python_sitearch}/pyscard-%{version}.dist-info
 
 %changelog
