@@ -1,0 +1,26 @@
+Index: b/tests/test_asyncio/test_credentials.py
+===================================================================
+--- a/tests/test_asyncio/test_credentials.py
++++ b/tests/test_asyncio/test_credentials.py
+@@ -8,7 +8,7 @@ from typing import Optional, Tuple, Unio
+ import pytest
+ import pytest_asyncio
+ import redis
+-from mock.mock import Mock, call
++from unittest.mock import Mock, call
+ from redis import AuthenticationError, DataError, RedisError, ResponseError
+ from redis.asyncio import Connection, ConnectionPool, Redis
+ from redis.asyncio.retry import Retry
+Index: b/tests/test_credentials.py
+===================================================================
+--- a/tests/test_credentials.py
++++ b/tests/test_credentials.py
+@@ -7,7 +7,7 @@ from typing import Optional, Tuple, Unio
+ 
+ import pytest
+ import redis
+-from mock.mock import Mock, call
++from unittest.mock import Mock, call
+ from redis import AuthenticationError, DataError, Redis, ResponseError
+ from redis.auth.err import RequestTokenErr
+ from redis.backoff import NoBackoff

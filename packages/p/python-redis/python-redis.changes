@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:24:11 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed pytest.ini source file.
+
+-------------------------------------------------------------------
+Tue Jun 10 16:44:41 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 6.2.0:
+  * https://github.com/redis/redis-py/releases/tag/v6.2.0
+  * https://github.com/redis/redis-py/releases/tag/v6.1.0
+  * https://github.com/redis/redis-py/releases/tag/v6.0.0
+  * https://github.com/redis/redis-py/releases/tag/v5.3.0
+- Drop pytest-asyncio-045.patch
+  * Fixed upstream
+- Add remove-mock.patch
+  * Use built-in unittest.mock
+- Don't remove test_graph.py
+  * The test was dropped upstream
+- Add new python-redis-entraid and pytest-mock dependencies for tests
+- Add new hatchling build requirement
+  * Remove setuptools which is no longer needed
+- Move test suite to separate flavor to avoid dependency cycle with
+  python-redis-entraid
+  * Add _multibuild
+  * Move some dependencies that were only needed for tests to the new
+    flavor
+- Update skipped test list due to gh#python/cpython#70654
+  * Skip test_re_auth_pub_sub_in_resp3
+  * Skip test_do_not_re_auth_pub_sub_in_resp2
+
+-------------------------------------------------------------------
 Thu Feb 13 10:59:14 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add pytest-asyncio-045.patch to make tests compatible with latest
