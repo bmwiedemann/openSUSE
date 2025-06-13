@@ -27,8 +27,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/GrahamDumpleton/wrapt
 Source:         https://github.com/GrahamDumpleton/wrapt/archive/%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -62,10 +64,10 @@ For further information on the **wrapt** module see:
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -75,6 +77,6 @@ export CFLAGS="%{optflags}"
 %license LICENSE
 %doc README.rst docs/changes.rst
 %{python_sitearch}/wrapt
-%{python_sitearch}/wrapt-%{version}*-info
+%{python_sitearch}/wrapt-%{version}.dist-info
 
 %changelog
