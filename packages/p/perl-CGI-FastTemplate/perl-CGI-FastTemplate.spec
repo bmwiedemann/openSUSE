@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CGI-FastTemplate
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,56 +12,46 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-CGI-FastTemplate
 %define cpan_name CGI-FastTemplate
-Summary:        Perl extension for managing templates, and performing variable interpolation
-License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Version:        1.09
+Name:           perl-CGI-FastTemplate
+Version:        1.90.0
 Release:        0
-Url:            https://metacpan.org/release/%{cpan_name}
-Source:         https://cpan.metacpan.org/authors/id/J/JM/JMOORE/%{cpan_name}-%{version}.tar.gz
+# 1.09 -> normalize -> 1.90.0
+%define cpan_version 1.09
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Perl extension for managing templates, and performing variable interpolation
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/J/JM/JMOORE/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{perl_requires}
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(CGI::FastTemplate) = %{version}
+%undefine       __perllib_provides
+%{perl_requires}
 
 %description
-CGI::FastTemplate manages templates and parses templates replacing
-variable names with values. It was designed for mid to large scale
-web applications (CGI, mod_perl) where there are great benefits to
-separating the logic of an application from the specific
-implementation details.
+Perl extension for managing templates, and performing variable interpolation.
 
 %prep
-%setup -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
-# do not perl_process_packlist (noarch)
-# remove .packlist file
-%{__rm} -rf $RPM_BUILD_ROOT%perl_vendorarch
-# remove perllocal.pod file
-%{__rm} -rf $RPM_BUILD_ROOT%perl_archlib
+%perl_process_packlist
 %perl_gen_filelist
 
-%clean
-%{__rm} -rf $RPM_BUILD_ROOT
-
-%files -f %{name}.files 
-%defattr(-, root, root)
+%files -f %{name}.files
 %doc README
 
 %changelog
