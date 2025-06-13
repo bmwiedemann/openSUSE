@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-NoWarnings
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %define cpan_name Test-NoWarnings
 Name:           perl-Test-NoWarnings
-Version:        1.06
+Version:        1.60.0
 Release:        0
+# 1.06 -> normalize -> 1.60.0
+%define cpan_version 1.06
 #Upstream: LGPL-2.1-or-later
-Summary:        Make sure you didn't emit any warnings while testing
 License:        LGPL-2.1-or-later
+Summary:        Make sure you didn't emit any warnings while testing
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -32,6 +34,9 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Test::Builder) >= 0.86
 BuildRequires:  perl(Test::Tester) >= 0.107
 Requires:       perl(Test::Builder) >= 0.86
+Provides:       perl(Test::NoWarnings) = %{version}
+Provides:       perl(Test::NoWarnings::Warning) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -50,7 +55,7 @@ The test is run by an 'END' block in Test::NoWarnings. It will not be run
 when any forked children exit.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
