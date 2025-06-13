@@ -1,0 +1,47 @@
+From 58ea833d44d881fa30f99946b2b51a82648623c3 Mon Sep 17 00:00:00 2001
+From: John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
+Date: Sat, 24 Sep 2022 13:37:18 -0500
+Subject: pdumper: set DUMP_RELOC_ALIGNMENT_BITS=1 for m68k
+
+Before the change builds would fail like this:
+
+  (...)
+  Loading /<<BUILDDIR>>/emacs-27.1+1/debian/build-src/lisp/vc/vc-hooks.el (source)...
+  Loading /<<BUILDDIR>>/emacs-27.1+1/debian/build-src/lisp/vc/ediff-hook.el (source)...
+  Loading /<<BUILDDIR>>/emacs-27.1+1/debian/build-src/lisp/uniquify.el (source)...
+  Loading /<<BUILDDIR>>/emacs-27.1+1/debian/build-src/lisp/electric.el (source)...
+  Loading /<<BUILDDIR>>/emacs-27.1+1/debian/build-src/lisp/emacs-lisp/eldoc.el (source)...
+  Loading /<<BUILDDIR>>/emacs-27.1+1/debian/build-src/lisp/cus-start.el (source)...
+  Loading /<<BUILDDIR>>/emacs-27.1+1/debian/build-src/lisp/tooltip.el (source)...
+  Finding pointers to doc strings...
+  Finding pointers to doc strings...done
+  Dumping under the name bootstrap-emacs.pdmp
+  dumping fingerprint: 7b5c59c589dc151eb1e4269bd83fbe809616b5cb9bb5c80014d5b560b391dfb6
+  dump relocation out of range
+
+[rlb@defaultvalue.org: create commit message]
+
+Origin: debian
+Bug: https://bugs.gnu.org/44531
+Bug-Debian: http://bugs.debian.org/1019130
+Forwarded: not-needed
+---
+ src/pdumper.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/pdumper.c b/src/pdumper.c
+index bc7cfffeca2..6e4770a5ffd 100644
+--- a/src/pdumper.c
++++ b/src/pdumper.c
+@@ -263,7 +263,11 @@ emacs_reloc_set_type (struct emacs_reloc *reloc,
+ enum
+   {
+    DUMP_RELOC_TYPE_BITS = 5,
++#ifdef __mc68000__
++   DUMP_RELOC_ALIGNMENT_BITS = 1,
++#else
+    DUMP_RELOC_ALIGNMENT_BITS = 2,
++#endif
+ 
+    /* Minimum alignment required by dump file format.  */
+    DUMP_RELOCATION_ALIGNMENT = 1 << DUMP_RELOC_ALIGNMENT_BITS,

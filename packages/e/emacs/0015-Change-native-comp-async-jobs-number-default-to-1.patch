@@ -1,0 +1,22 @@
+From a725a5238a8ed6940b83931583df3c23ef5fe12b Mon Sep 17 00:00:00 2001
+From: Sean Whitton <spwhitton@spwhitton.name>
+Date: Tue, 29 Aug 2023 09:08:55 +0100
+Subject: Change native-comp-async-jobs-number default to 1
+
+---
+ lisp/emacs-lisp/comp-run.el | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lisp/emacs-lisp/comp-run.el b/lisp/emacs-lisp/comp-run.el
+index e11ca19b0f6..4566ceaa59e 100644
+--- a/lisp/emacs-lisp/comp-run.el
++++ b/lisp/emacs-lisp/comp-run.el
+@@ -46,7 +46,7 @@ native-comp-jit-compilation-deny-list
+   :type '(repeat regexp)
+   :version "28.1")
+ 
+-(defcustom native-comp-async-jobs-number 0
++(defcustom native-comp-async-jobs-number 1
+   "Default number of subprocesses used for async native compilation.
+ Value of zero means to use half the number of the CPU's execution units,
+ or one if there's just one execution unit."

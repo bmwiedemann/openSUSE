@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jun  6 13:20:26 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Try some tricks like -j1 and SOURCE_DATE_EPOCH 
+- Add patches
+  * 0009-pdumper-set-DUMP_RELOC_ALIGNMENT_BITS-1-for-m68k.patch
+  * 0012-Add-inhibit-native-compilation.patch
+  * 0013-Rename-to-inhibit-automatic-native-compilation.patch
+  * 0015-Change-native-comp-async-jobs-number-default-to-1.patch
+  * 0016-Change-native-comp-async-report-warnings-errors-to-s.patch
+  * emacs-30.1-silent.patch
+
+-------------------------------------------------------------------
+Thu Jun  5 11:28:19 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Last change does not work as the new binary with unexec are
+  also *not* reproducible
+
+-------------------------------------------------------------------
+Mon Jun  2 14:18:38 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- For SLES use not pdmp images but unexec as well avoid eln files
+  to have reproducible binary files and programs (boo#1239628) 
+
+-------------------------------------------------------------------
 Thu May  8 06:27:38 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Remove/disable GNUS setup in (dot).gnu-emacs  (boo#1241188)

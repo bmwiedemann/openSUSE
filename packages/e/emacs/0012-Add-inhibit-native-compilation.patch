@@ -1,0 +1,145 @@
+From 8fb2d6e3307efb15124dc21837bf6039aa6d7fdf Mon Sep 17 00:00:00 2001
+From: Lars Ingebrigtsen <larsi@gnus.org>
+Date: Mon, 3 Oct 2022 15:26:04 +0200
+Subject: Add 'inhibit-native-compilation'
+
+The following upstream patch has been backported:
+
+  Add new variable 'inhibit-native-compilation'
+
+  * lisp/startup.el (normal-top-level): Set
+  inhibit-native-compilation from environment variable.
+
+  * lisp/emacs-lisp/comp.el (comp-trampoline-compile): Don't write
+  trampolines to disk.
+
+  * lisp/progmodes/elisp-mode.el
+  (emacs-lisp-native-compile-and-load): Adjust.
+
+  * src/comp.c (syms_of_comp): New variable
+  inhibit-native-compilation.
+  (maybe_defer_native_compilation): Use it.
+
+Origin: upstream, commit: 5fec9182dbeffa88cef6651d8c798ef9665d6681
+Forwarded: not-needed
+---
+ lisp/emacs-lisp/comp.el | 47 ++++++++++++++++++++++-------------------
+ lisp/startup.el         |  7 ++++--
+ src/comp.c              |  7 ++++++
+ 3 files changed, 37 insertions(+), 24 deletions(-)
+
+diff --git a/lisp/emacs-lisp/comp.el b/lisp/emacs-lisp/comp.el
+index e2abd6dbc5b..d1182b35cfe 100644
+--- a/lisp/emacs-lisp/comp.el
++++ b/lisp/emacs-lisp/comp.el
+@@ -3357,28 +3357,31 @@ comp--make-lambda-list-from-subr
+ 
+ (defun comp--trampoline-abs-filename (subr-name)
+   "Return the absolute filename for a trampoline for SUBR-NAME."
+-  (cl-loop
+-   with dirs = (if (stringp native-comp-enable-subr-trampolines)
+-                   (list (expand-file-name native-comp-enable-subr-trampolines
+-                                           invocation-directory))
+-                 (if native-compile-target-directory
+-                     (list (expand-file-name comp-native-version-dir
+-                                             native-compile-target-directory))
+-                   (comp-eln-load-path-eff)))
+-   with rel-filename = (comp-trampoline-filename subr-name)
+-   for dir in dirs
+-   for abs-filename = (expand-file-name rel-filename dir)
+-   unless (file-exists-p dir)
+-     do (ignore-errors
+-          (make-directory dir t)
+-          (cl-return abs-filename))
+-   when (file-writable-p abs-filename)
+-     do (cl-return abs-filename)
+-   ;; Default to some temporary directory if no better option was
+-   ;; found.
+-   finally (cl-return
+-            (make-temp-file (file-name-sans-extension rel-filename) nil ".eln"
+-                            nil))))
++  ;; If we've disabled nativecomp, don't write the trampolines to
++  ;; the eln cache (but create them).
++  (and (not inhibit-native-compilation)
++       (cl-loop
++	with dirs = (if (stringp native-comp-enable-subr-trampolines)
++			(list (expand-file-name native-comp-enable-subr-trampolines
++						invocation-directory))
++                      (if native-compile-target-directory
++			  (list (expand-file-name comp-native-version-dir
++						  native-compile-target-directory))
++			(comp-eln-load-path-eff)))
++	with rel-filename = (comp-trampoline-filename subr-name)
++	for dir in dirs
++	for abs-filename = (expand-file-name rel-filename dir)
++	unless (file-exists-p dir)
++	do (ignore-errors
++             (make-directory dir t)
++             (cl-return abs-filename))
++	when (file-writable-p abs-filename)
++	do (cl-return abs-filename)
++	;; Default to some temporary directory if no better option was
++	;; found.
++	finally (cl-return
++		 (make-temp-file (file-name-sans-extension rel-filename) nil ".eln"
++				 nil)))))
+ 
+ ;; Called from comp-run.el
+ ;;;###autoload
+diff --git a/lisp/startup.el b/lisp/startup.el
+index e07e6515991..e5d6bd87cac 100644
+--- a/lisp/startup.el
++++ b/lisp/startup.el
+@@ -528,7 +528,7 @@ startup--xdg-or-homedot
+      (t emacs-d-dir))))
+ 
+ (defvar native-comp-eln-load-path)
+-(defvar native-comp-jit-compilation)
++(defvar inhibit-native-compilation)
+ (defvar native-comp-enable-subr-trampolines)
+ 
+ (defvar startup--original-eln-load-path nil
+@@ -589,6 +589,9 @@ normal-top-level
+     (funcall 'android-enumerate-fonts)
+     (setq android-fonts-enumerated t))
+ 
++  ;; Allow disabling automatic .elc->.eln processing.
++  (setq inhibit-native-compilation (getenv "EMACS_INHIBIT_NATIVE_COMPILATION"))
++
+   (if command-line-processed
+       (message internal--top-level-message)
+     (setq command-line-processed t)
+@@ -607,7 +610,7 @@ normal-top-level
+         ;; in this session.  This is necessary if libgccjit is not
+         ;; available on MS-Windows, but Emacs was built with
+         ;; native-compilation support.
+-        (setq native-comp-jit-compilation nil
++        (setq inhibit-native-compilation t
+               native-comp-enable-subr-trampolines nil))
+ 
+       ;; Form `native-comp-eln-load-path'.
+diff --git a/src/comp.c b/src/comp.c
+index e24f1afb902..ffbc2be106b 100644
+--- a/src/comp.c
++++ b/src/comp.c
+@@ -5201,6 +5201,7 @@ maybe_defer_native_compilation (Lisp_Object function_name,
+     return;
+ 
+   if (!native_comp_jit_compilation
++      || !NILP (Vinhibit_native_compilation)
+       || noninteractive
+       || !NILP (Vpurify_flag)
+       || !CLOSUREP (definition)
+@@ -5688,6 +5689,12 @@ DEFUN ("native-comp-available-p", Fnative_comp_available_p,
+ syms_of_comp (void)
+ {
+ #ifdef HAVE_NATIVE_COMP
++  DEFVAR_LISP ("inhibit-native-compilation", Vinhibit_native_compilation,
++	       doc: /* If non-nil, inhibit automatic native compilation of loaded .elc files.
++
++After compilation, each function definition is updated to the native
++compiled one.  */);
++  Vinhibit_native_compilation = Qnil;
+   DEFVAR_BOOL ("native-comp-jit-compilation", native_comp_jit_compilation,
+     doc: /* If non-nil, compile loaded .elc files asynchronously.
+ 

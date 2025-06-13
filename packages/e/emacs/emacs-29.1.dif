@@ -731,3 +731,13 @@
 +;;
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;; Ende von locale.el
+--- lisp/cus-start.el
++++ lisp/cus-start.el	2025-06-06 08:28:39.797100416 +0000
+@@ -33,6 +33,7 @@
+ 
+ ;;; Code:
+ 
++(defvar image-scaling-factor)
+ (defun minibuffer-prompt-properties--setter (symbol value)
+   (set-default symbol value)
+   (if (memq 'cursor-intangible value)

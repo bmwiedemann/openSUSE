@@ -1,0 +1,107 @@
+---
+ lib/diffseq.h   |    4 ++--
+ src/Makefile.in |    6 ++++--
+ src/font.c      |    8 ++++----
+ src/term.c      |    3 ++-
+ 4 files changed, 12 insertions(+), 9 deletions(-)
+
+--- lib/diffseq.h
++++ lib/diffseq.h	2025-06-10 12:30:29.674205420 +0000
+@@ -380,7 +380,7 @@ diag (OFFSET xoff, OFFSET xlim, OFFSET y
+       if (c >= ctxt->too_expensive)
+         {
+           /* Find forward diagonal that maximizes X + Y.  */
+-          OFFSET fxybest = -1, fxbest;
++          OFFSET fxybest = -1, fxbest = 1;
+           for (d = fmax; d >= fmin; d -= 2)
+             {
+               OFFSET x = MIN (fd[d], xlim);
+@@ -398,7 +398,7 @@ diag (OFFSET xoff, OFFSET xlim, OFFSET y
+             }
+ 
+           /* Find backward diagonal that minimizes X + Y.  */
+-          OFFSET bxybest = OFFSET_MAX, bxbest;
++          OFFSET bxybest = OFFSET_MAX, bxbest = 0;
+           for (d = bmax; d >= bmin; d -= 2)
+             {
+               OFFSET x = MAX (xoff, bd[d]);
+--- src/Makefile.in
++++ src/Makefile.in	2025-06-11 12:10:37.915439656 +0000
+@@ -381,7 +381,7 @@ LIBGCCJIT_CFLAGS = @LIBGCCJIT_CFLAGS@
+ ## dynlib.o if necessary, else empty
+ DYNLIB_OBJ = @DYNLIB_OBJ@
+ 
+-RUN_TEMACS = ./temacs
++RUN_TEMACS = setarch -R taskset 1 ./temacs
+ 
+ # Whether builds should contain details. '--no-build-details' or empty.
+ BUILD_DETAILS = @BUILD_DETAILS@
+@@ -664,7 +664,7 @@ ifeq ($(DUMPING),unexec)
+   endif
+ 	cp -f $@ bootstrap-emacs$(EXEEXT)
+ else
+-	rm -f $@ && cp -f temacs$(EXEEXT) $@
++	rm -f $@ $(basename $@)-*.*.*[0-9]$(EXEEXT) $(basename $@)-*.*.*[0-9].pdmp && cp -f temacs$(EXEEXT) $@
+ endif
+ 
+ ## On Haiku, also produce a binary named Emacs with the appropriate
+@@ -681,6 +681,7 @@ endif
+ 
+ ifeq ($(DUMPING),pdumper)
+ $(pdmp): emacs$(EXEEXT) $(lispsource)/loaddefs.el $(lispsource)/loaddefs.elc
++	rm -f emacs-*.*.*[0-9]$(EXEEXT) emacs-*.*.*[0-9].pdmp
+ 	LC_ALL=C $(RUN_TEMACS) -batch $(BUILD_DETAILS) -l loadup --temacs=pdump \
+ 		--bin-dest $(BIN_DESTDIR) --eln-dest $(ELN_DESTDIR)
+ 	cp -f $@ $(bootstrap_pdmp)
+@@ -974,6 +975,7 @@ NATIVE_COMPILATION_AOT = @NATIVE_COMPILA
+ 	  if test $(SYSTEM_TYPE) = cygwin; then \
+ 	    find $@ -name '*.eln' | rebase -v -O -T -; \
+ 	  fi; \
++	  rm -f emacs-*.*.*[0-9]$(EXEEXT) emacs-*.*.*[0-9].pdmp; \
+ 	  LC_ALL=C $(RUN_TEMACS) -batch $(BUILD_DETAILS) -l loadup --temacs=pdump \
+ 		--bin-dest $(BIN_DESTDIR) --eln-dest $(ELN_DESTDIR) \
+ 	  && cp -f emacs$(EXEEXT) bootstrap-emacs$(EXEEXT) \
+--- src/font.c
++++ src/font.c	2025-06-10 12:33:19.975122232 +0000
+@@ -2659,9 +2659,9 @@ font_delete_unmatched (Lisp_Object vec,
+       entity = AREF (vec, i);
+       if (! NILP (Vface_ignored_fonts))
+ 	{
+-	  char name[256], *xlfd;
++	  char name[512], *xlfd;
+ 	  ptrdiff_t namelen;
+-	  namelen = font_unparse_xlfd (entity, 0, name, 256);
++	  namelen = font_unparse_xlfd (entity, 0, name, 512);
+ 
+ 	  if (namelen >= 0)
+ 	    {
+@@ -4437,7 +4437,7 @@ If the 2nd optional arg FOLD-WILDCARDS i
+ the consecutive wildcards are folded into one.  */)
+   (Lisp_Object font, Lisp_Object fold_wildcards, Lisp_Object long_xlfds)
+ {
+-  char name_buffer[256], *name;
++  char name_buffer[512], *name;
+   int namelen, pixel_size = 0;
+   Lisp_Object string;
+ 
+@@ -4463,7 +4463,7 @@ the consecutive wildcards are folded int
+   if (NILP (long_xlfds))
+     {
+       name = name_buffer;
+-      namelen = font_unparse_xlfd (font, pixel_size, name, 256);
++      namelen = font_unparse_xlfd (font, pixel_size, name, 512);
+       if (namelen < 0)
+ 	return Qnil;
+     }
+--- src/term.c
++++ src/term.c	2025-06-10 12:31:16.421359073 +0000
+@@ -2524,7 +2524,8 @@ device.  */)
+     error ("Invalid output buffer size");
+   Fsuspend_tty (tty);
+   struct terminal *terminal = decode_tty_terminal (tty);
+-  terminal->display_info.tty->output_buffer_size = XFIXNUM (size);
++  if (terminal)
++    terminal->display_info.tty->output_buffer_size = XFIXNUM (size);
+   return Fresume_tty (tty);
+ }
+ 

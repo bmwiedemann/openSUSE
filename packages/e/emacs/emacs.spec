@@ -17,6 +17,8 @@
 
 
 %bcond_without  autoconf
+# Does not work without build dir and git
+%bcond_with     ghosts
 %if 0%{?suse_version} >= 1550
 %bcond_without  mailutils
 %bcond_without  nativecomp
@@ -28,8 +30,9 @@
 # This generates (after s/with/without/) all refcards below etc/refcards/
 # to be stored in emacs-<version>-pdf.tar.xz only once
 %bcond_with     tex4pdf
-%bcond_with     memmmap
+%bcond_without  memmmap
 %bcond_with     checks
+%bcond_with     debug
 # webkit2gtk-4.1 >= 2.41.92 triggers crash as described in PROBLEMS
 %bcond_with     webkit
 #
@@ -40,6 +43,7 @@
 #
 %bcond_without  games
 %define gattr   00755
+%{?_smp_mflags:%global _smp_mflags -j1}
 
 Name:           emacs
 %if %{with checks}
@@ -156,6 +160,7 @@ BuildRequires:  pkgconfig(tree-sitter)
 %if %{with webkit}
 BuildRequires:  pkgconfig(webkit2gtk-4.1) >= 2.12
 %endif
+#BuildRequires:  reproducible-faketools-j1
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xaw3d)
@@ -208,12 +213,14 @@ Source8:        emacs-%{version}-pdf.tar.xz
 %endif
 Source9:        macros.emacs
 %{load:%{SOURCE9}}
+Source99:       %{name}.changes
 Patch0:         emacs-29.1.dif
 Patch1:         emacs-30.1-minmalxauth.patch
 # Currently disabled due memmmap build condition
 Patch2:         emacs-24.4-glibc.patch
 Patch4:         emacs-24.3-asian-print.patch
 Patch5:         emacs-24.4-ps-bdf.patch
+Patch6:         emacs-30.1-silent.patch
 Patch7:         emacs-24.1-ps-mule.patch
 Patch8:         emacs-24.4-nonvoid.patch
 Patch12:        emacs-24.3-x11r7.patch
@@ -225,9 +232,20 @@ Patch24:        emacs-parallel-compilation-53a5dada.patch
 Patch25:        emacs-26.1-xft4x11.patch
 Patch26:        emacs-27.1-pdftex.patch
 Patch27:        emacs-30.1-seccomp.patch
+Patch49:        0009-pdumper-set-DUMP_RELOC_ALIGNMENT_BITS-1-for-m68k.patch
+Patch52:        0012-Add-inhibit-native-compilation.patch
+Patch53:        0013-Rename-to-inhibit-automatic-native-compilation.patch
+Patch55:        0015-Change-native-comp-async-jobs-number-default-to-1.patch
+Patch56:        0016-Change-native-comp-async-report-warnings-errors-to-s.patch
+
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
 %{expand: %%global _exec_prefix %(type -p pkg-config &>/dev/null && pkg-config --variable prefix x11 || echo /usr/X11R6)}
+%ifarch noarch
+    %global configuration %{_build_cpu}-suse-%{_build_os}
+%else
+    %global configuration %{_target_cpu}-suse-%{_build_os}
+%endif
 %if "%_exec_prefix" == "/usr/X11R6"
 %define _x11lib     %{_exec_prefix}/%{_lib}
 %define _x11data    %{_exec_prefix}/lib/X11
@@ -252,6 +270,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if %{undefined ext_el}
 %define ext_el      .gz
 %endif
+%define __provides_exclude_from ^%{_libdir}/emacs/%{version}/native-lisp/.*\.eln$
 %define info_files emacs eintr elisp auth autotype bovine calc ccmode cl dbus dired-x ebrowse ede ediff edt efaq eglot eieio emacs-gnutls emacs-mime epa erc ert eshell eudc eww flymake forms gnus htmlfontify idlwave ido info.info mairix-el message mh-e modus-themes newsticker nxml-mode octave-mode org pcl-cvs pgg rcirc reftex remember sasl sc semantic ses sieve smtpmail speedbar srecode todo-mode tramp transient url use-package vhdl-mode vip viper vtable widget wisent woman
 
 %description
@@ -260,7 +279,11 @@ This package requires emacs-x11 and/or emacs-nox to have the GNU Emacs editor it
 
 %package     -n emacs-nox
 Requires(post): fileutils
+%if %{with ghosts}
+Requires(post): emacs = %{version}-%{release}
+%else
 Requires:       emacs = %{version}-%{release}
+%endif
 %if %{with nativecomp}
 Requires:       emacs-eln = %{version}-%{release}
 %endif
@@ -277,7 +300,11 @@ Love it or leave it.
 
 %package     -n emacs-x11
 Requires(post): fileutils
+%if %{with ghosts}
+Requires(post): emacs = %{version}-%{release}
+%else
 Requires:       emacs = %{version}-%{release}
+%endif
 %if %{with nativecomp}
 Requires:       emacs-eln = %{version}-%{release}
 %endif
@@ -376,12 +403,18 @@ and most assembler-like syntaxes.
 
 %prep
 %setup -q -b 2
+%patch -P49 -p1
+%patch -P52 -p1
+%patch -P53 -p1
+%patch -P55 -p1
+%patch -P56 -p1
 %patch -P1  -p0 -b .xauth
 %if %{with memmmap}
 %patch -P2  -p0 -b .glibc
 %endif
 %patch -P4  -p0 -b .print
 %patch -P5  -p0 -b .psbdf
+%patch -P6  -p0 -b .silent
 %patch -P7  -p0 -b .psmu
 %patch -P8  -p0 -b .nvoid
 %patch -P12 -p0 -b .x11r7
@@ -401,6 +434,11 @@ popd
 
 %build
 umask 022
+SOURCE_DATE_EPOCH="$(sed -n '/^----/n;s/ - .*$//;p;q' %{SOURCE99} | date -u -f - +%%s)"
+TZ=UTC0
+LANG=POSIX
+LC_ALL=C.UTF-8
+export SOURCE_DATE_EPOCH TZ LANG LC_ALL
 %if %{without autoconf}
 # We don't want to run autoconf
 if test configure.ac -nt aclocal.m4 -o m4/gnulib-comp.m4 -nt aclocal.m4 ; then
@@ -471,18 +509,22 @@ VERSION=%{version}
 %endif
  CFLAGS="${RPM_OPT_FLAGS} -D_GNU_SOURCE -DGDK_DISABLE_DEPRECATION_WARNINGS -DGLIB_DISABLE_DEPRECATION_WARNINGS"
 LDFLAGS=
-  cflags -pipe                  CFLAGS
-  cflags -Wno-pointer-sign      CFLAGS
-  cflags -Wno-unused-variable   CFLAGS
-  cflags -Wno-unused-label      CFLAGS
+  cflags -pipe			CFLAGS
+  cflags -Wno-pointer-sign	CFLAGS
+  cflags -Wno-unused-variable	CFLAGS
+  cflags -Wno-unused-label	CFLAGS
+  cflags -Wdate-time		CFLAGS
+  cflags -fprofile-reproducible=multithreaded	CFLAGS
   cflags -fno-optimize-sibling-calls	CFLAGS
+  cflags -ffile-prefix-map=${PWD}=.	CFLAGS
   cflags -Wl,-O2		LDFLAGS
   cflags -Wl,--copy-dt-needed-entries	LDFLAGS
+  cflags -Wl,-z,relro		LDFLAGS
+  cflags -Wl,--no-as-needed	CFLAGS
 %ifarch ia64
  CFLAGS=$(echo "${CFLAGS}"|sed -r 's/-O[0-9]?/-O1/g')
 %endif
-   LANG=POSIX; LC_CTYPE=en_US.UTF-8
-export CC CFLAGS LANG LC_CTYPE LDFLAGS
+export CC CFLAGS LDFLAGS
  PREFIX="--prefix=%{_prefix} \
 	 --mandir=%{_mandir} \
 	 --infodir=%{_infodir} \
@@ -595,36 +637,112 @@ for i in $(find site-lisp/ -name '*.el'); do
 done
 cp -p src/emacs src/emacs-nox
 cp -p src/emacs.pdmp src/emacs-nox.pdmp
+md5sum src/emacs
+md5sum src/emacs.pdmp
+%if %{with debug}
+echo ===============================check begin======================================
+od -tx1z src/emacs.pdmp > log.1
+pushd src
+    rm -vf emacs-%{version}* emacs.pdmp
+    echo Here we check if check sums differ for each pdump with same binary
+    echo and same byte/native compiled lisp files
+    LC_ALL=C ./temacs -batch --no-build-details -l loadup --temacs=pdump \
+	--bin-dest %{_bindir} --eln-dest %{_libdir}/emacs/%{version}/
+popd
+md5sum src/emacs
+od -tx1z src/emacs.pdmp > log.2
+diff -up log.1 log.2 || :
+echo ===============================check end========================================
+%endif
 %if %{with nativecomp}
 find native-lisp -type d -exec mkdir -p             "${parking}%{_libdir}/emacs/%{version}/{}" \;
 find native-lisp -type f -exec install -m 0644 "{}" "${parking}%{_libdir}/emacs/%{version}/{}" \;
 %endif
 make distclean
+rm -vf src/emacs-%{version}*
 #
 CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-x11\"'" ./configure ${COMP} ${PREFIX} ${X11} ${SYS} --with-dumping=pdumper
-%make_build
+%make_build V=1
 cp -p src/emacs src/emacs-x11
 cp -p src/emacs.pdmp src/emacs-x11.pdmp
+md5sum src/emacs
+md5sum src/emacs.pdmp
+%if %{with debug}
+echo ===============================check begin======================================
+od -tx1z src/emacs.pdmp > log.1
+pushd src
+    rm -vf emacs-%{version}* emacs.pdmp
+    echo Here we check if check sums differ for each pdump with same binary
+    echo and same byte/native compiled lisp files
+    LC_ALL=C ./temacs -batch --no-build-details -l loadup --temacs=pdump \
+	--bin-dest %{_bindir} --eln-dest %{_libdir}/emacs/%{version}/
+popd
+md5sum src/emacs
+od -tx1z src/emacs.pdmp > log.2
+diff -up log.1 log.2 || :
+echo ===============================check end========================================
+%endif
 %if %{with nativecomp}
 find native-lisp -type d -exec mkdir -p             "${parking}%{_libdir}/emacs/%{version}/{}" \;
 find native-lisp -type f -exec install -m 0644 "{}" "${parking}%{_libdir}/emacs/%{version}/{}" \;
 %endif
 make distclean
+rm -vf src/emacs-%{version}*
 #
 CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-gtk\"'" ./configure ${COMP} ${PREFIX} ${GTK} ${SYS} --with-dumping=pdumper
-%make_build
-cp src/emacs src/emacs-gtk
-cp src/emacs.pdmp src/emacs-gtk.pdmp
+%make_build V=1
+cp -p src/emacs src/emacs-gtk
+cp -p src/emacs.pdmp src/emacs-gtk.pdmp
+md5sum src/emacs
+md5sum src/emacs.pdmp
+%if %{with debug}
+echo ===============================check begin======================================
+od -tx1z src/emacs.pdmp > log.1
+pushd src
+    rm -vf emacs-%{version}* emacs.pdmp
+    echo Here we check if check sums differ for each pdump with same binary
+    echo and same byte/native compiled lisp files
+    LC_ALL=C ./temacs -batch --no-build-details -l loadup --temacs=pdump \
+	--bin-dest %{_bindir} --eln-dest %{_libdir}/emacs/%{version}/
+popd
+md5sum src/emacs
+od -tx1z src/emacs.pdmp > log.2
+diff -up log.1 log.2 || :
+echo ===============================check end========================================
+%endif
 %if %{with nativecomp}
 find native-lisp -type d -exec mkdir -p             "${parking}%{_libdir}/emacs/%{version}/{}" \;
 find native-lisp -type f -exec install -m 0644 "{}" "${parking}%{_libdir}/emacs/%{version}/{}" \;
 %endif
 make distclean
+rm -vf src/emacs-%{version}*
 #
 CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-wayland\"'" ./configure ${COMP} ${PREFIX} ${GTK//--without-pgtk/--with-pgtk} ${SYS} --with-dumping=pdumper
-%make_build
-cp src/emacs src/emacs-wayland
-cp src/emacs.pdmp src/emacs-wayland.pdmp
+%make_build V=1
+cp -p src/emacs src/emacs-wayland
+cp -p src/emacs.pdmp src/emacs-wayland.pdmp
+md5sum src/emacs
+md5sum src/emacs.pdmp
+%if %{with debug}
+echo ===============================check begin======================================
+od -tx1z src/emacs.pdmp > log.1
+pushd src
+    rm -vf emacs-%{version}* emacs.pdmp
+    echo Here we check if check sums differ for each pdump with same binary
+    echo and same byte/native compiled lisp files
+    LC_ALL=C ./temacs -batch --no-build-details -l loadup --temacs=pdump \
+	--bin-dest %{_bindir} --eln-dest %{_libdir}/emacs/%{version}/
+popd
+md5sum src/emacs
+od -tx1z src/emacs.pdmp > log.2
+diff -up log.1 log.2 || :
+echo ===============================check end========================================
+%endif
+%if %{with nativecomp}
+find native-lisp -type d -exec mkdir -p             "${parking}%{_libdir}/emacs/%{version}/{}" \;
+find native-lisp -type f -exec install -m 0644 "{}" "${parking}%{_libdir}/emacs/%{version}/{}" \;
+%endif
+# No distclean nor binary remove to run make -k check later on
 
 %if %{with tex4pdf}
 #
@@ -640,6 +758,8 @@ popd
 
 %install
 umask 022
+SOURCE_DATE_EPOCH="$(sed -n '/^----/n;s/ - .*$//;p;q' %{SOURCE99} | date -u -f - +%%s)"
+export SOURCE_DATE_EPOCH
 %if 0%{?suse_version} >= 1550
 %ifarch %ix86 %arm
     export CC=gcc-13
@@ -651,23 +771,36 @@ umask 022
 PATH=/sbin:$PATH
 ##
 VERSION=%{version}
-eval $(sed -rn "/^configuration=/p" config.log)
-sed -ri 's@/usr/lib/X11/fonts@/usr/share/fonts@g;s@(/usr/)local/(info|share|lib)@\1\2@;s@\$VERSION@%{version}@g;s@\$ARCH@'${configuration}'@g' doc/man/emacs.1
+sed -ri 's@/usr/lib/X11/fonts@/usr/share/fonts@g;s@(/usr/)local/(info|share|lib)@\1\2@;s@\$VERSION@%{version}@g;s@\$ARCH@'%{configuration}'@g' doc/man/emacs.1
 mkdir -p %{buildroot}%{_bindir}
-mkdir -p %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}
+mkdir -p %{buildroot}%{_libexecdir}/emacs/%{version}/%{configuration}
 make install DESTDIR=%{buildroot} systemdunitdir=%{_userunitdir}
-rm -vf %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}/*.pdmp
+rm -vf %{buildroot}%{_libexecdir}/emacs/%{version}/%{configuration}/*.pdmp
 %if %{with nativecomp}
+rm -vrf native-lisp/%{version}-*
 pushd native-lisp/
     ln -sf ../parking.*/usr/lib64/emacs/%{version}/native-lisp/* .
 popd
 %endif
+rm -vf src/emacs-%{version}.*
+mkdir -p %{buildroot}%{_libexecdir}/emacs/%{version}/%{configuration}
 for pdmp in emacs-nox emacs-gtk emacs-x11 emacs-wayland
 do
     install -m 0755 src/${pdmp}      %{buildroot}%{_bindir}
-    install -m 0644 src/${pdmp}.pdmp %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}/
-    ln -sf ${pdmp}.pdmp %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}/${pdmp}-$(src/${pdmp} --fingerprint).pdmp
+    install -m 0644 src/${pdmp}.pdmp %{buildroot}%{_libexecdir}/emacs/%{version}/%{configuration}/
+    ln -sf ${pdmp}.pdmp %{buildroot}%{_libexecdir}/emacs/%{version}/%{configuration}/${pdmp}-$(src/${pdmp} --fingerprint).pdmp
 done
+%if %{with ghosts}
+find %{buildroot} -name 'emacs-nox*.pdmp'  -and -type f -printf '%%%%ghost %%%%attr(0644,root,root) %%%%verify(not md5 size mtime) /%%P\n' > file.nox
+find %{buildroot} -name 'emacs-nox*.pdmp'  -and -type l -printf '%%%%ghost %%%%attr(0644,root,root) %%%%verify(not link) /%%P\n' >> file.nox
+find %{buildroot} -name 'emacs-[^n]*.pdmp' -and -type f -printf '%%%%ghost %%%%attr(0644,root,root) %%%%verify(not md5 size mtime) /%%P\n' > file.x11
+find %{buildroot} -name 'emacs-[^n]*.pdmp' -and -type l -printf '%%%%ghost %%%%attr(0644,root,root) %%%%verify(not link) /%%P\n' >> file.x11
+%else
+find %{buildroot} -name 'emacs-nox*.pdmp'  -and -type f -printf '/%%P\n'  > file.nox
+find %{buildroot} -name 'emacs-nox*.pdmp'  -and -type l -printf '/%%P\n' >> file.nox
+find %{buildroot} -name 'emacs-[^n]*.pdmp' -and -type f -printf '/%%P\n'  > file.x11
+find %{buildroot} -name 'emacs-[^n]*.pdmp' -and -type l -printf '/%%P\n' >> file.x11
+%endif
 %if %{with nativecomp}
 pushd parking.*/%{_libdir}/emacs/%{version}/
     find native-lisp -type d -exec mkdir -p             "%{buildroot}%{_libdir}/emacs/%{version}/{}" \;
@@ -675,8 +808,6 @@ pushd parking.*/%{_libdir}/emacs/%{version}/
 popd
 %endif
 rm -rf parking.*
-rm -vf %{buildroot}/usr/bin/emacs
-rm -vf %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}/emacs.pdmp
 install -p %{S:5} %{buildroot}/usr/bin/emacs
 chmod 0755        %{buildroot}/usr/bin/emacs
 tar cf - `find site-lisp/ -name '*.el'  -o -name '*.elc'` | \
@@ -684,14 +815,6 @@ tar -x -f - -C %{buildroot}%{_datadir}/emacs/%{version}/
 mkdir -p %{buildroot}%{_docdir}/emacs
 ln -sf %{_datadir}/emacs/%{version}/etc %{buildroot}%{_docdir}/emacs/doc
 find %{buildroot}%{_datadir}/emacs/%{version}/ -name '*,v' -o -name '*.orig' | xargs -r rm -f
-#for f in %{buildroot}%{_infodir}/* ; do
-#    case "$f" in
-#	*.gz)			;;
-#	*/dir)	rm -f ${f}	;;
-#	*)	test -e  ${f}.gz && rm ${f}.gz
-#		gzip -9f ${f}
-#    esac
-#done
 rm -vf %{buildroot}%{_infodir}/dir
 #
 mkdir -p %{buildroot}%(dirname %{appDefaultsFile})
@@ -759,6 +882,7 @@ rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/progmodes/flymake.el.cve202
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/textmodes/flyspell.el.flyspell
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/obsolete/spell.el.obsolate
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/cmuscheme.el.0
+rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/cus-start.el.0
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/international/mule-cmds.el.0
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/net/ange-ftp.el.0
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/site-load.el.0
@@ -928,8 +1052,39 @@ test -L usr/bin/emacs && rm -f usr/bin/emacs || true
 %set_permissions %{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/update-game-score
 %endif
 
+%if %{with ghosts}
+%post -n emacs-nox
+set -x
+cd %{_libexecdir}/emacs/%{version}/
+ln -sf %{_datadir}/emacs/%{version}/etc etc
+cd %{configuration}/
+ln -sf %{_bindir}/emacs-nox temacs
+ln -sf %{_bindir}/emacs-nox emacs
+LC_ALL=C ./temacs -batch --no-build-details -l loadup --temacs=pdump --directory %{_datadir}/emacs/%{version}/lisp/ --bin-dest %{_bindir}/ --eln-dest %{_libexecdir}/emacs/%{version}/
+mv emacs.pdmp emacs-nox.pdmp
+ln -sf emacs-nox.pdmp emacs-nox-$(./temacs --fingerprint).pdmp
+rm -f emacs-%{version}* emacs temacs
+rm -f ../etc
+%endif
+
 %post -n emacs-x11
 %glib2_gsettings_schema_post
+%if %{with ghosts}
+set -x
+cd %{_libexecdir}/emacs/%{version}/
+ln -sf %{_datadir}/emacs/%{version}/etc etc
+cd %{configuration}/
+for pdmp in emacs-gtk emacs-x11 emacs-wayland
+do
+    ln -sf %{_bindir}/$pdmp temacs
+    ln -sf %{_bindir}/$pdmp emacs
+    LC_ALL=C ./temacs -batch --no-build-details -l loadup --temacs=pdump --directory %{_datadir}/emacs/%{version}/lisp/ --bin-dest %{_bindir}/ --eln-dest %{_libexecdir}/emacs/%{version}/
+    mv emacs.pdmp ${pdmp}.pdmp
+    ln -sf ${pdmp}.pdmp ${pdmp}-$(./temacs --fingerprint).pdmp
+    rm -f emacs-%{version}* emacs temacs
+done
+rm -f ../etc
+%endif
 
 %postun -n emacs-x11
 %glib2_gsettings_schema_postun
@@ -3733,19 +3888,15 @@ fi
 %attr(0660,root,games) %{_localstatedir}/games/emacs/tetris-scores
 %endif
 
-%files       -n emacs-nox
+%files -f file.nox -n emacs-nox
 %defattr(-, root, root)
 %{_bindir}/emacs-nox
-%{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/emacs-nox*.pdmp
 
-%files       -n emacs-x11
+%files -f file.x11 -n emacs-x11
 %defattr(-, root, root)
 %{_bindir}/emacs-x11
 %{_bindir}/emacs-gtk
 %{_bindir}/emacs-wayland
-%{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/emacs-x11*.pdmp
-%{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/emacs-gtk*.pdmp
-%{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/emacs-wayland*.pdmp
 %dir %{appDefaultsDir}
 %{appDefaultsFile}
 %{_datadir}/applications/emacs*.desktop
@@ -5395,7 +5546,7 @@ fi
 %{_mandir}/man1/ctags.1%{ext_man}
 %{_mandir}/man1/etags.1%{ext_man}
 %{_mandir}/man1/gnuctags.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/ctags
-%ghost %{_sysconfdir}/alternatives/ctags.1%{ext_man}
+%ghost %attr(0644,root,root) %{_sysconfdir}/alternatives/ctags
+%ghost %attr(0644,root,root) %{_sysconfdir}/alternatives/ctags.1%{ext_man}
 
 %changelog

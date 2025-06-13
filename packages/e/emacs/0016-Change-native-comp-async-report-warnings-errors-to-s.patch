@@ -1,0 +1,24 @@
+From 832bd676affa7d9a70ee20d46189cc8801db9f52 Mon Sep 17 00:00:00 2001
+From: Sean Whitton <spwhitton@spwhitton.name>
+Date: Thu, 28 Mar 2024 13:24:49 +0800
+Subject: Change native-comp-async-report-warnings-errors to silent
+
+We have had numerous bug reports across packages about this bothering
+users.
+---
+ lisp/emacs-lisp/comp-run.el | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lisp/emacs-lisp/comp-run.el b/lisp/emacs-lisp/comp-run.el
+index 4566ceaa59e..6a021ea85f6 100644
+--- a/lisp/emacs-lisp/comp-run.el
++++ b/lisp/emacs-lisp/comp-run.el
+@@ -54,7 +54,7 @@ native-comp-async-jobs-number
+   :risky t
+   :version "28.1")
+ 
+-(defcustom native-comp-async-report-warnings-errors t
++(defcustom native-comp-async-report-warnings-errors 'silent
+   "Whether to report warnings and errors from asynchronous native compilation.
+ 
+ When native compilation happens asynchronously, it can produce
