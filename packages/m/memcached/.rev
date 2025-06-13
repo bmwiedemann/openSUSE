@@ -615,4 +615,23 @@ bsc#1007869) (CVE-2016-8706)</comment>
     <comment></comment>
     <requestid>1193352</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>46a07ecd00465e3cf85cf1b1aecc1733</srcmd5>
+    <version>1.6.38</version>
+    <time>1749832954</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1285098 from pgajdos
+
+- version update to 1.6.38
+  * https://github.com/memcached/memcached/wiki/ReleaseNotes1630
+  * https://github.com/memcached/memcached/wiki/ReleaseNotes1631
+  * https://github.com/memcached/memcached/wiki/ReleaseNotes1632
+  * https://github.com/memcached/memcached/wiki/ReleaseNotes1633
+  * https://github.com/memcached/memcached/wiki/ReleaseNotes1634
+  * https://github.com/memcached/memcached/wiki/ReleaseNotes1635
+  * https://github.com/memcached/memcached/wiki/ReleaseNotes1636
+  * https://github.com/memcached/memcached/wiki/ReleaseNotes1637
+  * https://github.com/memcached/memcached/wiki/ReleaseNotes1638</comment>
+    <requestid>1285099</requestid>
+  </revision>
 </revisionlist>
