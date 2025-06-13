@@ -1,0 +1,4 @@
+<package name="python-redis-entraid" project="openSUSE:Factory">
+  <title>python-redis-entraid</title>
+  <description>The redis-entraid Python package helps simplifying the authentication with Azure Managed Redis and Azure Cache for Redis using Microsoft Entra ID. It enables seamless integration with Azure's Redis services by fetching authentication tokens and managing the token renewal in the background.</description>
+</package>

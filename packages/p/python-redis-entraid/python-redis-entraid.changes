@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Wed Jun  4 17:15:13 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Initial packaging of version 1.0.0
+- Test suite is skipped due to requiring Azure credentials
