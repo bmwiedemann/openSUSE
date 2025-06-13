@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 13 10:46:48 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- set permissions on folders correctly so that non-root usage works
+
+-------------------------------------------------------------------
 Wed Jun 11 20:47:19 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - update to match mariadb 11.8 release

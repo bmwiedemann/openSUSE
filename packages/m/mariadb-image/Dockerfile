@@ -79,6 +79,7 @@ RUN set -euo pipefail; sed -i 's/^log/#log/g' /etc/my.cnf
 # Disable binding to localhost only, doesn't make sense in a container
 RUN set -euo pipefail; sed -i -e 's|^\(bind-address.*\)|#\1|g' /etc/my.cnf
 
-RUN set -euo pipefail; mkdir /run/mysql
+RUN set -euo pipefail; install -d -m 0755 -o mysql -g mysql /run/mysql
+RUN set -euo pipefail; install -d -m 0700 -o mysql -g root /var/lib/mysql
 
 VOLUME /var/lib/mysql
