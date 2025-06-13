@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 12 14:05:51 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Version 5.0.4
+  - Don't override soft-reboot with hard reboot
+  - Fix stdio when returning from selfupdate [boo#1243910],
+    [gh#openSUSE/transactional-update#151]
+
+-------------------------------------------------------------------
 Thu Apr 24 12:16:53 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Version 5.0.3
