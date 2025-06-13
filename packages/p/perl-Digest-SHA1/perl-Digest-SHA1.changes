@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 12 18:22:42 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
 Mon Apr 15 10:57:03 UTC 2013 - idonmez@suse.com
 
 - Add Source URL, see https://en.opensuse.org/SourceUrls 
