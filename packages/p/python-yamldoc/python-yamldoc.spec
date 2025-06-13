@@ -1,7 +1,7 @@
 #
 # spec file for package python-yamldoc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-yamldoc
 Version:        0.3.0
 Release:        0
@@ -26,10 +25,12 @@ Group:          Development/Languages/Python
 URL:            https://github.com/smathot/python-yamldoc
 Source:         https://files.pythonhosted.org/packages/source/p/python-yamldoc/python-yamldoc-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-Requires:       python-PyYAML
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-PyYAML
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,13 +45,14 @@ filetype.
 sed -i '1{/^#!/d}' yamldoc/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/yamldoc
+%{python_sitelib}/python[-_]yamldoc-%{version}*-info
 
 %changelog
