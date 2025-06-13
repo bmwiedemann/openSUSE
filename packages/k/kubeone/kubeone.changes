@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jun 13 11:31:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.1:
+  * Urgent Upgrade Notes
+    (No, really, you MUST read this before you upgrade)
+    - KubeVirt Cloud Controller Manager (CCM) is now deployed by
+      default for all KubeVirt clusters. Two new fields are added
+      to the API used to configure the CCM
+      (.cloudProvider.kubevirt.zoneAndRegionEnabled and
+      .cloudProvider.kubevirt.loadBalancerEnabled).
+      .cloudProvider.kubevirt.infraNamespace is now a required
+      field and KubeOne will fail validation if not set (#3661,
+      @moadqassem)
+    - [ACTION REQUIRED] The KubeVirt CCM requires some permissions
+      to be added to the ServiceAccount that is bound to the
+      infrastructure cluster kubeconfig in order to perform some
+      tasks on the infrastructure side. For more information about
+      the required roles please check this file
+    - [ACTION REQUIRED] The
+      .cloudProvider.kubevirt.infraClusterKubeconfig field has been
+      removed from the KubeOneCluster type. Users must remove this
+      field from their KubeOneCluster manifests otherwise the
+      runtime validation will fail. The kubeconfig file provided
+      via the KUBEVIRT_KUBECONFIG environment variable is used as a
+      kubeconfig file for the infrastructure cluster (#3675,
+      @kron4eg)
+  * API Changes
+    - Add a new annotations field to HostConfig used to annotate
+      control plane and static worker nodes (#3658, @kron4eg)
+  * Bug or Regression
+    - Fix incorrect CABundle flag in the operating-system-manager
+      (OSM) Deployment (#3644, @kubermatic-bot)
+
+-------------------------------------------------------------------
 Wed Apr 16 16:17:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.0:
