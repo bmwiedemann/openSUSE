@@ -35,4 +35,14 @@
    - typo fixes (thanks, David Steinbrunner)</comment>
     <requestid>297617</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3cea9fe8969b8ff305f279c23448d116</srcmd5>
+    <version>1.80.0</version>
+    <time>1749833195</time>
+    <user>anag_factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+</comment>
+    <requestid>1285249</requestid>
+  </revision>
 </revisionlist>
