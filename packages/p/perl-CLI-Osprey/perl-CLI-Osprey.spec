@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CLI-Osprey
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,21 @@
 
 %define cpan_name CLI-Osprey
 Name:           perl-CLI-Osprey
-Version:        0.08
+Version:        0.80.0
 Release:        0
+# 0.08 -> normalize -> 0.80.0
+%define cpan_version 0.08
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        MooX::Options + MooX::Cmd + Sanity
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AR/ARODLAND/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/A/AR/ARODLAND/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny)
 BuildRequires:  perl(Getopt::Long::Descriptive) >= 0.100
-BuildRequires:  perl(Module::Build::Tiny) >= 0.034
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build::Tiny) >= 0.34
 BuildRequires:  perl(Module::Runtime)
 BuildRequires:  perl(Moo)
 BuildRequires:  perl(Moo::Role)
@@ -41,6 +44,12 @@ Requires:       perl(Module::Runtime)
 Requires:       perl(Moo)
 Requires:       perl(Moo::Role)
 Requires:       perl(Path::Tiny)
+Provides:       perl(CLI::Osprey) = %{version}
+Provides:       perl(CLI::Osprey::Descriptive) = %{version}
+Provides:       perl(CLI::Osprey::Descriptive::Usage) = %{version}
+Provides:       perl(CLI::Osprey::InlineSubcommand) = %{version}
+Provides:       perl(CLI::Osprey::Role) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -54,7 +63,7 @@ have sub-commands (like 'git'). Sub-commands can be defined as modules
 (with options of their own) or as simple coderefs.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor
