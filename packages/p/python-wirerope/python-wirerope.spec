@@ -1,7 +1,7 @@
 #
 # spec file for package python-wirerope
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,11 @@ Summary:        The Way to Handle Bound Methods
 License:        BSD-2-Clause
 URL:            https://github.com/youknowone/wirerope
 Source0:        https://github.com/youknowone/wirerope/archive/%{version}.tar.gz#/wirerope-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module setuptools >= 39.2.0}
 BuildRequires:  %{python_module six >= 1.11.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six >= 1.11.0
@@ -42,10 +44,10 @@ wire object will be created by each function or bound method.
 sed -i -e '/addopts/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +57,6 @@ sed -i -e '/addopts/d' setup.cfg
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/wirerope
-%{python_sitelib}/wirerope-%{version}*-info
+%{python_sitelib}/wirerope-%{version}.dist-info
 
 %changelog

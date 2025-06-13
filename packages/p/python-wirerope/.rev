@@ -34,4 +34,12 @@
 - Update to version 0.4.6</comment>
     <requestid>1225369</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d9001c2991b71d7b7dd9678825af2456</srcmd5>
+    <version>0.4.8</version>
+    <time>1749833111</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1285286</requestid>
+  </revision>
 </revisionlist>
