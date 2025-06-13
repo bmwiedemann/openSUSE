@@ -1,7 +1,7 @@
 #
 # spec file for package python-virtualenv-clone
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without libalternatives
 Name:           python-virtualenv-clone
 Version:        0.5.7
 Release:        0
@@ -25,14 +25,16 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/edwardgeorge/virtualenv-clone
 Source:         https://files.pythonhosted.org/packages/source/v/virtualenv-clone/virtualenv-clone-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module virtualenv}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-virtualenv
-Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -73,10 +75,10 @@ It performs the following:
 %setup -q -n virtualenv-clone-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # setup up update-alternatives
@@ -86,16 +88,15 @@ It performs the following:
 # The tests are not shipped and there are no tags in git repo :/
 #%%pytest
 
-%post
-%python_install_alternative virtualenv-clone
-
 %preun
-%python_uninstall_alternative virtualenv-clone
+%python_libalternatives_reset_alternative virtualenv-clone
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %python_alternative %{_bindir}/virtualenv-clone
-%{python_sitelib}/*
+%{python_sitelib}/clonevirtualenv.py
+%pycache_only %{python_sitelib}/__pycache__/clonevirtualenv*
+%{python_sitelib}/virtualenv[-_]clone-%{version}*-info
 
 %changelog
