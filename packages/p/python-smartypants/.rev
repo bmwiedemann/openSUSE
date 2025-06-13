@@ -64,4 +64,12 @@
     <comment></comment>
     <requestid>1113554</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>6a2ca8887d1b397899b37310eb605504</srcmd5>
+    <version>2.0.1</version>
+    <time>1749832958</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build and libalternatives</comment>
+    <requestid>1285134</requestid>
+  </revision>
 </revisionlist>

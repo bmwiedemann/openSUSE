@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 12 12:07:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build and libalternatives
+
+-------------------------------------------------------------------
 Mon Sep 25 08:24:56 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add fix-312.patch to fix python3.12 build  

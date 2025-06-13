@@ -1,7 +1,7 @@
 #
 # spec file for package python-smartypants
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-smartypants
 Version:        2.0.1
@@ -28,14 +29,15 @@ Source:         https://github.com/leohemsted/smartypants.py/archive/v%{version}
 Patch0:         use-sys-executable.patch
 Patch1:         fix-312.patch
 BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires:       alts
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -47,20 +49,17 @@ typographic punctuation HTML entities.
 %autosetup -p1 -n smartypants.py-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand sed -i '1{/^#!/d}' %{buildroot}%{$python_sitelib}/smartypants.py
 %fdupes %{buildroot}%{$python_sitelib}
 }
 %python_clone -a %{buildroot}%{_bindir}/smartypants
 
-%post
-%python_install_alternative smartypants
-
-%postun
-%python_uninstall_alternative smartypants
+%pre
+%python_libalternatives_reset_alternative smartypants
 
 %check
 %pyunittest discover -v tests
