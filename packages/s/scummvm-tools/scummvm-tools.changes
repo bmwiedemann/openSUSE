@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 13 13:32:58 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- update to 2.9.0
+ * Multiple improvements to gob scripts disassembler.
+ * Allow .JTK files to be decompressed in gob engine.
+ * Added utility for extracting 3DO disk images in Director engine.
+ * Added utility for extracting Wintermute engine DCP archives.
+ * Added script decompiler for Wintermute.
+- Dropped fix-new-wxwidgets.patch (fixed upstream)
+
+-------------------------------------------------------------------
 Tue Feb 28 14:26:58 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 2.7.0

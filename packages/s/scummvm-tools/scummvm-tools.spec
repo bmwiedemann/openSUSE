@@ -1,7 +1,7 @@
 #
 # spec file for package scummvm-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           scummvm-tools
-Version:        2.7.0
+Version:        2.9.0
 Release:        0
 Summary:        ScummVM-related tools
 License:        GPL-3.0-or-later
@@ -25,8 +25,6 @@ URL:            https://www.scummvm.org
 Source0:        https://downloads.scummvm.org/frs/scummvm-tools/%{version}/scummvm-tools-%{version}.tar.xz
 Source1:        %{name}.desktop
 Source99:       %{name}.changes
-# PATCH-FIX-UPSTREAM fix-new-wxwidgets.patch -- https://bugs.scummvm.org/ticket/9554
-Patch0:         fix-new-wxwidgets.patch
 BuildRequires:  ImageMagick
 BuildRequires:  boost-devel >= 1.32.0
 BuildRequires:  c++_compiler
