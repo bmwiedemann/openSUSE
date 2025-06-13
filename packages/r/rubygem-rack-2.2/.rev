@@ -122,4 +122,12 @@ See installed CHANGELOG.md for more changes</comment>
    * Optional support for CGI::Cookie if not available. (forwarded request 1278563 from hellcp-work)</comment>
     <requestid>1278696</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2835bb16b16f8ce532521025357f244b</srcmd5>
+    <version>2.2.17</version>
+    <time>1749833192</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1285374</requestid>
+  </revision>
 </revisionlist>
