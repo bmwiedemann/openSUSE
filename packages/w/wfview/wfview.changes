@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 26 23:01:49 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.11:
+  * Remove unnecessary change to packettypes
+  * Remove unnecessary logging in rtpaudio
+  * Allow user to configure auto power on
+  * Move ovf indicator to top
+
+-------------------------------------------------------------------
 Wed May  7 17:51:42 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 2.10
