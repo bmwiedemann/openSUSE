@@ -159,4 +159,13 @@
     <comment>- build for python 3.7 and above</comment>
     <requestid>1142643</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>48eee3eb0908953ec1f281ceea8b0234</srcmd5>
+    <version>2.0.2</version>
+    <time>1749833161</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1285330</requestid>
+  </revision>
 </revisionlist>

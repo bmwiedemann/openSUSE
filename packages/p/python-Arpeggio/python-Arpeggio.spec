@@ -1,7 +1,7 @@
 #
 # spec file for package python-Arpeggio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        MIT
 URL:            https://github.com/textX/Arpeggio/
 Source:         https://github.com/textX/Arpeggio/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -48,10 +49,10 @@ sed -i '1d' arpeggio/tests/regressions/issue_16/test_issue_16.py
 sed -i '/pytest-runner/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +61,7 @@ sed -i '/pytest-runner/d' setup.cfg
 %files %{python_files}
 %doc README.md CHANGELOG.md AUTHORS.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/arpeggio
+%{python_sitelib}/[Aa]rpeggio-%{version}.dist-info
 
 %changelog
