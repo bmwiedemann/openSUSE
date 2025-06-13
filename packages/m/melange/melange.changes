@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun 13 11:31:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.11:
+  * fix: avoid sending huge command when fetching extra files from
+    workspace (#2043)
+  * Better clarify that owner vars are IDs (#2040)
+
+-------------------------------------------------------------------
+Fri Jun 13 04:42:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.10:
+  * Error if a package version is not parseable by apk.ParseVersion
+    (#2039)
+  * Fix ownership when retrieving workspace (#2038)
+  * fix: pass cap add/drop to ssh session (#2032)
+  * manpages.yaml: Move directory contents to avoid errors and
+    clean up afterwards (#2037)
+
+-------------------------------------------------------------------
 Thu Jun 12 05:05:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.9:
