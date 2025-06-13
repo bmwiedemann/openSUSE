@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-github-alt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_with     test
 Name:           python-sphinxcontrib-github-alt
 Version:        1.2
@@ -28,7 +27,9 @@ URL:            https://github.com/Calysto/octave_kernel
 Source0:        https://files.pythonhosted.org/packages/source/s/sphinxcontrib_github_alt/sphinxcontrib_github_alt-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx
@@ -47,10 +48,10 @@ and set the variable github_project_url:
 %setup -q -n sphinxcontrib_github_alt-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
