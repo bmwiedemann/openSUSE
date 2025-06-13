@@ -1,7 +1,7 @@
 #
 # spec file for package python-shellingham
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/sarugaku/shellingham
 Source:         https://github.com/sarugaku/shellingham/archive/refs/tags/%{version}.tar.gz#/shellingham-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,10 +43,10 @@ Python library to detect surrounding shell.
 %setup -q -n shellingham-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

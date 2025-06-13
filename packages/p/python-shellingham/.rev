@@ -55,4 +55,12 @@
     ``/proc`` is used for process lookup.</comment>
     <requestid>1129196</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6b0373d9bec20b3a3f94cc838ed216f4</srcmd5>
+    <version>1.5.4</version>
+    <time>1749832956</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build</comment>
+    <requestid>1285111</requestid>
+  </revision>
 </revisionlist>
