@@ -1,7 +1,7 @@
 #
 # spec file for package uriparser
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,8 +39,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  graphviz
 BuildRequires:  graphviz-gd
-BuildRequires:  libqt5-qttools
 BuildRequires:  pkg-config
+BuildRequires:  qt6-tools
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libxdot)
 %if %{with googletest}
@@ -109,7 +109,8 @@ This subpackage contains the documentation for %{name}.
     -DURIPARSER_BUILD_TESTS:BOOL=OFF \
 %endif
     -DURIPARSER_BUILD_TOOLS:BOOL=ON \
-    -DURIPARSER_BUILD_WCHAR:BOOL=ON
+    -DURIPARSER_BUILD_WCHAR:BOOL=ON \
+    -DQHG_LOCATION:PATH=%{_libexecdir}/qt6/qhelpgenerator
 %cmake_build
 
 %install
@@ -148,5 +149,6 @@ unset MALLOC_CHECK_ MALLOC_PERTURB_
 %doc doc/Mainpage.txt
 %dir %{_docdir}/%{name}/
 %{_docdir}/%{name}/html/
+%{_docdir}/%{name}/%{name}-%{version}.qch
 
 %changelog

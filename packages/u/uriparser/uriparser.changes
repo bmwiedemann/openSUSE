@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 29 12:09:50 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use Qt6's qhelpgenerator instead of Qt5's and fix its usage since
+  Qt5 was being BuildRequired but qch docs weren't being generated.
+
+-------------------------------------------------------------------
 Wed May 29 08:49:36 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - enable unit tests
