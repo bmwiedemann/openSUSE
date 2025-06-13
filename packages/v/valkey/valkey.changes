@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Jun 12 01:21:10 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 8.1.2:
+  - Security fixes
+    * CVE-2025-27151 Check length of AOF file name in valkey-check-aof (#2146)
+  - Bug fixes
+    * Properly escape double quotes and backslash in MONITOR command (#2036)
+    * Fix high CPU usage when fetching a random element in skewed sparse hash
+      table (#2085)
+    * Fix a bug that allowed clients to process commands when the server has
+      paused command processing (#2109)
+    * Fix a crash where the wrong slot is used when processing sharded pubsub
+      unsubscribe events (#2137)
+    * Fix a crash when a module attempts to write auxiliary data with AOF
+      enabled (#2132)
+    * Fix a bug where the engine may crash when establishing new outbound TLS
+      connections (#2140)
+    * Fix a bug where a cluster bus packet may be incorrectly marked as
+      invalid (#2144)
+    * Fix a bug where CLUSTER SLOTS/NODES information can be stale after
+      updating node port/tls-port (#2186)
+    * Fix a bug where replica in cluster mode can't finish failover when
+      config epoch is outdated (#2178)
+    * Fix a bug to avoid CLIENT UNBLOCK command to unblock paused clients
+      (#2117)
+- Drop valkey-ssl_new-null-return.patch, CVE-2025-27151.patch
+  * Included in upstream release
+
+-------------------------------------------------------------------
+Wed Jun 11 22:08:53 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Provide redis 7.2.9 instead of valkey version due to lack of
+  features provided by redis 7.4 (boo#1243605)
+
+-------------------------------------------------------------------
+Tue Jun  3 17:55:25 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix crash on SSL_new() returning NULL in outgoing connections (bsc#1243061)
+  * valkey-ssl_new-null-return.patch
+
+-------------------------------------------------------------------
+Mon Jun  2 12:12:59 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix CVE-2025-27151, absence of filename size check may cause a stack
+  overflow (bsc#1243804)
+  * CVE-2025-27151.patch
+- Fix CVE-2025-49112, setDeferredReply integer underflow (bsc#1243913)
+  * CVE-2025-49112.patch
+
+-------------------------------------------------------------------
+Mon May  5 14:41:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 8.1.1:
+  * 8.1.x branch with enhanced performance, reliability,
+    observability and usability over Valkey 8.0
+  * compatible with all previous Valkey releases as well as Redis
+    OSS 7.2.4
+  * Updated configuration options and functionality as listed in
+    https://github.com/valkey-io/valkey/releases/tag/8.1.1
+    https://github.com/valkey-io/valkey/releases/tag/8.1.0
+
+-------------------------------------------------------------------
 Thu Apr 24 16:52:15 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 8.0.3:

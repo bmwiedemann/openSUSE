@@ -26,7 +26,7 @@
 %global make_flags CFLAGS="%{build_cflags}" DEBUG="" V="echo" PREFIX=%{buildroot}%{_prefix} BUILD_WITH_SYSTEMD=yes BUILD_TLS=yes
 
 Name:           valkey
-Version:        8.0.3
+Version:        8.1.2
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
@@ -43,6 +43,9 @@ Source8:        %{name}-sentinel.target
 Source9:        %{name}-user.conf
 Source10:       macros.%{name}
 Source11:       migrate_redis_to_valkey.bash
+# PATCH-FIX-UPSTREAM antonio.teixeira@suse.com bsc#1243913 CVE-2025-49112
+# setDeferredReply integer underflow for prev->size - prev->used
+Patch1:         CVE-2025-49112.patch
 # PATCH-FIX-OPENSUSE -- Adjust configs for openSUSE
 Patch1001:      %{name}-conf.patch
 BuildRequires:  jemalloc-devel
@@ -82,7 +85,8 @@ Summary:        Conversion script and compatibility symlinks for Redis
 Requires:       valkey = %{version}-%{release}
 Conflicts:      redis
 Obsoletes:      redis <= 7.2.5
-Provides:       redis = %{version}-%{release}
+# Provide redis 7.2.x but no higher due to lack of features provided by redis 7.4 (boo#1243605)
+Provides:       redis = 7.2.9
 Requires(post): /usr/bin/find
 BuildArch:      noarch
 
