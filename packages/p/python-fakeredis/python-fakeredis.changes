@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun 12 12:23:04 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 2.29.0:
+  * https://github.com/cunla/fakeredis-py/releases/tag/v2.29.0
+  * https://github.com/cunla/fakeredis-py/releases/tag/v2.28.1
+  * https://github.com/cunla/fakeredis-py/releases/tag/v2.28.0
+  * https://github.com/cunla/fakeredis-py/releases/tag/v2.27.0
+  * https://github.com/cunla/fakeredis-py/releases/tag/v2.26.2
+  * https://github.com/cunla/fakeredis-py/releases/tag/v2.26.1
+  * https://github.com/cunla/fakeredis-py/releases/tag/v2.26.0
+  * https://github.com/cunla/fakeredis-py/releases/tag/v2.25.1
+  * https://github.com/cunla/fakeredis-py/releases/tag/v2.25.0
+  * https://github.com/cunla/fakeredis-py/releases/tag/v2.24.1
+  * https://github.com/cunla/fakeredis-py/releases/tag/v2.24.0
+  * https://github.com/cunla/fakeredis-py/releases/tag/v2.23.5
+- Add redis build requirement and run redis server for test suite
+- Drop fix-tests.patch
+  * Included in upstream release
+
+-------------------------------------------------------------------
 Tue Oct  8 16:14:14 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream fix-tests.patch

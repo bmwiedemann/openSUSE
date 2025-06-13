@@ -1,7 +1,7 @@
 #
 # spec file for package python-fakeredis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fakeredis
-Version:        2.23.4
+Version:        2.29.0
 Release:        0
 Summary:        Fake implementation of redis API for testing purposes
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com/cunla/fakeredis-py
 Source:         https://github.com/cunla/fakeredis-py/archive/refs/tags/v%{version}.tar.gz#/fakeredis-%{version}-gh.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/cunla/fakeredis-py/commit/b6c0140e17fb571906251e0fb300a52735427bf7 fix:tests for redis 5.1.0
-# there is a new version, but the update failed for me
-Patch:          fix-tests.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
@@ -45,6 +42,7 @@ BuildRequires:  %{python_module pytest-mock >= 3.7.0}
 BuildRequires:  %{python_module redis >= 4}
 BuildRequires:  %{python_module sortedcontainers >= 2.4.0}
 BuildRequires:  %{python_module typing_extensions >= 4.7}
+BuildRequires:  redis
 # /SECTION
 %python_subpackages
 
@@ -63,6 +61,7 @@ Fake implementation of redis API for testing purposes.
 
 %check
 export LANG="en_US.UTF8"
+%{_sbindir}/redis-server --port 6390 --save &
 %pytest -m "not slow"
 
 %files %{python_files}
