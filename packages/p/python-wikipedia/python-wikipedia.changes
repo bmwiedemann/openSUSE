@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 13 02:45:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Use fdupes.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Fri May 29 10:59:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Replace nose with pytest

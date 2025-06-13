@@ -1,7 +1,7 @@
 #
 # spec file for package python-wikipedia
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-wikipedia
 Version:        1.4.0
 Release:        0
 Summary:        Wikipedia API for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/goldsmith/Wikipedia
 Source:         https://files.pythonhosted.org/packages/source/w/wikipedia/wikipedia-%{version}.tar.gz
 BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-beautifulsoup4
 Requires:       python-requests
@@ -48,10 +49,11 @@ Wikipedia data, not getting it.
 %setup -q -n wikipedia-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 ln -s tests/request_mock_data.py .
@@ -60,6 +62,7 @@ ln -s tests/request_mock_data.py .
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/wikipedia
+%{python_sitelib}/wikipedia-%{version}.dist-info
 
 %changelog
