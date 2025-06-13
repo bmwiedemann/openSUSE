@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jun 13 11:31:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.102.0:
+  * Features
+    - Various feature additions for CUE @refi64 (#5352)
+    - feat(bitbucket): add support for pull request description
+      merging @mcwarman (#5350)
+  * Bug Fixes
+    - fix: fix default argocd autodiscovery action title @olblak
+      (#5419)
+    - fix(reports): update target description to output correctly
+      in markdown @mcwarman (#5309)
+    - fix: remove duplicate generate schema @qianlongzt (#5299)
+  * Maintenance
+    - deps(go): bump module
+      github.com/hashicorp/terraform-registry-address to v0.3.0
+      @updateclibot[bot] (#5409)
+    - deps(go): bump module cuelang.org/go to v0.13.1
+      @updateclibot[bot] (#5400)
+    - deps(go): bump module golang.org/x/net to v0.41.0
+      @updateclibot[bot] (#5381)
+    - deps(go): bump module github.com/fluxcd/source-controller/api
+      to v1.6.0 @updateclibot[bot] (#5380)
+    - deps(go): bump module github.com/go-git/go-git/v5 to v5.16.2
+      @updateclibot[bot] (#5373)
+    - deps(go): bump module helm.sh/helm/v3 to v3.18.2
+      @updateclibot[bot] (#5362)
+
+-------------------------------------------------------------------
 Sat May 31 06:27:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.101.0:
