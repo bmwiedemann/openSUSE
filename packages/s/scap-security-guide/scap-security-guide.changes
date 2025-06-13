@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 12 09:12:01 UTC 2025 - Rumen Chikov <rumen.chikov@suse.com>
+
+- updated to 0.1.77 (jsc#ECO-3319)
+    - Introduce Architecture Decisions Records 
+    - Move stablization to the third Monday of the second month 
+    - Remove CCI References 
+    - Remove macOS content 
+- removed ssg-fix-python.patch: upstream
+- Added support for tencentos4
+ 
+-------------------------------------------------------------------
 Sun Mar 23 10:12:12 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - ssg-fix-python.patch: fix build with older python3.

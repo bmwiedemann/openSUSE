@@ -16,7 +16,7 @@
 #
 
 
-%if ! (0%{?fedora} || 0%{?rhel} > 5) || 0%{?alma} >= 9
+%if ! (0%{?fedora} || 0%{?rhel} > 5) || 0%{?alma} >= 9 || 0%{?tencentos} >= 4
 %if "%{_vendor}" == "debbuild"
 %global __python /usr/bin/python3
 %endif
@@ -24,25 +24,25 @@
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 %endif
 
-%if 0%{?fedora} || 0%{?rhel} >= 8 || 0%{?alma} >=9
+%if 0%{?fedora} || 0%{?rhel} >= 8 || 0%{?alma} >=9 || 0%{?tencentos} >= 4
 %{!?pylint_check: %global pylint_check 0}
 %endif
 
-%if 0%{?fedora} || 0%{?suse_version} > 1320 || 0%{?rhel} >= 8 || 0%{?alma} >=9 || "%{_vendor}" == "debbuild"
+%if 0%{?fedora} || 0%{?suse_version} > 1320 || 0%{?rhel} >= 8 || 0%{?alma} >=9 || 0%{?tencentos} >= 4  ||  "%{_vendor}" == "debbuild"
 %global build_py3   1
 %if "%{_vendor}" != "debbuild"
 %global python_sitelib %{python3_sitelib}
 %endif
 %endif
 
-%if 0%{?fedora} || 0%{?rhel} >= 8 || 0%{?alma} >= 9
+%if 0%{?fedora} || 0%{?rhel} >= 8 || 0%{?alma} >= 9 || 0%{?tencentos} >= 4
 %global python2prefix python2
 %else
 %global python2prefix python
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.76
+Version:        0.1.77
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -51,7 +51,6 @@ URL:            https://github.com/ComplianceAsCode/content
 Packager:       SUSE Security Team <security@suse.de>
 %endif
 Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
-Patch0:         ssg-fix-python.patch
 
 # explicit require what is needed by the detection logic in the scripts
 Requires:       coreutils
@@ -89,6 +88,10 @@ BuildRequires:  python3
 BuildRequires:  python3
 %endif
 
+%if 0%{?tencentos} == 4
+BuildRequires:  python3
+%endif
+
 %if 0%{?suse_version}
 BuildRequires:  python3-xml
 %endif
@@ -102,6 +105,9 @@ BuildRequires:  python3-pyyaml
 %if 0%{?alma} == 9
 BuildRequires:  python3-pyyaml
 %else
+%if 0%{?tencentos} == 4
+BuildRequires:  python3-pyyaml
+%else
 %if "%{_vendor}" == "debbuild"
 BuildRequires:  python3-yaml
 %else
@@ -110,7 +116,7 @@ BuildRequires:  python3-PyYAML
 %endif
 %endif
 %endif
-
+%endif
 %if 0%{?rhel} == 7
 BuildRequires:  python-jinja2
 %else
@@ -120,10 +126,14 @@ BuildRequires:  python3-jinja2
 %if 0%{?alma} >= 9
 BuildRequires:  python3-jinja2
 %else
+%if 0%{?tencentos} >= 4
+BuildRequires:  python3-jinja2
+%else
 %if "%{_vendor}" == "debbuild"
 BuildRequires:  python3-jinja2
 %else
 BuildRequires:  python3-Jinja2
+%endif
 %endif
 %endif
 %endif
@@ -162,7 +172,7 @@ are community supplied and not officially supported by SUSE.
 
 %package redhat
 Summary:        XCCDF files for RHEL, CentOS, Fedora, ScientificLinux and AlmaLinux
-%if 0%{?fedora} || 0%{?rhel} || 0%{?alma}
+%if 0%{?fedora} || 0%{?rhel} || 0%{?alma} || 0%{?tencentos}
 Conflicts:      scap-security-guide
 %endif
 
@@ -204,7 +214,6 @@ Note that the included profiles are community supplied and not officially suppor
 
 %prep
 %setup -q -n content-%version
-%patch -P 0 -p 1
 
 %build
 cd build
@@ -239,6 +248,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	 -DSSG_PRODUCT_RHOSP10=ON \
 	 -DSSG_PRODUCT_RHOSP13=ON \
 	 -DSSG_PRODUCT_RHV4=ON \
+         -DSSG_PRODUCT_TENCENTOS4=ON \
 	 -DSSG_PRODUCT_SLE12=ON \
 	 -DSSG_PRODUCT_SLE15=ON \
          -DSSG_PRODUCT_SLMICRO5=ON \
@@ -304,6 +314,7 @@ make install DESTDIR=%buildroot
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-ol*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-openeuler*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-rh*
+%doc %{_datadir}/doc/scap-security-guide/guides/ssg-tencentos*
 %dir %{_datadir}/doc/scap-security-guide/tables/
 %doc %{_datadir}/doc/scap-security-guide/tables/table-ol*
 %doc %{_datadir}/doc/scap-security-guide/tables/table-rh*
@@ -320,6 +331,7 @@ make install DESTDIR=%buildroot
 %{_datadir}/scap-security-guide/*/*fedora*
 %{_datadir}/scap-security-guide/*/*ol*
 %{_datadir}/scap-security-guide/*/*openeuler*
+%{_datadir}/scap-security-guide/*/*tencentos*
 %{_datadir}/scap-security-guide/*/*rh*
 %dir %{_datadir}/xml/scap/
 %dir %{_datadir}/xml/scap/ssg/
@@ -331,6 +343,7 @@ make install DESTDIR=%buildroot
 %{_datadir}/xml/scap/ssg/content/*-fedora*
 %{_datadir}/xml/scap/ssg/content/*-ol*
 %{_datadir}/xml/scap/ssg/content/*-openeuler*
+%{_datadir}/xml/scap/ssg/content/*-tencentos*
 %{_datadir}/xml/scap/ssg/content/*-rh*
 
 %files debian

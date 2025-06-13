@@ -501,4 +501,18 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
   -  Various updates for SLE 12/15</comment>
     <requestid>1255397</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>65ec2629c0ea30d73510f6fe8c8e75f2</srcmd5>
+    <version>0.1.77</version>
+    <time>1749833030</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.1.77 (jsc#ECO-3319)
+    - Introduce Architecture Decisions Records 
+    - Move stablization to the third Monday of the second month 
+    - Remove CCI References 
+    - Remove macOS content 
+- removed ssg-fix-python.patch: upstream
+- Added support for tencentos4</comment>
+    <requestid>1285187</requestid>
+  </revision>
 </revisionlist>
