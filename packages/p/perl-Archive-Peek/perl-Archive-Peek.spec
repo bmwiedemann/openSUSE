@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Archive-Peek
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Archive-Peek
 Name:           perl-Archive-Peek
-Version:        0.37
+Version:        0.370.0
 Release:        0
-Summary:        Peek into archives without extracting them
+# 0.37 -> normalize -> 0.370.0
+%define cpan_version 0.37
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Peek into archives without extracting them
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/Z/ZM/ZMUGHAL/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/Z/ZM/ZMUGHAL/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -36,6 +38,10 @@ Requires:       perl(Archive::Tar)
 Requires:       perl(Archive::Zip)
 Requires:       perl(Moo)
 Requires:       perl(Types::Path::Tiny)
+Provides:       perl(Archive::Peek) = %{version}
+Provides:       perl(Archive::Peek::Tar)
+Provides:       perl(Archive::Peek::Zip)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -44,7 +50,7 @@ currently supports tar files and zip files. To support Bzip2- compressed
 files, you should install IO::Uncompress::Bunzip2.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
