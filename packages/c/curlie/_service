@@ -3,9 +3,9 @@
     <param name="url">https://github.com/rs/curlie</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionformat">v1.8.2</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v1.7.2</param>
+    <param name="revision">v1.8.2</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">

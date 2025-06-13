@@ -1,7 +1,7 @@
 #
 # spec file for package curlie
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,14 @@
 
 %define goipath github.com/rs/curlie
 Name:           curlie
-Version:        1.7.2
+Version:        1.8.2
 Release:        0
 Summary:        a frontend to curl that adds the ease of use of httpie
 License:        MIT
 URL:            https://github.com/rs/curlie
-Source0:        https://github.com/rs/curlie/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-# PATCH-FIX-UPSTREAM upgrade-go-version-and-x-sys-to-latest.patch  -- based on commit 9fcb3a0
-Patch0:         upgrade-go-version-and-x-sys-to-latest.patch
-BuildRequires:  go >= 1.20
+BuildRequires:  go >= 1.24
 BuildRequires:  golang-packaging
 BuildRequires:  libunistring-devel
 

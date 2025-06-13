@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 02 15:45:56 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.8.2:
+  * Remove sboms
+  * Add more platforms, SBOMs and sign artifacts
+  * Fix proxy option
+  * Update Go version and GoReleaser 
+  * Replace deprecated imports 
+  * fix: remove curlie.io mention from goreleaser
+  * fix: goreleaser
+  * Delete CNAME
+  * Update README.md
+  * Bump golang.org/x/crypto from 0.1.0 to 0.17.0
+
+- dropped patch upgrade-go-version-and-x-sys-to-latest.patch as no more needed
+
+-------------------------------------------------------------------
 Tue Oct 24 07:42:03 UTC 2023 - andrea.manzini@suse.com
 
 - Update to version 1.7.2:
