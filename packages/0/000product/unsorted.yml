@@ -3355,6 +3355,7 @@ unsorted:
   - docserv-config-nginx 
   - docserv-minisrv 
   - docserv-sitemap 
+  - docsible 
   - doctest-devel 
   - dog 
   - doggo 
@@ -4389,6 +4390,11 @@ unsorted:
   - forgejo-environment-to-ini 
   - forgejo-firewalld 
   - forgejo-guardian 
+  - forgejo-longterm 
+  - forgejo-longterm-apparmor 
+  - forgejo-longterm-environment-to-ini 
+  - forgejo-longterm-firewalld 
+  - forgejo-longterm-selinux 
   - forgejo-runner 
   - forgejo-runner-bash-completion 
   - forgejo-runner-fish-completion 
@@ -18641,6 +18647,7 @@ unsorted:
   - mkvtoolnix-gui 
   - mkvtoolnix-tools 
   - mlterm 
+  - mlterm-lang 
   - mlterm-m17n 
   - mm-common 
   - mm-common-docs 
@@ -47449,7 +47456,6 @@ unsorted:
   - trang 
   - transconnect 
   - transfig 
-  - transifex-client 
   - translate-suse-desktop 
   - translate-toolkit-devel-doc 
   - translate-toolkit-doc 
