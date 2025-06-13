@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 13 12:21:22 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Jan  3 13:37:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (fork from system_hotkey)
