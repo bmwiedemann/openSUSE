@@ -1,7 +1,7 @@
 #
 # spec file for package python-sqlite-fts4
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-sqlite-fts4
 Version:        1.0.3
 Release:        0
@@ -25,8 +23,10 @@ Summary:        Python functions for working with SQLite FTS4 search
 License:        Apache-2.0
 URL:            https://github.com/simonw/sqlite-fts4
 Source:         https://github.com/simonw/sqlite-fts4/archive/%{version}.tar.gz#/sqlite-fts4-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,10 +40,10 @@ Python functions for working with SQLite FTS4 search
 %setup -q -n sqlite-fts4-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,6 +53,6 @@ Python functions for working with SQLite FTS4 search
 %license LICENSE
 %doc README.md
 %{python_sitelib}/sqlite_fts4
-%{python_sitelib}/sqlite_fts4-%{version}-*.egg-info
+%{python_sitelib}/sqlite_fts4-%{version}*-info
 
 %changelog
