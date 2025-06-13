@@ -129,4 +129,15 @@
 </comment>
     <requestid>1185383</requestid>
   </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>5d3412921d2a9e76a5eeef31fdbf8b9d</srcmd5>
+    <version>0.8.1</version>
+    <time>1749833013</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Add patches, to support Python 3.12+:
+  * lower-huge-int.patch
+  * support-match.patch</comment>
+    <requestid>1285331</requestid>
+  </revision>
 </revisionlist>

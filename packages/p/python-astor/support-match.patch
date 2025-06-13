@@ -1,0 +1,40 @@
+Index: astor-0.8.1/astor/code_gen.py
+===================================================================
+--- astor-0.8.1.orig/astor/code_gen.py
++++ astor-0.8.1/astor/code_gen.py
+@@ -546,6 +546,35 @@ class SourceGenerator(ExplicitNodeVisito
+     def visit_Name(self, node):
+         self.write(node.id)
+ 
++    # ast.Match is new in Python 3.10
++    def visit_Match(self, node):
++        self.write(node.subject)
++        for c in node.cases:
++            self.write(c)
++
++    # ast.match_case is new in Python 3.10
++    def visit_match_case(self, node):
++        self.write(node.pattern)
++        self.write(node.guard)
++        self.write(node.body)
++
++    # ast.MatchSingleton is new in Python 3.10
++    def visit_MatchSingleton(self, node):
++        self.write(node.value)
++
++    # ast.MatchClass is new in Python 3.10
++    def visit_MatchClass(self, node):
++        self.write(node.cls)
++        for p in node.patterns:
++            self.write(p)
++        self.write(node.kwd_attrs)
++        self.write(node.kwd_patterns)
++
++    # ast.MatchAs is new in Python 3.10
++    def visit_MatchAs(self, node):
++        self.write(node.pattern)
++        self.write(node.name)
++
+     # ast.Constant is new in Python 3.6 and it replaces ast.Bytes,
+     # ast.Ellipsis, ast.NameConstant, ast.Num, ast.Str in Python 3.8
+     def visit_Constant(self, node):

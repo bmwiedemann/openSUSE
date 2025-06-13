@@ -1,7 +1,7 @@
 #
 # spec file for package python-astor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,16 @@ Version:        0.8.1
 Release:        0
 Summary:        Read/rewrite/write Python ASTs
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/berkerpeksag/astor
 Source:         https://github.com/berkerpeksag/astor/archive/%{version}.tar.gz#/astor-%{version}.tar.gz
 # https://github.com/berkerpeksag/astor/pull/177
 Patch0:         remove_nose.patch
+# https://github.com/berkerpeksag/astor/commit/8342d6aa5dcdcf20f89a19057527510c245c7a2e
+Patch1:         lower-huge-int.patch
+Patch2:         support-match.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -72,29 +76,22 @@ There are some other similar libraries, but astor focuses on the following areas
 # ugly fix for the use of /usr/bin/env
 sed -i 's@#!.*@@' astor/rtrip.py
 chmod a-x astor/rtrip.py
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # fix executeable bits
 %python_expand chmod 755 %{buildroot}%{$python_sitelib}/astor/rtrip.py
 
 %check
-# https://github.com/berkerpeksag/astor/issues/212
-python38_donttest="test_huge_int"
 # https://github.com/berkerpeksag/astor/issues/196
-python39_donttest="${python38_donttest} or test_convert_stdlib"
-python310_donttest=${python39_donttest}
-python311_donttest=${python310_donttest}
-python312_donttest=${python311_donttest}
-python313_donttest=${python312_donttest}
-%pytest tests ${$python_donttest:+ -k "not (${$python_donttest})"}
+%pytest tests -k "not test_convert_stdlib"
 
 %files %{python_files}
 %doc AUTHORS README.rst docs/*.rst
 %license LICENSE
 %{python_sitelib}/astor
-%{python_sitelib}/astor-%{version}*-info
+%{python_sitelib}/astor-%{version}.dist-info
 
 %changelog

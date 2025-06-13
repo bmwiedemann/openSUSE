@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 13 05:37:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Add patches, to support Python 3.12+:
+  * lower-huge-int.patch
+  * support-match.patch
+
+-------------------------------------------------------------------
 Thu Jul  4 12:06:42 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip same tests for python-3.13
