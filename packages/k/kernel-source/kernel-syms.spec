@@ -16,16 +16,16 @@
 #
 
 
-%define git_commit 75961adba0a92812f18b49a1269d9c7e9194e902
+%define git_commit 3a37f077e5d3fc695953a4e3cdab52b468d08b68
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
 Name:           kernel-syms
-Version:        6.15.1
+Version:        6.15.2
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g75961ad
+Release:        <RELEASE>.g3a37f07
 %else
 Release:        0
 %endif
@@ -38,11 +38,7 @@ License:        GPL-2.0-only
 Group:          Development/Sources
 URL:            https://www.kernel.org/
 BuildRequires:  coreutils
-%if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
 ExclusiveArch:  %ix86 aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
-%else
-ExclusiveArch:  do_not_build
-%endif
 Prefix:         /usr/src
 AutoReqProv:    off
 Source:         README.KSYMS

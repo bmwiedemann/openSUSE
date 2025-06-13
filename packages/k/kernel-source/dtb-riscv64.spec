@@ -17,7 +17,7 @@
 
 
 %define srcversion 6.15
-%define patchversion 6.15.1
+%define patchversion 6.15.2
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-riscv64
-Version:        6.15.1
+Version:        6.15.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g75961ad
+Release:        <RELEASE>.g3a37f07
 %else
 Release:        0
 %endif
@@ -38,11 +38,7 @@ URL:            https://www.kernel.org/
 BuildRequires:  cpp
 BuildRequires:  dtc >= 1.4.3
 BuildRequires:  xz
-%if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
 ExclusiveArch:  riscv64
-%else
-ExclusiveArch:  do_not_build
-%endif
 
 %define dtbdir /boot/dtb-%kernelrelease
 

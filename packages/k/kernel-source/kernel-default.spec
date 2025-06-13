@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.15
-%define patchversion 6.15.1
-%define git_commit 75961adba0a92812f18b49a1269d9c7e9194e902
+%define patchversion 6.15.2
+%define git_commit 3a37f077e5d3fc695953a4e3cdab52b468d08b68
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -39,9 +39,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-default
-Version:        6.15.1
+Version:        6.15.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g75961ad
+Release:        <RELEASE>.g3a37f07
 %else
 Release:        0
 %endif
@@ -89,11 +89,7 @@ BuildRequires:  u-boot-tools
 # Remove some packages that are installed automatically by the build system,
 # but are not needed to build the kernel
 #!BuildIgnore: autoconf automake gettext-runtime libtool cvs gettext-tools udev insserv
-%if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
 ExclusiveArch:  aarch64 armv6hl armv7hl %ix86 ppc64le riscv64 s390x x86_64
-%else
-ExclusiveArch:  do_not_build
-%endif
 
 %ifarch %ix86 x86_64
 %define image vmlinuz

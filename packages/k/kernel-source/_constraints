@@ -4,8 +4,6 @@
     <conditions>
 <package>kernel-64kb</package>
 <package>kernel-source:kernel-64kb</package>
-<package>kernel-debug</package>
-<package>kernel-source:kernel-debug</package>
 <package>kernel-default</package>
 <package>kernel-source:kernel-default</package>
 <package>kernel-kvmsmall</package>
@@ -75,8 +73,6 @@
       <arch>armv6l</arch>
 <package>kernel-64kb</package>
 <package>kernel-source:kernel-64kb</package>
-<package>kernel-debug</package>
-<package>kernel-source:kernel-debug</package>
 <package>kernel-default</package>
 <package>kernel-source:kernel-default</package>
 <package>kernel-kvmsmall</package>
@@ -103,8 +99,6 @@
       <arch>s390x</arch>
 <package>kernel-64kb</package>
 <package>kernel-source:kernel-64kb</package>
-<package>kernel-debug</package>
-<package>kernel-source:kernel-debug</package>
 <package>kernel-default</package>
 <package>kernel-source:kernel-default</package>
 <package>kernel-kvmsmall</package>
@@ -136,8 +130,6 @@
       <arch>riscv64</arch>
 <package>kernel-64kb</package>
 <package>kernel-source:kernel-64kb</package>
-<package>kernel-debug</package>
-<package>kernel-source:kernel-debug</package>
 <package>kernel-default</package>
 <package>kernel-source:kernel-default</package>
 <package>kernel-kvmsmall</package>
@@ -164,8 +156,6 @@
       <arch>ppc64le</arch>
 <package>kernel-64kb</package>
 <package>kernel-source:kernel-64kb</package>
-<package>kernel-debug</package>
-<package>kernel-source:kernel-debug</package>
 <package>kernel-default</package>
 <package>kernel-source:kernel-default</package>
 <package>kernel-kvmsmall</package>
@@ -192,8 +182,6 @@
       <arch>armv7l</arch>
 <package>kernel-64kb</package>
 <package>kernel-source:kernel-64kb</package>
-<package>kernel-debug</package>
-<package>kernel-source:kernel-debug</package>
 <package>kernel-default</package>
 <package>kernel-source:kernel-default</package>
 <package>kernel-kvmsmall</package>
@@ -231,8 +219,6 @@
       <arch>x86_64</arch>
 <package>kernel-64kb</package>
 <package>kernel-source:kernel-64kb</package>
-<package>kernel-debug</package>
-<package>kernel-source:kernel-debug</package>
 <package>kernel-default</package>
 <package>kernel-source:kernel-default</package>
 <package>kernel-kvmsmall</package>
@@ -259,8 +245,6 @@
       <arch>riscv64</arch>
 <package>kernel-64kb</package>
 <package>kernel-source:kernel-64kb</package>
-<package>kernel-debug</package>
-<package>kernel-source:kernel-debug</package>
 <package>kernel-default</package>
 <package>kernel-source:kernel-default</package>
 <package>kernel-kvmsmall</package>

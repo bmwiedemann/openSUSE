@@ -17,8 +17,8 @@
 
 
 %define srcversion 6.15
-%define patchversion 6.15.1
-%define git_commit 75961adba0a92812f18b49a1269d9c7e9194e902
+%define patchversion 6.15.2
+%define git_commit 3a37f077e5d3fc695953a4e3cdab52b468d08b68
 %define variant %{nil}
 %define gcc_package gcc
 %define gcc_compiler gcc
@@ -28,9 +28,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-source
-Version:        6.15.1
+Version:        6.15.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g75961ad
+Release:        <RELEASE>.g3a37f07
 %else
 Release:        0
 %endif
@@ -45,11 +45,7 @@ BuildRequires:  bash-sh
 BuildRequires:  coreutils
 BuildRequires:  fdupes
 BuildRequires:  sed
-%if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
 BuildArch:      noarch
-%else
-ExclusiveArch:  do_not_build
-%endif
 Prefix:         /usr/src
 
 %define src_install_dir usr/src/linux-%kernelrelease%variant
@@ -325,7 +321,7 @@ find %{buildroot}/usr/src/linux* -type f -name '*.[ch]' -perm /0111 -exec chmod 
 # OBS checks don't like /usr/bin/env in script interpreter lines
 grep -Elr '^#! */(usr/)?bin/env ' %{buildroot}/usr/src/linux* | while read f; do
     sed -re '1 { s_^#! */usr/bin/env +/_#!/_ ; s_^#! */usr/bin/env +([^/])_#!/usr/bin/\1_ }' \
-        -re '1 { s_^#! */bin/env +/_#!/_ ; s_^#! */bin/env +([^/])_#!/usr/bin/\1_ }' -i "$f"
+        -e  '1 { s_^#! */bin/env +/_#!/_ ; s_^#! */bin/env +([^/])_#!/usr/bin/\1_ }' -i "$f"
 done
 # kernel-source and kernel-$flavor-devel are built independently, but the
 # shipped sources (/usr/src/linux/) need to be older than generated files

@@ -4,7 +4,6 @@
 	<package>dtb-armv7l</package>
 	<package>dtb-riscv64</package>
 	<package>kernel-64kb</package>
-	<package>kernel-debug</package>
 	<package>kernel-default</package>
 	<package>kernel-docs</package>
 	<package>kernel-kvmsmall</package>

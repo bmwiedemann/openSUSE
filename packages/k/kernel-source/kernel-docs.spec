@@ -17,8 +17,8 @@
 
 
 %define srcversion 6.15
-%define patchversion 6.15.1
-%define git_commit 75961adba0a92812f18b49a1269d9c7e9194e902
+%define patchversion 6.15.2
+%define git_commit 3a37f077e5d3fc695953a4e3cdab52b468d08b68
 %define variant %{nil}
 %define build_html 1
 %define build_pdf 0
@@ -28,9 +28,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-docs
-Version:        6.15.1
+Version:        6.15.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g75961ad
+Release:        <RELEASE>.g3a37f07
 %else
 Release:        0
 %endif
@@ -84,11 +84,7 @@ BuildRequires:  texlive-xetex
 BuildRequires:  texlive-zapfding
 %endif
 %endif
-%if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
 BuildArch:      noarch
-%else
-ExclusiveArch:  do_not_build
-%endif
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
 Source14:       series.conf

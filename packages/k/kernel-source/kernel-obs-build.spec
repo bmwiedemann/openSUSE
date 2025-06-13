@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 6.15.1
+%define patchversion 6.15.2
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -38,23 +38,23 @@
 %endif
 %endif
 %endif
-%global kernel_package kernel%kernel_flavor-srchash-75961adba0a92812f18b49a1269d9c7e9194e902
+%global kernel_package kernel%kernel_flavor-srchash-3a37f077e5d3fc695953a4e3cdab52b468d08b68
 %endif
 %if 0%{?rhel_version}
 %global kernel_package kernel
 %endif
 
 Name:           kernel-obs-build
-Version:        6.15.1
+Version:        6.15.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g75961ad
+Release:        <RELEASE>.g3a37f07
 %else
 Release:        0
 %endif
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Provides:       kernel-obs-build-srchash-75961adba0a92812f18b49a1269d9c7e9194e902
+Provides:       kernel-obs-build-srchash-3a37f077e5d3fc695953a4e3cdab52b468d08b68
 BuildRequires:  coreutils
 BuildRequires:  device-mapper
 BuildRequires:  dracut
@@ -63,11 +63,7 @@ BuildRequires:  util-linux
 %if 0%{?suse_version} > 1550 || 0%{?sle_version} > 150200
 BuildRequires:  zstd
 %endif
-%if ! 0%{?is_kotd} || %{?is_kotd_qa}%{!?is_kotd_qa:0}
 ExclusiveArch:  aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
-%else
-ExclusiveArch:  do_not_build
-%endif
 
 %description
 This package is repackaging already compiled kernels to make them usable
