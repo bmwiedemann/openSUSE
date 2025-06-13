@@ -45,7 +45,7 @@ Provides:       scout-command-not-found = %{version}-%{release}
 # cnf-rs was not the best name
 Provides:       cnf-rs = %{version}-%{release}
 Obsoletes:      cnf-rs < %{version}-%{release}
-ExclusiveArch:  %{rust_tier1_arches} %{arm} riscv64
+ExclusiveArch:  %{rust_arches}
 
 %description
 A libsolv based command-not-found handler for openSUSE.
