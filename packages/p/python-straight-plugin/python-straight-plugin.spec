@@ -1,7 +1,7 @@
 #
 # spec file for package python-straight-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2018 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-straight-plugin
 Version:        1.5.0
 Release:        0
@@ -29,7 +28,9 @@ Source0:        https://files.pythonhosted.org/packages/source/s/straight.plugin
 # PATCH-FIX-UPSTREAM pip_no_plugins.patch gh#ironfroggy/straight.plugin#24 mcepl@suse.com
 # Fixes pipe with no plugins installed
 Patch0:         pip_no_plugins.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -50,16 +51,20 @@ the plugins in it for some particular purpose or intent.
 %prep
 %setup -q -n straight.plugin-%{version}
 %autopatch -p1
+# import from imp https://github.com/ironfroggy/straight.plugin/pull/30
+sed -i '/from imp import find_module/d' straight/plugin/loaders.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %fdupes %{buildroot}%{python_sitelib}
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/straight
+%{python_sitelib}/straight[._]plugin-%{version}*-info
+%{python_sitelib}/straight[._]plugin-%{version}*-nspkg.pth
 
 %changelog
