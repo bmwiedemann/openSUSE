@@ -22,7 +22,6 @@ Version:        3.0.3
 Release:        0
 Summary:        Helper to test WSGI applications
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://docs.pylonsproject.org/projects/webtest/
 Source:         https://files.pythonhosted.org/packages/source/w/webtest/webtest-%{version}.tar.gz
 Patch0:         sphinx-7-fix.patch
@@ -31,10 +30,12 @@ BuildRequires:  %{python_module WSGIProxy2}
 BuildRequires:  %{python_module WebOb >= 1.2}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module cssselect}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyquery}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module waitress >= 3.0.2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Documentation build requirements:
@@ -70,11 +71,11 @@ This package contains documentation files for %{name}.
 %autosetup -p1 -n webtest-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 sphinx-build -b html docs build/sphinx/html && rm -r build/sphinx/html/.{buildinfo,doctrees}
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -84,7 +85,7 @@ sphinx-build -b html docs build/sphinx/html && rm -r build/sphinx/html/.{buildin
 %license license.rst
 %doc CHANGELOG.rst README.rst
 %{python_sitelib}/webtest/
-%{python_sitelib}/WebTest-%{version}*-info
+%{python_sitelib}/[Ww]eb[Tt]est-%{version}.dist-info
 
 %files -n %{name}-doc
 %doc build/sphinx/html
