@@ -190,4 +190,48 @@
     <comment></comment>
     <requestid>1155451</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f5c5e4f3ef4b7836a19c91e4c9c7b551</srcmd5>
+    <version>2.280.0</version>
+    <time>1749833075</time>
+    <user>anag_factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+- updated to 2.28
+   see /usr/share/doc/packages/perl-CDDB_get/Changes
+  
+  2.28  06.03.2012
+        make tests work with perl 5.15.x
+- Use source URLs and remove ancient specfile tags and sections
+- use original .tar.gz
+- switch to perl_requires macro
+- remove /var/adm/perl-modules
+- add perl as explicit buildrequire
+- enable parallel build
+- updated patches to apply with fuzz=0
+- added manpage
+- 'make test' now in separate %check section
+- converted neededforbuild to BuildRequires
+- Update to 2.27
+- Update to 2.25
+- Make tempdir securely [#33811]
+- Update to 2.23
+- Don't build as root
+- Use %perl_make_install
+- require the perl version we build with
+- Update to 2.2, which adds direct device handling in cddb.pl
+  (-c /dev/xxx option) and fixes firewall with additional &quot;\n&quot;
+  (-F option)
+- Use vendor_install target and friends
+- Use %perl_process_packlist
+- package directories
+- Package everything
+- Up to 2.11 which is a small proxy regex bugfix
+- remove race in .packlist generation
+- Initial package. Module and script to access CDDB.
+</comment>
+    <requestid>1285244</requestid>
+  </revision>
 </revisionlist>

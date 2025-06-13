@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 12 17:53:32 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
 Mon Mar  4 12:32:41 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -129,4 +135,3 @@ Tue May 14 10:36:29 CEST 2002 - mmj@suse.de
 
 - Initial package. Module and script to access CDDB.
 
--------------------------------------------------------------------
