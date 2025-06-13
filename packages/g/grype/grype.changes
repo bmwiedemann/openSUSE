@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun 13 04:52:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.94.0:
+  * Added Features
+    - Add echo os to grype [#2647 @orizerah]
+  * Bug Fixes
+    - Nonroot can't load local docker image with docker socket bind
+      [#2721 #2723 @kzantow]
+    - "Harden Container Runtime with Non-Root User" breaks --output
+      usage [#2720 #2723 @kzantow]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#2726)
+    - chore(deps): update tools to latest versions (#2722)
+
+-------------------------------------------------------------------
 Wed Jun 11 04:33:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.93.0:
