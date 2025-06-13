@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-perlbrew
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,7 @@
 Name:           perl-App-perlbrew
 Version:        0.980.0
 Release:        0
+# 0.98 -> normalize -> 0.980.0
 %define cpan_version 0.98
 License:        MIT
 Summary:        Manage perl installations in your $HOME
@@ -29,28 +30,29 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Perl::Releases) >= 5.20230720
-BuildRequires:  perl(Capture::Tiny) >= 0.48
-BuildRequires:  perl(Devel::PatchPerl) >= 2.08
+BuildRequires:  perl(CPAN::Perl::Releases) >= 5.202.307.200
+BuildRequires:  perl(Capture::Tiny) >= 0.480
+BuildRequires:  perl(Devel::PatchPerl) >= 2.80
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.22
 BuildRequires:  perl(File::Temp) >= 0.2304
-BuildRequires:  perl(File::Which) >= 1.21
-BuildRequires:  perl(IO::All) >= 0.51
+BuildRequires:  perl(File::Which) >= 1.210
+BuildRequires:  perl(IO::All) >= 0.510
 BuildRequires:  perl(JSON::PP)
-BuildRequires:  perl(Module::Build::Tiny) >= 0.039
-BuildRequires:  perl(Path::Class) >= 0.33
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build::Tiny) >= 0.39
+BuildRequires:  perl(Path::Class) >= 0.330
 BuildRequires:  perl(Pod::Usage) >= 1.69
 BuildRequires:  perl(Test::Exception) >= 0.32
 BuildRequires:  perl(Test::More) >= 1.001002
-BuildRequires:  perl(Test::NoWarnings) >= 1.04
-BuildRequires:  perl(Test::Output) >= 1.03
+BuildRequires:  perl(Test::NoWarnings) >= 1.40
+BuildRequires:  perl(Test::Output) >= 1.30
 BuildRequires:  perl(Test::Simple) >= 1.001002
-BuildRequires:  perl(Test::Spec) >= 0.49
-BuildRequires:  perl(Test::TempDir::Tiny) >= 0.016
+BuildRequires:  perl(Test::Spec) >= 0.490
+BuildRequires:  perl(Test::TempDir::Tiny) >= 0.16
 BuildRequires:  perl(local::lib) >= 2.000014
-Requires:       perl(CPAN::Perl::Releases) >= 5.20230720
-Requires:       perl(Capture::Tiny) >= 0.48
-Requires:       perl(Devel::PatchPerl) >= 2.08
+Requires:       perl(CPAN::Perl::Releases) >= 5.202.307.200
+Requires:       perl(Capture::Tiny) >= 0.480
+Requires:       perl(Devel::PatchPerl) >= 2.80
 Requires:       perl(ExtUtils::MakeMaker) >= 7.22
 Requires:       perl(File::Temp) >= 0.2304
 Requires:       perl(JSON::PP)
@@ -62,7 +64,7 @@ Provides:       perl(App::Perlbrew::Path::Installation)
 Provides:       perl(App::Perlbrew::Path::Installations)
 Provides:       perl(App::Perlbrew::Path::Root)
 Provides:       perl(App::Perlbrew::Util)
-Provides:       perl(App::perlbrew) = 0.980.0
+Provides:       perl(App::perlbrew) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
@@ -86,7 +88,7 @@ https://perlbrew.pl/. The following documentation features the API of
 read.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 # MANUAL BEGIN
 chmod a+x t/fake-bin/curl
