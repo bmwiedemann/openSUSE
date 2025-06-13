@@ -1,7 +1,7 @@
 #
 # spec file for package python-hishel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-hishel
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 Summary:        Persistent cache implementation for httpx and httpcore
 License:        BSD-3-Clause
@@ -29,7 +29,7 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module httpx >= 0.22.0}
+BuildRequires:  %{python_module httpx >= 0.28.0}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis}
@@ -38,7 +38,7 @@ BuildRequires:  %{python_module typing_extensions >= 4.8.0}
 BuildRequires:  %{pythons}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-httpx >= 0.22.0
+Requires:       python-httpx >= 0.28.0
 Requires:       python-typing_extensions >= 4.8.0
 Suggests:       python-pyyaml == 6.0.1
 Suggests:       python-redis == 5.0.1
