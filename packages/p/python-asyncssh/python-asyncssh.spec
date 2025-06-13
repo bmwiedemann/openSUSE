@@ -1,7 +1,7 @@
 #
 # spec file for package python-asyncssh
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,11 +31,13 @@ BuildRequires:  %{python_module bcrypt >= 3.1.3}
 BuildRequires:  %{python_module cryptography >= 2.8}
 BuildRequires:  %{python_module fido2 >= 0.8.1}
 BuildRequires:  %{python_module gssapi >= 1.2.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyOpenSSL >= 17.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module uvloop >= 0.9.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  openssh
 BuildRequires:  openssl
 BuildRequires:  (libnettle8 if python38-base)
@@ -61,10 +63,10 @@ server implementation of the SSHv2 protocol on top of the Python asyncio framewo
 %autosetup -p1 -n asyncssh-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -74,6 +76,6 @@ server implementation of the SSHv2 protocol on top of the Python asyncio framewo
 %license LICENSE COPYRIGHT
 %doc README.rst
 %{python_sitelib}/asyncssh
-%{python_sitelib}/asyncssh-%{version}*-info
+%{python_sitelib}/asyncssh-%{version}.dist-info
 
 %changelog
