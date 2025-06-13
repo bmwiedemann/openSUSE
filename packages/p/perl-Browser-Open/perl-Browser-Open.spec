@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Browser-Open
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Browser-Open
-Version:        0.04
-Release:        0
 %define cpan_name Browser-Open
+Name:           perl-Browser-Open
+Version:        0.40.0
+Release:        0
+# 0.04 -> normalize -> 0.40.0
+%define cpan_version 0.04
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Open a browser in a given URL
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Browser-Open/
-Source:         http://www.cpan.org/authors/id/C/CF/CFRANKS/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/C/CF/CFRANKS/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.92
 BuildRequires:  perl(parent)
-#BuildRequires: perl(Browser::Open)
 Requires:       perl(Test::More) >= 0.92
 Requires:       perl(parent)
+Provides:       perl(Browser::Open) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -44,20 +45,20 @@ A set of known commands per OS-name is tested for presence, and the first
 one found is executed. With an optional parameter, all known commands are
 checked.
 
-The the "open_browser" manpage uses the 'system()' function to execute the
-command. If you want more control, you can get the command with the the
-"open_browser_cmd" manpage or the "open_browser_cmd_all" manpage functions
-and then use whatever method you want to execute it.
+The "open_browser" uses the 'system()' function to execute the command. If
+you want more control, you can get the command with the "open_browser_cmd"
+or "open_browser_cmd_all" functions and then use whatever method you want
+to execute it.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -65,7 +66,6 @@ and then use whatever method you want to execute it.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
