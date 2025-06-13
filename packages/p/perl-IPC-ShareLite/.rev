@@ -7,4 +7,14 @@
     <comment>needed for Cache::Cache</comment>
     <requestid>250176</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0ecefd4572dfcba78ac0bdb276205254</srcmd5>
+    <version>0.170.0</version>
+    <time>1749833078</time>
+    <user>anag_factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+</comment>
+    <requestid>1285245</requestid>
+  </revision>
 </revisionlist>

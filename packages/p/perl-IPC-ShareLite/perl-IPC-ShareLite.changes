@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 12 18:23:56 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
 Fri Sep 19 05:29:17 UTC 2014 - coolo@suse.com
 
 - updated to 0.17
