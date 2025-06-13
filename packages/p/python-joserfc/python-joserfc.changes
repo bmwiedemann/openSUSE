@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun 11 11:13:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.1.0
+  * Use ECKey.binding.register_curve to register new supported curves
+  * Add __eq__ for Key and KeySet
+  * Use InvalidHeaderValueError in registry header validation
+  * Prevent from Base64 Malleability
+  * Export import_key and generate_key methods
+  * Use import as for prioritize the modules for editors
+  * Use UnsupportedAlgorithmError instead of ValueError in JWS/JWE registry
+  * Use MissingKeyTypeError, InvalidKeyIdError errors
+  * Allow jwt.encode passing encoder_cls and jwt.decode passing decoder_cls
+  * Use correct types for encoder_cls and decoder_cls parameters
+  * Respect RFC6749 character set in error descriptions
+  * Add KeyBase and GuestProtocol to __all__
+  * Update header validation raised errors
+  * Add "none" algorithm for JWS
+  * Cleanup joserfc.util
+  * Cleanup useless code in joserfc.util
+  * Update default value type hints for BaseKey.get method, #52
+  * Raise MissingKeyError when import empty key set. #35
+  * Remove useless catching binascii.Error
+
+-------------------------------------------------------------------
 Tue Oct 29 21:39:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.0:
