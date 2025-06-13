@@ -58,4 +58,13 @@
   * Add a release workflow to Pypi which uses trusted publisher</comment>
     <requestid>1265295</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4ec0fb3859c5cf61350a0add71999e68</srcmd5>
+    <version>0.6.0</version>
+    <time>1749833111</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1285288</requestid>
+  </revision>
 </revisionlist>
