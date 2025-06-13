@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jun 13 14:36:19 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.7.13:
+ * Enhancements
+   * Download versions in uv python pin if not found 
+   * Use TTY detection to determine if SIGINT forwarding is enabled 
+   * Avoid fetching an exact, cached Git commit, even if it isn't locked 
+   * Add zstd and deflate to Accept-Encoding 
+   * Build binaries for riscv64 
+ * Bug fixes
+   * Check if relative URL is valid directory before treating as index 
+   * Ignore Python discovery errors during uv python pin 
+   * Do not allow uv add --group ... --script 
+ * Preview changes
+   * Build backend: Support namespace packages 
+ * Documentation
+   * Add 3.14 to the supported platform reference 
+   * Add an llms.txt to uv 
+   * Add supported macOS version to the platform reference 
+   * Update platform support reference to include Python implementation list 
+   * Update pytorch.md 
+   * Update the CLI help and reference to include references to the Python bin directory 
+
+-------------------------------------------------------------------
 Mon Jun  9 09:33:13 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.12: 

@@ -823,4 +823,31 @@
    * Use &quot;terminal driver&quot; instead of &quot;shell&quot; in SIGINT docs</comment>
     <requestid>1284045</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9b40de0518c16452ed0796f8e89b7a29</srcmd5>
+    <version>0.7.13</version>
+    <time>1749833516</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.7.13:
+ * Enhancements
+   * Download versions in uv python pin if not found 
+   * Use TTY detection to determine if SIGINT forwarding is enabled 
+   * Avoid fetching an exact, cached Git commit, even if it isn't locked 
+   * Add zstd and deflate to Accept-Encoding 
+   * Build binaries for riscv64 
+ * Bug fixes
+   * Check if relative URL is valid directory before treating as index 
+   * Ignore Python discovery errors during uv python pin 
+   * Do not allow uv add --group ... --script 
+ * Preview changes
+   * Build backend: Support namespace packages 
+ * Documentation
+   * Add 3.14 to the supported platform reference 
+   * Add an llms.txt to uv 
+   * Add supported macOS version to the platform reference 
+   * Update platform support reference to include Python implementation list 
+   * Update pytorch.md 
+   * Update the CLI help and reference to include references to the Python bin directory</comment>
+    <requestid>1285525</requestid>
+  </revision>
 </revisionlist>
