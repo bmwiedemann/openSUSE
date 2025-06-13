@@ -18,6 +18,6 @@ Index: contrib/dist/rpm/proftpd.service
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions
- Type = simple
+ Type = forking
  Environment = PROFTPD_OPTIONS=
  EnvironmentFile = -/etc/sysconfig/proftpd

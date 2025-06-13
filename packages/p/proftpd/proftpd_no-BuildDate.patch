@@ -22,7 +22,7 @@ Index: src/main.c
 ===================================================================
 --- src/main.c.orig
 +++ src/main.c
-@@ -1989,8 +1989,8 @@ static void standalone_main(void) {
+@@ -1985,8 +1985,8 @@ static void standalone_main(void) {
      exit(1);
    }
  
@@ -33,7 +33,7 @@ Index: src/main.c
  
    daemon_loop();
  }
-@@ -2145,7 +2145,6 @@ static void show_settings(void) {
+@@ -2141,7 +2141,6 @@ static void show_settings(void) {
  
    show_os_release();
  
@@ -41,10 +41,10 @@ Index: src/main.c
    printf("%s", "  Built With:\n    configure " PR_BUILD_OPTS "\n\n");
  
    printf("%s", "  CFLAGS: " PR_BUILD_CFLAGS "\n");
-@@ -2742,7 +2741,6 @@ int main(int argc, char *argv[], char **
+@@ -2738,7 +2737,6 @@ int main(int argc, char *argv[], char **
    if (show_version >= 2) {
      printf("ProFTPD Version: %s", PROFTPD_VERSION_TEXT " " PR_STATUS "\n");
-     printf("  Scoreboard Version: %08x\n", PR_SCOREBOARD_VERSION); 
+     printf("  Scoreboard Version: %08x\n", PR_SCOREBOARD_VERSION);
 -    printf("  Built: %s\n\n", BUILD_STAMP);
  
      modules_list2(NULL, PR_MODULES_LIST_FL_SHOW_VERSION);
@@ -99,5 +99,5 @@ Index: include/version.h
 -#include "buildstamp.h"
 -
  /* Application version (in various forms) */
- #define PROFTPD_VERSION_NUMBER		0x0001030809
- #define PROFTPD_VERSION_TEXT		"1.3.8d"
+ #define PROFTPD_VERSION_NUMBER		0x0001030904
+ #define PROFTPD_VERSION_TEXT		"1.3.9"

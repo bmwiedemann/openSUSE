@@ -469,4 +469,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment>Update to 1.3.8d (forwarded request 1285189 from computersalat)</comment>
     <requestid>1285190</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>3befe0a8a305c201ae06b7c310d638a1</srcmd5>
+    <version>1.3.9</version>
+    <time>1749833323</time>
+    <user>anag_factory</user>
+    <comment>Switch to _service, some cleanup (forwarded request 1285520 from computersalat)</comment>
+    <requestid>1285521</requestid>
+  </revision>
 </revisionlist>

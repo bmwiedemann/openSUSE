@@ -17,14 +17,9 @@
 
 
 %define with_redis 1
-%define with_sodium 1
 
-%if 0%{?suse_version} == 1315 || 0%{?suse_version} == 1500
+%if 0%{?suse_version} == 1500
 %define with_redis 0
-%endif
-
-%if 0%{?suse_version} == 1315
-%define with_sodium 0
 %endif
 
 Name:           proftpd
@@ -33,12 +28,10 @@ Summary:        Configurable GPL-licensed FTP server software
 # We only accept updates for "STABLE" Versions
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Ftp/Servers
-Version:        1.3.8d
+Version:        1.3.9
 Release:        0
 URL:            http://www.proftpd.org/
-Source0:        ftp://ftp.proftpd.org/distrib/source/%{name}-%{version}.tar.gz
-Source1:        ftp://ftp.proftpd.org/distrib/source/%{name}-%{version}.tar.gz.asc
-Source11:       %{name}.init
+Source0:        %{name}-%{version}.tar.xz
 Source12:       %{name}.passwd
 Source13:       %{name}.service
 Source14:       %{name}.tmpfile
@@ -47,21 +40,21 @@ Source16:       %{name}-tls.template
 Source17:       %{name}-limit.template
 Source18:       %{name}-ssl.README
 #PATCH-FIX-openSUSE: pam, logrotate, xinet
-Patch100:       %{name}-dist.patch
+Patch100:       %{name}_dist.patch
 #PATCH-FIX-openSUSE: provide a useful default config
-Patch101:       %{name}-basic.conf.patch
+Patch101:       %{name}_basic.conf.patch
 #PATCH-FIX: provide more info on usage ;)
-Patch102:       %{name}-ftpasswd.patch
+Patch102:       %{name}_ftpasswd.patch
 #PATCH-FIX: fix strip
-Patch103:       %{name}-strip.patch
+Patch103:       %{name}_strip.patch
 #PATCH-FIX-openSUSE: file-contains-date-and-time
-Patch104:       %{name}-no_BuildDate.patch
+Patch104:       %{name}_no-BuildDate.patch
 #RPMLINT-FIX-openSUSE: env-script-interpreter
 Patch105:       %{name}_env-script-interpreter.patch
 #openSUSE:Security_Features#Systemd_hardening_effort
 Patch106:       harden_proftpd.service.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-#BuildRequires:  gpg-offline
+#
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -74,9 +67,7 @@ BuildRequires:  libattr-devel
 BuildRequires:  libmemcached-devel
 #BuildRequires:  libGeoIP-devel
 BuildRequires:  libmysqld-devel
-%if 0%{?with_sodium}
 BuildRequires:  libsodium-devel
-%endif
 BuildRequires:  ncurses-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
@@ -86,21 +77,16 @@ BuildRequires:  postgresql-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  unixODBC-devel
 BuildRequires:  pkgconfig(libssl)
-Requires:       logrotate
-%if 0%{?lang_package:1} > 0
-Recommends:     %{name}-lang
-%endif
-
-%if 0%{?suse_version} >= 1210
+#
 BuildRequires:  systemd-rpm-macros
 %{?systemd_ordering}
-%define has_systemd 1
-%else
-Requires(pre):  %insserv_prereq
-%endif
-%if 0%{?suse_version} >= 1330
+#
 Requires(pre):  group(ftp)
 Requires(pre):  user(ftp)
+Requires:       logrotate
+
+%if 0%{?lang_package:1} > 0
+Recommends:     %{name}-lang
 %endif
 
 %description
@@ -168,8 +154,6 @@ Here are Documentation for ProFTPD
 %prep
 %autosetup -p0
 
-rm README.AIX README.cygwin README.FreeBSD README.Solaris2.5x README.Unixware
-
 %build
 rm contrib/mod_wrap.c
 rm contrib/mod_geoip.c
@@ -180,11 +164,7 @@ export CXXFLAGS="$CFLAGS"
     --bindir=%{_sbindir} \
     --libexecdir=%{_libdir}/%{name} \
     --sysconfdir=%{_sysconfdir}/%{name} \
-%if 0%{?has_systemd}
     --localstatedir=/run/%{name} \
-%else
-    --localstatedir=%{_localstatedir}/run/%{name} \
-%endif
     --enable-sendfile \
     --enable-ctrls \
     --enable-dso \
@@ -204,10 +184,6 @@ export CXXFLAGS="$CFLAGS"
     --disable-ident \
     --disable-strip
 
-#    --enable-memcache \
-#    --enable-pcre \
-#    --enable-redis \
-#    --enable-shadow \
 make %{?_smp_mflags}
 
 %install
@@ -233,25 +209,18 @@ install -D -m 0644 %{S:17} %{buildroot}/%{_sysconfdir}/%{name}/includes/limit.te
 install -D -m 0644 %{S:18} %{buildroot}/%{_sysconfdir}/%{name}/ssl/README
 install -d -m 0750 %{buildroot}/var/log/%{name}
 
-# systemd vs SysVinit
-%if 0%{?has_systemd}
+# systemd
 install -D -m 0644 %{S:13} %{buildroot}%{_unitdir}/%{name}.service
 ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
 # systemd need to create a tmp dir: /run/proftpd
 install -D -m 0644 %{S:14} %{buildroot}%{_tmpfilesdir}/%{name}.conf
-%else #SysVinit
-install -D -m 0755 %{S:11} %{buildroot}/%{_sysconfdir}/init.d/%{name}
-ln -sf %{_sysconfdir}/init.d/%{name} %{buildroot}/%{_sbindir}/rc%{name}
-%endif
 
 %fdupes -s %{buildroot}%{_sysconfdir}/%{name}
 
 %find_lang %{name}
 
 %pre
-%if 0%{?has_systemd}
 %service_add_pre %{name}.service
-%endif
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/lib; save any old .rpmsave
 for i in pam.d/proftpd ; do
@@ -266,28 +235,14 @@ done
 %endif
 
 %preun
-%if 0%{?has_systemd}
 %service_del_preun %{name}.service
-%else
-%stop_on_removal %{name}
-%endif
 
 %post
-%if 0%{?has_systemd}
 %service_add_post %{name}.service
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
-%else
-%{fillup_and_insserv -f proftpd}
-install -d %{_localstatedir}/run/%{name}
-%endif
 
 %postun
-%if 0%{?has_systemd}
 %service_del_postun %{name}.service
-%else
-%restart_on_update %{name}
-%{insserv_cleanup}
-%endif
 
 %if 0%{?lang_package:1} > 0
 %files lang -f %{name}.lang
@@ -341,13 +296,9 @@ install -d %{_localstatedir}/run/%{name}
 %exclude %{_libdir}/%{name}/mod_sql_postgres.so
 %exclude %{_libdir}/%{name}/mod_radius.so
 %exclude %{_libdir}/%{name}/mod_sql_sqlite.so
-%if 0%{?has_systemd}
 %{_unitdir}/%{name}.service
 %{_tmpfilesdir}/%{name}.conf
 %ghost %dir /run/%{name}
-%else
-%{_sysconfdir}/init.d/%{name}
-%endif
 
 %files devel
 %defattr(-,root,root)

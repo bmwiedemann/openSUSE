@@ -15,7 +15,11 @@ ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 
-ExecStart=/usr/sbin/proftpd --nodaemon
+Type=forking
+Environment=PROFTPD_OPTIONS=
+EnvironmentFile=-/etc/sysconfig/proftpd
+ExecStartPre=/usr/sbin/proftpd --configtest
+ExecStart=/usr/sbin/proftpd $PROFTPD_OPTIONS
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
