@@ -1,7 +1,7 @@
 #
 # spec file for package python-makefun
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-makefun
-Version:        1.15.6
+Version:        1.16.0
 Release:        0
 License:        BSD-3-Clause
 Summary:        Small library to dynamically create python functions

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 12 15:53:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.16.0
+  * Removed official support for python versions ``<3.9``.
+    These versions will not run in CI anymore.
+  * Fixed ``RuntimeError`` in tests when running on python 3.14.
+    Added python 3.14 to CI. Fixes #112
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Tue Oct 29 21:11:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.15.6:
