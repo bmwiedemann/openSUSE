@@ -1,7 +1,7 @@
 #
 # spec file for package python-xapp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,19 +29,19 @@ Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        setup.py
 # PATCH-FEATURE-OPENSUSE python-xapp-xdgsu.patch -- Escalate privileges using xdg-su.
 Patch0:         python-xapp-xdgsu.patch
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-psutil
 Requires:       xdg-utils
 BuildArch:      noarch
+%python_subpackages
 
 %description
 This project gathers the components which are common to multiple
 desktop environments and required to implement cross-DE solutions.
-
-%python_subpackages
 
 %prep
 %autosetup -p1 -n %{_name}-%{version}
@@ -50,16 +50,16 @@ cp %{SOURCE1} .
 sed -i 's|version = "0.0.0",|version = "%{version}",|g' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license COPYING
 %doc debian/changelog
-%{python_sitelib}/xapp/
-%{python_sitelib}/python_xapp-*.egg-info
+%{python_sitelib}/xapp
+%{python_sitelib}/python_xapp-%{version}.dist-info
 
 %changelog

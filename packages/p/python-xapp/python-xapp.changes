@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 10 02:27:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- Remove unneeded BuildRequires on devel module.
+
+-------------------------------------------------------------------
 Mon Sep 23 15:06:31 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
