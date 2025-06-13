@@ -27,6 +27,7 @@ URL:            https://www.fefe.de/libowfat/
 Source:         https://www.fefe.de/libowfat/%{name}-%{version}.tar.xz
 Source98:       https://www.fefe.de/libowfat/%{name}-%{version}.tar.xz.sig
 Source99:       https://dl.fefe.de/felix@fefe.de.asc#/%{name}.keyring
+Patch0:         libowfat-gcc15.patch 
 
 %description
 libowfat is a library of general purpose APIs extracted from Dan
@@ -43,7 +44,7 @@ Bernstein's software, reimplemented and covered by the GNU General
 Public License Version 2 (no later versions).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %make_build headers
