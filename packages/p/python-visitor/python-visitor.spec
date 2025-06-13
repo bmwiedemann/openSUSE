@@ -1,7 +1,7 @@
 #
 # spec file for package python-visitor
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-visitor
 Version:        0.1.3
 Release:        0
 Summary:        A tiny pythonic visitor implementation
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://github.com/mbr/visitor
+URL:            https://github.com/mbr/visitor
 Source:         https://github.com/mbr/visitor/archive/%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -41,17 +41,18 @@ A tiny library to facilitate visitor implementation in Python
 %setup -q -n visitor-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+%pytest
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/visitor
+%{python_sitelib}/visitor-%{version}*-info
 
 %changelog
