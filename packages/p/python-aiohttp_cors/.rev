@@ -48,4 +48,12 @@
     <comment>- remove unused docs dependencies</comment>
     <requestid>1220035</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>41c75ea8ffcdce41f7a0d724ecfaaa18</srcmd5>
+    <version>0.7.0</version>
+    <time>1749833153</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1285323</requestid>
+  </revision>
 </revisionlist>

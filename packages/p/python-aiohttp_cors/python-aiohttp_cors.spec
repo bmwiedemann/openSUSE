@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp_cors
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,9 @@ Patch1:         0001-215-fixing-exception-message-216.patch
 Patch2:         278.patch
 # PATCH-FIX-UPSTREAM 412.patch gh#aio-libs/aiohttp-cors#412
 Patch3:         412.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp >= 1.1
@@ -65,10 +67,10 @@ Asynchronous HTTP client/server framework for Python.
 sed -i '/addopts/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -78,6 +80,6 @@ sed -i '/addopts/d' setup.cfg
 %license LICENSE
 %doc CHANGES.rst README.rst
 %{python_sitelib}/aiohttp_cors
-%{python_sitelib}/aiohttp_cors-%{version}*-info
+%{python_sitelib}/aiohttp_cors-%{version}.dist-info
 
 %changelog
