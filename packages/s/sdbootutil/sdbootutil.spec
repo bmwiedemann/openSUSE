@@ -18,7 +18,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           sdbootutil
-Version:        1+git20250529.307d6ff
+Version:        1+git20250613.ee73e55
 Release:        0
 Summary:        bootctl wrapper for BLS boot loaders
 License:        MIT
@@ -141,12 +141,17 @@ install -D -m 644 %{SOURCE2} .cargo/config.toml
 
 %build
 cd uhmac
-sed -i 's/edition = "2024"/edition = "2018"/' Cargo.toml
 %{cargo_build}
 
 %install
 install -D -m 755 %{name} %{buildroot}%{_bindir}/%{name}
-install -D -m 755 uhmac/target/release/uhmac %{buildroot}%{_libexecdir}/%{name}/uhmac
+
+# Install uhmac binary
+pushd uhmac
+%{cargo_install}
+install -D -m 755 %{buildroot}%{_bindir}/uhmac %{buildroot}%{_libexecdir}/%{name}/uhmac
+rm %{buildroot}%{_bindir}/uhmac
+popd
 
 # Update prediction service
 install -D -m 644 %{name}-update-predictions.service \
