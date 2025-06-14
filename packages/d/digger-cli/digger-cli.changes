@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 14 08:24:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.106:
+  * support filtered regex (#1978)
+  * support digger planfile (#1977)
+  * fix panic when digger is misconfigured (#1975)
+  * add docs on managing state with digger (#1974)
+  * wait for branch deletion to complete (#1973)
+
+-------------------------------------------------------------------
 Wed Jun 04 05:14:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.105:
