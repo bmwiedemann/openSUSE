@@ -1,7 +1,7 @@
 #
 # spec file for package torrentinfo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2009 Pascal Bleser <guru@unixtech.be>
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -18,6 +18,7 @@
 #
 
 
+%define pythons python3
 Name:           torrentinfo
 Version:        1.8.7
 Release:        0
@@ -31,9 +32,13 @@ Source1:        %{name}.changes
 Patch0:         torrentinfo-fix_man.patch
 # PATCH-FIX-UPSTREAM torrentinfo-fix_tests_py3.patch
 Patch1:         torrentinfo-fix_tests_py3.patch
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-devel
-BuildRequires:  python3-pytest
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 
 %description
@@ -46,11 +51,11 @@ full hierarchical dump of the torrent file's contents.
 %autosetup -p1
 
 %build
-python3 setup.py build
+%pyproject_wheel
 make -C doc man
 
 %install
-python3 setup.py install --prefix="%{_prefix}" --root=%{buildroot}
+%pyproject_install
 install -Dm0644 doc/_build/man/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %check
@@ -64,6 +69,10 @@ PYTHONPATH=src:%{buildroot}%{python3_sitelib} PYTHONDONTWRITEBYTECODE=1 \
 %license LICENSE
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{ext_man}
-%{python3_sitelib}/*
+%{python3_sitelib}/torrentinfo-%{version}.dist-info
+%if 0%{?suse_version} && 0%{?suse_version} >= 1600
+%{python3_sitelib}/torrentinfo.py
+%pycache_only %{python3_sitelib}/__pycache__/torrentinfo.*
+%endif
 
 %changelog
