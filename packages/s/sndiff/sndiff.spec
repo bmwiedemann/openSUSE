@@ -18,7 +18,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           sndiff
-Version:        0.2.2~0
+Version:        0.2.2~2
 Release:        0
 Summary:        Tool for diffing packages and files from snapshots
 License:        MIT
@@ -41,7 +41,6 @@ mkdir .cargo
 install -D -m 644 %{SOURCE2} .cargo/config.toml
 
 %build
-sed -i 's/edition = "2024"/edition = "2018"/' Cargo.toml
 %{cargo_build}
 go-md2man -in %{SOURCE3} -out sndiff.8
 
