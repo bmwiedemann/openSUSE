@@ -19,7 +19,7 @@
 %define executable_name pack
 
 Name:           buildpacks-cli
-Version:        0.37.0
+Version:        0.38.0
 Release:        0
 Summary:        CLI for building apps using Cloud Native Buildpacks
 License:        Apache-2.0
@@ -28,8 +28,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.24
 Provides:       pack = %{version}
 Conflicts:      allegro44-tools
 #
@@ -80,27 +80,33 @@ zsh command line completion support for %{name}.
 %autosetup -p 1 -a 1
 
 %build
+# hash will be shortened by COMMIT_HASH:0:7 later
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-X github.com/buildpacks/pack.Version=%{version}" \
-   -o bin/%{executable_name} ./cmd/%{executable_name}
+   -ldflags="-X github.com/buildpacks/pack/pkg/client.Version=%{version}+git-${COMMIT_HASH:0:7}.openSUSE" \
+   -o bin/%{executable_name}
 
 %install
 # Install the binary.
-install -D -m 0755 bin/%{executable_name} %{buildroot}/%{_bindir}/%{executable_name}
+install -D -m 0755 bin/%{executable_name} %{buildroot}%{_bindir}/%{executable_name}
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
-%{buildroot}/%{_bindir}/%{executable_name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{executable_name}
+%{buildroot}%{_bindir}/%{executable_name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{executable_name}
 
 # create the fish completion file
 mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
-%{buildroot}/%{_bindir}/%{executable_name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{executable_name}.fish
+%{buildroot}%{_bindir}/%{executable_name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{executable_name}.fish
 
 # create the zsh completion file
 mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
-%{buildroot}/%{_bindir}/%{executable_name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{executable_name}
+%{buildroot}%{_bindir}/%{executable_name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{executable_name}
+
+%check
+%{buildroot}%{_bindir}/%{executable_name} --version | grep %{version}
 
 %files
 %doc README.md

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Jun 14 08:26:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.0:
+  * Features
+    - Make go build work without Makefile (#2390 by @abitrolly)
+    - Fix default userns=host behavior to be opt-in (#2386 by
+      @jjbustamante)
+    - Add as suggested builder the ubi8 builder image (#2383 by
+      @cmoulliard)
+    - Bump to go 1.24 (#2364 by @AidanDelaney)
+    - Clarify help text for append-image-name-suffix (#2358 by
+      @natalieparellano)
+    - Support FreeBSD build phase (#2357 by @gogolok)
+    - Updating default lifecycle version to 0.20.8 (#2356 by
+      @jjbustamante)
+    - pack builder create supports system buildpacks (#2349 by
+      @jjbustamante)
+    - Support docker uri for lifecycle (#2112 by @rashadism)
+    - Support Insecure Registries (#2077 by @prashantrewar)
+  * Bugs
+    - Do not select target for daemon only from os if arch is
+      specified (#2385 by @pigeonhands)
+  * Dependencies
+    - build(deps): bump buildpacks/github-actions from 5.8.10 to
+      5.8.11 (#2381)
+    - build(deps): bump the go-dependencies group with 6 updates
+      (#2380)
+    - build(deps): bump github.com/go-git/go-git/v5 (#2373)
+    - Upgrade Go version to 1.24
+    - build(deps): bump the go-dependencies group across 1
+      directory with 8 updates
+    - updating go.mod at tools to 1.24
+    - Bump to go 1.24
+    - build(deps): bump buildpacks/github-actions from 5.8.8 to
+      5.8.10
+    - build(deps): bump the go-dependencies group across 1
+      directory with 9 updates
+    - build(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.1 to
+      4.5.2
+    - Upgrade Go version to 1.23.3 across project files
+
+-------------------------------------------------------------------
 Fri Mar 21 21:03:07 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.37.0:
