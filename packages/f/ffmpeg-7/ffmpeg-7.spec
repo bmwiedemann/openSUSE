@@ -138,6 +138,7 @@ BuildRequires:  pkgconfig(fribidi) >= 0.19.0
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libass) >= 0.11.0
+BuildRequires:  pkgconfig(libavc1394)
 BuildRequires:  pkgconfig(libbluray)
 BuildRequires:  pkgconfig(libbs2b)
 BuildRequires:  pkgconfig(libcdio)
@@ -145,6 +146,7 @@ BuildRequires:  pkgconfig(libcdio_paranoia)
 BuildRequires:  pkgconfig(libdc1394-2)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libgme)
+BuildRequires:  pkgconfig(libiec61883)
 BuildRequires:  pkgconfig(libopenjp2) >= 2.1.0
 BuildRequires:  pkgconfig(libopenmpt) >= 0.2.6557
 BuildRequires:  pkgconfig(libpng)
@@ -590,6 +592,7 @@ LDFLAGS="%_lto_cflags" \
 	--enable-libfreetype \
 	--enable-libfribidi \
 	--enable-libgsm \
+	--enable-libiec61883 \
 	--enable-libjack \
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700
 	--enable-libjxl \

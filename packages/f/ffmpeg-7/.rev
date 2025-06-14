@@ -141,4 +141,12 @@ retry submit due to git-&gt;obs autosync delays</comment>
 (fwd from qzhao)</comment>
     <requestid>1280891</requestid>
   </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>434a103010b636b55fe13b20ea42f04c</srcmd5>
+    <version>7.1.1</version>
+    <time>1749910620</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable libiec61883 integration</comment>
+    <requestid>1285229</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 12 17:48:49 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable libiec61883 integration
+
+-------------------------------------------------------------------
 Fri Apr  4 09:34:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Disable OpenVINO, too many dependencies for Factory ring1.
