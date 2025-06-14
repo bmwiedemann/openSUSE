@@ -37,7 +37,7 @@ BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
 BuildRequires:  zsh
-Recommends:     %{name}-runtime = %{version}
+Requires:       %{name}-runtime = %{version}
 ExclusiveArch:  %{rust_arches}
 
 %description
