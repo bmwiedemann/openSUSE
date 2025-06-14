@@ -17,7 +17,7 @@
 
 
 Name:           garage
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        S3-compatible object store for small self-hosted geo-distributed deployments
 License:        AGPL-3.0-only

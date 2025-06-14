@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Jun 14 08:53:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.2.0:
+  * Features:
+    - optional support for punycode in bucket names (#273, #1042)
+    - metadata: create compact lmdb snapshots (#1006, #1008)
+    - implement repair procedure to fix inconsistent bucket aliases
+      + better resilience to inconsistent states (#989)
+    - implement basic GetBucketAcl stub (#1045)
+    - add support for logging to journald (#1056)
+    - basic default web page for errors on web endpoint (#1064)
+  * Bug fixes:
+    - fix behavior of CopyObject wrt
+      x-amz-website-redirect-location (#1037)
+    - correctly return 404 on missing lifecycle config (#1043)
+    - speed up UploadPartCopy (#1047)
+    - emit internal error when race condition is detected in
+      GetObject (#1050, #1053)
+    - mark block refs as deleted in garage block purge (#1055,
+      #1067)
+  * Ecosystem:
+    - update cargo dependencies (#992)
+    - documentation updates (#974, #981, #987, #1007, #1012, #1015,
+      #1023, #1046, #1051, #1057)
+    - helm chart: fix headless service (#976)
+    - add kubernetes CRD (#994)
+
+-------------------------------------------------------------------
 Wed Mar  5 13:17:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.1.0:
