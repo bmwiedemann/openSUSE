@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Jun 11 15:33:33 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Updated perl-XML-Twig-CVE-2016-9180.patch
+
+-------------------------------------------------------------------
+Wed Jun 11 14:57:47 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.540.0 (3.54)
+   see /usr/share/doc/packages/perl-XML-Twig/Changes
+
+
+  3.54 2025-06-11  minor maintenance release
+  - changed the minimum version of Perl to 5.10
+      That should be old enough: "On December 18, 2007, the 20th
+      anniversary of Perl 1.0, Perl 5.10. 0 was released."
+  - fixed the "build" system
+      moved .pm files in the usual place for CPAN modules (lib/)
+      used PM_FILTER in Makefile.PL to inline some method calls
+      thanks to Daniel Macks for having a look at this and suggesting most
+      of the improvements
+  - fixed del_atts/set_att broke keep_atts_order
+      see https://stackoverflow.com/questions/79369132
+  - fixed #TEXT handlers not being called when set using setTwigHandlers
+      see https://github.com/mirod/xmltwig/issues/36
+      and fixed bugs in triggering #TEXT handlers in mixed content
+  - fixed test special casing "SA" PERL_UNICODE instead of looking for
+      S and A in the variable
+      see https://github.com/mirod/xmltwig/issues/32
+  - fixed docs for comment processing
+      see https://github.com/mirod/xmltwig/issues/31
+  - documentation cleanup
+      thanks to chrispitude for the massive cleanup in
+      https://github.com/mirod/xmltwig/pull/34
+      and to zostay and asb-capfan for finding typos in
+      https://github.com/mirod/xmltwig/pull/29 and
+      https://github.com/mirod/xmltwig/pull/33
+  - improved strip_att to allow more than 1 attribute to be stripped
+      thanks to chrispitude for https://github.com/mirod/xmltwig/pull/37
+  - added HTML style aliases for positions for paste and insert_new_elt
+      beforebegin for before
+      afterbegin for first_child
+      beforeend for last_child
+      afterend for after
+  - improved insert_new_elt to allow for the element to insert to be
+      a well-formed XML string, similar to insertAdjacentHTML in js
+
+-------------------------------------------------------------------
 Thu Jan 16 15:51:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Also provide perl(XML::Twig::XPath), as provided by the file

@@ -18,10 +18,10 @@
 
 %define cpan_name XML-Twig
 Name:           perl-XML-Twig
-Version:        3.530.0
+Version:        3.540.0
 Release:        0
-# 3.53 -> normalize -> 3.530.0
-%define cpan_version 3.53
+# 3.54 -> normalize -> 3.540.0
+%define cpan_version 3.54
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        XML, The Perl Way
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -31,8 +31,8 @@ Patch0:         perl-XML-Twig-CVE-2016-9180.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(XML::Parser) >= 2.23
-Requires:       perl(XML::Parser) >= 2.23
+BuildRequires:  perl(XML::Parser) >= 2.230
+Requires:       perl(XML::Parser) >= 2.230
 Provides:       perl(XML::Twig) = %{version}
 Provides:       perl(XML::Twig::Elt)
 Provides:       perl(XML::Twig::Entity)
@@ -40,6 +40,9 @@ Provides:       perl(XML::Twig::Entity_list)
 Provides:       perl(XML::Twig::Notation)
 Provides:       perl(XML::Twig::Notation_list)
 Provides:       perl(XML::Twig::XPath)
+Provides:       perl(XML::Twig::XPath::Attribute)
+Provides:       perl(XML::Twig::XPath::Elt)
+Provides:       perl(XML::Twig::XPath::Namespace)
 %undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
@@ -65,7 +68,7 @@ Requires:       perl(Encode)
 # MANUAL END
 
 %description
-This module provides a way to process XML documents. It is build on top of
+This module provides a way to process XML documents. It is built on top of
 'XML::Parser'.
 
 The module offers a tree interface to the document, while allowing you to
@@ -74,14 +77,14 @@ output the parts of it that have been completely processed.
 It allows minimal resource (CPU and memory) usage by building the tree only
 for the parts of the documents that need actual processing, through the use
 of the 'twig_roots ' and 'twig_print_outside_roots ' options. The 'finish '
-and 'finish_print ' methods also help to increase performances.
+and 'finish_print ' methods also help to increase performance.
 
-XML::Twig tries to make simple things easy so it tries its best to takes
+XML::Twig tries to make simple things easy, so it tries its best to takes
 care of a lot of the (usually) annoying (but sometimes necessary) features
 that come with XML and XML::Parser.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
@@ -98,6 +101,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes check_optional_modules filter_for_5.005 README speedup Twig_pm.slow
+%doc Changes check_optional_modules README
 
 %changelog
