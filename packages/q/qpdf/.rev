@@ -962,4 +962,41 @@
     <comment></comment>
     <requestid>1284933</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>056a5be31c3e39e20c105f3c281e1aac</srcmd5>
+    <version>11.10.1</version>
+    <time>1749910621</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 11.10.1
+  11.10.1: February 15, 2025
+    Build fixes
+     .  Fix incorrect detection of zopfli.
+     .  Recognize cygwin perl as Windows when running test suite.
+  11.10.0: February 8, 2025
+    Bug fixes
+     .  Detect and break loops in the outline (bookmark) tree.
+     .  Correctly handle outline (bookmark) items where the destination is
+        given as a dictionary with ‘/D’ entry.
+     .  When loading object streams, ignore any objects not included in the
+        xref table.
+     .  When writing real numbers as JSON ensure they do not end in a
+        trailing decimal point.
+     .  When QPDF::getObject, getObjectByObjGen or getObjectByID are called
+        with a QPDFObjGen that does not
+        exists in the xref and object tables return a direct null.
+     .  Fix handling of certain deleted objects in hybrid reference files.
+     .  Default the stream decode level to generalized.
+     .  Reject CLI flags with parameters.
+    CLI Enhancements
+     .  The fix-qdf command now allows an output file to be specified as an
+        optional second argument.
+     .  New --remove-metadata and --remove-info options to exclude document
+        metadata and information from the output PDF.
+    Library Enhancements
+     .  qpdf can now be built with zopfli support.
+     .  Add QPDFObjectHandle operator bool.
+     .  New C API function qpdf_oh_free_buffer to free malloc allocated buffers.
+  * for other changes see (forwarded request 1285092 from pgajdos)</comment>
+    <requestid>1285363</requestid>
+  </revision>
 </revisionlist>
