@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 13 13:29:14 MDT 2025 - carnold@suse.com
+
+- Update to version 0.7 (jsc#PED-12706)
+  * Use ocamlopt -g option
+  * caml_named_value returns const value pointer in OCaml 4.09+
+  * augeas: Return matches list in order
+  * Update .depend with current ocamldep
+- Drop caml_named_value-returns-const-value-pointer-in-OCam.patch
+
+-------------------------------------------------------------------
 Tue Dec 12 12:12:12 UTC 2023 - ohering@suse.de
 
 - Use ocaml-rpm-macros to track OCaml ABI

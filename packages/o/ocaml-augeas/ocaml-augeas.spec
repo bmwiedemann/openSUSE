@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-augeas
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,55 +17,47 @@
 
 
 Name:           ocaml-augeas
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        OCaml bindings for Augeas configuration API
 License:        GPL-2.0-or-later
-URL:            http://people.redhat.com/~rjones/augeas/files/
-Source0:        http://people.redhat.com/~rjones/augeas/files/%{name}-%{version}.tar.gz
+URL:            https://download.libguestfs.org/ocaml-augeas/
+Source0:        https://download.libguestfs.org/ocaml-augeas/%{name}-%{version}.tar.gz
 Source1:        %{name}-%{version}.tar.gz.sig
 Source2:        ocaml-augeas.rpmlintrc
 
-Patch1:         caml_named_value-returns-const-value-pointer-in-OCam.patch
-
+BuildRequires:  augeas-devel >= 0.1.0
+BuildRequires:  chrpath
 BuildRequires:  make
 BuildRequires:  ocaml
-BuildRequires:  ocaml-rpm-macros
 BuildRequires:  ocaml-findlib-devel
 BuildRequires:  ocaml-ocamldoc
-BuildRequires:  augeas-devel >= 0.1.0
-BuildRequires:  chrpath 
+BuildRequires:  ocaml-rpm-macros
 
 %description
 Augeas is a unified system for editing arbitrary configuration
 files. This provides complete OCaml bindings for Augeas.
 
-
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}-%{release}
-
 
 %description    devel
 The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
-
 %prep
 %autosetup -p1
-
 
 %build
 %define _lto_cflags %{nil}
 
-%configure 
+%configure
 make all
 make doc
 
-
 %check
 make check
-
 
 %install
 export DESTDIR=$RPM_BUILD_ROOT
@@ -83,6 +75,5 @@ chrpath --delete $OCAMLFIND_DESTDIR/stublibs/dll*.so
 
 %files devel -f %name.files.devel
 %doc html
-
 
 %changelog
