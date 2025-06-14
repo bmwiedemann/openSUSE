@@ -79,4 +79,12 @@
   - reno: Update master for unmaintained/wallaby</comment>
     <requestid>1198362</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7232f5e81663cc4a4b5e1bcb30a43776</srcmd5>
+    <version>0.9.0</version>
+    <time>1749910641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1285380</requestid>
+  </revision>
 </revisionlist>
