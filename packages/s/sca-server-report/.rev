@@ -103,4 +103,12 @@
     <comment>bsc#1242706 bsc#1241308 bsc#1237320 (forwarded request 1276273 from jrecord)</comment>
     <requestid>1276274</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>42ed4778ccdbe983f554fa95b28d5691</srcmd5>
+    <version>1.6.5</version>
+    <time>1749910649</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1243344 (forwarded request 1285533 from jrecord)</comment>
+    <requestid>1285534</requestid>
+  </revision>
 </revisionlist>
