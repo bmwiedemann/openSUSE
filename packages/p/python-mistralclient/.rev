@@ -309,4 +309,12 @@
 - add osc-lib dependency</comment>
     <requestid>1200063</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>ca7454ba790cbe21c70719b62194b7aa</srcmd5>
+    <version>5.3.0</version>
+    <time>1749910644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1285382</requestid>
+  </revision>
 </revisionlist>
