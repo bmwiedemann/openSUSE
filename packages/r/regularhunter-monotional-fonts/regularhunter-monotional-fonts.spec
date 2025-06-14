@@ -17,7 +17,7 @@
 
 
 Name:           regularhunter-monotional-fonts
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        A humanist, monospace font based on DejaVu
 License:        Apache-2.0
