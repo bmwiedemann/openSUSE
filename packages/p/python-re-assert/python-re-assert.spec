@@ -1,7 +1,7 @@
 #
 # spec file for package python-re-assert
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-re-assert
 Version:        1.1.0
@@ -28,7 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/asottile/re-assert
 Source:         https://files.pythonhosted.org/packages/source/r/re_assert/re_assert-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/asottile/re-assert/master/tests/re_assert_test.py
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-regex
@@ -47,10 +47,10 @@ Show where your regex match assertion failed.
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +59,8 @@ cp %{SOURCE1} .
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/re_assert.py
+%{python_sitelib}/re[-_]assert-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/re_assert*
 
 %changelog
