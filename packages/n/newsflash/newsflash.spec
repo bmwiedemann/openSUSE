@@ -18,7 +18,7 @@
 
 %define         appname io.gitlab.news_flash.NewsFlash
 Name:           newsflash
-Version:        4.0.0~beta1
+Version:        4.0.0~beta2
 Release:        0
 Summary:        The spiritual successor to FeedReader
 License:        GPL-3.0-only

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jun 13 19:03:22 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 4.0.0~beta2:
+  * disallow scrolling via selecting text
+  * video widget thumbnail overlay
+  * dont preview tiny image enclosures
+  * fix breaking out of fullscreen article with j/k
+  * don't skip setting custom sync interval if check is not yet selected
+  * update article index after extend
+  * restore read selected article even in unread mode
+  * recalculate content height after changing content width or line height
+  * animate url overlay fade-in/out
+  * improve initial load of article list
+  * restore invalid article list selection
+  * fix toggle read and marked actions
+  * some article list optimizations
+  * star/unread button: handle article being None
+  * mark read on open in browser
+  * update share preference page icon
+  * fix automatic sync
+  * properly set image_dialog_visible
+  * rework article scrolling
+  * adjust background color
+  * fix hover outline offset
+  * escape title url
+  * escape article title markup
+  * ashpd: use async-std instead of tokio
+
+-------------------------------------------------------------------
 Fri May 09 17:49:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 4.0.0~beta1:
