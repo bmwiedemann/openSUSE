@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  8 18:27:52 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Add gh-pr525-nsdict.patch to repair "userns_mode" attribute
+
+-------------------------------------------------------------------
 Thu Feb 20 09:01:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 5.4.0.1:

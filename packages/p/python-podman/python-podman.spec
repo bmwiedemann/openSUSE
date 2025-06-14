@@ -34,6 +34,8 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/containers/podman-py
 Source:         https://github.com/containers/podman-py/archive/refs/tags/v%{version}.tar.gz#./podman-%{version}.tar.gz
+# https://github.com/containers/podman-py/pull/525
+Patch0:         gh-pr525-nsdict.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module tomli >= 1.2.3 if python-base < 3.11}
 BuildRequires:  %{python_module requests >= 2.24}
@@ -64,7 +66,7 @@ BuildRequires:  %{python_module dataclasses}
 A library to interact with a Podman server
 
 %prep
-%autosetup -n podman-py-%{version}
+%autosetup -n podman-py-%{version} -p1
 
 %build
 %pyproject_wheel
