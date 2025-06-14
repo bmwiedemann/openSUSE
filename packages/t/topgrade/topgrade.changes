@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jun 13 11:41:19 UTC 2025 - gerald_chen@foxmail.com
+
+- Update to version 16.0.4:
+  * chore: release v16.0.4 (#1169)
+  * Fix "Only one instance of <IDE> can be run at a a time." error (#1123)
+  * Add CachyOS support (#1153)
+  * Drop lazy_static (#1168)
+  * Run `uv cache prune` in `uv` step when `cleanup` is enabled (#1165)
+  * ci: add missing rustup components (#1166)
+  * Fix nix version output changed (#1140)
+  * Fix conflict between hx (hexdump alternative) and Helix (#1135)
+  * Update jetbrains-toolbox-updater (#1128)
+  * Add Yazi step (#1134)
+  * fix: correct GNOME spelling (#1124)
+  * Handle format change in asdf version (#1127)
+  * Add `output_changed_message!`, replace some `.expect`s (#1110)
+  * Omit `deb-get clean` output (#1119)
+  * Fix `uv` step (#1121)
+  * Fix vscodium skipping silently (#1109)
+  * Add JetBrains IDE plugin update steps (#1103)
+  * Enhancement: Update Windows Package Manager Indexes (#1085)
+  * fix(powershell): update command arguments to include execution policy (#1041)
+  * fix: uv self update (#1105)
+  * Update CONTRIBUTING.md to reflect `enum Step` sort enforcement (#1111)
+  * Sort `Step` enum and keep it sorted in the `ci.yml` workflow (#1104)
+  * ci: merge create_assets_xxx workflows and let AUR binary release workflow wait for it (#1100)
+  * chore(deps): bump tokio from 1.38.0 to 1.38.2 (#1101)
+  * Downgrade `create_release_assets.yml` workflow (#1098)
+
+-------------------------------------------------------------------
 Thu Apr 03 11:16:30 UTC 2025 - gerald_chen@foxmail.com
 
 - Update to version 16.0.3:
