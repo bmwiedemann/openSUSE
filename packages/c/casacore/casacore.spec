@@ -67,6 +67,7 @@ License:        LGPL-2.0-or-later
 URL:            https://github.com/casacore/casacore
 Source:         https://github.com/casacore/casacore/archive/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
 Source99:       casacore-rpmlintrc
+Patch1:         use_c17.patch
 BuildRequires:  bison
 BuildRequires:  blas-devel
 BuildRequires:  cmake
