@@ -1,7 +1,7 @@
 #
 # spec file for package python-subgrab
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without libalternatives
 Name:           python-subgrab
 Version:        1.0.4
 Release:        0
@@ -24,15 +24,17 @@ Summary:        Script to download subtitles for media files
 License:        GPL-3.0-only
 URL:            https://github.com/RafayGhafoor/Subscene-Subtitle-Grabber
 Source:         https://files.pythonhosted.org/packages/source/s/subgrab/subgrab-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+Requires:       alts
 Requires:       python-beautifulsoup4
 Requires:       python-lxml
 Requires:       python-requests
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,21 +48,19 @@ rm -rf subgrab.egg-info
 sed -i 's/bs4/beautifulsoup4/g' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/subgrab
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
-%post
-%python_install_alternative subgrab
-
-%postun
-%python_uninstall_alternative subgrab
+%pre
+%python_libalternatives_reset_alternative subgrab
 
 %files %{python_files}
 %python_alternative %{_bindir}/subgrab
-%{python_sitelib}/*
+%{python_sitelib}/subgrab
+%{python_sitelib}/subgrab-%{version}*-info
 
 %changelog
