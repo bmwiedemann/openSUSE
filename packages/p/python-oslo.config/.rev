@@ -876,4 +876,12 @@ all changed Requires/Buildrequires seem to be available
   - Add option for generate shell completion script</comment>
     <requestid>1198367</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>9f010fcc94d4e75bf74bed2b26ae8939</srcmd5>
+    <version>9.6.0</version>
+    <time>1749910643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1285381</requestid>
+  </revision>
 </revisionlist>
