@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 13 20:33:32 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1749816802.bfdf10e:
+  * Support Wait() timeout message from newer versions of x3270
+  * VMWare-related code made compatible with non-GNU ps
+  * Fix error from stricter Git permission checks when checking repo URL
+  * generalhw: implement is_shutdown
+  * doc: Fix casing in GENERAL_HW_* descriptions
+
+-------------------------------------------------------------------
 Fri Jun 06 14:04:52 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1749203452.c6860a3:
