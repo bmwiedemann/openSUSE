@@ -67,4 +67,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * nvidia: add GSP-RM version 570.144 firmware images</comment>
     <requestid>1283307</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>bf31bbf4df080ecd6e6aa7ce895d6351</srcmd5>
+    <version>20250516</version>
+    <time>1749910617</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix zypper conflict about directory -&gt; symlink workaround (bsc#1244458)</comment>
+    <requestid>1285206</requestid>
+  </revision>
 </revisionlist>
