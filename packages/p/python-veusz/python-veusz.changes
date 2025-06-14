@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 14 02:36:31 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.1:
+  * Much improved icons for dark mode.
+  * Provide preference for forcing dark/light mode or setting
+    other color themes (includes breeze light and dark).
+  * Add WebP export image format.
+  * Provide 600 DPI in list in export dialog.
+  * Bug fixes.
+    - Fix for formatting dock when deleting widgets.
+    - Bind icon to desktop file on Wayland.
+    - Fix for dual monitors under Wayland.
+    - Disable export formats if not supported by built Qt.
+    - Add missing TIF image format in binaries.
+
+-------------------------------------------------------------------
 Sun Jun  1 18:11:26 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.0:

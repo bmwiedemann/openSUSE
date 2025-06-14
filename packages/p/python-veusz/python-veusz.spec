@@ -20,7 +20,7 @@
 %{?sle15_python_module_pythons}
 %define modname veusz
 Name:           python-veusz
-Version:        4.0
+Version:        4.1
 Release:        0
 Summary:        Scientific plotting library for Python
 # The entire source code is GPL-2.0+ except helpers/src/_nc_cntr.c which is Python-2.0
