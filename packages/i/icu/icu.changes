@@ -5,6 +5,8 @@ Thu Mar 13 18:48:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
   * Integrate CLDR 47 release beta2
   * Fix for POSIX_MADV_RANDOM undefined
   * Add test option to ignore runtime time zone data sensitive test
+  * ICU-22973 Fix buffer overflow by using CharString
+    (CVE-2025-5222, bsc#1243721)
 
 -------------------------------------------------------------------
 Thu Mar 13 01:53:24 UTC 2025 - Cliff Zhao <qzhao@suse.com>
