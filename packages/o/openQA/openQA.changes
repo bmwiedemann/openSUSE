@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Jun 13 17:12:12 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1749832158.cc746ea0:
+  * Bump @eslint/config-helpers from 0.2.2 to 0.2.3
+  * Docs: Convert images/openqa-in-5-minutes.gif to webm
+  * Add test for failing save_needle with abort call
+  * Document considerations for zero-downtime upgrades
+  * Bump @eslint/config-array from 0.20.0 to 0.20.1
+  * Bump @eslint/plugin-kit from 0.3.1 to 0.3.2
+  * Change `do_cleanup` definition in test using `scm git`
+  * apparmor: Allow file lock in fixed iso/hdd images
+  * apparmor: Allow using 'git-lfs'
+  * Disable git_auto_update by default
+  * Re-add git_auto_commit and improved docs for the git settings
+  * Tweak git config access in _git_clone_all
+  * Disentangle git_auto_clone and git_auto_update
+  * Bump brace-expansion from 1.1.11 to 1.1.12
+  * Update documentation with the new postgres format
+  * Avoid showing too much probably disturbing errors on test details page
+  * Update deprecated postgresql repository
+  * Print one URL per line in test settings
+  * Bump eslint-scope from 8.3.0 to 8.4.0
+  * Bump espree from 10.3.0 to 10.4.0
+  * Verify log output when cleanup fail in _save_needles
+  * Improve error handling when loading test module results
+  * Simplify the `createElement()` function
+  * Restore behavior in case of empty details JSON after ca86aec6
+  * Verify abort job when git is disabled and do_cleanup is 'no'
+  * Avoid job terminated unexpectedly by add signal handler
+  * Bump datatables.net-bs5 from 2.3.1 to 2.3.2
+  * Bump acorn from 8.14.1 to 8.15.0
+  * Use regex when checking worker config for relevant sections
+  * Allow appending values in worker config via `+=`
+  * Streamline coding style in `t/24-worker-settings.t`
+  * Allow using list and range specifiers in worker config file
+
+-------------------------------------------------------------------
 Fri Jun 06 13:51:38 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1749214996.3536da99:
