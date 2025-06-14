@@ -1,7 +1,7 @@
 #
 # spec file for package python-masakariclient
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,6 @@
 Name:           python-masakariclient
 Version:        8.4.0
 Release:        0
-Epoch:          0
 Summary:        Python API and CLI for OpenStack Masakari
 License:        Apache-2.0
 Group:          Development/Languages/Python
