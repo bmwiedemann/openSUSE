@@ -22,13 +22,13 @@
 # See git submodule /testing pointing to the correct revision
 %define arrow_testing_commit d2a13712303498963395318a4eb42872e66aead7
 # See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
-%define parquet_testing_commit c7cf1374cf284c0c73024cd1437becea75558bf8
+%define parquet_testing_commit 18d17540097fca7c40be3d42c167e6bfad90763c
 %if %{suse_version} <= 1500
 # requires __has_builtin with keywords
 %define gccver 13
 %endif
 Name:           python-pyarrow
-Version:        19.0.1
+Version:        20.0.0
 Release:        0
 Summary:        Python library for Apache Arrow
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -38,14 +38,14 @@ Source0:        apache-arrow-%{version}.tar.gz
 Source1:        arrow-testing-%{version}.tar.gz
 Source2:        parquet-testing-%{version}.tar.gz
 Source99:       python-pyarrow.rpmlintrc
-BuildRequires:  %{python_module Cython >= 0.29.31}
+BuildRequires:  %{python_module Cython >= 3}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= 1.25}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.25
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?gccver}-c++
 BuildRequires:  openssl-devel

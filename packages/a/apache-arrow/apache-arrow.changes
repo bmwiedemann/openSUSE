@@ -1,4 +1,220 @@
 -------------------------------------------------------------------
+Fri Jun 13 18:22:55 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 20.0.0
+  ## Bug Fixes
+  * GH-30302 - [C++][Parquet] Preserve the bitwidth of integer
+    dictionary indices on round-trip to Parquet (#45685)
+  * GH-31992 - [C++][Parquet] Handling the special case when
+    DataPageV2 values buffer is empty (#45252)
+  * GH-37630 - [C++][Python][Dataset] Allow disabling fragment
+    metadata caching (#45330)
+  * GH-39023 - [C++][CMake] Add missing launcher path conversion
+    for ExternalPackage (#45349)
+  * GH-43057 - [C++] Thread-safe AesEncryptor / AesDecryptor
+    (#44990)
+  * GH-45048 - [C++][Parquet] Deprecate unused chunk_size parameter
+    in parquet::arrow::FileWriter::NewRowGroup() (#45088)
+  * GH-45129 - [Python][C++] Fix usage of deprecated C++
+    functionality on pyarrow (#45189)
+  * GH-45132 - [C++][Gandiva] Update LLVM to 18.1 (#45114)
+  * GH-45185 - [C++][Parquet] Raise an error for invalid repetition
+    levels when delimiting records (#45186)
+  * GH-45254 - [C++][Acero] Fix the row offset truncation in row
+    table merge (#45255)
+  * GH-45266 - [C++][Acero] Fix the running tasks count of
+    Scheduler when get error tasks in multi-threads (#45268)
+  * GH-45270 - [C++][CI] Disable mimalloc on Valgrind builds
+    (#45271)
+  * GH-45301 - [C++] Change PrimitiveArray ctor to protected
+    (#45444)
+  * GH-45334 - [C++][Acero] Fix swiss join overflow issues in row
+    offset calculation for fixed length and null masks (#45336)
+  * GH-45362 - [C++] Fix identity cast for time and list scalar
+    (#45370)
+  * GH-45371 - [C++] Fix data race in SimpleRecordBatch::columns
+    (#45372)
+  * GH-45393 - [C++][Compute] Fix wrong decoding for 32-bit column
+    in row table (#45473)
+  * GH-45396 - [C++] Use Boost with ARROW_FUZZING (#45397)
+  * GH-45423 - [C++] Don’t require Boost library with
+    ARROW_TESTING=ON/ARROW_BUILD_SHARED=OFF (#45424)
+  * GH-45497 - [C++][CSV] Avoid buffer overflow when a line has too
+    many columns (#45498)
+  * GH-45510 - [CI][C++] Fix LLVM APT repository preparation on
+    Debian (#45511)
+  * GH-45512 - [C++] Clean up undefined symbols in libarrow without
+    IPC (#45513)
+  * GH-45514 - [CI][C++][Docs] Set CUDAToolkit_ROOT explicitly in
+    debian-docs (#45520)
+  * GH-45537 - [CI][C++] Add missing includes (iwyu) to
+    file_skyhook.cc (#45538)
+  * GH-45541 - [Doc][C++] Render ASCII art as-is (#45542)
+  * GH-45545 - [C++][Parquet] Add missing includes (#45554)
+  * GH-45564 - [C++][Acero] Add size validation for names and
+    expressions vectors in ProjectNode (#45565)
+  * GH-45568 - [C++][Parquet][CMake] Enable zlib automatically when
+    Thrift is needed (#45569)
+  * GH-45578 - [C++] Use max not min in
+    MakeStatisticsArrayMaxApproximate test (#45579)
+  * GH-45587 - [C++][Docs] Fix the statistics schema link in
+    arrow::RecordBatch::MakeStatisticsArray()’s docstring (#45588)
+  * GH-45614 - [C++] Use Boost’s CMake packages instead of
+    FindBoost.cmake in CMake (#45623)
+  * GH-45628 - [C++] Ensure specifying Boost include directory for
+    bundled Thrift (#45637)
+  * GH-45669 - [C++][Parquet] Add missing
+    ParquetFileReader::GetReadRanges() definition (#45684)
+  * GH-45693 - [C++][Gandiva] Fix aes_encrypt/decrypt algorithm
+    selection (#45695)
+  * GH-45700 - [C++][Compute] Added nullptr check in Equals method
+    to handle null impl_ pointers (#45701)
+  * GH-45733 - [C++][Python] Add biased/unbiased toggle to skew and
+    kurtosis functions (#45762)
+  * GH-45739 - [C++][Python] Fix crash when calling
+    hash_pivot_wider without options (#45740)
+  * GH-45788 - [C++][Acero] Fix data race in aggregate node
+    (#45789)
+  * GH-45868 - [C++][CI] Fix test for ambiguous initialization on
+    C++ 20 (#45871)
+  * GH-45905 - [C++][Acero] Enlarge the timeout in ConcurrentQueue
+    test to reduce sporadical failures (#45923)
+  * GH-45930 - [C++] Don’t use ICU C++ API in Azure SDK C++
+    (#45952)
+  * GH-45939 - [C++][Benchmarking] Fix compilation failures
+    (#45942)
+  * GH-45959 - [C++][CMake] Fix Protobuf dependency in
+    Arrow::arrow_static (#45960)
+  * GH-45980 - [C++] Bump Bundled Snappy version to 1.2.2 (#45981)
+  * GH-45999 - [C++][Gandiva] Fix crashes on LLVM 20.1.1 (#46000)
+  * GH-46022 - [C++] Fix build error with g++ 7.5.0 (#46028)
+  * GH-46067 - [CI][C++] Remove system Flatbuffers from macOS
+    (#46105)
+  * GH-46077 - [CI][C++] Disable -Werror on macos-13 (#46106)
+  * GH-46111 - [C++][CI] Fix boost 1.88 on MinGW (#46113)
+  * GH-46123 - [C++] Undefined behavior in compare_internal.cc and
+    light_array_internal.cc (#46124)
+  * GH-46134 - [CI][C++] Explicit conversion of possible
+    absl::string_view on protobuf methods to std::string (#46136)
+  * GH-46159 - [CI][C++] Stop using possibly missing
+    boost/process/v2.hpp on boost 1.88 and use individual includes
+    (#46160)
+  * GH-46195 - [Release][C++] verify-rc-source-cpp-macos-amd64
+    failed to build googlemock
+  ## New Features and Improvements
+  * GH-26648 - [C++] Optimize union equality comparison (#45384)
+  * GH-33592 - [C++] support casting nullable fields to
+    non-nullable if there are no null values (#43782)
+  * GH-41764 - [Parquet][C++] Support future logical types in the
+    Parquet reader (#41765)
+  * GH-41816 - [C++] Add Minimal Meson Build of libarrow (#45441)
+  * GH-43296 - [C++][FlightRPC] Remove Flight UCX transport
+    (#43297)
+  * GH-43573 - [C++] Copy bitmap when casting from string-view to
+    offset string and binary types (#44822)
+  * GH-44042 - [C++][Parquet] Limit num-of row-groups when building
+    parquet for encrypted file (# 44043)
+  * GH-44393 - [C++][Compute] Vector selection functions
+    inverse_permutation and scatter (#44394)
+  * GH-44615 - [C++][Compute] Add extract_regex_span function
+    (#45577)
+  * GH-44629 - [C++][Acero] Use implicit_ordering for asof_join
+    rather than require_sequenced_output (#44616)
+  * GH-44950 - [C++] Bump minimum CMake version to 3.25 (#44989)
+  * GH-45045 - [C++][Parquet] Add a benchmark for
+    size_statistics_level (#45085)
+  * GH-45190 - [C++][Compute] Add rank_quantile function (#45259)
+  * GH-45196 - [C++][Acero] Small refinement to hash join (#45197)
+  * GH-45206 - [C++][CMake] Add sanitizer presets (#45207)
+  * GH-45209 - [C++][CMake] Fix the issue that allocator not
+    disabled for sanitizer cmake presets (#45210)
+  * GH-45215 - [C++][Acero] Export SequencingQueue and
+    SerialSequencingQueue (#45221)
+  * GH-45216 - [C++][Compute] Refactor Rank implementation (#45217)
+  * GH-45219 - [C++][Examples] Update examples to disable mimalloc
+    (#45220)
+  * GH-45225 - [C++] Upgrade ORC to 2.1.0 (#45226)
+  * GH-45227 - [C++][Parquet] Enable Size Stats and Page Index by
+    default (#45249)
+  * GH-45269 - [C++][Compute] Add “pivot_wider” and
+    “hash_pivot_wider” functions (#45562)
+  * GH-45279 - [C++][Compute] Move all Grouper tests to
+    grouper_test.cc (#45280)
+  * GH-45344 - [C++][Testing] Generic StepGenerator (#45345)
+  * GH-45358 - [C++][Python] Add MemoryPool method to print
+    statistics (#45359)
+  * GH-45361 - [CI][C++] Curate ci/vcpkg/vcpkg.json (#45081)
+  * GH-45366 - [C++][Parquet] Set is_compressed to false when data
+    page v2 is not compressed (#45367)
+  * GH-45416 - [CI][C++][Homebrew] Backport the latest formula
+    changes (#45460)
+  * GH-45478 - [CI][C++] Drop support for Ubuntu 20.04 (#45519)
+  * GH-45506 - [C++][Acero] More overflow-safe Swiss table (#45515)
+  * GH-45551 - [C++][Acero] Release temp states of Swiss join
+    building hash table to reduce memory consumption (#45552)
+  * GH-45563 - [C++][Compute] Split up hash_aggregate.cc (#45725)
+  * GH-45566 - [C++][Parquet][CMake] Remove a workaround for
+    Windows in FindThriftAlt.cmake (#45567)
+  * GH-45572 - [C++][Compute] Add rank_normal function (#45573)
+  * GH-45584 - [C++][Thirdparty] Bump zstd to v1.5.7 (#45585)
+  * GH-45589 - [C++] Enable singular test in Meson configuration
+    (#45596)
+  * GH-45591 - [C++][Acero] Refine hash join benchmark and remove
+    openmp from the project (#45593)
+  * GH-45605 - [R][C++] Fix identifier … preceded by whitespace
+    warnings (#45606)
+  * GH-45611 - [C++][Acero] Improve Swiss join build performance by
+    partitioning batches ahead to reduce contention (#45612)
+  * GH-45620 - [CI][C++] Use Visual Studio 2022 not 2019 (#45621)
+  * GH-45652 - [C++][Acero] Unify ConcurrentQueue and
+    BackpressureConcurrentQueue API (#45421)
+  * GH-45676 - [C++][Python][Compute] Add skew and kurtosis
+    functions (#45677)
+  * GH-45680 - [C++][Python] Remove deprecated functions in 20.0
+  * GH-45689 - [C++][Thirdparty] Bump Apache ORC to 2.1.1 (#45600)
+  * GH-45694 - [C++] Bump vendored flatbuffers to 24.3.6 (#45687)
+  * GH-45696 - [C++][Gandiva] Accept LLVM 20.1 (#45697)
+  * GH-45732 - [C++][Compute] Accept more pivot key types (#45945)
+  * GH-45744 - [C++] Remove deprecated GetNextSegment (#45745)
+  * GH-45746 - [C++] Remove deprecated functions in 20.0 (C++
+    subset) (#45748)
+  * GH-45755 - [C++][Python][Compute] Add winsorize function
+    (#45763)
+  * GH-45771 - [C++] Add tests to top level Meson configuration
+    (#45773)
+  * GH-45772 - [C++] Export Arrow as dependency from Meson
+    configuration (#45774)
+  * GH-45775 - [C++] Use dict.get() in Meson configuration (#45776)
+  * GH-45779 - [C++] Add testing directory to Meson configuration
+    (#45780)
+  * GH-45784 - [C++] Unpin LLVM and OpenSSL in Brewfile (#45785)
+  * GH-45792 - [C++] Add benchmarks to Meson configuration (#45793)
+  * GH-45816 - [C++] Make VisitType() fallback branch unreachable
+    (#45815)
+  * GH-45820 - [C++] Add optional out_offset for Buffer-returning
+    CopyBitmap function (#45852)
+  * GH-45821 - [C++][Compute] Grouper improvements (#45822)
+  * GH-45825 - [C++] Add c directory to Meson configuration
+    (#45826)
+  * GH-45827 - [C++] Add io directory to Meson configuration
+    (#45828)
+  * GH-45831 - [C++] Add CSV directory to Meson configuration
+    (#45832)
+  * GH-45848 - [C++][Python][R] Remove deprecated PARQUET_2_0
+    (#45849)
+  * GH-45877 - [C++][Acero] Cleanup 64-bit temp states of Swiss
+    join by using 32-bit (#45878)
+  * GH-45917 - [C++][Acero] Add flush taskgroup to enable
+    parallelization (#45918)
+  * GH-45922 - [C++][Flight] Remove deprecated Authenticate and
+    StartCall (#45932)
+  * GH-45953 - [C++] Use lock to fix atomic bug in
+    ReadaheadGenerator (#45954)
+  * GH-45986 - [C++] Update bundled GoogleTest (#45996)
+  * GH-45987 - [C++] Set CMAKE_POLICY_VERSION_MINIMUM=3.5 for
+    bundled dependencies (#45997)
+
+-------------------------------------------------------------------
 Mon Apr 21 14:34:37 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - to fix cmake-4 build problems, upgrade bundled mimalloc from

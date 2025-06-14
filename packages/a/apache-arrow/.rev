@@ -616,4 +616,41 @@ apache-arrow is being used more and more by python numeric packages like pandas 
 </comment>
     <requestid>1271193</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>83b49792505b62d1f747a3adcdfca44d</srcmd5>
+    <version>20.0.0</version>
+    <time>1749910675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.0.0
+  ## Bug Fixes
+  * GH-30302 - [C++][Parquet] Preserve the bitwidth of integer
+    dictionary indices on round-trip to Parquet (#45685)
+  * GH-31992 - [C++][Parquet] Handling the special case when
+    DataPageV2 values buffer is empty (#45252)
+  * GH-37630 - [C++][Python][Dataset] Allow disabling fragment
+    metadata caching (#45330)
+  * GH-39023 - [C++][CMake] Add missing launcher path conversion
+    for ExternalPackage (#45349)
+  * GH-43057 - [C++] Thread-safe AesEncryptor / AesDecryptor
+    (#44990)
+  * GH-45048 - [C++][Parquet] Deprecate unused chunk_size parameter
+    in parquet::arrow::FileWriter::NewRowGroup() (#45088)
+  * GH-45129 - [Python][C++] Fix usage of deprecated C++
+    functionality on pyarrow (#45189)
+  * GH-45132 - [C++][Gandiva] Update LLVM to 18.1 (#45114)
+  * GH-45185 - [C++][Parquet] Raise an error for invalid repetition
+    levels when delimiting records (#45186)
+  * GH-45254 - [C++][Acero] Fix the row offset truncation in row
+    table merge (#45255)
+  * GH-45266 - [C++][Acero] Fix the running tasks count of
+    Scheduler when get error tasks in multi-threads (#45268)
+  * GH-45270 - [C++][CI] Disable mimalloc on Valgrind builds
+    (#45271)
+  * GH-45301 - [C++] Change PrimitiveArray ctor to protected
+    (#45444)
+  * GH-45334 - [C++][Acero] Fix swiss join overflow issues in row
+    offset calculation for fixed length and null masks (#45336)
+  * GH-45362 - [C++] Fix identity cast for time and list scalar</comment>
+    <requestid>1285645</requestid>
+  </revision>
 </revisionlist>

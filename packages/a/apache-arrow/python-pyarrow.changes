@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Fri Jun 13 18:22:38 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 20.0.0
+  ## Bug Fixes
+  * GH-36628 - [Python][Parquet] Fail when instantiating internal
+    Parquet metadata classes (#45549)
+  * GH-37630 - [C++][Python][Dataset] Allow disabling fragment
+    metadata caching (#45330)
+  * GH-44188 - [Python] Fix pandas roundtrip with bytes column
+    names (#44171)
+  * GH-45129 - [Python][C++] Fix usage of deprecated C++
+    functionality on pyarrow (#45189)
+  * GH-45155 - [Python][CI] Fix path for scientific nightly windows
+    wheel upload (#45222)
+  * GH-45169 - [Python] Adapt to modified pytest ignore collect
+    hook api (#45170)
+  * GH-45380 - [Python] Expose RankQuantileOptions to Python
+    (#45392)
+  * GH-45530 - [Python][Packaging] Add pyarrow.libs dir to
+    get_library_dirs (#45766)
+  * GH-45582 - [Python] Preserve decimal32/64/256 metadata in
+    Schema.metadata (#45583)
+  * GH-45733 - [C++][Python] Add biased/unbiased toggle to skew and
+    kurtosis functions (#45762)
+  * GH-45739 - [C++][Python] Fix crash when calling
+    hash_pivot_wider without options (#45740)
+  * GH-45758 - [Python] Add AzureFileSystem documentation (#45759)
+  * GH-45926 - [Python] Use pytest.approx for float values on
+    unbiased skew and kurtosis tests (#45929)
+  * GH-46041 - [Python][Packaging] Temporary remove pandas from
+    being installed on free-threaded Windows wheel tests (#46042)
+  ## New Features and Improvements
+  * GH-14932 - [Python] Add python bindings for JSON streaming
+    reader (#45084)
+  * GH-35289 - [Python] Support large variable width types in numpy
+    conversion (#36701)
+  * GH-36412 - [Python][CI] Fix deprecation warnings in the pandas
+    nightly build
+  * GH-39010 - [Python] Introduce maps_as_pydicts parameter for
+    to_pylist, to_pydict, as_py (#45471)
+  * GH-41002 - [Python] Remove pins for pytest-cython and
+    conda-docs pytest (#45240)
+  * GH-41985 - [Python][Docs] Clarify docstring of
+    pyarrow.compute.scalar() (#45668)
+  * GH-43587 - [Python] Remove no longer used serialize/deserialize
+    PyArrow C++ code (#45743)
+  * GH-44421 - [Python] Add configuration for building & testing
+    free-threaded wheels on Windows (#44804)
+  * GH-44790 - [Python] Remove use_legacy_dataset from code base
+    (#45742)
+  * GH-45156 - [Python][Packaging] Refactor Python Windows wheel
+    images to use newer base image (#45442)
+  * GH-45237 - [Python] Raise minimum supported cython to >=3
+    (#45238)
+  * GH-45278 - [Python][Packaging] Updated delvewheel install
+    command and updated flags used with delvewheel repair (#45323)
+  * GH-45282 - [Python][Parquet] Remove unused readonly properties
+    of ParquetWriter (#45281)
+  * GH-45288 - [Python][Packaging][Docs] Update documentation for
+    PyArrow nightly wheels (#45289)
+  * GH-45358 - [C++][Python] Add MemoryPool method to print
+    statistics (#45359)
+  * GH-45433 - [Python] Remove Cython workarounds (#45437)
+  * GH-45457 - [Python] Add pyarrow.ArrayStatistics (#45550)
+  * GH-45482 - [CI][Python] Don’t use Ubuntu 20.04 for wheel test
+    (#45483)
+  * GH-45570 - [Python] Allow Decimal32/64Array.to_pandas (#45571)
+  * GH-45676 - [C++][Python][Compute] Add skew and kurtosis
+    functions (#45677)
+  * GH-45680 - [C++][Python] Remove deprecated functions in 20.0
+  * GH-45705 - [Python] Add support for SAS token in
+    AzureFileSystem (#45706)
+  * GH-45755 - [C++][Python][Compute] Add winsorize function
+    (#45763)
+  * GH-45848 - [C++][Python][R] Remove deprecated PARQUET_2_0
+    (#45849)
+  * GH-45920 - [Release][Python] Upload sdist and wheels to GitHub
+    Releases not apache.jfrog.io (#45962)
+
+-------------------------------------------------------------------
 Mon Feb 17 19:17:26 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 19.0.1

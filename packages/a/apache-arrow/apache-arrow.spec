@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# These are unconditionally on here. Disable selectively if needed.
+
 %bcond_without tests
 %bcond_without flight
 
@@ -29,15 +29,16 @@
 %define gccver 13
 %endif
 
-%define sonum   1900
+%define sonum   2000
 # See git submodule /testing pointing to the correct revision
 %define arrow_testing_commit d2a13712303498963395318a4eb42872e66aead7
 # See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
-%define parquet_testing_commit c7cf1374cf284c0c73024cd1437becea75558bf8
+%define parquet_testing_commit 18d17540097fca7c40be3d42c167e6bfad90763c
 # See cpp/thirdparty/versions.txt, replace by BuildRequires: pkgconfig(mimalloc) as soon as gh#apache/arrow#42211 is resolved
+# mimalloc version bumped, see Patch100
 %define arrow_mimalloc_build_version v2.0.9
 Name:           apache-arrow
-Version:        19.0.1
+Version:        20.0.0
 Release:        0
 Summary:        A development platform for in-memory data
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -50,7 +51,7 @@ Source2:        https://github.com/apache/parquet-testing/archive/%{parquet_test
 Source3:        https://github.com/microsoft/mimalloc/archive/%{arrow_mimalloc_build_version}.tar.gz#/mimalloc-%{arrow_mimalloc_build_version}.tar.gz
 Patch100:       apache-arrow-19.0.1-mimalloc-version.patch
 BuildRequires:  bison
-BuildRequires:  cmake >= 3.16
+BuildRequires:  cmake >= 3.25
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc%{?gccver}-c++
@@ -469,39 +470,39 @@ popd
 %postun -n libparquet%{sonum} -p /sbin/ldconfig
 
 %files
-%license LICENSE.txt NOTICE.txt header
+%license LICENSE.txt NOTICE.txt
 %{_bindir}/arrow-file-to-stream
 %{_bindir}/arrow-stream-to-file
 
 %files -n libarrow%{sonum}
-%license LICENSE.txt NOTICE.txt header
+%license LICENSE.txt NOTICE.txt
 %{_libdir}/libarrow.so.*
 
 %files -n libarrow_acero%{sonum}
-%license LICENSE.txt NOTICE.txt header
+%license LICENSE.txt NOTICE.txt
 %{_libdir}/libarrow_acero.so.*
 
 %if %{with flight}
 %files -n libarrow_flight%{sonum}
-%license LICENSE.txt NOTICE.txt header
+%license LICENSE.txt NOTICE.txt
 %{_libdir}/libarrow_flight.so.*
 
 %files -n libarrow_flight_sql%{sonum}
-%license LICENSE.txt NOTICE.txt header
+%license LICENSE.txt NOTICE.txt
 %{_libdir}/libarrow_flight_sql.so.*
 %endif
 
 %files -n libarrow_dataset%{sonum}
-%license LICENSE.txt NOTICE.txt header
+%license LICENSE.txt NOTICE.txt
 %{_libdir}/libarrow_dataset.so.*
 
 %files -n libparquet%{sonum}
-%license LICENSE.txt NOTICE.txt header
+%license LICENSE.txt NOTICE.txt
 %{_libdir}/libparquet.so.*
 
 %files devel
 %doc README.md
-%license LICENSE.txt NOTICE.txt header
+%license LICENSE.txt NOTICE.txt
 %{_includedir}/arrow/
 %{_libdir}/cmake/Arrow*
 %{_libdir}/libarrow.so
@@ -522,31 +523,31 @@ popd
 
 %if %{with static}
 %files devel-static
-%license LICENSE.txt NOTICE.txt header
+%license LICENSE.txt NOTICE.txt
 %{_libdir}/libarrow.a
 
 %files acero-devel-static
-%license LICENSE.txt NOTICE.txt header
+%license LICENSE.txt NOTICE.txt
 %{_libdir}/libarrow_acero.a
 
 %files dataset-devel-static
-%license LICENSE.txt NOTICE.txt header
+%license LICENSE.txt NOTICE.txt
 %{_libdir}/libarrow_dataset.a
 
 %if %{with flight}
 %files flight-devel-static
-%license LICENSE.txt NOTICE.txt header
+%license LICENSE.txt NOTICE.txt
 %{_libdir}/libarrow_flight.a
 
 %files flight-sql-devel-static
-%license LICENSE.txt NOTICE.txt header
+%license LICENSE.txt NOTICE.txt
 %{_libdir}/libarrow_flight_sql.a
 %endif
 %endif
 
 %files -n apache-parquet-devel
 %doc README.md
-%license LICENSE.txt NOTICE.txt header
+%license LICENSE.txt NOTICE.txt
 %{_includedir}/parquet/
 %{_libdir}/cmake/Parquet
 %{_libdir}/libparquet.so
@@ -554,13 +555,13 @@ popd
 
 %if %{with static}
 %files -n apache-parquet-devel-static
-%license LICENSE.txt NOTICE.txt header
+%license LICENSE.txt NOTICE.txt
 %{_libdir}/libparquet.a
 %endif
 
 %files -n apache-parquet-utils
 %doc README.md
-%license LICENSE.txt NOTICE.txt header
+%license LICENSE.txt NOTICE.txt
 %{_bindir}/parquet-*
 
 %changelog
