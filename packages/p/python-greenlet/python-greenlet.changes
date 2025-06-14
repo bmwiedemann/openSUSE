@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 11 09:26:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.2.3
+  * Make greenlet build and run on Python 3.14 beta 2 on Windows amd64.
+  * Potentially fix build on NetBSD/sparc64. See PR 447.
+
+-------------------------------------------------------------------
 Mon May 12 12:16:08 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.2.2
