@@ -493,4 +493,15 @@
   	* data update for 2025-02-19</comment>
     <requestid>1279831</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>34217804f5dafcdc234ff9f45c5aa82a</srcmd5>
+    <version>20250605.1.0</version>
+    <time>1749910633</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20250605.1.0 (20250605.001)
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+  20250605.001 2025-06-05T17:09:04Z
+  	* data update for 2025-06-05 (forwarded request 1284895 from tinita)</comment>
+    <requestid>1285461</requestid>
+  </revision>
 </revisionlist>

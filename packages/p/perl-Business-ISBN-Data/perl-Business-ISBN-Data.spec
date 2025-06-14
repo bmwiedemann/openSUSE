@@ -18,10 +18,10 @@
 
 %define cpan_name Business-ISBN-Data
 Name:           perl-Business-ISBN-Data
-Version:        20250521.1.0
+Version:        20250605.1.0
 Release:        0
-# 20250521.001 -> normalize -> 20250521.1.0
-%define cpan_version 20250521.001
+# 20250605.001 -> normalize -> 20250605.1.0
+%define cpan_version 20250605.001
 License:        Artistic-2.0
 Summary:        Data pack for Business::ISBN
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -66,7 +66,7 @@ part is historical). If you want to see where the data are from, check
 '$Business::ISBN::country_data{_source}'.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
