@@ -215,4 +215,12 @@
     <comment>bsc#1230868 sle15sp6 pattern base (forwarded request 1202764 from jrecord)</comment>
     <requestid>1202765</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>89462a8e01a6da6418a3fa80ca59d102</srcmd5>
+    <version>1.5.9</version>
+    <time>1749910650</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1243153 (forwarded request 1285544 from jrecord)</comment>
+    <requestid>1285545</requestid>
+  </revision>
 </revisionlist>

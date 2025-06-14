@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  5 16:16:10 UTC 2025 - jason.record@suse.com
+
+- Changes to version 1.5.9
+  + Fixed pattern re syntax errors (bsc#1243153)
+
+-------------------------------------------------------------------
 Sat Sep 21 18:05:02 UTC 2024 - jason.record@suse.com
 
 - Changes to version 1.5.8

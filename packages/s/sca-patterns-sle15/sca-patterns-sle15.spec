@@ -1,7 +1,7 @@
 #
 # spec file for package sca-patterns-sle15
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define category SLE
 
 Name:           sca-patterns-sle15
-Version:        1.5.8
+Version:        1.5.9
 Release:        0
 Summary:        Supportconfig Analysis Patterns for SLE15
 License:        GPL-2.0-only
