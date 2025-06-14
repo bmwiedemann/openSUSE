@@ -26,7 +26,7 @@
 %bcond_with colortest
 %{?sle15_python_module_pythons}
 Name:           python-gevent
-Version:        25.4.2
+Version:        25.5.1
 Release:        0
 Summary:        Python network library that uses greenlet and libevent
 License:        MIT
@@ -43,7 +43,7 @@ BuildRequires:  %{python_module backports.entry_points_selectable}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module dnspython}
-BuildRequires:  %{python_module greenlet >= 3.0.0}
+BuildRequires:  %{python_module greenlet >= 3.2.2}
 BuildRequires:  %{python_module objgraph}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
@@ -62,7 +62,7 @@ BuildRequires:  pkgconfig(libuv)
 Requires:       python-backports.entry_points_selectable
 Requires:       python-cffi
 Requires:       python-dnspython
-Requires:       python-greenlet >= 3.0.0
+Requires:       python-greenlet >= 3.2.2
 Requires:       python-requests
 Requires:       python-zope.event
 Requires:       python-zope.interface

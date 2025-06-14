@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun 11 09:52:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 25.5.1
+  * Update the bundled libuv to 1.51 from 1.44.2.
+  * Note that this changes the minimum supported versions of various
+    operating systems. Linux now requires kernel 3.10 and glibc 2.17,
+    up from 2.6.32 and glibc 2.12; macOS now requires version 11, up
+    from version 10.15; Windows now requires Windows 10 and Visual
+    Studio 2017, up from Windows 8 and VS 2015; finally, FreeBSD now
+    requires version 12, up from version 10.
+  * The musl Linux wheels are now built with muslinux_1_2 instead of
+    musllinux_1_1. See issue #2108.
+  * Add support for Cython 3.1 on Windows.
+  * Add support for Python 3.14b1 and significantly expand the set of
+    standard library tests we run with monkey-patching.
+- Update BuildRequires and Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Fri May  9 15:54:04 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use %_smp_mflags for reproducible builds (boo#1237231)
