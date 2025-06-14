@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 13 15:25:25 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
+Wed Jun 11 08:59:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.40.3
+  * Auth fetch token from default endpoint (#1779)
+  * Remove unnecessary call to mds service (#1769)
+  * Retry 504 errors (#1767)
+
+-------------------------------------------------------------------
 Fri May 30 06:54:17 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.40.2

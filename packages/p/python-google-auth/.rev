@@ -591,4 +591,17 @@
     <comment></comment>
     <requestid>1281290</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>97ee0dd991fc56c0fe05ae6df41fb941</srcmd5>
+    <version>2.40.3</version>
+    <time>1749910638</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to pip-based build
+
+- Update to version 2.40.3
+  * Auth fetch token from default endpoint (#1779)
+  * Remove unnecessary call to mds service (#1769)
+  * Retry 504 errors (#1767)</comment>
+    <requestid>1285541</requestid>
+  </revision>
 </revisionlist>

@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-auth
-Version:        2.40.2
+Version:        2.40.3
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/google-auth-library-python
-Source:         https://files.pythonhosted.org/packages/source/g/google-auth/google_auth-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/google_auth/google_auth-%{version}.tar.gz
 # https://github.com/googleapis/google-auth-library-python/issues/1055
 Patch1:         python-google-auth-no-mock.patch
 BuildRequires:  %{python_module Flask}
@@ -33,6 +33,7 @@ BuildRequires:  %{python_module aioresponses}
 BuildRequires:  %{python_module cachetools >= 2.0.0}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyOpenSSL >= 22.0.0}
 BuildRequires:  %{python_module pyasn1-modules >= 0.2.1}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -44,6 +45,7 @@ BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module rsa >= 3.1.4}
 BuildRequires:  %{python_module setuptools >= 40.3.0}
 BuildRequires:  %{python_module urllib3}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cachetools >= 2.0.0
@@ -66,10 +68,10 @@ This library simplifies using Google’s various server-to-server authentication
 %autosetup -p1 -n google_auth-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
