@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 14 07:24:01 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- add cinnamon-6.4.6-cs_mouse.patch, fix boo#1244520
+  * pygobject-3.52 eliminated value_nick and value_name
+  * https://gitlab.gnome.org/GNOME/pygobject/-/merge_requests/394
+  * https://github.com/linuxmint/cinnamon/issues/12799
+
+-------------------------------------------------------------------
 Sat Apr 26 12:37:27 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - remove v2l-tools runtime depends

@@ -40,7 +40,8 @@ Patch7:         %{name}-fallback-icewm.patch
 # For gnome-background-properties.
 # PATCH-FIX-OPENSUSE support_yast_settings.patch shenlebantongying@gmail.com gh#linuxmint/cinnamon#9590 -- Fix cinnamon-settings cannot invoke YaST commands.
 Patch8:         support_yast_settings.patch
-
+# PATCH-FIX-UPSTREAM boo#1244520 pygobject-3.52 eliminated value_nick and value_name
+Patch9:         cinnamon-6.4.6-cs_mouse.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-data-openSUSE-extra
 BuildRequires:  fdupes
