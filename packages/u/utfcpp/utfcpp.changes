@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 23 09:52:37 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 4.0.6:
+  * Resolve -Wsign-conversion warnings
+- Modify _service to use the obs_scm service
+
+-------------------------------------------------------------------
 Wed Feb 21 14:07:20 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.0.5:
