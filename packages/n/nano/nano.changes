@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 12 17:29:22 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU nano 8.5
+  * Anchors are now saved when a file is closed, and restored when
+    the file is reopened -- if and when --positionlog is active
+  * Nano exits with an error status upon keystrokes ^O^Q and ^X^Q
+  * Keystroke ^L just centers the cursor, while M-% cycles it
+  * Option --whitespace is accepted, but left undocumented
+  * Syntax coloring now works correctly in more locales
+
+-------------------------------------------------------------------
 Mon Apr  7 06:39:09 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU nano 8.4:
