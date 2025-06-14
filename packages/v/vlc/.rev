@@ -1590,4 +1590,13 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>1240535</requestid>
   </revision>
+  <revision rev="154" vrev="7">
+    <srcmd5>5c92e7b77aee574a8264e124c0c02513</srcmd5>
+    <version>3.0.21</version>
+    <time>1749910620</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 5590.patch: opus_header: fix channel mapping family 1 parsing
+  (boo#1244167).</comment>
+    <requestid>1285358</requestid>
+  </revision>
 </revisionlist>
