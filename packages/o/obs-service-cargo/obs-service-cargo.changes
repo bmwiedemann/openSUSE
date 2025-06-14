@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 14 06:26:35 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 6.0.6:
+  * chore(release): v6.0.6
+  * fix: the `target` field for build targets is now being used
+
+-------------------------------------------------------------------
+Fri Jun 13 15:15:24 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 6.0.5:
+  * chore(release): bump to version 6.0.5
+  * dependencies: bump libroast to v8.x
+
+-------------------------------------------------------------------
 Thu Jun 12 11:05:22 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 6.0.4:
@@ -678,3 +692,4 @@ Sun Sep 10 13:16:40 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 Sun Sep 10 12:04:14 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Initial spec for obs-service-cargo. 0.6.0-alpha
+
