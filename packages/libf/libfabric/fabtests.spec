@@ -1,7 +1,7 @@
 #
 # spec file for package fabtests
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define git_ver .0.2ee68f6051e9
+%define git_ver .0.cf173800a
 
 Name:           fabtests
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Test suite for libfabric API
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -28,11 +28,6 @@ URL:            http://www.github.com/ofiwg/libfabric
 Source:         libfabric-%{version}%{git_ver}.tar.bz2
 Source1:        fabtests-rpmlintrc
 Patch0:         libfabric-libtool.patch
-Patch1:         psm3-prevent-code-from-building-using-AVX-AVX2.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         libfabric-2.0.0-gcc15.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         libfabric-2.0.0-gcc15-part2.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libfabric-devel = %{version}
