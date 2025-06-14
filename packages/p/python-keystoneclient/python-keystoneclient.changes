@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 13 07:02:07 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not (ever) use Epoch; it has devestating effects on version 
+  comparisons. As Epoch was set to 0, removing it is a NO-OP 
+  without side effects here.
+
+-------------------------------------------------------------------
 Tue Sep  3 13:13:58 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.5.0
