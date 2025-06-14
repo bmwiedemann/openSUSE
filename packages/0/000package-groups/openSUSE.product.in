@@ -274,20 +274,8 @@
   <group name="i686_kernels_ftp">
     <conditional name="i686_special"/>
     <packagelist relationship="requires">
-      <package name="kernel-debug-devel"/>
-      <package name="kernel-debug"/>
-      <!--
-        <package name="kernel-ec2-base"/>
-        <package name="kernel-ec2-devel"/>
-        <package name="kernel-ec2"/>
-      -->
       <package name="kernel-vanilla-devel"/>
       <package name="kernel-vanilla"/>
-      <!--
-        <package name="kernel-xen-base"/>
-        <package name="kernel-xen-devel"/>
-        <package name="kernel-xen"/>
-      -->
     </packagelist>
   </group>
 

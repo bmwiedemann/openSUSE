@@ -2189,4 +2189,11 @@ Fixes https://openqa.opensuse.org/tests/4663488#step/select_patterns/142</commen
     <comment>Minor edits for Kalpa branding</comment>
     <requestid>1285108</requestid>
   </revision>
+  <revision rev="307" vrev="305">
+    <srcmd5>99aa0412ced4b5e3d2e35feaadba7604</srcmd5>
+    <version>unknown</version>
+    <time>1749879725</time>
+    <user>dimstar_suse</user>
+    <comment>i686: drop kernel-debug flavor</comment>
+  </revision>
 </revisionlist>
