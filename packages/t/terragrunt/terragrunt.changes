@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jun 14 08:24:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.81.6:
+  * Bug Fixes
+    - The catalog command no longer panics during scaffolding
+      A mistake in a refactor of internal logging caused a panic
+      during scaffolding while using the Terragrunt Catalog
+      Terminal User Interface (TUI).
+      That bug has been fixed.
+    - IaC Engines now properly handle errors during init and
+      shutdown
+      Some missing error handling in IaC Engines has been
+      introduced to properly handle failed initialization and
+      shutdown by IaC Engines.
+  * What's Changed
+    - fix: Fixing log passthrough on logs (#4421)
+    - Dependencies update (#4417)
+    - fix: Adding error handling for engines (#4414)
+    - feat: Usage of discovery and queue to build stack modules
+      (#4393)
+
+-------------------------------------------------------------------
 Thu Jun 12 05:22:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.81.5:
