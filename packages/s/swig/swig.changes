@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  9 08:48:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 4.3.1:
+  * Small number of regression fixes for Python and Java
+  * Corner case operator precedence bug fix affecting type deduction
+  * Octave 10 compilation errors fix
+- drop swig-4.3.0-Fix-precedence-of-casts.patch, included upstream
+
+-------------------------------------------------------------------
 Sun Dec  8 18:15:12 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Add patch from upstream to fix regression affecting hamlib

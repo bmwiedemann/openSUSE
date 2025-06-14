@@ -2,7 +2,7 @@
 # spec file for package swig
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ BuildRequires:  ruby
 BuildRequires:  ruby-devel
 %endif
 Name:           swig
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        Simplified Wrapper and Interface Generator
 License:        BSD-3-Clause AND GPL-3.0-or-later
@@ -39,7 +39,6 @@ Group:          Development/Languages/C and C++
 URL:            https://www.swig.org/
 Source:         https://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
-Patch0:         swig-4.3.0-Fix-precedence-of-casts.patch
 BuildRequires:  fdupes
 BuildRequires:  pcre2-devel
 BuildRequires:  perl
