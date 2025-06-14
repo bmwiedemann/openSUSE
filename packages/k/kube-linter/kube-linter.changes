@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sat Jun 14 08:25:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.7.3:
+  * New checks
+    - feature(lint): Add linter to priorityClassName by
+      @jonathanmdr in #926
+  * Other Changes
+    - chore(deps): bump github.com/cert-manager/cert-manager (#962)
+    - chore(deps): bump github.com/cloudflare/circl in
+      /tool-imports (#961)
+    - chore(deps): bump helm.sh/helm/v3 from 3.18.0 to 3.18.2
+      (#959)
+    - chore(deps): bump helm.sh/helm/v3 from 3.17.3 to 3.18.0
+      (#957)
+    - chore(deps): bump github.com/kedacore/keda/v2 from 2.17.0 to
+      2.17.1 (#958)
+    - chore(deps): bump codecov/codecov-action from 5.4.2 to 5.4.3
+      (#956)
+    - chore(deps): bump github.com/golangci/golangci-lint/v2 in
+      /tool-imports (#954)
+    - chore(deps): bump github.com/golangci/golangci-lint/v2 in
+      /tool-imports (#952)
+    - chore(deps): bump github.com/cert-manager/cert-manager (#951)
+    - chore(deps): bump sigstore/cosign-installer from 3.8.1 to
+      3.8.2 (#948)
+    - chore(deps): bump codecov/codecov-action from 5.4.0 to 5.4.2
+      (#945)
+    - chore(deps): bump github.com/golangci/golangci-lint/v2 in
+      /tool-imports (#944)
+    - chore(deps): bump github.com/kedacore/keda/v2 from 2.16.1 to
+      2.17.0 (#942)
+    - chore(deps): bump helm.sh/helm/v3 from 3.17.2 to 3.17.3
+      (#943)
+    - chore(lint): update golangci-lint to v2.0.2 (#941)
+    - chore(deps): bump github.com/spf13/viper from 1.19.0 to
+      1.20.0 (#935)
+    - chore(deps): bump github.com/golang-jwt/jwt/v4 in
+      /tool-imports (#939)
+    - chore(deps): bump github.com/golang-jwt/jwt/v5 in
+      /tool-imports (#938)
+    - chore(deps): bump docker/login-action from 3.3.0 to 3.4.0
+      (#937)
+    - chore(deps): bump helm.sh/helm/v3 from 3.17.1 to 3.17.2
+      (#934)
+    - chore(deps): bump github.com/golangci/golangci-lint in
+      /tool-imports (#936)
+    - chore(deps): bump github.com/containerd/containerd from
+      1.7.24 to 1.7.27 (#930)
+    - chore(deps): bump github.com/expr-lang/expr from 1.16.9 to
+      1.17.0 (#929)
+    - chore(deps): bump the k8s-io group with 3 updates (#923)
+    - chore(deps): bump golang.org/x/net from 0.33.0 to 0.36.0
+      (#927)
+    - chore(deps): bump github.com/golangci/golangci-lint in
+      /tool-imports (#925)
+    - chore(deps): bump github.com/golangci/golangci-lint in
+      /tool-imports (#921)
+    - chore(deps): bump codecov/codecov-action from 5.3.1 to 5.4.0
+      (#920)
+    - chore(deps): bump github.com/cert-manager/cert-manager (#918)
+
+-------------------------------------------------------------------
 Thu Feb 27 05:53:03 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.7.2:
