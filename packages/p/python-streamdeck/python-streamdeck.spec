@@ -1,7 +1,7 @@
 #
 # spec file for package python-streamdeck
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,9 @@ License:        MIT
 URL:            https://github.com/abcminiuser/python-elgato-streamdeck
 Source:         https://files.pythonhosted.org/packages/source/s/streamdeck/streamdeck-%{version}.tar.gz
 Group:          Development/Languages/Python
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,16 +42,16 @@ Python library to control Elgato StreamDeck devices.
 dos2unix CHANGELOG README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc CHANGELOG README.md
 %license LICENSE
 %{python_sitelib}/StreamDeck*
-%{python_sitelib}/streamdeck-%{version}*-info
+%{python_sitelib}/streamdeck-%{version}.dist-info
 
 %changelog

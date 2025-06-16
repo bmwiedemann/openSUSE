@@ -48,4 +48,12 @@
   * Added support for the StreamDeck Neo.</comment>
     <requestid>1219217</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>38f77ae8a42da8152bad056f3c74c8c3</srcmd5>
+    <version>0.9.6</version>
+    <time>1750065194</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.</comment>
+    <requestid>1285977</requestid>
+  </revision>
 </revisionlist>
