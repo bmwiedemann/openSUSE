@@ -2411,4 +2411,14 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
     - glocalfile: Disable faccessat()-based query_exists on Android (forwarded request 1278988 from iznogood)</comment>
     <requestid>1280013</requestid>
   </revision>
+  <revision rev="294" vrev="1">
+    <srcmd5>bd9efadea950448cba3b03ae0c3c08c4</srcmd5>
+    <version>2.84.3</version>
+    <time>1750065112</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.84.3:
+  + Bug fixed: gstring: Fix overflow check when expanding the
+    string (CVE-2025-6052, boo#1244596). (forwarded request 1285531 from dimstar)</comment>
+    <requestid>1285782</requestid>
+  </revision>
 </revisionlist>
