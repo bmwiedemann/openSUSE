@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 15 16:19:31 CEST 2025 - nine@detonation.org
+
+- update to version 2025.05
+
++ Use rapidhash instead of siphash for string hashes
++ Optimizations in string decoding and comparison:
++ Micro-optimizations for attribute access and extops
++ Avoid unnecessary memcpy or qsort when NULL
++ Switch to direct malloc instead of stack+malloc+memcpy
++ Prevent crashes, guard jumps, avoid deep recursion in Spesh and GC
++ More detailed logging, new syscalls, user-accessible telemetry
++ Add is-debugserver-running syscall
++ Fix for Lua CVE-2014-5461
+
+-------------------------------------------------------------------
 Thu May 23 04:53:11 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 2024.04
