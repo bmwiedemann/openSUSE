@@ -16,9 +16,9 @@
 #
 
 
-%define release_ver 1.14
+%define release_ver 1.15
 Name:           clazy
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        Qt oriented code checker based on the Clang framework
 License:        LGPL-2.0-or-later
@@ -28,7 +28,7 @@ Source1:        https://download.kde.org/stable/clazy/%{release_ver}/src/%{name}
 # https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/alex@key1.asc?ref_type=heads
 Source2:        clazy.keyring
 BuildRequires:  clang
-BuildRequires:  clang-devel >= 11.0
+BuildRequires:  clang-devel >= 19.0
 BuildRequires:  cmake >= 3.13
 %if 0%{?suse_version} == 1500
 BuildRequires:  gcc13-PIE

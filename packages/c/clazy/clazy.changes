@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 15 14:40:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.15
+  * install-event-filter: Fix crash when there is no child at the
+    given depth (kde#464372)
+  * fully-qualified-moc-types: Fix enum/enum class not being
+    evaluated (kde#423780)
+  * Fixed crash in qstring-comparison-to-implicit-char (kde#502458)
+  * Fixed crash when fully-qualified-moc-types encounters signals
+    with expressions like "std::bitset<int(8)>"
+  * Fixed crash in qvariant-template-instantiation
+
+-------------------------------------------------------------------
 Mon Apr 28 10:55:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.14.0
