@@ -16,19 +16,20 @@
 #
 
 
-%define panel_version 4.16.0
+%define panel_version 4.20.0
 %define plugin mailwatch
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Versatile Mail Checking Plugin for the Xfce Panel
 License:        GPL-2.0-only
 Group:          System/GUI/XFCE
 URL:            https://goodies.xfce.org/projects/panel-plugins/xfce4-mailwatch-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/xfce4-mailwatch-plugin/1.3/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/panel-plugins/xfce4-mailwatch-plugin/1.4/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(exo-2) >= 0.11.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
@@ -37,8 +38,8 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.16.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= %{panel_version}
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{panel_version}
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
@@ -72,13 +73,11 @@ Provides translations for the "%{name}" package.
 %autosetup
 
 %build
-%configure --disable-static
-make %{_smp_mflags} V=1
+%meson
+%meson_build
 
 %install
-%make_install
-
-rm %{buildroot}%{_libdir}/xfce4/panel/plugins/libmailwatch.la
+%meson_install
 
 rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 

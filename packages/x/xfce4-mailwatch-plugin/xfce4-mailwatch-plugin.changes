@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 14 13:59:30 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 1.4.0
+  * autotools-build: Explicitly require libxfce4util
+  * meson-build: Use shared_module()
+  * Replace deprecated exo with libxfce4ui 4.21.0
+  * build: Automate copyright year management
+  * Add meson build
+  * Fix incomplete use of XfceTitledDialog
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Dec 29 13:55:01 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.3.2
