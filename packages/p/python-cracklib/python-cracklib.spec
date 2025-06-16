@@ -1,7 +1,7 @@
 #
 # spec file for package python-cracklib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,14 @@ Version:        2.9.6
 Release:        0
 Summary:        A CPython extension module wrapping the libcrack library
 License:        GPL-2.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/cracklib/cracklib
 Source:         https://files.pythonhosted.org/packages/source/c/cracklib/cracklib-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  cracklib-devel
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
 
@@ -40,12 +42,21 @@ convenience functions.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
+# Do not install tests
+%python_expand rm %{buildroot}%{$python_sitearch}/test_cracklib.py %{buildroot}%{$python_sitearch}/__pycache__/test_cracklib.*.pyc
+
+%check
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python test_cracklib.py
 
 %files %{python_files}
-%{python_sitearch}/*
+%{python_sitearch}/cracklib.py
+%pycache_only %{python_sitearch}/__pycache__/cracklib.*.pyc
+%{python_sitearch}/_cracklib.cpython-*-linux-gnu.so
+%{python_sitearch}/cracklib-%{version}.dist-info
 
 %changelog

@@ -25,4 +25,13 @@
 - spec file cleanups</comment>
     <requestid>1086129</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>81cc79c6be0270fd193a404e10c4c3ca</srcmd5>
+    <version>2.9.6</version>
+    <time>1750065198</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.
+- Run the testsuite, and do not install it.</comment>
+    <requestid>1285982</requestid>
+  </revision>
 </revisionlist>
