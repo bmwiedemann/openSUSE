@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jun 10 14:21:14 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.4.3
+  * gh-actions: Split UEFI build into separate action by @JohnAZoidberg in #151
+  * esrt: Add framework desktop GUID by @JohnAZoidberg in #152
+  * MEC detection: Fail if permission denied by @JohnAZoidberg in #154
+  * Add devenv.nix by @JohnAZoidberg in #155
+  * esrt: fix ESRT GUID for EFI device by @aokblast in #156
+  * --versions: Show any number of PD versions by @JohnAZoidberg in #157
+  * Fix formatting by @JohnAZoidberg in #158
+  * ec_binary: Make it less misleading if legacy cookie not found
+    by @JohnAZoidberg in #159
+  * EXAMPLES: Add intel core ultra by @JohnAZoidberg in #161
+  * README: Explain how to install with winget by @JohnAZoidberg in #162
+  * chromium_ec: Erase EC in sections by @JohnAZoidberg in #160
+  * EXAMPLES: Document fingerprint reader brightness by @JohnAZoidberg in #164
+  * Show ALS sensor on unknown systems by @JohnAZoidberg in #163
+  * Add support for dynamic number of PDs by @JohnAZoidberg in #166
+  * Add debug commands to disable/enable and reset PD controller
+    by @JohnAZoidberg in #165
+  * README: Add nix-shell by @JohnAZoidberg in #168
+  * portio_mec: Don't print init by @JohnAZoidberg in #169
+  * Correctly identify right and left PD controllers by @JohnAZoidberg in #170
+  * framework_tool: Add copyright into .exe properties
+    by @JohnAZoidberg in #172
+  * Fix remap key docstring by @jodavaho in #173
+  * fw16: add command to write and read expansion bay eeprom by @kiram9 in #171
+  * Bump version to 0.4.3 by @JohnAZoidberg in #167
+
+-------------------------------------------------------------------
 Mon May 26 14:00:56 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.4.2
