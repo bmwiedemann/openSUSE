@@ -22,10 +22,12 @@ Version:        0.1.2
 Release:        0
 Summary:        Python library to parse Arch SRCINFO files
 License:        ISC
-Group:          Development/Languages/Python
 URL:            https://github.com/kyrias/python-srcinfo
 Source:         https://files.pythonhosted.org/packages/source/s/srcinfo/srcinfo-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+# PATCH-FIX-OPENSUSE Do not use deprecated sections in pyproject.toml
+Patch0:         support-new-poetry.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,14 +44,14 @@ BuildRequires:  %{python_module pytest}
 Python library to parse Arch .SRCINFO files.
 
 %prep
-%setup -q -n srcinfo-%{version}
+%autosetup -p1 -n srcinfo-%{version}
 mv test/__init__.py test_srcinfo.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/parse_srcinfo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -63,6 +65,7 @@ mv test/__init__.py test_srcinfo.py
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/parse_srcinfo
-%{python_sitelib}/srcinfo*/
+%{python_sitelib}/srcinfo
+%{python_sitelib}/srcinfo-%{version}.dist-info
 
 %changelog

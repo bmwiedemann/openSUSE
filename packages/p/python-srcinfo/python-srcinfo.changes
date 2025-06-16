@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 16 02:53:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- List files and directories explicitly in %files.
+- Add patch support-new-poetry.patch:
+  * Do not use deprecated sections in pyproject.toml.
+
+-------------------------------------------------------------------
 Fri Jun 13 10:13:37 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

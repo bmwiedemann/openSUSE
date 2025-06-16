@@ -50,4 +50,15 @@
 </comment>
     <requestid>1285422</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>e1c1f716f71dfbdcced0abb7d32c0ac8</srcmd5>
+    <version>0.1.2</version>
+    <time>1750065168</time>
+    <user>anag_factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- List files and directories explicitly in %files.
+- Add patch support-new-poetry.patch:
+  * Do not use deprecated sections in pyproject.toml.</comment>
+    <requestid>1285932</requestid>
+  </revision>
 </revisionlist>
