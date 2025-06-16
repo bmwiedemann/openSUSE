@@ -1,7 +1,7 @@
 #
 # spec file for package python-crayons
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname crayons
 Name:           python-crayons
 Version:        0.4.0
@@ -26,7 +25,9 @@ License:        MIT
 URL:            https://github.com/MasterOdin/crayons
 Source:         https://github.com/MasterOdin/%{modname}/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module colorama}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires:       python-colorama
 BuildArch:      noarch
@@ -41,10 +42,10 @@ and normal.
 %setup -q -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %check
 %python_exec test_crayons.py
@@ -53,7 +54,7 @@ and normal.
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/%{modname}.py
-%{python_sitelib}/%{modname}-%{version}-py*.egg-info
-%pycache_only %{python_sitelib}/__pycache__/%{modname}*
+%{python_sitelib}/%{modname}-%{version}.dist-info
+%pycache_only %{python_sitelib}/__pycache__/%{modname}.*.pyc
 
 %changelog

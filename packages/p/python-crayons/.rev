@@ -74,4 +74,12 @@
     <comment>- Fix Source URL</comment>
     <requestid>900783</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>ba446eb2e779a35231cb2ba53f797930</srcmd5>
+    <version>0.4.0</version>
+    <time>1750065186</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.</comment>
+    <requestid>1285959</requestid>
+  </revision>
 </revisionlist>
