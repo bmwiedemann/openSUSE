@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Sun Jun 08 23:19:36 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.4.0+git20250608.906c3e1:
+  * Fixed proxy.
+  * Fixed up tests to not have any relation to previous tests run, and added in proxy settings for git repositories.
+  * Added in HTTP_PROXY and HTTPS_PROXY.
+  * Swapped source for musl.
+  * Fixed build processes to make a smaller executable, and added in better error handling for erroneous lite-xls.
+  * Added in quoting for the executable path itself.
+  * For directory symlinks on windows, we have to use rmdir.
+  * Ensured that symlinks get resolved correctly in stat.
+  * Ensured that arguments were correct when determining flags for symlink creation on windows.
+  * Changed symlinks over to a common function and fall back to copy if windows can't do literally anything.
+  * Added a lot of missing EXECUTABLE_EXTENSION.
+  * Added in ability to run based on arbitrary urls.
+  * Added in ability to add remote lite-xl by url path.
+  * Cleaned up USERDIR.
+  * Made LPM use XDG environment variable directories.
+  * Added in missing if.
+  * Typo.
+  * Cleaned up retries.
+  * Additional fix for "incomplete pack header" transient error.
+  * Potential fix for "incomplete pack header" transient error.
+  * Rearranged things so we don't constantly ping curl.
+  * Refresh the bundle every 30 days.
+  * Defaulted to mozilla in the case where cannot find certs for linux.
+  * Added in mozilla ssl-certs.
+  * Forgot a free.
+  * Adding in extra certs, maybe?
+  * On the off chance...
+  * Added in CA store.
+  * Slightly more defensive loop.
+  * Wow, windows. Just wow.
+  * Added in better debugging functionality.
+  * First attempt to fix windows symlink issues, as well as rearranged some direcotries.
+  * Added in the ability to customize where configs go.
+  * Added in abiltiy to AND together filters.
+  * Update README.md (#163)
+  * Highlighting.
+  * Added line to remove downloaded lpm executable.
+  * Clarified windows instructions.
+  * Removed default cachedir.
+  * Remove cachedir specification as it's no longer needed.
+  * Made it so that spaces aren't a default reply.
+  * Removed libraries from list by default.
+
+-------------------------------------------------------------------
+Tue Mar 18 20:21:26 UTC 2025 - scott.bradnick@suse.com
+
+- Update to version 1.4.0+git20250318.8f9477e:
+  * Allowed for --update call, as well as made is so that prompt will re-run if you give an invalid answer.
+  * build.sh: check if OSTYPE == cygwin as well
+
+-------------------------------------------------------------------
+Mon Jan 27 16:29:49 UTC 2025 - scott.bradnick@suse.com
+
+- Update to version 1.4.0+git20250126.d7cead3:
+  * Sigh.
+  * Added in suport for apple, freebsd, and serenity, stolen from lxl.
+  * Removed mention that doesn't work.
+
+-------------------------------------------------------------------
+Fri Jan 17 19:30:43 UTC 2025 - scott.bradnick@suse.com
+
+- Update to version 1.4.0+git20250117.177167f:
+  * Updated CHANGELOG.md.
+  * *actually* fixed chunked reconstitution
+  * Fixed chunked transfer encoding.
+  * Actually check versions.
+  * Made it so that we don't symlink folders directly, but contents of folders.
+  * Ensure that we call update whenever we specify an inline epehemral repo.
+  * Split cachedir from userdir.
+  * Fixed minor issue with clicking headers for sorting with filtration active.
+  * plugin: sorting, filtering, selection fixes (#146)
+  * Should fix run not wokring if version specified.
+  * Should fix #154.
+
+-------------------------------------------------------------------
+Wed Jan 08 15:14:03 UTC 2025 - scott.bradnick@suse.com
+
+- Update to version 1.3.1+git20250107.ecaeddb:
+  * Ensured that repos are present.
+  * Fixed small windows bug.
+  * Allowed for an environemntal system override of ssl certificates.
+  * Preliminary commit of named bottles.
+  * Ensured LPM_RUN_FROM_GUI is defined.
+
+-------------------------------------------------------------------
+Thu Dec 05 16:14:08 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.3.1+git20241204.1058f5b:
+  * lpm.c: use _WIN32_WINNT_VISTA
+  * Updated cross-compile command.
+  * lpm.c: define SYMBOLIC_LINK_FLAG_DIRECTORY and SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE
+  * lpm: support creating symlinks on Windows when Dev Mode is enabled (#151)
+  * lpm: add prompt when lpm is run outside the console (#150)
+  * lpm.c: fix mkdirp failing prematurely
+  * lpm.c: use properly include winsock2.h
+  * ci: do not run build when push to master (release covers it)
+  * Added in break to default statement.
+  * ci: run build and test on PR creation (#149)
+  * lpm.c: do not include winsock.h when including winsock2.h
+  * lpm.c: fix syntax error when calling _beginthreadex
+  * Fix compiler warning and Windows code (#148)
+  * Added in prompt for uninstalling lite-xls.
+  * Changed naming conventions.
+  * Changed version number validation on mod-version, and allowed for --ssl-certs=system to override environment variables.
+
+-------------------------------------------------------------------
 Fri Nov 29 01:56:59 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 1.3.1+git20241110.cde491b:
