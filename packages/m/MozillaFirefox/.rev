@@ -7532,4 +7532,25 @@
     <comment></comment>
     <requestid>1282106</requestid>
   </revision>
+  <revision rev="459" vrev="1">
+    <srcmd5>4be2a536371d9f616ed17b2cb10f2bfc</srcmd5>
+    <version>139.0.4</version>
+    <time>1750065094</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Firefox 139.0.4
+  * Fixed Firefox freezing when switching between apps or opening
+    certain panels within the browser. (bmo#1969253, bmo#1969346)
+  * Fixed difficult selection of drop-down menu options in the Firefox
+    preferences page when selected via the in-page search. (bmo#1968949)
+  * Fixed various selection issues when triple-clicking text in some
+    situations. (bmo#1969100, bmo#1969432)
+  * Fixed an incorrect filename being used when setting an image
+    as the desktop wallpaper on Windows. (bmo#1969793)
+  MFSA 2025-47
+  * CVE-2025-49709 (bmo#1966083)
+    Memory corruption in canvas surfaces
+  * CVE-2025-49710 (bmo#1970095)
+    Integer overflow in OrderedHashTable</comment>
+    <requestid>1285776</requestid>
+  </revision>
 </revisionlist>
