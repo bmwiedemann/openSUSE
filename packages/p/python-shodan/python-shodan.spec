@@ -16,19 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{!?license: %global license %doc}
 Name:           python-shodan
 Version:        1.31.0
 Release:        0
 Summary:        Python library and command-line utility for Shodan
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/achillean/shodan-python/
 Source:         https://files.pythonhosted.org/packages/source/s/shodan/shodan-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM remove-click-plugins.patch -- remove dependency to unmaintained click-plugins
 Patch0:         https://github.com/achillean/shodan-python/pull/236.patch#/remove-click-plugins.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
@@ -36,7 +36,6 @@ Requires:       python-XlsxWriter
 Requires:       python-click
 Requires:       python-colorama
 Requires:       python-requests >= 2.2.1
-Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-curses
@@ -60,7 +59,7 @@ HTML documentation on the API and examples for %{name}.
 sed -i '1s/^#!.*//' shodan/cli/worldmap.py
 
 %build
-%python_build
+%pyproject_wheel
 pushd docs
 %make_build html
 rm -r _build/html/.buildinfo _build/html/_sources/
@@ -68,7 +67,7 @@ rm -r _build/html/.buildinfo _build/html/_sources/
 popd
 
 %install
-%python_install
+%pyproject_install
 install -Dm 644 docs/_build/man/shodan-python.1 %{buildroot}%{_mandir}/man1/shodan.1
 %python_clone -a %{buildroot}%{_bindir}/shodan
 %python_clone -a %{buildroot}%{_mandir}/man1/shodan.1
@@ -89,7 +88,8 @@ install -Dm 644 docs/_build/man/shodan-python.1 %{buildroot}%{_mandir}/man1/shod
 %doc AUTHORS README.rst
 %license LICENSE
 %python_alternative %{_bindir}/shodan
-%{python_sitelib}/*
+%{python_sitelib}/shodan
+%{python_sitelib}/shodan-%{version}.dist-info
 %python_alternative %{_mandir}/man1/shodan.1%{ext_man}
 
 %files -n %{name}-doc

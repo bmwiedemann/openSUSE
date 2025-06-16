@@ -294,4 +294,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1278853</requestid>
   </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>48f3bc8ae154481db23109531565891b</srcmd5>
+    <version>1.31.0</version>
+    <time>1750065190</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1285967</requestid>
+  </revision>
 </revisionlist>

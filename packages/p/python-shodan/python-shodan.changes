@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 16 06:16:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyroject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue May 13 14:14:16 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - add patch remove-click-plugins.patch to remove the dependency on unmaintained click-plugins
