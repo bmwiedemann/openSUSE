@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 16 06:17:07 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyroject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Thu Apr 24 12:42:27 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add upstream patch sphinx-82.patch to support Sphinx >= 8.2

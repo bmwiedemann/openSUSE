@@ -86,4 +86,13 @@
   gh#sphinx-contrib/apidoc#23</comment>
     <requestid>1272431</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0eea4605490fa9b82064574bac4a6e9f</srcmd5>
+    <version>0.5.0</version>
+    <time>1750065191</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1285970</requestid>
+  </revision>
 </revisionlist>

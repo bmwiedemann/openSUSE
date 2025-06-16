@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -37,7 +36,9 @@ Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-a
 # PATCH-FIX-UPSTREAM sphinx-82.patch gh#sphinx-contrib/apidoc#23
 Patch0:         sphinx-82.patch
 BuildRequires:  %{python_module pbr >= 4.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 5.0.0
@@ -62,11 +63,11 @@ must be run before *sphinx-build*.
 %autosetup -p1 -n sphinxcontrib-apidoc-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -79,7 +80,10 @@ must be run before *sphinx-build*.
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS ChangeLog README.rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/sphinxcontrib
+%{python_sitelib}/sphinxcontrib/apidoc
+%{python_sitelib}/sphinxcontrib_apidoc-%{version}-py*-nspkg.pth
+%{python_sitelib}/sphinxcontrib_apidoc-%{version}.dist-info
 %endif
 
 %changelog
