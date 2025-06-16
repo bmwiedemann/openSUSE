@@ -16,29 +16,31 @@
 #
 
 
-%define panel_version 4.16.0
+%define panel_version 4.20.0
 %define plugin notes
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.11.2
+Version:        1.12.0
 Release:        0
 Summary:        Note-taking Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-notes-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.11/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.12/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.16.0
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.16.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= %{panel_version}
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{panel_version}
+BuildRequires:  pkgconfig(libxfconf-0) >= %{panel_version}
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(xfce4-vala)
@@ -80,14 +82,12 @@ NOCONFIGURE=1 ./autogen.sh
   --enable-maintainer-mode \
   --disable-static
 %else
-%configure --disable-static
+%meson
 %endif
-%make_build
+%meson_build
 
 %install
-%make_install
-
-rm %{buildroot}%{_libdir}/xfce4/panel/plugins/libnotes.la
+%meson_install
 
 %suse_update_desktop_file xfce4-notes
 %suse_update_desktop_file xfce4-notes-autostart
