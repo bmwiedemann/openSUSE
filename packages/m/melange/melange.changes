@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 16 04:56:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.12:
+  * Update RELEASE.md (#2046)
+  * docs: Regenerate to get rid of --guest-dir and --overlay-binsh
+  * bubblewrap: Rename guest dir pattern to "bubblewrap-guest-*"
+  * Replace apko.DirFS with tarfs; remove GuestDir concept
+  * Get rid of overlayBinSh
+
+-------------------------------------------------------------------
 Fri Jun 13 11:31:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.11:
