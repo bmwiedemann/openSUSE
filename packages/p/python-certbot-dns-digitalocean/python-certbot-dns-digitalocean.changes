@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 13 14:50:51 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to version 4.1.1
+  * Switched to src-layout from flat-layout to accommodate PEP 517 pip
+    editable installs
+
+-------------------------------------------------------------------
 Tue Apr 22 03:45:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.0.0:
