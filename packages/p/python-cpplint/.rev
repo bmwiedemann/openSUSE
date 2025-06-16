@@ -114,4 +114,12 @@
   - python312.patch, gh#cpplint/cpplint#243</comment>
     <requestid>1148332</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>8654be948cd194eb729da567c38d84ba</srcmd5>
+    <version>1.6.1</version>
+    <time>1750065185</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.</comment>
+    <requestid>1285958</requestid>
+  </revision>
 </revisionlist>

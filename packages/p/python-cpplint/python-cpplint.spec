@@ -1,7 +1,7 @@
 #
 # spec file for package python-cpplint
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,9 +29,11 @@ Patch0:         drop-sre-compile.patch
 Patch1:         python312.patch
 # PATCH-FIX-UPSTREAM deprecated-unittest-aliases.patch gh#cpplint/cpplint#182
 Patch2:         deprecated-unittest-aliases.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testfixtures}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -54,10 +56,10 @@ sed -i 's/pytest-cov//' test-requirements
 sed -i 's/--cov-fail-under=75 --cov=cpplint//' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/cpplint
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -74,7 +76,8 @@ sed -i 's/--cov-fail-under=75 --cov=cpplint//' setup.cfg
 %license LICENSE
 %doc README.rst
 %python_alternative %{_bindir}/cpplint
-%{python_sitelib}/cpplint*
-%pycache_only %{python_sitelib}/__pycache__
+%{python_sitelib}/cpplint.py
+%pycache_only %{python_sitelib}/__pycache__/cpplint.*.pyc
+%{python_sitelib}/cpplint-%{version}.dist-info
 
 %changelog
