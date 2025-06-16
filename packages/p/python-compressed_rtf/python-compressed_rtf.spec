@@ -26,7 +26,9 @@ License:        MIT
 URL:            https://github.com/delimitry/compressed_rtf
 Source:         compressed_rtf-%{version}.tar.xz
 Patch0:         0001-fix-pyproject.toml-license-format.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -39,10 +41,10 @@ Compressed Rich Text Format (RTF) compression and decompression package
 %autosetup -p1 -n compressed_rtf-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -51,6 +53,7 @@ Compressed Rich Text Format (RTF) compression and decompression package
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/compressed_rtf*
+%{python_sitelib}/compressed_rtf
+%{python_sitelib}/compressed_rtf-%{version}.dist-info
 
 %changelog
