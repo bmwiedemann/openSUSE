@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jun 14 14:13:42 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 1.2.0
+  * autotools-build: Explicitly require glib, gtk3
+  * meson-build: Use shared_module()
+  * Replace deprecated exo with libxfce4ui 4.21.0
+  * gcc-analyzer: Adapt regexes to meson
+  * README: Remove outdated version info
+  * build: Automate copyright year management
+  * Add meson build
+  * autotools-build: Explicitly require libxfce4util
+  * Fix libxfce4panel include
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Dec 29 14:20:10 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to 1.1.7
