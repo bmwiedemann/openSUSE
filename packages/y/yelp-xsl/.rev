@@ -446,4 +446,17 @@
     <comment></comment>
     <requestid>1279659</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>f78453fec4ce5db65d872843cd484e64</srcmd5>
+    <version>42.4</version>
+    <time>1750065110</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 42.4:
+  + build: Add missing css subdir
+  + Fix CVE-2025-3155.
+  + Switch to meson for builds.
+- Drop 6902d74.patch: Fixed upstream.
+- Switch to meson buildsystem, add meson BuildRequires and macros. (forwarded request 1285250 from iznogood)</comment>
+    <requestid>1285781</requestid>
+  </revision>
 </revisionlist>

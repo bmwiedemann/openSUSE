@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 12 18:36:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.4:
+  + build: Add missing css subdir
+  + Fix CVE-2025-3155.
+  + Switch to meson for builds.
+- Drop 6902d74.patch: Fixed upstream.
+- Switch to meson buildsystem, add meson BuildRequires and macros.
+
+-------------------------------------------------------------------
 Thu May  8 08:30:06 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add 6902d74.patch:
