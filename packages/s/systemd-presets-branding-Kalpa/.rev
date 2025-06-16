@@ -15,4 +15,14 @@
     <comment>- Revised enabled services</comment>
     <requestid>1285386</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8b4cdcceefa5f88d0d7edd28733b2416</srcmd5>
+    <version>20250612</version>
+    <time>1750065162</time>
+    <user>anag_factory</user>
+    <comment>- disable display-manager-legacy.service and enable sddm.service
+
+- Initial commit, adapted from devel:microos:Aeon/systemd-presents-branding-Aeon</comment>
+    <requestid>1285922</requestid>
+  </revision>
 </revisionlist>

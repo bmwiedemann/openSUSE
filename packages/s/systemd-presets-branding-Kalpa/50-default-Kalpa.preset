@@ -5,4 +5,6 @@ disable purge-kernels.service
 # optional packages
 enable lastlog2-import.service
 # Kalpa packages
+disable display-manager-legacy.service
+enable sddm.service
 enable zramswap.service

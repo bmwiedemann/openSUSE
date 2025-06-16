@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 15 18:40:00 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- disable display-manager-legacy.service and enable sddm.service
+
+-------------------------------------------------------------------
 Thu Jun 12 09:20:29 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Revised enabled services
@@ -6,4 +11,4 @@ Thu Jun 12 09:20:29 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 -------------------------------------------------------------------
 Wed Oct  4 15:28:08 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
-- Initial commit, adapted from devel:microos:Aeon/systemd-presents-branding-Aeon 
+- Initial commit, adapted from devel:microos:Aeon/systemd-presents-branding-Aeon
