@@ -1,15 +1,20 @@
-Index: scikit-hep-testdata-0.4.30/src/skhep_testdata/local_files.py
+---
+ src/skhep_testdata/local_files.py |    3 ++-
+ tests/test_local_files.py         |    2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+Index: scikit-hep-testdata-0.5.4/src/skhep_testdata/local_files.py
 ===================================================================
---- scikit-hep-testdata-0.4.30.orig/src/skhep_testdata/local_files.py
-+++ scikit-hep-testdata-0.4.30/src/skhep_testdata/local_files.py
+--- scikit-hep-testdata-0.5.4.orig/src/skhep_testdata/local_files.py
++++ scikit-hep-testdata-0.5.4/src/skhep_testdata/local_files.py
 @@ -1,5 +1,6 @@
  from __future__ import annotations
  
 +import os
- import sys
  import tempfile
  import zipfile
-@@ -17,7 +18,7 @@ else:
+ from importlib import resources
+@@ -12,7 +13,7 @@ from . import data, remote_files
  __all__ = ("data_path", "download_all", "known_files")
  
  
@@ -18,11 +23,11 @@ Index: scikit-hep-testdata-0.4.30/src/skhep_testdata/local_files.py
  
  baseurl = "https://raw.githubusercontent.com/scikit-hep/scikit-hep-testdata/main/src/skhep_testdata/data/"
  zipurl = "https://github.com/scikit-hep/scikit-hep-testdata/zipball/main"
-Index: scikit-hep-testdata-0.4.30/tests/test_local_files.py
+Index: scikit-hep-testdata-0.5.4/tests/test_local_files.py
 ===================================================================
---- scikit-hep-testdata-0.4.30.orig/tests/test_local_files.py
-+++ scikit-hep-testdata-0.4.30/tests/test_local_files.py
-@@ -6,7 +6,7 @@ import pytest
+--- scikit-hep-testdata-0.5.4.orig/tests/test_local_files.py
++++ scikit-hep-testdata-0.5.4/tests/test_local_files.py
+@@ -7,7 +7,7 @@ import requests
  
  import skhep_testdata as skhtd
  

@@ -19,7 +19,7 @@
 %define srcname scikit-hep-testdata
 %define modname %( echo %{srcname} | tr '-' '_' )
 Name:           python-scikit-hep-testdata
-Version:        0.4.44
+Version:        0.5.4
 Release:        0
 Summary:        Example HEP files for testing and demonstrating
 License:        BSD-3-Clause
@@ -94,7 +94,8 @@ install -D -m 644 -t %{buildroot}%{_datadir}/scikit-hep-testdata/data src/skhep_
 export SKHEP_DATA_DIR=%{buildroot}%{_datadir}/scikit-hep-testdata
 # Some tests need a writable tmpdir
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
-%pytest
+# test_data_path_cached: requires network
+%pytest -k 'not test_data_path_cached'
 # Clean-up
 rm -fr ${PYTEST_DEBUG_TEMPROOT}
 
