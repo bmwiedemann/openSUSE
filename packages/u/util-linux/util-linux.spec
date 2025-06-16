@@ -120,6 +120,8 @@ Patch8:         util-linux-rename-common-symbols-2.patch
 Patch9:         util-linux-rename-common-symbols-3.patch
 # PATCH-FIX-UPSTREAM util-linux-rename-common-symbols-4.patch gh#util-linux/util-linux#3603 sbrabec@suse.com -- Add ul_ prefix to functions with common names.
 Patch10:        util-linux-rename-common-symbols-4.patch
+# PATCH-FIX-UPSTREAM libmount-fix-no-canonicalize-regression.patch boo1244251 gh#util-linux/util-linux#3479 -- libmount: fix --no-canonicalize regression
+Patch11:        libmount-fix-no-canonicalize-regression.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel
