@@ -24,8 +24,10 @@ Summary:        Various parsers for ECMA standards
 License:        MIT
 URL:            https://github.com/calmjs/calmjs.parse
 Source:         https://github.com/calmjs/calmjs.parse/archive/%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ply >= 3.6}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ply >= 3.6
@@ -42,11 +44,10 @@ ECMAScript; a near feature complete fork of slimit.
 
 %build
 export LANG=en_US.UTF-8
-%python_build
-%python_expand PYTHONPATH=build/lib $python -m calmjs.parse.parsers.optimize
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +57,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc README.rst CHANGES.rst
 %license LICENSE
-%{python_sitelib}/calmjs*
+%{python_sitelib}/calmjs
+%{python_sitelib}/calmjs[-_]parse-%{version}.dist-info
 
 %changelog
