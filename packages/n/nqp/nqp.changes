@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun 15 16:25:19 CEST 2025 - nine@detonation.org
+
+- update to version 2025.05
+  * Add dispatching logic for an HLL override
+  * Add open mode constants
+  * Add a few capabilities for NQP-level dd
+  * Provide better feedback for ambiguous adverb usage
+  * Micro-optimize Match!cursor_init a bit
+  * Allow --repl-mode even with parameters
+  * Make --repl-mode truly leading
+  * Give interactive mode also access to command-line arguments
+  * Add is-interactive to HLL::Compiler (#827)
+  * Set a more sensible repl-mode by default
+  * Verify some sizes in qast compiler mast
+  * Fix missing register initialization in repeat loops
+  * Use a local for a somewhat hot class member access
+  * Use a local variable for a class member access...
+  * Use locals instead of class variables
+  * Use correct typed accessors where able
+  * Ensure we declare our dynamics even when there's no compunit
+
+-------------------------------------------------------------------
 Thu May 23 05:03:18 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to version 2024.04:
@@ -728,7 +750,7 @@ Fri Jun  8 13:46:00 CEST 2012 - mls@suse.de
   * qregex fixes
 
 -------------------------------------------------------------------
-Sat Mar 24 06:00:00 CES 2012 - carlin@glass.org.nz
+Sat Mar 24 06:00:00 CET 2012 - carlin@glass.org.nz
 
 - updated to version 2012.03
 
