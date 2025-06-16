@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 13 04:42:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.27.1:
+  * fix: provide separate nonroot image (#3998)
+  * account for non-import shapes (#3997)
+  * Allow decoding of anchorectl json files (#3973)
+  * chore(deps): bump github.com/anchore/stereoscope (#3991)
+
+-------------------------------------------------------------------
 Mon Jun 09 19:34:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.27.0:
