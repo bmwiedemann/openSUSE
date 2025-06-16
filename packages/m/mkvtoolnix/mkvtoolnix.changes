@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jun 15 05:58:45 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 93.0
+  New features and enhancements:
+  * all: updated the various lists that go into IETF/BCP 47
+    language tags: ISO 639 languages; ISO 3166 countries; ISO
+    15924 regions; IANA subtag registries.
+  * translations: added a Hungarian translation of the programs
+    & man pages.
+  * mkvextract: tags extraction: added an option
+    `--no-track-tags` (short: `-T`) for not extracting tags
+    associated with tracks.
+  * MKVToolNix GUI: multiplexer: the default regular expression
+    for deriving the "forced display" track flag from file names
+    for subtitles was extended to also match on the term `signs`.
+  * MKVToolNix GUI: preferences: the revert buttons for the
+    various "default regex for…" will only be enabled when the
+    current text differs from the default, in other words: when
+    reverting would actually change the text.
+  * MKVToolNix GUI: preferences: the GUI will now auto-upgrade
+    the "default regex for…" to their respective current default
+    values if they're still set to one of the previous default
+    values.
+
+-------------------------------------------------------------------
 Sat Apr 26 16:19:48 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 92.0
