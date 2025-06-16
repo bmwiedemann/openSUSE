@@ -1,7 +1,7 @@
 #
 # spec file for package python-cron-descriptor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cron-descriptor
 Version:        1.4.5
 Release:        0
@@ -25,8 +24,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Salamek/cron-descriptor
 Source:         https://github.com/Salamek/cron-descriptor/archive/%{version}.tar.gz#/cron_descriptor-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -39,10 +40,10 @@ A Python library that converts cron expressions into human readable strings.
 %setup -q -n cron-descriptor-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -51,10 +52,8 @@ A Python library that converts cron expressions into human readable strings.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%dir %{python_sitelib}/cron_descriptor/
-%{python_sitelib}/cron_descriptor/*.py*
-%pycache_only %{python_sitelib}/cron_descriptor/__pycache__
-%{python_sitelib}/cron_descriptor*egg-info/
+%{python_sitelib}/cron_descriptor
+%{python_sitelib}/cron_descriptor-%{version}.dist-info
 %lang(all) %{python_sitelib}/cron_descriptor/locale/
 
 %changelog
