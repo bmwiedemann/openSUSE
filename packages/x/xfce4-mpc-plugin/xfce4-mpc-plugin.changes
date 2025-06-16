@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 14 14:28:00 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 0.6.0
+  * autotools-build: Explicitly require glib, gtk3
+  * meson-build: Use shared_module()
+  * build: Automate copyright year management
+  * Add meson build
+  * autotools-build: Explicitly require libxfce4util
+  * Reapply "build: Use #ifdef instead of #if"
+  * Only define HAVE_LIBMPD when libmpd is found
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon Jan  6 13:08:19 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.5.5
