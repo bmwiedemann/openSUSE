@@ -22,9 +22,9 @@ Version:        2.3.1.2
 Release:        0
 Summary:        Sphinx objectsinv Inspection/Manipulation Tool
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/bskinn/sphobjinv
 Source:         https://github.com/bskinn/sphobjinv/archive/refs/tags/v%{version}.tar.gz#/sphobjinv-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,10 +55,10 @@ Sphinx objects.inv Inspection/Manipulation Tool
 sed -i '1{/^#!/d}' src/sphobjinv/_vendored/fuzzywuzzy/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/sphobjinv
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -82,6 +82,6 @@ donttest="test_name_lead_chars"
 %license LICENSE.txt
 %python_alternative %{_bindir}/sphobjinv
 %{python_sitelib}/sphobjinv
-%{python_sitelib}/sphobjinv-%{version}*-info
+%{python_sitelib}/sphobjinv-%{version}.dist-info
 
 %changelog

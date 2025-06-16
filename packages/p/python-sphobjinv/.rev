@@ -86,4 +86,12 @@
   * Adjust flake8 configuration to account for some new lint warnings/errors (#289).</comment>
     <requestid>1272588</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>074888b859ce9b39cd328581144f64f1</srcmd5>
+    <version>2.3.1.2</version>
+    <time>1750065197</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.</comment>
+    <requestid>1285981</requestid>
+  </revision>
 </revisionlist>

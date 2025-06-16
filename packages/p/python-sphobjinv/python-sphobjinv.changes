@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 16 06:28:07 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyroject macros.
+
+-------------------------------------------------------------------
 Thu Apr 24 12:49:55 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - skip some failing tests with Sphinx 8.2, gh#bskinn/sphobjinv#314
