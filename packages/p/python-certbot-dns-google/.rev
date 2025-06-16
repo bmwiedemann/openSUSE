@@ -399,4 +399,12 @@
       redirection to the challenge URL.</comment>
     <requestid>1271246</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>cecb7d4b731417428f0b370cf24ac510</srcmd5>
+    <version>4.1.1</version>
+    <time>1750069587</time>
+    <user>anag_factory</user>
+    <comment>certbot version bump</comment>
+    <requestid>1286012</requestid>
+  </revision>
 </revisionlist>
