@@ -1,7 +1,7 @@
 #
 # spec file for package python-CCColUtils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-CCColUtils
 Version:        1.5
 Release:        0
 Summary:        Kerberos5 Credential Cache Collection utilities
 License:        GPL-2.0-or-later
-Group:          Development/Languages/Python
 URL:            https://pagure.io/cccolutils
 Source:         https://files.pythonhosted.org/packages/source/C/CCColUtils/CCColUtils-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -47,10 +47,10 @@ Kerberos5 Credential Cache Collection utilities.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -58,6 +58,7 @@ export CFLAGS="%{optflags}"
 
 %files %{python_files}
 %license COPYING
-%{python_sitearch}/*
+%{python_sitearch}/cccolutils.cpython-*-linux-gnu.so
+%{python_sitearch}/[Cc][Cc][Cc]ol[Uu]tils-%{version}.dist-info
 
 %changelog

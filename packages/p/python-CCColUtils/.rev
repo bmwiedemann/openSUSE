@@ -7,4 +7,13 @@
     <comment>dep of koji</comment>
     <requestid>849373</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7749130bc87ec04181f99d918681aac0</srcmd5>
+    <version>1.5</version>
+    <time>1750065180</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1285950</requestid>
+  </revision>
 </revisionlist>
