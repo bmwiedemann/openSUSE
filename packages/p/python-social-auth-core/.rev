@@ -470,4 +470,12 @@
   * Mediawiki error handling</comment>
     <requestid>1206171</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>ff3d9ed3b4b0ddec0008b78cd8ae35c7</srcmd5>
+    <version>4.5.4</version>
+    <time>1750065191</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.</comment>
+    <requestid>1285969</requestid>
+  </revision>
 </revisionlist>

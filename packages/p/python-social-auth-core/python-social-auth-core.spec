@@ -1,7 +1,7 @@
 #
 # spec file for package python-social-auth-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017-2018 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,10 +32,12 @@ BuildRequires:  %{python_module PyJWT >= 2.7.0}
 BuildRequires:  %{python_module cryptography >= 2.1.1}
 BuildRequires:  %{python_module defusedxml >= 0.5.0}
 BuildRequires:  %{python_module oauthlib >= 1.0.3}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python3-openid >= 3.0.10}
 BuildRequires:  %{python_module requests >= 2.9.1}
 BuildRequires:  %{python_module requests-oauthlib >= 0.6.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  ca-certificates
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -74,10 +76,10 @@ storage solutions.
 %autosetup -p1 -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -90,6 +92,6 @@ donttest+=" or test_saml"
 %doc CHANGELOG.md README.md
 %license LICENSE
 %{python_sitelib}/social_core
-%{python_sitelib}/social_auth_core-%{version}*-info
+%{python_sitelib}/social_auth_core-%{version}.dist-info
 
 %changelog
