@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot
-Version:        4.0.0
+Version:        4.1.1
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0
@@ -74,7 +74,8 @@ to lower the barriers to entry for encrypting all HTTP traffic on the internet.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# test_lock_order[renew] needs internet connection to check ARI
+%pytest -k "not (test_lock_order and renew)"
 
 %post
 %python_install_alternative certbot

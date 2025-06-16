@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun 13 14:34:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.1.1
+  * Deprecated parameter enforce_openssl_binary_usage from
+    certbot.ocsp.RevocationChecker.
+  * The --preferred-profile and --required-profile flags now have their
+    values stored in the renewal configuration so the same setting will
+    be used on renewal.
+  * No longer checks ARI during certbot --dry-run.
+  * Fixed an unintended change introduced in 4.0.0 where renew_before_expiry
+    could not be shorter than certbot's default renewal time.
+  * Switched to src-layout from flat-layout to accommodate PEP 517 pip
+    editable installs
+
+-------------------------------------------------------------------
 Tue Apr 22 03:35:34 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.0.0:
