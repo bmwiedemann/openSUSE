@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 14 15:17:35 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 1.5.0
+  * build: Automate copyright year management
+  * Add meson build
+  * autotools-build: xfce4-sensors.1.in -> xfce4-sensors.1
+  * autotools-build: Remove spec files
+  * autotools-build: Make libxfce4sensors internal
+  * autotools-build: Don't build libxfce4_pp
+  * Fix libxfce4panel include
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon Jan  6 13:18:25 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.4.5
