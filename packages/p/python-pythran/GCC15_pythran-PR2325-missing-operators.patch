@@ -1,0 +1,322 @@
+From 623fa5031df7ec5c3dfe6789bf608cf11ac95c36 Mon Sep 17 00:00:00 2001
+From: serge-sans-paille <serge.guelton@telecom-bretagne.eu>
+Date: Wed, 11 Jun 2025 23:49:40 +0200
+Subject: [PATCH] Add missing iterator comparison operators
+
+Fix #2324
+---
+ pythran/pythonic/builtins/map.hpp             | 37 +++++++++++++++----
+ pythran/pythonic/builtins/range.hpp           |  6 +++
+ pythran/pythonic/include/builtins/map.hpp     | 16 +++++---
+ pythran/pythonic/include/builtins/range.hpp   |  1 +
+ .../pythonic/include/numpy/ndenumerate.hpp    |  4 ++
+ pythran/pythonic/include/numpy/ndindex.hpp    |  4 ++
+ pythran/pythonic/include/types/array.hpp      |  8 +++-
+ pythran/pythonic/include/types/numpy_expr.hpp | 31 +++++++++-------
+ pythran/pythonic/include/types/str.hpp        | 13 +++++--
+ 9 files changed, 88 insertions(+), 32 deletions(-)
+
+diff --git a/pythran/pythonic/builtins/map.hpp b/pythran/pythonic/builtins/map.hpp
+index ac6eb0354..e81dd2c46 100644
+--- a/pythran/pythonic/builtins/map.hpp
++++ b/pythran/pythonic/builtins/map.hpp
+@@ -143,11 +143,35 @@ namespace builtins
+       return !(*this == other);
+     }
+ 
++    template <typename Operator, typename... Iters>
++    template <size_t N>
++    bool map_iterator<Operator, Iters...>::lt(
++        map_iterator<Operator, Iters...> const &other, utils::int_<N>) const
++    {
++      return std::get<N>(it) < std::get<N>(other.it) ||
++             ((std::get<N>(it) == std::get<N>(other.it)) &&
++              lt(other, utils::int_<N - 1>()));
++    }
++
++    template <typename Operator, typename... Iters>
++    bool map_iterator<Operator, Iters...>::lt(
++        map_iterator<Operator, Iters...> const &other, utils::int_<0>) const
++    {
++      return std::get<0>(it) < std::get<0>(other.it);
++    }
++
+     template <typename Operator, typename... Iters>
+     bool map_iterator<Operator, Iters...>::operator<(
+         map_iterator<Operator, Iters...> const &other) const
+     {
+-      return !(*this == other);
++      return lt(other, utils::int_<sizeof...(Iters) - 1>());
++    }
++
++    template <typename Operator, typename... Iters>
++    bool map_iterator<Operator, Iters...>::operator<=(
++        map_iterator<Operator, Iters...> const &other) const
++    {
++      return (*this == other) || (*this < other);
+     }
+ 
+     template <typename Operator, typename... Iters>
+@@ -208,12 +232,11 @@ namespace builtins
+   } // namespace details
+ 
+   template <typename Operator, typename... Iter>
+-  auto map(Operator &&_op, Iter &&...iters)
+-      -> details::map<
+-          typename std::remove_cv<
+-              typename std::remove_reference<Operator>::type>::type,
+-          typename types::iterator<typename std::remove_cv<
+-              typename std::remove_reference<Iter>::type>::type>::type...>
++  auto map(Operator &&_op, Iter &&...iters) -> details::map<
++      typename std::remove_cv<
++          typename std::remove_reference<Operator>::type>::type,
++      typename types::iterator<typename std::remove_cv<
++          typename std::remove_reference<Iter>::type>::type>::type...>
+   {
+     return {std::forward<Operator>(_op), std::forward<Iter>(iters)...};
+   }
+diff --git a/pythran/pythonic/builtins/range.hpp b/pythran/pythonic/builtins/range.hpp
+index 2c3f3971d..bff58960e 100644
+--- a/pythran/pythonic/builtins/range.hpp
++++ b/pythran/pythonic/builtins/range.hpp
+@@ -89,6 +89,12 @@ namespace builtins
+     return sign * value_ < sign * other.value_;
+   }
+ 
++  inline bool range_iterator::operator<=(range_iterator const &other) const
++  {
++    const long sign = +1 | (step_ >> (sizeof(long) * CHAR_BIT - 1));
++    return sign * value_ <= sign * other.value_;
++  }
++
+   inline long range_iterator::operator-(range_iterator const &other) const
+   {
+     return (value_ - other.value_) / step_;
+diff --git a/pythran/pythonic/include/builtins/map.hpp b/pythran/pythonic/include/builtins/map.hpp
+index 788106712..8f358bd50 100644
+--- a/pythran/pythonic/include/builtins/map.hpp
++++ b/pythran/pythonic/include/builtins/map.hpp
+@@ -56,6 +56,7 @@ namespace builtins
+       bool operator==(map_iterator const &other) const;
+       bool operator!=(map_iterator const &other) const;
+       bool operator<(map_iterator const &other) const;
++      bool operator<=(map_iterator const &other) const;
+       long operator-(map_iterator const &other) const;
+ 
+     private:
+@@ -69,6 +70,10 @@ namespace builtins
+       bool equal(map_iterator const &other, utils::int_<N>) const;
+       bool equal(map_iterator const &other, utils::int_<0>) const;
+ 
++      template <size_t N>
++      bool lt(map_iterator const &other, utils::int_<N>) const;
++      bool lt(map_iterator const &other, utils::int_<0>) const;
++
+       template <size_t I>
+       void advance(long i, utils::int_<I>);
+       void advance(long i, utils::int_<0>);
+@@ -107,12 +112,11 @@ namespace builtins
+   } // namespace details
+ 
+   template <typename Operator, typename... Iter>
+-  auto map(Operator &&_op, Iter &&...iters)
+-      -> details::map<
+-          typename std::remove_cv<
+-              typename std::remove_reference<Operator>::type>::type,
+-          typename types::iterator<typename std::remove_cv<
+-              typename std::remove_reference<Iter>::type>::type>::type...>;
++  auto map(Operator &&_op, Iter &&...iters) -> details::map<
++      typename std::remove_cv<
++          typename std::remove_reference<Operator>::type>::type,
++      typename types::iterator<typename std::remove_cv<
++          typename std::remove_reference<Iter>::type>::type>::type...>;
+ 
+   DEFINE_FUNCTOR(pythonic::builtins, map);
+ } // namespace builtins
+diff --git a/pythran/pythonic/include/builtins/range.hpp b/pythran/pythonic/include/builtins/range.hpp
+index 7c40b6dcd..82e1c18ec 100644
+--- a/pythran/pythonic/include/builtins/range.hpp
++++ b/pythran/pythonic/include/builtins/range.hpp
+@@ -28,6 +28,7 @@ namespace builtins
+       bool operator!=(range_iterator const &other) const;
+       bool operator==(range_iterator const &other) const;
+       bool operator<(range_iterator const &other) const;
++      bool operator<=(range_iterator const &other) const;
+       long operator-(range_iterator const &other) const;
+     };
+   } // namespace
+diff --git a/pythran/pythonic/include/numpy/ndenumerate.hpp b/pythran/pythonic/include/numpy/ndenumerate.hpp
+index 18d78f2ef..ad8bbca22 100644
+--- a/pythran/pythonic/include/numpy/ndenumerate.hpp
++++ b/pythran/pythonic/include/numpy/ndenumerate.hpp
+@@ -25,6 +25,10 @@ namespace numpy
+     ndenumerate_iterator &operator++();
+     ndenumerate_iterator &operator+=(long n);
+     bool operator!=(ndenumerate_iterator const &other) const;
++    bool operator==(ndenumerate_iterator const &other) const
++    {
++      return !(*this != other);
++    }
+     bool operator<(ndenumerate_iterator const &other) const;
+     long operator-(ndenumerate_iterator const &other) const;
+   };
+diff --git a/pythran/pythonic/include/numpy/ndindex.hpp b/pythran/pythonic/include/numpy/ndindex.hpp
+index 387665cdb..8361f4ffd 100644
+--- a/pythran/pythonic/include/numpy/ndindex.hpp
++++ b/pythran/pythonic/include/numpy/ndindex.hpp
+@@ -25,6 +25,10 @@ namespace numpy
+     ndindex_iterator &operator++();
+     ndindex_iterator &operator+=(long n);
+     bool operator!=(ndindex_iterator const &other) const;
++    bool operator==(ndindex_iterator const &other) const
++    {
++      return !(*this != other);
++    }
+     bool operator<(ndindex_iterator const &other) const;
+     long operator-(ndindex_iterator const &other) const;
+   };
+diff --git a/pythran/pythonic/include/types/array.hpp b/pythran/pythonic/include/types/array.hpp
+index d4e6c1e06..b9bbe722b 100644
+--- a/pythran/pythonic/include/types/array.hpp
++++ b/pythran/pythonic/include/types/array.hpp
+@@ -129,6 +129,10 @@ namespace types
+     {
+       return index < other.index;
+     }
++    bool operator<=(array_iterator const &other) const
++    {
++      return index <= other.index;
++    }
+     array_iterator &operator=(array_iterator const &other)
+     {
+       index = other.index;
+@@ -181,8 +185,8 @@ namespace types
+ 
+     using shape_t = types::array_tuple<long, value>;
+     template <size_t I>
+-    auto shape() const -> decltype(details::extract_shape(*this,
+-                                                          utils::int_<I>{}))
++    auto shape() const
++        -> decltype(details::extract_shape(*this, utils::int_<I>{}))
+     {
+       return details::extract_shape(*this, utils::int_<I>{});
+     }
+diff --git a/pythran/pythonic/include/types/numpy_expr.hpp b/pythran/pythonic/include/types/numpy_expr.hpp
+index 0d13801a6..a6fc24d67 100644
+--- a/pythran/pythonic/include/types/numpy_expr.hpp
++++ b/pythran/pythonic/include/types/numpy_expr.hpp
+@@ -116,7 +116,7 @@ namespace types
+     }
+ 
+     auto operator*() const -> decltype(this->_dereference(
+-                               utils::make_index_sequence<sizeof...(Iters)>{}))
++        utils::make_index_sequence<sizeof...(Iters)>{}))
+     {
+       return _dereference(utils::make_index_sequence<sizeof...(Iters)>{});
+     }
+@@ -240,6 +240,11 @@ namespace types
+     {
+       return _lt(other, utils::int_<sizeof...(Iters)>{});
+     }
++
++    bool operator<=(numpy_expr_iterator const &other) const
++    {
++      return *this < other || *this == other;
++    }
+   };
+ #ifdef USE_XSIMD
+   template <class E, class Op, class Steps, class SIters, class... Iters>
+@@ -279,7 +284,7 @@ namespace types
+     }
+ 
+     auto operator*() const -> decltype(this->_dereference(
+-                               utils::make_index_sequence<sizeof...(Iters)>{}))
++        utils::make_index_sequence<sizeof...(Iters)>{}))
+     {
+       return _dereference(utils::make_index_sequence<sizeof...(Iters)>{});
+     }
+@@ -439,7 +444,7 @@ namespace types
+     }
+ 
+     auto operator*() const -> decltype(this->_dereference(
+-                               utils::make_index_sequence<sizeof...(Iters)>{}))
++        utils::make_index_sequence<sizeof...(Iters)>{}))
+     {
+       return _dereference(utils::make_index_sequence<sizeof...(Iters)>{});
+     }
+@@ -583,9 +588,9 @@ namespace types
+   }
+ 
+   template <size_t... J, class Arg, class Shp, class... S>
+-  auto
+-  make_subslice(utils::index_sequence<J...>, Arg const &arg, Shp const &shp,
+-                std::tuple<S...> const &ss) -> decltype(arg(std::get<J>(ss)...))
++  auto make_subslice(utils::index_sequence<J...>, Arg const &arg,
++                     Shp const &shp, std::tuple<S...> const &ss)
++      -> decltype(arg(std::get<J>(ss)...))
+   {
+     // we need to adapt_slice to take broadcasting into account
+     return arg(adapt_slice(
+@@ -708,15 +713,14 @@ namespace types
+     }
+ 
+     template <class... Indices>
+-    auto map_fast(Indices... indices) const
+-        -> decltype(this->_map_fast(
+-            array_tuple<long, sizeof...(Indices)>{{indices...}},
+-            utils::make_index_sequence<sizeof...(Args)>{}));
++    auto map_fast(Indices... indices) const -> decltype(this->_map_fast(
++        array_tuple<long, sizeof...(Indices)>{{indices...}},
++        utils::make_index_sequence<sizeof...(Args)>{}));
+ 
+   public:
+     template <size_t I>
+     auto shape() const -> decltype(details::init_shape_element<I>(
+-                           args, valid_indices<value, std::tuple<Args...>>{}))
++        args, valid_indices<value, std::tuple<Args...>>{}))
+     {
+       return details::init_shape_element<I>(
+           args, valid_indices<value, std::tuple<Args...>>{});
+@@ -819,9 +823,8 @@ namespace types
+       return Op{}(std::get<I>(args)[s]...);
+     }
+     template <class S>
+-    auto operator[](S s) const
+-        -> decltype((*this)._index(
+-            (s.lower, s), utils::make_index_sequence<sizeof...(Args)>{}))
++    auto operator[](S s) const -> decltype((*this)._index(
++        (s.lower, s), utils::make_index_sequence<sizeof...(Args)>{}))
+     {
+       return _index(s, utils::make_index_sequence<sizeof...(Args)>{});
+     }
+diff --git a/pythran/pythonic/include/types/str.hpp b/pythran/pythonic/include/types/str.hpp
+index ca373c734..73a39f35a 100644
+--- a/pythran/pythonic/include/types/str.hpp
++++ b/pythran/pythonic/include/types/str.hpp
+@@ -275,6 +275,14 @@ namespace types
+     {
+       return curr != other.curr;
+     }
++    bool operator<(string_iterator const &other) const
++    {
++      return curr < other.curr;
++    }
++    bool operator<=(string_iterator const &other) const
++    {
++      return curr <= other.curr;
++    }
+     std::ptrdiff_t operator-(string_iterator const &other) const
+     {
+       return curr - other.curr;
+@@ -328,9 +336,8 @@ namespace operator_
+ {
+ 
+   template <size_t N, class Arg>
+-  auto mod(const char (&fmt)[N],
+-           Arg &&arg) -> decltype(pythonic::types::str(fmt) %
+-                                  std::forward<Arg>(arg));
++  auto mod(const char (&fmt)[N], Arg &&arg)
++      -> decltype(pythonic::types::str(fmt) % std::forward<Arg>(arg));
+ 
+   pythonic::types::str add(char const *self, char const *other);
+ 

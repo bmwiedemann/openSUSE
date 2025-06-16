@@ -1,0 +1,129 @@
+From 14b78f0db9cbd253414b751d14644843354e7557 Mon Sep 17 00:00:00 2001
+From: cielavenir <cielartisan@gmail.com>
+Date: Fri, 6 Jun 2025 16:21:52 +0900
+Subject: [PATCH 1/5] Add missing operators to nditerator
+
+---
+ pythran/pythonic/include/types/nditerator.hpp |  9 +++
+ pythran/pythonic/types/nditerator.hpp         | 57 +++++++++++++++++++
+ 2 files changed, 66 insertions(+)
+
+diff --git a/pythran/pythonic/include/types/nditerator.hpp b/pythran/pythonic/include/types/nditerator.hpp
+index 0d1f8281a..934e5cc0a 100644
+--- a/pythran/pythonic/include/types/nditerator.hpp
++++ b/pythran/pythonic/include/types/nditerator.hpp
+@@ -66,6 +66,9 @@ namespace types
+     bool operator!=(nditerator<E> const &other) const;
+     bool operator==(nditerator<E> const &other) const;
+     bool operator<(nditerator<E> const &other) const;
++    bool operator>(nditerator<E> const &other) const;
++    bool operator<=(nditerator<E> const &other) const;
++    bool operator>=(nditerator<E> const &other) const;
+     nditerator &operator=(nditerator const &other);
+   };
+ 
+@@ -92,6 +95,9 @@ namespace types
+     bool operator!=(const_nditerator<E> const &other) const;
+     bool operator==(const_nditerator<E> const &other) const;
+     bool operator<(const_nditerator<E> const &other) const;
++    bool operator>(const_nditerator<E> const &other) const;
++    bool operator<=(const_nditerator<E> const &other) const;
++    bool operator>=(const_nditerator<E> const &other) const;
+     const_nditerator &operator=(const_nditerator const &other);
+   };
+ #ifdef USE_XSIMD
+@@ -115,6 +121,9 @@ namespace types
+     bool operator!=(const_simd_nditerator const &other) const;
+     bool operator==(const_simd_nditerator const &other) const;
+     bool operator<(const_simd_nditerator const &other) const;
++    bool operator>(const_simd_nditerator const &other) const;
++    bool operator<=(const_simd_nditerator const &other) const;
++    bool operator>=(const_simd_nditerator const &other) const;
+     const_simd_nditerator &operator=(const_simd_nditerator const &other);
+     void store(xsimd::batch<typename E::dtype> const &);
+   };
+diff --git a/pythran/pythonic/types/nditerator.hpp b/pythran/pythonic/types/nditerator.hpp
+index 2cb2b9047..ef2b7c4a8 100644
+--- a/pythran/pythonic/types/nditerator.hpp
++++ b/pythran/pythonic/types/nditerator.hpp
+@@ -97,6 +97,24 @@ namespace types
+     return index < other.index;
+   }
+ 
++  template <class E>
++  bool nditerator<E>::operator>(nditerator<E> const &other) const
++  {
++    return index > other.index;
++  }
++
++  template <class E>
++  bool nditerator<E>::operator<=(nditerator<E> const &other) const
++  {
++    return !(index > other.index);
++  }
++
++  template <class E>
++  bool nditerator<E>::operator>=(nditerator<E> const &other) const
++  {
++    return !(index < other.index);
++  }
++
+   template <class E>
+   nditerator<E> &nditerator<E>::operator=(nditerator<E> const &other)
+   {
+@@ -188,6 +206,24 @@ namespace types
+     return index < other.index;
+   }
+ 
++  template <class E>
++  bool const_nditerator<E>::operator>(const_nditerator<E> const &other) const
++  {
++    return index > other.index;
++  }
++
++  template <class E>
++  bool const_nditerator<E>::operator<=(const_nditerator<E> const &other) const
++  {
++    return !(index > other.index);
++  }
++
++  template <class E>
++  bool const_nditerator<E>::operator>=(const_nditerator<E> const &other) const
++  {
++    return !(index < other.index);
++  }
++
+   template <class E>
+   const_nditerator<E> &
+   const_nditerator<E>::operator=(const_nditerator const &other)
+@@ -271,6 +307,27 @@ namespace types
+     return data < other.data;
+   }
+ 
++  template <class E>
++  bool const_simd_nditerator<E>::operator>(
++      const_simd_nditerator<E> const &other) const
++  {
++    return data > other.data;
++  }
++
++  template <class E>
++  bool const_simd_nditerator<E>::operator<=(
++      const_simd_nditerator<E> const &other) const
++  {
++    return !(data > other.data);
++  }
++
++  template <class E>
++  bool const_simd_nditerator<E>::operator>=(
++      const_simd_nditerator<E> const &other) const
++  {
++    return !(data < other.data);
++  }
++
+   template <class E>
+   const_simd_nditerator<E> &
+   const_simd_nditerator<E>::operator=(const_simd_nditerator const &other)
+-- 
+2.49.0
+

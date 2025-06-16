@@ -52,6 +52,10 @@ URL:            https://github.com/serge-sans-paille/pythran
 # Tests are only availble from the github archive
 Source0:        https://github.com/serge-sans-paille/pythran/archive/refs/tags/%{version}.tar.gz#/pythran-%{version}-gh.tar.gz
 Source99:       python-pythran-rpmlintrc
+# PATCH-FIX-UPSTREAM: https://github.com/serge-sans-paille/pythran/commit/14b78f0db9cbd253414b751d14644843354e7557
+Patch0:         GCC15_fix_Add-missing-operators-to-nditerator.patch
+# PATCH-FIX-UPSTREAM: https://github.com/serge-sans-paille/pythran/commit/623fa5031df7ec5c3dfe6789bf608cf11ac95c36
+Patch1:         GCC15_pythran-PR2325-missing-operators.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

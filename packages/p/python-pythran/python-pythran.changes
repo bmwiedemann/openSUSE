@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 13 18:54:09 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Add GCC15_pythran-PR2325-missing-operators.patch
+  * Tracking Issues for this and the previous patch:
+    gcc#120622
+    gh#serge-sans-paille/pythran#2321
+    gh#serge-sans-paille/pythran#2324
+    gh#serge-sans-paille/pythran#2325
+    boo#1243779
+
+-------------------------------------------------------------------
+Thu Jun 12 10:03:44 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Fix failures with GCC15:
+  GCC15_fix_Add-missing-operators-to-nditerator.patch
+
+-------------------------------------------------------------------
 Thu May 29 19:47:43 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.18.0 - balafenn
