@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-autoprogram
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,9 @@ Source0:        %{URL}/archive/%{version}/python-sphinxcontrib-%{short_name}-%{v
 # Switch off failing tests by the environmental variable SKIPTESTS
 Patch1:         skip-failing-test.patch
 BuildRequires:  %{python_module Sphinx >= 1.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 1.2
@@ -71,7 +73,7 @@ it into a set of .. program:: and .. option:: directives.
 
 %build
 %if "%{flavor}" == ""
-%python_build
+%pyproject_wheel
 %endif
 %if "%{flavor}" == "doc"
 sphinx-build -b html -d doc/_build/doctrees doc doc/_build/html
@@ -80,7 +82,7 @@ rm doc/_build/html/objects.inv
 
 %install
 %if "%{flavor}" == ""
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -94,8 +96,11 @@ export SKIPTESTS=1
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/sphinxcontrib
-%{python_sitelib}/sphinxcontrib_autoprogram-%{version}*-info
+%dir %{python_sitelib}/sphinxcontrib
+%dir %{python_sitelib}/sphinxcontrib/__pycache__
+%{python_sitelib}/sphinxcontrib/autoprogram.py
+%pycache_only %{python_sitelib}/sphinxcontrib/__pycache__/autoprogram.*.pyc
+%{python_sitelib}/sphinxcontrib_autoprogram-%{version}.dist-info
 %{python_sitelib}/sphinxcontrib_autoprogram-%{version}*-nspkg.pth
 %endif
 
