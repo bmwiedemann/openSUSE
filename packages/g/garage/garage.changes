@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Jun 15 06:16:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.0.0:
+  This release contains the following breaking changes since the
+  v1.x series:
+  * The administration API has been completely reworked. Some calls
+    to the /v1/ endpoints will still work but most will not. New
+    endpoints are prefixed by /v2/.
+  * replication_mode is no longer a supported configuration
+    parameter, please use replication_factor and consistency_mode
+    instead.
+  Changes since v1.2.0:
+  * Complete refactoring of the admin API (#939, #943, #945, #978,
+    #980, #983, #1004)
+  * Generate admin API spec programatically using utoipa (#979)
+  * New garage json-api command to call the JSON API from scripts
+  * Support multiple admin API tokens (#944, #982)
+  * CLI rework (#984)
+  * Implement command to inspect objects in buckets (#892, #1005)
+  * Implement expiration dates for access keys (#996, #1010)
+  * Use read/write quorums on admin operations to ensure
+    read-after-write (#147, #995, #997)
+  * Support redirections on S3 web endpoint (#665, #910)
+  * SSE-C: use per-object encryption key internally (#848, #990)
+  * Add CRC64NVME checksumming algorithm (#963, #991)
+  * Support x-amz-checksum-type and add tests with latest
+    awscli/boto3 (#1017, #1025)
+  * Throw error on legacy replication_mode setting (#1018)
+  * Refactoring of TableShardedReplication (#820)
+  Changes since v2.0.0-rc1:
+  * Add support for logging to journald (#1056)
+  * Basic default web page for errors on web endpoint (#1064)
+  * Implement basic GetBucketAcl stub (#1045)
+  * Emit internal error when race condition is detected in
+    GetObject (#1050, #1053)
+  * Speed up UploadPartCopy (#1047)
+  * Reduce log level of table sync messages
+  * Mark block refs as deleted in garage block purge (#1055, #1067)
+
+-------------------------------------------------------------------
 Sat Jun 14 08:53:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.2.0:

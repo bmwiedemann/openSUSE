@@ -17,7 +17,7 @@
 
 
 Name:           garage
-Version:        1.2.0
+Version:        2.0.0
 Release:        0
 Summary:        S3-compatible object store for small self-hosted geo-distributed deployments
 License:        AGPL-3.0-only
@@ -32,7 +32,7 @@ BuildRequires:  libseccomp-devel
 BuildRequires:  sysuser-tools
 BuildRequires:  zstd
 
-ExcludeArch:    %{ix86}
+ExcludeArch:    %{ix86} %{arm}
 
 %description
 Garage is an S3-compatible distributed object storage service designed for
