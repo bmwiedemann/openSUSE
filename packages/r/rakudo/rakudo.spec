@@ -1,7 +1,7 @@
 #
 # spec file for package rakudo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rakudo
-Version:        2024.04
+Version:        2025.05
 Release:        0
 Summary:        Raku (formerly Perl 6) implemenation that runs on MoarVM
 License:        Artistic-2.0
@@ -25,14 +25,15 @@ Group:          Development/Languages/Other
 URL:            https://rakudo.org/
 Source0:        https://rakudo.org/dl/rakudo/rakudo-%{version}.tar.gz
 Patch0:         rakudo-test-log.diff
-BuildRequires:  moarvm-devel >= %{version}
-BuildRequires:  nqp >= %{version}
+BuildRequires:  moarvm-devel >= 2025.05
+BuildRequires:  nqp >= 2025.05
 BuildRequires:  perl(Archive::Tar)
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(IPC::Cmd)
 BuildRequires:  perl(YAML::Tiny)
-Requires:       moarvm >= %{version}
-Requires:       nqp >= %{version}
+Requires:       moarvm >= 2025.05
+Requires:       nqp >= 2025.05
+Provides:       /usr/bin/raku
 Provides:       raku = %{version}-%{release}
 Provides:       raku(CompUnit::Repository::Staging)
 Provides:       raku(MoarVM::Profiler)
@@ -70,7 +71,7 @@ RAKUDO_SKIP_TIMING_TESTS=1 make test
 %install
 %make_install
 mkdir -p "%{buildroot}/%{_datadir}/perl6/bin"
-cp tools/install-dist.p6 "%{buildroot}/%{_datadir}/perl6/bin/install-perl6-dist"
+cp tools/install-dist.raku "%{buildroot}/%{_datadir}/perl6/bin/install-perl6-dist"
 chmod +x "%{buildroot}/%{_datadir}/perl6/bin/install-perl6-dist"
 sed -i -e '1s:!%{_bindir}/env :!%{_bindir}/:' "%{buildroot}/%{_datadir}/perl6/bin"/*
 rm "%{buildroot}/%{_bindir}/raku"

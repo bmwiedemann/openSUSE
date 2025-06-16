@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Jun 15 16:26:46 CEST 2025 - nine@detonation.org
+
+- update to version 2025.05
+
+- Fixes:
+  * Fixed a MoarVM GC bug causing incorrect behavior during LEAVE phasers.
+  * Prevented incorrect type specification by name in Parameter constructor.
+  * Corrected exception matching in throws-like.
+  * Fixed native array parameterization to properly die.
+  * Improved memory handling in file operations for 32/64-bit systems.
+  * Cleaned up unnecessary or broken object constructions (e.g., QuantHash, List).
+  * Numerous fixes around .assuming, .head/.first, slurpy parameter handling.
+  * Corrected logic for parameter default types and sub-signatures.
+  * Addressed memory reporting bugs and REPL grammar persistence.
+  * Resolved bugs in Buf/Blob, typed slurpies, and parameter signature parsing.
+  * Made Hash, Map, Array, and DateTime cloning consistent and reliable.
+  * Fixed MAIN argument handling and slicing bugs.
+  * Resolved deep structural issues in .deepmap, .clone, and .Numeric.
+  * Fixes in REPL, .trans, substr-rw, Unicode handling, error messaging.
+  * Addressed bugs in Iterable.flat, lazy sequences, native arrays, and metaops.
+  * Restored expected behavior in module loading, Junction, and coercions.
+  * Resolved numerous minor regression and LTA (Less Than Awesome) issues.
+
+- Incompatible changes:
+  * Attribute access semantics made more consistent (may affect internals).
+  * Parameter constructor no longer accepts types by name string.
+  * Enforced stricter checks on typed parameters, placeholder redeclarations, and slurpies.
+  * Changed native array and object hash behaviors in signatures and coercions.
+  * Deprecated multi-path IO subs in language version 6.e.
+  * Introduced tighter type checks and stricter enforcement in cloning and parameter typing.
+
+
+-------------------------------------------------------------------
 Thu May 23 12:35:38 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 2024.04.
@@ -837,7 +870,7 @@ Fri Jun  8 13:42:00 CEST 2012 - mls@suse.de
   * various new regex features and improvements
 
 -------------------------------------------------------------------
-Sat Mar 24 06:40:00 CES 2012 - carlin@glass.org.nz
+Sat Mar 24 06:40:00 CET 2012 - carlin@glass.org.nz
 
 - update to 2012.03
 
