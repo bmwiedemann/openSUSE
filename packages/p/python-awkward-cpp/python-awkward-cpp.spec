@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define srcname awkward_cpp
 Name:           python-awkward-cpp
-Version:        44
+Version:        46
 Release:        0
 Summary:        CPU kernels and compiled extensions for Awkward Array
 License:        BSD-3-Clause
@@ -39,7 +39,7 @@ Requires:       python-numpy >= 1.18.0
 Provides:       python-awkward_cpp = %{version}-%{release}
 # SECTION test requirements
 BuildRequires:  %{python_module numpy >= 1.18.0}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 6.0}
 # /SECTION
 %python_subpackages
 
