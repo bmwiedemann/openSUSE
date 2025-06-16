@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 14 13:51:48 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- compile with Qt 6
+- Update to 1.9.7:
+  * UPnP/AV: send null data when coming at the end of the playlist to clear
+    the renderer state. May be disabled by preference and may not work with
+    all renderers. Fixes the "phantom track" issue 
+  * Fix ESC behavior on Playlist and Search panels
+  * Alt+Left go back to previous folder when the browser has the keyboard
+    focus
+  * Fix volume keys not working
+
+-------------------------------------------------------------------
 Mon May 12 16:07:55 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - added disable-mpris.patch to disable MPRIS support because it is part

@@ -17,7 +17,7 @@
 
 
 Name:           upplay
-Version:        1.9.6
+Version:        1.9.7
 Release:        0
 Summary:        UPnP and OpenHome audio Control Point
 License:        GPL-2.0-or-later
@@ -29,21 +29,20 @@ Patch:          disable-mpris.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5WebEngine)
+BuildRequires:  pkgconfig(Qt6WebEngineWidgets)
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libupnpp) >= 1.0.0
 
 %description
-upplay is a Qt5-based audio Control Point for browsing and playing music
+upplay is a Qt based audio Control Point for browsing and playing music
 managed by your UPnP/DLNA media servers to your UPnP/DLNA/OpenHome players (renderers).
 
 %prep
 %autosetup
 
 %build
-%qmake5 QMAKE_POST_LINK='$(STRIP) $(TARGET)' WEBPLATFORM=webengine
+%qmake6 QMAKE_POST_LINK='$(STRIP) $(TARGET)' WEBPLATFORM=webengine
 %make_build STRIP=%{_bindir}/strip
 
 %install
