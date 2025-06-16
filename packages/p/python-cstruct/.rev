@@ -62,4 +62,12 @@
 - Update to version 5.1</comment>
     <requestid>1137640</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9a3542b599f411779f60d058f5709895</srcmd5>
+    <version>5.3</version>
+    <time>1750065188</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.</comment>
+    <requestid>1285962</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-cstruct
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,8 +25,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/andreax79/python-cstruct
 Source:         https://github.com/andreax79/python-cstruct/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -46,10 +48,10 @@ a string.
 %setup -q
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand find %{buildroot}%{$python_sitelib} -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} \;
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -60,6 +62,6 @@ a string.
 %license LICENSE
 %doc changelog.txt README.md
 %{python_sitelib}/cstruct
-%{python_sitelib}/cstruct-%{version}*-info
+%{python_sitelib}/cstruct-%{version}.dist-info
 
 %changelog
