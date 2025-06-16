@@ -96,4 +96,12 @@
     inserts the new node before the specified node instead of</comment>
     <requestid>1138687</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3acd76e005379b0a2817381b69788cb1</srcmd5>
+    <version>2.0</version>
+    <time>1750065183</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.</comment>
+    <requestid>1285955</requestid>
+  </revision>
 </revisionlist>

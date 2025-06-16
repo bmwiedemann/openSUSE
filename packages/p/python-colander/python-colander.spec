@@ -1,7 +1,7 @@
 #
 # spec file for package python-colander
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013-2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-colander
 Version:        2.0
 Release:        0
@@ -26,8 +25,10 @@ License:        BSD-4-Clause AND ZPL-2.1 AND MIT
 URL:            https://github.com/Pylons/colander
 Source:         https://files.pythonhosted.org/packages/source/c/colander/colander-%{version}.tar.gz
 BuildRequires:  %{python_module Babel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module translationstring}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-iso8601
@@ -60,10 +61,10 @@ An extensible package which can be used to:
 %autosetup -p1 -n colander-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %find_lang colander
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -73,6 +74,7 @@ An extensible package which can be used to:
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst README.rst
-%{python_sitelib}/colander*
+%{python_sitelib}/colander
+%{python_sitelib}/colander-%{version}.dist-info
 
 %changelog
