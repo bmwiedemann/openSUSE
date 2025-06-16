@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jun 15 11:49:10 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.9.0:
+  - Adds support for UOV (NIST Additional Signatures Round 2)
+  - Adds support for Mayo (NIST Additional Signatures Round 2)
+  - Adds support for CROSS (NIST Additional Signatures Round 2)
+  - Disables HQC KEM by default, following liboqs v0.13.0, until a security flaw is fixed.
+  - Disables default support for Kyber (Round 3 version).
+  - Disables default support for Dilithium (Round 3 version).
+  - Restricts non-standard TLS group code points to IANA private use range.
+  - Updates TLS group code point and name for ML-KEM 1024 hybrid SecP384r1MLKEM1024.
+  - Disables ML-KEM (along with certain hybrid variants) and ML-DSA
+    (along with all composite/hybrid variants) when oqs-provider is loaded
+    with OpenSSL (version >= 3.5.0) which offers native support for some
+    of these algorithms. Please see README.md for detailed information.
+- fixes build with openssl 3.5 (bsc#1244617)
+
+-------------------------------------------------------------------
 Tue Feb 18 10:36:05 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - updated to 0.8.0:

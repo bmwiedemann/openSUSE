@@ -125,4 +125,25 @@
   * Adds support for DTLS 1.3 (pending support in OpenSSL). (forwarded request 1246637 from adrianSuSE)</comment>
     <requestid>1246647</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0617f55e3bd9ddccae077033246c15e2</srcmd5>
+    <version>0.9.0</version>
+    <time>1750065137</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.9.0:
+  - Adds support for UOV (NIST Additional Signatures Round 2)
+  - Adds support for Mayo (NIST Additional Signatures Round 2)
+  - Adds support for CROSS (NIST Additional Signatures Round 2)
+  - Disables HQC KEM by default, following liboqs v0.13.0, until a security flaw is fixed.
+  - Disables default support for Kyber (Round 3 version).
+  - Disables default support for Dilithium (Round 3 version).
+  - Restricts non-standard TLS group code points to IANA private use range.
+  - Updates TLS group code point and name for ML-KEM 1024 hybrid SecP384r1MLKEM1024.
+  - Disables ML-KEM (along with certain hybrid variants) and ML-DSA
+    (along with all composite/hybrid variants) when oqs-provider is loaded
+    with OpenSSL (version &gt;= 3.5.0) which offers native support for some
+    of these algorithms. Please see README.md for detailed information.
+- fixes build with openssl 3.5 (bsc#1244617) (forwarded request 1285892 from msmeissn)</comment>
+    <requestid>1285893</requestid>
+  </revision>
 </revisionlist>
