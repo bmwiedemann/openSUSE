@@ -35,7 +35,9 @@ License:        BSD-3-Clause
 URL:            http://celeryproject.org
 Source:         https://files.pythonhosted.org/packages/source/c/celery/celery-%{version}.tar.gz
 Patch0:         move-pytest-configuration-to-conftest.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
@@ -96,12 +98,12 @@ scheduling as well.
 
 %build
 %if !%{with test}
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/celery
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
@@ -128,7 +130,7 @@ scheduling as well.
 
 %files %{python_files}
 %{python_sitelib}/celery
-%{python_sitelib}/celery-%{version}*-info
+%{python_sitelib}/celery-%{version}.dist-info
 %license LICENSE
 %doc README.rst TODO
 %python_alternative %{_bindir}/celery
