@@ -1,7 +1,7 @@
 #
 # spec file for package python-cinemagoer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ License:        GPL-2.0-or-later
 URL:            https://cinemagoer.sourceforge.io/
 Source:         https://files.pythonhosted.org/packages/source/c/cinemagoer/cinemagoer-%{version}.tar.gz
 Patch0:         do_not_install_scripts.patch
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-SQLAlchemy
@@ -49,10 +51,10 @@ copy of the whole database.
 %autosetup -p1 -n cinemagoer-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # Do not install python scripts under locale/, they are only used at build time
 # for the translations
@@ -60,6 +62,10 @@ copy of the whole database.
 %python_expand rm -rf %{buildroot}/%{$python_sitelib}/imdb/locale/__pycache__/
 %python_expand rm %{buildroot}/%{$python_sitelib}/imdb/locale/*.po
 %python_clone -a %{buildroot}%{_bindir}/imdbpy
+
+%check
+# The just about the entire testsuite wants network access
+%pytest -k "test_series_full_cast_has_ids"
 
 %post
 %python_install_alternative imdbpy
@@ -71,7 +77,7 @@ copy of the whole database.
 %doc README.rst CHANGELOG.txt
 %license LICENSE.txt
 %python_alternative %{_bindir}/imdbpy
-%{python_sitelib}/cinemagoer-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/cinemagoer-%{version}.dist-info
 %{python_sitelib}/imdb
 %lang(ar) %{python_sitelib}/imdb/locale/ar/LC_MESSAGES/imdbpy.mo
 %lang(bg) %{python_sitelib}/imdb/locale/bg/LC_MESSAGES/imdbpy.mo
