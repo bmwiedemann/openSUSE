@@ -32,4 +32,12 @@
 </comment>
     <requestid>1232802</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>090ee5c514060747dfb0fc7a882ca06d</srcmd5>
+    <version>1.2.0</version>
+    <time>1750065196</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.</comment>
+    <requestid>1285979</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 16 06:12:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyroject macros.
+
+-------------------------------------------------------------------
 Fri Dec 20 09:22:13 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add %{?sle15allpythons} call
