@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 14 14:31:34 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 1.5.0
+  * meson-build: Use shared_module()
+  * commandline: Fix
+    -Werror={missing-declarations,suggest-attribute=noreturn}
+  * build: Automate copyright year management
+  * Add meson build
+  * netload: Fix link to wiki page
+  * autotools-build: Fix typo
+  * autotools-build: Explicitly require glib, gtk3, libxfce4util
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Jan  5 14:07:08 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.4.2
