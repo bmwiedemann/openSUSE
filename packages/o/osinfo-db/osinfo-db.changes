@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 13 12:59:23 MDT 2025 - carnold@suse.com
+
+- Update to database version 20250606 (jsc#PED-12706)
+  osinfo-db-20250606.tar.xz
+- Drop add-Windows-Server-2025.patch
+
+-------------------------------------------------------------------
 Tue May 20 14:11:44 MDT 2025 - carnold@suse.com
 
 - bsc#1243296 - What version of virt-manager-common supports SLES16

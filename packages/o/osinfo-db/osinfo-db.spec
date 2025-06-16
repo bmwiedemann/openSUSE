@@ -17,7 +17,7 @@
 
 
 Name:           osinfo-db
-Version:        20250124
+Version:        20250606
 Release:        0
 Summary:        Osinfo database files
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -35,7 +35,6 @@ Patch31:        add-slem6.1-support.patch
 Patch32:        add-slem6.2-support.patch
 Patch33:        add-sles16-support.patch
 Patch34:        add-opensuse-leap-16.0-support.patch
-Patch35:        add-Windows-Server-2025.patch
 BuildRequires:  intltool
 BuildRequires:  osinfo-db-tools
 BuildArch:      noarch

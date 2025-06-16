@@ -664,4 +664,12 @@
     <comment>Fix for bsc#1243296 sles16 definition with wrong path for aarch64 and others</comment>
     <requestid>1278883</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>6a751d2872a3c22de0b23c0d51248557</srcmd5>
+    <version>20250606</version>
+    <time>1750065093</time>
+    <user>anag_factory</user>
+    <comment>Update osinfo-db database version to 20250606</comment>
+    <requestid>1285637</requestid>
+  </revision>
 </revisionlist>
