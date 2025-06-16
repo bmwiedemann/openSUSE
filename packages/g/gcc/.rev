@@ -679,4 +679,14 @@ this would switch building packages to gcc14.  Thus Staging:Gcc7.
     <comment>- Check is_opensuse for whether plugins are enabled.</comment>
     <requestid>1248079</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>52c027dc4fb246d3bd7327867a69238e</srcmd5>
+    <version>15</version>
+    <time>1750065090</time>
+    <user>anag_factory</user>
+    <comment>- Add packages for Modula-2 and Cobol.
+
+- Bump GCC version to 15, leave -build flavor at 13.</comment>
+    <requestid>1275469</requestid>
+  </revision>
 </revisionlist>

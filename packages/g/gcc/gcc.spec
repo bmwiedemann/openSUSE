@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package gcc
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -24,8 +24,8 @@
 %define gcc_suffix 13
 %else
 %define gccsuffix %{nil}
-%define gcc_version 14
-%define gcc_suffix 14
+%define gcc_version 15
+%define gcc_suffix 15
 %endif
 
 Name:           gcc%{gccsuffix}
@@ -53,6 +53,16 @@ Name:           gcc%{gccsuffix}
 %else
 %define build_d 0
 %endif
+%define build_m2 1
+%ifarch x86_64 aarch64 ppc64le riscv64
+%if %{gcc_version} >= 15 && %{suse_version} >= 1699
+%define build_cobol 1
+%else
+%define build_cobol 0
+%endif
+%else
+%define build_cobol 0
+%endif
 %define quadmath_arch %ix86 x86_64 ia64 ppc64le
 %define libgccjit_sover 0
 
@@ -79,6 +89,12 @@ BuildRequires:  gcc%{gcc_version}-ada
 %endif
 %if %{build_d}
 BuildRequires:  gcc%{gcc_version}-d
+%endif
+%if %{build_m2}
+BuildRequires:  gcc%{gcc_version}-m2
+%endif
+%if %{build_cobol}
+BuildRequires:  gcc%{gcc_version}-cobol
 %endif
 Source:         cpp
 %if "%{gccsuffix}" != "" && 0%{?is_opensuse}
@@ -179,8 +195,10 @@ The system GNU Compiler documentation.
 
 
 
-# install / update the entries
 
+
+
+# install / update the entries
 %post -n gcc%{gccsuffix}-info
 %install_info --info-dir=%{_infodir} --name=cpp --description='The GNU C preprocessor.' %{_infodir}/cpp.info.gz
 %install_info --info-dir=%{_infodir} --name=gcc --description='The GNU Compiler Collection.' %{_infodir}/gcc.info.gz
@@ -452,7 +470,7 @@ Conflicts:      gcc-go
 Requires:       gcc%{gcc_version}-go
 Requires:       gcc%{gccsuffix} = %{version}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %description -n gcc%{gccsuffix}-go
 The system GNU Go Compiler.
@@ -495,8 +513,6 @@ Conflicts:      gcc-d
 %endif
 Requires:       gcc%{gcc_version}-d
 Requires:       gcc%{gccsuffix} = %{version}
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 
 %description -n gcc%{gccsuffix}-d
 The system GNU D Compiler.
@@ -555,6 +571,62 @@ Requires:       libquadmath0-devel-gcc%{gcc_version}
 %description -n libquadmath%{gccsuffix}-devel
 Development files for the quadprecision math library.
 
+%package -n gcc%{gccsuffix}-m2
+Summary:        The system GNU Modula-2 Compiler
+License:        GPL-3.0-or-later
+Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-m2 = %{version}
+Conflicts:      gcc-m2
+%endif
+Requires:       gcc%{gcc_version}-m2
+Requires:       gcc%{gccsuffix} = %{version}
+
+%description -n gcc%{gccsuffix}-m2
+The system GNU Modula-2 Compiler.
+
+%package -n gcc%{gccsuffix}-m2-32bit
+Summary:        The system GNU Modula-2 Compiler 32bit support
+License:        GPL-3.0-or-later
+Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-m2-32bit = %{version}
+Conflicts:      gcc-m2-32bit
+%endif
+Requires:       gcc%{gcc_version}-m2-32bit
+Requires:       gcc%{gccsuffix}-m2 = %{version}
+
+%description -n gcc%{gccsuffix}-m2-32bit
+The system GNU Modula-2 Compiler 32bit support
+
+%package -n gcc%{gccsuffix}-m2-64bit
+Summary:        The system GNU Modula-2 Compiler 64bit support
+License:        GPL-3.0-or-later
+Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-m2-64bit = %{version}
+Conflicts:      gcc-m2-64bit
+%endif
+Requires:       gcc%{gcc_version}-m2-64bit
+Requires:       gcc%{gccsuffix}-m2 = %{version}
+
+%description -n gcc%{gccsuffix}-m2-64bit
+The system GNU Modula-2 Compiler 64bit support
+
+%package -n gcc%{gccsuffix}-cobol
+Summary:        The system GNU Cobol Compiler
+License:        GPL-3.0-or-later
+Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-cobol = %{version}
+Conflicts:      gcc-cobol
+%endif
+Requires:       gcc%{gcc_version}-cobol
+Requires:       gcc%{gccsuffix} = %{version}
+
+%description -n gcc%{gccsuffix}-cobol
+The system GNU Cobol Compiler.
+
 %prep
 
 %install
@@ -578,6 +650,12 @@ for program in \
 %if %{build_d}
 	gdc \
 %endif
+%if %{build_m2}
+	gm2 \
+%endif
+%if %{build_cobol}
+	gcobol gcobc \
+%endif
 	gcc-ar gcc-nm gcc-ranlib \
     ; do
   ln -sf $program-%{gcc_suffix} $RPM_BUILD_ROOT%{_prefix}/bin/$program
@@ -595,6 +673,12 @@ for man1 in \
 	gccgo \
 %if %{build_d}
 	gdc \
+%endif
+%if %{build_m2}
+	gm2 \
+%endif
+%if %{build_cobol}
+	gcobol \
 %endif
     ; do
   ln -sf $man1-%{gcc_suffix}.1.gz $RPM_BUILD_ROOT%{_mandir}/man1/$man1.1.gz
@@ -742,6 +826,21 @@ fi
 %doc %{_mandir}/man1/gdc.1.gz
 %endif
 
+%if %{build_m2}
+%files -n gcc%{gccsuffix}-m2
+%defattr(-,root,root)
+%{_bindir}/gm2
+%doc %{_mandir}/man1/gm2.1.gz
+%endif
+
+%if %{build_cobol}
+%files -n gcc%{gccsuffix}-cobol
+%defattr(-,root,root)
+%{_bindir}/gcobol
+%{_bindir}/gcobc
+%doc %{_mandir}/man1/gcobol.1.gz
+%endif
+
 %if %{separate_bi32}
 
 %files -n gcc%{gccsuffix}-32bit
@@ -779,7 +878,15 @@ fi
 %defattr(-,root,root)
 # empty - only for the dependency
 %endif
+
+%if %{build_m2}
+%files -n gcc%{gccsuffix}-m2-32bit
+%defattr(-,root,root)
+# empty - only for the dependency
 %endif
+
+%endif
+
 %if %{separate_bi64}
 
 %files -n gcc%{gccsuffix}-64bit
@@ -814,6 +921,12 @@ fi
 
 %if %{build_d}
 %files -n gcc%{gccsuffix}-d-64bit
+%defattr(-,root,root)
+# empty - only for the dependency
+%endif
+
+%if %{build_m2}
+%files -n gcc%{gccsuffix}-m2-64bit
 %defattr(-,root,root)
 # empty - only for the dependency
 %endif

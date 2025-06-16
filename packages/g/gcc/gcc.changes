@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May  7 11:27:11 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Add packages for Modula-2 and Cobol.
+
+-------------------------------------------------------------------
+Wed Mar 12 17:41:50 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Bump GCC version to 15, leave -build flavor at 13.
+
+-------------------------------------------------------------------
 Mon Feb 24 10:32:48 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Check is_opensuse for whether plugins are enabled.
