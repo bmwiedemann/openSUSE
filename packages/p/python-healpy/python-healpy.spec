@@ -1,7 +1,7 @@
 #
 # spec file for package python-healpy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,17 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -test
+%else
+%bcond_with test
+%define psuffix %{nil}
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-healpy
-Version:        1.18.0
+Name:           python-healpy%{?psuffix}
+Version:        1.18.1
 Release:        0
 Summary:        Python library to handle pixelated data on the sphere based on HEALPix
 License:        GPL-2.0-only
@@ -28,30 +36,33 @@ BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module numpy-devel >= 1.19}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 60}
 BuildRequires:  %{python_module setuptools_scm >= 8}
+BuildRequires:  %{python_module setuptools >= 60}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(cfitsio)
-BuildRequires:  pkgconfig(healpix_cxx)
+BuildRequires:  pkgconfig(healpix_cxx) >= 3.83
 BuildRequires:  pkgconfig(libsharp)
 Requires:       python-astropy >= 4.0
 Requires:       python-numpy >= 1.19
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     python-matplotlib
 Recommends:     python-scipy
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%if %{with test}
 # SECTION Additional test requirements
 # Symbol clashes with astropy < 4.0
 BuildRequires:  %{python_module astropy >= 4.0}
+BuildRequires:  %{python_module healpy = %{version}}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scipy}
 # /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -72,24 +83,19 @@ healpy provides utilities to:
 
 %prep
 %autosetup -p1 -n healpy-%{version}
-chmod -x lib/healpy/data/*.dat
+chmod -x lib/healpy/data/planck_*cmap.dat
 
 %build
+%if %{without test}
 export CFLAGS="%{optflags}"
 %pyproject_wheel
+%endif
 
 %install
+%if %{without test}
 %pyproject_install
 %python_clone -a  %{buildroot}%{_bindir}/healpy_get_wmap_maps.sh
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-
-%check
-export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
-# Skip tests requiring network access
-donttest="test_astropy_download_file or test_rotate_map_polarization or test_pixelweights_local_datapath"
-# Upstream is investigating: gh#healpy/healpy#987
-donttest="$donttest or test_map2alm_lsq"
-%pytest_arch test -k "not ($donttest)"
 
 %post
 %python_install_alternative healpy_get_wmap_maps.sh
@@ -102,6 +108,16 @@ donttest="$donttest or test_map2alm_lsq"
 %license COPYING
 %python_alternative %{_bindir}/healpy_get_wmap_maps.sh
 %{python_sitearch}/healpy/
-%{python_sitearch}/healpy-%{version}.dist-info/
+%{python_sitearch}/healpy-%{version}*-info/
+
+%else
+
+%check
+export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
+export MPLCONFIGDIR=${PWD}
+# Skip tests requiring network access
+%pytest_arch -k 'not (test_astropy_download_file or test_rotate_map_polarization or test_pixelweights_local_datapath)' ./test/
+
+%endif
 
 %changelog

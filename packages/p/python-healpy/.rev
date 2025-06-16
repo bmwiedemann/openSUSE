@@ -112,4 +112,12 @@
 - Remove devel package: Unused, the src is no longer in the (forwarded request 1245482 from bnavigator)</comment>
     <requestid>1245483</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6b6b626674b0ad603c9336b55747ab09</srcmd5>
+    <version>1.18.1</version>
+    <time>1750065140</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1285912</requestid>
+  </revision>
 </revisionlist>
