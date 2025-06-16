@@ -114,4 +114,13 @@
 - replace oslotest with more correct fixtures dependency</comment>
     <requestid>1199493</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>45040e649d1a977531457eb7eaf69f0c</srcmd5>
+    <version>2.0.0</version>
+    <time>1750065193</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1285974</requestid>
+  </revision>
 </revisionlist>
