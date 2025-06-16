@@ -22,13 +22,14 @@ Version:        1.0.4
 Release:        0
 Summary:        Python module for parsing and using crontab schedules
 License:        LGPL-2.1-only
-Group:          Development/Languages/Python
 URL:            https://github.com/josiahcarlson/parse-crontab
 Source:         https://github.com/josiahcarlson/parse-crontab/archive/%{version}.tar.gz#/crontab-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil
@@ -46,10 +47,10 @@ to when the item should next be executed.
 %setup -q -n parse-crontab-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +60,6 @@ to when the item should next be executed.
 %doc README.rst
 %license LICENSE LICENSE3
 %{python_sitelib}/crontab
-%{python_sitelib}/crontab-%{version}-*
+%{python_sitelib}/crontab-%{version}.dist-info
 
 %changelog
