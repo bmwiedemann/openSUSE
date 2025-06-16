@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jun 11 17:22:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.7:
+  + Don't specify colors in util/doxygen-extra.css.
+  + Meson build:
+    - Use Meson's pkgconfig module to generate .pc files.
+    - Use the Python installation that Meson uses.
+  + Autotools build: configure.ac: subst for mm-common-get.
+  + Skeletonmm:
+    - Don't require the 'dot' command.
+    - Use Meson's pkgconfig module to generate .pc files.
+  + Documentation: OVERVIEW.md: Update the meson.build snippet
+- Changes from version 1.0.6:
+  + MM_AX_CXX_COMPILE_STDCXX(): Support C++20
+  + util/meson_aux/libstdcxx-tag.py: Try curl without compression
+  + Meson build:
+    - Fix use as subproject on Windows
+    - Don't fail if warning_level=everything
+  + Skeletonmm:
+    - Fix the evaluation of is_git_build on Windows
+    - Simplify if-file-exists test
+  + Documentation: Remove AUTHORS and add info to README.md
+- Changes from version 1.0.5:
+  + Convert README to README.md and OVERVIEW.md.
+  + Meson build:
+    - util/meson_aux: Make tarball reproducible.
+    - Simplify lookup of python command.
+  + Skeletonmm:
+    - Avoid configuration warnings.
+    - Detect if we build from a git subtree.
+    - Simplify lookup of python command.
+  + Add build-tests option.
+
+-------------------------------------------------------------------
 Fri Feb 11 16:03:04 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.0.4:
