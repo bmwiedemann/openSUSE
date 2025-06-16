@@ -198,4 +198,242 @@ package called `obs-service-recomprizz`.</comment>
 </comment>
     <requestid>1282337</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5bd021f97e6204df7d86d4c7b645efa1</srcmd5>
+    <version>8.0.0</version>
+    <time>1750065124</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.0.0:
+  * chore(release): bump to v8.0.0
+  * refactor: `renamepattern` should require `rename`
+  * docs: update recomprizz.service file to match new features
+  * Merge branch '20250613-using-no-walkdir'
+  * misc: make the warning clear if renaming fails because of wrong file extension
+  * refactor: rework recomprizz renaming logic
+  * refactor: rework recomprizz args fields to introduce renaming with regex.
+  * ci: switch to leap image
+  * improvement: remove any usage of walkdir
+  * remove: removal of walkdir crate since we are using standard library's fs module only.
+- Update to version 7.2.4:
+  * chore(release): bump to v7.2.4
+  * dependencies: remove semver crate
+  * misc: add newline to the end of the file if file was not empty before.
+  * Revert &quot;misc: add newline at the end of the dot changes file&quot;
+  * misc: add newline at the end of the dot changes file
+  * refactor: improve getting &quot;number of changes since&quot; logic
+  * misc: change short flag to U
+  * misc: change short flag to U
+- Update to version 7.2.3+git3.gc75d73f8953641bc46255a40348edf4c4c0852c3:
+  * refactor: improve getting &quot;number of changes since&quot; logic
+  * misc: change short flag to U
+  * misc: change short flag to U
+- Update to version 7.2.3:
+  * chore(release): bump to version 7.2.3
+  * fix: refactor so that after a deletion of tag does not cause an error
+- Update to version 7.2.0:
+  * chore(release): bump to version 7.2.0
+  * tests: roast_scm_opts should have `None` as the first parameter
+  * improvement: add a possibility to pass a custom workdir
+- Update to version 7.1.2:
+  * chore(release): bump to version 7.1.2
+  * improvement: only update the changelog header if possible
+  * ci: forgot to enable obs in the feature flag
+- Update to version 7.1.1:
+  * chore(release): bump to v7.1.1
+  * ci: forgot to specify which test to run
+  * ci: include a test for feature `obs`
+  * misc: update only once the version string.
+  * tests: test feature `obs`
+- Ignore test for scm.
+- Update to version 7.1.0:
+  * chore(release): bump to v7.1.0
+  * fix: date format now fixed
+  * chore(release): bump to v7.0.0
+  * docs: update README
+  * docs: update roast_scm.service file
+  * format: run `cargo +nightly fmt`
+  * fix: apply clippy suggestions
+  * fix: disable `obs` feature for now in tests
+  * tests: add tests for roast scm
+  * add space
+  * misc: cleanup and whether to disable or enable code for `obs` feature
+  * docs: document the `obs` feature in Cargo.toml
+  * docs: update wording
+  * fix: change alias for changesemail
+  * ci: seems it needs to be more specific where with this blob for *.rs
+  * clippy: remove needless borrow
+  * ci: test if CI runs with this config
+  * refactor: put set_version logic inside `map` as well. create separate function for changelog file generation.
+  * refactor: move changelog file generator code inside `map`
+  * Merge branch '20250523-improve-scm'
+  * fix: add the last newline
+  * feat: append email if `changesemail` passed.
+  * feat: add `changesemail` field for cli
+  * cleanup
+  * misc: add optional obs feature in roast-cli
+  * feat: implement update version in specfile
+  * feat: cli has new fields, `set_name` and `set_version` for obs feature
+  * misc: add optional obs feature
+  * misc: apply `trim()` first for strings before checking if they're empty
+  * misc: `split('\n')` -&gt; `lines()`
+  * misc: use the `to_extension()` method
+  * misc: change this to an iterator
+  * refactor: use `any` since it returns at the first true, otherwise, false.
+  * refactor: use iterators over for loops
+  * misc: change wording
+  * misc: cleanup code for feature, changelog generation.
+  * feat: changelog generation is now implemented.
+  * dependencies: add hifitime
+  * misc: add initial logic for `changesgenerate` feature
+  * feat: add new cli arguments and fieldnames for `RoastScmArgs` related to `changesgenerate`
+  * fix: `remote_checkout_branch` creating a branch from remote branch with incorrect name
+  * api: cleanup visibility and privacy of certain functions
+  * misc: more cleanup
+  * begin iterating for a new future version
+  * misc: add cliff.toml for changelog generation config
+  * fixes: the refactor caused the commit hash to be skipped
+  * docs: add where the final filename is based on.
+  * format: run `cargo +nightly fmt`
+  * improvements: replace dumb lookup by reading config instead
+  * fix: `versionrewriteregex` should require `versionrewritepattern`
+  * feat: `versionrewriteregex` and `versionrewritepattern` implemented
+  * dependencies: add regex crate
+  * fix: it should be prefixed with `g`
+  * fix: version format improvements and fixes
+  * feat: initial versionformat prefix
+  * fixes: checkout should not error if branch is HEAD. sorting in revwalk should not be reversed.
+  * refactor: more cleanup. remove redundant logic
+  * misc: cleanup code
+  * misc: make it clear what depth was set in the warnings
+  * performance: do a dumb revision lookup to check if a revision is a branch
+  * fix: use set_head_detached since we want it to point to a commit
+  * fix: add condition if branch ref is the current HEAD
+  * improvements: if there is no changelog, warn the user
+  * format: run `cargo +nightly fmt`
+  * improvements: roast_scm now is able to generate some changelog
+  * roast_scm: generate changelog improvements
+  * common: add `to_extension` method for Compression
+  * improvements: describe string is implemented alongside improved log messages
+  * fix: set this to 0
+  * clippy: remove redundant &amp;
+  * roast_scm: initial refactor of the cloning process and finding the revision
+  * dependencies: add semver
+  * docs: update README
+  * fmt: run \`cargo +nightly fmt\`
+- Update to version 6.1.1:
+  * improvements: allow returning an `Option&lt;PathBuf&gt;` if is-temporary is set to `false`.
+  * fix: import correctly `std::path::PathBuf`.
+  * fix: use the correct return type inside the map.
+  * fix: ensure that the outdir exists
+  * docs: this is roast_scm. this file was copied from recomprizz so it was overlooked accidentally
+  * docs: fix typo in README.md
+  * fix: return type should be Result&lt;Option&lt;PathBuf&gt;&gt;
+  * fix: return type should be Result&lt;Option&lt;PathBuf&gt;&gt;
+  * fix: return Ok(())
+- Update to version 6.1.0. This includes changes that are from 6.0.0.
+  * clippy: apply clippy fixes
+  * docs: add and improve doc comments
+  * chore: version bump dependencies
+  * fix: it should be evaluated if it's false
+  * fix: add let binding
+  * improvements: feature is-temporary now have clearer messages if directory was not deleted.
+  * cli: set the is-temporary with ArgAction::Set
+  * docs: improvements on how everything works
+  * feat: is-temporary flag now used.
+  * docs: add roast_scm.service
+  * format: run `cargo +nightly fmt`
+  * clippy: apply clippy fixes
+  * fix: remove unused key in roast-cli's Cargo.toml
+- Update to version 5.1.7:
+  * feat: add zstd as another alias for zst
+  * prepare structure for roast-scm
+  * minor: improve error message here
+  * fix: added trace feature
+- Update to version 5.1.6:
+  * fix: revert 8977c6741364c6d25fb33408d8b4232d835a768b
+- Update to version 5.1.5:
+  * add service files. they serve as documentation
+  * fix mismatched types in roast-cli
+  * Bump zstd and infer
+  * clippy: rectify the needless pass by value
+  * chore: set resolver to 2 and enforce strict linting rules
+  * fix: just use an empty &quot;&quot; if strip fails
+  * add COC and CONTRIBUTING
+  * cleanup deps and begin cycle
+  * remove comment for 037aa62
+  * docs: removed warning. ensured reproducibility.
+- Update to version 5.1.2:
+  * minor: improvements on how we sort files and directories
+  * use rayon while you can
+  * performance: add rayon to parallelise copying operations
+  * docs: add important difference between ADDED and INCLUDED [ci skip]
+  * docs: improve wording [ci skip]
+  * docs: fix grammar [ci skip]
+  * docs: explain how the path behaviour works
+  * refactor: improve the logic handling for adding, excluding and including
+  * improve message logs
+  * fix: resolved some edge-cases with additional paths and included paths
+  * fix: reimplement adding of archive files
+  * doc: update README on CLI help
+  * feat and fix: properly implement exclude and include
+  * cli: finalise flags. begin cycle
+  * major: begin refactor cycle [ci skip]
+  * logging: set to trace level for filter_paths
+  * fix: avoid duplicating entries
+  * fix: do not consider temporary directory as hidden
+  * fix: just use ends_with to check if it's a valid file extension
+  * improvement: also filter_paths for each element in additional_paths
+  * feat: hidden file and gitignore finally correctly implemented
+- New subpackage: obs-service-roast
+- Update to version 4.5.0:
+  * docs: update README and include instructions regarding renaming
+  * minor: update tests and update paths code
+  * feat: add glob support
+  * fix: actually implement the fix for ef1e6f857e48821198d720d092bc7087af762f2a
+  * feat: add glob support to all
+- Update to version 4.2.0:
+  * fix: filename should leave out version part alone
+- Update to version 4.1.0:
+  * lib: move over copy_dir_all as a common utility
+  * cli: move logic as cli stubs
+  * tests: use copy_dir_all as part of lib now instead
+  * roast and raw: improve description of cli options then format
+  * move raw and roast modules to standalone files
+  * cli: add recomprizz args
+  * recomprizz: initial implementation
+  * import termcap
+  * fix: apply clippy lints
+  * tracing: set logic where and when to start properly
+  * apply clippy lints + format
+  * set output path correctly
+  * refactor: canonicalize filter
+  * refactor: canonicalize paths
+  * update deps
+  * reproducibility: set to false by default
+  * fix: additional paths variable should only be a collection of files and not directories
+  * doc: add a warning regarding reproducibility
+  * doc: fix warning msg
+  * doc: fix warning msg
+  * refactor: move mostly to libroast
+  * refactor: improve field naming and description
+  * refactor: remove tracing crate unused imports
+  * minor: raaaaaaaaaaaaawwwwwwww
+  * make names consistent
+  * remove: cliff.toml and git-cliff is an overengineered changelog generator
+  * prepare justfile for publishing
+  * change it to a text file
+  * cli: allow to explicitly tell &quot;true&quot; or &quot;false&quot; using ArgAction::Set and add our service file
+- Add new subpackage `obs-service-recomprizz`
+  * This is a possible drop-in replacement for obs-service-recompress
+- Update to version 3.3.1:
+  * tests: add library tests + ci tests
+  * test: this should be two separate files
+- Update to version 3.3.0:
+  * Properly set preserve root
+  * Cleanup raw binary log output
+  * Support uncompressed tarballs with tar extension
+- Initial spec for roast 3.2.2
+</comment>
+    <requestid>1285800</requestid>
+  </revision>
 </revisionlist>
