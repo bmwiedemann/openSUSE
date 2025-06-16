@@ -32,4 +32,12 @@
 - Initial release 0.2.1a0</comment>
     <requestid>1184220</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2ac8a14fecab33e988e57c391a2a6800</srcmd5>
+    <version>0.4.0a0</version>
+    <time>1750065193</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.</comment>
+    <requestid>1285973</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-towncrier
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,8 +32,10 @@ Summary:        An RST directive for injecting a Towncrier-generated changelog d
 License:        BSD-3-Clause
 URL:            https://github.com/sphinx-contrib/sphinxcontrib-towncrier
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-towncrier/sphinxcontrib-towncrier-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
@@ -57,11 +59,11 @@ An RST directive for injecting a Towncrier-generated changelog draft containing 
 rm -v pytest.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -75,9 +77,8 @@ rm -v pytest.ini
 %doc README.rst
 %license LICENSE
 %dir %{python_sitelib}/sphinxcontrib
-%dir %{python_sitelib}/sphinxcontrib/towncrier
-%{python_sitelib}/sphinxcontrib/towncrier/*
-%{python_sitelib}/sphinxcontrib_towncrier-*-info
+%{python_sitelib}/sphinxcontrib/towncrier
+%{python_sitelib}/sphinxcontrib_towncrier-%{version}.dist-info
 %endif
 
 %changelog
