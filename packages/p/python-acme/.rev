@@ -845,4 +845,23 @@
       redirection to the challenge URL.</comment>
     <requestid>1271239</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>810a72754a9f43d8f136403f80207012</srcmd5>
+    <version>4.1.1</version>
+    <time>1750069592</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.1.1
+  * ACME Renewal Info (ARI) support. certbot renew will automatically
+    check ARI when using an ACME server that supports it, and may renew
+    early based on the ARI information.
+  * Switched to src-layout from flat-layout to accommodate PEP 517 pip
+    editable installs
+  * acme.client.ClientNetwork now makes the &quot;key&quot; parameter optional.
+  * Deprecated acme.challenges.TLSALPN01*, acme.crypto_util.SSLSocket,
+    acme.standalone.TLSServer, acme.standalone.TLSALPN01Server and
+    parameter alpn_protocols from acme.crypto_util.probe_sni
+  * Fixed an unintended change introduced in 4.0.0 where renew_before_expiry
+    could not be shorter than certbot's default renewal time.</comment>
+    <requestid>1286019</requestid>
+  </revision>
 </revisionlist>

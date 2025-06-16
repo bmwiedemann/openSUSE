@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define libname acme
 Name:           python-%{libname}
-Version:        4.0.0
+Version:        4.1.1
 Release:        0
 Summary:        Python library for the ACME protocol
 License:        Apache-2.0
@@ -64,7 +64,7 @@ Python library implementing the Automatic Certificate Management Environment
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/%{libname}
 
 %check
-%pytest acme/_internal/tests/
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt
