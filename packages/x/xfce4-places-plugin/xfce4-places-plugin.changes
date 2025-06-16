@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 14 14:54:13 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 1.9.0
+  * Replace deprecated exo with libxfce4ui 4.21.0
+  * build: Require gio-unix-2.0
+  * build: Automate copyright year management
+  * Add meson build
+  * Add about dialog
+  * I18n: Update po/LINGUAS list
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Jan  5 14:18:24 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.8.4

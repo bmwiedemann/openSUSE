@@ -16,19 +16,20 @@
 #
 
 
-%define panel_version 4.16.0
+%define panel_version 4.20.0
 %define plugin places
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.8.4
+Version:        1.9.0
 Release:        0
 Summary:        Places Menu Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://goodies.xfce.org/projects/panel-plugins/xfce4-places-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.8/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.9/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(exo-2) >= 4.16.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
@@ -40,9 +41,9 @@ BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libnotify) >= 0.7.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.16.0
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.16.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= %{panel_version}
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{panel_version}
+BuildRequires:  pkgconfig(libxfconf-0) >= %{panel_version}
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
@@ -81,12 +82,12 @@ NOCONFIGURE=1 ./autogen.sh
   --enable-maintainer-mode \
   --disable-static
 %else
-%configure --disable-static
+%meson
 %endif
-%make_build
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 rm -f %{buildroot}%{_libdir}/xfce4/panel/plugins/libplaces.la
 
