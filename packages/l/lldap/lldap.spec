@@ -1,7 +1,7 @@
 #
 # spec file for package lldap
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,12 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source11:       %{name}.service
 Source21:       system-user-%{name}.conf
-BuildRequires:  cargo1.82
 BuildRequires:  cargo-packaging
-BuildRequires:  zstd
-BuildRequires:  wasm-pack
-BuildRequires:  wasm-bindgen
 BuildRequires:  gzip
 BuildRequires:  sysuser-tools
+BuildRequires:  wasm-bindgen
+BuildRequires:  wasm-pack
+BuildRequires:  zstd
 ExclusiveArch:  %{rust_tier1_arches}
 
 # nothing provides libldap-data = 2.4.46-150600.23.21 needed by libldap-2_4-2, (got version 2.6.8-lp156.3.3)
