@@ -28,18 +28,16 @@ ExcludeArch:    %{ix86} %{arm32}
 %define psuffix -%{flavor}
 %endif
 
-%define awkward_cpp_version 44
+%define awkward_cpp_version 46
 %{?sle15_python_module_pythons}
 Name:           python-awkward%{psuffix}
-Version:        2.7.4
+Version:        2.8.4
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
 URL:            https://github.com/scikit-hep/awkward
 Source0:        https://files.pythonhosted.org/packages/source/a/awkward/awkward-%{version}.tar.gz
 Source1:        python-awkward.rpmlintrc
-# PATCH-FIX-UPSTREAM awkward-py313-clearlocaldict.patch gh#scikit-hep/awkward#3404
-Patch0:         awkward-py313-clearlocaldict.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling >= 1.10.0}
