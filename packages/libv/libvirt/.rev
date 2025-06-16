@@ -4883,4 +4883,13 @@ make it easier to directly use the Factory package in SUSE projects.</comment>
 - spec: Drop support for old distros</comment>
     <requestid>1283752</requestid>
   </revision>
+  <revision rev="425" vrev="2">
+    <srcmd5>e65acdee9b442d48cad8f7d6f772a7be</srcmd5>
+    <version>11.4.0</version>
+    <time>1750065109</time>
+    <user>anag_factory</user>
+    <comment>This is a minor change that simply adds a missing bug
+number to the last changelog entry.</comment>
+    <requestid>1285550</requestid>
+  </revision>
 </revisionlist>

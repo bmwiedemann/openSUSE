@@ -2,7 +2,7 @@
 Fri Jun  6 22:32:30 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 11.4.0
-  - bsc#1241481, boo#1243740
+  - bsc#1241481, boo#1243740, bsc#1244488
   - Many incremental improvements and bug fixes, see
     https://libvirt.org/news.html#v11-4-0-2025-06-02
 - spec: Drop support for old distros
