@@ -18,6 +18,7 @@
 
 
 %global __requires_exclude typelib\\(GtkosxApplication\\)|typelib\\(Gtkspell\\)|typelib\\(GConf\\)
+%define pythons python3
 Name:           gramps
 Version:        6.0.1
 Release:        0
@@ -33,7 +34,9 @@ BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
 # We need the %%mime_database_* macros
 BuildRequires:  shared-mime-info
@@ -68,11 +71,10 @@ organized, searchable and as precise as you need it to be.
 %autosetup -p1
 
 %build
-python3 setup.py build
+%pyproject_wheel
 
 %install
-python3 setup.py install --root=%{buildroot}
-%python3_fix_shebang
+%pyproject_install
 # fix resource-path containing buildroot information
 echo -n %{_datadir} > %{buildroot}%{python3_sitelib}/gramps/gen/utils/resource-path
 # We package those files as package docs...
@@ -103,7 +105,7 @@ rm -r %{buildroot}%{_datadir}/doc/%{name}/
 %{_datadir}/metainfo/org.gramps_project.Gramps.metainfo.xml
 %{_datadir}/mime/packages/org.gramps_project.Gramps.xml
 %{python3_sitelib}/%{name}/
-%{python3_sitelib}/%{name}-%{version}-*.egg-info
+%{python3_sitelib}/%{name}-%{version}.dist-info
 %{_mandir}/man1/%{name}.1%{?ext_man}
 # We can't really move the localized manpages to the lang package, since they'd
 # create a conflict between the lang subpackage and bundles
