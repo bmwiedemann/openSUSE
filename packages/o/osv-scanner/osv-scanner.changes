@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Jun 16 06:42:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.0.3:
+  * Features:
+    - Feature #1943 Added a flag to suppress "no package sources
+      found" error.
+    - Feature #1844 Allow flags to be passed after scan targets,
+      e.g. osv-scanner ./scan-this-dir --format=vertical, by
+      updating to cli/v3
+    - Feature #1882 Added a stable tag to container images for
+      releases that follow semantic versioning.
+    - Feature #1846 Experimental: Add --experimental-extractors and
+      --experimental-disable-extractors flags to allow for more
+      granular control over which OSV-Scalibr dependency extractors
+      are used.
+  * Fixes:
+    - Bug #1856 Improve XML output by guessing and matching the
+      indentation of existing <dependency> elements.
+    - Bug #1850 Prevent escaping of single quotes in XML attributes
+      for better readability and correctness.
+    - Bug #1922 Prevent a potential panic in MatchVulnerabilities
+      when the API response is nil, particularly on timeout.
+    - Bug #1916 Add the "ubuntu" namespace to the debian purl type
+      to correctly parse dpkg BOMs generated on Ubuntu.
+    - Bug #1871 Ensure inventories are sorted by PURL in addition
+      to name and version to prevent incorrect deduplication of
+      packages.
+    - Bug #1919 Improve error reporting by including the underlying
+      error when the response body from a Maven registry cannot be
+      read.
+    - Bug #1857 Fix an issue where SPDX output is not correctly
+      outputted because it was getting overwritten.
+    - Bug #1873 Fix the GitHub Action to not ignore general errors
+      during execution.
+    - Bug #1955 Fix issue causing error messages to be spammed when
+      not running in a git repository.
+    - Bug #1930 Fix issue where Maven client loses auth data during
+      extraction.
+  * Misc:
+    - Update dependencies and updated golang to 1.24.4
+    - fix(deps): update osv-scanner minor (#1951)
+    - chore(deps): update golang docker tag to v1.24.4 (#1933)
+    - chore(deps): update github/codeql-action action to v3.29.0
+      (#1932)
+    - fix(deps): update osv-scanner minor (#1914)
+    - chore(deps): update ossf/scorecard-action action to v2.4.2
+      (#1915)
+    - chore(deps): bump golang.org/x/net from 0.36.0 to 0.38.0 in
+      /experimental/javareach in the go_modules group across 1
+      directory (#1811)
+    - chore(deps): update golangci/golangci-lint-action action to
+      v8 (#1766)
+    - fix(deps): update osv-scanner minor (#1863)
+    - chore(deps): update workflows (#1837)
+    - chore(deps): lock file maintenance (#1838)
+    - chore(deps): update golang docker tag to v1.24.3 (#1864)
+    - fix(deps): update osv-scanner minor (#1836)
+
+-------------------------------------------------------------------
 Wed Apr 30 07:32:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.0.2:
