@@ -26,8 +26,10 @@ URL:            https://github.com/dvarrazzo/py-setproctitle/
 Source:         https://files.pythonhosted.org/packages/source/s/setproctitle/setproctitle-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  procps
 BuildRequires:  python-rpm-macros
@@ -44,10 +46,10 @@ the OpenSSH Server for example.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -60,6 +62,6 @@ export CFLAGS="%{optflags}"
 %doc HISTORY.rst README.rst
 %license COPYRIGHT
 %{python_sitearch}/setproctitle
-%{python_sitearch}/setproctitle-%{version}*-info
+%{python_sitearch}/setproctitle-%{version}.dist-info
 
 %changelog
