@@ -1961,7 +1961,6 @@ unsorted:
   - cargo-packaging 
   - cargo-vendor-filterer 
   - cargo1.78 
-  - cargo1.82 
   - cargo1.84 
   - cargo1.85 
   - cargo1.86 
@@ -2664,6 +2663,7 @@ unsorted:
   - cpmono_v07-fonts 
   - cpp-httplib-devel 
   - cpp13 
+  - cpp14 
   - cpp7 
   - cppcheck 
   - cppcheck-gui 
@@ -4802,6 +4802,7 @@ unsorted:
   - gcc-ada-32bit 
   - gcc-c++ 
   - gcc-c++-32bit 
+  - gcc-cobol 
   - gcc-d 
   - gcc-d-32bit 
   - gcc-devel 
@@ -4811,6 +4812,8 @@ unsorted:
   - gcc-go-32bit 
   - gcc-info 
   - gcc-locale 
+  - gcc-m2 
+  - gcc-m2-32bit 
   - gcc-obj-c++ 
   - gcc-objc 
   - gcc-objc-32bit 
@@ -12353,7 +12356,7 @@ unsorted:
   - libcapi20-3-32bit 
   - libcapi20-devel 
   - libcapi20-devel-32bit 
-  - libcapnp-1_1_0 
+  - libcapnp-1_2_0 
   - libcapnp-devel 
   - libcapstone-devel 
   - libcapstone-devel-static 
@@ -19649,7 +19652,6 @@ unsorted:
   - nut-drivers-net 
   - nv-prefer-signed-open-driver 
   - nvdock 
-  - nvidia-libXNVCtrl 
   - nvidia-libXNVCtrl-devel 
   - nvidia-modprobe 
   - nvidia-open-driver-G06-signed-cuda-default-devel 
@@ -25555,6 +25557,7 @@ unsorted:
   - python311-kiwisolver 
   - python311-kmatch 
   - python311-knack 
+  - python311-knowit 
   - python311-kombu 
   - python311-korean-lunar-calendar 
   - python311-kubernetes 
@@ -27145,6 +27148,7 @@ unsorted:
   - python311-traits 
   - python311-traitsui 
   - python311-traittypes 
+  - python311-trakit 
   - python311-transaction 
   - python311-transformers 
   - python311-transip 
@@ -29283,6 +29287,7 @@ unsorted:
   - python312-kiwisolver 
   - python312-kmatch 
   - python312-knack 
+  - python312-knowit 
   - python312-kombu 
   - python312-korean-lunar-calendar 
   - python312-kubernetes 
@@ -30906,6 +30911,7 @@ unsorted:
   - python312-traits 
   - python312-traitsui 
   - python312-traittypes 
+  - python312-trakit 
   - python312-transaction 
   - python312-transformers 
   - python312-transip 
@@ -33003,6 +33009,7 @@ unsorted:
   - python313-kiwisolver 
   - python313-kmatch 
   - python313-knack 
+  - python313-knowit 
   - python313-kombu 
   - python313-korean-lunar-calendar 
   - python313-kubernetes 
@@ -34593,6 +34600,7 @@ unsorted:
   - python313-traits 
   - python313-traitsui 
   - python313-traittypes 
+  - python313-trakit 
   - python313-transaction 
   - python313-transformers 
   - python313-transip 
@@ -36394,8 +36402,6 @@ unsorted:
   - rust-stakeholder 
   - rust1.78 
   - rust1.78-src 
-  - rust1.82 
-  - rust1.82-src 
   - rust1.84 
   - rust1.84-src 
   - rust1.85 
@@ -48891,9 +48897,6 @@ unsorted:
   - wxmp3gain-lang 
   - wxsqlite3-devel 
   - wxsvg 
-  - wyrmgus 
-  - wyrmgus-devel 
-  - wyrmsun 
   - x11-japanese-bitmap-fonts 
   - x11perf 
   - x11vnc 
@@ -49046,7 +49049,6 @@ unsorted:
   - xfce4-panel-plugin-indicator 
   - xfce4-panel-plugin-indicator-lang 
   - xfce4-power-manager-branding-upstream 
-  - xfce4-sensors-plugin-devel 
   - xfce4-session-branding-upstream 
   - xfce4-session-wayland-experimental 
   - xfce4-settings-branding-upstream 
