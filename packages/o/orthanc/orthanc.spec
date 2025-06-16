@@ -18,7 +18,7 @@
 
 
 Name:           orthanc
-Version:        1.12.7
+Version:        1.12.8
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later
@@ -192,7 +192,7 @@ mkdir -p -m 755 %{buildroot}/usr/src/%{name}
 tar --strip-components 1 -xzf %{S:0} -C %{buildroot}/usr/src/%{name}/
 
 #Apply dcmtk patch
-##%patch %{buildroot}/usr/src/%{name}/OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake < %{P:0}
+## patch %{buildroot}/usr/src/%{name}/OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake < %{P:0}
 
 #Apply remaining patches to source tree
 ## patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:1}
@@ -308,6 +308,7 @@ getent passwd orthanc >/dev/null || \
 %{_docdir}/orthanc/Orthanc*
 %{_docdir}/orthanc/Samples/*
 %dir %attr(0755, orthanc, orthanc) %{_docdir}/orthanc/Samples
+%dir %attr(0755, orthanc, orthanc) %{_docdir}/orthanc/OrthancPluginSamples
 
 %files source
 %defattr(-,root,root)
