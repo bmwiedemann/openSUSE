@@ -1,7 +1,7 @@
 #
 # spec file for package lite-xl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lite-xl
-Version:        2.1.6
+Version:        2.1.8
 Release:        0
 Summary:        A lightweight text editor written in Lua
 Group:          Productivity/Text/Editors
@@ -31,7 +31,7 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(lua) >= 5.4
-BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sdl3)
 %if 0%{?sle_version} == 150500
 BuildRequires:  python311-base
 %endif

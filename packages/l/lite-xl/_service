@@ -1,3 +1,4 @@
+<!--
 <services>
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/lite-xl/lite-xl</param>
@@ -13,4 +14,8 @@
     <param name="compression">gz</param>
     <param name="file">*.tar</param>
   </service>
+</services>
+-->
+<services>
+  <service name="download_files" mode="manual" />
 </services>
