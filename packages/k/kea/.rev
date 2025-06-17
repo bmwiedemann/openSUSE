@@ -185,4 +185,14 @@ AFAICT these packages aren't needed for generating the docs and the official doc
 - /run/kea now has mode 0750 for all services.</comment>
     <requestid>1280982</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>402894cf04d24ac3f7cbbe6ce35f8230</srcmd5>
+    <version>2.6.3</version>
+    <time>1750177348</time>
+    <user>anag_factory</user>
+    <comment>- Change After= from network.target to network-online.target and
+  add Wants=network-online.target to systemd services to prevent
+  starting up before ip setup is finished.</comment>
+    <requestid>1286199</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,8 @@
 [Unit]
 Description=ISC Kea DHCPv6 server
 Before=multi-user.target
-After=remote-fs.target network.target nss-lookup.target time-sync.target ldap.service ndsd.service
+Wants=network-online.target
+After=remote-fs.target network-online.target nss-lookup.target time-sync.target ldap.service ndsd.service
 
 [Service]
 User=keadhcp

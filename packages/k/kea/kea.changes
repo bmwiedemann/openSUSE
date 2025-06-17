@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 16 12:27:37 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Change After= from network.target to network-online.target and
+  add Wants=network-online.target to systemd services to prevent
+  starting up before ip setup is finished.
+
+-------------------------------------------------------------------
 Mon May 26 15:07:13 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 2.6.3
