@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 16 14:32:21 UTC 2025 - Robert Munteanu <rombert@apache.org>
+
+- Update to version 2.6.2:
+  * Update toolkit components
+  * Upgrade dependencies
+  * Introduce support for shelling out to Azure binaries in authentication
+
+-------------------------------------------------------------------
 Mon Jun 02 07:08:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.6.1:
