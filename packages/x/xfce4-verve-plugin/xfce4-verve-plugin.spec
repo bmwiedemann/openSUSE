@@ -16,30 +16,28 @@
 #
 
 
-%define panel_version 4.16.0
+%define xfce_version 4.16.0
 %define plugin verve
-%bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        2.0.4
+Version:        2.1.0
 Release:        0
 Summary:        Command Line Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-verve-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/2.0/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/2.1/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.00
-BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
-%if %{with git}
-BuildRequires:  xfce4-dev-tools
-%endif
-Requires:       xfce4-panel >= %{panel_version}
+BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{xfce_version}
+BuildRequires:  pkgconfig(libxfce4ui-2) >= %{xfce_version}
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{xfce_version}
+Requires:       xfce4-panel >= %{xfce_version}
 # uses exo-open
 Requires:       exo-tools
 Recommends:     %{name}-lang = %{version}
@@ -71,20 +69,11 @@ Provides translations for the "%{name}" package.
 %autosetup
 
 %build
-%if %{with git}
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-  --enable-maintainer-mode \
-  --disable-static
-%else
-%configure --disable-static
-%endif
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-
-rm -f %{buildroot}%{_libdir}/xfce4/panel/plugins/libverve.la
+%meson_install
 
 %find_lang %{name} %{name}.lang %{?no_lang_C}
 
