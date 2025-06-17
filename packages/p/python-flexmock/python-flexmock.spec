@@ -24,8 +24,9 @@ Summary:        Testing library for creating mocks, stubs and fakes
 License:        BSD-2-Clause
 URL:            https://github.com/bkabrda/flexmock
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -42,10 +43,10 @@ a number of Python-only features.
 %autosetup -n flexmock-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +56,6 @@ a number of Python-only features.
 %license LICENSE
 %doc README.md CHANGELOG.md
 %{python_sitelib}/flexmock
-%{python_sitelib}/flexmock-%{version}-py*.egg-info
+%{python_sitelib}/flexmock-%{version}.dist-info
 
 %changelog
