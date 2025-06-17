@@ -1,7 +1,7 @@
 #
 # spec file for package python-autoflake
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-autoflake
 Version:        2.3.1
@@ -24,17 +25,17 @@ Summary:        Program to removes unused Python imports and variables
 License:        MIT
 URL:            https://github.com/myint/autoflake
 Source:         https://files.pythonhosted.org/packages/source/a/autoflake/autoflake-%{version}.tar.gz
-Requires:       python-tomli
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyflakes >= 3.0.0}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-pyflakes >= 3.0.0
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       python-tomli
 BuildArch:      noarch
 %python_subpackages
 
@@ -67,11 +68,8 @@ chmod -x autoflake.py
 export LANG=en_US.UTF-8
 %pyunittest -v test_autoflake
 
-%post
-%python_install_alternative autoflake
-
-%postun
-%python_uninstall_alternative autoflake
+%pre
+%python_libalternatives_reset_alternative autoflake
 
 %files %{python_files}
 %doc AUTHORS.rst README.md
