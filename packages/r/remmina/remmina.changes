@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 16 12:39:01 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.4.40:
+  * [REM-3270] Fix invalid free causing crash with sending keystrokes and clipboard contents 
+  * Fix SEGV when removing a non-exitend connection 
+  * [REM-3282] Adjust floating toolbar to take up less space
+  * [REM-3285] Fix issue with multimonitor configuration needed for FreeRDP versions after 3.10.x
+  * [REM-3286] Add option to allow ssh-rsa keys to be used for ssh connections
+  * [REM-3285] Only set the max width and height to full monitor if using multimonitor
+  * [REM-3285] Revert calls back to uint 
+  * [REM-3295] Fix issue with RDP scaling on connect
+  * [REM-3301] Add option to force multimonitor mode
+  * [REM-3314] Added the options to start connections in fullscreen mode and/or with dynamic resolution enabled for protocols that support the options
+  * [REM-3316] Allow empty passwords to be passed to FreeRDP 
+  * [REM-3289] Allow import/export of ssh tunnel settings 
+  * [REM-3333] hide local cursor when showing remote cursor
+- Add drop-unused-func.patch: drop a debug function that was not being usused anywhere in the code
+
+-------------------------------------------------------------------
 Wed Jan  8 10:08:40 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.4.39:
