@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Jun 13 09:51:17 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.5.4+git34.g94cf2e35965379238d0f4f9f76d044d08ba3ff81:
+  * Merge pull request #1333 from StikyPiston/patch-2
+  * Update README.md
+  * Update README.md (#1332)
+  * Merge pull request #1328 from VuiMuich/main
+  * README update xmobar url
+  * Merge pull request #1324 from mautamu/revert-1192-fix-1323
+  * fix: typo
+  * feat(watchdog): deprecate leftwm-watchdog bin; gate leftwm behind feat
+  * chore(deps): bump crossbeam-channel from 0.5.14 to 0.5.15 (#1322)
+  * chore(deps): bump tokio from 1.43.0 to 1.43.1; update workflows to check MSRV clippies (#1321)
+  * Merge pull request #1320 from fransklaver/simplify-code-by-removing-macro
+  * scratchpad_handler: remove try_bool macro
+  * Merge pull request #1319 from fransklaver/x11rb-fix-getting-output-name
+  * Merge pull request #1318 from fransklaver/x11rb-fix-opening-qt-dialogs
+  * x11rb: getters: fix getting the output name
+  * x11rb: allow legacy name to not exist
+  * Merge pull request #1316 from fransklaver/x11rb-fix-opening-scratchpad-window
+  * fix creating a scratchpad window on x11rb
+  * changelog: fix the spelling of my name (#1314)
+  * Merge pull request #1301 from AnthonyMichaelTDM/issue-1296
+  * Merge pull request #1313 from leftwm/mautamu-patch-1
+  * Update CHANGELOG.md
+  * Merge pull request #1311 from fransklaver/force-window-focus-on-sloppy-focus
+  * Merge pull request #1312 from fransklaver/fix-clickto-focus-after-tag-switch
+  * xlib, x11rb: fix ClickTo focus after switching tags
+  * fix sloppy focus with margins
+  * fix: respect default_layout regardless of layout_mode
+  * Merge pull request #1308 from mautamu/v0.5.4
+  * chore(clippy): correct needless pass by value
+  * fix(test): switch failing test to use EVEN_VERTICAL as default layout instead of LEFT_MAIN
+  * fix: bump MSRV consistently
+  * chore: add small comment to trigger actions so this can be merged
+  * chore: bump flake
+  * chore: version to 0.5.4, MSRV to 1.83.0
+
+-------------------------------------------------------------------
 Wed Apr 16 01:44:44 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update vendored dependencies.
