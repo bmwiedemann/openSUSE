@@ -244,4 +244,15 @@
     <comment></comment>
     <requestid>1142817</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>76f3ba2dc9a0b24bfa7dd6dd97e7c3d8</srcmd5>
+    <version>2.9.1</version>
+    <time>1750177378</time>
+    <user>anag_factory</user>
+    <comment>- Correct version specifier in setup.py.
+- Switch to autosetup macro.
+
+- Convert to pip-based build</comment>
+    <requestid>1286248</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-ldap3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,11 @@ Source:         https://github.com/cannatag/ldap3/archive/v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM skip-missing-LDAP-server.patch gh#cannatag/ldap3#843 mcepl@suse.com
 # skip over tests failing because of the missing local LDAP server running
 Patch0:         skip-missing-LDAP-server.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyasn1 >= 0.4.6}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,16 +48,17 @@ This project was formerly named **python3-ldap**.
 The name has been changed to avoid confusion with the python-ldap library.
 
 %prep
-%setup -q -n ldap3-%{version}
-%autopatch -p1
+%autosetup -p1 -n ldap3-%{version}
+# Remove after 2.10 is released.
+sed -ie 's/"2.9"/"%{version}"/' _version.json
 
 dos2unix COPYING.LESSER.txt COPYING.txt README.rst LICENSE.txt
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,6 +69,6 @@ export STRATEGY=SYNC SERVER=EDIR DECODER=INTERNAL
 %license COPYING.LESSER.txt COPYING.txt LICENSE.txt
 %doc README.rst
 %{python_sitelib}/ldap3
-%{python_sitelib}/ldap3-*-py*.egg-info
+%{python_sitelib}/ldap3-%{version}*-info
 
 %changelog

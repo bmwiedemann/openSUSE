@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 17 05:04:28 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Correct version specifier in setup.py.
+- Switch to autosetup macro.
+
+-------------------------------------------------------------------
+Fri May 30 10:24:47 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Jan 30 15:11:06 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix (C) line in spec file
