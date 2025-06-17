@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 16 10:26:21 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * apache-commons-daemon-gcc15-compat.patch
+    + Fix build with GCC 15
+
+-------------------------------------------------------------------
 Mon Mar 31 12:38:07 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
 
 - Upgrade to 1.4.1

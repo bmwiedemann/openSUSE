@@ -228,4 +228,12 @@
     <comment>1.4.1</comment>
     <requestid>1273081</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>016d2dead8f92d5c861ba0358a3d721c</srcmd5>
+    <version>1.4.1</version>
+    <time>1750177239</time>
+    <user>anag_factory</user>
+    <comment>gcc15 fix</comment>
+    <requestid>1286055</requestid>
+  </revision>
 </revisionlist>

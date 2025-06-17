@@ -1,0 +1,17 @@
+--- commons-daemon-1.4.1-src/src/native/unix/native/jsvc.h	2025-06-16 12:23:28.480247383 +0200
++++ commons-daemon-1.4.1-src/src/native/unix/native/jsvc.h	2025-06-16 12:23:34.839446001 +0200
+@@ -25,14 +25,7 @@
+ #include <sys/stat.h>
+ 
+ /* Definitions for booleans */
+-#ifdef OS_DARWIN
+ #include <stdbool.h>
+-#else
+-typedef enum {
+-    false,
+-    true
+-} bool;
+-#endif
+ 
+ #include "version.h"
+ #include "debug.h"
