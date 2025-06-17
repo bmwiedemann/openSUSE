@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jun 16 12:53:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.15.0:
+  https://semaphoreui.com/releases/semaphore-v2_15
+  * Features
+    - Improved design
+      We’ve refreshed the interface with a cleaner, more modern
+      look.
+    - Terragrunt support
+      Semaphore now supports Terragrunt, a thin wrapper that adds
+      powerful features on top of Terraform.
+    - Task details
+      A new detailed view is now available for each task.
+    - Task summary (PRO)
+      Quickly understand what happened in a task at a glance.
+    - Built-in Swagger API (PRO)
+      Pro users now have access to full API documentation directly
+      inside Semaphore.
+  * Dependencies
+    - chore(deps): update dependency eslint-config-prettier to
+      v10.1.5
+    - chore(deps): update dependency openai to v4.98.0
+    - chore(deps): update dependency @types/node to v22.15.17
+    - fix(deps): update module golang.org/x/crypto to v0.38.0
+    - fix(deps): update module golang.org/x/oauth2 to v0.30.0
+    - fix(deps): update dependency core-js to v3.42.0
+    - chore(deps): update dependency openai to v4.96.2
+    - chore(deps): update dependency @types/node to v22.15.2
+    - fix(deps): update dependency axios to v1.9.0
+
+-------------------------------------------------------------------
 Thu May 29 05:37:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.14.12:
