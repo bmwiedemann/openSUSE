@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 17 09:19:38 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.19.1:
+  * chore: release v0.19.1 (#1726)
+  * fix: skip the fragment check if the uri doesn't contain fragment (#1730)
+  * Don't echo potentially sensitive header data (#1728)
+  * Update changelog
+
+-------------------------------------------------------------------
 Wed Jun 11 14:22:53 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Drop reproducible.patch since it got merged upstream in string_cache_codegen v0.5.4
