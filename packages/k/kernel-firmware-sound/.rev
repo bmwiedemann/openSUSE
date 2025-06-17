@@ -170,4 +170,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * cirrus: cs35l41: Add Firmware for various ACER Laptops using CS35L41 HDA</comment>
     <requestid>1279110</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b9aff9fb9d8d8bb8a53eca16253f44a0</srcmd5>
+    <version>20250613</version>
+    <time>1750177213</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250613 (git commit 12fe085fa409):
+  * cirrus: cs35l41: Add Firmware for ASUS NUC using CS35L41</comment>
+    <requestid>1285900</requestid>
+  </revision>
 </revisionlist>

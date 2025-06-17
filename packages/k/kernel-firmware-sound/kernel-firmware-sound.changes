@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 15 09:10:21 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250613 (git commit 12fe085fa409):
+  * cirrus: cs35l41: Add Firmware for ASUS NUC using CS35L41
+
+-------------------------------------------------------------------
 Wed May 21 20:44:47 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250521 (git commit 3fbaee2775a4):
