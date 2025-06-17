@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 17 08:03:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives
+
+-------------------------------------------------------------------
 Wed Jul 17 19:23:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Require importlib_metadata

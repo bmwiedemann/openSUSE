@@ -102,4 +102,12 @@
     <comment></comment>
     <requestid>1188498</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c15d0e35bef48ac0b66fca5d9b97be68</srcmd5>
+    <version>2.1.1</version>
+    <time>1750177403</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286290</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-spsdk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-spsdk
 Version:        2.1.1
@@ -30,9 +31,11 @@ BuildRequires:  %{python_module flit}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-asn1crypto
 Requires:       python-astunparse
 Requires:       python-bincopy
@@ -63,8 +66,6 @@ Requires:       python-typing-extensions
 # dependency no longer required due to Patch0
 # Requires:       python-pypemicro
 BuildArch:      noarch
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -107,11 +108,8 @@ find . -type f -name README.md -exec dos2unix {} +
 # remove unneccesary *.c and *.bin files
 %python_expand rm -vf %{buildroot}%{$python_sitelib}/spsdk/data/cpu_data/*.c %{buildroot}%{$python_sitelib}/spsdk/data/cpu_data/*.bin
 
-%post
-%python_install_alternative blhost ifr nxpcrypto nxpdebugmbox nxpdevhsm nxpdevscan nxpele nxpimage pfr sdphost sdpshost shadowregs spsdk tpconfig tphost dk6prog nxpmemcfg nxpwpc
-
-%postun
-%python_uninstall_alternative blhost ifr nxpcrypto nxpdebugmbox nxpdevhsm nxpdevscan nxpele nxpimage pfr sdphost sdpshost shadowregs spsdk tpconfig tphost dk6prog nxpmemcfg nxpwpc
+%pre
+%python_libalternatives_reset_alternative blhost
 
 %files %{python_files}
 %doc README.md
