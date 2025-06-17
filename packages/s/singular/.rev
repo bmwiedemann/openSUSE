@@ -47,4 +47,14 @@
     <comment>- Update to release 4.4.1</comment>
     <requestid>1253272</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>85e5983dbdb1745ad1a611b930f168be</srcmd5>
+    <version>4.4.1</version>
+    <time>1750177256</time>
+    <user>anag_factory</user>
+    <comment>- Resolve FTBFS with flint 3.3.x:
+  add 0001-Use-fq_nmod_mat_entry-instead-of-row-pointer-removed.patch,
+  0002-Use-fq_nmod_mat_entry-instead-of-row-pointer-take-2-.patch</comment>
+    <requestid>1286065</requestid>
+  </revision>
 </revisionlist>

@@ -3,8 +3,8 @@ Date: 2025-03-14 19:58:42.309411313 +0100
 
 diff --git resources/feResource.cc resources/feResource.cc
 index 0a93363fd..ccf8b9009 100644
---- resources/feResource.cc
-+++ resources/feResource.cc
+--- a/resources/feResource.cc
++++ a/resources/feResource.cc
 @@ -56,7 +56,7 @@ VAR feResourceConfig_s feResourceConfigs[] =
     "%b/MOD;"
     "%b/../MOD;" // Singular in .libs/Singular

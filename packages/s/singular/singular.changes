@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 16 10:13:11 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve FTBFS with flint 3.3.x:
+  add 0001-Use-fq_nmod_mat_entry-instead-of-row-pointer-removed.patch,
+  0002-Use-fq_nmod_mat_entry-instead-of-row-pointer-take-2-.patch
+
+-------------------------------------------------------------------
 Fri Mar 14 18:24:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.4.1

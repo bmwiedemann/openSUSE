@@ -28,6 +28,8 @@ URL:            https://www.singular.uni-kl.de/
 #Git-Clone:     https://github.com/Singular/Singular
 Source:         https://github.com/Singular/Singular/archive/refs/tags/Release-4-4-1.tar.gz
 Patch1:         versioned-pkglibdir.patch
+Patch2:         0001-Use-fq_nmod_mat_entry-instead-of-row-pointer-removed.patch
+Patch3:         0002-Use-fq_nmod_mat_entry-instead-of-row-pointer-take-2-.patch
 BuildRequires:  autoconf >= 2.62
 BuildRequires:  automake
 BuildRequires:  bison >= 1.2.2
@@ -172,7 +174,7 @@ Requires:       libsingular_resources-%verud = %version-%release
 (Upstream has not provided any description.)
 
 %prep
-%autosetup -n Singular-Release-4-4-1 -p0
+%autosetup -n Singular-Release-4-4-1 -p1
 
 %build
 ./autogen.sh
