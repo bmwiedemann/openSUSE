@@ -1,7 +1,7 @@
 #
 # spec file for package bibview
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,8 +43,9 @@ manipulated, created, and searched.
 %autosetup -p0
 
 %build
+    CFLAGS="%{optflags} --std=gnu99 $(getconf LFS_CFLAGS)"
     xmkmf -a
-    make XAWLIB=-lXaw3d %{?_smp_mflags}
+    make XAWLIB=-lXaw3d %{?_smp_mflags} CFLAGS="$CFLAGS"
 
 %install
     make DESTDIR=%{buildroot} install

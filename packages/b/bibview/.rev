@@ -152,4 +152,12 @@ If the request is OK, please forward it to Factory soon too so that
 the package is ready when we switch the default compiler.  Thanks. (forwarded request 1194287 from jamborm)</comment>
     <requestid>1194301</requestid>
   </revision>
+  <revision rev="22" vrev="1012">
+    <srcmd5>551fa505ab6a1f6a877ac66a85bd49df</srcmd5>
+    <version>2.2</version>
+    <time>1750177241</time>
+    <user>anag_factory</user>
+    <comment>- Make it build again</comment>
+    <requestid>1286062</requestid>
+  </revision>
 </revisionlist>

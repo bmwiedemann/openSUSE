@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 16 10:40:58 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Make it build again
+
+-------------------------------------------------------------------
 Fri Aug 16 10:46:47 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add bibview-C99.dif adding missing includes so that all called
