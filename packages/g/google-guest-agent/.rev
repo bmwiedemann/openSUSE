@@ -644,4 +644,12 @@
   * Add AuthorizedKeysCompat to windows packaging (#530) (forwarded request 1277169 from glaubitz)</comment>
     <requestid>1277202</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>aef4901f6d6a3bf8c92c1ad896454747</srcmd5>
+    <version>20250604.00</version>
+    <time>1750177449</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1286345</requestid>
+  </revision>
 </revisionlist>
