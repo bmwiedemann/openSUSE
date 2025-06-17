@@ -1189,4 +1189,13 @@
     <comment>KDE release gear 25.04.2</comment>
     <requestid>1283326</requestid>
   </revision>
+  <revision rev="150" vrev="2">
+    <srcmd5>5101a414b6d54b795ca7d3e730c30581</srcmd5>
+    <version>25.04.2</version>
+    <time>1750177262</time>
+    <user>anag_factory</user>
+    <comment>- Add gpgme 2.0 build fix (boo#1244636)
+  * 0001-Fix-build-with-GPGME-2.0.patch</comment>
+    <requestid>1286074</requestid>
+  </revision>
 </revisionlist>
