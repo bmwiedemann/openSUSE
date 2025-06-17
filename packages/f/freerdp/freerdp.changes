@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 16 12:37:09 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.16.0:
+  * Lots of improvements for the SDL3 client
+  * Various X11 client improvements
+  * Add a timer implementation
+  * Various AAD/Azure/Entra improvements
+  * YUV420 primitives fixes
+- Update to 3.15.0:
+  * [client,sdl] fix crash on suppress output
+  * [channels,remdesk] fix possible memory leak
+  * [client,x11] map exit code success
+  * Hidef rail checks and deprecation fixe
+  * Standard rdp security network issues
+  * [core,rdp] fix check for SEC_FLAGSHI_VALID
+  * [core,caps] fix rdp_apply_order_capability_set
+  * [core,proxy] align no_proxy to curl
+  * [core,gateway] fix string reading for TSG
+  * [client,sdl] refactor display update
+
+-------------------------------------------------------------------
 Tue Mar 18 14:37:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.14.0:
