@@ -134,4 +134,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: Update firmware file for Intel BlazarU core</comment>
     <requestid>1283301</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>62a5aba43743d1a8a5f5c862f0e31e36</srcmd5>
+    <version>20250613</version>
+    <time>1750177209</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250613 (git commit 12fe085fa409):
+  * QCA: Update WCN785x btusb firmware to 2.0.0-00799-5</comment>
+    <requestid>1285896</requestid>
+  </revision>
 </revisionlist>
