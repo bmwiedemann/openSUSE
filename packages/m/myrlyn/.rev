@@ -46,4 +46,26 @@
   * Include &lt;boost/ref.hpp&gt; (Closes #92)</comment>
     <requestid>1282351</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>07c37e8935767bff2f1ee5b187747c7b</srcmd5>
+    <version>0.9.6</version>
+    <time>1750177355</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.9.6:
+  * Version bump
+  * Simplify myrlyn-sudo script
+  * Use own myrlyn-askpass binary
+  * New .desktop files: Auth via 'sudo' or 'xdg-su' (Closes #99)
+  * New scripts to authenticate via sudo
+  * Installation summary (status filter view): Allow middle click on status to show only this one
+  * pkexec script for myrlyn with root permissions
+  * Renamed 'Services' view to 'Repository Index Services' in GUI
+  * Don't mark sample texts in .ui files for translation
+  * Added makepot script to extract translatable messages (issue #45)
+  * Removed unused class
+  * Complete URL
+  * How to submit from Factory to Leap 16.0
+  * Removed obsolete textdomain</comment>
+    <requestid>1286215</requestid>
+  </revision>
 </revisionlist>

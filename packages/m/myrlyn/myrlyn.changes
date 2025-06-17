@@ -1,5 +1,24 @@
 -------------------------------------------------------------------
-Tue Jun 03 13:35:51 UTC 2025 - shundhammer@suse.com
+Mon Jun 16 23:23:48 UTC 2025 - shundhammer@suse.com
+
+- Update to version 0.9.6:
+  * Version bump
+  * Simplify myrlyn-sudo script
+  * Use own myrlyn-askpass binary
+  * New .desktop files: Auth via 'sudo' or 'xdg-su' (Closes #99)
+  * New scripts to authenticate via sudo
+  * Installation summary (status filter view): Allow middle click on status to show only this one
+  * pkexec script for myrlyn with root permissions
+  * Renamed 'Services' view to 'Repository Index Services' in GUI
+  * Don't mark sample texts in .ui files for translation
+  * Added makepot script to extract translatable messages (issue #45)
+  * Removed unused class
+  * Complete URL
+  * How to submit from Factory to Leap 16.0
+  * Removed obsolete textdomain
+
+-------------------------------------------------------------------
+Tue Jun 03 13:30:19 UTC 2025 - shundhammer@suse.com
 
 - Update to version 0.9.5:
   * Version bump to 0.9.5
