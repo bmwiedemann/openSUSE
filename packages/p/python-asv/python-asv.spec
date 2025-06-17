@@ -1,7 +1,7 @@
 #
 # spec file for package python-asv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-asv
 Version:        0.6.4
@@ -30,22 +31,22 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-PyYAML
 Requires:       python-Pympler
 Requires:       python-asv-runner >= 0.2.1
 Requires:       python-build
 Requires:       python-json5
 Requires:       python-tabulate
+Requires:       python-virtualenv
+Suggests:       python-python-hglib >= 1.5
 %if %{python_version_nodots} < 311
 Requires:       python-tomli
 %endif
-Requires:       python-virtualenv
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Suggests:       python-python-hglib >= 1.5
 # SECTION test requirements
 BuildRequires:  %{python_module json5}
 BuildRequires:  %{python_module pip}
@@ -82,11 +83,8 @@ export CFLAGS="%{optflags}"
 exit 0
 # % pytest
 
-%post
-%python_install_alternative asv
-
-%postun
-%python_uninstall_alternative asv
+%pre
+%python_libalternatives_reset_alternative asv
 
 %files %{python_files}
 %doc CHANGES.rst README.rst

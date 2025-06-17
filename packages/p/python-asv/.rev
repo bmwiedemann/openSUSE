@@ -148,4 +148,12 @@
   - Use Python 3.11 on SLE-15 by default</comment>
     <requestid>1208561</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>5554d7fc8e528d36118372cbfdf66192</srcmd5>
+    <version>0.6.4</version>
+    <time>1750177304</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286132</requestid>
+  </revision>
 </revisionlist>
