@@ -1,7 +1,7 @@
 #
 # spec file for package python-actdiag
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-actdiag
 Version:        3.0.0
@@ -33,11 +34,11 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-blockdiag >= 3
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -60,11 +61,8 @@ sed -i 's/testcase_generator/_testcase_generator/' src/actdiag/tests/test_genera
 %check
 %pytest src/actdiag/tests
 
-%post
-%python_install_alternative actdiag
-
-%postun
-%python_uninstall_alternative actdiag
+%pre
+%python_libalternatives_reset_alternative actdiag
 
 %files %{python_files}
 %license LICENSE

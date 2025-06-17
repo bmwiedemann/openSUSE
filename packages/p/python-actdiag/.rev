@@ -74,4 +74,12 @@
     <comment>- add sle15_python_module_pythons</comment>
     <requestid>1166142</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>d70cb5d437f5d93119cda9c22dcb9bcf</srcmd5>
+    <version>3.0.0</version>
+    <time>1750177272</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286088</requestid>
+  </revision>
 </revisionlist>
