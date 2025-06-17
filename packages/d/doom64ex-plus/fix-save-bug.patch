@@ -1,0 +1,49 @@
+From 9f149163d74eed69b56a5294537ed12c2a6b2cf3 Mon Sep 17 00:00:00 2001
+From: bubbleguuum <bubbleguuum@free.fr>
+Date: Fri, 13 Jun 2025 01:04:18 +0200
+Subject: [PATCH 1/2] Fix sequenceGlow_t not being correctly read from save
+
+It was wrecking havoc in T_Sequence() function on save load,
+causing heap buffer overflow in that fuynction and
+weird visual lighting glitches on save load
+---
+ src/engine/p_saveg.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/engine/p_saveg.c b/src/engine/p_saveg.c
+index 5bfff765..cbb5afbf 100644
+--- a/src/engine/p_saveg.c
++++ b/src/engine/p_saveg.c
+@@ -813,7 +813,8 @@ static void saveg_write_sequenceGlow_t(void* data) {
+ static void saveg_read_sequenceGlow_t(void* data) {
+     sequenceGlow_t* seq = (sequenceGlow_t*)data;
+     seq->sector = &sectors[saveg_read32()];
+-    seq->headsector = &sectors[saveg_read32() - 1];
++    int pos = saveg_read32();
++    seq->headsector = pos == 0 ? NULL: &sectors[pos-1];
+     seq->count = saveg_read32();
+     seq->start = saveg_read32();
+     seq->index = saveg_read32();
+
+From 225bc0ffb1adfd2632ed81fde44e0df6330907c0 Mon Sep 17 00:00:00 2001
+From: bubbleguuum <bubbleguuum@free.fr>
+Date: Fri, 13 Jun 2025 01:22:56 +0200
+Subject: [PATCH 2/2] rewritten for consistency with similar code
+
+---
+ src/engine/p_saveg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/engine/p_saveg.c b/src/engine/p_saveg.c
+index cbb5afbf..368361e1 100644
+--- a/src/engine/p_saveg.c
++++ b/src/engine/p_saveg.c
+@@ -814,7 +814,7 @@ static void saveg_read_sequenceGlow_t(void* data) {
+     sequenceGlow_t* seq = (sequenceGlow_t*)data;
+     seq->sector = &sectors[saveg_read32()];
+     int pos = saveg_read32();
+-    seq->headsector = pos == 0 ? NULL: &sectors[pos-1];
++    seq->headsector = pos > 0 ? &sectors[pos - 1] : NULL;
+     seq->count = saveg_read32();
+     seq->start = saveg_read32();
+     seq->index = saveg_read32();

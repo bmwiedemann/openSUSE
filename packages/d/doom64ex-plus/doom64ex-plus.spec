@@ -1,7 +1,7 @@
 #
 # spec file for package doom64ex-plus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        GPL-2.0-or-later
 URL:            https://github.com/atsb/Doom64EX-Plus
 Source0:        %{name}-%{version}.tar.gz
 Patch0:         fix-user-dir.patch
+# PATCH-FIX-UPSTREAM fix-save-bug.patch -- from PR 310
+Patch1:         fix-save-bug.patch
 BuildRequires:  gcc
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(fluidsynth)
@@ -52,10 +54,11 @@ of Doom 64 into either folder %datafilesdir or ~/.local/share/doom64ex-plus
 %prep
 %setup -q -n Doom64EX-Plus-%{version}.SDL.3.1.3
 %patch -P 0 -p 1
+%patch -P 1 -p 1
 sed -i 's/__DATE__/"unset"/' src/engine/i_main.c
 
 %build
-export CFLAGS="-Wno-pointer-sign %{optflags} -DDOOM_UNIX_INSTALL -DDOOM_UNIX_SYSTEM_DATADIR=\\\"%{datafilesdir}\\\""
+export CFLAGS="-Wno-pointer-sign -Wno-incompatible-pointer-types %{optflags} -DDOOM_UNIX_INSTALL -DDOOM_UNIX_SYSTEM_DATADIR=\\\"%{datafilesdir}\\\""
 %make_build
 
 %install

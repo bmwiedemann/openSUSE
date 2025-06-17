@@ -26,4 +26,13 @@ This Doom 64 port is well maintained and uses bleeding edge SDL3.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1219488</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d0f9d31122e0dbf5485e29d9e7786735</srcmd5>
+    <version>4.0.0.3</version>
+    <time>1750177458</time>
+    <user>anag_factory</user>
+    <comment>Fix compilation with gcc 15 
+</comment>
+    <requestid>1286360</requestid>
+  </revision>
 </revisionlist>
