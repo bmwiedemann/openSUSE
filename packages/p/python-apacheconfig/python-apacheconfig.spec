@@ -1,7 +1,7 @@
 #
 # spec file for package python-apacheconfig
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-apacheconfig
 Version:        0.3.2
@@ -25,20 +26,20 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/etingof/apacheconfig
 Source:         https://files.pythonhosted.org/packages/source/a/apacheconfig/apacheconfig-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       alts
+Requires:       python-ply >= 3.4
+Requires:       python-six
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module ply >= 3.4}
 BuildRequires:  %{python_module six}
 # /SECTION
-BuildRequires:  fdupes
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-Requires:       python-ply >= 3.4
-Requires:       python-six
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -59,11 +60,8 @@ Apache / Config::General configuration file parser
 #CHOOSE: %%pytest OR %%pyunittest -v OR CUSTOM
 %pyunittest -v
 
-%post
-%python_install_alternative apacheconfigtool
-
-%postun
-%python_uninstall_alternative apacheconfigtool
+%pre
+%python_libalternatives_reset_alternative apacheconfigtool
 
 %files %{python_files}
 %doc CHANGES.rst README.md

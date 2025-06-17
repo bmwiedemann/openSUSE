@@ -7,4 +7,12 @@
     <comment>optional dependency of python-certbot-apache</comment>
     <requestid>1096792</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9b685f6252e8dc816056ff9b2b8bcb74</srcmd5>
+    <version>0.3.2</version>
+    <time>1750177279</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286099</requestid>
+  </revision>
 </revisionlist>
