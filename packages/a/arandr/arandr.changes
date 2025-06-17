@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 16 12:02:02 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- convert to pip-based build and update build requirements
+
+-------------------------------------------------------------------
 Tue Jul 16 05:15:42 UTC 2024 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - remove obsolete suse_update_desktop_file macro

@@ -1,7 +1,7 @@
 #
 # spec file for package arandr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2013,2019 B1 Systems GmbH, Vohburg, Germany <seife+obs@b1-systems.com>
 #
@@ -18,6 +18,7 @@
 #
 
 
+%define pythons python3
 Name:           arandr
 Version:        0.1.11
 Release:        0
@@ -26,20 +27,19 @@ License:        GPL-3.0-only
 URL:            https://christian.amsuess.com/tools/arandr/
 Source:         http://christian.amsuess.com/tools/arandr/files/%{name}-%{version}.tar.gz
 Patch1:         arandr-fix_desktop_icon.patch
+BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  make
-BuildRequires:  python3
-BuildRequires:  python3-docutils
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-pycairo
-BuildRequires:  update-desktop-files
-BuildArch:      noarch
-%if 0%{?suse_version} >= 1220
-Requires:       xrandr
-%else
 Requires:       xorg-x11
-%endif
+BuildArch:      noarch
 
 %description
 ARandR is designed to provide a simple visual front end for XRandR. Relative
@@ -50,12 +50,11 @@ way.
 %autosetup -p0
 
 %build
-python3 ./setup.py build
+%pyproject_wheel
 
 %install
-python3 ./setup.py install \
-    --prefix="%{_prefix}" \
-    --root=%{buildroot}
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{python3_sitelib}/screenlayout
 
 # removed obsolete suse_update_desktop_file
 #suse_update_desktop_file -r "${name}" Settings DesktopSettings
@@ -76,6 +75,6 @@ chmod 0755 "%{buildroot}%{_bindir}"/*
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man1/unxrandr.1%{?ext_man}
 %{python3_sitelib}/screenlayout/
-%{python3_sitelib}/arandr-%{version}-py*.egg-info
+%{python3_sitelib}/arandr-%{version}.dist-info
 
 %changelog

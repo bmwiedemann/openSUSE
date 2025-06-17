@@ -50,4 +50,12 @@ This allows to remove desktop-data and hicolor-icon-theme buildrequires.</commen
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1189170</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>72b03cf84b5eb4af0c7b9c38ce5aee15</srcmd5>
+    <version>0.1.11</version>
+    <time>1750177301</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1286317</requestid>
+  </revision>
 </revisionlist>
