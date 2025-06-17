@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-bincopy
 Version:        20.1.0
@@ -27,20 +28,20 @@ Source:         https://files.pythonhosted.org/packages/source/b/bincopy/bincopy
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  python-rpm-macros
+Requires:       alts
+Requires:       fdupes
+Requires:       python-argparse_addons
+Requires:       python-humanfriendly
+Requires:       python-pyelftools
+BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module argparse_addons}
 BuildRequires:  %{python_module humanfriendly}
 BuildRequires:  %{python_module pyelftools}
+BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-argparse_addons
-Requires:       fdupes
-Requires:       python-humanfriendly
-Requires:       python-pyelftools
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -63,11 +64,8 @@ Documentation: https://bincopy.readthedocs.io
 %check
 %pytest
 
-%post
-%python_install_alternative bincopy
-
-%postun
-%python_uninstall_alternative bincopy
+%pre
+%python_libalternatives_reset_alternative bincopy
 
 %files %{python_files}
 %doc README.rst
