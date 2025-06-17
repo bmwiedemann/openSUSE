@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 3b75d677f898fe2aacc7b11763bbcd4732e71ce7
+%define git_version 12fe085fa4096dedd82a9af0901fb8721379011f
 
 Name:           kernel-firmware-qcom
-Version:        20250603
+Version:        20250613
 Release:        0
 Summary:        Kernel firmware files for Qualcomm device drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
@@ -339,33 +339,25 @@ scripts/install-licenses.sh qcom %{buildroot}%{_licensedir}/%{name}
 install -c -D -m 0644 WHENCE %{buildroot}%{_licensedir}/%{name}/WHENCE
 install -c -D -m 0644 README.md %{buildroot}%{_docdir}/%{name}/README.md
 
-%pre
-# ugly workaround for changing qcom/LENOVO/21BX to a symlink (bsc#1204103)
-if [ ! -L %{_firmwaredir}/qcom/LENOVO/21BX ]; then
-  if [ -d %{_firmwaredir}/qcom/LENOVO/21BX ]; then
-    mv %{_firmwaredir}/qcom/LENOVO/21BX %{_firmwaredir}/qcom/LENOVO/21BX.xxxold
-  fi
-fi
-
-%post
-# ugly workaround (bsc#1204103)
-if [ -d %{_firmwaredir}/qcom/LENOVO/21BX.xxxold ]; then
-  mv %{_firmwaredir}/qcom/LENOVO/21BX %{_firmwaredir}/qcom/LENOVO/21BX.xxxnew
-  mv %{_firmwaredir}/qcom/LENOVO/21BX.xxxold %{_firmwaredir}/qcom/LENOVO/21BX
+%pretrans -p <lua>
+if not macros then
+  fwdir = "/lib/firmware"
 else
-%{?regenerate_initrd_post}
-fi
-
-%postun
-%{?regenerate_initrd_post}
-
-%posttrans
-# ugly workaround (bsc#1204103)
-if [ -L %{_firmwaredir}/qcom/LENOVO/21BX.xxxnew ]; then
-  rm -rf %{_firmwaredir}/qcom/LENOVO/21BX
-  mv %{_firmwaredir}/qcom/LENOVO/21BX.xxxnew %{_firmwaredir}/qcom/LENOVO/21BX
-fi
-%{?regenerate_initrd_posttrans}
+  fwdir = macros._firmwaredir
+end
+path = fwdir .. "/qcom/LENOVO/21BX"
+st = posix.stat(path)
+if st and st.type == "directory" then
+  status = os.rename(path, path .. ".rpmmoved")
+  if not status then
+    suffix = 0
+    while not status do
+      suffix = suffix + 1
+      status = os.rename(path .. ".rpmmoved", path .. ".rpmmoved." .. suffix)
+    end
+    os.rename(path, path .. ".rpmmoved")
+  end
+end
 
 %files
 %doc %{_docdir}/%{name}

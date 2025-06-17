@@ -119,4 +119,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * Adjust QUPv3 driver name</comment>
     <requestid>1283309</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3156219d5a736829d1ef4c5837dca65b</srcmd5>
+    <version>20250613</version>
+    <time>1750177211</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250613 (git commit 12fe085fa409):
+  * qcom: sc8280xp: Updated power FW for X13s
+
+- Better workaround for directory -&gt; symlink change (bsc#1244458)</comment>
+    <requestid>1285898</requestid>
+  </revision>
 </revisionlist>
