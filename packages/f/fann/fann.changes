@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 13 07:08:24 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Name devel packages simply off the SRPM name
+  (libfann-devel -> fann-devel).
+- Specfile modernization.
+
+-------------------------------------------------------------------
 Mon Feb 26 08:18:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

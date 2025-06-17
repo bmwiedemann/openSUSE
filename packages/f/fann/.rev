@@ -24,4 +24,14 @@ useful for developing neuronal network based AI</comment>
     <comment></comment>
     <requestid>1151158</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>addd1524ec8013ed991e47e7455928f4</srcmd5>
+    <version>2.2.0</version>
+    <time>1750177289</time>
+    <user>anag_factory</user>
+    <comment>- Name devel packages simply off the SRPM name
+  (libfann-devel -&gt; fann-devel).
+- Specfile modernization. (forwarded request 1285372 from jengelh)</comment>
+    <requestid>1286118</requestid>
+  </revision>
 </revisionlist>
