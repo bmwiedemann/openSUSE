@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycapnp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-pycapnp
 Version:        2.0.0
@@ -33,12 +34,13 @@ BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(capnp)
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 %python_subpackages
 
 %description
@@ -65,11 +67,8 @@ mv capnp/ /tmp
 %pytest_arch -k 'not (test_ssl_async_example or test_ssl_reconnecting_async_example or test_async_ssl_calculator_example)'
 mv /tmp/capnp/ .
 
-%post
-%python_install_alternative capnpc-cython
-
-%postun
-%python_uninstall_alternative capnpc-cython
+%pre
+%python_libalternatives_reset_alternative capnpc-cython
 
 %files %{python_files}
 %doc CHANGELOG.md README.md

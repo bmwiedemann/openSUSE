@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 17 09:25:58 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives
+
+-------------------------------------------------------------------
 Mon Dec 16 01:24:52 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip a few tests that attempt name resolution.
