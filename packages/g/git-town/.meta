@@ -1,0 +1,5 @@
+<package name="git-town" project="openSUSE:Factory">
+  <title>Git branches made easy</title>
+  <description>Git Town provides additional Git commands that automate the creation, synchronization, shipping, and cleanup of Git branches. Compatible with all popular Git workflows like Git Flow, GitHub Flow, GitLab Flow, and trunk-based development. Supports mono-repos and stacked changes.</description>
+  <url>https://github.com/git-town/git-town</url>
+</package>
