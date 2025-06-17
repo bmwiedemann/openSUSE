@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 15 20:31:23 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.6.2:
+  * fix: Only dispatch requests to Source if we actually will use
+    them (gh#scikit-hep/uproot5#1436).
+  * fix: Remove unused file handle (gh#scikit-hep/uproot5#1437).
+- Disable a few more tests due to missing dependencies
+  (awkward-pandas, awkward-dask).
+
+-------------------------------------------------------------------
 Sun Apr 28 23:36:40 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.3.3:

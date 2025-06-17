@@ -1,7 +1,7 @@
 #
 # spec file for package python-uproot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %global modname uproot
 Name:           python-uproot
-Version:        5.3.3
+Version:        5.6.2
 Release:        0
 Summary:        ROOT I/O in pure Python and Numpy
 License:        BSD-3-Clause
@@ -59,7 +59,7 @@ BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module scikit-hep-testdata >= 0.4.38}
+BuildRequires:  %{python_module scikit-hep-testdata >= 0.5.4}
 BuildRequires:  %{python_module xxhash}
 BuildRequires:  %{python_module boost-histogram >= 0.13 if (%python-base without python2-base)}
 # /SECTION
@@ -99,7 +99,8 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
 skiptests32="(test_jagged_pandas or test_pandas_vector_TLorentzVector or test_iterate_pandas_2 or test_function_iterate_pandas_2 or test_0430)"
 fi
 # Skip test_decompression_executor_for_dask until we have dask-awkward packaged
-%pytest "${skip_network_tests[@]} ${skiptests32} and not (test_decompression_executor_for_dask or test_dask_duplicated_keys)"
+# Skip test_1321_pandas_changed_api_again.py until we package awkward-pandas
+%pytest "${skip_network_tests[@]} ${skiptests32} and not dask and not test_1321_pandas_changed_api_again"
 
 %files %{python_files}
 %doc README.md
