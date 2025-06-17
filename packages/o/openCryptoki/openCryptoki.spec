@@ -1,7 +1,7 @@
 #
 # spec file for package openCryptoki
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %define oc_cvs_tag opencryptoki
 
 Name:           openCryptoki
-Version:        3.24.0
+Version:        3.25.0
 Release:        0
 Summary:        An Implementation of PKCS#11 (Cryptoki) v2.11 for IBM Cryptographic Hardware
 License:        CPL-1.0
@@ -39,8 +39,7 @@ Source2:        openCryptoki-TFAQ.html
 Source3:        openCryptoki-rpmlintrc
 # Patch 0 is needed because group pkcs11 doesn't exist in the build environment
 # and because we don't want(?) various file and directory permissions to be 0700.
-Patch000:       ocki-3.24-remove-make-install-chgrp.patch
-Patch001:       ocki-3.24-remove-group-from-tests.patch
+Patch000:       ocki-3.25-remove-make-install-chgrp.patch
 #
 #
 BuildRequires:  bison
@@ -255,12 +254,15 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %dir %{_datadir}/doc/opencryptoki
 %doc %{_datadir}/doc/opencryptoki/policy-example.conf
 %doc %{_datadir}/doc/opencryptoki/strength-example.conf
+%doc %{_datadir}/doc/opencryptoki/README.token_data
+%doc %{_datadir}/doc/opencryptoki/opencryptoki-howto.md
 %dir %{_datadir}/opencryptoki
 %{_datadir}/opencryptoki/policy-example.conf
 %{_datadir}/opencryptoki/strength-example.conf
   # configuration directory
 %dir %{_sysconfdir}/opencryptoki
 %config %{_sysconfdir}/opencryptoki/opencryptoki.conf
+%config %{_sysconfdir}/opencryptoki/p11kmip.conf
 %attr(0640,root,%{pkcs_group}) %config %{_sysconfdir}/opencryptoki/strength.conf
 %attr(0640,root,%{pkcs_group}) %config %{_sysconfdir}/opencryptoki/p11sak_defined_attrs.conf
 %ifarch s390 s390x
@@ -282,6 +284,7 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/ccatok
 %dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/ccatok/TOK_OBJ
 %endif
+%{_sbindir}/p11kmip
 %{_sbindir}/pkcsslotd
 %{_sbindir}/pkcsconf
 %{_sbindir}/pkcsicsf
@@ -323,6 +326,10 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %{_libdir}/opencryptoki/stdll/libpkcs11_cca.so
 %ghost %{_libdir}/opencryptoki/stdll/PKCS11_CCA.so
 %endif
+%ifnarch i586
+%{_libdir}/opencryptoki/stdll/libpkcs11_cca.so
+%endif
+%ghost %{_libdir}/opencryptoki/stdll/PKCS11_CCA.so
 %{_libdir}/opencryptoki/stdll/libpkcs11_tpm.so
 %ghost %{_libdir}/opencryptoki/stdll/PKCS11_TPM.so
 %{_libdir}/opencryptoki/stdll/libpkcs11_sw.so

@@ -1,5 +1,5 @@
---- a/Makefile.am	2024-09-11 08:46:18.000000000 +0200
-+++ b/Makefile.am	2024-09-20 11:31:30.709823171 +0200
+--- a/Makefile.am	2025-06-10 08:52:39.000000000 +0200
++++ b/Makefile.am	2025-06-16 12:25:31.040661532 +0200
 @@ -51,19 +51,9 @@
  include doc/doc.mk
  
@@ -53,7 +53,19 @@
  	$(CHMOD) 0770 $(DESTDIR)$(lockdir)/ep11tok
  	test -f $(DESTDIR)$(sysconfdir)/opencryptoki || $(MKDIR_P) $(DESTDIR)$(sysconfdir)/opencryptoki || true
  	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/ep11tok.conf || $(INSTALL) -m 644 $(srcdir)/usr/lib/ep11_stdll/ep11tok.conf $(DESTDIR)$(sysconfdir)/opencryptoki/ep11tok.conf || true
-@@ -123,24 +106,18 @@
+@@ -117,34 +100,28 @@
+ endif
+ if ENABLE_P11SAK
+ 	test -f $(DESTDIR)$(sysconfdir)/opencryptoki || $(MKDIR_P) $(DESTDIR)$(sysconfdir)/opencryptoki || true
+-	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/p11sak_defined_attrs.conf || $(INSTALL) -g $(pkcs_group) -m 0640 $(srcdir)/usr/sbin/p11sak/p11sak_defined_attrs.conf $(DESTDIR)$(sysconfdir)/opencryptoki/p11sak_defined_attrs.conf || true
++	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/p11sak_defined_attrs.conf || $(INSTALL) -m 0640 $(srcdir)/usr/sbin/p11sak/p11sak_defined_attrs.conf $(DESTDIR)$(sysconfdir)/opencryptoki/p11sak_defined_attrs.conf || true
+ endif
+ if ENABLE_P11KMIP
+ 	test -f $(DESTDIR)$(sysconfdir)/opencryptoki || $(MKDIR_P) $(DESTDIR)$(sysconfdir)/opencryptoki || true
+-	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/p11kmip.conf || $(INSTALL) -g $(pkcs_group) -m 0640 $(srcdir)/usr/sbin/p11kmip/p11kmip.conf $(DESTDIR)$(sysconfdir)/opencryptoki/p11kmip.conf || true
++	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/p11kmip.conf || $(INSTALL) -m 0640 $(srcdir)/usr/sbin/p11kmip/p11kmip.conf $(DESTDIR)$(sysconfdir)/opencryptoki/p11kmip.conf || true
+ endif
+ if ENABLE_ICATOK
  	cd $(DESTDIR)$(libdir)/opencryptoki/stdll && \
  		ln -fs libpkcs11_ica.$(SHLIBEXT) PKCS11_ICA.$(SHLIBEXT)
  	$(MKDIR_P) $(DESTDIR)$(localstatedir)/lib/opencryptoki/lite/TOK_OBJ
@@ -78,7 +90,7 @@
  	$(CHMOD) 0770 $(DESTDIR)$(lockdir)/swtok
  endif
  if ENABLE_TPMTOK
-@@ -148,10 +125,8 @@
+@@ -152,10 +129,8 @@
  	cd $(DESTDIR)$(libdir)/opencryptoki/stdll && \
  		ln -fs libpkcs11_tpm.$(SHLIBEXT) PKCS11_TPM.$(SHLIBEXT)
  	$(MKDIR_P) $(DESTDIR)$(localstatedir)/lib/opencryptoki/tpm
@@ -89,7 +101,7 @@
  	$(CHMOD) 0770 $(DESTDIR)$(lockdir)/tpm
  endif
  if ENABLE_ICSFTOK
-@@ -159,10 +134,8 @@
+@@ -163,16 +138,14 @@
  	cd $(DESTDIR)$(libdir)/opencryptoki/stdll && \
  		ln -fs libpkcs11_icsf.$(SHLIBEXT) PKCS11_ICSF.$(SHLIBEXT)
  	$(MKDIR_P) $(DESTDIR)$(localstatedir)/lib/opencryptoki/icsf
@@ -100,7 +112,14 @@
  	$(CHMOD) 0770 $(DESTDIR)$(lockdir)/icsf
  endif
  if ENABLE_DAEMON
-@@ -181,7 +154,6 @@
+ 	test -f $(DESTDIR)$(sysconfdir)/opencryptoki || $(MKDIR_P) $(DESTDIR)$(sysconfdir)/opencryptoki || true
+ 	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/opencryptoki.conf || $(INSTALL) -m 644 $(srcdir)/usr/sbin/pkcsslotd/opencryptoki.conf $(DESTDIR)$(sysconfdir)/opencryptoki/opencryptoki.conf || true
+-	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/strength.conf || $(INSTALL) -m 640 -o root -g $(pkcs_group) -T $(srcdir)/doc/strength-example.conf $(DESTDIR)$(sysconfdir)/opencryptoki/strength.conf || true
++	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/strength.conf || $(INSTALL) -m 640 -o root -T $(srcdir)/doc/strength-example.conf $(DESTDIR)$(sysconfdir)/opencryptoki/strength.conf || true
+ endif
+ if !AIX
+ 	$(MKDIR_P) $(DESTDIR)/etc/ld.so.conf.d
+@@ -185,7 +158,6 @@
  	@echo "--------------------------------------------------------------"
  endif
  	$(MKDIR_P) $(DESTDIR)$(lockdir) $(DESTDIR)$(logdir)
