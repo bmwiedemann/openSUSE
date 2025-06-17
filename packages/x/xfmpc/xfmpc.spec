@@ -1,7 +1,7 @@
 #
 # spec file for package xfmpc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,30 @@
 #
 
 
+%define xfce_version 4.18.0
 Name:           xfmpc
-Version:        0.3.2
+Version:        0.4.0
 Release:        0
 Summary:        MPD Client for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://goodies.xfce.org/projects/applications/xfmpc
-Source:         https://archive.xfce.org/src/apps/xfmpc/0.3/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/apps/xfmpc/0.4/%{name}-%{version}.tar.xz
 Source1:        xfmpc.png
 %if 0%{?suse_version} >= 1699
 BuildRequires:  gcc13
 %endif
 BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  sed
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.38.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(libmpd) >= 0.15.0
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= %{xfce_version}
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{xfce_version}
+BuildRequires:  pkgconfig(vapigen) >= 0.14.0
 Recommends:     %{name}-lang = %{version}
 Suggests:       mpd
 
@@ -47,18 +50,20 @@ Xfce desktop environment.
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 sed -i 's/Icon=stock_volume/Icon=xfmpc/' xfmpc.desktop.in
 
 %build
 %if 0%{?suse_version} >= 1699
 export CC=gcc-13
 %endif
-%configure
-%make_build
+
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
+
 install -D -m 0644 -p %{SOURCE1} %{buildroot}%{_datadir}/pixmaps/%{name}.png
 
 %suse_update_desktop_file %{name}

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 15 04:04:12 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to 0.4.0
+  - Update README after switchover to meson
+  - Add support to Meson
+  - Add search shortcuts
+  - Translation Updates
+
+-------------------------------------------------------------------
 Sun Dec 29 18:25:01 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 0.3.2
@@ -184,5 +193,3 @@ Wed Apr  2 15:20:26 CEST 2008 - prusnak@suse.cz
 Sun Jan 20 19:25:23 CET 2008 - bwalle@suse.de
 
 - initial package
-
--------------------------------------------------------------------
