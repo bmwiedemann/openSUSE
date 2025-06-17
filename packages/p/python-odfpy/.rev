@@ -206,4 +206,12 @@ See setup.py (forwarded request 137513 from babelworx)</comment>
     <comment>- Convert to pip-based build</comment>
     <requestid>1281972</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>50a079788c4818a8620eb1093bb7f656</srcmd5>
+    <version>1.4.2</version>
+    <time>1750177235</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1286108</requestid>
+  </revision>
 </revisionlist>

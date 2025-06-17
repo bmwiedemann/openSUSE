@@ -19,6 +19,7 @@
 #
 %define modname odfpy
 %define binaries csv2ods mailodf odf2mht odf2xhtml odf2xml odfimgimport odflint odfmeta odfoutline odfuserfield xml2odf
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
 Version:        1.4.2
@@ -33,11 +34,11 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-defusedxml
-Requires(post): alts
-Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -86,14 +87,9 @@ done
 %check
 %pytest
 
-%post
+%pre
 for b in %{binaries}; do
-  %python_install_alternative $b $b.1
-done
-
-%postun
-for b in %{binaries}; do
-  %python_uninstall_alternative $b
+  %python_libalternatives_reset_alternative $b
 done
 
 %files %{python_files}
