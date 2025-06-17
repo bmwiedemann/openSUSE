@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 16 12:31:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.74
+  * Add Benin holidays
+  * Add Bermuda holidays
+  * Add British Virgin Islands holidays
+  * Add Equatorial Guinea holidays
+  * Add Yemen holidays
+  * Add Åland Islands holidays
+  * Update Finland holidays
+  * Update Thailand holidays: add uk localization
+  * Update North Macedonia holidays, add l10n support
+  * Update sponsorship FAQ formatting
+  * Add SPONSORSHIP.md
+  * Clean up unicode URLs
+
+-------------------------------------------------------------------
 Fri May 30 07:54:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.73
