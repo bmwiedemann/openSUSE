@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 13 10:49:45 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250613.d8108049:
+  * Fix: bootstrap: setup_passwordless_with_other_nodes does not update the authorized_keys on localhost (bsc#1244314)
+
+-------------------------------------------------------------------
+Fri Jun 13 05:19:33 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250613.597abc68:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: behave: Add functional test for previous commit
+  * Fix: report.collect: Detect log existence before using it (bsc#1244515)
+
+-------------------------------------------------------------------
 Mon Jun 09 06:22:32 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250609.4f272e67:
