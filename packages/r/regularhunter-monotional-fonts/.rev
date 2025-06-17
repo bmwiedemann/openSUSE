@@ -94,4 +94,15 @@ and those that do technical work.</comment>
 </comment>
     <requestid>1285635</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e3a3b1934a6a150fd8496c72981687da</srcmd5>
+    <version>2.6</version>
+    <time>1750177357</time>
+    <user>anag_factory</user>
+    <comment>- Update license type in spec file
+- Update to 2.6:
+  * Correct thickness of regular and bold-italic figuredash
+</comment>
+    <requestid>1286217</requestid>
+  </revision>
 </revisionlist>

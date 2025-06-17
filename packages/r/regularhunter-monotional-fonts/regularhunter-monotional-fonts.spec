@@ -17,17 +17,18 @@
 
 
 Name:           regularhunter-monotional-fonts
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        A humanist, monospace font based on DejaVu
-License:        Apache-2.0
+License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/regularhunter/monotional-font
 Source0:        Monotional_v%{version}.zip
 Source1:        README.md
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
-Recommends:     monotional-fonts
+#Recommends:     regularhunter-monotional-az-fonts
+#Recommends:     regularhunter-monotional-sz-fonts
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 
