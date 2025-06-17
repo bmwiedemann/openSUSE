@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 15 09:10:12 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250613 (git commit 12fe085fa409):
+  * rtl_nic: update firmware of RTL8153A
+
+-------------------------------------------------------------------
 Mon May 19 19:10:20 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250516 (git commit 759c4acafb4a):

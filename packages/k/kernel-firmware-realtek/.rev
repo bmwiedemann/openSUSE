@@ -84,4 +84,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtl_nic: add firmware rtl8127a-1</comment>
     <requestid>1278693</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>905b85c107ef5adc63f94c662ac32104</srcmd5>
+    <version>20250613</version>
+    <time>1750177212</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250613 (git commit 12fe085fa409):
+  * rtl_nic: update firmware of RTL8153A</comment>
+    <requestid>1285899</requestid>
+  </revision>
 </revisionlist>
