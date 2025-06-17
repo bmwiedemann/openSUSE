@@ -17,6 +17,7 @@
 
 
 %define _name   libsass-python
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-libsass
 Version:        0.23.0
@@ -31,13 +32,13 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libsass-devel >= 3.6.4
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-setuptools
-Requires(post): alts
-Requires(postun): alts
 # SECTION test requirements
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module pytest}
@@ -70,11 +71,8 @@ rm %{buildroot}%{$python_sitearch}/sasstests.py \
 %check
 %pytest_arch sasstests.py
 
-%post
-%python_install_alternative pysassc
-
-%postun
-%python_uninstall_alternative pysassc
+%pre
+%python_libalternatives_reset_alternative pysassc
 
 %files %{python_files}
 %python_alternative %{_bindir}/pysassc
