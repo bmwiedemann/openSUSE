@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,6 @@ BuildRequires:  gtk3-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  iso-codes-devel
 BuildRequires:  libicu-devel
-BuildRequires:  libpresage-devel
 # Only for leap < 15.2
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 BuildRequires:  libqt4-devel
@@ -352,6 +351,7 @@ cmake .. \
         -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DOPENCC_LIBRARY_FILENAME=libopencc.so.2 \
         -DENCHANT_LIBRARY_FILENAME=libenchant.so.1 \
+        -DFORCE_PRESAGE=on \
         -DPRESAGE_LIBRARY_FILENAME=libpresage.so.1 \
         -DENABLE_GTK3_IM_MODULE=On \
 %if 0%{?sles_version} || 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
