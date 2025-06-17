@@ -23,4 +23,12 @@
     <comment>- Update to release 7.0</comment>
     <requestid>1193074</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7a6930b5ed9a6eb67a1c906f2da49e52</srcmd5>
+    <version>7.0</version>
+    <time>1750177425</time>
+    <user>anag_factory</user>
+    <comment>gcc15 support</comment>
+    <requestid>1286324</requestid>
+  </revision>
 </revisionlist>

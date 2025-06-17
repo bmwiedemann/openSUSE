@@ -1,7 +1,7 @@
 #
 # spec file for package crispy-doom
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Group:          Amusements/Games/3D/Shoot
 URL:            https://github.com/fabiangreffrath/crispy-doom
 Source:         https://github.com/fabiangreffrath/crispy-doom/archive/refs/tags/crispy-doom-%version.tar.gz
 Patch1:         chdoom-iwaddir.diff
+Patch2:         c99.patch
+Patch3:         c23-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
