@@ -2036,8 +2036,6 @@ unsorted:
   - celluloid 
   - celluloid-lang 
   - celt 
-  - celt051 
-  - celt051-devel 
   - ceph 
   - ceph-base 
   - ceph-common 
@@ -3582,7 +3580,6 @@ unsorted:
   - eclipse-platform-bootstrap 
   - eclipse-swt 
   - eclipse-swt-bootstrap 
-  - eclipse-swtchart 
   - ecpint-common 
   - ecryptfs-utils 
   - ecryptfs-utils-devel 
@@ -3932,6 +3929,7 @@ unsorted:
   - falkon 
   - falkon-kde 
   - falkon-lang 
+  - fann-devel 
   - farbfeld 
   - farsi-fonts 
   - farstream-data 
@@ -7121,6 +7119,10 @@ unsorted:
   - git-svn 
   - git-sync 
   - git-test 
+  - git-town 
+  - git-town-bash-completion 
+  - git-town-fish-completion 
+  - git-town-zsh-completion 
   - git-who 
   - gitea-tea 
   - gitea-tea-bash-completion 
@@ -10938,6 +10940,7 @@ unsorted:
   - leechcraft-azoth-rosenthal 
   - leechcraft-azoth-shx 
   - leechcraft-azoth-standardstyles 
+  - leechcraft-azoth-tracolor 
   - leechcraft-azoth-velvetbird 
   - leechcraft-azoth-xoox 
   - leechcraft-azoth-xtazy 
@@ -10945,6 +10948,7 @@ unsorted:
   - leechcraft-blasq 
   - leechcraft-blasq-deathnote 
   - leechcraft-blasq-rappor 
+  - leechcraft-blasq-spegnersi 
   - leechcraft-blasq-vangog 
   - leechcraft-blogique 
   - leechcraft-blogique-hestia 
@@ -10964,10 +10968,12 @@ unsorted:
   - leechcraft-fenet-awesome 
   - leechcraft-fenet-kwin 
   - leechcraft-fenet-openbox 
+  - leechcraft-fontiac 
   - leechcraft-gacts 
   - leechcraft-glance 
   - leechcraft-gmailnotifier 
   - leechcraft-historyholder 
+  - leechcraft-hotsensors 
   - leechcraft-hotstreams 
   - leechcraft-htthare 
   - leechcraft-imgaste 
@@ -10976,6 +10982,7 @@ unsorted:
   - leechcraft-kinotify 
   - leechcraft-knowhow 
   - leechcraft-lackman 
+  - leechcraft-lastfmscrobble 
   - leechcraft-laughty 
   - leechcraft-launchy 
   - leechcraft-lemon 
@@ -12402,7 +12409,6 @@ unsorted:
   - libcelt-devel-32bit 
   - libcelt0-2 
   - libcelt0-2-32bit 
-  - libcelt051-0 
   - libcephfs-devel 
   - libcephfs2 
   - libcephsqlite 
@@ -12981,7 +12987,6 @@ unsorted:
   - libfallocate-devel 
   - libfallocate-devel-static 
   - libfallocate0 
-  - libfann-devel 
   - libfann2 
   - libfarstream-0_2-5 
   - libfastjet0 
@@ -13067,7 +13072,7 @@ unsorted:
   - libflatbuffers23_5_26 
   - libflickcurl-devel 
   - libflickcurl0 
-  - libflint20 
+  - libflint21 
   - libflite_cmu_grapheme_lang1 
   - libflite_cmu_grapheme_lex1 
   - libflite_cmu_indic_lang1 
@@ -14888,7 +14893,7 @@ unsorted:
   - libopencascade-modelingalgorithms7_8_1 
   - libopencascade-modelingdata7_8_1 
   - libopencascade-visualization7_8_1 
-  - libopencl-clang14 
+  - libopencl-clang15 
   - libopencore-amr-devel 
   - libopencore-amrnb0-32bit 
   - libopencore-amrwb0-32bit 
@@ -36608,6 +36613,8 @@ unsorted:
   - scribus 
   - scribus-doc 
   - scrot 
+  - scrot-bash-completion 
+  - scrot-zsh-completion 
   - scrub 
   - scrypt 
   - scs-devel 
