@@ -206,4 +206,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1227512</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>afcb7452ab0dcf1aa43db2d53fa40e4e</srcmd5>
+    <version>3.0.2</version>
+    <time>1750177224</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.</comment>
+    <requestid>1285975</requestid>
+  </revision>
 </revisionlist>
