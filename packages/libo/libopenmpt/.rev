@@ -1065,4 +1065,25 @@ Changes in 0.5.3:
       openmpt_module_is_order_stop_entry(),</comment>
     <requestid>1284201</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>d61be8856c48e15c6d21b4c985db4860</srcmd5>
+    <version>0.8.1</version>
+    <time>1750177208</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.1:
+  * [Bug] openmpt123: Allow for converting to libsndfile formats
+    which list the file extension only in the subformat
+    (i.e. MP3 with libsndfile 1.1.0 or later).
+  * [Change] TCB was added to the list of supported file
+    extensions. ModLand and Fujiology use this extension for
+    TCB Tracker modules, instead of the canonical MOD extension.
+  * IT: Fixed various interactions between Note Cut effect and
+    portamentos.
+  * MED: When triggering a synth note with a Synth Jump command on
+    the same row, the initial speed command was not executed.
+  * S3M: Old ModPlug Tracker versions allowed the 28th character
+    of sample names to be used. Such sample names are now read
+    correctly again.</comment>
+    <requestid>1285834</requestid>
+  </revision>
 </revisionlist>

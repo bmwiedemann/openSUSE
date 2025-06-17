@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jun 14 20:07:37 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.8.1:
+  * [Bug] openmpt123: Allow for converting to libsndfile formats
+    which list the file extension only in the subformat
+    (i.e. MP3 with libsndfile 1.1.0 or later).
+  * [Change] TCB was added to the list of supported file
+    extensions. ModLand and Fujiology use this extension for
+    TCB Tracker modules, instead of the canonical MOD extension.
+  * IT: Fixed various interactions between Note Cut effect and
+    portamentos.
+  * MED: When triggering a synth note with a Synth Jump command on
+    the same row, the initial speed command was not executed.
+  * S3M: Old ModPlug Tracker versions allowed the 28th character
+    of sample names to be used. Such sample names are now read
+    correctly again.
+
+-------------------------------------------------------------------
 Mon Jun  9 13:23:43 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.8.0:
