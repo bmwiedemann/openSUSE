@@ -249,4 +249,13 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1149243 from dimstar)</comment>
     <requestid>1149266</requestid>
   </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>bfb6f6d79b284218fe6595b69c6e1d68</srcmd5>
+    <version>1.6.6</version>
+    <time>1750177258</time>
+    <user>anag_factory</user>
+    <comment>- Make it build again 
+- Add keying</comment>
+    <requestid>1286067</requestid>
+  </revision>
 </revisionlist>

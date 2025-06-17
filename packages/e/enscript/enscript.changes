@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 16 11:01:34 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Make it build again 
+- Add keying
+
+-------------------------------------------------------------------
 Thu Feb 22 11:32:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

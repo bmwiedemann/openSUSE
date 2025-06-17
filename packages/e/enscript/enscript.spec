@@ -1,7 +1,7 @@
 #
 # spec file for package enscript
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz.sig
 Source2:        enscript-gs-font.map
 Source3:        enscript.sh
+Source4:        enscript.keyring
 Patch1:         enscript-1.6.4-perl_parens.patch
 Patch2:         enscript-1.6.4-sh_string.patch
 Patch3:         enscript-automake.diff
@@ -78,7 +79,7 @@ latin encodings are supported with the help of a wrapper script. ~ ~
 %patch -P 9 -p0 -b .gs
 
 %build
-  CFLAGS="%{optflags} -DPROTOTYPES -D_GNU_SOURCE -funroll-loops -Wall -fno-strict-aliasing -pipe -fstack-protector"
+  CFLAGS="%{optflags} --std=gnu99 -DPROTOTYPES -D_GNU_SOURCE -funroll-loops -Wall -fno-strict-aliasing -pipe -fstack-protector"
   LDFLAGS=
   export CC CFLAGS LDFLAGS
   AUTOPOINT=true autoreconf --force --install
