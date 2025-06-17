@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Sun Jun 15 03:27:37 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.17.0:
+  * Features:
+    - Add support for gcc 13.4 (gh#conan-io/conan#18374).
+    - Renamed 'editables' to 'packages' (gh#conan-io/conan#18359).
+    - Putting a folder named conanws as the top limit search if it
+      exists (gh#conan-io/conan#18343).
+    - Removed the home_folder definition mechanism from the
+      conanws.[yml | py] file (gh#conan-io/conan#18339).
+    - Packages/products do not need to be within the workspace
+      folder (gh#conan-io/conan#18334).
+    - Add tools.gnu:configure_args conf to GnuToolchain and
+      Autotoolchain generator to allow extra arguments to be added
+      to the configure command (gh#conan-io/conan#18333).
+    - Add gcc 14.3 support (gh#conan-io/conan#18322).
+    - Auto detection of C standard (gh#conan-io/conan#18290).
+    - define CMAKE_C/CXX_COMPILER in CMakeToolchain generated
+      presets, only for MSVC cl-like compilers, automatically only
+      for Ninja generator (gh#conan-io/conan#18280).
+    - Add header_lib template to conan new
+      (gh#conan-io/conan#18249).
+    - to_cppstd_flag/to_cstd_flag methods are not using fixed
+      values (gh#conan-io/conan#18246).
+    - Add subprocess to the profile jinja rendering
+      (gh#conan-io/conan#18244).
+    - New conan cache save ... --no-source to avoid storing
+      downloaded sources in the .tgz (gh#conan-io/conan#18243).
+    - Add verbose logs for conan cache clean
+      (gh#conan-io/conan#18228).
+    - Add --list inputs to conan cache clean and conan cache
+      check-integrity (gh#conan-io/conan#18219).
+    - Add allowed_packages info to remote json output
+      (gh#conan-io/conan#18206).
+    - Add URL information to json output format for conan upload
+      (gh#conan-io/conan#18166).
+    - New conan workspace clean command, removes the output-folder
+      of editables if defined, otherwise nothing. Can be custom
+      implemented by users in the conanws.py file
+      (gh#conan-io/conan#17763).
+  * Fixes:
+    - Fix PyInstaller --exclude-module adding wildcard for
+      conan.test (gh#conan-io/conan#18381).
+    - Fix urls for conan audit (gh#conan-io/conan#18360).
+    - Validate if the licenses in the SBOM are SPDX compatible
+      (gh#conan-io/conan#18358).
+    - Autotools in Windows working for both LLVM/Clang both clang
+      and clang-cl frontends (gh#conan-io/conan#18347).
+    - Change wording on unzip tool when uncompressing file
+      (gh#conan-io/conan#18327).
+    - Avoid duplicate component requirement names in PkgConfigDeps
+      and BazelDeps (gh#conan-io/conan#18324).
+    - Avoid grafted commits in Git helper for commit_in_remote()
+      affecting also coordinates_to_conandata(),
+      get_url_and_commit() (gh#conan-io/conan#18315).
+    - copy() now is capable of excluding symlinks to folders
+      (gh#conan-io/conan#18304).
+    - Better error message in conan list --graph=file.json when
+      using filtered graph (gh#conan-io/conan#18303).
+    - Always sort overrides serialization
+      (gh#conan-io/conan#18274).
+    - Allow composition of conf values that are different
+      categories of numbers (gh#conan-io/conan#18265).
+    - Avoid incorrect warning in test_package of python_requires
+      about "tested_reference_str" (gh#conan-io/conan#18226).
+    - CycloneDX 1.6 authors field (gh#conan-io/conan#18208).
+    - Make CMakeConfigDeps incubating generator paths relative for
+      deployers (gh#conan-io/conan#18197).
+    - Add the full conan package in PyInstaller bundle
+      (gh#conan-io/conan#18195).
+    - Remove LT_INIT from conan new autotools_exe template
+      configure.ac (gh#conan-io/conan#18378).
+    - Fix CMakeConfigDeps link flags (gh#conan-io/conan#18367).
+    - Fix conan audit producing _parse_error_threshold crash when
+      some package was not found in the catalog
+      (gh#conan-io/conan#18363).
+    - The first edge on conan graph info ... -f=html now shows
+      require information (gh#conan-io/conan#18245).
+    - conan cache save no longer zips downloaded artifacts like
+      conan_export.tgz and conan_sources.tgz
+      (gh#conan-io/conan#18243).
+    - Allow to conan create a python-requires package with a
+      profile that contains tool-requires
+      (gh#conan-io/conan#18226).
+    - Let conan config install walk the fs tree looking for a
+      .conanignore (gh#conan-io/conan#18170).
+
+-------------------------------------------------------------------
 Sat May 10 14:42:47 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.16.1:
