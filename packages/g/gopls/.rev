@@ -289,4 +289,14 @@
     Recommends: or Suggests: instead may also make sense here. (forwarded request 1275921 from jfkw)</comment>
     <requestid>1275936</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>dec459c296e213508371ee2b41810f80</srcmd5>
+    <version>0.19.0</version>
+    <time>1750177360</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.19.0:
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.24 matching go.mod (forwarded request 1286237 from jfkw)</comment>
+    <requestid>1286238</requestid>
+  </revision>
 </revisionlist>

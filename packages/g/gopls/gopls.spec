@@ -17,7 +17,7 @@
 
 
 Name:           gopls
-Version:        0.18.1
+Version:        0.19.0
 Release:        0
 Summary:        Go LSP protocol language server
 License:        Apache-2.0 AND MIT AND BSD-3-Clause
@@ -25,8 +25,8 @@ Group:          Development/Tools/Other
 URL:            https://pkg.go.dev/golang.org/x/tools/gopls
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.23
-Requires:       golang(API) >= 1.23
+BuildRequires:  golang(API) >= 1.24
+Requires:       golang(API) >= 1.24
 
 %description
 gopls (pronounced "Go please") is the official Go language server developed
