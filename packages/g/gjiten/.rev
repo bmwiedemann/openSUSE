@@ -61,4 +61,12 @@
     <comment>update</comment>
     <requestid>999987</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a9af2a411880e05f203b8bd366027d67</srcmd5>
+    <version>3.1</version>
+    <time>1750177453</time>
+    <user>anag_factory</user>
+    <comment>- Add c23.patch</comment>
+    <requestid>1286350</requestid>
+  </revision>
 </revisionlist>

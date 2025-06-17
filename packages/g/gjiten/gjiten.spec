@@ -1,7 +1,7 @@
 #
 # spec file for package gjiten
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source:         https://github.com/DarkTrick/gjiten/archive/refs/tags/%name-%ver
 Patch0:         %name.patch
 Patch1:         %name-desktop.patch
 Patch2:         stop-using-gnome-common.patch
+Patch3:         c23.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  edict
 BuildRequires:  intltool
