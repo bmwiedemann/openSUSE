@@ -1,7 +1,7 @@
 #
 # spec file for package python-flufl.testing
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,9 @@ Summary:        A small collection of test tool plugins
 License:        Apache-2.0
 URL:            https://gitlab.com/warsaw/flufl.testing
 Source:         https://files.pythonhosted.org/packages/source/f/flufl.testing/flufl.testing-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -37,10 +39,10 @@ A small collection of test tool plugins
 %setup -q -n flufl.testing-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -49,6 +51,9 @@ A small collection of test tool plugins
 %files %{python_files}
 %doc NEWS.rst README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%dir %{python_sitelib}/flufl
+%{python_sitelib}/flufl/testing
+%{python_sitelib}/flufl[._]testing-%{version}.dist-info
+%{python_sitelib}/flufl.testing-0.8-py*-nspkg.pth
 
 %changelog
