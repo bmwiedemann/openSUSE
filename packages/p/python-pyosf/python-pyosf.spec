@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyosf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyosf
 Version:        1.0.5
 Release:        0
@@ -27,7 +26,9 @@ URL:            https://github.com/psychopy/pyosf
 Source:         https://files.pythonhosted.org/packages/source/p/pyosf/pyosf-%{version}.zip
 Source10:       https://raw.githubusercontent.com/psychopy/pyosf/v%{version}/README.md
 Source11:       https://raw.githubusercontent.com/psychopy/pyosf/v%{version}/The%20MIT%20License%20%28MIT%29.md
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -64,10 +65,10 @@ cp "%{SOURCE11}" LICENSE.md
 sed -Ei 's:.pytest-runner.,?::' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -76,6 +77,7 @@ sed -Ei 's:.pytest-runner.,?::' setup.py
 %files %{python_files}
 %doc README.md
 %license LICENSE.md
-%{python_sitelib}/*
+%{python_sitelib}/pyosf
+%{python_sitelib}/pyosf-%{version}*-info
 
 %changelog

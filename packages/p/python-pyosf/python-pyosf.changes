@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 10 09:14:23 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Mar 15 08:50:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use python_expand for fdupes 
