@@ -9,4 +9,25 @@
 VEX can be thought of as a &quot;negative security advisory&quot;. Using VEX, software authors can communicate to their users that an otherwise vulnerable component has no security implications for their product.</comment>
     <requestid>1225194</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>88437e10df96b5de2df601149f434d5b</srcmd5>
+    <version>0.3.0+git133.ff97560</version>
+    <time>1750177478</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.3.0+git133.ff97560:
+  * Upstream has not had a recent tagged release to pick up
+    dependency updates committed to main branch.
+- Packaging improvements:
+  * _service tar_scm set revision to branch main until upstream
+    next has a tagged release
+  * _service tar_scm when revision is a branch name e.g. master
+    use versionformat @PARENT_TAG@+git@TAG_OFFSET@.%h to represent
+    git commit history included beyond last tagged release. Archive
+    name will be: name-X.Y.Z+gitN.shortsha.tar.gz. When upstream
+    project resumes tagged releases drop the param versionformat
+    and restore revision to tag name e.g. vX.Y.Z.
+  * Update to BuildRequires: golang(API) &gt;= 1.24 matching go.mod
+  * %install remove extraneous comment and dest path quoting (forwarded request 1286233 from jfkw)</comment>
+    <requestid>1286234</requestid>
+  </revision>
 </revisionlist>

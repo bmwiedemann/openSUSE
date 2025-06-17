@@ -1,7 +1,7 @@
 #
 # spec file for package vexctl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           vexctl
-Version:        0.3.0
+Version:        0.3.0+git133.ff97560
 Release:        0
-Summary:        CLI tool to create, transform and attest VEX metadata 
+Summary:        CLI tool to create, transform and attest VEX metadata
 License:        Apache-2.0
 Group:          Productivity/Security
 URL:            https://github.com/openvex/vexctl
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  golang(API) >= 1.24
 
 %description
 vexctl is a CLI tool to create, apply, and attest VEX (Vulnerability
@@ -51,8 +51,7 @@ go build
 ./%{name} --help
 
 %install
-# Install the binary.
-install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
 
 %files
 %doc README.md
