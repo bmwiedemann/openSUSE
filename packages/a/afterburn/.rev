@@ -121,4 +121,12 @@ Prepare for RPM 4.20</comment>
     <comment>- Update to version 5.8.2:</comment>
     <requestid>1278381</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>88a56ef5cb1803754fa9af2c92e5b8ce</srcmd5>
+    <version>5.8.2</version>
+    <time>1750177391</time>
+    <user>anag_factory</user>
+    <comment>- Fix Requires in noarch package to not be arch specific (bsc#1244675)</comment>
+    <requestid>1286306</requestid>
+  </revision>
 </revisionlist>

@@ -44,7 +44,7 @@ Afterburn is a one-shot agent for cloud-like platforms which interacts with prov
 %package dracut
 Summary:        Dracut modules for afterburn
 BuildRequires:  pkgconfig(dracut)
-Requires:       %{name}%{?_isa} = %{?epoch:}%{version}-%{release}
+Requires:       %{name} = %{?epoch:}%{version}-%{release}
 Requires:       dracut
 BuildArch:      noarch
 

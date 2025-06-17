@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 17 08:51:38 UTC 2025 - Jan Zerebecki <jan.suse@zerebecki.de>
+
+- Fix Requires in noarch package to not be arch specific (bsc#1244675)
+
+-------------------------------------------------------------------
 Mon May 19 09:58:00 UTC 2025 - jan.suse@zerebecki.de
 
 - Update to version 5.8.2:
