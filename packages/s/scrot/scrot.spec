@@ -1,7 +1,7 @@
 #
 # spec file for package scrot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           scrot
-Version:        1.11.1
+Version:        1.12.1
 Release:        0
 Summary:        Screenshot Capture Utility
 License:        SUSE-Scrot
@@ -34,10 +34,30 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(zlib)
+Requires:       imlib2
 
 %description
 A nice and straightforward screen capture utility implementing
 the dynamic loaders of imlib2.
+
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+The official bash completion script for %{name}
+
+%package zsh-completion
+Summary:        ZSH Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+The official zsh completion script for %{name}
 
 %prep
 %autosetup -p1
@@ -49,6 +69,9 @@ the dynamic loaders of imlib2.
 %install
 %make_install
 mkdir -p %{buildroot}/%{_datadir}/pixmaps/
+# Install the shell autocomplete files
+install -Dm 644 %{_builddir}/%{name}-%{version}/etc/bash-completion/%{name} %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -Dm 644 %{_builddir}/%{name}-%{version}/etc/zsh-completion/_%{name} %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 rm -rf %{buildroot}/%{_datadir}/doc/scrot
 
 %files
@@ -56,5 +79,11 @@ rm -rf %{buildroot}/%{_datadir}/doc/scrot
 %license COPYING
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+
+%files bash-completion
+%{_datadir}/bash-completion
+
+%files zsh-completion
+%{_datadir}/zsh
 
 %changelog

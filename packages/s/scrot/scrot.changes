@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Jun 14 17:30:25 UTC 2025 - Nathan Cutler <ncutler@suse.com>
+
+- spec: add "Requires: imlib2" because the software does not work
+  unless imlib2 is installed (bsc#1240925)
+
+-------------------------------------------------------------------
+Sat Apr  5 14:02:00 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.12.1:
+  * Fixes: Do no default to --line mode=edge if --freeze is also specified
+    since that combination can lead to artifacts (#408).
+  * Document: Correct description of edge mode regarding -f flag.
+
+- add shell completion packages
+
+- update to 1.12:
+  * New feature: Allow cancelling selection by pressing alternate button.
+  * Fixes: Racy behavior of --freeze where the screenshot was different than
+    the content it was frozen on (#381).
+  * Fixes: Hanging when invoked with a button pressed (#389).
+  * Fixes: Certain visual glitches with selection when run under
+    a compositor (#387).
+  * Document: Correct description of -m in help string.
+  * Document: Formatting of -u in manpage.
+  * Document: Clarify "other" formats in the README.
+
+-------------------------------------------------------------------
 Tue Aug 13 06:08:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.1:
