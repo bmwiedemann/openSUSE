@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 16 19:58:59 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- add lrzsz-0.12.21rc-fix-build-with-gcc-15.patch to fix build
+  errors
+- add the path of the m4 macro to autoreconf to fix the build with
+  gettext 0.25
+
+-------------------------------------------------------------------
 Mon May 27 11:22:53 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
 
 - add gettext-runtime as buid requirement:

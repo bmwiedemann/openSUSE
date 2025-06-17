@@ -1,7 +1,7 @@
 #
 # spec file for package rzsz
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Patch8:         lrzsz-0.12.20-null-pointer.patch
 # PATCH-FIX-UPSTREAM fix getopt optstring boo#1076576
 Patch9:         lrzsz-0.12.20-fix-lsz-getopt.patch
 Patch10:        lrzsz-0.12.21rc-drop-po-intl.patch
+Patch11:        lrzsz-0.12.21rc-fix-build-with-gcc-15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext-runtime
@@ -55,7 +56,7 @@ rm -f missing
 rm -f acconfig.h
 
 %build
-autoreconf -fvi
+autoreconf -fvi -I /usr/share/gettext/m4
 %configure
 make %{?_smp_mflags}
 # generate translation
