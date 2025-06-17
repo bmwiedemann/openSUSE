@@ -17,7 +17,7 @@
 
 #!BuildTag: opensuse/valkey:%%valkey_version%%-%RELEASE%
 #!BuildTag: opensuse/valkey:%%valkey_version%%
-#!BuildTag: opensuse/valkey:8.0
+#!BuildTag: opensuse/valkey:8.1
 #!BuildTag: opensuse/valkey:8
 #!BuildTag: opensuse/valkey:latest
 
@@ -30,7 +30,7 @@ RUN set -euo pipefail; \
 # sanity check that the version from the tag is equal to the version of valkey that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' valkey | \
-    cut -d '.' -f -2)" = "8.0" ]
+    cut -d '.' -f -2)" = "8.1" ]
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 FROM opensuse/bci/bci-micro:latest
