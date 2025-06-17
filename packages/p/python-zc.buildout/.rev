@@ -262,4 +262,12 @@ See Request#518161</comment>
 - Run at least a portion of the testsuite.</comment>
     <requestid>1283477</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>ad0aa053904780799c13b14be343d981</srcmd5>
+    <version>4.1.10</version>
+    <time>1750177410</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286310</requestid>
+  </revision>
 </revisionlist>

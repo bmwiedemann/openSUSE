@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-zc.buildout
 Version:        4.1.10
@@ -27,14 +28,14 @@ Source:         https://github.com/buildout/buildout/archive/refs/tags/%{version
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-packaging >= 23.2
 Requires:       python-pip
 Requires:       python-setuptools >= 49
 Requires:       python-wheel
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Provides:       python-zc_buildout = %{version}
 Obsoletes:      python-zc_buildout < %{version}
 BuildArch:      noarch
@@ -65,11 +66,8 @@ Buildout is a project designed to solve 2 problems:
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python src/zc/buildout/tests/test_all.py
 
-%post
-%python_install_alternative buildout
-
-%postun
-%python_uninstall_alternative buildout
+%pre
+%python_libalternatives_reset_alternative buildout
 
 %files %{python_files}
 %doc README.rst CHANGES.rst COPYRIGHT.txt
