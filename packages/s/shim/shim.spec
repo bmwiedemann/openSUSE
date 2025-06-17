@@ -71,13 +71,13 @@ Source51:       revoked-openSUSE-UEFI-SIGN-Certificate-2013-08.crt
 Source52:       revoked-openSUSE-UEFI-SIGN-Certificate-2020-01.crt
 Source53:       revoked-openSUSE-UEFI-SIGN-Certificate-2020-07.crt
 Source54:       revoked-openSUSE-UEFI-SIGN-Certificate-2021-05.crt
-Source55:       revoked-SLES-UEFI-SIGN-Certificate-2013-01.crt
-Source56:       revoked-SLES-UEFI-SIGN-Certificate-2013-04.crt
-Source57:       revoked-SLES-UEFI-SIGN-Certificate-2016-02.crt
-Source58:       revoked-SLES-UEFI-SIGN-Certificate-2020-07.crt
-Source59:       revoked-SLES-UEFI-SIGN-Certificate-2021-05.crt
-Source60:       revoked-SLES-UEFI-SIGN-Certificate-2022-05.crt
-Source61:       revoked-SLES-UEFI-SIGN-Certificate-2022-06.crt
+Source55:       revoked-openSUSE-UEFI-SIGN-Certificate-2022-06.crt
+Source56:       revoked-SLES-UEFI-SIGN-Certificate-2013-01.crt
+Source57:       revoked-SLES-UEFI-SIGN-Certificate-2013-04.crt
+Source58:       revoked-SLES-UEFI-SIGN-Certificate-2016-02.crt
+Source59:       revoked-SLES-UEFI-SIGN-Certificate-2020-07.crt
+Source60:       revoked-SLES-UEFI-SIGN-Certificate-2021-05.crt
+Source61:       revoked-SLES-UEFI-SIGN-Certificate-2022-05.crt
 ###
 Source99:       SIGNATURE_UPDATE.txt
 # PATCH-FIX-SUSE shim-arch-independent-names.patch glin@suse.com -- Use the Arch-independent names

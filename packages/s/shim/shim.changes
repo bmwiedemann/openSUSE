@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  5 03:22:48 UTC 2025 - Dennis <dennis.tseng@suse.com>
+
+- rename incorrect certificat name revoked-SLES-UEFI-SIGN-Certificate-2022-06.crt
+  to revoked-openSUSE-UEFI-SIGN-Certificate-2022-06.crt, and
+  re-arrange its sequence. 
+
+-------------------------------------------------------------------
 Wed May 28 03:37:04 UTC 2025 - Tseng <dennis.tseng@suse.com>
 
 - add revoked-SLES-UEFI-SIGN-Certificate-2022-06.crt into dbx
