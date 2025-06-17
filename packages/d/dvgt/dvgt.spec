@@ -1,7 +1,7 @@
 #
 # spec file for package dvgt
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -39,9 +39,8 @@ of the DVI files, therefore output on text terminals is not legible.
 %autosetup -p0
 
 %build
-RPM_OPT_FLAGS="-std=gnu89 %{optflags} -fno-strict-aliasing -funsigned-char"
-#RPM_OPT_FLAGS="$RPM_OPT_FLAGS -Wno-uninitialized -Wno-unused -pipe"
-RPM_OPT_FLAGS="%{optflags} -Wno-unused -pipe"
+RPM_OPT_FLAGS="-std=gnu99 %{optflags} -fno-strict-aliasing -funsigned-char"
+RPM_OPT_FLAGS="$RPM_OPT_FLAGS -Wno-unused -pipe -D_DEFAULT_SOURCE"
 export RPM_OPT_FLAGS
 pushd src
    make -f Makefile.linux %{?_smp_mflags}
