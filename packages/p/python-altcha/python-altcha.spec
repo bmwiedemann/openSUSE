@@ -17,7 +17,7 @@
 
 
 Name:           python-altcha
-Version:        0.1.9
+Version:        0.2.0
 Release:        0
 Summary:        A library for creating and verifying challenges for ALTCHA
 License:        MIT
@@ -25,6 +25,7 @@ URL:            https://github.com/altcha-org/altcha-lib-py
 Source:         https://files.pythonhosted.org/packages/source/a/altcha/altcha-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -48,6 +49,8 @@ The ALTCHA Python Library is a lightweight, zero-dependency library designed for
 %pyunittest -v tests/test_altcha.py
 
 %files %{python_files}
+%doc README.md
+%license LICENSE
 %{python_sitelib}/altcha
 %{python_sitelib}/altcha-%{version}.dist-info
 
