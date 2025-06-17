@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 16 09:14:35 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- bump ruby gem rack to 3.1.16 (bsc#1244113)
+  * rack-3.1.16.gem
+
+-------------------------------------------------------------------
 Sun May 11 12:01:02 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
 
 - bump ruby gem rack-session to 2.1.1 (bsc#1242927)

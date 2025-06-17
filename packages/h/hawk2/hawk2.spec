@@ -71,7 +71,7 @@ Source22:       crass-1.0.6.gem
 Source23:       loofah-2.24.0.gem
 Source24:       rails-html-sanitizer-1.6.2.gem
 Source25:       actionview-8.0.2.gem
-Source26:       rack-3.1.14.gem
+Source26:       rack-3.1.16.gem
 Source27:       rack-session-2.1.1.gem
 Source28:       rack-test-2.2.0.gem
 Source29:       useragent-0.16.11.gem
