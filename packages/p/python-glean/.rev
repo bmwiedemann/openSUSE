@@ -127,4 +127,12 @@
   * Drop opensuse jobs</comment>
     <requestid>1179405</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e02d6f09357ea9317725a95dade55cdf</srcmd5>
+    <version>1.25.0</version>
+    <time>1750177408</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1286301</requestid>
+  </revision>
 </revisionlist>

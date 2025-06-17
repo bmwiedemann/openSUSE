@@ -1,7 +1,7 @@
 #
 # spec file for package python-glean
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-glean
-Version:        1.24.0
+Version:        1.25.0
 Release:        0
 Summary:        Program to write static config from config-drive
 License:        Apache-2.0
