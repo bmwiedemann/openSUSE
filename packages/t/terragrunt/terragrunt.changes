@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 16 19:22:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.81.7:
+  * Experiments Updated
+    - --summary-unit-duration replaced with --summary-per-unit
+      Per design feedback, the flag --summary-unit-duration has
+      been replaced with --summary-per-unit in the report
+      experiment.
+      This was done to streamline the information conveyed by the
+      run summary, and to maximize leverage over the screen real
+      estate taken by the summary.
+      The report experiment is still ongoing, and community
+      feedback is encouraged. Please share any feedback you may
+      have before the design of Run Reports and Run Summaries are
+      finalized.
+  * What's Changed
+    - fix: Replace summary unit durations (#4418)
+    - fix: Adding E2E tests for catalog (#4424)
+
+-------------------------------------------------------------------
 Sat Jun 14 08:24:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.81.6:
