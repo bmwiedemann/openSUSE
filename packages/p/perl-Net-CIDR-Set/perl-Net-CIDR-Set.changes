@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun  4 05:36:05 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.160.0 (0.16)
+   see /usr/share/doc/packages/perl-Net-CIDR-Set/Changes
+
+  0.16      2025-06-03 13:54:58+01:00 Europe/London
+    [Bug Fixes]
+    - Imports are removed from the namespace.
+    - Removed unused variable.
+    [Documentation]
+    - Modernised POD.
+    - Added a security policy.
+    - Updated README from POD.
+    - Fixed tense in Changes for v0.15.
+    [Other]
+    - Removed unnecessary files from the repo and distribution.
+    - Fixed issues with MANIFEST.SKIP.
+
+-------------------------------------------------------------------
 Wed May 28 05:35:29 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.150.0 (0.15)
