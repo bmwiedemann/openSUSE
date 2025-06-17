@@ -189,4 +189,12 @@
 - Adapt 0001-suse.patch and 0002-fix-shebangs.patch for 6.0.26</comment>
     <requestid>1272466</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>64258c30246c547217203b20656370c5</srcmd5>
+    <version>6.0.27</version>
+    <time>1750177287</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1286122</requestid>
+  </revision>
 </revisionlist>

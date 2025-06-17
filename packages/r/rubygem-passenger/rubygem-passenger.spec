@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-passenger
-Version:        6.0.26
+Version:        6.0.27
 Release:        0
 %define mod_name passenger
 %define mod_full_name %{mod_name}-%{version}
