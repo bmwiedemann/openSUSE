@@ -135,4 +135,12 @@
 - Update to version 2.4.34</comment>
     <requestid>1137112</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>84c03e6fd38b2e17c9fbd3e1f203912a</srcmd5>
+    <version>2.4.41</version>
+    <time>1750177273</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286094</requestid>
+  </revision>
 </revisionlist>

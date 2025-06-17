@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymavlink
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,6 +18,7 @@
 
 
 %define binaries mavtomfile mavtogpx mavsummarize mavsigloss mavsearch mavplayback mavparms mavparmdiff mavmission mavloss mavlogdump mavlink_bitmask_decoder mavkml mavgraph mavgpslock mavgen mavflighttime mavflightmodes mavfft_isb mavfft mavextract magfit_motors magfit_gps magfit_delta magfit_WMM magfit MPU6KSearch
+%bcond_without libalternatives
 Name:           python-pymavlink
 Version:        2.4.41
 Release:        0
@@ -30,15 +31,15 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-lxml
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module lxml}
 # /SECTION
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -75,14 +76,9 @@ rm -f %{buildroot}%{_bindir}/_current_flavor
 %check
 # no tests in PyPI tarball, no tags in upstream repo
 
-%post
+%pre
 for b in %{binaries}; do
-  %python_install_alternative $b
-done
-
-%postun
-for b in %{binaries}; do
-  %python_uninstall_alternative $b
+  %python_libalternatives_reset_alternative $b
 done
 
 %files %{python_files}
