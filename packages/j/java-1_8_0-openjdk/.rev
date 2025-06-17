@@ -850,4 +850,12 @@
     <comment>April 2025 CPU</comment>
     <requestid>1274314</requestid>
   </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>1382de4a72df602a231445b6322340de</srcmd5>
+    <version>1.8.0.452</version>
+    <time>1750177385</time>
+    <user>anag_factory</user>
+    <comment>Fix gcc 15 build</comment>
+    <requestid>1286283</requestid>
+  </revision>
 </revisionlist>
