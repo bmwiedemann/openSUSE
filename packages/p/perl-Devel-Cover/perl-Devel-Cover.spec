@@ -18,10 +18,10 @@
 
 %define cpan_name Devel-Cover
 Name:           perl-Devel-Cover
-Version:        1.490.0
+Version:        1.500.0
 Release:        0
-# 1.49 -> normalize -> 1.490.0
-%define cpan_version 1.49
+# 1.50 -> normalize -> 1.500.0
+%define cpan_version 1.50
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Code coverage metrics for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -154,7 +154,7 @@ https://github.com/pjcj/Devel--Cover. This is also where problems should be
 reported.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 11 05:37:05 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.500.0 (1.50)
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  1.50 - 10 June 2025
+  - Avoid some warnings during global destruction
+
+-------------------------------------------------------------------
 Thu May 22 13:33:52 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Add '%{requires_eq perl}' to ensure it gets rebuilt even for perl
