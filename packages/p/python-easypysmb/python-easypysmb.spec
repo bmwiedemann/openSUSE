@@ -1,7 +1,7 @@
 #
 # spec file for package python-easypysmb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-easypysmb
 Version:        1.4.4
 Release:        0
@@ -26,7 +25,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pschmitt/easypysmb
 Source:         https://files.pythonhosted.org/packages/source/e/easypysmb/easypysmb-%{version}.tar.gz
 Source99:       https://raw.githubusercontent.com/pschmitt/easypysmb/master/LICENSE
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pysmb
@@ -42,15 +42,16 @@ easypysmb is a Python library that wraps around the pysmb library.
 cp %{S:99} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/easypysmb
+%{python_sitelib}/easypysmb-%{version}.dist-info
 
 %changelog
