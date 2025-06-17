@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -122,6 +122,7 @@ Patch35:        eclipse-CVE-2020-27225.patch
 Patch36:        eclipse-ant.patch
 Patch37:        reproducible-p2_timestamp.patch
 Patch38:        eclipse-CVE-2023-4218.patch
+Patch39:        eclipse-gcc15.patch
 BuildRequires:  ant >= 1.10.5
 BuildRequires:  ant-antlr
 BuildRequires:  ant-apache-bcel
@@ -536,6 +537,8 @@ tar --strip-components=1 -xf %{SOURCE1}
 %patch -P 37 -p1
 
 %patch -P 38 -p1
+
+%patch -P 39 -p1
 
 # Extend the objectweb-asm requirements
 sed -i -e 's/org\.objectweb\.asm\.tree;bundle-version="\[6\.0\.0,8\.0\.0)"/org\.objectweb\.asm\.tree;bundle-version="\[6\.0\.0,10\.0\.0)"/g' \

@@ -208,4 +208,12 @@
 revert previous change</comment>
     <requestid>1179413</requestid>
   </revision>
+  <revision rev="27" vrev="16">
+    <srcmd5>37294f9a4baf089aaa45e149020a48d0</srcmd5>
+    <version>4.15</version>
+    <time>1750177329</time>
+    <user>anag_factory</user>
+    <comment>Fix gcc15 build</comment>
+    <requestid>1286170</requestid>
+  </revision>
 </revisionlist>

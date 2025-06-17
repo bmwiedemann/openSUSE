@@ -6,7 +6,7 @@ diff -urEbwB eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.e
  				((JarOutputStream) os).putNextEntry(new JarEntry(new Path(artifactsFile.getAbsolutePath()).lastSegment()));
  			}
 -			super.setProperty(IRepository.PROP_TIMESTAMP, Long.toString(System.currentTimeMillis()));
-+			super.setProperty(IRepository.PROP_TIMESTAMP, Long.toString(System.getenv("SOURCE_DATE_EPOCH") != null ? 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")) : System.currentTimeMillis()));
++			super.setProperty(IRepository.PROP_TIMESTAMP, System.getenv("SOURCE_DATE_EPOCH") != null ? System.getenv("SOURCE_DATE_EPOCH") + "000" : Long.toString(System.currentTimeMillis()));
  			new CompositeRepositoryIO().write(toState(), os, PI_REPOSITORY_TYPE);
  		} catch (IOException e) {
  			LogHelper.log(new Status(IStatus.ERROR, Activator.ID, ProvisionException.REPOSITORY_FAILED_WRITE, NLS.bind(Messages.io_failedWrite, getLocation()), e));
@@ -18,7 +18,7 @@ diff -urEbwB eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.e
  					((JarOutputStream) os).putNextEntry(new JarEntry(new Path(artifactsFile.getAbsolutePath()).lastSegment()));
  				}
 -				super.setProperty(IRepository.PROP_TIMESTAMP, Long.toString(System.currentTimeMillis()), new NullProgressMonitor());
-+				super.setProperty(IRepository.PROP_TIMESTAMP, Long.toString(System.getenv("SOURCE_DATE_EPOCH") != null ? 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")) : System.currentTimeMillis()), new NullProgressMonitor());
++				super.setProperty(IRepository.PROP_TIMESTAMP, System.getenv("SOURCE_DATE_EPOCH") != null ? System.getenv("SOURCE_DATE_EPOCH") + "000" : Long.toString(System.currentTimeMillis()), new NullProgressMonitor());
  				new SimpleArtifactRepositoryIO(getProvisioningAgent()).write(this, os);
  			} catch (IOException e) {
  				// TODO proper exception handling
@@ -30,7 +30,7 @@ diff -urEbwB eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.e
  				((JarOutputStream) output).putNextEntry(jarEntry);
  			}
 -			super.setProperty(IRepository.PROP_TIMESTAMP, Long.toString(System.currentTimeMillis()));
-+			super.setProperty(IRepository.PROP_TIMESTAMP, Long.toString(System.getenv("SOURCE_DATE_EPOCH") != null ? 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")) : System.currentTimeMillis()));
++			super.setProperty(IRepository.PROP_TIMESTAMP, System.getenv("SOURCE_DATE_EPOCH") != null ? System.getenv("SOURCE_DATE_EPOCH") + "000" : Long.toString(System.currentTimeMillis()));
  			new CompositeRepositoryIO().write(toState(), output, PI_REPOSITORY_TYPE);
  		} catch (IOException e) {
  			LogHelper.log(new Status(IStatus.ERROR, Constants.ID, ProvisionException.REPOSITORY_FAILED_WRITE, NLS.bind(Messages.io_failedWrite, getLocation()), e));
@@ -42,7 +42,7 @@ diff -urEbwB eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.e
  				((JarOutputStream) output).putNextEntry(jarEntry);
  			}
 -			super.setProperty(IRepository.PROP_TIMESTAMP, Long.toString(System.currentTimeMillis()), new NullProgressMonitor());
-+			super.setProperty(IRepository.PROP_TIMESTAMP, Long.toString(System.getenv("SOURCE_DATE_EPOCH") != null ? 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")) : System.currentTimeMillis()), new NullProgressMonitor());
++			super.setProperty(IRepository.PROP_TIMESTAMP, System.getenv("SOURCE_DATE_EPOCH") != null ? System.getenv("SOURCE_DATE_EPOCH") + "000" : Long.toString(System.currentTimeMillis()), new NullProgressMonitor());
  			new MetadataRepositoryIO(getProvisioningAgent()).write(this, output);
  		} catch (IOException e) {
  			LogHelper.log(new Status(IStatus.ERROR, Constants.ID, ProvisionException.REPOSITORY_FAILED_WRITE, "Error saving metadata repository: " + getLocation(), e)); //$NON-NLS-1$

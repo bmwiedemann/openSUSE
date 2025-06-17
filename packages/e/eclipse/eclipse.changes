@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 16 16:53:27 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * reproducible-p2_timestamp.patch
+    + avoid Long.parseLong then multiplication by 1000 and then
+      again converting to String by Long.toString, when it is
+      enough to add 3 zeros to the String
+- Added patch:
+  * eclipse-gcc15.patch
+    + fix build with gcc15
+
+-------------------------------------------------------------------
 Wed Mar 20 17:36:32 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

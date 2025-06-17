@@ -1,0 +1,465 @@
+--- "eclipse-platform-sources-I20200305-0155/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/atk.c"	2025-06-16 16:24:45.239005930 +0200
++++ "eclipse-platform-sources-I20200305-0155/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/atk.c"	2025-06-16 17:09:47.398507654 +0200
+@@ -328,7 +328,7 @@
+ {
+ 	jlong rc = 0;
+ 	ATK_NATIVE_ENTER(env, that, call__JJ_FUNC);
+-	rc = (jlong)((jlong (*)())arg0)(arg1);
++	rc = (jlong)((jlong (*)(jlong))arg0)(arg1);
+ 	ATK_NATIVE_EXIT(env, that, call__JJ_FUNC);
+ 	return rc;
+ }
+@@ -340,7 +340,7 @@
+ {
+ 	jlong rc = 0;
+ 	ATK_NATIVE_ENTER(env, that, call__JJJ_FUNC);
+-	rc = (jlong)((jlong (*)())arg0)(arg1, arg2);
++	rc = (jlong)((jlong (*)(jlong, jlong))arg0)(arg1, arg2);
+ 	ATK_NATIVE_EXIT(env, that, call__JJJ_FUNC);
+ 	return rc;
+ }
+@@ -352,7 +352,7 @@
+ {
+ 	jlong rc = 0;
+ 	ATK_NATIVE_ENTER(env, that, call__JJJJ_FUNC);
+-	rc = (jlong)((jlong (*)())arg0)(arg1, arg2, arg3);
++	rc = (jlong)((jlong (*)(jlong, jlong, jlong))arg0)(arg1, arg2, arg3);
+ 	ATK_NATIVE_EXIT(env, that, call__JJJJ_FUNC);
+ 	return rc;
+ }
+@@ -364,7 +364,7 @@
+ {
+ 	jlong rc = 0;
+ 	ATK_NATIVE_ENTER(env, that, call__JJJJJJ_FUNC);
+-	rc = (jlong)((jlong (*)())arg0)(arg1, arg2, arg3, arg4, arg5);
++	rc = (jlong)((jlong (*)(jlong, jlong, jlong, jlong, jlong))arg0)(arg1, arg2, arg3, arg4, arg5);
+ 	ATK_NATIVE_EXIT(env, that, call__JJJJJJ_FUNC);
+ 	return rc;
+ }
+--- "eclipse-platform-sources-I20200305-0155/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/atk.h"	2025-06-16 16:24:45.239125195 +0200
++++ "eclipse-platform-sources-I20200305-0155/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/atk.h"	2025-06-16 16:49:48.557463589 +0200
+@@ -21,5 +21,5 @@
+ #define ATK_LOAD_FUNCTION LOAD_FUNCTION
+ 
+ #define SWT_AtkObjectClass_get_attributes get_attributes
+-#define SWT_AtkObjectClass_get_attributes_cast AtkAttributeSet* (*)()
++#define SWT_AtkObjectClass_get_attributes_cast AtkAttributeSet* (*)(AtkObject *)
+ 
+--- "eclipse-platform-sources-I20200305-0155/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/atk_structs.c"	2025-06-16 16:24:45.239035780 +0200
++++ "eclipse-platform-sources-I20200305-0155/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/atk_structs.c"	2025-06-16 18:18:48.505681384 +0200
+@@ -44,12 +44,12 @@
+ AtkActionIface *getAtkActionIfaceFields(JNIEnv *env, jobject lpObject, AtkActionIface *lpStruct)
+ {
+ 	if (!AtkActionIfaceFc.cached) cacheAtkActionIfaceFields(env, lpObject);
+-	lpStruct->do_action = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkActionIfaceFc.do_action);
+-	lpStruct->get_n_actions = (gint (*)())(*env)->GetLongField(env, lpObject, AtkActionIfaceFc.get_n_actions);
+-	lpStruct->get_description = (const gchar *(*)())(*env)->GetLongField(env, lpObject, AtkActionIfaceFc.get_description);
+-	lpStruct->get_name = (const gchar *(*)())(*env)->GetLongField(env, lpObject, AtkActionIfaceFc.get_name);
+-	lpStruct->get_keybinding = (const gchar *(*)())(*env)->GetLongField(env, lpObject, AtkActionIfaceFc.get_keybinding);
+-	lpStruct->set_description = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkActionIfaceFc.set_description);
++	lpStruct->do_action = (gboolean (*)(AtkAction *, gint))(*env)->GetLongField(env, lpObject, AtkActionIfaceFc.do_action);
++	lpStruct->get_n_actions = (gint (*)(AtkAction *))(*env)->GetLongField(env, lpObject, AtkActionIfaceFc.get_n_actions);
++	lpStruct->get_description = (const gchar *(*)(AtkAction *, gint))(*env)->GetLongField(env, lpObject, AtkActionIfaceFc.get_description);
++	lpStruct->get_name = (const gchar *(*)(AtkAction *, gint))(*env)->GetLongField(env, lpObject, AtkActionIfaceFc.get_name);
++	lpStruct->get_keybinding = (const gchar *(*)(AtkAction *, gint))(*env)->GetLongField(env, lpObject, AtkActionIfaceFc.get_keybinding);
++	lpStruct->set_description = (gboolean (*)(AtkAction *, gint,  const gchar *))(*env)->GetLongField(env, lpObject, AtkActionIfaceFc.set_description);
+ 	return lpStruct;
+ }
+ 
+@@ -131,19 +131,19 @@
+ AtkComponentIface *getAtkComponentIfaceFields(JNIEnv *env, jobject lpObject, AtkComponentIface *lpStruct)
+ {
+ 	if (!AtkComponentIfaceFc.cached) cacheAtkComponentIfaceFields(env, lpObject);
+-	lpStruct->add_focus_handler = (guint (*)())(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.add_focus_handler);
+-	lpStruct->contains = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.contains);
+-	lpStruct->ref_accessible_at_point = (AtkObject *(*)())(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.ref_accessible_at_point);
+-	lpStruct->get_extents = (void (*)())(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.get_extents);
+-	lpStruct->get_position = (void (*)())(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.get_position);
+-	lpStruct->get_size = (void (*)())(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.get_size);
+-	lpStruct->grab_focus = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.grab_focus);
+-	lpStruct->remove_focus_handler = (void (*)())(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.remove_focus_handler);
+-	lpStruct->set_extents = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.set_extents);
+-	lpStruct->set_position = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.set_position);
+-	lpStruct->set_size = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.set_size);
+-	lpStruct->get_layer = (AtkLayer (*)())(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.get_layer);
+-	lpStruct->get_mdi_zorder = (gint (*)())(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.get_mdi_zorder);
++	lpStruct->add_focus_handler = (guint (*)(AtkComponent *, void (*)(AtkObject *, gboolean)))(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.add_focus_handler);
++	lpStruct->contains = (gboolean (*)(AtkComponent *, gint,  gint,  AtkCoordType))(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.contains);
++	lpStruct->ref_accessible_at_point = (AtkObject *(*)(AtkComponent *, gint,  gint,  AtkCoordType))(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.ref_accessible_at_point);
++	lpStruct->get_extents = (void (*)(AtkComponent *, gint *, gint *, gint *, gint *, AtkCoordType))(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.get_extents);
++	lpStruct->get_position = (void (*)(AtkComponent *, gint *, gint *, AtkCoordType))(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.get_position);
++	lpStruct->get_size = (void (*)(AtkComponent *, gint *, gint *))(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.get_size);
++	lpStruct->grab_focus = (gboolean (*)(AtkComponent *))(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.grab_focus);
++	lpStruct->remove_focus_handler = (void (*)(AtkComponent *, guint))(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.remove_focus_handler);
++	lpStruct->set_extents = (gboolean (*)(AtkComponent *, gint,  gint,  gint,  gint,  AtkCoordType))(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.set_extents);
++	lpStruct->set_position = (gboolean (*)(AtkComponent *, gint,  gint,  AtkCoordType))(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.set_position);
++	lpStruct->set_size = (gboolean (*)(AtkComponent *, gint,  gint))(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.set_size);
++	lpStruct->get_layer = (AtkLayer (*)(AtkComponent *))(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.get_layer);
++	lpStruct->get_mdi_zorder = (gint (*)(AtkComponent *))(*env)->GetLongField(env, lpObject, AtkComponentIfaceFc.get_mdi_zorder);
+ 	return lpStruct;
+ }
+ 
+@@ -192,13 +192,13 @@
+ AtkEditableTextIface *getAtkEditableTextIfaceFields(JNIEnv *env, jobject lpObject, AtkEditableTextIface *lpStruct)
+ {
+ 	if (!AtkEditableTextIfaceFc.cached) cacheAtkEditableTextIfaceFields(env, lpObject);
+-	lpStruct->set_run_attributes = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkEditableTextIfaceFc.set_run_attributes);
+-	lpStruct->set_text_contents = (void (*)())(*env)->GetLongField(env, lpObject, AtkEditableTextIfaceFc.set_text_contents);
+-	lpStruct->insert_text = (void (*)())(*env)->GetLongField(env, lpObject, AtkEditableTextIfaceFc.insert_text);
+-	lpStruct->copy_text = (void (*)())(*env)->GetLongField(env, lpObject, AtkEditableTextIfaceFc.copy_text);
+-	lpStruct->cut_text = (void (*)())(*env)->GetLongField(env, lpObject, AtkEditableTextIfaceFc.cut_text);
+-	lpStruct->delete_text = (void (*)())(*env)->GetLongField(env, lpObject, AtkEditableTextIfaceFc.delete_text);
+-	lpStruct->paste_text = (void (*)())(*env)->GetLongField(env, lpObject, AtkEditableTextIfaceFc.paste_text);
++	lpStruct->set_run_attributes = (gboolean (*)(AtkEditableText *, AtkAttributeSet *, gint,  gint))(*env)->GetLongField(env, lpObject, AtkEditableTextIfaceFc.set_run_attributes);
++	lpStruct->set_text_contents = (void (*)(AtkEditableText *, const gchar *))(*env)->GetLongField(env, lpObject, AtkEditableTextIfaceFc.set_text_contents);
++	lpStruct->insert_text = (void (*)(AtkEditableText *, const gchar *, gint,  gint *))(*env)->GetLongField(env, lpObject, AtkEditableTextIfaceFc.insert_text);
++	lpStruct->copy_text = (void (*)(AtkEditableText *, gint,  gint))(*env)->GetLongField(env, lpObject, AtkEditableTextIfaceFc.copy_text);
++	lpStruct->cut_text = (void (*)(AtkEditableText *, gint,  gint))(*env)->GetLongField(env, lpObject, AtkEditableTextIfaceFc.cut_text);
++	lpStruct->delete_text = (void (*)(AtkEditableText *, gint,  gint))(*env)->GetLongField(env, lpObject, AtkEditableTextIfaceFc.delete_text);
++	lpStruct->paste_text = (void (*)(AtkEditableText *, gint))(*env)->GetLongField(env, lpObject, AtkEditableTextIfaceFc.paste_text);
+ 	return lpStruct;
+ }
+ 
+@@ -237,9 +237,9 @@
+ AtkHypertextIface *getAtkHypertextIfaceFields(JNIEnv *env, jobject lpObject, AtkHypertextIface *lpStruct)
+ {
+ 	if (!AtkHypertextIfaceFc.cached) cacheAtkHypertextIfaceFields(env, lpObject);
+-	lpStruct->get_link = (AtkHyperlink *(*)())(*env)->GetLongField(env, lpObject, AtkHypertextIfaceFc.get_link);
+-	lpStruct->get_n_links = (gint (*)())(*env)->GetLongField(env, lpObject, AtkHypertextIfaceFc.get_n_links);
+-	lpStruct->get_link_index = (gint (*)())(*env)->GetLongField(env, lpObject, AtkHypertextIfaceFc.get_link_index);
++	lpStruct->get_link = (AtkHyperlink *(*)(AtkHypertext *, gint))(*env)->GetLongField(env, lpObject, AtkHypertextIfaceFc.get_link);
++	lpStruct->get_n_links = (gint (*)(AtkHypertext *))(*env)->GetLongField(env, lpObject, AtkHypertextIfaceFc.get_n_links);
++	lpStruct->get_link_index = (gint (*)(AtkHypertext *, gint))(*env)->GetLongField(env, lpObject, AtkHypertextIfaceFc.get_link_index);
+ 	return lpStruct;
+ }
+ 
+@@ -295,29 +295,29 @@
+ AtkObjectClass *getAtkObjectClassFields(JNIEnv *env, jobject lpObject, AtkObjectClass *lpStruct)
+ {
+ 	if (!AtkObjectClassFc.cached) cacheAtkObjectClassFields(env, lpObject);
+-	lpStruct->get_name = (const gchar *(*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.get_name);
+-	lpStruct->get_description = (const gchar *(*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.get_description);
+-	lpStruct->get_parent = (AtkObject *(*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.get_parent);
+-	lpStruct->get_n_children = (gint (*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.get_n_children);
+-	lpStruct->ref_child = (AtkObject *(*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.ref_child);
+-	lpStruct->get_index_in_parent = (gint (*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.get_index_in_parent);
+-	lpStruct->ref_relation_set = (AtkRelationSet *(*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.ref_relation_set);
+-	lpStruct->get_role = (AtkRole (*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.get_role);
+-	lpStruct->get_layer = (AtkLayer (*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.get_layer);
+-	lpStruct->get_mdi_zorder = (gint (*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.get_mdi_zorder);
+-	lpStruct->ref_state_set = (AtkStateSet *(*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.ref_state_set);
+-	lpStruct->set_name = (void (*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.set_name);
+-	lpStruct->set_description = (void (*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.set_description);
+-	lpStruct->set_parent = (void (*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.set_parent);
+-	lpStruct->set_role = (void (*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.set_role);
+-	lpStruct->connect_property_change_handler = (guint (*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.connect_property_change_handler);
+-	lpStruct->remove_property_change_handler = (void (*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.remove_property_change_handler);
+-	lpStruct->initialize = (void (*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.initialize);
+-	lpStruct->children_changed = (void (*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.children_changed);
+-	lpStruct->focus_event = (void (*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.focus_event);
+-	lpStruct->property_change = (void (*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.property_change);
+-	lpStruct->state_change = (void (*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.state_change);
+-	lpStruct->visible_data_changed = (void (*)())(*env)->GetLongField(env, lpObject, AtkObjectClassFc.visible_data_changed);
++	lpStruct->get_name = (const gchar *(*)(AtkObject *))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.get_name);
++	lpStruct->get_description = (const gchar *(*)(AtkObject *))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.get_description);
++	lpStruct->get_parent = (AtkObject *(*)(AtkObject *))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.get_parent);
++	lpStruct->get_n_children = (gint (*)(AtkObject *))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.get_n_children);
++	lpStruct->ref_child = (AtkObject *(*)(AtkObject *, gint))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.ref_child);
++	lpStruct->get_index_in_parent = (gint (*)(AtkObject *))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.get_index_in_parent);
++	lpStruct->ref_relation_set = (AtkRelationSet *(*)(AtkObject *))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.ref_relation_set);
++	lpStruct->get_role = (AtkRole (*)(AtkObject *))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.get_role);
++	lpStruct->get_layer = (AtkLayer (*)(AtkObject *))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.get_layer);
++	lpStruct->get_mdi_zorder = (gint (*)(AtkObject *))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.get_mdi_zorder);
++	lpStruct->ref_state_set = (AtkStateSet *(*)(AtkObject *))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.ref_state_set);
++	lpStruct->set_name = (void (*)(AtkObject *, const gchar *))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.set_name);
++	lpStruct->set_description = (void (*)(AtkObject *, const gchar *))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.set_description);
++	lpStruct->set_parent = (void (*)(AtkObject *, AtkObject *))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.set_parent);
++	lpStruct->set_role = (void (*)(AtkObject *, AtkRole))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.set_role);
++	lpStruct->connect_property_change_handler = (guint (*)(AtkObject *, void (**)(AtkObject *, AtkPropertyValues *)))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.connect_property_change_handler);
++	lpStruct->remove_property_change_handler = (void (*)(AtkObject *, guint))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.remove_property_change_handler);
++	lpStruct->initialize = (void (*)(AtkObject *, void *))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.initialize);
++	lpStruct->children_changed = (void (*)(AtkObject *, guint,  void *))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.children_changed);
++	lpStruct->focus_event = (void (*)(AtkObject *, gboolean))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.focus_event);
++	lpStruct->property_change = (void (*)(AtkObject *, AtkPropertyValues *))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.property_change);
++	lpStruct->state_change = (void (*)(AtkObject *, const gchar *, gboolean))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.state_change);
++	lpStruct->visible_data_changed = (void (*)(AtkObject *))(*env)->GetLongField(env, lpObject, AtkObjectClassFc.visible_data_changed);
+ 	lpStruct->SWT_AtkObjectClass_get_attributes = (SWT_AtkObjectClass_get_attributes_cast)(*env)->GetLongField(env, lpObject, AtkObjectClassFc.get_attributes);
+ 	return lpStruct;
+ }
+@@ -379,14 +379,14 @@
+ AtkSelectionIface *getAtkSelectionIfaceFields(JNIEnv *env, jobject lpObject, AtkSelectionIface *lpStruct)
+ {
+ 	if (!AtkSelectionIfaceFc.cached) cacheAtkSelectionIfaceFields(env, lpObject);
+-	lpStruct->add_selection = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkSelectionIfaceFc.add_selection);
+-	lpStruct->clear_selection = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkSelectionIfaceFc.clear_selection);
+-	lpStruct->ref_selection = (AtkObject *(*)())(*env)->GetLongField(env, lpObject, AtkSelectionIfaceFc.ref_selection);
+-	lpStruct->get_selection_count = (gint (*)())(*env)->GetLongField(env, lpObject, AtkSelectionIfaceFc.get_selection_count);
+-	lpStruct->is_child_selected = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkSelectionIfaceFc.is_child_selected);
+-	lpStruct->remove_selection = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkSelectionIfaceFc.remove_selection);
+-	lpStruct->select_all_selection = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkSelectionIfaceFc.select_all_selection);
+-	lpStruct->selection_changed = (void (*)())(*env)->GetLongField(env, lpObject, AtkSelectionIfaceFc.selection_changed);
++	lpStruct->add_selection = (gboolean (*)(AtkSelection *, gint))(*env)->GetLongField(env, lpObject, AtkSelectionIfaceFc.add_selection);
++	lpStruct->clear_selection = (gboolean (*)(AtkSelection *))(*env)->GetLongField(env, lpObject, AtkSelectionIfaceFc.clear_selection);
++	lpStruct->ref_selection = (AtkObject *(*)(AtkSelection *, gint))(*env)->GetLongField(env, lpObject, AtkSelectionIfaceFc.ref_selection);
++	lpStruct->get_selection_count = (gint (*)(AtkSelection *))(*env)->GetLongField(env, lpObject, AtkSelectionIfaceFc.get_selection_count);
++	lpStruct->is_child_selected = (gboolean (*)(AtkSelection *, gint))(*env)->GetLongField(env, lpObject, AtkSelectionIfaceFc.is_child_selected);
++	lpStruct->remove_selection = (gboolean (*)(AtkSelection *, gint))(*env)->GetLongField(env, lpObject, AtkSelectionIfaceFc.remove_selection);
++	lpStruct->select_all_selection = (gboolean (*)(AtkSelection *))(*env)->GetLongField(env, lpObject, AtkSelectionIfaceFc.select_all_selection);
++	lpStruct->selection_changed = (void (*)(AtkSelection *))(*env)->GetLongField(env, lpObject, AtkSelectionIfaceFc.selection_changed);
+ 	return lpStruct;
+ }
+ 
+@@ -459,42 +459,42 @@
+ AtkTableIface *getAtkTableIfaceFields(JNIEnv *env, jobject lpObject, AtkTableIface *lpStruct)
+ {
+ 	if (!AtkTableIfaceFc.cached) cacheAtkTableIfaceFields(env, lpObject);
+-	lpStruct->ref_at = (AtkObject* (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.ref_at);
+-	lpStruct->get_index_at = (gint (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_index_at);
+-	lpStruct->get_column_at_index = (gint (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_column_at_index);
+-	lpStruct->get_row_at_index = (gint (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_row_at_index);
+-	lpStruct->get_n_columns = (gint (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_n_columns);
+-	lpStruct->get_n_rows = (gint (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_n_rows);
+-	lpStruct->get_column_extent_at = (gint (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_column_extent_at);
+-	lpStruct->get_row_extent_at = (gint (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_row_extent_at);
+-	lpStruct->get_caption = (AtkObject* (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_caption);
+-	lpStruct->get_column_description = (const gchar* (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_column_description);
+-	lpStruct->get_column_header = (AtkObject* (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_column_header);
+-	lpStruct->get_row_description = (const gchar* (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_row_description);
+-	lpStruct->get_row_header = (AtkObject* (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_row_header);
+-	lpStruct->get_summary = (AtkObject* (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_summary);
+-	lpStruct->set_caption = (void (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.set_caption);
+-	lpStruct->set_column_description = (void (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.set_column_description);
+-	lpStruct->set_column_header = (void (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.set_column_header);
+-	lpStruct->set_row_description = (void (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.set_row_description);
+-	lpStruct->set_row_header = (void (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.set_row_header);
+-	lpStruct->set_summary = (void (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.set_summary);
+-	lpStruct->get_selected_columns = (gint (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_selected_columns);
+-	lpStruct->get_selected_rows = (gint (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_selected_rows);
+-	lpStruct->is_column_selected = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.is_column_selected);
+-	lpStruct->is_row_selected = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.is_row_selected);
+-	lpStruct->is_selected = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.is_selected);
+-	lpStruct->add_row_selection = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.add_row_selection);
+-	lpStruct->remove_row_selection = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.remove_row_selection);
+-	lpStruct->add_column_selection = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.add_column_selection);
+-	lpStruct->remove_column_selection = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.remove_column_selection);
+-	lpStruct->row_inserted = (void (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.row_inserted);
+-	lpStruct->column_inserted = (void (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.column_inserted);
+-	lpStruct->row_deleted = (void (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.row_deleted);
+-	lpStruct->column_deleted = (void (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.column_deleted);
+-	lpStruct->row_reordered = (void (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.row_reordered);
+-	lpStruct->column_reordered = (void (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.column_reordered);
+-	lpStruct->model_changed = (void (*)())(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.model_changed);
++	lpStruct->ref_at = (AtkObject* (*)(AtkTable *, gint,  gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.ref_at);
++	lpStruct->get_index_at = (gint (*)(AtkTable *, gint,  gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_index_at);
++	lpStruct->get_column_at_index = (gint (*)(AtkTable *, gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_column_at_index);
++	lpStruct->get_row_at_index = (gint (*)(AtkTable *, gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_row_at_index);
++	lpStruct->get_n_columns = (gint (*)(AtkTable *))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_n_columns);
++	lpStruct->get_n_rows = (gint (*)(AtkTable *))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_n_rows);
++	lpStruct->get_column_extent_at = (gint (*)(AtkTable *, gint,  gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_column_extent_at);
++	lpStruct->get_row_extent_at = (gint (*)(AtkTable *, gint,  gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_row_extent_at);
++	lpStruct->get_caption = (AtkObject* (*)(AtkTable *))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_caption);
++	lpStruct->get_column_description = (const gchar* (*)(AtkTable *, gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_column_description);
++	lpStruct->get_column_header = (AtkObject* (*)(AtkTable *, gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_column_header);
++	lpStruct->get_row_description = (const gchar* (*)(AtkTable *, gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_row_description);
++	lpStruct->get_row_header = (AtkObject* (*)(AtkTable *, gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_row_header);
++	lpStruct->get_summary = (AtkObject* (*)(AtkTable *))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_summary);
++	lpStruct->set_caption = (void (*)(AtkTable *, AtkObject *))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.set_caption);
++	lpStruct->set_column_description = (void (*)(AtkTable *, gint,  const gchar *))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.set_column_description);
++	lpStruct->set_column_header = (void (*)(AtkTable *, gint,  AtkObject *))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.set_column_header);
++	lpStruct->set_row_description = (void (*)(AtkTable *, gint,  const gchar *))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.set_row_description);
++	lpStruct->set_row_header = (void (*)(AtkTable *, gint,  AtkObject *))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.set_row_header);
++	lpStruct->set_summary = (void (*)(AtkTable *, AtkObject *))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.set_summary);
++	lpStruct->get_selected_columns = (gint (*)(AtkTable *, gint **))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_selected_columns);
++	lpStruct->get_selected_rows = (gint (*)(AtkTable *, gint **))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.get_selected_rows);
++	lpStruct->is_column_selected = (gboolean (*)(AtkTable *, gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.is_column_selected);
++	lpStruct->is_row_selected = (gboolean (*)(AtkTable *, gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.is_row_selected);
++	lpStruct->is_selected = (gboolean (*)(AtkTable *, gint, gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.is_selected);
++	lpStruct->add_row_selection = (gboolean (*)(AtkTable *, gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.add_row_selection);
++	lpStruct->remove_row_selection = (gboolean (*)(AtkTable *, gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.remove_row_selection);
++	lpStruct->add_column_selection = (gboolean (*)(AtkTable *, gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.add_column_selection);
++	lpStruct->remove_column_selection = (gboolean (*)(AtkTable *, gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.remove_column_selection);
++	lpStruct->row_inserted = (void (*)(AtkTable *, gint,  gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.row_inserted);
++	lpStruct->column_inserted = (void (*)(AtkTable *, gint,  gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.column_inserted);
++	lpStruct->row_deleted = (void (*)(AtkTable *, gint,  gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.row_deleted);
++	lpStruct->column_deleted = (void (*)(AtkTable *, gint,  gint))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.column_deleted);
++	lpStruct->row_reordered = (void (*)(AtkTable *))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.row_reordered);
++	lpStruct->column_reordered = (void (*)(AtkTable *))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.column_reordered);
++	lpStruct->model_changed = (void (*)(AtkTable *))(*env)->GetLongField(env, lpObject, AtkTableIfaceFc.model_changed);
+ 	return lpStruct;
+ }
+ 
+@@ -581,28 +581,28 @@
+ AtkTextIface *getAtkTextIfaceFields(JNIEnv *env, jobject lpObject, AtkTextIface *lpStruct)
+ {
+ 	if (!AtkTextIfaceFc.cached) cacheAtkTextIfaceFields(env, lpObject);
+-	lpStruct->get_text = (gchar *(*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_text);
+-	lpStruct->get_text_after_offset = (gchar *(*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_text_after_offset);
+-	lpStruct->get_text_at_offset = (gchar *(*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_text_at_offset);
+-	lpStruct->get_character_at_offset = (gunichar (*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_character_at_offset);
+-	lpStruct->get_text_before_offset = (gchar *(*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_text_before_offset);
+-	lpStruct->get_caret_offset = (gint (*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_caret_offset);
+-	lpStruct->get_run_attributes = (AtkAttributeSet *(*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_run_attributes);
+-	lpStruct->get_default_attributes = (AtkAttributeSet *(*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_default_attributes);
+-	lpStruct->get_character_extents = (void (*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_character_extents);
+-	lpStruct->get_character_count = (gint (*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_character_count);
+-	lpStruct->get_offset_at_point = (gint (*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_offset_at_point);
+-	lpStruct->get_n_selections = (gint (*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_n_selections);
+-	lpStruct->get_selection = (gchar *(*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_selection);
+-	lpStruct->add_selection = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.add_selection);
+-	lpStruct->remove_selection = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.remove_selection);
+-	lpStruct->set_selection = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.set_selection);
+-	lpStruct->set_caret_offset = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.set_caret_offset);
+-	lpStruct->text_changed = (void (*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.text_changed);
+-	lpStruct->text_caret_moved = (void (*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.text_caret_moved);
+-	lpStruct->text_selection_changed = (void (*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.text_selection_changed);
+-	lpStruct->get_range_extents = (void (*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_range_extents);
+-	lpStruct->get_bounded_ranges = (AtkTextRange** (*)())(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_bounded_ranges);
++	lpStruct->get_text = (gchar *(*)(AtkText *, gint,  gint))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_text);
++	lpStruct->get_text_after_offset = (gchar *(*)(AtkText *, gint,  AtkTextBoundary,  gint *, gint *))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_text_after_offset);
++	lpStruct->get_text_at_offset = (gchar *(*)(AtkText *, gint,  AtkTextBoundary,  gint *, gint *))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_text_at_offset);
++	lpStruct->get_character_at_offset = (gunichar (*)(AtkText *, gint))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_character_at_offset);
++	lpStruct->get_text_before_offset = (gchar *(*)(AtkText *, gint,  AtkTextBoundary,  gint *, gint *))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_text_before_offset);
++	lpStruct->get_caret_offset = (gint (*)(AtkText *))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_caret_offset);
++	lpStruct->get_run_attributes = (AtkAttributeSet *(*)(AtkText *, gint,  gint *, gint *))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_run_attributes);
++	lpStruct->get_default_attributes = (AtkAttributeSet *(*)(AtkText *))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_default_attributes);
++	lpStruct->get_character_extents = (void (*)(AtkText *, gint,  gint *, gint *, gint *, gint *, AtkCoordType))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_character_extents);
++	lpStruct->get_character_count = (gint (*)(AtkText *))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_character_count);
++	lpStruct->get_offset_at_point = (gint (*)(AtkText *, gint,  gint,  AtkCoordType))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_offset_at_point);
++	lpStruct->get_n_selections = (gint (*)(AtkText *))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_n_selections);
++	lpStruct->get_selection = (gchar *(*)(AtkText *, gint,  gint *, gint *))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_selection);
++	lpStruct->add_selection = (gboolean (*)(AtkText *, gint,  gint))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.add_selection);
++	lpStruct->remove_selection = (gboolean (*)(AtkText *, gint))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.remove_selection);
++	lpStruct->set_selection = (gboolean (*)(AtkText *, gint,  gint,  gint))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.set_selection);
++	lpStruct->set_caret_offset = (gboolean (*)(AtkText *, gint))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.set_caret_offset);
++	lpStruct->text_changed = (void (*)(AtkText *, gint,  gint))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.text_changed);
++	lpStruct->text_caret_moved = (void (*)(AtkText *, gint))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.text_caret_moved);
++	lpStruct->text_selection_changed = (void (*)(AtkText *))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.text_selection_changed);
++	lpStruct->get_range_extents = (void (*)(AtkText *, gint,  gint,  AtkCoordType,  AtkTextRectangle *))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_range_extents);
++	lpStruct->get_bounded_ranges = (AtkTextRange** (*)(AtkText *, AtkTextRectangle *, AtkCoordType,  AtkTextClipType,  AtkTextClipType))(*env)->GetLongField(env, lpObject, AtkTextIfaceFc.get_bounded_ranges);
+ 	return lpStruct;
+ }
+ 
+@@ -743,10 +743,10 @@
+ AtkValueIface *getAtkValueIfaceFields(JNIEnv *env, jobject lpObject, AtkValueIface *lpStruct)
+ {
+ 	if (!AtkValueIfaceFc.cached) cacheAtkValueIfaceFields(env, lpObject);
+-	lpStruct->get_current_value = (void (*)())(*env)->GetLongField(env, lpObject, AtkValueIfaceFc.get_current_value);
+-	lpStruct->get_maximum_value = (void (*)())(*env)->GetLongField(env, lpObject, AtkValueIfaceFc.get_maximum_value);
+-	lpStruct->get_minimum_value = (void (*)())(*env)->GetLongField(env, lpObject, AtkValueIfaceFc.get_minimum_value);
+-	lpStruct->set_current_value = (gboolean (*)())(*env)->GetLongField(env, lpObject, AtkValueIfaceFc.set_current_value);
++	lpStruct->get_current_value = (void (*)(AtkValue *, GValue *))(*env)->GetLongField(env, lpObject, AtkValueIfaceFc.get_current_value);
++	lpStruct->get_maximum_value = (void (*)(AtkValue *, GValue *))(*env)->GetLongField(env, lpObject, AtkValueIfaceFc.get_maximum_value);
++	lpStruct->get_minimum_value = (void (*)(AtkValue *, GValue *))(*env)->GetLongField(env, lpObject, AtkValueIfaceFc.get_minimum_value);
++	lpStruct->set_current_value = (gboolean (*)(AtkValue *, const GValue *))(*env)->GetLongField(env, lpObject, AtkValueIfaceFc.set_current_value);
+ 	return lpStruct;
+ }
+ 
+--- "eclipse-platform-sources-I20200305-0155/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os.c"	2025-06-16 16:24:45.238680581 +0200
++++ "eclipse-platform-sources-I20200305-0155/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os.c"	2025-06-16 16:45:34.315020349 +0200
+@@ -13215,7 +13215,7 @@
+ {
+ 	jint rc = 0;
+ 	OS_NATIVE_ENTER(env, that, Call__JJII_FUNC);
+-	rc = (jint)((jint (*)())arg0)(arg1, arg2, arg3);
++	rc = (jint)((jint (*)(jlong, jint, jint))arg0)(arg1, arg2, arg3);
+ 	OS_NATIVE_EXIT(env, that, Call__JJII_FUNC);
+ 	return rc;
+ }
+@@ -13227,7 +13227,7 @@
+ {
+ 	jint rc = 0;
+ 	OS_NATIVE_ENTER(env, that, Call__JJJ_FUNC);
+-	rc = (jint)((jint (*)())arg0)(arg1, arg2);
++	rc = (jint)((jint (*)(jlong, jlong))arg0)(arg1, arg2);
+ 	OS_NATIVE_EXIT(env, that, Call__JJJ_FUNC);
+ 	return rc;
+ }
+@@ -13597,7 +13597,7 @@
+ {
+ 	jboolean rc = 0;
+ 	OS_NATIVE_ENTER(env, that, XCheckIfEvent_FUNC);
+-	rc = (jboolean)XCheckIfEvent((Display *)arg0, (XEvent *)arg1, (Bool (*)())arg2, (XPointer)arg3);
++	rc = (jboolean)XCheckIfEvent((Display *)arg0, (XEvent *)arg1, (Bool (*)(Display *, XEvent *, char *))arg2, (XPointer)arg3);
+ 	OS_NATIVE_EXIT(env, that, XCheckIfEvent_FUNC);
+ 	return rc;
+ }
+@@ -13797,7 +13797,7 @@
+ {
+ 	jlong rc = 0;
+ 	OS_NATIVE_ENTER(env, that, call__JJJJJ_FUNC);
+-	rc = (jlong)((jlong (*)())arg0)(arg1, arg2, arg3, arg4);
++	rc = (jlong)((jlong (*)(jlong, jlong, jlong, jlong))arg0)(arg1, arg2, arg3, arg4);
+ 	OS_NATIVE_EXIT(env, that, call__JJJJJ_FUNC);
+ 	return rc;
+ }
+@@ -13809,7 +13809,7 @@
+ {
+ 	jlong rc = 0;
+ 	OS_NATIVE_ENTER(env, that, call__JJJJJJJ_FUNC);
+-	rc = (jlong)((jlong (*)())arg0)(arg1, arg2, arg3, arg4, arg5, arg6);
++	rc = (jlong)((jlong (*)(jlong, jlong, jlong, jlong, jlong, jlong))arg0)(arg1, arg2, arg3, arg4, arg5, arg6);
+ 	OS_NATIVE_EXIT(env, that, call__JJJJJJJ_FUNC);
+ 	return rc;
+ }
+@@ -13821,7 +13821,7 @@
+ {
+ 	jlong rc = 0;
+ 	OS_NATIVE_ENTER(env, that, call__JJJJJJJJ_FUNC);
+-	rc = (jlong)((jlong (*)())arg0)(arg1, arg2, arg3, arg4, arg5, arg6, arg7);
++	rc = (jlong)((jlong (*)(jlong, jlong, jlong, jlong, jlong, jlong, jlong))arg0)(arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+ 	OS_NATIVE_EXIT(env, that, call__JJJJJJJJ_FUNC);
+ 	return rc;
+ }
+--- "eclipse-platform-sources-I20200305-0155/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_structs.c"	2025-06-16 16:24:45.239315285 +0200
++++ "eclipse-platform-sources-I20200305-0155/eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_structs.c"	2025-06-16 17:04:29.460187897 +0200
+@@ -42,18 +42,12 @@
+ 	GObjectClassFc.cached = 1;
+ }
+ 
+-GObjectClass *getGObjectClassFields(JNIEnv *env, jobject lpObject, GObjectClass *lpStruct)
+-{
+-	if (!GObjectClassFc.cached) cacheGObjectClassFields(env, lpObject);
+-	lpStruct->constructor = (GObject *(*)())(*env)->GetLongField(env, lpObject, GObjectClassFc.constructor);
+-	lpStruct->set_property = (void (*)())(*env)->GetLongField(env, lpObject, GObjectClassFc.set_property);
+-	lpStruct->get_property = (void (*)())(*env)->GetLongField(env, lpObject, GObjectClassFc.get_property);
+-	lpStruct->dispose = (void (*)())(*env)->GetLongField(env, lpObject, GObjectClassFc.dispose);
+-	lpStruct->finalize = (void (*)())(*env)->GetLongField(env, lpObject, GObjectClassFc.finalize);
+-	lpStruct->dispatch_properties_changed = (void (*)())(*env)->GetLongField(env, lpObject, GObjectClassFc.dispatch_properties_changed);
+-	lpStruct->notify = (void (*)())(*env)->GetLongField(env, lpObject, GObjectClassFc.notify);
+-	return lpStruct;
+-}
++GObjectClass *getGObjectClassFields(JNIEnv *env, jobject lpObject, GObjectClass *lpStruct) { if (!GObjectClassFc.cached) cacheGObjectClassFields(env, lpObject); lpStruct->constructor = (GObject *(*)(GType,  guint, 
++GObjectConstructParam *))(*env)->GetLongField(env, lpObject, GObjectClassFc.constructor); lpStruct->set_property = (void (*)(GObject *, guint,  const GValue *, GParamSpec *))(*env)->GetLongField(env, lpObject,
++GObjectClassFc.set_property); lpStruct->get_property = (void (*)(GObject *, guint,  GValue *, GParamSpec *))(*env)->GetLongField(env, lpObject, GObjectClassFc.get_property); lpStruct->dispose = (void (*)(GObject
++*))(*env)->GetLongField(env, lpObject, GObjectClassFc.dispose); lpStruct->finalize = (void (*)(GObject *))(*env)->GetLongField(env, lpObject, GObjectClassFc.finalize); lpStruct->dispatch_properties_changed = (void
++(*)(GObject *, guint,  GParamSpec **))(*env)->GetLongField(env, lpObject, GObjectClassFc.dispatch_properties_changed); lpStruct->notify = (void (*)(GObject *, GParamSpec *))(*env)->GetLongField(env, lpObject,
++GObjectClassFc.notify); return lpStruct; }
+ 
+ void setGObjectClassFields(JNIEnv *env, jobject lpObject, GObjectClass *lpStruct)
+ {
+@@ -844,12 +838,12 @@
+ {
+ 	if (!GtkCellRendererClassFc.cached) cacheGtkCellRendererClassFields(env, lpObject);
+ #ifndef GTK4
+-	lpStruct->render = (void(*)())(*env)->GetLongField(env, lpObject, GtkCellRendererClassFc.render);
++	lpStruct->render = (void(*)(GtkCellRenderer *, cairo_t *, GtkWidget *, const GdkRectangle *, const GdkRectangle *, GtkCellRendererState))(*env)->GetLongField(env, lpObject, GtkCellRendererClassFc.render);
+ #endif
+ #ifdef GTK4
+ 	lpStruct->snapshot = (void(*)())(*env)->GetLongField(env, lpObject, GtkCellRendererClassFc.snapshot);
+ #endif
+-	lpStruct->get_preferred_width = (void(*)())(*env)->GetLongField(env, lpObject, GtkCellRendererClassFc.get_preferred_width);
++	lpStruct->get_preferred_width = (void(*)(GtkCellRenderer *, GtkWidget *, gint *, gint *))(*env)->GetLongField(env, lpObject, GtkCellRendererClassFc.get_preferred_width);
+ 	return lpStruct;
+ }
+ 
+@@ -961,8 +955,8 @@
+ {
+ 	if (!GtkWidgetClassFc.cached) cacheGtkWidgetClassFields(env, lpObject);
+ 	getGObjectClassFields(env, lpObject, (GObjectClass *)lpStruct);
+-	lpStruct->map = (void(*)())(*env)->GetLongField(env, lpObject, GtkWidgetClassFc.map);
+-	lpStruct->size_allocate = (void(*)())(*env)->GetLongField(env, lpObject, GtkWidgetClassFc.size_allocate);
++	lpStruct->map = (void(*)(GtkWidget *))(*env)->GetLongField(env, lpObject, GtkWidgetClassFc.map);
++	lpStruct->size_allocate = (void(*)(GtkWidget *, GtkAllocation *))(*env)->GetLongField(env, lpObject, GtkWidgetClassFc.size_allocate);
+ #ifdef GTK4
+ 	lpStruct->snapshot = (void(*)())(*env)->GetLongField(env, lpObject, GtkWidgetClassFc.snapshot);
+ #endif
