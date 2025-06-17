@@ -9,4 +9,13 @@
 This Common-Lisp compiler and interpreter has a long history and is still neing worked on to this day (latest update is 3 days old).</comment>
     <requestid>1173522</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>25d117f41c8f7a7d289c2a4c77ee73f9</srcmd5>
+    <version>24.5.10</version>
+    <time>1750177464</time>
+    <user>anag_factory</user>
+    <comment>Fix compilation with gcc 15
+</comment>
+    <requestid>1286372</requestid>
+  </revision>
 </revisionlist>

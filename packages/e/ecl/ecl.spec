@@ -1,7 +1,7 @@
 #
 # spec file for package ecl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -90,9 +90,15 @@ This package contains development files for ECL.
 export TEX='tex -recorder'
 export TEXI2DVI_USE_RECORDER=yes
 %if 0%{?suse_version} >= 1550
-# disable LTO on Tumbleweed as it breaks at least 'ecl -compile' 
+# disable LTO on Tumbleweed as it breaks at least 'ecl -compile'
 %define _lto_cflags %{nil}
 %endif
+
+%if 0%{?suse_version} > 1600
+# needed for GCC 15
+CFLAGS="-std=gnu17" \
+%endif
+
 %configure \
 	--enable-soname \
 	--disable-rpath \
@@ -102,7 +108,7 @@ export TEXI2DVI_USE_RECORDER=yes
 	--enable-libatomic=system \
 	--with-dffi \
 	--with-defsystem \
-	CFLAGS="%{optflags} -Wno-unused -Wno-return-type -Wno-unknown-pragmas" \
+	CFLAGS="$CFLAGS %{optflags} -Wno-unused -Wno-return-type -Wno-unknown-pragmas" \
 	%{nil}
 
 %make_build
@@ -119,6 +125,7 @@ rm -f %{buildroot}%{_infodir}/dir
 
 %post -n lib%{name}%{major}_%{minor} -p /sbin/ldconfig
 %postun -n lib%{name}%{major}_%{minor} -p /sbin/ldconfig
+
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
