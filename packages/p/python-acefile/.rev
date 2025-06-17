@@ -44,4 +44,12 @@
 - No more greedy globs in %files.</comment>
     <requestid>1285322</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>56c88f6547e4e4f0a493a439444f759d</srcmd5>
+    <version>0.6.13</version>
+    <time>1750177271</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286087</requestid>
+  </revision>
 </revisionlist>

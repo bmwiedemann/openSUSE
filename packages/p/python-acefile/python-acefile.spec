@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%bcond_without libalternatives
 Name:           python-acefile
 Version:        0.6.13
 Release:        0
@@ -29,11 +30,11 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -52,11 +53,8 @@ export CFLAGS="%{optflags}"
 %python_clone -a %{buildroot}%{_bindir}/acefile-unace
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-%post
-%python_install_alternative acefile-unace
-
-%postun
-%python_uninstall_alternative acefile-unace
+%pre
+%python_libalternatives_reset_alternative acefile-unace
 
 %files %{python_files}
 %doc NEWS.md README.md
