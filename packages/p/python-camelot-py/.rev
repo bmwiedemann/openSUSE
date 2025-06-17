@@ -7,4 +7,12 @@
     <comment>some AI thing</comment>
     <requestid>1201614</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c289e65109cc6be1169ae6af66ab6e87</srcmd5>
+    <version>0.11.0</version>
+    <time>1750177417</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286314</requestid>
+  </revision>
 </revisionlist>
