@@ -18,16 +18,20 @@
 
 %define cpan_name CPAN-Perl-Releases
 Name:           perl-CPAN-Perl-Releases
-Version:        5.20250528
+Version:        5.202.505.280
 Release:        0
+# 5.20250528 -> normalize -> 5.202.505.280
+%define cpan_version 5.20250528
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Mapping Perl releases on CPAN to the location of the tarballs
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BI/BINGOS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BI/BINGOS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(CPAN::Perl::Releases) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -39,7 +43,7 @@ This is static data, but newer versions of this module will be made
 available as new releases of 'perl' are uploaded to CPAN.
 
 %prep
-%autosetup -n %{cpan_name}-%{version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

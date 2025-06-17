@@ -1242,4 +1242,14 @@
    see /usr/share/doc/packages/perl-CPAN-Perl-Releases/Changes</comment>
     <requestid>1282011</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>20deee9b0e8475f99b8d538acaee3000</srcmd5>
+    <version>5.202.505.280</version>
+    <time>1750177400</time>
+    <user>anag_factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+</comment>
+    <requestid>1286343</requestid>
+  </revision>
 </revisionlist>
