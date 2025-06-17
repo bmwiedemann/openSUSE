@@ -24,8 +24,10 @@ Summary:        A pure python implementation of a sliding window memory map mana
 License:        BSD-2-Clause
 URL:            https://github.com/gitpython-developers/smmap
 Source:         https://files.pythonhosted.org/packages/source/s/smmap/smmap-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,10 +50,10 @@ The documentation can be found here: http://packages.python.org/smmap
 dos2unix README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +63,6 @@ dos2unix README.md
 %license LICENSE
 %doc README.md
 %{python_sitelib}/smmap
-%{python_sitelib}/smmap-%{version}-py*-info
+%{python_sitelib}/smmap-%{version}.dist-info
 
 %changelog
