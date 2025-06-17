@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 17 10:51:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 52.7.8:
+  * Bug Fixes & New Features
+    - Resolved a Make issue that caused the CLI to use an explicit
+      tag (e.g., v52.3.77) instead of the latest tag (e.g., v52.3).
+    - Reintroduced online support via Intercom. This can be
+      disabled using: --set supportChatEnabled=false.
+    - Fixed a panic related to the WebSocket (WS) protocol.
+    - Added the ability to download an Agent logic script
+      (JavaScript file). Once downloaded, the script can be used
+      locally and managed via source control.
+
+-------------------------------------------------------------------
 Tue Jun 03 19:31:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 52.7.7 (52.7.6 does not exist):
