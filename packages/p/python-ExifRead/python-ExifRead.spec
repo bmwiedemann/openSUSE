@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-ExifRead
 Version:        3.0.0
 Release:        0
@@ -27,10 +28,10 @@ Source1:        https://github.com/ianare/exif-samples/archive/master.tar.gz#/ex
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,11 +55,8 @@ find exif-samples-master -name "*.tiff" -o -name "*.jpg" -exec $python %{buildro
 find exif-samples-master -name "*.tiff" -o -name "*.jpg" -exec $python %{buildroot}%{_bindir}/EXIF.py-%{python_bin_suffix} -dc {} \;
 }
 
-%post
-%python_install_alternative EXIF.py
-
-%postun
-%python_uninstall_alternative EXIF.py
+%pre
+%python_libalternatives_reset_alternative EXIF.py
 
 %files %{python_files}
 %license LICENSE.txt
