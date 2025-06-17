@@ -233,4 +233,13 @@
     <comment></comment>
     <requestid>1248023</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>b741514f6527f6a3d03c1df48766207d</srcmd5>
+    <version>5.5.2</version>
+    <time>1750177217</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1285948</requestid>
+  </revision>
 </revisionlist>
