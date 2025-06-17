@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 15 02:35:15 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 0.6.0
+  - Update README after switchover to meson
+  - build: Automate copyright year management
+  - Add meson build
+  - Add about dialog
+  - Replace deprecated exo with libxfce4ui 4.21.0
+  - Translation Updates
+
+-------------------------------------------------------------------
 Mon Jan  6 15:24:48 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.5.3
