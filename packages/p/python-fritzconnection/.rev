@@ -143,4 +143,14 @@
   * New FritzTopology module: represents the mesh-topology graph.</comment>
     <requestid>1219189</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d4eebe5404266363726bc89a71928346</srcmd5>
+    <version>1.14.0</version>
+    <time>1750177370</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.
+- Remove unneeded Requires on setuptools.</comment>
+    <requestid>1286226</requestid>
+  </revision>
 </revisionlist>

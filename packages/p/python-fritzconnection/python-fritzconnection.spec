@@ -1,7 +1,7 @@
 #
 # spec file for package python-fritzconnection
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,18 @@ Version:        1.14.0
 Release:        0
 Summary:        A Python module to talk to a AVM fritzbox
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/kbr/fritzconnection/
 Source:         https://github.com/kbr/fritzconnection/archive/%{version}.tar.gz#/fritzconnection-%{version}.tar.gz
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml
 Requires:       python-requests
-Requires:       python-setuptools
 BuildArch:      noarch
 Obsoletes:      python310-fritzconnection < 1.9.0
 Obsoletes:      python39-fritzconnection < 1.9.0
@@ -50,11 +50,11 @@ and change configuration settings and state.
 
 %build
 export LC_ALL=C.utf-8
-%python_build
+%pyproject_wheel
 
 %install
 export LC_ALL=C.utf-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -75,6 +75,7 @@ rm fritzconnection/tests/test_functional.py
 %{_bindir}/fritzphonebook
 %{_bindir}/fritzstatus
 %{_bindir}/fritzwlan
-%{python_sitelib}/*
+%{python_sitelib}/fritzconnection
+%{python_sitelib}/fritzconnection-%{version}.dist-info
 
 %changelog
