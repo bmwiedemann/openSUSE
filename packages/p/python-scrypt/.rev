@@ -109,4 +109,12 @@
   * CI fixes</comment>
     <requestid>1219214</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e15a552d2f0792a8dcefd0bbacc6f109</srcmd5>
+    <version>0.8.27</version>
+    <time>1750177221</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.</comment>
+    <requestid>1285963</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-scrypt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        BSD-2-Clause
 URL:            https://github.com/holgern/py-scrypt
 Source0:        https://files.pythonhosted.org/packages/source/s/scrypt/scrypt-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -43,10 +45,10 @@ dos2unix -R README.rst scrypt/*.py
 sed -i '1{/^#!/ d}' scrypt/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -55,9 +57,8 @@ sed -i '1{/^#!/ d}' scrypt/*.py
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%pycache_only %{python_sitearch}/scrypt/__pycache__
-%{python_sitearch}/_scrypt*.so
-%{python_sitearch}/scrypt/
-%{python_sitearch}/scrypt-%{version}-py%{python_version}.egg-info
+%{python_sitearch}/_scrypt.cpython-*-linux-gnu.so
+%{python_sitearch}/scrypt
+%{python_sitearch}/scrypt-%{version}.dist-info
 
 %changelog
