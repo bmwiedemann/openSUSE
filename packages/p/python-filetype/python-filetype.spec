@@ -1,7 +1,7 @@
 #
 # spec file for package python-filetype
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,15 @@ Version:        1.2.0
 Release:        0
 Summary:        Infer file type and MIME type of any file/buffer. No external dependencies
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/h2non/filetype.py
 Source:         https://files.pythonhosted.org/packages/source/f/filetype/filetype-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -43,10 +44,10 @@ This is a Python port from `filetype`_ Go package.
 %setup -q -n filetype-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/filetype
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -62,7 +63,8 @@ This is a Python port from `filetype`_ Go package.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/filetype*
+%{python_sitelib}/filetype
+%{python_sitelib}/filetype-%{version}.dist-info
 %python_alternative %{_bindir}/filetype
 
 %changelog
