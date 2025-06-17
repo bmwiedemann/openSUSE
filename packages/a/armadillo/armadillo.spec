@@ -18,7 +18,7 @@
 
 %define soname libarmadillo14
 Name:           armadillo
-Version:        14.4.1
+Version:        14.4.3
 Release:        0
 Summary:        C++ matrix library with interfaces to LAPACK and ATLAS
 License:        Apache-2.0
@@ -47,12 +47,6 @@ Group:          System/Libraries
 Armadillo is a C++ linear algebra library (matrix maths).
 Integer, floating point and complex numbers are supported,
 as well as a subset of trigonometric and statistics functions.
-Various matrix decompositions are provided through optional
-integration with LAPACK and ATLAS libraries.
-A delayed evaluation approach is employed (during compile time)
-to combine several operations into one and reduce (or eliminate)
-the need for temporaries. This is accomplished through recursive
-templates and template meta-programming.
 
 This package provides the shared libraries for armadillo.
 
@@ -89,13 +83,8 @@ Armadillo C++ library. It contains header files, example programs,
 and user documentation (reference guide).
 
 %prep
-%setup -q
-#Convert DOS end-of-line to UNIX end-of-line
-sed -i 's/\r$//' README.md
-sed -i 's/\r$//' examples/README.txt
-sed -i 's/\r$//' LICENSE.txt
-sed -i 's/\r$//' NOTICE.txt
-for i in `ls examples/*.cpp`; do sed -i 's/\r$//' $i; done
+%autosetup -p1
+sed -Ei 's/\r$//' NOTICE.txt README.md examples/README.txt examples/example1.cpp
 
 %build
 %cmake -DBUILD_SMOKE_TEST:BOOL=ON
@@ -112,8 +101,7 @@ rm -rf examples/lib_win64
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %ctest
 
-%post -n %{soname} -p /sbin/ldconfig
-%postun -n %{soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{soname}
 
 %files -n %{soname}
 %{_libdir}/*.so.*
