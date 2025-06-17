@@ -187,4 +187,12 @@
     <comment>- update to 1.16.0:</comment>
     <requestid>1166926</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>2faa121b2961acb1a48b2ef569f66d14</srcmd5>
+    <version>1.16.0</version>
+    <time>1750177424</time>
+    <user>anag_factory</user>
+    <comment>gcc15 support</comment>
+    <requestid>1286325</requestid>
+  </revision>
 </revisionlist>

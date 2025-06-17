@@ -1,7 +1,7 @@
 #
 # spec file for package f2fs-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Filesystems
 URL:            https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git
 Source:         https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/f2fs-tools-%version.tar.gz
+Patch1:         c23.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -98,8 +99,8 @@ done
 cp -a include/f2fs_fs.h mkfs/f2fs_format_utils.h \
 	"%buildroot/%_includedir/"
 
-%ldconfig -n libf2fs%libf2_so_ver
-%ldconfig -n libf2fs_format%libf2_format_so_ver
+%ldconfig_scriptlets -n libf2fs%libf2_so_ver
+%ldconfig_scriptlets -n libf2fs_format%libf2_format_so_ver
 
 %files
 %license COPYING
