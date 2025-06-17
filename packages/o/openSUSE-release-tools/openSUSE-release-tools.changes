@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 10 11:18:04 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250610.052efef1:
+  * Return None if devel package does not exist on the OBS according to the stored data on the git
+
+-------------------------------------------------------------------
 Tue May 13 08:26:38 UTC 2025 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20250513.a8a47bd7:

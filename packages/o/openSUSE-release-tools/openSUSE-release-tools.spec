@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-release-tools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define announcer_filename factory-package-news
 %define services osrt-slsa.target osrt-relpkggen@.timer osrt-relpkggen@.service osrt-pkglistgen@.timer osrt-pkglistgen@.service
 Name:           openSUSE-release-tools
-Version:        20250513.a8a47bd7
+Version:        20250610.052efef1
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -121,8 +121,8 @@ Check source review bot that performs basic source analysis and assigns reviews.
 Summary:        Docker image publishing bot
 Group:          Development/Tools/Other
 BuildArch:      noarch
-Requires:       python3-lxml
 Requires:       python3-requests
+Requires:       python3-lxml
 Requires(pre):  shadow
 
 %description docker-publisher
