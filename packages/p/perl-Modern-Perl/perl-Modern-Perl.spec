@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Modern-Perl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Modern-Perl
 Name:           perl-Modern-Perl
-Version:        1.20241001
+Version:        1.20250607
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Enable all of the features of Modern Perl with one import
@@ -39,7 +39,7 @@ Requires:       perl(mro)
 enable all of the features of Modern Perl with one import
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
