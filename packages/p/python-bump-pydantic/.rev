@@ -7,4 +7,12 @@
     <comment>could be useful</comment>
     <requestid>1181968</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f7591a20300e702464380d55410a1e81</srcmd5>
+    <version>0.8.0</version>
+    <time>1750177412</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286311</requestid>
+  </revision>
 </revisionlist>
