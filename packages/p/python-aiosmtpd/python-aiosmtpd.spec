@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiosmtpd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-aiosmtpd
 Version:        1.4.6
@@ -29,14 +30,14 @@ Patch0:         support-python-313.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-atpublic
 Requires:       python-attrs
 Requires:       user(nobody)
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module atpublic}
@@ -87,11 +88,8 @@ ignore="--ignore aiosmtpd/tests/test_server.py"
 
 %pytest $ignore
 
-%post
-%python_install_alternative aiosmtpd
-
-%postun
-%python_uninstall_alternative aiosmtpd
+%pre
+%python_libalternatives_reset_alternative aiosmtpd
 
 %files %{python_files}
 %doc README.rst

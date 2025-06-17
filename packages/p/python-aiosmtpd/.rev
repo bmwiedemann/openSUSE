@@ -155,4 +155,12 @@
     on close</comment>
     <requestid>1226979</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>52e3c1a649d935a0f60b73b609001489</srcmd5>
+    <version>1.4.6</version>
+    <time>1750177275</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286096</requestid>
+  </revision>
 </revisionlist>
