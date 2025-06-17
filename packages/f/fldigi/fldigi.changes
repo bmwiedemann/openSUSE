@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Jun 14 14:59:01 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 4.2.07:
+  * Update cty dat: use big cty dat posted on 9 Jun 2025
+  * Audio macros: add
+    . <GEN_START>
+    . <GEN_STOP>
+    . <GEN_PAUSE> - toggle
+  * Update manual,add information for <AUDIO:filename> macro tag
+    . transmit the audio file given by full pathname 'filename'
+    . file may be encoded as wav or mpeg
+  * OFDM modes removed from application pending further development
+    by John, KL4YFD.
+    . code still intact, just commented out
+  * Squelch by mode: update to set code
+  * TTY ITA2: allow user to select USTTY or ITA2 for Baudot shifted
+    characters
+  * save and restore frequency lock status between session
+  * run_script: dd new command line parameter
+    . script <fullpathname filename>
+  * all references to www.w1hkj.com changed to www.w1hkj.org
+  * microHAM interface: modify the WinKeyer interface config dialog
+    to include microHAM as requiring the emualation bypass control
+    enabled
+  * SCAMP ADIF: Change SCAMP adif designation to
+    . mode MFSK
+    . submode SCAMPFSK
+  * RSID squelch: correct RsID detection behavior
+  * MFSK afc
+    + Increase AFC low pass filter range to 500.
+    + add configuration item allowing user to adjust the decay
+      averaging of the AFC tracking.
+  * THOR-25: add new THOR modem
+  * WEFAX
+    + restore LPM selection
+    +  increase range of bandwidth selection
+  * band mode: fix save/load of tx level
+  * fmt time scale: add 4, 8, 16, 24 and 48 hour scales
+  * scamp: port SCAMP from github fldigi/scamp repository
+  * RsID start/stop: reduce start/stop filtering interval of
+    transmit signal
+  * HELL modes: Make all modes equal for duplicate test. Include
+    mode designations prior to ADIF conformance code change.
+  * ui_colors: fix bugs introduced by previous commit
+
+-------------------------------------------------------------------
 Fri Oct 18 22:06:40 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to 4.2.06:
