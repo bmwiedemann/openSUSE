@@ -27,6 +27,7 @@
 %define skip_python2 1
 # plugin for Ansible package
 %define pythons python3
+%bcond_without libalternatives
 Name:           python-ara
 Version:        1.7.2
 Release:        0
@@ -39,13 +40,13 @@ BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-cliff
 Requires:       python-pbr
 Requires:       python-requests >= 2.14.2
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     python-Django >= 3.2
 Recommends:     python-django-cors-headers
 Recommends:     python-django-filter
@@ -94,13 +95,9 @@ ara-manage test -v 2 ara
 %endif
 
 %if !%{with test}
-%post
-%python_install_alternative ara
-%python_install_alternative ara-manage
-
-%postun
-%python_uninstall_alternative ara
-%python_uninstall_alternative ara-manage
+%pre
+%python_libalternatives_reset_alternative ara
+%python_libalternatives_reset_alternative ara-manage
 
 %files %{python_files}
 %doc README.md
