@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-abimap
 Version:        0.3.2
 Release:        0
@@ -27,11 +28,11 @@ BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sphinx_rtd_theme}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
@@ -81,11 +82,8 @@ install -m 0644 man/abimap.1 %{buildroot}%{_mandir}/man1/
 %make_build -j1 -C tests ABIMAP_NAME_VERSION="abimap-%{version}" ABIMAP_VERSION="%{version}"
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}:${PWD}/tests py.test-%{$python_version} -vv tests -k 'not test_main'
 
-%post
-%python_install_alternative abimap abimap.1
-
-%postun
-%python_uninstall_alternative abimap
+%pre
+%python_libalternatives_reset_alternative abimap
 
 %files %{python_files}
 %doc AUTHORS.rst CHANGELOG.rst README.rst
