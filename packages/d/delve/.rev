@@ -331,4 +331,30 @@
   * Update to BuildRequires: golang(API) &gt;= 1.21 matching go.mod</comment>
     <requestid>1268542</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a5d2cdaff2d658727c29b18a4e9e4bba</srcmd5>
+    <version>1.25.0</version>
+    <time>1750177336</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.25.0:
+  * *: Release v1.25.0 (#4029)
+  * proc: fill bi member of constants (#4026)
+  * dap: Exclude internal breakpoints from response (#4027)
+  * service/dap: fix race condition between disconnect and continue (#4028)
+  * proc: fix nil pointer dereference in swiss table iterator (#4015)
+  * proc: fix TestRangeOverFunc for arm64 on go1.25 (#4014)
+  * service/dap: do not attempt further loading on unreadable string vars (#4016)
+  * proc/gdbserial: fix out of bounds access reading registers (#4017)
+  * proc: fix sigpanic in openOnRead (#4018)
+  * terminal/command: Fix typo in goroutines help output (#4024)
+  * service/debugger,rpc2,dap: target locking review (#3997)
+  * goversion: fix development version parsing (#3999)
+  * version: remove build constraint (#3998)
+  * version: use git hash for version.Build in `dlv version` command (#3987)
+  * gdbserial: fix call injection with newer versions of macOS (#3988)
+  * pkg/terminal: improve TestBreakPointFailWithCond (#3996)
+  * proc: remove dieToRuntimeType (#3985)
+  * cmd/dlv: update staticcheck (#3989) (forwarded request 1286173 from jfkw)</comment>
+    <requestid>1286174</requestid>
+  </revision>
 </revisionlist>
