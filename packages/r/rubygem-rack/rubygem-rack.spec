@@ -30,11 +30,6 @@ Release:        0
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
 BuildRequires:  fdupes
-
-%if 0%{?suse_version} && 0%{?suse_version} < 1330
-%define rb_build_versions ruby23 ruby24 ruby25
-%define rb_build_ruby_abi ruby:2.3.0 ruby:2.4.0 ruby:2.5.0
-%endif
 # /MANUAL
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.4.0}
