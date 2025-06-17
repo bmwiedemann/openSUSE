@@ -1,0 +1,25 @@
+From 1cc430aafa98aa0c28c36ac3fc97bb8ac7cfd173 Mon Sep 17 00:00:00 2001
+From: Patrik Jakobsson <patrik.r.jakobsson@gmail.com>
+Date: Mon, 16 Jun 2025 12:53:46 +0200
+Subject: [PATCH] Include <cstdint> where needed
+
+Signed-off-by: Patrik Jakobsson <pjakobsson@suse.de>
+---
+ llvm/include/llvm/ADT/SmallVector.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/llvm/include/llvm/ADT/SmallVector.h b/llvm/include/llvm/ADT/SmallVector.h
+index e34702bdbb3c..1c0f3465b2a9 100644
+--- a/llvm/include/llvm/ADT/SmallVector.h
++++ b/llvm/include/llvm/ADT/SmallVector.h
+@@ -19,6 +19,7 @@
+ #include <algorithm>
+ #include <cassert>
+ #include <cstddef>
++#include <cstdint>
+ #include <cstdlib>
+ #include <cstring>
+ #include <functional>
+-- 
+2.49.0
+

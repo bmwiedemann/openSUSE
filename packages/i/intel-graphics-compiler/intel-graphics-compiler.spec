@@ -16,13 +16,13 @@
 #
 
 
-%global llvm_commit llvmorg-14.0.5
-%global opencl_clang_commit 470cf0018e1ef6fc92eda1356f5f31f7da452abc
-%global spirv_llvm_translator_commit efbedd32b700c01a15d44121fca862625c2594ac
-%global vc_intrinsics_commit v0.21.0
-%global so_version 2.5.0
+%global llvm_commit llvmorg-15.0.7
+%global opencl_clang_commit 58242977b4092cf5eb94a10dd144691c12c87001
+%global spirv_llvm_translator_commit 2d4f2e7a7968392de017fcd3e4b503a75f0c12d2
+%global vc_intrinsics_commit v0.22.1
+%global so_version 2.11.0+0
 Name:           intel-graphics-compiler
-Version:        2.5.6
+Version:        2.11.7
 Release:        1%{?dist}
 Summary:        Intel Graphics Compiler for OpenCL
 License:        MIT
@@ -33,6 +33,7 @@ Source1:        https://github.com/intel/opencl-clang/archive/%{opencl_clang_com
 Source2:        https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/%{spirv_llvm_translator_commit}/spirv-llvm-translator.tar.gz
 Source3:        https://github.com/llvm/llvm-project/archive/%{llvm_commit}/llvm-project.tar.gz
 Source4:        https://github.com/intel/vc-intrinsics/archive/%{vc_intrinsics_commit}/vc-intrinsics.zip
+Patch0:         0001-Include-cstdint-where-needed.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  flex
@@ -102,17 +103,18 @@ Requires:       libigdfcl2 = %{version}-%{release}
 %description -n libigdfcl-devel
 This package contains development files for libigdfcl.
 
-%package -n libopencl-clang14
+%package -n libopencl-clang15
 Summary:        A wrapper library around clang
 Group:          System/Libraries
 
-%description -n libopencl-clang14
+%description -n libopencl-clang15
 A wrapper library around clang.
 
 %prep
 mkdir llvm-project
 tar -xzf %{_sourcedir}/llvm-project.tar.gz -C llvm-project --strip-components=1
 pushd llvm-project
+%patch -P 0 -p1
 popd
 
 unzip %{_sourcedir}/vc-intrinsics.zip
@@ -158,12 +160,12 @@ cd build
 %make_install
 
 rm -fv %{buildroot}%{_bindir}/GenX_IR \
-	%{buildroot}%{_bindir}/clang-14 \
+	%{buildroot}%{_bindir}/clang-15 \
 	%{buildroot}%{_bindir}/lld \
 	%{buildroot}%{_includedir}/opencl-c.h \
 	%{buildroot}%{_includedir}/opencl-c-base.h \
 	%{buildroot}%{_prefix}/lib/debug
-chmod +x %{buildroot}%{_libdir}/libopencl-clang.so.14
+chmod +x %{buildroot}%{_libdir}/libopencl-clang.so.15
 ln -s %{_libdir}/libiga64.so.%{so_version} %{buildroot}%{_libdir}/libiga64.so
 ln -s %{_libdir}/libigc.so.%{so_version} %{buildroot}%{_libdir}/libigc.so
 ln -s %{_libdir}/libigdfcl.so.%{so_version} %{buildroot}%{_libdir}/libigdfcl.so
@@ -174,8 +176,8 @@ ln -s %{_libdir}/libigdfcl.so.%{so_version} %{buildroot}%{_libdir}/libigdfcl.so
 %postun -n libiga64-2 -p /sbin/ldconfig
 %post -n libigdfcl2 -p /sbin/ldconfig
 %postun -n libigdfcl2 -p /sbin/ldconfig
-%post -n libopencl-clang14 -p /sbin/ldconfig
-%postun -n libopencl-clang14 -p /sbin/ldconfig
+%post -n libopencl-clang15 -p /sbin/ldconfig
+%postun -n libopencl-clang15 -p /sbin/ldconfig
 
 %files -n iga
 %{_bindir}/iga64
@@ -204,7 +206,7 @@ ln -s %{_libdir}/libigdfcl.so.%{so_version} %{buildroot}%{_libdir}/libigdfcl.so
 %{_includedir}/visa
 %{_libdir}/pkgconfig/igc-opencl.pc
 
-%files -n libopencl-clang14
-%{_libdir}/libopencl-clang.so.14
+%files -n libopencl-clang15
+%{_libdir}/libopencl-clang.so.15
 
 %changelog

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 17 04:48:41 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 2.11.7
+  * No changelog was made available
+- Update opencl_clang to 58242977b4092cf5eb94a10dd144691c12c87001
+- Update spirv_llvm_translator 2d4f2e7a7968392de017fcd3e4b503a75f0c12d2
+- Update vc_intrinsics to v0.22.1
+- Update llvm to llvmorg-15.0.7 
+- 0001-Include-cstdint-where-needed.patch
+  * Fix build failure due to missing include of cstdint
+
+-------------------------------------------------------------------
 Wed May  7 06:09:58 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
