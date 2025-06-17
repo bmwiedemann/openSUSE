@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun 15 03:53:17 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 0.9.0
+  - Update README after switchover to meson
+  - Remove vertical white line at left in the Mexican SVG flag (mx.svg)
+  - Fix corrupted Argentinian SVG flag (ar.svg)
+  - Optimize SVG flags using SVGO (https://github.com/svg/svgo)
+  - build: Automate copyright year management
+  - Add meson build
+  - autotools-build: Install flags/me.svg
+  - Fix libxfce4panel include
+  - Translation Updates
+
+-------------------------------------------------------------------
 Mon Jan  6 11:10:25 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.8.5
