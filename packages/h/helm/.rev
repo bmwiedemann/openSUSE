@@ -901,4 +901,22 @@ See changelog in:
     <comment></comment>
     <requestid>1284412</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>358e2b92575087da3a26cd8aa940d65a</srcmd5>
+    <version>3.18.3</version>
+    <time>1750177446</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.18.3:
+  * build(deps): bump golang.org/x/crypto from 0.38.0 to 0.39.0
+    6838ebc (dependabot[bot])
+  * fix: user username password for login 5b9e2f6 (Terry Howe)
+  * Update pkg/registry/transport.go 2782412 (Terry Howe)
+  * Update pkg/registry/transport.go e66cf6a (Terry Howe)
+  * fix: add debug logging to oci transport 191f05c (Terry Howe)
+
+  * cmd/helm/dependency_build_test.go
+  * cmd/helm/dependency_update_test.go
+- Update to version 3.18.0 (bsc#1241802, CVE-2025-22872):</comment>
+    <requestid>1286347</requestid>
+  </revision>
 </revisionlist>

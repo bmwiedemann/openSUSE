@@ -1,10 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun 17 04:30:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.18.3:
+  * build(deps): bump golang.org/x/crypto from 0.38.0 to 0.39.0
+    6838ebc (dependabot[bot])
+  * fix: user username password for login 5b9e2f6 (Terry Howe)
+  * Update pkg/registry/transport.go 2782412 (Terry Howe)
+  * Update pkg/registry/transport.go e66cf6a (Terry Howe)
+  * fix: add debug logging to oci transport 191f05c (Terry Howe)
+
+-------------------------------------------------------------------
 Tue Jun 10 08:14:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - remove flaky test
+  * cmd/helm/dependency_build_test.go
+  * cmd/helm/dependency_update_test.go
   * cmd/helm/pull_test.go
   * cmd/helm/registry_login_test.go
-  * cmd/helm/dependency_update_test.go
 
 -------------------------------------------------------------------
 Mon Jun 02 15:44:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
@@ -56,7 +68,7 @@ Tue May 20 19:29:23 UTC 2025 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue May 20 04:35:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
-- Update to version 3.18.0:
+- Update to version 3.18.0 (bsc#1241802, CVE-2025-22872):
   * Notable Changes
     - Add support for JSON Schema 2020
     - Enabled cpu and memory profiling
