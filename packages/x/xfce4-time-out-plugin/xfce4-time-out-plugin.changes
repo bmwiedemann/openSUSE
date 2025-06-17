@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 15 03:02:31 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 1.2.0
+  - Update README after switchover to meson
+  - build: Automate copyright year management
+  - Add meson build
+  - autotools-build: Explicitly require libxfce4util
+  - Fix libxfce4panel include
+  - Translation Updates
+
+-------------------------------------------------------------------
 Mon Jan  6 17:49:47 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.1.4
