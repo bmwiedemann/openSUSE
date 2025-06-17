@@ -1,7 +1,7 @@
 #
 # spec file for package librsb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,12 @@ Summary:        Shared memory parallel sparse matrix and sparse BLAS library
 License:        LGPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            http://librsb.sf.net/
-
 Source:         http://downloads.sf.net/%name/%name-%version.tar.gz
 Source2:        http://downloads.sf.net/%name/%name-%version.tar.gz.asc
 Source9:        %name.keyring
 Patch1:         pun.diff
 Patch2:         reproducible.patch
+Patch3:         cxx.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -86,8 +86,7 @@ autoreconf -fi
 rm -f "%buildroot/%_libdir"/*.la
 %fdupes %buildroot/%_prefix
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/librsb.so.0*

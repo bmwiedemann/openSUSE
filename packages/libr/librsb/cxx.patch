@@ -1,0 +1,74 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2025-06-17 12:40:56.762725897 +0200
+
+Don't wrap #include statements in extern "C".
+This causes problems like
+
+```
+/usr/lib64/gcc/x86_64-suse-linux/15/include/omp.h:448:1: error: template with C linkage
+  448 | template<typename __T, omp_allocator_handle_t __Handle>
+rsb_common.h:32:1: note: ‘extern "C"’ linkage started here
+   32 | extern "C" {
+```
+
+under at least gcc-15.
+
+---
+ rsb_common.h |   16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+Index: librsb-1.3.0.2/rsb_common.h
+===================================================================
+--- librsb-1.3.0.2.orig/rsb_common.h
++++ librsb-1.3.0.2/rsb_common.h
+@@ -29,9 +29,6 @@ If not, see <http://www.gnu.org/licenses
+ #define RSB_COMMON_H_INCLUDED
+ 
+ #ifdef __cplusplus
+-extern "C" {
+-#endif /* __cplusplus */
+-#ifdef __cplusplus
+ #define restrict	/* for now, the restrict keyword is not allowed in C++ */
+ #endif  /* __cplusplus */
+ /**
+@@ -216,7 +213,13 @@ typedef int rsb_int;
+ #if RSB_WANT_ACTION
+ #define RSB_SHALL_QUIT ( rsb__quit_rsbench != 0 )
+ #define RSB_INTERNALS_RSBENCH_HEAD_DECLS extern int rsb__quit_rsbench;
++#ifdef __cplusplus
++extern "C" {
++#endif
+ void rsb__sigh(int signal);
++#ifdef __cplusplus
++}
++#endif
+ #define RSB_SIGHR rsb__sigr();
+ #else /* RSB_WANT_ACTION */
+ #define RSB_SHALL_QUIT ( 0 != 0 )
+@@ -1420,12 +1423,18 @@ struct rsb_optrace_t {
+ #define RSB_MARF_EPS_NO_TEXT	(0x00000800)			/*!< #rsb_marf_t No text in EPS. */
+ #define RSB_MARF_LATEX_RECURSION	(0x00001000)			/*!< #rsb_marf_t Matrix recursion as LaTeX. */
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
+ rsb_err_t rsb__adddir(rsb_char_t ** filenameap, rsb_int_t * filenamenp, const rsb_char_t * matrixpath, rsb_flags_t faflags);
+ void rsb__setenv(const rsb_char_t * var_val);
+ rsb_real_t rsb__getenv_real_t(const char*envv, const rsb_real_t altv);
+ rsb_int_t rsb__getenv_int_t(const char*envv, const rsb_int_t altv);
+ const rsb_char_t * rsb__getenv_str(const char*envv, const rsb_char_t* altv);
+ rsb_char_t rsb__getenv_char(const char *envv, const rsb_char_t altv);
++#ifdef __cplusplus
++}
++#endif
+ 
+ #ifdef RSB_HAVE_ASSERT_H 
+ #ifdef RSB_USE_ASSERT
+@@ -1510,7 +1519,6 @@ rsb_char_t rsb__getenv_char(const char *
+ #include "rsb_tune.h"		/* */
+ 
+ #ifdef __cplusplus
+-}
+ #endif  /* __cplusplus */
+ 
+ #endif /* RSB_COMMON_H_INCLUDED */

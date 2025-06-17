@@ -63,4 +63,12 @@
     <comment>- Update to release 1.3.0.2</comment>
     <requestid>1122957</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f9165e1164faa4271996512ae18e3c9f</srcmd5>
+    <version>1.3.0.2</version>
+    <time>1750177451</time>
+    <user>anag_factory</user>
+    <comment>- Add cxx.patch</comment>
+    <requestid>1286348</requestid>
+  </revision>
 </revisionlist>
