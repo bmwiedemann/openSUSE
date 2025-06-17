@@ -7,4 +7,12 @@
     <comment>new package harbor-cli: official CLI for the Harbor cloud native registry</comment>
     <requestid>1277286</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bf4c9a4b813e59a8b52ddb75dc667cc5</srcmd5>
+    <version>0.0.7</version>
+    <time>1750177476</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1286388</requestid>
+  </revision>
 </revisionlist>

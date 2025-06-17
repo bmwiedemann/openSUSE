@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jun 17 13:48:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.7:
+  * improved error messages for login command (#488)
+  * Fix: Ensure `project create cmd` asks for necessary options
+    (#447)
+  * Added docs for config and encryption here from website (#487)
+  * fix: remove codecov on main (#486)
+  * feat: Add `label` sub-cmd in `artifact` cmd (#483)
+  * feat: add `project config` command (#448)
+  * adds changes suggested in context command (#482)
+  * removes context switch via login command (#477)
+  * Fix: Update error handling in projectName retrieval for tags
+    list
+  * Added return for empty reponame (#452)
+  * feat: fixing the pointer positioning with change in context
+    (#481)
+  * Update README.md to fit correct badge
+  * Unit testing Coverage report (#376)
+  * Adds harbor context command (#445)
+  * Fix: Doc generation script for reproducibility (#465)
+  * Fix user elevate (#473)
+  * fix: Show Banner messsage in system info instead of json (#471)
+  * Add groups to root help command (#470)
+  * fix: PreviouslyLoggedIn should display context name (#466)
+  * docs: update existing and missing commands.
+  * docs: update table
+  * docs: update icon Update README.md
+  * docs: update README to enhance clarity and detail on Harbor CLI
+    features and usage
+
+-------------------------------------------------------------------
 Wed May 14 04:44:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.6:
