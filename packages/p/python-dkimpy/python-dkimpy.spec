@@ -1,7 +1,7 @@
 #
 # spec file for package python-dkimpy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %define commands arcsign arcverify dkimsign dkimverify dknewkey
+%bcond_without libalternatives
+%{?sle15_python_module_pythons}
 Name:           python-dkimpy
 Version:        1.1.8
 Release:        0
@@ -29,15 +30,15 @@ Patch0:         no-optional.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-PyNaCl
 Requires:       python-authres
 Requires:       python-dnspython >= 1.16
 Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyNaCl}
@@ -67,14 +68,9 @@ done
 %check
 %pytest
 
-%post
+%pre
 for c in %{commands}; do
-  %python_install_alternative $c $c.1
-done
-
-%postun
-for c in %{commands}; do
-  %python_uninstall_alternative $c
+  %python_libalternatives_reset_alternative $c
 done
 
 %files %{python_files}

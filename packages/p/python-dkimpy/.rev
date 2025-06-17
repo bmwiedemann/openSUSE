@@ -111,4 +111,12 @@
   * Correct signature in ARC-Seal on LF as linesep</comment>
     <requestid>1198093</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>cced10e48869386ecdaa48a992c360f1</srcmd5>
+    <version>1.1.8</version>
+    <time>1750177302</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286126</requestid>
+  </revision>
 </revisionlist>
