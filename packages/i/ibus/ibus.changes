@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 14 08:35:05 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Fix *-32bit package post scripts (bsc#1244535):
+  the broken conditionals are dropped, assuming only *-32bit builds.
+  Also the superfluous post/postun for ibus-gtk3-32bit were dropped, too.
+
+-------------------------------------------------------------------
 Sat May 31 13:37:22 UTC 2025 - Fuminobu Takeyama <ftake@geeko.jp> - 1.5.32
 
 - Upstream update to 1.5.32
