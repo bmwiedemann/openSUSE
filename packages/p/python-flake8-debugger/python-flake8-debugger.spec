@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-debugger
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
 Name:           python-flake8-debugger
 Version:        4.1.2
 Release:        0
@@ -29,6 +27,8 @@ Source1:        LICENSE
 Source2:        https://raw.githubusercontent.com/JBKahn/flake8-debugger/4.0.0/test_linter.py
 # https://github.com/JBKahn/flake8-debugger/issues/28
 Patch1:         pycodestyle-indent-size.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -37,6 +37,8 @@ BuildRequires:  %{python_module flake8 >= 1.5}
 BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pytest}
 # /SECTION
+Requires:       python-flake8 >= 1.5
+Requires:       python-pycodestyle
 %python_subpackages
 
 %description
@@ -49,10 +51,10 @@ cp %{SOURCE2} .
 %patch -P 1 -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +63,8 @@ cp %{SOURCE2} .
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/flake8_debugger.py
+%pycache_only %{python_sitelib}/__pycache__/flake8_debugger.*.pyc
+%{python_sitelib}/flake8_debugger-%{version}.dist-info
 
 %changelog
