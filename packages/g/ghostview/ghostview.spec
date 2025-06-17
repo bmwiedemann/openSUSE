@@ -1,7 +1,7 @@
 #
 # spec file for package ghostview
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Ghostview
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/PS
-URL:            http://pages.cs.wisc.edu/~ghost/gv/index.htm
+URL:            https://pages.cs.wisc.edu/~ghost/gv/index.htm
 Source:         ghostview-1.5.tar.bz2
 Source1:        ghostview.desktop
 Source2:        ghostview.png
@@ -53,7 +53,7 @@ X11 interface to ghostscript.
 
 %build
 xmkmf -a
-make CCOPTIONS="%{optflags}" %{?_smp_mflags}
+make CCOPTIONS="--std=gnu99 %{optflags}" %{?_smp_mflags}
 
 %install
 make install     DESTDIR=%{buildroot}

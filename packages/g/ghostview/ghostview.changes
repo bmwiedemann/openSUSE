@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 16 11:06:36 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Make it build again 
+
+-------------------------------------------------------------------
 Tue Feb 27 11:00:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

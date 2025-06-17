@@ -149,4 +149,12 @@
     <comment></comment>
     <requestid>1152214</requestid>
   </revision>
+  <revision rev="23" vrev="447">
+    <srcmd5>dab334cd3f531183ea2b96f0aab1fd5d</srcmd5>
+    <version>1.5</version>
+    <time>1750177259</time>
+    <user>anag_factory</user>
+    <comment>- Make it build again</comment>
+    <requestid>1286072</requestid>
+  </revision>
 </revisionlist>
