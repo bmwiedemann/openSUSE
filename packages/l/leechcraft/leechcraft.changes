@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 16 11:13:12 UTC 2025 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Leap 16 build via gcc15.
+
+-------------------------------------------------------------------
+Mon Jun 16 05:11:50 UTC 2025 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated to 0.6.70-0.6.70-17609-g3dde4097dd snapshot:
+  * Compilation failure fix;
+  * Old plugins revived: Blasq-Spegnersi (Flickr) & Hotsensors;
+  * New plugins enabled: Tracolor & Azoth-Fontiac;
+- LastFM-Qt6 build condition removed since liblastfm-qt6-devel
+  became available.
+
+-------------------------------------------------------------------
 Thu Mar 13 13:13:30 UTC 2025 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Updated to 0.6.70-17335-ge406ffdcaf snapshot:
@@ -785,8 +800,8 @@ Sun Apr 28 13:24:59 UTC 2013 - dap.darkness@gmail.com
   "W: file-contains-date-and-time" for doxygen made html-files.
 - Removed boost.patch merged by upstream.
 
--------------------------------------------------------------------
 
+-------------------------------------------------------------------
 Fri Feb  1 16:52:35 UTC 2013 - dap.darkness@gmail.com
 
 - A bug with not loading torrent plugin was fixed via boost.patch.
@@ -997,8 +1012,8 @@ Tue Dec 06 01:50:00 UTC 2011 - nekolayer@yandex.ru
 - Fix AnHero plugin
 - Remove dbusmanager.patch, not needed
 
-Mon Dec 05 11:00:15 UTC 2011 - nlminhtl@gmail.com
 -------------------------------------------------------------------
+Mon Dec 05 11:00:15 UTC 2011 - nlminhtl@gmail.com
 
 - Add eiskaltdcpp-fix-php5-issue.patch - fix resolving
   /usr/bin/php5 dependence

@@ -20,7 +20,6 @@
 %global __requires_exclude (org.LC.common.1)|(org.LC.Blasq.1)|(SB2.1)|(Mellonetray.1)|(org.LC.Ooronee.1)
 
 %bcond_without ffmpeg
-%bcond_with LastFM-Qt6
 %bcond_with ProjectM-Qt6
 
 %define plugin_dir %{_libdir}/leechcraft/plugins-qt6
@@ -29,7 +28,7 @@
 %define qml_dir %{_datadir}/leechcraft/qml6
 
 %define so_ver -qt6-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-17335-ge406ffdcaf
+%define LEECHCRAFT_VERSION 0.6.70-17609-g3dde4097dd
 
 %define db_postfix %{so_ver}
 %define gui_postfix %{so_ver}
@@ -50,7 +49,7 @@
 %define xsd_postfix %{so_ver}
 
 Name:           leechcraft
-Version:        0.6.70+git.17335.ge406ffdcaf
+Version:        0.6.70+git.17609.g3dde4097dd
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
@@ -63,7 +62,11 @@ Source8:        leechcraft-session.1
 BuildRequires:  cmake >= 3.8
 BuildRequires:  fdupes
 BuildRequires:  file-devel
-BuildRequires:  gcc-c++ >= 8
+%if 0%{?suse_version} > 1600
+BuildRequires:  gcc-c++ >= 14
+%else
+BuildRequires:  gcc15-c++
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_chrono-devel
@@ -75,26 +78,28 @@ BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libjpeg-devel
-%if %{with LastFM-Qt6}
+%if 0%{?suse_version} > 1600
 BuildRequires:  liblastfm-qt6-devel
 %endif
 BuildRequires:  libsensors4-devel
 BuildRequires:  libtidy-devel
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} > 1600
 BuildRequires:  wt-devel
+%endif
 BuildRequires:  cmake(Qca-qt6)
 BuildRequires:  cmake(Qt6LinguistTools)
-BuildRequires:  pkgconfig(Qt6Network)
-BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6NetworkAuth)
 BuildRequires:  pkgconfig(Qt6QuickWidgets)
 BuildRequires:  pkgconfig(Qt6Qwt6)
 BuildRequires:  pkgconfig(Qt6Sql)
 BuildRequires:  pkgconfig(Qt6StateMachine)
+BuildRequires:  pkgconfig(Qt6Test)
 %ifarch x86_64 aarch64
 BuildRequires:  cmake(Qt6WebEngineWidgets)
 %endif
-BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(QXmppQt6)
+BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(ddjvuapi)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
@@ -126,12 +131,15 @@ BuildRequires:  pkgconfig(libqrencode)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 %endif
+BuildRequires:  qt6-sql-sqlite
 BuildRequires:  pkgconfig(libtcmalloc)
 BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 1.2
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(poppler-cpp)
 BuildRequires:  pkgconfig(poppler-qt6)
+%if 0%{?suse_version} > 1600
 BuildRequires:  pkgconfig(purple)
+%endif
 BuildRequires:  pkgconfig(qtermwidget6)
 BuildRequires:  pkgconfig(quazip1-qt6)
 BuildRequires:  pkgconfig(speex)
@@ -142,7 +150,6 @@ BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xscrnsaver)
-BuildRequires:  qt6-sql-sqlite
 
 BuildConflicts: gstreamer-0_10-devel
 BuildConflicts: gstreamer-0_10-plugins-base-devel
@@ -175,6 +182,9 @@ Obsoletes:      %{name}-lhtr
 Obsoletes:      %{name}-poshuku
 %endif
 Obsoletes:      %{name}-krigstask
+%if 0%{?suse_version} <= 1600
+Obsoletes:      %{name}-lastfmscrobble
+%endif
 
 %description
 LeechCraft is a modular "Internet client" application.
@@ -210,6 +220,9 @@ Requires:       %{name} = %{version}
 Requires:       %{name}-http = %{version}
 Requires:       qt6-sql-sqlite
 Recommends:     %{name}-poshuku = %{version}
+%if 0%{?suse_version} <= 1600
+Obsoletes:      %{name}-aggregator-webaccess
+%endif
 
 %description aggregator
 This package provides a RSS/Atom feed reader plugin for LeechCraft.
@@ -226,7 +239,7 @@ It features:
 
 A web browser plugin is recommended to show the news in a fancy way.
 
-
+%if 0%{?suse_version} > 1600
 %package aggregator-webaccess
 Summary:        LeechCraft Aggregator Web Interface Module
 License:        BSL-1.0
@@ -237,6 +250,7 @@ Requires:       %{name}-aggregator = %{version}
 WebAccess provides a basic web interface for the
 Aggregator feed reader, so one can read news
 articles from a mobile device or another machine.
+%endif
 
 %package anhero
 Summary:        LeechCraft Crash handler Module
@@ -274,6 +288,9 @@ Requires:       %{name}-azoth-protocolplugin
 Requires:       %{name}-securestorage = %{version}
 Suggests:       %{name}-azoth-standardstyles
 Obsoletes:      %{name}-azoth-juick
+%if 0%{?suse_version} <= 1600
+Obsoletes:      %{name}-azoth-velvetbird
+%endif
 
 %description azoth
 This package provides a modular, multi-protocol IM client for LeechCraft.
@@ -417,7 +434,6 @@ Requires:       %{name}-azoth = %{version}
 This package provides a plugin for LeechCraft Azoth which
 can remove excessive CAPS usage from incoming messages.
 
-
 %package azoth-keeso
 Summary:        LeechCraft Azoth Text transform Module
 License:        BSL-1.0
@@ -540,7 +556,17 @@ This package provides a standard styles support plugin for LeechCraft Azoth.
 
 Standard styles are the ones in LeechCraft's own format.
 
+%package azoth-tracolor
+Summary:        LeechCraft Azoth color-indicating contacts activity Module
+License:        BSL-1.0
+Group:          Productivity/Networking/Other
+Requires:       %{name}-azoth = %{version}
 
+%description azoth-tracolor
+This package provides a support for color-indicating contacts activity
+tracker plugin for LeechCraft Azoth.
+
+%if 0%{?suse_version} > 1600
 %package azoth-velvetbird
 Summary:        LeechCraft Azoth libpurple Module
 License:        BSL-1.0
@@ -552,6 +578,7 @@ Provides:       %{name}-azoth-protocolplugin
 This package provides a plugin for LeechCraft Azoth which
 makes the various protocols supported by libpurple available
 in Azoth.
+%endif
 
 %package azoth-xoox
 Summary:        LeechCraft Azoth XMPP Module
@@ -651,6 +678,17 @@ Provides:       %{name}-blasq-subplugin = %{version}
 This package provides a VKontakte image storage client subplugin
 for LeechCraft Blasq.
 
+%package blasq-spegnersi
+Summary:        LeechCraft Blasq Flickr client Module
+License:        BSL-1.0
+Group:          Productivity/Networking/Other
+Requires:       %{name}-blasq = %{version}
+Provides:       %{name}-blasq-subplugin = %{version}
+
+%description blasq-spegnersi
+This package provides a Flickr image storage client subplugin
+for LeechCraft Blasq.
+
 %package blasq-vangog
 Summary:        LeechCraft Blasq Picasa client Module
 License:        BSL-1.0
@@ -661,7 +699,6 @@ Provides:       %{name}-blasq-subplugin = %{version}
 %description blasq-vangog
 This package provides a Picasa image storage client subplugin
 for LeechCraft Blasq.
-
 
 %package blogique
 Summary:        LeechCraft Blogging client Module
@@ -783,11 +820,11 @@ Requires:       libleechcraft-util-xpc%{xpc_postfix}             = %{version}
 Requires:       libleechcraft-util-xsd%{xsd_postfix}             = %{version}
 Requires:       cmake(Qt6LinguistTools)
 Requires:       pkgconfig(Qt6Network)
-Requires:       pkgconfig(Qt6Test)
 Requires:       pkgconfig(Qt6QuickWidgets)
 Requires:       pkgconfig(Qt6Qwt6)
 Requires:       pkgconfig(Qt6Sql)
 Requires:       pkgconfig(Qt6StateMachine)
+Requires:       pkgconfig(Qt6Test)
 Requires:       pkgconfig(Qt6Xml)
 Recommends:     leechcraft-azoth-doc
 Recommends:     leechcraft-doc
@@ -904,6 +941,15 @@ Requires:       openbox
 This package allows to start Leechcraft as a Desktop Environment with
 the Openbox Window Manager.
 
+%package fontiac
+Summary:        LeechCraft configurable font substitutions Module
+License:        BSL-1.0
+Group:          Productivity/Networking/Other
+Requires:       %{name} = %{version}
+
+%description fontiac
+This package allows configurable font substitutions for LeechCraft.
+
 %package gacts
 Summary:        LeechCraft Global actions Module
 License:        BSL-1.0 AND (CPL-1.0 OR LGPL-2.1-only)
@@ -949,6 +995,16 @@ Requires:       %{name} = %{version}
 This package provides a history keeper plugin for LeechCraft
 which stores information about finished downloads and similar events,
 and allows to search it by text, wildcard, regular expressions or tags.
+
+%package hotsensors
+Summary:        LeechCraft Temperature Sensors Module
+License:        BSL-1.0
+Group:          Productivity/Networking/Other
+Requires:       %{name}-sb = %{version}
+
+%description hotsensors
+This package provides a temperature sensors subplugin (a quark)
+for LeechCraft SideBar.
 
 %package hotstreams
 Summary:        LeechCraft Radio streams Module
@@ -1023,7 +1079,6 @@ Requires:       %{name} = %{version}
 This package provides a tips plugin for LeechCraft which
 displays a "tip of the day" window after launching LeechCraft.
 
-
 %package lackman
 Summary:        LeechCraft Package manager Module
 License:        BSL-1.0
@@ -1048,7 +1103,6 @@ Features:
  * Supports dependencies between packages.
  * Operates in user's home directory.
 
-%if %{with LastFM-Qt6}
 %package lastfmscrobble
 Summary:        LeechCraft Last.FM Scrobble Module
 License:        BSL-1.0
@@ -1073,7 +1127,6 @@ Features:
  * Fetching recent releases of artists that are in the user's collection.
  * Fetching artists biography.
  * Configurable language of the fetched information.
-%endif
 
 %package laughty
 Summary:        LeechCraft Notification Server Module
@@ -1533,7 +1586,6 @@ Features:
  * User filters: blocking arbitrary images.
  * Support for replacing Adobe Flash objects with a "Load flash" button.
  * Whitelists for the Flash blocker.
-
 
 %package poshuku-fatape
 Summary:        LeechCraft Poshuku Greasemonkey Module
@@ -2035,11 +2087,18 @@ mkdir build && cd build
 # bypass bug 927268 for PowerPC if clang is used above in place of gcc
 tmpflags="%{optflags}"
 %ifarch ppc64 ppc64le
-# tmpflags=${tmpflags/-fstack-protector}
+# tmpflags=${tmpflags/-strong}
 %endif
+
+#        -DCMAKE_C_COMPILER=/usr/bin/clang \
+#        -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
 
 # NOTE that %%cmake macro breaks compiler configuring.
 cmake ../src \
+%if 0%{?suse_version} <= 1600
+        -DCMAKE_C_COMPILER=/usr/bin/gcc-15 \
+        -DCMAKE_CXX_COMPILER=/usr/bin/g++-15 \
+%endif
         -Wno-dev \
 %if "%{_lib}" == "lib64"
         -DLIB_SUFFIX=64 \
@@ -2054,7 +2113,11 @@ cmake ../src \
         -DENABLE_ADVANCEDNOTIFICATIONS=True \
         -DENABLE_AGGREGATOR=True \
                 -DENABLE_AGGREGATOR_BODYFETCH=False \
+%if 0%{?suse_version} > 1600
                 -DENABLE_AGGREGATOR_WEBACCESS=True \
+%else
+                -DENABLE_AGGREGATOR_WEBACCESS=False \
+%endif
         -DENABLE_AUSCRIE=True \
 %ifarch x86_64 aarch64
         -DENABLE_AZOTH=True \
@@ -2084,8 +2147,12 @@ cmake ../src \
                 -DENABLE_AZOTH_SARIN=False \
                 -DENABLE_AZOTH_STANDARDSTYLES=True \
                 -DENABLE_AZOTH_SHX=True \
-                -DENABLE_AZOTH_TRACOLOR=False \
+                -DENABLE_AZOTH_TRACOLOR=True \
+%if 0%{?suse_version} > 1600
                 -DENABLE_AZOTH_VELVETBIRD=True \
+%else
+                -DENABLE_AZOTH_VELVETBIRD=False \
+%endif
                 -DENABLE_AZOTH_XTAZY=True \
                 -DENABLE_AZOTH_XOOX=True \
                 -DENABLE_CRYPT=True \
@@ -2096,7 +2163,7 @@ cmake ../src \
         -DENABLE_BLASQ=True \
                 -DENABLE_BLASQ_DEATHNOTE=True \
                 -DENABLE_BLASQ_RAPPOR=True \
-                -DENABLE_BLASQ_SPEGNERSI=False \
+                -DENABLE_BLASQ_SPEGNERSI=True \
                 -DENABLE_BLASQ_VANGOG=True \
         -DENABLE_BLOGIQUE=True \
                 -DENABLE_BLOGIQUE_HESTIA=True \
@@ -2109,11 +2176,11 @@ cmake ../src \
         -DENABLE_DUMBEEP=True \
         -DENABLE_ELEEMINATOR=True \
         -DENABLE_FENET=True \
-        -DENABLE_FONTIAC=False \
+        -DENABLE_FONTIAC=True \
         -DENABLE_GACTS=True \
         -DENABLE_GLANCE=True \
         -DENABLE_GMAILNOTIFIER=True \
-        -DENABLE_HOTSENSORS=False \
+        -DENABLE_HOTSENSORS=True \
         -DENABLE_HOTSTREAMS=True \
         -DENABLE_HTTHARE=True \
         -DENABLE_IMGASTE=True \
@@ -2124,7 +2191,7 @@ cmake ../src \
         -DENABLE_LACKMAN=True \
                 -DTESTS_LACKMAN=True \
         -DENABLE_LADS=False \
-%if %{with LastFM-Qt6}
+%if 0%{?suse_version} > 1600
         -DENABLE_LASTFMSCROBBLE=True \
 %else
         -DENABLE_LASTFMSCROBBLE=False \
@@ -2323,11 +2390,12 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/*craft_aggregator.so
 %dir %{_datadir}/leechcraft/scripts
 
-
+%if 0%{?suse_version} > 1600
 %files aggregator-webaccess
 %{plugin_dir}/*craft_aggregator_webaccess.so
 %{settings_dir}/aggregatorwebaccesssettings.xml
 %{translations_dir}/*craft_aggregator_webaccess*.qm
+%endif
 
 %files anhero
 %{_bindir}/lc_anhero_crashprocess*
@@ -2393,6 +2461,7 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 
 %files azoth-embedmedia
 %{plugin_dir}/*craft_azoth_embedmedia.so
+%{translations_dir}/*craft_azoth_embedmedia*
 
 %files azoth-herbicide
 %{plugin_dir}/*craft_azoth_herbicide.so
@@ -2408,7 +2477,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/*craft_azoth_isterique*
 %{settings_dir}/azothisteriquesettings.xml
 %{translations_dir}/*craft_azoth_isterique*
-
 
 %files azoth-keeso
 %{plugin_dir}/*craft_azoth_keeso.so
@@ -2461,8 +2529,15 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{_datadir}/leechcraft/azoth/styles/standard/
 %{translations_dir}/*craft_azoth_standardstyles_*.qm
 
+%files azoth-tracolor
+%{plugin_dir}/*craft_azoth_tracolor.so
+%{settings_dir}/azothtracolorsettings.xml
+%{translations_dir}/*craft_azoth_tracolor*
+
+%if 0%{?suse_version} > 1600
 %files azoth-velvetbird
 %{plugin_dir}/*craft_azoth_velvetbird.so
+%endif
 
 %files azoth-xoox
 %{translations_dir}/*craft_azoth_xoox*
@@ -2496,6 +2571,10 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %files blasq-rappor
 %{plugin_dir}/lib%{name}_blasq_rappor.so
 %{translations_dir}/*craft_blasq_rappor*.qm
+
+%files blasq-spegnersi
+%{plugin_dir}/lib%{name}_blasq_spegnersi.so
+%{translations_dir}/*craft_blasq_spegnersi*.qm
 
 %files blasq-vangog
 %{plugin_dir}/lib%{name}_blasq_vangog.so
@@ -2596,6 +2675,11 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %dir %{_datadir}/leechcraft/fenet/wms
 %{_datadir}/leechcraft/fenet/wms/*openbox*
 
+%files fontiac
+%{plugin_dir}/*craft_fontiac.so
+%{settings_dir}/fontiacsettings.xml
+%{translations_dir}/*craft_fontiac_*.qm
+
 %files gacts
 %license src/plugins/gacts/3rdparty/qxt/LICENSE
 %{plugin_dir}/*craft_gacts.so
@@ -2615,6 +2699,11 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %files historyholder
 %{plugin_dir}/*leechcraft_historyholder.so
 %{translations_dir}/*craft_historyholder*.qm
+
+%files hotsensors
+%{plugin_dir}/lib%{name}_hotsensors.so
+%{qml_dir}/hotsensors
+%{translations_dir}/*craft_hotsensors_*.qm
 
 %files hotstreams
 %{plugin_dir}/*craft_hotstreams.so
@@ -2651,13 +2740,12 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/*craft_knowhow.so
 %{settings_dir}/knowhowsettings.xml
 
-
 %files lackman
 %{plugin_dir}/*craft_lackman.so
 %{settings_dir}/lackmansettings.xml
 %{translations_dir}/*craft_lackman*
 
-%if %{with LastFM-Qt6}
+%if 0%{?suse_version} > 1600
 %files lastfmscrobble
 %{plugin_dir}/lib%{name}_lastfmscrobble.so
 %{settings_dir}/lastfmscrobblesettings.xml
@@ -2864,7 +2952,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{settings_dir}/poshukucleanwebsettings.xml
 %{translations_dir}/*craft_poshuku_cleanweb*.qm
 %{plugin_dir}/*craft_poshuku_cleanweb.so
-
 
 %files poshuku-fatape
 %{settings_dir}/poshukufatapesettings.xml
