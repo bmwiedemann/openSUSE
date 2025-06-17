@@ -22,14 +22,16 @@ Version:        5.1.0
 Release:        0
 Summary:        High-level FTP client library (virtual file system and more) for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            http://ftputil.sschwarzer.net/
 Source:         https://files.pythonhosted.org/packages/source/f/ftputil/ftputil-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module freezegun}
 # /SECTION
 BuildArch:      noarch
 
@@ -48,16 +50,20 @@ servers in different timezones.
 %setup -q -n ftputil-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+# Requires network
+%pytest --ignore test/test_real_ftp.py -k 'not (test_upload or test_servers)'
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/ftputil
-%{python_sitelib}/ftputil-%{version}*.egg-info
+%{python_sitelib}/ftputil-%{version}.dist-info
 
 %changelog

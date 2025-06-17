@@ -40,4 +40,14 @@
     <comment></comment>
     <requestid>1270571</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e0f713594c2660f352bfcc24d0553974</srcmd5>
+    <version>5.1.0</version>
+    <time>1750177371</time>
+    <user>anag_factory</user>
+    <comment>
+- Switch to pyproject macros.
+- Run the testsuite.</comment>
+    <requestid>1286227</requestid>
+  </revision>
 </revisionlist>

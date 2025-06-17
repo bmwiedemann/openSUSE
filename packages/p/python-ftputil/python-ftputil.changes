@@ -1,3 +1,10 @@
+-------------------------------------------------------------------
+Tue Jun 17 04:17:16 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Run the testsuite.
+
+-------------------------------------------------------------------
 Wed Apr 16 14:05:01 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - Update to 5.1.0
