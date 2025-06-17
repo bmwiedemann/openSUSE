@@ -17,7 +17,7 @@
 
 
 Name:           byte-buddy
-Version:        1.17.5
+Version:        1.17.6
 Release:        0
 Summary:        Runtime code generation for the Java virtual machine
 License:        Apache-2.0
@@ -97,7 +97,7 @@ rm -rf %{name}-agent/src/main/resources/win32-x86{,-64}
 %pom_remove_plugin :spotbugs-maven-plugin
 %pom_remove_plugin :jitwatch-jarscan-maven-plugin
 %pom_remove_plugin :maven-release-plugin
-%pom_remove_plugin :nexus-staging-maven-plugin
+%pom_remove_plugin org.sonatype.central:central-publishing-maven-plugin
 
 # Avoid circular dependency
 %pom_remove_plugin :byte-buddy-maven-plugin %{name}-dep

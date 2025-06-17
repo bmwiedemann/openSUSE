@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 16 12:37:21 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.17.6
+  * Changes of v1.17.6
+    + Add convenience wrapper for ResettableClassFileTransformer
+      that implicitly delegates to correct transformer method.
+    + Add filter for deduplicate fields and methods in class file.
+    + Add missing static requirement of Spotbugs annotations to
+      module descriptors.
+    + Add LazinessMode for TypePool and add convenience support to
+      AgentBuilder.
+    + Fix source jars for multi-version release to contain
+      duplicated source.
+
+-------------------------------------------------------------------
 Wed Apr  2 17:35:35 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v1.17.5
