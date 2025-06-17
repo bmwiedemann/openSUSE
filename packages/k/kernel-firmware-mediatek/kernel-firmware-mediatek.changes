@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 15 09:08:48 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250613 (git commit 12fe085fa409):
+  * linux-firmware: update firmware for MT7986
+  * linux-firmware: update firmware for MT7981
+  * linux-firmware: update firmware for MT7916
+
+-------------------------------------------------------------------
 Sat Jun  7 13:23:15 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250606 (git commit 4f0106cf1943):

@@ -111,4 +111,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: update firmware for MT7921 WiFi device</comment>
     <requestid>1284702</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1dd26fc804c456064a089b38a2180957</srcmd5>
+    <version>20250613</version>
+    <time>1750177210</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250613 (git commit 12fe085fa409):
+  * linux-firmware: update firmware for MT7986
+  * linux-firmware: update firmware for MT7981
+  * linux-firmware: update firmware for MT7916</comment>
+    <requestid>1285897</requestid>
+  </revision>
 </revisionlist>
