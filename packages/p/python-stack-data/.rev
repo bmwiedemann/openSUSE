@@ -101,4 +101,12 @@
     <comment></comment>
     <requestid>1239044</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>9f89856a18be1639e871946197c7f2b8</srcmd5>
+    <version>0.6.3</version>
+    <time>1750177225</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.</comment>
+    <requestid>1285976</requestid>
+  </revision>
 </revisionlist>

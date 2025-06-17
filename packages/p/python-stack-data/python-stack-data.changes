@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 16 06:12:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyroject macros.
+
+-------------------------------------------------------------------
 Mon Jan 20 13:14:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add pygments.patch to fix non-skipped tests with Pygments 2.19

@@ -25,8 +25,10 @@ License:        MIT
 URL:            https://github.com/alexmojaki/stack_data
 Source:         https://files.pythonhosted.org/packages/source/s/stack_data/stack_data-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 44}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # PATCH-FIX-UPSTREAM https://github.com/alexmojaki/stack_data/pull/58 Modify test_executing_style_defs to work with Pygments 2.19
@@ -57,10 +59,10 @@ Extract data from python stack frames and tracebacks for informative displays
 %autosetup -p1 -n stack_data-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -69,6 +71,6 @@ Extract data from python stack frames and tracebacks for informative displays
 
 %files %{python_files}
 %{python_sitelib}/stack_data
-%{python_sitelib}/stack_data-%{version}*-info
+%{python_sitelib}/stack_data-%{version}.dist-info
 
 %changelog
