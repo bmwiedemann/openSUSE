@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 16 16:59:10 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * eclipse-swt-gcc15-4_9.patch
+    + fix build with gcc15
+
+-------------------------------------------------------------------
 Thu Jun 12 18:00:48 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Clean the spec file and avoid fetching and modifying sources by

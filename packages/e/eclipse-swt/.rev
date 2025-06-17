@@ -63,4 +63,12 @@
     <comment>A huge cleanup</comment>
     <requestid>1285242</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>fd9d97ba3e2c5d07580339c41b3c23c7</srcmd5>
+    <version>4.9</version>
+    <time>1750177333</time>
+    <user>anag_factory</user>
+    <comment>fix build with gcc 15</comment>
+    <requestid>1286172</requestid>
+  </revision>
 </revisionlist>
