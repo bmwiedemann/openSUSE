@@ -65,7 +65,6 @@ BuildRequires:  swig
 BuildRequires:  tk-devel
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
-BuildRequires:  pkgconfig(osmesa)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb-glx)
 %endif

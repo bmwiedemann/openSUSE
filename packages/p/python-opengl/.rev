@@ -267,4 +267,12 @@
 - Drop merged PyOpenGL-pr100-py312.patch</comment>
     <requestid>1273380</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>065c7c90bb58bfa85d6230bbcc85d982</srcmd5>
+    <version>3.1.9</version>
+    <time>1750177236</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1286109</requestid>
+  </revision>
 </revisionlist>
