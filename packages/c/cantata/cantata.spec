@@ -17,15 +17,14 @@
 
 
 Name:           cantata
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        Client for the Music Player Daemon (MPD)
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/nullobsi/cantata/
 Source:         https://github.com/nullobsi/cantata/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM cantata-add-missing-qregularexpression-include.patch - https://github.com/nullobsi/cantata/pull/54/
-Patch1:         cantata-add-missing-qregularexpression-include.patch
+
 BuildRequires:  fdupes
 BuildRequires:  media-player-info
 BuildRequires:  pkgconfig

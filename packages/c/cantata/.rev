@@ -331,4 +331,24 @@
     <comment></comment>
     <requestid>1276645</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>38cd6bbd3f8618004dea4fae11252403</srcmd5>
+    <version>3.3.1</version>
+    <time>1750177353</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.1:
+  * build: Link to libmusicbrainzcc, not libmusicbrainz 
+    (gh#nullobsi/cantata#46)
+  * build: update flatpak workflow (gh#nullobsi/cantata#53)
+  * Add missing QRegularExpression include (gh#nullobsi/cantata#54)
+  * fix FindCDParanoia.cmake (gh#nullobsi/cantata#51)
+  * git: bump version by (gh#nullobsi/cantata#60)
+  * fix: fill tags from filename if tag is empty in metadata 
+    (gh#nullobsi/cantata#64)
+  * build: fix musicbrainz (gh#nullobsi/cantata#65)
+  * rc: v3.3.1 (2) (gh#nullobsi/cantata#66)
+- Superseded cantata-add-missing-qregularexpression-include.patch
+</comment>
+    <requestid>1286209</requestid>
+  </revision>
 </revisionlist>
