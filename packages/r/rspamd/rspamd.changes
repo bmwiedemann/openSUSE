@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun 17 09:47:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.12.1
+  - Remove aweber.com from spf_dkim_whitelist.inc by @TaaviE in
+    #5500
+  - [Fix] Fix several issues with the lua_logger by @vstakhov in
+    #5503
+  - [Test] Detect libicu idna behaviour and select the appropriate
+    tests by @vstakhov in #5506
+  - [Fix] Fix proxy headers duplication by @vstakhov in #5507
+  - [Minor] Treat *.library-ms and *.search-ms attachments as
+    harmful by @twesterhever in #5509
+  - Revert "[Minor] Treat *.library-ms and *.search-ms attachments
+    as harmful" by @vstakhov in #5511
+  - [Fix] Another fix for maps concurrent load by @vstakhov in
+    #5512
+  - [Feature] Add /bayes/classifiers HTTP endpoint by @moisseev in
+    #5517
+
+-------------------------------------------------------------------
 Wed Jun 11 21:27:18 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - as it currently always uses the bundled fmt, disable the requires
