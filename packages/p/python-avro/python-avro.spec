@@ -1,7 +1,7 @@
 #
 # spec file for package python-avro
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-avro
 Version:        1.12.0
@@ -28,10 +29,10 @@ BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,11 +57,8 @@ sed -i '1{\@^#!/usr/bin/env python@d}' avro/*.py avro/tether/*.py avro/test/*.py
 rm avro/test/test_ipc.py
 %pyunittest discover -v
 
-%post
-%python_install_alternative avro
-
-%postun
-%python_uninstall_alternative avro
+%pre
+%python_libalternatives_reset_alternative avro
 
 %files %{python_files}
 %python_alternative %{_bindir}/avro

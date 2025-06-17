@@ -167,4 +167,12 @@
 - Switch to pyproject and pyunittest macros.</comment>
     <requestid>1196150</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>fc7f3f56bdebf5362f4346007e30e7a5</srcmd5>
+    <version>1.12.0</version>
+    <time>1750177313</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286139</requestid>
+  </revision>
 </revisionlist>
