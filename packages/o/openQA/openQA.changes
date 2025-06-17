@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 16 15:13:42 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1750081859.24dae152:
+  * Bump eslint from 9.28.0 to 9.29.0
+  * Document where docs/images/openqa-in-5-minutes.webm comes from
+  * Fix string definition to be more consistent
+
+-------------------------------------------------------------------
 Fri Jun 13 17:12:12 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1749832158.cc746ea0:
