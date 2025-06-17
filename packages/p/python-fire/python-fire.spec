@@ -1,7 +1,7 @@
 #
 # spec file for package python-fire
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-fire
 Version:        0.7.0
 Release:        0
@@ -26,6 +25,8 @@ URL:            https://github.com/google/python-fire
 Source:         https://files.pythonhosted.org/packages/source/f/fire/fire-%{version}.tar.gz
 # Based on https://github.com/google/python-fire/pull/265/files
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-termcolor
@@ -46,18 +47,19 @@ interfaces (CLIs) from a Python object.
 %autosetup -p1 -n fire-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
 %files %{python_files}
+%doc README.md
 %license LICENSE
 %{python_sitelib}/fire
-%{python_sitelib}/fire-*.egg-info
+%{python_sitelib}/fire-%{version}.dist-info
 
 %changelog

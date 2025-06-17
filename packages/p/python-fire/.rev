@@ -136,4 +136,13 @@
     <comment>Very much alive and perhaps useful.</comment>
     <requestid>1223452</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>a8e694e3ca57de8b9085bab2381d5510</srcmd5>
+    <version>0.7.0</version>
+    <time>1750177365</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Ship README as a doc.</comment>
+    <requestid>1286221</requestid>
+  </revision>
 </revisionlist>
