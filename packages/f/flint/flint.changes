@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 16 10:04:20 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.3.1
+  * gr_mat_lu_classical: set permutation vector even if there are 0
+    columns
+
+-------------------------------------------------------------------
+Wed Jun 11 22:37:35 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.3.0
+  * This release includes major speedups for the acb_theta module,
+    using strides instead of row pointers in all matrix types, and
+    a lot of additions to the gr module, the Generic Rings module
+    in FLINT.
+
+-------------------------------------------------------------------
 Mon Mar 31 09:19:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.2
