@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 16 19:23:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.22.0:
+  * (cargo-release) version 0.22.0
+  * Update cli's help
+  * apply some clippy suggestion
+  * Call `list` concurrently on every Pod's api
+  * allow a list of namespaces to be passed
+  * Bump clap from 4.5.39 to 4.5.40
+
+-------------------------------------------------------------------
 Tue Jun 03 11:26:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.21.2:
