@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 11 05:37:33 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.840.0 (3.84)
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.84  2025-06-10  sbeck
+    -  Fixed a packaging error
+           For some reason, there was a problem with my 3.83 package which
+           caused the module to completely disappear from CPAN. This is a
+           release to try to correct that.
+
+-------------------------------------------------------------------
 Mon Jun  2 05:36:54 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.830.0 (3.83)
