@@ -7,4 +7,12 @@
     <comment>Needed for the python-pulsar-client.</comment>
     <requestid>1225864</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>347b4ce85513ca35b765b8e2c2212805</srcmd5>
+    <version>1.9.7</version>
+    <time>1750177362</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1286219</requestid>
+  </revision>
 </revisionlist>

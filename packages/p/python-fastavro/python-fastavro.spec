@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastavro
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,9 @@ ExcludeArch:    %{ix86}
 URL:            https://github.com/fastavro/fastavro
 Source:         https://files.pythonhosted.org/packages/source/f/fastavro/fastavro-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-cramjam
@@ -51,10 +53,10 @@ Fast read/write of AVRO files
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/fastavro
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
@@ -74,6 +76,6 @@ donttest+=" or test_optional_codecs_not_installed_reading[snappy]"
 %license LICENSE
 %python_alternative %{_bindir}/fastavro
 %{python_sitearch}/fastavro
-%{python_sitearch}/fastavro-%{version}*-info
+%{python_sitearch}/fastavro-%{version}.dist-info
 
 %changelog
