@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 15 02:46:00 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to 0.6.0
+  - Update README after switchover to meson
+  - build: Automate copyright year management
+  - Add meson build
+  - Add about dialog
+  - autotools-build: Avoid versioning libstopwatch
+  - I18n: Update po/LINGUAS list
+  - Translation Updates
+
+-------------------------------------------------------------------
 Mon Jan  6 16:48:14 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 0.5.2
