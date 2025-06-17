@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jun 15 18:43:13 UTC 2025 - Bernd Ritter <comrad@opensuse.org>
+
+- Updated spdlog to 1.15.3
+
+- Release notes 1.15.3:
+* Bumped bundled {fmt} library to 11.2.0 by @gabime in #3399
+* Fixed incorrect behavior in dup_filter_sink when reporting skipped messages by @SleepingSoul in #3390
+* Fixed MSVC C4530 warning when exceptions are disabled by @roeas in #3393
+* Added support for modifying max-size and max-files in rotating_file_sink after creation by @gabime in #3397
+* Added spdlog::register_or_replace(new_logger) to safely replace existing loggers in the registry by @gabime in #3398
+* Fixed broken links to the wiki and local references by @cgringmuth in #3377 and #3378, and by @non-descriptive in #3381
+
+- Release notes 1.15.2: 
+* Upgraded bundled {fmt} to version 11.1.4 (faa0a7a)
+* Fixed #3360, discovered by OSS-Fuzz regarding the %D format flag, in #3361
+* Fixed #3352: %z (UTC offset) on Apple and POSIX.1-2024-conforming platforms by @toh-ableton in #3366
+* Updated README with ALT Linux installation instructions by @lubyagin in #3338
+
+-------------------------------------------------------------------
 Sun Feb  2 15:34:25 UTC 2025 - Bernd Ritter <comrad@opensuse.org>
 
 - Removed Patch 0001-fix-update-to_string_view-function-for-fmt-11.1-3301.patch as it is included in 1.15.1.
@@ -81,8 +100,8 @@ Tue Jun 11 07:47:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - fix build for leap by pulling gcc 13
 
--------------------------------------------------------------------
 
+-------------------------------------------------------------------
 Fri May  3 15:11:30 UTC 2024 - Bernd Ritter <comrad@opensuse.org>
 
 - update fmt dependency to verrsion 10.0
