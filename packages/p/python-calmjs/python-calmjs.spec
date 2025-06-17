@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-calmjs
 Version:        3.4.4
@@ -31,13 +32,13 @@ BuildRequires:  %{python_module calmjs.types}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-calmjs.parse >= 1.0.0
 Requires:       python-calmjs.types
 Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  nodejs-common
@@ -74,11 +75,8 @@ export LANG=en_US.UTF-8
 # DistLoggerTestCase is not working correctly in obs build environment
 %pytest -v --pyargs calmjs.tests -k 'not DistLoggerTestCase'
 
-%post
-%python_install_alternative calmjs
-
-%postun
-%python_uninstall_alternative calmjs
+%pre
+%python_libalternatives_reset_alternative calmjs
 
 %files %{python_files}
 %license LICENSE
