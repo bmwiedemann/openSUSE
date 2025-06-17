@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 17 05:54:23 UTC 2025 - Glass Su <glass.su@suse.com>
+
+- drbd: fix build error against kernel v6.15 (boo#1244669)
+  * add upstream patch
+    + 0001-compat-follow-Linux-6.14-debugfs_change_name.patch
+  * add suse special patch
+    + boo1244669-fix_build_error_against_kernel_v6.15.patch
+  * remove patch which is replaced by the upstream patch
+    - boo1240916-fix_build_error_against_kernel_v6.14.patch
+
+-------------------------------------------------------------------
 Wed Apr  9 08:38:57 UTC 2025 - Glass Su <glass.su@suse.com>
 
 - drbd: fix build error against kernel v6.14 (boo#1240916)

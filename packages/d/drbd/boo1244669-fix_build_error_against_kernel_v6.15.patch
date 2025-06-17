@@ -1,0 +1,113 @@
+From d084b8c42a167881119e4abb9fdc6dad5509e273 Mon Sep 17 00:00:00 2001
+From: Su Yue <glass.su@suse.com>
+Date: Tue, 17 Jun 2025 13:38:26 +0800
+Subject: [PATCH] drbd: fix build error against kernel v6.15
+
+Upstream commit 8fa7292fee5c ("treewide: Switch/rename to timer_delete[_sync]()")
+renamed del_timer[_sync] to timer_delete[_sync]. Convert them all.
+Otherwise build fails like:
+
+[   85s] /home/abuild/rpmbuild/BUILD/drbd-9.1.23-build/drbd-9.1.23/default/./drbd_receiver.c:7128:25: error: implicit declaration of function del_timer; did you mean add_timer? [-Wimplicit-function-declaration]
+[   85s]  7128 |                         del_timer(&resource->twopc_timer);
+[   85s]       |                         ^~~~~~~~~
+[   85s]       |                         add_timer
+[   85s] /home/abuild/rpmbuild/BUILD/drbd-9.1.23-build/drbd-9.1.23/default/./drbd_receiver.c: In function cleanup_resync_leftovers:
+[   85s] /home/abuild/rpmbuild/BUILD/drbd-9.1.23-build/drbd-9.1.23/default/./drbd_receiver.c:8551:9: error: implicit declaration of function del_timer_sync; did you mean dev_mc_sync? [-Wimplicit-function-declaration]
+[   85s]  8551 |         del_timer_sync(&peer_device->resync_timer);
+[   85s]       |         ^~~~~~~~~~~~~~
+[   85s]       |         dev_mc_sync
+[   86s] make[3]: *** [/usr/src/linux-6.15.2-1/scripts/Makefile.build:204: drbd_receiver.o] Error 1
+
+Signed-off-by: Su Yue <glass.su@suse.com>
+---
+ drbd/drbd_main.c     | 4 ++--
+ drbd/drbd_nl.c       | 2 +-
+ drbd/drbd_receiver.c | 8 ++++----
+ drbd/drbd_state.c    | 2 +-
+ 4 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/drbd/drbd_main.c b/drbd/drbd_main.c
+index edb1877074e1..44247e020390 100644
+--- a/drbd/drbd_main.c
++++ b/drbd/drbd_main.c
+@@ -4198,7 +4198,7 @@ static void shutdown_connect_timer(struct drbd_connection *connection)
+ 
+ void del_connect_timer(struct drbd_connection *connection)
+ {
+-	if (del_timer_sync(&connection->connect_timer)) {
++	if (timer_delete_sync(&connection->connect_timer)) {
+ 		kref_debug_put(&connection->kref_debug, 11);
+ 		kref_put(&connection->kref, drbd_destroy_connection);
+ 	}
+@@ -4433,7 +4433,7 @@ static int __drbd_md_sync(struct drbd_device *device, bool maybe)
+ 	if (!buffer)
+ 		goto out;
+ 
+-	del_timer(&device->md_sync_timer);
++	timer_delete(&device->md_sync_timer);
+ 	/* timer may be rearmed by drbd_md_mark_dirty() now. */
+ 
+ 	if (test_and_clear_bit(MD_DIRTY, &device->flags) || !maybe) {
+diff --git a/drbd/drbd_nl.c b/drbd/drbd_nl.c
+index baa32e4152ab..2b4ef3749867 100644
+--- a/drbd/drbd_nl.c
++++ b/drbd/drbd_nl.c
+@@ -1715,7 +1715,7 @@ drbd_determine_dev_size(struct drbd_device *device, sector_t peer_current_size,
+ 		/* We do some synchronous IO below, which may take some time.
+ 		 * Clear the timer, to avoid scary "timer expired!" messages,
+ 		 * "Superblock" is written out at least twice below, anyways. */
+-		del_timer(&device->md_sync_timer);
++		timer_delete(&device->md_sync_timer);
+ 
+ 		/* We won't change the "al-extents" setting, we just may need
+ 		 * to move the on-disk location of the activity log ringbuffer.
+diff --git a/drbd/drbd_receiver.c b/drbd/drbd_receiver.c
+index 0264adee9014..6604e95054dc 100644
+--- a/drbd/drbd_receiver.c
++++ b/drbd/drbd_receiver.c
+@@ -7125,7 +7125,7 @@ retry:
+ 				drbd_err(resource, "FATAL: Local commit of prepared %u failed! \n",
+ 					 reply->tid);
+ 
+-			del_timer(&resource->twopc_timer);
++			timer_delete(&resource->twopc_timer);
+ 		}
+ 
+ 		nested_twopc_request(resource, &request);
+@@ -8547,9 +8547,9 @@ static void cleanup_resync_leftovers(struct drbd_peer_device *peer_device)
+ 	atomic_set(&peer_device->rs_pending_cnt, 0);
+ 	wake_up(&peer_device->device->misc_wait);
+ 
+-	del_timer_sync(&peer_device->resync_timer);
++	timer_delete_sync(&peer_device->resync_timer);
+ 	resync_timer_fn(&peer_device->resync_timer);
+-	del_timer_sync(&peer_device->start_resync_timer);
++	timer_delete_sync(&peer_device->start_resync_timer);
+ }
+ 
+ static void drain_resync_activity(struct drbd_connection *connection)
+@@ -8664,7 +8664,7 @@ static void cleanup_remote_state_change(struct drbd_connection *connection)
+ 		drbd_info(connection, "Aborting %s state change %u commit not possible\n",
+ 			  remote ? "remote" : "local", reply->tid);
+ 		if (remote) {
+-			del_timer(&resource->twopc_timer);
++			timer_delete(&resource->twopc_timer);
+ 			__clear_remote_state_change(resource);
+ 		} else {
+ 			enum alt_rv alt_rv = abort_local_transaction(connection, 0);
+diff --git a/drbd/drbd_state.c b/drbd/drbd_state.c
+index 0e693c8e3af0..9ecc713d5d61 100644
+--- a/drbd/drbd_state.c
++++ b/drbd/drbd_state.c
+@@ -4171,7 +4171,7 @@ static int w_after_state_change(struct drbd_work *w, int unused)
+ 					drbd_disk_str(device->disk_state[NOW]));
+ 
+ 			/* we may need to cancel the md_sync timer */
+-			del_timer_sync(&device->md_sync_timer);
++			timer_delete_sync(&device->md_sync_timer);
+ 
+ 			if (have_ldev)
+ 				send_new_state_to_all_peer_devices(state_change, n_device);
+-- 
+2.39.5 (Apple Git-154)
+

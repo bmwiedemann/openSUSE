@@ -1,0 +1,122 @@
+From a74b9bf08912945c1548c1ba675952bd97c9f84b Mon Sep 17 00:00:00 2001
+From: Philipp Reisner <philipp.reisner@linbit.com>
+Date: Wed, 9 Apr 2025 17:49:38 +0200
+Subject: [PATCH] compat: follow Linux-6.14 (debugfs_change_name())
+
+Apart from following the obvious name change from debugfs_rename() to
+debugfs_change_name(), the fallthrough compat test showed an
+unintentional compilation error since there was no second case label
+after the fallthrough statement.
+---
+ .../debugfs_change_name__no_present.cocci      | 18 ++++++++++++++++++
+ drbd/drbd-kernel-compat/gen_patch_names.c      |  3 +++
+ .../tests/have_debugfs_change_name.c           |  9 +++++++++
+ .../tests/have_fallthrough.c                   | 11 +++++++++--
+ drbd/drbd_debugfs.c                            | 10 +++-------
+ 5 files changed, 42 insertions(+), 9 deletions(-)
+ create mode 100644 drbd/drbd-kernel-compat/cocci/debugfs_change_name__no_present.cocci
+ create mode 100644 drbd/drbd-kernel-compat/tests/have_debugfs_change_name.c
+
+diff --git a/drbd/drbd-kernel-compat/cocci/debugfs_change_name__no_present.cocci b/drbd/drbd-kernel-compat/cocci/debugfs_change_name__no_present.cocci
+new file mode 100644
+index 000000000000..1f40061b71a4
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/cocci/debugfs_change_name__no_present.cocci
+@@ -0,0 +1,18 @@
++@@
++identifier err, resource, new_name;
++@@
++void drbd_debugfs_resource_rename(struct drbd_resource *resource, const char *new_name)
++{
++-	int err;
+++	struct dentry *new_d;
++
++-	err = debugfs_change_name(resource->debugfs_res, "%s", new_name);
++-	if (err)
+++	new_d = debugfs_rename(drbd_debugfs_resources, resource->debugfs_res,
+++				drbd_debugfs_resources, new_name);
+++	if (IS_ERR(new_d)) {
++		drbd_err(resource, ... );
+++	} else {
+++		resource->debugfs_res = new_d;
+++	}
++}
+diff --git a/drbd/drbd-kernel-compat/gen_patch_names.c b/drbd/drbd-kernel-compat/gen_patch_names.c
+index 199ce0845f4d..3e9493527b13 100644
+--- a/drbd/drbd-kernel-compat/gen_patch_names.c
++++ b/drbd/drbd-kernel-compat/gen_patch_names.c
+@@ -632,6 +632,9 @@ int main(int argc, char **argv)
+ 	patch(1, "genlmsg_multicast_allns", true, false,
+ 	      COMPAT_GENLMSG_MULTICAST_ALLNS_HAS_4_PARAMS, "has_4_params");
+ 
++	patch(1, "debugfs_change_name", true, false,
++	      COMPAT_HAVE_DEBUGFS_CHANGE_NAME, "present");
++
+ /* #define BLKDEV_ISSUE_ZEROOUT_EXPORTED */
+ /* #define BLKDEV_ZERO_NOUNMAP */
+ 
+diff --git a/drbd/drbd-kernel-compat/tests/have_debugfs_change_name.c b/drbd/drbd-kernel-compat/tests/have_debugfs_change_name.c
+new file mode 100644
+index 000000000000..5fb1ae2da636
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/tests/have_debugfs_change_name.c
+@@ -0,0 +1,9 @@
++/* { "version": "v6.13-rc7", "commit": "f7862dfef6612b87b2ad8352c4d73886f09456d6", "comment": "debugfs_chnage_name() replaces debugfs_rename()", "author": "Al Viro <viro@zeniv.linux.org.uk>", "date": "Sun Jan 12 08:07:05 2025 +0000" } */
++
++#include <linux/debugfs.h>
++
++int foo(const char *s);
++int foo(const char *s)
++{
++	return debugfs_change_name(NULL, "%s", s);
++}
+diff --git a/drbd/drbd-kernel-compat/tests/have_fallthrough.c b/drbd/drbd-kernel-compat/tests/have_fallthrough.c
+index a5299a0fc8ff..e44dd353e469 100644
+--- a/drbd/drbd-kernel-compat/tests/have_fallthrough.c
++++ b/drbd/drbd-kernel-compat/tests/have_fallthrough.c
+@@ -2,10 +2,17 @@
+ 
+ #include <linux/compiler_attributes.h>
+ 
+-void foo(void)
++int foo(int i); /* Avoid warning about missing function prototype */
++int foo(int i)
+ {
+-	switch(0) {
++	int y = 0;
++
++	switch(i) {
+ 	case 0:
+ 		fallthrough;
++	case 1:
++		y = i;
+ 	}
++
++	return y;
+ }
+diff --git a/drbd/drbd_debugfs.c b/drbd/drbd_debugfs.c
+index 3f48dbee4e9a..6809d097bf52 100644
+--- a/drbd/drbd_debugfs.c
++++ b/drbd/drbd_debugfs.c
+@@ -771,15 +771,11 @@ void drbd_debugfs_resource_cleanup(struct drbd_resource *resource)
+ 
+ void drbd_debugfs_resource_rename(struct drbd_resource *resource, const char *new_name)
+ {
+-	struct dentry *new_d;
++	int err;
+ 
+-	new_d = debugfs_rename(drbd_debugfs_resources, resource->debugfs_res,
+-				drbd_debugfs_resources, new_name);
+-	if (IS_ERR(new_d)) {
++	err = debugfs_change_name(resource->debugfs_res, "%s", new_name);
++	if (err)
+ 		drbd_err(resource, "failed to rename debugfs entry for resource\n");
+-	} else {
+-		resource->debugfs_res = new_d;
+-	}
+ }
+ 
+ static void seq_print_one_timing_detail(struct seq_file *m,
+-- 
+2.39.5 (Apple Git-154)
+

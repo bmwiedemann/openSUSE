@@ -38,11 +38,12 @@ Source3:        drbd_git_revision
 # upstream patch
 Patch0001:  0001-drbd-Fix-memory-leak.patch
 Patch0002:  0001-drbd-build-deal-with-potentially-relative-paths-in-p.patch
+Patch0003:  0001-compat-follow-Linux-6.14-debugfs_change_name.patch
 
 # suse special patch
 Patch1001:  bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
 Patch1002:  suse-coccinelle.patch
-Patch1003:  boo1240916-fix_build_error_against_kernel_v6.14.patch
+Patch1003:  boo1244669-fix_build_error_against_kernel_v6.15.patch
 ########################
 
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
