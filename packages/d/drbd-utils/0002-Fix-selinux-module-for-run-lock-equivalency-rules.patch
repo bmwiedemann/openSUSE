@@ -1,0 +1,27 @@
+From 4349250af76e60e2092a78cca0c9fc3aff1a887a Mon Sep 17 00:00:00 2001
+From: Cathy Hu <cathy.hu@suse.com>
+Date: Thu, 12 Jun 2025 13:57:06 +0200
+Subject: [PATCH 2/3] Fix selinux module for /run/lock equivalency rules
+
+fedora needs /run/lock due to equivalency rules:
+https://github.com/fedora-selinux/selinux-policy/commit/8973a73c7c534b51860b9350eacc6d946ab1e412
+
+openSUSE has the fedora selinux policy as upstream, so also fixes it there
+---
+ selinux/drbd.fc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/selinux/drbd.fc b/selinux/drbd.fc
+index 6b5fcdd7da94..9c71b7f03b11 100644
+--- a/selinux/drbd.fc
++++ b/selinux/drbd.fc
+@@ -18,5 +18,6 @@
+ /var/lib/drbd(/.*)?	gen_context(system_u:object_r:drbd_var_lib_t,s0)
+ 
+ /var/lock/subsys/drbd	--	gen_context(system_u:object_r:drbd_lock_t,s0)
++/run/lock/subsys/drbd	--	gen_context(system_u:object_r:drbd_lock_t,s0)
+ 
+ /var/run/drbd(/.*)?		gen_context(system_u:object_r:drbd_var_run_t,s0)
+-- 
+2.43.0
+

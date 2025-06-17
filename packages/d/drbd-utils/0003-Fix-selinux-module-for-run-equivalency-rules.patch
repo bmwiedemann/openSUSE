@@ -1,0 +1,25 @@
+From 8000ae318e0e4ce0ff9e056b9fb71f506c5a01ef Mon Sep 17 00:00:00 2001
+From: Cathy Hu <cathy.hu@suse.com>
+Date: Thu, 12 Jun 2025 13:57:56 +0200
+Subject: [PATCH 3/3] Fix selinux module for /run equivalency rules
+
+fedora needs /run instead of /var/run due to equivalency rules:
+https://github.com/fedora-selinux/selinux-policy/commit/1f76e522ab3e4c6faafde161036aa5bb49a0cbe0
+
+openSUSE has the fedora selinux policy as upstream, also fixes it there
+---
+ selinux/drbd.fc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/selinux/drbd.fc b/selinux/drbd.fc
+index 9c71b7f03b11..f318075c5e55 100644
+--- a/selinux/drbd.fc
++++ b/selinux/drbd.fc
+@@ -21,3 +21,4 @@
+ /run/lock/subsys/drbd	--	gen_context(system_u:object_r:drbd_lock_t,s0)
+ 
+ /var/run/drbd(/.*)?		gen_context(system_u:object_r:drbd_var_run_t,s0)
++/run/drbd(/.*)?		gen_context(system_u:object_r:drbd_var_run_t,s0)
+-- 
+2.43.0
+

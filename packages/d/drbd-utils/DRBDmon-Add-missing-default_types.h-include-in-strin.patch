@@ -1,0 +1,25 @@
+From f5b69f8841e005ee10360496fdda46b8fc92c5eb Mon Sep 17 00:00:00 2001
+From: Robert Altnoeder <robert.altnoeder@linbit.com>
+Date: Wed, 9 Apr 2025 13:48:27 +0200
+Subject: [PATCH] DRBDmon: Add missing default_types.h include in
+ string_matching.h
+
+---
+ user/drbdmon/string_matching.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/user/drbdmon/string_matching.h b/user/drbdmon/string_matching.h
+index 9b3918fe84f4..17dbdf5170b6 100644
+--- a/user/drbdmon/string_matching.h
++++ b/user/drbdmon/string_matching.h
+@@ -4,6 +4,7 @@
+ #include <string>
+ #include <memory>
+ #include <stdexcept>
++#include <default_types.h>
+ 
+ namespace string_matching
+ {
+-- 
+2.43.0
+

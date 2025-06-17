@@ -59,6 +59,10 @@ Patch0009:      0009-Do-not-hardcode-paths-in-services-and-scripts.patch
 Patch0010:      0010-Fix-typo-in-warning-there-is-no-po4a-translage-comma.patch
 Patch0011:      0011-drbd.ocf-explicitly-timeout-crm_master-IPC-early.patch
 Patch0012:      0012-drbd.ocf-the-text-output-of-crm_resource-locate-has-.patch
+Patch0013:      DRBDmon-Add-missing-default_types.h-include-in-strin.patch
+Patch0014:      0001-Fix-selinux-policy-for-usr-bin-equivalency-rules.patch
+Patch0015:      0002-Fix-selinux-module-for-run-lock-equivalency-rules.patch
+Patch0016:      0003-Fix-selinux-module-for-run-equivalency-rules.patch
 
 # SUSE specific patches
 Patch1001:      init-script-fixes.diff

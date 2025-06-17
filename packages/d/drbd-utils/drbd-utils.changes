@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 17 14:38:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
+
+- merge upstream patch to fix build error 
+  * add patch
+    + DRBDmon-Add-missing-default_types.h-include-in-strin.patch
+
+-------------------------------------------------------------------
+Tue Jun 17 07:28:17 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Fix SELinux equivalency rules in module (bsc#1242915)
+  * add patch
+    + 0001-Fix-selinux-policy-for-usr-bin-equivalency-rules.patch
+    + 0002-Fix-selinux-module-for-run-lock-equivalency-rules.patch
+    + 0003-Fix-selinux-module-for-run-equivalency-rules.patch
+
+-------------------------------------------------------------------
 Mon Mar 17 13:32:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
 
 - Default SELinux Profile prevents configuration of drbd_passive resources in cluster (bsc#1239436)
@@ -887,6 +903,7 @@ Fri Jul 11 01:53:22 UTC 2014 - lwang@suse.com
   del: fix-udev-for-drbd-start-timeout.patch
 
 -------------------------------------------------------------------
+Tue May 30 04:10:00 UTC 2014 - lwang@suse.com
 
 - modify drbd.rules by removing NAME and adding SYMLINK in case that
   configuration has a device name diffrent from kernel node (bnc#878119)
