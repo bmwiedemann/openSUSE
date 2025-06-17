@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-weather-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,39 +16,35 @@
 #
 
 
-%bcond_with git
-%define panel_version 4.14.0
+%define xfce_version 4.14.0
 %define plugin weather
 Name:           xfce4-weather-plugin
-Version:        0.11.3
+Version:        0.12.0
 Release:        0
 Summary:        Weather Condition Monitoring Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-weather-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/0.11/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/0.12/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE 0001-relax-json-c-version.patch lower required json-c version to allow building for Leap which only has 0.13, which is enough, though.
-Patch1:         0001-relax-json-c-version.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.64.0
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.64.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
-BuildRequires:  pkgconfig(json-c) >= 0.13
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42.0
-BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
+BuildRequires:  pkgconfig(json-c) >= 0.13.1
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0.0
+BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{xfce_version}
+BuildRequires:  pkgconfig(libxfce4ui-2) >= %{xfce_version}
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{xfce_version}
+BuildRequires:  pkgconfig(libxfconf-0) >= %{xfce_version}
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.0
 BuildRequires:  pkgconfig(upower-glib) >= 0.9.0
-%if %{with git}
-BuildRequires:  xfce4-dev-tools
-%endif
 # uses exo-open
 Requires:       exo-tools
-Requires:       xfce4-panel >= %{panel_version}
+Requires:       xfce4-panel >= %{xfce_version}
 Recommends:     %{name}-lang = %{version}
 # package was renamed in 2019 after Leap 15.1
 Provides:       xfce4-panel-plugin-%{plugin} = %{version}-%{release}
@@ -73,23 +69,14 @@ BuildArch:      noarch
 Provides translations for the "%{name}" package.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
-%if %{with git}
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-  --enable-maintainer-mode \
-  --disable-static
-%else
-%configure --disable-static
-%endif
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-
-rm -f %{buildroot}%{_libdir}/xfce4/panel/plugins/libweather.la
+%meson_install
 
 rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 

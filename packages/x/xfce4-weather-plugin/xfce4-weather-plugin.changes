@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jun 15 03:40:36 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to 0.12.0
+  - Update README after switchover to meson
+  - build: Automate copyright year management
+  - Add meson build
+  - build: Replace xdt-csource with glib-compile-resources
+  - Replace deprecated exo with libxfce4ui 4.21.0
+  - prefs-dialog: Fix help button behavior
+  - prefs-dialog: Fix typo
+  - build: Bump dependency versions and fix deprecation warnings
+  - I18n: Update po/LINGUAS list
+  - I18n: Update po/LINGUAS list
+  - Alignment fixes, only use single row when labels not shown
+  - Make libsoup v3 support optional
+  - Report UPower Glib support
+  - libsoup: Port to libsoup-3.0
+  - parsers: Generalise input to array of gchar
+  - libxfce4ui: Avoid deprecated functions
+  - Translation Updates
+- Removed obsolete 0001-relax-json-c-version.patch
+
+-------------------------------------------------------------------
 Thu Nov  7 09:38:35 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 0.11.3
