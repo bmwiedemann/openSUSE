@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15allpythons}
 %define skip_python2 1
 Name:           python-contextvars
@@ -27,7 +26,9 @@ Summary:        PEP 567 (context variables) backport
 URL:            https://github.com/MagicStack/contextvars
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/c/contextvars/contextvars-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module immutables >= 0.9}
@@ -46,10 +47,10 @@ PEP 567 (Context Variables) backport.
 %setup -q -n contextvars-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +59,7 @@ PEP 567 (Context Variables) backport.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/contextvars
+%{python_sitelib}/contextvars-%{version}.dist-info
 
 %changelog
