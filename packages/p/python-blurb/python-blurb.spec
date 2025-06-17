@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-blurb
 Version:        2.0.0
@@ -33,11 +34,11 @@ BuildRequires:  %{python_module pyfakefs}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module time-machine}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 BuildArch:      noarch
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -60,11 +61,8 @@ chmod -x src/blurb/blurb.py
 %check
 %pytest
 
-%post
-%python_install_alternative blurb
-
-%postun
-%python_uninstall_alternative blurb
+%pre
+%python_libalternatives_reset_alternative blurb
 
 %files %{python_files}
 %doc README.md
