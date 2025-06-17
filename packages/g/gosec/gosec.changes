@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jun 16 14:06:09 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.22.5:
+  * Switch back go.mod to minimum 1.23.0
+  * Update dependencies
+  * Update go version 1.24.4 and 1.23.10 in CI
+  * chore(deps): update all dependencies
+  * G201/G202: add checks for injection into sql.Conn methods
+  * chore(deps): update module google.golang.org/api to v0.235.0
+  * chore(deps): update module google.golang.org/api to v0.234.0
+  * chore(deps): update module google.golang.org/api to v0.233.0
+  * chore(deps): update module google.golang.org/api to v0.232.0
+
+-------------------------------------------------------------------
+Thu May 22 08:30:48 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Switch vendor from gz to xz for consistency
+
+-------------------------------------------------------------------
+Thu May 22 08:27:49 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Switch from version to revision in _service
+
+-------------------------------------------------------------------
 Thu May 08 13:40:23 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.22.4:
