@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 15 03:11:00 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 1.8.0
+  - Update README after switchover to meson
+  - build: Automate copyright year management
+  - Add meson build
+  - Translation Updates
+
+-------------------------------------------------------------------
 Mon Jan  6 17:56:56 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.7.3
