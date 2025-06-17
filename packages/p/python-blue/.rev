@@ -141,4 +141,12 @@
 - Simplify docs build.</comment>
     <requestid>1283508</requestid>
   </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>375984b0c167f9a3fb62de59e4d1b5d3</srcmd5>
+    <version>0.9.1</version>
+    <time>1750177405</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286291</requestid>
+  </revision>
 </revisionlist>

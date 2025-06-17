@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-blue
 Version:        0.9.1
 Release:        0
@@ -38,16 +39,16 @@ BuildRequires:  %{python_module flake8 >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
+Requires:       python-black >= 24.1
+BuildArch:      noarch
 # SECTION doc and test requirements
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-black >= 24.1
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -62,11 +63,11 @@ start and end with "# fmt: off" and "# fmt: on", respectively. It
 also recognizes YAPF's block comments to the same effect.
 
 %package -n python-blue-doc
-Summary:        Documentation files for %name
+Summary:        Documentation files for %{name}
 Provides:       %{python_module foo-doc = %{version}}
 
 %description -n python-blue-doc
-HTML Documentation and examples for %name.
+HTML Documentation and examples for %{name}.
 
 %prep
 %autosetup -p1 -n blue-%{version}
@@ -76,7 +77,7 @@ sed -i '/--cov/d' tox.ini
 
 %build
 %pyproject_wheel
-make -C docs html
+%make_build -C docs html
 
 %install
 %pyproject_install
@@ -87,11 +88,8 @@ make -C docs html
 # gh#grantjenks/blue#72
 %pytest -k 'not (test_good_dirs or test_bad_dirs)'
 
-%post
-%python_install_alternative blue
-
-%postun
-%python_uninstall_alternative blue
+%pre
+%python_libalternatives_reset_alternative blue
 
 %files %{python_files}
 %doc README.rst
