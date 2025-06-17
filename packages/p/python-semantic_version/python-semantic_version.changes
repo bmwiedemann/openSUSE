@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 16 06:12:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyroject macros.
+
+-------------------------------------------------------------------
 Tue Oct  1 10:35:31 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Make Django build-requirement conditional and disable by default for

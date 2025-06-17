@@ -125,4 +125,12 @@
   SUSE:SLFO:Main, bsc#1231124</comment>
     <requestid>1204914</requestid>
   </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>77c5a2c571d2a88d8c6791dfd2b9098f</srcmd5>
+    <version>2.10.0</version>
+    <time>1750177222</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyroject macros.</comment>
+    <requestid>1285965</requestid>
+  </revision>
 </revisionlist>

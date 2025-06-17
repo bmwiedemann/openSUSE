@@ -1,7 +1,7 @@
 #
 # spec file for package python-semantic_version
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@
 %bcond_without django
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -41,7 +40,9 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/rbarrois/python-semanticversion
 Source:         https://files.pythonhosted.org/packages/source/s/semantic_version/semantic_version-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -62,11 +63,11 @@ It follows strictly the 2.0.0 version of the SemVer scheme.
 %autosetup -n semantic_version-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -87,7 +88,7 @@ python36_flags="--ignore tests/test_django.py"
 %license LICENSE
 %doc README.rst ChangeLog
 %{python_sitelib}/semantic_version
-%{python_sitelib}/semantic_version-%{version}*-info
+%{python_sitelib}/semantic_version-%{version}.dist-info
 %endif
 
 %changelog
