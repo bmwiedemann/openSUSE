@@ -22,7 +22,6 @@ Version:        2025.1.31
 Release:        0
 Summary:        Python package for providing Mozilla's CA Bundle
 License:        MPL-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/certifi/python-certifi
 Source:         https://files.pythonhosted.org/packages/source/c/certifi/certifi-%{version}.tar.gz
 # PATCH-FIX-SUSE -- prefer SUSE certificates
@@ -30,7 +29,9 @@ Patch0:         python-certifi-shipped-requests-cabundle.patch
 # PATCH-FEATURE-UPSTREAM two-basic-unit-tests.patch gh#certifi/python-certifi#137 mcepl@suse.com
 # Add at least primitive test suite (by bnavigator)
 Patch1:         two-basic-unit-tests.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  ca-certificates
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  fdupes
@@ -51,10 +52,10 @@ Note that on SUSE packages the used CA bundle is actually the system bundle
 %autosetup -p1 -n certifi-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %{python_expand #
  rm %{buildroot}%{$python_sitelib}/certifi/cacert.pem
@@ -72,6 +73,6 @@ Note that on SUSE packages the used CA bundle is actually the system bundle
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/certifi/
-%{python_sitelib}/certifi-%{version}-py*.egg-info
+%{python_sitelib}/certifi-%{version}.dist-info
 
 %changelog
