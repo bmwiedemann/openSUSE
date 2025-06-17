@@ -62,4 +62,14 @@
     <comment>- Skip broken tests with python 3.12</comment>
     <requestid>1153202</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f0269779ce9816893f0cd7652b170728</srcmd5>
+    <version>1.2.68</version>
+    <time>1750177379</time>
+    <user>anag_factory</user>
+    <comment>- Refresh sources
+
+- Switch to pyroject macros.</comment>
+    <requestid>1286354</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 17 11:11:34 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Refresh sources
+
+-------------------------------------------------------------------
+Mon Jun 16 06:12:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyroject macros.
+
+-------------------------------------------------------------------
 Thu Feb 29 12:33:16 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip broken tests with python 3.12

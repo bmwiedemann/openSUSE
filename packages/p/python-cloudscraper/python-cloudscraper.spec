@@ -1,7 +1,7 @@
 #
 # spec file for package python-cloudscraper
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ Summary:        A Python module to bypass Cloudflare's anti-bot page
 License:        MIT
 URL:            https://github.com/venomous/cloudscraper
 Source:         https://github.com/VeNoMouS/%{modname}/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Js2Py}
@@ -50,10 +52,10 @@ A Python module to bypass Cloudflare's anti-bot page.
 %autosetup -p1 -n cloudscraper-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -69,6 +71,6 @@ donttest+=" or test_reCaptcha_providers"
 %doc README.md
 %license LICENSE
 %{python_sitelib}/cloudscraper
-%{python_sitelib}/cloudscraper-%{version}*-info
+%{python_sitelib}/cloudscraper-%{version}.dist-info
 
 %changelog
