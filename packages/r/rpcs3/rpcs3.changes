@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 16 14:03:09 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.37~git20250616:
+  * hid/input: fix enumerated device comparison
+  * Entitlements are never found (#17306)
+  * RawSPU: Fix race of SPU_MBox_Status_offs (#17303)
+  * Update opencv to 4.11.0
+
+-------------------------------------------------------------------
 Mon Jun  9 18:37:22 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
--Update to version 0.0.37~git20250609:
+- Update to version 0.0.37~git20250609:
   * input: only copy relevant members to external buttons and sticks
   * SPU: Skip PUTLLUC writes of the same data
   * llvm: fix deprecation warnings
