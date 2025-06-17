@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 17 07:57:50 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Apply "CVE-2024-48208.patch" to fix a buffer overflow
+  vulnerability cause by an out-of-bounds read in the domlsd()
+  function. [bsc#1232331, CVE-2024-48208]
+
+-------------------------------------------------------------------
 Thu Feb 29 14:59:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -14,7 +21,7 @@ Wed Oct  4 08:49:26 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 -------------------------------------------------------------------
 Mon Jan 16 11:10:54 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
-- Migration of PAM settings to /usr/lib/pam.d. 
+- Migration of PAM settings to /usr/lib/pam.d.
 
 -------------------------------------------------------------------
 Mon Aug  1 22:37:52 UTC 2022 - Dirk Müller <dmueller@suse.com>

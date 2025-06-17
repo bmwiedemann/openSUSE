@@ -63,4 +63,12 @@
     <comment></comment>
     <requestid>1154022</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>33e4b9eb40009f6cf4472126efb2ec10</srcmd5>
+    <version>1.0.51</version>
+    <time>1750177414</time>
+    <user>anag_factory</user>
+    <comment>CVE-2024-48208</comment>
+    <requestid>1286288</requestid>
+  </revision>
 </revisionlist>

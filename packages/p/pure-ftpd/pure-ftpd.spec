@@ -1,7 +1,7 @@
 #
 # spec file for package pure-ftpd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,7 @@ Patch7:         %{name}-1.0.50-default_tcp_sedrcv_buffer_size.patch
 Patch8:         pure-ftpd-1.0.36-cap-audit-control.patch
 Patch9:         pure-ftpd-apparmor.patch
 Patch10:        pure-ftpd-malloc-limit.patch
+Patch11:        https://github.com/jedisct1/pure-ftpd/commit/2bbe0f25c6b905044803649a29df5f765f940b91.patch#:/CVE-2024-48208.patch
 BuildRequires:  libcap-devel
 BuildRequires:  libsodium-devel
 BuildRequires:  mysql-devel
@@ -80,6 +81,7 @@ Apache log files, and more.
 %patch -P 8 -p1
 %patch -P 9 -p2
 %patch -P 10 -p1
+%patch -P 11 -p1
 
 %build
 CFLAGS="%{optflags} -I%{_includedir}/mysql"
