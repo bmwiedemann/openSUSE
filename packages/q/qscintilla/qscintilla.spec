@@ -240,7 +240,7 @@ popd
 %{python_sitearch}/%{pyqt_mname}/Qsci.*
 %dir %{python_sitearch}/%{pyqt_mname}/bindings
 %{python_sitearch}/%{pyqt_mname}/bindings/Qsci
-%{python_sitearch}/%{distname}-%{version}.dist-info/
+%{python_sitearch}/*[Qq][Ss]cintilla-%{version}.dist-info/
 %{_qt_datadir}/qsci/api/python_%{python_bin_suffix}/
 %endif
 
