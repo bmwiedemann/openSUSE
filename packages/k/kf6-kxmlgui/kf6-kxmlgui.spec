@@ -16,7 +16,7 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname kxmlgui
 
@@ -32,13 +32,11 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kxmlgui
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Framework for managing menu and toolbar actions
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -48,20 +46,19 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel >= %{qt6_version}
-BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6ConfigWidgets) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6GlobalAccel) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6GuiAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6IconThemes) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6ItemViews) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6Config) >= %{_kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{_kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6GlobalAccel) >= %{_kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{_kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{_kf6_version}
+BuildRequires:  cmake(KF6ItemViews) >= %{_kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
@@ -101,8 +98,8 @@ description for example for integrating actions from plugins.
 %package devel
 Summary:        Framework for managing menu and toolbar actions
 Requires:       libKF6XmlGui6 = %{version}
-Requires:       cmake(KF6Config) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6ConfigWidgets) >= %{_kf6_bugfix_version}
+Requires:       cmake(KF6Config) >= %{_kf6_version}
+Requires:       cmake(KF6ConfigWidgets) >= %{_kf6_version}
 Requires:       cmake(Qt6DBus) >= %{qt6_version}
 Requires:       cmake(Qt6Widgets) >= %{qt6_version}
 Requires:       cmake(Qt6Xml) >= %{qt6_version}
@@ -128,7 +125,6 @@ This package provides a python interface for kf6-kxmlgui.
 
 %build
 %cmake_kf6 \
-  -DBUILD_QCH:BOOL=TRUE \
 %if %{with kde_python_bindings}
   -DPython_EXECUTABLE:STRING=%{__mypython}
 %endif
@@ -155,7 +151,6 @@ This package provides a python interface for kf6-kxmlgui.
 %{_kf6_libdir}/libKF6XmlGui.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KF6XmlGui.*
 %{_kf6_cmakedir}/KF6XmlGui/
 %{_kf6_includedir}/KXmlGui/
 %{_kf6_libdir}/libKF6XmlGui.so

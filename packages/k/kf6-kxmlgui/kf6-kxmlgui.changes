@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jun  9 20:29:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.15.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.15.0
+- Changes since 6.14.0:
+  * Update dependency version to 6.15.0
+  * Disable python bindings for Haiku also
+  * Build Python bindings unless explicitly disabled
+  * Fix popup transient parents
+  * It compiles fine without kf 6.14 deprecated methods
+  * Add tags file to documentation
+  * Fix indentation
+  * Run clang-format
+  * Add landing page for QDoc
+  * [kactioncategory] Only include KStandardAction when building deprecated API
+  * Port tests away from deprecated API
+  * Add overload that takes KStandardActions+name to KActionCollection/KActionCategory
+  * It compiles fine without kf_6_13 deprecated methods
+  * Port API documentation to QDoc syntax
+  * qdoc
+  * use full height for left side title and logo
+  * Improve the header in the "About KDE" window
+  * Update version to 6.15.0
+- Replace _kf6_bugfix_version usage
+
+-------------------------------------------------------------------
 Sun May  4 19:05:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.14.0
