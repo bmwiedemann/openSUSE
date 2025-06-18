@@ -17,13 +17,13 @@
 #
 
 
-%define kf6_version 6.10.0
-%define qt6_version 6.7.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %define rname ksystemstats
 %bcond_without released
 Name:           ksystemstats6
-Version:        6.3.5
+Version:        6.4.0
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -33,9 +33,9 @@ Summary:        Plugin based system monitoring daemon
 # Actually (GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL) AND CC0-1.0 AND BSD-3-Clause AND BSD-2-Clause
 License:        BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
@@ -80,7 +80,8 @@ KSystemStats is a daemon that collects statistics about the running system.
 %find_lang ksystemstats_plugins %{name}.lang
 
 %check
-dbus-run-session cmake --build %{__kf6_builddir} -t test
+export QT_QPA_PLATFORM=offscreen
+dbus-run-session /usr/bin/ctest --output-on-failure --test-dir build
 
 %preun
 %{systemd_user_preun plasma-ksystemstats.service}
@@ -99,6 +100,7 @@ dbus-run-session cmake --build %{__kf6_builddir} -t test
 %dir %{_kf6_plugindir}/ksystemstats/
 %{_kf6_plugindir}/ksystemstats/ksystemstats_plugin_{cpu,disk,gpu,lmsensors,memory,network,osinfo,power,pressure}.so
 %{_kf6_sharedir}/dbus-1/services/org.kde.ksystemstats1.service
+%{_libexecdir}/ksystemstats_intel_helper
 %{_userunitdir}/plasma-ksystemstats.service
 
 %files lang -f %{name}.lang

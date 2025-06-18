@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:37:32 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+
+-------------------------------------------------------------------
+Thu May 29 21:20:04 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+
+-------------------------------------------------------------------
+Mon May 19 19:35:31 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Changes since 6.3.5:
+  * update version for new release
+  * Support fetching statistics from Intel gpus
+  * It compiles fine without kf_6_12 deprecated methods
+  * CI: Add linux-qt6-next build
+  * Add xml/yaml linting
+  * Clean up when a sensor gets destroyed that is currently subscribed
+  * plugins/cpu: Remove "wait" from total CPU usage sensors (kde#497341)
+  * plugins/cpu: Add an autotest that tests parsing cpuinfo on Linux
+  * plugins/cpu: Allow using a custom path for cpuinfo in LinuxCpuPrivate
+  * plugins/cpu: Use physical ID to determine number of CPUs (kde#496847)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue May  6 20:08:04 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
