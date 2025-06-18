@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jun  6 10:44:07 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_CVE-2025-49175-render-Avoid-0-or-less-animated-cursors.patch
+  * Out-of-bounds access in X Rendering extension (Animated cursors)
+    (CVE-2025-49175, bsc#1244082)
+- U_CVE-2025-49176-os-Do-not-overflow-the-integer-size-with-BigRequest.patch
+  * Integer overflow in Big Requests Extension
+    (CVE-2025-49176, bsc#1244084)
+- U_CVE-2025-49177-xfixes-Check-request-length-for-SetClientDisconnectM.patch
+  * Data leak in XFIXES Extension 6 (XFixesSetClientDisconnectMode)
+    (CVE-2025-49177, bsc#1244085)
+- U_CVE-2025-49178-os-Account-for-bytes-to-ignore-when-sharing-input-bu.patch
+  * Unprocessed client request via bytes to ignore 
+    (CVE-2025-49178, bsc#1244087)
+- U_CVE-2025-49179-record-Check-for-overflow-in-RecordSanityCheckRegist.patch
+  * Integer overflow in X Record extension
+    (CVE-2025-49179, bsc#1244089)
+- U_CVE-2025-49180-randr-Check-for-overflow-in-RRChangeProviderProperty.patch
+  U_CVE-2025-49180-xfree86-Check-for-RandR-provider-functions.patch
+  * Integer overflow in RandR extension (RRChangeProviderProperty)
+    (CVE-2025-49180, bsc#1244090)
+
+-------------------------------------------------------------------
 Wed Apr  2 07:35:25 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
 
 - Add u_xf86-Accept-devices-with-the-kernel-s-vesadrm-driver.patch: Enables

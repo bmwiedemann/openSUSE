@@ -259,6 +259,13 @@ Patch1237461:   U_CVE-2025-26601-0002-sync-Check-values-before-applying-changes.
 Patch1237462:   U_CVE-2025-26601-0003-sync-Do-not-fail-SyncAddTriggerToSyncObject.patch
 Patch1237463:   U_CVE-2025-26601-0004-sync-Apply-changes-last-in-SyncChangeAlarmAttributes.patch
 Patch1239750:   U_CVE-2022-49737-dix-Hold-input-lock-for-AttachDevice.patch
+Patch1244082:   U_CVE-2025-49175-render-Avoid-0-or-less-animated-cursors.patch
+Patch1244084:   U_CVE-2025-49176-os-Do-not-overflow-the-integer-size-with-BigRequest.patch
+Patch1244085:   U_CVE-2025-49177-xfixes-Check-request-length-for-SetClientDisconnectM.patch
+Patch1244087:   U_CVE-2025-49178-os-Account-for-bytes-to-ignore-when-sharing-input-bu.patch
+Patch1244089:   U_CVE-2025-49179-record-Check-for-overflow-in-RecordSanityCheckRegist.patch
+Patch1244090:   U_CVE-2025-49180-randr-Check-for-overflow-in-RRChangeProviderProperty.patch
+Patch1244091:   U_CVE-2025-49180-xfree86-Check-for-RandR-provider-functions.patch
 
 %description
 This package contains the X.Org Server.
@@ -429,6 +436,14 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 1237463 -p1
 
 %patch -P 1239750 -p1
+
+%patch -P 1244082 -p1
+%patch -P 1244084 -p1
+%patch -P 1244085 -p1
+%patch -P 1244087 -p1
+%patch -P 1244089 -p1
+%patch -P 1244090 -p1
+%patch -P 1244091 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):
