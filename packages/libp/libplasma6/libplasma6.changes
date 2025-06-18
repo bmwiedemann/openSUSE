@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:37:39 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+  * Achieve WCAG AA text contrast for labels
+  * Drop unused KCMUtils dependency
+  * plasmaextracomponents: fix icon-less PlaceholderMessage
+  * plasmaquick/containmentitem: remove uncategorized warnings
+
+-------------------------------------------------------------------
+Thu May 29 21:20:30 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+  * Fix drag and drop of item on containments (kde#460056)
+  * drag and drop: delete the menu if there are no actions to show (kde#502479)
+  * Fix crash in drop job (kde#504355)
+  * plasma/pluginloader: actually use pluginName when loading plugins (kde#504343)
+
+-------------------------------------------------------------------
+Mon May 19 19:35:41 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  6 20:08:44 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
