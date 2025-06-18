@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:37:38 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+  * processcore: Batch changes to processes in ProcessDataModel
+  * ProcessDataMode: Limit impact of dataChanged signals
+  * Reduce false update notifications on UIDs
+
+-------------------------------------------------------------------
+Thu May 29 21:20:26 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+  * faces/Choices: better keyboard navigation in popup
+  * faces/horizontalbars: set default color if colorSource not loaded yet
+  * processcore: Rewrite ProcessesLinux::getIOStatistics to be less confusing (kde#504435)
+  * Clean up process plugins in ExtendedProcesses (kde#504468)
+  * network: Do not update processes during teardown
+  * network: Initialize process data to 0
+
+-------------------------------------------------------------------
+Mon May 19 19:35:40 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  6 20:08:31 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:

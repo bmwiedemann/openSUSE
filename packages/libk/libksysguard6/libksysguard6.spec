@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.10.0
-%define qt6_version 6.7.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %define rname libksysguard
 
@@ -28,14 +28,14 @@
 # Latest ABI-stable Plasma (e.g. 5.8 in KF6, but 5.8.95 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           libksysguard6
-Version:        6.3.5
+Version:        6.4.0
 Release:        0
 Summary:        Task management and system monitoring library
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        libksysguard6-rpmlintrc
@@ -58,13 +58,13 @@ BuildRequires:  cmake(KF6Package) >= %{kf6_version}
 BuildRequires:  cmake(KF6Service) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6UiPlugin) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libpcap)
 BuildRequires:  pkgconfig(x11)
@@ -187,8 +187,8 @@ files.
 %{_kf6_dbuspolicydir}/org.kde.ksysguard.processlisthelper.conf
 %dir %{_kf6_plugindir}/ksysguard/
 %dir %{_kf6_plugindir}/ksysguard/process
+%{_kf6_plugindir}/ksysguard/process/ksysguard_plugin_gpu.so
 %{_kf6_plugindir}/ksysguard/process/ksysguard_plugin_network.so
-%{_kf6_plugindir}/ksysguard/process/ksysguard_plugin_nvidia.so
 %{_kf6_sharedir}/dbus-1/system-services/org.kde.ksysguard.processlisthelper.service
 %{_kf6_sharedir}/polkit-1/actions/org.kde.ksysguard.processlisthelper.policy
 %{_kf6_libexecdir}/kauth/ksysguardprocesslist_helper
