@@ -16,16 +16,14 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname kbookmarks
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kbookmarks
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Framework for manipulating bookmarks in XBEL format
 License:        LGPL-2.1-or-later
@@ -35,13 +33,12 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6ConfigWidgets) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{_kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{_kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
@@ -71,7 +68,7 @@ the XBEL format.
 Summary:        Development files for kbookmarks, a XBEL format bookmark manipulation framework
 Requires:       libKF6Bookmarks6 = %{version}
 Requires:       libKF6BookmarksWidgets6 = %{version}
-Requires:       cmake(KF6WidgetsAddons) >= %{_kf6_bugfix_version}
+Requires:       cmake(KF6WidgetsAddons) >= %{_kf6_version}
 Requires:       cmake(Qt6Widgets) >= %{qt6_version}
 Requires:       cmake(Qt6Xml) >= %{qt6_version}
 
@@ -85,7 +82,7 @@ manipulating bookmarks using the XBEL format
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -113,8 +110,6 @@ manipulating bookmarks using the XBEL format
 %{_kf6_libdir}/libKF6BookmarksWidgets.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KF6Bookmarks.*
-%doc %{_kf6_qchdir}/KF6BookmarksWidgets.*
 %{_kf6_libdir}/libKF6Bookmarks.so
 %{_kf6_libdir}/libKF6BookmarksWidgets.so
 %{_kf6_cmakedir}/KF6Bookmarks/
