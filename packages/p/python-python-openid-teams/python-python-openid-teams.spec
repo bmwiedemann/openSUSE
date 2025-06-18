@@ -1,6 +1,7 @@
 #
 # spec file for package python-python-openid-teams
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2018 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,51 +13,41 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-openid-teams
 Version:        1.1
 Release:        0
 Summary:        Teams extension for python-openid
-Group:          Development/Libraries/Python
 License:        BSD-3-Clause
+Group:          Development/Libraries/Python
 URL:            https://github.com/puiterwijk/python-openid-teams
 Source:         https://github.com/puiterwijk/python-openid-teams/archive/v%{version}/python-openid-teams-%{version}.tar.gz
-
-BuildArch:      noarch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
-%if "%{python_flavor}" == "python2"
-Requires:       python2-python-openid
-%endif
-%if "%{python_flavor}" == "python3"
-Requires:       python3-python3-openid
-%endif
+BuildArch:      noarch
+Requires:       python-python3-openid
 %python_subpackages
-
 
 %description
 Teams extension implementation for python-openid.
-
 
 %prep
 %setup -q -n python-openid-teams-%{version}
 
 %build
-%python_build
-
+%pyproject_wheel
 
 %install
-%python_install
-
+%pyproject_install
 
 %files %{python_files}
 %license COPYING
-%{python_sitelib}/*
-
+%{python_sitelib}/openid_teams
+%{python_sitelib}/python[-_]openid[-_]teams-%{version}*-info
 
 %changelog
-
