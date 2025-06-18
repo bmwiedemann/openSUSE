@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:38:05 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+  * CaptureOverlay: Only show magnifier with no annotation tool selected (kde#500707)
+  * Workaround QWindow::screen being wrong with some fractional DPR screen layout combinations (kde#502047)
+
+-------------------------------------------------------------------
+Thu May 29 21:24:38 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+  * Hide capture windows before deleting them when accepting
+  * Fix crash on Save As with rectangle mode (kde#501516)
+  * Fix AnimatedImage warning about failing to load non-image formats
+  * VideoPlatformWayland: fix double recordingSaved emissions (kde#504535)
+  * Fix --edit-existing not showing a window (kde#504139)
+
+-------------------------------------------------------------------
+Mon May 19 19:39:14 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  6 20:14:36 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
