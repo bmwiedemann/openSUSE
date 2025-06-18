@@ -43,7 +43,12 @@ This project has two goals:
 %autosetup -a 1 -p 1
 
 %build
-CGO_ENABLED=0 go build \
+%ifarch s390x %arm i586
+CGO_ENABLED=1 \
+%else
+CGO_ENABLED=0 \
+%endif
+go build \
    -mod=vendor \
    -buildmode=pie \
    -o bin/%{name}

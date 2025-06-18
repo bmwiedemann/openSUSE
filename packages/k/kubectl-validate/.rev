@@ -7,4 +7,12 @@
     <comment>new package kubectl-validate: local validation of resources for native Kubernetes types and CRDs</comment>
     <requestid>1177726</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4486bdac3d66e920f2324115fc7383a4</srcmd5>
+    <version>0.0.4</version>
+    <time>1750255042</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1286438</requestid>
+  </revision>
 </revisionlist>
