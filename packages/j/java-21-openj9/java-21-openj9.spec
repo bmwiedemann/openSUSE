@@ -85,6 +85,9 @@
 %else
 %global package_version %{featurever}.%{interimver}.%{updatever}.%{?patchver:%{patchver}}%{!?patchver:0}~%{buildver}
 %endif
+%if 0%{?gcc_version} < 7
+%define with_gcc 7
+%endif
 Name:           java-%{featurever}-openj9
 Version:        %{package_version}
 Release:        0
@@ -126,6 +129,8 @@ Patch31:        aarch64.patch
 Patch32:        stringop-overflow.patch
 #
 Patch33:        reproducible-version.patch
+# Fix an error with gcc 15
+Patch34:        fix-build-with-gcc15.patch
 #
 # OpenJDK specific patches
 #
@@ -142,6 +147,8 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
+BuildRequires:  gcc%{?with_gcc}
+BuildRequires:  gcc%{?with_gcc}-c++
 BuildRequires:  giflib-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  java-ca-certificates
@@ -216,13 +223,6 @@ Provides:       jre1.6.x
 Provides:       jre1.7.x
 Provides:       jre1.8.x
 Provides:       jre1.9.x
-%endif
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%else
-BuildRequires:  gcc >= 7
-BuildRequires:  gcc-c++ >= 7
 %endif
 %if %{with_system_harfbuzz}
 BuildRequires:  harfbuzz-devel
@@ -382,6 +382,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 31 -p1
 %patch -P 32 -p1
 %patch -P 33 -p1
+%patch -P 34 -p1
 
 %patch -P 302 -p1
 
@@ -409,7 +410,7 @@ export ARCH_DATA_MODEL=64
 # min cmake version - sflees@suse.de
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
-EXTRA_CFLAGS="-Wno-error -Wno-maybe-uninitialized -fno-delete-null-pointer-checks -fno-lifetime-dse"
+EXTRA_CFLAGS="-Wno-error -Wno-maybe-uninitialized -std=gnu99 -fno-delete-null-pointer-checks -fno-lifetime-dse"
 EXTRA_CPP_FLAGS="-Wno-error -Wno-maybe-uninitialized -fno-delete-null-pointer-checks -fno-lifetime-dse"
 
 %ifarch ppc64le
@@ -417,12 +418,14 @@ EXTRA_CFLAGS="$EXTRA_CFLAGS -fno-strict-aliasing"
 %endif
 
 bash configure \
-%if 0%{?suse_version} < 1500
-    CPP=cpp-7 \
-    CXX=g++-7 \
-    CC=gcc-7 \
-    NM=gcc-nm-7 \
+%if 0%{?with_gcc}
+    CPP=cpp-%{with_gcc} \
+    CXX=g++-%{with_gcc} \
+    CC=gcc-%{with_gcc} \
+    NM=gcc-nm-%{with_gcc} \
 %endif
+    --with-extra-cflags="$EXTRA_CFLAGS" \
+    --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
     --with-version-pre="" \
     --with-version-opt="suse-%{release}-%{_arch}" \
     --disable-warnings-as-errors \
