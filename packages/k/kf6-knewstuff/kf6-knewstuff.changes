@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun  9 20:29:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.15.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.15.0
+- Changes since 6.14.0:
+  * Remove leftovers from old QCH generation
+  * Update dependency version to 6.15.0
+  * Change "Comments and Reviews" link into a button (kde#503724)
+  * It compiles fine without kf 6.14 deprecated methods
+  * Add tags file to documentation
+  * Add missing qhp projects
+  * Remove leftover doxygen file
+  * Add landing page for QDoc
+  * Fix QDoc issues
+  * Fix QDoc issue
+  * It compiles fine without kf_6_13 deprecated methods
+  * Port API documentation to QDoc syntax
+  * Update version to 6.15.0
+- Replace _kf6_bugfix_version usage
+
+-------------------------------------------------------------------
 Sun May  4 19:05:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.14.0

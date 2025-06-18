@@ -16,16 +16,14 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname knewstuff
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-knewstuff
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Framework for downloading and sharing additional application data
 License:        LGPL-2.1-or-later
@@ -35,17 +33,16 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Archive) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Attica) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Package) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Syndication) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
+BuildRequires:  cmake(KF6Archive) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Attica) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{_kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Package) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Syndication) >= %{_kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
@@ -80,7 +77,7 @@ specification.
 
 %package imports
 Summary:        Framework for downloading and sharing additional application data
-Requires:       kf6-kirigami-imports >= %{_kf6_bugfix_version}
+Requires:       kf6-kirigami-imports >= %{_kf6_version}
 
 %description imports
 The KNewStuff library implements collaborative data sharing for
@@ -91,8 +88,8 @@ specification.
 Summary:        Framework for downloading and sharing additional application data
 Requires:       libKF6NewStuffCore6 = %{version}
 Requires:       libKF6NewStuffWidgets6 = %{version}
-Requires:       cmake(KF6Attica) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
+Requires:       cmake(KF6Attica) >= %{_kf6_version}
+Requires:       cmake(KF6CoreAddons) >= %{_kf6_version}
 Requires:       cmake(Qt6Widgets) >= %{qt6_version}
 Provides:       kf6-knewstuff-core-devel = %{version}
 Obsoletes:      kf6-knewstuff-core-devel < %{version}
@@ -108,7 +105,7 @@ specification. Development files.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -140,8 +137,6 @@ specification. Development files.
 %{_kf6_qmldir}/org/kde/newstuff/
 
 %files devel
-%doc %{_kf6_qchdir}/KF6NewStuffCore.*
-%doc %{_kf6_qchdir}/KF6NewStuffWidgets.*
 %{_kf6_cmakedir}/KF6NewStuff/
 %{_kf6_cmakedir}/KF6NewStuffCore/
 %{_kf6_includedir}/KNewStuff/
