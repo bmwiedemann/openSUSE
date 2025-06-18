@@ -923,4 +923,12 @@ Newer versions will have the correct headers.</comment>
     <comment>KDE release gear 25.04.2 (forwarded request 1282457 from krop)</comment>
     <requestid>1283135</requestid>
   </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>935f6c9980265746750e5abb61516259</srcmd5>
+    <version>25.04.2</version>
+    <time>1750254815</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1286024</requestid>
+  </revision>
 </revisionlist>

@@ -2,6 +2,7 @@
 # spec file for package kdepim-addons
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,10 +38,10 @@ Source3:        vendor.tar.zst
 Patch0:         0001-Enable-the-expert-plugin-by-default.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  libgpgmepp-devel
 BuildRequires:  libmarkdown-devel
 BuildRequires:  zstd
 BuildRequires:  cmake(Corrosion)
+BuildRequires:  cmake(Gpgmepp)
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
