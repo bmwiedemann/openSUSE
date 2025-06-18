@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun  9 20:29:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.15.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.15.0
+- Changes since 6.14.0:
+  * Remove leftovers from old QCH generation
+  * Update dependency version to 6.15.0
+  * Add tags file to documentation
+  * Convert Ifaces::Block to QDoc
+  * Device::Block: add isSystem
+  * Add missing qhp projects
+  * Add landing page for QDoc
+  * handle ZFS in fstab backend as udisk2 has no support
+  * Port API documentation to QDoc syntax
+  * Update version to 6.15.0
+- Replace _kf6_bugfix_version usage
+
+-------------------------------------------------------------------
 Sun May  4 19:05:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.14.0
