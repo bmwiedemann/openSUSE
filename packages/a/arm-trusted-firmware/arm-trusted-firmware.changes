@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 18 06:36:04 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.12.3:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.12.3/docs/change-log.md
+- Remove patch for gcc7 since it is used for Leap 15.x only:
+  * Workaround-gcc-7-constant-assignment-error.patch
+- Replace patch to allow build without git clone, with sed commands:
+  * atf-allow-non-git-dir.patch
+
+-------------------------------------------------------------------
 Mon Mar 24 10:56:17 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2.10.14:

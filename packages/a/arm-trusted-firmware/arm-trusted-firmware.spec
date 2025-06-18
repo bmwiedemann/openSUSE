@@ -50,9 +50,9 @@ Name:           arm-trusted-firmware
 %else
 Name:           arm-trusted-firmware-%{platform}
 %endif
-Version:        2.10.14
+Version:        2.12.3
 Release:        0
-%define srcversion 2.10.14
+%define srcversion 2.12.3
 %define mv_ddr_ver armada-atf-master
 %define mv_bin_ver 10.0.1.0
 %define a3700_utils_ver master
@@ -64,9 +64,7 @@ Source:         https://github.com/TrustedFirmware-A/trusted-firmware-a/archive/
 Source1:        mv-ddr-marvell-%{mv_ddr_ver}.tar.gz
 Source2:        A3700-utils-marvell-%{a3700_utils_ver}.tar.gz
 Source3:        binaries-marvell-%{mv_bin_ver}.tar.gz
-Patch1:         atf-allow-non-git-dir.patch
 Patch2:         rockchip-rk3399-Align-default-baudrate-with-u-boot.patch
-Patch3:         Workaround-gcc-7-constant-assignment-error.patch
 # Workaround for GCC12 bug - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105523
 Patch100:       fix-mv-ddr-marvell-armada.patch
 # Fix build with GCC12 - https://github.com/MarvellEmbeddedProcessors/mv-ddr-marvell/issues/37
@@ -218,16 +216,18 @@ install -D -m 0755 %{_bindir}/TBB wtptp/linux/tbb_linux
 %patch -P 150 -p1
 popd
 %endif
-%patch -P 1 -p1
 %patch -P 2 -p1
-%patch -P 3 -p1
 %if %{suse_version} <= 1500
 # GCC7 does not support -mbranch-protection option
 sed -i -e "s/TF_CFLAGS_aarch64	+=	-mbranch-protection=none//" plat/xilinx/zynqmp/platform.mk
 %endif
+# Allow non-git builds
+sed -i -e 's/$(if $(shell git/# $(if $(shell git/g' plat/marvell/armada/a3k/common/a3700_common.mk
+sed -i -e 's/	$(if $(shell git/# (if $(shell git/g' plat/marvell/armada/a8k/common/ble/ble.mk
 
 %build
-export TF_LDFLAGS=--no-warn-rwx-segments
+export CROSS_COMPILE=" "
+export TF_LDFLAGS="-Wl,--no-warn-rwx-segments"
 export BUILD_MESSAGE_TIMESTAMP="\"$(date -d "$(head -n 2 %{_sourcedir}/arm-trusted-firmware.changes | tail -n 1 | cut -d- -f1 )" -u "+%%H:%%M:%%S, %%b %%e %%Y")\""
 %if "%{platform}" == "a3700"
 export CRYPTOPP_LIBDIR=%{_libdir}
@@ -288,7 +288,7 @@ for dram_size in one_gig two_gig; do
 export TF_CFLAGS="$TF_CFLAGS --param=min-pagesize=0"
 export CFLAGS="$CFLAGS --param=min-pagesize=0"
 # Workaround for binutils 2.39 https://developer.trustedfirmware.org/T996
-export LDFLAGS="$LDFLAGS --no-warn-rwx-segment"
+export LDFLAGS="$LDFLAGS -Wl,--no-warn-rwx-segment"
 %endif
 make \
 %if "%{platform}" != "a3700" && "%{platform}" != "a80x0_mcbin"
