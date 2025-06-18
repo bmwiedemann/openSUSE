@@ -1,0 +1,93 @@
+diff -urEbwB jgit-5.11.0.202103091610-r/org.eclipse.jgit.pgm/pom.xml jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.pgm/pom.xml
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit.pgm/pom.xml	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.pgm/pom.xml	2021-07-30 11:40:33.894748622 +0200
+@@ -157,19 +157,40 @@
+       </plugin>
+ 
+       <plugin>
+-        <groupId>org.springframework.boot</groupId>
+-        <artifactId>spring-boot-maven-plugin</artifactId>
++        <groupId>org.apache.maven.plugins</groupId>
++        <artifactId>maven-shade-plugin</artifactId>
+         <executions>
+           <execution>
++            <phase>package</phase>
+             <goals>
+-              <goal>repackage</goal>
++              <goal>shade</goal>
+             </goals>
+             <configuration>
+               <finalName>jgit-cli</finalName>
+-              <attach>false</attach>
+-              <mainClass>org.eclipse.jgit.pgm.Main</mainClass>
+-              <executable>true</executable>
+-              <embeddedLaunchScript>jgit.sh</embeddedLaunchScript>
++              <createDependencyReducedPom>false</createDependencyReducedPom>
++              <transformers>
++                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
++                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
++                  <manifestEntries>
++                    <Main-Class>org.eclipse.jgit.pgm.Main</Main-Class>
++                    <Implementation-Title>JGit Command Line Interface</Implementation-Title>
++                  </manifestEntries>
++                </transformer>
++              </transformers>
++              <filters>
++                <!-- exclude the signing data for individual jars, ueberjar will be signed again -->
++                <filter>
++                  <artifact>*:*</artifact>
++                  <excludes>
++                    <exclude>META-INF/*.SF</exclude>
++                    <exclude>META-INF/*.DSA</exclude>
++                    <exclude>META-INF/*.RSA</exclude>
++                    <exclude>OSGI-OPT/**</exclude>
++                  </excludes>
++                </filter>
++              </filters>
++              <shadedArtifactAttached>true</shadedArtifactAttached>
++              <shadedClassifierName>shaded</shadedClassifierName> <!-- Any name that makes sense -->
+             </configuration>
+           </execution>
+         </executions>
+@@ -184,13 +205,11 @@
+             <phase>package</phase>
+             <configuration>
+               <target>
+-                <move
+-                  file="${basedir}/target/jgit-cli.jar"
+-                  force="yes"
+-                  tofile="${basedir}/target/jgit" />
+-                <chmod
+-                  file="${basedir}/target/jgit"
+-                  perm="a+x" />
++                <concat destfile="${basedir}/target/jgit" force="yes" binary="true">
++                  <fileset file="${basedir}/jgit.sh" />
++                  <fileset file="${basedir}/target/jgit-cli.jar" />
++                </concat>
++                <chmod file="${basedir}/target/jgit" perm="a+x"/>
+               </target>
+             </configuration>
+             <goals>
+Only in jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.pgm: pom.xml.orig
+diff -urEbwB jgit-5.11.0.202103091610-r/pom.xml jgit-5.11.0.202103091610-r.new/pom.xml
+--- jgit-5.11.0.202103091610-r/pom.xml	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/pom.xml	2021-07-30 11:41:51.715264903 +0200
+@@ -394,16 +394,6 @@
+           <artifactId>maven-resources-plugin</artifactId>
+           <version>3.2.0</version>
+         </plugin>
+-        <plugin>
+-          <groupId>org.springframework.boot</groupId>
+-          <artifactId>spring-boot-maven-plugin</artifactId>
+-          <version>2.4.1</version>
+-        </plugin>
+-        <plugin>
+-          <groupId>org.eclipse.dash</groupId>
+-          <artifactId>license-tool-plugin</artifactId>
+-          <version>0.0.1-SNAPSHOT</version>
+-        </plugin>
+       </plugins>
+     </pluginManagement>
+ 
+Only in jgit-5.11.0.202103091610-r.new: pom.xml.orig
+Only in jgit-5.11.0.202103091610-r.new: pom.xml.rej

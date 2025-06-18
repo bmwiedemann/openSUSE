@@ -1,0 +1,16 @@
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit.gpg.bc/src/org/eclipse/jgit/gpg/bc/internal/keys/OCBPBEProtectionRemoverFactory.java	2024-11-04 21:53:31.607619683 +0100
++++ jgit-5.11.0.202103091610-r/org.eclipse.jgit.gpg.bc/src/org/eclipse/jgit/gpg/bc/internal/keys/OCBPBEProtectionRemoverFactory.java	2024-11-04 22:13:28.412238521 +0100
+@@ -116,6 +116,12 @@
+ 					}
+ 				}
+ 			}
++
++			public byte[] recoverKeyData(int encAlgorithm, int aeadAlgorithm,
++					byte[] s2kKey, byte[] iv, int packetTag, int keyVersion,
++					byte[] keyData, byte[] pubkeyData) throws PGPException {
++				throw new PGPException("Unimplemented method");
++			}
+ 		};
+ 	}
+ }
+\ No newline at end of file

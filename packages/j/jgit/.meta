@@ -1,0 +1,7 @@
+<package name="jgit" project="openSUSE:Factory">
+  <title>Eclipse JGit</title>
+  <description>A pure Java implementation of the Git version control system.
+
+</description>
+  <url>https://www.eclipse.org/egit/</url>
+</package>
