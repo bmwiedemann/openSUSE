@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:38:07 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+  * filechooser: Normalize name filters to something more common (kde#475668)
+  * Initialize the whole array
+  * print: Make qt_keyForPageSizeId more robust
+  * Added a warning to comment about code copied from Qt
+  * Copied bit fields from Qt commit 65b62d2
+  * Updated qt_pageSizes[] for Qt 6 Synchronised with Qt 6 changes to QPageSize::PageSizeId. The user's paper size selection should now be respected again. BUG: 492681 (kde#492681)
+  * filechooser: Ignore non absolute current_folder urls
+  * screencast: Guard against session closing while creating stream (kde#500577)
+  * screencast: Make sure we send a message reply when restoring (kde#504384)
+
+-------------------------------------------------------------------
+Thu May 29 21:24:44 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+  * fix: avoid empty applicationName in remote control dialog
+
+-------------------------------------------------------------------
+Mon May 19 19:46:54 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  6 20:14:42 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
