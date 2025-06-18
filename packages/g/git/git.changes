@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun 17 17:55:40 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.50.0
+  https://about.gitlab.com/blog/what-s-new-in-git-2-50-0/
+  https://raw.githubusercontent.com/git/git/refs/tags/v2.50.0/Documentation/RelNotes/2.50.0.adoc
+
+-------------------------------------------------------------------
+Fri Jun 13 15:50:22 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Refresh gitk SHA256 patch and add SHA256 support to git-gui (bsc#1239989):
+  0001-gitk-Add-support-of-SHA256-repo.patch
+  0002-git-gui-Add-support-of-SHA256-repo.patch
+  The previous patches are dropped:
+  0001-gitk-Add-a-basic-support-of-SHA256-repositories-into.patch
+  0002-gitk-Add-auto-select-length-preference-for-SHA256.patch
+
+-------------------------------------------------------------------
 Mon Mar 24 14:04:56 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Add support of SHA256 git repo for gitk (bsc#1239989):

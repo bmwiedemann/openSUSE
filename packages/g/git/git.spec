@@ -43,7 +43,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.49.0
+Version:        2.50.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -70,9 +70,9 @@ Patch8:         git-asciidoc.patch
 Patch10:        setup-don-t-fail-if-commondir-reference-is-deleted.patch
 # PATCH-FIX-OPENSUSE CVE-2024-24577.patch boo#1219660 antonio.teixeira@suse.com
 Patch11:        CVE-2024-24577.patch
-# Add SHA256 support for gitk (bsc#1239989)
-Patch20:        0001-gitk-Add-a-basic-support-of-SHA256-repositories-into.patch
-Patch21:        0002-gitk-Add-auto-select-length-preference-for-SHA256.patch
+# Add SHA256 support for gitk and git-gui (bsc#1239989)
+Patch20:        0001-gitk-Add-support-of-SHA256-repo.patch
+Patch21:        0002-git-gui-Add-support-of-SHA256-repo.patch
 BuildRequires:  fdupes
 BuildRequires:  gpg2
 BuildRequires:  libcurl-devel
