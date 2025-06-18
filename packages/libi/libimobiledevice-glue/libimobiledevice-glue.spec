@@ -21,7 +21,7 @@
 %define clamp_mtime_to_source_date_epoch 1
 %define use_source_date_epoch_as_buildtime 1
 Name:           libimobiledevice-glue
-Version:        1.3.1+git18.20250213
+Version:        1.3.2+git0.20250604
 Release:        0
 Summary:        Native protocols library for iOS devices
 License:        LGPL-2.1-or-later

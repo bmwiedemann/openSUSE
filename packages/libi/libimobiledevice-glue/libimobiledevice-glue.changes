@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 09 20:03:55 UTC 2025 - sebix@sebix.at
+
+- Update to version 1.3.2+git0.20250604:
+  * Updated NEWS for release
+  * Update soversion for release
+  * configure: [Windows] Add --with-winver option to specify minimum Windows version
+  * Change order of includes to prevent compiler warning
+  * socket: [Windows] Use inet_ntop for >= Vista
+  * configure: Make sure the check for newer libplist works as expected
+  * utils: Remove 'plist helper' from header comment
+  * socket: [Windows] Use WSAAddressToStringA
+  * Use plist_new_unix_date API when available
+  * socket: Use a backwards-compatible way to deal with , before __VA_ARGS__
+
+-------------------------------------------------------------------
 Tue Feb 25 20:35:37 UTC 2025 - sbrabec@suse.com
 
 - Update to version 1.3.1+git18.20250213:
