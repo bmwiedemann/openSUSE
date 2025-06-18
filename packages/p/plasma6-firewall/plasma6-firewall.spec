@@ -23,14 +23,14 @@
 
 %bcond_without released
 Name:           plasma6-firewall
-Version:        6.3.91
+Version:        6.4.0
 Release:        0
 Summary:        Config Module for the System Firewall
 License:        GPL-2.0-only OR GPL-3.0-only
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/unstable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source0:        %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/unstable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
