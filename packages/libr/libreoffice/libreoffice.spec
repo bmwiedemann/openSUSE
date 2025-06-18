@@ -1187,7 +1187,7 @@ export QT6DIR="%{_libdir}/qt6"
 export NOCONFIGURE=yes
 ./autogen.sh
 %configure \
-        --with-parallelism=%{jobs} \
+        $(echo %{?_smp_mflags} | sed 's/-j/--with-parallelism=/') \
         --enable-eot \
         --enable-ld=bfd \
 %if %{with lto}

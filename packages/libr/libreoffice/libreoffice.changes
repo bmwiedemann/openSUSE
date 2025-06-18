@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  9 13:22:26 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Replace usage of %jobs for reproducible builds (boo#1237231)
+
+-------------------------------------------------------------------
 Thu May 15 00:28:25 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 25.2.3.2:
