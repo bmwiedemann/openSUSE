@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun 15 08:07:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.3:
+  + Fix CVE-2025-3155
+  + Switch to meson for builds.
+- Switch to git checkout via source service, released tag.
+- Switch to meson buildsystem, add meson BuildRequires and macros.
+- Drop patches fixed upstream or no longer needed:
+  + 7ecd58d.patch
+  + yelp-automake.patch
+  + dd69a1df8e660cf6cf27e44a6bba02934fc00b48.patch
+  + 855cae4a336f7676f093579c9a6b2d9fae7a1f80.patch
+
+-------------------------------------------------------------------
 Thu May  8 08:30:06 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add 7ecd58d.patch:

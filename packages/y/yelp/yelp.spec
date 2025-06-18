@@ -17,26 +17,20 @@
 
 
 Name:           yelp
-Version:        42.2
+Version:        42.3
 Release:        0
 Summary:        Help Browser for the GNOME Desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Yelp
-Source0:        https://download.gnome.org/sources/yelp/42/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM dd69a1df8e660cf6cf27e44a6bba02934fc00b48.patch -- Fix compile error with ./autogen.sh --enable-debug=yes
-Patch0:         https://gitlab.gnome.org/GNOME/yelp/-/commit/dd69a1df8e660cf6cf27e44a6bba02934fc00b48.patch
-# PATCH-FIX-UPSTREAM 855cae4a336f7676f093579c9a6b2d9fae7a1f80.patch -- Support search box for man pages
-Patch1:         https://gitlab.gnome.org/GNOME/yelp/-/commit/855cae4a336f7676f093579c9a6b2d9fae7a1f80.patch
-# PATCH-FIX-SLED yelp-automake.patch mgorse@suse.com -- update Makefile.in for last patch
-Patch2:         yelp-automake.patch
-# PATCH-FIX-UPSTREAM 7ecd58d.patch CVE-2025-3155 bsc#1240688 qzhao@suse.com -- Initial fix for CVE-2025-3155 from parrot409.
-Patch3:         https://gitlab.gnome.org/GNOME/yelp/-/commit/7ecd58d.patch
+Source0:        %{name}-%{version}.tar.zst
+
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
 BuildRequires:  itstool >= 1.2.0
 BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.67.4
@@ -50,7 +44,7 @@ BuildRequires:  pkgconfig(libxslt) >= 1.1.4
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.1)
-BuildRequires:  pkgconfig(yelp-xsl) >= 41.0
+BuildRequires:  pkgconfig(yelp-xsl) >= 42.3
 # data/dtd/catalog references dtds from oasis-open.org, which we provide on docbook_4 package (bnc#770067)
 Requires:       docbook_4
 # We need the stylesheets from yelp-xsl
@@ -89,25 +83,15 @@ This package provides Yelp's development files.
 %lang_package
 
 %prep
-%autosetup -N
-%patch -P 0 -p1
-%patch -P 1 -p1
-%if 0%{?sle_version} && 0%{?sle_version} < 160000
-%patch -P 2 -p1
-%endif
-%patch -P 3 -p1
+%autosetup -p1
 
 %build
-%if !0%{?sle_version} || 0%{?sle_version} >= 160000
-NOCONFIGURE=1 ./autogen.sh
-%endif
-%configure \
-	--disable-static \
+%meson \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_prefix}
