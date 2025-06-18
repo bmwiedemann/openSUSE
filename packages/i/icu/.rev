@@ -769,4 +769,12 @@ Jan added the patch name of all changed patches.</comment>
     <comment>update bug IDs</comment>
     <requestid>1285373</requestid>
   </revision>
+  <revision rev="96" vrev="3">
+    <srcmd5>cf9c681b97cd91c532123878f9cac2be</srcmd5>
+    <version>77.1</version>
+    <time>1750278513</time>
+    <user>anag_factory</user>
+    <comment>bugIDs</comment>
+    <requestid>1286386</requestid>
+  </revision>
 </revisionlist>

@@ -781,6 +781,8 @@ Tue Apr  3 12:45:07 UTC 2012 - jengelh@medozas.de
 Sat Feb 25 14:57:50 UTC 2012 - jengelh@medozas.de
 
 - Use shlib policy for icu package
+  Rewrite Provides sections for SPEC file.
+  (bsc#1167603, bsc#1161007)
 - Use proper data directory in CXXFLAGS
 
 -------------------------------------------------------------------
