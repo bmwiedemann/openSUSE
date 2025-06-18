@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:37:23 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+  * applets/fifteenPuzzle: don't load image if disabled
+  * applets/weather: remove icon from missing forecast placeholder
+  * applets/dict: Don't put fullRepresentation in panel
+  * applets/calc: don't freeze Plasma & don't auto-resize desktop widget
+  * applet/fifteenPuzzle: don't freeze Plasma in large panel
+  * applets/webbrowser: don't use fullRepresentation in panel
+  * applets/fifteenpuzzle: disable animation when not needed
+  * applets/comic: handle null currentItem
+  * applets/fifteenPuzzle: fix loading errors
+  * applets/notes: fix fullRepresentation in panel
+  * applets/fifteenPuzzle: fix image update and allow '-' in image name
+  * applets/fifteenPuzzle: tweak Appearance controls positions
+  * applets/comic: fix applet on first start
+  * applets/fifteenPuzzle: set minimum size for fullRepresentation (kde#504926)
+  * applets/fifteenpuzzle: hide board instead of covering it when solved (kde#504921)
+  * applets/webbrowser: use symbolic icon
+  * applets/dict: use symbolic icon
+  * applets/fifteenpuzzle: make tiny sizes work better (kde#504920)
+  * applets/fifteenpuzzle: don't shuffle into a solved puzzle (kde#504917)
+
+-------------------------------------------------------------------
+Thu May 29 21:18:59 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+  * applets/fifteenpuzzle: set minimum grid size (kde#504804)
+  * applets/comic: fix updates not working (kde#504825)
+  * applets/fifteenPuzzle: remove fullRep default size
+  * applets/fifteenpuzzle: reduce switch size (kde#360985)
+  * Applet/Fifteen: Fix off by one in piece image loading
+  * applets/comic: remove configBehavior.qml
+  * applets/comic: restore tab on startup and provider changes
+  * applets/comic: don't unnecessarily reload model
+  * applets/comic: fix "Jump to" on cached strips
+  * applets/comic: Remove unnecessary use of ?. to work around QTBUG-136952
+- Drop patches, now upstream:
+  * 0001-applets-comic-Remove-unnecessary-use-of-.-to-work-ar.patch
+
+-------------------------------------------------------------------
+Mon May 19 19:35:12 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Too many changes to list here
+- Add patch to work around build failure on 32-bit (QTBUG-136952):
+  * 0001-applets-comic-Remove-unnecessary-use-of-.-to-work-ar.patch
+
+-------------------------------------------------------------------
 Tue May  6 20:07:31 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
