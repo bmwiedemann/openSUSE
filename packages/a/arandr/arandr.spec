@@ -27,6 +27,7 @@ License:        GPL-3.0-only
 URL:            https://christian.amsuess.com/tools/arandr/
 Source:         http://christian.amsuess.com/tools/arandr/files/%{name}-%{version}.tar.gz
 Patch1:         arandr-fix_desktop_icon.patch
+Patch2:         reproducible.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pip}

@@ -1,0 +1,18 @@
+Date: 2025-06-16
+Normalize gzip mtime
+for reproducible builds
+
+Index: arandr-0.1.11/setup.py
+===================================================================
+--- setup.py
++++ setup.py
+@@ -111,7 +111,8 @@ class build_man(NoOptionCommand):
+                 info('compressing man page to %s', gzfile)
+ 
+                 if not self.dry_run:
+-                    compressed = gzip.open(gzfile, 'w', 9)
++                    f = open(gzfile, "wb")
++                    compressed = gzip.GzipFile(fileobj=f,mode="wb",filename="",mtime=0)
+                     compressed.write(manpage)
+                     compressed.close()
+ 

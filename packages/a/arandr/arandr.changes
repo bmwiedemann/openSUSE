@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 16 16:31:55 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch for normalizing gzip mtime
+
+-------------------------------------------------------------------
 Mon Jun 16 12:02:02 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - convert to pip-based build and update build requirements

@@ -58,4 +58,12 @@ This allows to remove desktop-data and hicolor-icon-theme buildrequires.</commen
     <comment></comment>
     <requestid>1286317</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>79301583aa83cb0a3b98b8bbc5461884</srcmd5>
+    <version>0.1.11</version>
+    <time>1750262304</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1286582</requestid>
+  </revision>
 </revisionlist>
