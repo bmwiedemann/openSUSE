@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:37:27 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+
+-------------------------------------------------------------------
+Thu May 29 21:19:11 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+
+-------------------------------------------------------------------
+Mon May 19 19:35:20 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Changes since 6.3.5:
+  * update version for new release
+  * basictab: Add option for GPU handling This commit introduces the option to configure the keys PrefersNonDefaultGPU/X-KDE-RunOnDiscreteGpu. Both are considered, but the latter is a fallback and not updated. (kde#502198)
+  * update version for new release
+  * It compiles fine without kf_6_12 deprecated methods
+  * kmenuedit: Curate hamburger menu content Rather than just show menus, show actions not in the toolbar.
+  * kmenuedit: Move three 'New' toolbar actions to single menu This significantly reduces the amount of width consumed, whilst still being as powerful.
+  * basictab: Use tabbed KPageWidget instead This brings the appearance in-line with our more modern apps and the file properties dialog.
+  * Modernise toolbar and add KHamburgerMenu Clipboard and sorting actions have been removed, and save has been moved to sit next to the hamburger menu on the right.
+  * menuinfo: Fix editing local .desktop files which are symlinks It appears that previously, when a .desktop file being modified was a symlink, the file properties menu would copy the symlink itself rather than the file, leaving behind a symlink that cannot be modified by the menu editor. This is fixed by checking if the local file is a symlink and if so, removing it to copy and edit. (kde#394476)
+  * Add file actions including path, open containing and file properties for entry Now, you can open the normal file properties dialog for any entry by pressing the standard shortcut or in the file and context menus. Also included are actions to copy the location and open that location in the file manager, comparable to Kate/KWrite. (kde#412852)
+  * update version for new release
+  * Port away from KStandardAction
+  * update version for new release
+  * CI: Add linux-qt6-next build
+  * update version for new release
+  * Add xml/yaml linting
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue May  6 20:07:40 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
