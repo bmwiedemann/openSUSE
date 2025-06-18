@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 18 11:05:59 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.5:
+  * Update common.cmake
+  * Add option to force number of iteration per kernel
+
+-------------------------------------------------------------------
 Tue Dec 24 06:55:58 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.4:
