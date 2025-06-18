@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 16 19:23:27 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.9.1:
+  * hash: allow unsigned int != size_t in sha256
+  * include: Fix code comment termination
+  * alternates: allow relative paths in all repositories
+  * Fix potential null dereference
+  * attr: honor ignorecase in attribute matching
+  * tag: Refuse to use HEAD as a tagname
+  * Fix memory leak in openssl fips modes
+  * Fix circular includes between types.h and oid.h
+  * diff: correct diff stat alignment in presence of renames w/ common prefix
+  * Revert include path regression
+  * documentation updates
+- changes to cmake file placement, add the needed conflict
+  between -devel and -experimental-devel
+- fix Leap build of experimental flavor
+
+-------------------------------------------------------------------
 Fri Feb 28 13:30:39 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Pass -DEXPERIMENTAL_SHA256=ON to cmake to enable sha256
