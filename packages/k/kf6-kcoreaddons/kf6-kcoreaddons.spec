@@ -16,7 +16,7 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname kcoreaddons
 
@@ -32,13 +32,11 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kcoreaddons
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Utilities for core application functionality and accessing the OS
 License:        LGPL-2.1-or-later
@@ -48,9 +46,8 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  shared-mime-info
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
@@ -117,7 +114,6 @@ This package provides Python bindings for kf6-kcoreaddons.
 %build
 # ENABLE_PCH breaks the build locally with 'error: is pie differs in PCH file vs. current file'
 %cmake_kf6 \
-  -DBUILD_QCH:BOOL=TRUE \
   -DENABLE_PCH:BOOL=FALSE \
 %if %{with kde_python_bindings}
   -DPython_EXECUTABLE:STRING=%{__mypython}
@@ -149,7 +145,6 @@ This package provides Python bindings for kf6-kcoreaddons.
 %{_kf6_libdir}/libKF6CoreAddons.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KF6CoreAddons.*
 %{_kf6_includedir}/KCoreAddons/
 %{_kf6_cmakedir}/KF6CoreAddons/
 %dir %{_kf6_datadir}/jsonschema

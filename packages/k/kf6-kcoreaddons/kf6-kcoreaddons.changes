@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jun  9 20:29:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.15.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.15.0
+- Changes since 6.14.0:
+  * Update dependency version to 6.15.0
+  * Make KSystemClockSkewNotifierEngine shared
+  * [KUser] Apply rule of zero
+  * Disable python bindings for Haiku also
+  * Build Python bindings unless explicitly disabled
+  * Add KFormat::formatTime
+  * Add tags file to documentation
+  * Add a narrow variant of KFormat::formatRelativeDateTime
+  * Add missing qhp project
+  * Fix QHP namespace
+  * Fix documentation syntax
+  * Make KFormat::formatRelativeDateTime also work for future times
+  * Improve jobtest stability
+  * Add landing page for QDoc
+  * Add autotest for bug 504078
+  * Port KSystemClockSkewNotifier to qdoc
+  * util: Add KSystemClockSkewNotifier
+  * Port API documentation to qdoc syntax
+  * Update version to 6.15.0
+- Replace _kf6_bugfix_version usage
+
+-------------------------------------------------------------------
 Sun May  4 19:05:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.14.0
