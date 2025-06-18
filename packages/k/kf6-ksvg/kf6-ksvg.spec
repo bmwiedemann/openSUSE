@@ -16,16 +16,14 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname ksvg
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-ksvg
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Components for handling SVGs
 License:        GPL-2.0-or-later
@@ -37,21 +35,20 @@ Source2:        frameworks.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Revert-Support-for-fractional-scaling.patch
-BuildRequires:  doxygen
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Archive) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6ColorScheme) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6GuiAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6KirigamiPlatform) >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
+BuildRequires:  cmake(KF6Archive) >= %{_kf6_version}
+BuildRequires:  cmake(KF6ColorScheme) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{_kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6KirigamiPlatform) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
-Requires:       kf6-kirigami-imports >= %{_kf6_bugfix_version}
+Requires:       kf6-kirigami-imports >= %{_kf6_version}
 
 %description
 Components for handling SVGs
@@ -81,7 +78,7 @@ Development Files for the ksvg framework.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -102,7 +99,6 @@ Development Files for the ksvg framework.
 %{_kf6_libdir}/libKF6Svg.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KF6Svg.*
 %{_kf6_cmakedir}/KF6Svg/
 %{_kf6_includedir}/KSvg/
 %{_kf6_libdir}/libKF6Svg.so
