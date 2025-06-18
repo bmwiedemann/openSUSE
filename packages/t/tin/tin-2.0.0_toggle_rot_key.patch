@@ -1,0 +1,13 @@
+Index: tin-2.6.4/src/keymap.c
+===================================================================
+--- tin-2.6.4.orig/src/keymap.c
++++ tin-2.6.4/src/keymap.c
+@@ -2966,7 +2966,7 @@ setup_default_keys(
+ 	add_default_key(&page_keys, ")", PAGE_REVEAL);
+ 	add_default_key(&page_keys, "[", GLOBAL_QUICK_FILTER_SELECT);
+ 	add_default_key(&page_keys, "]", GLOBAL_QUICK_FILTER_KILL);
+-	add_default_key(&page_keys, "%", PAGE_TOGGLE_ROT13);
++	add_default_key(&page_keys, "d", PAGE_TOGGLE_ROT13);
+ 	add_default_key(&page_keys, "*", PAGE_TOGGLE_HEADERS);
+ 	add_default_key(&page_keys, ":", PAGE_SKIP_INCLUDED_TEXT);
+ 	add_default_key(&page_keys, "_", PAGE_TOGGLE_HIGHLIGHTING);

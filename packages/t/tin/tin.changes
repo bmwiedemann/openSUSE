@@ -1,0 +1,362 @@
+-------------------------------------------------------------------
+Sat May 10 06:50:37 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.6.4:
+  * Long list of changes, see /usr/share/doc/packages/tin/CHANGES
+    for a full list.
+- Re-base tin-2.0.0_toggle_rot_key.patch for update.
+- Build with pcre2 and switch BuildRequires accordingly.
+- Build with nntps support; add BuildRequires: pkgconfig(openssl).
+- Drop unused tin-rpmlintrc file.
+
+-------------------------------------------------------------------
+Wed Jul 24 12:45:23 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.6.3:
+  * Long list of changes, see /usr/share/doc/packages/tin/CHANGES
+    for a full list.
+- Run spec-cleaner to cleanup some obsolete tags.
+- tin-2.0.0_toggle_rot_key.patch: Refresh to apply with -p1.
+- Drop tin-2.0.0-no_datetime_in_bin.patch: __DATE__ and __TIME__
+  are now correctly set to source tarball date by
+  SOURCE_DATE_EPOCH.
+- Use %autosetup -p1 to setup build dir.
+- Disable FORGERY, docs/INSTALL suggests that it "should not be
+  used in a free accessible tin".
+- Drop potentially confusing sysconfdir macro.
+
+-------------------------------------------------------------------
+Mon Aug 23 14:14:32 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgraded to stable 2.6.0 release 20210823 "Coleburn"
+  Bugs fixed:
+  * after toggling through thread methods via 'u' go to parent in pager
+    could lead to crash if no more read article in thread were left
+  * ypothetic use of uninitialized variable when saving article
+    without From-header in mbox format
+  * using right-mouse actions (use_mouse=ON) outside the active
+    screen-aerea (clicking below the last group/subject on screen)
+    could lead to a crash
+  * get_initials() may leave initials uninitiaized
+  * detection of idn_decodename() from libidnkit may fail
+  * gnksa parser still prohibited some chars in dqotes which are
+    allowed since RFC 5322
+  * spin_cursor() was only called for valid entries when parsing the
+    active file
+  * fter toggling through thread methods via 'u' go to parent in pager
+    could lead to crash if no more read article in thread were left
+  * hypothetic use of uninitialized variable when saving article
+    without From-header in mbox format
+  * using right-mouse actions (use_mouse=ON) outside the active
+    screen-aerea (clicking below the last group/subject on screen)
+    could lead to a crash
+  * get_initials() may leave initials uninitiaized
+  * detection of idn_decodename() from libidnkit may fail
+  * gnksa parser still prohibited some chars in dqotes which are
+    allowed since RFC 5322
+  * spin_cursor() was only called for valid entries when parsing the
+    active file
+  For functional changes check
+  ftp://ftp.tin.org/pub/news/clients/tin/stable/CHANGES
+  [tin-2.6.0.tar.xz, tin-2.6.0.tar.xz.sign]
+
+-------------------------------------------------------------------
+Sun Dec 27 21:06:55 UTC 2020 - dnh@opensuse.org
+
+- update to stable 2.4.5 release 20201224 "Glen Albyn",
+  see CHANGES/WHATSNEW files for details
+
+-------------------------------------------------------------------
+Mon Dec 24 12:58:20 UTC 2018 - dnh@opensuse.org
+
+- update to 2.4.3 stable release 20181224 ("Glen Mhor")
+
+ 012) Thomas E. Dickey <dickey@invisible-island.net>
+      ADD. update configure macros
+      ADD. check for va_copy() for pre C99 systems
+      FIX. aclocal.m4, configure[.in], autoconf.h[in], tin.h, memory.c
+           screen.c, string.c, tcurses.c
+
+ 011) Francisco Javier Serrador <fserrador@gmail.com>
+      ADD. spanish translation
+      FIX. es.po
+
+ 010) Matt Anton <tin@lv223.org>
+      ADD. updated french translation
+      FIX. fr.po
+
+ 009) Dennis Preiser <dennis@d--p.de>
+      BUG. ensure destination of match_string() is NULL terminated
+      BUG. possible buffer overflows with long translations
+      BUG. fixed length buffer in rfc1522_decode() may overflow
+      ADD. don't idna_decode() strings which are not IDNA encoded
+      ADD. ability to filter on Path:-header
+      FIX. art.c, config.c, feed.c, filter.c, getline.c, help.c, lang.c
+           main.c, memory.c, nntplib.c, page.c, rfc2047.c, save.c, screen.c
+           extern.h, nntplib.h, proto.h, tin.h, tin.5
+
+ 008) Urs Janssen <urs@tin.org>
+      ADD. config.guess, config.sub update
+      ADD. checks for explicit_bzero(), explicit_memset(), memset_s()
+      ADD. check for unicode/unorm2.h to favor unorm2_normalize() over
+           unorm_normalize() if found
+      ADD. NFKC_case_fold normalization if unicode/unorm2.h is found
+      ADD. don't strip binray with "make install"
+      ADD. match_string()/match_item() now stop on first '\n'
+      ADD. don't show broken active file messages if not running with -D 1
+      ADD. accept arbitrary line length in mail.active file
+      ADD. allow (multiple) -v for debug mode
+      ADD. honor NDEBUG in assert() replacement
+      BUG. possible buffer overflow when prompting for a wildcard search
+           pattern in get_search_pattern()
+      BUG. possible buffer overflows with long translations
+      BUG. pointer arithmetic with possible NULL pointer
+      BUG. didn't recheck CAPABILITIES after auth
+      BUG. transport-padding on mime boundaries wasn't ignored
+      BUG. get_group_from_list() used in 'L'lookup_msgid() couldn't handle
+           FWS as of RFC 5536 3.1.4.
+      ADD. rename FOLLOW_USEFOR_DRAFT to ALLOW_FWS_IN_NEWSGROUPLIST
+      ADD. remove some redundant assigns
+      ADD. switch from autoconf-2.13.20110430 to autoconf-2.52.20181006
+      ADD. be more verbose on connections errors when get_tcp6_socket()
+           is used (debian bug #232924)
+      FIX. active.c, art.c, auth.c, config.c, cook.c, debug.c, feed.c
+           getline.c, group.c, header.c, help.c, init.c, keymap.c, lang.c
+           list.c, mail.c, main.c, misc.c, newsrc.c, nntplib.c, options_menu.c
+           page.c, post.c, read.c, rfc1524.c, rfc2045.c, rfc2046.c, rfc2047.c
+           save.c, search.c, screen.c, select.c, signal.c, sigfile.c
+           strftime.c, string.c, extern.h, proto.h, tin.h, config.guess
+           config.sub, aclocal.m4, configure[.in], autoconf.h[in]
+           Makefile[.in], tin.1, tin.5
+
+- remove obsolete Patch3: tin-2.2.1_makefile_no_strip.patch
+
+-------------------------------------------------------------------
+Sat Dec 30 08:30:59 UTC 2017 - dnh@opensuse.org
+
+- update to 2.4.2 stable release 20171224 "Lochhead"
+
+ 007) Thomas E. Dickey <dickey@invisible-island.net>
+      ADD. update configure macros
+      FIX. aclocal.m4, configure
+
+ 006) Mesutcan Kurt <mesutcank@gmail.com>
+      ADD. updated turkish translation
+      FIX. tr.po
+
+ 005) Dennis Preiser <dennis@d--p.de>
+      ADD. cancel_lock_algo config option
+      ADD. sha256 and sha512 as possible algorithms for cancel_locks
+      ADD. sigfile=!command no longer passes the name of the current
+           newsgroup to command, but %G is replaced by groupname if
+           specified
+      ADD. remove sleep(1) from unshar loop
+      BUG. possible buffer overrun in rfc1522_decode()
+      BUG. wildcard search doesn't advance past a match in a line for a
+           subsequent search
+      BUG. last line in the info_pager (help, posting-history) lacked
+           truncation
+      BUG. quoted pairs in CFWS were not ignored
+      ADD. cleanup
+      FIX. attrib.c, config.c, inews.c, init.c, lang.c, options_menu.c, page.c
+           post.c, regex.c, rfc2045.c, rfc2046.c, rfc2047.c, save.c, sigfile.c
+           string.c, wildmat.c, tincfg.tbl, extern.h, tinrc.h, version.h
+           libcanlock/*, tin.1, tin.5
+
+ 004) Joe Hansen <joedalton2@yahoo.dk>
+      ADD. updated danish translation
+      FIX. da.po
+
+ 003) Urs Janssen <urs@tin.org>
+      BUG. possible NULL dereference when IDNA-decoding with libicuuc
+      BUG. possible NULL dereference with -D 4
+      BUG. possible use of uninitialized variable in debug output
+      BUG. posting history screen failed to use additional space
+           if window was widened
+      BUG. 2nd arg of tin_getline() is int not bool
+      BUG. multibyte input to prompts was grabbled if using ncurses but not
+           ncursesw
+      ADD. config.guess, config.sub update
+      ADD. adjust argument names to be the same in declaration and definition
+      ADD. install rtin.5 manpage
+      ADD. skip group query for -w if group was given on the cmd.-line
+      ADD. remove redundant return statement at the end of void functions
+      ADD. tweak MAIL_REGEX to not capture a tailing ')'
+      ADD. use uidna_nameToUnicode() instead of uidna_IDNToUnicode() if
+           linked against ICU >=4.6
+      FIX. art.c, attrib.c, auth.c, charset.c, config.c, curses.c, feed.c
+           filter.c, group.c, help.c, keymap.c, lang.c, main.c, mimetypes.c
+           misc.c, newsrc.c, nntplib.c, pgp.c, post.c, prompt.c, refs.c
+           rfc2047.c, save.c, screen.c, select.c, tcurses.c, thread.c, proto.h
+           tin.h, Makefile[.in], configure[.in], autoconf.h[in], config.guess
+           config.sub, tin.1, tin.5
+
+-------------------------------------------------------------------
+Sat Jul 29 10:09:30 UTC 2017 - jengelh@inai.de
+
+- Rewrite summary and descriptions based on upstream material
+  from the website. Ensure its neutrality.
+- Combine two find calls
+
+-------------------------------------------------------------------
+Sun Dec 25 04:02:44 UTC 2016 - dnh@opensuse.org
+
+- update to 2.4.1 stable release 20161224 "Daill"
+
+ 002) Dennis Preiser <dennis@d--p.de>
+      BUG. reconnection problem if started with '-n' and multiple
+           "LIST COUNTS grp1,grp2,..." were sent
+      BUG. overlapping strcpy(3)/wcscpy(3)
+      FIX. getline.c, select.c
+
+ 001) Urs Janssen <urs@tin.org>
+      ADD. config.guess, config.sub update
+      ADD. clarify ternary condition
+      BUG. logic error when connecting to a server in transit mode forced
+           user to auth even if server didn't request it
+      BUG. resource leak in post_process_uud() and parse_rfc2045_article()
+      BUG. possible nullpointer dereferenced when running out of memory in
+           makecfg (during compliation)
+      BUG. memleak if using libunistring for unicode normalization
+      FIX. active.c, art.c, auth.c, config.c, feed.c, group.c, makecfg.c
+           misc.c, nntplib.c, post.c, rfc2046.c, save.c, select.c, string.c
+           config.guess, config.sub, tin.5
+
+-------------------------------------------------------------------
+Wed Aug 24 14:44:57 UTC 2016 - dnh@opensuse.org
+
+- update to 2.4.0 stable release 20160823 "Octomore"
+
+U028) Dennis Preiser <dennis@d--p.de>
+      BUG. memleak on exit due to unexpected nntp connection vanishing
+      FIX. art.c, memory.c
+
+U027) Urs Janssen <urs@tin.org>
+      Dennis Preiser <dennis@d--p.de>
+      ADD. log reconnect limit reached (debian bug #832397)
+      ADD. document NNTP_ERROR_EXIT code (debian bug #832397)
+      ADD. give error messages on exit after curses has ended (debian bug #832397)
+      FIX. proto.h, active.c, header.c, lang.c, mail.c, main.c, misc.c
+           newsrc.c, nntplib.c, page.c, read.c, select.c, signal.c, thread.c
+           tin.[15]
+
+ * and various build system and translation updates/fixes, see
+   ftp://ftp.tin.org/pub/news/clients/tin/stable/CHANGES
+
+-------------------------------------------------------------------
+Wed Jun 29 17:56:57 UTC 2016 - dnh@opensuse.org
+
+- update to 2.3.4 release 20160628 "Newton" --
+
+U024) Dennis Preiser <dennis@d--p.de>
+      ADD. hide strip_blanks option when using curses
+      ADD. LookupMessage ('L') to selection level if reading via NNTP
+      BUG. toggling inverse_okay didn't refresh Menu header
+      BUG. progress message when piping/printing articles looked odd
+      BUG. spurious revers mark in menu in !USE_CURSES case when toggling
+           ON/OFF options
+      BUG. select_format wasn't fully honored in
+           !USE_CURSES && !MULTIBYTE_ABLE case
+      BUG. strip_blanks (!USE_CURSES) wasn't always honored
+      FIX. config.c, feed.c, group.c, help.c, init.c, keymap.c, lang.c
+           options_menu.c, screen.c, select.c, thread.c, tincfg.tbl, extern.h
+           tin.h, tinrc.h, tin.1
+
+U023) Urs Janssen <urs@tin.org>
+      ADD. config.guess, config.sub update
+      ADD. LookupMessage ('L') to selection level if reading via NNTP
+      BUG. filter menu required = sign if filtering on exact line number
+      BUG. didn't compile with --disable-piping / -DDONT_HAVE_PIPING
+      BUG. missing checks for successful fopen of debug refs dump files
+      BUG. typos in debug message
+      FIX. active.c, filter.c, nntplib.c, refs.c, save.c, screen.c, select.c
+           xref.c, config.guess, config.sub, tin.1, de.po
+
+U022) Toomas Soome <Toomas.Soome@microlink.ee>
+      ADD. updated estonian translation
+      FIX. et.po
+
+-------------------------------------------------------------------
+Sun Mar 27 16:00:53 UTC 2016 - lmuelle@suse.com
+
+- update to 2.3.3 (unstable) with some security etc. fixes:
+  BUG. progress message when piping/printing articles looked odd
+  BUG. single quoted lines not always colored
+  BUG. -Q [-nqd] didn't work with servers announcing LIST COUNTS
+  BUG. NNTP cmd. arguments could exhaust RFC 3977 3.1 limit
+  BUG. -z leaked filedescriptors and memory with no unread news present
+  BUG. possible null pointer dereference with gmtime() and localtime()
+  BUG. automatic auth on non RFC 3977 servers didn't update can_post status
+  BUG. memleak in buffer_to_local()
+  BUG. overlaping strcpy in join_references()
+  BUG. handle missing server name in xref overview data in xref-filters
+  BUG. didn't remove old SCOPES-[RW], REFS.dump, REFS.info before logging
+  BUG. ! was disallowed in local part of From
+  BUG. crash in RFC 2231 parameter value continuation if 0-part is missing
+  BUG. out of bounds access in buffer_to_local() on invalid multibyte sequence
+  BUG. unknown evaluation order in reconnect loop
+  BUG. memory leak on unexpexcted end of file
+  BUG. Content-Disposition filename wasn't used if found before Content-Type
+       name
+  BUG. changing extquote_handling in 'M'enu did not immediately took effect
+  BUG. aborting exit of -w (post_article_and_exit) lead to endless
+       drain_buffer()-loop
+  BUG. delayed auth in read_newsrc_active_file() could lead to exit
+       due to empty group list
+  BUG. leaving a mailgroup might keep the cursor visible
+  BUG. when prompting for username/password string may lack termination
+       options_menu.c, read.c, rfc2046.c, save.c, proto.h, rfc2046.h
+
+  For the full list of changes see included file or
+  ftp://ftp.tin.org/pub/news/clients/tin/unstable/CHANGES
+- Obsolete upstream merged tin-2.3.2-fix_col_quote.patch
+
+-------------------------------------------------------------------
+Thu Feb  4 21:04:59 UTC 2016 - dnh@opensuse.org
+
+- Add tin-2.3.2-fix_col_quote.patch from upstream to fix the color of
+  single-quoted text
+
+-------------------------------------------------------------------
+Wed Dec 30 22:30:52 UTC 2015 - dnh@opensuse.org
+
+- update to 2.3.2 (unstable) with some security etc. fixes:
+      BUG. format string vulnerability with -Sv
+      BUG. used freed fp if cooking of article fails
+      BUG. possible crash on initial reconnect loop when network is down
+      BUG. socket not closed on early exit
+      BUG. memory leak when aborting index_group() from select level
+      BUG. memory leak when reading mailgroup articles without Message-ID
+      BUG. memory leak in makecfg
+      ADD. fix hypothetic null pointer dereference
+      BUG. uncontrolled format string in nntp error messages.
+      BUG. in batch mode rebindable keys were malloed but not freed
+
+   For the full list of changes see included file or
+   ftp://ftp.tin.org/pub/news/clients/tin/unstable/CHANGES
+
+
+-------------------------------------------------------------------
+Tue Nov 17 07:55:16 UTC 2015 - dnh@opensuse.org
+
+- update to 2.3.1 (unstable)
+
+-------------------------------------------------------------------
+Sat Jun  7 10:28:06 UTC 2014 - dnh@opensuse.org
+
+- update to 2.2.1
+
+-------------------------------------------------------------------
+Fri Jan 24 20:46:10 UTC 2014 - dnh@opensuse.org
+
+- update to 2.2.0
+
+-------------------------------------------------------------------
+Sun Sep 11 04:11:55 UTC 2011 - dnh@opensuse.org
+
+- update to 2.0.0
+
+-------------------------------------------------------------------
+Fri May 20 14:37:48 UTC 2011 - dnh@opensuse.org
+- initial package reusing my 1.9.5 spec
+

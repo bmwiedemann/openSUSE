@@ -1,0 +1,10 @@
+<package name="tin" project="openSUSE:Factory">
+  <title>An easy-to-use USENET news reader</title>
+  <description>tin is an easy-to-use USENET news reader for the console using NNTP.
+It supports threading, scoring, different charsets, and many other
+useful things. It has also support for different languages.
+
+This version contains 2 patches by dnh@opensuse.org changing the
+default key for toggling rot13 from '%' to 'd' and displaying the
+number of unread posts instead of lines in the threadview.</description>
+</package>
