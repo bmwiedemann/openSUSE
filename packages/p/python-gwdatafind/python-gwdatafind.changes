@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 18 04:41:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+
+-------------------------------------------------------------------
 Fri Dec  6 01:35:43 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix builds by avoiding tests not ready for updated ligo-segments

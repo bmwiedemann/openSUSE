@@ -1,7 +1,7 @@
 #
 # spec file for package python-gwdatafind
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ Summary:        Client library for the LIGO Data Replicator (LDR) service
 URL:            https://gwdatafind.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/g/gwdatafind/gwdatafind-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module ligo-segments}
@@ -39,7 +41,7 @@ Requires:       python-igwn-auth-utils
 Requires:       python-ligo-segments
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %python_subpackages
 
@@ -55,10 +57,10 @@ gravitational-wave detectors
 sed -i 's/--color=yes//' pyproject.toml
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/gw_data_find
@@ -77,6 +79,6 @@ sed -i 's/--color=yes//' pyproject.toml
 %license LICENSE
 %python_alternative %{_bindir}/gw_data_find
 %{python_sitelib}/gwdatafind
-%{python_sitelib}/gwdatafind-%{version}*-info
+%{python_sitelib}/gwdatafind-%{version}.dist-info
 
 %changelog
