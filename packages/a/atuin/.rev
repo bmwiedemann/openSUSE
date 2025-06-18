@@ -659,4 +659,644 @@
 </comment>
     <requestid>1284587</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>26d1a204fed1feda267bfc86b7448110</srcmd5>
+    <version>18.6.0</version>
+    <time>1750262359</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 18.6.0:
+  * chore(release): prepare for release 18.6.0 (#2740)
+  * feat: Implement KV as a write-through cache (#2732)
+  * chore(deps): update minspan to 0.1.5 (#2729)
+  * chore(deps): Update postmark to 0.11 (#2730)
+  * fix: selection vs render issue (#2706)
+  * feat: sort `atuin store status` output (#2719)
+  * chore(deps): bump unicode-width from 0.1.14 to 0.2.0 (#2722)
+- Update to version 18.6.0~beta1:
+  * chore(release): prepare for release 18.6.0-beta.1 (#2723)
+  * Revert &quot;feat(zsh): try to go to the position in zsh's history (#1469)&quot; (#2715)
+  * feat(stats): add jj to default common subcommands (#2708)
+  * chore(deps): bump fs-err from 2.11.0 to 3.1.0 (#2709)
+  * chore: fix typos (#2668)
+  * feat: delete duplicate history (#2697)
+  * Update dependencies (#2695)
+  * chore(deps): bump debian (#2699)
+  * chore(deps): bump tokio from 1.44.1 to 1.44.2 in the cargo group (#2681)
+  * ci: use native github arm64 runner (#2690)
+- Update to version 18.5.0:
+  * Bug Fixes
+    + Clear terminal area if inline
+    + Fix preexec of child Bash session started by enter_accept
+    + Filter deleted keys from kv list
+    + Ignore leading environment variables when calculating stats
+    + Fix crash when history is empty
+    + Fix an error introduced earlier with support for zsh bracketed paste mode
+    + Avoid calling user-defined widgets when searching for zsh history position
+    + Add .histfile as file to look for when doing atuin import zsh
+    + Panic when invoking delete on empty tui
+    + Sql files checksums
+    + Up binding with fish 4.0
+    + Don’t save empty commands
+    + Improve broken symlink error handling
+    + Multiline command does not honour max_preview_height
+    + Allow -ve values for timezone
+    + Fish up binding bug
+  * Features
+    + Update AWS secrets env var handling checks
+    + Add health check endpoint at /healthz
+    + Add support for ‘atuin kv delete’
+    + (wrapped) Add more pkg managers
+    + (zsh) Try to go to the position in zsh’s history
+    + (zsh) Re-enable bracketed paste
+    + Add the --print0 option to search
+    + Make new arrow key behavior configurable
+    + Use readline binding for ctrl-a when it is not the prefix
+    + Option to include duplicate commands when printing history commands
+    + Binaries as subcommands
+    + Support storing, syncing and executing scripts
+    + Add ‘atuin scripts rm’ and ‘atuin scripts ls’ aliases; allow reading 
+      from stdin
+  * Miscellaneous Tasks
+    + Remove unneeded dependencies
+    + Update rust toolchain to 1.85
+    + Align daemon and client sync freq
+    + Show host and user in inspector
+  * Performance
+    + Cache SECRET_PATTERNS’s RegexSet
+- Update to version 18.4.0:
+  * Thanks to @philtweir, we now have a theming system! It's too much to write 
+    about here, so see the section in the docs: https://docs.atuin.sh/guide/theming/
+  * With this release, some defaults have changed. The most obvious will likely
+    be the switch to the compact UI style + inline rendering
+    read more here: https://github.com/atuinsh/atuin/pull/2249
+  * atuin wrapped: See your stats for 2024 with: atuin wrapped
+- Fixing broken build. Needs rustc &gt;= 1.77 and protobuf-devel 
+- Update to version 18.3.0:
+  * *(bash)* Fix a workaround for bash-5.2 keybindings
+  * *(ci)* Release workflow
+  * *(client)* Better error reporting on login/registration
+  * *(config)* Add quotes for strategy value in comment
+  * *(daemon)* Do not try to sync if logged out
+  * *(deps)* Replace parse_duration with humantime
+  * *(dotfiles)* Alias import with init output
+  * *(dotfiles)* Fish alias import
+  * *(dotfiles)* More fish alias import
+  * *(dotfiles)* Unquote aliases before quoting
+  * *(dotfiles)* Allow clearing aliases, disable import
+  * *(stats)* Generation for commands starting with a pipe
+  * *(ui)* Handle being logged out gracefully
+  * *(ui)* Fix mistake in last pr
+  * Support not-mac for default shell
+  * Adapt help to `enter_accept` config
+  * Add protobuf compiler to docker image
+  * Add incremental rebuild to daemon loop
+  * Alias enable/enabled in settings
+  * Bogus error message wording
+  * Save sync time in daemon
+  * Redact password in database URI when logging
+  * Save sync time in daemon
+  * Replace serde_yaml::to_string with serde_json::to_string_yaml
+  * Fix &quot;From source&quot; `cd` command
+  * Add docs for store subcommand
+  * *(daemon)* Add support for daemon on windows
+  * *(doctor)* Detect active preexec framework
+  * *(doctor)* Report sqlite version
+  * *(dotfiles)* Support syncing shell/env vars
+  * *(gui)* Work on home page, sort state
+  * *(history)* Create atuin-history, add stats to it
+  * *(install)* Add Tuxedo OS
+  * *(server)* Add me endpoint
+  * *(ui)* Scroll history infinitely
+  * *(ui)* Add history explore
+  * *(ui)* Use correct username on welcome screen
+  * *(ui)* Add login/register dialog
+  * *(ui)* Setup single-instance
+  * *(ui/dotfiles)* Add vars
+  * Allow ignoring failed commands
+  * Show preview auto
+  * Add background daemon
+  * Support importing from replxx history files
+  * Move crates into crates/ dir
+  * Fix atuin crate readme
+  * Add some more logging to handlers
+  * Add some more debug logs
+  * Clarify default config file
+  * Handle rate limited responses
+  * Add Systemd config for self-hosted server
+  * Switch to cargo dist for releases
+  * Update email, gitignore, tweak ui
+  * *(nushell)* Use version.(major|minor|patch) if available
+  * Only open the database for commands if strictly required
+  * Preview_auto to use enum and different option
+- Update specfile
+  * rust+cargo -&gt; cargo
+  * set --locked flag
+- Update to 18.2.0:
+  Bug Fixes:
+  * Add missing description
+  * Allow empty search
+  * Pass search query in via env
+  * Pass search query in via env for Nushell
+  * Case insensitive hostname filtering
+  * Update atuin.nu to resolve 0.92 deprecation
+  * Detect preexec plugin using env ATUIN_PREEXEC_BACKEND
+  * Install script echo
+  * Report non-decodable errors correctly
+  * Do not use &quot;return&quot; to cancel initialization
+  * Use spawn_blocking for file access during async context
+  Documentation:
+  * Add security contact
+  * Add install instructions for cave/exherbo linux in README.md
+  * Describe the limitation of missing commands
+  * Add missing cli help text
+  Features:
+  * Process [C-h] and [C-?] as representations of backspace
+  * Allow specifying search query as an env var
+  * Check PG version before running migrations
+  * Add atuin prefix binding
+  * Update install.sh to support KDE Neon
+  * Add better search scoring
+  * Sync v2 default for new installs
+  * Add 'ctrl-a a' to jump to beginning of line
+  * Prevents stderr from going to the screen
+  * Add alias import
+  * Use _ble_exec_time_ata for duration even in bash &lt; 5
+  * Add base structure
+  Miscellaneous Tasks:
+  * Add issue form
+  * Require atuin doctor in issue form
+  * Add section to issue form
+  * Add codespell support (config, workflow) and make it fix some
+    typos
+  Performance:
+  * Cache aliases and read straight from file
+- Updates from 18.1.0:
+  Bug Fixes
+  * Rework #1509 to recover from the preexec failure
+- omit feature 'check-update' instead of using the removed patch 0000-disable_update_check.patch
+- remove 0000-disable_update_check.patch
+- Update to 18.0.1:
+  * Reorder the exit of enhanced keyboard mode
+  * Prevent input to be interpreted as options for zsh autosuggestions
+  * Avoid unexpected `atuin history start` for keybindings
+  * Prevent input to be interpreted as options for blesh auto-complete
+  * Work around custom IFS
+  * Fix and improve the keybinding to `up`
+  * Fix incorrect timing of child shells
+  * Disable musl deb building
+  * Work around bash &lt; 4 and introduce initialization guards
+  * Set umask 077
+  * Disables unix specific stuff for windows
+  * Fix invisible tab title
+  * Shorten text, use ctrl-o for inspector
+  * Integration on older fishes
+  * Save sync time when it starts, not ends
+  * Print literal control characters to non terminals
+  * Escape control characters in command preview
+  * Use existing db querying for history list
+  * Add acquire timeout to sqlite database connection
+  * Update repo url in CONTRIBUTING.md
+  * Dedupe was removing history
+  * Only escape control characters when writing to terminal
+  * Strip control chars generated by `\[\]` in PS1 with bash-preexec
+  * Check for format errors when printing history
+  * Skip padding time if it will overflow the allowed prefix length
+  * Never overwrite the key
+  * Erase the prompt last line before Bash renders it
+  * Erase the previous prompt before overwriting
+  * Support termcap names for tput
+  * Set durability for sqlite to recommended settings
+  * Correct download list for incremental builds
+  * Add Settings::ut
+  * Enable enhanced keyboard mode
+  * Rework record sync for improved reliability
+  * Include atuin login in secret patterns
+  * Add redraw
+  * Make it clear what you are registering for
+  * Support high-resolution timing even without ble.sh
+  * Add extended help
+  * Add interactive command inspector
+  * Vim mode
+  * Add better error handling for sync
+  * Add history rebuild
+  * Introduce keymap-dependent vim-mode
+  * Make deleting from the UI work with record store sync
+  * Add metrics counter for records downloaded
+  * Make cursor style configurable
+  * Make store init idempotent
+  * Don't stop with invalid key
+  * Add registered and deleted metrics
+  * When in vim-normal mode apply an alternative highlighting to the selected line
+  * [**breaking**] Bind the Atuin search to &quot;/&quot; in vi-normal mode
+  * Update widget names
+  * Make history list format configurable
+  * Add change-password command &amp; support on server
+  * Automatically init history store when record sync is enabled
+  * Add store push
+  * Reencrypt/rekey local store
+  * Add prefers_reduced_motion flag
+  * Add verify command to local store
+  * Add store purge command
+  * Failure to decrypt history = failure to sync
+  * Add `store push --force`
+  * Add `store pull`
+  * Disable auto record store init
+  * Add progress bars to sync and store init
+- Update to 17.2.1:
+  Fixes:
+  * Fix typo with default config
+  * Don't require all fields under [stats]
+  * Disallow deletion if the '--limit' flag is present
+  * Fix loss of the last output line with enter_accept
+  * Ignore struct_field_names
+  * Improve the support for enter_accept with ble.sh
+  * Fix small issues of enter_accept for the plain Bash
+  * Time now_local not working
+  * Fix quirks on search cancel
+  * Zsh_autosuggest_strategy for no-unset environment
+  * Fix error by the use of ${PS1@P} in bash &lt; 4.4
+  * Zsh use a special format to escape some characters
+  * Initial list of history in workspace mode
+  * Add Appkit to the package build
+  * Bind in the most popular modes
+  * Only trigger up-arrow on first line
+  * Clean up the fish script options
+  * Use fish builtins for enter_accept
+  * Make atuin account delete void session + key
+  * New clippy lints
+  * Accept multiline commands
+  * Reenable enter_accept for bash
+  * Respect ZSH's $ZDOTDIR environment variable
+  Documentation:
+  * Add actuated linkback
+  * Add link to forum
+  * Align setup links in docs and readme
+  * Add Void Linux install instruction
+  * Add fish install script
+  * Correct link
+  * Fix light/dark mode logo
+  * Use picture element for logo
+  * Add docs for zsh-autosuggestion integration
+  * Remove stray character from README
+  * Update logo
+  * Update sync.md
+  * Update Arch Linux package URL in advanced-install.md
+  * New stats config
+  Features:
+  * Add semver checking to client requests
+  * Add TLS to atuin-server
+  * Integrate with zsh-autosuggestions
+  * Support high-resolution duration if available
+  * Provide auto-complete source for ble.sh
+  * Add a nixpkgs overlay
+  * Add metrics server and http metrics
+  * Add some metrics related to Atuin as an app
+  * Allow configuring stats prefix
+  * Allow spaces in stats prefixes
+- Update patch 0000-disable_update_check.patch
+- Apply patch properly. It got overlooked.
+- Update to version 17.0.1:
+  * fix(enter_accept): clear old cmd snippet
+  * Fix for breaking change in ratatui 0.24.0
+  * fix(bash): improve output of `enter_accept`
+  * fix(fish): improve output for `enter_accept`
+  * update support template
+  * Remove duplicate &quot;invert&quot; in default config
+  * Silence fish string match
+  * Fix cargo deb usage
+  * Add release blog post and update docs
+  * Correct some secrets filter regex
+  * Revert &quot;Revert &quot;Revert &quot;Use github runners for unit tests (for now)&quot;&quot;&quot;
+  * fix(nushell): Ignore stderr messages
+  * Document that the self-hosted port is TCP
+  * Add bash support to `enter_accept`
+  * allow binding server to hostname
+  * Add fish support for `enter_accept`
+  * Add enter_accept to immediately execute an accepted command
+  * Checkout repo so the manifest publish step can read git
+  * use the short sha to tag images
+  * Use ubuntu for x86, oops
+  * Update key binding docs
+  * Add commands to print the default configuration
+  * Update key-binding.md
+  * Revert &quot;Revert &quot;Use github runners for unit tests (for now)&quot;&quot;
+  * Revert &quot;Use github runners for unit tests (for now)&quot;
+  * clear history id
+  * fix(1220): Workspace Filtermode not handled in skim engine
+  * Fix/1207 deleted entries shown in interactive search
+  * A man is not dead while his name is still spoken
+  * Add --print0 to `history list`
+  * Use github runners for unit tests (for now)
+  * Revert &quot;Re-enable `linux/arm64` platform in CI docker build&quot;
+  * Re-enable `linux/arm64` platform in CI docker build
+  * feat: copy to clipboard
+  * support timezones in calendar
+  * handle empty keybindings list for nushell
+  * add --reverse to history list
+  * Fix support template
+  * fix sync timestamps
+  * better sync error messages
+  * refactor: Duplications reduced in order to align implementations of reading history files
+  * Add connect timeout and overall timeout
+  * feat(keyup): Configure SearchMode for KeyUp invocation #1216
+  * Fix selecting complex fish commands
+  * docs: document the available format options of History list command
+  * config.md: invert mode detailed options
+  * Update config.toml: List inverted mode
+  * Move contributors to be a top-level file
+  * replace chrono with time
+  * Use `case` for Linux distro choice in `install.sh`
+  * Update issue templates
+  * feat: mouse selection support
+  * Update docker.md
+  * Explicitly use buster image for cargo-chef, mitigates #1204
+  * Update shell-completions.md
+  * Update config.md
+  * Remove fig from README
+  * Automatically filter out secrets
+  * Update dependencies
+  * Add kv map builder and list function
+  * fix(ubuntu/arm*): detect non amd64 ubuntu and handle
+  * Fix keybinding link in README
+  * docs: update `workspace` config key to `workspaces`
+  * Only setup shell plugin if it's not already there
+  * Remove terminal mode switching
+  * Update to ratatui 0.22
+  * Include revision in status
+  * Fix index tail leak
+  * Update(docs) Add `workspace` to config.toml and config.md
+  * Fix client-only builds
+- Fix and update generated vendored tarball.
+- Update to version 0.16.0:
+  * Add graceful shutdown on SIGTERM
+  * Update Arch Linux links in README
+  * fix: Adjust broken link to supported shells
+  * feat: do not allow empty passwords durring account creation
+  * Fix movement keys in inverted mode
+  * Make Ctrl-d behaviour match other tools
+  * refactor server to allow pluggable db and tracing
+  * Add support to override hostname and username via env vars
+  * Fix --delete-it-all and --delete commands
+  * Make requirement of PostgreSQL 14 explicit
+  * Bug/fix gh action aarch64 tarball
+  * Key values
+  * Add namespaces to kv store
+  * Builder interface for History objects
+  * clean apt cache in Dockerfile
+  * remove rmp-serde
+  * fix: fixes unix specific impl of shutdown_signal
+  * Add RecordIndex data structure
+  * remove decryption from api-client
+  * Revamp getting started guide
+  * Redirect old docs
+  * Move key binding docs so they can be more easily found
+  * record encryption
+  * Fix nu section in key-bindings.md - set-env -&gt; let-env
+  * Update Nushell support to use support* remove decryption from api-client
+  * Revamp getting started guide
+  * Redirect old docs
+  * Move key binding docs so they can be more easily found
+  * record encryption
+  * Fix nu section in key-bindings.md - set-env -&gt; let-env
+  * Update Nushell support to use supported $env update syntax
+  * fix key encodings again
+  * Update config.toml path default comments
+  * fix for zsh no-unset environments
+  * atuin crypto blog post
+  * Add OG image
+  * write some key tests
+  * Add new sync
+  * Add total history count to the index API
+  * Delete the count cache row when a user is deleted
+  * Add workspace mode, enable if in git repo
+  * Unvendor ratatui
+  * skim: fix filtering aggregates
+  * Serve docusaurus on /docs/
+  * Try adjusting docs root
+  * Remove vercel config
+  * Tidy up docs
+  * use Ctrl-n instead of Alt-n on macOS
+  * some simple server tests
+  * Disable server tests in the nix build
+  * Drop default sync frequency to 10m
+  * Move all references to the old repo
+  * Add self hosted runner
+  * Split integration and unit tests, use runner for unit
+  * fix(server): Teapot is a cup of coffee
+  * rebase: fix: nushell empty hooks
+  * Add support for max_preview_height setting
+  * fix(docs): List all presently documented commands
+  * encode paseto payloads as json
+  * fix(docs): Correct command overview paths
+  * Prepare release v16.0.0
+  * fix key encodings again
+  * Update config.toml path default comments
+  * fix for zsh no-unset environments
+  * atuin crypto blog post
+  * Add OG image
+  * write some key tests
+  * Add new sync
+  * Add total history count to the index API
+  * Delete the count cache row when a user is deleted
+  * Add workspace mode, enable if in git repo
+  * Unvendor ratatui
+  * skim: fix filtering aggregates
+  * Serve docusaurus on /docs/
+  * Try adjusting docs root
+  * Remove vercel config
+  * Tidy up docs
+  * use Ctrl-n instead of Alt-n on macOS
+  * some simple server tests
+  * Disable server tests in the nix build
+  * Drop default sync frequency to 10m
+  * Move all references to the old repo
+  * Add self hosted runner
+  * Split integration and unit tests, use runner for unit
+  * fix(server): Teapot is a cup of coffee
+  * rebase: fix: nushell empty hooks
+  * Add support for max_preview_height setting
+  * fix(docs): List all presently documented commands
+  * encode paseto payloads as json
+  * fix(docs): Correct command overview paths
+- Replace obsoleted `disabled` option with `manual`
+- Update to version 15.0.0:
+  * Fix release workflow
+  * Add workflow dispatch for release
+  * chore: uuhhhhhh crypto lol
+  * Add keyboard shortcuts to the Config/Keybinding chapter.
+  * Re-added package name to workspace.package
+  * Add package param to cargo deb
+  * Allow specifying tag to build for workflow_dispatch
+  * Add symlink
+  * Upload tar before building deb
+  * Copy license for cargo-deb
+  * Fix fig plugin link
+  * fix broken pipe on history list
+  * docs: Fix broken links in README.md
+  * Add nu section to keybinds.md
+  * cwd_filter: much like history_filter, only it applies to cwd
+  * Add command flag for inline_height
+  * docs: fix &quot;From source&quot; cd command
+  * Correct typos in website
+  * website: Fix participle &quot;be ran&quot; -&gt; &quot;be run&quot;
+  * Update README.md: Disable update check for offline mode
+  * At least patch this on the server side so we don't loop forever
+  * Fix key regression
+  * Include bash preexec warning
+  * feat: add delete account option (attempt 2)
+  * validate usernames on registration
+  * Restructure account commands to account subcommand
+  * Allow server configured page size
+  * Input bar at the top if we are in inline mode
+  * Add option to completely disable help row
+  * Fix typo in config.toml
+- Fix installation step in specfile.
+- Update to version 14.0.1 patch release:
+  * Fix deleting history that doesn't exist yet
+  * Updated client config docs
+  * Handle empty lines when importing from Bash
+  * update str substring usage to use range parameter
+  * Fix --delete description
+  * Use XDG data directory for fish import
+  * Add some emacs movement keys
+  * Atuin stats with day, month, week and year filter
+  * Add --reverse to atuin search
+  * Add additional detail to search documentation
+  * Switch to uuidv7
+  * Workspace reorder
+  * Improve error message for issue #850.
+  * Avoid accidentally deleting all history, but allow it if intended
+  * Add footer
+  * Make the homepage prettier
+  * Release v14.0.1
+- Add _constraints
+  * Make disk size to 12G to fix build failure &quot;No space left on device&quot;
+- Update to version 14.0.0:
+  * Add Hachyderm links
+  * Update flake.lock to Rust 1.67
+  * nix: add flake-compat
+  * Fix race condition in directory tests
+  * Rework Bash import
+  * docs(README): fix activity graph link
+  * Show preview of selected command
+  * Up arrow filter_mode setting default to global filter mode
+  * feat: add common default keybindings
+  * Bump debian from bullseye-20230208-slim to bullseye-20230227-slim
+  * Windows support
+  * fix(client): always read session_path from settings
+  * Add register notification webhook
+  * Install CA certificates in docker image
+  * Docker isn't interactive ofc
+  * Minor documentation updates
+  * Fix before/after combined with limit
+  * Allow specifying fulltext as well as full-text
+  * fix new stats unique count
+  * add common prefixes and subcommands to stats
+  * fix(installer): use case-insensitive comparisons
+  * Fixes a bug on windows
+  * Prefer PWD environment variable over cwd if available to better support symbolic links
+  * fix: many links were broken 📝
+  * skim-demo
+  * Add history deletion
+  * fix: paste into terminal after switching modes
+  * Support old msgpack
+  * Fix skim search
+  * Allow changing search_mode during interactive search
+  * chore: remove tui vendoring
+  * Bump debian from bullseye-20230227-slim to bullseye-20230320-slim
+  * Delete all instances of a command
+  * Bump lukemathwalker/cargo-chef from latest-rust-1.67.1 to latest-rust-1.68.0
+  * feat: respect exit_mode setting when exiting with arrow down keypress
+  * feat: add an inline view mode
+  * Add musl build
+  * feat: add Nushell support
+  * chore: use fork of skim
+  * Bind keys in vi mode too
+  * Account for user not yet having count cache
+  * Fixes nushell recording empty commands
+  * Update CONTRIBUTING.md
+  * client filtering done in query
+  * fix: record negative exit codes
+  * Refactor/nu remove dep on sh
+  * Update CI
+  * Add more fields to atuin search --format
+  * install.sh - add endeavouros to archlinux detection
+  * Add --offset flag to atuin search
+  * Update atuin search docs
+  * Add atuin status
+  * fix: allow nix package to fetch dependencies from git
+  * feat: add github action to test the nix builds
+  * Vendor ratatui temporarily
+- Update to version 13.0.1:
+  * Enable RUST_BACKTRACE for docker builds
+  * Revert &quot;Re-enable arm docker builds&quot;
+  * Fix editURL for docs
+  * Fix link to self-hosting
+  * [docs] fix some links between config and commands
+  * Disable 2 tests that shouldn't run in release mode
+  * fix registration
+- Disable update check by default since updates are handled in OBS
+- Update to version 13.0.0:
+  * Improvements
+    - Better error messages
+    - Nix install files + instructions
+    - Exit when pushing the down arrow from the most recent entry
+    - Refactor to support generic server-side databases
+    - Make it easier to disable the ctrl-r and/or up arrow bindings
+    - Update to axum6
+  * Fixes
+    - Fish now handles multi-line commands properly
+    - Listing history for the current session now works
+    - Fix atuin init for Fish
+  * New features
+    - Pretty stats
+    - Custom history list format
+    - History filter
+    - Mnemonic key
+  * Crossterm as the new TUI backend
+- Fix installation of shell completions.
+- Add extra shell stuff in docs.
+- Update to version 12.0.0:
+  * Allow stateless commands to be run without config/database by @c-14 in #544
+  * Clear RBUFFER when accepting output from atuin by @c-14 in #545
+  * Add installer support for Termux by @laurentlbm in #540
+  * Bump lukemathwalker/cargo-chef from latest-rust-1.63 to latest-rust-1.64.0 by @dependabot in #546
+  * Add contributors command by @ellie in #550
+  * Add style to config.toml and config.md by @xfzv in #552
+  * Fix compatability with fish vi key bindings by @shreve in #541
+  * add some error messages by @conradludgate in #510
+  * update zh-CN docs by @helbing in #539
+  * Bump debian from bullseye-20220822-slim to bullseye-20221004-slim by @dependabot in #551
+  * Add automatic update checking by @ellie in #555
+  * Bump sqlx from 0.5.13 to 0.6.2 by @dependabot in #536
+  * Bump indicatif from 0.16.2 to 0.17.1 by @dependabot in #537
+  * Bump rpassword from 6.0.1 to 7.0.0 by @dependabot in #530
+  * Bump tui from 0.18.0 to 0.19.0 by @dependabot in #531
+  * Bump rmp-serde from 1.1.0 to 1.1.1 by @dependabot in #557
+  * Bump unicode-width from 0.1.9 to 0.1.10 by @dependabot in #535
+  * rollup of 5 dependency commits by @conradludgate in #562
+  * Add message begging for help lol turtle by @ellie in #569
+  * upgrade clap by @conradludgate in #568
+  * Configure reqwest to use native platform certs by @wpbrz in #574
+  * Bump async-trait from 0.1.57 to 0.1.58 by @dependabot in #575
+  * Never use HISTFILE for fish shell import by @patricksjackson in #573
+  * Respect fish shell's builtin private mode by @patricksjackson in #577
+  * Bump clap from 4.0.15 to 4.0.18 by @dependabot in #578
+  * docs: add more details about date parsing in the stats command by @bvergnaud in #579
+  * Make fuzzy search the default by @ellie in #591
+  * Update server.md by @pevogam in #589
+  * Exit with return code 1 when no results are found in atuin search command by @TymanWasTaken in #489
+  * Update README.md with antigen instruction. by @DanielAtCosmicDNA in #549
+  * Build ARM64 releases &amp; update runners by @Absolucy in #593
+  * Add local event log storage by @ellie in #390
+  * fix #596: Avoid drawing a command section beyond the width of the list by @s0 in #597
+  * Add setting for keeping typed query when exiting by @s0 in #451
+  * Fix copy/paste artifact by @EricCrosson in #598
+  * Release v12 by @ellie in #599
+- Add shell completion packages
+- Set rust+cargo version at least 1.59.
+- Initial spec of atuin version 11.0.0
+</comment>
+    <requestid>1286702</requestid>
+  </revision>
 </revisionlist>
