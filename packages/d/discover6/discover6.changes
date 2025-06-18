@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:37:14 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+  * FlatpakTransactionThread: Copy job to new ref after rebase (kde#505245)
+  * Fix use-after-free when closing Discover (kde#466619)
+  * rpm-ostree: Fix updates count reporting (kde#504821)
+  * rpm-ostree: Convert some info logs to debug
+  * rpm-ostree: Add debugging logs for update driver registration
+  * rpm-ostree: Use QLoggingCategory for logging
+  * rpm-ostree: Remove unused set(CMAKE_MODULE_PATH)
+  * rpm-ostree: Cleanup unused variable warning
+  * rpmostree: Remove unused attribute
+  * rpmostree: don't notify a state change if the state remains the same
+
+-------------------------------------------------------------------
+Thu May 29 21:18:34 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+  * rpm-ostree: Don't try to parse an empty version (kde#496538)
+  * rpm-ostree: Fix rpm-ostree driver registration (kde#480947)
+  * systemd: do not return resource when filtering for an unsuitable state
+  * systemd: do not return resource when the search doesn't match
+  * steamos,systemd: do not return resources on appstream searches
+  * discover/qml: improve UpdatesPage accessibility
+  * ApplicationPage: allow offline update header to take up enough space (kde#504513)
+  * KNSBackend: Do not accept global searches
+
+-------------------------------------------------------------------
+Mon May 19 19:35:00 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  6 20:07:12 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:

@@ -16,22 +16,22 @@
 #
 
 
-%define kf6_version 6.10.0
-%define qt6_version 6.7.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 %define rname discover
 %bcond_without released
 # Version in Leap 15 < 15.6 is too old
 %global have_fwupd (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600)
 
 Name:           discover6
-Version:        6.3.5
+Version:        6.4.0
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
 URL:            https://apps.kde.org/discover/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -181,7 +181,6 @@ rm %{buildroot}%{_kf6_applicationsdir}/org.kde.discover.snap.desktop
 %{_kf6_applicationsdir}/org.kde.discover.urlhandler.desktop
 %{_kf6_appstreamdir}/org.kde.discover.appdata.xml
 %{_kf6_bindir}/plasma-discover
-%{_kf6_bindir}/plasma-discover-update
 %{_kf6_debugdir}/discover.categories
 %{_kf6_iconsdir}/hicolor/*/apps/plasmadiscover.*
 %{_kf6_kxmlguidir}/plasmadiscover/
