@@ -96,6 +96,8 @@ export PATH=$PATH:~/bin
 # test_expression_diff - sometimes fails on async timing in OBS
 # test_bpo_2142_workaround fails on arm
 skiptests="test_expression_diff or test_bpo_2142_workaround"
+# gh#psf/black#4698
+skiptests+=" or test_simple_format"
 %pytest -k "not ($skiptests)"
 
 %pre

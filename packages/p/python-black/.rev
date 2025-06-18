@@ -471,4 +471,22 @@
   gh#psf/black#4577, gh#psf/black#4591, gh#psf/black#4666</comment>
     <requestid>1276821</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>f421cfb19354e9bddd01232e10d9e5fd</srcmd5>
+    <version>25.1.0</version>
+    <time>1750278523</time>
+    <user>anag_factory</user>
+    <comment>- Skip test_simple_format tests, which is failing with 3.13.5
+  (gh#psf/black#4698).
+
+- Update to 24.8.0
+  * Fix regression where certain complex f-strings failed to parse
+  * Fix bad performance on certain complex string literals
+  * Fix crash involving indented dummy functions containing newlines
+  * Add support for type parameter defaults, a new syntactic feature added
+    to Python 3.13 by PEP 696
+  * Fix unwanted crashes caused by AST equivalency check
+  * Stop moving multiline strings to a new line unless inside brackets</comment>
+    <requestid>1286633</requestid>
+  </revision>
 </revisionlist>
