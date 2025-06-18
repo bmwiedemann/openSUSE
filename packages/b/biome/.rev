@@ -25,4 +25,13 @@
 </comment>
     <requestid>1208727</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ec5f06fa3d0daa4eafd6028ba530e282</srcmd5>
+    <version>2.0.0</version>
+    <time>1750255069</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.0.0:
+  * see https://github.com/biomejs/biome/releases/tag/%40biomejs%2Fbiome%402.0.0</comment>
+    <requestid>1286471</requestid>
+  </revision>
 </revisionlist>

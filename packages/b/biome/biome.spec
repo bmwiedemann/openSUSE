@@ -1,8 +1,8 @@
 #
 # spec file for package biome
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2022-2023 Avindra Goolcharan <avindra@opensuse.org>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2022-2025 Avindra Goolcharan <avindra@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 #
 
 
-%define rev fa93a147abe64e9c85908d317a8dd1de343ad132
+%define rev be9076b2c6714eb5f76ceff59881cdec48475067
 Name:           biome
-Version:        1.9.4
+Version:        2.0.0
 Release:        0
 Summary:        A JavaScript and TypeScript toolchain
 License:        Apache-2.0 AND MIT
 Group:          Productivity/Other
 URL:            https://github.com/biomejs/biome
-Source0:        https://github.com/biomejs/biome/archive/refs/tags/cli/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/biomejs/biome/archive/refs/tags/@biomejs/biome@%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo >= 1.53.0
 BuildRequires:  cargo-packaging
@@ -36,7 +36,7 @@ A toolchain for web projects, aimed to provide functionalities to maintain
 them. Biome offers formatter and linter, usable via CLI and LSP.
 
 %prep
-%autosetup -a1 -p1 -n %{name}-cli-v%{version}
+%autosetup -a1 -p1 -n %{name}--biomejs-%{name}-%{version}
 
 %build
 export BIOME_VERSION=%{version}-%{rev}
