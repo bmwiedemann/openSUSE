@@ -776,4 +776,19 @@
     <comment></comment>
     <requestid>1284041</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>f0e73bc5aa1ff3526a462060a4ae97d8</srcmd5>
+    <version>570.169</version>
+    <time>1750255067</time>
+    <user>anag_factory</user>
+    <comment>- update non-CUDA variant to 570.169 (boo#1244614)
+
+- 60-nvidia-$flavor.conf
+  * Don't try to load the driver if config and GSP firmware files are
+    not available. Otherwise let the default install rule
+    'install nvidia-drm /sbin/modprobe --ignore-install nvidia-drm' of
+    50-nvidia.conf win, which comes together with config and GSP
+    firmware files (package nvidia-common-G06).</comment>
+    <requestid>1286469</requestid>
+  </revision>
 </revisionlist>

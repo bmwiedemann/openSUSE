@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 15 10:00:00 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to 570.169 (boo#1244614)
+
+-------------------------------------------------------------------
+Wed Jun 11 12:47:29 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- 60-nvidia-$flavor.conf
+  * Don't try to load the driver if config and GSP firmware files are
+    not available. Otherwise let the default install rule
+    'install nvidia-drm /sbin/modprobe --ignore-install nvidia-drm' of
+    50-nvidia.conf win, which comes together with config and GSP
+    firmware files (package nvidia-common-G06).
+
+-------------------------------------------------------------------
 Mon Jun  9 08:04:22 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop persistent-nvidia-id-string.patch - solved via make params instead
