@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-breathe
 Version:        4.36.0
@@ -30,11 +31,11 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-Sphinx >= 7.2
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Provides:       python-sphinxcontrib-breathe = %{version}
 Obsoletes:      python-sphinxcontrib-breathe < %{version}
 BuildArch:      noarch
@@ -58,11 +59,8 @@ able to read and  render Doxygen xml output.
 %python_clone -a %{buildroot}%{_bindir}/breathe-apidoc
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative breathe-apidoc
-
-%postun
-%python_uninstall_alternative breathe-apidoc
+%pre
+%python_libalternatives_reset_alternative breathe-apidoc
 
 %files %{python_files}
 %doc README.rst
