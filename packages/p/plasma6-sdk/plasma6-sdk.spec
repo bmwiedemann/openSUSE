@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.10.0
-%define qt6_version 6.7.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %define rname plasma-sdk
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -26,14 +26,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-sdk
-Version:        6.3.5
+Version:        6.4.0
 Release:        0
 Summary:        Plasma SDK
 License:        GPL-2.0-only AND LGPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-breeze-icons
@@ -43,6 +43,7 @@ BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
@@ -109,11 +110,11 @@ cp -L %{_kf6_iconsdir}/breeze/actions/22/tools-wizard.svg %{buildroot}%{_kf6_ico
 %{_datadir}/zsh/site-functions/_kqml
 %{_datadir}/zsh/site-functions/_plasmoidviewer
 %{_kf6_applicationsdir}/org.kde.iconexplorer.desktop
+%{_kf6_applicationsdir}/org.kde.plasma.lookandfeelexplorer.desktop
 %{_kf6_applicationsdir}/org.kde.plasma.themeexplorer.desktop
 %{_kf6_applicationsdir}/org.kde.plasmaengineexplorer.desktop
 %{_kf6_applicationsdir}/org.kde.plasmoidviewer.desktop
 %{_kf6_appstreamdir}/org.kde.plasma.iconexplorer.appdata.xml
-%{_kf6_appstreamdir}/org.kde.plasma.lookandfeelexplorer.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.plasmoidviewershell.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.themeexplorer.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasmaengineexplorer.appdata.xml
@@ -125,11 +126,10 @@ cp -L %{_kf6_iconsdir}/breeze/actions/22/tools-wizard.svg %{buildroot}%{_kf6_ico
 %{_kf6_iconsdir}/*/*/*/*.*
 %dir %{_kf6_plasmadir}/shells
 %{_kf6_plasmadir}/shells/org.kde.plasma.plasmoidviewershell/
-%dir %{_kf6_plugindir}/ktexteditor
-%{_kf6_plugindir}/ktexteditor/iconexplorerplugin.so
+%dir %{_kf6_plugindir}/kf6/ktexteditor/
+%{_kf6_plugindir}/kf6/ktexteditor/iconexplorerplugin.so
 %dir %{_kf6_sharedir}/kpackage/
 %dir %{_kf6_sharedir}/kpackage/genericqml
-%{_kf6_sharedir}/kpackage/genericqml/org.kde.plasma.lookandfeelexplorer/
 %{_kf6_sharedir}/kpackage/genericqml/org.kde.plasma.themeexplorer/
 %{_mandir}/man1/kqml.1%{?ext_man}
 %{_mandir}/man1/plasmaengineexplorer.1%{?ext_man}
