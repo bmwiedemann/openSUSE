@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 14 14:53:38 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update gpgmepp dependencies to help with the gpgme 2.0.0
+  split-off of the C++ bindings (boo#1244605)
+
+-------------------------------------------------------------------
 Tue Jun  3 21:12:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.2
