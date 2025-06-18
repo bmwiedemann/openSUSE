@@ -1,0 +1,4 @@
+<package name="bci-ci-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed BCI BCI-internal CI</title>
+  <description>BCI-internal CI container based on the openSUSE Tumbleweed Base Container Image.</description>
+</package>
