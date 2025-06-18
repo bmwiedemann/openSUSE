@@ -824,4 +824,22 @@
     <comment> (forwarded request 1265263 from iznogood)</comment>
     <requestid>1265720</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>d4bf124d196098bf43dbb197107e9055</srcmd5>
+    <version>0.3.19</version>
+    <time>1750254814</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.3.19:
+  + pls: Fix warnings browsing filesystem entries
+  + operation-options: Set max to default_max if inferior to min
+  + Replace defunct mailing list URLs with GNOME Discourse
+  + Correct 404 URIs to Tracker Ontology reference
+  + pls: Add thumbnails for remote files
+  + grilo-test-ui: Use new separate-src config for filesystem
+  + net: Fix possible regressions from GTask port
+  + pls: Fix thumbnail URI for remote files in Flatpak
+  + Updated translations.
+</comment>
+    <requestid>1286023</requestid>
+  </revision>
 </revisionlist>

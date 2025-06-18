@@ -17,7 +17,7 @@
 
 
 Name:           grilo
-Version:        0.3.16+17
+Version:        0.3.19
 Release:        0
 Summary:        Framework for browsing and searching media content
 License:        LGPL-2.1-or-later
