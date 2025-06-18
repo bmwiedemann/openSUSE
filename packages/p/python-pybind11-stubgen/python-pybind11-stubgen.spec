@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybind11-stubgen
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,6 @@
 
 %define pypiname pybind11-stubgen
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{pypiname}
 Version:        0.12.0
 Release:        0
@@ -26,11 +25,13 @@ Summary:        PEP 561 type stubs generator for pybind11 modules
 License:        BSD-3-Clause
 URL:            https://github.com/sizmailov/pybind11-stubgen
 Source:         https://pypi.io/packages/source/p/%{pypiname}/%{pypiname}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 
 %python_subpackages
@@ -43,10 +44,10 @@ specifically modules compiled using pybind11
 %setup -q -n %{pypiname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pybind11-stubgen
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -64,6 +65,7 @@ specifically modules compiled using pybind11
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/pybind11-stubgen
-%{python_sitelib}/pybind11_stubgen*
+%{python_sitelib}/pybind11_stubgen
+%{python_sitelib}/pybind11_stubgen-%{version}.dist-info
 
 %changelog
