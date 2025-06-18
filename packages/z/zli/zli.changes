@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 18 04:31:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.5:
+  no CLI-related changes
+  * chore: bump github.com/olekukonko/tablewriter from 0.0.5 to
+    1.0.7 (#3198)
+
+-------------------------------------------------------------------
 Fri Jun 06 05:07:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.4:
