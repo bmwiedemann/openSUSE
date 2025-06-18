@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 18 04:45:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- Update URL.
+
+-------------------------------------------------------------------
 Sun Jan 19 08:22:55 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add patches to disable failing tests (temporary workaround until

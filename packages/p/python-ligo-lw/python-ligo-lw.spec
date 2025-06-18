@@ -33,7 +33,7 @@ Release:        0
 Summary:        Python LIGO Light-Weight XML I/O Library
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
-URL:            https://git.ligo.org/kipp.cannon/python-ligo-lw
+URL:            https://git.ligo.org/kipp/python-ligo-lw
 Source:         http://software.ligo.org/lscsoft/source/%{srcname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM ligo-lw-segments-test-fix.patch badshah400@gmail.com -- Fix a test that randomly fails due to dictionary ordering being undefined
 Patch0:         ligo-lw-segments-test-fix.patch
@@ -50,7 +50,9 @@ Patch6:         ligo-lw-disable-lsctables.patch
 # PATCH-FIX-UPSTREAM ligo-lw-disable-utils_segments.patch badshah400@gmail.com -- Disable failing utils_segments test (temporary workaround to get builds to succeed)
 Patch7:         ligo-lw-disable-utils_segments.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
@@ -95,11 +97,11 @@ format.
 sed -i "1{s/distutils.core/setuptools/}" setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if %{without test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %{lua: for c in string.gmatch(rpm.expand("%bins"), "%S+") do
@@ -132,7 +134,7 @@ popd
   print(rpm.expand("%python_alternative %{_bindir}/" .. c .. "\n"))
 end}
 %{python_sitearch}/ligo/
-%{python_sitearch}/python_ligo_lw-%{version}-py%{python_version}.egg-info/
+%{python_sitearch}/python_ligo_lw-%{version}.dist-info
 %{python_sitearch}/python_ligo_lw-%{version}-py%{python_version}-nspkg.pth
 %endif
 
