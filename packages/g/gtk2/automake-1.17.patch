@@ -1,6 +1,17 @@
---- a/autogen.sh	2020-12-21 02:09:37.000000000 +0100
-+++ b/autogen.sh	2024-07-15 23:16:24.836488891 +0200
-@@ -48,7 +48,10 @@
+Index: gtk-2.24.33/autogen.sh
+===================================================================
+--- gtk-2.24.33.orig/autogen.sh
++++ gtk-2.24.33/autogen.sh
+@@ -19,7 +19,7 @@ if libtoolize --version < /dev/null > /d
+ 			 sed -e 's/^\(.*\)([^)]*)\(.*\)$/\1\2/g' \
+ 			     -e 's/^[^0-9]*\([0-9.][0-9.]*\).*/\1/'`
+ 	case $libtool_version in
+-	    1.4*|1.5*|2.2*|2.4*)
++	    1.4*|1.5*|2.*)
+ 		have_libtool=true
+ 		;;
+ 	esac
+@@ -48,7 +48,10 @@ fi
  	DIE=1
  }
  
@@ -12,7 +23,7 @@
      AUTOMAKE=automake-1.16
      ACLOCAL=aclocal-1.16
  else if automake-1.15 --version < /dev/null > /dev/null 2>&1 ; then
-@@ -75,13 +78,14 @@
+@@ -75,13 +78,14 @@ else if automake-1.7 --version < /dev/nu
  else
  	echo
  	echo "You must have automake 1.7.x, 1,10.x, 1.11.x, 1.12.x, 1.13.x, 1.14.x,"

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 14 09:38:41 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update automake-1.17.patch: make autogen.sh accept all libtool
+  2.x versions. This should save us until libtool jumps to 3.x.
+
+-------------------------------------------------------------------
 Thu Mar 20 21:53:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Export -std=gnu99 to cflags, fix build with gcc 15. GCC 15

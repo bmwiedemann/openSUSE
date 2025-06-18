@@ -1415,4 +1415,13 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
     <comment></comment>
     <requestid>1255507</requestid>
   </revision>
+  <revision rev="192" vrev="16">
+    <srcmd5>93695f76ec54636756796f7a58185b18</srcmd5>
+    <version>2.24.33</version>
+    <time>1750254800</time>
+    <user>anag_factory</user>
+    <comment>- Update automake-1.17.patch: make autogen.sh accept all libtool
+  2.x versions. This should save us until libtool jumps to 3.x. (forwarded request 1285778 from dimstar)</comment>
+    <requestid>1285783</requestid>
+  </revision>
 </revisionlist>
