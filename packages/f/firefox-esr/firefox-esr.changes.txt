@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 17 08:18:37 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Use these tools/versions unconditionally, package won't build on
+  Tumbleweed with new gcc15 otherwise:
+  gcc14, gcc14-c++, cargo1.84, rust1.84
+
+-------------------------------------------------------------------
 Sun Jun  8 14:58:17 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Replace usage of %jobs for reproducible builds (boo#1237231)
