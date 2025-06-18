@@ -16,16 +16,14 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname kdoctools
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kdoctools
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Tools to create documentation from DocBook
 License:        LGPL-2.1-or-later AND MIT
@@ -37,13 +35,12 @@ Source2:        frameworks.keyring
 %endif
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook_4
-BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  perl-URI
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF6Archive) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6Archive) >= %{_kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -66,7 +63,7 @@ Provides tools to generate documentation in various format from DocBook files.
 %package devel
 Summary:        Build environment for kdoctools
 Requires:       docbook-xsl-stylesheets
-Requires:       kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+Requires:       kf6-extra-cmake-modules >= %{_kf6_version}
 Requires:       libKF6DocTools6 = %{version}
 Requires:       libxslt-devel
 Requires:       cmake(Qt6Core) >= %{qt6_version}
@@ -81,7 +78,7 @@ Development files.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -112,7 +109,6 @@ Development files.
 %{_kf6_libdir}/libKF6DocTools.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KF6DocTools.*
 %{_kf6_cmakedir}/KF6DocTools/
 %{_kf6_includedir}/KDocTools/
 %{_libdir}/libKF6DocTools.so
