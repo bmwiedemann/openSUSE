@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun 18 08:10:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.6.0:
+  * Maintenance
+    - Bump the dependencies group in /.config with 3 updates (#500)
+      @dependabot[bot]
+    - Bump requests from 2.32.3 to 2.32.4 in /.config in the pip
+      group (#499) @dependabot[bot]
+    - Bump the dependencies group in /.config with 2 updates (#498)
+      @dependabot[bot]
+    - chore: pre-commit autoupdate (#497) @pre-commit-ci[bot]
+    - Bump the dependencies group across 1 directory with 9 updates
+      (#496) @dependabot[bot]
+    - Bump the dependencies group in /.config with 4 updates (#494)
+      @dependabot[bot]
+    - Add merge_group handler for tox workflow (#489) @Qalthos
+    - Bump the dependencies group in /.config with 4 updates (#491)
+      @dependabot[bot]
+
+-------------------------------------------------------------------
 Tue May 13 10:33:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.5.0:
