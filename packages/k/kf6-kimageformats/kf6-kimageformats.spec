@@ -16,7 +16,7 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname kimageformats
 
@@ -28,13 +28,11 @@
 # Not available
 %define with_jp2 1
 %endif
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kimageformats
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
@@ -45,11 +43,11 @@ Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  fdupes
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 %if 0%{?with_exr}
 BuildRequires:  openexr-devel
 %endif
-BuildRequires:  cmake(KF6Archive) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6Archive) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
@@ -82,6 +80,14 @@ Requires:       ghostscript
 This plugin provides support for the EPS document format for QtGui. As
 it invokes ghostscript for conversion, it should only be used in trusted
 environments.
+
+%package devel
+Summary:        Development files for kimageformats
+Requires:       %{name} = %{version}
+
+%description devel
+This package contains development files for kimageformats, a framework
+to provide additional image format plugins for QtGui.
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
@@ -132,5 +138,8 @@ environments.
 %license LICENSES/*
 %dir %{_kf6_plugindir}/imageformats
 %{_kf6_plugindir}/imageformats/kimg_eps.so
+
+%files devel
+%{_kf6_cmakedir}/KF6ImageFormats/
 
 %changelog
