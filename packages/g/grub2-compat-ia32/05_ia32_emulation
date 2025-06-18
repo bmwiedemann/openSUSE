@@ -1,0 +1,5 @@
+#!/bin/sh
+echo "Adding ia32_emulation=1 to kernel cmdline"
+cat <<EOF
+set extra_cmdline="ia32_emulation=1 \${extra_cmdline}"
+EOF

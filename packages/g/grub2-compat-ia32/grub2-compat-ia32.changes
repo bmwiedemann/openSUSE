@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Jun 18 12:06:06 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Mark package as noarch but still exclusive to x86_64 
+
+-------------------------------------------------------------------
+Wed Jun 18 11:11:11 UTC 2025 - Lubos Kocman <Lubos.Kocman@suse.com>
+
+- jsc#PED-12993 Initial package to enable ia32_emulation=1
+  kernel parameter via GRUB.
