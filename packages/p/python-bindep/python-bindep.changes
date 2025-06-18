@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 18 07:47:52 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use multibuild for running tests
+
+-------------------------------------------------------------------
+Tue Jun 17 07:58:12 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives
+
+-------------------------------------------------------------------
 Mon Apr 28 08:44:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.13.0

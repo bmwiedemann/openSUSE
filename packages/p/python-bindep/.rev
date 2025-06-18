@@ -101,4 +101,14 @@
     <comment></comment>
     <requestid>1274832</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>286f293879d5db45606fa0570e48985a</srcmd5>
+    <version>2.13.0</version>
+    <time>1750262300</time>
+    <user>anag_factory</user>
+    <comment>- Use multibuild for running tests
+- Convert to libalternatives
+</comment>
+    <requestid>1286576</requestid>
+  </revision>
 </revisionlist>
