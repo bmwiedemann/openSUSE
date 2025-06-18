@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun  9 20:29:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.15.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.15.0
+- Too many changes since 6.14.0, only listing bugfixes:
+  * Scheme: highlight name of syntactical sugar for procedure as Function (kde#476879)
+  * Ruby: fix sub class after keyword / function (kde#495823)
+  * Ruby: fix operator after method call (expected unary operator or expression) (kde#495823)
+  * Ruby: fix %-string and regex in array (kde#495823)
+  * Python: add string deliminator highlighting and disable spell checking on them (kde#464690)
+  * INI: add *.INI as a file extension (kde#502541)
+- Replace _kf6_bugfix_version usage
+
+-------------------------------------------------------------------
 Sun May  4 19:05:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.14.0
