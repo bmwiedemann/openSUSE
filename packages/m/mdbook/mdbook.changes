@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Jun 11 06:23:46 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.4.45:
+  * Merge pull request #2551 from ehuss/bump-version
+  * Update to 0.4.45
+  * Merge pull request #2524 from WaffleLapkin/first-last-of-type-footnote
+  * Merge pull request #2550 from ehuss/fix-expected-source-path
+  * Fix issue with None source_path
+  * Add test for a chapter with no source path
+  * Merge pull request #2548 from tamird/patch-1
+  * README.md: update workflow status badge
+  * Merge pull request #2545 from ehuss/rustdoc-missing-error
+  * Add context when `rustdoc` command is not found
+  * Merge pull request #2540 from ehuss/bump-version
+
+-------------------------------------------------------------------
+Sun Jun 08 13:41:18 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.4.44:
+  * Merge pull request #2540 from ehuss/bump-version
+  * Update to 0.4.44
+  * Merge pull request #2539 from ehuss/update-notify
+  * Bump rust-version to 1.77
+  * Update notify to 8.0.0
+  * Merge pull request #2538 from ehuss/update-dependencies
+  * Update dependencies
+  * Merge pull request #2533 from ehuss/search-chapter-settings
+  * Add output.html.search.chapter
+  * Merge pull request #2458 from dcampbell24/display-for-clean
+  * Merge pull request #2530 from max-heller/rust-hidelines
+  * Merge pull request #2532 from notriddle/sync-toggle
+  * Prevent the real sidebar position from becoming unsynced from the JS
+  * Merge pull request #2531 from GuillaumeGomez/regression-test-2529
+  * Add GUI regression test for #2529
+  * Update browser-ui-test version to 0.19.0
+  * Merge pull request #2529 from GuillaumeGomez/fix-sidebar-display
+  * fix: make line hiding in Rust code blocks consistent with `rustdoc`
+  * Fix display of sidebar when JS is disabled
+  * Merge pull request #2523 from marcoieni/ubuntu-22
+  * ci: move ubuntu-20 jobs to ubuntu-22
+  * Merge pull request #2476 from GuillaumeGomez/gui-tests
+  * Merge pull request #2517 from notriddle/master
+  * Ignore fragment when figuring out sidebar items
+  * Disable sandbox when running GUI tests
+  * Run GUI tests as a separate testsuite
+  * Add base for GUI tests
+  * Merge pull request #2500 from rukai/release_for_aarch64_macos
+  * Add aarch64-apple-darwin release target
+  * Merge pull request #2497 from ehuss/bump-version
+
+-------------------------------------------------------------------
 Thu Jun 05 11:41:31 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.4.43:

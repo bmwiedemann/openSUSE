@@ -1,7 +1,7 @@
 <services>
   <service name="cargo_vendor" mode="manual">
     <param name="url">https://github.com/rust-lang/mdBook</param>
-    <param name="revision">v0.4.43</param>
+    <param name="revision">v0.4.45</param>
     <param name="versionrewriteregex">^v?(.*)</param>
     <param name="versionrewritepattern">$1</param>
     <param name="changesgenerate">true</param>
@@ -10,5 +10,4 @@
     <param name="changesoutfile">mdbook.changes</param>
     <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="manual" />
 </services>
