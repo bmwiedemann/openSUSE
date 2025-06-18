@@ -20,7 +20,7 @@
 %define _commit 2105caa
 
 %define primary_python python313
-%define python_version 3.13
+%define pythons %{primary_python}
 
 Name:           httpie
 Version:        3.2.4
@@ -81,12 +81,12 @@ sed -i -e '/^#!\//, 1d' httpie/__main__.py
 
 %build
 export LC_CTYPE=en_US.UTF-8
-python%{python_version} setup.py build
+%pyproject_wheel
 
 %install
 export LC_CTYPE=en_US.UTF-8
-python%{python_version} setup.py install --root=%{buildroot}
-%fdupes %{buildroot}%{_prefix}/lib/python%{python_version}/site-packages
+%pyproject_install
+%fdupes %{buildroot}%{python_sitelib}
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/http.1
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
 # Install bash & fish completion, credit to Fedora for providing this: https://src.fedoraproject.org/rpms/httpie/blob/rawhide/f/httpie.spec
@@ -109,7 +109,8 @@ pytest --deselect=tests/test_uploads.py --deselect=tests/test_plugins_cli.py --d
 %{_bindir}/http
 %{_bindir}/https
 %{_bindir}/%{name}
-%{_prefix}/lib/python%{python_version}/site-packages/httpie*
+%{python_sitelib}/httpie
+%{python_sitelib}/httpie-%{version}.dist-info
 %{_mandir}/man1/http.1%{?ext_man}
 %{_mandir}/man1/https.1%{?ext_man}
 %{_mandir}/man1/%{name}.1%{?ext_man}
