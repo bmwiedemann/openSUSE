@@ -46,9 +46,7 @@ diff -Pdpru dosbox-staging-0.82.0.orig/contrib/linux/meson.build dosbox-staging-
 diff -Pdpru dosbox-staging-0.82.0.orig/contrib/linux/org.dosbox-staging.dosbox-staging.desktop dosbox-staging-0.82.0/contrib/linux/org.dosbox-staging.dosbox-staging.desktop
 --- dosbox-staging-0.82.0.orig/contrib/linux/org.dosbox-staging.dosbox-staging.desktop	2024-10-23 10:37:53.000000000 +0300
 +++ dosbox-staging-0.82.0/contrib/linux/org.dosbox-staging.dosbox-staging.desktop	2024-12-10 06:59:59.112412395 +0300
-@@ -56,7 +56,7 @@ GenericName[zh_CN]=DOS 模拟器
- GenericName[zh_TW]=DOS 模擬器
- Comment=DOS/x86 emulator focusing on ease of use
+@@ -58,5 +58,5 @@
  Exec=dosbox
 -Icon=org.dosbox-staging.dosbox-staging
 +Icon=dosbox
@@ -58,9 +56,7 @@ diff -Pdpru dosbox-staging-0.82.0.orig/contrib/linux/org.dosbox-staging.dosbox-s
 diff -Pdpru dosbox-staging-0.82.0.orig/contrib/linux/org.dosbox-staging.dosbox-staging.metainfo.xml dosbox-staging-0.82.0/contrib/linux/org.dosbox-staging.dosbox-staging.metainfo.xml
 --- dosbox-staging-0.82.0.orig/contrib/linux/org.dosbox-staging.dosbox-staging.metainfo.xml	2024-10-23 10:37:53.000000000 +0300
 +++ dosbox-staging-0.82.0/contrib/linux/org.dosbox-staging.dosbox-staging.metainfo.xml	2024-12-10 06:59:59.112412395 +0300
-@@ -1,7 +1,7 @@
- <?xml version="1.0" encoding="UTF-8"?>
- <!-- Copyright (C) 2020-2024  The DOSBox Staging Team -->
+@@ -3,5 +3,5 @@
  <component type="desktop">
 -  <id>org.dosbox-staging.dosbox-staging</id>
 +  <id>dosbox</id>
