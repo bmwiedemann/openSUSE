@@ -100,4 +100,12 @@
 - adapt to setuptools 77</comment>
     <requestid>1265495</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>3dd0a791ca2d70a07715dc09b36ef1ba</srcmd5>
+    <version>24.8.1</version>
+    <time>1750254827</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286134</requestid>
+  </revision>
 </revisionlist>

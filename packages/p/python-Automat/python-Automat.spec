@@ -24,7 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-Automat%{psuffix}
 Version:        24.8.1
@@ -32,16 +32,16 @@ Release:        0
 Summary:        Self-service finite-state machines for the programmer on the go
 License:        MIT
 URL:            https://github.com/glyph/automat
-Source:         https://files.pythonhosted.org/packages/source/A/Automat/automat-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/automat/automat-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-attrs >= 19.2.0
-Requires(post): update-alternatives
-Requires(preun): update-alternatives
 Suggests:       python-Twisted >= 16.1.1
 Suggests:       python-graphviz > 0.5.1
 BuildArch:      noarch
@@ -76,11 +76,8 @@ automata (particularly deterministic finite-state transducers).
 %endif
 
 %if !%{with test}
-%post
-%python_install_alternative automat-visualize
-
-%postun
-%python_uninstall_alternative automat-visualize
+%pre
+%python_libalternatives_reset_alternative automat-visualize
 
 %files %{python_files}
 %license LICENSE
