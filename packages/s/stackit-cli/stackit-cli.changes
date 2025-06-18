@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Jun 17 18:03:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.34.5 (there are no releases between 0.33.1
+  and this one):
+  * fix(ci): fix goreleaser post-hooks (#808)
+  * fix(ci): increase keychain timeout for release workflow (#804)
+  * feat: add test coverage comment (#802)
+  * feat(cli): onboard iaas volume backup api  (#773)
+  * fix(ci): split goreleaser post hook into multiple steps (#803)
+  * chore(deps): bump renovatebot/github-action from 42.0.5 to
+    42.0.6 (#800)
+  * fix(iaas): prevent nil pointer dereference on empty volume name
+    (#799)
+  * fix(deps): update stackit sdk modules (#796)
+  * refactor(cli): add ConvertStringMapToInterfaceMap util function
+    (#790)
+  * fix(cli): List mongodb storages returns empty result  (#778)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/ske (#793)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/loadbalancer
+    (#792)
+  * chore(deps): update renovatebot/github-action action to v42.0.5
+    (#788)
+  * fix(deps): update module github.com/lmittmann/tint to v1.1.2
+    (#785)
+  * chore(deps): update module golang.org/x/tools to v0.34.0 (#783)
+  * fix(deps): update module golang.org/x/text to v0.26.0 (#784)
+  * chore(deps): bump golang.org/x/mod from 0.24.0 to 0.25.0 (#780)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/iaas (#781)
+  * fix(deps): update stackit sdk modules (#779)
+
+-------------------------------------------------------------------
 Wed Jun 04 18:39:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.33.1 (0.33.0 was not released):
