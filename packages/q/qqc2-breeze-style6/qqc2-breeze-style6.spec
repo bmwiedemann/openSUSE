@@ -16,21 +16,21 @@
 #
 
 
-%define kf6_version 6.10.0
-%define qt6_version 6.7.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %define rname qqc2-breeze-style
 
 %bcond_without released
 Name:           qqc2-breeze-style6
-Version:        6.3.5
+Version:        6.4.0
 Release:        0
 Summary:        Breeze Style for Qt Quick
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -38,10 +38,10 @@ BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
-BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiPlatform) >= %{kf6_version}
+BuildRequires:  cmake(KF6QuickCharts) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}

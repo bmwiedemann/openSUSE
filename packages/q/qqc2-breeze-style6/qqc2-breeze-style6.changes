@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:38:03 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+
+-------------------------------------------------------------------
+Thu May 29 21:24:31 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+  * Drop unused kcoreaddons dependency
+
+-------------------------------------------------------------------
+Mon May 19 19:39:11 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Changes since 6.3.5:
+  * update version for new release
+  * Update platform theme with code from qqc2-desktop-style
+  * Remove kquickcharts qml dep
+  * Remove KQuickCharts dependency
+  * Add missing qml imports
+  * Fix inconsistant rectangle border widths
+  * Fix cursor delegate jumping to (0,0)
+  * BusyIndicator: Use qqc2-desktop-style spinner
+  * ItemDelegate: Sync dimensions with qqc2-desktop-style
+  * controls: Match qqc2-desktop-style padding
+  * Add xml/yaml linting
+  * Menu: Put it higher in the Z-order
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue May  6 20:14:32 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
