@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 18 04:41:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+
+-------------------------------------------------------------------
 Sun Sep 17 15:57:10 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.2.1:

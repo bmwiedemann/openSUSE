@@ -1,7 +1,7 @@
 #
 # spec file for package python-dqsegdb2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/duncanmmacleod/dqsegdb2
 Source:         https://files.pythonhosted.org/packages/source/d/dqsegdb2/dqsegdb2-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-igwn-auth-utils
@@ -53,10 +55,10 @@ requests to DQSEGDB.
 %setup -q -n dqsegdb2-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -67,6 +69,6 @@ requests to DQSEGDB.
 %doc README.md
 %license LICENSE
 %{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{modname}-%{version}.dist-info/
 
 %changelog
