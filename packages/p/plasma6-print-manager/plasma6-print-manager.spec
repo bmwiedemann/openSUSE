@@ -17,8 +17,8 @@
 #
 
 
-%define kf6_version 6.10.0
-%define qt6_version 6.7.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %define rname print-manager
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -27,14 +27,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-print-manager
-Version:        6.3.5
+Version:        6.4.0
 Release:        0
 Summary:        Tools for managing print jobs and printers
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cups-devel >= 2.4
@@ -45,7 +45,6 @@ BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
-BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiAddons)
@@ -55,7 +54,6 @@ BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(Plasma) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
@@ -99,11 +97,9 @@ plasma6-print-manager provides tools for managing print jobs and printers.
 %{_kf6_applicationsdir}/kcm_printer_manager.desktop
 %{_kf6_applicationsdir}/org.kde.ConfigurePrinter.desktop
 %{_kf6_applicationsdir}/org.kde.PrintQueue.desktop
-%{_kf6_applicationsdir}/org.kde.kde-add-printer.desktop
 %{_kf6_appstreamdir}/org.kde.plasma.printmanager.appdata.xml
 %{_kf6_appstreamdir}/org.kde.print-manager.metainfo.xml
 %{_kf6_bindir}/configure-printer
-%{_kf6_bindir}/kde-add-printer
 %{_kf6_bindir}/kde-print-queue
 %{_kf6_debugdir}/pmlogs.categories
 %{_kf6_libdir}/libkcupslib.so.*
