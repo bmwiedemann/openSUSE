@@ -2441,4 +2441,13 @@ New stable release</comment>
     <comment></comment>
     <requestid>1280300</requestid>
   </revision>
+  <revision rev="282" vrev="4">
+    <srcmd5>475546f1fa34daad755dba3d79ef7d7b</srcmd5>
+    <version>1.52.0</version>
+    <time>1750254801</time>
+    <user>anag_factory</user>
+    <comment>- document static ip setup on boot (bsc#1244072)
+  add 0001-man-document-static-ip-setup-differences-to-dracut-n.patch (forwarded request 1285042 from JonathanKang)</comment>
+    <requestid>1285993</requestid>
+  </revision>
 </revisionlist>

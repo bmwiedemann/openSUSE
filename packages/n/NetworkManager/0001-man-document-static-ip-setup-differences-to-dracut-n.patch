@@ -1,0 +1,35 @@
+From b2abb374a7e1500df73db4f6a93fa178c426db0a Mon Sep 17 00:00:00 2001
+From: Thomas Blume <Thomas.Blume@suse.com>
+Date: Wed, 11 Jun 2025 07:35:46 +0200
+Subject: [PATCH] man: document static ip setup differences to dracut
+ network-legacy
+
+---
+ man/nm-initrd-generator.xml | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/man/nm-initrd-generator.xml b/man/nm-initrd-generator.xml
+index 312edff2ee..c4ea8baf8f 100644
+--- a/man/nm-initrd-generator.xml
++++ b/man/nm-initrd-generator.xml
+@@ -193,6 +193,18 @@
+         NetworkManager doesn't.</para>
+       </listitem>
+ 
++      <listitem>
++        <para>When an interface is configured with a static address,
++        there is no need to disable autoconf via parameters.
++        The netmask can be give either in four digit dot separated
++        notation or as decimal number network prefix length.
++        For example:
++        <literal>ip=192.168.100.99::192.168.100.222:255.255.255.0:myhost:ens10</literal>,
++        <literal>ip=192.168.100.99::192.168.100.222:24:myhost:ens10</literal>,
++        <literal>ip=[2001:DB8:2::99]::[2001:DB8:2::1]:8:myhost:ens10</literal>.
++        </para>
++      </listitem>
++
+       <listitem>
+         <para>network-legacy configures interfaces one by one in the
+         order in which they are announced by udev. If multiple
+-- 
+2.49.0

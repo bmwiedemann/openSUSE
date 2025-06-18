@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 11 06:59:12 UTC 2025 - Thomas Blume <thomas.blume@suse.com>
+
+- document static ip setup on boot (bsc#1244072)
+  add 0001-man-document-static-ip-setup-differences-to-dracut-n.patch
+
+-------------------------------------------------------------------
 Mon May 26 09:15:36 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Stop relying on the UsrMerge symlinks and ensure we look directly
