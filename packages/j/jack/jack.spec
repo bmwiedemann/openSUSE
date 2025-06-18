@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(celt) >= 0.5.0
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(eigen3) >= 3.1.2
 BuildRequires:  pkgconfig(expat)

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 16 20:41:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(celt) BuildRequires: The CELT codec has been
+  merged into the IETF Opus codec and is now obsolete.
+
+-------------------------------------------------------------------
 Sat Nov 23 16:43:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add python313-waflib.patch to fix build with python 3.13
