@@ -1,0 +1,9 @@
+<package name="aurorae6" project="openSUSE:Factory">
+  <title>Themeable window decoration for KWin</title>
+  <description>Aurorae is a themeable window decoration for KWin.
+
+It supports theme files consisting of several SVG files for decoration and
+buttons. Themes can be installed and selected directly in the configuration
+module of KWin decorations.</description>
+  <url>https://www.kde.org/</url>
+</package>

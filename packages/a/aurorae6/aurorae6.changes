@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Thu Jun 12 10:37:09 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Drop unused dependency and mark KSvg as runtime
+  * Update version for new release 6.4.0
+
+-------------------------------------------------------------------
+Thu May 29 21:17:56 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+
+-------------------------------------------------------------------
+Mon May 19 19:41:21 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Initial release
+
+-------------------------------------------------------------------
+Sun May  4 08:57:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Init aurorae6
