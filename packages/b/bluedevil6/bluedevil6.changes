@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:37:10 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+
+-------------------------------------------------------------------
+Thu May 29 21:17:59 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+  * DevicesStateProxyModel: Split disconnecting into a dedicated state (kde#493245)
+  * DevicesStateProxyModel: Remove unused method
+  * Wizard: Sort devices with an actual name first
+
+-------------------------------------------------------------------
+Mon May 19 19:34:52 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Changes since 6.3.5:
+  * update version for new release
+  * applet: fix standalone widget toolbar
+  * applet: remove second argument of removeInternalAction
+  * applet: add optional badge overlay with number of connected devices
+  * applet: port to qml declarative
+  * Remove unused PROJECT_VERSION_MAJOR variable
+  *  kded/requestpin: only use forceActiveWindow on X11
+  * Fix glitch while scrolling with touch
+  * applet: Hide devices if bluetooth adapter is powered off
+  * CI: Add linux-qt6-next build
+  * Add xml/yaml linting
+  * kcm: keep "Pair Device" always visible (kde#499232)
+  * [kcm] Fix file receiver URL setting handling
+  * Use KConfigXT for bluedevilglobalrc
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue May  6 20:06:52 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
