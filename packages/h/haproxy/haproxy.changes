@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 11 10:50:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- modernize spec file with spec-cleaner. some changes (mostly
+  whitespaces) got reverted for readability
+
+-------------------------------------------------------------------
+Wed Jun 11 10:44:58 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add support to build against aws-lc with --with=awslc or in the
+  project config
+
+  ```
+  %define _with_awslc 1
+  Macros:
+  %_with_awslc 1
+  :Macros
+  ```
+
+-------------------------------------------------------------------
 Wed May 28 17:15:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update apparmor profile to allow new cpu binding handling

@@ -1660,4 +1660,12 @@
   patterns with a longer one. (bsc#1240971)</comment>
     <requestid>1282598</requestid>
   </revision>
+  <revision rev="160" vrev="3">
+    <srcmd5>687f48fb69bddfb16288e5880c396cc9</srcmd5>
+    <version>3.2.0+git0.e134140d2</version>
+    <time>1750262313</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1286645</requestid>
+  </revision>
 </revisionlist>
