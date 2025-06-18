@@ -16,16 +16,14 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname kconfig
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kconfig
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Advanced configuration system
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -36,9 +34,8 @@ Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 Source99:       kf6-kconfig-rpmlintrc
-BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
@@ -142,7 +139,7 @@ their changes to their respective configuration files. Development files.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -181,7 +178,6 @@ their changes to their respective configuration files. Development files.
 %{_kf6_libexecdir}/kconf_update
 
 %files devel
-%doc %{_kf6_qchdir}/KF6Config.*
 %{_kf6_includedir}/KConfig/
 %{_kf6_includedir}/KConfigCore/
 %{_kf6_includedir}/KConfigGui/
