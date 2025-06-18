@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun 17 21:16:41 UTC 2025 - david.mulder@suse.com
+
+- Update to version 0.9.16+git.0.aac2205:
+  * Disable passwordless Fido by default
+  * Stop using deprecated `users` crate
+  * Version 0.9.16
+  * When group membership lookup fails, use cached groups
+  * Just report whether some passwordless type is available
+  * Version 0.9.15
+  * Name-Based Group Matching in `pam_allow_groups` Leads to Potential Security Bypass
+  * Version 0.9.14
+  * Support Fido auth in pam passwd
+  * Add TAP support to himmelblaud and pam passwd
+  * Mixed case names should properly identify Hello Key
+  * Remove write locks where unecessary
+  * Fix group lookup for Entra Id group name
+  * Version 0.9.13
+  * Fix mixed case name lookup from PRT cache
+
+-------------------------------------------------------------------
 Tue May 20 07:19:23 UTC 2025 - david.mulder@suse.com
 
 - Update to version 0.9.12+git.0.99b5ca6:
