@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Wed Jun 18 06:57:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 25.2.5:
+  + [CP] Change CP SUBCOMP ID
+  + [Decode] [PDVT-SH] Clean up noise message for Decode
+  + [Media Common] [VP][HWS2] enable BLT copy native fence sync by cmd
+  + [Encode] RDM Dump adding
+  + [Encode] [PDVT-SH] Fix av1 open source failure
+  + [VP] Fix IP leak issue
+  + [VP] fix_colorfill_fail
+  + [VP] Enable VRT Mode
+  + [VP] add critical messages for features disabled reason in driver
+  + [VP] add critical message for Lace caps check
+  + [Encode] Enable HEVC Saliency Encode
+  + [VP] Refine 3DLUT generation path control
+  + [Encode] fix AVC BRC PrepareHWMetaData
+  + [Encode] Fix resolve metadata issue
+- Fix URL to source tarball.
+
+-------------------------------------------------------------------
+Tue Jun 10 14:44:43 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 25.2.4; changes since 25.1.4
+  * [VP] Disable VP features
+  * [Decode] [PDVT-SH] Fix vvc density r2r fail issue
+  * [Encode] update HEVC/AV1 tu7 CMD1 const settings for Xe2_Lpm and Xe2_Hpm
+  * [Decode] AVC HW cmd frame size update
+  * [Media Common] [MCPY] [PDVT-SH] Fix linear to linear blt copy
+  * [Media Common] Bump up version to 25.2.0
+  * [Media Common] Add BMG-E NEX2 Device ID
+  * add more device ID for BMG
+  * Revert "[VP] remove the reusable condition for no need check this for team pa…"
+  * [VP] LNL SFC WA
+  * [VP] disable VP features
+  * [VP] Level Zero Cmd Packet
+  * [Encode] [PDVT-SH] Fix AV1 trackbuffer zeroOnAllocate lock fail noise message
+  * [Decode] [PDVT-SH] Add Histogram for Decode HEVC
+  * [Encode] [PDVT-SH] PTL AV1 PreEnc Fullpipeline Watchdog threshold 8k update
+  * [Decode] [PDVT-SH] Update fast dump method to default
+  * [Encode] [PDVT-SH] Remove hardcode for vp9 slbb size calculation
+  * [VP] Refactor L0 Cmd Framework
+  * [Upstream] BMG DevID upstream
+  * [Decode] [PDVT-SH] Enable AVC VDAQM histogram
+  * [VP] update surface dump PostComp frame number
+  * [Decode] [PDVT-SH] Clean up usingSsfc flag
+  * [Encode] Add nullptr name in log
+  * [Encode] [PDVT-SH] Separate PTL vp9e hal from xe2
+  * [Encode] test for fastpass_LA
+  * [CP] Add command buffer dump in xe
+  * [Media Common] Bump up version to 25.2.1
+  * [Media Common] [VP][HWS] fix missing mhw wait logic
+  * [VP] Refactor Hybrid Mgr
+  * [Script] refine code comments
+  * [VP] update critical message log in Release
+  * [PDVT-SH][Media Common] compilation option
+  * [VP] Enable Post FC
+  * [Decode] fix hevc decode page fault issue
+  * [VP] expose dv base on SKU table
+  * [Encode] [PDVT-SH] PLT HuC kernel release v20250407 and switch vp9 to xe3 mhw and hal
+  * [VP] removed unsed code in dn filter
+  * [VP] Remove ZE Load in Construct
+  * [VP] Update TGNE Chroma fallback logic for cmodel match
+  * Update action runner to 22.04
+  * [VP] Return not support when cgc is need for vebox Type H
+  * Replace to emplace C++11 for code refactor and optimize inserts
+  * [Media Common] Bump up version to 25.2.2
+  * [Decode] compile definition optimization
+  * [Media Common] remove ENABLE_XE_KMD definition
+  * [Media Common][MMC] MMC definition optimization
+  * Revert "[Media Common][MMC] MMC definition optimization"
+  * [Encode] [PDVT-SH] AVC IMG STATE update for PTL
+  * [Encode] Add SetGpuContext in cm hal
+  * [Encode][PDVT-SH] Add HEVC 10bit 422 Encode support
+  * [VP] compiler option removal for media compile command line optimization
+  * Remove unused LayoutRight
+  * [Upstream][PDVT-SH] Upstream Jpeg encode for PTL.
+  * Enable Wa to disable object capture for DG1
+  * [VP] SR3 Slim EU
+  * [Media Common][MMC] MMC definition optimization
+  * [Encode] clean coverity issues, unchecked return values
+  * [Encode] [PDVT-SH] Update and upstream PTL mhw vdenc hwcmd and impl
+  * [Upstream] [PDVT-SH] Add Caps for PTL Upstream Jpeg code
+  * [Feature deprecation]:remove FEI support of gen9 and gen8
+  * [Encode] compile command line optimization
+  * [Encode] [PDVT-SH] PTL VP9 switch to new mhw and hal
+  * [Encode] [PDVT-SH] Update and upstream PTL vdaqm
+  * [VP] Fix Driver OCL 3DLut
+  * [Encode] enabling temporal scalability and LTR
+  * [Encode] Align AV1 BRC 444 Framesize
+  * [Encode] Xe2 HEVC CMD2 TU2 parameter update
+  * [Upstream] [PDVT-SH][Encode] Update AVC for PTL on Linux
+  * [Encode] [PDVT-SH] Update vp9e const settings and add PTL VP9 merge64 WA for CMD2
+  * [Media Common] Bump up version to 25.2.3
+  * [CP] Add oscontext check in perf profiler AddStoreBitstreamSizeCmd
+  * [Encode] [PDVT-SH] Fix vp9e cmd2 update
+  * [Encode] VME marcos optimization
+  * [VP] Enable Bindless Kernel
+  * Reapply "[Upstream] [PDVT-SH] Update HEVC Parms State and SCC for PTL"
+  * Add Backward compability in readme
+  * [VP] fix_rtlog_print_issue
+  * [Encode] [PDVT-SH] av1 scc update and upstream
+  * [VP] Fix Coverity Issue
+  * [VP] Add Stateful Surface for bti remove
+  * [Encode] [PDVT-SH][Upstream] cmds update and build error fix for upstream
+  * [Media Common] Bump up version to 25.2.4
+  * [VP] Change Stateless Buffer to AddResourceToCmd
+  * [Encode] [PDVT-SH] upstream encode hal files for PTL
+  * [PDVT-SH][Upstream] Update AV1 Encode Caps
+  * [Encode] [PDVT-SH] Update media interface for PTL
+  * [VP] Fix OCL FC FastExpress Corruption
+  * [VP] store the params when insert pipe
+  * [VP] Bindless and AiPipeline Stateless Buffer Change to AddResToCmd
+  * [Encode] Fix unchecked reture coverity issue
+  * [VP] enhance driver log for VPoutputpipe
+  * [VP] add free GPU virtual address on MTL
+  * [VP] Add 3DLut Assert Message
+  * [MOS] [PDVT-SH] enable warning level into the mos message level
+
+-------------------------------------------------------------------
 Wed Apr 16 14:38:13 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 25.1.4:
