@@ -5,12 +5,12 @@
 Index: ansi2html-1.9.2/tests/test_ansi2html.py
 ===================================================================
 --- ansi2html-1.9.2.orig/tests/test_ansi2html.py	2024-06-22 19:22:24.000000000 +0200
-+++ ansi2html-1.9.2/tests/test_ansi2html.py	2025-06-17 22:27:11.354092953 +0200
++++ ansi2html-1.9.2/tests/test_ansi2html.py	2025-06-18 16:25:45.121652936 +0200
 @@ -50,6 +50,7 @@
  
  class TestAnsi2HTML:
      maxDiff = None
-+    cmd_exe = "ansi2html-" + '.'.join([str(x) for x in sys.version_info[:2]])
++    cmd_exe = "ansi2html-%d.%d" % sys.version_info[:2]
  
      def test_linkify(self) -> None:
          ansi = "http://threebean.org#foobar"

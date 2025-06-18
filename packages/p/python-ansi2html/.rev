@@ -75,4 +75,12 @@
 </comment>
     <requestid>1286460</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>2d37dcf62a404b433a0be8d196663491</srcmd5>
+    <version>1.9.2</version>
+    <time>1750268521</time>
+    <user>anag_factory</user>
+    <comment>- Use better expression to get version.</comment>
+    <requestid>1286722</requestid>
+  </revision>
 </revisionlist>
