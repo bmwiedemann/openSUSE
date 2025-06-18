@@ -1,0 +1,1146 @@
+-------------------------------------------------------------------
+Mon Mar 17 20:11:50 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Modernize and clean spec file
+  * Update dependencies
+  * Add lang package
+  * Build as noarch
+  * Run tests
+- Update to 3.11.5
+  * New features
+    + Add PotPlayer Support For Windows (#1583)
+    + New subscription statistics extension (#1590)
+    + Add path.alternate setting so users can append to PATH inside gpodder
+      (#1649)
+    + Add view menu podcast and episode list checkboxes to preferences (#1618)
+    + New podverse search extension (#1615)
+    + Add socks proxy to settings and network tab in Preferences (#1592)
+    + Add color scheme (dark and light mode) support (#1595)
+    + Add forceDownload action to Downloads context menu and toolbar
+  * Improvements
+    + Replace context GtkMenus with GtkPopovers (#1293)
+    + Group subscriptions in OPML import/export (#1658)
+    + Sort episodes by published date when sending to folder (#1624)
+    + SendTo automatic rename filename (#1620)
+    + Extract YouTube channel ID from URL (#1603)
+    + Modernize userappsdirs (#1601)
+  * Bug fixes
+    + Limit the length of UTF-8 filenames (#1645)
+    + Change %d to %ld in Windows launcher (#1589)
+- Update to 3.11.4
+  * This release only updates dependencies in the Windows and Mac builds
+- Update to 3.11.3
+  * Improvements
+    + #1544 add setting to toggle sync filesize comparisons (disable if your
+      device adds metadata)
+    + #1551 show remaining duration for each download in progress tab
+    + #1551 make file size units translatable
+    + #1553 add plural form of rename downloads translation string
+    + #1559 expand ~ and ~user in GPODDER_HOME and GPODDER_DOWNLOAD_DIR
+    + find channel ID in YouTube "watch" URLs
+    + replace deprecated Gdk.Screen methods
+    + update dependencies
+  * Bug fixes
+    + #1492 catch errors for directories inside sync device
+    + #1542 fix #1538 corrupt accented letters on Windows
+    + #1549 fix YouTube GDPR issues by setting consent cookie in get_channel_id_url()
+- Update to 3.11.2
+  * Major changes:
+    + show episode release time
+    + fix a crash when syncing
+    + don't reposition maximised windows
+  * New features
+    + #1507 add a View menu option to show time in the episode released column
+    + #1507 add a View menu option to right align the episode released column
+    + #1507 always show released time in shownotes
+    + add EQL adjectives 'failed' and 'paused'
+  * Improvements
+    + #1480 appdata: fix syntax, add 3.9-series release dates
+    + #1480 appdata: add release 3.11.1
+    + #1484 require python 3.7
+    + #1520 adapt youtube-dl plugin to latest yt-dlp
+    + #1522 fix various typos found by codespell
+    + display feed name when logging update errors
+    + refactor _receive_configure_event()
+    + log 'from' and 'to' sizes when syncing files
+    + raise exception when gpodder.net queries fail
+    + log exceptions when searching for podcasts on gpodder.net
+    + bump required yt-dlp version for changes in #1520
+    + fix more typos found by codespell
+    + fix linter issues for pycodestyle 2.11.0
+    + update dependencies
+    + add codespell to linter
+  * Bug fixes
+    + fix typo in youtube-dl extension preferences
+    + add empty custom_downloader field in SyncTask to prevent exception
+    + do not move window if maximised
+    + fix issue retrieving channel ID for Youtube pages
+- Update to 3.11.1
+  * Major changes:
+    + fix multiple bugs that caused gPodder to freeze or appear frozen
+    + embed subtitles in videos with youtube-dl extension
+    + performance improvements
+  * New features
+    + #1297 add setting to treat only really new episodes as new after an
+      update
+    + #1303 add setting to disable find-as-you-type
+    + #1363 download and embed subtitles in youtube-dl downloader
+    + #1402 add menu item to open logs folder
+    + #1442 rename extension: add menu item to rename all episodes
+    + #1444 add setting to disable trimming episode title prefix
+    + #1461 allow channel to be selected from both episode menus
+    + #1463 add config to set playlist file extension
+    + add 'url', 'link' and 'filename' EQL nouns
+  * Improvements
+    + #1304 gpo: add description and link fields to info
+    + #1355 keep 'find partial downloads' dialog open longer
+    + #1357 change /usr/bin/python -> /usr/bin/env python3 and remove unneeded
+      shebang lines
+    + #1367 add util.IdleTimeout class to reduce lag when updating progress tab
+    + #1368 improve cancelling and manually updating in progress dialogs
+    + #1368 add progress dialogs for long running actions
+    + #1369 add icon to clear URL in the add podcast dialog
+    + #1372 replace SimpleMessageArea with GtkInfoBar when resuming
+    + #1372 do not hide progress tab resume infobar on page switch
+    + #1374 channel editor: add buttons next to cover, feed URL, etc
+    + #1390 appdata: merge appdata.xml from flathub
+    + #1390 appdata: add missing release dates since version 3.10.0
+    + #1400 write to log when sync directory is not writable
+    + #1401 catch unknown sync exceptions when opening device and show error
+    + #1403 quote file URIs moved by drag and drop
+    + #1404 use symbolic toolbar icons
+    + #1429 gpo: queue all episodes before download to allow resuming
+    + #1431 add flake8 config and fix some code style issues
+    + #1433 remove localdepends.py
+    + #1435 optimize episode list
+    + #1443 remove legacy settings
+    + #1452 improve UI responsiveness when downloading hundreds to thousands of
+      episodes
+    + #1452 improve responsiveness when shift-selecting episodes
+    + #1464 accept coverart as SVG
+    + remove redundant force_start parameters
+    + switch deprecated GObject functions to GLib
+    + remove unused 'others' variable in update_downloads_list()
+    + log which program the youtube-dl extension is using
+    + show youtube-dl/yt-dlp name and version in preferences
+    + remove redundant timeout removal when creating progress dialog
+    + close progress dialog immediately in concatenate videos extension
+    + add method to clamp a config value between minimum and maximum values
+    + allow different required versions for youtube-dl and yt-dlp
+    + change include_description parameter to required
+    + cache episode list config values
+    + organize View menu and move some preferences to it
+    + rename showEpisodeDescription's internal names to match other items
+    + don't discard episodes with invalid urls and links
+    + set error icon for episodes with invalid URLs
+    + don't show episodes without URLs in "new episodes available" when
+      subscribing
+    + set download list state only once after batch queueing tasks
+    + log URL when youtube.py can't get channel ID
+    + don't display stacktrace for common download errors
+    + update dependencies
+  * Bug fixes
+    + #1353 fix hang when resuming thousands of episodes
+    + #1356 fix #1352 reset window position if completely off-screen
+    + #1374 fix setting cover image from local file
+    + #1382 fix #1360 fix yt-dlp output file name
+    + #1383 fix #1263 don't try to download media files with youtube-dl
+      extension
+    + #1398 fix duration when greater than 24 hours
+    + #1434 fix #1416 check for size mismatch when syncing and send to device
+      again
+    + #1440 fix #1439 fix support for old versions of yt-dlp
+    + #1441 tagging extension: delete tags before modifying
+    + #1452 fix #1311 remove all timer deadlocks by using idle_add priority for
+      them
+    + #1465 fix absolute path setting for playlist and two_way_sync
+    + fix stripping of pasted text when adding podcast URL
+    + fix #1350 set "New episodes available" tooltip for episodes with html
+      descriptions
+    + gpo: remove download directory when unsubscribing
+    + fix #1394 fix crash on older versions of python
+    + fix #1311 don't use idle_add() for progress dialogs that don't need it
+    + fix #1399 fix msgstr errors in Norwegian Bokmål translation
+    + update progress tab widgets when their values are modified via edit
+      config
+    + disable progress tab spinbuttons if unchecked at startup
+    + throw exception if youtube channelId is empty to avoid clearing
+      description and coverart
+    + fix #872 get rid of custom icons for each type of audio and video file
+      (also improves episode list redraw speed)
+    + require new version of youtube-dl/yt-dlp to fix youtube.com change
+
+-------------------------------------------------------------------
+Tue Dec 13 10:40:24 UTC 2022 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Update to 3.11.0
+  * Major changes:
+    + Warning there is a database schema update
+    + numerous bug fixes
+    + performance improvements
+    + a new preferences dialog
+    + support again syncing to mtp:// and iPod devices on Linux
+  * New features
+    + #1054, #1112, #1115, #1149, #1152, #1155, #1160, #1191, #1213
+      use Gio for file system based device sync (allows mtp:// URLs
+      for Linux only)
+    + #1083 add option to rename_download extension to put the
+      sortdate after the podcast title
+    + #1108 add --close-after-startup option for benchmarking
+      startup time
+    + #1121 add option to require control click to sort episodes
+    + #1127 double-click or press Enter to open channel settings
+    + #1132 allow distributions to disable the update check
+    + #1289, #1334, #1335 iPod support restored using ctypes and
+      libgpod (needs libgpod installed on the system)
+  * Improvements
+    + #1093 reset shownotes scrolling to top when changing episodes
+    + #1094 create an html description when none provided by feed to
+      highlight links in shownotes
+    + #1096 restore window maximize state
+    + #1098 make the text shownotes title a clickable and copyable
+      link
+    + #1105 fix loading of cached thumbnails to reduce startup time
+    + #1107 refactor resize_pixbuf_keep_ratio to speed up thumbnail
+      scaling
+    + #1108 add logging and advanced cli option groups
+    + #1120 support PEP 440 local version label
+    + #1130 query duration for youtube episodes when not using
+      youtube-dl
+    + #1135 use a TextView for dialogs with multiple text lines
+    + #1154, #1156, #1172, #1188 remove deprecated Gtk features
+    + #1158 remove unused variables from play_or_download
+    + #1159 show paused tasks in progress tab
+    + #1161 set a paused icon in episode list when an episode is
+      paused
+    + #1174 improve youtube initial player response regular
+      expression
+    + #1182, #1259 use youtube-dl or yt-dlp for the youtube-dl
+      extension
+    + #1201 open error dialog if user tries to use not-installed
+      program
+    + #1201 open error dialog if xdg-open is not found when opening
+      a folder
+    + #1233 reduce number of network queries per youtube feed
+    + #1233 catch youtube coverart and description query errors and
+      show better error messages
+    + #1235 make error message more verbose on NotFound gpodder.net
+      sync error
+    + #1242 allow pausing and resuming downloads from Episodes and
+      context menus, and toolbar
+    + #1244 undelete deleted episodes when a download is attempted
+      so failure leaves it undeleted
+    + #1246 add episode art URL and chapters to database
+    + #1248 allow failed downloads to be cancelled from episodes
+      list
+    + #1249, #1252, #1255, #1269 refactor episode/task actions for
+      consistency between toolbar and context/Episodes menus
+    + #1261 use GtkStack instead of GtkNotebook in preferences
+    + #1268 add youtube-dl extension to preferences dialog
+    + #1272 show episodes without downloadable content
+    + #1274 narrower preferences dialog
+    + #1285 open episode download folder from context and Episodes
+      menus
+    + #1300 retry failed episode downloads, without authentication,
+      if feed uses authentication
+    + #1313 remove border around extensions list in preferences
+    + #1330 add/remove extension preferences buttons when
+      loaded/unloaded
+    + optimize youtube code
+    + support youtube 'user' feed URLs
+    + change order of progress button status counts
+    + make the About dialog text selectable to copy version
+    + use all lowercase letters in youtube-dl name
+    + use proper capitalization for YouTube name
+  * Bug fixes
+    + #1106 properly scale cover/pill on hires displays
+    + #1110 fix missing extension when downloading youtube-dl
+      format=worstaudio (audio/webm mimetype)
+    + #1124 fix #1099 folder not escaped when renaming podcast from
+      dialog
+    + #1126, #1211 fix Windows taskbar progress extension
+    + #1141 delay episode treeview column reordering to prevent gtk
+      warnings on console
+    + #1145 restore window position before and after window is shown
+      to fix issues with some window managers
+    + #1171 actually delete partial file when cancelling
+    + #1171 cancel failed task before streaming
+    + #1193 do not try to rename the outtmpl file in the youtube-dl
+      extension
+    + #1206 fix shownotes for episodes that contain HTML comments
+    + #1219 youtube-dl extension should always rename partial files
+      with extensions
+    + #1219 clean up parial files created by cancelled YoutubeDL
+      downloads
+    + #1221 perform chosen "after sync" action in gpo
+    + #1222 fix warning when exporting to local folder on systems
+      with buttons in dialog headerbar
+    + #1222 fix typo in "file exists" message when saving episodes
+    + #1228 create partial file when reusing cancelled tasks
+    + #1262 prevent youtube-dl failure for some RSS feeds
+    + #1265, #1286 MPRIS extension fixes
+    + #1276 trim leading/trailing whitespace in user-clipboard
+      auto-inputted URLs
+    + #1280 open links in HTML shownotes
+    + #1287 close extension files after reading metadata
+    + #1287 change deprecated logger.warn() to logger.warning()
+    + #1287 close config file after loading it
+    + #1320 prevent links from opening browser twice
+    + #1335 don't print traceback on missing eyed3.mp3
+    + fix #1227 pixbuf could be None in some cases
+    + fix #1254 prevent crash when gpo sync removes episodes from
+      gpodder
+    + remove erroneous logger parameter when failing to get Youtube
+      GDPR URL
+    + prevent normalize extension from placing files in the
+      directory gpodder was started in
+
+-------------------------------------------------------------------
+Thu Aug 19 06:14:17 UTC 2021 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Update to 3.10.21
+  * Improvements
+    + #1071 narrow channel dialog
+    + add Strawberry player to the enqueue extension
+    + skip non-integer youtube formats
+    + use util.urlopen instead of requests.get for youtube
+    + save and restore channel dialog state
+  * Bug fixes
+    + #1065 prevent soundcloud from downloading existing episodes
+      on each update
+    + #1073 fix native youtube support in Europe by automatically
+      accepting GDPR consent form
+    + #1084 fix native youtube support by trying new endpoint
+      before old endpoint
+    + #1095 fix links in About dialog on platforms without gvfs
+    + fix 'msgid' format string with unnamed arguments cannot be
+      properly localized warning
+    + fix DRM content detection for youtube episodes
+    + fix "gpo sync" failure
+    + fix soundcloud API change when adding new channels
+  * Translations
+    + French
+    + Slovak
+    + Turkish
+    + Russian
+
+-------------------------------------------------------------------
+Mon Jun  7 06:21:17 UTC 2021 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Update to 3.10.20
+  * Improvements
+    + #934 add more episode details to shownotes
+    + #949 allow episodes with youtube-dl compatible URLs
+    + #983 show channel or episode titles in delete dialog
+    + #990 never delete locked episodes
+    + #996 do not attempt to download episodes that lack an URL
+    + #1001 add funding link on github project page
+    + #1015 add checkbox to disable connection checking
+    + #1018 build gPodder bundle from tools/mac-osx and downloaded
+      generic bundle
+    + #1028 create config file with group/world permissions revoked
+    + #1030 improve channel and episode searching
+    + #1031 allow a narrower podcast directory window
+    + #1035 make refreshing channel image more discoverable and
+      easier to do
+    + #1037 cancel failed download in progress tab when deleting
+      episode
+    + #1039 show error icon on episodes that fail to download
+    + #1040 show section if any of its channels have an update error
+    + #1044 improve Youtube streaming
+    + #1047 use latest Youtube-DL for Windows builds (Mac builds did
+      the same in #1018)
+    + #1055 subscribe to Youtube channels via video pages
+    + support dragging HTTPS URLs to image in channel dialog
+  * Bug fixes
+    + #991 properly toggle deleted episodes to new
+    + #1015 fix connection checking for some linux users
+    + #1034 fix dragging an image URL to image in channel dialog
+    + #1043 fix internal Youtube support
+    + #1059 using audio formats with Youtube-DL will show audio icon
+      and use audio player
+    + #1060 add tools/requirements.txt (should fix socks proxy in
+      flatpak)
+    + fix "Open" item on episode context menu and give it an icon
+    + skip 'best' Youtube formats when using built-in support
+    + bump required youtube-dl version to 2021.02.04
+  * Translations
+    + Norwegian Nynorsk
+    + Dutch
+
+-------------------------------------------------------------------
+Mon Apr 19 07:50:18 UTC 2021 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Update to 3.10.19
+  * New features
+    + #897 add 'Always show new episodes' toggle to view menu
+    + #966 add combined duration and size columns to episode list
+    + #971 make sections selectable + filter episodes on channel
+      search pattern
+  * Improvements
+    + #843 use the requests package (compressed feeds, redirects,
+      and more)
+    + #919 log youtube-dl version and warn if known to have issues
+    + #930 prevent 'add podcast' text entry from expanding
+      vertically
+    + #931 refactor shownotes
+    + #933 get correct window size when saving UI state
+    + #933 do not save or restore window position
+    + #943 set episode selector title before creating window
+    + #946 narrow down About dialog, pack items vertically
+    + #952 don't reset last folder to home if cancel is selected in
+      'Send to' dialog
+    + #951 skip episode media with 'application/*' mime type, if
+      there is video or audio
+    + #953 make layouting calculations clearer in draw_text_pill()
+    + #957 strip HTML tags from channel descriptions
+    + #965 disable context menu item if channel or episode has no
+      website
+    + #962 remove deprecated gtk elements in preferences dialog
+    + remove config.player and config.videoplayer from legacy
+      settings
+    + #968 show URL that caused invalid feed error
+    + #984 require either DISPLAY or WAYLAND_DISPLAY being set
+  * Bug fixes
+    + fix macOS dependencies
+    + revert window position save and restore code
+    + fix #608 308 redirects
+    + fix #905 HTTPS_PROXY
+    + #910, #913, #915 fix windows installer build script
+    + #927 don't leak kernel version in user-agent
+    + #940 fix uncaught exception on channel list key navigation
+    + fix gtk warnings in mass unsubscribe dialog when podcast title
+      contains ampersand, etc.
+    + #954 fix unit tests
+    + #970 fix warning on non-200 status codes in coverart
+    + #975 fix connectivity checking
+
+-------------------------------------------------------------------
+Mon Nov 23 09:19:34 UTC 2020 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Update to 3.10.17
+  * New features
+    + Run command on download works from gpo
+  * Improvements
+    + Rename youtube-dl partial file when it contains % or $
+      characters
+    + MKV Files Not Properly Renamed,
+    + Youtube rss feed urls
+    + Discard episode when its GUID collides with a newer episode.
+    + Show update error in the podcast dialog (for copy-paste and
+      seeing it fully)
+    + Youtube live streaming support
+    + Add youtube streaming format for 1080p
+    + Detect new key name for youtube DRM content
+    + Avoid stale Today and Yesterday dates by refreshing episodes
+      daily
+    + upport youtube user url
+  * Bug fixes
+    + Fix tagging extension exception on mkv files
+    + Fix shortcut key conflict Episode descriptions vs Discover
+      new Podcasts
+    + Fix youtube-dl not responding to config change
+    + Detect DORMANT wifi state as online
+    + Only send a single channel update error notification to avoid
+      spamming the user
+    + Fix gtk exception when hiding deleted episodes
+    + Fix already subscribed to youtube feed in some cases
+    + Fix escapist and gpo issues caused by youtube streaming
+    + Remove leftover debug message
+    + Fix translation of Youtube playlist URL to a feed
+    + Fix prevent an empty entries bug in YouTube-DL from removing
+      all episodes.
+  * Translation updates:
+    + Chinese
+    + Russian
+    + Brazilian Portuguese
+    + German
+    + Dutch
+    + Italian
+    + Norwegian Nynorsk
+
+-------------------------------------------------------------------
+Tue Jun 30 07:54:52 UTC 2020 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Update to 3.10.16
+  * New features
+    + Add menu items to trigger podcast/episode search
+    + Add EQL functions to match text in title and/or description
+      (S("case sensitive")), (s("case insentitive")), (R("case
+      sentitive regex")), (r("case insentitive regex"))
+    + Add podcast and section EQL variables for use with SsRr
+      functions (in addition to title and description)
+    + Filter episodes extension works in gpo
+    + --quiet flag for less messages on the console
+    + Better client-side decorations on environments requesting them
+      (gnome3)
+  * Improvements
+    + Refactor youtube formats and add settings for more resolutions
+    + Don't clear custom youtube formats when switching to a builtin
+      one
+    + Better indicate optional imports (gpod and eyed3.mp3)
+  * Bug fixes
+    + Fix ubuntu/unity extensions
+    + mpris_listener playback position lost on VLC quit
+    + Gtk UI: Force-resize icons in player list
+    + Readable hyperlinks in shownotes with darker themes
+    + Outdated podcastparser on windows (and macOS)
+  * Updated Translations
+    + Dutch
+    + French
+    + German
+    + Norwegian Nynorsk
+
+-------------------------------------------------------------------
+Wed Apr 22 09:21:08 UTC 2020 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Update to 3.10.15
+  * New features
+    + Filter Episodes extension, allowing to prevent automatic
+      download of episodes matching a pattern
+  * Improvements
+    + support subtitle and comment in tagging extension
+    + extension management via gpo
+    + episode selector: remove default focus on Download button
+    + show channel url in error dialog
+    + youtube_dl integration improvements
+    + show error message and emblem on channel cover when an error
+      occurs refreshing it
+  * Bug fixes
+    + windows installer: can't support custom installation path
+    + fix gpodder.ui.unity check for newer Ubuntu versions
+    + fix a regression with the remaining term in queries
+  * Translations
+    + Updated French
+    + Updated German
+    + Updated Hebrew
+    + Updated Norwegian Nynorsk
+
+-------------------------------------------------------------------
+Wed Mar  4 07:34:02 UTC 2020 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Update to 3.10.13
+  * Latest release for Python 3
+- Remove dependency on libgpod-python, since it does not exist
+  for Python 3
+
+-------------------------------------------------------------------
+Mon Jan  8 06:58:15 UTC 2018 - fridrich.strba@bluewin.ch
+
+- Update to 3.9.6
+  * Current latest release from the Python 2, Gtk+2 and PyGTK
+    branch.
+
+-------------------------------------------------------------------
+Tue Nov 14 22:59:36 UTC 2017 - zaitor@opensuse.org
+
+- Add conditional for python-eyeD3 BuildRequires and Requires, no
+  longer available for Tumbleweed and Leap 15.
+
+-------------------------------------------------------------------
+Mon Jan  9 08:03:40 UTC 2017 - fridrich.strba@bluewin.ch
+
+- update to 3.9.3
+  * Soundcloud: Increase track limit (by mprangenberg)
+  * Fix HTTP conditional GET (Fixes #193, #182)
+  * Podcastparser 0.6.1: Work around a XML parsing bug when PyXML
+    is installed (#185)
+
+-------------------------------------------------------------------
+Mon Dec  5 07:29:30 UTC 2016 - fstrba@suse.com
+
+- update to 3.9.2
+  * Fix tagging download extension (#148, patch by Eric Le Lay)
+  * Improve YouTube cover art resolution (patch by Hiltronix)
+  * win32-launcher: Fix crash when Python is missing
+  * Sync UI: Update podcast list after sync (#136)
+  * Port from feedparser to podcastparser
+  * Set UI upper limit for episodes per podcast based on current value
+  * Cache cover art thumbnails in SQLite database
+  * Load/update the episode list model in the background
+
+-------------------------------------------------------------------
+Mon Nov  7 08:56:38 UTC 2016 - fstrba@suse.com
+
+- update to 3.9.1
+  * win32-launcher: Fix compatibility issues with Python 2.7.11
+  * Gtk UI: Remove WebKit1 support (Debian bug 790218)
+  * Add 'set_artist_to_album' config option to 'tagging' extension
+    (by Brian J. Cohen)
+  * Resolve all symlinks in path (bug 2064)
+  * Handle "mktime argument out of range" (by Markus Wamser,
+    bug 2023)
+  * Include OS name and version in user agent
+  * Don't fail if update server is down (bug 2067)
+  * Use html5lib/HTMLParser to find hyperlinks in show notes (by
+    Mathias Rav)
+  * desktopfile: Filter non-player apps (improves app selector
+    choices on Linux)
+
+- changes from 3.9.0:
+  * Added Korean translation (by Byeongkeon Kim)
+  * Device sync: Only fail if we can determine free disk space
+    (bug 2052)
+  * Enqueue episodes after download (Closes #133)
+  * Ubuntu AppIndicator extension: 'visible' config option
+  * gpodder.download: Ignore non-ASCII content-disposition header
+    (bug 2059)
+  * Win32-launcher: Remove download feature (works around Norton
+    warning)
+  * Remove WebUI, QML UI and MeeGo 1.2 Harmattan support
+  * Remove broken Flattr integration (use gpodder.net's Flattr
+    support)
+  * Redesign about dialog
+  * Preferences: Move video services to separate tab
+  * Vimeo: Fix Vimeo integration
+
+- changes from 3.8.5:
+  * Vimeo
+    + Fix vimeo feed discovery (bug 2009)
+    + Allow both http and https URLs (bug 2019)
+  * YouTube
+    + youtube: Improve channel migration code
+    + youtube: Fix cover art downloading (bug 2014)
+    + Make the YouTube key button link to the gPodder Wiki
+    + Add pattern to YouTube feed URL list (patch by Danilo Shiga)
+  * CLI: Cleanup old downloads on CLI startup (bug 2012)
+  * Gtk UI: Fix model column data types (bug 2008)
+  * Device sync: Handle sync failure when no space left (patch by
+    Aaron Wright)
+  * model: Limit filenames to 120 characters for eCryptFS
+    (bug 1898)
+  * rename_download: Add add_sortdate and add_podcast_title option
+  * Remove the unused 'pipe' IPC module
+  * Fix coverage usage
+  * Use Travis CI for running basic sanity tests
+  * Various small code improvements and fixes
+
+- do not ship ubuntu_unity.py plugin on SUSE
+
+-------------------------------------------------------------------
+Thu Sep 10 14:02:17 UTC 2015 - i@margueirte.su
+
+- update to 3.8.4
+  * Show covers directly after adding feeds (bug 1987)
+  * Update Sonos Extension
+  * Make sure cover_url is always set (bug 1978)
+  * gpodder.util: Fix timestamp issues (bug 1983)
+  * gpodder.download: Strip whitespace in url (bug 1991)
+  * tools/localdepends.py: Fix feedparser downloading
+  * Podcast details dialog: Avoid re-showing on close
+  * Updated German translation
+  * Support for The Escapist
+  * gpodder.directory: Remove broken YouTube search
+  * YouTube: Support V3 API via user-supplied key (bug 1999)
+  * YouTube: Auto-resolve URLs also in CLI and QML
+  * QML UI: Add YouTube API key text entry + migrate button
+  * CLI: Add "youtubefix" subcommand to rewrite URLs
+  * YouTube: Match _ in channel URLs
+
+-------------------------------------------------------------------
+Sun Nov 16 14:06:49 UTC 2014 - pascal.bleser@opensuse.org
+
+- update to 3.8.3:
+  * fixes a typo in the QML files that caused gPodder to fail to start up
+  * enable "Check for updates" by default, even on non-Windows platforms
+  * extension: Open website in episode list (bug 1958)
+
+- changes from 3.8.2:
+  * URL schemes (freedesktop.org and Windows)
+    - Install scheme handler for gpodder://, feed://, podcast:// and pcast://
+  * Gtk UI
+    - New podcast directory UI
+    - Keep reference to last "add podcast" dialog (bug 1021)
+    - Vimeo: Support for selecting the file format (bug 1954)
+    - gpodder.query: Also search in episode descriptions
+  * Plugins and Extensions
+    - Add support for The Escapist podcast
+    - Update enqueue_in_mediaplayer.py
+
+- changes from 3.8.1:
+  * gpodder.util: Don't force password to be lowercase (bug 1942)
+  * YouTube: Add support for channels, rewrite URL matching
+
+-------------------------------------------------------------------
+Thu Aug 21 16:58:30 UTC 2014 - darin@darins.net
+
+- update to 3.8.0
+
+-------------------------------------------------------------------
+Thu Jul  3 15:36:00 UTC 2014 - darin@darins.net
+
+- update to 3.7.0
+
+-------------------------------------------------------------------
+Sat Mar 30 14:53:36 UTC 2013 - pascal.bleser@opensuse.org
+
+- update to 3.5.0
+
+-------------------------------------------------------------------
+Tue Sep 25 06:04:32 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 3.3.0:
+  * fixes YouTube downloading
+  * adds several new extensions for better integration into Desktop
+    Environments
+  * decode enclosure filename properly (bug 1663)
+  * remove moving files to the "Unknown" folder (bug 1612)
+  * first changes for the flattr integration to better work when offline
+  * sortable dates for file names on sync device
+  * new extension: Gtk status icon (bug 1495)
+  * respect GPODDER_DOWNLOAD_DIR in the environment (bug 466)
+  * fix syncing with utf8-incompatible file names
+  * new extension: TED Talks Subtitles (Pull Request #9)
+  * extension: Minimize on start (bug 1633)
+
+-------------------------------------------------------------------
+Thu Jul 26 07:49:40 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 3.2.0:
+  * translation updates
+  * Flattr: Flattr-on-play integration
+  * DB schema: Cleaner upgrades, fix column order
+  * CLI: Show more of the title when updating feeds
+  * Gtk UI: embedded shownotes display
+  * QML UI: Show cover art in "All episodes" (bug 1602)
+  * Add "on_channel_context_menu" callback
+  * Added device sync using 'Downloads' tab to show progress
+  * QML UI: Set title bar text for multi-select sheet
+  * QML UI: Scroll episode list when opening last item
+
+-------------------------------------------------------------------
+Mon Apr 30 05:10:58 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 3.1.1:
+  * JSON Config: Convert float to int (bug 1590)
+  * CLI: Fix error handling bug with strerror
+  * Fix 'gPodderDownloadHTTPError' object has no attribute 'errcode'
+  * Gtk UI: Reintroduce "Open Download Folder" menu item
+
+-------------------------------------------------------------------
+Tue Mar 27 21:13:07 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 3.1.0
+
+-------------------------------------------------------------------
+Sun Feb 26 17:08:43 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 3.0.4: various improvements to the QML UI (for MeeGo 1.2 Harmattan
+  on the Nokia N9) and the text mode interface (CLI) with new features such as:
+  * gpodder.net searching from the command line
+  * a play queue for the QML UI
+  * episode list filtering
+
+-------------------------------------------------------------------
+Tue Jan 10 06:38:24 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 3.0.3:
+  * adds support for subscribing to Vimeo feeds
+  * various bugfixes and improvements to the common prefix elimination code for
+    episode titles
+
+-------------------------------------------------------------------
+Wed Dec 14 06:50:39 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 3.0.2:
+  * updates translations
+  * fixes a bug with the ordering of YouTube episodes
+  * some refinements to the QML UI for mobile devices, like the N9 running
+    Harmattan
+
+-------------------------------------------------------------------
+Fri Nov 18 23:35:56 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 3.0.1:
+  * don't hide failed attribute access in proxy
+  * Gtk UI: Cosmetic fix for progress dialog labels
+  * detect existing URLs on feed redirection (bug 1457)
+  * Media RSS: Get filesize and duration (bug 1446)
+  * Woodchuck: Make soft errors quieter (bug 1476)
+  * Woodchuck: Fix spelling mistakes (bug 1473)
+  * fix UnicodeDecodeError on startup (bug 1485)
+
+-------------------------------------------------------------------
+Tue Nov  8 00:49:49 UTC 2011 - pascal.bleser@opensuse.org
+
+- repackaged as "gpodder3" as it requires a migration of the database and ships
+  quite a few major changes as compared to gpodder 2.x; gpodder 2.x is
+  available as "gpodder" for now
+
+-------------------------------------------------------------------
+Mon Nov  7 13:52:21 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 3.0.0:
+  * a brand new QML UI in addition to the existing GTK UI
+  * support for Episode Query Language to filter down episode lists
+  * a new on-disk single-folder data structure, allowing easy backups of the
+    podcast database and downloads
+- note: gpodder-backup has been removed upstream
+
+-------------------------------------------------------------------
+Sat Aug 20 12:05:24 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.18:
+  * fixes problems with downloads from YouTube
+
+-------------------------------------------------------------------
+Fri Jul 22 08:25:56 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.16:
+  * use $EXTERNAL_STORAGE on Android (bug 1290)
+  * GTK UI: Show duration and position in shownotes (bug 1364)
+  * support %p (position) in player command (bug 1140)
+  * mygpo: convert remote timestamps to local time (bug 1036)
+  * fix issues with zero playback position (Maemo bug 12262)
+  * sync: Fix TypeError in device cleanup (bug 611)
+  * mygpo: Send timestamp as UTC to gpodder.net (bug 1036)
+  * fallback to "gio" for free disk space (bug 1361), this fixes problems with
+    iPods mounted via GVFS
+  * avoid errors with incomplete icon themes (LP bug 782303)
+  * load podcast list before update on startup (bug 1337)
+
+-------------------------------------------------------------------
+Tue May 03 22:01:35 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.15:
+  * fixes problems when saving episodes to folders
+  * also removes GStreamer-based track length detection, as it produced crashes
+    for some users
+  * description parsing support has also been improved
+  * for upgrades from older installations, the database schema is repaired to
+    allow multiple GUIDs in different podcasts
+  * updated translations: French, Galician, Norwegian Bokmål, and Spanish
+
+-------------------------------------------------------------------
+Wed Apr 27 04:53:05 UTC 2011 - pascal.bleser@opensuse.org
+
+- remove dependency on gnome-btdownloader, is obsolete
+
+-------------------------------------------------------------------
+Tue Apr  5 14:23:22 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.14:
+  * updated French translation
+  * fixes to the tray icon behavior
+  * various fixes to improve the parsing of podcast feeds
+
+-------------------------------------------------------------------
+Thu Feb 24 15:23:35 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.13:
+  * bugfix release of the stable 2.x series
+  * a YouTube-related directory bug was fixed
+  * the UI parts of the Maemo 5 variant were improved
+  * this is a recommended update for all gPodder users
+
+-------------------------------------------------------------------
+Wed Jan 12 14:06:37 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.12 "The Odyssey of Flight 33":
+  * fixes a problem with upgrades from older versions where the podcast list
+    would appear empty when the new version is started: the fix is both for new
+    upgrades and for databases on which the upgrade failed previously (#1198)
+  * fixes French translation
+
+-------------------------------------------------------------------
+Mon Dec 20 06:17:21 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.11 "Dance me a Dance":
+  * fixes the broken YouTube downloads
+  * fix only_sync_not_played for per-podcast sync (bug 1213): the
+    only_sync_not_played configuration option was not followed when the
+    per-podcast context menu item "Sync to device" was used, as all episodes of
+    that podcast were forced to be copied to the device; this is now fixed, and
+    only unplayed episodes will be copied in this case
+  * proper single-time download notifications (bug 1161): only show a
+    notification for finished or failed downloads once, both on the Desktop
+    version and on Maemo 5 by adding a special function to DownloadTask to keep
+    track whether or not the notification has already been shown previously
+  * YouTube: better error message for protected videos: YouTube protects pages
+    that contain violence, etc.. by requiring users to login to prove they are
+    over 18; we can't determine the fmt_url_map in that case, so this patch
+    adds a better error message to the failed download
+  * ignore invalid timestamp from iPod (bug 418)
+  * add support for file:// URLs for feeds (bug 1229)
+  * use first Content-length header (bug 1226):  use first matching
+    Content-length header when multiple found (occured with some cache/proxy
+    servers)
+  * fix a bug with type-less content in feeds
+  * nicer download filenames for Soundcloud streams
+
+-------------------------------------------------------------------
+Sun Nov 28 23:00:00 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.10 "There Lies A Widget, Stir!":
+  * shows download progress (downloaded size and file size) in the download
+    list
+  * new episode list icon style for all UI variants
+  * support for touchscreen-based tablet PCs in the Desktop UI variant
+  * various bugfixes and translation updates
+
+-------------------------------------------------------------------
+Sun Oct 10 21:54:31 UTC 2010 - pascal@links2linux.de
+
+- update to 2.9:
+  * various small fixes to bugs and UI problems that have surfaced since the
+    last release
+  * now supports sorting of the episode list by name, file size, and release
+    date
+  * pausing of subscriptions is also supported per-podcast, allowing the feed
+    update process to be more efficient for feeds that are on hiatus
+
+-------------------------------------------------------------------
+Sun Aug 29 10:54:38 UTC 2010 - pascal@links2linux.de
+
+- update to 2.8:
+  * YouTube video downloads have been fixex: downloading HD and SD videos works
+    correctly now
+  * a new (experimental) XSPF parser has been added
+  * many bugs and UI annoyances have been fixed
+  * the translations have been updated, and a new Greek translation has been
+    added
+
+-------------------------------------------------------------------
+Thu Jul  8 01:25:51 UTC 2010 - pascal@links2linux.de
+
+- update to 2.7:
+  * adds better integration with Panucci and gpodder.net, including merging of
+    retrieved episode actions from gpodder.net into the local database
+  * bugfixes and up-to-date translations are included
+
+-------------------------------------------------------------------
+Sun May 23 19:47:34 UTC 2010 - pascal@links2linux.de
+
+- update to 2.6:
+  * optimized Maemo 5 UI
+  * improvements to the episode list context menu for Maemo 4 and the Desktop
+    version
+  * the gpodder.net integration has also been improved
+
+-------------------------------------------------------------------
+Tue Apr 20 22:17:43 UTC 2010 - pascal@links2linux.de
+
+- update to 2.5:
+  * YouTube video downloads have been fixed
+  * most translations were updated
+  * some strings have been changed to make the UI more usable
+
+-------------------------------------------------------------------
+Tue Mar 30 08:18:16 UTC 2010 - pascal@links2linux.de
+
+- update to 2.4:
+  * bugfixes
+  * usability improvements
+  * some parts of the episode list handing have been optimized
+  * a new preferences dialog is available
+
+-------------------------------------------------------------------
+Sun Feb 28 00:49:54 UTC 2010 - pascal@links2linux.de
+
+- update to 2.3:
+  * updated translations
+  * some UI fixes
+  * fixes for issues that have been reported by users since gPodder
+    2.2 was released
+  * the "All episodes" view is enabled by default in this version
+
+-------------------------------------------------------------------
+Mon Feb  8 00:00:00 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.2:
+  * support has been added for an experimental "all episode" view and photo
+    feeds (e.g. Flickr)
+  * integration of my.gpodder.org (via the mygpoclient Library) has been
+    included
+  * a dialog for mass-unsubscribing of podcasts (instead of doing it
+    one-by-one) has been added
+
+-------------------------------------------------------------------
+Sun Dec 13 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 2.1:
+  * many bugs from the 2.0 release were fixed
+  * support was added for search-as-you-type in the podcast and episode list
+  * support was added for Soundcloud feeds
+  * this release is the first to support Maemo 5 right from the release day
+
+-------------------------------------------------------------------
+Fri Sep 25 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 2.0:
+  * support for episode list filtering was added
+  * the UI was refreshed for Maemo 4
+  * the new command-line utility "gpo" replaces the old CLI interface
+  * lots of bugfixes and performance improvements were made
+
+-------------------------------------------------------------------
+Fri Jul 31 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.17.0:
+  * fixes several bugs found in 0.16.1
+  * adds an improved feed update algorithm that is able to skip updates if new
+    episodes are highly unlikely
+  * support for Media RSS-based podcasts has been added
+
+-------------------------------------------------------------------
+Sat Jun  6 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.16.1:
+  * a redirection bug with YouTube has been fixed
+  * timeout errors should not occur anymore for some specific feeds
+  * better error reporting has been added to the GUI for low disk space
+    situations and permission problems
+
+-------------------------------------------------------------------
+Tue Jun  2 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.16.0:
+  * a new download manager with download pausing and resuming has been
+    implemented
+  * subscriptions can now be added by pasting URLs from the clipboard via a
+    button
+
+-------------------------------------------------------------------
+Sun Apr 12 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.15.2:
+  * fixes bugs found in version 0.15.1 and updates translation files
+
+-------------------------------------------------------------------
+Fri Mar 13 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.15.1:
+  * fixes a compatibility bug with Python 2.6
+  * two fixes that did not make it into the 0.15.0 release
+
+
+-------------------------------------------------------------------
+Tue Mar 10 00:00:00 UTC 2009 - guru@unixtech.be
+
+- update to 0.15.0:
+  * adds resuming downloads between sessions
+  * remembers the episodes that are downloading on exit
+  * the file and folder naming has been improved, so that files and folders
+    are now human-readable and easy to look at with a file manager
+  * a new tool, gpodder-backup, makes it possible to back up and restore
+    settings and downloads
+
+-------------------------------------------------------------------
+Tue Feb  3 00:00:00 UTC 2009 - guru@unixtech.be
+
+- update to 0.14.1:
+  * the Spanish, Russian, Finnish, Swedish, and French translations have been
+    updated
+  * some bugs in the user interface have also been fixed
+
+
+-------------------------------------------------------------------
+Fri Dec 12 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 0.14.0:
+  * YouTube user channels can now be used as video podcasts that download mp4
+    files
+  * the user interface has been improved and gPodder can now upload and
+    download podcast lists to my.gpodder.org
+
+
+-------------------------------------------------------------------
+Thu Oct 30 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 0.13.1:
+  * fixes bugs discovered since the 0.13.0 release
+  * updates four translations
+
+
+-------------------------------------------------------------------
+Thu Oct  9 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 0.13.0:
+  * adds support for Media Transfer Protocol-based MP3 players (sync support)
+  * implements usability interface changes
+  * some bugs found since the previous version have been fixed
+
+
+-------------------------------------------------------------------
+Wed Sep 10 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 0.12.3:
+  * fix large negative values for download progress (bug 160)
+  * detect and report HTTP errors when downloading (bug 106)
+  * do not try to load invalid/empty RSS image tag (bug 169)
+  * make gdfs-init work again (load_channels argument error)
+  * improve slash and duplicate episode name handling in gdfs (bug 170)
+  * fail if gpod is not available in iPod sync (bug 179)
+
+
+-------------------------------------------------------------------
+Sat Aug  9 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version:
+  * Swedish translation update
+  * fixes problems with the cover downloader
+  * corrects dialog behaviour of dialog windows
+  * corrects the podcast list sorting
+  * some minor problems with legacy encodings and episode file sizes have also
+    been fixed
+
+
+-------------------------------------------------------------------
+Thu Jul 24 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version:
+  * fixes some problems with device synchronization and the command line
+    interface that have been discovered in the 0.12.0 release
+  * updated French translation
+
+
+-------------------------------------------------------------------
+Tue Jul 15 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version:
+  * automatic cover downloads
+  * better file and folder naming
+  * support for Rockbox Cover Art
+  * SQLite database backend
+
+
+-------------------------------------------------------------------
+Mon Jun  2 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version:
+  * minor feature upgrades
+  * a revised main menu
+  * speedier updates when refreshing feeds
+  * a few translations have been updated
+
+
+-------------------------------------------------------------------
+Sat Apr 26 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Fri Mar 28 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Mon Feb 25 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Tue Jan 22 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Fri Dec 28 00:00:00 UTC 2007 - guru@unixtech.be
+
+- new package
+
+

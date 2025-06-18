@@ -1,0 +1,8 @@
+<package name="gpodder" project="openSUSE:Factory">
+  <title>A free podcast aggregator for Linux</title>
+  <description>gPodder manages Podcasts for you and automatically downloads selected episodes
+from as many channels as you like. Synchronization support is available for
+iPods and filesystem-based MP3 players, but Podcasts can (of course) also be
+played with any desktop player application.</description>
+  <url>https://gpodder.org</url>
+</package>
