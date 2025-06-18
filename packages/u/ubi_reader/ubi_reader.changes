@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jun 18 11:31:58 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.12
+  * Fix for KeyError in decrypt_filenames #110
+- Update to version 0.8.11
+  * Add UBIFS decryption support (fscrypt) #108
+
+-------------------------------------------------------------------
+Tue Feb 11 19:36:56 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.10
+  * Add close() and context management to ubi_file.
+  * read_block_data: use data_size for static volumes.
+  * parse the 'hash' field after 'key' in IDX:branch block.
+- Update to version 0.8.9
+  * Fix LZO decompression after switching to lzallright.
+- Update to version 0.8.8
+  * chore(poetry): bump lzallright version.
+- Update to version 0.8.7
+  * Fix faulty package name in requirements.
+  * deps: replace python-lzo by lzallright.
+  * Move to poetry.
+  * fix pyproject package definition.
+  * fix(scripts): adapt scripts so we can expose them thru poetry.
+
+-------------------------------------------------------------------
 Tue Dec  6 13:26:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.5:

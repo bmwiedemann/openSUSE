@@ -1,8 +1,8 @@
 #
 # spec file for package ubi_reader
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2018-2022, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2018-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,19 @@
 #
 
 
+%define pythons python3
 Name:           ubi_reader
-Version:        0.8.5
+Version:        0.8.12
 Release:        0
 Summary:        Extract files from UBI and UBIFS images
 License:        LGPL-3.0-or-later
 Group:          Development/Tools/Other
-URL:            https://github.com/jrspruitt/ubi_reader
-Source:         https://github.com/jrspruitt/ubi_reader/archive/v%{version}-master.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+URL:            https://github.com/onekey-sec/ubi_reader
+Source:         https://github.com/onekey-sec/ubi_reader/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python3-python-lzo
 BuildArch:      noarch
 
 %description
@@ -48,15 +49,15 @@ The following tools are included:
    Determine settings for recreating UBI image.
 
 %prep
-%setup -q -n ubi_reader-%{version}-master
+%autosetup -n ubi_reader-%{version}
 chmod -x README.md
 find ubireader -name "*.py" | xargs sed -i -e '/^#!\//, 1d'
 
 %build
-%python3_build
+%pyproject_wheel
 
 %install
-%python3_install
+%pyproject_install
 %fdupes %{buildroot}%{python3_sitelib}
 
 %files
