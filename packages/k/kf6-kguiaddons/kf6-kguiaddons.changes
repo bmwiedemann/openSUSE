@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun  9 20:29:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.15.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.15.0
+- Changes since 6.14.0:
+  * Update dependency version to 6.15.0
+  * SystemClipboard: Print which mime type errored or timed out
+  * Disable python bindings for Haiku also
+  * SystemClipboard: Destroy old data source after set_selection or set_primary_selection
+  * Add tags file to documentation
+  * Build Python bindings unless explicitly disabled
+  * Add wayland-protocols to third-party deps
+  * Add missing qhp project
+  * Add landing page for QDoc
+  * Port API documentation to QDoc syntax
+  * Update version to 6.15.0
+- Replace _kf6_bugfix_version usage
+
+-------------------------------------------------------------------
 Sun May  4 19:05:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.14.0
