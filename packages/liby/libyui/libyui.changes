@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  9 14:27:14 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- graphviz API broke in a recent version update (bezier size is now
+  of type size_t instead of int).
+A graphviz_unsigned_fix.patch
+
+-------------------------------------------------------------------
 Wed May 28 08:58:26 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Fix build failure with gcc-15:

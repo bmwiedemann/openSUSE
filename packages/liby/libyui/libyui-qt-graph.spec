@@ -44,6 +44,9 @@ Summary:        Libyui - Qt Graph Widget
 License:        LGPL-2.1-only OR LGPL-3.0-only
 URL:            http://github.com/libyui/
 Source:         libyui-%{version}.tar.bz2
+%if %{pkg_vcmp graphviz > 10.0.0}
+Patch0:         graphviz_unsigned_fix.patch
+%endif
 
 %description
 This package contains the Qt graph component for libyui.
@@ -82,6 +85,7 @@ for libyui.
 
 %prep
 %setup -q -n libyui-%{version}
+%autopatch -p1
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -DNDEBUG"

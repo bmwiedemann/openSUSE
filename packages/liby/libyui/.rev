@@ -798,4 +798,12 @@ build/package/libyui.spec:Version:        3.0.13</comment>
   Prevent complaint about hidden base class method (bsc#1243732)</comment>
     <requestid>1280827</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>0192b1174afb8a8c15ef9a64b92a7cba</srcmd5>
+    <version>4.7.3</version>
+    <time>1750254813</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1286022</requestid>
+  </revision>
 </revisionlist>
