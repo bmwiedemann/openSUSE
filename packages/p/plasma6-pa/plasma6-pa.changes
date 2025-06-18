@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:37:51 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+  * applet: don't freeze Plasma & don't auto-resize desktop widget
+  * applet: be less aggressive about indicating currentIndex
+  * applet: fix alignment in RtL
+  * applet: indent simple label if other view has radio buttons
+
+-------------------------------------------------------------------
+Thu May 29 21:22:59 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+  * applet/ListItemBase: also indent mute button without radio button
+  * applet: improve keyboard navigation and accessibility
+  * applet/listitem: increase delegate-intenal vertical spacing
+  * applet/ListItemBase: switch icon to view-more-symbolic
+  * applet: fix and simplify arrow key navigation
+  * applet: indent mute button in fullRepresentation
+
+-------------------------------------------------------------------
+Mon May 19 19:38:33 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Changes since 6.3.5:
+  * update version for new release
+  * applet: use section headers in listview (kde#503895)
+  * VolumeFeedback: Use custom role for volume feedback
+  * applet: size SmallToolButton correctly
+  * ListItemBase: Force plain text format
+  * StreamListItem: Show media.name if applicable (kde#453629)
+  * Use new plasma_add_applet API
+  * Show OSD when application starts using muted microphone
+  * appiumtest: make applettest less flaky
+  * applet: fix resetting wheel delta from previous scroll action
+  * kcms: call OSDs OSDs
+  * kded: Consult Bluez to get battery percentage
+  * CI: Add linux-qt6-next build
+  * applet: don't make inactive StackView pages initially visible
+  * kcm: make inactive detection more robust (kde#496682)
+  * Add xml/yaml linting
+  * applet: remove broken chord keyboard shortcut
+  * Add hamburger menu in plasma-pa applet (kde#497869)
+  * Const'ify pointer
+  * Add missing override/explicit keyword
+  * Fix qml warnings
+  * Use u"foo"_s
+  * It compiles without deprecated methods
+  * Remove unused #include <QtGlobal>
+  * Add headers in qtc6
+  * Use qCWarning(<foo>)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue May  6 20:12:46 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
