@@ -18,10 +18,10 @@
 
 %define cpan_name CryptX
 Name:           perl-CryptX
-Version:        0.86.0
+Version:        0.87.0
 Release:        0
-# 0.086 -> normalize -> 0.86.0
-%define cpan_version 0.086
+# 0.087 -> normalize -> 0.87.0
+%define cpan_version 0.087
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Cryptographic toolkit
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -219,7 +219,7 @@ Crypt::KeyDerivation
 Crypt::Misc
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
@@ -236,7 +236,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README.md
+%doc Changes README.md SECURITY.md
 %license LICENSE
 
 %changelog

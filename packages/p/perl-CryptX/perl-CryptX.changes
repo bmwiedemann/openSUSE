@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 11 14:55:45 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.87.0 (0.087)
+   see /usr/share/doc/packages/perl-CryptX/Changes
+
+  0.087   2025-06-11
+          - bundled libtomcrypt update branch:develop (commit: d448df1 2025-05-06)
+          - bundled libtommath update branch:develop (commit: 839ae9e 2025-06-11)
+          - fix #120 Create SECURITY.md
+          - fix #121 Failures on ARM after upgrading libtommath
+          - security fix CVE-2025-40914 https://github.com/DCIT/perl-CryptX/security/advisories/GHSA-6fh3-7qjq-8v22
+
+-------------------------------------------------------------------
 Sat May  3 05:34:24 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.86.0 (0.086)
