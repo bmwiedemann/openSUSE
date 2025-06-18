@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.10.0
-%define qt6_version 6.7.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %define rname plasma-systemmonitor
 
@@ -27,14 +27,14 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           plasma6-systemmonitor
-Version:        6.3.5
+Version:        6.4.0
 Release:        0
 Summary:        An application for monitoring system resources
 License:        GPL-3.0-only
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source0:        %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -99,7 +99,6 @@ process information and other system resources.
 %{_kf6_applicationsdir}/org.kde.plasma-systemmonitor.desktop
 %{_kf6_appstreamdir}/org.kde.plasma-systemmonitor.metainfo.xml
 %{_kf6_bindir}/plasma-systemmonitor
-%{_kf6_configkcfgdir}/systemmonitor.kcfg
 %{_kf6_knsrcfilesdir}/plasma-systemmonitor.knsrc
 # FIXME result of 105cb99d & bb8d4048
 %{_kf6_libdir}/libPlasmaSystemMonitorPage.so
