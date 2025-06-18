@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.10.0
-%define qt6_version 6.7.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.kinfocenter\\.private.*
 
@@ -28,14 +28,14 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           kinfocenter6
-Version:        6.3.5
+Version:        6.4.0
 Release:        0
 Summary:        Utility that provides information about a computer system
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -56,6 +56,7 @@ BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
 Provides:       kinfocenter5 = %{version}
 Obsoletes:      kinfocenter5 < %{version}
@@ -86,6 +87,8 @@ Recommends:     dmidecode
 Requires:       (aha if fwupd)
 # EDID kcm requires di-edid-decode
 Recommends:     libdisplay-info-tools >= 0.2.0
+# Temperature sensors
+Recommends:     sensors
 
 %description
 KDE Utility that provides information about a computer system.
@@ -131,6 +134,7 @@ KDE Utility that provides information about a computer system.
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_opencl.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_pci.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_samba.so
+%{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_sensors.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_usb.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_vulkan.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_wayland.so
