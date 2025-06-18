@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:37:16 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- No code changes since 6.3.91
+
+-------------------------------------------------------------------
+Thu May 29 21:18:41 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * ui: fix keyboard navigation on permissions page (kde#465953,kde#465952)
+  * ui: separate active and focused state
+
+-------------------------------------------------------------------
+Mon May 19 19:35:05 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Changes since 6.3.5:
+  * don't repeat return type
+  * switch over enum
+  * use ranges
+  * drop unnecessary array
+  * collect refs from all system installations (kde#501928)
+  * CI: Add linux-qt6-next build
+  * Add xml/yaml linting
+  * Use semantic model roles
+
+-------------------------------------------------------------------
 Tue May  6 20:07:17 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
