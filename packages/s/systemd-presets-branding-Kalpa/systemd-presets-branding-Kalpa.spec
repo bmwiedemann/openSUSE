@@ -19,11 +19,11 @@
 %define generic_name systemd-presets-branding
 
 Name:           systemd-presets-branding-Kalpa
-Version:        20250612
+Version:        20250617
 Release:        0
 Summary:        Systemd default presets for Kalpa Desktop
 License:        MIT
-Group:          System/Base
+URL:            https://codeberg.org/KalpaDesktop/systemd-presets-branding-Kalpa
 Source0:        50-default-Kalpa.preset
 Source1:        50-default-Kalpa-user.preset
 BuildRequires:  systemd-presets-branding-openSUSE
@@ -33,7 +33,7 @@ Requires:       systemd-presets-common-SUSE
 PreReq:         coreutils
 # systemd-presets-common-SUSE provides
 Requires(pre):  systemd-presets-common-SUSE
-Supplements:    packageand(systemd:branding-MicroOS)
+Supplements:    (systemd-presets and branding-Kalpa)
 Conflicts:      systemd-presets-branding
 Provides:       systemd-presets-branding = %{version}
 Obsoletes:      systemd-presets-branding-CAASP < 15.1

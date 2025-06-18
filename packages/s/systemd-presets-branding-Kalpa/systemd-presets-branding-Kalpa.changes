@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 17 06:43:02 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Adjust preset due to rename of kalpa-discover-update service and
+  timer
+
+-------------------------------------------------------------------
 Sun Jun 15 18:40:00 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - disable display-manager-legacy.service and enable sddm.service

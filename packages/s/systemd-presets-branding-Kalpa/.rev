@@ -25,4 +25,13 @@
 - Initial commit, adapted from devel:microos:Aeon/systemd-presents-branding-Aeon</comment>
     <requestid>1285922</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>de72ba9e74b195ff56305b8d9fd64de3</srcmd5>
+    <version>20250617</version>
+    <time>1750254982</time>
+    <user>anag_factory</user>
+    <comment>- Adjust preset due to rename of kalpa-discover-update service and
+  timer</comment>
+    <requestid>1286486</requestid>
+  </revision>
 </revisionlist>
