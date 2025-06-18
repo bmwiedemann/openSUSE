@@ -16,7 +16,7 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname kunitconversion
 
@@ -32,13 +32,11 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kunitconversion
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Tool for converting physical units
 License:        LGPL-2.1-or-later
@@ -48,10 +46,9 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
@@ -106,7 +103,6 @@ This package provides a python interface for kf6-kunitconversion.
 
 %build
 %cmake_kf6 \
-  -DBUILD_QCH:BOOL=TRUE \
 %if %{with kde_python_bindings}
   -DPython_EXECUTABLE:STRING=%{__mypython}
 %endif
@@ -132,7 +128,6 @@ This package provides a python interface for kf6-kunitconversion.
 %{_kf6_libdir}/libKF6UnitConversion.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KF6UnitConversion.*
 %{_kf6_includedir}/KUnitConversion/
 %{_kf6_cmakedir}/KF6UnitConversion/
 %{_kf6_libdir}/libKF6UnitConversion.so
