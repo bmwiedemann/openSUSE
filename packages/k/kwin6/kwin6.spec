@@ -19,8 +19,8 @@
 # Internal QML imports
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.KWin\\.Effect\\.WindowView.*
 
-%global kf6_version 6.10.0
-%define qt6_version 6.7.0
+%global kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %define rname   kwin
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -29,16 +29,17 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6
-Version:        6.3.5
+Version:        6.4.0
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libcap-progs
@@ -49,6 +50,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  cmake(Breeze) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KDecoration3) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
+BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
@@ -57,6 +59,8 @@ BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Declarative) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6GlobalAccel) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Holidays) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IdleTime) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
@@ -73,7 +77,7 @@ BuildRequires:  cmake(KGlobalAccelD) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KScreenLocker) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KWayland) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaActivities) >= %{_plasma6_bugfix}
-BuildRequires:  cmake(PlasmaWaylandProtocols)
+BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.14.0
 BuildRequires:  cmake(QAccessibilityClient6)
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
@@ -82,10 +86,11 @@ BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sensors) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6UiTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-BuildRequires:  pkgconfig(epoxy)
+BuildRequires:  pkgconfig(epoxy) >= 1.3
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gbm)
@@ -93,13 +98,14 @@ BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdisplay-info) >= 0.2.0
-BuildRequires:  pkgconfig(libdrm) >= 2.4.112
+BuildRequires:  pkgconfig(libdrm) >= 2.4.116
 BuildRequires:  pkgconfig(libeis-1.0)
 BuildRequires:  pkgconfig(libinput) >= 1.26
 %if 0%{?suse_version} > 1500
 # Leap 15 version is too old
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 1.2.0
 %endif
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libxcvt)
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.22
@@ -112,26 +118,30 @@ BuildRequires:  pkgconfig(xcb-composite) >= 1.10
 BuildRequires:  pkgconfig(xcb-cursor)
 BuildRequires:  pkgconfig(xcb-damage) >= 1.10
 BuildRequires:  pkgconfig(xcb-dri3) >= 1.10
-BuildRequires:  pkgconfig(xcb-glx) >= 1.10
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-image)
 BuildRequires:  pkgconfig(xcb-keysyms)
 BuildRequires:  pkgconfig(xcb-present) >= 1.10
 BuildRequires:  pkgconfig(xcb-randr) >= 1.10
 BuildRequires:  pkgconfig(xcb-render) >= 1.10
+BuildRequires:  pkgconfig(xcb-res) >= 1.10
 BuildRequires:  pkgconfig(xcb-shape) >= 1.10
 BuildRequires:  pkgconfig(xcb-shm) >= 1.10
 BuildRequires:  pkgconfig(xcb-sync) >= 1.10
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcb-xfixes) >= 1.10
 BuildRequires:  pkgconfig(xcb-xinerama) >= 1.10
+BuildRequires:  pkgconfig(xcb-xinput) >= 1.10
 BuildRequires:  pkgconfig(xcb-xkb) >= 1.10
 BuildRequires:  pkgconfig(xkbcommon) >= 0.7.0
 BuildRequires:  pkgconfig(xkbcommon-x11)
 Requires:       breeze6-decoration >= %{_plasma6_bugfix}
+# Needed to show dialogs
+Requires:       kdialog
 Requires:       kf6-kirigami-imports >= %{kf6_version}
-Requires:       kglobalacceld6  >= %{_plasma6_bugfix}
+Requires:       kglobalacceld6 >= %{_plasma6_bugfix}
 Requires:       libkwin6 = %{version}
+Requires:       xwayland
 # SECTION QML dependencies
 Requires:       kf6-kdeclarative-imports >= %{kf6_version}
 Requires:       kf6-kitemmodels-imports >= %{kf6_version}
@@ -146,30 +156,19 @@ Requires(verify): permissions
 Recommends:     hwdata
 # xorg-x11-server-wayland is required by plasma6-session-wayland, but not kwin6 itself
 Recommends:     xorg-x11-server-wayland
-Provides:       kwin5 = %{version}
-Obsoletes:      kwin5 < %{version}
-Obsoletes:      kwin5-lang < %{version}
 # /usr/share/kwin/tabbox/thumbnail_grid/metadata.json conflicts with plasma5-addons
 # (Use a version check as plasma6-addons provides plasma5-addons)
 Conflicts:      plasma5-addons < 6.0
 Conflicts:      plasma5-addons-lang < 6.0
-# Needed to show dialogs
-Requires:       kdialog
+Provides:       kwin5 = %{version}
+Obsoletes:      kwin5 < %{version}
+Obsoletes:      kwin5-lang < %{version}
 Provides:       windowmanager
 Provides:       qt6qmlimport(org.kde.kwin)
 Provides:       qt6qmlimport(org.kde.kwin.3) = 0
 
 %description
 KWin is Plasma window manager.
-
-%package x11
-Summary:        KDE Window Manager for X11
-Requires:       kwin6 = %{version}
-Requires:       xorg-x11-server
-
-%description x11
-KWin is Plasma window manager.
-This package provides the X11 window manager.
 
 %package -n libkwin6
 Summary:        KWin library
@@ -183,6 +182,7 @@ Summary:        KDE Window Manager - development files
 Requires:       kdecoration6-devel >= %{_plasma6_bugfix}
 Requires:       libkwin6 = %{version}
 Requires:       pkgconfig(epoxy)
+Requires:       pkgconfig(libdrm) >= 2.4.116
 Provides:       kwin5-devel = %{version}
 Obsoletes:      kwin5-devel < %{version}
 
@@ -224,15 +224,6 @@ This package provides development files.
 
 %ldconfig_scriptlets -n libkwin6
 
-%preun x11
-%{systemd_user_preun plasma-kwin_x11.service}
-
-%post x11
-%{systemd_user_post plasma-kwin_x11.service}
-
-%postun x11
-%{systemd_user_postun plasma-kwin_x11.service}
-
 %verifyscript
 %verify_permissions -e %{_kf6_bindir}/kwin_wayland
 
@@ -241,6 +232,7 @@ This package provides development files.
 %license LICENSES/*
 %doc README.md
 %doc %lang(en) %{_kf6_htmldir}/en/*
+%{_kf6_applicationsdir}/kcm_animations.desktop
 %{_kf6_applicationsdir}/kcm_kwin_effects.desktop
 %{_kf6_applicationsdir}/kcm_kwin_scripts.desktop
 %{_kf6_applicationsdir}/kcm_kwin_virtualdesktops.desktop
@@ -250,7 +242,6 @@ This package provides development files.
 %{_kf6_applicationsdir}/kcm_kwintabbox.desktop
 %{_kf6_applicationsdir}/kcm_kwinxwayland.desktop
 %{_kf6_applicationsdir}/kcm_virtualkeyboard.desktop
-%{_kf6_applicationsdir}/kwincompositing.desktop
 %{_kf6_applicationsdir}/org.kde.kwin.killer.desktop
 %{_kf6_bindir}/kwin_wayland_wrapper
 %{_kf6_configkcfgdir}/*
@@ -288,20 +279,18 @@ This package provides development files.
 %{_kf6_plugindir}/kwin/effects/configs/kwin_wobblywindows_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_zoom_config.so
 %dir %{_kf6_plugindir}/kwin/plugins
-%{_kf6_plugindir}/kwin/plugins/StickyKeysPlugin.so
 %{_kf6_plugindir}/kwin/plugins/BounceKeysPlugin.so
+%{_kf6_plugindir}/kwin/plugins/KeyNotificationPlugin.so
+%{_kf6_plugindir}/kwin/plugins/StickyKeysPlugin.so
 %{_kf6_plugindir}/kwin/plugins/buttonsrebind.so
 %{_kf6_plugindir}/kwin/plugins/eis.so
-%{_kf6_plugindir}/kwin/plugins/KeyNotificationPlugin.so
 %{_kf6_plugindir}/kwin/plugins/krunnerintegration.so
 %{_kf6_plugindir}/kwin/plugins/nightlight.so
+%{_kf6_plugindir}/kwin/plugins/MouseKeysPlugin.so
 %if 0%{?suse_version} > 1500
 %{_kf6_plugindir}/kwin/plugins/screencast.so
 %endif
-%dir %{_kf6_plugindir}/org.kde.kdecoration3.kcm
-%{_kf6_plugindir}/org.kde.kdecoration3.kcm/kcm_auroraedecoration.so
-%dir %{_kf6_plugindir}/org.kde.kdecoration3
-%{_kf6_plugindir}/org.kde.kdecoration3/org.kde.kwin.aurorae.so
+%{_kf6_plugindir}/kwin/plugins/TouchpadShortcutsPlugin.so
 %dir %{_kf6_plugindir}/kf6/packagestructure
 %{_kf6_plugindir}/kf6/packagestructure/kwin_aurorae.so
 %{_kf6_plugindir}/kf6/packagestructure/kwin_decoration.so
@@ -310,21 +299,15 @@ This package provides development files.
 %{_kf6_plugindir}/kf6/packagestructure/kwin_windowswitcher.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm*.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_kwin*.so
-%{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kwincompositing.so
 %dir %{_kf6_qmldir}/org/kde/kwin/
-%{_kf6_qmldir}/org/kde/kwin/decoration/
-%{_kf6_qmldir}/org/kde/kwin/decorations/
 %{_kf6_qmldir}/org/kde/kwin/private/
 %{_kf6_sharedir}/kconf_update/kwin.upd
 %{_kf6_sharedir}/krunner/dbusplugins/kwin-runner-windows.desktop
-%{_kf6_sharedir}/kwin/
-%{_libexecdir}/kwin-applywindowdecoration
+%{_kf6_sharedir}/kwin-wayland/
 %{_libexecdir}/kwin_killer_helper
+%{_libexecdir}/kwin-applywindowdecoration
+%{_libexecdir}/kwin-tabbox-preview
 %{_userunitdir}/plasma-kwin_wayland.service
-
-%files x11
-%{_kf6_bindir}/kwin_x11
-%{_userunitdir}/plasma-kwin_x11.service
 
 %files -n libkwin6
 %{_kf6_libdir}/libkwin.so.*

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:37:05 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+  * backends/drm: also handle GPU resets on secondary GPUs
+  * backends/drm: disable direct scanout on secondary GPUs
+  * plugins/translucency: Fix unsetting animations for minimized windows (kde#504687)
+  * Implement proper virtual desktop reordering (kde#504848)
+  * scene/surfaceitem_wayland: handle some missing initial properties
+  * scripting/scriptedeffect: Fix effect loading due to shadowed file path (kde#505242)
+  * scene: Signal presentation feedbacks on blank commits too
+  * wayland: Send wl_data_source.cancelled if wl_data_device.start_drag is rejected
+  * Make horizontal panels take precedence in reserved space
+  * autotests/integration/outputchanges: wait for frame callbacks before committing
+  * scene/item: restrict frame callbacks based on the output rather than geometry (kde#479694,kde#498628,kde#505060)
+  * compositor: take min vrr refresh rate into account for cursor updates
+  * backends/drm: reduce severity of pageflip failure logging (kde#505028)
+  * Use desktop id to restore keyboard layout
+  * wayland: Fix focused surface check in wl_data_device.start_drag (kde#497031)
+
+-------------------------------------------------------------------
+Thu May 29 21:10:04 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Mon May 19 19:29:05 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  6 20:08:21 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
