@@ -16,20 +16,20 @@
 #
 
 
-%define kf6_version 6.10.0
-%define qt6_version 6.7.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %define rname polkit-kde-agent-1
 %bcond_without released
 Name:           polkit-kde-agent-6
-Version:        6.3.5
+Version:        6.4.0
 Release:        0
 Summary:        PolicyKit authentication agent for Plasma
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -39,6 +39,7 @@ BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(PolkitQt6-1) >= 0.103.0
@@ -84,7 +85,7 @@ Provides Policy Kit Authentication Agent that nicely fits Plasma.
 %license LICENSES/*
 %{_kf6_applicationsdir}/org.kde.polkit-kde-authentication-agent-1.desktop
 %{_kf6_configdir}/autostart/polkit-kde-authentication-agent-1.desktop
-%{_kf6_notificationsdir}/policykit1-kde.notifyrc
+%{_kf6_notificationsdir}/polkit-kde-authentication-agent-1.notifyrc
 %{_libexecdir}/polkit-kde-authentication-agent-1
 %{_userunitdir}/plasma-polkit-agent.service
 

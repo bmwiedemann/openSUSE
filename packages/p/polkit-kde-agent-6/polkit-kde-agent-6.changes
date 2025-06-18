@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:38:02 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+
+-------------------------------------------------------------------
+Thu May 29 21:24:27 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+
+-------------------------------------------------------------------
+Mon May 19 19:39:07 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Changes since 6.3.5:
+  * update version for new release
+  * Add notification sound to authentication dialog (kde#448554)
+  * It compiles fine without kf_6_12 deprecated methods
+  * mobile: Update to support recent changes, and show maximized
+  * CI: Add linux-qt6-next build
+  * Add xml/yaml linting
+  * improve systemd-homed support (kde#430828)
+  * propagate selected user changes from qml to cpp (kde#497522)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue May  6 20:14:28 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
