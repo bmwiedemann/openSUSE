@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jun  9 20:29:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.15.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.15.0
+- Changes since 6.14.0:
+  * Update dependency version to 6.15.0
+  * Don't freeze when the create wallet dialog is dismissed (kde#504678)
+  * It compiles fine without kf 6.14 deprecated methods
+  * Hide wallets with no name (kde#504656)
+  * Add tags file to documentation
+  * Add missing qhp projects
+  * Remove leftover doxygen file
+  * Use desktop file to launch kwalletmanager
+  * Drop codepath for kstart5
+  * Fix arguments in startManagerForKSecretD
+  * Add landing page for QDoc
+  * Don't make clients hang if kwallet is disabled (kde#504014)
+  * Don't build kwalletd on macOS either
+  * Fix assertion failure due to invalid DBus object path
+  * It compiles fine without kf_6_13 deprecated methods
+  * Port API documentation to QDoc syntax
+  * Add Alpine CI
+  * Update version to 6.15.0
+- Replace _kf6_bugfix_version usage
+- Drop patch, merged upstream:
+  * 0001-Don-t-make-clients-hang-if-kwallet-is-disabled.patch
+
+-------------------------------------------------------------------
 Thu May 15 19:20:42 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to avoid DBus failures if disabled (kde#504014):

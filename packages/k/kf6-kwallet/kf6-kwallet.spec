@@ -16,16 +16,14 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname kwallet
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kwallet
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Safe desktop-wide storage for passwords
 License:        LGPL-2.1-or-later
@@ -35,25 +33,22 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Don-t-make-clients-hang-if-kwallet-is-disabled.patch
-BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  libgcrypt-devel >= 1.5.0
 BuildRequires:  libgpgmepp-devel
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF6ColorScheme) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Crash) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6DBusAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6DocTools) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Notifications) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Service) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6WindowSystem) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6ColorScheme) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{_kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{_kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{_kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Service) >= %{_kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{_kf6_version}
 BuildRequires:  cmake(Qca-qt6)
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
@@ -127,7 +122,7 @@ Development files.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -171,7 +166,6 @@ Development files.
 %{_kf6_mandir}/man1/kwallet-query.1%{?ext_man}
 
 %files devel
-%doc %{_kf6_qchdir}/KF6Wallet.*
 %{_kf6_libdir}/libKF6Wallet.so
 %{_kf6_cmakedir}/KF6Wallet/
 %{_kf6_includedir}/KWallet/
