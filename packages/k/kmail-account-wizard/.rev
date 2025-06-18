@@ -839,4 +839,12 @@
     <comment>KDE release gear 25.04.2 (forwarded request 1282457 from krop)</comment>
     <requestid>1283183</requestid>
   </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>4a9d8db689aa385a9181252ad76b4bc0</srcmd5>
+    <version>25.04.2</version>
+    <time>1750254822</time>
+    <user>anag_factory</user>
+    <comment>- Update gpgmepp build requirement (boo#1244605)</comment>
+    <requestid>1286048</requestid>
+  </revision>
 </revisionlist>
