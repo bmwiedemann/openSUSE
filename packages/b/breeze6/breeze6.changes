@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:37:11 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+
+-------------------------------------------------------------------
+Thu May 29 21:18:28 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+  * kstyle: Fix radio button animation
+
+-------------------------------------------------------------------
+Mon May 19 19:34:56 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Changes since 6.3.5:
+  * wallpapers: Remove old 1080x1920 mobile wallpapers
+  * update version for new release
+  * Replace Nuvole with Coast for Plasma 6.4
+  * kstyle: Take into account widget font when drawing QGroupBox (kde#498582)
+  * Remove unused PROJECT_VERSION_MAJOR variable
+  * ToolsAreaManager: Store windows as a vector (kde#501688)
+  * Rename Breeze cursors to "Breeze Dark"
+  * Stop machine-cropping wallpapers and delete existing ones
+  * kstyle: Don't replay scrollbar mouse event to same position
+  * Do not cascade header colors when using non-global color scheme
+  * kstyle/breezetoolsareamanger.cpp: menu bar colors from header
+  * breezedecoration: Take frameradius to account in no-side-borders border size
+  * Fix Qt6 build regression with MinGW (kde#500106)
+  * Fix crash in some non-KDE apps (kde#499960)
+  * CI: Add linux-qt6-next build
+  * Add xml/yaml linting
+  * kdecoration: Update titlebar when borders change (kde#499222)
+  * colors: make Breeze Dark darker
+  * kcursorgen: Add QDebug include
+  * Add missing includes
+  * kdecoration: port away from DecorationWindow scale helpers
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue May  6 20:07:05 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
