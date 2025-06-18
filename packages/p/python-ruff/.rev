@@ -2147,4 +2147,41 @@
    * Fix inconsistent formatting of match-case on [] and _</comment>
     <requestid>1284538</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>9980c9530affe70c35a20d1f86dbcf1d</srcmd5>
+    <version>0.12.0</version>
+    <time>1750278515</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.12.0 
+ * Breaking changes
+   * Detection of more syntax errors
+   * New default Python version handling for syntax errors
+   * Updated f-string formatting
+   * rust-toolchain.toml is no longer included in source distributions
+ * Removed Rules
+   * suspicious-xmle-tree-usage (S320)
+ * Deprecated Rules
+   * pandas-df-variable-name
+ * Stabilization
+   * for-loop-writes (FURB122)
+   * check-and-remove-from-set (FURB132)
+   * verbose-decimal-constructor (FURB157)
+   * fromisoformat-replace-z (FURB162)
+   * int-on-sliced-str (FURB166)
+   * exc-info-outside-except-handler (LOG014)
+   * import-outside-top-level (PLC0415)
+   * unnecessary-dict-index-lookup (PLR1733)
+   * nan-comparison (PLW0177)
+   * eq-without-hash (PLW1641)
+   * pytest-parameter-with-default-argument (PT028)
+   * pytest-warns-too-broad (PT030)
+   * pytest-warns-with-multiple-statements (PT031)
+   * invalid-formatter-suppression-comment (RUF028)
+   * dataclass-enum (RUF049)
+   * class-with-mixed-type-vars (RUF053)
+   * unnecessary-round (RUF057)
+   * starmap-zip (RUF058)
+   * non-pep604-annotation-optional (UP045)</comment>
+    <requestid>1286470</requestid>
+  </revision>
 </revisionlist>

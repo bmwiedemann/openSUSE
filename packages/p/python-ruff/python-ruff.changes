@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Tue Jun 17 22:36:39 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.12.0 
+ * Breaking changes
+   * Detection of more syntax errors
+   * New default Python version handling for syntax errors
+   * Updated f-string formatting
+   * rust-toolchain.toml is no longer included in source distributions
+ * Removed Rules
+   * suspicious-xmle-tree-usage (S320)
+ * Deprecated Rules
+   * pandas-df-variable-name
+ * Stabilization
+   * for-loop-writes (FURB122)
+   * check-and-remove-from-set (FURB132)
+   * verbose-decimal-constructor (FURB157)
+   * fromisoformat-replace-z (FURB162)
+   * int-on-sliced-str (FURB166)
+   * exc-info-outside-except-handler (LOG014)
+   * import-outside-top-level (PLC0415)
+   * unnecessary-dict-index-lookup (PLR1733)
+   * nan-comparison (PLW0177)
+   * eq-without-hash (PLW1641)
+   * pytest-parameter-with-default-argument (PT028)
+   * pytest-warns-too-broad (PT030)
+   * pytest-warns-with-multiple-statements (PT031)
+   * invalid-formatter-suppression-comment (RUF028)
+   * dataclass-enum (RUF049)
+   * class-with-mixed-type-vars (RUF053)
+   * unnecessary-round (RUF057)
+   * starmap-zip (RUF058)
+   * non-pep604-annotation-optional (UP045)
+   * non-pep695-generic-class (UP046)
+   * non-pep695-generic-function (UP047)
+   * private-type-parameter (UP049)
+   * collection-literal-concatenation (RUF005) now recognizes slices, in addition to list literals and variables.
+   * The fix for readlines-in-for (FURB129) is now marked as always safe.
+   * if-else-block-instead-of-if-exp (SIM108) will now further simplify expressions to use or instead of an if expression, where possible.
+   * unused-noqa (RUF100) now checks for file-level noqa comments as well as inline comments.
+   * subprocess-without-shell-equals-true (S603) now accepts literal strings, as well as lists and tuples of literal strings, as trusted input.
+   * boolean-type-hint-positional-argument (FBT001) now applies to types that include bool, like bool | int or typing.Optional[bool], in addition to plain bool annotations.
+   * non-pep604-annotation-union (UP007) has now been split into two rules. UP007 now applies only to typing.Union, while non-pep604-annotation-optional (UP045) checks for use of typing.Optional. UP045 has also been stabilized in this release, but you may need to update existing include, ignore, or noqa settings to accommodate this change.
+ * Preview features
+   * [ruff] Check for non-context-manager use of pytest.raises, pytest.warns, and pytest.deprecated_call (RUF061) 
+   * [syntax-errors] Raise unsupported syntax error for template strings prior to Python 3.14 
+ * Bug fixes
+   * Add syntax error when conversion flag does not immediately follow exclamation mark 
+   * Add trailing space around readlines 
+   * Fix \r and \r\n handling in t- and f-string debug texts 
+   * Hug closing } when f-string expression has a format specifier 
+   * [flake8-pyi] Avoid syntax error in the case of starred and keyword arguments (PYI059) 
+   * [flake8-return] Fix RET504 autofix generating a syntax error 
+   * [pep8-naming] Suppress fix for N804 and N805 if the recommended name is already used 
+   * [pycodestyle] Avoid causing a syntax error in expressions spanning multiple lines (E731) 
+   * [pyupgrade] Suppress UP008 if super is shadowed 
+   * [refurb] Parenthesize lambda and ternary expressions (FURB122, FURB142) 
+   * [ruff] Handle extra arguments to deque (RUF037) 
+   * [ruff] Preserve parentheses around deque in fix for unnecessary-empty-iterable-within-deque-call (RUF037) 
+   * [ruff] Validate arguments before offering a fix (RUF056) 
+   * [ruff] Skip fix for RUF059 if dummy name is already bound 
+   * [pylint] Fix PLW0128 to check assignment targets in square brackets and after asterisks 
+ * Rule changes
+   * Fix false positive on mutations in return statements (B909) 
+   * Treat ty: comments as pragma comments 
+   * [flake8-pyi] Apply custom-typevar-for-self to string annotations (PYI019) 
+   * [pyupgrade] Don't offer a fix for Optional[None] (UP007, UP045) 
+   * [pyupgrade] Fix super(__class__, self) detection (UP008) 
+   * [refurb] Make the fix for FURB163 unsafe for log2, log10, *args, and deleted comments 
+ * Server
+   * Support cancellation requests 
+ * Documentation
+   * Drop confusing second * from glob pattern example for per-file-target-version 
+   * Update Neovim configuration examples 
+   * [pylint] De-emphasize __hash__ = Parent.__hash__ (PLW1641) 
+   * [refurb] Add a note about float literal handling (FURB157) 
+
+-------------------------------------------------------------------
 Tue Jun 10 11:18:15 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.13:
