@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 17 16:46:42 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 2.0.2:
+  * Fix double closing quotes after an HTML block
+  * Fix regular expressions and tests for Python 3.12+
+  * Move documentation to ReadTheDocs
+- drop fix-312.patch: merged upstream
+- refresh use-sys-executable.patch
+
+-------------------------------------------------------------------
 Thu Jun 12 12:07:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build and libalternatives

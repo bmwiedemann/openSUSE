@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-smartypants
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Python fork of perl SmartyPants
 License:        BSD-3-Clause
@@ -27,7 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/leohemsted/smartypants.py
 Source:         https://github.com/leohemsted/smartypants.py/archive/v%{version}.tar.gz#/smartypants-%{version}.tar.gz
 Patch0:         use-sys-executable.patch
-Patch1:         fix-312.patch
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pygments}
