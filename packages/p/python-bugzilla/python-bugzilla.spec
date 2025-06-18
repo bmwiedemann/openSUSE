@@ -17,6 +17,7 @@
 
 
 %define oldpython python
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-bugzilla
 Version:        3.2.0+git.1726768917.5eedea3
@@ -36,11 +37,11 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-requests
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Suggests:       osc
 Conflicts:      %{oldpython}-bugzillatools
 Obsoletes:      python2-bugzilla
@@ -70,11 +71,8 @@ export CFLAGS="%{optflags}"
 %python_clone -a %{buildroot}%{_mandir}/man1/bugzilla.1
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%{python_install_alternative bugzilla bugzilla.1}
-
-%postun
-%python_uninstall_alternative bugzilla
+%pre
+%python_libalternatives_reset_alternative bugzilla
 
 %check
 %pytest
