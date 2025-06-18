@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 18 04:43:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.8.4:
+  * RKE Kubernetes versions
+    - v1.30.13-rancher1-1
+    - v1.31.9-rancher1-1
+    - v1.32.5-rancher1-1 (default)
+  * What's Changed
+    - [release/v1.8] go generate by @rancherbot in #3862
+
+-------------------------------------------------------------------
 Thu May 15 05:02:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.8.3:
