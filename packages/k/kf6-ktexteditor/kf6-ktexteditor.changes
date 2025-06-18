@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun  9 20:29:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.15.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.15.0
+- Too many changes since 6.14.0, only listing bugfixes:
+  * trigger refresh of modified on disk message if the type did change (kde#504150)
+  * Fix m_marks not initialized (kde#503455)
+  * don't confuse users, just report modified on disk (kde#504151)
+  * Fix screenshot for hidpi displays (kde#503823)
+  * Fix error logic (kde#503821)
+- Replace _kf6_bugfix_version usage
+
+-------------------------------------------------------------------
 Sun May  4 19:05:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.14.0
