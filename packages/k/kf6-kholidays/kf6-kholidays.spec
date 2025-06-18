@@ -16,16 +16,14 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname kholidays
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kholidays
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Holiday calculation library
 License:        LGPL-2.1-or-later
@@ -35,8 +33,7 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  doxygen
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
@@ -73,7 +70,7 @@ to develop applications depending on the kholidays library
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -96,7 +93,6 @@ to develop applications depending on the kholidays library
 %{_kf6_libdir}/libKF6Holidays.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KF6Holidays.*
 %{_kf6_cmakedir}/KF6Holidays/
 %{_kf6_includedir}/KHolidays/
 %{_kf6_libdir}/libKF6Holidays.so

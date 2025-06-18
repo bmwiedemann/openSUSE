@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun  9 20:29:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.15.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.15.0
+- Changes since 6.14.0:
+  * Update dependency version to 6.15.0
+  * Add tags file to documentation
+  * Add missing qhp project
+  * Add deprecation annotation to namespace members individually
+  * Documentation fixes
+  * Fix documentation for SunEvents
+  * Add landing page for QDoc
+  * Introduce SunEvents
+  * Minor fixes and add holidays
+  * Port API documentation to QDoc syntax
+  * holidays/plan2/holiday_vn_vi - fix language comment is Vietnamese
+  * Add holidays for Vietnam
+  * Update version to 6.15.0
+- Replace _kf6_bugfix_version usage
+
+-------------------------------------------------------------------
 Sun May  4 19:05:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.14.0
