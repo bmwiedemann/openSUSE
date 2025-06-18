@@ -18,7 +18,7 @@
 
 %define _config_dir %{_sysconfdir}/%{name}
 Name:           telegraf
-Version:        1.34.4
+Version:        1.35.0
 Release:        0
 Summary:        The plugin-driven server agent for collecting & reporting metrics
 License:        MIT
