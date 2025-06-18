@@ -1809,4 +1809,12 @@
     <comment></comment>
     <requestid>1267106</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>1dca76ca9a44238ae1137e2b548ef57c</srcmd5>
+    <version>1.15.2</version>
+    <time>1750254825</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286097</requestid>
+  </revision>
 </revisionlist>
