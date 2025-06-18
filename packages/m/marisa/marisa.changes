@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 17 07:04:15 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros to build and install the Python bindings.
+
+-------------------------------------------------------------------
 Wed Apr  9 09:22:59 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - python binding still need by libkkc, reenable

@@ -36,7 +36,9 @@ BuildRequires:  perl
 BuildRequires:  pkg-config
 %if %{with python}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
 %endif
@@ -141,8 +143,8 @@ popd
 pushd bindings/python
 swig -Wall -c++ -python -py3 -outdir . ../marisa-swig.i
 mv ../marisa-swig_wrap.cxx .
-%python_exec setup.py build_ext --include-dirs=../../include --library-dirs=../../lib/marisa/.libs
-%python_exec setup.py build
+export CPPFLAGS="-I../../include -L../../lib/marisa/.libs"
+%pyproject_wheel
 popd
 %endif
 
@@ -169,7 +171,7 @@ popd
 # install python
 %if %{with python}
 pushd bindings/python
-%python_exec setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%pyproject_install
 popd
 %endif
 
@@ -216,7 +218,7 @@ sed -i '1s/^=head2 .*:/=head2/' %{buildroot}%{perl_archlib}/perllocal.pod
 %defattr(-,root,root)
 %{python_sitearch}/_marisa.*.so
 %{python_sitearch}/marisa.py
-%{python_sitearch}/marisa-0.0.0-py*.egg-info
+%{python_sitearch}/marisa-0.0.0.dist-info
 %{python_sitearch}/__pycache__/marisa.cpython-*.pyc
 %endif
 
