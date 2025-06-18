@@ -16,16 +16,14 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname kconfigwidgets
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kconfigwidgets
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Widgets for configuration dialogs
 License:        LGPL-2.1-or-later
@@ -35,17 +33,16 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
-BuildRequires:  cmake(KF6Codecs) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6ColorScheme) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6GuiAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6Codecs) >= %{_kf6_version}
+BuildRequires:  cmake(KF6ColorScheme) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{_kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{_kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
@@ -67,10 +64,10 @@ well as a set of widgets which uses KConfig to store their settings.
 %package devel
 Summary:        Widgets for configuration dialogs: Build Environment
 Requires:       libKF6ConfigWidgets6 = %{version}
-Requires:       cmake(KF6Codecs) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6ColorScheme) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6Config) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6WidgetsAddons) >= %{_kf6_bugfix_version}
+Requires:       cmake(KF6Codecs) >= %{_kf6_version}
+Requires:       cmake(KF6ColorScheme) >= %{_kf6_version}
+Requires:       cmake(KF6Config) >= %{_kf6_version}
+Requires:       cmake(KF6WidgetsAddons) >= %{_kf6_version}
 
 %description devel
 KConfigWidgets provides easy-to-use classes to create configuration dialogs, as
@@ -82,7 +79,7 @@ well as a set of widgets which uses KConfig to store their settings. Development
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -106,7 +103,6 @@ well as a set of widgets which uses KConfig to store their settings. Development
 %{_kf6_libdir}/libKF6ConfigWidgets.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KF6ConfigWidgets.*
 %{_kf6_cmakedir}/KF6ConfigWidgets/
 %{_kf6_includedir}/KConfigWidgets/
 %{_kf6_libdir}/libKF6ConfigWidgets.so
