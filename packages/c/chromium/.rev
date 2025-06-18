@@ -5701,4 +5701,18 @@ boo#1224178</comment>
   * CVE-2025-5959: Type Confusion in V8</comment>
     <requestid>1284810</requestid>
   </revision>
+  <revision rev="465" vrev="1">
+    <srcmd5>89e7581083f0a75f88e1530fb32e5e68</srcmd5>
+    <version>137.0.7151.119</version>
+    <time>1750255063</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 137.0.7151.119
+  (stable release 2025-06-17) (boo#1244711)
+  * CVE-2025-6191: Integer overflow in V8
+  * CVE-2025-6192: Use after free in Profiler
+
+Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
+- Replace usage of %jobs for reproducible builds (boo#1237231)</comment>
+    <requestid>1286465</requestid>
+  </revision>
 </revisionlist>

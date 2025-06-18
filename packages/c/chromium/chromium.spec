@@ -110,7 +110,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        137.0.7151.103
+Version:        137.0.7151.119
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -961,7 +961,7 @@ export RUSTFLAGS
 %limit_build -m 2600
 %if %{with lto} && %{without clang}
 # reduce the threads for linking even more due to LTO eating ton of memory
-_link_threads=$(((%{jobs} - 2)))
+_link_threads=$((($(echo %{?_smp_mflags} | cut -c 3-) - 2)))
 test "$_link_threads" -le 0 && _link_threads=1
 export LDFLAGS="-flto=$_link_threads --param lto-max-streaming-parallelism=1"
 %endif
