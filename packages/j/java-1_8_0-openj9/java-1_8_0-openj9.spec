@@ -116,6 +116,8 @@ Patch4:         libdwarf-fix.patch
 Patch31:        stringop-overflow.patch
 # Fix build with gcc 14
 Patch32:        fix-build-with-gcc14.patch
+# Fix an error with gcc 15
+Patch33:        fix-build-with-gcc15.patch
 # Patches for system libraries
 Patch201:       system-libjpeg.patch
 Patch202:       system-libpng.patch
@@ -365,6 +367,7 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 
 %patch -P 31 -p1
 %patch -P 32 -p1
+%patch -P 33 -p1
 
 cat %{SOURCE100} \
     | sed "s/@OPENJ9_SHA@/`expr substr '%{openj9_revision}' 1 7`/g" \
@@ -394,7 +397,7 @@ export ARCH_DATA_MODEL=64
 # bash ./autogen.sh
 #)
 
-EXTRA_CFLAGS="-Wno-error -Wno-maybe-uninitialized -fno-delete-null-pointer-checks -fno-lifetime-dse"
+EXTRA_CFLAGS="-Wno-error -Wno-maybe-uninitialized -std=gnu99 -fno-delete-null-pointer-checks -fno-lifetime-dse"
 EXTRA_CPP_FLAGS="-Wno-error -Wno-maybe-uninitialized -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse"
 
 %ifarch ppc64le
@@ -408,6 +411,8 @@ bash configure \
     CC=gcc-7 \
     NM=gcc-nm-7 \
 %endif
+    --with-extra-cflags="$EXTRA_CFLAGS" \
+    --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
     --disable-warnings-as-errors-omr \
     --disable-warnings-as-errors-openj9 \
     --enable-demos \

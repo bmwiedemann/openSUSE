@@ -247,4 +247,12 @@
     <comment>Forgotten a bug number</comment>
     <requestid>1283371</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>dc7dd834310a809e192b59d331515170</srcmd5>
+    <version>1.8.0.452</version>
+    <time>1750255010</time>
+    <user>anag_factory</user>
+    <comment>fix gcc15 build</comment>
+    <requestid>1286414</requestid>
+  </revision>
 </revisionlist>
