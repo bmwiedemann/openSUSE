@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 18 11:27:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.7.0:
+  * feat: `--force-adoption` to disable release annotations checks
+  * feat: expose release labels in `release get`
+
+-------------------------------------------------------------------
 Mon Jun 09 17:30:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.6.0:
