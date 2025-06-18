@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 18 07:05:52 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Skip failing test test_rejected_input, it is known to be flaky
+  and dependent on the various changes in Python (which there
+  will be more coming in few days).
+
+-------------------------------------------------------------------
 Fri Nov  1 07:22:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add soupsieve26-compat.patch to make tests more tolerant with
