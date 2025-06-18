@@ -164,4 +164,12 @@
     <comment></comment>
     <requestid>1003873</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>f19a94762d86be60d30821bc189ca71b</srcmd5>
+    <version>3.11.92+95</version>
+    <time>1750254810</time>
+    <user>anag_factory</user>
+    <comment>- fix build with gpgme &gt;=2.0.0 gpgme-2.0.0.patch boo#1244605 (forwarded request 1285836 from AndreasStieger)</comment>
+    <requestid>1285996</requestid>
+  </revision>
 </revisionlist>

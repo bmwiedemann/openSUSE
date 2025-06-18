@@ -1,0 +1,12 @@
+Index: seahorse-nautilus-3.11.92+95/tool/seahorse-pgp-operation.c
+===================================================================
+--- seahorse-nautilus-3.11.92+95.orig/tool/seahorse-pgp-operation.c
++++ seahorse-nautilus-3.11.92+95/tool/seahorse-pgp-operation.c
+@@ -300,7 +300,6 @@ event_cb (void *data, gpgme_event_io_t t
+         break;
+ 
+     case GPGME_EVENT_NEXT_KEY:
+-    case GPGME_EVENT_NEXT_TRUSTITEM:
+     default:
+         /* Ignore unsupported event types */
+         break;

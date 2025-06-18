@@ -2,6 +2,7 @@
 # spec file for package seahorse-nautilus
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +25,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            http://live.gnome.org/Seahorse
 Source:         %{name}-%{version}.tar.xz
-
-BuildRequires:  gpgme-devel
+Patch0:         gpgme-2.0.0.patch
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cryptui-0.0) >= 3.9.90
@@ -34,6 +34,7 @@ BuildRequires:  pkgconfig(gcr-3) > 3.4.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.44
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gnome-keyring-1)
+BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18.0
 BuildRequires:  pkgconfig(libnautilus-extension-4) >= 43.rc
 
