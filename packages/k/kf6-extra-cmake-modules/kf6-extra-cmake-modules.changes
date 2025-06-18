@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jun  9 20:29:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.15.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.15.0
+- Changes since 6.14.0:
+  * [ECMGenerateQDoc] Don't put qch file in target subfolder
+  * Fix LOCALSTATEDIR when installing to /usr (kde#505090)
+  * [ECMGenerateQDoc] Fix locations for generated HTML files
+  * ECMGeneratePythonBindings: Check if the build python module is installed
+  * Tone done warning about existing .clang-format file
+  * [ECMGenerateQDoc] Use combined output dir for all targets
+  * Add timestamp to filenames of APKs built on CI
+  * ECMGeneratePythonBindings: remove another deprecation macro since pyside/shiboken uses deprecated code
+  * kde-modules/clang-format.cmake - add support for Json files (kde#503056)
+  * [ECMGenerateQDoc] Handle qhelpgenerator tool not being found
+  * [ECMGenerateQDoc] Handle qdoc tool not being found
+  * Update version to 6.15.0
+- Replace _kf6_bugfix_version usage
+
+-------------------------------------------------------------------
 Sun May  4 19:05:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.14.0

@@ -23,14 +23,12 @@
 
 %define rname extra-cmake-modules
 
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without doc
 %bcond_without released
 Name:           kf6-extra-cmake-modules%{?pkg_suffix}
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        CMake modules
 License:        BSD-3-Clause
