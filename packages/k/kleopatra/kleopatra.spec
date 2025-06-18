@@ -2,6 +2,7 @@
 # spec file for package kleopatra
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,10 +33,16 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# https://invent.kde.org/pim/kleopatra/-/commit/b1f3736de7ed3c2d4f58aa454064a4cd0f423250
+Patch0:         kleopatra-25.04.2-gpgmepp-2.0.0-0.patch
+# https://invent.kde.org/pim/kleopatra/-/commit/d4f777ffa137148302ca39d5a2238c01c896605d
+Patch1:         kleopatra-25.04.2-gpgmepp-2.0.0-1.patch
+# https://invent.kde.org/pim/kleopatra/-/commit/10b618703d74618c09b5e2b16e2db9d829aed93b
+Patch2:         kleopatra-25.04.2-gpgmepp-2.0.0-2.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  libgpgmepp-devel >= 1.23.2
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
+BuildRequires:  cmake(Gpgmepp) >= 1.23.2
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}

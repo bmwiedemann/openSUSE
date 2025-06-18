@@ -1,0 +1,41 @@
+From 10b618703d74618c09b5e2b16e2db9d829aed93b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 14 May 2025 17:29:18 +0200
+Subject: [PATCH] Include QGpgME/Debug for QDebug operator for GpgME::Error
+
+The missing QDebug operator was caught by the new explicit
+conversion-to-bool operator for GpgME::Error. The safe-bool idiom didn't
+prevent conversion of GpgME::Error to bool when passed to QDebug's
+operator<<.
+---
+ src/dialogs/useridswidget.cpp | 1 +
+ src/view/cardkeysview.cpp     | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/dialogs/useridswidget.cpp b/src/dialogs/useridswidget.cpp
+index bcb540bc4..fc26e7b9e 100644
+--- a/src/dialogs/useridswidget.cpp
++++ b/src/dialogs/useridswidget.cpp
+@@ -33,6 +33,7 @@
+ #include <QPushButton>
+ #include <QVBoxLayout>
+ 
++#include <QGpgME/Debug>
+ #include <QGpgME/KeyListJob>
+ #include <QGpgME/Protocol>
+ 
+diff --git a/src/view/cardkeysview.cpp b/src/view/cardkeysview.cpp
+index eee754f7b..1f5a233aa 100644
+--- a/src/view/cardkeysview.cpp
++++ b/src/view/cardkeysview.cpp
+@@ -34,6 +34,7 @@
+ #include <KLocalizedString>
+ #include <KSharedConfig>
+ 
++#include <QGpgME/Debug>
+ #include <QGpgME/KeyListJob>
+ #include <QGpgME/Protocol>
+ 
+-- 
+GitLab
+
