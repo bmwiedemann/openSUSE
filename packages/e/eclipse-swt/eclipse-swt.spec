@@ -16,11 +16,18 @@
 #
 
 
+%global archs_32bit s390 %{arm} %{ix86}
 %global major_version   4
+%ifarch %{archs_32bit}
 %global minor_version   9
+%global other_minor_version 29
+%else
+%global minor_version   29
+%global other_minor_version 9
+%endif
 %global tag R%{major_version}_%{minor_version}
+%global other_tag R%{major_version}_%{other_minor_version}
 %global swtsrcdir       bundles/org.eclipse.swt
-%global eclipse_arch    %{_arch}
 Name:           eclipse-swt
 Version:        %{major_version}.%{minor_version}
 Release:        0
@@ -32,6 +39,10 @@ Source0:        https://codeload.github.com/eclipse-platform/eclipse.platform.sw
 Source1:        classpath.xls
 Source2:        https://github.com/eclipse-platform/eclipse.platform.swt/raw/refs/tags/R4_29/LICENSE
 Source3:        https://github.com/eclipse-platform/eclipse.platform.swt/raw/refs/tags/R4_29/NOTICE
+# These two are the other sources, listed here to appease bots
+Source100:      https://codeload.github.com/eclipse-platform/eclipse.platform.swt/tar.gz/refs/tags/%{other_tag}#/eclipse.platform.swt-%{other_tag}.tar.gz
+Source101:      eclipse-swt-avoid-javascript-at-build-%{major_version}_%{other_minor_version}.patch
+Source102:      eclipse-swt-gcc15-%{major_version}_%{other_minor_version}.patch
 Patch0:         eclipse-swt-avoid-javascript-at-build-%{major_version}_%{minor_version}.patch
 Patch1:         eclipse-swt-rm-eclipse-tasks-and-customize-build.patch
 Patch2:         eclipse-swt-fedora-build-native.patch
@@ -49,10 +60,8 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.0)
-BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.1)
 BuildRequires:  pkgconfig(xt)
-ExclusiveArch:  s390 %{arm} %{ix86}
+Obsoletes:      %{name}-bootstrap
 
 %description
 SWT is an open source widget toolkit for Java designed to provide
@@ -72,7 +81,9 @@ This package contains the API documentation for %{name}.
 %patch -P 0 -p1
 %patch -P 1 -p1
 %patch -P 2 -p1
+%ifarch %{archs_32bit}
 %patch -P 3 -p2
+%endif
 %patch -P 4 -p1
 mkdir -p %{swtsrcdir}/tasks
 cp %{SOURCE1} %{swtsrcdir}/tasks
@@ -97,7 +108,7 @@ ant -f buildSWT.xml build_local \
     -Dant.build.javac.source=8 -Dant.build.javac.target=8 \
     -Dbuild_dir=Eclipse\ SWT\ PI/gtk/library \
     -Dtargets="-gtk3 install" -Dclean= -Dcflags="%{optflags}" \
-    -Dlflags="${RPM_LD_FLAGS}" -Dswt.arch=%{eclipse_arch}
+    -Dlflags="${RPM_LD_FLAGS}" -Dswt.arch=%{_arch}
 
 # Build Java part
 ant -f buildSWT.xml check_compilation_all_platforms \

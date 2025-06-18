@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 18 07:22:27 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Extend the architectures to build to all the 64-bit ones
+  * use the 4.29 version for them
+- Added patches:
+  * eclipse-swt-avoid-javascript-at-build-4_29.patch
+  * eclipse-swt-gcc15-4_29.patch
+    + the 4.29 version of the 4.9 patches
+
+-------------------------------------------------------------------
 Mon Jun 16 16:59:10 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
