@@ -16,17 +16,15 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname kfilemetadata
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without ffmpeg
 %bcond_without released
 Name:           kf6-kfilemetadata
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Library for extracting Metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -36,17 +34,16 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  doxygen
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  libattr-devel
 BuildRequires:  libepub-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(exiv2) >= 0.21
-BuildRequires:  cmake(KF6Archive) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Codecs) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6Archive) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Codecs) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{_kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{_kf6_version}
 # Not packaged yet
 # BuildRequires:  cmake(QMobipocket6)
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
@@ -84,7 +81,7 @@ A library for extracting file metadata. Development files
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -107,7 +104,6 @@ A library for extracting file metadata. Development files
 %{_kf6_libdir}/libKF6FileMetaData.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KF6FileMetaData.*
 %{_kf6_cmakedir}/KF6FileMetaData/
 %{_kf6_includedir}/KFileMetaData/
 %{_kf6_libdir}/libKF6FileMetaData.so
