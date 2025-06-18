@@ -16,16 +16,14 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname kirigami
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kirigami
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Set of QtQuick components
 License:        LGPL-2.1-or-later
@@ -35,13 +33,7 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-WheelHandler-remove-std-clamp-assert-crash.patch
-Patch1:         0002-WheelHandler-Only-apply-scrollview-event-filtering-t.patch
-Patch2:         0004-WheelHandler-remove-std-clamp-assert-crash-part-2.patch
-Patch3:         0005-WheelHandler-use-std-min-and-std-max-instead-of-qMin.patch
-BuildRequires:  doxygen
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
@@ -94,7 +86,7 @@ Development files.
 
 %build
 
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -123,9 +115,9 @@ Development files.
 %{_kf6_libdir}/libKirigamiLayoutsPrivate.so.*
 %{_kf6_libdir}/libKirigamiPlatform.so.*
 %{_kf6_libdir}/libKirigamiPrimitives.so.*
+%{_kf6_libdir}/libKirigamiPolyfill.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KF6KirigamiPlatform.*
 %{_kf6_cmakedir}/KF6Kirigami/
 %{_kf6_cmakedir}/KF6Kirigami2/
 %{_kf6_cmakedir}/KF6KirigamiPlatform/
@@ -139,6 +131,7 @@ Development files.
 %{_kf6_libdir}/libKirigamiPlatform.so
 %{_kf6_libdir}/libKirigamiPrimitives.so
 %{_kf6_libdir}/libKirigamiPrivate.so
+%{_kf6_libdir}/libKirigamiPolyfill.so
 %{_kf6_sharedir}/kdevappwizard/templates/kirigami6.tar.bz2
 
 %files lang -f libkirigami6.lang

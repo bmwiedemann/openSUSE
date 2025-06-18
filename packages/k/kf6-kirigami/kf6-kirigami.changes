@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun  9 20:29:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.15.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.15.0
+- Too many changes since 6.14.0, only listing bugfixes:
+  * SwipeListItem: Fix action button positions (kde#498232)
+  * Add null texture guard in ShadowedTextureNode::preprocess() (kde#504727)
+  * Always update render node rect (kde#504526)
+  * Fix ActionTextField RTL (kde#504091)
+  * WheelHandler: remove std::clamp assert crash part 2 (kde#503703)
+  * WheelHandler: remove std::clamp assert crash (kde#503703)
+  * SearchField fix RTL search icon positioning (kde#503012)
+  * primitives: Use a custom shader for rendering Icon (kde#498530)
+- Replace _kf6_bugfix_version usage
+- Drop patches, merged upstream:
+  * 0001-WheelHandler-remove-std-clamp-assert-crash.patch
+  * 0002-WheelHandler-Only-apply-scrollview-event-filtering-t.patch
+  * 0004-WheelHandler-remove-std-clamp-assert-crash-part-2.patch
+  * 0005-WheelHandler-use-std-min-and-std-max-instead-of-qMin.patch
+
+-------------------------------------------------------------------
 Tue May 13 16:10:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream changes:
