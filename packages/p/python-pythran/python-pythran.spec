@@ -136,7 +136,8 @@ EOF
 export PYTHRANRC=$PWD/config.pythranrc
 %endif
 # gh#serge-sans-paille/pythran#2317 -- changed AST in Py3.13
-python313_skip_tests=("-k" "not test_tutorial")
+# gh#serge-sans-paille/pythran#2326
+python313_skip_tests=("-k" "not (test_tutorial or test_utils)")
 # pytest_extra_args is for debug builds with local defines on command line
 %pytest %{?jobs:-n %jobs} %{?pytest_extra_args} "${$python_skip_tests[@]}"
 %endif

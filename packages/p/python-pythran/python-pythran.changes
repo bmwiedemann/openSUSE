@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 18 10:47:55 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Skip pythran/tests/test_xdoc.py::TestDoctest::test_utils, which
+  is failing with 3.13.5 (gh#serge-sans-paille/pythran#2326).
+
+-------------------------------------------------------------------
 Fri Jun 13 18:54:09 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Add GCC15_pythran-PR2325-missing-operators.patch
