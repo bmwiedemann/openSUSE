@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun 18 06:04:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.1:
+  * fix: Update PrintNamespacesList to use a YAML parser for
+    multiple manifest files (#9825) (#9833)
+  * chore: 2.16 release (#9807)
+  * chore: update dependencies in Dockerfile and integration tests
+    (#9806)
+  * chore: upgrade to Go 1.24.2 (#9805)
+  * chore: upgrade all dependencies (#9802)
+  * chore: remove the `skaffold survey` code (#9803)
+  * docs: remove reference to the deprecated office hours (#9804)
+  * chore: bump github/codeql-action from 3.28.16 to 3.28.17
+    (#9801)
+  * Bugfix: Only prune images if changed (#9787)
+  * feat: Add support in Cloud Run for configuring
+    tolerateFailuresUntilDeadline and disabling status checks
+    (#9799)
+
+-------------------------------------------------------------------
 Wed May 07 04:23:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.16.0:

@@ -17,7 +17,7 @@
 
 
 Name:           skaffold
-Version:        2.16.0
+Version:        2.16.1
 Release:        0
 Summary:        Easy and Repeatable Kubernetes Development
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.23
 
 %description
 Skaffold is a command line tool that facilitates continuous development for
