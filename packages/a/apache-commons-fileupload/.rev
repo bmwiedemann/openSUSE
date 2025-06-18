@@ -31,4 +31,12 @@
     <comment>Spec file cleanup</comment>
     <requestid>1205235</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2dae77d312fe8d6ec0d61ab2e4abb3ce</srcmd5>
+    <version>1.6.0</version>
+    <time>1750262290</time>
+    <user>anag_factory</user>
+    <comment>minimal fix to mess up the green colour of staging</comment>
+    <requestid>1286671</requestid>
+  </revision>
 </revisionlist>

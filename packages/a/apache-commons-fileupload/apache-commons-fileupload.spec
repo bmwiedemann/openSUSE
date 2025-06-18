@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-fileupload
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %global short_name commons-%{base_name}
 %bcond_without  portlet
 Name:           apache-%{short_name}
-Version:        1.5
+Version:        1.6.0
 Release:        0
 Summary:        API to work with HTML file upload
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/fileupload/
-Source0:        http://archive.apache.org/dist/commons/fileupload/source/commons-fileupload-%{version}-src.tar.gz
+Source0:        https://archive.apache.org/dist/commons/fileupload/source/commons-fileupload-%{version}-src.tar.gz
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  apache-commons-io
@@ -57,7 +57,7 @@ Group:          Documentation/HTML
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n commons-fileupload-%{version}-src
+%setup -q -n %{short_name}-%{version}-src
 cp %{SOURCE1} build.xml
 sed -i 's/\r//' LICENSE.txt
 sed -i 's/\r//' NOTICE.txt

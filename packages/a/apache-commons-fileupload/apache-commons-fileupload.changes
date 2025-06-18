@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jun 17 16:04:25 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.6.0
+  * Fixes bsc#1244657, CVE-2025-48976
+  * New features:
+    + [1.x] Enable multipart/related on FileUpload #314.
+    + Add JApiCmp to the default Maven goal.
+    + Add partHeaderSizeMax, a new limit that sets a maximum number
+      of bytes for each individual multipart header. The default is
+      512 bytes.
+  * Fixed Bugs:
+    + Replace use of Locale.ENGLISH with Locale.ROOT.
+    + Remove unused exception from FileUploadBase.createItem(Map,
+      boolean).
+    + Migrate from deprecated API in DiskFileItem.getOutputStream().
+    + Use try-with-resources.
+    + Port to Java 1.4 Throwable APIs (!).
+    + Remove -nouses directive from maven-bundle-plugin. OSGi
+      package imports now state 'uses' definitions for package
+      imports, this doesn't affect JPMS (from
+      org.apache.commons:commons-parent:80).
+    + DiskFileItem.getInputStream() now uses NIO.
+    + Last statement in DiskFileItem.finalize() method should be a
+      call to super.finalize().
+    + org.apache.commons.fileupload.FileUploadBase
+      .FileUploadIOException is now a proper Java 1.4-style
+      exception (propagates its cause to super).
+    + Use java.util.Base64 instead of custom code.
+  * Changes:
+    + Bump Java from 6 to 8.
+    + Bump org.apache.commons:commons-parent from 62 to 84, upgrades
+      Doxia from 1 to 2.
+    + Bump commons-io from 2.11.0 to 2.19.0.
+    + Bump javax.servlet:servlet-api from 2.4 to 2.5.
+    + Bump JUnit from junit:junit:4.13.2
+      org.junit.vintage:junit-vintage-engine from parent POM.
+
+-------------------------------------------------------------------
 Wed Oct  2 15:31:16 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Spec file cleanup
