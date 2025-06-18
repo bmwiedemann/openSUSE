@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun 16 13:44:00 UTC 2025 - dcermak@suse.com
+
+- Update to version 20250611.0293c6f:
+  * fedora: Hide restorecon(8) errors in post-transaction scriptlet
+  * fedora: Add container-selinux as dependency for passt-selinux
+  * flow, repair: Proper error handling for missing passt-repair helper on target
+  * fedora: Depend on SELinux tools and policy version, drop circular dependency
+  * fedora: Call %selinux_modules_* macros only once
+  * conf: flush stdout before early exit
+  * passt-repair: Fix missing newlines in error messages
+  * Correct various function comment headers
+  * tap: Avoid bogus missingReturn cppcheck warning in tap_l2_max_len()
+  * fedora: Separately restore context for /run/user in %posttrans selinux
+  * selinux: Transition to pasta_t in containers
+  * iov: Standardize function comment headers
+  * virtio: Correct and align comment headers
+  * vhost_user: Correct and align function comment headers
+  * codespell: Correct typos in comments and error message
+  * test: Display count of skipped tests in status and summary
+  * flow: Fix clang error (clang-analyzer-security.PointerSub)
+  * ndp: Fix Clang analyzer warning (clang-analyzer-security.PointerSub)
+  * virtio: Fix Clang warning (bugprone-sizeof-expression, cert-arr39-c)
+  * dhcpv6: fix GCC error (unterminated-string-initialization)
+
+-------------------------------------------------------------------
 Tue May 13 15:02:15 UTC 2025 - dcermak@suse.com
 
 - Update to version 20250512.8ec1341:

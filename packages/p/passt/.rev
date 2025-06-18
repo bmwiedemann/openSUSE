@@ -216,4 +216,12 @@ on SELinux-enabled projects e.g. SLFO. (forwarded request 1186132 from danishpra
     <comment></comment>
     <requestid>1277837</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>789a5bbbfbc8331fc3437d46a6efca4d</srcmd5>
+    <version>20250611.0293c6f</version>
+    <time>1750278523</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1286646</requestid>
+  </revision>
 </revisionlist>
