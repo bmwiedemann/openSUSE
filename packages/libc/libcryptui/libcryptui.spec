@@ -2,6 +2,7 @@
 # spec file for package libcryptui
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,22 +24,32 @@ Release:        0
 Summary:        Library for prompting for PGP keys
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Security
-URL:            http://projects.gnome.org/seahorse/
+URL:            https://projects.gnome.org/seahorse/
 Source:         http://download.gnome.org/sources/libcryptui/3.12/%{name}-%{version}.tar.xz
+# adapted from https://gitlab.archlinux.org/archlinux/packaging/packages/libcryptui/-/blob/main/fix-configure-gpgme.patch?ref_type=heads
+Patch0:         fix-configure-gpgme.patch
+# taken from https://gitlab.archlinux.org/archlinux/packaging/packages/libcryptui/-/blob/main/gpgme-2.0.patch?ref_type=heads
+Patch1:         gpgme-2.0.patch
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gpg2
-BuildRequires:  gpgme-devel
 BuildRequires:  intltool
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gnome-keyring-1)
+BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(sm)
+# for Patch0
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  gettext-tools
+BuildRequires:  gtk-doc
+BuildRequires:  libtool
+#
 
 %description
 Libcryptui is a library used for prompting for PGP keys.
@@ -100,21 +111,21 @@ Libcryptui is a library used for prompting for PGP keys.
 %lang_package
 
 %prep
-%setup -q
-sed -i "s:1.2 1.4 2.0:1.2 1.4 2.0 2.1 2.2 2.3 2.4 2.5:" configure
+%autosetup -p1
 
 %build
+# for Patch0
+autoconf -i
 %configure \
         --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang cryptui %{?no_lang_C}
 
-%post -n libcryptui0 -p /sbin/ldconfig
-%postun -n libcryptui0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcryptui0
 
 %post -n libcryptui-data
 %glib2_gsettings_schema_post
@@ -123,13 +134,16 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %glib2_gsettings_schema_postun
 
 %files -n libcryptui0
+%license COPYING
 %doc AUTHORS ChangeLog COPYING-LIBCRYPTUI NEWS README
 %{_libdir}/libcryptui.so.*
 
 %files -n typelib-1_0-CryptUI-0_0
+%license COPYING
 %{_libdir}/girepository-1.0/CryptUI-0.0.typelib
 
 %files -n libcryptui-data
+%license COPYING
 # Own the directory since we can't depend on gconf providing them
 %dir %{_datadir}/GConf
 %dir %{_datadir}/GConf/gsettings
@@ -143,11 +157,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/dbus-1/services/org.gnome.seahorse.service
 %{_datadir}/cryptui/
 %{_datadir}/pixmaps/cryptui/
-%{_mandir}/man1/seahorse-daemon.1%{ext_man}
+%{_mandir}/man1/seahorse-daemon.1%{?ext_man}
 
 %files lang -f cryptui.lang
+%license COPYING
 
 %files devel
+%license COPYING
 %{_includedir}/libcryptui/
 %{_libdir}/pkgconfig/cryptui-0.0.pc
 %{_libdir}/libcryptui.so

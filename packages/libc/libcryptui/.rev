@@ -212,4 +212,12 @@
     <comment></comment>
     <requestid>1217958</requestid>
   </revision>
+  <revision rev="28" vrev="12">
+    <srcmd5>a7243f7225e632a5d1c426bfd88a0597</srcmd5>
+    <version>3.12.2</version>
+    <time>1750254810</time>
+    <user>anag_factory</user>
+    <comment>Fix build with gpgme &gt;= 2 boo#1244605 (forwarded request 1285835 from AndreasStieger)</comment>
+    <requestid>1285995</requestid>
+  </revision>
 </revisionlist>

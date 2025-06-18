@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 14 20:41:07 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix build with gpgme >= 2 boo#1244605 fix-configure-gpgme.patch
+- convert GnuPG 2.5.x support into gpgme-2.0.patch
+
+-------------------------------------------------------------------
 Thu Oct 24 06:55:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add GnuPG 2.5.x to the list of supported GnuPG versions.
