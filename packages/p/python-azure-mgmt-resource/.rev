@@ -322,4 +322,15 @@
     <comment></comment>
     <requestid>1282710</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ea33c33732d0ae4b11961370e9d6e962</srcmd5>
+    <version>24.0.0</version>
+    <time>1750262308</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 24.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1286590 from glaubitz)</comment>
+    <requestid>1286611</requestid>
+  </revision>
 </revisionlist>

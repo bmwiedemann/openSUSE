@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-resource
-Version:        23.4.0
+Version:        24.0.0
 Release:        0
 Summary:        Microsoft Azure Resource Management Client Library
 License:        MIT
