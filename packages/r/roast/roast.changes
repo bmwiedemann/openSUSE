@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jun 15 13:21:52 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 8.1.0:
+  * chore(release): bump to v8.1.0
+  * docs: update README.md to reflect new behaviour
+  * ci: add a note for why tests are separated.
+  * improvement: feature obs will just call `set_version_in_specfile`.
+  * format: run `cargo +nightly fmt`
+  * fix: more clap fix workarounds. `changesauthor` is required if `changesgenerate` is set to true.
+  * fix: "prepend" -> "it prepends"
+  * fix: word should be prepend and not append.
+  * fix: `requires_if` to `required_if_eq`
+  * docs: fix typos and inconsistencies in README.md
+  * docs: update README
+  * docs: update README.md
+  * docs: update README.md
+
+-------------------------------------------------------------------
 Fri Jun 13 15:02:32 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 8.0.0:
@@ -311,4 +329,5 @@ Tue Oct 15 10:02:38 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 Sat Oct 12 05:37:05 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Initial spec for roast 3.2.2
+
 

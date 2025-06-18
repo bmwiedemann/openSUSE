@@ -1,7 +1,7 @@
 <services>
   <service name="cargo_vendor" mode="manual">
      <param name="url">https://codeberg.org/Rusty-Geckos/roast</param>
-     <param name="revision">main</param>
+     <param name="revision">v8.1.0</param>
      <param name="versionrewriteregex">v(.*)</param>
      <param name="versionrewritepattern">${1}</param>
      <param name="changesgenerate">true</param>

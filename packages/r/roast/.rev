@@ -436,4 +436,25 @@ package called `obs-service-recomprizz`.</comment>
 </comment>
     <requestid>1285800</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8f9a28cee1fe322d6a6bfc6f4f4416d0</srcmd5>
+    <version>8.1.0</version>
+    <time>1750262341</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.1.0:
+  * chore(release): bump to v8.1.0
+  * docs: update README.md to reflect new behaviour
+  * ci: add a note for why tests are separated.
+  * improvement: feature obs will just call `set_version_in_specfile`.
+  * format: run `cargo +nightly fmt`
+  * fix: more clap fix workarounds. `changesauthor` is required if `changesgenerate` is set to true.
+  * fix: &quot;prepend&quot; -&gt; &quot;it prepends&quot;
+  * fix: word should be prepend and not append.
+  * fix: `requires_if` to `required_if_eq`
+  * docs: fix typos and inconsistencies in README.md
+  * docs: update README
+  * docs: update README.md
+  * docs: update README.md</comment>
+    <requestid>1286700</requestid>
+  </revision>
 </revisionlist>
