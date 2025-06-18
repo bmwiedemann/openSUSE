@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:37:40 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+  * Achieve WCAG AA text contrast for labels
+
+-------------------------------------------------------------------
+Thu May 29 21:20:33 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+
+-------------------------------------------------------------------
+Mon May 19 19:35:44 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Changes since 6.3.5:
+  * update version for new release
+  * Remove unused PROJECT_VERSION_MAJOR variable
+  * plasmoid: simplify Layout change
+  * plasmoid: use implicitHeight instead of manual calculation
+  * plasmoid: set layout minimum size on full representation
+  * lib: simplify mouse hover handling (kde#501350)
+  * Add power/session actions to favorite runners list
+  * CI: Add linux-qt6-next build
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue May  6 20:08:46 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
