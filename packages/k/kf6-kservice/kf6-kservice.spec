@@ -16,16 +16,14 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname kservice
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kservice
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Plugin framework for desktop services
 License:        LGPL-2.1-or-later
@@ -36,17 +34,16 @@ Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  bison
-BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  flex
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6DocTools) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{_kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{_kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
-Recommends:     kded6 >= %{_kf6_bugfix_version}
+Recommends:     kded6 >= %{_kf6_version}
 
 %description
 Provides a plugin framework for handling desktop services. Services can
@@ -65,8 +62,8 @@ application specific code.
 %package devel
 Summary:        Plugin framework for desktop services: Build Environment
 Requires:       libKF6Service6 = %{version}
-Requires:       cmake(KF6Config) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
+Requires:       cmake(KF6Config) >= %{_kf6_version}
+Requires:       cmake(KF6CoreAddons) >= %{_kf6_version}
 
 %description devel
 Provides a plugin framework for handling desktop services. Services can
@@ -79,7 +76,7 @@ application specific code. Development files
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -103,7 +100,6 @@ application specific code. Development files
 %{_kf6_libdir}/libKF6Service.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KF6Service.*
 %{_kf6_cmakedir}/KF6Service/
 %{_kf6_includedir}/KService/
 %{_kf6_libdir}/libKF6Service.so
