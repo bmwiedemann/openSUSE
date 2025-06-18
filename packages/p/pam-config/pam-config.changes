@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 18 05:28:06 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.12+git.20250516:
+  * Don't add pam_env twice
+
+-------------------------------------------------------------------
 Fri Apr 11 08:14:08 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.12+git.20250411:
