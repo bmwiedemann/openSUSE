@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 18 04:41:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- Explicitly list files and directories in %files.
+
+-------------------------------------------------------------------
 Thu Sep  1 16:01:08 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 0.22.1

@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyBindGen
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
 Name:           python-PyBindGen
 Version:        0.22.1
 Release:        0
@@ -26,8 +24,10 @@ License:        LGPL-2.1-only
 Group:          Development/Libraries/Python
 URL:            https://github.com/gjcarneiro/pybindgen
 Source0:        https://pypi.io/packages/source/P/PyBindGen/PyBindGen-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -43,14 +43,15 @@ A tool to generate Python bindings for C/C++ code.
 find pybindgen/ -iname \*.py -exec sed -ie '1 { \#/usr/bin# d }' '{}' \;
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
 %files %{python_files}
 %license COPYING
-%{python_sitelib}/*
+%{python_sitelib}/pybindgen
+%{python_sitelib}/[Pp]y[Bb]ind[Gg]en-%{version}.dist-info
 
 %changelog
