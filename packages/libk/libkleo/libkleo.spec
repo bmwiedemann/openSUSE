@@ -2,6 +2,7 @@
 # spec file for package libkleo
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,7 +15,6 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
 
 
 %define kf6_version 6.6.0
@@ -35,10 +35,10 @@ Source2:        applications.keyring
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libboost_headers-devel
-BuildRequires:  libgpgmepp-devel >= 1.16.0
+BuildRequires:  cmake(Gpgmepp) >= 1.16.0
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
-BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
@@ -63,7 +63,7 @@ applications to handle cryptographic key and certificate management.
 %package devel
 Summary:        Development package for libkleo
 Requires:       libKPim6libkleo6 = %{version}
-Requires:       libgpgmepp-devel >= 1.16.0
+Requires:       cmake(Gpgmepp) >= 1.16.0
 Requires:       cmake(QGpgmeQt6) >= 1.16.0
 
 %description devel

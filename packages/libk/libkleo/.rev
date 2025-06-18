@@ -903,4 +903,13 @@
     <comment>KDE release gear 25.04.2 (forwarded request 1282457 from krop)</comment>
     <requestid>1283255</requestid>
   </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>28474014befc91dcc37e6acd2dd30980</srcmd5>
+    <version>25.04.2</version>
+    <time>1750254823</time>
+    <user>anag_factory</user>
+    <comment>- update gpgmepp dependencies to help with the gpgme 2.0.0
+  split-off of the C++ bindings (boo#1244605)</comment>
+    <requestid>1286049</requestid>
+  </revision>
 </revisionlist>
