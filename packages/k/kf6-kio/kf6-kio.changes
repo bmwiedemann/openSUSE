@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun  9 20:29:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.15.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.15.0
+- Too many changes since 6.14.0, only listing bugfixes:
+  * Adjust URL for cppreference searching (kde#505195)
+  * Fix dialog modality settings (kde#504608)
+  * KFilePlaces: Allow symlinks to directories to be dropped into places panel (kde#462637)
+  * CopyJob: Inhibit suspend during copy operation (kde#362542)
+- Replace _kf6_bugfix_version usage
+
+-------------------------------------------------------------------
 Sun May  4 19:05:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.14.0

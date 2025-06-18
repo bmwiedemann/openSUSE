@@ -16,16 +16,14 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname kio
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kio
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -35,35 +33,34 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  libattr-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
-BuildRequires:  cmake(KF6Archive) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Auth) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Bookmarks) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6ColorScheme) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Completion) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6ConfigWidgets) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Crash) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6DBusAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6DocTools) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6GuiAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6IconThemes) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6ItemViews) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6JobWidgets) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6KDED) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Service) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Solid) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6TextWidgets) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Wallet) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6WindowSystem) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6Archive) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Auth) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Bookmarks) >= %{_kf6_version}
+BuildRequires:  cmake(KF6ColorScheme) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{_kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{_kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{_kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{_kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{_kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{_kf6_version}
+BuildRequires:  cmake(KF6ItemViews) >= %{_kf6_version}
+BuildRequires:  cmake(KF6JobWidgets) >= %{_kf6_version}
+BuildRequires:  cmake(KF6KDED) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Service) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Solid) >= %{_kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Wallet) >= %{_kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
@@ -79,7 +76,7 @@ BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(x11)
-Requires:       kf6-kded >= %{_kf6_bugfix_version}
+Requires:       kf6-kded >= %{_kf6_version}
 # For discrete GPU discovery
 Recommends:     switcheroo-control
 
@@ -104,16 +101,16 @@ Network transparent access to files and data
 %package devel
 Summary:        Network transparent access to files and data
 Requires:       libKF6KIO6 = %{version}
-Requires:       cmake(KF6Bookmarks) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6Completion) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6Config) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6ItemViews) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6JobWidgets) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6Service) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6Solid) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6WindowSystem) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6XmlGui) >= %{_kf6_bugfix_version}
+Requires:       cmake(KF6Bookmarks) >= %{_kf6_version}
+Requires:       cmake(KF6Completion) >= %{_kf6_version}
+Requires:       cmake(KF6Config) >= %{_kf6_version}
+Requires:       cmake(KF6CoreAddons) >= %{_kf6_version}
+Requires:       cmake(KF6ItemViews) >= %{_kf6_version}
+Requires:       cmake(KF6JobWidgets) >= %{_kf6_version}
+Requires:       cmake(KF6Service) >= %{_kf6_version}
+Requires:       cmake(KF6Solid) >= %{_kf6_version}
+Requires:       cmake(KF6WindowSystem) >= %{_kf6_version}
+Requires:       cmake(KF6XmlGui) >= %{_kf6_version}
 Requires:       cmake(Qt6Concurrent) >= %{qt6_version}
 Requires:       cmake(Qt6DBus) >= %{qt6_version}
 Requires:       cmake(Qt6Network) >= %{qt6_version}
@@ -134,7 +131,7 @@ Development files.
 %define _lto_cflags %{nil}
 %endif
 
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -192,7 +189,6 @@ Development files.
 %{_kf6_libdir}/libKF6KIOWidgets.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KF6KIO.*
 %{_kf6_cmakedir}/KF6KIO/
 %{_kf6_includedir}/KIO/
 %{_kf6_includedir}/KIOCore/
