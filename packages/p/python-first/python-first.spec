@@ -25,8 +25,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hynek/first/
 Source:         https://files.pythonhosted.org/packages/source/f/first/first-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -39,15 +41,10 @@ A Python library that returns the first true value of an iterable.
 %setup -q -n first-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-# Fix python-bytecode-inconsistent-mtime
-pushd %{buildroot}%{python_sitelib}
-find . -name '*.pyc' -exec rm -f '{}' ';'
-popd
-#
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +53,8 @@ popd
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/first.py
+%pycache_only %{python_sitelib}/__pycache__/first.*.pyc
+%{python_sitelib}/first-%{version}.dist-info
 
 %changelog
