@@ -1802,4 +1802,28 @@ https://build.opensuse.org/request/show/1178504 </comment>
     <comment></comment>
     <requestid>1280948</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>38b27ab273fede5b098a18de4b8afd20</srcmd5>
+    <version>20250616</version>
+    <time>1750254820</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250616:
+  * Add a smoke test to the gitlab-ci
+  * Add a default PR template
+  * allow openvpn to attach to wicked owned tun interfaces (bsc#1243291)
+  * allow wicked to connect to networkmanager and mange pid files for it (bsc#1243291)
+  * allow wicked to transition to openvswitch domain (bsc#1243291)
+  * allow wicked to start systemd services (bsc#1243291)
+  * allow wicked to controll firewalld services (bsc1243291)
+  * allow wicked interaction with tmpfs files and creation of sysfs files (bsc#1243291)
+  * introduce fs_dontaudit_exec_tmpfs_files interface
+  * Trigger the gitlab-ci tests only for merge requests to factory
+  * Move 'logging_mounton_syslog_pid_socket' to end of file
+  * Revert &quot;Allow init_t create syslog files (bsc#1230134)&quot;
+  * Revert downstream fix for bsc#1199630 due to regression (bsc#1243242)
+  * allow selinux_autorelabel_generator_t dac_read_search (bsc#1237511)
+  * do not set sulogin_no_pam (bsc#1237511)
+</comment>
+    <requestid>1286039</requestid>
+  </revision>
 </revisionlist>
