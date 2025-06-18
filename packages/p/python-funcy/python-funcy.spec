@@ -1,7 +1,7 @@
 #
 # spec file for package python-funcy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-funcy
 Version:        2.0
@@ -26,9 +25,11 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/Suor/funcy
 Source:         https://files.pythonhosted.org/packages/source/f/funcy/funcy-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module whatever}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -43,10 +44,10 @@ Inspired by clojure, underscore and the author's own abstractions.
 %setup -q -n funcy-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +57,7 @@ rm -r tests/__pycache__
 %files %{python_files}
 %doc CHANGELOG README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/funcy
+%{python_sitelib}/funcy-%{version}.dist-info
 
 %changelog
