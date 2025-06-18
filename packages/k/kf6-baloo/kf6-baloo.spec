@@ -16,16 +16,14 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname baloo
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-baloo
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -35,20 +33,19 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  doxygen
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  libattr-devel
 BuildRequires:  lmdb-devel
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Crash) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6DBusAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6FileMetaData) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6IdleTime) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6KIO) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Solid) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6Config) >= %{_kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{_kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6FileMetaData) >= %{_kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{_kf6_version}
+BuildRequires:  cmake(KF6IdleTime) >= %{_kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Solid) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
@@ -115,8 +112,8 @@ Summary:        Development package for baloo6
 Requires:       libKF6Baloo6 = %{version}
 Requires:       libKF6BalooEngine6 = %{version}
 Requires:       lmdb-devel
-Requires:       cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6FileMetaData) >= %{_kf6_bugfix_version}
+Requires:       cmake(KF6CoreAddons) >= %{_kf6_version}
+Requires:       cmake(KF6FileMetaData) >= %{_kf6_version}
 Requires:       cmake(Qt6Core) >= %{qt6_version}
 Conflicts:      baloo5-devel
 
@@ -130,7 +127,7 @@ package contains aditional command line utilities. Development files.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -181,7 +178,6 @@ package contains aditional command line utilities. Development files.
 %{_kf6_qmldir}/org/kde/baloo/
 
 %files devel
-%doc %{_kf6_qchdir}/KF6Baloo.*
 %{_kf6_includedir}/Baloo/
 %{_kf6_cmakedir}/KF6Baloo/
 %{_kf6_libdir}/libKF6Baloo.so
