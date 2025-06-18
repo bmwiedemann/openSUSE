@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Jun 17 07:04:34 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 0.46.2:
+  + region:
+    - add translatef function for fractional regions
+    - add contains_pointf function for fractional regions
+- Changes from 0.46.0:
+  + RISC-V: Only enable RVV on linux if hwcap headers are available
+  + Test case for compositing with a negative stride
+  + Fix arm64 advanced prefetcher
+  + region:
+    - add parametric primitive type to generalize implementation
+      detail
+    - make print specifier parametric
+    - add fractional implementation based on 64bit floating point
+      number
+    - add rectf convenience functions
+    - add pixman_region32_copy_from_region64f utility function
+    - add image clip and composite functions for fractional regions
+  + test/region: add fractional region tests
+  + Add a16b16g16r16 format
+  + test/stress-test: add a16b16g16r16
+  + test: Increase timeout for alpha-loop test
+  + Fix some build warning
+  + rvv: Pass through clang-format
+  + docker:
+    - Update Wine to 10.5 and update LLVM-MinGW
+    - Update Meson to 1.7
+    - Move LLVM archive to a separate thin layer
+    - Decrease build time for gcovr
+  + test: Add lowlevel-blt-bench result comparison script
+  + rvv:
+    - Add float suffix to float implementation
+    - Add integer operations
+  + vmx:
+    - Remove unnecessary variable
+    - Remove unpack_565_to_8888() and associated constants
+    - Remove unpack_128_2x128_16()
+    - Remove unpack{hi,lo}_128_8x16 functions
+    - Move and use unpack{hi,lo}_128_16x8 in pix_multiply()
+    - Use create_mask_32_128() more places
+    - Use appropriate types
+    - Add and use create_mask_16_128() function
+    - Use selector variables
+    - Add and use `vzero` constant
+    - Simplify over() function
+    - Make in_over() a real function
+    - Simplify unpack{hi,lo}_128_16x8() function
+    - Move create_mask_32_128() function
+    - Avoid two shifts in pix_multiply() function
+    - Optimize pix_multiply()
+    - Declare iterator variable in for loop
+    - Disable clang-format around some data structure declarations
+    - Run clang-format
+  + arm: Move the .fpu neon directive around
+
+-------------------------------------------------------------------
 Wed Mar 26 13:23:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.44.2:

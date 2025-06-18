@@ -498,4 +498,41 @@ But since we have been since august, I'm subbing the next version also. Should y
     <comment>New release</comment>
     <requestid>1264961</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>8ba08976ea33eb632589a62acf9dfda0</srcmd5>
+    <version>0.46.2</version>
+    <time>1750267792</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.46.2:
+  + region:
+    - add translatef function for fractional regions
+    - add contains_pointf function for fractional regions
+- Changes from 0.46.0:
+  + RISC-V: Only enable RVV on linux if hwcap headers are available
+  + Test case for compositing with a negative stride
+  + Fix arm64 advanced prefetcher
+  + region:
+    - add parametric primitive type to generalize implementation
+      detail
+    - make print specifier parametric
+    - add fractional implementation based on 64bit floating point
+      number
+    - add rectf convenience functions
+    - add pixman_region32_copy_from_region64f utility function
+    - add image clip and composite functions for fractional regions
+  + test/region: add fractional region tests
+  + Add a16b16g16r16 format
+  + test/stress-test: add a16b16g16r16
+  + test: Increase timeout for alpha-loop test
+  + Fix some build warning
+  + rvv: Pass through clang-format
+  + docker:
+    - Update Wine to 10.5 and update LLVM-MinGW
+    - Update Meson to 1.7
+    - Move LLVM archive to a separate thin layer
+    - Decrease build time for gcovr
+  + test: Add lowlevel-blt-bench result comparison script
+  + rvv:</comment>
+    <requestid>1286307</requestid>
+  </revision>
 </revisionlist>
