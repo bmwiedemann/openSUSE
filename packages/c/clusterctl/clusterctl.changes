@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 18 05:04:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.3:
+  * fix govulncheck security scan
+  * [release-1.10] clusterctl: accept upper case version
+    (#12321)
+
+-------------------------------------------------------------------
 Wed May 21 05:13:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.2:
