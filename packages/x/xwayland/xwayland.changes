@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Jun 17 20:01:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 24.1.7:
+  * This release contains the fixes for the issues reported in
+    today's security advisory:
+    https://lists.x.org/archives/xorg/2025-June/062055.html
+    CVE-2025-49175, CVE-2025-49176, CVE-2025-49177, CVE-2025-49178,
+    CVE-2025-49179, CVE-2025-49180.
+  * Additionally, this release includes several other various fixes.
+  * Drop patches fixed upstream:
+    - U_CVE-2025-49175-render-Avoid-0-or-less-animated-cursors.patch
+    - U_CVE-2025-49176-os-Do-not-overflow-the-integer-size-with-BigRequest.patch
+    - U_CVE-2025-49177-xfixes-Check-request-length-for-SetClientDisconnectM.patch
+    - U_CVE-2025-49178-os-Account-for-bytes-to-ignore-when-sharing-input-bu.patch
+    - U_CVE-2025-49179-record-Check-for-overflow-in-RecordSanityCheckRegist.patch
+    - U_CVE-2025-49180-randr-Check-for-overflow-in-RRChangeProviderProperty.patch
+
+-------------------------------------------------------------------
+Thu Jun  5 12:55:30 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_CVE-2025-49175-render-Avoid-0-or-less-animated-cursors.patch
+  * Out-of-bounds access in X Rendering extension (Animated cursors)
+    (CVE-2025-49175, bsc#1244082)
+- U_CVE-2025-49176-os-Do-not-overflow-the-integer-size-with-BigRequest.patch
+  * Integer overflow in Big Requests Extension
+    (CVE-2025-49176, bsc#1244084)
+- U_CVE-2025-49177-xfixes-Check-request-length-for-SetClientDisconnectM.patch
+  * Data leak in XFIXES Extension 6 (XFixesSetClientDisconnectMode)
+    (CVE-2025-49177, bsc#1244085)
+- U_CVE-2025-49178-os-Account-for-bytes-to-ignore-when-sharing-input-bu.patch
+  * Unprocessed client request via bytes to ignore 
+    (CVE-2025-49178, bsc#1244087)
+- U_CVE-2025-49179-record-Check-for-overflow-in-RecordSanityCheckRegist.patch
+  * Integer overflow in X Record extension
+    (CVE-2025-49179, bsc#1244089)
+- U_CVE-2025-49180-randr-Check-for-overflow-in-RRChangeProviderProperty.patch
+  * Integer overflow in RandR extension (RRChangeProviderProperty)
+    (CVE-2025-49180, bsc#1244090)
+
+-------------------------------------------------------------------
 Tue Feb 25 22:20:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 24.1.6:
