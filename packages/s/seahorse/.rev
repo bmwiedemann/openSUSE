@@ -944,4 +944,12 @@ A couple of patches for this are competing for upstream approval at bgo#659834 -
     <comment></comment>
     <requestid>1220273</requestid>
   </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>48f1231750e1cb7d9d789f7b84bc86ae</srcmd5>
+    <version>47.0.1+6</version>
+    <time>1750254808</time>
+    <user>anag_factory</user>
+    <comment>Fix build with gpgme &gt;= 2.0.0 (boo#1244605) (forwarded request 1285819 from AndreasStieger)</comment>
+    <requestid>1285994</requestid>
+  </revision>
 </revisionlist>
