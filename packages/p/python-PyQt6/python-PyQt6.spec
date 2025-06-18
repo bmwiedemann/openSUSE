@@ -40,7 +40,7 @@ ExclusiveArch:  do_not_build
 
 %{?sle15_python_module_pythons}
 Name:           python-%{mname}%{?pkg_suffix}
-Version:        6.8.1
+Version:        6.9.1
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
@@ -51,15 +51,13 @@ Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/pyqt6-%{v
 Patch0:         disable-rpaths.diff
 # PATCH-FIX-OPENSUSE - install binary dbus mainloop integration in arch dependent directory
 Patch1:         0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
-# PATCH-FIX-UPSTREAM PyQt6-Qt6.9.0.patch -- this is basically 6.9.0.dev2504021615 without the version bump
-Patch2:         PyQt6-Qt6.9.0.patch
 # PATCH-FIX-UPSTREAM fix-build-without-qtcore.patch -- Allow building only the Qt6Pdf bindings
 Patch3:         fix-build-without-qtcore.patch
 BuildRequires:  %{python_module PyQt6-sip >= 13.8}
 BuildRequires:  %{python_module dbus-python-devel >= 0.8}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pyqt-builder >= 1.17}
-BuildRequires:  %{python_module sip-devel >= 6.9}
+BuildRequires:  %{python_module sip-devel >= 6.12}
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -238,7 +236,7 @@ rm -Rf %{buildroot}%{_qt6_datadir}/qsci
 rm -Rf %{buildroot}%{$python_sitelib}/dbus \
    %{buildroot}%{$python_sitearch}/PyQt6/uic \
    %{buildroot}%{$python_sitearch}/PyQt6/lupdate \
-   %{buildroot}%{$python_sitearch}/PyQt6-%{version}.dist-info
+   %{buildroot}%{$python_sitearch}/[Pp]y[Qq]t6-%{version}.dist-info
 rm %{buildroot}%{$python_sitearch}/PyQt6/__init__.py \
    %{buildroot}%{$python_sitearch}/PyQt6/dbus_mainloop.abi3.so \
    %{buildroot}%{$python_sitearch}/PyQt6/py.typed \
@@ -271,7 +269,7 @@ $python -c 'from PyQt6 import QtCore; assert QtCore.PYQT_VERSION_STR == "%{versi
 %if %{without qt6pdf}
 %doc README.md NEWS ChangeLog
 %{python_sitearch}/PyQt6/
-%{python_sitearch}/PyQt6-%{version}.dist-info/
+%{python_sitearch}/[Pp]y[Qq]t6-%{version}.dist-info/
 %dir %{python_sitelib}/dbus
 %dir %{python_sitelib}/dbus/mainloop
 %{python_sitelib}/dbus/mainloop/pyqt6.py

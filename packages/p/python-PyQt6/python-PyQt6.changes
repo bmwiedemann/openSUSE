@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun  9 16:50:12 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.9.1
+  * The licensing information now conforms to PEP 639.
+  * Added the missing setNativeArguments() and nativeArguments() to
+    QProcess (Windows only).
+  * Enums that have a base type smaller than int are now properly
+    specified and handled.
+  * Fixed a regression that broke building against versions of Qt
+    older than v6.5.
+  * Fixed pyuic6 to handle QIcons created from QIcon.ThemeIcon.
+- Release note for 6.9.0
+  * This adds support for Qt v6.9.
+- Drop PyQt6-Qt6.9.0.patch
+
+-------------------------------------------------------------------
 Fri Apr 25 07:44:03 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Split the package to build the Qt6Pdf bindings as a separate
