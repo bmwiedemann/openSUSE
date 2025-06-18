@@ -44,4 +44,17 @@
     by gdu --version output (forwarded request 1237925 from jfkw)</comment>
     <requestid>1237926</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c7d7550e8f85c436ee8e4d07a3829e40</srcmd5>
+    <version>5.31.0</version>
+    <time>1750254986</time>
+    <user>anag_factory</user>
+    <comment>- Version 5.31.0
+  * feat: relative path ignore support by @s0up4200 in #398
+  * feat: Add support showing size of absent git-annex'ed files by @stv0g in #404
+  * fix: ctrl_z corruption #253 by @yurenchen000 in #406
+  * fix: item count for --show-item-count by @dundee in #416
+  * fix: automatically run non-interactive when related flag set by @dundee in #418 (forwarded request 1286378 from dheidler)</comment>
+    <requestid>1286401</requestid>
+  </revision>
 </revisionlist>

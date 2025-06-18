@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 17 12:58:12 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 5.31.0
+  * feat: relative path ignore support by @s0up4200 in #398
+  * feat: Add support showing size of absent git-annex'ed files by @stv0g in #404
+  * fix: ctrl_z corruption #253 by @yurenchen000 in #406
+  * fix: item count for --show-item-count by @dundee in #416
+  * fix: automatically run non-interactive when related flag set by @dundee in #418
+
+-------------------------------------------------------------------
 Tue Jan 14 17:21:50 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:

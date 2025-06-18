@@ -17,7 +17,7 @@
 
 
 Name:           gdu
-Version:        5.30.1
+Version:        5.31.0
 Release:        0
 Summary:        Fast disk usage analyzer with console interface
 License:        MIT
