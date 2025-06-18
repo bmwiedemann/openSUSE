@@ -17,6 +17,7 @@
 
 
 %define mod_name argparse-manpage
+%bcond_without libalternatives
 Name:           python-argparse-manpage
 Version:        4.6
 Release:        0
@@ -24,19 +25,19 @@ Summary:        Tool for automatic manual page building from a Python ArgumentPa
 License:        Apache-2.0
 URL:            https://github.com/praiskup/argparse-manpage
 Source:         https://github.com/praiskup/argparse-manpage/archive/v%{version}.tar.gz
-BuildArch:      noarch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools-wheel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  alts
 BuildRequires:  ca-certificates
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
+BuildArch:      noarch
 %if 0%{python_version_nodots} < 311
 Requires:       python-tomli
 %endif
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -62,14 +63,11 @@ support for (deprecated) optparse objects, too.
 
 %check
 export PIP_NO_INDEX=1
-export PIP_FIND_LINKS=$(ls -1 /usr/lib/python3.*/wheels | head -n 1)
+export PIP_FIND_LINKS=$(ls -1 %{_prefix}/lib/python3.*/wheels | head -n 1)
 %pytest -k 'not test_old_example_file_name'
 
-%post
-%{python_install_alternative argparse-manpage argparse-manpage.1}
-
-%postun
-%python_uninstall_alternative argparse-manpage
+%pre
+%python_libalternatives_reset_alternative argparse-manpage
 
 %files %{python_files}
 %doc README.md
