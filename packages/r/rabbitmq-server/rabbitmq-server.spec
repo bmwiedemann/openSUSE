@@ -54,6 +54,7 @@ Source6:        rabbitmq-server.service
 Source7:        https://raw.githubusercontent.com/rabbitmq/rabbitmq-packaging/v%{version}/RPMS/Fedora/rabbitmq-server.tmpfiles
 Source8:        README.SUSE
 Patch0:         rabbitmq-server-allow-elixir-1.18.patch
+Patch1:         fix-CVE-2025-30219.patch
 BuildRequires:  elixir
 # https://www.rabbitmq.com/which-erlang.html
 BuildRequires:  erlang >= 25.0

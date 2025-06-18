@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 30 07:31:55 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- Correctly escape hostname that could lead to xss attack
+  (bsc#1240071, CVE-2025-30219)
+  * fix-CVE-2025-30219.patch 
+
+-------------------------------------------------------------------
 Thu Apr 24 02:53:26 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - Force non parallel build, this has been the cause of some
