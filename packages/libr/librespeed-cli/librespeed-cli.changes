@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 18 11:57:09 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Update to version 1.0.12:
+  * chore: update github.com/go-ping/ping dependency
+  * fix: fix build for non-linux platform
+  * fix: goreleaser archives.format_overrides.format deprecation
+  * Update Go version requirement to 1.18+ in README (#101)
+  * Enable riscv64 release (#95)
+  * add fwmark (#92)
+  * Fix telemetry parsing error log (#91)
+
+-------------------------------------------------------------------
 Sun Dec 29 07:08:50 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Allow to override build date (boo#1047218)
