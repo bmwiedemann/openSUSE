@@ -19,16 +19,14 @@
 # Internal QML imports
 %global __requires_exclude qt6qmlimport\\((org\\.kde\\.purpose|org\\.kde\\.kdeconnect|SSO\\.OnlineAccounts).*
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname purpose
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-purpose
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Framework to integrate services and actions in applications
 License:        LGPL-2.1-or-later
@@ -38,26 +36,27 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  cmake(KAccounts6)
-BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6KIO) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Kirigami) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Notifications) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Service) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6Config) >= %{_kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{_kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Kirigami) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Service) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Requires:       accounts-qml-module
-Requires:       kf6-kdeclarative-imports >= %{_kf6_bugfix_version}
-Requires:       kf6-kirigami-imports >= %{_kf6_bugfix_version}
-Requires:       kf6-prison-imports >= %{_kf6_bugfix_version}
+Requires:       kf6-kdeclarative-imports >= %{_kf6_version}
+Requires:       kf6-kirigami-imports >= %{_kf6_version}
+Requires:       kf6-prison-imports >= %{_kf6_version}
 Requires:       qt6-declarative-imports >= %{qt6_version}
 Requires:       purpose-services >= %{version}
 
@@ -107,7 +106,7 @@ This package contains the library files of the package needed to use GUI widgets
 Summary:        Framework to integrate services and actions - Build Environment
 Requires:       libKF6Purpose6 = %{version}
 Requires:       libKF6PurposeWidgets6 = %{version}
-Requires:       cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
+Requires:       cmake(KF6CoreAddons) >= %{_kf6_version}
 
 %description devel
 This package contains development files needed to build applications which rely on the purpose framework.
