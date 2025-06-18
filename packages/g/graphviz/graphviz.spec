@@ -56,7 +56,7 @@
 %bcond_with    java
 %bcond_with    ocaml
 Name:           graphviz%{psuffix}
-Version:        2.49.3
+Version:        12.2.1
 Release:        0
 Summary:        Graph Visualization Tools
 License:        EPL-1.0
@@ -72,16 +72,9 @@ Patch2:         graphviz-array_overflow.patch
 Patch3:         graphviz-2.20.2-interpreter_names.patch
 #PATCH-FIX-UPSTREAM Don't warn about harmless issues with swig generated code
 Patch4:         graphviz-useless_warnings.patch
-Patch5:         graphviz-no_strict_aliasing.patch
 Patch6:         graphviz-no_php_extra_libs.patch
 # https://gitlab.com/graphviz/graphviz/-/issues/2303
 Patch7:         swig-4.1.0.patch
-#PATCH-FIX-UPSTREAM gvc: detect plugin installation failure and display an error
-Patch8:         gvc-detect-plugin-installation-failure-and-display-an-error.patch
-#PATCH-FIX-OPENSUSE Bug 1225776 - Flavor addons of package graphviz does not build with gcc14
-Patch9:         graphviz-2.49.3-boo1225776-gcc14.patch
-#PATCH-FIX-UPSTREAM
-Patch10:        graphviz-87cc546.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -143,24 +136,24 @@ BuildRequires:  java-devel >= 1.6.0
 BuildRequires:  ocaml
 %endif
 %endif
-%if "%{flavor}" == "qt5"
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Widgets)
+%if "%{flavor}" == "qt6"
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6Widgets)
 %endif
 
 %description
 A collection of tools and tcl packages for the manipulation and layout
 of graphs (as in nodes and edges, not as in bar charts).
 
-%if "%{flavor}" == "qt5"
+%if "%{flavor}" == "qt6"
 %package -n graphviz-gvedit
 Summary:        Graph editor based on Qt
 Group:          Productivity/Graphics/Visualization/Graph
 Requires:       graphviz
 
 %description -n graphviz-gvedit
-The Qt5 graph editor included with graphviz.
+The Qt6 graph editor included with graphviz.
 %endif
 
 %package -n graphviz-smyrna
@@ -208,14 +201,6 @@ Requires:       java
 %description -n graphviz-java
 A collection of tools and tcl packages for the manipulation and layout
 of graphs (as in nodes and edges, not as in bar charts).
-
-%package -n graphviz-x11
-Summary:        Graph editors based on X11
-Group:          Productivity/Graphics/Visualization/Graph
-Requires:       graphviz
-
-%description -n graphviz-x11
-The lefty/dotty/lneato X11 graph editors included with graphviz.
 
 %package -n graphviz-lua
 Summary:        Lua extension for graphviz
@@ -365,15 +350,6 @@ Obsoletes:      libgraphviz6 < %{version}-%{release}
 The libxdot library provides support for parsing and deparsing graphical
 operations specified by the xdot language.
 
-%package -n liblab_gamut%{lab_gamut_soversion}
-Summary:        Library containing a rich set of graph drawing tools
-Group:          System/Libraries
-Provides:       libgraphviz6:%{_libdir}/liblab_gamut.so.1
-Obsoletes:      libgraphviz6 < %{version}-%{release}
-
-%description -n liblab_gamut%{lab_gamut_soversion}
-The lab_gamut library contains a rich set of graph drawing tools.
-
 %package plugins-core
 Summary:        Core plugins for graphviz
 Group:          Productivity/Graphics/Visualization/Graph
@@ -394,7 +370,6 @@ Requires:       libcdt%{cdt_soversion} = %{version}
 Requires:       libcgraph%{cgraph_soversion} = %{version}
 Requires:       libgvc%{gvc_soversion} = %{version}
 Requires:       libgvpr%{gvpr_soversion} = %{version}
-Requires:       liblab_gamut%{lab_gamut_soversion} = %{version}
 Requires:       libpathplan%{pathplan_soversion} = %{version}
 Requires:       libxdot%{xdot_soversion} = %{version}
 
@@ -410,12 +385,8 @@ programs that use the graphviz libraries including man3 pages.
 %patch -P 2
 %patch -P 3
 %patch -P 4
-%patch -P 5 -p1
 %patch -P 6
 %patch -P 7 -p1
-%patch -P 8 -p1
-%patch -P 9
-%patch -P 10
 
 # pkg-config returns 0 (TRUE) when guile-2.2 is present
 if pkg-config --atleast-version=2.2 guile-2.2; then
@@ -427,9 +398,12 @@ rm -f contrib/gprof2dot.awk
 # Fix path for lua/php install
 sed -i \
     -e 's@LUA_INSTALL_DIR="/usr.*@LUA_INSTALL_DIR=%{lua_archdir}@' \
+    -e 's@LUA_INSTALL_DIR="`$PKG_CONFIG.*@LUA_INSTALL_DIR="`$PKG_CONFIG --variable=INSTALL_CMOD lua$l`"@' \
     -e 's@\(PHP_INSTALL_DIR=.*\)/php/modules@\1/php%{php_version}/extensions@' \
     -e 's@\(PHP_INSTALL_DATADIR=.*\)/php@\1/php%{php_version}@' \
     configure.ac
+
+sed -i -e 's@LANGUAGE php7@LANGUAGE php8@' tclpkg/gv/CMakeLists.txt
 
 %build
 ./autogen.sh RUBY_VER=%{?ruby_version}
@@ -456,11 +430,10 @@ export LDFLAGS="-pie"
       --without-visio \
 %if "%{flavor}" == "addons"
       --with-x \
-      --enable-lefty \
       --with-smyrna \
       RUBY_VER=%{ruby_version} \
 %endif
-%if "%{flavor}" == "qt5"
+%if "%{flavor}" == "qt6"
       --with-qt \
 %endif
 %if "%{flavor}" == ""
@@ -473,7 +446,7 @@ make %{?_smp_mflags}
 %install
 make install \
       DESTDIR=%{buildroot} \
-      docdir=%{buildroot}%{_docdir}/%{mname} \
+      docdir=%{_docdir}/%{mname}-doc \
       pkgconfigdir=%{_libdir}/pkgconfig
 
 find %{buildroot} -type f -name "*.la" -delete -print
@@ -486,7 +459,6 @@ mkdir -p %{buildroot}/%{_docdir}
 mkdir -p %{buildroot}%{_datadir}/%{nmame}
 
 rm -f %{buildroot}/%{_libdir}/%{mname}/pkgIndex.tcl
-chmod -x %{buildroot}%{_datadir}/%{mname}/lefty/*
 
 mkdir -p %{buildroot}%{_libdir}/graphviz
 touch %{buildroot}%{_libdir}/graphviz/%{config_file}
@@ -509,12 +481,13 @@ extension = gv.so
 EOF
 
 # Fix doc location
-cp -a %{buildroot}%{_datadir}/%{mname}/doc %{buildroot}%{_defaultdocdir}/%{mname}-doc
 %fdupes %{buildroot}%{_defaultdocdir}/%{mname}-doc
 %fdupes %{buildroot}%{_datadir}/graphviz/demo
+%else
+rm -rf  %{buildroot}%{_defaultdocdir}/%{mname}-doc
 %endif
 
-%if "%{flavor}" == "addons" || "%{flavor}" == "qt5"
+%if "%{flavor}" == "addons" || "%{flavor}" == "qt6"
 # Prune all the content of the base graphviz package
 rm -rf %{buildroot}%{_libdir}/pkgconfig
 rm -rf %{buildroot}%{_includedir}
@@ -526,9 +499,11 @@ rm -f  %{buildroot}%{_mandir}/man7/*.7
 rm -f  %{buildroot}%{_libdir}/graphviz/%{config_file}
 rm -f  %{buildroot}%{_libdir}/graphviz/libgvplugin_core*
 rm -f  %{buildroot}%{_libdir}/graphviz/libgvplugin_dot_layout*
+rm -f  %{buildroot}%{_libdir}/graphviz/libgvplugin_kitty*
 rm -f  %{buildroot}%{_libdir}/graphviz/libgvplugin_neato_layout*
+rm -f  %{buildroot}%{_libdir}/graphviz/libgvplugin_vt*
 # binaries removal
-for i in acyclic bcomps ccomps circo cluster dijkstra dot dot2gxl dot_builtins edgepaint fdp gc gml2gv graphml2gv gv2gml gv2gxl gvcolor gvgen gvmap gvmap.sh gvpack gvpr gxl2dot gxl2gv mm2gv neato nop osage patchwork prune sccmap sfdp tred twopi unflatten vimdot; do
+for i in acyclic bcomps ccomps circo cluster dijkstra dot dot2gxl dot_builtins dot_sandbox edgepaint fdp gc gml2gv graphml2gv gv2gml gv2gxl gvcolor gvgen gvmap gvmap.sh gvpack gvpr gxl2dot gxl2gv mm2gv neato nop osage patchwork prune sccmap sfdp tred twopi unflatten vimdot; do
     rm -f %{buildroot}%{_bindir}/$i
     rm -f %{buildroot}%{_mandir}/man1/$i.1
 done
@@ -541,11 +516,6 @@ rm -f %{buildroot}%{_libdir}/lib{cdt,cgraph,gvc,gvpr,pathplan,xdot,lab_gamut}.so
 for lib in libgdtclft* libgv_tcl.so libtcldot* libtclplan* ; do
    mv %{buildroot}%{_libdir}/%{mname}/tcl/${lib} %{buildroot}%{_libdir}
 done
-# remove duplicated tcl files
-for i in libgdtclft.so.0.0.0 libgv_tcl.so libtcldot.so.0.0.0 libtcldot_builtin.so.0.0.0 libtclplan.so.0.0.0; do
-    rm -f %{buildroot}%{_libdir}/tcl8.6/graphviz/$i
-    ln -s %{_libdir}/$i %{buildroot}%{_libdir}/tcl8.6/graphviz/$i
-done
 mkdir -p %{buildroot}%{_datadir}/tcl/%{mname}/
 mv %{buildroot}%{_libdir}/%{mname}/tcl/pkgIndex.tcl %{buildroot}%{_datadir}/tcl/%{mname}/pkgIndex.tcl
 # remove graphviz bindings from graphviz dir, these are installed into the language specific directories
@@ -555,15 +525,13 @@ rm -rf %{buildroot}%{_libdir}/graphviz/php
 rm -rf %{buildroot}%{_libdir}/graphviz/python*
 rm -rf %{buildroot}%{_libdir}/graphviz/ruby
 %endif
-%if "%{flavor}" == "" || "%{flavor}" == "qt5"
+%if "%{flavor}" == "" || "%{flavor}" == "qt6"
 # These are part of gnome subpkg
 rm -f %{buildroot}%{_libdir}/graphviz/libgvplugin_pango*
 rm -f %{buildroot}%{_libdir}/graphviz/libgvplugin_xlib*
 # This is part of the gd subpkg only
-rm -f %{buildroot}%{_mandir}/man1/{diffimg.1*,dotty.1*,lefty.1*,lneato.1*}
+rm -f %{buildroot}%{_mandir}/man1/{diffimg.1*,dotty.1*,lneato.1*}
 rm -f %{buildroot}%{_bindir}/{dotty,lneato}
-# This is part of the x11 subpkg only
-rm -rf %{buildroot}%{_datadir}/graphviz/lefty
 %endif
 # Remove wrongly located docs
 rm -rf %{buildroot}%{_datadir}/%{mname}/doc
@@ -597,11 +565,7 @@ test -s %{_libdir}/graphviz/%{config_file} || echo "%{_libdir}/graphviz/%{config
 
 %postun -n libxdot%{xdot_soversion} -p /sbin/ldconfig
 
-%post -n liblab_gamut%{lab_gamut_soversion} -p /sbin/ldconfig
-
-%postun -n liblab_gamut%{lab_gamut_soversion} -p /sbin/ldconfig
-
-%if "%{flavor}" == "qt5"
+%if "%{flavor}" == "qt6"
 %files -n graphviz-gvedit
 %license epl-v10.txt
 %{_bindir}/gvedit
@@ -632,9 +596,7 @@ if test -x %{_bindir}/dot; then rm -f %{_libdir}/graphviz/%{config_file} ; %{_bi
 %{_libdir}/graphviz/libgvplugin_gs*
 %{_libdir}/graphviz/libgvplugin_rsvg*
 %{_libdir}/graphviz/libgvplugin_pango*
-%{_libdir}/graphviz/libgvplugin_gtk*
 %{_libdir}/graphviz/libgvplugin_xlib*
-%{_libdir}/graphviz/libgvplugin_gdk*
 
 %post -n graphviz-gnome
 %{_bindir}/dot -c
@@ -656,16 +618,6 @@ if test -x %{_bindir}/dot; then rm -f %{_libdir}/graphviz/%{config_file} ; %{_bi
 %{lua_archdir}/gv.so
 %{_mandir}/man3/gv.3lua%{ext_man}
 
-%files -n graphviz-x11
-%license epl-v10.txt
-%{_bindir}/dotty
-%{_bindir}/lefty
-%{_bindir}/lneato
-%{_datadir}/%{mname}/lefty
-%{_mandir}/man1/dotty.1%{ext_man}
-%{_mandir}/man1/lefty.1%{ext_man}
-%{_mandir}/man1/lneato.1%{ext_man}
-
 %if %{with ocaml}
 %files -n graphviz-ocaml
 %{_libdir}/graphviz/ocaml
@@ -679,7 +631,6 @@ if test -x %{_bindir}/dot; then rm -f %{_libdir}/graphviz/%{config_file} ; %{_bi
 
 %files -n graphviz-php
 %{phpext_dir}/gv.so
-%{_datadir}/php%{php_version}/gv.php
 %{_mandir}/man3/gv.3php%{ext_man}
 %config(noreplace) %{phpconf_dir}/gv.ini
 
@@ -734,6 +685,7 @@ if test -x %{_bindir}/dot; then %{_bindir}/dot -c ; fi
 %{_bindir}/dot
 %{_bindir}/dot2gxl
 %{_bindir}/dot_builtins
+%{_bindir}/dot_sandbox
 %{_bindir}/edgepaint
 %{_bindir}/fdp
 %{_bindir}/gc
@@ -822,9 +774,6 @@ if test -x %{_bindir}/dot; then %{_bindir}/dot -c ; fi
 %files -n libxdot%{xdot_soversion}
 %{_libdir}/libxdot.so.%{xdot_soversion}*
 
-%files -n liblab_gamut%{lab_gamut_soversion}
-%{_libdir}/liblab_gamut.so.%{lab_gamut_soversion}*
-
 %files plugins-core
 %dir %{_libdir}/%{name}
 %ghost %{_libdir}/%{name}/%{config_file}
@@ -836,7 +785,6 @@ if test -x %{_bindir}/dot; then %{_bindir}/dot -c ; fi
 %{_libdir}/libcgraph.so
 %{_libdir}/libgvc.so
 %{_libdir}/libgvpr.so
-%{_libdir}/liblab_gamut.so
 %{_libdir}/libpathplan.so
 %{_libdir}/libxdot.so
 %{_libdir}/pkgconfig/*.pc
