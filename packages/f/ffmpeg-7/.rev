@@ -149,4 +149,12 @@ retry submit due to git-&gt;obs autosync delays</comment>
     <comment>- Enable libiec61883 integration</comment>
     <requestid>1285229</requestid>
   </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>ed3c21fa07d3befd845410d9df40d602</srcmd5>
+    <version>7.1.1</version>
+    <time>1750267787</time>
+    <user>anag_factory</user>
+    <comment>add bugIDs</comment>
+    <requestid>1286265</requestid>
+  </revision>
 </revisionlist>
