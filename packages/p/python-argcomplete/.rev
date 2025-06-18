@@ -428,4 +428,12 @@
     <comment>- Remove executable bit on files installed outside of the path. (bsc#1244435)</comment>
     <requestid>1284723</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>95849d0bb86981f82d0959698cf986de</srcmd5>
+    <version>3.5.3</version>
+    <time>1750254824</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286090</requestid>
+  </revision>
 </revisionlist>

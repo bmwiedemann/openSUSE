@@ -17,7 +17,6 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,6 +25,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without libalternatives
+%{?sle15_python_module_pythons}
 Name:           python-argcomplete%{psuffix}
 Version:        3.5.3
 Release:        0
@@ -39,8 +40,11 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 67.2}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module argcomplete == %{version}}
 BuildRequires:  %{python_module pexpect}
@@ -48,9 +52,6 @@ BuildRequires:  ca-certificates-mozilla
 BuildRequires:  fish
 BuildRequires:  zsh
 %endif
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -99,15 +100,10 @@ export TERM=xterm-mono
 %endif
 
 %if %{without test}
-%post
-%python_install_alternative activate-global-python-argcomplete
-%python_install_alternative register-python-argcomplete
-%python_install_alternative python-argcomplete-check-easy-install-script
-
-%postun
-%python_uninstall_alternative activate-global-python-argcomplete
-%python_uninstall_alternative register-python-argcomplete
-%python_uninstall_alternative python-argcomplete-check-easy-install-script
+%pre
+%python_libalternatives_reset_alternative activate-global-python-argcomplete
+%python_libalternatives_reset_alternative register-python-argcomplete
+%python_libalternatives_reset_alternative python-argcomplete-check-easy-install-script
 
 %files %{python_files}
 %doc README.rst
