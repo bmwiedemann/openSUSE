@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Jun 17 07:51:59 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.89.2:
+  * refactor: use HandleFile for Jenkins build log processing to improve chunking (#4225)
+  * Add git metrics for cloning and scanning (#4234)
+  * Log recursion limiting (#4236)
+  * fix(deps): update module github.com/googleapis/gax-go/v2 to v2.14.2 (#4231)
+  * fix(deps): update module github.com/go-logr/logr to v1.4.3 (#4228)
+  * fix(deps): update github.com/avast/apkparser digest to 166ba17 (#4119)
+  * fix(deps): update module github.com/bradleyfalzon/ghinstallation/v2 to v2.14.0 (#4025)
+  * fix(deps): update aws-sdk-go-v2 monorepo (#4213)
+  *  addition of percent encoding for raw brackets CSM-1195 (#4221)
+  * (fix) validation to ensure only one of --org or --repo is provided for Github source (#4141)
+  * Analyzer/datadog (#4132)
+
+-------------------------------------------------------------------
+Tue Jun 10 14:14:29 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.89.1:
+  * Update ngrok.go detector to handle 403s properly (#4216)
+  * chore(deps): update sigstore/cosign-installer action to v3.8.2 (#4212)
+  * chore(deps): update dependency go to v1.24.4 (#4136)
+  * feat(docker): implement exclude paths functionality (#4057)
+  * Fix git commit validation (#4192)
+  * Jiratoken Analyzer (#4193)
+  * Updated OpenAI Analyzer (#4203)
+  * Add support for defining sources via a config file (#4172)
+  * Fix typo: remove duplicated 'about' in documentation (#4211)
+  * Pass Context Through Postman NewRequest (#4190)
+  * Remove job ID from bytes_scanned and chunks_scanned metrics (#4206)
+  * [fix] Report the unit in a single scan job (#4209)
+  * Added new version for heroku detector (#4201)
+  * chore(actions): check to install `jq` if it is not already (#4000)
+  * updated the go-mssqldb library version from v1.8.0 to v1.8.2 (#4200)
+  * Fix for Larksuite regex (#4194)
+  * remove prefix regex for JIRA V2 patterns (#4197)
+  * Added support to scan github commit metadata for targeted scans (#4189)
+  * Stripe Payment Intent Detector (#4138)
+
+-------------------------------------------------------------------
 Fri May 30 17:43:38 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 - Update to version 3.88.35:

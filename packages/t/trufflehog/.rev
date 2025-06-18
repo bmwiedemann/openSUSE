@@ -2249,4 +2249,23 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
   * chore: fix some function names (#4175) (forwarded request 1281541 from ph03nix)</comment>
     <requestid>1281698</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>d16d19add61a31f216293498ff45c205</srcmd5>
+    <version>3.89.2</version>
+    <time>1750254983</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.89.2:
+  * refactor: use HandleFile for Jenkins build log processing to improve chunking (#4225)
+  * Add git metrics for cloning and scanning (#4234)
+  * Log recursion limiting (#4236)
+  * fix(deps): update module github.com/googleapis/gax-go/v2 to v2.14.2 (#4231)
+  * fix(deps): update module github.com/go-logr/logr to v1.4.3 (#4228)
+  * fix(deps): update github.com/avast/apkparser digest to 166ba17 (#4119)
+  * fix(deps): update module github.com/bradleyfalzon/ghinstallation/v2 to v2.14.0 (#4025)
+  * fix(deps): update aws-sdk-go-v2 monorepo (#4213)
+  *  addition of percent encoding for raw brackets CSM-1195 (#4221)
+  * (fix) validation to ensure only one of --org or --repo is provided for Github source (#4141)
+  * Analyzer/datadog (#4132) (forwarded request 1286293 from ph03nix)</comment>
+    <requestid>1286400</requestid>
+  </revision>
 </revisionlist>
