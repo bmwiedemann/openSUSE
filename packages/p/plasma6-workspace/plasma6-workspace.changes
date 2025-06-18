@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:37:59 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+  * dataengines/weather: Adapt to the new dynamic URLs on envcan
+  * applets: update bugzilla urls
+  * wallpapers/image: don't use image description as title
+  * applets/kicker: make clear invokable from qml
+  * applets/kicker: don't emit layoutChanged while looping over AppEntry
+  * applets/kicker: fix filenames containing # in history (kde#419449,kde#437960)
+  * libtaskmanager: fix "move to activity" when on almost all activities (kde#483148)
+  * applets/kicker: Use KActivityManager to track app launches (kde#504813)
+  * kcm/region_language: do not check language support for C on Ubuntu (kde#503762)
+  * wallpapers/image: clear Preview key before saving
+  * applets/notifications: make some parameters explicit
+  * kcms/wallpaper: don't load PreviewImage (kde#504934)
+  * containmentlayoutmanager: don't enter edit mode without activefocus
+  * applets/digital-clock: fix config page alignment in RtL
+  * applets/digital-clock: make Appearance page a bit neater
+  * applets/kicker: Remember uninstalled apps for a short period When an installed .desktop file is updated, it might be removed and immediately re-added, which causes it to be inappropriately marked New! as the model is updated for both changes. (kde#504523)
+  * dataengines: add missing <mutex> include
+  * Do not show logout screen when in lockscreen / screensaver (kde#504575)
+  * kcms/lookandfeel: Initialise member variables (kde#504621)
+
+-------------------------------------------------------------------
+Thu May 29 21:23:27 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+  * Do not track cache partitions with freespacenotifier (kde#504423)
+  * shell: Rearrange the teardown order
+  * plasmashell: less invasive change in panel cloning (kde#504856)
+  * plasmashell: don't duplicate old applet configs in panel cloning (kde#504856)
+  * wallpapers/image: don't crash when removing /usr/share (kde#503593)
+  * containmentactions: Fix display of KRunner shortcut
+  * klipper: show popup window faster
+  * klipper: make "Add Actions" dialog only window-modal (kde#501938)
+  * libtaskmanager: show Comment for launcher icons when appropriate (kde#504431)
+  * Fix cell height calc in resize handle
+  * kcms/componentchooser: fix dialog scrollability (kde#504418)
+  * runners/sessions: Remove leftover GUI code
+  * applets/systemmonitor: skip configure button on sensorless faces (kde#504335)
+  * applets/notifications: add top padding for body-but-no-summary condition
+  * fix: notify about missed notifications only once
+  * applets/notifications: Don't set a parent for WidgetsAskUserActionHandler (kde#504385)
+  * 🍒 Notifications: Set notifications to read when full representation is opened (kde#504350)
+  * Disable linux-qt6-next while the regression in Qt gets fixed
+  * components/sessionprivate: fix a potential crash in SessionsModel
+  * wallpapers/image: Fix wallpaper thumbnails not adjusting to output size
+  * wallpapers/image: Fix thumbnails not matching output size (kde#483097)
+  * wallpapers/image: Trim trailing whitespace in config.qml
+  * appiumtests: test showing critical notifications when Do not disturb is active
+  * libnotificationmanager: fix critical notifications not showing when Do not disturb is active
+  * Avoid "on" QML feature in TimezoneSelector to avoid crashes (kde#503830)
+  * applets/notifications: fix count of inhibited notifications when low priority history is disabled
+
+-------------------------------------------------------------------
+Mon May 19 19:38:49 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  6 20:13:20 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:

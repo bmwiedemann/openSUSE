@@ -21,8 +21,8 @@
 
 %global __requires_exclude qt6qmlimport\\((org\\.kde\\.plasma\\.private|org\\.kde\\.plasma\\.workspace|org\\.kde\\.notificationmanager|org\\.kde\\.plasma\\.lookandfeel|org\\.kde\\.plasma\\.wallpapers|org\\.kde\\.taskmanager|org\\.kde\\.holidayeventshelperplugin|org\\.kde\\.kscreenlocker).*
 
-%define kf6_version 6.10.0
-%define qt6_version 6.7.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 %define rname plasma-workspace
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %global _plasma6_bugfix %{version}}
@@ -30,18 +30,19 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-workspace
-Version:        6.3.5
+Version:        6.4.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        sddm.conf
 Source4:        waitforkded.conf
+# PATCH-FIX-UPSTREAM
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus6.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
@@ -118,11 +119,13 @@ BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Location) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Positioning) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ShaderTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
@@ -414,6 +417,7 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_datadir}/zsh/site-functions/_plasmashell
 %{_datadir}/zsh/site-functions/_krunner
 %{_kf6_applicationsdir}/kcm_autostart.desktop
+%{_kf6_applicationsdir}/kcm_componentchooser.desktop
 %{_kf6_applicationsdir}/kcm_colors.desktop
 %{_kf6_applicationsdir}/kcm_cursortheme.desktop
 %{_kf6_applicationsdir}/kcm_desktoptheme.desktop
@@ -498,6 +502,7 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_libdir}/kconf_update_bin/plasma6.3-update-clipboard-database-2-to-3
 %{_kf6_libdir}/kconf_update_bin/plasmashell-6.0-keep-custom-position-of-panels
 %{_kf6_libdir}/kconf_update_bin/plasmashell-6.0-keep-default-floating-setting-for-plasma-5-panels
+%{_kf6_libdir}/kconf_update_bin/plasma6.4-migrate-fullscreen-notifications-to-dnd
 %{_kf6_libdir}/libkfontinst.so.*
 %{_kf6_libdir}/libkfontinstui.so.*
 %{_kf6_notificationsdir}/devicenotifications.notifyrc
@@ -551,6 +556,8 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_sharedir}/plasma5support/
 %{_kf6_sharedir}/polkit-1/actions/org.kde.fontinst.policy
 %{_kf6_sharedir}/solid/
+%dir %{_kf6_sharedir}/timezonefiles/
+%{_kf6_sharedir}/timezonefiles/timezones.json
 %dir %{_kf6_sharedir}/xdg-desktop-portal/
 %{_kf6_sharedir}/xdg-desktop-portal/kde-portals.conf
 %{_libexecdir}/baloorunner
