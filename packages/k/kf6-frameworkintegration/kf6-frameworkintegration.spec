@@ -16,16 +16,14 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname frameworkintegration
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-frameworkintegration
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Plugins responsible for better integration of Qt applications in KDE Workspace
 License:        LGPL-2.1-or-later
@@ -36,17 +34,18 @@ Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  fdupes
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  cmake(AppStreamQt) >= 1.0
-BuildRequires:  cmake(KF6ColorScheme) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6IconThemes) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6NewStuff) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Notifications) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Package) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6ColorScheme) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{_kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{_kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{_kf6_version}
+BuildRequires:  cmake(KF6NewStuff) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{_kf6_version}
+BuildRequires:  cmake(KF6Package) >= %{_kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(packagekitqt6)
 
@@ -81,9 +80,9 @@ Applications do not need to link to this directly.
 %package devel
 Summary:        Plugins responsible for better integration of Qt applications in KDE Workspace
 Requires:       libKF6Style6 = %{version}
-Requires:       cmake(KF6ColorScheme) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6IconThemes) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6WidgetsAddons) >= %{_kf6_bugfix_version}
+Requires:       cmake(KF6ColorScheme) >= %{_kf6_version}
+Requires:       cmake(KF6IconThemes) >= %{_kf6_version}
+Requires:       cmake(KF6WidgetsAddons) >= %{_kf6_version}
 
 %description devel
 Framework Integration is a set of plugins responsible for better
