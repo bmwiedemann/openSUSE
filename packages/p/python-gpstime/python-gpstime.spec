@@ -1,7 +1,7 @@
 #
 # spec file for package python-gpstime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ Summary:        GPS-aware Python datetime module
 License:        GPL-3.0-or-later
 URL:            https://git.ligo.org/cds/software/gpstime
 Source:         https://files.pythonhosted.org/packages/source/g/gpstime/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  timezone
@@ -55,10 +57,10 @@ gpstime module, a rough work-alike to LIGO "tconvert" utility.
 %autosetup -n gpstime-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/gpstime
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -76,6 +78,6 @@ gpstime module, a rough work-alike to LIGO "tconvert" utility.
 %license COPYING COPYING-GPL-3
 %python_alternative %{_bindir}/gpstime
 %{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{modname}-%{version}.dist-info/
 
 %changelog

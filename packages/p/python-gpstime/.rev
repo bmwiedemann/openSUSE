@@ -7,4 +7,12 @@
     <comment>This package provides GPS time conversion utilities, including a gpstime subclass of the built-in datetime class with the addition of GPS time parsing and conversion methods. It is mainly needed for gravitational-wave applications like python-gwpy and others.</comment>
     <requestid>1072796</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6df22a71aa2e67febdadb43d98f467d4</srcmd5>
+    <version>0.6.2</version>
+    <time>1750262320</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1286672</requestid>
+  </revision>
 </revisionlist>
