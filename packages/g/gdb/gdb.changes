@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Fri Jun  6 08:16:36 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Patches added:
+  * gdb-testsuite-fix-timeout-in-gdb.multi-attach-while-.patch
+- Patches added (swo#32167):
+  * gdb-python-reimplement-gdb.interrupt-race-fix.patch
+- Maintenance script qa.sh:
+  * Drop PR32167 kfail.
+
+-------------------------------------------------------------------
+Wed Jun  4 09:08:02 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Simplify outdated comment in gdb.spec.
+- Update to fedora rawhide @ 0481d32.
+  Maintenance script import-fedora.sh:
+  * Skip gdb-fix-bg-execution-repeat.patch.
+- Add MIT in License tag due to gdbsupport/unordered_dense.h.
+- Update to fedora rawhide @ 89e3933.
+  Maintenance script import-fedora.sh:
+  * Drop gdb-6.8-bz466901-backtrace-full-prelinked.patch from
+    skip_patches.
+- Update to fedora rawhide @ 660c52f.
+  Drop patches:
+  * gdb-rhbz1149205-catch-syscall-after-fork-test.patch
+- Update to fedora rawhide @ 885cdf8.
+  Update patches:
+  * gdb-add-rpm-suggestion-script.patch
+  Drop patches:
+  * fixup-gdb-add-rpm-suggestion-script.patch
+- Update to fedora rawhide @ 9c718a5.
+  Drop patches:
+  * gdb-6.3-mapping-zero-inode-test.patch
+- Update to fedora rawhide @ 15778f3.
+  Drop patches:
+  * gdb-archer-next-over-throw-cxx-exec.patch
+- Update to fedora rawhide @ 152468c.
+  Maintenance script import-fedora.sh:
+  * Rename gdb-6.3-rh-testversion-20041202.patch to
+    gdb-test-show-version.patch in skip_patches.
+  Patches dropped (Renamed to ...):
+  * gdb-add-rpm-suggestion-script.patch
+  Patches added (... this):
+  * gdb-rpm-suggestion-script.patch
+- Move some patches from "Backport from gdb-patches" to
+  "Backports from master, available in GDB 17".
+- Add patches (swo#33000):
+  * gdb-tdep-fix-gdb.ada-finish-var-size.exp-on-ppc64le-.patch
+- Add patches (swo#32409):
+  * gdb-ada-fix-gdb.ada-overloads.exp-on-s390x.patch
+- Add patches:
+  * gdb-testsuite-make-gdb.reverse-time-reverse.exp-more.patch
+  * gdb-testsuite-fix-gdb.reverse-time-reverse.exp-timeo.patch
+  * gdb-testsuite-handle-asm-frame-in-gdb.python-py-miss.patch
+  * gdb-testsuite-fix-gdb.base-ptype.exp-with-gcc-15.patch
+  * gdb-testsuite-fix-gdb.python-py-objfile.exp-with-gcc.patch
+  * gdb-testsuite-fix-gdb.ada-scalar_storage.exp-on-s390.patch
+  * gdb-testsuite-fix-gdb.base-bp-permanent.exp-with-gcc.patch
+  * gdb-testsuite-don-t-run-to-main-in-gdb.cp-cplusfuncs.patch
+
+-------------------------------------------------------------------
+Tue May 27 13:30:13 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Fix "ERROR: is not a date".
+
+-------------------------------------------------------------------
+Thu May  8 11:27:29 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add libipt-cmake4-patch to fix build failure w/ cmake-4
+
+-------------------------------------------------------------------
 Wed Apr 23 08:28:56 UTC 2025 - Tom de Vries <tdevries@suse.com>
 
 - Mention fixup-gdb-6.5-gcore-buffer-limit-test.patch.
@@ -2166,14 +2236,12 @@ Tue Jun  6 06:00:11 UTC 2023 - Tom de Vries <tdevries@suse.com>
   * Use -$arch as argument to qa.sh.
 
 -------------------------------------------------------------------
-
 Mon May 22 21:01:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - disable werror as a workaround for deprecation warnings with
   python 3.11 (bsc#1211052) 
 
 -------------------------------------------------------------------
-
 Fri Apr  7 07:48:58 UTC 2023 - Tom de Vries <tdevries@suse.com>
 
 - Revert to singlespec multibuild.
@@ -3001,7 +3069,6 @@ Mon Nov 22 09:00:45 UTC 2021 - Tom de Vries <tdevries@suse.com>
   BuildRequire babeltrace-devel.
 
 -------------------------------------------------------------------
-
 Mon Nov 22 08:24:21 UTC 2021 - Tom de Vries <tdevries@suse.com>
 
 - Fix SLE-12 x86_64 unresolvable by not doing BuildRequire

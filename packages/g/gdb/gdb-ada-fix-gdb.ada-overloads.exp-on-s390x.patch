@@ -1,0 +1,71 @@
+From 75397d995ffe1e1bbcfb75f9b4f744ba9c036d6d Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 15 Apr 2025 16:59:32 +0200
+Subject: [PATCH 1/2] [gdb/ada] Fix gdb.ada/overloads.exp on s390x
+
+On s390x-linux, with test-case gdb.ada/overloads.exp and gcc 7.5.0 I run into:
+...
+(gdb) print Oload(CA)^M
+Could not find a match for oload^M
+(gdb) FAIL: $exp: print Oload(CA)
+...
+
+The mismatch happens here in ada_type_match:
+...
+      return ftype->code () == atype->code ();
+...
+with:
+...
+(gdb) p ftype->code ()
+$3 = TYPE_CODE_TYPEDEF
+(gdb) p atype->code ()
+$4 = TYPE_CODE_ARRAY
+...
+
+At the start of ada_type_match, typedefs are skipped:
+...
+  ftype = ada_check_typedef (ftype);
+  atype = ada_check_typedef (atype);
+...
+but immediately after this, refs are skipped:
+...
+  if (ftype->code () == TYPE_CODE_REF)
+    ftype = ftype->target_type ();
+  if (atype->code () == TYPE_CODE_REF)
+    atype = atype->target_type ();
+...
+which in this case makes ftype a typedef.
+
+Fix this by using ada_check_typedef after skipping the refs as well.
+
+Tested on x86_64-linux and s390x-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+PR ada/32409
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32409
+---
+ gdb/ada-lang.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/ada-lang.c b/gdb/ada-lang.c
+index fdb89cb0bb3..e9311c179b9 100644
+--- a/gdb/ada-lang.c
++++ b/gdb/ada-lang.c
+@@ -3944,9 +3944,9 @@ ada_type_match (struct type *ftype, struct type *atype)
+   atype = ada_check_typedef (atype);
+ 
+   if (ftype->code () == TYPE_CODE_REF)
+-    ftype = ftype->target_type ();
++    ftype = ada_check_typedef (ftype->target_type ());
+   if (atype->code () == TYPE_CODE_REF)
+-    atype = atype->target_type ();
++    atype = ada_check_typedef (atype->target_type ());
+ 
+   switch (ftype->code ())
+     {
+
+base-commit: bb86ddf7c6827ec9b467cc0107395f91b9cbc5d2
+-- 
+2.43.0
+

@@ -1,0 +1,89 @@
+From dfe2f3417cbb50c46d4ecf5905615613511a7f72 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 2 May 2025 16:48:14 +0200
+Subject: [PATCH 3/6] [gdb/testsuite] Fix gdb.reverse/time-reverse.exp timeout
+
+After building gdb with "-O0 -g -fsanitize=thread" on aarch64-linux, with
+test-case gdb.reverse/time-reverse.exp I run into:
+...
+(gdb) continue^M
+Continuing.^M
+FAIL: $exp: mode=c: continue to breakpoint: marker2 (timeout)
+...
+
+The problem is that instruction stepping gets stuck in a loop with this call
+stack: time -> __GI___clock_gettime -> __kernel_clock_gettime ->
+__cvdso_clock_gettime.
+
+This is not specific to fsanitize=thread, it just makes gdb slow, which makes
+instruction stepping slow, which results in the application getting stuck.
+
+I ran into this as well with a regular gdb build on a 32-bit i686 laptop with
+1GB of memory, an inherently slow setup.  In that instance, I was able to
+observe that the loop we're stuck in is the outer loop in do_coarse in linux
+kernel source lib/vdso/gettimeofday.c.
+
+Fix this by setting "record full insn-number-max" to 2000, and handling
+running into the limit.
+
+Initially I tried the approach of using "stepi 2000" instead of continue, but
+that made the issue more likely to show up (for instance, I observed it after
+building gdb with -O0 on aarch64-linux).
+
+Tested on aarch64-linux.
+
+Approved-By: Guinevere Larsen <guinevere@redhat.com>
+
+PR testsuite/32678
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32678
+---
+ gdb/testsuite/gdb.reverse/time-reverse.exp | 26 +++++++++++++++++++++-
+ 1 file changed, 25 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.reverse/time-reverse.exp b/gdb/testsuite/gdb.reverse/time-reverse.exp
+index 98085f0ebc9..5a77fcd09f5 100644
+--- a/gdb/testsuite/gdb.reverse/time-reverse.exp
++++ b/gdb/testsuite/gdb.reverse/time-reverse.exp
+@@ -45,6 +45,8 @@ proc test {mode} {
+ 
+     # Activate process record/replay
+     gdb_test_no_output "record" "turn on process record"
++    gdb_test_no_output "set record full stop-at-limit on"
++    gdb_test_no_output "set record full insn-number-max 2000"
+ 
+     set re_srcfile [string_to_regexp $::srcfile]
+ 
+@@ -52,7 +54,29 @@ proc test {mode} {
+ 	"Breakpoint $::decimal at $::hex: file .*$re_srcfile, line $::decimal.*" \
+ 	"set breakpoint at marker2"
+ 
+-    gdb_continue_to_breakpoint "marker2" ".*$re_srcfile:.*"
++    set re_question \
++	[string_list_to_regexp \
++	     "Do you want to auto delete previous execution log entries when" \
++	     " record/replay buffer becomes full" \
++	     { (record full stop-at-limit)?([y] or n)}]
++    set re_program_stopped \
++	[multi_line \
++	     [string_to_regexp "Process record: stopped by user."] \
++	     "" \
++	     [string_to_regexp "Program stopped."]]
++    set re_marker2 [string_to_regexp "marker2 ()"]
++    gdb_test_multiple "continue" "continue to breakpoint: marker2" {
++	-re "$re_question " {
++	    send_gdb "n\n"
++	    exp_continue
++	}
++	-re -wrap "Breakpoint $::decimal, $re_marker2 .*" {
++	    pass $gdb_test_name
++	}
++	-re -wrap "\r\n$re_program_stopped\r\n.*" {
++	    unsupported $gdb_test_name
++	}
++    }
+ 
+     # Show how many instructions we've recorded.
+     gdb_test "info record" "Active record target: .*"
+-- 
+2.43.0
+

@@ -1,0 +1,59 @@
+From 84b4925c08c85d30c8116e0e87db08df8a835dec Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 30 Apr 2025 13:41:20 +0200
+Subject: [PATCH 4/6] [gdb/testsuite] Handle asm frame in
+ gdb.python/py-missing-objfile.exp
+
+On arm-linux, with test-case gdb.python/py-missing-objfile.exp I get:
+...
+(gdb) whatis global_exec_var^M
+type = volatile exec_type^M
+(gdb) FAIL: $exp: initial sanity check: whatis global_exec_var
+...
+instead of the expected "type = volatile struct exec_type".
+
+The problem is that the current language is ASM instead of C, because the
+inner frame at the point of the core dump has language ASM:
+...
+ #0  __libc_do_syscall () at libc-do-syscall.S:47
+ #1  0xf7882920 in __pthread_kill_implementation () at pthread_kill.c:43
+ #2  0xf784df22 in __GI_raise (sig=sig@entry=6) at raise.c:26
+ #3  0xf783f03e in __GI_abort () at abort.c:73
+ #4  0x009b0538 in dump_core () at py-missing-objfile.c:34
+ #5  0x009b0598 in main () at py-missing-objfile.c:46
+...
+
+Fix this by manually setting the language to C.
+
+Tested on arm-linux and x86_64-linux.
+
+PR testsuite/32445
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32445
+---
+ gdb/testsuite/gdb.python/py-missing-objfile.exp | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/gdb/testsuite/gdb.python/py-missing-objfile.exp b/gdb/testsuite/gdb.python/py-missing-objfile.exp
+index 8afd5477453..8488047d105 100644
+--- a/gdb/testsuite/gdb.python/py-missing-objfile.exp
++++ b/gdb/testsuite/gdb.python/py-missing-objfile.exp
+@@ -79,6 +79,16 @@ proc setup_debugdir { dirname files } {
+ # executable (when EXEC_LOADED is true) and/or the library (when LIB_LOADED
+ # is true).
+ proc check_loaded_debug { exec_loaded lib_loaded } {
++    set re_warn \
++	[string_to_regexp \
++	     "Warning: the current language does not match this frame."]
++    set cmd "set lang c"
++    gdb_test_multiple $cmd "" {
++	-re -wrap "${cmd}(\r\n$re_warn)?" {
++	    pass $gdb_test_name
++	}
++    }
++
+     if { $exec_loaded } {
+ 	gdb_test "whatis global_exec_var" "^type = volatile struct exec_type"
+ 
+-- 
+2.43.0
+

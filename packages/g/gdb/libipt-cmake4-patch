@@ -1,0 +1,18 @@
+
+github.com/intel/libipt/issues/114
+github.com/intel/libipt/commit/fa7d42d
+
+
+adapted to opensuse's source tree
+
+--- a/libipt-2.0.5/CMakeLists.txt
++++ b/libipt-2.0.5/CMakeLists.txt
+@@ -25,7 +25,7 @@
+ # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ # POSSIBILITY OF SUCH DAMAGE.
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5)
+ 
+ project(PT C)
+ 

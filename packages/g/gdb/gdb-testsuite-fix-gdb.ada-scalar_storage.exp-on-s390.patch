@@ -1,0 +1,73 @@
+From fb9de096f43a1494d11b8f17779159a96d0a0a63 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 15 Apr 2025 16:59:32 +0200
+Subject: [PATCH 2/2] [gdb/testsuite] Fix gdb.ada/scalar_storage.exp on s390x
+
+On s390x-linux, with test-case gdb.ada/scalar_storage.exp we have:
+...
+(gdb) print V_LE^M
+$1 = (value => 126, another_value => 12, color => 3)^M
+(gdb) FAIL: gdb.ada/scalar_storage.exp: print V_LE
+print V_BE^M
+$2 = (value => 125, another_value => 9, color => green)^M
+(gdb) KFAIL: $exp: print V_BE (PRMS: DW_AT_endianity on enum types)
+...
+
+The KFAIL is incorrect in the sense that gdb is behaving as expected.
+
+The problem is incorrect debug info, so change this into an xfail.
+
+Furthermore, extend the xfail to cover V_LE.
+
+Tested on s390x-linux and x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+PR testsuite/32875
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32875
+---
+ gdb/testsuite/gdb.ada/scalar_storage.exp | 28 ++++++++++++++++++++----
+ 1 file changed, 24 insertions(+), 4 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.ada/scalar_storage.exp b/gdb/testsuite/gdb.ada/scalar_storage.exp
+index 5dccaef8f14..5a7e0e6191c 100644
+--- a/gdb/testsuite/gdb.ada/scalar_storage.exp
++++ b/gdb/testsuite/gdb.ada/scalar_storage.exp
+@@ -33,10 +33,30 @@ if {![runto "storage.adb:$bp_location"]} {
+   return
+ }
+ 
+-gdb_test "print V_LE" "= \\(value => 126, another_value => 12, color => green\\)"
++set re "value => 126, another_value => 12, color => green"
+ 
+ # This requires a compiler fix that is in GCC 14.
+-if { ![gnatmake_version_at_least 14] }	{
+-    setup_kfail "DW_AT_endianity on enum types" *-*-*
++set have_xfail [expr ![gnatmake_version_at_least 14]]
++set re_color "(red|green|blue|$decimal)"
++set re_xfail \
++    "value => $decimal, another_value => $decimal, color => $re_color"
++
++set re_pre [string_to_regexp " = ("]
++set re_post [string_to_regexp ")"]
++set re $re_pre$re$re_post
++set re_xfail $re_pre$re_xfail$re_post
++
++foreach var { V_LE V_BE } {
++    gdb_test_multiple "print $var" "" {
++	-re -wrap $re {
++	    pass $gdb_test_name
++	}
++	-re -wrap $re_xfail {
++	    if { $have_xfail } {
++		xfail $gdb_test_name
++	    } else {
++		fail $gdb_test_name
++	    }
++	}
++    }
+ }
+-gdb_test "print V_BE" "= \\(value => 126, another_value => 12, color => green\\)"
+-- 
+2.43.0
+

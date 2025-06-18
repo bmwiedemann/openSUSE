@@ -1,0 +1,56 @@
+From f55b4c909bb988fd264bdcae417e5f6ebb17fd93 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 29 Apr 2025 17:30:07 +0200
+Subject: [PATCH 5/6] [gdb/testsuite] Fix gdb.base/ptype.exp with gcc 15
+
+With test-case gdb.base/ptype.exp and gcc 15 I run into:
+...
+(gdb) ptype old_fptr^M
+type = double (*)(void)^M
+(gdb) FAIL: $exp: ptype old_fptr (compiler doesn't emit unprototyped types)
+...
+
+Since C23, non-prototype function declarations are no longer supported, so
+"double (*old_fptr) ()" is interpreted as "double (*old_fptr) (void)".
+
+We could try to fix this by detecting the language dialect used, and accepting
+the output in that case, but that feels fragile.
+
+We could try to fix this by hard-coding the language dialect, but that doesn't
+work for all compilers.
+
+So instead, we opt for the simplest solution: just accept this output, and
+produce a pass.
+
+Tested on aarch64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+PR testsuite/32756
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32756
+---
+ gdb/testsuite/gdb.base/ptype.exp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/ptype.exp b/gdb/testsuite/gdb.base/ptype.exp
+index bdec993dc2b..702839c87c9 100644
+--- a/gdb/testsuite/gdb.base/ptype.exp
++++ b/gdb/testsuite/gdb.base/ptype.exp
+@@ -544,10 +544,10 @@ proc ptype_maybe_prototyped { id prototyped plain { overprototyped "NO-MATCH" }
+             fail "ptype $id (compiler doesn't emit prototyped types)"
+         }
+         -re "type = $overprototyped\[\r\n\]+$gdb_prompt $" {
+-            if { [test_compiler_info "armcc-*"] } {
+-		setup_xfail "*-*-*"
+-	    }
+-            fail "ptype $id (compiler doesn't emit unprototyped types)"
++	    # C23 no longer supports non-prototype function declaration, in which
++	    # case the overprototyped regexp is the expected one.  Simply pass
++	    # in all cases.
++	    pass "ptype $id (overprototyped)"
+         }
+     }
+ }
+-- 
+2.43.0
+

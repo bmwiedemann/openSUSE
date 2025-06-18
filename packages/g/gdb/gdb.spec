@@ -59,7 +59,7 @@ ExcludeArch:    ppc ppc64
 
 %if %{build_main}
 Summary:        A GNU source-level debugger for C, C++, Fortran and other languages
-License:        GPL-3.0-only WITH GCC-exception-3.1 AND GPL-3.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later
+License:        GPL-3.0-only WITH GCC-exception-3.1 AND GPL-3.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later AND MIT
 Group:          Development/Languages/C and C++
 %endif
 %if %{build_testsuite}
@@ -162,20 +162,17 @@ NoSource:       19
 NoSource:       20
 %endif
 
-# Fedora import from branch f38, commit 82cc8e0.
+# Fedora import.
 
 #Fedora Packages begin
-Patch2:         gdb-6.3-mapping-zero-inode-test.patch
-Patch4:         gdb-archer-next-over-throw-cxx-exec.patch
-Patch5:         gdb-rhbz1149205-catch-syscall-after-fork-test.patch
-Patch7:         gdb-add-rpm-suggestion-script.patch
+Patch3:         gdb-rpm-suggestion-script.patch
 #Fedora Packages end
 
 # Fedora patches fixup
 # These need a number with at least four digits, otherwise patchlist.pl removes
 # them when upgrading.
 
-Patch1001:      fixup-gdb-add-rpm-suggestion-script.patch
+#
 
 # openSUSE specific
 
@@ -241,6 +238,23 @@ Patch2127:      gdb-guile-use-scm_debug_typing_strictness-0.patch
 Patch2128:      gdb-testsuite-fix-gdb.dwarf2-implptr.exp-regression.patch
 Patch2129:      gdb-symtab-fix-gdb.base-fission-macro.exp-with-unix-.patch
 Patch2130:      gdb-testsuite-fix-gdb.threads-clone-attach-detach.ex.patch
+Patch2131:      gdb-doc-fix-standard-replies-xref.patch
+Patch2132:      gdb-testsuite-use-c-flag-in-c-test-cases.patch
+Patch2133:      gdb-tui-enable-work-around-libncurses-segfault.patch
+Patch2134:      gdb-testsuite-fix-another-timeout-in-gdb.base-bg-exe.patch
+Patch2135:      gdb-testsuite-fix-another-timeout-in-gdb.base-bg-exe.1.patch
+Patch2136:      gdb-testsuite-fix-timeout-in-gdb.threads-inf-thr-cou.patch
+Patch2137:      gdb-tdep-fix-gdb.ada-finish-var-size.exp-on-ppc64le-.patch
+Patch2138:      gdb-testsuite-make-gdb.reverse-time-reverse.exp-more.patch
+Patch2139:      gdb-testsuite-fix-gdb.reverse-time-reverse.exp-timeo.patch
+Patch2140:      gdb-testsuite-handle-asm-frame-in-gdb.python-py-miss.patch
+Patch2141:      gdb-testsuite-fix-gdb.base-ptype.exp-with-gcc-15.patch
+Patch2142:      gdb-testsuite-fix-gdb.python-py-objfile.exp-with-gcc.patch
+Patch2143:      gdb-ada-fix-gdb.ada-overloads.exp-on-s390x.patch
+Patch2144:      gdb-testsuite-fix-gdb.ada-scalar_storage.exp-on-s390.patch
+Patch2145:      gdb-testsuite-fix-gdb.base-bp-permanent.exp-with-gcc.patch
+Patch2146:      gdb-testsuite-don-t-run-to-main-in-gdb.cp-cplusfuncs.patch
+Patch2147:      gdb-testsuite-fix-timeout-in-gdb.multi-attach-while-.patch
 
 # Backport from gdb-patches
 
@@ -250,34 +264,31 @@ Patch3000:      gdb-python-finishbreakpoint-update.patch
 Patch3001:      gdb-testsuite-prevent-compilation-fails-with-unix-fpie-pie.patch
 # https://sourceware.org/pipermail/gdb-patches/2021-May/178990.html
 Patch3002:      gdb-cli-add-ignore-errors-command.patch
-# https://sourceware.org/pipermail/gdb-patches/2025-January/214982.html
-Patch3005:      gdb-doc-fix-standard-replies-xref.patch
 # https://sourceware.org/pipermail/gdb-patches/2023-December/205054.html
 Patch3006:      gdb-symtab-recurse-into-c-dw_tag_subprogram-dies-for.patch
-# https://sourceware.org/bugzilla/show_bug.cgi?id=30380#c1
-Patch3007:      gdb-testsuite-use-c-flag-in-c-test-cases.patch
 # https://sourceware.org/pipermail/gdb-patches/2025-March/216050.html
+# Can be dropped when updating to GDB 17, obsoleted by
+# commit fba43b6e5df ("[gdb/testsuite] Add selftest disassemble-s390x").
 Patch3008:      gdb-testsuite-add-gdb.arch-s390-disassemble.exp.patch
-# https://sourceware.org/pipermail/gdb-patches/2025-April/217015.html
-Patch3009:      gdb-tui-enable-work-around-libncurses-segfault.patch
-# https://sourceware.org/pipermail/gdb-patches/2025-April/217098.html
-Patch3010:      gdb-testsuite-fix-another-timeout-in-gdb.base-bg-exe.patch
 # https://sourceware.org/pipermail/gdb-patches/2025-February/215898.html
 Patch3011:      gdb-block-sigterm-during-fetch_inferior_event.patch
-# https://sourceware.org/pipermail/gdb-patches/2025-April/217188.html
-Patch3012:      gdb-testsuite-fix-another-timeout-in-gdb.base-bg-exe.1.patch
 # https://sourceware.org/pipermail/gdb-patches/2025-April/217193.html
+# Can be dropped when updating to GDB 17, obsoleted by
+# commit 6b4f72a01e6 ("[gdb/breakpoints] Stabilize info breakpoints output").
 Patch3013:      gdb-testsuite-fix-regexp-in-gdb.multi-pending-bp-del.patch
 # https://sourceware.org/pipermail/gdb-patches/2025-March/216441.html
 Patch3014:      gdb-testsuite-fix-timeout-in-gdb.threads-main-thread.patch
-# https://sourceware.org/pipermail/gdb-patches/2025-April/217269.html
-Patch3015:      gdb-testsuite-fix-timeout-in-gdb.threads-inf-thr-cou.patch
+# https://sourceware.org/pipermail/gdb-patches/2025-June/218637.html
+Patch3015:      gdb-python-reimplement-gdb.interrupt-race-fix.patch
 
 # Debug patches.
 
 #
 
 # Other.  Needs comment for each patch.
+
+# fix build failure w/ cmake-4; cf. github.com/intel/libipt/commit/fa7d42d
+Patch4001:      libipt-cmake4-patch
 
 #
 
@@ -592,13 +603,8 @@ rm -f gdb/jv-exp.c gdb/m2-exp.c gdb/objc-exp.c gdb/p-exp.c gdb/go-exp.c
 find -name "*.info*"|xargs rm -f
 
 #Fedora patching start
-%patch -P 2 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 7 -p1
+%patch -P 3 -p1
 #Fedora patching end
-
-%patch -P 1001 -p1
 
 %patch -P 1100 -p1
 %patch -P 1101 -p1
@@ -643,18 +649,30 @@ find -name "*.info*"|xargs rm -f
 %patch -P 2128 -p1
 %patch -P 2129 -p1
 %patch -P 2130 -p1
+%patch -P 2131 -p1
+%patch -P 2132 -p1
+%patch -P 2133 -p1
+%patch -P 2134 -p1
+%patch -P 2135 -p1
+%patch -P 2136 -p1
+%patch -P 2137 -p1
+%patch -P 2138 -p1
+%patch -P 2139 -p1
+%patch -P 2140 -p1
+%patch -P 2141 -p1
+%patch -P 2142 -p1
+%patch -P 2143 -p1
+%patch -P 2144 -p1
+%patch -P 2145 -p1
+%patch -P 2146 -p1
+%patch -P 2147 -p1
 
 %patch -P 3000 -p1
 %patch -P 3001 -p1
 %patch -P 3002 -p1
-%patch -P 3005 -p1
 %patch -P 3006 -p1
-%patch -P 3007 -p1
 %patch -P 3008 -p1
-%patch -P 3009 -p1
-%patch -P 3010 -p1
 %patch -P 3011 -p1
-%patch -P 3012 -p1
 %patch -P 3013 -p1
 %patch -P 3014 -p1
 %patch -P 3015 -p1
@@ -662,6 +680,7 @@ find -name "*.info*"|xargs rm -f
 #unpack libipt
 %if 0%{have_libipt}
 tar xzf %{SOURCE7}
+%patch -P 4001 -p1
 mv libipt-%{libipt_version} processor-trace-%{libipt_version}
 %endif
 

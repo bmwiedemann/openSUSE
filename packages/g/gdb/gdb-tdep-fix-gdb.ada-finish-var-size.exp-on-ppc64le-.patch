@@ -1,0 +1,143 @@
+From 6e547cf3a928dcf23db35fc7892401ce04c877fc Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sun, 1 Jun 2025 14:06:01 +0200
+Subject: [PATCH 1/6] [gdb/tdep] Fix gdb.ada/finish-var-size.exp on
+ ppc64le-linux
+
+On openSUSE Tumbleweed ppc64le-linux using gcc 14.3.0, with a gdb 16.3 based
+package and test-case gdb.ada/finish-var-size.exp, I run into:
+...
+(gdb) finish^M
+Run till exit from #0  pck.get (value=true) at pck.adb:19^M
+0x0000000100004a20 in p () at finish-var-size/p.adb:18^M
+18        V : Result_T := Get (True);^M
+Value returned is $1 = <error reading variable: \
+  Cannot access memory at address 0x0>^M
+(gdb) FAIL: gdb.ada/finish-var-size.exp: finish
+...
+
+Function pck.get returns type Result_T:
+...
+  type Array_Type is array (1 .. 64) of Integer;
+
+  type Maybe_Array (Defined : Boolean := False) is
+    record
+      Arr : Array_Type;
+      Arr2 : Array_Type;
+    end record;
+
+  type Result_T (Defined : Boolean := False) is
+    record
+      case Defined is
+        when False =>
+          Arr : Maybe_Array;
+        when True =>
+          Payload : Boolean;
+      end case;
+    end record;
+...
+and uses r3 as address of the return value, which means
+RETURN_VALUE_STRUCT_CONVENTION, but while executing finish_command we do:
+...
+      return_value
+	= gdbarch_return_value_as_value (gdbarch,
+                                         read_var_value (sm->function, nullptr,
+                                                         callee_frame),
+                                         val_type, nullptr, nullptr, nullptr);
+...
+and get:
+...
+(gdb) p return_value
+$1 = RETURN_VALUE_REGISTER_CONVENTION
+...
+
+This is caused by this check in ppc64_sysv_abi_return_value:
+...
+   /* In the ELFv2 ABI, aggregate types of up to 16 bytes are
+      returned in registers r3:r4.  */
+   if (tdep->elf_abi == POWERPC_ELF_V2
+       && valtype->length () <= 16
+...
+which succeeds because valtype->length () == 0.
+
+Fix this by also checking for !TYPE_HAS_DYNAMIC_LENGTH (valtype).
+
+[ I also tested a version of this patch using "!is_dynamic_type (valtype)"
+instead, but ran into a regression in test-case gdb.ada/variant-record.exp,
+because type T:
+...
+    Length : constant Positive := 8;
+    subtype Name_T is String (1 .. Length);
+
+    type A_Record_T is
+      record
+        X1 : Natural;
+        X2 : Natural;
+      end record;
+
+    type Yes_No_T is (Yes, No);
+    type T (Well : Yes_No_T := Yes) is
+      record
+	case Well is
+          when Yes =>
+            Name : Name_T;
+          when No =>
+            Unique_Name : A_Record_T;
+	end case;
+      end record;
+...
+while being dynamic, also has a non-zero size, and is small enough to be
+returned in registers r3:r4. ]
+
+Fixing this causes the test-case to fail with the familiar:
+...
+warning: Cannot determine the function return value.
+Try compiling with -fvar-tracking.
+...
+and indeed using -fvar-tracking makes the test-case pass.
+
+Tested on ppc64le-linux.
+
+PR tdep/33000
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33000
+---
+ gdb/ppc-sysv-tdep.c                       | 1 +
+ gdb/testsuite/gdb.ada/finish-var-size.exp | 8 +++++++-
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/ppc-sysv-tdep.c b/gdb/ppc-sysv-tdep.c
+index f317c94ef59..e5a28d40d34 100644
+--- a/gdb/ppc-sysv-tdep.c
++++ b/gdb/ppc-sysv-tdep.c
+@@ -2112,6 +2112,7 @@ ppc64_sysv_abi_return_value (struct gdbarch *gdbarch, struct value *function,
+   /* In the ELFv2 ABI, aggregate types of up to 16 bytes are
+      returned in registers r3:r4.  */
+   if (tdep->elf_abi == POWERPC_ELF_V2
++      && !TYPE_HAS_DYNAMIC_LENGTH (valtype)
+       && valtype->length () <= 16
+       && (valtype->code () == TYPE_CODE_STRUCT
+ 	  || valtype->code () == TYPE_CODE_UNION
+diff --git a/gdb/testsuite/gdb.ada/finish-var-size.exp b/gdb/testsuite/gdb.ada/finish-var-size.exp
+index 7b20d7d9b7d..a8a765abed8 100644
+--- a/gdb/testsuite/gdb.ada/finish-var-size.exp
++++ b/gdb/testsuite/gdb.ada/finish-var-size.exp
+@@ -22,7 +22,13 @@ require {expr [gcc_major_version] >= 12}
+ 
+ standard_ada_testfile p
+ 
+-if {[gdb_compile_ada "${srcfile}" "${binfile}" executable debug] != ""} {
++set opts {}
++lappend opts debug
++if { [have_fvar_tracking] } {
++    lappend opts additional_flags=-fvar-tracking
++}
++
++if {[gdb_compile_ada "${srcfile}" "${binfile}" executable $opts] != ""} {
+   return -1
+ }
+ 
+
+base-commit: 976171b383814e7b27146276bdc88efea08040b6
+-- 
+2.43.0
+

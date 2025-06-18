@@ -4161,4 +4161,65 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
 </comment>
     <requestid>1272090</requestid>
   </revision>
+  <revision rev="188" vrev="2">
+    <srcmd5>e8e32d32dcca3d0bf0a4db69d79d480a</srcmd5>
+    <version>16.3</version>
+    <time>1750267773</time>
+    <user>anag_factory</user>
+    <comment>- Patches added:
+  * gdb-testsuite-fix-timeout-in-gdb.multi-attach-while-.patch
+- Patches added (swo#32167):
+  * gdb-python-reimplement-gdb.interrupt-race-fix.patch
+- Maintenance script qa.sh:
+  * Drop PR32167 kfail.
+- Simplify outdated comment in gdb.spec.
+- Update to fedora rawhide @ 0481d32.
+  Maintenance script import-fedora.sh:
+  * Skip gdb-fix-bg-execution-repeat.patch.
+- Add MIT in License tag due to gdbsupport/unordered_dense.h.
+- Update to fedora rawhide @ 89e3933.
+  Maintenance script import-fedora.sh:
+  * Drop gdb-6.8-bz466901-backtrace-full-prelinked.patch from
+    skip_patches.
+- Update to fedora rawhide @ 660c52f.
+  Drop patches:
+  * gdb-rhbz1149205-catch-syscall-after-fork-test.patch
+- Update to fedora rawhide @ 885cdf8.
+  Update patches:
+  * gdb-add-rpm-suggestion-script.patch
+  Drop patches:
+  * fixup-gdb-add-rpm-suggestion-script.patch
+- Update to fedora rawhide @ 9c718a5.
+  Drop patches:
+  * gdb-6.3-mapping-zero-inode-test.patch
+- Update to fedora rawhide @ 15778f3.
+  Drop patches:
+  * gdb-archer-next-over-throw-cxx-exec.patch
+- Update to fedora rawhide @ 152468c.
+  Maintenance script import-fedora.sh:
+  * Rename gdb-6.3-rh-testversion-20041202.patch to
+    gdb-test-show-version.patch in skip_patches.
+  Patches dropped (Renamed to ...):
+  * gdb-add-rpm-suggestion-script.patch
+  Patches added (... this):
+  * gdb-rpm-suggestion-script.patch
+- Move some patches from &quot;Backport from gdb-patches&quot; to
+  &quot;Backports from master, available in GDB 17&quot;.
+- Add patches (swo#33000):
+  * gdb-tdep-fix-gdb.ada-finish-var-size.exp-on-ppc64le-.patch
+- Add patches (swo#32409):
+  * gdb-ada-fix-gdb.ada-overloads.exp-on-s390x.patch
+- Add patches:
+  * gdb-testsuite-make-gdb.reverse-time-reverse.exp-more.patch
+  * gdb-testsuite-fix-gdb.reverse-time-reverse.exp-timeo.patch
+  * gdb-testsuite-handle-asm-frame-in-gdb.python-py-miss.patch
+  * gdb-testsuite-fix-gdb.base-ptype.exp-with-gcc-15.patch
+  * gdb-testsuite-fix-gdb.python-py-objfile.exp-with-gcc.patch
+  * gdb-testsuite-fix-gdb.ada-scalar_storage.exp-on-s390.patch
+  * gdb-testsuite-fix-gdb.base-bp-permanent.exp-with-gcc.patch
+  * gdb-testsuite-don-t-run-to-main-in-gdb.cp-cplusfuncs.patch
+- Fix &quot;ERROR: is not a date&quot;.
+- Add libipt-cmake4-patch to fix build failure w/ cmake-4</comment>
+    <requestid>1286144</requestid>
+  </revision>
 </revisionlist>

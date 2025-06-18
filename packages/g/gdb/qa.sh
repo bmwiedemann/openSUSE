@@ -361,9 +361,6 @@ kfail=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=32619
     "FAIL: gdb.dap/eof.exp: exceptions in log file"
 
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=32167
-    "FAIL: gdb.base/bp-cmds-continue-ctrl-c.exp: (attach|run): stop with control-c"
-
     # https://sourceware.org/bugzilla/show_bug.cgi?id=32688
     "FAIL: gdb.threads/thread-specific-bp.exp: non_stop=on: continue to end"
 

@@ -1,0 +1,246 @@
+From 8ed241a885f7a2d2f713aecfe471f335ae1e230b Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 29 Apr 2025 16:58:24 +0200
+Subject: [PATCH] [gdb/python] Reimplement gdb.interrupt race fix
+
+Once in a while, when running test-case gdb.base/bp-cmds-continue-ctrl-c.exp,
+I run into:
+...
+Breakpoint 2, foo () at bp-cmds-continue-ctrl-c.c:23^M
+23        usleep (100);^M
+^CFAIL: $exp: run: stop with control-c (unexpected) (timeout)
+FAIL: $exp: run: stop with control-c
+...
+
+This is PR python/32167, observed both on x86_64-linux and powerpc64le-linux.
+
+This is not a timeout due to accidental slowness, gdb actually hangs.
+
+The backtrace at the hang is (on cfarm120 running AlmaLinux 9.6):
+...
+(gdb) bt
+ #0  0x00007fffbca9dd94 in __lll_lock_wait () from
+     /lib64/glibc-hwcaps/power10/libc.so.6
+ #1  0x00007fffbcaa6ddc in pthread_mutex_lock@@GLIBC_2.17 () from
+     /lib64/glibc-hwcaps/power10/libc.so.6
+ #2  0x000000001067aee8 in __gthread_mutex_lock ()
+     at /usr/include/c++/11/ppc64le-redhat-linux/bits/gthr-default.h:749
+ #3  0x000000001067afc8 in __gthread_recursive_mutex_lock ()
+     at /usr/include/c++/11/ppc64le-redhat-linux/bits/gthr-default.h:811
+ #4  0x000000001067b0d4 in std::recursive_mutex::lock ()
+     at /usr/include/c++/11/mutex:108
+ #5  0x000000001067b380 in std::lock_guard<std::recursive_mutex>::lock_guard ()
+     at /usr/include/c++/11/bits/std_mutex.h:229
+ #6  0x0000000010679d3c in set_quit_flag () at gdb/extension.c:865
+ #7  0x000000001066b6dc in handle_sigint () at gdb/event-top.c:1264
+ #8  0x00000000109e3b3c in handler_wrapper () at gdb/posix-hdep.c:70
+ #9  <signal handler called>
+ #10 0x00007fffbcaa6d14 in pthread_mutex_lock@@GLIBC_2.17 () from
+     /lib64/glibc-hwcaps/power10/libc.so.6
+ #11 0x000000001067aee8 in __gthread_mutex_lock ()
+     at /usr/include/c++/11/ppc64le-redhat-linux/bits/gthr-default.h:749
+ #12 0x000000001067afc8 in __gthread_recursive_mutex_lock ()
+     at /usr/include/c++/11/ppc64le-redhat-linux/bits/gthr-default.h:811
+ #13 0x000000001067b0d4 in std::recursive_mutex::lock ()
+     at /usr/include/c++/11/mutex:108
+ #14 0x000000001067b380 in std::lock_guard<std::recursive_mutex>::lock_guard ()
+     at /usr/include/c++/11/bits/std_mutex.h:229
+ #15 0x00000000106799cc in set_active_ext_lang ()
+     at gdb/extension.c:775
+ #16 0x0000000010b287ac in gdbpy_enter::gdbpy_enter ()
+     at gdb/python/python.c:232
+ #17 0x0000000010a8e3f8 in bpfinishpy_handle_stop ()
+     at gdb/python/py-finishbreakpoint.c:414
+...
+
+What happens here is the following:
+- the gdbpy_enter constructor attempts to set the current extension language
+  to python using set_active_ext_lang
+- set_active_ext_lang attempts to lock ext_lang_mutex
+- while doing so, it is interrupted by sigint_wrapper (the SIGINT handler),
+  handling a SIGINT
+- sigint_wrapper calls handle_sigint, which calls set_quit_flag, which also
+  tries to lock ext_lang_mutex
+- since std::recursive_mutex::lock is not async-signal-safe, things go wrong,
+  resulting in a hang.
+
+The hang bisects to commit 8bb8f834672 ("Fix gdb.interrupt race"), which
+introduced the lock, making PR python/32167 a regression since gdb 15.1.
+
+Commit 8bb8f834672 fixes PR dap/31263, a race reported by ThreadSanitizer:
+...
+WARNING: ThreadSanitizer: data race (pid=615372)
+
+  Read of size 1 at 0x00000328064c by thread T19:
+    #0 set_active_ext_lang(extension_language_defn const*) gdb/extension.c:755
+    #1 scoped_disable_cooperative_sigint_handling::scoped_disable_cooperative_sigint_handling()
+       gdb/extension.c:697
+    #2 gdbpy_interrupt gdb/python/python.c:1106
+    #3 cfunction_vectorcall_NOARGS <null>
+
+  Previous write of size 1 at 0x00000328064c by main thread:
+    #0 scoped_disable_cooperative_sigint_handling::scoped_disable_cooperative_sigint_handling()
+       gdb/extension.c:704
+    #1 fetch_inferior_event() gdb/infrun.c:4591
+    ...
+
+  Location is global 'cooperative_sigint_handling_disabled' of size 1 at 0x00000328064c
+
+  ...
+
+SUMMARY: ThreadSanitizer: data race gdb/extension.c:755 in \
+  set_active_ext_lang(extension_language_defn const*)
+...
+
+The problem here is that gdb.interrupt is called from a worker thread, and its
+implementation, gdbpy_interrupt races with the main thread on some variable.
+
+Reimplement the fix for PR dap/31263, by:
+- reverting the parts of commit 8bb8f834672 related to the lock, and
+- reimplementing gdbpy_interrupt using kill.
+
+This way of fixing it doesn't require a lock, and consequently fixes PR
+python/32167.
+
+Tested on x86_64-linux and ppc64le-linux.
+
+I also verified that PR dap/31263 remains fixed by building gdb with
+ThreadSanitizer and running the testsuite on x86_64-linux.
+
+I left in the requirement (introduced by commit 8bb8f834672) that DAP requires
+thread support by the C++ compiler.  It possible that this is no longer
+required, but I haven't looked into it.
+
+Now the RFC part.
+
+There is a problem with using kill though: it's not supported when building
+gdb using mingw.  Does anybody know what should be used instead?  I found
+GenerateConsoleCtrlEvent [1] which looks like a candidate.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32167
+
+[1] https://learn.microsoft.com/en-us/windows/console/generateconsolectrlevent
+---
+ gdb/extension.c     | 39 ---------------------------------------
+ gdb/python/python.c | 11 +----------
+ 2 files changed, 1 insertion(+), 49 deletions(-)
+
+diff --git a/gdb/extension.c b/gdb/extension.c
+index b78ea4f2716..4b9f973f75a 100644
+--- a/gdb/extension.c
++++ b/gdb/extension.c
+@@ -638,21 +638,6 @@ breakpoint_ext_lang_cond_says_stop (struct breakpoint *b)
+    This requires cooperation with the extension languages so the support
+    is defined here.  */
+ 
+-#if CXX_STD_THREAD
+-
+-#include <mutex>
+-
+-/* DAP needs a way to interrupt the main thread, so we added
+-   gdb.interrupt.  However, as this can run from any thread, we need
+-   locking for the current extension language.  If threading is not
+-   available, DAP will not start.
+-
+-   This lock is held for accesses to quit_flag, active_ext_lang, and
+-   cooperative_sigint_handling_disabled.  */
+-static std::recursive_mutex ext_lang_mutex;
+-
+-#endif /* CXX_STD_THREAD */
+-
+ /* This flag tracks quit requests when we haven't called out to an
+    extension language.  it also holds quit requests when we transition to
+    an extension language that doesn't have cooperative SIGINT handling.  */
+@@ -708,10 +693,6 @@ static bool cooperative_sigint_handling_disabled = false;
+ 
+ scoped_disable_cooperative_sigint_handling::scoped_disable_cooperative_sigint_handling ()
+ {
+-#if CXX_STD_THREAD
+-  std::lock_guard guard (ext_lang_mutex);
+-#endif /* CXX_STD_THREAD */
+-
+   /* Force the active extension language to the GDB scripting
+      language.  This ensures that a previously saved SIGINT is moved
+      to the quit_flag global, as well as ensures that future SIGINTs
+@@ -729,10 +710,6 @@ scoped_disable_cooperative_sigint_handling::scoped_disable_cooperative_sigint_ha
+ 
+ scoped_disable_cooperative_sigint_handling::~scoped_disable_cooperative_sigint_handling ()
+ {
+-#if CXX_STD_THREAD
+-  std::lock_guard guard (ext_lang_mutex);
+-#endif /* CXX_STD_THREAD */
+-
+   cooperative_sigint_handling_disabled = m_prev_cooperative_sigint_handling_disabled;
+   restore_active_ext_lang (m_prev_active_ext_lang_state);
+ }
+@@ -771,10 +748,6 @@ scoped_disable_cooperative_sigint_handling::~scoped_disable_cooperative_sigint_h
+ struct active_ext_lang_state *
+ set_active_ext_lang (const struct extension_language_defn *now_active)
+ {
+-#if CXX_STD_THREAD
+-  std::lock_guard guard (ext_lang_mutex);
+-#endif /* CXX_STD_THREAD */
+-
+ #if GDB_SELF_TEST
+   if (selftests::hook_set_active_ext_lang)
+     selftests::hook_set_active_ext_lang ();
+@@ -827,10 +800,6 @@ set_active_ext_lang (const struct extension_language_defn *now_active)
+ void
+ restore_active_ext_lang (struct active_ext_lang_state *previous)
+ {
+-#if CXX_STD_THREAD
+-  std::lock_guard guard (ext_lang_mutex);
+-#endif /* CXX_STD_THREAD */
+-
+   if (cooperative_sigint_handling_disabled)
+     {
+       /* See set_active_ext_lang.  */
+@@ -861,10 +830,6 @@ restore_active_ext_lang (struct active_ext_lang_state *previous)
+ void
+ set_quit_flag ()
+ {
+-#if CXX_STD_THREAD
+-  std::lock_guard guard (ext_lang_mutex);
+-#endif /* CXX_STD_THREAD */
+-
+   if (active_ext_lang->ops != NULL
+       && active_ext_lang->ops->set_quit_flag != NULL)
+     active_ext_lang->ops->set_quit_flag (active_ext_lang);
+@@ -886,10 +851,6 @@ set_quit_flag ()
+ bool
+ check_quit_flag ()
+ {
+-#if CXX_STD_THREAD
+-  std::lock_guard guard (ext_lang_mutex);
+-#endif /* CXX_STD_THREAD */
+-
+   bool result = false;
+ 
+   for (const struct extension_language_defn *extlang : extension_languages)
+diff --git a/gdb/python/python.c b/gdb/python/python.c
+index acd80e5515c..ecd9d8d5101 100644
+--- a/gdb/python/python.c
++++ b/gdb/python/python.c
+@@ -1166,16 +1166,7 @@ gdbpy_post_event (PyObject *self, PyObject *args)
+ static PyObject *
+ gdbpy_interrupt (PyObject *self, PyObject *args)
+ {
+-  {
+-    /* Make sure the interrupt isn't delivered immediately somehow.
+-       This probably is not truly needed, but at the same time it
+-       seems more clear to be explicit about the intent.  */
+-    gdbpy_allow_threads temporarily_exit_python;
+-    scoped_disable_cooperative_sigint_handling no_python_sigint;
+-
+-    set_quit_flag ();
+-  }
+-
++  kill (getpid (), SIGINT);
+   Py_RETURN_NONE;
+ }
+ 
+
+base-commit: e6828c8f629fd52d7b065c45d52b6bd04acd616f
+-- 
+2.43.0
+

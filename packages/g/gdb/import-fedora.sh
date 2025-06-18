@@ -5,10 +5,12 @@
 skip_patches=(
     # Not applicable for openSUSE.
     gdb-add-index.patch
-    gdb-6.3-rh-testversion-20041202.patch
-    gdb-6.8-bz466901-backtrace-full-prelinked.patch
+    gdb-test-show-version.patch
 
     # Dropped by fedora.
+
+    # Already present.
+    gdb-fix-bg-execution-repeat.patch    
 )
 
 usage ()

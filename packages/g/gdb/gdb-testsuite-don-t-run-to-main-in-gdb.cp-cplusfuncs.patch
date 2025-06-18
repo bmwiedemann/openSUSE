@@ -1,0 +1,47 @@
+From 0293f33bd589d8d3a4c9cbc889934975e5fe50f2 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 17 Apr 2025 17:57:29 +0200
+Subject: [PATCH 2/2] [gdb/testsuite] Don't run to main in
+ gdb.cp/cplusfuncs.exp
+
+After building gdb with -fsanitize=threads, and running test-case
+gdb.cp/cplusfuncs.exp, I run into a single timeout:
+...
+FAIL: gdb.cp/cplusfuncs.exp: info function operator=( (timeout)
+...
+and the test-case takes 2m33s to finish.
+
+This is due to expanding CUs from libstdc++.
+
+After de-installing package libstdc++6-debuginfo, the timeout disappears and
+testing time goes down to 9 seconds.
+
+Fix this by not running to main, which brings testing time down to 3 seconds.
+
+With a gdb built without -fsanitize=threads, testing time goes down from 11
+seconds to less than 1 second.
+
+Tested on x86_64-linux.
+
+Reviewed-By: Keith Seitz <keiths@redhat.com>
+---
+ gdb/testsuite/gdb.cp/cplusfuncs.exp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.cp/cplusfuncs.exp b/gdb/testsuite/gdb.cp/cplusfuncs.exp
+index d789a1dbc88..75466e2d6bb 100644
+--- a/gdb/testsuite/gdb.cp/cplusfuncs.exp
++++ b/gdb/testsuite/gdb.cp/cplusfuncs.exp
+@@ -579,7 +579,8 @@ proc do_tests {} {
+ 
+     gdb_test_no_output "set width 0"
+ 
+-    runto_main
++    # Don't run to main, to avoid loading and expanding debug info for
++    # libstdc++.
+ 
+     gdb_test_no_output "set language c++"
+     probe_demangler
+-- 
+2.43.0
+

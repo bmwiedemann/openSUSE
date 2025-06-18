@@ -1,0 +1,47 @@
+From b96df07528a707ebcb25ac445481fc827cdb0cf1 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 5 Jun 2025 07:37:09 +0200
+Subject: [PATCH 1/2] [gdb/testsuite] Fix gdb.base/bp-permanent.exp with gcc 15
+
+With test-case gdb.base/bp-permanent.exp and gcc 15 I run into:
+...
+gdb compile failed, bp-permanent.c: In function 'test_signal_nested':
+bp-permanent.c:118:20: error: passing argument 2 of 'signal' from \
+  incompatible pointer type [-Wincompatible-pointer-types]
+  118 |   signal (SIGALRM, test_signal_nested_handler);
+      |                    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                    |
+      |                    void (*)(void)
+In file included from bp-permanent.c:20:
+/usr/include/signal.h:88:57: note: expected '__sighandler_t' \
+  {aka 'void (*)(int)'} but argument is of type 'void (*)(void)'
+...
+
+Fix this by adding an int parameter to test_signal_nested_handler.
+
+Tested on x86_64-linux.
+
+PR testsuite/32756
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32756
+---
+ gdb/testsuite/gdb.base/bp-permanent.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.base/bp-permanent.c b/gdb/testsuite/gdb.base/bp-permanent.c
+index 99f1c410bea..a733d3b17eb 100644
+--- a/gdb/testsuite/gdb.base/bp-permanent.c
++++ b/gdb/testsuite/gdb.base/bp-permanent.c
+@@ -101,7 +101,7 @@ test_signal_no_handler (void)
+ }
+ 
+ static void
+-test_signal_nested_handler ()
++test_signal_nested_handler (int sig)
+ {
+   test ();
+ }
+
+base-commit: fb9de096f43a1494d11b8f17779159a96d0a0a63
+-- 
+2.43.0
+
