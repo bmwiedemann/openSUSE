@@ -19,18 +19,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyvmomi
-Version:        8.0.3.0.1
+Version:        9.0.0.0
 Release:        0
 Summary:        VMware vSphere Python SDK
 License:        Apache-2.0
 URL:            https://github.com/vmware/pyvmomi
 Source:         https://github.com/vmware/pyvmomi/archive/v%{version}.tar.gz#/pyvmomi-%{version}.tar.gz
-Patch0:         0001-pyVmomi-pinned-certificates-support.patch
+#Patch0:         0001-pyVmomi-pinned-certificates-support.patch
 BuildRequires:  %{python_module fixtures >= 1.3.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.3.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.7.3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -40,9 +39,8 @@ BuildRequires:  %{python_module testtools >= 0.9.34}
 BuildRequires:  %{python_module vcrpy}
 # /SECTION
 Requires:       python-requests >= 2.3.0
-Requires:       python-six >= 1.7.3
 Recommends:     python-lxml
-Recommends:     python-pyOpenSSL
+Recommends:     python-pyOpenSSL < 24.3.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,13 +49,8 @@ pyVmomi is the Python SDK for the VMware vSphere API that allows you to manage
 ESX, ESXi, and vCenter.
 
 %prep
-%setup -q -n pyvmomi-%{version}%{?version_suffix}
-%autopatch -p1
+%autosetup -p1 -n pyvmomi-%{version}%{?version_suffix}
 dos2unix README.rst LICENSE.txt NOTICE.txt
-
-# https://github.com/vmware/pyvmomi/pull/750
-# Unpin vcrpy; the fix was released
-sed -i 's/vcrpy<2/vcrpy/' test-requirements.txt
 
 %build
 %pyproject_wheel
