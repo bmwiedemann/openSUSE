@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 17 20:19:44 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add Use-full-function-prototypes-in-libnyquist.patch fixing build
+  with gcc-15
+
+-------------------------------------------------------------------
 Tue Jun 10 19:16:42 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to 3.7.4

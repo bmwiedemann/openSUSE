@@ -36,6 +36,7 @@ Patch0:         audacity-no_buildstamp.patch
 # PATCH-FIX-UPSTREAM audacity-no_return_in_nonvoid.patch - Fix false positive errors Two new gcc10 ones ignoring assert
 Patch1:         audacity-no_return_in_nonvoid.patch
 # PATCH-FIX-OPENSUSE vst-system-path.patch - search fo vsts in /usr/lib64 in x86_64 and ARM system
+Patch2:         Use-full-function-prototypes-in-libnyquist.patch
 Patch3:         lib64-plugins-default-path.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
@@ -125,6 +126,7 @@ physical memory size can be edited.
 %setup -q -n %{name}-Audacity-%{version}
 %patch -P 0 -p1
 %patch -P 1 -p1
+%patch -P 2 -p1
 
 %ifarch x86_64 aarch64
 %patch -P 3 -p1
