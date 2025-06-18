@@ -18,13 +18,13 @@
 
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.private\\.kscreen.*
 
-%global kf6_version 6.0.0
-%define qt6_version 6.7.0
+%global kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %define rname kscreen
 %bcond_without released
 Name:           kscreen6
-Version:        6.3.5
+Version:        6.4.0
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -33,15 +33,20 @@ Release:        0
 Summary:        Screen management software by KDE
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# Converted using 'magick hdrcalibrator/ui/images/graz.{png,avif}' to save some space: 31MiB -> 262KiB
+Source3:        graz.avif
+# PATCH-FIX-UPSTREAM we use an .avif like in the master branch
+Patch1:         0001-Revert-hdrcalibrator-install-the-image-instead-of-in.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
+BuildRequires:  qt6-waylandclient-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6GlobalAccel) >= %{kf6_version}
@@ -54,12 +59,16 @@ BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(LayerShellQt) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(Plasma) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaQuick) >= %{_plasma6_bugfix}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sensors) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.41
 BuildRequires:  pkgconfig(xcb-atom)
 BuildRequires:  pkgconfig(xi)
 Requires:       kf6-kded
 Requires:       libkscreen6-plugin >= %{_plasma6_bugfix}
+# For graz.avif
+Requires:       kf6-kimageformats
 Requires:       xrdb
 Supplements:    (libkscreen6-plugin and plasma6-workspace)
 Obsoletes:      kscreen5 < %{version}
@@ -75,6 +84,9 @@ KScreen handles screen management for both X11 and Wayland sessions, including r
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
+cp %{SOURCE3} hdrcalibrator/ui/images/
+
+sed -i 's/graz.png/graz.avif/' hdrcalibrator/CMakeLists.txt hdrcalibrator/ui/Main.qml
 
 %build
 %cmake_kf6
@@ -98,10 +110,9 @@ KScreen handles screen management for both X11 and Wayland sessions, including r
 %files
 %license LICENSES/*
 %{_kf6_applicationsdir}/kcm_kscreen.desktop
-%{_kf6_appstreamdir}/org.kde.kscreen.appdata.xml
+%{_kf6_bindir}/hdrcalibrator
 %{_kf6_bindir}/kscreen-console
 %{_kf6_debugdir}/kscreen.categories
-%{_kf6_plasmadir}/plasmoids/org.kde.kscreen/
 %{_kf6_plugindir}/kf6/kded/kscreen.so
 %{_kf6_plugindir}/plasma/applets/org.kde.kscreen.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_kscreen.so

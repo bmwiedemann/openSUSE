@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:37:29 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+  * Add tests for OSD actions
+  * Reapply rotation on X11 when applying osd action
+  * Move output to common
+  * Make common a library
+  * Reset replication before applying osdAction
+  * Take rotation into account when applying osd actions
+  * hdrcalibrator: bundle plasma-symbolic icon from breeze (kde#505078)
+  * kcm: Disable snapping to center
+  * kcm: add highlighted property to combobox delegate
+  * kcm: also hide contextually irrelevant bits per color options
+  * kcm: hide color resolution selection if only one value is supported
+  * kcm: improve presentation of the color resolution combobox
+- Rebase 0001-Revert-hdrcalibrator-install-the-image-instead-of-in.patch
+
+-------------------------------------------------------------------
+Thu May 29 21:19:55 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+  * kcm: hide color profile selection entirely with HDR (kde#502675)
+  * kcm: reload kwin config when tearing option is changed (kde#504634,kde#496970)
+  * hdrcalibrator: work around QWindow::requestUpdate not working with basic render loop (kde#504347)
+  * hdrcalibrator: install the image instead of including it in the module
+  * hdrcalibrator: prevent applying output configurations more often than necessary
+- Revert upstream commit to get same behaviour as git master:
+  * 0001-Revert-hdrcalibrator-install-the-image-instead-of-in.patch
+
+-------------------------------------------------------------------
+Mon May 19 19:35:26 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  6 20:07:59 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
