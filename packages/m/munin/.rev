@@ -541,4 +541,13 @@
     <comment>Add /srv/www directories to filelist [bsc#1231027]</comment>
     <requestid>1205369</requestid>
   </revision>
+  <revision rev="38" vrev="10">
+    <srcmd5>b1873cb5f34092926d0fd4620b71581e</srcmd5>
+    <version>2.0.72</version>
+    <time>1750267827</time>
+    <user>anag_factory</user>
+    <comment>- Drop dependency on fast-cgi which was replaced in 2.0.x by munin-httpd
+  https://guide.munin-monitoring.org/en/latest/reference/munin-httpd.html (forwarded request 1286361 from lkocman)</comment>
+    <requestid>1286364</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package munin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,9 +71,8 @@ Requires:       perl-base = %{perl_version}
 Requires:       perl-rrdtool
 Requires:       rrdtool
 Requires:       shadow
-Requires:       spawn-fcgi
-Requires:       perl(FCGI)
 Requires:       perl(Date::Manip)
+Requires:       perl(FCGI)
 Requires:       perl(File::Copy::Recursive)
 Requires:       perl(HTML::Template)
 Requires:       perl(IO::Socket::IP)

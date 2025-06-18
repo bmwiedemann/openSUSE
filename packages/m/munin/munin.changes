@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 17 11:42:04 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Drop dependency on fast-cgi which was replaced in 2.0.x by munin-httpd
+  https://guide.munin-monitoring.org/en/latest/reference/munin-httpd.html
+
+-------------------------------------------------------------------
 Sun Sep 29 20:48:44 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add /srv/www directories to filelist [bsc#1231027]
