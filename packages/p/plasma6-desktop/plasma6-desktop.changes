@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Jun 12 21:52:36 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * desktoppackage: fix Image wallpaper configuration
+  * Update version for new release 6.4.0
+  * containments/desktop: fix minimum size for fullRepresentation in panel
+  * applets/kicker: give runner listview focus
+  * FolderView: Do not use positioner if its disabled (kde#505249)
+  * Correct Bugzilla URLs (kde#505340)
+  * applets/kicker: rerun search on model refresh (kde#418088)
+  * applets/kicker: don't trigger hover on keyboard open (kde#423688)
+  * applets/kickoff: fix error when accessing context action (kde#496324)
+  * applets/kicker: make runner columns horizontally scrollable (kde#389146)
+  * applets/kicker: allow keyboard navigation to favorites sidebar (kde#499237)
+  * FolderItemDelegate: use label implicitHeight in frame size calculation (kde#490402)
+  * applets/kickoff: recalculate app model binding on rootModel refresh (kde#504891)
+  * kcms/tablet: Fix positioning of the stylus buttons
+
+-------------------------------------------------------------------
+Thu May 29 21:22:42 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Use Plasmoid attached property directly in DefaultCompactRepresentation (kde#504880)
+  * Update version for new release 6.3.91
+  * applets/kicker: fix and simplify representation size (kde#477005)
+  * applets/kicker: fix Plasma.dialog being inappropriately resized (kde#503582)
+  * applets/kicker: elide long primary menu names (kde#503143)
+  * applets/kicker: fix and simplify runner keyboard navigation
+  * containments/desktop: redetermine item on click (kde#504765)
+  * Make sure the handles never go out of view (kde#494452)
+  * 🍒 taskmanager: fix a regression from !2932
+  * lockscreen: remove dead code
+  * kcms/access: Reduce lower threshold for bounce keys
+  * desktoppackage: Fix invalid module name
+
+-------------------------------------------------------------------
+Mon May 19 19:37:51 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  6 20:12:25 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:

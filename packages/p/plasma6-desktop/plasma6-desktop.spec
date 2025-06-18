@@ -21,8 +21,8 @@
 %global __requires_exclude qt6qmlimport\\((org\\.kde\\.plasma\\.shell\\.panel|org\\.kde\\.plasma\\.private).*
 # %%global __requires_exclude qt6qmlimport\\((org\\.kde\\.private\\.kcms|org\\.kde\\.plasma\\.kcm|org\\.kde\\.desktopsession\\.private|org\\.kde\\.plasma\\.tablet|org\\.kde\\.plasma\\.touchscreen\\.kcm).*
 
-%define kf6_version 6.10.0
-%define qt6_version 6.7.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %define rname plasma-desktop
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -34,14 +34,14 @@
 %bcond_without scim
 %endif
 Name:           plasma6-desktop
-Version:        6.3.5
+Version:        6.4.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -203,6 +203,7 @@ Requires:       (plasma6-kimpanel-scim if scim)
 %endif
 
 %global have_gamecontroller_kcm %{pkg_vcmp cmake(sdl2) >= 2.0.16}
+%global have_gamecontroller_kcm 1
 
 %description
 This package contains the basic packages for a Plasma workspace.
@@ -277,7 +278,6 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_applicationsdir}/kcm_activities.desktop
 %{_kf6_applicationsdir}/kcm_baloofile.desktop
 %{_kf6_applicationsdir}/kcm_clock.desktop
-%{_kf6_applicationsdir}/kcm_componentchooser.desktop
 %{_kf6_applicationsdir}/kcm_desktoppaths.desktop
 %if %{have_gamecontroller_kcm}
 %{_kf6_applicationsdir}/kcm_gamecontroller.desktop
@@ -328,7 +328,6 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_access.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_activities.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_baloofile.so
-%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_componentchooser.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_desktoppaths.so
 %if %{have_gamecontroller_kcm}
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_gamecontroller.so
@@ -368,6 +367,7 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_sharedir}/kcmkeys/
 %{_kf6_sharedir}/kcmsolidactions/
 %{_kf6_sharedir}/polkit-1/actions/org.kde.kcontrol.kcmclock.policy
+%{_kf6_sharedir}/kglobalaccel/org.kde.touchpadshortcuts.desktop
 %dir %{_kf6_sharedir}/sddm
 %dir %{_kf6_sharedir}/sddm/themes
 %{_kf6_sharedir}/sddm/themes/breeze/
