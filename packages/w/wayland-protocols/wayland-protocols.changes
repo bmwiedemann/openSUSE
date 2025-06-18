@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 15 15:40:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.45
+  * added background effects protocol
+  * added pointer wrap protocol
+  * Session management experimental protocol
+  * Bew major input method experimental protocol
+
+-------------------------------------------------------------------
 Sun Apr 27 20:51:51 UTC 2025 - llyyr <llyyr@yukari.in>
 
 - Update to version 1.44:
