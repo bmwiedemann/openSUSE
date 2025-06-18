@@ -16,17 +16,15 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname kuserfeedback
 
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kuserfeedback
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Framework for collecting feedback from application users
 License:        MIT
@@ -37,9 +35,7 @@ Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  bison
-# # For icons
-BuildRequires:  kf6-breeze-icons
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  flex
 BuildRequires:  fdupes
 # # Needed for tests
@@ -54,6 +50,7 @@ BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 
 %description
@@ -124,7 +121,8 @@ application users via telemetry and targeted surveys.
 %build
 # FIXME Docs use a hardcoded path in the application code
 # Disable until fixed upstream
-%cmake_kf6 -DQT_MAJOR_VERSION:STRING=6 \
+%cmake_kf6 \
+  -DQT_MAJOR_VERSION:STRING=6 \
   -DENABLE_DOCS:BOOL=FALSE \
   -DBUILD_TESTING:BOOL=TRUE
 
