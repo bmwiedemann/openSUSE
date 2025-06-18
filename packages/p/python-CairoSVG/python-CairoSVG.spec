@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-CairoSVG
 Version:        2.7.1
@@ -34,15 +35,15 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tinycss2}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-Pillow
 Requires:       python-cairocffi
 Requires:       python-cssselect2
 Requires:       python-defusedxml
 Requires:       python-tinycss2
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -71,11 +72,8 @@ sed -i setup.cfg \
 %check
 %pytest
 
-%post
-%python_install_alternative cairosvg
-
-%postun
-%python_uninstall_alternative cairosvg
+%pre
+%python_libalternatives_reset_alternative cairosvg
 
 %files %{python_files}
 %doc README.rst

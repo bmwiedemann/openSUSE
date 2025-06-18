@@ -320,4 +320,12 @@
 - No more greedy globs in %files.</comment>
     <requestid>1266348</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>6bb93df9e2a6002e824d0965d70ce4f4</srcmd5>
+    <version>2.7.1</version>
+    <time>1750267795</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286312</requestid>
+  </revision>
 </revisionlist>
