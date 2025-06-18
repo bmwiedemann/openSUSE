@@ -177,4 +177,12 @@
     <comment>- Inject multibuild to avoid a build cycle. (bsc#1244507)</comment>
     <requestid>1285359</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>77421b7b797fbb698763b1a6a2331817</srcmd5>
+    <version>1.33.1</version>
+    <time>1750278521</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1286564</requestid>
+  </revision>
 </revisionlist>

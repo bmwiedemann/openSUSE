@@ -68,7 +68,9 @@ OpenTelemetry Python SDK for the OpenTelemetry Project <https://opentelemetry.io
 %check
 %if %{with test}
 rm -rvf tests/performance tests/trace/test_trace.py
-%pytest
+# gh#open-telemetry/opentelemetry-python#4630
+skipttest="test_simple_log_record_processor_shutdown"
+%pytest -k "not ($skipttest)"
 %endif
 
 %if !%{with test}
