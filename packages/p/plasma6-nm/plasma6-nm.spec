@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.10.0
-%define qt6_version 6.7.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %define rname plasma-nm
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -30,20 +30,19 @@
 %bcond_without openconnect
 %endif
 Name:           plasma6-nm
-Version:        6.3.5
+Version:        6.4.0
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
@@ -87,6 +86,8 @@ Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-networkmanager-qt-imports >= %{kf6_version}
 Requires:       kf6-prison-imports >= %{kf6_version}
 Requires:       kwalletd6
+# The KCM desktop files launch systemsettings
+Requires:       systemsettings6
 Recommends:     mobile-broadband-provider-info
 Supplements:    (plasma6-desktop and NetworkManager)
 Provides:       plasma-nm-kf5 = %{version}
@@ -280,6 +281,9 @@ FortiGate SSL VPN plugin for plasma-nm components.
 %license LICENSES/*
 %dir %{_kf6_plugindir}/plasma/network
 %dir %{_kf6_plugindir}/plasma/network/vpn
+%{_kf6_applicationsdir}/kcm_cellular_network.desktop
+%{_kf6_applicationsdir}/kcm_mobile_hotspot.desktop
+%{_kf6_applicationsdir}/kcm_mobile_wifi.desktop
 %{_kf6_applicationsdir}/kcm_networkmanagement.desktop
 %{_kf6_applicationsdir}/org.kde.vpnimport.desktop
 %{_kf6_appstreamdir}/org.kde.plasma.networkmanagement.appdata.xml
@@ -287,11 +291,14 @@ FortiGate SSL VPN plugin for plasma-nm components.
 %{_kf6_libdir}/libplasmanm_editor.so
 %{_kf6_libdir}/libplasmanm_internal.so
 %{_kf6_notificationsdir}/networkmanagement.notifyrc
+%{_kf6_plasmadir}/plasmoids/org.kde.plasma.networkmanagement/
 %{_kf6_plugindir}/kf6/kded/networkmanagement.so
+%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_cellular_network.so
+%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_hotspot.so
+%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_wifi.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_networkmanagement.so
 %dir %{_kf6_qmldir}/org/kde/plasma
 %{_kf6_qmldir}/org/kde/plasma/networkmanagement/
-%{_kf6_plasmadir}/plasmoids/org.kde.plasma.networkmanagement/
 %{_kf6_sharedir}/kcm_networkmanagement/
 
 %files openvpn
