@@ -356,4 +356,14 @@ This also handles TW properly. (forwarded request 653860 from lslezak)</comment>
     <comment></comment>
     <requestid>1166780</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>8cdaf57b9d919a21051f221553a58e3a</srcmd5>
+    <version>20240311</version>
+    <time>1750254829</time>
+    <user>anag_factory</user>
+    <comment>Needed for Plasma 6.4
+
+- Require aurorae6 in the plasma pattern</comment>
+    <requestid>1280934</requestid>
+  </revision>
 </revisionlist>

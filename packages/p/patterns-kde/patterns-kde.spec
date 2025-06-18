@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-kde
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,8 +36,8 @@ This particular package contains the KDE patterns.
 
 
 
-################################################################################
 
+################################################################################
 %package devel_kde_frameworks
 %pattern_development
 Summary:        KDE Frameworks and Plasma Development
@@ -535,6 +535,9 @@ Requires:       (pattern() = x11 if plasma6-session-x11)
 
 # We have a theme for this, so prefer it
 Recommends:     sddm-qt6
+
+# Downloadable window decorations need this, just install it
+Requires:       aurorae6
 
 # To open folders on the desktop
 Recommends:     dolphin
