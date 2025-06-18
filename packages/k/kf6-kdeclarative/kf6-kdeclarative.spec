@@ -16,16 +16,14 @@
 #
 
 
-%define qt6_version 6.7.0
+%define qt6_version 6.8.0
 
 %define rname kdeclarative
-# Full KF6 version (e.g. 6.14.0)
+# Full KF6 version (e.g. 6.15.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kdeclarative
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Integration of QML and KDE workspaces
 License:        LGPL-2.1-or-later
@@ -35,14 +33,13 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6GlobalAccel) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6GuiAddons) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_bugfix_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{_kf6_version}
+BuildRequires:  cmake(KF6GlobalAccel) >= %{_kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{_kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{_kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
@@ -62,7 +59,7 @@ KDeclarative provides integration of QML and KDE workspaces.
 
 %package imports
 Summary:        KDeclarative QML imports
-Requires:       kf6-kirigami-imports >= %{_kf6_bugfix_version}
+Requires:       kf6-kirigami-imports >= %{_kf6_version}
 
 %description imports
 KDeclarative provides integration of QML and KDE workspaces.
@@ -70,8 +67,8 @@ KDeclarative provides integration of QML and KDE workspaces.
 %package devel
 Summary:        Integration of QML and KDE workspaces: Build Environment
 Requires:       libKF6CalendarEvents6 = %{version}
-Requires:       cmake(KF6Config) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
+Requires:       cmake(KF6Config) >= %{_kf6_version}
+Requires:       cmake(KF6CoreAddons) >= %{_kf6_version}
 Requires:       cmake(Qt6Quick) >= %{qt6_version}
 
 %description devel
@@ -84,7 +81,7 @@ Development files.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -113,7 +110,6 @@ Development files.
 %{_kf6_qmldir}/org/kde/private/kquickcontrols/
 
 %files devel
-%doc %{_kf6_qchdir}/KF6Declarative.*
 %{_kf6_cmakedir}/KF6Declarative/
 %{_kf6_includedir}/KDeclarative/
 %{_kf6_libdir}/libKF6CalendarEvents.so
