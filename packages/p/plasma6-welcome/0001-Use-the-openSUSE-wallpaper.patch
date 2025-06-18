@@ -13,45 +13,42 @@ sed -i "s#wallpapers/Next/contents/images/1920x1080.png#wallpapers/openSUSEdefau
  src/qml/mock/MockOverview.qml   | 2 +-
  3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/src/qml/mock/MockActivities.qml b/src/qml/mock/MockActivities.qml
-index 0b9a00b..284fed9 100644
---- a/src/qml/mock/MockActivities.qml
-+++ b/src/qml/mock/MockActivities.qml
-@@ -107,7 +107,7 @@ Item {
+Index: plasma-welcome-6.3.80git.20250401T013956~eef0830/src/qml/mock/MockActivities.qml
+===================================================================
+--- plasma-welcome-6.3.80git.20250401T013956~eef0830.orig/src/qml/mock/MockActivities.qml	2025-04-01 03:39:56.000000000 +0200
++++ plasma-welcome-6.3.80git.20250401T013956~eef0830/src/qml/mock/MockActivities.qml	2025-04-01 08:46:00.810327705 +0200
+@@ -107,7 +107,7 @@
                      // We're intentionally ignoring our 16:10 desktop wallpaper (MockDesktop) - whilst that fits the square
                      // window, we want to maximise what we can fit in our limited height and be more representative of what
                      // a user will see - most use a 16:9 display.
--                    source: "file:" + Controller.installPrefix() + "/share/wallpapers/Next/contents/images/1920x1080.png"
-+                    source: "file:" + Controller.installPrefix() + "/share/wallpapers/openSUSEdefault/contents/images/1920x1200.png"
+-                    source: "file:" + Private.App.installPrefix + "/share/wallpapers/Next/contents/images/5120x2880.png"
++                    source: "file:" + Private.App.installPrefix + "/share/wallpapers/openSUSEdefault/contents/images/1920x1200.png"
                      mipmap: true
                  }
  
-diff --git a/src/qml/mock/MockCard.qml b/src/qml/mock/MockCard.qml
-index c2c9754..c7dbf7d 100644
---- a/src/qml/mock/MockCard.qml
-+++ b/src/qml/mock/MockCard.qml
-@@ -22,7 +22,7 @@ Kirigami.AbstractCard {
+Index: plasma-welcome-6.3.80git.20250401T013956~eef0830/src/qml/mock/MockCard.qml
+===================================================================
+--- plasma-welcome-6.3.80git.20250401T013956~eef0830.orig/src/qml/mock/MockCard.qml	2025-04-01 03:39:56.000000000 +0200
++++ plasma-welcome-6.3.80git.20250401T013956~eef0830/src/qml/mock/MockCard.qml	2025-04-01 08:46:34.753303169 +0200
+@@ -23,7 +23,7 @@
      property double backgroundScale: 1
      property int blurRadius: 32
  
--    readonly property string wallpaper: "file:" + Controller.installPrefix() + "/share/wallpapers/Next/contents/images/1920x1080.png"
-+    readonly property string wallpaper: "file:" + Controller.installPrefix() + "/share/wallpapers/openSUSEdefault/contents/images/1920x1200.png"
+-    readonly property string wallpaper: "file:" + Private.App.installPrefix + "/share/wallpapers/Next/contents/images/5120x2880.png"
++    readonly property string wallpaper: "file:" + Private.App.installPrefix + "/share/wallpapers/openSUSEdefault/contents/images/1920x1200.png"
      readonly property int desktopWidth: 1024 * backgroundScale
      readonly property int desktopHeight: 576 * backgroundScale
  
-diff --git a/src/qml/mock/MockOverview.qml b/src/qml/mock/MockOverview.qml
-index 37e3156..9aca7c4 100644
---- a/src/qml/mock/MockOverview.qml
-+++ b/src/qml/mock/MockOverview.qml
-@@ -21,7 +21,7 @@ Item {
+Index: plasma-welcome-6.3.80git.20250401T013956~eef0830/src/qml/mock/MockOverview.qml
+===================================================================
+--- plasma-welcome-6.3.80git.20250401T013956~eef0830.orig/src/qml/mock/MockOverview.qml	2025-04-01 03:39:56.000000000 +0200
++++ plasma-welcome-6.3.80git.20250401T013956~eef0830/src/qml/mock/MockOverview.qml	2025-04-01 08:46:52.706234697 +0200
+@@ -20,7 +20,7 @@
  
      // We're intentionally ignoring our 16:10 desktop wallpaper (MockDesktop) - whilst that fits the square
      // window, we want to be more representative of what a user will see - most use a 16:9 display.
--    readonly property string wallpaper: "file:" + Controller.installPrefix() + "/share/wallpapers/Next/contents/images/1920x1080.png"
-+    readonly property string wallpaper: "file:" + Controller.installPrefix() + "/share/wallpapers/openSUSEdefault/contents/images/1920x1200.png"
+-    readonly property string wallpaper: "file:" + Private.App.installPrefix + "/share/wallpapers/Next/contents/images/5120x2880.png"
++    readonly property string wallpaper: "file:" + Private.App.installPrefix + "/share/wallpapers/openSUSEdefault/contents/images/1920x1200.png"
      readonly property double scale: layout.scale
  
      // Underlay
--- 
-2.47.0
-

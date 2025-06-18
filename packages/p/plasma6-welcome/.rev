@@ -199,4 +199,12 @@
     <comment>Revert accidental update to version 6.4 beta</comment>
     <requestid>1283552</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>650a067069c4e4a0334b85d424de864a</srcmd5>
+    <version>6.4.0</version>
+    <time>1750254974</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.4.0 (maybe). K:F already publish disabled (forwarded request 1285270 from Vogtinator)</comment>
+    <requestid>1285751</requestid>
+  </revision>
 </revisionlist>

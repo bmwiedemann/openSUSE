@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.10.0
-%define qt6_version 6.7.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %define rname plasma-welcome
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -26,14 +26,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-welcome
-Version:        6.3.5
+Version:        6.4.0
 Release:        0
 Summary:        Onboarding wizard for Plasma
 License:        GPL-2.0-only OR GPL-3.0-only
 URL:            https://invent.kde.org/plasma/plasma-welcome
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -84,6 +84,8 @@ how to connect to the internet, install apps, customize the system, and more!
 %install
 %kf6_install
 
+rm %{buildroot}%{_kf6_libdir}/libplasma-welcome-publicplugin.a
+
 %find_lang plasma-welcome
 
 %files
@@ -91,6 +93,8 @@ how to connect to the internet, install apps, customize the system, and more!
 %{_kf6_applicationsdir}/org.kde.plasma-welcome.desktop
 %{_kf6_appstreamdir}/org.kde.plasma-welcome.appdata.xml
 %{_kf6_bindir}/plasma-welcome
+%dir %{_kf6_qmldir}/org/kde/plasma
+%{_kf6_qmldir}/org/kde/plasma/welcome/
 %{_kf6_plugindir}/kf6/kded/kded_plasma-welcome.so
 
 %files lang -f plasma-welcome.lang
