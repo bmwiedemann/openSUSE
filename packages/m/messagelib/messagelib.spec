@@ -2,6 +2,7 @@
 # spec file for package messagelib
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,8 +35,8 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  libgpgmepp-devel
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(Gpgmepp)
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
