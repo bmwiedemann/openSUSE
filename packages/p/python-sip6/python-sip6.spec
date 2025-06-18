@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sip6
-Version:        6.9.1
+Version:        6.12.0
 Release:        0
 Summary:        A Python bindings generator for C/C++ libraries
 License:        BSD-2-Clause AND BSD-3-Clause
@@ -26,11 +26,15 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/Python-SIP/sip
 Source0:        https://github.com/Python-SIP/sip/archive/refs/tags/%{version}.tar.gz#/sip-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
-BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module packaging >= 24.2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 69.5}
-# Technically >= 8, but we make it compatible in prep.
+%if 0%{?suse_version} < 1600
+BuildRequires:  %{python_module setuptools >= 75.8.1}
 BuildRequires:  %{python_module setuptools_scm >= 7}
+%else
+BuildRequires:  %{python_module setuptools >= 77}
+BuildRequires:  %{python_module setuptools_scm >= 8}
+%endif
 BuildRequires:  %{python_module tomli if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -56,8 +60,8 @@ Summary:        A Python bindings generator for C/C++ libraries
 Group:          Development/Libraries/Python
 Requires:       c++_compiler
 Requires:       python-base >= 3.9
-Requires:       python-packaging
-Requires:       python-setuptools >= 69.5
+Requires:       python-packaging >= 24.2
+Requires:       python-setuptools >= 75.8.1
 Requires:       (python-tomli if python-base < 3.11)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -81,9 +85,12 @@ own sip bindings.
 
 %prep
 %autosetup -p1 -n sip-%{version}
-# Make it work with setuptools_scm < 8
+# Make it work with setuptools < 77 and setuptools_scm < 8
 %if 0%{suse_version} < 1600
-sed -i s/version_file/write_to/ pyproject.toml
+sed -i pyproject.toml \
+    -e 's/version_file/write_to/' \
+    -e 's/license = .*/license = { file = "LICENSE" }/' \
+    -e '/license-files/d'
 %endif
 
 %build
