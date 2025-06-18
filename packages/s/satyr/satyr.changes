@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 17 17:29:11 UTC 2025 - Nathan Cutler <ncutler@suse.com>
+
+- spec:
+  * fix 16.0 build by using the new modern_python macro to define the
+    python3_satyr macro (bsc#1244419)
+
+-------------------------------------------------------------------
 Tue Aug 13 07:01:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.43:

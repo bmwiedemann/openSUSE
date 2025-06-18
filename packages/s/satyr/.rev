@@ -19,4 +19,12 @@ New package which is a dependency for setroubleshoot gui (together with librepor
   * Fix test failure when using clang (Thanks to Alex)</comment>
     <requestid>1193636</requestid>
   </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>f4ca41a6a77a7967d5c7cd86f3e878e2</srcmd5>
+    <version>0.43</version>
+    <time>1750255061</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1286446</requestid>
+  </revision>
 </revisionlist>

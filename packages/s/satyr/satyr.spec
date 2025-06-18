@@ -1,7 +1,7 @@
 #
 # spec file for package satyr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019-2024 Red Hat, Inc.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,7 @@
 %bcond_with python3
 %endif
 %if 0%{?suse_version}
-  %define python3_sphinx python311-Sphinx
+  %define python3_sphinx %{modern_python}-Sphinx
   # separate shlib package (openSUSE shlibs packing guidelines)
   %define _libname libsatyr4
 %else
