@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:37:28 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+
+-------------------------------------------------------------------
+Thu May 29 21:19:14 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+  * cmake: also declare major, minor and patch version vars
+  * cmake: use PROJECT_VERSION
+
+-------------------------------------------------------------------
+Mon May 19 19:35:22 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Changes since 6.3.5:
+  * update project version to 6.3.90
+  * tests: Drop versions in qml imports
+  * Use qqmlintegration.h instead of qqmlregistration.h
+  * Port to declarative type registration
+  * encodedstream: Don't query VAAPI in the constructor
+  * encodedstream: Deprecate setActive() and replace with an explicit API
+  * It compiles fine without kf_6_12 deprecated methods
+  * Tweak encoding options for VP9
+  * Port Encoder away from deprecated avcodec_close
+  * Set "threads" option by default in Encoder
+  * Add logging of encoding options if log level is set to info
+  * Change Encoder::applyEncodingPreference() to buildEncodingOptions() (kde#488896)
+  * Tweak compiler warning flags to reduce unneeded output
+  * Add logging that outputs number of processed and pending frames every second
+  * sourceitem: invoke method with correct context object (kde#501042)
+  * Use malloc to create AVDRMFrameDescriptor
+  * CI: Add linux-qt6-next build
+  * Add xml/yaml linting
+  * Fix build with Qt 6.10
+  * Add missing !
+  * PipeWireSourceStream::setActive demote assert to warning
+  * PipeWireSourceItem handle stream creation failure
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue May  6 20:07:42 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
