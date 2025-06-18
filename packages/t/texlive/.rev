@@ -1269,4 +1269,12 @@
     <comment>- disabled osmesa support, which has been removed with Mesa 25.1.0</comment>
     <requestid>1277961</requestid>
   </revision>
+  <revision rev="105" vrev="108">
+    <srcmd5>b767af9000d2596ba945c9e50fbf24b2</srcmd5>
+    <version>unknown</version>
+    <time>1750267782</time>
+    <user>anag_factory</user>
+    <comment>- Avoid embedding randomness into rpm headers (boo#1237231)</comment>
+    <requestid>1286253</requestid>
+  </revision>
 </revisionlist>

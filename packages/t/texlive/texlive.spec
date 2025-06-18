@@ -313,7 +313,7 @@ Prefix:         %{_bindir}
 %define add_optflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
 %global optflags %{optflags} %{**}
 
-%{expand: %%global options %(mktemp /tmp/texlive-opts.XXXXXXXX)}
+%global options		~/.tmp.texlive-opts
 %global _varlib		%{_localstatedir}/lib
 
 %define libexec %(rpm --eval '%%{_libexecdir}' | sed 's-/usr--g')
@@ -4798,6 +4798,7 @@ popd
 
     # Read the options file
     . %{options}
+    rm -vf %{options}
 
     mkdir -p %{buildroot}%{_bindir}
     mkdir -p %{buildroot}%{_libdir}/pkgconfig

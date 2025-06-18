@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  8 03:51:01 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Avoid embedding randomness into rpm headers (boo#1237231)
+
+-------------------------------------------------------------------
 Sun May 11 08:25:32 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - disabled osmesa support, which has been removed with Mesa 25.1.0 
