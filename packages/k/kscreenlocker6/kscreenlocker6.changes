@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:37:31 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.0
+- Changes since 6.3.91:
+  * Update version for new release 6.4.0
+
+-------------------------------------------------------------------
+Thu May 29 21:19:59 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.91
+- Changes since 6.3.90:
+  * Update version for new release 6.3.91
+
+-------------------------------------------------------------------
+Mon May 19 19:35:28 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.90
+- Changes since 6.3.5:
+  * update version for new release
+  * Use std::expected to clean up PowerInhibitor
+  * Bump C++ version to 23
+  * Port the ScreenSaver interface from sync calls to powerdevil
+  * kcm: make parameter explicit
+  * kcm: set fewer unused config properties
+  * globalaccel: accept the event if we trigger a shortcut
+  * greeter: Add loginFailedDelayStarted event (kde#489898)
+  * kcm: make long wallpaper plugins scrollable
+  * greeter: remove obselete shareEvent
+  * greeter: sync password across screens
+  * kcm: Use keys() for setting inital properties
+  * Explictly register DBus metatypes for shortcuts
+  * CI: remove duplicate linux-qt6-next
+  * CI: Add linux-qt6-next build
+  * CI: require plasma/plasma-workspace again
+  * CI: Add linux-qt6-next build and disable plasma-workspace dependency for now
+  * Remove and add idle timeout when inhibited and unhibited (kde#469687)
+  * Add xml/yaml linting
+  * greeter: Port from QX11Info
+  * X11Locker: always call stayOnTop when receiving XCB_MAP_NOTIFY to fix black screen
+  * Update .gitignore to ignore build folder
+  * Fix build with Qt 6.10
+  * ksldapp: Set componentDisplayName property for global Lock Session action
+  * globalaccel: whitelist Toggle Keyboard Backlight (kde#483919)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue May  6 20:08:01 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:
