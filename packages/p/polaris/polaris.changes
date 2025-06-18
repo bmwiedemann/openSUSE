@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 18 04:30:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 9.6.4:
+  * INS-1097: Fix CVE-2025-22874 for polaris (#1122)
+
+-------------------------------------------------------------------
 Thu Apr 24 15:25:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 9.6.3:
