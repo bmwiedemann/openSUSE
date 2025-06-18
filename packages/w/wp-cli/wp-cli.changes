@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed May  7 08:18:20 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 2.12.0
+  * PHP 8.4 | Fix implicitly nullable parameters by @jrfnl in #5982
+  * PHP 8.3 | ReportWidthTest: fix deprecation notices for
+    ReflectionProperty::setValue() by @jrfnl in #5984
+  * PHP 8.1 | WP_CLI\Iterators\CSV: fix "missing return type" deprecation
+    warnings by @jrfnl in #5983
+  * PHP 8.4 | wp_debug_mode(): remove use of E_STRICT by @jrfnl in #5986
+  * PHP 8.4 | Update Requests to v 2.0.12 by @jrfnl in #5981
+  * Remove unused automerge workflow by @swissspidy in #5992
+  * Composer: prevent a lock file from being created by @swissspidy in #5993
+  * Fix tests against WordPress trunk by @swissspidy in #5995
+  * Skip Requests v1 test on PHP 8.2+ by @swissspidy in #5996
+  * UtilsTest: fix the test failure by @jrfnl in #5997
+  * PHPUnit: convert deprecations to exceptions by @swissspidy in #5994
+  * PHP 8.4 | Fix CSV escaping deprecation notices by @jrfnl in #5991
+  * Added global documentation by @wpeople-dev in #6017
+  * Update wp-cli/php-cli-tools by @bor0 in #6021
+  * Code quality improvements powered by PHPStan by @swissspidy in #6019
+  * Fix: Update outdated AJAX documentation link by @PARTHVATALIYA in #6031
+  * Update expected error message in unit tests by @swissspidy in #6032
+  * Add hook to http_request() util by @swissspidy in #6036
+  * Improve regex for detecting wp-settings.php by @swissspidy in #6039
+  * Ensure code after wp-settings.php call is loaded by @swissspidy in #6042
+  * Added PHPDoc for cmd_starts_with() method by @PARTHVATALIYA in #6034
+  * Update log and warning logger functions comment according to the actual
+    functionality by @matiasbenedetto in #5979
+  * Add configurable user agent to WP-CLI to detect in firewall logs by
+   @amirhmoradi in #5998
+  * docker scheme: working-directory and stdin passing by @drzraf in #5974
+  * Revert "docker scheme: working-directory and stdin passing" by @swissspidy
+    in #6049
+  * Allow collecting PHPUnit coverage by @swissspidy in #6041
+  * Add defaults and accepted values for runcommand() options in doc by
+    @i-am-chitti in #5953
+  * Check PHP version requirement in update check by @swissspidy in #6037
+  * docker scheme: working-directory and stdin passing (reroll of #5974) by
+    @drzraf in #6057
+  * Fix undefined variable issue by @swissspidy in #6058
+  * Add test for line breaks in table view by @BhargavBhandari90 in #6055
+  * Temporarily remove roave/security-advisories by @swissspidy in #6060
+  * Improve command suggestions for taxonomies and post types by
+    @karthick-murugan in #6059
+  * Update wp-cli/php-cli-tools dependency by @swissspidy in #6061
+  * Support multiple files in WP_CLI_EARLY_REQUIRE by @swissspidy in #6065
+  * Removes array_column compatability function by @9ete in #6068
+  * Properly create missing wp cli config file when needed. by @mrsdizzie in
+   #6062
+  * Add WP_CLI_REQUIRE env var for including extra php files by @mrsdizzie in
+   #6070
+  * Update WP-CLI update message by @wojsmol in #6071
+  * Detect MariaDB vs MySQL by @swissspidy in #6072
+  * Fix update step for nightlies by @swissspidy in #6075
+  * Fix Gherkin lint issues by @swissspidy in #6076
+  * Do not error if mysql binary not found by @swissspidy in #6077
+  * Fix Gherkin lint issues by @ernilambar in #6082
+  * Set display_errors to stderr (lowercase) instead of STDERR by @WPprodigy in
+    #6084
+  * don't forcefully exec() docker version by @drzraf in #6040
+  * Update release issue templates by @swissspidy in #6078
+  * Fix unstable package override tests by @swissspidy in #6069
+  * allow remote binary customization by @drzraf in #6013
+  * Make sure existing esc_like() takes precedence by @schlessera in #6088
+  * Check for root earlier by @schlessera in #5987
+  * Escape CSV output by @schlessera in #6089
+  * Use forked mustache library by @swissspidy in #6090
+  * Replace duplicate-post plugin with debug-bar in feature tests by @schlessera in #6091
+  * Release v2.12.0 by @schlessera in #6092
+
+-------------------------------------------------------------------
 Mon Feb 10 07:48:08 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 2.11.0
