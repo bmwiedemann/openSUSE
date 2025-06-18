@@ -154,4 +154,12 @@ Drop sphinx doctrees for reproducible builds</comment>
     <comment></comment>
     <requestid>1239455</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>58d1ee351b3406fc93d3809f48aa350e</srcmd5>
+    <version>0.25</version>
+    <time>1750262307</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286587</requestid>
+  </revision>
 </revisionlist>

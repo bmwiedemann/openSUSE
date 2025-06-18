@@ -17,6 +17,7 @@
 
 
 %bcond_without     test
+%bcond_without libalternatives
 Name:           python-bpython
 Version:        0.25
 Release:        0
@@ -29,18 +30,18 @@ BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
 Requires:       %{name}-common = %{version}
+Requires:       alts
 Requires:       python-curtsies >= 0.4
 Requires:       python-greenlet
 Requires:       python-pygments
 Requires:       python-pyxdg
 Requires:       python-requests
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     python-cwcwidth
 Recommends:     python-jedi
 Recommends:     python-ndg-httpsclient
@@ -131,11 +132,8 @@ rm %{buildroot}%{_datadir}/applications/org.bpython-interpreter.bpython.desktop
 %pyunittest discover -v
 %endif
 
-%post
-%{python_install_alternative bpython bpython-urwid bpdb bpython.1%{ext_man} bpython-config.5%{ext_man}}
-
-%postun
-%python_uninstall_alternative bpython
+%pre
+%python_libalternatives_reset_alternative bpython
 
 %files %{python_files}
 %license LICENSE
@@ -151,6 +149,12 @@ rm %{buildroot}%{_datadir}/applications/org.bpython-interpreter.bpython.desktop
 %python_alternative %{_bindir}/bpdb
 %python_alternative %{_mandir}/man1/bpython.1%{ext_man}
 %python_alternative %{_mandir}/man5/bpython-config.5%{ext_man}
+# Needed because bpython-config doesn't have a binary, it's just a man page file.
+%if %{with libalternatives}
+%dir %{_datadir}/libalternatives/bpython-config
+%{_datadir}/libalternatives/bpython-config/*%{python_version_nodots}.conf
+%endif
+
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/org.bpython-interpreter.bpython-%{python_bin_suffix}.metainfo.xml
 %dir %{_datadir}/applications/
