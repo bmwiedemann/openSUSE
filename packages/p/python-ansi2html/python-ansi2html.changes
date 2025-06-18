@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 17 20:29:28 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add opensuse-test.patch making the tests work even with
+  versioned executables in the testing environment (i.e., before
+  the alts scriptlets kick in).
+
+-------------------------------------------------------------------
+Mon Jun 16 12:20:51 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives
+
+-------------------------------------------------------------------
 Sun Jun 23 07:43:43 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.9.2:

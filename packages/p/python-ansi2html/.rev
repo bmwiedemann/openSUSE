@@ -63,4 +63,16 @@
     <comment></comment>
     <requestid>1183017</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>59c85a29c803636e22957153b4f03dc8</srcmd5>
+    <version>1.9.2</version>
+    <time>1750255062</time>
+    <user>anag_factory</user>
+    <comment>- Add opensuse-test.patch making the tests work even with
+  versioned executables in the testing environment (i.e., before
+  the alts scriptlets kick in).
+- Convert to libalternatives
+</comment>
+    <requestid>1286460</requestid>
+  </revision>
 </revisionlist>
