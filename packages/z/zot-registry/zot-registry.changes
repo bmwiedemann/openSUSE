@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 18 04:30:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.5:
+  * chore: fix dependabot alerts (#3213)
+  * chore: update zui version (#3212)
+  * feat: add token auth support for event sink (#3197)
+  * chore: bump github.com/olekukonko/tablewriter from 0.0.5 to
+    1.0.7 (#3198)
+  * fix: image retention policy to handle patterns even if metadb
+    is not instantiated (#3200)
+  * Fix dependabot alerts (#3188)
+
+-------------------------------------------------------------------
 Fri Jun 06 05:07:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.4:
