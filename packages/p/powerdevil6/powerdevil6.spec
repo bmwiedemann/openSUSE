@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.10.0
-%define qt6_version 6.7.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %define rname powerdevil
 %bcond_without released
 Name:           powerdevil6
-Version:        6.3.5
+Version:        6.4.0
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -31,9 +31,9 @@ Release:        0
 Summary:        KDE Power Management module
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -121,6 +121,7 @@ rm -rv %{buildroot}%{_kf6_libdir}/libpowerdevilcore.so
 %files
 %license COPYING*
 %doc %{_kf6_htmldir}/en/kcontrol/
+%{_kf6_applicationsdir}/kcm_mobile_power.desktop
 %{_kf6_applicationsdir}/kcm_powerdevilprofilesconfig.desktop
 %{_kf6_appstreamdir}/org.kde.plasma.battery.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.brightness.appdata.xml
@@ -139,6 +140,7 @@ rm -rv %{buildroot}%{_kf6_libdir}/libpowerdevilcore.so
 %{_kf6_plasmadir}/plasmoids/org.kde.plasma.brightness/
 %dir %{_kf6_plugindir}/kf6/krunner
 %{_kf6_plugindir}/kf6/krunner/krunner_powerdevil.so
+%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobile_power.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_powerdevilprofilesconfig.so
 %dir %{_kf6_plugindir}/powerdevil/
 %dir %{_kf6_plugindir}/powerdevil/action
