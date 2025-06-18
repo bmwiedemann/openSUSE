@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 18 04:58:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.19.stable.1:
+  * Build sle micro images on sle micro
+  * Use restrictive umask when creating directories
+  * Fix logs context (#82)
+  * Remove region
+  * fix: CI changes and script changes for rpms
+  * feat: add new rpm tool for handling repo sign and upload
+  * feat: add selinux write and connectto to kine sock
+  * Fix gpg key secret again
+  * Fix gpg key secret
+  * More fixes to vault secrets paths (#73)
+  * Fix vault secrets paths (#72)
+  * GHA Migration (#71)
+
+-------------------------------------------------------------------
 Thu May  2 06:59:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.18.stable.2:
