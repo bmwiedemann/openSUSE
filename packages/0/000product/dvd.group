@@ -148,6 +148,8 @@
     <package name="augeas" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="augeas-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="augeas-lenses" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="aurorae6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="aurorae6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="autofs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="autoyast2" supportstatus="unsupported"/> <!-- reason: dvd:autoyast2 -->
     <package name="autoyast2-installation" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1161,6 +1163,7 @@
     <package name="kwin6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kwin6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kwin6-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kwin6-x11-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kwordquiz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kwordquiz-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="lastlog2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1509,6 +1512,7 @@
     <package name="libQt6LabsSettings6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6LabsSharedImage6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6LabsWavefrontMesh6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libQt6Location6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6Multimedia6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6MultimediaQuick6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6MultimediaWidgets6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2271,6 +2275,7 @@
     <package name="libksysguard6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libksysguard6-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkwalletbackend5-5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libkwin-x11-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkwin6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkyotocabinet16" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblangtag1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2913,6 +2918,7 @@
     <package name="libxcb1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libxcrypt-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libxcvt0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libxdot4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libxdp1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libxfce4kbd-private-3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libxfce4panel-2_0-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -3725,6 +3731,7 @@
     <package name="qrencode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="qt6-declarative-imports" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-imageformats" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="qt6-location" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="qt6-multimedia" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-multimedia-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="qt6-network-tls" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

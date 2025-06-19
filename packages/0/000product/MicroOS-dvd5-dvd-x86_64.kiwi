@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20250617" schemaversion="4.1">
+<image name="OBS__MicroOS___20250618" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250617</productvar>
+      <productvar name="VERSION">20250618</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20250617,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20250618,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20250617/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20250618/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -71,6 +71,7 @@
       <repopackage name="attr"/>
       <repopackage name="audit"/>
       <repopackage name="audit-rules"/>
+      <repopackage name="aurorae6"/>
       <repopackage name="avahi"/>
       <repopackage name="baloo-widgets"/>
       <repopackage name="bash"/>
@@ -451,6 +452,7 @@
       <repopackage name="kf6-kiconthemes-imports"/>
       <repopackage name="kf6-kidletime"/>
       <repopackage name="kf6-kidletime-plugins"/>
+      <repopackage name="kf6-kimageformats"/>
       <repopackage name="kf6-kio"/>
       <repopackage name="kf6-kirigami-imports"/>
       <repopackage name="kf6-kitemmodels-imports"/>
@@ -843,6 +845,7 @@
       <repopackage name="libharfbuzz-subset0"/>
       <repopackage name="libharfbuzz0"/>
       <repopackage name="libhd24"/>
+      <repopackage name="libheif1"/>
       <repopackage name="libhidapi-hidraw0"/>
       <repopackage name="libhogweed6"/>
       <repopackage name="libhunspell-1_7-0"/>
@@ -1248,6 +1251,7 @@
       <repopackage name="libQt6LabsSettings6"/>
       <repopackage name="libQt6LabsSharedImage6"/>
       <repopackage name="libQt6LabsWavefrontMesh6"/>
+      <repopackage name="libQt6Location6"/>
       <repopackage name="libQt6Multimedia6"/>
       <repopackage name="libQt6MultimediaQuick6"/>
       <repopackage name="libQt6Network6"/>
@@ -1804,6 +1808,7 @@
       <repopackage name="qrencode"/>
       <repopackage name="qt6-declarative-imports"/>
       <repopackage name="qt6-imageformats"/>
+      <repopackage name="qt6-location"/>
       <repopackage name="qt6-multimedia"/>
       <repopackage name="qt6-multimedia-imports"/>
       <repopackage name="qt6-network-tls"/>

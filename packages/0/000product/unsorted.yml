@@ -1094,6 +1094,7 @@ unsorted:
   - augeas-devel 
   - augeas-devel-32bit 
   - augeas-lense-tests 
+  - aurorae6-devel 
   - authbind 
   - auto 
   - auto-common 
@@ -1991,8 +1992,6 @@ unsorted:
   - catimg 
   - catimg-zsh-completion 
   - cava 
-  - cbi-plugins 
-  - cbi-plugins-javadoc 
   - cblas-devel 
   - cblas-devel-32bit 
   - cblas-devel-static 
@@ -3554,32 +3553,8 @@ unsorted:
   - eclint 
   - eclipse-collections 
   - eclipse-collections-javadoc 
-  - eclipse-contributor-tools 
-  - eclipse-ecf-core 
-  - eclipse-ecf-core-bootstrap 
-  - eclipse-ecf-runtime 
-  - eclipse-ecf-sdk 
-  - eclipse-egit 
-  - eclipse-emf-core 
-  - eclipse-emf-core-bootstrap 
-  - eclipse-emf-runtime 
-  - eclipse-emf-sdk 
-  - eclipse-emf-xsd 
-  - eclipse-equinox-osgi 
-  - eclipse-equinox-osgi-bootstrap 
-  - eclipse-jdt 
-  - eclipse-jdt-bootstrap 
-  - eclipse-jgit 
-  - eclipse-license1 
-  - eclipse-license2 
-  - eclipse-p2-discovery 
-  - eclipse-p2-discovery-bootstrap 
-  - eclipse-pde 
-  - eclipse-pde-bootstrap 
-  - eclipse-platform 
-  - eclipse-platform-bootstrap 
   - eclipse-swt 
-  - eclipse-swt-bootstrap 
+  - eclipse-swt-javadoc 
   - ecpint-common 
   - ecryptfs-utils 
   - ecryptfs-utils-devel 
@@ -7928,6 +7903,8 @@ unsorted:
   - gplugin-devel 
   - gplugin-doc 
   - gpm-devel 
+  - gpodder 
+  - gpodder-lang 
   - gpomme 
   - gpp 
   - gpredict 
@@ -8010,7 +7987,6 @@ unsorted:
   - graphviz-smyrna 
   - graphviz-tcl 
   - graphviz-webp 
-  - graphviz-x11 
   - grass 
   - grass-devel 
   - grass-doc 
@@ -8053,9 +8029,6 @@ unsorted:
   - grommunio-web 
   - gromox 
   - gron 
-  - groovy18 
-  - groovy18-javadoc 
-  - groovy18-lib 
   - growlight 
   - growpart-generator 
   - grpc-devel 
@@ -10110,6 +10083,7 @@ unsorted:
   - kf6-ki18n-imports 
   - kf6-kiconthemes-devel 
   - kf6-kidletime-devel 
+  - kf6-kimageformats-devel 
   - kf6-kimageformats-eps 
   - kf6-kio-devel 
   - kf6-kio-doc 
@@ -10758,6 +10732,7 @@ unsorted:
   - kwidgetsaddons-devel 
   - kwikdisk 
   - kwin6-devel 
+  - kwin6-x11-devel 
   - kwindowsystem-devel 
   - kwrite 
   - kxml 
@@ -11518,7 +11493,6 @@ unsorted:
   - libQt6Grpc6 
   - libQt6Help6 
   - libQt6HttpServer6 
-  - libQt6Location6 
   - libQt6Mqtt6 
   - libQt6Nfc6 
   - libQt6OpcUa6 
@@ -13374,9 +13348,9 @@ unsorted:
   - libgirara-gtk3-4 
   - libgirepository-1_0-1-32bit 
   - libgit2-devel 
-  - libgit2-experimental-1_9 
   - libgit2-experimental-devel 
   - libgit2-experimental-tools 
+  - libgit2-experimental1_9 
   - libgit2-glib-1_0-0 
   - libgit2-glib-devel 
   - libgit2-tools 
@@ -14137,7 +14111,6 @@ unsorted:
   - libktoblzcheck1 
   - libktorrent-devel 
   - libkyotocabinet-devel 
-  - liblab_gamut1 
   - liblagraph1 
   - liblagraphx1 
   - liblal20 
@@ -16990,7 +16963,6 @@ unsorted:
   - libxcvt-devel 
   - libxdg-basedir-devel 
   - libxdg-basedir1 
-  - libxdot4 
   - libxdp-devel 
   - libxeme0 
   - libxerces-c-3_3 
@@ -23562,6 +23534,7 @@ unsorted:
   - python3-keystonemiddleware 
   - python3-kf6-kcoreaddons 
   - python3-kf6-kguiaddons 
+  - python3-kf6-kjobwidgets 
   - python3-kf6-knotifications 
   - python3-kf6-kstatusnotifieritem 
   - python3-kf6-kunitconversion 
@@ -35222,7 +35195,6 @@ unsorted:
   - qt6-labswavefrontmesh-private-devel 
   - qt6-languageserver-devel-static 
   - qt6-linguist-devel 
-  - qt6-location 
   - qt6-location-devel 
   - qt6-location-docs-html 
   - qt6-location-docs-qch 
@@ -47315,6 +47287,7 @@ unsorted:
   - timoni-bash-completion 
   - timoni-fish-completion 
   - timoni-zsh-completion 
+  - tin 
   - tinc 
   - tini 
   - tini-static 
@@ -47787,9 +47760,6 @@ unsorted:
   - twolame 
   - twups 
   - txt2man 
-  - tycho 
-  - tycho-bootstrap 
-  - tycho-javadoc 
   - typelib-1_0-Accounts-1_0 
   - typelib-1_0-AppStream-1.0 
   - typelib-1_0-AppStream-compose-1.0 
