@@ -2200,4 +2200,12 @@
 - Add -Ddistro=generic to make gdm-config work (bsc#1232669). (forwarded request 1282078 from AZhou)</comment>
     <requestid>1282878</requestid>
   </revision>
+  <revision rev="283" vrev="10">
+    <srcmd5>a2bf24a1ac2c32ac737b6fba7e8006db</srcmd5>
+    <version>48.0</version>
+    <time>1750430887</time>
+    <user>anag_factory</user>
+    <comment>Removes pam_env from auth stack for security reason [bsc#1243226, CVE-2025-6018] (forwarded request 1286602 from vlefebvre)</comment>
+    <requestid>1286734</requestid>
+  </revision>
 </revisionlist>

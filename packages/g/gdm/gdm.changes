@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 18 09:43:19 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- pam.d: removes pam_env from auth stack for security reason
+  [bsc#1243226, CVE-2025-6018]
+
+-------------------------------------------------------------------
 Fri May 30 06:47:55 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add gdm-fix-wrong-path-gdm-config.patch: Add missing slash when
