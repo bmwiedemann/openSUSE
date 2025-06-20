@@ -1,7 +1,7 @@
 #
 # spec file for package gap-unitlib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-unitlib
-Version:        4.2.0
+Version:        5.0.0
 Release:        0
 Summary:        GAP: Library of normalized unit groups of modular group algebras
 License:        GPL-2.0-or-later
