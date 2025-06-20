@@ -33,7 +33,7 @@
 %global confdir %_prefix%_sysconfdir
 
 Name:           clamav
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only
