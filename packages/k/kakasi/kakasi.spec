@@ -27,6 +27,8 @@ Source:         http://kakasi.namazu.org/stable/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org
 Patch0:         kakasi-2.3.6-no-return-in-nonvoid-function.patch
 Patch1:         kakasi-gcc14-fix.patch
+# fix build with gcc15
+Patch2:         kakasi-gcc15.patch
 BuildRequires:  automake
 BuildRequires:  libtool
 Requires:       kakasi-dict = %{version}
