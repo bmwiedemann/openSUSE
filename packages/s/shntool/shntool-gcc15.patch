@@ -1,0 +1,62 @@
+diff -upr shntool-3.0.10.orig/include/format.h shntool-3.0.10/include/format.h
+--- shntool-3.0.10.orig/include/format.h	2025-06-19 13:03:26.277058095 +0000
++++ shntool-3.0.10/include/format.h	2025-06-19 13:07:14.364507836 +0000
+@@ -35,7 +35,7 @@ void tagcpy(unsigned char *,unsigned cha
+ int tagcmp(unsigned char *,unsigned char *);
+ 
+ /* function to check if a file name is about to be clobbered, and if so, asks whether this is OK */
+-int clobber_check(char *);
++bool clobber_check(char *);
+ 
+ /* find an output format module with the given name */
+ format_module *find_format(char *);
+diff -upr shntool-3.0.10.orig/include/mode.h shntool-3.0.10/include/mode.h
+--- shntool-3.0.10.orig/include/mode.h	2025-06-19 13:03:26.277816253 +0000
++++ shntool-3.0.10/include/mode.h	2025-06-19 13:07:59.482036164 +0000
+@@ -78,7 +78,7 @@ void create_output_filename(char *,char
+ FILE *open_output_stream(char *,proc_info *);
+ 
+ /* function to determine if two filenames point to the same file */
+-int files_are_identical(char *,char *);
++bool files_are_identical(char *,char *);
+ 
+ /* function to remove a file if it exists */
+ void remove_file(char *);
+diff -upr shntool-3.0.10.orig/include/module-types.h shntool-3.0.10/include/module-types.h
+--- shntool-3.0.10.orig/include/module-types.h	2025-06-19 13:03:26.277579504 +0000
++++ shntool-3.0.10/include/module-types.h	2025-06-19 13:04:33.213630647 +0000
+@@ -44,8 +44,7 @@
+ #define PATHSEPCHAR '/'
+ #endif
+ 
+-/* boolean type */
+-typedef int bool;
++#include <stdbool.h>
+ 
+ /* wtypes */
+ typedef unsigned long wlong;
+diff -upr shntool-3.0.10.orig/src/core_mode.c shntool-3.0.10/src/core_mode.c
+--- shntool-3.0.10.orig/src/core_mode.c	2025-06-19 13:03:26.279873566 +0000
++++ shntool-3.0.10/src/core_mode.c	2025-06-19 13:15:51.293267219 +0000
+@@ -564,17 +564,17 @@ static int compare_ascii(const wave_info
+ 
+ static void ascii_sort_files(wave_info **filenames, int numfiles)
+ {
+-  int (*cmpfunc) ();
++  int (*cmpfunc) (const void *, const void *);
+ 
+-  cmpfunc = compare_ascii;
++  cmpfunc = (int(*)(const void *, const void *))compare_ascii;
+   qsort(filenames,numfiles,sizeof(wave_info *),cmpfunc);
+ }
+ 
+ static void version_sort_files(wave_info **filenames,int numfiles)
+ {
+-  int (*cmpfunc) ();
++  int (*cmpfunc) (const void *, const void *);
+ 
+-  cmpfunc = compare_version;
++  cmpfunc = (int(*)(const void *, const void *))compare_version;
+   qsort(filenames,numfiles,sizeof(wave_info *),cmpfunc);
+ }
+ 

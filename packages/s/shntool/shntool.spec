@@ -22,9 +22,11 @@ Release:        0
 Summary:        Multi-purpose WAVE data processing and reporting utility
 License:        GPL-2.0
 Group:          Multimedia/Sound/Editors and Convertors
-Url:            http://www.etree.org/shnutils/shntool/
-Source:         http://www.etree.org/shnutils/shntool/dist/src/shntool-%{version}.tar.gz
+Url:            http://shnutils.freeshell.org/shntool/
+Source:         http://shnutils.freeshell.org/shntool/dist/src/shntool-%{version}.tar.gz
 Patch0:         fix-fails-to-determine-correct-size.patch
+# build with gcc15
+Patch1:         shntool-gcc15.patch
 Recommends:     flac
 Recommends:     wavpack
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
