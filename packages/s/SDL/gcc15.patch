@@ -1,0 +1,68 @@
+
+./src/video/x11/SDL_x11sym.h:168:17: error: conflicting types for '_XData32'; have 'int(Display *, long int *, unsigned int)'
+  168 | SDL_X11_SYM(int,_XData32,(Display *dpy,register long *data,unsigned len),(dpy,data,len),return)
+./src/video/Xext/Xv/Xv.c:77:5: error: initialization of 'int (*)(Display *, XExtCodes *)' from incompatible pointer type 'int (*)(void)' [-Wincompatible-pointer-types]
+
+---
+ src/video/Xext/XME/xme.c           |    2 +-
+ src/video/Xext/Xinerama/Xinerama.c |    2 +-
+ src/video/Xext/Xv/Xv.c             |    6 +++---
+ src/video/x11/SDL_x11sym.h         |    2 +-
+ 4 files changed, 6 insertions(+), 6 deletions(-)
+
+Index: SDL-1.2.15/src/video/Xext/XME/xme.c
+===================================================================
+--- SDL-1.2.15.orig/src/video/Xext/XME/xme.c
++++ SDL-1.2.15/src/video/Xext/XME/xme.c
+@@ -206,7 +206,7 @@ static char *xigmisc_extension_name = XI
+ /*
+  * find_display - locate the display info block
+  */
+-static int XiGMiscCloseDisplay();
++static int XiGMiscCloseDisplay(Display *, XExtCodes *);
+ 
+ static XExtensionHooks xigmisc_extension_hooks = {
+     NULL,                               /* create_gc */
+Index: SDL-1.2.15/src/video/Xext/Xinerama/Xinerama.c
+===================================================================
+--- SDL-1.2.15.orig/src/video/Xext/Xinerama/Xinerama.c
++++ SDL-1.2.15/src/video/Xext/Xinerama/Xinerama.c
+@@ -50,7 +50,7 @@ static /* const */ char *panoramiX_exten
+ #define PanoramiXSimpleCheckExtension(dpy,i) \
+   XextSimpleCheckExtension (dpy, i, panoramiX_extension_name)
+ 
+-static int close_display();
++static int close_display(Display *, XExtCodes *);
+ static /* const */ XExtensionHooks panoramiX_extension_hooks = {
+     NULL,				/* create_gc */
+     NULL,				/* copy_gc */
+Index: SDL-1.2.15/src/video/Xext/Xv/Xv.c
+===================================================================
+--- SDL-1.2.15.orig/src/video/Xext/Xv/Xv.c
++++ SDL-1.2.15/src/video/Xext/Xv/Xv.c
+@@ -63,9 +63,9 @@ static char *xv_extension_name = XvName;
+ #define XvCheckExtension(dpy, i, val) \
+   XextCheckExtension(dpy, i, xv_extension_name, val)
+ 
+-static char *xv_error_string();
+-static int xv_close_display();
+-static Bool xv_wire_to_event();
++static char *xv_error_string(Display *, int,  XExtCodes *, char *, int);
++static int xv_close_display(Display *, XExtCodes *);
++static Bool xv_wire_to_event(Display *, XEvent *, xEvent *);
+ 
+ static XExtensionHooks xv_extension_hooks = {
+     NULL,                               /* create_gc */
+Index: SDL-1.2.15/src/video/x11/SDL_x11sym.h
+===================================================================
+--- SDL-1.2.15.orig/src/video/x11/SDL_x11sym.h
++++ SDL-1.2.15/src/video/x11/SDL_x11sym.h
+@@ -165,7 +165,7 @@ SDL_X11_SYM(Bool,XShmQueryExtension,(Dis
+  */
+ #ifdef LONG64
+ SDL_X11_MODULE(IO_32BIT)
+-SDL_X11_SYM(int,_XData32,(Display *dpy,register long *data,unsigned len),(dpy,data,len),return)
++SDL_X11_SYM(int,_XData32,(Display *dpy,const long *data,unsigned len),(dpy,data,len),return)
+ SDL_X11_SYM(void,_XRead32,(Display *dpy,register long *data,long len),(dpy,data,len),)
+ #endif
+ 
