@@ -351,4 +351,17 @@
     <comment></comment>
     <requestid>1230063</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3b0cccf7929b2fec08e8ba0054cf305d</srcmd5>
+    <version>0.10.7</version>
+    <time>1750431294</time>
+    <user>anag_factory</user>
+    <comment>- Remove patch py313.patch
+- Release 0.10.7
+  - Fix: Change `deleted` back to being a boolean parameter instead of a boolean flag (closes #207)
+  - Fix CI: Use container images for pre 3.8 pythons
+  - Fix: test failure in PY13
+</comment>
+    <requestid>1287242</requestid>
+  </revision>
 </revisionlist>

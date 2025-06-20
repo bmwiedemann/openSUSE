@@ -1,7 +1,7 @@
 #
 # spec file for package python-osc-tiny
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %define skip_python2 1
 %{?sle15allpythons}
 Name:           python-osc-tiny
-Version:        0.10.6
+Version:        0.10.7
 Release:        0
 Summary:        Client API for openSUSE BuildService
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/SUSE/osc-tiny
 Source:         https://files.pythonhosted.org/packages/source/o/osc-tiny/osc_tiny-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/SUSE/osc-tiny/pull/204 fix test failure in PY13
-Patch:          py313.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}

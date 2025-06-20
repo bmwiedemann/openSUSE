@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 20 12:32:29 UTC 2025 - Chen Huang <chhuang@suse.com>
+
+- Remove patch py313.patch
+
+-------------------------------------------------------------------
+Fri Jun 20 12:08:06 UTC 2025 - maintenance-obs-robot <maintenance-automation-team@suse.de>
+
+- Release 0.10.7
+  - Fix: Change `deleted` back to being a boolean parameter instead of a boolean flag (closes #207)
+  - Fix CI: Use container images for pre 3.8 pythons
+  - Fix: test failure in PY13
+
+-------------------------------------------------------------------
 Tue Dec 10 17:21:22 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add patch py313.patch to fix test failure
