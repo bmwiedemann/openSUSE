@@ -84,7 +84,11 @@ Conflicts:      health-checker < 1.8
 Conflicts:      read-only-root-fs < 1.0+git20250410
 Conflicts:      sdbootutil < 1+git20250409
 # Includes policy for the 50-etc snapper plugin
+%if 0%{?suse_version} == 1600 && !0%{?is_opensuse}
+Conflicts:      selinux-policy < 20241031+git652.e1d5a07e
+%else
 Conflicts:      selinux-policy < 20250411
+%endif
 
 %description
 transactional-update is a tool to update a system in an atomic

@@ -1341,4 +1341,12 @@ Also requires https://build.opensuse.org/request/show/1167142.</comment>
     <comment></comment>
     <requestid>1285178</requestid>
   </revision>
+  <revision rev="119" vrev="2">
+    <srcmd5>ea2c0f4a86605b918f27cb9be07f2adc</srcmd5>
+    <version>5.0.4</version>
+    <time>1750430893</time>
+    <user>anag_factory</user>
+    <comment>Submitting to keep the package in sync with SLE 16 and https://build.suse.de/request/show/381297#comment-4095981</comment>
+    <requestid>1287197</requestid>
+  </revision>
 </revisionlist>
