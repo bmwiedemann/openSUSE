@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun 17 12:22:22 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.12.1 (bsc#1244678, bsc#1244676)
+  * Exposure of personal IP address via e-mail (CVE 2025-49134).
+  * Lack of rate limiting when verifying second factor (CVE 2025-47951).
+  * Added POST /api/units/(int:id)/comments/ to create a new comment
+    for the given translation unit.
+  * Customize JSON output now has a configurable compact mode.
+  * Software Bill of Material is now being provided for Weblate.
+  * Security and privacy documentation.
+  * Slack Webhooks is now available as an add-on.
+  * Unchanged translation is now skipped for Toki Pona.
+  * Searching for strings supports has:location lookup.
+  * Unicode whitespaces are now considered as problematic characters
+    for Glossary, see Prohibited initial character.
+
+-------------------------------------------------------------------
 Tue Apr 29 12:14:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.11.3

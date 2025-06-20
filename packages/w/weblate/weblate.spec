@@ -21,7 +21,7 @@
 %define WLETCDIR %{_sysconfdir}/weblate
 %define _name Weblate
 Name:           weblate
-Version:        5.11.3
+Version:        5.12.1
 Release:        0
 Summary:        Web-based translation tool
 License:        GPL-3.0-or-later
@@ -61,10 +61,10 @@ BuildRequires:  python3-Unidecode >= 1.3.8
 BuildRequires:  python3-aeidon >= 1.14.1
 BuildRequires:  python3-ahocorasick-rs >= 0.20.0
 BuildRequires:  python3-aliyun-python-sdk-alimt >= 3.2.0
-BuildRequires:  python3-altcha >= 0.1.9
+BuildRequires:  python3-altcha >= 0.2.0
 BuildRequires:  python3-boto3 >= 1.28.62
 BuildRequires:  python3-celery >= 5.4.0
-BuildRequires:  python3-certifi >= 2024.8.30
+BuildRequires:  python3-certifi >= 2025.4.26
 BuildRequires:  python3-charset-normalizer >= 2.0.12
 BuildRequires:  python3-crispy-bootstrap3 >= 2024.1
 BuildRequires:  python3-cryptography >= 42.0.4
@@ -132,14 +132,15 @@ BuildRequires:  python3-setuptools >= 40.3.0
 BuildRequires:  python3-siphashc >= 2.1
 BuildRequires:  python3-social-auth-app-django >= 5.4.2
 BuildRequires:  python3-social-auth-core >= 4.5.4
+BuildRequires:  python3-standardwebhooks >= 1.0.0
 BuildRequires:  python3-tesserocr >= 2.6.1
 BuildRequires:  python3-translation-finder >= 2.18
 BuildRequires:  python3-user-agents >= 2.0
 BuildRequires:  python3-weblate-language-data >= 2025.2
-BuildRequires:  python3-weblate-schemas = 2025.1
+BuildRequires:  python3-weblate-schemas = 2025.2
 BuildRequires:  tesseract-ocr-traineddata-english
 BuildRequires:  tesseract-ocr-traineddata-orientation_and_script_detection
-BuildRequires:  translate-toolkit >= 3.14.4
+BuildRequires:  translate-toolkit >= 3.15.3
 BuildRequires:  typelib(Pango) >= 1.0
 BuildRequires:  typelib(PangoCairo) >= 1.0
 BuildRequires:  typelib(Rsvg)
@@ -153,15 +154,14 @@ Requires:       postgresql-contrib
 Requires:       python3-Cython >= 3.0.0
 Requires:       python3-Django >= 5.1.5
 Requires:       python3-GitPython >= 3.1.14
-Requires:       python3-Levenshtein
 Requires:       python3-Pillow >= 10.3.0
 Requires:       python3-Pygments >= 2.17.0
 Requires:       python3-Unidecode >= 1.3.8
 Requires:       python3-aeidon >= 1.14.1
 Requires:       python3-ahocorasick-rs >= 0.20.0
-Requires:       python3-altcha >= 0.1.9
+Requires:       python3-altcha >= 0.2.0
 Requires:       python3-celery >= 5.4.0
-Requires:       python3-certifi >= 2024.8.30
+Requires:       python3-certifi >= 2025.4.26
 Requires:       python3-charset-normalizer >= 2.0.12
 Requires:       python3-crispy-bootstrap3 >= 2024.1
 Requires:       python3-cryptography >= 42.0.4
@@ -213,12 +213,13 @@ Requires:       python3-sentry-sdk >= 2.15.0
 Requires:       python3-siphashc >= 2.1
 Requires:       python3-social-auth-app-django >= 5.4.2
 Requires:       python3-social-auth-core >= 4.5.4
+Requires:       python3-standardwebhooks >= 1.0.0
 Requires:       python3-tesserocr >= 2.6.1
 Requires:       python3-translation-finder >= 2.18
 Requires:       python3-user-agents >= 2.0
 Requires:       python3-weblate-language-data >= 2025.2
-Requires:       python3-weblate-schemas = 2025.1
-Requires:       translate-toolkit >= 3.14.4
+Requires:       python3-weblate-schemas = 2025.2
+Requires:       translate-toolkit >= 3.15.3
 Requires:       ((apache2 and apache2-mod_wsgi) or (nginx and uwsgi))
 Requires:       typelib(Pango) >= 1.0
 Requires:       typelib(PangoCairo) >= 1.0
@@ -354,7 +355,13 @@ python3 ./manage.py collectstatic --noinput -v 2
 python3 ./manage.py compilemessages -v 2
 # Run the testsuite
 python3 ./manage.py check -v 2
+# workaround
+mkdir -p %{buildroot}%{python3_sitelib}
+cp -r %{python3_sitelib}/google %{buildroot}%{python3_sitelib}
+cp -r %{python3_sitearch}/google/* %{buildroot}%{python3_sitelib}/google
+touch %{buildroot}%{python3_sitelib}/google/__init__.py
 PYTHONPATH=%{buildroot}%{python3_sitelib} python3 -m pytest weblate
+rm -r %{buildroot}%{python3_sitelib}/google
 
 # Cleanup postgresql
 %{_bindir}/pg_ctl stop
