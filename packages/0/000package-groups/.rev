@@ -2196,4 +2196,13 @@ Fixes https://openqa.opensuse.org/tests/4663488#step/select_patterns/142</commen
     <user>dimstar_suse</user>
     <comment>i686: drop kernel-debug flavor</comment>
   </revision>
+  <revision rev="308" vrev="306">
+    <srcmd5>25c4b53830a764901eab6adaf9745286</srcmd5>
+    <version>unknown</version>
+    <time>1750430894</time>
+    <user>anag_factory</user>
+    <comment>Remove patterns-microos-desktop-gnome
+See https://build.opensuse.org/request/show/1286046</comment>
+    <requestid>1286903</requestid>
+  </revision>
 </revisionlist>
