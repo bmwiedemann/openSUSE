@@ -190,4 +190,14 @@
     <comment>- Fixed the build with cmake4.</comment>
     <requestid>1275435</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0fee43d35deab6e37db702462aca285e</srcmd5>
+    <version>2506a</version>
+    <time>1750431236</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 2506a
+  * https://github.com/dolphin-emu/dolphin/compare/2503a...2506a
+  * Using sfml from externals source.</comment>
+    <requestid>1287146</requestid>
+  </revision>
 </revisionlist>

@@ -17,12 +17,12 @@
 
 
 Name:           dolphin-emu
-Version:        2503a
+Version:        2506a
 Release:        0
 Summary:        Dolphin, a GameCube and Wii Emulator
 License:        (Apache-2.0 OR MIT) AND BSD-2-Clause AND libpng-2.0 AND GPL-2.0-or-later
 URL:            https://dolphin-emu.org
-# n=dolphin-emu && v=2503a && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone -b$v https://github.com/$n/dolphin.git $n && pushd $n && git submodule && git submodule update --init --recursive Externals/VulkanMemoryAllocator Externals/cubeb/cubeb Externals/enet/enet Externals/gtest Externals/implot/implot Externals/libspng/libspng Externals/minizip-ng/minizip-ng Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/zlib-ng/zlib-ng && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
+# n=dolphin-emu && v=2506a && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone -b$v https://github.com/$n/dolphin.git $n && pushd $n && git submodule && git submodule update --init --recursive Externals/SFML/SFML Externals/VulkanMemoryAllocator Externals/cubeb/cubeb Externals/enet/enet Externals/gtest Externals/implot/implot Externals/libspng/libspng Externals/minizip-ng/minizip-ng Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/zlib-ng/zlib-ng && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -66,8 +66,6 @@ BuildRequires:  pkgconfig(miniupnpc)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(pugixml)
 BuildRequires:  pkgconfig(sdl2) >= 2.30.9
-BuildRequires:  pkgconfig(sfml-network)
-BuildRequires:  pkgconfig(sfml-system)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(soundtouch)
 BuildRequires:  pkgconfig(speexdsp)
