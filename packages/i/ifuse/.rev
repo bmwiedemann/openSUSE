@@ -104,4 +104,14 @@
     <comment></comment>
     <requestid>868956</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>27d01e0ca40cdbbd4c72e3f26f684100</srcmd5>
+    <version>1.1.4</version>
+    <time>1750430979</time>
+    <user>anag_factory</user>
+    <comment>- Fix build on 32bit
+
+- switch to fuse3, add ifuse-1.1.4-fuse3.patch from upstream</comment>
+    <requestid>1286907</requestid>
+  </revision>
 </revisionlist>

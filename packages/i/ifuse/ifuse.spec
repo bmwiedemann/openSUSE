@@ -2,6 +2,7 @@
 # spec file for package ifuse
 #
 # Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +25,14 @@ License:        LGPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://www.libimobiledevice.org
 Source:         https://github.com/libimobiledevice/ifuse/releases/download/%{version}/%{name}-%{version}.tar.bz2
-BuildRequires:  fuse-devel
+Patch0:         ifuse-1.1.4-fuse3.patch
+# for ifuse-1.1.4-fuse3.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  libimobiledevice-devel >= 1.3.0
 BuildRequires:  libplist-2_0-devel >= 2.2.0
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(fuse3)
 
 %description
 iFuse is a FUSE filesystem driver which uses `libimobiledevice` to connect to
@@ -36,17 +41,19 @@ It is using the native Apple "AFC" protocol, over the normal USB cable in order
 to access the iPhone's, iPod Touch's or iPad's media files under Linux.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+export CPPFLAGS=-D_FILE_OFFSET_BITS=64
+# for ifuse-1.1.4-fuse3.patch
+autoreconf -fiv
 %configure
 %make_build
 
 %install
 %make_install
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license COPYING

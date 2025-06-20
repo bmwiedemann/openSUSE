@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 19 11:08:52 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix build on 32bit
+
+-------------------------------------------------------------------
+Fri Apr 25 17:33:13 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- switch to fuse3, add ifuse-1.1.4-fuse3.patch from upstream
+
+-------------------------------------------------------------------
 Mon Feb  1 10:04:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.1.4 (boo#1181620)
