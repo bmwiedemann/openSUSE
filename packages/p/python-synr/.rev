@@ -7,4 +7,13 @@
     <comment>required to fix tvm</comment>
     <requestid>957963</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2ae0300c979767e59cd986b98ea27d61</srcmd5>
+    <version>0.6.0</version>
+    <time>1750430973</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build
+</comment>
+    <requestid>1286875</requestid>
+  </revision>
 </revisionlist>

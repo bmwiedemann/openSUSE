@@ -1,7 +1,7 @@
 #
 # spec file for package python-synr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-synr
 Version:        0.6.0
 Release:        0
@@ -26,11 +24,13 @@ License:        Apache-2.0
 URL:            https://synr.readthedocs.io
 Source0:        https://files.pythonhosted.org/packages/source/s/synr/synr-%{version}.tar.gz
 Source1:        https://github.com/octoml/synr/raw/v%{version}/tests/test_synr.py
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-attrs
 BuildArch:      noarch
 %python_subpackages
@@ -44,10 +44,10 @@ mkdir tests
 cp %{SOURCE1} tests
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
