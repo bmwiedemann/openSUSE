@@ -17,7 +17,7 @@
 
 
 Name:           neocmakelsp
-Version:        0.8.17
+Version:        0.8.18
 Release:        0
 Summary:        CMake LSP implementation based on Tower and Tree-sitter
 URL:            https://github.com/neocmakelsp/neocmakelsp

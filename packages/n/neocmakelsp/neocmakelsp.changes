@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 19 08:35:55 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.8.18:
+  * chore: bump version
+  * chore: update README
+  * fix: unit test
+  * feat: internal lint support
+  * chore: tidy up
+  * chore: update README
+  * fix: quick_fix not work
+  * feat: add quick_fix (#143)
+  * chore(deps): bump crate-ci/typos from 1.29.4 to 1.29.5 (#144)
+  * chore: remove the async in path_in_project
+
+-------------------------------------------------------------------
 Sat Jun 07 14:31:02 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.8.17:
@@ -35,3 +50,4 @@ Wed Dec 18 07:56:02 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 Tue Nov 19 06:53:20 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Initial spec for neocmakelsp
+

@@ -3,7 +3,7 @@
     <param name="src">https://github.com/neocmakelsp/neocmakelsp</param>
     <param name="update">false</param>
     <param name="respect-lockfile">true</param>
-    <param name="revision">v0.8.17</param>
+    <param name="revision">v0.8.18</param>
     <param name="versionrewriteregex">^v?(.*)</param>
     <param name="versionrewritepattern">$1</param>
     <param name="changesgenerate">true</param>
