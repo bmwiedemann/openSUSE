@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 19 18:28:25 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.21 
+  * Upgrade pyo3 to v0.25.0 (through various patch releases)
+- Release 0.12.13 
+  * Add is_awareness_disconnect_message().
+  * Close memory streams in event iterators.
+- Release 0.12.12
+  * Add doc and shared type events() async event iterator.
+  * Fix deadlock while getting root type from within transaction.
+- Drop pycrdt-pr246-trio-0.30.patch, upstream merged in 0.12.10
+
+-------------------------------------------------------------------
 Fri Mar 21 20:24:41 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.12.9 

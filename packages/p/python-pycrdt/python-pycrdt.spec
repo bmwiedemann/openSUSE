@@ -17,15 +17,13 @@
 
 
 Name:           python-pycrdt
-Version:        0.12.9
+Version:        0.12.21
 Release:        0
 Summary:        Python bindings for Yrs
 License:        MIT
-URL:            https://github.com/jupyter-server/pycrdt
+URL:            https://github.com/y-crdt/pycrdt
 Source0:        pycrdt-%{version}.tar.xz
 Source1:        vendor.tar.xz
-# PATCH-FIX-UPSTREAM pycrdt-pr246-trio-0.30.patch gh#jupyter-server/pycrdt#246
-Patch0:         pycrdt-pr246-trio-0.30.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module maturin >= 1.4.0}
 BuildRequires:  %{python_module pip}
@@ -35,7 +33,7 @@ BuildRequires:  python-rpm-macros
 Requires:       (python-anyio >= 4.4 with python-anyio < 5)
 Requires:       (python-importlib-metadata >= 3.6 if python-base < 3.10)
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 7.4.2}
+BuildRequires:  %{python_module pytest >= 8}
 BuildRequires:  %{python_module anyio >= 4.4.0 with %python-anyio < 5}
 BuildRequires:  %{python_module exceptiongroup if %python-base < 3.11}
 BuildRequires:  %{python_module importlib-metadata >= 3.6 if %python-base < 3.10}
@@ -63,8 +61,9 @@ all data replicas eventually converge to the same state.
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# pydantic is too old
-%pytest_arch --ignore tests/test_model.py
+# model: pydantic is too old
+# types: avoid mypy installation
+%pytest_arch --ignore tests/test_model.py --ignore tests/test_types.py
 
 %files %{python_files}
 %doc README.md

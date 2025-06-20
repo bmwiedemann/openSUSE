@@ -113,4 +113,20 @@
           pycrdt-pr246-trio-0.30.patch</comment>
     <requestid>1255116</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b4f2bfe06ef075ff26fbe9a024b51405</srcmd5>
+    <version>0.12.21</version>
+    <time>1750431008</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.12.21 
+  * Upgrade pyo3 to v0.25.0 (through various patch releases)
+- Release 0.12.13 
+  * Add is_awareness_disconnect_message().
+  * Close memory streams in event iterators.
+- Release 0.12.12
+  * Add doc and shared type events() async event iterator.
+  * Fix deadlock while getting root type from within transaction.
+- Drop pycrdt-pr246-trio-0.30.patch, upstream merged in 0.12.10</comment>
+    <requestid>1287011</requestid>
+  </revision>
 </revisionlist>
