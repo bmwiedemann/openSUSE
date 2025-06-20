@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 18 16:36:45 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.8.1:
+  * Ensure incomplete markup declaration in raw HTML doesn’t crash
+    parser (#1534).
+  * Fixed dropped content in md_in_html (#1526).
+  * Fixed HTML handling corner case that prevented some content
+    from not being rendered (#1528).
+
+-------------------------------------------------------------------
 Fri Apr 11 20:28:38 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 3.8:
