@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun 12 19:54:14 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed local build
+
+-------------------------------------------------------------------
+Thu Jun 12 16:36:45 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- first try to re-enable secureboot signing 
+
+-------------------------------------------------------------------
+Thu Jun 12 14:59:20 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.14.10
+  * Preliminary support for kernel 6.15
+  * README and logs update.
+- disabled secureboot signing for now (build fails for some reason)
+
+-------------------------------------------------------------------
 Tue Apr 08 08:13:07 UTC 2025 - Joan Torres <joan.torres@suse.com>
 
 - Update to version 1.14.9:

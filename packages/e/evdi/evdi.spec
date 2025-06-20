@@ -21,7 +21,7 @@
 
 Name:           evdi
 Release:        0
-Version:        1.14.9
+Version:        1.14.10
 Summary:        Extensible Virtual Display Interface (EVDI) is a Linux Kernel Module
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Kernel
@@ -30,11 +30,11 @@ Source0:        evdi-%{version}.tar
 Source1:        evdi-kmp-preamble
 Source2:        evdi-rpmlintrc
 BuildRequires:  %{kernel_module_package_buildreqs}
+BuildRequires:  pesign-obs-integration
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libdrm)
 # needssslcertforbuild
-%kernel_module_package -p %{_sourcedir}/evdi-kmp-preamble -c %{_sourcedir}/_projectcert.crt
-%define kver %(uname -r | sed 's/-default//')
+%kernel_module_package -p %{_sourcedir}/evdi-kmp-preamble
 
 %description
 The Extensible Virtual Display Interface (EVDI) is a Linux kernel module
@@ -86,11 +86,12 @@ mkdir obj
 for flavor in %flavors_to_build; do
        rm -rf obj/$flavor
        cp -r source obj/$flavor
-       make %{?_smp_mflags} -C %kernel_module_directory/%{kver}-$flavor/build M=$PWD/obj/$flavor \
+       make %{?_smp_mflags} -C /usr/src/linux-obj/%_target_cpu/$flavor M=$PWD/obj/$flavor \
        modules
 done
 
 %install
+export BRP_PESIGN_FILES="*.ko"
 pushd library
 %make_install PREFIX=%{_prefix} LIBDIR=%{_dllibdir}
 install -m644 -D evdi_lib.h %{buildroot}%{_includedir}/%{name}/evdi_lib.h
@@ -98,7 +99,7 @@ popd
 
 pushd module
 for flavor in %flavors_to_build; do
-       make -C %kernel_module_directory/%{kver}-$flavor/build M=$PWD/obj/$flavor \
+       make -C  /usr/src/linux-obj/%_target_cpu/$flavor M=$PWD/obj/$flavor \
        INSTALL_MOD_PATH=%{buildroot} \
        INSTALL_MOD_DIR=/extra \
        modules_install
