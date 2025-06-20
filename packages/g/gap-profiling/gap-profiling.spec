@@ -17,7 +17,7 @@
 
 
 Name:           gap-profiling
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        GAP: Line-by-line profiling and code coverage for GAP
 License:        CDDL-1.0 AND MIT
@@ -37,9 +37,11 @@ Requires:       gap-io >= 4.4.4
 Line by line profiling and code coverage for GAP.
 
 %prep
-%autosetup -n profiling-%version
+%autosetup -n profiling-%version -p1
 
 %build
+./configure --with-gaproot="%gapdir"
+%make_build
 
 %install
 %gappkg_simple_install

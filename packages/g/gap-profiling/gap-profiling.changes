@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 19 10:45:38 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.1
+  * GCC 15 support
+
+-------------------------------------------------------------------
 Thu Feb 27 23:00:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Make specfile conform to POSIX sh
