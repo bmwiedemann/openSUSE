@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jun 18 04:35:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- converted to `%pyproject_wheel` / `%pyproject_install`
+- update to 0.18.14:
+  * Fix issue with constructing dataclasses that have a default
+    factoryi attribute, but were missing a mapping value for that
+    attribute.
+  * the tagged release tar files can now also be downloaded from
+    https://yaml.dev/ruamel-dl-tagged-releases/ please adjust if
+    you use
+    https://sourceforge.net/projects/ruamel-dl-tagged-releases/files/
+    as that repository in sourceforge will no longer be updated
+    from some later date.
+- update to 0.18.13:
+  * Fix line wrapping on plain scalars not observing width
+    correctly. Issue 529
+  * Fix sha256 and length in RECORD files.
+- update to 0.18.12:
+  * fix additional issue with extra space in double quoted string.
+  * fix duplicate key url, now pointing to yaml.dev. Reported by
+    [Hugo](https://sourceforge.net/u/hugovk/profile/)
+  * fix broken RECORD file, which was a problem for uv, not pip.
+- update to 0.18.11:
+  * function `load_yaml_guess_indent` now takes an option `yaml`
+    argument so you can provide an already created/configured
+    `YAML` instance
+  * Sequence item indicator with both comment/empty line before
+    indicator **and** comment before sequence item, could not move
+    comment and raise `NotImplementedError`.
+  * missing f for f-string
+  * fixed issue with extra space in double quoted dump
+
+-------------------------------------------------------------------
 Mon Feb 24 10:16:18 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.18.10:
