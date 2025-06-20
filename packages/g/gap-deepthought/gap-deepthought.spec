@@ -17,7 +17,7 @@
 
 
 Name:           gap-deepthought
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Summary:        GAP: Deep Thought for computations in nilpotent groups
 License:        GPL-2.0-or-later

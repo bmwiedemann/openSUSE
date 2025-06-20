@@ -23,4 +23,12 @@
     <comment>- Make specfile conform to POSIX sh</comment>
     <requestid>1249109</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4472676b11b247bda86ebfe56dc175b1</srcmd5>
+    <version>1.0.9</version>
+    <time>1750431285</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.0.9</comment>
+    <requestid>1287210</requestid>
+  </revision>
 </revisionlist>
