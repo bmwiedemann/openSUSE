@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Jun 12 04:38:41 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.9.4+git20250604.7e38143:
+  * fixed bug with command info staying
+  * Revert "fixed open_with bugginess"
+  * fixed open_with bugginess
+  * commands: Reword comment for brevity and accuracy
+  * GHActions: Pass config_files rather than boolean to flake8
+  * commands: Disable invalid-name and too-many-lines pylints
+  * Pylint: Disable invalid-name and too-many-lines for commands.py
+  * add :unnarrow to disable :narrow mode
+  * rifle: Update version
+
+-------------------------------------------------------------------
+Thu Jun 12 04:25:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+
+-------------------------------------------------------------------
+Thu May  1 01:55:03 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Cleaning up bad references to '#!python' for %{_bindir}/{ranger,rifle}
+
+-------------------------------------------------------------------
+Sun Mar 09 01:27:14 UTC 2025 - scott.bradnick@suse.com
+
+- Seems to need 'BuildRequires: python-rpm-macros' for '%{python3_sitelib}'
+  to function correctly
+- Update to version 1.9.4+git20250305.7ad50fa:
+  * 7-zip now has an official Linux version (7zz)
+  * add: support for tilde in bookmarks
+  * img_display: address PR feedback
+  * docs: kitty image previews are supported in other terminals now
+  * img_display: auto-detect support for kitty image previews
+  * rifle(terminals): support auto-detecting ghostty terminal emulator
+  * Modified order of expantions in peview_script
+  * Add GNOME papers to document viewers
+  * Added ability to use environmental variables in preview_script option
+  * doc: Regenerate man pages to have the proper version
+  * Makefile: Update version Grep since adding logo to README
+  * ranger/__init__: Caught another unbumped version
+  * mime.types: Add .nim extension for text/plain
+  * Fixed mistooks of nim scripts as a video aNIMations in rifle.conf
+  * GHActions: Pypy don't run old Flake8/Pylint
+  * GHActions: Use Pypy 3.10
+  * actions: Use keywords for rifle.execute
+  * runner: Allow action as positional argument
+  * ui: Refresh window in initialize
+  * ui: endwin already sets cursor to normal visibility
+  * requirements: Add setuptools
+  * img_display: Silence no-member false positive
+  * core/main: Drop unused variable prefix_length
+  * core,ext: Avoid return in finally shadowing return value
+  * test_py2_compat: Prevent use of yield from
+  * core,ext: Reduce positional arguments where possible
+  * pager,history: Replace branch with min/max builtins
+  * Pylint: Update custom checker for compatibility with 3.3.1
+  * GHActions: Bump action versions
+  * README: Use forge-agnostic URL
+  * README: Capitalize ranger
+  * README: Bump version
+  * README: Replace Travis with GHActions badge
+  * README: Center header
+  * make logo in readme wider
+  * move the ranger logo to the very top
+  * Add option confirm_on_trash
+  * Fix typos
+  * Add IINA to rifle.conf
+  * browsercolumn: ANSI escape codes support
+  * #1182: Fix signals for OS X
+
+-------------------------------------------------------------------
+Wed Nov 06 17:08:42 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.9.3+git20240801.bd9b37f:
+  * properly decode file:// urls given to ranger as argument (fixes #2900)
+  * fix #2873 WM_NAME now shows "not accessible" in non-existent directories
+  * Fixed inconsistency in ranger documentation where it was stated that commanding 'linemode humanreadablesizemtime' changed the linemode to display human readable modification time and file size, but the correct command for this is 'linemode sizehumanreadablemtime'
+  * README: fix link formatting on github's markdown renderer
+  * README: add liberapay badge
+  * Mention viewmode key binding in man
+
+-------------------------------------------------------------------
 Sun Mar 17 16:47:04 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 1.9.3+git20240221.38bb890:

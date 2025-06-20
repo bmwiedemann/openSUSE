@@ -3,11 +3,17 @@
     <param name="url">https://github.com/ranger/ranger</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="changesgenerate">enable</param>
     <!--
     <param name="revision">master</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
     -->
-    <param name="changesgenerate">enable</param>
+    <!--
+      $ grep -r __version__ ./ranger
+      ranger/ranger/__init__.py:__version__ = '1.9.4'
+    -->
+    <param name="versionrewrite-pattern">v1.9.3</param>
+    <param name="versionrewrite-replacement">1.9.4</param>
   </service>
   <service name="set_version" mode="manual"/>
   <service name="tar" mode="manual"/>
