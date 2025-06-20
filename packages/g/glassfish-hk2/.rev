@@ -87,4 +87,12 @@
     <comment></comment>
     <requestid>1262803</requestid>
   </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>8137201a80a3c63568e0d471b267e951</srcmd5>
+    <version>2.5.0</version>
+    <time>1750431276</time>
+    <user>anag_factory</user>
+    <comment>fix build with maven 4</comment>
+    <requestid>1287191</requestid>
+  </revision>
 </revisionlist>

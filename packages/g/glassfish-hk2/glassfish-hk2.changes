@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 20 10:44:58 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix 'Not fully interpolated dependency' with maven 4.0.0-rc-4
+- Craft the spec file so that migration from maven 3 to maven 4
+  could be done with minimal changes
+
+-------------------------------------------------------------------
 Thu Mar 27 14:49:55 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

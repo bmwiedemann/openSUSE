@@ -273,8 +273,8 @@ find . -name '*.class' -print -delete
 %pom_change_dep -r org.glassfish.hk2.external:jakarta.inject javax.inject:javax.inject
 
 # Use system libraries, not bundled versions
-%pom_change_dep -r org.glassfish.hk2.external:asm-repackaged org.ow2.asm:asm-all:'${asm.version}'
-%pom_change_dep -r org.glassfish.hk2.external:aopalliance-repackaged aopalliance:aopalliance:'${aopalliance.version}'
+%pom_change_dep -r org.glassfish.hk2.external:asm-repackaged org.ow2.asm:asm-all
+%pom_change_dep -r org.glassfish.hk2.external:aopalliance-repackaged aopalliance:aopalliance
 find class-model maven-plugins/hk2-inhabitant-generator hk2-testing/hk2-junitrunner \
    -name "*.java" -exec sed -i "s/org.glassfish.hk2.external.org.objectweb.asm/org.objectweb.asm/g" {} +
 
@@ -348,8 +348,8 @@ rm hk2-runlevel/src/test/java/org/glassfish/hk2/runlevel/tests/listener/Listener
 %pom_remove_dep -r :jboss-logging
 %pom_remove_dep -r :classmate
 
-%pom_add_dep org.apache.maven:maven-core:3.9.9:provided maven-plugins/osgiversion-maven-plugin
-%pom_add_dep org.apache.maven:maven-core:3.9.9:provided maven-plugins/consolidatedbundle-maven-plugin
+%pom_add_dep org.apache.maven:maven-core:3:provided maven-plugins/osgiversion-maven-plugin
+%pom_add_dep org.apache.maven:maven-core:3:provided maven-plugins/consolidatedbundle-maven-plugin
 
 %pom_add_dep org.apache.maven.plugin-tools:maven-plugin-annotations:3.15.1:provided maven-plugins
 
@@ -391,6 +391,7 @@ cp -p %{SOURCE2} maven-plugins/hk2-inhabitant-generator/osgi.bundle
 %pom_add_plugin org.glassfish.hk2:osgiversion-maven-plugin:'${project.version}' maven-plugins/hk2-inhabitant-generator
 
 # Inject manifest file
+%pom_remove_plugin -f :maven-jar-plugin maven-plugins/hk2-inhabitant-generator
 %pom_add_plugin org.apache.maven.plugins:maven-jar-plugin:2.4 maven-plugins/hk2-inhabitant-generator "
 <configuration>
   <archive>
@@ -412,6 +413,7 @@ for mod in $(grep -l maven-bundle-plugin $(find */ -name pom.xml) ) ; do
   if [ "$(dirname $mod)" = "hk-utils" ] ; then
     continue
   fi
+  %pom_remove_plugin -f :maven-jar-plugin $mod
   %pom_add_plugin org.apache.maven.plugins:maven-jar-plugin $mod "
 <configuration>
   <archive>
@@ -422,6 +424,9 @@ done
 
 # This causes the plugin not to try to build with source/target 1.5
 %pom_remove_plugin :maven-compiler-plugin maven-plugins/consolidatedbundle-maven-plugin
+
+%pom_change_dep -r org.apache.maven:maven-plugin-api ::3
+%pom_change_dep -r org.apache.maven:maven-artifact ::3
 
 # Don't package unit test jars
 %{mvn_package} ":::tests:" __noinstall
@@ -492,8 +497,7 @@ done
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-    -Dhk2.mvn.plugins.version=%{version}
+    -Dhk2.mvn.plugins.version=%{version} -Dmvn.version=3 -DmavenVersion=3
 
 %install
 %mvn_install
