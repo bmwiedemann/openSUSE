@@ -1,6 +1,0 @@
-<servicedata>
- <service name="tar_scm">
-    <param name="url">https://github.com/openSUSE/container-images.git</param>
-    <param name="changesrevision">fc822298cac60edf59822bd3a253acbe054ac573</param>
- </service>
-</servicedata>
