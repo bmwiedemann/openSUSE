@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Fri Aug 18 17:27:30 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- fix Leap 15.5 build
+
+-------------------------------------------------------------------
+Fri Nov 11 04:39:33 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- fix TW build
+- Update to 2.2.7
+  * fix pkgconfig file when CMAKE_INSTALL_{INCLUDE,LIB}DIR are absolute paths
+
+-------------------------------------------------------------------
+Mon May  9 17:11:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.2.6
+  * Install CMake package config to CMAKE_INSTALL_LIBDIR
+  * Install FindFFTW3.cmake module
+  * Fix fftw3 missing from Requires.private in pkgconfig file
+- Fix rpmlint warnings
+
+-------------------------------------------------------------------
+Sun Jul 18 12:47:06 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 2.2.5
+  * initial upload 
