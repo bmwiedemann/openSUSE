@@ -29,9 +29,9 @@
 %bcond_with servertests
 
 # truncate trailing suffix
-%define distversion 1.5.5
+%define distversion 1.7.1
 Name:           python-panel%{psuffix}
-Version:        1.5.5
+Version:        1.7.1
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
@@ -49,8 +49,6 @@ Source99:       python-panel-rpmlintrc
 %include        %{_sourcedir}/node_modules.spec.inc
 # PATCH-FEATURE-OPENSUSE opensuse-js-fixes.patch boo#1231254 gh#openSUSE/obs-service-node_modules#41
 Patch0:         opensuse-js-fixes.patch
-# PATCH-FIX-UPSTREAM manual-asyncio-loop.patch https://github.com/holoviz/panel/pull/7591
-Patch1:         manual-asyncio-loop.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module bleach}
 BuildRequires:  %{python_module bokeh >= 3.5.0 with %python-bokeh < 3.7}
