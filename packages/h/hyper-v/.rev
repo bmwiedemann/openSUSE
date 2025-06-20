@@ -517,4 +517,12 @@
 - remove obsolete rpm postinstall code for SLE11SP2</comment>
     <requestid>1236106</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>8585c34ca859586bd970933f55241d7b</srcmd5>
+    <version>9</version>
+    <time>1750430909</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1286999</requestid>
+  </revision>
 </revisionlist>

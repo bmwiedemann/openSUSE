@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  6 06:06:06 UTC 2025 - ohering@suse.de
+
+- Enable debug logs for hv_kvp_daemon (a9c0b33e) (bsc#1244154)
+
+-------------------------------------------------------------------
 Wed Jan  1 01:01:01 UTC 2025 - ohering@suse.de
 
-- update route parsing in kvp daemon
+- update route parsing in kvp daemon (9bbb8a07)
 - reduce resource usage in hv_kvp_daemon (175c71c2)
 - reduce resouce usage in hv_get_dns_info helper (a4d024fe)
 - hv_kvp_daemon: Pass NIC name to hv_get_dns_info as well (07dfa6e8)
