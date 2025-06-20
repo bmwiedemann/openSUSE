@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
+%define version_tag 2-4-1
+
 Name:           neko
 Version:        2.4.1
 Release:        0
@@ -22,7 +24,7 @@ Summary:        A cross-platform lightweight virtual machine and language
 License:        MIT
 Group:          Development/Languages/Other
 Url:            https://nekovm.org
-Source0:        https://github.com/HaxeFoundation/neko/archive/v2-4-0/neko-%{version}.tar.gz
+Source0:        https://github.com/HaxeFoundation/neko/archive/v%{version_tag}/neko-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -76,7 +78,7 @@ Obsoletes:      nekovm-mysql < %version
 MySQL library for the Neko virtual machine.
 
 %prep
-%setup -q -n neko-2-4-0
+%setup -q -n neko-%{version_tag}
 
 %build
 %define __builder ninja

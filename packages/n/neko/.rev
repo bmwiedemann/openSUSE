@@ -146,4 +146,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1278458</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>2a55d6bd9cc7838d32be0755918a03eb</srcmd5>
+    <version>2.4.1</version>
+    <time>1750430927</time>
+    <user>anag_factory</user>
+    <comment>Actually update the tarball to version 2.4.1</comment>
+    <requestid>1286785</requestid>
+  </revision>
 </revisionlist>
