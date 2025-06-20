@@ -1,7 +1,7 @@
 #
 # spec file for package gap-io
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           gap-io
-Version:        4.9.1
+Version:        4.9.2
 Release:        0
 Summary:        GAP: Bindings for low level C library IO
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/io/
 #Git-Clone:     https://github.com/gap-packages/io
-Source:       	https://github.com/gap-packages/io/releases/download/v%version/io-%version.tar.bz2
+Source:       	https://github.com/gap-packages/io/releases/download/v%version/io-%version.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gap-devel >= 4.12
 BuildRequires:  gap-rpm-devel
