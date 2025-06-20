@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jun 20 04:33:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.107:
+  * General
+    - fix: add missing go.sum entry for meshsync dependency
+      @leecalcote (#15142)
+- update to 0.8.106:
+  * General
+    - [meshery] feature: meshsync as a library @n2h9 (#14799)
+    - chore: update @sistent/sistent to version 0.14.201
+      @leecalcote (#15141)
+    - update: layer5io/meshsync to meshery/meshsync @n2h9 (#15140)
+    - Add regex support to relationship match @CodeAhmedJamil
+      (#15137)
+  * Meshery CLI
+    - Revert "Merge pull request #15134 from
+      n2h9/update-meshsync-and-operator-deps" @n2h9 (#15139)
+    - [meshery] update: layer5io/meshsync and
+      layer5io/meshery-operator to meshery/meshsync and
+      meshery/meshery-operator @n2h9 (#15134)
+  * Maintenance
+    - Fix: k8 and Setting Icon Fix @vr-varad (#15110)
+
+-------------------------------------------------------------------
 Wed Jun 18 06:06:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.105:
