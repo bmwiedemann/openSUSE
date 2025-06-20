@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 19 09:51:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Workaround test failure with recent libalternatives changes
+  and revisit skipped tests
+
+-------------------------------------------------------------------
 Tue Apr  1 12:42:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make the dist-info name case-insensitive

@@ -67,9 +67,6 @@ sed -i '1{\@^#!%{_bindir}/env python@d}' pympler/asizeof.py
 %check
 # gh#pympler/pympler#134
 skiptests="test_repr_function or test_leng"
-# gh#pympler/pympler#148
-skiptests+=" or test_findgarbage or test_prune or test_get_tree"
-skiptests+=" or test_findgarbage or test_prune or test_get_tree"
 # gh#pympler/pympler#163
 skiptests+=" or test_edges_new or test_edges_old or test_split or test_traceback"
 %if 0%{?qemu_user_space_build}
@@ -78,7 +75,7 @@ skiptests+=" or test_snapshot_members"
 %endif
 # skip expensive tests
 export COVERAGE=1
-%pytest -k "not ($skiptests)"
+%python_exec -m pytest -k "not ($skiptests)"
 
 %files %{python_files}
 %license LICENSE
