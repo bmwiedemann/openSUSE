@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 18 15:59:48 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 20250618:
+  * Set /srv/www = /var/www as equivalent file context (bsc#1239177)
+
+-------------------------------------------------------------------
 Mon Jun 16 08:50:14 UTC 2025 - cathy.hu@suse.com
 
 - Update to version 20250616:

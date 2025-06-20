@@ -1826,4 +1826,14 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1286039</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>60c81058c250166c3ba015efdd0b999a</srcmd5>
+    <version>20250618</version>
+    <time>1750430888</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250618:
+  * Set /srv/www = /var/www as equivalent file context (bsc#1239177)
+</comment>
+    <requestid>1286743</requestid>
+  </revision>
 </revisionlist>
