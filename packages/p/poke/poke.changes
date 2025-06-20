@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jun 12 20:56:58 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.3
+  * Fix memory leak in pkl*typify.
+  * Clear lexical cuckolding if `pk_compile_statement_with_loc' fails in `poke'.
+  * Add missing array writter for trimmed arrays.
+  * Add missing array writer for concatenated arrays.
+  * Fix flex rule for delimited alien tokens.
+  * Handle wide integers correctly in logical operators (`&&', `||', `=>'
+    and `!').
+  * Fix `while' loop to not cast the condition to `int<32>'.
+  * Fix b{,n}zl{,u} insns for 32*bit systems.
+  * Move side*effects out of `assert' in `pvm*alloc'.
+  * Fix codegen to generate code for raising an exception when there's no
+    open IO space.
+  * Do not over*allocate in `pvm_allocate_struct_attrs'.
+  * Fix compiled closures of alias types to use the correct name.
+  * Fix poke's hyperlink callbacks for terminal interface on systems that do
+    not have hyperlink support.
+  * Generate correct code for condition of `for' and `for*in' loops.
+  * Documentation updates
+  * Add a few peephole optimizations.
+  * Properly support type aliasing.
+  * Minor improvement in handling of `magic' field of `BTF_Ext_Header' in
+    `btf-ext.pk' pickle.
+
+-------------------------------------------------------------------
 Sat Jul  6 17:25:03 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.2:
