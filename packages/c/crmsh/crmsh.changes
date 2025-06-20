@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 19 10:27:31 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250619.5d3fc833:
+  * Dev: provide a friendly message when passwordless ssh does not work (bsc#1244525)
+
+-------------------------------------------------------------------
+Thu Jun 19 07:29:14 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250619.d2ebacc9:
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: unittests: Adjust unit test for previous commit
+  * Fix: bootstrap: Reload corosync after sync corosync.conf (bsc#1244437)
+  * Dev: behave: Add pacemaker_remote.feature for pacemaker remote test cases
+  * Dev: cibconfig: Prevent adding Pacemaker remote resources to groups, orders, or colocations
+
+-------------------------------------------------------------------
 Fri Jun 13 10:49:45 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250613.d8108049:
