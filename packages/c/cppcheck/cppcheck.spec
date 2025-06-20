@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 %bcond_with rules
 %else
 %bcond_without rules

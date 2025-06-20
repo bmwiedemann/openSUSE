@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 19 12:22:56 UTC 2025 - Max Lin <mlin@suse.com>
+
+- Do not build with rules support on Leap 16 due to pcre deleted
+
+-------------------------------------------------------------------
 Tue Apr  1 21:02:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build without rules support on Tumbleweed to remove pcre
