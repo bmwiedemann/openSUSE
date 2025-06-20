@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  9 14:27:49 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Replace usage of %jobs for reproducible builds (boo#1237231)
+
+-------------------------------------------------------------------
 Mon Mar  4 16:11:41 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
