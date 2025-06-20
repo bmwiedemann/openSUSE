@@ -1,2 +1,0 @@
-Defaults:%wheel !targetpw
-%wheel ALL = (root) ALL

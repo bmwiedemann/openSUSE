@@ -85,4 +85,17 @@
   * flatpak-update.timer</comment>
     <requestid>1285083</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>04c6b0d5b145c8aaf8c994115086c2d9</srcmd5>
+    <version>20250618</version>
+    <time>1750430894</time>
+    <user>anag_factory</user>
+    <comment>- Bump version to 20250618
+- Change to using release tarball
+
+- Renamed flatpak-update to kalpa-discover-update to reduce
+  potential confusion with the update services provided by the
+  flatpak package</comment>
+    <requestid>1286555</requestid>
+  </revision>
 </revisionlist>

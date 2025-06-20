@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 18 06:56:49 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Bump version to 20250618
+- Change to using release tarball
+
+-------------------------------------------------------------------
+Tue Jun 17 06:26:14 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Renamed flatpak-update to kalpa-discover-update to reduce
+  potential confusion with the update services provided by the
+  flatpak package
+
+-------------------------------------------------------------------
 Thu Jun 12 07:43:34 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 20250612

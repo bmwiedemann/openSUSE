@@ -1,7 +1,7 @@
 #
 # spec file for package plasma-branding-Kalpa
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2021 SUSE Software Solutions GmbH
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,28 +18,12 @@
 
 
 Name:           plasma-branding-Kalpa
-Version:        20250612
+Version:        20250618
 Release:        0
 Summary:        Kalpa Desktop default settings
 License:        BSD-3-Clause
-URL:            http://kalpadesktop.org
-Source:         COPYING
-Source1:        flathub.flatpakrepo
-Source2:        kalpa-firstboot.desktop
-Source3:        kalpa-firstboot
-Source4:        50-desktop.conf
-Source5:        ark-addtoservicemenu.desktop
-Source6:        ark-servicemenu.desktop
-Source7:        distrobox-upgrade-all.service
-Source8:        distrobox-upgrade-all.timer
-Source9:        49-kalpa.rules
-Source10:       50-kalpa
-Source11:       kalpa-firstboot-aarch64.desktop
-Source12:       kalpa-firstboot-aarch64
-Source13:       10-wayland.conf
-Source14:       set-notification-priority.conf
-Source15:       flatpak-update.service
-Source16:       flatpak-update.timer
+URL:            https://codeberg.org/KalpaDesktop/plasma-branding-Kalpa
+Source:         %{name}-%{version}.tar.gz
 BuildRequires:  flatpak
 BuildRequires:  polkit
 BuildRequires:  sudo
@@ -57,87 +41,68 @@ Provides:       plasma-branding-MicroOS = %{version}
 # Do not obsolete plasma-branding-MicroOS just yet
 # Obsoletes:      plasma-branding-MicroOS
 Conflicts:      plasma-branding-MicroOS = %{version}
+Conflicts:      plasma-branding = %{version}
+Supplements:    (plasma and branding-Kalpa)
 BuildArch:      noarch
 
 %description
 This package provides default configurations and applications for openSUSE Kalpa.
 
 %prep
-%setup -q -T -c %{name}-%{version}
-cp -a %{SOURCE0} COPYING
-cp -a %{SOURCE1} flathub.flatpakrepo
-%ifarch aarch64
-cp -a %{SOURCE11} kalpa-firstboot-aarch64.desktop
-cp -a %{SOURCE12} kalpa-firstboot-aarch64
-%endif
-%ifnarch aarch64
-cp -a %{SOURCE2} kalpa-firstboot.desktop
-cp -a %{SOURCE3} kalpa-firstboot
-%endif
-cp -a %{SOURCE4} 50-desktop.conf
-cp -a %{SOURCE5} ark-addtoservicemenu.desktop
-cp -a %{SOURCE6} ark-servicemenu.desktop
-cp -a %{SOURCE7} distrobox-upgrade-all.service
-cp -a %{SOURCE8} distrobox-upgrade-all.timer
-cp -a %{SOURCE9} 49-kalpa.rules
-cp -a %{SOURCE10} 50-kalpa
-cp -a %{SOURCE13} 10-wayland.conf
-cp -a %{SOURCE14} set-notification-priority.conf
-cp -a %{SOURCE15} flatpak-update.service
-cp -a %{SOURCE16} flatpak-update.timer
+%autosetup -p1
 
 %build
 
 %install
 install -d %{buildroot}%{_datadir}/kalpa
-install -m0644 flathub.flatpakrepo %{buildroot}%{_datadir}/kalpa
+install -m0644 usr/share/kalpa/flathub.flatpakrepo %{buildroot}%{_datadir}/kalpa
 install -d %{buildroot}%{_distconfdir}/skel/.config/autostart
 %ifnarch aarch64
-install -m0644 kalpa-firstboot.desktop %{buildroot}%{_distconfdir}/skel/.config/autostart/kalpa-firstboot.desktop
+install -m0644 usr/etc/skel/.config/autostart/kalpa-firstboot.desktop %{buildroot}%{_distconfdir}/skel/.config/autostart/kalpa-firstboot.desktop
 install -d %{buildroot}%{_bindir}
-install -m0755 kalpa-firstboot %{buildroot}%{_bindir}/kalpa-firstboot
+install -m0755 usr/bin/kalpa-firstboot %{buildroot}%{_bindir}/kalpa-firstboot
 %endif
 %ifarch aarch64
-install -m0644 kalpa-firstboot-aarch64.desktop %{buildroot}%{_distconfdir}/skel/.config/autostart/kalpa-firstboot-aarch64.desktop
+install -m0644 usr/etc/skel/.config/autostart/kalpa-firstboot-aarch64.desktop %{buildroot}%{_distconfdir}/skel/.config/autostart/kalpa-firstboot-aarch64.desktop
 install -d %{buildroot}%{_bindir}
-install -m0755 kalpa-firstboot-aarch64 %{buildroot}%{_bindir}/kalpa-firstboot-aarch64
+install -m0755 usr/bin/kalpa-firstboot-aarch64 %{buildroot}%{_bindir}/kalpa-firstboot-aarch64
 %endif
 install -d %{buildroot}%{_distconfdir}/transactional-update.conf.d
-install -m644 50-desktop.conf %{buildroot}%{_distconfdir}/transactional-update.conf.d/50-desktop.conf
+install -m644 usr/etc/transactional-update.conf.d/50-desktop.conf %{buildroot}%{_distconfdir}/transactional-update.conf.d/50-desktop.conf
 install -d %{buildroot}%{_datadir}/kio/servicemenus
-install -m0744 ark-addtoservicemenu.desktop %{buildroot}%{_datadir}/kio/servicemenus/ark-addtoservicemenu.desktop
-install -m0744 ark-servicemenu.desktop %{buildroot}%{_datadir}/kio/servicemenus/ark-servicemenu.desktop
+install -m0644 usr/share/kio/servicemenus/ark-addtoservicemenu.desktop %{buildroot}%{_datadir}/kio/servicemenus/ark-addtoservicemenu.desktop
+install -m0644 usr/share/kio/servicemenus/ark-servicemenu.desktop %{buildroot}%{_datadir}/kio/servicemenus/ark-servicemenu.desktop
 install -d %{buildroot}%{_userunitdir}
-install -m0644 distrobox-upgrade-all.service %{buildroot}%{_userunitdir}/distrobox-upgrade-all.service
-install -m0644 distrobox-upgrade-all.timer %{buildroot}%{_userunitdir}/distrobox-upgrade-all.timer
+install -m0644 usr/lib/systemd/user/distrobox-upgrade-all.service %{buildroot}%{_userunitdir}/distrobox-upgrade-all.service
+install -m0644 usr/lib/systemd/user/distrobox-upgrade-all.timer %{buildroot}%{_userunitdir}/distrobox-upgrade-all.timer
 install -d %{buildroot}%{_distconfdir}/sudoers.d/
-install -m0640 50-kalpa %{buildroot}%{_distconfdir}/sudoers.d/50-kalpa
+install -m0640 usr/etc/sudoers.d/50-kalpa %{buildroot}%{_distconfdir}/sudoers.d/50-kalpa
 install -d %{buildroot}%{_datadir}/polkit-1/rules.d/
-install -m0444 49-kalpa.rules %{buildroot}%{_datadir}/polkit-1/rules.d/49-kalpa.rules
+install -m0444 usr/share/polkit-1/rules.d/49-kalpa.rules %{buildroot}%{_datadir}/polkit-1/rules.d/49-kalpa.rules
 install -d %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/
-install -m0644 10-wayland.conf %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/10-wayland.conf
+install -m0644 usr/lib/sddm/sddm.conf.d/10-wayland.conf %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/10-wayland.conf
 install -d %{buildroot}%{_prefix}/lib/systemd/user/transactional-update-notifier.d/
-install -m0644 set-notification-priority.conf %{buildroot}%{_prefix}/lib/systemd/user/transactional-update-notifier.d/set-notification-priority.conf
-install -m0644 flatpak-update.timer %{buildroot}%{_userunitdir}/flatpak-update.timer
-install -m0644 flatpak-update.service %{buildroot}%{_userunitdir}/flatpak-update.service
+install -m0644 usr/lib/systemd/user/transactional-update-notifier.d/set-notification-priority.conf %{buildroot}%{_prefix}/lib/systemd/user/transactional-update-notifier.d/set-notification-priority.conf
+install -m0644 usr/lib/systemd/user/kalpa-discover-update.timer %{buildroot}%{_userunitdir}/kalpa-discover-update.timer
+install -m0644 usr/lib/systemd/user/kalpa-discover-update.service %{buildroot}%{_userunitdir}/kalpa-discover-update.service
 
 %pre
 %systemd_user_pre distrobox-upgrade-all.service
 %systemd_user_pre distrobox-upgrade-all.timer
-%systemd_user_pre flatpak-update.service
-%systemd_user_pre flatpak-update.timer
+%systemd_user_pre kalpa-discover-update.service
+%systemd_user_pre kalpa-discover-update.timer
 
 %post
 %systemd_user_post distrobox-upgrade-all.service
 %systemd_user_post distrobox-upgrade-all.timer
-%systemd_user_post flatpak-update.service
-%systemd_user_post flatpak-update.timer
+%systemd_user_post kalpa-discover-update.service
+%systemd_user_post kalpa-discover-update.timer
 
 %preun
 %systemd_user_preun distrobox-upgrade-all.service
 %systemd_user_preun distrobox-upgrade-all.timer
-%systemd_user_preun flatpak-update.service
-%systemd_user_preun flatpak-update.timer
+%systemd_user_preun kalpa-discover-update.service
+%systemd_user_preun kalpa-discover-update.timer
 
 %files
 %license COPYING
@@ -159,14 +124,14 @@ install -m0644 flatpak-update.service %{buildroot}%{_userunitdir}/flatpak-update
 %{_distconfdir}/transactional-update.conf.d/50-desktop.conf
 %{_userunitdir}/distrobox-upgrade-all.service
 %{_userunitdir}/distrobox-upgrade-all.timer
-%{_userunitdir}/flatpak-update.timer
-%{_userunitdir}/flatpak-update.service
+%{_userunitdir}/kalpa-discover-update.timer
+%{_userunitdir}/kalpa-discover-update.service
 %{_distconfdir}/sudoers.d/50-kalpa
 %{_datadir}/polkit-1/rules.d/49-kalpa.rules
 %dir %{_prefix}/lib/sddm
 %dir %{_prefix}/lib/sddm/sddm.conf.d
 %{_prefix}/lib/sddm/sddm.conf.d/10-wayland.conf
-%dir %{_prefix}/lib/systemd/user/transactional-update-notifier.d
-%{_prefix}/lib/systemd/user/transactional-update-notifier.d/set-notification-priority.conf
+%dir %{_userunitdir}/transactional-update-notifier.d
+%{_userunitdir}/transactional-update-notifier.d/set-notification-priority.conf
 
 %changelog
