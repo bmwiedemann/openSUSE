@@ -70,6 +70,7 @@ Patch100:       fix-mv-ddr-marvell-armada.patch
 # Fix build with GCC12 - https://github.com/MarvellEmbeddedProcessors/mv-ddr-marvell/issues/37
 Patch101:       fix-a3700_tool.patch
 Patch150:       A3700_utils-drop-git.patch
+Patch151:       A3700-fix-gcc15.patch
 BuildRequires:  fdupes
 %if "%{platform}" != ""
 #!BuildIgnore: gcc-PIE
@@ -214,6 +215,10 @@ echo "%{a3700_utils_ver}" >  branch.txt
 install -D -m 0755 %{_bindir}/TBB wtptp/linux/tbb_linux
 %endif
 %patch -P 150 -p1
+%if %{suse_version} > 1600
+# Workaround for GCC15 (cannot typedef bool)
+%patch -P 151 -p1
+%endif
 popd
 %endif
 %patch -P 2 -p1
@@ -222,7 +227,7 @@ popd
 sed -i -e "s/TF_CFLAGS_aarch64	+=	-mbranch-protection=none//" plat/xilinx/zynqmp/platform.mk
 %endif
 # Allow non-git builds
-sed -i -e 's/$(if $(shell git/# $(if $(shell git/g' plat/marvell/armada/a3k/common/a3700_common.mk
+sed -i -e 's/.*$(if $(shell git/# $(if $(shell git/g' plat/marvell/armada/a3k/common/a3700_common.mk
 sed -i -e 's/	$(if $(shell git/# (if $(shell git/g' plat/marvell/armada/a8k/common/ble/ble.mk
 
 %build

@@ -1,0 +1,11 @@
+--- A3700-utils-marvell-master/wtmi/common/types.h.orig	2025-06-19 08:26:35.184915800 +0200
++++ A3700-utils-marvell-master/wtmi/common/types.h	2025-06-19 08:27:02.023127300 +0200
+@@ -38,7 +38,7 @@ typedef short			s16;
+ typedef char			s8;
+ typedef char			byte;
+ 
+-typedef int bool;
++/*typedef int bool;*/
+ 
+ #define	NULL			((void *)0)
+ 
