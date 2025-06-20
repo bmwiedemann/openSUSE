@@ -440,6 +440,22 @@
 %{_mandir}/man3/sd_bus_unref.3.gz
 %{_mandir}/man3/sd_bus_unrefp.3.gz
 %{_mandir}/man3/sd_bus_wait.3.gz
+%if %{with upstream}
+%{_mandir}/man3/sd_device_enumerator_add_all_parents.3.gz
+%{_mandir}/man3/sd_device_enumerator_add_match_parent.3.gz
+%{_mandir}/man3/sd_device_enumerator_add_match_property.3.gz
+%{_mandir}/man3/sd_device_enumerator_add_match_property_required.3.gz
+%{_mandir}/man3/sd_device_enumerator_add_match_subsystem.3.gz
+%{_mandir}/man3/sd_device_enumerator_add_match_sysattr.3.gz
+%{_mandir}/man3/sd_device_enumerator_add_match_sysname.3.gz
+%{_mandir}/man3/sd_device_enumerator_add_match_tag.3.gz
+%{_mandir}/man3/sd_device_enumerator_add_nomatch_sysname.3.gz
+%{_mandir}/man3/sd_device_enumerator_allow_uninitialized.3.gz
+%{_mandir}/man3/sd_device_enumerator_get_device_first.3.gz
+%{_mandir}/man3/sd_device_enumerator_get_device_next.3.gz
+%{_mandir}/man3/sd_device_enumerator_get_subsystem_first.3.gz
+%{_mandir}/man3/sd_device_enumerator_get_subsystem_next.3.gz
+%endif
 %{_mandir}/man3/sd_device_enumerator_new.3.gz
 %{_mandir}/man3/sd_device_enumerator_ref.3.gz
 %{_mandir}/man3/sd_device_enumerator_unref.3.gz
@@ -693,6 +709,9 @@
 %{_mandir}/man3/sd_pid_notifyf.3.gz
 %{_mandir}/man3/sd_pid_notifyf_with_fds.3.gz
 %{_mandir}/man3/sd_pidfd_get_cgroup.3.gz
+%if %{with upstream}
+%{_mandir}/man3/sd_pidfd_get_inode_id.3.gz
+%endif
 %{_mandir}/man3/sd_pidfd_get_machine_name.3.gz
 %{_mandir}/man3/sd_pidfd_get_owner_uid.3.gz
 %{_mandir}/man3/sd_pidfd_get_session.3.gz

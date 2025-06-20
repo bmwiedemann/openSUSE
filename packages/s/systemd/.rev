@@ -7616,4 +7616,20 @@ handle manual pages that consist only of a .so directive such as
   https://github.com/openSUSE/systemd/compare/8e9840a2897e36ae3f926f8d10a2b0d7e4102c67...c929295b4c1fb3cd6b9963bc7588fbc3e597ab86</comment>
     <requestid>1281804</requestid>
   </revision>
+  <revision rev="449" vrev="2">
+    <srcmd5>3f751ab2016e2766fabdbb1c4e715474</srcmd5>
+    <version>257.6</version>
+    <time>1750430908</time>
+    <user>anag_factory</user>
+    <comment>- Import commit 1e42ecf5a145589954df77da05937ee69619f3e5
+  1e42ecf5a1 firstboot: make sure labelling is enabled
+  3bdb2efbe0 tmpfiles: fix symlink creation when replacing
+  61c228d2cc firstboot: use WRITE_STRING_FILE_LABEL more
+  f5148acf37 env-file: port write_env_file() to label_ops_pre()
+  bbff8b5523 fs-util: replace symlink_atomic_full_label() by a flag to symlinkat_atomic_full() (bsc#1244237)
+  2b39393efa env-file: rework write_env_file() to make use of O_TMPFILE
+
+- Fix systemd-network recommending libidn2-devel (boo#1234765)</comment>
+    <requestid>1286997</requestid>
+  </revision>
 </revisionlist>

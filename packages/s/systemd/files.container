@@ -28,6 +28,10 @@
 %{_systemd_util_dir}/network/80-container-vz.network
 %{_systemd_util_dir}/network/80-namespace-ns.link
 %{_systemd_util_dir}/network/80-namespace-ns.network
+%if %{with upstream}
+%{_systemd_util_dir}/network/80-namespace-ns-tun.link
+%{_systemd_util_dir}/network/80-namespace-ns-tun.network
+%endif
 %endif
 %if %{without bootstrap}
 %{_systemd_util_dir}/systemd-mountfsd

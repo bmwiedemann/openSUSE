@@ -33,7 +33,7 @@
 %if %{without obs_service_set_version}
 %define systemd_version    257.6
 %define systemd_release    0
-%define archive_version    +suse.12.gc929295b4c
+%define archive_version    +suse.18.g1e42ecf5a1
 %endif
 
 %define _testsuitedir %{_systemd_util_dir}/tests
@@ -506,7 +506,7 @@ License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
 # This Recommends because some symbols of libidn2 are dlopen()ed by resolved
-Recommends:     pkgconfig(libidn2)
+Recommends:     libidn2
 BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(openssl)
 Obsoletes:      nss-resolve < %{version}-%{release}

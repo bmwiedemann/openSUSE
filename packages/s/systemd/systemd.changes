@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 19 12:42:37 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Import commit 1e42ecf5a145589954df77da05937ee69619f3e5
+
+  1e42ecf5a1 firstboot: make sure labelling is enabled
+  3bdb2efbe0 tmpfiles: fix symlink creation when replacing
+  61c228d2cc firstboot: use WRITE_STRING_FILE_LABEL more
+  f5148acf37 env-file: port write_env_file() to label_ops_pre()
+  bbff8b5523 fs-util: replace symlink_atomic_full_label() by a flag to symlinkat_atomic_full() (bsc#1244237)
+  2b39393efa env-file: rework write_env_file() to make use of O_TMPFILE
+
+-------------------------------------------------------------------
 Mon Jun  2 06:51:45 UTC 2025 - Franck Bui <fbui@suse.com>
 
 - Import commit c929295b4c1fb3cd6b9963bc7588fbc3e597ab86 (merge of v257.6)
+
+  This merge includes the following fix:
+
+    c58a8a6ec9 coredump: use %d in kernel core pattern (bsc#1243935 CVE-2025-4598)
 
   For a complete list of changes, visit:
   https://github.com/openSUSE/systemd/compare/8e9840a2897e36ae3f926f8d10a2b0d7e4102c67...c929295b4c1fb3cd6b9963bc7588fbc3e597ab86
@@ -37,7 +53,7 @@ Fri Apr  4 08:43:26 UTC 2025 - Franck Bui <fbui@suse.com>
 
 - Import commit c10a66fb4dd34b86d42fa92501bd88db63df479a (merge of v257.5)
 
-  This merge includes the following fix:
+  This merge includes the following fixes:
 
     9b52c10986 test-network: replace symlink to 99-default.link with a copy
     d7577221b8 man/pstore.conf: pstore.conf template is not always installed in /etc
@@ -175,6 +191,11 @@ Thu Dec 26 10:07:33 UTC 2024 - Franck Bui <fbui@suse.com>
   remove the bash test runner, see https://github.com/systemd/systemd/pull/34271
   for details. For running the testsuite, the systemd git repository has to be
   cloned for now. We'll try to adapt the testsuite sub-package these changes.
+
+-------------------------------------------------------------------
+Tue Dec 24 08:43:42 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix systemd-network recommending libidn2-devel (boo#1234765)
 
 -------------------------------------------------------------------
 Sun Dec 22 17:31:07 UTC 2024 - Franck Bui <fbui@suse.com>
