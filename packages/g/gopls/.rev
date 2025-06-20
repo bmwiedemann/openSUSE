@@ -299,4 +299,14 @@
   * Update to BuildRequires: golang(API) &gt;= 1.24 matching go.mod (forwarded request 1286237 from jfkw)</comment>
     <requestid>1286238</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7b03143b3b8ba8401d16d8b721bb9ab8</srcmd5>
+    <version>0.19.1</version>
+    <time>1750430998</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.19.1:
+  * gopls: update go.mod for v0.19.1-pre.1
+  * gopls/internal/settings: revert to old goimports index (forwarded request 1287004 from jfkw)</comment>
+    <requestid>1287005</requestid>
+  </revision>
 </revisionlist>
