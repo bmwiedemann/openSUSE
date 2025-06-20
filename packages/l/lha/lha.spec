@@ -23,6 +23,8 @@ Summary:        Pack Program
 License:        SUSE-Public-Domain
 URL:            http://lha.sourceforge.jp/
 Source:         %{name}-%{version}.tar.gz
+# fix build with gcc15
+Patch0:          lha-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 # Conflict with another lha implementation:
@@ -34,7 +36,7 @@ included for compatibility reasons only. Use GZIP for general archiving
 purposes, because it is the standard for Linux.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 autoreconf -fiv
