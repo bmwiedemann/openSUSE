@@ -17,14 +17,14 @@
 
 
 Name:           gap-cvec
-Version:        2.8.3
+Version:        2.8.4
 Release:        0
 Summary:        GAP: Compact vectors over finite fields
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/cvec/
 #Git-Clone:	https://github.com/gap-packages/cvec
-Source:         https://github.com/gap-packages/cvec/releases/download/v%version/cvec-%version.tar.bz2
+Source:         https://github.com/gap-packages/cvec/releases/download/v%version/cvec-%version.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gap-devel >= 4.12
