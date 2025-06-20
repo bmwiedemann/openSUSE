@@ -28,6 +28,8 @@ License:        GPL-3.0-or-later
 URL:            https://github.com/sipcapture/sipgrep
 Source:         https://github.com/sipcapture/sipgrep/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         sipgrep-2.2.0-inet_pton.patch
+# https://github.com/sipcapture/sipgrep/issues/47
+Patch1:         sipgrep-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
