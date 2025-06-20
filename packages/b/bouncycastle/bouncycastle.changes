@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Jun 18 15:04:37 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * bouncycastle-char-literal.patch
+    + Somehow, during the build, one unicode character become too
+      long for being a char literal. Consider it as string then.
+
+-------------------------------------------------------------------
+Wed Jun 18 07:36:53 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.81:
+  * Defects Fixed:
+    - A potention NullPointerException in the KEM KDF KemUtil class
+      has been removed.
+    - Overlapping input/output buffers in doFinal could result in
+      data corruption.
+    - Fixed Grain-128AEAD decryption incorrectly handle MAC verification.
+    - Add configurable header validation to prevent malicious header
+      injection in PGP cleartext signed messages; Fix signature packet
+      encoding issues in PGPSignature.join() and embedded signatures
+      while phasing out legacy format.
+    - Fixed ParallelHash initialization stall when using block size B=0.
+    - The PRF from the PBKDF2 function was been lost when PBMAC1 was
+      initialized from protectionAlgorithm. This has been fixed.
+    - The lowlevel DigestFactory was cloning MD5 when being asked
+      to clone SHA1.
+  * Additional Features and Functionality:
+    - XWing implementation updated to draft-connolly-cfrg-xwing-kem/07/
+    - Further support has been added for generation and use of PGP V6 keys
+    - Additional validation has been added for armored headers in Cleartext
+      Signed Messages.
+    - The PQC signature algorithm proposal Mayo has been added to the
+      low-level API and the BCPQC provider.
+    - The PQC signature algorithm proposal Snova has been added to the
+      low-level API and the BCPQC provider.
+    - Support for ChaCha20-Poly1305 has been added to the CMS/SMIME APIs.
+    - The Falcon implementation has been updated to the latest draft.
+    - Support has been added for generating keys which encode as seed-only
+      and expanded-key-only for ML-KEM and ML-DSA private keys.
+    - Private key encoding of ML-DSA and ML-KEM private keys now follows
+      the latest IETF draft.
+    - The Ascon family of algorithms has been updated to the initial draft
+      of SP 800-232. Some additional optimisation work has been done.
+    - Support for ML-DSA's external-mu calculation and signing has been
+      added to the BC provider.
+    - CMS now supports ML-DSA for SignedData generation.
+    - Introduce high-level OpenPGP API for message creation/consumption
+      and certificate evaluation.
+    - Added JDK21 KEM API implementation for HQC algorithm.
+    - BCJSSE: Strip trailing dot from hostname for SNI, endpointID checks.
+    - BCJSSE: Draft support for ML-KEM updated (draft-connolly-tls-mlkem-key-agreement-05).
+    - BCJSSE: Draft support for hybrid ECDHE-MLKEM (draft-ietf-tls-ecdhe-mlkem-00).
+    - BCJSSE: Optionally prefer TLS 1.3 server's supported_groups order
+      (BCSSLParameters.useNamedGroupsOrder).
+
+-------------------------------------------------------------------
 Mon Feb  3 21:14:42 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.80:

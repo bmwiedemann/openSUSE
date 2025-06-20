@@ -1,0 +1,11 @@
+--- bc-java-r1v81/pg/src/main/java/org/bouncycastle/bcpg/ArmoredOutputStream.java	2025-06-18 16:53:17.839002101 +0200
++++ bc-java-r1v81/pg/src/main/java/org/bouncycastle/bcpg/ArmoredOutputStream.java	2025-06-18 16:53:25.752560133 +0200
+@@ -619,7 +619,7 @@
+ 
+             if (comment.length() > availableCommentCharsPerLine)
+             {
+-                comment = comment.substring(0, availableCommentCharsPerLine - 1) + '…';
++                comment = comment.substring(0, availableCommentCharsPerLine - "…".length()) + "…";
+             }
+             addComment(comment);
+             return this;

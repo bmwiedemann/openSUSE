@@ -17,9 +17,9 @@
 
 
 %global ver_major 1
-%global ver_minor 80
+%global ver_minor 81
 #%%global ver_micro 1
-%global gittag r%{ver_major}rv%{ver_minor}%{?ver_micro:v%{ver_micro}}
+%global gittag r%{ver_major}v%{ver_minor}%{?ver_micro:v%{ver_micro}}
 %global archivever jdk18on-%{ver_major}.%{ver_minor}%{?ver_micro:0%{ver_micro}}
 %global classname org.bouncycastle.jce.provider.BouncyCastleProvider
 Name:           bouncycastle
@@ -43,6 +43,7 @@ Patch0:         bouncycastle-javadoc.patch
 # PATCH-FIX-OPENSUSE Add OSGi manifests to the distributed jars
 Patch1:         bouncycastle-osgi.patch
 Patch2:         bouncycastle-notests.patch
+Patch3:         bouncycastle-char-literal.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit
 BuildRequires:  fdupes
