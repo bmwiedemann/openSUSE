@@ -333,4 +333,12 @@
     <comment></comment>
     <requestid>1239863</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>ed695c171cf6dfd11efff28c936a3d00</srcmd5>
+    <version>2.3.2</version>
+    <time>1750430966</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1286878</requestid>
+  </revision>
 </revisionlist>

@@ -16,8 +16,8 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
-
 Name:           python-autopep8
 Version:        2.3.2
 Release:        0
@@ -33,14 +33,14 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-pycodestyle >= 2.12.0
+BuildArch:      noarch
 %if %{python_version_nodots} < 311
 Requires:       python-tomli
 %endif
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -66,12 +66,8 @@ export LANG="en_US.UTF-8"
 # Since /usr/bin/autopep8 became ghosted to be used with update-alternatives, we have to get rid
 # of the old binary resulting from the non-update-alternativies-ified package:
 [ -h %{_bindir}/autopep8 ] || rm -f %{_bindir}/autopep8
-
-%post
-%python_install_alternative autopep8
-
-%postun
-%python_uninstall_alternative autopep8
+# now, let's convert the old update-alternatives link to libalternatives
+%python_libalternatives_reset_alternative autopep8
 
 %files %{python_files}
 %license LICENSE
