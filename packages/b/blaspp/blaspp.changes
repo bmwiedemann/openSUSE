@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jun  7 21:50:32 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2025.05.28:
+  * Added Level 1 BLAS GPU wrappers.
+  * Added is_complex_v.
+  * Added support for BLIS and libFLAME (hence AOCL).
+  * Removed support for ACML.
+  * Removed deprecated enum, memcpy routines.
+  * Moved [cz]symv and [cz]syr to BLAS++ from LAPACK++, since
+    they.
+  * logically fit in BLAS. Requires linking with an LAPACK
+    library.
+  * Tester prints stats with --repeat.
+  * Fixed SYCL include path.
+  * Fixed testers for n = 0 case.
+  * Fixed template gemm for beta = 0 to not propagate NaN/Inf
+    (strong zero).
+- Follow upstream so version bump for shlib package name.
+- Pass -Duse_cmake_find_blas=true to cmake; otherwise causes
+  linking failures with missing references to blas.
+- Update testsweeper minimum version to 2025.05.28 for tests.
+
+-------------------------------------------------------------------
 Sat Apr 26 19:30:54 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2024.10.26:

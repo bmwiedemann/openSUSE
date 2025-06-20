@@ -16,10 +16,10 @@
 #
 
 
-%define so_ver 1
+%define so_ver 2
 %define __builder ninja
 Name:           blaspp
-Version:        2024.10.26
+Version:        2025.05.28
 Release:        0
 Summary:        C++ API for the Basic Linear Algebra Subroutines
 License:        BSD-3-Clause
@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig(blas)
 # Section For tests
 BuildRequires:  cmake(cblas)
 BuildRequires:  cmake(lapack)
-BuildRequires:  cmake(testsweeper)
+BuildRequires:  cmake(testsweeper) >= 2025.05.28
 # /Section
 
 %description
@@ -62,9 +62,10 @@ against blaspp.
 
 %build
 %cmake \
-	-Dcolor=no \
-	-Duse_openmp=yes \
-	-Dbuild_tests=yes \
+	-Dcolor=false \
+	-Duse_openmp=true \
+	-Duse_cmake_find_blas=true \
+	-Dbuild_tests=true \
 	%{nil}
 %cmake_build
 
