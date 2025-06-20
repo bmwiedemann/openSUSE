@@ -302,4 +302,12 @@
     <comment></comment>
     <requestid>1227604</requestid>
   </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>e2fa9888840f9023cc4439f12aad9bc5</srcmd5>
+    <version>1.8.8</version>
+    <time>1750433141</time>
+    <user>anag_factory</user>
+    <comment>Allow building with Java 21</comment>
+    <requestid>1286890</requestid>
+  </revision>
 </revisionlist>

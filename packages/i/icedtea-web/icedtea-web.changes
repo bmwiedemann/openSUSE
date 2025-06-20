@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun 19 09:52:41 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Allow building with java <= 21
+- Modified patches:
+  * icedtea-web-suse-desktop-files.patch
+  * reproducible-timestamps.patch
+    + rediff to apply cleanly
+  * more-java-versions.patch
+    + rediff
+    + build only en_US.UTF-8 docs
+    + specify source for javadoc
+    + add missing exports for java invocation
+- Added patches:
+  * standalone-pack200.patch
+    + build against standalone pack200 implementation
+  * java17.patch
+    + do not look for class not in Java 17+
+  * java21.patch
+    + detect Java 21+
+    + dummy noop implementation of missing JarIndex class
+
+-------------------------------------------------------------------
 Sun Dec  1 06:51:04 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Normalize javaws.jar mtimes

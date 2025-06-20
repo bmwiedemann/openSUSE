@@ -1,8 +1,21 @@
-diff --git a/Makefile.am b/Makefile.am
-index e44070c..fd0a2eb 100644
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -238,10 +238,10 @@ export NETX_PKGS = javax.jnlp net.sourceforge.nanoxml net.sourceforge.jnlp \
+--- icedtea-web-1.8.8/configure.ac	2025-06-19 10:12:43.195497408 +0200
++++ icedtea-web-1.8.8/configure.ac	2025-06-19 10:13:01.432511512 +0200
+@@ -186,9 +186,11 @@
+ fi
+ IT_CHECK_FOR_CLASS(COM_SUN_JNDI_TOOLKIT_URL_URLUTIL, [com.sun.jndi.toolkit.url.UrlUtil], [some.pkg], [$JAVA_NAMING])
+ IT_CHECK_FOR_CLASS(SUN_NET_WWW_PROTOCOL_HTTP_HANDLER, [sun.net.www.protocol.http.Handler], [some.pkg], [$JAVA_BASE])
++if test "$enable_pluginjar" = yes ; then
+ IT_CHECK_FOR_CLASS(SUN_APPLET_APPLETIMAGEREF, [sun.applet.AppletImageRef], [sun.applet], [$JAVA_DESKTOP])
+-
+ IT_CHECK_FOR_SUN_APPLET_ACCESSIBILITY
++fi
++
+ IT_CHECK_GLIB_VERSION
+ IT_CHECK_XULRUNNER_MIMEDESCRIPTION_CONSTCHAR
+ IT_CHECK_XULRUNNER_REQUIRES_C11
+--- icedtea-web-1.8.8/Makefile.am	2025-06-19 10:12:43.194999759 +0200
++++ icedtea-web-1.8.8/Makefile.am	2025-06-19 10:29:58.285161391 +0200
+@@ -238,10 +238,10 @@
  	net.sourceforge.jnlp.controlpanel net.sourceforge.jnlp.event \
  	net.sourceforge.jnlp.runtime net.sourceforge.jnlp.security \
  	net.sourceforge.jnlp.security.viewer net.sourceforge.jnlp.services \
@@ -15,7 +28,37 @@ index e44070c..fd0a2eb 100644
  export ICEDTEAPLUGIN_TARGET = stamps/liveconnect-dist.stamp
  export PLUGIN_DIR=$(TOP_BUILD_DIR)/plugin/icedteanp
  export PLUGIN_SRCDIR=$(TOP_SRC_DIR)/plugin/icedteanp
-@@ -956,11 +956,18 @@ stamps/netx-dist.stamp: stamps/netx.stamp $(TOP_BUILD_DIR)/netx.manifest stamps/
+@@ -284,6 +284,14 @@
+  -bottom '<font size="-1"> <a href="http://icedtea.classpath.org/bugzilla">Submit a bug or feature</a></font>'
+ if HAVE_JAVA9
+ JAVADOC_OPTS+=-source $(IT_LANGUAGE_SOURCE_VERSION)
++JAVA_EXPORTS=--add-exports=java.base/sun.security.action=ALL-UNNAMED
++else
++if HAVE_JAVA21
++JAVADOC_OPTS+=-source $(IT_LANGUAGE_SOURCE_VERSION)
++JAVA_EXPORTS=--add-exports=java.base/sun.security.action=ALL-UNNAMED
++else
++JAVA_EXPORTS=
++endif
+ endif
+ if JAVADOC_SUPPORTS_J_OPTIONS
+ JAVADOC_MEM_OPTS=-J-Xmx1024m -J-Xms128m
+@@ -894,12 +902,12 @@
+ 	mkdir "$$PLAIN_DOCS_TARGET_DIR" ; \
+ 	mkdir "$$MAN_DOCS_TARGET_DIR" ; \
+ 	HTML_DOCS_INDEX="$$HTML_DOCS_TARGET_DIR/index.html" ; \
+-	TP_COMMAND="$(SYSTEM_JRE_DIR)/bin/java -cp $(NETX_DIR) net.sourceforge.jnlp.util.docprovider.TextsProvider" ; \
++	TP_COMMAND="$(SYSTEM_JRE_DIR)/bin/java $(JAVA_EXPORTS) -cp $(NETX_DIR) net.sourceforge.jnlp.util.docprovider.TextsProvider" ; \
+ 	TP_TAIL="false $(FULL_VERSION)" ; \
+ 	LANG_BACKUP=$$LANG ; \
+ 	echo "<html><head><title>$(PLUGIN_VERSION)</title></head>" > "$$HTML_DOCS_INDEX" ; \
+ 	echo "<body><h3>$(PLUGIN_VERSION) docs:</h3>"  >> "$$HTML_DOCS_INDEX" ; \
+-	for LANG_ID in en_US.UTF-8 cs_CZ.UTF-8 pl_PL.UTF-8 de_DE.UTF-8 ;  do \
++	for LANG_ID in en_US.UTF-8 ;  do \
+ 	  ID=`echo "$$LANG_ID" | head -c 2` ; \
+ 	  ENCOD=`echo "$$LANG_ID" | tail -c 6 -` ; \
+ 	  export LANG=$$LANG_ID; \
+@@ -956,11 +964,18 @@
  	(cd $(NETX_DIR) ; \
  	 mkdir -p lib ; \
  	 $(SYSTEM_JDK_DIR)/bin/jar cfm lib/classes.jar \
@@ -36,29 +79,9 @@ index e44070c..fd0a2eb 100644
  	mkdir -p stamps
  	touch $@
  
-diff --git a/configure.ac b/configure.ac
-index b6710ed..c6daab2 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -186,9 +186,11 @@ if test "x$build_windows" = xyes ; then
- fi
- IT_CHECK_FOR_CLASS(COM_SUN_JNDI_TOOLKIT_URL_URLUTIL, [com.sun.jndi.toolkit.url.UrlUtil], [some.pkg], [$JAVA_NAMING])
- IT_CHECK_FOR_CLASS(SUN_NET_WWW_PROTOCOL_HTTP_HANDLER, [sun.net.www.protocol.http.Handler], [some.pkg], [$JAVA_BASE])
--IT_CHECK_FOR_CLASS(SUN_APPLET_APPLETIMAGEREF, [sun.applet.AppletImageRef], [sun.applet], [$JAVA_DESKTOP])
-+if test "$enable_pluginjar" = yes ; then
-+  IT_CHECK_FOR_CLASS(SUN_APPLET_APPLETIMAGEREF, [sun.applet.AppletImageRef], [sun.applet], [$JAVA_DESKTOP])
-+  IT_CHECK_FOR_SUN_APPLET_ACCESSIBILITY
-+fi
- 
--IT_CHECK_FOR_SUN_APPLET_ACCESSIBILITY
- IT_CHECK_GLIB_VERSION
- IT_CHECK_XULRUNNER_MIMEDESCRIPTION_CONSTCHAR
- IT_CHECK_XULRUNNER_REQUIRES_C11
-diff --git a/netx/net/sourceforge/jnlp/runtime/JNLPSecurityManager.java b/netx/net/sourceforge/jnlp/runtime/JNLPSecurityManager.java
-index 6196a9e..fab17a8 100644
---- a/netx/net/sourceforge/jnlp/runtime/JNLPSecurityManager.java
-+++ b/netx/net/sourceforge/jnlp/runtime/JNLPSecurityManager.java
-@@ -18,6 +18,7 @@ package net.sourceforge.jnlp.runtime;
+--- icedtea-web-1.8.8/netx/net/sourceforge/jnlp/runtime/JNLPSecurityManager.java	2025-06-19 10:12:43.203915678 +0200
++++ icedtea-web-1.8.8/netx/net/sourceforge/jnlp/runtime/JNLPSecurityManager.java	2025-06-19 10:13:01.433203336 +0200
+@@ -18,6 +18,7 @@
  
  import static net.sourceforge.jnlp.runtime.Translator.R;
  
@@ -66,7 +89,7 @@ index 6196a9e..fab17a8 100644
  import java.awt.Window;
  import java.net.SocketPermission;
  import java.security.AccessControlException;
-@@ -343,7 +344,6 @@ class JNLPSecurityManager extends SecurityManager {
+@@ -343,7 +344,6 @@
       * warning banner, and adds the window to the list of windows to
       * be disposed when the calling application exits.
       */
@@ -74,7 +97,7 @@ index 6196a9e..fab17a8 100644
      public boolean checkTopLevelWindow(Object window) {
          ApplicationInstance app = getApplication();
  
-@@ -362,7 +362,12 @@ class JNLPSecurityManager extends SecurityManager {
+@@ -362,7 +362,12 @@
          // todo: set awt.appletWarning to custom message
          // todo: logo on with glass pane on JFrame/JWindow?
  
@@ -88,7 +111,7 @@ index 6196a9e..fab17a8 100644
      }
  
      /**
-@@ -432,7 +437,6 @@ class JNLPSecurityManager extends SecurityManager {
+@@ -432,7 +437,6 @@
       * @exception  SecurityException  if the caller does not have
       *             permission to accesss the AWT event queue.
       */
@@ -96,7 +119,7 @@ index 6196a9e..fab17a8 100644
      public void checkAwtEventQueueAccess() {
          /*
           * this is the templace of the code that should allow applets access to
-@@ -446,7 +450,7 @@ class JNLPSecurityManager extends SecurityManager {
+@@ -446,7 +450,7 @@
          // If we're about to allow access to the main EventQueue,
          // and anything untrusted is on the class context stack,
          // disallow access.

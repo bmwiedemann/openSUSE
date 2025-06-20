@@ -1,0 +1,89 @@
+--- icedtea-web-1.8.8/acinclude.m4	2025-06-19 11:10:53.172245097 +0200
++++ icedtea-web-1.8.8/acinclude.m4	2025-06-19 11:11:45.908003966 +0200
+@@ -879,10 +879,12 @@
+   AC_MSG_RESULT($JAVA_VERSION)
+   if test "${JAVA_VERSION}" -eq "8"; then
+     HAVE_JAVA8="yes"
++  elif test "$JAVA_VERSION" -ge "21"; then
++    HAVE_JAVA21="yes"
+   elif test "$JAVA_VERSION" -ge "9"; then
+     HAVE_JAVA9="yes"
+   fi
+-  if test -z "$HAVE_JAVA8" -a -z "$HAVE_JAVA9"; then
++  if test -z "$HAVE_JAVA8" -a -z "$HAVE_JAVA9" -a -z "$HAVE_JAVA21"; then
+     AC_MSG_ERROR([JDK8 or newer is required, detected was: $JAVA_VERSION])
+   fi
+   if ! test -z "$HAVE_JAVA8"; then
+@@ -894,6 +896,7 @@
+   AC_SUBST(VERSION_DEFS)
+   AM_CONDITIONAL([HAVE_JAVA8], test x"${HAVE_JAVA8}" = "xyes")
+   AM_CONDITIONAL([HAVE_JAVA9], test x"${HAVE_JAVA9}" = "xyes")
++  AM_CONDITIONAL([HAVE_JAVA21], test x"${HAVE_JAVA21}" = "xyes")
+ ])
+ 
+ AC_DEFUN_ONCE([IT_FIND_KEYTOOL],
+--- icedtea-web-1.8.8/configure.ac	2025-06-19 11:11:31.940543002 +0200
++++ icedtea-web-1.8.8/configure.ac	2025-06-19 11:11:45.908231999 +0200
+@@ -148,11 +148,14 @@
+ dnl IT575 - Plugin depends on com.sun/jndi.toolkit.url.UrlUtil
+ dnl IT576 - Plugin depends on sun.applet.AppletImageRef
+ dnl IT578 - Remove need for patching AppletPanel for Plugin/Webstart
+-if test x"$HAVE_JAVA9" = xyes ; then
++if test x"$HAVE_JAVA9" = xyes -o x"$HAVE_JAVA21" = xyes ; then
+   JAVA_BASE=java.base
+   JAVA_DESKTOP=java.desktop
+   JAVA_NAMING=java.naming
+ fi
++if test x"$HAVE_JAVA21" = xyes ; then
++  JDK_JARTOOL=jdk.jartool
++fi
+ IT_CHECK_FOR_CLASS(JAVA_NET_COOKIEMANAGER, [java.net.CookieManager], [some.pkg], [])
+ IT_CHECK_FOR_CLASS(JAVA_NET_HTTPCOOKIE, [java.net.HttpCookie], [some.pkg], [])
+ IT_CHECK_FOR_CLASS(JAVA_NET_COOKIEHANDLER, [java.net.CookieHandler], [some.pkg], [])
+@@ -162,6 +165,9 @@
+ IT_CHECK_FOR_CLASS(SUN_SECURITY_X509_X500NAME, [sun.security.x509.X500Name], [some.pkg], [$JAVA_BASE])
+ IT_CHECK_FOR_CLASS(SUN_SECURITY_ACTION_GETPROPERTYACTION, [sun.security.action.GetPropertyAction], [some.pkg], [$JAVA_BASE])
+ # the classname cant be substitued by variable, as it is substituted to inner class
++if test x"$HAVE_JAVA21" = xyes ; then
++  IT_CHECK_FOR_CLASS(HEXDUMPENCODER, [sun.security.util.HexDumpEncoder], [some.pkg], [$JAVA_BASE])
++else
+ if test x"$HAVE_JAVA9" = xyes ; then
+   IT_CHECK_FOR_CLASS(HEXDUMPENCODER, [sun.security.util.HexDumpEncoder], [some.pkg], [$JAVA_BASE])
+   IT_CHECK_FOR_CLASS(SUN_MISC_JARINDEX, [jdk.internal.util.jar.JarIndex], [some.pkg], [$JAVA_BASE])
+@@ -170,6 +176,7 @@
+   IT_CHECK_FOR_CLASS(SUN_MISC_JARINDEX, [sun.misc.JarIndex], [some.pkg], [$JAVA_BASE])
+   IT_CHECK_FOR_CLASS(SUN_MISC_LAUNCHER, [sun.misc.Launcher], [some.pkg], [$JAVA_BASE])
+ fi
++fi
+ IT_CHECK_FOR_CLASS(SUN_SECURITY_VALIDATOR_VALIDATOREXCEPTION, [sun.security.validator.ValidatorException], [some.pkg], [$JAVA_BASE])
+ IT_CHECK_FOR_CLASS(SUN_NET_WWW_PROTOCOL_JAR_URLJARFILE, [sun.net.www.protocol.jar.URLJarFile], [some.pkg], [$JAVA_BASE])
+ IT_CHECK_FOR_CLASS(SUN_NET_WWW_PROTOCOL_JAR_URLJARFILECALLBACK, [sun.net.www.protocol.jar.URLJarFileCallBack], [some.pkg], [$JAVA_BASE])
+--- icedtea-web-1.8.8/netx/net/sourceforge/jnlp/jdk89acesses/JarIndexAccess.java	2025-06-19 11:10:05.848017283 +0200
++++ icedtea-web-1.8.8/netx/net/sourceforge/jnlp/jdk89acesses/JarIndexAccess.java	2025-06-19 11:11:45.908412020 +0200
+@@ -28,7 +28,7 @@
+                 jarIndexClass = Class.forName("jdk.internal.util.jar.JarIndex");
+             } catch (ClassNotFoundException exx) {
+                 OutputController.getLogger().log(exx);
+-                throw new RuntimeException("JarIndex not found!");
++                jarIndexClass = JarIndexDummy.class;
+             }
+         }
+     }
+@@ -71,4 +71,17 @@
+         return (LinkedList<String>) o;
+     }
+ 
++    /**
++     * Because starting of JAVA 21 the JarIndex is no longer supported we provide a dummy implementation which always returns {@code null}.
++     */
++    @SuppressWarnings("unused")
++    private static class JarIndexDummy {
++        public static Object getJarIndex(JarFile jar) {
++            return null;
++        }
++
++        public Object get(String fileName) {
++            return null;
++        }
++    }
+ }

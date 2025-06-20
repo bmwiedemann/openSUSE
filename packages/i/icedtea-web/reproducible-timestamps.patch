@@ -1,8 +1,6 @@
-diff --git a/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/HtmlFormatter.java b/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/HtmlFormatter.java
-index 643fcfd..c0a082c 100644
---- a/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/HtmlFormatter.java
-+++ b/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/HtmlFormatter.java
-@@ -95,6 +95,10 @@ public class HtmlFormatter extends ReplacingTextFormatter {
+--- icedtea-web-1.8.8/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/HtmlFormatter.java	2025-06-19 10:58:20.778943754 +0200
++++ icedtea-web-1.8.8/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/HtmlFormatter.java	2025-06-19 10:58:35.151598324 +0200
+@@ -95,6 +95,10 @@
          if (includeXmlHeader) {
              xml = "<?xml version=\"1.0\" encoding=\"" + encoding + "\"?>\n";
          }
@@ -13,7 +11,7 @@ index 643fcfd..c0a082c 100644
          return xml + "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n"
                  + "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">\n"
                  + "  <head>\n"
-@@ -102,7 +106,7 @@ public class HtmlFormatter extends ReplacingTextFormatter {
+@@ -102,7 +106,7 @@
                  + "    <meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=" + encoding + "\" />\n"
                  + "  </head>\n"
                  + "  <body>\n"
@@ -22,11 +20,9 @@ index 643fcfd..c0a082c 100644
      }
  
      @Override
-diff --git a/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/ManFormatter.java b/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/ManFormatter.java
-index 9e2d1ae..9c0e595 100644
---- a/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/ManFormatter.java
-+++ b/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/ManFormatter.java
-@@ -118,6 +118,9 @@ public class ManFormatter extends ReplacingTextFormatter {
+--- icedtea-web-1.8.8/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/ManFormatter.java	2025-06-19 10:58:20.778977773 +0200
++++ icedtea-web-1.8.8/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/ManFormatter.java	2025-06-19 10:58:35.152120367 +0200
+@@ -118,6 +118,9 @@
  
      private String getManPageDate(boolean localize) {
          Date now = new Date();

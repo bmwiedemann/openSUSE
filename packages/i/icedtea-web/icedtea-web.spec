@@ -1,7 +1,7 @@
 #
 # spec file for package icedtea-web
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,9 @@ Source0:        %{name}-%{version}.tar.xz
 Patch0:         icedtea-web-suse-desktop-files.patch
 Patch1:         more-java-versions.patch
 Patch2:         reproducible-timestamps.patch
+Patch3:         standalone-pack200.patch
+Patch4:         java17.patch
+Patch5:         java21.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
@@ -44,16 +47,15 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  junit
 BuildRequires:  libtool
+BuildRequires:  pack200
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  procps
-BuildRequires:  strip-nondeterminism
 BuildRequires:  rhino
+BuildRequires:  strip-nondeterminism
 BuildRequires:  tagsoup
 BuildRequires:  zip
-BuildConflicts: java >= 14
-BuildConflicts: java-devel >= 14
-BuildConflicts: java-headless >= 14
 Requires:       java >= 1.8
+Requires:       pack200
 Requires:       rhino
 Requires:       tagsoup
 Requires(post): update-alternatives
@@ -88,10 +90,7 @@ This package contains API documentation for the %{name} Java Web Start
 and plugin implementation.
 
 %prep
-%setup -q
-%patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
+%autosetup -p1
 
 rm -rf netx/net/sourceforge/jnlp/NetxPanel.java netx/sun
 
@@ -101,16 +100,17 @@ rm -f netx/net/sourceforge/jnlp/util/WindowsDesktopEntry.java
 autoreconf -fiv
 export bashcompdir=%{_datadir}/bash-completion/completions
 %configure \
-    --with-jdk-home=%{javadir} \
-    --with-jre-home=%{jredir} \
-    --docdir=%{_javadocdir}/%{name} \
     --disable-native-plugin \
     --disable-pluginjar \
-    --enable-shell-launchers \
-	--with-itw-libs=BUNDLED \
+    --docdir=%{_javadocdir}/%{name} \
     --enable-docs \
-    --with-modularjdk-file=%{_datadir}/%{name} \
+    --enable-shell-launchers \
     --program-suffix=%{binsuffix} \
+	--with-itw-libs=BUNDLED \
+    --with-jdk-home=%{javadir} \
+    --with-jre-home=%{jredir} \
+    --with-modularjdk-file=%{_datadir}/%{name} \
+    --with-pack200=%{_bindir}/pack200 \
     --with-pkgversion=suse-%{release}-%{_arch}
 
 %make_build
