@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 19 06:49:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove SUSE 11.1 section.
+- Use pyproject macros from python-rpm-macros to build and install.
+- List files in sitelib explicitly.
+
+-------------------------------------------------------------------
 Tue Nov 21 17:37:42 UTC 2023 - Michal Koutný <mkoutny@suse.com>
 
 - Update to 4f80263, release v1.6.2

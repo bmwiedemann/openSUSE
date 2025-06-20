@@ -1,7 +1,7 @@
 #
 # spec file for package cpuset
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2008-2011 Novell, Inc. Waltham, MA, USA
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,11 +17,8 @@
 #
 
 
-%if 0%{?suse_version} && 0%{?suse_version} <= 1110
-%{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-%else
-BuildArch:      noarch
-%endif
+%define pythons python3
+%define base_version 1.6
 Name:           cpuset
 Version:        1.6.2
 Release:        0
@@ -30,7 +27,12 @@ License:        GPL-2.0-only
 Group:          System/Management
 URL:            https://github.com/SUSE/cpuset
 Source:         https://github.com/SUSE/cpuset/archive/refs/tags/v%{version}.tar.gz
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
+BuildArch:      noarch
 
 %description
 Cpuset is a Python application for using the cpuset facilities in
@@ -44,13 +46,12 @@ shielding setup.
 %autopatch -p1
 
 %build
-python3 setup.py build
+%pyproject_wheel
 #make doc  ->not yet, asciidoc is missing...
 
 %install
-# Install binaries, but do not install docs via setup.py
-python3 setup.py install --root=%{buildroot} --prefix=%{_prefix} --install-data=/eraseme
-rm -rf %{buildroot}/eraseme
+%pyproject_install
+%fdupes %{buildroot}%{python3_sitelib}
 
 # Install documentation
 mkdir -p %{buildroot}/%{_mandir}/man1
@@ -65,7 +66,8 @@ install -m 0444 doc/*.html %{buildroot}/%{_defaultdocdir}/%{name}/html/
 %license COPYING
 %doc %{_docdir}/%{name}
 %{_bindir}/cset
-%{python3_sitelib}/*
+%{python3_sitelib}/cpuset
+%{python3_sitelib}/cpuset-%{base_version}.dist-info
 %{_mandir}/man1/*
 
 %changelog
