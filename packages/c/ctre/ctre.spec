@@ -1,7 +1,7 @@
 #
 # spec file for package ctre
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define gcc_ver 11
 %endif
 Name:           ctre
-Version:        3.9.0
+Version:        3.10.0
 Release:        0
 Summary:        Compile time regular expressions library
 License:        Apache-2.0
@@ -31,7 +31,6 @@ Patch1:         unsigned-char.patch
 BuildRequires:  cmake
 BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  pkgconfig
-BuildArch:      noarch
 
 %description
 A compile-time regular expressions with support for
@@ -39,7 +38,6 @@ matching/searching/capturing during compile-time or runtime.
 
 %package devel
 Summary:        Header and cmake files for ctre, a regular expressions library
-BuildArch:      noarch
 
 %description devel
 This package provides the header files and other development files needed for
@@ -59,13 +57,17 @@ developing applications against ctre.
 %cmake_install
 
 %check
-CXX=g++%{?gcc_ver:-%{gcc_ver}} %make_build
+export CXX=g++%{?gcc_ver:-%{gcc_ver}}
+%make_build
 
 %files devel
 %license LICENSE
 %doc README.md
-%{_includedir}/*
-%{_datadir}/cmake/ctre/
-%{_datadir}/pkgconfig/*.pc
+%{_includedir}/ctll/
+%{_includedir}/ctre/
+%{_includedir}/unicode-db/
+%{_includedir}/*.hpp
+%{_libdir}/cmake/ctre/
+%{_libdir}/pkgconfig/*.pc
 
 %changelog

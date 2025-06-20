@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Jun 15 02:56:47 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.10.0:
+  * Fix for warning in wrapper.hpp
+    (gh#hanickadot/compile-time-regular-expressions#307).
+  * Added operator-> in search_all iterator
+    (gh#hanickadot/compile-time-regular-expressions#311).
+  * Allow (|) in grammar
+    (gh#hanickadot/compile-time-regular-expressions#319).
+  * range-for in unicode library is using reference instead of
+    copy (gh#hanickadot/compile-time-regular-expressions#316).
+  * Improve cmake for modules from PR
+    (gh#hanickadot/compile-time-regular-expressions#322) and PR
+    (gh#hanickadot/compile-time-regular-expressions#323).
+  * Fixes problems with modules in MSVC
+    (gh#hanickadot/compile-time-regular-expressions#324).
+  * Make work a|, |b, and | regimes
+    (gh#hanickadot/compile-time-regular-expressions#326).
+  * Don't ignore inserted \0 inside fixed string
+    (gh#hanickadot/compile-time-regular-expressions#328).
+  * Improve documentation from
+    (gh#hanickadot/compile-time-regular-expressions#333).
+  * Improve look behind which didn't mirrored sequences inside
+    optional: (?<=ba|cd)s was evaluated as (?<=ab|dc)s
+    (gh#hanickadot/compile-time-regular-expressions#339).
+  * Fixed warning about undefined macros around feature testing
+    (gh#hanickadot/compile-time-regular-expressions#196).
+  * Allow [^] to be equivalent to "any character"
+    (gh#hanickadot/compile-time-regular-expressions#341).
+  * Fixes warnings in latest clang
+    (gh#hanickadot/compile-time-regular-expressions#344).
+- Packages are now arch dependent (/usr/lib*/cmake and
+  /usr/lib*/pkgconfig).
+- Be more specific with globs in file lists.
+
+-------------------------------------------------------------------
 Tue Jun 18 17:11:01 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.9.0:
