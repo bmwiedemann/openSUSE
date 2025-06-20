@@ -1,0 +1,55 @@
+Binary files alevt-v1.8.2.orig/alevt-date.o and alevt-v1.8.2/alevt-date.o differ
+diff -upr alevt-v1.8.2.orig/cache.c alevt-v1.8.2/cache.c
+--- alevt-v1.8.2.orig/cache.c	2025-06-18 16:45:53.829058452 +0000
++++ alevt-v1.8.2/cache.c	2025-06-18 16:59:47.513643681 +0000
+@@ -196,7 +196,7 @@ cache_foreach_pg(struct cache *ca, int p
+ 		return 0;
+ 	    if (s_vtp == 0)
+ 		s_vtp = vtp;
+-	    if (func(data, vtp))
++	    if (((int (*)(int *, struct vt_page *))func)(data, vtp))
+ 		return vtp;
+ 	}
+     }
+Binary files alevt-v1.8.2.orig/edit.o and alevt-v1.8.2/edit.o differ
+diff -upr alevt-v1.8.2.orig/edline.h alevt-v1.8.2/edline.h
+--- alevt-v1.8.2.orig/edline.h	2025-06-18 16:45:53.830974303 +0000
++++ alevt-v1.8.2/edline.h	2025-06-18 16:52:43.184143884 +0000
+@@ -10,9 +10,9 @@ struct edline
+ {
+     struct xio_win *xw;
+     u8 *prompt;
+-    void (*exit_func)();
++    void (*exit_func)(void *, u8 *);
+     void *exit_data;
+-    void (*old_handler)();
++    void (*old_handler)(void *, struct vt_event *);
+     void *old_data;
+ 
+     u8 buf[EDLEN];
+Binary files alevt-v1.8.2.orig/main.o and alevt-v1.8.2/main.o differ
+diff -upr alevt-v1.8.2.orig/search.c alevt-v1.8.2/search.c
+--- alevt-v1.8.2.orig/search.c	2025-06-18 16:45:53.831351723 +0000
++++ alevt-v1.8.2/search.c	2025-06-18 17:00:19.591515833 +0000
+@@ -118,7 +118,7 @@ search_next(struct search *s, int *pgno,
+ 
+     if (s->cache)
+ 	vtp = s->cache->op->foreach_pg(s->cache, *pgno, *subno, dir,
+-								search_pg, s);
++								(int (*)(void))search_pg, s);
+     if (vtp == 0)
+ 	return -1;
+ 
+diff -upr alevt-v1.8.2.orig/ui.c alevt-v1.8.2/ui.c
+--- alevt-v1.8.2.orig/ui.c	2025-06-18 16:45:53.831351723 +0000
++++ alevt-v1.8.2/ui.c	2025-06-18 16:55:13.779952850 +0000
+@@ -156,7 +156,7 @@ do_next_pgno(struct vtwin *w, int dir, i
+ 	arg[0] = pgno;
+ 	arg[1] = bcd_mode;
+         if (vtp = w->vbi->cache->op->foreach_pg(w->vbi->cache,
+-		    pgno, subno, dir, subs ? _next_subno:_next_pgno, &arg))
++		    pgno, subno, dir, (int (*)(void)) (subs ? _next_subno:_next_pgno), &arg))
+ 	{
+ 	    new_or_query(w, vtp->pgno, subs ? vtp->subno : ANY_SUB, new_win);
+ 	    return;
+Binary files alevt-v1.8.2.orig/vbi.o and alevt-v1.8.2/vbi.o differ

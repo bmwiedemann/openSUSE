@@ -1,7 +1,7 @@
 #
 # spec file for package alevt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           alevt
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        Teletext and Videotext Decoder for the BTTV Driver
 License:        GPL-2.0-or-later
@@ -26,6 +26,8 @@ URL:            https://gitlab.com/alevt/alevt
 Source0:        %{URL}/-/archive/v%{version}/alevt-v%{version}.tar.bz2
 Source1:        alevt.desktop
 Patch0:         alevt-fix-implicit.patch
+# https://gitlab.com/alevt/alevt/-/issues/2
+Patch1:         alevt-gcc15.patch
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libpng)
@@ -59,6 +61,7 @@ sed -i "s|#DEFS+=-DUSE_LIBZVBI|DEFS+=-DUSE_LIBZVBI|" Makefile
 %{_bindir}/alevt-date
 %{_datadir}/pixmaps/mini-alevt.xpm
 %{_datadir}/applications/*.desktop
-%{_mandir}/man1/alevt*.1{,x}*
+%{_mandir}/man1/alevt*
+%{_datadir}/pixmaps/*.xpm
 
 %changelog

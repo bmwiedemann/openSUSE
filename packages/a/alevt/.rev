@@ -188,4 +188,12 @@
     <comment>- alevt-fix-implicit.patch: fixed implicit definitions. (forwarded request 1172416 from msmeissn)</comment>
     <requestid>1172430</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>83b66f357dd27c8dc3bdad4c7d4664ad</srcmd5>
+    <version>1.8.2</version>
+    <time>1750430967</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1286850</requestid>
+  </revision>
 </revisionlist>
