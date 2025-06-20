@@ -138,6 +138,8 @@ This package provides %{name}.
 %pom_remove_dep org.testcontainers:testcontainers-bom sshd-scp
 %pom_remove_dep :netty-bom sshd-netty
 
+%pom_remove_dep :shared-dsml-parser sshd-ldap
+
 %if %{with extras}
 %pom_disable_module sshd-common
 %pom_disable_module sshd-core
