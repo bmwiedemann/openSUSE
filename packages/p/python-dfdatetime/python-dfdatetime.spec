@@ -1,7 +1,7 @@
 #
 # spec file for package python-dfdatetime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %{?sle15_python_module_pythons}
 
@@ -28,7 +29,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/log2timeline/dfdatetime
 Source:         https://github.com/log2timeline/%{modname}//releases/download/%{timestamp}/%{modname}-%{timestamp}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -42,13 +45,12 @@ objects to preserve accuracy and precision.
 %setup -q -n %{modname}-%{timestamp}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-# setup.py install helpfully installs files where it shouldn’t
+%pyproject_install
+# Do not ship the docs in datadir
 rm -rfv %{buildroot}%{_datadir}/doc/%{modname}
-
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +60,6 @@ rm -rfv %{buildroot}%{_datadir}/doc/%{modname}
 %license LICENSE
 %doc ACKNOWLEDGEMENTS AUTHORS README
 %{python_sitelib}/dfdatetime
-%{python_sitelib}/dfdatetime-%{timestamp}*info
+%{python_sitelib}/dfdatetime-%{timestamp}.dist-info
 
 %changelog

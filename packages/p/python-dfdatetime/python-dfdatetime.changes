@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 18 04:04:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+
+-------------------------------------------------------------------
 Fri Jul 28 21:35:13 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - use the sle15_python_module_pythons macro to select the proper python versions 
