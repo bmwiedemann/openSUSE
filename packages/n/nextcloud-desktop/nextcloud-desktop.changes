@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 19 18:29:56 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.16.6:
+  * fix(activitylistmodel): fix activities for e2ee files
+    (gh#nextcloud/desktop#8378).
+  * fix(accountmanager): use defaults from configFile if setting
+    was not present (gh#nextcloud/desktop#8380).
+  * fix(crash): debug builds would not try to remove a not found
+    job (gh#nextcloud/desktop#8381).
+- Do not force GCC 9 for Leap 16.
+
+-------------------------------------------------------------------
 Tue Jun  3 15:57:21 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
 
 - Update to version 3.16.5:

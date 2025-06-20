@@ -21,11 +21,11 @@
 %define __builder ninja
 
 # std=c++17 and <filesystem> now required, use GCC >= 8 for Leap
-%if 0%{?suse_version} < 1650
+%if 0%{?suse_version} < 1600
 %define gcc_ver 9
 %endif
 Name:           nextcloud-desktop
-Version:        3.16.5
+Version:        3.16.6
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
