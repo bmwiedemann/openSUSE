@@ -16,8 +16,10 @@
 #
 
 
+%define so_ver 2
+%define __builder ninja
 Name:           lapackpp
-Version:        2024.10.26
+Version:        2025.05.28
 Release:        0
 Summary:        C++ API for the Linear Algebra PACKage
 License:        BSD-3-Clause
@@ -26,27 +28,27 @@ Source:         https://github.com/icl-utk-edu/lapackpp/releases/download/v%{ver
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
-BuildRequires:  cmake(blaspp)
+BuildRequires:  cmake(blaspp) >= %{version}
 BuildRequires:  cmake(lapack)
 # Section For tests
 BuildRequires:  python3
 BuildRequires:  cmake(cblas)
 BuildRequires:  cmake(lapacke)
-BuildRequires:  cmake(testsweeper)
+BuildRequires:  cmake(testsweeper) >= 2025.05.28
 # /Section
 
 %description
 LAPACK++ is a C++ wrapper around LAPACK and LAPACK-like linear algebra libraries.
 
-%package -n liblapackpp1
+%package -n liblapackpp%{so_ver}
 Summary:        Shared library for lapackpp
 
-%description -n liblapackpp1
+%description -n liblapackpp%{so_ver}
 This package provides the shared library for lapackpp.
 
 %package -n lapackpp-devel
 Summary:        Headers and sources for developing against lapackpp
-Requires:       liblapackpp1 = %{version}
+Requires:       liblapackpp%{so_ver} = %{version}
 Requires:       cmake(blaspp)
 Requires:       cmake(lapack)
 
@@ -59,8 +61,8 @@ against lapackpp.
 
 %build
 %cmake \
-  -Dcolor=no \
-  -Dbuild_tests=yes \
+  -Dcolor=false \
+  -Dbuild_tests=true \
   %{nil}
 %cmake_build
 
@@ -72,11 +74,11 @@ pushd %{__builddir}/test
 python3 run_tests.py --quick
 popd
 
-%ldconfig_scriptlets -n liblapackpp1
+%ldconfig_scriptlets -n liblapackpp%{so_ver}
 
-%files -n liblapackpp1
+%files -n liblapackpp%{so_ver}
 %license LICENSE
-%{_libdir}/liblapackpp.so.1*
+%{_libdir}/liblapackpp.so.%{so_ver}*
 
 %files -n lapackpp-devel
 %license LICENSE
