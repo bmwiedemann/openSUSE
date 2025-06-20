@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 16 12:11:30 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libArcus-protobuf-30.patch: Fix build against protobuf 30
+  [gh#Ultimaker/libArcus#163].
+
+-------------------------------------------------------------------
 Thu Mar 13 01:21:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add BuildRequires on python3-setuptools, required for Python 3.12+. 

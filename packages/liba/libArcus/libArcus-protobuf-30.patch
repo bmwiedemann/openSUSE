@@ -1,0 +1,87 @@
+Index: libArcus-4.13/python/PythonMessage.cpp
+===================================================================
+--- libArcus-4.13.orig/python/PythonMessage.cpp
++++ libArcus-4.13/python/PythonMessage.cpp
+@@ -47,7 +47,7 @@ PythonMessage::~PythonMessage()
+ 
+ std::string Arcus::PythonMessage::getTypeName() const
+ {
+-    return  _message->GetTypeName();
++    return std::string(_message->GetTypeName());
+ }
+ 
+ MessagePtr Arcus::PythonMessage::getSharedMessage() const
+Index: libArcus-4.13/src/MessageTypeStore.cpp
+===================================================================
+--- libArcus-4.13.orig/src/MessageTypeStore.cpp
++++ libArcus-4.13/src/MessageTypeStore.cpp
+@@ -21,6 +21,8 @@
+ #include <unordered_map>
+ #include <sstream>
+ #include <iostream>
++#include <string_view>
++#include <cstdint>
+ 
+ #include <google/protobuf/dynamic_message.h>
+ #include <google/protobuf/compiler/importer.h>
+@@ -34,16 +36,18 @@ using namespace Arcus;
+  * of std::hash differs between compilers, we need to make sure we use the same
+  * implementation everywhere.
+  */
+-uint32_t hash(const std::string& input)
++uint32_t hash(std::string_view input)
+ {
+-    const char* data = input.c_str();
+-    uint32_t length = input.size();
+-    uint32_t result = static_cast<uint32_t>(2166136261UL);
+-    for(; length; --length)
++    const char* data = input.data();
++    uint32_t length = static_cast<uint32_t>(input.size());
++    uint32_t result = 2166136261u;
++
++    for (; length; --length)
+     {
+         result ^= static_cast<uint32_t>(*data++);
+-        result *= static_cast<uint32_t>(16777619UL);
++        result *= 16777619u;
+     }
++
+     return result;
+ }
+ 
+Index: libArcus-4.13/src/MessageTypeStore.h
+===================================================================
+--- libArcus-4.13.orig/src/MessageTypeStore.h
++++ libArcus-4.13/src/MessageTypeStore.h
+@@ -20,6 +20,7 @@
+ #define ARCUS_MESSAGE_TYPE_STORE_H
+ 
+ #include <memory>
++#include <cstdint>
+ 
+ #include "ArcusExport.h"
+ #include "Types.h"
+Index: libArcus-4.13/src/Types.h
+===================================================================
+--- libArcus-4.13.orig/src/Types.h
++++ libArcus-4.13/src/Types.h
+@@ -20,6 +20,7 @@
+ #define ARCUS_TYPES_H
+ 
+ #include <string>
++#include <cstdint>
+ #include <memory>
+ 
+ namespace google
+Index: libArcus-4.13/src/PlatformSocket_p.h
+===================================================================
+--- libArcus-4.13.orig/src/PlatformSocket_p.h
++++ libArcus-4.13/src/PlatformSocket_p.h
+@@ -21,6 +21,7 @@
+ 
+ #include <memory>
+ #include <string>
++#include <cstdint>
+ 
+ namespace Arcus
+ {

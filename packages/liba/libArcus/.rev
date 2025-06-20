@@ -197,4 +197,14 @@
     <comment></comment>
     <requestid>1252621</requestid>
   </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>2054b877be32d6eeb4177617faa1d848</srcmd5>
+    <version>4.13.1</version>
+    <time>1750430928</time>
+    <user>anag_factory</user>
+    <comment>- Add libArcus-protobuf-30.patch: Fix build against protobuf 30
+  [gh#Ultimaker/libArcus#163].
+</comment>
+    <requestid>1286786</requestid>
+  </revision>
 </revisionlist>

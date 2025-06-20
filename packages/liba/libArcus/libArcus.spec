@@ -32,6 +32,8 @@ Patch0:         libArcus-3.5.1-PyQt5.sip.patch
 Patch1:         0001-Use-single-parameter-SetTotalBytesLimit-fix-protobuf.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0001-Fix-compatibility-for-protobuf-v26.x-and-later.patch
+# PATCH-FIX-UPSTREAM libArcus-protobuf-30.patch gh#Ultimaker/libArcus#163 dimstar@opensuse.org -- Fix compilation against protobuf 30.x
+Patch3:         libArcus-protobuf-30.patch
 BuildRequires:  cmake >= 3.6
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel >= 3.0.0
