@@ -1,7 +1,7 @@
 #
 # spec file for package s3cmd
 #
-# Copyright (c) 2025 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define pythons python3
 Name:           s3cmd
 Version:        2.4.0
 Release:        0
-License:        GPL-2.0
-Url:            http://s3tools.org/s3cmd
+License:        GPL-2.0-only
+URL:            http://s3tools.org/s3cmd
 Summary:        Command line tool for managing Amazon S3 and CloudFront services
 Group:          System/Management
 Source:         %{name}-%{version}.tar.gz
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-devel
+BuildRequires:  python3-pip
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 Requires:       python3-python-dateutil
 
 # Use python-magic for SLES12_SP5
@@ -48,14 +53,15 @@ best suited for power users who are familiar with command line programs.
 
 %build
 export S3CMD_PACKAGING=1
-python3 setup.py build
+%pyproject_wheel
 
 %install
 export S3CMD_PACKAGING=1
-python3 setup.py install --root=$RPM_BUILD_ROOT --prefix=%{_prefix}
+%pyproject_install
+%fdupes %{buildroot}%{python3_sitelib}
 
 %files
-%{python3_sitelib}/*egg-info
+%{python3_sitelib}/%{name}-%{version}.dist-info
 %{python3_sitelib}/S3/
 /usr/bin/%{name}
 

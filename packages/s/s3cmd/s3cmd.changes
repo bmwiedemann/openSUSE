@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 18 05:54:51 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- Add in fdupes.
+
+-------------------------------------------------------------------
 Mon Feb 24 17:40:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - change Source URL, as this package uses a obs_scm service
