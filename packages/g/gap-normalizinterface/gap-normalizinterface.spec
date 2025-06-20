@@ -17,14 +17,14 @@
 
 
 Name:           gap-normalizinterface
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        GAP: wrapper for Normaliz
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/NormalizInterface/
 #Git-Clone:     https://github.com/gap-packages/NormalizInterface
-Source:         https://github.com/gap-packages/NormalizInterface/releases/download/v%version/NormalizInterface-%version.tar.bz2
+Source:         https://github.com/gap-packages/NormalizInterface/releases/download/v%version/NormalizInterface-%version.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gap-devel >= 4.12.1
 BuildRequires:  gap-rpm-devel
