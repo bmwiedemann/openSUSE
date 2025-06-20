@@ -104,7 +104,11 @@
          compress="true"
          index="false"
          basedir="${build.outputDir}"
-         excludes="**/package.html"/>
+         excludes="**/package.html">
+      <manifest>
+        <attribute name="Main-Class" value="io.pack200.Driver"/>
+      </manifest>
+    </jar>
   </target>
 
   <!-- ====================================================================== -->

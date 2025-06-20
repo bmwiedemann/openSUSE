@@ -1,7 +1,7 @@
 #
 # spec file for package pack200
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
+Requires:       javapackages-tools
 BuildArch:      noarch
 
 %description
@@ -69,7 +70,11 @@ mkdir -p %{buildroot}%{_javadocdir}/%{name}
 cp -a target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
+# script
+%jpackage_script io.pack200.Driver "" "" %{name} %{name}
+
 %files -f .mfiles
+%{_bindir}/%{name}
 %license LICENSE.txt
 %doc README.md TODO.md
 

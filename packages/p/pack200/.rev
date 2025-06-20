@@ -15,4 +15,12 @@
     <comment>Remove bogus dependency on javamail</comment>
     <requestid>1206070</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>60e295af52c8b5cd91c875d13bab5bcc</srcmd5>
+    <version>14</version>
+    <time>1750430903</time>
+    <user>anag_factory</user>
+    <comment>standalone pack200 script</comment>
+    <requestid>1286874</requestid>
+  </revision>
 </revisionlist>
