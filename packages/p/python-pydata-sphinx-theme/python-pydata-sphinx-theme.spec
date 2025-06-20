@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydata-sphinx-theme
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-pydata-sphinx-theme
-Version:        0.15.4
+Version:        0.16.1
 Release:        0
 Summary:        Bootstrap-based Sphinx theme from the PyData community
 License:        BSD-3-Clause

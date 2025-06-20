@@ -817,4 +817,41 @@
     <comment></comment>
     <requestid>1221237</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c33782a8e39072a0103d409902bedce5</srcmd5>
+    <version>0.16.1</version>
+    <time>1750430944</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.16.1 (CVE-2025-5889, bsc#1244343):
+  * Bump: 0.16.1rc0 -&gt; 0.16.1
+  * Updates for file src/pydata_sphinx_theme/locale/en/LC_MESSAGES/sphinx.po in es (#2079)
+  * Updates for file src/pydata_sphinx_theme/locale/en/LC_MESSAGES/sphinx.po in fr (#2075)
+  * bump: 0.16.0 -&gt; 0.16.1rc0
+  * i18n - Update localisation files (#2072)
+  * Match Sphinx toggle button and Sphinx Design hover and focus styles (#2061)
+  * Import Bootstrap after importing our variable overrides (#2066)
+  * Higher contrast table hover stripe (light mode) (#2062)
+  * Restore focus ring Sphinx Design dropdowns (#2060)
+  * DOC - Update documentation regarding formatting files (#2057)
+  * [pre-commit.ci] pre-commit autoupdate hooks (#2064)
+  * Remove hover striping from all but `.dataframe` tables (#2059)
+  * Fix colour variables (#2058)
+  * update revs to ignore in blame (#2056)
+  * automatic changes from b633898 and 9c5a3d5
+  * update pre-commit hooks / linter config
+  * ~Revert &quot;LINT - Run updated pre-commit hooks (#2049)&quot; (#2054)
+  * fix wrong switcher JSON loaded for dev docs (#2048)
+  * BUG - Fix i18n files and compilation for distribution (#2042)
+  * MAINT - update from Twitter -&gt; X (#2052)
+  * added itom to projects using this theme (#2037)
+  * LINT - Run updated pre-commit hooks (#2049)
+  * DOC -  Add design system documentation (#2046)
+  * ENH - When using the copybutton in code blocks, exclude copying the prompt (#2036)
+  * DOCS - Update accessibility docs (#2039)
+  * [pre-commit.ci] pre-commit autoupdate hooks (#2005)
+  * Fix translator_setup: undefined default_translator_class for linkcheck builder (#2029)
+  * Stop moving the Read the Docs version switcher into the sidebar (#2034)
+  * Remove mention of `sidebarwidth` in config file (#2031)</comment>
+    <requestid>1286825</requestid>
+  </revision>
 </revisionlist>
