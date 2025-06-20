@@ -42,4 +42,12 @@
   * Fix incompatibility with Pygame 2</comment>
     <requestid>892237</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5bfdf2bf68a9ac4469569c459e9d376c</srcmd5>
+    <version>1.7.1</version>
+    <time>1750430980</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1286906</requestid>
+  </revision>
 </revisionlist>

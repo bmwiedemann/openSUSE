@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 12 10:52:14 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue May 11 12:24:03 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Skip python36 because pygame skipped it

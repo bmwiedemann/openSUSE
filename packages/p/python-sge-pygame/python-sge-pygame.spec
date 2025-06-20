@@ -1,7 +1,7 @@
 #
 # spec file for package python-sge-pygame
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python36 1
 Name:           python-sge-pygame
 Version:        1.7.1
 Release:        0
@@ -26,12 +24,14 @@ License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://python-sge.github.io
 Source:         https://files.pythonhosted.org/packages/source/s/sge/sge-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pygame >= 1.9.1
 Requires:       python-six >= 1.4.0
 Requires:       python-uniseg
-BuildRequires:  fdupes
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,15 +46,16 @@ This implementation of the SGE uses Pygame as a backend.
 %setup -q -n sge-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%doc README README.pygame WHATSNEW  WHATSNEW.pygame
+%doc README README.pygame WHATSNEW WHATSNEW.pygame
 %license sge/COPYING sge/COPYING.LESSER
-%{python_sitelib}/*
+%{python_sitelib}/sge
+%{python_sitelib}/sge-%{version}*-info
 
 %changelog
