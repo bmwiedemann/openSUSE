@@ -21,7 +21,7 @@
 %define         modname grpcio_tools
 %{?sle15_python_module_pythons}
 Name:           python-grpcio-tools
-Version:        1.72.0
+Version:        1.73.0
 Release:        0
 Summary:        Protobuf code generator for gRPC
 License:        Apache-2.0
@@ -39,6 +39,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-grpcio >= %{version}
 Requires:       python-protobuf >= 3.5.0.post1
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # SECTION test requirements
 BuildRequires:  %{python_module grpcio >= %{version}}
 BuildRequires:  %{python_module protobuf >= 3.5.0.post1}
@@ -61,10 +63,18 @@ export CFLAGS="%{optflags}"
 
 %install
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/python-grpc-tools-protoc
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%post
+%python_install_alternative python-grpc-tools-protoc
+
+%postun
+%python_uninstall_alternative python-grpc-tools-protoc
 
 %files %{python_files}
 %doc README.rst
+%python_alternative %{_bindir}/python-grpc-tools-protoc
 %{python_sitearch}/grpc_tools
 %{python_sitearch}/grpcio_tools-%{version}.dist-info
 
