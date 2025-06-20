@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 19 16:22:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Fix the doc build
+
+-------------------------------------------------------------------
+Wed Jun 18 11:35:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.15.5
+  * Improvements to multiple formats.
+  * Packaging now follows PEP 621.
+  * Documentation improvements and cleanups.
+  * Added support for Compose Multiplatform Resources
+  * Added language definition for Toki Pona
+- Convert to libalternatives
+
+-------------------------------------------------------------------
 Wed Jan 15 14:52:14 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Only provide the 'translate-toolkit' symbol in the actual

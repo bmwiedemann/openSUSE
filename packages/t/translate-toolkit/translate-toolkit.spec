@@ -34,6 +34,7 @@
 %endif
 %define modname translate_toolkit
 %define pkgname translate-toolkit
+%bcond_without libalternatives
 
 %define binaries_and_manpages %{shrink:\
     pretranslate poclean pocompile poconflicts podebug pofilter pogrep pomerge porestructure posegment poswap poterminology \
@@ -49,18 +50,18 @@
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.14.5
+Version:        3.15.5
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
 URL:            https://toolkit.translatehouse.org/
 Source:         https://files.pythonhosted.org/packages/source/t/%{modname}/%{modname}-%{version}.tar.gz
 Patch0:         xliff-xsd-no-network.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module cheroot >= 9}
-BuildRequires:  %{python_module cwcwidth >= 0.1.9}
+BuildRequires:  %{python_module cwcwidth >= 0.1.10}
 BuildRequires:  %{python_module iniparse >= 0.5}
-BuildRequires:  %{python_module lxml >= 4.6.3}
+BuildRequires:  %{python_module lxml >= 5.2.0}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module phply >= 1.2.5}
@@ -69,18 +70,18 @@ BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module vobject >= 0.9.6.1}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
 BuildRequires:  git-core
 BuildRequires:  iso-codes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       gettext-runtime
 Requires:       python
-Requires:       python-cwcwidth >= 0.1.9
-Requires:       python-lxml >= 4.6.3
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       python-cwcwidth >= 0.1.10
+Requires:       python-lxml >= 5.2.0
 # The following are for the full experience of translate-toolkit
 Recommends:     %{name}-doc
 Recommends:     %{name}-man
@@ -179,8 +180,6 @@ translations and perform various checks on translation files.
 %setup -q -n %{modname}-%{version}
 %autopatch -p1
 
-sed -i 296"s|'share'|'translate/share'|" setup.py
-
 #Fix for shebang errors:
 for lib in translate/{*.py,*/*.py,*/*/*.py}; do
  sed -i '\|%{_bindir}/env |d' $lib
@@ -198,7 +197,7 @@ find . -name jquery.js -exec dos2unix '{}' \;
 # build docs
 pushd docs
 # Can't use parallel build here!
-%make_build -j1 man html
+%make_build SPHINXBUILD=sphinx-build -j1 man html
 #no hidden files
 find _build -name '.?*' -delete
 popd
@@ -253,11 +252,9 @@ rm -v tests/translate/storage/test_fluent.py
 
 %if !%{with test}
 %if !%{with doc}
-%post
-%python_install_alternative %binaries
 
-%postun
-%python_uninstall_alternative pretranslate
+%pre
+%python_libalternatives_reset_alternative pretranslate
 
 %files %{python_files}
 %license COPYING
@@ -268,16 +265,18 @@ rm -v tests/translate/storage/test_fluent.py
 
 %else
 
-%post
-%python_install_alternative %{lua: for m in string.gmatch(rpm.expand("%manpages"),"%S+") do print(m .. ".1 ") end}
-
-%postun
-%python_uninstall_alternative translatetoolkit.1%{?ext_man}
+%pre
+%python_libalternatives_reset_alternative translatetoolkit.1%{?ext_man}
 
 %files %{python_files}
 %license COPYING
 %doc README.rst
 %{lua: for m in string.gmatch(rpm.expand("%manpages"),"%S+") do print(rpm.expand("%python_alternative %{_mandir}/man1/" .. m .. ".1") .. "\n") end}
+# needed because we are building manpages separately
+%if %{with libalternatives}
+%{lua: for m in string.gmatch(rpm.expand("%manpages"),"%S+") do print(rpm.expand("%dir %{_datadir}/libalternatives/" .. m .. "") .. "\n") end}
+%{lua: for m in string.gmatch(rpm.expand("%manpages"),"%S+") do print(rpm.expand("%{_datadir}/libalternatives/" .. m .. "/*%{python_version_nodots}.conf") .. "\n") end}
+%endif
 
 %files -n %{pkgname}-doc
 %dir %{_defaultdocdir}/%{modname}
