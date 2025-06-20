@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 18 10:41:11 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Removes pam_env from auth stack for security reason
+  [bsc#1243226, CVE-2025-6018]
+
+-------------------------------------------------------------------
 Thu Feb  6 16:04:09 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
 
 - Update to 0.6.13
