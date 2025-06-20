@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Jun 20 06:25:18 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.12:
+  + This release adds the following features:
+    - Add a config option for enforcing immutable device enumeration
+    - Add device emulation support for Thunderbolt host controllers
+    - Do the efivarfs free space checks for dbx, db, KEK and PK devices
+    - Ensure the i2c_dev kernel driver is always loaded if a module
+    - Parse the SBOM data from fwupdx64.efi if provided
+    - Support loading multiple coSWID blobs from PE files
+  + This release fixes the following bugs:
+    - Added HP Elitedesk G6 mini to not get dbx-updates
+    - Add two more uefi dbx checksum->version entries
+    - Be more useful when building modem device Instance IDs
+    - Convert asus-hid and legion-hid2 to hidraw to avoid possible input blips
+    - Do not create radio for Logitech RDFU-capable devices
+    - Fix a modem-manager regression where a PCI device had no vendor ID
+    - Fix a regression when updating DFOTA modem devices
+    - Fix self tests when building with -Defi_os_dir
+    - Fix self tests when the builder does not support DistroVersion
+    - Fix updating Thunderbolt host controllers with some version formats
+    - Handle HECI unsupported status (0x0b) for Dell hardware
+    - Make tar a dependency of the uefi-capsule tests
+    - Mark the KEK and db updates as affecting FDE like BitLocker
+    - Properly detect the Redfish reboot request for Dell servers
+    - Send the proper artifact firmware filename to the Redfish BMC
+    - Set the correct RMM device version for some Dell dock devices
+    - Use inhibits so that the rts54hub device is marked as non-updatable
+    - Use the virtual size to avoid padding when cutting PE sections
+    - Wait for the Logitech Scribe device to replug after updating
+  + This release adds support for the following hardware:
+    - HP Portable USB-C Hub
+    - More Foxconn 5G modem products
+    - More Intel Arc Battlemage products
+
+
+-------------------------------------------------------------------
 Wed Jun  4 13:02:53 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.0.11:

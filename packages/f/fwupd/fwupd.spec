@@ -40,7 +40,7 @@
 %define docs 0
 
 Name:           fwupd
-Version:        2.0.11
+Version:        2.0.12
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -325,6 +325,7 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_datadir}/polkit-1/actions/org.freedesktop.fwupd.policy
 %if %{with msr_support}
 %dir %{_modulesloaddir}
+%{_modulesloaddir}/fwupd-i2c.conf
 %{_modulesloaddir}/fwupd-msr.conf
 %endif
 %config %{_sysconfdir}/%{name}/
