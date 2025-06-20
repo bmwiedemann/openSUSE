@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 18 10:12:55 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1750237596.0e254038:
+  * Bump eslint-plugin-prettier from 5.4.1 to 5.5.0
+  * Avoid adding non-fatal API errors as incomplete reason in general
+  * Avoid misleading errors about the websocket connection
+
+-------------------------------------------------------------------
 Mon Jun 16 15:13:42 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1750081859.24dae152:
