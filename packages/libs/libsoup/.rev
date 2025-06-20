@@ -1306,4 +1306,13 @@
     <comment></comment>
     <requestid>1281009</requestid>
   </revision>
+  <revision rev="157" vrev="6">
+    <srcmd5>165fa4fad3290837674bfc40630a9bc8</srcmd5>
+    <version>3.6.5</version>
+    <time>1750430898</time>
+    <user>anag_factory</user>
+    <comment>- Add libsoup-CVE-2025-4945.patch: add value checks for date/time
+  parsing (boo#1243314 CVE-2025-4945). (forwarded request 1286727 from mgorse)</comment>
+    <requestid>1286735</requestid>
+  </revision>
 </revisionlist>

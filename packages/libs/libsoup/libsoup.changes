@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 18 14:56:51 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add libsoup-CVE-2025-4945.patch: add value checks for date/time
+  parsing (boo#1243314 CVE-2025-4945).
+
+-------------------------------------------------------------------
 Wed May 28 15:42:56 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Add libsoup-CVE-2025-4969.patch: multipart: verify array bounds
