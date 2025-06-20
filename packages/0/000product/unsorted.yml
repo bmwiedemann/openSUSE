@@ -297,6 +297,8 @@ unsorted:
   - Rivet-data 
   - Rivet-devel 
   - Rivet-plugins 
+  - SDL 
+  - SDL2 
   - SDL2_Pango-devel 
   - SDL2_image-devel 
   - SDL2_mixer-devel 
@@ -1323,7 +1325,6 @@ unsorted:
   - bat-zsh-completion 
   - batctl 
   - bats 
-  - bazel 
   - bazel-apple-support-source 
   - bazel-compilation-database-source 
   - bazel-platforms 
@@ -1342,7 +1343,6 @@ unsorted:
   - bazel-skylib-source 
   - bazel-toolchains-source 
   - bazel-workspaces 
-  - bazel6 
   - bazel8 
   - bb 
   - bbe 
@@ -3807,7 +3807,6 @@ unsorted:
   - evdi 
   - evdi-devel 
   - evdi-kmp-default 
-  - evdi-ueficert 
   - evemu 
   - evemu-devel 
   - eventstat 
@@ -3901,8 +3900,6 @@ unsorted:
   - falcoctl-fish-completion 
   - falcoctl-zsh-completion 
   - falcosidekick 
-  - falkon 
-  - falkon-kde 
   - falkon-lang 
   - fann-devel 
   - farbfeld 
@@ -4918,6 +4915,7 @@ unsorted:
   - gdk-pixbuf-loader-rsvg-32bit 
   - gdk-pixbuf-query-loaders-32bit 
   - gdk-pixbuf-xlib-devel 
+  - gdm-branding-Aeon 
   - gdm-branding-MicroOS 
   - gdm-branding-upstream 
   - gdm-devel 
@@ -6988,6 +6986,7 @@ unsorted:
   - ghex-lang 
   - ghostscript-devel 
   - ghostscript-fonts 
+  - ghostscript-fonts-other 
   - ghostscript-mini 
   - ghostscript-mini-devel 
   - ghostty 
@@ -7305,6 +7304,7 @@ unsorted:
   - gnome-bluetooth-devel 
   - gnome-boxes 
   - gnome-boxes-lang 
+  - gnome-branding-Aeon 
   - gnome-branding-MicroOS 
   - gnome-builder 
   - gnome-builder-doc 
@@ -7335,11 +7335,13 @@ unsorted:
   - gnome-font-viewer-lang 
   - gnome-games-scripts 
   - gnome-genius 
+  - gnome-getting-started-docs 
   - gnome-getting-started-docs-lang 
   - gnome-icon-theme 
   - gnome-icon-theme-extras 
   - gnome-icon-theme-symbolic 
   - gnome-info-collect 
+  - gnome-initial-setup 
   - gnome-initial-setup-lang 
   - gnome-keyring-sharp 
   - gnome-keyring-sharp-devel 
@@ -7375,6 +7377,7 @@ unsorted:
   - gnome-screenshot 
   - gnome-screenshot-lang 
   - gnome-settings-daemon-devel 
+  - gnome-shell-classic 
   - gnome-shell-classic-xsession 
   - gnome-shell-devel 
   - gnome-shell-extension-customize-ibus 
@@ -7385,6 +7388,7 @@ unsorted:
   - gnome-shell-extension-pop-shell 
   - gnome-shell-extension-system-monitor 
   - gnome-shell-extension-user-theme 
+  - gnome-shell-extensions-common 
   - gnome-shell-extensions-common-lang 
   - gnome-shell-search-provider-bijiben 
   - gnome-shell-search-provider-boxes 
@@ -7404,6 +7408,7 @@ unsorted:
   - gnome-software-devel 
   - gnome-taquin 
   - gnome-taquin-lang 
+  - gnome-terminal 
   - gnome-terminal-lang 
   - gnome-tetravex 
   - gnome-tetravex-lang 
@@ -7621,6 +7626,7 @@ unsorted:
   - google-caladea-fonts 
   - google-cardo-fonts 
   - google-cousine-fonts 
+  - google-droid-fonts 
   - google-errorprone-annotation 
   - google-errorprone-annotations 
   - google-errorprone-annotations-javadoc 
@@ -8721,7 +8727,6 @@ unsorted:
   - ibis-doc 
   - ibm-data-db2 
   - ibm-plex-fonts 
-  - ibm-plex-mono-fonts 
   - ibm-plex-sans-arabic-fonts 
   - ibm-plex-sans-condensed-fonts 
   - ibm-plex-sans-devanagari-fonts 
@@ -12066,7 +12071,7 @@ unsorted:
   - libbladeRF2-doc 
   - libblake3-0 
   - libblas3-32bit 
-  - libblaspp1 
+  - libblaspp2 
   - libblastrampoline-devel 
   - libblastrampoline5 
   - libblis4 
@@ -13953,6 +13958,7 @@ unsorted:
   - libjasper7-32bit 
   - libjavamapscript 
   - libjavascriptcoregtk-4_0-18 
+  - libjavascriptcoregtk-6_0-1 
   - libjaylink-devel 
   - libjbig-devel 
   - libjbig-devel-32bit 
@@ -14056,6 +14062,8 @@ unsorted:
   - libkexiv2-devel 
   - libkexiv2-qt6-devel 
   - libkeybinder0 
+  - libkeyfinder-devel 
+  - libkeyfinder2 
   - libkgantt-lang 
   - libkgapi6-devel 
   - libkgraphviewer0 
@@ -14128,7 +14136,7 @@ unsorted:
   - liblapack3-32bit 
   - liblapacke3 
   - liblapacke3-32bit 
-  - liblapackpp1 
+  - liblapackpp2 
   - liblasem-0_4-4 
   - liblash1 
   - liblasso-devel 
@@ -16315,11 +16323,11 @@ unsorted:
   - libtheoraenc2-32bit 
   - libthreadar-devel 
   - libthreadar1000 
-  - libthrift-0_17_0 
+  - libthrift-0_22_0 
   - libthrift-devel 
   - libthrift_c_glib0 
-  - libthriftnb-0_17_0 
-  - libthriftz-0_17_0 
+  - libthriftnb-0_22_0 
+  - libthriftz-0_22_0 
   - libtidy-devel 
   - libtidy58 
   - libtidyp-1_04-0 
@@ -16760,6 +16768,7 @@ unsorted:
   - libwebcam-devel 
   - libwebcam0 
   - libwebkit2gtk-4_0-37 
+  - libwebkitgtk-6_0-4 
   - libwebp-devel 
   - libwebp-devel-32bit 
   - libwebp7-32bit 
@@ -19262,6 +19271,7 @@ unsorted:
   - nautilus-extension-owncloud 
   - nautilus-extension-papers 
   - nautilus-extension-sendto-blueman 
+  - nautilus-extension-terminal 
   - nautilus-extension-tilix 
   - nautilus-file-roller 
   - nautilus-font-manager 
@@ -24554,6 +24564,7 @@ unsorted:
   - python311-blessed 
   - python311-blessings 
   - python311-blinker 
+  - python311-blockbuster 
   - python311-blockdiag 
   - python311-blosc 
   - python311-blosc2 
@@ -25946,6 +25957,7 @@ unsorted:
   - python311-opentelemetry-util-http 
   - python311-openwrt-luci-rpc 
   - python311-opt-einsum 
+  - python311-oras 
   - python311-ordered-namespace 
   - python311-ordered-set 
   - python311-orderedmultidict 
@@ -26988,6 +27000,7 @@ unsorted:
   - python311-sshtunnel 
   - python311-stack-data 
   - python311-standard-xdrlib 
+  - python311-standardwebhooks 
   - python311-starlette 
   - python311-statsd 
   - python311-statsmodels 
@@ -28259,6 +28272,7 @@ unsorted:
   - python312-blessed 
   - python312-blessings 
   - python312-blinker 
+  - python312-blockbuster 
   - python312-blockdiag 
   - python312-blosc 
   - python312-blosc2 
@@ -29683,6 +29697,7 @@ unsorted:
   - python312-opentelemetry-util-http 
   - python312-openwrt-luci-rpc 
   - python312-opt-einsum 
+  - python312-oras 
   - python312-ordered-namespace 
   - python312-ordered-set 
   - python312-orderedmultidict 
@@ -30750,6 +30765,7 @@ unsorted:
   - python312-sshtunnel 
   - python312-stack-data 
   - python312-standard-xdrlib 
+  - python312-standardwebhooks 
   - python312-starlette 
   - python312-statsd 
   - python312-statsmodels 
@@ -32010,6 +32026,7 @@ unsorted:
   - python313-bleak 
   - python313-blessed 
   - python313-blessings 
+  - python313-blockbuster 
   - python313-blockdiag 
   - python313-blosc 
   - python313-blosc2 
@@ -33403,6 +33420,7 @@ unsorted:
   - python313-opentelemetry-util-http 
   - python313-openwrt-luci-rpc 
   - python313-opt-einsum 
+  - python313-oras 
   - python313-ordered-namespace 
   - python313-ordered-set 
   - python313-orderedmultidict 
@@ -34442,6 +34460,7 @@ unsorted:
   - python313-standard-imghdr 
   - python313-standard-sunau 
   - python313-standard-xdrlib 
+  - python313-standardwebhooks 
   - python313-starlette 
   - python313-statsd 
   - python313-statsmodels 
@@ -35689,7 +35708,9 @@ unsorted:
   - regexploit 
   - registries-conf-suse 
   - regreet 
+  - regularhunter-monotional-az-fonts 
   - regularhunter-monotional-fonts 
+  - regularhunter-monotional-sz-fonts 
   - rehex 
   - reimage 
   - reimage-bash-completion 
@@ -37304,7 +37325,6 @@ unsorted:
   - surgescript-devel 
   - suru-plus-dark-icon-theme 
   - suse-build-key 
-  - suse-fonts 
   - suse-kabi-tools 
   - suse-prime 
   - suse-xsl-stylesheets 
@@ -48680,6 +48700,7 @@ unsorted:
   - webkit2gtk3-soup2-minibrowser 
   - webkit2gtk4-devel 
   - webkit2gtk4-minibrowser 
+  - webkitgtk-6_0-injected-bundles 
   - weblate 
   - weblug 
   - webrepl 
