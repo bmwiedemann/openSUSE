@@ -17,7 +17,7 @@
 
 
 %{?sle15_python_module_pythons}
-%if 0%{?suse_version} >= 1650
+%if 0%{?suse_version} >= 1600
 # Tumbleweed
 # only works with the python version which the package 'ansible' uses
 %define pythons python3
