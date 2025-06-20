@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 18 10:36:19 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.2
+  * add .release() method to CardConnection & PCSCCardRequest
+  * add context manager protocol to CardRequest & CardService
+  * fix some parallel execution issues
+  * PCSCCardRequest: correctly initialize waitforcardevent()
+  * user-guide: Update documentation
+
+-------------------------------------------------------------------
 Thu Jun 12 05:33:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.
