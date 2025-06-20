@@ -17,7 +17,7 @@
 
 
 Name:           gitea-tea
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        A command line tool to interact with Gitea servers
 License:        MIT

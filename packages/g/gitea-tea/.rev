@@ -73,4 +73,12 @@
 - remove newer-dependencies.patch, as upstream updated them</comment>
     <requestid>1284760</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3a10ac6fb28a176f5a4bb11d1808b012</srcmd5>
+    <version>0.10.1</version>
+    <time>1750431260</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1287172</requestid>
+  </revision>
 </revisionlist>

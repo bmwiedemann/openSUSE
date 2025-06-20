@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 17 10:50:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.10.1:
+  * 8212d5f Update release ci (#768)
+  * d536242 chore(deps): update crazy-max/ghaction-import-gpg action
+    to v6 (#736)
+  * ffff540 fix(deps): update module github.com/urfave/cli/v3 to
+    v3.3.8 (#766)
+
+-------------------------------------------------------------------
 Tue Jun 10 18:06:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.10.0:
