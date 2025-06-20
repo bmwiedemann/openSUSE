@@ -457,4 +457,32 @@ package called `obs-service-recomprizz`.</comment>
   * docs: update README.md</comment>
     <requestid>1286700</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8a802313592317e030fd806cdab28d11</srcmd5>
+    <version>8.1.5</version>
+    <time>1750430977</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.1.5:
+  * chore(release): bump to v8.1.5
+  * fix: just add one newline lol
+- Update to version 8.1.4:
+  * chore(release): v8.1.4
+  * fix: finally properly fix adding the newline.
+  * chore(release): v8.1.3
+  * fix: add newline at the end of the file properly
+  * chore(release): bump to v8.1.2
+  * tests: switch test case from deno to river
+  * format: run `cargo +nightly fmt`
+  * tests: add deno and jay, they're known to contain submodules
+  * fix: update submodule logic if in case the submodule path does not exist.
+- Update to version 8.1.1:
+  * chore(release): bump to v8.1.1
+  * docs: renaming scheme is now &quot;better&quot;
+  * docs: the `.changes` filename is based on the filename without the version part.
+  * docs: clarify what the header is for
+  * docs: fix grammar here
+  * docs: update README
+  * docs: fix README.md. `obs` feature flag only updates the version in the specfile.</comment>
+    <requestid>1286895</requestid>
+  </revision>
 </revisionlist>
