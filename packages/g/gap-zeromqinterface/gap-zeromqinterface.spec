@@ -1,7 +1,7 @@
 #
 # spec file for package gap-zeromqinterface
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-zeromqinterface
-Version:        0.16
+Version:        0.17
 Release:        0
 Summary:        GAP: ZeroMQ bindings
 License:        GPL-2.0-or-later
@@ -26,7 +26,7 @@ URL:            https://gap-packages.github.io/ZeroMQInterface/
 #Git-Clone:     https://github.com/gap-packages/ZeroMQInterface
 Source:         https://github.com/gap-packages/ZeroMQInterface/releases/download/v%version/ZeroMQInterface-%version.tar.gz
 BuildRequires:  c_compiler
-BuildRequires:  gap-devel
+BuildRequires:  gap-devel >= 4.12
 BuildRequires:  gap-rpm-devel
 BuildRequires:  pkgconfig(libzmq) >= 2
 Requires:       gap-core >= 4.12
