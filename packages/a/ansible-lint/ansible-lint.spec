@@ -40,7 +40,7 @@
 %global lib_name ansiblelint
 %{?python_enable_dependency_generator}
 Name:           ansible-lint
-Version:        25.5.0
+Version:        25.6.1
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -79,7 +79,7 @@ BuildRequires:  %{ansible_python}-PyYAML >= 6.0.2
 BuildRequires:  %{ansible_python}-referencing >= 0.36.2
 BuildRequires:  %{ansible_python}-requests >= 2.31.0
 BuildRequires:  %{ansible_python}-rich >= 13.5.2
-BuildRequires:  %{ansible_python}-ruamel.yaml >= 0.18.5
+BuildRequires:  %{ansible_python}-ruamel.yaml >= 0.18.11
 BuildRequires:  %{ansible_python}-subprocess-tee >= 0.4.1
 BuildRequires:  %{ansible_python}-tenacity
 BuildRequires:  %{ansible_python}-wcmatch >= 8.4.1
@@ -100,7 +100,7 @@ Requires:       %{ansible_python}-PyYAML  >= 6.0.2
 Requires:       %{ansible_python}-referencing >= 0.36.2
 Requires:       %{ansible_python}-requests >= 2.31.0
 Requires:       %{ansible_python}-rich >= 13.5.2
-Requires:       %{ansible_python}-ruamel.yaml >= 0.17.31
+Requires:       %{ansible_python}-ruamel.yaml >= 0.18.11
 Requires:       %{ansible_python}-subprocess-tee >= 0.4.1
 Requires:       %{ansible_python}-tenacity
 Requires:       %{ansible_python}-wcmatch >= 8.4.1
