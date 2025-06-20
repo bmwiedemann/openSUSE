@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jun 19 10:12:48 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 6.0.9:
+  * chore(release): v6.0.9
+  * fix: bring libroast fix where we just add one newline
+
+-------------------------------------------------------------------
+Thu Jun 19 09:46:01 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 6.0.8:
+  * chore(release): v6.0.8
+  * fix: update libroast to v8.1.4
+
+-------------------------------------------------------------------
+Thu Jun 19 09:18:11 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 6.0.7:
+  * chore(release): v6.0.7
+  * fix: apply clippy fix for `redundant-field-names`
+  * fix: apply clippy fix for `field-reassign-with-default`
+  * chore: apply new Option<VendorArgs> change
+  * fix: wrongly used clap derive attributes for requires. rework VendorArgs as well provide defaults.
+  * fix: bring in new version of libroast by running `cargo update`.
+  * fix: apply clippy fixes
+  * fix: only provide a warning. `--no-root-manifest` is never used in `vendor.rs`
+  * fix: make `no-root-manifest` field to `Option<bool>`
+
+-------------------------------------------------------------------
 Sat Jun 14 06:26:35 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 6.0.6:
@@ -692,4 +720,3 @@ Sun Sep 10 13:16:40 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 Sun Sep 10 12:04:14 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Initial spec for obs-service-cargo. 0.6.0-alpha
-

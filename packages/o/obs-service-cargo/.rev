@@ -1146,4 +1146,29 @@ packages. This library is fasted, easier to maintain and easier for a user to co
   * fix: the `target` field for build targets is now being used</comment>
     <requestid>1285693</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2b7d2201fdb7d28b1e0585341592864d</srcmd5>
+    <version>6.0.9</version>
+    <time>1750430974</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.0.9:
+  * chore(release): v6.0.9
+  * fix: bring libroast fix where we just add one newline
+
+- Update to version 6.0.8:
+  * chore(release): v6.0.8
+  * fix: update libroast to v8.1.4
+
+- Update to version 6.0.7:
+  * chore(release): v6.0.7
+  * fix: apply clippy fix for `redundant-field-names`
+  * fix: apply clippy fix for `field-reassign-with-default`
+  * chore: apply new Option&lt;VendorArgs&gt; change
+  * fix: wrongly used clap derive attributes for requires. rework VendorArgs as well provide defaults.
+  * fix: bring in new version of libroast by running `cargo update`.
+  * fix: apply clippy fixes
+  * fix: only provide a warning. `--no-root-manifest` is never used in `vendor.rs`
+  * fix: make `no-root-manifest` field to `Option&lt;bool&gt;`</comment>
+    <requestid>1286893</requestid>
+  </revision>
 </revisionlist>
