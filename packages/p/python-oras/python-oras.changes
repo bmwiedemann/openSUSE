@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Wed Jun 18 05:06:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package python-oras, required by python-flux-local: OCI
+  Registry as Storage enables libraries to push OCI Artifacts to
+  OCI Conformant registries
