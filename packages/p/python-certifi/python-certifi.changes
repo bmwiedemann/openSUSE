@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 17 12:54:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2024.6.15
+  * Declare setuptools as the build backend in pyproject.toml
+  * remove code that's no longer required that 3.7 is our minimum
+- Rebase python-certifi-shipped-requests-cabundle.patch
+
+-------------------------------------------------------------------
 Mon Jun 16 06:12:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyroject macros.

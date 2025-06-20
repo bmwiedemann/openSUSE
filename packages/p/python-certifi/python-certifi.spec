@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certifi
-Version:        2025.1.31
+Version:        2025.6.15
 Release:        0
 Summary:        Python package for providing Mozilla's CA Bundle
 License:        MPL-2.0
