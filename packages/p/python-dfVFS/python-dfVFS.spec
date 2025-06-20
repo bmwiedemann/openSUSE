@@ -1,7 +1,7 @@
 #
 # spec file for package python-dfVFS
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,8 +59,10 @@ BuildRequires:  %{python_module libvsapm}
 BuildRequires:  %{python_module libvsgpt}
 BuildRequires:  %{python_module libvshadow}
 BuildRequires:  %{python_module libvslvm}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tsk}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
@@ -124,10 +126,10 @@ chmod -x utils/check_dependencies.py
 chmod -x run_tests.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %fdupes %{buildroot}
 
@@ -144,6 +146,7 @@ $python ./run_tests.py
 %doc utils/check_dependencies.py utils/dependencies.py
 # these are installed into the wrong place
 %exclude %{_datadir}/doc/dfvfs/
-%{python_sitelib}/dfvfs*
+%{python_sitelib}/dfvfs
+%{python_sitelib}/dfvfs-%{timestamp}.dist-info
 
 %changelog
