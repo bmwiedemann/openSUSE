@@ -25,14 +25,14 @@
 %{?sle15_python_module_pythons}
 %endif
 Name:           gajim
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        XMPP client written in Python and GTK
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://gajim.org/
-Source:         https://gajim.org/downloads/2.1/gajim-%{version}.tar.gz
-BuildRequires:  %{python_module nbxmpp >= 5.0.4}
+Source:         https://gajim.org/downloads/2.2/gajim-%{version}.tar.gz
+BuildRequires:  %{python_module nbxmpp >= 6.2.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module precis-i18n >= 1.0.0}
 BuildRequires:  %{python_module wheel}
@@ -55,7 +55,7 @@ Requires:       %{python_flavor}-emoji >= 2.6.0
 Requires:       %{python_flavor}-gobject-Gdk
 Requires:       %{python_flavor}-gobject-cairo >= 1.16.0
 Requires:       %{python_flavor}-gssapi
-Requires:       %{python_flavor}-nbxmpp >= 6.1.1
+Requires:       %{python_flavor}-nbxmpp >= 6.2.0
 Requires:       %{python_flavor}-omemo-dr >= 1.0.0
 Requires:       %{python_flavor}-qrcode >= 7.3.1
 Requires:       python3-base >= 3.11
