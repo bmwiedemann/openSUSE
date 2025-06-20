@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-checkdmarc
-Version:        5.8.2
+Version:        5.8.6
 Release:        0
 Summary:        A Python module and command line parser for SPF and DMARC records
 License:        Apache-2.0

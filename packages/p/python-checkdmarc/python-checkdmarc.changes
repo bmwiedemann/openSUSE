@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 18 11:26:03 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.8.6
+  * Ignore unhandled critical extensions for mark certificates.
+
+-------------------------------------------------------------------
 Mon May 19 07:44:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 5.8.2
