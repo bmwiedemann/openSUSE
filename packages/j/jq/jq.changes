@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Wed Jun 18 13:33:37 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.0
+  Security fixes
+  * CVE-2024-23337: Fix signed integer overflow in jvp_array_write
+    and jvp_object_rehash.
+  * CVE-2024-53427: Reject NaN with payload while parsing JSON.
+  * CVE-2025-48060: Fix heap buffer overflow in jv_string_vfmt.
+  * Fix use of uninitialized value in check_literal.
+  * Fix segmentation fault on strftime/1, strflocaltime/1.
+  * Fix unhandled overflow in @base64d.
+  CLI changes
+  * Fix --indent 0 implicitly enabling --compact-output.
+  * Improve error messages to show problematic position in the
+    filter.
+  * Include column number in parser and compiler error messages.
+  * Fix error message for string literal beginning with single
+    quote.
+  * Improve JQ_COLORS environment variable to support larger
+    escapes like truecolor.
+  * Add --library-path long option for -L.
+  * Fix --slurp --stream when input has no trailing newline
+    character.
+  * Fix --indent option to error for malformed values.
+  * Fix option parsing of --binary on non-Windows platforms.
+  * Fix issue with ~/.jq on Windows where $HOME is not set.
+  * Increase the maximum parsing depth for JSON to 10000.
+  * Parse short options in order given.
+  * Consistently reset color formatting.
+  New functions
+  * Add trim/0, ltrim/0 and rtrim/0 to trim leading and trailing
+    white spaces.
+  * Add trimstr/1 to trim string from both ends.
+  * Add add/1. Generator variant of add/0.
+  * Add skip/2 as the counterpart to limit/2.
+  * Add toboolean/0 to convert strings to booleans.
+  * Add @urid format. Reverse of @uri.
+  Changes to existing functions
+  * Use code point index for indices/1, index/1 and rindex/1.
+  * Improve tonumber/0 performance and rejects numbers with
+    leading or trailing white spaces.
+  * Populate timezone data when formatting time.
+  * Preserve numerical precision on unary negation, abs/0, length/0
+  * Make last(empty) yield no output values like first(empty).
+  * Make ltrimstr/1 and rtrimstr/1 error for non-string inputs.
+  * Make limit/2 error for negative count.
+  * Fix mktime/0 overflow and allow fewer elements in date-time
+    representation array.
+  * Fix non-matched optional capture group.
+  * Provide strptime/1 on all systems.
+  * Improve bsearch/1 performance by implementing in C.
+  * Improve unique/0 and unique_by/1 performance.
+  * Fix error messages including long string literal not to break
+    Unicode characters.
+  * Remove pow10/0 as it has been deprecated in glibc 2.27.
+    Use exp10/0 instead.
+  * Remove private (and undocumented) _nwise filter.
+  Language changes
+  * Fix precedence of binding syntax against unary and binary
+    operators.
+  * Support Tcl-style multiline comments.
+  * Fix foreach not to break init backtracking with DUPN.
+  * Fix reduce/foreach state variable should not be reset each
+    iteration.
+  * Support CRLF line breaks in filters.
+  * Improve performance of repeating strings.
+- Drop not longer needed patches (fixed by upstream):
+  * CVE-2024-23337.patch
+  * CVE-2024-53427.patch
+- Remove not longer needed hardcoded compiler option "-std-gnu17"
+  gh#3206
+
+-------------------------------------------------------------------
 Thu Jun 12 16:24:57 UTC 2025 - Nathan Cutler <ncutler@suse.com>
 
 - Add patch CVE-2024-23337.patch (CVE-2024-23337, bsc#1243450)

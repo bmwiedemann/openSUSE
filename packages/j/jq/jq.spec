@@ -18,15 +18,13 @@
 
 %define jq_sover 1
 Name:           jq
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        A lightweight and flexible command-line JSON processor
 License:        CC-BY-3.0 AND MIT
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/jqlang
 Source:         https://github.com/jqlang/jq/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
-Patch0:         CVE-2024-23337.patch
-Patch1:         CVE-2024-53427.patch
 BuildRequires:  chrpath
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(oniguruma)
@@ -61,12 +59,6 @@ Development files (headers and libraries for jq).
 %autosetup -p1
 
 %build
-# TODO: Remove the following line when doing the next version upgrade.
-# It is a workaround for upstream issue #3206 and boo#1241922.  Once a
-# version with commit 0b82b38 is released, it should not longer be
-# necessary.  Unfortunately, the commit does not cleanly apply to the
-# current version (1.7.1).
-CFLAGS="%{optflags} -std=gnu17"
 %configure \
   --disable-static \
 %ifarch aarch64 x86_64 ppc64le s390x
