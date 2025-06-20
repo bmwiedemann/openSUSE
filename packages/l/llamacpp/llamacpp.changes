@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Thu Jun 19 00:53:29 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to 5699:
+  * vocab : prevent integer overflow during load
+    (bsc#1244714) (CVE-2025-49847)
+  * batch : add LLAMA_BATCH_DEBUG environment variable
+  * batch : auto-gen positions + verify multi-sequence input
+  * common : suggest --jinja when autodetection fails
+  * ggml-cpu: fix uncaught underscore terminators
+  * kv-cache : fix use-after-move of defrag info
+  * llama : rework embeddings logic
+  * llama-chat : do not throw when tool parsing fails
+  * llama-chat : fix multiple system message for gemma, orion
+  * model : Add support for Arcee AI's upcoming AFM model
+  * model : add dots.llm1 architecture support
+  * model : add NeoBERT
+  * server : When listening on a unix domain socket don't print
+    http:// and port
+  * quantize : change int to unsigned int for KV overrides
+  * Full changelog:
+    https://github.com/ggml-org/llama.cpp/compare/b5657...b5699
+
+-------------------------------------------------------------------
+Sat Jun 14 13:00:21 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to 5657:
+  * add geglu activation function
+  * add in-build ggml::ggml ALIAS library
+  * fixed spec timings to: accepted/tested instead of accepted/drafted
+  * batch : remove logits_all flag
+  * batch : rework llama_batch_allocr
+  * chore : clean up relative source dir paths
+  * common: fix issue with regex_escape routine on windows
+  * context : fix pos_min initialization upon error decode
+  * context : fix SWA-related warning for multiple sequences
+  * context : round n_tokens to next multiple of n_seqs when reserving
+  * context : simplify output counting logic during decode
+  * convert : fix duplicate key DeepSeek-R1 conversion error
+  * convert : fix nomic-bert-moe mask token
+  * convert : fix vocab padding code for bert models
+  * gemma : more consistent attention scaling for v2 and v3
+  * ggml : check if non-native endian model is being loaded
+  * ggml : fix weak alias win32
+  * ggml : install dynamic backends
+  * ggml : Print backtrace on uncaught C++ exceptions
+  * ggml : remove ggml_graph_import and ggml_graph_export declarations
+  * ggml-cpu : split arch-specific implementations
+  * ggml-vulkan : adds support for op CONV_TRANSPOSE_1D
+  * gguf : fix failure on version == 0
+  * gguf-py : add add_classifier_output_labels method to writer
+  * graph : fix geglu
+  * Implement GGML_CPU_ALL_VARIANTS for ARM
+  * kv-cache : add LLAMA_KV_CACHE_DEBUG environment variable
+  * kv-cache : avoid modifying recurrent cells when setting inputs
+  * kv-cache : fix shift and defrag logic
+  * kv-cache : fix split_equal handling in unified implementation
+  * kv-cache : fix unified::seq_rm to work with seq_id < 0
+  * kv-cache : refactor the update/defrag mechanism
+  * kv-cache : relax SWA masking condition
+  * kv-cache : split implementation in separate sources
+  * llama : allow using mmap without PrefetchVirtualMemory
+  * llama : deprecate llama_kv_self_ API
+  * llama : fix llama_model_chat_template with template name
+  * llama : support GEGLU for jina-bert-v2
+  * llama : support multiple classifier outputs and labels
+  * llama-graph : use ggml_repeat_4d
+  * memory : migrate from llama_kv_cache to more generic llama_memory
+  * metal : use F32 accumulators in FA kernels
+  * metal : use less stack memory in FA kernel
+  * mtmd : fix memory leak in mtmd_helper_eval_chunk_single
+  * opencl: add `backend_synchronize`
+  * opencl: Add concat, tsembd, upscale, tanh, pad and repeat
+  * opencl: add `mul_mv_id_q4_0_f32_8x_flat`
+  * parallel : fix n_junk == 0
+  * pooling : make cls_b and cls_out_b optional
+  * rpc : nicer error messages for RPC server crash
+  * server : disable speculative decoding for SWA models
+  * server : fix LRU check
+  * server : fix SWA condition for full context reprocess
+  * server : pass default --keep argument
+  * server : re-enable SWA speculative decoding
+  * server : update deepseek reasoning format
+  * sycl: Adding additional cpy dbg print output
+  * sycl: Add reorder to Q6_K mmvq implementation
+  * sycl: Bump oneMath commit
+  * sycl: Implement few same quantized type copy kernels
+  * sycl: quantize and reorder the input to q8_1 when reorder is enabled
+  * sycl: Remove not needed copy f16->f32 for dnnl mul mat
+  * threading : support for GGML_SCHED_PRIO_LOW
+  * vocab : prevent heap overflow when vocab is too small
+  * vocab : warn about missing mask token
+  * vulkan: automatically deduce size of push constants
+  * vulkan: Better thread-safety for command pools/buffers
+  * vulkan: Don't default to CPU device (like llvmpipe), even if no other
+    device is available, to allow fallback to CPU backend
+  * vulkan : Enable VK_KHR_cooperative_matrix extension for Intel Xe2 GPUs
+  * vulkan : fix warnings in perf logger querypool code
+  * vulkan : force device 0 in CI
+  * vulkan : Remove unexpected ; (ggml/1253)
+  * vulkan : Track descriptor pools/sets per-context
+  * webui : fix sidebar being covered by main content
+  * webui : Wrap long numbers instead of infinite horizontal scroll
+  * Full changelog:
+    https://github.com/ggml-org/llama.cpp/compare/b5556...b5657
+
+-------------------------------------------------------------------
 Sat May 31 23:17:14 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to 5556:

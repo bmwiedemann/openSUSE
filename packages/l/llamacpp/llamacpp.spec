@@ -17,12 +17,12 @@
 
 
 Name:           llamacpp
-Version:        5556
+Version:        5699
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT
 URL:            https://github.com/ggml-org/llama.cpp
-Source:         https://github.com/ggml-org/llama.cpp/archive/b%{version}/%{name}-%{version}.tar.gz
+Source:         %{URL}/archive/b%{version}/%{name}-%{version}.tar.gz
 Patch1:         0001-dl-load-path.patch
 BuildRequires:  cmake >= 3.14
 BuildRequires:  gcc-c++

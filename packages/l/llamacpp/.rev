@@ -120,4 +120,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1283892</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>49b3736039a76a6f14ccda46e94b35bf</srcmd5>
+    <version>5699</version>
+    <time>1750430936</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5699:
+  * vocab : prevent integer overflow during load
+    (bsc#1244714) (CVE-2025-49847)
+  ...
+- Update to 5657:
+  ...</comment>
+    <requestid>1286807</requestid>
+  </revision>
 </revisionlist>
