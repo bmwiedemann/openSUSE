@@ -16,7 +16,7 @@
 #
 
 Name:           icinga2
-Version:        2.14.6
+Version:        2.15.0
 Release:        0
 Summary:        Network monitoring application
 License:        GPL-2.0-or-later
@@ -28,8 +28,6 @@ Source1:        icinga2-rpmlintrc
 Patch0:         icinga2-graphite.patch
 # PATCH-FIX-OPENSUSE lrupp -- fixing the syntax file for vim >= 8.x
 Patch1:         icinga2-vim_syntax.patch
-# PATCH-FIX-UPSTREAM https://github.com/Icinga/icinga2/pull/10278
-Patch2:         icinga-pr10278.patch
 PreReq:         permissions
 BuildRequires:  nagios-rpm-macros
 Requires:       icinga2-bin = %{version}
@@ -44,8 +42,14 @@ Summary:        Icinga 2 binaries and libraries
 Group:          System/Monitoring
 BuildRequires:  bison
 BuildRequires:  cmake
+%if 0%{?suse_version} < 1600
+BuildRequires: gcc13
+BuildRequires: gcc13-c++
+%else
+BuildRequires: gcc
+BuildRequires: gcc-c++
+%endif
 BuildRequires:  flex >= 2.5.35
-BuildRequires:  gcc-c++
 BuildRequires:  libboost_context-devel >= 1.66
 BuildRequires:  libboost_coroutine-devel >= 1.66
 BuildRequires:  libboost_filesystem-devel >= 1.66
@@ -57,7 +61,7 @@ BuildRequires:  libboost_test-devel >= 1.66
 BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  libstdc++-devel
-BuildRequires:  pkgconfig(yajl)
+BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  make
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(openssl)
@@ -145,6 +149,10 @@ Provides Nano syntax highlighting for icinga2.
 find . -type f -name '*.sh' -exec sed -i -e 's|\/usr\/bin\/env bash|\/bin\/bash|g' {} \;
 
 %build
+%if 0%{?suse_version} < 1600
+export CC=gcc-13
+export CXX=g++-13
+%endif
 export CCACHE_BASEDIR="${CCACHE_BASEDIR:-$(pwd)}"
 
 CMAKE_OPTS="-DCMAKE_INSTALL_PREFIX=%{_prefix} \
