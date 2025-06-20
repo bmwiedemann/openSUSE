@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-qt-graph
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           libyui-qt-graph
 
 # DO NOT manually bump the version here; instead, use   rake version:bump
-Version:        4.7.3
+Version:        4.7.4
 Release:        0
 
 %define         so_version 16
@@ -44,13 +44,9 @@ Summary:        Libyui - Qt Graph Widget
 License:        LGPL-2.1-only OR LGPL-3.0-only
 URL:            http://github.com/libyui/
 Source:         libyui-%{version}.tar.bz2
-%if %{pkg_vcmp graphviz > 10.0.0}
-Patch0:         graphviz_unsigned_fix.patch
-%endif
 
 %description
 This package contains the Qt graph component for libyui.
-
 
 %package -n %{bin_name}
 Summary:        Libyui - Qt graph widget
@@ -64,14 +60,12 @@ Obsoletes:      yast2-qt-graph < 2.46.0
 # Force removal of old -doc packages (bsc#1184363)
 Obsoletes:      %{name}-doc < %{version}
 
-
 %description -n %{bin_name}
 This package contains the Qt graph component for libyui.
 
 This is a special widget to visualize graphs such as the
 storage device hierarchy (disks, partitions, subvolumes
 etc.).  and similar graphviz-generated graphs.
-
 
 %package devel
 Summary:        Libyui - Header files for the Qt graph widget
@@ -82,10 +76,8 @@ Requires:       libyui-qt-devel >= %{version}
 This package contains the header files for the Qt graph component
 for libyui.
 
-
 %prep
 %setup -q -n libyui-%{version}
-%autopatch -p1
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -DNDEBUG"

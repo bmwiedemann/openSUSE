@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-qt-pkg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           libyui-qt-pkg
 
 # DO NOT manually bump the version here; instead, use rake version:bump
-Version:        4.7.3
+Version:        4.7.4
 Release:        0
 
 %define         so_version 16
@@ -50,7 +50,6 @@ Source:         libyui-%{version}.tar.bz2
 %description
 This package contains the Qt package selector component for libyui.
 
-
 %package -n %{bin_name}
 Summary:        Libyui - Qt package selector
 
@@ -78,7 +77,6 @@ Obsoletes:      %{name}-doc < %{version}
 %description -n %{bin_name}
 This package contains the Qt package selector component for libyui.
 
-
 %package devel
 Summary:        Libyui-qt-pkg header files
 
@@ -91,7 +89,6 @@ This package contains the Qt package selector component for libyui.
 
 This can be used independently of YaST for generic (C++) applications.
 This package has very few dependencies.
-
 
 %prep
 %setup -q -n libyui-%{version}

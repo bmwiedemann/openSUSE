@@ -806,4 +806,13 @@ build/package/libyui.spec:Version:        3.0.13</comment>
     <comment></comment>
     <requestid>1286022</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>1d91e263967e67a82b3b1443cb92c76f</srcmd5>
+    <version>4.7.4</version>
+    <time>1750430901</time>
+    <user>anag_factory</user>
+    <comment>Fix for graphviz API change
+https://github.com/libyui/libyui/pull/120</comment>
+    <requestid>1286871</requestid>
+  </revision>
 </revisionlist>

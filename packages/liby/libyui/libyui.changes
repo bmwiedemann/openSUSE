@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 18 09:44:29 UTC 2025 - Martin Vidner <mvidner@suse.com>
+
+- Integrated the graphviz API fix upstream (gh#libyui/libyui#120)
+  (Let CMake detect graphviz version)
+- 4.7.4
+D graphviz_unsigned_fix.patch
+
+-------------------------------------------------------------------
 Mon Jun  9 14:27:14 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - graphviz API broke in a recent version update (bezier size is now
