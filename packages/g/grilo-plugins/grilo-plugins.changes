@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jun 17 14:31:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.17:
+  + filesystem:
+    - Fix is-hidden warning browsing filesystem entries
+    - Add ability to split sources
+  + Fix build with libxml 2.12
+  + Replace defunct mailing list URLs with GNOME Discourse
+  + dleyna:
+    - Quiet error when dleyna is not installed
+    - Fix "Quiet error when dleyna is not installed"
+  + tests:
+    - Adapt to tracker-test-sandbox utility changes
+    - Fix tracker3 test duration range
+  + Remove non-working plugins (appletrailers, raitv)
+  + euronews: Remove source
+  + plugins: add IPTV source
+  + iptv:
+    - improve iptv source
+    - fix typo in the path of the icon
+  + plugins: Add OpenSubtitles in Lua
+  + Updated translations.
+- Add pkgconfig(rest-1.0) BuildRequires, new dependency.
+
+-------------------------------------------------------------------
 Fri Mar 28 08:41:08 UTC 2025 - bjorn.lie@gmail.com
 
 - Update to version 0.3.16+45:

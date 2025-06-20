@@ -18,7 +18,7 @@
 
 %define plugin_dir %(pkg-config --variable plugindir grilo-0.3)
 Name:           grilo-plugins
-Version:        0.3.16+45
+Version:        0.3.17
 Release:        0
 Summary:        Media and metadata plugins for the Grilo framework
 License:        LGPL-2.1-or-later
@@ -56,6 +56,7 @@ BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lua) >= 5.3.0
 BuildRequires:  pkgconfig(oauth)
+BuildRequires:  pkgconfig(rest-1.0)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(totem-plparser) >= 3.4.1
 BuildRequires:  pkgconfig(tracker-sparql-3.0) >= 2.99
@@ -173,8 +174,6 @@ This package provides the development files.
 %{plugin_dir}/libgrlluafactory.so
 %dir %{_datadir}/grilo-plugins
 %dir %{_datadir}/grilo-plugins/grl-lua-factory
-%{_datadir}/grilo-plugins/grl-lua-factory/grl-euronews.lua
-%{_datadir}/grilo-plugins/grl-lua-factory/grl-euronews.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-guardianvideos.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-guardianvideos.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-acoustid.lua
@@ -182,6 +181,7 @@ This package provides the development files.
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-itunes-podcast.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-thegamesdb.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-musicbrainz-coverart.lua
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-opensubtitles.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-radiofrance.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-radiofrance.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-video-title-parsing.lua
