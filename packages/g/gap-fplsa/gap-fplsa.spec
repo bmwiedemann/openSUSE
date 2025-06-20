@@ -25,6 +25,7 @@ Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/FPLSA/
 #Git-Clone:     https://github.com/gap-packages/FPLSA
 Source:         https://github.com/gap-packages/FPLSA/releases/download/v%version/FPLSA-%version.tar.gz
+Patch1:         c99.patch
 BuildRequires:  c_compiler
 BuildRequires:  gap-devel >= 4.8
 BuildRequires:  gap-rpm-devel
@@ -37,7 +38,7 @@ structure constant algebras. This is called via the GAP function
 IsomorphismSCTableAlgebra.
 
 %prep
-%autosetup -n FPLSA-%version
+%autosetup -n FPLSA-%version -p1
 
 %build
 ./configure "%gapdir" # not autoconf

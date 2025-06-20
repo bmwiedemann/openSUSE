@@ -23,4 +23,12 @@
     <comment>- Make specfile conform to POSIX sh</comment>
     <requestid>1249114</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>bbf89b5baef0eef7d3461e0b62617c60</srcmd5>
+    <version>1.2.6</version>
+    <time>1750431280</time>
+    <user>anag_factory</user>
+    <comment>- Add c99.patch</comment>
+    <requestid>1287202</requestid>
+  </revision>
 </revisionlist>
