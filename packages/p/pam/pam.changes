@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 18 12:01:57 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- hardcode disabling elogind, meson detection is unreliable in OBS
+
+-------------------------------------------------------------------
+Wed Jun 18 05:38:35 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.7.1
+  - pam_access: do not resolve ttys or display variables as hostnames.
+  - pam_access: added "nodns" option to disallow resolving of tokens
+    as hostnames (CVE-2024-10963).
+  - pam_limits: added support for rttime (RLIMIT_RTTIME).
+  - pam_namespace: fixed potential privilege escalation (CVE-2025-6020).
+  - meson: added support of elogind as a logind provider.
+  - Multiple minor bug fixes, build fixes, portability fixes,
+    documentation improvements, and translation updates.
+- pam_access-rework-resolving-of-tokens-as-hostname.patch got obsoleted
+
+-------------------------------------------------------------------
 Mon Mar 24 17:41:34 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove unix2_chkpwd, no consumer left
@@ -1241,7 +1260,6 @@ Wed Feb 23 12:45:03 UTC 2011 - vcizek@novell.com
   * correct parsing of "quiet" option
 
 -------------------------------------------------------------------
-
 Wed Feb 23 10:00:22 UTC 2011 - vcizek@novell.com
 
 - fix for bnc#673826 (pam_listfile)

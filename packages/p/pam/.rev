@@ -1324,4 +1324,23 @@
     <comment>- Remove unix2_chkpwd, no consumer left</comment>
     <requestid>1255709</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>488bdd1afc9f00fcdfd08c8cf648ba11</srcmd5>
+    <version>1.7.1</version>
+    <time>1750430880</time>
+    <user>anag_factory</user>
+    <comment>- hardcode disabling elogind, meson detection is unreliable in OBS
+
+- Update to version 1.7.1
+  - pam_access: do not resolve ttys or display variables as hostnames.
+  - pam_access: added &quot;nodns&quot; option to disallow resolving of tokens
+    as hostnames (CVE-2024-10963).
+  - pam_limits: added support for rttime (RLIMIT_RTTIME).
+  - pam_namespace: fixed potential privilege escalation (CVE-2025-6020).
+  - meson: added support of elogind as a logind provider.
+  - Multiple minor bug fixes, build fixes, portability fixes,
+    documentation improvements, and translation updates.
+- pam_access-rework-resolving-of-tokens-as-hostname.patch got obsoleted</comment>
+    <requestid>1286682</requestid>
+  </revision>
 </revisionlist>

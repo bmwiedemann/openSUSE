@@ -70,7 +70,7 @@
 #
 Name:           pam%{name_suffix}
 #
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        A Security Tool that Provides Authentication for Applications
 License:        GPL-2.0-or-later OR BSD-3-Clause
@@ -93,8 +93,6 @@ Source22:       postlogin-account.pamd
 Source23:       postlogin-password.pamd
 Source24:       postlogin-session.pamd
 Patch1:         pam-limit-nproc.patch
-# PATCH-FIX-UPSTREAM: CVE-2024-10963
-Patch2:         pam_access-rework-resolving-of-tokens-as-hostname.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex
@@ -221,7 +219,10 @@ CFLAGS="$CFLAGS -fpatchable-function-entry=16,14 -fdump-ipa-clones"
        -Dlogind=disabled \
        -Dpam_userdb=disabled \
        -Ddocs=disabled \
+%else
+       -Dlogind=enabled \
 %endif
+       -Delogind=disabled \
        -Dexamples=false \
        -Dnis=disabled
 %meson_build
