@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 16 06:14:00 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250614
+  + reduce lintian warnings for test-packages.
+  + clean up some shellcheck warnings
+  + improve test/configure checks for X libraries, reducing duplicates
+  + fix some typos/errata in license text, to help with scripted checks
+
+-------------------------------------------------------------------
 Mon Jun  2 06:15:52 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250531

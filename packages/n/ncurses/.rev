@@ -5199,4 +5199,16 @@
     when $DESTDIR is set.</comment>
     <requestid>1281755</requestid>
   </revision>
+  <revision rev="301" vrev="74">
+    <srcmd5>ca50832b603dfcad6d2324463099bc39</srcmd5>
+    <version>unknown</version>
+    <time>1750430881</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20250614
+  + reduce lintian warnings for test-packages.
+  + clean up some shellcheck warnings
+  + improve test/configure checks for X libraries, reducing duplicates
+  + fix some typos/errata in license text, to help with scripted checks</comment>
+    <requestid>1285989</requestid>
+  </revision>
 </revisionlist>
