@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 20 05:51:06 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Adjusted Font selection in the kde pattern to fix some rendering
+  issues (boo#1244927)
+
+-------------------------------------------------------------------
+Thu Jun 12 11:03:29 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Removed GNOME desktop pattern
+- Changed Kalpa to use tuned-ppd by default
+- Cleaned up a few things in the KDE/Kalpa pattern
+
+-------------------------------------------------------------------
 Wed May  7 15:37:03 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Change removing tlp from the kde pattern, and making tuned-ppd
@@ -153,20 +166,20 @@ Wed Dec 13 08:56:23 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
   pattern.
 
 -------------------------------------------------------------------
-Sat Nov  8 18:00:46 PM UTC 2023 - Luca Di Maio <luca.dimaio1@gmail.com>
+Sat Nov 8 18:00:46 UTC 2023 - Luca Di Maio <luca.dimaio1@gmail.com>
 
 - Remove grub as it breaks systemd-boot
 - grub2-snapper-plugin now checks for grub instead of snapper, we reasonably can
   assume that a microos system has snapper installed anyway
 
 -------------------------------------------------------------------
-Sat Nov  4 04:42:46 PM UTC 2023 - Luca Di Maio <luca.dimaio1@gmail.com>
+Sat Nov 4 04:42:46 UTC 2023 - Luca Di Maio <luca.dimaio1@gmail.com>
 
 - Add NetworkManager-bluetooth for bluetooth tethering support
 - Add gnome-control-center-color for display color profile support
 
 -------------------------------------------------------------------
-Sat Nov  4 04:16:46 PM UTC 2023 - Luca Di Maio <luca.dimaio1@gmail.com>
+Sat Nov 4 04:16:46 UTC 2023 - Luca Di Maio <luca.dimaio1@gmail.com>
 
 - Add back grub2-snapper-plugin in order to have back menu for older snapshots
 

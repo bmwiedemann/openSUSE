@@ -931,4 +931,17 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment></comment>
     <requestid>1277359</requestid>
   </revision>
+  <revision rev="100" vrev="100">
+    <srcmd5>4b972c81e72660f2a60a8b4a4e293dd8</srcmd5>
+    <version>5.0</version>
+    <time>1750430896</time>
+    <user>anag_factory</user>
+    <comment>- Adjusted Font selection in the kde pattern to fix some rendering
+  issues (boo#1244927)
+
+- Removed GNOME desktop pattern
+- Changed Kalpa to use tuned-ppd by default
+- Cleaned up a few things in the KDE/Kalpa pattern</comment>
+    <requestid>1287043</requestid>
+  </revision>
 </revisionlist>

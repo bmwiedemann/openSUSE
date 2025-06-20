@@ -424,153 +424,6 @@ Requires:       sof-firmware
 %description desktop-common
 Packages required for openSUSE MicroOS Desktops.
 
-%package desktop-gnome
-Summary:        MicroOS GNOME Desktop
-Group:          Metapackages
-Provides:       pattern() = microos_gnome_desktop
-Provides:       pattern-category() = MicroOS
-Provides:       pattern-icon() = pattern-gnome
-Provides:       pattern-order() = 9100
-Requires:       gdm-branding-MicroOS
-Requires:       pattern() = gnome_basic
-Requires:       pattern() = microos_base_zypper
-Requires:       pattern() = microos_desktop_common
-# gnome-initial-setup requirements
-Requires:       gnome-initial-setup
-Requires:       gjs
-Requires:       gnome-menus-branding-openSUSE
-Requires:       system-group-wheel
-# from data/COMMON-DESKTOP
-Requires:       desktop-data
-Requires:       desktop-file-utils
-#
-# Now the real packages
-#
-# #332596
-Requires:       gnome-keyring-pam
-# implied by gnome-keyring-pam
-#Requires:     gnome-keyring
-Requires:       gnome-disk-utility
-# implied by gdm
-#Requires: gnome-shell
-#Requires: gnome-settings-daemon
-# implied by gnome-shell
-#Requires:       gnome-control-center
-#
-# Default sessions:
-# - We also explicitly put the packages required by those sessions, in case
-#   gnome-session-*-session is not installable, to make sure the livecd is
-#   somehow a bit usable
-#
-Requires:       gnome-session-default-session
-# ensure we have wayland session available (and used by default)
-Requires:       gnome-session-wayland
-# boo#1090117
-Requires:       flatpak
-Requires:       gnome-branding-MicroOS
-Requires:       gnome-color-manager
-#Requires:       gnome-packagekit
-Requires:       gnome-shell-classic
-Requires:       gnome-software
-Requires:       gnome-system-monitor
-Requires:       gnome-terminal
-Requires:       gnome-tweak-tool
-Requires:       gnome-user-docs
-# bnc#879466
-Requires:       gpgme
-# for online accounts and calendar integration
-Requires:       gnome-bluetooth
-# for display color profile support
-Requires:       gnome-control-center-color
-# needed to ensure bluetooth is enabled at startup (glgo#GNOME/gnome-bluetooth#110)
-Requires:       bluez-auto-enable-devices
-Requires:       gnome-control-center-goa
-Requires:       gnome-online-accounts
-Requires:       gnome-shell-calendar
-# For seeing thumbnails in Nautilus
-Requires:       gdk-pixbuf-thumbnailer
-Requires:       gsf-office-thumbnailer
-Requires:       rsvg-thumbnailer
-# So that GNOME shell extensions can be installed
-Requires:       chrome-gnome-shell
-# we need something for xdg-su
-Requires:       gnome-shell-search-provider-nautilus
-Requires:       libgnomesu
-Requires:       nautilus
-Requires:       nautilus-extension-terminal
-Requires:       nautilus-share
-# For encrypting and decrypting files to work in Nautilus
-Requires:       nautilus-extension-seahorse
-Requires:       seahorse-daemon
-# So Trash and mounting USB sticks work in Nautilus
-Requires:       gvfs-backends
-Requires:       gvfs-backend-afc
-Requires:       gvfs-backend-goa
-Requires:       gvfs-fuse
-# We need the icons to work
-Requires:       adwaita-icon-theme
-# We need this for accessability and the lack of it causes big performance issues (boo#1204564)
-Requires:       at-spi2-core
-# Some fonts
-Requires:       adobe-sourcecodepro-fonts
-Requires:       adobe-sourcesanspro-fonts
-Requires:       adobe-sourceserifpro-fonts
-Requires:       dejavu-fonts
-Requires:       ghostscript-fonts-other
-Requires:       ghostscript-fonts-std
-Requires:       google-carlito-fonts
-Requires:       google-droid-fonts
-Requires:       google-opensans-fonts
-Requires:       google-roboto-fonts
-Requires:       noto-coloremoji-fonts
-Requires:       noto-emoji-fonts
-Requires:       noto-sans-fonts
-# So that GNOME keyring works
-Requires:       gcr-ssh-askpass
-Requires:       gcr3-ssh-askpass
-# So that GNOME prompt for ssh password works
-Requires:       openssh-askpass-gnome
-# So that GNOME pinentry works
-Requires:       pinentry-gnome3
-Requires:       gvfs-backend-samba
-Requires:       samba
-# So that GNOME builtin screen recorder works
-Requires:       gstreamer-plugins-bad
-Requires:       gstreamer-plugins-good
-# #509829
-Requires:       xdg-user-dirs-gtk
-Requires:       yelp
-# Polkit integration with GNOME
-Requires:       polkit-gnome
-# https://build.opensuse.org/request/show/921373
-Requires:       xdg-desktop-portal-gnome
-# ensure laptop power support is there
-Requires:       (power-profiles-daemon or tlp)
-Suggests:       power-profiles-daemon
-
-# Add steam-devices for controller and other gaming device support.
-Requires:       steam-devices
-
-#
-# Low-level parts that we need
-#
-%if 0%{is_opensuse}
-# bnc#430161
-Requires:       NetworkManager-openconnect-gnome
-Requires:       NetworkManager-openvpn-gnome
-Requires:       canberra-gtk-play
-#
-# Branding
-#
-# #591535
-Requires:       gtk2-branding-openSUSE
-Requires:       gtk3-branding-openSUSE
-Requires:       gtk4-branding-openSUSE
-%endif
-
-%description desktop-gnome
-Packages required for the openSUSE MicroOS Desktop with GNOME.
-
 %package desktop-kde
 Summary:        MicroOS KDE Plasma Desktop
 Group:          Metapackages
@@ -584,16 +437,17 @@ Requires:       pattern() = microos_desktop_common
 Requires:       pattern() = microos_base_zypper
 
 # Pull in plasma-branding-MicroOS for firstboot setup
-Requires:       plasma-branding-MicroOS
+Requires:       plasma-branding-Kalpa
 
 # Some basic system tools
 Requires:       kate
 Requires:       konsole
+Requires:       falkon-kde
 # Add KDE Partition Manager to install pattern (boo#1212925)
 Requires:       partitionmanager
 
 # Add ksshaskpass5 (boo#1215407)
-Requires:       ksshaskpass5
+Requires:       ksshaskpass6
 
 #KAccounts to be installed by default (boo#1216397)
 Requires:       kaccounts-integration
@@ -623,14 +477,34 @@ Requires:       plasma6-nm-openvpn
 Requires:       kdeplasma6-addons
 Requires:       kio-extras
 Requires:       kwalletmanager
-Requires:       pinentry-qt5
+Requires:       pinentry-qt6
 Requires:       plasma6-pa
 Requires:       plasma6-session
 Requires:       sddm-qt6
 
 # Additional Fonts to cover Unicode Symbols not provided by the fonts pulled in by kde_plasma Pattern
-Requires:       noto-sans-math-fonts
+Requires:       adobe-sourcecodepro-fonts
+Requires:       adobe-sourcesans3-fonts
+Requires:       adobe-sourcesanspro-fonts
+Requires:       adobe-sourceserifpro-fonts
+Requires:       adwaita-fonts
+Requires:       cantarell-fonts
+Requires:       dejavu-fonts
+Requires:       ghostscript-fonts-std
+Requires:       ghostscript-fonts-std-converted
+Requires:       google-carlito-fonts
 Requires:       google-noto-sans-cjk-fonts
+Requires:       google-noto-coloremoji-fonts
+Requires:       google-noto-sans-symbols-fonts
+Requires:       google-noto-sans-symbols2-fonts
+Requires:       google-opensans-fonts
+Requires:       google-roboto-fonts
+Requires:       hack-fonts
+Requires:       ibm-plex-mono-fonts
+Requires:       liberation-fonts
+Requires:       suse-fonts
+
+
 
 # Recommends and Supplements won't work, so pull in manually
 Requires:       discover6-backend-flatpak
@@ -638,7 +512,6 @@ Requires:       discover6-backend-fwupd
 Requires:       kde-gtk-config6
 Requires:       kde-gtk-config6-gtk3
 Requires:       kf6-qqc2-desktop-style
-Requires:       plasma5-defaults-openSUSE
 Requires:       plasma6-browser-integration
 Requires:       plasma6-sddm-theme-openSUSE
 Requires:       purpose
@@ -646,7 +519,7 @@ Requires:       xdg-desktop-portal-kde
 
 # Recommended by powerdevil5, but allow tlp as alternative
 Requires:       (power-profiles-daemon or tuned-ppd)
-Suggests:       power-profiles-daemon
+Suggests:       tuned-ppd
 
 # Doesn't depend on PackageKit, but also works for other backends
 Requires:       discover6-notifier
@@ -786,7 +659,7 @@ mkdir -p %{buildroot}%{_docdir}/patterns-microos/
 PATTERNS='
     basesystem base base_zypper base_microdnf base_packagekit defaults hardware
     sssd_ldap ima_evm ra_agent ra_verifier selinux cockpit cloud
-    desktop-common desktop-gnome desktop-kde onlyDVD alt_onlyDVD
+    desktop-common desktop-kde onlyDVD alt_onlyDVD
 '
 for i in $PATTERNS; do
     echo "This file marks the pattern $i to be installed." \
@@ -852,10 +725,6 @@ done
 %files desktop-common
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/desktop-common.txt
-
-%files desktop-gnome
-%dir %{_docdir}/patterns-microos
-%{_docdir}/patterns-microos/desktop-gnome.txt
 
 %files desktop-kde
 %dir %{_docdir}/patterns-microos
