@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Sun Jun 15 20:35:18 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to Xdebug 3.4.4
+  * Fixed bug #2349: Regression in Xdebug 3.4.3 breaks throwing exceptions
+    in nested generators
+  * Fixed bug #2350: Crash when a certain page generates an exception
+    since Xdebug 3.4.3
+  * Fixed bug #2352: Crash when using latest Xdebug version when throwing
+    exceptions
+  * Fixed bug #2354: The __invoke frame in call stacks don't have the
+    argument name in the trace
+
+-------------------------------------------------------------------
 Wed May 14 21:03:29 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
-- Update to Xdebug 3.4.2
+- Update to Xdebug 3.4.3
   * Fixed bug #2322: Xdebug tries to open debugging connection in
     destructors during shutdown
   * Fixed bug #2325: Referred chrome browser extension is no longer
