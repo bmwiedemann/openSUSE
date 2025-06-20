@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-validate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@ This project has two goals:
 %autosetup -a 1 -p 1
 
 %build
-%ifarch s390x %arm i586
+%ifarch s390x %arm i586 riscv64
 CGO_ENABLED=1 \
 %else
 CGO_ENABLED=0 \
