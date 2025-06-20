@@ -1,7 +1,7 @@
 #
 # spec file for package thrift
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,19 @@
 #
 
 
-%global libversion 0_17_0
+%global libversion 0_22_0
 %global libgversion 0
 %bcond_without perl
 %bcond_without c
-%bcond_without python2
 %bcond_without python3
 %bcond_with java
 %bcond_with ruby
 %bcond_with qt5
-%define skip_python2 1
 %if %{without python3}
 %define skip_python3 1
 %endif
 Name:           thrift
-Version:        0.17.0
+Version:        0.22.0
 Release:        0
 Summary:        Framework for scalable cross-language services development
 License:        Apache-2.0
@@ -163,7 +161,6 @@ Caml, and Haskell.
 %package -n python-thrift
 Summary:        Python %{python_version} bindings for the Thrift software framework
 Group:          Development/Libraries/Python
-Requires:       python-six >= 1.7.2
 Suggests:       python-Twisted
 Suggests:       python-tornado >= 4.0
 %if %{python_version_nodots} <= 34 && %{python_version_nodots} > 30
@@ -184,7 +181,6 @@ Caml, and Haskell.
 %package -n python3-thrift
 Summary:        Python3 bindings for the Thrift software framework
 Group:          Development/Libraries/Python
-Requires:       python3-six >= 1.7.2
 Suggests:       python3-Twisted
 Suggests:       python3-tornado >= 4.0
 %if %{python3_version_nodots} <= 34
@@ -205,14 +201,15 @@ Caml, and Haskell.
 %autosetup -p1
 
 %build
-# https://issues.apache.org/jira/browse/THRIFT-5498
-%global _lto_cflags %{nil}
 export CXXFLAGS="%{optflags} -fPIC"
 
 # tests require static boost library
+# Disable autotools python build as it attempts to use pip
 %configure \
 	--disable-tests \
-	--enable-static=no
+	--enable-static=no \
+	--without-py3 \
+	--without-python
 make %{?_smp_mflags}
 
 %if %{with python3}
