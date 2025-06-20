@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 20 08:22:42 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.20:
+  * tmux: Increase maximum status-right length to 64 
+  * tmux: Remove redundant status-right-length lines
+  * zshrc: allow disabling macOS path_helper
+  * zshrc:cdt() use optional template directory
+  * zshrc: export all locale variables
+  * zshrc: remove xunfunction
+  * Drop useless debian/conffiles file
+  * Unregister /etc/network/interfaces.examples as a conffile
+  * Move grml-tips completion to grml-tips package
+
+-------------------------------------------------------------------
 Thu May 15 06:41:42 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.19:

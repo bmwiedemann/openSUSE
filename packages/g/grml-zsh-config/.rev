@@ -173,4 +173,21 @@
   * zshrc: drop sv support from init.d functions #199</comment>
     <requestid>1277569</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5e2cbcb1a605af27997abf7d49a42f42</srcmd5>
+    <version>0.19.20</version>
+    <time>1750431252</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.20:
+  * tmux: Increase maximum status-right length to 64 
+  * tmux: Remove redundant status-right-length lines
+  * zshrc: allow disabling macOS path_helper
+  * zshrc:cdt() use optional template directory
+  * zshrc: export all locale variables
+  * zshrc: remove xunfunction
+  * Drop useless debian/conffiles file
+  * Unregister /etc/network/interfaces.examples as a conffile
+  * Move grml-tips completion to grml-tips package</comment>
+    <requestid>1287154</requestid>
+  </revision>
 </revisionlist>
