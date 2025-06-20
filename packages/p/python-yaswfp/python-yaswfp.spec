@@ -1,7 +1,7 @@
 #
 # spec file for package python-yaswfp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define pkg_version 0.9.3
+%bcond_without libalternatives
 Name:           python-yaswfp
 Version:        0+git.1411687316.2a2cc6c
 Release:        0
 Summary:        Yet Another SWF Parser
-License:        GPL-3.0
-URL:            http://github.com/facundobatista/yaswfp
-Source:         yaswfp-%{version}.tar.xz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pytest}
-
-BuildRequires:  fdupes
-BuildArch:      noarch
+License:        GPL-3.0-only
 Group:          Development/Libraries/Python
-
+URL:            https://github.com/facundobatista/yaswfp
+Source:         yaswfp-%{version}.tar.xz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       alts
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -41,26 +44,24 @@ Yet Another SWF Parser.
 %setup -q -n yaswfp-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/swfparser
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
-%post
-%python_install_alternative swfparser
-
-%postun
-%python_uninstall_alternative swfparser
+%pre
+%python_libalternatives_reset_alternative swfparser
 
 %files %{python_files}
 %doc README.rst
 %license COPYING
 %python_alternative %{_bindir}/swfparser
-%{python_sitelib}/*
+%{python_sitelib}/yaswfp
+%{python_sitelib}/yaswfp-%{pkg_version}*-info
 
 %changelog

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 19 09:34:27 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives
+
+-------------------------------------------------------------------
+Fri Jun 13 12:51:05 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Mon May 24 08:57:00 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
 
 - Removed constraints about python interpreter version 

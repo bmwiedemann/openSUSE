@@ -7,4 +7,14 @@
     <comment>Package needed as a dependency for a security scanner</comment>
     <requestid>895303</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2e30cf18d4280331cfc10f2e21ae9ace</srcmd5>
+    <version>0+git.1411687316.2a2cc6c</version>
+    <time>1750430973</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives
+
+- Convert to pip-based build</comment>
+    <requestid>1286876</requestid>
+  </revision>
 </revisionlist>
