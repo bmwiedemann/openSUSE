@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 18 13:01:14 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to v2025.05:
+  For v2.13 series (Meteor Lake and newer), new DSP topologies added
+- Modify the workaround for symlink -> directory change with Lua
+  script for singletrans
+
+-------------------------------------------------------------------
 Mon Apr 14 08:23:56 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to v2025.01.1:

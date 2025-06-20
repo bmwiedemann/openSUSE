@@ -24,7 +24,7 @@ Name:           sof-firmware
 Summary:        Firmware data files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        2025.01.1
+Version:        2025.05
 Release:        0
 URL:            https://www.sofproject.org/
 BuildRequires:  fdupes
@@ -115,15 +115,17 @@ cp -a %{buildroot}%{_firmwaredir}/intel/sof-ipc4-tplg \
 %fdupes -s %{buildroot}
 
 # workaround for changing symlinked directory
-%pre
-if [ -L %{_firmwaredir}/intel/sof-tplg ]; then
-  f=$(readlink -f %{_firmwaredir}/intel/sof-tplg)
-  case $f in
-    %{_firmwaredir}/intel/*)
-      rm -rf $f
-      rm -f %{_firmwaredir}/intel/sof-tplg;;
-  esac
-fi
+%pretrans -p <lua>
+if not macros then
+  fwdir = "/lib/firmware"
+else
+  fwdir = macros._firmwaredir
+end
+path = fwdir .. "/intel/sof-tplg"
+st = posix.stat(path)
+if st and st.type == "link" then
+  os.remove(path)
+end
 
 %post
 %{?regenerate_initrd_post}
