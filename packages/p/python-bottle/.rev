@@ -278,4 +278,17 @@
     <comment></comment>
     <requestid>1271295</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0cad78d9c66c7ed7068064c4dbfcec95</srcmd5>
+    <version>0.13.4</version>
+    <time>1750430901</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives
+- update to version 0.13.4:
+  * fix: Route __repr__ and get_undecorated_callback behavior with
+    __call__ (#1488)
+  * fix: Workaround for uv/uvx bug (#1486)
+</comment>
+    <requestid>1286300</requestid>
+  </revision>
 </revisionlist>

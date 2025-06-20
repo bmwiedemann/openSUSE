@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 17 08:43:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives
+
+-------------------------------------------------------------------
+Sun Jun 15 12:06:40 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 0.13.4:
+  * fix: Route __repr__ and get_undecorated_callback behavior with
+    __call__ (#1488)
+  * fix: Workaround for uv/uvx bug (#1486)
+
+-------------------------------------------------------------------
 Mon Apr 21 13:26:32 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 0.13.3:

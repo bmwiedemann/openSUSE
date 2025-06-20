@@ -16,9 +16,10 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-bottle
-Version:        0.13.3
+Version:        0.13.4
 Release:        0
 Summary:        WSGI framework for small web applications
 License:        MIT
@@ -28,10 +29,10 @@ Source1:        http://bottlepy.org/docs/0.12/bottle-docs.pdf
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -73,11 +74,8 @@ cp %{SOURCE1} .
 %check
 %pyunittest -v
 
-%post
-%python_install_alternative bottle.py bottle
-
-%postun
-%python_uninstall_alternative bottle.py bottle
+%pre
+%python_libalternatives_reset_alternative bottle.py
 
 %files %{python_files}
 %license LICENSE
