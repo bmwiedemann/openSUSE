@@ -1,7 +1,7 @@
 #
 # spec file for package gap-xgap
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://gap-packages.github.io/xgap/
 #Git-Clone:     https://github.com/gap-packages/xgap
 Source:         https://github.com/gap-packages/xgap/releases/download/v%version/xgap-%version.tar.gz
 Patch1:         gcc14.patch
+Patch2:         gcc15.patch
 BuildRequires:  c_compiler
 BuildRequires:  fdupes
 BuildRequires:  gap-devel

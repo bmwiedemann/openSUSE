@@ -31,4 +31,12 @@
     <comment>- Make specfile conform to POSIX sh</comment>
     <requestid>1249125</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>75958ea93c434d1be566b231c20e827c</srcmd5>
+    <version>4.32</version>
+    <time>1750431278</time>
+    <user>anag_factory</user>
+    <comment>- Add gcc15.patch</comment>
+    <requestid>1287201</requestid>
+  </revision>
 </revisionlist>
