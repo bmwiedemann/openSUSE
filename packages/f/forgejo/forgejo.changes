@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jun 19 11:16:20 UTC 2025 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Update to 11.0.2:
+  * Features
+    - make Forgejo Actions server logs less noisy
+  * Bug fixes
+    - do not fail when release or wiki is set in /repos/migrate API
+    - ignore expired artifacts for quota calculation
+    - pull request cross references
+    - quote reply in Chromium
+    - fix: make hash pattern more strict
+  * Included for completeness but not worth a release note
+    - remove download attribute from external assets
+    - bleve to v2.5.2 with changes made in backport of 2.5.0
+    - show membership of limited orgs
+    - date dependency go to v1.24.3 (v11.0/forgejo)
+    - drop unused @typescript-eslint/parser package
+    - suppress non actionable XORM warnings
+    - aggregate deleted team as ghost team
+    - center footer links
+    - fix force-push compare line layout
+    - parse change-id in the git commit header
+    - Update module github.com/blevesearch/bleve/v2 to v2.5.1 (v11.0/forgejo) - abandoned
+    - improve force-push compare line layout
+    - Remove "create branch" button on mirrored repos
+    - Update module github.com/msteinert/pam/v2 to v2.1.0 (v11.0/forgejo)
+    - replace ß with ss in normalizeUserName
+    - document is_system_webhook field
+    - remove artificial delay for PR update
+
+-------------------------------------------------------------------
 Wed Jun 11 11:12:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - conflict all subpackages to forgejoi-longterm equivilent packages
