@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 18 16:47:42 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add libsoup-CVE-2025-4945.patch: add value checks for date/time
+  parsing (boo#1243314 CVE-2025-4945).
+
+-------------------------------------------------------------------
 Wed May 28 21:28:03 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Add more CVE fixes:

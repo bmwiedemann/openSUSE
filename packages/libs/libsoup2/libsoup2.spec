@@ -78,6 +78,8 @@ Patch24:        libsoup-CVE-2025-32909.patch
 Patch25:        libsoup-CVE-2025-4948.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2025-4969.patch boo#1243423 mgorse@suse.com -- soup-multipart: Verify array bounds before accessing its members.
 Patch26:        libsoup-CVE-2025-4969.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-4945.patch boo#1243314 mgorse@suse.com -- add value checks for date/time parsing.
+Patch27:        libsoup-CVE-2025-4945.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50
