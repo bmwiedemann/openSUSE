@@ -2205,4 +2205,11 @@ Fixes https://openqa.opensuse.org/tests/4663488#step/select_patterns/142</commen
 See https://build.opensuse.org/request/show/1286046</comment>
     <requestid>1286903</requestid>
   </revision>
+  <revision rev="309" vrev="307">
+    <srcmd5>fdadd9cdea1e6c27dc4c21a219c2df10</srcmd5>
+    <version>unknown</version>
+    <time>1750493986</time>
+    <user>dimstar_suse</user>
+    <comment>No kalpa on ppc64le</comment>
+  </revision>
 </revisionlist>

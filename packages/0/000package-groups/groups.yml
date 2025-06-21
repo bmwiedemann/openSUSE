@@ -417,7 +417,7 @@ opensuse_microos:
   - suse-module-tools-scriptlets
 
 opensuse_microos_desktop:
-  - patterns-microos-desktop-kde: [aarch64,ppc64le,x86_64]
+  - patterns-microos-desktop-kde: [aarch64,x86_64]
 
 opensuse_aeon:
   - Aeon-release: [x86_64]
