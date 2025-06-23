@@ -1,7 +1,7 @@
 #
 # spec file for package alkimia
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,20 @@
 #
 
 
+%define kf6_version 6.6.0
+%define qt6_version 6.6.0
+
 %define sonum 8
+%ifarch aarch64 x86_64 %{x86_64} riscv64
+%define with_qtwebengine 1
+%endif
+
+# QtQuick.Controls.1 and QtQuick.Dialogs.1 imports are upstream code issues
+%global __requires_exclude qt6qmlimport\\((org\\.kde\\.alkimia|QtQuick\\.Controls\\.1|QtQuick\\.Dialogs\\.1).*
+
 %bcond_without released
 Name:           alkimia
-Version:        8.1.2
+Version:        8.2.0
 Release:        0
 Summary:        Library with common classes and functionality used by finance applications
 License:        LGPL-2.1-or-later
@@ -30,39 +40,49 @@ Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{ver
 Source2:        alkimia.keyring
 %endif
 BuildRequires:  doxygen
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  gmp-devel
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5Package)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
+BuildRequires:  cmake(KF6NewStuffCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Plasma) >= 6.0
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+%if 0%{?with_qtwebengine}
+BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
+%endif
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 
 %description
 libalkimia is a library with common classes and functionality used by finance
 applications.
 
-%package -n libalkimia5-%{sonum}
+%package -n libalkimia6-%{sonum}
 Summary:        Library with common classes and functionality used by finance applications
 
-%description -n libalkimia5-%{sonum}
-libalkimia is a library for Qt5 with common classes and functionality used by finance
+%description -n libalkimia6-%{sonum}
+libalkimia is a library for Qt6 with common classes and functionality used by finance
 applications.
 
-%package -n libalkimia5-devel
+%package devel
 Summary:        Development Files for libalkimia
-Requires:       libalkimia5-%{sonum} = %{version}
+Requires:       libalkimia6-%{sonum} = %{version}
+%if 0%{?with_qtwebengine}
+Requires:       cmake(Qt6WebEngineWidgets) >= %{qt6_version}
+%endif
 
-%description -n libalkimia5-devel
+%description devel
 The development files for libalkimia.
 
 %lang_package
@@ -71,49 +91,48 @@ The development files for libalkimia.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DBUILD_WITH_WEBKIT=0 -DBUILD_APPLETS=0 -DENABLE_FINANCEQUOTE=1
-%cmake_build
+%cmake_kf6 \
+  -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
-mkdir -p %{buildroot}%{_datadir}/alkimia5/misc
-mv %{buildroot}/alkimia5/misc/financequote.pl %{buildroot}%{_datadir}/alkimia5/misc/financequote.pl
+%kf6_install
 
-%find_lang alkimia %{name}.lang
-%find_lang onlinequoteseditor %{name}.lang
-%find_lang plasma_applet_onlinequote %{name}.lang
-%find_lang plasma_applet_org.wincak.foreigncurrencies2 %{name}.lang
+# Versioned CMake dirs is almost never a good idea
+mv %{buildroot}%{_kf6_cmakedir}/LibAlkimia6-* %{buildroot}%{_kf6_cmakedir}/LibAlkimia6
 
-%ldconfig_scriptlets -n libalkimia5-%{sonum}
+%find_lang %{name} --all-name
+
+%ldconfig_scriptlets -n libalkimia6-%{sonum}
 
 %files
-%license COPYING.LIB
-%dir %{_kf5_qmldir}/org/
-%dir %{_kf5_qmldir}/org/kde
-%dir %{_kf5_qmldir}/org/kde/alkimia
-%{_kf5_applicationsdir}/org.kde.onlinequoteseditor5.desktop
-%{_kf5_appstreamdir}/org.kde.onlinequoteseditor5.appdata.xml
-%{_kf5_bindir}/onlinequoteseditor5
-%{_kf5_iconsdir}/hicolor/*/apps/onlinequoteseditor5.*
-%{_kf5_knsrcfilesdir}/alkimia-quotes.knsrc
-%{_kf5_knsrcfilesdir}/kmymoney-quotes.knsrc
-%{_kf5_knsrcfilesdir}/skrooge-quotes.knsrc
-%{_kf5_qmldir}/org/kde/alkimia/libqmlalkimia.so
-%{_kf5_qmldir}/org/kde/alkimia/qmldir
-%{_kf5_sharedir}/alkimia5/
+%{_kf6_applicationsdir}/org.kde.onlinequoteseditor6.desktop
+%{_kf6_appstreamdir}/org.kde.onlinequoteseditor6.appdata.xml
+%{_kf6_bindir}/onlinequoteseditor6
+%{_kf6_iconsdir}/hicolor/*/apps/onlinequoteseditor6.*
+%{_kf6_knsrcfilesdir}/alkimia-quotes.knsrc
+%{_kf6_knsrcfilesdir}/kmymoney-quotes.knsrc
+%{_kf6_knsrcfilesdir}/skrooge-quotes.knsrc
+%{_kf6_qmldir}/org/kde/alkimia6/
+%dir %{_kf6_plasmadir}/plasmoids
+%{_kf6_plasmadir}/plasmoids/org.wincak.foreigncurrencies26/
 
-%files -n libalkimia5-devel
-%license COPYING.LIB
+%files devel
 %dir %{_includedir}/alkimia/
-%{_includedir}/alkimia/Qt5
-%{_kf5_cmakedir}/LibAlkimia5-*/
-%{_kf5_libdir}/libalkimia5.so
-%{_libdir}/pkgconfig/libalkimia5.pc
+%{_includedir}/alkimia/Qt6/
+%{_kf6_cmakedir}/LibAlkimia6/
+%{_kf6_libdir}/libalkimia6.so
+%{_libdir}/pkgconfig/libalkimia6.pc
+%dir %{_kf6_sharedir}/gdb
+%dir %{_kf6_sharedir}/gdb/auto-load
+%dir %{_kf6_sharedir}/gdb/auto-load%{_kf6_libdir}
+%{_kf6_sharedir}/gdb/auto-load%{_kf6_libdir}/libalkimia6*-gdb.py
 
-%files -n libalkimia5-%{sonum}
-%license COPYING.LIB
+%files -n libalkimia6-%{sonum}
+%license LICENSES/*
 %doc README.md
-%{_kf5_libdir}/libalkimia5.so.%{sonum}*
+%{_kf6_libdir}/libalkimia6.so.*
 
 %files lang -f %{name}.lang
 
