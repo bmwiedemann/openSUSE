@@ -746,4 +746,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1250464</requestid>
   </revision>
+  <revision rev="59" vrev="6">
+    <srcmd5>da25f42451e09d069ecf4bc652af82bf</srcmd5>
+    <version>2.3.21.1</version>
+    <time>1750683883</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1287724 from darix
+
+- Switch to GCC 14. With GCC 15 the testsuite fails.</comment>
+    <requestid>1287736</requestid>
+  </revision>
 </revisionlist>

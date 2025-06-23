@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 22 16:50:16 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Switch to GCC 14. With GCC 15 the testsuite fails.
+
+-------------------------------------------------------------------
 Mon Feb 10 14:06:40 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Fix build problems caused by too long file name.

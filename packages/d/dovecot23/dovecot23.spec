@@ -16,6 +16,8 @@
 #
 
 
+%global force_gcc_version 14
+
 Name:           dovecot23
 Version:        2.3.21.1
 Release:        0
@@ -70,6 +72,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  flex
+BuildRequires:  gcc%{?force_gcc_version}
 BuildRequires:  libapparmor-devel
 %if %{with icu}
 BuildRequires:  libicu-devel
@@ -105,7 +108,7 @@ BuildRequires:  sqlite-devel > 3
 %endif
 %if %{with clucene}
 BuildRequires:  clucene-core-devel
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}-c++
 %endif
 %if 0%{?sles_version} == 9
 BuildRequires:  heimdal-devel
@@ -362,6 +365,12 @@ sed -i 's|#mail_plugin_dir = /usr/lib/dovecot|mail_plugin_dir = %{_libdir}/dovec
 
 %build
 autoreconf -fiv
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+%if %{with clucene}
+export CXX="g++-%{?force_gcc_version}"
+%endif
+%endif
 export CFLAGS="%{optflags}"
 %if %{with clucene}
 export CFLAGS="$CFLAGS -I%{_libdir}"
