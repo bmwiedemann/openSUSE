@@ -5918,4 +5918,14 @@ I cannot test locally unfortunately.
 - Replace usage of %jobs for reproducible builds (boo#1237231)</comment>
     <requestid>1284604</requestid>
   </revision>
+  <revision rev="365" vrev="2">
+    <srcmd5>a80664cacd20a11534096daf51591831</srcmd5>
+    <version>128.11.1</version>
+    <time>1750683699</time>
+    <user>anag_factory</user>
+    <comment>- Use these tools/versions unconditionally, package won't build on
+  Tumbleweed with new gcc15 otherwise:
+  gcc14, gcc14-c++, cargo1.84, rust1.84</comment>
+    <requestid>1287471</requestid>
+  </revision>
 </revisionlist>

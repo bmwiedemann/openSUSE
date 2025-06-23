@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 17 08:18:37 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Use these tools/versions unconditionally, package won't build on
+  Tumbleweed with new gcc15 otherwise:
+  gcc14, gcc14-c++, cargo1.84, rust1.84
+
+-------------------------------------------------------------------
 Mon Jun  9 11:46:34 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird ESR 128.11.1

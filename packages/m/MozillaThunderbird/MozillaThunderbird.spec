@@ -92,18 +92,14 @@ Name:           %{pkgname}
 BuildRequires:  Mesa-devel
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf213
+BuildRequires:  cargo1.84
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
+BuildRequires:  gcc14
+BuildRequires:  gcc14-c++
 BuildRequires:  memory-constraints
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
-BuildRequires:  gcc13
-BuildRequires:  gcc13-c++
-%else
-BuildRequires:  gcc-c++
-%endif
-BuildRequires:  cargo1.78
-BuildRequires:  rust1.78
+BuildRequires:  rust1.84
 %if 0%{useccache} != 0
 BuildRequires:  ccache
 %endif
@@ -322,14 +318,9 @@ export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 export CFLAGS="%{optflags}"
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
-export CC=gcc-13
-export CXX=g++-13
-%else
 %if 0%{?clang_build} == 0
-export CC=gcc
-export CXX=g++
-%endif
+export CC=gcc-14
+export CXX=g++-14
 %endif
 %ifarch %arm %ix86
 ### NOTE: these sections are not required anymore. Alson --no-keep-memory + -Wl,-z,pack-relative-relocs causes
