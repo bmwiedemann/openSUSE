@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <services>
-  <service name="tar_scm" mode="manual">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/cosmic-utils/Chronos.git</param>
     <param name="scm">git</param>
     <param name="revision">main</param>
-    <param name="versionrewrite-pattern">v(.*)\+0</param>
-    <param name="versionformat">0.1.4+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="package-meta">yes</param>
     <param name="filename">chronos</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="recompress" mode="manual">
+  <service name="tar" mode="buildtime" />
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">zstd</param>
   </service>
