@@ -438,4 +438,95 @@
     <comment>- Skip scikit-image tests on python313: not available yet</comment>
     <requestid>1228967</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>1c1768fc4660ad439c000aedae7fae8d</srcmd5>
+    <version>6.1.2</version>
+    <time>1750683407</time>
+    <user>anag_factory</user>
+    <comment>- Drop upstream patch plotly-pr4622-np2.patch
+- Remove jupyter sub-package, not part of the package anymore after
+  the switch to anywidget gh#plotly/plotly.py#4823
+- Remove notebook from jupyter package, as part of jupyter notebook 6
+  drop, gh#plotly/plotly.py#4822
+- Update to 6.1.2 (CVE-2025-5889, bsc#1244347)
+  * Fix type checking and code highlighting for graph_objects classes [#5199]
+- Release 6.1.1
+  * Prevent swallowing of ValueError when creating a figure with
+    subplots [#3888]
+  * Fix issue causing fig.write_image() to not generate an image
+    [#5193]
+- Release 6.1.0
+  ## Updated
+  * Add support for Kaleido&gt;=v1.0.0 for image generation [#5062, #5177]
+  * Reduce package bundle size by 18-24% via changes to code
+    generation [#4978]
+  ## Fixed
+  * Fix third-party widget display issues in v6 [#5102]
+  * Add handling for case where jupyterlab or notebook is not
+    installed [#5104]
+  * Fix issue causing Plotly.js script to be embedded multiple times
+    in Jupyter notebooks [#5112]
+  * Re-add MIME renderer JupyterLab extension with JupyterLab 4
+    support to reduce file sizes for offline notebooks [#5096]
+  * Fix issue preventing plots from rendering in HTML notebook export
+    when using 'vscode+notebook' renderer [#5154]
+- Release 6.0.1
+  ## Updated
+  * Updated Plotly.js from version 3.0.0 to version 3.0.1. See the
+    plotly.js CHANGELOG for more information.
+  ## Fixed
+  * Fix TypeError when using orjson to serialize pandas.NA [#5040].
+  * Fix issue where using category_orders on px.pie raised
+    ColumnNotFoundError [#5000].
+  * Fix incorrect DeprecationWarning shown when creating a px chart
+    [#5080, #5086]
+- Release 6.0.0
+  ## Added
+  * Add plotly[express] extra for easily installing Plotly Express
+    dependencies [#4644]
+  * Add subtitle attribute to all Plotly Express traces [#4830].
+  ## Removed
+  * Drop deprecated pointcloud and heatmapgl traces from the API [#4815]
+  * Drop tenacity dependency [#4831]
+  * Drop support for Jupyter Notebook version 6 and earlier [#4822].
+    The minimum supported version is now 7.0.0.
+  ## Updated
+  * Update Plotly.js from version 2.34.2 to version 3.0.0 See the
+    plotly.js CHANGELOG for more information. These changes are
+    reflected in the auto-generated plotly.graph_objects module.
+    Notable changes include:
+    - Make offsetgroup work with barmode &quot;stacked&quot; and &quot;relative&quot; for
+      bar traces [#7009]
+    - Drop support for deprecated attributes titlefont, titleposition,
+      titleside, and titleoffset [#7212].
+    - Drop deprecated pointcloud and heatmapgl traces and gl2d
+      subplots [#7213]
+    - Drop support for deprecated bardir attribute (use orientation
+      instead) [#7214]
+    - Drop support for deprecated annotation.ref attribute (use
+      annotation.xref and annotation.yref instead) [#7215]
+    - Drop support for deprecated error bar opacity attribute (use
+      alpha channel of error bar color attribute instead) [#7214]
+    - Drop support for deprecated attribute gl3d.cameraposition (use
+      gl3d.camera instead) [#7217]
+    - Drop deprecated plot3dPixelRatio from config [#7231]
+    - Drop deprecated zauto, zmin and zmax from the surface trace [#7234]
+    - Drop deprecated autotick attributes from cartesian axes [#7236]
+    - Drop transforms from the API [#7240, #7254]
+  * Deprecate Mapbox-based traces.[#4900]. See the MapLibre Migration
+    page for details on migrating from Mapbox to Maplibre.
+  * Update plotly.py to use base64 encoding of typed arrays e.g. numpy
+    in plotly JSON to keep precision intact and improve performance [#4470].
+  * Make plotly-express dataframe agnostic via Narwhals [#4790].
+  * Update go.FigureWidget to use anywidget [#4823]
+  * Use modern native ES6 import to load plotly.js bundle instead of
+    requirejs which is no longer under active development [#4736]
+  ## Fixed
+  * Fix a bug in JupyterLab &gt;= 4 and Jupyter Notebook &gt;= 7 that caused
+    LaTeX to not render in plotly charts [#4763].
+  * Fix go.FigureWidget.show to return FigureWidget instead of
+    displaying Figure [#4869]
+</comment>
+    <requestid>1287194</requestid>
+  </revision>
 </revisionlist>
