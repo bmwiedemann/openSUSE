@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 23 11:41:49 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250623.50ad8e8f:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Fix: crash_test: Correctly retrieve fence event information (bsc#1243786)
+
+-------------------------------------------------------------------
+Mon Jun 23 03:11:08 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250623.b760f655:
+  * Dev: run-functional-tests: Fetch container's IP address correctly
+
+-------------------------------------------------------------------
 Thu Jun 19 10:27:31 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250619.5d3fc833:
