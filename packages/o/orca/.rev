@@ -1480,4 +1480,18 @@
     <comment></comment>
     <requestid>1284559</requestid>
   </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>53c935f8dfb946a14fd414f2c8b59441</srcmd5>
+    <version>48.5</version>
+    <time>1750683331</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.5:
+  + General: Interrupt speech when the old focus and the new focus
+    have the same name.
+- Changes from version 48.4:
+  + Web: Interrupt speech sooner when focus changes in a web app.
+  + General: Fix bug causing the Help button to fail in the
+    Preferences dialog. (forwarded request 1287633 from iznogood)</comment>
+    <requestid>1287866</requestid>
+  </revision>
 </revisionlist>
