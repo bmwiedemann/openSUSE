@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun  6 19:21:07 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.30:
+  * This release fixes a double-free bug that was introduced in
+    1.8.29.
+
+-------------------------------------------------------------------
+Thu May 29 18:41:47 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.29:
+  * Added a new configuration command set_to_header. If activated,
+    this replaces To, Cc, Bcc with a new To header.
+  * Added a new substitution pattern %F for the from command. This
+    allows to set the envelope-from address to the content of the
+    From header.
+  * Many improvements in the msmtpq script.
+  * Updates translations, including a new zh_CN translation.
+
+-------------------------------------------------------------------
 Tue Jan 14 19:59:42 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.28:

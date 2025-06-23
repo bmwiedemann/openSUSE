@@ -541,4 +541,14 @@ update to version 1.8.24</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1240149</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>687970c24b398845711451407844303a</srcmd5>
+    <version>1.8.30</version>
+    <time>1750683724</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1283739 from benoit_monin
+
+update to version 1.8.30</comment>
+    <requestid>1287484</requestid>
+  </revision>
 </revisionlist>
