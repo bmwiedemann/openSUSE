@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 22 20:26:01 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.15.5
+  * Fixed corrupted stack in curl stack due to wrong argument type.
+  * Fix file descriptor leak in session file saving.
+
+-------------------------------------------------------------------
 Mon Jun  2 08:38:29 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.15.4
