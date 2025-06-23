@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 22 03:28:35 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- Update to version 0.2.0
+  * set default value of --enable-external-keyboards to 'no'
+  * hangul_init: add user_defined_keyboard_path argument
+  * add hangul_ic_switch_keyboard_table()
+  * load both builtin and external keyboards
+
+-------------------------------------------------------------------
 Wed Mar 26 03:27:27 UTC 2025 - i@marguerite.su
 
 - Update to version 0.1.1~git20230415.154a5e0:

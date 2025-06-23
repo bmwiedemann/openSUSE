@@ -18,13 +18,13 @@
 
 %define soname 1
 Name:           libhangul
-Version:        0.1.1~git20230415.154a5e0
+Version:        0.2.0
 Release:        0
 Summary:        The Hangul input library
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Korean
 URL:            https://github.com/libhangul/libhangul
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/libhangul/libhangul/releases/download/libhangul-%{version}/libhangul-%{version}.tar.gz
 Source99:       baselibs.conf
 # FIX-FOR-SLES downgrade gettext requirement to 0.14 from 0.18
 Patch0:         fix-for-sles-gettext-version.patch
@@ -65,7 +65,7 @@ sed -i "s/0\.18/0\.19/" configure.ac
 if [ ! -f config.rpath ]; then
   touch config.rpath
 fi
-NOCONFIGURE=1 ./autogen.sh
+#NOCONFIGURE=1 ./autogen.sh
 # Can't merge with the %%if 0%{?sles_version} above,
 # This applies _after_ the autogen.sh
 %if 0%{?sles_version}
@@ -80,7 +80,7 @@ cat po/Makefile.in.in
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 %configure --disable-static --with-pic
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -93,14 +93,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n %{name}%{soname} -f %{name}.lang
 # /usr/share/licenses is not owned by any package on SLE 12 SP2 and older
 %if 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
-%doc COPYING
+%license COPYING
 %else
 %license COPYING
 %endif
 %doc AUTHORS NEWS README
 %{_bindir}/hangul
 %{_libdir}/libhangul.so.1
-%{_libdir}/libhangul.so.1.0.0
+%{_libdir}/libhangul.so.1.1.0
 %{_datadir}/libhangul/
 
 %files devel
