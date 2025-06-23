@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Sat Mar 29 16:08:31 UTC 2025 - suse.snooper541@passmail.net
+
+- Initial version 1+git20250306.4c6178c:
+  * clippy
+  * Changed legacy /var/run/ to /run/
+  * Upgrade dependencies and add mask support for illuminance file
+

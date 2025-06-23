@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>45e5158819298de9b1caf2c29aa092bb</srcmd5>
+    <version>1+git20250306.4c6178c</version>
+    <time>1750683433</time>
+    <user>anag_factory</user>
+    <comment>This is a user-space daemon that automatically adjusts screen brightness based on light sensor readings.
+It is needed e.g. on Framework devices running a different WM than GNOME to enable automatic display brightness.
+
+This requirest fixes the systemd Require/BuildRequire issues of the last request</comment>
+    <requestid>1287225</requestid>
+  </revision>
+</revisionlist>
