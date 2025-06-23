@@ -266,6 +266,7 @@ Patch1244087:   U_CVE-2025-49178-os-Account-for-bytes-to-ignore-when-sharing-inp
 Patch1244089:   U_CVE-2025-49179-record-Check-for-overflow-in-RecordSanityCheckRegist.patch
 Patch1244090:   U_CVE-2025-49180-randr-Check-for-overflow-in-RRChangeProviderProperty.patch
 Patch1244091:   U_CVE-2025-49180-xfree86-Check-for-RandR-provider-functions.patch
+Patch1244092:   U_CVE-2025-49176-os-Check-for-integer-overflow-on-BigRequest-length.patch
 
 %description
 This package contains the X.Org Server.
@@ -444,6 +445,7 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 1244089 -p1
 %patch -P 1244090 -p1
 %patch -P 1244091 -p1
+%patch -P 1244092 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):

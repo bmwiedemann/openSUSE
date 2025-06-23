@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 22 11:55:17 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_CVE-2025-49176-os-Check-for-integer-overflow-on-BigRequest-length.patch
+  * additional fix for CVE-2025-49176
+
+-------------------------------------------------------------------
 Fri Jun  6 10:44:07 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_CVE-2025-49175-render-Avoid-0-or-less-animated-cursors.patch
