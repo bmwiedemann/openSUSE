@@ -43,6 +43,13 @@ Patch2:         lasso-fix-implicit-declarations.patch
 Patch3:         lasso-libxml2-2.12-support.patch
 # PATCH-FIX-UPSTREAM lasso-2.8.2-python_313.patch -- https://dev.entrouvert.org/issues/92106
 Patch4:         lasso-2.8.2-python_313.patch
+# PATCH-FIX-OPENSUSE fix_shebangs.patch mcepl@suse.com
+# fix incorrect shebangs to be #!/usr/bin/python3
+Patch5:         fix_shebangs.patch
+# PATCH-FIX-UPSTREAM remove-six.patch mcepl@suse.com
+# from https://git.entrouvert.org/entrouvert/lasso/pulls/19
+# remove dependency on the Python six module
+Patch6:         remove-six.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  check-devel
@@ -100,10 +107,6 @@ library.
 
 %prep
 %autosetup -p1
-
-# Remove any python script shebang lines (unless they refer to python3)
-sed -i -E -e '/^#![[:blank:]]*(\/usr\/bin\/env[[:blank:]]+python[^3]?\>)|(\/usr\/bin\/python[^3]?\>)/d' \
-  `grep -r -l -E '^#![[:blank:]]*(%{_bindir}/python[^3]?)|(%{_bindir}/env[[:blank:]]+python[^3]?)' *`
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} < 1550

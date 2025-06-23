@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 18 19:11:23 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Merge the upstream PR
+  (https://git.entrouvert.org/entrouvert/lasso/pulls/19) as the
+  patch remove-six.patch removing the dependency on six.
+- Add fix_shebangs.patch to fix shebangs (better manageable than
+  sed commands).
+
+-------------------------------------------------------------------
 Wed Mar  5 07:39:46 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add lasso-2.8.2-python_313.patch upstream patch to make it
