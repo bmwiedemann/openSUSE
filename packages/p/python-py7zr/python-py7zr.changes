@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Jun 20 09:43:34 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.0.0
+  * Changed
+    - CI: check on Linux on ARM64 with GitHub hosted ARM64 runner.
+    - Improve issue report template
+    - Remove Travis-CI button from Documentation
+- Changes from 0.22.0
+  * Added
+    - Add mode "x" for SevenZipFile (#588)
+    - Add SevenZipFile#namelist method (#600)
+  * Fixed
+    - Append mode on non-existent files (#604)
+    - Fix NUMBER encoding of integer when 8 bytes(#591)
+  * Changed
+    - Minimum required Python version to be Python 3.8 (#601)
+    - Remove pyannotate from pyproject.toml (#598)
+  * Document
+    - Update user guide (#596)
+- Changes from 0.21.1
+  * Fixed
+    - Follow shutil.register_unpack_format() convention of raising a ReadError when the library cannot handle a file (#583)
+    - ensure unpack_7zarchive closes the archive (#584)
+    - 64bit OS detection (#580)
+  * Added
+    - Add recursive sub-directories and files extraction (#585)
+  * Changed
+    - check targets argument type for read and extract method (#577)
+    - Treat zero byte stream as a file (#551)
+- Changes from 0.21.0
+  * Changed
+    - Speed up extraction when number of files is very large (#555)
+    - Replace deprecated functions on python 3.12 (#550)
+  * Added
+    - Add report_update() for logging large files extraction (#558)
+  * Document
+    - Add subsection of multi-volume creation (#568)
+- Drop py7zr-remove-pyannotate.patch because no more needed.
+
+-------------------------------------------------------------------
 Fri Feb 16 15:40:08 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Remove bogus unmaintained pyannotate test dependency

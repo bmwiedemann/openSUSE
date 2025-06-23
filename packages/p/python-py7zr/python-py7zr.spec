@@ -1,7 +1,7 @@
 #
 # spec file for package python-py7zr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,16 +26,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-py7zr%{psuffix}
-Version:        0.20.8
+Version:        1.0.0
 Release:        0
 Summary:        Library and utility to support 7zip
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/miurahr/py7zr
 Source0:        https://files.pythonhosted.org/packages/source/p/py7zr/py7zr-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM py7zr-remove-pyannotate.patch gh#miurahr/py7zr#552
-Patch0:         https://github.com/miurahr/py7zr/pull/552.patch#/py7zr-remove-pyannotate.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 63}
 BuildRequires:  %{python_module setuptools_scm >= 7.0.5}
@@ -45,12 +43,12 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Brotli >= 1.1.0
 Requires:       python-multivolumefile >= 0.2.3
 Requires:       python-psutil
-Requires:       python-pycryptodomex >= 3.16.0
-Requires:       python-pyzstd >= 0.15.9
+Requires:       python-pycryptodomex >= 3.20.0
+Requires:       python-pyzstd >= 0.16.1
 Requires:       python-texttable
 Requires:       (python-inflate64 >= 1.0.0 with python-inflate64 < 1.1.0)
 Requires:       (python-pybcj >= 1.0.0 with python-pybcj < 1.1.0)
-Requires:       (python-pyppmd >= 1.1.0 with python-pyppmd < 1.2.0)
+Requires:       (python-pyppmd >= 1.1.0 with python-pyppmd < 1.3.0)
 %if 0%{?python_version_nodots} < 38
 Requires:       python-importlib_metadata
 %endif
@@ -60,9 +58,11 @@ Requires(postun): update-alternatives
 BuildRequires:  %{python_module py-cpuinfo}
 BuildRequires:  %{python_module py7zr = %{version}}
 BuildRequires:  %{python_module pytest-benchmark}
+BuildRequires:  %{python_module pytest-httpserver}
 BuildRequires:  %{python_module pytest-remotedata}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
 %endif
 BuildArch:      noarch
 %python_subpackages
