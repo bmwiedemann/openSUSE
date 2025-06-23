@@ -16,22 +16,14 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
-%global sname fcitx5-unikey
-%if "%{flavor}" == ""
-%global pname %sname
-%else
-%global pname %{sname}-%{flavor}
-%endif
-
-Name:           %{pname}
-Version:        5.1.6
+Name:           fcitx5-unikey
+Version:        5.1.7
 Release:        0
 Summary:        Unikey engine support for Fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          System/Localization
 URL:            https://github.com/fcitx/fcitx5-unikey
-Source:         https://download.fcitx-im.org/fcitx5/%{sname}/%{sname}-%{version}.tar.zst
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -39,18 +31,12 @@ BuildRequires:  fcitx5-qt-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-base-devel
 BuildRequires:  zstd
-%if "%{flavor}" == ""
-BuildRequires:  libqt5-qtbase-devel
 Requires:       fcitx5
 Provides:       fcitx-unikey = %{version}
 Obsoletes:      fcitx-unikey <= 0.2.7
-Conflicts:      %{sname}-qt6
-%endif
-%if "%{flavor}" == "qt6"
-BuildRequires:  qt6-base-devel
-Conflicts:      %{sname}
-%endif
+Obsoletes:      fcitx5-unikey-qt6 <= 5.1.6
 %if 0%{?suse_version} <= 1520
 BuildRequires:  appstream-glib-devel
 %endif
@@ -59,37 +45,26 @@ BuildRequires:  appstream-glib-devel
 Chewing Wrapper for Fcitx5.
 
 %prep
-%setup -q -n %{sname}-%{version}
+%setup -q -n %{name}-%{version}
 
 %build
-%if "%{flavor}" == ""
-%cmake -DUSE_QT6=OFF
-%endif
-%if "%{flavor}" == "qt6"
 %if 0%{?suse_version} == 1500
 %cmake -DCMAKE_CXX_COMPILER=%{_bindir}/g++-13
 %else
 %cmake
 %endif
-%endif
 %make_build
 
 %install
 %cmake_install
-%find_lang %{sname}
+%find_lang %{name}
 
-%files -f %{sname}.lang
+%files -f %{name}.lang
 %license LICENSES
 %doc README
 %{_fcitx5_libdir}/libunikey.so
-%if "%{flavor}" == ""
-%{_fcitx5_qt5dir}/libfcitx5-unikey-keymap-editor.so
-%{_fcitx5_qt5dir}/libfcitx5-unikey-macro-editor.so
-%endif
-%if "%{flavor}" == "qt6"
 %{_libdir}/fcitx5/qt6/libfcitx5-unikey-keymap-editor.so
 %{_libdir}/fcitx5/qt6/libfcitx5-unikey-macro-editor.so
-%endif
 %{_fcitx5_addondir}/unikey.conf
 %{_fcitx5_imconfdir}/unikey.conf
 %{_datadir}/icons/hicolor/*/apps/fcitx-unikey*
