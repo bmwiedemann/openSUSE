@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-libthai
-Version:        5.1.5
+Version:        5.1.6
 Release:        0
 Summary:        Libthai input method engine for Fcitx5
 License:        GPL-2.0-or-later
@@ -27,7 +27,11 @@ Patch0:         %{name}-iconv.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
+%if 0%{?suse_version} >= 1550
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc13-c++
+%endif
 BuildRequires:  libthai-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zstd
@@ -45,6 +49,9 @@ fcitx-libthai is an input method engine for Fcitx, which uses libthai as its bac
 %autopatch -p1
 
 %build
+%if 0%{?suse_version} < 1550
+export CXX=%{_bindir}/g++-13
+%endif
 %cmake
 %make_build
 
