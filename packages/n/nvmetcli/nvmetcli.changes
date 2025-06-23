@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 18 15:10:09 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add remove_six.patch to remove dependency on the six module
+  (patch sent to the upstream list; bsc#1244013).
+
+-------------------------------------------------------------------
+Wed Jun 18 08:03:21 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Add missing python-six dependency (bsc#1244013)
+
+-------------------------------------------------------------------
 Thu Mar 20 08:46:34 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Drop dependency on unmaintained kmodpy

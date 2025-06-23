@@ -1,0 +1,72 @@
+---
+ README                 |    3 +--
+ nvmet/nvme.py          |    7 +++----
+ rpm/nvmetcli.spec.tmpl |    2 +-
+ 3 files changed, 5 insertions(+), 7 deletions(-)
+
+Index: nvmetcli-v0.8/README
+===================================================================
+--- nvmetcli-v0.8.orig/README	2023-11-03 14:48:18.000000000 +0100
++++ nvmetcli-v0.8/README	2025-06-18 17:06:46.833244715 +0200
+@@ -14,8 +14,7 @@
+ 
+ Common Package Dependencies and Problems
+ -----------------------------------------
+-Both python2 and python3 are supported via use of the 'python-six'
+-package.
++Python3 is supported.
+ 
+ nvmetcli uses the 'pyparsing' package -- running nvmetcli without this
+ package may produce hard-to-decipher errors.
+Index: nvmetcli-v0.8/nvmet/nvme.py
+===================================================================
+--- nvmetcli-v0.8.orig/nvmet/nvme.py	2025-06-18 17:06:46.817943064 +0200
++++ nvmetcli-v0.8/nvmet/nvme.py	2025-06-18 17:06:46.833587778 +0200
+@@ -23,7 +23,6 @@
+ import uuid
+ import json
+ from glob import iglob as glob
+-from six import iteritems, moves
+ 
+ DEFAULT_SAVE_FILE = '/etc/nvmet/config.json'
+ 
+@@ -220,7 +219,7 @@
+ 
+     def _setup_attrs(self, attr_dict, err_func):
+         for group in self.attr_groups:
+-            for name, value in iteritems(attr_dict.get(group, {})):
++            for name, value in attr_dict.get(group, {}).items():
+                 try:
+                     self.set_attr(group, name, value)
+                 except CFSError as e:
+@@ -567,7 +566,7 @@
+                 raise CFSError("Need NSID for lookup")
+ 
+             nsids = [n.nsid for n in subsystem.namespaces]
+-            for index in moves.xrange(1, self.MAX_NSID + 1):
++            for index in xrange(1, self.MAX_NSID + 1):
+                 if index not in nsids:
+                     nsid = index
+                     break
+@@ -827,7 +826,7 @@
+                 raise CFSError("Need grpid for lookup")
+ 
+             grpids = [n.grpid for n in port.ana_groups]
+-            for index in moves.xrange(2, self.MAX_GRPID + 1):
++            for index in xrange(2, self.MAX_GRPID + 1):
+                 if index not in grpids:
+                     grpid = index
+                     break
+Index: nvmetcli-v0.8/rpm/nvmetcli.spec.tmpl
+===================================================================
+--- nvmetcli-v0.8.orig/rpm/nvmetcli.spec.tmpl	2023-11-03 14:48:18.000000000 +0100
++++ nvmetcli-v0.8/rpm/nvmetcli.spec.tmpl	2025-06-18 17:06:46.833930422 +0200
+@@ -9,7 +9,7 @@
+ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-rpmroot
+ BuildArch:      noarch
+ BuildRequires:  python-devel python-setuptools systemd-units
+-Requires:	python-configshell python-kmod python-six
++Requires:	python-configshell python-kmod
+ Requires(post): systemd
+ Requires(preun): systemd
+ Requires(postun): systemd

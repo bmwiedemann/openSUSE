@@ -27,6 +27,9 @@ Source:         nvmetcli-v%{version}.tar.gz
 Patch1:         nvmetcli-update-python-to-python3.patch
 Patch2:         harden_nvmet.service.patch
 Patch3:         When-kmodpy-is-not-available-call-kmod-binary-directly.patch
+# PATCH-FIX-UPSTREAM remove_six.patch bsc#1244013 mcepl@suse.com
+# remove use of six, we don't need to support Python 2 any more
+Patch4:         remove_six.patch
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python3-pip
@@ -35,8 +38,8 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
 Requires:       python3-configshell-fb
 Requires(post): systemd
-Requires(postun):systemd
-Requires(preun):systemd
+Requires(postun): systemd
+Requires(preun): systemd
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
