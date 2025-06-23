@@ -6339,4 +6339,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   surfaceless</comment>
     <requestid>1283887</requestid>
   </revision>
+  <revision rev="546" vrev="418">
+    <srcmd5>af3188c6d422c9905ec34af7a1db0472</srcmd5>
+    <version>unknown</version>
+    <time>1750683350</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 25.1.4
+  --&gt;  https://docs.mesa3d.org/relnotes/25.1.4</comment>
+    <requestid>1287559</requestid>
+  </revision>
 </revisionlist>
