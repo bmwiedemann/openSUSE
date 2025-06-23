@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 22 03:53:08 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.4
+  * Fix incorrect gravity value mapping for Bottom Left
+  * fix(gtk4): correct offset variable in setCursorRect
+
+-------------------------------------------------------------------
 Thu May 23 07:46:20 UTC 2024 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.3
