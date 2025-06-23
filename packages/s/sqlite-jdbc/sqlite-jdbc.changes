@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Jun  9 10:50:26 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.50.1.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.50.1 (9596393)
+    ~ unscoped
+      + better detection of Android environment (d540536), closes
+        #1210
+      + do not create temporary file before opening connection
+        (639e362), closes #1260
+  * Changes
+    ~ update comment link to Java issue tracker (79cc5fe)
+  * Build
+    ~ deps
+      + bump org.jreleaser:jreleaser-maven-plugin (8a64841)
+      + bump org.junit:junit-bom from 5.12.1 to 5.12.2 (f3dff86)
+      + bump surefire.version from 3.5.2 to 3.5.3 (0d2c2a5)
+      + bump org.graalvm.buildtools:native-maven-plugin (75d0a0c)
+      + bump org.jreleaser:jreleaser-maven-plugin (3baf8b8)
+      + bump uraimo/run-on-arch-action from 2 to 3 (2b96823)
+      + bump org.apache.maven.plugins:maven-compiler-plugin
+        (dc5a58c)
+    ~ deps-dev
+      + bump org.mockito:mockito-core from 5.17.0 to 5.18.0
+        (1f66a8d)
+      + bump com.tngtech.archunit:archunit-junit5 (b2039f1)
+      + bump org.mockito:mockito-core from 5.16.1 to 5.17.0
+        (c8ce29c)
+      + bump org.junit.jupiter:junit-jupiter from 5.11.4 to 5.12.1
+        (6b70c85)
+      + bump org.mockito:mockito-core from 5.16.0 to 5.16.1
+        (8417ae1)
+      + bump org.mockito:mockito-core from 5.15.2 to 5.16.0
+        (70232b0)
+    ~ unscoped
+      + re-enable tests dependency (d86e4c0)
+      + re-enable tests for snapshot publishing testing (737588a)
+      + disable tests for snapshot publishing testing (45d285d)
+      + try to fix snapshot publishing (ebbdf5d)
+      + migrate from ossrh to central publishing (027bee5)
+      + add JUnit 5.12 and GraalVM for JDK 24 support (bd0e995)
+
+-------------------------------------------------------------------
 Thu Mar 27 21:36:43 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Fix javadoc generation with javadoc:aggregate

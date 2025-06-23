@@ -17,8 +17,8 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%global version 3.49.1.0
-%global amalgamation_version 3490100
+%global version 3.50.1.0
+%global amalgamation_version 3500100
 %global debug_package %{nil}
 Name:           sqlite-jdbc
 Version:        %{version}
@@ -42,6 +42,7 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
 BuildRequires:  mvn(org.hamcrest:hamcrest-all)
 BuildRequires:  mvn(org.junit.jupiter:junit-jupiter-api)
 BuildRequires:  mvn(org.junit.jupiter:junit-jupiter-engine)
+BuildRequires:  mvn(org.junit:junit-bom:pom:)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 
 %description
@@ -68,8 +69,8 @@ find src/main/resources \
 	\( -name \*.so -or -name \*.dylib -or -name \*.dll \) \
 	-delete
 
-%pom_remove_plugin org.sonatype.plugins:nexus-staging-maven-plugin
 %pom_remove_plugin com.diffplug.spotless:spotless-maven-plugin
+%pom_remove_plugin org.sonatype.central:central-publishing-maven-plugin
 %pom_remove_dep org.graalvm.sdk:nativeimage
 
 sed -i -e '/org\.graalvm\.nativeimage/ d' src/main/java9/module-info.java
