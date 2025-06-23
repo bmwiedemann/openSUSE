@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-wallpapers
-Version:        1.0.0~alph6+0
+Version:        1.0.0~alph7+0
 Release:        0
 Summary:        Wallpapers for the COSMIC Desktop Environment
 License:        CC-BY-4.0 OR CC0-1.0
@@ -41,6 +41,7 @@ BuildRequires:  zstd
 rm -f %{buildroot}%{_datadir}/backgrounds/cosmic/{otherworldly_earth_nasa_ISS064-E-29444.jpg,round_moons_nasa.jpg,phytoplankton_bloom_nasa_oli2_20240121.jpg}
 
 %files
+%license LICENSE
 %doc README.md
 %dir %{_datadir}/backgrounds
 %{_datadir}/backgrounds/cosmic
