@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jun 21 06:24:37 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.33.2:
+  * fix kubeadm e2e tests
+  * Bump images, dependencies and versions to go 1.24.4 and distroless iptables
+  * Remove warning about resizing failed for unknown reason
+  * Add tests that validate the return value of resize operation
+  * Revert shorthand for kubectl explain --output
+  * DRA node: reject static pods which reference ResourceClaims
+  * userns: Wrap more errors
+  * userns: Improve error returned if userns is not supported
+  * userns: Use len to handle empty non-nil slices
+  * SchedulerPreemption [Serial] validates various priority Pods preempt expectedly with the async preemption: replace finalizers with preStop hook and TerminationGracePeriodSeconds
+  * Update hnslib version in Windows KubeProxy.
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.24.4`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.33.2/build/dependencies.yaml#L117-L119
+
+-------------------------------------------------------------------
 Mon May 19 05:26:53 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.33.1:
