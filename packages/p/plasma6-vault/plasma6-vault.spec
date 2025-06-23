@@ -39,6 +39,8 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Use-fusermount3-if-available.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
@@ -57,8 +59,8 @@ BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-Requires:       /usr/bin/fusermount
 Requires:       plasma6-vault-backend
+Requires:       (/usr/bin/fusermount3 or /usr/bin/fusermount)
 # encfs is EOL, creating new EncFS vaults will no longer be supported
 # See https://github.com/KDE/plasma-vault/commit/ef0762f188ce6568b8fa7babbce852010366c935
 Recommends:     plasma6-vault-backend-gocryptfs

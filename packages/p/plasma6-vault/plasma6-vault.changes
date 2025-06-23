@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 21 08:48:55 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to support fuse3:
+  * 0001-Use-fusermount3-if-available.patch
+
+-------------------------------------------------------------------
 Thu Jun 12 10:37:55 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.0:
