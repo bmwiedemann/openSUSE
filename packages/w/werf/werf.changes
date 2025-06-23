@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jun 20 12:50:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.38.1:
+  * docs: add documentation for --debug-templates usage and
+    behavior (#6903)
+  * fix(host-cleanup): fix fdopendir
+    /Users/user/.werf/local_cache/git_repos/.DS_Store: not a
+    directory
+  * fix(cleanup): properly handle multi-platform images by
+    BuiltWithinLastNHours policy (#6913)
+
+-------------------------------------------------------------------
+Thu Jun 19 11:50:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.38.0:
+  * Features
+    - add --final-images-only option to most commands (2bbb69e)
+    - build,deploy: add debug templates feature (001fca6)
+    - build,deploy: add debug templates feature /2 (9cb5013)
+    - cleanup: implement keep list policy (3de2168)
+    - deploy: --force-adoption to disable Helm release annotations
+      checks (ee290c1)
+    - deploy: new functions to debug Helm templates + detailed
+      template errors (10281eb)
+  * Bug Fixes
+    - build, stapel, git: fix add: '/' requires not empty
+      includePaths to interpret copy sources unambiguously
+      (492d31f)
+    - build, stapel, import: import from root causes runner to hang
+      (add: /) (#6906) (f874a32)
+
+-------------------------------------------------------------------
 Thu Jun 05 17:04:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.37.1:
