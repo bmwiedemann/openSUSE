@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyppmd
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        PPMd compression/decompression library
 License:        LGPL-2.1-or-later
 URL:            https://codeberg.org/miurahr/pyppmd
 Source:         https://files.pythonhosted.org/packages/source/p/pyppmd/pyppmd-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 6.0.1}
 BuildRequires:  %{python_module wheel}

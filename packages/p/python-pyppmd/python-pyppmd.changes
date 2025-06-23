@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 20 09:58:39 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.2.0
+  * Added
+    - Add Windows on Arm64, Linux on aarch64 support
+  * Changed
+    - Released from GitHub Actions as trusted platform
+
+-------------------------------------------------------------------
 Fri Jan 10 10:53:49 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.1.1
