@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Jun 17 09:37:45 UTC 2025 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 5.3.4:
+  * All operators can now delete user-specified global attributes (--glb_att_del)
+  * ncrcat no longer performs monotonicity checks on CF bounds variables
+  * new option "--is_hrz" to check whether a variable is a 'horizontal variable'
+  * ncclimo can now infer the timesteps per day (tpd) for data that lack a
+      CF temporal bounds variable
+  * ncks now has a new S1D functionality to aggregate and report Urban
+      landunit characteristics
+  * ncks now inserts line-breaks in NC_STRING-valued text for "\n"
+  * ncremap deprecates the use of the "--alg_typ=tempest" option
+  * fix ncrcat regression on hierarchical files
+- Update to version 5.3.3:
+  * new ncks --fpe option reports the status of all IEEE Floating
+      Point Exceptions (FPEs) after execution
+  * All operators can now quantize -0.0 (a legal number) without
+      triggering any IEEE Floating Point Exceptions
+  * ncclimo now only creates regional statistics for single level spatial timeseries
+  * NCO can interpolate to a distinct output surface pressure that
+      is stored in the vertical template file ("fat" template)
+  * ncks --chk_map now prints the minimum and maximum angular and
+      horizontal resolution of the source and destination grids
+  * ncrename now WARNs users attempting to rename coordinates in netCDF4 files
+  * fix omission of storing the attributes for the frc_column and frc_landunit
+      variables created by the S1D feature
+- Update to version 5.3.2:
+  * ncremap will vertically interpolate a broader array of ECMWF IFS
+      and CAMS-format hybrid sigma-pressure vertical coordinate datasets
+  * ncremap's vertical interpolator now attaches CF metadata
+      (standard_name), units, and long_name attributes to output files
+      stored on hybrid sigma-pressure vertical coordinate grids
+  * ncremap and ncclimo now better refuse to overwrite
+      input files that are the same inode/device as output files.
+  * ncremap and ncclimo now use "srun -n nd_nbr" to manage
+      MPI-mode climatologies and regridding
+  * fix storing quantization metadata for variables in non-root groups
+- Update to version 5.3.1:
+  * Autoconversion of NC_STRING variables to NC_CHAR
+  * ncremap's vertical interpolator now automatically extrapolates
+      variables named "t" (ERA5) as if they were temperature, and
+      variables named "H" (MERRA2) and VerticalLayerMidpoint (SCREAM)
+      as if they were geopotential height
+  * ncremap's vertical interpolator now understands that the time
+      dimension in input surface pressure fields may be "fixed"
+- Update to version 5.3.0:
+  * ncks enhanced unpacking of ELM/CLM history/restart files
+  * ncks can now grid snow-related variables into a top-down vertical grid
+  * ncks S1D now accepts the "--rgr lut_out=$lut_out" option
+  * ncremap no longer emits the "landfrac" WARNING for EAMxx files
+  * ncclimo now automatically outputs additional metrics with global statistics
+  * fix ncrcat overly false-negative WARNINGs about monotonicity
+
+-------------------------------------------------------------------
 Mon Oct 21 08:24:52 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
 
 - remove BuildRequires: netcdf-cxx4 from spec file, not needed since 2001

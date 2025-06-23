@@ -1,7 +1,7 @@
 #
 # spec file for package nco
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,14 @@
 #
 
 
+#---netcdf is for TW no longer available on 32bit archs, disable them:
+%if 0%{?suse_version} > 1600
+ExcludeArch: %{ix86} %{arm}
+%endif
+
 Name:           nco
-Version:        5.2.9
-%define  soname 5_2_9
+Version:        5.3.4
+%define  soname 5_3_4
 %define  major  5
 Release:        0
 Summary:        Suite of programs for manipulating NetCDF/HDF files
