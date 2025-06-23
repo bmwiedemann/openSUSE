@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-anthy
-Version:        5.1.6
+Version:        5.1.7
 Release:        0
 Summary:        Anthy Wrapper for Fcitx5
 License:        GPL-2.0-or-later
@@ -28,7 +28,11 @@ BuildRequires:  anthy-devel
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
+%if 0%{?suse_version} >= 1550
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc13-c++
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  zstd
@@ -48,6 +52,9 @@ Anthy Wrapper for Fcitx5.
 %autopatch -p1
 
 %build
+%if 0%{?suse_version} < 1550
+export CXX=%{_bindir}/g++-13
+%endif
 %cmake
 %make_build
 

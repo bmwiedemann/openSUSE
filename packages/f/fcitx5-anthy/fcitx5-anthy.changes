@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 22 03:42:44 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.7
+  * Convert all table in default_tables into std:array
+  * Use more utf8::MakeStringViewRange instead of utf8_string_substr
+  * Port to StandardPaths
+
+-------------------------------------------------------------------
 Wed Jan 29 06:51:02 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.6
