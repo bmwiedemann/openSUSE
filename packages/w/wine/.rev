@@ -5500,4 +5500,41 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <user>dimstar_suse</user>
     <comment>Manually merge osmesa drop from devel prj</comment>
   </revision>
+  <revision rev="463" vrev="1">
+    <srcmd5>0f179e56a9e9e4d4fa418f40e7ac6345</srcmd5>
+    <version>10.10</version>
+    <time>1750688135</time>
+    <user>anag_factory</user>
+    <comment>- symlink /usr/lib64/wine/x86_64-* into /usr/lib/wine/
+
+- updated to 10.10 release
+  - Mono engine updated to version 10.1.0.
+  - OSMesa library no longer needed.
+  - More support for generating Windows Runtime metadata in WIDL.
+  - Locale data updated to Unicode CLDR 47.
+  - P010 format support in Media Foundation.
+  - Various bug fixes.
+- update staging to 10.10 release
+
+- updated to 10.9 release
+  - Bundled vkd3d upgraded to version 1.16.
+  - Initial support for generating Windows Runtime metadata in WIDL.
+  - Support for compiler-based exception handling with Clang.
+  - EGL library support available to all graphics drivers.
+  - Various bug fixes.
+- update staging to 10.9 release
+
+- updated to 10.8 release
+  - User handles in shared memory for better performance.
+  - Improvements to TIFF image support.
+  - More work on the new PDB backend.
+  - Various bug fixes.
+- update staging to 10.8 release
+
+- updated to 10.7 release
+  - User fault fd support to improve write watches performance.
+  - Support for Float format conversions in WindowsCodecs.
+  - More work on the new PDB backend.</comment>
+    <requestid>1287260</requestid>
+  </revision>
 </revisionlist>

@@ -16,6 +16,8 @@
 #
 
 
+%define _winelibdir %_libdir
+
 %global         flavor @BUILD_FLAVOR@%{nil}
 %define         psuffix %{nil}
 %define         wow64 0
@@ -37,9 +39,9 @@
 %global _mingw32_find_debuginfo \
     rm -f %{_builddir}/mingw32-debugfiles.list; \
     bash -x /usr/lib/rpm/mingw32-find-debuginfo.sh --no-debug-source-package %{_builddir}; \
-    mkdir -p %{buildroot}/usr/lib/debug%{_libdir}/wine/i386-windows; \
-    mv %{buildroot}%{_libdir}/wine/i386-windows/*.debug %{buildroot}/usr/lib/debug%{_libdir}/wine/i386-windows; \
-    sed -i 's,^%{_libdir},/usr/lib/debug%{_libdir},g' %{_builddir}/mingw32-debugfiles.list; \
+    mkdir -p %{buildroot}/usr/lib/debug%{_winelibdir}/wine/i386-windows; \
+    mv %{buildroot}%{_winelibdir}/wine/i386-windows/*.debug %{buildroot}/usr/lib/debug%{_winelibdir}/wine/i386-windows; \
+    sed -i 's,^%{_winelibdir},/usr/lib/debug%{_winelibdir},g' %{_builddir}/mingw32-debugfiles.list; \
     mkdir -p %{buildroot}/usr/src/debug/%{name}-%{version}; \
     echo "%dir /usr/src/debug/%{name}-%{version}" >>  %{_builddir}/mingw32-debugfiles.list; \
     %{nil}
@@ -47,9 +49,9 @@
 %global _mingw64_find_debuginfo \
     rm -f %{_builddir}/mingw64-debugfiles.list; \
     bash -x /usr/lib/rpm/mingw64-find-debuginfo.sh --no-debug-source-package %{_builddir}; \
-    mkdir -p %{buildroot}/usr/lib/debug%{_libdir}/wine/x86_64-windows; \
-    mv %{buildroot}%{_libdir}/wine/x86_64-windows/*.debug %{buildroot}/usr/lib/debug%{_libdir}/wine/x86_64-windows; \
-    sed -i 's,^%{_libdir},/usr/lib/debug%{_libdir},g' %{_builddir}/mingw64-debugfiles.list; \
+    mkdir -p %{buildroot}/usr/lib/debug%{_winelibdir}/wine/x86_64-windows; \
+    mv %{buildroot}%{_winelibdir}/wine/x86_64-windows/*.debug %{buildroot}/usr/lib/debug%{_winelibdir}/wine/x86_64-windows; \
+    sed -i 's,^%{_winelibdir},/usr/lib/debug%{_winelibdir},g' %{_builddir}/mingw64-debugfiles.list; \
     mkdir -p %{buildroot}/usr/src/debug/%{name}-%{version}; \
     echo "%dir /usr/src/debug/%{name}-%{version}" >> %{_builddir}/mingw64-debugfiles.list; \
     %{nil}
@@ -64,7 +66,7 @@
 %else
 %ifarch %{ix86}
 %global __arch_install_post %_mingw32_find_debuginfo
-%global _win_debug_package %_mingw32_debug_package -e -C wine%{psuffix}-win-debuginfo -N wine%{psuffix}-win-debuginfo
+%global _win_debug_package %_mingw32_debug_package -e -C wine%{psuffix}-32bit-win-debuginfo -N wine%{psuffix}-32bit-win-debuginfo
 %endif
 %ifarch x86_64
 %global __arch_install_post %_mingw64_find_debuginfo
@@ -74,15 +76,15 @@
 
 %define         _lto_cflags %{nil}
 Name:           wine%{psuffix}
-%define downloadver  10.0
-Version:        10.0
+%define downloadver  10.10
+Version:        10.10
 Release:        0
 Summary:        An MS Windows Emulator
 Group:          System/Emulators/PC
 License:        LGPL-2.1-or-later
 URL:            https://winehq.org
-Source0:        https://dl.winehq.org/wine/source/10.0/wine-%{downloadver}.tar.xz
-Source1:        https://dl.winehq.org/wine/source/10.0/wine-%{downloadver}.tar.xz.sign
+Source0:        https://dl.winehq.org/wine/source/10.x/wine-%{downloadver}.tar.xz
+Source1:        https://dl.winehq.org/wine/source/10.x/wine-%{downloadver}.tar.xz.sign
 Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xda23579a74d4ad9af9d3f945cefac8eaaf17519d#/wine.keyring
 %if %{staging}
 Source3:        https://github.com/wine-staging/wine-staging/archive/v%{downloadver}.tar.gz#/wine-staging-%{downloadver}.tar.xz
@@ -135,7 +137,6 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sane-backends)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(smbclient)
-BuildRequires:  pkgconfig(valgrind)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(x11)
@@ -155,6 +156,7 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  clang >= 5
 BuildRequires:  lld
 BuildRequires:  llvm
+#BuildRequires:  pkgconfig(valgrind)
 %endif
 %ifarch %{ix86}
 BuildRequires:  mingw32-cross-gcc
@@ -163,6 +165,7 @@ BuildRequires:  mingw32-filesystem >= 20250221
 %ifarch x86_64
 BuildRequires:  mingw64-cross-gcc
 BuildRequires:  mingw64-filesystem >= 20250221
+#BuildRequires:  pkgconfig(valgrind)
 %if %{wow64}
 BuildRequires:  mingw32-cross-gcc
 BuildRequires:  mingw32-filesystem >= 20250221
@@ -190,7 +193,16 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libva)
 %endif
 %ifarch x86_64
+# the wow flavors do not need 32bit
+%if "%{flavor}" == "staging"
+BuildRequires:  wine-staging-32bit = %{version}
+Requires:       wine-staging-32bit = %{version}
+%else
+%if "x%{flavor}" == "x"
+BuildRequires:  wine-32bit = %{version}
 Requires:       wine-32bit = %{version}
+%endif
+%endif
 %endif
 Requires:       samba-winbind
 Recommends:     wine-gecko >= 2.47.4
@@ -256,7 +268,11 @@ export WIDL_TIME_OVERRIDE="0" 	# for reproducible builds.
 %if %{staging}
 autoreconf -i -f
 %endif
+export CFLAGS="${CFLAGS:-%{optflags}}"
+export CXXFLAGS="${CXXFLAGS:-%{optflags}}"
+# we always configure /usr/lib64 now due to new loader structure
 %configure \
+        --libdir=%_libdir \
 	--with-x \
 	--with-wayland \
 	--with-gstreamer \
@@ -272,10 +288,12 @@ grep "have_x=yes" config.log || exit 1
 %ifarch %ix86 aarch64
 echo "# autogenerated in .spec file" >%SOURCE97
 echo "%name" >> %SOURCE97
-echo "  +^/usr/bin/wine\$" >> %SOURCE97
-echo "  +^/usr/bin/wine-preloader\$" >> %SOURCE97
-echo "  +^/usr/lib/wine/i386-windows" >> %SOURCE97
-echo "  +^/usr/lib/wine/i386-unix" >> %SOURCE97
+#echo "  +^/usr/bin/wine\$" >> %SOURCE97
+#echo "  +^/usr/bin/wine-preloader\$" >> %SOURCE97
+echo "  +^/usr/lib/wine/i386-windows"	>> %SOURCE97
+echo "  +^/usr/lib/wine/i386-unix"	>> %SOURCE97
+#echo "  +^/usr/lib/wine/x86_64-unix"	>> %SOURCE97
+#echo "  +^/usr/lib/wine/x86_64-windows"	>> %SOURCE97
 grep SONAME_ config.log
 grep SONAME_ config.log|grep -v 'so"'|sed -e 's/^.*\(".*"\).*$/ requires \1/;'|sort -u >>%SOURCE97
 echo " recommends \"libpulse0-32bit\""	>> %SOURCE97
@@ -292,6 +310,9 @@ echo " requires \"p11-kit-32bit\""		>> %SOURCE97
 echo " provides \"wine-<targettype> = <version>\""		>> %SOURCE97
 %endif
 echo " conflicts \"otherproviders(wine-<targettype>)\""		>> %SOURCE97
+#echo "%%post" >> %SOURCE97
+#echo "	ln -s /usr/lib64/wine/x86_64-windows /%_winelibdir/wine/x86_64-windows" >> %SOURCE97
+#echo "	ln -s /usr/lib64/wine/x86_64-unix /%_winelibdir/wine/x86_64-unix" >> %SOURCE97
 echo "%name-devel" >> %SOURCE97
 echo "  +^/usr/lib/wine/.*def" >> %SOURCE97
 %if "%{flavor}" != ""
@@ -308,6 +329,21 @@ cat %SOURCE97
 
 rm -rf %{buildroot}%{_mandir}/{pl,de,fr}.UTF-8
 
+# we dont need .a files currently
+rm -f %buildroot/usr/lib64/wine/x86_64-unix/*.a
+rm -f %buildroot/usr/lib64/wine/x86_64-windows/*.a
+rm -f %buildroot/usr/lib/wine/i386-unix/*.a
+rm -f %buildroot/usr/lib/wine/i386-windows/*.a
+rm -f %buildroot/usr/lib64/wine/i386-unix/*.a
+rm -f %buildroot/usr/lib64/wine/i386-windows/*.a
+
+%if ! %{wow64}
+%ifarch x86_64
+	ln -s /usr/lib/wine/i386-windows %buildroot/%_winelibdir/wine/i386-windows
+	ln -s /usr/lib/wine/i386-unix %buildroot/%_winelibdir/wine/i386-unix
+%endif
+%endif
+
 # find the implicit dependencies
 %define winedir %_builddir/wine-%downloadver
 cat >%winedir/my-find-requires.sh <<EOF
@@ -323,7 +359,17 @@ chmod 755 %winedir/my-find-requires.sh
 %define _use_internal_dependency_generator 0
 %define __find_requires %winedir/my-find-requires.sh
 
-%ldconfig_scriptlets
+%post 
+/sbin/ldconfig
+%if ! %{wow64}
+%ifarch x86_64
+ln -sf /usr/lib64/wine/x86_64-windows /usr/lib/wine/
+ln -sf /usr/lib64/wine/x86_64-unix /usr/lib/wine/
+%endif
+%endif
+
+%postun
+/sbin/ldconfig
 
 %files
 %license LICENSE LICENSE.OLD
@@ -358,50 +404,40 @@ chmod 755 %winedir/my-find-requires.sh
 %{_mandir}/man?/winemine.?%{?ext_man}
 %{_mandir}/man?/winepath.?%{?ext_man}
 %{_datadir}/wine
-%dir %{_libdir}/wine
+%{_mandir}/man?/wine.?%{?ext_man}
+%dir %{_winelibdir}/wine
 %ifarch aarch64
 %{_bindir}/wine
-%{_bindir}/wine-preloader
+#{_bindir}/wine-preloader
 %{_mandir}/man?/wine.?%{?ext_man}
 %if !%{wow64}
-%{_libdir}/wine/aarch64-windows
-%exclude %{_libdir}/wine/aarch64-windows/*.a
+%{_winelibdir}/wine/aarch64-windows
 %endif
-%{_libdir}/wine/aarch64-unix
+%{_winelibdir}/wine/aarch64-unix
 %if %{wow64}
-%{_libdir}/wine/i386-windows
-%exclude %{_libdir}/wine/i386-windows/*.a
-%{_libdir}/wine/x86_64-windows
-%exclude %{_libdir}/wine/x86_64-windows/*.a
+%{_winelibdir}/wine/i386-windows
+%{_winelibdir}/wine/x86_64-windows
 %endif
 %endif
 %ifarch %{ix86}
 %{_bindir}/wine
-%{_bindir}/wine-preloader
-%{_mandir}/man?/wine.?%{?ext_man}
-%{_libdir}/wine/i386-windows
-%exclude %{_libdir}/wine/i386-windows/*.a
-%{_libdir}/wine/i386-unix
-%exclude %{_libdir}/wine/i386-unix/*.a
+%{_winelibdir}/wine/i386-windows
+%{_winelibdir}/wine/i386-unix
 %endif
 %ifarch x86_64
 %if %{wow64}
 %{_bindir}/wine
-%{_bindir}/wine-preloader
-%{_mandir}/man?/wine.?%{?ext_man}
-%{_libdir}/wine/i386-windows
-%exclude %{_libdir}/wine/i386-windows/*.a
-%{_libdir}/wine/x86_64-windows
-%exclude %{_libdir}/wine/x86_64-windows/*.a
-%{_libdir}/wine/x86_64-unix
-%exclude %{_libdir}/wine/x86_64-unix/*.a
+%{_winelibdir}/wine/i386-windows
+%{_winelibdir}/wine/x86_64-windows
+%{_winelibdir}/wine/x86_64-unix
 %else
-%{_bindir}/wine64
-%{_bindir}/wine64-preloader
-%{_libdir}/wine/x86_64-unix
-%exclude %{_libdir}/wine/x86_64-unix/*.a
-%{_libdir}/wine/x86_64-windows
-%exclude %{_libdir}/wine/x86_64-windows/*.a
+%{_libdir}/wine/i386-windows
+%{_libdir}/wine/i386-unix
+%{_bindir}/wine
+%{_winelibdir}/wine/x86_64-unix
+#exclude %{_winelibdir}/wine/x86_64-unix/*.a
+%{_winelibdir}/wine/x86_64-windows
+#exclude %{_winelibdir}/wine/x86_64-windows/*.a
 %endif
 %endif
 
@@ -423,27 +459,10 @@ chmod 755 %winedir/my-find-requires.sh
 %{_mandir}/man?/winegcc.?%{?ext_man}
 %{_mandir}/man?/wmc.?%{?ext_man}
 %{_mandir}/man?/wrc.?%{?ext_man}
+
 %ifarch aarch64
 %if !%{wow64}
-%{_libdir}/wine/aarch64-windows/*.a
-%endif
-%if %{wow64}
-%{_libdir}/wine/i386-windows/*.a
-%{_libdir}/wine/x86_64-windows/*.a
-%endif
-%endif
-%ifarch %{ix86}
-%{_libdir}/wine/i386-unix/*.a
-%if 0%{?suse_version} >= 1600
-%{_libdir}/wine/i386-windows/*.a
-%endif
-%endif
-%ifarch x86_64
-%if %{wow64}
-%{_libdir}/wine/i386-windows/*.a
-%{_libdir}/wine/x86_64-windows/*.a
-%else
-%{_libdir}/wine/x86_64-windows/*.a
+%{_winelibdir}/wine/aarch64-windows/*.a
 %endif
 %endif
 

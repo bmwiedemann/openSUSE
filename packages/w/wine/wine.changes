@@ -1,7 +1,137 @@
 -------------------------------------------------------------------
+Fri Jun 20 12:28:13 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- symlink /usr/lib64/wine/x86_64-* into /usr/lib/wine/
+
+-------------------------------------------------------------------
+Mon Jun 16 09:22:09 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 10.10 release
+  - Mono engine updated to version 10.1.0.
+  - OSMesa library no longer needed.
+  - More support for generating Windows Runtime metadata in WIDL.
+  - Locale data updated to Unicode CLDR 47.
+  - P010 format support in Media Foundation.
+  - Various bug fixes.
+- update staging to 10.10 release
+
+-------------------------------------------------------------------
+Mon Jun  2 07:25:41 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 10.9 release
+  - Bundled vkd3d upgraded to version 1.16.
+  - Initial support for generating Windows Runtime metadata in WIDL.
+  - Support for compiler-based exception handling with Clang.
+  - EGL library support available to all graphics drivers.
+  - Various bug fixes.
+- update staging to 10.9 release
+
+-------------------------------------------------------------------
 Tue May 27 12:12:16 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - remove pkgconfig(osmesa) buildrequires
+
+-------------------------------------------------------------------
+Sat May 17 09:25:42 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 10.8 release
+  - User handles in shared memory for better performance.
+  - Improvements to TIFF image support.
+  - More work on the new PDB backend.
+  - Various bug fixes.
+- update staging to 10.8 release
+
+-------------------------------------------------------------------
+Sat May  3 16:04:27 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 10.7 release
+  - User fault fd support to improve write watches performance.
+  - Support for Float format conversions in WindowsCodecs.
+  - More work on the new PDB backend.
+  - Various bug fixes.
+- update staging to 10.7 release
+- changed packaging around a bit, buildrequire wine-32bit from wine
+
+-------------------------------------------------------------------
+Tue Apr 22 07:59:37 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 10.6 release
+  - New lexer in Command Processor.
+  - PBKDF2 algorithm in Bcrypt.
+  - More support for image metadata in WindowsCodecs.
+  - Various bug fixes.
+- update staging to 10.6 release
+
+-------------------------------------------------------------------
+Sat Apr  5 17:51:34 UTC 2025 - Alexander Leithner <aleithner@level101.at>
+
+- Overwrite -Werror=return-type in CFLAGS and CXXFLAGS to fix
+  detection of -mabi=ms in configure
+- Correctly exclude x86_64-unix/*.a in non-devel packages
+- Correctly include x86_64-unix/*.a in devel packages
+- Fixes boo#1231820
+
+-------------------------------------------------------------------
+Sat Apr  5 08:18:03 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 10.5 release
+  - Support for larger page sizes on ARM64.
+  - Mono engine updated to version 10.0.0.
+  - Pairing support in the Bluetooth driver.
+  - Vulkan H.264 decoding.
+  - %GS register swapping on macOS.
+  - Various bug fixes.
+- update staging to 10.5 release
+
+-------------------------------------------------------------------
+Sat Mar 22 14:05:49 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 10.4 release
+  - Improvements to PDB support in DbgHelp.
+  - More Vulkan video decoder support in WineD3D.
+  - Accessibility support in the SysLink control.
+  - More progress on the Bluetooth driver.
+  - Various bug fixes.
+- update staging to 10.4 release
+
+-------------------------------------------------------------------
+Sun Mar  9 12:33:20 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 10.3 release
+  - Clipboard support in the Wayland driver.
+  - Initial Vulkan video decoder support in WineD3D.
+  - Bundled Compiler-RT library for ARM builds.
+  - Header fixes for Winelib C++ support.
+  - More progress on the Bluetooth driver.
+  - Various bug fixes.
+- update staging to 10.3 release
+
+-------------------------------------------------------------------
+Thu Feb 27 13:07:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- avoid valgrind dependency on 32bit (SLFO is building with SSE4.x
+  which is unsupported) (bsc#1237947)
+
+-------------------------------------------------------------------
+Wed Feb 26 19:15:53 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- packaging changes for new wow64 handling
+
+- updated to 10.2 release
+  - Bundled vkd3d upgraded to version 1.15.
+  - Support for setting thread priorities.
+  - New Wow64 mode can be enabled dynamically.
+  - More progress on the Bluetooth driver.
+  - Various bug fixes.
+- update staging to 10.2 release
+
+- updated to 10.1 release
+  - A wide range of changes that were deferred during code freeze.
+  - Root certificates fixes for Battle.net.
+  - Print Provider improvements.
+  - More progress on the Bluetooth driver.
+  - Various bug fixes.
+- update staging to 10.1 release
 
 -------------------------------------------------------------------
 Thu Feb 20 11:51:39 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
@@ -22,7 +152,7 @@ Thu Feb 20 11:51:39 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
 - Fix wine-devel.x86_64: E: suse-zypp-otherproviders otherproviders(*)
   The 'otherproviders(symbol)' syntax is deprecated, it is not needed
   and you can use the 'symbol' directly: 'conflicts: symbol'
-  
+
 -------------------------------------------------------------------
 Wed Feb 12 22:25:05 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
 
@@ -236,7 +366,7 @@ Sat Jun 29 07:00:18 UTC 2024 - Marcus Meissner <meissner@suse.com>
 - 0001-winewayland-Avoid-crashing-when-the-dummy-window-sur.patch: upstream
 - removed/merged to below: 0001-mf-tests-help-older-compilers-by-using-defines.patch
 - added: 0001-mf-tests-use-defines-instead-of-static-const-for-old.patch
- 
+
 -------------------------------------------------------------------
 Sun Jun 23 11:23:40 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
@@ -679,7 +809,7 @@ Mon Feb 20 08:09:42 UTC 2023 - Marcus Meissner <meissner@suse.com>
 -------------------------------------------------------------------
 Thu Feb  9 08:02:33 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
-- require libvulkan_intel and libvulkan_radeon during installation, 
+- require libvulkan_intel and libvulkan_radeon during installation,
   also in 32bit flavors. bsc#1206421
 
 -------------------------------------------------------------------
@@ -909,10 +1039,10 @@ Sat May  7 11:55:55 UTC 2022 - Marcus Meissner <meissner@suse.com>
 Sat Apr 23 16:49:56 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.7 development release
-  - More progress on the PE conversion of the X11 and OSS drivers.                                                                            
-  - Support for UTF-8 as default Ansi codepage.                                                                                               
-  - Theming support for control panel applets.                                                                                                
-  - Various bug fixes.                                                                                                                        
+  - More progress on the PE conversion of the X11 and OSS drivers.
+  - Support for UTF-8 as default Ansi codepage.
+  - Theming support for control panel applets.
+  - Various bug fixes.
 - update staging to 7.7 release
 
 -------------------------------------------------------------------
@@ -973,12 +1103,12 @@ Sat Feb 26 09:49:07 UTC 2022 - Marcus Meissner <meissner@suse.com>
 Sat Feb 12 08:06:08 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.2 development release
-  - Large scale cleanup to support 'long' type with MSVCRT.                                                                                   
-  - Mono engine updated to version 7.1.1.                                                                                                     
-  - More theming fixes in common controls.                                                                                                    
-  - Beginnings of a WMA decoder.                                                                                                              
-  - Support for 64-bit time_t.                                                                                                                
-  - Various bug fixes.                                                                                                                        
+  - Large scale cleanup to support 'long' type with MSVCRT.
+  - Mono engine updated to version 7.1.1.
+  - More theming fixes in common controls.
+  - Beginnings of a WMA decoder.
+  - Support for 64-bit time_t.
+  - Various bug fixes.
 - update staging to 7.2 release
 
 -------------------------------------------------------------------
@@ -1094,7 +1224,7 @@ Sun Nov  7 12:43:50 UTC 2021 - Marcus Meissner <meissner@suse.com>
   - Beginnings of a MSDASQL implementation.
   - Various bug fixes.
 - update staging to 6.21 release
-- wine-fix-faudio.patch: removed, fixed upstream 
+- wine-fix-faudio.patch: removed, fixed upstream
 
 -------------------------------------------------------------------
 Sat Oct 23 08:22:24 UTC 2021 - Marcus Meissner <meissner@suse.com>
@@ -1854,7 +1984,7 @@ Sat Aug 31 08:07:08 UTC 2019 - Marcus Meissner <meissner@suse.com>
   - Initial implementation of the HTTP service.
   - Stack unwinding support on ARM64.
   - Better multi-monitor support on macOS.
-  - RichEdit control optimizations.   
+  - RichEdit control optimizations.
   - Various bug fixes.
 - updated staging to 4.15
 
@@ -1862,10 +1992,10 @@ Sat Aug 31 08:07:08 UTC 2019 - Marcus Meissner <meissner@suse.com>
 Sat Aug 17 09:23:43 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - updated to 4.14 development release
-  - New version of the Mono engine with upstream updates.                                                                                     
-  - PE dlls no longer rely on the MinGW runtime.                                                                                              
-  - Exception handling fixes on ARM64.                                                                                                        
-  - Various bug fixes.                                                                                                                        
+  - New version of the Mono engine with upstream updates.
+  - PE dlls no longer rely on the MinGW runtime.
+  - Exception handling fixes on ARM64.
+  - Various bug fixes.
 - updated staging to 4.14
 
 -------------------------------------------------------------------
@@ -2244,8 +2374,8 @@ Mon Aug  6 14:36:38 UTC 2018 - meissner@suse.com
 -------------------------------------------------------------------
 Mon Jul 23 14:54:27 UTC 2018 - tobias.johannes.klausmann@mni.thm.de
 
-- Switch to using pkgconfig for dri2proto as dri2proto-devel does 
-  not exist in "Factory" anymore, it is now provided by 
+- Switch to using pkgconfig for dri2proto as dri2proto-devel does
+  not exist in "Factory" anymore, it is now provided by
   xorgproto-devel, yet using pkgconfig is more robust
 
 -------------------------------------------------------------------
@@ -2396,7 +2526,7 @@ Fri Mar 16 19:28:06 UTC 2018 - meissner@suse.com
 -------------------------------------------------------------------
 Wed Mar 14 14:54:42 UTC 2018 - crrodriguez@opensuse.org
 
-- Remove buildrequires on metapackages xorg-x11-devel and 
+- Remove buildrequires on metapackages xorg-x11-devel and
   Mesa-devel, use pkgconfig() deps with individual X libs
 
 -------------------------------------------------------------------
@@ -2764,7 +2894,7 @@ Mon Mar  6 07:54:19 UTC 2017 - meissner@suse.com
 -------------------------------------------------------------------
 Fri Mar  3 21:14:23 UTC 2017 - meissner@suse.com
 
-- Update to 2.3 development snapshot 
+- Update to 2.3 development snapshot
   - Obsolete wineinstall script removed.
   - More Direct3D command stream work.
   - A few more Shader Model 5 instructions.
@@ -2776,7 +2906,7 @@ Fri Mar  3 21:14:23 UTC 2017 - meissner@suse.com
 -------------------------------------------------------------------
 Fri Feb 17 21:04:31 UTC 2017 - meissner@suse.com
 
-- Update to 2.2 development snapshot 
+- Update to 2.2 development snapshot
   - Windows version set to Windows 7 for new prefixes.
   - More steps towards the Direct3D command stream.
   - Still more Shader Model 5 instructions.
@@ -2787,7 +2917,7 @@ Fri Feb 17 21:04:31 UTC 2017 - meissner@suse.com
 -------------------------------------------------------------------
 Sat Feb  4 20:57:03 UTC 2017 - meissner@suse.com
 
-- Update to 2.1 development snapshot 
+- Update to 2.1 development snapshot
   - Many fixes that were deferred during code freeze.
   - More Shader Model 5 instructions.
   - A number of improvements to MIME message handling.
@@ -3031,7 +3161,7 @@ Tue May 17 06:09:59 UTC 2016 - meissner@suse.com
 
 -------------------------------------------------------------------
 Sat Apr 30 08:13:02 UTC 2016 - meissner@suse.com
- 
+
 - Updated to 1.9.9 development snapshot
   - More work towards the WineD3D command stream.
   - Service proxies in WebServices.
@@ -3301,7 +3431,7 @@ Sat Aug  8 10:57:45 UTC 2015 - meissner@suse.com
 -------------------------------------------------------------------
 Wed Jul 29 16:27:02 UTC 2015 - meissner@suse.com
 
-- Updated to 1.7.48 development snapshot 
+- Updated to 1.7.48 development snapshot
   - Fleshed out OpenMP implementation.
   - I/O stream support in the MSVCIRT C++ runtime.
   - Support for pixel snapping in DirectWrite.
@@ -3312,7 +3442,7 @@ Wed Jul 29 16:27:02 UTC 2015 - meissner@suse.com
 -------------------------------------------------------------------
 Fri Jul 10 13:58:37 UTC 2015 - meissner@suse.com
 
-- Updated to 1.7.47 development snapshot 
+- Updated to 1.7.47 development snapshot
   - Text drawing in Direct2D.
   - Support for the new thread pool API.
   - Toolbar state saving.
@@ -3329,7 +3459,7 @@ Tue Jul  7 09:55:22 UTC 2015 - meissner@suse.com
 -------------------------------------------------------------------
 Fri Jun 26 12:18:00 UTC 2015 - meissner@suse.com
 
-- Updated to 1.7.46 development snapshot 
+- Updated to 1.7.46 development snapshot
   - Improvements in the BITS file transfer service.
   - Still more progress on DirectWrite implementation.
   - Support for shared user data on 64-bit.
@@ -3345,7 +3475,7 @@ Sat Jun 13 10:24:09 UTC 2015 - meissner@suse.com
 -------------------------------------------------------------------
 Fri Jun 12 13:45:03 UTC 2015 - meissner@suse.com
 
-- Updated to 1.7.45 development snapshot 
+- Updated to 1.7.45 development snapshot
   - Better debugging support on 64-bit Mac OS X.
   - Some more progress on DirectWrite implementation.
   - A number of RichEdit control fixes.
@@ -3360,7 +3490,7 @@ Sun Jun  7 10:17:40 UTC 2015 - meissner@suse.com
 -------------------------------------------------------------------
 Sun May 31 14:48:25 UTC 2015 - hillwood@opensuse.org
 
-- Updated to 1.7.44 development snapshot 
+- Updated to 1.7.44 development snapshot
   - More support for the COM interfaces of the RichEdit control.
   - Initial version of a SmartTee filter.
   - Some more support for the ARM64 platform.
@@ -3373,7 +3503,7 @@ Fri May 15 14:39:56 UTC 2015 - meissner@suse.com
 
 - Updated to 1.7.43 development snapshot
   - Improved support for Shell Browser windows.
-  - Some more API Sets libraries. 
+  - Some more API Sets libraries.
   - Read/write operations support with built-in devices.
   - Major Catalan translation update.
   - Support for WoW64 mode on ARM64.
@@ -3886,7 +4016,7 @@ Fri Jul 19 05:36:25 UTC 2013 - meissner@suse.com
 
   It also contains a lot of improvements across the board, as well as
   support for many new applications and games. See the release notes
-  for a summary of the major changes. 
+  for a summary of the major changes.
 
 - winetricks helper script updated
 
@@ -4184,7 +4314,7 @@ Mon Jun 11 20:30:12 UTC 2012 - meissner@suse.com
 
 - Updated to 1.5.6 development snapshot
   - Automatic installation of the Mono add-on package.
-  - Control panel applet for joysticks.   
+  - Control panel applet for joysticks.
   - Device bitmap rendering now done through the DIB engine.
   - Support for video rendering through DirectX (VMR-9).
   - First steps towards a D3D shader compiler.
@@ -4206,7 +4336,7 @@ Fri May 25 21:12:31 UTC 2012 - meissner@suse.com
 Mon May 21 11:41:00 UTC 2012 - badshah400@gmail.com
 
 - Use BuildRequires: libgnutls-devel instead of gnutls-devel for
-  Factory in keeping with gnutls package naming changes. 
+  Factory in keeping with gnutls package naming changes.
 
 -------------------------------------------------------------------
 Wed May 16 14:54:37 CEST 2012 - meissner@suse.de
@@ -4504,7 +4634,7 @@ Fri Jul  8 22:34:27 CEST 2011 - meissner@suse.de
   - Some more D3DX9 functions.
   - Improved support for shell known folders.
   - Various bug fixes.
-- libv4l headers no longer are in glibc, but in libv4l on factory 
+- libv4l headers no longer are in glibc, but in libv4l on factory
 - updated winetricks to 20110629
 
 -------------------------------------------------------------------
@@ -4597,7 +4727,7 @@ Fri Apr 15 20:19:30 CEST 2011 - meissner@suse.de
   - New security tab in the Internet control panel.
   - Improved video playback on Mac OS X.
   - Various bug fixes.
-- Updated winetricks 
+- Updated winetricks
 
 -------------------------------------------------------------------
 Fri Apr  1 23:54:35 CEST 2011 - meissner@suse.de
@@ -4609,7 +4739,7 @@ Fri Apr  1 23:54:35 CEST 2011 - meissner@suse.de
   - A few fixes for file associations.
   - Menus cleaned up in built-in applications.
   - Various bug fixes.
-- Updated winetricks 
+- Updated winetricks
 
 -------------------------------------------------------------------
 Fri Mar 18 21:24:18 CET 2011 - meissner@suse.de
@@ -4684,7 +4814,7 @@ Fri Jan  7 20:32:21 CET 2011 - meissner@suse.de
 -------------------------------------------------------------------
 Fri Jan  7 13:45:24 CET 2011 - meissner@suse.de
 
-- moved development tools into -devel package 
+- moved development tools into -devel package
 
 -------------------------------------------------------------------
 Mon Jan  3 14:30:52 CET 2011 - meissner@suse.de
@@ -4694,7 +4824,7 @@ Mon Jan  3 14:30:52 CET 2011 - meissner@suse.de
   - Obsolete AudioIO sound driver removed.
   - More work on ActiveX support.
   - Various MSI fixes.
-  - Preloader now used for 64-bit too. 
+  - Preloader now used for 64-bit too.
   - Translation updates.
   - Various bug fixes.
 
@@ -4898,7 +5028,7 @@ Fri Jun 18 21:11:50 CEST 2010 - meissner@suse.de
 - updated to 1.2 rc4
   - Many translation updates.
   - A lot of bug fixes.
-- Added Ubuntu supplied desktop , menu and icons for 
+- Added Ubuntu supplied desktop , menu and icons for
   Wine stuff. bnc#613850
 
 -------------------------------------------------------------------
@@ -5217,7 +5347,7 @@ Sat Jul 18 02:09:22 CEST 2009 - meissner@suse.de
 Sat Jul  4 12:58:33 CEST 2009 - meissner@novell.com
 
 - spec file cleanup, make it possible to rpmbuild -ba
-  on x86_64 machines. bnc#519192  
+  on x86_64 machines. bnc#519192
 - Updated to upstream 1.1.25
   - A ton of translation updates.
   - Support for various Unicode file encodings in Notepad.
@@ -5299,7 +5429,7 @@ Thu Apr  2 22:28:00 CEST 2009 - meissner@suse.de
 
 - Updated to upstream 1.1.18
   - Joystick support on Mac OS X.
-  - Implementation of iphlpapi on Solaris. 
+  - Implementation of iphlpapi on Solaris.
   - A number of 64-bit improvements.
   - Obsolete LinuxThreads support has been removed.
   - Many fixes to the regression tests on Windows.
@@ -5663,7 +5793,7 @@ Wed Mar 12 18:05:18 CET 2008 - meissner@suse.de
   - MS dotnet 1.1 downloader added
   - added intel codec downloader
   - renamed allvcodecs -> allcodecs
-  
+
 
 -------------------------------------------------------------------
 Fri Feb 22 23:26:07 CET 2008 - meissner@suse.de
@@ -5757,7 +5887,7 @@ Sat Nov 10 00:05:10 CET 2007 - meissner@suse.de
 -------------------------------------------------------------------
 Wed Oct 31 02:04:21 CET 2007 - ro@suse.de
 
-- include assert.h for alsa source 
+- include assert.h for alsa source
 
 -------------------------------------------------------------------
 Fri Oct 26 20:55:25 CEST 2007 - meissner@suse.de
@@ -6091,7 +6221,7 @@ Fri Jul 28 10:22:58 CEST 2006 - meissner@suse.de
   - A lot of MSI bug fixes and improvements.
   - More compatible memory management.
   - Several fixes for Win64 support.
-  - Some performance improvements. 
+  - Some performance improvements.
   - Lots of bug fixes.
 
 -------------------------------------------------------------------
@@ -6382,7 +6512,7 @@ Mon May 30 14:21:36 CEST 2005 - meissner@suse.de
 -------------------------------------------------------------------
 Wed May 18 17:23:11 CEST 2005 - ro@suse.de
 
-- fix build with most recent alsa includes 
+- fix build with most recent alsa includes
 
 -------------------------------------------------------------------
 Thu Apr 28 16:43:28 CEST 2005 - meissner@suse.de
@@ -6463,7 +6593,7 @@ Thu Dec  2 13:03:30 CET 2004 - meissner@suse.de
 -------------------------------------------------------------------
 Thu Nov 11 14:14:20 CET 2004 - ro@suse.de
 
-- fixed file list 
+- fixed file list
 
 -------------------------------------------------------------------
 Wed Oct 20 11:15:07 CEST 2004 - meissner@suse.de
@@ -6607,7 +6737,7 @@ Sun Dec 14 15:48:06 CET 2003 - meissner@suse.de
 
 - removed config-dist.sh
 - reenabled alsa/alsa-devel.
-- updated to 20031212 upstream release: 
+- updated to 20031212 upstream release:
         - Initial implementation of XDND drag&drop support.
         - Improved startup performance on remote displays.
         - Major improvements in the oleaut32 dll.
@@ -6751,7 +6881,7 @@ Thu Apr 10 18:12:53 CEST 2003 - meissner@suse.de
 -------------------------------------------------------------------
 Tue Apr  1 10:48:18 CEST 2003 - ro@suse.de
 
-- use mesa-devel-packages in neededforbuild 
+- use mesa-devel-packages in neededforbuild
 
 -------------------------------------------------------------------
 Fri Mar  7 11:33:11 CET 2003 - meissner@suse.de
@@ -6835,7 +6965,7 @@ Wed Nov 13 15:58:35 CET 2002 - meissner@suse.de
 Tue Nov 12 12:00:27 CET 2002 - ro@suse.de
 
 - updated neededforbuild: jade_dsl,sp -> openjade,opensp
--         xshared,xdevel -> x-devel-packages 
+-         xshared,xdevel -> x-devel-packages
 
 -------------------------------------------------------------------
 Thu Oct 10 03:53:14 PDT 2002 - meissner@suse.de
@@ -6874,13 +7004,13 @@ Mon Sep  9 06:08:10 PDT 2002 - meissner@suse.de
 -------------------------------------------------------------------
 Mon Sep  2 09:00:19 CEST 2002 - meissner@suse.de
 
-- Do not suggest installing KDE menus of winesetup (they are not 
+- Do not suggest installing KDE menus of winesetup (they are not
   there and wine does its own now). #18648.
 
 -------------------------------------------------------------------
 Sun Sep  1 17:27:24 CEST 2002 - ro@suse.de
 
-- Use ExclusiveArch instead of BuildArch 
+- Use ExclusiveArch instead of BuildArch
 
 -------------------------------------------------------------------
 Thu Aug 29 11:23:04 CEST 2002 - meissner@suse.de
@@ -6902,7 +7032,7 @@ Mon Aug 12 10:06:28 CEST 2002 - meissner@suse.de
         - Support for font downloading in Postscript driver.
         - ALSA sound driver.
         - Lots of bug fixes.
-- Local: 
+- Local:
 	- Started enhancing PPC port.
 
 -------------------------------------------------------------------
@@ -6921,7 +7051,7 @@ Wed Jul 10 11:54:46 CEST 2002 - meissner@suse.de
 -------------------------------------------------------------------
 Mon Jun 17 13:42:41 CEST 2002 - meissner@suse.de
 
-- Upgraded to current CVS snapshot (20020614), 
+- Upgraded to current CVS snapshot (20020614),
   lots of new features, bugfixes et.al.
 - Tweaked wine_init so it does not recursively call itself.
 
@@ -6933,7 +7063,7 @@ Tue Apr  9 16:52:56 CEST 2002 - meissner@suse.de
   Office patches)
 - neededforbuild jpeg -> libjpeg, added kdelibs stuff to support
   arts client, added sane for twain32.dll
-  
+
 
 -------------------------------------------------------------------
 Tue Feb  5 14:20:06 CET 2002 - pmladek@suse.cz
@@ -6976,7 +7106,7 @@ Tue Jan 22 10:54:50 CET 2002 - pmladek@suse.cz
 -------------------------------------------------------------------
 Mon Dec  3 09:30:28 CET 2001 - ro@suse.de
 
-- fixed neededforbuild <docbktls> to <docbook-toys> 
+- fixed neededforbuild <docbktls> to <docbook-toys>
 
 -------------------------------------------------------------------
 Thu Nov  1 22:18:15 CET 2001 - bjacke@suse.de
@@ -7012,7 +7142,7 @@ Fri Aug 24 14:24:08 CEST 2001 - pmladek@suse.cz
 - updated to version 20010731
 - added detection of version of wine config
 - fixed autorun of winesetup when config does not exist or
-  it is for bad version of wine 
+  it is for bad version of wine
 - fixed default configuration generated by winesetup along
   example in wine
 - new script for registry updating
@@ -7022,7 +7152,7 @@ Fri Aug 24 14:24:08 CEST 2001 - pmladek@suse.cz
 -------------------------------------------------------------------
 Tue Aug 21 16:28:00 CEST 2001 - ro@suse.de
 
-- neededforbuild: replaced sp_libs with sp 
+- neededforbuild: replaced sp_libs with sp
 
 -------------------------------------------------------------------
 Mon May  7 14:39:37 CEST 2001 - pmladek@suse.cz
@@ -7052,7 +7182,7 @@ Tue Apr 10 10:35:11 CEST 2001 - pmladek@suse.cz
 -------------------------------------------------------------------
 Thu Mar 29 14:16:23 CEST 2001 - ro@suse.de
 
-- fixed neededforbuild 
+- fixed neededforbuild
 
 -------------------------------------------------------------------
 Tue Mar 27 17:11:23 CEST 2001 - pmladek@suse.cz
@@ -7067,7 +7197,7 @@ Tue Mar 27 11:51:47 CEST 2001 - pmladek@suse.cz
 - wine up-dated to the version 20010305
 - added winesetuptk version 0.5.1b
 - fixed winesetuptk for SuSE distribution
-- added support: If you have no config file then 'winesetup' 
+- added support: If you have no config file then 'winesetup'
   will be launched automatically when you launch 'wine'
   (fixed bug #6769)
 - bziped sources
@@ -7075,7 +7205,7 @@ Tue Mar 27 11:51:47 CEST 2001 - pmladek@suse.cz
 - actualized description in PAC files
 - generated html documentation from sgml documentation
 - removed sgml documentation from binary rpm
-- cleaned up spec file 
+- cleaned up spec file
 
 -------------------------------------------------------------------
 Thu Mar  8 10:53:56 CET 2001 - uli@suse.de
@@ -7106,7 +7236,7 @@ Thu Nov 23 15:40:15 CET 2000 - arvin@suse.de
 Tue Sep 26 14:29:57 CEST 2000 - ro@suse.de
 
 - removed bogus requires
-- added mesa-stuff to neededforbuild 
+- added mesa-stuff to neededforbuild
 
 -------------------------------------------------------------------
 Mon Sep 25 15:15:55 CEST 2000 - hhetter@suse.de
@@ -7139,7 +7269,7 @@ Fri Jan 28 10:56:58 CET 2000 - bg@suse.de
 -------------------------------------------------------------------
 Sun Oct 17 02:31:15 CEST 1999 - ro@suse.de
 
-- fixed neededforbuild 
+- fixed neededforbuild
 
 -------------------------------------------------------------------
 Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
