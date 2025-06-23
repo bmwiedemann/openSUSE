@@ -97,4 +97,12 @@ https://github.com/kubernetes/kubernetes/issues/130786</comment>
   * Ref: https://github.com/golang/net/commit/e1fcd82abba34df74614020343be8eb1fe85f0d9</comment>
     <requestid>1284467</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2cd4803b843b1e41348d18221802190c</srcmd5>
+    <version>1.31.10</version>
+    <time>1750683743</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – June, 2025: Update to version 1.31.10</comment>
+    <requestid>1287521</requestid>
+  </revision>
 </revisionlist>
