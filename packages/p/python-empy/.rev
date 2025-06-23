@@ -54,4 +54,13 @@
     line options.</comment>
     <requestid>1204577</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>bd85a959032374fbee0c9ec1681bf7ad</srcmd5>
+    <version>4.2</version>
+    <time>1750683900</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- List modules explicitly in %files.</comment>
+    <requestid>1287771</requestid>
+  </revision>
 </revisionlist>

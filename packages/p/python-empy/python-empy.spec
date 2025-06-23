@@ -1,7 +1,7 @@
 #
 # spec file for package python-empy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-empy
 Version:        4.2
 Release:        0
@@ -25,7 +24,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://www.alcyone.com/software/empy
 Source:         https://files.pythonhosted.org/packages/source/e/empy/empy-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -51,10 +52,10 @@ line options and embedded commands.
 %setup -q -n empy-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/em.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -68,8 +69,14 @@ line options and embedded commands.
 %license LICENSE.md
 %doc README.md
 %python_alternative %{_bindir}/em.py
-%{python_sitelib}/em*.py
-%pycache_only %{python_sitelib}/__pycache__/em*
-%{python_sitelib}/empy-%{version}*-info
+%{python_sitelib}/em.py
+%{python_sitelib}/emdoc.py
+%{python_sitelib}/emhelp.py
+%{python_sitelib}/emlib.py
+%pycache_only %{python_sitelib}/__pycache__/em.*.pyc
+%pycache_only %{python_sitelib}/__pycache__/emdoc.*.pyc
+%pycache_only %{python_sitelib}/__pycache__/emhelp.*.pyc
+%pycache_only %{python_sitelib}/__pycache__/emlib.*.pyc
+%{python_sitelib}/empy-%{version}.dist-info
 
 %changelog
