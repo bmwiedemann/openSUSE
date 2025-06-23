@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 20 12:53:53 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Jun  5 06:03:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

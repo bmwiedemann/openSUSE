@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-dist
 Version:        1.0.3
 Release:        0
