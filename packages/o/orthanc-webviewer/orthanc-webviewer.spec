@@ -34,6 +34,8 @@ Source6:        https://orthanc.uclouvain.be/downloads/third-party-downloads/web
 Source11:       orthanc-webviewer-readme.SUSE
 Source12:       webviewer.json
 
+Patch0:         cache.diff
+
 BuildRequires:  cmake
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
 BuildRequires:  gcc13-c++
