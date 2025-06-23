@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun 13 17:37:23 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.55.2:
+  * info: fix mismatched format args and wrong symbol name
+  * hooks: add internal check for external hook API
+  * git_superproject: Replace walrus operator
+  * upload: Add rev to rootRepo push option
+  * info: print superproject revision
+  * subcmds: delete redundant dest= settings
+  * upload: Add superproject identifier as push option
+  * manifest: generalize --json as --format=<format>
+  * run_tests: only allow help2man skipping in CI
+  * update-manpages: include in unittests
+  * flake8: Ignore .venv directory
+  * man: regenerate man pages
+  * manifest: Remove redundant re-raise of BaseExceptions
+  * Fallback to full sync when depth enabled fetch of a sha1 fails
+
+-------------------------------------------------------------------
 Tue May 27 18:54:58 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.54:
