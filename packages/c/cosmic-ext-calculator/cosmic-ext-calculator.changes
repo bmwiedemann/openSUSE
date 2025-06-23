@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri May 23 16:45:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.1.1+23:
+  * remove: wgpu
+  * chore: update libcosmic
+  * fix: errors
+  * fix: replace calculator-rs with evalexpr
+  * fix: aux conflicts with windows
+  * fix: remove directory mime type
+  * remove: multi-window feature
+  * fix: dropdown issue
+  * improv: menu item icons
+  * chore: update libcosmic/about page
+- update to 0.1.1:
+  * Expand metainfo
+  * Create cosmic_ext_calculator.ftl
+  * Update cosmic_ext_calculator.ftl
+- switch to obs_scm
+- remove update-desktop-files from BR, deprecated
+
+-------------------------------------------------------------------
 Thu Oct 10 14:10:25 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.1.0+git20241009.2a519cf:
