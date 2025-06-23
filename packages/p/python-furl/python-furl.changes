@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 23 08:21:34 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.1.4
+  * Drop support for all Python versions prior to Python 3.8, which
+    are now long past EOL. Notably: Python 2 is no longer supported.
+
+-------------------------------------------------------------------
 Fri Sep 13 18:56:20 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add remove-six.patch (gh#gruns/furl#175) removing the

@@ -1,7 +1,7 @@
 #
 # spec file for package python-furl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define skip_python2 1
 Name:           python-furl
-Version:        2.1.3
+Version:        2.1.4
 Release:        0
 Summary:        A Python URL manipulation library
 License:        Unlicense
