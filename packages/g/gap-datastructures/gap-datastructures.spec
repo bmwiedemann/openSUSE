@@ -17,7 +17,7 @@
 
 
 Name:           gap-datastructures
-Version:        0.3.1
+Version:        0.3.3
 Release:        0
 Summary:        GAP: Collection of standard data structures for GAP
 License:        GPL-2.0-or-later
@@ -26,7 +26,7 @@ URL:            https://gap-packages.github.io/datastructures/
 #Git-Clone:	https://github.com/gap-packages/datastructures
 Source:         https://github.com/gap-packages/datastructures/releases/download/v%version/datastructures-%version.tar.gz
 BuildRequires:  c_compiler
-BuildRequires:  gap-devel
+BuildRequires:  gap-devel >= 4.12
 BuildRequires:  gap-rpm-devel
 Requires:       gap-core >= 4.12
 Requires:       gap-gapdoc >= 1.5
