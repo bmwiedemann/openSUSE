@@ -1,0 +1,18 @@
+/var/log/traefik/*.log {
+    weekly
+    maxsize 32G
+    notifempty
+    missingok
+
+    rotate 128
+    dateext
+    dateformat -%Y%m%d-%H%M
+    compress
+    compresscmd xz
+
+    create 644 traefik traefik
+    postrotate
+      systemctl reload traefik.service
+    endscript
+}
+

@@ -156,7 +156,7 @@ providers:
 #        entryPoint: web
 #  acmeDnsResolver:
 #    acme:
-#      email: "??@??.??"
+#      email: your@email
 #      storage: /var/lib/traefik/acme-dns.json
 #      dnsChallenge:
 #        provider: ???????

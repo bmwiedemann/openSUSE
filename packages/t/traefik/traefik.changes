@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  6 15:50:50 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Improved logging
+- Added logrotate configuration
+- Allow reloading the traefik-service via systemctl
+
+-------------------------------------------------------------------
 Fri Jun  6 13:26:41 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Removed manual download service and manual checksum verification

@@ -37,11 +37,13 @@ Source2:        %{name}.service
 Source3:        %{name}.yml
 Source4:        %{name}-user.conf
 Source5:        90-%{name}.conf
+Source6:        %{name}.logrotate
 BuildRequires:  go-bindata
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  (golang(API) >= 1.22)
+Requires:       logrotate
 Recommends:     podman
 Conflicts:      traefik2
 Provides:       group(%{name})
@@ -60,7 +62,6 @@ Pointing Traefik at your orchestrator should be the only configuration step you 
 
 %prep
 %setup -q -c %{name}-%{version} -b0 -a1
-%autopatch -p1
 
 %build
 %sysusers_generate_pre %{SOURCE4} %{name} %{name}-user.conf
@@ -104,6 +105,9 @@ touch  %{buildroot}%{_localstatedir}/lib/%{name}/acme.json
 
 # logging
 mkdir -p %{buildroot}%{_localstatedir}/log/%{name}
+
+mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
+install -m 644 %{SOURCE6} %{buildroot}/%{_sysconfdir}/logrotate.d/traefik
 
 %pre -f %{name}.pre
 %service_add_pre %{name}.service
@@ -191,5 +195,6 @@ fi
 %config(noreplace) %{_localstatedir}/lib/%{name}/acme.json
 
 %dir %{_localstatedir}/log/%{name}
+%config(noreplace) %{_sysconfdir}/logrotate.d/traefik
 
 %changelog
