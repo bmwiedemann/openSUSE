@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-oscrypto
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,13 +31,14 @@ Version:        1.3.0
 Release:        0
 Summary:        Python crypto using OS libraries
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/wbond/oscrypto
 Source:         https://github.com/wbond/oscrypto/archive/%{version}.tar.gz#/oscrypto-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM python312.patch gh#wbond/oscrypto#77
 Patch0:         python312.patch
 BuildRequires:  %{python_module asn1crypto >= 1.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
@@ -60,7 +61,7 @@ on the OS for patching. Works on Windows, OS X and Linux/BSD.
 mv docs/readme.md docs/docs_readme.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %if %{with test}
 %check
@@ -70,14 +71,14 @@ mv docs/readme.md docs/docs_readme.md
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
 %doc readme.md changelog.md docs/*
 %{python_sitelib}/oscrypto
-%{python_sitelib}/oscrypto-%{version}*-info
+%{python_sitelib}/oscrypto-%{version}.dist-info
 %endif
 
 %changelog

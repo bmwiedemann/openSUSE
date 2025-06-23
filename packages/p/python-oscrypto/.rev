@@ -42,4 +42,12 @@ Source URL fix</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1197911</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>8d89ebffc42b0b194c992c2bf424de08</srcmd5>
+    <version>1.3.0</version>
+    <time>1750683908</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1287777</requestid>
+  </revision>
 </revisionlist>
