@@ -30,6 +30,8 @@ Patch0:         gcal-3.01-longerstrings.patch
 Patch1:         gcal-3.6-cleanup.patch
 Patch2:         gnulib-4af4a4a71827c0bc5e0ec67af23edef4f15cee8e-excerpt.patch
 Patch3:         gnulib-74d9d6a293d7462dea8f83e7fc5ac792e956a0ad-excerpt.patch
+# build with gcc15
+Patch4:         gcal-gcc15.patch
 BuildRequires:  ncurses-devel
 BuildRequires:  xz
 Requires(post): %{install_info_prereq}
@@ -49,6 +51,7 @@ Gregorian calendar replaced the earlier Julian calendar.
 %patch -P 1
 %patch -P 2 -p1
 %patch -P 3 -p1
+%patch -P 4 -p1
 
 %build
 %configure

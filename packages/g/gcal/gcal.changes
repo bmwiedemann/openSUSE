@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 10 09:48:51 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  build with gcc15
+  + gcal-gcc15.patch
+
+-------------------------------------------------------------------
 Tue Feb 27 10:58:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

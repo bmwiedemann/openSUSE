@@ -1,0 +1,12 @@
+--- gcal-4.1.orig/src/hd-defs.h	2025-06-10 09:37:26.469215242 +0000
++++ gcal-4.1/src/hd-defs.h	2025-06-10 09:42:44.522116166 +0000
+@@ -677,7 +677,7 @@ typedef struct country_code_type
+   char *cc_info;
+ 
+   /* The country code specific holiday handling function. */
+-  void (*Cc_hdy_handler) ();
++  void (*Cc_hdy_handler) (Bool *, const Bool,  int,  const int,  int *, const int,  const int);
+ }
+ Cc_struct;
+ 
+
