@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 28 09:59:09 UTC 2025 - Giacomo Leidi <giacomo.leidi@suse.com>
+
+* copy project changelog to allow reproducible builds to have a
+  starting date
+
+-------------------------------------------------------------------
+Sun Apr 20 21:18:09 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- 0.2.5
+  * use the same permissions for the /usr/share/tftpboot-installation
+    directory as on SLE15 (bsc#1240935)
+
+-------------------------------------------------------------------
 Thu Mar 27 21:03:38 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - 0.2.4

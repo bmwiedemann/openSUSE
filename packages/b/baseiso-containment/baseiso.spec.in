@@ -58,8 +58,9 @@ fi
 
 %if %{with pxeboot}
 %files -n tftpboot-__NAME____FLAVOR__-%{_arch}
-%dir %tftpboot_dir
-%product_dir
+%defattr(-,root,root)
+%dir %attr(0755,tftp,tftp) %tftpboot_dir
+%tftpboot_dir
 %endif
 
 %changelog

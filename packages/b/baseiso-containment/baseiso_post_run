@@ -80,6 +80,9 @@ sed -e "s@__NAME__@$iso_name@g" \
     < $SPEC_IN \
     > $BUILD_DIR/image.spec
 
+# Copy image changelog required for reproducible builds timestamps
+cp -v $TOPDIR/SOURCES/*.changes $BUILD_DIR/image.changes
+
 if [ -z "$BUILD_DISTURL" ]; then
   rpmbuild --target $ARCH -ba $PXEBOOT_BCOND $BUILD_DIR/image.spec
 else
