@@ -32,13 +32,13 @@ Source:         https://github.com/languitar/%{modname}/archive/refs/tags/v%{ver
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module dataclasses >= 0.7 if %python-base < 3.7}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyxdg}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 %if %{with test}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pyxdg}
 # /SECTION
 %endif
 BuildRequires:  fdupes

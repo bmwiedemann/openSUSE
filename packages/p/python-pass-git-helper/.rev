@@ -32,4 +32,13 @@
     <comment></comment>
     <requestid>1269137</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d2c3cae1693cf81a82918ab05079cff2</srcmd5>
+    <version>3.3.0</version>
+    <time>1750683881</time>
+    <user>anag_factory</user>
+    <comment>- Move dependencies: we need pyxdg even in non-testing context.
+</comment>
+    <requestid>1287718</requestid>
+  </revision>
 </revisionlist>
