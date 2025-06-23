@@ -1,7 +1,7 @@
 #
 # spec file for package livi
 #
-# Copyright (c) 2024 mantarimay
+# Copyright (c) 2025 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without test
 %define appid org.sigxcpu.Livi
 Name:           livi
-Version:        0.2.0
+Version:        0.3.1
 Release:        0
 Summary:        A light video player with hardware acceleration support
 License:        GPL-3.0-or-later
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(gstreamer-gl-1.0)
 Minimalistic video player using GTK4 and GStreamer. The main purpose is
 to make playing hw accelerated videos with hantro and OpenGL simple.
 
-#lang_package
+%lang_package
 
 %prep
 %autosetup -n %{name}-v%{version}
@@ -53,7 +53,7 @@ to make playing hw accelerated videos with hantro and OpenGL simple.
 %install
 %meson_install
 
-#find_lang #{name} #{?no_lang_C}
+%find_lang %{name} %{?no_lang_C}
 
 %check
 %if %{with test}
@@ -69,6 +69,6 @@ to make playing hw accelerated videos with hantro and OpenGL simple.
 %{_datadir}/icons/hicolor/scalable/apps/%{appid}.svg
 %{_datadir}/metainfo/%{appid}.metainfo.xml
 
-#files lang -f #{name}.lang
+%files lang -f %{name}.lang
 
 %changelog
