@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-rime
-Version:        5.1.9
+Version:        5.1.10
 Release:        0
 Summary:        RIME support for Fcitx5
 License:        LGPL-2.1-or-later
@@ -29,7 +29,11 @@ BuildRequires:  brise
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
+%if 0%{?suse_version} >= 1550
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc13-c++
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  librime-devel
 BuildRequires:  pkgconfig
@@ -50,7 +54,11 @@ This package provides RIME support for Fcitx5.
 %patch -P 0 -p1
 
 %build
+%if 0%{?suse_version} == 1500
+%cmake -DCMAKE_CXX_COMPILER=%{_bindir}/g++-13
+%else
 %cmake
+%endif
 %make_build
 
 %install
