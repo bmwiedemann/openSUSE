@@ -40,6 +40,8 @@ Patch2:         %{name}-fix-service-dependency.patch
 # PATCH-FIX-UPSTREAM -- fix unsufficient configure checks when using LTO (check optimized away)
 Patch3:         fix_configure_checks_with_LTO.patch
 Patch4:         harden_tvheadend.service.patch
+# https://github.com/tvheadend/tvheadend/commit/7ec273f4ff34f8700ffb3ef03d73bf20e29aca86
+Patch5:         tvheadend-gcc15.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

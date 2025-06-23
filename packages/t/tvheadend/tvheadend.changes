@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 19 15:27:24 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/tvheadend/tvheadend/commit/7ec273f4ff34f8700ffb3ef03d73bf20e29aca86
+  + tvheadend-gcc15.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 16:19:08 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
