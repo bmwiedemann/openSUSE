@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 22 20:22:30 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.15.5
+  * Ignore invalid completed chunks value when encountering such.
+
+-------------------------------------------------------------------
 Mon Jun  2 08:07:03 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.15.4
