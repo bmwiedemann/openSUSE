@@ -1,7 +1,7 @@
 #
 # spec file for package polymake
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source:         polymake-4.13-minimal.tar.bz2
 Source9:        %name-rpmlintrc
 Patch2:         sympol-system.patch
 Patch3:         perl.patch
+Patch4:         gcc15.patch
 BuildRequires:  bliss-devel
 BuildRequires:  cddlib-devel
 BuildRequires:  fdupes
