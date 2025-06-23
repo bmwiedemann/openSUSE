@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 20 14:03:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.37.2:
+  * Improvements
+    - introduce use_api_socket by @ndeloof in #12908
+  * Fixes
+    - restore ContainerName in images --json by @ndeloof in #12943
+    - fix panic using w shortcut on project without watch support
+      by @ndeloof in #12944
+  * Internal
+    - move run logic inside backend by @ndeloof in #12908
+  * Dependencies
+    - bump compose-go to v2.6.5 by @ndeloof in #12958
+    - build(deps): bump github.com/containerd/containerd/v2 from
+      2.1.1 to 2.1.2 by @dependabot in #12939
+
+-------------------------------------------------------------------
 Fri Jun 13 04:44:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.37.1:
