@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sun Jun 15 18:43:13 UTC 2025 - Bernd Ritter <comrad@opensuse.org>
 
-- Updated spdlog to 1.15.3
+- Updated spdlog to 1.15.3 (CVE-2025-6140 [bsc#1244696])
 
 - Release notes 1.15.3:
 * Bumped bundled {fmt} library to 11.2.0 by @gabime in #3399
