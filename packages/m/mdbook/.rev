@@ -231,4 +231,36 @@
 </comment>
     <requestid>1286701</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>aee2f20ca6aacd5843dd7cb66d667838</srcmd5>
+    <version>0.4.46</version>
+    <time>1750683820</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.46:
+  * Merge pull request #2578 from ehuss/bump-version
+  * Update to 0.4.46
+  * Merge pull request #2571 from szabgab/missing_backends_are_fatal
+  * Merge pull request #2569 from szabgab/suffix_items_cannot_be_followed_by_a_list
+  * Check content of the error message.
+  * check content of the error message
+  * Merge pull request #2566 from szabgab/remove-dots-from-docs
+  * remove unnecessary dots from docs
+  * Merge pull request #2561 from szabgab/test-failure-in-summary
+  * Merge pull request #2563 from jofas/patch-1
+  * Enhanced wording for editable code blocks docs
+  * Test failure in SUMMARY.md when item is not a link
+  * Merge pull request #2557 from ehuss/fix-playground-edition
+  * Fix playground edition detection
+  * Merge pull request #1368 from notriddle/hash-files
+  * More code simplification
+  * Some clippy cleanup
+  * Remove some code duplication
+  * Fix, and test, the no-js toc sidebar with hashed resources
+  * Use full patch description for hex
+  * Update sha2 to latest
+  * Rewrite test to use tempfile
+  * Update some comments and formatting
+  * Merge pull request #2551 from ehuss/bump-version</comment>
+    <requestid>1287664</requestid>
+  </revision>
 </revisionlist>
