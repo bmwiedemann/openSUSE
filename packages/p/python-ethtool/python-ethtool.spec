@@ -1,7 +1,7 @@
 #
 # spec file for package python-ethtool
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 %global pypi_name ethtool
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{pypi_name}
 Version:        0.15
 Release:        0
 Summary:        Ethernet settings Python bindings
 License:        GPL-2.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/fedora-python/%{name}
 Source:         https://files.pythonhosted.org/packages/source/e/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libnl3-devel
 # needs ifconfig for tests (to check feature parity)
@@ -50,10 +50,10 @@ rm tests/test_scripts.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 mkdir -p %{buildroot}%{_sbindir}
 mv %{buildroot}{%{_bindir},%{_sbindir}}/pifconfig
@@ -80,7 +80,8 @@ mv %{buildroot}{%{_bindir},%{_sbindir}}/pethtool
 %files %{python_files}
 %license COPYING
 %doc README.rst CHANGES.rst
-%{python_sitearch}/
+%{python_sitearch}/ethtool.cpython-*-linux-gnu.so
+%{python_sitearch}/ethtool-%{version}.dist-info
 %python_alternative %{_sbindir}/pethtool
 %python_alternative %{_sbindir}/pifconfig
 
