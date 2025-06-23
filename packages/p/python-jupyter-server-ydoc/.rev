@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1241239</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>093f24a92ca456c502c02e73fcd6c772</srcmd5>
+    <version>2.0.2</version>
+    <time>1750683393</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.0.2
+  * New subpackage version for jupyter-collaboration 4.0.2</comment>
+    <requestid>1287607</requestid>
+  </revision>
 </revisionlist>
