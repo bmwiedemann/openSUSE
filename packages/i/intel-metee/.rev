@@ -7,4 +7,12 @@
     <comment>New package. Package contains a library to access CSE/CSME/GSC firmware via a MEI interface. Will be used by the igsc package.</comment>
     <requestid>1253764</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9e9c703d9118999efdc39f659e229254</srcmd5>
+    <version>6.0.0</version>
+    <time>1750683806</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1287595</requestid>
+  </revision>
 </revisionlist>

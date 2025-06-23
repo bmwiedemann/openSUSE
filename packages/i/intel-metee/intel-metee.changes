@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 18 06:29:45 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 6.0.0
+  * CMake: consume four-part version
+  * TeeInitFull2 API
+  * EFI: Decrease HW register polling timeout
+  * EFI: Refactor HECI_DEVICE_KIND
+  * Linux: pull libmei 1.7.0
+  * EFI: Change propertyMap array type to CHAR8*
+  * EFI: Fixing compilation errors with GCC
+  * Add cpp wrapper
+  * TeeGetKind API
+
+-------------------------------------------------------------------
 Thu Mar 13 14:27:07 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Change library name to libmeteeX_Y_Z 

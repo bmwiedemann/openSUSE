@@ -15,10 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define SONAME libmetee4_3_1
+%define SONAME libmetee6_0_0_0
 
 Name:           intel-metee
-Version:        4.3.1
+Version:        6.0.0
 Release:        0
 Summary:        Library to access CSE/CSME/GSC firmware via a MEI interface
 License:        Apache-2.0
@@ -67,7 +67,7 @@ CFLAGS=-Wno-builtin-macro-redefined \
 %files -n %{SONAME}
 %license COPYING
 %doc CHANGELOG.md README.md
-%{_libdir}/libmetee.so.%{version}
+%{_libdir}/libmetee.so.%{version}.0
 
 %files devel
 %{_libdir}/libmetee.so
