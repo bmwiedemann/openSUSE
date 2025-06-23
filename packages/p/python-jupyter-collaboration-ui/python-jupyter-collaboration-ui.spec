@@ -16,9 +16,9 @@
 #
 
 
-%define distversion 1.1
+%define distversion 2.0.2
 Name:           python-jupyter-collaboration-ui
-Version:        1.1.0
+Version:        2.0.2
 Release:        0
 Summary:        Jupyter extension providing collaboration
 License:        BSD-3-Clause
