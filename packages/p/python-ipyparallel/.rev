@@ -395,4 +395,13 @@
     effect for users)</comment>
     <requestid>1236066</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e1e8239e9f9f51bb37969c184a4abcc8</srcmd5>
+    <version>9.0.1</version>
+    <time>1750683799</time>
+    <user>anag_factory</user>
+    <comment>- Update to 9.0.1
+  * 9.0.1 fixes compatibility with IPython 9.0.</comment>
+    <requestid>1287580</requestid>
+  </revision>
 </revisionlist>
