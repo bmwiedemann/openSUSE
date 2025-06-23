@@ -27,8 +27,8 @@ Source0:        Monotional_v%{version}.zip
 Source1:        README.md
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
-#Recommends:     regularhunter-monotional-az-fonts
-#Recommends:     regularhunter-monotional-sz-fonts
+Recommends:     regularhunter-monotional-az-fonts
+Recommends:     regularhunter-monotional-sz-fonts
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 

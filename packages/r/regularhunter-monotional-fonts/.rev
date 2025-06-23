@@ -105,4 +105,15 @@ and those that do technical work.</comment>
 </comment>
     <requestid>1286217</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>332588d53d40c70000f97dbcc5dd251d</srcmd5>
+    <version>2.6</version>
+    <time>1750683688</time>
+    <user>anag_factory</user>
+    <comment>- Uncomment Recommends for slashed zero (SZ) and ambiguous zero (AZ) 
+  variants
+- Update readme
+</comment>
+    <requestid>1287464</requestid>
+  </revision>
 </revisionlist>
