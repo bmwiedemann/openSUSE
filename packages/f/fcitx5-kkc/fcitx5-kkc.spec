@@ -16,22 +16,14 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
-%global sname fcitx5-kkc
-%if "%{flavor}" == ""
-%global pname %sname
-%else
-%global pname %{sname}-%{flavor}
-%endif
-
-Name:           %{pname}
-Version:        5.1.6
+Name:           fcitx5-kkc
+Version:        5.1.7
 Release:        0
 Summary:        Libkkc input method support for Fcitx5
 License:        GPL-3.0-or-later
 Group:          System/I18n/Japanese
 URL:            https://github.com/fcitx/fcitx5-kkc
-Source:         https://download.fcitx-im.org/fcitx5/%{sname}/%{sname}-%{version}.tar.zst
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -40,20 +32,14 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libkkc-devel
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-base-devel
 BuildRequires:  zstd
-%if "%{flavor}" == ""
-BuildRequires:  libqt5-qtbase-devel
 Requires:       fcitx5
 Requires:       kkc-data
 Provides:       fcitx-kkc = %{version}
 Obsoletes:      fcitx-kkc <= 0.1.4
-Conflicts:      %{sname}-qt6
-%endif
-%if "%{flavor}" == "qt6"
-BuildRequires:  qt6-base-devel
+Obsoletes:      fcitx5-kkc-qt6 <= 5.1.6
 Supplements:    (fcitx5 and kkc-data)
-Conflicts:      %{sname}
-%endif
 %if 0%{?suse_version} <= 1520
 BuildRequires:  appstream-glib-devel
 %endif
@@ -62,37 +48,27 @@ BuildRequires:  appstream-glib-devel
 This package provides libkkc input method support for Fcitx5.
 
 %prep
-%setup -q -n %{sname}-%{version}
+%setup -q -n %{name}-%{version}
 
 %build
-%if "%{flavor}" == ""
-%cmake -DUSE_QT6=OFF
-%endif
-%if "%{flavor}" == "qt6"
 %if 0%{?suse_version} == 1500
 %cmake -DCMAKE_CXX_COMPILER=%{_bindir}/g++-13
 %else
 %cmake
 %endif
-%endif
 %make_build
 
 %install
 %cmake_install
-%find_lang %{sname}
+%find_lang %{name}
 
-%files -f %{sname}.lang
+%files -f %{name}.lang
 %doc README.md
 %license LICENSES
 %dir %{_datadir}/fcitx5/inputmethod
 %dir %{_datadir}/fcitx5/kkc
 %{_libdir}/fcitx5/kkc.so
-%if "%{flavor}" == ""
-%{_libdir}/fcitx5/qt5/libfcitx5-kkc-config.so
-%endif
-%if "%{flavor}" == "qt6"
 %{_libdir}/fcitx5/qt6/libfcitx5-kkc-config.so
-%endif
 %{_datadir}/fcitx5/addon/kkc.conf
 %{_datadir}/fcitx5/inputmethod/kkc.conf
 %{_datadir}/fcitx5/kkc/dictionary_list
