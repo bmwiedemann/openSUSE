@@ -157,4 +157,21 @@
   * Improve game library UX (forwarded request 1284532 from rrahl0)</comment>
     <requestid>1284533</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4fa728be1c0bab84880610e5be249cb5</srcmd5>
+    <version>0.5.5</version>
+    <time>1750683446</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5.5:
+  * Fix profile detection (for real)
+- update to 0.5.4:
+  * Fix profile detection
+- update to 0.5.3:
+  * Add the ability to change the launch options
+  * Add a feature list in README
+  * Adding more options to game rows
+  * Add the ability to set the default compatibility tool for Steam
+  * Update translations (forwarded request 1287254 from rrahl0)</comment>
+    <requestid>1287255</requestid>
+  </revision>
 </revisionlist>
