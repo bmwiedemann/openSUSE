@@ -52,7 +52,8 @@ Summary:        Development files for %{name}
 %build
 %cmake \
   -DGSL_TEST=ON \
-  -DCMAKE_BUILD_TYPE=Release
+  -DCMAKE_BUILD_TYPE=Release \
+  -DGSL_CXX_STANDARD=17
 %cmake_build
 
 %install

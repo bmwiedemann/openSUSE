@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 19 15:01:50 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Fix build using googletest >= v1.17.0, boo#1244989
+  * https://github.com/microsoft/GSL/issues/1178
+
+-------------------------------------------------------------------
 Sun Mar  2 19:31:11 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream version 4.2.0
