@@ -16,6 +16,8 @@
 #
 
 
+%define pythons python3
+
 %{!?tmpfiles_create:%global tmpfiles_create systemd-tmpfiles --create}
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -44,11 +46,17 @@ Patch201:       %{name}-0.10.4-env-script-interpreter.patch
 Patch301:       harden_fail2ban.service.patch
 # PATCH-FIX-OPENSUSE fail2ban-fix-openssh98.patch meissner@suse.com -- support openssh9.8 bsc#1230101
 Patch302:       fail2ban-fix-openssh98.patch
+# PATCH-FIX-OPENSUSE setup-py-install-dir.patch ncutler@suse.com -- fix unit file population broken by switch to pyproject_wheel macro
+Patch303:       setup-py-install-dir.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyinotify >= 0.8.3}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module systemd}
+BuildRequires:  %{python_module tools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  logrotate
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-tools
 # timezone package is required to run the tests
 BuildRequires:  timezone
 Requires:       cron
@@ -58,13 +66,10 @@ Requires:       logrotate
 Requires:       python3 >= 3.5
 Requires:       python3-setuptools
 Requires:       whois
-BuildArch:      noarch
-BuildRequires:  python3-systemd
 BuildRequires:  pkgconfig(systemd)
 Requires:       python3-systemd
 Requires:       systemd > 204
 %{?systemd_requires}
-BuildRequires:  python3-pyinotify >= 0.8.3
 Requires:       python3-pyinotify >= 0.8.3
 %if 0%{?suse_version} < 1600
 Obsoletes:      SuSEfirewall2-%{name}
@@ -81,6 +86,7 @@ or Apache web server ones.
 %package -n monitoring-plugins-%{name}
 Summary:        Check fail2ban server and how many IPs are currently banned
 Group:          System/Monitoring
+BuildArch:      noarch
 %if 0%{?suse_version}
 BuildRequires:  nagios-rpm-macros
 %else
@@ -110,6 +116,7 @@ sed -i -e 's/^before = paths-.*/before = paths-opensuse.conf/' config/jail.conf
 %patch -P 201 -p1
 %patch -P 301 -p1
 %patch -P 302 -p1
+%patch -P 303 -p1
 
 rm 	config/paths-arch.conf \
 	config/paths-debian.conf \
@@ -122,13 +129,13 @@ sed -i -e 's|%{_datadir}/doc/%{name}|%{_docdir}/%{name}|' setup.py
 
 %build
 export CFLAGS="%{optflags}"
-python3 setup.py build
+export SERVICE_BINDIR="/usr/bin"
+%pyproject_wheel
 gzip man/*.{1,5}
 
 %install
-python3 setup.py install \
-	--root=%{buildroot} \
-	--prefix=%{_prefix}
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{python3_sitelib}
 
 install -d -m 755 %{buildroot}%{_mandir}/man{1,5}
 install -p -m 644 man/fail2ban-*.1.gz %{buildroot}%{_mandir}/man1
@@ -150,6 +157,13 @@ install -p -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 ln -sf service %{buildroot}%{_sbindir}/rc%{name}
 
+install -d -m 755 %{buildroot}%{_sysconfdir}
+mv %{buildroot}%{python3_sitelib}%{_sysconfdir}/%{name} %{buildroot}%{_sysconfdir}
+rm -rv %{buildroot}%{_sysconfdir}/%{name}/action.d/__pycache__/
+install -d -m 755 %{buildroot}%{_sysconfdir}/%{name}/fail2ban.d
+install -d -m 755 %{buildroot}%{_sysconfdir}/%{name}/jail.d
+install -d -m 755 %{buildroot}%{_docdir}
+mv -v %{buildroot}%{python3_sitelib}%{_docdir}/%{name} %{buildroot}%{_docdir}
 echo "# Do all your modifications to the jail's configuration in jail.local!" > %{buildroot}%{_sysconfdir}/%{name}/jail.local
 
 install -d -m 0755 %{buildroot}%{_localstatedir}/lib/%{name}/
@@ -166,13 +180,6 @@ perl -i -lpe 's{(After|PartOf)=(.*)}{$1=$2 SuSEfirewall2.service}' \
 %endif
 install -D -m 755 files/nagios/check_fail2ban %{buildroot}%{nagios_plugindir}/check_%{name}
 
-# install docs using the macro
-rm -r %{buildroot}%{_docdir}/%{name}
-
-%python3_fix_shebang
-# remove duplicates
-%fdupes -s %{buildroot}%{python3_sitelib}
-
 %check
 # tests require python-pyinotify to be installed, so don't run them on older versions
 %if 0%{?suse_version} >= 1500
@@ -187,8 +194,6 @@ export LANG=en_US.UTF-8
 %post
 %fillup_only
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
-# The next line is not workin in Leap 42.1, so keep the old way
-#%%tmpfiles_create %%{_tmpfilesdir}/%%{name}.conf
 %service_add_post %{name}.service
 
 %preun
@@ -233,7 +238,7 @@ export LANG=en_US.UTF-8
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 %license COPYING
-%doc README.md TODO ChangeLog doc/*.txt
+%doc README.md TODO ChangeLog doc/*.txt DEVELOP FILTERS
 
 # do not include tests as they are executed during the build process
 %exclude %{_bindir}/%{name}-testcases

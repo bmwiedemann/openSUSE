@@ -745,4 +745,12 @@ services protected by Fail2ban. CVE-2013-7177 (cyrus-imap) and CVE-2013-7176
     <comment></comment>
     <requestid>1283653</requestid>
   </revision>
+  <revision rev="74" vrev="5">
+    <srcmd5>7b58ad3234680d597941d51c452d0e68</srcmd5>
+    <version>1.1.0</version>
+    <time>1750683369</time>
+    <user>anag_factory</user>
+    <comment>add missing changes file entry</comment>
+    <requestid>1286316</requestid>
+  </revision>
 </revisionlist>

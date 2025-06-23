@@ -1,0 +1,12 @@
+diff -rub fail2ban-1.1.0/setup.py fail2ban-1.1.0-patched/setup.py
+--- fail2ban-1.1.0/setup.py	2024-04-25 23:08:13.000000000 +0200
++++ fail2ban-1.1.0-patched/setup.py	2025-06-13 14:21:56.504000000 +0200
+@@ -84,7 +84,7 @@
+ 
+ 	def update_scripts(self, dry_run=False):
+ 		buildroot = os.path.dirname(self.build_dir)
+-		install_dir = self.install_dir
++		install_dir = os.environ.get("SERVICE_BINDIR", self.install_dir)
+ 		try:
+ 			# remove root-base from install scripts path:
+ 			root = self.distribution.command_options['install']['root'][1]

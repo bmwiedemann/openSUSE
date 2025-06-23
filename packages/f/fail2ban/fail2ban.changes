@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jun 16 22:37:03 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- spec:
+  * Drop noarch due to /usr/bin/fail2ban-python ELF
+  * noarch for monitoring subpackage
+
+-------------------------------------------------------------------
+Fri Jun 13 12:31:06 UTC 2025 - Nathan Cutler <ncutler@suse.com>
+
+- Add setup-py-install-dir.patch:
+  * fix unit file population broken by switch to %pyproject_wheel
+
+-------------------------------------------------------------------
+Wed Jun 11 13:04:39 UTC 2025 - Nathan Cutler <ncutler@suse.com>
+
+- spec:
+  * simplify manual installation of files under /etc and /usr from
+    the wheel 
+
+-------------------------------------------------------------------
+Tue Jun 10 13:23:16 UTC 2025 - Nathan Cutler <ncutler@suse.com>
+
+- spec:
+  * Use pyproject macros to build and install (including
+    implementing manual install for files under /etc and /usr from
+    the wheel)
+  * some BuildRequires cleanup
+
+-------------------------------------------------------------------
 Fri Jun  6 11:15:38 UTC 2025 - Max Lin <mlin@suse.com>
 
 - Add %python3_fix_shebang macro
