@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jun 22 20:46:03 UTC 2025 - Jan Baier <jbaier@suse.com>
+
+- update to 0.8.0
+  * Add: Support for Action5 type 1A overlay rocks by @zephyris in https://github.com/OpenTTD/nml/pull/365
+  * Fix: ALL_NORMAL_CARGO_CLASSES and ALL_CARGO_CLASSES did not include newer cargo classes. by @frosch123 in
+  https://github.com/OpenTTD/nml/pull/366
+  * Fix: Don't announce dependabot PRs by @glx22 in https://github.com/OpenTTD/nml/pull/356
+  * Fix: Nicer error message when a station switch returns a SpriteLayout by @glx22 in https://github.com/OpenTTD/nml/pull/360
+  * Fix 530e325f: 'gh' requires a git repository by @glx22 in https://github.com/OpenTTD/nml/pull/364
+  * Fix #367: Incorrect limits for House and Industry Tile by @glx22 in https://github.com/OpenTTD/nml/pull/368
+  * Codefix: Remove unneeded "global" by @glx22 in https://github.com/OpenTTD/nml/pull/369
+  * Upgrade: bump pypa/cibuildwheel from 2.22.0 to 2.23.2 in the actions group by @dependabot in https://github.com/OpenTTD/nml/pull/370
+  * Add: Road/tram/railtype variable 0x45. by @frosch123 in https://github.com/OpenTTD/nml/pull/373
+  * Add: Parent scope for airports and airport tiles. by @frosch123 in https://github.com/OpenTTD/nml/pull/374
+  * Add: Constants for (new) station and roadstop animation and random triggers. by @frosch123 in https://github.com/OpenTTD/nml/pull/375
+  * Change: Vendor in latest ply version by @glx22 in https://github.com/OpenTTD/nml/pull/342
+  * Upgrade: bump pypa/cibuildwheel from 2.23.2 to 2.23.3 in the actions group by @dependabot in https://github.com/OpenTTD/nml/pull/376
+  * Add: Support for badge menu vertical ellipsis icon by @zephyris in https://github.com/OpenTTD/nml/pull/377
+  * Update: changelog for 0.8.0 by @glx22 in https://github.com/OpenTTD/nml/pull/379
+
+-------------------------------------------------------------------
 Sun Feb 16 12:45:00 UTC 2025 - Jan Baier <jbaier@suse.com>
 
 - update to 0.7.6
