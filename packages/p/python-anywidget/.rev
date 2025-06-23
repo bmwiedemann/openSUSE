@@ -183,4 +183,28 @@
     page.</comment>
     <requestid>1197745</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a6767e11f14cef796d9a2e7141b2d08c</srcmd5>
+    <version>0.9.18</version>
+    <time>1750683793</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.9.18
+  * experimental Fix descriptor API to send initial state on comm
+    creation (#832)
+  * Refactor: Manage front-end HMR runtimes with web
+    AbortController (#826)
+  * Improve robustness of HMR file watching (#831)
+  * Handles cases where atomic saves (e.g. by VS Code) temporarily
+    delete and replace the file. The watcher now ensures the file
+    does not exist on Change.delete events, preventing unexpected
+    drops in hot reload behavior.
+  * Fix: Use temporary polyfill for Promise.withResolvers for
+    Safari compat (#824)
+  * Move @anywidget/types from devDependencies to dependencies
+    (#812)
+  * Comm messages sent quickly after the creation of a widget could
+    be lost because custom widgets' models were loaded
+    asynchronously (#804)</comment>
+    <requestid>1287577</requestid>
+  </revision>
 </revisionlist>

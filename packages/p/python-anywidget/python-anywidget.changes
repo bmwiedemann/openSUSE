@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jun 21 14:25:31 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.18
+  * experimental Fix descriptor API to send initial state on comm
+    creation (#832)
+  * Refactor: Manage front-end HMR runtimes with web
+    AbortController (#826)
+  * Improve robustness of HMR file watching (#831)
+  * Handles cases where atomic saves (e.g. by VS Code) temporarily
+    delete and replace the file. The watcher now ensures the file
+    does not exist on Change.delete events, preventing unexpected
+    drops in hot reload behavior.
+  * Fix: Use temporary polyfill for Promise.withResolvers for
+    Safari compat (#824)
+  * Move @anywidget/types from devDependencies to dependencies
+    (#812)
+  * Comm messages sent quickly after the creation of a widget could
+    be lost because custom widgets' models were loaded
+    asynchronously (#804)
+
+-------------------------------------------------------------------
 Fri Aug 30 09:04:41 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.9.13

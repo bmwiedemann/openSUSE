@@ -1,7 +1,7 @@
 #
 # spec file for package python-anywidget
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,15 @@
 #
 
 
-%define distver 0.9.13
+%define distver 0.9.18
 Name:           python-anywidget
-Version:        0.9.13
+Version:        0.9.18
 Release:        0
 Summary:        Custom jupyter widgets made easy
 License:        MIT
 URL:            https://github.com/manzt/anywidget
 Source:         https://files.pythonhosted.org/packages/source/a/anywidget/anywidget-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-jupyter-builder}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -31,6 +32,7 @@ BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module ipywidgets >= 7.6.0}
+BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module msgspec}
 BuildRequires:  %{python_module psygnal >= 0.8.1}
 BuildRequires:  %{python_module pydantic}
