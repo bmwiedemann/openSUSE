@@ -226,4 +226,33 @@
     fd02487</comment>
     <requestid>1197779</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>80f22cc2968684573c00c14ea05a506d</srcmd5>
+    <version>0.20.0</version>
+    <time>1750683794</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.20.0
+  ## New features
+  * Add event coordinates to GeoJSON message by @lopezvoliver in
+    #1228
+  * Default zoom level to 4 instead of 12 so that default Map()
+    don't onl… by @SylvainCorlay in #1252
+  * Preserve {r} in basemap urls by @letmaik in #1241
+  * Fix geoman controls option update + snapping option by
+    @mangecoeur in #1247
+  * Add on_click to GeomanDrawControl by @arjxn-py in #1261
+  ## Bug fixes
+  * Add scrollWheelZoom.enable() and disable() by @lopezvoliver in
+    #1225
+  * Make Leaflet-Geoman ignore created layers by default by
+    @riccardoporreca in #1220
+  * Make cluster &quot;bubbles&quot; ignorable by Geoman by @lopezvoliver in
+    #1249
+  * Update deprecated subdomains for tile.openstreetmap.org by
+    @arjxn-py in #1257
+  * Add workaround for MeasureControl map panning bug by @gjmooney
+    in #1171
+  * geojson layers pmIgnore by @lopezvoliver in #1251</comment>
+    <requestid>1287578</requestid>
+  </revision>
 </revisionlist>
