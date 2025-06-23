@@ -24,9 +24,12 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/fmoo/python-editor
 Source:         https://files.pythonhosted.org/packages/source/p/python-editor/python-editor-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM support-python312.patch https://github.com/fmoo/python-editor/commit/5023fafd265add111b29baca59b07f140daf75b7
+Patch0:         support-python312.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if 0%{?is_opensuse}
@@ -40,7 +43,7 @@ programmatically interfacing with the editor defined in the EDITOR
 environment variable.
 
 %prep
-%setup -q -n python-editor-%{version}
+%autosetup -p1 -n python-editor-%{version}
 
 %build
 find -type f -exec chmod 644 {} +
@@ -49,13 +52,12 @@ find -type f -exec chmod 644 {} +
 %install
 %pyproject_install
 %python_expand sed -i -e '/^#!\/usr\/bin\/env/d' %{buildroot}%{$python_sitelib}/editor.py
+%python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
-%if 0%{?is_opensuse}
 # the example does not look like an unit test
-# %check
+# %%check
 # export EDITOR='nano'
 # Xpython_exec test.py
-%endif
 
 %files %{python_files}
 %license LICENSE

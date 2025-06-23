@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 20 11:51:56 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Add support-python312.patch to not depend on distutils (boo#1245108)
+- clean up duplicate files
+
+-------------------------------------------------------------------
 Tue Jun 10 12:56:27 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
