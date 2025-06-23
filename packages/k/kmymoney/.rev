@@ -636,4 +636,12 @@
     <comment>- Disable PIM integration until kmymoney is ported to KF6/Qt6</comment>
     <requestid>1153200</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>7942855b509acdb18b69373124cfff41</srcmd5>
+    <version>5.2.0</version>
+    <time>1750683825</time>
+    <user>anag_factory</user>
+    <comment>Update to 5.2.0</comment>
+    <requestid>1287663</requestid>
+  </revision>
 </revisionlist>

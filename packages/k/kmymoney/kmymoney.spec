@@ -1,7 +1,7 @@
 #
 # spec file for package kmymoney
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,72 +16,77 @@
 #
 
 
-%bcond_without lang
+%define kf6_version 6.1.0
+%define qt6_version 6.7.0
+
+%bcond_without released
 Name:           kmymoney
-Version:        5.1.3
+Version:        5.2.0
 Release:        0
 Summary:        A Personal Finance Manager by KDE
 License:        GPL-2.0-only OR GPL-3.0-only
-Group:          Productivity/Office/Finance
 URL:            https://www.kmymoney.org/
-Source0:        https://download.kde.org/stable/kmymoney/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/kmymoney/%{version}/%{name}-%{version}.tar.xz
+%if %{with released}
+Source1:        https://download.kde.org/stable/kmymoney/%{version}/%{name}-%{version}.tar.xz.sig
+Source2:        kmymoney.keyring
+%endif
 BuildRequires:  doxygen
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
-BuildRequires:  kdiagram-devel
-BuildRequires:  libQt5Sql-private-headers-devel
-BuildRequires:  libalkimia5-devel >= 7.0
 BuildRequires:  libofx-devel
-BuildRequires:  libqgpgme-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
-BuildRequires:  cmake(KF5Activities)
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5Contacts)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5Holidays)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5ItemViews)
-BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(KF5XmlGui)
-# Disabled PIM dependencies until kmymoney is ported to KF6/Qt6
-# BuildRequires:  cmake(KF5Akonadi)
-# BuildRequires:  cmake(KF5IdentityManagement)
-BuildRequires:  cmake(Qt5Concurrent) >= 5.6.0
-BuildRequires:  cmake(Qt5Core) >= 5.6.0
-BuildRequires:  cmake(Qt5DBus) >= 5.6.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.6.0
-BuildRequires:  cmake(Qt5QuickWidgets) >= 5.6.0
-BuildRequires:  cmake(Qt5Sql) >= 5.6.0
-BuildRequires:  cmake(Qt5Svg) >= 5.6.0
-BuildRequires:  cmake(Qt5Test) >= 5.6.0
-BuildRequires:  cmake(Qt5WebEngine) >= 5.8.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
-BuildRequires:  cmake(Qt5Xml) >= 5.6.0
-BuildRequires:  cmake(aqbanking) >= 6.0.1
+BuildRequires:  qt6-sql-private-devel >= %{qt6_version}
+BuildRequires:  cmake(KChart6)
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6Holidays) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemViews) >= %{kf6_version}
+BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Service) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KPim6Akonadi)
+BuildRequires:  cmake(KPim6IdentityManagementCore)
+BuildRequires:  cmake(LibAlkimia6) >= 8.1.90
+BuildRequires:  cmake(PlasmaActivities)
+BuildRequires:  cmake(QGpgmeQt6)
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Keychain)
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
+BuildRequires:  cmake(aqbanking) >= 6.5.0
+BuildRequires:  cmake(gwengui-cpp)
+# BuildRequires:  cmake(gwengui-qt6) TODO
+BuildRequires:  cmake(gwenhywfar) >= 5.10.1
 BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(sqlcipher)
 BuildRequires:  pkgconfig(sqlite3)
+Requires:       qt6-sql-sqlite >= %{qt6_version}
 # For users of KDE:Unstable:Extra
 Provides:       kmymoney5 = %{version}
 Obsoletes:      kmymoney5 < %{version}
 Provides:       kmymoney-doc = %{version}
 Obsoletes:      kmymoney-doc < %{version}
-# QtWebEngine is needed
-%ifnarch %{ix86} x86_64 %{arm} aarch64
-ExclusiveArch:  do_not_build
-%endif
 
 %description
 KMyMoney is a Personal Finance Manager by KDE. It operates
@@ -91,8 +96,7 @@ OFX and HBCI, budgeting and a rich set of reports.
 
 %package devel
 Summary:        Development Files for KMyMoney
-Group:          Development/Languages/C and C++
-Requires:       %{name} = %{version}
+Requires:       kmymoney = %{version}
 
 %description devel
 Development files and headers need to build software using KMyMoney.
@@ -103,69 +107,88 @@ Development files and headers need to build software using KMyMoney.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DENABLE_WEBENGINE=ON
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
-%fdupes -s %{buildroot}
+%kf6_install
 
-%if %{with lang}
-%find_lang %{name} --with-man
-%{kf5_find_htmldocs}
-%endif
+%fdupes %{buildroot}
+
+%find_lang %{name} --with-html --with-man
 
 %ldconfig_scriptlets
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/kmymoney/
-%dir %{_kf5_iconsdir}/hicolor/1024x1024
-%dir %{_kf5_iconsdir}/hicolor/1024x1024/apps
-%dir %{_kf5_iconsdir}/hicolor/1024x1024/mimetypes
-%dir %{_kf5_iconsdir}/hicolor/20x20
-%dir %{_kf5_iconsdir}/hicolor/20x20/apps
+%doc %lang(en) %{_kf6_htmldir}/en/kmymoney/
+%doc README.md
+%dir %{_kf6_iconsdir}/hicolor/1024x1024
+%dir %{_kf6_iconsdir}/hicolor/1024x1024/apps
+%dir %{_kf6_iconsdir}/hicolor/1024x1024/mimetypes
+%dir %{_kf6_iconsdir}/hicolor/20x20
+%dir %{_kf6_iconsdir}/hicolor/20x20/apps
 %{_datadir}/mime/packages/x-kmymoney.xml
-%{_kf5_applicationsdir}/org.kde.kmymoney.desktop
-%{_kf5_appsdir}/kbanking/
-%{_kf5_appsdir}/kmymoney/
-%{_kf5_appstreamdir}/org.kde.kmymoney.appdata.xml
-%{_kf5_bindir}/kmymoney
-%{_kf5_configkcfgdir}/
-%{_kf5_iconsdir}/hicolor/*/*/*
-%{_kf5_kxmlguidir}/
-%{_kf5_libdir}/libkmm_csvimportercore.so.*
-%{_kf5_libdir}/libkmm_icons.so.*
-%{_kf5_libdir}/libkmm_menus.so.*
-%{_kf5_libdir}/libkmm_models.so.*
-%{_kf5_libdir}/libkmm_mymoney.so.*
-%{_kf5_libdir}/libkmm_payeeidentifier.so.*
-%{_kf5_libdir}/libkmm_plugin.so.*
-%{_kf5_libdir}/libkmm_printer.so.*
-%{_kf5_libdir}/libkmm_settings.so.*
-%{_kf5_libdir}/libkmm_widgets.so.*
-%{_kf5_plugindir}/
-%{_kf5_servicesdir}/*.desktop
-%{_kf5_sharedir}/checkprinting/
-%{_kf5_sharedir}/kconf_update/
+%{_kf6_applicationsdir}/org.kde.kmymoney.desktop
+%{_kf6_sharedir}/kmymoney/
+%{_kf6_appstreamdir}/org.kde.kmymoney.appdata.xml
+%{_kf6_bindir}/kmymoney
+%{_kf6_configkcfgdir}/
+%{_kf6_iconsdir}/hicolor/*/*/*
+%{_kf6_libdir}/libkmm_base_dialogs.so.*
+%{_kf6_libdir}/libkmm_base_widgets.so.*
+%{_kf6_libdir}/libkmm_csvimportercore.so.*
+%{_kf6_libdir}/libkmm_extended_dialogs.so.*
+%{_kf6_libdir}/libkmm_gpgfile.so.*
+%{_kf6_libdir}/libkmm_icons.so.*
+%{_kf6_libdir}/libkmm_keychain.so.*
+%{_kf6_libdir}/libkmm_menuactionexchanger.so.*
+%{_kf6_libdir}/libkmm_menus.so.*
+%{_kf6_libdir}/libkmm_models.so.*
+%{_kf6_libdir}/libkmm_mymoney.so.*
+%{_kf6_libdir}/libkmm_payeeidentifier.so.*
+%{_kf6_libdir}/libkmm_plugin.so.*
+%{_kf6_libdir}/libkmm_printer.so.*
+%{_kf6_libdir}/libkmm_selections.so.*
+%{_kf6_libdir}/libkmm_settings.so.*
+%{_kf6_libdir}/libkmm_templates.so.*
+%{_kf6_libdir}/libkmm_webconnect.so.*
+%{_kf6_libdir}/libkmm_widgets.so.*
+%{_kf6_libdir}/libkmm_wizard.so.*
+%{_kf6_libdir}/libkmm_yesno.so.*
+%{_kf6_libdir}/libonlinetask_interfaces.so.*
+%{_kf6_plugindir}/
+%{_kf6_sharedir}/checkprinting/
+%{_kf6_sharedir}/kconf_update/
 %{_mandir}/man1/kmymoney.1%{?ext_man}
 
 %files devel
 %{_includedir}/kmymoney/
-%{_kf5_libdir}/libkmm_csvimportercore.so
-%{_kf5_libdir}/libkmm_icons.so
-%{_kf5_libdir}/libkmm_menus.so
-%{_kf5_libdir}/libkmm_models.so
-%{_kf5_libdir}/libkmm_mymoney.so
-%{_kf5_libdir}/libkmm_payeeidentifier.so
-%{_kf5_libdir}/libkmm_plugin.so
-%{_kf5_libdir}/libkmm_printer.so
-%{_kf5_libdir}/libkmm_settings.so
-%{_kf5_libdir}/libkmm_widgets.so
+%{_kf6_libdir}/libkmm_base_dialogs.so
+%{_kf6_libdir}/libkmm_base_widgets.so
+%{_kf6_libdir}/libkmm_csvimportercore.so
+%{_kf6_libdir}/libkmm_extended_dialogs.so
+%{_kf6_libdir}/libkmm_gpgfile.so
+%{_kf6_libdir}/libkmm_icons.so
+%{_kf6_libdir}/libkmm_keychain.so
+%{_kf6_libdir}/libkmm_menuactionexchanger.so
+%{_kf6_libdir}/libkmm_menus.so
+%{_kf6_libdir}/libkmm_models.so
+%{_kf6_libdir}/libkmm_mymoney.so
+%{_kf6_libdir}/libkmm_payeeidentifier.so
+%{_kf6_libdir}/libkmm_plugin.so
+%{_kf6_libdir}/libkmm_printer.so
+%{_kf6_libdir}/libkmm_selections.so
+%{_kf6_libdir}/libkmm_settings.so
+%{_kf6_libdir}/libkmm_templates.so
+%{_kf6_libdir}/libkmm_webconnect.so
+%{_kf6_libdir}/libkmm_widgets.so
+%{_kf6_libdir}/libkmm_wizard.so
+%{_kf6_libdir}/libkmm_yesno.so
+%{_kf6_libdir}/libonlinetask_interfaces.so
 
-%if %{with lang}
 %files lang -f %{name}.lang
-%endif
+%exclude %{_kf6_htmldir}/en/kmymoney/
 
 %changelog
