@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jun 21 06:38:38 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.32.6:
+  * Bump images, dependencies and versions to go 1.23.10 and distroless iptables
+  * Remove warning about resizing failed for unknown reason
+  * Add tests that validate the return value of resize operation
+  * DRA node: reject static pods which reference ResourceClaims
+  * pkg/kubelet/userns: Remove skip on windows
+  * pkg/kubelet/userns: Wrap error to get mappings
+  * pkg/kubelet/userns: Provide stub implementation for windows
+  * pkg/kubelet: Fix userns tests on Windows
+  * Revert "Enforce the Minimum Kernel Version 6.3 for UserNamespacesSupport feature"
+  * Revert "Switch hard error to a WARNING for kernel version check"
+  * userns: Wrap more errors
+  * userns: Improve error returned if userns is not supported
+  * userns: Use len to handle empty non-nil slices
+  * Update hnslib version in Windows KubeProxy
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.23.10`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.32.6/build/dependencies.yaml#L117-L119
+
+-------------------------------------------------------------------
 Tue Jun 10 12:36:12 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - add patch file: cve-2025-22872-x-net-html-properly-handle-trailing-solidus.patch
