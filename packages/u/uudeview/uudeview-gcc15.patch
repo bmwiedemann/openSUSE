@@ -1,0 +1,210 @@
+diff --git a/inews/clientlib.c b/inews/clientlib.c
+index cdb9752..f14607b 100644
+--- a/inews/clientlib.c
++++ b/inews/clientlib.c
+@@ -14,6 +14,7 @@ static char	*sccsid = "@(#)clientlib.c	1.11	(Berkeley) 10/27/89";
+ #include "../config.h"
+ #endif
+ 
++#include <arpa/inet.h>
+ #include <stdio.h>
+ #ifndef FOR_NN
+ #include <sys/types.h>
+@@ -52,6 +53,7 @@ static char	*sccsid = "@(#)clientlib.c	1.11	(Berkeley) 10/27/89";
+ #endif
+ 
+ #include "nntp.h"
++#include "clientlib.h"
+ 
+ FILE	*ser_rd_fp = NULL;
+ FILE	*ser_wr_fp = NULL;
+@@ -133,7 +135,7 @@ char	*file;
+  *			for reading and writing to server.
+  */
+ 
+-server_init(machine)
++int server_init(machine)
+ char	*machine;
+ {
+ 	int	sockt_rd, sockt_wr;
+@@ -194,7 +196,7 @@ char	*machine;
+  *	Errors:		Printed via perror.
+  */
+ 
+-get_tcp_socket(machine)
++int get_tcp_socket(machine)
+ char	*machine;
+ {
+ 	int	s;
+@@ -218,7 +220,6 @@ char	*machine;
+         * fails.
+         */
+        if( (hp = gethostbyname( machine ) ) == NULL ) {
+-               unsigned long inet_addr();
+                static struct hostent def;
+                static struct in_addr defaddr;
+                static char *alist[1];
+@@ -344,7 +345,7 @@ char	*machine;
+  *	Errors:		Printed via nerror.
+  */
+ 
+-get_dnet_socket(machine)
++int get_dnet_socket(machine)
+ char	*machine;
+ {
+ 	int	s, area, node;
+@@ -427,7 +428,7 @@ char	*machine;
+  *	Side effects:	None.
+  */
+ 
+-handle_server_response(response, server)
++int handle_server_response(response, server)
+ int	response;
+ char	*server;
+ {
+@@ -502,7 +503,7 @@ char *string;
+  *	Side effects:	Talks to server, changes contents of "string".
+  */
+ 
+-get_server(string, size)
++int get_server(string, size)
+ char	*string;
+ int	size;
+ {
+diff --git a/inews/clientlib.h b/inews/clientlib.h
+index 0c1137f..f44004f 100644
+--- a/inews/clientlib.h
++++ b/inews/clientlib.h
+@@ -9,3 +9,7 @@ extern	int	server_init();
+ extern	void	put_server();
+ extern	int	get_server();
+ extern	void	close_server();
++
++extern	int	get_tcp_socket(char *machine);
++extern	int	get_server(char *string, int size);
++extern	int	handle_server_response(int response, char *server);
+diff --git a/inews/inews.c b/inews/inews.c
+index f8a9436..5ab02c1 100644
+--- a/inews/inews.c
++++ b/inews/inews.c
+@@ -39,15 +39,20 @@ static char *sccsid = "@(#)inews.c	1.16	(Berkeley) 8/27/89";
+ 
+ #include "conf.h"
+ #include "nntp.h"
++#include "clientlib.h"
+ 
+ 
+ #define	MAX_SIGNATURE	6
+ 
++int strneql(char *a, char *b, int n);
++void gen_frompath(void);
++int valid_header(register char *h);
++
+ extern	FILE	*ser_wr_fp;
+ 
+ char	host_name[256];
+ 
+-main(argc, argv)
++int main(argc, argv)
+ int	argc;
+ char	*argv[];
+ {
+@@ -254,7 +259,7 @@ void append_signature()
+  * a From: line in it.
+  */
+ 
+-gen_frompath()
++void gen_frompath()
+ {
+ 	char	*full_name;
+ 	char	*cp;
+@@ -330,7 +335,7 @@ gen_frompath()
+  *	Side effects:	None.
+  */
+ 
+-strneql(a, b, n)
++int strneql(a, b, n)
+ register char *a, *b;
+ int	n;
+ {
+
+diff --git a/inews/clientlib.c b/inews/clientlib.c
+index 142432d..d6bf3c6 100644
+--- a/inews/clientlib.c
++++ b/inews/clientlib.c
+@@ -199,8 +199,8 @@ int get_tcp_socket(char	*machine)
+ 	int	s;
+ 	struct	sockaddr_in sin;
+ #ifndef EXCELAN
+-	struct	servent *getservbyname(), *sp;
+-	struct	hostent *gethostbyname(), *hp;
++	struct	servent *sp;
++	struct	hostent *hp;
+ #ifdef h_addr
+ 	int	x = 0;
+ 	register char **cp;
+diff --git a/inews/clientlib.h b/inews/clientlib.h
+index f44004f..8ae792d 100644
+--- a/inews/clientlib.h
++++ b/inews/clientlib.h
+@@ -4,12 +4,11 @@
+  * @(#)clientlib.h	1.1	(Berkeley) 1/9/88
+  */
+ 
+-extern	char	*getserverbyfile();
+-extern	int	server_init();
+-extern	void	put_server();
+-extern	int	get_server();
+-extern	void	close_server();
++extern char *getserverbyfile(char *file);
++extern int server_init(char *machine);
++extern void put_server(char *string);
++extern void close_server();
+ 
+-extern	int	get_tcp_socket(char *machine);
+-extern	int	get_server(char *string, int size);
+-extern	int	handle_server_response(int response, char *server);
++extern int get_tcp_socket(char *machine);
++extern int get_server(char *string, int size);
++extern int handle_server_response(int response, char *server);
+diff --git a/inews/inews.c b/inews/inews.c
+index 1e13f46..2f4bca2 100644
+--- a/inews/inews.c
++++ b/inews/inews.c
+@@ -59,7 +59,6 @@ int main(int argc, char *argv[])
+ 	int	seen_fromline, in_header, seen_header;
+ 	int	response;
+ 	char	*server;
+-	char	*getserverbyfile();
+ 	register char	*cp;
+ 
+ 	++argv;
+diff --git a/uulib/crc32.h b/uulib/crc32.h
+index b520cd7..ef716c1 100644
+--- a/uulib/crc32.h
++++ b/uulib/crc32.h
+@@ -1,14 +1,6 @@
+ #ifndef __CRC32_H__
+ #define __CRC32_H__
+ 
+-#ifndef _ANSI_ARGS_
+-#ifdef PROTOTYPES
+-#define _ANSI_ARGS_(c)	c
+-#else
+-#define _ANSI_ARGS_(c)	()
+-#endif
+-#endif
+-
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+@@ -16,7 +8,7 @@ extern "C" {
+ typedef unsigned long crc32_t;
+ #define Z_NULL  0
+ 
+-crc32_t crc32 _ANSI_ARGS_((crc32_t crc, const unsigned char *buf, unsigned int len));
++crc32_t crc32 (crc32_t crc, const unsigned char *buf, unsigned int len);
+ /*
+      Update a running crc with the bytes buf[0..len-1] and return the updated
+    crc. If buf is NULL, this function returns the required initial value
+

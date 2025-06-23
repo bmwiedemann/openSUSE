@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 19 14:44:38 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/hannob/uudeview/commit/0f37542df661e53a15e590fdb648c0422f3d16a0
+  https://github.com/hannob/uudeview/commit/c54cb38ab71363647577fa98bedf4e0a3759c17b
+  + uudeview-gcc15.patch
+
+-------------------------------------------------------------------
 Fri Feb  7 11:02:30 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Drop obsolete build dependency on mininews (usenet is dead).

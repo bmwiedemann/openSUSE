@@ -148,4 +148,17 @@
 - Remove obsolete split-provides for sharutils.</comment>
     <requestid>1244197</requestid>
   </revision>
+  <revision rev="22" vrev="263">
+    <srcmd5>ea790bbd0795207ac4a3b4d8e52fc844</srcmd5>
+    <version>0.5.20</version>
+    <time>1750683727</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1286995 from pgajdos
+
+- added patches
+  https://github.com/hannob/uudeview/commit/0f37542df661e53a15e590fdb648c0422f3d16a0
+  https://github.com/hannob/uudeview/commit/c54cb38ab71363647577fa98bedf4e0a3759c17b
+  + uudeview-gcc15.patch</comment>
+    <requestid>1287487</requestid>
+  </revision>
 </revisionlist>

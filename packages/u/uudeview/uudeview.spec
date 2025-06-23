@@ -30,6 +30,9 @@ Group:          Productivity/Networking/News/Utilities
 Source:         %{name}-%{version}.tar.bz2
 Patch0:         %{name}.patch
 Patch1:         %{name}-matherr.patch
+# https://github.com/hannob/uudeview/commit/0f37542df661e53a15e590fdb648c0422f3d16a0
+# https://github.com/hannob/uudeview/commit/c54cb38ab71363647577fa98bedf4e0a3759c17b
+Patch2:         uudeview-gcc15.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -42,6 +45,7 @@ uuencode utilities.
 %setup -q
 %patch -P 0
 %patch -P 1 -p2
+%patch -P 2 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
