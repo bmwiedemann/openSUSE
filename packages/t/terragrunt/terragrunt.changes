@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Jun 21 04:26:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.81.10:
+
+  * feat: Improved log messages for stack commands (#4363)
+  * chore(deps): Updated to Go 1.24.4 by @denis256 in #4454
+  * chore(deps): Updated to boilerplate v0.6.3 by @denis256 in
+    #4454
+  * chore(deps): Updated to aws-sdk-go-v2 v1.36.5 by @denis256 in
+    #4454
+  * chore(deps): Updated to cloud.google.com/go/storage v1.55.0 by
+    @denis256 in #4454
+  * chore(deps): Updated to go-cty v1.16.3 by @denis256 in #4454
+  * chore(deps): Updated to aws-sdk-go-v2/service/s3 v1.81.0 by
+    @denis256 in #4454
+
+-------------------------------------------------------------------
+Sat Jun 21 04:21:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.81.9:
+  - Styling for Run Summary Updated
+    Per design feedback, the styling for Run Summaries has been
+    updated slightly.The report is now considered feature complete.
+    Any further updates will be made to address community feedback.
+  * What's Changed
+    - fix: Fixing issue with ending runs from
+      `--queue-exclude-external` (#4451)
+    - feat: Updating styling for summary (#4441)
+
+-------------------------------------------------------------------
 Thu Jun 19 17:32:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.81.8:
