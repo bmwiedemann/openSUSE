@@ -1,7 +1,7 @@
 #
 # spec file for package python-expects
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,11 @@ Version:        0.9.0
 Release:        0
 Summary:        Expressive and extensible TDD/BDD assertion library for Python
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/jaimegildesagredo/expects
 Source:         https://files.pythonhosted.org/packages/source/e/expects/expects-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -39,15 +40,19 @@ Python. Expects can be extended by defining new matchers.
 %setup -q -n expects-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+#%%check
+# This uses its own test runner called mamba, which isn't packaged
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/expects
+%{python_sitelib}/expects-%{version}.dist-info
 
 %changelog
