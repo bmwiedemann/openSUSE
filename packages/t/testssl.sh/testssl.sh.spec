@@ -20,7 +20,7 @@
 %define _data_dir_name testssl-sh
 
 Name:           testssl.sh
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        Testing TLS/SSL Encryption Anywhere On Any Port
 License:        GPL-2.0-or-later

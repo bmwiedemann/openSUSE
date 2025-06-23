@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 18 11:29:24 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.1
+  * Add Android15 handshake simulation.
+  * Fix missing line feed in run_breach() failure output.
+  * Fix CCS injection regression.
+  * Fix parser for server header.
+  * Fix missing issuer CN.
+  * Fix OPENSSL_CONF problem for OPENSSL2.
+
+-------------------------------------------------------------------
 Wed Apr 23 19:01:24 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.2.0
