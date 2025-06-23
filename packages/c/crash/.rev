@@ -1769,4 +1769,15 @@
     <comment></comment>
     <requestid>1254205</requestid>
   </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>e9d8eedd9edd506bce709bc03e9ec44a</srcmd5>
+    <version>9.0.0</version>
+    <time>1750683417</time>
+    <user>anag_factory</user>
+    <comment>Update to crash 9.0.0
+ - Remove patches already present in upstream source:
+  * fix_extensions_makefile_race_condition.patch
+ - Added gmp-devel and mpfr-devel to BuildRequires</comment>
+    <requestid>1287156</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  1 19:41:10 UTC 2025 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- Update to crash 9.0.0
+ - Remove patches already present in upstream source:
+  * fix_extensions_makefile_race_condition.patch
+ - Added gmp-devel and mpfr-devel to BuildRequires
+
+-------------------------------------------------------------------
 Tue Mar 18 16:58:31 UTC 2025 - David Mair <dmair@suse.com>
 
 - Upgrade to crash 8.0.6

@@ -61,16 +61,16 @@ URL:            https://crash-utility.github.io/
 Summary:        Crash utility for live systems; netdump, diskdump, LKCD or mcore dumpfiles
 License:        GFDL-1.2-only AND GPL-3.0-or-later
 Group:          Development/Tools/Debuggers
-Version:        8.0.6
+Version:        9.0.0
 Release:        0
 Source:         https://github.com/crash-utility/crash/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://ftp.gnu.org/gnu/gdb/gdb-10.2.tar.gz
+Source1:        https://ftp.gnu.org/gnu/gdb/gdb-16.2.tar.gz
 Source2:        crash_whitepaper-%{whitepaper_version}.tar.bz2
 Source3:        README.SUSE
 Source4:        sial-scripts-%{scripts_version}.tar.bz2
 Source5:        gcore-%{gcore_version}.tar.bz2
 Source6:        Module.supported
-Source7:        https://ftp.gnu.org/gnu/gdb/gdb-10.2.tar.gz.sig
+Source7:        https://ftp.gnu.org/gnu/gdb/gdb-16.2.tar.gz.sig
 Source8:        gnu.keyring
 Source95:       get-kernel-flavors.sh
 Source96:       depmod.sh
@@ -97,12 +97,13 @@ Patch90:        %{name}-sial-ps-2.6.29.diff
 Patch99:        %{name}-usrmerge.patch
 Patch100:       gcore-fix-use-of-set_context.patch
 
-Patch101:       fix_extensions_makefile_race_condition.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
+BuildRequires:  gmp-devel
 BuildRequires:  lzo-devel
 BuildRequires:  makeinfo
+BuildRequires:  mpfr-devel
 BuildRequires:  ncurses-devel
 %if %{have_snappy}
 BuildRequires:  snappy-devel
@@ -261,7 +262,6 @@ for f in %{S:100} %{S:101}; do
 done
 
 %patch -P 32 -p1
-%patch -P 101 -p1
 
 ## SIAL patches
 cd sial-scripts-%{scripts_version}
@@ -287,8 +287,8 @@ export CFLAGS="$RPM_OPT_FLAGS -fno-builtin-memset -fno-strict-aliasing -mfull-to
 export CFLAGS="$RPM_OPT_FLAGS -fno-builtin-memset -fno-strict-aliasing"
 %endif
 export GDB="gdb-%{gdb_version}"
-make RPMPKG="`cat .rh_rpm_package`" %{?jobs:-j%jobs}
-make extensions %{?jobs:-j%jobs}
+%make_build RPMPKG="`cat .rh_rpm_package`"
+%make_build extensions
 %if 0%{?build_kmp}
 export EXTRA_CFLAGS='-DVERSION=\"%version\"'
 for flavor in %flavors_to_build; do
