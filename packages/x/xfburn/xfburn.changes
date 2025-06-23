@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 20 09:23:24 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.8.0
+  * Add support for Meson
+  * Support large BD discs (thanks @ToddAWalter)
+  * Check for ID_TYPE "cd/dvd" (thanks @luik)
+  * Update xfburn.desktop.in file
+  * Replace deprecated exo with libxfce4ui 4.21.0
+  * Remove dead code
+  * I18n: Update po/LINGUAS list
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Aug 13 05:58:22 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.7.2

@@ -1,7 +1,7 @@
 #
 # spec file for package xfburn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,32 @@
 
 
 Name:           xfburn
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        Simple CD/DVD Burning Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Record
 URL:            https://docs.xfce.org/apps/xfburn/start
-Source:         https://archive.xfce.org/src/apps/xfburn/0.7/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/apps/xfburn/0.8/%{name}-%{version}.tar.bz2
 BuildRequires:  appstream-glib
+BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  intltool
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(exo-2) >= 0.11.0
-BuildRequires:  pkgconfig(gio-2.0) >= 2.38
-BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.38
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
-BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  xsltproc
+BuildRequires:  pkgconfig(exo-2) >= 4.18.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.0.0
+BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 1.0.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(gudev-1.0) >= 145
 BuildRequires:  pkgconfig(libburn-1) >= 0.4.2
 BuildRequires:  pkgconfig(libisofs-1) >= 0.6.2
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.18.0
 Recommends:     %{name}-lang = %{version}
 
 %description
@@ -50,11 +56,11 @@ compositions of data to either CD or DVD.
 %autosetup
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %find_lang %{name} %{?no_lang_C}
 
