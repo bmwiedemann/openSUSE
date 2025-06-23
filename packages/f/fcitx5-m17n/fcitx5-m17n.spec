@@ -17,17 +17,22 @@
 
 
 Name:           fcitx5-m17n
-Version:        5.1.3
+Version:        5.1.4
 Release:        0
 Summary:        M17n input method engine for Fcitx5
 License:        LGPL-2.1-or-later
+Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-m17n
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
 BuildRequires:  fmt-devel
+%if 0%{?suse_version} >= 1550
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc13-c++
+%endif
 BuildRequires:  m17n-lib-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zstd
@@ -46,6 +51,10 @@ M17n input method engine for Fcitx5.
 %setup -q
 
 %build
+%if 0%{?suse_version} < 1550
+export CC=%{_bindir}/gcc-13
+export CXX=%{_bindir}/g++-13
+%endif
 %cmake
 %make_build
 
@@ -56,7 +65,7 @@ M17n input method engine for Fcitx5.
 %files -f %{name}.lang
 %license LICENSES
 %doc README.md
-%{_fcitx5_libdir}/m17n.so
+%{_fcitx5_libdir}/libm17n.so
 %{_fcitx5_addondir}/m17n.conf
 %{_fcitx5_datadir}/m17n
 %{_datadir}/metainfo/org.fcitx.Fcitx5.Addon.M17N.metainfo.xml
