@@ -26,6 +26,8 @@ URL:            https://github.com/verdammelt/tnef
 Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM ca0d1a1.patch -- Handle missing index/rindex functions in path.c
 Patch0:         %{url}/commit/ca0d1a1.patch
+# https://github.com/verdammelt/tnef/issues/48
+Patch1:         tnef-gcc15.patch
 BuildRequires:  libtool
 
 %description

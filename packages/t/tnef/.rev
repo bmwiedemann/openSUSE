@@ -196,4 +196,16 @@
     <comment></comment>
     <requestid>1123878</requestid>
   </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>8894ce7c95d40236d591ee3285184ef8</srcmd5>
+    <version>1.4.18</version>
+    <time>1750683726</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1286992 from pgajdos
+
+- added patches
+  https://github.com/verdammelt/tnef/issues/48
+  + tnef-gcc15.patch</comment>
+    <requestid>1287486</requestid>
+  </revision>
 </revisionlist>

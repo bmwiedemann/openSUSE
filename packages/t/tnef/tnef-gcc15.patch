@@ -1,0 +1,12 @@
+diff -upr tnef-1.4.18.orig/src/attr.h tnef-1.4.18/src/attr.h
+--- tnef-1.4.18.orig/src/attr.h	2025-06-19 14:20:45.749720990 +0000
++++ tnef-1.4.18/src/attr.h	2025-06-19 14:22:32.598051539 +0000
+@@ -69,6 +69,6 @@ typedef struct
+ extern void attr_dump (Attr* attr);
+ extern void attr_free (Attr* attr);
+ extern void copy_date_from_attr (Attr* attr, struct date* dt);
+-extern Attr* attr_read ();
++extern Attr* attr_read (FILE* in);
+ 
+ #endif /* ATTR_H */
+

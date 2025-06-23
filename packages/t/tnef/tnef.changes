@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 19 14:25:46 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/verdammelt/tnef/issues/48
+  + tnef-gcc15.patch
+
+-------------------------------------------------------------------
 Tue Nov  7 10:10:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer
