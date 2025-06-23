@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 19 09:26:39 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.0.5 (CVE-2025-5889, bsc#1244347):
+  * Bump ip from 2.0.0 to 2.0.1 #325 (@dlqqq)
+3.0.4:
+  * Set undoManager in constructor for cells in notebook #321 (@krassowski)
+  * Fix including Typescript source in package #312 (@fcollonval)
+  * Bump apache/skywalking-eyes from 0.4.0 to 0.7.0 #310 (@dependabot)
+
+-------------------------------------------------------------------
 Wed Jan 29 15:57:14 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.0.3
