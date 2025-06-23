@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri May 23 14:45:10 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.1.3+42:
+  * refactor(app): split file into modules
+  * refactor: better code structure
+  * improv: error handling
+  * refactor: move grid code to separate file
+  * refactor: config
+  * improv: color schemes
+  * remove: wgpu
+  * chore: update libcosmic
+  * feat: shortcuts
+  * remove: multi-window feature
+  * fix: dropdown issue
+  * fix: localization and file structure refactor
+  * improv: menu item icons
+  * improv: new branding
+  * fix: og image
+  * add: open graph and viewport
+  * Update CNAME
+  * remove: window corners
+  * fix: spacing in menu items
+  * fix: page reinitialization on view render
+- update to 0.1.3:
+  * Added snapshots
+  * Revamped about page
+  * Window borders added
+- update to 0.1.2:
+  * docs: Add Flathub badge to README
+  * docs: Extend metainfo
+  * Create cosmic_ext_tweaks.ftl
+  * Add layouts page
+  * chore: update cosmic-panel-config and friends
+  * feat(windows template): Include system tray on right side
+  * Move available color schemes to a dialog
+- update to 0.1.1:
+  * add option to remove top panel
+  * chore: rename to comply with trademark policy
+  * Correct cosmic-text issue
+  * feat: option to force panel button to display icons instead of text
+  * improv: load cosmic-themes
+  * update metainfo for COSMIC Store featured page
+- switch to obs_scm
+- remove update-desktop-files from BR, deprecated
+
+-------------------------------------------------------------------
 Fri Oct 11 19:33:06 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.1.0+git20241006.40bd0d2:
