@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jun 22 20:03:56 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to 2.46.0:
+  Features:
+   * Support Rio terminal font detection 
+     (gh#fastfetch-cli/fastfetch#1789)
+   * Improve Raspberry Pi OS for RPI5 detection 
+     (gh#fastfetch-cli/fastfetch#1773)
+   * Support shared VRAM usage detection for AMD GPUs (GPU, Linux)
+   * Support GPU info detection for old ATI radeon driver 
+     (gh#fastfetch-cli/fastfetch#1810)
+  Bugfixes:
+   * Hide `/boot/firmware` by default (Disk, Linux)
+  Logos:
+   * Rename Hydra Framework to HydraPwk 
+     (gh#fastfetch-cli/fastfetch#1812)
+   * Add AnushOS (gh#fastfetch-cli/fastfetch#1806)
+   * Add HarmonyOS (gh#fastfetch-cli/fastfetch#1804)
+   * Add GhostFreak (gh#fastfetch-cli/fastfetch#1801)
+   * Add TrueNAS Scale (gh#fastfetch-cli/fastfetch#1795)
+   * Add Fedora2_small (gh#fastfetch-cli/fastfetch#1785)
+   * Add xenia_old; update colors of xenia 
+     (gh#fastfetch-cli/fastfetch#1797)
+   * Improve colors of bedrock_small 
+     (gh#fastfetch-cli/fastfetch#1790)
+   * Add Kalpa Desktop (gh#fastfetch-cli/fastfetch#1807)
+
+-------------------------------------------------------------------
 Fri Jun  6 11:34:46 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to 2.45.0:
