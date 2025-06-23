@@ -1,7 +1,7 @@
 #
 # spec file for package python-evtx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,8 +32,10 @@ URL:            https://github.com/williballenthin/python-evtx
 Source:         https://github.com/williballenthin/python-evtx/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module hexdump}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
@@ -64,10 +66,10 @@ inspired by the work of Andreas Schuster and his Perl implementation
 find Evtx -name "*.py" | xargs sed -i '1 { /^#!/ d }'
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 for c in %{commands}; do
   %python_clone -a %{buildroot}%{_bindir}/evtx_$c.py
 done
@@ -96,7 +98,7 @@ end}
 %license LICENSE.TXT
 %doc README.md
 %{python_sitelib}/Evtx
-%{python_sitelib}/python_evtx-%{version}*-info
+%{python_sitelib}/python_evtx-%{version}.dist-info
 %{lua:for c in rpm.expand("%{commands}"):gmatch("%S+") do
   print(rpm.expand("%python_alternative %{_bindir}/evtx_" .. c .. ".py"))
 end}
