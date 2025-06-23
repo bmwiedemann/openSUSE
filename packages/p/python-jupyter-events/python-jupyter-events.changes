@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 21 17:20:00 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.0
+  * pop taskName for older version of python-json-logger #110 (@Carreau)
+- Release 0.11.0
+  * Switch schema version type to str #104 (@afshin)
+  * Fix DeprecationWarning with patched python-json-logger #103
+    (@cjwatson)
+  * Prevent unintended KeyError when emitting an unregistered event
+    schema #101 (@afshin)
+- Drop jupyter_events-py312-taskname.patch
+
+-------------------------------------------------------------------
 Fri Mar 29 18:22:29 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.10.0

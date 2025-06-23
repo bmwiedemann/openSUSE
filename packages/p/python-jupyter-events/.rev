@@ -107,4 +107,20 @@
     #97 (@Zsailer)</comment>
     <requestid>1163573</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f4d171f5b405999140d0e794f9045372</srcmd5>
+    <version>0.12.0</version>
+    <time>1750683389</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.12.0
+  * pop taskName for older version of python-json-logger #110 (@Carreau)
+- Release 0.11.0
+  * Switch schema version type to str #104 (@afshin)
+  * Fix DeprecationWarning with patched python-json-logger #103
+    (@cjwatson)
+  * Prevent unintended KeyError when emitting an unregistered event
+    schema #101 (@afshin)
+- Drop jupyter_events-py312-taskname.patch</comment>
+    <requestid>1287597</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-events
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jupyter-events
-Version:        0.10.0
+Version:        0.12.0
 Release:        0
 Summary:        Jupyter Event System library
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/jupyter_events
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_events/jupyter_events-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE jupyter_events-py312-taskname.patch code@bnavigator.de -- we patched python-python-json-logger with gh#madzak/python-json-logger#183
-Patch0:         jupyter_events-py312-taskname.patch
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  alts
@@ -41,6 +39,7 @@ BuildRequires:  python-rpm-macros
 Requires:       alts
 Requires:       python-PyYAML >= 5.3
 Requires:       python-jsonschema-format-nongpl >= 4.18
+Requires:       python-packaging
 Requires:       python-python-json-logger >= 2.0.4
 Requires:       python-referencing
 Requires:       python-rfc3339-validator
@@ -95,6 +94,7 @@ sed -i -e 's/--color=yes//' pyproject.toml
 mkdir -p build/flavorbin
 which jupyter-events || ln -s %{buildroot}%{_bindir}/jupyter-events-%{$python_bin_suffix} build/flavorbin/jupyter-events
 }
+mv jupyter_events jupyter_events_
 %pytest
 
 %pre
