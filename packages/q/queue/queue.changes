@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 21 09:50:47 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.2.0
+- Ignore broken pipe error (e.g. when piping to head)
+
+
+-------------------------------------------------------------------
 Sat Dec 28 20:52:59 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.2.0

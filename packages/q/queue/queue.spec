@@ -1,7 +1,7 @@
 #
 # spec file for package queue
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           queue
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Tool for queuing shell commands
 License:        GPL-3.0-or-later
-URL:            https://github.com/asdil12/%{name}
-Source0:        https://github.com/asdil12/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://codeberg.org/asdil12/%{name}
+Source0:        https://codeberg.org/asdil12/queue/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  help2man
 BuildRequires:  python-rpm-macros
@@ -44,7 +44,7 @@ This tool allows to queue shell commands.
 It supports multiple queues as well as multiple queue workers.
 
 %prep
-%setup -q
+%setup -q -n queue
 
 %build
 ./bin/queue
