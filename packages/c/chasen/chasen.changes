@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 21 04:34:32 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- add chasen-2.4.5-gcc15.patch
+  * C23 removes unprototyped functions and
+    void foo() starts to mean void foo(void)
+    rather than "foo takes any arguments" 
+
+-------------------------------------------------------------------
 Mon Feb 26 10:38:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,7 +1,7 @@
 #
 # spec file for package chasen
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,18 @@
 
 
 Name:           chasen
-License:        BSD-3-Clause
-Group:          System/I18n/Japanese
 Version:        2.4.5
 Release:        0
 Summary:        Japanese Morphological Analysis System
+License:        BSD-3-Clause
+Group:          System/I18n/Japanese
 URL:            https://osdn.net/projects/chasen-legacy
 Source0:        %{URL}/downloads/56305/chasen-%{version}.tar.xz
 Patch1:         chasen-decls.diff
 # PATCH-FIX-UPSTREAM
 Patch2:         chasen-initialize-memory.patch
+#PATCH-FIX-UPSTREAM fix arbitrary arguments
+Patch3:         chasen-2.4.5-gcc15.patch
 BuildRequires:  darts
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -86,9 +88,8 @@ Requires:       ipadic
 ChaSen is a Japanese morphological analysis system.
 
 %package devel
-License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
 Summary:        Libraries and header files for ChaSen developers
+Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 # Summary(ja): 茶筌のライブラリとヘッダファイルです.
 # %description -l ja devel
@@ -99,13 +100,12 @@ Requires:       %{name} = %{version}
 Libraries and header files for ChaSen developers.
 
 %package -n perl-Text-ChaSen
-License:        BSD-3-Clause
+Summary:        ChaSen Perl Module
 Group:          Development/Libraries/Perl
 Requires:       %{name} = %{version}
 Requires:       perl = %{perl_version}
 Provides:       chasen-perl
 Obsoletes:      chasen-perl
-Summary:        ChaSen Perl Module
 # Summary(ja): このモジュールは、「茶筌」をperlから扱うためのものです.
 # %description -l ja perl-Text-ChaSen
 #
@@ -119,6 +119,7 @@ ChaSen Perl Module
 %setup -q
 %patch -P 1
 %patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 autoreconf --force --install
@@ -129,33 +130,34 @@ export CXXFLAGS="%{optflags} -fpermissive"
 %make_build
 pushd perl
     perl Makefile.PL
-    make INC="-I../src -I%{_prefix}/include -I/usr/include" \
+    %make_build INC="-I../src -I%{_includedir} -I/usr/include" \
          LDDLFLAGS="-shared -Wl,-rpath -Wl,%{_prefix}/lib -L../lib/.libs -lchasen"
          CCFLAGS="$CCFLAGS -Dna=PL_na -Dsv_undef=PL_sv_undef"
 popd
 
 %install
 %make_install
-make -C perl DESTDIR="%{buildroot}" install_vendor
+make -C perl DESTDIR=%{buildroot} install_vendor
 %perl_process_packlist
-rm -f %{buildroot}%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
-%doc AUTHORS COPYING ChangeLog NEWS README*
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README*
 %doc doc/*.tex doc/*.pdf
 %{_bindir}/chasen
 %{_libdir}/*.so.*
 %{_libexecdir}/chasen
 %if 0%{?suse_version} < 1140
-%ghost /var/adm/perl-modules/chasen
+%ghost %{_localstatedir}/adm/perl-modules/chasen
 %endif
 
 %files devel
 %{_bindir}/chasen-config
-%{_prefix}/include/*
+%{_includedir}/*
 %{_libdir}/*.so
 
 %files -n perl-Text-ChaSen
