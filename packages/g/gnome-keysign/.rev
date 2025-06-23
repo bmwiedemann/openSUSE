@@ -196,4 +196,13 @@ Binary file gnome-keysign-0.9.tar.xz (revision 3) deleted</comment>
     <comment>- Drop obsolete update-desktop-files BuildRequires and macro. (forwarded request 1279533 from iznogood)</comment>
     <requestid>1279999</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>aa2995fd40fc84d2cbf0b30f1d61719c</srcmd5>
+    <version>0.9.7.2</version>
+    <time>1750683416</time>
+    <user>anag_factory</user>
+    <comment>- Use pyproject macros to build and install.
+- Add in fdupes. (forwarded request 1287036 from StevenK)</comment>
+    <requestid>1287136</requestid>
+  </revision>
 </revisionlist>

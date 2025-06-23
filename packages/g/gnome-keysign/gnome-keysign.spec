@@ -16,6 +16,7 @@
 #
 
 
+%define pythons python3
 Name:           gnome-keysign
 Version:        0.9.7.2
 Release:        0
@@ -26,10 +27,14 @@ URL:            https://github.com/GNOME-Keysign/gnome-keysign
 Source:         %{name}-%{version}.tar.xz
 Patch0:         gnome-keysign-python3-setup.patch
 
+BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Babel
 BuildRequires:  python3-lxml
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 %ifarch aarch64 ppc64 ppc64le riscv64 s390x x86_64
 Requires:       gstreamer1(element-zbar)()(64bit)
 %else
@@ -58,10 +63,11 @@ more mature codebase.
 %autosetup -p1
 
 %build
-python3 setup.py build
+%pyproject_wheel
 
 %install
-python3 setup.py install -O1 --skip-build --root %{buildroot}
+%pyproject_install
+%fdupes %{buildroot}%{python3_sitelib}
 
 %files
 %license COPYING
@@ -75,6 +81,6 @@ python3 setup.py install -O1 --skip-build --root %{buildroot}
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Keysign.svg
 %{python3_sitelib}/keysign/
-%{python3_sitelib}/gnome_keysign-*.egg-info/
+%{python3_sitelib}/gnome_keysign-%{version}.dist-info/
 
 %changelog
