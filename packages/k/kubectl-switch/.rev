@@ -7,4 +7,12 @@
     <comment>new package kubectl-switch: simple tool to help manage multiple kubeconfig files</comment>
     <requestid>1279961</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>433e52a03839bcaae02d168f148ec31f</srcmd5>
+    <version>2.2.8</version>
+    <time>1750683401</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1287789</requestid>
+  </revision>
 </revisionlist>

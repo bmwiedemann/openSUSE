@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Jun 23 04:49:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.8:
+  * Bug Fixes
+    - go: update k8s.io/client-go ( v0.33.1 → v0.33.2 ) (8cbb12d)
+  * CI/CD
+    - github-action: update mirceanton/action-semver-metadata (
+      v1.0.1 → v1.0.3 ) (30c9319)
+
+-------------------------------------------------------------------
+Fri Jun 20 04:32:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.7:
+  * Bug Fixes
+    - go: update k8s.io/apimachinery ( v0.33.1 → v0.33.2 )
+      (f24b64c)
+  * CI/CD
+    - github-action: update github/codeql-action ( v3.28.19 →
+      v3.29.0 ) (da2b923)
+    - github-action: update softprops/action-gh-release ( v2.3.0 →
+      v2.3.2 ) (0f567f8)
+    - github-action: update softprops/action-gh-release ( v2.2.2 →
+      v2.3.0 ) (157c777)
+    - github-action: update github/codeql-action ( v3.28.18 →
+      v3.28.19 ) (5172aa0)
+    - github-action: update aquasecurity/trivy-action ( 0.30.0 →
+      0.31.0 ) (17a392b)
+    - renovate: update inputs (91a5068)
+    - github-action: pin mirceanton/action-semver-metadata action
+      to 31be2c0 (#198) (3620fad)
+    - github-action: update jdx/mise-action ( v2.2.2 → v2.2.3 )
+      (018cc30)
+    - update action-semver-metadata to version 1.0.1 (9a5d775)
+    - release: use mirceanton/action-semver-metadata +
+      softprops/action-gh-release (af554e3)
+    - github-action: update jdx/mise-action ( c94f0bf → 13abe50 )
+      (ed85c2d)
+  * Chores
+    - mise: update aqua:goreleaser/goreleaser ( 2.10.1 → 2.10.2 )
+      (dae23bc)
+    - mise: update aqua:goreleaser/goreleaser ( 2.10.0 → 2.10.1 )
+      (a112477)
+    - mise: update aqua:goreleaser/goreleaser ( 2.9.0 → 2.10.0 )
+      (126e731)
+    - mise: update go ( 1.24.3 → 1.24.4 ) (7858374)
+    - mise: update go ( 1.24.2 → 1.24.3 ) (f45c11a)
+    - mise: update config (45c2cd8)
+    - mise: update renovate ( 40.18.0 → 40.25.0 ) (f9c428b)
+    - mise: update renovate ( 40.17.0 → 40.18.0 ) (6194cfe)
+
+-------------------------------------------------------------------
 Fri May 23 04:57:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.6:
