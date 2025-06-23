@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 17 05:29:32 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250616 (git commit 1d98972a5635):
+  * qcom: add gpu firmwares for X1P42100 chipset
+
+-------------------------------------------------------------------
 Sun Jun 15 09:08:58 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250613 (git commit 12fe085fa409):

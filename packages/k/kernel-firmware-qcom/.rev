@@ -130,4 +130,13 @@ After this PR, there will be a delete request for kernel-firmware.
 - Better workaround for directory -&gt; symlink change (bsc#1244458)</comment>
     <requestid>1285898</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>41bb51e9f5f673b488ca277377a8ef5b</srcmd5>
+    <version>20250616</version>
+    <time>1750683349</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250616 (git commit 1d98972a5635):
+  * qcom: add gpu firmwares for X1P42100 chipset</comment>
+    <requestid>1287535</requestid>
+  </revision>
 </revisionlist>
