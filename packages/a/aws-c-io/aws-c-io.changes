@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 18 12:47:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.20.1
+  * Remove Windows 2019 and add Windows 2025 with MSVC-17
+    by @TingDaoK in (#737)
+  * Fix casing on Windows header files by @giordano in (#736)
+- from version 0.20.0
+  * Enabling TLS 1.3 on Windows by @sfod in (#732)
+  * Fix warning Wdefault-const-init-unsafe by @xiazhvera in (#734)
+  * Fix pem validation by @DmitriyMusatkin in (#735)
+
+-------------------------------------------------------------------
 Tue May 27 06:48:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.19.1
