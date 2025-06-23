@@ -17,7 +17,7 @@
 
 
 Name:           gap-profiling
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        GAP: Line-by-line profiling and code coverage for GAP
 License:        CDDL-1.0 AND MIT
@@ -26,10 +26,10 @@ URL:            https://gap-packages.github.io/profiling/
 #Git-Clone:     https://github.com/gap-packages/profiling
 Source:         https://github.com/gap-packages/profiling/releases/download/v%version/profiling-%version.tar.gz
 BuildRequires:  c++_compiler
-BuildRequires:  gap-devel
+BuildRequires:  gap-devel >= 4.12
 BuildRequires:  gap-rpm-devel
 BuildRequires:  python-rpm-macros
-Requires:       gap-core >= 4.10
+Requires:       gap-core >= 4.12
 Requires:       gap-gapdoc >= 1.5
 Requires:       gap-io >= 4.4.4
 
