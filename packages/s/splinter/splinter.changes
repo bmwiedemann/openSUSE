@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 20 04:32:34 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install the Python module.
+- Use the %license macro for the license.
+
+-------------------------------------------------------------------
 Mon Feb 26 13:45:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

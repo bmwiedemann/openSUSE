@@ -1,7 +1,7 @@
 #
 # spec file for package splinter
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define shlib lib%{name}-3-0
+%define pythons python3
 Name:           splinter
 Version:        3.0
 Release:        0
 Summary:        A library for multivariate function approximation implemented in C++
 License:        MPL-2.0
 Group:          Productivity/Scientific/Math
-Url:            https://github.com/bgrimstad/splinter
+URL:            https://github.com/bgrimstad/splinter
 Source:         https://github.com/bgrimstad/%{name}/archive/v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM: upstream_add_armv8.patch -- add support to aarch64 (armv8)
 Patch0:         upstream_add_armv8.patch
@@ -31,9 +32,12 @@ BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 BuildRequires:  python3-devel
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 aarch64
 
@@ -103,11 +107,14 @@ This package provides the python bindings for %{name}.
 
 %make_jobs all doc
 
+cd ../python
+%pyproject_wheel
+
 %install
 %cmake_install
 
 pushd python
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%pyproject_install
 popd
 
 #FIXME: Need to fix crazy install dir of python libraries instead of them being installed in builddir
@@ -116,7 +123,7 @@ rm -r %{buildroot}/${dirname}/
 
 find %{buildroot}/%{_libdir} -name "*.a" -delete -print
 
-%fdupes %{buildroot}%{python3_sitelib}/%{name}-%{version}-py%{py3_ver}.egg-info/
+%fdupes %{buildroot}%{python3_sitelib}
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
@@ -126,12 +133,13 @@ find %{buildroot}/%{_libdir} -name "*.a" -delete -print
 
 %files devel
 %defattr(-,root,root)
-%doc CHANGELOG.md README.md CREDITS.md LICENSE
+%doc CHANGELOG.md README.md CREDITS.md
+%license LICENSE
 %{_includedir}/SPLINTER/
 
 %files -n python3-%{name}
 %defattr(-,root,root)
 %{python3_sitelib}/%{name}/
-%{python3_sitelib}/%{name}-%{version}-py%{py3_ver}.egg-info/
+%{python3_sitelib}/%{name}-%{version}.dist-info/
 
 %changelog
