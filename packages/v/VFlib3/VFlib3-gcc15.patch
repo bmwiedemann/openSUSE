@@ -1,0 +1,56 @@
+Index: VFlib3-3.7.2/src/raster.c
+===================================================================
+--- VFlib3-3.7.2.orig/src/raster.c
++++ VFlib3-3.7.2/src/raster.c
+@@ -27,9 +27,9 @@
+ Private VF_BITMAP  Vbm;
+ Private int        Vmax_width, Vmax_height;
+ Private VF_OUTLINE_ELEM  read_xy(int*,int*,VF_OUTLINE_ELEM**,VF_OUTLINE_ELEM);
+-Private void             draw_arc(int*,int*,void(*)());
+-Private void             draw_bezier(int*,int*,void(*)());
+-Private void             fill_edges(), trace_outline();
++Private void             draw_arc(int*,int*,void(*)(int, int, int, int));
++Private void             draw_bezier(int*,int*,void(*)(int, int, int, int));
++Private void             fill_edges(int, int, int, int), trace_outline(int, int, int, int);
+ 
+ #ifndef M_PI
+ #  define M_PI     3.14159265358979323846
+@@ -119,7 +119,7 @@ vf_draw_outline(VF_BITMAP bm, VF_OUTLINE
+ {
+   int              x[4], y[4], f;
+   VF_OUTLINE_ELEM  *olp, token;
+-  Private void    (*func_table[])() = {fill_edges, trace_outline};
++  Private void    (*func_table[])(int, int, int, int) = {fill_edges, trace_outline};
+ 
+   Vbm         = bm; 
+   Vmax_width  = outline[VF_OL_HEADER_INDEX_MAX_X];
+@@ -199,7 +199,7 @@ read_xy(int *x, int *y, VF_OUTLINE_ELEM
+ }
+ 
+ Private void 
+-draw_arc(int *x, int *y, void (*draw_func)())
++draw_arc(int *x, int *y, void (*draw_func)(int, int, int, int))
+ {
+   double   dx1, dy1, dx3, dy3, cx, cy, z, r, ang, dang, ang_step;
+   int      i;
+@@ -261,7 +261,7 @@ draw_arc(int *x, int *y, void (*draw_fun
+ }
+ 
+ Private void
+-draw_bezier(int *x, int* y, void (*draw_func)())
++draw_bezier(int *x, int* y, void (*draw_func)(int, int, int, int))
+ {
+   int            i, xs, ys, xe, ye;
+   static double  b[BEZ_DIV][4];
+Index: VFlib3-3.7.2/utils/vflx11-2.0.2/vflx11.c
+===================================================================
+--- VFlib3-3.7.2.orig/utils/vflx11-2.0.2/vflx11.c
++++ VFlib3-3.7.2/utils/vflx11-2.0.2/vflx11.c
+@@ -106,7 +106,6 @@ void  Win_Init(), Win_Clear(), Win_PutBi
+ int   Win_UserCmd(), Win_PollUserCmd();
+ 
+ 
+-extern  double atof();
+ 
+ 
+ int

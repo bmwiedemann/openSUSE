@@ -1,7 +1,7 @@
 #
 # spec file for package VFlib3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,16 @@ Name:           VFlib3
 Version:        3.7.2
 Release:        0
 Summary:        Versatile Font Library
+Summary(ja):    "Versatile" フォントライブラリ
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Summary(ja):    "Versatile" フォントライブラリ
 URL:            http://www-masu.ist.osaka-u.ac.jp/~kakugawa/VFlib/
 Source0:        http://www-masu.ist.osaka-u.ac.jp/~kakugawa/download/TypeHack/VFlib3-%{version}.tar.gz
+Source1:        vflibcap-tex
 Patch1:         VFlib3-add-external.patch
 Patch2:         VFlib3-freetype2-fix.patch
 Patch3:         VFlib3-gcc14-fixes.patch
-Source1:        vflibcap-tex
+Patch4:         VFlib3-gcc15.patch
 BuildRequires:  fdupes
 BuildRequires:  imake
 BuildRequires:  libtool
@@ -39,7 +40,7 @@ BuildRequires:  pkgconfig(kpathsea)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 Requires(post): %{install_info_prereq}
-Requires(postun):%{install_info_prereq}
+Requires(postun): %{install_info_prereq}
 
 %description -l ja
 VFlib は C 言語で書かれたフォントライブラリで、指定したフォン
@@ -97,7 +98,7 @@ Development headers and libraries for VFlib3
             --with-opentype \
             --with-texmf-root=%{_datadir}/texmf \
             --with-gettext
-make %{?_smp_mflags}
+%make_build
 
 %install
 make prefix=%{buildroot}%{_prefix} \
