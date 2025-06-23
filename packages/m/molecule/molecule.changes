@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun 19 06:33:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.6.0:
+  * Enhancements
+    - Add navigator as molecule playbook executor (#4457)
+      @shatakshiiii
+    - Add support for shared inventory between scenarios (#4443)
+      @Qalthos
+  * Bugfixes
+    - Fix #4408 parallel execution: create parent directory (#4458)
+      @panchal-yash
+    - Display Docker result in error message (#4450)
+      @emmanuel-ferdman
+    - Strip argument documentation from command help text. (#4451)
+      @Qalthos
+  * Maintenance
+    - Bump the dependencies group in /.config with 7 updates
+      (#4459) @dependabot[bot]
+    - Bump the dependencies group in /.config with 5 updates
+      (#4455) @dependabot[bot]
+    - chore: pre-commit autoupdate (#4454) @pre-commit-ci[bot]
+    - Bump the dependencies group in /.config with 9 updates
+      (#4453) @dependabot[bot]
+
+-------------------------------------------------------------------
 Mon May 26 08:05:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.5.0:

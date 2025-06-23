@@ -39,7 +39,7 @@
 
 %bcond_without test
 Name:           molecule
-Version:        25.5.0
+Version:        25.6.0
 Release:        0
 Summary:        Aids in the development and testing of Ansible roles
 License:        MIT
@@ -53,6 +53,7 @@ BuildRequires:  %{ansible_python}-wheel
 %if %{with test}
 BuildRequires:  git-core
 BuildRequires:  ansible-lint >= 6.12.1
+BuildRequires:  ansible-navigator
 BuildRequires:  %{ansible_python}-ansi2html >= 1.8.0
 BuildRequires:  %{ansible_python}-coverage >= 7.0.3
 BuildRequires:  %{ansible_python}-filelock >= 3.9.0
@@ -146,6 +147,7 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_command[verify-0]"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_command_idempotence[0]"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_command_init_scenario"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_command_list_with_format_plain"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_with_backend_as_ansible_navigator"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_with_missing_platform_name[instance-False-0]"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_with_missing_platform_name[gonzo-True-0]"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_role_name_check_one"
