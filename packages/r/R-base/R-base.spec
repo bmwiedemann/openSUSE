@@ -23,7 +23,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.5.0
+Version:        4.5.1
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.xz
@@ -1500,7 +1500,7 @@ This packages provides R-KernSmooth, one of the recommended packages.
 
 %package -n R-lattice
 Summary:        Package provides recommended R-lattice
-Version:        0.22.6
+Version:        0.22.7
 Release:        %release
 Requires:       R-base
 
@@ -1567,7 +1567,7 @@ This packages provides R-MASS, one of the recommended packages.
 
 %package -n R-Matrix
 Summary:        Package provides recommended R-Matrix
-Version:        1.7.2
+Version:        1.7.3
 Release:        %release
 Requires:       R-base
 Obsoletes:      R-Matrix-devel <= 1.3.2
@@ -1629,7 +1629,7 @@ This packages provides R-Matrix, one of the recommended packages.
 
 %package -n R-mgcv
 Summary:        Package provides recommended R-mgcv
-Version:        1.9.1
+Version:        1.9.3
 Release:        %release
 Requires:       R-base
 
