@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon May 26 20:02:15 UTC 2025 - suse.snooper541@passmail.net
+
+- Initial version 1+git20241105.1a419a1:
+  * Add right ctrl
+  * Fix mouse scroll events being sent twice
+  * Add some missing keys
+  * Fix tab key
+  * Fix override script when steam isn't named steam-runtime
+  * Fix Mouse Region bindings

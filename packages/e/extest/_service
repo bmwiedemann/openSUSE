@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/Supreeeme/extest.git</param>
+    <param name="versionformat">1+git%cd.%h</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="revision">main</param>
+  </service>
+  <service name="recompress"  mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="cargo_vendor"  mode="manual">
+     <param name="srctar">extest-1+git20241105.1a419a1.tar.xz</param>
+     <param name="compression">zst</param>
+     <param name="update">true</param>
+  </service>
+  <service name="set_version"  mode="manual"/>
+</services>

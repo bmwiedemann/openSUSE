@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40ed80ed062e5cfb214e3a5071036734</srcmd5>
+    <version>1+git20241105.1a419a1</version>
+    <time>1750683429</time>
+    <user>anag_factory</user>
+    <comment>Initial version of Extest.
+Extest is a drop in replacement for the X11 XTEST extension. It creates a virtual device with the uinput kernel module. It's been primarily developed for allowing the desktop functionality on the Steam Controller to work while Steam is open on Wayland.</comment>
+    <requestid>1287216</requestid>
+  </revision>
+</revisionlist>
