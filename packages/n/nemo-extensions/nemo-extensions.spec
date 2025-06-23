@@ -469,6 +469,7 @@ rm -r %{buildroot}%{_datadir}/licenses/nemo-dropbox/COPYING
 %files -n nemo-extension-image-converter
 %license nemo-image-converter/COPYING
 %doc nemo-image-converter/AUTHORS nemo-image-converter/debian/changelog
+%{_libdir}/nemo/extensions-3.0/libnemo-image-converter.so
 %{_datadir}/nemo-image-converter/
 
 %files -n nemo-extension-pastebin
@@ -503,7 +504,6 @@ rm -r %{buildroot}%{_datadir}/licenses/nemo-dropbox/COPYING
 %doc nemo-seahorse/debian/changelog
 %{_bindir}/nemo-seahorse-tool
 %{_libdir}/nemo/extensions-3.0/libnemo-seahorse.so
-%{_libdir}/nemo/extensions-3.0/libnemo-image-converter.so
 #%%{_datadir}/applications/nemo-seahorse-pgp-*.desktop
 %{_datadir}/glib-2.0/schemas/org.nemo.plugins.seahorse.*.xml
 %{_mandir}/man?/nemo-seahorse-tool.?%{?ext_man}
