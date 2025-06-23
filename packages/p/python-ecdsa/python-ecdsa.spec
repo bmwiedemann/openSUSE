@@ -25,9 +25,11 @@ License:        MIT
 URL:            https://github.com/tlsfuzzer/python-ecdsa
 Source:         https://files.pythonhosted.org/packages/source/e/ecdsa/ecdsa-%{version}.tar.gz
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
@@ -49,12 +51,12 @@ into other protocols.
 %setup -q -n ecdsa-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 #remove shebang from all non executable files
 find ./ -type f -name "*.py" -perm 644 -exec sed -i -e '1{\@^#! %{_bindir}/env python@d}' {} \;
 
 %install
-%python_install
+%pyproject_install
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -69,6 +71,6 @@ donttest="$donttest or (test_ellipticcurve and test_p192_mult_tests)"
 %license LICENSE
 %doc NEWS README.md
 %{python_sitelib}/ecdsa
-%{python_sitelib}/ecdsa-%{version}*-info
+%{python_sitelib}/ecdsa-%{version}.dist-info
 
 %changelog

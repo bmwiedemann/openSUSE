@@ -216,4 +216,12 @@
   * Fix typos in warning messages (forwarded request 1266769 from glaubitz)</comment>
     <requestid>1266860</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>96169805ee0f64ac5a1b32de480b0f18</srcmd5>
+    <version>0.19.1</version>
+    <time>1750683898</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1287768</requestid>
+  </revision>
 </revisionlist>
