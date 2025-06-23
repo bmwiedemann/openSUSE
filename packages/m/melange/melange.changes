@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 23 04:46:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.13:
+  * SCA: Implement feature flag for versioned shlib depends
+  * SCA: Improve determineShlibVersion to handle corner cases
+  * SCA: Implement "no-versioned-shlib-deps" package option
+  * sca_test: Adjust expected output of Provides/Depends
+  * sca_test.go: Implement InstalledPackages and PkgResolver methods
+  * SCA: Implement versioned shared library "depends:"
+  * SCA: Implement determineShlibVersion
+  * SCA: Implement InstalledPackages and PkgResolver methods
+  * build.go: Add PkgResolver field to Build struct
+  * Implement versioned "provides" for shared libraries
+  * fix: avoid fetching hardlinks in licenses (#2052)
+  * Fix integration tests and then enable them. (#2042)
+  * test(e2e/pipelines): run tests on qemu runner (#1999)
+  * fix: make checkout expected-commit bump less greedy (#2008)
+
+-------------------------------------------------------------------
 Mon Jun 16 04:56:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.12:
