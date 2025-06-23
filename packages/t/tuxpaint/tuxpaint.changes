@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jun  8 03:24:18 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.9.35:
+  * New Magic Tools: Heart, Sparkle, and Star emitters.
+  * Text & Label Tool Improvements:
+    - It is now possible to paste text from the copy/paste
+      clipboard into Tux Paint.
+    - Checking for fonts in any locations specified by "<dir>"
+      entries found in system-wide and user-level FontConfig
+      config files.
+  * Other Improvements:
+    - Improved color picker: better behavior when clicking/tapping
+      and dragging hue/saturation box and value slider.
+    - Less warning noise to stdout (e.g., don't complain about
+      inability to load SVGs that don't exist; check whether they
+      exist, first).
+  * Updated translations.
+  * Documentation updates.
+- Re-base patches for update:
+  * tuxpaint-makefile.patch.
+  * tuxpaint-pango-cflags.patch.
+
+-------------------------------------------------------------------
 Fri Jan  3 13:38:19 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix `desktop-file-install` usage:
