@@ -29,7 +29,7 @@
 
 %define build_qt5 1
 Name:           fcitx5-qt
-Version:        5.1.9
+Version:        5.1.10
 Release:        0
 Summary:        Qt library and IM module for fcitx5
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -40,7 +40,11 @@ BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
 BuildRequires:  fdupes
+%if 0%{?suse_version} >= 1550
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc13-c++
+%endif
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  pkgconfig
 %if %{build_qt5}
@@ -179,6 +183,10 @@ This package provides development files for fcitx5-qt.
 %setup -q
 
 %build
+%if 0%{?suse_version} < 1550
+export CC=%{_bindir}/gcc-13
+export CXX=%{_bindir}/g++-13
+%endif
 ARGS="-DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir}"
 %if %{build_qt4}
 ARGS="$ARGS -DENABLE_QT4=ON"
@@ -231,8 +239,6 @@ ARGS="$ARGS -DENABLE_QT6=OFF"
 %{_libexecdir}/fcitx5-qt5-gui-wrapper
 %{_datadir}/applications/org.fcitx.fcitx5-qt5-gui-wrapper.desktop
 %dir %{_libdir}/fcitx5
-%dir %{_libdir}/fcitx5/qt5
-%{_libdir}/fcitx5/qt5/libfcitx-quickphrase-editor5.so
 %{_libdir}/qt5/plugins/platforminputcontexts/libfcitx5platforminputcontextplugin.so
 
 %files -n libFcitx5Qt5DBusAddons1

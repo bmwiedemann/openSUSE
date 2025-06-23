@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 21 08:04:15 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.10
+  * drop qt5 quickphrase editor and port to StandardPaths
+  * Drop some header only in new qt QtClassHelperMacros
+
+-------------------------------------------------------------------
 Wed Jan 29 07:10:40 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - Update to 5.1.9
