@@ -17,7 +17,7 @@
 
 
 Name:           koi
-Version:        0.5
+Version:        0.5.1
 Release:        0
 Summary:        Theme scheduling for the KDE Plasma Desktop
 License:        LGPL-3.0-only
@@ -30,7 +30,6 @@ BuildRequires:  cmake(KF6WidgetsAddons)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
 Requires:       hicolor-icon-theme
@@ -50,16 +49,12 @@ different desktop environments, they are unlikely to work and untested.
 %autosetup -p1 -n Koi-%{version}
 
 %build
-pushd src
 %cmake_kf6
 
 %kf6_build
-popd
 
 %install
-pushd src
 %kf6_install
-popd
 
 %files
 %license LICENSE

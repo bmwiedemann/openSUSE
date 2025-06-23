@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 22 15:46:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.5.1
+  * Replaces instance check with shared memory
+  * Removed Qt Network Dependency
+  * Moved CMakeLists.txt from src/ to root directory
+  * Added Uninstall Option - sudo make uninstall -C ./build/
+  * Updated Development (BUILDing) Information
+  * Updated README
+
+-------------------------------------------------------------------
 Mon Apr  7 11:42:28 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.5
