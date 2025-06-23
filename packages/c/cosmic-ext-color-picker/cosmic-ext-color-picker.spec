@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-ext-color-picker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,37 +16,44 @@
 #
 
 
-%define         appname me.pixeldoted.CosmicExtColorPicker
+%define         lic_crate_ver 3.6.0
+%define         lic_data_ver 3.26.0
+%define         appname io.github.pixeldoted.cosmic-ext-color-picker
 Name:           cosmic-ext-color-picker
-Version:        0.1.0+git20240719.1e7eaff
+Version:        1.1.0
 Release:        0
 Summary:        A Color Picker for COSMIC desktop
 License:        GPL-3.0-only
-# We use my fork, so we don't infringe on the trademark. I only change the name, rest is as is.
-# https://github.com/rrahl0/cosmic-color-picker
 URL:            https://github.com/PixelDoted/cosmic-color-picker
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+# https://github.com/evenorog/license/issues/6
+Source2:        https://github.com/spdx/license-list-data/archive/refs/tags/v%{lic_data_ver}.tar.gz#/license-list-data-%{version}.tar.gz
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description
 %{summary} Desktop Environment.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -b2
+mkdir -p vendor/license-%{lic_crate_ver}+%{lic_data_ver}/license-list-data
+cp -r ../license-list-data-%{lic_data_ver}/* vendor/license-%{lic_crate_ver}+%{lic_data_ver}/license-list-data/
+
+#fix upstream
+mv res/app.desktop res/%{appname}.desktop
+mv res/app_icon.svg res/%{appname}.svg
+mv res/metainfo.xml res/%{appname}.metainfo.xml
 
 %build
 just build-release
 
 %install
 just rootdir=%{buildroot} prefix=%{_prefix} install
-%suse_update_desktop_file %{appname}
 
 %check
 %{cargo_test}
@@ -56,8 +63,7 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
-%{_datadir}/icons/hicolor/??x??/apps/%{appname}.svg
-%{_datadir}/icons/hicolor/???x???/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}.svg
 %{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %changelog

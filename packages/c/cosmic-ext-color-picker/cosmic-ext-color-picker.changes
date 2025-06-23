@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 23 15:05:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.1.0:
+  * changing translations to feature the ™ with COSMIC™ to prevent users form
+    thinking Color picker is a official cosmic app
+  * Fixed release ordering in metainfo
+  * Make sure `hex` is not empty
+  * Fix warnings
+  * Added "expanded" colorspaces
+- switch to obs_scm
+- remove update-desktop-files as BR, deprecated
+
+-------------------------------------------------------------------
 Thu Aug  8 00:59:25 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding
