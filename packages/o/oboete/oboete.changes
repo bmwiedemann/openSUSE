@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu May 22 13:53:10 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 0.1.9+13:
+  * i18n(en) reverse proposal different studyset deletion dialog
+  * i18n(nl) revert Deletion StudySet proposal
+  * i18n(nl) update Dutch translation
+  * i18n(nl) update Dutch translation to the proposal
+  * i18n(en) propose different studyset deletion dialog
+  * remove app-title translation since 'Oboete' should not be translated
+  * i18n(nl) add initial Dutch translation
+  * update to rust 2024 edition
+  * update dependencies
+- update to version 0.1.9:
+  * Updated dependencies with important bugfixes
+  * Update oboete.ftl
+- update to version 0.1.8:
+  * feat: complete application rewrite
+  * feat: updated application design
+  * reduced memory usage
+- update to version 0.1.7:
+  * New about page
+  * Updated dependencies
+  * Create Swedish translation
+- update to 0.1.6:
+  * Updated dependencies
+  * Code cleanup
+  * Added provides for Cosmic Store
+
+-------------------------------------------------------------------
 Thu Aug  8 01:00:50 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding
