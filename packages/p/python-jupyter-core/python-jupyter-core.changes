@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 21 15:50:34 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.8.1
+  * Fixes a regression in 5.8.0 for code which may assume
+    SYSTEM_CONFIG_PATH is non-empty (Jupyter Server).
+- Release
+  * Fixes CVE-2025-30167 / GHSA-33p9-3p43-82vq on Windows (advisory
+    to be published 2025-06-02)
+  * fix: handle RuntimeError correctly in run_sync #425
+    (@hugokerstens)
+
+-------------------------------------------------------------------
 Wed Sep 25 08:33:08 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

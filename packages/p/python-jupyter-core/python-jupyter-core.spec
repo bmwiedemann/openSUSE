@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-jupyter-core%{psuffix}
-Version:        5.7.2
+Version:        5.8.1
 Release:        0
 Summary:        Base package on which Jupyter projects rely
 License:        BSD-3-Clause
@@ -114,7 +114,7 @@ donttest="test_jupyter_path_prefer_env or test_jupyter_config_path_prefer_env"
 donttest="$donttest or test_config_dir_linux"
 # async failure
 donttest="$donttest or test_ensure_async"
-%pytest --import-mode=importlib -k "not ($donttest)"
+%pytest --import-mode=importlib -k "not ($donttest)" --ignore docs
 %endif
 
 %pre

@@ -313,4 +313,19 @@ Update to 4.6.1</comment>
 </comment>
     <requestid>1203611</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d182aa12fc2a9de2fb3f38722f898759</srcmd5>
+    <version>5.8.1</version>
+    <time>1750683354</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.8.1
+  * Fixes a regression in 5.8.0 for code which may assume
+    SYSTEM_CONFIG_PATH is non-empty (Jupyter Server).
+- Release
+  * Fixes CVE-2025-30167 / GHSA-33p9-3p43-82vq on Windows (advisory
+    to be published 2025-06-02)
+  * fix: handle RuntimeError correctly in run_sync #425
+    (@hugokerstens)</comment>
+    <requestid>1287584</requestid>
+  </revision>
 </revisionlist>

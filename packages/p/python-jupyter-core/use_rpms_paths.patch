@@ -7,12 +7,12 @@ system paths in the .spec file.
 
 ---
 
-Index: jupyter_core-5.5.1/jupyter_core/paths.py
+Index: jupyter_core-5.8.1/jupyter_core/paths.py
 ===================================================================
---- jupyter_core-5.5.1.orig/jupyter_core/paths.py
-+++ jupyter_core-5.5.1/jupyter_core/paths.py
-@@ -221,10 +221,7 @@ else:
-         else:  # PROGRAMDATA is not defined by default on XP.
+--- jupyter_core-5.8.1.orig/jupyter_core/paths.py
++++ jupyter_core-5.8.1/jupyter_core/paths.py
+@@ -241,10 +241,7 @@ else:
+         else:
              SYSTEM_JUPYTER_PATH = [str(Path(sys.prefix, "share", "jupyter"))]
      else:
 -        SYSTEM_JUPYTER_PATH = [
@@ -23,7 +23,7 @@ Index: jupyter_core-5.5.1/jupyter_core/paths.py
  
  ENV_JUPYTER_PATH: list[str] = [str(Path(sys.prefix, "share", "jupyter"))]
  
-@@ -245,10 +242,10 @@ def jupyter_path(*subdirs: str) -> list[
+@@ -286,10 +283,10 @@ def jupyter_path(*subdirs: str) -> list[
  
      Examples:
  
@@ -38,13 +38,14 @@ Index: jupyter_core-5.5.1/jupyter_core/paths.py
      """
  
      paths: list[str] = []
-@@ -301,8 +298,7 @@ else:
-             SYSTEM_CONFIG_PATH = []
-     else:
-         SYSTEM_CONFIG_PATH = [
--            "/usr/local/etc/jupyter",
--            "/etc/jupyter",
-+            "@_distconfdir_jupyter_@"
-         ]
- ENV_CONFIG_PATH: list[str] = [str(Path(sys.prefix, "etc", "jupyter"))]
+@@ -383,8 +380,8 @@ def jupyter_config_path() -> list[str]:
  
+     Examples:
+ 
+-    >>> jupyter_config_path()
+-    ['~/.jupyter', '~/.local/etc/jupyter', '/usr/local/etc/jupyter', '/etc/jupyter']
++    >>> jupyter_config_path()  # doctest: +SKIP
++    ['~/.jupyter', '~/.local/etc/jupyter', "@_distconfdir_jupyter_@"]
+ 
+     """
+     if os.environ.get("JUPYTER_NO_CONFIG"):
