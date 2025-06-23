@@ -30,7 +30,7 @@
 
 
 Name:           tryton
-Version:        %{majorver}.50
+Version:        %{majorver}.54
 Release:        0
 Summary:        The client of the Tryton application platform
 License:        GPL-3.0-or-later
@@ -40,7 +40,6 @@ Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.g
 ## Source1:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
 ## Source2:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 
-Patch0:         000-pygtkcompat.diff
 Patch1:         001-disable-version-check.diff
 
 BuildRequires:  fdupes
