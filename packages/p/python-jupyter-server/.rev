@@ -721,4 +721,41 @@
     <comment></comment>
     <requestid>1248945</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>1f3c247edd74401e68b206178fbde658</srcmd5>
+    <version>2.16.0</version>
+    <time>1750683394</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.16.0
+  ## Enhancements made
+  * If ServerApp.ip is ipv6 use [::1] as local_url #1495 (@manics)
+  * Don't hide .so,.dylib files by default #1457 (@nokados)
+  * Add async start hook to ExtensionApp API #1417 (@Zsailer)
+  ## Bugs fixed
+  * Update meetings notes link and zoom link #1517 (@krassowski)
+  * Fallback to direct write for readonly dirs and use temp path
+    for checkpoints #1516 (@Darshan808)
+  * Check file permissions before making tmp file #1513 (@RRosio)
+  * Validate extension name before toggling through CLI #1509
+    (@Darshan808)
+  * Fix for #1479 : Incorrect usage of i18n format #1500 (@kjayan)
+  * Fix handling of missing parent header in record activity #1498
+    (@davidbrochart)
+  * display_url: Don't duplicate public_url and local_url if they
+    are the same #1494 (@manics)
+- Release 2.15.0
+  ## Enhancements made
+  * Better error message when starting kernel for session. #1478
+    (@Carreau)
+  * Add a traitlet to disable recording HTTP request metrics #1472
+    (@yuvipanda)
+  * prometheus: Expose 3 activity metrics #1471 (@yuvipanda)
+  * Add prometheus info metrics listing server extensions +
+    versions #1470 (@yuvipanda)
+  * Add prometheus metric with version information #1467
+    (@yuvipanda)
+  * Better hash format error message #1442 (@fcollonval)
+  ## Bugs fixed</comment>
+    <requestid>1287608</requestid>
+  </revision>
 </revisionlist>

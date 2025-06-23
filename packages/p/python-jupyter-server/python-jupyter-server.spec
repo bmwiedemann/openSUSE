@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-server
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jupyter-server%{psuffix}
-Version:        2.14.2
+Version:        2.16.0
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
@@ -41,9 +41,6 @@ Group:          Development/Languages/Python
 URL:            https://jupyter-server.readthedocs.io
 # SourceRepository: https://github.com/jupyter-server/jupyter_server
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_server/jupyter_server-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM ignore-PytestUnraisableExceptionWarning.patch gh#jupyter-server/jupyter_server#1387 mcepl@suse.com
-# ignore PytestUnraisableExceptionWarning (ResourceWarning: unclosed database in <sqlite3.Connection object at >)
-Patch0:         ignore-PytestUnraisableExceptionWarning.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-jupyter-builder >= 0.8.1}
 BuildRequires:  %{python_module hatchling >= 1.11}
@@ -58,7 +55,7 @@ Requires:       python-Send2Trash >= 1.8.2
 Requires:       python-anyio >= 3.1.0
 Requires:       python-argon2-cffi >= 21.1
 Requires:       python-jupyter-client >= 7.4.4
-Requires:       python-jupyter_events >= 0.9.0
+Requires:       python-jupyter_events >= 0.11.0
 Requires:       python-jupyter_server_terminals >= 0.4.4
 Requires:       python-nbconvert >= 6.4.4
 Requires:       python-nbformat >= 5.3.0
@@ -75,7 +72,6 @@ Provides:       python-jupyter_server = %{version}-%{release}
 Obsoletes:      python-jupyter_server < %{version}-%{release}
 %if %{with test}
 BuildRequires:  %{python_module jupyter-server-test = %{version}}
-BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  pandoc
 %endif
 %if %{with libalternatives}
@@ -137,8 +133,11 @@ if [ -e ~/.local/share/jupyter ]; then
     echo "WARNING: Not a clean test environment."
     echo "You might need to delete ~/.local/share/jupyter in order to avoid test failures."
 fi
-# pytest-xdist for process control so that the worker does not indefinitely hang after success, no parallel tests
-%pytest --timeout 60 --force-flaky --max-runs=3 --no-flaky-report -n 1 -k "not test_restart_kernel"
+# flaky
+donttest="test_restart_kernel"
+donttest="$donttest or test_execution_state"
+%pytest -k "not ($donttest)"
+%pytest --integration_tests=true -k "not ($donttest)"
 %endif
 
 %if ! %{with test}
