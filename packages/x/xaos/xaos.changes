@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 21 08:33:52 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.3.4:
+  * New fractal type (carpet4).
+  * Some icons appear in the menus.
+  * Fix links for help on current fractal.
+  * Fix initialization of user formula.
+  * Fix exported URL for user formula containing additions.
+- %check: Run application's built-in speedtest.
+
+-------------------------------------------------------------------
 Fri May  2 07:56:37 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.3.3:

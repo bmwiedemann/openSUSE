@@ -18,7 +18,7 @@
 
 %define alt_name XaoS
 Name:           xaos
-Version:        4.3.3
+Version:        4.3.4
 Release:        0
 Summary:        Powerful fractal generator
 License:        GPL-2.0-or-later
@@ -28,6 +28,7 @@ Source0:        https://github.com/xaos-project/XaoS/archive/release-%{version}/
 BuildRequires:  fdupes
 BuildRequires:  pkg-config
 BuildRequires:  qt6-tools-linguist
+BuildRequires:  xvfb-run
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6OpenGL)
@@ -70,6 +71,9 @@ install -D --mode 0644 --target-directory %{buildroot}%{_datadir}/pixmaps xdg/%{
 install -D --mode 0644 --target-directory %{buildroot}%{_mandir}/man6 doc/%{name}.6
 
 %fdupes %{buildroot}%{_datadir}/%{alt_name}/examples/
+
+%check
+xvfb-run %{buildroot}%{_bindir}/xaos -speedtest
 
 %files
 %doc CREDITS.md NEWS doc/README
