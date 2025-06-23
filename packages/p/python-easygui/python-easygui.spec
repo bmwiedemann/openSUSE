@@ -1,7 +1,7 @@
 #
 # spec file for package python-easygui
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ Summary:        Function-driven python GUI programming
 License:        BSD-3-Clause
 URL:            https://github.com/robertlugg/easygui
 Source0:        https://files.pythonhosted.org/packages/source/e/easygui/easygui-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -40,14 +42,15 @@ anything about tkinter, frames, widgets, callbacks or lambda.
 %setup -q -n %{py_name}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.txt
-%{python_sitelib}/*
+%{python_sitelib}/easygui
+%{python_sitelib}/easygui-%{version}.dist-info
 
 %changelog
