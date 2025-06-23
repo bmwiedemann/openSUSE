@@ -526,6 +526,7 @@ unsorted:
   - alex 
   - aliftype-amiri-fonts 
   - alkimia 
+  - alkimia-devel 
   - alkimia-lang 
   - allegro44 
   - allegro44-dga2-plugin 
@@ -3851,6 +3852,7 @@ unsorted:
   - ext4magic 
   - extension-manager 
   - extension-manager-lang 
+  - extest 
   - extra166y 
   - extra166y-javadoc 
   - extrace 
@@ -3997,8 +3999,6 @@ unsorted:
   - fcitx5-chinese-addons-devel 
   - fcitx5-configtool 
   - fcitx5-configtool-kcm6 
-  - fcitx5-configtool-qt6 
-  - fcitx5-customphraseeditor 
   - fcitx5-customphraseeditor6 
   - fcitx5-devel 
   - fcitx5-gtk2 
@@ -4006,14 +4006,12 @@ unsorted:
   - fcitx5-gtk4 
   - fcitx5-hangul 
   - fcitx5-kkc 
-  - fcitx5-kkc-qt6 
   - fcitx5-libthai 
   - fcitx5-lua 
   - fcitx5-lua-devel 
   - fcitx5-lua-migration-reminder 
   - fcitx5-m17n 
   - fcitx5-mozc 
-  - fcitx5-pinyindictmanager 
   - fcitx5-pinyindictmanager6 
   - fcitx5-qt-devel 
   - fcitx5-qt-lang 
@@ -4022,11 +4020,9 @@ unsorted:
   - fcitx5-rime 
   - fcitx5-sayura 
   - fcitx5-skk 
-  - fcitx5-skk-qt6 
   - fcitx5-table-extra 
   - fcitx5-table-other 
   - fcitx5-unikey 
-  - fcitx5-unikey-qt6 
   - fcitx5-zhuyin 
   - fclones 
   - fclones-bash-completion 
@@ -4579,6 +4575,7 @@ unsorted:
   - gamemoded 
   - gamescope 
   - gamescope-plus 
+  - gamescope-session-plus 
   - gammaray 
   - gammaray-devel 
   - gammaray-qt6 
@@ -8857,6 +8854,7 @@ unsorted:
   - ikvm 
   - ilbc-devel 
   - illum 
+  - illuminanced 
   - ima-evm-utils-devel 
   - ima-inspect 
   - imageburner 
@@ -9693,6 +9691,7 @@ unsorted:
   - junit5-minimal-javadoc 
   - juniversalchardet 
   - juniversalchardet-javadoc 
+  - jupiter-fan-control 
   - jupyter-anywidget 
   - jupyter-bokeh 
   - jupyter-bqplot-jupyterlab 
@@ -9835,7 +9834,6 @@ unsorted:
   - kanidm-docs 
   - kanidm-server 
   - kanidm-unixd-clients 
-  - kanjipad 
   - kanku 
   - kanku-cli 
   - kanku-common 
@@ -9895,7 +9893,6 @@ unsorted:
   - kccmp 
   - kclock 
   - kclock-lang 
-  - kcm_fcitx5 
   - kcmutils-devel 
   - kcmutils-imports 
   - kcodecs-devel 
@@ -10028,8 +10025,6 @@ unsorted:
   - kernelshark 
   - kernelshark-devel 
   - kew 
-  - kexi 
-  - kexi-lang 
   - key-rack 
   - keybase-client 
   - keybinder-3.0-devel 
@@ -10391,9 +10386,6 @@ unsorted:
   - kplotting-devel 
   - kpmcore-devel 
   - kpmcore-lang 
-  - kproperty 
-  - kproperty-devel 
-  - kproperty-lang 
   - kpt-cli 
   - kpt-cli-bash-completion 
   - kpt-cli-fish-completion 
@@ -10428,9 +10420,6 @@ unsorted:
   - krecorder-lang 
   - krename 
   - krename-lang 
-  - kreport 
-  - kreport-devel 
-  - kreport-lang 
   - krfb 
   - krfb-lang 
   - kristall 
@@ -11201,11 +11190,8 @@ unsorted:
   - libKPim6GAPILatitude6 
   - libKPim6GAPIMaps6 
   - libKPim6IdentityManagementQuick6 
-  - libKPropertyCore3-4 
-  - libKPropertyWidgets3-4 
   - libKPublicTransport1 
   - libKPublicTransportOnboard1 
-  - libKReport3-4 
   - libKSeExpr4 
   - libKTorrent6 
   - libKTorrent6-lang 
@@ -11717,8 +11703,130 @@ unsorted:
   - libabigail6 
   - libabiword-3_0 
   - libabiword-3_0-devel 
-  - libabsl_2501_0_0-32bit 
-  - libabsl_lite_2501_0_0-32bit 
+  - libabsl_base2505_0_0-32bit 
+  - libabsl_city2505_0_0-32bit 
+  - libabsl_civil_time2505_0_0 
+  - libabsl_civil_time2505_0_0-32bit 
+  - libabsl_cord2505_0_0-32bit 
+  - libabsl_cord_internal2505_0_0-32bit 
+  - libabsl_cordz_functions2505_0_0-32bit 
+  - libabsl_cordz_handle2505_0_0-32bit 
+  - libabsl_cordz_info2505_0_0-32bit 
+  - libabsl_cordz_sample_token2505_0_0 
+  - libabsl_cordz_sample_token2505_0_0-32bit 
+  - libabsl_crc32c2505_0_0-32bit 
+  - libabsl_crc_cord_state2505_0_0-32bit 
+  - libabsl_crc_cpu_detect2505_0_0 
+  - libabsl_crc_cpu_detect2505_0_0-32bit 
+  - libabsl_crc_internal2505_0_0-32bit 
+  - libabsl_debugging_internal2505_0_0-32bit 
+  - libabsl_decode_rust_punycode2505_0_0-32bit 
+  - libabsl_demangle_internal2505_0_0-32bit 
+  - libabsl_demangle_rust2505_0_0-32bit 
+  - libabsl_die_if_null2505_0_0-32bit 
+  - libabsl_examine_stack2505_0_0-32bit 
+  - libabsl_exponential_biased2505_0_0-32bit 
+  - libabsl_failure_signal_handler2505_0_0 
+  - libabsl_failure_signal_handler2505_0_0-32bit 
+  - libabsl_flags_commandlineflag2505_0_0 
+  - libabsl_flags_commandlineflag2505_0_0-32bit 
+  - libabsl_flags_commandlineflag_internal2505_0_0 
+  - libabsl_flags_commandlineflag_internal2505_0_0-32bit 
+  - libabsl_flags_config2505_0_0 
+  - libabsl_flags_config2505_0_0-32bit 
+  - libabsl_flags_internal2505_0_0 
+  - libabsl_flags_internal2505_0_0-32bit 
+  - libabsl_flags_marshalling2505_0_0 
+  - libabsl_flags_marshalling2505_0_0-32bit 
+  - libabsl_flags_parse2505_0_0 
+  - libabsl_flags_parse2505_0_0-32bit 
+  - libabsl_flags_private_handle_accessor2505_0_0 
+  - libabsl_flags_private_handle_accessor2505_0_0-32bit 
+  - libabsl_flags_program_name2505_0_0 
+  - libabsl_flags_program_name2505_0_0-32bit 
+  - libabsl_flags_reflection2505_0_0 
+  - libabsl_flags_reflection2505_0_0-32bit 
+  - libabsl_flags_usage2505_0_0 
+  - libabsl_flags_usage2505_0_0-32bit 
+  - libabsl_flags_usage_internal2505_0_0 
+  - libabsl_flags_usage_internal2505_0_0-32bit 
+  - libabsl_graphcycles_internal2505_0_0 
+  - libabsl_graphcycles_internal2505_0_0-32bit 
+  - libabsl_hash2505_0_0-32bit 
+  - libabsl_hashtablez_sampler2505_0_0-32bit 
+  - libabsl_int128-2505_0_0-32bit 
+  - libabsl_kernel_timeout_internal2505_0_0-32bit 
+  - libabsl_leak_check2505_0_0-32bit 
+  - libabsl_log_flags2505_0_0 
+  - libabsl_log_flags2505_0_0-32bit 
+  - libabsl_log_globals2505_0_0-32bit 
+  - libabsl_log_initialize2505_0_0 
+  - libabsl_log_initialize2505_0_0-32bit 
+  - libabsl_log_internal_check_op2505_0_0-32bit 
+  - libabsl_log_internal_conditions2505_0_0-32bit 
+  - libabsl_log_internal_fnmatch2505_0_0 
+  - libabsl_log_internal_fnmatch2505_0_0-32bit 
+  - libabsl_log_internal_format2505_0_0-32bit 
+  - libabsl_log_internal_globals2505_0_0-32bit 
+  - libabsl_log_internal_log_sink_set2505_0_0-32bit 
+  - libabsl_log_internal_message2505_0_0-32bit 
+  - libabsl_log_internal_nullguard2505_0_0-32bit 
+  - libabsl_log_internal_proto2505_0_0-32bit 
+  - libabsl_log_internal_structured_proto2505_0_0-32bit 
+  - libabsl_log_severity2505_0_0 
+  - libabsl_log_severity2505_0_0-32bit 
+  - libabsl_log_sink2505_0_0-32bit 
+  - libabsl_low_level_hash2505_0_0-32bit 
+  - libabsl_malloc_internal2505_0_0-32bit 
+  - libabsl_periodic_sampler2505_0_0 
+  - libabsl_periodic_sampler2505_0_0-32bit 
+  - libabsl_poison2505_0_0 
+  - libabsl_poison2505_0_0-32bit 
+  - libabsl_random_distributions2505_0_0 
+  - libabsl_random_distributions2505_0_0-32bit 
+  - libabsl_random_internal_distribution_test_util2505_0_0 
+  - libabsl_random_internal_distribution_test_util2505_0_0-32bit 
+  - libabsl_random_internal_entropy_pool2505_0_0 
+  - libabsl_random_internal_entropy_pool2505_0_0-32bit 
+  - libabsl_random_internal_platform2505_0_0 
+  - libabsl_random_internal_platform2505_0_0-32bit 
+  - libabsl_random_internal_randen2505_0_0 
+  - libabsl_random_internal_randen2505_0_0-32bit 
+  - libabsl_random_internal_randen_hwaes2505_0_0 
+  - libabsl_random_internal_randen_hwaes2505_0_0-32bit 
+  - libabsl_random_internal_randen_hwaes_impl2505_0_0 
+  - libabsl_random_internal_randen_hwaes_impl2505_0_0-32bit 
+  - libabsl_random_internal_randen_slow2505_0_0 
+  - libabsl_random_internal_randen_slow2505_0_0-32bit 
+  - libabsl_random_internal_seed_material2505_0_0 
+  - libabsl_random_internal_seed_material2505_0_0-32bit 
+  - libabsl_random_seed_gen_exception2505_0_0 
+  - libabsl_random_seed_gen_exception2505_0_0-32bit 
+  - libabsl_random_seed_sequences2505_0_0 
+  - libabsl_random_seed_sequences2505_0_0-32bit 
+  - libabsl_raw_hash_set2505_0_0-32bit 
+  - libabsl_raw_logging_internal2505_0_0-32bit 
+  - libabsl_scoped_set_env2505_0_0 
+  - libabsl_scoped_set_env2505_0_0-32bit 
+  - libabsl_spinlock_wait2505_0_0-32bit 
+  - libabsl_stacktrace2505_0_0-32bit 
+  - libabsl_status2505_0_0-32bit 
+  - libabsl_statusor2505_0_0-32bit 
+  - libabsl_str_format_internal2505_0_0-32bit 
+  - libabsl_strerror2505_0_0-32bit 
+  - libabsl_string_view2505_0_0 
+  - libabsl_string_view2505_0_0-32bit 
+  - libabsl_strings2505_0_0-32bit 
+  - libabsl_strings_internal2505_0_0-32bit 
+  - libabsl_symbolize2505_0_0-32bit 
+  - libabsl_synchronization2505_0_0-32bit 
+  - libabsl_throw_delegate2505_0_0-32bit 
+  - libabsl_time2505_0_0-32bit 
+  - libabsl_time_zone2505_0_0-32bit 
+  - libabsl_tracing_internal2505_0_0-32bit 
+  - libabsl_utf8_for_code_point2505_0_0-32bit 
+  - libabsl_vlog_config_internal2505_0_0 
+  - libabsl_vlog_config_internal2505_0_0-32bit 
   - libabw-devel 
   - libabw-devel-doc 
   - libabw-tools 
@@ -11789,8 +11897,7 @@ unsorted:
   - libairspyhf0 
   - libakai0 
   - libalac0 
-  - libalkimia5-8 
-  - libalkimia5-devel 
+  - libalkimia6-8 
   - liballeg44-devel 
   - liballeg4_4 
   - liballeggl44-devel 
@@ -13048,7 +13155,7 @@ unsorted:
   - libfl2 
   - libfl2-32bit 
   - libflann1_9 
-  - libflatbuffers23_5_26 
+  - libflatbuffers25_2_10 
   - libflickcurl-devel 
   - libflickcurl0 
   - libflint21 
@@ -14448,7 +14555,7 @@ unsorted:
   - libmetal-devel 
   - libmetal0 
   - libmetalink-devel 
-  - libmetee4_3_1 
+  - libmetee6_0_0_0 
   - libmetis5 
   - libmetrics-devel 
   - libmetrics0 
@@ -14633,9 +14740,9 @@ unsorted:
   - libnbd-devel 
   - libnbd0 
   - libnblib_gmx0 
-  - libnco-5_2_9 
+  - libnco-5_3_4 
   - libnco-devel 
-  - libnco_c++-5_2_9 
+  - libnco_c++-5_3_4 
   - libncurses5 
   - libncurses5-32bit 
   - libncurses6-32bit 
@@ -15256,13 +15363,13 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprometheus-cpp0_13 
-  - libprotobuf-lite30_2_0-32bit 
+  - libprotobuf-lite31_1_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-nanopb0 
-  - libprotobuf30_2_0-32bit 
+  - libprotobuf31_1_0-32bit 
   - libprotobuf3_21_12 
-  - libprotoc30_2_0 
-  - libprotoc30_2_0-32bit 
+  - libprotoc31_1_0 
+  - libprotoc31_1_0-32bit 
   - libprotoc3_21_12 
   - libproxy-devel 
   - libproxy-devel-doc 
@@ -16552,7 +16659,7 @@ unsorted:
   - libusrp1 
   - libusrsctp2 
   - libut1 
-  - libutf8_range-30_2_0-32bit 
+  - libutf8_range-31_1_0-32bit 
   - libutf8proc3 
   - libuuid-devel 
   - libuuid-devel-32bit 
@@ -17301,6 +17408,7 @@ unsorted:
   - live555-devel 
   - livedtd 
   - livi 
+  - livi-lang 
   - lix-installer 
   - lkl-devel 
   - lkl-test 
@@ -19501,6 +19609,7 @@ unsorted:
   - nix 
   - nix-bash-completion 
   - nix-devel 
+  - nix-doc 
   - nix-fish-completion 
   - nix-zsh-completion 
   - nload 
@@ -20930,6 +21039,7 @@ unsorted:
   - pcsc-reflex60 
   - pcsc-tools 
   - pcsc-towitoko-devel 
+  - pcsx2 
   - pdf2djvu 
   - pdf2djvu-lang 
   - pdf2svg 
@@ -25833,6 +25943,7 @@ unsorted:
   - python311-napalm 
   - python311-napalm-asa 
   - python311-napalm-procurve 
+  - python311-narwhals 
   - python311-natsort 
   - python311-nautilus 
   - python311-nautilus-devel 
@@ -26098,7 +26209,6 @@ unsorted:
   - python311-platformio 
   - python311-plette 
   - python311-plotly 
-  - python311-plotly-jupyter 
   - python311-pluggy 
   - python311-pluginbase 
   - python311-plumbum 
@@ -27357,7 +27467,6 @@ unsorted:
   - python311-xvfbwrapper 
   - python311-xxhash 
   - python311-xyzservices 
-  - python311-y-py 
   - python311-yacron 
   - python311-yamale 
   - python311-yamlcore 
@@ -29571,6 +29680,7 @@ unsorted:
   - python312-napalm 
   - python312-napalm-asa 
   - python312-napalm-procurve 
+  - python312-narwhals 
   - python312-natsort 
   - python312-nautilus 
   - python312-nautilus-devel 
@@ -29842,7 +29952,6 @@ unsorted:
   - python312-platformio 
   - python312-plette 
   - python312-plotly 
-  - python312-plotly-jupyter 
   - python312-pluggy 
   - python312-pluginbase 
   - python312-plumbum 
@@ -31126,7 +31235,6 @@ unsorted:
   - python312-xvfbwrapper 
   - python312-xxhash 
   - python312-xyzservices 
-  - python312-y-py 
   - python312-yacron 
   - python312-yamale 
   - python312-yamlcore 
@@ -33290,6 +33398,7 @@ unsorted:
   - python313-napalm 
   - python313-napalm-asa 
   - python313-napalm-procurve 
+  - python313-narwhals 
   - python313-natsort 
   - python313-nautilus 
   - python313-nautilus-devel 
@@ -33561,7 +33670,6 @@ unsorted:
   - python313-platformio 
   - python313-plette 
   - python313-plotly 
-  - python313-plotly-jupyter 
   - python313-pluggy 
   - python313-pluginbase 
   - python313-plumbum 
@@ -34814,7 +34922,6 @@ unsorted:
   - python313-xvfbwrapper 
   - python313-xxhash 
   - python313-xyzservices 
-  - python313-y-py 
   - python313-yacron 
   - python313-yamale 
   - python313-yamlcore 
@@ -35895,6 +36002,9 @@ unsorted:
   - rnp 
   - rnp-devel 
   - roast 
+  - roast-bash-completion 
+  - roast-fish-completion 
+  - roast-zsh-completion 
   - robin-map-devel 
   - robinhood 
   - robinhood-tests 
@@ -48677,7 +48787,6 @@ unsorted:
   - wcslib-devel 
   - wcslib-doc 
   - wcslib-tools 
-  - wcurl 
   - wdiff 
   - wdiff-lang 
   - wdisplays 
@@ -48771,12 +48880,10 @@ unsorted:
   - wine-binfmt 
   - wine-binfmt-standalone 
   - wine-devel 
-  - wine-devel-32bit 
   - wine-gecko 
   - wine-staging 
   - wine-staging-32bit 
   - wine-staging-devel 
-  - wine-staging-devel-32bit 
   - wine-staging-wow64 
   - wine-staging-wow64-devel 
   - wine-wow64 
