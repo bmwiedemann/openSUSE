@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 19 06:32:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.60.2:
+  * chore: Make telemetry warning debug level
+  * refactor: custom factory for docs generation
+  * refactor: use the test factory
+  * refactor: use stubs in the test factory
+  * refactor: mutate io before passing
+  * refactor: rework test factory
+  * refactor: use IO function
+  * refactor: pass IO streams to factory constructor
+  * refactor: remove error handling from RepoOverride() calls
+  * refactor: use the interface
+  * refactor: new factory interface
+
+-------------------------------------------------------------------
 Wed Jun 18 04:57:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.60.1:
