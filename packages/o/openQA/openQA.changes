@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 20 15:11:57 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1750408965.72531a72:
+  * Extend single-instance container documentation
+  * Bump bootstrap from 5.3.6 to 5.3.7
+  * apparmor: Allow read access to device-tree files
+
+-------------------------------------------------------------------
 Wed Jun 18 10:12:55 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1750237596.0e254038:
