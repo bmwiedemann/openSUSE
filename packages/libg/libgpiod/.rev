@@ -179,4 +179,15 @@
     <comment></comment>
     <requestid>1010612</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9ed345130f8f0f5b17e89af253794095</srcmd5>
+    <version>2.2.1</version>
+    <time>1750683973</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to 2.2.1
+  * Major rework / Breaks API
+  * Support Catch2 v3
+</comment>
+    <requestid>1287887</requestid>
+  </revision>
 </revisionlist>

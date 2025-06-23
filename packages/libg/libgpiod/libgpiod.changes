@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 16 14:42:34 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Upgrade to 2.2.1
+  * Major rework / Breaks API
+  * Support Catch2 v3
+
+-------------------------------------------------------------------
 Fri Oct 14 08:01:13 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Use Catch2-2-devel on Tumbleweed since libgpiod is not ready
