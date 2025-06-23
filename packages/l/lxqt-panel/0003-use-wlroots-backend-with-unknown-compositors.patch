@@ -1,6 +1,6 @@
-From aaea8c090aa7af9c3ac8e73122dbf7cb3cad1d04 Mon Sep 17 00:00:00 2001
+From 69902e39e88930644f55303e24c0ba229b684746 Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
-Date: Thu, 16 Jan 2025 09:45:41 -0800
+Date: Mon, 23 Jun 2025 10:22:40 +0200
 Subject: [PATCH 3/3] use wlroots backend with unknown compositors
 
 The description of the LXQtPanelApplicationPrivate::loadBackend() method
@@ -18,18 +18,18 @@ using XDG_CURRENT_DESKTOP still wins over this.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/panel/lxqtpanelapplication.cpp b/panel/lxqtpanelapplication.cpp
-index c8948cc..baf37a0 100644
+index 51a3237..d366636 100644
 --- a/panel/lxqtpanelapplication.cpp
 +++ b/panel/lxqtpanelapplication.cpp
 @@ -263,7 +263,7 @@ void LXQtPanelApplicationPrivate::loadBackend()
          }
      }
  
--    if ( preferredBackend.isEmpty() && xdgCurrentDesktops.contains( QStringLiteral("wlroots") ) )
-+    if ( preferredBackend.isEmpty() && xdgSessionType == ( QStringLiteral("wayland") ) )
+-    if (preferredBackend.isEmpty() && xdgCurrentDesktops.contains(QStringLiteral("wlroots"), Qt::CaseInsensitive))
++    if (preferredBackend.isEmpty() && xdgSessionType == (QStringLiteral("wayland")))
      {
          qDebug() << "Specialized backend unavailable. Falling back to generic wlroots";
          preferredBackend = QStringLiteral("wlroots");
 -- 
-2.48.0
+2.49.0
 

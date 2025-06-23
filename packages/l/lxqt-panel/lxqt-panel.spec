@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-panel
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        LXQt desktop panel
 License:        LGPL-2.1-or-later
@@ -51,6 +51,7 @@ BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6GuiPrivate) >= 6.3.5
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6WaylandClient)
+BuildRequires:  cmake(Qt6WaylandClientPrivate)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
 

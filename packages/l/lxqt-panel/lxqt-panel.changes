@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 23 08:28:04 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.2.2:
+  * Automatic showing of mount popup is disabled on Wayland to
+    circumvent an old problem of QtWayland
+  * Fixed the rare bug about permanent task-buttons under
+    kwin_wayland
+  * Support showing of current screen windows in the wlroots
+    taskbar
+  * Made searching for the backedn in EVs case-insensitive
+  * Added backend info to README
+
+-------------------------------------------------------------------
 Sat May 17 15:33:03 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 2.2.1:
