@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 22 04:13:15 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.7
+  * remove fcitx::getline usage
+  * interpret dictionary path starting with $XDG_DATA_DIRS
+  * update input panel on preedit clearing
+  * should always trigger ui update, no need to check last is empty
+  * port to StandardPaths and drop Qt5
+- upstream dropped qt5, move from _multibuild to single build
+
+-------------------------------------------------------------------
 Wed Jan 29 07:17:14 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.6
