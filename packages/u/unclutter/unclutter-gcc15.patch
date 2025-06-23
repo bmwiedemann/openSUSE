@@ -1,0 +1,13 @@
+Index: unclutter.c
+===================================================================
+--- unclutter.c.orig
++++ unclutter.c
+@@ -59,7 +59,7 @@ void usage(){
+  * window can disappear while we are trying to create the child. Trap and
+  * ignore these errors.
+  */
+-int (*defaulthandler)();
++XErrorHandler defaulthandler;
+ int errorhandler(display,error)
+ Display *display;
+ XErrorEvent *error;

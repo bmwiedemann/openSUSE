@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 20 08:45:47 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  build with gcc15
+  + unclutter-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Nov  7 11:42:31 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch unclutter-8-gcc14.patch

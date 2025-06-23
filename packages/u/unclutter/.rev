@@ -124,4 +124,14 @@
   * Make it build even with gcc14</comment>
     <requestid>1222151</requestid>
   </revision>
+  <revision rev="19" vrev="1070">
+    <srcmd5>7debeee6f0553e8127f5c8d63ff6772d</srcmd5>
+    <version>8</version>
+    <time>1750699710</time>
+    <user>anag_factory</user>
+    <comment>- added patches
+  build with gcc15
+  + unclutter-gcc15.patch (forwarded request 1287157 from pgajdos)</comment>
+    <requestid>1287968</requestid>
+  </revision>
 </revisionlist>
