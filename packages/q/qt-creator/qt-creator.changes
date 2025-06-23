@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 19 08:05:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 17.0.0
+  https://www.qt.io/blog/qt-creator-17-released
+- Drop patch, merged upstream:
+  * 0001-Debugger-Pass-unsigned-int-instead-of-size_t-to-ioct.patch
+
+-------------------------------------------------------------------
 Thu Jun 12 06:48:19 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - add 0001-Debugger-Pass-unsigned-int-instead-of-size_t-to-ioct.patch

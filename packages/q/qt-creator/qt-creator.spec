@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 16.0.2
-%define short_version 16.0
+%define real_version 17.0.0
+%define short_version 17.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
 #
@@ -39,7 +39,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 # Private QML imports
-%global __requires_exclude qt6qmlimport\\((AssetsLibraryBackend|BackendApi|CameraGeometry|CollectionDetails|CollectionEditor|CollectionEditorBackend|ConnectionsEditorEditorBackend|content|ContentLibraryBackend|DataModels|DesignSystemBackend|DesignSystemControls|DeviceManagerControls|EffectComposerBackend|EffectMakerBackend|ExampleCheckout|GridGeometry|HelperWidgets|ItemLibraryBackend|LandingPage.*|LightUtils|LineGeometry|MaterialBrowserBackend|MaterialToolBarAction|ModelModules|MouseArea3D|NewProjectDialog|OutputPane|projectmodel|ProjectType|QmlDesigner.*|QtQuickDesignerColorPalette|QtQuickDesignerTheme|SelectionBoxGeometry|StatesEditor.*|StudioControls|StudioFonts|StudioHelpers|StudioQuickUtils|StudioTheme|StudioWindowManager|TableModules|TextureToolBarAction|ToolBar|UiTour|usagestatistics|WebFetcher|WelcomeScreen).*
+%global __requires_exclude qt6qmlimport\\((AssetsLibraryBackend|BackendApi|CameraGeometry|CollectionDetails|CollectionEditor|CollectionEditorBackend|ConnectionsEditorEditorBackend|content|ContentLibraryBackend|DataModels|DesignSystemBackend|DesignSystemControls|DeviceManagerControls|EffectComposer.*|EffectMakerBackend|ExampleCheckout|GridGeometry|HelperWidgets|ItemLibraryBackend|LandingPage.*|LightUtils|LineGeometry|MaterialBrowserBackend|MaterialToolBarAction|ModelModules|MouseArea3D|NewProjectDialog|OutputPane|projectmodel|ProjectType|PropertyToolBarAction|QmlDesigner.*|QtQuickDesignerColorPalette|QtQuickDesignerTheme|ScriptEditor.*|ScriptsEditor.*|SelectionBoxGeometry|StatesEditor.*|StudioControls|StudioFonts|StudioHelpers|StudioQuickUtils|StudioTheme|StudioWindowManager|TableModules|TextureToolBarAction|ToolBar|UiTour|usagestatistics|WebFetcher|WelcomeScreen).*
 
 # Has mocks for quite a few components, which are only pulled in when actually used
 %global __requires_exclude_from %{_datadir}/qtcreator/qml/qmlpuppet/
@@ -47,7 +47,7 @@ ExclusiveArch:  do_not_build
 %bcond_without docs
 
 Name:           %{pkgname_prefix}-creator
-Version:        16.0.2
+Version:        17.0.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -60,7 +60,6 @@ URL:            https://www.qt.io/product/development-tools
 Source:         https://download.qt.io/official_releases/qtcreator/%{short_version}/%{real_version}%{tar_suffix}/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source1:        qt-creator-rpmlintrc
 # Patches 0-10 are upstream changes
-Patch0:         0001-Debugger-Pass-unsigned-int-instead-of-size_t-to-ioct.patch
 # Patches 11-20 are openSUSE changes
 Patch11:        fix-application-output.patch
 Patch12:        0001-Disable-some-plugins.patch
@@ -231,7 +230,7 @@ rm -r %{buildroot}%{_datadir}/qtcreator/debugger-with-python2
 %ldconfig_scriptlets
 
 %files
-%license *GPL*
+%license LICENSES/*
 %doc README.md HACKING
 %dir %{_datadir}/qtcreator
 %dir %{_libdir}/qtcreator
