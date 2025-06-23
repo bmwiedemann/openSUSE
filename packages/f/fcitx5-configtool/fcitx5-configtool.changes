@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 22 03:46:19 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update version 5.1.10
+  * Port to StandardPaths
+  * remove header that's not in Qt5
+  * Remove QQmlTypeNotAavailable
+  * Drop Qt5 code
+  * Lower Qt6 version requirement
+- drop fcitx5-configtool-gcc7.patch, upstreamed
+- upstream dropped Qt5 code, switch from _multibuild to single build
+
+-------------------------------------------------------------------
 Sat Jun 14 09:47:48 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update version 5.1.9
