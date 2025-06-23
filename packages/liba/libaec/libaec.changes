@@ -1,25 +1,33 @@
 -------------------------------------------------------------------
+Thu Jun 12 14:07:50 UTC 2025 - Manfred Schwarb <manfred99@gmx.ch>
+
+- adjust spec file: remove now unneeded tweaks to adjust cmake files
+    and to delete static libraries
+- Update to version 1.1.4:
+  * cmake build fixes and enhancements
+
+-------------------------------------------------------------------
 Thu Mar 21 11:25:14 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Update to version 1.1.3:
-  * Fix compiler warnings 
+  * Fix compiler warnings
 
 -------------------------------------------------------------------
 Mon Nov  6 10:22:53 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
 
-- remove optional binary installation to please Factory 
+- remove optional binary installation to please Factory
 
 -------------------------------------------------------------------
 Mon Oct 30 14:14:23 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
 
 - make deploying aec executable conditional and default off, can
-    be added back later if needed 
+    be added back later if needed
 
 -------------------------------------------------------------------
 Mon Oct 16 09:48:52 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Update to version 1.1.2:
-  * Compile issue with MSVC 
+  * Compile issue with MSVC
 
 -------------------------------------------------------------------
 Fri Sep 29 13:00:31 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
@@ -43,7 +51,7 @@ Tue Sep  7 10:04:12 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
 - remove doc/patent.txt and patent comment in spec file, as the new
     standard 121.0-B-3 declares:
     "At time of publication, the specifications of this Recommended
-     Standard are not known to be the subject of patent rights." 
+     Standard are not known to be the subject of patent rights."
 
 -------------------------------------------------------------------
 Wed Jun 16 12:50:52 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>

@@ -1,7 +1,7 @@
 #
 # spec file for package libaec
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libaec
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Adaptive Entropy Coding library
 License:        BSD-2-Clause
@@ -84,19 +84,15 @@ SZIP library (http://www.hdfgroup.org/doc_resource/SZIP).
 %autosetup -n "%{name}-v%{version}"
 
 %build
-%cmake
+%cmake \
+  -DBUILD_STATIC_LIBS=OFF
 %cmake_build
 
 %check
-export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %ctest
 
 %install
 %cmake_install
-find %{buildroot}%{_libdir} -type f -name "*.a" -delete -print
-mkdir -p %{buildroot}%{_libdir}/cmake/%{name}
-mv %{buildroot}/usr/cmake/*.cmake %{buildroot}%{_libdir}/cmake/%{name}/
-rmdir %{buildroot}/usr/cmake
 
 %post -n libaec0 -p /sbin/ldconfig
 %post -n libsz2 -p /sbin/ldconfig
