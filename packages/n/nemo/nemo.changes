@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 21 10:17:08 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 6.4.5
+  * layout editor: Don't use gettext.install to set up the locale.
+  * nemo-places-sidebar.c: Fix query-tooltip callback.
+  * nemo-style-fallback-mandatory.css: Add fallback support for the
+    floating status bar.
+- update to 6.4.4
+  * nemo-places-sidebar.c: Remove delete key action for removing
+    bookmarks.
+  * nemo-places-sidebar.c: Fix bookmark renaming.
+  
+-------------------------------------------------------------------
 Thu Mar 13 22:25:36 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(gtksourceview-2.0), pkgconfig(gtksourceview-3.0)

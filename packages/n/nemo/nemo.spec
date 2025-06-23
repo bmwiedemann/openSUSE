@@ -18,7 +18,7 @@
 
 %define         sover   1
 Name:           nemo
-Version:        6.4.3
+Version:        6.4.5
 Release:        0
 Summary:        File browser for Cinnamon
 License:        GPL-2.0-or-later
