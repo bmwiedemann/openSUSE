@@ -26,6 +26,8 @@ URL:            http://abook.sourceforge.net/
 Source0:        http://abook.sourceforge.net/devel/%{name}-%{version}.tar.gz
 Source1:        http://abook.sourceforge.net/devel/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+# fix build with gcc15
+Patch0:         abook-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  coreutils
@@ -41,7 +43,7 @@ use with mutt mail client.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fiv

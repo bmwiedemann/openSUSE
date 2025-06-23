@@ -122,4 +122,16 @@
     <comment></comment>
     <requestid>785470</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>f1e92bbc2bf897567a034f612c529985</srcmd5>
+    <version>0.6.1</version>
+    <time>1750683726</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1284689 from pgajdos
+
+- added patches
+  fix build with gcc15
+  + abook-gcc15.patch</comment>
+    <requestid>1287485</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,13 @@
+diff -upr abook-0.6.1.orig/mbswidth.c abook-0.6.1/mbswidth.c
+--- abook-0.6.1.orig/mbswidth.c	2025-06-11 07:17:46.708829386 +0000
++++ abook-0.6.1/mbswidth.c	2025-06-11 07:19:40.177240199 +0000
+@@ -63,7 +63,7 @@
+ #	warn "this configure-time declaration test was not run"
+ #endif
+ #if !HAVE_DECL_WCWIDTH
+-int wcwidth ();
++int wcwidth (wchar_t);
+ #endif
+ 
+ #ifndef wcwidth
+

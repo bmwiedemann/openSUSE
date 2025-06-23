@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 11 07:25:35 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + abook-gcc15.patch
+
+-------------------------------------------------------------------
 Mon Mar 16 08:07:51 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - fix build by owning some directories
