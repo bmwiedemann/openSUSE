@@ -1,7 +1,7 @@
 #
 # spec file for package python-cymruwhois
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-cymruwhois
 Version:        1.6
@@ -27,8 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://packages.python.org/cymruwhois/
 Source:         https://files.pythonhosted.org/packages/source/c/cymruwhois/cymruwhois-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/JustinAzoff/python-cymruwhois/master/docs/cymruwhois.1
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -45,10 +45,10 @@ and Netblock Owner.
 %setup -q -n cymruwhois-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 install -d -m0755 %{buildroot}%{_mandir}/man1/
 install -m0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/
@@ -62,7 +62,9 @@ install -m0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/
 %python_uninstall_alternative cymruwhois
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/cymruwhois.py
+%pycache_only %{python_sitelib}/__pycache__/cymruwhois.*.pyc
+%{python_sitelib}/cymruwhois-%{version}.dist-info
 %python_alternative %{_bindir}/cymruwhois
 %python_alternative %{_mandir}/man1/cymruwhois.1%{ext_man}
 

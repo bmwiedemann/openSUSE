@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 16 02:39:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- List files explicitly under sitelib in %files.
+- Remove unneeded BuildRequires on devel module.
+
+-------------------------------------------------------------------
 Wed May 27 09:36:55 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
