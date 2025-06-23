@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 12fe085fa4096dedd82a9af0901fb8721379011f
+%define git_version dcd2ee2f57a7bba87f23e67d5f0c46eda9033fc3
 
 Name:           kernel-firmware-mediatek
-Version:        20250613
+Version:        20250619
 Release:        0
 Summary:        Kernel firmware files for Mediatek network drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware

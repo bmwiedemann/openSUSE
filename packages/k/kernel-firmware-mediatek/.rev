@@ -122,4 +122,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: update firmware for MT7916</comment>
     <requestid>1285897</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>85deb1f54bad2f96c9c8876b0e45ba0e</srcmd5>
+    <version>20250619</version>
+    <time>1750683346</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250619 (git commit dcd2ee2f57a7):
+  * mediatek: Update mt8186 SCP firmware</comment>
+    <requestid>1287534</requestid>
+  </revision>
 </revisionlist>
