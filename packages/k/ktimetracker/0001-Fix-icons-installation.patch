@@ -1,0 +1,79 @@
+From 96fc1da370667018a74edb01bfa6b533cbd87b9c Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Sun, 22 Jun 2025 14:23:25 +0200
+Subject: [PATCH] Fix icons installation
+
+---
+ icons/CMakeLists.txt | 19 +++++--------------
+ icons/icons.qrc      | 20 +++++++++-----------
+ 2 files changed, 14 insertions(+), 25 deletions(-)
+
+diff --git a/icons/CMakeLists.txt b/icons/CMakeLists.txt
+index 1fc9f09d..f90c72f2 100644
+--- a/icons/CMakeLists.txt
++++ b/icons/CMakeLists.txt
+@@ -5,23 +5,14 @@ qt_add_resources(icons_SRCS icons.qrc)
+ add_library(icons OBJECT ${icons_SRCS})
+ 
+ set(APP_ICONS_BREEZE
+-    ${CMAKE_CURRENT_SOURCE_DIR}/breeze/22-apps-ktimetracker.svg
+-    ${CMAKE_CURRENT_SOURCE_DIR}/breeze/32-apps-ktimetracker.svg
+-    ${CMAKE_CURRENT_SOURCE_DIR}/breeze/48-apps-ktimetracker.svg
++    ${CMAKE_CURRENT_SOURCE_DIR}/breeze-app-icon-png/22-apps-ktimetracker.png
++    ${CMAKE_CURRENT_SOURCE_DIR}/breeze-app-icon-png/32-apps-ktimetracker.png
++    ${CMAKE_CURRENT_SOURCE_DIR}/breeze-app-icon-png/48-apps-ktimetracker.png
++    ${CMAKE_CURRENT_SOURCE_DIR}/breeze-app-icon-png/64-apps-ktimetracker.png
++    ${CMAKE_CURRENT_SOURCE_DIR}/breeze-app-icon-png/128-apps-ktimetracker.png
+ )
+ ecm_install_icons(
+     ICONS ${APP_ICONS_BREEZE}
+     DESTINATION ${KDE_INSTALL_ICONDIR}
+     THEME hicolor
+ )
+-
+-set(APP_ICONS_BREEZE_DARK
+-    ${CMAKE_CURRENT_SOURCE_DIR}/breeze-dark/22-apps-ktimetracker.svg
+-    ${CMAKE_CURRENT_SOURCE_DIR}/breeze-dark/32-apps-ktimetracker.svg
+-    ${CMAKE_CURRENT_SOURCE_DIR}/breeze-dark/48-apps-ktimetracker.svg
+-)
+-ecm_install_icons(
+-    ICONS ${APP_ICONS_BREEZE_DARK}
+-    DESTINATION ${KDE_INSTALL_ICONDIR}
+-    THEME breeze-dark
+-)
+diff --git a/icons/icons.qrc b/icons/icons.qrc
+index 91d6c6e7..6d5e1585 100644
+--- a/icons/icons.qrc
++++ b/icons/icons.qrc
+@@ -1,19 +1,17 @@
++<?xml version="1.0"?>
+ <!--
+ SPDX-FileCopyrightText: 2019, 2021 Alexander Potashev <aspotashev@gmail.com>
+ SPDX-FileCopyrightText: 2022 Jens Küspert <jens.kuespert@gmx.de>
+ 
+ SPDX-License-Identifier: GPL-2.0-or-later
+ -->
+-
+-<!DOCTYPE RCC><RCC version="1.0">
+-    <qresource prefix="/icons/breeze">
+-        <file alias="22x22/apps/ktimetracker.svg">breeze/22-apps-ktimetracker.svg</file>
+-        <file alias="32x32/apps/ktimetracker.svg">breeze/32-apps-ktimetracker.svg</file>
+-        <file alias="48x48/apps/ktimetracker.svg">breeze/48-apps-ktimetracker.svg</file>
+-    </qresource>
+-    <qresource prefix="/icons/breeze-dark">
+-        <file alias="22x22/apps/ktimetracker.svg">breeze-dark/22-apps-ktimetracker.svg</file>
+-        <file alias="32x32/apps/ktimetracker.svg">breeze-dark/32-apps-ktimetracker.svg</file>
+-        <file alias="48x48/apps/ktimetracker.svg">breeze-dark/48-apps-ktimetracker.svg</file>
++<!DOCTYPE RCC>
++<RCC version="1.0">
++    <qresource prefix="/icons/breeze-app-icon-png">
++        <file alias="22x22/apps/ktimetracker.png">breeze-app-icon-png/22-apps-ktimetracker.png</file>
++        <file alias="32x32/apps/ktimetracker.png">breeze-app-icon-png/32-apps-ktimetracker.png</file>
++        <file alias="48x48/apps/ktimetracker.png">breeze-app-icon-png/48-apps-ktimetracker.png</file>
++        <file alias="64x64/apps/ktimetracker.png">breeze-app-icon-png/64-apps-ktimetracker.png</file>
++        <file alias="128x128/apps/ktimetracker.png">breeze-app-icon-png/128-apps-ktimetracker.png</file>
+     </qresource>
+ </RCC>
+-- 
+2.49.0
+

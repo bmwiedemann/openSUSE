@@ -1,0 +1,23 @@
+From 236dadab0ad1d9f0ba94cac9887ce681be2fd45d Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Sun, 22 Jun 2025 14:27:48 +0200
+Subject: [PATCH] Install docs translations
+
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fd16304a..aea56260 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -83,5 +83,6 @@ kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
+ install(FILES org.kde.ktimetracker.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+ 
+ ki18n_install(po)
++kdoctools_install(po)
+ 
+ feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+-- 
+2.49.0
+

@@ -16,32 +16,50 @@
 #
 
 
-%bcond_without lang
+%define kf6_version 6.14.0
+%define qt6_version 6.4.0
+
+%bcond_without released
 Name:           ktimetracker
-Version:        5.0.1
+Version:        6.0.0
 Release:        0
 Summary:        Personal Time Tracker
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/ktimetracker
-Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
-BuildRequires:  extra-cmake-modules
-BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IdleTime)
-BuildRequires:  cmake(KF5JobWidgets)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5DBus) >= 5.10.0
-BuildRequires:  cmake(Qt5Gui) >= 5.10.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.10.0
-BuildRequires:  cmake(Qt5Xml) >= 5.10.0
+Source0:        https://download.kde.org/unstable/ktimetracker/%{name}-%{version}.tar.xz
+%if %{with released}
+Source1:        https://download.kde.org/unstable/ktimetracker/%{name}-%{version}.tar.xz.sig
+# https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/thiagosueto@key1.asc
+Source2:        ktimetracker.keyring
+%endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-icons-installation.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Install-docs-translations.patch
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6IdleTime) >= %{kf6_version}
+BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 
 %description
 KTimeTracker tracks time spent on various tasks.
@@ -52,27 +70,26 @@ KTimeTracker tracks time spent on various tasks.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf6
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name}
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-html
 
 %files
-%license COPYING COPYING.DOC
-%doc README ChangeLog.md
-%doc %lang(en) %{_kf5_htmldir}/en/ktimetracker/
-%{_kf5_applicationsdir}/org.kde.ktimetracker.desktop
-%{_kf5_appstreamdir}/org.kde.ktimetracker.appdata.xml
-%{_kf5_bindir}/ktimetracker
-%{_kf5_dbusinterfacesdir}/org.kde.ktimetracker.ktimetracker.xml
-%{_kf5_iconsdir}/hicolor/*/apps/ktimetracker.png
+%license LICENSES/*
+%doc README.md ChangeLog.md
+%doc %lang(en) %{_kf6_htmldir}/en/ktimetracker/
+%{_kf6_applicationsdir}/org.kde.ktimetracker.desktop
+%{_kf6_appstreamdir}/org.kde.ktimetracker.appdata.xml
+%{_kf6_bindir}/ktimetracker
+%{_kf6_dbusinterfacesdir}/org.kde.ktimetracker.ktimetracker.xml
+%{_kf6_iconsdir}/hicolor/*/apps/ktimetracker.png
 
 %files lang -f %{name}.lang
-%license COPYING COPYING.DOC
+%exclude %{_kf6_htmldir}/en/ktimetracker/
 
 %changelog

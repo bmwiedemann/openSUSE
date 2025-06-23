@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 22 11:45:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.0.0
+  https://rabbitictranslator.com/ktimetracker-6.0.0
+- Add patches:
+  * 0001-Fix-icons-installation.patch
+  * 0001-Install-docs-translations.patch
+
+-------------------------------------------------------------------
 Wed Nov 20 16:06:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Stop using the %suse_update_desktop_file macro
