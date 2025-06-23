@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu May 22 13:31:01 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.2.4+5:
+  * i18n(nl) add Dutch translation
+  * new language
+  * chore: update cargo-sources
+  * chore: update deps & up version
+  * chore: update libcosmic & other deps
+- update to 0.2.4:
+  * Adapt to API Changes (still some issues to be resolved)
+  * Updated dependencies
+  * Update starry_dex.ftl
+- update to 0.2.3:
+  * fix/feat: bug with translations on type filters
+  * fix: bug when updating the cache that made bulbasaur disappear
+  * chore: updated dependencies and screenshots
+- update to 0.2.2:
+  * New about page
+  * Updated dependencies, also Rustemon is now on 4.0.0
+  * Create Swedish translation
+- update to 0.2.1:
+  * Fixed error which prevented Bulbasaur from being shown
+- update to 0.2.0:
+  * Filters application Rewrite
+  * The application now supports filtering
+  * Reduced memory usage
+  * Reduced cache size from 160MB to 2MB
+  * New appearance settings
+- update to 0.1.2:
+  * Add COSMIC category to appstream metainfo
+  * Code cleanup and improvements
+  * Updated dependencies
+- remove update-desktop-files and %suse_update_desktop_file
+- switch over to obs_scm
+- include license files for crate license (as workaround, as tarballs
+  on github don't include submodules)
+
+-------------------------------------------------------------------
 Thu Aug  8 01:01:22 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding
