@@ -251,4 +251,13 @@ I have posted an introducing mail to the factory mailinglist. You can find it at
 - Add service file to download source files based on spec file</comment>
     <requestid>1269730</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>64ba80f918753c35254e6606396d2739</srcmd5>
+    <version>1.38</version>
+    <time>1750683753</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.38
+  * Compatibility with Linux 6.16</comment>
+    <requestid>1287557</requestid>
+  </revision>
 </revisionlist>
