@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyterlab-templates
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,12 @@ Summary:        Templates for notebooks in JupyterLab
 License:        Apache-2.0
 URL:            https://github.com/finos/jupyterlab_templates
 Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_templates/jupyterlab_templates-%{version}.tar.gz
+# package-lock.json file generated with command:
+# npm install --package-lock-only --legacy-peer-deps --ignore-scripts
+Source1:        package-lock.json
+# node_modules generated using "osc service mr" with the https://github.com/openSUSE/obs-service-node_modules
+Source2:        node_modules.spec.inc
+%include        %{_sourcedir}/node_modules.spec.inc
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatch-jupyter-builder}
 BuildRequires:  %{python_module hatchling}
@@ -36,6 +42,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  jupyter-notebook-filesystem
+BuildRequires:  local-npm-registry
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-jupyterlab-templates = %{version}
 Requires:       python-jupyterlab >= 4.0
@@ -63,8 +70,17 @@ Support for jupyter notebook templates in jupyterlab.
 
 %prep
 %autosetup -p1 -n jupyterlab_templates-%{version}
+rm js/yarn.lock
+rm jupyterlab_templates/labextension/static/*.js
+
+pushd js
+local-npm-registry %{_sourcedir} install --include=dev --include=peer
+popd
 
 %build
+pushd js
+npm run build
+popd
 %pyproject_wheel
 
 %install

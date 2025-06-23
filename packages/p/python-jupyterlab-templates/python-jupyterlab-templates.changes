@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 19 08:40:43 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build javascript from sources with local-npm-registry
+  (CVE-2025-5889, bsc#1244347)
+
+-------------------------------------------------------------------
 Thu May  9 06:22:23 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Build from source not whl from pypi.

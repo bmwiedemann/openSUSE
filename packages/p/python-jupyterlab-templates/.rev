@@ -138,4 +138,13 @@
     ServerConnection.makeRequest by @timkpaine @minrk in #253</comment>
     <requestid>1172850</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>08eb445ef9bb9c46feaf28ec641ff506</srcmd5>
+    <version>0.5.2</version>
+    <time>1750683376</time>
+    <user>anag_factory</user>
+    <comment>- Build javascript from sources with local-npm-registry
+  (CVE-2025-5889, bsc#1244347)</comment>
+    <requestid>1286870</requestid>
+  </revision>
 </revisionlist>
