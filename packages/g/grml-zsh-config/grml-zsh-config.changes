@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 23 07:05:54 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.21:
+  * increase scrollback for screen and tmux to 10.000 lines 
+
+-------------------------------------------------------------------
 Fri Jun 20 08:22:42 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.20:

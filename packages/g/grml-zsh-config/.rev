@@ -190,4 +190,13 @@
   * Move grml-tips completion to grml-tips package</comment>
     <requestid>1287154</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>009668fd85611fa0c7bb3fdaad23fa4d</srcmd5>
+    <version>0.19.21</version>
+    <time>1750683957</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.21:
+  * increase scrollback for screen and tmux to 10.000 lines</comment>
+    <requestid>1287854</requestid>
+  </revision>
 </revisionlist>
