@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 17 09:37:37 UTC 2025 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 25.2.10
+  - Removed the old documentation pages. The new one is live at https://flatbuffers.dev
+  - Swift version 6.0 support (#8414)
+- Changes from 25.1.24
+  - Mostly related to bazel build support.
+  - Min bazel supported is now 7 or higher, as WORKSPACE files are removed (#8509)
+  - Minor C++ codegen fix removing extra semicolon (#8488)
+- Changes from 27.1.21
+  - Rust Full Reflection (#8102)
+  - Mostly documentation updates hosted at https://flatbuffers.dev
+- Changes from 24.3.25
+  - Fixed license metadata parsing (#8253)
+  - [C++] Allow string_view in `LookUpByKey` in addition to null-terminated c-style strings (#8203)
+- Changes from 24.3.7
+  - Just to fix some of the CI build issues from the 24.3.6 release.
+- Changes from 24.3.6
+  - Fix typescript object API to allow 0 values for null-default scalars (#7864)
+
+-------------------------------------------------------------------
 Wed Oct 11 10:30:43 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 23.5.26
@@ -270,7 +291,7 @@ Wed Jun 21 16:26:30 UTC 2017 - sebix+novell.com@sebix.at
  * Many other fixes and improvements, 116 commits since 1.6.0
 
 -----------------------------------------------------------------
-Sat Jun 17 :02:48 UTC 2017 - sebix+novell.com@sebix.at
+Sat Jun 17 15:02:48 UTC 2017 - sebix+novell.com@sebix.at
 
 - update to 1.6.0
 - upstrm changelog for 1.6.0:

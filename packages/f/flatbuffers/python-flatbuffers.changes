@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 17 12:44:12 UTC 2025 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 25.2.10
+- Fix invalid ../LICENSE file reference in build
+
+-------------------------------------------------------------------
 Sat Jan  6 11:39:48 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

@@ -1,7 +1,7 @@
 #
 # spec file for package flatbuffers
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define   sonum 23_5_26
+%define   sonum 25_2_10
 Name:           flatbuffers
-Version:        23.5.26
+Version:        25.2.10
 Release:        0
 Summary:        Memory Efficient Serialization Library
 License:        Apache-2.0
@@ -64,7 +64,6 @@ and tools.
 %autosetup -p1
 
 %build
-chmod -x docs/source/*.md docs/footer.html docs/source/doxyfile
 %cmake -DCMAKE_BUILD_TYPE=Release \
        -DFLATBUFFERS_BUILD_SHAREDLIB=ON \
        -DFLATBUFFERS_BUILD_FLATLIB=OFF \
