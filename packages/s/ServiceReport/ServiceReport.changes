@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 20 11:07:00 UTC 2025 - msuchanek@suse.de
+
+- Update to version 2.2.4+git7.8ca0fe4:
+  * [utils] update logic to parse /etc/os-release (bsc#1244547 ltc#213710)
+  * Added hardening to systemd service
+
+-------------------------------------------------------------------
+Fri Apr 18 15:47:35 UTC 2025 - msuchanek@suse.de
+
+- Update to version 2.2.4+git5.e48c02c:
+  * Added hardening to systemd service
+- Drop upstreamed patch harden_servicereport.service.patch
+
+-------------------------------------------------------------------
 Wed Oct 23 15:41:36 UTC 2024 - msuchanek@suse.de
 
 - Update to version 2.2.4+git2.f1e4503:

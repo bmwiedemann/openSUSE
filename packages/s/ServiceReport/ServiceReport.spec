@@ -1,7 +1,7 @@
 #
 # spec file for package ServiceReport
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,13 @@
 # By default python 3 is used to build the package.
 %define python python3
 Name:           ServiceReport
-Version:        2.2.4+git2.f1e4503
+Version:        2.2.4+git7.8ca0fe4
 Release:        0
 Summary:        A tool to validate and repair First Failure Data Capture (FFDC) configuration
 License:        GPL-2.0-only
 Group:          System/Management
 URL:            https://github.com/linux-ras/ServiceReport
 Source:         %{name}-%{version}.tar.xz
-Patch0:         harden_servicereport.service.patch
 BuildRequires:  %{python}
 BuildRequires:  %{python}-setuptools
 BuildRequires:  python-rpm-macros
