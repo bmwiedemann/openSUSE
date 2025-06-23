@@ -98,4 +98,19 @@
     <comment>- Update to release 1.9.0</comment>
     <requestid>1270642</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ca77eb2927edb09c77f72ff7c373b21a</srcmd5>
+    <version>1.10.1</version>
+    <time>1750683978</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.10.1:
+  * Revert &quot;Tighten up :path validation&quot;
+- update to 1.10.0:
+  * Add tests for reading a control stream
+  * fuzz: Fuzz http3 with 1 byte input
+  * tests: Reset buffer before each test as part of
+    initialization
+  * Tighten up :path validation</comment>
+    <requestid>1287802</requestid>
+  </revision>
 </revisionlist>

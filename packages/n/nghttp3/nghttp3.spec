@@ -19,7 +19,7 @@
 %global soname  libnghttp3
 %global sover   9
 Name:           nghttp3
-Version:        1.9.0
+Version:        1.10.1
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 3 in C
 License:        MIT

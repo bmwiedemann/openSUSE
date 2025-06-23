@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 23 05:42:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.1:
+  * Revert "Tighten up :path validation"
+- update to 1.10.0:
+  * Add tests for reading a control stream
+  * fuzz: Fuzz http3 with 1 byte input
+  * tests: Reset buffer before each test as part of
+    initialization
+  * Tighten up :path validation
+
+-------------------------------------------------------------------
 Thu Apr 17 20:46:24 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.9.0
