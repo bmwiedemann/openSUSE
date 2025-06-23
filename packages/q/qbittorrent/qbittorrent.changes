@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jun 23 07:56:46 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.1.1
+  Bug fixes:
+  * Don't interpret wildcard pattern as filepath globbing
+  * Fix appearance of search history length spinbox
+  * Remove dubious seeding time max value
+  * Fix ratio handling
+  * Fix compilation with Qt 6.6.0
+  * Fix preview not opening on Wayland
+  * Add fallback for random number generator
+  Web UI:
+  * Make General tab text selectable by default
+  * Add versioning to local preferences
+  * Make multi-rename search & replace fields use a monospace
+    font
+  * Fix wrong replacement sequence in IPv6 string
+  * Fix memory leak
+  * Fix path autofill in set location and new category
+  RSS:
+  * Mark matched article as "read" if it refers to a duplicate
+    torrent
+
+-------------------------------------------------------------------
 Fri May 23 16:43:05 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add qbittorrent-Qt610.patch to fix build with Qt 6.10
