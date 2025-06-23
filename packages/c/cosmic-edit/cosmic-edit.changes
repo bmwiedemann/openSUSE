@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr 24 17:27:59 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * Add patched polling for redox, update dependencies
+  * feat: responsive menu
+  * i18n(hu): update translation
+  * i18n - Update protuguese translations (#331)
+  * Update Swedish translation (#332)
+  * (i18n) [IT] - Minor fixes (#329)
+  * Merge pull request #330 from matei9k/master
+  * empty commit to force rebuild
+  * Update cosmic-files
+  * Update dependencies
+  * i18n (pt-BR) Update translations
+  * Patch: Use updated onig crate
+  * i18n(zh-CN): update zh-CN translation
+  * fix(libcosmic): theme subscription
+  * i18n(de): add German translation
+
+-------------------------------------------------------------------
 Sat Feb 22 02:49:33 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha6+0:
