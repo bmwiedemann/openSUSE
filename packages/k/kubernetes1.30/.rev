@@ -130,4 +130,12 @@ https://github.com/kubernetes/kubernetes/issues/130786</comment>
 * Ref: https://github.com/golang/net/commit/e1fcd82abba34df74614020343be8eb1fe85f0d9</comment>
     <requestid>1284469</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ad78145b706bab6fb577db277e0937ef</srcmd5>
+    <version>1.30.14</version>
+    <time>1750683744</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – June, 2025: Update to version 1.30.14</comment>
+    <requestid>1287522</requestid>
+  </revision>
 </revisionlist>

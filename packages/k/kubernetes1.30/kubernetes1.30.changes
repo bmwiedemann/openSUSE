@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jun 21 06:45:14 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.30.14:
+  * Bump images, dependencies and versions to go 1.23.10 and distroless iptables
+  * kubelet: Wrap user namespace manager errors
+  * kubelet: Add logs for userns custom mappings parsing
+  * userns: Wrap more errors
+  * userns: Improve error returned if userns is not supported
+  * userns: Use len to handle empty non-nil slices
+  * pkg/kubelet/userns: Wrap error to get mappings
+  * pkg/kubelet/userns: Provide stub implementation for windows
+  * pkg/kubelet: Fix userns tests on Windows
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires: go >= 1.23.10`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.30.14/build/dependencies.yaml#L117-L139
+
+-------------------------------------------------------------------
 Tue Jun 10 12:44:24 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - add patch file: cve-2025-22872-x-net-html-properly-handle-trailing-solidus.patch
@@ -10,7 +28,6 @@ Mon May 19 06:05:16 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.30.13:
   * Bump images, dependencies and versions
-
 
 - Update .spec file to bump go version build requirements:
   * `BuildRequires: go >= 1.23.8`
