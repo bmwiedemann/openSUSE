@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon May 19 20:43:32 UTC 2025 - suse.snooper541@passmail.net
+
+- Initial version 1+git20250407.5030491:
+  * add support for onexplayer g1 255h
+  * bump timeout waiting for gamescope to improve session reliability
+  * remove the sdl/legacy workaround
+  * Add support for XG mobile devices
+  * drop use of removed `--bypass-steam-resolution` gamescope option
+  * add OneXPlayer X1 intel support

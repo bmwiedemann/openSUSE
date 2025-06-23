@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>24a20874900f0abb4c1c57e4f82b784b</srcmd5>
+    <version>1+git20250407.5030491</version>
+    <time>1750683431</time>
+    <user>anag_factory</user>
+    <comment>Initial version of gamescope-session-plus. This is a gamescope-based user session. This sub-package only installs the common assets used by real sessions such as gamescope-session-steam or OpenGamepadUI.</comment>
+    <requestid>1287222</requestid>
+  </revision>
+</revisionlist>
