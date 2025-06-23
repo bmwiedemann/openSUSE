@@ -1141,4 +1141,23 @@
 - Update to 0.21.2:</comment>
     <requestid>1281734</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>ebd9f45aa42269d7a4d41aeae2464e3c</srcmd5>
+    <version>0.21.5</version>
+    <time>1750683947</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.21.5:
+  Bug Fixes:
+  * Use OpenBSD 7.7 that has MSRV, instead of 7.6
+  * Excessive open file descriptors
+  * Typo
+  * Impl desirable behaviour for unreadables
+  * Unreadables format style
+  * Clippy warnings
+  * Missing word in comment
+  Styling:
+  * Fix various clippy warnings for rust 1.86
+  * Remove unnecessary semicolon</comment>
+    <requestid>1287852</requestid>
+  </revision>
 </revisionlist>
