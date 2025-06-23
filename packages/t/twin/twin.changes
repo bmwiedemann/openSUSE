@@ -1,4 +1,150 @@
 -------------------------------------------------------------------
+Fri Jun 20 08:02:23 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to version 0.9.0+161 (fixes build with gcc15):
+  * remove redundant macro XDRAW_ANY()
+  * remove unused code from scripts/gensources.sh
+  * update scripts/gensources.sh
+  * continue replacing m4-based source generation with scheme-based one
+  * format include/socklist_m4.h
+  * continue replacing m4-based source generation with scheme-based one
+  * continue replacing m4-based source generation with scheme-based one
+  * format server/socket2_m4.h
+  * cleanup server/obj/magic.h and server/socket2_m4.h
+  * fix compiler warnings "local variable shadows previous local"
+  * replace type punning with memcpy()
+  * continue replacing m4-based source generation with scheme-based one
+  * continue replacing m4-based source generation with scheme-based one
+  * remove unused files libs/libtw/libtw3_m4.h libs/libtw/m4/libtw3.m4h
+  * minor changes to include/scheme/Tw/*.scm
+  * slightly cleanup include/scheme/Tw/libtw2.scm
+  * continue replacing m4-based source generation with scheme-based one
+  * fix "bad system call" fatal errors on Android termux
+  * continue replacing m4-based source generation with scheme-based one
+  * continue replacing m4-based source generation with scheme-based one
+  * remove no longer used files   include/Tw/m4/common.m4h   include/Tw/m4/common1.m4h   include/m4/Tw_common.m4
+  * remove no longer used files include/Tw/m4/alias.m4h include/Tw/m4/alias1.m4h
+  * rename include/Tw/alias1_m4.h -> include/Tw/alias1.h rename include/Tw/alias_m4.h -> include/Tw/alias.h and no longer autogenerate them
+  * regenerate configure and Makefiles with automake 1.17 replace macro TW_CONST with plain 'const' start replacing m4-based source generation with scheme-based one
+  * regenerate server/rcparse_tab.{hpp,cpp} with bison 3.8.2
+  * remove legacy typedefs hwcol, hwfont and hwattr from include/Tw/datatypes.h
+  * declare versionsort() with full prototype in clients/findtwin.c regenerate ./configure
+  * improve write_ctrl() to also accept ':' as parameters separator after ESC [
+  * continue replacing old C macros Act() and Do() with C++ method syntax fix some uninitialized variables
+  * add minimal support for tty escape sequences ESC[38;5;<COL8BIT>m and ESC[48;5;<COL8BIT>m Only <COL8BIT> values 0...15 are implemented, as higher values require an 8-bit color palette while twin is currently limited to a 4-bit color palette.
+  * implement escape sequences ESC[90m ... ESC[97m to set bright foreground colors, and escape sequences ESC[100m ... ESC[107m to set bright background colors.
+  * ignore unimplemented escape sequences to set 8-bit color or 24-bit color foreground or background:   ESC[38;2;<COL8BIT>m   ESC[38;5;<R>;<G>;<B>m   ESC[48;2;<COL8BIT>m   ESC[48;5;<R>;<G>;<B>m
+  * update current version number in README.md
+  * fix typo in README.md
+  * update README.md
+  * update README.md
+  * add a screenshot to README.md and to docs/
+  * server/tty.cpp: implement escape sequence ESC\ it ends the "set new window title" xterm escape sequence ESC]0; which can also be ended by the unofficial BEL i.e. ASCII 7
+  * link libtstl.so against libdl.so, because it calls dlerror() should fix #82
+  * server: fix typo 'screen' -> 'Screen' in rcparse.l
+  * fix a typo in include/m4/Tw_common.m4
+  * server: regenerate rcparse_lex.cpp
+  * copy libs/libtw/md5.c to server/md5.cpp
+  * server/obj: refactor some more Sgadget methods
+  * libs/libtutf: add TW_CONST to exported global arrays
+  * server/obj: refactor some more methods
+  * server/obj: further trim old C-style method pointers
+  * server/obj: refactor some more Sscreen methods
+  * server/obj: refactor some more methods
+  * server/obj: refactor some more Swindow methods
+  * server: remove no longer used function printk()
+  * server/obj: refactor some more Srow methods
+  * server: replace byte -> bool in more places
+  * include/stl: slightly optimize String::format()
+  * server/obj: refactor some more Swidget methods
+  * server/obj: refactor some more methods
+  * server/obj: refactor some more methods
+  * libs/libtstl: improve error messaged for dlopen() and dlsym()
+  * server/obj: rewrite more methods as C++ virtual methods
+  * stl: rename typedef errnum -> e_errnum
+  * server:     refactor methods in draw.cpp server/obj: refactor some more methods
+  * server/obj: refactor method FindGadgetByCode() in Swidget
+  * server/obj: refactor method FindWidgetAt() in Swidget
+  * server/obj: refactor methods InstallHook() and RemoveHook() in Swidget
+  * server/obj: rewrite more methods as C++ virtual methods
+  * server/obj: rewrite methods Remove() and Delete() as C++ virtual methods in Sobj and subclasses server/menuitem: retrofit Smenuitem to extend class Srow
+  * server/obj: start using C++ virtual methods in Sobj and subclasses
+  * server: cleanup obj/msg.h server: use Chars instead of char[] to pass aroud MIME type
+  * server: retrofit class Sscreen to extend class Swidget instead of declaring its same fields
+  * server: retrofit class Sgadget to extend class Swidget instead of declaring its same fields
+  * server: retrofit class Swindow to extend class Swidget instead of declaring its same fields
+  * server: change some variable names to lowercase
+  * server: rename more class types server/obj: rename files display_hw.{cpp,h} -> display.{cpp,h}
+  * client, server: change some variable names to lowercase
+  * server: rename more class types
+  * server: rename more class types
+  * server: rename more class types
+  * server: rename type group -> Tgroup
+  * server: rename type window -> Twindow
+  * server: rename more class types
+  * server: rename more class types
+  * server: rename type widget -> Twidget
+  * server: change some parameter names to lowercase
+  * server: #define and use macro N_OF() server: replace byte -> bool in more places
+  * libtstl, server: add NOTHROW to more functions and methods
+  * libtstl: start adding NOTHROW to non-throwing functions and methods
+  * server: fix 'to_chars_result' forward declaration in log.h
+  * server: refactor and simplify log.{cpp,h} to use a sequence of operator<< as std::ostream does, instead of variadic function log(log_level, ...)
+  * fix a terminal emulation glitch on MacOSX
+  * further improve tty initialization
+  * improve tty initialization, especially on MacOSX
+  * fix issue #80: twins server crashes attaching both --hw=X11 and --hw=xft at the same time Disambiguate function names and type names defined by the two hw drivers:   server/hw/hw_X11.cpp now prefixes all function names and type names with "x11_"   server/hw/hw_xft.cpp now prefixes all function names and type names with "xft_"
+  * fix compile error in server/hw/hw_x/util.h
+  * temporary workaround for issue #80: attaching both --hw=X11 and --hw=xft at the same time crashes twin_server, so reject such attempts and send a message telling "known bug [...] please use twdisplay instead of twattach"
+  * fix issue #79: when executing 'twattach --hw={X,X11,xft}' without an explicit option @<XDISPLAY> use as default X11 display the value of twattach's environment variable $DISPLAY (if set), instead of twin server's environment variable $DISPLAY, because the latter choice is not intuitive
+  * clients/attach.c: replace int -> unsigned when printing mismatched libtw version numbers
+  * clients/attach.c: refactor and simplify function main(), move some code to separate function fix_tty()
+  * server/hw/hw_twin.cpp: if ,help option is specified after --hw=twin then list supported options and fail
+  * hw/hw_tty_linux/kbd_raw.h: improve error messages formatting
+  * server/hw/hw_tty_linux/kbd_raw*.h: check for errors while configuring Linux console raw keyboard mode
+  * server/hw/hw_x/common.cpp: if ,help or an unknown option is specified after --hw=X then list supported options and fail
+  * server/hw_multi.cpp: comment out a debugging log in TwinSelectionNotify()
+  * regenerate ./configure script
+  * Move configuration files to XDG-compliant paths:
+  * server: rename global variable pkg_libdir -> plugindir server/display.cpp: slightly cleanup initialization
+  * server/hw/hw_tty.cpp: fix again options parsing for -hw=tty server/builtin.cpp, server/pty.cpp: restore all signals to SIG_DFL before exec() of child process
+  * server/hw/hw_tty.cpp: if ,help or an unknown option is specified after -hw=tty then list supported options and fail
+  * server/hw/hw_tty.cpp: fix options parsing for -hw=tty
+  * server/builtin.cpp: fix File|Execute to start new processes with fds 0, 1 and 2 connected to /dev/null (previous commit caused them to start with closed fds 0, 1 and 2)
+  * clients/twterm and clients/twsysmon: detach from controlling tty, close file descriptors 0,1,2 and ignore SIGHUP Partially fixes issue #78
+  * server/dl.cpp: fix compile error "could not convert [...] from 'const char*' to 'Chars'" when using old compilers (g++ < 5)
+  * server: continue replacing printk() with typesafe log()
+  * server/util.cpp: fix compile error on some non-x86 archs
+  * server: remove all remaining C++11 features, compile with -std=c++98
+  * server: start removing C++11 features
+  * server: continue replacing printk() with typesafe log()
+  * stl: replace keyword constexpr -> macro CONSTEXPR, which gets (hopefully) defined only on compilers that support it
+  * stl/chars.h: replace "using Base::Base" with list of constructors. Hopefully fixes issue #77 Compile error using (intentionally old) g++ 4.9.2
+  * server: remove special cases in msg serialization to be sent to clients Hopefully fixes issue #75: libtw clients receive malformed keypress events and ignore them
+  * test/test_stl_fmt.cpp: fix compile error on 32 bit systems
+  * server/hw/hw_tty.cpp: add missing #include
+  * delete unused file include/twautoconf.h
+  * server/display.cpp: update --help output to also describe command line option --plugindir=DIR
+  * serve: use C++ class String in more places
+  * libs/libstl: add functions to_chars(), class Fmt<T> and method String::format() to safely convert arbitrary types to string server: add safe function log(), start using it to replace unsafe printk()
+  * server/util.cpp: replace char* -> String in some global variables
+  * server/socket.cpp: for increased security, sent TwinAuth authorization challenge also to libtw clients connected via the unix domain socket /tmp/.Twin:*
+  * server: use enum 'e_id' in more places server: start replacing byte -> bool where appropriate server/id.cpp: refactor using C++ classes
+  * server/obj/obj.cpp: fix out-of-bounds memory access in s_obj::Create() - this method is actually never called
+  * server: simplify an modernize C++ enum definitions server/hw/hw_x/keyboard.h: reduce memory needed by X11 keys table
+  * configure.ac: replace C++ compiler flag -std=c++98 -> -std=c++11 i.e. require C++11 compliance from compiler and C++ standard library: it's 2022, and basically all maintained C++ compilers support C++11.
+  * remove C++ compiler flags '-fno-rtti' and '-fno-exceptions'. Reasons:
+  * fix more compiler warnings reported by clang++-15
+  * fix some compiler warnings reported by clang++-15
+  * server/hw/hw_tty: improve mouse support on xterm-like terminals * add support for mouse scroll wheel * use enhanced xterm mouse protocol ESC [?1002h ESC [?1006h to support mouse positions > 223 (both in x and y) fixes #72
+  * server/hw/hw_x: fix numeric keypad to emit numbers on X11 and xft drivers when NumLock is active fixes #71
+  * fix Termux support: `twin --hw=tty` now works, and hopefully also other display drivers work too
+  * server: merge plugin libwm.so back into twin_server executable, since it's always needed server: fix some errors on Termux (unfinished)
+  * delete discontinued library libTT and demo clients using it. update configure.ac and replace obsolete macros / obsolete checks
+  * twin_server: add command line option --plugindir=DIRECTORY to override location of *.so plugins twin_server: fix gadget destructor to correctly remove a gadget from its group
+  * fix include/Tw/Tw++.h
+
+-------------------------------------------------------------------
 Mon Aug 22 16:06:09 UTC 2022 - malcolmlewis@opensuse.org
 
 - Updated to version 0.9.0+17.

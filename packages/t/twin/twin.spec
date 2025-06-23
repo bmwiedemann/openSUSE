@@ -1,7 +1,7 @@
 #
 # spec file for package twin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012-2022 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           twin
-Version:        0.9.0+17
+Version:        0.9.0+161
 Release:        0
 Summary:        Textmode WINdow environment
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -42,7 +42,7 @@ plain text terminal, to a Linux console, to a full kde, gnome or X11
 desktop.
 
 %package -n libtstl1
-Version:        0.9.0+17
+Version:        0.9.0+161
 Release:        0
 Summary:        Server library for twin
 
@@ -50,7 +50,7 @@ Summary:        Server library for twin
 Server library for twin
 
 %package -n libtutf1
-Version:        0.9.0+17
+Version:        0.9.0+161
 Release:        0
 Summary:        Unicode/Charset conversion library for twin
 Provides:       libTutf1 = %{version}-%{release}
@@ -60,7 +60,7 @@ Obsoletes:      libTutf1 = 1.0.0
 Unicode <-> charset conversion routines for twin.
 
 %package -n libtutf-devel
-Version:        0.9.0+17
+Version:        0.9.0+161
 Release:        0
 Summary:        Unicode/Charset conversion library for twin
 Requires:       libtutf1 = %{version}
@@ -71,7 +71,7 @@ Obsoletes:      libTutf-devel = 1.0.0
 Unicode <-> charset conversion routines for twin.
 
 %package -n libtw1
-Version:        0.9.0+17
+Version:        0.9.0+161
 Release:        0
 Summary:        Main library for twin
 Provides:       libTw5 = %{version}-%{release}
@@ -81,7 +81,7 @@ Obsoletes:      libTw5 = 5.0.0
 Main library for twin
 
 %package -n libtw-devel
-Version:        0.9.0+17
+Version:        0.9.0+161
 Release:        0
 Summary:        Main library for twin
 Requires:       libtstl1 = %{version}
@@ -137,6 +137,7 @@ popd
 %{_libdir}/twin
 %{_datadir}/twin
 %{_mandir}/man1/twin.1%{?ext_man}
+%{_sysconfdir}/twin
 
 %files -n libtstl1
 %{_libdir}/libtstl.so.*
