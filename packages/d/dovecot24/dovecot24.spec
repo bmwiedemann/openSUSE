@@ -66,6 +66,8 @@ Patch0:         dovecot-2.3.0-dont_use_etc_ssl_certs.patch
 Patch1:         dovecot-2.4.0-lua_json.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         dovecot-2.3.17-env_script_interpreter.patch
+# PATCH-FIX-OPENSUSE
+Patch3:         dovecot-fix-gssapi.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex

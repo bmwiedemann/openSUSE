@@ -117,4 +117,14 @@ bugowner: varkoly</comment>
   Do not use libunwind on s390x</comment>
     <requestid>1275437</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>eb5c0c59fdaa8ea8d8492765167e3404</srcmd5>
+    <version>2.4.1</version>
+    <time>1750683728</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1283379 from ntami
+
+- dovecot-fix-gssapi.patch applied to fix gssapi</comment>
+    <requestid>1287488</requestid>
+  </revision>
 </revisionlist>

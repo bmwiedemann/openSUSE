@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 23 11:48:20 UTC 2025 - Paul Zirnik <paul.zirnik@suse.com>
+
+- dovecot-fix-gssapi.patch applied to fix gssapi
+
+-------------------------------------------------------------------
 Thu May  8 05:25:21 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Dovecot: /etc/dovecot/conf.d/ doesn't exist after installing dovecot
