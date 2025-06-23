@@ -13636,11 +13636,15 @@ unsorted:
   - libgphoto2-devel-doc 
   - libgphoto2-doc 
   - libgphoto2_port12-32bit 
+  - libgpiod 
   - libgpiod-devel 
+  - libgpiod-glib1 
+  - libgpiod-manager 
   - libgpiod-utils 
-  - libgpiod2 
-  - libgpiodcxx1 
-  - libgpiomockup0 
+  - libgpiod3 
+  - libgpiodbus1 
+  - libgpiodcxx2 
+  - libgpiosim1 
   - libgplugin-gtk4-0 
   - libgplugin0 
   - libgpm2-32bit 
