@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Apr 24 18:25:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * i18n - update portuguese translations
+  * i18n - update portuguese translations
+  * Patch polling for redox and update dependencies
+  * chore: update libcosmic
+  * feat: responsive menu bar
+  * Initialize the logger at the start of main. "Any log events that occur before initialization will be ignored." https://docs.rs/env_logger/latest/env_logger/struct.Builder.html#method.init
+  * simplify argument parsing
+  * i18n(ro): Add Romanian translation
+  * empty commit to force rebuild
+  * Update dependencies
+  * i18n (pt-BR) Update translations
+  * chore: update libcosmic
+  * Clear selection on Ctrl+C, part of #236
+  * update libcosmic
+  * Update cosmic_term.ftl (jp)
+  * ja: translate working-directory and remain-open, but not hold
+  * fix(libcosmic): theme subscription
+  * Update Hungarian translations
+
+-------------------------------------------------------------------
 Sat Feb 22 03:51:01 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha6+0:
