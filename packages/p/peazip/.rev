@@ -1279,4 +1279,15 @@
 </comment>
     <requestid>1269436</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>8a72e8e01febb46fbdeaf9e521ccda27</srcmd5>
+    <version>10.5.0</version>
+    <time>1750683683</time>
+    <user>anag_factory</user>
+    <comment>- Update to 10.5.0:
+  * https://peazip.github.io/changelog.html 
+
+</comment>
+    <requestid>1287452</requestid>
+  </revision>
 </revisionlist>
