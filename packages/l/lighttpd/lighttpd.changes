@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 18 18:33:42 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.79:
+  * bug fix for mod_openssl using both ECDSA and RSA certs
+  * hardened systemd lighttpd.service
+- drop harden_lighttpd.service.patch
+
+-------------------------------------------------------------------
 Wed Mar 26 07:37:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.78:
@@ -1237,8 +1245,8 @@ Mon Oct 31 13:40:23 UTC 2016 - jenkins@lighttpd.net
   + [autotools] fix configure.ac for opensuse 13.2
   + [build] fix warning for (potentially) unused func
 
-Mon Oct 31 12:35:41 UTC 2016 - stbuehler@web.de
 -------------------------------------------------------------------
+Mon Oct 31 12:35:41 UTC 2016 - stbuehler@web.de
 
 - package new modules
 - remove mod_geoip_for_1.4.40.patch

@@ -27,7 +27,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lighttpd
-Version:        1.4.78
+Version:        1.4.79
 Release:        0
 Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server
 License:        BSD-3-Clause
@@ -38,7 +38,6 @@ Source1:        https://download.lighttpd.net/lighttpd/releases-1.4.x/%{name}-%{
 Source2:        %{name}.sysconfig
 Source3:        %{name}.keyring
 Source7:        lighttpd.logrotate
-Patch0:         harden_lighttpd.service.patch
 BuildRequires:  autoconf
 BuildRequires:  iputils
 BuildRequires:  libtool
@@ -295,6 +294,7 @@ chmod -v -x doc/scripts/*.sh
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/auth.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/cgi.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/debug.conf
+%config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/deflate.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/dirlisting.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/evhost.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/expire.conf
@@ -306,9 +306,9 @@ chmod -v -x doc/scripts/*.sh
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/simple_vhost.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/ssi.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/status.conf
+%config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/tls.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/userdir.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/vhosts.d/vhosts.template
-%config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/deflate.conf
 
 # modules
 %license COPYING
