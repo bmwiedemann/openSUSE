@@ -103,4 +103,12 @@
     <comment>make onboard compile and fix crash on hover ( https://bugs.launchpad.net/ubuntu/+source/onboard/+bug/2063041 ) (forwarded request 1274790 from BZZZZ3)</comment>
     <requestid>1274960</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>203a8908751102da7e717d89d7b67190</srcmd5>
+    <version>1.4.1</version>
+    <time>1750683414</time>
+    <user>anag_factory</user>
+    <comment>- Use pyproject macros from python-rpm-macros to build and install. (forwarded request 1287030 from StevenK)</comment>
+    <requestid>1287135</requestid>
+  </revision>
 </revisionlist>

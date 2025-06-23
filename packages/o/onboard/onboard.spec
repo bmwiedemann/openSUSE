@@ -1,7 +1,7 @@
 #
 # spec file for package onboard
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %define series 1.4
+%define pythons python3
 Name:           onboard
 Version:        1.4.1
 Release:        0
@@ -39,8 +40,11 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  librsvg-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  python3-distutils-extra
+BuildRequires:  python3-pip
+BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dconf)
@@ -104,15 +108,12 @@ This GNOME Shell extension integrates the onboard keyboard with the GNOME Shell.
 %patch -P 3 -p1
 
 %build
-python3 setup.py build
+%pyproject_wheel
 
 %install
+%pyproject_install
 install -dm 0755 %{buildroot}%{_datadir}/locale
 cp -a build/mo/* %{buildroot}%{_datadir}/locale/
-
-python3 ./setup.py install -O1 --skip-build \
-    --prefix="%{_prefix}" \
-    --root=%{buildroot}
 
 install -Dm 0644 %{SOURCE1} %{buildroot}%{_datadir}/%{name}/
 rm -rf %{buildroot}%{_datadir}/%{name}/{docs,AUTHORS,CHANGELOG,COPYING*,HACKING,NEWS,README}
@@ -123,6 +124,8 @@ rm -rf %{buildroot}%{_datadir}/icons/ubuntu-mono-*
 # Currently, onboard-autostart.desktop installation only works on openSUSE:Factory.
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
 cp -a build/share/autostart/onboard-autostart.desktop %{buildroot}%{_sysconfdir}/xdg/autostart
+%else
+mv %{buildroot}%{python3_sitearch}%{_sysconfdir} %{buildroot}
 %endif
 
 rm -fr %{buildroot}%{_datadir}/icons/hicolor/28x28/apps/onboard.png
@@ -178,7 +181,7 @@ sed -i "1,4{/#!\/usr\/bin/d}" \
 %{_datadir}/dbus-1/services/org.%{name}.Onboard.service
 %{_datadir}/glib-2.0/schemas/org.%{name}.gschema.xml
 %{python3_sitearch}/Onboard/
-%{python3_sitearch}/%{name}-%{version}-py%{py3_ver}.egg-info
+%{python3_sitearch}/%{name}-%{version}.dist-info
 %{_datadir}/onboard/onboard-default-settings.gschema.override.example
 %{_datadir}/icons/hicolor/*/apps/onboard.png
 %{_mandir}/man1/onboard.1%{?ext_man}
