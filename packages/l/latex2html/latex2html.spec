@@ -85,6 +85,7 @@ install -m 644 latex2html.1 %{buildroot}/%{_mandir}/man1
 rm -r %{buildroot}%{share_dir}/{docs,example,dot.latex2html-init}
 chmod 755 %{buildroot}%{_datadir}/%{name}/{cweb2html/makemake.pl,cweb2html/cweb2html,makemap,makeseg/makeseg}
 %fdupes -s %{buildroot}
+touch tests # for identical mtime with/without --nocheck
 
 %check
 %make_build test

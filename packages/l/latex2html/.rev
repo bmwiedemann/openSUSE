@@ -518,4 +518,12 @@ for reproducible packages even with --nocheck (forwarded request 1150775 from bm
     <comment>Update to version 2025 (forwarded request 1238185 from simonlm)</comment>
     <requestid>1238198</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>55cd0f07ac52f44b449069a8a49c73aa</srcmd5>
+    <version>2025</version>
+    <time>1750683320</time>
+    <user>anag_factory</user>
+    <comment>Get fully determistic builds, even with --nocheck (boo#1227364) (forwarded request 1287226 from bmwiedemann)</comment>
+    <requestid>1287256</requestid>
+  </revision>
 </revisionlist>
