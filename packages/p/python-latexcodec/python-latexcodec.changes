@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 12 05:26:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.0.0:
+  * Drop Python 3.7 and 3.8 support.
+  * Add Python 3.13 support.
+  * Use new pkg_resources files interface.
+- Drop patch python-latexcodec-no-python2.patch, included upstream.
+- List files and directories explicitly in %files.
+
+-------------------------------------------------------------------
 Thu May 16 15:11:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated
