@@ -489,4 +489,14 @@
   * Stop moving multiline strings to a new line unless inside brackets</comment>
     <requestid>1286633</requestid>
   </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>ae149931b1953c7c52a4bad1b1961b2c</srcmd5>
+    <version>25.1.0</version>
+    <time>1750683341</time>
+    <user>anag_factory</user>
+    <comment>- Instead of skipping the test, apply upstream fix as
+  update-PEP-701.patch (code from gh#psf/black!4690).
+</comment>
+    <requestid>1286790</requestid>
+  </revision>
 </revisionlist>

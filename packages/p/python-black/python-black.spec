@@ -32,6 +32,9 @@ URL:            https://github.com/psf/black
 Source:         https://files.pythonhosted.org/packages/source/b/black/black-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM click-820.patch gh#psf/black#4577, gh#psf/black#4591, gh#psf/black#4666
 Patch0:         click-820.patch
+# PATCH-FIX-UPSTREAM update-PEP-701.patch gh#psf/black#4698 mcepl@suse.com
+# Fix f-string format spec test failure
+Patch1:         update-PEP-701.patch
 BuildRequires:  %{python_module aiohttp >= 3.3.2}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module click >= 8.0.0}
@@ -96,9 +99,7 @@ export PATH=$PATH:~/bin
 # test_expression_diff - sometimes fails on async timing in OBS
 # test_bpo_2142_workaround fails on arm
 skiptests="test_expression_diff or test_bpo_2142_workaround"
-# gh#psf/black#4698
-skiptests+=" or test_simple_format"
-%pytest -k "not ($skiptests)"
+%pytest
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.

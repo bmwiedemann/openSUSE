@@ -5,37 +5,13 @@ Date: Fri, 7 Feb 2025 17:05:43 +0100
 Subject: [PATCH 1/4] mix_stderr parameter was removed from click 8.2.0
 
 ---
- tests/test_black.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/test_black.py |   28 +++++++++++++++++-----------
+ 1 file changed, 17 insertions(+), 11 deletions(-)
 
-diff --git a/tests/test_black.py b/tests/test_black.py
-index 31bc34d4b89..8fa352e3d22 100644
---- a/tests/test_black.py
-+++ b/tests/test_black.py
-@@ -114,7 +114,7 @@ class BlackRunner(CliRunner):
-     """Make sure STDOUT and STDERR are kept separate when testing Black via its CLI."""
- 
-     def __init__(self) -> None:
--        super().__init__(mix_stderr=False)
-+        super().__init__()
- 
- 
- def invokeBlack(
-
-From a65eb895e13263dc700cfbf60db0376e15957c4e Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Mark=C3=A9ta=20Cal=C3=A1bkov=C3=A1?=
- <meggy.calabkova@gmail.com>
-Date: Mon, 10 Feb 2025 11:12:17 +0100
-Subject: [PATCH 2/4] make the call conditional on click version
-
----
- tests/test_black.py | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/tests/test_black.py b/tests/test_black.py
-index 8fa352e3d22..cbb5006d070 100644
---- a/tests/test_black.py
-+++ b/tests/test_black.py
+Index: black-25.1.0/tests/test_black.py
+===================================================================
+--- black-25.1.0.orig/tests/test_black.py	2020-02-02 01:00:00.000000000 +0100
++++ black-25.1.0/tests/test_black.py	2025-06-18 22:23:10.051582946 +0200
 @@ -14,6 +14,7 @@
  from concurrent.futures import ThreadPoolExecutor
  from contextlib import contextmanager, redirect_stderr
@@ -44,90 +20,27 @@ index 8fa352e3d22..cbb5006d070 100644
  from io import BytesIO
  from pathlib import Path, WindowsPath
  from platform import system
-@@ -26,6 +27,7 @@
+@@ -25,6 +26,7 @@
+ import pytest
  from click import unstyle
  from click.testing import CliRunner
- from pathspec import PathSpec
 +from packaging.version import Version
+ from pathspec import PathSpec
  
  import black
- import black.files
-@@ -114,7 +116,10 @@ class BlackRunner(CliRunner):
+@@ -114,7 +116,10 @@
      """Make sure STDOUT and STDERR are kept separate when testing Black via its CLI."""
  
      def __init__(self) -> None:
--        super().__init__()
-+        if Version(imp_version('click')) >= Version('8.2.0'):
+-        super().__init__(mix_stderr=False)
++        if Version(imp_version("click")) >= Version("8.2.0"):
 +            super().__init__()
 +        else:
 +            super().__init__(mix_stderr=False)
  
  
  def invokeBlack(
-
-From bdc188f550709e40b86f97777465e4068c61c261 Mon Sep 17 00:00:00 2001
-From: "pre-commit-ci[bot]"
- <66853113+pre-commit-ci[bot]@users.noreply.github.com>
-Date: Mon, 10 Feb 2025 11:02:28 +0000
-Subject: [PATCH 3/4] [pre-commit.ci] auto fixes from pre-commit.com hooks
-
-for more information, see https://pre-commit.ci
----
- tests/test_black.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/tests/test_black.py b/tests/test_black.py
-index cbb5006d070..9870cec4c26 100644
---- a/tests/test_black.py
-+++ b/tests/test_black.py
-@@ -26,8 +26,8 @@
- import pytest
- from click import unstyle
- from click.testing import CliRunner
--from pathspec import PathSpec
- from packaging.version import Version
-+from pathspec import PathSpec
- 
- import black
- import black.files
-
-From 3dfacb5f34476b8c1ff28b5eb05cb85ff7418a66 Mon Sep 17 00:00:00 2001
-From: MeggyCal <MeggyCal@users.noreply.github.com>
-Date: Mon, 17 Feb 2025 12:01:26 +0100
-Subject: [PATCH 4/4] double quotes
-
----
- tests/test_black.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/tests/test_black.py b/tests/test_black.py
-index 9870cec4c26..4bdbdbba5cf 100644
---- a/tests/test_black.py
-+++ b/tests/test_black.py
-@@ -116,7 +116,7 @@ class BlackRunner(CliRunner):
-     """Make sure STDOUT and STDERR are kept separate when testing Black via its CLI."""
- 
-     def __init__(self) -> None:
--        if Version(imp_version('click')) >= Version('8.2.0'):
-+        if Version(imp_version("click")) >= Version("8.2.0"):
-             super().__init__()
-         else:
-             super().__init__(mix_stderr=False)
-
-From 17101f151b407cb3346b0a472d9e32d7a56d5aca Mon Sep 17 00:00:00 2001
-From: "Michael R. Crusoe" <michael.crusoe@gmail.com>
-Date: Thu, 27 Feb 2025 15:17:21 +0100
-Subject: [PATCH] additional fix for click 8.2.0
-
----
- tests/test_black.py | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
-
-diff --git a/tests/test_black.py b/tests/test_black.py
-index 4bdbdbba5cf..ca19c17678b 100644
---- a/tests/test_black.py
-+++ b/tests/test_black.py
-@@ -192,10 +192,10 @@ def test_piping(self) -> None:
+@@ -187,10 +192,10 @@
              input=BytesIO(source.encode("utf-8")),
          )
          self.assertEqual(result.exit_code, 0)
@@ -142,7 +55,7 @@ index 4bdbdbba5cf..ca19c17678b 100644
  
      def test_piping_diff(self) -> None:
          diff_header = re.compile(
-@@ -215,7 +215,7 @@ def test_piping_diff(self) -> None:
+@@ -210,7 +215,7 @@
              black.main, args, input=BytesIO(source.encode("utf-8"))
          )
          self.assertEqual(result.exit_code, 0)
@@ -151,7 +64,7 @@ index 4bdbdbba5cf..ca19c17678b 100644
          actual = actual.rstrip() + "\n"  # the diff output has a trailing space
          self.assertEqual(expected, actual)
  
-@@ -300,7 +300,7 @@ def test_expression_diff(self) -> None:
+@@ -295,7 +300,7 @@
              self.assertEqual(result.exit_code, 0)
          finally:
              os.unlink(tmp_file)
@@ -160,7 +73,7 @@ index 4bdbdbba5cf..ca19c17678b 100644
          actual = diff_header.sub(DETERMINISTIC_HEADER, actual)
          if expected != actual:
              dump = black.dump_to_file(actual)
-@@ -409,7 +409,7 @@ def test_skip_magic_trailing_comma(self) -> None:
+@@ -404,7 +409,7 @@
              self.assertEqual(result.exit_code, 0)
          finally:
              os.unlink(tmp_file)
@@ -169,7 +82,7 @@ index 4bdbdbba5cf..ca19c17678b 100644
          actual = diff_header.sub(DETERMINISTIC_HEADER, actual)
          actual = actual.rstrip() + "\n"  # the diff output has a trailing space
          if expected != actual:
-@@ -1831,7 +1831,7 @@ def test_bpo_2142_workaround(self) -> None:
+@@ -1826,7 +1831,7 @@
              self.assertEqual(result.exit_code, 0)
          finally:
              os.unlink(tmp_file)
@@ -178,7 +91,7 @@ index 4bdbdbba5cf..ca19c17678b 100644
          actual = diff_header.sub(DETERMINISTIC_HEADER, actual)
          self.assertEqual(actual, expected)
  
-@@ -1841,7 +1841,7 @@ def compare_results(
+@@ -1836,7 +1841,7 @@
      ) -> None:
          """Helper method to test the value and exit code of a click Result."""
          assert (
@@ -187,21 +100,7 @@ index 4bdbdbba5cf..ca19c17678b 100644
          ), "The output did not match the expected value."
          assert result.exit_code == expected_exit_code, "The exit code is incorrect."
  
-
-From 7cf419741ab55028519f43524c3414a759aaa984 Mon Sep 17 00:00:00 2001
-From: Daniel Garcia Moreno <daniel.garcia@suse.com>
-Date: Mon, 12 May 2025 13:49:11 +0200
-Subject: [PATCH] Update test_code_option_safe to work with click 8.2.0
-
----
- tests/test_black.py | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/tests/test_black.py b/tests/test_black.py
-index acafb521619..f5c950244ef 100644
---- a/tests/test_black.py
-+++ b/tests/test_black.py
-@@ -1907,7 +1907,8 @@ def test_code_option_safe(self) -> None:
+@@ -1913,7 +1918,8 @@
              args = ["--safe", "--code", code]
              result = CliRunner().invoke(black.main, args)
  
