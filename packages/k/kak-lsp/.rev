@@ -672,4 +672,30 @@
   * lsp-hover: limit to 20 lines via lsp_hover_max_lines</comment>
     <requestid>1283852</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>56bc92e5dbb2c2690203945b7394ec68</srcmd5>
+    <version>18.2.0</version>
+    <time>1750683822</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 18.2.0:
+  * v18.2.0
+  * Update changelog
+  * Remove misleading debug log in SessionRenamed hook
+  * Make *diagnostics* buffer one-line-per diagnostics
+  * test/gopls-dynamic-settings.sh: fix for recent gopls
+  * clippy
+  * controller: consume entire request before checking for user errors
+  * Add support vuejs
+  * Fix crash on invalid text edit ranges
+  * Send initializationOptions and workspace/didChangeConfiguration as expected by jdtls
+  * cargo update
+  * Fix type inference errors with deranged 0.4.1
+  * Fix symbol name prefix for breadcrumbs
+  * Work around breaking change in deranged crate
+  * Simplify recursive breadcrumbs calculation
+  * Language-specific SymbolKind rendering
+  * lsp-goto-document-symbol: remove symbol kind suffix
+</comment>
+    <requestid>1287665</requestid>
+  </revision>
 </revisionlist>

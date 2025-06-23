@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jun 22 08:35:03 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 18.2.0:
+  * v18.2.0
+  * Update changelog
+  * Remove misleading debug log in SessionRenamed hook
+  * Make *diagnostics* buffer one-line-per diagnostics
+  * test/gopls-dynamic-settings.sh: fix for recent gopls
+  * clippy
+  * controller: consume entire request before checking for user errors
+  * Add support vuejs
+  * Fix crash on invalid text edit ranges
+  * Send initializationOptions and workspace/didChangeConfiguration as expected by jdtls
+  * cargo update
+  * Fix type inference errors with deranged 0.4.1
+  * Fix symbol name prefix for breadcrumbs
+  * Work around breaking change in deranged crate
+  * Simplify recursive breadcrumbs calculation
+  * Language-specific SymbolKind rendering
+  * lsp-goto-document-symbol: remove symbol kind suffix
+  * start new cycle
+
+-------------------------------------------------------------------
 Sat Jun 07 07:23:05 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 18.1.3:
