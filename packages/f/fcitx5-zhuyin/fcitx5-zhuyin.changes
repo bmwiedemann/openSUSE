@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 22 04:02:50 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.4
+  * fix c++20 build and port away from fmt
+  * port to StandardPaths and FdStreamBuf
+
+-------------------------------------------------------------------
 Wed Jan 29 07:35:48 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.3
