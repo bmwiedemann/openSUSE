@@ -1,8 +1,28 @@
 -------------------------------------------------------------------
+Sat Jun 14 13:19:34 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use %global instead of %define in arti.spec
+
+- Update to version 1.4.4:
+  * Arti now requires Rust 1.83
+  * Arti now supports Circuit Handshake Extensions
+  * arti-ureq: We no longer enable the rustls feature by default
+  * Continued development towards supporting Conflux tunnels in
+    Arti
+  * Continued development towards supporting Counter Galois Onion
+    relay cell encryption in Arti
+  * Arti no longer uses MiddleOnly relays for rendezvous points or
+    introduction points
+  * Continued progress on service-side Proof-of-Work (PoW) support
+  * Arti no longer uses the ".z" suffix in directory URLs
+  * tor-rtcompat: We no longer bundle an unused copy of the Lets
+    Encrypt root certificate
+
+-------------------------------------------------------------------
 Tue Jun  3 22:50:55 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Re-run vendoring via obs-service-cargo 
-- Increment rustc memory to 8GB/worker 
+- Re-run vendoring via obs-service-cargo
+- Increment rustc memory to 8GB/worker
 
 -------------------------------------------------------------------
 Tue May  6 11:33:05 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>

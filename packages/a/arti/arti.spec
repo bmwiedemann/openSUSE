@@ -16,9 +16,10 @@
 #
 
 
-%define git_hash 37c0c70ac5cacf49960b4ad91fddcd695708d6c2
+%global git_hash 1a9c0466a35d8b98929fbd2439f11ad3b3f0bb71
+
 Name:           arti
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        An implementation of Tor, in Rust.
 License:        Apache-2.0 OR MIT
@@ -28,6 +29,7 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.83
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 ExclusiveArch:  %{rust_tier1_arches}
