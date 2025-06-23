@@ -59,7 +59,7 @@ services user information.
 %build
 autoreconf -f -i
 %configure --disable-static
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 make install DESTDIR="$RPM_BUILD_ROOT"
