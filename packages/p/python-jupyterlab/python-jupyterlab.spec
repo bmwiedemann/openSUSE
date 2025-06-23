@@ -16,9 +16,9 @@
 #
 
 
-%define distversion 4.3.5
+%define distversion 4.4.3
 Name:           python-jupyterlab
-Version:        4.3.5
+Version:        4.4.3
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
@@ -28,12 +28,11 @@ Source0:        https://files.pythonhosted.org/packages/source/j/jupyterlab/jupy
 Source99:       python-jupyterlab-rpmlintrc
 BuildRequires:  %{python_module Jinja2 >= 3.0.3}
 BuildRequires:  %{python_module async_lru >= 1.0.0}
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch-jupyter-builder}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module httpx >= 0.25.0}
 BuildRequires:  %{python_module importlib-metadata >= 4.8.3 if %python-base < 3.10}
-BuildRequires:  %{python_module importlib-resources >= 1.4 if %python-base < 3.9}
 BuildRequires:  %{python_module ipykernel >= 6.5.0}
 BuildRequires:  %{python_module jupyter-lsp >= 2.0.0}
 BuildRequires:  %{python_module jupyter_core}
@@ -42,7 +41,7 @@ BuildRequires:  %{python_module jupyterlab_server >= 2.27.1 with %python-jupyter
 BuildRequires:  %{python_module notebook_shim >= 0.2}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 40.8}
+BuildRequires:  %{python_module setuptools >= 41.1}
 BuildRequires:  %{python_module tomli >= 1.2.2 if %python-base < 3.11}
 BuildRequires:  %{python_module tornado >= 6.2.0}
 BuildRequires:  %{python_module traitlets}
@@ -50,7 +49,6 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
-BuildRequires:  update-desktop-files
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Requires:       jupyter-jupyterlab = %{version}
@@ -66,7 +64,6 @@ Requires:       python-setuptools >= 40.1
 Requires:       python-tornado >= 6.2.0
 Requires:       python-traitlets
 Requires:       (python-importlib-metadata >= 4.8.3 if python-base < 3.10)
-Requires:       (python-importlib-resources >= 1.4 if python-base < 3.9)
 Requires:       (python-jupyter_server >= 2.4.0 with python-jupyter_server < 3)
 Requires:       (python-jupyterlab_server >= 2.27.1 with python-jupyterlab_server < 3)
 Requires:       (python-tomli >= 1.2.2 if python-base < 3.11)
@@ -148,6 +145,7 @@ donttest="$donttest or (TestExtension and test_disable_extension)"
 donttest="$donttest or (TestExtension and test_enable_extension)"
 donttest="$donttest or (TestExtension and test_list_extension)"
 donttest="$donttest or (TestExtension and test_link)"
+donttest="$donttest or (TestExtension and test_lock_unlock_extension)"
 donttest="$donttest or (TestExtension and test_unlink)"
 donttest="$donttest or (TestExtension and test_install)"
 donttest="$donttest or (TestExtension and test_uninstall)"

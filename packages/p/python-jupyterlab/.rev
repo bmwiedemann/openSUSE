@@ -933,4 +933,237 @@
     #17109 (@martenrichter)</comment>
     <requestid>1241450</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>4e3c95e8164fa200d9f7b6138651ed7c</srcmd5>
+    <version>4.4.3</version>
+    <time>1750683385</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.4.3
+  * Enable save in collaborative mode #17508 (@Darshan808)
+  * Fix error handing in extension manager (typo and undefined
+    variable) #17592 (@Darshan808)
+  * Ensure strings with yellow background in tracebacks are visible
+    #17577 (@EtiennePelletier)
+  * Fix stdin input triggering cell re-execution on Shift+Enter
+    #17565 (@Darshan808)
+  * Add standby callback to lumino polls #17567 (@mahendrapaipuri)
+  * Fix incorrect ARIA labels in the MainAreaWidget #17527
+    (@dnlzrgz)
+  * fileeditor-extension: fix handling of launcher, commands and
+    menu entries on specsChanged #17550 (@jtpio)
+- Release 4.4.2
+  * Fix Settings Editor incorrectly resetting values to default in
+    filtered view #17540 (@yukiiii04)
+  * Upgrade CodeMirror packages to latest #17526 (@krassowski)
+  * Update widget flag on attaching cell to viewport #17532
+    (@trungleduc)
+  * Update lumino to v2025.4.30 to pull menu aria fix #17525
+    (@krassowski)
+  * Fix rendering of long cell editors in windowed notebook #17528
+    (@krassowski)
+  * Add aria-hidden to icons (&lt;svg&gt; elements) which do not have a
+    title #17472 (@nkn2022)
+  * Fix editing shortcuts on Safari (allow shortcut edit button to
+    receive focus) #17511 (@minrk)
+- Release 4.4.1
+  * Fix undo/redo in cells created in none windowing mode #17486
+    (@krassowski)
+  * Fix token extraction for incomplete paths #17477 (@DenisaCG)
+  * Fix handling of the single click navigation #17475 (@jtpio)
+  * Follow changes to stream outputs #17469 (@davidbrochart)
+  * Fix incorrect modifications in collaborative save events #17466
+    (@Darshan808)
+  * Fix document search matching text within unsupported SVG tags
+    #17429 (@achhina)
+  * Fix handling of the CSV viewer theme #17405 (@jtpio)
+  * Fix browser tab name updates when started in single-document
+    mode #17210 (@Darshan808)
+- Update to 4.4.0
+  ## New features added
+  * Add Settings Import Feature from a JSON File #16994
+    (@Darshan808)
+  * Support kernel subshells #16963 (@ianthomas23)
+  ## Enhancements made
+  * Create &quot;Kernels&quot; section, split statusbar settings #17415
+    (@krassowski)
+  * Add IKernelSpecAPICLient and ITerminalAPIClient, fix
+    definitions of interfaces #17395 (@jtpio)
+  * If subshells are supported by the kernel, send comm messages to
+    subshells #17363 (@martinRenou)
+  * Add a setting to disable the context menu #17352 (@afshin)
+  * Add IKernelAPIClient and ISessionAPIClient as options for
+    Kernel.IManager and Session.IManager #17348 (@jtpio)
+  * Fix checkbox alignment in dialog using display: flex #17343
+    (@SatyajitRedekar)
+  * Speed up output rendering: add a limit on max length of
+    protocol to linkify #17264 (@krassowski)
+  * Remove spurious regex to slightly improve performance of
+    streaming large outputs #17262 (@krassowski)
+  * Add (opt-in) workspace selector, show workspace name in the
+    title #17256 (@Darshan808)
+  * Add commands to change the console prompt position to the
+    palette #17253 (@jtpio)
+  * Improve UX for &quot;Rename on First Save&quot; Dialog #17217 (@MUFFANUJ)
+  * Replace R logo with official logo #17216 (@ajbozarth)
+  * Bump @codemirror/lang-python to provide match-case indentation
+    #17189 (@deephbz)
+  * Remove --subshell-console flag #17180 (@ianthomas23)
+  * Add Content Provider API #17092 (@krassowski)
+  * Copy edits in CONTRIBUTING.md #17078 (@JasonWeill)
+  * Add option to render markdown cells upon exit #17076
+    (@peytondmurray)
+  * Add option for automatic Fill-in-the-Middle inline completion
+    #17067 (@Darshan808)
+  * Update the form schema if it changed #16907 (@brichet)
+  * Export user preference settings to a json file #16896
+    (@Darshan808)
+  * Add more descriptive labels for fetching Jupyter news options
+    #16848 (@Adam-D-Lewis)
+  * Hide the terminals part of the running sessions status bar item
+    by default #16846 (@jtpio)
+  * Allow customizing the ServiceManager with plugins #16794
+    (@jtpio)
+  * Move @jupyterlab/debugger icons to @jupyterlab/ui-components
+    #16745 (@joaopalmeiro)
+  * Add option to disable input placeholder text #16713
+    (@maitreya2954)
+  * Allow changing the position of the code console prompt cell,
+    add settings and toolbar items #13837 (@jtpio)
+  ## Bugs fixed
+  * Fix CommandPalette gets re-rendered even if hidden #17442
+    (@fcollonval)
+  * Add distinct accessible aria label for each toolbar #17441
+    (@nkn2022)
+  * Fix read-only indicator not showing in RTC docprovider #17440
+    (@Darshan808)
+  * Fix visual indication for drag and drop in editor #17438
+    (@MUFFANUJ)
+  * Fix usage of ITerminalAPIClient in TerminalConnection #17437
+    (@jtpio)
+  * Fix for filebrowser tooltip rendering the kernel info
+    repeatedly #17421 (@itsmevichu)
+  * More specific selector for &quot;Copy Output to Clipboard&quot; #17413
+    (@jtpio)
+  * Fix rendering URLs as linked in errors #17371 (@afshin)
+  * Fix cell output stream if previous chunk did not end in new
+    line #17369 (@davidbrochart)
+  * Use &quot;Move to Trash&quot; over &quot;Delete&quot; when contents manager's
+    delete_to_trash is True #17359 (@jesuino)
+  * Add widget ID arg to semantic command invocations #17350
+    (@afshin)
+  * Improve scrolling edge cases #17339 (@krassowski)
+  * Fix HTML lang attribute #17337 (@fcollonval)
+  * Fix typo in LSP console message on kernel change #17323
+    (@iisakkirotko)
+  * Fix handling of a null banner in the code console #17322
+    (@jtpio)
+  * Updated enabling logic for run-all-below button on Notebook
+    Panel #17298 (@rsaditya01)
+  * Disable new ctrl + m toggle focus binding, enable configuring
+    it via Keyboard Shortcuts #17291 (@krassowski)
+  * Fix order of extensions in PyPI Extension Manager #17266
+    (@Princekumarofficial)
+  * Allow &lt;GroupItem&gt; to filter out null children and accept any
+    ReactNode #17244 (@MUFFANUJ)
+  * Cache item state to improve filebrowser's performance #17239
+    (@Rishab87)
+  * Fix windowing crash due to out-of-bounds access #17238
+    (@krassowski)
+  * Fix vertical scrollbar issue caused by \tag{} directive in
+    LaTeX #17223 (@MUFFANUJ)
+  * Fix display of tooltip/title for terminal and kernel sessions
+    statusbar item #17220 (@MUFFANUJ)
+  * Fix disabling Fuzzy Filtering in the File Browser #17214
+    (@Darshan808)
+  * Fix for inconsistent tab closure in &quot;Close All Tabs&quot; operation
+    #17203 (@itsmevichu)
+  * Fix &quot;running&quot; prompt state with server-side execution #17195
+    (@krassowski)
+  * Fix for issue preventing cell metadata removal #17194
+    (@itsmevichu)
+  * Add missing aria labels in application shell #17192 (@Rishab87)
+  * Fix misaligned SVG icon in &quot;Add Tag&quot; button #17187 (@MUFFANUJ)
+  * Increase color contrast of operators in code editor #17173
+    (@hxrshxz)
+  * Fix read-only cells becoming editable on settings change #17167
+    (@Darshan808)
+  * Ensure search highlight is applied to Python builtin keywords
+    #17160 (@hxrshxz)
+  * Fix scrolling and selection restoration on undo/redo #17158
+    (@krassowski)
+  * Fix emission of lastCell from notebook run actions #17156
+    (@pawel99k)
+  * Improve contrast for 'Add' button in Keyboard Shortcuts UI in
+    both dark and light theme #17153 (@hxrshxz)
+  * Fixed Missing Comma in devcontainer.json to enable functional
+    configuration #17150 (@hxrshxz)
+  * Fixing dialog closing unexpectedly when typing in the textarea
+    #17142 (@Rishab87)
+  * Fix setter for contentProviderId #17141 (@jtpio)
+  * Fix title for overscan count option #17130 (@krassowski)
+  * Ensure context menu closes when clicking outside it in the
+    minimap #17128 (@peytondmurray)
+  * Respect query argument in settingeditor:open when settings
+    editor is already open #17121 (@andrewfulton9)
+  * Fix sanitizer call in ToC if html data is array of strings
+    #17114 (@martenrichter)
+  * Use bare string proxies parameter for httpx&lt;0.28 #17113
+    (@AmberArr)
+  * Add missing bind(this) to NotebookAdapter's isReady function
+    #17109 (@martenrichter)
+  * Fix background of the popup toolbar #17098 (@krassowski)
+  * Focus terminal after copy and paste operations #17097
+    (@krassowski)
+  * Sync Settings Editor with Updated Settings #17091 (@Darshan808)
+  * Fix consecutive invocations of inline completion #17082
+    (@fcollonval)
+  * Fix contrast for unselected search matches in Dark High
+    Contrast theme #17065 (@krassowski)
+  * Bump @codemirror packages #17064 (@jtpio)
+  * Use AsyncHTTPTransport over HTTPTransport for httpx #17058
+    (@krassowski)
+  * Reset resizeData after column adjustment to allow file dragging
+    #17047 (@Darshan808)
+  * Fix newline handling in stream outputs #17043 (@davidbrochart)
+  * Fix filebrowser name order #17038 (@Nriver)
+  * Improve performance of rendering stdout/stderr #17022
+    (@krassowski)
+  * Fixing missed first keystroke on Ctrl+F #17005 (@itsmevichu)
+  * Fix disappearing cells (heal offsets after updating estimated
+    sizes) #17000 (@krassowski)
+  * Fix handling of carriage return in output streams #16999
+    (@davidbrochart)
+  * Fix emission of FileBrowserModel.onFileChanged for drives
+    (including RTC:) #16988 (@davidbrochart)
+  * Restore viewport min-height when not windowing #16979
+    (@brichet)
+  * Fix regression in standard error rendering performance #16975
+    (@krassowski)
+  * Drag image prompt styling #16972 (@JasonWeill)
+  * Remove unused CSS #16968 (@mgeier)
+  * Fix moving files when Last Modified column is hidden #16962
+    (@krassowski)
+  * Fix prefix removal when reconciling completions from multiple
+    sources #16953 (@krassowski)
+  * Fix total size estimation in full windowing mode to reduce
+    scrollbar jitter #16950 (@krassowski)
+  * Enable Scroll for Overflowing Menus on Small Screens #16945
+    (@Darshan808)
+  * Disable paste for read-only markdown cells &amp; fix replace all
+    for markdown cells #16943 (@itsmevichu)
+  * Fix Regex Functionality for Find and Replace / Replace All
+    #16940 (@itsmevichu)
+  * Improve drag image styling #16936 (@JasonWeill)
+  * Add clarification about FileFormat in Services.Contents #16927
+    (@cmarmo)
+  * Reuse serverSettings when reopen an existing terminal #16921
+    (@ianthomas23)
+  * Maintain autosave timers while disconnected #16903 (@holzman)
+  * Abort saving if a file cannot be saved #16900 (@JasonWeill)
+  * Fix triggering completer on the beginning of the lines #16863
+    (@andrewfulton9)
+  * Fix for unable to lock any extension #16213 (@itsmevichu)
+</comment>
+    <requestid>1287230</requestid>
+  </revision>
 </revisionlist>
