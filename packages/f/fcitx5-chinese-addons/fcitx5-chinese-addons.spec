@@ -16,10 +16,8 @@
 #
 
 
-%define build_qt5 1
-%define build_qt6 1
 Name:           fcitx5-chinese-addons
-Version:        5.1.8
+Version:        5.1.9
 Release:        0
 Summary:        Pinyin and Table IM support for fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -40,18 +38,11 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libime-devel >= 1.0.12
 BuildRequires:  opencc-devel
 BuildRequires:  pkgconfig
-BuildRequires:  zstd
-%if %{build_qt6}
 BuildRequires:  qt6-concurrent-devel
 BuildRequires:  qt6-dbus-devel
 BuildRequires:  qt6-webenginewidgets-devel
 BuildRequires:  qt6-widgets-devel
-%endif
-%if %{build_qt5}
-BuildRequires:  libQt5Concurrent-devel
-BuildRequires:  libQt5DBus-devel
-BuildRequires:  libqt5-qtwebengine-devel
-%endif
+BuildRequires:  zstd
 Supplements:    fcitx5
 Conflicts:      fcitx <= 4.2.9.8
 Provides:       fcitx-cloudpinyin = %{version}
@@ -95,25 +86,6 @@ BuildRequires:  appstream-glib-devel
 %description
 This provides pinyin and table input method support for fcitx5.
 
-%if %{build_qt5}
-%package -n fcitx5-pinyindictmanager
-Summary:        Fcitx5 Pinyin dictionary manager library
-Group:          System/Libraries
-Supplements:    (fcitx5-chinese-addons and plasma5-workspace)
-
-%description -n fcitx5-pinyindictmanager
-Fcitx5 Pinyin dictionary manager library.
-
-%package -n fcitx5-customphraseeditor
-Summary:        Fcitx5 Custom Phrase editor library
-Group:          System/Libraries
-Supplements:    (fcitx5-chinese-addons and plasma5-workspace)
-
-%description -n fcitx5-customphraseeditor
-Fcitx5 Custom Phrase editor library.
-%endif
-
-%if %{build_qt6}
 %package -n fcitx5-pinyindictmanager6
 Summary:        Fcitx5 Pinyin dictionary manager library
 Group:          System/Libraries
@@ -129,76 +101,38 @@ Supplements:    (fcitx5-chinese-addons and plasma6-workspace)
 
 %description -n fcitx5-customphraseeditor6
 Fcitx5 Custom Phrase editor library.
-%endif
 
 %package devel
 Summary:        Development files for fcitx5-chinese-addons
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-%if %{build_qt5}
-Requires:       fcitx5-customphraseeditor = %{version}
-Requires:       fcitx5-pinyindictmanager = %{version}
-%endif
-%if %{build_qt6}
 Requires:       fcitx5-customphraseeditor6 = %{version}
 Requires:       fcitx5-pinyindictmanager6 = %{version}
-%endif
 
 %description devel
 This package provides development files for fcitx5-chinese-addons.
 
 %prep
-%setup -q
-%if %{build_qt6}
-mkdir -p %{_builddir}/qt6_build
-cp -r . %{_builddir}/qt6_build
-%endif
+%autosetup
 
 %build
 %if 0%{?suse_version} == 1500
 export CC=gcc-8
 export CXX=g++-8
 %endif
-%if %{build_qt5}
-%cmake -DUSE_WEBKIT=OFF -DUSE_QT6=OFF
-%make_build
-%endif
-
-%if %{build_qt6}
-pushd %{_builddir}/qt6_build
 %cmake -DUSE_WEBKIT=OFF
 %make_build
-popd
-%endif
 
 %install
-%if %{build_qt5}
 %cmake_install
-%endif
-
-%if %{build_qt6}
-pushd %{_builddir}/qt6_build
-%cmake_install
-popd
-%endif
 %find_lang %{name}
 %fdupes %{buildroot}
 
-%if %{build_qt5}
-%files -n fcitx5-pinyindictmanager
-%{_fcitx5_qt5dir}/libpinyindictmanager.so
-
-%files -n fcitx5-customphraseeditor
-%{_fcitx5_qt5dir}/libcustomphraseeditor.so
-%endif
-
-%if %{build_qt6}
 %files -n fcitx5-pinyindictmanager6
 %{_fcitx5_qt6dir}/libpinyindictmanager.so
 
 %files -n fcitx5-customphraseeditor6
 %{_fcitx5_qt6dir}/libcustomphraseeditor.so
-%endif
 
 %files -f %{name}.lang
 %doc README.md
