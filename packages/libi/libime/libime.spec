@@ -17,25 +17,24 @@
 
 
 Name:           libime
-Version:        1.1.10
+Version:        1.1.11
 Release:        0
 Summary:        Generic input method implementation
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/libime
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.zst
-#PATCH-FIX-UPSTREAM boost 1.66 in leap 15.5 doesn't have container_hash/hash.hpp, it was splitted
-# from functional/hash.hpp since boost 1.67
-Patch:          %{name}-1.1.10-boost166.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
 BuildRequires:  fdupes
+%if 0%{?suse_version} >= 1550
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_filesystem-devel
+%else
+BuildRequires:  gcc13-c++
+%endif
 BuildRequires:  libboost_iostreams-devel
-BuildRequires:  libboost_regex-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  zstd
 
@@ -91,9 +90,13 @@ Group:          System/I18n/Chinese
 This package provides dictionary files for libime.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
+%if 0%{?suse_version} < 1550
+export CC=%{_bindir}/gcc-13
+export CXX=%{_bindir}/g++-13
+%endif
 export LANG=en_US.UTF-8
 %cmake -DCMAKE_SKIP_RPATH=OFF
 %make_build
