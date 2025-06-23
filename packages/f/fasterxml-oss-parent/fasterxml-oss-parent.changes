@@ -1,43 +1,256 @@
 -------------------------------------------------------------------
+Mon Jun 23 08:20:45 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 68
+  * 68 (26-May-2025)
+    - Branch "master" renamed as "main" to follow general best
+      practices.
+    - First release via new Sonatype Central Portal repository
+  * 67 (23-May-2025)
+    - Remove snapshot repo section (not needed, won't help
+      dependants)
+  * 66 (13-May-2025)
+    - Add "org.sonatype.central:central-publishing-maven-plugin"
+      with 'version.plugin.central-publishing' (starting with
+      0.7.0)
+  * 65 (23-Apr-2025)
+    - Add "org.cyclonedx:cyclonedx-maven-plugin" with
+      'version.plugin.cyclonedx' (starting with 2.9.1)
+    - 'version.plugin.jacoco' to 0.8.13 (from 0.8.12)
+    - 'version.plugin.surefire' 3.5.3 (from 3.5.2)
+  * 64 (07-Mar-2025)
+    - 'version.plugin.clean' to 3.4.1 (from 3.4.0)
+    - 'version.plugin.compiler' to 3.14.0 (from 3.13.0)
+    - 'version.plugin.deploy' to 3.1.4 (from 3.1.3)
+    - 'version.plugin.install' to 3.1.4 (from 3.1.3)
+  * 63 (13-Feb-2025)
+    - Trimmed some javadoc plug-in options
+  * 62 (08-Jan-2025)
+    - 'version.junit5' to 5.11.4
+    - 'version.assertj' to 3.27.2
+    - 'org.apache.maven.plugins:maven-jxr-plugin' to 3.6.0
+      (from 3.5.0)
+    - 'version.plugin.dependency' to 3.8.1 (from 3.8.0)
+    - 'version.plugin.gpg' to 3.2.7 (from 3.2.5)
+    - 'version.plugin.javadoc' to 3.11.2 (from 3.8.0)
+    - 'version.plugin.pmd' to 3.26.0 (from 3.23.0)
+    - 'version.plugin.surefire' 3.5.2 (from 3.4.0)
+    - 'org.ow2.asm:asm' to 9.7.1 (from 9.7)
+  * 61 (26-Aug-2024)
+    - 'org.apache.maven.plugins:maven-jxr-plugin' to 3.5.0
+      (from 3.4.0)
+    - 'version.plugin.dependency' to 3.8.0 (from 3.7.1)
+    - 'version.plugin.deploy' to 3.1.3 (from 3.1.2)
+    - 'version.plugin.gpg' to 3.2.5 (from 3.2.4)
+    - 'version.plugin.install' to 3.1.3 (from 3.1.2)
+    - 'version.plugin.javadoc' to 3.8.0 (from 3.7.0)
+    - 'version.plugin.release' to 3.1.1 (from 3.1.0)
+    - 'version.plugin.site' to 4.0.0-M16 (from 4.0.0-M11)
+    - 'version.plugin.surefire' 3.4.0 (from 3.3.0)
+    - Removed definition of 'org.codehaus.mojo:taglist-maven-plugin'
+      (not used by anything)
+  * 60 (01-Jul-2024)
+    - 'org.codehaus.mojo:build-helper-maven-plugin' to 3.6.0
+      (from 3.5.0)
+    - 'version.plugin.clean' to 3.4.0 (from 3.3.2)
+    - 'version.plugin.dependency' to 3.7.1 (from 3.6.1)
+    - 'version.plugin.enforcer' to 3.5.0 (from 3.4.1)
+    - 'version.plugin.jar' to 3.4.2 (from 3.4.1)
+    - 'version.plugin.javadoc' to 3.7.0 (from 3.6.2)
+    - 'version.plugin.moditect' to 1.2.2.Final (from 1.2.1)
+    - 'version.plugin.release' to 3.1.0 (from 3.0.1)
+    - 'version.plugin.shade' to 3.6.0 (from 3.5.3)
+    - 'version.plugin.surefire' 3.3.0 (from 3.2.5)
+    - Removed definition of
+      'org.apache.maven.plugins:maven-project-info-reports-plugin'
+      (not used by anything)
+  * 59 (30-Apr-2024)
+    - 'org.ow2.asm:asm' to 9.7 (from 9.6)
+    - 'version.plugin.compiler' to 3.13.0 (from 3.12.1)
+    - 'version.plugin.deploy' to 3.1.2 (from 3.1.1)
+    - 'version.plugin.gpg' to 3.2.4 (from 3.1.0)
+    - 'version.plugin.install' to 3.1.2 (from 3.1.1)
+    - 'version.plugin.jacoco' to 0.8.12 (from 0.8.11)
+    - 'version.plugin.jar' to 3.4.1 (from 3.3.0)
+    - 'version.plugin.moditect' to 1.2.1.Final (from 1.1.0)
+    - 'version.plugin.shade' to 3.5.2 (from 3.5.1)
+    - 'version.plugin.source' to 3.3.1 (from 3.3.0)
+    - 'version.plugin.wrapper' to 3.3.2 (from 3.3.1)
+  * 58 (19-Feb-2024)
+    - Add 'version.junit5' (5.10.2) to use
+  * 57 (09-Feb-2024)
+    - 'version.plugin.compiler' to 3.12.1 (from 3.11.0)
+    - 'version.plugin.jacoco' to 0.8.11 (from 0.8.10)
+    - 'version.plugin.javadoc' to 3.6.2 (from 3.6.0)
+    - 'version.plugin.surefire' to 3.2.5 (from 3.2.1)
+    - 'org.apache.maven.plugins:maven-project-info-reports-plugin'
+      to 3.5.0 (from 3.4.5)
+    - 'org.codehaus.mojo:build-helper-maven-plugin' to 3.5.0
+      (from 3.4.0)
+  * 56 (06-Nov-2023)
+    - 'org.apache.maven.plugins:maven-jxr-plugin' to 3.3.1
+      (from 3.3.0)
+    - 'org.ow2.asm:asm' to 9.6 (from 9.5)
+    - 'version.plugin.clean' to 3.3.2 (from 3.3.1)
+    - 'version.plugin.dependency' to 3.6.1 (from 3.6.0)
+    - 'version.plugin.moditect' to 1.1.0 (from 1.0.0)
+    - 'version.plugin.pmd' to 3.21.2 (from 3.21.0)
+    - 'version.plugin.site' to 4.0.0-M11 (from 4.0.0-M9)
+    - 'version.plugin.surefire' to 3.2.1 (from 3.1.2)
+  * 55 (26-Sep-2023)
+    - 'version.plugin.clean' to 3.3.1 (from 3.2.0)
+    - 'version.plugin.enforcer' to 3.4.1 (from 3.3.0)
+    - 'version.plugin.javadoc' to 3.6.0 (from 3.5.0)
+    - 'version.plugin.release' to 3.0.1 (from 3.0.0)
+    - 'version.plugin.surefire' to 3.1.2 (from 3.1.0)
+    - 'version.plugin.shade' to 3.5.1 (from 3.4.1)
+    - 'version.plugin.site' to 4.0.0-M9 (from 4.0.0-M8)
+  * 54 (30-May-2023)
+    - Add 'version.assertj' iwth initial version 3.24.2
+    - 'maven-project-info-reports-plugin' to 3.4.4 (from 3.4.3)
+    - 'version.plugin.enforcer' to 3.3.0 (from 3.2.1)
+    - 'version.plugin.gpg' to 3.1.0 (from 3.0.1)
+    - 'version.plugin.install' to 3.1.1 (from 3.1.0)
+  * 53 (22-May-2023)
+    - 'build-helper-maven-plugin' to 3.4.0 (from 3.3.0)
+    - 'version.plugin.bundle' to 5.1.9 (from 5.1.8)
+    - 'version.dependency.plugin' to 3.6.0 (from 3.5.0)
+    - 'version.plugin.deploy' to 3.1.1 (from 3.1.0)
+    - 'version.plugin.jacoco' to 0.8.10 (from 0.8.8)
+    - 'version.plugin.pmd' to 3.21.0 (from 3.20.0)
+    - 'version.plugin.scm' to 2.0.1 (from 2.0.0)
+    - 'version.plugin.site' to 4.0.0-M8 (from 3.12.1)
+    - 'version.plugin.source' to 3.3.0 (from 3.2.1)
+    - Remove unused "optimize" property from
+      'maven-compiler-plugin'
+  * 52 (20-May-2023)
+    - 'maven-project-info-reports-plugin' to 3.4.3 (from 3.4.2)
+    - 'maven-scm-provider-gitexe' to 2.0.1 (from 1.13.0/2.0.0)
+    - 'version.plugin.resources' to 3.3.1 (from 3.3.0)
+    - 'version.plugin.surefire' to 3.1.0 (from 3.0.0)
+    - 'org.ow2.asm:asm' dependency for 'maven-compiler-plugin'
+      upgraded to 9.5 (from 9.4)
+  * 51 (06-May-2023)
+    - 'maven-scm-manager-plexus' to 2.0.0 (from 1.13.0)
+    - 'maven-scm-plugin' to 2.0.0 (from 1.13.0)
+    - 'maven-scm-provider-gitexe' to 2.0.0 (from 1.13.0)
+    - 'version.plugin.compiler' to 3.11.0 (from 3.10.1)
+    - 'version.plugin.moditect' to 1.0.0.Final (from 1.0.0.RC2)
+    - 'version.plugin.release' to 3.0.0 (from 3.0.0-M7)
+    - 'version.plugin.surefire' to 3.0.0 (from 3.0.0-M9)
+  * 50 (04-Mar-2023)
+    - 'version.plugin.javadoc' to 3.5.0 (from 3.4.1)
+    - Version of 'maven-dependency-plugin' to 3.4.0 (from 3.3.0)
+    - Version of 'maven-deploy-plugin' to 3.1.0 (from 3.0.0)
+    - Version of 'maven-enforcer-plugin' to 3.2.1 (from 3.0.0-M3)
+    - Version of 'maven-pmd-plugin' to 3.20.0 (from 3.19.0)
+    - Version of 'maven-surefire-plugin' to 3.0.0-M9 (from 2.22.2)
+  * 49 (22-Nov-2022)
+    - Version of 'asm' to 9.4 (from 9.3)
+    - 'version.plugin.install' to 3.1.0 (from 3.0.1)
+    - 'version.plugin.jacoco' to 0.8.8 (from 0.8.7)
+    - 'version.plugin.release' to 3.0.0-M7 (from 3.0.0-M6)
+    - 'version.plugin.shade' to 3.4.1 (from 3.4.0)
+  * 48 (27-Sep-2022)
+    - #55: Remove non-reproducible 'Implementation-Build-Date'
+      manifest entry
+    - 'version.plugin.jar' to 3.3.0 (from 3.2.2)
+    - Version of 'maven-scm-plugin' to 1.13.0 (from 1.9.1)
+  * 47 (20-Sep-2022)
+    - 'version.plugin.clean' to 3.2.0 (from 3.1.0)
+    - 'version.plugin.compiler' to 3.10.1 (from 3.8.1)
+    - 'version.plugin.deploy' to 3.0.0 (from 3.0.0-M1)
+    - 'version.plugin.gpg' to 3.0.1 (from 1.6)
+    - 'version.plugin.install' to 3.0.1 (from 3.0.0-M1)
+    - 'version.plugin.javadoc' to 3.4.1 (from 3.3.0)
+    - 'version.plugin.moditect' to 1.0.0.RC2 (from 1.0.0.RC1)
+    - 'version.plugin.pmd' to 3.19.0 (from 2.7.1)
+    - 'version.plugin.resources' to 3.3.0 (from 3.1.0)
+    - 'version.plugin.site' to 3.12.1 (from 2.9.1)
+    - 'version.plugin.wrapper' to 3.1.1 (from 3.1.0)
+    - Version of 'maven-dependency-plugin' to 3.3.0 (from 3.1.2)
+    - Version of 'maven-project-info-reports-plugin' to 3.4.1
+      (from 2.5)
+    - Version of 'maven-scm-manager-plexus' to 1.13.0 (from 1.9.1)
+    - Version of 'maven-scm-provider-gitexe' to 1.13.0 (from 1.9.1)
+    - Version of 'org.ow2.asm:asm' to 9.3 (from 7.0)
+  * 46 (18-Sep-2022)
+    - #31: Enable Reproducible Builds, including:
+    - 'version.plugin.bundle' to 5.1.8 (from 5.1.1)
+    - 'version.plugin.jar' to 3.2.2 (from 3.2.0)
+    - 'version.plugin.release' to 3.0.0-M6 (from 3.0.0-M1)
+    - 'version.plugin.shade' to 3.4.0 (from 3.2.4)
+  * 45 (03-May-2022)
+    - 'version.junit' to 4.13.2 from 4.13.1
+  * 44 (18-Apr-2022)
+    - Add version (3.1.0) for 'maven-wrapper-plugin'
+  * 43 (13-Jul-2021)
+    - 'version.plugin.javadoc' to 3.3.0 from 3.2.0
+    - Javadoc link from Java 7 -> Java 8
+  * 42 (25-May-2021)
+    - Comment out settings for unused
+      "org.sonatype.plugins:nexus-maven-plugin"
+    - 'version.plugin.jacoco' to 0.8.7 from 0.8.5
+  * 41 (13-Oct-2020)
+    - 'version.junit' to 4.13.1 from 4.13
+    - Add missing default version for 'maven-source-plugin'
+  * 40 (31-Jul-2020)
+    - 'version.plugin.bundle' to 5.1.1 from 4.2.0
+    - 'version.plugin.clean' to 3.1.0 from 2.6.1
+    - 'version.plugin.compiler' to 3.8.1 from 3.8.0
+    - 'version.plugin.enforcer' to 3.0.0-M3 from 3.0.0-M1
+    - 'version.plugin.jar' to 3.2.0 from 3.1.2
+    - 'version.plugin.javadoc' to 3.2.0 from 3.0.1
+    - 'version.plugin.moditect' to 1.0.0.RC1 from 1.0.0.Beta2
+    - 'version.plugin.release' to 3.0.0-M1 from 2.5.3
+    - 'version.plugin.resources' to 3.1.0 from 2.7
+    - 'version.plugin.shade' to 3.2.4 from 3.2.1
+    - 'version.plugin.site' to 3.9.1 from 3.1
+    - 'version.source.plugin' to 3.2.1 from 3.0.1
+    - 'version.plugin.surefire' to 3.0.0-M5 from 2.22.2
+  * 39 (23-May-2020)
+    - Add 'org.jacoco:jacoco-maven-plugin' version 0.8.5
+
+-------------------------------------------------------------------
 Wed Nov 20 10:17:45 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to version 38
   38 (19-Jul-2019)
-    - Add `maven-dependency-plugin` as managed, with version 3.1.1
-    - `version.javadoc.plugin` to 3.0.1 from 3.0.0-M1
+    - Add 'maven-dependency-plugin' as managed, with version 3.1.1
+    - 'version.javadoc.plugin' to 3.0.1 from 3.0.0-M1
   37 (20-May-2019)
-    - `version.plugin.deploy` to 3.0.0-M1 from 2.8.2
-    - `version.plugin.install` to 3.0.0-M1 from 2.5.2
-    - `version.plugin.jar` to 3.1.2 from 2.5
-    - `version.plugin.source` to 3.0.1 from 2.1.2
-    - `version.plugin.surefire` to 2.22.2 from 2.22.0 (for JDK11)
-    - `jdepend-pmaven-plugin` to 2.0 from 2.0-beta-2
+    - 'version.plugin.deploy' to 3.0.0-M1 from 2.8.2
+    - 'version.plugin.install' to 3.0.0-M1 from 2.5.2
+    - 'version.plugin.jar' to 3.1.2 from 2.5
+    - 'version.plugin.source' to 3.0.1 from 2.1.2
+    - 'version.plugin.surefire' to 2.22.2 from 2.22.0 (for JDK11)
+    - 'jdepend-pmaven-plugin' to 2.0 from 2.0-beta-2
   36 (18-May-2019)
-    - `version.plugin.bundle` to 4.2.0 (from 3.2.0)
+    - 'version.plugin.bundle' to 4.2.0 (from 3.2.0)
   35 (04-Mar-2019)
-    - Update `version.plugin.shade` to `3.2.1` (from `2.4.3`)
-    - Moditect now `1.0.0.Beta2`
+    - Update 'version.plugin.shade' to '3.2.1' (from '2.4.3')
+    - Moditect now '1.0.0.Beta2'
   34 (05-Dec-2018)
-    - Update `version.plugin.compiler` to 3.8.0 (from 3.7.0)
-    - Update `version.plugin.surefire` to 2.22.0 (from 2.17)
-    - Add new `version.plugin.moditect` at 1.0.0.Beta1;
+    - Update 'version.plugin.compiler' to 3.8.0 (from 3.7.0)
+    - Update 'version.plugin.surefire' to 2.22.0 (from 2.17)
+    - Add new 'version.plugin.moditect' at 1.0.0.Beta1;
   default version for "org.moditect#moditect-maven-plugin"
-    - Update `asm` to `7.0`
+    - Update 'asm' to '7.0'
   32 (27-Mar-2018)
-    - Update `maven-clean-plugin` to 2.6.1 (from 2.5)
-    - Update `maven-compiler-plugin` to 3.7.0 (from 3.2)
-    - Update `maven-deploy-plugin` to 2.8.2 (from 2.7)
-    - Update `maven-install-plugin` to 2.5.2 (from 2.4)
-    - Update `maven-javadoc-plugin` to 3.0.0-M1 for Java 9
-    - Update `maven-resources-plugin` to 2.7 (from 2.6)
-    - Update `maven-gpg-pluging` to 1.6 (from 1.4)
+    - Update 'maven-clean-plugin' to 2.6.1 (from 2.5)
+    - Update 'maven-compiler-plugin' to 3.7.0 (from 3.2)
+    - Update 'maven-deploy-plugin' to 2.8.2 (from 2.7)
+    - Update 'maven-install-plugin' to 2.5.2 (from 2.4)
+    - Update 'maven-javadoc-plugin' to 3.0.0-M1 for Java 9
+    - Update 'maven-resources-plugin' to 2.7 (from 2.6)
+    - Update 'maven-gpg-pluging' to 1.6 (from 1.4)
   31 (09-Sep-2017)
-    - Update `maven-replacer-plugin` 1.5.2 -> 1.5.3
+    - Update 'maven-replacer-plugin' 1.5.2 -> 1.5.3
     - Reorganize dependency management slightly
   30 (09-Aug-2017)
-    - Update `cobertura-maven-plugin` 2.6 -> 2.7
+    - Update 'cobertura-maven-plugin' 2.6 -> 2.7
   (to work with Java 8)
-    - Make `maven-enforcer-plugin` version pluggable, update 1.3.1 -> 1.4.1
+    - Make 'maven-enforcer-plugin' version pluggable, update 1.3.1 -> 1.4.1
   28 (24-Feb-2017)
     - Update maven-bundle-plugin: 3.0.1 -> 3.2.0
     - Remove "_nosuses=false" from bundle plugin

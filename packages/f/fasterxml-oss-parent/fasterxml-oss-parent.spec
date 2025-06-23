@@ -1,7 +1,7 @@
 #
 # spec file for package fasterxml-oss-parent
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global oname oss-parent
 Name:           fasterxml-oss-parent
-Version:        38
+Version:        68
 Release:        0
 Summary:        FasterXML parent pom
 License:        Apache-2.0
@@ -43,10 +43,9 @@ This package contains the parent pom file for FasterXML.com projects.
 %prep
 %setup -q -n %{oname}-%{oname}-%{version}
 
-%pom_remove_plugin org.sonatype.plugins:nexus-maven-plugin
+%pom_remove_plugin org.sonatype.central:central-publishing-maven-plugin
 %pom_remove_plugin :maven-scm-plugin
 %pom_remove_plugin org.codehaus.mojo:jdepend-maven-plugin
-%pom_remove_plugin org.codehaus.mojo:taglist-maven-plugin
 # org.kathrynhuxtable.maven.wagon:wagon-gitsite:0.3.1
 %pom_xpath_remove "pom:build/pom:extensions"
 # remove unavailable com.google.doclava doclava 1.0.3
@@ -60,6 +59,7 @@ This package contains the parent pom file for FasterXML.com projects.
 
 %pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :maven-site-plugin
+%pom_remove_plugin :jacoco-maven-plugin
 
 %build
 %{mvn_build} -j
