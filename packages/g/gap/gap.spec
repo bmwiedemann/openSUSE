@@ -27,6 +27,7 @@ URL:            https://gap-system.org/
 Source:         https://github.com/gap-system/gap/releases/download/v%version/gap-%version-core.tar.gz
 Source2:        macros.gap
 Source3:        %name-rpmlintrc
+Patch1:         gcc15.patch
 BuildRequires:  gcc-c++
 %if 0%{?suse_version}
 BuildRequires:  fdupes
@@ -262,7 +263,7 @@ emphasis on Computational Group Theory.
 This subpackage will pull in all optional packages of the GAP distribution.
 
 %prep
-%autosetup
+%autosetup -p1
 echo "This package causes installation of optional GAP packages" >FULL.txt
 
 %build
