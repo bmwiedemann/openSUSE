@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 23 11:13:23 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.7.0+git20250623.0a78a92e:
+  * Fix libgpiod whitelisting package name (bsc#1244702)
+
+-------------------------------------------------------------------
+Thu Jun 19 11:34:07 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.7.0+git20250619.9a463f74:
+  * dbus-services: whitelist libgpiod (bsc#1244702)
+
+-------------------------------------------------------------------
 Tue Jun 10 09:45:34 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 2.7.0+git20250610.de7cb57e:

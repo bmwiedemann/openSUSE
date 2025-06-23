@@ -5264,4 +5264,16 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * sysctl-whitelist: properly document the most recent review bug</comment>
     <requestid>1284408</requestid>
   </revision>
+  <revision rev="507" vrev="1">
+    <srcmd5>f4738e237dee285306b07b39b7785ddb</srcmd5>
+    <version>2.7.0+git20250623.0a78a92e</version>
+    <time>1750683365</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.7.0+git20250623.0a78a92e:
+  * Fix libgpiod whitelisting package name (bsc#1244702)
+- Update to version 2.7.0+git20250619.9a463f74:
+  * dbus-services: whitelist libgpiod (bsc#1244702)
+</comment>
+    <requestid>1287908</requestid>
+  </revision>
 </revisionlist>
