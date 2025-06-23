@@ -23,7 +23,7 @@
 %define _environmentdir %{_prefix}/lib/environment.d
 %endif
 Name:           fcitx5
-Version:        5.1.12
+Version:        5.1.13
 Release:        0
 Summary:        Next generation of fcitx
 License:        LGPL-2.1-or-later
@@ -36,6 +36,7 @@ Source4:        macros.fcitx5
 Source102:      fcitx5.service
 Patch1:         fcitx5-gcc7.patch
 Patch2:         fcitx5-5.0.13-memfd.patch
+Patch3:         fcitx5-5.1.13-xcb.patch
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
 BuildRequires:  extra-cmake-modules
@@ -75,7 +76,7 @@ Provides:       inputmethod
 %if 0%{?suse_version} >= 1550
 BuildRequires:  gcc-c++
 %else
-BuildRequires:  gcc8-c++
+BuildRequires:  gcc13-c++
 %endif
 %if 0%{?suse_version} <= 1520
 BuildRequires:  appstream-glib-devel
@@ -141,8 +142,8 @@ This package provides utility libraries for fcitx5.
 
 %build
 %if 0%{?suse_version} < 1550
-export CC=%{_bindir}/gcc-8
-export CXX=%{_bindir}/g++-8
+export CC=%{_bindir}/gcc-13
+export CXX=%{_bindir}/g++-13
 %endif
 %cmake -DCMAKE_SKIP_RPATH=OFF -DCMAKE_INSTALL_SYSCONFDIR=%{_sysconfdir}
 %cmake_build

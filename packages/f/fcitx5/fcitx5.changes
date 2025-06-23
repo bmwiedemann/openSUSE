@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun 20 13:42:02 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update version 5.1.13
+  * StandardPaths replaces StandardPath, with better support to new
+  safeSave behavior if the target is symbolic link. In the old version,
+  you have to symlink on the directory, instead of the file. Now the
+  symlink file will not be overwritten.
+  * New FDStreamBuf API for std::iostream on file descriptor.
+  * new environ.h API for environment variable handling
+  * On new UKUI desktop, ukui-control-center will be used for configtool
+  * forward modifier to compositor in zwp input method v1
+  * Fix modifier only hotkey handling #1289
+- add fcitx5-5.1.13-xcb.patch, fix build leap 15.6
+
+-------------------------------------------------------------------
 Wed Jan 29 06:45:37 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - Update to 5.1.12
