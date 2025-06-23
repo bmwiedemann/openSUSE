@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 20 05:49:49 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
+
+- Add Live migration support for QEMU-emulated AMD IOMMU (jsc#PED-13144):
+  * hw/i386/amd_iommu: Allow migration when explicitly create the AMDVI-PCI device (jsc#PED-PED-13144)
+  * hw/i386/amd_iommu: Isolate AMDVI-PCI from amd-iommu device to allow full control over the PCI device creation (jsc#PED-13144)
+
+-------------------------------------------------------------------
 Fri Jun  6 10:30:23 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to stable release 10.0.2:

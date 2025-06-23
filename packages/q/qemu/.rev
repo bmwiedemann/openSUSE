@@ -4479,4 +4479,15 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1284889</requestid>
   </revision>
+  <revision rev="294" vrev="2">
+    <srcmd5>2be470c43384a4d11e2d9b0cad0e8535</srcmd5>
+    <version>10.0.2</version>
+    <time>1750683043</time>
+    <user>anag_factory</user>
+    <comment>- Add Live migration support for QEMU-emulated AMD IOMMU (jsc#PED-13144):
+  * hw/i386/amd_iommu: Allow migration when explicitly create the AMDVI-PCI device (jsc#PED-PED-13144)
+  * hw/i386/amd_iommu: Isolate AMDVI-PCI from amd-iommu device to allow full control over the PCI device creation (jsc#PED-13144)
+</comment>
+    <requestid>1287166</requestid>
+  </revision>
 </revisionlist>
