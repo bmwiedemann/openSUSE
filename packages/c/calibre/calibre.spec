@@ -26,7 +26,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        8.4.0
+Version:        8.5.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -95,7 +95,6 @@ BuildRequires:  libstemmer-devel >= 2.2.0
 BuildRequires:  libwmf-devel >= 0.2.8
 # upstream use: mozjpeg >= 4.1.4
 BuildRequires:  optipng >= 0.7.7
-# Dont known if upstream need it. It say only podofo. But suse has removed it: BuildRequires: podofo >= 0.10.3
 BuildRequires:  poppler-tools >= 23.08.0
 BuildRequires:  qt6-core-private-devel >= %{my_qtversion}
 BuildRequires:  qt6-declarative-devel >= %{my_qtversion}
@@ -171,6 +170,7 @@ BuildRequires:  %{python_module html2text >= 2020.1.16}
 BuildRequires:  %{python_module html5-parser >= 0.4.10}
 BuildRequires:  %{python_module html5lib >= 1.1}
 BuildRequires:  %{python_module ifaddr >= 0.1.7}
+BuildRequires:  %{python_module inflate64 >= 1.0.3}
 BuildRequires:  %{python_module jeepney >= 0.7.1}
 BuildRequires:  %{python_module lxml >= 5.2.1}
 BuildRequires:  %{python_module lxml_html_clean}
@@ -182,15 +182,16 @@ BuildRequires:  %{python_module odfpy}
 BuildRequires:  %{python_module packaging >= 21.3}
 BuildRequires:  %{python_module ply >= 3.11}
 BuildRequires:  %{python_module psutil >= 5.8.0}
+BuildRequires:  %{python_module pybcj >= 1.0.1}
 BuildRequires:  %{python_module pychm >= 0.8.6}
 BuildRequires:  %{python_module pycryptodome >= 3.19.0}
 BuildRequires:  libjpeg-turbo >= 3.0.0
 BuildRequires:  python-rpm-macros
 ##BuildRequires:  %%{python_module pykakasi >= 2.3.0}
 BuildRequires:  %{python_module pyparsing >= 3.0.6}
-BuildRequires:  %{python_module pyppmd >= 1.1.0}
+BuildRequires:  %{python_module pyppmd >= 1.2.0}
 BuildRequires:  %{python_module pyqt-builder >= 1.14.0}
-BuildRequires:  %{python_module pyzstd >= 0.15.6}
+BuildRequires:  %{python_module pyzstd >= 0.17.0}
 BuildRequires:  %{python_module qt6-devel >= %{my_qtversion}}
 BuildRequires:  %{python_module regex >= 2021.11.10}
 # Upstream use: BuildRequires:  %%{python_module setuptools >= 68.2.2}
@@ -200,14 +201,14 @@ BuildRequires:  %{python_module sgmllib3k >= 1.0.0}
 BuildRequires:  %{python_module sip-devel >= 6.7.5}
 BuildRequires:  %{python_module six >= 1.16.0}
 BuildRequires:  %{python_module soupsieve >= 2.5}
-BuildRequires:  %{python_module texttable >= 1.6.4}
+BuildRequires:  %{python_module texttable >= 1.6.7}
 BuildRequires:  %{python_module toml >= 0.10.2}
 BuildRequires:  %{python_module xxhash >= 3.3.0}
 # Upstream use pkgconfig(libxml-2.0) >= 2.12.6
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.10.3
 BuildRequires:  pkgconfig(libxslt) >= 1.1.39
 #BuildRequires:  python-unrardll >= 0.1.5
-BuildRequires:  %{python_module py7zr >= 0.20.6}
+BuildRequires:  %{python_module py7zr >= 1.0.0}
 BuildRequires:  %{python_module speechd >= 0.11.5}
 BuildRequires:  %{python_module webencodings >= 0.5.1}
 BuildRequires:  %{python_module zeroconf >= 0.37.0}
@@ -215,12 +216,6 @@ BuildRequires:  %{python_module zeroconf >= 0.37.0}
 Requires:       chmlib >= 0.40
 #Requires:       dbus-1-python3 >= 1.2.0
 Requires:       liberation-fonts
-Requires:       libmtp9 >= 1.1.21
-Requires:       libpng16-16 >= 1.6.40
-Requires:       libwmf >= 0.2.8
-Requires:       optipng >= 0.7.7
-# Dont known if upstream need it. It say only podofo. But suse has removed it:  Requires: podofo >= 0.10.1
-Requires:       poppler-tools >= 23.08.0
 Requires:       %{python_flavor}-Brotli >= 1.1.0
 Requires:       %{python_flavor}-Markdown >= 3.3.6
 Requires:       %{python_flavor}-Pillow >= 8.4.0
@@ -232,6 +227,11 @@ Requires:       %{python_flavor}-cchardet >= 2.1.7
 Requires:       %{python_flavor}-chardet >= 4.0.0
 Requires:       %{python_flavor}-css-parser >= 1.0.8
 Requires:       %{python_flavor}-dateutil >= 2.8.2
+Requires:       libmtp9 >= 1.1.21
+Requires:       libpng16-16 >= 1.6.40
+Requires:       libwmf >= 0.2.8
+Requires:       optipng >= 0.7.7
+Requires:       poppler-tools >= 23.08.0
 #Requires:       %%{python_flavor}-dbus-python
 Requires:       %{python_flavor}-dnspython >= 2.1.0
 Requires:       %{python_flavor}-FontTools >= 4.39.3
@@ -241,6 +241,7 @@ Requires:       %{python_flavor}-html2text >= 2020.1.16
 Requires:       %{python_flavor}-html5-parser >= 0.4.10
 Requires:       %{python_flavor}-html5lib >= 1.1
 Requires:       %{python_flavor}-ifaddr >= 0.1.7
+Requires:       %{python_flavor}-inflate64 >= 1.0.3
 Requires:       %{python_flavor}-jeepney >= 0.7.1
 Requires:       %{python_flavor}-lxml >= 5.2.1
 Requires:       %{python_flavor}-lxml_html_clean
@@ -251,22 +252,23 @@ Requires:       %{python_flavor}-netifaces >= 0.11.0
 Requires:       %{python_flavor}-odfpy
 Requires:       %{python_flavor}-ply >= 3.11
 Requires:       %{python_flavor}-psutil >= 5.8.0
+Requires:       %{python_flavor}-pybcj >= 1.0.1
 Requires:       %{python_flavor}-pychm >= 0.8.6
 Requires:       %{python_flavor}-pycryptodome >= 3.19.0
 ##Requires:       %%{python_flavor}-pykakasi >= 2.3.0
 Requires:       %{python_flavor}-pyparsing >= 3.0.6
-Requires:       %{python_flavor}-pyppmd >= 1.1.0
-Requires:       %{python_flavor}-pyzstd >= 0.15.6
+Requires:       %{python_flavor}-pyppmd >= 1.2.0
+Requires:       %{python_flavor}-pyzstd >= 0.17.0
 Requires:       %{python_flavor}-qt6 >= %{my_qtversion}
 Requires:       %{python_flavor}-qtwebengine-qt6 >= %{my_qtversion}
 Requires:       %{python_flavor}-regex >= 2021.11.10
 Requires:       %{python_flavor}-sgmllib3k >= 1.0.0
 Requires:       %{python_flavor}-six >= 1.16.0
 Requires:       %{python_flavor}-soupsieve >= 2.5
-Requires:       %{python_flavor}-texttable >= 1.6.4
+Requires:       %{python_flavor}-texttable >= 1.6.7
 Requires:       %{python_flavor}-xxhash >= 3.3.0
 #Requires:       %%{python_flavor}-unrardll >= 0.1.5
-Requires:       %{python_flavor}-py7zr >= 0.20.6
+Requires:       %{python_flavor}-py7zr >= 1.0.0
 Requires:       %{python_flavor}-speechd >= 0.11.5
 Requires:       %{python_flavor}-webencodings >= 0.5.1
 Requires:       %{python_flavor}-zeroconf >= 0.37.0

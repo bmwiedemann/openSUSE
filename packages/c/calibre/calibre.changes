@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun 20 08:08:10 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 8.5.0
+  * New Features
+    - The scrollbars used in calibre in light mode are now the same
+      style as the ones in dark mode, this improves the contrast
+      making the scrollbar more accessible
+    - Kobo driver: add an option to change the how the Kobo
+      displays series numbers using a template.
+    - Manage data files dialog: Add a button to cancel remaining
+      books when managing multiple books
+    - Kobo driver: add support for new Tolino firmware
+  * Bug Fixes
+    - Prevent Windows 11 from starting a conhost.exe process for
+      every calibre worker process
+    - E-book viewer: Improve highlight grouping with recurring
+      chapter names
+    - When sending emails to amazon and pocketbook use random
+      English text instead of UUIDs for subject/body.
+
+-------------------------------------------------------------------
 Fri May  9 05:03:33 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 8.4.0
