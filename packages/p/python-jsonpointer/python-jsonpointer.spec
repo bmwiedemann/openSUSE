@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonpointer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,10 +28,11 @@ Version:        3.0.0
 Release:        0
 Summary:        Module to identify specific nodes in a JSON document
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/stefankoegl/python-json-pointer
 Source:         https://files.pythonhosted.org/packages/source/j/jsonpointer/jsonpointer-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 %if %{with libalternatives}
@@ -51,10 +52,10 @@ A module to identify specific nodes in a JSON document (according to draft 08).
 %setup -q -n jsonpointer-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/jsonpointer
 
@@ -75,6 +76,8 @@ A module to identify specific nodes in a JSON document (according to draft 08).
 %doc README.md
 %license LICENSE.txt
 %python_alternative %{_bindir}/jsonpointer
-%{python_sitelib}/*
+%{python_sitelib}/jsonpointer.py
+%pycache_only %{python_sitelib}/__pycache__/jsonpointer.*.pyc
+%{python_sitelib}/jsonpointer-%{version}.dist-info
 
 %changelog

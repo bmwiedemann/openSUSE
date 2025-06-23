@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 16 08:43:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.10.1:
+  * tpm2: Fix potential out-of-bound access & abort due to HMAC
+    signing issue (CVE-2025-49133).
+  * tpm2: fix build for LibreSSL 4.1.0.
+  * tpm2: In CheckLockedOut replace TPM_RC_RETRY with
+    TPM_RC_SUCCESS.
+  * tpm2: Fix bugs in RuntimeProfileDedupStrItems.
+  * tpm2 + test: Make it compilable on Debian GNU Hurd.
+  * tpm2: Add asserts to silence compiler warning due to
+    -Wstringop-overflow=.
+  * tpm2: Add padding to OBJECT for 32bit targets.
+- Drop tpm2-Add-padding-to-OBJECT-for-32bit-targets.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Fri Dec  6 09:03:46 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Use gcc/g++-13 on Leap to fix the following failure:

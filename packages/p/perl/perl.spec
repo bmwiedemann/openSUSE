@@ -56,6 +56,7 @@ Patch13:        perl_skip_flaky_tests_powerpc.patch
 # PATCH-FIX-UPSTREAM unmerged https://www.nntp.perl.org/group/perl.perl5.porters/2018/12/msg253240.html
 Patch18:        perl-reproducible2.patch
 Patch19:        perl-dirdup.diff
+Patch20:        perl-fixed-uname.patch
 BuildRequires:  gdbm-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  ncurses-devel
@@ -138,6 +139,7 @@ cp -p %{SOURCE3} .
 %patch -P 12 -p1
 %patch -P 18
 %patch -P 19
+%patch -P20 -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -181,7 +183,8 @@ echo 'print "1..0\n";' > t/op/fork.t
 echo 'print "1..0\n";' > t/op/magic.t
 %endif
 %if "%{name}" == "perl-testsuite"
-TEST_JOBS="%{jobs}" make %{?_smp_mflags} test
+export TEST_JOBS="$(echo %{?_smp_mflags} | cut -c 3-)"
+make %{?_smp_mflags} test
 %endif
 
 %install

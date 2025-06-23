@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  9 12:15:01 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Replace usage of %jobs for reproducible builds (boo#1237231)
+- Add perl-fixed-uname.patch to not store kernel version (boo#1230137)
+
+-------------------------------------------------------------------
 Thu Jun  5 11:15:53 CEST 2025 - mls@suse.de
 
 - do not change the current directory when cloning an open

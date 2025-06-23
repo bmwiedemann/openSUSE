@@ -1,7 +1,8 @@
 #
-# spec file
+# spec file for package libtool
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +24,7 @@
 %define psuffix %{nil}
 %endif
 Name:           libtool%{psuffix}
-Version:        2.4.7
+Version:        2.5.4
 Release:        0
 Summary:        A Tool to Build Shared Libraries
 License:        GFDL-1.2-or-later AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -31,15 +32,11 @@ Group:          Development/Tools/Building
 URL:            https://www.gnu.org/software/libtool/
 Source0:        https://ftp.gnu.org/gnu/libtool/libtool-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/libtool/libtool-%{version}.tar.xz.sig
+# https://savannah.gnu.org/users/ildumi
+# pub FA26 CA78 4BE1 8892 7F22  B99F 6570 EA01 146F 7354
 Source2:        libtool.keyring
 Source3:        baselibs.conf
 Source4:        libtool-rpmlintrc
-# PATCH-FIX-OPENSUSE -- do not add build host name boo#1084909
-Patch0:         libtool-reproducible-hostname.patch
-# PATCH-FIX-OPENSUSE: workaround irrelevant compiler warning
-Patch1:         handle-Werror-return-type.patch
-# PATCH-FIX-OPENSUSE -- fix tests with GNU grep 3.8 boo#1203097
-Patch2:         libtool-2.4.7-grep-3.8.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
@@ -47,6 +44,7 @@ BuildRequires:  gcc-objc
 BuildRequires:  help2man
 BuildRequires:  lzma
 BuildRequires:  makeinfo
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 Requires:       automake > 1.4
 Requires:       libltdl7 = %{version}
@@ -85,7 +83,6 @@ trap 'test $? -ne 0 && cat tests/testsuite.log' EXIT
 
 %install
 %else
-
 %install
 %make_install
 chmod +x %{buildroot}%{_datadir}/libtool/build-aux/ltmain.sh
@@ -93,8 +90,7 @@ chmod +x %{buildroot}%{_datadir}/libtool/build-aux/ltmain.sh
 sed -i "/uname -n/d" %{buildroot}%{_datadir}/aclocal/libtool.m4
 %endif
 
-%post -n libltdl7 -p /sbin/ldconfig
-%postun -n libltdl7 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libltdl7
 
 %if "%{name}" == "libtool"
 %files
@@ -116,6 +112,7 @@ sed -i "/uname -n/d" %{buildroot}%{_datadir}/aclocal/libtool.m4
 %{_datadir}/libtool
 
 %files -n libltdl7
+%license COPYING
 %{_libdir}/libltdl.so.7*
 %endif
 

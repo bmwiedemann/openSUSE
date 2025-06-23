@@ -1,0 +1,13 @@
+diff --git a/Configure b/Configure
+index 72c3794..7c2edf6 100755
+--- a/Configure
++++ b/Configure
+@@ -3541,7 +3541,7 @@ EOM
+ 			;;
+ 		linux)	osname=linux
+ 			case "$3" in
+-			*)	osvers="$3" ;;
++			*)	osvers="6.14.0" ;;
+ 			esac
+ 			$test -f /system/lib/libandroid.so && osname=linux-android
+ 			;;

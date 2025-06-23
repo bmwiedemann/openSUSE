@@ -508,4 +508,12 @@ insprired by a patch in https://bugs.debian.org/819767 (forwarded request 605522
   used</comment>
     <requestid>1043127</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>f0d323d58b3a3155a6e8d8160d4c61ab</srcmd5>
+    <version>2.5.4</version>
+    <time>1750683031</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1285434</requestid>
+  </revision>
 </revisionlist>

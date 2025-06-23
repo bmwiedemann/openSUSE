@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Jun  7 08:03:48 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.5 (2.5.4):
+  * New libtool command line flag, --no-finish, to skip executing
+    finish_cmds that would alter the shared library cache during
+    testing.
+  * Support additional flang-based compilers, 'f18' and 'f95'.
+  * Add 'aarch64' support to the file magic test, which allows for
+    shared libraries to be built with Mingw for aarch64.
+  * The configure options --with-pic and --without-pic have been
+    renamed to --enable-pic and --disable-pic, respectively. The
+    old names --with-pic and --without-pic are still supported,
+    though, for backward compatibility.
+  * The configure option --with-aix-soname has been renamed to
+    --enable-aix-soname.  The old name --with-aix-soname is still
+    supported, though, for backward compatibility.
+  * Support C++17 compilers in the C++ tests.
+  * Autoconf 2.64 is required for libtool.m4 to use AS_VAR_APPEND.
+  * Pass '-fdiagnostics-color', '-frecord-gcc-switches',
+    '-fno-sanitize*', '-Werror', and 'prefix-map' flags.
+  * Pass the '-no-canonical-prefixes' linker flag.
+  * Pass '-fopenmp=*' for Clang to allow choosing between libgomp and
+    libomp.
+  * Pass '-shared-libsan', '-static-libsan', 'rtlib=*', and
+    'unwindlib=*' for Clang.
+  * Removed test_compile from command line options.
+  * Removed AC_PROG_SED fallback, as the macro has been supported
+    in Autoconf since the 90's.
+- drop patches:
+  * handle-Werror-return-type.patch
+  * libtool-reproducible-hostname.patch
+  * libtool-2.4.7-grep-3.8.patch
+
+-------------------------------------------------------------------
 Mon Dec 12 08:58:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - switch to pkgconfig(zlib) so that alternative providers can be

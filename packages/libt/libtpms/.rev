@@ -227,4 +227,12 @@
   &quot;tpm2_setprofile.c:49:24: error: initializer element is not constant&quot; (forwarded request 1228719 from manfred-h)</comment>
     <requestid>1228778</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a061ac3b33a2b22a010dd7296367f8e2</srcmd5>
+    <version>0.10.1</version>
+    <time>1750683032</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1287565</requestid>
+  </revision>
 </revisionlist>

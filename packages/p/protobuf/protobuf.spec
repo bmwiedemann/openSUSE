@@ -19,8 +19,8 @@
 
 %define tarname protobuf
 # see cmake/abseil-cpp.cmake and src/google/protobuf/port_def.inc
-%define abseil_min_version 20230125.3
-%global         sover 30_2_0
+%define abseil_min_version 20250127.0
+%global         sover 31_1_0
 %if 0%{?gcc_version} < 11
 %define with_gcc 11
 %endif
@@ -66,7 +66,7 @@
 %global protoc_arch sparc_64
 %endif
 Name:           protobuf
-Version:        30.2
+Version:        31.1
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause

@@ -1187,4 +1187,12 @@ I hope I got it right now. It export both 5.34.0 and 5.34.1 COMPAT. That should 
     <comment>do not change the current directory when cloning an open directory handle</comment>
     <requestid>1283341</requestid>
   </revision>
+  <revision rev="141" vrev="3">
+    <srcmd5>c14cdfca7ea7f9f5b8e3dd2320c04c33</srcmd5>
+    <version>5.40.2</version>
+    <time>1750683036</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1287018</requestid>
+  </revision>
 </revisionlist>

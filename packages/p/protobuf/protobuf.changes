@@ -1,4 +1,140 @@
 -------------------------------------------------------------------
+Wed Jun 18 07:25:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 31.1
+  * Support allowing late injection of language feature set
+    defaults from FeatureSet extensions while getting feature
+    set extension values.
+  * Support allowing late injection of language feature set
+    defaults from FeatureSet extensions while getting feature
+    set extension values.
+  * Add missing copts attribute (#21982)
+  * Support allowing late injection of language feature set
+    defaults from FeatureSet extensions while getting feature
+    set extension values.
+  * Support allowing late injection of language feature set
+    defaults from FeatureSet extensions while getting feature
+    set extension values.
+  * Python pyi print "import datetime" for Duration/Timestamp
+    field
+  * Add recursion depth limits to pure python (#bsc1244663, CVE-2025-4565)
+  * Fix cmake staleness test
+- from version 31.0
+  * Loosen py_proto_library check to be on the import path instead
+    of full directory (i.e. excluding external/module-name prefix).
+  * Add support for import option for protoc.
+  * Add notices.h with information about our dependencies' licenses
+    and add --notices flag to protoc to print the contents of that file.
+  * Move upb minitable code generator into protoc
+  * Upgrade abseil-cpp to 20250127 and use @com_google_absl -> @abseil-cpp
+    and com_google_googletest -> @googletest canonical BCR names.
+  * Remove fast-path check for non-clang compilers in MessageCreator.
+  * Add missing include.
+  * Add weak attribute to GetClassData to speed up clang builds.
+  * Add nontemporal software prefetcher to repeated ptr field dtor
+    to improve performance.
+  * Warn on unused RepeatedPtrField.
+  * Add notices.h with information about our dependencies' licenses and
+    add --notices flag to protoc to print the contents of that file.
+  * Fix a bug in handling of implicit-presence string_view fields.
+  * Control bounds checks via BUILD flags.
+  * Upgrade abseil-cpp to 20250127 and use @com_google_absl -> @abseil-cpp
+    and com_google_googletest -> @googletest canonical BCR names.
+  * Create hardened versions of Get and Mutable for repeated_field.
+  * Add weak attribute to GetClassData to speed up clang builds.
+  * Use ProtobufToStringOutput to control the output format of
+    AbstractMessage.Builder.toString.
+  * Implement Protobuf Java Immutable API nest_in_file_class feature
+    for Edition 2024.
+  * Introduce a Generated annotation to eventually replace
+    javax.annotation.Generated
+  * Add volatile to featuresResolved
+  * Fix Java concurrency issue in feature resolution for old <=3.25.x
+    gencode using lazy feature resolution.
+  * Remove Java runtime classes from kotlin release.
+  * Split maven dependencies into dev vs local
+  * Improve error messaging when detecting and erroring out on integer
+    overflow of byte count limit variables.
+  * Remove Java runtime classes from kotlin release.
+  * Remove "experimental API" warnings from members in the .NET protobuf runtime.
+  * Improve performace of repeated packed fixedSize fields (#19667)
+  * [ObjC] Deprecate GPBFieldDescriptor.isOptional.
+  * [ObjC] Raise the library version and enable new generated code.
+  * Cherry-pick Rust fix to 31.x (#21617)
+  * Add upb_Map_GetMutable API to upb
+  * See also UPB changes below, which may affect Rust.
+  * Update GetCurrentTime to use datetime.datetime.now
+  * Make Py JSON float_precision apply to both float and double fields.
+  * -Add '+' and '-' annotations for Timestamp and Duration in Python
+  * Bug fix for FieldMask.MergeFrom() with unset fields.
+  * Make python text_format able to skip unknown fields for repeated messages
+  * Fix segment fault for UPB Pyhon 'in' method of empty repeated extensions
+  * Fix upb to escape DefinitelyNeedsEscape (like " and ') for bytes field
+  * Check with fallback descriptorDB for FindExtensionByNumber()/
+    FindAllExtensions in UPB python pool.
+  * Add clear() method to repeated fields in Python.
+  * Register Scalar/MessageMapContainerTypes as virtual subclasses of
+  * Fix python codegen crash when C++ features are used.
+  * Add more detail to the comment for GetMessageClassesForFiles
+  * Add constructing unpack routine to Python Protobuf Any API.
+  * Implement typing for proto Timestamp/Duration assignments.
+  * Deprecate Descriptor Label. As an alternative, add helper methods
+    for checking whether a field is required or repeated.
+  * Feat(php): improve return typehint when repeatedfield (#11734)
+  * Automated rollback of commit f9863df. (#21355)
+  * Deprecate Descriptor Label. As an alternative, add helper methods
+    for checking whether a field is required or repeated.
+  * Ruby: Allow to get a file descriptor by a file name (#20287)
+  * Feat(php): improve return typehint when repeatedfield (#11734)
+  * See also UPB changes below, which may affect PHP C-Extension.
+  * Fix silent failure of rb_test rules to run test (#21733)
+  * Ruby | Add support for a protobuf debug build (#21060)
+  * Ruby | Support installing the gem via git and some other
+    small build tweaks (#21061)
+  * Deprecate Descriptor Label. As an alternative, add helper methods
+    for checking whether a field is required or repeated.
+  * [Ruby]Implement #to_hash for message classes (#20866)
+  * Drop Ruby 3.0
+  * Fixes #18726 by backslash escaping descriptor data containing #
+    if the hashmark appears immediately before any of $, {, or @.
+  * Ruby: Allow to get a file descriptor by a file name (#20287)
+  * Ruby: fix bug in Map.hash
+  * Ruby | Add support for a protobuf debug build (#21060)
+  * Deprecate Descriptor Label. As an alternative, add helper methods
+    for checking whether a field is required or repeated.
+  * Ruby: Allow to get a file descriptor by a file name (#20287)
+  * Ruby: fix bug in Map.hash
+  * See also UPB changes below, which may affect Ruby C-Extension.
+  * Fixed LTO-only linker error in upb linker arrays.
+  * Deprecate Descriptor Label. As an alternative, add helper methods
+    for checking whether a field is required or repeated.
+  * Add upb_Map_GetMutable API to upb (dd5bf5e)
+  * Fix upb to escape DefinitelyNeedsEscape (like " and ') for bytes field
+  * Upb: delete functions in map_gencode_util. They're unused
+    after the Map iterator API change.
+  * Upb: Update _upb_map_next signature to return a boolean
+    and remove the _nextmutable Map iterator API.
+  * Change upb C generated map iteration function to not
+    hand out MapEntry pointers.
+  * Ruby: Allow to get a file descriptor by a file name (#20287)
+  * Expose the upb_ByteSize function to upb clients. Note that the
+    current naive implementation is no more efficient than serializing
+    the message yourself and noting the resulting size.
+  * Move upb minitable code generator into protoc
+  * Tolerate message set extensions encoded as normal deliminited submessages
+  * Automated rollback of commit 6bde8c4.
+  * Fix UPB fast table build.
+  * Patch rules_ruby to apply neverlink = True to the jars
+    rule (#21416) (#21505)
+  * Restore JDK8 compatibility in Bazel for libraries with
+    dependencies from Maven (e.g. //java/util)
+  * Protobuf: add //:go_features_proto Bazel alias (f79be3e)
+  * Fixes -lpthread problem when building with android_arm64 config (#20337)
+- Bump abseil_min_version to 20250127.0
+- Bump sover to 31_1_0
+- Update list of Java sources for lite build
+
+-------------------------------------------------------------------
 Sun May 25 16:38:17 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 30.2:

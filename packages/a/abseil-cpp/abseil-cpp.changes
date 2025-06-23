@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jun 18 15:35:54 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 20250512.1:
+  * Fix conditional constexpr in ToInt64{Nano|Micro|Milli}seconds
+    under GCC7 and GCC8 using an else clause as a workaround
+  * Fix -Wundef warning
+
+-------------------------------------------------------------------
+Sun May 25 11:21:56 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 20250512.0:
+  * The polyfill types absl::any, absl::optional, and absl::variant
+    are now aliases for std::any, std::optional, and std::variant
+    in all builds.
+  * Added absl::FastTypeId<Type>(), which evaluates at compile-time
+    to a unique id for the passed-in type.
+  * Added absl::endian and absl::byteswap polyfills
+  * Nullability template types are deprecated and will be removed
+    in a future release. The macro-style annotations (absl_nonnull,
+    absl_nullable) should be used instead
+- drop abseil-ciso646.patch, included upstream
+- Now requires C++17. Switch to gcc12 on Leap 15.x and drop
+  options-old.patch and cmake.patch there.
+- It seems futile to keep the separation between the lite and the
+  library package clean, not even internally or for the intended
+  purpose of aligning with protobuf. Split into single packages per
+  library and automate.
+
+-------------------------------------------------------------------
 Fri May  2 16:08:03 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add abseil-ciso646.patch from upstream to avoid gcc15 deprecation

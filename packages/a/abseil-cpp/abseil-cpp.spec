@@ -17,78 +17,153 @@
 #
 
 
-%global soversion so.2501.0.0
-%global lname_suffix 2501_0_0
-%if 0%{?gcc_version} < 7
-%global with_gcc 7
-%endif
+%global soversion so.2505.0.0
+%global lname_suffix 2505_0_0
 Name:           abseil-cpp
-Version:        20250127.1
+Version:        20250512.1
 Release:        0
-Summary:        C++11 libraries which augment the C++ stdlib
+Summary:        C++ libraries which augment the C++ stdlib
 License:        Apache-2.0
 URL:            https://abseil.io/
 Source0:        https://github.com/abseil/abseil-cpp/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch0:         options-cxx17.patch
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc%{?with_gcc}
-BuildRequires:  gcc%{?with_gcc}-c++
 BuildRequires:  pkgconfig
-# PATCH-FIX-OPENSUSE options-{old,cxx17}.patch Ensure ABI stability regardless of compiler options
-%if 0%{?suse_version} && 0%{?suse_version} < 1550
-Patch0:         options-old.patch
-Patch1:         cmake.patch
-%else
-Patch0:         options-cxx17.patch
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc12-c++
 %endif
-# PATCH-FIX-UPSTREAM abseil-ciso646.patch -- avoid deprecation warnings
-Patch2:         abseil-ciso646.patch
 
 %description
-Abseil is a collection of C++11 libraries which augment the C++
-standard library. It also provides features incorporated into C++14
-and C++17 standards.
+Abseil is a collection of C++ libraries which augment the C++ standard
+library. It also provides features incorporated into later C++ standards.
 
-%package -n libabsl_lite_%{lname_suffix}
-Summary:        C++11 libraries which augment the C++ stdlib - lite
-Obsoletes:      abseil-cpp < %{version}-%{release}
-Provides:       abseil-cpp = %{version}-%{release}
-
-%description -n libabsl_lite_%{lname_suffix}
-Abseil is a collection of C++11 libraries which augment the C++
-standard library. It also provides features incorporated into C++14
-and C++17 standards.
-
-This package provides the subset needed by protobuf-lite.
-
-%package -n libabsl_%{lname_suffix}
-Summary:        C++11 libraries which augment the C++ stdlib - others
-Obsoletes:      abseil-cpp < %{version}-%{release}
-Provides:       abseil-cpp = %{version}-%{release}
-
-%description -n libabsl_%{lname_suffix}
-Abseil is a collection of C++11 libraries which augment the C++
-standard library. It also provides features incorporated into C++14
-and C++17 standards.
+%define abseil_libs \
+%abseil_libpackage -l libabsl_base \
+%abseil_libpackage -l libabsl_city \
+%abseil_libpackage -l libabsl_civil_time \
+%abseil_libpackage -l libabsl_cord \
+%abseil_libpackage -l libabsl_cord_internal \
+%abseil_libpackage -l libabsl_cordz_functions \
+%abseil_libpackage -l libabsl_cordz_handle \
+%abseil_libpackage -l libabsl_cordz_info \
+%abseil_libpackage -l libabsl_cordz_sample_token \
+%abseil_libpackage -l libabsl_crc32c \
+%abseil_libpackage -l libabsl_crc_cord_state \
+%abseil_libpackage -l libabsl_crc_cpu_detect \
+%abseil_libpackage -l libabsl_crc_internal \
+%abseil_libpackage -l libabsl_debugging_internal \
+%abseil_libpackage -l libabsl_decode_rust_punycode \
+%abseil_libpackage -l libabsl_demangle_internal \
+%abseil_libpackage -l libabsl_demangle_rust \
+%abseil_libpackage -l libabsl_die_if_null \
+%abseil_libpackage -l libabsl_examine_stack \
+%abseil_libpackage -l libabsl_exponential_biased \
+%abseil_libpackage -l libabsl_failure_signal_handler \
+%abseil_libpackage -l libabsl_flags_commandlineflag \
+%abseil_libpackage -l libabsl_flags_commandlineflag_internal \
+%abseil_libpackage -l libabsl_flags_config \
+%abseil_libpackage -l libabsl_flags_internal \
+%abseil_libpackage -l libabsl_flags_marshalling \
+%abseil_libpackage -l libabsl_flags_parse \
+%abseil_libpackage -l libabsl_flags_private_handle_accessor \
+%abseil_libpackage -l libabsl_flags_program_name \
+%abseil_libpackage -l libabsl_flags_reflection \
+%abseil_libpackage -l libabsl_flags_usage \
+%abseil_libpackage -l libabsl_flags_usage_internal \
+%abseil_libpackage -l libabsl_graphcycles_internal \
+%abseil_libpackage -l libabsl_hash \
+%abseil_libpackage -l libabsl_hashtablez_sampler \
+%abseil_libpackage -l libabsl_int128 -d \-\
+%abseil_libpackage -l libabsl_kernel_timeout_internal \
+%abseil_libpackage -l libabsl_leak_check \
+%abseil_libpackage -l libabsl_log_flags \
+%abseil_libpackage -l libabsl_log_globals \
+%abseil_libpackage -l libabsl_log_initialize \
+%abseil_libpackage -l libabsl_log_internal_check_op \
+%abseil_libpackage -l libabsl_log_internal_conditions \
+%abseil_libpackage -l libabsl_log_internal_fnmatch \
+%abseil_libpackage -l libabsl_log_internal_format \
+%abseil_libpackage -l libabsl_log_internal_globals \
+%abseil_libpackage -l libabsl_log_internal_log_sink_set \
+%abseil_libpackage -l libabsl_log_internal_message \
+%abseil_libpackage -l libabsl_log_internal_nullguard \
+%abseil_libpackage -l libabsl_log_internal_proto \
+%abseil_libpackage -l libabsl_log_internal_structured_proto \
+%abseil_libpackage -l libabsl_log_severity \
+%abseil_libpackage -l libabsl_log_sink \
+%abseil_libpackage -l libabsl_low_level_hash \
+%abseil_libpackage -l libabsl_malloc_internal \
+%abseil_libpackage -l libabsl_periodic_sampler \
+%abseil_libpackage -l libabsl_poison \
+%abseil_libpackage -l libabsl_random_distributions \
+%abseil_libpackage -l libabsl_random_internal_distribution_test_util \
+%abseil_libpackage -l libabsl_random_internal_entropy_pool \
+%abseil_libpackage -l libabsl_random_internal_platform \
+%abseil_libpackage -l libabsl_random_internal_randen \
+%abseil_libpackage -l libabsl_random_internal_randen_hwaes \
+%abseil_libpackage -l libabsl_random_internal_randen_hwaes_impl \
+%abseil_libpackage -l libabsl_random_internal_randen_slow \
+%abseil_libpackage -l libabsl_random_internal_seed_material \
+%abseil_libpackage -l libabsl_random_seed_gen_exception \
+%abseil_libpackage -l libabsl_random_seed_sequences \
+%abseil_libpackage -l libabsl_raw_hash_set \
+%abseil_libpackage -l libabsl_raw_logging_internal \
+%abseil_libpackage -l libabsl_scoped_set_env \
+%abseil_libpackage -l libabsl_spinlock_wait \
+%abseil_libpackage -l libabsl_stacktrace \
+%abseil_libpackage -l libabsl_status \
+%abseil_libpackage -l libabsl_statusor \
+%abseil_libpackage -l libabsl_strerror \
+%abseil_libpackage -l libabsl_str_format_internal \
+%abseil_libpackage -l libabsl_strings \
+%abseil_libpackage -l libabsl_strings_internal \
+%abseil_libpackage -l libabsl_string_view \
+%abseil_libpackage -l libabsl_symbolize \
+%abseil_libpackage -l libabsl_synchronization \
+%abseil_libpackage -l libabsl_throw_delegate \
+%abseil_libpackage -l libabsl_time \
+%abseil_libpackage -l libabsl_time_zone \
+%abseil_libpackage -l libabsl_tracing_internal \
+%abseil_libpackage -l libabsl_utf8_for_code_point \
+%abseil_libpackage -l libabsl_vlog_config_internal \
+%{nil}
+# generator macro for -devel
+%define abseil_libpackage(l:d:) Requires: %{-l*}%{-d*}%{lname_suffix} = %{version}
 
 %package devel
 Summary:        Header files for Abseil
-Requires:       libabsl_%{lname_suffix}
-Requires:       libabsl_lite_%{lname_suffix}
+%{abseil_libs}
 
 %description devel
-Abseil is a collection of C++11 libraries which augment the C++
-standard library.
+Abseil is a collection of C++ libraries which augment the C++ standard
+library.
+
 This package contains headers and build system files for it.
+
+%define abseil_libpackage(l:d:) %package -n %{-l*}%{-d*}%{lname_suffix} \
+Summary: Abseil library lib%{-l*} \
+%description -n %{-l*}%{-d*}%{lname_suffix} \
+This package contains the %{-l*} library for abseil. \
+%files -n %{-l*}%{-d*}%{lname_suffix} \
+%%license LICENSE \
+%{_libdir}/%{-l*}.%{soversion} \
+%ldconfig_scriptlets -n %{-l*}%{-d*}%{lname_suffix} \
+%{nil}
+%{abseil_libs}
 
 %prep
 %autosetup -p1
+# create baselibs.conf
+echo -n "" > %{SOURCE1}
+%define abseil_libpackage(l:d:) echo "%{-l*}%{-d*}%{lname_suffix}" >> %{SOURCE1}
+%{abseil_libs}
 
 %build
-%if 0%{?with_gcc}
-export CC="gcc-%{with_gcc}"
-export CXX="g++-%{with_gcc}"
+%if 0%{?suse_version} < 1600
+export CXX=g++-12
 %endif
 %cmake
 %cmake_build
@@ -99,117 +174,6 @@ export CXX="g++-%{with_gcc}"
 
 %check
 %ctest
-
-# SLE12 doed not define this macro
-%if %{undefined ldconfig_scriptlets}
-%post -n libabsl_lite_%{lname_suffix} -p /sbin/ldconfig
-%postun  -n libabsl_lite_%{lname_suffix} -p /sbin/ldconfig
-
-%post -n libabsl_%{lname_suffix} -p /sbin/ldconfig
-%postun  -n libabsl_%{lname_suffix} -p /sbin/ldconfig
-
-%else
-%ldconfig_scriptlets -n libabsl_lite_%{lname_suffix}
-%ldconfig_scriptlets -n libabsl_%{lname_suffix}
-%endif
-
-%files -n libabsl_lite_%{lname_suffix}
-%license LICENSE
-%{_libdir}/libabsl_base.%{soversion}
-%{_libdir}/libabsl_city.%{soversion}
-%{_libdir}/libabsl_cord.%{soversion}
-%{_libdir}/libabsl_cord_internal.%{soversion}
-%{_libdir}/libabsl_cordz_functions.%{soversion}
-%{_libdir}/libabsl_cordz_handle.%{soversion}
-%{_libdir}/libabsl_cordz_info.%{soversion}
-%{_libdir}/libabsl_crc32c.%{soversion}
-%{_libdir}/libabsl_crc_cord_state.%{soversion}
-%{_libdir}/libabsl_crc_internal.%{soversion}
-%{_libdir}/libabsl_debugging_internal.%{soversion}
-%{_libdir}/libabsl_demangle_internal.%{soversion}
-%{_libdir}/libabsl_examine_stack.%{soversion}
-%{_libdir}/libabsl_exponential_biased.%{soversion}
-%{_libdir}/libabsl_hash.%{soversion}
-%{_libdir}/libabsl_int128.%{soversion}
-%{_libdir}/libabsl_kernel_timeout_internal.%{soversion}
-%{_libdir}/libabsl_log_globals.%{soversion}
-%{_libdir}/libabsl_log_internal_check_op.%{soversion}
-%{_libdir}/libabsl_log_internal_format.%{soversion}
-%{_libdir}/libabsl_log_internal_globals.%{soversion}
-%{_libdir}/libabsl_log_internal_log_sink_set.%{soversion}
-%{_libdir}/libabsl_log_internal_message.%{soversion}
-%{_libdir}/libabsl_log_internal_nullguard.%{soversion}
-%{_libdir}/libabsl_log_internal_proto.%{soversion}
-%{_libdir}/libabsl_log_sink.%{soversion}
-%{_libdir}/libabsl_low_level_hash.%{soversion}
-%{_libdir}/libabsl_malloc_internal.%{soversion}
-%{_libdir}/libabsl_raw_hash_set.%{soversion}
-%{_libdir}/libabsl_raw_logging_internal.%{soversion}
-%{_libdir}/libabsl_spinlock_wait.%{soversion}
-%{_libdir}/libabsl_stacktrace.%{soversion}
-%{_libdir}/libabsl_str_format_internal.%{soversion}
-%{_libdir}/libabsl_strerror.%{soversion}
-%{_libdir}/libabsl_string_view.%{soversion}
-%{_libdir}/libabsl_strings.%{soversion}
-%{_libdir}/libabsl_strings_internal.%{soversion}
-%{_libdir}/libabsl_symbolize.%{soversion}
-%{_libdir}/libabsl_synchronization.%{soversion}
-%{_libdir}/libabsl_throw_delegate.%{soversion}
-%{_libdir}/libabsl_time.%{soversion}
-%{_libdir}/libabsl_time_zone.%{soversion}
-
-%files -n libabsl_%{lname_suffix}
-%license LICENSE
-%{_libdir}/libabsl_bad_any_cast_impl.%{soversion}
-%{_libdir}/libabsl_bad_optional_access.%{soversion}
-%{_libdir}/libabsl_bad_variant_access.%{soversion}
-%{_libdir}/libabsl_civil_time.%{soversion}
-%{_libdir}/libabsl_cordz_sample_token.%{soversion}
-%{_libdir}/libabsl_crc_cpu_detect.%{soversion}
-%{_libdir}/libabsl_decode_rust_punycode.%{soversion}
-%{_libdir}/libabsl_demangle_rust.%{soversion}
-%{_libdir}/libabsl_die_if_null.%{soversion}
-%{_libdir}/libabsl_failure_signal_handler.%{soversion}
-%{_libdir}/libabsl_flags_commandlineflag_internal.%{soversion}
-%{_libdir}/libabsl_flags_commandlineflag.%{soversion}
-%{_libdir}/libabsl_flags_config.%{soversion}
-%{_libdir}/libabsl_flags_internal.%{soversion}
-%{_libdir}/libabsl_flags_marshalling.%{soversion}
-%{_libdir}/libabsl_flags_parse.%{soversion}
-%{_libdir}/libabsl_flags_private_handle_accessor.%{soversion}
-%{_libdir}/libabsl_flags_program_name.%{soversion}
-%{_libdir}/libabsl_flags_reflection.%{soversion}
-%{_libdir}/libabsl_flags_usage_internal.%{soversion}
-%{_libdir}/libabsl_flags_usage.%{soversion}
-%{_libdir}/libabsl_graphcycles_internal.%{soversion}
-%{_libdir}/libabsl_hashtablez_sampler.%{soversion}
-%{_libdir}/libabsl_leak_check.%{soversion}
-%{_libdir}/libabsl_log_entry.%{soversion}
-%{_libdir}/libabsl_log_flags.%{soversion}
-%{_libdir}/libabsl_log_initialize.%{soversion}
-%{_libdir}/libabsl_log_internal_conditions.%{soversion}
-%{_libdir}/libabsl_log_internal_fnmatch.%{soversion}
-%{_libdir}/libabsl_log_internal_structured_proto.%{soversion}
-%{_libdir}/libabsl_log_severity.%{soversion}
-%{_libdir}/libabsl_periodic_sampler.%{soversion}
-%{_libdir}/libabsl_poison.%{soversion}
-%{_libdir}/libabsl_random_distributions.%{soversion}
-%{_libdir}/libabsl_random_internal_distribution_test_util.%{soversion}
-%{_libdir}/libabsl_random_internal_platform.%{soversion}
-%{_libdir}/libabsl_random_internal_pool_urbg.%{soversion}
-%{_libdir}/libabsl_random_internal_randen_hwaes_impl.%{soversion}
-%{_libdir}/libabsl_random_internal_randen_hwaes.%{soversion}
-%{_libdir}/libabsl_random_internal_randen_slow.%{soversion}
-%{_libdir}/libabsl_random_internal_randen.%{soversion}
-%{_libdir}/libabsl_random_internal_seed_material.%{soversion}
-%{_libdir}/libabsl_random_seed_gen_exception.%{soversion}
-%{_libdir}/libabsl_random_seed_sequences.%{soversion}
-%{_libdir}/libabsl_scoped_set_env.%{soversion}
-%{_libdir}/libabsl_statusor.%{soversion}
-%{_libdir}/libabsl_status.%{soversion}
-%{_libdir}/libabsl_tracing_internal.%{soversion}
-%{_libdir}/libabsl_utf8_for_code_point.%{soversion}
-%{_libdir}/libabsl_vlog_config_internal.%{soversion}
 
 %files devel
 %license LICENSE

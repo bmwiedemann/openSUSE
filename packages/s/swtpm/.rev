@@ -346,4 +346,12 @@
     <comment>Fix build without %check (boo#1227364) (forwarded request 1229015 from bmwiedemann)</comment>
     <requestid>1229046</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>53911ab4dd414a2c47887049a6cd287e</srcmd5>
+    <version>0.10.1</version>
+    <time>1750683034</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1287567</requestid>
+  </revision>
 </revisionlist>

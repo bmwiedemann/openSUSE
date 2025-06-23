@@ -97,9 +97,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
 # exclude tests based on fonttool
+# and also nametabletest - https://github.com/silnrsi/graphite/issues/96
 cd build
 ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags} \
-    -E "padaukcmp1|chariscmp1|chariscmp2|annacmp1|schercmp1|awamicmp1|awamicmp2|awamicmp3"
+    -E "padaukcmp1|chariscmp1|chariscmp2|annacmp1|schercmp1|awamicmp1|awamicmp2|awamicmp3|nametabletest"
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

@@ -185,4 +185,13 @@
   * CI fixes</comment>
     <requestid>1225137</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>26b31130618539d0b1ba3d36949ed146</srcmd5>
+    <version>3.0.0</version>
+    <time>1750683042</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1287120</requestid>
+  </revision>
 </revisionlist>

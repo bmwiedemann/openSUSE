@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 16 08:49:29 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.10.1:
+  + swtpm: Fix build error on 32bit systems due to inconsistent
+    _FILE_OFFSET_BITS.
+  + swtpm_setup:
+    - Use DISTRO_PROFILES_DIR when listing profiles (fix path
+      issue).
+    - Do not pass a TPM 2 profile to swtpm when reconfiguring.
+  + selinux:
+    - Add rule for swtpm to be able to read password from pipe.
+    - allow to map state file.
+    - add NFS permissions for swtpm_t.
+    - Add rule to allow swtpm_t opening of virt_log_t files.
+- Drop 1229131-fix-swtpm-selinux-policy-mismatch.patch: fixed
+  upstream.
+- Add 1027.patch: tests: Retry NVWrite command after 0x922 return
+  code and inc lockout counter.
+
+-------------------------------------------------------------------
 Sat Dec  7 10:16:02 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix build without %check (boo#1227364)

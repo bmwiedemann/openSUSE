@@ -20,7 +20,7 @@
 %define tarname protobuf
 %define patchjuname protobuf-java-util-removescope.patch
 Name:           protobuf-java
-Version:        30.2
+Version:        31.1
 Release:        0
 Summary:        Java Bindings for Google Protocol Buffers
 License:        BSD-3-Clause
@@ -179,6 +179,7 @@ cp \
   core/src/main/java/com/google/protobuf/FloatArrayList.java \
   core/src/main/java/com/google/protobuf/GeneratedMessageInfoFactory.java \
   core/src/main/java/com/google/protobuf/GeneratedMessageLite.java \
+  core/src/main/java/com/google/protobuf/Generated.java \
   core/src/main/java/com/google/protobuf/InlineMe.java \
   core/src/main/java/com/google/protobuf/IntArrayList.java \
   core/src/main/java/com/google/protobuf/Internal.java \
