@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>1221947</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>95f649563f86e3edd3ca4e49c9fdf4ed</srcmd5>
+    <version>2.18.5</version>
+    <time>1750683893</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.18.5:
+  * Custom signature text
+  * Remove oscrypto dependency
+  * Incompatibility with PAdES Signature Validation
+- Switch to pyproject macros.</comment>
+    <requestid>1287765</requestid>
+  </revision>
 </revisionlist>
