@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 19 14:11:41 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.70.1:
+  * Version v1.70.1
+  * docs: DOI grammar error
+  * docs: lib/transform: cleanup formatting
+  * lib/transform: avoid empty charmap entry
+  * chore: fix function name
+  * convmv: fix spurious "error running command echo" on Windows
+  * docs: client-credentials is not support by all backends
+  * Start v1.70.1-DEV development
+
+-------------------------------------------------------------------
 Wed Jun 18 11:24:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.70.0:
