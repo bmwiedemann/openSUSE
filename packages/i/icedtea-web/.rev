@@ -310,4 +310,12 @@
     <comment>Allow building with Java 21</comment>
     <requestid>1286890</requestid>
   </revision>
+  <revision rev="40" vrev="7">
+    <srcmd5>16ca4ea0f76940518e9fce1378908aac</srcmd5>
+    <version>1.8.8</version>
+    <time>1750683686</time>
+    <user>anag_factory</user>
+    <comment>Some more fixes</comment>
+    <requestid>1287479</requestid>
+  </revision>
 </revisionlist>

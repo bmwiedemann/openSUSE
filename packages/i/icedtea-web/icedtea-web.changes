@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jun 20 22:50:20 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Allow building on SLE15-SP1
+- Do not specify package version to the release number
+
+-------------------------------------------------------------------
+Fri Jun 20 22:05:17 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Simplify the spec file and don't transform the binaries, since we
+  are the only provider of javaws
+- Remove leftover defines used for alternatives and the browser
+  plugin
+- Build as noarch, since we are not having any binary or JNI files
+
+-------------------------------------------------------------------
+Fri Jun 20 19:57:40 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * javaws-policy.patch
+    + set all permissions when runing under SecurityManager
+    + allows running https://wpollock.com/AJava/webstart/Demo.jnlp
+      example
+
+-------------------------------------------------------------------
 Thu Jun 19 09:52:41 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Allow building with java <= 21

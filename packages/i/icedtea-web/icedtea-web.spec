@@ -17,12 +17,6 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags} V=1}
-%define javadir     %{_jvmdir}/java
-%define jredir      %{_jvmdir}/jre
-%define javaplugin  libjavaplugin.so.%{_arch}
-%define binsuffix      .itweb
-# Alternatives priority
-%define priority 18000
 Name:           icedtea-web
 Version:        1.8.8
 Release:        0
@@ -37,6 +31,7 @@ Patch2:         reproducible-timestamps.patch
 Patch3:         standalone-pack200.patch
 Patch4:         java17.patch
 Patch5:         java21.patch
+Patch6:         javaws-policy.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
@@ -58,8 +53,6 @@ Requires:       java >= 1.8
 Requires:       pack200
 Requires:       rhino
 Requires:       tagsoup
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Suggests:       %{name}-javadoc
 Obsoletes:      java-1_6_0-openjdk-plugin < %{version}-%{release}
 Obsoletes:      java-1_7_0-openjdk-plugin < %{version}-%{release}
@@ -71,6 +64,7 @@ Provides:       java-1_7_0-openjdk-plugin = %{version}-%{release}
 Provides:       java-1_8_0-openjdk-plugin = %{version}-%{release}
 Provides:       java-1_9_0-openjdk-plugin = %{version}-%{release}
 Provides:       java-plugin = 1.8.0
+BuildArch:      noarch
 
 %description
 The IcedTea-Web project provides a Free Software web browser plugin running
@@ -80,7 +74,6 @@ Web Start, originally based on the NetX project.
 %package javadoc
 Summary:        Java Web Start and plugin implementation (API documentation)
 Group:          Documentation/Other
-BuildArch:      noarch
 
 %description javadoc
 The IcedTea-Web project provides a Free Software web browser plugin running
@@ -100,31 +93,23 @@ rm -f netx/net/sourceforge/jnlp/util/WindowsDesktopEntry.java
 autoreconf -fiv
 export bashcompdir=%{_datadir}/bash-completion/completions
 %configure \
+    --bindir=%{_datadir}/%{name} \
     --disable-native-plugin \
     --disable-pluginjar \
     --docdir=%{_javadocdir}/%{name} \
     --enable-docs \
     --enable-shell-launchers \
-    --program-suffix=%{binsuffix} \
-	--with-itw-libs=BUNDLED \
-    --with-jdk-home=%{javadir} \
-    --with-jre-home=%{jredir} \
+    --with-itw-libs=BUNDLED \
     --with-modularjdk-file=%{_datadir}/%{name} \
-    --with-pack200=%{_bindir}/pack200 \
-    --with-pkgversion=suse-%{release}-%{_arch}
+    --with-pack200=%{_bindir}/pack200
 
 %make_build
 
 %install
 %make_install
 
-# Move man pages to a more specific name
-mv %{buildroot}/%{_mandir}/man1/javaws.1 %{buildroot}/%{_mandir}/man1/javaws%{binsuffix}.1
-mv %{buildroot}/%{_mandir}/man1/itweb-settings.1 %{buildroot}/%{_mandir}/man1/itweb-settings%{binsuffix}.1
-mv %{buildroot}/%{_mandir}/man1/policyeditor.1 %{buildroot}/%{_mandir}/man1/policyeditor%{binsuffix}.1
-
 # Install desktop files.
-install -d -m 755 %{buildroot}%{_datadir}/applications
+install -dm 0755 %{buildroot}%{_datadir}/applications
 desktop-file-install --vendor ''\
   --dir %{buildroot}%{_datadir}/applications javaws.desktop
 desktop-file-install --vendor ''\
@@ -132,12 +117,17 @@ desktop-file-install --vendor ''\
 desktop-file-install --vendor ''\
   --dir %{buildroot}%{_datadir}/applications policyeditor.desktop
 
-# Symlink *.itweb.sh to *.itweb
+# Symlink the scripts to bin directory
+install -dm 0755 %{buildroot}%{_bindir}
 for i in javaws itweb-settings policyeditor; do
-  ln -sf ${i}.itweb.sh %{buildroot}%{_bindir}/${i}.itweb
+  ln -sf %{_datadir}/%{name}/${i}.sh %{buildroot}%{_bindir}/${i}
 done
 
-strip-nondeterminism %{buildroot}%{_datadir}/icedtea-web/javaws.jar
+# Default security policy file
+install -dm 0755 %{buildroot}%{_sysconfdir}/%{name}
+install -pm 0644 javaws.policy %{buildroot}%{_sysconfdir}/%{name}/
+
+strip-nondeterminism %{buildroot}%{_datadir}/%{name}/javaws.jar
 %fdupes %{buildroot}
 
 rm -rf %{buildroot}%{_mandir}/*/man1
@@ -151,29 +141,22 @@ update-desktop-database &> /dev/null || :
 exit 0
 
 %files
-%{_bindir}/itweb-settings%{binsuffix}*
-%{_bindir}/javaws%{binsuffix}*
-%{_bindir}/policyeditor%{binsuffix}*
+%{_bindir}/itweb-settings*
+%{_bindir}/javaws*
+%{_bindir}/policyeditor*
 %{_mandir}/man1/*
 %{_datadir}/applications/itweb-settings.desktop
 %{_datadir}/applications/javaws.desktop
 %{_datadir}/applications/policyeditor.desktop
-%dir %{_datadir}/icedtea-web
-%{_datadir}/icedtea-web/*
+%dir %{_sysconfdir}/%{name}
+%config %{_sysconfdir}/%{name}/*
+%{_datadir}/%{name}
 %{_datadir}/pixmaps/javaws.png
-%dir %{_datadir}/bash-completion/completions
-%{_datadir}/bash-completion/completions/itweb-settings.bash
-%{_datadir}/bash-completion/completions/javaws.bash
-%{_datadir}/bash-completion/completions/policyeditor.bash
-%if %{with plugin}
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/IcedTeaPlugin.so
-%endif
+%{_datadir}/bash-completion/completions
 
 %files javadoc
 %license COPYING
 %doc NEWS README
-%dir %{_javadocdir}/%{name}
-%{_javadocdir}/%{name}/*
+%{_javadocdir}/%{name}
 
 %changelog

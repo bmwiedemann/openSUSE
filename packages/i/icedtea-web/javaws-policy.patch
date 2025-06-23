@@ -1,0 +1,21 @@
+--- icedtea-web-1.8.8/javaws.policy	1970-01-01 01:00:00.000000000 +0100
++++ icedtea-web-1.8.8/javaws.policy	2025-06-20 21:44:05.285616398 +0200
+@@ -0,0 +1,4 @@
++// Based on Oracle JDK policy file
++grant codeBase "file:/usr/share/icedtea-web/javaws.jar" {
++    permission java.security.AllPermission;
++};
+--- icedtea-web-1.8.8/shell-launcher/launchers.sh.in	2025-06-20 21:46:11.533740226 +0200
++++ icedtea-web-1.8.8/shell-launcher/launchers.sh.in	2025-06-20 21:47:26.579809893 +0200
+@@ -189,6 +189,11 @@
+ COMMAND[k]="-Dicedtea-web.bin.location=${BINARY_LOCATION}"
+ k=$((k+1))
+ 
++COMMAND[k]="-Djava.security.manager"
++k=$((k+1))
++COMMAND[k]="-Djava.security.policy=/etc/icedtea-web/javaws.policy"
++k=$((k+1))
++
+ COMMAND[k]="${CLASSNAME}"
+ k=$((k+1))
+ j=0
