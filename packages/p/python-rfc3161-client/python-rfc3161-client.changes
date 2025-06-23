@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 23 07:46:59 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.0.3
+  * Exposed verify_message in the actual Verify interface, not just the
+    implementation
+  * Fixed a bug where verification performed insufficient signature checks on
+    the timestamp response itself, rather than the response's certificate chain
+    (CVE-2025-52556 / bsc#1245174)
+- Update to 1.0.2
+  * Added HashAlgorithm to exports of the base package module
+  * Added verify_message method to Verifier class
+  * Slight refactoring of the tests to ease how to test with multiple TSA
+  * Changed return value of VerifierBuilder.build() from _Verifier to Verifier:
+    This is technically an API change but should have minimal user impact.
+  * Fixed spelling of hash_algorithm parameter in TimestampRequestBuilder class
+
+-------------------------------------------------------------------
 Wed Apr 16 11:31:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.0.1

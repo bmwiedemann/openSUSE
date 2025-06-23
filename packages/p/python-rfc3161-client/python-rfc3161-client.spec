@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-rfc3161-client
-Version:        1.0.1
+Version:        1.0.3
 Release:        0
 Summary:        Python library implementing the Time-Stamp Protocol (TSP) described in RFC 3161
 License:        Apache-2.0
