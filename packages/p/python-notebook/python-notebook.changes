@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jun 20 12:29:56 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.4.3
+  * Jupyter Notebook 7.4 is based on JupyterLab 4.4, and includes a
+    number of new features, bug fixes, and enhancements for
+    extension developers. This release is compatible with
+    extensions supporting JupyterLab 4.0. Extension authors are
+    recommended to consult the Extension Migration Guide which
+    lists deprecations and changes to the public API.
+  * Code console improvements
+  * Settings import and export
+  * Support for collaboration without RTC: drive
+  * Context menu opt-out
+
+-------------------------------------------------------------------
+Sun Apr  6 16:52:20 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.4.0~rc0
+
+-------------------------------------------------------------------
 Sat Dec  7 13:19:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.3.1

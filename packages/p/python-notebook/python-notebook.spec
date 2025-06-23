@@ -1,7 +1,7 @@
 #
 # spec file for package python-notebook
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,8 +32,10 @@ BuildArch:      noarch
 %bcond_with libalternatives
 %endif
 
+%define distversion 7.4.3
+
 Name:           python-notebook%{psuffix}
-Version:        7.3.1
+Version:        7.4.3
 Release:        0
 Summary:        Jupyter Notebook interface
 License:        BSD-3-Clause
@@ -44,13 +46,13 @@ Source100:      python-notebook-rpmlintrc
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch-jupyter-builder >= 0.2}
 BuildRequires:  %{python_module hatchling >= 1.11}
-BuildRequires:  %{python_module jupyterlab >= 4.3.2 with %python-jupyterlab < 4.4}
+BuildRequires:  %{python_module jupyterlab >= 4.4.3 with %python-jupyterlab < 4.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       jupyter-notebook = %{version}
 Requires:       python-tornado >= 6.2
 Requires:       (python-jupyter-server >= 2.4 with python-jupyter-server < 3)
-Requires:       (python-jupyterlab >= 4.3.2 with python-jupyterlab < 4.4)
+Requires:       (python-jupyterlab >= 4.4.3 with python-jupyterlab < 4.5)
 Requires:       (python-jupyterlab-server >= 2.27.1 with python-jupyterlab-server < 3)
 Requires:       (python-notebook-shim >= 0.2 with python-notebook-shim < 0.3)
 Provides:       python-jupyter_notebook = %{version}-%{release}
@@ -59,7 +61,6 @@ Obsoletes:      python-jupyter_notebook < %{version}-%{release}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jupyter-notebook-filesystem
-BuildRequires:  update-desktop-files
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
@@ -92,7 +93,7 @@ This package provides the python interface.
 %package     -n jupyter-notebook
 Summary:        Jupyter Notebook interface
 Group:          Development/Languages/Python
-Requires:       python3dist(notebook) = %{version}
+Requires:       python3dist(notebook) = %{distversion}
 Suggests:       python3-notebook = %{version}
 Conflicts:      python3-jupyter_notebook < 5.7.8
 Provides:       jupyter-notebook-doc = %{version}
@@ -123,7 +124,6 @@ rm %{buildroot}%{_jupyter_labextensions_dir3}/@jupyter-notebook/lab-extension/sc
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/jupyter-notebook
 %python_group_libalternatives jupyter-notebook
-%suse_update_desktop_file jupyter-notebook
 %endif
 
 %if %{with test}

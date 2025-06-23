@@ -396,4 +396,24 @@
     <comment></comment>
     <requestid>1229062</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>65aea36cb8a7cac95721ac804688d2db</srcmd5>
+    <version>7.4.3</version>
+    <time>1750683383</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.4.3
+  * Jupyter Notebook 7.4 is based on JupyterLab 4.4, and includes a
+    number of new features, bug fixes, and enhancements for
+    extension developers. This release is compatible with
+    extensions supporting JupyterLab 4.0. Extension authors are
+    recommended to consult the Extension Migration Guide which
+    lists deprecations and changes to the public API.
+  * Code console improvements
+  * Settings import and export
+  * Support for collaboration without RTC: drive
+  * Context menu opt-out
+
+- Update to 7.4.0~rc0</comment>
+    <requestid>1287228</requestid>
+  </revision>
 </revisionlist>
