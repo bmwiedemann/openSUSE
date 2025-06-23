@@ -186,4 +186,41 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: Update DMCUB fw for DCN401 &amp; DCN315</comment>
     <requestid>1286250</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>78f211ac65832395c45a8bf284d65aaa</srcmd5>
+    <version>20250620</version>
+    <time>1750683344</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250620 (git commit 49c833a10ad9):
+  * amdgpu: update renoir firmware
+  * amdgpu: update vcn 5.0.0 firmware
+  * amdgpu: update smu 14.0.3 firmware
+  * amdgpu: update sdma 7.0.1 firmware
+  * amdgpu: update psp 14.0.3 firmware
+  * amdgpu: update gc 12.0.1 firmware
+  * amdgpu: update navy flounder firmware
+  * amdgpu: update psp 14.0.4 firmware
+  * amdgpu: update gc 11.5.2 firmware
+  * amdgpu: update sienna cichlid firmware
+  * amdgpu: add raven2 ip discovery firmware
+  * amdgpu: update smu 14.0.2 firmware
+  * amdgpu: update sdma 7.0.0 firmware
+  * amdgpu: update psp 14.0.2 firmware
+  * amdgpu: update gc 12.0.0 firmware
+  * amdgpu: update vcn 4.0.6 firmware
+  * amdgpu: update psp 14.0.1 firmware
+  * amdgpu: update gc 11.5.1 firmware
+  * amdgpu: update psp 13.0.11 firmware
+  * amdgpu: update gc 11.0.4 firmware
+  * amdgpu: add picasso ip discovery firmware
+  * amdgpu: add raven ip discovery firmware
+  * amdgpu: update vega20 firmware
+  * amdgpu: update vega12 firmware
+  * amdgpu: update smu 13.0.7 firmware
+  * amdgpu: update vcn 4.0.4 firmware
+  * amdgpu: update psp 13.0.7 firmware
+  * amdgpu: update gc 11.0.2 firmware
+  * amdgpu: update navi14 firmware</comment>
+    <requestid>1287533</requestid>
+  </revision>
 </revisionlist>
