@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jun 17 09:42:04 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to 2.29.0:
+  * Prettified JSON output on the terminal. Pass --no-pretty to
+    disable when using a pseudo-tty.
+  * REPL: improve continuation prompt for incomplete expressions
+  * REPL: load-flake and :reload now work together
+  * Increase retry delays on HTTP 429 Too Many Requests
+  * S3: opt-in the STSProfileCredentialsProvider
+  * Reduce connect timeout for http substituter to 5s
+  * C API: add functions for locking and loading a flake
+  * No longer copy flakes that are in the nix store
+  * Consistently preserve error messages from cached evaluation
+  * Faster blake3 hashing
+  * Fix progress bar for S3 binary caches and make file transfers
+    interruptible
+  * Add host attribute of github/gitlab flakerefs to URL
+    serialization
+  * Multiple signatures support in store urls
+  * nix flake show now skips over import-from-derivation
+  * Add nix formatter build and nix formatter run commands
+  * Amend OSC 8 escape stripping for xterm-style separator
+
+-------------------------------------------------------------------
+Mon Jun  2 11:58:56 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add -doc subpackage
+- Build docs if on x86_64 or aarch64
+
+-------------------------------------------------------------------
 Sun Jun  1 01:50:10 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Enable -Dembedded-sandbox-shell to allow building packages that

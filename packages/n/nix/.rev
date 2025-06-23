@@ -9,4 +9,34 @@ reproducible development environments and strong
 support for software auditability among other things</comment>
     <requestid>1281672</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ff710787dde1d245b9c0ad0f55983e78</srcmd5>
+    <version>2.29.0</version>
+    <time>1750683753</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.29.0:
+  * Prettified JSON output on the terminal. Pass --no-pretty to
+    disable when using a pseudo-tty.
+  * REPL: improve continuation prompt for incomplete expressions
+  * REPL: load-flake and :reload now work together
+  * Increase retry delays on HTTP 429 Too Many Requests
+  * S3: opt-in the STSProfileCredentialsProvider
+  * Reduce connect timeout for http substituter to 5s
+  * C API: add functions for locking and loading a flake
+  * No longer copy flakes that are in the nix store
+  * Consistently preserve error messages from cached evaluation
+  * Faster blake3 hashing
+  * Fix progress bar for S3 binary caches and make file transfers
+    interruptible
+  * Add host attribute of github/gitlab flakerefs to URL
+    serialization
+  * Multiple signatures support in store urls
+  * nix flake show now skips over import-from-derivation
+  * Add nix formatter build and nix formatter run commands
+  * Amend OSC 8 escape stripping for xterm-style separator
+
+- Add -doc subpackage
+- Build docs if on x86_64 or aarch64</comment>
+    <requestid>1287554</requestid>
+  </revision>
 </revisionlist>

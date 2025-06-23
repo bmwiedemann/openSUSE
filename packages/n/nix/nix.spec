@@ -2,6 +2,7 @@
 # spec file for package nix
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Eyad Issa
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +19,15 @@
 
 %global services nix-daemon.socket nix-daemon.service
 
+%ifarch aarch64 x86_64
+  # only build docs on aarch64 and x86_64 (we need mdbook)
+  %bcond_without docs
+%else
+  %bcond_with docs
+%endif
+
 Name:           nix
-Version:        2.28.3
+Version:        2.29.0
 Release:        0
 Summary:        The purely functional package manager
 License:        LGPL-2.1-only
@@ -41,10 +49,10 @@ BuildRequires:  jq
 BuildRequires:  libboost_container-devel
 BuildRequires:  libboost_context-devel
 BuildRequires:  libboost_coroutine-devel
+BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libtool
 BuildRequires:  lowdown
 BuildRequires:  lsof
-BuildRequires:  mdbook
 BuildRequires:  meson
 BuildRequires:  perl-DBD-SQLite
 BuildRequires:  pkgconfig
@@ -68,10 +76,16 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
+# Needed by -Dembedded-sandbox-shell
 Requires:       busybox-static
 Requires:       jq
 %{?systemd_ordering}
 %{?sysusers_requires}
+%if %{with docs}
+BuildRequires:  mdbook
+BuildRequires:  mdbook-linkcheck
+BuildRequires:  rsync
+%endif
 
 %description
 Nix is a powerful package manager for Linux and other Unix systems
@@ -89,6 +103,15 @@ that makes package management reliable and reproducible.
 Please refer to the Nix manual for more details.
 
 This package holds the development files for nix.
+
+%package doc
+Summary:        Documentation for the Nix package manager
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and %{name}-devel)
+BuildArch:      noarch
+
+%description doc
+Documentation for the Nix package manager.
 
 %package bash-completion
 Summary:        Bash completion for %{name}
@@ -142,7 +165,8 @@ echo %{version} > .version
     -Dfunctional-tests=disabled \
     -Dlibcmd:readline-flavor=readline \
     -Dlibstore:embedded-sandbox-shell=true \
-    -Dlibstore:sandbox-shell=busybox-static
+    -Dlibstore:sandbox-shell=busybox-static \
+    %{?with_docs:-Ddoc-gen=true} \
     %{nil}
 
 %meson_build
@@ -192,7 +216,6 @@ echo "%{_libdir}/nix/" > %{buildroot}/%{_sysconfdir}/ld.so.conf.d/nix.conf
 
 %files
 %license COPYING
-%doc *.md
 # config files
 %config(noreplace) %{_sysconfdir}/nix/
 %config %{_sysconfdir}/profile.d/nix-daemon.fish
@@ -200,37 +223,33 @@ echo "%{_libdir}/nix/" > %{buildroot}/%{_sysconfdir}/ld.so.conf.d/nix.conf
 %config %{_sysconfdir}/profile.d/nix.fish
 %config %{_sysconfdir}/profile.d/nix.sh
 # binaries
-%{_bindir}/nix
-%{_bindir}/nix-build
-%{_bindir}/nix-channel
-%{_bindir}/nix-collect-garbage
-%{_bindir}/nix-copy-closure
-%{_bindir}/nix-daemon
-%{_bindir}/nix-env
-%{_bindir}/nix-hash
-%{_bindir}/nix-instantiate
-%{_bindir}/nix-prefetch-url
-%{_bindir}/nix-shell
-%{_bindir}/nix-store
+%{_bindir}/nix*
 # systemd
-%{_unitdir}/nix-daemon.service
-%{_unitdir}/nix-daemon.socket
+%{_unitdir}/nix*
 %{_tmpfilesdir}/nix-daemon.conf
 %{_sysusersdir}/%{name}.conf
-
 # libraries
 %{_libexecdir}/nix/
 %{_libdir}/nix
 %config %{_sysconfdir}/ld.so.conf.d/nix.conf
-
 # custom nix root dir
 %ghost %dir %attr(755,root,root) /nix
 %ghost %dir %attr(755,root,root) /nix%{_localstatedir}
 %ghost %dir %attr(755,root,root) /nix%{_localstatedir}/nix
 %ghost %dir %attr(755,root,root) /nix%{_localstatedir}/nix/daemon-socket
+# manual
+%if %{with docs}
+%{_mandir}/man?/nix*
+%endif
+
+%if %{with docs}
+%files doc
+%{_datadir}/doc/nix/
+%endif
 
 %files devel
 %{_includedir}/nix*.h
+%{_includedir}/nix*.hh
 %{_includedir}/nix/
 %{_libdir}/pkgconfig/nix*
 
