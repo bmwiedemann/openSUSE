@@ -42,4 +42,12 @@
 - remove fix-justfile.patch</comment>
     <requestid>1223148</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1d9ccba226e253934cf1294fda4cbb72</srcmd5>
+    <version>1.2.4</version>
+    <time>1750683696</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1287460</requestid>
+  </revision>
 </revisionlist>
