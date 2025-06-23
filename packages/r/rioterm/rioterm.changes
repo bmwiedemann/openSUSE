@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jun 20 16:05:52 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.20:
+  * update lock files
+  * update releases.md
+  * update release.md
+  * use RWLock to font library instead
+  * add xtgettcap support (#1157)
+  * implement simd support for utf8 operations (#1159)
+  * avoid use fixed format
+  * move 0.2.19 back to com.rioterm.Rio.metainfo.xml
+  * update Minimal stable rust version
+  * remove release from metainfo
+  * fix not finding wayland deps on ci
+  * add rust-toolchain to avoid cache invalidation on ci
+  * update rust to 1.87
+  * update docs
+  * update docs
+  * add one more entry
+  * stop saving empty images in the image cache
+  * flake.lock: Update (#1147)
+  * downgrade rust version to 1.86.0
+  * add CARGO_PROFILE_RELEASE_OPT_LEVEL=s for macos/linux since it breaks windows builds
+  * fix: On MacOS, keybind definition to ignore cmd-w does not work (closes #879)
+  * fix application for macos 26 tahoe
+  * skip winget on releases
+  * add opt-level
+  * update releases and versions
+  * remove start variable
+  * fix line-height adds small gaps for box-drawing characters (#1146)
+  * workaround perf
+  * some perf workaround
+  * add font_cache for preventing unbounded growth
+  * Fix missing pipe operator in doc (#1142)
+  * use Box for errors
+  * flake.lock: Update (#1136)
+  * Docs: fix powershell variable (#1135)
+  * Docs: Enhance Windows config path documentation (#1134)
+  * fixed documentation for default values of window.decorations (#1133)
+  * fix xml format file
+  * add a changelog on readme file
+
+-------------------------------------------------------------------
 Fri Jun 06 13:32:09 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 0.2.18:
