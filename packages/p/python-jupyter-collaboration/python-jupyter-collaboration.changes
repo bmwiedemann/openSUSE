@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Jun 21 16:50:03 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.2
+  * Force analysis of pycrdt_websocket imports, fix types #476
+    (@krassowski)
+  * Fix cleanup logic and suppress repetitive error logs #475
+    (@Darshan808)
+  * Reset dirty state only when the file is saved #472
+    (@Darshan808)
+- Release 4.0.1
+  * Fix version pins in bump script #461 (@brichet)
+  * Fix empty collaborators list when file without icon is opened
+    #465 (@krassowski)
+  * Fix jupyterlab dependency dropped by the version bump script
+    #463 (@krassowski)
+- Release 4.0.0
+  ## Enhancements made
+  * Gracefully handling non-existing fork room #420 (@trungleduc)
+  * Use content providers to remove RTC prefix #418 (@krassowski)
+  * Users item toolbar #379 (@brichet)
+  ## Bugs fixed
+  * Skip saving non-writable files #457 (@Darshan808)
+  * Fix collaborators panel breaking on opening files without known
+    extension #427 (@krassowski)
+  * Fix Timeline Slider Visibility in Status Bar for Certain
+    Documents #423 (@Meriem-BenIsmail)
+  * Fix duplicate collaborator entries in collaboration panel #422
+    (@nzinfo)
+
+-------------------------------------------------------------------
 Tue Feb 25 18:50:34 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Ignore an unraisable exception occuring on python 3.13
