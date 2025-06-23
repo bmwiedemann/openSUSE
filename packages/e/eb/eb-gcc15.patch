@@ -1,0 +1,13 @@
+Index: eb-4.4.3/libebutils/getopt.c
+===================================================================
+--- eb-4.4.3.orig/libebutils/getopt.c
++++ eb-4.4.3/libebutils/getopt.c
+@@ -87,8 +87,6 @@ char *optarg;		/* argument associated wi
+ 
+ #define	EMSG	""
+ 
+-extern char *getenv();
+-
+ static int getopt_internal(int nargc, char * const *nargv,
+     const char *options);
+ static int gcd(int a, int b);
