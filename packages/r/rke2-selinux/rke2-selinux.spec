@@ -42,11 +42,13 @@ Summary:        SELinux policy module for rke2
 Group:          System Environment/Base
 License:        Apache-2.0
 URL:            https://github.com/rancher/rke2-selinux
-Source:         %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
+Source1:        Makefile
+Source2:        PACKAGING_README.md
 
 BuildArch:      noarch
 BuildRequires:  container-selinux >= %{container_policyver}
-BuildRequires:  git
+BuildRequires:  git-core
 BuildRequires:  selinux-policy >= %{selinux_policyver}
 BuildRequires:  selinux-policy-devel >= %{selinux_policyver}
 
@@ -65,7 +67,7 @@ Conflicts:      k3s-selinux
 This package installs and sets up the SELinux policy security module for rke2.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 cd policy/microos

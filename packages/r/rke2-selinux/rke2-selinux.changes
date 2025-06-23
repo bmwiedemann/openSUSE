@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 22 06:58:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add Makefile to make updating the hardcoded versions easier
+
+-------------------------------------------------------------------
 Wed Jun 18 04:58:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.19.stable.1:
