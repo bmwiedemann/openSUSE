@@ -1,7 +1,7 @@
 #
 # spec file for package quick-webapps
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,25 @@
 #
 
 
-%define         appname io.github.elevenhsoft.WebApps
+%define         lic_crate_ver 3.6.0
+%define         lic_data_ver 3.26.0
+%define         appname dev.heppen.webapps
 Name:           quick-webapps
-Version:        0.5.4a+2
+Version:        1.0.2+6
 Release:        0
 Summary:        Web App Manager written with love and libcosmic
 License:        GPL-3.0-only
 URL:            https://github.com/cosmic-utils/web-apps
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+# https://github.com/evenorog/license/issues/6
+Source2:        https://github.com/spdx/license-list-data/archive/refs/tags/v%{lic_data_ver}.tar.gz#/license-list-data-%{version}.tar.gz
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.80
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(xkbcommon)
 Requires:       papirus-icon-theme
@@ -42,14 +45,15 @@ Allows you to simply create web applications from given url working
 inside separate window of your browser of choice.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -b2
+mkdir -p vendor/license-%{lic_crate_ver}+%{lic_data_ver}/license-list-data
+cp -r ../license-list-data-%{lic_data_ver}/* vendor/license-%{lic_crate_ver}+%{lic_data_ver}/license-list-data/
 
 %build
 just build-release
 
 %install
 just rootdir=%{buildroot} prefix=%{_prefix} install
-%suse_update_desktop_file %{appname}
 
 %check
 %{cargo_test}

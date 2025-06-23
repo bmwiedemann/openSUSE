@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 21 17:18:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.2+6:
+  * update dependencies
+  * i18n(nl) update Dutch translation
+  * fix a panic due to blocking code called in async context
+  * fix: remove default value for title and url
+  * bump v1.0.2
+  * reset settings button
+  * fix: themes
+  * adjust flatpak permissions
+- remove BR update-desktop-files
+
+-------------------------------------------------------------------
 Fri Dec 06 04:44:40 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 0.5.4a+2:
