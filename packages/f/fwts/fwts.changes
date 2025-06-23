@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jun 23 08:19:39 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 25.05.00:
+  * fwts: slit: sync up with the slit remove equality checking
+  * acpi: slit: remove the checking of the bi-directional equality
+  * fwts-test: add regression tests for ASPT v2
+  * acpi: aspt: support for the aspt revision 2
+  * fwts-test: sync up the aspt revision 1 update
+  * acpi: aspt: update ASPT tests for official revision 1 specification
+  * lib: fwts_version.h - update to V25.05.00
+  * debian: update changelog
+  * fwts.h: fix typo verision
+  * acpi: madt: fix false FAIL on missing GICC UID for disabled CPUs
+  * dmicheck: add total size read checking below maximum allowed
+  * auto-packager: mkpackage.sh: add questing
+  * autobrightness: fix calloc argument order for GCC 15 compatibility
+  * lib: fwts_memorymap: fix failure to retrieve BIOS memory map from dmesg e820
+  * lib: fwts_memorymap: fix the unchecked end address for strtoull
+  * lib: fwts_log: fix the potential overflow for dumping all log fields
+  * kernelscan: fix structurally unreachable code
+  * opal: fix the unexpected line format
+  * aspm: fix dereference pointer rp_cap before null check
+  * lib/fwts_cpu: correct determination of SEV enablement
+  * acpi: method: Fix _DDC test arguments
+  * cpu/msr: Drop `VM_HSAVE_PA` from consistency checks
+  * ACPICA: Update to version 20250404
+  * efi_runtime: Fix missing pending status update in getwakeuptime
+
+-------------------------------------------------------------------
 Tue Apr  8 10:40:09 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 25.03.00:
