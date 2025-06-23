@@ -17,7 +17,7 @@
 
 
 Name:           gap-io
-Version:        4.9.2
+Version:        4.9.3
 Release:        0
 Summary:        GAP: Bindings for low level C library IO
 License:        GPL-3.0-or-later
