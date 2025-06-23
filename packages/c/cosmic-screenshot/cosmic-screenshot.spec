@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicScreenshot
 Name:           cosmic-screenshot
-Version:        1.0.0~alpha6+0
+Version:        1.0.0~alpha7+0
 Release:        0
 Summary:        Utility for capturing screenshots via XDG Desktop Portal
 License:        GPL-3.0-only
