@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Jun 22 08:27:26 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 1.32.3.1
+  * Fixes:
+    - revert sezero/quakespasm#124 causing crashes
+- Update to version 1.32.3
+  * Fixes:
+    - sezero/quakespasm#124 : Physics/Lerp/Timing Bug Introduced in 0.85.5
+    - #792 : Detach worker threads
+    - #794 : Split update_lightmap shaders in two groups. Fixes rendering
+      issues on RasberryPi
+    - #795 : Crash in Image_LoadImage attempting to load skyboxes
+      Fixes the loading crash of Boss Faction
+  * Improvements:
+    - Added command line option : -pinnedworkers worker0, worker1, ...
+      to limit and pin the worker threads on particular cores.
+      Useful to get a nice a boost on P-Core / E-core architectures, when
+      limiting to E-cores AND pinning give interesting boost, because
+      apparently Win11 at least can't help migrating them all the time
+      everywhere.
+      Examples :
+      - -pinnedworkers 2,8,10,4,11 instantiates 5 workers, pinned on cores
+        2,8,10,4,11 respectively.
+      - On a i5-13500 made of 6x2 P-Cores (core 0-11) + 8 E-cores (cores 12-20)
+        the best perf in Windows 11 is indeed
+        -pinnedworkers 0,1,2,3,4,5,6,7,8,9,10 (leaving 1 free P-Core)
+    - General performance improvements for many-cores, probably only visible
+      on the few behemoth levels we all know of
+    - Other many-core performance improvements oriented to ARM targets
+      (Apple Sillicon, RasberryPi)
+    - Code cleanups
+    - Library updates, thanks to @sezero as usual
+
+-------------------------------------------------------------------
 Thu May  1 16:46:58 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 1.32.2
