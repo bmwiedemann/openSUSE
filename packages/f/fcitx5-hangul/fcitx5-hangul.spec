@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-hangul
-Version:        5.1.6
+Version:        5.1.7
 Release:        0
 Summary:        Hangul Wrapper for Fcitx5
 License:        LGPL-2.1-only
@@ -26,7 +26,11 @@ Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
+%if 0%{?suse_version} >= 1550
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc13-c++
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libhangul-devel
 BuildRequires:  pkgconfig
@@ -45,7 +49,11 @@ Hangul Wrapper for Fcitx5.
 %setup -q
 
 %build
+%if 0%{?suse_version} == 1500
+%cmake -DCMAKE_CXX_COMPILER=%{_bindir}/g++-13
+%else
 %cmake
+%endif
 %make_build
 
 %install
