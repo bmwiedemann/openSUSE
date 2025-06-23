@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun 22 04:00:00 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 9.0.0:
+  * chore(release): v9.0.0
+  * dependencies: specify clap_complete version
+  * feat: create a new binary name for `roast_scm`.
+  * dependencies: remove `walkdir`
+  * fix(tests): add missing fields
+  * feat: add new subcommand `generate-completions-for` using `clap_complete`
+  * dependencies: add clap_complete
+  * workspace: update workspace default members
+  * refactor: `copy_dir_all` should canonicalise the paths to original sources first.
+
+-------------------------------------------------------------------
 Thu Jun 19 10:15:20 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 8.1.5:

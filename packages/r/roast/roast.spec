@@ -17,7 +17,7 @@
 
 
 Name:           roast
-Version:        8.1.5
+Version:        9.0.0
 Release:        0
 Summary:        Simpler tar archiver and extractor
 License:        MPL-2.0
@@ -57,6 +57,39 @@ License:        MPL-2.0
 %description -n obs-service-roast_scm
 Utility to roast remote git repositories as tarball sources.
 
+%package        fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and fish)
+Requires:       %{name}
+Requires:       fish
+BuildArch:      noarch
+
+%description    fish-completion
+Fish command-line completion support for %{name}.
+
+%package        zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+Requires:       %{name}
+Requires:       zsh
+BuildArch:      noarch
+
+%description    zsh-completion
+Zsh command-line completion support for %{name}.
+
+%package        bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and bash-completion)
+Requires:       %{name}
+Requires:       bash-completion
+BuildArch:      noarch
+
+%description    bash-completion
+Bash command-line completion support for %{name}.
+
 %description
 Roast is a simple tar archiver and extractor with very high
 compression settings for supported formats such as zstd.
@@ -90,6 +123,32 @@ install -m0644 raw.service %{buildroot}%{_prefix}/lib/obs/service
 cp -v %{_builddir}/%{buildsubdir}/with_feature_obs/roast_scm %{buildroot}%{_prefix}/lib/obs/service/roast_scm
 install -m0644 roast_scm.service %{buildroot}%{_prefix}/lib/obs/service
 
+# Removes the Roast SCM binary with underscore name in /usr/bin
+rm %{buildroot}/%{_bindir}/roast_scm
+
+export PATH="${PATH:-}:%{buildroot}/%{_bindir}"
+for roast_command in "roast-scm" "roast" "recomprizz" "raw"
+do
+  for shell in "zsh" "bash" "fish"
+  do
+    if [ "$shell" = "bash" ]
+    then
+          mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
+    	$roast_command generate-completions-for "$shell" > %{buildroot}%{_datadir}/bash-completion/completions/${roast_command}.bash
+    fi
+    if [ "$shell" = "zsh" ]
+    then
+          mkdir -p %{buildroot}%{_datadir}/zsh/site-functions/
+    	$roast_command generate-completions-for "$shell" > %{buildroot}%{_datadir}/zsh/site-functions/_${roast_command}
+    fi
+    if [ "$shell" = "fish" ]
+    then
+          mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d/
+    	$roast_command generate-completions-for "$shell" > %{buildroot}%{_datadir}/fish/vendor_completions.d/${roast_command}.fish
+    fi
+  done
+done
+
 %check
 %{cargo_test} --test repro --target-dir %{_builddir}/%{buildsubdir}/target
 %{cargo_test} --test shame --target-dir %{_builddir}/%{buildsubdir}/target
@@ -98,7 +157,7 @@ install -m0644 roast_scm.service %{buildroot}%{_prefix}/lib/obs/service
 %{_bindir}/roast
 %{_bindir}/raw
 %{_bindir}/recomprizz
-%{_bindir}/roast_scm
+%{_bindir}/roast-scm
 %license LICENCE
 %doc     CHANGELOG.md README.md
 
@@ -133,5 +192,20 @@ install -m0644 roast_scm.service %{buildroot}%{_prefix}/lib/obs/service
 %{_prefix}/lib/obs/service/roast_scm.service
 %license LICENCE
 %doc     CHANGELOG.md README.md
+
+%files bash-completion
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/*
+
+%files fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/*
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/*
 
 %changelog

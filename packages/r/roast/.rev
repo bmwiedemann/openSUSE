@@ -485,4 +485,22 @@ package called `obs-service-recomprizz`.</comment>
   * docs: fix README.md. `obs` feature flag only updates the version in the specfile.</comment>
     <requestid>1286895</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b2e2b196426c60475df0768bf2dccfc5</srcmd5>
+    <version>9.0.0</version>
+    <time>1750683810</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 9.0.0:
+  * chore(release): v9.0.0
+  * dependencies: specify clap_complete version
+  * feat: create a new binary name for `roast_scm`.
+  * dependencies: remove `walkdir`
+  * fix(tests): add missing fields
+  * feat: add new subcommand `generate-completions-for` using `clap_complete`
+  * dependencies: add clap_complete
+  * workspace: update workspace default members
+  * refactor: `copy_dir_all` should canonicalise the paths to original sources first.
+</comment>
+    <requestid>1287617</requestid>
+  </revision>
 </revisionlist>
