@@ -191,4 +191,20 @@
 </comment>
     <requestid>1230673</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4129f9e546bcac93d23a0ba071c519e7</srcmd5>
+    <version>1.3.9</version>
+    <time>1750683749</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.3.9:
+  * config: add screencopy:custom_picker_binary
+  * core: move to CProcess from hyprutils
+  * nix: package: replace sdbus-cpp with sdbus-cpp_2
+  * gitignore: add nix result and result-man
+  * housekeeping: nix/overlays.nix
+  * use stable/linux-dmabuf-v1 instead of unstable/linux-dmabuf-unstable-v1
+  * nix/overlays: gcc13 -&gt; gcc14
+</comment>
+    <requestid>1287547</requestid>
+  </revision>
 </revisionlist>

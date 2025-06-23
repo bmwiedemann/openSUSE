@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 21 09:27:18 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.3.9:
+  * config: add screencopy:custom_picker_binary
+  * core: move to CProcess from hyprutils
+  * nix: package: replace sdbus-cpp with sdbus-cpp_2
+  * gitignore: add nix result and result-man
+  * housekeeping: nix/overlays.nix
+  * use stable/linux-dmabuf-v1 instead of unstable/linux-dmabuf-unstable-v1
+  * nix/overlays: gcc13 -> gcc14
+
+-------------------------------------------------------------------
 Sat Nov 16 13:17:52 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 1.3.8:
