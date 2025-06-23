@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-screenshooter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,26 +17,25 @@
 #
 
 
-%define panel_version 4.16.0
+%define xfce_version 4.18.0
 %define plugin screenshooter
-%bcond_with git
 
 Name:           xfce4-screenshooter
-Version:        1.11.1
+Version:        1.11.2
 Release:        0
 Summary:        Screenshot Tool for the Xfce Desktop
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://goodies.xfce.org/projects/applications/xfce4-screenshooter
-Source0:        https://archive.xfce.org/src/apps/xfce4-screenshooter/1.10/%{name}-%{version}.tar.bz2
-# PATCH-FIX-OPENSUSE xfce4-screenshooter-relax-x11-version.patch lower required X11 version to allow building for Leap which only has 1.6.5, which is enough, though
-Patch0:         xfce4-screenshooter-relax-x11-version.patch
+Source0:        https://archive.xfce.org/src/apps/xfce4-screenshooter/1.11/%{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  gettext
+BuildRequires:  help2man
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  update-desktop-files
 BuildRequires:  xfce4-dev-tools
-BuildRequires:  pkgconfig(exo-2) >= 0.12.0
+BuildRequires:  pkgconfig(exo-2) >= %{xfce_version}
 BuildRequires:  pkgconfig(gdk-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.24.0
@@ -44,20 +43,18 @@ BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.42.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
-BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.16.0
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.16.0
+BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{xfce_version}
+BuildRequires:  pkgconfig(libxfce4ui-2) >= %{xfce_version}
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{xfce_version}
+BuildRequires:  pkgconfig(libxfconf-0) >= %{xfce_version}
 BuildRequires:  pkgconfig(pango) >= 1.44.0
-BuildRequires:  pkgconfig(wayland-client) >= 1.15
-BuildRequires:  pkgconfig(wayland-scanner) >= 1.15
-BuildRequires:  pkgconfig(x11) >= 1.6.5
+BuildRequires:  pkgconfig(wayland-client) >= 1.20
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.20
+BuildRequires:  pkgconfig(wayland-scanner) >= 1.20
+BuildRequires:  pkgconfig(x11) >= 1.6.7
 BuildRequires:  pkgconfig(xext) >= 1.0.0
 BuildRequires:  pkgconfig(xfixes) >= 4.0.0
 BuildRequires:  pkgconfig(xi) >= 1.7.8
-%if %{with git}
-BuildRequires:  xfce4-dev-tools
-%endif
 Recommends:     %{name}-lang = %{version}-%{release}
 # needs xfhelp4
 Requires:       libxfce4ui-tools
@@ -78,7 +75,7 @@ ZimageZ, a free online image hosting service.
 %package -n xfce4-%{plugin}-plugin
 Summary:        Screenshot Plugin for the Xfce Panel
 Group:          System/GUI/XFCE
-Requires:       xfce4-panel >= %{panel_version}
+Requires:       xfce4-panel >= %{xfce_version}
 Requires:       xfce4-screenshooter = %{version}-%{release}
 # package was renamed in 2019 after Leap 15.1
 Provides:       xfce4-panel-plugin-%{plugin} = %{version}-%{release}
@@ -94,18 +91,11 @@ This package contains the xfce4-screenshooter Xfce panel plugin.
 %autosetup -p1
 
 %build
-%if %{with git}
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-  --enable-maintainer-mode \
-  --disable-static
-%else
-%configure --disable-static
-%endif
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 rm -f %{buildroot}%{_libdir}/xfce4/panel/plugins/libscreenshooterplugin.la
 
@@ -124,9 +114,6 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 %{_datadir}/icons/hicolor/*
 %{_datadir}/applications/xfce4-screenshooter.desktop
 %{_datadir}/metainfo/xfce4-screenshooter.appdata.xml
-%dir %{_libexecdir}/xfce4/screenshooter
-%dir %{_libexecdir}/xfce4/screenshooter/scripts
-%{_libexecdir}/xfce4/screenshooter/scripts/imgur-upload.sh
 %{_mandir}/man1/xfce4-screenshooter.1*
 
 %files -n xfce4-%{plugin}-plugin

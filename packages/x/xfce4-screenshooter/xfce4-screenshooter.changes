@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jun 18 12:27:03 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 1.11.2
+  * Fully free a GSList to fix a leak
+  * Fix a string leak in screenshooter_get_filename_for_uri
+  * Properly free a GdkPixbuf to fix a leak
+  * meson-build: Fix manpage install dir
+  * Improve selection background in black surfaces
+  * Fix xfce_resource_save_location leak in main
+  * Replace deprecated exo with libxfce4ui 4.21.0
+  * Remove imgur upload custom action automatically
+  * Fix build with autotools
+  * Drop Imgur custom action
+  * preferences: Add link to the documentation for custom actions
+    examples
+  * Add support to Meson
+  * Update xfce4-screenshooter.1
+  * Fix segfault in another location
+  * Fix segfault when app command is NULL (#132)
+  * Improved imgur upload script
+  * Add support to WL_SHM_FORMAT_BGR888
+  * Check if file was correctly open before using it
+  * Revert "Only restrict file permissions after sucessfully
+    writing them"
+  * Fix blurred preview images at scale >1
+  * Only restrict file permissions after sucessfully writing them
+  * Translation Updates
+- Remove obsolete xfce4-screenshooter-relax-x11-version.patch
+- Remove all bcond_with git code.
+
+-------------------------------------------------------------------
 Tue Jul 30 13:35:43 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 1.11.1
