@@ -1,7 +1,7 @@
 #
 # spec file for package python-ebcdic
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/roskakori/CodecMapper
 Source:         https://github.com/roskakori/CodecMapper/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,10 +47,10 @@ sed -i -e 's:"${basedir}/venv/bin/python":"${PYTHON}":' ../build.xml
 pushd ..
 %python_expand ant ebcdic -DPYTHON="$python"
 popd
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +60,7 @@ export LANG="en_US.UTF8"
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/ebcdic
+%{python_sitelib}/ebcdic-%{version}.dist-info
 
 %changelog
