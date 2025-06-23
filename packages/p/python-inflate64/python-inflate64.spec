@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-inflate64
-Version:        1.0.1
+Version:        1.0.3
 Release:        0
 Summary:        Deflate64 compression/decompression library
 License:        LGPL-2.1-or-later
 URL:            https://codeberg.org/miurahr/inflate64
 Source:         https://files.pythonhosted.org/packages/source/i/inflate64/inflate64-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 45}

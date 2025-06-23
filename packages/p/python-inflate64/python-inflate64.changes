@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 20 10:02:23 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.0.3
+  - Add readthedocs manual page.
+  - Publish Python 3.13 wheels.
+  - Fix GitHub Actions CI/CD script for aarch64.
+- Changes from 1.0.2
+  - Published to PyPI using GItHub Actions as a trusted publisher
+  - Add GitHub Actions CI/CD script
+  - Drop Azure Pipelines CI/CD
+
+-------------------------------------------------------------------
 Mon Jan 13 09:45:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.0.1
