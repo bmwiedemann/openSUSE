@@ -51,7 +51,7 @@ Author:
 
 %build
 perl Makefile.PL 
-make %{?jobs:-j%jobs}
+%make_build
 
 %check
 make test
