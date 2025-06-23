@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jun 20 12:10:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 8.37
+  * Fixes an error were a warning about virtualenvs was incorrectly triggered.
+  * Fixes an issue on Python 3.12+ with post mortem debugging.
+  * Fixes a bug where magics were ignoring SIGINT
+  * Fixes an issue where magics would not display all subprocess output.
+  * Fixed auto-suggestion on Prompt Toolkit < 3.0.49
+  * Fixed Python 3.13 compatibility of local_ns
+  * Improved Qt object management and performance
+  * Better documentation and configurability of LLM completions
+  * Fixed right arrow incorrectly accepting invisible auto-suggestions
+  * Fixed Qt backend crash
+  * Fixed tab-completion of global variables in lines with a dot when jedi is off
+  * Fixed LLM request number always being set to zero and removed spurious logging
+  * Passes current input history to LLMs
+  * Fixed interruption of %%time and %%debug magics
+  * Removed spurious empty lines from prefix passed to LLM, and separated part
+    after cursor into the suffix
+  * Eliminate startup delay when LLM completion provider is configured
+  * Fix attribute completion for expressions with comparison operators
+
+-------------------------------------------------------------------
 Tue Jan 28 13:13:39 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
 
 - Update to 8.31

@@ -33,7 +33,7 @@
 %bcond_with localtest
 %{?sle15_python_module_pythons}
 Name:           python-ipython%{psuffix}
-Version:        8.31.0
+Version:        8.37.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
