@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Apr 24 17:57:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * i18n - Update portuguese translations
+  * Enable tokio/sync and url/serde features
+  * Minor translation fixes
+  * i18n(ro): Add Romanian translation
+  * Update cosmic_player.ftl
+  * Update cosmic_player.ftl
+  * feat(controls): Hide header bar if no mouse movement
+  * fix bug: string
+  * i18n(zh-TW): add zh-TW translation
+  * fix(args): Eliminate the binary from arguments
+  * feat: add help and version flags to argument parser
+  * i18n (pt-BR) Update translations
+  * i18n(zh-CN): update zh-CN translation
+  * Add daemon mode support
+  * Accept a list of URLs in desktop file
+  * add shell.nix file
+  * Playlist with multiple, mixed items
+  * Parse multiple URLs via command line
+  * Update cosmic_player.ftl (jp)
+  * Update cosmic_player.ftl for Japanese
+  * i18n(pt): update portuguese translation
+  * Create cosmic_player.ftl
+  * i18n(it): update italian translation
+  * Updating Irish translations since Decemeber 24
+  * i18n(sk): Add Slovak translations
+  * i18n(de): add German translation
+  * Update Hungarian translations
+
+-------------------------------------------------------------------
 Sat Feb 22 03:27:12 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha6+0:
