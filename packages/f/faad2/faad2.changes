@@ -1,0 +1,301 @@
+-------------------------------------------------------------------
+Fri Jun 20 07:24:46 UTC 2025 - Bjørn Lie <zaitor@opensuse.org>
+
+- Install/package devel manpage.
+- Drop the strict version-release format for devel package Provides
+  and Obsoletes.
+- Add baselibs.conf to sources in spec.
+
+-------------------------------------------------------------------
+Mon Mar  3 03:03:03 UTC 2025 - olaf@aepfle.de
+
+- Update to version 2.11.2
+  See included ChangeLog for details
+
+-------------------------------------------------------------------
+Thu Oct  5 08:33:32 UTC 2023 - Bjørn Lie <zaitor@opensuse.org>
+
+- Update to version 2.10.1:
+  * Reject buffers of zero size.
+  * Fix 7.1 with PCE mapping.
+  * Have proper version string in faad.h.
+  * Add conditional build with DRC.
+- Update URL to new home.
+
+-------------------------------------------------------------------
+Sat Nov 28 13:22:22 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.10.0
+  * mp4read.c: fix stack-buffer-overflow in stringin()/ftypin()
+  * fix heap-buffer-overflow in mp4read.c
+  * Remove non-ASCII characters
+  * Remove trailing whitespace
+  * Check return value of ltp_data.
+  * Restrict SBR frame length to 960 and 1024 samples.
+  * Support object type 29.
+  * Support implicit SBR signaling in frontend.
+  * Fix PNS decoding when only right channel is noise.
+  * Initialize element_id array with an invalid id.
+  * Fix NULL pointer dereferences.
+  * Fix infinite loop in adts_parse.
+  * Fix infinite loop in huffman_getescape.
+  * Check for error after each channel decode.
+  * Check for inconsistent number of channels.
+- Drop faad2-fix-stack-overflow.patch (merged upstream)
+- Refresh faad2-PACKAGE_VERSION.patch to make it future-proof
+
+-------------------------------------------------------------------
+Tue Aug 25 18:59:46 UTC 2020 - Bjørn Lie <zaitor@opensuse.org>
+
+- Add faad2-fix-stack-overflow.patch: mp4read.c: fix
+  stack-buffer-overflow in stringin()/ftypin().
+
+-------------------------------------------------------------------
+Thu Jun  4 14:02:05 UTC 2020 - aloisio@gmx.com
+
+- Buildrequire pkgconfig to make sure faad2.pc is properly indexed.
+
+-------------------------------------------------------------------
+Tue Jun  2 08:20:55 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.9.2
+  * Only use x86-assembly when explicitly on x86
+  * Use unsigned integers correctly
+  * Initialize pointers that might otherwise not be
+  * update README esp. WRT directory structure
+  * fix compilation without SBR/PS_DEC (#48)
+  * fix compilation with LC_ONLY_DECODER (#47)
+  * fix "inline function 'cfftf1' declared but never defined"
+    compiler warning
+  * fix some inconsistencies in the frontend output
+  * mp4read_open: add check for failed frame buffer allocation
+  * stszin: add check for allocation error and integer overflow
+  * add a pkg-config file
+  * frontend: address compile warning + add missing LF (#50)
+  * library name is faad (#52)
+  * Unbreak PS audio (#51)
+- Refresh faad2-PACKAGE_VERSION.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
+Thu Feb 13 08:58:00 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.9.1
+  * Include stdio.h in libfaad/ps_dec.c for stderr (Michael Fink)
+  * Fix Tille -> Title typo in frontend/mp4read.c (Alexander Thomas)
+  * Build system fixes and code clean-up 
+  * Fix compiler warnings and code indentation
+  * Fix compilation with GCC <= 4.7.3
+  * MSVC solution file clean-up
+  * Fix compilation with GCC 4.7.4
+  * Fix compilation with MinGW
+  * MSVC 2017 project file update
+  * Fix crash with unsupported MP4 files (NULL pointer dereference,
+  * division by zero)
+  * CVE-2019-6956: ps_dec: sanitize iid_index before mixing
+  * CVE-2018-20196: sbr_fbt: sanitize sbr->M (should not exceed MAX_M)
+  * CVE-2018-20199, CVE-2018-20360: specrec: better handle unexpected
+  * parametric stereo (PS)
+  * CVE-2018-20362, CVE-2018-19504, CVE-2018-20195, CVE-2018-20198,
+  * CVE-2018-20358: syntax.c: check for syntax element inconsistencies
+  * CVE-2018-20194, CVE-2018-19503, CVE-2018-20197, CVE-2018-20357,
+  * CVE-2018-20359, CVE-2018-20361: sbr_hfadj: sanitize frequency band
+  * borders
+  * CVE-2019-15296, CVE-2018-19502: Fix a couple buffer overflows
+  * Prevent crash on SCE followed by CPE
+  * Fix linking with GCC 9 and "-Wl,--as-needed"
+  * Enable the frontend to be built reproducibly
+- Drop patches: Fix-a-couple-buffer-overflows.patch,
+                syntax.c-check-for-syntax-element-inconsistencies.patch
+                sbr_hfadj-sanitize-frequency-band-borders.patch
+  merged by upstream.
+- Drop faad2-pic-fix.patch, all files are non-existent which need to be patched.
+
+-------------------------------------------------------------------
+Thu Aug 29 15:40:36 UTC 2019 - Bjørn Lie <zaitor@opensuse.org>
+
+- Add patches from debian fixing CVE-2018-20194 and CVE-2018-20362
+  and some buffer owerflows:
+  * Fix-a-couple-buffer-overflows.patch
+  * sbr_hfadj-sanitize-frequency-band-borders.patch
+  * syntax.c-check-for-syntax-element-inconsistencies.patch
+
+-------------------------------------------------------------------
+Sat Dec 30 21:08:23 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.8.8:
+  * Add new files to Makefile.am.
+- Changes from version 2.8.7:
+  * MSVC build fixes.
+  * Fixed a coulple bugs.
+
+-------------------------------------------------------------------
+Sun Nov 26 23:25:40 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.8.6:
+  * No changelog provided by upstream.
+- Rebase faad2-PACKAGE_VERSION.patch.
+- Add faad2-pic-fix.patch: Fix non-PIC objects in libmp4ff.a,
+  following this, trim the CFLAGS export down to just
+  -fno-strict-aliasing.
+- Add %%{libname} = %%{version} Requires to devel subpackage, yet
+  a change to silence rpmlint.
+- Add %%{lib}_drm%%{major} = %%{version} Requires aswell to the
+  devel subpackage.
+
+-------------------------------------------------------------------
+Mon Oct  9 06:53:57 UTC 2017 - hillwood@opensuse.org
+
+- Update to 2.8.5 
+  * another package fix
+  * minor fix to released packages
+  * better autotools support
+  * PNS bug fixed
+  * New MP4 input module
+  * NeAACDecGetVersion: new api function to get version and copyright strings
+  * seeking support for MP4 files
+  * patches and fixed bugs
+- Drop faad2-reproducible-build.patch, upstream merge it.
+- Update faad2-visibility.patch.
+
+-------------------------------------------------------------------
+Sun Feb 26 00:41:57 UTC 2017 - zaitor@opensuse.org
+
+- Add faad2-reproducible-build.patch: Remove
+  '__DATE__' and '__TIME__' to make build more reproducible.
+  Following this, remove sed hack to inject date/time into build.
+
+-------------------------------------------------------------------
+Mon Jul 14 11:09:54 CEST 2014 - olaf@aepfle.de
+
+- disable xmms also in sle11, fails to compile also there
+
+-------------------------------------------------------------------
+Thu May  8 23:58:28 UTC 2014 - crrodriguez@opensuse.org
+
+- faad2-visibility.patch Only public symbols should be
+  exported + fix broken C99 test
+
+-------------------------------------------------------------------
+Tue Apr  3 13:15:27 UTC 2012 - reddwarf@opensuse.org
+
+- Revert previous commit. It just broke something that worked.
+
+-------------------------------------------------------------------
+Mon Mar 26 19:42:25 UTC 2012 - hvogel@opensuse.org
+
+- We only build xmms for evergreen so only build the xmms
+  plugin up to 11.2 
+
+-------------------------------------------------------------------
+Tue Jan 24 17:09:09 UTC 2012 - reddwarf@opensuse.org
+
+- Change License tag to SPDX
+- Remove unneeded autoreconf call
+- Run spec-cleaner
+- Remove unneeded BuildRequires
+
+-------------------------------------------------------------------
+Wed Mar 30 20:12:58 UTC 2011 - reddwarf@opensuse.org
+
+- Remove __DATE__ references to help build-compare
+
+-------------------------------------------------------------------
+Fri Mar  4 22:41:35 UTC 2011 - reddwarf@opensuse.org
+
+- Remove .la files
+- Remove bogus libfaad -> libmp4v2-devel dependency
+- Readd mp4ff (static) lib which it seems was unpackaged by error
+
+-------------------------------------------------------------------
+Tue Nov 24 09:07:39 UTC 2009 - lnussel@suse.de
+
+- some spec file cleanup 
+- add baselibs.conf
+
+-------------------------------------------------------------------
+Sat Aug 22 00:00:00 UTC 2009 - Manfred.Tremmel@iiv.de
+
+- removed old compatibility packages
+
+-------------------------------------------------------------------
+Tue Feb 10 00:00:00 UTC 2009 - Manfred.Tremmel@iiv.de
+
+- update to version 2.7
+
+-------------------------------------------------------------------
+Sat Oct  4 00:00:00 UTC 2008 - Manfred.Tremmel@iiv.de
+
+- disabled drm support, had once again problems with aac playback
+
+-------------------------------------------------------------------
+Sat Sep 20 00:00:00 UTC 2008 - Manfred.Tremmel@iiv.de
+
+- rename of the lib packages
+
+-------------------------------------------------------------------
+Sat Jul  5 00:00:00 UTC 2008 - Manfred.Tremmel@iiv.de
+
+- update to version 2.6.1
+- reenabled drm support, I hope it makes no trouble in this version
+
+-------------------------------------------------------------------
+Sat Feb 24 00:00:00 UTC 2007 - Manfred.Tremmel@iiv.de
+
+- added a patch from Toni <toni@links2linux.de> to include
+  mp4ff lib
+
+-------------------------------------------------------------------
+Sat Feb 17 00:00:00 UTC 2007 - Manfred.Tremmel@iiv.de
+
+- adeed mp4ff.h include
+
+-------------------------------------------------------------------
+Wed Aug 16 00:00:00 UTC 2006 - Manfred.Tremmel@iiv.de
+
+- removed drm support, makes trouble with multichannel aac
+
+-------------------------------------------------------------------
+Mon Aug 14 00:00:00 UTC 2006 - Manfred.Tremmel@iiv.de
+
+- update to verion 2.5
+
+-------------------------------------------------------------------
+Mon Mar 20 00:00:00 UTC 2006 - henne@links2linux.de
+
+- build against mpeg4ip
+- fix buildrequires
+- create mp4player plugin subpackage
+- dont package libmp4v2 anymore. comes from mpeg4ip. should have never been
+  provided by faad2!!!
+
+-------------------------------------------------------------------
+Fri Jan 27 00:00:00 UTC 2006 - Manfred.Tremmel@iiv.de
+
+- added fixes to the gcc 4 patch, thanks to Carl Eugen Hoyos
+
+-------------------------------------------------------------------
+Sun Sep 11 00:00:00 UTC 2005 - Manfred.Tremmel@iiv.de
+
+- added patch to compile with gcc 4 (SUSE 10)
+
+-------------------------------------------------------------------
+Tue Mar  1 00:00:00 UTC 2005 - rainer@links2linux.de
+
+- added mp3ff_int_types.h
+
+-------------------------------------------------------------------
+Wed Aug 18 00:00:00 UTC 2004 - rainer@links2linux.de
+
+- readded xmms plugin
+
+-------------------------------------------------------------------
+Mon Jun 14 00:00:00 UTC 2004 - rainer@links2linux.de
+
+- version 2.0
+
+-------------------------------------------------------------------
+Wed Apr  9 00:00:00 UTC 2003 - henne@links2linux.de
+
+- first build and release
+

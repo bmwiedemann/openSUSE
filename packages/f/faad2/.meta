@@ -1,0 +1,6 @@
+<package name="faad2" project="openSUSE:Factory">
+  <title>Freeware Advanced Audio (AAC) Decoder including SBR decoding</title>
+  <description>FAAD2 is a HE, LC, MAIN and LTP profile, MPEG2 and MPEG-4 AAC decoder.
+FAAD2 includes code for SBR (HE AAC) decoding.</description>
+  <url>https://github.com/knik0/faad2</url>
+</package>
