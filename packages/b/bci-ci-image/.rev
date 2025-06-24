@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of bci-ci-image</comment>
     <requestid>1286422</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f773965d22207a7e417adeca80aac029</srcmd5>
+    <version>unknown</version>
+    <time>1750790912</time>
+    <user>anag_factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1288062</requestid>
+  </revision>
 </revisionlist>
