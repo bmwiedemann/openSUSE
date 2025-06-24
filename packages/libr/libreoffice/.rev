@@ -3681,4 +3681,16 @@ Petr</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1286353</requestid>
   </revision>
+  <revision rev="308" vrev="1">
+    <srcmd5>0e3ffe13a1d92a243bd577fa7681421f</srcmd5>
+    <version>25.2.4.3</version>
+    <time>1750790769</time>
+    <user>anag_factory</user>
+    <comment>- Update to 25.2.4.3:
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/25.2.4/RC1
+    https://wiki.documentfoundation.org/Releases/25.2.4/RC2
+    https://wiki.documentfoundation.org/Releases/25.2.4/RC3</comment>
+    <requestid>1288036</requestid>
+  </revision>
 </revisionlist>

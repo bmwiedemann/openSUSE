@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 23 14:26:59 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 25.2.4.3:
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/25.2.4/RC1
+    https://wiki.documentfoundation.org/Releases/25.2.4/RC2
+    https://wiki.documentfoundation.org/Releases/25.2.4/RC3
+
+-------------------------------------------------------------------
 Mon Jun  9 13:22:26 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Replace usage of %jobs for reproducible builds (boo#1237231)
