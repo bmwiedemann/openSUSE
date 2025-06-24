@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Contextual-Return
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Contextual-Return
-Version:        0.004014
-Release:        0
 %define cpan_name Contextual-Return
+Name:           perl-Contextual-Return
+Version:        0.4.14
+Release:        0
+# 0.004014 -> normalize -> 0.4.14
+%define cpan_version 0.004014
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Create context-sensitive return values
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Contextual-Return/
-Source0:        https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Want)
 BuildRequires:  perl(version)
 Requires:       perl(Want)
 Requires:       perl(version)
+Provides:       perl(Contextual::Return) = %{version}
+Provides:       perl(Contextual::Return::Failure) = 0.0.3
+Provides:       perl(Contextual::Return::Lvalue)
+Provides:       perl(Contextual::Return::Value)
+Provides:       perl(DB)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -85,14 +91,14 @@ the current subroutine is called in the corresponding context:
     }
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -100,7 +106,6 @@ the current subroutine is called in the corresponding context:
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
