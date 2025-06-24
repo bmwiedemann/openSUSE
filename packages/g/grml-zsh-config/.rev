@@ -199,4 +199,16 @@
   * increase scrollback for screen and tmux to 10.000 lines</comment>
     <requestid>1287854</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5a124e404232e0e3c16fa4f9869ae607</srcmd5>
+    <version>0.19.22</version>
+    <time>1750790999</time>
+    <user>anag_factory</user>
+    <comment>- Update tp 0.19.22:
+  * Remove iso2utf/utf2iso and term2iso/term2utf
+  * doc: remove &quot;j&quot; alias
+  * merge grml-scripts-core
+  * cpu-screen: fix max freq</comment>
+    <requestid>1288176</requestid>
+  </revision>
 </revisionlist>

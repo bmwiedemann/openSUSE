@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 24 07:39:40 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update tp 0.19.22:
+  * Remove iso2utf/utf2iso and term2iso/term2utf
+  * doc: remove "j" alias
+  * merge grml-scripts-core
+  * cpu-screen: fix max freq
+
+-------------------------------------------------------------------
 Mon Jun 23 07:05:54 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.21:
