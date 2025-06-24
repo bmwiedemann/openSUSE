@@ -84,4 +84,24 @@
   + Updated translations. (forwarded request 1278984 from iznogood)</comment>
     <requestid>1280011</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>37b823dcb1dc7448db041d2c7bece07a</srcmd5>
+    <version>48.4</version>
+    <time>1750790819</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.4:
+  + Bugs fixed:
+    - shell: Enable digital signing action when document supports
+    - Documentation still mentions possibility of saving the
+      settings
+    - Launch target file
+    - shell: Fix signature banner title
+    - Slideshow presentation is blurry
+    - libview/pps-view: Do not replace the sign cursor on drag-less
+      movements
+    - Saved annotation timestamps tooltips are shown using UTC time
+      in 12-hours format
+  + Updated translations. (forwarded request 1287563 from iznogood)</comment>
+    <requestid>1287865</requestid>
+  </revision>
 </revisionlist>

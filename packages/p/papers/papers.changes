@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jun 21 13:16:27 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.4:
+  + Bugs fixed:
+    - shell: Enable digital signing action when document supports
+    - Documentation still mentions possibility of saving the
+      settings
+    - Launch target file
+    - shell: Fix signature banner title
+    - Slideshow presentation is blurry
+    - libview/pps-view: Do not replace the sign cursor on drag-less
+      movements
+    - Saved annotation timestamps tooltips are shown using UTC time
+      in 12-hours format
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed May 21 08:12:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.3:

@@ -23,7 +23,7 @@
 %define plugin_ver 5
 %define appid org.gnome.Papers
 Name:           papers
-Version:        48.3
+Version:        48.4
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
