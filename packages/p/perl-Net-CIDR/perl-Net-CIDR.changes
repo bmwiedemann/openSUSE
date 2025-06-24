@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 21 05:32:29 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.260.0 (0.26)
+   see /usr/share/doc/packages/perl-Net-CIDR/ChangeLog
+
+  0.26    Sam Varshavchik  <mrsam@courier-mta.com>
+
+  	cidrvalidate() should accept IPv6 addresses with one uncompressed
+  	0.
+
+-------------------------------------------------------------------
 Sat May 24 05:34:50 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.250.0 (0.25)

@@ -41,4 +41,18 @@
   	* Strip leading zeros from octets from addr2cidr</comment>
     <requestid>1279833</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5ca87b6dd2b6349b12dc88378865c36f</srcmd5>
+    <version>0.260.0</version>
+    <time>1750790997</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1288034 from tinita
+
+- updated to 0.260.0 (0.26)
+   see /usr/share/doc/packages/perl-Net-CIDR/ChangeLog
+  0.26    Sam Varshavchik  &lt;mrsam@courier-mta.com&gt;
+  	cidrvalidate() should accept IPv6 addresses with one uncompressed
+  	0.</comment>
+    <requestid>1288172</requestid>
+  </revision>
 </revisionlist>
