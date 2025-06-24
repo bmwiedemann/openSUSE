@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Mon Jun 23 07:04:45 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17:
+  * Drawing performance improvements:
+    + Implemented double buffering
+    + Tie the daamge tracking to the drawing methods
+  * Added missing cyrillic letter from the Ukrainian alphabet
+  * Namespace change, now properly identifies as "wvkbd"
+
+-------------------------------------------------------------------
+Thu Nov 28 07:36:13 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16:
+  * Use overlay mode so keyboard is visible over full-screen windows
+  * Fixes for capslock display
+  * Documentation update
+  * Fixes for visual delay on startup.
+    + Skip the first resize when landscaped while starting.
+    + Fix the initial output geometry guessing
+  * Restore Cairo also when rounding. This fixes some visual glitches.
+  * Accommodate cross-build pkg-config
+  * Make all modifiers except capslock one-shot and redraw keyboard when capslock is pressed
+
+-------------------------------------------------------------------
+Tue Jun 11 09:50:05 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of wvkbd 0.15 for openSUSE
