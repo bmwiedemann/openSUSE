@@ -1,7 +1,7 @@
 #
 # spec file for package python-vulture
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,23 +22,19 @@ Version:        2.13
 Release:        0
 Summary:        Python module for finding dead code
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jendrikseipp/vulture
 Source:         https://files.pythonhosted.org/packages/source/v/vulture/vulture-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Pint
-Requires:       python-tomli
-Requires:       python-typing-extensions
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest > 3.2.3}
 BuildRequires:  %{python_module Pint}
-BuildRequires:  %{python_module tomli}
-BuildRequires:  %{python_module typing-extensions}
 # /SECTION
 %python_subpackages
 
@@ -65,10 +61,10 @@ Features:
 sed -i -e '/^#! \//, 1d' vulture/core.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/vulture
@@ -87,6 +83,7 @@ rm setup.cfg
 %doc CHANGELOG.md README.md
 %license LICENSE.txt
 %python_alternative %{_bindir}/vulture
-%{python_sitelib}/*
+%{python_sitelib}/vulture
+%{python_sitelib}/vulture-%{version}.dist-info
 
 %changelog
