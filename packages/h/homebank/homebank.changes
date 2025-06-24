@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Mon Jun 23 19:31:18 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.9.1:
+  * bugfix: some button icons where too small
+  * bugfix: pending transaction account change was keeping warning
+    on old acc
+  * bugfix: lp#2109861 edit an invalid transfer make the app crash
+  * bugfix: lp#2109854 ledger quick unapproved filter do not show
+    all transaction
+  * bugfix: lp#2109358 paste text in amount with comma separator
+    change it as dot
+  * bugfix: lp#2108847 untranslated periodicity label into
+    scheduling popover
+  * bugfix: lp#2107704 filter presets range wrongly use financial
+    year range
+  * bugfix: lp#2107649 ledger amounts gets wrong with unapproved
+    and approved transaction 
+- Changes in 5.9:
+  * new   : new svg default iconset
+  * new   : new symbolic svg iconset
+  * new   : budget tabview: added import/export menu
+  * new   : budget tabview: added clearall menu
+  * new   : reinforced error handling when loading/saving
+    a .xhb file
+  * new   : preference: amount color can be herited from chart
+    palette
+  * new   : added a ledger tool to mark category sign with amount
+    don't match
+  * change: xhb data file format (v1.6)
+  * change: internal data/display flag separation
+  * change: icon name rework
+  * change: simplified ledger icon status column (reconciled
+    merged with lock)
+  * change: manage account icons was moved to a left column for
+    consistency
+  * change: the preference pages have been organized on 2 levels
+  * change: the last used preferences page is remembered during
+    the session
+  * change: relayout of edit assignment dialog
+  * wish  : lp#2101100 budget report option to exclude subcat from
+    unbudgeted line
+  * wish  : lp#2089475 inherit while managing scheduled
+    transactions
+  * wish  : lp#2083175 balance report to propose an option to
+    include/exclude transfer
+  * wish  : lp#2079857 budget report option to restrict <= today
+  * wish  : lp#2073032 statistic time report detail to focus on
+    row or cell (specific month)
+  * wish  : lp#2070444 possibility to print/export scheduled
+    transactions
+  * wish  : lp#2068845 duplicate a transaction split line
+  * wish  : lp#2068663 include split transaction memos in
+    completion
+  * wish  : lp#2067399 Schedule Transaction for the nth weekday
+    of a Month
+  * wish  : lp#2066993 scheduled payment on last day of month
+  * wish  : lp#2066110 refactor EUR feature for future euro
+    adopters
+  * wish  : lp#2065633 option to keep internal transfer date sync
+  * wish  : lp#2065355 making "remind" status independent of
+    "reconciled" status
+  * wish  : lp#2064958 "Period to date" date range
+  * wish  : lp#2061227 a feature to prevent add/import prior last
+    reconciled date
+  * wish  : lp#2052314 option of background color for future
+    transactions
+  * wish  : lp#2042038 assignment more visible search option
+    (case and regex)
+  * wish  : lp#2042037 manage assignment list search option icons
+    (case and regex)
+  * wish  : lp#1938412 inline calculation in transaction/split
+    amount field
+  * wish  : lp#1875100 option to add/import in pending status and
+    approve later
+  * wish  : lp#1756407 remove -|+ of amount widget + empty
+    if focus
+  * bugfix: post scheduled from main window do not enable save
+  * bugfix: lp#2106307 broken link in the Preferences Dialog 
+  * bugfix: lp#2106027 delete then show usage make a crash in
+    tags manage
+  * bugfix: lp#2105387 no changes in manage accounts faulty count
+    changes
+  * bugfix: lp#2104162 Wrong balance values in Balance Report
+    after changing the interval
+  * bugfix: lp#2102726 Unexpected dates from 'Next payout'
+    automatic posting
+  * bugfix: lp#2101050 transaction sign change with a transfer
+    between accounts
+  * bugfix: lp#2100875 payment filter revert to mobile phone after
+    reopen saved file
+  * bugfix: lp#2100731 budget report time list print result label
+    are incorrect
+  * bugfix: lp#2100489 windows: date problem if you change the
+    short format in regional settings
+  * bugfix: lp#2099918 scheduled with week-end before/after gap
+    post date is incorrect
+  * bugfix: lp#2099843 budget chart wrong color when
+    spend = budget
+  * bugfix: lp#2098359 portable version truncate
+    recently-used.xbel
+
+-------------------------------------------------------------------
 Sat Dec 28 08:09:11 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.8.6:
