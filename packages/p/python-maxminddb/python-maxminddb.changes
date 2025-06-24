@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 17 04:35:55 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+
+-------------------------------------------------------------------
 Wed Apr 30 07:57:16 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.6.3:

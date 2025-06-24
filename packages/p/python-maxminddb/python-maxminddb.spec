@@ -27,6 +27,7 @@ URL:            http://www.maxmind.com/
 Source:         https://files.pythonhosted.org/packages/source/m/maxminddb/maxminddb-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libmaxminddb-devel
@@ -49,10 +50,10 @@ sed -i '/nose/d' setup.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -62,6 +63,6 @@ export CFLAGS="%{optflags}"
 %license LICENSE
 %doc README.rst
 %{python_sitearch}/maxminddb/
-%{python_sitearch}/maxminddb-%{version}*-info
+%{python_sitearch}/maxminddb-%{version}.dist-info
 
 %changelog

@@ -176,4 +176,12 @@
     <comment>update to current version</comment>
     <requestid>1275233</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>2510269d5f091d11dc4652b2d405131e</srcmd5>
+    <version>2.6.3</version>
+    <time>1750790725</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1288132</requestid>
+  </revision>
 </revisionlist>
