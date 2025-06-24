@@ -1,7 +1,7 @@
 #
 # spec file for package python-llfuse
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,15 @@ Version:        1.5.1
 Release:        0
 Summary:        Python Bindings for the low-level FUSE API
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/Python
 URL:            https://github.com/python-llfuse/python-llfuse
 Source:         https://github.com/python-llfuse/python-llfuse/archive/release-%{version}.tar.gz#/python-llfuse-release-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sqlite3}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  fuse-devel >= 2.8.0
@@ -61,11 +62,10 @@ dos2unix README.rst
 # fix-char-cast-to-unsigned-int
 sed -i 's|udata, i, padding_char);|udata, i, (unsigned char)padding_char);|' src/llfuse.c
 sed -i 's|udata, uoffset+i, chars\[i\]);|udata, uoffset+i, (unsigned char)chars\[i\]);|' src/llfuse.c
-
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -77,6 +77,7 @@ sed -i 's|udata, uoffset+i, chars\[i\]);|udata, uoffset+i, (unsigned char)chars\
 %files %{python_files}
 %doc Changes.rst README.rst
 %license LICENSE
-%{python_sitearch}
+%{python_sitearch}/llfuse.cpython-*-linux-gnu.so
+%{python_sitearch}/llfuse-%{version}.dist-info
 
 %changelog

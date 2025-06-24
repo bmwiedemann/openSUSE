@@ -47,4 +47,13 @@
   * Misc. CI and readthedocs related changes.</comment>
     <requestid>1217414</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8c858d7d607dd91d8ce0fd595f874ad0</srcmd5>
+    <version>1.5.1</version>
+    <time>1750790946</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1288121</requestid>
+  </revision>
 </revisionlist>
