@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jun 20 06:43:52 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.23.0:
+  * Add feature parallel, which enables internal parallelization
+    when de-compressing data. When parallel is not used, the old
+    behavior of reading without parallelization is used.
+  * Fix misaligned pointer loads when using Deku.
+  * Fix incorrect assertion about file size.
+  * Use rust library liblzma instead of xz2.
+
+-------------------------------------------------------------------
+Thu Jun 19 09:47:13 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.22.0:
+  * Update deku to v0.19.0
+  * Update MSRV to 1.84
+
+-------------------------------------------------------------------
 Sun Mar  9 11:01:03 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.21.0
