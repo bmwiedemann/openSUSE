@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 16 11:17:47 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.4 Patch 1 - 2025-06-15
+
+- MAJOR BUG FIX: remind: In some circumstances, a REM command could
+  yield a trigger date after its UNTIL date, rather than recognizing it
+  as having expired.  This has been fixed.  Bug found by Ian! D. Allen.
+
+- BUG FIX: rem2pdf: Support the COLOUR special (as well as COLOR).
+
+- MINOR IMPROVEMENT: Add include/utils/add-html-anchors.rem.  You can
+  INCLUDE this file to get HTML anchors added to every calendar day
+  by rem2html.
+
+- DOCUMENTATION: Add NOTE-ABOUT-AI.txt
+
+-------------------------------------------------------------------
 Wed Jun  4 08:39:43 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 5.4 Patch 0 - 2025-06-03
