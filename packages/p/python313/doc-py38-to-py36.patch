@@ -1,28 +1,133 @@
 ---
- Doc/conf.py                             |   17 ++++++++--
- Doc/tools/check-warnings.py             |    3 +
- Doc/tools/extensions/audit_events.py    |   54 ++++++++++++++++----------------
- Doc/tools/extensions/availability.py    |   15 ++++----
- Doc/tools/extensions/c_annotations.py   |   45 ++++++++++++++++----------
- Doc/tools/extensions/glossary_search.py |   10 +----
- Doc/tools/extensions/patchlevel.py      |    9 ++---
- 7 files changed, 87 insertions(+), 66 deletions(-)
+ Doc/Makefile                                  |    8 +--
+ Doc/c-api/arg.rst                             |    1
+ Doc/c-api/typeobj.rst                         |    8 +--
+ Doc/conf.py                                   |   29 ++++++++++---
+ Doc/howto/free-threading-python.rst           |    2
+ Doc/library/doctest.rst                       |    1
+ Doc/library/email.compat32-message.rst        |    1
+ Doc/library/xml.etree.elementtree.rst         |    1
+ Doc/Makefile                                  |    8 +--
+ Doc/c-api/arg.rst                             |    1 
+ Doc/c-api/typeobj.rst                         |    8 +--
+ Doc/conf.py                                   |   29 ++++++++++---
+ Doc/library/doctest.rst                       |    1 
+ Doc/library/email.compat32-message.rst        |    1 
+ Doc/library/xml.etree.elementtree.rst         |    1 
+ Doc/tools/check-warnings.py                   |    5 +-
+ Doc/tools/extensions/audit_events.py          |   56 ++++++++++++++------------
+ Doc/tools/extensions/availability.py          |   15 +++---
+ Doc/tools/extensions/c_annotations.py         |   53 ++++++++++++++++--------
+ Doc/tools/extensions/changes.py               |    8 +--
+ Doc/tools/extensions/glossary_search.py       |   20 ++++++---
+ Doc/tools/extensions/implementation_detail.py |   22 +++-------
+ Doc/tools/extensions/issue_role.py            |   16 ++-----
+ Doc/tools/extensions/misc_news.py             |   14 ++----
+ Doc/tools/extensions/patchlevel.py            |    9 ++--
+ Doc/tools/extensions/pydoc_topics.py          |   22 +++++-----
+ 18 files changed, 159 insertions(+), 130 deletions(-)
 
-Index: Python-3.13.3/Doc/conf.py
+Index: Python-3.13.5/Doc/Makefile
 ===================================================================
---- Python-3.13.3.orig/Doc/conf.py	2025-04-11 21:52:28.845065297 +0200
-+++ Python-3.13.3/Doc/conf.py	2025-04-11 21:55:28.065280454 +0200
-@@ -18,6 +18,9 @@
- # Python specific content from Doc/Tools/extensions/pyspecific.py
- from pyspecific import SOURCE_URI
+--- Python-3.13.5.orig/Doc/Makefile	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/Makefile	2025-06-12 21:38:04.908380762 +0200
+@@ -14,15 +14,15 @@
+ SOURCES      =
+ DISTVERSION  = $(shell $(PYTHON) tools/extensions/patchlevel.py)
+ REQUIREMENTS = requirements.txt
+-SPHINXERRORHANDLING = --fail-on-warning
++SPHINXERRORHANDLING =
  
-+# Needed for fixing extlinks modification
-+from sphinx import version_info as sphinx_version
+ # Internal variables.
+ PAPEROPT_a4     = --define latex_elements.papersize=a4paper
+ PAPEROPT_letter = --define latex_elements.papersize=letterpaper
+ 
+-ALLSPHINXOPTS = --builder $(BUILDER) \
+-                --doctree-dir build/doctrees \
+-                --jobs $(JOBS) \
++ALLSPHINXOPTS = -b $(BUILDER) \
++                -d build/doctrees \
++                -j $(JOBS) \
+                 $(PAPEROPT_$(PAPER)) \
+                 $(SPHINXOPTS) $(SPHINXERRORHANDLING) \
+                 . build/$(BUILDER) $(SOURCES)
+Index: Python-3.13.5/Doc/c-api/arg.rst
+===================================================================
+--- Python-3.13.5.orig/Doc/c-api/arg.rst	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/c-api/arg.rst	2025-06-12 21:38:04.908705133 +0200
+@@ -334,7 +334,6 @@
+    should raise an exception and leave the content of *address* unmodified.
+ 
+    .. c:macro:: Py_CLEANUP_SUPPORTED
+-      :no-typesetting:
+ 
+    If the *converter* returns :c:macro:`!Py_CLEANUP_SUPPORTED`, it may get called a
+    second time if the argument parsing eventually fails, giving the converter a
+Index: Python-3.13.5/Doc/c-api/typeobj.rst
+===================================================================
+--- Python-3.13.5.orig/Doc/c-api/typeobj.rst	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/c-api/typeobj.rst	2025-06-12 21:38:04.908874058 +0200
+@@ -610,7 +610,7 @@
+    Functions like :c:func:`PyObject_NewVar` will take the value of N as an
+    argument, and store in the instance's :c:member:`~PyVarObject.ob_size` field.
+    Note that the :c:member:`~PyVarObject.ob_size` field may later be used for
+-   other purposes. For example, :py:type:`int` instances use the bits of
++   other purposes. For example, :py:obj:`int` instances use the bits of
+    :c:member:`~PyVarObject.ob_size` in an implementation-defined
+    way; the underlying storage and its size should be accessed using
+    :c:func:`PyLong_Export`.
+@@ -622,9 +622,9 @@
+ 
+    Also, the presence of an :c:member:`~PyVarObject.ob_size` field in the
+    instance layout doesn't mean that the instance structure is variable-length.
+-   For example, the :py:type:`list` type has fixed-length instances, yet those
++   For example, the :py:obj:`list` type has fixed-length instances, yet those
+    instances have a :c:member:`~PyVarObject.ob_size` field.
+-   (As with :py:type:`int`, avoid reading lists' :c:member:`!ob_size` directly.
++   (As with :py:obj:`int`, avoid reading lists' :c:member:`!ob_size` directly.
+    Call :c:func:`PyList_Size` instead.)
+ 
+    The :c:member:`!tp_basicsize` includes size needed for data of the type's
+@@ -637,7 +637,7 @@
+    In other words, :c:member:`!tp_basicsize` must be greater than or equal
+    to the base's :c:member:`!tp_basicsize`.
+ 
+-   Since every type is a subtype of :py:type:`object`, this struct must
++   Since every type is a subtype of :py:obj:`object`, this struct must
+    include :c:type:`PyObject` or :c:type:`PyVarObject` (depending on
+    whether :c:member:`~PyVarObject.ob_size` should be included). These are
+    usually defined by the macro :c:macro:`PyObject_HEAD` or
+Index: Python-3.13.5/Doc/conf.py
+===================================================================
+--- Python-3.13.5.orig/Doc/conf.py	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/conf.py	2025-06-12 21:38:04.909609597 +0200
+@@ -11,6 +11,8 @@
+ from importlib import import_module
+ from importlib.util import find_spec
+ 
++from sphinx import version_info
 +
- # General configuration
- # ---------------------
+ # Make our custom extensions available to Sphinx
+ sys.path.append(os.path.abspath('tools/extensions'))
+ sys.path.append(os.path.abspath('includes'))
+@@ -57,11 +59,11 @@
+     import _tkinter
+ except ImportError:
+     _tkinter = None
+-# Treat warnings as errors, done here to prevent warnings in Sphinx code from
+-# causing spurious CPython test failures.
+-import warnings
+-warnings.simplefilter('error')
+-del warnings
++# # Treat warnings as errors, done here to prevent warnings in Sphinx code from
++# # causing spurious CPython test failures.
++# import warnings
++# warnings.simplefilter('error')
++# del warnings
+ '''
  
-@@ -92,7 +95,7 @@
+ manpages_url = 'https://manpages.debian.org/{path}'
+@@ -92,7 +94,7 @@
  
  # Minimum version of sphinx required
  # Keep this version in sync with ``Doc/requirements.txt``.
@@ -31,7 +136,17 @@ Index: Python-3.13.3/Doc/conf.py
  
  # Create table of contents entries for domain objects (e.g. functions, classes,
  # attributes, etc.). Default is True.
-@@ -361,7 +364,7 @@
+@@ -323,6 +325,9 @@
+ # Avoid a warning with Sphinx >= 4.0
+ root_doc = 'contents'
+ 
++# Compatibility on old Sphinx
++suppress_warnings = ['pygments.ParserNotFound']
++
+ # Allow translation of index directives
+ gettext_additional_targets = [
+     'index',
+@@ -362,7 +367,7 @@
  # (See .readthedocs.yml and https://docs.readthedocs.io/en/stable/reference/environment-variables.html)
  is_deployment_preview = os.getenv("READTHEDOCS_VERSION_TYPE") == "external"
  repository_url = os.getenv("READTHEDOCS_GIT_CLONE_URL", "")
@@ -40,11 +155,11 @@ Index: Python-3.13.3/Doc/conf.py
  html_context = {
      "is_deployment_preview": is_deployment_preview,
      "repository_url": repository_url or None,
-@@ -606,6 +609,16 @@
+@@ -607,6 +612,16 @@
  }
  extlinks_detect_hardcoded_links = True
  
-+if sphinx_version[:2] < (8, 1):
++if version_info[:2] < (8, 1):
 +   # Sphinx 8.1 has in-built CVE and CWE roles.
 +   extlinks.update({
 +        "cve": (
@@ -57,10 +172,46 @@ Index: Python-3.13.3/Doc/conf.py
  # Options for c_annotations extension
  # -----------------------------------
  
-Index: Python-3.13.3/Doc/tools/check-warnings.py
+Index: Python-3.13.5/Doc/library/doctest.rst
 ===================================================================
---- Python-3.13.3.orig/Doc/tools/check-warnings.py	2025-04-08 15:54:08.000000000 +0200
-+++ Python-3.13.3/Doc/tools/check-warnings.py	2025-04-11 21:55:11.212002463 +0200
+--- Python-3.13.5.orig/Doc/library/doctest.rst	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/library/doctest.rst	2025-06-12 21:38:04.909944989 +0200
+@@ -308,7 +308,6 @@
+ searched.  Objects imported into the module are not searched.
+ 
+ .. attribute:: module.__test__
+-   :no-typesetting:
+ 
+ In addition, there are cases when you want tests to be part of a module but not part
+ of the help text, which requires that the tests not be included in the docstring.
+Index: Python-3.13.5/Doc/library/email.compat32-message.rst
+===================================================================
+--- Python-3.13.5.orig/Doc/library/email.compat32-message.rst	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/library/email.compat32-message.rst	2025-06-12 21:38:04.910320877 +0200
+@@ -7,7 +7,6 @@
+    :synopsis: The base class representing email messages in a fashion
+               backward compatible with Python 3.2
+    :noindex:
+-   :no-index:
+ 
+ 
+ The :class:`Message` class is very similar to the
+Index: Python-3.13.5/Doc/library/xml.etree.elementtree.rst
+===================================================================
+--- Python-3.13.5.orig/Doc/library/xml.etree.elementtree.rst	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/library/xml.etree.elementtree.rst	2025-06-12 21:38:04.910594893 +0200
+@@ -874,7 +874,6 @@
+ 
+ .. module:: xml.etree.ElementTree
+    :noindex:
+-   :no-index:
+ 
+ .. class:: Element(tag, attrib={}, **extra)
+ 
+Index: Python-3.13.5/Doc/tools/check-warnings.py
+===================================================================
+--- Python-3.13.5.orig/Doc/tools/check-warnings.py	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/tools/check-warnings.py	2025-06-12 21:38:04.910896050 +0200
 @@ -228,7 +228,8 @@
              print(filename)
              for warning in warnings:
@@ -71,10 +222,19 @@ Index: Python-3.13.3/Doc/tools/check-warnings.py
                          print("  {line}: {msg}".format_map(match))
          return -1
      return 0
-Index: Python-3.13.3/Doc/tools/extensions/audit_events.py
+@@ -316,7 +317,7 @@
+ 
+     cwd = str(Path.cwd()) + os.path.sep
+     files_with_nits = {
+-        warning.removeprefix(cwd).split(":")[0]
++        (warning[len(cwd):].split(":")[0] if warning.startswith(cwd) else warning.split(":")[0])
+         for warning in warnings
+         if "Doc/" in warning
+     }
+Index: Python-3.13.5/Doc/tools/extensions/audit_events.py
 ===================================================================
---- Python-3.13.3.orig/Doc/tools/extensions/audit_events.py	2025-04-08 15:54:08.000000000 +0200
-+++ Python-3.13.3/Doc/tools/extensions/audit_events.py	2025-04-11 21:55:11.212275615 +0200
+--- Python-3.13.5.orig/Doc/tools/extensions/audit_events.py	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/tools/extensions/audit_events.py	2025-06-12 21:38:04.911151491 +0200
 @@ -1,9 +1,6 @@
  """Support for documenting audit events."""
  
@@ -85,34 +245,42 @@ Index: Python-3.13.3/Doc/tools/extensions/audit_events.py
  
  from docutils import nodes
  from sphinx.errors import NoUri
-@@ -12,12 +9,11 @@
+@@ -12,12 +9,19 @@
  from sphinx.util import logging
  from sphinx.util.docutils import SphinxDirective
  
 -if TYPE_CHECKING:
--    from collections.abc import Iterator
-+from typing import Any, List, Tuple
+-    from collections.abc import Iterator, Set
++from typing import Any, Iterator, List, Set, Tuple
++
++from sphinx.application import Sphinx
++from sphinx.builders import Builder
++from sphinx.environment import BuildEnvironment
++
++# --- The Monkey Patch ---
++def findall_patch(self, *args, **kwargs):
++    """A backwards-compatible findall method that calls traverse."""
++    return self.traverse(*args, **kwargs)
  
 -    from sphinx.application import Sphinx
 -    from sphinx.builders import Builder
 -    from sphinx.environment import BuildEnvironment
-+from sphinx.application import Sphinx
-+from sphinx.builders import Builder
-+from sphinx.environment import BuildEnvironment
++if not hasattr(nodes.Node, 'findall'):
++    nodes.Node.findall = findall_patch
  
  logger = logging.getLogger(__name__)
  
-@@ -32,16 +28,16 @@
+@@ -32,16 +36,16 @@
  
  class AuditEvents:
      def __init__(self) -> None:
 -        self.events: dict[str, list[str]] = {}
--        self.sources: dict[str, list[tuple[str, str]]] = {}
+-        self.sources: dict[str, set[tuple[str, str]]] = {}
 +        self.events: dict[str, List[str]] = {}
-+        self.sources: dict[str, List[Tuple[str, str]]] = {}
++        self.sources: dict[str, Set[Tuple[str, str]]] = {}
  
 -    def __iter__(self) -> Iterator[tuple[str, list[str], tuple[str, str]]]:
-+    def __iter__(self) -> Any:
++    def __iter__(self) -> Iterator[Any]:
          for name, args in self.events.items():
              for source in self.sources[name]:
                  yield name, args, source
@@ -123,16 +291,16 @@ Index: Python-3.13.3/Doc/tools/extensions/audit_events.py
      ) -> None:
          if name in self.events:
              self._check_args_match(name, args)
-@@ -49,7 +45,7 @@
+@@ -49,7 +53,7 @@
              self.events[name] = args
-         self.sources.setdefault(name, []).append(source)
+         self.sources.setdefault(name, set()).add(source)
  
 -    def _check_args_match(self, name: str, args: list[str]) -> None:
 +    def _check_args_match(self, name: str, args: List[str]) -> None:
          current_args = self.events[name]
          msg = (
              f"Mismatched arguments for audit-event {name}: "
-@@ -60,7 +56,7 @@
+@@ -60,7 +64,7 @@
          if len(current_args) != len(args):
              logger.warning(msg)
              return
@@ -141,16 +309,16 @@ Index: Python-3.13.3/Doc/tools/extensions/audit_events.py
              if a1 == a2:
                  continue
              if any(a1 in s and a2 in s for s in _SYNONYMS):
-@@ -73,7 +69,7 @@
+@@ -73,7 +77,7 @@
          name_clean = re.sub(r"\W", "_", name)
          return f"audit_event_{name_clean}_{source_count}"
  
--    def rows(self) -> Iterator[tuple[str, list[str], list[tuple[str, str]]]]:
-+    def rows(self) -> Any:
+-    def rows(self) -> Iterator[tuple[str, list[str], Set[tuple[str, str]]]]:
++    def rows(self) -> Iterator[Any]:
          for name in sorted(self.events.keys()):
              yield name, self.events[name], self.sources[name]
  
-@@ -97,7 +93,7 @@
+@@ -97,7 +101,7 @@
  def audit_events_merge(
      app: Sphinx,
      env: BuildEnvironment,
@@ -159,7 +327,7 @@ Index: Python-3.13.3/Doc/tools/extensions/audit_events.py
      other: BuildEnvironment,
  ) -> None:
      """In Sphinx parallel builds, this merges audit_events from subprocesses."""
-@@ -126,14 +122,16 @@
+@@ -126,14 +130,16 @@
          ),
      ]
  
@@ -182,7 +350,7 @@ Index: Python-3.13.3/Doc/tools/extensions/audit_events.py
          else:
              args = []
          ids = []
-@@ -169,7 +167,7 @@
+@@ -169,7 +175,7 @@
  
  
  class AuditEventListDirective(SphinxDirective):
@@ -191,34 +359,21 @@ Index: Python-3.13.3/Doc/tools/extensions/audit_events.py
          return [audit_event_list()]
  
  
-@@ -181,7 +179,11 @@
-             return
- 
-         table = self._make_table(self.app.builder, self.env.docname)
--        for node in self.document.findall(audit_event_list):
-+        try:
-+            findall = self.document.findall
-+        except AttributeError:
-+            findall = self.document.traverse
-+        for node in findall(audit_event_list):
-             node.replace_self(table)
- 
-     def _make_table(self, builder: Builder, docname: str) -> nodes.table:
-@@ -217,8 +219,8 @@
+@@ -217,8 +223,8 @@
          builder: Builder,
          docname: str,
          name: str,
 -        args: list[str],
--        sources: list[tuple[str, str]],
+-        sources: Set[tuple[str, str]],
 +        args: List[str],
-+        sources: List[Tuple[str, str]],
++        sources: Set[Tuple[str, str]],
      ) -> nodes.row:
          row = nodes.row()
          name_node = nodes.paragraph("", nodes.Text(name))
-Index: Python-3.13.3/Doc/tools/extensions/availability.py
+Index: Python-3.13.5/Doc/tools/extensions/availability.py
 ===================================================================
---- Python-3.13.3.orig/Doc/tools/extensions/availability.py	2025-04-08 15:54:08.000000000 +0200
-+++ Python-3.13.3/Doc/tools/extensions/availability.py	2025-04-11 21:55:11.212578519 +0200
+--- Python-3.13.5.orig/Doc/tools/extensions/availability.py	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/tools/extensions/availability.py	2025-06-12 21:38:04.911376735 +0200
 @@ -1,8 +1,6 @@
  """Support for documenting platform availability"""
  
@@ -272,11 +427,11 @@ Index: Python-3.13.3/Doc/tools/extensions/availability.py
      app.add_directive("availability", Availability)
  
      return {
-Index: Python-3.13.3/Doc/tools/extensions/c_annotations.py
+Index: Python-3.13.5/Doc/tools/extensions/c_annotations.py
 ===================================================================
---- Python-3.13.3.orig/Doc/tools/extensions/c_annotations.py	2025-04-08 15:54:08.000000000 +0200
-+++ Python-3.13.3/Doc/tools/extensions/c_annotations.py	2025-04-11 21:55:11.212780990 +0200
-@@ -9,22 +9,18 @@
+--- Python-3.13.5.orig/Doc/tools/extensions/c_annotations.py	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/tools/extensions/c_annotations.py	2025-06-12 21:38:04.911575881 +0200
+@@ -9,22 +9,26 @@
  * Set ``stable_abi_file`` to the path to stable ABI list.
  """
  
@@ -299,10 +454,18 @@ Index: Python-3.13.3/Doc/tools/extensions/c_annotations.py
 -    from sphinx.application import Sphinx
 -    from sphinx.util.typing import ExtensionMetadata
 +from sphinx.application import Sphinx
++
++# --- The Monkey Patch ---
++def findall_patch(self, *args, **kwargs):
++    """A backwards-compatible findall method that calls traverse."""
++    return self.traverse(*args, **kwargs)
++
++if not hasattr(nodes.Node, 'findall'):
++    nodes.Node.findall = findall_patch
  
  ROLE_TO_OBJECT_TYPE = {
      "func": "function",
-@@ -35,20 +31,20 @@
+@@ -35,20 +39,20 @@
  }
  
  
@@ -327,7 +490,7 @@ Index: Python-3.13.3/Doc/tools/extensions/c_annotations.py
  class StableABIEntry:
      # Role of the object.
      # Source: Each [item_kind] in stable_abi.toml is mapped to a C Domain role.
-@@ -67,7 +63,7 @@
+@@ -67,7 +71,7 @@
      struct_abi_kind: str
  
  
@@ -336,7 +499,7 @@ Index: Python-3.13.3/Doc/tools/extensions/c_annotations.py
      refcount_data = {}
      refcounts = refcount_filename.read_text(encoding="utf8")
      for line in refcounts.splitlines():
-@@ -103,7 +99,7 @@
+@@ -103,7 +107,7 @@
      return refcount_data
  
  
@@ -345,7 +508,7 @@ Index: Python-3.13.3/Doc/tools/extensions/c_annotations.py
      stable_abi_data = {}
      with open(stable_abi_file, encoding="utf8") as fp:
          for record in csv.DictReader(fp):
-@@ -123,11 +119,14 @@
+@@ -123,11 +127,14 @@
              continue
          if not par[0].get("ids", None):
              continue
@@ -362,7 +525,7 @@ Index: Python-3.13.3/Doc/tools/extensions/c_annotations.py
              if ROLE_TO_OBJECT_TYPE[record.role] != objtype:
                  msg = (
                      f"Object type mismatch in limited API annotation for {name}: "
-@@ -234,7 +233,7 @@
+@@ -234,7 +241,7 @@
      )
  
  
@@ -371,7 +534,7 @@ Index: Python-3.13.3/Doc/tools/extensions/c_annotations.py
      classes = ["refcount"]
      if result_refs is None:
          rc = sphinx_gettext("Return value: Always NULL.")
-@@ -254,7 +253,7 @@
+@@ -254,7 +261,7 @@
      optional_arguments = 0
      final_argument_whitespace = True
  
@@ -380,7 +543,7 @@ Index: Python-3.13.3/Doc/tools/extensions/c_annotations.py
          state = self.env.domaindata["c_annotations"]
          content = [
              f"* :c:{record.role}:`{record.name}`"
-@@ -277,13 +276,23 @@
+@@ -277,13 +284,23 @@
      )
  
  
@@ -405,11 +568,50 @@ Index: Python-3.13.3/Doc/tools/extensions/c_annotations.py
      return {
          "version": "1.0",
          "parallel_read_safe": True,
-Index: Python-3.13.3/Doc/tools/extensions/glossary_search.py
+Index: Python-3.13.5/Doc/tools/extensions/changes.py
 ===================================================================
---- Python-3.13.3.orig/Doc/tools/extensions/glossary_search.py	2025-04-08 15:54:08.000000000 +0200
-+++ Python-3.13.3/Doc/tools/extensions/glossary_search.py	2025-04-11 21:55:11.212983043 +0200
-@@ -1,18 +1,14 @@
+--- Python-3.13.5.orig/Doc/tools/extensions/changes.py	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/tools/extensions/changes.py	2025-06-12 21:38:04.911758715 +0200
+@@ -1,7 +1,5 @@
+ """Support for documenting version of changes, additions, deprecations."""
+ 
+-from __future__ import annotations
+-
+ from typing import TYPE_CHECKING
+ 
+ from sphinx.domains.changeset import (
+@@ -25,7 +23,7 @@
+ 
+ 
+ class PyVersionChange(VersionChange):
+-    def run(self) -> list[Node]:
++    def run(self) -> "list[Node]":
+         # Replace the 'next' special token with the current development version
+         self.arguments[0] = expand_version_arg(
+             self.arguments[0], self.config.release
+@@ -43,7 +41,7 @@
+         "Deprecated since version %s, removed in version %s"
+     )
+ 
+-    def run(self) -> list[Node]:
++    def run(self) -> "list[Node]":
+         # Replace the first two arguments (deprecated version and removed version)
+         # with a single tuple of both versions.
+         version_deprecated = expand_version_arg(
+@@ -73,7 +71,7 @@
+             versionlabel_classes[self.name] = ""
+ 
+ 
+-def setup(app: Sphinx) -> ExtensionMetadata:
++def setup(app: "Sphinx") -> "ExtensionMetadata":
+     # Override Sphinx's directives with support for 'next'
+     app.add_directive("versionadded", PyVersionChange, override=True)
+     app.add_directive("versionchanged", PyVersionChange, override=True)
+Index: Python-3.13.5/Doc/tools/extensions/glossary_search.py
+===================================================================
+--- Python-3.13.5.orig/Doc/tools/extensions/glossary_search.py	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/tools/extensions/glossary_search.py	2025-06-12 21:38:04.911907976 +0200
+@@ -1,21 +1,27 @@
  """Feature search results for glossary items prominently."""
  
 -from __future__ import annotations
@@ -430,7 +632,20 @@ Index: Python-3.13.3/Doc/tools/extensions/glossary_search.py
  
  logger = logging.getLogger(__name__)
  
-@@ -52,7 +48,7 @@
++from docutils import nodes
++from sphinx import addnodes
++
++# --- The Monkey Patch ---
++def findall_patch(self, *args, **kwargs):
++    """A backwards-compatible findall method that calls traverse."""
++    return self.traverse(*args, **kwargs)
++
++if not hasattr(nodes.Node, 'findall'):
++    nodes.Node.findall = findall_patch
+ 
+ def process_glossary_nodes(
+     app: Sphinx,
+@@ -52,7 +58,7 @@
      dest.write_text(json.dumps(app.env.glossary_terms), encoding='utf-8')
  
  
@@ -439,10 +654,169 @@ Index: Python-3.13.3/Doc/tools/extensions/glossary_search.py
      app.connect('doctree-resolved', process_glossary_nodes)
      app.connect('build-finished', write_glossary_json)
  
-Index: Python-3.13.3/Doc/tools/extensions/patchlevel.py
+Index: Python-3.13.5/Doc/tools/extensions/implementation_detail.py
 ===================================================================
---- Python-3.13.3.orig/Doc/tools/extensions/patchlevel.py	2025-04-08 15:54:08.000000000 +0200
-+++ Python-3.13.3/Doc/tools/extensions/patchlevel.py	2025-04-11 21:55:11.213150035 +0200
+--- Python-3.13.5.orig/Doc/tools/extensions/implementation_detail.py	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/tools/extensions/implementation_detail.py	2025-06-12 21:38:04.912061736 +0200
+@@ -1,17 +1,10 @@
+ """Support for marking up implementation details."""
+ 
+-from __future__ import annotations
+-
+-from typing import TYPE_CHECKING
+-
+ from docutils import nodes
+ from sphinx.locale import _ as sphinx_gettext
+ from sphinx.util.docutils import SphinxDirective
+ 
+-if TYPE_CHECKING:
+-    from sphinx.application import Sphinx
+-    from sphinx.util.typing import ExtensionMetadata
+-
++from sphinx.application import Sphinx
+ 
+ class ImplementationDetail(SphinxDirective):
+     has_content = True
+@@ -21,23 +14,24 @@
+     label_text = sphinx_gettext("CPython implementation detail:")
+ 
+     def run(self):
+-        self.assert_has_content()
+-        content_nodes = self.parse_content_to_nodes()
++        container_node = nodes.container()
++        container_node.document = self.state.document # Ensure node has document context
++        self.state.nested_parse(self.content, self.content_offset, container_node)
++        parsed_nodes = container_node.children
+ 
+         # insert our prefix at the start of the first paragraph
+-        first_node = content_nodes[0]
++        first_node = parsed_nodes[0]
+         first_node[:0] = [
+             nodes.strong(self.label_text, self.label_text),
+             nodes.Text(" "),
+         ]
+ 
+-        # create a new compound container node
+-        cnode = nodes.compound("", *content_nodes, classes=["impl-detail"])
++        cnode = nodes.compound("", *parsed_nodes, classes=["impl-detail"])
+         self.set_source_info(cnode)
+         return [cnode]
+ 
+ 
+-def setup(app: Sphinx) -> ExtensionMetadata:
++def setup(app: Sphinx):
+     app.add_directive("impl-detail", ImplementationDetail)
+ 
+     return {
+Index: Python-3.13.5/Doc/tools/extensions/issue_role.py
+===================================================================
+--- Python-3.13.5.orig/Doc/tools/extensions/issue_role.py	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/tools/extensions/issue_role.py	2025-06-12 21:38:04.912236134 +0200
+@@ -1,22 +1,18 @@
+ """Support for referencing issues in the tracker."""
+ 
+-from __future__ import annotations
+-
+-from typing import TYPE_CHECKING
++from typing import TYPE_CHECKING, List, Tuple
+ 
+ from docutils import nodes
+ from sphinx.util.docutils import SphinxRole
+ 
+-if TYPE_CHECKING:
+-    from docutils.nodes import Element
+-    from sphinx.application import Sphinx
+-    from sphinx.util.typing import ExtensionMetadata
++from docutils.nodes import Element
++from sphinx.application import Sphinx
+ 
+ 
+ class BPOIssue(SphinxRole):
+     ISSUE_URI = "https://bugs.python.org/issue?@action=redirect&bpo={0}"
+ 
+-    def run(self) -> tuple[list[Element], list[nodes.system_message]]:
++    def run(self) -> Tuple[List[Element], List[nodes.system_message]]:
+         issue = self.text
+ 
+         # sanity check: there are no bpo issues within these two values
+@@ -38,7 +34,7 @@
+ class GitHubIssue(SphinxRole):
+     ISSUE_URI = "https://github.com/python/cpython/issues/{0}"
+ 
+-    def run(self) -> tuple[list[Element], list[nodes.system_message]]:
++    def run(self) -> Tuple[List[Element], List[nodes.system_message]]:
+         issue = self.text
+ 
+         # sanity check: all GitHub issues have ID >= 32426
+@@ -58,7 +54,7 @@
+         return [refnode], []
+ 
+ 
+-def setup(app: Sphinx) -> ExtensionMetadata:
++def setup(app: Sphinx) -> "ExtensionMetadata":
+     app.add_role("issue", BPOIssue())
+     app.add_role("gh", GitHubIssue())
+ 
+Index: Python-3.13.5/Doc/tools/extensions/misc_news.py
+===================================================================
+--- Python-3.13.5.orig/Doc/tools/extensions/misc_news.py	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/tools/extensions/misc_news.py	2025-06-12 21:38:04.912390144 +0200
+@@ -1,7 +1,5 @@
+ """Support for including Misc/NEWS."""
+ 
+-from __future__ import annotations
+-
+ import re
+ from pathlib import Path
+ from typing import TYPE_CHECKING
+@@ -24,13 +22,13 @@
+ +++++++++++
+ """
+ 
+-bpo_issue_re: Final[re.Pattern[str]] = re.compile(
++bpo_issue_re: "Final[re.Pattern[str]]" = re.compile(
+     "(?:issue #|bpo-)([0-9]+)", re.ASCII
+ )
+-gh_issue_re: Final[re.Pattern[str]] = re.compile(
++gh_issue_re: "Final[re.Pattern[str]]" = re.compile(
+     "gh-(?:issue-)?([0-9]+)", re.ASCII | re.IGNORECASE
+ )
+-whatsnew_re: Final[re.Pattern[str]] = re.compile(
++whatsnew_re: "Final[re.Pattern[str]]" = re.compile(
+     r"^what's new in (.*?)\??$", re.ASCII | re.IGNORECASE | re.MULTILINE
+ )
+ 
+@@ -42,7 +40,7 @@
+     final_argument_whitespace = False
+     option_spec = {}
+ 
+-    def run(self) -> list[Node]:
++    def run(self) -> "list[Node]":
+         # Get content of NEWS file
+         source, _ = self.get_source_info()
+         news_file = Path(source).resolve().parent / self.arguments[0]
+@@ -54,7 +52,7 @@
+             return [nodes.strong(text, text)]
+ 
+         # remove first 3 lines as they are the main heading
+-        news_text = news_text.removeprefix(BLURB_HEADER)
++        news_text = news_text[len(BLURB_HEADER):] if news_text.startswith(BLURB_HEADER) else news_text
+ 
+         news_text = bpo_issue_re.sub(r":issue:`\1`", news_text)
+         # Fallback handling for GitHub issues
+@@ -65,7 +63,7 @@
+         return []
+ 
+ 
+-def setup(app: Sphinx) -> ExtensionMetadata:
++def setup(app: "Sphinx") -> "ExtensionMetadata":
+     app.add_directive("miscnews", MiscNews)
+ 
+     return {
+Index: Python-3.13.5/Doc/tools/extensions/patchlevel.py
+===================================================================
+--- Python-3.13.5.orig/Doc/tools/extensions/patchlevel.py	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/tools/extensions/patchlevel.py	2025-06-12 21:38:04.912563631 +0200
 @@ -3,7 +3,7 @@
  import re
  import sys
@@ -480,3 +854,65 @@ Index: Python-3.13.3/Doc/tools/extensions/patchlevel.py
      version = f"{info.major}.{info.minor}"
      release = f"{info.major}.{info.minor}.{info.micro}"
      if info.releaselevel != "final":
+Index: Python-3.13.5/Doc/tools/extensions/pydoc_topics.py
+===================================================================
+--- Python-3.13.5.orig/Doc/tools/extensions/pydoc_topics.py	2025-06-12 21:37:37.257659788 +0200
++++ Python-3.13.5/Doc/tools/extensions/pydoc_topics.py	2025-06-12 21:38:04.912726688 +0200
+@@ -1,21 +1,23 @@
+ """Support for building "topic help" for pydoc."""
+ 
+-from __future__ import annotations
+-
+ from time import asctime
+-from typing import TYPE_CHECKING
++from typing import TYPE_CHECKING, Tuple
+ 
+ from sphinx.builders.text import TextBuilder
+ from sphinx.util import logging
+-from sphinx.util.display import status_iterator
++try:
++    from sphinx.util.display import status_iterator
++except ModuleNotFoundError:
++    from sphinx.util import status_iterator
+ from sphinx.util.docutils import new_document
+ from sphinx.writers.text import TextTranslator
+ 
+-if TYPE_CHECKING:
++try:
++    from typing import Sequence, Set
++except ModuleNotFoundError:
+     from collections.abc import Sequence, Set
+ 
+-    from sphinx.application import Sphinx
+-    from sphinx.util.typing import ExtensionMetadata
++from sphinx.application import Sphinx
+ 
+ logger = logging.getLogger(__name__)
+ 
+@@ -162,7 +164,7 @@
+         self.outdir.joinpath("topics.py").write_text(topics, encoding="utf-8")
+ 
+ 
+-def _display_labels(item: tuple[str, Sequence[tuple[str, str]]]) -> str:
++def _display_labels(item: Tuple[str, Sequence[Tuple[str, str]]]) -> str:
+     _docname, label_ids = item
+     labels = [name for name, _id in label_ids]
+     if len(labels) > 4:
+@@ -170,7 +172,7 @@
+     return ", ".join(labels)
+ 
+ 
+-def _repr(text: str, /) -> str:
++def _repr(text: str) -> str:
+     """Return a triple-single-quoted representation of text."""
+     if "'''" not in text:
+         return f"r'''{text}'''"
+@@ -178,7 +180,7 @@
+     return f"'''{text}'''"
+ 
+ 
+-def setup(app: Sphinx) -> ExtensionMetadata:
++def setup(app: Sphinx) -> "ExtensionMetadata":
+     app.add_builder(PydocTopicsBuilder)
+ 
+     return {

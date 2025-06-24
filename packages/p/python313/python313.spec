@@ -140,7 +140,11 @@
 # version part of "libpython" package
 %define         so_major 1
 %define         so_minor 0
+%if "%{abi_kind}" == "t"
+%define         so_version %{python_version_soname}t%{so_major}_%{so_minor}
+%else
 %define         so_version %{python_version_soname}%{abi_kind}-%{so_major}_%{so_minor}
+%endif
 # rpm and python have different ideas about what is an arch-dependent name, so:
 %if "%{__isa_name}" == "ppc"
 %define archname %(echo %{_arch} | sed s/ppc/powerpc/)
@@ -163,7 +167,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.13.3
+Version:        3.13.5
 %define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0
@@ -224,12 +228,6 @@ Patch41:        doc-py38-to-py36.patch
 # PATCH-FIX-UPSTREAM gh126985-mv-pyvenv.cfg2getpath.patch mcepl@suse.com
 # Remove tests failing in test_sysconfig
 Patch42:        gh126985-mv-pyvenv.cfg2getpath.patch
-# PATCH-FIX-UPSTREAM gh-132535-rsrc-warn-test_timeout.patch gh#python/cpython#132535 mcepl@suse.com
-# allows test_timeout tests to pass
-Patch43:        gh-132535-rsrc-warn-test_timeout.patch
-# PATCH-FIX-UPSTREAM CVE-2025-4516-DecodeError-handler.patch bsc#1243273 mcepl@suse.com
-# this patch makes things totally awesome
-Patch44:        CVE-2025-4516-DecodeError-handler.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -266,7 +264,9 @@ BuildRequires:  python3-Sphinx >= 4.0.0
 %if 0%{?suse_version} >= 1500
 BuildRequires:  python3-python-docs-theme >= 2022.1
 %endif
-
+%if 0%{?suse_version} < 1599
+BuildRequires:  python3-dataclasses
+%endif
 %endif
 %endif
 # end of {with doc}
