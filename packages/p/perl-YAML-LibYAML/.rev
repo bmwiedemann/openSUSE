@@ -274,4 +274,12 @@
    - Experimental OOP Interface, YAML 1.2 (forwarded request 1276515 from tinita)</comment>
     <requestid>1277437</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>c6eea8bfa3bc9cc7112c663f9839d470</srcmd5>
+    <version>0.904.0</version>
+    <time>1750790815</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.903.0 (v0.903.0) (CVE-2025-40908, [bsc#1243902]) (forwarded request 1288179 from pgajdos)</comment>
+    <requestid>1288180</requestid>
+  </revision>
 </revisionlist>
