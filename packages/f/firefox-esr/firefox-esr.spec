@@ -16,7 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+# either firefox-esr or MozillaFirefox
 %if 0%{?suse_version} > 1549
 # On Tumbleweed this package is always called firefox-esr
 %define pkgname  firefox-esr
@@ -41,8 +41,8 @@
 # major 69
 # mainver %%major.99
 %define major          128
-%define mainver        %major.11.0
-%define orig_version   128.11.0
+%define mainver        %major.12.0
+%define orig_version   128.12.0
 %define orig_suffix    esr
 %define update_channel esr
 %define branding       1
@@ -109,13 +109,13 @@ Name:           %{pkgname}
 BuildRequires:  Mesa-devel
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf213
-BuildRequires:  cargo1.84
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
+BuildRequires:  memory-constraints
 BuildRequires:  gcc14
 BuildRequires:  gcc14-c++
-BuildRequires:  memory-constraints
+BuildRequires:  cargo1.84
 BuildRequires:  rust1.84
 %if 0%{useccache} != 0
 BuildRequires:  ccache
