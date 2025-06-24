@@ -349,4 +349,16 @@
     <comment></comment>
     <requestid>1285183</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e8d8c43b5606187a813d6d352bd4b963</srcmd5>
+    <version>2.30.0</version>
+    <time>1750790739</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1286988 from mcalabkova
+
+- Update to 2.30.0
+    * Support for RESP3
+    * Implement support for COPY</comment>
+    <requestid>1287164</requestid>
+  </revision>
 </revisionlist>

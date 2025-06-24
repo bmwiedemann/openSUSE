@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 19 12:42:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.30.0
+  * Support for RESP3
+  * Implement support for COPY
+
+-------------------------------------------------------------------
 Thu Jun 12 12:23:04 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 2.29.0:
