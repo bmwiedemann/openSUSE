@@ -148,4 +148,12 @@
   * packaging: fix missing xcat.conf.example</comment>
     <requestid>1114717</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>00defc8086ebc1210a42450d4c83e166</srcmd5>
+    <version>1.9.3</version>
+    <time>1750790894</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1287999</requestid>
+  </revision>
 </revisionlist>

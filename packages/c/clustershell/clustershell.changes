@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jun 16 12:24:50 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.9.3
+  * Fix few typos in ChangeLog found by codespell
+  * Corrects a typo found by typos [1]
+  * Update clush.rst to fix broken URL for llnl.gov pdsh page
+  * Tree: use set instead of NodeSet for gwtargets tracking
+  * Additional Slurm example bindings
+  * Additional Slurm binding for mapping nodes to reservations
+  * GitHub Actions: test also with Python 3.12
+  * GitHub Actions: update actions to their latest versions
+  * Fix tests for libexpat >=2.6.0 (or with CVE-2023-52425 fixes backported)
+  * Communication: sax parser: add flush() after feed()
+  * CLI/Nodeset: omit @source: prefix for cluset -s source -L
+  * GitHub Actions: add Python 3.13
+  * bash completions
+  * Release 1.9.3
+  * Bump pillow from 5.4.1 to 10.3.0 in /doc/sphinx
+- convert to pip-based build
+- remove obsolete python2 subpackage
+
+-------------------------------------------------------------------
 Mon Oct  2 07:19:28 UTC 2023 - Stephane Thiell <sthiell@stanford.edu>
 
 - Update to upstream release 1.9.2:
