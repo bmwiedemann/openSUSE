@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 22 13:27:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.3:
+  + Improved compatibility with Wayland
+  + Fix crash when SMB button is pressed
+  + DEL key in quick search dialog wants remove whole file/dir
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Feb 10 09:19:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.2:
