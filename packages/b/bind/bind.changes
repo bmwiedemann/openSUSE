@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jun 23 08:59:18 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Upgrade to release 9.20.10
+  New Features:
+  * Implement a new notify-defer configuration option. This new
+    option sets a delay (in seconds) to wait before sending a set
+    of NOTIFY messages for a zone. Whenever a NOTIFY message is
+    ready to be sent, sending is deferred for this duration. This
+    option should not be confused with the notify-delay option. The
+    default is 0 seconds.
+
+  Removed Features:
+  * Implement the systemd notification protocol manually to remove
+    dependency on libsystemd.
+
+  Bug Fixes:
+  * A secondary zone could initiate a new zone transfer from the
+    primary server after it had been already deleted from the
+    secondary server, and before the internal garbage collection
+    was activated to clean it up completely. This has been fixed.
+  * A secondary zone could fail to further refresh with new
+    versions of the zone from a primary server if named was
+    reconfigured during the SOA request step of an ongoing zone
+    transfer. This has been fixed.
+
+- Clean up systemd BuildRequires
+
+-------------------------------------------------------------------
 Tue May 20 13:39:21 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Upgrade to release 9.20.9

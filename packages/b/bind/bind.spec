@@ -59,7 +59,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.20.9
+Version:        9.20.10
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -108,12 +108,7 @@ Provides:       dns_daemon
 Obsoletes:      bind8 < %{version}
 Obsoletes:      bind9 < %{version}
 %if %{with_systemd}
-BuildRequires:  systemd-rpm-macros
-BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
-BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(systemd)
-%{?systemd_ordering}
 %sysusers_requires
 %else
 Requires(post): %insserv_prereq
