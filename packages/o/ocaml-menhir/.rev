@@ -79,4 +79,12 @@ ocaml 4.03 (fate#320836)</comment>
     <comment>- Update to version 20231231</comment>
     <requestid>1137514</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b10634f826c63035a5f2e11b364a2029</srcmd5>
+    <version>20240715</version>
+    <time>1750790838</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1287905</requestid>
+  </revision>
 </revisionlist>

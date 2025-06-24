@@ -1,11 +1,11 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name='exclude'>check-tarball.sh</param>
     <param name='exclude'>compile-ocaml.sh</param>
     <param name='exclude'>coq-menhirlib</param>
     <param name='exclude'>exec.sh</param>
     <param name="filename">ocaml-menhir</param>
-    <param name="revision">d3d815e4f554da68b8c247241c8f8678926eecaa</param>
+    <param name="revision">d71051f500c4f34c9faf93192a593cdf4903b0c0</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://gitlab.inria.fr/fpottier/menhir.git</param>
@@ -13,9 +13,9 @@
     <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>
