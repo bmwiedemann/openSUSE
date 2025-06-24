@@ -644,4 +644,13 @@
     <comment>Update to 5.2.0</comment>
     <requestid>1287663</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>bc63d68cdf3d2ee2648405e85ee4abf8</srcmd5>
+    <version>5.2.0</version>
+    <time>1750791049</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream fix (kde#505977)
+  * 0001-Port-triggering-actions-to-Qt6.patch</comment>
+    <requestid>1288273</requestid>
+  </revision>
 </revisionlist>

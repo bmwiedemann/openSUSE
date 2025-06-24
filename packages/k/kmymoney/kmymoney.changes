@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 24 13:58:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix (kde#505977)
+  * 0001-Port-triggering-actions-to-Qt6.patch
+
+-------------------------------------------------------------------
 Sun Jun 22 06:57:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.2.0

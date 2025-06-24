@@ -31,6 +31,8 @@ Source0:        https://download.kde.org/stable/kmymoney/%{version}/%{name}-%{ve
 Source1:        https://download.kde.org/stable/kmymoney/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        kmymoney.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Port-triggering-actions-to-Qt6.patch
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
