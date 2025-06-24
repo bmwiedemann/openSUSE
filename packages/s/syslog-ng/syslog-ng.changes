@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 24 10:06:11 UTC 2025 - peter czanik <peter@czanik.hu>
+
+- add patch (5408.patch) to compile GRPC-based modules with latest
+  protobuf version 
+
+-------------------------------------------------------------------
 Thu May  8 07:42:47 UTC 2025 - peter czanik <peter@czanik.hu>
 
 - update to 4.8.2 which is a bug fix release:

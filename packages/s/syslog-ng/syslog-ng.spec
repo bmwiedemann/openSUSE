@@ -108,6 +108,7 @@ Source2:        syslog-ng.conf.default
 Source3:        syslog-ng.service
 Source4:        syslog-ng-service-prepare
 Patch0:         syslog-ng-reproducible-jar-mtime.patch
+Patch1:         5408.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -391,6 +392,7 @@ This package provides MQTT support for syslog-ng
 %patch -P 0 -p1
 %endif
 %endif
+%patch -P 1 -p1
 # fill out placeholders in the config,
 # systemd service and prepare script.
 for file in \
