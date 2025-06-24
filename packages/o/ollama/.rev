@@ -471,4 +471,12 @@ because we don't need git-web and the other stuff here (forwarded request 125417
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1283893</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>9110424d627c12537ef392376625f1a4</srcmd5>
+    <version>0.9.1</version>
+    <time>1750791015</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1288227</requestid>
+  </revision>
 </revisionlist>
