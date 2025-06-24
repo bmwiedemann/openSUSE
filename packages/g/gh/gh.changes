@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Jun 20 08:01:15 UTC 2025 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.74.2:
+  * Update docs/install_linux.md
+  * Fix step order for CodeQL workflow
+  * docs: update install command for Debian
+  * chore(deps): bump github.com/google/go-containerregistry
+  * Use t.Chdir in tests
+  * Bump to Go 1.24
+  * Merge pull request #11121 from cli/11101-use-golangci-lint-version-2
+  * Apply suggestion from @Copilot
+  * Improve help wanted check skipping logic
+  * Ensure gh executes in workflow check script
+  * Fix repo checkout in help-wanted check
+  * Fixes #11126
+  * Fix script path for help-wanted check
+  * Quote filenames suggested at the end of worklow run
+  * chore(deps): bump github.com/in-toto/attestation from 1.1.1 to 1.1.2
+  * Quote workflow conditional
+  * Add workflow to check `help wanted` labelling (#11105)
+  * chore(deps): bump actions/attest-build-provenance from 2.3.0 to 2.4.0
+  * Add accurate context when `run rerun` fails (#10774)
+  * Avoid requesting PR reviewer twice
+  * chore(deps): bump github.com/sigstore/protobuf-specs from 0.4.2 to 0.4.3
+  * chore(deps): bump mislav/bump-homebrew-formula-action from 3.2 to 3.4
+  * test(pr): Add tests for actor assignees
+  * Fix test, remove partial standalone test
+  * Iterate on `pr edit` problems with existing assignees
+  * chore(deps): bump google.golang.org/grpc from 1.72.0 to 1.72.2
+  * Fix expected error output of TestRepo/repo-rename-transfer-ownership
+  * Add instructions for MidnightBSD installation
+
+-------------------------------------------------------------------
+Fri Jun 13 09:39:31 UTC 2025 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.74.1:
+  * test: fix test data const
+  * Document support for `@copilot` in `gh [pr|issue] edit --add-assignee` and `--remove-assignee` (#11056)
+  * Fix pr edit when URL is provided
+
+-------------------------------------------------------------------
 Fri May 30 04:56:52 UTC 2025 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.74.0:
