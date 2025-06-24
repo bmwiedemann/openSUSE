@@ -16,4 +16,14 @@
   * no upstream changelog</comment>
     <requestid>729785</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>543ac5b32079b67f6de8a4e5e6df673d</srcmd5>
+    <version>0.3.2</version>
+    <time>1750790939</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.
+- Update URL.</comment>
+    <requestid>1288112</requestid>
+  </revision>
 </revisionlist>

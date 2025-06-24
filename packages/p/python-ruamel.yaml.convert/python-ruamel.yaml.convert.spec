@@ -1,7 +1,7 @@
 #
 # spec file for package python-ruamel.yaml.convert
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ruamel.yaml.convert
 Version:        0.3.2
 Release:        0
 Summary:        Data format conversion routines to and from YAML
 License:        MIT
-Group:          Development/Languages/Python
-Url:            https://bitbucket.org/ruamel/yaml.convert
+URL:            https://sourceforge.net/projects/ruamel-yaml-convert/
 Source:         https://files.pythonhosted.org/packages/source/r/ruamel.yaml.convert/ruamel.yaml.convert-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ruamel.base >= 1.0.0+post1}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # 1.0.0+post1 needed to depend on revised base namespace technique
@@ -40,7 +40,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Format conversion routines to and from YAML.
+Data format conversion routines to and from YAML.
 
 %prep
 %setup -q -n ruamel.yaml.convert-%{version}
@@ -48,11 +48,11 @@ Format conversion routines to and from YAML.
 sed -i '/namespace_packages=/d' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 export RUAMEL_NO_PIP_INSTALL_CHECK=1
-%python_install
+%pyproject_install
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/ruamel/__* %{buildroot}%{$python_sitelib}/ruamel/yaml/__*
 %fdupes %{buildroot}%{$python_sitelib}
 }
@@ -60,6 +60,8 @@ export RUAMEL_NO_PIP_INSTALL_CHECK=1
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%dir %{python_sitelib}/ruamel/yaml
+%{python_sitelib}/ruamel/yaml/convert
+%{python_sitelib}/ruamel[_.]yaml[._]convert-%{version}.dist-info
 
 %changelog
