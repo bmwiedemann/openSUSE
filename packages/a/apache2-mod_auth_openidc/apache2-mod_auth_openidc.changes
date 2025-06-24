@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 24 10:20:59 UTC 2025 - pgajdos@suse.com
+
+- version update to 2.4.17.1
+  * fix usage of OIDCSessionType client-cookie:persistent:store_id_token; see #1331; thanks @rgcv
+  * fix usage of OIDCPreservePostTemplates, regression in 2.4.17; see #1325; thanks @perry19987
+  * javascript: use HTMLFormElement.prototype.submit.call(document.forms[0]) on all Javascript
+    auto-submit POST forms to prevent browser Javascript error: "form.submit is not a function"
+  * metrics: avoid possible segfault after restart twice; thanks @atzm
+  * code: refactor util.c into util/ directory
+  * allow adding a prefix to the cache (section) key through environment variable OIDC_CACHE_PREFIX
+
+-------------------------------------------------------------------
 Mon Jun  2 11:27:59 UTC 2025 - pgajdos@suse.com
 
 - build with hiredis for openSUSE only [bsc#1243922]
