@@ -1,7 +1,7 @@
 #
 # spec file for package python-pluggy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -27,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pluggy%{psuffix}
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        A minimalist production ready plugin system
 License:        MIT

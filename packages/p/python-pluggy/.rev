@@ -216,4 +216,12 @@
   * Fix :func:`~pluggy.HookCaller.call_extra()` extra</comment>
     <requestid>1172296</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e69270b77246a49364d3d8dc5eb893e2</srcmd5>
+    <version>1.6.0</version>
+    <time>1750790754</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1287809</requestid>
+  </revision>
 </revisionlist>
