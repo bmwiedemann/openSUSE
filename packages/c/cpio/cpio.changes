@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 11 07:36:29 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Downgrade cpio-mt and rmt recommends to suggests (boo#1244434)
+
+-------------------------------------------------------------------
 Thu May 29 05:28:30 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Migrate away from update-alternatives (bsc#1240092).

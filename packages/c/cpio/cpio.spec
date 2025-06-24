@@ -46,8 +46,8 @@ BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
 #Requires(post): %{xinstall_info_prereq}
 #Requires(preun): %{xinstall_info_prereq}
-Recommends:     %{name}-mt = %{version}
-Recommends:     rmt
+Suggests:       rmt
+Suggests:       %{name}-mt = %{version}
 
 %description
 GNU cpio is a program to manage archives of files. Cpio copies files
