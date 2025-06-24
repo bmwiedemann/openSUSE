@@ -26,8 +26,10 @@ URL:            https://github.com/sissaschool/elementpath
 Source:         https://github.com/sissaschool/elementpath/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -44,10 +46,10 @@ data structures, both for the standard ElementTree library and for the
 rm tests/test_schema_proxy.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +67,6 @@ donttest+=" or test_validate_json_to_xml"
 %doc CHANGELOG.rst README.rst
 %license LICENSE
 %{python_sitelib}/elementpath
-%{python_sitelib}/elementpath-%{version}*-info
+%{python_sitelib}/elementpath-%{version}.dist-info
 
 %changelog
