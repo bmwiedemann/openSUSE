@@ -31,4 +31,12 @@
     <comment>allow building with the upcoming maven-plugin-tools 4.x</comment>
     <requestid>1263973</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>6488d9e35f0cca35d507a4d1c0b249e8</srcmd5>
+    <version>1.1</version>
+    <time>1750790885</time>
+    <user>anag_factory</user>
+    <comment>Fix build with up-coming maven 4</comment>
+    <requestid>1287977</requestid>
+  </revision>
 </revisionlist>

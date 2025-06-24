@@ -33,6 +33,7 @@ BuildRequires:  mvn(org.antlr:ST4)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
+BuildRequires:  mvn(org.apache.maven:maven-compat)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
@@ -68,6 +69,8 @@ perl -pi -e 's#org\.sonatype\.aether#org.eclipse.aether#g' \
 %pom_remove_plugin :maven-source-plugin
 
 %pom_add_dep org.apache.maven.plugin-tools:maven-plugin-annotations:3.15.1:provided
+
+%pom_add_dep org.apache.maven:maven-compat:3.0.8
 
 %build
 %{mvn_build} -f -- \
