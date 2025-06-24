@@ -17,8 +17,8 @@
 
 
 %define so_ver 5.5
-%define _ver %{so_ver}.6
-%define tar_ver 556
+%define _ver %{so_ver}.7
+%define tar_ver 557
 %define libname libscintilla5
 Name:           scintilla
 Version:        %{_ver}
@@ -103,4 +103,3 @@ rmdir %{buildroot}%{_includedir}/%{name}/src || :
 %{_includedir}/%{name}/
 
 %changelog
-

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 24 07:00:10 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.5.7:
+  * Add SCI_SCROLLVERTICAL method to restore view position and maintain it 
+    while performing line wrapping.
+  * Add SC_UNDO_SELECTION_HISTORY_SCROLL flag to SCI_SETUNDOSELECTIONHISTORY
+    which controls whether undo and redo restore vertical scroll position.
+  * Tweak SC_MARK_BAR to be slightly wider by using next higher whole pixel
+    instead of next lower for margin width / 3.
+  * Scale images in autocompletion lists with SCI_AUTOCSETIMAGESCALE to match
+    high DPI screens. Initially only on GTK and Qt.
+  * Fix wrapping bug for UTF-8 where \r\n could wrap between the characters.
+  * Fix crash during painting when scroll bars changed. Bug #2481.
+  * On GTK, reset vertical scroll bar synchronously in SCI_SETDOCPOINTER to 
+    fix bug where scroll position not restored in non-wrap mode. Bug #2416.
+  * On GTK, fix IME problem when tentative composition interfered with delete
+    surrounding. Feature #1476.
+  * On GTK, update IME cursor position inside retrieve surrounding to better
+    position candidate window. Feature #1488.
+
+-------------------------------------------------------------------
 Wed Apr 23 05:51:46 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.5.6:
