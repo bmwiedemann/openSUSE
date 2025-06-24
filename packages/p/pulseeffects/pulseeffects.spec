@@ -1,7 +1,7 @@
 #
 # spec file for package pulseeffects
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-3.0-or-later
 URL:            https://github.com/wwmm/pulseeffects
 Source0:        %{name}-%{version}.tar.gz
 Patch0:         01-fix-depricated-boost-filesystem-copy_option.patch
+Patch1:         02-Fix-Boost-1.88-compilation.patch
 BuildRequires:  appstream-glib
 BuildRequires:  gcc-c++
 BuildRequires:  itstool
