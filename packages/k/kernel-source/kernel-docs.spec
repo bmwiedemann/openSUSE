@@ -17,20 +17,20 @@
 
 
 %define srcversion 6.15
-%define patchversion 6.15.2
-%define git_commit 3a37f077e5d3fc695953a4e3cdab52b468d08b68
+%define patchversion 6.15.3
+%define git_commit d7f7d34a2ff1c4f06c2a04991e35a37f9fa6d9e0
 %define variant %{nil}
 %define build_html 1
 %define build_pdf 0
 
 %include %_sourcedir/kernel-spec-macros
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-docs
-Version:        6.15.2
+Version:        6.15.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g3a37f07
+Release:        <RELEASE>.gd7f7d34
 %else
 Release:        0
 %endif
@@ -119,7 +119,6 @@ Source62:       old-flavors
 Source63:       arch-symbols
 Source64:       package-descriptions
 Source65:       kernel-spec-macros
-Source67:       log.sh
 Source68:       host-memcpy-hack.h
 Source69:       try-disable-staging-driver
 Source70:       kernel-obs-build.spec.in
@@ -188,7 +187,6 @@ NoSource:       62
 NoSource:       63
 NoSource:       64
 NoSource:       65
-NoSource:       67
 NoSource:       68
 NoSource:       69
 NoSource:       70

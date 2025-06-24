@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.15
-%define patchversion 6.15.2
-%define git_commit 3a37f077e5d3fc695953a4e3cdab52b468d08b68
+%define patchversion 6.15.3
+%define git_commit d7f7d34a2ff1c4f06c2a04991e35a37f9fa6d9e0
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -31,17 +31,18 @@
 %define supported_modules_check 0
 %define build_flavor zfcpdump
 %define generate_compile_commands 1
+%define use_suse_kabi_tools 0
 %define gcc_package gcc
 %define gcc_compiler gcc
 
 %include %_sourcedir/kernel-spec-macros
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-zfcpdump
-Version:        6.15.2
+Version:        6.15.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g3a37f07
+Release:        <RELEASE>.gd7f7d34
 %else
 Release:        0
 %endif
@@ -82,6 +83,9 @@ BuildRequires:  libelf-devel
 BuildRequires:  elfutils
 %ifarch %arm
 BuildRequires:  u-boot-tools
+%endif
+%if %use_suse_kabi_tools
+BuildRequires:  suse-kabi-tools
 %endif
 # Do not install p-b and dracut for the install check, the %post script is
 # able to handle this
@@ -198,7 +202,6 @@ Source62:       old-flavors
 Source63:       arch-symbols
 Source64:       package-descriptions
 Source65:       kernel-spec-macros
-Source67:       log.sh
 Source68:       host-memcpy-hack.h
 Source69:       try-disable-staging-driver
 Source70:       kernel-obs-build.spec.in
@@ -267,7 +270,6 @@ NoSource:       62
 NoSource:       63
 NoSource:       64
 NoSource:       65
-NoSource:       67
 NoSource:       68
 NoSource:       69
 NoSource:       70
@@ -1443,10 +1445,12 @@ find . ! -type d ! -name 'Module.base' ! -name 'Module.*-kmp' ! -name 'Module.op
 cd %kernel_build_dir
 source .kernel-binary.spec.buildenv
 
-# create *.symref files in the tree
-if test -e %my_builddir/kabi/%cpu_arch/symtypes-%build_flavor; then
-    %_sourcedir/modversions --unpack . < $_
-fi
+%if !%use_suse_kabi_tools
+    # create *.symref files in the tree
+    if test -e %my_builddir/kabi/%cpu_arch/symtypes-%build_flavor; then
+        %_sourcedir/modversions --unpack . < $_
+    fi
+%endif
 
 %if "%CONFIG_KMSG_IDS" == "y"
     chmod +x ../scripts/kmsg-doc
@@ -1680,11 +1684,15 @@ if [ %CONFIG_MODULES = y ]; then
     %endif
 
     # Table of types used in exported symbols (for modversion debugging).
-    %_sourcedir/modversions --pack . > %buildroot/boot/symtypes-%kernelrelease-%build_flavor
-    if [ -s %buildroot/boot/symtypes-%kernelrelease-%build_flavor ]; then
-	gzip -n -9 %buildroot/boot/symtypes-%kernelrelease-%build_flavor
-    else
-	rm -f %buildroot/boot/symtypes-%kernelrelease-%build_flavor
+    %if %use_suse_kabi_tools
+        ksymtypes consolidate %{?_smp_mflags} \
+            --output=%my_builddir/symtypes-%build_flavor .
+    %else
+        %_sourcedir/modversions --pack . > %my_builddir/symtypes-%build_flavor
+    %endif
+    if [ -s %my_builddir/symtypes-%build_flavor ]; then
+        gzip -n -9 -c %my_builddir/symtypes-%build_flavor \
+            > %buildroot/boot/symtypes-%kernelrelease-%build_flavor.gz
     fi
 
     # Some architecture's $(uname -m) output is different from the ARCH
@@ -1735,11 +1743,25 @@ if [ %CONFIG_MODULES = y ]; then
     res=0
     if test -e %my_builddir/kabi/%cpu_arch/symvers-%build_flavor; then
         # check for kabi changes
-        %_sourcedir/kabi.pl --rules %my_builddir/kabi/severities \
-            %my_builddir/kabi/%cpu_arch/symvers-%build_flavor \
-            Module.symvers || res=$?
+        %if %use_suse_kabi_tools
+            ksymvers compare --rules=%my_builddir/kabi/severities \
+                --format=symbols:%my_builddir/changed-exports \
+                %my_builddir/kabi/%cpu_arch/symvers-%build_flavor \
+                Module.symvers || res=$?
+        %else
+            %_sourcedir/kabi.pl --rules %my_builddir/kabi/severities \
+                %my_builddir/kabi/%cpu_arch/symvers-%build_flavor \
+                Module.symvers || res=$?
+        %endif
     fi
     if [ $res -ne 0 ]; then
+        %if %use_suse_kabi_tools
+            ksymtypes compare %{?_smp_mflags} \
+                --filter-symbol-list=%my_builddir/changed-exports \
+                %my_builddir/kabi/%cpu_arch/symtypes-%build_flavor \
+                %my_builddir/symtypes-%build_flavor
+        %endif
+
 	# %ignore_kabi_badness is defined in the Kernel:* projects in the
 	# OBS to be able to build the KOTD in spite of kabi errors
 	if [ 0%{?ignore_kabi_badness} -eq 0 -a \
