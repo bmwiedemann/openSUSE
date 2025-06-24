@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/Gregwar/fatcat.git</param>
+    <param name="changesrevision">8cfd175afaf27ce430cd57f3eab5ffff34a29612</param>
+  </service>
+</servicedata>
