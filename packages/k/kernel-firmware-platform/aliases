@@ -34,6 +34,7 @@ ccp: pci:v00001022d0000156Esv*sd*bc*sc*i*
 ccp: pci:v00001022d000015C7sv*sd*bc*sc*i*
 ccp: pci:v00001022d000015DFsv*sd*bc*sc*i*
 ccp: pci:v00001022d00001649sv*sd*bc*sc*i*
+ccp: pci:v00001022d000017D8sv*sd*bc*sc*i*
 ccp: pci:v00001022d000017E0sv*sd*bc*sc*i*
 crypto_safexcel: of:N*T*Cinside-secure%2Csafexcel-eip197
 crypto_safexcel: of:N*T*Cinside-secure%2Csafexcel-eip197C*

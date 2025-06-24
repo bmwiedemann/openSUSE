@@ -96,4 +96,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * cnm: Add Chips&amp;Media wave633c firmware for NXP i.MX9</comment>
     <requestid>1283299</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>4e89702d4cab354a092b9e0c4ce94155</srcmd5>
+    <version>20250520</version>
+    <time>1750790791</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases</comment>
+    <requestid>1288150</requestid>
+  </revision>
 </revisionlist>
