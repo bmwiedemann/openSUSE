@@ -82,4 +82,13 @@
   * https://github.com/robotframework/robotframework/blob/master/doc/releasenotes/rf-7.1.rst</comment>
     <requestid>1222987</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3e383ec6882409532298b0d2f3cd6ce5</srcmd5>
+    <version>7.1.1</version>
+    <time>1750790938</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1288110</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-robotframework
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-robotframework
 Version:        7.1.1
 Release:        0
@@ -24,7 +23,9 @@ Summary:        Generic test automation framework for acceptance testing and ATD
 License:        Apache-2.0
 URL:            https://robotframework.org/
 Source:         https://files.pythonhosted.org/packages/source/r/robotframework/robotframework-%{version}.zip
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -49,10 +50,10 @@ for file in $(grep -l '#!%{_bindir}/env python' src/robot/*.py); do
 done
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 for p in robot rebot libdoc; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
@@ -71,6 +72,7 @@ done
 %python_alternative %{_bindir}/rebot
 %python_alternative %{_bindir}/robot
 %python_alternative %{_bindir}/libdoc
-%{python_sitelib}/*
+%{python_sitelib}/robot
+%{python_sitelib}/robotframework-%{version}.dist-info
 
 %changelog
