@@ -19,7 +19,7 @@
 %global bname sambacc
 
 Name:           python-%{bname}
-Version:        v0.6+git.5.aa9a005
+Version:        v0.6+git.60.2f89a38
 Release:        0
 Summary:        Samba Container Configurator
 License:        GPL-3.0-or-later
@@ -72,6 +72,7 @@ sed -i 's;python%{python_version};python3;g' %{buildroot}/%{_bindir}/samba-dc-co
 %doc README.*
 %{_bindir}/samba-container
 %{_bindir}/samba-dc-container
+%{_bindir}/samba-remote-control
 %{_datadir}/%{bname}
 
 %changelog

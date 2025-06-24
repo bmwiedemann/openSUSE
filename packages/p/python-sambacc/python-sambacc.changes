@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sat Jun 21 12:22:30 UTC 2025 - Noel Power <nopower@suse.com>
+
+- Update to version v0.6+git.60.2f89a38:
+  * tests: add a test case for the ensure_ctdb_port_in_services func
+  * sambacc: add a function to alter /etc/services for ctdb port
+  * sambacc: add a ctdb port configuration value
+  * samba_cmds: Switch ctdb to CommandArgs type
+  * samba_cmds: Switch wbinfo to CommandArgs type
+  * samba_cmds: Modify execute() to accept CommandArgs
+  * tests: test session crypto info fetched from grpc server
+  * grpc: add session crypto information to grpc server
+  * grpc: add session crypto message to control.proto
+  * tests: add test coverage for backend session crypto
+  * grpc: add support for session crypto info to backend.py
+  * grpc: remove junk values from backend Versions object
+  * mergify: Restrict the addition of "priority-review" label
+  * github: Update mergify rules with symbolic fedora test jobs
+  * workflows: Dynamically detect fedora versions for test matrix
+  * extras: update python-sambacc.spec for new grpc extra
+  * tox.ini: include grpc libs for unit tests
+  * setup.cfg: add new modules, entrypoint, extras
+  * commands/remotecontrol: create remote control command
+  * tests: add test_grpc_backend.py to test server backend module
+  * tests: add test_grpc_server.py to test grpc server behavior
+  * grpc: add server.py for managing the grpc server
+  * grpc: add backend.py for interfacing with samba commands
+  * grpc/generated: add generated grpc files
+  * tox.ini: add new environments for generating grpc related files
+  * grpc/protobufs: add initial .proto file
+  * grpc: establish a location for grpc related code and files
+  * tox.ini: support mypy checking for files using grpc libs
+  * pyproject.toml: exclude generated files from mypy check
+  * tox.ini: exclude files that grpc toolchain will generate
+  * sambacc: add smbstatus command to samba_cmds.py
+  * tox: split formatting testenv from flake8
+  * sambacc/commands: makde the dc main command setup less special
+  * sambacc/commands: clean up imports used only for commands
+  * sambacc/commands: add include function to help clarify import reasons
+  * sambacc/commands: add docstring for global_args
+  * sambacc/commands: add docstring and fix type hint for enable_logging
+  * sambacc/commands: update pre_action type hint
+  * sambacc/commands: add docstring and type hint to env_to_cli function
+  * sambacc/commands: add docstring and type hint to from_env function
+  * sambacc/commands: add type hints and docstring to split_entries
+  * sambacc/common: create common.py from common parts of main.py
+  * sambacc/commands: clone ceph_id function into cli.py
+  * sambacc/commands: remove some unnecessary ellipses
+  * commands: invalidate cached config when node is not ctdb leader
+  * tests/container: set a vendor suffix with VENDOR_DIST_SUFFIX
+  * extras: allow a vendor dist suffix field in the spec file
+  * sambacc: fix a pair of flake8 errors
+  * tests: add test funcs for odj join source
+  * sambacc/commands: add odj support to the join command line
+  * sambacc: add odj to the core join class
+  * sambacc: remove add_source method from Joiner
+  * commands: handle /usr/etc/nsswitch.conf
+  * commands: when possible skip ceph service registration for mutex helper
+  * sambacc: add a specifics flag for mutex helper registration option
+
+-------------------------------------------------------------------
 Wed Feb 26 02:38:05 UTC 2025 - jeffm@suse.com
 
 - Update to version v0.6+git.5.aa9a005:
