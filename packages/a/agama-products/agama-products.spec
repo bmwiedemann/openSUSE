@@ -22,7 +22,7 @@ Version:        0
 Release:        0
 Summary:        Definition of products for the Agama installer
 License:        GPL-2.0-only
-URL:            https://github.com/opensuse/agama
+URL:            https://github.com/agama-project/agama
 BuildArch:      noarch
 Source0:        agama.tar
 
