@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Carton
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,38 +20,40 @@
 Name:           perl-Carton
 Version:        1.0.35
 Release:        0
+# v1.0.35 -> normalize -> 1.0.35
+%define cpan_version v1.0.35
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl module dependency manager (aka Bundler for Perl)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/%{cpan_name}-v%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN::Meta) >= 2.120921
-BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.121000
-BuildRequires:  perl(Class::Tiny) >= 1.001
+BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.121
+BuildRequires:  perl(Class::Tiny) >= 1.1
 BuildRequires:  perl(Getopt::Long) >= 2.39
-BuildRequires:  perl(JSON::PP) >= 2.27300
-BuildRequires:  perl(Menlo::CLI::Compat) >= 1.9018
-BuildRequires:  perl(Module::CPANfile) >= 0.9031
+BuildRequires:  perl(JSON::PP) >= 2.27
+BuildRequires:  perl(Menlo::CLI::Compat) >= 1.901.800
+BuildRequires:  perl(Module::CPANfile) >= 0.903.100
 BuildRequires:  perl(Module::CoreList)
-BuildRequires:  perl(Path::Tiny) >= 0.033
-BuildRequires:  perl(Try::Tiny) >= 0.09
+BuildRequires:  perl(Path::Tiny) >= 0.33
+BuildRequires:  perl(Try::Tiny) >= 0.90
 BuildRequires:  perl(parent) >= 0.223
 BuildRequires:  perl(version) >= 0.77
 Requires:       perl(CPAN::Meta) >= 2.120921
-Requires:       perl(CPAN::Meta::Requirements) >= 2.121000
-Requires:       perl(Class::Tiny) >= 1.001
+Requires:       perl(CPAN::Meta::Requirements) >= 2.121
+Requires:       perl(Class::Tiny) >= 1.1
 Requires:       perl(Getopt::Long) >= 2.39
-Requires:       perl(JSON::PP) >= 2.27300
-Requires:       perl(Menlo::CLI::Compat) >= 1.9018
-Requires:       perl(Module::CPANfile) >= 0.9031
+Requires:       perl(JSON::PP) >= 2.27
+Requires:       perl(Menlo::CLI::Compat) >= 1.901.800
+Requires:       perl(Module::CPANfile) >= 0.903.100
 Requires:       perl(Module::CoreList)
-Requires:       perl(Path::Tiny) >= 0.033
-Requires:       perl(Try::Tiny) >= 0.09
+Requires:       perl(Path::Tiny) >= 0.33
+Requires:       perl(Try::Tiny) >= 0.90
 Requires:       perl(parent) >= 0.223
-Recommends:     perl(App::FatPacker) >= 0.009018
+Recommends:     perl(App::FatPacker) >= 0.9.18
 Recommends:     perl(File::pushd)
 %{perl_requires}
 
@@ -66,8 +68,9 @@ modules.
 For 'cpanfile' syntax, see cpanfile documentation.
 
 %prep
-%autosetup  -n %{cpan_name}-v%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
