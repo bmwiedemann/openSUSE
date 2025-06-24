@@ -1,7 +1,7 @@
 #
 # spec file for package python-croniter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-croniter
-Version:        5.0.1
+Version:        6.0.0
 Release:        0
 Summary:        Python iterators for datetime objects with cron-like format
 License:        MIT
@@ -35,6 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-python-dateutil
+Requires:       python-pytz
 BuildArch:      noarch
 %python_subpackages
 
@@ -43,6 +44,7 @@ croniter provides iterators for datetime object with cron-like format.
 
 %prep
 %setup -q -n croniter-%{version}
+find . -name "*.py" | xargs sed -i '1 { /^#!/ d }'
 
 %build
 %pyproject_wheel

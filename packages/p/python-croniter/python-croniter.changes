@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun 24 12:05:14 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update to 6.0.0
+  * Announce for now that croniter dev is ended (CRA).
+  * Rework timestamp_to_datetime to use whatever timezone [kiorky]
+  * Make datetime_to_timestamp & timestamp_to_datetime public [kiorky]
+  * Fix EPOCH calculation in case of non UTC & 32 bits based systems [kiorky]
+  * Apply isort formatter [kiorky]
+  * Reintegrate test_speed [kiorky]
+  * Apply black formatter [evanpurkhiser, kiorky]
+
+  * Code quality changes [evanpurkhiser, kiorky]
+    * Remove unused _get_caller_globals_and_locals [evanpurkhiser]
+    * Remove single-use bad_length [evanpurkhiser]
+    * Remove unused days in proc_month [evanpurkhiser]
+    * Use field_index over i for readability [evanpurkhiser]
+    * Always use """ for docstrings [evanpurkhiser]
+    * Make helper instance methods that do not use self static [evanpurkhiser]
+    * Remove unusd call to sys.exc_info [evanpurkhiser]
+    * Remove unused ALPHAS [evanpurkhiser]
+    * Improve croniter.expand documentation [evanpurkhiser]
+
+
+-------------------------------------------------------------------
 Tue Nov 19 12:51:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.1:
