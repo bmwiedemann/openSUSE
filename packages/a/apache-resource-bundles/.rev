@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>817676</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ff9a51532f80381e76135ebdbf77831e</srcmd5>
+    <version>2</version>
+    <time>1750790883</time>
+    <user>anag_factory</user>
+    <comment>Fix build with up-coming maven 4</comment>
+    <requestid>1287974</requestid>
+  </revision>
 </revisionlist>

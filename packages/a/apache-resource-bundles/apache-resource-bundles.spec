@@ -1,7 +1,7 @@
 #
 # spec file for package apache-resource-bundles
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,9 +34,9 @@ Source4:        https://repo1.maven.org/maven2/org/apache/apache-license-header-
 Source5:        https://repo1.maven.org/maven2/org/apache/apache-incubator-disclaimer-resource-bundle/%{id_version}/apache-incubator-disclaimer-resource-bundle-%{id_version}-sources.jar
 Source6:        https://repo1.maven.org/maven2/org/apache/apache-incubator-disclaimer-resource-bundle/%{id_version}/apache-incubator-disclaimer-resource-bundle-%{id_version}.pom
 BuildRequires:  maven-local
+BuildRequires:  unzip
 BuildRequires:  mvn(org.apache.maven.plugins:maven-remote-resources-plugin)
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
-BuildRequires:  unzip
 BuildArch:      noarch
 
 %description
@@ -73,6 +73,8 @@ cp -p %{SOURCE6} ./pom.xml
 mkdir -p src/main/resources
 mv META-INF src/main/resources
 popd
+
+%pom_xpath_remove pom:project/pom:parent/pom:relativePath
 
 %{mvn_file} :apache-jar-resource-bundle apache-resource-bundles/jar
 %{mvn_file} :apache-license-header-resource-bundle apache-resource-bundles/license-header
