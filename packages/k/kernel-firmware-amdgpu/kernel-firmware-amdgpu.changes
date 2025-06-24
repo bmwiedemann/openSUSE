@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 24 06:07:11 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250623 (git commit dbfe16e9e8ac):
+  * amdgpu: update dmcub fw for dcn401
+
+-------------------------------------------------------------------
 Sat Jun 21 06:31:14 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250620 (git commit 49c833a10ad9):

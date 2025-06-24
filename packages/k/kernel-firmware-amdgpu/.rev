@@ -223,4 +223,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: update navi14 firmware</comment>
     <requestid>1287533</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>83d963640e5c78b06374f11eac43ae93</srcmd5>
+    <version>20250623</version>
+    <time>1750790787</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250623 (git commit dbfe16e9e8ac):
+  * amdgpu: update dmcub fw for dcn401</comment>
+    <requestid>1288144</requestid>
+  </revision>
 </revisionlist>
