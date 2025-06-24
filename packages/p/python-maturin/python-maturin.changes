@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 24 00:36:08 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.9.0
+  * Update pyproject-toml to 0.13.5
+    gh#PyO3/maturin#2645
+  * Fix clippy lints
+    gh#PyO3/maturin#2648
+  * ZipWriter requires a compression level of None for the stored
+    method
+    gh#PyO3/maturin#2644
+  * Implement PEP 639 Support
+    gh#PyO3/maturin#2647
+  * Don't go through Display for platform tag to policy
+    gh#PyO3/maturin#2652
+  * Add --compatibility pypi to avoid building for unsupported
+    architectures
+    gh#PyO3/maturin#2650
+  * Fix self bootstrap without Rust installed
+    gh#PyO3/maturin#2653
+
+-------------------------------------------------------------------
 Mon Jun  9 14:34:52 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.8.7
