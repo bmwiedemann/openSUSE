@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 20 10:44:20 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Repair rc_symlink conditionals
+
+-------------------------------------------------------------------
+Fri Jun 20 00:45:43 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Update QUIC documentation in README.SUSE.PACKAGING
+
+-------------------------------------------------------------------
 Wed Jun 11 10:50:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - modernize spec file with spec-cleaner. some changes (mostly

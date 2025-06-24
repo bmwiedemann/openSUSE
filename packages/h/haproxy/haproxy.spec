@@ -224,7 +224,7 @@ install -D -m 0755 admin/halog/halog %{buildroot}%{_sbindir}/haproxy-halog
 
 %if %{with systemd}
 install -D -m 0644 admin/systemd/%{pkg_name}.service  %{buildroot}%{_unitdir}/%{pkg_name}.service
-%if %{with rc_symlinks}
+%if %{with rc_symlink}
 ln -sf /sbin/service   %{buildroot}%{_sbindir}/rc%{pkg_name}
 %endif
 %if %{with sysusers}
@@ -316,7 +316,7 @@ getent passwd %{pkg_name} >/dev/null || \
 %endif
 %{_sbindir}/haproxy
 %{_sbindir}/haproxy-halog
-%if %{with rc_symlinks}
+%if %{with rc_symlink}
 %{_sbindir}/rchaproxy
 %endif
 %dir %attr(-,root,haproxy) %{pkg_home}
