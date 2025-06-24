@@ -47,6 +47,7 @@ BuildArch:      noarch
 Conflicts:      (filesystem without may-perform-usrmerge)
 %endif
 Supplements:    modalias(auxiliary:ice.sf)
+Supplements:    modalias(mdio:0111010100000000100101??????????)
 Supplements:    modalias(pci:v00001011d0000001Asv*sd*bc02sc00i*)
 Supplements:    modalias(pci:v0000106Bd00001645sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00008020sv*sd*bc02sc00i00*)

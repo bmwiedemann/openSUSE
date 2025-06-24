@@ -6,6 +6,7 @@ acenic: pci:v000012AEd00000002sv*sd*bc02sc00i*
 acenic: pci:v000012AEd000000FAsv*sd*bc02sc00i*
 acenic: pci:v00001385d0000620Asv*sd*bc02sc00i*
 acenic: pci:v00001385d0000630Asv*sd*bc02sc00i*
+as21xxx: mdio:0111010100000000100101??????????
 e100: pci:v00008086d00001029sv*sd*bc02sc00i*
 e100: pci:v00008086d00001030sv*sd*bc02sc00i*
 e100: pci:v00008086d00001031sv*sd*bc02sc00i*
