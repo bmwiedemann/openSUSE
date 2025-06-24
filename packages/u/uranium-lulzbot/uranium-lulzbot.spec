@@ -17,7 +17,20 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define pythons 311
+%{?sle15_python_module_pythons}
+
+%if %{defined primary_python}
+%define pythons python3
+%define use_python     %(echo %{primary_python} | sed -e 's|python3|python3.|g')
+%else
+%if %{defined modern_python}
+%define pythons %modern_python
+%define use_python     %(echo %{modern_python} | sed -e 's|python3|python3.|g')
+%else
+%define pythons python311
+%define use_python python3.11
+%endif
+%endif
 
 Name:           uranium-lulzbot
 Conflicts:      uranium
@@ -28,10 +41,10 @@ License:        AGPL-3.0-only
 URL:            https://code.alephobjects.com/diffusion/U/uranium.git
 Source0:        Uranium-%{version}.tar.xz
 Patch1:         fix-build.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
-BuildRequires:  python311-devel
-Recommends:     python311-numpy-stl
+Recommends:     %{modern_python}-numpy-stl
 
 %description
 Cura is an engine for processing 3D models
@@ -44,9 +57,11 @@ Uranium is the Python framework for the Cura UI.
 %autosetup -p1 -n Uranium-%version
 
 %build
+echo "use_python macro is set to %use_python"
 CFLAGS="%{optflags}"
 export CFLAGS
-%cmake -DPYTHON_EXECUTABLE=/usr/bin/python3.11 -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+%cmake -DPYTHON_EXECUTABLE=/usr/bin/%{use_python} -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+
 make %{?_smp_mflags}
 
 %install
@@ -74,7 +89,7 @@ mv %{buildroot}/%{_datadir}/cmake* %{buildroot}/%{_datadir}/cmake
 %files -f %{name}.lang
 %doc docs README.md
 %license LICENSE
-/usr/lib/python3.11/site-packages/UM
+/usr/lib/%{use_python}/site-packages/UM
 %{_prefix}/lib/uranium
 %dir %{_datadir}/uranium
 %{_datadir}/uranium/resources
