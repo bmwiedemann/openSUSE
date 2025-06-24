@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 18 13:55:34 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.29
+  * LIBUSB_API_VERSION bump for the new functions in 1.0.28
+  * Fix xusb regression displaying wrong error on claim failure.
+
+-------------------------------------------------------------------
 Thu Mar 20 12:00:27 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - Update to version 1.0.28
