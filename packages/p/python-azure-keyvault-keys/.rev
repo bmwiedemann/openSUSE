@@ -273,4 +273,16 @@
     <comment></comment>
     <requestid>1282712</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>1b1b5217a72828b69b8d3c6f7f78ce86</srcmd5>
+    <version>4.11.0</version>
+    <time>1750790860</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 4.11.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 1286666 from glaubitz)</comment>
+    <requestid>1287952</requestid>
+  </revision>
 </revisionlist>

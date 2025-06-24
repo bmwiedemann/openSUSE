@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 18 11:39:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 4.11.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+
+-------------------------------------------------------------------
 Wed Jun  4 10:27:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
