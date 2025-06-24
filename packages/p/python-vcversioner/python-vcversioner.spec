@@ -1,7 +1,7 @@
 #
 # spec file for package python-vcversioner
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        2.16.0.0
 Release:        0
 Summary:        setup.py extension for deriving versions from SCM tags
 License:        ISC
-Group:          Development/Languages/Python
 URL:            https://github.com/habnabit/vcversioner
 Source0:        https://files.pythonhosted.org/packages/source/v/vcversioner/vcversioner-%{version}.tar.gz
 # https://github.com/habnabit/vcversioner/issues/13
@@ -30,7 +29,9 @@ Source1:        https://raw.githubusercontent.com/habnabit/vcversioner/%{version
 # https://github.com/habnabit/vcversioner/issues/13
 Source2:        https://raw.githubusercontent.com/habnabit/vcversioner/%{version}/test_vcversioner.py
 Source9:        %{name}-rpmlintrc
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -49,10 +50,10 @@ VCS tag and extract a version from it.
 cp %{SOURCE1} %{SOURCE2} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,8 +62,8 @@ cp %{SOURCE1} %{SOURCE2} .
 %files %{python_files}
 %license COPYING
 %doc README.rst
-%{python_sitelib}/vcversioner.py*
-%pycache_only %{python_sitelib}/__pycache__/vcversioner.*.py*
-%{python_sitelib}/vcversioner-%{version}-py*.egg-info
+%{python_sitelib}/vcversioner.py
+%pycache_only %{python_sitelib}/__pycache__/vcversioner.*.pyc
+%{python_sitelib}/vcversioner-%{version}.dist-info
 
 %changelog
