@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 22 21:11:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 1.7.0+git119 (48953a8a3)
+  * Resolve compile error with gcc-15
+
+-------------------------------------------------------------------
 Sat Nov  2 16:39:41 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 1.7.0+git106 (a253f54da)
