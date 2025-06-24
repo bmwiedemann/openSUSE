@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 13 05:35:44 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.900.0 (0.90)
+   see /usr/share/doc/packages/perl-Module-Signature/Changes
+
+  [Changes for 0.90 - Wed Jun 11 21:51:22 ADT 2025]
+
+  * Fixes RT#166901: Suspicious fail on signature file with an unexpected empty line
+
+-------------------------------------------------------------------
 Mon Sep 16 05:34:20 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.890.0 (0.89)

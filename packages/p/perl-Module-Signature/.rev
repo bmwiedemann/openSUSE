@@ -249,4 +249,17 @@ License purports to be CC zero, not CC-BY. Also, see the script/cpansign and Mod
     <comment></comment>
     <requestid>1235272</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>bd6c5c527338f4b8d4bbdb7deccf5c52</srcmd5>
+    <version>0.900.0</version>
+    <time>1750790995</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1288027 from tinita
+
+- updated to 0.900.0 (0.90)
+   see /usr/share/doc/packages/perl-Module-Signature/Changes
+  [Changes for 0.90 - 
+  * Fixes RT#166901: Suspicious fail on signature file with an unexpected empty line</comment>
+    <requestid>1288167</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-Signature
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Module-Signature
 Name:           perl-Module-Signature
-Version:        0.890.0
+Version:        0.900.0
 Release:        0
-# 0.89 -> normalize -> 0.890.0
-%define cpan_version 0.89
+# 0.90 -> normalize -> 0.900.0
+%define cpan_version 0.90
 #Upstream: SUSE-Public-Domain
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND CC0-1.0
 Summary:        Module signature file manipulation
@@ -66,7 +66,7 @@ authors are strongly encouraged to regenerate their _SIGNATURE_ files.
 Users verifying old SHA1 signature files will receive a warning.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 # MANUAL BEGIN
 sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL
