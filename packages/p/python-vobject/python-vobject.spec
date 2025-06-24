@@ -23,7 +23,6 @@ Version:        0.9.9
 Release:        0
 Summary:        Python package for parsing and creating iCalendar and vCard files
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/py-vobject/vobject/
 Source:         https://files.pythonhosted.org/packages/source/v/vobject/%{modname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/py-vobject/vobject/pull/87 remove six
@@ -32,9 +31,11 @@ Source1:        radicale-1587.vcf
 Patch0:         no-six.patch
 BuildRequires:  %{python_module PyICU}
 BuildRequires:  %{python_module devel >= 2.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil >= 2.7.0}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.7.0
@@ -61,10 +62,10 @@ sed -i 's/\r$//' ACKNOWLEDGEMENTS.txt
 cp %{S:1} test_files/.
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 for p in change_tz ics_diff ; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
@@ -87,6 +88,6 @@ done
 %python_alternative %{_bindir}/change_tz
 %python_alternative %{_bindir}/ics_diff
 %{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py*.egg-info
+%{python_sitelib}/%{modname}-%{version}.dist-info
 
 %changelog

@@ -1,7 +1,8 @@
-diff -rU 3 a/vobject/base.py b/vobject/base.py
---- a/vobject/base.py	2024-12-16 08:15:20.000000000 +0100
-+++ b/vobject/base.py	2025-05-08 10:54:19.517509757 +0200
-@@ -6,7 +6,7 @@
+Index: vobject-0.9.9/vobject/base.py
+===================================================================
+--- vobject-0.9.9.orig/vobject/base.py
++++ vobject-0.9.9/vobject/base.py
+@@ -6,7 +6,7 @@ import copy
  import codecs
  import logging
  import re
@@ -10,7 +11,7 @@ diff -rU 3 a/vobject/base.py b/vobject/base.py
  import sys
  
  # Package version
-@@ -858,7 +858,7 @@
+@@ -858,7 +858,7 @@ def getLogicalLines(fp, allowQP=True):
      Quoted-printable data will be decoded in the Behavior decoding phase.
  
      # We're leaving this test in for awhile, because the unittest was ugly and dumb.
@@ -19,7 +20,7 @@ diff -rU 3 a/vobject/base.py b/vobject/base.py
      >>> f=StringIO(testLines)
      >>> for n, l in enumerate(getLogicalLines(f)):
      ...     print("Line %s: %s" % (n, l[0]))
-@@ -881,7 +881,7 @@
+@@ -881,7 +881,7 @@ def getLogicalLines(fp, allowQP=True):
  
      else:
          quotedPrintable = False
@@ -28,7 +29,7 @@ diff -rU 3 a/vobject/base.py b/vobject/base.py
          logicalLine = newbuffer()
          lineNumber = 0
          lineStartNumber = 0
-@@ -996,7 +996,7 @@
+@@ -996,7 +996,7 @@ def defaultSerialize(obj, buf, lineLengt
      """
      Encode and fold obj and its children, write to buf or return a string.
      """
@@ -37,7 +38,7 @@ diff -rU 3 a/vobject/base.py b/vobject/base.py
  
      if isinstance(obj, Component):
          if obj.group is None:
-@@ -1018,7 +1018,7 @@
+@@ -1018,7 +1018,7 @@ def defaultSerialize(obj, buf, lineLengt
          if obj.behavior and not startedEncoded:
              obj.behavior.encode(obj)
  
@@ -46,7 +47,7 @@ diff -rU 3 a/vobject/base.py b/vobject/base.py
  
          if obj.group is not None:
              s.write(obj.group + '.')
-@@ -1082,7 +1082,7 @@
+@@ -1082,7 +1082,7 @@ def readComponents(streamOrString, valid
      Generate one Component at a time from a stream.
      """
      if isinstance(streamOrString, basestring):
@@ -55,10 +56,11 @@ diff -rU 3 a/vobject/base.py b/vobject/base.py
      else:
          stream = streamOrString
  
-diff -rU 3 a/vobject/hcalendar.py b/vobject/hcalendar.py
---- a/vobject/hcalendar.py	2024-10-01 16:46:45.000000000 +0200
-+++ b/vobject/hcalendar.py	2025-05-08 10:55:12.047890349 +0200
-@@ -28,7 +28,7 @@
+Index: vobject-0.9.9/vobject/hcalendar.py
+===================================================================
+--- vobject-0.9.9.orig/vobject/hcalendar.py
++++ vobject-0.9.9/vobject/hcalendar.py
+@@ -28,7 +28,7 @@ and an equivalent event in hCalendar for
  </span>
  """
  
@@ -67,7 +69,7 @@ diff -rU 3 a/vobject/hcalendar.py b/vobject/hcalendar.py
  
  from datetime import date, datetime, timedelta
  
-@@ -45,7 +45,7 @@
+@@ -45,7 +45,7 @@ class HCalendar(VCalendar2_0):
          Serialize iCalendar to HTML using the hCalendar microformat (http://microformats.org/wiki/hcalendar)
          """
  
@@ -76,10 +78,11 @@ diff -rU 3 a/vobject/hcalendar.py b/vobject/hcalendar.py
          level = 0  # holds current indentation level
          tabwidth = 3
  
-diff -rU 3 a/vobject/icalendar.py b/vobject/icalendar.py
---- a/vobject/icalendar.py	2024-12-16 08:09:54.000000000 +0100
-+++ b/vobject/icalendar.py	2025-05-08 10:57:12.542858557 +0200
-@@ -10,7 +10,7 @@
+Index: vobject-0.9.9/vobject/icalendar.py
+===================================================================
+--- vobject-0.9.9.orig/vobject/icalendar.py
++++ vobject-0.9.9/vobject/icalendar.py
+@@ -10,7 +10,7 @@ import string
  import base64
  
  from dateutil import rrule, tz
@@ -88,7 +91,7 @@ diff -rU 3 a/vobject/icalendar.py b/vobject/icalendar.py
  
  try:
      import pytz
-@@ -56,7 +56,7 @@
+@@ -56,7 +56,7 @@ def toUnicode(s):
      """
      Take a string or unicode, turn it into unicode, decoding as utf-8
      """
@@ -97,7 +100,7 @@ diff -rU 3 a/vobject/icalendar.py b/vobject/icalendar.py
          s = s.decode('utf-8')
      return s
  
-@@ -135,7 +135,7 @@
+@@ -135,7 +135,7 @@ class TimezoneComponent(Component):
          good_lines = ('rdate', 'rrule', 'dtstart', 'tzname', 'tzoffsetfrom',
                        'tzoffsetto', 'tzid')
          # serialize encodes as utf-8, cStringIO will leave utf-8 alone
@@ -106,7 +109,7 @@ diff -rU 3 a/vobject/icalendar.py b/vobject/icalendar.py
          # allow empty VTIMEZONEs
          if len(self.contents) == 0:
              return None
-@@ -569,7 +569,7 @@
+@@ -569,7 +569,7 @@ class RecurringComponent(Component):
                      self.add(name).value = setlist
              elif name in RULENAMES:
                  for rule in setlist:
@@ -115,7 +118,7 @@ diff -rU 3 a/vobject/icalendar.py b/vobject/icalendar.py
                      buf.write('FREQ=')
                      buf.write(FREQUENCIES[rule._freq])
  
-@@ -1010,7 +1010,7 @@
+@@ -1010,7 +1010,7 @@ class VCalendar2_0(VCalendarComponentBeh
              transformed = obj
              undoTransform = False
          out = None
@@ -124,3 +127,16 @@ diff -rU 3 a/vobject/icalendar.py b/vobject/icalendar.py
          if obj.group is None:
              groupString = ''
          else:
+Index: vobject-0.9.9/setup.py
+===================================================================
+--- vobject-0.9.9.orig/setup.py
++++ vobject-0.9.9/setup.py
+@@ -49,7 +49,7 @@ setup(name = "vobject",
+       include_package_data = True,
+       install_requires=["python-dateutil >= 2.5.0; python_version < '3.10'",
+                         "python-dateutil >= 2.7.0; python_version >= '3.10'",
+-                        "pytz", 'six'],
++                        "pytz"],
+       platforms = ["any"],
+       packages = find_packages(),
+       description = "A full-featured Python package for parsing and creating "

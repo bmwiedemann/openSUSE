@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 24 02:58:12 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Refresh no-six.patch.
+
+-------------------------------------------------------------------
 Thu May  8 09:04:57 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - verion 0.9.9

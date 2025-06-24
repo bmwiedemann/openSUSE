@@ -86,4 +86,13 @@
     <comment></comment>
     <requestid>1275466</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7bc3a866c0a46d2cff9702ca024e81b5</srcmd5>
+    <version>0.9.9</version>
+    <time>1750790723</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Refresh no-six.patch.</comment>
+    <requestid>1288115</requestid>
+  </revision>
 </revisionlist>
