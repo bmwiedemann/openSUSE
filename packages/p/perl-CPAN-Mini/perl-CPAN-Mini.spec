@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CPAN-Mini
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,33 @@
 
 %define cpan_name CPAN-Mini
 Name:           perl-CPAN-Mini
-Version:        1.111017
+Version:        1.111.17
 Release:        0
+# 1.111017 -> normalize -> 1.111.17
+%define cpan_version 1.111017
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Create a minimal mirror of CPAN
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Compress::Zlib) >= 1.20
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
-BuildRequires:  perl(File::HomeDir) >= 0.57
+BuildRequires:  perl(File::HomeDir) >= 0.570
 BuildRequires:  perl(File::Path) >= 2.04
 BuildRequires:  perl(LWP::UserAgent) >= 5
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(URI) >= 1
 Requires:       perl(Compress::Zlib) >= 1.20
-Requires:       perl(File::HomeDir) >= 0.57
+Requires:       perl(File::HomeDir) >= 0.570
 Requires:       perl(File::Path) >= 2.04
 Requires:       perl(LWP::UserAgent) >= 5
 Requires:       perl(URI) >= 1
+Provides:       perl(CPAN::Mini) = %{version}
+Provides:       perl(CPAN::Mini::App) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -56,7 +61,7 @@ install the newest version of every distribution. Those files are:
   * the last non-developer release of every dist for every author
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
