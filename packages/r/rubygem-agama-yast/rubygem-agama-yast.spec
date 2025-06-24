@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-agama-yast
-Version:        15.devel54.8e10affb2
+Version:        15.devel496.264781cfa
 Release:        0
 %define mod_name agama-yast
 %define mod_full_name %{mod_name}-%{version}
@@ -37,7 +37,7 @@ BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  update-alternatives
-URL:            https://github.com/openSUSE/agama
+URL:            https://github.com/agama-project/agama
 Source:         %{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        YaST integration service for Agama

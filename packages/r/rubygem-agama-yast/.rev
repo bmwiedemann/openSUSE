@@ -354,4 +354,12 @@
 - Provide software conflicts D-Bus API (gh#agama-project/agama#2348)</comment>
     <requestid>1282418</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2a557348cc3604e0bf4cb46bd91ed8bb</srcmd5>
+    <version>15.devel496.264781cfa</version>
+    <time>1750790890</time>
+    <user>anag_factory</user>
+    <comment>weekly snapshot</comment>
+    <requestid>1287985</requestid>
+  </revision>
 </revisionlist>

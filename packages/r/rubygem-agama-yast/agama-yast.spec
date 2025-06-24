@@ -17,7 +17,7 @@
 
 
 Name:           agama-yast
-Version:        15.devel54.8e10affb2
+Version:        15.devel496.264781cfa
 Release:        0
 %define mod_name agama-yast
 %define mod_full_name %{mod_name}-%{version}
@@ -30,7 +30,7 @@ Requires:       rubygem(agama-yast)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  ruby-macros >= 5
 
-URL:            https://github.com/openSUSE/agama
+URL:            https://github.com/agama-project/agama
 Source:         %{mod_full_name}.gem
 Source1:        po.tar.bz2
 Source2:        install_translations.sh
