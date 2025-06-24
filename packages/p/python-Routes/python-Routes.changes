@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 24 02:21:54 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Fri Jun  7 12:54:57 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add remove-six.patch to get rid of six

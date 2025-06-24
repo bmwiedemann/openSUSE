@@ -1,7 +1,7 @@
 #
 # spec file for package python-Routes
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,9 +28,11 @@ Patch:          remove-six.patch
 # for testing
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module WebTest}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module repoze.lru}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-repoze.lru >= 0.3
@@ -46,10 +48,10 @@ A Routing package for Python that matches URL's to dicts and vice versa.
 %autosetup -p1 -n Routes-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +61,6 @@ A Routing package for Python that matches URL's to dicts and vice versa.
 %license LICENSE.txt
 %doc CHANGELOG.rst README.rst
 %{python_sitelib}/routes
-%{python_sitelib}/Routes-%{version}*-info
+%{python_sitelib}/[Rr]outes-%{version}.dist-info
 
 %changelog

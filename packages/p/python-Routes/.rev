@@ -166,4 +166,12 @@
 - Add remove-six.patch to get rid of six</comment>
     <requestid>1179858</requestid>
   </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>86fcedbb8612b7781b2ace4a6d2594e0</srcmd5>
+    <version>2.5.1</version>
+    <time>1750790722</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1288111</requestid>
+  </revision>
 </revisionlist>
