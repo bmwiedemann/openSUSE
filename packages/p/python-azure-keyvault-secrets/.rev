@@ -144,4 +144,16 @@
 - Update Requires from setup.py (forwarded request 1216689 from glaubitz)</comment>
     <requestid>1216695</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>47c415a7ed6a8d14b583a542aa297994</srcmd5>
+    <version>4.10.0</version>
+    <time>1750790861</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 4.10.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1286667 from glaubitz)</comment>
+    <requestid>1287953</requestid>
+  </revision>
 </revisionlist>
