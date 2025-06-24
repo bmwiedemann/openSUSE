@@ -60,6 +60,8 @@ mt76x2e: pci:v000014C3d00007612sv*sd*bc*sc*i*
 mt76x2e: pci:v000014C3d00007662sv*sd*bc*sc*i*
 mt76x2u: usb:v045Ep02E6d*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v045Ep02FEd*dc*dsc*dp*ic*isc*ip*in*
+mt76x2u: usb:v0471p2126d*dc*dsc*dp*ic*isc*ip*in*
+mt76x2u: usb:v0471p7600d*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v057Cp8503d*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v0846p9014d*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v0846p9053d*dc*dsc*dp*ic*isc*ip*in*
@@ -88,7 +90,9 @@ mt7925u: usb:v0E8Dp7925d*dc*dsc*dp*icFFiscFFipFFin*
 mt7996e: pci:v000014C3d00007990sv*sd*bc*sc*i*
 mt7996e: pci:v000014C3d00007991sv*sd*bc*sc*i*
 mt7996e: pci:v000014C3d00007992sv*sd*bc*sc*i*
+mt7996e: pci:v000014C3d00007993sv*sd*bc*sc*i*
 mt7996e: pci:v000014C3d0000799Asv*sd*bc*sc*i*
+mt7996e: pci:v000014C3d0000799Bsv*sd*bc*sc*i*
 mtk_scp: of:N*T*Cmediatek%2Cmt8183-scp
 mtk_scp: of:N*T*Cmediatek%2Cmt8183-scpC*
 mtk_scp: of:N*T*Cmediatek%2Cmt8186-scp

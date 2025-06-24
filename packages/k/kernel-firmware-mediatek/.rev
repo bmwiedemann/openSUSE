@@ -131,4 +131,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * mediatek: Update mt8186 SCP firmware</comment>
     <requestid>1287534</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4df0545d337bffd0740adc49b0ce718e</srcmd5>
+    <version>20250619</version>
+    <time>1750790790</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases</comment>
+    <requestid>1288147</requestid>
+  </revision>
 </revisionlist>
