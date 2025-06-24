@@ -477,4 +477,21 @@
     <comment></comment>
     <requestid>1283919</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b3d71af62ea0e732709a4d98d106f5e6</srcmd5>
+    <version>1.80.0</version>
+    <time>1750790816</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.80.0:
+  * [Card] Pool-to-Update: Improved spinner visibility
+  * [Servers] Added ComicK (comick.io)
+  * [Servers] Added Raijin Scan (FR)
+  * [Servers] Pepper &amp; Carrot: Update
+  * [Servers] Phenix Scans (FR): Update
+  * [Servers] Mangalek (AR): Update
+  * [Servers] Tres Daos (ES): Update
+  * [Servers] WEBTOON (EN/ES/FR/ID/TH/ZH): Update
+  * [L10n] Updated French and Persian translations (forwarded request 1287246 from rrahl0)</comment>
+    <requestid>1287867</requestid>
+  </revision>
 </revisionlist>

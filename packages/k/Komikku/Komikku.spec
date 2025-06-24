@@ -18,7 +18,7 @@
 
 %define         appid info.febvre.Komikku
 Name:           Komikku
-Version:        1.79.1
+Version:        1.80.0
 Release:        0
 Summary:        A manga reader for GNOME
 # appdata.xml is CC-BY-4.0
