@@ -243,4 +243,16 @@
 - Rename LICENSE.txt to LICENSE in %files section (forwarded request 1240030 from glaubitz)</comment>
     <requestid>1240210</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>42e3c2e69f459ae2e441c95e5c56aedf</srcmd5>
+    <version>9.0.0</version>
+    <time>1750790858</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 9.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1286586 from glaubitz)</comment>
+    <requestid>1287948</requestid>
+  </revision>
 </revisionlist>
