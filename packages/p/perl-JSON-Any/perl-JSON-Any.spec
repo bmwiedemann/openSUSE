@@ -1,7 +1,7 @@
 #
 # spec file for package perl-JSON-Any
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,7 @@
 Name:           perl-JSON-Any
 Version:        1.400.0
 Release:        0
+# 1.40 -> normalize -> 1.400.0
 %define cpan_version 1.40
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        (DEPRECATED) Wrapper Class for the various JSON classes
@@ -29,14 +30,14 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.120620
+BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.121
 BuildRequires:  perl(Module::Metadata)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Needs)
-BuildRequires:  perl(Test::Warnings) >= 0.009
+BuildRequires:  perl(Test::Warnings) >= 0.9
 BuildRequires:  perl(Test::Without::Module)
-Provides:       perl(JSON::Any) = 1.400.0
+Provides:       perl(JSON::Any) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 
@@ -121,7 +122,7 @@ It will skip the JSON package detection routines and will die loudly that
 it couldn't find a package.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
