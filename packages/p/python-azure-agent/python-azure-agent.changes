@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 19 08:06:14 UTC 2025 - Joachim Gleissner <jgleissner@suse.com>
+
+- Set AutoUpdate.UpdateToLatestVersion=n in /etc/waagent.conf
+  (bsc#1244933)
+
+-------------------------------------------------------------------
 Tue Apr 15 10:02:16 UTC 2025 - Joachim Gleissner <jgleissner@suse.com>
 
 - Fix %suse_version conditional in spec file so package is built

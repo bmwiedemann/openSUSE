@@ -184,7 +184,7 @@ rm %{buildroot}%{_sbindir}/waagent2.0
 # Config file flavor setup
 cp %{buildroot}%{_sysconfdir}/waagent.conf %{buildroot}%{_sysconfdir}/waagent.conf.default
 # No autoupdate of binaries for any SUSE product
-sed -i -e "s/# AutoUpdate.Enabled=y/AutoUpdate.Enabled=n/" %{buildroot}%{_sysconfdir}/waagent.conf
+sed -i -e "s/# AutoUpdate.UpdateToLatestVersion=y/AutoUpdate.UpdateToLatestVersion=n/" %{buildroot}%{_sysconfdir}/waagent.conf
 # Common settings for most SUSE products
 # Generate all supported SSH host key types
 sed -i -e "s/SshHostKeyPairType=rsa/SshHostKeyPairType=auto/" %{buildroot}%{_sysconfdir}/waagent.conf
