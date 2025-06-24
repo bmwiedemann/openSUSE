@@ -20,6 +20,7 @@
 %define _commit 590a9cd3
 
 %global __requires_exclude typelib\\(Gnome\\)
+%define pythons python3
 Name:           terminator
 Version:        2.1.5
 Release:        0
@@ -36,14 +37,17 @@ BuildRequires:  gobject-introspection
 BuildRequires:  gsettings-desktop-schemas
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  python3-cairo
 BuildRequires:  python3-configobj
 BuildRequires:  python3-dbus-python
 BuildRequires:  python3-gobject-Gdk
+BuildRequires:  python3-pip
 BuildRequires:  python3-psutil
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 BuildRequires:  xvfb-run
 BuildRequires:  pkgconfig(libnotify)
@@ -76,15 +80,12 @@ sed -i 's:pytest-runner::' setup.py
 sed -i '/#! \?\/usr.*/d' terminatorlib/*.py
 
 %build
-python3 setup.py build
+%pyproject_wheel
 
 %install
-python3 setup.py install --root=%{buildroot} --prefix=%{_prefix}
+%pyproject_install
 
 rm %{buildroot}/%{_datadir}/applications/%{name}.desktop
-
-# Fix broken python shebang on main executable
-sed -i 's/#!python/#!\/usr\/bin\/env python3/g' %{buildroot}/%{_bindir}/%{name}
 
 desktop-file-install --vendor="" --dir=%{buildroot}%{_datadir}/applications data/%{name}.desktop
 %suse_update_desktop_file %{name}
@@ -117,7 +118,7 @@ xvfb-run python3 -m pytest
 %{_mandir}/man1/%{name}.*
 %{_mandir}/man5/%{name}_config.*
 %{python3_sitelib}/terminatorlib/
-%{python3_sitelib}/terminator-*.egg-info
+%{python3_sitelib}/terminator-%{version}.dist-info
 %{_datadir}/metainfo/%{name}.metainfo.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/*/%{name}*.png

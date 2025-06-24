@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 18 06:06:36 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros from python-rpm-macros to build and install.
+
+-------------------------------------------------------------------
 Fri May 23 22:08:11 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 2.1.5:
