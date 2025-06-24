@@ -1,7 +1,7 @@
 #
 # spec file for package uimaj
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -151,6 +151,8 @@ rm -r %{name}-tools/src/test/java/org/apache/uima/tools/viewer/CasAnnotationView
   <configuration>
     <goalPrefix>PearPackagingMavenPlugin</goalPrefix>
   </configuration>"
+
+%pom_xpath_remove pom:project/pom:repositories uimaj-parent
 
 %{mvn_package} :PearPackagingMavenPlugin uima-pear-maven-plugin
 %{mvn_package} :jcasgen-maven-plugin jcasgen-maven-plugin

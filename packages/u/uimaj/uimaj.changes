@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 23 09:28:19 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Remove repositories section from parent pom, since it exposes
+  not fully interpolated variables and we don't need it for the
+  build
+
+-------------------------------------------------------------------
 Thu May 16 08:21:09 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with maven-plugin-plugin >= 3.11
