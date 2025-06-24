@@ -1096,4 +1096,13 @@
     <comment>KDE release gear 25.04.2 (forwarded request 1282457 from krop)</comment>
     <requestid>1283136</requestid>
   </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>24588addf3995b75351ce5a0a3af4870</srcmd5>
+    <version>25.04.2</version>
+    <time>1750790720</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream fix:
+  * 0001-Do-not-request-password-twice.patch</comment>
+    <requestid>1288098</requestid>
+  </revision>
 </revisionlist>
