@@ -17,12 +17,12 @@
 
 
 Name:           python-cPyparsing
-Version:        2.4.7.2.3.2
+Version:        2.4.7.2.4.1
 Release:        0
 Summary:        Cython implementation of PyParsing
 License:        Apache-2.0
 URL:            https://github.com/evhub/cpyparsing
-Source:         https://files.pythonhosted.org/packages/source/c/cPyparsing/cPyparsing-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/c/cPyparsing/cpyparsing-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -36,7 +36,7 @@ BuildRequires:  python-rpm-macros
 Cython implementation of PyParsing created for use in Coconut and Undebt.
 
 %prep
-%setup -q -n cPyparsing-%{version}
+%setup -q -n cpyparsing-%{version}
 
 %build
 export CFLAGS="%{optflags}"
