@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 23 04:24:23 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Impl: Adding new fence agent for Nutanix AHV (jsc#PED-13090) 
+
+-------------------------------------------------------------------
+Mon Jun 23 04:20:46 UTC 2025 - varkoly@suse.com
+
+- Update to version 4.16.0+git.1750325058.755815b1:
+  * fence_shelly_gen2: new fence agent for Shelly Gen2+ Switches (#628)
+  * fence_kubevirt: set grace_period_seconds=0 to immediately power off the node
+  * fence_aws_vpc_net: new fence agent for AWS VPC Net (#613)
+  * fence_ibm_powervs: fix plaintext token file support
+  * fence_nutanix_ahv: update metadata to fix incorrect agent name and align with other agents metadata
+  * fence_virtd: fix linkage of server modules (#624)
+
+-------------------------------------------------------------------
 Thu Apr 17 09:07:00 UTC 2025 - varkoly@suse.com
 
 - Update to version 4.16.0+git.1744878140.5acc05b1:

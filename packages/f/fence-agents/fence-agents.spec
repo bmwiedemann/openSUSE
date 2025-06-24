@@ -16,10 +16,10 @@
 #
 
 
-%define agent_list aliyun alom apc apc_snmp aws azure_arm bladecenter brocade cisco_mds cisco_ucs drac5 dummy eaton_snmp eaton_ssh emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ibm_powervs ibm_vpc ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump lpar mpath netio powerman pve raritan rcd_serial redfish rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti zvm
+%define agent_list aliyun alom apc apc_snmp aws azure_arm bladecenter brocade cisco_mds cisco_ucs drac5 dummy eaton_snmp eaton_ssh emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ibm_powervs ibm_vpc ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump lpar mpath netio nutanix_ahv powerman pve raritan rcd_serial redfish rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti zvm
 Name:           fence-agents
 Summary:        Set of unified programs capable of host isolation ("fencing")
-Version:        4.16.0+git.1744878140.5acc05b1
+Version:        4.16.0+git.1750325058.755815b1
 Release:        0
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Clustering/HA
@@ -61,6 +61,7 @@ fence-agents-kdump \\
 fence-agents-lpar \\
 fence-agents-mpath \\
 fence-agents-netio \\
+fence-agents-nutanix-ahv \\
 fence-agents-redfish \\
 fence-agents-rsa \\
 fence-agents-rsb \\
@@ -938,6 +939,20 @@ via telnet or SSH.
 %files netio
 %{_sbindir}/fence_netio
 %{_mandir}/man8/fence_netio.8*
+
+%package nutanix-ahv
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later
+Summary:        Fence agent for Nutanix AHV
+Requires:       fence-agents-common = %{version}-%{release}
+BuildArch:      noarch
+Obsoletes:      fence-agents < 3.1.13
+
+%description nutanix-ahv
+Fence agent for Nutanix AHV clusters.
+
+%files nutanix-ahv
+%{_sbindir}/fence_nutanix_ahv
+%{_mandir}/man8/fence_nutanix_ahv.8*
 
 # skipped from allfenceagents
 %package pve

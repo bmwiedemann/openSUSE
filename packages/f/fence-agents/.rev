@@ -1215,4 +1215,20 @@
   * fence_sbd: Add crashdump option (jsc#PED-11931) (jsc#PED-12611)</comment>
     <requestid>1270232</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>530d2d160a61bcc9f87ba5995f7c522a</srcmd5>
+    <version>4.16.0+git.1750325058.755815b1</version>
+    <time>1750791019</time>
+    <user>anag_factory</user>
+    <comment>- Impl: Adding new fence agent for Nutanix AHV (jsc#PED-13090) 
+
+- Update to version 4.16.0+git.1750325058.755815b1:
+  * fence_shelly_gen2: new fence agent for Shelly Gen2+ Switches (#628)
+  * fence_kubevirt: set grace_period_seconds=0 to immediately power off the node
+  * fence_aws_vpc_net: new fence agent for AWS VPC Net (#613)
+  * fence_ibm_powervs: fix plaintext token file support
+  * fence_nutanix_ahv: update metadata to fix incorrect agent name and align with other agents metadata
+  * fence_virtd: fix linkage of server modules (#624)</comment>
+    <requestid>1288231</requestid>
+  </revision>
 </revisionlist>
