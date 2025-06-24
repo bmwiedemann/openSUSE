@@ -47,4 +47,12 @@
     <comment>Rewrite for Ant == build cycles prevention</comment>
     <requestid>1264935</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>09394851ccc9d3b061e4077c816691ad</srcmd5>
+    <version>3.30.4</version>
+    <time>1750790829</time>
+    <user>anag_factory</user>
+    <comment>3.30.4</comment>
+    <requestid>1287888</requestid>
+  </revision>
 </revisionlist>

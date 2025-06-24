@@ -26,7 +26,7 @@ JLine 3.x is an evolution of JLine 2.x.
 %bcond_with ssh
 %bcond_with ffm
 Name:           jline3
-Version:        3.29.0
+Version:        3.30.4
 Release:        0
 Summary:        Java library for handling console input
 License:        BSD-3-Clause
@@ -250,7 +250,6 @@ sed -i /-Werror/d $(find -name pom.xml)
 %pom_remove_plugin :spotless-maven-plugin
 %pom_remove_plugin :maven-release-plugin
 %pom_remove_plugin :maven-deploy-plugin
-%pom_remove_plugin :central-publishing-maven-plugin
 %pom_remove_plugin :native-image-maven-plugin
 %pom_remove_plugin :maven-source-plugin
 

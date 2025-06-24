@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Mon Jun 23 09:32:33 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.30.4
+  * New features and improvements
+    + add pluggable completion to Nano editor (fixes #1194)
+    + enhanced MouseSupport to handle multiple mouse event formats
+      (SGR, URXVT, SGR-Pixels)
+    + add getCurrentMouseTracking to Terminal interface
+    + add ability to get terminal default foreground and background
+      colors
+    + add password masking support for dumb terminals (fixes #1172)
+    + add line numbers and current line marker to secondary prompt
+      (fix for #1151)
+    + Add support for separate encodings for stdin, stdout, and
+      stderr
+    + Make prompts work in non-fullscreen mode
+  * Bug Fixes
+    + use a fallback classloader suitable for java Modules or OSGi
+      environments (fixes #1185)
+    + NPE in Status#resize when supported is false (fixes #1191)
+    + nano editor exiting when pressing Ctrl+Space (fixes #1200)
+    + parse error of system default /usr/share/nano/*.nanorc
+    + Terminal.trackMouse(MouseTracking.Off) (fixes #1189)
+    + Make command execution order consistent in SystemRegistryImpl
+    + handle invalid entries in history files gracefully
+    + Properly fill screen lines with spaces when width is increased
+      in ScreenTerminal
+    + cursor position after Status.update()
+    + improve script file detection and execution in Groovy REPL,
+      fixes #1139
+    + ensure proper cleanup of pump threads in terminal
+      implementations
+    + add history line width check in ScreenTerminal.setSize()
+      (fixes #1206)
+    + console-ui example: catch UserInterruptException in place of
+      IOError
+    + Ctrl+Space handling on Windows terminals
+    + Update LineReaderImpl to use new readMouseEvent signature with
+      lastBinding parameter
+    + enhance nanorc loading and introduce a ClasspathResourceUtil
+      utility
+    + missing close in PosixSysTerminal.
+    + Jansi AnsiConsole broken color detection in uber jars
+    + SyntaxHighlighter glob pattern handling for non-default file
+      systems
+  * Documentation
+    + Integrate website into main repository
+    + improve JLineNativeLoader documentation and references
+    + fix readme
+    + Add comprehensive Javadoc to jline-builtins module
+    + improve Javadoc in console module
+    + add comprehensive Javadoc to org.jline.style package
+    + add comprehensive Javadoc to JLine Terminal and Reader
+    + Add missing DISABLE_EVENT_EXPANSION JavaDoc (fixes #1218)
+    + Make sure snippets compile
+    + Corrected the maven central link
+    + correct PicocliJLineExample snippet name in
+      library-integration.md
+    + validate code snippets during build time instead of runtime
+    + add missing @SInCE 3.30.0 annotations to new methods in
+      Terminal
+    + integrate GitHub wiki content into website documentation
+    + Improve website build system and documentation management
+    + fix javadoc redirect URL issue
+    + Add picocli links to library integration
+    + Mention InputRC on Builtins
+    + doc: update version to 3.30.0 and add Javadoc integration
+    + integrate ConsoleUI documentation into website
+    + add syntax highlighting example classes for documentation
+    + Expand DISABLE_EVENT_EXPANSION JavaDoc (re. #1238)
+    + Link to documentation website earlier in README (see #1240)
+    + Link to Pty4j on Terminal
+
+-------------------------------------------------------------------
 Fri Mar 28 06:02:04 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Rewrite to use Ant to build. This prevents potential cycles with
