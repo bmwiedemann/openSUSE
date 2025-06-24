@@ -1,7 +1,7 @@
 #
 # spec file for package agama
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2023-2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 Name:           agama
 #               This will be set by osc services, that will run after this.
 Version:        0
@@ -24,7 +23,7 @@ Summary:        Agama Installer
 #               If you know the license, put it's SPDX string here.
 #               Alternately, you can use cargo lock2rpmprovides to help generate this.
 License:        GPL-2.0-or-later
-URL:            https://github.com/agama-project/agama
+Url:            https://github.com/agama-project/agama
 Source0:        agama.tar
 Source1:        vendor.tar.zst
 
@@ -73,7 +72,7 @@ Version:        0
 Release:        0
 Summary:        Agama command-line interface
 License:        GPL-2.0-only
-URL:            https://github.com/agama-project/agama
+Url:            https://github.com/agama-project/agama
 
 %description -n agama-cli
 Command line program to interact with the Agama installer.

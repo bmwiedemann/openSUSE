@@ -1,14 +1,141 @@
 -------------------------------------------------------------------
-Tue Jun  3 08:35:58 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
+Wed Jun 18 14:36:50 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
+
+- Allow to bind a connection to an specific device mac address
+   (bsc#1244259).
+
+-------------------------------------------------------------------
+Wed Jun 18 07:17:30 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Preserve AutoYaST pre-scripts artifacts (bsc#1243776, gh#agama-project/agama#2344).
+
+-------------------------------------------------------------------
+Tue Jun 17 12:21:43 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Improve logging of WebSocket events (gh#agama-project/agama#2479).
+
+-------------------------------------------------------------------
+Mon Jun 16 14:28:22 UTC 2025 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Extend the storage schema to allow sorting storage devices as
+  part of the search (gh#agama-project/agama#2474).
+
+-------------------------------------------------------------------
+Fri Jun 13 12:45:49 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Configure the console font so the non-ASCII characters are
+  displayed properly (bsc#1239462)
+
+-------------------------------------------------------------------
+Fri Jun 13 10:42:48 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- The "logs store" saves all journald logs on a single file (related
+  to gh#agama-project/agama#2466).
+
+-------------------------------------------------------------------
+Fri Jun 13 08:24:39 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Split registration key and registered status to support RMT with
+  empty registration key (gh#agama-project/agama#2469)
+
+-------------------------------------------------------------------
+Thu Jun 12 14:59:52 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use "localectl" instead of "setxkbmap" to change the keymap
+  (gh#agama-project/agama#2470).
+
+-------------------------------------------------------------------
+Wed Jun 11 13:12:12 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Consider `hashedPassword` as `false` when it is not specified
+  (gh#agama-project/agama#2464).
+
+-------------------------------------------------------------------
+Tue Jun 10 13:33:09 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Expose the user and the root password when exporting the configuration
+  (bsc#1235602).
+- Do not export the "user" section unless a first user is defined.
+- Do not export the "root" section unless an authentication mechanism
+  is defined.
+
+-------------------------------------------------------------------
+Tue Jun 10 09:25:39 UTC 2025 - Martin Vidner <mvidner@suse.com>
+
+- consistent CLI for unattended installation (gh#agama-project/agama#2347)
+  - `agama config generate | agama config load` replaces `agama profile import`
+  - `agama config generate` replaces `agama profile evaluate`
+    and `agama profile autoyast`
+  - `agama config validate` replaces `agama profile validate`, is also automatic
+  - More consistency in stdio handling, adding --output option
+
+-------------------------------------------------------------------
+Mon Jun  9 06:19:39 UTC 2025 - José Iván López González <jlopez@suse.com>
+
+- Extend the HTTP API to get available/candidate drives and MD
+  RAIDs (gh#agama-project/agama#2419).
+- Improve storage schema to avoid wrong device base name
+  (bsc#1244049).
+
+-------------------------------------------------------------------
+Fri Jun  6 13:22:58 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
 
 - Added support for moving the connections from memory only to disk
   (gh#agama-project/agama#2402).
 
 -------------------------------------------------------------------
-Wed May 28 09:00:00 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+Tue Jun  5 16:03:31 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
-- Fix bridge port config (bridge-port.priority and 
+- Use slave-type instead of port-type for NM<1.46.0 (gh#agama-project/agama#2433).
+
+-------------------------------------------------------------------
+Thu Jun  5 15:42:13 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Add support to specify for extra repositories if it can be
+  unsigned or list of GPG fingerprints that are trusted
+  (jsc#AGM-125)
+
+-------------------------------------------------------------------
+Thu Jun  5 12:57:11 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use camel case for the extra repositories key (gh#agama-project/agama#2442).
+
+-------------------------------------------------------------------
+Wed Jun  4 13:18:35 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Drop the autologin property from the JSON schema
+  (gh#agama-project/agama#2438).
+
+-------------------------------------------------------------------
+Tue Jun  3 12:30:40 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Add to api/software/config ability to set/get list of additional
+  installatio repositories (jsc#AGM-125)
+- Add extraRepositories key to software section in agama profile
+
+-------------------------------------------------------------------
+Fri May 30 15:05:35 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Send different NM dbus values depending on version (gh#agama-project/agama#2356).
+
+-------------------------------------------------------------------
+Thu May 29 09:00:00 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Fix bridge port config (bridge-port.priority and
   brdige-port.path_cost)
+
+-------------------------------------------------------------------
+Wed May 28 14:53:51 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Refresh the software cache after resolving conflicts to
+  show the correct current status
+  (followup for gh#agama-project/agama#2348)
+
+-------------------------------------------------------------------
+Wed May 28 13:29:51 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Stop serving the web UI from $HOME/.local/share/agama
+  (gh#agama-project/agama#2414).
 
 -------------------------------------------------------------------
 Mon May 26 19:51:52 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
@@ -57,7 +184,7 @@ Wed May 19 15:20:42 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
 - Add support for bridge connections (gh#openSUSE/agama#2258).
 
 -------------------------------------------------------------------
-Mon May 19 14:02:04 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+Mon May 19 14:02:50 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Do not crash when network events do not contain "addresses",
   "nameservers", "dnsSearchlist", "routes4" or "routes6"
