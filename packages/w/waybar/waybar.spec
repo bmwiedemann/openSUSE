@@ -17,7 +17,7 @@
 
 
 Name:           waybar
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
@@ -58,6 +58,7 @@ BuildRequires:  pkgconfig(libnl-genl-3.0)
 # optional: audio
 BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(libgps)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(sigc++-2.0)

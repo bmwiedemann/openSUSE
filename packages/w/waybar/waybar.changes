@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon Jun 23 10:16:57 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.0:
+  * fix(FreeBSD): Use dev.cpu temperature sysctl #4002
+  * Resolves #3092 Add source support to wireplumber module #3638
+  * add login-proxy option #3995
+  * cffi: always return config values as JSON #3969
+  * flake.lock: Update #3961
+  * nix/default: disable version check #3970
+  * Provide an option to show ipv4, ipv6 or both #3959
+  * fix incorrect type for weeks-pos in waybar-clock man page #4009
+  * Migrate Hyprland workspace events to v2 #3878
+  * Features/systray custom icons #3941
+  * Add support for vertical orientation in privacy module #3921
+  * flake.lock: Update #4018
+  * fix manpage for backlight/slider #4017
+  * hyprland/workspaces: fix crash #4024
+  * .github/workflows/clang-format: bump github action (fix clang-format check) #4026
+  * fix: support libcava 0.10.4 #4052
+  * audio_backend: fix crash #4045
+  * wlr/taskbar: find icon #4042
+  * libCava bump: 0.10.4 #4056
+  * nix: cava bump (fix nix build) #4058
+  * flake.nix: add treefmt; treewide: clang and nix format #4025
+  * wireplumber: fix potential nullpointer deref #4032
+  * flake.lock: Update #4075
+  * Sway Workspace: Fix workspace button not showing for tabbed/nested layouts #4046
+  * Memory Fix for continuous scripts in custom module #4183
+  * fix: network frequency is reported in GHz #4189
+  * fix: cldMonShift_ not getting initialized in Clock() constructor #4202
+  * Dockerfiles: Use debian-slim for container #4205
+  * fix: length_error thrown in handleOutputDescription #4191
+  * fix: network module not displaying rfkill state #4190
+  * Fix Description= in systemd service file #4154
+  * Fix gentoo CI build #4211
+  * ci: bump FreeBSD to 14.3 #4214
+  * fix: don't use c++20 chrono literals #4213
+  * Fix namespace pollution #4212
+  * Fix CI clang-format #4209
+  * modules: memory: Add swapState format argument #4204
+  * fix: MPRIS widget not hiding when no player is active #4207
+  * Feat/display systemd system state #4210
+  * privacy: ignore some streams #4173
+  * Update mediaplayer.py - Fix artist name display in mediaplayer.py #4095
+  * AIconLabel.cpp: honour "rotation" property and add "swap-icon-label" propery #4160
+  * Add idle_inhibitor style docs. #4096
+  * flake.lock: Update #4088
+  * Use load_symbolic for gtk icon to support styling in tray icon #4102
+  * Issue 3981: try and fix memory leak in privacy module #4092
+  * Fix signal safety deadlock #4048
+  * Fix calendar extra padding if there are wide characters #4155
+  * hyprland/submap: allow pango markup. #4040
+  * Fixes: Add stretching of modules and modules-center toggling #3881
+  * Fix typos in function, variable names and in documentation #3887
+  * feat: sway/window: provide {marks} format replacement #4097
+  * niri/workspaces: Add empty icon #4127
+  * Add support for mouse side buttons (back/forward) to control track navigation in mpris module #4131
+  * Add persistent-only setting for hyprland/workspaces #4133
+  * exec runs after on-* events #1784
+  * add module wayfire/window, wayfire/workspaces #3863
+  * hyprland workspaces: Add sorting Special Centered #4136
+  * niri: add support for urgency indicators to workspaces #4113
+  * add rewrite to wlr tooltip #3762
+  * Fixed one layout with multiple variant bug hyprland/language Fixes #3676 #4068
+  * Add GPS module #3628
+  * add Hyprland/windowcount module #3544
+  * Bluetooth module: fetch battery percentage from upower if not found from bluez #2886
+  * Revert "Bluetooth module: fetch battery percentage from upower if not found from bluez" #4217
+  * Added IPC fix and Nix GPS fix #4219
+
+-------------------------------------------------------------------
 Mon May  5 11:02:58 UTC 2025 - Sai Karthik Karra <kskarthik@disroot.org>
 
 - change sway to Suggests as waybar now supports other window managers too
