@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 16 19:55:19 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2025.6:
+  + Added:
+    - New application icon
+    - Show channel mode in panel if available
+    - Configuration options for font weight and bold weight
+    - /delay <seconds> command that can be used to control the
+      timing of commands sent on connect
+    - Configuration option for the ordering of servers in the
+      sidebar
+  + Fixed:
+    - Handling of RPL_NOWAWAY & RPL_UNAWAY to reflect user's own
+      AWAY state
+    - Draft messages are saved while navigating message history
+
+-------------------------------------------------------------------
 Wed May  7 20:50:32 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2025.5:
