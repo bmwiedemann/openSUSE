@@ -570,4 +570,41 @@
 </comment>
     <requestid>1272629</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>9aba761bec11d43ce6a42a26c291888f</srcmd5>
+    <version>2.11.7</version>
+    <time>1750790762</time>
+    <user>anag_factory</user>
+    <comment>To stage with the python-pydantic-core 2.35.1 update in sr#1287849
+
+- Add patch bump-pydantic-core-2.35.1.patch to support latest
+  pydantic-core, gh#pydantic/pydantic#11963
+- Add patch field-name-validator-core-schemas.patch to remove
+  deprecation warning, gh#pydantic/pydantic#11761
+- Update to 2.11.7
+  * Copy FieldInfo instance if necessary during FieldInfo build by @Viicos in #11980
+2.11.6
+  * Rebuild dataclass fields before schema generation by @Viicos in #11949
+  * Always store the original field assignment on FieldInfo by @Viicos in #11946
+2.11.5
+  * Check if FieldInfo is complete after applying type variable map by @Viicos in #11855
+  * Do not delete mock validator/serializer in model_rebuild() by @Viicos in #11890
+  * Do not duplicate metadata on model rebuild by @Viicos in #11902
+
+- Update to 2.11.4
+  * Bump mkdocs-llmstxt to v0.2.0
+  * Allow config and bases to be specified together in create_model()
+  * This change was backported as it was previously possible
+    (although not meant to be supported)
+  * To provide model_config as a field, which would make it
+    possible to provide both configuration and bases.
+  * Remove generics cache workaround
+  * Remove coercion of decimal constraints
+  * Fix crash when expanding root type in the mypy plugin
+  * Fix issue with recursive generic models
+  * Traverse function-before schemas during schema gathering
+- Drop field_name.patch, merged upstream
+- Update BuildRequires and Requires from pyproject.toml</comment>
+    <requestid>1287850</requestid>
+  </revision>
 </revisionlist>

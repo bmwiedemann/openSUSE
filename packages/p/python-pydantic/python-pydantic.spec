@@ -27,19 +27,21 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic%{psuffix}
-Version:        2.11.3
+Version:        2.11.7
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
 URL:            https://github.com/pydantic/pydantic
 Source:         https://github.com/pydantic/pydantic/archive/v%{version}.tar.gz#/pydantic-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/pydantic/pydantic/commit/bce81efdeac1cbefd0196b478a32aa2586bd595a Do not provide field_name in validator core schemas
-Patch:          field_name.patch
+# PATCH-FIX-UPSTREAM bump-pydantic-core-2.35.1.patch gh#pydantic/pydantic#11963
+Patch0:         bump-pydantic-core-2.35.1.patch
+# PATCH-FIX-UPSTREAM field-name-validator-core-schemas.patch gh#pydantic/pydantic#11761
+Patch1:         field-name-validator-core-schemas.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pydantic-core >= 2.33.1}
+BuildRequires:  %{python_module pydantic-core = 2.35.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -63,7 +65,7 @@ Requires:       python-annotated-types >= 0.4.0
 %if 0%{?python_version_nodots} < 310
 Requires:       python-eval-type-backport
 %endif
-Requires:       python-pydantic-core >= 2.27.2
+Requires:       python-pydantic-core = 2.35.1
 Requires:       python-typing-extensions >= 4.12.2
 Requires:       python-typing-inspection
 BuildArch:      noarch
