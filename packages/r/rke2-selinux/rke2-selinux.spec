@@ -17,15 +17,26 @@
 
 
 %define rke2_relabel_files() \
+umask 0022; \
+mkdir -p /etc/cni; \
+mkdir -p /opt/cni; \
 mkdir -p /var/lib/cni; \
-mkdir -p /var/lib/kubelet/pods; \
-mkdir -p /var/lib/rancher/rke2/agent/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots; \
+mkdir -p /var/lib/kubelet; \
 mkdir -p /var/lib/rancher/rke2/data; \
 mkdir -p /var/run/flannel; \
+umask 0027; \
+mkdir -p /var/lib/kubelet/pods; \
+mkdir -p /var/lib/rancher/rke2/agent; \
+umask 0066; \
 mkdir -p /var/run/k3s; \
-restorecon -R -i /etc/systemd/system/rke2.service; \
-restorecon -R -i /usr/lib/systemd/system/rke2.service; \
+umask 0077; \
+mkdir -p /var/lib/rancher/rke2/agent/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots; \
+mkdir -p /var/lib/rancher/rke2/server; \
+restorecon -R -i /etc/systemd/system/rke2*; \
+restorecon -R -i /usr/lib/systemd/system/rke2*; \
 restorecon -R /var/lib/cni; \
+restorecon -R /opt/cni; \
+restorecon -R /etc/cni; \
 restorecon -R /var/lib/kubelet; \
 restorecon -R /var/lib/rancher; \
 restorecon -R /var/run/k3s; \
@@ -35,7 +46,7 @@ restorecon -R /var/run/flannel
 %define container_policyver 2.164.2-1.1
 
 Name:           rke2-selinux
-Version:        0.19.stable.1
+Version:        0.20.stable.1
 Release:        0
 Summary:        SELinux policy module for rke2
 
