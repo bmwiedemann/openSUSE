@@ -1,7 +1,7 @@
 #
 # spec file for package reuse
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017 Free Software Foundation Europe e.V.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,10 @@
 #
 
 
+%define pythons python3
+
 Name:           reuse
-Version:        4.0.3
+Version:        5.0.2
 Release:        0
 Summary:        A tool for compliance with the REUSE recommendations
 License:        Apache-2.0 AND CC-BY-SA-4.0 AND GPL-3.0-or-later AND CC0-1.0
@@ -29,27 +31,33 @@ BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3 >= 3.8
-BuildRequires:  python3-Jinja2
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-binaryornot
-BuildRequires:  python3-boolean.py
-BuildRequires:  python3-debian
-BuildRequires:  python3-freezegun
-BuildRequires:  python3-license-expression
-BuildRequires:  python3-myst-parser
+BuildRequires:  python3 >= 3.9
 BuildRequires:  python3-pip
 BuildRequires:  python3-poetry
-BuildRequires:  python3-pytest
+# doc dependencies (manpage)
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-myst-parser
 BuildRequires:  python3-sphinxcontrib-apidoc
-Requires:       python3 >= 3.8
-Requires:       python3-Jinja2
-Requires:       python3-attrs
-Requires:       python3-binaryornot
-Requires:       python3-boolean.py
-Requires:       python3-debian
-Requires:       python3-license-expression
-Requires:       python3-tomlkit
+# test dependencies
+BuildRequires:  python3-pytest
+BuildRequires:  python3-freezegun
+# runtime dependencies
+BuildRequires:  python3-Jinja2 >= 3.0.0
+BuildRequires:  python3-attrs >= 21.3
+BuildRequires:  python3-binaryornot >= 0.4.4
+BuildRequires:  python3-boolean.py >= 3.8
+BuildRequires:  python3-click >= 8.0
+BuildRequires:  python3-license-expression >= 1.0
+BuildRequires:  python3-python-debian >= 0.1.34
+BuildRequires:  python3-tomlkit >= 0.8
+Requires:       python3-Jinja2 >= 3.0.0
+Requires:       python3-attrs >= 21.3
+Requires:       python3-binaryornot >= 0.4.4
+Requires:       python3-boolean.py >= 3.8
+Requires:       python3-click >= 8.0
+Requires:       python3-license-expression >= 1.0
+Requires:       python3-python-debian >= 0.1.34
+Requires:       python3-tomlkit >= 0.8
 Recommends:     git-core
 
 %description
@@ -58,25 +66,28 @@ it is a linter that checks for a project's compliance, and a compiler that
 generates a project's bill of materials.
 
 %prep
-%setup -q -n reuse-%{version}
+%autosetup -p 1
 
 %build
-%python3_pyproject_wheel
+%pyproject_wheel
 make -C docs man
 
 %install
-%python3_pyproject_install
+%pyproject_install
 %fdupes %{buildroot}%{python3_sitearch}
 install -D -m 0644 docs/_build/man/*.1 -t "%{buildroot}%{_mandir}/man1/"
 
 %check
-PYTHONDONTWRITEBYTECODE=1 LC_ALL=C.UTF-8 LANG=C.UTF-8 py.test tests/
+IGNORED_CHECKS="test_help_is_default"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_version"
+%pytest -k "not (${IGNORED_CHECKS})"
 
 %files
 %doc README.md CHANGELOG.md
 %{_mandir}/man1/*.1%{ext_man}
 %license LICENSES/*
 %{_bindir}/reuse
-%{python3_sitearch}/*
+%{python3_sitearch}/reuse/
+%{python3_sitearch}/reuse-%{version}.dist-info
 
 %changelog
