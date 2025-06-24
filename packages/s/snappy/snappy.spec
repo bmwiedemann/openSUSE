@@ -74,7 +74,7 @@ This package holds the development files for snappy.
 %cmake \
   -DSNAPPY_USE_BUNDLED_GTEST=OFF \
   -DSNAPPY_USE_BUNDLED_BENCHMARK_LIB=OFF \
-  -DCMAKE_CXX_STANDARD=14 \
+  -DCMAKE_CXX_STANDARD=17 \
   -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %make_build
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 19 11:08:34 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix build with googletest 1.17.0 by using C++17, boo#1244989
+
+-------------------------------------------------------------------
 Thu Apr 17 12:41:48 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update summary of the most prominently installed (sub)package.
