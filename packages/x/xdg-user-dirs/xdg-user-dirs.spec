@@ -29,7 +29,6 @@ Patch1:         0001-Add-a-systemd-service-to-run-xdg-user-dirs-update.patch
 BuildRequires:  make
 BuildRequires:  suse-xsl-stylesheets
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  update-desktop-files
 %systemd_ordering
 
 %description
@@ -57,7 +56,6 @@ mkdir -p %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d
 echo "#!/bin/sh" >> %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d/xdg-user-dirs.sh
 echo "%{_bindir}/xdg-user-dirs-update" >> %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d/xdg-user-dirs.sh
 chmod a+x %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d/xdg-user-dirs.sh
-%suse_update_desktop_file %{name}
 
 %pre
 %systemd_user_pre xdg-user-dirs.service

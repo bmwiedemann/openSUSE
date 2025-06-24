@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 23 08:25:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete update-desktop-files BuildRequires and macro.
+
+-------------------------------------------------------------------
 Mon Feb  6 15:46:27 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to provide a systemd user service
