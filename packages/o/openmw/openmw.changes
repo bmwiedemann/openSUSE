@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 23 11:45:41 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- Compiled with Qt6
+- Update to version 0.49rc9
+  * [#8039] Fixed movement accumulation for actors that use Collada models on some builds compiled under LLVM
+  * [#8558] OpenMW-Lua: Light record color is now exposed as util.color rather than as a number
+  * [#8559] ESSImporter: Fixed selected spell/enchanted item and stolen item counter conversion
+  * [#8563] Improved handling of content files that are defined in the non-user version of openmw.cfg
+  * [#8567] Token replacement and relative paths work properly when the paths are passed through CLI
+  * Improved application detection for default shortcuts
+
+-------------------------------------------------------------------
 Sat Jun  7 10:09:04 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 0.49rc8. Changes since v0.48.0:

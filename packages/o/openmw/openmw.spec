@@ -21,9 +21,9 @@
 # are not compatible with it
 # 1.69 is the first boost version that is supposed to work with C++ 20:
 %define min_boost_version 1.69
-%define archive_version 49-rc8
+%define archive_version 49-rc9
 Name:           openmw
-Version:        0.49rc8
+Version:        0.49rc9
 Release:        0
 Summary:        Reimplementation of The Elder Scrolls III: Morrowind
 License:        GPL-3.0-only AND MIT
@@ -40,15 +40,14 @@ BuildRequires:  libboost_iostreams-devel >= %{min_boost_version}
 BuildRequires:  libboost_program_options-devel >= %{min_boost_version}
 BuildRequires:  libboost_regex-devel >= %{min_boost_version}
 BuildRequires:  libboost_system-devel >= %{min_boost_version}
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  pkgconfig
 BuildRequires:  tinyxml-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Linguist)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6OpenGLWidgets)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(bullet) >= 2.83.0
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)

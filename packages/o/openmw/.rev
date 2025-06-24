@@ -1034,4 +1034,12 @@
     <comment>Update to version 0.49rc8</comment>
     <requestid>1283848</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>595ce95ac347ec76745f19bb9ad427a2</srcmd5>
+    <version>0.49rc9</version>
+    <time>1750790874</time>
+    <user>anag_factory</user>
+    <comment>Fixes Qt6 compilation</comment>
+    <requestid>1287957</requestid>
+  </revision>
 </revisionlist>
