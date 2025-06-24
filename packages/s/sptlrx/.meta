@@ -1,0 +1,5 @@
+<package name="sptlrx" project="openSUSE:Factory">
+  <title> Synchronized lyrics in your terminal </title>
+  <description>An application for a variety of different music players that displays lyrics on the terminal to your favorite songs while they're playing. Compatible with Spotify, MPD, Mopidy, MPRIS, and browsers.</description>
+  <url>https://github.com/raitonoberu/sptlrx</url>
+</package>
