@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 24 12:58:54 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_gcc15.patch
+  * fixes build with gcc15
+
+-------------------------------------------------------------------
 Mon Aug 12 09:07:26 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - update to version 0.3.1:

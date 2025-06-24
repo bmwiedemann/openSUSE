@@ -1,7 +1,7 @@
 #
 # spec file for package libxpp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/gerstner-hub/libxpp
 Source0:        libxpp-v0.3.1.tar.xz
+Patch0:         u_gcc15.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  libX11-devel
@@ -66,7 +67,7 @@ API.
 Header and development files for libxpp.
 
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 scons libtype=shared use-system-pkgs=1

@@ -1,0 +1,12 @@
+Index: libxpp-v0.3.1/include/xpp/types.hxx
+===================================================================
+--- libxpp-v0.3.1.orig/include/xpp/types.hxx
++++ libxpp-v0.3.1/include/xpp/types.hxx
+@@ -1,5 +1,7 @@
+ #pragma once
+ 
++#include <cstdint>
++
+ // C++
+ #include <memory>
+ #include <string_view>

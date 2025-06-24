@@ -64,4 +64,13 @@
     - use new libcosmos dependency</comment>
     <requestid>1193376</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5a3e1c1a58c2bd6e12cd73c28e10582c</srcmd5>
+    <version>0.3.1</version>
+    <time>1750791047</time>
+    <user>anag_factory</user>
+    <comment>- u_gcc15.patch
+  * fixes build with gcc15</comment>
+    <requestid>1288267</requestid>
+  </revision>
 </revisionlist>
