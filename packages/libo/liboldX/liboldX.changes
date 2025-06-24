@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 24 12:38:27 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_gcc15.patch
+  * fixes build with gcc15
+
+-------------------------------------------------------------------
 Wed Apr 26 08:00:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile constructs (macros and macro lines),

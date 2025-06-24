@@ -1,7 +1,7 @@
 #
 # spec file for package liboldX
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ URL:            http://cgit.freedesktop.org/xorg/lib/liboldX/
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/liboldX
 Source:         http://xorg.freedesktop.org/releases/X11R7.0/src/lib/%{name}-X11R7.0-%{version}.tar.bz2
 Source1:        baselibs.conf
+Patch0:         u_gcc15.patch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.57, automake, libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
@@ -56,7 +58,7 @@ This package contains the development headers for the library found
 in %lname.
 
 %prep
-%autosetup -n %name-X11R7.0-%version
+%autosetup -p1 -n %name-X11R7.0-%version
 
 %build
 %configure --disable-static

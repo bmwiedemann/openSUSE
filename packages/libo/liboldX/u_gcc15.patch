@@ -1,0 +1,14 @@
+Index: liboldX-X11R7.0-1.0.1/include/X11/X10.h
+===================================================================
+--- liboldX-X11R7.0-1.0.1.orig/include/X11/X10.h
++++ liboldX-X11R7.0-1.0.1/include/X11/X10.h
+@@ -83,7 +83,7 @@ typedef struct {
+     int size;			/* Table size (number of buckets). */
+ } XAssocTable;
+ 
+-XAssocTable *XCreateAssocTable();
+-char *XLookUpAssoc();
++XAssocTable *XCreateAssocTable(register int size);
++char *XLookUpAssoc(register Display *dpy, register XAssocTable *table, register XID x_id);
+ 
+ #endif /* _X10_H_ */

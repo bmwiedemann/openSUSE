@@ -60,4 +60,13 @@
     <comment></comment>
     <requestid>1082967</requestid>
   </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>519423c67498666e7fe9dcc5b84052aa</srcmd5>
+    <version>1.0.1</version>
+    <time>1750791031</time>
+    <user>anag_factory</user>
+    <comment>- u_gcc15.patch
+  * fixes build with gcc15</comment>
+    <requestid>1288257</requestid>
+  </revision>
 </revisionlist>
