@@ -845,4 +845,28 @@
     * fix: Fix ignoring exit code 1 from external diff commands for non-files</comment>
     <requestid>1282738</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>ce1377a155d7ccc13e45e84ce4a74a19</srcmd5>
+    <version>2.62.7</version>
+    <time>1750790840</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.62.7:
+  - Features
+    * feat: Add pagerArgs and diff.pagerArgs configuration variables
+  - Fixes
+    * fix: Preserve, don't delete, whitespace-only files in external archives
+    * fix: Remove dependency on git in packages
+  - Documentation updates
+    * docs: Fix a typo in setup.md
+    * docs: Add HCP Vault Secrets EOL Notice
+    * docs: Add info about file paths for archive-file externals
+    * docs: Fix incorrect parameter ref
+    * docs: Add warnings to .chezmoiroot
+    * docs: Emphasize that scriptEnv also applies to hooks and commands
+    * docs: Clarify modify_ documentation
+- Update to version 2.62.6:
+  - Documentation updates
+</comment>
+    <requestid>1287912</requestid>
+  </revision>
 </revisionlist>

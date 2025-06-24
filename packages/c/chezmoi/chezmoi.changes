@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 23 11:18:17 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.62.7:
+  - Features
+    * feat: Add pagerArgs and diff.pagerArgs configuration variables
+  - Fixes
+    * fix: Preserve, don't delete, whitespace-only files in external archives
+    * fix: Remove dependency on git in packages
+  - Documentation updates
+    * docs: Fix a typo in setup.md
+    * docs: Add HCP Vault Secrets EOL Notice
+    * docs: Add info about file paths for archive-file externals
+    * docs: Fix incorrect parameter ref
+    * docs: Add warnings to .chezmoiroot
+    * docs: Emphasize that scriptEnv also applies to hooks and commands
+    * docs: Clarify modify_ documentation
+- Update to version 2.62.6:
+  - Documentation updates
+
+-------------------------------------------------------------------
 Wed Jun  4 12:42:25 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.62.5:
