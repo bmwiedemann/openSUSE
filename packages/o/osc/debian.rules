@@ -12,7 +12,7 @@ override_dh_auto_build:
 	PYTHONPATH=. argparse-manpage \
     --output=osc.1 \
     --module=osc.commandline \
-    --function=get_parser \
+    --function=argparse_manpage_get_parser \
     --project-name=osc \
     --author="Contributors to the osc project. See the project's GIT history for the complete list." \
     --url="https://github.com/openSUSE/osc/"
