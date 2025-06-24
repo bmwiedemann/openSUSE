@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jun 23 14:53:34 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.99.0
+  * chore(schema): update by @github-actions in (#3768)
+  * test: Fix MQ integ tests by @valerena in (#3773)
+  * feat: updated the cognito properties based on cloudformation
+    properties by @edinstance in (#3767)
+  * chore(schema): update by @github-actions in (#3772)
+  * Merge main to develop by @roger-zhangg in (#3776)
+  * chore(schema): update by @github-actions in (#3778)
+- from version 1.98.0
+  * Merge main to develop by @mbfreder in (#3746)
+  * chore(schema): update by @github-actions in (#3742)
+  * feat: Correctly support custom domain in private apis
+    by @valerena in (#3750)
+  * chore: bump version to 1.97.0 by @Vandita2020 in (#3752)
+  * Merge branch 'develop' into main by @valerena in (#3756)
+  * Merge main to develop by @Vandita2020 in (#3755)
+  * fix(lambda): enforce lambda alias alphanumeric
+    logical id by @vicheey in (#3738)
+  * feat: refactor Function URL permissions by @roger-zhangg in #3735
+  * chore(schema): update by @github-actions in (#3760)
+  * chore: add new partition by @seshubaws in (#3763)
+  * Revert "feat: refactor Function URL permissions (#3735)"
+    by @roger-zhangg in (#3761)
+
+-------------------------------------------------------------------
 Wed May 28 05:39:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.97.0
