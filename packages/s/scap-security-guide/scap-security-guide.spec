@@ -61,7 +61,11 @@ Requires:       sed
 Requires:       sudo
 Requires:       zypper
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1520
+BuildRequires:  cmake3 >= 3.5
+%else
 BuildRequires:  cmake >= 3.5
+%endif
 
 %if "%{_vendor}" == "debbuild"
 %{!?_licensedir:%global license %%doc}
@@ -263,7 +267,6 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
          -DSSG_PRODUCT_WRLINUX1019=OFF \
          -DSSG_PRODUCT_ANOLIS8=OFF \
          -DSSG_PRODUCT_ANOLIS23=OFF \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
          ../
 make
 

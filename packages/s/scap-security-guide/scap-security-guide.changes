@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 24 08:15:38 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- buildrequire cmake3 on older SLES versions for build
+
+-------------------------------------------------------------------
 Thu Jun 12 09:12:01 UTC 2025 - Rumen Chikov <rumen.chikov@suse.com>
 
 - updated to 0.1.77 (jsc#ECO-3319)

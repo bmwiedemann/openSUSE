@@ -515,4 +515,12 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
 - Added support for tencentos4</comment>
     <requestid>1285187</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>2ebea192a010d1f6ce7215479e77d01c</srcmd5>
+    <version>0.1.77</version>
+    <time>1750791001</time>
+    <user>anag_factory</user>
+    <comment>- buildrequire cmake3 on older SLES versions for build (forwarded request 1288194 from msmeissn)</comment>
+    <requestid>1288195</requestid>
+  </revision>
 </revisionlist>
