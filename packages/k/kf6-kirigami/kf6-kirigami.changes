@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 24 00:00:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix:
+  * 0001-Revert-Properly-Align-menubar-when-there-is-a-sideba.patch
+
+-------------------------------------------------------------------
 Mon Jun  9 20:29:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.15.0

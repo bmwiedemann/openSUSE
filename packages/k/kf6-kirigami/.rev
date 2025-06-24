@@ -157,4 +157,13 @@
     <comment>KDE Frameworks 6.15</comment>
     <requestid>1285627</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>a0ab3151daa79b4b8fe1d0018a13f1c8</srcmd5>
+    <version>6.15.0</version>
+    <time>1750790721</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream fix:
+  * 0001-Revert-Properly-Align-menubar-when-there-is-a-sideba.patch</comment>
+    <requestid>1288099</requestid>
+  </revision>
 </revisionlist>
