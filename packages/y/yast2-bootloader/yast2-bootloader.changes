@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 23 11:55:34 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Ensure that dracut is on target system for any bootloader to have
+  proper initrd (jsc#AGM-154)
+- 5.0.21
+
+-------------------------------------------------------------------
 Thu Jun 12 11:56:30 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - grub2-bls/systemdboot: Writing kernel parameters before installing
