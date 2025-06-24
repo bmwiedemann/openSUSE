@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-communication-phonenumbers
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Microsoft Azure Communication Phone Numbers Client Library for Python
 License:        MIT
