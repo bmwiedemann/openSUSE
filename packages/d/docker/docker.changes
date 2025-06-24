@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun 23 12:46:53 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+[ This update is a no-op, only needed to work around unfortunate automated
+  packaging script behaviour on SLES. ]
+
+- The following patches were removed in openSUSE in the Docker 28.1.1-ce
+  update, but the patch names were later renamed in a SLES-only update before
+  Docker 28.1.1-ce was submitted to SLES.
+
+  This causes the SLES build scripts to refuse the update because the patches
+  are not referenced in the changelog. There is no obvious place to put the
+  patch removals (the 28.1.1-ce update removing the patches chronologically
+  predates their renaming in SLES), so they are included here a dummy changelog
+  entry to work around the issue.
+
+  - 0007-CVE-2025-22868-vendor-jws-split-token-into-fixed-num.patch
+  - 0008-CVE-2025-22869-vendor-ssh-limit-the-size-of-the-inte.patch
+
+-------------------------------------------------------------------
+Wed Jun 18 06:22:56 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to docker-buildx v0.25.0. Upstream changelog:
+  <https://github.com/docker/buildx/releases/tag/v0.25.0>
+
+-------------------------------------------------------------------
 Thu Jun  5 16:12:14 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Do not try to inject SUSEConnect secrets when in Rootless Docker mode, as
