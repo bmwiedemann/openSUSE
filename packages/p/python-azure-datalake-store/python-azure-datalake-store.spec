@@ -16,17 +16,15 @@
 #
 
 
-%define realversion 1.0.0a0
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-datalake-store
-Version:        1.0.0~a0
+Version:        1.0.1
 Release:        0
 Summary:        Microsoft Azure Data Lake Store Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure_datalake_store/azure_datalake_store-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_datalake_store/azure_datalake_store-%{version}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -53,7 +51,7 @@ replace the old Azure Service Management (ASM).
 This package has been tested with Python 2.7, 3.3, 3.4 and 3.5.
 
 %prep
-%setup -q -n azure_datalake_store-%{realversion}
+%setup -q -n azure_datalake_store-%{version}
 rm -rf samples
 
 %build
