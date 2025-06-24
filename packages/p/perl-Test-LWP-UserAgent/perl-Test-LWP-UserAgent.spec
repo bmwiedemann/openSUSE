@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-LWP-UserAgent
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,25 @@
 
 %define cpan_name Test-LWP-UserAgent
 Name:           perl-Test-LWP-UserAgent
-Version:        0.036
+Version:        0.36.0
 Release:        0
+# 0.036 -> normalize -> 0.36.0
+%define cpan_version 0.036
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
-Summary:        LWP::UserAgent suitable for simulating and testing network calls
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        LWP::UserAgent suitable for simulating and testing network calls
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.120620
+BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.121
 BuildRequires:  perl(HTTP::Date)
 BuildRequires:  perl(HTTP::Request)
 BuildRequires:  perl(HTTP::Request::Common)
 BuildRequires:  perl(HTTP::Response)
 BuildRequires:  perl(HTTP::Status)
-BuildRequires:  perl(IO::Socket::IP) >= 0.31
 BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Module::Metadata)
 BuildRequires:  perl(Path::Tiny)
@@ -45,22 +46,23 @@ BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Needs)
 BuildRequires:  perl(Test::RequiresInternet)
-BuildRequires:  perl(Test::Warnings) >= 0.009
+BuildRequires:  perl(Test::Warnings) >= 0.9
 BuildRequires:  perl(Try::Tiny)
-BuildRequires:  perl(URI) >= 1.62
-BuildRequires:  perl(namespace::clean) >= 0.19
+BuildRequires:  perl(URI) >= 1.620
+BuildRequires:  perl(namespace::clean) >= 0.190
 BuildRequires:  perl(parent)
 Requires:       perl(HTTP::Date)
 Requires:       perl(HTTP::Request)
 Requires:       perl(HTTP::Response)
 Requires:       perl(HTTP::Status)
-Requires:       perl(IO::Socket::IP) >= 0.31
 Requires:       perl(LWP::UserAgent)
 Requires:       perl(Safe::Isa)
 Requires:       perl(Try::Tiny)
-Requires:       perl(URI) >= 1.62
-Requires:       perl(namespace::clean) >= 0.19
+Requires:       perl(URI) >= 1.620
+Requires:       perl(namespace::clean) >= 0.190
 Requires:       perl(parent)
+Provides:       perl(Test::LWP::UserAgent) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -113,7 +115,7 @@ or:
     );
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
