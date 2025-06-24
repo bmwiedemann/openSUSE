@@ -1,7 +1,7 @@
 #
 # spec file for package ninja
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           ninja%{name_ext}
-Version:        1.12.1
+Version:        1.13.0
 Release:        0
 Summary:        A small build system closest in spirit to Make
 License:        Apache-2.0

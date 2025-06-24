@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 18 19:34:41 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 1.13.0
+  * Ninja now automatically joins a GNU Make jobserver as a client
+    (version 4.4 on non-Windows systems required for "fifo" style)
+  * Print exit code of failed subcommands
+  * ninja -t compdb accepts a target
+  * Support for ANSI (color) escape codes in NINJA_STATUS
+
+-------------------------------------------------------------------
 Fri May 24 20:52:03 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - update to 1.12.1
