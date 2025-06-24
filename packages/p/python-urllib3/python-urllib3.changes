@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun 23 02:03:12 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.5.0:
+  * Security issues
+    Pool managers now properly control redirects when retries is passed
+    (CVE-2025-50181, GHSA-pq67-6m6q-mj2v, bsc#1244925)
+    Redirects are now controlled by urllib3 in the Node.js runtime
+    (CVE-2025-50182, GHSA-48p4-8xcf-vxj5, bsc#1244924)
+  * Features
+    Added support for the compression.zstd module that is new in Python 3.14.
+    Added support for version 0.5 of hatch-vcs
+  * Bugfixes
+    Raised exception for HTTPResponse.shutdown on a connection already
+    released to the pool.
+    Fixed incorrect CONNECT statement when using an IPv6 proxy with
+    connection_from_host. Previously would not be wrapped in [].
+
+-------------------------------------------------------------------
 Tue May 27 08:56:43 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.4.0

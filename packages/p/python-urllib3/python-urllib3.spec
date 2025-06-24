@@ -18,8 +18,6 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
-# No Quart for Python 3.10
-%define skip_python310 1
 %define psuffix -test
 %bcond_without test
 %else
@@ -28,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-urllib3%{psuffix}
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 License:        MIT
