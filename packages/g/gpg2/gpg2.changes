@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun 20 16:35:05 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 2.5.8:
+  * gpg: Show revocation reason with a standard -k listing.  [T7083]
+  * gpg: Emit a revocation reason as comment in a "pub" record.
+    [T7083]
+  * agent: Fix regression in 2.5.7 decrypting with a card based
+    cv25519 key.  [T7676]
+  * scd:openpgp: Fix a regression in exporting card based ed25519 ssh
+    keys.  [T7589]
+  * dirmngr: Do not require a keyserver for "gpg --fetch-key".
+    [T7693]
+- Remove patch:
+  * gnupg-agent-fix-for-prefix-0x40-in-the-point-representation.patch
+
+-------------------------------------------------------------------
 Fri Jun  6 10:06:29 UTC 2025 - Michal Hrusecky <michal@hrusecky.net>
 
 - Fix problems with decoding Curve25519
