@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 23 11:52:18 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.147.9:
+  * releaser: Bump versions for release of 0.147.9
+  * Remove WARN with false negatives
+  * resources/page: Make sure a map is always initialized
+  * tpl/tplimpl: Copy embedded HTML table render hook to each output format
+  * tpl/tplimpl: Change resources.GetRemote errors to suppressible warnings
+  * build(deps): bump google.golang.org/api from 0.221.0 to 0.237.0
+  * hugolib: Remove test for deprecated future
+  * build(deps): bump github.com/aws/aws-sdk-go-v2 from 1.36.1 to 1.36.4
+  * build(deps): bump golang.org/x/image from 0.27.0 to 0.28.0
+  * deps: Upgrade github.com/spf13/cast v1.8.0 => v1.9.2
+  * common/terminal: Enable color output on windows
+  * releaser: Prepare repository for 0.148.0-DEV
+
+-------------------------------------------------------------------
 Sat Jun 07 14:13:15 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.147.8:

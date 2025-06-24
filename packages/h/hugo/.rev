@@ -1538,4 +1538,24 @@
   * releaser: Prepare repository for 0.148.0-DEV (forwarded request 1283860 from jfkw)</comment>
     <requestid>1283861</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>6e0bf02e871a8c3fd99371758d6964b4</srcmd5>
+    <version>0.147.9</version>
+    <time>1750790851</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.147.9:
+  * releaser: Bump versions for release of 0.147.9
+  * Remove WARN with false negatives
+  * resources/page: Make sure a map is always initialized
+  * tpl/tplimpl: Copy embedded HTML table render hook to each output format
+  * tpl/tplimpl: Change resources.GetRemote errors to suppressible warnings
+  * build(deps): bump google.golang.org/api from 0.221.0 to 0.237.0
+  * hugolib: Remove test for deprecated future
+  * build(deps): bump github.com/aws/aws-sdk-go-v2 from 1.36.1 to 1.36.4
+  * build(deps): bump golang.org/x/image from 0.27.0 to 0.28.0
+  * deps: Upgrade github.com/spf13/cast v1.8.0 =&gt; v1.9.2
+  * common/terminal: Enable color output on windows
+  * releaser: Prepare repository for 0.148.0-DEV (forwarded request 1287933 from jfkw)</comment>
+    <requestid>1287942</requestid>
+  </revision>
 </revisionlist>
