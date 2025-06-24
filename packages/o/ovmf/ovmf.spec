@@ -399,7 +399,7 @@ EXTRA_FLAGS_X64=(
 	[ovmf-x86_64-4m]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE -D SECURE_BOOT_ENABLE"
 	[ovmf-x86_64-smm]="-a IA32 -p OvmfPkg/OvmfPkgIa32X64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE -D SMM_REQUIRE -D SECURE_BOOT_ENABLE"
 	[ovmf-x86_64-sev]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE"
-	[ovmf-x86_64-tdx]="-p OvmfPkg/IntelTdx/IntelTdxX64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE"
+	[ovmf-x86_64-tdx]="-p OvmfPkg/IntelTdx/IntelTdxX64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE -D SECURE_BOOT_ENABLE"
 )
 declare -A OUTDIR_X64
 OUTDIR_X64=(
@@ -566,6 +566,13 @@ generate_sb_var_templates()
 			fi
 		done
 	done
+
+	# Enroll suse/opensuse/ms keys for secure boot in ovmf-x86_64-tdx.bin
+	%if 0%{?sle_version}
+		virt-fw-vars --secure-boot --enroll-cert %{SOURCE3} -i ovmf-x86_64-tdx.bin -o ovmf-x86_64-tdx-secureboot.bin
+	%else
+		virt-fw-vars --secure-boot --enroll-cert %{SOURCE4} -i ovmf-x86_64-tdx.bin -o ovmf-x86_64-tdx-secureboot.bin
+	%endif
 
 	if [ "$ARCH" == "X64" ]; then
 		# Generate the unified firmware with preloaded keys for

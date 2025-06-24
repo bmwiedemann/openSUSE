@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 20 09:41:45 UTC 2025 - YI HSIN Lyu <richard.lyu@suse.com>
+
+- Enable TDVF firmware to boot TDX guest VM with Secure boot (jsc#PED-13070)
+    - Add ovmf-x86_64-tdx-secureboot.bin
+    - Add 60-ovmf-x86_64-tdx.json 
+
+-------------------------------------------------------------------
 Wed May 28 09:46:23 UTC 2025 - YI HSIN Lyu <richard.lyu@suse.com>
 
 - Update to edk2-stable202505
