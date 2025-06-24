@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Perl-PrereqScanner-NotQuiteLite
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,22 +29,22 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN::Meta::Prereqs) >= 2.150010
-BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.140000
+BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.140
 BuildRequires:  perl(Data::Dump)
-BuildRequires:  perl(ExtUtils::MakeMaker::CPANfile) >= 0.09
-BuildRequires:  perl(Module::CPANfile) >= 1.1004
+BuildRequires:  perl(ExtUtils::MakeMaker::CPANfile) >= 0.90
+BuildRequires:  perl(Module::CPANfile) >= 1.100.400
 BuildRequires:  perl(Module::CoreList) >= 3.11
 BuildRequires:  perl(Module::Find)
 BuildRequires:  perl(Parse::Distname)
 BuildRequires:  perl(Regexp::Trie)
 BuildRequires:  perl(Test::FailWarnings)
 BuildRequires:  perl(Test::More) >= 0.98
-BuildRequires:  perl(Test::UseAllModules) >= 0.17
+BuildRequires:  perl(Test::UseAllModules) >= 0.170
 BuildRequires:  perl(parent)
 Requires:       perl(CPAN::Meta::Prereqs) >= 2.150010
-Requires:       perl(CPAN::Meta::Requirements) >= 2.140000
+Requires:       perl(CPAN::Meta::Requirements) >= 2.140
 Requires:       perl(Data::Dump)
-Requires:       perl(Module::CPANfile) >= 1.1004
+Requires:       perl(Module::CPANfile) >= 1.100.400
 Requires:       perl(Module::CoreList) >= 3.11
 Requires:       perl(Module::Find)
 Requires:       perl(Parse::Distname)
@@ -72,7 +72,7 @@ language features such as 'say', subroutine signatures, and postfix
 dereferences, to improve the minimum perl requirement (since 0.9905).
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
