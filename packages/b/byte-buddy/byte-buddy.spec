@@ -37,6 +37,7 @@ BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
+BuildRequires:  mvn(org.apache.maven:maven-resolver-provider)
 BuildRequires:  mvn(org.eclipse.aether:aether-api)
 BuildRequires:  mvn(org.eclipse.aether:aether-util)
 BuildRequires:  mvn(org.ow2.asm:asm) >= 9.7.1
@@ -98,6 +99,7 @@ rm -rf %{name}-agent/src/main/resources/win32-x86{,-64}
 %pom_remove_plugin :jitwatch-jarscan-maven-plugin
 %pom_remove_plugin :maven-release-plugin
 %pom_remove_plugin org.sonatype.central:central-publishing-maven-plugin
+%pom_remove_plugin -r :maven-javadoc-plugin
 
 # Avoid circular dependency
 %pom_remove_plugin :byte-buddy-maven-plugin %{name}-dep
@@ -113,6 +115,9 @@ rm -rf %{name}-agent/src/main/resources/win32-x86{,-64}
 %pom_remove_dep codes.rafael.asmjdkbridge:asm-jdk-bridge %{name}-dep
 
 %pom_remove_plugin -r :maven-shade-plugin
+
+%pom_add_dep org.apache.maven:maven-resolver-provider:\${version.maven}:provided \
+    byte-buddy-maven-plugin
 
 %{mvn_package} :byte-buddy-parent __noinstall
 

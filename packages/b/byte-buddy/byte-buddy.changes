@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 23 14:43:54 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven 4
+
+-------------------------------------------------------------------
 Mon Jun 16 12:37:21 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v1.17.6
