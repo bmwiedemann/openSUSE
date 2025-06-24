@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 23 01:38:37 UTC 2025 - Aesara Binder <aesara@mailbox.org>
+
+- update to 2.16.1
+  * New devices:
+    - Add six new tablet definitions
+    - Add Framework 12 touchscreen
+    - Add Dell Active Pen PN7320A stylus
+  * Bug fixes:
+    - Fix segfault after running list-local-devices
+
+-------------------------------------------------------------------
 Sat Mar 22 12:26:37 UTC 2025 - Aesara Binder <aesara@mailbox.org>
 
 - update to 2.15.0
