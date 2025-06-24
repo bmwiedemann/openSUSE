@@ -246,4 +246,12 @@
     <comment></comment>
     <requestid>1225293</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>61782cc5c59cf01ee2176cc0c9a99ce8</srcmd5>
+    <version>1.20.0</version>
+    <time>1750790768</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.20.0 (forwarded request 1287958 from fl4nn)</comment>
+    <requestid>1287965</requestid>
+  </revision>
 </revisionlist>

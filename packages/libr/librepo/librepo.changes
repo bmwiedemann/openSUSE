@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 23 13:42:21 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to 1.20.0:
+  * Fix and update lr_download_metadata API to enable parallel
+    downloading of repos
+
+-------------------------------------------------------------------
 Mon Nov 18 10:20:42 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.19.0:

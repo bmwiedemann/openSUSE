@@ -1,7 +1,7 @@
 #
 # spec file for package librepo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020-2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,7 +37,7 @@
 %define devname %{name}-devel
 
 Name:           librepo
-Version:        1.19.0
+Version:        1.20.0
 Release:        0
 Summary:        Repodata downloading library
 License:        LGPL-2.1-or-later
