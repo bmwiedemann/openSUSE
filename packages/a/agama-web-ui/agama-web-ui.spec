@@ -1,7 +1,7 @@
 #
 # spec file for package agama-web-ui
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2022-2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Version:        0
 Release:        0
 Summary:        Web UI for Agama installer
 License:        GPL-2.0-or-later
-URL:            https://github.com/openSUSE/agama
+URL:            https://github.com/agama-project/agama
 # source_validator insists that if obscpio has no version then
 # tarball must neither
 Source0:        agama.tar
@@ -30,8 +30,8 @@ Source11:       node_modules.spec.inc
 Source12:       node_modules.sums
 %include %_sourcedir/node_modules.spec.inc
 BuildArch:      noarch
-BuildRequires:  appstream-glib
 BuildRequires:  local-npm-registry
+BuildRequires:  appstream-glib
 
 %description
 Agama web UI for the experimental Agama installer.
