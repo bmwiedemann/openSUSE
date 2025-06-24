@@ -51,4 +51,14 @@
     <comment>- Fix build with perl 5.26</comment>
     <requestid>533550</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>efc0adbcdea02f788713b57b03e8a890</srcmd5>
+    <version>0.1.2</version>
+    <time>1750790922</time>
+    <user>anag_factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+</comment>
+    <requestid>1288079</requestid>
+  </revision>
 </revisionlist>

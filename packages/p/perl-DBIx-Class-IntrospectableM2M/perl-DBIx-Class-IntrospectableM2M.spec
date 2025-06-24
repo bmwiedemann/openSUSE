@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBIx-Class-IntrospectableM2M
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-DBIx-Class-IntrospectableM2M
-Version:        0.001002
-Release:        0
 %define cpan_name DBIx-Class-IntrospectableM2M
-Summary:        Introspect many-to-many shortcuts
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/DBIx-Class-IntrospectableM2M/
-Source0:        https://cpan.metacpan.org/authors/id/I/IL/ILMARI/%{cpan_name}-%{version}.tar.gz
+Name:           perl-DBIx-Class-IntrospectableM2M
+Version:        0.1.2
+Release:        0
+# 0.001002 -> normalize -> 0.1.2
+%define cpan_version 0.001002
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Introspect many-to-many relationships
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/I/IL/ILMARI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(DBIx::Class)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.36
 Requires:       perl(DBIx::Class)
+Provides:       perl(DBIx::Class::IntrospectableM2M) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -43,17 +46,18 @@ information about these non-relationships so they can later be introspected
 and examined.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
 # MANUAL BEGIN
 sed -i -e 's/use inc::Module::Install;/use lib q[.];\nuse inc::Module::Install;/' Makefile.PL
 # MANUAL END
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -61,7 +65,6 @@ sed -i -e 's/use inc::Module::Install;/use lib q[.];\nuse inc::Module::Install;/
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
