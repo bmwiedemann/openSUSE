@@ -1,9 +1,8 @@
-Index: openvino-2024.0.0/src/plugins/intel_cpu/thirdparty/ComputeLibrary/arm_compute/core/utils/logging/IPrinter.h
-===================================================================
---- openvino-2024.0.0.orig/src/plugins/intel_cpu/thirdparty/ComputeLibrary/arm_compute/core/utils/logging/IPrinter.h
-+++ openvino-2024.0.0/src/plugins/intel_cpu/thirdparty/ComputeLibrary/arm_compute/core/utils/logging/IPrinter.h
-@@ -25,6 +25,7 @@
- #define ARM_COMPUTE_LOGGING_PRINTER_H
+diff -uNr openvino-2025.2.0.orig/src/plugins/intel_cpu/thirdparty/ComputeLibrary/arm_compute/core/utils/logging/IPrinter.h openvino-2025.2.0/src/plugins/intel_cpu/thirdparty/ComputeLibrary/arm_compute/core/utils/logging/IPrinter.h
+--- openvino-2025.2.0.orig/src/plugins/intel_cpu/thirdparty/ComputeLibrary/arm_compute/core/utils/logging/IPrinter.h	2025-06-22 18:14:56.561471325 -0300
++++ openvino-2025.2.0/src/plugins/intel_cpu/thirdparty/ComputeLibrary/arm_compute/core/utils/logging/IPrinter.h	2025-06-22 18:15:23.466678704 -0300
+@@ -29,6 +29,7 @@
+  */
  
  #include "support/Mutex.h"
 +#include <string>

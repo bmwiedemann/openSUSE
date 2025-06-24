@@ -31,13 +31,13 @@
 %define pythons python3
 %endif
 %define __builder ninja
-%define so_ver 2510
+%define so_ver 2520
 %define shlib lib%{name}%{so_ver}
 %define shlib_c lib%{name}_c%{so_ver}
 %define prj_name OpenVINO
 
 Name:           openvino
-Version:        2025.1.0
+Version:        2025.2.0
 Release:        0
 Summary:        A toolkit for optimizing and deploying AI inference
 # Let's be safe and put all third party licenses here, no matter that we use specific thirdparty libs or not
@@ -51,8 +51,6 @@ Patch0:         openvino-fix-install-paths.patch
 Patch1:         openvino-ComputeLibrary-include-string.patch
 # PATCH-FIX-UPSTREAM openvino-fix-build-sample-path.patch cabelo@opensuse.org -- Fix sample source path in build script
 Patch2:         openvino-fix-build-sample-path.patch
-# PATCH-FIX-UPSTREAM gcc5-compatibility.patch cabelo@opensuse.org - Include header for uint8_t, uint16_ and  uint32_t
-Patch3:         openvino-gcc5-compatibility.patch
 BuildRequires:  ade-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -320,7 +318,7 @@ export WHEEL_VERSION=%{version} \
 # Manual hackery for power64 because it not "officially" supported
   sed -i "s/{ARCH}/%{_arch}/"  ../src/bindings/python/wheel/setup.py
 %endif
-%python_exec ../src/bindings/python/wheel/setup.py dist_info -o ../
+%python_exec ../setup.py dist_info -o ../
 
 %install
 %cmake_install
