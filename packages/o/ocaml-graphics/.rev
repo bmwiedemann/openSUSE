@@ -23,4 +23,12 @@
     <comment>- Require ocamlfind(dune-configurator)</comment>
     <requestid>968051</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cac6d87082f53bc09485b50cdcc73867</srcmd5>
+    <version>5.2.0</version>
+    <time>1750790837</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1287904</requestid>
+  </revision>
 </revisionlist>
