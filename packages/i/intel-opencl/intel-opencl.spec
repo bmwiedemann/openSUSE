@@ -43,7 +43,7 @@ BuildRequires:  pkgconfig(igc-opencl)
 BuildRequires:  pkgconfig(libva)
 Requires:       libigc2
 Requires:       libigdfcl2
-Requires:       libopencl-clang14
+Requires:       libopencl-clang15
 Recommends:     libOpenCL1
 ExclusiveArch:  x86_64
 
