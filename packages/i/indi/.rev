@@ -146,4 +146,14 @@
 </comment>
     <requestid>1266113</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>25f5bda36b35202b203a30ad64e1c1fd</srcmd5>
+    <version>2.1.4</version>
+    <time>1750790992</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.1.4:
+  * https://github.com/indilib/indi/releases/tag/v2.1.4
+</comment>
+    <requestid>1288165</requestid>
+  </revision>
 </revisionlist>
