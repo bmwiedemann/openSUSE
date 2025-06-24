@@ -323,9 +323,9 @@ rm -fr %{buildroot}%{_datadir}/fish
 %endif
 %endif
 %{_datadir}/polkit-1/actions/org.freedesktop.fwupd.policy
+%{_modulesloaddir}/fwupd-i2c.conf
 %if %{with msr_support}
 %dir %{_modulesloaddir}
-%{_modulesloaddir}/fwupd-i2c.conf
 %{_modulesloaddir}/fwupd-msr.conf
 %endif
 %config %{_sysconfdir}/%{name}/
