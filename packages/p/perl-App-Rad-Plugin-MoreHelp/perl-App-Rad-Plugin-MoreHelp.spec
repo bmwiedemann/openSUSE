@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-Rad-Plugin-MoreHelp
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,38 +12,40 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-App-Rad-Plugin-MoreHelp
-Version:        0.0001
-Release:        0
 %define cpan_name App-Rad-Plugin-MoreHelp
+Name:           perl-App-Rad-Plugin-MoreHelp
+Version:        0.0.100
+Release:        0
+# 0.0001 -> normalize -> 0.0.100
+%define cpan_version 0.0001
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        App::Rad plugin for providing extra help info
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/App-Rad-Plugin-MoreHelp/
-Source:         http://www.cpan.org/authors/id/I/IR/IRONCAMEL/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/I/IR/IRONCAMEL/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(App::Rad)
 Requires:       perl(App::Rad)
+Provides:       perl(App::Rad::Plugin::MoreHelp) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
-This is an App::Rad manpage plugin for providing extra help info. It
-provides a 'more_help' method which can be used to provide extra info that
-will be appended to to bottom of the help message.
+This is an App::Rad plugin for providing extra help info. It provides a
+'more_help' method which can be used to provide extra info that will be
+appended to to bottom of the help message.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -54,7 +56,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes LICENSE README README.md
+%doc Changes README README.md
+%license LICENSE
 
 %changelog
