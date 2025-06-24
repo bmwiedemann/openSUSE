@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 24 02:21:52 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Oct 22 06:44:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not BuildRequire unar: this seems unused during the build/test

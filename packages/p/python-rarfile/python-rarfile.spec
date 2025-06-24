@@ -1,7 +1,7 @@
 #
 # spec file for package python-rarfile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ Summary:        RAR Archive Reader for Python
 License:        ISC
 URL:            https://rarfile.readthedocs.org/
 Source0:        https://files.pythonhosted.org/packages/source/r/rarfile/rarfile-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  7zip
 BuildRequires:  bsdtar
 BuildRequires:  fdupes
@@ -56,12 +58,12 @@ This package contains technical documentation.
 %autosetup -p1 -n rarfile-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 %make_build -C doc html
 rm doc/_build/html/.buildinfo
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -69,9 +71,9 @@ rm doc/_build/html/.buildinfo
 
 %files %{python_files}
 %license LICENSE
-%pycache_only %{python_sitelib}/__pycache__/rarfile.*.py*
-%{python_sitelib}/rarfile.py*
-%{python_sitelib}/rarfile-%{version}-py%{python_version}.egg-info
+%pycache_only %{python_sitelib}/__pycache__/rarfile.*.pyc
+%{python_sitelib}/rarfile.py
+%{python_sitelib}/rarfile-%{version}.dist-info
 
 %files %{python_files doc}
 %license LICENSE
