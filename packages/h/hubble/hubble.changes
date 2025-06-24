@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 23 10:25:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.17.5 (1.17.4 was not released):
+  * Prepare for v1.17.5 release
+  * chore(deps): update dependency helm/helm to v3.18.3
+  * chore(deps): update library/golang docker tag to v1.24.4
+  * chore(deps): update library/golang:1.24.3-alpine docker digest
+    to b4f875e
+  * chore(deps): update dependency helm/helm to v3.18.2
+  * chore(deps): update dependency kubernetes-sigs/kind to v0.29.0
+  * chore(deps): update dependency cilium/cilium to v1.17.4
+  * chore(deps): update all github action dependencies
+  * update links to specific Hubble folders
+  * Update CONTRIBUTING.md
+  * chore(deps): update library/golang docker tag to v1.24.3
+  * chore(deps): update actions/setup-go action to v5.5.0
+  * Update stable release to 1.17.3
+
+-------------------------------------------------------------------
 Fri May 02 04:48:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.17.3:
