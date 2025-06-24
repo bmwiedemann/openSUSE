@@ -318,4 +318,12 @@
     <comment>Some more fixes</comment>
     <requestid>1287479</requestid>
   </revision>
+  <revision rev="41" vrev="8">
+    <srcmd5>b23be45255fcc0ca5d5fac0a666b058c</srcmd5>
+    <version>1.8.8</version>
+    <time>1750790849</time>
+    <user>anag_factory</user>
+    <comment>Reproducibility of mtimes</comment>
+    <requestid>1287941</requestid>
+  </revision>
 </revisionlist>

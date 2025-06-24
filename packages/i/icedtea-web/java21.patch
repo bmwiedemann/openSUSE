@@ -1,7 +1,7 @@
---- icedtea-web-1.8.8/acinclude.m4	2025-06-19 11:10:53.172245097 +0200
-+++ icedtea-web-1.8.8/acinclude.m4	2025-06-19 11:11:45.908003966 +0200
-@@ -879,10 +879,12 @@
-   AC_MSG_RESULT($JAVA_VERSION)
+--- icedtea-web-1.8.8/acinclude.m4	2025-06-22 23:23:07.948458965 +0200
++++ icedtea-web-1.8.8/acinclude.m4	2025-06-22 23:24:13.072043812 +0200
+@@ -882,10 +882,12 @@
+   fi
    if test "${JAVA_VERSION}" -eq "8"; then
      HAVE_JAVA8="yes"
 +  elif test "$JAVA_VERSION" -ge "21"; then
@@ -14,16 +14,16 @@
      AC_MSG_ERROR([JDK8 or newer is required, detected was: $JAVA_VERSION])
    fi
    if ! test -z "$HAVE_JAVA8"; then
-@@ -894,6 +896,7 @@
-   AC_SUBST(VERSION_DEFS)
+@@ -898,6 +900,7 @@
    AM_CONDITIONAL([HAVE_JAVA8], test x"${HAVE_JAVA8}" = "xyes")
    AM_CONDITIONAL([HAVE_JAVA9], test x"${HAVE_JAVA9}" = "xyes")
+   AM_CONDITIONAL([HAVE_JAVA17], test x"${HAVE_JAVA17}" = "xyes")
 +  AM_CONDITIONAL([HAVE_JAVA21], test x"${HAVE_JAVA21}" = "xyes")
  ])
  
  AC_DEFUN_ONCE([IT_FIND_KEYTOOL],
---- icedtea-web-1.8.8/configure.ac	2025-06-19 11:11:31.940543002 +0200
-+++ icedtea-web-1.8.8/configure.ac	2025-06-19 11:11:45.908231999 +0200
+--- icedtea-web-1.8.8/configure.ac	2025-06-22 23:23:07.948921028 +0200
++++ icedtea-web-1.8.8/configure.ac	2025-06-22 23:23:29.972854328 +0200
 @@ -148,11 +148,14 @@
  dnl IT575 - Plugin depends on com.sun/jndi.toolkit.url.UrlUtil
  dnl IT576 - Plugin depends on sun.applet.AppletImageRef
@@ -58,8 +58,25 @@
  IT_CHECK_FOR_CLASS(SUN_SECURITY_VALIDATOR_VALIDATOREXCEPTION, [sun.security.validator.ValidatorException], [some.pkg], [$JAVA_BASE])
  IT_CHECK_FOR_CLASS(SUN_NET_WWW_PROTOCOL_JAR_URLJARFILE, [sun.net.www.protocol.jar.URLJarFile], [some.pkg], [$JAVA_BASE])
  IT_CHECK_FOR_CLASS(SUN_NET_WWW_PROTOCOL_JAR_URLJARFILECALLBACK, [sun.net.www.protocol.jar.URLJarFileCallBack], [some.pkg], [$JAVA_BASE])
---- icedtea-web-1.8.8/netx/net/sourceforge/jnlp/jdk89acesses/JarIndexAccess.java	2025-06-19 11:10:05.848017283 +0200
-+++ icedtea-web-1.8.8/netx/net/sourceforge/jnlp/jdk89acesses/JarIndexAccess.java	2025-06-19 11:11:45.908412020 +0200
+--- icedtea-web-1.8.8/Makefile.am	2025-06-22 23:23:07.949358377 +0200
++++ icedtea-web-1.8.8/Makefile.am	2025-06-22 23:23:29.973243659 +0200
+@@ -289,6 +289,14 @@
+  -bottom '<font size="-1"> <a href="http://icedtea.classpath.org/bugzilla">Submit a bug or feature</a></font>'
+ if HAVE_JAVA9
+ JAVADOC_OPTS+=-source $(IT_LANGUAGE_SOURCE_VERSION)
++JAVA_EXPORTS=--add-exports=java.base/sun.security.action=ALL-UNNAMED
++else
++if HAVE_JAVA21
++JAVADOC_OPTS+=-source $(IT_LANGUAGE_SOURCE_VERSION)
++JAVA_EXPORTS=--add-exports=java.base/sun.security.action=ALL-UNNAMED
++else
++JAVA_EXPORTS=
++endif
+ endif
+ if JAVADOC_SUPPORTS_J_OPTIONS
+ JAVADOC_MEM_OPTS=-J-Xmx1024m -J-Xms128m
+--- icedtea-web-1.8.8/netx/net/sourceforge/jnlp/jdk89acesses/JarIndexAccess.java	2025-06-22 22:37:35.533723369 +0200
++++ icedtea-web-1.8.8/netx/net/sourceforge/jnlp/jdk89acesses/JarIndexAccess.java	2025-06-22 23:23:29.973643895 +0200
 @@ -28,7 +28,7 @@
                  jarIndexClass = Class.forName("jdk.internal.util.jar.JarIndex");
              } catch (ClassNotFoundException exx) {

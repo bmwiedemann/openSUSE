@@ -1,5 +1,25 @@
---- icedtea-web-1.8.8/configure.ac	2025-06-19 11:10:53.172802742 +0200
-+++ icedtea-web-1.8.8/configure.ac	2025-06-19 11:11:08.652976418 +0200
+--- icedtea-web-1.8.8/acinclude.m4	2025-06-22 22:50:42.196105096 +0200
++++ icedtea-web-1.8.8/acinclude.m4	2025-06-22 23:00:55.812681416 +0200
+@@ -877,6 +877,9 @@
+     JAVA_VERSION=`$JAVA -version 2>&1 | head -n 1 | cut -d'-' -f1 | cut -d'"' -f2 | cut -d'.' -f2`
+   fi
+   AC_MSG_RESULT($JAVA_VERSION)
++  if test "$JAVA_VERSION" -ge "17"; then
++    HAVE_JAVA17="yes"
++  fi
+   if test "${JAVA_VERSION}" -eq "8"; then
+     HAVE_JAVA8="yes"
+   elif test "$JAVA_VERSION" -ge "9"; then
+@@ -894,6 +897,7 @@
+   AC_SUBST(VERSION_DEFS)
+   AM_CONDITIONAL([HAVE_JAVA8], test x"${HAVE_JAVA8}" = "xyes")
+   AM_CONDITIONAL([HAVE_JAVA9], test x"${HAVE_JAVA9}" = "xyes")
++  AM_CONDITIONAL([HAVE_JAVA17], test x"${HAVE_JAVA17}" = "xyes")
+ ])
+ 
+ AC_DEFUN_ONCE([IT_FIND_KEYTOOL],
+--- icedtea-web-1.8.8/configure.ac	2025-06-22 22:50:42.196495262 +0200
++++ icedtea-web-1.8.8/configure.ac	2025-06-22 22:49:42.178843679 +0200
 @@ -171,7 +171,6 @@
    IT_CHECK_FOR_CLASS(SUN_MISC_LAUNCHER, [sun.misc.Launcher], [some.pkg], [$JAVA_BASE])
  fi
@@ -8,3 +28,95 @@
  IT_CHECK_FOR_CLASS(SUN_NET_WWW_PROTOCOL_JAR_URLJARFILE, [sun.net.www.protocol.jar.URLJarFile], [some.pkg], [$JAVA_BASE])
  IT_CHECK_FOR_CLASS(SUN_NET_WWW_PROTOCOL_JAR_URLJARFILECALLBACK, [sun.net.www.protocol.jar.URLJarFileCallBack], [some.pkg], [$JAVA_BASE])
  if test "x$build_linux" = xyes ; then
+--- icedtea-web-1.8.8/Makefile.am	2025-06-22 23:04:02.362166482 +0200
++++ icedtea-web-1.8.8/Makefile.am	2025-06-22 23:20:50.406831015 +0200
+@@ -180,6 +180,12 @@
+ SPLASH_PNG=$(datadir)/$(PACKAGE_NAME)/javaws_splash.png
+ MODULARJDK_ARGS_LOCATION=$(DESTDIR)$(MODULARJDK_ARGS_DIR)/$(MODULARJDK_ARGS_FILE)
+ 
++if HAVE_JAVA17
++  JAR_DATE_OPT=--date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)"
++else
++  JAR_DATE_OPT=
++endif
++
+ 
+ # Conditional defintions
+ if HAVE_TAGSOUP
+@@ -793,9 +799,9 @@
+ 	if test "x${LIVECONNECT_DIR}" != x; then \
+ 	  (cd $(TOP_BUILD_DIR)/liveconnect ; \
+ 	   mkdir -p lib ; \
+-	   $(SYSTEM_JDK_DIR)/bin/jar cf lib/classes.jar          $(LIVECONNECT_DIR) ; \
+-	   $(SYSTEM_JDK_DIR)/bin/jar cf lib/classes-applet.jar   $(SUN_APPLET_DIRS) ; \
+-	   $(SYSTEM_JDK_DIR)/bin/jar cf lib/classes-jsobject.jar $(JSOBJECT_DIRS)   ; \
++	   $(SYSTEM_JDK_DIR)/bin/jar --create $(JAR_DATE_OPT) --file=lib/classes.jar $(LIVECONNECT_DIR) ; \
++	   $(SYSTEM_JDK_DIR)/bin/jar --create $(JAR_DATE_OPT) --file=lib/classes-applet.jar   $(SUN_APPLET_DIRS) ; \
++	   $(SYSTEM_JDK_DIR)/bin/jar --create $(JAR_DATE_OPT) --file=lib/classes-jsobject.jar $(JSOBJECT_DIRS)   ; \
+ 	   cp -pPR $(SRC_DIR_LINK) $(LIVECONNECT_SRCS) src; \
+ 	   find src -type f -exec chmod 640 '{}' ';' -o -type d -exec chmod 750 '{}' ';'; \
+ 	   cd src ; \
+@@ -956,15 +962,16 @@
+ stamps/netx-dist.stamp: stamps/netx.stamp $(TOP_BUILD_DIR)/netx.manifest stamps/generate-docs.stamp $(TOP_BUILD_DIR)/completion/itweb-settings.bash $(TOP_BUILD_DIR)/completion/javaws.bash $(TOP_BUILD_DIR)/completion/policyeditor.bash $(TOP_BUILD_DIR)/metadata
+ 	(cd $(NETX_DIR) ; \
+ 	 mkdir -p lib ; \
+-	 $(SYSTEM_JDK_DIR)/bin/jar cfm lib/classes.jar \
+-	  $(TOP_BUILD_DIR)/netx.manifest javax/jnlp net; \
++	 $(SYSTEM_JDK_DIR)/bin/jar --create $(JAR_DATE_OPT) \
++	  --file=lib/classes.jar --manifest=$(TOP_BUILD_DIR)/netx.manifest javax/jnlp net; \
+ 	 cp -pPR $(SRC_DIR_LINK) $(NETX_SRCDIR) src; \
+ 	 find src -type f -exec chmod 640 '{}' ';' -o -type d -exec chmod 750 '{}' ';'; \
+ 	 cd src ; \
+ 	 $(ZIP) -qr $(NETX_DIR)/lib/src.zip javax net)
+ if ENABLE_PLUGINJAR
+ 	(cd $(NETX_DIR) ; \
+-	 $(SYSTEM_JDK_DIR)/bin/jar uf lib/classes.jar sun \
++	 $(SYSTEM_JDK_DIR)/bin/jar --update $(JAR_DATE_OPT) \
++	  --file=lib/classes.jar sun \
+ 	  $(TOP_BUILD_DIR)/netx.manifest javax/jnlp net; \
+ 	 cd src ; \
+      $(ZIP) -qr $(NETX_DIR)/lib/src.zip sun)
+@@ -1264,7 +1271,8 @@
+ 	  -d $(JUNIT_RUNNER_DIR) \
+ 	  $(call composeclasspath, $(JUNIT_RUNTIME) $(TEST_EXTENSIONS_DIR)) \
+ 	  @junit-runner-source-files.txt && \
+-	$(SYSTEM_JDK_DIR)/bin/jar cf $@  -C $(JUNIT_RUNNER_DIR) .
++	$(SYSTEM_JDK_DIR)/bin/jar --create $(JAR_DATE_OPT) \
++	  --file=$@  -C $(JUNIT_RUNNER_DIR) .
+ 
+ stamps/junit-jnlp-dist-dirs: junit-jnlp-dist-simple.txt stamps/junit-jnlp-dist-signed.stamp junit-jnlp-dist-custom.txt
+ 	mkdir -p $(REPRODUCERS_TESTS_SERVER_DEPLOYDIR)
+@@ -1319,9 +1327,11 @@
+ 	      cd "$(REPRODUCERS_BUILD_DIR)/$$dir/" ; \
+ 	      if [ -f $(META_MANIFEST) ]; \
+ 	      then \
+-	        $(SYSTEM_JDK_DIR)/bin/jar cfm "$(REPRODUCERS_TESTS_SERVER_DEPLOYDIR)/$$dir.jar" $(META_MANIFEST) * ; \
++	        $(SYSTEM_JDK_DIR)/bin/jar --create $(JAR_DATE_OPT) \
++	        --file="$(REPRODUCERS_TESTS_SERVER_DEPLOYDIR)/$$dir.jar" --manifest=$(META_MANIFEST) * ; \
+ 	      else \
+-	        $(SYSTEM_JDK_DIR)/bin/jar cf "$(REPRODUCERS_TESTS_SERVER_DEPLOYDIR)/$$dir.jar" * ; \
++	        $(SYSTEM_JDK_DIR)/bin/jar --create $(JAR_DATE_OPT) \
++	        --file="$(REPRODUCERS_TESTS_SERVER_DEPLOYDIR)/$$dir.jar" * ; \
+ 	      fi; \
+ 	      AN="Application-Name:" ; \
+ 	      grep $$AN $(META_MANIFEST) 2>/dev/null >/dev/null ; \
+@@ -1333,7 +1343,8 @@
+ 	       if  which cygpath &> /dev/null  ; then \
+ 	         export TMP_MANIFEST=$$(cygpath -p -m "$$TMP_MANIFEST") ; \
+ 	       fi ; \
+-	       $(SYSTEM_JDK_DIR)/bin/jar ufm "$(REPRODUCERS_TESTS_SERVER_DEPLOYDIR)/$$dir.jar"  $$TMP_MANIFEST ; \
++	       $(SYSTEM_JDK_DIR)/bin/jar --update $(JAR_DATE_OPT) \
++	        --file="$(REPRODUCERS_TESTS_SERVER_DEPLOYDIR)/$$dir.jar" --manifest=$$TMP_MANIFEST ; \
+ 	       rm -f $$TMP_MANIFEST ; \
+ 	      fi ; \
+ 	      cd "$$d" ; \
+@@ -2053,7 +2064,8 @@
+ 	 -d plugin/tests/LiveConnect \
+ 	 -classpath liveconnect/lib/classes.jar \
+ 	 $(PLUGIN_TEST_SRCS) ;
+-	$(SYSTEM_JDK_DIR)/bin/jar cf plugin/tests/LiveConnect/PluginTest.jar \
++	$(SYSTEM_JDK_DIR)/bin/jar --create $(JAR_DATE_OPT) \
++	  --file=plugin/tests/LiveConnect/PluginTest.jar \
+ 	  plugin/tests/LiveConnect/*.class ;
+ 	cp -pPR $(SRC_DIR_LINK) $(TOP_SRC_DIR)/plugin/tests/LiveConnect/*.{js,html} \
+ 	  plugin/tests/LiveConnect ;

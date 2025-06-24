@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 23 13:08:45 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Bit-to-bit reproducibility work
+- Modified patches:
+  * java17.patch
+    + detect when we are building with Java version >= 17
+    + use the --date option of Jar version 17+ to use
+      SOURCE_DATE_EPOCH for jar files mtimes
+  * more-java-versions.patch
+    + move hunk that has condition for Java >= 21 into the relevant
+      patch (java21.patch)
+  * java21.patch
+    + add the hunk from more-java-versions.patch
+    + rediff to apply without fuzz
+
+-------------------------------------------------------------------
 Fri Jun 20 22:50:20 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Allow building on SLE15-SP1

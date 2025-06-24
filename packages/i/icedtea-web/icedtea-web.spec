@@ -46,7 +46,6 @@ BuildRequires:  pack200
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  procps
 BuildRequires:  rhino
-BuildRequires:  strip-nondeterminism
 BuildRequires:  tagsoup
 BuildRequires:  zip
 Requires:       java >= 1.8
@@ -127,8 +126,7 @@ done
 install -dm 0755 %{buildroot}%{_sysconfdir}/%{name}
 install -pm 0644 javaws.policy %{buildroot}%{_sysconfdir}/%{name}/
 
-strip-nondeterminism %{buildroot}%{_datadir}/%{name}/javaws.jar
-%fdupes %{buildroot}
+%fdupes %{buildroot}%{_javadocdir}/%{name}
 
 rm -rf %{buildroot}%{_mandir}/*/man1
 

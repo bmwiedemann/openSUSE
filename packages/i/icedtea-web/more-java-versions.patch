@@ -28,21 +28,6 @@
  export ICEDTEAPLUGIN_TARGET = stamps/liveconnect-dist.stamp
  export PLUGIN_DIR=$(TOP_BUILD_DIR)/plugin/icedteanp
  export PLUGIN_SRCDIR=$(TOP_SRC_DIR)/plugin/icedteanp
-@@ -284,6 +284,14 @@
-  -bottom '<font size="-1"> <a href="http://icedtea.classpath.org/bugzilla">Submit a bug or feature</a></font>'
- if HAVE_JAVA9
- JAVADOC_OPTS+=-source $(IT_LANGUAGE_SOURCE_VERSION)
-+JAVA_EXPORTS=--add-exports=java.base/sun.security.action=ALL-UNNAMED
-+else
-+if HAVE_JAVA21
-+JAVADOC_OPTS+=-source $(IT_LANGUAGE_SOURCE_VERSION)
-+JAVA_EXPORTS=--add-exports=java.base/sun.security.action=ALL-UNNAMED
-+else
-+JAVA_EXPORTS=
-+endif
- endif
- if JAVADOC_SUPPORTS_J_OPTIONS
- JAVADOC_MEM_OPTS=-J-Xmx1024m -J-Xms128m
 @@ -894,12 +902,12 @@
  	mkdir "$$PLAIN_DOCS_TARGET_DIR" ; \
  	mkdir "$$MAN_DOCS_TARGET_DIR" ; \
