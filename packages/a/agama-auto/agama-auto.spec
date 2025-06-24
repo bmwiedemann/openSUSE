@@ -1,7 +1,7 @@
 #
 # spec file for package agama-auto
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2024-2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,9 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
-
 
 Name:           agama-auto
 #               This will be set by osc services, that will run after this.
@@ -22,7 +21,7 @@ Version:        0
 Release:        0
 Summary:        Agama auto-installation service
 License:        GPL-2.0-or-later
-URL:            https://github.com/opensuse/agama
+Url:            https://github.com/agama-project/agama
 Source0:        agama.tar
 BuildArch:      noarch
 Requires:       agama-cli
