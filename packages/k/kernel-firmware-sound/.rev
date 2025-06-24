@@ -179,4 +179,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * cirrus: cs35l41: Add Firmware for ASUS NUC using CS35L41</comment>
     <requestid>1285900</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>6d473c0f6adcb616d34a7e4953b65cab</srcmd5>
+    <version>20250613</version>
+    <time>1750790793</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases</comment>
+    <requestid>1288152</requestid>
+  </revision>
 </revisionlist>
