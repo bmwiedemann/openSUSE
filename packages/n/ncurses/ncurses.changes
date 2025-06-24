@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 23 07:39:35 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250621
+  + revise loop in wins_nwstr, to ensure that non-spacing characters are
+    combined with the base spacing character (report by Karl Knechtel).
+  + fixes for port using clang-cl or cl MSVC (report by Kirill Makurin).
+  + improve test-packages:
+    + convert debian*/copyright to DEP-5 format.
+    + modify ".spec" test-files to work around timestamp-clamping in
+      recent Fedora releases.
+
+-------------------------------------------------------------------
 Mon Jun 16 06:14:00 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250614

@@ -5211,4 +5211,19 @@
   + fix some typos/errata in license text, to help with scripted checks</comment>
     <requestid>1285989</requestid>
   </revision>
+  <revision rev="302" vrev="75">
+    <srcmd5>8fc8669edc28ae6d2d6688105230cca3</srcmd5>
+    <version>unknown</version>
+    <time>1750790712</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20250621
+  + revise loop in wins_nwstr, to ensure that non-spacing characters are
+    combined with the base spacing character (report by Karl Knechtel).
+  + fixes for port using clang-cl or cl MSVC (report by Kirill Makurin).
+  + improve test-packages:
+    + convert debian*/copyright to DEP-5 format.
+    + modify &quot;.spec&quot; test-files to work around timestamp-clamping in
+      recent Fedora releases.</comment>
+    <requestid>1287862</requestid>
+  </revision>
 </revisionlist>
