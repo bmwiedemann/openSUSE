@@ -1,7 +1,7 @@
 #
 # spec file for package libofx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,25 @@
 
 
 Name:           libofx
-Version:        0.10.5
+Version:        0.10.9
 Release:        0
 Summary:        OFX Command Parser and API
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Other
 URL:            https://github.com/libofx/libofx
 Source:         https://github.com/libofx/libofx/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  automake
-BuildRequires:  curl-devel
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Remove-handling-for-obsolete-partner-server.patch
+BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gengetopt
 BuildRequires:  graphviz
 BuildRequires:  help2man
-BuildRequires:  libtool
 BuildRequires:  opensp-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libxml++-2.6) >= 2.6
 
 %description
@@ -59,6 +59,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       glibc-devel
 Requires:       libofx7 = %{version}
+Requires:       opensp-devel
 
 %description devel
 LibOFX is a parser and API for applications to support
@@ -68,41 +69,58 @@ statement downloads.
 This subpackage contains the header files for the C API.
 
 %prep
-%setup -q
+%autosetup -p1
+
 chmod -x doc/ofx_sample_files/ofx_spec160_stmtrs_example.sgml
 dos2unix doc/ofx_sample_files/*.ofx
 
 %build
+# CMake build system doesn't currently handle docs, create them manually
+cd doc
+# E: file-contains-date-and-time /usr/share/doc/packages/libofx/html/doxygen.css
+sed -i '/HTML_TIMESTAMP/d' doxygen.cfg
+
+doxygen -u doxygen.cfg
+doxygen doxygen.cfg
+cd ..
+
 # lto causes build issues on leap and armv7l
 %define _lto_cflags %{nil}
 
-sh autogen.sh
-%configure --disable-static --with-opensp-libs=%{_libdir}
-%make_build docdir=%{_defaultdocdir}/%{name}
+%cmake
+
+%cmake_build
 
 %install
-%make_install
-mkdir -p %{buildroot}%{_defaultdocdir}
-mv %{buildroot}%{_datadir}/doc/libofx %{buildroot}%{_defaultdocdir}/%{name}
-rm %{buildroot}%{_defaultdocdir}/%{name}/INSTALL
+%cmake_install
+
+mkdir -p %{buildroot}%{_defaultdocdir}/%{name}
 cp -a doc/ofx_sample_files/*.* %{buildroot}%{_defaultdocdir}/%{name}/
 cp -a doc/html %{buildroot}%{_defaultdocdir}/%{name}/
-%fdupes %{buildroot}%{_prefix}
-find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libofx7 -p /sbin/ldconfig
-%postun -n libofx7 -p /sbin/ldconfig
+# man pages
+mkdir -p %{buildroot}%{_mandir}/man1
+for prog in ofxconnect ofxdump; do
+help2man -N --output=${prog}.1 %__builddir/${prog}/${prog}
+install -m 0644 ${prog}.1 %{buildroot}%{_mandir}/man1
+done
+
+%fdupes %{buildroot}
+
+%ldconfig_scriptlets -n libofx7
 
 %files
+%doc AUTHORS ChangeLog NEWS README
 %doc %dir %{_defaultdocdir}/%{name}
-%doc %{_defaultdocdir}/%{name}/[ACNR]*
-%doc %{_defaultdocdir}/%{name}/*.txt
 %doc %{_defaultdocdir}/%{name}/*.ofx
-%{_bindir}/*
+%{_bindir}/ofx2qif
+%{_bindir}/ofxconnect
+%{_bindir}/ofxdump
 %{_datadir}/libofx/
 %{_mandir}/man1/*.1%{?ext_man}
 
 %files -n libofx7
+%license COPYING
 %{_libdir}/libofx.so.7*
 
 %files devel
@@ -111,6 +129,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc %{_defaultdocdir}/%{name}/*.xml
 %{_libdir}/libofx.so
 %{_includedir}/libofx/
+%{_libdir}/cmake/libofx/
 %{_libdir}/pkgconfig/libofx.pc
 
 %changelog

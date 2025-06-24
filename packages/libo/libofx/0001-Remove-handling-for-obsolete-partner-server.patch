@@ -1,0 +1,843 @@
+From 42918ff2c989561ce5bd274dfc19ded9f4aa742a Mon Sep 17 00:00:00 2001
+From: David Ward <david.ward@gatech.edu>
+Date: Mon, 16 Jan 2023 12:32:08 -0500
+Subject: [PATCH] Remove handling for obsolete partner server
+
+The parter server was shut down 10 years ago; FI settings must now
+be entered manually. Remove this code to avoid confusion.
+
+Closes: #6
+---
+ README                    |  53 ++-------
+ ofxconnect/CMakeLists.txt |   1 -
+ ofxconnect/Makefile.am    |   2 +-
+ ofxconnect/cmdline.c      | 148 +++---------------------
+ ofxconnect/cmdline.ggo    |   5 -
+ ofxconnect/cmdline.h      |  12 --
+ ofxconnect/ofxconnect.cpp |  66 +----------
+ ofxconnect/ofxpartner.cpp | 232 --------------------------------------
+ ofxconnect/ofxpartner.h   |  35 ------
+ 9 files changed, 30 insertions(+), 524 deletions(-)
+ delete mode 100644 ofxconnect/ofxpartner.cpp
+ delete mode 100644 ofxconnect/ofxpartner.h
+
+diff --git a/README b/README
+index dd0b0e0..f050150 100644
+--- a/README
++++ b/README
+@@ -42,58 +42,24 @@ Usage: `ofx2qif _path_to_ofx_file_/_ofx_filename_ > _output_filename_.qif`
+ ofxconnect is a sample app to demonstrate & test new Direct Connect APIs.
+ It also serves as an implementation sample, so you can understand how to use it in your own code.
+ 
+-### The Direct Connect protocol
+-
+-Direct Connect consists of two separate steps:  First, contacting the partner
+-server to retrieve information about your bank.  Second, contacting your bank
+-to retrieve your accounts and statements.  The partner server should be
+-contacted when the user sets up his accounts.  
+-
+-Common mistakes with the partner server are to contact it EVERY time you
+-contact the bank, and contacting it just once to cache the contact
+-info for all banks.  The former is overkill, the latter means users won't
+-have up-to-date bank contact information.
+-
+ ### Usage
+ 
+ Step-by-step guide to using the ofxconnect utility:
+ 
+-1. Retrieve the list of banks
+-
+-    ```shell
+-    $ ofxconnect -b
+-    ```
+-
+-2. Find your bank in the list.  Retrieve the FI partner ID's (fipid's) for that bank
+-
+-    ```shell
+-    $ ofxconnect -f "Wells Fargo"
+-    101458
+-    102078
+-    5571
+-    ```
+-
+-3. Retrieve the service capabilities of each fipid to find the one which has the services you want.\
+-Note that all the 6-digit fipids don't seem to work well with LibOFX right now.
+-
+-    ```shell
+-    $ ofxconnect -v 5571
+-    Statements? Yes
+-    Billpay? Yes
+-    Investments? No
+-    ```
++1. Find the information needed to connect to your Financial Institution (FI), including the OFX server URL, organization name, and identifier (FID)
+ 
+-4. Retrieve and view the list of all your accounts
++2. Retrieve and view a list of all your accounts
+ 
+     ```shell
+-    $ ofxconnect -a --fipid=5571 --user=myusername --pass=mypassword accounts.ofx
++    $ ofxconnect -a --url=https://ofx.example.com --user=myuserid --pass=mypassword \
++                    --org=ReferenceFI --fid=00000 accounts.ofx
+     $ ofxdump accounts.ofx 2>/dev/null
+     ```
+ 
+-5. Look for entries like this:
++3. Look for entries in the list like this:
+ 
+     ```
+-    Account ID: 999888777 00 123456789
++    Account ID: 999888777 00 1234567890
+     Account name: Bank account 1234567890
+     Account type: CHECKING
+     Bank ID: 999888777
+@@ -101,14 +67,15 @@ Note that all the 6-digit fipids don't seem to work well with LibOFX right now.
+     Account #: 1234567890
+     ```
+ 
+-6. Retrieve a statement for one of the accounts
++4. Retrieve and view a statement for one of the accounts
+ 
+     ```shell
+-    $ ofxconnect -s --fipid=5571 --user=myusername --pass=mypassword --bank=xxx --account=xxx --type=x --past=xx statement.ofx
++    $ ofxconnect -s --url=https://ofx.example.com --user=myuserid --pass=mypassword \
++                    --org=ReferenceFI --fid=00000 --bank=999888777 --account=1234567890 \
++                    --type=1 --past=90 statement.ofx
+     $ ofxdump statement.ofx 2>/dev/null
+     ````
+ 
+-    The `--bank` and `--account` parameters should be exactly like the "Bank ID" and "Account #" results from the account request.\
+     The `--type` is: `1=CHECKING`, `2=INVESTMENT`, `3=CREDITCARD`. Other types are not supported.\
+     The `--past` is how many days previous from today you want.
+ 
+diff --git a/ofxconnect/CMakeLists.txt b/ofxconnect/CMakeLists.txt
+index cb68d3e..4e4a877 100644
+--- a/ofxconnect/CMakeLists.txt
++++ b/ofxconnect/CMakeLists.txt
+@@ -4,7 +4,6 @@
+ set(ofxconnect_SRCS
+         cmdline.c
+         ofxconnect.cpp
+-        ofxpartner.cpp
+         nodeparser.cpp
+ )
+ 
+diff --git a/ofxconnect/Makefile.am b/ofxconnect/Makefile.am
+index 19eb0c7..e3a58a7 100644
+--- a/ofxconnect/Makefile.am
++++ b/ofxconnect/Makefile.am
+@@ -1,6 +1,6 @@
+ bin_PROGRAMS = ofxconnect
+ ofxconnect_LDADD = $(top_builddir)/lib/libofx.la @LIBCURL_LIBS@ @LIBXMLPP_LIBS@
+-ofxconnect_SOURCES = cmdline.h cmdline.c nodeparser.cpp nodeparser.h ofxpartner.cpp ofxpartner.h ofxconnect.cpp 
++ofxconnect_SOURCES = cmdline.h cmdline.c nodeparser.cpp nodeparser.h ofxconnect.cpp
+ dist_man_MANS = ofxconnect.1
+ 
+ AM_CPPFLAGS = \
+diff --git a/ofxconnect/cmdline.c b/ofxconnect/cmdline.c
+index a4a9ee6..41536af 100644
+--- a/ofxconnect/cmdline.c
++++ b/ofxconnect/cmdline.c
+@@ -36,7 +36,6 @@ const char *gengetopt_args_info_description = "";
+ const char *gengetopt_args_info_help[] = {
+   "  -h, --help                Print help and exit",
+   "  -V, --version             Print version and exit",
+-  "      --fipid=STRING        FI partner identifier (looks up fid, org & url from\n                              partner server)",
+   "      --fid=STRING          FI identifier",
+   "      --org=STRING          FI org tag",
+   "      --bank=STRING         IBAN bank identifier",
+@@ -53,10 +52,6 @@ const char *gengetopt_args_info_help[] = {
+   "  -a, --accountinfo-req     Request for a list of accounts",
+   "  -p, --payment-req         Request to make a payment",
+   "  -i, --paymentinquiry-req  Request to inquire about the status of a payment",
+-  "  -b, --bank-list           List all known banks",
+-  "  -f, --bank-fipid          List all fipids for a given bank",
+-  "  -v, --bank-services       List supported services for a given fipid",
+-  "      --allsupport          List all banks which support online banking",
+     0
+ };
+ 
+@@ -84,7 +79,6 @@ void clear_given (struct gengetopt_args_info *args_info)
+ {
+   args_info->help_given = 0 ;
+   args_info->version_given = 0 ;
+-  args_info->fipid_given = 0 ;
+   args_info->fid_given = 0 ;
+   args_info->org_given = 0 ;
+   args_info->bank_given = 0 ;
+@@ -100,10 +94,6 @@ void clear_given (struct gengetopt_args_info *args_info)
+   args_info->accountinfo_req_given = 0 ;
+   args_info->payment_req_given = 0 ;
+   args_info->paymentinquiry_req_given = 0 ;
+-  args_info->bank_list_given = 0 ;
+-  args_info->bank_fipid_given = 0 ;
+-  args_info->bank_services_given = 0 ;
+-  args_info->allsupport_given = 0 ;
+   args_info->command_group_counter = 0 ;
+ }
+ 
+@@ -111,8 +101,6 @@ static
+ void clear_args (struct gengetopt_args_info *args_info)
+ {
+   FIX_UNUSED (args_info);
+-  args_info->fipid_arg = NULL;
+-  args_info->fipid_orig = NULL;
+   args_info->fid_arg = NULL;
+   args_info->fid_orig = NULL;
+   args_info->org_arg = NULL;
+@@ -142,26 +130,21 @@ void init_args_info(struct gengetopt_args_info *args_info)
+ 
+   args_info->help_help = gengetopt_args_info_help[0] ;
+   args_info->version_help = gengetopt_args_info_help[1] ;
+-  args_info->fipid_help = gengetopt_args_info_help[2] ;
+-  args_info->fid_help = gengetopt_args_info_help[3] ;
+-  args_info->org_help = gengetopt_args_info_help[4] ;
+-  args_info->bank_help = gengetopt_args_info_help[5] ;
+-  args_info->broker_help = gengetopt_args_info_help[6] ;
+-  args_info->user_help = gengetopt_args_info_help[7] ;
+-  args_info->pass_help = gengetopt_args_info_help[8] ;
+-  args_info->acct_help = gengetopt_args_info_help[9] ;
+-  args_info->type_help = gengetopt_args_info_help[10] ;
+-  args_info->past_help = gengetopt_args_info_help[11] ;
+-  args_info->url_help = gengetopt_args_info_help[12] ;
+-  args_info->trid_help = gengetopt_args_info_help[13] ;
+-  args_info->statement_req_help = gengetopt_args_info_help[15] ;
+-  args_info->accountinfo_req_help = gengetopt_args_info_help[16] ;
+-  args_info->payment_req_help = gengetopt_args_info_help[17] ;
+-  args_info->paymentinquiry_req_help = gengetopt_args_info_help[18] ;
+-  args_info->bank_list_help = gengetopt_args_info_help[19] ;
+-  args_info->bank_fipid_help = gengetopt_args_info_help[20] ;
+-  args_info->bank_services_help = gengetopt_args_info_help[21] ;
+-  args_info->allsupport_help = gengetopt_args_info_help[22] ;
++  args_info->fid_help = gengetopt_args_info_help[2] ;
++  args_info->org_help = gengetopt_args_info_help[3] ;
++  args_info->bank_help = gengetopt_args_info_help[4] ;
++  args_info->broker_help = gengetopt_args_info_help[5] ;
++  args_info->user_help = gengetopt_args_info_help[6] ;
++  args_info->pass_help = gengetopt_args_info_help[7] ;
++  args_info->acct_help = gengetopt_args_info_help[8] ;
++  args_info->type_help = gengetopt_args_info_help[9] ;
++  args_info->past_help = gengetopt_args_info_help[10] ;
++  args_info->url_help = gengetopt_args_info_help[11] ;
++  args_info->trid_help = gengetopt_args_info_help[12] ;
++  args_info->statement_req_help = gengetopt_args_info_help[14] ;
++  args_info->accountinfo_req_help = gengetopt_args_info_help[15] ;
++  args_info->payment_req_help = gengetopt_args_info_help[16] ;
++  args_info->paymentinquiry_req_help = gengetopt_args_info_help[17] ;
+   
+ }
+ 
+@@ -254,8 +237,6 @@ static void
+ cmdline_parser_release (struct gengetopt_args_info *args_info)
+ {
+   unsigned int i;
+-  free_string_field (&(args_info->fipid_arg));
+-  free_string_field (&(args_info->fipid_orig));
+   free_string_field (&(args_info->fid_arg));
+   free_string_field (&(args_info->fid_orig));
+   free_string_field (&(args_info->org_arg));
+@@ -314,8 +295,6 @@ cmdline_parser_dump(FILE *outfile, struct gengetopt_args_info *args_info)
+     write_into_file(outfile, "help", 0, 0 );
+   if (args_info->version_given)
+     write_into_file(outfile, "version", 0, 0 );
+-  if (args_info->fipid_given)
+-    write_into_file(outfile, "fipid", args_info->fipid_orig, 0);
+   if (args_info->fid_given)
+     write_into_file(outfile, "fid", args_info->fid_orig, 0);
+   if (args_info->org_given)
+@@ -346,14 +325,6 @@ cmdline_parser_dump(FILE *outfile, struct gengetopt_args_info *args_info)
+     write_into_file(outfile, "payment-req", 0, 0 );
+   if (args_info->paymentinquiry_req_given)
+     write_into_file(outfile, "paymentinquiry-req", 0, 0 );
+-  if (args_info->bank_list_given)
+-    write_into_file(outfile, "bank-list", 0, 0 );
+-  if (args_info->bank_fipid_given)
+-    write_into_file(outfile, "bank-fipid", 0, 0 );
+-  if (args_info->bank_services_given)
+-    write_into_file(outfile, "bank-services", 0, 0 );
+-  if (args_info->allsupport_given)
+-    write_into_file(outfile, "allsupport", 0, 0 );
+   
+ 
+   i = EXIT_SUCCESS;
+@@ -411,10 +382,6 @@ reset_group_command(struct gengetopt_args_info *args_info)
+   args_info->accountinfo_req_given = 0 ;
+   args_info->payment_req_given = 0 ;
+   args_info->paymentinquiry_req_given = 0 ;
+-  args_info->bank_list_given = 0 ;
+-  args_info->bank_fipid_given = 0 ;
+-  args_info->bank_services_given = 0 ;
+-  args_info->allsupport_given = 0 ;
+ 
+   args_info->command_group_counter = 0;
+ }
+@@ -634,7 +601,6 @@ cmdline_parser_internal (
+       static struct option long_options[] = {
+         { "help",	0, NULL, 'h' },
+         { "version",	0, NULL, 'V' },
+-        { "fipid",	1, NULL, 0 },
+         { "fid",	1, NULL, 0 },
+         { "org",	1, NULL, 0 },
+         { "bank",	1, NULL, 0 },
+@@ -650,14 +616,10 @@ cmdline_parser_internal (
+         { "accountinfo-req",	0, NULL, 'a' },
+         { "payment-req",	0, NULL, 'p' },
+         { "paymentinquiry-req",	0, NULL, 'i' },
+-        { "bank-list",	0, NULL, 'b' },
+-        { "bank-fipid",	0, NULL, 'f' },
+-        { "bank-services",	0, NULL, 'v' },
+-        { "allsupport",	0, NULL, 0 },
+         { 0,  0, 0, 0 }
+       };
+ 
+-      c = getopt_long (argc, argv, "hVsapibfv", long_options, &option_index);
++      c = getopt_long (argc, argv, "hVsapi", long_options, &option_index);
+ 
+       if (c == -1) break;	/* Exit from `while (1)' loop.  */
+ 
+@@ -733,69 +695,10 @@ cmdline_parser_internal (
+             goto failure;
+         
+           break;
+-        case 'b':	/* List all known banks.  */
+-        
+-          if (args_info->command_group_counter && override)
+-            reset_group_command (args_info);
+-          args_info->command_group_counter += 1;
+-        
+-          if (update_arg( 0 , 
+-               0 , &(args_info->bank_list_given),
+-              &(local_args_info.bank_list_given), optarg, 0, 0, ARG_NO,
+-              check_ambiguity, override, 0, 0,
+-              "bank-list", 'b',
+-              additional_error))
+-            goto failure;
+-        
+-          break;
+-        case 'f':	/* List all fipids for a given bank.  */
+-        
+-          if (args_info->command_group_counter && override)
+-            reset_group_command (args_info);
+-          args_info->command_group_counter += 1;
+-        
+-          if (update_arg( 0 , 
+-               0 , &(args_info->bank_fipid_given),
+-              &(local_args_info.bank_fipid_given), optarg, 0, 0, ARG_NO,
+-              check_ambiguity, override, 0, 0,
+-              "bank-fipid", 'f',
+-              additional_error))
+-            goto failure;
+-        
+-          break;
+-        case 'v':	/* List supported services for a given fipid.  */
+-        
+-          if (args_info->command_group_counter && override)
+-            reset_group_command (args_info);
+-          args_info->command_group_counter += 1;
+-        
+-          if (update_arg( 0 , 
+-               0 , &(args_info->bank_services_given),
+-              &(local_args_info.bank_services_given), optarg, 0, 0, ARG_NO,
+-              check_ambiguity, override, 0, 0,
+-              "bank-services", 'v',
+-              additional_error))
+-            goto failure;
+-        
+-          break;
+ 
+         case 0:	/* Long option with no short option */
+-          /* FI partner identifier (looks up fid, org & url from partner server).  */
+-          if (strcmp (long_options[option_index].name, "fipid") == 0)
+-          {
+-          
+-          
+-            if (update_arg( (void *)&(args_info->fipid_arg), 
+-                 &(args_info->fipid_orig), &(args_info->fipid_given),
+-                &(local_args_info.fipid_given), optarg, 0, 0, ARG_STRING,
+-                check_ambiguity, override, 0, 0,
+-                "fipid", '-',
+-                additional_error))
+-              goto failure;
+-          
+-          }
+           /* FI identifier.  */
+-          else if (strcmp (long_options[option_index].name, "fid") == 0)
++          if (strcmp (long_options[option_index].name, "fid") == 0)
+           {
+           
+           
+@@ -947,23 +850,6 @@ cmdline_parser_internal (
+                 additional_error))
+               goto failure;
+           
+-          }
+-          /* List all banks which support online banking.  */
+-          else if (strcmp (long_options[option_index].name, "allsupport") == 0)
+-          {
+-          
+-            if (args_info->command_group_counter && override)
+-              reset_group_command (args_info);
+-            args_info->command_group_counter += 1;
+-          
+-            if (update_arg( 0 , 
+-                 0 , &(args_info->allsupport_given),
+-                &(local_args_info.allsupport_given), optarg, 0, 0, ARG_NO,
+-                check_ambiguity, override, 0, 0,
+-                "allsupport", '-',
+-                additional_error))
+-              goto failure;
+-          
+           }
+           
+           break;
+diff --git a/ofxconnect/cmdline.ggo b/ofxconnect/cmdline.ggo
+index d446bab..be7d27d 100644
+--- a/ofxconnect/cmdline.ggo
++++ b/ofxconnect/cmdline.ggo
+@@ -7,7 +7,6 @@ purpose "prints to stdout the created OFX file based on the options you pass it.
+ # Options
+ # option <long> <short> <desc> {argtype} {typestr="<type descr>"} {default="<default value>"} {required} {argoptional} {multiple}
+ #section "Parameters"
+-option "fipid" - "FI partner identifier (looks up fid, org & url from partner server)" string no
+ option "fid" - "FI identifier" string no
+ option "org" - "FI org tag" string no
+ option "bank" - "IBAN bank identifier" string no
+@@ -27,7 +26,3 @@ groupoption "statement-req"  s  "Request for a statement" group="command"
+ groupoption "accountinfo-req"  a  "Request for a list of accounts" group="command"
+ groupoption "payment-req"  p  "Request to make a payment" group="command"
+ groupoption "paymentinquiry-req" i "Request to inquire about the status of a payment" group="command"
+-groupoption "bank-list"  b  "List all known banks" group="command"
+-groupoption "bank-fipid"  f  "List all fipids for a given bank" group="command"
+-groupoption "bank-services"  v  "List supported services for a given fipid" group="command"
+-groupoption "allsupport"  -  "List all banks which support online banking" group="command"
+diff --git a/ofxconnect/cmdline.h b/ofxconnect/cmdline.h
+index a4572e5..e2c989f 100644
+--- a/ofxconnect/cmdline.h
++++ b/ofxconnect/cmdline.h
+@@ -43,9 +43,6 @@ struct gengetopt_args_info
+ {
+   const char *help_help; /**< @brief Print help and exit help description.  */
+   const char *version_help; /**< @brief Print version and exit help description.  */
+-  char * fipid_arg;	/**< @brief FI partner identifier (looks up fid, org & url from partner server).  */
+-  char * fipid_orig;	/**< @brief FI partner identifier (looks up fid, org & url from partner server) original value given at command line.  */
+-  const char *fipid_help; /**< @brief FI partner identifier (looks up fid, org & url from partner server) help description.  */
+   char * fid_arg;	/**< @brief FI identifier.  */
+   char * fid_orig;	/**< @brief FI identifier original value given at command line.  */
+   const char *fid_help; /**< @brief FI identifier help description.  */
+@@ -83,14 +80,9 @@ struct gengetopt_args_info
+   const char *accountinfo_req_help; /**< @brief Request for a list of accounts help description.  */
+   const char *payment_req_help; /**< @brief Request to make a payment help description.  */
+   const char *paymentinquiry_req_help; /**< @brief Request to inquire about the status of a payment help description.  */
+-  const char *bank_list_help; /**< @brief List all known banks help description.  */
+-  const char *bank_fipid_help; /**< @brief List all fipids for a given bank help description.  */
+-  const char *bank_services_help; /**< @brief List supported services for a given fipid help description.  */
+-  const char *allsupport_help; /**< @brief List all banks which support online banking help description.  */
+   
+   unsigned int help_given ;	/**< @brief Whether help was given.  */
+   unsigned int version_given ;	/**< @brief Whether version was given.  */
+-  unsigned int fipid_given ;	/**< @brief Whether fipid was given.  */
+   unsigned int fid_given ;	/**< @brief Whether fid was given.  */
+   unsigned int org_given ;	/**< @brief Whether org was given.  */
+   unsigned int bank_given ;	/**< @brief Whether bank was given.  */
+@@ -106,10 +98,6 @@ struct gengetopt_args_info
+   unsigned int accountinfo_req_given ;	/**< @brief Whether accountinfo-req was given.  */
+   unsigned int payment_req_given ;	/**< @brief Whether payment-req was given.  */
+   unsigned int paymentinquiry_req_given ;	/**< @brief Whether paymentinquiry-req was given.  */
+-  unsigned int bank_list_given ;	/**< @brief Whether bank-list was given.  */
+-  unsigned int bank_fipid_given ;	/**< @brief Whether bank-fipid was given.  */
+-  unsigned int bank_services_given ;	/**< @brief Whether bank-services was given.  */
+-  unsigned int allsupport_given ;	/**< @brief Whether allsupport was given.  */
+ 
+   char **inputs ; /**< @brief unnamed options (options without names) */
+   unsigned inputs_num ; /**< @brief unnamed options number */
+diff --git a/ofxconnect/ofxconnect.cpp b/ofxconnect/ofxconnect.cpp
+index 825f433..47cc926 100644
+--- a/ofxconnect/ofxconnect.cpp
++++ b/ofxconnect/ofxconnect.cpp
+@@ -46,7 +46,6 @@
+ #include "cmdline.h" /* Gengetopt generated parser */
+ 
+ #include "nodeparser.h"
+-#include "ofxpartner.h"
+ 
+ #ifdef HAVE_LIBCURL
+ bool post(const char* request, const char* url, const char* filename)
+@@ -125,18 +124,6 @@ int main (int argc, char *argv[])
+       exit(1);
+     }
+   }
+-  else if ( args_info.bank_fipid_given || args_info.bank_services_given )
+-  {
+-    if ( (args_info.inputs_num > 0) )
+-    {
+-      std::cout << "bank " << args_info.inputs[0] << std::endl;
+-    }
+-    else
+-    {
+-      std::cerr << "ERROR: You must specify an bank" << std::endl;
+-      exit(1);
+-    }
+-  }
+ 
+   OfxFiLogin fi;
+   memset(&fi, 0, sizeof(OfxFiLogin));
+@@ -148,24 +135,12 @@ int main (int argc, char *argv[])
+     // Get the FI Login information
+     //
+ 
+-    if ( args_info.fipid_given )
+-    {
+-      std::cerr << "fipid " <<  args_info.fipid_arg << std::endl;
+-      std::cerr << "contacting partner server..." << std::endl;
+-      OfxFiServiceInfo svcinfo = OfxPartner::ServiceInfo(args_info.fipid_arg);
+-      std::cout << "fid " << svcinfo.fid << std::endl;
+-      strncpy(fi.fid, svcinfo.fid, OFX_FID_LENGTH - 1);
+-      std::cout << "org " << svcinfo.org << std::endl;
+-      strncpy(fi.org, svcinfo.org, OFX_ORG_LENGTH - 1);
+-      std::cout << "url " << svcinfo.url << std::endl;
+-      url = svcinfo.url;
+-    }
+     if ( args_info.fid_given )
+     {
+       std::cerr << "fid " <<  args_info.fid_arg << std::endl;
+       strncpy(fi.fid, args_info.fid_arg, OFX_FID_LENGTH - 1);
+     }
+-    else if ( ! args_info.fipid_given )
++    else
+     {
+       std::cerr << "ERROR: --fid is required" << std::endl;
+       ok = false;
+@@ -176,7 +151,7 @@ int main (int argc, char *argv[])
+       std::cerr << "org " << args_info.org_arg << std::endl;
+       strncpy(fi.org, args_info.org_arg, OFX_ORG_LENGTH - 1);
+     }
+-    else if ( ! args_info.fipid_given )
++    else
+     {
+       std::cerr << "ERROR: --org is required" << std::endl;
+       ok = false;
+@@ -461,43 +436,6 @@ int main (int argc, char *argv[])
+     }
+   }
+ 
+-  if ( args_info.bank_list_given )
+-  {
+-    std::cout << OfxPartner::BankNames();
+-  }
+-
+-  if ( args_info.bank_fipid_given && args_info.inputs_num > 0 )
+-  {
+-    std::cout << OfxPartner::FipidForBank(args_info.inputs[0]);
+-  }
+-
+-  if ( args_info.bank_services_given && args_info.inputs_num > 0 )
+-  {
+-    OfxFiServiceInfo svcinfo = OfxPartner::ServiceInfo(args_info.inputs[0]);
+-    std::cout << "Account List? " << (svcinfo.accountlist ? "Yes" : "No") << std::endl;
+-    std::cout << "Statements? " << (svcinfo.statements ? "Yes" : "No") << std::endl;
+-    std::cout << "Billpay? " << (svcinfo.billpay ? "Yes" : "No") << std::endl;
+-    std::cout << "Investments? " << (svcinfo.investments ? "Yes" : "No") << std::endl;
+-  }
+-
+-  if ( args_info.allsupport_given )
+-  {
+-    std::vector<std::string> banks = OfxPartner::BankNames();
+-    std::vector<std::string>::const_iterator it_bank = banks.begin();
+-    while ( it_bank != banks.end() )
+-    {
+-      std::vector<std::string> fipids = OfxPartner::FipidForBank(*it_bank);
+-      std::vector<std::string>::const_iterator it_fipid = fipids.begin();
+-      while ( it_fipid != fipids.end() )
+-      {
+-        if ( OfxPartner::ServiceInfo(*it_fipid).accountlist )
+-          std::cout << *it_bank << std::endl;
+-        ++it_fipid;
+-      }
+-      ++it_bank;
+-    }
+-  }
+-
+   return 0;
+ }
+ 
+diff --git a/ofxconnect/ofxpartner.cpp b/ofxconnect/ofxpartner.cpp
+deleted file mode 100644
+index 609beed..0000000
+--- a/ofxconnect/ofxpartner.cpp
++++ /dev/null
+@@ -1,232 +0,0 @@
+-/***************************************************************************
+-                             ofx_partner.cpp
+-                             -------------------
+-    copyright            : (C) 2005 by Ace Jones
+-    email                : acejones@users.sourceforge.net
+-***************************************************************************/
+-/**@file
+- * \brief Methods for connecting to the OFX partner server to retrieve
+- * OFX server information
+-*/
+-/***************************************************************************
+- *                                                                         *
+- *   This program is free software; you can redistribute it and/or modify  *
+- *   it under the terms of the GNU General Public License as published by  *
+- *   the Free Software Foundation; either version 2 of the License, or     *
+- *   (at your option) any later version.                                   *
+- *                                                                         *
+- ***************************************************************************/
+-
+-#ifdef HAVE_CONFIG_H
+-#include <config.h>
+-#endif
+-
+-#include <libofx.h>
+-
+-//#ifdef HAVE_LIBCURL
+-#include <curl/curl.h>
+-//#endif
+-
+-#include "ofxpartner.h"
+-#include "nodeparser.h"
+-
+-#include <sys/stat.h>
+-
+-#include <iostream>
+-#include <string>
+-#include <vector>
+-#include <algorithm>
+-#include <string.h>
+-
+-using std::string;
+-using std::vector;
+-using std::cout;
+-using std::endl;
+-
+-namespace OfxPartner
+-{
+-bool post(const string& request, const string& url, const string& filename);
+-
+-const string kBankFilename = "ofx-bank-index.xml";
+-const string kCcFilename = "ofx-cc-index.xml";
+-const string kInvFilename = "ofx-inv-index.xml";
+-
+-void ValidateIndexCache(void)
+-{
+-  // TODO Check whether these files exist and are recent enough before getting them again
+-
+-  struct stat filestats;
+-  if ( stat( kBankFilename.c_str(), &filestats ) || difftime(time(0), filestats.st_mtime) > 7.0 * 24.0 * 60.0 * 60.0 )
+-    post("T=1&S=*&R=1&O=0&TEST=0", "http://moneycentral.msn.com/money/2005/mnynet/service/ols/filist.aspx?SKU=3&VER=6", kBankFilename);
+-  if ( stat( kCcFilename.c_str(), &filestats ) || difftime(time(0), filestats.st_mtime) > 7.0 * 24.0 * 60.0 * 60.0 )
+-    post("T=2&S=*&R=1&O=0&TEST=0", "http://moneycentral.msn.com/money/2005/mnynet/service/ols/filist.aspx?SKU=3&VER=6", kCcFilename);
+-  if ( stat( kInvFilename.c_str(), &filestats ) || difftime(time(0), filestats.st_mtime) > 7.0 * 24.0 * 60.0 * 60.0 )
+-    post("T=3&S=*&R=1&O=0&TEST=0", "http://moneycentral.msn.com/money/2005/mnynet/service/ols/filist.aspx?SKU=3&VER=6", kInvFilename);
+-}
+-
+-vector<string> BankNames(void)
+-{
+-  vector<string> result;
+-
+-  // Make sure the index files are up to date
+-  ValidateIndexCache();
+-
+-  xmlpp::DomParser parser;
+-  parser.set_substitute_entities();
+-  parser.parse_file(kBankFilename);
+-  if ( parser )
+-  {
+-    vector<string> names = NodeParser(parser).Path("fi/prov/name").Text();
+-    result.insert(result.end(), names.begin(), names.end());
+-  }
+-  parser.parse_file(kCcFilename);
+-  if ( parser )
+-  {
+-    vector<string> names = NodeParser(parser).Path("fi/prov/name").Text();
+-    result.insert(result.end(), names.begin(), names.end());
+-  }
+-  parser.parse_file(kInvFilename);
+-  if ( parser )
+-  {
+-    vector<string> names = NodeParser(parser).Path("fi/prov/name").Text();
+-    result.insert(result.end(), names.begin(), names.end());
+-  }
+-
+-  // Add Innovision
+-  result.push_back("Innovision");
+-
+-  // sort the list and remove duplicates, to return one unified list of all supported banks
+-  sort(result.begin(), result.end());
+-  result.erase(unique(result.begin(), result.end()), result.end());
+-  return result;
+-}
+-
+-vector<string> FipidForBank(const string& bank)
+-{
+-  vector<string> result;
+-
+-  xmlpp::DomParser parser;
+-  parser.set_substitute_entities();
+-  parser.parse_file(kBankFilename);
+-  if ( parser )
+-  {
+-    vector<string> fipids = NodeParser(parser).Path("fi/prov").Select("name", bank).Path("guid").Text();
+-    if ( ! fipids.back().empty() )
+-      result.insert(result.end(), fipids.begin(), fipids.end());
+-  }
+-  parser.parse_file(kCcFilename);
+-  if ( parser )
+-  {
+-    vector<string> fipids = NodeParser(parser).Path("fi/prov").Select("name", bank).Path("guid").Text();
+-    if ( ! fipids.back().empty() )
+-      result.insert(result.end(), fipids.begin(), fipids.end());
+-  }
+-  parser.parse_file(kInvFilename);
+-  if ( parser )
+-  {
+-    vector<string> fipids = NodeParser(parser).Path("fi/prov").Select("name", bank).Path("guid").Text();
+-    if ( ! fipids.back().empty() )
+-      result.insert(result.end(), fipids.begin(), fipids.end());
+-  }
+-
+-  // the fipid for Innovision is 1.
+-  if ( bank == "Innovision" )
+-    result.push_back("1");
+-
+-  sort(result.begin(), result.end());
+-  result.erase(unique(result.begin(), result.end()), result.end());
+-
+-  return result;
+-}
+-
+-OfxFiServiceInfo ServiceInfo(const std::string& fipid)
+-{
+-  OfxFiServiceInfo result;
+-  memset(&result, 0, sizeof(OfxFiServiceInfo));
+-
+-  // Hard-coded values for Innovision test server
+-  if ( fipid == "1" )
+-  {
+-    strncpy(result.fid, "00000", OFX_FID_LENGTH - 1);
+-    strncpy(result.org, "ReferenceFI", OFX_ORG_LENGTH - 1);
+-    strncpy(result.url, "http://ofx.innovision.com", OFX_URL_LENGTH - 1);
+-    result.accountlist = 1;
+-    result.statements = 1;
+-    result.billpay = 1;
+-    result.investments = 1;
+-
+-    return result;
+-  }
+-
+-  string url = "http://moneycentral.msn.com/money/2005/mnynet/service/olsvcupd/OnlSvcBrandInfo.aspx?MSNGUID=&GUID=%1&SKU=3&VER=6";
+-  url.replace(url.find("%1"), 2, fipid);
+-
+-  // TODO: Check whether this file exists and is recent enough before getting it again
+-  string guidfile = "fipid-%1.xml";
+-  guidfile.replace(guidfile.find("%1"), 2, fipid);
+-
+-  struct stat filestats;
+-  if ( stat( guidfile.c_str(), &filestats ) || difftime(time(0), filestats.st_mtime) > 7.0 * 24.0 * 60.0 * 60.0 )
+-    post("", url.c_str(), guidfile.c_str());
+-
+-  // Print the FI details
+-  xmlpp::DomParser parser;
+-  parser.set_substitute_entities();
+-  parser.parse_file(guidfile);
+-  if ( parser )
+-  {
+-    NodeParser nodes(parser);
+-
+-    strncpy(result.fid, nodes.Path("ProviderSettings/FID").Text().back().c_str(), OFX_FID_LENGTH - 1);
+-    strncpy(result.org, nodes.Path("ProviderSettings/Org").Text().back().c_str(), OFX_ORG_LENGTH - 1);
+-    strncpy(result.url, nodes.Path("ProviderSettings/ProviderURL").Text().back().c_str(), OFX_URL_LENGTH - 1);
+-    result.accountlist = (nodes.Path("ProviderSettings/AcctListAvail").Text().back() == "1");
+-    result.statements = (nodes.Path("BankingCapabilities/Bank").Text().back() == "1");
+-    result.billpay = (nodes.Path("BillPayCapabilities/Pay").Text().back() == "1");
+-    result.investments = (nodes.Path("InvestmentCapabilities/BrkStmt").Text().back() == "1");
+-  }
+-  return result;
+-}
+-
+-bool post(const string& request, const string& url, const string& filename)
+-{
+-#if 1 //#ifdef HAVE_LIBCURL
+-  CURL *curl = curl_easy_init();
+-  if (! curl)
+-    return false;
+-
+-  remove(filename.c_str());
+-  FILE* file = fopen(filename.c_str(), "wb");
+-  if (! file )
+-  {
+-    curl_easy_cleanup(curl);
+-    return false;
+-  }
+-
+-  curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+-  if ( request.length() )
+-    curl_easy_setopt(curl, CURLOPT_POSTFIELDS, request.c_str());
+-  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, fwrite);
+-  curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)file);
+-
+-  /*CURLcode res =*/
+-  curl_easy_perform(curl);
+-
+-  curl_easy_cleanup(curl);
+-
+-  fclose(file);
+-
+-  return true;
+-#else
+-  request;
+-  url;
+-  filename;
+-  cerr << "ERROR: libox must be configured with libcurl to post this request" << endl;
+-  return false;
+-#endif
+-}
+-
+-} // namespace OfxPartner
+-
+-
+-// vim:cin:si:ai:et:ts=2:sw=2:
+diff --git a/ofxconnect/ofxpartner.h b/ofxconnect/ofxpartner.h
+deleted file mode 100644
+index dd4151a..0000000
+--- a/ofxconnect/ofxpartner.h
++++ /dev/null
+@@ -1,35 +0,0 @@
+-/***************************************************************************
+-                             ofx_partner.h 
+-                             -------------------
+-    copyright            : (C) 2005 by Ace Jones
+-    email                : acejones@users.sourceforge.net
+-***************************************************************************/
+-/**@file
+- * \brief Methods for connecting to the OFX partner server to retrieve
+- * OFX server information
+-*/
+-/***************************************************************************
+- *                                                                         *
+- *   This program is free software; you can redistribute it and/or modify  *
+- *   it under the terms of the GNU General Public License as published by  *
+- *   the Free Software Foundation; either version 2 of the License, or     *
+- *   (at your option) any later version.                                   *
+- *                                                                         *
+- ***************************************************************************/
+-
+-#ifndef OFXPARTNER_H
+-#define OFXPARTNER_H
+-
+-#include <libofx.h>
+-#include <string>
+-#include <vector>
+-
+-namespace OfxPartner
+-{
+-  void ValidateIndexCache(void);
+-  OfxFiServiceInfo ServiceInfo(const std::string& fipid);
+-  std::vector<std::string> BankNames(void);
+-  std::vector<std::string> FipidForBank(const std::string& bank);
+-}
+-
+-#endif // OFXPARTNER_H
+-- 
+2.49.0
+

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Jun 22 08:15:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.10.9. Changes since 0.10.8:
+  * Fix null pointer dereference bugs
+  * Initial support for exporting Config.cmake with targets
+  * Fix version and tools description in vcpkg.json
+  * Add cpack rules for "make source_package"
+  * Fix installation path of libofx.h
+  * Rename some variables that shadowed others to clarify different meanings #75
+  Changes in 0.10.7:
+  * autotools: fix LIBOFX_MAJOR_VERSION and friends in libofx.h
+  * CMake: miscellaneous fixes
+  Changes in 0.10.6:
+  * Update FindOpenSP; also allow to forcefully ENABLE SP_MULTI_BYTE
+  * Add support for CMake build system
+  * Minor code cleanup in CharStringtostring function and its header
+  * Ignore SGML parser character error because the char is accepted fine
+  * Fix find_dtd() when OFX_DTD_PATH env var is used
+  * Add ./configure option to disable CLI tools
+  * Only link ofx2qif against C++ STD lib
+  * Win32 code fixes for MSVC compilation
+  * Don't deconst iconv input buffer under Windows
+- Use CMake for building libofx
+- Add upstream change:
+  * 0001-Remove-handling-for-obsolete-partner-server.patch
+
+-------------------------------------------------------------------
 Thu May  5 09:31:02 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.10.5
