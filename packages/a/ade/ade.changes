@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 19 16:42:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.1.2e:
+  * build and portability fixes, in particular C++17 support
+    and fixes to work with googletest >= 1.17.0 (boo#1244989)
+- drop ade-use-cxx14-standard.patch in favor of cmake parameter
+
+-------------------------------------------------------------------
 Thu Apr 25 08:16:19 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add ade-use-cxx14-standard.patch: Enforce CMAKE_CXX_STANDARD=14
