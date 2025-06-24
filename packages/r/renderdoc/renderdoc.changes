@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jun 20 07:50:47 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Update to version 1.38
+  * UI: RGB casts of values in the Shader Debugger watch window
+    or Buffer Viewer now treat values as linear, not sRGB.
+  * UI: Constant buffer variables can now be shown with an RGB swatch
+    using the [[rgb]] annotation.
+  * UI: The texture goto-pixel window no longer closes when the mouse
+    leaves the window, it closes when the window loses focus.
+  * UI: Shader search paths now have a 'recursive' toggle which defaults
+    to on. When unchecked, this path will never be searched recursively
+    for files to locate missing separate debug information. This can be
+    useful for slow shared drives or very large folders with many files,
+    where exact filename matches are expected as standard.
+  * AMD: Update version of GPUPerfAPI to 4.0.
+  * Android: Add specific error message for broken devices.
+  * D3D12: When reflection information is stripped from an SM5 shader
+    and separate debug info is available in a pdb, try to regenerate
+    best-effort reflection with the debug data available.
+  * D3D12: Improve custom DXIL disassembly for resource/cbuffer
+    array access.
+  * D3D12: Improve matching of separate debug information and add some
+    new heuristics to match PIX's undocumented search behaviour.
+  * Vulkan & D3D12: Improve error messages when mesh shader output comes
+    back as invalid, in case of application errors.
+  * Vulkan: Remove change of pipeline cache UUID to allow applications
+    to preserve pipeline cache between running with and without RenderDoc.
+  * Vulkan: Implement support for extensions:
+    - VK_KHR_maintenance5
+    - VK_EXT_image_compression_control
+    - VK_EXT_image_compression_control_swapchain
+
+-------------------------------------------------------------------
 Wed Mar 26 09:21:40 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to backport PCRE2 to the swig fork:
