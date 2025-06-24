@@ -17,7 +17,7 @@
 
 
 Name:           oc
-Version:        4.18.0
+Version:        4.19.0
 Release:        0
 Summary:        Openshift / OKD Client CLI
 License:        Apache-2.0

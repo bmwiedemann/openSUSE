@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Mon Jun 23 15:26:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- leading v removed from version in '_service' file
+- Update to version 4.19.0:
+  * Replace colon to hypen in the filename while extracting tar on
+    Windows
+  * Adding sos.conf file for default sos config into the tools
+    image
+  * Add support for idms/icsp in node image command
+  * Revert "Revert "NO-JIRA: `adm release new`: simplify
+    `writePayload`" (#2000)"
+  * Add s390x-specific PXE artifact filter for .ins and .addrsize
+  * OCPBUGS-53106: Get installer image from configMap for
+    node-image command
+  * COS-3023: Fixing rpmdiff permissions when running in container
+  * Revert "NO-JIRA: `adm release new`: simplify `writePayload`"
+    (#2000)
+  * `adm release new`: simplify no operator error condition
+  * `adm release new`: improve `writePayload` readability
+  * `adm release new`: inline and eliminate `writeNestedTarHeader`
+  * Fix: Use ProxyFromEnvironment when creating HTTP transport
+  * `adm release new`: simplify `writePayload`
+  * debug: suggest nsenter in addition to chroot
+  * Use fedora image in unit tests instead of centos
+  * pkg/cli/admin/release/info: support generating RPM diffs
+  * pkg/cli/admin/release/info: support retrieving just some images
+  * pkg/cli/admin/release/info: factor out images retrieval
+  * pkg/cli/admin/release/info: also capture component tags
+  * OCPBUGS-23514: status: Adjust impact summary for
+    Failing=Unknown
+  * pkg/cli/admin/upgrade/recommend: Populate RESTConfig
+  * Bump x/oauth2 and x/crypto
+  * pkg/cli/admin/upgrade/recommend: Configureable version for test
+    fixtures
+  * pkg/cli/admin/upgrade/recommend/examples/README: Catch up with
+    --show-outdated-releases
+  * Bump indirect dependency go-jose to 4.0.5 version
+  * pkg/cli/admin/upgrade/recommend: "Upstream" -> "Upstream update
+    service"
+  * trt-1995: Update Unconditional Feature Gate Notation
+  * fix suggestions
+  * add % and improve message
+  * pkg/cli/admin/upgrade: Track PodDisruptionBudget alert label
+  * pkg/cli/admin/upgrade/recommend: Alert detail sections
+  * pkg/cli/admin/upgrade/recommend: Initial precheck
+    implementation
+  * pkg/cli/admin/upgrade/recommend: Add a blank line after
+    Progressing message
+  * STOR-2040: CLI command to display bound pvc filesystem usage
+    percentage (#1854)
+  * React to changes and update k8s version to 1.32.1
+  * Update dependencies compatible with 1.32 k8s
+  * pkg/cli/admin/upgrade/recommend/examples/4.16.27-degraded-monitoring:
+    New test-case
+  * Sanitize tar header name as it is used in path
+  * Address `github.com/docker/docker` CVE
+  * Test case for lowercase Jira ticket names
+  * admin/upgrade/status/examples/README: Document *-alerts.json
+  * OCPBUGS-38975: monitor should not exit for temp api disconnect
+  * NO-ISSUE: Remove experimental tag for --report and --pxe
+  * Mark adm pod-network command as hidden and depcated
+  * Add test-case for non-version related MCP reconciling
+  * Check the node annotations only during multi-arch migration
+  * OCPBUGS-45991: Mark --report and --pxe flags as experimental
+  * OCPBUGS-45177: rollout: Update examples and descriptions
+    aligning with kubectl (#1943)
+  * OTA-1393: status: recognize multi-arch in node phase (2)
+  * Updating openshift-enterprise-deployer-container image to be
+    consistent with ART for 4.19 Reconciling with
+    https://github.com/openshift/ocp-build-data/tree/a39508c86497b4e5e463d7b2c78e51e577be9e7d/images/openshift-enterprise-deployer.yml
+  * OCPBUGS-19824: release new: replace 0.0.1-snapshot more
+  * adm release: simplify safe manifests mappers
+  * Update to 4.19 and Go 1.23.0
+  * adm release: clarify manifest processing
+  * adm node-logs: Also parse logs when encountered with standard
+    html header
+  * adm release: simplify `image-references` check
+  * fix oc adm node-image create --pxe command to copy the correct
+    artifacts
+  * Ensure that listAccessor is satisfied
+  * Add unit tests for elide functions in inspect command
+  * Obfuscate sensitive data in Proxy resource while inspection
+  * OTA-1393: status: recognize multi-arch in node phase
+  * OTA-1393: status: recognize multi-arch in target version
+  * status: compute mcoImagePullSpec only once
+  * adm release: simplify manifest iteration
+  * Typo fix: add missing whitespace character.
+  * pkg/cli/admin/release/extract_tools: Enable ImageRegistry, etc.
+    on 4.13-to-4.14
+
+-------------------------------------------------------------------
 Tue Feb 25 15:06:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - remove leading v from version
