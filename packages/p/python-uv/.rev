@@ -850,4 +850,39 @@
    * Update the CLI help and reference to include references to the Python bin directory</comment>
     <requestid>1285525</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c3dc8ae3068a8721e8b89d6d21efbf81</srcmd5>
+    <version>0.7.14</version>
+    <time>1750790932</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.7.14:
+ * Enhancements
+   * Add XPU to --torch-backend 
+   * Add ROCm backends to --torch-backend 
+   * Remove preview label from --torch-backend 
+   * Add [tool.uv.dependency-groups].mygroup.requires-python 
+   * Add auto-detection for AMD GPUs 
+   * Show retries for HTTP status code errors 
+   * Support transparent Python patch version upgrades 
+   * Warn on empty index directory 
+   * Publish to DockerHub 
+ * Performance
+   * Make cold resolves about 10% faster 
+ * Bug fixes
+   * Don't use walrus operator in interpreter query script 
+   * Fix handling of changes to requires-python 
+   * Fix implied platform_machine marker for win_amd64 platform tag 
+   * Only update existing symlink directories on preview uninstall 
+   * Serialize Python requests for tools as canonicalized strings 
+   * Support netrc and same-origin credential propagation on index redirects 
+   * Support reading dependency-groups from pyproject.tomls with no [project] 
+   * Handle an existing shebang in uv init --script 
+   * Prevent concurrent updates of the environment in uv run 
+   * Filter managed Python distributions by platform before querying when included in request 
+ * Documentation
+   * Replace cuda124 with cuda128 
+   * Document the way member sources shadow workspace sources 
+   * Sync documented PyTorch integration index for CUDA and ROCm versions from PyTorch website</comment>
+    <requestid>1288102</requestid>
+  </revision>
 </revisionlist>
