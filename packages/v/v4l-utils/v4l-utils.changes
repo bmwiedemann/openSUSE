@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 10 08:41:45 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Filter out GLIBC_PRIVATE dependencies
+
+-------------------------------------------------------------------
 Sat Apr 12 22:31:55 UTC 2025 - Asterios Dramis <asterios.dramis@gmail.com>
 
 - Install gconv module file to /usr/lib64/gconv/gconv-modules.d/

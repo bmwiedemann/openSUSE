@@ -80,6 +80,9 @@ BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libv4lconvert)
 %endif
 
+# The gconv modules need some private glibc interface
+%define __requires_exclude GLIBC_PRIVATE
+
 %description
 v4l-utils is a collection of various video4linux (V4L) utilities.
 
