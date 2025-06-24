@@ -23,4 +23,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148608</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ca8a84555c95096d311e401626baf6dd</srcmd5>
+    <version>3.0.0~alpha1</version>
+    <time>1750790884</time>
+    <user>anag_factory</user>
+    <comment>Fix build with up-coming maven 4</comment>
+    <requestid>1287975</requestid>
+  </revision>
 </revisionlist>
