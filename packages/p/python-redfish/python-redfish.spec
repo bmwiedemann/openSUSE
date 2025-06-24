@@ -24,7 +24,9 @@ Summary:        Redfish Python Library
 License:        BSD-3-Clause
 URL:            https://github.com/DMTF/python-redfish-library
 Source:         https://github.com/DMTF/python-redfish-library/archive/%{version}.tar.gz#/redfish-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jsonpatch
@@ -54,10 +56,10 @@ the Engine of Application State) Redfish architecture.
 %autosetup -p1 -n %{name}-library-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,6 +68,7 @@ the Engine of Application State) Redfish architecture.
 %files %{python_files}
 %license LICENSE.md
 %doc README.rst CHANGELOG.md
-%{python_sitelib}/redfish*
+%{python_sitelib}/redfish
+%{python_sitelib}/redfish-%{version}.dist-info
 
 %changelog
