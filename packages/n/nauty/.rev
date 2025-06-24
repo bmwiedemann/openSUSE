@@ -95,4 +95,12 @@
     <comment>- Update to release 2.8.9</comment>
     <requestid>1244628</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e62ba747875576759c93b122bc61a10d</srcmd5>
+    <version>2.8.9</version>
+    <time>1750790803</time>
+    <user>anag_factory</user>
+    <comment>- Add gcc15.patch</comment>
+    <requestid>1287761</requestid>
+  </revision>
 </revisionlist>

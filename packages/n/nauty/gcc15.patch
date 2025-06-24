@@ -1,0 +1,28 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2025-06-22 22:59:12.725516319 +0200
+
+gcc-15 for some reason stumbles over itself. If it had not ignored noreturn,
+there would be no reaching of end-of-function.
+Add a filler return statement.
+
+[   23s] nauty.h:1467:1: warning: 'noreturn' attribute ignored [-Wattributes]
+[   23s]  1467 | extern void NORET_ATTR alloc_error(const char*);
+[   23s] gtnauty.c: In function 'findarc':
+[   23s] gtnauty.c:942:1: error: control reaches end of non-void function [-Werror=return-type]
+
+---
+ gtnauty.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: nauty2_8_9/gtnauty.c
+===================================================================
+--- nauty2_8_9.orig/gtnauty.c
++++ nauty2_8_9/gtnauty.c
+@@ -939,6 +939,7 @@ findarc(arc *a, int na, int from, int to
+             lo = mid + 1;
+     }
+     gt_abort(">E findarc error\n");
++    return 0;
+ }
+ 
+ void

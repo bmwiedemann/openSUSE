@@ -1,7 +1,7 @@
 #
 # spec file for package nauty
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source:         https://pallini.di.uniroma1.it/nauty%fuv.tar.gz
 Patch1:         nauty-am.diff
 Patch2:         nauty-uninitialized.diff
 Patch3:         autoconf-2.72.patch
+Patch4:         gcc15.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
