@@ -23,7 +23,7 @@
 %define pkg_soname  %{major_version}-%{soname}
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 Name:           webrtc-audio-processing
-Version:        2.1
+Version:        2.1+git.4
 Release:        0
 Summary:        Real-Time Communication Library for Web Browsers
 License:        BSD-3-Clause

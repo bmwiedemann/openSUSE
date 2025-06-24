@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 23 07:41:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.1+git.4:
+  + Fix compilation with gcc-15.
+  + arch.h: Add s390x support.
+
+-------------------------------------------------------------------
 Fri Jan 31 10:21:07 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 2.1:
