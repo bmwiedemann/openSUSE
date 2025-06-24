@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 17 09:11:26 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- ppc64le-revert-power10-strcmp.patch: Revert optimized POWER10 strcmp,
+  strncmp implementations (CVE-2025-5745, CVE-2025-5702, bsc#1244184,
+  bsc#1244182, BZ #33060, BZ #33056)
+- ppc64le-revert-power10-memcmp.patch: Revert optimized POWER10 memcmp
+  implementation (BZ #33059)
+
+-------------------------------------------------------------------
+Mon Jun  2 10:54:37 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Filter GLIBC_PRIVATE symbols again
+- Drop ngpt provides
+- Refine libc_nonshared.a workaround
+
+-------------------------------------------------------------------
+Fri Apr 18 19:50:23 UTC 2025 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- Enable Userspace Livepatching on ppc64le (jsc#PED-7395)
+
+-------------------------------------------------------------------
 Wed Mar 12 10:28:15 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Do not build libnsl1 (bsc#1239459)
@@ -319,6 +340,7 @@ Thu Feb  1 09:25:37 UTC 2024 - Andreas Schwab <schwab@suse.de>
   sem-open-o-creat.patch, setxid-propagate-glibc-tunables.patch,
   syslog-buffer-overflow.patch, tls-modid-reuse.patch,
   tunables-string-parsing.patch: Removed
+- CVE-2025-4802
 
 -------------------------------------------------------------------
 Wed Jan 31 09:25:16 UTC 2024 - Andreas Schwab <schwab@suse.de>

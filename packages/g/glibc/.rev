@@ -3144,4 +3144,16 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
     <comment>- Do not build libnsl1 (bsc#1239459) (forwarded request 1252687 from Andreas_Schwab)</comment>
     <requestid>1252688</requestid>
   </revision>
+  <revision rev="299" vrev="3">
+    <srcmd5>1339694b810958a9a763c9c50bb0c6e2</srcmd5>
+    <version>2.41</version>
+    <time>1750790710</time>
+    <user>anag_factory</user>
+    <comment>- ppc64le-revert-power10-strcmp.patch: Revert optimized POWER10 strcmp,
+  strncmp implementations (CVE-2025-5745, CVE-2025-5702, bsc#1244184,
+  bsc#1244182, BZ #33060, BZ #33056)
+- ppc64le-revert-power10-memcmp.patch: Revert optimized POWER10 memcmp
+  implementation (BZ #33059) (forwarded request 1286664 from Andreas_Schwab)</comment>
+    <requestid>1286665</requestid>
+  </revision>
 </revisionlist>

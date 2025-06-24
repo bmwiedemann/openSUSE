@@ -111,11 +111,11 @@ ExclusiveArch:  do_not_build
 # Enable support for livepatching.
 %define have_livepatching_support 0
 %if %{build_cross}
-%if "%{cross_arch}" == "x86_64"
+%if "%{cross_arch}" == "x86_64" || "%{cross_arch}" == "ppc64le"
 %define have_livepatching_support 1
 %endif
 %else
-%ifarch x86_64
+%ifarch x86_64 ppc64le
 %define have_livepatching_support 1
 %endif
 %endif
@@ -138,7 +138,9 @@ ExclusiveArch:  do_not_build
 %define name_suffix -%{flavor}-src
 %endif
 
-%define __filter_GLIBC_PRIVATE 1
+# Nothing outside of glibc must use these symbols
+%define __requires_exclude GLIBC_PRIVATE
+%define __provides_exclude GLIBC_PRIVATE
 %ifarch i686
 # For i686 let's only build what's different from i586, so
 # no need to build documentation
@@ -211,11 +213,6 @@ Source21:       nscd.service
 Source22:       nscd.sysusers
 
 %if %{build_main}
-# ngpt was used in 8.1 and SLES8
-Obsoletes:      ngpt < 2.2.2
-Obsoletes:      ngpt-devel < 2.2.2
-Provides:       ngpt = 2.2.2
-Provides:       ngpt-devel = 2.2.2
 %if %{without nscd}
 Obsoletes:      nscd <= %{version}
 %endif
@@ -351,6 +348,10 @@ Patch1003:      round-tanf.patch
 Patch1004:      tst-aarch64-pkey.patch
 # PATCH-FIX-UPSTREAM x86 (__HAVE_FLOAT128): Defined to 0 for Intel SYCL compiler (BZ #32723)
 Patch1005:      float128-sycl.patch
+# PATCH-FIX-UPSTREAM Revert optimized POWER10 strcmp, strncmp implementations (CVE-2025-5745, CVE-2025-5702, BZ #33060, BZ #33056)
+Patch1006:      ppc64le-revert-power10-strcmp.patch
+# PATCH-FIX-UPSTREAM Revert optimized POWER10 memcmp (BZ #33059)
+Patch1007:      ppc64le-revert-power10-memcmp.patch
 ###
 %endif
 
@@ -794,12 +795,13 @@ archsub=powerpc
 %endif
 xstatbuild ()
 {
-  gcc -O2 -I ../sysdeps/unix/sysv/linux/$archsub -xc - -c -o $1stat$2.oS <<EOF
+  gcc -O2 -fpic -I ../sysdeps/unix/sysv/linux/$archsub -xc - -c -o $1stat$2.oS <<EOF
 #include <bits/wordsize.h>
 #include <xstatver.h>
 int __$1xstat$2 (int, $3, void *);
 
 int
+__attribute__ ((visibility ("hidden")))
 $1stat$2 ($3 file, void *buf)
 {
   return __$1xstat$2 (_STAT_VER, file, buf);

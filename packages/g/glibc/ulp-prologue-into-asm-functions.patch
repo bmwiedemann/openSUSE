@@ -1,6 +1,6 @@
-From 322a7b6a9bad6ab6a985ea67f7bc65a434806061 Mon Sep 17 00:00:00 2001
+From 43c311457caf71c02ea2857bcf4e1e0499dc221a Mon Sep 17 00:00:00 2001
 From: Giuliano Belinassi <gbelinassi@suse.de>
-Date: Mon, 6 May 2024 20:09:55 -0300
+Date: Fri, 18 Apr 2025 14:22:49 -0300
 Subject: [PATCH] Add Userspace Livepatch prologue into ASM functions
 
 Userspace Live Patching (ULP) refers to the process of applying
@@ -12,38 +12,24 @@ this have to be included manually. This patch does this.
 
 Signed-off-by: Giuliano Belinassi <gbelinassi@suse.de>
 ---
- Makeconfig                               |  5 +++
  config.h.in                              |  3 ++
- config.make.in                           |  1 +
- configure                                | 21 +++++++++
- configure.ac                             | 13 ++++++
+ config.make.in                           |  2 +
+ configure                                | 54 +++++++++++++++++++++++
+ configure.ac                             | 29 +++++++++++++
+ sysdeps/powerpc/powerpc64/le/Makefile    |  8 ++++
+ sysdeps/powerpc/powerpc64/sysdep.h       | 55 ++++++++++++++++++++++--
+ sysdeps/x86_64/Makefile                  |  5 +++
  sysdeps/x86_64/multiarch/strcmp-avx2.S   |  5 +--
  sysdeps/x86_64/multiarch/strcmp-evex.S   |  5 +--
  sysdeps/x86_64/multiarch/strcmp-sse4_2.S |  5 +--
- sysdeps/x86_64/sysdep.h                  | 54 ++++++++++++++++++++++--
- 9 files changed, 96 insertions(+), 16 deletions(-)
+ sysdeps/x86_64/sysdep.h                  | 54 +++++++++++++++++++++--
+ 11 files changed, 205 insertions(+), 20 deletions(-)
 
-diff --git a/Makeconfig b/Makeconfig
-index a0abc2239b..1eb730a2f7 100644
---- a/Makeconfig
-+++ b/Makeconfig
-@@ -1017,6 +1017,11 @@ endif
- # Filter out 64 bit time_t flags if compiler defines it by default.
- +cflags += $(no-time-bits-source)
- 
-+# Add flags for Userspace Livepatching support.
-+ifeq (yes,$(enable-userspace-livepatch))
-++cflags	+= -fpatchable-function-entry=16,14
-+endif
-+
- # Each sysdeps directory can contain header files that both will be
- # used to compile and will be installed.  Each can also contain an
- # include/ subdirectory, whose header files will be used to compile
 diff --git a/config.h.in b/config.h.in
-index 6c25c923fa..98e267d71c 100644
+index cdbd555366..2cd9838361 100644
 --- a/config.h.in
 +++ b/config.h.in
-@@ -211,6 +211,9 @@
+@@ -221,6 +221,9 @@
  /* Define to 1 if libpthread actually resides in libc.  */
  #define PTHREAD_IN_LIBC 0
  
@@ -54,30 +40,32 @@ index 6c25c923fa..98e267d71c 100644
  #define TIMEOUTFACTOR 1
  
 diff --git a/config.make.in b/config.make.in
-index 36096881b7..04cf873fad 100644
+index 59897eaec2..63f9b6ee58 100644
 --- a/config.make.in
 +++ b/config.make.in
-@@ -81,6 +81,7 @@ mach-interface-list = @mach_interface_list@
+@@ -82,6 +82,8 @@ mach-interface-list = @mach_interface_list@
  memory-tagging = @memory_tagging@
  
  # Configuration options.
 +enable-userspace-livepatch = @enable_userspace_livepatch@
++supports-msplit-patch-nops = @supports_msplit_patch_nops@
  build-shared = @shared@
  build-profile = @profile@
  build-static-nss = @static_nss@
 diff --git a/configure b/configure
-index 9c0c0dce03..4b18c93595 100755
+index 674d1d7e4a..51dbce3b34 100755
 --- a/configure
 +++ b/configure
-@@ -615,6 +615,7 @@ LIBOBJS
+@@ -615,6 +615,8 @@ LIBOBJS
  pthread_in_libc
  RELEASE
  VERSION
++supports_msplit_patch_nops
 +enable_userspace_livepatch
  mach_interface_list
  DEFINES
  static_nss
-@@ -811,6 +812,7 @@ enable_cet
+@@ -821,6 +823,7 @@ enable_cet
  enable_scv
  enable_fortify_source
  with_cpu
@@ -85,7 +73,7 @@ index 9c0c0dce03..4b18c93595 100755
  '
        ac_precious_vars='build_alias
  host_alias
-@@ -1493,6 +1495,8 @@ Optional Features:
+@@ -1505,6 +1508,8 @@ Optional Features:
                            Use -D_FORTIFY_SOURCE=[1|2|3] to control code
                            hardening, defaults to highest possible value
                            supported by the build compiler.
@@ -94,7 +82,7 @@ index 9c0c0dce03..4b18c93595 100755
  
  Optional Packages:
    --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
-@@ -8184,6 +8188,23 @@ libc_cv_multidir=`${CC-cc} $CFLAGS $CPPFLAGS -print-multi-directory`
+@@ -9152,6 +9157,55 @@ libc_cv_multidir=`${CC-cc} $CFLAGS $CPPFLAGS -print-multi-directory`
  
  
  
@@ -102,10 +90,41 @@ index 9c0c0dce03..4b18c93595 100755
 +if test ${enable_userspace_livepatch+y}
 +then :
 +  enableval=$enable_userspace_livepatch; enable_userspace_livepatch=$enableval
-+else $as_nop
-+  enable_userspace_livepatch=no
++else case e in #(
++  e) enable_userspace_livepatch=no ;;
++esac
 +fi
 +
++
++# Check if compiler provides -msplit-patch-nops.  It may be required on
++# some architectures for livepatching support.
++if test "x$enable_userspace_livepatch" = xyes; then
++  old_CFLAGS="$CFLAGS"
++  CFLAGS="-msplit-patch-nops $CFLAGS"
++  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++extern void g(void);
++      __attribute__((patchable_function_entry(14, 13)))
++      void f(void) { g(); }
++int
++main (void)
++{
++
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_compile "$LINENO"
++then :
++  supports_msplit_patch_nops=yes
++else case e in #(
++  e) supports_msplit_patch_nops=no ;;
++esac
++fi
++rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
++
++  CFLAGS="$old_CFLAGS"
++fi
 +
 +# Libpulp uses -fpatchable-function-entry to add padding NOPS to the
 +# prologue of all functions.
@@ -115,14 +134,15 @@ index 9c0c0dce03..4b18c93595 100755
 +fi
 +
 +
++
  VERSION=`sed -n -e 's/^#define VERSION "\([^"]*\)"/\1/p' < $srcdir/version.h`
  RELEASE=`sed -n -e 's/^#define RELEASE "\([^"]*\)"/\1/p' < $srcdir/version.h`
  
 diff --git a/configure.ac b/configure.ac
-index d5a00461ff..80f183a7b5 100644
+index 57cd24c87d..97c65dc6c5 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1813,6 +1813,19 @@ AC_SUBST(DEFINES)
+@@ -2079,6 +2079,35 @@ AC_SUBST(DEFINES)
  dnl See sysdeps/mach/configure.ac for this variable.
  AC_SUBST(mach_interface_list)
  
@@ -132,18 +152,145 @@ index d5a00461ff..80f183a7b5 100644
 +	      [enable_userspace_livepatch=$enableval],
 +	      [enable_userspace_livepatch=no])
 +
++# Check if compiler provides -msplit-patch-nops.  It may be required on
++# some architectures for livepatching support.
++if test "x$enable_userspace_livepatch" = xyes; then
++  old_CFLAGS="$CFLAGS"
++  CFLAGS="-msplit-patch-nops $CFLAGS"
++  AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
++    [[extern void g(void);
++      __attribute__((patchable_function_entry(14, 13)))
++      void f(void) { g(); }]])],
++    [supports_msplit_patch_nops=yes],
++    [supports_msplit_patch_nops=no])
++
++  CFLAGS="$old_CFLAGS"
++fi
++
 +# Libpulp uses -fpatchable-function-entry to add padding NOPS to the
 +# prologue of all functions.
 +if test "x$enable_userspace_livepatch" = xyes; then
 +  AC_DEFINE(ENABLE_USERSPACE_LIVEPATCH)
 +fi
 +AC_SUBST(enable_userspace_livepatch)
++AC_SUBST(supports_msplit_patch_nops)
 +
  VERSION=`sed -n -e 's/^#define VERSION "\([^"]*\)"/\1/p' < $srcdir/version.h`
  RELEASE=`sed -n -e 's/^#define RELEASE "\([^"]*\)"/\1/p' < $srcdir/version.h`
  AC_SUBST(VERSION)
+diff --git a/sysdeps/powerpc/powerpc64/le/Makefile b/sysdeps/powerpc/powerpc64/le/Makefile
+index b77775cf95..8340a8e02f 100644
+--- a/sysdeps/powerpc/powerpc64/le/Makefile
++++ b/sysdeps/powerpc/powerpc64/le/Makefile
+@@ -1,3 +1,11 @@
++# Add flags for Userspace Livepatching support.
++ifeq (yes,$(enable-userspace-livepatch))
+++cflags += -fpatchable-function-entry=14,13
++ifeq (yes,$(supports-msplit-patch-nops))
+++cflags += -msplit-patch-nops
++endif
++endif
++
+ # When building float128 we need to ensure -mfloat128 is
+ # passed to all such object files.
+ type-float128-CFLAGS := -mfloat128
+diff --git a/sysdeps/powerpc/powerpc64/sysdep.h b/sysdeps/powerpc/powerpc64/sysdep.h
+index f05dae71f6..55c6b9b45b 100644
+--- a/sysdeps/powerpc/powerpc64/sysdep.h
++++ b/sysdeps/powerpc/powerpc64/sysdep.h
+@@ -163,6 +163,46 @@
+ BODY_LABEL(\name):
+ 	.endm
+ 
++/* Libpulp uses -fpatchable-function-entry to add padding NOPS to the
++   prologue of all functions. This works for C functions. For functions
++   written in ASM, the way we do this is by adding this prologue manually.  */
++
++#if ENABLE_USERSPACE_LIVEPATCH
++
++/* Instructions to be inserted before the function label.  */
++# define ULP_NOPS_PRE_PROLOGUE     .rept 13; nop; .endr
++
++/* Instruction to be inserted after the function label.  */
++# define ULP_NOPS_POST_PROLOGUE    .rept  1; nop; .endr
++
++
++/* this macro expands according to the following condition:
++ * if name = _start, then the prologue is not inserted.
++ * if name = _dl_relocate_static_pie, then the prologue is not inserted.
++ * if name = anything else, then the prologue is inserted.
++ **/
++# define __ULP_PRE_PROLOGUE_dl_relocate_static_pie    ,
++# define __ULP_PRE_PROLOGUE_start                     ,
++# define __ULP_PRE_PROLOGUE(x, y,...)                 y
++# define _ULP_PRE_PROLOGUE(x, ...)                    __ULP_PRE_PROLOGUE(x, __VA_ARGS__)
++# define ULP_PRE_PROLOGUE(name)                       _ULP_PRE_PROLOGUE(__ULP_PRE_PROLOGUE##name, ULP_NOPS_PRE_PROLOGUE,)
++
++/* this macro expands according to the following condition:
++ * if name = _start, then the postlogue is not inserted.
++ * if name = _dl_relocate_static_pie, then the postlogue is not inserted.
++ * if name = anything else, then the postlogue is inserted.
++ **/
++# define __ULP_POST_PROLOGUE_dl_relocate_static_pie   ,
++# define __ULP_POST_PROLOGUE_start                    ,
++# define __ULP_POST_PROLOGUE(x, y,...)                y
++# define _ULP_POST_PROLOGUE(x, ...)                   __ULP_POST_PROLOGUE(x, __VA_ARGS__)
++# define ULP_POST_PROLOGUE(name)                      _ULP_POST_PROLOGUE(__ULP_POST_PROLOGUE##name, ULP_NOPS_POST_PROLOGUE,)
++
++#else
++# define ULP_PRE_PROLOGUE(name)
++# define ULP_POST_PROLOGUE(name)
++#endif
++
+ /* Use ENTRY_TOCLESS for functions that make no use of r2 and
+    guarantee r2 is unchanged on exit.  Any function that has @toc or
+    @got relocs uses r2.  Functions that call other functions via the
+@@ -175,19 +215,26 @@ BODY_LABEL(\name):
+    before the start of the function's code.   */
+ #ifndef PROF
+ #define ENTRY_TOCLESS(name, ...)		\
++	ULP_PRE_PROLOGUE(name);			\
+ 	ENTRY_3 name, ## __VA_ARGS__;		\
+-	cfi_startproc
++	cfi_startproc;				\
++	ULP_POST_PROLOGUE(name)
+ 
+ #define ENTRY(name, ...)			\
+-	ENTRY_TOCLESS(name, ## __VA_ARGS__);	\
+-	LOCALENTRY(name)
++	ULP_PRE_PROLOGUE(name);			\
++	ENTRY_3 name, ## __VA_ARGS__;		\
++	cfi_startproc;				\
++	LOCALENTRY(name);			\
++	ULP_POST_PROLOGUE(name)
+ #else
+ /* The call to _mcount is potentially via the plt, so profiling code
+    is never free of an r2 use.  */
+ #define ENTRY_TOCLESS(name, ...)		\
++	ULP_PRE_PROLOGUE(name);			\
+ 	ENTRY_3 name, ## __VA_ARGS__;		\
+ 	cfi_startproc;				\
+-	LOCALENTRY(name)
++	LOCALENTRY(name);                       \
++	ULP_POST_PROLOGUE(name)
+ 
+ #define ENTRY(name, ...)			\
+ 	ENTRY_TOCLESS(name, ## __VA_ARGS__)
+diff --git a/sysdeps/x86_64/Makefile b/sysdeps/x86_64/Makefile
+index 9d31685e02..d20287a050 100644
+--- a/sysdeps/x86_64/Makefile
++++ b/sysdeps/x86_64/Makefile
+@@ -1,3 +1,8 @@
++# Add flags for Userspace Livepatching support.
++ifeq (yes,$(enable-userspace-livepatch))
+++cflags += -fpatchable-function-entry=16,14
++endif
++
+ # The i387 `long double' is a distinct type we support.
+ long-double-fcts = yes
+ 
 diff --git a/sysdeps/x86_64/multiarch/strcmp-avx2.S b/sysdeps/x86_64/multiarch/strcmp-avx2.S
-index 5bc1d90078..3ea96c0aa3 100644
+index 4b46a8de17..8266f558d9 100644
 --- a/sysdeps/x86_64/multiarch/strcmp-avx2.S
 +++ b/sysdeps/x86_64/multiarch/strcmp-avx2.S
 @@ -201,10 +201,7 @@ END (STRCASECMP)
@@ -159,7 +306,7 @@ index 5bc1d90078..3ea96c0aa3 100644
  # if defined USE_AS_STRCASECMP_L
  	/* We have to fall back on the C implementation for locales with
 diff --git a/sysdeps/x86_64/multiarch/strcmp-evex.S b/sysdeps/x86_64/multiarch/strcmp-evex.S
-index cea034f394..3ed55b7d66 100644
+index 6316bb940e..91192f2d2e 100644
 --- a/sysdeps/x86_64/multiarch/strcmp-evex.S
 +++ b/sysdeps/x86_64/multiarch/strcmp-evex.S
 @@ -226,10 +226,7 @@ END (STRCASECMP)
@@ -175,7 +322,7 @@ index cea034f394..3ed55b7d66 100644
  # if defined USE_AS_STRCASECMP_L
  	/* We have to fall back on the C implementation for locales with
 diff --git a/sysdeps/x86_64/multiarch/strcmp-sse4_2.S b/sysdeps/x86_64/multiarch/strcmp-sse4_2.S
-index 4e98da0246..2a2280c65f 100644
+index 1b746c4b2f..01c8eb44e3 100644
 --- a/sysdeps/x86_64/multiarch/strcmp-sse4_2.S
 +++ b/sysdeps/x86_64/multiarch/strcmp-sse4_2.S
 @@ -103,10 +103,7 @@ END (STRCASECMP)
@@ -191,7 +338,7 @@ index 4e98da0246..2a2280c65f 100644
  /*
   * This implementation uses SSE to compare up to 16 bytes at a time.
 diff --git a/sysdeps/x86_64/sysdep.h b/sysdeps/x86_64/sysdep.h
-index db6e36b2dd..86a5d1b2be 100644
+index cb475bec98..2bb84c4c31 100644
 --- a/sysdeps/x86_64/sysdep.h
 +++ b/sysdeps/x86_64/sysdep.h
 @@ -49,6 +49,46 @@ enum cf_protection_level
@@ -268,5 +415,5 @@ index db6e36b2dd..86a5d1b2be 100644
  /* This macro is for setting proper CFI with DW_CFA_expression describing
     the register as saved relative to %rsp instead of relative to the CFA.
 -- 
-2.46.2
+2.49.0
 
