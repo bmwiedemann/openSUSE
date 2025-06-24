@@ -1,0 +1,58 @@
+Index: gcin-2.9.0/IMdkit/include/Xi18n.h
+===================================================================
+--- gcin-2.9.0.orig/IMdkit/include/Xi18n.h
++++ gcin-2.9.0/IMdkit/include/Xi18n.h
+@@ -68,13 +68,6 @@ IN CONNECTION WITH THE USE OR PERFORMANC
+ #define I18N_SET	1
+ #define I18N_GET	2
+ 
+-typedef struct
+-{
+-    char        *transportname;
+-    int         namelen;
+-    Bool        (*checkAddr) ();
+-} TransportSW;
+-
+ typedef struct _XIMPending
+ {
+     unsigned    char *p;
+@@ -155,6 +148,13 @@ typedef struct _Xi18nClient
+ 
+ typedef struct _Xi18nCore *Xi18n;
+ 
++typedef struct _TransportSW TransportSW;
++struct _TransportSW {
++    char * transportname;
++    int	namelen;
++    Bool	(*checkAddr) (Xi18n, TransportSW *, char *);
++};
++
+ /*
+  * Callback Struct for XIM Protocol
+  */
+Index: gcin-2.9.0/IMdkit/lib/i18nMethod.c
+===================================================================
+--- gcin-2.9.0.orig/IMdkit/lib/i18nMethod.c
++++ gcin-2.9.0/IMdkit/lib/i18nMethod.c
+@@ -89,7 +89,7 @@ TransportSW _TransR[] =
+ #ifdef DNETCONN
+     {"decnet",          6, _Xi18nCheckTransAddress},
+ #endif
+-    {(char *) NULL,     0, (Bool (*) ()) NULL}
++    {(char *) NULL,     0, (Bool (*) (Xi18n, TransportSW *, char *)) NULL}
+ };
+ 
+ static Bool GetInputStyles (Xi18n i18n_core, XIMStyles **p_style)
+Index: gcin-2.9.0/im-client/gcin-im-client.cpp
+===================================================================
+--- gcin-2.9.0.orig/im-client/gcin-im-client.cpp
++++ gcin-2.9.0/im-client/gcin-im-client.cpp
+@@ -39,7 +39,7 @@ static void restore_old_sigaction_single
+   if (act->sa_handler != SIG_IGN)
+     signal(signo, act->sa_handler);
+ }
+-char *get_gcin_im_srv_sock_path();
++char *get_gcin_im_srv_sock_path(char *, size_t);
+ Atom get_gcin_addr_atom(Display *dpy);
+ #endif
+ 

@@ -1,7 +1,7 @@
 #
 # spec file for package gcin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,6 +56,8 @@ Patch10:        gcin-dont-copy-gcin-qt5-header.patch
 Patch11:        gcin-remove-dead-code.patch
 # PATCH-FIX-OPENSUSE gcin-gcc14-fix.patch - fix the build errors with gcc14
 Patch12:        gcin-gcc14-fix.patch
+# PATCH-FIX-UPSTREAM fix the build errors with gcc15
+Patch13:        gcin-2.9.0-gcc15.patch
 BuildRequires:  anthy-devel
 BuildRequires:  fdupes
 BuildRequires:  gtk2-devel
