@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 23 12:16:04 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Change patch to start plymouth-quit.service explicitly
+  (boo#1245076):
+  * sddm-service-handle-plymouth.patch
+
+-------------------------------------------------------------------
 Tue Apr  1 16:15:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patch:

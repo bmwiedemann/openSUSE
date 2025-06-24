@@ -1,7 +1,7 @@
 #
 # spec file for package sddm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,8 +76,6 @@ Patch57:        0005-If-autologin-is-used-avoid-starting-a-display-server.patch
 Patch101:       0001-Write-the-daemon-s-PID-to-a-file-on-startup.patch
 Patch102:       0001-Set-XAUTHLOCALHOSTNAME-in-sessions.patch
 Patch103:       0001-Read-the-DISPLAYMANAGER_AUTOLOGIN-value-from-sysconf.patch
-# sddm has some rudimentary support for plymouth handling, which only works with plymouth-quit.service
-# (the servce is not enabled on openSUSE). For users of sddm.service, we need to issue plymouth quit command by hand in this case
 Patch104:       sddm-service-handle-plymouth.patch
 Patch107:       0003-Leave-duplicate-symlinks-out-of-the-SessionModel.patch
 BuildRequires:  cmake

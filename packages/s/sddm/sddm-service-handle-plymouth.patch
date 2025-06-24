@@ -1,12 +1,12 @@
-Index: sddm-0.19.0+git20230203.7df16ce/services/sddm.service.in
+Index: sddm-0.21.0/services/sddm.service.in
 ===================================================================
---- sddm-0.19.0+git20230203.7df16ce.orig/services/sddm.service.in
-+++ sddm-0.19.0+git20230203.7df16ce/services/sddm.service.in
-@@ -9,6 +9,7 @@ StartLimitBurst=2
- 
- [Service]
- ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/sddm
-+ExecStartPre=-@CMAKE_INSTALL_FULL_BINDIR@/plymouth quit --retain-splash
- Restart=always
- 
- [Install]
+--- sddm-0.21.0.orig/services/sddm.service.in
++++ sddm-0.21.0/services/sddm.service.in
+@@ -2,6 +2,7 @@
+ Description=Simple Desktop Display Manager
+ Documentation=man:sddm(1) man:sddm.conf(5)
+ Conflicts=getty@tty${SDDM_INITIAL_VT}.service
++Wants=plymouth-quit.service
+ After=systemd-user-sessions.service getty@tty${SDDM_INITIAL_VT}.service plymouth-quit.service systemd-logind.service
+ PartOf=graphical.target
+ StartLimitIntervalSec=30
