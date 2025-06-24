@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nethsm
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Python Library to manage NetHSM(s)
 License:        Apache-2.0
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module flit >= 3.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module typing_extensions >= 4.3.0}
-BuildRequires:  %{python_module urllib3 >= 2.0}
+BuildRequires:  %{python_module urllib3 >= 2.0 with %python-urllib3 < 3}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -43,7 +43,7 @@ Requires:       python-certifi
 Requires:       python-cryptography >= 41.0
 Requires:       python-python-dateutil
 Requires:       python-typing_extensions >= 4.3.0
-Requires:       python-urllib3 >= 2.0
+Requires:       (python-urllib3 >= 2.0 with python-urllib3 < 3)
 Suggests:       python-black >= 22.1.0
 Suggests:       python-flake8
 Suggests:       python-flit >= 3.2
