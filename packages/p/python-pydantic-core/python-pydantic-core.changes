@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jun 23 05:40:13 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 2.35.1:
+  * Fix generic issues with ValidationInfo and SerializationInfo by @Viicos in #1736
+2.35.0:
+  * Do not reuse validator and serializer when unpickling by @Viicos in #1693
+  * Remove unnecessary required fields count when exclude_none is set by @Viicos in #1708
+  * Update test dependencies after 3.8 dropped support by @Viicos in #1710
+  * Mark constructor parameters of exceptions as positional-only by @Viicos in #1699
+  * fix: submodel fields with wrap validator affect smart union selection by @weiliddat in #1700
+  * use pypa/gh-action-pypi-publish by @samuelcolvin in #1599
+  * add critical sections around bytearray reads by @davidhewitt in #1717
+  * simplify ser-as-any mechanism by @davidhewitt in #1478
+  * Coerce 'time' schema constraints by @Viicos in #1720
+  * drop serde-json preserve_order feature by @davidhewitt in #1724
+  * Remove core schema validation by @Viicos in #1715
+  * Improve uncaught PydanticUseDefault exception message by @Viicos in #1730
+  * Add support for Python 3.14 by @Viicos in #1714
+  * drop pypy3.9 support, add pypy3.11 support by @davidhewitt in #1726
+  * Add ensure_ascii option by @Viicos in #1689
+  * Update repr of TzInfo by @Viicos in #1701
+  * Make ValidationInfo and SerializationInfo generic for context by @Viicos in #1686
+
+-------------------------------------------------------------------
 Thu Apr 24 04:03:49 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.34.1:

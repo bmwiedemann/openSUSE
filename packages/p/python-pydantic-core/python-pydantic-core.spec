@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic-core%{psuffix}
-Version:        2.34.1
+Version:        2.35.1
 Release:        0
 Summary:        Core functionality for pydantic validation and serialization
 License:        MIT
@@ -50,6 +50,7 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-run-parallel}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing-inspection}
 %endif
 # /SECTION
 BuildRequires:  fdupes
