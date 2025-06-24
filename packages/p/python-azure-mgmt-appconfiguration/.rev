@@ -165,4 +165,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1220581 from glaubitz)</comment>
     <requestid>1221510</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9d851d64cc972c7770721ae2bd8686e0</srcmd5>
+    <version>5.0.0</version>
+    <time>1750790856</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 5.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1286585 from glaubitz)</comment>
+    <requestid>1287947</requestid>
+  </revision>
 </revisionlist>
