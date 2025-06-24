@@ -26,4 +26,17 @@
     <comment></comment>
     <requestid>1187494</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b7c39273579ae05f0bb3ba2480cf6e04</srcmd5>
+    <version>2.0.0</version>
+    <time>1750790867</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Update Requires from setup.py (forwarded request 1287857 from glaubitz)</comment>
+    <requestid>1288023</requestid>
+  </revision>
 </revisionlist>

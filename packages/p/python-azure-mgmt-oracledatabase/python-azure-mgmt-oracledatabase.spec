@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-oracledatabase
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-oracledatabase
-Version:        1.0.0.post2
+Version:        2.0.0
 Release:        0
 Summary:        Microsoft Azure Oracledatabase Management Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-oracledatabase/azure-mgmt-oracledatabase-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_oracledatabase/azure_mgmt_oracledatabase-%{version}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -34,8 +34,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
+Requires:       python-typing_extensions >= 4.6.0
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
-Requires:       (python-azure-mgmt-core >= 1.3.2 with python-azure-mgmt-core < 2.0.0)
+Requires:       (python-azure-mgmt-core >= 1.5.0 with python-azure-mgmt-core < 2.0.0)
 Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
@@ -48,7 +49,7 @@ This is the Microsoft Azure Oracledatabase Management Client Library.
 This package has been tested with Python 3.8+.
 
 %prep
-%setup -q -n azure-mgmt-oracledatabase-%{version}
+%setup -q -n azure_mgmt_oracledatabase-%{version}
 
 %build
 %pyproject_wheel
