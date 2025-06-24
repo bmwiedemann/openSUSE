@@ -1,0 +1,41 @@
+From 6c459882dc8bdc9eac8a764fb1d03e2938baf4f6 Mon Sep 17 00:00:00 2001
+Message-ID: <6c459882dc8bdc9eac8a764fb1d03e2938baf4f6.1747575257.git.maciek.borzecki@gmail.com>
+In-Reply-To: <cover.1747575257.git.maciek.borzecki@gmail.com>
+References: <cover.1747575257.git.maciek.borzecki@gmail.com>
+From: Maciek Borzecki <maciek.borzecki@gmail.com>
+Date: Fri, 6 Nov 2020 15:06:21 +0100
+Subject: [PATCH] paste.opensuse.org: add conf for openSUSE paste
+Upstream: submitted
+
+Signed-off-by: Maciek Borzecki <maciek.borzecki@gmail.com>
+---
+ pastebin.d/paste.opensuse.org.conf | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+ create mode 100644 pastebin.d/paste.opensuse.org.conf
+
+diff --git a/pastebin.d/paste.opensuse.org.conf b/pastebin.d/paste.opensuse.org.conf
+new file mode 100644
+index 0000000000000000000000000000000000000000..d537c786511fedc1a5c18c4da750988018ebee9a
+--- /dev/null
++++ b/pastebin.d/paste.opensuse.org.conf
+@@ -0,0 +1,17 @@
++[pastebin]
++basename = paste.opensuse.org
++regexp = https://paste.opensuse.org
++https = True
++
++[format]
++user = name
++content = code
++format = lang
++expire = expire
++post_format = post_format
++submit = submit
++title = title
++
++[defaults]
++private = 1
++expire = 10080
+-- 
+2.49.0
+

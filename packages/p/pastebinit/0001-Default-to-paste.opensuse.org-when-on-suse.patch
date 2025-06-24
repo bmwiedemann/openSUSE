@@ -1,0 +1,30 @@
+From 9d8950b74073becec430c9ad49dde0f208098a88 Mon Sep 17 00:00:00 2001
+Message-ID: <9d8950b74073becec430c9ad49dde0f208098a88.1747575257.git.maciek.borzecki@gmail.com>
+In-Reply-To: <cover.1747575257.git.maciek.borzecki@gmail.com>
+References: <cover.1747575257.git.maciek.borzecki@gmail.com>
+From: Maciek Borzecki <maciek.borzecki@gmail.com>
+Date: Fri, 6 Nov 2020 16:36:18 +0100
+Subject: [PATCH] Default to paste.opensuse.org when on suse
+Upstream: submitted
+
+Signed-off-by: Maciek Borzecki <maciek.borzecki@gmail.com>
+---
+ pastebinit | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/pastebinit b/pastebinit
+index 81894e33bf4c2cf855ca5d88735d301623de6ee7..f57c2153b56cd157c6cb4df9531949b2a9671c14 100755
+--- a/pastebinit
++++ b/pastebinit
+@@ -52,6 +52,8 @@ try:
+         defaultPB = "paste.debian.net"
+     elif release in ('fedora', 'centos', 'rhel', 'rocky'):
+         defaultPB = "paste.centos.org"
++    elif 'suse' in release:
++        defaultPB = 'paste.opensuse.org'
+ except ImportError:
+     distro = None
+     pass
+-- 
+2.49.0
+

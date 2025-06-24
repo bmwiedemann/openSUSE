@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Sat Jun 21 09:31:22 UTC 2025 - Maciej Borzecki <maciek.borzecki@gmail.com>
+
+- Switch to new, currently active upstream
+- Drop unnecessary patches
+- Refresh openSUSE specific patches
+- Update to 1.7.1
+  - Add --expiry option, drop unused CLI args
+  - Add support for bpa.st, dpaste.org, paste.centos.org, paste.opensuse.org
+  - Change default pastebin to bpa.st
+  - Improve configuration parsing and XDG config support
+  - Default to private pastes where supported
+  - Fix JSON-based paste handling and stdin/file input edge cases
+  - Update pastebin.com config, set as unlisted
+  - Fix distro.linux_distribution deprecation warning
+  - Drop dead services, update paste.opendev.org (was paste.openstack.org)
+
+-------------------------------------------------------------------
+Sun Nov 22 15:55:52 UTC 2020 - Maciej Borzecki <maciek.borzecki@gmail.com>
+
+- update to 1.5.1
+- fix support for paste.opensuse.org
+- incorporate patches fixing posting to pastebins requireing form like submissions
+
+-------------------------------------------------------------------
+Sat Jul 31 20:53:32 CEST 2010 - pascal.bleser@opensuse.org
+
+- add support for paste.opensuse.org (currently hosted as paste.michal.hrusecky.net);
+  will be sent upstream once it is hosted as paste.opensuse.org
+- made paste.opensuse.org the default pastebin
+- add paste format detection based on the filename; only potentially interesting for upstream because pastebinit has no configuration support for mapping format names per site (and the ones in the patch only (?) apply to paste.opensuse.org, and other Stikked instances)
+
+-------------------------------------------------------------------
+Tue Jul 13 07:54:46 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.1
+- use docbook2x to create man page from upstream sources
+- spec file enhancements
+
+-------------------------------------------------------------------
+Mon Oct 26 12:00:00 CEST 2009 - freespacer@gmx.de
+
+- initial version
