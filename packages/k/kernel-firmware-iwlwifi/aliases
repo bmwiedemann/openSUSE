@@ -272,9 +272,11 @@ iwlwifi: pci:v00008086d000024F3sv*sd00009132bc*sc*i*
 iwlwifi: pci:v00008086d000024F3sv*sd00009150bc*sc*i*
 iwlwifi: pci:v00008086d000024F3sv*sd0000B0B0bc*sc*i*
 iwlwifi: pci:v00008086d000024F3sv*sd0000C010bc*sc*i*
+iwlwifi: pci:v00008086d000024F3sv*sd0000C030bc*sc*i*
 iwlwifi: pci:v00008086d000024F3sv*sd0000C050bc*sc*i*
 iwlwifi: pci:v00008086d000024F3sv*sd0000C110bc*sc*i*
 iwlwifi: pci:v00008086d000024F3sv*sd0000D010bc*sc*i*
+iwlwifi: pci:v00008086d000024F3sv*sd0000D030bc*sc*i*
 iwlwifi: pci:v00008086d000024F3sv*sd0000D050bc*sc*i*
 iwlwifi: pci:v00008086d000024F3sv*sd0000D0B0bc*sc*i*
 iwlwifi: pci:v00008086d000024F4sv*sd00000030bc*sc*i*
@@ -308,6 +310,8 @@ iwlwifi: pci:v00008086d000024FDsv*sd00001014bc*sc*i*
 iwlwifi: pci:v00008086d000024FDsv*sd000010D0bc*sc*i*
 iwlwifi: pci:v00008086d000024FDsv*sd00001110bc*sc*i*
 iwlwifi: pci:v00008086d000024FDsv*sd00001130bc*sc*i*
+iwlwifi: pci:v00008086d000024FDsv*sd00001431bc*sc*i*
+iwlwifi: pci:v00008086d000024FDsv*sd00001432bc*sc*i*
 iwlwifi: pci:v00008086d000024FDsv*sd00003E01bc*sc*i*
 iwlwifi: pci:v00008086d000024FDsv*sd00003E02bc*sc*i*
 iwlwifi: pci:v00008086d000024FDsv*sd00008010bc*sc*i*
@@ -441,6 +445,8 @@ iwlwifi: pci:v00008086d0000A840sv*sd00001671bc*sc*i*
 iwlwifi: pci:v00008086d0000A840sv*sd00001672bc*sc*i*
 iwlwifi: pci:v00008086d0000A840sv*sd00001771bc*sc*i*
 iwlwifi: pci:v00008086d0000A840sv*sd00001772bc*sc*i*
+iwlwifi: pci:v00008086d0000A840sv*sd00001775bc*sc*i*
+iwlwifi: pci:v00008086d0000A840sv*sd00001776bc*sc*i*
 iwlwifi: pci:v00008086d0000A840sv*sd00001791bc*sc*i*
 iwlwifi: pci:v00008086d0000A840sv*sd00001792bc*sc*i*
 iwlwifi: pci:v00008086d0000A840sv*sd00004090bc*sc*i*

@@ -67,4 +67,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * Revert &quot;iwlwifi: add Bz/gl FW for core96-76 release&quot;</comment>
     <requestid>1284389</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>645897dfad3dbe9adbc7ee7d1d0f7c22</srcmd5>
+    <version>20250609</version>
+    <time>1750790789</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases</comment>
+    <requestid>1288146</requestid>
+  </revision>
 </revisionlist>
