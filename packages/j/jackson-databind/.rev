@@ -137,4 +137,12 @@
     <comment>2.17.3</comment>
     <requestid>1221675</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>9460068e5290e0e4d5a932fd7063e2b8</srcmd5>
+    <version>2.17.3</version>
+    <time>1750790829</time>
+    <user>anag_factory</user>
+    <comment>Fix &quot;Not fully interpolated version&quot; error with Maven 4</comment>
+    <requestid>1287891</requestid>
+  </revision>
 </revisionlist>

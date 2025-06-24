@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-databind
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,6 +54,8 @@ mkdir -p lib
 
 cp -p src/main/resources/META-INF/NOTICE .
 sed -i 's/\r//' LICENSE NOTICE
+
+%pom_change_dep com.fasterxml.jackson.core:: ::-:
 
 %build
 build-jar-repository -s lib jackson-annotations jackson-core
