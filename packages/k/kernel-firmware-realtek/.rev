@@ -93,4 +93,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtl_nic: update firmware of RTL8153A</comment>
     <requestid>1285899</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7d7798ce369a5502010e9677274b604a</srcmd5>
+    <version>20250613</version>
+    <time>1750790792</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases</comment>
+    <requestid>1288151</requestid>
+  </revision>
 </revisionlist>
