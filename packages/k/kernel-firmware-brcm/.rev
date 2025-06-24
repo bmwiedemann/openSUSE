@@ -56,4 +56,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * brcm: Add symlinks for Khadas VIM SDIO wifi config to AW-CM256SM.txt</comment>
     <requestid>1283302</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>87137e9ca764e2ee9a1ce999d0cea433</srcmd5>
+    <version>20250623</version>
+    <time>1750790788</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250623 (git commit dbfe16e9e8ac):
+  * brcm: Fix symlinks for Khadas VIM SDIO wifi config</comment>
+    <requestid>1288145</requestid>
+  </revision>
 </revisionlist>

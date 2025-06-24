@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 3b75d677f898fe2aacc7b11763bbcd4732e71ce7
+%define git_version dbfe16e9e8acc74c018c39e541bdc3669b37f301
 
 Name:           kernel-firmware-brcm
-Version:        20250603
+Version:        20250623
 Release:        0
 Summary:        Kernel firmware files for Broadcom wireless drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only
