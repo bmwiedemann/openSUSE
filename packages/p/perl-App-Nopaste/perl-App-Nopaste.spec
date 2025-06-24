@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-Nopaste
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,22 @@
 #
 
 
-Name:           perl-App-Nopaste
-Version:        1.013
-Release:        0
 %define cpan_name App-Nopaste
-Summary:        Easy access to any pastebin
+Name:           perl-App-Nopaste
+Version:        1.13.0
+Release:        0
+# 1.013 -> normalize -> 1.13.0
+%define cpan_version 1.013
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
+Summary:        Easy access to any pastebin
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        SusePaste.pm
 Source2:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Browser::Open)
-BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.120620
+BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.121
 BuildRequires:  perl(Class::Load)
 BuildRequires:  perl(Getopt::Long::Descriptive)
 BuildRequires:  perl(JSON::MaybeXS)
@@ -47,9 +46,8 @@ BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(URI::Escape)
 BuildRequires:  perl(WWW::Mechanize)
-BuildRequires:  perl(namespace::clean) >= 0.19
+BuildRequires:  perl(namespace::clean) >= 0.190
 BuildRequires:  perl(parent)
-Requires:       perl(Browser::Open)
 Requires:       perl(Class::Load)
 Requires:       perl(Getopt::Long::Descriptive)
 Requires:       perl(JSON::MaybeXS)
@@ -59,11 +57,26 @@ Requires:       perl(Module::Runtime)
 Requires:       perl(Path::Tiny)
 Requires:       perl(URI::Escape)
 Requires:       perl(WWW::Mechanize)
-Requires:       perl(namespace::clean) >= 0.19
+Requires:       perl(namespace::clean) >= 0.190
 Requires:       perl(parent)
+Provides:       perl(App::Nopaste) = %{version}
+Provides:       perl(App::Nopaste::Command) = %{version}
+Provides:       perl(App::Nopaste::Service) = %{version}
+Provides:       perl(App::Nopaste::Service::Codepeek) = %{version}
+Provides:       perl(App::Nopaste::Service::Debian) = %{version}
+Provides:       perl(App::Nopaste::Service::Gist) = %{version}
+Provides:       perl(App::Nopaste::Service::GitLab) = %{version}
+Provides:       perl(App::Nopaste::Service::Mojopaste) = %{version}
+Provides:       perl(App::Nopaste::Service::PastebinCom) = %{version}
+Provides:       perl(App::Nopaste::Service::Pastie) = %{version}
+Provides:       perl(App::Nopaste::Service::Shadowcat) = %{version}
+Provides:       perl(App::Nopaste::Service::Snitch) = %{version}
+Provides:       perl(App::Nopaste::Service::Ubuntu) = %{version}
+Provides:       perl(App::Nopaste::Service::ssh) = %{version}
+%undefine       __perllib_provides
 Recommends:     perl(Browser::Open)
 Recommends:     perl(Clipboard)
-Recommends:     perl(WWW::Pastebin::PastebinCom::Create) >= 1.003
+Recommends:     perl(WWW::Pastebin::PastebinCom::Create) >= 1.3
 %{perl_requires}
 
 %description
@@ -84,15 +97,16 @@ It's also modular: you only need to put on CPAN a
 App::Nopaste::Service::Foo module and anyone can begin using it.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 %__install -m 0644 "%{SOURCE1}" lib/App/Nopaste/Service/
 # MANUAL END
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -103,7 +117,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTING README
 %license LICENSE
 
