@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-joblib
-Version:        1.4.2
+Version:        1.5.1
 Release:        0
 Summary:        Module for using Python functions as pipeline jobs
 License:        BSD-3-Clause
@@ -27,15 +27,12 @@ Source:         https://files.pythonhosted.org/packages/source/j/joblib/joblib-%
 # PATCH-FIX-OPENSUSE Also avoid a DeprecationWarning when using fork() under
 # multiprocessing
 Patch1:         also-filter-new-fork-warning.patch
-# PATCH-FIX-UPSTREAM https://github.com/joblib/joblib/pull/1632 DOC Make doctest compatible with numpy 2.2
-Patch2:         numpy22.patch
-# PATCH-FIX-UPSTREAM https://github.com/joblib/loky/pull/450 FIX remove link to resource_tracker._pid in child processes
-Patch3:         loky_resource_tracker.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module threadpoolctl}
