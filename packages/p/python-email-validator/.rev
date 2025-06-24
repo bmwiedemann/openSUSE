@@ -193,4 +193,12 @@
   * Some additional tests added.</comment>
     <requestid>1184005</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7ac889cce5250237a671a952462941f4</srcmd5>
+    <version>2.2.0</version>
+    <time>1750790744</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1287770</requestid>
+  </revision>
 </revisionlist>

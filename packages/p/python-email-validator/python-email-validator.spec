@@ -1,7 +1,7 @@
 #
 # spec file for package python-email-validator
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,13 +30,14 @@ Patch0:         ignore-urllib3-pyopenssl-warning.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module dnspython >= 1.15.0}
 BuildRequires:  %{python_module idna >= 2.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 5.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-dnspython >= 1.15.0
 Requires:       python-idna >= 2.0.0
-Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Provides:       python-email_validator = %{version}-%{release}
@@ -63,10 +64,10 @@ Key features:
 %autosetup -p1 -n python-email-validator-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/email_validator
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -88,6 +89,6 @@ donttest="test_caching_dns_resolver"
 %doc README.md
 %python_alternative %{_bindir}/email_validator
 %{python_sitelib}/email_validator
-%{python_sitelib}/email_validator-%{version}*-info
+%{python_sitelib}/email_validator-%{version}.dist-info
 
 %changelog
