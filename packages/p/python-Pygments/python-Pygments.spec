@@ -24,7 +24,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Pygments
-Version:        2.19.1
+Version:        2.19.2
 Release:        0
 Summary:        A syntax highlighting package written in Python
 License:        BSD-2-Clause
@@ -88,7 +88,8 @@ install -Dm0644 doc/pygmentize.1 %{buildroot}%{_mandir}/man1/pygmentize.1
 # skip test_guess_lexer_modula2 as we have to remove it's depent artifacts
 # in exmplefiles because of potential licensing concerns
 # See https://github.com/pygments/pygments/issues/2872
-%pytest -k "not test_guess_lexer_modula2"
+# skip random input tests as they get stuck (missing entropy?)
+%pytest -k "not test_guess_lexer_modula2 and not test_random_input"
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.

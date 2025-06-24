@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 21 15:48:13 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 2.19.2:
+  * Lua: Fix regression introduced in 2.19.0 (#2882, #2839)
+- skip random input tests because they get stuck from time to time
+
+-------------------------------------------------------------------
 Wed May 14 07:19:25 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Redownload source file to have the same version released in pypi.

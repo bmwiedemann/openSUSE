@@ -588,4 +588,12 @@
     <comment>- Redownload source file to have the same version released in pypi.</comment>
     <requestid>1277326</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>185245cae8e52107b4a23cb18269f80f</srcmd5>
+    <version>2.19.2</version>
+    <time>1750790752</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1287798</requestid>
+  </revision>
 </revisionlist>
