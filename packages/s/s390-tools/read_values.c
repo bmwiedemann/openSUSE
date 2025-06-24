@@ -283,7 +283,7 @@ return;
 
 int check_model (const char *cpu) {
 
-        #define     IBM_Models    6    /* Number of IBM models listed below   */
+        #define     IBM_Models    7    /* Number of IBM models listed below   */
         char *types[IBM_Models] = {
                "3906",
                "3907",
@@ -291,6 +291,7 @@ int check_model (const char *cpu) {
                "8562",
                "3931",
                "3932",
+               "9175",
        };
 
        int i;

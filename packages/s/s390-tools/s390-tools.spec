@@ -156,6 +156,9 @@ Patch913:       s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
 Patch920:       s390-tools-01-Add-zpwr-tool.patch
 Patch921:       s390-tools-02-zpwr-Add-man-page-for-zpwr-tool.patch
 ###
+Patch930:       s390-tools-chpstat-Fix-DPU-utilization-calculation.patch
+Patch931:       s390-tools-chpstat-Add-missing-CMG-5-data-fields.patch
+###
 Patch990:       s390-tools-slfo-01-parse-ipl-device-for-activation.patch
 ###
 

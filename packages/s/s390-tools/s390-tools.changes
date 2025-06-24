@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 23 13:04:47 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied patches(bsc#1244473, bsc#1244469)
+  * s390-tools-chpstat-Add-missing-CMG-5-data-fields.patch
+  * s390-tools-chpstat-Fix-DPU-utilization-calculation.patch
+- Re-vendored vendor.tar.zst
+- Updated read_values.c, added IBM z17 in Secure Boot Support Models
+
+-------------------------------------------------------------------
 Fri May 23 17:19:07 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Revendored vendor.tar.zst (bsc#1242622 (CVE-2025-3416))
