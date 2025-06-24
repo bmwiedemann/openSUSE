@@ -1,7 +1,7 @@
 #
 # spec file for package unrar_wrapper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define pythons python3
 Name:           unrar_wrapper
 Version:        1.0.0
 Release:        0
@@ -24,7 +25,11 @@ License:        GPL-3.0-only
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/openSUSE/unrar_wrapper
 Source:         https://github.com/openSUSE/unrar_wrapper/archive/unrar_wrapper-%{version}.tar.gz
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 Requires:       python3-setuptools
 Requires:       unar
 Conflicts:      unrar
@@ -39,13 +44,14 @@ and lsar calls in order to provide a backwards compatibility.
 %setup -q -n %{name}-%{name}-%{version}
 
 %build
-python3 setup.py build
+%pyproject_wheel
 
 %check
-python3 -m unittest -v
+%pyunittest -v
 
 %install
-python3 setup.py install --root=%{buildroot}
+%pyproject_install
+%fdupes %{buildroot}%{python3_sitelib}
 ln -s %{_bindir}/unrar_wrapper %{buildroot}/%{_bindir}/unrar
 
 %files
@@ -54,7 +60,7 @@ ln -s %{_bindir}/unrar_wrapper %{buildroot}/%{_bindir}/unrar
 %{_bindir}/unrar_wrapper
 %{_bindir}/unrar
 %{python3_sitelib}/unrar_wrapper.py
-%{python3_sitelib}/__pycache__
-%{python3_sitelib}/unrar_wrapper-%{version}-py%{py3_ver}.egg-info
+%{python3_sitelib}/__pycache__/unrar_wrapper.*.pyc
+%{python3_sitelib}/unrar_wrapper-%{version}.dist-info
 
 %changelog

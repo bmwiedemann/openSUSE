@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 20 04:53:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros from python-rpm-macros to build and install.
+- Add in fdupes.
+
+-------------------------------------------------------------------
 Fri Aug 27 09:36:49 UTC 2021 - pgajdos@suse.com
 
 - %check: do not use setup.py test
