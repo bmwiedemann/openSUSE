@@ -221,4 +221,16 @@
     <comment></comment>
     <requestid>1266420</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ace73523978e312c5e3b8106abfd2b49</srcmd5>
+    <version>1.5.0</version>
+    <time>1750790865</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.5.0
+  + For detailed information about changes see the
+    README.rst file provided with this package
+- Adjust upstream source name in spec file (forwarded request 1288010 from glaubitz)</comment>
+    <requestid>1288017</requestid>
+  </revision>
 </revisionlist>

@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-multiapi-storage
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        MS Azure Storage Client Library for Python - with Multi API version Support
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-multiapi-storage/azure-multiapi-storage-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_multiapi_storage/azure_multiapi_storage-%{version}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -61,7 +61,7 @@ Handles multi-API versions of Azure Storage Data Plane originally from https://g
 - The official Azure Storage SDK is at https://github.com/Azure/azure-storage-python.
 
 %prep
-%setup -q -n azure-multiapi-storage-%{version}
+%setup -q -n azure_multiapi_storage-%{version}
 
 %build
 %pyproject_wheel

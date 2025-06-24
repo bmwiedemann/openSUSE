@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 23 17:04:12 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.5.0
+  + For detailed information about changes see the
+    README.rst file provided with this package
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Tue Apr  1 05:56:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
