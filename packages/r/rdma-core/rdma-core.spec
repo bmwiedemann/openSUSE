@@ -30,9 +30,9 @@
 %define _modprobedir /lib/modprobe.d
 %endif
 
-%define         git_ver .0.18696ad67
+%define         git_ver .0.6697a72f6
 Name:           rdma-core
-Version:        57.0
+Version:        58.0
 Release:        0
 Summary:        RDMA core userspace libraries and daemons
 License:        BSD-2-Clause OR GPL-2.0-only
