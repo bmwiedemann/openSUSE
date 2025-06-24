@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jun 23 21:31:12 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.9.0
+  + New features:
+    - Add config hot reload. Rmpc will not automatically reload
+      your config when it changes.
+    - The second spot definitely belongs to cava integration.
+    - There are now better error messages when your config file
+      gets goofed up while tinkering with rmpc.
+    - Support for more sites via addyt command, rmpc now supports
+      soundcloud and nicovideo
+    - New config properties, new keybinds, cli and much more,
+      go check it out!
+  + Breaking changes:
+    - Songs are no longer sorted by their browser_song_format.
+      The new browser_song_sort is used instead
+    - Some tags can now be arrays of values instead of a single
+      value if multiple values are in the given id3 tag when
+      listing song metadata via cli.
+    - For CLI which return song info: last-modified and added are
+      no longer in songs' metadata, they are at the top level
+      object instead now
+    - ShowInfo queue action has been moved to navigation.
+- Add cava Recommends: enable cava integration
+
+-------------------------------------------------------------------
 Sun Feb 16 21:47:24 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.8.0

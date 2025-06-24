@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           rmpc
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Rusty Music Player Client for MPD
 License:        BSD-3-Clause
@@ -29,6 +29,7 @@ BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  rust >= 1.74
+Recommends:     cava
 Recommends:     mpd
 Recommends:     yt-dlp
 
