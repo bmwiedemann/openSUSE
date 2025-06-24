@@ -19,4 +19,16 @@
 - Remove temporary version override (forwarded request 1239445 from glaubitz)</comment>
     <requestid>1239514</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6d63d2eb754f02783181d993182378b5</srcmd5>
+    <version>1.1.0</version>
+    <time>1750790862</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1287990 from glaubitz)</comment>
+    <requestid>1287992</requestid>
+  </revision>
 </revisionlist>
