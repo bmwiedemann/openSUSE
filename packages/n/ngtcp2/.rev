@@ -160,4 +160,29 @@
     <comment>- Update to release 1.12.0</comment>
     <requestid>1270643</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d041d49613184716b2b356cdc8ee5bba</srcmd5>
+    <version>1.13.0</version>
+    <time>1750790801</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.13.0:
+  * Update CMakeLists.txt to fix the error of
+    check_symbol_exists() when static-link openssl.
+  * Fix path response padding
+  * Make a packet containing PATH_RESPONSE to active path non-
+    probing
+  * Make pacing less bursty
+  * Add extra precision to pacing_interval
+  * Refactor cubic
+  * cubic: Bound time_delta
+  * Make as_uint8_span consteval
+  * Avoid slower std::ranges::mismatch
+  * putting important libdir and incdir first
+
+- Trim idempotent if..endif guards
+- Delete metadata for unproduced ngtcp2-doc subpackage
+
+- Additionally build OpenSSL backend and ship it in optional subpackage</comment>
+    <requestid>1287814</requestid>
+  </revision>
 </revisionlist>

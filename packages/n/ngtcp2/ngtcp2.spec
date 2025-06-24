@@ -18,10 +18,19 @@
 
 %global soname  libngtcp2
 %global sover   16
-%global gnutls_soname libngtcp2_crypto_gnutls
+%global gnutls_soname %{soname}_crypto_gnutls
 %global gnutls_sover 8
+%global openssl_soname %{soname}_crypto_ossl
+%global openssl_sover 0
+%if 0%{?suse_version} > 1600
+%bcond_without openssl
+%else
+# requires OpenSSL 3.x with QUIC support
+%bcond_with openssl
+%endif
+
 Name:           ngtcp2
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 Summary:        Implementation of the IETF QUIC protocol
 License:        MIT
@@ -36,6 +45,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(gnutls) >= 3
 BuildRequires:  pkgconfig(libnghttp3) >= 1.0.0
+%if %{with openssl}
+BuildRequires:  pkgconfig(openssl)
+%endif
 
 %description
 ngtcp2 is an implementation of the QUIC protocol (RFC 9000)
@@ -58,6 +70,15 @@ ngtcp2 is an implementation of the QUIC protocol (RFC 9000).
 This package contains the crypto API of ngtcp2, which was built using
 GNUTLS as the cryptographic provider.
 
+%package -n %{openssl_soname}%{openssl_sover}
+Summary:        The ngtcp2 crypto API with OpenSSL as a backend
+Group:          System/Libraries
+
+%description -n %{openssl_soname}%{openssl_sover}
+ngtcp2 is an implementation of the QUIC protocol (RFC 9000).
+This package contains the crypto API of ngtcp2, which was built using
+OpenSSL as the cryptographic provider.
+
 %package -n python3-ngtcp2
 Summary:        Python3 bindings for ngtcp2
 Group:          Development/Libraries/Python
@@ -69,6 +90,9 @@ Python bindings for the ngtcp2 implementation of the QUIC protocol.
 Summary:        Development files for ngtcp2
 Group:          Development/Languages/C and C++
 Requires:       %{gnutls_soname}%{gnutls_sover} = %{version}
+%if %{with openssl}
+Requires:       %{openssl_soname}%{openssl_sover} = %{version}
+%endif
 Requires:       %{soname}-%{sover} = %{version}
 Provides:       libngtcp2-devel = %{version}-%{release}
 Obsoletes:      libngtcp2-devel < %{version}-%{release}
@@ -76,13 +100,6 @@ Obsoletes:      libngtcp2-devel < %{version}-%{release}
 %description devel
 Development files for use with libngtcp2, which implements the
 QUIC protocol.
-
-%package doc
-Summary:        Documentation for ngtcp2
-Group:          Documentation/HTML
-
-%description doc
-Documentation for ngtcp2, which includes shared C libraries.
 
 %prep
 %autosetup -n ngtcp2-%{version} -p1
@@ -94,7 +111,11 @@ Documentation for ngtcp2, which includes shared C libraries.
   --enable-lib-only       \
   --with-libnghttp3       \
   --with-gnutls           \
+%if %{with openssl}
+  --with-openssl          \
+%else
   --without-openssl       \
+%endif
   --without-libev         \
   %{nil}
 %make_build all
@@ -115,6 +136,7 @@ rm -rf %{buildroot}%{_mandir}/man1/* \
 
 %ldconfig_scriptlets -n %{soname}-%{sover}
 %ldconfig_scriptlets -n %{gnutls_soname}%{gnutls_sover}
+%ldconfig_scriptlets -n %{openssl_soname}%{openssl_sover}
 
 %files -n %{soname}-%{sover}
 %license COPYING
@@ -124,6 +146,12 @@ rm -rf %{buildroot}%{_mandir}/man1/* \
 %license COPYING
 %{_libdir}/%{gnutls_soname}.so.%{gnutls_sover}*
 
+%if %{with openssl}
+%files -n %{openssl_soname}%{openssl_sover}
+%license COPYING
+%{_libdir}/%{openssl_soname}.so.%{openssl_sover}*
+%endif
+
 %files devel
 %dir %{_includedir}/%{name}/
 %{_includedir}/%{name}/*.h
@@ -131,5 +159,9 @@ rm -rf %{buildroot}%{_mandir}/man1/* \
 %{_libdir}/%{gnutls_soname}.so
 %{_libdir}/pkgconfig/%{soname}.pc
 %{_libdir}/pkgconfig/libngtcp2_crypto_gnutls.pc
+%if %{with openssl}
+%{_libdir}/%{openssl_soname}.so
+%{_libdir}/pkgconfig/libngtcp2_crypto_ossl.pc
+%endif
 
 %changelog

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jun 23 05:53:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.0:
+  * Update CMakeLists.txt to fix the error of
+    check_symbol_exists() when static-link openssl.
+  * Fix path response padding
+  * Make a packet containing PATH_RESPONSE to active path non-
+    probing
+  * Make pacing less bursty
+  * Add extra precision to pacing_interval
+  * Refactor cubic
+  * cubic: Bound time_delta
+  * Make as_uint8_span consteval
+  * Avoid slower std::ranges::mismatch
+  * putting important libdir and incdir first
+
+-------------------------------------------------------------------
+Sun Jun 22 19:29:00 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim idempotent if..endif guards
+- Delete metadata for unproduced ngtcp2-doc subpackage
+
+-------------------------------------------------------------------
+Sun Jun 22 14:09:39 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Additionally build OpenSSL backend and ship it in optional subpackage
+
+-------------------------------------------------------------------
 Thu Apr 17 20:23:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.12.0
