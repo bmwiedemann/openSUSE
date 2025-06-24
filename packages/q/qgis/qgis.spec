@@ -34,7 +34,7 @@ Name:           qgis
 %define mypython %pythons
 %define __mypython %{expand:%%__%{mypython}}
 
-Version:        3.42.3
+Version:        3.44.0
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -168,7 +168,7 @@ BuildRequires:  memory-constraints
 %endif
 %ifarch aarch64
 # Picked up by x86_64 and ppc64le, but not aarch64
-BuildRequires: Mesa-libGL-devel
+BuildRequires:  Mesa-libGL-devel
 %endif
 
 %package devel

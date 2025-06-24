@@ -1,15 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 24 13:38:05 UTC 2025 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Update to 3.44.0
+  * See https://changelog.qgis.org/en/qgis/version/3.44/ and
+    https://github.com/qgis/QGIS/compare/final-3_42_3...final-3_44_0
+    for changes
+
+-------------------------------------------------------------------
 Wed May 28 14:10:49 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 3.42.3
-  * See https://github.com/qgis/QGIS/compare/final-3_42_2%5E...final-3_42_3
+  * See https://github.com/qgis/QGIS/compare/final-3_42_2...final-3_42_3
     for commits between 3.42.2 and 3.42.3
 
 -------------------------------------------------------------------
 Wed Apr 23 18:11:28 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 3.42.2
-  * See https://github.com/qgis/QGIS/compare/final-3_42_1%5E...final-3_42_2
+  * See https://github.com/qgis/QGIS/compare/final-3_42_1...final-3_42_2
     for commits between 3.42.1 and 3.42.2
   * Drop qgis-import-gl_h.patch; The issue has been fixed upstream with
     commit 7a8d98c ("Fix QGIS 3.42 build on arm64")
@@ -18,7 +26,7 @@ Wed Apr 23 18:11:28 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
 Sat Mar 22 08:04:27 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 3.42.1
-  * See https://github.com/qgis/QGIS/compare/final-3_42_0%5E...final-3_42_1
+  * See https://github.com/qgis/QGIS/compare/final-3_42_0...final-3_42_1
     for commits between 3.42.0 and 4.32.1
   * Replace qgis-check-if-maxcliplanes-is-defined.patch with
     qgis-import-gl_h.patch to fix building with aarch64 (less
@@ -40,21 +48,21 @@ Wed Mar  5 12:05:50 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
 Fri Jan 17 20:17:41 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 3.40.3
-  See https://github.com/qgis/QGIS/compare/final-3_40_2%5E...final-3_40_3
+  See https://github.com/qgis/QGIS/compare/final-3_40_2...final-3_40_3
   for commits between 3.40.2 and 3.40.3
 
 -------------------------------------------------------------------
 Fri Dec 27 21:25:29 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 3.40.2
-  See https://github.com/qgis/QGIS/compare/final-3_40_1%5E...final-3_40_2
+  See https://github.com/qgis/QGIS/compare/final-3_40_1...final-3_40_2
   for commits between 3.40.1 and 3.40.2
 
 -------------------------------------------------------------------
 Sat Nov 23 13:33:45 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 3.40.1, update QGIS sample data and its spec-file entry
-  See https://github.com/qgis/QGIS/compare/final-3_40_0%5E...final-3_40_1
+  See https://github.com/qgis/QGIS/compare/final-3_40_0...final-3_40_1
   for commits between 3.40.0 and 3.40.1
 
 -------------------------------------------------------------------
@@ -77,21 +85,21 @@ Sat Sep 28 12:06:37 UTC 2024 - Ben Greiner <code@bnavigator.de>
 Sun Sep 15 15:56:24 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 3.38.3
-  See https://github.com/qgis/QGIS/compare/final-3_38_2%5E...final-3_38_3
+  See https://github.com/qgis/QGIS/compare/final-3_38_2...final-3_38_3
   for commits between 3.38.2 and 3.38.3
 
 -------------------------------------------------------------------
 Tue Aug 20 11:56:05 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
 
 - update to 3.38.2
-  See https://github.com/qgis/QGIS/compare/final-3_38_1%5E...final-3_38_2
+  See https://github.com/qgis/QGIS/compare/final-3_38_1...final-3_38_2
   for commits between 3.38.1 and 3.38.2 
 
 -------------------------------------------------------------------
 Tue Jul 30 12:50:56 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
 
 - update to 3.38.1; Upstream does not provide a detailed changelog
-  See https://github.com/qgis/QGIS/compare/final-3_38_0%5E...final-3_38_1
+  See https://github.com/qgis/QGIS/compare/final-3_38_0...final-3_38_1
   for commits between 3.38.0 and 3.38.1 
 
 -------------------------------------------------------------------

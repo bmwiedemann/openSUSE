@@ -556,4 +556,15 @@
     <comment></comment>
     <requestid>1281844</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>2fe3cd181c6f9260ff50e8b1d8aa55db</srcmd5>
+    <version>3.44.0</version>
+    <time>1750791215</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.44.0
+  * See https://changelog.qgis.org/en/qgis/version/3.44/ and
+    https://github.com/qgis/QGIS/compare/final-3_42_3...final-3_44_0
+    for changes</comment>
+    <requestid>1288356</requestid>
+  </revision>
 </revisionlist>
