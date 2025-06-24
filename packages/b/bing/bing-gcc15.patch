@@ -1,0 +1,22 @@
+diff -upr bing-1.0.5.orig/bing.c bing-1.0.5/bing.c
+--- bing-1.0.5.orig/bing.c	2025-06-12 11:50:47.787294608 +0000
++++ bing-1.0.5/bing.c	2025-06-12 11:56:06.676535185 +0000
+@@ -420,7 +420,7 @@ u_char randomnext()
+ }
+ 
+ void
+-alarm_handler()
++alarm_handler(int)
+ {
+ 	/* do nothing quick */
+ }
+@@ -1180,7 +1180,7 @@ void finishit()
+ 	return;
+ }
+ 
+-void finishit_exit()
++void finishit_exit(int)
+ {
+ 	(void) finishit();
+ 	exit(0);
+

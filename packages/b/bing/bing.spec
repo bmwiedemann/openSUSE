@@ -29,6 +29,8 @@ Patch0:         bing-%{version}.dif
 Patch1:         %{name}-%{version}-permissions.patch
 Patch2:         %{name}-%{version}-includes.diff
 Patch3:         %{name}-%{version}-moresecure.diff
+# build with gcc15
+Patch4:         bing-gcc15.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -42,6 +44,7 @@ for different packet sizes for each end of the link.
 %patch -P 1
 %patch -P 2
 %patch -P 3 -p1
+%patch -P 4 -p1
 
 %build
 make CC="%__cc" CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing" %{?_smp_mflags}
