@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 23 10:34:25 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.1.12
+  * Fixed issue #212 "Assignment conversion not possible from type
+  * Fixed issue #209: Use Java's ServiceLoader instead of
+    org.codehaus.commons.compiler.properties
+  * Added test case for issue #169 "Problems with varargs and
+    inheritance".
+  * Fixed issue #210 "CompilerException with static inner classes".
+- Upgrade to version 3.1.11
+  * Implemented the Java 15 feature "text blocks".
+  * Fixed issue #209 "Use Java's ServiceLoader instead of
+    org.codehaus.commons.compiler.properties".
+  * Bug fixed: Unlabeled BREAK did break a labeled statement, which
+    is wrong (it breaks the loop enclosing the labeled statement).
+  * Fixed issue #208 "spark compilation failed with
+    ArrayIndexOutOfBoundsException"
+
+-------------------------------------------------------------------
 Sat Sep  9 13:46:01 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp

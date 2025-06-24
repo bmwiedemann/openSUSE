@@ -1,7 +1,7 @@
 #
 # spec file for package janino
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           janino
-Version:        3.1.10
+Version:        3.1.12
 Release:        0
 Summary:        An embedded Java compiler
 License:        BSD-3-Clause
@@ -89,8 +89,7 @@ popd
 
 pushd %{name}-parent
   %{mvn_build} -fs -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-    -Dmaven.compiler.source=8 -Dmaven.compiler.target=8
+    -Dmaven.compiler.source=8 -Dmaven.compiler.target=8 -Dsource=8
 popd
 
 %install
