@@ -1,0 +1,1690 @@
+-------------------------------------------------------------------
+Mon Jun 23 04:46:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.7:
+  * build(deps): bump github.com/anchore/grype from 0.92.2 to
+    0.94.0
+- Update to version 0.37.6:
+  * bump go-containerregistry to v0.20.6
+  * chore(scan): add only primary evidence locations to findings
+  * build(deps): bump chainguard-dev/actions from 1.2.1 to 1.4.1
+    (#1650)
+  * build(deps): bump github.com/chainguard-dev/advisory-schema
+    (#1648)
+  * build(deps): bump sigstore/cosign-installer from 3.8.2 to 3.9.0
+    (#1647)
+  * build(deps): bump the chainguard group across 1 directory with
+    2 updates (#1644)
+  * build(deps): bump chainguard-dev/actions from 1.2.0 to 1.2.1
+    (#1645)
+  * Update .pre-commit-hooks.yaml
+  * Create .pre-commit-hooks.yaml
+
+-------------------------------------------------------------------
+Mon Jun 16 05:00:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.5:
+  * build(deps): bump github.com/anchore/syft from 1.27.0 to 1.27.1
+    (#1640)
+  * build(deps): bump chainguard-dev/actions from 1.1.3 to 1.2.0
+    (#1642)
+  * feat: update docs generator to include deprecated commands
+  * regen docs
+  * feat: add deprecate notice to advisory commands in wolfictl
+  * build(deps): bump github.com/anchore/syft from 1.26.1 to 1.27.0
+  * build(deps): bump github.com/samber/lo from 1.50.0 to 1.51.0
+    (#1636)
+  * build(deps): bump step-security/harden-runner from 2.12.0 to
+    2.12.1 (#1638)
+  * build(deps): bump github.com/anchore/stereoscope from 0.1.4 to
+    0.1.5 (#1634)
+  * build(deps): bump the chainguard group across 1 directory with
+    2 updates (#1637)
+  * build(deps): bump golang.org/x/sync from 0.14.0 to 0.15.0
+    (#1626)
+  * build(deps): bump golang.org/x/text from 0.25.0 to 0.26.0
+    (#1627)
+  * build(deps): bump cloud.google.com/go/storage from 1.54.0 to
+    1.55.0 (#1622)
+  * build(deps): bump golang.org/x/time from 0.11.0 to 0.12.0
+    (#1628)
+  * build(deps): bump the chainguard group across 1 directory with
+    2 updates (#1629)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.16.0 to
+    5.16.2 (#1630)
+  * build(deps): bump chainguard-dev/actions from 1.1.2 to 1.1.3
+    (#1631)
+
+-------------------------------------------------------------------
+Mon Jun 09 15:29:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.4:
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+  * build(deps): bump github.com/anchore/grype from 0.92.1 to
+    0.92.2 (#1611)
+  * build(deps): bump github.com/containerd/containerd/v2 (#1612)
+  * build(deps): bump github.com/anchore/syft from 1.25.1 to 1.26.1
+    (#1613)
+  * build(deps): bump the chainguard group across 1 directory with
+    3 updates (#1621)
+  * build(deps): bump github.com/cli/go-gh/v2 from 2.12.0 to 2.12.1
+    (#1619)
+  * update melange dep
+  * build(deps): bump chainguard-dev/actions from 1.1.1 to 1.1.2
+
+-------------------------------------------------------------------
+Mon Jun 02 05:30:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.3:
+  * build(deps): bump chainguard-dev/actions from 1.0.9 to 1.1.1
+    (#1618)
+  * Improve release workflow (#1606)
+  * build(deps): bump chainguard-dev/actions from 1.1.0 to 1.1.1
+    (#1616)
+
+-------------------------------------------------------------------
+Mon May 26 04:45:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.2:
+  * build(deps): bump chainguard-dev/actions from 1.0.9 to 1.1.0
+    (#1614)
+  * Upgrade golangci to v2 (#1607)
+
+-------------------------------------------------------------------
+Wed May 21 04:30:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.1:
+  * build(deps): bump chainguard-dev/actions from 1.0.8 to 1.0.9
+  * build(deps): bump github.com/anchore/grype from 0.92.0 to
+    0.92.1
+  * build(deps): bump github.com/chainguard-dev/yam in the
+    chainguard group
+  * Feat: Add UpsertToFile and AdvisoriesFromFile methods to
+    FSPutter and FSGetter respectively.
+
+-------------------------------------------------------------------
+Sun May 18 05:51:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.0:
+  * feat(adv): new FSPutter constructor for automatic encode config
+  * build(deps): bump syft to v1.25.1
+  * build(deps): bump github.com/anchore/syft from 1.24.0 to 1.25.0
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+
+-------------------------------------------------------------------
+Fri May 16 14:27:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.36.9:
+  * chore(scan): update golden files for Grype v0.92.0
+  * chore(sbom): update golden files for Syft v1.24.0
+  * chore(sbom): try to suppress license texts from inclusion in
+    SBOM
+  * fix: adapt to breaking change in Grype lib
+  * build(deps): bump github.com/anchore/grype from 0.91.2 to
+    0.92.0
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+
+-------------------------------------------------------------------
+Wed May 14 04:49:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.36.8:
+  * chore(scan): add CGAID field to Finding struct
+  * build(deps): bump github.com/anchore/grype from 0.91.0 to
+    0.91.2
+  * build(deps): bump cloud.google.com/go/storage from 1.53.0 to
+    1.54.0
+  * build(deps): bump the chainguard group with 3 updates
+  * build(deps): bump chainguard-dev/actions from 1.0.7 to 1.0.8
+    (#1592)
+  * build(deps): bump the chainguard group with 2 updates
+  * build(deps): bump github.com/charmbracelet/log from 0.4.1 to
+    0.4.2
+
+-------------------------------------------------------------------
+Mon May 12 04:46:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.36.7:
+  * build(deps): bump github.com/github/go-spdx/v2 from 2.3.2 to
+    2.3.3
+  * build(deps): bump chainguard.dev/apko in the chainguard group
+  * build(deps): bump golang.org/x/text from 0.24.0 to 0.25.0
+  * build(deps): bump actions/setup-go in /.github/actions
+  * build(deps): bump actions/setup-go from 5.4.0 to 5.5.0
+  * build(deps): bump chainguard.dev/apko in the chainguard group
+  * build(deps): bump github.com/charmbracelet/bubbletea from 1.3.4
+    to 1.3.5
+  * build(deps): bump golang.org/x/sync from 0.13.0 to 0.14.0
+  * update SBOM integration test fixtures
+  * build(deps): bump github.com/anchore/syft from 1.22.0 to 1.23.1
+
+-------------------------------------------------------------------
+Wed May 07 04:16:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.36.6:
+  * fix: return ErrNoEntries and capture it
+  * build(deps): bump golang.org/x/term from 0.31.0 to 0.32.0
+  * build(deps): bump the chainguard group with 2 updates
+  * bump apko to to v0.27.2
+
+-------------------------------------------------------------------
+Tue May 06 04:39:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.36.5:
+  * chore(scan): debug logging for scan result filtering
+  * bug(scan/filter): use the result target apk origin
+  * bug(scan/filter): filtering considered all advisories and not
+    the target package
+  * build(deps): bump cloud.google.com/go/storage from 1.52.0 to
+    1.53.0
+  * build(deps): bump github.com/anchore/stereoscope from 0.1.3 to
+    0.1.4
+  * build(deps): bump chainguard-dev/actions from 1.0.4 to 1.0.7
+    (#1571)
+  * build(deps): bump the chainguard group across 1 directory with
+    4 updates
+
+-------------------------------------------------------------------
+Mon May 05 04:35:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.36.4:
+  * bump: Don't fail if there are comments
+  * build(deps): bump chainguard-dev/actions from 1.0.3 to 1.0.4
+    (#1564)
+
+-------------------------------------------------------------------
+Tue Apr 29 07:56:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.36.3:
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+  * build(deps): bump step-security/harden-runner from 2.11.1 to
+    2.12.0
+  * build(deps): bump cloud.google.com/go/storage from 1.51.0 to
+    1.52.0
+  * build(deps): bump the chainguard group across 1 directory with
+    2 updates
+  * build(deps): bump chainguard-dev/actions from 1.0.2 to 1.0.3
+  * build(deps): bump the chainguard group with 3 updates
+
+-------------------------------------------------------------------
+Tue Apr 29 05:57:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.36.2:
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+
+-------------------------------------------------------------------
+Thu Apr 24 11:34:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.36.1:
+  * build(deps): bump cloud.google.com/go/storage from 1.51.0 to
+    1.52.0
+  * build(deps): bump the chainguard group across 1 directory with
+    2 updates
+  * build(deps): bump step-security/harden-runner from 2.11.1 to
+    2.12.0
+  * build(deps): bump the chainguard group with 3 updates
+  * build(deps): bump chainguard-dev/actions from 1.0.2 to 1.0.3
+  * fix(scan): capture architecture of scanned APK in results
+  * fix import
+  * move yaml based access code back under pkg/configs
+  * adv schema v0.37.1 with cga_id
+  * Bump apko, fix breaking change
+  * fix double import issue
+  * adv: introduce the new advisory-schema module
+  * Update version comment
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.15.0 to
+    5.16.0
+  * build(deps): bump chainguard-dev/actions from 1.0.1 to 1.0.2
+
+-------------------------------------------------------------------
+Wed Apr 16 16:19:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.36.0:
+  * build(deps): bump chainguard-dev/actions
+  * build(deps): bump github.com/anchore/stereoscope from 0.1.2 to
+    0.1.3
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+  * move MapByVulnID to its own file
+  * build(deps): bump github.com/cli/go-gh/v2 from 2.11.2 to 2.12.0
+  * fix copilot suggestion
+  * Update pkg/advisory/store.go
+  * refactor(scan): update filtering to use adv getter abstraction
+  * feat(adv): add Getter adapter for configs.Index
+  * build(deps): bump actions/setup-go in /.github/actions
+
+-------------------------------------------------------------------
+Mon Apr 14 08:00:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.35.1:
+  no changelog found for this release
+
+-------------------------------------------------------------------
+Fri Apr 11 18:14:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.35.0:
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.14.0 to
+    5.15.0
+  * fix(scan): increase allowed age for Grype DB
+  * chore(scan)!: cleanup govulncheck triaging option
+  * fix(scan): avoid panic by handling err from SBOM gen
+  * build(deps): bump github.com/charmbracelet/bubbles from 0.20.0
+    to 0.21.0
+  * address copilot review feedback
+  * feat(yam): export lib method for reading and parsing yam config
+  * fix(adv): panic on advisory prompt
+  * build(deps): bump golang.org/x/oauth2 from 0.28.0 to 0.29.0
+  * lint/rulest_test: remove check for error and want error
+  * lint: Add test for license file
+  * lint: Print linting errors as errors
+  * build(deps): bump golang.org/x/text from 0.23.0 to 0.24.0
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+  * build(deps): bump golang.org/x/term from 0.30.0 to 0.31.0
+
+-------------------------------------------------------------------
+Mon Apr 07 04:41:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.34.1:
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+
+-------------------------------------------------------------------
+Thu Apr 03 14:04:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.34.0:
+  * build(deps): bump grype to v0.91.0
+  * update func name per review feedback
+  * docs: run make docs to catch up doc pages
+  * feat(adv): skip redundant adv updates for bulk operations
+  * fix(FSGetter): close file after reading
+  * test(adv): add FSPutter test for adding aliases
+  * test(scan): update golden files from syft bump
+  * test(sbom): update golden files from syft bump
+  * build(deps): bump step-security/harden-runner from 2.11.0 to
+    2.11.1
+  * build(deps): bump github.com/anchore/syft from 1.21.0 to 1.22.0
+  * fix(adv): CGA ID in RequestParams should be used as ID
+  * refactor(adv): use Putter for create and update commands
+  * feat(adv): add FSPutter implementation and complete Putter docs
+  * fix(testerfs): properly handle nonexistent original files
+  * build(deps): bump chainguard.dev/apko in the chainguard group
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+
+-------------------------------------------------------------------
+Mon Mar 31 05:44:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.33.0:
+  * address feedback from Copilot
+  * test(adv): add coverage for MissingValues method
+  * feat(adv): bulk create and update of adv data
+  * build(deps): bump the chainguard group across 1 directory with
+    3 updates
+  * build(deps): bump cloud.google.com/go/storage from 1.50.0 to
+    1.51.0
+  * build(deps): bump actions/setup-go from 5.3.0 to 5.4.0
+
+-------------------------------------------------------------------
+Thu Mar 27 15:09:16 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.32.0:
+  * feat(scan): add Kind field to DataSource
+  * test(scan): update golden files
+  * feat!(scan): introduce normalized data source type
+  * chore(scan): adopt breaking change in db status
+  * build(deps): bump github.com/anchore/grype from 0.89.0 to
+    0.90.0
+  * address more review feedback
+  * address review feedback
+  * bump go
+  * feat(adv): introduce abstractions and implement
+  * build(deps): bump github.com/anchore/stereoscope from 0.0.13 to
+    0.1.0
+
+-------------------------------------------------------------------
+Mon Mar 24 06:05:00 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.31.2:
+  * build(deps): bump github.com/containerd/containerd/v2
+  * config(scan/apk): disable maven searches until we resolve the
+    403 rate limit issues with the newer release of Grype
+  * fix(adv): fixing rebase bug
+  * test(adv): reproduce rebase bug
+  * build(deps): bump github.com/containerd/containerd from 1.7.25
+    to 1.7.27
+
+-------------------------------------------------------------------
+Mon Mar 17 06:01:36 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.31.1:
+  * build(deps): bump github.com/charmbracelet/lipgloss from 1.0.0
+    to 1.1.0
+  * build(deps): bump github.com/charmbracelet/log
+  * build(deps): bump the chainguard group across 1 directory with
+    2 updates
+  * build(deps): bump golangci/golangci-lint-action from 6.5.0 to
+    6.5.1 (#1490)
+  * chore(sbom,scan): downgrade "task completed" messages to DEBUG
+
+-------------------------------------------------------------------
+Mon Mar 10 06:54:58 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.31.0:
+  * fix(scan): dedupe aliases from rel vulnerabilities
+  * test(scan): redact db checksum until it is stable
+  * build(deps): update grype to v0.89.0
+  * build(deps): bump golang.org/x/time from 0.10.0 to 0.11.0
+  * fix(scan): Go matches must use trusted CPE sources
+  * build(deps): bump golang.org/x/sync from 0.11.0 to 0.12.0
+  * build(deps): bump golang.org/x/text from 0.22.0 to 0.23.0
+  * build(deps): bump golang.org/x/term from 0.29.0 to 0.30.0
+  * build(deps): bump golang.org/x/oauth2 from 0.27.0 to 0.28.0
+  * chore(sbom): add more package CPEs for golang.org/x/net
+
+-------------------------------------------------------------------
+Wed Mar 05 09:36:45 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.30.0:
+  * build(deps): bump github.com/chainguard-dev/clog in the
+    chainguard group
+  * test(scan): shouldAllowMatch
+  * feat(sbom,scan): leverage CPE data for Go matching
+  * build(deps): bump the chainguard group with 2 updates (#1473)
+  * chore: silence file tag warning by adding it explicitly
+  * fix: panic caused by extra log entry
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+  * review feedback and fix logger names
+  * feat(sbom,scan): leverage CPE data in melange configuration
+    when available
+  * adjust for breaking change in melange
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.13.2 to
+    5.14.0
+  * build(deps): bump the chainguard group across 1 directory with
+    2 updates
+  * update diff for SBOM integration tests
+  * build(deps): bump ggcr to v0.20.4-0.20250225234217-098045d5e61f
+  * build(deps): bump github.com/anchore/syft from 1.19.0 to 1.20.0
+  * build(deps): bump github.com/charmbracelet/bubbletea from 1.3.3
+    to 1.3.4
+
+-------------------------------------------------------------------
+Wed Feb 26 05:48:02 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.29.4:
+  * dag: Respect provider-priority
+  * build(deps): bump golang.org/x/oauth2 from 0.26.0 to 0.27.0
+  * build(deps): bump github.com/google/go-cmp from 0.6.0 to 0.7.0
+  * build(deps): bump github.com/go-jose/go-jose/v4 from 4.0.4 to
+    4.0.5
+
+-------------------------------------------------------------------
+Thu Feb 20 20:10:18 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.29.3:
+  * fix(adv): extend event max age from 3 to 30 days
+  * bump melange v0.21.0 to pick up annotations
+    https://github.com/chainguard-dev/melange/pull/1794
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+  * go.mod: upgrade to go 1.24.0
+  * build(deps): bump step-security/harden-runner from 2.10.4 to
+    2.11.0
+  * build(deps): bump golangci/golangci-lint-action from 6.4.1 to
+    6.5.0
+  * build(deps): bump github.com/spf13/cobra from 1.8.1 to 1.9.1
+  * build(deps): bump the chainguard group with 3 updates
+
+-------------------------------------------------------------------
+Mon Feb 17 06:19:42 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.29.2:
+  * build(deps): bump golangci/golangci-lint-action from 6.3.2 to
+    6.4.1
+  * build(deps): bump the chainguard group with 2 updates
+
+-------------------------------------------------------------------
+Fri Feb 14 06:55:46 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.29.1:
+  * chore(adv): remove apostrophe because it breaks go get
+
+-------------------------------------------------------------------
+Fri Feb 14 06:26:37 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.29.0:
+  * build(deps): bump github.com/charmbracelet/bubbletea from 1.2.4
+    to 1.3.3
+  * feat(sbom,scan): wire up Anchore logging into our slog instance
+  * fix(adv): exempt fixed events from rebase
+  * feat(adv): rebase
+
+-------------------------------------------------------------------
+Tue Feb 11 07:21:28 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.28.2:
+  * bump golangci-lint (#1441)
+  * build(deps): bump golangci/golangci-lint-action from 6.3.0 to
+    6.3.2 (#1440)
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+
+-------------------------------------------------------------------
+Mon Feb 10 07:40:10 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.28.1:
+  * Bump melange
+  * sbom: remove elf-package cataloger during .apk scan
+  * build(deps): bump golangci/golangci-lint-action from 6.2.0 to
+    6.3.0
+
+-------------------------------------------------------------------
+Fri Feb 07 08:47:00 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.28.0:
+  * build(deps): bump golang.org/x/oauth2 from 0.25.0 to 0.26.0
+    (#1434)
+  * build(deps): bump sigs.k8s.io/release-utils from 0.9.0 to
+    0.10.0
+  * build(deps): bump chainguard.dev/apko in the chainguard group
+  * feat(sbom,scan): use openjdk CPE for corretto
+  * build(deps): bump github.com/spf13/pflag from 1.0.5 to 1.0.6
+
+-------------------------------------------------------------------
+Wed Jan 29 14:40:18 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.10:
+  * scan: bump grype dependency until upstream releases, make use
+    of new rate-linit config
+  * build(deps): bump the chainguard group across 1 directory with
+    3 updates
+  * build(deps): bump github.com/samber/lo from 1.47.0 to 1.49.1
+  * docs: update with `make docs`
+  * build(deps): bump chainguard.dev/apko
+  * fix(logging): set default level to warn
+
+-------------------------------------------------------------------
+Mon Jan 27 15:59:30 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.9:
+  * docs: update with `make docs`
+  * build(deps): bump chainguard.dev/apko
+  * fix(logging): set default level to warn
+  * cleanup charm log indirection
+  * update docs
+  * remove --verbosity flag in favor of --log-level
+
+-------------------------------------------------------------------
+Fri Jan 24 06:09:08 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.8:
+  * Fix key name to match signature in unit tests
+  * Update apko to latest
+  * wolfictl: strip urls from key names
+  * build(deps): bump github.com/anchore/grype from 0.86.1 to
+    0.87.0
+  * build(deps): bump github.com/anchore/stereoscope from 0.0.12 to
+    0.0.13
+  * build(deps): bump cloud.google.com/go/storage from 1.49.0 to
+    1.50.0
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+  * build(deps): bump actions/setup-go from 5.2.0 to 5.3.0 (#1404)
+  * build(deps): bump actions/setup-go in /.github/actions (#1405)
+  * build(deps): bump step-security/harden-runner from 2.10.2 to
+    2.10.4 (#1403)
+  * build(deps): bump golangci/golangci-lint-action from 6.1.1 to
+    6.2.0
+  * build(deps): bump github.com/go-git/go-billy/v5 from 5.6.1 to
+    5.6.2
+
+-------------------------------------------------------------------
+Mon Jan 20 06:05:00 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.7:
+  * dag.NewPackages: skip yaml files starting with .
+  * build(deps): bump github.com/savioxavier/termlink from 1.4.1 to
+    1.4.2
+  * build(deps): bump the chainguard group across 1 directory with
+    2 updates
+  * build(deps): bump github.com/anchore/stereoscope from 0.0.11 to
+    0.0.12
+  * Fixed check-subpipeline-version-matches test
+  * don't comment
+  * pkg/apk: don't log requests
+  * bump grype to 0.86.1
+  * build(deps): bump chainguard.dev/apko
+  * build(deps): bump golang.org/x/time from 0.8.0 to 0.9.0
+
+-------------------------------------------------------------------
+Mon Jan 13 06:13:19 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.6:
+  * build(deps): bump github.com/anchore/stereoscope from 0.0.11 to
+    0.0.12
+  * Fixed check-subpipeline-version-matches test
+  * Linted melange files
+  * don't comment
+  * pkg/apk: don't log requests
+  * bump grype to 0.86.1
+  * build(deps): bump chainguard.dev/apko
+  * build(deps): bump golang.org/x/time from 0.8.0 to 0.9.0
+  * Added file names to error messages and added check to ensure
+    the package name matches the file name.
+  * build(deps): bump github.com/cli/go-gh/v2 from 2.11.1 to 2.11.2
+  * build(deps): bump golang.org/x/term from 0.27.0 to 0.28.0
+  * build(deps): bump golang.org/x/oauth2 from 0.24.0 to 0.25.0
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.13.0 to
+    5.13.1
+  * Update comment typo
+  * Updated duplicate test files with different versions
+  * Updated melange to fail if a duplicate package config name is
+    encountered
+
+-------------------------------------------------------------------
+Mon Jan 06 05:41:29 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.5:
+  * build(deps): bump github.com/go-git/go-billy/v5 from 5.6.0 to
+    5.6.1 (#1384)
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group (#1381)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.12.0 to
+    5.13.0 (#1382)
+  * build(deps): bump sigs.k8s.io/release-utils from 0.8.5 to 0.9.0
+    (#1383)
+
+-------------------------------------------------------------------
+Mon Dec 30 07:24:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.4:
+  * build(deps): bump github.com/google/osv-scanner from 1.9.1 to
+    1.9.2
+  * build(deps): bump chainguard.dev/apko from 0.22.2 to 0.22.3 in
+    the chainguard group (#1378)
+
+-------------------------------------------------------------------
+Mon Dec 23 07:01:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.3:
+  * use chainguard fork for vuln
+  * build(deps): bump the chainguard group with 3 updates
+
+-------------------------------------------------------------------
+Sun Dec 15 10:14:05 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.2:
+  * build(deps): bump github.com/anchore/syft from 1.18.0 to 1.18.1
+  * build(deps): bump the chainguard group with 2 updates
+
+-------------------------------------------------------------------
+Thu Dec 12 06:10:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.1:
+  * tidy
+  * build(deps): bump the chainguard group across 1 directory with
+    2 updates
+  * build(deps): bump golang.org/x/crypto from 0.30.0 to 0.31.0
+  * build(deps): bump actions/setup-go in /.github/actions
+  * build(deps): bump actions/setup-go from 5.1.0 to 5.2.0
+  * build(deps): bump chainguard.dev/apko in the chainguard group
+  * fix wolfictl text check
+  * chore(scan): adapt to breaking changes from grype
+  * build(deps): bump github.com/anchore/grype from 0.85.0 to
+    0.86.0
+  * fix(adv): update tests for tighter cga validation logic
+  * fix(adv): validate that advisory IDs are CGA IDs
+  * simplify
+  * avoid dir not found error
+  * fix make docs
+  * build(deps): bump cloud.google.com/go/storage from 1.47.0 to
+    1.48.0
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+  * build(deps): bump golang.org/x/text from 0.20.0 to 0.21.0
+  * build(deps): bump github.com/chainguard-dev/yam
+  * build(deps): bump golang.org/x/term from 0.26.0 to 0.27.0
+
+-------------------------------------------------------------------
+Mon Dec 09 05:44:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.0:
+  * chore: Bump melange to v0.17.3
+  * chore: Bump melange to v0.17.2
+  * feat(adv): option for json output in ls command
+  * refactor(adv): renames for clarity
+
+-------------------------------------------------------------------
+Mon Dec 02 10:06:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.26.1:
+  * fix(text): add context to dag construction error messages
+  * build(deps): bump chainguard.dev/melange
+  * print full package version with image apk subcommand
+  * build(deps): bump github.com/cli/go-gh/v2 from 2.11.0 to 2.11.1
+  * lint: Detect homoglyphs in git-checkout hostnames
+
+-------------------------------------------------------------------
+Tue Nov 26 13:41:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.26.0:
+  * build(deps): bump github.com/chainguard-dev/clog
+  * build(deps): bump github.com/charmbracelet/bubbletea from 1.2.3
+    to 1.2.4
+  * build(deps): bump github.com/stretchr/testify from 1.9.0 to
+    1.10.0
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+  * refactor(scan): use central styles for rendering
+  * refactor(sbom): use central tree component for rendering
+  * fix(scan): panic when no adv doc exists for package
+  * chore(scan): cleanup CLI and rendering code
+  * build(deps): bump github.com/anchore/grype from 0.84.0 to
+    0.85.0
+  * build(deps): bump chainguard.dev/apko in the chainguard group
+  * feat(scan): colors that are legible with light background
+  * feat(scan): show context from advisory data
+  * fix(adv): prompt was routing CGA ID values to aliases slice
+  * fix(adv): request validation should not allow CGA ID aliases
+  * test(adv): add coverage for request validation
+  * build(deps): bump github.com/charmbracelet/bubbletea from 1.2.2
+    to 1.2.3
+  * fix(scan): results tree missing newline
+  * refactor: introduce general tree output rendering
+  * chore: Bump melange to v0.15.12
+  * build(deps): bump step-security/harden-runner from 2.10.1 to
+    2.10.2
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+
+-------------------------------------------------------------------
+Tue Nov 19 08:52:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.25.0:
+  * build(deps): bump cloud.google.com/go/storage from 1.46.0 to
+    1.47.0
+  * build(deps): bump the chainguard group across 1 directory with
+    2 updates
+  * build(deps): bump github.com/charmbracelet/bubbletea from 1.2.0
+    to 1.2.2
+  * build(deps): bump chainguard.dev/melange
+  * feat: add web hyperlinks to CGA IDs
+  * ci: lint all code, not just latest changes
+  * ci: bump golangci-lint to v1.62
+  * ci: synchronize version of golangci-lint
+  * fix(adv): unchecked package repo URL
+  * feat(adv): new note flag to handle all adv event types
+  * build(deps): bump chainguard.dev/melange
+  * build(deps): bump github.com/anchore/stereoscope
+
+-------------------------------------------------------------------
+Tue Nov 12 06:20:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.24.10:
+  * fix import
+  * use retryablehttp when getting indexes
+  * check so-name: fix error with apk index URL
+  * refactor: consolidate on getting APKINDEX with go apk
+  * build(deps): bump golang.org/x/sync from 0.8.0 to 0.9.0
+  * build(deps): bump golang.org/x/oauth2 from 0.23.0 to 0.24.0
+  * build(deps): bump the chainguard group with 2 updates
+  * use latest golangci-lint
+  * golangci-lint run
+  * refactor so-check and diff check to be more consumable as a
+    library
+  * build(deps): bump github.com/charmbracelet/bubbletea from 1.1.2
+    to 1.2.0
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+  * build(deps): bump github.com/anchore/grype from 0.83.0 to
+    0.84.0
+  * build(deps): bump the chainguard group with 2 updates
+
+-------------------------------------------------------------------
+Mon Nov 04 19:48:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.24.9:
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+  * build(deps): bump cloud.google.com/go/storage from 1.45.0 to
+    1.46.0
+  * build(deps): bump chainguard.dev/apko in the chainguard group
+  * build(deps): bump github.com/adrg/xdg from 0.5.2 to 0.5.3
+  * build(deps): bump github.com/google/osv-scanner from 1.9.0 to
+    1.9.1
+  * build(deps): bump github.com/charmbracelet/lipgloss from 0.13.1
+    to 1.0.0
+  * build(deps): bump github.com/anchore/grype from 0.82.2 to
+    0.83.0
+  * build(deps): bump chainguard.dev/apko in the chainguard group
+  * text: Only consider local repo for self-providers
+  * text: Improve err for missing packages
+  * build(deps): bump github.com/adrg/xdg from 0.5.1 to 0.5.2
+  * build(deps): bump github.com/anchore/syft from 1.14.2 to 1.15.0
+  * build(deps): bump the chainguard group with 2 updates
+  * build(deps): bump github.com/chainguard-dev/yam in the
+    chainguard group (#1275)
+
+-------------------------------------------------------------------
+Sat Oct 26 08:43:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.24.8:
+  * update apko/melange
+  * build(deps): bump github.com/charmbracelet/bubbletea from 1.1.1
+    to 1.1.2
+  * build(deps): bump actions/setup-go in /.github/actions
+  * build(deps): bump actions/setup-go from 5.0.2 to 5.1.0
+  * build(deps): bump actions/checkout in /.github/actions
+  * build(deps): bump github.com/charmbracelet/lipgloss
+  * build(deps): bump actions/checkout from 4.2.1 to 4.2.2
+  * build(deps): bump melange to v0.14.6
+  * build(deps): bump chainguard.dev/melange from 0.14.1 to 0.14.5
+  * build(deps): bump github.com/go-git/go-billy/v5 from 5.5.0 to
+    5.6.0
+
+-------------------------------------------------------------------
+Wed Oct 23 09:56:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.24.7 (0.24.6 was not released):
+  * Move file-risk-increase flag under diff command by @egibs in
+    #1254
+  * build(deps): bump chainguard.dev/melange from 0.13.6 to 0.13.7
+    by @dependabot in #1255
+  * chore(deps): bump melange to v0.14.0 by @luhring in #1256
+  * build(deps): bump github.com/anchore/grype from 0.82.1 to
+    0.82.2 by @dependabot in #1257
+  * build(deps): bump chainguard.dev/melange from 0.14.0 to 0.14.1
+    by @dependabot in #1259
+
+-------------------------------------------------------------------
+Tue Oct 22 08:09:11 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to 0.24.5 (0.24.4 does not exist):
+  * bump melange to latest on main by @rawlingsj in #1246
+  * build(deps): bump github.com/anchore/syft from 1.14.0 to 1.14.1
+    by @dependabot in #1244
+  * build(deps): bump github.com/cli/go-gh/v2 from 2.10.0 to 2.11.0
+    by @dependabot in #1242
+  * build(deps): bump github.com/anchore/grype from 0.82.0 to
+    0.82.1 by @dependabot in #1248
+  * build(deps): bump chainguard.dev/melange from
+    0.13.6-0.20241015202724-0900229dc8a4 to 0.13.6 by @dependabot
+    in #1247
+
+-------------------------------------------------------------------
+Tue Oct 22 08:01:48 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.24.3:
+  * fix(scan): use correct CPE for GitLab components by @luhring in
+    #1226
+  * build(deps): bump github.com/chainguard-dev/yam from 0.2.0 to
+    0.2.1 by @dependabot in #1227
+  * build(deps): bump actions/checkout from 4.2.0 to 4.2.1 by
+    @dependabot in #1229
+  * build(deps): bump actions/checkout from 4.2.0 to 4.2.1 in
+    /.github/actions by @dependabot in #1230
+  * build(deps): bump golang.org/x/text from 0.18.0 to 0.19.0 by
+    @dependabot in #1228
+  * Bump melange to 0.13.1 by @xnox in #1231
+  * build(deps): bump github.com/anchore/syft from 1.13.0 to 1.14.0
+    by @dependabot in #1232
+  * build(deps): bump chainguard.dev/melange from 0.13.1 to 0.13.2
+    by @dependabot in #1234
+  * build(deps): bump chainguard.dev/melange from 0.13.2 to 0.13.3
+    by @dependabot in #1235
+  * build(deps): bump github.com/anchore/grype from 0.81.0 to
+    0.82.0 by @dependabot in #1233
+  * build(deps): bump chainguard.dev/melange from 0.13.3 to 0.13.4
+    by @dependabot in #1236
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace from
+    1.30.0 to 1.31.0 by @dependabot in #1237
+  * build(deps): bump chainguard.dev/melange from 0.13.4 to 0.13.5
+    by @dependabot in #1240
+
+-------------------------------------------------------------------
+Tue Oct 22 07:33:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.24.2:
+  * build(deps): bump chainguard.dev/melange from 0.14.0 to 0.14.1
+  * build(deps): bump github.com/anchore/grype from 0.82.1 to
+    0.82.2
+  * chore(deps): bump melange to v0.14.0
+  * Adjust to new container.BubblewrapRunner signature - do not
+    cleanup
+  * build(deps): bump chainguard.dev/melange from 0.13.6 to 0.13.7
+
+-------------------------------------------------------------------
+Mon Sep 30 05:49:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.24.1:
+  * build(deps): bump actions/checkout from 4.1.7 to 4.2.0 (#1213)
+  * build(deps): bump actions/checkout in /.github/actions (#1214)
+  * build(deps): bump github.com/anchore/grype from 0.80.2 to
+    0.81.0
+  * fix(sbom,scan): find openssl CVEs for FIPS provider
+  * scan: export FindingsTree and Render
+  * build(deps): bump github.com/anchore/grype from 0.80.1 to
+    0.80.2
+  * update golden files
+  * fix(log): correct int32 bounds checking
+  * build(deps): bump github.com/anchore/syft from 1.12.2 to 1.13.0
+  * Better approach from imjasonh!
+  * fix(git): test flaking from env side effects
+  * Rename bincapz to malcontent
+  * build(deps): bump chainguard.dev/apko from 0.19.1 to 0.19.2
+  * build(deps): bump chainguard.dev/melange
+
+-------------------------------------------------------------------
+Sat Sep 21 13:30:54 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.24.0:
+  * scan: Search for remote private packages too by @jonjohnsonjr
+    in #1184
+  * fix(scan): panic on nil cleanup by @luhring in #1189
+  * wolfictl/lint: add linter to validate update.schedule.period by
+    @rawlingsj in #1191
+  * Report cycles better when calling Targets by @jonjohnsonjr in
+    #1195
+  * support apk.cgr.dev for enterprise and extras by @imjasonh in
+    #1194
+  * update fetch apkindex to be able to fetch from apk.cgr.dev by
+    @cpanato in #1197
+  * fix(adv): validate fixed versions only for new data by @luhring
+    in #1185
+  * support scanning private apk.cgr.dev package repositories by
+    @philroche in #1196
+
+-------------------------------------------------------------------
+Sat Sep 21 13:21:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- update to version 0.23.6:
+  * build(deps): bump chainguard.dev/apko from 0.19.0 to 0.19.1
+  * feat: Support updated private enterprise-packages and
+    extra-packages URLs
+  * add ctx to the Index function
+  * update fetch apkindex to be able to fetch from apk.cgr.dev
+  * Report cycles better when calling Targets
+  * support apk.cgr.dev for enterprise and extras
+  * build(deps): bump github.com/github/go-spdx/v2 from 2.3.1 to
+    2.3.2
+  * build(deps): bump chainguard.dev/apko from 0.18.1 to 0.19.0
+  * wolfictl/lint: add linter to validate `update.schedule.period`
+  * fix(scan): panic on nil cleanup
+  * scan: Search for remote private packages too
+  * build(deps): bump github.com/cli/go-gh/v2 from 2.9.0 to 2.10.0
+  * build(deps): bump chainguard.dev/apko
+  * test(adv): validate fixed version validation changes
+  * fix lint issue
+  * fix(adv): validate fix versions only for new data
+  * chore(sbom): update golden files for syft fix
+  * build(deps): bump github.com/anchore/grype from 0.80.0 to
+    0.80.1
+  * Upgrade melange
+  * pin dep
+  * build(deps): bump github.com/charmbracelet/bubbletea from 1.1.0
+    to 1.1.1
+  * Bump apko, fix breaking change
+  * Improve error message for duplicate package names
+  * scan: Set auth for remote packages sometimes
+  * build(deps): bump github.com/google/osv-scanner from 1.8.4 to
+    1.8.5
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace
+  * build(deps): bump step-security/harden-runner from 2.9.1 to
+    2.10.1
+  * go 1.23.1 (#1169)
+  * build(deps): bump chainguard.dev/melange from 0.11.5 to 0.11.6
+  * build(deps): bump github.com/charmbracelet/bubbles from 0.19.0
+    to 0.20.0
+  * Consider subpackage runtime deps for graph
+
+-------------------------------------------------------------------
+Mon Sep  9 08:38:45 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.23.5:
+  no changelog available
+
+-------------------------------------------------------------------
+Mon Sep  9 08:36:36 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.23.4:
+  no changelog available
+
+-------------------------------------------------------------------
+Mon Sep  9 08:33:18 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.23.3:
+  no changelog available
+
+-------------------------------------------------------------------
+Mon Sep 09 08:16:24 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.23.2:
+  * fix(adv/cp): new advisories need unique CGA IDs
+  * chore: Bump melange to v0.11.5
+  * chore: Bump melange to v0.11.4
+  * fix(scan): call close method later in the flow
+  * build(deps): bump github.com/anchore/grype from 0.79.6 to
+    0.80.0
+  * build(deps): bump golang.org/x/term from 0.23.0 to 0.24.0
+  * build(deps): bump golang.org/x/oauth2 from 0.22.0 to 0.23.0
+  * build(deps): bump golang.org/x/text from 0.17.0 to 0.18.0
+  * removing fixed-version-present-and-first logic and test
+  * dont flag git updates as errors
+  * update golang.org/x/vuln to 1.1.3
+  * feat(adv): command to generate a new CGA ID
+  * fix existing test caught by new logic
+  * feat(adv): validate adv ID uniqueness within an index
+  * feat(adv): add basic logging to osv data generation
+  * build(deps): bump github.com/charmbracelet/bubbletea from 1.0.0
+    to 1.1.0
+  * build(deps): bump github.com/charmbracelet/bubbletea
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace
+  * build(deps): bump go.opentelemetry.io/otel/sdk from 1.28.0 to
+    1.29.0
+  * build(deps): bump github.com/savioxavier/termlink from 1.4.0 to
+    1.4.1
+  * build(deps): bump github.com/charmbracelet/bubbletea
+  * build(deps): bump github.com/anchore/syft from 1.11.0 to 1.11.1
+  * build(deps): bump github.com/google/osv-scanner from 1.8.3 to
+    1.8.4
+  * build(deps): bump github.com/anchore/stereoscope
+  * build(deps): bump github.com/charmbracelet/bubbles from 0.18.0
+    to 0.19.0
+  * build(deps): bump github.com/charmbracelet/lipgloss
+  * fix: gosec lint issues
+  * Update golangci-lint version
+  * lint
+  * fix
+  * bump melange
+  * build(deps): bump github.com/chainguard-dev/yam from 0.1.0 to
+    0.1.1
+
+-------------------------------------------------------------------
+Mon Aug 19 07:45:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.23.1:
+  * dag: Do key discovery before fetching indexes
+  * build(deps): bump github.com/charmbracelet/bubbletea
+  * feat(check update)!: remove `wolfictl check update` as not
+    maintained anymore
+  * bump apko
+  * build(deps): bump github.com/anchore/grype from 0.79.5 to
+    0.79.6
+  * build(deps): bump github.com/samber/lo from 1.46.0 to 1.47.0
+  * build(deps): bump k8s.io/apimachinery from 0.30.3 to 0.31.0
+  * go mod tidy
+  * drop override
+  * apko@main
+  * melange@main, yam, go-grpc-kit bumps
+  * don't depend on apko's custom log package
+  * Remove print from ReadAllPackagesFromRepo.
+
+-------------------------------------------------------------------
+Mon Aug 12 10:48:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.23.0:
+  * build(deps): bump syft,grype; update golden files
+  * fix(adv)!: untangle advisory request ID expectations
+  * bump melange to pick up update config changes
+  * build(deps): bump github.com/chainguard-dev/clog from 1.4.0 to
+    1.5.0
+  * build(deps): bump github.com/savioxavier/termlink from 1.3.0 to
+    1.4.0
+  * update: properly handle context for git clone
+  * add changes to update git checkout
+  * fix: add support to clone using the branch
+  * fix: add support to clone using the branch
+  * build(deps): bump github.com/google/osv-scanner from 1.8.2 to
+    1.8.3
+  * feat(sbom,scan): better CPE coverage for APK packages
+  * build(deps): bump golang.org/x/text from 0.16.0 to 0.17.0
+  * build(deps): bump step-security/harden-runner from 2.9.0 to
+    2.9.1
+  * build(deps): bump golang.org/x/term from 0.22.0 to 0.23.0
+  * build(deps): bump golang.org/x/oauth2 from 0.21.0 to 0.22.0
+  * fix lint issues
+  * add shorthand flag for disabling SBOM cache
+  * test: add integration coverage for python wheels
+  * feat(sbom): add python wheel cataloger
+  * rename python cataloger files to pipvendor
+  * build(deps): bump golang.org/x/sync from 0.7.0 to 0.8.0
+  * build(deps): bump golang.org/x/time from 0.5.0 to 0.6.0
+  * build(deps): bump github.com/chainguard-dev/yam from 0.0.12 to
+    0.0.13
+  * build(deps): bump golang.org/x/mod from 0.19.0 to 0.20.0
+
+-------------------------------------------------------------------
+Sun Aug 04 07:23:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.22.0:
+  * chore: use melange main
+  * update scan results for the testing apks
+  * chore: add purl to the package findings
+  * fix build
+  * re-add non-bundle build stuff
+  * remove bundle code
+  * bundles: Defer clientset initialization
+  * sbom: Pip-vendored packages are just pkg.PythonPkg
+  * Add pip vendor cataloger
+  * diff: Use diff markdown fence.
+  * build(deps): bump github.com/anchore/grype from 0.79.3 to
+    0.79.4
+  * build: improve logging
+  * update sbom int test fixtures per syft fix
+  * uncomment test cases per syft fix
+  * build(deps): bump github.com/anchore/syft from 1.9.0 to 1.10.0
+  * bundle: Fix upload URL
+  * bundles: Extract clientset initialization
+  * go mod tidy
+  * build: log termination message, update melange dep
+  * build: ensure SA exists
+  * build(deps): bump golangci/golangci-lint-action from 6.0.1 to
+    6.1.0
+  * build: various minor improvements
+  * build(deps): bump github.com/docker/docker
+  * set actie deadline seconds to pod
+  * feat(updatebot)!: remove update bot as not maintained anymore
+  * bundles: Drop --destination-bucket
+
+-------------------------------------------------------------------
+Mon Jul 29 07:23:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.21.0:
+  * build(deps): bump sigs.k8s.io/release-utils from 0.8.3 to 0.8.4
+  * feat(sbom): detect angularjs from minified files
+  * build(deps): bump chainguard.dev/apko
+  * build(deps): bump github.com/anchore/grype from 0.79.2 to
+    0.79.3
+  * update golden file
+  * build(deps): bump google.golang.org/api from 0.188.0 to 0.189.0
+  * build(deps): bump github.com/google/go-containerregistry
+  * Use filepath.WalkDir instead of filepath.Walk
+  * build(deps): bump step-security/harden-runner from 2.8.1 to
+    2.9.0
+  * build(deps): bump k8s.io/client-go from 0.29.2 to 0.30.3
+  * build(deps): bump github.com/anchore/syft from 1.8.0 to 1.9.0
+  * build(deps): bump github.com/samber/lo from 1.44.0 to 1.46.0
+
+-------------------------------------------------------------------
+Sat Jul 20 08:22:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.20.0:
+  * chore: Bump melange to v0.11.2
+  * chore: Bump melange to v0.11.1
+  * go.mod: upgrade melange, drop go-spdx replace
+  * lint: Only fail command if error is returned.
+  * Fix lint errors for DefaultAuthenticators.AddAuth
+  * Add linting for exclude-reason.
+
+-------------------------------------------------------------------
+Mon Jul 15 11:03:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.7:
+  * build(deps): bump actions/setup-go in /.github/actions
+
+-------------------------------------------------------------------
+Thu Jul 11 04:57:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.6:
+  * build: Plumb --jobs to bundle builds
+  * Make --pipeline-dir relative
+  * build(deps): bump github.com/charmbracelet/lipgloss
+  * bundle: Fix bundling when --dir != .
+  * build(deps): bump actions/setup-go from 5.0.1 to 5.0.2
+  * build(deps): bump github.com/google/osv-scanner from 1.8.1 to
+    1.8.2
+  * Bump melange import to v0.10.4
+  * chore: add new bincapz flag
+
+-------------------------------------------------------------------
+Wed Jul 10 07:42:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.19.5:
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Jul 10 07:39:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.19.4:
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Jul 10 07:23:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.3:
+  * export config
+  * fix(osv): move aliases to related field
+  * document it
+  * review feedback
+  * simplify, use map[string]string
+  * build(deps): bump github.com/adrg/xdg from 0.4.0 to 0.5.0
+  * build(deps): bump github.com/google/go-containerregistry
+  * support -a to pass arbitrary annotations
+  * set build ID, update melange, use apko auth
+  * build: Remove start and waiting info from traces
+  * build(deps): bump sigs.k8s.io/release-utils from 0.8.2 to 0.8.3
+  * build(deps): bump github.com/chainguard-dev/yam from 0.0.10 to
+    0.0.11
+  * build(deps): bump actions/setup-go in /.github/actions
+  * build(deps): bump actions/checkout in /.github/actions
+  * update workflow to use go version from go.mod (#1032)
+  * fix github-actions directory (#1033)
+  * validate: advisory: file and package name match
+  * export Path method on configs Entry
+  * build(deps): bump golang.org/x/mod from 0.18.0 to 0.19.0
+  * build(deps): bump cloud.google.com/go/storage from 1.42.0 to
+    1.43.0
+  * build(deps): bump golang.org/x/term from 0.21.0 to 0.22.0
+  * bump apko
+  * bump melange deps
+  * bump melange dependencies
+  * bump melange dependencies
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace
+  * build(deps): bump go.opentelemetry.io/otel/sdk from 1.27.0 to
+    1.28.0
+
+-------------------------------------------------------------------
+Wed Jul  3 15:28:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.19.2:
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Jul 03 15:16:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.1:
+  * fix(adv/guide): let err bubble to user
+  * fix(adv/guide): no context-based logging
+  * fix bad return
+  * build(deps): bump github.com/anchore/grype
+  * build(deps): bump google.golang.org/api from 0.186.0 to 0.187.0
+  * build(deps): bump github.com/samber/lo from 1.42.0 to 1.44.0
+  * build(deps): bump github.com/chainguard-dev/yam from 0.0.9 to
+    0.0.10
+  * wolfictl: bump melange to latest
+  * Apply suggestions from code review
+  * Update pkg/cli/build.go
+  * add support to build as lib
+  * bundle: Add --annotation flag
+  * use crane.Keychain to support google account
+  * remove replace
+  * build(deps): bump github.com/samber/lo from 1.41.0 to 1.42.0
+  * Bump melange
+  * build(deps): bump github.com/samber/lo from 1.39.0 to 1.41.0
+  * Pick up several fixes from melange.
+  * adds a unit test for the transformVersion fn
+  * build(deps): bump google.golang.org/api from 0.185.0 to 0.186.0
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.4 to
+    1.7.5
+  * build(deps): bump github.com/charmbracelet/bubbletea
+  * build(deps): bump github.com/chainguard-dev/yam from 0.0.8 to
+    0.0.9
+  * build(deps): bump github.com/anchore/syft from 1.7.0 to 1.8.0
+  * apk ls --newer-than: show only packages built recently
+  * fix(adv/discover): panic on nonexistent package
+
+-------------------------------------------------------------------
+Mon Jun 24 05:16:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.0:
+  * specify gvisor runtime
+  * override toleration rather than append for gvisor
+  * Instead of immediately returning an error, find all the
+    packages that need bumping [WIP] (#992)
+  * build: use gvisor node selector too
+  * build: new flag --gvisor
+  * build(deps): bump k8s.io/client-go from 0.30.1 to 0.30.2
+
+-------------------------------------------------------------------
+Fri Jun 21 19:11:05 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.0:
+  * clarify what empty string means for ecosystem
+  * feat(osv): account for wolfi ecosystem and subpackages
+  * build(deps): bump github.com/charmbracelet/bubbletea
+  * build(deps): bump github.com/google/osv-scanner from 1.8.0 to
+    1.8.1
+  * test(osv): pending/detect events not in OSV yet
+  * test(osv): remove yam configs
+  * test(osv): simplify test data set
+
+-------------------------------------------------------------------
+Fri Jun  7 19:24:48 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.17.0:
+  no changelog found
+
+-------------------------------------------------------------------
+Mon Jun  3 06:21:25 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.16.15:
+  no changelog found
+
+-------------------------------------------------------------------
+Thu May 30 11:21:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.16.14:
+  no changelog found
+
+-------------------------------------------------------------------
+Thu May 30 11:09:38 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.16.13:
+  no changelog found
+
+-------------------------------------------------------------------
+Mon May 20 17:34:19 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.16.12:
+  no changelog found
+
+-------------------------------------------------------------------
+Mon May 20 17:34:19 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.16.11:
+  no changelog found
+
+-------------------------------------------------------------------
+Sat May 18 07:27:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.10:
+  * Drop gcp client-go plugin
+  * specify only one value for machine family
+  * Revert "Merge pull request #857 from
+    imjasonh/no-the-other-gcp-auth-plugin"
+  * set node affinity for podspec
+  * Update go.mod
+  * build: use the other gcp auth plugin
+  * Upgrade melange with license-text key support
+  * go upgrade all the things
+  * build(deps): Bump github.com/package-url/packageurl-go
+  * build: Quiet bundle polling
+  * build: Discard bundle output for now
+  * Use emptyDir for builder /tmp
+  * use shorter pod name
+  * bundle: Switch to --upload-file for curling data
+  * lint: require custom, proprietary or valid SPDX license tag
+  * Update go-spdx with more licenses
+  * Wire up registry auth for wolfictl
+  * Bump melange to pick up go buildmode
+  * fix panic while handling non-github git URLs
+  * Update pkg/lint/rules.go
+  * lint: github.com is not the only git hosting
+  * GetGitAuth: add a unit test to cover malformed, empty, github
+    and non github URLs and when to expect an auth token set
+  * use a local var for giturl to keep code clean and easier to
+    maintain
+  * clean deps: no need to auth with upstream gitrepos
+  * Git based commands, only use GITHUB_TOKEN when interacting with
+    GitHub's API
+
+-------------------------------------------------------------------
+Tue May 14 04:59:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.9:
+  * Minor go clean-up
+  * build(deps): Bump github.com/fatih/color from 1.16.0 to 1.17.0
+  * build(deps): Bump github.com/chainguard-dev/yam from 0.0.6 to
+    0.0.7
+  * Remove '[flags]' from cobra.Command.Use as cobra adds them
+    itself.
+  * Improve 'wolfictl check update' usage to include yaml.
+  * build(deps): Bump github.com/google/osv-scanner from 1.7.2 to
+    1.7.3
+  * Bump melange
+  * build(deps): Bump golangci/golangci-lint-action from 6.0.0 to
+    6.0.1
+
+-------------------------------------------------------------------
+Fri May 10 16:37:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.8:
+  * build(deps): Bump github.com/anchore/grype from 0.77.2 to
+    0.77.4
+  * bump melange to 801d514d15cc6793051bacf798721690f8a2fe10
+  * wolfictl check diff: add extra logging for when we are about to
+    run the bincapz scan
+  * Only build/index packages that actually need it
+
+-------------------------------------------------------------------
+Wed May 08 10:27:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.7:
+  * build(deps): Bump actions/checkout from 4.1.4 to 4.1.5
+  * build(deps): Bump golangci/golangci-lint-action from 5.3.0 to
+    6.0.0
+  * build: Log error from apk stat
+  * Update melange dependency for 2 'provides' changes.
+  * build: Compare archs properly when filtering flags
+  * build(deps): Bump golang.org/x/oauth2 from 0.19.0 to 0.20.0
+  * build(deps): Bump golang.org/x/text from 0.14.0 to 0.15.0
+  * build(deps): Bump github.com/chainguard-dev/yam from 0.0.5 to
+    0.0.6
+  * build(deps): Bump golang.org/x/term from 0.19.0 to 0.20.0
+  * build(deps): Bump golangci/golangci-lint-action from 5.1.0 to
+    5.3.0
+  * Add bundle command and flags to build
+  * build(deps): Bump github.com/charmbracelet/bubbletea
+  * go bump melange for golang symbols
+  * build(deps): Bump actions/setup-go from 5.0.0 to 5.0.1
+  * build(deps): Bump github.com/cli/go-gh/v2 from 2.8.0 to 2.9.0
+  * build(deps): Bump github.com/charmbracelet/bubbletea
+  * build(deps): Bump github.com/anchore/grype from 0.77.0 to
+    0.77.2
+  * build(deps): Bump step-security/harden-runner from 2.7.0 to
+    2.7.1
+  * build(deps): Bump golangci/golangci-lint-action from 5.0.0 to
+    5.1.0
+
+-------------------------------------------------------------------
+Tue Apr 30 11:04:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.6:
+  * Bump melange
+  * scan: main module
+
+-------------------------------------------------------------------
+Sat Apr 27 19:16:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.5:
+  * fix(scan): turn off main module case for now
+  * Revert "pin to older version of grype to avoid strangness
+    around false positives"
+  * pin to older version of grype to avoid strangness around false
+    positives
+  * adapt code to new Syft version
+  * build(deps): Bump github.com/anchore/syft from 1.2.0 to 1.3.0
+  * tests: handle a two digits version number
+
+-------------------------------------------------------------------
+Fri Apr 26 05:36:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.4:
+  * fix: get latest package version
+
+-------------------------------------------------------------------
+Thu Apr 25 19:09:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.16.3:
+  * no changelog available
+
+-------------------------------------------------------------------
+Thu Apr 25 18:50:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.2:
+  * build(deps): Bump golangci/golangci-lint-action from 4.0.0 to
+    5.0.0
+  * raise log level to INFO
+  * Several logging and other improvements
+  * build(deps): Bump actions/checkout from 4.1.3 to 4.1.4
+  * build(deps): Bump github.com/anchore/stereoscope
+  * build(deps): Bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace
+  * add test cases
+  * feat(adv): command to validate advisory fix data
+  * fix: compare package epoch as numerics
+  * fix(scan): enable pseudoversion comparison
+
+-------------------------------------------------------------------
+Tue Apr 23 19:43:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.1:
+  * build(deps): Bump github.com/chainguard-dev/yam from 0.0.3 to
+    0.0.4
+  * build(deps): Bump github.com/docker/docker (#768)
+  * build(deps): Bump actions/checkout from 4.1.2 to 4.1.3 (#769)
+  * build(deps): Bump github.com/anchore/grype from 0.75.0 to
+    0.77.0 (#770)
+  * build(deps): Bump github.com/google/osv-scanner from 1.7.1 to
+    1.7.2 (#771)
+  * create a random temp file when importing the adv data (#774)
+  * check: increase bincapz file threshold from 1 to 3
+
+-------------------------------------------------------------------
+Tue Apr 23 08:16:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.0:
+  * feat(adv): guide call-to-actions
+  * feat(adv): support free text and iterate on guide
+  * go mod tidy!
+  * add test for question dot generation
+  * rename dot generation Go file
+  * feat(adv): command to output interview graph
+  * fix(adv): dedupe PR title packages
+  * fix: address lint findings w/ nolint
+  * feat(adv): initial buildout of guide interviewing
+  * update advisory guide flow notes per review
+  * build(deps): Bump github.com/sigstore/cosign/v2 from 2.2.3 to
+  * 2.2.4
+
+-------------------------------------------------------------------
+Mon Apr 15 11:02:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.19:
+  * http: remove redundant lines
+  * fix(adv): add buffer for future date validation
+  * fix(adv): validate event times as not in the future
+  * clean up testing logic a bit
+  * add wolfictl test command
+  * build(deps): Bump chainguard.dev/melange
+  * build(deps): Bump golang.org/x/oauth2 from 0.18.0 to 0.19.0
+  * chore: Bump melange
+
+-------------------------------------------------------------------
+Mon Apr 08 05:33:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.18:
+  * build(deps): Bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace
+  * build(deps): Bump golang.org/x/sync from 0.6.0 to 0.7.0
+  * build(deps): Bump go.opentelemetry.io/otel/sdk from 1.24.0 to
+    1.25.0
+  * Bump grype and syft and fix breaking changes
+  * build(deps): Bump golang.org/x/mod from 0.16.0 to 0.17.0
+  * build(deps): Bump golang.org/x/term from 0.18.0 to 0.19.0
+  * build(deps): Bump github.com/cli/go-gh/v2 from 2.7.0 to 2.8.0
+
+-------------------------------------------------------------------
+Wed Apr  3 17:24:19 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.15.16:
+  no changelog available
+- update to 0.15.17:
+  no changelog available
+
+-------------------------------------------------------------------
+Wed Apr 03 17:13:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.15:
+  * updated osv export based on feedback
+  * build(deps): Bump sigs.k8s.io/release-utils from 0.7.7 to 0.8.0
+  * Limit GITHUB_TOKEN token permissions (#729)
+  * build(deps): Bump k8s.io/apimachinery from 0.29.2 to 0.29.3
+    (#700)
+  * build(deps): Bump github.com/cli/go-gh/v2 from 2.6.0 to 2.7.0
+    (#723)
+  * add extra packages distro (#733)
+  * build: Include build error line in log file
+  * build: Consider subpackages for build order
+  * build(deps): Bump github.com/go-git/go-git/v5 from 5.11.0 to
+    5.12.0
+  * Fix the file order for diffing (#727)
+  * Index APKs if they are already built
+  * Add `bincapz` diff when it is on `PATH`. (#725)
+  * build(deps): Bump chainguard.dev/melange
+
+-------------------------------------------------------------------
+Sat Mar 30 10:09:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.14:
+  * Respect ctrl+c in wolfictl dot
+  * build: Restore log line for starting pkg build
+
+-------------------------------------------------------------------
+Fri Mar 29 19:41:39 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.15.11:
+  no changelog available
+- update to 0.15.12:
+  no changelog available
+- update to 0.15.13:
+  no changelog available
+
+-------------------------------------------------------------------
+Fri Mar 29 19:21:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.10:
+  * diff: Print .PKGINFO for new packages
+  * add osv schema validation (#719)
+  * Bump melange
+  * add all expoerted OSV in one file as well
+  * update to make the json schema happy
+  * fix permission for files
+  * add missing check error
+  * fix lint
+  * refactor based on feeback and export as json
+  * Bump go-apk to pick up better index errors
+  * build: Fix --destination-repository
+  * Un-revert un-group by arch, fix race
+  * Revert "Merge pull request #708 from jonjohnsonjr/rrerererevert"
+  * scan: Actually skip on err instead of pretending
+  * Revert "Revert "Revert "build: Un-group by arch"""
+  * Revert "Skip regenerating index if we skip all archs"
+  * add advisory export to OSV format
+  * Skip regenerating index if we skip all archs
+  * Revert "Revert "build: Un-group by arch""
+
+-------------------------------------------------------------------
+Mon Mar 25 16:29:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.9:
+  * Revert "build: Un-group by arch"
+
+-------------------------------------------------------------------
+Mon Mar 25 07:46:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.8:
+  * build: Un-group by arch
+  * build(deps): Bump github.com/charmbracelet/log
+  * build(deps): Bump github.com/docker/docker
+
+-------------------------------------------------------------------
+Tue Mar 19 20:29:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.7:
+  * golangci-lint
+  * advisory: Don't filter non-apks from scan results
+
+-------------------------------------------------------------------
+Sun Mar 17 09:12:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.15.6:
+  * secdb: ignore when you find multiple advisories across os and
+    other repos for now
+    (#699 <https://github.com/wolfi-dev/wolfictl/pull/699>)
+
+-------------------------------------------------------------------
+Sun Mar 17 09:07:31 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.15.5:
+  * use "github.com/knqyf263/go-apk-version" to sort the versions
+    for advisory validate
+    (#696 <https://github.com/wolfi-dev/wolfictl/pull/696>)
+
+-------------------------------------------------------------------
+Sun Mar 17 08:58:19 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.15.4:
+  * Revert "Add ParsePackageIndexFromJSON" (#689)
+
+-------------------------------------------------------------------
+Sun Mar 17 08:51:54 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.15.3:
+	* build(deps): Bump github.com/stretchr/testify from 1.8.4 to
+    1.9.0
+
+-------------------------------------------------------------------
+Sun Mar 17 08:46:56 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.15.2:
+  * wolfictl update: fix panic when dropping bumps
+
+-------------------------------------------------------------------
+Sun Mar 17 08:34:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.1:
+  * secdb: ignore when you find multiple advisories across os and
+    other repos for now (#699)
+  * build: Write failed build logs to stdout
+  * build: Add destination repo
+  * use "github.com/knqyf263/go-apk-version" to sort the versions
+    for advisory validate (#696)
+  * Skip packages for different arch
+  * build(deps): Bump actions/checkout from 4.1.1 to 4.1.2
+  * build(deps): Bump mathieudutour/github-tag-action from 6.1 to
+    6.2
+  * put the clone into specified reposiotry
+  * Revert "Add ParsePackageIndexFromJSON" (#689)
+  * Bump melange
+  * add tests
+  * build: Omit finished logs for skipped archs
+  * Add ParsePackageIndexFromJSON
+  * build: Refactor to appease gocyclo
+  * build: Log less when we don't do things
+  * build: Add span with package name
+  * build: Add --generate-index flag
+  * build(deps): Bump chainguard.dev/melange from 0.6.8 to 0.6.9
+  * build: skip arch on sentinel error
+  * receive a byte not the path for a file
+  * build(deps): Bump golang.org/x/oauth2 from 0.17.0 to 0.18.0
+  * Bump wolfictl again (#675)
+  * build(deps): Bump github.com/charmbracelet/lipgloss from 0.9.1
+    to 0.10.0
+  * build(deps): Bump golang.org/x/term from 0.17.0 to 0.18.0
+  * Bump melange
+  * build(deps): Bump github.com/cli/go-gh/v2 from 2.5.0 to 2.6.0
+    (#667)
+  * build(deps): Bump github.com/anchore/grype from 0.74.6 to
+    0.74.7 (#656)
+  * build(deps): Bump golang.org/x/mod from 0.15.0 to 0.16.0 (#668)
+  * update go.mod
+  * add import yaml function
+  * build(deps): Bump github.com/stretchr/testify from 1.8.4 to
+    1.9.0
+  * build(deps): Bump chainguard.dev/melange
+  * fix golint func too complex error
+  * wolfictl update: fix panic when dropping bumps
+  * build: Group by arch
+  * Regen APKINDEX after each package builds
+  * Bump melange
+  * refactor ignore regex patterns into own funtion and add test
+    case so it is easier to try out complex patterns
+
+-------------------------------------------------------------------
+Sat Feb 24 08:53:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.0:
+  * build: Get better progress updates
+  * build: Emulate SOURCE_DATE_EPOCH from Makefile
+  * build: Host some hard-coded values up into flags
+  * make NewGrypeVulnerabilityMatcher function public
+  * build(deps): Bump chainguard.dev/melange
+  * build(deps): Bump github.com/chainguard-dev/yam from 0.0.1 to
+    0.0.2
+
+-------------------------------------------------------------------
+Wed Feb 21 17:47:10 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package wolfictl
