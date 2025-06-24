@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Mon Jun 16 05:39:09 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20250616.0.0 (20250616)
+   see /usr/share/doc/packages/perl-Perl-Tidy/CHANGES.md
+
+  ## 2025 06 16
+      - Added support for the assigning logical xor ^^= operator
+      - For input parameters which allow a paren type to be selected, the
+        selection 'f' (function call) now includes functions called with
+        a direct arrow before the paren, '->('. This was an oversight which
+        has been corrected.
+      - A new parameter --break-at-old-comma-types=s, or -boct=s, allows the
+        parameter --break-at-old-comma-breakpoints (-boc) to be limited to
+        selected container types.  For example, -boc -boct='f(' means break
+        at old commas but only if they are function call lists.
+      - A new parameter --cuddled-paren-brace-weld, or -cpbw, has been added to
+        handle issue git #184. This modifies --cuddled-paren-brace by
+        preventing a paren and following brace from getting separated in
+        certain situations. The difference is illustrated here:
+          # perltidy -cpb alone has no effect for this short snippet:
+          if (   $Kouter_opening == $Kfirst
+              && $has_tight_paren{$type_prev} )
+          {
+              $Kref = $Kprev;
+          }
+          # perltidy -cpb -cpbw keeps the closing paren next to the opening brace:
+          if (
+                 $Kouter_opening == $Kfirst
+              && $has_tight_paren{$type_prev}
+          ) {
+              $Kref = $Kprev;
+          }
+      - The parameter --maximum-fields-per-table, or -mft, now accepts a string
+        input which can limit its application to certain containers. For
+        example, -mft='f(1' means that function call lists should be formatted
+        with just 1 item per line. It has no effect on other tables. The
+        manual has further information.
+      - Add option --break-open-compact-parens=s, discussed in git #78.
+        This changes the default formatting for lists which would normally
+        be displayed compactly on two lines. It causes them to be formatted
+        in the same way as long lists, with line breaks at the opening and
+        closing parentheses.
+      - Add option --skip-formatting-except-id=NAME, or -sfei=NAME, discussed
+        in git #183.  This allows formatting to apply only to lines tagged
+        with #<<< id=NAME, where NAME is a user-defined tag. The special
+        variation -sfei='-' can be used to run perltidy with full checking
+        but without any formatting changes.
+      - A relatively rare problem with the formatting combination -xci and -lp or
+        -xlp has been fixed.  Some lines had more leading spaces that intended.
+      - New option -m added to --dump-mismatched-returns and
+        --warn-mismatched-returns. This checks for multiple array
+        return sizes. A warning occurs when a sub has multiple returns
+        of finite lists with different counts greater than 1, and
+        not all of them are matched with calls.
+      - Improved support for Object::Pad, see git #182.
+      - A limitation on the treatment  of lexical subs has been fixed. Previously,
+        a lexical sub with the same name as a quote operator would produce a warning,
+        and might cause a tokenization error.
+      - Here targets in quotes are now located and handled correctly.
+
+-------------------------------------------------------------------
 Wed Mar 12 05:43:42 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20250311.0.0 (20250311)
