@@ -16,7 +16,7 @@
 #
 
 Name: cockpit-subscriptions
-Version: 10
+Version: 11
 Release: 1%{?dist}
 Summary: Cockpit module for managing and registering subscriptions
 License: LGPL-2.1-or-later

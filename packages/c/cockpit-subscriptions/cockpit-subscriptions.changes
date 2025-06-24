@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun  5 11:37:43 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to version 11
+  * Translation updates
+  * Fix transactional-update handling of system deregistration
+    fixes bsc#1244034
+  * Dependency updates
+
+-------------------------------------------------------------------
 Fri May 23 08:57:51 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
 
 - Add load-css-overrides.patch to add branding styling

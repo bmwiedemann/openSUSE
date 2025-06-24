@@ -37,4 +37,16 @@
  * Better handling of non-superuser transitions</comment>
     <requestid>1279495</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>297a03b5d56a4721e7b635440e80b0ce</srcmd5>
+    <version>11</version>
+    <time>1750791003</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 11
+  * Translation updates
+  * Fix transactional-update handling of system deregistration
+    fixes bsc#1244034
+  * Dependency updates</comment>
+    <requestid>1288186</requestid>
+  </revision>
 </revisionlist>

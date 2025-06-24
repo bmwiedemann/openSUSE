@@ -13,7 +13,7 @@ fi
 ### Fetch latest soruces
 ###
 
-newVersion=$(git ls-remote --tags --refs "https://github.com/openSUSE/cockpit-subscriptions" | cut -d/ -f3- | tail -n1)
+newVersion=$(git ls-remote --tags --refs "https://github.com/openSUSE/cockpit-subscriptions" | cut -d/ -f3- | sort -n | tail -n1)
 
 echo "Current version: $curVersion"
 echo "    New version: $newVersion"
