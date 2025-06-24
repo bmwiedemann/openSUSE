@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 23 14:42:09 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * duplicate-dependency.patch
+    + de-duplicate a dependency
+    + duplicate dependency is fatal with maven 4 that is more
+      strict
+
+-------------------------------------------------------------------
 Sat Sep 21 11:04:46 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

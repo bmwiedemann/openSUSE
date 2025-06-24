@@ -1,7 +1,7 @@
 #
 # spec file for package antlr3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Patch0:         antlr3-java8-fix.patch
 Patch1:         antlr3-osgi-manifest.patch
 Patch2:         reproducible-order.patch
 Patch3:         reproducible-timestamp.patch
+Patch4:         duplicate-dependency.patch
 Patch100:       antlr3-generated_sources.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -134,6 +135,7 @@ sed -i "s,\${buildNumber},`date -u -d@${SOURCE_DATE_EPOCH:-$(date +%%s)}`," tool
 %patch -P 1
 %patch -P 2 -p1
 %patch -P 3 -p1
+%patch -P 4 -p1
 
 # remove pre-built artifacts
 find -type f -a -name *.jar -delete
@@ -185,7 +187,6 @@ sed -i 's/jsr14/1.8/' antlr3-maven-archetype/src/main/resources/archetype-resour
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
 	-Dmaven.compiler.release=8 \
 %endif
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
     -Dsource=8
 
 %if %{without runtime} &&  %{without bootstrap}

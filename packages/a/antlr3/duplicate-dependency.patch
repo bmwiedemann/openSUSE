@@ -1,0 +1,20 @@
+--- antlr3-3.5.3/antlr3-maven-plugin/pom.xml	2025-03-22 14:18:39.217579927 +0100
++++ antlr3-3.5.3/antlr3-maven-plugin/pom.xml	2025-03-22 14:18:57.138055571 +0100
+@@ -203,17 +203,6 @@
+             <artifactId>slf4j-simple</artifactId>
+             <version>1.7.32</version>
+         </dependency>
+-        <!--
+-         The version of ANTLR tool that this version of the plugin controls.
+-         We have decided that this should be in lockstep with ANTLR itself, other
+-         than -1 -2 -3 etc patch releases.
+-          -->
+-        <dependency>
+-            <groupId>org.antlr</groupId>
+-            <artifactId>antlr</artifactId>
+-            <version>${project.version}</version>
+-        </dependency>
+-
+         <dependency>
+             <groupId>org.apache.maven.shared</groupId>
+             <artifactId>maven-plugin-testing-harness</artifactId>

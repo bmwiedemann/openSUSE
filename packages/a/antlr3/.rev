@@ -71,4 +71,12 @@
     <comment>reproducible labels order</comment>
     <requestid>1202357</requestid>
   </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>10c6ed7bedc100f9681b74ba765378ae</srcmd5>
+    <version>3.5.3</version>
+    <time>1750790881</time>
+    <user>anag_factory</user>
+    <comment>Fix build with up-coming maven 4</comment>
+    <requestid>1287972</requestid>
+  </revision>
 </revisionlist>
