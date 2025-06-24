@@ -53,4 +53,13 @@
 - Add initial version of rCSSmin 1.0.6</comment>
     <requestid>1132142</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3256707bba8d10370d83117e20b22960</srcmd5>
+    <version>1.1.2</version>
+    <time>1750790936</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1288108</requestid>
+  </revision>
 </revisionlist>
