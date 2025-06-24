@@ -1,0 +1,5 @@
+<package name="perl-Test-Deep-JSON" project="openSUSE:Factory">
+  <title>perl-Test-Deep-JSON - Compare JSON with Test::Deep</title>
+  <description>Test::Deep::JSON provides the 'json($expected)' function to expect that target can be parsed as a JSON string and matches (by 'cmp_deeply') with $expected.</description>
+  <url>https://metacpan.org/dist/Test-Deep-JSON</url>
+</package>
