@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Tue Jun 24 10:09:09 UTC 2025 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Update to Tomcat 11.0.8
+ * Fixed CVEs:
+    + CVE-2025-46701: refactor CGI servlet to access resources via
+      WebResources (bsc#1243815)
+    + CVE-2025-48988: limits the total number of parts in a
+      multi-part request and limits the size of
+      the headers provided with each part (bsc#1244656)
+    + CVE-2025-49125: Expand checks for webAppMount (bsc#1244649)
+  * Catalina
+    + Add: Support for the java:module namespace which mirrors the
+      java:comp namespace.
+    + Fix: 69690: Calling HttpServletRequest.getParameter() and related
+      methods for a request with content type multipart/form-data when
+      the mapped servlet does not have a @MultipartConfig or equivalent
+      should not trigger an exception. Note that calling getPart() or
+      getParts() is these circumstances will trigger an exception.
+    + Add: Support parsing of multiple path parameters separated by ; in a
+      single URL segment. Based on pull request #860 by Chenjp.
+    + Fix: 69699: Encode redirect URL used by the rewrite valve with the
+      session id if appropriate, and handle cross context with different
+      session configuration when using rewrite.
+    + Add: #863: Support for comments at the end of lines in text rewrite
+      map files to align behaviour with Apache httpd. Pull request
+      provided by Chenjp.
+    + Fix: 69706: Saved request serialization issue in FORM introduced
+      when allowing infinite session timeouts.
+    + Fix: Expand the path checks for Pre-Resources and Post-Resources
+      mounted at a path within the web application.
+    + Fix: Process possible path parameters rewrite production in the
+      rewrite valve.
+    + Fix: 69588: Enable allowLinking to be set on PreResources,
+      JarResources and PostResources. If not set explicitly, the setting
+      will be inherited from the Resources.
+    + Add: 69633: Support for Filters using context root mappings.
+    + Fix: 69643: Optimize directory listing for large amount of files.
+      Patch submitted by Loic de l'Eprevier.
+    + Fix: #843: Off by one validation logic for partial PUT ranges and
+      associated test case. Submitted by Chenjp.
+    + Refactor: GCI servlet to access resources via the WebResource API.
+    + Fix: 69662: Report name in exception message when a naming lookup
+      failure occurs. Based on code submitted by Donald Smith.
+    + Fix: Ensure that the FORM authentication attribute
+      authenticationSessionTimeout works correctly when sessions have an
+      infinite timeout when authentication starts.
+    + Add: Provide a content type based on file extension when web
+      application resources are accessed via a URL.
+  * Coyote
+    + Refactor: #861: TaskQueue to use the new interface RetryableQueue
+      which enables better integration of custom Executors which provide
+      their own BlockingQueue implementation. Pull request provided by
+      Paulo Almeida.
+    + Add: Finer grained control of multi-part request processing via two
+      new attributes on the Connector element. maxPartCount limits the
+      total number of parts in a multi-part request and maxPartHeaderSize
+      limits the size of the headers provided with each part. Add support
+      for these new attributes to the ParameterLimitValve.
+  * Jasper
+    + Fix: 69696: Mark the JSP wrapper for reload after a failed
+      compilation.
+    + Fix: 69635: Add support to jakarta.el.ImportHandler for resolving
+      inner classes.
+    + Add: #842: Support for optimized execution of c:set and c:remove
+      tags, when activated via JSP servlet param
+      useNonstandardTagOptimizations.
+    + Fix: An edge case compilation bug for JSP and tag files on case
+      insensitive file systems that was exposed by the test case for
+      69635.
+  * Web applications
+    + Fix: 69694: Improve error reporting of deployment tasks done using
+      the manager webapp when a copy operation fails.
+    + Add: 68876: Documentation. Update the UML diagrams for server
+      start-up, request processing and authentication using PlantUML and
+      include the source files for each diagram.
+  * Other
+    + Add: Thread name to webappClassLoader.stackTraceRequestThread
+      message. Patch provided by Felix Zhang.
+    + Update: Tomcat Native to 2.0.9.
+    + Update: The internal fork of Apache Commons FileUpload to 1.6.0-RC1
+      (2025-06-05).
+    + Update: EasyMock to 5.6.0.
+    + Update: Checkstyle to 10.25.0.
+    + Fix: Use the full path when the installer for Windows sets calls
+      icacls.exe to set file permissions.
+    + Update: Improvements to Japanese translations provided by tak7iji.
+    + Update: Jacoco to 0.8.13.
+    + Code: Explicitly set the locale to be used for Javadoc. For
+      official releases, this locale will be English (US) to support
+      reproducible builds.
+    + Update: Byte Buddy to 1.17.5.
+    + Update: Checkstyle to 10.23.1.
+    + Update: File extension to media type mappings to align with the
+      current list used by the Apache Web Server (httpd).
+    + Update: Improvements to French translations.
+    + Update: Improvements to Japanese translations provided by tak7iji. 
+
+-------------------------------------------------------------------
 Tue Jun 10 13:09:57 UTC 2025 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - Hardening permissions (bsc#1242722)
