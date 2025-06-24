@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Jun 23 09:14:56 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 18
+  * IssueConfigure rat plugin to print names of files with license
+    issues to console during build - particularly useful when
+    running in Jenkins
+  * IssueRemoved workaround for resolved INFRA-14923
+  * IssueRemove unused property
+  * UIMA-6181: Fix complaints about maven-plugin-plugin in
+    Eclipse
+  * UIMA-6184: Move code quality profiles to parent POM
+  * UIMA-6185: Upgrade parent POM plugins
+  * UIMA-6254: Move API report post-analysis script into the build
+    resources
+  * UIMA-6293: Migrate UIMA Parent POM to GitHub
+  * UIMA-6301: Rename "master" branches to "main"
+  * UIMA-6307: Centralize Jenkins pipelines
+  * UIMA-6316: Stop using the deprecated Pack200 when building
+    update sites
+  * UIMA-6320: Clean up parent POM
+  * UIMA-6322: Clean up rat configuration
+  * UIMA-6327: UIMA Parent POM 14 release
+  * UIMA-6380: Maven plugin plugin from parent pom not compatible
+    with Java 16
+  * UIMA-6433: Update issue and PR templates
+  * UIMA-6438: Add asf.yaml files to UIMA repos
+  * UIMA-6439: Release build signs some 'sha512' files
+  * UIMA-6441: Update plugins
+  * UIMA-6456: UIMA Parent POM 15 release
+  * UIMA-6458: Spurious "parsedVersion.osgiVersion" in file names
+    in target
+  * UIMA-6460: Move tycho and auto-staging to parent pom
+  * UIMA-6463: Use toolchains to ensure compatibility with Java 1.8
+  * UIMA-6467: Cannot build on Java 11
+  * UIMA-6481: Enable issue management in GitHub repos
+  * Added issue template for release issue
+  * Remove Jira mention from PR template - we no longer use Jira.
+  * Issue #26: Profile for OSGI bundles
+  * Issue #28: Upgrade plugins
+  * Issue #31: Switch changes report from Jira to GitHub
+  * Issue #37: RC auto staging checks out SVN even on non-release
+    builds
+  * Issue #39: Upgrade plugins
+  * Issue #42: Website on Maven Central search UI not shown properly
+  * Issue #44: Remove deprecated profiles
+  * Issue #48: Antrun executions for gpg should be skipped as well
+    when skipping GPG is requested
+  * Issue #50: Remove outdated website distribution config
+  * Issue #53: Add profile for performing dependency checks
+  * Issue #55: Remove the DocBook toolchain
+  * Issue #57: Execute rat by default
+  * Issue #59: Replace maven-changes-plugin with call to GH API to
+    generate release notes
+  * Issue #60: UIMA Parent POM 17
+  * Issue #64: Update plugins and dependencies
+  * Issue #66: Add support for unofficial JavaDoc tags
+
+-------------------------------------------------------------------
 Fri May 17 01:16:17 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 13

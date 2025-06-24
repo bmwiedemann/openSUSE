@@ -1,14 +1,11 @@
 <services>
     <service name="tar_scm" mode="disabled">
         <param name="scm">git</param>
-        <param name="url">git@github.com:apache/uima-build.git</param>
-        <param name="revision">parent-pom-13</param>
-        <param name="match-tag">parent-pom-*</param>
+        <param name="url">https://github.com/apache/uima-parent-pom.git</param>
+        <param name="revision">rel/parent-pom-18</param>
+        <param name="match-tag">rel/parent-pom-*</param>
         <param name="versionformat">@PARENT_TAG@</param>
-        <param name="versionrewrite-pattern">parent-pom-(.*)</param>
-        <param name="filename">uima-parent-pom</param>
-        <param name="exclude">src</param>
-        <param name="exclude">plugin-patches</param>
+        <param name="versionrewrite-pattern">rel/parent-pom-(.*)</param>
     </service>
     <service name="recompress" mode="disabled">
         <param name="file">*.tar</param>
