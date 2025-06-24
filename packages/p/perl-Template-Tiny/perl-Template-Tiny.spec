@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Template-Tiny
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,20 @@
 
 %define cpan_name Template-Tiny
 Name:           perl-Template-Tiny
-Version:        1.14
+Version:        1.160.0
 Release:        0
-Summary:        Template Toolkit reimplemented in as little code as possible
+# 1.16 -> normalize -> 1.160.0
+%define cpan_version 1.16
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Template Toolkit reimplemented in as little code as possible
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Template::Tiny) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -47,7 +51,7 @@ compile phase (but despite this is still quicker, owing to heavy use of the
 Perl regular expression engine.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

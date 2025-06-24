@@ -23,4 +23,21 @@
     <comment></comment>
     <requestid>890411</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e21c2b77201e83512e0c9f40b0e93206</srcmd5>
+    <version>1.160.0</version>
+    <time>1750790996</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1288031 from tinita
+
+- updated to 1.160.0 (1.16)
+   see /usr/share/doc/packages/perl-Template-Tiny/Changes
+  1.16      2025-06-17 17:21:03Z
+            - Evaluate coderefs and insert results in template (CROMEDOME).
+              This achieves full feature parity with
+              Dancer2::Template::ForkedImplementation::Tiny.
+  1.15      2025-06-14 15:33:27Z
+            - Allow configurable start/end tags (CROMEDOME).</comment>
+    <requestid>1288169</requestid>
+  </revision>
 </revisionlist>
