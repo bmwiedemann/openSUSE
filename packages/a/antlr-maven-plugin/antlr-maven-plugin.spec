@@ -72,8 +72,8 @@ This package contains the API documentation for %{name}.
 %patch -P 5 -p1
 %patch -P 6 -p1
 
-%pom_change_dep :maven-project :maven-core:3.9.9
-
+%pom_change_dep :maven-project :maven-core
+%pom_change_dep org.apache.maven::2.0.2 ::3.9.9
 %pom_add_dep org.apache.maven.plugin-tools:maven-plugin-annotations:3.15.1:provided
 
 # reporting eventually pulls in another antlr and we'd break with weird errors
