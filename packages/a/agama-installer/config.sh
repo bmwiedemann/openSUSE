@@ -54,7 +54,6 @@ systemctl enable avahi-daemon.service
 systemctl enable agama.service
 systemctl enable agama-web-server.service
 systemctl enable agama-dbus-monitor.service
-systemctl enable agama-dud.service
 systemctl enable agama-auto.service
 systemctl enable agama-hostname.service
 systemctl enable agama-proxy-setup.service
@@ -72,7 +71,7 @@ systemctl enable live-root-shell.service
 systemctl enable checkmedia.service
 systemctl enable qemu-guest-agent.service
 systemctl enable setup-systemd-proxy-env.path
-systemctl enable x11-autologin.service
+systemctl enable gdm.service
 test -f  /usr/lib/systemd/system/spice-vdagentd.service && systemctl enable spice-vdagentd.service
 systemctl enable zramswap
 
@@ -92,6 +91,9 @@ systemctl disable snapper-timeline.timer
 systemctl disable YaST2-Firstboot.service
 systemctl disable YaST2-Second-Stage.service
 
+# the "eurlatgr" is the default font for the English locale
+echo -e "\nFONT=eurlatgr.psfu" >> /etc/vconsole.conf
+
 ### setup dracut for live system
 arch=$(uname -m)
 # keep in sync with ISO Volume ID set in the fix_bootconfig script
@@ -106,7 +108,7 @@ if [[ "$kiwi_profiles" != *PXE* ]]; then
   echo "root_disk=live:LABEL=$label" >>/etc/cmdline.d/10-liveroot.conf
   echo 'install_items+=" /etc/cmdline.d/10-liveroot.conf "' >/etc/dracut.conf.d/10-liveroot-file.conf
 fi
-echo 'add_dracutmodules+=" dracut-menu agama-cmdline "' >>/etc/dracut.conf.d/10-liveroot-file.conf
+echo 'add_dracutmodules+=" dracut-menu agama-cmdline agama-dud "' >>/etc/dracut.conf.d/10-liveroot-file.conf
 
 # decrease the kernel logging on the console, use a dracut module to do it early in the boot process
 echo 'add_dracutmodules+=" agama-logging "' > /etc/dracut.conf.d/10-agama-logging.conf
@@ -249,9 +251,6 @@ if [ -n "$python" ]; then
   fi
 fi
 
-# remove OpenGL support
-rpm -qa | grep ^Mesa | xargs --no-run-if-empty rpm -e --nodeps
-
 # remove unused SUSEConnect libzypp plugins
 rm -f /usr/lib/zypper/commands/zypper-migration
 rm -f /usr/lib/zypper/commands/zypper-search-packages
@@ -324,8 +323,6 @@ for s in purge-kernels; do
   systemctl -f disable $s || true
 done
 
-# Only used for OpenCL and X11 acceleration on vmwgfx (?), saves ~50MiB
-rpm -e --nodeps Mesa-gallium || true
 # Too big and will have to be dropped anyway (unmaintained, known security issues)
 rm -rf /usr/lib*/libmfxhw*.so.* /usr/lib*/mfx/
 
@@ -346,3 +343,6 @@ rm -f /lib/modules/*/vmlinux*.[gx]z
 
 # Remove generated files (boo#1098535)
 rm -rf /var/cache/zypp/* /var/lib/zypp/AnonymousUniqueId /var/lib/systemd/random-seed
+
+# gnome-kiosk startup script, executable rights not preserved during copying
+chmod +x /root/.local/bin/gnome-kiosk-script
