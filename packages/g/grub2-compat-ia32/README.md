@@ -9,16 +9,15 @@ This change was made to ensure that the system is [Y2038-safe](https://en.wikipe
 
 ## What This Package Does
 
-This package installs a custom GRUB script:
-
-`/etc/grub.d/05_ia32_emulation`
-
-
-This script appends the following kernel parameter:
+This package adds the following kernel parameter:
 
 `ia32_emulation=1`
 
-Enabling this option restores support for executing 32-bit x86 binaries.
+This is done via:
+
+/usr/sbin/update-bootloader --add-option "ia32_emulation=1"
+
+Enabling this option restores compatibility with 32-bit x86 user-space binaries.
 
 ## Without This Package
 
@@ -41,9 +40,8 @@ Install the package using Zypper:
 sudo zypper in grub2-compat-ia32
 ```
 
-After installation, make sure to update your GRUB configuration and reboot:
+After installation, make sure to reboot:
 ```bash
-sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 sudo reboot
 ```
 

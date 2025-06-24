@@ -14,4 +14,14 @@ so it's not present nor built in SLES 16.0
 * https://en.opensuse.org/Steam#Error%3A_Missing_libc.so.6_or_ld-linux.so.2</comment>
     <requestid>1286714</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e1c5daf651328d0162765eeea62c0a17</srcmd5>
+    <version>1</version>
+    <time>1750790912</time>
+    <user>anag_factory</user>
+    <comment>- Drop Requires on grub2 since we no longer call it directly 
+
+- Drop 05_ia32_emulation in favor of update-bootloader</comment>
+    <requestid>1288183</requestid>
+  </revision>
 </revisionlist>

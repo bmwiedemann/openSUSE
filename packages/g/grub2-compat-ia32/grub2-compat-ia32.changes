@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 24 08:12:40 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Drop Requires on grub2 since we no longer call it directly 
+
+-------------------------------------------------------------------
+Mon Jun 23 20:43:37 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Drop 05_ia32_emulation in favor of update-bootloader
+
+-------------------------------------------------------------------
 Wed Jun 18 12:06:06 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Mark package as noarch but still exclusive to x86_64 

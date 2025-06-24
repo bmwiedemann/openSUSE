@@ -12,6 +12,10 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
 Name:           grub2-compat-ia32
 Version:        1
 Release:        0
@@ -19,10 +23,8 @@ Summary:        Enable IA32 emulation support in the kernel
 License:        MIT
 URL:            https://en.opensuse.org/GRUB#Enabling_32bit_x86_support_in_Kernel
 Source1:        README.md
-Source2:        05_ia32_emulation
-BuildRequires:  grub2
-Requires:       grub2
 Requires:       glibc-32bit
+Requires:       update-bootloader
 BuildArch:      noarch
 ExclusiveArch:  x86_64
 
@@ -32,22 +34,26 @@ Software like Steam, Wine, or VirtualBox requires 32-bit library support.
 This package enables IA32 support by appending `ia32_emulation=1` to the kernel parameters via GRUB.
 
 %prep
-
-%build
 cp -a %{SOURCE1} .
 
+%build
+
 %install
-install -D -m 0755 %{SOURCE2} %{buildroot}%{_sysconfdir}/grub.d/05_ia32_emulation
+# Nothing to do
 
 %files
 %doc README.md
-%config(noreplace) %{_sysconfdir}/grub.d/05_ia32_emulation
 
 %post
-# Update GRUB config after installing the script
-if [ -x %{_sbindir}/grub2-mkconfig ]; then
-    %{_sbindir}/grub2-mkconfig -o /boot/grub2/grub.cfg || :
+if ! %{_sbindir}/update-bootloader --get-option "ia32_emulation=1" &>/dev/null; then
+    %{_sbindir}/update-bootloader --add-option "ia32_emulation=1" || :
 fi
-echo "Please reboot the machine to apply IA32 emulation settings."
+%{_sbindir}/update-bootloader --config || :
+echo "IA32 emulation has been enabled. Please reboot to apply changes."
+
+%postun
+%{_sbindir}/update-bootloader --del-option "ia32_emulation=1" || :
+%{_sbindir}/update-bootloader --config || :
+echo "IA32 emulation has been removed. Please reboot to apply changes."
 
 %changelog
