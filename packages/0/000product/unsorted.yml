@@ -3473,6 +3473,8 @@ unsorted:
   - dumb-devel-doc 
   - dummy-release 
   - dump 
+  - dump-rmt 
+  - dump1090-fa 
   - dumpvdl2 
   - dumpzilla 
   - dumpzilla-bash-completion 
@@ -3879,6 +3881,8 @@ unsorted:
   - f3d-fish-completion 
   - f3d-zsh-completion 
   - fIcy 
+  - faad2 
+  - faad2-devel 
   - faba-icon-theme 
   - fabtests 
   - facedetect 
@@ -3925,6 +3929,7 @@ unsorted:
   - fastlzlib-devel 
   - fasttext 
   - fasttext-devel 
+  - fatcat 
   - fatrace 
   - fatsort 
   - fbcat 
@@ -4100,6 +4105,7 @@ unsorted:
   - fence-agents-lpar 
   - fence-agents-mpath 
   - fence-agents-netio 
+  - fence-agents-nutanix-ahv 
   - fence-agents-pve 
   - fence-agents-raritan 
   - fence-agents-rcd-serial 
@@ -10273,6 +10279,7 @@ unsorted:
   - kjumpingcube 
   - kjumpingcube-lang 
   - kkc-data 
+  - kl 
   - klatexformula 
   - klatexformula-apidoc 
   - klavaro 
@@ -13059,6 +13066,8 @@ unsorted:
   - libf2fs_format9 
   - libf3d3 
   - libfa1-32bit 
+  - libfaad2 
+  - libfaad_drm2 
   - libfabric 
   - libfabric-devel 
   - libfabric-devel-32bit 
@@ -14814,6 +14823,7 @@ unsorted:
   - libngspice0 
   - libngtcp2-16 
   - libngtcp2_crypto_gnutls8 
+  - libngtcp2_crypto_ossl0 
   - libnice 
   - libnice-devel 
   - libnice10-32bit 
@@ -15038,14 +15048,14 @@ unsorted:
   - libopentimelineio0 
   - libopentracing-cpp1 
   - libopenvdb11_0 
-  - libopenvino2510 
-  - libopenvino_c2510 
-  - libopenvino_ir_frontend2510 
-  - libopenvino_onnx_frontend2510 
-  - libopenvino_paddle_frontend2510 
-  - libopenvino_pytorch_frontend2510 
-  - libopenvino_tensorflow_frontend2510 
-  - libopenvino_tensorflow_lite_frontend2510 
+  - libopenvino2520 
+  - libopenvino_c2520 
+  - libopenvino_ir_frontend2520 
+  - libopenvino_onnx_frontend2520 
+  - libopenvino_paddle_frontend2520 
+  - libopenvino_pytorch_frontend2520 
+  - libopenvino_tensorflow_frontend2520 
+  - libopenvino_tensorflow_lite_frontend2520 
   - libopenvswitch-3_5-0 
   - liboping-devel 
   - liboping0 
@@ -15448,7 +15458,7 @@ unsorted:
   - libpython3_12-1_0-32bit 
   - libpython3_12-1_0-x86-64-v3 
   - libpython3_13-1_0-32bit 
-  - libpython3_13t-1_0 
+  - libpython3_13t1_0 
   - libpython3_14-1_0 
   - libpython3_14-1_0-x86-64-v3 
   - libpython3_14t-1_0 
@@ -20826,6 +20836,7 @@ unsorted:
   - passwdqc-devel 
   - password-store 
   - password-store-dmenu 
+  - pastebinit 
   - pastel 
   - pastel-doc 
   - pasystray 
@@ -22192,6 +22203,7 @@ unsorted:
   - perl-Test-Command 
   - perl-Test-Compile 
   - perl-Test-Deep 
+  - perl-Test-Deep-JSON 
   - perl-Test-Deep-Type 
   - perl-Test-DiagINC 
   - perl-Test-Differences 
@@ -24520,11 +24532,13 @@ unsorted:
   - python311-azure-mgmt-notificationhubs 
   - python311-azure-mgmt-nspkg 
   - python311-azure-mgmt-oep 
+  - python311-azure-mgmt-onlineexperimentation 
   - python311-azure-mgmt-oracledatabase 
   - python311-azure-mgmt-orbital 
   - python311-azure-mgmt-paloaltonetworksngfw 
   - python311-azure-mgmt-peering 
   - python311-azure-mgmt-pineconevectordb 
+  - python311-azure-mgmt-planetarycomputer 
   - python311-azure-mgmt-playwrighttesting 
   - python311-azure-mgmt-policyinsights 
   - python311-azure-mgmt-portal 
@@ -24533,6 +24547,7 @@ unsorted:
   - python311-azure-mgmt-powerbidedicated 
   - python311-azure-mgmt-powerbiembedded 
   - python311-azure-mgmt-privatedns 
+  - python311-azure-mgmt-purestorageblock 
   - python311-azure-mgmt-purview 
   - python311-azure-mgmt-quantum 
   - python311-azure-mgmt-qumulo 
@@ -24549,6 +24564,9 @@ unsorted:
   - python311-azure-mgmt-relay 
   - python311-azure-mgmt-reservations 
   - python311-azure-mgmt-resource 
+  - python311-azure-mgmt-resource-deployments 
+  - python311-azure-mgmt-resource-deploymentscripts 
+  - python311-azure-mgmt-resource-deploymentstacks 
   - python311-azure-mgmt-resourceconnector 
   - python311-azure-mgmt-resourcegraph 
   - python311-azure-mgmt-resourcehealth 
@@ -24607,6 +24625,7 @@ unsorted:
   - python311-azure-monitor-query 
   - python311-azure-multiapi-storage 
   - python311-azure-nspkg 
+  - python311-azure-onlineexperimentation 
   - python311-azure-purview-account 
   - python311-azure-purview-administration 
   - python311-azure-purview-catalog 
@@ -28223,11 +28242,13 @@ unsorted:
   - python312-azure-mgmt-notificationhubs 
   - python312-azure-mgmt-nspkg 
   - python312-azure-mgmt-oep 
+  - python312-azure-mgmt-onlineexperimentation 
   - python312-azure-mgmt-oracledatabase 
   - python312-azure-mgmt-orbital 
   - python312-azure-mgmt-paloaltonetworksngfw 
   - python312-azure-mgmt-peering 
   - python312-azure-mgmt-pineconevectordb 
+  - python312-azure-mgmt-planetarycomputer 
   - python312-azure-mgmt-playwrighttesting 
   - python312-azure-mgmt-policyinsights 
   - python312-azure-mgmt-portal 
@@ -28236,6 +28257,7 @@ unsorted:
   - python312-azure-mgmt-powerbidedicated 
   - python312-azure-mgmt-powerbiembedded 
   - python312-azure-mgmt-privatedns 
+  - python312-azure-mgmt-purestorageblock 
   - python312-azure-mgmt-purview 
   - python312-azure-mgmt-quantum 
   - python312-azure-mgmt-qumulo 
@@ -28252,6 +28274,9 @@ unsorted:
   - python312-azure-mgmt-relay 
   - python312-azure-mgmt-reservations 
   - python312-azure-mgmt-resource 
+  - python312-azure-mgmt-resource-deployments 
+  - python312-azure-mgmt-resource-deploymentscripts 
+  - python312-azure-mgmt-resource-deploymentstacks 
   - python312-azure-mgmt-resourceconnector 
   - python312-azure-mgmt-resourcegraph 
   - python312-azure-mgmt-resourcehealth 
@@ -28310,6 +28335,7 @@ unsorted:
   - python312-azure-monitor-query 
   - python312-azure-multiapi-storage 
   - python312-azure-nspkg 
+  - python312-azure-onlineexperimentation 
   - python312-azure-purview-account 
   - python312-azure-purview-administration 
   - python312-azure-purview-catalog 
@@ -31980,11 +32006,13 @@ unsorted:
   - python313-azure-mgmt-notificationhubs 
   - python313-azure-mgmt-nspkg 
   - python313-azure-mgmt-oep 
+  - python313-azure-mgmt-onlineexperimentation 
   - python313-azure-mgmt-oracledatabase 
   - python313-azure-mgmt-orbital 
   - python313-azure-mgmt-paloaltonetworksngfw 
   - python313-azure-mgmt-peering 
   - python313-azure-mgmt-pineconevectordb 
+  - python313-azure-mgmt-planetarycomputer 
   - python313-azure-mgmt-playwrighttesting 
   - python313-azure-mgmt-policyinsights 
   - python313-azure-mgmt-portal 
@@ -31993,6 +32021,7 @@ unsorted:
   - python313-azure-mgmt-powerbidedicated 
   - python313-azure-mgmt-powerbiembedded 
   - python313-azure-mgmt-privatedns 
+  - python313-azure-mgmt-purestorageblock 
   - python313-azure-mgmt-purview 
   - python313-azure-mgmt-quantum 
   - python313-azure-mgmt-qumulo 
@@ -32009,6 +32038,9 @@ unsorted:
   - python313-azure-mgmt-relay 
   - python313-azure-mgmt-reservations 
   - python313-azure-mgmt-resource 
+  - python313-azure-mgmt-resource-deployments 
+  - python313-azure-mgmt-resource-deploymentscripts 
+  - python313-azure-mgmt-resource-deploymentstacks 
   - python313-azure-mgmt-resourceconnector 
   - python313-azure-mgmt-resourcegraph 
   - python313-azure-mgmt-resourcehealth 
@@ -32067,6 +32099,7 @@ unsorted:
   - python313-azure-monitor-query 
   - python313-azure-multiapi-storage 
   - python313-azure-nspkg 
+  - python313-azure-onlineexperimentation 
   - python313-azure-purview-account 
   - python313-azure-purview-administration 
   - python313-azure-purview-catalog 
@@ -36990,6 +37023,7 @@ unsorted:
   - slf4j-sources 
   - slib 
   - slicot-devel-static 
+  - slim 
   - slop 
   - slop-devel 
   - slsa-verifier 
@@ -37207,6 +37241,7 @@ unsorted:
   - spotify-qt 
   - spotifyd 
   - spread-sheet-widget-devel 
+  - sptlrx 
   - spyder 
   - spyder-lang 
   - sql-parser-devel 
@@ -48945,6 +48980,11 @@ unsorted:
   - wofi-devel 
   - wofi-pass 
   - wol-udev-rules 
+  - wolfictl 
+  - wolfictl-bash-completion 
+  - wolfictl-doc 
+  - wolfictl-fish-completion 
+  - wolfictl-zsh-completion 
   - wondershaper 
   - woodpecker-agent 
   - woodpecker-cli 
@@ -48987,6 +49027,7 @@ unsorted:
   - wumpus 
   - wv 
   - wv-devel 
+  - wvkbd 
   - wwl 
   - wxEDID 
   - wxEphe 

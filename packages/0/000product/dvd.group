@@ -263,7 +263,7 @@
     <package name="coreutils-systemd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cpio" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="cpio-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="cpio-mt" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="cpio-mt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="cpp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cpp15" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cpupower" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -351,7 +351,6 @@
     <package name="dracut-pcr-signature" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="drkonqi6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="drkonqi6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="dump-rmt" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="dvd+rw-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="e2fsprogs" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="ed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4018,7 +4017,7 @@
     <package name="sysvinit-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="tar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="tar-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="tar-rmt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_install_wf -->
+    <package name="tar-rmt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="tcl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="technisat-usb2-firmware" supportstatus="unsupported"/> <!-- reason: dvd:technisat-usb2-firmware -->
     <package name="tecla-keyboard-layout-viewer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
