@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 25 13:50:51 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 10.0.1:
+  * chore(release): v10.0.1
+  * fix: `start_trace` should be passed
+  * chore(release): v10.0.0
+  * tests: add missing flag `--silent`
+  * misc: allow `clippy::if_same_then_else`.
+  * Merge branch '20250625-provide-silent-flag'
+  * refactor: path_buf_filename -> filename
+  * fix: the renaming logic have caused the `outdir` to be useless.
+  * docs: update README.md
+  * feat: if compiled with feature `obs`, make `--silent` flag do nothing.
+  * feat: add silent flag
+  * docs: add a section about reproducibility
+
+-------------------------------------------------------------------
 Sun Jun 22 04:00:00 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 9.0.0:

@@ -503,4 +503,24 @@ package called `obs-service-recomprizz`.</comment>
 </comment>
     <requestid>1287617</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1e50c04c003464f84793d822628cb36c</srcmd5>
+    <version>10.0.1</version>
+    <time>1750930775</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 10.0.1:
+  * chore(release): v10.0.1
+  * fix: `start_trace` should be passed
+  * chore(release): v10.0.0
+  * tests: add missing flag `--silent`
+  * misc: allow `clippy::if_same_then_else`.
+  * Merge branch '20250625-provide-silent-flag'
+  * refactor: path_buf_filename -&gt; filename
+  * fix: the renaming logic have caused the `outdir` to be useless.
+  * docs: update README.md
+  * feat: if compiled with feature `obs`, make `--silent` flag do nothing.
+  * feat: add silent flag
+  * docs: add a section about reproducibility</comment>
+    <requestid>1288559</requestid>
+  </revision>
 </revisionlist>

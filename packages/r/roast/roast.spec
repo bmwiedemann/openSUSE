@@ -17,7 +17,7 @@
 
 
 Name:           roast
-Version:        9.0.0
+Version:        10.0.1
 Release:        0
 Summary:        Simpler tar archiver and extractor
 License:        MPL-2.0
