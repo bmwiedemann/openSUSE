@@ -17,7 +17,7 @@
 #
 
 
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 %define isLeap %nil
 %else
 %undefine isLeap
