@@ -714,4 +714,21 @@ https://botan.randombit.net/news.html#version-3-6-1-2024-10-26
 (🤖: Submission of Botan via https://src.opensuse.org/pool/Botan/pulls/10 by ayankov)</comment>
     <requestid>1252584</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>282fd538d11378b7b6855b47d52270fb</srcmd5>
+    <version>3.8.1</version>
+    <time>1750930737</time>
+    <user>anag_factory</user>
+    <comment>- Bump to 3.8.1
+  * Discussion has started regarding plans for Botan4, current ETA 2027.
+  * Ongoing elliptic curve optimizations and cleanups
+  * Add support for SM4 instructions added in upcoming Intel processors
+  * Add support for extended private keys in ML-KEM to handle certain implementations which do not use the seed encoding.
+  * Add support for SHA-512 instructions added in upcoming Intel processors
+  * The SHA-1 implementation using SSE2 has been extended to support NEON and LoongArch LSX.
+  * The default TLS policy now prefers AES/GCM over ChaCha20Poly1305
+  * Add support for TLS 1.3 post-quantum KEM secp384r1/ML-KEM-1024
+For a full changelog, see: https://botan.randombit.net/news.html#version-3-8-1-2025-05-07</comment>
+    <requestid>1288498</requestid>
+  </revision>
 </revisionlist>
