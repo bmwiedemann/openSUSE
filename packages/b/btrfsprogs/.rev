@@ -1479,4 +1479,12 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment></comment>
     <requestid>1271835</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>716efa78ba0b18526fd6fa5e7f915b41</srcmd5>
+    <version>6.15</version>
+    <time>1750939538</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.15</comment>
+    <requestid>1288561</requestid>
+  </revision>
 </revisionlist>

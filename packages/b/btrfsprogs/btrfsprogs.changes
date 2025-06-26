@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 25 00:00:00 CEST 2025 - dsterba@suse.cz
+
+- update to 6.15
+  * mkfs: new option --inode-flags to specify flags/attributes for
+    inodes/directories/subvolumes
+  * check:
+    * fix false alert on missing checksum for hole
+    * in lowmem mode, fix false alerts when checking refs
+  * convert: check feature compatibility when enabling block-group-tree
+  * tune convert-bgt: fix resume of conversion
+  * rescue: add new command fix-data-checksum, selectively fix or find
+    mismatching checksums
+  * other:
+     * new and updated tests
+     * documentation updates
+
+-------------------------------------------------------------------
 Thu Apr 17 18:29:47 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Fix name clash of parse_range between common/parse-utils.c and
@@ -3023,7 +3040,6 @@ Fri Dec  9 00:43:08 CET 2011 - dsterba@suse.cz
 - updated mkinitrd script to scan devices before mount (bnc#727383)
 
 -------------------------------------------------------------------
-
 Wed Nov  9 14:34:56 CET 2011 - dsterba@suse.cz
 
 - add several tools to mkinitrd if root fs is btrfs
