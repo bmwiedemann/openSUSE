@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-certbot
 Version:        4.1.1
@@ -29,7 +30,6 @@ BuildRequires:  %{python_module configargparse >= 1.5.3}
 BuildRequires:  %{python_module configobj >= 5.0.6}
 BuildRequires:  %{python_module cryptography >= 43.0.0}
 BuildRequires:  %{python_module distro >= 1.0.1}
-BuildRequires:  %{python_module importlib-metadata if %python-base < 3.10}
 BuildRequires:  %{python_module josepy >= 2.0.0}
 BuildRequires:  %{python_module parsedatetime >= 2.4}
 BuildRequires:  %{python_module pip}
@@ -37,8 +37,10 @@ BuildRequires:  %{python_module pyRFC3339}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz >= 2019.3}
 BuildRequires:  %{python_module setuptools >= 41.6.0}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-acme >= %{version}
 Requires:       python-configargparse >= 1.5.3
 Requires:       python-configobj >= 5.0.6
@@ -48,11 +50,6 @@ Requires:       python-josepy >= 2.0.0
 Requires:       python-parsedatetime >= 2.4
 Requires:       python-pyRFC3339
 Requires:       python-pytz >= 2019.3
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%if %{python_version_nodots} < 310
-Requires:       python-importlib-metadata
-%endif
 Provides:       certbot = %{version}
 Obsoletes:      certbot < %{version}
 BuildArch:      noarch
@@ -77,18 +74,8 @@ to lower the barriers to entry for encrypting all HTTP traffic on the internet.
 # test_lock_order[renew] needs internet connection to check ARI
 %pytest -k "not (test_lock_order and renew)"
 
-%post
-%python_install_alternative certbot
-# migrate from old certbot to new certbot
-if test ! -h %{_sysconfdir}/certbot -a -e %{_sysconfdir}/certbot; then
-	echo "Migrating %{_sysconfdir}/certbot to %{_sysconfdir}/letsencrypt..."
-	mv %{_sysconfdir}/letsencrypt %{_sysconfdir}/letsencrypt.empty
-	mv %{_sysconfdir}/certbot %{_sysconfdir}/letsencrypt
-	cd %{_sysconfdir} ; ln -s letsencrypt certbot
-fi
-
-%postun
-%python_uninstall_alternative certbot
+%pre
+%python_libalternatives_reset_alternative certbot
 
 %files %{python_files}
 %license LICENSE.txt

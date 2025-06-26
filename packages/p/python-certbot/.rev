@@ -555,4 +555,13 @@
     <comment>certbot version bump</comment>
     <requestid>1286006</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>1671d50af01ca612d9d53375a3c41c00</srcmd5>
+    <version>4.1.1</version>
+    <time>1750930768</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives
+- Drop some ancient compatibility code</comment>
+    <requestid>1288528</requestid>
+  </revision>
 </revisionlist>
