@@ -19,7 +19,7 @@
 %define executable_name percli
 
 Name:           perses-cli
-Version:        0.51.0
+Version:        0.51.1
 Release:        0
 Summary:        CLI for the Perses observability visualisation project
 License:        Apache-2.0

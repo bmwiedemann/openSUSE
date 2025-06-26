@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 25 04:48:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.51.1:
+  * [BUGFIX]: Move namespace to correct location for Dashboard CR
+    export (#3036)
+  * [BUGFIX] Fixing fetch + JWT token expired + replacing
+    datasource LRU cache by Tanstack query (#3031)
+  * [IGNORE] Bump table plugin to v0.7.1 (#3026)
+  * [BUGFIX] Plugin: Fix internal error returned when the plugin
+    list is empty (#3022)
+  * [BUGFIX] fix issue when configuring datasource with direct
+    access (#3016)
+  * [BUGFIX] remove wrong array length constraint in transform
+    schema (#3012)
+  * [BUGFIX] echart: fixing barchart import (#3011)
+  * [BUGFIX] fix the redundant consumption of the response object
+    when the json and text functions are called (#3009)
+
+-------------------------------------------------------------------
 Sat Jun 07 04:48:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.51.0:
