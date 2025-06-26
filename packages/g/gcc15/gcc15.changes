@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 10 12:32:01 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Remove all %gcc_icecream mode cross-compilers and the corresponding
+  icecream backend subpackages.  Instead use glibc-bootstrap only
+  configs for cross-x86_64-gcc (ipxe,ovmf,qemu), cross-ppc64-gcc (qemu)
+  and cross-arm-gcc (ovmf).
+
+-------------------------------------------------------------------
 Fri Jun  6 12:18:16 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Revert pruning the set of cross-compilers that conflict with different
