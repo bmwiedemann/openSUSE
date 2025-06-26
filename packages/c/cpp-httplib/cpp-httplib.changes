@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 24 14:39:29 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- version update to 0.22.0
+  * Fix ranges that are not in the form 0-n do not work #2157 
+  * Fix windows req/res very slow compared to Linux #1777 
+  * Add CPPHTTPLIB_HEADER_MAX_COUNT
+  * Windows ::isdigit compilation error #2135
+  * Specify version in meson.build #2139
+  * Detect if afunix.h exists #2145
+  * Feature request: let the Request& know which route matched #2101
+  * Feature/multipart headers #2152
+  
+-------------------------------------------------------------------
 Mon May 19 20:04:41 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add dependency from cpp-httplib-devel to libzstd-devel
