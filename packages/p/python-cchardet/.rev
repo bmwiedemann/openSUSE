@@ -73,4 +73,12 @@
 - initial commit</comment>
     <requestid>1114692</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3da10d57ab373eaa5e036060879b0b3e</srcmd5>
+    <version>2.1.19</version>
+    <time>1750930472</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1288521</requestid>
+  </revision>
 </revisionlist>

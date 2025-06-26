@@ -1,7 +1,7 @@
 #
 # spec file for package python-cchardet
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %define skip_python2 1
 %define modname faust-cchardet
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-cchardet
 Version:        2.1.19
@@ -25,19 +26,19 @@ Release:        0
 Summary:        CChardet is high speed universal character encoding detector
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later OR MPL-1.1
 URL:            https://github.com/faust-streaming/cChardet
-Source:         https://files.pythonhosted.org/packages/source/f/%{modname}/%{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/f/faust-cchardet/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(uchardet)
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires:       alts
 %python_subpackages
 
 %description
@@ -57,11 +58,8 @@ cChardet is high speed universal character encoding detector. - binding to `ucha
 %check
 %pytest_arch src/tests
 
-%post
-%python_install_alternative cchardetect
-
-%postun
-%python_uninstall_alternative cchardetect
+%pre
+%python_libalternatives_reset_alternative cchardetect
 
 %files %{python_files}
 %license COPYING
