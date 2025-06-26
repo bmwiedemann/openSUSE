@@ -7,4 +7,12 @@
     <comment>New package in TW - we should be able to ship it now. Please ensure it gets a thorough review.</comment>
     <requestid>1288229</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a3bd696ba070bf142da9ea776cdec20d</srcmd5>
+    <version>2.11.2</version>
+    <time>1750930782</time>
+    <user>anag_factory</user>
+    <comment>More tweaks</comment>
+    <requestid>1288573</requestid>
+  </revision>
 </revisionlist>

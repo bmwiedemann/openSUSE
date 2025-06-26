@@ -30,9 +30,10 @@ License:        GPL-2.0-or-later
 URL:            https://github.com/knik0/faad2
 Source0:        %name-%version.tar
 Source99:       baselibs.conf
+
 BuildRequires:  cmake >= 3.15
 BuildRequires:  pkgconfig
-Requires:       %so_name = %version-%release
+Requires:       %so_name = %version
 
 %description
 FAAD2 is a HE, LC, MAIN and LTP profile, MPEG2 and MPEG-4 AAC decoder.

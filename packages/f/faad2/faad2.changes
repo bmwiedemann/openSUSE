@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 25 14:31:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add libfaad_drm2 to baselibs.conf, build 32bit support for this
+  shared lib too.
+- Relax strict version-release Requires in main package.
+
+-------------------------------------------------------------------
 Fri Jun 20 07:24:46 UTC 2025 - Bjørn Lie <zaitor@opensuse.org>
 
 - Install/package devel manpage.
