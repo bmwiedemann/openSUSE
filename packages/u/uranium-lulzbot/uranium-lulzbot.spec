@@ -44,7 +44,8 @@ Patch1:         fix-build.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
-Recommends:     %{modern_python}-numpy-stl
+# The macro is called "pythons" but in our case it should only contain one python
+Recommends:     %{pythons}-numpy-stl
 
 %description
 Cura is an engine for processing 3D models

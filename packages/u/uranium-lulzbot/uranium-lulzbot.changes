@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 25 09:49:12 UTC 2025 - Nathan Cutler <ncutler@suse.com>
+
+- spec: do not break if primary_python is defined and its value
+  is different from that of modern_python 
+
+-------------------------------------------------------------------
 Wed Jun 18 12:38:46 UTC 2025 - Nathan Cutler <ncutler@suse.com>
 
 - spec: use modern Pythons even other than 3.11, e.g. on Leap 16.0
