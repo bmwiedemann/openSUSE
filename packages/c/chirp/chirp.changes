@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 25 16:39:51 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250620:
+  * tk272g: Allow full-range entry on both models
+  * Add Radioddity GM-30
+  * h777: Convert to using ignore bits on BCD tones
+  * Add ignore_bits to bcdDataType
+
+-------------------------------------------------------------------
 Fri Jun  6 16:45:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250606:
