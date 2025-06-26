@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 26 06:15:52 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.23:
+  * Remove checkhome hack
+
+-------------------------------------------------------------------
 Tue Jun 24 07:39:40 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
-- Update tp 0.19.22:
+- Update to 0.19.22:
   * Remove iso2utf/utf2iso and term2iso/term2utf
   * doc: remove "j" alias
   * merge grml-scripts-core

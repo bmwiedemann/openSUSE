@@ -211,4 +211,15 @@
   * cpu-screen: fix max freq</comment>
     <requestid>1288176</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0fd0ceb40ab840587e02f3acde141e4d</srcmd5>
+    <version>0.19.23</version>
+    <time>1750939548</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.23:
+  * Remove checkhome hack
+
+- Update to 0.19.22:</comment>
+    <requestid>1288633</requestid>
+  </revision>
 </revisionlist>
