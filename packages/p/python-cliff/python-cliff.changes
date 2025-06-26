@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun 25 15:41:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.9.1:
+  * hooks: Update type hints to reflect reality
+  * command: Filter on empty epilog, not empty hooks
+  * typing: Enable basic typing for tests
+  * typing: Add typing to cliff.formatters
+  * typing: Add typing to cliff.sphinxext
+  * typing: Add typing to cliff.hooks
+  * typing: Add typing to cliff.help
+  * typing: Add typing to cliff.complete
+  * typing: Add typing to cliff.command
+  * typing: Add typing to cliff.commandmanager
+  * typing: Add typing to cliff.\_argparse
+  * typing: Add typing to cliff.columns
+  * typing: Add typing to cliff.interactive
+  * typing: Add typing to cliff.app
+  * pre-commit: Enable mypy
+  * typing: Fix initial typing issues
+  * pre-commit: Bump versions
+
+-------------------------------------------------------------------
 Thu Jan  9 16:03:46 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
 
 - update to 4.8.0:

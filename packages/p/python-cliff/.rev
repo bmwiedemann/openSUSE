@@ -596,4 +596,29 @@
     <comment></comment>
     <requestid>1236818</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ddbd48391571fae512b8ba3865fe1f37</srcmd5>
+    <version>4.9.1</version>
+    <time>1750930783</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.9.1:
+  * hooks: Update type hints to reflect reality
+  * command: Filter on empty epilog, not empty hooks
+  * typing: Enable basic typing for tests
+  * typing: Add typing to cliff.formatters
+  * typing: Add typing to cliff.sphinxext
+  * typing: Add typing to cliff.hooks
+  * typing: Add typing to cliff.help
+  * typing: Add typing to cliff.complete
+  * typing: Add typing to cliff.command
+  * typing: Add typing to cliff.commandmanager
+  * typing: Add typing to cliff.\_argparse
+  * typing: Add typing to cliff.columns
+  * typing: Add typing to cliff.interactive
+  * typing: Add typing to cliff.app
+  * pre-commit: Enable mypy
+  * typing: Fix initial typing issues
+  * pre-commit: Bump versions</comment>
+    <requestid>1288578</requestid>
+  </revision>
 </revisionlist>
