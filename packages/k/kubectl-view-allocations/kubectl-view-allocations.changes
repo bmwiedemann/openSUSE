@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 25 09:19:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.22.1:
+  * (cargo-release) version 0.22.1
+  * fix conflict between `--accept-invalid-certs` (from cli args)
+    and `insecure-skip-tls-verify: true` (from kubeconfig)
+  * use utf-8 gitmoji for release commit message
+  * Update dependencies
+
+-------------------------------------------------------------------
 Mon Jun 16 19:23:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.22.0:
