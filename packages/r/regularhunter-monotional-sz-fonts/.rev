@@ -17,4 +17,14 @@
 </comment>
     <requestid>1287465</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>916706fd94b2e0f054c2572ddd45ca68</srcmd5>
+    <version>2.7</version>
+    <time>1750930807</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.7:
+  * Rework % glyph for all fonts
+</comment>
+    <requestid>1288614</requestid>
+  </revision>
 </revisionlist>
