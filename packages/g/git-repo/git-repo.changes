@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 25 13:01:50 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.56:
+  * sync: Share final error handling logic between sync modes
+  * sync: Share manifest list update logic between sync modes
+  * sync: Share self-update logic between sync modes
+  * sync: clarify job flags when using interleaved
+  * sync: Implement --interleaved sync worker
+  * sync: Add orchestration logic for --interleaved
+  * upload: fix FileNotFoundError when no superproject
+  * sync: Add scaffolding for interleaved sync
+
+-------------------------------------------------------------------
 Fri Jun 13 17:37:23 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.55.2:
