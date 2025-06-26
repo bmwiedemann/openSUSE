@@ -17,6 +17,7 @@
 
 
 %global modname vobject
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-vobject
 Version:        0.9.9
@@ -36,12 +37,12 @@ BuildRequires:  %{python_module python-dateutil >= 2.7.0}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-python-dateutil >= 2.7.0
 Requires:       python-pytz
-Requires(post): update-alternatives
-Requires(preun): update-alternatives
 Recommends:     python-PyICU
 Provides:       %{modname} = %{version}
 Obsoletes:      %{modname} < 0.9.2
@@ -59,7 +60,7 @@ unicode strings.
 # Fix wrong-file-end-of-line-encoding
 sed -i 's/\r$//' ACKNOWLEDGEMENTS.txt
 
-cp %{S:1} test_files/.
+cp %{SOURCE1} test_files/.
 
 %build
 %pyproject_wheel
@@ -74,13 +75,9 @@ done
 %check
 %pyunittest -v tests.py
 
-%post
-%python_install_alternative change_tz
-%python_install_alternative ics_diff
-
-%postun
-%python_uninstall_alternative change_tz
-%python_uninstall_alternative ics_diff
+%pre
+%python_libalternatives_reset_alternative change_tz
+%python_libalternatives_reset_alternative ics_diff
 
 %files %{python_files}
 %license LICENSE-2.0.txt

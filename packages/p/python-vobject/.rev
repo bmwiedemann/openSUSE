@@ -95,4 +95,12 @@
 - Refresh no-six.patch.</comment>
     <requestid>1288115</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>a7fbc2c1351d5db38372481178ed9d71</srcmd5>
+    <version>0.9.9</version>
+    <time>1750939535</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1288540</requestid>
+  </revision>
 </revisionlist>
