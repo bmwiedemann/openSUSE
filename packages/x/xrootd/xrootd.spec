@@ -48,7 +48,7 @@
 %bcond_with    ceph
 
 Name:           %{pname}%{psuffix}
-Version:        5.8.2
+Version:        5.8.3
 Release:        0
 Summary:        An eXtended Root Daemon
 License:        LGPL-3.0-or-later

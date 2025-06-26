@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Jun 21 08:06:28 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.8.3:
+  * [XrdCl] Fix occasionally missed reply messages from the server
+    (gh#xrootd/xrootd#2516).
+  * [XrdHttp] Fix crash due to thread-safety issue in bridge
+    redrive (gh#xrootd/xrootd#2503).
+  * [XrdPfc] Fix deadlock at startup (gh#xrootd/xrootd#2505,
+    gh#xrootd/xrootd#2507).
+  * [Server] Fix crash caused by race condition in XrdPosix
+    callback handler (gh#xrootd/xrootd#2517).
+  * [XrdHttp] Fix HTTP protocol errors when using
+    X-Transfer-Status (gh#xrootd/xrootd#2443).
+  * [XrdOss] Fix file access mode detection
+    (gh#xrootd/xrootd#2510).
+  * [XrdPfc] Fix file access mode detection
+    (gh#xrootd/xrootd#2508).
+  * [XrdPosix] Correct file open mode conversion
+    (gh#xrootd/xrootd#2510).
+  * [XrdCl] Create directory target by default with recursive
+    copies (gh#xrootd/xrootd#2501).
+  * [CMake] Add Xrd/XrdSendQ.hh to list of installed private
+    headers (gh#xrootd/xrootd#2497).
+  * [XrdHttp] Add unit tests for read failures during transfers
+    (gh#xrootd/xrootd#2443).
+  * [Python] Replace license classifier with SPDX license
+    expression (gh#xrootd/xrootd#2502).
+  * [XrdHttp] Add initial webdav error codes for file path and
+    permission errors (gh#xrootd/xrootd#2261).
+
+-------------------------------------------------------------------
 Sun May 11 09:01:08 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.8.2:
