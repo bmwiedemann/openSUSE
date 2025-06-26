@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 24 11:56:07 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.1
+- Changes since 6.4.0:
+  * Update version for new release 6.4.1
+  * applets/kicker: resolve non-existing files to their url (kde#402820)
+  * weather/envcan: Fix handling of non-continuous hourly folder list
+  * DayDelegate: disable days not in the current month
+  * kcms/feedback: remove little hover icons (kde#505761)
+  * trianglemousefilter: Wrap unit test in if BUILD_TESTING
+  * kcms/wallpaper: add missing domain strings to allow translation (kde#505122)
+  * KlipperPopup: Always start from beginning of the list (kde#505493)
+  * Klipper: Remove local Configure Klipper action (kde#501632)
+  * RunCommand: fix "hide faded completion text" calculation (kde#505698)
+  * shell/containmentconfigview: let wallpaperConfigModel emit wallpaperPluginsChanged
+  * Achieve WCAG AA text contrast for labels
+  * Fix ambiguous `operator==()` overload on Qt 6.10
+
+-------------------------------------------------------------------
 Thu Jun 12 10:37:59 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.0:
