@@ -23,4 +23,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1176966</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>e56e1ad5c2d9a3138f5c00af525aaffa</srcmd5>
+    <version>1.1+git20240123.b9e215b</version>
+    <time>1750930648</time>
+    <user>anag_factory</user>
+    <comment>- Add missing pkgconfig(gl) buildrequire (implicit earlier through
+  SDL2-devel presumably)</comment>
+    <requestid>1288395</requestid>
+  </revision>
 </revisionlist>

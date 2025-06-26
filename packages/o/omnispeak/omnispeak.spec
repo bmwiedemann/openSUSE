@@ -1,7 +1,7 @@
 #
 # spec file for package omnispeak
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2023-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,8 +36,9 @@ BuildRequires:  hicolor-icon-theme
 %if 0%{?suse_version} >= 1599
 BuildRequires:  libieee1284-devel
 %endif
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(sdl2)
 
 %description
