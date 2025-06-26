@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 25 15:33:36 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 28.3.0-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/28/#2830>
+- Rebase patches:
+ * 0001-SECRETS-SUSE-always-clear-our-internal-secrets.patch
+ * 0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+ * 0003-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+ * 0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+ * 0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+ * 0006-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+
+-------------------------------------------------------------------
 Mon Jun 23 12:46:53 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 [ This update is a no-op, only needed to work around unfortunate automated
@@ -106,7 +119,7 @@ Wed Jun  4 05:21:18 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 Fri May 30 17:55:22 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 28.2.2-ce. See upstream changelog online at
-  <https://github.com/moby/moby/releases/tag/v28.2.2>
+  <https://docs.docker.com/engine/release-notes/28/#2822>
 - Rebase patches:
  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch

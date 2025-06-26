@@ -1,4 +1,4 @@
-From fd5b328e86bf14107f1a73325dc3bb4e12c5980f Mon Sep 17 00:00:00 2001
+From 993356d0603739961b62a8010d96f412e56b9196 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Wed, 11 Oct 2023 21:19:12 +1100
 Subject: [PATCH 6/6] SLE12: revert "apparmor: remove version-conditionals from
@@ -322,5 +322,5 @@ index 35c75300f8f0..b7a0299af2b8 100644
  }
  `
 -- 
-2.49.0
+2.50.0
 
