@@ -187,4 +187,12 @@ Needed for python3-jupyter_ipython</comment>
     <comment></comment>
     <requestid>1230088</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>5991d02f0d60f8dac6ec69f3803e11da</srcmd5>
+    <version>0.50</version>
+    <time>1750930766</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1288542</requestid>
+  </revision>
 </revisionlist>

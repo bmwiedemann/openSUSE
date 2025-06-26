@@ -1,7 +1,7 @@
 #
 # spec file for package python-check-manifest
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-check-manifest%{psuffix}
 Version:        0.50
@@ -37,15 +38,12 @@ BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-build >= 0.1
 Requires:       python-setuptools
-%if 0%{?python_version_nodots} < 311
-Requires:       python-tomli
-%endif
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     git-core > 2.11
 Recommends:     python-pip
 Recommends:     python-wheel
@@ -53,6 +51,9 @@ Suggests:       breezy
 Suggests:       mercurial
 Suggests:       subversion
 BuildArch:      noarch
+%if 0%{?python_version_nodots} < 311
+Requires:       python-tomli
+%endif
 %if %{with test}
 BuildRequires:  %{python_module check-manifest = %{version}}
 BuildRequires:  %{python_module pytest}
@@ -96,11 +97,8 @@ git config --global --add protocol.file.allow always
 %endif
 
 %if !%{with test}
-%post
-%python_install_alternative check-manifest
-
-%postun
-%python_uninstall_alternative check-manifest
+%pre
+%python_libalternatives_reset_alternative check-manifest
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
