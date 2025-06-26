@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Jun 24 19:44:35 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 12.7.7.
+- Changes for 12.7.7:
+  * Rework overflow check function.
+  * pidstat: Add JSON output format (option "-o JSON").
+  * [Siddhi Katage]: pidstat: Fix bogus %usr values in pidstat output.
+  * pidstat: Free structures before exiting.
+  * pidstat: Make sure interval is specified when option -e is used.
+  * pidstat: Create separate functions to display data for current task.
+  * pidstat: Various cosmetic changes.
+  * cifsiostat: Add JSON output format (option "-o JSON").
+  * cifsiostat: Display error message when no CIFS fs are found.
+  * cifsiostat: Add new option -y to tell cifsiostat to omit the first
+    report with statistics since system restart.
+  * tapestat: Add JSON output format (option "-o JSON").
+  * tapestat: Set handler for SIGALRM in rw_tape_stat_loop() function.
+  * tapestat: Call write_sample_timestamp() to display timestamp.
+  * mpstat: Properly terminate JSON output when ^C entered on first
+    interval.
+  * iostat: Remove extra blank line when omitting first report.
+  * cifsiostat, tapestat and pidstat manual pages updated.
+  * Use the binary units (kibibytes, mebibytes...) instead of kilobytes,
+    megabytes... in all manual pages.
+  * FAQ updated.
+  * [Peter Portante]: Slight changes to compile on Mac OS X.
+  * [Peter Portante]: Add missing "void" parameter to
+    init_custom_color_palette() function.
+  * Use xflags variable for options used by multiple commands.
+  * Move write_sample_timestamp() function to common.c file.
+  * Update headers files included.
+  * Add new non regression tests.
+- Changes for 12.7.6:
+  * sar/sadf: [A_NET_ETCP]: Rename retrans/s field to retrseg/s
+    because it was already used in A_NET_NFS report.
+  * sadf: SVG: Fix oversized SVG canvas height.
+  * sadf: Don't cap SVG graph output at 100%.
+  * sadf: A_NET_SOFT: Don't display graphs for offline CPU.
+  * sadf: SVG: Don't ignore other views when one has to be skipped.
+  * sadf: Make sure structures will be alloacated for every installed
+    CPU.
+  * sadf: Define MIN_CANVAS_HEIGHT constant.
+  * sar: Display min/max values only when available.
+  * Define macros for CPU manipulation.
+  * SREALLOC() macro: Make sure size is not zero.
+  * Fix a warning given by gcc v13 with -fanalyzer option.
+  * [Eli Schwartz]: configure.ac: fix erroneous bashisms.
+  * sar manual page updated.
+  * DTD and XSD documents updated.
+  * Year updated in copyright messages.
+  * Other cosmetic changes in code.
+  * FAQ and README files updated.
+  * Non regression tests updated. New tests added.
+
+-------------------------------------------------------------------
 Thu Aug  8 06:07:30 UTC 2024 - Johannes Segitz <jsegitz@suse.com>
 
 - Updated sysstat-8.1.6-sa1sa2lock.diff to use flock to create the
@@ -10,121 +65,121 @@ Fri Jun  7 08:58:41 UTC 2024 - pgajdos@suse.com
 
 - version update to 12.7.5
   2023/12/17: Version 12.7.5 - Sebastien Godard (sysstat <at> orange.fr)
-	* [Quan quan Cao]: sar/sadc: Add new metrics pgprom/s and pgdem/s.
-	* sar: Remove %vmeff metric.
-	* sadf: Update various output formats to take into account metrics
-	  that have been added or removed.
-	* Update DTD and XSD documents.
-	* Update sar manual page.
-	* sar: Add a cron entry and a new systemd service and timer to rotate
-	  daily data file at midnight.
-	* Option -V with sysstat commands also displays environment contents.
-	* [Sam Morris]: Use correct encoding to produce hyphen-minus when
-	  rendering man pages.
-	* Add UMASK variable definition to sysstat(5) manual page.
-	* Update non regression tests.
-	* Add --getenv option to commands that didn't have it.
-	* Update README file for Debian-based distros.
-	* Update link to my personal web page in README and manual pages.
-	* NLS: Translations updated.
+    * [Quan quan Cao]: sar/sadc: Add new metrics pgprom/s and pgdem/s.
+    * sar: Remove %vmeff metric.
+    * sadf: Update various output formats to take into account metrics
+      that have been added or removed.
+    * Update DTD and XSD documents.
+    * Update sar manual page.
+    * sar: Add a cron entry and a new systemd service and timer to rotate
+      daily data file at midnight.
+    * Option -V with sysstat commands also displays environment contents.
+    * [Sam Morris]: Use correct encoding to produce hyphen-minus when
+      rendering man pages.
+    * Add UMASK variable definition to sysstat(5) manual page.
+    * Update non regression tests.
+    * Add --getenv option to commands that didn't have it.
+    * Update README file for Debian-based distros.
+    * Update link to my personal web page in README and manual pages.
+    * NLS: Translations updated.
   2023/06/18: Version 12.7.4 - Sebastien Godard (sysstat <at> orange.fr)
-	* Makefile.in: Fix installation error.
-	* Makefile.in: Remove gcc warning displayed in LTO mode.
+    * Makefile.in: Fix installation error.
+    * Makefile.in: Remove gcc warning displayed in LTO mode.
   2023/06/16: Version 12.7.3 - Sebastien Godard (sysstat <at> orange.fr)
-	* sar: Add new option '-x' used to display extended reports.
-	* [Pavel Kopylov]: Fix an overflow which is still possible for
-	  some values.
-	* [Jan Kurik]: Fix export of PSI metrics to a PCP archive.
-	* [Lukáš Zaoral]: Tools that take `--dec=X` option should only accept
-	  digits.
-	* common.c: Fix an overflow which was still possible for some values.
-	* iostat: Try to avoid displaying negative values.
-	* Free pointer if realloc() fails.
-	* Don't check if unsigned expressions are less than zero.
-	* Declare parameters with "const" when possible.
-	* Remove conditions which are always true.
-	* Reduce variables scope when relevant.
-	* Don't assign values that are never used.
-	* Fix types used in format strings.
-	* Split large functions into smaller ones.
-	* Specify field width when using sscanf() function.
-	* search_list_item(): Return position in list instead of a boolean.
-	* add_list_item(): Also return item position in list.
-	* svg_stats.c: Ignore negative values for fields position.
-	* svg_stats.c: Reuse buffers pointers definition.
-	* svg_stats.c: Reuse intermediate calculations.
-	* svg_stats.c: Don't repeat test on DISPLAY_CPU_DEF().
-	* sa_common.c: Don't use (void *) pointer in calculation.
-	* iostat.c: Clarify calculation precedence for '+' and '?'.
-	* sar/sadf: Refactor buffer allocation functions.
-	* sar/sadf: Add a check on file's records header data.
-	* sar/sadf: Stop when invalid data are read in records header.
-	* sar/sadf: Check upper bounds of value read from file.
-	* sadf_misc.c: Fix indentation in code.
-	* activity.c: Init item_list even for other commands than sadf.
-	* sa_conv.c: Reallocate buffers only when needed.
-	* sa_conv.c: Fix untrusted allocation size.
-	* pr_stats.c: Remove some dead code.
-	* sar.c: Make sure buffer is null terminated.
-	* do_test: Add several new options.
-	* do_test: Don't strip binaries when in TEST mode.
-	* Update non regression tests.
-	* simtest: Change default _unix_time value.
-	* Makefile.in: Simplify dependencies.
-	* Makefile_in: Small update made to copyyear target.
-	* sadf: XML: Update DTD and XSD documents.
-	* sadf: XML: Remove references to my personal web site.
-	* Restore mode for iconfig file.
-	* Fix typo in sar's manual page. Sar manual page updated.
-	* Other manual pages updated.
+    * sar: Add new option '-x' used to display extended reports.
+    * [Pavel Kopylov]: Fix an overflow which is still possible for
+      some values.
+    * [Jan Kurik]: Fix export of PSI metrics to a PCP archive.
+    * [Lukáš Zaoral]: Tools that take `--dec=X` option should only accept
+      digits.
+    * common.c: Fix an overflow which was still possible for some values.
+    * iostat: Try to avoid displaying negative values.
+    * Free pointer if realloc() fails.
+    * Don't check if unsigned expressions are less than zero.
+    * Declare parameters with "const" when possible.
+    * Remove conditions which are always true.
+    * Reduce variables scope when relevant.
+    * Don't assign values that are never used.
+    * Fix types used in format strings.
+    * Split large functions into smaller ones.
+    * Specify field width when using sscanf() function.
+    * search_list_item(): Return position in list instead of a boolean.
+    * add_list_item(): Also return item position in list.
+    * svg_stats.c: Ignore negative values for fields position.
+    * svg_stats.c: Reuse buffers pointers definition.
+    * svg_stats.c: Reuse intermediate calculations.
+    * svg_stats.c: Don't repeat test on DISPLAY_CPU_DEF().
+    * sa_common.c: Don't use (void *) pointer in calculation.
+    * iostat.c: Clarify calculation precedence for '+' and '?'.
+    * sar/sadf: Refactor buffer allocation functions.
+    * sar/sadf: Add a check on file's records header data.
+    * sar/sadf: Stop when invalid data are read in records header.
+    * sar/sadf: Check upper bounds of value read from file.
+    * sadf_misc.c: Fix indentation in code.
+    * activity.c: Init item_list even for other commands than sadf.
+    * sa_conv.c: Reallocate buffers only when needed.
+    * sa_conv.c: Fix untrusted allocation size.
+    * pr_stats.c: Remove some dead code.
+    * sar.c: Make sure buffer is null terminated.
+    * do_test: Add several new options.
+    * do_test: Don't strip binaries when in TEST mode.
+    * Update non regression tests.
+    * simtest: Change default _unix_time value.
+    * Makefile.in: Simplify dependencies.
+    * Makefile_in: Small update made to copyyear target.
+    * sadf: XML: Update DTD and XSD documents.
+    * sadf: XML: Remove references to my personal web site.
+    * Restore mode for iconfig file.
+    * Fix typo in sar's manual page. Sar manual page updated.
+    * Other manual pages updated.
   2023/01/29: Version 12.7.2 - Sebastien Godard (sysstat <at> orange.fr)
-	* All commands: Avoid displaying healthy metrics values in "red".
-	* sar/sadf: Add new activity: Battery statistics (A_PWR_BAT).
-	* [Kevin Stubbings]: Add CodeQL workflow.
-	* sar: Make sure timestamps are always displayed in local time.
-	* sar/sadf: Starting and ending times used with options -s/-e can now
-	  be entered as a number of seconds since the epoch.
-	* sar/sadf: Strengthen tests made on arguments given to options -s/-e.
-	* sadf: PCP: Fix pmiID used for two USB metrics [12.6.2].
-	* [Nathanael P Wilson]: sadf: Fix extra space when no TZ printed.
-	* sadc: Add another overflow check [12.6.2].
-	* DTD and XSD documents updated.
-	* Makefile: Fix dependencies.
-	* NLS translations updated. New Belarusian translation added.
-	* Remove LGTM links from README file.
-	* Manual pages updated.
-	* Non regression tests updated.
+    * All commands: Avoid displaying healthy metrics values in "red".
+    * sar/sadf: Add new activity: Battery statistics (A_PWR_BAT).
+    * [Kevin Stubbings]: Add CodeQL workflow.
+    * sar: Make sure timestamps are always displayed in local time.
+    * sar/sadf: Starting and ending times used with options -s/-e can now
+      be entered as a number of seconds since the epoch.
+    * sar/sadf: Strengthen tests made on arguments given to options -s/-e.
+    * sadf: PCP: Fix pmiID used for two USB metrics [12.6.2].
+    * [Nathanael P Wilson]: sadf: Fix extra space when no TZ printed.
+    * sadc: Add another overflow check [12.6.2].
+    * DTD and XSD documents updated.
+    * Makefile: Fix dependencies.
+    * NLS translations updated. New Belarusian translation added.
+    * Remove LGTM links from README file.
+    * Manual pages updated.
+    * Non regression tests updated.
   2022/11/06: Version 12.7.1 - Sebastien Godard (sysstat <at> orange.fr)
-	* Fix possible overflow in sa_common.c (GHSL-2022-074) [12.6.1].
-	* sadf: Add support for option -t with SVG output to make it possible
-	  to display timestamps in the same locale as that of the file creator.
-	* sadf: Print timezone instead of UTC in true time mode. Timezone is
-	  also displayed in local time.
-	* sadf: PCP: Fix timestamps written to PCP archive file.
-	* sar: Add new environment variable S_REPEAT_HEADER.
-	* pidstat: Return exit code of the process that was monitored with option
-	  -e.
-	* mpstat: Add option -H to handle vCPU physical hotplug.
-	* Add local, xlocal and debug targets to iconfig script.
-	* Turn off gcc's tree-slp-vectorize option which was making sadf crash
-	  in some situations.
-	* sa_conv.c: Make size of statistics structures from older sysstat
-	  versions immutable [12.6.1].
-	* [Bernhard M. Wiedemann]: Declare sadc dependency on libsyscom.a
-	  [12.6.1].
-	* [Steve Kay]: Fix gcc v11.2 warnings [12.6.1].
-	* [Steve Kay]: Various cosmetic fixes [12.6.1].
-	* [Jan Christoph Uhde]: sar: Remove `-I int_list` from man-page and
-	  help [12.6.1].
-	* [Frank Dana]: Consolidate systemctl commands in README file [12.6.1].
-	* [Rong Tao]: Remove whitespace characters at the end of lines
-	  [12.6.1].
-	* Update configure file to deal with newer autoconf version. configure.in
-	  file is renamed to configure.ac.
-	* Update DTD and XSD documents.
-	* sar and sysstat manual pages updated.
-	* NLS updated. Add new Georgian translation.
-	* Non regression tests updated.
+    * Fix possible overflow in sa_common.c (GHSL-2022-074) [12.6.1].
+    * sadf: Add support for option -t with SVG output to make it possible
+      to display timestamps in the same locale as that of the file creator.
+    * sadf: Print timezone instead of UTC in true time mode. Timezone is
+      also displayed in local time.
+    * sadf: PCP: Fix timestamps written to PCP archive file.
+    * sar: Add new environment variable S_REPEAT_HEADER.
+    * pidstat: Return exit code of the process that was monitored with option
+      -e.
+    * mpstat: Add option -H to handle vCPU physical hotplug.
+    * Add local, xlocal and debug targets to iconfig script.
+    * Turn off gcc's tree-slp-vectorize option which was making sadf crash
+      in some situations.
+    * sa_conv.c: Make size of statistics structures from older sysstat
+      versions immutable [12.6.1].
+    * [Bernhard M. Wiedemann]: Declare sadc dependency on libsyscom.a
+      [12.6.1].
+    * [Steve Kay]: Fix gcc v11.2 warnings [12.6.1].
+    * [Steve Kay]: Various cosmetic fixes [12.6.1].
+    * [Jan Christoph Uhde]: sar: Remove `-I int_list` from man-page and
+      help [12.6.1].
+    * [Frank Dana]: Consolidate systemctl commands in README file [12.6.1].
+    * [Rong Tao]: Remove whitespace characters at the end of lines
+      [12.6.1].
+    * Update configure file to deal with newer autoconf version. configure.in
+      file is renamed to configure.ac.
+    * Update DTD and XSD documents.
+    * sar and sysstat manual pages updated.
+    * NLS updated. Add new Georgian translation.
+    * Non regression tests updated.
 - modified patches
   % sysstat-8.0.4-pagesize.diff (refreshed)
   % sysstat-8.1.6-sa1sa2lock.diff (refreshed)
