@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 21 05:11:43 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.35:
+  * Pitch analysis: guard against zero pitch floor if logarithmic.
+  * Scripting: fixed$ () for vectors and matrices.
+  * Linux: removed hard-coded background colour.
+
+-------------------------------------------------------------------
 Sat Jun  7 20:20:35 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.34:
