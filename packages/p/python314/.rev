@@ -2103,4 +2103,12 @@
 </comment>
     <requestid>1287713</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>a8ae381d6fbb7f837e8903a31cda838f</srcmd5>
+    <version>3.14.0~b3</version>
+    <time>1750930690</time>
+    <user>anag_factory</user>
+    <comment>Also addresses bsc#1244705 (CVE-2025-6069) and CVE-2025-4435 (gh#135034, bsc#1244061).</comment>
+    <requestid>1288600</requestid>
+  </revision>
 </revisionlist>
