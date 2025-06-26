@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>1266729</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0274fb61b52a29d0438bd68822aee64a</srcmd5>
+    <version>0.4.0</version>
+    <time>1750939552</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.4.0:
+  * Add aliases for columns
+  * Add seagull_statement_bind_object
+  * Add Statement.column object to bind result columns into an object
+  * Add Seagull.Statement.new_from_resource</comment>
+    <requestid>1288650</requestid>
+  </revision>
 </revisionlist>

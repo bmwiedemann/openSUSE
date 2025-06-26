@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 26 08:10:50 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.4.0:
+  * Add aliases for columns
+  * Add seagull_statement_bind_object
+  * Add Statement.column object to bind result columns into an object
+  * Add Seagull.Statement.new_from_resource
+
+-------------------------------------------------------------------
 Tue Apr  1 19:30:44 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging
