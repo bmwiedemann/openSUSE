@@ -63,4 +63,12 @@
     <comment>removed unknown file, should be sane now</comment>
     <requestid>1219521</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>fa8b18356430489043b7cc54dfb3399c</srcmd5>
+    <version>0.60.2</version>
+    <time>1750930710</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1288420</requestid>
+  </revision>
 </revisionlist>

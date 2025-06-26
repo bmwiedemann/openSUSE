@@ -25,6 +25,8 @@ License:        BSD-2-Clause AND MIT
 URL:            https://github.com/decalage2/oletools
 Source:         https://files.pythonhosted.org/packages/source/o/oletools/oletools-%{version}.zip
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module colorclass}
@@ -61,15 +63,17 @@ Python tools to analyze security characteristics of MS Office and OLE files (als
 %setup -q -n oletools-%{version}
 find oletools -name "*.py" -exec sed -i '1{/\/bin\/env python/d;}' {} \+
 find oletools -name "*.py" -exec sed -i 's/\r\n/\n/' {} \+
+# remove actually optional dependency from requires
+sed -i '/.*pcodedmp>=/d' setup.py
 dos2unix tests/olevba/test_basic.py oletools/olevba.py README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-# remove actually optional dependency from requires
-sed -i '1{/pcodedmp/d;}' %{buildroot}%{python_sitelib}/oletools-*.egg-info/requires.txt
+%pyproject_install
+# Do not ship docs in sitelib
+%python_expand rm -r %{buildroot}%{$python_sitelib}/oletools/doc
 %python_clone -a %{buildroot}%{_bindir}/ezhexviewer
 %python_clone -a %{buildroot}%{_bindir}/mraptor
 %python_clone -a %{buildroot}%{_bindir}/olebrowse
@@ -90,7 +94,6 @@ sed -i '1{/pcodedmp/d;}' %{buildroot}%{python_sitelib}/oletools-*.egg-info/requi
 %check
 # test_macros, test_empty_behaviour, test_rtf_behaviour, test_text_behaviour, test_xlm: reported at https://github.com/decalage2/oletools/issues/767
 %pytest -k 'not test_rough_doctype and not test_encrypted and not test_crypt_return and not test_all and not test_macros and not test_empty_behaviour and not test_rtf_behaviour and not test_text_behaviour and not test_xlm'
-#%%pyunittest
 
 %post
 %python_install_alternative ezhexviewer mraptor olebrowse oledir oleid olemap olemeta oletimes olevba pyxswf rtfobj oleobj msodde olefile ftguess
@@ -117,6 +120,6 @@ sed -i '1{/pcodedmp/d;}' %{buildroot}%{python_sitelib}/oletools-*.egg-info/requi
 %python_alternative %{_bindir}/olefile
 %python_alternative %{_bindir}/ftguess
 %{python_sitelib}/oletools/
-%{python_sitelib}/oletools-%{version}-py*.egg-info
+%{python_sitelib}/oletools-%{version}.dist-info
 
 %changelog
