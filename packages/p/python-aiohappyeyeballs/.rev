@@ -55,4 +55,14 @@
     <comment></comment>
     <requestid>1281282</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fb0cb34c038b559d577674588b2283f9</srcmd5>
+    <version>2.6.1</version>
+    <time>1750930471</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1288262 from mcalabkova
+
+- Add event_loop.patch to reenable tests with pytest-asyncio 1.0</comment>
+    <requestid>1288471</requestid>
+  </revision>
 </revisionlist>

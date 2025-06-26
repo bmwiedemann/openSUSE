@@ -1,0 +1,30 @@
+Index: aiohappyeyeballs-2.6.1/tests/conftest.py
+===================================================================
+--- aiohappyeyeballs-2.6.1.orig/tests/conftest.py
++++ aiohappyeyeballs-2.6.1/tests/conftest.py
+@@ -38,25 +38,3 @@ def long_repr_strings() -> Generator[Non
+     finally:
+         arepr.maxstring = original_maxstring
+         arepr.maxother = original_maxother
+-
+-
+-@pytest.fixture(autouse=True)
+-def verify_no_lingering_tasks(
+-    event_loop: asyncio.AbstractEventLoop,
+-) -> Generator[None, None, None]:
+-    """Verify that all tasks are cleaned up."""
+-    tasks_before = asyncio.all_tasks(event_loop)
+-    yield
+-
+-    tasks = asyncio.all_tasks(event_loop) - tasks_before
+-    for task in tasks:
+-        pytest.fail(f"Task still running: {task!r}")
+-        task.cancel()
+-    if tasks:
+-        event_loop.run_until_complete(asyncio.wait(tasks))
+-
+-    for handle in get_scheduled_timer_handles(event_loop):
+-        if not handle.cancelled():
+-            with long_repr_strings():
+-                pytest.fail(f"Lingering timer after test {handle!r}")
+-                handle.cancel()

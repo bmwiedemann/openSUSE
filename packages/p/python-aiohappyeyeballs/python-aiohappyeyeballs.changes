@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 24 13:00:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add event_loop.patch to reenable tests with pytest-asyncio 1.0
+
+-------------------------------------------------------------------
 Wed May 28 06:51:28 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.6.1
