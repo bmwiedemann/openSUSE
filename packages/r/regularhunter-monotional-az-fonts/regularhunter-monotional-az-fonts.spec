@@ -17,7 +17,7 @@
 
 
 Name:           regularhunter-monotional-az-fonts
-Version:        2.6
+Version:        2.7
 Release:        0
 Summary:        A humanist, monospace font based on DejaVu
 License:        OFL-1.1
