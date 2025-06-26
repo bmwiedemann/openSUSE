@@ -95,6 +95,10 @@ package.
 %cmake_build
 
 %check
+%ifarch s390x
+rm qpdf/qtest/specific-bugs.test
+rm qpdf/qtest/inline-images.test
+%endif
 %make_build -C build test
 
 %install

@@ -999,4 +999,12 @@
   * for other changes see (forwarded request 1285092 from pgajdos)</comment>
     <requestid>1285363</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>162ea7e0e9341f57985f3f0350ebef32</srcmd5>
+    <version>11.10.1</version>
+    <time>1750939537</time>
+    <user>anag_factory</user>
+    <comment>- disable specific-bugs and inline-images tests for s390x [bsc#1245308]</comment>
+    <requestid>1288546</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 25 11:27:11 UTC 2025 - pgajdos@suse.com
+
+- disable specific-bugs and inline-images tests for s390x [bsc#1245308]
+
+-------------------------------------------------------------------
 Thu Jun 12 07:37:35 UTC 2025 - pgajdos@suse.com
 
 - version update to 11.10.1
