@@ -1409,6 +1409,7 @@ unsorted:
   - bibview 
   - bijiben 
   - bijiben-lang 
+  - binaryen 
   - bind-modules-bdbhpt 
   - bind-modules-generic 
   - bind-modules-ldap 
@@ -2755,7 +2756,6 @@ unsorted:
   - cross-arm-gcc14 
   - cross-arm-gcc14-icecream-backend 
   - cross-arm-gcc15 
-  - cross-arm-gcc15-icecream-backend 
   - cross-arm-gcc7 
   - cross-arm-linux-glibc-devel 
   - cross-arm-none-gcc13 
@@ -2809,8 +2809,6 @@ unsorted:
   - cross-m68k-gcc13-icecream-backend 
   - cross-m68k-gcc14 
   - cross-m68k-gcc14-icecream-backend 
-  - cross-m68k-gcc15 
-  - cross-m68k-gcc15-icecream-backend 
   - cross-m68k-gcc7 
   - cross-m68k-gcc7-icecream-backend 
   - cross-m68k-linux-glibc-devel 
@@ -2819,8 +2817,6 @@ unsorted:
   - cross-mips-gcc13-icecream-backend 
   - cross-mips-gcc14 
   - cross-mips-gcc14-icecream-backend 
-  - cross-mips-gcc15 
-  - cross-mips-gcc15-icecream-backend 
   - cross-mips-gcc7 
   - cross-mips-gcc7-icecream-backend 
   - cross-mips-linux-glibc-devel 
@@ -2839,7 +2835,6 @@ unsorted:
   - cross-ppc64-gcc14 
   - cross-ppc64-gcc14-icecream-backend 
   - cross-ppc64-gcc15 
-  - cross-ppc64-gcc15-icecream-backend 
   - cross-ppc64-gcc7 
   - cross-ppc64-gcc7-icecream-backend 
   - cross-ppc64-linux-glibc-devel 
@@ -2900,7 +2895,6 @@ unsorted:
   - cross-sparc-binutils 
   - cross-sparc-gcc13 
   - cross-sparc-gcc14 
-  - cross-sparc-gcc15 
   - cross-sparc-gcc7 
   - cross-sparc-linux-glibc-devel 
   - cross-sparc64-binutils 
@@ -2908,14 +2902,11 @@ unsorted:
   - cross-sparc64-gcc13-icecream-backend 
   - cross-sparc64-gcc14 
   - cross-sparc64-gcc14-icecream-backend 
-  - cross-sparc64-gcc15 
-  - cross-sparc64-gcc15-icecream-backend 
   - cross-sparc64-gcc7 
   - cross-sparc64-gcc7-icecream-backend 
   - cross-sparc64-linux-glibc-devel 
   - cross-sparcv9-gcc13-icecream-backend 
   - cross-sparcv9-gcc14-icecream-backend 
-  - cross-sparcv9-gcc15-icecream-backend 
   - cross-sparcv9-gcc7-icecream-backend 
   - cross-spu-binutils 
   - cross-x86_64-linux-glibc-devel 
@@ -8700,6 +8691,14 @@ unsorted:
   - hyprland-bash-completion 
   - hyprland-devel 
   - hyprland-fish-completion 
+  - hyprland-plugin-borders-plus-plus 
+  - hyprland-plugin-csgo-vulkan-fix 
+  - hyprland-plugin-hyprbars 
+  - hyprland-plugin-hyprexpo 
+  - hyprland-plugin-hyprscrolling 
+  - hyprland-plugin-hyprtrails 
+  - hyprland-plugin-hyprwinwrap 
+  - hyprland-plugin-xtra-dispatchers 
   - hyprland-protocols-devel 
   - hyprland-qt-support 
   - hyprland-qtutils 
@@ -12166,6 +12165,8 @@ unsorted:
   - libbgcode_convert0_2_0 
   - libbgcode_core0_2_0 
   - libbiblesync2_0 
+  - libbinaryen 
+  - libbinaryen-devel 
   - libbinio-devel 
   - libbinio1 
   - libbirb0 
@@ -12360,7 +12361,7 @@ unsorted:
   - libboost_wave1_88_0-devel 
   - libboost_wave1_88_0-x86-64-v3 
   - libboringssl1 
-  - libbotan-3-7 
+  - libbotan-3-8 
   - libbotan-devel 
   - libbox2d-devel 
   - libbpf-devel 
@@ -12660,7 +12661,7 @@ unsorted:
   - libcpluff0 
   - libcpluffxx-devel 
   - libcpluffxx0 
-  - libcpp-httplib0_20 
+  - libcpp-httplib0_22 
   - libcppunit-1_15-1 
   - libcppunit-1_15-1-32bit 
   - libcppunit_subunit0 
@@ -22289,6 +22290,7 @@ unsorted:
   - perl-Test-YAML-Valid 
   - perl-Test-utf8 
   - perl-Test2-Formatter-YAMLEnhancedTAP 
+  - perl-Test2-Plugin-IOEvents 
   - perl-Test2-Plugin-NoWarnings 
   - perl-Test2-Suite 
   - perl-Text-Aligner 
