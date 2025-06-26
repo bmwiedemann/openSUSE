@@ -143,4 +143,12 @@
     <comment>- Rename ht-gcc7.diff to ht-gcc10.diff and adjust for gcc10.</comment>
     <requestid>812126</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>fea18a119000a8d19613ccc6f1c2d00a</srcmd5>
+    <version>2.1.0</version>
+    <time>1750930638</time>
+    <user>anag_factory</user>
+    <comment>- Switch to -std=gnu11</comment>
+    <requestid>1288378</requestid>
+  </revision>
 </revisionlist>

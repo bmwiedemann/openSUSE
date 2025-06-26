@@ -23,7 +23,6 @@ Summary:        Disassembler, object dumper and hex editor
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            http://hte.sf.net/
-
 #Git-Clone:	https://github.com/sebastianbiallas/ht
 Source:         http://downloads.sf.net/hte/%name-%version.tar.bz2
 Patch1:         ht-no-date.diff
@@ -56,15 +55,14 @@ and (especially) executable files.
 %autosetup -p1
 
 %build
-%configure --enable-release CFLAGS="%optflags -Wno-narrowing"
-make %{?_smp_mflags}
+%configure --enable-release CFLAGS="%optflags -Wno-narrowing -std=gnu11"
+%make_build
 
 %install
 %make_install
-pushd "%buildroot/%_bindir/"
+cd "%buildroot/%_bindir/"
 mv ht hte
 ln -s hte ht
-popd
 
 %files
 %_bindir/ht
@@ -72,5 +70,6 @@ popd
 %files -n hte
 %_bindir/hte
 %doc AUTHORS ChangeLog KNOWNBUGS NEWS README TODO
+%license COPYING
 
 %changelog
