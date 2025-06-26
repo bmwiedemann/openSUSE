@@ -1,7 +1,7 @@
 #
 # spec file for package libXbgi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,15 +79,15 @@ in %lname.
 
 %build
 autoreconf -fiv
+export CFLAGS="%optflags -std=gnu11"
 %configure --disable-static
-make %{?_smp_mflags} V=1
+%make_build V=1
 
 %install
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %doc License.txt

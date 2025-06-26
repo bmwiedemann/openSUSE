@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 24 21:53:45 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Set CFLAGS to -std=gnu11
+
+-------------------------------------------------------------------
 Wed Feb  5 13:33:02 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - removed unneeded xorg-x11-proto-devel BuildRequires (bsc#1236804)

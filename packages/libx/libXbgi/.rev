@@ -31,4 +31,12 @@
     <comment>- removed unneeded xorg-x11-proto-devel BuildRequires (bsc#1236804)</comment>
     <requestid>1243480</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>43c4eadbc0bb8b85dbaf5e561884e5cf</srcmd5>
+    <version>365</version>
+    <time>1750930644</time>
+    <user>anag_factory</user>
+    <comment>- Set CFLAGS to -std=gnu11</comment>
+    <requestid>1288387</requestid>
+  </revision>
 </revisionlist>
