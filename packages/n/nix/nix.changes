@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 24 15:44:37 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.29.1: (boo#1245319)
+  Fixes:
+  - CVE-2025-46415
+  - CVE-2025-52991
+  - CVE-2025-52992
+  - CVE-2025-52993
+
+  For the details see:
+  https://discourse.nixos.org/t/security-advisory-privilege-escalations-in-nix-lix-and-guix/66017
+
+-------------------------------------------------------------------
 Tue Jun 17 09:42:04 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to 2.29.0:

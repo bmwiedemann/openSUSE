@@ -39,4 +39,19 @@ support for software auditability among other things</comment>
 - Build docs if on x86_64 or aarch64</comment>
     <requestid>1287554</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3ea9cf9560da31c1ed9061c62bd61bd7</srcmd5>
+    <version>2.29.1</version>
+    <time>1750930616</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.29.1: (boo#1245319)
+  Fixes:
+  - CVE-2025-46415
+  - CVE-2025-52991
+  - CVE-2025-52992
+  - CVE-2025-52993
+  For the details see:
+  https://discourse.nixos.org/t/security-advisory-privilege-escalations-in-nix-lix-and-guix/66017</comment>
+    <requestid>1288353</requestid>
+  </revision>
 </revisionlist>
