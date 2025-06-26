@@ -350,4 +350,33 @@
     <comment></comment>
     <requestid>1282707</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6619ddfd3509f7b9d3f40dbc8cfa44aa</srcmd5>
+    <version>20250605.00</version>
+    <time>1750930755</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250605.00
+  * Merge pull request (#112) from bk202:liujoh_416067717
+  * Added comment to the bitmap conversion functions
+  * Remove IRQ affinity overwrite to XPS affinity
+  * Update XPS affinity to assign the remaining unassigned CPUs
+    to the last queue when populating the last queue
+  * Fix set_xps_affinity to correctly parse cpus array
+  * Update XPS CPU assignment logic
+  * Update CPU assignment algorithm in XPS affinity
+  * Remove commented code
+  * Update XPS affinity vCPU distribution algorithm s.t. the vCPUs assigned
+    to a queue are on the same core - fixed IRQ affinity on NUMA1 not using
+    the correct bind_cores_index
+  * Fixed NUMA comparison error in set_xps_affinity
+  * Update XPS affinity setup to be NUMA aware and support 64 bit CPU mask
+    calculation
+- from version 20250604.00
+  * Merge pull request (#114) from bk202:liujoh_irq_affinity_bug_fix
+  * Bug fix: bind_cores_begin -&gt; bind_cores_index
+  * Name smart NICs in lexicographic order
+- Run %postun to modify %{_sysconfdir}/sysconfig/network/ifcfg-eth0
+  during uninstall only to avoid removal of POST_UP_SCRIPT on upgrade (forwarded request 1288518 from glaubitz)</comment>
+    <requestid>1288529</requestid>
+  </revision>
 </revisionlist>

@@ -23,7 +23,7 @@
 %define _udevdir %(pkg-config --variable udev_dir udev)
 %endif
 Name:           google-guest-configs
-Version:        20250516.00
+Version:        20250605.00
 Release:        0
 Summary:        Google Cloud Guest Configs
 License:        Apache-2.0
@@ -74,7 +74,7 @@ if [ -f %{_sysconfdir}/sysconfig/network/ifcfg-eth0 ] && \
 fi
 
 %postun
-if [ -f %{_sysconfdir}/sysconfig/network/ifcfg-eth0 ] ; then
+if [ -f %{_sysconfdir}/sysconfig/network/ifcfg-eth0 ] && [ $1 -eq 0 ]; then
     sed -i '/POST_UP_SCRIPT="compat:suse:google_up.sh"/d' %{_sysconfdir}/sysconfig/network/ifcfg-eth0
 fi
 
