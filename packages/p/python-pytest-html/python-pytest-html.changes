@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 25 11:08:22 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- refresh node modules
+  * update pbkdf2 to 3.1.3
+  CVE-2025-6545, CVE-2025-6547, bsc#1245288. bsc#1245289
+
+-------------------------------------------------------------------
 Wed Jun 11 08:31:22 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - refresh node modules
