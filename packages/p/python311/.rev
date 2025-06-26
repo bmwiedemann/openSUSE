@@ -1663,4 +1663,12 @@ C API
   - CVE-2025-4516-DecodeError-handler.patch</comment>
     <requestid>1284263</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>ea9ab50b9b810229b9b0fa96da692ba1</srcmd5>
+    <version>3.11.13</version>
+    <time>1750930687</time>
+    <user>anag_factory</user>
+    <comment>Also addresses CVE-2025-4435 (gh#135034, bsc#1244061).</comment>
+    <requestid>1288599</requestid>
+  </revision>
 </revisionlist>
