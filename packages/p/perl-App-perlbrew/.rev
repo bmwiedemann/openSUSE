@@ -322,4 +322,29 @@
 </comment>
     <requestid>1285260</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>bb7bbb82704fe8edcd4625e2834d3967</srcmd5>
+    <version>1.10.0</version>
+    <time>1750930632</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1288369 from tinita
+
+- updated to 1.10.0 (1.01)
+   see /usr/share/doc/packages/perl-App-perlbrew/Changes
+  1.01
+  	- Released at 2024-11-18T20:46:04+0900
+  	- fix: `perlbrew install skaji-relocatable-perl-$version` on macOS.
+  1.00
+  	- Released at 2024-10-04T10:48:40+0900
+  	- Experimental: `perlbrew install` now accept names like skaji-relocatable-perl-$version.
+  0.99
+  	- Released at 2024-09-07T16:30:28+0900
+  	- Thanks to our contributors: Graham Knop, Joelle Maslak, Luke Closs, jonasbn
+  	- bashrc executes properly in bash shells with +h option set
+  	- Allow specification of non-standard Perl location
+  	- make-pp now requires the input to be specified with `-i` or `--input`.
+  	- Tests are ported to Test2. Big thanks to Luke Closs.
+          - Command make-pp now expects the input to be the path of an existing executable perl program, and would not be searching through $PATH.</comment>
+    <requestid>1288464</requestid>
+  </revision>
 </revisionlist>

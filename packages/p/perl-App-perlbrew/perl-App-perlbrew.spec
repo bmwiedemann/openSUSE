@@ -18,10 +18,10 @@
 
 %define cpan_name App-perlbrew
 Name:           perl-App-perlbrew
-Version:        0.980.0
+Version:        1.10.0
 Release:        0
-# 0.98 -> normalize -> 0.980.0
-%define cpan_version 0.98
+# 1.01 -> normalize -> 1.10.0
+%define cpan_version 1.01
 License:        MIT
 Summary:        Manage perl installations in your $HOME
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -30,39 +30,35 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Perl::Releases) >= 5.202.307.200
+BuildRequires:  perl(CPAN::Perl::Releases) >= 5.202.409.200
 BuildRequires:  perl(Capture::Tiny) >= 0.480
 BuildRequires:  perl(Devel::PatchPerl) >= 2.80
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.22
 BuildRequires:  perl(File::Temp) >= 0.2304
 BuildRequires:  perl(File::Which) >= 1.210
-BuildRequires:  perl(IO::All) >= 0.510
 BuildRequires:  perl(JSON::PP)
 BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Module::Build::Tiny) >= 0.39
 BuildRequires:  perl(Path::Class) >= 0.330
 BuildRequires:  perl(Pod::Usage) >= 1.69
-BuildRequires:  perl(Test::Exception) >= 0.32
-BuildRequires:  perl(Test::More) >= 1.001002
-BuildRequires:  perl(Test::NoWarnings) >= 1.40
-BuildRequires:  perl(Test::Output) >= 1.30
-BuildRequires:  perl(Test::Simple) >= 1.001002
-BuildRequires:  perl(Test::Spec) >= 0.490
-BuildRequires:  perl(Test::TempDir::Tiny) >= 0.16
-BuildRequires:  perl(local::lib) >= 2.000014
-Requires:       perl(CPAN::Perl::Releases) >= 5.202.307.200
+BuildRequires:  perl(Test2::Plugin::IOEvents) >= 0.1.1
+BuildRequires:  perl(Test2::Plugin::NoWarnings) >= 0.100
+BuildRequires:  perl(Test2::V0) >= 0.000163
+BuildRequires:  perl(local::lib) >= 2.0.14
+Requires:       perl(CPAN::Perl::Releases) >= 5.202.409.200
 Requires:       perl(Capture::Tiny) >= 0.480
 Requires:       perl(Devel::PatchPerl) >= 2.80
 Requires:       perl(ExtUtils::MakeMaker) >= 7.22
 Requires:       perl(File::Temp) >= 0.2304
 Requires:       perl(JSON::PP)
 Requires:       perl(Pod::Usage) >= 1.69
-Requires:       perl(local::lib) >= 2.000014
+Requires:       perl(local::lib) >= 2.0.14
 Provides:       perl(App::Perlbrew::HTTP)
 Provides:       perl(App::Perlbrew::Path)
 Provides:       perl(App::Perlbrew::Path::Installation)
 Provides:       perl(App::Perlbrew::Path::Installations)
 Provides:       perl(App::Perlbrew::Path::Root)
+Provides:       perl(App::Perlbrew::Sys)
 Provides:       perl(App::Perlbrew::Util)
 Provides:       perl(App::perlbrew) = %{version}
 %undefine       __perllib_provides
