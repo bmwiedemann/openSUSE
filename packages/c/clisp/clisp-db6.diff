@@ -12,7 +12,7 @@ it [set_rpc_server] always returned EOPNOTSUPP even in libdb-4.8).
 
 --- clisp-536a48a9/modules/berkeley-db/bdb.c
 +++ clisp-536a48a9/modules/berkeley-db/bdb.c	2016-11-29 11:58:23.833524665 +0000
-@@ -60,6 +60,7 @@ static void vecout (unsigned char* v, in
+@@ -61,6 +61,7 @@ static void vecout (unsigned char* v, in
     this is a macro and not a function for NO_UNICODE */
  #define asciz_to_string0(a,e) (a ? asciz_to_string(a,e) : NIL)
  
@@ -20,7 +20,7 @@ it [set_rpc_server] always returned EOPNOTSUPP even in libdb-4.8).
  #include <db.h>
  
  /* http://www.oracle.com/technology/products/berkeley-db/db/update/4.4.20/if.4.4.20.html
-@@ -2216,7 +2217,7 @@ DEFUN(BDB:DB-COMPACT, db &key TRANSACTIO
+@@ -2217,7 +2218,7 @@ DEFUN(BDB:DB-COMPACT, db &key TRANSACTIO
    c_data.compact_timeout = timeout;
    c_data.compact_pages = pages;
    SYSCALL(db->compact,(db,txn,pstart,pstop,&c_data,flags,&end));

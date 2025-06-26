@@ -17,11 +17,11 @@
 
 
 %bcond_with     debug
-%global commit  f5acef38
-%global vdate   20240704
+%global commit  f6622093
+%global vdate   20241103
 
 Name:           clisp
-Version:        2.49.93
+Version:        2.49.95
 Release:        0
 Summary:        A Common Lisp Interpreter
 # Included gllib is GPL-3.0-or-later

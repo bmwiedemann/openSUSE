@@ -28,7 +28,7 @@
          passnext=both ;;
 --- clisp-2.49.93+git20240704.f5acef38/modules/clx/new-clx/Makefile.in
 +++ clisp-2.49.93+git20240704.f5acef38/modules/clx/new-clx/Makefile.in	2024-09-02 13:23:26.124850752 +0000
-@@ -18,7 +18,7 @@ distribdir =
+@@ -29,7 +29,7 @@ distribdir =
  ### Custom defs.
  CCMP2C = ../../ccmp2c
  RM = rm -f
@@ -81,7 +81,7 @@
      #define PC386
    #endif
    #if (defined(sun) && defined(unix) && defined(sparc))
-@@ -274,8 +274,14 @@
+@@ -278,8 +278,14 @@
  #endif
  #ifdef GENERIC_UNIX
    #define UNIX
@@ -97,7 +97,7 @@
    #endif
    #ifdef __GNU__
      #define UNIX_HURD  /* the GNU system (Hurd + glibc) */
-@@ -1271,7 +1277,7 @@ typedef signed int  signean;
+@@ -1240,7 +1246,7 @@ typedef signed int  signean;
   address of its component 'ident' and return it as number: */
  #include <stddef.h>
  #ifndef offsetof
@@ -106,7 +106,7 @@
  #endif
  /* Determine the offset of an array 'ident' in a struct of the type 'type': */
  #if defined(__cplusplus) || defined(MICROSOFT)
-@@ -5439,9 +5445,9 @@ typedef signed_int_with_n_bits(intVsize)
+@@ -5517,9 +5523,9 @@ typedef signed_int_with_n_bits(intVsize)
     type_data_object(type,data) */
    #if defined(WIDE) && defined(WIDE_STRUCT)
      #if BIG_ENDIAN_P==WIDE_ENDIANNESS
@@ -130,7 +130,7 @@
      -verb* | --verb* )
        verbose=`echol "$1"|sed 's/-*v[^=]*=*//'`
        test -n "${verbose}" || verbose=true
-@@ -1166,11 +1169,13 @@ else
+@@ -1188,11 +1191,13 @@ else
  fi
  
  # Main cpu dependencies:
@@ -144,18 +144,18 @@
  
  test "${verbose}" = true -o "${verbose}" = yes && \
    cat <<EOF >&2
-@@ -1367,6 +1372,10 @@ if [ $XCC_GCC = true ] ; then
-     XCFLAGS=${XCFLAGS}" -pthread"
+@@ -1385,6 +1390,10 @@ if [ $XCC_GCC = true ] ; then
+     Z_XCFLAGS=${Z_XCFLAGS}" -pthread"
    fi
  
 +  if [ -n "${MYCFLAGS}" ] ; then
-+    XCFLAGS=$XCFLAGS' ${MYCFLAGS}'
++    Z_XCFLAGS=${Z_XCFLAGS}' ${MYCFLAGS}'
 +  fi
 +
  else
  
    if [ $CROSS = false ] ; then
-@@ -1468,7 +1477,7 @@ if [ "${with_dynamic_modules}" != no ];
+@@ -1485,7 +1490,7 @@ if [ "${with_dynamic_modules}" != no ];
    eval XCC_PICFLAG=\"${pic_flag}\"
    if [ "$HSYSOS" != cygwin ]; then
      eval "`./libtool --tag=CC --config | grep '^allow_undefined_flag='`"
@@ -164,7 +164,7 @@
    else
      archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags -o $output_objdir/$soname'
    fi
-@@ -4036,8 +4045,9 @@ if [ $CROSS = false ] ; then
+@@ -4100,8 +4105,9 @@ if [ $CROSS = false ] ; then
      echol
      if [ "${with_dynamic_modules}" != no ]; then
        depends="full install-modules force"

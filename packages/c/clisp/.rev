@@ -455,4 +455,41 @@ you may enable build for SLE &gt;= 10 (forwarded request 96955 from rudi_m)</com
     <comment>- disable pcre module (boo#1201805) (forwarded request 1254846 from AndreasStieger)</comment>
     <requestid>1254923</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>326f8b2d657fb3c1c49175b6abb9b0c2</srcmd5>
+    <version>2.49.95</version>
+    <time>1750930780</time>
+    <user>anag_factory</user>
+    <comment>- Update to latest commit f6622093 (based on 2.49.95+git20241103)
+  to get it build with gcc15
+  Fix expansion of CL_FFCALL in src/configure.
+  Reported by Adam Sampson &lt;ats@offog.org&gt; at
+  &lt;https://gitlab.com/gnu-clisp/clisp/-/issues/60&gt;.
+    * glm4/lib-link.m4 (AC_LIB_FROMPACKAGE): Import bug fix from gnulib.
+    * src/configure: Regenerated.
+      Enable most optimizations on Hurd/x86_64.
+    * lispbibl.d (MAPPABLE_ADDRESS_RANGE_START, MAPPABLE_ADDRESS_RANGE_END,
+      SINGLEMAP_*, *_WORKS): Define for Hurd/x86_64.
+    * Makefile.devel (multibuild-hurd-x86_64): Enable all build variants
+      that work.
+    * makemake.in (Z_XCFLAGS): For Hurd/x86_64, enable all optimizations
+  except ASM.
+  Recommend libsigsegv 2.15.
+    * configure (libsigsegv_url): Update to 2.15.
+  Find a better way to make things work with gcc 15.1.0.
+  Suggested by Jerry James in
+  &lt;https://gitlab.com/gnu-clisp/clisp/-/merge_requests/12&gt;.
+  According to ISO C 99/11/17 § 6.5.6.(8), ISO C 23 § 6.5.7.(9),
+  computing (T*)0 + constant is undefined behaviour.
+    * package.d (rehash_symtab): Change 'offset' to be of integral type.
+  Re-enable gcc optimizations.
+  (map_symtab, map_symtab_c): Change 'offset' to be of integral type.
+  Fix most gcc -Wimplicit-fallthrough warnings.
+    * Makefile.devel (GNULIB_CORE): Add 'attribute'.
+    * lispbibl.d: Include attribute.h.
+    * eval.d: Silence -Wimplicit-fallthrough warnings.
+    * foreign.d (foreign_pointer): Add 'FALLTHROUGH;' statement.
+    * stream.d (interactive_stream_p, READ-BYTE-NO-HANG): Likewise.</comment>
+    <requestid>1288568</requestid>
+  </revision>
 </revisionlist>

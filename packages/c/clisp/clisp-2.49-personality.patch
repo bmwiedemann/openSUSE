@@ -5,7 +5,7 @@
 diff --git a/src/_clisp.c b/src/_clisp.c
 --- a/src/_clisp.c
 +++ b/src/_clisp.c
-@@ -48,6 +48,11 @@
+@@ -46,6 +46,11 @@
  /* Declare stderr, perror(). */
  # include <stdio.h>
  
@@ -17,7 +17,7 @@ diff --git a/src/_clisp.c b/src/_clisp.c
  #if defined(WIN32_NATIVE)
  # include <windows.h>
  int shell_quote (char * dest, const char * source);
-@@ -435,6 +440,12 @@ int main (int argc, char* argv[])
+@@ -434,6 +439,12 @@ int main (int argc, char* argv[])
      }
    #undef W32ERR
  #else
