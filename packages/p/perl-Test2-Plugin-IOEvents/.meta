@@ -1,0 +1,5 @@
+<package name="perl-Test2-Plugin-IOEvents" project="openSUSE:Factory">
+  <title>Turn STDOUT and STDERR into Test2 events.</title>
+  <description>This plugin turns prints to STDOUT and STDERR (including warnings) into proper Test2 events.</description>
+  <url>https://metacpan.org/dist/Test2-Plugin-IOEvents</url>
+</package>
