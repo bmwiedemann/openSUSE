@@ -7,4 +7,12 @@
     <comment>split jgit and eclipse-jgit</comment>
     <requestid>1286543</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>007bcd66bf5202b223813e3bbecb5aaa</srcmd5>
+    <version>5.11.0</version>
+    <time>1750930778</time>
+    <user>anag_factory</user>
+    <comment>bsc#1243647, CVE-2025-4949</comment>
+    <requestid>1288570</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 25 14:47:41 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jgit-CVE-2025-4949.patch
+    + fix bsc#1243647, CVE-2025-4949: XXE vulnerability in
+      ManifestParser and AmazonS3 class
+
+-------------------------------------------------------------------
 Wed Jun 18 07:12:16 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Split the jgit and eclipse-jgit flavours into two different
