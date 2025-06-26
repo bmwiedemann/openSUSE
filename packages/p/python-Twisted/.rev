@@ -1666,4 +1666,12 @@
   * #11236, #12060, #12062, #12099, #12219, #12290, #12296,</comment>
     <requestid>1219215</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>e3cc3bfb2e87ef8ea3ca9e5180869b6c</srcmd5>
+    <version>24.10.0</version>
+    <time>1750930475</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1288536</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Twisted
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
-%bcond_without test
 %define psuffix -test
+%bcond_without test
 %else
-%bcond_with test
 %define psuffix %{nil}
+%bcond_with test
 %endif
-
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-Twisted%{psuffix}
 Version:        24.10.0
@@ -51,11 +51,14 @@ BuildRequires:  %{python_module incremental >= 24.7.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
+# twisted[tls] is so common, let's keep it tied to the main package for the time being.
+Requires:       python-Twisted-tls = %{version}
+BuildArch:      noarch
 # SECTION install requires
 Requires:       python-Automat >= 0.8.0
 Requires:       python-attrs >= 19.2.0
@@ -65,8 +68,6 @@ Requires:       python-incremental >= 24.7.0
 Requires:       python-typing_extensions >= 3.6.5
 Requires:       python-zope.interface >= 4.4.2
 # /SECTION
-# twisted[tls] is so common, let's keep it tied to the main package for the time being.
-Requires:       python-Twisted-tls = %{version}
 %if %{with test}
 BuildRequires:  %{python_module Twisted-all_non_platform = %{version}}
 BuildRequires:  %{python_module Twisted-conch_nacl = %{version}}
@@ -75,7 +76,6 @@ BuildRequires:  %{python_module hypothesis}
 # declared nowhere but required to pass 8 tests with timezone checks
 BuildRequires:  %{python_module pytz}
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -216,6 +216,8 @@ rm %{buildroot}%{_bindir}/mailmail %{buildroot}%{_mandir}/man1/mailmail.1
 
 # no manpage for twist yet:
 %python_clone -a %{buildroot}%{_bindir}/twist
+# group all the alternatives under one master
+%python_group_libalternatives twistd cftp ckeygen conch pyhtmlizer tkconch trial twist
 %endif
 
 %if %{with test}
@@ -239,16 +241,12 @@ export OPENSSL_CONF=''
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m twisted.trial twisted
 %endif
 
-%post
-# these were master alternatives until Dec 2020. Remove before the install as slave links
+%pre
+%python_libalternatives_reset_alternative twistd
+# these were master alternatives until Dec 2020
 for f in cftp ckeygen conch pyhtmlizer tkconch trial twist; do
-  (update-alternatives --quiet --list $f 2>&1 >/dev/null) && update-alternatives --quiet --remove-all $f
+  %python_libalternatives_reset_alternative $f
 done
-%{python_install_alternative twistd cftp ckeygen conch pyhtmlizer tkconch trial twist
-                             twistd.1 cftp.1 ckeygen.1 conch.1 pyhtmlizer.1 tkconch.1 trial.1}
-
-%postun
-%python_uninstall_alternative twistd
 
 %if ! %{with test}
 %files %{python_files tls}
