@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 24 10:59:19 MDT 2025 - carnold@suse.com
+
+- Update to version 1.56.1 (jsc#PED-12706)
+  * lib: Enable ACPI for the libvirt backend for x86_64 and arm
+- Only build the inspect-icons RPM for Tumbleweed. Tumbleweed is
+  the only place where icoutils package exists which it requires.
+
+-------------------------------------------------------------------
 Fri Jun 13 06:40:24 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop gzip mtime from base.tar.gz (bsc#1216986)

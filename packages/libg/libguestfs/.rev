@@ -1286,4 +1286,12 @@
     <comment></comment>
     <requestid>1285463</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>bf2a32b983635f125217f3085442c9ad</srcmd5>
+    <version>1.56.1</version>
+    <time>1750930628</time>
+    <user>anag_factory</user>
+    <comment>Update libguestfs to version 1.56.1. Only build the libguestfs-inspect-icons RPM on Tumbleweed.</comment>
+    <requestid>1288363</requestid>
+  </revision>
 </revisionlist>

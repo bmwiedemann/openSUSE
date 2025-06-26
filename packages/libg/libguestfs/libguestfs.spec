@@ -18,7 +18,7 @@
 
 Name:           libguestfs
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
-Version:        1.56.0
+Version:        1.56.1
 Release:        0
 Summary:        Access and modify virtual machine disk images
 License:        GPL-2.0-or-later
@@ -107,8 +107,6 @@ sed -i 's|RPMVSF_MASK_NOSIGNATURES|_RPMVSF_NOSIGNATURES|' daemon/rpm-c.c
 sed -i 's/tar zcf/tar -zcf/' appliance/Makefile.am
 
 %build
-###echo "CEA: mv /etc/hosts /tmp/hosts"
-###mv /etc/hosts /tmp/hosts
 # provide a wrapper to tar that creates bit-reproducible output (boo#1218191)
 # used in supermin for base.tar.gz, in %install for zz-winsupport.tar.gz zz-scripts.tar.gz and in appliance/Makefile.am for 3 more .tar.gz files
 SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH:-$(date -r %{SOURCE0} +%%s)}
@@ -216,9 +214,6 @@ make \
 }
 
 build_it %{?_smp_mflags} || build_it
-
-###echo "CEA: cp /tmp/hosts /etc/hosts"
-###cp /tmp/hosts /etc/hosts
 
 %install
 PATH=~/bin:$PATH
@@ -463,13 +458,12 @@ Requires:       bash-completion >= 2.0
 Install this package if you want intelligent bash tab-completion
 for guestfish, guestmount and various virt-* tools.
 
+%if 0%{?suse_version} >= 1699
 %package inspect-icons
 Summary:        Additional dependencies for inspecting guest icons
 BuildArch:      noarch
 Requires:       %{name} = %{version}-%{release}
-%if 0%{?suse_version} > 1500
 Requires:       icoutils
-%endif
 
 %description inspect-icons
 %{name}-inspect-icons is a metapackage that pulls in additional
@@ -479,6 +473,7 @@ inspect non-Linux guests and display icons from them.
 
 The only reason this is a separate package is to avoid core libguestfs
 having to depend on Perl.
+%endif
 
 %package -n ocaml-%{name}
 Summary:        OCaml bindings for %{name}
@@ -678,8 +673,10 @@ for %{name}.
 %{_datadir}/bash-completion/completions/virt-tar-in
 %{_datadir}/bash-completion/completions/virt-tar-out
 
+%if 0%{?suse_version} >= 1699
 %files inspect-icons
 # no files
+%endif
 
 %files -n ocaml-%{name} -f %name.files
 
