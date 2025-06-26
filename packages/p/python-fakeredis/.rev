@@ -361,4 +361,18 @@
     * Implement support for COPY</comment>
     <requestid>1287164</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>32991ae3dc4baeeae1cb8723b0db5630</srcmd5>
+    <version>2.30.1</version>
+    <time>1750930470</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1288237 from mcalabkova
+
+- Update to 2.30.1
+    * Move LICENSE file to fakeredis/ on build
+    * Show warning for deprecated parameter only if parameter is included
+      in instantiation
+    * Replace deprecated event_loop fixture</comment>
+    <requestid>1288470</requestid>
+  </revision>
 </revisionlist>

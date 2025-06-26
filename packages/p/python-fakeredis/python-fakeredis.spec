@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fakeredis
-Version:        2.30.0
+Version:        2.30.1
 Release:        0
 Summary:        Fake implementation of redis API for testing purposes
 License:        BSD-3-Clause AND MIT
@@ -57,7 +57,6 @@ Fake implementation of redis API for testing purposes.
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_expand rm %{buildroot}%{$python_sitelib}/LICENSE
 
 %check
 export LANG="en_US.UTF8"
