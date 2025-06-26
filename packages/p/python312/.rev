@@ -1787,4 +1787,12 @@
 - allow build with Sphinx &gt;= 3.x</comment>
     <requestid>1284283</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>d0c1d0f5d7d02c8baa07fcae1e8c0d9c</srcmd5>
+    <version>3.12.11</version>
+    <time>1750930684</time>
+    <user>anag_factory</user>
+    <comment>Also addresses CVE-2025-4435 (gh#135034, bsc#1244061).</comment>
+    <requestid>1288598</requestid>
+  </revision>
 </revisionlist>
