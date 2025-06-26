@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybeam
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with    test
 %endif
 Name:           python-pybeam%{?psuffix}
-Version:        0.8
+Version:        0.8.1
 Release:        0
 Summary:        Python module to parse Erlang BEAM files
 License:        MIT

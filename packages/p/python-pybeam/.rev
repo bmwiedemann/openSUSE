@@ -145,4 +145,15 @@ New packages, see: http://lists.opensuse.org/opensuse-factory/2013-07/msg00135.h
     <comment></comment>
     <requestid>1197528</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>960a5776b815d8394b6aa29ec3c52a3f</srcmd5>
+    <version>0.8.1</version>
+    <time>1750930467</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1288008 from matwey
+
+- version update to 0.8.1:
+    Improve Erlang 28.0 support</comment>
+    <requestid>1288468</requestid>
+  </revision>
 </revisionlist>
