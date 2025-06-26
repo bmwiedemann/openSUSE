@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 25 13:09:25 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- add qemacs-gcc15.patch, fix TW build
+
+-------------------------------------------------------------------
 Tue Feb 20 13:46:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

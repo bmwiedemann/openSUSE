@@ -1,0 +1,29 @@
+Index: qemacs-0.3.3/qe.c
+===================================================================
+--- qemacs-0.3.3.orig/qe.c
++++ qemacs-0.3.3/qe.c
+@@ -2944,19 +2944,19 @@ void call_func(void *func, int nb_args,
+         ((void (*)())func)();
+         break;
+     case 1:
+-        ((void (*)())func)(args[0]);
++        ((void (*)(void *))func)(args[0]);
+         break;
+     case 2:
+-        ((void (*)())func)(args[0], args[1]);
++        ((void (*)(void *, void *))func)(args[0], args[1]);
+         break;
+     case 3:
+-        ((void (*)())func)(args[0], args[1], args[2]);
++        ((void (*)(void *, void *, void *))func)(args[0], args[1], args[2]);
+         break;
+     case 4:
+-        ((void (*)())func)(args[0], args[1], args[2], args[3]);
++        ((void (*)(void *, void *, void *, void *))func)(args[0], args[1], args[2], args[3]);
+         break;
+     case 5:
+-        ((void (*)())func)(args[0], args[1], args[2], args[3], args[4]);
++        ((void (*)(void *, void *, void *, void *, void *))func)(args[0], args[1], args[2], args[3], args[4]);
+         break;
+     default:
+         return;

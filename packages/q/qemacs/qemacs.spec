@@ -1,7 +1,7 @@
 #
 # spec file for package qemacs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Patch3:         qemacs-libpng.patch
 # PATCH-FIX-UPSTREAM pngtoico-libpng15.patch -- pgajdos@suse.com; build with libpng15; sent today to fabrice.bellard@free.fr
 # build against libpng14 should not be affected, otherwise please let me know
 Patch4:         qemacs-libpng15.patch
+Patch5:         qemacs-gcc15.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(x11)
@@ -73,6 +74,7 @@ completion and history. Additional features:
 %patch -P 2
 %patch -P 3
 %patch -P 4 -p1
+%patch -P 5 -p1
 
 %build
 export CFLAGS="%{optflags}"
