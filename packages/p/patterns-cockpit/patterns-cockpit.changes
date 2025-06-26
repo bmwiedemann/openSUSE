@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 18 16:36:14 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Ensure cockpit-kdump is installed if kdump is installed.
+
+-------------------------------------------------------------------
+Thu Apr 24 12:58:36 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Added cockpit-packages
+
+-------------------------------------------------------------------
 Fri Apr 11 13:23:53 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
 
 - Add requirement on sudo as the preferred method of gaining admin 

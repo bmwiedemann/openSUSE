@@ -38,12 +38,14 @@ Provides:       patterns-base-cockpit
 Requires:	cockpit
 Requires:       cockpit-system
 Requires:       cockpit-ws
+Requires:       (cockpit-kdump if kdump)
 Requires:       (cockpit-podman if podman)
 Requires:       (cockpit-machines if libvirt-daemon-qemu)
 Requires:       cockpit-networkmanager
 Requires:       (cockpit-tukit if transactional-update)
 Requires:       cockpit-storaged
 Requires:       (cockpit-selinux if selinux-tools)
+Requires:       (cockpit-packages if PackageKit)
 Requires:       (cockpit-packagekit if PackageKit)
 Requires:       cockpit-repos
 Requires:       (cockpit-subscriptions if suseconnect-ng)

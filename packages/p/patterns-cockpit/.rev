@@ -16,4 +16,14 @@
   rights (bsc#1240569)</comment>
     <requestid>1268642</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8b15d73d45a91cebb1bb2eb37ca29afa</srcmd5>
+    <version>16.0</version>
+    <time>1750930724</time>
+    <user>anag_factory</user>
+    <comment>- Ensure cockpit-kdump is installed if kdump is installed.
+
+- Added cockpit-packages</comment>
+    <requestid>1288465</requestid>
+  </revision>
 </revisionlist>
