@@ -16,4 +16,31 @@
 - Skip some failing tests</comment>
     <requestid>1276833</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0d5cd70d447343ff6cd2564f9ae22c42</srcmd5>
+    <version>0.13.0</version>
+    <time>1750930722</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1288451 from glaubitz
+
+- Update to 0.13.0
+    * Add workflow-dispatch to CI pipeline
+    * Improve CRL generation capabilities
+    * Fixup
+    * Drop EOL Python versions
+  - from version 0.12.3
+    * Bump one more instance of setup-python
+    * Some more forgotten action bumps
+    * Fix broken sigstore release process
+  - from version 0.12.2
+    * Advertise support for 3.13, adjust CI accordingly
+    * Upgrade workflow dependencies
+    * Resolve conflicts with upload strategy
+    * Bump checkout &amp; setup-python actions
+  - from version 0.12.1
+    * Address breaking API change in asn1crypto
+  - Update Suggests from pyproject.toml
+  - Use Python 3.11 on SLE-15 by default</comment>
+    <requestid>1288474</requestid>
+  </revision>
 </revisionlist>

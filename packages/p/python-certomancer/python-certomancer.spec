@@ -22,8 +22,9 @@
 %bcond_with libalternatives
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-certomancer
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        PKI testing tool
 License:        MIT
@@ -59,7 +60,7 @@ Suggests:       python-Jinja2 >= 2.11.3
 Suggests:       python-python-pkcs11 >= 0.7.0
 Suggests:       python-pytz >= 2020.1
 Suggests:       python-freezegun >= 1.1.0
-Suggests:       python-pyhanko-certvalidator >= 0.23.0
+Suggests:       python-pyhanko-certvalidator >= 0.26.5
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts

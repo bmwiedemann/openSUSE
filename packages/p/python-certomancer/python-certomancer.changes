@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun 25 06:57:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.13.0
+  * Add workflow-dispatch to CI pipeline
+  * Improve CRL generation capabilities
+  * Fixup
+  * Drop EOL Python versions
+- from version 0.12.3
+  * Bump one more instance of setup-python
+  * Some more forgotten action bumps
+  * Fix broken sigstore release process
+- from version 0.12.2
+  * Advertise support for 3.13, adjust CI accordingly
+  * Upgrade workflow dependencies
+  * Resolve conflicts with upload strategy
+  * Bump checkout & setup-python actions
+- from version 0.12.1
+  * Address breaking API change in asn1crypto
+- Update Suggests from pyproject.toml
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Mon May 12 12:03:26 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Use libalternatives instead of update-alternatives
