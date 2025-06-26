@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 25 09:25:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.11.1:
+  * fix(oapi): fix generation of oapi schema by skipping not yaml
+    files (backport of #13748) (#13749)
+  * fix(oapi): fix generating code from oapi schema (backport of
+    #13732) (#13743)
+  * chore(deps): security update (#13725)
+    https://osv.dev/GO-2025-3749 		Go 	stdlib 	1.24.2 	go.mod
+    https://osv.dev/GO-2025-3750 		Go 	stdlib 	1.24.2 	go.mod
+    https://osv.dev/GO-2025-3751 		Go 	stdlib 	1.24.2 	go.mod
+
+-------------------------------------------------------------------
 Wed Jun 11 15:44:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.11.0:
