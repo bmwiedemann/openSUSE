@@ -22,7 +22,7 @@
 %define shortname hypr
 
 Name:           hyprland
-Version:        0.48.1
+Version:        0.49.0
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -31,7 +31,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       %{name}.rpmlintrc
 Patch1:         meson-missing-wayland-include.patch
 Patch2:         disable-donation-nag-popup.patch
-Patch100:       opensuse-hyprpm-use-hyprland-devel-subpkg.patch
+Patch3:         pkg-config-with-deps.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 14
 BuildRequires:  git
@@ -46,9 +46,9 @@ BuildRequires:  pkgconfig(gbm) >= 17.1.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(hyprcursor) >= 0.1.9
-BuildRequires:  pkgconfig(hyprgraphics) >= 0.1.1
+BuildRequires:  pkgconfig(hyprgraphics) >= 0.1.3
 BuildRequires:  pkgconfig(hyprlang) >= 0.3.2
-BuildRequires:  pkgconfig(hyprutils) >= 0.3.1
+BuildRequires:  pkgconfig(hyprutils) >= 0.7.0
 BuildRequires:  pkgconfig(hyprwayland-scanner) >= 0.3.8
 BuildRequires:  pkgconfig(libdrm) >= 2.4.118
 BuildRequires:  pkgconfig(libinput) >= 1.14.0
@@ -104,6 +104,10 @@ Additional wallpapers for hyprland.
 Summary:        Files required to build Hyprland plugins
 Requires:       %{name}
 BuildArch:      noarch
+%if 0%{?suse_version}
+Requires:       Mesa-libGLESv2-devel
+Requires:       Mesa-libGLESv3-devel
+%endif
 
 %description devel
 This package contains the neccessary files that are required to
@@ -165,8 +169,9 @@ sed -i 's;REPLACE_ME_WITH_PREFIX;%{_prefix};' hyprpm/src/core/DataState.cpp
 
 %build
 %meson \
-     -Duwsm=disabled \
-	 -Dwlroots-hyprland:xcb-errors=%{?with_xcb_errors:enabled}%{!?with_xcb_errors:disabled}
+	-Dhyprpm=disabled \
+	-Duwsm=disabled \
+	-Dwlroots-hyprland:xcb-errors=%{?with_xcb_errors:enabled}%{!?with_xcb_errors:disabled}
 %meson_build
 
 %install
@@ -178,7 +183,6 @@ sed -i 's;REPLACE_ME_WITH_PREFIX;%{_prefix};' hyprpm/src/core/DataState.cpp
 %{_bindir}/Hyprland
 %{_bindir}/hyprland
 %{_bindir}/hyprctl
-%{_bindir}/hyprpm
 %dir %{_datadir}/%{shortname}
 %{_datadir}/%{shortname}/hyprland.conf
 %{_datadir}/%{shortname}/lockdead.png
@@ -203,18 +207,15 @@ sed -i 's;REPLACE_ME_WITH_PREFIX;%{_prefix};' hyprpm/src/core/DataState.cpp
 %dir %{_datadir}/bash-completion/
 %dir %{_datadir}/bash-completion/completions/
 %{_datadir}/bash-completion/completions/hyprctl
-%{_datadir}/bash-completion/completions/hyprpm
 
 %files fish-completion
 %dir %{_datadir}/fish/
 %dir %{_datadir}/fish/vendor_completions.d/
 %{_datadir}/fish/vendor_completions.d/hyprctl.fish
-%{_datadir}/fish/vendor_completions.d/hyprpm.fish
 
 %files zsh-completion
 %dir %{_datadir}/zsh/
 %dir %{_datadir}/zsh/site-functions/
 %{_datadir}/zsh/site-functions/_hyprctl
-%{_datadir}/zsh/site-functions/_hyprpm
 
 %changelog

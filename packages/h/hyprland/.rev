@@ -306,4 +306,12 @@ depends on 1159012</comment>
     <comment></comment>
     <requestid>1265275</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>63a600f46c767ac0487ebb1a3d4b8aa7</srcmd5>
+    <version>0.49.0</version>
+    <time>1750930797</time>
+    <user>anag_factory</user>
+    <comment>Update to version 0.49.0</comment>
+    <requestid>1288603</requestid>
+  </revision>
 </revisionlist>

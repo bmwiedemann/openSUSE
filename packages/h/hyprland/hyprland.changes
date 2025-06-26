@@ -1,4 +1,221 @@
 -------------------------------------------------------------------
+Sun Jun 22 16:42:21 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Add missing dependencies of hyprland-devel:
+  This has mainly been achived with pkg-config-with-deps.patch
+
+-------------------------------------------------------------------
+Sat Jun 21 10:41:35 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Removal of hyprpm:
+  The hyprpm plugin manager was removed in favour of providing
+  vairous plugins via the common rpm infrastructure.
+  opensuse-hyprpm-use-hyprland-devel-subpkg.patch was dropped as a
+  consequence of that.
+
+-------------------------------------------------------------------
+Thu May  8 20:43:31 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.49.0:
+  + After a while, Vaxry is proud to announce Hyprland 0.49.0.
+  + Breaking changes:
+    - cursor:warp_on_change_workspace no longer controls warps for
+	  special workspaces. Use warp_on_toggle_special for more fine
+	  control.
+    - master:center_master_slaves_on_right has been changed to
+	  master:center_master_fallback providing more options than just
+	  right.
+    - you'll now need to input your sudo password for sensitive
+	  hyprpm operations. Due to that change your repositories and
+	  enabled plugins will be reset.
+  + New features:
+    - InputManager: add config option to disable keybinds per device
+	  (#10064)
+    - InputManager: add nofollowmouse (#9994)
+    - Permission Manager: add permission management for screencopy
+	  (#9930)
+    - animations: Add option for animating workspaces as if the first
+	  and last were adjacent (#10277)
+    - anr: add config for ping number before popup shows up (#9782)
+    - async: add Promise and use it for AsyncDialogBox
+    - binds: add drag_threshold for click/drag isolation (#9839)
+    - groupbar: Add options for setting group bar title font weight
+	  (and indicator gap) (#9617)
+    - groupbar: add text offset and upper gap settings (#9733)
+    - helpers: Add an async dialog box impl (#9919)
+    - input: add warp_on_toggle_special (#9945)
+    - keybinds: add sendkeystate dispatcher (#9599)
+    - layerrules: add abovelock to render above lockscreen (#9793)
+    - permissions: add perms for plugin loading (#10184)
+    - protocols: add Hyprland toplevel mapping implementation (#9775)
+    - protocols: add support for xdg-system-bell-v1
+    - protocols: add xdg_toplevel_tag_v1 support
+    - renderer: add render:send_content_type setting (#9851)
+    - socket2: add minimized event for foreign-wlr
+    - socket2: add monitorremovedv2 event (#10229)
+    - windowrules: add noclosefor
+    - workspaces: Add binds:hide_special_on_workspace_change (#9728)
+  + Fixes:
+    - asyncDialogBox: fix missing pid
+    - asyncdialogbox: fix missing header
+    - compositor/surface: fix surface opaque and input regions not
+	  being updated (#10055)
+    - compositor: fix crash when moving a workspace to a monitor with
+	  size 0x0 (#9848)
+    - compositor: fix getMonitorInDirection skipping active monitor
+	  (#10114)
+    - config: Fix matching monitor by description to allow space
+	  prefix (#9788)
+    - configmgr: fix CConfigValue<> from plugins
+    - core: fix artifacts when fullscreening (#9778)
+    - core: fix crash in data device on shutdown (#9997)
+    - core: fix null ref when resuming system (#9794)
+    - ctm: fix crash when finishing ctm progress with a destroyed
+	  monitor (#9835)
+    - framebuffer: Fix framebuffer size check (#10068)
+    - helpers: add missing include for BSDs after 3c12867 (#9982)
+    - hyprpm: add missing include for libc++ after 858c0e2 (#10234)
+    - hyprpm: add missing return (#10299)
+    - input/layers: Fix exclusive LS focus / refocus after unmap
+	  (#9984)
+    - internal: fix minor ubsan errors (#9743)
+    - internal: fix name confusion in SAlphaValue
+    - keybindmgr: fixup bindn regression
+    - layerrules: fix abovelock interactivity for touch input
+	  (#10253)
+    - monitors: fix disconnected monitors are reconnected to an empty
+	  workspace (#9874)
+    - renderer: Simplify and fix hdr metadata setting (#9706)
+    - socket2: fix order of window events on map (#10341)
+    - solitary: Fix the non-working tearing #9429 (#9772)
+    - swipe: fix prev workspace remembering
+    - swipe: fix swiping onto a new workspace bound to another
+	  monitor (#8176) (#9927)
+    - window: Fix order of urgency flag and event emission (#10163)
+    - workspaces: Fix empty flag not selecting active workspace
+	  (#10237)
+    - workspaces: minor fixes to persistence
+    - xdg-bell/xdg-tag: fix moved resource usage
+    - xdg-bell: fix wrong resource cast
+    - xdg-shell: fix some null refs (#9992)
+  + Other:
+    - CursorManager: Store cursor pixel data retrieved from X/HC as a
+	  copy (#9986)
+    - DMABuffer: reserve vector and avoid UB (#10317)
+    - DataDevice: position icon at cursor hotspot (#9895)
+    - Groupbar: apply scaling factor to text (#9731)
+    - IHyprLayout: center floating window at cursor when picked up
+	  from fullscreen (#10063)
+    - IHyprLayout: respect minimum window size (#10017)
+    - SECURITY: init security policy
+    - cm: Use precomputed primaries conversion (#9814)
+    - compositor: avoid crash on null window monitor move
+    - compositor: refactor class member vars (#10141)
+    - compositor: set fullscreenstate on movetoworkspace (#10303)
+    - config: Refactor class member vars (#10124)
+    - config: use natural increase and decrease of brightness for
+	  default cfg (#10210)
+    - core: Don't damage the entire surface every frame (#9763)
+    - core: wait for dmabuf readiness (#9806)
+    - ctm: enable fade animation on nvidia driver versions 575 and
+	  above (#10095)
+    - debug: refactor class member vars (#10130)
+    - decoration: bring back border_part_of_window
+    - decorationPositioner: update posinfo on window update
+    - desktop: Damage subsurface when position changes (#10094)
+    - desktop: cleanup code and use std::ranges (#10289)
+    - devices: refactor class member vars (#10206)
+    - dwindle: ignore fullscreen window for positioning when
+	  use_active_for_splits=false (#9838)
+    - dwindle: use idealIgnoreReserved for moveWindowTo bbs
+    - groupbar: round boxes
+    - helpers: properly support next/prev for workspace switching
+	  (#10074)
+    - helpers: refactor class member vars (#10218)
+    - hyprerror: refactor class member vars (#10227)
+    - hyprpm: Minor optimizations and refactor of helpers and
+	  progress bar (#10246)
+    - hyprpm: clean up root access and properly check input (#10304)
+    - hyprpm: extend dep list
+    - hyprpm: move to system directories for storing plugins (#10211)
+    - hyprpm: wrap sudo cmd in quotes
+    - input: don't use pointer hold logic for unmapped surfs
+    - inputs: refactor class member vars (#10230)
+    - internal: Don't force default cursor on config reload/monitor
+	  reconfigure (#9815)
+    - internal: Use vecnotinrect instead of !vecinrect (#10262)
+    - keybinds: allow executing binds not bound to a key (#10102)
+    - layerSurface: warp position and size before taking a snapshot
+	  (#10054)
+    - layers: refactor class member vars (#10149)
+    - layout: allow interacting with pinned windows when fullscreened
+	  (#10326)
+    - layout: center floating window at cursor when picked up from
+	  fullscreen (#9780)
+    - layout: properly assign workspace and monitor when moving a
+	  child to the parent (#10338)
+    - layout: properly track floating window position (#9937)
+    - layouts: refactor class member vars (#10228)
+    - managers: refactor class member vars (#10242)
+    - master: Change center_master_slaves_on_right to
+	  center_master_fallback (#10201)
+    - opengl: check for g_pHyprOpengl pointer (#9791)
+    - opengl: don't attempt to compile cm on gles3.0
+    - pass/rect: include clipBox in opaque calculations
+    - pass: remove unusued timeline in texpass (#9734)
+    - permissions: disable automatic reloading of permissions from
+	  cfg
+    - plugins: refactor class member vars (#10257)
+    - popup: damage old size on unmap as well as new (#10306)
+    - protocols/meson.build: use native wayland-scanner
+    - protocols: Don't update hdr metadata if image description is
+	  unchanged (#9776)
+    - protocols: ensure PointerConstraints activation occurs only
+	  after attched to InputManager (#10096)
+    - protocols: refactor class member vars (a-m) (#10265)
+    - protocols: refactor class member vars (core) (#10259)
+    - protocols: refactor class member vars (n-t) (#10273)
+    - protocols: refactor class member vars (types) (#10261)
+    - protocols: refactor class member vars (u-z) (#10282)
+    - refactor: cshader class to sshader struct (#10324)
+    - render, helpers: Call OpenGL destroyMonitorResources on
+	  disconnect (#10111)
+    - render: properly release rendered buffers (#9807)
+    - render: refactor class member vars (#10292)
+    - renderer/opengl: Extract shaders from source (#9600)
+    - renderer: always try to apply a mode if pixel size is invalid
+	  (#10291)
+    - renderer: precompute fullalpha (#10319)
+    - renderer: render fading out floating windows over fs
+    - renderer: render tiled fading out above other tiled windows
+    - screencopy: Handle explicit sync failure (#10050)
+    - screencopy: don't render cursor when frame doesn't want it
+    - screencopy: support hw cursors while sharing with cursor
+    - seat: avoid sending null surfaces in leave/enter events
+    - surfacestate: reset buffer bit before applying to current
+    - surfacestate: track and apply updated state
+    - synctimeline: check if fd is readable before wait (#9789)
+    - tablet: naive window refocusing (#10110)
+    - time: move to stl's clocks and move timer
+    - versionkeeper: create version file if not present (#9829)
+    - watchdog: remove watchdog
+    - window: don't deactivate unfocused xwayland windows in groups
+	  (#9781)
+    - window: make AsyncDialogBoxes not closeable
+    - window: send fractional scale on updateScaleTransform
+    - window: use stored size for new floating window when
+	  persistentsize is set (#10212)
+    - windowrules: allow incrementing window props (#9566)
+    - windows: refactor class member vars (#10168)
+    - workspaces: refactor class member vars (#10167)
+    - xcursormgr: include
+    - xdg-bell: avoid crashes on null toplevel
+    - xwayland: Cleanup server startup and FDs (#9769)
+    - xwayland: refactor class member vars (#10312)
+    - xwayland: sync primary selection with wayland (#9952)
+    - xwl: dont close the fd to early (#9715)
+
+-------------------------------------------------------------------
 Fri Mar 28 16:53:47 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.48.1:
