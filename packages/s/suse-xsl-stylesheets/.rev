@@ -781,4 +781,13 @@ Replaces sr#890404</comment>
     <comment></comment>
     <requestid>1272194</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>7c5c55902abb500da2063cfea4ad1100</srcmd5>
+    <version>2.95.13</version>
+    <time>1750930466</time>
+    <user>anag_factory</user>
+    <comment>Fix date in suse-xsl-stylesheets.changes:674 with
+/usr/lib/obs/service/source_validators/helpers/fix_changelog</comment>
+    <requestid>1288448</requestid>
+  </revision>
 </revisionlist>

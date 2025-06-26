@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun 25 06:00:00 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.13
+
+- Update to 2.95.13
+  - Add survey link to content pages (#716)
+  - JSON-LD: Add alternativeHeadline from subtitle (#631)
+
+-------------------------------------------------------------------
+Wed Jun 11 10:14:04 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.12
+
+- Update to 2.95.12
+  - Correct emphasis for Japanese (#713)
+  - Remove double full stop (#712)
+
+-------------------------------------------------------------------
+Wed May 21 12:48:52 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.11
+
+- Update to 2.95.11
+  - Adjust <link rel="next|prev"> (#710)
+
+-------------------------------------------------------------------
 Wed Apr 23 13:39:55 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.10
 
 - Update to 2.95.10
@@ -650,8 +670,8 @@ Tue May  4 14:23:09 UTC 2021 - Stefan Knorr <sknorr@suse.com>
   - Cleanup of the tarball, so previous change for Nimbus fonts is
     now unnecessary
 
--------------------------------------------------------------------
 
+-------------------------------------------------------------------
 Tue Jun  9 14:17:07 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Don't install Nimbus fonts and require
