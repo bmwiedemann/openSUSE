@@ -1,0 +1,20 @@
+Index: xemacs-21.5.34/lib-src/ootags.c
+===================================================================
+--- xemacs-21.5.34.orig/lib-src/ootags.c
++++ xemacs-21.5.34/lib-src/ootags.c
+@@ -76,6 +76,7 @@ char pot_etags_version[] = "@(#) pot rev
+ 
+ #if !defined (WIN32_NATIVE) && defined (STDC_HEADERS)
+ #include <stdlib.h>
++#include <stdbool.h>
+ #include <string.h>
+ #endif
+ 
+@@ -181,7 +182,6 @@ void oo_browser_check_and_clear_structty
+ # define xrnew(op,n,Type) ((Type *) xrealloc ((op), (n) * sizeof (Type)))
+ #endif
+ 
+-typedef int bool;
+ 
+ typedef void Lang_function (FILE *);
+ 

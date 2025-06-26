@@ -1,7 +1,7 @@
 #
 # spec file for package xemacs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -115,6 +115,7 @@ Patch63:        xemacs-21.5.34-strsignal.patch
 Patch64:        xemacs-21.5.34-fix2038.patch
 # PATCH-FIX-SUSE drop hostname+timestamp from .elc
 Patch65:        reproducible.patch
+Patch66:        xemacs-gcc15.patch
 Requires(pre):  permissions
 Requires:       ctags
 Requires:       efont-unicode
@@ -231,6 +232,7 @@ exit 1
 %endif
 %patch -P 64 -p1
 %patch -P 65 -p1
+%patch -P 66 -p1
 
 %build
   cflags ()
