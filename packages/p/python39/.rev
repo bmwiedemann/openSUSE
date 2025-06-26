@@ -1475,4 +1475,12 @@
     - bpo-43633: Improve the textual representation of</comment>
     <requestid>1284262</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>61e3b4d407de46bc3747a211a4041aa1</srcmd5>
+    <version>3.9.23</version>
+    <time>1750930694</time>
+    <user>anag_factory</user>
+    <comment>Also addresses CVE-2025-4435 (gh#135034, bsc#1244061).</comment>
+    <requestid>1288602</requestid>
+  </revision>
 </revisionlist>
