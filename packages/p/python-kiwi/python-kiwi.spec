@@ -56,7 +56,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        10.2.16
+Version:        10.2.25
 Provides:       kiwi-schema = 8.1
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -96,9 +96,12 @@ BuildRequires:  python%{python3_pkgversion}-docopt >= 0.6.2
 %else
 BuildRequires:  python%{python3_pkgversion}-docopt-ng
 %endif
+%if 0%{?debian} || 0%{?ubuntu}
+# only because of debbuild
+BuildRequires:  python%{python3_pkgversion}-setuptools
+%endif
 BuildRequires:  python%{python3_pkgversion}-lxml
 BuildRequires:  python%{python3_pkgversion}-requests
-BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-simplejson
 %if 0%{?suse_version}
 BuildRequires:  python%{python3_pkgversion}-Sphinx
@@ -187,6 +190,7 @@ Provides:       kiwi-image-docker-requires = %{version}-%{release}
 Obsoletes:      kiwi-image-docker-requires < %{version}-%{release}
 %if "%{_vendor}" != "debbuild"
 Provides:       kiwi-image:docker
+Provides:       kiwi-image:oci
 %endif
 %if 0%{?suse_version}
 Requires:       umoci
@@ -206,6 +210,7 @@ Provides:       kiwi-image-wsl-requires = %{version}-%{release}
 Obsoletes:      kiwi-image-wsl-requires < %{version}-%{release}
 %if "%{_vendor}" != "debbuild"
 Provides:       kiwi-image:appx
+Provides:       kiwi-image:wsl
 %endif
 %if 0%{?suse_version}
 Requires:       fb-util-for-appx
@@ -228,6 +233,8 @@ Provides:       kiwi-image:iso
 %endif
 %if 0%{?suse_version}
 Requires:       checkmedia
+%else
+Requires:       isomd5sum
 %endif
 Requires:       xorriso
 Requires:       kiwi-systemdeps-core = %{version}-%{release}
@@ -443,7 +450,6 @@ Requires:       python%{python3_pkgversion}-docopt-ng
 %endif
 Requires:       python%{python3_pkgversion}-lxml
 Requires:       python%{python3_pkgversion}-requests
-Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-xmltodict
 %if ! (0%{?rhel} && 0%{?rhel} < 8)
 Recommends:     kiwi-man-pages

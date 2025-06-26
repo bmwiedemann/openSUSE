@@ -2872,4 +2872,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1266167</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>def95100e4bf2ac27dd860f55eb4fbdc</srcmd5>
+    <version>10.2.25</version>
+    <time>1750939533</time>
+    <user>anag_factory</user>
+    <comment>- Bump version: 10.2.24 → 10.2.25
+
+- Fixed get_partition_node_name
+  The function get_partition_node_name takes the disk device
+  and the partition index as arguments to match against the
+  respective device node for this partition index. The partition
+  index is the position of the partition in the partition table
+  according to their start offset. For the code to function
+  properly it is required that the list of partitions provided
+  by lsblk is ordered according to the start address of the
+  partitions in the table. The way lsblk was called did not
+  enforce this ordering. This commit enforces the order to
+  be done against the start offset and fixes bsc#1245190
+
+- Update test-image-MicroOS for local build
+  Fix bootstrap setup such that micro-os patterns can resolve
+
+- Fix logging of stderr data in command calls
+  The stderr data was presented as one blob without line
+  breaks. Hard to read and smells like a bug. This commit
+  fixes the output to become readable
+
+- Update test-image-MicroOS/disk.sh
+  Add a findmnt for / to check if there is a proper root
+  device reference
+
+- Fix mount system for root_is_snapper_snapshot
+  If root is a snapper snapshot we have to tell the
+  chroot a proper root mount point which can be achieved
+  by a bind mount pointing to itself. This Fixes</comment>
+    <requestid>1288533</requestid>
+  </revision>
 </revisionlist>

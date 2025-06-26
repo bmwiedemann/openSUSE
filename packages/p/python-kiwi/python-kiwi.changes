@@ -1,4 +1,1082 @@
 -------------------------------------------------------------------
+Wed Jun 25 14:21:01 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.24 → 10.2.25
+
+-------------------------------------------------------------------
+Wed Jun 25 09:36:58 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed get_partition_node_name
+
+  The function get_partition_node_name takes the disk device
+  and the partition index as arguments to match against the
+  respective device node for this partition index. The partition
+  index is the position of the partition in the partition table
+  according to their start offset. For the code to function
+  properly it is required that the list of partitions provided
+  by lsblk is ordered according to the start address of the
+  partitions in the table. The way lsblk was called did not
+  enforce this ordering. This commit enforces the order to
+  be done against the start offset and fixes bsc#1245190
+
+-------------------------------------------------------------------
+Tue Jun 24 15:43:59 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update test-image-MicroOS for local build
+
+  Fix bootstrap setup such that micro-os patterns can resolve
+
+-------------------------------------------------------------------
+Tue Jun 24 15:30:49 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix logging of stderr data in command calls
+
+  The stderr data was presented as one blob without line
+  breaks. Hard to read and smells like a bug. This commit
+  fixes the output to become readable
+
+-------------------------------------------------------------------
+Tue Jun 24 08:07:32 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update test-image-MicroOS/disk.sh
+
+  Add a findmnt for / to check if there is a proper root
+  device reference
+
+-------------------------------------------------------------------
+Mon Jun 23 17:53:48 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix mount system for root_is_snapper_snapshot
+
+  If root is a snapper snapshot we have to tell the
+  chroot a proper root mount point which can be achieved
+  by a bind mount pointing to itself. This Fixes
+  bsc#1244668
+
+-------------------------------------------------------------------
+Wed Jun 18 17:11:45 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- There is no shim for aarch64 on SUSE
+
+  Fix integration test for standard EFI (no secure boot)
+  setup on arm
+
+-------------------------------------------------------------------
+Mon Jun 16 12:12:06 CEST 2025 - Alejandro Perez <69607775+aale24@users.noreply.github.com>
+
+- Add driver configuration support for dracut initrd
+
+  Add driver configuration support for dracut initrd
+
+  Add support for specifying kernel drivers to be included or omitted
+  in the dracut initrd configuration. This extends the existing dracut
+  configuration capabilities like in the following example
+
+  <initrd action="add">
+  <dracut driver="erofs"/>
+  </initrd>
+
+-------------------------------------------------------------------
+Tue Jun 10 11:36:33 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed rootfs size calculation with spare part
+
+  In case a spare_part setup is combined with the root_clone feature,
+  the size calculation for the rootfs did not take the cloning into
+  account and lead to the wrong value. In addition when requesting
+  the spare part to be last and no size information was given, the
+  partition was not created at all. This commit fixes both defects
+  and Fixes #2831
+
+-------------------------------------------------------------------
+Sun Jun 08 14:15:34 CEST 2025 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- Add dependency for isomd5sum for iso images and set in kiwi-settings
+
+  This ensures that isomd5sum is pulled into the environment for ISO image
+  builds, and the updated settings makes it so that kiwi boxes will use it.
+
+-------------------------------------------------------------------
+Tue Jun 03 12:29:40 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow /boot to be a btrfs subvolume
+
+  In a btrfs based design, allow to put /boot as subvolume.
+  This required a small fix in the mount order in a way that
+  boot/efi gets mounted after the subvolume mounts are done.
+  The respective integration test has been updated to test
+  this functionality. This Fixes #2824
+
+-------------------------------------------------------------------
+Mon Jun 02 22:59:11 CEST 2025 - Dirk Müller <dirk@dmllr.de>
+
+- Use f-strings where feasible
+
+  This is a slightly shorter and easier to read syntax
+
+-------------------------------------------------------------------
+Mon Jun 02 22:52:11 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow multiple EFI arch binaries/modules
+
+  Allow to lookup and included EFI binaries/modules for
+  multiple architectures. For testing the integration
+  test in rawhide/test-image-live-disk has been adapted
+  accordingly to install 32bit and 64bit EFI binaries.
+  This Fixes #2822
+
+-------------------------------------------------------------------
+Mon Jun 02 22:23:28 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Log warning message for disabled runtime checks
+
+  Complete type hints for RuntimeConfig class and log
+  a warning message for each disabled runtime check
+
+-------------------------------------------------------------------
+Mon Jun 02 13:51:05 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix static type argument int vs. str
+
+-------------------------------------------------------------------
+Mon Jun 02 12:55:05 CEST 2025 - Dirk Müller <dirk@dmllr.de>
+
+- Move it inside the context that actually uses it
+
+  also rename it to "supported" as that seems to closer match
+  what it resembles
+
+-------------------------------------------------------------------
+Mon Jun 02 12:53:23 CEST 2025 - Dirk Müller <dirk@dmllr.de>
+
+- Add overlayfs as supporting xattr/ACLs as well
+
+-------------------------------------------------------------------
+Mon Jun 02 12:27:18 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix disk_type validation for zipl loader
+
+  If the targettype is set to GPT in combination with plain
+  zipl as loader, the code to validate the targettype against
+  the targetgeometry was not effective and zipl failed.
+  This Fixes #2821
+
+-------------------------------------------------------------------
+Wed May 28 21:11:16 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixup overlay unit enablement
+
+-------------------------------------------------------------------
+Wed May 28 18:27:22 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixup overlay mount dependencies
+
+-------------------------------------------------------------------
+Wed May 28 17:54:31 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update test-image-overlayroot integration test
+
+  Use proper systemd mount units to setup the custom overlay.
+  The handling of fstab entries by systemd is limited and
+  should be better handled by self managed mount units
+
+-------------------------------------------------------------------
+Wed May 28 17:52:21 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use proper mount units for overlay setup
+
+  Instead of manual mounting create a proper systemd mount
+  unit. This allows to manage mount dependencies and the order
+  of nested mounts in a clean way
+
+-------------------------------------------------------------------
+Tue May 27 10:58:12 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.23 → 10.2.24
+
+-------------------------------------------------------------------
+Mon May 26 11:38:25 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Cleanup build metadata
+
+  Make sure the final image rootfs does not contain unneeded
+  metadata files used during build time. The respective cleanup
+  call is performed after the root sync and after all initrd/boot
+  processing has been done. This is because up to that point it's
+  still possible that the information is required. This means
+  when building images with a read-only rootfs, it might not be
+  possible that the metadata can be deleted due to a chicken&egg
+  situation. Furthermore the cleanup is applied to the disk
+  builder only as other builders do not really suffer from
+  this data and for the container builder the metadata can
+  also be used for the stackbuild feature when building images
+  derived from containers. This Fixes #2668
+
+-------------------------------------------------------------------
+Sun May 25 19:30:41 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update overlay integration test for partial write
+
+  Update the sdboot_uki_verity_erofs profile of the
+  test-image-overlayroot integration test with a custom
+  fstab example to overlay only parts of the system
+  for writing. This Fixes #2815
+
+-------------------------------------------------------------------
+Sun May 25 19:21:15 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- bootloader setup without overlay write partition
+
+  If overlayroot_write_partition="false" is set, no system
+  indicator was stored. This cause the bootloader setup to
+  be skipped completely which is not required for e.g.
+  systemd-boot.
+
+-------------------------------------------------------------------
+Sun May 25 19:18:40 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure to create overlay directories
+
+  Create overlay directories even if rd.root.overlay.readonly
+  is set. This allows individual fstab overlays mounts to be
+  performed
+
+-------------------------------------------------------------------
+Fri May 23 15:55:39 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed rd.root.overlay.readonly overlay mode
+
+  When booting an overlayroot image with rd.root.overlay.readonly
+  set, the system will boot with only the read-only root mounted.
+  There was a bug in the dracut code which prevented this mount
+  from succeeding when the read-only rootfs is different from
+  squashfs. This commit changes the mount to be a simple bind
+  mount, independent of the origin filesystem. This works because
+  the read-only mount is performed in the dracut overlay code
+  anyway. This is related to Issue #2815
+
+-------------------------------------------------------------------
+Wed May 21 11:36:42 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- The way we build debs requires setuptools
+
+  debbuild doesn't work when setuptools is not there
+
+-------------------------------------------------------------------
+Wed May 21 10:09:10 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop use of setuptools
+
+  Since we moved to poetry and no code using setuptools anymore,
+  this requirement can be dropped. The commit also updates the
+  plugin documentation which was still based on setup.py
+
+-------------------------------------------------------------------
+Tue May 20 20:57:27 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update live boot remote boot features
+
+  Like the upstream module also support the root=live:http://...
+  remote boot options. The kiwi-live dracut module is scheduled
+  to become obsolete, but it's still in use and should support
+  remote boot not only for AoE. As we got more issue reports than
+  working AoE remote boot success, this commit also updates the
+  documentation and switches to the capabilities of this PR.
+
+-------------------------------------------------------------------
+Mon May 19 15:54:48 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add UKI support for the grub bootloader
+
+  In addition to systemd_boot also add support for UKI creation
+  when grub is used. This includes the creation of a UKI image
+  via dracut in the same way as it's done for systemd_boot.
+  In addition an earlyboot grub script chainloads the UKI and
+  bypasses any written grub configuration. In Theory this should
+  also allow to use the shim loader for chainloading an UKI.
+  However I haven't done testing in this direction and I also
+  expect security issues with this approach because loading
+  any non signed data by shim is not expected to work. A new
+  profile named grub_uki_verity_erofs has been added to the
+  integration test that experiments with UKIs
+
+-------------------------------------------------------------------
+Mon May 19 13:06:52 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.22 → 10.2.23
+
+-------------------------------------------------------------------
+Fri May 16 16:08:47 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for <initrd> section as part of <type>
+
+  Extend scope and content of the <initrd> section to be allowed
+  as part of the <type> section. This allows to specify custom
+  call options and modules for the dracut tool. In particular
+  this commit implementes support for passing the uefi option
+  to dracut to enable building an UKI EFI binary as follows:
+
+  <initrd action="setup">
+  <dracut uefi="true"/>
+  </initrd>
+
+  This Fixes #2809 and Fixes #2408
+
+-------------------------------------------------------------------
+Fri May 16 09:04:53 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix systemd-boot loader setup
+
+  To make sure only loader entries from /boot/efi/loader/entries
+  kiwi deleted eventually existing entry files from /boot/loader.
+  However that is a problem for read-only systems and should actually
+  also not performed by kiwi. This Fixes #2805
+
+-------------------------------------------------------------------
+Thu May 15 14:37:57 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.21 → 10.2.22
+
+-------------------------------------------------------------------
+Thu May 15 09:45:14 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Apply security context on writable root only
+
+  Make sure to perform setfiles only on a writable target. In case
+  of a read-only root it is expected that the security context set
+  by kiwi in an earlier stage is complete. As there is no way to
+  modify data when root is read-only, there is also no way to change
+  the security context of any file such that we skip setfiles
+  in this case. Should there be a read-only system that has writable
+  partitions such as /boot and their content changes while the rest
+  of the root system is read-only it is in the responsibility of
+  the author of the image description to call setfiles only on
+  the affected and still writable files via a custom disk.sh
+  script. Along with the fix the respective integration test was
+  modified to enable selinux such that this change is actually
+  integration tested. This Fixes #2805
+
+-------------------------------------------------------------------
+Thu May 15 01:48:37 CEST 2025 - areif-dev <aj@ajreifsnyder.com>
+
+- Docs: fix typo in users.rst
+
+-------------------------------------------------------------------
+Wed May 14 18:27:36 CEST 2025 - areif-dev <aj@ajreifsnyder.com>
+
+- Docs: minor punctuation and grammar fixes
+
+-------------------------------------------------------------------
+Wed May 14 18:18:18 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Give test-image-overlayroot enough space
+
+-------------------------------------------------------------------
+Wed May 14 12:37:20 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow ext2/ext3 as valid build target
+
+  stat reports the value 'ext2/ext3' which is a valid target
+
+-------------------------------------------------------------------
+Wed May 14 11:10:48 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added check_target_dir_on_unsupported_filesystem
+
+  Add runtime check to make sure the selected target directory
+  for the image and/or the image rootfs lives on a filesystem
+  that provides all required features like extended permissions,
+  ACLs or xattrs.
+
+-------------------------------------------------------------------
+Tue May 13 11:31:05 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix rd.kiwi.oem.luks.reencrypt_randompass workflow
+
+  When requesting a new random key prior reencryption, make
+  sure that this new key is referenced in the current in
+  memory initrd crypttab such that all subsequent
+  tasks e.g. luks resize have permissions to complete while
+  inside of this initrd instance
+
+-------------------------------------------------------------------
+Mon May 12 16:07:12 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for new tarball-based WSL format
+
+  With the new image="wsl" type one can build a WSL container
+  image that uses the new tarball format. This Fixes #2678
+
+-------------------------------------------------------------------
+Mon May 12 09:36:42 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update SL-Micro build test
+
+  For details see: https://build.opensuse.org/request/show/1272418
+
+-------------------------------------------------------------------
+Mon May 12 09:27:57 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Required read-only-root-fs for SL-Micro test build
+
+  Changes from the SL-Micro team requires adaptions to the
+  integration test description
+
+-------------------------------------------------------------------
+Mon May 12 09:13:41 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Delete fstab.script from SL-Micro test build
+
+  This was only needed when /var was an extra partition, but
+  it's a volume with copy-on-write disabled for some time
+
+-------------------------------------------------------------------
+Mon May 12 08:49:44 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add systemd-resolved to TW integration tests
+
+  For some reason it's not longer part of the systemd standard
+  installation
+
+-------------------------------------------------------------------
+Fri May 09 11:43:48 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.20 → 10.2.21
+
+-------------------------------------------------------------------
+Thu May 08 21:53:34 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add dkms to test-image-embedded integration test
+
+-------------------------------------------------------------------
+Thu May 08 19:16:09 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed access issue to etc/kernel for sdboot
+
+  In case of an overlayroot setup we have to make sure
+  that etc/kernel is writable. This is done by a bind
+  mount of the ESP
+
+-------------------------------------------------------------------
+Thu May 08 17:16:30 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update test-image-overlayroot
+
+  Add another build using grub instead of systemd-boot and use
+  btrfs as write partition instead of xfs. Please note this test
+  requires a boot partition because grub cannot read from erofs
+  and unlike systemd-boot grub does not read all boot data from
+  the ESP.
+
+-------------------------------------------------------------------
+Thu May 08 17:13:27 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed get_volume_management
+
+  If a volume capable filesystem like btrfs is requested, there
+  must also be a volume definition available to report that
+  the volume management is actively used. Just the request of
+  the filesystem can also mean it's being used without volumes
+  like it could be the case for an overlayroot setup that
+  requests btrfs as write partition.
+
+-------------------------------------------------------------------
+Thu May 08 12:01:55 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update test-image-overlayroot
+
+  Move to systemd-boot as bootloader, activate secure boot
+  and drop the extra boot partition. Use XFS for the write
+  space
+
+-------------------------------------------------------------------
+Thu May 08 12:01:14 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow initrd updates on read-only devices
+
+  Move initrd to ESP for boot loaders that reads data
+  from there
+
+-------------------------------------------------------------------
+Thu May 08 11:06:45 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix ordering issue for device assignment
+
+  wrong assignment of a boot partition in overlayroot setup
+  without boot partition
+
+-------------------------------------------------------------------
+Wed May 07 23:29:02 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add kiwi-settings package for TW
+
+  de-blacklist erofs to allow building integration tests
+  with this filesystem
+
+-------------------------------------------------------------------
+Wed May 07 23:01:58 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Switch to dracut-kiwi-verity
+
+  So far no luck with the systemd verity generator. This
+  commit adds the parsing of /etc/veritytab in the existing
+  kiwi-verity dracut module and uses it in the overlayroot
+  integration test.
+
+-------------------------------------------------------------------
+Wed May 07 18:30:07 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update test-image-overlayroot integration test
+
+  Switch to erofs for overlay testing. Additionally split the build
+  into two profiles. The first one just builds a simple overlayroot
+  oem disk based on erofs. The second one adds a veritysetup layer
+  and configures the systemd-veritysetup-generator for use in dracut.
+  This Fixes #2799
+
+-------------------------------------------------------------------
+Wed May 07 18:21:50 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add documentation for new attribute
+
+  Add details how to use the new overlayroot_readonly_filesystem attribute
+
+-------------------------------------------------------------------
+Wed May 07 18:11:45 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for selecting the overlay read-only fs
+
+  Add new overlayroot_readonly_filesystem attribute which allows
+  to select for either squashfs or erofs as the read-only filesystem
+  in an OEM overlay disk setup.
+
+-------------------------------------------------------------------
+Wed May 07 16:40:22 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed root setup for verity overlay disk
+
+  When building an image with overlayroot set to true and
+  activated verity data, the root= parameter must be
+  set to root=overlay:MAPPER=verityroot instead of the standard
+  overlay:PARTUUID mapping.
+
+-------------------------------------------------------------------
+Wed May 07 16:32:27 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure the verity record has a superblock
+
+-------------------------------------------------------------------
+Wed May 07 15:48:12 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop distro specific runtime check
+
+  The check_efi_mode_for_disk_overlay_correctly_setup exists because
+  shim-install does not work on read-only devices. However, shim-install
+  is a SUSE only tool that runs a SUSE specific secure boot setup.
+  For other secure boot processes this runtime check is not useful.
+  As runtime checks aims to be generally useful, this one gets
+  dropped.
+
+-------------------------------------------------------------------
+Tue May 06 09:15:55 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix root clone size setup
+
+  If the root_clone attribute is specified without providing a
+  fixed size for the system, kiwi estimates the size needed for
+  the root part and assigns the rest to the clone. This leads to
+  different partition sizes for the root clones. As per definition
+  of a clone the expectation is that the size is the same, this
+  commit changes the behavior such that the calculated size for
+  the system is applied to the origin root and all its clones.
+  As a consequence this can leave unpartitioned space free in
+  the image. This Fixes #2463
+
+-------------------------------------------------------------------
+Mon May 05 10:19:10 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.19 → 10.2.20
+
+-------------------------------------------------------------------
+Fri May 02 15:25:47 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix reencryption master key passphrase
+
+  Make sure to use the correct passphrase for the master
+  key such that it can be decrypted with the same credentials
+  as before. The credentials reset is a subsequent task
+  after reencryption.
+
+-------------------------------------------------------------------
+Thu May 01 20:40:39 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.18 → 10.2.19
+
+-------------------------------------------------------------------
+Wed Apr 30 15:39:00 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed targettype setup in zipl.conf
+
+  The special targettype set to GPT still indicates SCSI for
+  the zipl.conf but tells kiwi to create a GPT disk layout
+
+-------------------------------------------------------------------
+Wed Apr 30 15:02:06 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed s390 integration test
+
+  targettype attribute in wrong section
+
+-------------------------------------------------------------------
+Wed Apr 30 12:34:27 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for GPT targettype on s390
+
+  Allow to build s390 images using GPT instead of the old DOS
+  partition table. zipl has added support to read from GPT.
+  This Fixes #2694
+
+-------------------------------------------------------------------
+Wed Apr 30 12:12:51 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add --no-compress option to bundler
+
+  Allow to skip the compression for bundle files marked
+  to become compressed. This Fixes #2736
+
+-------------------------------------------------------------------
+Wed Apr 30 11:13:51 CEST 2025 - Steve Traylen <straylen@stevekiwi.cern.ch>
+
+- Rawhide (F43) has removed basesystem package
+
+  The basesystem package was retired with rawhide (F43).
+
+  https://src.fedoraproject.org/rpms/filesystem/pull-request/20
+
+-------------------------------------------------------------------
+Wed Apr 30 09:54:28 CEST 2025 - Steve Traylen <steve.traylen@cern.ch>
+
+- rawhide install shadow-utils for usermod
+
+  Using `kiwi-ng` version 10.2.18 (EL9)
+
+  Currently with:
+
+  ```
+  sudo kiwi-ng system build \
+  --description kiwi/build-tests/x86/fedora/test-image-docker
+  --set-repo http://ftp.fau.de/fedora/linux/development/rawhide/Everything/x86_64/os/ \
+  --target-dir /tmp/myimage1
+  ```
+
+  This fails with:
+
+  ```
+  [ INFO    ]: 09:46:38 | Setting up user root
+  [ INFO    ]: 09:46:38 | --> Modifying user: root
+  [ INFO    ]: 09:46:38 | --> Primary group for user root: root
+  [ ERROR   ]: 09:46:38 | KiwiCommandError: chroot: stderr: /sbin/chroot: failed to run command ‘usermod’: No such file or directory
+  ```
+
+  Install the package `shadow-utils` to provide `usermod`.
+
+-------------------------------------------------------------------
+Wed Apr 30 09:22:07 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed default bls value setup
+
+  Fixed get_build_type_bootloader_bls behavior in case the bls
+  attribute is not set. In this case get_bls() returns a None value
+  which was returned. However in this case the attribute value
+  should not be taken into account and the method defined default
+  value for bls should be returned. This Fixes #2542
+
+-------------------------------------------------------------------
+Mon Apr 28 16:48:09 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.17 → 10.2.18
+
+-------------------------------------------------------------------
+Mon Apr 28 09:57:01 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix setup of use_disk_password for random secret
+
+  When using luks="random" in combination with use_disk_password="true"
+  the resulting cryptomount call in grub is wrong. This commit fixes it
+
+-------------------------------------------------------------------
+Sun Apr 27 23:14:23 CEST 2025 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- Drop copying GRUB2 modules to /boot with Secure Boot UEFI images
+
+  Copying the modules creates a situation where future updates
+  applied to a running system can cause GRUB to crash due to mixed
+  modules and GRUB EFI binaries.
+
+  It is not needed anyway since GRUB EFI binaries for Secure Boot have
+  all modules compiled into the binaries.
+
+  Fixes: https://github.com/OSInside/kiwi/issues/2790
+
+-------------------------------------------------------------------
+Sun Apr 27 20:56:41 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure editbootinstall runs offline
+
+  editbootinstall expects the system to be umounted
+
+-------------------------------------------------------------------
+Sun Apr 27 20:16:20 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure post sync actions are in scope
+
+-------------------------------------------------------------------
+Sun Apr 27 20:00:52 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Follow up fix for overlayroot builds for EFI path
+
+  Only perform the boot overlay if there is an extra boot partition
+
+-------------------------------------------------------------------
+Sun Apr 27 19:34:13 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Only remove entries from exclude list if present
+
+-------------------------------------------------------------------
+Sun Apr 27 19:14:19 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix overlayroot builds for EFI path
+
+  make sure to keep boot/efi mountpoint directories
+  in the read-only area as they can't be created later
+
+-------------------------------------------------------------------
+Sun Apr 27 18:04:27 CEST 2025 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- doc: overview: Add list of supported Linux distributions
+
+  These are the Linux distributions that are developed and actively
+  tested for with the latest kiwi releases.
+
+  This should offer greater clarity about what we're able to support
+  as an upstream project.
+
+-------------------------------------------------------------------
+Sun Apr 27 16:23:39 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed mount of image system for volume managers
+
+  The ImageSystem.mount() method implemented its own handling
+  for mounting the volumes of a volume manager based system.
+  First and foremost this duplicates code that already exists
+  in the respective VolumeManager implementation and second
+  the code behaved wrong in case of btrfs when there is no
+  default subvolume configured
+
+-------------------------------------------------------------------
+Sun Apr 27 14:05:43 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Handle grub fix functions less strict
+
+  If called on full read-only systems, log the information
+  that the files can't be modified but do not fail. On
+  such systems the expectation is that no fix code must
+  be applied and as such the fix function can be considered
+  an optional step.
+
+-------------------------------------------------------------------
+Fri Apr 25 13:55:56 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed root setup for encrypted overlay disk
+
+  When building an image with overlayroot set to true and
+  activated luks encryption, the root= parameter must be
+  set to root=overlay:MAPPER=luks instead of the standard
+  overlay:PARTUUID mapping. This Fixes #2776
+
+-------------------------------------------------------------------
+Fri Apr 25 12:52:12 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Change suffix for package manager config files
+
+  Use .config instead of .conf for the temporary package
+  manager config files. Reason for this change is a bug in
+  dracut which reads and executes all /*.conf files from
+  the system. This Fixes #2780
+
+-------------------------------------------------------------------
+Fri Apr 25 10:15:49 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Set security context after root sync
+
+  On selinux enabled image builds we call setfiles initially
+  after the root tree is complete and after each script invocation
+  that might change the system. However the security context
+  also applies to mount points e.g volumes which only exists
+  at the time when the root tree gets synced to the actual image
+  binary. Thus this commit also calls setfiles on the mounted
+  root tree after data sync. This Fixes rh#2333743
+
+-------------------------------------------------------------------
+Fri Apr 25 09:22:13 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix broken doc link
+
+  Rephrase chapter pointing to a documentation side at VMware.
+  They are constantly changing their documentation URLs that
+  I'm tired of fixing this. This Fixes #2782
+
+-------------------------------------------------------------------
+Tue Apr 22 16:03:39 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.16 → 10.2.17
+
+-------------------------------------------------------------------
+Tue Apr 22 14:53:39 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix key slot selection for luks reencrypt
+
+  Depending on the type setup for a luks encrypted image, there
+  might be one or two key slots available. When kiwi is requested
+  to perform the reencryption process at least one key-slot and
+  the proper keyfile/passphrase must be provided. This commit
+  stores the information about the key-slot number for which
+  a decryption information exists in the initrd. In addition to
+  the code change also the corresponding integration test image
+  was updated.
+
+-------------------------------------------------------------------
+Tue Apr 22 09:42:00 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed test-image-gce integration test
+
+  python3-gcemetadata was renamed to python-gcemetadata
+
+-------------------------------------------------------------------
+Mon Apr 21 20:39:16 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed integration test builds for TW
+
+  Request dracut explicitly when needed
+
+-------------------------------------------------------------------
+Wed Apr 16 21:59:30 CEST 2025 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- Add support for filtering out files from the ESP image for GRUB
+
+  Prior to this change, KIWI blindly synced the ESP directory into the
+  embedded ESP image. Depending on the distribution and packages included
+  for the created image, this can have undesirable side-effects.
+
+  For image builds that need some more fine-grained control over the
+  creation of the embedded ESP image (particularly for ISO images),
+  this change introduces the ability to inject an exclusion list
+  similar to what is used to filter out files for the root filesystem.
+
+  Fixes: https://github.com/OSInside/kiwi/issues/2008
+  Fixes: https://github.com/OSInside/kiwi/issues/2777
+
+-------------------------------------------------------------------
+Sun Apr 13 18:12:22 CEST 2025 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- Fix bundle extension for container types
+
+  When building result files that use container types like oci or docker,
+  kiwi creates them as archive tarballs with an extension prefix to
+  indicate the special nature of the archive. However, the bundler
+  code does not retain the prefix, which results in the wrong file
+  extension for these archives.
+
+  This change adds exceptions for these types and refactors the
+  exception handling to unify it with the Vagrant image filename
+  handling, which operates similarly.
+
+  Fixes: https://github.com/OSInside/kiwi/issues/2628
+
+-------------------------------------------------------------------
+Fri Apr 11 10:47:44 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update LOADER_TYPE setup for grub
+
+  If the bootloader attribute: bls is set to true, make sure
+  the LOADER_TYPE changes to grub2-bls. This is related to
+  Issue #2773
+
+-------------------------------------------------------------------
+Thu Apr 10 12:05:13 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix Agama PXE build
+
+  A bootloader setup is needed to create config.bootoptions
+  Even though a ramdisk deployment does not require a bootloader
+  setup we need it because part of the setup is the root device
+  reference which is still needed to pivot root into the
+  system
+
+-------------------------------------------------------------------
+Thu Apr 10 11:41:21 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix firmware setting for Agama PXE image
+
+-------------------------------------------------------------------
+Thu Apr 10 11:34:06 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added obs BUILD_FLAVOR for agama
+
+  Required for multibuild (multiple profiles) build
+
+-------------------------------------------------------------------
+Thu Apr 10 09:14:53 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update Agama integration test
+
+  Split the build into two profiles ISO and PXE to differentiate
+  the build results into a small Agama for remote installations
+  and a standard Agama for iso based installations
+
+-------------------------------------------------------------------
+Wed Apr 09 17:04:48 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Prevent loading unused data in oem deployment
+
+  In case rd.kiwi.ramdisk is used as part of a remote deployment
+  setup, it's not needed to load the system kernel and initrd
+  because it's not used as kexec is not called with the system
+  deployed into memory. For ramdisk deployments the system is
+  booted using the currently active kernel and initrd and as
+  such we can avoid loading an extra kernel and initrd for
+  booting the system via kexec.
+
+-------------------------------------------------------------------
+Wed Apr 09 16:38:23 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update Agama integration test
+
+  Make use of <oem-ramdisk-size> in the Agama integration test
+
+-------------------------------------------------------------------
+Wed Apr 09 16:31:04 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added <oem-ramdisk-size> element
+
+  So far it was only possible to specify the size of the ramdisk
+  via the kernel commandline option: ramdisk_size. In a remote
+  deployment it was therefore required to carry this size as a
+  mandatory information to the deployment server. With this commit
+  we allow to specify the size for the ramdisk to be configured as
+  part of the image configuration which makes this information
+  also available inside of the initrd. If provided the ramdisk_size
+  kernel commandline option still takes precedence over the
+  <oem-ramdisk-size> setting to avoid any behavior change and to
+  still allow dynamic overrides of the ramdisk size.
+
+-------------------------------------------------------------------
+Tue Apr 08 20:04:58 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- reinstall bootstrap packs in image phase for apt
+
+  Due to the special bootstrap process, the packages unpacked
+  during bootstrap are not properly listed in the apt index.
+  Therefore the bootstrap packages are added to the install
+  phase which causes an install of this packages again to
+  fix the apt index and provide a consistent system from
+  an apt perspective. This Fixes #2768
+
+-------------------------------------------------------------------
+Mon Apr 07 12:24:43 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed restore of keyfile after reencryption
+
+  When kiwi runs the reencryption it also restores an eventual
+  existing keyfile. However if the option rd.kiwi.oem.luks.reencrypt_randompass
+  is specified no former keyfile should be restored. The purpose
+  of reencrypt_randompass is to make sure only this in memory
+  passphrase can access the luks pool such that tooling at boot
+  time gets the opportunity to work with the luks pool for e.g.
+  setting up a TPM key or set a passphrase only known to the user.
+
+-------------------------------------------------------------------
+Fri Apr 04 10:04:07 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update dracut kiwi-lib module setup
+
+  Make sure all tools used in code are requested for inclusion
+
+-------------------------------------------------------------------
+Fri Apr 04 00:23:13 CEST 2025 - Rüdiger Oertel <ro@suse.de>
+
+- keep /usr/bin/sha256sum
+
+  dropping md5sum was okay, but now we need
+  the current tool to verify the checksum
+
+-------------------------------------------------------------------
+Thu Apr 03 11:58:03 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Restrict keyfile permissions
+
+  For reencrypt in combination with rd.kiwi.oem.luks.reencrypt_randompass
+  make sure that the temporary random pass keyfile has 0400 root
+  owned access permissions set
+
+-------------------------------------------------------------------
+Wed Apr 02 14:12:05 CEST 2025 - Neal Gompa <neal@gompa.dev>
+
+- package: Add kiwi-image:oci Provides to -systemdeps-containers
+
+  This allows the Open Build Service to correctly resolve dependencies
+  when building OCI images.
+
+-------------------------------------------------------------------
+Wed Apr 02 11:09:45 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Better logging which kiwi file is read
+
+  Improve the log message that tells about reading the
+  kiwi config file to actually show the file path that
+  is read in. This is especially an issue if more than
+  one kiwi file is read in during the build process.
+
+-------------------------------------------------------------------
+Wed Apr 02 10:56:02 CEST 2025 - Rüdiger Oertel <ro@suse.de>
+
+- also keep the ts binary, might be needed to provide timestamped logfiles
+
+-------------------------------------------------------------------
+Tue Apr 01 15:10:12 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Add information about new apk (Alpine) support
+
+-------------------------------------------------------------------
+Mon Mar 31 21:52:03 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for Alpine
+
+  Add apk repository and package manager support and provide
+  an integration test build for the Alpine distribution
+
+-------------------------------------------------------------------
+Mon Mar 31 16:22:10 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix F824 flake check for global assignments
+
+-------------------------------------------------------------------
+Mon Mar 31 16:09:11 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use metalink repos for local test builds
+
+-------------------------------------------------------------------
+Sat Mar 29 15:46:07 CET 2025 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- schema: Allow C as a valid locale
+
+  It should be permitted to set the "C.UTF-8" locale for minimal images
+  that are not preloaded with locales. The "C.UTF-8" locale has been
+  supported in Linux distributions for many years.
+
+-------------------------------------------------------------------
 Tue Mar 25 13:13:00 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.2.15 → 10.2.16
@@ -567,6 +1645,11 @@ Tue Dec 10 19:14:52 CET 2024 - Neal Gompa <ngompa@velocitylimitless.com>
   This is a partial revert of commit daf1323c5ded7e4e7783205f5e30457b40eb322f.
 
 -------------------------------------------------------------------
+Mon Dec 09 11:04:03 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed unit test
+
+-------------------------------------------------------------------
 Sun Dec 08 20:35:42 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Don't take ghost files into account
@@ -583,6 +1666,13 @@ Tue Dec 03 14:58:40 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 Tue Dec 03 14:56:47 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Update STYLEROOT to SUSE 2022
+
+-------------------------------------------------------------------
+Mon Dec 02 18:24:00 CET 2024 - John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
+
+- Add support for loongarch64
+
+  This Fixes #2684
 
 -------------------------------------------------------------------
 Mon Dec 02 14:57:30 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
