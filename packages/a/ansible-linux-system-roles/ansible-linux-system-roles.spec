@@ -21,11 +21,11 @@
 %global ssh_version 1.5.2
 %global crypto_policies_version 1.4.2
 %global systemd_version 1.3.1
-%global ha_cluster_version 1.22.1
+%global ha_cluster_version 1.24.0
 %global mssql_version 2.5.2
-%global suseconnect_version 1.0.0
+%global suseconnect_version 1.0.1
 %global auto_maintenance_version 1.94.2
-%global certificate_version 1.3.9
+%global certificate_version 1.3.11
 
 %if 0%{?suse_version} >= 1600
 %global sle16 1

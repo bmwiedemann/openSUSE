@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 25 12:24:00 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Update roles:
+  - suseconnect to 1.0.1: simplify sanitization logic (no jmespath)
+  - certificate to 1.3.11: update Python package dependencies for SLE 16
+  - ha_cluster to 1.24.0:
+    - add SLES 16 support with zypper pattern and crmsh updates
+    - export pcsd and OS configuration
+    - fix qdevice restart on cert regen and disable proxy for local pcsd socket 
+
+-------------------------------------------------------------------
 Mon Jun  9 09:58:40 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Fix: Ensure `certificate` role is included on SLE 16

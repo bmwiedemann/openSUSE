@@ -30,4 +30,12 @@ This package contains ansible roles from linux-system-roles project: https://git
   - Cleaned up and simplified `%prep` section accordingly </comment>
     <requestid>1284165</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f2720d45a3db59cd1537a5871c3df80b</srcmd5>
+    <version>1.0.0</version>
+    <time>1750930770</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1288545</requestid>
+  </revision>
 </revisionlist>
