@@ -148,15 +148,3 @@ Index: etc/login.defs
 +# environment variables HOME, SHELL and USER.
 +#LOGIN_ENV_SAFELIST
 +
-Index: lib/getdef.c
-===================================================================
---- lib/getdef.c.orig
-+++ lib/getdef.c
-@@ -76,6 +76,7 @@ struct itemdef {
- #define FOREIGNDEFS				\
- 	{"ALWAYS_SET_PATH", NULL},		\
- 	{"ENV_ROOTPATH", NULL},			\
-+	{"LOGIN_ENV_SAFELIST", NULL},		\
- 	{"LOGIN_KEEP_USERNAME", NULL},		\
- 	{"LOGIN_PLAIN_PROMPT", NULL},		\
- 	{"MOTD_FIRSTONLY", NULL},		\

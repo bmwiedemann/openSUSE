@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Jun 25 04:20:14 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.18.0:
+  * CI: purge man-db #1241
+  * passwd: document exit code when PAM has errored #1244
+  * Man patches #1175
+  * Quick fix: define E_PAM_ERR in lib/pam_pass.c #1245
+  * Accept /usr/sbin/nologin as an alternate to /sbin/nologin #1246
+  * Add LOGIN_ENV_SAFELIST to FOREIGNDEFS #1248
+  * ci: add gawk as a fedora dependency #1252
+  * man/useradd.8.xml: fix the CREATE_HOME description #1251
+  * lib/getdate.y: Restrict the date formats that we support #1238
+  * newuidmap: better error logging on failure #1254
+  * Extend basic test cases to check shadow and gshadow entries #1237
+  * lib/sizeof.h: Make sure STRLEN() only accepts string literals #1260
+  * Add strprefix(), and use it instead of its pattern #1152
+  * src/: Simplify, using strpbrk(3) #1167
+  * lib/string/strdup/: STRNDUPA(): Reimplement in terms of strndupa(3) #1189
+  * Remove dead beef #1230
+  * lib/atoi/a2i/: Simplify these macros #1137
+  * strtolower(): Add API, and use it instead of its pattern #1211
+  * lib/: sget*ent(): Simplify #1146
+  * fields #1150
+  * yacc(1) is a dead language; bury it deep in the ground #1217
+  * Test expiration date #1233
+  * [scp] Add strcaseprefix(), and use it instead of its pattern #1262
+  * valid_field(): Improve readability #1208
+  * lib/, src/, tests/: Use the standard countof() instead of our NITEMS() #1259
+  * lib/fs/mkstemp/, src/: Move fmkomstemp() to separate files under
+    lib/fs/mkstemp/, and split into mkomstemp() #1139
+  * [x][v]aprintf(): Add APIs, and use them instead of [x][v]asprintf(3) #1168
+  * lib/get_pid.c: pid_t is a signed integer #1264
+  * src/newusers.c: Fix off-by-one benign bug in array declaration #1266
+  * Add some wrappers for usual loops around strsep(3) #1155
+  * lib/fs/readlink/areadlink.h: areadlink(): Avoid inconditionally using PATH_MAX #1222
+  * configure: Fix typo #1268
+  * Pre-release 4.18.0-rc1 #1270
+  * Update man pages for chage, shadow, passwd #1243
+  * contrib/: Burn it all #1274
+  * Pre-release 4.18.0-rc2 #1275
+  * Release 4.18.0 #1277
+- Update shadow-util-linux.patch: See #1248
+
+-------------------------------------------------------------------
 Wed Apr  9 00:05:49 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - shadow-util-linux.patch: util-linux-2.41 introduced new variable:
