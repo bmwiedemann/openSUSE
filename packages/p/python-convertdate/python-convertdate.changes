@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 25 12:06:07 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives
+
+-------------------------------------------------------------------
 Sat Jun  7 03:51:44 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Replace usage of %jobs (boo#1237231)
