@@ -443,4 +443,13 @@
   * fixing a crash when no 'iso' tag is defined</comment>
     <requestid>1282796</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>481b03b2cecd5672ba9fbe76eb777259</srcmd5>
+    <version>0.6.2</version>
+    <time>1750930752</time>
+    <user>anag_factory</user>
+    <comment>- add change-fitering-error-to-warning.patch:
+- add parse-supportstatus.patch:</comment>
+    <requestid>1288523</requestid>
+  </revision>
 </revisionlist>
