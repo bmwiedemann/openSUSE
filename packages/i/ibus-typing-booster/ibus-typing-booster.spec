@@ -17,7 +17,7 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.27.65
+Version:        2.27.66
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
@@ -34,6 +34,9 @@ BuildRequires:  glibc-locale
 BuildRequires:  gtk3
 BuildRequires:  ibus-devel
 BuildRequires:  m17n-db
+%if  0%{?suse_version} < 1600
+BuildRequires:  python3-dataclasses
+%endif
 # for the unit tests
 BuildRequires:  m17n-lib
 BuildRequires:  python3
@@ -61,6 +64,9 @@ Requires:       python3-distro
 Requires:       python3-packaging
 Requires:       python3-pyenchant
 Requires:       python3-pyxdg
+%if  0%{?suse_version} < 1600
+Requires:       python3-dataclasses
+%endif
 Recommends:     gdouros-symbola-fonts
 # Recommend reasonably good fonts which have most of the emoji:
 Recommends:     noto-coloremoji-fonts
