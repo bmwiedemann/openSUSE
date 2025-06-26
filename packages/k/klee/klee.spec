@@ -30,13 +30,14 @@ Name:           klee
 Summary:        LLVM Execution Engine
 License:        NCSA
 Group:          Development/Languages/Other
-Version:        3.1+20250106
+Version:        3.1+20250502
 Release:        0
 URL:            http://klee.github.io/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source2:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version}.0.0/llvm/utils/not/not.cpp
 Source3:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version}.0.0/llvm/utils/FileCheck/FileCheck.cpp
+Patch0:         0001-include-cstdint-when-required.patch
 
 BuildRequires:  clang%{llvm_version}
 BuildRequires:  cmake

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 25 08:15:07 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 3.1+20250502:
+  * googletest: update to 1.16.0
+- add (to fix gcc 15 builds):
+  * 0001-include-cstdint-when-required.patch
+
+-------------------------------------------------------------------
 Thu Feb 13 06:38:42 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - OK, bump to llvm 15 again, everything moved to 15 in the meantime

@@ -1,0 +1,117 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Wed, 25 Jun 2025 10:17:28 +0200
+Subject: include cstdint when required
+References: build-fix
+Patch-mainline: no
+
+For these files:
+* include/klee/Support/CompressionStream.h
+* include/klee/Support/FileHandling.h
+* include/klee/Support/PrintVersion.h
+* include/klee/System/Time.h
+* lib/Module/Passes.h
+* lib/Support/TreeStream.cpp
+that is a bug in llvm fixed by commit e2f25af71142 ("[ADT] Add
+`<cstdint>` to SmallVector (#101761)"). Fixed in llvm 19.1. So remove
+once we bump -- if ever.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ include/klee/Module/InstructionInfoTable.h | 1 +
+ include/klee/Support/CompressionStream.h   | 1 +
+ include/klee/Support/FileHandling.h        | 2 ++
+ include/klee/Support/PrintVersion.h        | 2 ++
+ include/klee/System/Time.h                 | 1 +
+ lib/Module/Passes.h                        | 1 +
+ lib/Support/TreeStream.cpp                 | 1 +
+ 7 files changed, 9 insertions(+)
+
+diff --git a/include/klee/Module/InstructionInfoTable.h b/include/klee/Module/InstructionInfoTable.h
+index 3ba9528ce6f8..b6d05de58e17 100644
+--- a/include/klee/Module/InstructionInfoTable.h
++++ b/include/klee/Module/InstructionInfoTable.h
+@@ -10,6 +10,7 @@
+ #ifndef KLEE_INSTRUCTIONINFOTABLE_H
+ #define KLEE_INSTRUCTIONINFOTABLE_H
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ #include <unordered_map>
+diff --git a/include/klee/Support/CompressionStream.h b/include/klee/Support/CompressionStream.h
+index bc9119dd1578..330490f4bc65 100644
+--- a/include/klee/Support/CompressionStream.h
++++ b/include/klee/Support/CompressionStream.h
+@@ -10,6 +10,7 @@
+ #ifndef KLEE_COMPRESSIONSTREAM_H
+ #define KLEE_COMPRESSIONSTREAM_H
+ 
++#include <cstdint>
+ #include "llvm/Support/raw_ostream.h"
+ #include "zlib.h"
+ 
+diff --git a/include/klee/Support/FileHandling.h b/include/klee/Support/FileHandling.h
+index a0dd0e957521..3b01eca51d56 100644
+--- a/include/klee/Support/FileHandling.h
++++ b/include/klee/Support/FileHandling.h
+@@ -10,6 +10,8 @@
+ #ifndef KLEE_FILEHANDLING_H
+ #define KLEE_FILEHANDLING_H
+ 
++#include <cstdint>
++
+ #include "klee/Support/CompilerWarning.h"
+ DISABLE_WARNING_PUSH
+ DISABLE_WARNING_DEPRECATED_DECLARATIONS
+diff --git a/include/klee/Support/PrintVersion.h b/include/klee/Support/PrintVersion.h
+index f4999debc21a..e74fc630fbd4 100644
+--- a/include/klee/Support/PrintVersion.h
++++ b/include/klee/Support/PrintVersion.h
+@@ -10,6 +10,8 @@
+ #ifndef KLEE_PRINTVERSION_H
+ #define KLEE_PRINTVERSION_H
+ 
++#include <cstdint>
++
+ #include "klee/Support/CompilerWarning.h"
+ DISABLE_WARNING_PUSH
+ DISABLE_WARNING_DEPRECATED_DECLARATIONS
+diff --git a/include/klee/System/Time.h b/include/klee/System/Time.h
+index 14d9ab4b7637..9ca1c512ffe1 100644
+--- a/include/klee/System/Time.h
++++ b/include/klee/System/Time.h
+@@ -10,6 +10,7 @@
+ #ifndef KLEE_TIME_H
+ #define KLEE_TIME_H
+ 
++#include <cstdint>
+ #include "klee/Support/CompilerWarning.h"
+ DISABLE_WARNING_PUSH
+ DISABLE_WARNING_DEPRECATED_DECLARATIONS
+diff --git a/lib/Module/Passes.h b/lib/Module/Passes.h
+index 6878a8b6d482..bbe9ecd4c916 100644
+--- a/lib/Module/Passes.h
++++ b/lib/Module/Passes.h
+@@ -12,6 +12,7 @@
+ 
+ #include "klee/Config/Version.h"
+ 
++#include <cstdint>
+ #include "klee/Support/CompilerWarning.h"
+ DISABLE_WARNING_PUSH
+ DISABLE_WARNING_DEPRECATED_DECLARATIONS
+diff --git a/lib/Support/TreeStream.cpp b/lib/Support/TreeStream.cpp
+index 4571861d3e9d..70620b74d967 100644
+--- a/lib/Support/TreeStream.cpp
++++ b/lib/Support/TreeStream.cpp
+@@ -18,6 +18,7 @@
+ #include <iterator>
+ #include <map>
+ 
++#include <cstdint>
+ #include "llvm/Support/raw_ostream.h"
+ #include <string.h>
+ 
+-- 
+2.50.0
+
