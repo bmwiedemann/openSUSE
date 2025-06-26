@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CPAN-Meta-Requirements
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %define cpan_name CPAN-Meta-Requirements
 Name:           perl-CPAN-Meta-Requirements
-Version:        2.143000
+Version:        2.143
 Release:        0
-%define cpan_version 2.143
-Provides:       perl(CPAN::Meta::Requirements) = 2.143000
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Set of version requirements for a CPAN dist
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -46,7 +44,7 @@ Logically impossible constraints will be identified immediately by thrown
 exceptions.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
