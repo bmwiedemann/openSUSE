@@ -165,4 +165,14 @@
 - Modernise specfile</comment>
     <requestid>815364</requestid>
   </revision>
+  <revision rev="25" vrev="23">
+    <srcmd5>dc965335c4c708762094e52105759f61</srcmd5>
+    <version>0.3.2+cvs20070731</version>
+    <time>1750939550</time>
+    <user>anag_factory</user>
+    <comment>- added patches
+  fix build with gcc15
+  + smilutils-gcc15.patch (forwarded request 1288639 from pgajdos)</comment>
+    <requestid>1288646</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 26 07:56:04 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + smilutils-gcc15.patch
+
+-------------------------------------------------------------------
 Wed Jun 17 06:37:48 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building with gcc10

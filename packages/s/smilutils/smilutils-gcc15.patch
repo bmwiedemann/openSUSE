@@ -1,0 +1,228 @@
+diff -upr smilutils.orig/apps/ppmeffectv/blurzoom.c smilutils/apps/ppmeffectv/blurzoom.c
+--- smilutils.orig/apps/ppmeffectv/blurzoom.c	2025-06-26 07:38:15.510522124 +0000
++++ smilutils/apps/ppmeffectv/blurzoom.c	2025-06-26 07:38:42.303719650 +0000
+@@ -21,7 +21,7 @@
+ int blurzoomStart();
+ int blurzoomStop();
+ int blurzoomDraw();
+-int blurzoomEvent();
++int blurzoomEvent(SDL_Event *);
+ 
+ extern void blurzoomcore();
+ 
+diff -upr smilutils.orig/apps/ppmeffectv/dice.c smilutils/apps/ppmeffectv/dice.c
+--- smilutils.orig/apps/ppmeffectv/dice.c	2025-06-26 07:38:15.511602360 +0000
++++ smilutils/apps/ppmeffectv/dice.c	2025-06-26 07:40:56.588958779 +0000
+@@ -42,7 +42,7 @@ typedef enum _dice_dir {
+ int diceStart();
+ int diceStop();
+ int diceDraw();
+-int diceEvent();
++int diceEvent(SDL_Event *event);
+ void diceCreateMap();
+ 
+ static char *effectname = "DiceTV";
+diff -upr smilutils.orig/apps/ppmeffectv/diff.c smilutils/apps/ppmeffectv/diff.c
+--- smilutils.orig/apps/ppmeffectv/diff.c	2025-06-26 07:38:15.511310788 +0000
++++ smilutils/apps/ppmeffectv/diff.c	2025-06-26 07:42:57.583214443 +0000
+@@ -27,7 +27,7 @@
+ int diffStart();
+ int diffStop();
+ int diffDraw();
+-int diffEvent();
++int diffEvent(SDL_Event *event);
+ void diffUpdate();
+ void diffSave();
+ static char *effectname = "DiffTV";
+diff -upr smilutils.orig/apps/ppmeffectv/dizzy.c smilutils/apps/ppmeffectv/dizzy.c
+--- smilutils.orig/apps/ppmeffectv/dizzy.c	2025-06-26 07:38:15.511008000 +0000
++++ smilutils/apps/ppmeffectv/dizzy.c	2025-06-26 07:44:49.463133868 +0000
+@@ -16,7 +16,7 @@
+ int dizzyStart();
+ int dizzyStop();
+ int dizzyDraw();
+-int dizzyEvent();
++int dizzyEvent(SDL_Event *event);
+ 
+ static char *effectname = "VertigoTV";
+ static int state = 0;
+diff -upr smilutils.orig/apps/ppmeffectv/dot.c smilutils/apps/ppmeffectv/dot.c
+--- smilutils.orig/apps/ppmeffectv/dot.c	2025-06-26 07:38:15.510870464 +0000
++++ smilutils/apps/ppmeffectv/dot.c	2025-06-26 07:39:21.702969859 +0000
+@@ -16,7 +16,7 @@
+ int dotStart();
+ int dotStop();
+ int dotDraw();
+-int dotEvent();
++int dotEvent(SDL_Event *event);
+ 
+ #define DOTDEPTH 5
+ #define DOTMAX (1<<DOTDEPTH)
+diff -upr smilutils.orig/apps/ppmeffectv/hintdepint.c smilutils/apps/ppmeffectv/hintdepint.c
+--- smilutils.orig/apps/ppmeffectv/hintdepint.c	2025-06-26 07:38:15.509915501 +0000
++++ smilutils/apps/ppmeffectv/hintdepint.c	2025-06-26 07:43:28.017050914 +0000
+@@ -15,7 +15,7 @@
+ int hintdepintStart();
+ int hintdepintStop();
+ int hintdepintDraw();
+-int hintdepintEvent();
++int hintdepintEvent(SDL_Event *event);
+ 
+ #define FRAME_COUNTS 		10
+ #define MIN_FRAME_COUNTS 	1
+diff -upr smilutils.orig/apps/ppmeffectv/lens.c smilutils/apps/ppmeffectv/lens.c
+--- smilutils.orig/apps/ppmeffectv/lens.c	2025-06-26 07:38:15.510904605 +0000
++++ smilutils/apps/ppmeffectv/lens.c	2025-06-26 07:41:17.483072113 +0000
+@@ -31,7 +31,7 @@
+ int lensStart();
+ int lensStop();
+ int lensDraw();
+-int lensEvent();
++int lensEvent(SDL_Event *event);
+ static void init();
+ static int x=16,y=16;
+ static int xd=5,yd=5;
+diff -upr smilutils.orig/apps/ppmeffectv/life.c smilutils/apps/ppmeffectv/life.c
+--- smilutils.orig/apps/ppmeffectv/life.c	2025-06-26 07:38:15.511041118 +0000
++++ smilutils/apps/ppmeffectv/life.c	2025-06-26 07:43:48.965036214 +0000
+@@ -17,7 +17,7 @@
+ int lifeStart();
+ int lifeStop();
+ int lifeDraw();
+-int lifeEvent();
++int lifeEvent(SDL_Event *event);
+ 
+ static char *effectname = "LifeTV";
+ static int stat;
+diff -upr smilutils.orig/apps/ppmeffectv/mosaic.c smilutils/apps/ppmeffectv/mosaic.c
+--- smilutils.orig/apps/ppmeffectv/mosaic.c	2025-06-26 07:38:15.509688095 +0000
++++ smilutils/apps/ppmeffectv/mosaic.c	2025-06-26 07:45:03.550898087 +0000
+@@ -18,7 +18,7 @@
+ int mosaicStart();
+ int mosaicStop();
+ int mosaicDraw();
+-int mosaicEvent();
++int mosaicEvent(SDL_Event *event);
+ 
+ static char *effectname = "MosaicTV";
+ static int stat;
+diff -upr smilutils.orig/apps/ppmeffectv/nervous.c smilutils/apps/ppmeffectv/nervous.c
+--- smilutils.orig/apps/ppmeffectv/nervous.c	2025-06-26 07:38:15.511536945 +0000
++++ smilutils/apps/ppmeffectv/nervous.c	2025-06-26 07:40:11.342975955 +0000
+@@ -22,7 +22,7 @@
+ int nervousStart();
+ int nervousStop();
+ int nervousDraw();
+-int nervousEvent();
++int nervousEvent(SDL_Event *event);
+ 
+ static char *effectname = "NervousTV";
+ static int state = 0;
+diff -upr smilutils.orig/apps/ppmeffectv/noise.c smilutils/apps/ppmeffectv/noise.c
+--- smilutils.orig/apps/ppmeffectv/noise.c	2025-06-26 07:38:15.511372260 +0000
++++ smilutils/apps/ppmeffectv/noise.c	2025-06-26 07:41:38.106911310 +0000
+@@ -14,7 +14,7 @@
+ int noiseStart();
+ int noiseStop();
+ int noiseDraw();
+-int noiseEvent();
++int noiseEvent(SDL_Event *event);
+ 
+ static char *effectname = "NoiseTV";
+ static int stat;
+diff -upr smilutils.orig/apps/ppmeffectv/puzzle.c smilutils/apps/ppmeffectv/puzzle.c
+--- smilutils.orig/apps/ppmeffectv/puzzle.c	2025-06-26 07:38:15.509508690 +0000
++++ smilutils/apps/ppmeffectv/puzzle.c	2025-06-26 07:44:10.148843228 +0000
+@@ -17,7 +17,7 @@
+ int puzzleStart();
+ int puzzleStop();
+ int puzzleDraw();
+-int puzzleEvent();
++int puzzleEvent(SDL_Event *event);
+ 
+ #define BLOCKSIZE 80
+ 
+diff -upr smilutils.orig/apps/ppmeffectv/rds.c smilutils/apps/ppmeffectv/rds.c
+--- smilutils.orig/apps/ppmeffectv/rds.c	2025-06-26 07:38:15.510740001 +0000
++++ smilutils/apps/ppmeffectv/rds.c	2025-06-26 07:40:22.191092843 +0000
+@@ -16,7 +16,7 @@
+ int rdsStart();
+ int rdsStop();
+ int rdsDraw();
+-int rdsEvent();
++int rdsEvent(SDL_Event *event);
+ 
+ static char *effectname = "RandomDotStereoTV";
+ static int stat;
+diff -upr smilutils.orig/apps/ppmeffectv/rev.c smilutils/apps/ppmeffectv/rev.c
+--- smilutils.orig/apps/ppmeffectv/rev.c	2025-06-26 07:38:15.510712150 +0000
++++ smilutils/apps/ppmeffectv/rev.c	2025-06-26 07:42:26.802960892 +0000
+@@ -22,7 +22,7 @@
+ #include "EffecTV.h"
+ #include "utils.h"
+ 
+-int revEvent();
++int revEvent(SDL_Event *event);
+ int revStart();
+ int revStop();
+ int revDraw();
+diff -upr smilutils.orig/apps/ppmeffectv/rndm.c smilutils/apps/ppmeffectv/rndm.c
+--- smilutils.orig/apps/ppmeffectv/rndm.c	2025-06-26 07:38:15.509658973 +0000
++++ smilutils/apps/ppmeffectv/rndm.c	2025-06-26 07:45:19.008882088 +0000
+@@ -12,7 +12,7 @@
+ #include "EffecTV.h"
+ #include "utils.h"
+ 
+-int rndmEvent();
++int rndmEvent(SDL_Event *event);
+ int rndmStart();
+ int rndmStop();
+ int rndmDraw();
+diff -upr smilutils.orig/apps/ppmeffectv/shagadelic.c smilutils/apps/ppmeffectv/shagadelic.c
+--- smilutils.orig/apps/ppmeffectv/shagadelic.c	2025-06-26 07:38:15.510048324 +0000
++++ smilutils/apps/ppmeffectv/shagadelic.c	2025-06-26 07:45:35.992919998 +0000
+@@ -17,7 +17,7 @@
+ int shagadelicStart();
+ int shagadelicStop();
+ int shagadelicDraw();
+-int shagadelicEvent();
++int shagadelicEvent(SDL_Event *event);
+ 
+ static char *effectname = "ShagadelicTV";
+ static int stat;
+diff -upr smilutils.orig/apps/ppmeffectv/simura.c smilutils/apps/ppmeffectv/simura.c
+--- smilutils.orig/apps/ppmeffectv/simura.c	2025-06-26 07:38:15.511402567 +0000
++++ smilutils/apps/ppmeffectv/simura.c	2025-06-26 07:40:32.370911401 +0000
+@@ -15,7 +15,7 @@
+ int simuraStart();
+ int simuraStop();
+ int simuraDraw();
+-int simuraEvent();
++int simuraEvent(SDL_Event *event);
+ 
+ static char *effectname = "SimuraTV";
+ static int stat;
+diff -upr smilutils.orig/apps/ppmeffectv/spark.c smilutils/apps/ppmeffectv/spark.c
+--- smilutils.orig/apps/ppmeffectv/spark.c	2025-06-26 07:38:15.509881874 +0000
++++ smilutils/apps/ppmeffectv/spark.c	2025-06-26 07:42:39.695216292 +0000
+@@ -16,7 +16,7 @@
+ int sparkStart();
+ int sparkStop();
+ int sparkDraw();
+-int sparkEvent();
++int sparkEvent(SDL_Event *event);
+ 
+ static char *effectname = "SparkTV";
+ static int stat;
+diff -upr smilutils.orig/apps/ppmeffectv/spiral.c smilutils/apps/ppmeffectv/spiral.c
+--- smilutils.orig/apps/ppmeffectv/spiral.c	2025-06-26 07:38:15.510611998 +0000
++++ smilutils/apps/ppmeffectv/spiral.c	2025-06-26 07:44:29.570712108 +0000
+@@ -124,7 +124,7 @@ int spiralStart();
+ int spiralStop();
+ int spiralDraw();
+ 
+-int spiralEvent();
++int spiralEvent(SDL_Event *event);
+ void spiralCreateMap();
+ WaveEl* spiralDefineWaves();
+ void spiralMoveFocus();

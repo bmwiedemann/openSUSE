@@ -29,6 +29,8 @@ Patch0:         abuild.diff
 Patch1:         smilutils-gcc4.3.patch
 # PATCH-FIX-UPSTREAM smilutils-gcc4.4.patch vuntz@opensuse.org -- Taken from Mandriva, fix build with gcc 4.4
 Patch2:         smilutils-gcc4.4.patch
+# fix build with gcc15
+Patch3:         smilutils-gcc15.patch
 BuildRequires:  SDL-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libpng-devel
