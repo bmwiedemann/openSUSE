@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTML-FormHandler
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-HTML-FormHandler
-Version:        0.40068
-Release:        0
 %define cpan_name HTML-FormHandler
+Name:           perl-HTML-FormHandler
+Version:        0.400.680
+Release:        0
+# 0.40068 -> normalize -> 0.400.680
+%define cpan_version 0.40068
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTML forms using Moose
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/HTML-FormHandler/
-Source0:        https://cpan.metacpan.org/authors/id/G/GS/GSHANK/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/G/GS/GSHANK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Class::Load) >= 0.06
+BuildRequires:  perl(Class::Load) >= 0.60
 BuildRequires:  perl(Crypt::Blowfish)
 BuildRequires:  perl(Crypt::CBC)
 BuildRequires:  perl(Data::Clone)
@@ -38,28 +38,28 @@ BuildRequires:  perl(DateTime)
 BuildRequires:  perl(DateTime::Format::Strptime)
 BuildRequires:  perl(Email::Valid)
 BuildRequires:  perl(File::ShareDir)
-BuildRequires:  perl(File::ShareDir::Install) >= 0.06
+BuildRequires:  perl(File::ShareDir::Install) >= 0.60
 BuildRequires:  perl(HTML::Entities)
-BuildRequires:  perl(HTML::TreeBuilder) >= 3.23
-BuildRequires:  perl(JSON::MaybeXS) >= 1.003003
+BuildRequires:  perl(HTML::TreeBuilder) >= 3.230
+BuildRequires:  perl(JSON::MaybeXS) >= 1.3.3
 BuildRequires:  perl(List::Util) >= 1.33
-BuildRequires:  perl(Moose) >= 2.1403
-BuildRequires:  perl(MooseX::Getopt) >= 0.16
-BuildRequires:  perl(MooseX::Types) >= 0.20
+BuildRequires:  perl(Moose) >= 2.140.300
+BuildRequires:  perl(MooseX::Getopt) >= 0.160
+BuildRequires:  perl(MooseX::Types) >= 0.200
 BuildRequires:  perl(MooseX::Types::Common)
-BuildRequires:  perl(MooseX::Types::LoadableClass) >= 0.006
+BuildRequires:  perl(MooseX::Types::LoadableClass) >= 0.6
 BuildRequires:  perl(PadWalker)
 BuildRequires:  perl(Sub::Exporter)
 BuildRequires:  perl(Sub::Name)
 BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::Exception)
-BuildRequires:  perl(Test::Memory::Cycle) >= 1.04
+BuildRequires:  perl(Test::Memory::Cycle) >= 1.40
 BuildRequires:  perl(Test::More) >= 0.94
 BuildRequires:  perl(Test::Warn)
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(aliased)
-BuildRequires:  perl(namespace::autoclean) >= 0.09
-Requires:       perl(Class::Load) >= 0.06
+BuildRequires:  perl(namespace::autoclean) >= 0.90
+Requires:       perl(Class::Load) >= 0.60
 Requires:       perl(Crypt::Blowfish)
 Requires:       perl(Crypt::CBC)
 Requires:       perl(Data::Clone)
@@ -68,19 +68,155 @@ Requires:       perl(DateTime::Format::Strptime)
 Requires:       perl(Email::Valid)
 Requires:       perl(File::ShareDir)
 Requires:       perl(HTML::Entities)
-Requires:       perl(HTML::TreeBuilder) >= 3.23
-Requires:       perl(JSON::MaybeXS) >= 1.003003
+Requires:       perl(HTML::TreeBuilder) >= 3.230
+Requires:       perl(JSON::MaybeXS) >= 1.3.3
 Requires:       perl(List::Util) >= 1.33
-Requires:       perl(Moose) >= 2.1403
-Requires:       perl(MooseX::Getopt) >= 0.16
-Requires:       perl(MooseX::Types) >= 0.20
+Requires:       perl(Moose) >= 2.140.300
+Requires:       perl(MooseX::Getopt) >= 0.160
+Requires:       perl(MooseX::Types) >= 0.200
 Requires:       perl(MooseX::Types::Common)
-Requires:       perl(MooseX::Types::LoadableClass) >= 0.006
+Requires:       perl(MooseX::Types::LoadableClass) >= 0.6
 Requires:       perl(Sub::Exporter)
 Requires:       perl(Sub::Name)
 Requires:       perl(Try::Tiny)
 Requires:       perl(aliased)
-Requires:       perl(namespace::autoclean) >= 0.09
+Requires:       perl(namespace::autoclean) >= 0.90
+Provides:       perl(HTML::FormHandler) = %{version}
+Provides:       perl(HTML::FormHandler::Base) = %{version}
+Provides:       perl(HTML::FormHandler::Blocks) = %{version}
+Provides:       perl(HTML::FormHandler::BuildFields) = %{version}
+Provides:       perl(HTML::FormHandler::BuildPages) = %{version}
+Provides:       perl(HTML::FormHandler::Field) = %{version}
+Provides:       perl(HTML::FormHandler::Field::AddElement) = %{version}
+Provides:       perl(HTML::FormHandler::Field::BoolSelect) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Boolean) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Button) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Captcha) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Checkbox) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Compound) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Date) = %{version}
+Provides:       perl(HTML::FormHandler::Field::DateMDY) = %{version}
+Provides:       perl(HTML::FormHandler::Field::DateTime) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Display) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Duration) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Email) = %{version}
+Provides:       perl(HTML::FormHandler::Field::File) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Float) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Hidden) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Hour) = %{version}
+Provides:       perl(HTML::FormHandler::Field::IntRange) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Integer) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Minute) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Money) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Month) = %{version}
+Provides:       perl(HTML::FormHandler::Field::MonthDay) = %{version}
+Provides:       perl(HTML::FormHandler::Field::MonthName) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Multiple) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Nested) = %{version}
+Provides:       perl(HTML::FormHandler::Field::NoValue) = %{version}
+Provides:       perl(HTML::FormHandler::Field::NonEditable) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Password) = %{version}
+Provides:       perl(HTML::FormHandler::Field::PasswordConf) = %{version}
+Provides:       perl(HTML::FormHandler::Field::PosInteger) = %{version}
+Provides:       perl(HTML::FormHandler::Field::PrimaryKey) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Repeatable) = %{version}
+Provides:       perl(HTML::FormHandler::Field::RequestToken) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Reset) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Result) = %{version}
+Provides:       perl(HTML::FormHandler::Field::RmElement) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Role::RequestToken) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Second) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Select) = %{version}
+Provides:       perl(HTML::FormHandler::Field::SelectCSV) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Submit) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Text) = %{version}
+Provides:       perl(HTML::FormHandler::Field::TextArea) = %{version}
+Provides:       perl(HTML::FormHandler::Field::TextCSV) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Upload) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Weekday) = %{version}
+Provides:       perl(HTML::FormHandler::Field::Year) = %{version}
+Provides:       perl(HTML::FormHandler::Fields) = %{version}
+Provides:       perl(HTML::FormHandler::Foo) = %{version}
+Provides:       perl(HTML::FormHandler::I18N) = %{version}
+Provides:       perl(HTML::FormHandler::I18N::ar_kw) = %{version}
+Provides:       perl(HTML::FormHandler::I18N::bg_bg) = %{version}
+Provides:       perl(HTML::FormHandler::I18N::ca_es) = %{version}
+Provides:       perl(HTML::FormHandler::I18N::cs_cz) = %{version}
+Provides:       perl(HTML::FormHandler::I18N::de_de) = %{version}
+Provides:       perl(HTML::FormHandler::I18N::en_us) = %{version}
+Provides:       perl(HTML::FormHandler::I18N::es_es) = %{version}
+Provides:       perl(HTML::FormHandler::I18N::hu_hu) = %{version}
+Provides:       perl(HTML::FormHandler::I18N::it_it) = %{version}
+Provides:       perl(HTML::FormHandler::I18N::ja_jp) = %{version}
+Provides:       perl(HTML::FormHandler::I18N::pt_br) = %{version}
+Provides:       perl(HTML::FormHandler::I18N::ru_ru) = %{version}
+Provides:       perl(HTML::FormHandler::I18N::sv_se) = %{version}
+Provides:       perl(HTML::FormHandler::I18N::tr_tr) = %{version}
+Provides:       perl(HTML::FormHandler::I18N::ua_ua) = %{version}
+Provides:       perl(HTML::FormHandler::InitResult) = %{version}
+Provides:       perl(HTML::FormHandler::Merge) = %{version}
+Provides:       perl(HTML::FormHandler::Model) = %{version}
+Provides:       perl(HTML::FormHandler::Model::Object) = %{version}
+Provides:       perl(HTML::FormHandler::Moose) = %{version}
+Provides:       perl(HTML::FormHandler::Moose::Role) = %{version}
+Provides:       perl(HTML::FormHandler::Page) = %{version}
+Provides:       perl(HTML::FormHandler::Page::Simple) = %{version}
+Provides:       perl(HTML::FormHandler::Pages) = %{version}
+Provides:       perl(HTML::FormHandler::Render::RepeatableJs) = %{version}
+Provides:       perl(HTML::FormHandler::Render::Simple) = %{version}
+Provides:       perl(HTML::FormHandler::Render::Table) = %{version}
+Provides:       perl(HTML::FormHandler::Render::Util) = %{version}
+Provides:       perl(HTML::FormHandler::Render::WithTT) = %{version}
+Provides:       perl(HTML::FormHandler::Result) = %{version}
+Provides:       perl(HTML::FormHandler::Result::Role) = %{version}
+Provides:       perl(HTML::FormHandler::Test) = %{version}
+Provides:       perl(HTML::FormHandler::TraitFor::Captcha) = %{version}
+Provides:       perl(HTML::FormHandler::TraitFor::I18N) = %{version}
+Provides:       perl(HTML::FormHandler::TraitFor::Types) = %{version}
+Provides:       perl(HTML::FormHandler::Traits) = %{version}
+Provides:       perl(HTML::FormHandler::Types) = %{version}
+Provides:       perl(HTML::FormHandler::Validate) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::ApplyRole) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Block) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Block::Bootstrap) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::Button) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::ButtonTag) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::Captcha) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::Checkbox) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::CheckboxGroup) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::Compound) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::Hidden) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::HorizCheckboxGroup) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::NoRender) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::Password) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::RadioGroup) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::Repeatable) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::Reset) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::Role::HTMLAttributes) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::Role::SelectedOption) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::Select) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::Span) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::Submit) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::Text) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::Textarea) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Field::Upload) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Form::Role::HTMLAttributes) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Form::Simple) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Form::Table) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Theme::Bootstrap) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Theme::Bootstrap3) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Theme::BootstrapFormMessages) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Wrapper::Base) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Wrapper::Bootstrap) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Wrapper::Bootstrap3) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Wrapper::Fieldset) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Wrapper::None) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Wrapper::Simple) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Wrapper::SimpleInline) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Wrapper::Table) = %{version}
+Provides:       perl(HTML::FormHandler::Widget::Wrapper::TableInline) = %{version}
+Provides:       perl(HTML::FormHandler::Wizard) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -135,14 +271,14 @@ More Formhandler documentation and a tutorial can be found in the manual at
 HTML::FormHandler::Manual.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -150,7 +286,6 @@ HTML::FormHandler::Manual.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README README.md TODO util
 %license LICENSE
 
