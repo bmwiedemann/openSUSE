@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 26 07:58:44 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2025.06.25
+  * yt: Check any ios m3u8 formats prior to download
+  * yt: Improve player context payloads
+
+-------------------------------------------------------------------
 Tue Jun 10 00:19:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2025.06.09
