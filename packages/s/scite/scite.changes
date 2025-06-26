@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 25 14:06:02 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.5.7:
+  * Improve view position restoration when switching documents. Bug #1395.
+  * Allow two '|' in abbreviations to place caret and currently selected text
+    at different locations. Feature #1552.
+  * Skip context when going to diff message in output pane. Feature #1554.
+  * Split bash settings out from perl.properties to new bash.properties
+    Feature #1555.
+
+-------------------------------------------------------------------
 Wed Apr 23 06:01:11 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.5.6:
