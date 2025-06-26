@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Jun 25 09:37:08 UTC 2025 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.15.0
+  - xfs_mdrestore: don't allow restoring onto zoned block devices
+  - man: adjust description of the statx manpage
+  - xfs_protofile: fix permission octet when suid/guid is set
+  - xfs_repair: fix libxfs abstraction mess
+  - xfs_growfs: support internal RT devices
+  - xfs_mdrestore: support internal RT devices
+  - xfs_scrub: support internal RT device
+  - xfs_spaceman: handle internal RT devices
+  - xfs_io: handle internal RT devices in fsmap output
+  - xfs_io: don't re-query fs_path information in fsmap_f
+  - xfs_io: correctly report RGs with internal rt dev in bmap output
+  - man: document XFS_FSOP_GEOM_FLAGS_ZONED
+  - xfs_mkfs: document the new zoned options in the man page
+  - xfs_mkfs: reflink conflicts with zoned file systems for now
+  - xfs_mkfs: default to rtinherit=1 for zoned file systems
+  - xfs_mkfs: calculate zone overprovisioning when specifying size
+  - xfs_mkfs: support creating file system with zoned RT devices
+  - xfs_mkfs: factor out a validate_rtgroup_geometry helper
+  - xfs_repair: validate rt groups vs reported hardware zones
+  - xfs_repair: fix the RT device check in process_dinode_int
+  - xfs_repair: support repairing zoned file systems
+  - libfrog: report the zoned geometry
+  - xfs_repair: phase6: scan longform entries before header check
+  - xfs_repair: Bump link count if longform_dir2_rebuild yields shortform dir
+  - mkfs: fix the issue of maxpct set to 0 not taking effect
+  - mkfs: fix blkid probe API violations causing weird output
+  - xfs_io: make statx mask parsing more generally useful
+  - xfs_io: redefine what statx -m all does
+  - xfs_io: catch statx fields up to 6.15
+  - man: fix missing cachestat manpage
+
+ -------------------------------------------------------------------
 Mon Apr 14 18:00:22 UTC 2025 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 6.14.0
