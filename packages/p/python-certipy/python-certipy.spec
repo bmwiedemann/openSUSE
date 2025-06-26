@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-certipy
 Version:        0.2.2
@@ -29,8 +30,10 @@ Source1:        https://raw.githubusercontent.com/LLNL/certipy/master/LICENSE
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-pyOpenSSL
 BuildArch:      noarch
 # SECTION test requirements
@@ -38,8 +41,6 @@ BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -64,11 +65,8 @@ mkdir tmp
 export TMP=$(pwd)/tmp
 %pytest test/
 
-%post
-%python_install_alternative certipy
-
-%postun
-%python_uninstall_alternative certipy
+%pre
+%python_libalternatives_reset_alternative certipy
 
 %files %{python_files}
 %doc README.md
