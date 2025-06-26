@@ -2182,4 +2182,12 @@
     <comment>Fix detection problem for SLES 16 media</comment>
     <requestid>1278884</requestid>
   </revision>
+  <revision rev="276" vrev="12">
+    <srcmd5>c9aaf49b5fb468da6908f1b5406dbca1</srcmd5>
+    <version>5.0.0</version>
+    <time>1750939543</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1288609</requestid>
+  </revision>
 </revisionlist>

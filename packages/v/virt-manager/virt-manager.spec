@@ -83,6 +83,9 @@ Patch46:        046-virt-manager-list-virtual-networks-when-creating-new-QEMU-Se
 Patch47:        047-virt-install-add-support-for-vDPA-network-device.patch
 Patch48:        048-virt-manager-add-support-for-vDPA-network-device.patch
 Patch49:        049-virt-install-detect-wayland-in-order-to-start-virt-viewer.patch
+Patch50:        050-Validation-allow-spaces-disallow-slashes.patch
+Patch51:        051-fix-default-start_folder-to-None.patch
+Patch52:        052-Add-Ctrl+Alt+Shift+Esc-key-command-for-loginds-SecureAttentionKey.patch
 Patch100:       revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case-too.patch
 # SUSE Only
 Patch150:       virtman-desktop.patch

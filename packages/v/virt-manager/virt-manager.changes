@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 18 14:06:18 MDT 2025 - carnold@suse.com
+
+- bsc#1244685 - Could not find an installable distribution with
+  virt-install command
+  virtinst-add-sle16-detection-support.patch
+
+-------------------------------------------------------------------
+Thu Jun 12 15:51:44 MDT 2025 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1027942)
+  050-Validation-allow-spaces-disallow-slashes.patch
+  051-fix-default-start_folder-to-None.patch
+  052-Add-Ctrl+Alt+Shift+Esc-key-command-for-loginds-SecureAttentionKey.patch
+
+-------------------------------------------------------------------
 Mon May 19 15:14:01 MDT 2025 - carnold@suse.com
 
 - Add detection code for SLES 16 media (bsc#1236252, bsc#1243296)
