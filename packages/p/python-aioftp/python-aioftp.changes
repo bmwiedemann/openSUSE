@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 25 09:35:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.25.2
+  * adjust codebase for python 3.14 (#190)
+  * client: resolve tls issues (fixes #186) (#187)
+
+-------------------------------------------------------------------
 Tue Jun  3 06:47:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.25.1
