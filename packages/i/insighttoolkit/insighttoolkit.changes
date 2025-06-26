@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jun 21 03:17:02 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.4.4:
+  * Bug Fixes:
+    - Fixed GDCM JPEG2000 structure cleanup to prevent crashes on
+      malformed files.
+    - Corrected TIFFImageIO reuse behavior.
+  * Improved NumPy dtype handling for Python interoperability.
+  * Updated Montage, MorphologicalContourInterpolation and
+    WebAssemblyInterface modules.
+  * Updated documentation.
+- Enforce C11 standard to fix build of third party libminc; GCC 15
+  defaults to C23 causing build failures.
+- _constraints:
+  * Reduce required disk space to 6 GB.
+  * Reduce required physicalmemory to 6 GB.
+  * Drop overrides for memoryperjob on x86_64.
+
+-------------------------------------------------------------------
 Wed Apr 23 09:14:44 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.4.3:
@@ -355,27 +374,27 @@ Fri Jan  1 08:07:48 UTC 2016 - mpluskal@suse.com
 - Use spdx license and install license file
 - Use url for source
 
-----------------------------------------------------------------------------
-* Sat Dec 26 15:34:00 UTC 2015 Angelos Tzotsos <tzotsos@opensuse.org> - 4.8.2
+-------------------------------------------------------------------
+Sat Dec 26 15:34:00 UTC 2015 - Angelos Tzotsos <tzotsos@opensuse.org> - 4.8.2
 
 - Update to 4.8.2
 
-----------------------------------------------------------------------------
-* Fri Aug 14 00:40:00 UTC 2015 Angelos Tzotsos <tzotsos@opensuse.org> - 4.7.2
+-------------------------------------------------------------------
+Fri Aug 14 00:40:00 UTC 2015 - Angelos Tzotsos <tzotsos@opensuse.org> - 4.7.2
 
 - Update to 4.7.2
 
-----------------------------------------------------------------------------
-* Fri Feb 27 21:24:00 UTC 2015 Angelos Tzotsos <tzotsos@opensuse.org>
+-------------------------------------------------------------------
+Fri Feb 27 21:24:00 UTC 2015 - Angelos Tzotsos <tzotsos@opensuse.org>
 
 - Renamed package to insighttoolkit
 
-----------------------------------------------------------------------------
-* Wed Jan 14 01:14:00 UTC 2015 Angelos Tzotsos <tzotsos@opensuse.org> - 4.6.0
+-------------------------------------------------------------------
+Wed Jan 14 01:14:00 UTC 2015 - Angelos Tzotsos <tzotsos@opensuse.org> - 4.6.0
 
 - Update to 4.6.0
 
-----------------------------------------------------------------------------
-* Sat Mar 01 23:03:00 UTC 2014 Angelos Tzotsos <tzotsos@opensuse.org> - 4.5.1
+-------------------------------------------------------------------
+Sat Mar 01 23:03:00 UTC 2014 - Angelos Tzotsos <tzotsos@opensuse.org> - 4.5.1
 
 - Initial build

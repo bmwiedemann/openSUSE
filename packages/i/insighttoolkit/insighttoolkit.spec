@@ -41,7 +41,7 @@
 %bcond_with tests
 
 Name:           insighttoolkit
-Version:        5.4.3
+Version:        5.4.4
 Release:        0
 Summary:        Toolkit for scientific image processing, segmentation, and registration
 License:        Apache-2.0
@@ -129,6 +129,7 @@ This package provides the modules for ITK's python bindings.
 
 %build
 %cmake \
+  -DCMAKE_C_STANDARD:STRING=11 \
   -DITK_INSTALL_LIBRARY_DIR:PATH=%{_lib}/ \
   -DITK_INSTALL_INCLUDE_DIR:PATH=include/%{name}/ \
   -DITK_INSTALL_PACKAGE_DIR:PATH=%{_lib}/cmake/%{name}/ \
@@ -148,9 +149,10 @@ This package provides the modules for ITK's python bindings.
   -DITK_USE_SYSTEM_EIGEN:BOOL=OFF \
 %endif
   -DITK_USE_SYSTEM_VXL:BOOL=OFF \
-  -DVXL_BUILD_CORE_NUMERICS:BOOL=OFF \
   -DITK_FORBID_DOWNLOADS=ON \
-  -DITK_WRAP_PYTHON:BOOL=%{?with_python:ON}%{!?with_python:OFF}
+  -DITK_WRAP_PYTHON:BOOL=%{?with_python:ON}%{!?with_python:OFF} \
+  -DVXL_BUILD_CORE_NUMERICS:BOOL=OFF \
+  %{nil}
 
 %cmake_build
 
