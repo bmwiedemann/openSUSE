@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 25 07:27:16 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- update to 0.9.10:
+  * Fix bolt exits when opening an empty version file
+  * Fix failure on integration test due to the change of the latest pygobject
+
+-------------------------------------------------------------------
 Tue Jun  3 09:53:01 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - update to 0.9.9:

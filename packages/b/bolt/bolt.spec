@@ -18,7 +18,7 @@
 
 %global _hardened_build 1
 Name:           bolt
-Version:        0.9.9
+Version:        0.9.10
 Release:        0
 Summary:        Thunderbolt 3 device manager
 License:        LGPL-2.1-or-later
