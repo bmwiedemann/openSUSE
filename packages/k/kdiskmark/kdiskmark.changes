@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun 24 20:15:17 UTC 2025 - Dmitry Sidorov <jonmagon@gmail.com>
+
+- Update to version 3.2.0
+  * Removed country flags from language selector
+  * Used clat instead of lat for latency measurements (#164)
+  * Improved translations in .desktop file and polkit policies
+  * Refactored non-empty QString constructors to use QStringLiteral() (#158)
+  * Deprecated snap package support
+  * Spanish (es_ES) localization (#171, #172)
+  * Finnish (fi_FI) localization (#144)
+  * Traditional Chinese (zh_TW) localization (#135)
+  * Hindi (hi_IN) localization
+  * Storage model name in benchmark reports
+  * BTRFS Copy-on-Write (CoW) detection and no-CoW directory support (#141)
+  * Enhanced error reporting for filesystem operations
+  * ARM64 build support
+  * PGP signing for release packages
+  * Dutch (nl_NL) localization (#121)
+  * Icons to menu items (#138)
+  * Fixed tab order and UI spacing issues
+  * Missing RPM dependencies
+  * Window icon display for AppImage, Flatpak and Snap
+
+
+-------------------------------------------------------------------
 Mon Jun 19 20:05:04 UTC 2023 - Dmitry Sidorov <jonmagon@gmail.com>
 
 - Update to version 3.1.4

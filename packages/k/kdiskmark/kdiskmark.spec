@@ -19,7 +19,7 @@
 
 %define _singleapplication_version 3.3.4
 Name:           kdiskmark
-Version:        3.1.4
+Version:        3.2.0
 Release:        0
 Summary:        A simple open-source disk benchmark tool for Linux distros
 License:        GPL-3.0-only
@@ -31,11 +31,11 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(PolkitQt5-1)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(PolkitQt6-1)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Network)
 Requires:       fio
 Provides:       bundled(singleapplication) = %{_singleapplication_version}
 
