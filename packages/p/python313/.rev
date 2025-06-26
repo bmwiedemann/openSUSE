@@ -962,4 +962,13 @@
 </comment>
     <requestid>1287762</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>239f25bfe4673e38d722bcfdee3cb78f</srcmd5>
+    <version>3.13.5</version>
+    <time>1750930682</time>
+    <user>anag_factory</user>
+    <comment>      CVE-2025-4517 (bsc#1244032). Also addresses CVE-2025-4435
+      (gh#135034, bsc#1244061).</comment>
+    <requestid>1288597</requestid>
+  </revision>
 </revisionlist>
