@@ -1,8 +1,8 @@
 diff --git a/pkg/networkmanager/bond.jsx b/pkg/networkmanager/bond.jsx
-index 80956bd7b..de8e667aa 100644
+index b54b1db..062cd1d 100644
 --- a/pkg/networkmanager/bond.jsx
 +++ b/pkg/networkmanager/bond.jsx
-@@ -142,16 +142,6 @@ export const BondDialog = ({ connection, dev, settings }) => {
+@@ -151,16 +151,6 @@ export const BondDialog = ({ connection, dev, settings }) => {
                                        {_("A network bond combines multiple network interfaces into one logical interface with higher throughput or redundancy.")}
                                    </div>
                                }
@@ -20,10 +20,10 @@ index 80956bd7b..de8e667aa 100644
                                <Button id="bond-help-popup-button" variant="plain" aria-label="Help">
                                    <HelpIcon />
 diff --git a/pkg/systemd/hwinfo.jsx b/pkg/systemd/hwinfo.jsx
-index 30196f0dc..d53948374 100644
+index d2d2d9b..af0bedc 100644
 --- a/pkg/systemd/hwinfo.jsx
 +++ b/pkg/systemd/hwinfo.jsx
-@@ -201,11 +201,6 @@ const CPUSecurityMitigationsDialog = () => {
+@@ -205,11 +205,6 @@ const CPUSecurityMitigationsDialog = () => {
                              <DataListCell key="primary content">
                                  <span>
                                      <div className='nosmt-heading'>{ _("Disable simultaneous multithreading") } (nosmt)</div>
@@ -36,19 +36,19 @@ index 30196f0dc..d53948374 100644
                              </DataListCell>,
                          ]}
 diff --git a/pkg/systemd/overview-cards/cryptoPolicies.jsx b/pkg/systemd/overview-cards/cryptoPolicies.jsx
-index dc8b996ec..2f6fc8ac4 100644
+index fa57de9..d4dd3be 100644
 --- a/pkg/systemd/overview-cards/cryptoPolicies.jsx
 +++ b/pkg/systemd/overview-cards/cryptoPolicies.jsx
-@@ -115,7 +115,7 @@ const CryptoPolicyDialog = ({
+@@ -143,7 +143,7 @@ const CryptoPolicyDialog = ({
                      variant='link'
                      isInline
                      icon={<ExternalLinkSquareAltIcon />} iconPosition="right"
--                    href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/security_hardening/switching-rhel-to-fips-mode_security-hardening">
+-                    href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/security_hardening/using-the-system-wide-cryptographic-policies_security-hardening">
 +                    href="https://documentation.suse.com/sle-micro/6.0/html/Micro-selinux/selinux-article.html">
                  {_("Learn more")}
              </Button>
          </Flex>),
-@@ -154,16 +154,6 @@ const CryptoPolicyDialog = ({
+@@ -184,16 +184,6 @@ const CryptoPolicyDialog = ({
                      {_("Cryptographic Policies is a system component that configures the core cryptographic subsystems, covering the TLS, IPSec, SSH, DNSSec, and Kerberos protocols.")}
                  </div>
              }
@@ -66,10 +66,10 @@ index dc8b996ec..2f6fc8ac4 100644
              <Button variant="plain" aria-label={_("Help")}>
                  <HelpIcon />
 diff --git a/pkg/systemd/overview-cards/tuned-dialog.jsx b/pkg/systemd/overview-cards/tuned-dialog.jsx
-index 258f42640..3ec591cb7 100644
+index 38420ca..cd7e2a3 100644
 --- a/pkg/systemd/overview-cards/tuned-dialog.jsx
 +++ b/pkg/systemd/overview-cards/tuned-dialog.jsx
-@@ -275,36 +275,10 @@ const TunedDialog = ({
+@@ -278,36 +278,10 @@ const TunedDialog = ({
          };
      }, [tunedService]);
  

@@ -50,7 +50,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        338
+Version:        340
 Release:        0
 Source0:        cockpit-%{version}.tar.gz
 Source1:        cockpit.pam
@@ -68,6 +68,7 @@ Patch2:         suse_docs.patch
 Patch3:         suse-microos-branding.patch
 Patch4:         css-overrides.patch
 Patch5:         storage-btrfs.patch
+Patch6:         kdump-nfs-fixes.patch
 # SLE Micro specific patches
 Patch101:       hide-pcp.patch
 Patch102:       0002-selinux-temporary-remove-setroubleshoot-section.patch
@@ -215,6 +216,7 @@ BuildRequires:  python3-pytest-timeout
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
 
 %patch -P 106 -p1
 %patch -P 109 -p1

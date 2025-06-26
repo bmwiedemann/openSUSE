@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 19 08:30:49 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Add kdump-nfs-fixes.patch to fix bsc#1241949
+
+-------------------------------------------------------------------
+Mon Jun 16 06:29:04 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 340
+  * Detect multiple mount points when creating btrfs subvolumes
+  * Disk Self-Test error warnings on the overview page
+  * Prevent modifying partitions in unsupported places
+  * Bug fixes and translation updates
+
+-------------------------------------------------------------------
 Fri May 23 07:46:41 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
 
 - Update branding patch for micro and sle
