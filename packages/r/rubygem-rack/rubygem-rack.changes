@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 23 11:17:37 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- New upstream release 3.1.16, see bundled CHANGELOG.md
+
+-------------------------------------------------------------------
 Tue Jun 17 13:16:10 UTC 2025 - Eduardo Navarro <enavarro@suse.com>
 
 - Remove the rb_build_* definitions for old sle versions. They are not needed any more.
