@@ -119,7 +119,7 @@
 %endif
 
 Name:           darktable
-Version:        5.0.1
+Version:        5.2.0
 Release:        0
 %global pkg_name darktable
 %global pkg_version %{version}
