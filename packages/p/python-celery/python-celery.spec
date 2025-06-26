@@ -26,21 +26,24 @@
 %bcond_with test
 %endif
 %bcond_with ringdisabled
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-celery%{psuffix}
 Version:        5.5.3
 Release:        0
 Summary:        Distributed Task Queue module for Python
 License:        BSD-3-Clause
-URL:            http://celeryproject.org
+URL:            https://celeryproject.org
 Source:         https://files.pythonhosted.org/packages/source/c/celery/celery-%{version}.tar.gz
 Patch0:         move-pytest-configuration-to-conftest.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-billiard >= 4.1.0
 Requires:       python-click >= 8.0.3
 Requires:       python-click-didyoumean >= 0.0.3
@@ -51,8 +54,6 @@ Requires:       python-kombu >= 5.5
 Requires:       python-python-dateutil
 Requires:       python-tzdata
 Requires:       python-vine >= 5.0.0
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     python-cryptography
 Recommends:     python-curses
 Suggests:       python-eventlet
@@ -81,7 +82,6 @@ BuildRequires:  %{python_module pytest >= 4.5.0}
 BuildRequires:  %{python_module pytest-click}
 BuildRequires:  %{python_module pytest-subtests}
 BuildRequires:  %{python_module redis}
-
 %if %{with ringdisabled}
 ExclusiveArch:  do-not-build
 %endif
@@ -122,11 +122,8 @@ scheduling as well.
 %endif
 
 %if !%{with test}
-%post
-%python_install_alternative celery
-
-%postun
-%python_uninstall_alternative celery
+%pre
+%python_libalternatives_reset_alternative celery
 
 %files %{python_files}
 %{python_sitelib}/celery
