@@ -320,4 +320,12 @@
   * Add libzrtpcpp-openssl3.patch</comment>
     <requestid>1217039</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>f5b05278c49e7025d68edeb498aa5520</srcmd5>
+    <version>4.7.0</version>
+    <time>1750930646</time>
+    <user>anag_factory</user>
+    <comment>- Add gcc15.patch</comment>
+    <requestid>1288388</requestid>
+  </revision>
 </revisionlist>

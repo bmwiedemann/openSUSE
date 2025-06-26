@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 24 22:19:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add gcc15.patch
+
+-------------------------------------------------------------------
 Tue Oct 22 12:54:43 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Adapt libzrtpcpp to build with OpenSSL 3 [bsc#1219884]
