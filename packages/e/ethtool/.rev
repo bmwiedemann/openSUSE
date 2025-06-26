@@ -731,4 +731,12 @@ sfc.c and stmmac.c have GPL-2.0 licenses (forwarded request 95755 from babelworx
     <comment>fix AppStream metainfo XML file</comment>
     <requestid>1272154</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>8b5e594a8bb3136aa3ef364335e88f21</srcmd5>
+    <version>6.15</version>
+    <time>1750939523</time>
+    <user>anag_factory</user>
+    <comment>- update to upstream release 6.15</comment>
+    <requestid>1288343</requestid>
+  </revision>
 </revisionlist>

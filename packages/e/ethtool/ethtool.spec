@@ -17,7 +17,7 @@
 
 
 Name:           ethtool
-Version:        6.14
+Version:        6.15
 Release:        0
 Summary:        Utility for examining and tuning Ethernet-based network interfaces
 License:        GPL-2.0-only
@@ -28,7 +28,6 @@ URL:            https://www.kernel.org/pub/software/network/ethtool/
 Source:         https://www.kernel.org/pub/software/network/ethtool/%{name}-%{version}.tar.xz
 Source2:        https://www.kernel.org/pub/software/network/ethtool/%{name}-%{version}.tar.sign
 Source3:        %{name}.keyring
-Patch1:         misc-fix-AppStream-metainfo-XML.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  pkgconfig
 BuildRequires:  xz
