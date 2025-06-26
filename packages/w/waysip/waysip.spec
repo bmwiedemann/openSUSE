@@ -1,7 +1,7 @@
 #
 # spec file for package waysip
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           waysip
-Version:        0.2.3
+Version:        0.4.0+git4.g258306c43bc79705635f1ee1d607cc3c3d483b59
 Release:        0
 Summary:        Screen region selector for wayland compositors
 License:        MIT
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/waycrate/waysip
-Source0:        https://github.com/waycrate/waysip/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 %if 0%{?suse_version} >= 1500
 BuildRequires:  cargo-packaging
