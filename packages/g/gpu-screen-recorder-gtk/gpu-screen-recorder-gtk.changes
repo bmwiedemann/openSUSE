@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 24 20:12:33 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 20250624:
+  * Launch new ui immediately after switching to it
+  * Show new ui immediately, show new ui when clicking on desktop
+    icon and it's already running
+  * Remove version from title, there wont be any new versions
+  * Remove appdata file
+  * Record all applications when selecting 'Record audio from all
+    applications except the selected ones' without selecting any
+    application to exclude
+
+-------------------------------------------------------------------
 Tue Jun 10 12:30:49 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 20250608:
