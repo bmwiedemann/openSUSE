@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jun 25 04:43:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.37.3:
+  * Improvements
+    - add support for cache_to with bake by @ndeloof in #12959
+  * Fixes
+    - fix bake intergation by @ndeloof in #12960
+    - don't create services passed as parameters of run command
+      during dependencies creation process by @glours in #12968
+    - inject secrets/config just before container is started by
+      @ndeloof in #12970
+    - propagate target docker host set by --host to Bake by
+      @ndeloof in #12961
+  * Internal
+    - pkg/compose: remove uses of ExecOptions.Detach by @thaJeztah
+      in #12950
+  * Dependencies
+    - build(deps): bump github.com/moby/buildkit from 0.23.0 to
+      0.23.1 by @dependabot in #12964
+
+-------------------------------------------------------------------
 Fri Jun 20 14:03:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.37.2:
