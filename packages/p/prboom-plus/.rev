@@ -189,4 +189,12 @@ Can't really provide infinitely many versions!</comment>
   to the LMP demo file name.</comment>
     <requestid>1254844</requestid>
   </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>3b4ac5b7198590bc4713a46c5d8d6e0f</srcmd5>
+    <version>2.6.66</version>
+    <time>1750930730</time>
+    <user>anag_factory</user>
+    <comment>- Build with CFLAGS=-std=gnu11 to resolve FTBFS.</comment>
+    <requestid>1288477</requestid>
+  </revision>
 </revisionlist>

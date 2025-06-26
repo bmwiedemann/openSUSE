@@ -65,14 +65,14 @@ PrBoom+ is a conservative Doom source port. It features:
 %autosetup -p0
 
 %build
-pushd prboom2/
+cd prboom2/
+export CFLAGS="%optflags -std=gnu11"
 %cmake -DDOOMWADDIR="%_datadir/doom" -DPRBOOMDATADIR="%_datadir/doom"
 %cmake_build
-popd
 
 %install
 s="$PWD"
-pushd prboom2/
+cd prboom2/
 %cmake_install
 # convenience symlink
 b="%buildroot"
@@ -80,10 +80,9 @@ ln -s prboom-plus "$b/%_bindir/prboom"
 install -Dm0644 ICONS/prboom-plus.svg "$b/%_datadir/icons/hicolor/scalable/apps/prboom-plus.svg"
 install -Dm0644 ICONS/prboom-plus.desktop "$b/%_datadir/applications/prboom-plus.desktop"
 install -Dm0644 ICONS/prboom-plus.bash "$b/%_datadir/bash-completion/completions/prboom-plus.bash"
-popd
 # TW switched doc location in %%cmake
-(cd "%buildroot"; find "./%_datadir/doc" -type d -name prboom-plus | cut -b2-) >"$s/doc.files"
-ls -al "$s/doc.files"
+cd "%buildroot"
+find "./%_datadir/doc" -type d -name prboom-plus | cut -b2- >"$s/doc.files"
 
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
 %post
