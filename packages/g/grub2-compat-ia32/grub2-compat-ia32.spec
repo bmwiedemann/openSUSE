@@ -52,8 +52,11 @@ fi
 echo "IA32 emulation has been enabled. Please reboot to apply changes."
 
 %postun
-%{_sbindir}/update-bootloader --del-option "ia32_emulation=1" || :
-%{_sbindir}/update-bootloader --config || :
-echo "IA32 emulation has been removed. Please reboot to apply changes."
+# Only delete the option on uninstall, not upgrade
+if [ "$1" -eq 0 ]; then
+    %{_sbindir}/update-bootloader --del-option "ia32_emulation=1" || :
+    %{_sbindir}/update-bootloader --config || :
+    echo "IA32 emulation has been removed. Please reboot to apply changes."
+fi
 
 %changelog

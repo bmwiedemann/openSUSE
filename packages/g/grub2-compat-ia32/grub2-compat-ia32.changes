@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 26 00:14:04 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Do not call update-bootloader --del-option on upgrade
+
+-------------------------------------------------------------------
 Tue Jun 24 08:12:40 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Drop Requires on grub2 since we no longer call it directly 

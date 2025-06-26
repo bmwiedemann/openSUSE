@@ -24,4 +24,12 @@ so it's not present nor built in SLES 16.0
 - Drop 05_ia32_emulation in favor of update-bootloader</comment>
     <requestid>1288183</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>03caa6320e886e06782ef129becfd5d9</srcmd5>
+    <version>1</version>
+    <time>1750939546</time>
+    <user>anag_factory</user>
+    <comment>- Do not call update-bootloader --del-option on upgrade</comment>
+    <requestid>1288620</requestid>
+  </revision>
 </revisionlist>
