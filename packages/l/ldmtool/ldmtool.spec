@@ -1,7 +1,7 @@
 #
 # spec file for package ldmtool
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,19 @@
 %define sover  1_0-0
 
 Name:           ldmtool
-Version:        0.2.4
+Version:        0.2.5
 Release:        0
 Summary:        A tool to manage Windows dynamic disks
 License:        GPL-3.0-only
 Group:          System/Base
 
-URL:            https://github.com/mdbooth/libldm 
-# Disable until the create a tarball with the 2.4.0 release
-#Source0:        %{url}/downloads/%{srcname}-%{version}.tar.gz
+URL:            https://github.com/mdbooth/libldm
 Source0:        %{srcname}-%{version}.tar.gz
-Patch0:         Remove-deprecated-g_type_class_add_private.patch
+Patch1:         001-Add-example-systemd-unit-file.patch
+Patch2:         002-ldmtool-fix-NULL-pointer-dereference.patch
+Patch3:         003-Add-ability-to-override-device-mapper-UUID.patch
+Patch4:         004-src-Fix-declaration-of-ldm_new.patch
+Patch5:         005-Update-gtkdocize.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -59,7 +61,6 @@ Group:          System/Libraries
 Library for managing Microsoft Windows dynamic disks, which use Microsoft's
 LDM metadata. It can inspect them, and also create and remove device-mapper
 block devices which can be mounted.
-
 
 %package        -n %{srcname}-%{sover}-devel
 Summary:        Development files for %{name}
@@ -98,8 +99,8 @@ find "%buildroot" -type f -name '*.la' -delete
 %{_libdir}/*.so.*
 
 %files -n %{srcname}-%{sover}-devel
-%{_includedir}/*
-%{_libdir}/*.so
+%{_includedir}/ldm.h
+%{_libdir}/libldm*.so
 %{_libdir}/pkgconfig/ldm-1.0.pc
 %{_datadir}/gtk-doc
 

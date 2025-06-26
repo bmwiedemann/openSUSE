@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jun 25 10:35:14 MDT 2025 - carnold@suse.com
+
+- Update to version 0.2.5 (jsc#PED-12706)
+  * Fix crash while creating mapper for a volume which lacks of
+    partitions
+  * Make libldm to parse and return volume GUID
+  * Change the way we sanitise LDM partition name
+  * Set UUID for device mapper devices (partitions and volumes)
+  * Fix potential memory leak
+  * Use device mapper device UUID instead of name to find device in
+    a tree
+  * New API: ldm_volume_dm_get_device
+  * New API: ldm_partition_dm_get_device
+  * Fix bug in libldm to allow for all spanned LDM volumes to bex
+    correctly identified/mounted
+- Upstream fixes post 0.2.5
+  001-Add-example-systemd-unit-file.patch
+  002-ldmtool-fix-NULL-pointer-dereference.patch
+  003-Add-ability-to-override-device-mapper-UUID.patch
+  004-src-Fix-declaration-of-ldm_new.patch
+  005-Update-gtkdocize.patch
+- Drop patch contained in new tarball
+  Remove-deprecated-g_type_class_add_private.patch
+
+-------------------------------------------------------------------
 Tue Jan  5 11:11:11 UTC 2021 - olaf@aepfle.de
 
 - Adjust Remove-deprecated-g_type_class_add_private.patch to fix build

@@ -39,4 +39,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>862619</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d041b89656a4669e071e2871645b7c9b</srcmd5>
+    <version>0.2.5</version>
+    <time>1750930790</time>
+    <user>anag_factory</user>
+    <comment>Update ldmtool to version 0.2.5 with additional upstream fixes</comment>
+    <requestid>1288590</requestid>
+  </revision>
 </revisionlist>
