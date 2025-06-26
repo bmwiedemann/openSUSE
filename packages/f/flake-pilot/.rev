@@ -176,4 +176,20 @@ https://github.com/OSInside/flake-pilot?tab=readme-ov-file#flake-pilot</comment>
   is also a rust application only depending on libc</comment>
     <requestid>1248634</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>945087e8d4b0b0985e20a6a6d59bd1b0</srcmd5>
+    <version>3.1.19</version>
+    <time>1750930757</time>
+    <user>anag_factory</user>
+    <comment>- Bump version: 3.1.18 → 3.1.19
+
+- Fix CVE-2025-3416
+  rebuild of the tool also inherits openssl in a version that
+  fixes the above mentioned CVE. This fixes bsc#1242680
+
+- Fix CVE-2025-5791
+  Switch to uzers crate as actively maintained fork of the
+  unmaintained users crate. This Fixes bsc#1244207</comment>
+    <requestid>1288543</requestid>
+  </revision>
 </revisionlist>
