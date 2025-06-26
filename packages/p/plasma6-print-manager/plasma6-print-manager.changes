@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 24 11:55:49 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.1
+- Changes since 6.4.0:
+  * Update version for new release 6.4.1
+  * configure-printer: Fix dbus activate on helper dialog
+  * [libkcups/printqueue/config] Remove unneeded dependencies
+  * plasmoid: Make configure action use KCM configure
+
+-------------------------------------------------------------------
 Thu Jun 12 10:37:52 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.0:
