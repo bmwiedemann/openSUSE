@@ -199,4 +199,12 @@
     <comment>Plasma 6.4.0 (maybe). K:F already publish disabled (forwarded request 1285270 from Vogtinator)</comment>
     <requestid>1285743</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9fe6c5532f21f5d42cc5573e7da4e359</srcmd5>
+    <version>6.4.1</version>
+    <time>1750930546</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.4.1, untested (forwarded request 1288270 from Vogtinator)</comment>
+    <requestid>1288318</requestid>
+  </revision>
 </revisionlist>
