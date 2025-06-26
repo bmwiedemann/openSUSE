@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 24 20:12:35 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 20250623:
+  * Pipewire: fix transparent windows having incorrect color
+  * Pipewire: dont remove first frame
+  * Create egl3 context
+  * EGL_OPENGL_ES_BIT->EGL_OPENGL_ES2_BIT
+
+-------------------------------------------------------------------
 Tue Jun 10 12:30:49 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 20250610:
