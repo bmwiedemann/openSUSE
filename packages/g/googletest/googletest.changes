@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun 16 18:50:17 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.17.0:
+  * C++ Language Support
+    - GoogleTest now requires at least C++17 and follows Google's
+      Foundational C++ Support Policy. See this table for a list of
+      currently supported versions compilers, platforms, and build
+      tools.
+  * Notable Changes
+    - Added a flag --gtest_fail_if_no_test_linked that will cause
+      the program to fail if no test case is linked in
+    - A DistanceFrom() matcher is available for general distance
+      comparison (0bdccf4) and supports a user-defined abs()
+- drop googletest-ciso646.patch, included upstream
+- simplify gcc selection to take the default on Tumbleweed and 16,
+  this fixes bogus gcc15 related failues in Factory
+
+-------------------------------------------------------------------
 Fri May  2 17:02:51 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add googletest-ciso646.patch from upstream to avoid gcc15

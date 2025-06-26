@@ -2,6 +2,7 @@
 # spec file for package googletest
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +17,14 @@
 #
 
 
+%define _name   googlemock
 %if 0%{?suse_version} >= 1550
 %bcond_without tests
 %else
 %bcond_with    tests
 %endif
-
-%define _name   googlemock
 Name:           googletest
-Version:        1.16.0
+Version:        1.17.0
 Release:        0
 Summary:        Google C++ Testing Framework
 License:        BSD-3-Clause
@@ -32,18 +32,15 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/googletest
 Source0:        https://github.com/google/googletest/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        googletest-rpmlintrc
-# PATCH-FIX-UPSTREAM googletest-ciso646.patch -- avoid deprecation warnings
-Patch1:         googletest-ciso646.patch
+BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.10.0
-%if 0%{?suse_version} < 1600
-BuildRequires:  gcc11
-BuildRequires:  gcc11-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(pthread-stubs)
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
+%endif
 
 %description
 Google's framework for writing C++ tests on a variety of platforms
@@ -94,9 +91,6 @@ with googlemock.
 %if 0%{?suse_version} < 1600
 export CC=gcc-11
 export CXX=g++-11
-%else
-export CC=gcc-%gcc_version
-export CXX=g++-%gcc_version
 %endif
 %cmake \
   %{?with_tests:-Dgtest_build_tests=ON} \
@@ -118,10 +112,8 @@ mkdir -p %{buildroot}%{_includedir}/gtest/src && install -m 0644 googletest/src/
 %endif
 %endif
 
-%post -n gtest -p /sbin/ldconfig
-%postun -n gtest -p /sbin/ldconfig
-%post -n gmock -p /sbin/ldconfig
-%postun -n gmock -p /sbin/ldconfig
+%ldconfig_scriptlets -n gtest
+%ldconfig_scriptlets -n gmock
 
 %files -n gtest
 %license LICENSE
