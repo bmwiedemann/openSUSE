@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Sun Jun 22 17:44:47 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- move BR from hyprland-plugins to devel package as the header with
+  the dependency is in the hyprland-devel package
+
+-------------------------------------------------------------------
+Sun Jun 22 17:40:16 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Provide plugins as split subpackages
+
+-------------------------------------------------------------------
+Sun Jun 22 16:54:35 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Ensure that hyprland is at least the version we compiled against.
+
+-------------------------------------------------------------------
+Sun Jun 22 16:33:59 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add back BuildRequires pkgconfig(xcb-icccm)
+
+-------------------------------------------------------------------
+Sat Jun 21 02:20:00 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.49.0+fix 
+  https://github.com/hyprwm/hyprland-plugins/releases/tag/v0.49.0-fix
+  https://github.com/hyprwm/hyprland-plugins/releases/tag/v0.49.0
+
+-------------------------------------------------------------------
+Sat Jun 21 02:15:22 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- simplify the plugin BR now that the hyprland devel package ships
+  them all
+
+-------------------------------------------------------------------
+Tue Apr 29 22:52:02 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package
