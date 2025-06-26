@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 25 12:26:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.15.26:
+  * release: prepare v0.15.26
+  * chore: fix vulnerabilities (#1420)
+    "Bumped Go version to 1.24.4 to resolve vulnerabilities."
+
+-------------------------------------------------------------------
 Thu Apr 24 15:23:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.15.25:
