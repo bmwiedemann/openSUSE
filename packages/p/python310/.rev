@@ -1109,4 +1109,12 @@
   - CVE-2025-4516-DecodeError-handler.patch</comment>
     <requestid>1284259</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>768fba14bffc03a9ca7e793f3ba0ce26</srcmd5>
+    <version>3.10.18</version>
+    <time>1750930794</time>
+    <user>anag_factory</user>
+    <comment>Also addresses CVE-2025-4435 (gh#135034, bsc#1244061).</comment>
+    <requestid>1288601</requestid>
+  </revision>
 </revisionlist>

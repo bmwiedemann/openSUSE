@@ -4,11 +4,12 @@ Mon Jun  9 16:53:24 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 - Update to 3.10.18:
   - Security
     - gh-135034: Fixes multiple issues that allowed tarfile
-      extraction filters (filter="data" and filter="tar") to be
-      bypassed using crafted symlinks and hard links.
+      extraction filters (filter="data" and filter="tar")
+      to be bypassed using crafted symlinks and hard links.
       Addresses CVE-2024-12718 (bsc#1244056), CVE-2025-4138
       (bsc#1244059), CVE-2025-4330 (bsc#1244060), and
-      CVE-2025-4517 (bsc#1244032).
+      CVE-2025-4517 (bsc#1244032). Also addresses CVE-2025-4435
+      (gh#135034, bsc#1244061).
     - gh-133767: Fix use-after-free in the “unicode-escape”
       decoder with a non-“strict” error handler (CVE-2025-4516,
       bsc#1243273).
