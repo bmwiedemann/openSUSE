@@ -159,4 +159,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1243333</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>0ca9800f2cd84a44e6cdcd0ff636af1a</srcmd5>
+    <version>5.6.5</version>
+    <time>1750930742</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1288516</requestid>
+  </revision>
 </revisionlist>
