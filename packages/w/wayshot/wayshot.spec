@@ -19,20 +19,31 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           wayshot
-Version:        1.3.1
+Version:        1.3.1+git50.gf7dee21c16980eaabd1394b79ec42710e00bf6e5
 Release:        0
 Summary:        Screenshot tool for wlroots based compositors
 License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND BSD-3-Clause AND ISC AND MIT AND Zlib AND BSD-2-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/waycrate/wayshot
-Source0:        https://github.com/waycrate/wayshot/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 %if 0%{?suse_version} >= 1500
 BuildRequires:  cargo-packaging
 %else
 BuildRequires:  cargo
 %endif
+BuildRequires:  Mesa-libEGL-devel
+BuildRequires:  libgbm-devel
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(pangocairo)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-cursor)
+BuildRequires:  pkgconfig(wayland-egl)
+BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wayland-server)
 
 %description
 A screenshot tool for wlroots based compositors implementing zwlr_screencopy_v1
