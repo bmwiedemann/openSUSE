@@ -2,7 +2,7 @@
 
 # Monotional
 
-### Version 2.6
+### Version 2.7
 
 https://github.com/regularhunter/monotional-font
 
@@ -35,6 +35,10 @@ Bitstream Vera Sans Mono.
 
 See the [latest release](https://github.com/regularhunter/monotional-font/releases) 
 for more information.
+
+**v2.7**
+
+ * Rework ` % ` glyph for all fonts
 
 **v2.6**
 
@@ -95,7 +99,7 @@ versions
 **v1.6**
 
  * Remove fi and fl ligature
- * Fix swapped italic characters U+04CB/U+04CC <-> U+04F6/U+04F7
+ * Fix swapped italic characters ` U+04CB/U+04CC ` <‒> ` U+04F6/U+04F7 `
 
 **v1.5**
 

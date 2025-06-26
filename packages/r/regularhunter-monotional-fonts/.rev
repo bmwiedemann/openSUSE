@@ -116,4 +116,14 @@ and those that do technical work.</comment>
 </comment>
     <requestid>1287464</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f04e07d32c6b624c8b5d9a37b5f790a0</srcmd5>
+    <version>2.7</version>
+    <time>1750930805</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.7:
+  * Rework % glyph for all fonts
+</comment>
+    <requestid>1288612</requestid>
+  </revision>
 </revisionlist>
