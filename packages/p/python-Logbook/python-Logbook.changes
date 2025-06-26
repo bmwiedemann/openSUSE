@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 25 06:16:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.8.2
+  * TimedRotatingFileHandler was sensitive to changes in the
+    current work directory if ``filename`` was a relative path.
+  * Wheels are built for Linux arm64
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Mon Apr 14 06:03:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.

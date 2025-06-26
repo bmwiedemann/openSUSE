@@ -161,4 +161,18 @@
 - Lowercase metadata directory name.</comment>
     <requestid>1269098</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>68ff397fec0b5af3b4469dae83da5c7b</srcmd5>
+    <version>1.8.2</version>
+    <time>1750930720</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1288443 from glaubitz
+
+- Update to 1.8.2
+    * TimedRotatingFileHandler was sensitive to changes in the
+      current work directory if ``filename`` was a relative path.
+    * Wheels are built for Linux arm64
+  - Use Python 3.11 on SLE-15 by default</comment>
+    <requestid>1288472</requestid>
+  </revision>
 </revisionlist>

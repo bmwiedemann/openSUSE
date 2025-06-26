@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-Logbook
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        A logging replacement for Python
 License:        BSD-3-Clause
