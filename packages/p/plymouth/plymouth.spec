@@ -38,6 +38,8 @@ Patch1:         plymouth-some-greenish-openSUSE-colors.patch
 Patch2:         plymouth-manpages.patch
 # PATCH-FIX-OPENSUSE plymouth-disable-fedora-logo.patch qzhao@suse.com -- Disable the fedora logo reference which is not in openSUSE.
 Patch3:         plymouth-disable-fedora-logo.patch
+# PATCH-FIX-OPENSUSE plymouth-keep-KillMode-none.patch bsc#1177082 bsc#1184087 boo#1182145 qzhao@suse.com -- Keep the plymouth-start.service KillMode=none.
+Patch4:         plymouth-keep-KillMode-none.patch
 # PATCH-FIX-OPENSUSE plymouth-install-label-library-and-font-file-to-initrd.patch boo#1183425 boo#1184309 qzhao@suse.com -- Pack label plugin and font into initram to ensure notice info could successfully show when partition encrypted.
 Patch5:         plymouth-install-label-library-and-font-file-to-initrd.patch
 # PATCH-FIX-OPENSUSE plymouth-quiet-dracut-build-info.patch bsc#1189613 qzhao@suse.com -- Hide unuseful output when re-generate initrd.

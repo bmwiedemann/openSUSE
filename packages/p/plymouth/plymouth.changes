@@ -1,11 +1,4 @@
 -------------------------------------------------------------------
-Fri Jun  6 12:38:43 UTC 2025 - Michal Koutný <mkoutny@suse.com>
-
-- Remove plymouth-keep-KillMode-none.patch: Current Tumbleweed boots up to
-  login prompt, so keep this closer to upstream and without deprecated
-  KillMode= value. Please report a bug if this breaks your setup.
-
--------------------------------------------------------------------
 Wed Dec  4 14:03:31 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
 
 - Remove plymouth-only_use_fb_for_cirrus_bochs.patch: Bochs and cirrus
