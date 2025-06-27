@@ -1,0 +1,11 @@
+diff -Pdpru POL-POM-4-4.4.orig/bash/find_python POL-POM-4-4.4/bash/find_python
+--- POL-POM-4-4.4.orig/bash/find_python	2020-05-17 16:05:33.000000000 +0200
++++ POL-POM-4-4.4/bash/find_python	2025-06-27 13:40:46.301064997 +0200
+@@ -13,6 +13,7 @@ search_python () {
+ 	POL_PYTHON=""
+ 	while true; do
+ 		# list of interpreter names to try, in order
++		next_python "python3.11"
+ 		next_python "python3"
+ 		next_python "python"
+ 		next_python "python2.7"

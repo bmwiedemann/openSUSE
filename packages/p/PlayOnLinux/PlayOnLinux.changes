@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 27 11:15:04 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Fix error "ModuleNotFoundError: No module named 'pipes'".
+  Modul pipes was removed in python.3.13.
+  - Add PlayOnLinux-python-pipes.patch.
+
+-------------------------------------------------------------------
 Mon Feb 26 09:12:20 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Adjustments patch macro for rpm 4.20.
@@ -592,5 +599,3 @@ Thu Jan 24 00:00:00 UTC 2008 - andrea@links2linux.de
 - added fixed italian translation
 - added patch to fix .desktop file with suse standards
 - created package PlayOnLinux-DosBox-Support in this spec
-
--------------------------------------------------------------------
