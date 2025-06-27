@@ -1,0 +1,116 @@
+From de54204d2656053e5530d055468f55c2806eed69 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Thu, 26 Jun 2025 17:18:32 +0200
+Subject: [PATCH] Revert "build: check for __xstat declarations"
+
+This reverts commit 0766f541927f50879599e62fdaa5a2e51b9791d3.
+
+From commit description:
+
+    Currently we check the function is resolved at link time. Although what
+    we really care is if the headers are silently transposing any of our stat
+    calls to __xstat{,64}. If so, we'd want to wrap the latter functions.
+
+    As the now-removed comment says, glibc 2.33 was the first release to no
+    longer have static inline wrappers that do the transposition. See the
+    glibc commit 8ed005daf0ab ("Remove stat wrapper functions, move them to
+    exported symbols") for more details.
+
+The glibc in Leap 16.0 behaves as pre-2.33 in this respect (bsc#1240126 bsc#1221482)
+
+---
+ configure.ac     |  6 +++++-
+ meson.build      |  4 ++--
+ testsuite/path.c | 12 +++++++++++-
+ 3 files changed, 18 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9443268a0b50..80cd18e7d8f8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -39,6 +39,7 @@ AC_PROG_CC_C99
+ # Function and structure checks
+ #####################################################################
+ 
++AC_CHECK_FUNCS_ONCE(__xstat)
+ AC_CHECK_FUNCS_ONCE([open64 stat64 fopen64 __stat64_time64])
+ AC_CHECK_FUNCS_ONCE([secure_getenv])
+ 
+@@ -51,13 +52,16 @@ CC_CHECK_FUNC_BUILTIN([__builtin_umul_overflow], [ ], [ ])
+ CC_CHECK_FUNC_BUILTIN([__builtin_umull_overflow], [ ], [ ])
+ CC_CHECK_FUNC_BUILTIN([__builtin_umulll_overflow], [ ], [ ])
+ 
++# Non glibc compilers (musl and newer versions of bionic) do not need
++# the 64 LFS API wrapping.
++AC_CHECK_DECLS_ONCE([[__GLIBC__]], [], [], [[#include <features.h>]])
++
+ # dietlibc doesn't have st.st_mtim struct member
+ AC_CHECK_MEMBERS([struct stat.st_mtim], [], [], [#include <sys/stat.h>])
+ 
+ # basename may be only available in libgen.h with the POSIX behavior,
+ # not desired here
+ AC_CHECK_DECLS_ONCE([[basename]], [], [], [[#include <string.h>]])
+-AC_CHECK_DECLS_ONCE([[__xstat]], [], [], [[#include <sys/stat.h]])
+ 
+ AC_MSG_CHECKING([whether _Static_assert() is supported])
+ AC_COMPILE_IFELSE(
+diff --git a/meson.build b/meson.build
+index a0cf675f12f3..c4730153c742 100644
+--- a/meson.build
++++ b/meson.build
+@@ -34,6 +34,7 @@ cdata.set10('_GNU_SOURCE', true)
+ ################################################################################
+ 
+ _funcs = [
++  '__xstat',
+   'open64', 'stat64', 'fopen64', '__stat64_time64',
+   'secure_getenv',
+ ]
+@@ -85,12 +86,11 @@ endforeach
+ # not desired here
+ _decls = [
+   ['basename', 'string.h'],
+-  ['__xstat', 'sys/stat.h'],
+ ]
+ foreach tuple : _decls
+   decl = tuple[0]
+   header = tuple[1]
+-  have  = cc.has_header_symbol(header, decl, args : '-D_GNU_SOURCE')
++  glibc = cc.has_header_symbol(header, decl, args : '-D_GNU_SOURCE')
+   cdata.set10('HAVE_DECL_@0@'.format(decl.to_upper()), have)
+ endforeach
+ 
+diff --git a/testsuite/path.c b/testsuite/path.c
+index b896885a00de..3a6980e3de06 100644
+--- a/testsuite/path.c
++++ b/testsuite/path.c
+@@ -160,7 +160,15 @@ static void *get_libc_func(const char *f)
+ 		return _fn(p, flags);                                \
+ 	}
+ 
++
++/*
++ * wrapper template for __xstat family
++ * This family got deprecated/dropped in glibc 2.32.9000, but we still need
++ * to keep it for a while for programs that were built against previous versions
++ */
+ #define WRAP_VERSTAT(prefix, suffix)                                                 \
++	TS_EXPORT int prefix##stat##suffix(int ver, const char *path,                \
++					   struct stat##suffix *st);                 \
+ 	TS_EXPORT int prefix##stat##suffix(int ver, const char *path,                \
+ 					   struct stat##suffix *st)                  \
+ 	{                                                                            \
+@@ -203,7 +211,9 @@ WRAP_2ARGS(int, -1, __stat64_time64, void *);
+ WRAP_OPEN(64);
+ #endif
+ 
+-#if HAVE_DECL___XSTAT
++#ifdef HAVE___XSTAT
+ WRAP_VERSTAT(__x, );
++#if HAVE_DECL___GLIBC__
+ WRAP_VERSTAT(__x, 64);
+ #endif
++#endif
+-- 
+2.47.1
+

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 26 15:40:07 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix testsuite on Leap 16.0 (bsc#1240126)
+  * Revert-build-check-for-__xstat-declarations.patch
+
+-------------------------------------------------------------------
 Fri Mar 28 20:20:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 34.2
