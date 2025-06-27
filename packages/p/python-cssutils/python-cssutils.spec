@@ -1,7 +1,7 @@
 #
 # spec file for package python-cssutils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cssutils
-Version:        2.10.2
+Version:        2.11.1
 Release:        0
 Summary:        A CSS Cascading Style Sheets library for Python
 License:        LGPL-3.0-or-later
@@ -33,6 +33,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-more-itertools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -62,7 +63,7 @@ A Python package to parse and build CSS Cascading Style Sheets. DOM only, not an
 %python_uninstall_alternative csscapture
 
 %files %{python_files}
-%license COPYING COPYING.LESSER
+%license LICENSE
 %doc README.rst examples
 %python_alternative %{_bindir}/csscapture
 %python_alternative %{_bindir}/csscombine

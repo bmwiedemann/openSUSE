@@ -299,4 +299,19 @@ This fixes the file conflict in factory (forwarded request 171294 from TheBlackC
   * getPropertyValue now allows specifying a default value.</comment>
     <requestid>1169356</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b70f794b0991475b0ae7aac618016b19</srcmd5>
+    <version>2.11.1</version>
+    <time>1751058147</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.11.1
+  * Consolidated license to simply LGPL 3. (#52)
+- from version 2.11.0
+  * Reduced cyclomatic complexity in selector module. (#47)
+- from version 2.10.3
+  * Fixed DeprecationWarning with cgi module.
+- Replace COPYING and COPYING.LESSER with LICENSE in %license field
+</comment>
+    <requestid>1288854</requestid>
+  </revision>
 </revisionlist>

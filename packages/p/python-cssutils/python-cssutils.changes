@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 26 08:45:49 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.11.1
+  * Consolidated license to simply LGPL 3. (#52)
+- from version 2.11.0
+  * Reduced cyclomatic complexity in selector module. (#47)
+- from version 2.10.3
+  * Fixed DeprecationWarning with cgi module.
+- Replace COPYING and COPYING.LESSER with LICENSE in %license field
+
+-------------------------------------------------------------------
 Sat Apr 20 13:26:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10.2:
