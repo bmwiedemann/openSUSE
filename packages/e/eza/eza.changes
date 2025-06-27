@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 26 15:59:31 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.6:
+  * Add missing --absolute option to man page
+  * Add prettier icon for .prettierrc.{json,json5,toml,yaml,yml}
+
+-------------------------------------------------------------------
 Mon Jun 23 07:00:39 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.21.5:

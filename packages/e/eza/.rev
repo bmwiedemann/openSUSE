@@ -1160,4 +1160,14 @@
   * Remove unnecessary semicolon</comment>
     <requestid>1287852</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>a7c04db94de8310169ae722d08235757</srcmd5>
+    <version>0.21.6</version>
+    <time>1751058079</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.21.6:
+  * Add missing --absolute option to man page
+  * Add prettier icon for .prettierrc.{json,json5,toml,yaml,yml}</comment>
+    <requestid>1288727</requestid>
+  </revision>
 </revisionlist>
