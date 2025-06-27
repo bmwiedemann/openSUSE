@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jun 26 09:44:59 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Several fixes for security issues
+  (bsc#1244561, CVE-2024-38822)
+  (bsc#1244564, CVE-2024-38823)
+  (bsc#1244565, CVE-2024-38824)
+  (bsc#1244566, CVE-2024-38825)
+  (bsc#1244567, CVE-2025-22240)
+  (bsc#1244568, CVE-2025-22236)
+  (bsc#1244570, CVE-2025-22241)
+  (bsc#1244571, CVE-2025-22237)
+  (bsc#1244572, CVE-2025-22238)
+  (bsc#1244574, CVE-2025-22239)
+  (bsc#1244575, CVE-2025-22242)
+
+  * Request server hardening
+  * Prevent traversal in local_cache::save_minions
+  * Add test and fix for file_recv cve
+  * Fix traversal in gitfs find_file
+  * Fix traversal in salt.utils.virt
+  * Fix traversal in pub_ret
+  * Reasonable failures when pillars timeout
+  * Make send_req_async wait longer
+  * Remove token to prevent decoding errors
+  * Fix checking of non-url style git remotes
+  * Allow subdirs in GitFS find_file check
+
+- Added:
+  * several-fixes-for-security-issues.patch
+
+-------------------------------------------------------------------
 Wed Jun 11 11:03:32 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Add subsystem filter to udev.exportdb (bsc#1236621)

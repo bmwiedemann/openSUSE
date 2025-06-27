@@ -1,0 +1,4873 @@
+From 398b545e53766aeb121c3680401baf2455961f7e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Thu, 26 Jun 2025 10:15:12 +0100
+Subject: [PATCH] Several fixes for security issues
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* Several fixes for security issues
+
+(bsc#1244561, CVE-2024-38822)
+(bsc#1244564, CVE-2024-38823)
+(bsc#1244565, CVE-2024-38824)
+(bsc#1244566, CVE-2024-38825)
+(bsc#1244567, CVE-2025-22240)
+(bsc#1244568, CVE-2025-22236)
+(bsc#1244570, CVE-2025-22241)
+(bsc#1244571, CVE-2025-22237)
+(bsc#1244572, CVE-2025-22238)
+(bsc#1244574, CVE-2025-22239)
+(bsc#1244575, CVE-2025-22242)
+
+Request server hardening
+- Each minion get's it's own aes session for request server
+  communication.
+- Request client always includes id and token, these are always
+  validated server side.
+- Add timestamp and enforce configurable ttl for request server
+  messages.
+
+Other relevant commit messages:
+
+- Add deprecation message to salt.auth.pki
+- Add test and fix for file_recv cve
+- Prevent traversal in local_cache::save_minions
+- Fix traversal in gitfs find_file
+- Fix traversals in salt.utils.virt
+- Fix traversal in pub_ret
+- On-demand pillar fix
+- Include url validation tests
+- Minion event filtering
+- Reasonable failures when pillars timeout
+- Adjust and fix code and tests after backporting
+  to openSUSE/release/3006.0
+
+Co-authored-by: Pablo Suárez Hernández <psuarezhernandez@suse.com>
+
+* Fix test_pillar_timeout unit test in Salt Shaker
+
+* Fix tests failures on functional/channel/test_req_channel.py
+
+* Fix gitfs test failures due uncomplete cleanup
+
+* Fix cp.push module function and its integration test (#68053)
+
+fix file_recv path verification for subdirs
+
+Adapt backport to fit openSUSE/release/3006.0
+
+* Make send_req_async wait longer (#68085)
+
+Allow send_req_async to wait longer when sending a return back to the
+master. The minion should wait at least as long as the max possible
+return timeout.
+
+Update creds when session key changes
+
+Add unit test to validate session key rotation
+
+Add changelog for #68079
+
+* Remove token to prevent decoding errors (#68084)
+
+Clean up verify_load calls in master request server
+
+Remove tok in salt.channel.ReqServer.validate_token so it is not passed
+to the request handlers.
+
+Add tests around payload token removal
+
+Add changelog for #68076
+
+* Fix checking of non-url style git remotes (#68089)
+
+Handle git@github.com/.. style remotes
+
+Fix checking of non-url style git remotes
+
+Fixes handling of git@hostname:/path/repo style remotes. Takes initial
+version from #68082 and fixes it. Still uses the shortcut of converting
+the remote to ssh:// URL style.
+
+Split out converting remote to URL
+
+Splits out converting remotes to URL form to allow testing of that
+conversion - without doing that risk issues with the regex
+
+Add additional test cases
+
+Add additional test cases based on gitfs docs and what they say should
+be valid
+
+Make utility functions classmethods
+
+Fix key vs remote wart
+
+Allow subdirs in GitFS find_file check (#68083)
+
+Add test for find_file in sub directories
+
+Add changelog for #68072
+
+---------
+
+Co-authored-by: Daniel A. Wozniak <daniel.wozniak@broadcom.com>
+Co-authored-by: hurzhurz <hurz@gmx.org>
+---
+ changelog/67941.fixed.md                      |   1 +
+ changelog/68033.fixed.md                      |  56 ++
+ changelog/68072.fixed.md                      |   1 +
+ changelog/68076.fixed.md                      |   1 +
+ changelog/68079.fixed.md                      |   1 +
+ changelog/68087.fixed.md                      |   1 +
+ salt/auth/pki.py                              |   7 +-
+ salt/channel/client.py                        | 120 ++-
+ salt/channel/server.py                        | 190 ++++-
+ salt/config/__init__.py                       |   8 +
+ salt/crypt.py                                 |  52 +-
+ salt/daemons/masterapi.py                     |  24 +
+ salt/exceptions.py                            |   5 +
+ salt/fileclient.py                            |   2 -
+ salt/fileserver/__init__.py                   |   2 +-
+ salt/master.py                                | 120 +--
+ salt/minion.py                                |  32 +-
+ salt/modules/cp.py                            |   1 -
+ salt/modules/event.py                         |   1 -
+ salt/modules/mine.py                          |   8 -
+ salt/modules/publish.py                       |   8 -
+ salt/modules/saltutil.py                      |   2 -
+ salt/pillar/__init__.py                       |  42 +-
+ salt/pillar/git_pillar.py                     |   2 +-
+ salt/returners/local_cache.py                 |  21 +-
+ salt/utils/event.py                           |   2 -
+ salt/utils/gitfs.py                           |  90 ++-
+ salt/utils/verify.py                          |  84 ++-
+ salt/utils/virt.py                            |   7 +-
+ tests/conftest.py                             |  14 +-
+ tests/integration/modules/test_cp.py          |   7 +-
+ tests/pytests/functional/channel/conftest.py  |  41 +
+ .../functional/channel/test_req_channel.py    | 444 +++++++++++
+ .../pytests/functional/channel/test_server.py |  59 +-
+ .../transport/server/test_req_channel.py      |   6 +
+ .../integration/master/test_minion_event.py   |  47 ++
+ .../integration/master/test_recv_file.py      |  29 +
+ .../integration/minion/test_return_retries.py |  72 ++
+ tests/pytests/unit/channel/test_server.py     |  52 +-
+ .../masterapi/test_valid_minion_tag.py        |  23 +
+ .../unit/fileserver/gitfs/test_gitfs.py       |  10 +-
+ tests/pytests/unit/modules/test_cp.py         |   1 -
+ tests/pytests/unit/pillar/test_pillar.py      |  18 +
+ tests/pytests/unit/test_crypt.py              | 149 ++++
+ tests/pytests/unit/test_master.py             | 159 +++-
+ tests/pytests/unit/transport/test_zeromq.py   | 706 ++++++++++--------
+ tests/pytests/unit/utils/test_gitfs.py        | 146 ++++
+ tests/pytests/unit/utils/test_virt.py         |  21 +
+ .../unit/utils/verify/test_clean_path.py      | 117 +++
+ tests/pytests/unit/utils/verify/test_url.py   |  44 ++
+ tests/unit/test_master.py                     |   1 +
+ tests/unit/utils/test_gitfs.py                |   1 +
+ tools/pkg/build.py                            |   4 +
+ 53 files changed, 2504 insertions(+), 558 deletions(-)
+ create mode 100644 changelog/67941.fixed.md
+ create mode 100644 changelog/68033.fixed.md
+ create mode 100644 changelog/68072.fixed.md
+ create mode 100644 changelog/68076.fixed.md
+ create mode 100644 changelog/68079.fixed.md
+ create mode 100644 changelog/68087.fixed.md
+ create mode 100644 tests/pytests/functional/channel/test_req_channel.py
+ create mode 100644 tests/pytests/integration/master/test_minion_event.py
+ create mode 100644 tests/pytests/integration/master/test_recv_file.py
+ create mode 100644 tests/pytests/unit/daemons/masterapi/test_valid_minion_tag.py
+ create mode 100644 tests/pytests/unit/utils/test_virt.py
+ create mode 100644 tests/pytests/unit/utils/verify/test_clean_path.py
+ create mode 100644 tests/pytests/unit/utils/verify/test_url.py
+
+diff --git a/changelog/67941.fixed.md b/changelog/67941.fixed.md
+new file mode 100644
+index 00000000000..b9c1000d155
+--- /dev/null
++++ b/changelog/67941.fixed.md
+@@ -0,0 +1 @@
++Fix cp.push module function and its integration test
+diff --git a/changelog/68033.fixed.md b/changelog/68033.fixed.md
+new file mode 100644
+index 00000000000..c45c9dd5bc5
+--- /dev/null
++++ b/changelog/68033.fixed.md
+@@ -0,0 +1,56 @@
++CVE-2024-38822
++Multiple methods in the salt master skip minion token validation. Therefore a misbehaving minion can impersonate another minion.
++
++CVSS 2.7 V:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N
++
++CVE-2024-38823
++Salt's request server is vulnerable to replay attacks when not using a TLS encrypted transport.
++
++CVSS Score 2.7 AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N
++
++CVE-2024-38824
++Directory traversal vulnerability in recv_file method allows arbitrary files to be written to the master cache directory.
++
++CVSS Score 9.6 AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N
++
++CVE-2024-38825
++The salt.auth.pki module does not properly authenticate callers. The "password" field contains a public certificate which is validated against a CA certificate by the module. This is not pki authentication, as the caller does not need access to the corresponding private key for the authentication attempt to be accepted.
++
++CVSS Score 6.4 AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N
++
++CVE-2025-22236
++Minion event bus authorization bypass. An attacker with access to a minion key can craft a message which may be able to execute a job on other minions (>= 3007.0).
++
++CVSS 8.1 AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:L
++
++CVE-2025-22237
++An attacker with access to a minion key can exploit the 'on demand' pillar functionality with a specially crafted git url which could cause and arbitrary command to be run on the master with the same privileges as the master process.
++
++CVSS 6.7 AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H
++
++CVE-2025-22238
++Directory traversal attack in minion file cache creation. The master's default cache is vulnerable to a directory traversal attack. Which could be leveraged to write or overwrite 'cache' files outside of the cache directory.
++
++CVSS 4.2 AV:L/AC:L/PR:H/UI:R/S:U/C:N/I:H/A:N
++
++CVE-2025-22239
++Arbitrary event injection on Salt Master. The master's "_minion_event" method can be used by and authorized minion to send arbitrary events onto the master's event bus.
++
++CVSS 8.1 AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:L
++
++CVE-2025-22240
++Arbitrary directory creation or file deletion. In the find_file method of the GitFS class, a path is created using os.path.join using unvalidated input from the “tgt_env” variable. This can be exploited by an attacker to delete any file on the Master's process has permissions to
++
++CVSS 6.3 AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H
++
++CVE-2025-22241
++File contents overwrite the VirtKey class is called when “on-demand pillar” data is requested and uses un-validated input to create paths to the “pki directory”. The functionality is used to auto-accept Minion authentication keys based on a pre-placed “authorization file” at a specific location and is present in the default configuration.
++
++CVSS 5.6 AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:N
++
++CVE-2025-22242
++Worker process denial of service through file read operation. .A vulnerability exists in the Master's “pub_ret” method which is exposed to all minions. The un-sanitized input value “jid” is used to construct a path which is then opened for reading. An attacker could exploit this vulnerabilities by attempting to read from a filename that will not return any data, e.g. by targeting a pipe node on the proc file system.
++
++CVSS 5.6 AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:N/A:H
++
++This release also includes sqlite 3.50.1 to address CVE-2025-29087
+diff --git a/changelog/68072.fixed.md b/changelog/68072.fixed.md
+new file mode 100644
+index 00000000000..c0b54445f14
+--- /dev/null
++++ b/changelog/68072.fixed.md
+@@ -0,0 +1 @@
++Fix GitFS file_find for file in sub-directories
+diff --git a/changelog/68076.fixed.md b/changelog/68076.fixed.md
+new file mode 100644
+index 00000000000..33bc7daf017
+--- /dev/null
++++ b/changelog/68076.fixed.md
+@@ -0,0 +1 @@
++Token validation removes token from request handler payload
+diff --git a/changelog/68079.fixed.md b/changelog/68079.fixed.md
+new file mode 100644
+index 00000000000..85c070428e1
+--- /dev/null
++++ b/changelog/68079.fixed.md
+@@ -0,0 +1 @@
++Fix minion connectivity issues by ensuring auth notices refreshed session token
+diff --git a/changelog/68087.fixed.md b/changelog/68087.fixed.md
+new file mode 100644
+index 00000000000..16667416b71
+--- /dev/null
++++ b/changelog/68087.fixed.md
+@@ -0,0 +1 @@
++Fix file_recv path verification to allow subdirs used by cp.push
+diff --git a/salt/auth/pki.py b/salt/auth/pki.py
+index f33e3ccf00c..cdc059f6a92 100644
+--- a/salt/auth/pki.py
++++ b/salt/auth/pki.py
+@@ -17,6 +17,7 @@ TODO: Add a 'ca_dir' option to configure a directory of CA files, a la Apache.
+ import logging
+ 
+ import salt.utils.files
++import salt.utils.versions
+ 
+ # pylint: disable=import-error
+ try:
+@@ -30,7 +31,7 @@ try:
+             from Cryptodome.Util import asn1
+         except ImportError:
+             from Crypto.Util import asn1  # nosec
+-        import OpenSSL
++        import OpenSSL  # pylint: disable=W8410
+     HAS_DEPS = True
+ except ImportError:
+     HAS_DEPS = False
+@@ -71,6 +72,10 @@ def auth(username, password, **kwargs):
+             your_user:
+               - .*
+     """
++    salt.utils.versions.warn_until(
++        "Argon",
++        "This module has been deprecated as it is known to be insecure.",
++    )
+     pem = password
+     cacert_file = __salt__["config.get"]("external_auth:pki:ca_file")
+ 
+diff --git a/salt/channel/client.py b/salt/channel/client.py
+index 34aafb2c9e2..25f4af7689d 100644
+--- a/salt/channel/client.py
++++ b/salt/channel/client.py
+@@ -40,6 +40,9 @@ except ImportError:
+ 
+ log = logging.getLogger(__name__)
+ 
++REQUEST_CHANNEL_TIMEOUT = 60
++REQUEST_CHANNEL_TRIES = 3
++
+ 
+ class ReqChannel:
+     """
+@@ -120,6 +123,9 @@ class AsyncReqChannel:
+         if io_loop is None:
+             io_loop = salt.ext.tornado.ioloop.IOLoop.current()
+ 
++        timeout = opts.get("request_channel_timeout", REQUEST_CHANNEL_TIMEOUT)
++        tries = opts.get("request_channel_tries", REQUEST_CHANNEL_TRIES)
++
+         crypt = kwargs.get("crypt", "aes")
+         if crypt != "clear":
+             # we don't need to worry about auth as a kwarg, since its a singleton
+@@ -128,9 +134,17 @@ class AsyncReqChannel:
+             auth = None
+ 
+         transport = salt.transport.request_client(opts, io_loop)
+-        return cls(opts, transport, auth)
++        return cls(opts, transport, auth, tries=tries, timeout=timeout)
+ 
+-    def __init__(self, opts, transport, auth, **kwargs):
++    def __init__(
++        self,
++        opts,
++        transport,
++        auth,
++        timeout=REQUEST_CHANNEL_TIMEOUT,
++        tries=REQUEST_CHANNEL_TRIES,
++        **kwargs
++    ):
+         self.opts = dict(opts)
+         self.transport = transport
+         self.auth = auth
+@@ -138,6 +152,8 @@ class AsyncReqChannel:
+         if self.auth:
+             self.master_pubkey_path = os.path.join(self.opts["pki_dir"], self.auth.mpub)
+         self._closing = False
++        self.timeout = timeout
++        self.tries = tries
+ 
+     @property
+     def crypt(self):
+@@ -149,35 +165,90 @@ class AsyncReqChannel:
+     def ttype(self):
+         return self.transport.ttype
+ 
+-    def _package_load(self, load):
+-        return {
++    def _package_load(self, load, nonce=None):
++        """
++        Prepare the load to be sent over the wire.
++
++        For aes channels add a nonce, timestamp and signed token to the load
++        before encrypting it using our aes session key. Then wrap the encrypted
++        load with some meta data. For 'clear' encryption, no extra feilds are
++        added to the load. The unencyrpted load is wrapped with meta data.
++        """
++        if self.crypt == "aes":
++            if nonce is None:
++                nonce = uuid.uuid4().hex
++            try:
++                load["nonce"] = nonce
++                load["ts"] = int(time.time())
++                load["tok"] = self.auth.gen_token(b"salt")
++                load["id"] = self.opts["id"]
++            except TypeError:
++                # Backwards compatability for non dict loads, let the load get
++                # sent and fail to authenticate.
++                log.warning(
++                    "Invalid load passed to request channel. Type is %s should be dict.",
++                    type(load),
++                )
++
++            load = self.auth.session_crypticle.dumps(load)
++
++        ret = {
+             "enc": self.crypt,
+             "load": load,
+-            "version": 2,
++            "version": 3,
+         }
++        if self.crypt == "aes":
++            ret["id"] = self.opts["id"]
++        return ret
++
++    @salt.ext.tornado.gen.coroutine
++    def _send_with_retry(self, load, tries, timeout):
++        _try = 1
++        while True:
++            try:
++                ret = yield self.transport.send(
++                    load,
++                    timeout=timeout,
++                )
++                break
++            except Exception as exc:  # pylint: disable=broad-except
++                log.trace("Failed to send msg %r", exc)
++                if _try >= tries:
++                    raise
++                else:
++                    _try += 1
++                    continue
++        raise salt.ext.tornado.gen.Return(ret)
+ 
+     @salt.ext.tornado.gen.coroutine
+     def crypted_transfer_decode_dictentry(
+         self,
+         load,
+         dictkey=None,
+-        timeout=60,
++        timeout=None,
++        tries=None,
+     ):
+-        nonce = uuid.uuid4().hex
+-        load["nonce"] = nonce
++        if timeout is None:
++            timeout = self.timeout
++        if tries is None:
++            tries = self.tries
+         if not self.auth.authenticated:
+             yield self.auth.authenticate()
+-        ret = yield self.transport.send(
+-            self._package_load(self.auth.crypticle.dumps(load)),
+-            timeout=timeout,
++
++        nonce = uuid.uuid4().hex
++        ret = yield self._send_with_retry(
++            self._package_load(load, nonce),
++            tries,
++            timeout,
+         )
+         key = self.auth.get_keys()
+         if "key" not in ret:
+             # Reauth in the case our key is deleted on the master side.
+             yield self.auth.authenticate()
+-            ret = yield self.transport.send(
+-                self._package_load(self.auth.crypticle.dumps(load)),
+-                timeout=timeout,
++            ret = yield self._send_with_retry(
++                self._package_load(load, nonce),
++                tries,
++                timeout,
+             )
+         if HAS_M2:
+             aes = key.private_decrypt(ret["key"], RSA.pkcs1_oaep_padding)
+@@ -209,7 +280,7 @@ class AsyncReqChannel:
+         return salt.crypt.verify_signature(self.master_pubkey_path, data, sig)
+ 
+     @salt.ext.tornado.gen.coroutine
+-    def _crypted_transfer(self, load, timeout=60, raw=False):
++    def _crypted_transfer(self, load, timeout, raw=False):
+         """
+         Send a load across the wire, with encryption
+ 
+@@ -222,15 +293,13 @@ class AsyncReqChannel:
+         :param dict load: A load to send across the wire
+         :param int timeout: The number of seconds on a response before failing
+         """
+-        nonce = uuid.uuid4().hex
+-        if load and isinstance(load, dict):
+-            load["nonce"] = nonce
+ 
+         @salt.ext.tornado.gen.coroutine
+         def _do_transfer():
+             # Yield control to the caller. When send() completes, resume by populating data with the Future.result
++            nonce = uuid.uuid4().hex
+             data = yield self.transport.send(
+-                self._package_load(self.auth.crypticle.dumps(load)),
++                self._package_load(load, nonce),
+                 timeout=timeout,
+             )
+             # we may not have always data
+@@ -238,9 +307,10 @@ class AsyncReqChannel:
+             # communication, we do not subscribe to return events, we just
+             # upload the results to the master
+             if data:
+-                data = self.auth.crypticle.loads(data, raw, nonce=nonce)
++                data = self.auth.session_crypticle.loads(data, raw, nonce=nonce)
+             if not raw or self.ttype == "tcp":  # XXX Why is this needed for tcp
+                 data = salt.transport.frame.decode_embedded_strs(data)
++
+             raise salt.ext.tornado.gen.Return(data)
+ 
+         if not self.auth.authenticated:
+@@ -256,7 +326,7 @@ class AsyncReqChannel:
+         raise salt.ext.tornado.gen.Return(ret)
+ 
+     @salt.ext.tornado.gen.coroutine
+-    def _uncrypted_transfer(self, load, timeout=60):
++    def _uncrypted_transfer(self, load, timeout):
+         """
+         Send a load across the wire in cleartext
+ 
+@@ -271,7 +341,7 @@ class AsyncReqChannel:
+         raise salt.ext.tornado.gen.Return(ret)
+ 
+     @salt.ext.tornado.gen.coroutine
+-    def send(self, load, tries=3, timeout=60, raw=False):
++    def send(self, load, tries=None, timeout=None, raw=False):
+         """
+         Send a request, return a future which will complete when we send the message
+ 
+@@ -279,6 +349,10 @@ class AsyncReqChannel:
+         :param int tries: The number of times to make before failure
+         :param int timeout: The number of seconds on a response before failing
+         """
++        if timeout is None:
++            timeout = self.timeout
++        if tries is None:
++            tries = self.tries
+         _try = 1
+         while True:
+             try:
+@@ -427,7 +501,7 @@ class AsyncPubChannel:
+         return {
+             "enc": self.crypt,
+             "load": load,
+-            "version": 2,
++            "version": 3,
+         }
+ 
+     @salt.ext.tornado.gen.coroutine
+diff --git a/salt/channel/server.py b/salt/channel/server.py
+index 59da3a2dc26..abef8aa2f0c 100644
+--- a/salt/channel/server.py
++++ b/salt/channel/server.py
+@@ -8,6 +8,7 @@ import binascii
+ import hashlib
+ import logging
+ import os
++import pathlib
+ import shutil
+ import time
+ 
+@@ -57,6 +58,31 @@ class ReqServerChannel:
+         self.opts = opts
+         self.transport = transport
+         self.event = None
++        self.master_key = None
++        (pathlib.Path(self.opts["cachedir"]) / "sessions").mkdir(exist_ok=True)
++        self.sessions = {}
++
++    def session_key(self, minion):
++        """
++        Returns a session key for the given minion id.
++        """
++        now = time.time()
++        if minion in self.sessions:
++            if now - self.sessions[minion][0] < self.opts["publish_session"]:
++                return self.sessions[minion][1]
++
++        path = pathlib.Path(self.opts["cachedir"]) / "sessions" / minion
++        try:
++            if now - path.stat().st_mtime > self.opts["publish_session"]:
++                salt.crypt.Crypticle.write_key(path)
++        except FileNotFoundError:
++            salt.crypt.Crypticle.write_key(path)
++
++        self.sessions[minion] = (
++            path.stat().st_mtime,
++            salt.crypt.Crypticle.read_key(path),
++        )
++        return self.sessions[minion][1]
+ 
+     def pre_fork(self, process_manager):
+         """
+@@ -104,8 +130,16 @@ class ReqServerChannel:
+ 
+     @salt.ext.tornado.gen.coroutine
+     def handle_message(self, payload):
++        if (
++            not isinstance(payload, dict)
++            or "enc" not in payload
++            or "load" not in payload
++        ):
++            log.warn("bad load received on socket")
++            raise salt.ext.tornado.gen.Return("bad load")
++        version = payload.get("version", 0)
+         try:
+-            payload = self._decode_payload(payload)
++            payload = self._decode_payload(payload, version)
+         except Exception as exc:  # pylint: disable=broad-except
+             exc_type = type(exc).__name__
+             if exc_type == "AuthenticationError":
+@@ -139,10 +173,6 @@ class ReqServerChannel:
+                 "bad load: id {} is not a string".format(id_)
+             )
+ 
+-        version = 0
+-        if "version" in payload:
+-            version = payload["version"]
+-
+         sign_messages = False
+         if version > 1:
+             sign_messages = True
+@@ -151,14 +181,47 @@ class ReqServerChannel:
+         # anything about our key auth
+         if payload["enc"] == "clear" and payload.get("load", {}).get("cmd") == "_auth":
+             start = time.time()
+-            ret = self._auth(payload["load"], sign_messages)
++            ret = self._auth(payload["load"], sign_messages, version)
+             if self.opts.get("master_stats", False):
+                 yield self.payload_handler({"cmd": "_auth", "_start": start})
+             raise salt.ext.tornado.gen.Return(ret)
+ 
+-        nonce = None
+-        if version > 1:
+-            nonce = payload["load"].pop("nonce", None)
++        if payload["enc"] == "aes":
++            nonce = None
++            if version > 1:
++                nonce = payload["load"].pop("nonce", None)
++
++            # Check validity of message ttl and id's match
++            if version > 2:
++                if self.opts["request_server_ttl"] > 0:
++                    ttl = time.time() - payload["load"]["ts"]
++                    if ttl > self.opts["request_server_ttl"]:
++                        log.warning(
++                            "Received request from %s with expired ttl: %d > %d",
++                            payload["load"]["id"],
++                            ttl,
++                            self.opts["request_server_ttl"],
++                        )
++                        raise salt.ext.tornado.gen.Return("bad load")
++
++                if payload["id"] != payload["load"]["id"]:
++                    log.warning(
++                        "Request id mismatch. Found '%s' but expected '%s'",
++                        payload["load"]["id"],
++                        payload["id"],
++                    )
++                    raise salt.ext.tornado.gen.Return("bad load")
++                if not salt.utils.verify.valid_id(self.opts, payload["load"]["id"]):
++                    log.warning(
++                        "Request contains invalid minion id '%s'", payload["load"]["id"]
++                    )
++                    raise salt.ext.tornado.gen.Return("bad load")
++                if not self.validate_token(payload, required=True):
++                    raise salt.ext.tornado.gen.Return("bad load")
++            # The token won't always be present in the payload for v2 and
++            # below, but if it is we always wanto validate it.
++            elif not self.validate_token(payload, required=False):
++                raise salt.ext.tornado.gen.Return("bad load")
+ 
+         # TODO: test
+         try:
+@@ -174,7 +237,14 @@ class ReqServerChannel:
+         if req_fun == "send_clear":
+             raise salt.ext.tornado.gen.Return(ret)
+         elif req_fun == "send":
+-            raise salt.ext.tornado.gen.Return(self.crypticle.dumps(ret, nonce))
++            if version > 2:
++                raise salt.ext.tornado.gen.Return(
++                    salt.crypt.Crypticle(self.opts, self.session_key(id_)).dumps(
++                        ret, nonce
++                    )
++                )
++            else:
++                raise salt.ext.tornado.gen.Return(self.crypticle.dumps(ret, nonce))
+         elif req_fun == "send_private":
+             raise salt.ext.tornado.gen.Return(
+                 self._encrypt_private(
+@@ -189,7 +259,14 @@ class ReqServerChannel:
+         # always attempt to return an error to the minion
+         raise salt.ext.tornado.gen.Return("Server-side exception handling payload")
+ 
+-    def _encrypt_private(self, ret, dictkey, target, nonce=None, sign_messages=True):
++    def _encrypt_private(
++        self,
++        ret,
++        dictkey,
++        target,
++        nonce=None,
++        sign_messages=True,
++    ):
+         """
+         The server equivalent of ReqChannel.crypted_transfer_decode_dictentry
+         """
+@@ -200,7 +277,8 @@ class ReqServerChannel:
+         try:
+             pub = salt.crypt.get_rsa_pub_key(pubfn)
+         except (ValueError, IndexError, TypeError):
+-            return self.crypticle.dumps({})
++            log.error("Bad load from minion")
++            return {"error": "bad load"}
+         except OSError:
+             log.error("AES key not found")
+             return {"error": "AES key not found"}
+@@ -255,27 +333,71 @@ class ReqServerChannel:
+             return True
+         return False
+ 
+-    def _decode_payload(self, payload):
+-        # Sometimes msgpack deserialization of random bytes could be successful,
+-        # so we need to ensure payload in good shape to process this function.
+-        if (
+-            not isinstance(payload, dict)
+-            or "enc" not in payload
+-            or "load" not in payload
+-        ):
+-            raise SaltDeserializationError("bad load received on socket!")
+-
++    def _decode_payload(self, payload, version):
+         # we need to decrypt it
+         if payload["enc"] == "aes":
+-            try:
+-                payload["load"] = self.crypticle.loads(payload["load"])
+-            except salt.crypt.AuthenticationError:
+-                if not self._update_aes():
+-                    raise
+-                payload["load"] = self.crypticle.loads(payload["load"])
++            if version > 2:
++                if salt.utils.verify.valid_id(self.opts, payload["id"]):
++                    payload["load"] = salt.crypt.Crypticle(
++                        self.opts,
++                        self.session_key(payload["id"]),
++                    ).loads(payload["load"])
++                else:
++                    raise SaltDeserializationError("Encountered invalid id")
++            else:
++                try:
++                    payload["load"] = self.crypticle.loads(payload["load"])
++                except salt.crypt.AuthenticationError:
++                    if not self._update_aes():
++                        raise
++                    payload["load"] = self.crypticle.loads(payload["load"])
+         return payload
+ 
+-    def _auth(self, load, sign_messages=False):
++    def validate_token(self, payload, required=True):
++        """
++        Validate the token (tok) and minion id (id) in the payload. If the
++        payload and token exist they will be validated even if required is
++        False.
++
++        When required is False and either the tok or id is not found in the
++        load, this check will pass.
++
++        This method has a side effect of removing the 'tok' key from the load
++        so that it is not passed along to request handlers.
++        """
++        tok = payload["load"].pop("tok", None)
++        id_ = payload["load"].get("id", None)
++        if tok is not None and id_ is not None:
++            if "cluster_id" in self.opts and self.opts["cluster_id"]:
++                pki_dir = self.opts["cluster_pki_dir"]
++            else:
++                pki_dir = self.opts.get("pki_dir", "")
++            try:
++                pub_path = salt.utils.verify.clean_join(pki_dir, "minions", id_)
++            except salt.exceptions.SaltValidationError:
++                log.warning("Invalid minion id: %s", id_)
++                return False
++            try:
++                pub = salt.crypt.get_rsa_pub_key(pub_path)
++            except OSError:
++                log.warning(
++                    "Salt minion claiming to be %s attempted to communicate with "
++                    "master, but key could not be read and verification was denied.",
++                    id_,
++                )
++                return False
++            try:
++                if salt.crypt.public_decrypt(pub, tok) != b"salt":
++                    log.error("Minion token did not validate: %s", id_)
++                    return False
++            except ValueError as err:
++                log.error("Unable to decrypt token: %s", err)
++                return False
++        elif required:
++            return False
++        return True
++
++    def _auth(self, load, sign_messages=False, version=0):
+         """
+         Authenticate the client, use the sent public key to encrypt the AES key
+         which was generated at start up.
+@@ -667,8 +789,10 @@ class ReqServerChannel:
+ 
+             if HAS_M2:
+                 ret["aes"] = pub.public_encrypt(aes, RSA.pkcs1_oaep_padding)
++                ret["session"] = pub.public_encrypt(salt.utils.stringutils.to_bytes(self.session_key(load["id"])), RSA.pkcs1_oaep_padding)
+             else:
+                 ret["aes"] = cipher.encrypt(aes)
++                ret["session"] = cipher.encrypt(salt.utils.stringutils.to_bytes(self.session_key(load["id"])))
+         else:
+             if "token" in load:
+                 try:
+@@ -690,8 +814,16 @@ class ReqServerChannel:
+             aes = salt.master.SMaster.secrets["aes"]["secret"].value
+             if HAS_M2:
+                 ret["aes"] = pub.public_encrypt(aes, RSA.pkcs1_oaep_padding)
++                ret["session"] = pub.public_encrypt(salt.utils.stringutils.to_bytes(self.session_key(load["id"])), RSA.pkcs1_oaep_padding)
+             else:
+                 ret["aes"] = cipher.encrypt(aes)
++                ret["session"] = cipher.encrypt(salt.utils.stringutils.to_bytes(self.session_key(load["id"])))
++
++        if version < 3:
++            log.warning(
++                "Minion using legacy request server protocol, please upgrade %s",
++                load["id"],
++            )
+ 
+         # Be aggressive about the signature
+         digest = salt.utils.stringutils.to_bytes(hashlib.sha256(aes).hexdigest())
+diff --git a/salt/config/__init__.py b/salt/config/__init__.py
+index d4865807e6c..4f72f19f655 100644
+--- a/salt/config/__init__.py
++++ b/salt/config/__init__.py
+@@ -998,6 +998,10 @@ VALID_OPTS = immutabletypes.freeze(
+         # Use Adler32 hashing algorithm for server_id (default False until Sodium, "adler32" after)
+         # Possible values are: False, adler32, crc32
+         "server_id_use_crc": (bool, str),
++        "request_server_ttl": int,
++        "request_server_aes_session": int,
++        "request_channel_timeout": int,
++        "request_channel_tries": int,
+     }
+ )
+ 
+@@ -1059,6 +1063,8 @@ DEFAULT_MINION_OPTS = immutabletypes.freeze(
+         "pillar_cache": False,
+         "pillar_cache_ttl": 3600,
+         "pillar_cache_backend": "disk",
++        "request_channel_timeout": 30,
++        "request_channel_tries": 3,
+         "gpg_cache": False,
+         "gpg_cache_ttl": 86400,
+         "gpg_cache_backend": "disk",
+@@ -1652,6 +1658,8 @@ DEFAULT_MASTER_OPTS = immutabletypes.freeze(
+         "netapi_enable_clients": [],
+         "maintenance_interval": 3600,
+         "fileserver_interval": 3600,
++        "request_server_aes_session": 0,
++        "request_server_ttl": 0,
+     }
+ )
+ 
+diff --git a/salt/crypt.py b/salt/crypt.py
+index 067c84200b9..981f633d51f 100644
+--- a/salt/crypt.py
++++ b/salt/crypt.py
+@@ -12,9 +12,11 @@ import hashlib
+ import hmac
+ import logging
+ import os
++import pathlib
+ import random
+ import stat
+ import sys
++import tempfile
+ import time
+ import traceback
+ import uuid
+@@ -187,7 +189,7 @@ def _get_key_with_evict(path, timestamp, passphrase):
+     """
+     log.debug("salt.crypt._get_key_with_evict: Loading private key")
+     if HAS_M2:
+-        key = RSA.load_key(path, lambda x: bytes(passphrase))
++        key = RSA.load_key(path, lambda x: salt.utils.stringutils.to_bytes(passphrase))
+     else:
+         with salt.utils.files.fopen(path) as f:
+             key = RSA.importKey(f.read(), passphrase)
+@@ -555,6 +557,7 @@ class AsyncAuth:
+             creds = AsyncAuth.creds_map[key]
+             self._creds = creds
+             self._crypticle = Crypticle(self.opts, creds["aes"])
++            self._session_crypticle = Crypticle(self.opts, creds["session"])
+             self._authenticate_future = salt.ext.tornado.concurrent.Future()
+             self._authenticate_future.set_result(True)
+         else:
+@@ -573,6 +576,10 @@ class AsyncAuth:
+             setattr(result, key, copy.deepcopy(self.__dict__[key], memo))
+         return result
+ 
++    @property
++    def session_crypticle(self):
++        return self._session_crypticle
++
+     @property
+     def creds(self):
+         return self._creds
+@@ -702,11 +709,16 @@ class AsyncAuth:
+                     AsyncAuth.creds_map[key] = creds
+                     self._creds = creds
+                     self._crypticle = Crypticle(self.opts, creds["aes"])
+-                elif self._creds["aes"] != creds["aes"]:
++                    self._session_crypticle = Crypticle(self.opts, creds["session"])
++                elif (
++                    self._creds["aes"] != creds["aes"]
++                    or self._creds["session"] != creds["session"]
++                ):
+                     log.debug("%s The master's aes key has changed.", self)
+                     AsyncAuth.creds_map[key] = creds
+                     self._creds = creds
+                     self._crypticle = Crypticle(self.opts, creds["aes"])
++                    self._session_crypticle = Crypticle(self.opts, creds["session"])
+ 
+                 self._authenticate_future.set_result(
+                     True
+@@ -787,7 +799,6 @@ class AsyncAuth:
+         clear_signed_data = payload["load"]
+         clear_signature = payload["sig"]
+         payload = salt.payload.loads(clear_signed_data)
+-
+         if "pub_key" in payload:
+             auth["aes"] = self.verify_master(
+                 payload, master_pub="token" in sign_in_payload
+@@ -806,6 +817,16 @@ class AsyncAuth:
+                 )
+                 raise SaltClientError("Invalid master key")
+ 
++            key = self.get_keys()
++
++            if HAS_M2:
++                auth["session"] = key.private_decrypt(
++                    payload["session"], RSA.pkcs1_oaep_padding
++                )
++            else:
++                cipher = PKCS1_OAEP.new(key)
++                auth["session"] = cipher.decrypt(payload["session"])
++
+         master_pubkey_path = os.path.join(self.opts["pki_dir"], self.mpub)
+         if os.path.exists(master_pubkey_path) and not verify_signature(
+             master_pubkey_path, clear_signed_data, clear_signature
+@@ -1360,10 +1381,15 @@ class SAuth(AsyncAuth):
+                 log.error("%s Got new master aes key.", self)
+                 self._creds = creds
+                 self._crypticle = Crypticle(self.opts, creds["aes"])
+-            elif self._creds["aes"] != creds["aes"]:
++                self._session_crypticle = Crypticle(self.opts, creds["session"])
++            elif (
++                self._creds["aes"] != creds["aes"]
++                or self._creds["session"] != creds["session"]
++            ):
+                 log.error("%s The master's aes key has changed.", self)
+                 self._creds = creds
+                 self._crypticle = Crypticle(self.opts, creds["aes"])
++                self._session_crypticle = Crypticle(self.opts, creds["session"])
+ 
+     def sign_in(self, timeout=60, safe=True, tries=1, channel=None):
+         """
+@@ -1445,6 +1471,24 @@ class Crypticle:
+         # Return data must be a base64-encoded string, not a unicode type
+         return b64key.replace("\n", "")
+ 
++    @classmethod
++    def write_key(cls, path, key_size=192):
++        directory = pathlib.Path(path).parent
++        with salt.utils.files.set_umask(0o177):
++            fd, tmp = tempfile.mkstemp(dir=directory, prefix="aes")
++            os.close(fd)
++            with salt.utils.files.fopen(tmp, "w") as fp:
++                fp.write(cls.generate_key_string(key_size))
++            os.rename(tmp, path)
++
++    @classmethod
++    def read_key(cls, path):
++        try:
++            with salt.utils.files.fopen(path, "r") as fp:
++                return fp.read()
++        except FileNotFoundError:
++            pass
++
+     @classmethod
+     def extract_keys(cls, key_string, key_size):
+         key = salt.utils.stringutils.to_bytes(base64.b64decode(key_string))
+diff --git a/salt/daemons/masterapi.py b/salt/daemons/masterapi.py
+index 54aca64a769..631361c9c97 100644
+--- a/salt/daemons/masterapi.py
++++ b/salt/daemons/masterapi.py
+@@ -56,6 +56,27 @@ log = logging.getLogger(__name__)
+ # Things to do in lower layers:
+ # only accept valid minion ids
+ 
++MINION_EVENT_BLACKLIST = (
++    "salt/job/*/publish",
++    "salt/job/*/new",
++    "salt/job/*/return",
++    "salt/key",
++    "salt/cloud/*",
++    "salt/run/*",
++    "salt/cluster/*",
++    "salt/wheel/*/new",
++    "salt/wheel/*/return",
++    "salt/run/*",
++    "salt/cloud/*",
++)
++
++
++def valid_minion_tag(tag, blacklist=MINION_EVENT_BLACKLIST):
++    for black in blacklist:
++        if fnmatch.fnmatch(tag, black):
++            return False
++    return True
++
+ 
+ def init_git_pillar(opts):
+     """
+@@ -781,6 +802,9 @@ class RemoteFuncs:
+                     event_data = event["data"]
+                 else:
+                     event_data = event
++                if not valid_minion_tag(event["tag"]):
++                    log.warning("Filtering blacklisted event tag %s", event["tag"])
++                    continue
+                 self.event.fire_event(event_data, event["tag"])  # old dup event
+                 if load.get("pretag") is not None:
+                     self.event.fire_event(
+diff --git a/salt/exceptions.py b/salt/exceptions.py
+index e351584bc03..d5525c38aea 100644
+--- a/salt/exceptions.py
++++ b/salt/exceptions.py
+@@ -362,6 +362,11 @@ class AuthorizationError(SaltException):
+     """
+ 
+ 
++class SaltValidationError(SaltException):
++    """
++    Thrown when a value fails validation
++    """
++
+ class SaltDaemonNotRunning(SaltException):
+     """
+     Throw when a running master/minion/syndic is not running but is needed to
+diff --git a/salt/fileclient.py b/salt/fileclient.py
+index f4b8d76dbed..4ed341221cd 100644
+--- a/salt/fileclient.py
++++ b/salt/fileclient.py
+@@ -1439,8 +1439,6 @@ class RemoteClient(Client):
+         Return the metadata derived from the master_tops system
+         """
+         load = {"cmd": "_master_tops", "id": self.opts["id"], "opts": self.opts}
+-        if self.auth:
+-            load["tok"] = self.auth.gen_token(b"salt")
+         return self.channel.send(load)
+ 
+     def __enter__(self):
+diff --git a/salt/fileserver/__init__.py b/salt/fileserver/__init__.py
+index 4eca98d14a4..d35c99c5ca8 100644
+--- a/salt/fileserver/__init__.py
++++ b/salt/fileserver/__init__.py
+@@ -527,7 +527,7 @@ class Fileserver:
+         if load is None:
+             load = {}
+         load.pop("cmd", None)
+-        return self.envs(**load)
++        return self.envs(back=load.get("back", None), sources=load.get("sources", None))
+ 
+     def init(self, back=None):
+         """
+diff --git a/salt/master.py b/salt/master.py
+index c0cd9a366ba..ba7c751d4b4 100644
+--- a/salt/master.py
++++ b/salt/master.py
+@@ -61,11 +61,7 @@ from salt.config import DEFAULT_INTERVAL
+ from salt.defaults import DEFAULT_TARGET_DELIM
+ from salt.transport import TRANSPORTS
+ from salt.utils.channel import iter_transport_opts
+-from salt.utils.debug import (
+-    enable_sigusr1_handler,
+-    enable_sigusr2_handler,
+-    inspect_stack,
+-)
++from salt.utils.debug import enable_sigusr1_handler, enable_sigusr2_handler
+ from salt.utils.event import tagify
+ from salt.utils.odict import OrderedDict
+ from salt.utils.zeromq import ZMQ_VERSION_INFO, zmq
+@@ -167,6 +163,21 @@ class SMaster:
+             log.debug("Pinging all connected minions due to key rotation")
+             salt.utils.master.ping_all_connected_minions(opts)
+ 
++    @classmethod
++    def populate_secrets(cls):
++        cls.secrets["aes"] = {
++            "secret": multiprocessing.Array(
++                ctypes.c_char,
++                salt.utils.stringutils.to_bytes(
++                    salt.crypt.Crypticle.generate_key_string()
++                ),
++            ),
++            "serial": multiprocessing.Value(
++                ctypes.c_longlong, lock=False  # We'll use the lock from 'secret'
++            ),
++            "reload": salt.crypt.Crypticle.generate_key_string,
++        }
++
+ 
+ class Maintenance(salt.utils.process.SignalHandlingProcess):
+     """
+@@ -702,18 +713,7 @@ class Master(SMaster):
+ 
+             # Setup the secrets here because the PubServerChannel may need
+             # them as well.
+-            SMaster.secrets["aes"] = {
+-                "secret": multiprocessing.Array(
+-                    ctypes.c_char,
+-                    salt.utils.stringutils.to_bytes(
+-                        salt.crypt.Crypticle.generate_key_string()
+-                    ),
+-                ),
+-                "serial": multiprocessing.Value(
+-                    ctypes.c_longlong, lock=False  # We'll use the lock from 'secret'
+-                ),
+-                "reload": salt.crypt.Crypticle.generate_key_string,
+-            }
++            SMaster.populate_secrets()
+ 
+             log.info("Creating master process manager")
+             # Since there are children having their own ProcessManager we should wait for kill more time.
+@@ -1199,7 +1199,6 @@ class AESFuncs(TransportMethods):
+         "_file_recv",
+         "_pillar",
+         "_minion_event",
+-        "_handle_minion_event",
+         "_return",
+         "_syndic_return",
+         "minion_runner",
+@@ -1274,7 +1273,7 @@ class AESFuncs(TransportMethods):
+         """
+         if not salt.utils.verify.valid_id(self.opts, id_):
+             return False
+-        pub_path = os.path.join(self.opts["pki_dir"], "minions", id_)
++        pub_path = salt.utils.verify.clean_join(self.opts["pki_dir"], "minions", id_)
+ 
+         try:
+             pub = salt.crypt.get_rsa_pub_key(pub_path)
+@@ -1327,24 +1326,12 @@ class AESFuncs(TransportMethods):
+             return False
+         if not isinstance(self.opts["peer"], dict):
+             return False
+-        if any(
+-            key not in clear_load for key in ("fun", "arg", "tgt", "ret", "tok", "id")
+-        ):
++        if any(key not in clear_load for key in ("fun", "arg", "tgt", "ret", "id")):
+             return False
+         # If the command will make a recursive publish don't run
+         if clear_load["fun"].startswith("publish."):
+             return False
+         # Check the permissions for this minion
+-        if not self.__verify_minion(clear_load["id"], clear_load["tok"]):
+-            # The minion is not who it says it is!
+-            # We don't want to listen to it!
+-            log.warning(
+-                "Minion id %s is not who it says it is and is attempting "
+-                "to issue a peer command",
+-                clear_load["id"],
+-            )
+-            return False
+-        clear_load.pop("tok")
+         perms = []
+         for match in self.opts["peer"]:
+             if re.match(match, clear_load["id"]):
+@@ -1384,23 +1371,6 @@ class AESFuncs(TransportMethods):
+         """
+         if any(key not in load for key in verify_keys):
+             return False
+-        if "tok" not in load:
+-            log.error(
+-                "Received incomplete call from %s for '%s', missing '%s'",
+-                load["id"],
+-                inspect_stack()["co_name"],
+-                "tok",
+-            )
+-            return False
+-        if not self.__verify_minion(load["id"], load["tok"]):
+-            # The minion is not who it says it is!
+-            # We don't want to listen to it!
+-            log.warning("Minion id %s is not who it says it is!", load["id"])
+-            return False
+-
+-        if "tok" in load:
+-            load.pop("tok")
+-
+         return load
+ 
+     def _master_tops(self, load):
+@@ -1411,7 +1381,7 @@ class AESFuncs(TransportMethods):
+         :param dict load: A payload received from a minion
+         :return: The results from an external node classifier
+         """
+-        load = self.__verify_load(load, ("id", "tok"))
++        load = self.__verify_load(load, ("id",))
+         if load is False:
+             return {}
+         return self.masterapi._master_tops(load, skip_verify=True)
+@@ -1463,7 +1433,7 @@ class AESFuncs(TransportMethods):
+         :rtype: dict
+         :return: Mine data from the specified minions
+         """
+-        load = self.__verify_load(load, ("id", "tgt", "fun", "tok"))
++        load = self.__verify_load(load, ("id", "tgt", "fun"))
+         if load is False:
+             return {}
+         else:
+@@ -1478,7 +1448,7 @@ class AESFuncs(TransportMethods):
+         :rtype: bool
+         :return: True if the data has been stored in the mine
+         """
+-        load = self.__verify_load(load, ("id", "data", "tok"))
++        load = self.__verify_load(load, ("id", "data"))
+         if load is False:
+             return {}
+         return self.masterapi._mine(load, skip_verify=True)
+@@ -1492,7 +1462,7 @@ class AESFuncs(TransportMethods):
+         :rtype: bool
+         :return: Boolean indicating whether or not the given function was deleted from the mine
+         """
+-        load = self.__verify_load(load, ("id", "fun", "tok"))
++        load = self.__verify_load(load, ("id", "fun"))
+         if load is False:
+             return {}
+         else:
+@@ -1504,7 +1474,7 @@ class AESFuncs(TransportMethods):
+ 
+         :param dict load: A payload received from a minion
+         """
+-        load = self.__verify_load(load, ("id", "tok"))
++        load = self.__verify_load(load, ("id",))
+         if load is False:
+             return {}
+         else:
+@@ -1539,20 +1509,6 @@ class AESFuncs(TransportMethods):
+                 load["path"],
+             )
+             return False
+-        if "tok" not in load:
+-            log.error(
+-                "Received incomplete call from %s for '%s', missing '%s'",
+-                load["id"],
+-                inspect_stack()["co_name"],
+-                "tok",
+-            )
+-            return False
+-        if not self.__verify_minion(load["id"], load["tok"]):
+-            # The minion is not who it says it is!
+-            # We don't want to listen to it!
+-            log.warning("Minion id %s is not who it says it is!", load["id"])
+-            return {}
+-        load.pop("tok")
+ 
+         # Join path
+         sep_path = os.sep.join(load["path"])
+@@ -1567,11 +1523,15 @@ class AESFuncs(TransportMethods):
+             # Can overwrite master files!!
+             return False
+ 
+-        cpath = os.path.join(
+-            self.opts["cachedir"], "minions", load["id"], "files", normpath
+-        )
++        rpath = os.path.join(self.opts["cachedir"], "minions", load["id"], "files")
++        cpath = os.path.join(rpath, normpath)
+         # One last safety check here
+-        if not os.path.normpath(cpath).startswith(self.opts["cachedir"]):
++        if not salt.utils.verify.clean_path(
++            rpath,
++            cpath,
++            subdir=True,
++            realpath=not self.opts["fileserver_followsymlinks"],
++        ):
+             log.warning(
+                 "Attempt to write received file outside of master cache "
+                 "directory! Requested path: %s. Access denied.",
+@@ -1644,7 +1604,7 @@ class AESFuncs(TransportMethods):
+ 
+         :param dict load: The minion payload
+         """
+-        load = self.__verify_load(load, ("id", "tok"))
++        load = self.__verify_load(load, ("id",))
+         if load is False:
+             return {}
+         # Route to master event bus
+@@ -1700,8 +1660,8 @@ class AESFuncs(TransportMethods):
+         if "sig" in load:
+             log.trace("Verifying signed event publish from minion")
+             sig = load.pop("sig")
+-            this_minion_pubkey = os.path.join(
+-                self.opts["pki_dir"], "minions/{}".format(load["id"])
++            this_minion_pubkey = salt.utils.verify.clean_join(
++                self.opts["pki_dir"], "minions", load["id"]
+             )
+             serialized_load = salt.serializers.msgpack.serialize(load)
+             if not salt.crypt.verify_signature(
+@@ -1790,7 +1750,7 @@ class AESFuncs(TransportMethods):
+         :rtype: dict
+         :return: The runner function data
+         """
+-        load = self.__verify_load(clear_load, ("fun", "arg", "id", "tok"))
++        load = self.__verify_load(clear_load, ("fun", "arg", "id"))
+         if load is False:
+             return {}
+         else:
+@@ -1806,14 +1766,14 @@ class AESFuncs(TransportMethods):
+         :rtype: dict
+         :return: Return data corresponding to a given JID
+         """
+-        load = self.__verify_load(load, ("jid", "id", "tok"))
++        load = self.__verify_load(load, ("jid", "id"))
+         if load is False:
+             return {}
+         # Check that this minion can access this data
+         auth_cache = os.path.join(self.opts["cachedir"], "publish_auth")
+         if not os.path.isdir(auth_cache):
+             os.makedirs(auth_cache)
+-        jid_fn = os.path.join(auth_cache, str(load["jid"]))
++        jid_fn = salt.utils.verify.clean_join(auth_cache, str(load["jid"]))
+         with salt.utils.files.fopen(jid_fn, "r") as fp_:
+             if not load["id"] == fp_.read():
+                 return {}
+@@ -1902,8 +1862,7 @@ class AESFuncs(TransportMethods):
+         :rtype: bool
+         :return: True if key was revoked, False if not
+         """
+-        load = self.__verify_load(load, ("id", "tok"))
+-
++        load = self.__verify_load(load, ("id",))
+         if not self.opts.get("allow_minion_key_revoke", False):
+             log.warning(
+                 "Minion %s requested key revoke, but allow_minion_key_revoke "
+@@ -1911,7 +1870,6 @@ class AESFuncs(TransportMethods):
+                 load["id"],
+             )
+             return load
+-
+         if load is False:
+             return load
+         else:
+diff --git a/salt/minion.py b/salt/minion.py
+index 834f0848c6a..d9201e20109 100644
+--- a/salt/minion.py
++++ b/salt/minion.py
+@@ -873,13 +873,15 @@ class MinionBase:
+                                 self.opts["master"] = proto_data["master"]
+                                 return
+ 
+-    def _return_retry_timer(self):
++    def _return_retry_timer(self, max=False):
+         """
+         Based on the minion configuration, either return a randomized timer or
+         just return the value of the return_retry_timer.
+         """
+         msg = "Minion return retry timer set to %s seconds"
+         if self.opts.get("return_retry_timer_max"):
++            if max:
++                return self.opts["return_retry_timer_max"]
+             try:
+                 random_retry = random.randint(
+                     self.opts["return_retry_timer"], self.opts["return_retry_timer_max"]
+@@ -1974,7 +1976,20 @@ class Minion(MinionBase):
+                 ret["return"] = "ERROR executing '{}': {}".format(function_name, exc)
+                 ret["out"] = "nested"
+                 ret["retcode"] = salt.defaults.exitcodes.EX_GENERIC
++            except SaltClientError as exc:
++                log.error(
++                    "Problem executing '%s': %s",
++                    function_name,
++                    exc,
++                )
++                ret["return"] = "ERROR executing '{}': {}".format(function_name, exc)
++                ret["out"] = "nested"
++                ret["retcode"] = salt.defaults.exitcodes.EX_GENERIC
+             except TypeError as exc:
++                # XXX: This can ba extreemly missleading when something outside of a
++                # execution module call raises a TypeError. Make this it's own
++                # type of exception when we start validating state and
++                # execution argument module inputs.
+                 msg = "Passed invalid arguments to {}: {}\n{}".format(
+                     function_name,
+                     exc,
+@@ -2026,7 +2041,11 @@ class Minion(MinionBase):
+             else:
+                 log.warning("The metadata parameter must be a dictionary. Ignoring.")
+         if minion_instance.connected:
+-            minion_instance._return_pub(ret)
++            minion_instance._return_pub(
++                ret,
++                timeout=minion_instance.opts["return_retry_tries"]
++                * minion_instance._return_retry_timer(max=True),
++            )
+ 
+         # Add default returners from minion config
+         # Should have been coverted to comma-delimited string already
+@@ -2675,6 +2694,15 @@ class Minion(MinionBase):
+                 force_refresh=data.get("force_refresh", False),
+                 notify=data.get("notify", False),
+             )
++        elif tag.startswith("__master_req_channel_payload"):
++            try:
++                yield _minion.req_channel.send(
++                    data,
++                    timeout=_minion._return_retry_timer(),
++                    tries=_minion.opts["return_retry_tries"],
++                )
++            except salt.exceptions.SaltReqTimeoutError:
++                log.error("Timeout encountered while sending %r request", data)
+         elif tag.startswith("pillar_refresh"):
+             yield _minion.pillar_refresh(
+                 force_refresh=data.get("force_refresh", False),
+diff --git a/salt/modules/cp.py b/salt/modules/cp.py
+index e9ac77434e4..7f0c46bde5a 100644
+--- a/salt/modules/cp.py
++++ b/salt/modules/cp.py
+@@ -964,7 +964,6 @@ def push(path, keep_symlinks=False, upload_path=None, remove_source=False):
+         "id": __opts__["id"],
+         "path": load_path_list,
+         "size": os.path.getsize(path),
+-        "tok": auth.gen_token(b"salt"),
+     }
+ 
+     with salt.channel.client.ReqChannel.factory(__opts__) as channel:
+diff --git a/salt/modules/event.py b/salt/modules/event.py
+index bf6d4bde0d7..3fd3bcf8898 100644
+--- a/salt/modules/event.py
++++ b/salt/modules/event.py
+@@ -64,7 +64,6 @@ def fire_master(data, tag, preload=None):
+             "id": __opts__["id"],
+             "tag": tag,
+             "data": data,
+-            "tok": auth.gen_token(b"salt"),
+             "cmd": "_minion_event",
+         }
+ 
+diff --git a/salt/modules/mine.py b/salt/modules/mine.py
+index f8d55464019..3c2073a3cb0 100644
+--- a/salt/modules/mine.py
++++ b/salt/modules/mine.py
+@@ -67,14 +67,6 @@ def _mine_send(load, opts):
+ 
+ 
+ def _mine_get(load, opts):
+-    if opts.get("transport", "") in salt.transport.TRANSPORTS:
+-        try:
+-            load["tok"] = _auth().gen_token(b"salt")
+-        except AttributeError:
+-            log.error(
+-                "Mine could not authenticate with master. Mine could not be retrieved."
+-            )
+-            return False
+     with salt.channel.client.ReqChannel.factory(opts) as channel:
+         return channel.send(load)
+ 
+diff --git a/salt/modules/publish.py b/salt/modules/publish.py
+index a82cb3ac989..5a7db345911 100644
+--- a/salt/modules/publish.py
++++ b/salt/modules/publish.py
+@@ -122,8 +122,6 @@ def _publish(
+         master_uri = __opts__["master_uri"]
+ 
+     log.info("Publishing '%s' to %s", fun, master_uri)
+-    auth = salt.crypt.SAuth(__opts__)
+-    tok = auth.gen_token(b"salt")
+     load = {
+         "cmd": "minion_pub",
+         "fun": fun,
+@@ -131,7 +129,6 @@ def _publish(
+         "tgt": tgt,
+         "tgt_type": tgt_type,
+         "ret": returner,
+-        "tok": tok,
+         "tmo": timeout,
+         "form": form,
+         "id": __opts__["id"],
+@@ -157,7 +154,6 @@ def _publish(
+                 load = {
+                     "cmd": "pub_ret",
+                     "id": __opts__["id"],
+-                    "tok": tok,
+                     "jid": peer_data["jid"],
+                 }
+                 ret = channel.send(load)
+@@ -187,7 +183,6 @@ def _publish(
+             load = {
+                 "cmd": "pub_ret",
+                 "id": __opts__["id"],
+-                "tok": tok,
+                 "jid": peer_data["jid"],
+             }
+             ret = channel.send(load)
+@@ -334,13 +329,10 @@ def runner(fun, arg=None, timeout=5):
+     if "master_uri" not in __opts__:
+         return "No access to master. If using salt-call with --local, please remove."
+     log.info("Publishing runner '%s' to %s", fun, __opts__["master_uri"])
+-    auth = salt.crypt.SAuth(__opts__)
+-    tok = auth.gen_token(b"salt")
+     load = {
+         "cmd": "minion_runner",
+         "fun": fun,
+         "arg": arg,
+-        "tok": tok,
+         "tmo": timeout,
+         "id": __opts__["id"],
+         "no_parse": __opts__.get("no_parse", []),
+diff --git a/salt/modules/saltutil.py b/salt/modules/saltutil.py
+index 320b9c34fa3..857b227f9ac 100644
+--- a/salt/modules/saltutil.py
++++ b/salt/modules/saltutil.py
+@@ -1544,11 +1544,9 @@ def revoke_auth(preserve_minion_cache=False):
+         with salt.channel.client.ReqChannel.factory(
+             __opts__, master_uri=master
+         ) as channel:
+-            tok = channel.auth.gen_token(b"salt")
+             load = {
+                 "cmd": "revoke_auth",
+                 "id": __opts__["id"],
+-                "tok": tok,
+                 "preserve_minion_cache": preserve_minion_cache,
+             }
+             try:
+diff --git a/salt/pillar/__init__.py b/salt/pillar/__init__.py
+index 26312b3bd53..8f6bd90d0a4 100644
+--- a/salt/pillar/__init__.py
++++ b/salt/pillar/__init__.py
+@@ -8,6 +8,7 @@ import fnmatch
+ import logging
+ import os
+ import sys
++import time
+ import traceback
+ 
+ import salt.channel.client
+@@ -262,6 +263,7 @@ class AsyncRemotePillar(RemotePillarMixin):
+         if self.ext:
+             load["ext"] = self.ext
+         try:
++            start = time.monotonic()
+             ret_pillar = yield self.channel.crypted_transfer_decode_dictentry(
+                 load,
+                 dictkey="pillar",
+@@ -269,6 +271,10 @@ class AsyncRemotePillar(RemotePillarMixin):
+         except salt.crypt.AuthenticationError as exc:
+             log.error(exc.message)
+             raise SaltClientError("Exception getting pillar.")
++        except salt.exceptions.SaltReqTimeoutError:
++            raise SaltClientError(
++                f"Pillar timed out after {int(time.monotonic() - start)} seconds"
++            )
+         except Exception:  # pylint: disable=broad-except
+             log.exception("Exception getting pillar:")
+             raise SaltClientError("Exception getting pillar.")
+@@ -355,10 +361,23 @@ class RemotePillar(RemotePillarMixin):
+         }
+         if self.ext:
+             load["ext"] = self.ext
+-        ret_pillar = self.channel.crypted_transfer_decode_dictentry(
+-            load,
+-            dictkey="pillar",
+-        )
++
++        try:
++            start = time.monotonic()
++            ret_pillar = self.channel.crypted_transfer_decode_dictentry(
++                load,
++                dictkey="pillar",
++            )
++        except salt.crypt.AuthenticationError as exc:
++            log.error(exc.message)
++            raise SaltClientError("Exception getting pillar.")
++        except salt.exceptions.SaltReqTimeoutError:
++            raise SaltClientError(
++                f"Pillar timed out after {int(time.monotonic() - start)} seconds"
++            )
++        except Exception:  # pylint: disable=broad-except
++            log.exception("Exception getting pillar:")
++            raise SaltClientError("Exception getting pillar.")
+ 
+         if not isinstance(ret_pillar, dict):
+             log.error(
+@@ -594,10 +613,15 @@ class Pillar:
+ 
+     def __valid_on_demand_ext_pillar(self, opts):
+         """
+-        Check to see if the on demand external pillar is allowed
++        Check to see if the on demand external pillar is allowed.
++
++        If this check fails self.ext is set to None, this is important to
++        prevent an on-demand pillare from being rendered when it should not be
++        allowed.
+         """
+         if not isinstance(self.ext, dict):
+             log.error("On-demand pillar %s is not formatted as a dictionary", self.ext)
++            self.ext = None
+             return False
+ 
+         on_demand = opts.get("on_demand_ext_pillar", [])
+@@ -609,6 +633,7 @@ class Pillar:
+                 "The 'on_demand_ext_pillar' configuration option is "
+                 "malformed, it should be a list of ext_pillar module names"
+             )
++            self.ext = None
+             return False
+ 
+         if invalid_on_demand:
+@@ -620,6 +645,7 @@ class Pillar:
+                 ", ".join(sorted(invalid_on_demand)),
+                 ", ".join(on_demand),
+             )
++            self.ext = None
+             return False
+         return True
+ 
+@@ -935,7 +961,7 @@ class Pillar:
+                 saltenv,
+                 sls,
+                 _pillar_rend=True,
+-                **defaults
++                **defaults,
+             )
+         except Exception as exc:  # pylint: disable=broad-except
+             msg = "Rendering SLS '{}' failed, render error:\n{}".format(sls, exc)
+@@ -1114,7 +1140,7 @@ class Pillar:
+                     self.minion_id,
+                     pillar,
+                     extra_minion_data=self.extra_minion_data,
+-                    **val
++                    **val,
+                 )
+             else:
+                 ext = self.ext_pillars[key](self.minion_id, pillar, **val)
+@@ -1124,7 +1150,7 @@ class Pillar:
+                     self.minion_id,
+                     pillar,
+                     *val,
+-                    extra_minion_data=self.extra_minion_data
++                    extra_minion_data=self.extra_minion_data,
+                 )
+             else:
+                 ext = self.ext_pillars[key](self.minion_id, pillar, *val)
+diff --git a/salt/pillar/git_pillar.py b/salt/pillar/git_pillar.py
+index e8ece28a819..6256e6040ee 100644
+--- a/salt/pillar/git_pillar.py
++++ b/salt/pillar/git_pillar.py
+@@ -437,7 +437,7 @@ def ext_pillar(minion_id, pillar, *repos):  # pylint: disable=unused-argument
+     opts["__git_pillar"] = True
+     git_pillar = salt.utils.gitfs.GitPillar(
+         opts,
+-        repos,
++        list(repos),
+         per_remote_overrides=PER_REMOTE_OVERRIDES,
+         per_remote_only=PER_REMOTE_ONLY,
+         global_only=GLOBAL_ONLY,
+diff --git a/salt/returners/local_cache.py b/salt/returners/local_cache.py
+index 1530d94ddfc..c0ea8e8ee21 100644
+--- a/salt/returners/local_cache.py
++++ b/salt/returners/local_cache.py
+@@ -8,6 +8,7 @@ import errno
+ import glob
+ import logging
+ import os
++import pathlib
+ import shutil
+ import time
+ 
+@@ -231,6 +232,8 @@ def save_minions(jid, minions, syndic_id=None):
+     """
+     Save/update the serialized list of minions for a given job
+     """
++    import salt.utils.verify
++
+     # Ensure we have a list for Python 3 compatibility
+     minions = list(minions)
+ 
+@@ -254,10 +257,20 @@ def save_minions(jid, minions, syndic_id=None):
+         else:
+             raise
+ 
+-    if syndic_id is not None:
+-        minions_path = os.path.join(jid_dir, SYNDIC_MINIONS_P.format(syndic_id))
+-    else:
+-        minions_path = os.path.join(jid_dir, MINIONS_P)
++    try:
++        if syndic_id is not None:
++            name = SYNDIC_MINIONS_P.format(syndic_id)
++        else:
++            name = MINIONS_P
++        minions_path = salt.utils.verify.clean_join(jid_dir, name)
++        target_name = pathlib.Path(minions_path).resolve().name
++        if name != target_name:
++            raise salt.exceptions.SaltValidationError(
++                f"Filenames do not match: {name} != {target_name}"
++            )
++    except salt.exceptions.SaltValidationError as exc:
++        log.error("Error %s", exc)
++        return
+ 
+     try:
+         if not os.path.exists(jid_dir):
+diff --git a/salt/utils/event.py b/salt/utils/event.py
+index 36b530d1af4..c973926db93 100644
+--- a/salt/utils/event.py
++++ b/salt/utils/event.py
+@@ -1494,11 +1494,9 @@ class StateFire:
+ 
+         load.update(
+             {
+-                "id": self.opts["id"],
+                 "tag": tag,
+                 "data": data,
+                 "cmd": "_minion_event",
+-                "tok": self.auth.gen_token(b"salt"),
+             }
+         )
+ 
+diff --git a/salt/utils/gitfs.py b/salt/utils/gitfs.py
+index 6f691f3869a..2a8ecf1d0cb 100644
+--- a/salt/utils/gitfs.py
++++ b/salt/utils/gitfs.py
+@@ -14,6 +14,7 @@ import io
+ import logging
+ import multiprocessing
+ import os
++import re
+ import shlex
+ import shutil
+ import stat
+@@ -203,7 +204,7 @@ def enforce_types(key, val):
+     else:
+         try:
+             return expected(val)
+-        except Exception as exc:  # pylint: disable=broad-except
++        except Exception:  # pylint: disable=broad-except
+             log.error(
+                 "Failed to enforce type for key=%s with val=%s, falling back "
+                 "to a string",
+@@ -2435,6 +2436,56 @@ class GitBase:
+                 global_only,
+             )
+ 
++    @classmethod
++    def split_name(cls, remote):
++        """
++        Given a string determine if it is a url or a name and url combination.
++
++        Examples:
++
++           None, "https://github.com/saltstack/salt.git" == split_name("https://github.com/saltstack/salt.git")
++
++           "__env__", "https://github.com/saltstack/salt.git" == split_name("__env__ https://github.com/saltstack/salt.git")
++        """
++        parts = remote.split(" ", 1)
++        if len(parts) == 1:
++            return None, remote
++        maybename, maybeurl = parts
++        if not salt.utils.verify.url(maybename):
++            return maybename, maybeurl
++        return None, remote
++
++    @classmethod
++    def remote_to_url(cls, remote):
++        """
++        Convert a remote to a URL
++
++        Remotes should be in url format with the exception of some ssh remotes
++        which can be in a `git@...` format. This method handles the special ssh
++        remote case by converting to `ssh://` style URLs.
++        """
++        pattern = r"^([^@:/]+)@([^:]+):(.+)$"
++        match = re.match(pattern, remote)
++        if match:
++            user, host, path = match.groups()
++            if not path.startswith("/"):
++                path = f"/{path}"
++            url = f"ssh://{user}@{host}{path}"
++            return url
++        return remote
++
++    @classmethod
++    def validate_remote(cls, remote):
++        """
++        Validate a remote repository config.
++
++        """
++        _, remote = cls.split_name(remote)
++        url = cls.remote_to_url(remote)
++        if salt.utils.verify.url(url):
++            return True
++        return False
++
+     def init_remotes(
+         self,
+         remotes,
+@@ -2487,7 +2538,25 @@ class GitBase:
+             per_remote_defaults[param] = enforce_types(key, self.opts[key])
+ 
+         self.remotes = []
+-        for remote in remotes:
++        # In case a tuple is passed.
++        remotes = list(remotes)
++        for remote in list(remotes):
++
++            if isinstance(remote, dict):
++                for key in list(remote):
++                    if not self.validate_remote(key):
++                        log.warning("Found bad url data %r", key)
++                        remote.pop(key)
++                        continue
++                # None of the remotes were valid
++                if not remote:
++                    remotes.remove(remote)
++            else:
++                if not self.validate_remote(remote):
++                    log.warning("Found bad url data %r", remote)
++                    remotes.remove(remote)
++                    continue
++
+             repo_obj = self.git_providers[self.provider](
+                 self.opts,
+                 remote,
+@@ -3081,14 +3150,19 @@ class GitFS(GitBase):
+         if os.path.isabs(path):
+             return fnd
+ 
+-        dest = salt.utils.path.join(self.cache_root, "refs", tgt_env, path)
+-        hashes_glob = salt.utils.path.join(
+-            self.hash_cachedir, tgt_env, "{}.hash.*".format(path)
++        # dest = salt.utils.path.join(self.cache_root, "refs", tgt_env, path)
++        dest = salt.utils.verify.clean_join(
++            self.cache_root, "refs", tgt_env, path, subdir=True
++        )
++        hashes_glob = salt.utils.verify.clean_join(
++            self.hash_cachedir, tgt_env, f"{path}.hash.*", subdir=True
++        )
++        blobshadest = salt.utils.verify.clean_join(
++            self.hash_cachedir, tgt_env, f"{path}.hash.blob_sha1", subdir=True
+         )
+-        blobshadest = salt.utils.path.join(
+-            self.hash_cachedir, tgt_env, "{}.hash.blob_sha1".format(path)
++        lk_fn = salt.utils.verify.clean_join(
++            self.hash_cachedir, tgt_env, f"{path}.lk", subdir=True
+         )
+-        lk_fn = salt.utils.path.join(self.hash_cachedir, tgt_env, "{}.lk".format(path))
+         destdir = os.path.dirname(dest)
+         hashdir = os.path.dirname(blobshadest)
+         if not os.path.isdir(destdir):
+diff --git a/salt/utils/verify.py b/salt/utils/verify.py
+index 879128f2312..ed43e205a89 100644
+--- a/salt/utils/verify.py
++++ b/salt/utils/verify.py
+@@ -10,6 +10,7 @@ import re
+ import socket
+ import stat
+ import sys
++import urllib.parse
+ 
+ import salt.defaults.exitcodes
+ import salt.utils.files
+@@ -17,7 +18,12 @@ import salt.utils.path
+ import salt.utils.platform
+ import salt.utils.user
+ from salt._logging import LOG_LEVELS
+-from salt.exceptions import CommandExecutionError, SaltClientError, SaltSystemExit
++from salt.exceptions import (
++    CommandExecutionError,
++    SaltClientError,
++    SaltSystemExit,
++    SaltValidationError,
++)
+ 
+ # Original Author: Jeff Schroeder <jeffschroeder@computer.org>
+ 
+@@ -510,28 +516,44 @@ def _realpath(path):
+     return os.path.realpath(path)
+ 
+ 
+-def clean_path(root, path, subdir=False):
++def clean_path(root, path, subdir=False, realpath=True):
+     """
+     Accepts the root the path needs to be under and verifies that the path is
+     under said root. Pass in subdir=True if the path can result in a
+     subdirectory of the root instead of having to reside directly in the root
+     """
+-    real_root = _realpath(root)
+-    if not os.path.isabs(real_root):
+-        return ""
++    if not os.path.isabs(root):
++        root = os.path.join(os.getcwd(), root)
++    normroot = os.path.normpath(root)
+     if not os.path.isabs(path):
+-        path = os.path.join(root, path)
+-    path = os.path.normpath(path)
+-    real_path = _realpath(path)
++        path = os.path.join(normroot, path)
++    normpath = os.path.normpath(path)
++    if realpath:
++        normroot = _realpath(normroot)
++        normpath = _realpath(normpath)
+     if subdir:
+-        if real_path.startswith(real_root):
+-            return real_path
++        if os.path.commonpath([normpath, normroot]) == normroot:
++            return normpath
+     else:
+-        if os.path.dirname(real_path) == os.path.normpath(real_root):
+-            return real_path
++        if os.path.dirname(normpath) == normroot:
++            return normpath
+     return ""
+ 
+ 
++def clean_join(root, *paths, subdir=False, realpath=True):
++    """
++    Performa a join and then check the result against the clean_path method. If
++    clean_path fails a SaltValidationError is raised.
++    """
++    parent = root
++    for path in paths:
++        child = os.path.join(parent, path)
++        if not clean_path(parent, child, subdir, realpath):
++            raise SaltValidationError(f"Invalid path: {path!r}")
++        parent = child
++    return child
++
++
+ def valid_id(opts, id_):
+     """
+     Returns if the passed id is valid
+@@ -745,3 +767,41 @@ def win_verify_env(path, dirs, permissive=False, pki_dir="", skip_extra=False):
+     if skip_extra is False:
+         # Run the extra verification checks
+         zmq_version()
++
++
++SCHEMES = (
++    "http",
++    "https",
++    "ssh",
++    "ftp",
++    "sftp",
++    "file",
++)
++
++
++class URLValidator:
++
++    PCHAR = r"^([a-z0-9\-._~!$&'();=:@,]|%\d\d)+$"
++    ALL_VALID = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;="
++
++    @classmethod
++    def pchar_matcher(cls):
++        return re.compile(cls.PCHAR, re.IGNORECASE)
++
++    def __init__(self, schemes=SCHEMES):
++        self.schemes = schemes
++
++    def __call__(self, data):
++        if any([x not in self.ALL_VALID for x in data]):
++            return False
++        parsed = urllib.parse.urlparse(data)
++        if parsed.scheme not in self.schemes:
++            return False
++        matcher = self.pchar_matcher()
++        for part in parsed.path.split("/"):
++            if part and not matcher.match(part):
++                return False
++        return True
++
++
++url = URLValidator()
+diff --git a/salt/utils/virt.py b/salt/utils/virt.py
+index fcd3d4fd4ea..77dd1692fdc 100644
+--- a/salt/utils/virt.py
++++ b/salt/utils/virt.py
+@@ -11,6 +11,7 @@ import urllib
+ import urllib.parse
+ 
+ import salt.utils.files
++import salt.utils.verify
+ 
+ # pylint: disable=E0611
+ 
+@@ -64,10 +65,10 @@ class VirtKey:
+         self.opts = opts
+         self.hyper = hyper
+         self.id = id_
+-        path = os.path.join(self.opts["pki_dir"], "virtkeys", hyper)
++        path = salt.utils.verify.clean_join(self.opts["pki_dir"], "virtkeys", hyper)
+         if not os.path.isdir(path):
+             os.makedirs(path)
+-        self.path = os.path.join(path, id_)
++        self.path = salt.utils.verify.clean_join(path, id_)
+ 
+     def accept(self, pub):
+         """
+@@ -99,7 +100,7 @@ class VirtKey:
+             )
+             return False
+ 
+-        pubfn = os.path.join(self.opts["pki_dir"], "minions", self.id)
++        pubfn = salt.utils.verify.clean_join(self.opts["pki_dir"], "minions", self.id)
+         with salt.utils.files.fopen(pubfn, "w+") as fp_:
+             fp_.write(pub)
+         self.void()
+diff --git a/tests/conftest.py b/tests/conftest.py
+index ad57b4adef4..436d5a8a126 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -1048,7 +1048,9 @@ def salt_syndic_master_factory(
+     config_defaults["syndic_master"] = "localhost"
+     config_defaults["transport"] = request.config.getoption("--transport")
+ 
+-    config_overrides = {"log_level_logfile": "quiet"}
++    config_overrides = {
++        "log_level_logfile": "info",
++    }
+     ext_pillar = []
+     if salt.utils.platform.is_windows():
+         ext_pillar.append(
+@@ -1124,7 +1126,7 @@ def salt_syndic_factory(salt_factories, salt_syndic_master_factory):
+         opts["aliases.file"] = os.path.join(RUNTIME_VARS.TMP, "aliases")
+         opts["transport"] = salt_syndic_master_factory.config["transport"]
+         config_defaults["syndic"] = opts
+-    config_overrides = {"log_level_logfile": "quiet"}
++    config_overrides = {"log_level_logfile": "info"}
+     factory = salt_syndic_master_factory.salt_syndic_daemon(
+         "syndic",
+         defaults=config_defaults,
+@@ -1161,7 +1163,9 @@ def salt_master_factory(
+     config_defaults["syndic_master"] = "localhost"
+     config_defaults["transport"] = salt_syndic_master_factory.config["transport"]
+ 
+-    config_overrides = {"log_level_logfile": "quiet"}
++    config_overrides = {
++        "log_level_logfile": "info",
++    }
+     ext_pillar = []
+     if salt.utils.platform.is_windows():
+         ext_pillar.append(
+@@ -1266,7 +1270,7 @@ def salt_minion_factory(salt_master_factory):
+     config_defaults["transport"] = salt_master_factory.config["transport"]
+ 
+     config_overrides = {
+-        "log_level_logfile": "quiet",
++        "log_level_logfile": "info",
+         "file_roots": salt_master_factory.config["file_roots"].copy(),
+         "pillar_roots": salt_master_factory.config["pillar_roots"].copy(),
+     }
+@@ -1297,7 +1301,7 @@ def salt_sub_minion_factory(salt_master_factory):
+     config_defaults["transport"] = salt_master_factory.config["transport"]
+ 
+     config_overrides = {
+-        "log_level_logfile": "quiet",
++        "log_level_logfile": "info",
+         "file_roots": salt_master_factory.config["file_roots"].copy(),
+         "pillar_roots": salt_master_factory.config["pillar_roots"].copy(),
+     }
+diff --git a/tests/integration/modules/test_cp.py b/tests/integration/modules/test_cp.py
+index d417f90ddc1..c31ff99981c 100644
+--- a/tests/integration/modules/test_cp.py
++++ b/tests/integration/modules/test_cp.py
+@@ -608,14 +608,11 @@ class CPModuleTest(ModuleCase):
+         try:
+             self.run_function("cp.push", [log_to_xfer])
+             tgt_cache_file = os.path.join(
+-                RUNTIME_VARS.TMP,
+-                "master-minion-root",
+-                "cache",
++                RUNTIME_VARS.RUNTIME_CONFIGS["master"]["cachedir"],
+                 "minions",
+                 "minion",
+                 "files",
+-                RUNTIME_VARS.TMP,
+-                log_to_xfer,
++                os.path.splitdrive(os.path.normpath(log_to_xfer.lstrip(os.sep)))[1],
+             )
+             self.assertTrue(
+                 os.path.isfile(tgt_cache_file), "File was not cached on the master"
+diff --git a/tests/pytests/functional/channel/conftest.py b/tests/pytests/functional/channel/conftest.py
+index 62e53c27fb4..387e3bcf4e5 100644
+--- a/tests/pytests/functional/channel/conftest.py
++++ b/tests/pytests/functional/channel/conftest.py
+@@ -2,6 +2,7 @@ import ctypes
+ import multiprocessing
+ 
+ import pytest
++from saltfactories.utils import random_string
+ 
+ import salt.crypt
+ import salt.master
+@@ -24,3 +25,43 @@ def _prepare_aes():
+     finally:
+         if old_aes:
+             salt.master.SMaster.secrets["aes"] = old_aes
++
++
++def transport_ids(value):
++    return f"Transport({value})"
++
++
++@pytest.fixture(params=("zeromq", "tcp"), ids=transport_ids)
++def transport(request):
++    return request.param
++
++
++@pytest.fixture
++def salt_master(salt_factories, transport):
++    config_defaults = {
++        "transport": transport,
++        "auto_accept": True,
++        "sign_pub_messages": False,
++    }
++    factory = salt_factories.salt_master_daemon(
++        random_string(f"server-{transport}-master-"),
++        defaults=config_defaults,
++    )
++    return factory
++
++
++@pytest.fixture
++def salt_minion(salt_master, transport):
++    config_defaults = {
++        "transport": transport,
++        "master_ip": "127.0.0.1",
++        "master_port": salt_master.config["ret_port"],
++        "auth_timeout": 5,
++        "auth_tries": 1,
++        "master_uri": f"tcp://127.0.0.1:{salt_master.config['ret_port']}",
++    }
++    factory = salt_master.salt_minion_daemon(
++        random_string("server-{transport}-minion-"),
++        defaults=config_defaults,
++    )
++    return factory
+diff --git a/tests/pytests/functional/channel/test_req_channel.py b/tests/pytests/functional/channel/test_req_channel.py
+new file mode 100644
+index 00000000000..4f5f52d66f4
+--- /dev/null
++++ b/tests/pytests/functional/channel/test_req_channel.py
+@@ -0,0 +1,444 @@
++import ctypes
++import logging
++import multiprocessing
++import pathlib
++import shutil
++import time
++
++import pytest
++from pytestshellutils.utils.processes import terminate_process
++
++import salt.channel.client
++import salt.channel.server
++import salt.config
++import salt.crypt
++import salt.exceptions
++import salt.ext.tornado.gen
++import salt.master
++import salt.utils.platform
++import salt.utils.process
++import salt.utils.stringutils
++
++log = logging.getLogger(__name__)
++
++
++pytestmark = [
++    pytest.mark.skip_on_spawning_platform(
++        reason="These tests are currently broken on spawning platforms. Need to be rewritten.",
++    ),
++    pytest.mark.slow_test,
++    pytest.mark.skipif(
++        "grains['osfinger'] == 'Rocky Linux-8' and grains['osarch'] == 'aarch64'",
++        reason="Temporarily skip on Rocky Linux 8 Arm64",
++    ),
++]
++
++
++class ReqServerChannelProcess(salt.utils.process.SignalHandlingProcess):
++
++    def __init__(self, config, req_channel_crypt):
++        super().__init__()
++        self._closing = False
++        self.config = config
++        self.req_channel_crypt = req_channel_crypt
++        self.process_manager = salt.utils.process.ProcessManager(
++            name="ReqServer-ProcessManager"
++        )
++        self.req_server_channel = salt.channel.server.ReqServerChannel.factory(
++            self.config
++        )
++        self.req_server_channel.pre_fork(self.process_manager)
++        self.io_loop = None
++        self.running = multiprocessing.Event()
++
++    def run(self):
++        salt.master.SMaster.secrets["aes"] = {
++            "secret": multiprocessing.Array(
++                ctypes.c_char,
++                salt.utils.stringutils.to_bytes(
++                    salt.crypt.Crypticle.generate_key_string()
++                ),
++            ),
++            "serial": multiprocessing.Value(
++                ctypes.c_longlong, lock=False  # We'll use the lock from 'secret'
++            ),
++        }
++
++        self.io_loop = salt.ext.tornado.ioloop.IOLoop()
++        self.io_loop.make_current()
++        self.req_server_channel.post_fork(self._handle_payload, io_loop=self.io_loop)
++        self.io_loop.add_callback(self.running.set)
++        try:
++            self.io_loop.start()
++        except KeyboardInterrupt:
++            pass
++
++    def _handle_signals(self, signum, sigframe):
++        self.close()
++        super()._handle_signals(signum, sigframe)
++
++    def __enter__(self):
++        self.start()
++        self.running.wait()
++        return self
++
++    def __exit__(self, *args):
++        self.close()
++        self.terminate()
++
++    def close(self):
++        if self._closing:
++            return
++        self._closing = True
++        if self.req_server_channel is not None:
++            self.req_server_channel.close()
++            self.req_server_channel = None
++        if self.process_manager is not None:
++            self.process_manager.terminate()
++            # Really terminate any process still left behind
++            for pid in self.process_manager._process_map:
++                terminate_process(pid=pid, kill_children=True, slow_stop=False)
++            self.process_manager = None
++
++    @salt.ext.tornado.gen.coroutine
++    def _handle_payload(self, payload):
++        if self.req_channel_crypt == "clear":
++            raise salt.ext.tornado.gen.Return((payload, {"fun": "send_clear"}))
++        raise salt.ext.tornado.gen.Return((payload, {"fun": "send"}))
++
++
++@pytest.fixture
++def req_server_channel(salt_master, req_channel_crypt):
++    req_server_channel_process = ReqServerChannelProcess(
++        salt_master.config.copy(), req_channel_crypt
++    )
++    try:
++        with req_server_channel_process:
++            yield
++    finally:
++        terminate_process(
++            pid=req_server_channel_process.pid, kill_children=True, slow_stop=False
++        )
++
++
++@pytest.fixture
++def req_server_opts(tmp_path):
++    sock_dir = tmp_path / "sock"
++    pki_dir = tmp_path / "pki"
++    cache_dir = tmp_path / "cache"
++    sock_dir.mkdir()
++    pki_dir.mkdir()
++    cache_dir.mkdir()
++    yield {
++        "sock_dir": sock_dir,
++        "pki_dir": pki_dir,
++        "cachedir": cache_dir,
++        "key_pass": "meh",
++        "keysize": 2048,
++        "cluster_id": None,
++        "master_sign_pubkey": False,
++        "pub_server_niceness": None,
++        "con_cache": False,
++        "zmq_monitor": False,
++        "request_server_ttl": 60,
++        "publish_session": 600,
++    }
++
++
++@pytest.fixture
++def req_server(req_server_opts):
++    server = salt.channel.server.ReqServerChannel.factory(req_server_opts)
++    try:
++        yield server
++    finally:
++        server.close()
++
++
++@pytest.fixture
++def minion1_id():
++    yield "minion1"
++
++
++@pytest.fixture
++def minion1_key(minion1_id, tmp_path, req_server_opts):
++    minionpki = tmp_path / minion1_id
++    minionpki.mkdir()
++    key1 = pathlib.Path(salt.crypt.gen_keys(minionpki, minion1_id, 2048))
++
++    pki = pathlib.Path(req_server_opts["pki_dir"])
++    (pki / "minions").mkdir(exist_ok=True)
++    shutil.copy2(key1.with_suffix(".pub"), pki / "minions" / minion1_id)
++    yield salt.crypt.get_rsa_key(key1, None)
++
++
++@pytest.fixture
++def minion2_id():
++    yield "minion2"
++
++
++@pytest.fixture
++def minion2_key(minion2_id, tmp_path, req_server_opts):
++    minionpki = tmp_path / minion2_id
++    minionpki.mkdir()
++    key2 = pathlib.Path(salt.crypt.gen_keys(minionpki, minion2_id, 2048))
++
++    pki = pathlib.Path(req_server_opts["pki_dir"])
++    (pki / "minions").mkdir(exist_ok=True)
++    shutil.copy2(key2.with_suffix(".pub"), pki / "minions" / minion2_id)
++    yield salt.crypt.get_rsa_key(key2, None)
++
++
++def req_channel_crypt_ids(value):
++    return f"ReqChannel(crypt='{value}')"
++
++
++@pytest.fixture(params=["clear", "aes"], ids=req_channel_crypt_ids)
++def req_channel_crypt(request):
++    return request.param
++
++
++@pytest.fixture
++def push_channel(req_server_channel, salt_minion, req_channel_crypt):
++    with salt.channel.client.ReqChannel.factory(
++        salt_minion.config, crypt=req_channel_crypt
++    ) as _req_channel:
++        try:
++            yield _req_channel
++        finally:
++            # Force termination of singleton
++            _req_channel.obj._refcount = 0
++
++
++def test_basic(push_channel):
++    """
++    Test a variety of messages, make sure we get the expected responses
++    """
++    if push_channel.crypt == "aes":
++        pytest.skip(reason="test not valid for encrypted channel")
++    msgs = [
++        {"foo": "bar"},
++        {"bar": "baz"},
++        {"baz": "qux", "list": [1, 2, 3]},
++    ]
++
++    for msg in msgs:
++        ret = push_channel.send(dict(msg), timeout=5, tries=1)
++        assert ret["load"] == msg
++
++
++def test_normalization(push_channel):
++    """
++    Since we use msgpack, we need to test that list types are converted to lists
++    """
++    if push_channel.crypt == "aes":
++        pytest.skip(reason="test not valid for encrypted channel")
++    types = {
++        "list": list,
++    }
++    msgs = [
++        {"list": tuple([1, 2, 3])},
++    ]
++    for msg in msgs:
++        ret = push_channel.send(msg, timeout=5, tries=1)
++        for key, value in ret["load"].items():
++            assert types[key] == type(value)
++
++
++def test_badload(push_channel, req_channel_crypt):
++    """
++    Test a variety of bad requests, make sure that we get some sort of error
++    """
++    if push_channel.crypt == "aes":
++        pytest.skip(reason="test not valid for encrypted channel")
++    msgs = ["", [], tuple()]
++    if req_channel_crypt == "clear":
++        for msg in msgs:
++            ret = push_channel.send(msg, timeout=5, tries=1)
++            assert ret == "payload and load must be a dict"
++    else:
++        for msg in msgs:
++            with pytest.raises(salt.exceptions.AuthenticationError):
++                push_channel.send(msg, timeout=5, tries=1)
++
++
++async def test_req_channel_ttl_v2(req_server, io_loop):
++    req_server.opts["request_server_ttl"] = 60
++
++    async def handler(payload):
++        return payload, {"fun": "send"}
++
++    req_server.post_fork(handler, io_loop)
++    payload = {
++        "enc": "aes",
++        "version": 2,
++        "load": req_server.crypticle.dumps(
++            {
++                "ts": int(time.time() - 61),
++            }
++        ),
++    }
++    ret = await req_server.handle_message(payload)
++    ret = req_server.crypticle.loads(ret)
++    assert ret == payload
++
++
++async def test_req_channel_ttl_valid(req_server, io_loop, minion1_id, minion1_key):
++    req_server.opts["request_server_ttl"] = 60
++    req_server.opts["publish_session"] = 600
++    tok = salt.crypt.private_encrypt(minion1_key, b"salt")
++
++    async def handler(payload):
++        return payload, {"fun": "send"}
++
++    req_server.post_fork(handler, io_loop)
++    key = req_server.session_key(minion1_id)
++
++    crypticle = salt.crypt.Crypticle(req_server.opts, key)
++    payload = {
++        "enc": "aes",
++        "id": minion1_id,
++        "version": 3,
++        "load": crypticle.dumps(
++            {
++                "ts": int(time.time()),
++                "id": minion1_id,
++                "tok": tok,
++            }
++        ),
++    }
++    ret = await req_server.handle_message(payload)
++    ret = crypticle.loads(ret)
++    assert ret == payload
++
++
++async def test_req_channel_ttl_expired(
++    req_server, io_loop, caplog, minion1_id, minion1_key
++):
++    req_server.opts["request_server_ttl"] = 60
++    req_server.opts["publish_session"] = 600
++    tok = salt.crypt.private_encrypt(minion1_key, b"salt")
++
++    async def handler(payload):
++        return payload, {"fun": "send"}
++
++    req_server.post_fork(handler, io_loop)
++    key = req_server.session_key(minion1_id)
++    crypticle = salt.crypt.Crypticle(req_server.opts, key)
++    payload = {
++        "enc": "aes",
++        "id": minion1_id,
++        "version": 3,
++        "load": crypticle.dumps(
++            {
++                "ts": int(time.time() - 61),
++                "id": minion1_id,
++                "tok": tok,
++            }
++        ),
++    }
++    with caplog.at_level(logging.WARNING):
++        ret = await req_server.handle_message(payload)
++        assert f"Received request from {minion1_id} with expired ttl" in caplog.text
++        assert ret == "bad load"
++
++
++async def test_req_channel_id_invalid_chars(
++    req_server, minion1_id, minion1_key, io_loop, caplog
++):
++    req_server.opts["request_server_ttl"] = 60
++    req_server.opts["publish_session"] = 600
++    tok = salt.crypt.private_encrypt(minion1_key, b"salt")
++
++    async def handler(payload):
++        return payload, {"fun": "send"}
++
++    req_server.post_fork(handler, io_loop)
++    key = req_server.session_key(minion1_id)
++    crypticle = salt.crypt.Crypticle(req_server.opts, key)
++    payload = {
++        "enc": "aes",
++        "id": f"{minion1_id}\0",
++        "version": 3,
++        "load": crypticle.dumps(
++            {
++                "ts": int(time.time()),
++                "id": f"{minion1_id}\0",
++                "tok": tok,
++            }
++        ),
++    }
++    with caplog.at_level(logging.WARNING):
++        ret = await req_server.handle_message(payload)
++        assert (
++            "Bad load from minion: SaltDeserializationError: Encountered invalid id"
++            in caplog.text
++        )
++        assert ret == "bad load"
++
++
++async def test_req_channel_id_mismatch(
++    req_server, io_loop, caplog, minion1_id, minion1_key
++):
++
++    id2 = "minion2"
++
++    async def handler(payload):
++        return payload, {"fun": "send"}
++
++    req_server.post_fork(handler, io_loop)
++    key = req_server.session_key(minion1_id)
++    crypticle = salt.crypt.Crypticle(req_server.opts, key)
++    payload = {
++        "enc": "aes",
++        "id": minion1_id,
++        "version": 3,
++        "load": crypticle.dumps(
++            {
++                "ts": int(time.time()),
++                "id": id2,
++            }
++        ),
++    }
++    with caplog.at_level(logging.WARNING):
++        ret = await req_server.handle_message(payload)
++        assert (
++            f"Request id mismatch. Found '{id2}' but expected '{minion1_id}'"
++            in caplog.text
++        )
++        assert ret == "bad load"
++
++
++async def test_req_channel_v2_invalid_token(
++    req_server,
++    io_loop,
++    caplog,
++    tmp_path,
++    minion1_id,
++    minion1_key,
++    minion2_key,
++    minion2_id,
++):
++
++    tok2 = salt.crypt.private_encrypt(minion2_key, b"salt")
++
++    async def handler(payload):
++        return payload, {"fun": "send"}
++
++    req_server.post_fork(handler, io_loop)
++
++    # Minion 1 is trying to impersonate minion2's token.
++    payload = {
++        "enc": "aes",
++        "version": 2,
++        "load": req_server.crypticle.dumps(
++            {
++                "ts": int(time.time()),
++                "id": minion1_id,
++                "tok": tok2,
++            }
++        ),
++    }
++    with caplog.at_level(logging.WARNING):
++        ret = await req_server.handle_message(payload)
++        assert "Minion token did not validate:" in caplog.text
++        assert ret == "bad load"
+diff --git a/tests/pytests/functional/channel/test_server.py b/tests/pytests/functional/channel/test_server.py
+index bdf96679b78..30bf2d35cba 100644
+--- a/tests/pytests/functional/channel/test_server.py
++++ b/tests/pytests/functional/channel/test_server.py
+@@ -9,7 +9,6 @@ import time
+ from pathlib import Path
+ 
+ import pytest
+-from pytestshellutils.utils import ports
+ from saltfactories.utils import random_string
+ 
+ import salt.channel.client
+@@ -60,44 +59,38 @@ def transport(request):
+ 
+ 
+ @pytest.fixture
+-def master_config(root_dir, transport):
+-    master_conf = salt.config.master_config("")
+-    master_conf["transport"] = transport
+-    master_conf["id"] = "master"
+-    master_conf["root_dir"] = str(root_dir)
+-    master_conf["sock_dir"] = str(root_dir)
+-    master_conf["interface"] = "127.0.0.1"
+-    master_conf["publish_port"] = ports.get_unused_localhost_port()
+-    master_conf["ret_port"] = ports.get_unused_localhost_port()
+-    master_conf["pki_dir"] = str(root_dir / "pki")
+-    os.makedirs(master_conf["pki_dir"])
+-    salt.crypt.gen_keys(master_conf["pki_dir"], "master", 4096)
+-    minions_keys = os.path.join(master_conf["pki_dir"], "minions")
+-    os.makedirs(minions_keys)
+-    yield master_conf
++def master_config(master_opts, transport):
++    master_opts.update(
++        transport=transport,
++        id="master",
++        interface="127.0.0.1",
++    )
++    salt.crypt.gen_keys(master_opts["pki_dir"], "master", 4096)
++    yield master_opts
+ 
+ 
+ @pytest.fixture
+-def minion_config(master_config, channel_minion_id):
+-    minion_conf = salt.config.minion_config(
+-        "", minion_id=channel_minion_id, cache_minion_id=False
++def minion_config(minion_opts, master_config, channel_minion_id):
++    minion_opts.update(
++        transport=master_config["transport"],
++        root_dir=master_config["root_dir"],
++        id=channel_minion_id,
++        cachedir=master_config["cachedir"],
++        sock_dir=master_config["sock_dir"],
++        ret_port=master_config["ret_port"],
++        interface="127.0.0.1",
++        pki_dir=os.path.join(master_config["root_dir"], "pki_minion"),
++        master_port=master_config["ret_port"],
++        master_ip="127.0.0.1",
++        master_uri="tcp://127.0.0.1:{}".format(master_config["ret_port"]),
+     )
+-    minion_conf["transport"] = master_config["transport"]
+-    minion_conf["root_dir"] = master_config["root_dir"]
+-    minion_conf["id"] = channel_minion_id
+-    minion_conf["sock_dir"] = master_config["sock_dir"]
+-    minion_conf["ret_port"] = master_config["ret_port"]
+-    minion_conf["interface"] = "127.0.0.1"
+-    minion_conf["pki_dir"] = os.path.join(master_config["root_dir"], "pki_minion")
+-    os.makedirs(minion_conf["pki_dir"])
+-    minion_conf["master_port"] = master_config["ret_port"]
+-    minion_conf["master_ip"] = "127.0.0.1"
+-    minion_conf["master_uri"] = "tcp://127.0.0.1:{}".format(master_config["ret_port"])
+-    salt.crypt.gen_keys(minion_conf["pki_dir"], "minion", 4096)
+-    minion_pub = os.path.join(minion_conf["pki_dir"], "minion.pub")
++    pathlib.Path(minion_opts["pki_dir"]).mkdir(exist_ok=True)
++    pathlib.Path(master_config["pki_dir"]).mkdir(exist_ok=True)
++    salt.crypt.gen_keys(minion_opts["pki_dir"], "minion", 4096)
++    minion_pub = os.path.join(minion_opts["pki_dir"], "minion.pub")
+     pub_on_master = os.path.join(master_config["pki_dir"], "minions", channel_minion_id)
+     shutil.copyfile(minion_pub, pub_on_master)
+-    return minion_conf
++    return minion_opts
+ 
+ 
+ @pytest.fixture
+diff --git a/tests/pytests/functional/transport/server/test_req_channel.py b/tests/pytests/functional/transport/server/test_req_channel.py
+index 555c040c1ca..0ea71318f59 100644
+--- a/tests/pytests/functional/transport/server/test_req_channel.py
++++ b/tests/pytests/functional/transport/server/test_req_channel.py
+@@ -97,6 +97,12 @@ class ReqServerChannelProcess(salt.utils.process.SignalHandlingProcess):
+     def _handle_payload(self, payload):
+         if self.req_channel_crypt == "clear":
+             raise salt.ext.tornado.gen.Return((payload, {"fun": "send_clear"}))
++        for key in (
++            "id",
++            "ts",
++            "tok",
++        ):
++            payload["load"].pop(key, None)
+         raise salt.ext.tornado.gen.Return((payload, {"fun": "send"}))
+ 
+ 
+diff --git a/tests/pytests/integration/master/test_minion_event.py b/tests/pytests/integration/master/test_minion_event.py
+new file mode 100644
+index 00000000000..d828d7ebcec
+--- /dev/null
++++ b/tests/pytests/integration/master/test_minion_event.py
+@@ -0,0 +1,47 @@
++import logging
++
++import salt.channel.client
++import salt.config
++import salt.crypt
++import salt.utils.args
++import salt.utils.jid
++
++log = logging.getLogger(__name__)
++
++
++def test_minoin_event_blacklist(salt_master, salt_minion, salt_cli, caplog):
++    ret = salt_cli.run("test.ping", minion_tgt=salt_minion.id)
++    assert ret.returncode == 0
++
++    opts = salt.config.minion_config(salt_minion.config_file)
++    opts["master_uri"] = "tcp://{}:{}".format(opts["master"], opts["master_port"])
++
++    jid = salt.utils.jid.gen_jid(opts)
++    auth = salt.crypt.SAuth(opts)
++    tok = auth.gen_token(b"salt")
++
++    load = {
++        "cmd": "_minion_event",
++        "tok": tok,
++        "id": opts["id"],
++        "events": [
++            {
++                "data": {
++                    "fun": "test.ping",
++                    "arg": [],
++                    "jid": jid,
++                    "ret": "",
++                    "tgt": salt_minion.id,
++                    "tgt_type": "glob",
++                    "user": "root",
++                    "__peer_id": "salt",
++                },
++                "tag": f"salt/job/{jid}/publish",
++            }
++        ],
++    }
++    with caplog.at_level(logging.WARNING):
++        with salt.channel.client.ReqChannel.factory(opts) as channel:
++            channel.send(load, tries=1, timeout=10000)
++            log.info("payload sent, jid was %s", jid)
++        assert "Filtering blacklisted" in caplog.text
+diff --git a/tests/pytests/integration/master/test_recv_file.py b/tests/pytests/integration/master/test_recv_file.py
+new file mode 100644
+index 00000000000..71a59ea839c
+--- /dev/null
++++ b/tests/pytests/integration/master/test_recv_file.py
+@@ -0,0 +1,29 @@
++import getpass
++import pathlib
++
++import salt.channel.client
++
++
++def test_file_recv_path(salt_master, salt_minion):
++    config = salt_minion.config.copy()
++    config["master_uri"] = f"tcp://127.0.0.1:{salt_master.config['ret_port']}"
++    keyfile = f".{getpass.getuser()}_key"
++    data = b"asdf"
++    load_path_list = ["..", "..", "..", keyfile]
++    cachedir = salt_master.config["cachedir"]
++    assert (pathlib.Path(cachedir) / keyfile).exists()
++    assert (pathlib.Path(cachedir) / keyfile).read_bytes() != data
++    with salt.channel.client.ReqChannel.factory(config, crypt="aes") as channel:
++        load = {
++            "cmd": "_file_recv",
++            "id": salt_minion.config["id"],
++            "path": load_path_list,
++            "size": len(data),
++            "tok": channel.auth.gen_token(b"salt"),
++            "loc": 0,
++            "data": b"asdf",
++        }
++        ret = channel.send(load)
++    assert ret is False
++    assert (pathlib.Path(cachedir) / keyfile).exists()
++    assert (pathlib.Path(cachedir) / keyfile).read_bytes() != data
+diff --git a/tests/pytests/integration/minion/test_return_retries.py b/tests/pytests/integration/minion/test_return_retries.py
+index a7f5eaeff16..00bfb908ae7 100644
+--- a/tests/pytests/integration/minion/test_return_retries.py
++++ b/tests/pytests/integration/minion/test_return_retries.py
+@@ -1,8 +1,11 @@
+ import time
++import sys
+ 
+ import pytest
+ from saltfactories.utils import random_string
+ 
++from tests.support.helpers import dedent
++
+ 
+ @pytest.fixture(scope="function")
+ def salt_minion_retry(salt_master_factory, salt_minion_id):
+@@ -50,3 +53,72 @@ def test_publish_retry(salt_master, salt_minion_retry, salt_cli, salt_run_cli):
+ 
+     assert salt_minion_retry.id in data
+     assert data[salt_minion_retry.id] is True
++
++
++@pytest.mark.slow_test
++def test_pillar_timeout(salt_master_factory):
++    cmd = (
++        sys.executable
++        + ' -c "import time; time.sleep(4.8); print(\'{\\"foo\\": \\"bar\\"}\');"'
++    ).strip()
++    master_overrides = {
++        "ext_pillar": [
++            {"cmd_json": cmd},
++        ],
++        "auto_accept": True,
++        "worker_threads": 3,
++        "peer": True,
++    }
++    minion_overrides = {
++        "auth_timeout": 20,
++        "request_channel_timeout": 5,
++        "request_channel_tries": 1,
++    }
++    sls_name = "issue-50221"
++    sls_contents = dedent(
++        """
++    custom_test_state:
++      test.configurable_test_state:
++        - name: example
++        - changes: True
++        - result: True
++        - comment: "Nothing has acutally been changed"
++    """
++    )
++    master = salt_master_factory.salt_master_daemon(
++        "pillar-timeout-master",
++        overrides=master_overrides,
++    )
++    minion1 = master.salt_minion_daemon(
++        random_string("pillar-timeout-1-"),
++        overrides=minion_overrides,
++    )
++    minion2 = master.salt_minion_daemon(
++        random_string("pillar-timeout-2-"),
++        overrides=minion_overrides,
++    )
++    minion3 = master.salt_minion_daemon(
++        random_string("pillar-timeout-3-"),
++        overrides=minion_overrides,
++    )
++    minion4 = master.salt_minion_daemon(
++        random_string("pillar-timeout-4-"),
++        overrides=minion_overrides,
++    )
++    cli = master.salt_cli()
++    sls_tempfile = master.state_tree.base.temp_file(
++        "{}.sls".format(sls_name), sls_contents
++    )
++    with master.started(), minion1.started(), minion2.started(), minion3.started(), minion4.started(), sls_tempfile:
++        proc = cli.run("state.sls", sls_name, minion_tgt="*")
++        # At least one minion should have a Pillar timeout
++        print(proc)
++        assert proc.returncode == 1
++        minion_timed_out = False
++        # Find the minion that has a Pillar timeout
++        for key in proc.data:
++            if isinstance(proc.data[key], str):
++                if proc.data[key].find("Pillar timed out") != -1:
++                    minion_timed_out = True
++                    break
++        assert minion_timed_out is True
+diff --git a/tests/pytests/unit/channel/test_server.py b/tests/pytests/unit/channel/test_server.py
+index 3fa5d94bead..3f6262f89b1 100644
+--- a/tests/pytests/unit/channel/test_server.py
++++ b/tests/pytests/unit/channel/test_server.py
+@@ -7,8 +7,11 @@ import salt.ext.tornado.gen
+ from tests.support.mock import MagicMock, patch
+ 
+ 
+-def test__auth_cmd_stats_passing():
+-    req_server_channel = server.ReqServerChannel({"master_stats": True}, None)
++def test__auth_cmd_stats_passing(master_opts):
++    master_opts.update(
++        {"master_stats": True}
++    )
++    req_server_channel = server.ReqServerChannel(master_opts, None)
+ 
+     fake_ret = {"enc": "clear", "load": b"FAKELOAD"}
+ 
+@@ -32,3 +35,48 @@ def test__auth_cmd_stats_passing():
+         )
+         assert auth_call_duration >= 0.03
+         assert auth_call_duration < 0.05
++
++
++@pytest.fixture
++def root_dir(tmp_path):
++    (tmp_path / "var").mkdir()
++    (tmp_path / "var" / "cache").mkdir()
++    (tmp_path / "etc").mkdir()
++    (tmp_path / "etc" / "salt").mkdir()
++    (tmp_path / "etc" / "salt" / "pki").mkdir()
++    (tmp_path / "etc" / "salt" / "pki" / "minions").mkdir()
++    yield tmp_path
++
++
++def test_req_server_validate_token_removes_token(root_dir):
++    opts = {
++        "master_uri": "tcp://127.0.0.1:4505",
++        "cachedir": str(root_dir / "var" / "cache"),
++        "pki_dir": str(root_dir / "etc" / "salt" / "pki"),
++    }
++    reqsrv = server.ReqServerChannel.factory(opts)
++    payload = {
++        "load": {
++            "id": "minion",
++            "tok": "asdf",
++        }
++    }
++    assert reqsrv.validate_token(payload) is False
++    assert "tok" not in payload["load"]
++
++
++def test_req_server_validate_token_removes_token_id_traversal(root_dir):
++    opts = {
++        "master_uri": "tcp://127.0.0.1:4505",
++        "cachedir": str(root_dir / "var" / "cache"),
++        "pki_dir": str(root_dir / "etc" / "salt" / "pki"),
++    }
++    reqsrv = server.ReqServerChannel.factory(opts)
++    payload = {
++        "load": {
++            "id": "minion/../../foo",
++            "tok": "asdf",
++        }
++    }
++    assert reqsrv.validate_token(payload) is False
++    assert "tok" not in payload["load"]
+diff --git a/tests/pytests/unit/daemons/masterapi/test_valid_minion_tag.py b/tests/pytests/unit/daemons/masterapi/test_valid_minion_tag.py
+new file mode 100644
+index 00000000000..3a3b18e1d90
+--- /dev/null
++++ b/tests/pytests/unit/daemons/masterapi/test_valid_minion_tag.py
+@@ -0,0 +1,23 @@
++import pytest
++
++import salt.daemons.masterapi
++
++
++@pytest.mark.parametrize(
++    "tag, valid",
++    [
++        ("salt/job/20160829225914848058/publish", False),
++        ("salt/key", False),
++        ("salt/cluster/fobar", False),
++        ("salt/job/20160829225914848058/return", False),
++        ("salt/job/20160829225914848058/new", False),
++        ("salt/wheel/20160829225914848058/new", False),
++        ("salt/run/20160829225914848058/new", False),
++        ("salt/run/20160829225914848058/ret", False),
++        ("salt/run/20160829225914848058/args", False),
++        ("salt/cloud/20160829225914848058/new", False),
++        ("salt/cloud/20160829225914848058/ret", False),
++    ],
++)
++def test_valid_minion_tag(tag, valid):
++    assert salt.daemons.masterapi.valid_minion_tag(tag) is valid
+diff --git a/tests/pytests/unit/fileserver/gitfs/test_gitfs.py b/tests/pytests/unit/fileserver/gitfs/test_gitfs.py
+index 4c7e8dd7c5c..7896fd93bb7 100644
+--- a/tests/pytests/unit/fileserver/gitfs/test_gitfs.py
++++ b/tests/pytests/unit/fileserver/gitfs/test_gitfs.py
+@@ -187,7 +187,7 @@ def cache_dir(tmp_path):
+ def configure_loader_modules(provider, sock_dir, repo_dir, cache_dir):
+     opts = {
+         "sock_dir": str(sock_dir),
+-        "gitfs_remotes": ["file://" + str(repo_dir)],
++        "gitfs_remotes": [f"file://{repo_dir}"],
+         "cachedir": str(cache_dir),
+         "gitfs_root": "",
+         "fileserver_backend": ["gitfs"],
+@@ -348,7 +348,7 @@ def test_ref_types_per_remote(repo_dir, unicode_dirname, tag_name):
+     Test the per_remote ref_types config option, using a different
+     ref_types setting than the global test.
+     """
+-    remotes = [{"file://" + repo_dir: [{"ref_types": ["tag"]}]}]
++    remotes = [{f"file://{repo_dir}": [{"ref_types": ["tag"]}]}]
+     with patch.dict(gitfs.__opts__, {"gitfs_remotes": remotes}):
+         gitfs.update()
+         ret = gitfs.envs(ignore_cache=True)
+@@ -435,7 +435,7 @@ def test_disable_saltenv_mapping_global_with_mapping_defined_per_remote(repo_dir
+     opts = {
+         "gitfs_disable_saltenv_mapping": True,
+         "gitfs_remotes": [
+-            {repo_dir: [{"saltenv": [{"bar": [{"ref": "somebranch"}]}]}]}
++            {f"file://{repo_dir}": [{"saltenv": [{"bar": [{"ref": "somebranch"}]}]}]}
+         ],
+     }
+     with patch.dict(gitfs.__opts__, opts):
+@@ -454,7 +454,7 @@ def test_disable_saltenv_mapping_per_remote_with_mapping_defined_globally(repo_d
+     option.
+     """
+     opts = {
+-        "gitfs_remotes": [{repo_dir: [{"disable_saltenv_mapping": True}]}],
++        "gitfs_remotes": [{f"file://{repo_dir}": [{"disable_saltenv_mapping": True}]}],
+         "gitfs_saltenv": [{"hello": [{"ref": "somebranch"}]}],
+     }
+ 
+@@ -476,7 +476,7 @@ def test_disable_saltenv_mapping_per_remote_with_mapping_defined_per_remote(repo
+     opts = {
+         "gitfs_remotes": [
+             {
+-                repo_dir: [
++                f"file://{repo_dir}": [
+                     {"disable_saltenv_mapping": True},
+                     {"saltenv": [{"world": [{"ref": "somebranch"}]}]},
+                 ]
+diff --git a/tests/pytests/unit/modules/test_cp.py b/tests/pytests/unit/modules/test_cp.py
+index 6caa9ef5938..150c1d24344 100644
+--- a/tests/pytests/unit/modules/test_cp.py
++++ b/tests/pytests/unit/modules/test_cp.py
+@@ -153,7 +153,6 @@ def test_push():
+             dict(
+                 loc=fh_.tell(),  # pylint: disable=resource-leakage
+                 cmd="_file_recv",
+-                tok="token",
+                 path=["saltines", "test.file"],
+                 size=10,
+                 data=b"",  # data is empty here because load['data'] is overwritten
+diff --git a/tests/pytests/unit/pillar/test_pillar.py b/tests/pytests/unit/pillar/test_pillar.py
+index 75603aa0fe4..11eda34318b 100644
+--- a/tests/pytests/unit/pillar/test_pillar.py
++++ b/tests/pytests/unit/pillar/test_pillar.py
+@@ -7,6 +7,7 @@ import salt.loader
+ import salt.pillar
+ import salt.utils.cache
+ from salt.utils.odict import OrderedDict
++from tests.support.mock import MagicMock
+ 
+ 
+ @pytest.mark.parametrize(
+@@ -157,3 +158,20 @@ def test_pillar_get_cache_disk(temp_salt_minion, caplog):
+             in caplog.messages
+         )
+         assert fresh_pillar == {}
++
++
++def test_remote_pillar_timeout(temp_salt_minion, tmp_path):
++    opts = temp_salt_minion.config.copy()
++    opts["master_uri"] = "tcp://127.0.0.1:12323"
++    grains = salt.loader.grains(opts)
++    pillar = salt.pillar.RemotePillar(
++        opts,
++        grains,
++        temp_salt_minion.id,
++        "base",
++    )
++    mock = MagicMock()
++    mock.side_effect = salt.exceptions.SaltReqTimeoutError()
++    pillar.channel.crypted_transfer_decode_dictentry = mock
++    with pytest.raises(salt.exceptions.SaltClientError):
++        pillar.compile_pillar()
+diff --git a/tests/pytests/unit/test_crypt.py b/tests/pytests/unit/test_crypt.py
+index e3c98ab6366..0a80782b3a9 100644
+--- a/tests/pytests/unit/test_crypt.py
++++ b/tests/pytests/unit/test_crypt.py
+@@ -100,6 +100,16 @@ bQIDAQAB
+ """
+ 
+ 
++@pytest.fixture
++def minion_root(tmp_path):
++    root = tmp_path / "root"
++    root.mkdir()
++    (root / "etc").mkdir()
++    (root / "etc" / "salt").mkdir()
++    (root / "etc" / "salt" / "pki").mkdir()
++    yield root
++
++
+ def test_get_rsa_pub_key_bad_key(tmp_path):
+     """
+     get_rsa_pub_key raises InvalidKeyError when encoutering a bad key
+@@ -170,3 +180,142 @@ def test_verify_signature_bad_sig(tmp_path):
+     msg = b"foo bar"
+     sig = salt.crypt.sign_message(str(tmp_path.joinpath("foo.pem")), msg)
+     assert not salt.crypt.verify_signature(str(tmp_path.joinpath("bar.pub")), msg, sig)
++
++
++async def test_auth_aes_key_rotation(minion_root, io_loop):
++    pki_dir = minion_root / "etc" / "salt" / "pki"
++    opts = {
++        "id": "minion",
++        "__role": "minion",
++        "pki_dir": str(pki_dir),
++        "master_uri": "tcp://127.0.0.1:4505",
++        "keysize": 4096,
++        "acceptance_wait_time": 60,
++        "acceptance_wait_time_max": 60,
++    }
++    credskey = (
++        opts["pki_dir"],  # where the keys are stored
++        opts["id"],  # minion ID
++        opts["master_uri"],  # master ID
++    )
++    salt.crypt.gen_keys(pki_dir, "minion", opts["keysize"])
++
++    aes = salt.crypt.Crypticle.generate_key_string()
++    session = salt.crypt.Crypticle.generate_key_string()
++
++    auth = salt.crypt.AsyncAuth(opts, io_loop)
++
++    async def mock_sign_in(*args, **kwargs):
++        return mock_sign_in.response
++
++    mock_sign_in.response = {
++        "enc": "pub",
++        "aes": aes,
++        "session": session,
++    }
++    auth.sign_in = mock_sign_in
++
++    assert credskey not in auth.creds_map
++
++    await auth.authenticate()
++
++    assert credskey in auth.creds_map
++    assert auth.creds_map[credskey]["aes"] == aes
++    assert auth.creds_map[credskey]["session"] == session
++
++    aes1 = salt.crypt.Crypticle.generate_key_string()
++
++    mock_sign_in.response = {
++        "enc": "pub",
++        "aes": aes1,
++        "session": session,
++    }
++
++    await auth.authenticate()
++
++    assert credskey in auth.creds_map
++    assert auth.creds_map[credskey]["aes"] == aes1
++    assert auth.creds_map[credskey]["session"] == session
++
++    session1 = salt.crypt.Crypticle.generate_key_string()
++    mock_sign_in.response = {
++        "enc": "pub",
++        "aes": aes1,
++        "session": session1,
++    }
++
++    await auth.authenticate()
++
++    assert credskey in auth.creds_map
++    assert auth.creds_map[credskey]["aes"] == aes1
++    assert auth.creds_map[credskey]["session"] == session1
++
++
++def test_sauth_aes_key_rotation(minion_root, io_loop):
++
++    pki_dir = minion_root / "etc" / "salt" / "pki"
++    opts = {
++        "id": "minion",
++        "__role": "minion",
++        "pki_dir": str(pki_dir),
++        "master_uri": "tcp://127.0.0.1:4505",
++        "keysize": 4096,
++        "acceptance_wait_time": 60,
++        "acceptance_wait_time_max": 60,
++    }
++    credskey = (
++        opts["pki_dir"],  # where the keys are stored
++        opts["id"],  # minion ID
++        opts["master_uri"],  # master ID
++    )
++    salt.crypt.gen_keys(pki_dir, "minion", opts["keysize"])
++
++    aes = salt.crypt.Crypticle.generate_key_string()
++    session = salt.crypt.Crypticle.generate_key_string()
++
++    auth = salt.crypt.SAuth(opts, io_loop)
++
++    def mock_sign_in(*args, **kwargs):
++        return mock_sign_in.response
++
++    mock_sign_in.response = {
++        "enc": "pub",
++        "aes": aes,
++        "session": session,
++    }
++    auth.sign_in = mock_sign_in
++
++    assert auth._creds is None
++
++    auth.authenticate()
++
++    assert isinstance(auth._creds, dict)
++    assert auth._creds["aes"] == aes
++    assert auth._creds["session"] == session
++
++    aes1 = salt.crypt.Crypticle.generate_key_string()
++
++    mock_sign_in.response = {
++        "enc": "pub",
++        "aes": aes1,
++        "session": session,
++    }
++
++    auth.authenticate()
++
++    assert isinstance(auth._creds, dict)
++    assert auth._creds["aes"] == aes1
++    assert auth._creds["session"] == session
++
++    session1 = salt.crypt.Crypticle.generate_key_string()
++    mock_sign_in.response = {
++        "enc": "pub",
++        "aes": aes1,
++        "session": session1,
++    }
++
++    auth.authenticate()
++
++    assert isinstance(auth._creds, dict)
++    assert auth._creds["aes"] == aes1
++    assert auth._creds["session"] == session1
+diff --git a/tests/pytests/unit/test_master.py b/tests/pytests/unit/test_master.py
+index 7fccb24d73b..833f966e058 100644
+--- a/tests/pytests/unit/test_master.py
++++ b/tests/pytests/unit/test_master.py
+@@ -3,20 +3,26 @@ import time
+ 
+ import pytest
+ 
++import salt.config
++import salt.crypt
+ import salt.master
++import salt.utils.files
+ import salt.utils.platform
+ from tests.support.mock import MagicMock, patch
++from tests.support.runtests import RUNTIME_VARS
+ 
+ 
+ @pytest.fixture
+ def encrypted_requests(tmp_path):
+     # To honor the comment on AESFuncs
++    (tmp_path / "pki").mkdir()
+     return salt.master.AESFuncs(
+         opts={
++            "pki_dir": str(tmp_path / "pki"),
+             "cachedir": str(tmp_path / "cache"),
+             "sock_dir": str(tmp_path / "sock_drawer"),
+             "conf_file": str(tmp_path / "config.conf"),
+-            "fileserver_backend": "local",
++            "fileserver_backend": ["local"],
+             "master_job_cache": False,
+         }
+     )
+@@ -307,3 +313,154 @@ def test_collect__auth_to_master_stats():
+         assert mworker.stats["_auth"]["mean"] < 0.04
+         handle_aes_mock.assert_not_called()
+         handle_clear_mock.assert_not_called()
++
++
++def test_pub_ret_traversal(encrypted_requests, tmp_path):
++    """
++    master's  AESFuncs._syndic_return method cachdir creation is not vulnerable to a directory traversal
++    """
++    salt.crypt.gen_keys(tmp_path, "minion", 2048)
++
++    minions = pathlib.Path(encrypted_requests.opts["pki_dir"]) / "minions"
++    minions.mkdir()
++
++    with salt.utils.files.fopen(minions / "minion", "wb") as wfp:
++        with salt.utils.files.fopen(tmp_path / "minion.pub", "rb") as rfp:
++            wfp.write(rfp.read())
++
++    priv = salt.crypt.get_rsa_key(tmp_path / "minion.pem", None)
++    with pytest.raises(salt.exceptions.SaltValidationError):
++        encrypted_requests.pub_ret(
++            {
++                "tok": salt.crypt.private_encrypt(priv, b"salt"),
++                "id": "minion",
++                "jid": "asdf/../../../sdf",
++                "return": {},
++            }
++        )
++
++
++def _git_pillar_base_config(tmp_path):
++    return {
++        "__role": "master",
++        "pki_dir": str(tmp_path / "pki"),
++        "cachedir": str(tmp_path / "cache"),
++        "sock_dir": str(tmp_path / "sock_drawer"),
++        "conf_file": str(tmp_path / "config.conf"),
++        "fileserver_backend": ["local"],
++        "master_job_cache": False,
++        "file_client": "local",
++        "pillar_cache": False,
++        "state_top": "top.sls",
++        "pillar_roots": {
++            "base": [str(tmp_path / "pillar")],
++        },
++        "render_dirs": [str(pathlib.Path(RUNTIME_VARS.SALT_CODE_DIR) / "renderer")],
++        "renderer": "jinja|yaml",
++        "renderer_blacklist": [],
++        "renderer_whitelist": [],
++        "optimization_order": [0, 1, 2],
++        "on_demand_ext_pillar": [],
++        "git_pillar_user": "",
++        "git_pillar_password": "",
++        "git_pillar_pubkey": "",
++        "git_pillar_privkey": "",
++        "git_pillar_passphrase": "",
++        "git_pillar_insecure_auth": False,
++        "git_pillar_refspecs": salt.config._DFLT_REFSPECS,
++        "git_pillar_ssl_verify": True,
++        "git_pillar_branch": "master",
++        "git_pillar_base": "master",
++        "git_pillar_root": "",
++        "git_pillar_env": "",
++        "git_pillar_fallback": "",
++    }
++
++
++@pytest.fixture
++def allowed_funcs(tmp_path):
++    """
++    Configuration with git on demand pillar allowed
++    """
++    opts = _git_pillar_base_config(tmp_path)
++    opts["on_demand_ext_pillar"] = ["git"]
++    salt.crypt.gen_keys(str(tmp_path), "minion", 2048)
++    master_pki = tmp_path / "pki"
++    master_pki.mkdir()
++    accepted_pki = master_pki / "minions"
++    accepted_pki.mkdir()
++    (accepted_pki / "minion.pub").write_text((tmp_path / "minion.pub").read_text())
++
++    return salt.master.AESFuncs(opts=opts)
++
++
++def test_on_demand_allowed_command_injection(allowed_funcs, tmp_path, caplog):
++    """
++    Verify on demand pillars validate remote urls
++    """
++    pwnpath = tmp_path / "pwn"
++    assert not pwnpath.exists()
++    load = {
++        "cmd": "_pillar",
++        "saltenv": "base",
++        "pillarenv": "base",
++        "id": "carbon",
++        "grains": {},
++        "ver": 2,
++        "ext": {
++            "git": [
++                f'base ssh://fake@git/repo\n[core]\nsshCommand = touch {pwnpath}\n[remote "origin"]\n'
++            ]
++        },
++        "clean_cache": True,
++    }
++    with caplog.at_level(level="WARNING"):
++        ret = allowed_funcs._pillar(load)
++    assert not pwnpath.exists()
++    assert "Found bad url data" in caplog.text
++
++
++@pytest.fixture
++def not_allowed_funcs(tmp_path):
++    """
++    Configuration with no on demand pillars allowed
++    """
++    opts = _git_pillar_base_config(tmp_path)
++    opts["on_demand_ext_pillar"] = []
++    salt.crypt.gen_keys(str(tmp_path), "minion", 2048)
++    master_pki = tmp_path / "pki"
++    master_pki.mkdir()
++    accepted_pki = master_pki / "minions"
++    accepted_pki.mkdir()
++    (accepted_pki / "minion.pub").write_text((tmp_path / "minion.pub").read_text())
++
++    return salt.master.AESFuncs(opts=opts)
++
++
++def test_on_demand_not_allowed(not_allowed_funcs, tmp_path, caplog):
++    """
++    Verify on demand pillars do not render when not allowed
++    """
++    pwnpath = tmp_path / "pwn"
++    assert not pwnpath.exists()
++    load = {
++        "cmd": "_pillar",
++        "saltenv": "base",
++        "pillarenv": "base",
++        "id": "carbon",
++        "grains": {},
++        "ver": 2,
++        "ext": {
++            "git": [
++                f'base ssh://fake@git/repo\n[core]\nsshCommand = touch {pwnpath}\n[remote "origin"]\n'
++            ]
++        },
++        "clean_cache": True,
++    }
++    with caplog.at_level(level="WARNING"):
++        ret = not_allowed_funcs._pillar(load)
++    assert not pwnpath.exists()
++    assert (
++        "The following ext_pillar modules are not allowed for on-demand pillar data: git."
++        in caplog.text
++    )
+diff --git a/tests/pytests/unit/transport/test_zeromq.py b/tests/pytests/unit/transport/test_zeromq.py
+index c7cbc538641..558f7537784 100644
+--- a/tests/pytests/unit/transport/test_zeromq.py
++++ b/tests/pytests/unit/transport/test_zeromq.py
+@@ -586,23 +586,25 @@ def test_zeromq_async_pub_channel_filtering_decode_message(
+     assert res.result()["enc"] == "aes"
+ 
+ 
+-def test_req_server_chan_encrypt_v2(pki_dir):
++def test_req_server_chan_encrypt_v2(pki_dir, master_opts):
+     loop = salt.ext.tornado.ioloop.IOLoop.current()
+-    opts = {
+-        "worker_threads": 1,
+-        "master_uri": "tcp://127.0.0.1:4506",
+-        "interface": "127.0.0.1",
+-        "ret_port": 4506,
+-        "ipv6": False,
+-        "zmq_monitor": False,
+-        "mworker_queue_niceness": False,
+-        "sock_dir": ".",
+-        "pki_dir": str(pki_dir.joinpath("master")),
+-        "id": "minion",
+-        "__role": "minion",
+-        "keysize": 4096,
+-    }
+-    server = salt.channel.server.ReqServerChannel.factory(opts)
++    master_opts.update(
++        {
++            "worker_threads": 1,
++            "master_uri": "tcp://127.0.0.1:4506",
++            "interface": "127.0.0.1",
++            "ret_port": 4506,
++            "ipv6": False,
++            "zmq_monitor": False,
++            "mworker_queue_niceness": False,
++            "sock_dir": ".",
++            "pki_dir": str(pki_dir.joinpath("master")),
++            "id": "minion",
++            "__role": "minion",
++            "keysize": 4096,
++        }
++    )
++    server = salt.channel.server.ReqServerChannel.factory(master_opts)
+     dictkey = "pillar"
+     nonce = "abcdefg"
+     pillar_data = {"pillar1": "meh"}
+@@ -616,7 +618,7 @@ def test_req_server_chan_encrypt_v2(pki_dir):
+     else:
+         cipher = PKCS1_OAEP.new(key)
+         aes = cipher.decrypt(ret["key"])
+-    pcrypt = salt.crypt.Crypticle(opts, aes)
++    pcrypt = salt.crypt.Crypticle(master_opts, aes)
+     signed_msg = pcrypt.loads(ret[dictkey])
+ 
+     assert "sig" in signed_msg
+@@ -630,23 +632,25 @@ def test_req_server_chan_encrypt_v2(pki_dir):
+     assert data["pillar"] == pillar_data
+ 
+ 
+-def test_req_server_chan_encrypt_v1(pki_dir):
++def test_req_server_chan_encrypt_v1(pki_dir, master_opts):
+     loop = salt.ext.tornado.ioloop.IOLoop.current()
+-    opts = {
+-        "worker_threads": 1,
+-        "master_uri": "tcp://127.0.0.1:4506",
+-        "interface": "127.0.0.1",
+-        "ret_port": 4506,
+-        "ipv6": False,
+-        "zmq_monitor": False,
+-        "mworker_queue_niceness": False,
+-        "sock_dir": ".",
+-        "pki_dir": str(pki_dir.joinpath("master")),
+-        "id": "minion",
+-        "__role": "minion",
+-        "keysize": 4096,
+-    }
+-    server = salt.channel.server.ReqServerChannel.factory(opts)
++    master_opts.update(
++        {
++            "worker_threads": 1,
++            "master_uri": "tcp://127.0.0.1:4506",
++            "interface": "127.0.0.1",
++            "ret_port": 4506,
++            "ipv6": False,
++            "zmq_monitor": False,
++            "mworker_queue_niceness": False,
++            "sock_dir": ".",
++            "pki_dir": str(pki_dir.joinpath("master")),
++            "id": "minion",
++            "__role": "minion",
++            "keysize": 4096,
++        }
++    )
++    server = salt.channel.server.ReqServerChannel.factory(master_opts)
+     dictkey = "pillar"
+     nonce = "abcdefg"
+     pillar_data = {"pillar1": "meh"}
+@@ -661,29 +665,31 @@ def test_req_server_chan_encrypt_v1(pki_dir):
+     else:
+         cipher = PKCS1_OAEP.new(key)
+         aes = cipher.decrypt(ret["key"])
+-    pcrypt = salt.crypt.Crypticle(opts, aes)
++    pcrypt = salt.crypt.Crypticle(master_opts, aes)
+     data = pcrypt.loads(ret[dictkey])
+     assert data == pillar_data
+ 
+ 
+-def test_req_chan_decode_data_dict_entry_v1(pki_dir):
++def test_req_chan_decode_data_dict_entry_v1(pki_dir, master_opts, minion_opts):
+     mockloop = MagicMock()
+-    opts = {
+-        "master_uri": "tcp://127.0.0.1:4506",
+-        "interface": "127.0.0.1",
+-        "ret_port": 4506,
+-        "ipv6": False,
+-        "sock_dir": ".",
+-        "pki_dir": str(pki_dir.joinpath("minion")),
+-        "id": "minion",
+-        "__role": "minion",
+-        "keysize": 4096,
+-        "acceptance_wait_time": 3,
+-        "acceptance_wait_time_max": 3,
+-    }
+-    master_opts = dict(opts, pki_dir=str(pki_dir.joinpath("master")))
++    minion_opts.update(
++        {
++            "master_uri": "tcp://127.0.0.1:4506",
++            "interface": "127.0.0.1",
++            "ret_port": 4506,
++            "ipv6": False,
++            "sock_dir": ".",
++            "pki_dir": str(pki_dir.joinpath("minion")),
++            "id": "minion",
++            "__role": "minion",
++            "keysize": 4096,
++            "acceptance_wait_time": 3,
++            "acceptance_wait_time_max": 3,
++        }
++    )
++    master_opts = dict(master_opts, pki_dir=str(pki_dir.joinpath("master")))
+     server = salt.channel.server.ReqServerChannel.factory(master_opts)
+-    client = salt.channel.client.ReqChannel.factory(opts, io_loop=mockloop)
++    client = salt.channel.client.ReqChannel.factory(minion_opts, io_loop=mockloop)
+     dictkey = "pillar"
+     target = "minion"
+     pillar_data = {"pillar1": "meh"}
+@@ -699,24 +705,26 @@ def test_req_chan_decode_data_dict_entry_v1(pki_dir):
+     assert ret_pillar_data == pillar_data
+ 
+ 
+-async def test_req_chan_decode_data_dict_entry_v2(pki_dir):
++async def test_req_chan_decode_data_dict_entry_v2(pki_dir, master_opts, minion_opts):
+     mockloop = MagicMock()
+-    opts = {
+-        "master_uri": "tcp://127.0.0.1:4506",
+-        "interface": "127.0.0.1",
+-        "ret_port": 4506,
+-        "ipv6": False,
+-        "sock_dir": ".",
+-        "pki_dir": str(pki_dir.joinpath("minion")),
+-        "id": "minion",
+-        "__role": "minion",
+-        "keysize": 4096,
+-        "acceptance_wait_time": 3,
+-        "acceptance_wait_time_max": 3,
+-    }
+-    master_opts = dict(opts, pki_dir=str(pki_dir.joinpath("master")))
++    minion_opts.update(
++        {
++            "master_uri": "tcp://127.0.0.1:4506",
++            "interface": "127.0.0.1",
++            "ret_port": 4506,
++            "ipv6": False,
++            "sock_dir": ".",
++            "pki_dir": str(pki_dir.joinpath("minion")),
++            "id": "minion",
++            "__role": "minion",
++            "keysize": 4096,
++            "acceptance_wait_time": 3,
++            "acceptance_wait_time_max": 3,
++        }
++    )
++    master_opts.update(pki_dir=str(pki_dir.joinpath("master")))
+     server = salt.channel.server.ReqServerChannel.factory(master_opts)
+-    client = salt.channel.client.AsyncReqChannel.factory(opts, io_loop=mockloop)
++    client = salt.channel.client.AsyncReqChannel.factory(minion_opts, io_loop=mockloop)
+ 
+     dictkey = "pillar"
+     target = "minion"
+@@ -724,19 +732,25 @@ async def test_req_chan_decode_data_dict_entry_v2(pki_dir):
+ 
+     # Mock auth and message client.
+     auth = client.auth
+-    auth._crypticle = salt.crypt.Crypticle(opts, AES_KEY)
++    auth._crypticle = salt.crypt.Crypticle(minion_opts, AES_KEY)
++    auth._session_crypticle = salt.crypt.Crypticle(
++        minion_opts, server.session_key(target)
++    )
+     client.auth = MagicMock()
+     client.auth.mpub = auth.mpub
+     client.auth.authenticated = True
+     client.auth.get_keys = auth.get_keys
++    client.auth.gen_token = auth.gen_token
+     client.auth.crypticle.dumps = auth.crypticle.dumps
+     client.auth.crypticle.loads = auth.crypticle.loads
++    client.auth.session_crypticle.dumps = auth.session_crypticle.dumps
++    client.auth.session_crypticle.loads = auth.session_crypticle.loads
+     client.transport = MagicMock()
+ 
+     @salt.ext.tornado.gen.coroutine
+     def mocksend(msg, timeout=60, tries=3):
+         client.transport.msg = msg
+-        load = client.auth.crypticle.loads(msg["load"])
++        load = client.auth.session_crypticle.loads(msg["load"])
+         ret = server._encrypt_private(
+             pillar_data, dictkey, target, nonce=load["nonce"], sign_messages=True
+         )
+@@ -753,7 +767,7 @@ async def test_req_chan_decode_data_dict_entry_v2(pki_dir):
+         "pillarenv": "base",
+         "pillar_override": True,
+         "extra_minion_data": {},
+-        "ver": "2",
++        "ver": "3",
+         "cmd": "_pillar",
+     }
+     ret = await client.crypted_transfer_decode_dictentry(
+@@ -761,28 +775,30 @@ async def test_req_chan_decode_data_dict_entry_v2(pki_dir):
+         dictkey="pillar",
+     )
+     assert "version" in client.transport.msg
+-    assert client.transport.msg["version"] == 2
++    assert client.transport.msg["version"] == 3
+     assert ret == {"pillar1": "meh"}
+ 
+ 
+-async def test_req_chan_decode_data_dict_entry_v2_bad_nonce(pki_dir):
++async def test_req_chan_decode_data_dict_entry_v2_bad_nonce(pki_dir, master_opts, minion_opts):
+     mockloop = MagicMock()
+-    opts = {
+-        "master_uri": "tcp://127.0.0.1:4506",
+-        "interface": "127.0.0.1",
+-        "ret_port": 4506,
+-        "ipv6": False,
+-        "sock_dir": ".",
+-        "pki_dir": str(pki_dir.joinpath("minion")),
+-        "id": "minion",
+-        "__role": "minion",
+-        "keysize": 4096,
+-        "acceptance_wait_time": 3,
+-        "acceptance_wait_time_max": 3,
+-    }
+-    master_opts = dict(opts, pki_dir=str(pki_dir.joinpath("master")))
++    minion_opts.update(
++        {
++            "master_uri": "tcp://127.0.0.1:4506",
++            "interface": "127.0.0.1",
++            "ret_port": 4506,
++            "ipv6": False,
++            "sock_dir": ".",
++            "pki_dir": str(pki_dir.joinpath("minion")),
++            "id": "minion",
++            "__role": "minion",
++            "keysize": 4096,
++            "acceptance_wait_time": 3,
++            "acceptance_wait_time_max": 3,
++        }
++    )
++    master_opts.update(pki_dir=str(pki_dir.joinpath("master")))
+     server = salt.channel.server.ReqServerChannel.factory(master_opts)
+-    client = salt.channel.client.AsyncReqChannel.factory(opts, io_loop=mockloop)
++    client = salt.channel.client.AsyncReqChannel.factory(minion_opts, io_loop=mockloop)
+ 
+     dictkey = "pillar"
+     badnonce = "abcdefg"
+@@ -791,7 +807,7 @@ async def test_req_chan_decode_data_dict_entry_v2_bad_nonce(pki_dir):
+ 
+     # Mock auth and message client.
+     auth = client.auth
+-    auth._crypticle = salt.crypt.Crypticle(opts, AES_KEY)
++    auth._crypticle = salt.crypt.Crypticle(minion_opts, AES_KEY)
+     client.auth = MagicMock()
+     client.auth.mpub = auth.mpub
+     client.auth.authenticated = True
+@@ -831,24 +847,26 @@ async def test_req_chan_decode_data_dict_entry_v2_bad_nonce(pki_dir):
+     assert "Pillar nonce verification failed." == excinfo.value.message
+ 
+ 
+-async def test_req_chan_decode_data_dict_entry_v2_bad_signature(pki_dir):
++async def test_req_chan_decode_data_dict_entry_v2_bad_signature(pki_dir, master_opts, minion_opts):
+     mockloop = MagicMock()
+-    opts = {
+-        "master_uri": "tcp://127.0.0.1:4506",
+-        "interface": "127.0.0.1",
+-        "ret_port": 4506,
+-        "ipv6": False,
+-        "sock_dir": ".",
+-        "pki_dir": str(pki_dir.joinpath("minion")),
+-        "id": "minion",
+-        "__role": "minion",
+-        "keysize": 4096,
+-        "acceptance_wait_time": 3,
+-        "acceptance_wait_time_max": 3,
+-    }
+-    master_opts = dict(opts, pki_dir=str(pki_dir.joinpath("master")))
++    minion_opts.update(
++        {
++            "master_uri": "tcp://127.0.0.1:4506",
++            "interface": "127.0.0.1",
++            "ret_port": 4506,
++            "ipv6": False,
++            "sock_dir": ".",
++            "pki_dir": str(pki_dir.joinpath("minion")),
++            "id": "minion",
++            "__role": "minion",
++            "keysize": 4096,
++            "acceptance_wait_time": 3,
++            "acceptance_wait_time_max": 3,
++        }
++    )
++    master_opts.update(pki_dir=str(pki_dir.joinpath("master")))
+     server = salt.channel.server.ReqServerChannel.factory(master_opts)
+-    client = salt.channel.client.AsyncReqChannel.factory(opts, io_loop=mockloop)
++    client = salt.channel.client.AsyncReqChannel.factory(minion_opts, io_loop=mockloop)
+ 
+     dictkey = "pillar"
+     badnonce = "abcdefg"
+@@ -857,19 +875,25 @@ async def test_req_chan_decode_data_dict_entry_v2_bad_signature(pki_dir):
+ 
+     # Mock auth and message client.
+     auth = client.auth
+-    auth._crypticle = salt.crypt.Crypticle(opts, AES_KEY)
++    auth._crypticle = salt.crypt.Crypticle(minion_opts, AES_KEY)
++    auth._session_crypticle = salt.crypt.Crypticle(
++        minion_opts, server.session_key(target)
++    )
+     client.auth = MagicMock()
+     client.auth.mpub = auth.mpub
+     client.auth.authenticated = True
+     client.auth.get_keys = auth.get_keys
++    client.auth.gen_token = auth.gen_token
+     client.auth.crypticle.dumps = auth.crypticle.dumps
+     client.auth.crypticle.loads = auth.crypticle.loads
++    client.auth.session_crypticle.dumps = auth.session_crypticle.dumps
++    client.auth.session_crypticle.loads = auth.session_crypticle.loads
+     client.transport = MagicMock()
+ 
+     @salt.ext.tornado.gen.coroutine
+     def mocksend(msg, timeout=60, tries=3):
+         client.transport.msg = msg
+-        load = client.auth.crypticle.loads(msg["load"])
++        load = client.auth.session_crypticle.loads(msg["load"])
+         ret = server._encrypt_private(
+             pillar_data, dictkey, target, nonce=load["nonce"], sign_messages=True
+         )
+@@ -901,7 +925,7 @@ async def test_req_chan_decode_data_dict_entry_v2_bad_signature(pki_dir):
+         "pillarenv": "base",
+         "pillar_override": True,
+         "extra_minion_data": {},
+-        "ver": "2",
++        "ver": "3",
+         "cmd": "_pillar",
+     }
+ 
+@@ -913,24 +937,26 @@ async def test_req_chan_decode_data_dict_entry_v2_bad_signature(pki_dir):
+     assert "Pillar payload signature failed to validate." == excinfo.value.message
+ 
+ 
+-async def test_req_chan_decode_data_dict_entry_v2_bad_key(pki_dir):
++async def test_req_chan_decode_data_dict_entry_v2_bad_key(pki_dir, master_opts, minion_opts):
+     mockloop = MagicMock()
+-    opts = {
+-        "master_uri": "tcp://127.0.0.1:4506",
+-        "interface": "127.0.0.1",
+-        "ret_port": 4506,
+-        "ipv6": False,
+-        "sock_dir": ".",
+-        "pki_dir": str(pki_dir.joinpath("minion")),
+-        "id": "minion",
+-        "__role": "minion",
+-        "keysize": 4096,
+-        "acceptance_wait_time": 3,
+-        "acceptance_wait_time_max": 3,
+-    }
+-    master_opts = dict(opts, pki_dir=str(pki_dir.joinpath("master")))
++    minion_opts.update(
++        {
++            "master_uri": "tcp://127.0.0.1:4506",
++            "interface": "127.0.0.1",
++            "ret_port": 4506,
++            "ipv6": False,
++            "sock_dir": ".",
++            "pki_dir": str(pki_dir.joinpath("minion")),
++            "id": "minion",
++            "__role": "minion",
++            "keysize": 4096,
++            "acceptance_wait_time": 3,
++            "acceptance_wait_time_max": 3,
++        }
++    )
++    master_opts.update(pki_dir=str(pki_dir.joinpath("master")))
+     server = salt.channel.server.ReqServerChannel.factory(master_opts)
+-    client = salt.channel.client.AsyncReqChannel.factory(opts, io_loop=mockloop)
++    client = salt.channel.client.AsyncReqChannel.factory(minion_opts, io_loop=mockloop)
+ 
+     dictkey = "pillar"
+     badnonce = "abcdefg"
+@@ -939,19 +965,25 @@ async def test_req_chan_decode_data_dict_entry_v2_bad_key(pki_dir):
+ 
+     # Mock auth and message client.
+     auth = client.auth
+-    auth._crypticle = salt.crypt.Crypticle(opts, AES_KEY)
++    auth._crypticle = salt.crypt.Crypticle(minion_opts, AES_KEY)
++    auth._session_crypticle = salt.crypt.Crypticle(
++        minion_opts, server.session_key(target)
++    )
+     client.auth = MagicMock()
+     client.auth.mpub = auth.mpub
+     client.auth.authenticated = True
+     client.auth.get_keys = auth.get_keys
++    client.auth.gen_token = auth.gen_token
+     client.auth.crypticle.dumps = auth.crypticle.dumps
+     client.auth.crypticle.loads = auth.crypticle.loads
++    client.auth.session_crypticle.dumps = auth.session_crypticle.dumps
++    client.auth.session_crypticle.loads = auth.session_crypticle.loads
+     client.transport = MagicMock()
+ 
+     @salt.ext.tornado.gen.coroutine
+     def mocksend(msg, timeout=60, tries=3):
+         client.transport.msg = msg
+-        load = client.auth.crypticle.loads(msg["load"])
++        load = client.auth.session_crypticle.loads(msg["load"])
+         ret = server._encrypt_private(
+             pillar_data, dictkey, target, nonce=load["nonce"], sign_messages=True
+         )
+@@ -967,7 +999,7 @@ async def test_req_chan_decode_data_dict_entry_v2_bad_key(pki_dir):
+ 
+         # Now encrypt with a different key
+         key = salt.crypt.Crypticle.generate_key_string()
+-        pcrypt = salt.crypt.Crypticle(opts, key)
++        pcrypt = salt.crypt.Crypticle(master_opts, key)
+         pubfn = os.path.join(master_opts["pki_dir"], "minions", "minion")
+         pub = salt.crypt.get_rsa_pub_key(pubfn)
+         ret[dictkey] = pcrypt.dumps(signed_msg)
+@@ -1002,25 +1034,27 @@ async def test_req_chan_decode_data_dict_entry_v2_bad_key(pki_dir):
+     assert "Key verification failed." == excinfo.value.message
+ 
+ 
+-async def test_req_serv_auth_v1(pki_dir):
+-    opts = {
+-        "master_uri": "tcp://127.0.0.1:4506",
+-        "interface": "127.0.0.1",
+-        "ret_port": 4506,
+-        "ipv6": False,
+-        "sock_dir": ".",
+-        "pki_dir": str(pki_dir.joinpath("minion")),
+-        "id": "minion",
+-        "__role": "minion",
+-        "keysize": 4096,
+-        "max_minions": 0,
+-        "auto_accept": False,
+-        "open_mode": False,
+-        "key_pass": None,
+-        "master_sign_pubkey": False,
+-        "publish_port": 4505,
+-        "auth_mode": 1,
+-    }
++async def test_req_serv_auth_v1(pki_dir, master_opts, minion_opts):
++    minion_opts.update(
++        {
++            "master_uri": "tcp://127.0.0.1:4506",
++            "interface": "127.0.0.1",
++            "ret_port": 4506,
++            "ipv6": False,
++            "sock_dir": ".",
++            "pki_dir": str(pki_dir.joinpath("minion")),
++            "id": "minion",
++            "__role": "minion",
++            "keysize": 4096,
++            "max_minions": 0,
++            "auto_accept": False,
++            "open_mode": False,
++            "key_pass": None,
++            "master_sign_pubkey": False,
++            "publish_port": 4505,
++            "auth_mode": 1,
++        }
++    )
+     SMaster.secrets["aes"] = {
+         "secret": multiprocessing.Array(
+             ctypes.c_char,
+@@ -1028,10 +1062,13 @@ async def test_req_serv_auth_v1(pki_dir):
+         ),
+         "reload": salt.crypt.Crypticle.generate_key_string,
+     }
+-    master_opts = dict(opts, pki_dir=str(pki_dir.joinpath("master")))
++    master_opts.update(pki_dir=str(pki_dir.joinpath("master")))
+     server = salt.channel.server.ReqServerChannel.factory(master_opts)
+     server.auto_key = salt.daemons.masterapi.AutoKey(server.opts)
+     server.cache_cli = False
++    server.event = salt.utils.event.get_master_event(
++        master_opts, master_opts["sock_dir"], listen=False
++    )
+     server.master_key = salt.crypt.MasterKeys(server.opts)
+ 
+     pub = salt.crypt.get_rsa_pub_key(str(pki_dir.joinpath("minion", "minion.pub")))
+@@ -1055,25 +1092,27 @@ async def test_req_serv_auth_v1(pki_dir):
+     assert "load" not in ret
+ 
+ 
+-async def test_req_serv_auth_v2(pki_dir):
+-    opts = {
+-        "master_uri": "tcp://127.0.0.1:4506",
+-        "interface": "127.0.0.1",
+-        "ret_port": 4506,
+-        "ipv6": False,
+-        "sock_dir": ".",
+-        "pki_dir": str(pki_dir.joinpath("minion")),
+-        "id": "minion",
+-        "__role": "minion",
+-        "keysize": 4096,
+-        "max_minions": 0,
+-        "auto_accept": False,
+-        "open_mode": False,
+-        "key_pass": None,
+-        "master_sign_pubkey": False,
+-        "publish_port": 4505,
+-        "auth_mode": 1,
+-    }
++async def test_req_serv_auth_v2(pki_dir, master_opts, minion_opts):
++    minion_opts.update(
++        {
++            "master_uri": "tcp://127.0.0.1:4506",
++            "interface": "127.0.0.1",
++            "ret_port": 4506,
++            "ipv6": False,
++            "sock_dir": ".",
++            "pki_dir": str(pki_dir.joinpath("minion")),
++            "id": "minion",
++            "__role": "minion",
++            "keysize": 4096,
++            "max_minions": 0,
++            "auto_accept": False,
++            "open_mode": False,
++            "key_pass": None,
++            "master_sign_pubkey": False,
++            "publish_port": 4505,
++            "auth_mode": 1,
++        }
++    )
+     SMaster.secrets["aes"] = {
+         "secret": multiprocessing.Array(
+             ctypes.c_char,
+@@ -1081,10 +1120,13 @@ async def test_req_serv_auth_v2(pki_dir):
+         ),
+         "reload": salt.crypt.Crypticle.generate_key_string,
+     }
+-    master_opts = dict(opts, pki_dir=str(pki_dir.joinpath("master")))
++    master_opts.update(pki_dir=str(pki_dir.joinpath("master")))
+     server = salt.channel.server.ReqServerChannel.factory(master_opts)
+     server.auto_key = salt.daemons.masterapi.AutoKey(server.opts)
+     server.cache_cli = False
++    server.event = salt.utils.event.get_master_event(
++        master_opts, master_opts["sock_dir"], listen=False
++    )
+     server.master_key = salt.crypt.MasterKeys(server.opts)
+ 
+     pub = salt.crypt.get_rsa_pub_key(str(pki_dir.joinpath("minion", "minion.pub")))
+@@ -1110,26 +1152,28 @@ async def test_req_serv_auth_v2(pki_dir):
+     assert "load" in ret
+ 
+ 
+-async def test_req_chan_auth_v2(pki_dir, io_loop):
+-    opts = {
+-        "master_uri": "tcp://127.0.0.1:4506",
+-        "interface": "127.0.0.1",
+-        "ret_port": 4506,
+-        "ipv6": False,
+-        "sock_dir": ".",
+-        "pki_dir": str(pki_dir.joinpath("minion")),
+-        "id": "minion",
+-        "__role": "minion",
+-        "keysize": 4096,
+-        "max_minions": 0,
+-        "auto_accept": False,
+-        "open_mode": False,
+-        "key_pass": None,
+-        "publish_port": 4505,
+-        "auth_mode": 1,
+-        "acceptance_wait_time": 3,
+-        "acceptance_wait_time_max": 3,
+-    }
++async def test_req_chan_auth_v2(pki_dir, io_loop, master_opts, minion_opts):
++    minion_opts.update(
++        {
++            "master_uri": "tcp://127.0.0.1:4506",
++            "interface": "127.0.0.1",
++            "ret_port": 4506,
++            "ipv6": False,
++            "sock_dir": ".",
++            "pki_dir": str(pki_dir.joinpath("minion")),
++            "id": "minion",
++            "__role": "minion",
++            "keysize": 4096,
++            "max_minions": 0,
++            "auto_accept": False,
++            "open_mode": False,
++            "key_pass": None,
++            "publish_port": 4505,
++            "auth_mode": 1,
++            "acceptance_wait_time": 3,
++            "acceptance_wait_time_max": 3,
++        }
++    )
+     SMaster.secrets["aes"] = {
+         "secret": multiprocessing.Array(
+             ctypes.c_char,
+@@ -1137,19 +1181,26 @@ async def test_req_chan_auth_v2(pki_dir, io_loop):
+         ),
+         "reload": salt.crypt.Crypticle.generate_key_string,
+     }
+-    master_opts = dict(opts, pki_dir=str(pki_dir.joinpath("master")))
++    master_opts.update(pki_dir=str(pki_dir.joinpath("master")))
+     master_opts["master_sign_pubkey"] = False
+     server = salt.channel.server.ReqServerChannel.factory(master_opts)
+     server.auto_key = salt.daemons.masterapi.AutoKey(server.opts)
+     server.cache_cli = False
++    server.event = salt.utils.event.get_master_event(
++        master_opts, master_opts["sock_dir"], listen=False
++    )
+     server.master_key = salt.crypt.MasterKeys(server.opts)
+-    opts["verify_master_pubkey_sign"] = False
+-    opts["always_verify_signature"] = False
+-    client = salt.channel.client.AsyncReqChannel.factory(opts, io_loop=io_loop)
++    minion_opts["verify_master_pubkey_sign"] = False
++    minion_opts["always_verify_signature"] = False
++    client = salt.channel.client.AsyncReqChannel.factory(minion_opts, io_loop=io_loop)
++    client = salt.channel.client.AsyncReqChannel.factory(minion_opts, io_loop=io_loop)
++    auth_client = salt.channel.client.AsyncReqChannel.factory(
++        minion_opts, io_loop=io_loop, crypt="clear"
++    )
+     signin_payload = client.auth.minion_sign_in_payload()
+-    pload = client._package_load(signin_payload)
++    pload = auth_client._package_load(signin_payload)
+     assert "version" in pload
+-    assert pload["version"] == 2
++    assert pload["version"] == 3
+ 
+     ret = server._auth(pload["load"], sign_messages=True)
+     assert "sig" in ret
+@@ -1159,26 +1210,28 @@ async def test_req_chan_auth_v2(pki_dir, io_loop):
+     assert "publish_port" in ret
+ 
+ 
+-async def test_req_chan_auth_v2_with_master_signing(pki_dir, io_loop):
+-    opts = {
+-        "master_uri": "tcp://127.0.0.1:4506",
+-        "interface": "127.0.0.1",
+-        "ret_port": 4506,
+-        "ipv6": False,
+-        "sock_dir": ".",
+-        "pki_dir": str(pki_dir.joinpath("minion")),
+-        "id": "minion",
+-        "__role": "minion",
+-        "keysize": 4096,
+-        "max_minions": 0,
+-        "auto_accept": False,
+-        "open_mode": False,
+-        "key_pass": None,
+-        "publish_port": 4505,
+-        "auth_mode": 1,
+-        "acceptance_wait_time": 3,
+-        "acceptance_wait_time_max": 3,
+-    }
++async def test_req_chan_auth_v2_with_master_signing(pki_dir, io_loop, minion_opts, master_opts):
++    minion_opts.update(
++        {
++            "master_uri": "tcp://127.0.0.1:4506",
++            "interface": "127.0.0.1",
++            "ret_port": 4506,
++            "ipv6": False,
++            "sock_dir": ".",
++            "pki_dir": str(pki_dir.joinpath("minion")),
++            "id": "minion",
++            "__role": "minion",
++            "keysize": 4096,
++            "max_minions": 0,
++            "auto_accept": False,
++            "open_mode": False,
++            "key_pass": None,
++            "publish_port": 4505,
++            "auth_mode": 1,
++            "acceptance_wait_time": 3,
++            "acceptance_wait_time_max": 3,
++        }
++    )
+     SMaster.secrets["aes"] = {
+         "secret": multiprocessing.Array(
+             ctypes.c_char,
+@@ -1186,7 +1239,7 @@ async def test_req_chan_auth_v2_with_master_signing(pki_dir, io_loop):
+         ),
+         "reload": salt.crypt.Crypticle.generate_key_string,
+     }
+-    master_opts = dict(opts, pki_dir=str(pki_dir.joinpath("master")))
++    master_opts.update(pki_dir=str(pki_dir.joinpath("master")))
+     master_opts["master_sign_pubkey"] = True
+     master_opts["master_use_pubkey_signature"] = False
+     master_opts["signing_key_pass"] = True
+@@ -1194,22 +1247,28 @@ async def test_req_chan_auth_v2_with_master_signing(pki_dir, io_loop):
+     server = salt.channel.server.ReqServerChannel.factory(master_opts)
+     server.auto_key = salt.daemons.masterapi.AutoKey(server.opts)
+     server.cache_cli = False
++    server.event = salt.utils.event.get_master_event(
++        master_opts, master_opts["sock_dir"], listen=False
++    )
+     server.master_key = salt.crypt.MasterKeys(server.opts)
+-    opts["verify_master_pubkey_sign"] = True
+-    opts["always_verify_signature"] = True
+-    opts["master_sign_key_name"] = "master_sign"
+-    opts["master"] = "master"
++    minion_opts["verify_master_pubkey_sign"] = True
++    minion_opts["always_verify_signature"] = True
++    minion_opts["master_sign_key_name"] = "master_sign"
++    minion_opts["master"] = "master"
+ 
+     assert (
+         pki_dir.joinpath("minion", "minion_master.pub").read_text()
+         == pki_dir.joinpath("master", "master.pub").read_text()
+     )
+ 
+-    client = salt.channel.client.AsyncReqChannel.factory(opts, io_loop=io_loop)
++    client = salt.channel.client.AsyncReqChannel.factory(minion_opts, io_loop=io_loop)
++    auth_client = salt.channel.client.AsyncReqChannel.factory(
++        minion_opts, io_loop=io_loop, crypt="clear"
++    )
+     signin_payload = client.auth.minion_sign_in_payload()
+-    pload = client._package_load(signin_payload)
++    pload = auth_client._package_load(signin_payload)
+     assert "version" in pload
+-    assert pload["version"] == 2
++    assert pload["version"] == 3
+ 
+     server_reply = server._auth(pload["load"], sign_messages=True)
+     # With version 2 we always get a clear signed response
+@@ -1233,10 +1292,14 @@ async def test_req_chan_auth_v2_with_master_signing(pki_dir, io_loop):
+     server = salt.channel.server.ReqServerChannel.factory(master_opts)
+     server.auto_key = salt.daemons.masterapi.AutoKey(server.opts)
+     server.cache_cli = False
++    server.event = salt.utils.event.get_master_event(
++        master_opts, master_opts["sock_dir"], listen=False
++    )
+     server.master_key = salt.crypt.MasterKeys(server.opts)
+ 
+     signin_payload = client.auth.minion_sign_in_payload()
+-    pload = client._package_load(signin_payload)
++
++    pload = auth_client._package_load(signin_payload)
+     server_reply = server._auth(pload["load"], sign_messages=True)
+     ret = client.auth.handle_signin_response(signin_payload, server_reply)
+ 
+@@ -1250,28 +1313,30 @@ async def test_req_chan_auth_v2_with_master_signing(pki_dir, io_loop):
+     )
+ 
+ 
+-async def test_req_chan_auth_v2_new_minion_with_master_pub(pki_dir, io_loop):
++async def test_req_chan_auth_v2_new_minion_with_master_pub(pki_dir, io_loop, master_opts, minion_opts):
+ 
+     pki_dir.joinpath("master", "minions", "minion").unlink()
+-    opts = {
+-        "master_uri": "tcp://127.0.0.1:4506",
+-        "interface": "127.0.0.1",
+-        "ret_port": 4506,
+-        "ipv6": False,
+-        "sock_dir": ".",
+-        "pki_dir": str(pki_dir.joinpath("minion")),
+-        "id": "minion",
+-        "__role": "minion",
+-        "keysize": 4096,
+-        "max_minions": 0,
+-        "auto_accept": False,
+-        "open_mode": False,
+-        "key_pass": None,
+-        "publish_port": 4505,
+-        "auth_mode": 1,
+-        "acceptance_wait_time": 3,
+-        "acceptance_wait_time_max": 3,
+-    }
++    minion_opts.update(
++            {
++            "master_uri": "tcp://127.0.0.1:4506",
++            "interface": "127.0.0.1",
++            "ret_port": 4506,
++            "ipv6": False,
++            "sock_dir": ".",
++            "pki_dir": str(pki_dir.joinpath("minion")),
++            "id": "minion",
++            "__role": "minion",
++            "keysize": 4096,
++            "max_minions": 0,
++            "auto_accept": False,
++            "open_mode": False,
++            "key_pass": None,
++            "publish_port": 4505,
++            "auth_mode": 1,
++            "acceptance_wait_time": 3,
++            "acceptance_wait_time_max": 3,
++        }
++    )
+     SMaster.secrets["aes"] = {
+         "secret": multiprocessing.Array(
+             ctypes.c_char,
+@@ -1279,19 +1344,26 @@ async def test_req_chan_auth_v2_new_minion_with_master_pub(pki_dir, io_loop):
+         ),
+         "reload": salt.crypt.Crypticle.generate_key_string,
+     }
+-    master_opts = dict(opts, pki_dir=str(pki_dir.joinpath("master")))
++    master_opts.update(pki_dir=str(pki_dir.joinpath("master")))
+     master_opts["master_sign_pubkey"] = False
+     server = salt.channel.server.ReqServerChannel.factory(master_opts)
+     server.auto_key = salt.daemons.masterapi.AutoKey(server.opts)
+     server.cache_cli = False
++    server.event = salt.utils.event.get_master_event(
++        master_opts, master_opts["sock_dir"], listen=False
++    )
+     server.master_key = salt.crypt.MasterKeys(server.opts)
+-    opts["verify_master_pubkey_sign"] = False
+-    opts["always_verify_signature"] = False
+-    client = salt.channel.client.AsyncReqChannel.factory(opts, io_loop=io_loop)
++    minion_opts["verify_master_pubkey_sign"] = False
++    minion_opts["always_verify_signature"] = False
++    client = salt.channel.client.AsyncReqChannel.factory(minion_opts, io_loop=io_loop)
++    client = salt.channel.client.AsyncReqChannel.factory(minion_opts, io_loop=io_loop)
++    auth_client = salt.channel.client.AsyncReqChannel.factory(
++        minion_opts, io_loop=io_loop, crypt="clear"
++    )
+     signin_payload = client.auth.minion_sign_in_payload()
+-    pload = client._package_load(signin_payload)
++    pload = auth_client._package_load(signin_payload)
+     assert "version" in pload
+-    assert pload["version"] == 2
++    assert pload["version"] == 3
+ 
+     ret = server._auth(pload["load"], sign_messages=True)
+     assert "sig" in ret
+@@ -1299,7 +1371,7 @@ async def test_req_chan_auth_v2_new_minion_with_master_pub(pki_dir, io_loop):
+     assert ret == "retry"
+ 
+ 
+-async def test_req_chan_auth_v2_new_minion_with_master_pub_bad_sig(pki_dir, io_loop):
++async def test_req_chan_auth_v2_new_minion_with_master_pub_bad_sig(pki_dir, io_loop, master_opts, minion_opts):
+ 
+     pki_dir.joinpath("master", "minions", "minion").unlink()
+ 
+@@ -1311,25 +1383,27 @@ async def test_req_chan_auth_v2_new_minion_with_master_pub_bad_sig(pki_dir, io_l
+     mapub.unlink()
+     mapub.write_text(MASTER2_PUB_KEY.strip())
+ 
+-    opts = {
+-        "master_uri": "tcp://127.0.0.1:4506",
+-        "interface": "127.0.0.1",
+-        "ret_port": 4506,
+-        "ipv6": False,
+-        "sock_dir": ".",
+-        "pki_dir": str(pki_dir.joinpath("minion")),
+-        "id": "minion",
+-        "__role": "minion",
+-        "keysize": 4096,
+-        "max_minions": 0,
+-        "auto_accept": False,
+-        "open_mode": False,
+-        "key_pass": None,
+-        "publish_port": 4505,
+-        "auth_mode": 1,
+-        "acceptance_wait_time": 3,
+-        "acceptance_wait_time_max": 3,
+-    }
++    minion_opts.update(
++            {
++            "master_uri": "tcp://127.0.0.1:4506",
++            "interface": "127.0.0.1",
++            "ret_port": 4506,
++            "ipv6": False,
++            "sock_dir": ".",
++            "pki_dir": str(pki_dir.joinpath("minion")),
++            "id": "minion",
++            "__role": "minion",
++            "keysize": 4096,
++            "max_minions": 0,
++            "auto_accept": False,
++            "open_mode": False,
++            "key_pass": None,
++            "publish_port": 4505,
++            "auth_mode": 1,
++            "acceptance_wait_time": 3,
++            "acceptance_wait_time_max": 3,
++        }
++    )
+     SMaster.secrets["aes"] = {
+         "secret": multiprocessing.Array(
+             ctypes.c_char,
+@@ -1337,19 +1411,25 @@ async def test_req_chan_auth_v2_new_minion_with_master_pub_bad_sig(pki_dir, io_l
+         ),
+         "reload": salt.crypt.Crypticle.generate_key_string,
+     }
+-    master_opts = dict(opts, pki_dir=str(pki_dir.joinpath("master")))
++    master_opts.update(pki_dir=str(pki_dir.joinpath("master")))
+     master_opts["master_sign_pubkey"] = False
+     server = salt.channel.server.ReqServerChannel.factory(master_opts)
+     server.auto_key = salt.daemons.masterapi.AutoKey(server.opts)
+     server.cache_cli = False
++    server.event = salt.utils.event.get_master_event(
++        master_opts, master_opts["sock_dir"], listen=False
++    )
+     server.master_key = salt.crypt.MasterKeys(server.opts)
+-    opts["verify_master_pubkey_sign"] = False
+-    opts["always_verify_signature"] = False
+-    client = salt.channel.client.AsyncReqChannel.factory(opts, io_loop=io_loop)
++    minion_opts["verify_master_pubkey_sign"] = False
++    minion_opts["always_verify_signature"] = False
++    client = salt.channel.client.AsyncReqChannel.factory(minion_opts, io_loop=io_loop)
+     signin_payload = client.auth.minion_sign_in_payload()
+-    pload = client._package_load(signin_payload)
++    auth_client = salt.channel.client.AsyncReqChannel.factory(
++        minion_opts, io_loop=io_loop, crypt="clear"
++    )
++    pload = auth_client._package_load(signin_payload)
+     assert "version" in pload
+-    assert pload["version"] == 2
++    assert pload["version"] == 3
+ 
+     ret = server._auth(pload["load"], sign_messages=True)
+     assert "sig" in ret
+@@ -1357,29 +1437,31 @@ async def test_req_chan_auth_v2_new_minion_with_master_pub_bad_sig(pki_dir, io_l
+         ret = client.auth.handle_signin_response(signin_payload, ret)
+ 
+ 
+-async def test_req_chan_auth_v2_new_minion_without_master_pub(pki_dir, io_loop):
++async def test_req_chan_auth_v2_new_minion_without_master_pub(pki_dir, io_loop, minion_opts, master_opts):
+ 
+     pki_dir.joinpath("master", "minions", "minion").unlink()
+     pki_dir.joinpath("minion", "minion_master.pub").unlink()
+-    opts = {
+-        "master_uri": "tcp://127.0.0.1:4506",
+-        "interface": "127.0.0.1",
+-        "ret_port": 4506,
+-        "ipv6": False,
+-        "sock_dir": ".",
+-        "pki_dir": str(pki_dir.joinpath("minion")),
+-        "id": "minion",
+-        "__role": "minion",
+-        "keysize": 4096,
+-        "max_minions": 0,
+-        "auto_accept": False,
+-        "open_mode": False,
+-        "key_pass": None,
+-        "publish_port": 4505,
+-        "auth_mode": 1,
+-        "acceptance_wait_time": 3,
+-        "acceptance_wait_time_max": 3,
+-    }
++    minion_opts.update(
++        {
++            "master_uri": "tcp://127.0.0.1:4506",
++            "interface": "127.0.0.1",
++            "ret_port": 4506,
++            "ipv6": False,
++            "sock_dir": ".",
++            "pki_dir": str(pki_dir.joinpath("minion")),
++            "id": "minion",
++            "__role": "minion",
++            "keysize": 4096,
++            "max_minions": 0,
++            "auto_accept": False,
++            "open_mode": False,
++            "key_pass": None,
++            "publish_port": 4505,
++            "auth_mode": 1,
++            "acceptance_wait_time": 3,
++            "acceptance_wait_time_max": 3,
++        }
++    )
+     SMaster.secrets["aes"] = {
+         "secret": multiprocessing.Array(
+             ctypes.c_char,
+@@ -1387,19 +1469,25 @@ async def test_req_chan_auth_v2_new_minion_without_master_pub(pki_dir, io_loop):
+         ),
+         "reload": salt.crypt.Crypticle.generate_key_string,
+     }
+-    master_opts = dict(opts, pki_dir=str(pki_dir.joinpath("master")))
++    master_opts.update(pki_dir=str(pki_dir.joinpath("master")))
+     master_opts["master_sign_pubkey"] = False
+     server = salt.channel.server.ReqServerChannel.factory(master_opts)
+     server.auto_key = salt.daemons.masterapi.AutoKey(server.opts)
+     server.cache_cli = False
++    server.event = salt.utils.event.get_master_event(
++        master_opts, master_opts["sock_dir"], listen=False
++    )
+     server.master_key = salt.crypt.MasterKeys(server.opts)
+-    opts["verify_master_pubkey_sign"] = False
+-    opts["always_verify_signature"] = False
+-    client = salt.channel.client.AsyncReqChannel.factory(opts, io_loop=io_loop)
++    minion_opts["verify_master_pubkey_sign"] = False
++    minion_opts["always_verify_signature"] = False
++    client = salt.channel.client.AsyncReqChannel.factory(minion_opts, io_loop=io_loop)
++    auth_client = salt.channel.client.AsyncReqChannel.factory(
++        minion_opts, io_loop=io_loop, crypt="clear"
++    )
+     signin_payload = client.auth.minion_sign_in_payload()
+-    pload = client._package_load(signin_payload)
++    pload = auth_client._package_load(signin_payload)
+     assert "version" in pload
+-    assert pload["version"] == 2
++    assert pload["version"] == 3
+ 
+     ret = server._auth(pload["load"], sign_messages=True)
+     assert "sig" in ret
+@@ -1436,13 +1524,14 @@ async def test_req_server_garbage_request(io_loop):
+     request_server.stream.send.assert_called_once_with(valid_response)
+ 
+ 
+-async def test_req_chan_bad_payload_to_decode(pki_dir, io_loop):
++async def test_req_chan_bad_payload_to_decode(pki_dir, io_loop, caplog):
+     opts = {
+         "master_uri": "tcp://127.0.0.1:4506",
+         "interface": "127.0.0.1",
+         "ret_port": 4506,
+         "ipv6": False,
+         "sock_dir": ".",
++        "cachedir": "",
+         "pki_dir": str(pki_dir.joinpath("minion")),
+         "id": "minion",
+         "__role": "minion",
+@@ -1467,9 +1556,16 @@ async def test_req_chan_bad_payload_to_decode(pki_dir, io_loop):
+     master_opts["master_sign_pubkey"] = False
+     server = salt.channel.server.ReqServerChannel.factory(master_opts)
+ 
+-    with pytest.raises(salt.exceptions.SaltDeserializationError):
+-        server._decode_payload(None)
+-    with pytest.raises(salt.exceptions.SaltDeserializationError):
+-        server._decode_payload({})
+-    with pytest.raises(salt.exceptions.SaltDeserializationError):
+-        server._decode_payload(12345)
++    with caplog.at_level(logging.WARNING):
++        await server.handle_message(None)
++        assert "bad load received on socket" in caplog.text
++    caplog.clear()
++
++    with caplog.at_level(logging.WARNING):
++        await server.handle_message({})
++        assert "bad load received on socket" in caplog.text
++    caplog.clear()
++
++    with caplog.at_level(logging.WARNING):
++        await server.handle_message(12345)
++        assert "bad load received on socket" in caplog.text
+diff --git a/tests/pytests/unit/utils/test_gitfs.py b/tests/pytests/unit/utils/test_gitfs.py
+index 3c4a85a856a..71c6c254b52 100644
+--- a/tests/pytests/unit/utils/test_gitfs.py
++++ b/tests/pytests/unit/utils/test_gitfs.py
+@@ -4,6 +4,7 @@ import time
+ import pytest
+ 
+ import salt.config
++import salt.exceptions
+ import salt.fileserver.gitfs
+ import salt.utils.gitfs
+ from salt.exceptions import FileserverConfigError
+@@ -260,3 +261,148 @@ def test_checkout_pygit2_with_home_env_unset(_prepare_provider):
+ )
+ def test_get_cachedir_basename_pygit2(_prepare_provider):
+     assert "_" == _prepare_provider.get_cache_basename()
++
++
++def test_find_file(tmp_path):
++    opts = {
++        "cachedir": f"{tmp_path / 'cache'}",
++        "gitfs_user": "",
++        "gitfs_password": "",
++        "gitfs_pubkey": "",
++        "gitfs_privkey": "",
++        "gitfs_passphrase": "",
++        "gitfs_insecure_auth": False,
++        "gitfs_refspecs": salt.config._DFLT_REFSPECS,
++        "gitfs_ssl_verify": True,
++        "gitfs_branch": "master",
++        "gitfs_base": "master",
++        "gitfs_root": "",
++        "gitfs_env": "",
++        "gitfs_fallback": "",
++    }
++    remotes = []
++
++    gitfs = salt.utils.gitfs.GitFS(opts, remotes)
++    assert gitfs.find_file("asdf") == {"path": "", "rel": ""}
++
++
++def test_find_file_bad_path(tmp_path):
++    opts = {
++        "cachedir": f"{tmp_path / 'cache'}",
++        "gitfs_user": "",
++        "gitfs_password": "",
++        "gitfs_pubkey": "",
++        "gitfs_privkey": "",
++        "gitfs_passphrase": "",
++        "gitfs_insecure_auth": False,
++        "gitfs_refspecs": salt.config._DFLT_REFSPECS,
++        "gitfs_ssl_verify": True,
++        "gitfs_branch": "master",
++        "gitfs_base": "master",
++        "gitfs_root": "",
++        "gitfs_env": "",
++        "gitfs_fallback": "",
++    }
++    remotes = []
++
++    gitfs = salt.utils.gitfs.GitFS(opts, remotes)
++    with pytest.raises(salt.exceptions.SaltValidationError):
++        gitfs.find_file("sdf/../../../asdf")
++
++
++def test_find_file_bad_env(tmp_path):
++    opts = {
++        "cachedir": f"{tmp_path / 'cache'}",
++        "gitfs_user": "",
++        "gitfs_password": "",
++        "gitfs_pubkey": "",
++        "gitfs_privkey": "",
++        "gitfs_passphrase": "",
++        "gitfs_insecure_auth": False,
++        "gitfs_refspecs": salt.config._DFLT_REFSPECS,
++        "gitfs_ssl_verify": True,
++        "gitfs_branch": "master",
++        "gitfs_base": "master",
++        "gitfs_root": "",
++        "gitfs_env": "",
++        "gitfs_fallback": "",
++    }
++    remotes = []
++
++    gitfs = salt.utils.gitfs.GitFS(opts, remotes)
++    with pytest.raises(salt.exceptions.SaltValidationError):
++        gitfs.find_file("asdf", tgt_env="asd/../../../sdf")
++
++
++@pytest.mark.parametrize(
++    "remote,valid",
++    [
++        ("git@github.com:/saltstack/salt", True),
++        ("git@github.com:saltstack/salt", True),
++        ("git@github.com/saltstack/salt", False),
++        ("ssh://git@github.com/saltstack/salt.git", True),
++        ("ssh://git@github.com:22/saltstack/salt.git", True),
++        ("https://github.com/salttack/salt.git", True),
++        ("https://github.com/\nsaltstack/salt.git", False),
++        ("https://git:mypassword@github.com/saltstack/salt.git", True),
++        ("file:///srv/git/salt.git", True),
++    ],
++)
++def test_remote_validation(remote, valid):
++    assert salt.utils.gitfs.GitFS.validate_remote(remote) is valid
++
++
++@pytest.mark.parametrize(
++    "remote,result",
++    [
++        ("git@github.com:/saltstack/salt", "ssh://git@github.com/saltstack/salt"),
++        ("git@github.com:saltstack/salt", "ssh://git@github.com/saltstack/salt"),
++        (
++            "ssh://git@github.com/saltstack/salt.git",
++            "ssh://git@github.com/saltstack/salt.git",
++        ),
++        (
++            "ssh://git@github.com:22/saltstack/salt.git",
++            "ssh://git@github.com:22/saltstack/salt.git",
++        ),
++        (
++            "https://github.com/salttack/salt.git",
++            "https://github.com/salttack/salt.git",
++        ),
++        (
++            "https://git:mypassword@github.com/saltstack/salt.git",
++            "https://git:mypassword@github.com/saltstack/salt.git",
++        ),
++        ("file:///srv/git/salt.git", "file:///srv/git/salt.git"),
++    ],
++)
++def test_remote_to_url(remote, result):
++    assert salt.utils.gitfs.GitFS.remote_to_url(remote) == result
++
++
++def test_find_file_subdir(tmp_path):
++    root = tmp_path / "root"
++    root.mkdir()
++    (root / "refs").mkdir()
++    (root / "refs" / "base").mkdir()
++    opts = {
++        "cachedir": f"{tmp_path / 'cache'}",
++        "gitfs_user": "",
++        "gitfs_password": "",
++        "gitfs_pubkey": "",
++        "gitfs_privkey": "",
++        "gitfs_passphrase": "",
++        "gitfs_insecure_auth": False,
++        "gitfs_refspecs": salt.config._DFLT_REFSPECS,
++        "gitfs_ssl_verify": True,
++        "gitfs_branch": "master",
++        "gitfs_base": "master",
++        "gitfs_root": "",
++        "gitfs_env": "",
++        "gitfs_fallback": "",
++    }
++    remotes = []
++    gitfs = salt.utils.gitfs.GitFS(opts, remotes)
++    gitfs.cache_root = str(root)
++    ret = gitfs.find_file("foo/init.sls")
++    assert ret == {"path": "", "rel": ""}
+diff --git a/tests/pytests/unit/utils/test_virt.py b/tests/pytests/unit/utils/test_virt.py
+new file mode 100644
+index 00000000000..7130d74cdad
+--- /dev/null
++++ b/tests/pytests/unit/utils/test_virt.py
+@@ -0,0 +1,21 @@
++import pytest
++
++import salt.exceptions
++import salt.utils.virt
++
++
++def test_virt_key(tmp_path):
++    opts = {"pki_dir": f"{tmp_path / 'pki'}"}
++    salt.utils.virt.VirtKey("asdf", "minion", opts)
++
++
++def test_virt_key_bad_hyper(tmp_path):
++    opts = {"pki_dir": f"{tmp_path / 'pki'}"}
++    with pytest.raises(salt.exceptions.SaltValidationError):
++        salt.utils.virt.VirtKey("asdf/../../../sdf", "minion", opts)
++
++
++def test_virt_key_bad_id_(tmp_path):
++    opts = {"pki_dir": f"{tmp_path / 'pki'}"}
++    with pytest.raises(salt.exceptions.SaltValidationError):
++        salt.utils.virt.VirtKey("hyper", "minion/../../", opts)
+diff --git a/tests/pytests/unit/utils/verify/test_clean_path.py b/tests/pytests/unit/utils/verify/test_clean_path.py
+new file mode 100644
+index 00000000000..da2c6b74edb
+--- /dev/null
++++ b/tests/pytests/unit/utils/verify/test_clean_path.py
+@@ -0,0 +1,117 @@
++"""
++salt.utils.clean_path works as expected
++"""
++
++import ctypes
++import os
++
++import pytest
++
++import salt.utils.verify
++from tests.support.mock import patch
++
++
++class Symlink:
++    """
++    symlink(source, link_name) Creates a symbolic link pointing to source named
++    link_name
++    """
++
++    def __init__(self):
++        self._csl = None
++
++    def __call__(self, source, link_name):
++        if self._csl is None:
++            self._csl = ctypes.windll.kernel32.CreateSymbolicLinkW
++            self._csl.argtypes = (ctypes.c_wchar_p, ctypes.c_wchar_p, ctypes.c_uint32)
++            self._csl.restype = ctypes.c_ubyte
++        flags = 0
++        if source is not None and source.is_dir():
++            flags = 1
++
++        if self._csl(str(link_name), str(source), flags) == 0:
++            raise ctypes.WinError()
++
++
++@pytest.fixture(scope="module")
++def symlink():
++    return Symlink()
++
++
++@pytest.fixture
++def setup_links(tmp_path, symlink):
++    to_path = tmp_path / "linkto"
++    from_path = tmp_path / "linkfrom"
++    if salt.utils.platform.is_windows():
++        kwargs = {}
++    else:
++        kwargs = {"target_is_directory": True}
++    if salt.utils.platform.is_windows():
++        symlink(to_path, from_path, **kwargs)
++    else:
++        from_path.symlink_to(to_path, **kwargs)
++    return to_path, from_path
++
++
++def test_clean_path_symlinked_src(setup_links):
++    to_path, from_path = setup_links
++    test_path = from_path / "test"
++    expect_path = str(to_path / "test")
++    ret = salt.utils.verify.clean_path(str(from_path), str(test_path))
++    assert ret == expect_path, f"{ret} is not {expect_path}"
++
++
++def test_clean_path_symlinked_tgt(setup_links):
++    to_path, from_path = setup_links
++    test_path = to_path / "test"
++    expect_path = str(to_path / "test")
++    ret = salt.utils.verify.clean_path(str(from_path), str(test_path))
++    assert ret == expect_path, f"{ret} is not {expect_path}"
++
++
++def test_clean_path_symlinked_src_unresolved(setup_links):
++    to_path, from_path = setup_links
++    test_path = from_path / "test"
++    expect_path = str(from_path / "test")
++    ret = salt.utils.verify.clean_path(str(from_path), str(test_path), realpath=False)
++    assert ret == expect_path, f"{ret} is not {expect_path}"
++
++
++def test_clean_path_valid(tmp_path):
++    path_a = str(tmp_path / "foo")
++    path_b = str(tmp_path / "foo" / "bar")
++    assert salt.utils.verify.clean_path(path_a, path_b) == path_b
++
++
++def test_clean_path_invalid(tmp_path):
++    path_a = str(tmp_path / "foo")
++    path_b = str(tmp_path / "baz" / "bar")
++    assert salt.utils.verify.clean_path(path_a, path_b) == ""
++
++
++def test_clean_path_relative_root(tmp_path):
++    with patch("os.getcwd", return_value=str(tmp_path)):
++        path_a = "foo"
++        path_b = str(tmp_path / "foo" / "bar")
++        assert salt.utils.verify.clean_path(path_a, path_b) == path_b
++
++
++def test_clean_traverse_in_path_a(tmp_path):
++    path_a = str(tmp_path)
++    path_b = str(tmp_path / "foo" / ".." / "bar")
++    assert salt.utils.verify.clean_path(path_a, path_b) == os.path.normpath(path_b)
++
++
++def test_clean_traverse_in_path_b(tmp_path):
++    path_a = str(tmp_path)
++    path_b = str(tmp_path / "foo.foo/../bar")
++    assert salt.utils.verify.clean_path(path_a, path_b) == os.path.normpath(path_b)
++
++
++def test_clean_traverse_in_path_c(tmp_path):
++    path_a = str(tmp_path)
++    path_b = str(tmp_path / "foo/../bar/bang")
++    assert salt.utils.verify.clean_path(path_a, path_b) == ""
++    assert salt.utils.verify.clean_path(
++        path_a, path_b, subdir=True
++    ) == os.path.normpath(path_b)
+diff --git a/tests/pytests/unit/utils/verify/test_url.py b/tests/pytests/unit/utils/verify/test_url.py
+new file mode 100644
+index 00000000000..7f5ad67c3be
+--- /dev/null
++++ b/tests/pytests/unit/utils/verify/test_url.py
+@@ -0,0 +1,44 @@
++import pytest
++
++import salt.utils.verify
++
++
++@pytest.mark.parametrize(
++    "data, result",
++    [
++        ("https://saltproject.io", True),
++        (
++            "https://mail.google.com/mail/u/0/#inbox/FMfcgzQbdrMwJwbwbPfCFLjMRQvWVcJK",
++            True,
++        ),
++        ("http://parts.org/foo/bar=/bat", True),
++        ("foobar://saltproject.io", False),
++        ("http://parts.org/foo/b\nar=/bat", False),
++        (
++            'base ssh://fake@git/repo\n[core]\nsshCommand = touch /tmp/pwn\n[remote "origin"]\n',
++            False,
++        ),
++        (
++            'ssh://fake@git/repo\n[core]\nsshCommand = touch /tmp/pwn\n[remote "origin"]\n',
++            False,
++        ),
++        ("https://github.com/saltstack/salt-test-pillar-gitfs.git", True),
++    ],
++)
++def test_url_validator(data, result):
++    assert salt.utils.verify.URLValidator()(data) is result
++
++
++@pytest.mark.parametrize(
++    "data, result",
++    [
++        ("asdf", True),
++        ("asdf-", True),
++        ("0123456789abcdefghijklmnopqrstuv-._~!$&'():@,", True),
++        ("0123456789ABCDEFGHIJKLMNOPQRSTUV-._~!$&'():@,", True),
++        ("abcd\\efg", False),
++    ],
++)
++def test_pchar_validator(data, result):
++    matcher = salt.utils.verify.URLValidator.pchar_matcher()
++    assert bool(matcher.match(data)) == result
+diff --git a/tests/unit/test_master.py b/tests/unit/test_master.py
+index 96fe2a54595..d5eb400cf84 100644
+--- a/tests/unit/test_master.py
++++ b/tests/unit/test_master.py
+@@ -49,6 +49,7 @@ class TransportMethodsTest(TestCase):
+             "_AESFuncs__verify_load",
+             "_AESFuncs__verify_minion",
+             "_AESFuncs__verify_minion_publish",
++            "_handle_minion_event",
+             "__class__",
+             "__delattr__",
+             "__dir__",
+diff --git a/tests/unit/utils/test_gitfs.py b/tests/unit/utils/test_gitfs.py
+index 259ea056fcd..6e99a219ca3 100644
+--- a/tests/unit/utils/test_gitfs.py
++++ b/tests/unit/utils/test_gitfs.py
+@@ -95,6 +95,7 @@ class TestGitBase(TestCase, AdaptedConfigurationTestCaseMixin):
+             remote.fetched = False
+         del self.main_class
+         self._tmp_dir.cleanup()
++        _clear_instance_map()
+ 
+     def test_update_all(self):
+         self.main_class.update()
+diff --git a/tools/pkg/build.py b/tools/pkg/build.py
+index b3f92ef615c..80ab2381031 100644
+--- a/tools/pkg/build.py
++++ b/tools/pkg/build.py
+@@ -415,6 +415,10 @@ def onedir_dependencies(
+             ]
+         )
+ 
++    # Cryptography needs openssl dir set to link to the proper openssl libs.
++    if platform == "macos":
++        env["OPENSSL_DIR"] = f"{dest}"
++
+     version_info = ctx.run(
+         str(python_bin),
+         "-c",
+-- 
+2.50.0
+

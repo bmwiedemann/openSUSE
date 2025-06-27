@@ -556,6 +556,13 @@ Patch171:       fix-ubuntu-24.04-specific-failures-716.patch
 Patch172:       fix-of-cve-2025-47287-bsc-1243268-718.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68047
 Patch173:       add-subsystem-filter-to-udev.exportdb-bsc-1236621-71.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/compare/v3006.11..v3006.12
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68083
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68084
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68085
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68089
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/0519a4cc6b6aac58e5358037ae61436e30b07c17
+Patch174:       several-fixes-for-security-issues.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

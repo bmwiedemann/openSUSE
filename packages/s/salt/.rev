@@ -2626,4 +2626,12 @@ let build start it or we will get libvirt errors.
   * fix-of-cve-2025-47287-bsc-1243268-718.patch</comment>
     <requestid>1284818</requestid>
   </revision>
+  <revision rev="176" vrev="40">
+    <srcmd5>536a337892f64731df784958ba3b442b</srcmd5>
+    <version>3006.0</version>
+    <time>1751058016</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1288665</requestid>
+  </revision>
 </revisionlist>
