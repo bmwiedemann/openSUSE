@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 24 11:19:56 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.31:
+  * Added a new CanonModelID and RFLensType
+  * Added some new FujiFilm AdvancedFilter values
+  * Added a new Nikon Z LensID
+  * Decode a few new Sigma tags
+  * Decode two more types of timed GPS from MP4 videos
+  * Decode more Pentax AF tags for some models
+  * Extract Pages MediaBox from PDF files (github #333)
+  * Enhanced Validate feature to check some embedded images
+  * Remove sub-seconds if they exist when writing a PDF date
+  * Removed a debugging warning left in the -plot update of 13.28
+  * Changed DNG ProfileIFD RGBTables to Binary-type tag (github #334)
+  * Internal code improvements in the handling of some trailers
+  * Patched LNK string parsing for Windows nonconformity (github #332)
+  * Fixed a few possible "uninitialized value" warnings
+
+-------------------------------------------------------------------
 Mon Jun  2 17:33:23 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.30:
