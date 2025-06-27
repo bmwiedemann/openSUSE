@@ -19,7 +19,7 @@
 
 %global         _configure ../configure
 Name:           racket
-Version:        8.16
+Version:        8.17
 Release:        0
 Summary:        Scheme implementation with teaching tools
 License:        Apache-2.0 OR MIT
@@ -236,7 +236,7 @@ done
 
 # Bash completion
 install -Dm 644 %{SOURCE2} %{buildroot}%{_datadir}/bash_completion/completions/%{name}
-install -Dm 644 %{_builddir}/%{name}-%{version}/share/pkgs/drracket/drracket/drracket.png %{buildroot}%{_datadir}/pixmaps/drracket.png
+install -Dm 644 %{_builddir}/%{name}-%{version}/share/pkgs/drracket-core-lib/drracket/drracket.png %{buildroot}%{_datadir}/pixmaps/drracket.png
 
 # rewrite path in .desktop files
 %suse_update_desktop_file -c drracket "DrRacket" "DrRacket is an interactive, integrated, graphical programming environment for the Racket programming languages" "%{_bindir}/drracket" "drracket" Development IDE
