@@ -127,4 +127,12 @@ bugowner: varkoly</comment>
 - dovecot-fix-gssapi.patch applied to fix gssapi</comment>
     <requestid>1287488</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>63ce78eed6af49ab5bdc83fb33ead366</srcmd5>
+    <version>2.4.1</version>
+    <time>1751058061</time>
+    <user>anag_factory</user>
+    <comment>Adap changes add bug number.</comment>
+    <requestid>1288750</requestid>
+  </revision>
 </revisionlist>

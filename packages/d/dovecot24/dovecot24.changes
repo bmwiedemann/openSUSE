@@ -1,7 +1,25 @@
 -------------------------------------------------------------------
+Thu Jun 26 09:18:32 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Update to actual version (Fri May 30 17:05:02 2025) in main branch to fix bsc#1245075
+  [sle16][ppc64le][dovecot] dovecot service failed to start and coredump on ppc64le
+  Turn off tests.
+  * lib-auth: Fix linking due to duplicate symbols
+  * lib-settings: test-settings - Refactor initialization of params3
+  * lib-var-expand: Test hierarchical SETTINGS_EVENT_VAR_EXPAND_PARAMS
+  * lib-settings: Pad initial var expand context with empty tables and providers when needed
+  * Panic: file settings.c: line 1560 (settings_var_expand_init_add): assertion failed: (I_MAX(num_tables, num_provs) == num_ctx)
+  * auth: db-oauth2 - Don't mix table and providers_arr
+  * lib: test-file-cache - Ignore RLIMIT_AS enforcement failure
+  * If the OS does not respect RLIMIT_AS here, lets skip all the rest of the tests.
+  * auth: Fix using passdb_fields with passdb_ldap_bind_userdn=yes
+
+-------------------------------------------------------------------
 Fri May 23 11:48:20 UTC 2025 - Paul Zirnik <paul.zirnik@suse.com>
 
-- dovecot-fix-gssapi.patch applied to fix gssapi
+- dovecot gssapi authentication fails when starting with empty auth data
+  (bsc#1243489)
+  dovecot-fix-gssapi.patch applied to fix gssapi
 
 -------------------------------------------------------------------
 Thu May  8 05:25:21 UTC 2025 - Peter Varkoly <varkoly@suse.com>

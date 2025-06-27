@@ -34,7 +34,6 @@
 %bcond_without zstd
 %bcond_without xapian
 %bcond_without libstemmer
-%bcond_without run_tests
 %if %{is_opensuse}
 %bcond_without apparmor
 %bcond_without textcat
@@ -42,6 +41,7 @@
 %bcond_with apparmor
 %bcond_with textcat
 %endif
+%bcond_with run_tests
 
 Name:           dovecot24
 Version:        2.4.1
@@ -55,8 +55,6 @@ URL:            https://www.dovecot.org
 Source:         https://www.dovecot.org/releases/%{dovecot_branch}/%{pkg_name}-%{dovecot_version}.tar.gz
 Source1:        https://pigeonhole.dovecot.org/releases/%{dovecot_branch}/%{dovecot_pigeonhole_source_dir}.tar.gz
 Source2:        dovecot-rpmlintrc
-Source10:       https://www.dovecot.org/releases/%{dovecot_branch}/%{pkg_name}-%{dovecot_version}.tar.gz.sig
-Source11:       https://pigeonhole.dovecot.org/releases/%{dovecot_branch}/%{dovecot_pigeonhole_source_dir}.tar.gz.sig
 Source12:       dovecot24.keyring
 Source13:       dovecot-2.4.configfiles
 Source15:       dovecot.conf
@@ -68,12 +66,16 @@ Patch1:         dovecot-2.4.0-lua_json.patch
 Patch2:         dovecot-2.3.17-env_script_interpreter.patch
 # PATCH-FIX-OPENSUSE
 Patch3:         dovecot-fix-gssapi.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
+BuildRequires:  libtool
 BuildRequires:  lua-devel
 BuildRequires:  lua-dkjson
 BuildRequires:  pkgconfig
+BuildRequires:  python3
 BuildRequires:  rpcgen
 BuildRequires:  pkgconfig(krb5)
 %if %{with apparmor}
@@ -298,6 +300,7 @@ gzip -9v ChangeLog
 
 %build
 # export CFLAGS="%%{optflags} -Wno-sign-compare"
+./autogen.sh
 %configure                                          \
     --docdir=%{_docdir}/%{pkg_name}                 \
     --with-moduledir=%{_libdir}/%{pkg_name}/modules \
@@ -337,6 +340,7 @@ gzip -9v ChangeLog
 %make_build
 
 pushd %{dovecot_pigeonhole_source_dir}
+    ./autogen.sh
     %configure --with-dovecot=../ \
       --with-ldap=plugin \
       --docdir="%{dovecot_pigeonhole_docdir}"
@@ -377,7 +381,7 @@ install -m 0644 \
 # install sieve docs
 install -m 0755 -Dd %{buildroot}%{dovecot_pigeonhole_docdir}
 pushd %{dovecot_pigeonhole_source_dir}
-sed -i 's/\r$//' doc/rfc/*
+#sed -i 's/\r$//' doc/rfc/*
 cp -av AUTHORS COPYING* INSTALL NEWS README \
        examples/ doc/rfc/ doc/devel \
   %{buildroot}%{dovecot_pigeonhole_docdir}/
