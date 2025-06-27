@@ -1248,4 +1248,21 @@
   * HTTP/3: fixed NGX_HTTP_V3_VARLEN_INT_LEN value</comment>
     <requestid>1281951</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>6ff6de36f23ccfb6bd61f81775b76176</srcmd5>
+    <version>1.29.0</version>
+    <time>1751058026</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 1.29.0
+  * https://nginx.org/en/CHANGES
+  * Added support for response code 103 from proxy and gRPC backends;
+    the &quot;early_hints&quot; directive.
+  * Added loading of secret keys from hardware tokens with OpenSSL provider.
+  * Changed the logging level of SSL errors in a QUIC handshake has been
+    changed from &quot;error&quot; to &quot;crit&quot; for critical errors, and to &quot;info&quot; for
+    the rest; the logging level of unsupported QUIC transport parameters
+    has been lowered from &quot;info&quot; to &quot;debug&quot;.
+  * Disabled OpenSSL 3.5 QUIC API support by default.</comment>
+    <requestid>1288818</requestid>
+  </revision>
 </revisionlist>

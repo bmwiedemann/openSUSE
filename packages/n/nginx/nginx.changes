@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 27 09:33:06 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 1.29.0
+  * https://nginx.org/en/CHANGES
+  * Added support for response code 103 from proxy and gRPC backends;
+    the "early_hints" directive.
+  * Added loading of secret keys from hardware tokens with OpenSSL provider.
+  * Changed the logging level of SSL errors in a QUIC handshake has been
+    changed from "error" to "crit" for critical errors, and to "info" for
+    the rest; the logging level of unsupported QUIC transport parameters
+    has been lowered from "info" to "debug".
+  * Disabled OpenSSL 3.5 QUIC API support by default.
+
+-------------------------------------------------------------------
 Mon Jun  2 13:28:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Updated to 1.28.0:
