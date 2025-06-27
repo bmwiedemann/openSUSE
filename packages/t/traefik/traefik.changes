@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 26 15:05:31 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.4.3
+  - http3
+    * Bump quic-go to v.0.49.0
+  - middleware
+    * Do not log redis sentinel username and password
+
+-------------------------------------------------------------------
 Fri Jun  6 15:50:50 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Improved logging
