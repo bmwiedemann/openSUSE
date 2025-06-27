@@ -17,6 +17,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-checkdmarc
 Version:        5.8.6
@@ -30,8 +31,10 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module importlib_resources >= 6.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-cryptography
 Requires:       python-dnspython >= 2.0.0
 Requires:       python-expiringdict >= 1.1.4
@@ -42,8 +45,6 @@ Requires:       python-pyleri >= 1.3.2
 Requires:       python-requests >= 2.25.0
 Requires:       python-timeout-decorator >= 0.4.1
 Requires:       python-xmltodict
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module dnspython >= 2.0.0}
@@ -73,11 +74,8 @@ A Python module and command line parser for SPF and DMARC records.
 %python_clone -a %{buildroot}%{_bindir}/checkdmarc
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative checkdmarc
-
-%postun
-%python_uninstall_alternative checkdmarc
+%pre
+%python_libalternatives_reset_alternative checkdmarc
 
 %check
 %pyunittest -v tests.py
