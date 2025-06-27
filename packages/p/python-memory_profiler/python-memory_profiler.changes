@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 20 12:59:33 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Jun  4 13:21:52 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - fix usage of libalternatives

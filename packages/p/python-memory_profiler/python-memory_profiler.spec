@@ -17,6 +17,7 @@
 
 
 %bcond_without libalternatives
+%{?sle15_python_module_pythons}
 Name:           python-memory_profiler
 Version:        0.57.0
 Release:        0
