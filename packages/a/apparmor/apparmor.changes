@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 22 12:33:42 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to ApppArmor 4.1.1
+  - unix-chkpwd: allow dac_read_search (boo#1241678)
+  - extend mesa, wutmp and nameservice abstractions
+  - utils: add support for priority rule prefix
+  - various bugfixes
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.1.1
+    for the detailed upstream changelog
+
+-------------------------------------------------------------------
 Mon Jun  9 16:06:29 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
 
 - update dovecot24.diff - more permissions for dovecot 2.4 (boo#1243008)

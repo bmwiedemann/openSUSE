@@ -51,11 +51,11 @@
 %define CATALINA_HOME /usr/share/tomcat6
 %define JAR_FILE changeHatValve.jar
 
-%define tarversion v4.1.0
-%define pyeggversion 4.1.0
+%define tarversion v4.1.1
+%define pyeggversion 4.1.1
 
 Name:           apparmor
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later

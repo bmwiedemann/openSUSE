@@ -2997,4 +2997,18 @@ Note: If openQA still fails with more AppArmor denials in staging, feel free to 
 Also note that the &quot;mailserver_setup&quot; test in https://openqa.opensuse.org/tests/latest?arch=x86_64&amp;distri=opensuse&amp;flavor=DVD&amp;machine=64bit&amp;test=apparmor_profile&amp;version=Tumbleweed#step/mailserver_setup/165 fails for unrelated reasons - with dovecot 2.4, /etc/dovecot/conf.d/ doesn't exist by default anymore, which also makes creating a file in that directory hard.</comment>
     <requestid>1284254</requestid>
   </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>7ffb30581cde2adc5534e855856140c0</srcmd5>
+    <version>4.1.1</version>
+    <time>1751058036</time>
+    <user>anag_factory</user>
+    <comment>- update to ApppArmor 4.1.1
+  - unix-chkpwd: allow dac_read_search (boo#1241678)
+  - extend mesa, wutmp and nameservice abstractions
+  - utils: add support for priority rule prefix
+  - various bugfixes
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.1.1
+    for the detailed upstream changelog (forwarded request 1288379 from cboltz)</comment>
+    <requestid>1288380</requestid>
+  </revision>
 </revisionlist>
