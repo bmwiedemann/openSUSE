@@ -182,4 +182,27 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1252836</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c26414dd6ee90f029c07e719fa36f780</srcmd5>
+    <version>0.20250520</version>
+    <time>1751058076</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.20250520:
+  * Add `--filter-with-data` flag for `gn gen --ide=json`
+  * Handle --ide=vs2019 switch
+  * Handle hpp11 file extension.
+  * Fix `gn help --root-pattern`
+  * Build non-linkable deps async with Ninja's validaitons
+  * Generate compile_commands.json as part of build/gen.py
+  * apply the latest clang-format
+  * Add a test for source_set with modulemap
+  * Write .gitignore file to build directory
+  * Add more on how args are processed to &quot;help execution&quot;.
+  * Make `gn_version` available in the dotfile.
+  * Tweak `help execution` wording after c0a46c5.
+  * Attempt to improve the documentation for &quot;help execution&quot;.
+  * zos: build with -m64 and ignore unknown-pragmas
+  * Unit test parser/tokenizer against double minus</comment>
+    <requestid>1288703</requestid>
+  </revision>
 </revisionlist>
