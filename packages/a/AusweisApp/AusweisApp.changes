@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 26 19:26:39 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.3.2
+    - Improvements with regards to accessibility.
+    - Visual adjustments and optimization of the graphical interface.
+    - Temporarily removing an ID card on an Android smartphone as a card
+      reader before typing in the password no longer results in an error.
+    - On Windows, smartphones that can only be reached via IPv6 are now
+      also recognized as card readers.
+    - Added support for smartphones as card readers on Windows Server.
+    - Relative URL redirects during authentication are now correctly
+      taken into account.
+
+-------------------------------------------------------------------
 Tue Mar 18 14:21:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
