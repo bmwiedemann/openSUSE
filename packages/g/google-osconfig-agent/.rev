@@ -579,4 +579,22 @@
   * Snapshot ZypperPatches, ZypperUpdates (GetPackageUpdates) output (forwarded request 1277349 from glaubitz)</comment>
     <requestid>1277399</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>708688141f48b9319f45cc57b95e700a</srcmd5>
+    <version>20250606.00</version>
+    <time>1751058101</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250606.00
+  * Change base docker images Google's official base images. (#838)
+
+- Update to version 20250523.01
+  * Add a simple no-op OS policy for user testing (#837)
+- from version 20250523.00
+  * Introduce scalibr inventory extractor for dpkg/rpm/cos
+    os/filesystem extractors (linux) (#834)
+  * Trace GetInstalledPackages memory levels (#835)
+- from version 20250520.00
+  * Trace GetInstalledPackages memory levels (#835)</comment>
+    <requestid>1288757</requestid>
+  </revision>
 </revisionlist>

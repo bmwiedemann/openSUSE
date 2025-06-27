@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun 25 11:23:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20250606.00
+  * Change base docker images Google's official base images. (#838)
+
+-------------------------------------------------------------------
+Wed May 28 09:01:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20250523.01
+  * Add a simple no-op OS policy for user testing (#837)
+- from version 20250523.00
+  * Introduce scalibr inventory extractor for dpkg/rpm/cos
+    os/filesystem extractors (linux) (#834)
+  * Trace GetInstalledPackages memory levels (#835)
+- from version 20250520.00
+  * Trace GetInstalledPackages memory levels (#835)
+
+-------------------------------------------------------------------
 Wed May 14 08:37:59 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20250513.00
@@ -535,7 +553,6 @@ Thu Aug 31 12:31:38 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * Added burov, dowgird, paulinakania and Gulio to OWNERS (#482)
 
 -------------------------------------------------------------------
-
 Fri Jul  7 09:33:36 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20230706.02 (bsc#1212418, bsc#1212759)
