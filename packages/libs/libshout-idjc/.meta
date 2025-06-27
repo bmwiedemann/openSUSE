@@ -1,0 +1,5 @@
+<package name="libshout-idjc" project="openSUSE:Factory">
+  <title>Source-client for individuals interested in streaming live radio shows over the Internet using Shoutcast or Icecast servers</title>
+  <description>Libshout is a library for communicating with and sending data to an Icecast server.  It handles the socket connection, the timing of the data, and prevents bad data from getting to the Icecast server.</description>
+  <url>https://sourceforge.net/projects/libshoutidjc.idjc.p/</url>
+</package>
