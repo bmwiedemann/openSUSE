@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 20 18:54:44 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Build with experimental OpenSSL based QUIC support to enable --http3
+
+-------------------------------------------------------------------
 Fri Jun  6 08:26:03 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Sync spec file with SLE codestreams: [jsc#PED-13055, jsc#PED-13056]

@@ -29,6 +29,12 @@
 %global psuffix %{nil}
 %endif
 
+%if 0%{?suse_version} > 1600
+%bcond_without quic
+%else
+%bcond_with quic
+%endif
+
 Name:           curl%{?psuffix}
 Version:        8.14.1
 Release:        0
@@ -52,6 +58,9 @@ BuildRequires:  pkgconfig(libidn2)
 # Disable metalink [bsc#1188218, CVE-2021-22923][bsc#1188217, CVE-2021-22922]
 # BuildRequires:  pkgconfig(libmetalink)
 BuildRequires:  pkgconfig(libnghttp2)
+%if %{with quic}
+BuildRequires:  pkgconfig(libnghttp3)
+%endif
 BuildRequires:  pkgconfig(libpsl)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
@@ -161,6 +170,10 @@ sed -i 's/\(link_all_deplibs=\)unknown/\1no/' configure
 %endif
     --with-libidn2 \
     --with-nghttp2 \
+%if %{with quic}
+    --with-nghttp3 \
+    --with-openssl-quic \
+%endif
     --enable-docs \
 %if %{with mini}
     --disable-dict \

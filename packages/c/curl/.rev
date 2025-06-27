@@ -1993,4 +1993,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
   * Remove unused option --disable-ntlm-wb.</comment>
     <requestid>1284866</requestid>
   </revision>
+  <revision rev="214" vrev="3">
+    <srcmd5>70d4175d2c7243bb15c00b4cc9a60df6</srcmd5>
+    <version>8.14.1</version>
+    <time>1751058027</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1287799</requestid>
+  </revision>
 </revisionlist>
