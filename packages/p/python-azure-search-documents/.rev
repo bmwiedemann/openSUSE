@@ -144,4 +144,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1220073 from glaubitz)</comment>
     <requestid>1220078</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e84a2a6ab1d7f2d21b91c4bb76aa86e3</srcmd5>
+    <version>11.5.3</version>
+    <time>1751058102</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 11.5.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1288634 from glaubitz)</comment>
+    <requestid>1288752</requestid>
+  </revision>
 </revisionlist>
