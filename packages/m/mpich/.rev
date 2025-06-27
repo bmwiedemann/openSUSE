@@ -295,4 +295,12 @@
 - Disable gnu-hpc build flavours (bsc#1239982)</comment>
     <requestid>1265556</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>cad4fcd90e51a546bed74db52f0e0d93</srcmd5>
+    <version>4.3.1</version>
+    <time>1751058081</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1288728</requestid>
+  </revision>
 </revisionlist>

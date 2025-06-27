@@ -65,11 +65,12 @@ ExclusiveArch:  do_not_build
 %define p_mandir  %{p_datadir}/man
 %define p_libdir  %{p_prefix}/%{_lib}
 %define p_libexecdir %{p_prefix}/%{_lib}
+%define p_sysconfdir %{p_prefix}/%{_sysconfdir}
 %define _moduledir /usr/share/modules/gnu-%{module_name}
 %define package_name %{pname}%{?pack_suff}
 
 Name:           %{package_name}%{?testsuite:-testsuite}
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        High-performance and widely portable implementation of MPI
 License:        MIT
@@ -200,6 +201,7 @@ export FCFLAGS="-fallow-argument-mismatch $FCFLAGS"
     --libexecdir=%{p_libexecdir} \
     --mandir=%{p_mandir} \
     --docdir=%{_datadir}/doc/%{name} \
+    --sysconfdir=%{p_sysconfdir} \
     --disable-rpath      \
     --disable-wrapper-rpath      \
 %if "%{build_flavor}" == "ofi"
@@ -318,8 +320,6 @@ fi
 %dir /usr/%_lib/mpi
 %dir /usr/%_lib/mpi/gcc
 %dir /usr/share/modules
-%dir %{_moduledir}
-%{_moduledir}
 %doc %{_datadir}/doc/*
 %dir %{p_prefix}
 %dir %{p_bindir}
@@ -329,9 +329,11 @@ fi
 %dir %{p_mandir}/man1
 %dir %{p_mandir}/man3
 %dir %{p_libdir}
+%{_moduledir}
 %{p_bindir}/*
 %{p_mandir}/man1/*
 %{p_libdir}/*.so.*
+%{p_sysconfdir}
 
 %files devel
 %defattr(-,root,root)

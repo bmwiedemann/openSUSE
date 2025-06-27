@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun 22 17:39:27 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 4.3.1
+  - Fix initialization in GPU-aware builds when no devices are present
+  - Fix internal pmix.h header conflict when building with an external
+    PMIx library.
+  - Fix build issue with Slurm by removing dependency on libslurm and
+    always using internal logic for parsing the Slurm hostfile.
+  - Fix potential stale GPU IPC handle usage resulting in data corruption
+    or crashes
+  - Update XPMEM thresholds to avoid excessive buffer mapping overhead
+  - Fix potential hang in ROMIO when setting info hints on certain files
+  - Improved detection of incompatible PMI[x] client/server configuration
+  - Fix use of PMIX_PREFIX attribute for certain versions of OpenPMIx
+  - Fix Intel GPU output with MPIR_CVAR_DEBUG_SUMMARY
+  - Fix F08 binding compilation with nvfortran
+  - Fix line continuation Hydra's --configfile option
+  - Fix valgrind uninitialized read warnings in ch3
+  - Fix missing mpixxx_opts.conf file with help text for mpicc and friends
+  - Fixes for several compiler warnings
+
+-------------------------------------------------------------------
 Sat Mar 29 14:25:11 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Remove support for gnu-hpc build flavours
