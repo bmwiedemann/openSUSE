@@ -16,54 +16,59 @@
 #
 
 
-# Keep extra test requirements out of Ring1
-%bcond_with ringdisabled
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-fastapi
-Version:        0.115.8
+Name:           python-fastapi%{psuffix}
+Version:        0.115.13
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
 URL:            https://github.com/tiangolo/fastapi
 Source:         https://files.pythonhosted.org/packages/source/f/fastapi/fastapi-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Remove two unknown classifiers
-Patch0:         remove-classifiers.patch
+# PATCH-FIX-OPENSUSE Support starlette 0.47
+Patch0:         support-starlette-0.47.patch
 BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pydantic-settings >= 2.0.0}
-BuildRequires:  %{python_module starlette >= 0.40.0 with %python-starlette < 0.46.0}
-BuildRequires:  %{python_module typing_extensions >= 4.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pydantic >= 1.8.2
 Requires:       python-typing_extensions >= 4.8.0
-Requires:       (python-starlette >= 0.40.0 with python-starlette < 0.46.0)
+Requires:       (python-starlette >= 0.40.0 with python-starlette < 0.48.0)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pdm-backend}
+%if %{with test}
 BuildRequires:  %{python_module Flask >= 1.1.2}
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module PyYAML >= 5.3.1}
 BuildRequires:  %{python_module SQLAlchemy}
+BuildRequires:  %{python_module aiosqlite}
 BuildRequires:  %{python_module anyio >= 3.2.1}
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module dirty-equals}
-BuildRequires:  %{python_module httpx >= 0.23.0}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-multipart >= 0.0.18}
-BuildRequires:  %{python_module trio}
-%if !%{with ringdisabled}
-BuildRequires:  %{python_module aiosqlite}
 BuildRequires:  %{python_module databases >= 0.3.2}
+BuildRequires:  %{python_module dirty-equals}
 BuildRequires:  %{python_module email-validator >= 1.1.1}
+BuildRequires:  %{python_module fastapi = %{version}}
+BuildRequires:  %{python_module httpx >= 0.23.0}
 BuildRequires:  %{python_module inline-snapshot}
 BuildRequires:  %{python_module orjson >= 3.2.1}
 BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module peewee >= 3.13.0}
+BuildRequires:  %{python_module pydantic-settings >= 2.0.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-jose >= 3.3}
+BuildRequires:  %{python_module python-multipart >= 0.0.18}
 BuildRequires:  %{python_module sqlmodel}
+BuildRequires:  %{python_module trio}
 BuildRequires:  %{python_module ujson >= 5.6}
 %endif
 # /SECTION
@@ -79,11 +84,14 @@ Python FastAPI framework.
 %pyproject_wheel
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_clone -a %{buildroot}/%{_bindir}/fastapi
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 # more warnings as expected
 donttest="test_warn_duplicate_operation_id"
 # fails because of changed (cosmetic) body format in httpx 0.28 (technically not suppoerted yet upstream)
@@ -91,34 +99,8 @@ donttest+=" or test_exception_handler_body_access"
 # python-fastapi-cli packages doesn't exists in openSUSE
 donttest+=" or test_fastapi_cli"
 donttest+=" or test_openapi"
-%if %{with ringdisabled}
-ignorefiles="$ignorefiles --ignore tests/test_default_response_class.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_async_sql_databases/test_tutorial001.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_custom_response/test_tutorial009c.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_cookie_param_models/test_tutorial001.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_cookie_param_models/test_tutorial002.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_header_param_models/test_tutorial001.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_header_param_models/test_tutorial002.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_query_param_models/test_tutorial001.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_query_param_models/test_tutorial002.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_response_model/test_tutorial003.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_response_model/test_tutorial003_py310.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_security/test_tutorial005.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_security/test_tutorial005_py39.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_security/test_tutorial005_py310.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_security/test_tutorial005_an.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_security/test_tutorial005_an_py39.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_security/test_tutorial005_an_py310.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_sql_databases/test_tutorial001.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_sql_databases/test_tutorial002.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_sql_databases_peewee"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_response_model/test_tutorial003_01.py"
-ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_response_model/test_tutorial003_01_py310.py"
-
-donttest="$donttest or test_orjson_response_class"
-donttest="$donttest or (test_tutorial001 and test_get_custom_response)"
+%pytest -W ignore::DeprecationWarning -W ignore::PendingDeprecationWarning -W ignore::ResourceWarning -k "not ($donttest)" tests
 %endif
-%pytest -W ignore::DeprecationWarning -W ignore::PendingDeprecationWarning -W ignore::ResourceWarning $ignorefiles -k "not ($donttest)" tests
 
 %post
 %python_install_alternative fastapi
@@ -126,11 +108,13 @@ donttest="$donttest or (test_tutorial001 and test_get_custom_response)"
 %postun
 %python_uninstall_alternative fastapi
 
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/fastapi
 %{python_sitelib}/fastapi-%{version}.dist-info
 %python_alternative %{_bindir}/fastapi
+%endif
 
 %changelog

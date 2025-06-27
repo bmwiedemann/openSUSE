@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jun 27 00:44:09 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove ringdisabled, switch to standard multibuild with a test flavor.
+
+-------------------------------------------------------------------
+Tue Jun 24 01:53:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.115.13:
+  * Fix truncating the model's description with form feed (\f) character
+    for Pydantic V2.
+- Ignore more test files with ringdisabled as inline_snapshot expands
+  inside the testsuite.
+
+-------------------------------------------------------------------
+Fri Jun  6 05:58:54 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-starlette-0.47.patch:
+  * Allow starlette 0.47.
+
+-------------------------------------------------------------------
+Thu May  1 05:53:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.115.12:
+  * Fix convert_underscores=False for header Pydantic models.
+  * Add docs examples and tests (support) for Annotated custom validations,
+    like AfterValidator.
+  * Update internal annotation usage for compatibility with Pydantic 2.11.
+  * Ensure that HTTPDigest only raises an exception when auto_error is True.
+- Drop remove-classifiers.patch, no longer required.
+
+-------------------------------------------------------------------
 Fri Feb  7 11:00:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.115.8

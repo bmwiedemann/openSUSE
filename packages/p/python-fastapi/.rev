@@ -495,4 +495,29 @@
     <comment></comment>
     <requestid>1244151</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>65f6488bae7447bdf9ef96ecfd6ba25a</srcmd5>
+    <version>0.115.13</version>
+    <time>1751058021</time>
+    <user>anag_factory</user>
+    <comment>- Remove ringdisabled, switch to standard multibuild with a test flavor.
+
+- Update to 0.115.13:
+  * Fix truncating the model's description with form feed (\f) character
+    for Pydantic V2.
+- Ignore more test files with ringdisabled as inline_snapshot expands
+  inside the testsuite.
+
+- Add patch support-starlette-0.47.patch:
+  * Allow starlette 0.47.
+
+- Update to 0.115.12:
+  * Fix convert_underscores=False for header Pydantic models.
+  * Add docs examples and tests (support) for Annotated custom validations,
+    like AfterValidator.
+  * Update internal annotation usage for compatibility with Pydantic 2.11.
+  * Ensure that HTTPDigest only raises an exception when auto_error is True.
+- Drop remove-classifiers.patch, no longer required.</comment>
+    <requestid>1288758</requestid>
+  </revision>
 </revisionlist>
