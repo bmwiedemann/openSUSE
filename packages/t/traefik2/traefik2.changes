@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 26 15:00:39 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 2.11.26
+  * middleware
+    - Do not log redis sentinel username and password
+
+-------------------------------------------------------------------
 Fri Jun  6 09:04:25 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 Important: Please read the migration guide at 
