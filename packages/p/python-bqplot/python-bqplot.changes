@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 26 12:04:55 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build javascript in the package with node_modules.tar.gz, generated
+  locally from package.json and create_node_modules.sh
+- Update to 0.12.45 (CVE-2025-5889, bsc#1244347)
+  * feat: add Figure.get_svg_data similar to get_png_data
+  * Backport PR #1644: fix: save_png doesn't work when character \xa0 is used
+  * fix: ascent is now in scipy.datasets instead of scipy.misc
+  * chore: prettier on ScatterGL
+  * fix: after animation, update once without animation for range issue
+  * perf: no need to do an animation if duration is 0
+
+-------------------------------------------------------------------
 Thu Nov 21 18:50:49 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Also skip python313 gh#bqplot/bqplot#1639

@@ -1,7 +1,7 @@
 #
 # spec file for package python-bqplot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # https://github.com/bqplot/bqplot/issues/1639
 %define skip_python312 1
 %define skip_python313 1
-%define         pyver 0.12.43
+%define         pyver 0.12.45
 %define         jupver 0.5.44
 Name:           python-bqplot
 Version:        %{pyver}
@@ -27,10 +27,12 @@ Release:        0
 Summary:        Interactive plotting package for the Jupyter notebook
 License:        Apache-2.0
 URL:            https://github.com/bqplot/bqplot
-# bundled js stuff from PyPI sdist
-Source0:        https://files.pythonhosted.org/packages/source/b/bqplot/bqplot-%{pyver}.tar.gz
-# tests from GitHub source
-Source1:        https://github.com/bqplot/bqplot/archive/refs/tags/%{pyver}.tar.gz#/bqplot-%{pyver}-gh.tar.gz
+Source0:        https://github.com/bqplot/bqplot/archive/refs/tags/%{pyver}.tar.gz#/bqplot-%{pyver}-gh.tar.gz
+Source1:        node_modules.tar.xz
+# Script to vendor node_modules sources
+Source2:        create_node_modules.sh
+# Copied from bqplot/js and force some "resolutions" to fix js conflicts
+Source3:        package.json
 BuildRequires:  %{python_module jupyter-packaging}
 BuildRequires:  %{python_module jupyterlab}
 BuildRequires:  %{python_module pip}
@@ -94,11 +96,18 @@ interactive Jupyter widgets.
 This package provides the jupyterlab extension.
 
 %prep
-%setup -q -n bqplot-%{pyver}
-tar -x --strip-components=1 -f %{SOURCE1} bqplot-%{pyver}/{tests,ui-tests}
+%autosetup -p1 -n bqplot-%{pyver} -a1
+pushd js
+mv ../node_modules .
+popd
 rm bqplot/install.py
 
 %build
+pushd js
+export PATH="${PATH}:node_modules/.bin"
+jlpm run build
+popd
+echo "IM HERE"
 %pyproject_wheel
 
 %install
