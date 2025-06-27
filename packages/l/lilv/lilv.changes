@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 25 17:05:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.24.26:
+  * Add lint option with project metadata and code quality tests
+  * Avoid use of VLAs in lv2apply
+  * Clean up and isolate platform-specific code
+  * Fix C++ test build on MacOS
+  * Fix library current_version on MacOS
+  * Fix test suite when TMPDIR has no trailing slash
+  * Fully separate library code from programs
+  * Improve const correctness
+  * Replace more platform-specific code with use of zix
+
+-------------------------------------------------------------------
 Thu Apr 24 11:15:12 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Rework the way the preferred python flavor is used as prefix so
