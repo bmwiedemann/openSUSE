@@ -1,0 +1,43 @@
+From a6542b9eb6f50925ee41e246aa4d17b789b3b1f1 Mon Sep 17 00:00:00 2001
+From: Thomas Baumgart <thb@net-bembel.de>
+Date: Mon, 16 Jun 2025 07:14:34 +0200
+Subject: [PATCH] Adjustments for port to Qt6
+
+---
+ kmymoney/plugins/kbanking/CMakeLists.txt          | 4 ++--
+ kmymoney/plugins/kbanking/aqbankingkmmoperators.h | 1 -
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/kmymoney/plugins/kbanking/CMakeLists.txt b/kmymoney/plugins/kbanking/CMakeLists.txt
+index 5c2314753..3b1d8fe51 100644
+--- a/kmymoney/plugins/kbanking/CMakeLists.txt
++++ b/kmymoney/plugins/kbanking/CMakeLists.txt
+@@ -55,11 +55,11 @@ target_link_libraries(kbanking
+                       Alkimia::alkimia
+                       gwenhywfar::core
+                       gwenhywfar::gui-cpp
+-                      gwenhywfar::gui-qt5
++                      gwenhywfar::gui-qt${QT_MAJOR_VERSION}
+                       aqbanking::aqbanking
+ )
+ 
+ ########### install files ###############
+ 
+ install(FILES kbanking.kcfg
+-        DESTINATION ${KCFG_INSTALL_DIR})
++        DESTINATION ${KDE_INSTALL_KCFGDIR})
+diff --git a/kmymoney/plugins/kbanking/aqbankingkmmoperators.h b/kmymoney/plugins/kbanking/aqbankingkmmoperators.h
+index bbec9953f..c7358c465 100644
+--- a/kmymoney/plugins/kbanking/aqbankingkmmoperators.h
++++ b/kmymoney/plugins/kbanking/aqbankingkmmoperators.h
+@@ -14,7 +14,6 @@
+ 
+ #include <QSharedPointer>
+ 
+-#include "onlinetasks/interfaces/tasks/ionlinetasksettings.h"
+ #include "onlinetasks/sepa/sepaonlinetransfer.h"
+ 
+ struct AB_ACCOUNT_SPEC;
+-- 
+2.50.0
+

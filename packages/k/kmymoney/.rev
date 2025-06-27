@@ -653,4 +653,13 @@
   * 0001-Port-triggering-actions-to-Qt6.patch</comment>
     <requestid>1288273</requestid>
   </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>8709ea1256fa4f52de759395e9a210a2</srcmd5>
+    <version>5.2.0</version>
+    <time>1751058124</time>
+    <user>anag_factory</user>
+    <comment>- Add patch:
+  * 0001-Adjustments-for-port-to-Qt6.patch</comment>
+    <requestid>1288809</requestid>
+  </revision>
 </revisionlist>

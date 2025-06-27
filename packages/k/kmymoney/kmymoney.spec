@@ -33,6 +33,8 @@ Source2:        kmymoney.keyring
 %endif
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Port-triggering-actions-to-Qt6.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Adjustments-for-port-to-Qt6.patch
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
@@ -78,7 +80,7 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 BuildRequires:  cmake(aqbanking) >= 6.5.0
 BuildRequires:  cmake(gwengui-cpp)
-# BuildRequires:  cmake(gwengui-qt6) TODO
+BuildRequires:  cmake(gwengui-qt6)
 BuildRequires:  cmake(gwenhywfar) >= 5.10.1
 BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(sqlcipher)

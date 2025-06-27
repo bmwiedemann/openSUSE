@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 25 12:03:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * 0001-Adjustments-for-port-to-Qt6.patch
+
+-------------------------------------------------------------------
 Tue Jun 24 13:58:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fix (kde#505977)
