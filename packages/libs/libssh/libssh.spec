@@ -32,7 +32,7 @@
 %endif
 
 Name:           libssh%{pkg_suffix}
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        The SSH library
 License:        LGPL-2.1-or-later
@@ -46,12 +46,8 @@ Source4:        libssh_server.config
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM: libssh tries to read config from wrong crypto-policies location (bsc#1222716)
 Patch0:         libssh-cmake-Add-option-WITH_HERMETIC_USR.patch
-# PATCH-FIX-UPSTREAM: fix build with OpenSSH >= 10.0
-Patch1:         libssh-CmakeLists-Fix-multiple-digit-major-version-for-OpenSSH.patch
-# PATCH-FIX-UPSTREAM: fix OpenSSH banner parsing
-Patch2:         libssh-misc-Fix-OpenSSH-banner-parsing.patch
 # PATCH-FIX-SUSE: fix hang in torture_channel tests (bsc#1243799)
-Patch3:         libssh-tests-Fix-an-issue-where-torture_session-request-a-SIGTERM-too-early.patch
+Patch1:         libssh-tests-Fix-an-issue-where-torture_session-request-a-SIGTERM-too-early.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  krb5-devel

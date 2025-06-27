@@ -10,10 +10,10 @@ Signed-off-by: Lucas Mulling <lucas.mulling@suse.com>
  1 file changed, 12 insertions(+), 2 deletions(-)
 
 diff --git a/tests/client/torture_session.c b/tests/client/torture_session.c
-index f95002f4..93d86995 100644
+index cc83578f..6c10dee1 100644
 --- a/tests/client/torture_session.c
 +++ b/tests/client/torture_session.c
-@@ -447,15 +447,25 @@ static void torture_channel_exit_signal(void **state)
+@@ -447,6 +447,16 @@ static void torture_channel_exit_signal(void **state)
      /* Make the request, read parts with close */
      rc = ssh_channel_request_exec(channel, request);
      assert_ssh_return_code(session, rc);
@@ -30,17 +30,6 @@ index f95002f4..93d86995 100644
      rc = ssh_channel_request_send_signal(channel, "TERM");
      assert_ssh_return_code(session, rc);
  
--    exit_status = ssh_channel_get_exit_state(channel,
-+    rc = ssh_channel_get_exit_state(channel,
-                                              &exit_status,
-                                              &exit_signal,
-                                              &core_dumped);
-     assert_ssh_return_code(session, rc);
--    assert_int_equal(exit_status, 0);
-+    assert_int_equal(exit_status, (uint32_t)-1);
-     assert_string_equal(exit_signal, "TERM");
-     SAFE_FREE(exit_signal);
- }
 -- 
 2.49.0
 
