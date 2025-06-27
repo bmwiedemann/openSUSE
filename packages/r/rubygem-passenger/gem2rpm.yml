@@ -115,6 +115,8 @@
   export USE_VENDORED_LIBEV="yes"
   export USE_VENDORED_LIBEIO="yes"
   %endif
+  export EXTRA_CFLAGS="%{optflags}"
+  export EXTRA_CXXFLAGS="%{optflags}"
 :post_install: |-
   # avoid BUILDROOT leaking into the binaries
   pushd %{mod_full_name}

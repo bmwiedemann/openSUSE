@@ -116,6 +116,8 @@ find -type f -print0 | xargs -0 touch -r %{S:0}
 export USE_VENDORED_LIBEV="yes"
 export USE_VENDORED_LIBEIO="yes"
 %endif
+export EXTRA_CFLAGS="%{optflags}"
+export EXTRA_CXXFLAGS="%{optflags}"
 # /MANUAL
 %gem_install \
   --symlink-binaries \

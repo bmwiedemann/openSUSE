@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 26 12:55:14 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Always build with %{optflags}
+
+-------------------------------------------------------------------
 Wed Jun 11 13:18:00 UTC 2025 - Dani Donisa <daniel.donisa@suse.com>
 
 - New upstream release 6.0.27, see bundled CHANGELOG
