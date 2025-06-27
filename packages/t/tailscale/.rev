@@ -301,4 +301,13 @@
     from stricter CLI arguments parsing introduced in Tailscale v1.84.0 (forwarded request 1284534 from rrahl0)</comment>
     <requestid>1284535</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9b667ea9b2f052159afe4e8fddfca3da</srcmd5>
+    <version>1.84.3</version>
+    <time>1751058087</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.84.3:
+  * ipn/ipnlocal: Update hostinfo to control on service config change (forwarded request 1288738 from rrahl0)</comment>
+    <requestid>1288739</requestid>
+  </revision>
 </revisionlist>
