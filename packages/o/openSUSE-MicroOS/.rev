@@ -834,4 +834,13 @@
     <comment></comment>
     <requestid>1281875</requestid>
   </revision>
+  <revision rev="92" vrev="92">
+    <srcmd5>a0e2cb6ad7e3d9d779b0d8a0a4da784c</srcmd5>
+    <version>16.0.0</version>
+    <time>1751058034</time>
+    <user>anag_factory</user>
+    <comment>- Add libz1 to the list of bootstrap packages to avoid libz-ng-compat1
+  (boo#1245263, boo#1226408)</comment>
+    <requestid>1288271</requestid>
+  </revision>
 </revisionlist>

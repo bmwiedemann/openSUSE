@@ -829,6 +829,8 @@
         <package name="hostname"/>
         <!-- Avoid libressl -->
         <package name="openssl"/>
+        <!-- Avoid libz-ng-compat1, boo#1245263 -->
+        <package name="libz1"/>
 
         <package name="filesystem"/>
         <package name="glibc-locale-base"/>

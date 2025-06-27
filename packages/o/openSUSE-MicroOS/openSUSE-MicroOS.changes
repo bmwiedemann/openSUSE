@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 24 13:46:11 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Add libz1 to the list of bootstrap packages to avoid libz-ng-compat1
+  (boo#1245263, boo#1226408)
+
+-------------------------------------------------------------------
 Wed May  7 14:00:14 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - disk.sh: add SECURE_BOOT in /etc/sysconfig/bootloader
