@@ -15,6 +15,14 @@ rm -f apps/linuxrc; \
 # Does not really fit
 rm apps/[[
 
+#see (bsc#1243201), we don't want these to avoid accidental unintended usage
+IGNORE_APPLETS="halt poweroff reboot"
+
+# Remove applets we don't want to create links packages for even if they exist
+for applet in $IGNORE_APPLETS; do rm -f apps/$applet; done
+
+
+
 for package in coreutils diffutils findutils grep util-linux util-linux-systemd iputils iproute2 gzip sed cpio procps xz bzip2 psmisc kbd sharutils hexedit hostname net-tools net-tools-deprecated traceroute ncurses-utils kmod tar gawk patch attr which bind-utils man sendmail sha3sum shadow less whois unzip vim wget ed bc netcat-openbsd dos2unix telnet tftp time tunctl vlan sysvinit-tools selinux-tools policycoreutils; do
     for i in $(dnf rq -l $package |grep "bin/") ; do
 	prog=$(basename $i)

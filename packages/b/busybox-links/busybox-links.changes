@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 23 12:35:43 UTC 2025 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Blacklist creating links for halt, reboot, shutdown commands to avoid accidental
+  use in a fully booted system (bsc#1243201) 
+
+-------------------------------------------------------------------
 Fri Oct  4 08:39:05 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Partly revert changes from Aug 8th 2023 to automatically detect
