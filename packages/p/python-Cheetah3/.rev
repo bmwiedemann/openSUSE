@@ -157,4 +157,12 @@
 - Lowercase metadata directory name.</comment>
     <requestid>1269071</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>fb58bc02866786c4fb2a9a39b84ca1c7</srcmd5>
+    <version>3.4.0</version>
+    <time>1751058154</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1288872</requestid>
+  </revision>
 </revisionlist>

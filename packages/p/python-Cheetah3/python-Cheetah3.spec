@@ -17,6 +17,7 @@
 
 
 %define modname cheetah3
+%bcond_without libalternatives
 Name:           python-Cheetah3
 Version:        3.4.0
 Release:        0
@@ -28,8 +29,10 @@ Source:         https://github.com/CheetahTemplate3/cheetah3/archive/refs/tags/%
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Recommends:     python-Markdown
 Suggests:       python-Pygments
 Conflicts:      python-Cheetah
@@ -72,15 +75,13 @@ sed -Ei 's/(test6)/_\1/' Cheetah/Tests/SyntaxAndOutput.py
 %python_clone -a %{buildroot}%{_bindir}/cheetah
 %python_clone -a %{buildroot}%{_bindir}/cheetah-analyze
 %python_clone -a %{buildroot}%{_bindir}/cheetah-compile
+%python_group_libalternatives cheetah cheetah-analyze cheetah-compile
 %{python_expand rm -r %{buildroot}%{$python_sitearch}/Cheetah/Tests
 %fdupes %{buildroot}%{$python_sitearch}
 }
 
-%post
-%python_install_alternative cheetah cheetah-analyze cheetah-compile
-
-%postun
-%python_uninstall_alternative cheetah
+%pre
+%python_libalternatives_reset_alternative cheetah
 
 %check
 mkdir ~/bin
