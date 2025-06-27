@@ -1,0 +1,64 @@
+From f9aea9105b6c1a8d7bff0ec0675f84f2ffb1db6f Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Wed, 20 Dec 2023 14:16:19 +0100
+Subject: [PATCH] tracing: Fix C type errors in librados tracing
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes type errors like this:
+
+In file included from /usr/include/lttng/tracepoint-event.h:69,
+                 from …-build/include/tracing/librados.h:4143,
+                 from …/src/tracing/librados.c:6
+:
+…-build/include/tracing/librados.h:
+ In function ‘lttng_ust__event_probe__librados___rados_mon_command_exit’:
+…-build/include/tracing/librados.h:477:9: error: initialization of ‘size_t’ {aka ‘long unsigned int’} from ‘size_t *’ {aka ‘long unsigned int *’} makes integer from pointer without a cast
+  477 |         ceph_ctf_integerp(size_t, outslen, outslen)
+      |         ^~~~~~~~~~~~~~~~~
+
+GCC 14 will likely treat these type mismatches as an error
+and fail the build.
+
+Signed-off-by: Florian Weimer <fweimer@redhat.com>
+---
+ src/tracing/librados.tp      | 4 ++--
+ src/tracing/tracing-common.h | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/tracing/librados.tp b/src/tracing/librados.tp
+index 8b5e78ef15d65..8e116124b83d5 100644
+--- a/src/tracing/librados.tp
++++ b/src/tracing/librados.tp
+@@ -2628,7 +2628,7 @@ TRACEPOINT_EVENT(librados, rados_watch3_enter,
+     TP_FIELDS(
+         ctf_integer_hex(rados_ioctx_t, ioctx, ioctx)
+         ctf_string(oid, oid)
+-        ctf_integer_hex(uint64_t, phandle, phandle)
++        ctf_integer_hex(uint64_t*, phandle, phandle)
+         ctf_integer_hex(rados_watchcb2_t, callback, callback)
+         ctf_integer(uint32_t, timeout, timeout)
+         ctf_integer_hex(void*, arg, arg)
+@@ -2658,7 +2658,7 @@ TRACEPOINT_EVENT(librados, rados_aio_watch2_enter,
+         ctf_integer_hex(rados_ioctx_t, ioctx, ioctx)
+         ctf_string(oid, oid)
+         ctf_integer_hex(rados_completion_t, completion, completion)
+-        ctf_integer_hex(uint64_t, phandle, phandle)
++        ctf_integer_hex(uint64_t*, phandle, phandle)
+         ctf_integer_hex(rados_watchcb2_t, callback, callback)
+         ctf_integer(uint32_t, timeout, timeout)
+         ctf_integer_hex(void*, arg, arg)
+diff --git a/src/tracing/tracing-common.h b/src/tracing/tracing-common.h
+index 3e07f9de8e85c..03449ab588615 100644
+--- a/src/tracing/tracing-common.h
++++ b/src/tracing/tracing-common.h
+@@ -21,7 +21,7 @@
+ // type should be an integer type
+ // val should have type type*
+ #define ceph_ctf_integerp(type, field, val) \
+-    ctf_integer(type, field, (val) == NULL ? 0 : (val)) \
++    ctf_integer(type, field, (val) == NULL ? 0 : *(val)) \
+     ctf_integer(uint8_t, field##_isnull, (val) == NULL)
+ 
+ // val should have type char*

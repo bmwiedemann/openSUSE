@@ -1,0 +1,63 @@
+From 07773617f339a2779aa7cf910c0361c937ffe4c2 Mon Sep 17 00:00:00 2001
+From: Kefu Chai <tchaikov@gmail.com>
+Date: Sat, 3 Feb 2024 19:49:13 +0800
+Subject: [PATCH] mgr: set argv for python in PyModuleRegistry
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+before this change, we setup the progname for Python interpreter,
+but setup the argv for it in PyModule. and we are using deprecated
+API to initialize Python interpreter.
+
+in this change, let's do this in a single place for better
+maintainability. also, take this opportunity, to use the non-deprecated
+API to initialize interpreter on Python >= 3.8.
+
+this silence the warning when compiling ceph-mgr with CPython 3.12:
+```
+/var/ssd/ceph/src/mgr/PyModule.cc: In member function ‘int PyModule::load(PyThreadState*)’:
+/var/ssd/ceph/src/mgr/PyModule.cc:363:20: warning: ‘void PySys_SetArgv(int, wchar_t**)’ is deprecated [-Wdeprecated-declarations]
+  363 |       PySys_SetArgv(1, (wchar_t**)argv);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+In file included from /usr/include/python3.12/Python.h:96,
+                 from /var/ssd/ceph/src/mgr/BaseMgrModule.h:4,
+                 from /var/ssd/ceph/src/mgr/PyModule.cc:14:
+/usr/include/python3.12/sysmodule.h:13:38: note: declared here
+   13 | Py_DEPRECATED(3.11) PyAPI_FUNC(void) PySys_SetArgv(int, wchar_t **);
+      |                                      ^~~~~~~~~~~~~
+```
+
+Signed-off-by: Kefu Chai <tchaikov@gmail.com>
+---
+ src/mgr/PyModule.cc         | 4 ----
+ src/mgr/PyModuleRegistry.cc | 5 +++++
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+--- a/src/mgr/PyModule.cc
++++ b/src/mgr/PyModule.cc
+@@ -357,10 +357,6 @@ int PyModule::load(PyThreadState *pMainT
+       return -EINVAL;
+     } else {
+       pMyThreadState.set(thread_state);
+-      // Some python modules do not cope with an unpopulated argv, so lets
+-      // fake one.  This step also picks up site-packages into sys.path.
+-      const wchar_t *argv[] = {L"ceph-mgr"};
+-      PySys_SetArgv(1, (wchar_t**)argv);
+       // Configure sys.path to include mgr_module_path
+       string paths = (g_conf().get_val<std::string>("mgr_module_path") + ':' +
+                       get_site_packages() + ':');
+--- a/src/mgr/PyModuleRegistry.cc
++++ b/src/mgr/PyModuleRegistry.cc
+@@ -70,6 +70,11 @@ void PyModuleRegistry::init()
+   PyStatus status;
+   status = PyConfig_SetString(&py_config, &py_config.program_name, WCHAR(MGR_PYTHON_EXECUTABLE));
+   ceph_assertf(!PyStatus_Exception(status), "PyConfig_SetString: %s:%s", status.func, status.err_msg);
++  // Some python modules do not cope with an unpopulated argv, so lets
++  // fake one.  This step also picks up site-packages into sys.path.
++  const wchar_t* argv[] = {L"ceph-mgr"};
++  status = PyConfig_SetArgv(&py_config, 1, (wchar_t *const *)argv);
++  ceph_assertf(!PyStatus_Exception(status), "PyConfig_SetArgv: %s:%s", status.func, status.err_msg);
+   // Add more modules
+   if (g_conf().get_val<bool>("daemonize")) {
+     PyImport_AppendInittab("ceph_logger", PyModule::init_ceph_logger);

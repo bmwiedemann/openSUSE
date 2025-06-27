@@ -1,0 +1,112 @@
+From 686dd3d838b6de6bf1101f0b61f729426b0bccad Mon Sep 17 00:00:00 2001
+From: Adam Emerson <aemerson@redhat.com>
+Date: Sat, 28 Oct 2023 13:29:59 -0400
+Subject: [PATCH] build: Fix fmt version check
+
+Currently, when attempting to build ceph on a system with fmt
+installed, we try to build against it whatever the version. This
+constantly breaks people's builds, since newer versions of fmt often
+change the API.
+
+This change specifies that versions must be below 10 as well as at or
+above 8.1.1, so that on systems with a new format, we fall back to
+using the submodule.
+
+It also removes the `Findfmt.cmake` module, as that does not check
+the installed version. Instead, we use the cmake config file installed by
+the system package of fmt and does support version checking.
+
+Signed-off-by: Adam Emerson <aemerson@redhat.com>
+---
+ cmake/modules/Findfmt.cmake | 61 -------------------------------------
+ src/CMakeLists.txt          | 12 +++++---
+ 2 files changed, 7 insertions(+), 66 deletions(-)
+ delete mode 100644 cmake/modules/Findfmt.cmake
+
+--- a/cmake/modules/Findfmt.cmake
++++ /dev/null
+@@ -1,61 +0,0 @@
+-find_path(fmt_INCLUDE_DIR NAMES fmt/format.h)
+-
+-if(fmt_INCLUDE_DIR)
+-  set(_fmt_version_file "${fmt_INCLUDE_DIR}/fmt/core.h")
+-  if(NOT EXISTS "${_fmt_version_file}")
+-    set(_fmt_version_file "${fmt_INCLUDE_DIR}/fmt/format.h")
+-  endif()
+-  if(EXISTS "${_fmt_version_file}")
+-    # parse "#define FMT_VERSION 40100" to 4.1.0
+-    file(STRINGS "${_fmt_version_file}" fmt_VERSION_LINE
+-      REGEX "^#define[ \t]+FMT_VERSION[ \t]+[0-9]+$")
+-    string(REGEX REPLACE "^#define[ \t]+FMT_VERSION[ \t]+([0-9]+)$"
+-      "\\1" fmt_VERSION "${fmt_VERSION_LINE}")
+-    foreach(ver "fmt_VERSION_PATCH" "fmt_VERSION_MINOR" "fmt_VERSION_MAJOR")
+-      math(EXPR ${ver} "${fmt_VERSION} % 100")
+-      math(EXPR fmt_VERSION "(${fmt_VERSION} - ${${ver}}) / 100")
+-    endforeach()
+-    set(fmt_VERSION
+-      "${fmt_VERSION_MAJOR}.${fmt_VERSION_MINOR}.${fmt_VERSION_PATCH}")
+-  endif()
+-endif()
+-
+-find_library(fmt_LIBRARY NAMES fmt)
+-
+-include(FindPackageHandleStandardArgs)
+-find_package_handle_standard_args(fmt
+-  REQUIRED_VARS fmt_INCLUDE_DIR fmt_LIBRARY
+-  VERSION_VAR fmt_VERSION)
+-mark_as_advanced(
+-  fmt_INCLUDE_DIR
+-  fmt_LIBRARY
+-  fmt_VERSION_MAJOR
+-  fmt_VERSION_MINOR
+-  fmt_VERSION_PATCH
+-  fmt_VERSION_STRING)
+-
+-if(fmt_FOUND AND NOT (TARGET fmt::fmt))
+-  add_library(fmt-header-only INTERFACE)
+-  set_target_properties(fmt-header-only PROPERTIES
+-    INTERFACE_INCLUDE_DIRECTORIES "${fmt_INCLUDE_DIR}"
+-    INTERFACE_COMPILE_DEFINITIONS FMT_HEADER_ONLY=1
+-    INTERFACE_COMPILE_FEATURES cxx_std_11)
+-
+-  add_library(fmt UNKNOWN IMPORTED GLOBAL)
+-  set_target_properties(fmt PROPERTIES
+-    INTERFACE_INCLUDE_DIRECTORIES "${fmt_INCLUDE_DIR}"
+-    INTERFACE_COMPILE_FEATURES cxx_std_11
+-    IMPORTED_LINK_INTERFACE_LANGUAGES "CXX"
+-    IMPORTED_LOCATION "${fmt_LIBRARY}")
+-
+-  if(WITH_FMT_HEADER_ONLY)
+-    # please note, this is different from how upstream defines fmt::fmt.
+-    # in order to force 3rd party libraries to link against fmt-header-only if
+-    # WITH_FMT_HEADER_ONLY is ON, we have to point fmt::fmt to fmt-header-only
+-    # in this case.
+-    add_library(fmt::fmt ALIAS fmt-header-only)
+-  else()
+-    add_library(fmt::fmt ALIAS fmt)
+-  endif()
+-
+-endif()
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -322,13 +322,15 @@ if(NOT TARGET RapidJSON::RapidJSON)
+ endif()
+ 
+ option(WITH_FMT_HEADER_ONLY "use header-only version of fmt library" OFF)
+-set(WITH_FMT_VERSION "8.1.1" CACHE
+-  STRING "build with fmt version")
+-find_package(fmt ${WITH_FMT_VERSION} QUIET)
++find_package(fmt 8.1.1...<10.0.0)
+ if(fmt_FOUND)
+-  include_directories(SYSTEM "${fmt_INCLUDE_DIR}")
++  message(STATUS "Building with system fmt.")
++  if (WITH_FMT_HEADER_ONLY)
++    message(STATUS "Using fmt header-only.")
++    add_library(fmt::fmt ALIAS fmt::fmt-header-only)
++  endif()
+ else()
+-  message(STATUS "Could not find fmt, will build it")
++  message(STATUS "Building fmt as submodule")
+   set(old_BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS})
+   set(BUILD_SHARED_LIBS FALSE)
+   add_subdirectory(fmt)

@@ -1,0 +1,102 @@
+From a21d80c6b4c9e27e5472fed837bb6308639b0492 Mon Sep 17 00:00:00 2001
+From: Kefu Chai <tchaikov@gmail.com>
+Date: Sat, 3 Feb 2024 19:22:15 +0800
+Subject: [PATCH] mgr: stop using deprecated API to initialize Python
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Py_SetProgramName() is deprecated since CPython 3.11, see
+https://docs.python.org/3/c-api/init_config.html .
+`Py_InitializeFromConfig()` and friends were introduced by CPython 3.8,
+but we still need to support CPython 3.6 which is shipped by CentOS8.
+so we have to be backward compatible with the older Python versions.
+
+so let's use new machinary to initialize the Python interpretor if the
+tree is compiled with CPython 3.8 and up, i.e., PY_VERSION_HEX >= 0x03080000.
+so that this piece of code can be tested on ubuntu:jammy, which ships
+Python 3.10, see https://packages.ubuntu.com/jammy/amd64/python3
+
+this change addresses following compiling warning:
+
+```
+[428/753] Building CXX object src/mgr/CMakeFiles/ceph-mgr.dir/PyModuleRegistry.cc.o
+/var/ssd/ceph/src/mgr/PyModuleRegistry.cc: In member function ‘void PyModuleRegistry::init()’:
+/var/ssd/ceph/src/mgr/PyModuleRegistry.cc:49:20: warning: ‘void Py_SetProgramName(const wchar_t*)’ is deprecated [-Wdeprecated-declarations]
+   49 |   Py_SetProgramName(const_cast<wchar_t*>(WCHAR(MGR_PYTHON_EXECUTABLE)));
+      |   ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /usr/include/python3.12/Python.h:94,
+                 from /var/ssd/ceph/src/mgr/PyModule.h:22,
+                 from /var/ssd/ceph/src/mgr/PyModuleRegistry.h:18,
+                 from /var/ssd/ceph/src/mgr/PyModuleRegistry.cc:14:
+/usr/include/python3.12/pylifecycle.h:37:38: note: declared here
+   37 | Py_DEPRECATED(3.11) PyAPI_FUNC(void) Py_SetProgramName(const wchar_t *);
+      |                                      ^~~~~~~~~~~~~~~~~`
+```
+
+Signed-off-by: Kefu Chai <tchaikov@gmail.com>
+---
+ src/mgr/PyModuleRegistry.cc | 36 +++++++++++++++++++++++++++++++++++-
+ 1 file changed, 35 insertions(+), 1 deletion(-)
+
+diff --git a/src/mgr/PyModuleRegistry.cc b/src/mgr/PyModuleRegistry.cc
+index eb2d2babe75fa..1fd92b9028290 100644
+--- a/src/mgr/PyModuleRegistry.cc
++++ b/src/mgr/PyModuleRegistry.cc
+@@ -14,6 +14,7 @@
+ #include "PyModuleRegistry.h"
+ 
+ #include <filesystem>
++#include <boost/scope_exit.hpp>
+ 
+ #include "include/stringify.h"
+ #include "common/errno.h"
+@@ -46,14 +47,47 @@ void PyModuleRegistry::init()
+ 
+   // Set up global python interpreter
+ #define WCHAR(s) L ## #s
++#if PY_VERSION_HEX >= 0x03080000
++  PyConfig py_config;
++  // do not enable isolated mode, otherwise we would not be able to have access
++  // to the site packages. since we cannot import any module before initializing
++  // the interpreter, we would not be able to use "site" module for retrieving
++  // the path to site packager. we import "site" module for retrieving
++  // sitepackages in Python < 3.8 though, this does not apply to the
++  // initialization with PyConfig.
++  PyConfig_InitPythonConfig(&py_config);
++  BOOST_SCOPE_EXIT_ALL(&py_config) {
++    PyConfig_Clear(&py_config);
++  };
++#if PY_VERSION_HEX >= 0x030b0000
++  py_config.safe_path = 0;
++#endif
++  py_config.parse_argv = 0;
++  py_config.configure_c_stdio = 0;
++  py_config.install_signal_handlers = 0;
++  py_config.pathconfig_warnings = 0;
++
++  PyStatus status;
++  status = PyConfig_SetString(&py_config, &py_config.program_name, WCHAR(MGR_PYTHON_EXECUTABLE));
++  ceph_assertf(!PyStatus_Exception(status), "PyConfig_SetString: %s:%s", status.func, status.err_msg);
++  // Add more modules
++  if (g_conf().get_val<bool>("daemonize")) {
++    PyImport_AppendInittab("ceph_logger", PyModule::init_ceph_logger);
++  }
++  PyImport_AppendInittab("ceph_module", PyModule::init_ceph_module);
++  status = Py_InitializeFromConfig(&py_config);
++  ceph_assertf(!PyStatus_Exception(status), "Py_InitializeFromConfig: %s:%s", status.func, status.err_msg);
++#else
+   Py_SetProgramName(const_cast<wchar_t*>(WCHAR(MGR_PYTHON_EXECUTABLE)));
+-#undef WCHAR
+   // Add more modules
+   if (g_conf().get_val<bool>("daemonize")) {
+     PyImport_AppendInittab("ceph_logger", PyModule::init_ceph_logger);
+   }
+   PyImport_AppendInittab("ceph_module", PyModule::init_ceph_module);
+   Py_InitializeEx(0);
++#endif // PY_VERSION_HEX >= 0x03080000
++#undef WCHAR
++
+ #if PY_VERSION_HEX < 0x03090000
+   // Let CPython know that we will be calling it back from other
+   // threads in future.

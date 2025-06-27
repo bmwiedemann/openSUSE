@@ -1,0 +1,11 @@
+--- a/src/pybind/mgr/orchestrator/module.py
++++ b/src/pybind/mgr/orchestrator/module.py
+@@ -11,7 +11,7 @@ from prettytable import PrettyTable
+ 
+ try:
+     from natsort import natsorted
+-except ImportError:
++except (ImportError, RuntimeError):
+     # fallback to normal sort
+     natsorted = sorted  # type: ignore
+ 

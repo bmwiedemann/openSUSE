@@ -818,4 +818,12 @@
     <comment>This fixes the current rpmlint failure in https://build.opensuse.org/package/show/openSUSE:Factory:Staging:C/ceph</comment>
     <requestid>1269777</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>3f9440d9fabe69467081f2ed5e7980c1</srcmd5>
+    <version>18.2.7</version>
+    <time>1751058037</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1288386</requestid>
+  </revision>
 </revisionlist>

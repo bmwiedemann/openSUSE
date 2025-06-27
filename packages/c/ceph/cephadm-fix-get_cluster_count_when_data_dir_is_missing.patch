@@ -1,0 +1,42 @@
+From f9f015beaa868c5901f0782543ef05a2ca260504 Mon Sep 17 00:00:00 2001
+From: James Oakley <jfunk@funktronics.ca>
+Date: Sun, 15 Jun 2025 12:04:35 -0300
+Subject: [PATCH] cephadm: Fix get_cluster_count when data_dir is missing
+
+It is possible for cephadm, if it fails to create a cluster, to direct
+the user to delete the cluster even though the data_dir has not yet been
+created. Running that command would fail during the cluster count check.
+
+Signed-off-by: James Oakley <jfunk@funktronics.ca>
+---
+ src/cephadm/cephadm.py            | 4 +++-
+ src/cephadm/tests/test_cephadm.py | 5 +++++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+--- a/src/cephadm/cephadm.py
++++ b/src/cephadm/cephadm.py
+@@ -8252,7 +8252,9 @@ def command_zap_osds(ctx: CephadmContext
+ 
+ 
+ def get_ceph_cluster_count(ctx: CephadmContext) -> int:
+-    return len([c for c in os.listdir(ctx.data_dir) if is_fsid(c)])
++    if os.path.isdir(ctx.data_dir):
++        return len([c for c in os.listdir(ctx.data_dir) if is_fsid(c)])
++    return 0
+ 
+ 
+ def command_rm_cluster(ctx: CephadmContext) -> None:
+--- a/src/cephadm/tests/test_cephadm.py
++++ b/src/cephadm/tests/test_cephadm.py
+@@ -1136,6 +1136,11 @@ ff792c06d8544b983.scope not found.: OCI
+         with mock.patch('os.listdir', return_value=test_input):
+             assert _cephadm.get_ceph_cluster_count(ctx) == expected
+ 
++    def test_get_ceph_cluster_count_missing_datadir(self):
++        ctx = _cephadm.CephadmContext()
++        with mock.patch('os.path.isdir', return_value=False):
++            assert _cephadm.get_ceph_cluster_count(ctx) == 0
++
+     def test_set_image_minimize_config(self):
+         def throw_cmd(cmd):
+             raise _cephadm.Error(' '.join(cmd))

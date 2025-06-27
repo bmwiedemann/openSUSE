@@ -1,0 +1,42 @@
+From 7e3f243eae129634359dac1943f85155f6ff3e61 Mon Sep 17 00:00:00 2001
+From: Adam Emerson <aemerson@redhat.com>
+Date: Mon, 2 Dec 2024 20:21:37 -0500
+Subject: [PATCH] librbd: Fix atomic shared pointer situation
+
+The `std::atomic_store<std::shared_ptr>` overload was deprecated in
+C++20.
+
+Also, to quote from
+https://en.cppreference.com/w/cpp/memory/shared_ptr/atomic
+
+> These functions are typically implemented using mutexes, stored in a
+> global hash table where the pointer value is used as the key.
+
+This is terrible.
+
+Sadly, GCC11, which we still have to use for all our test builds,
+doesn't support the `std::atomic<std::shared_ptr>` overload, so we
+keep the regular `std::shared_ptr` around for it in an `#ifdef`.
+
+Since `atomic_store` can accept any `std::atomic<T>*` as its first
+argument, we don't have to change the accesses.
+
+Signed-off-by: Adam Emerson <aemerson@redhat.com>
+---
+ src/librbd/ImageCtx.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- a/src/librbd/ImageCtx.h
++++ b/src/librbd/ImageCtx.h
+@@ -363,7 +363,11 @@ namespace librbd {
+                                    ceph::mutex **timer_lock);
+ 
+   private:
++#if defined(__cpp_lib_atomic_shared_ptr)
++    std::atomic<std::shared_ptr<neorados::IOContext>> data_io_context;
++#else
+     std::shared_ptr<neorados::IOContext> data_io_context;
++#endif //
+   };
+ }
+ 

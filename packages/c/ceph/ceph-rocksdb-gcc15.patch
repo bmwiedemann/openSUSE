@@ -1,0 +1,21 @@
+The uint_* types are no longer implicitly included by other imports in gcc15.
+--- a/src/rocksdb/db/blob/blob_file_meta.h
++++ b/src/rocksdb/db/blob/blob_file_meta.h
+@@ -6,6 +6,7 @@
+ #pragma once
+ 
+ #include <cassert>
++#include <cstdint>
+ #include <iosfwd>
+ #include <memory>
+ #include <string>
+--- a/src/rocksdb/include/rocksdb/trace_record.h
++++ b/src/rocksdb/include/rocksdb/trace_record.h
+@@ -5,6 +5,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ #include <vector>
