@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 23 11:01:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.16.0
+  * This release requires Python 3.11-3.13 and NumPy 1.25.2 or greater.
+  * Support for free-threaded Python 3.13
+  * Improved experimental support for the Python array API standard.
+  * scipy.optimize now uses the new Python implementation from the
+    PRIMA package for COBYLA.
+  * scipy.sparse.coo_array now supports n-D arrays with reshaping, arithmetic and
+    reduction operations like sum/mean/min/max. No n-D indexing or
+    scipy.sparse.random_array support yet.
+  * Nearly all functions in the scipy.linalg namespace that accept array
+    arguments now support N-dimensional arrays to be processed as a batch.
+  * A new class, scipy.spatial.transform.RigidTransform, provides functionality
+    to convert between different representations of rigid transforms in 3-D
+    space.
+  * A new function scipy.ndimage.vectorized_filter for generic filters that
+    take advantage of a vectorized Python callable was added.
+- Drop merged test_hyp2fi-tolerance.patch
+
+-------------------------------------------------------------------
 Mon Jun  2 20:05:57 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Drop upper version bound in pythran BuildRequires

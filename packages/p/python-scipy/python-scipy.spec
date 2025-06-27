@@ -46,7 +46,7 @@
 # TODO explore debundling Boost for standard
 
 Name:           python-scipy%{?psuffix}
-Version:        1.15.1
+Version:        1.16.0
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
@@ -54,11 +54,9 @@ URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
 # Create with pooch: `python3 scipy-%%{version}/scipy/datasets/_download_all.py scipy-datasets/scipy-data; tar czf scipy-datasets.tar.gz scipy-datasets`
 Source1:        scipy-datasets.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/scipy/scipy/pull/22364 TST: bump tolerance on TestHyp2f1.test_region3[hyp2f1_test_case23]
-Patch0:         test_hyp2fi-tolerance.patch
-BuildRequires:  %{python_module Cython >= 3.0.8 with %python-Cython < 3.1}
-BuildRequires:  %{python_module devel >= 3.10}
-BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python < 0.20}
+BuildRequires:  %{python_module Cython >= 3.0.8 with %python-Cython < 3.2}
+BuildRequires:  %{python_module devel >= 3.11}
+BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python < 0.21}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel >= 2.13.2 with %python-pybind11-devel < 2.14}
 # Upstream's pre-emptive pin to < 0.18 is not necessary
@@ -77,7 +75,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy = %{version}}
 BuildRequires:  %{python_module threadpoolctl}
 %endif
-BuildRequires:  %{python_module numpy-devel >= 1.23.5 with %python-numpy-devel < 2.5}
+BuildRequires:  %{python_module numpy-devel >= 1.25.2 with %python-numpy-devel < 2.6}
 %if 0%{?sle_version} && 0%{?sle_version} <= 150600
 # The default gcc on SLE15 is gcc7 we need something newer
 BuildRequires:  gcc10-c++
@@ -86,7 +84,7 @@ BuildRequires:  gcc10-fortran
 BuildRequires:  gcc-c++ >= 8
 BuildRequires:  gcc-fortran >= 8
 %endif
-Requires:       (python-numpy >= 1.23.5 with python-numpy < 2.5)
+Requires:       (python-numpy >= 1.25.2 with python-numpy < 2.6)
 Suggests:       python-pooch
  %if %{with openblas}
 BuildRequires:  openblas-devel
