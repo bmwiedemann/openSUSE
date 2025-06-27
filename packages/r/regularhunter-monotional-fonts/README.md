@@ -2,7 +2,7 @@
 
 # Monotional
 
-### Version 2.7
+### Version 2.8
 
 https://github.com/regularhunter/monotional-font
 
@@ -35,6 +35,11 @@ Bitstream Vera Sans Mono.
 
 See the [latest release](https://github.com/regularhunter/monotional-font/releases) 
 for more information.
+
+**v2.8**
+
+ * Align ` % ` and ` ~ ` to integer coordinates
+ * Scale ` % ` glyph to 104% of original size
 
 **v2.7**
 
