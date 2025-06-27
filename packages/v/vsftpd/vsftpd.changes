@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 27 08:02:35 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- vsftpd-2.3.5-conf.patch adds a reference to our bug tracker to
+  the installed vsftpd.conf. Updated that URL to point to the
+  proper Bugzilla. [bsc#1182473]
+
+-------------------------------------------------------------------
 Wed Jun 11 09:05:12 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Apply "terminate-peers-on-quit.patch" to introduce the new

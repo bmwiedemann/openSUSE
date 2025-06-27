@@ -245,6 +245,6 @@ Index: vsftpd-3.0.5/vsftpd.conf
 +# third-party library like pam, or openssl) and the process is being killed by kernel.
 +#
 +# Therefor if your server dies on common situations (file download, upload),
-+# uncomment following line and don't forget to open  bug at
-+# https://bugzilla.novell.com
++# uncomment following line and don't forget to open a bug at
++# https://bugzilla.suse.com/
 +#seccomp_sandbox=NO
