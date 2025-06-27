@@ -18,7 +18,7 @@
 
 %define modname param
 Name:           python-param
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Declarative Python programming using Parameters
 License:        BSD-3-Clause
