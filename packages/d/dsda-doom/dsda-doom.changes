@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun 27 07:58:23 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.29.2
+  * Clickable demo progress bar
+  * Multiple quicksave support
+  * Customizable view and weapon bob config
+  * Colored statusbar backgrounds
+  * WAD lookup now includes XDG directories
+  * Cutoff MIDI notes at end of song before looping
+  * Linedef action 272 had erroneously not changed the sky
+  * Replace DUMB by OpenMPT as tracker music engine
+  * Level brightness adjuster (this is different from
+    Gamma correction) [config-only, not selectable in UI]
+  * MAPINFO Skill Definition support
+
+-------------------------------------------------------------------
 Thu Apr 10 09:15:03 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.29

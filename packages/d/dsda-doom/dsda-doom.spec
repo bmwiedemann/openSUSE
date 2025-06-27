@@ -17,7 +17,7 @@
 
 
 Name:           dsda-doom
-Version:        0.29.0
+Version:        0.29.2
 Release:        0
 Summary:        DOOM source port with Hexen support and demo compatibility
 License:        GPL-2.0-or-later
@@ -43,6 +43,7 @@ BuildRequires:  pkgconfig(SDL2_net)
 BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(libopenmpt)
 BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(portmidi)
