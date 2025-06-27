@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 26 12:28:43 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Refresh node modules to update brace-expansion (CVE-2025-5889, bsc#1244347)
+
+-------------------------------------------------------------------
 Wed May 29 12:55:54 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Build from source not whl, using obs-service-node_modules to get the

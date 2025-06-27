@@ -184,4 +184,12 @@
   javascript packages required to build the package.</comment>
     <requestid>1177588</requestid>
   </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>1e4a8f0c2a17b211e4a4593a954a5437</srcmd5>
+    <version>unknown</version>
+    <time>1751058055</time>
+    <user>anag_factory</user>
+    <comment>- Refresh node modules to update brace-expansion (CVE-2025-5889, bsc#1244347)</comment>
+    <requestid>1288678</requestid>
+  </revision>
 </revisionlist>
