@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 22 17:18:59 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 25.2
+  * Many changes in support of sky cultures
+  * Added 2 new plugins: Mosaic Camera and Custom Nebula Textures
+  * Many improvements in Core
+  * Updates in sky cultures (include new one)
+- Remove use-local-md4c.patch and Qt-6.9-Fix-compilation.patch (upstreamed)
+
+-------------------------------------------------------------------
 Tue Apr 29 06:54:09 UTC 2025 - Michal Kubecek <mkubecek@suse.cz>
 
 - fix compilation against Qt 6.9 (16.0 and Factory)
