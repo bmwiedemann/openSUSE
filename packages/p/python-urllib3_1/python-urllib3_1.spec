@@ -35,6 +35,8 @@ Source:         https://files.pythonhosted.org/packages/source/u/urllib3/urllib3
 # PATCH-FIX-UPSTREAM remove_mock.patch gh#urllib3/urllib3#2108 mcepl@suse.com
 # remove dependency on the external module mock
 Patch0:         remove_mock.patch
+# PATCH-FIX-UPSTREAM CVE-2025-50181 gh#urllib3/urllib3@f05b1329126d, bsc#1244925
+Patch1:         CVE-2025-50181-poolmanager-redirects.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

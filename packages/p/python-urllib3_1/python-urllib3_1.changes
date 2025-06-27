@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 25 05:18:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch CVE-2025-50181-poolmanager-redirects.patch:
+  * Pool managers now properly control redirects when retries is passed
+    (CVE-2025-50181, GHSA-pq67-6m6q-mj2v, bsc#1244925)
+
+-------------------------------------------------------------------
 Mon May 19 07:29:03 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip some test that fails with latest python-tornado

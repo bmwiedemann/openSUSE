@@ -102,4 +102,14 @@
     <comment>- Skip some test that fails with latest python-tornado</comment>
     <requestid>1278319</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>fd446e932516904db4bd1ad8e36714e8</srcmd5>
+    <version>1.26.20</version>
+    <time>1751058042</time>
+    <user>anag_factory</user>
+    <comment>- Add patch CVE-2025-50181-poolmanager-redirects.patch:
+  * Pool managers now properly control redirects when retries is passed
+    (CVE-2025-50181, GHSA-pq67-6m6q-mj2v, bsc#1244925)</comment>
+    <requestid>1288435</requestid>
+  </revision>
 </revisionlist>
