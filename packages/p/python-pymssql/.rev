@@ -76,4 +76,12 @@
   * Workaround setuptools-74.0 changes.</comment>
     <requestid>1226014</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>25fa7c73ca01a62b514267d627a7720c</srcmd5>
+    <version>2.3.5</version>
+    <time>1751058150</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1288866</requestid>
+  </revision>
 </revisionlist>
