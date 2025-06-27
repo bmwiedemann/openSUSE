@@ -393,4 +393,13 @@
     <comment></comment>
     <requestid>1269788</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>7a17147e0604de70969b8b7d0038baec</srcmd5>
+    <version>1.14.1</version>
+    <time>1751058126</time>
+    <user>anag_factory</user>
+    <comment>- Add click-8.2.patch to fix tests with click &gt;= 8.2
+  gh#pypa/hatch#2013</comment>
+    <requestid>1288662</requestid>
+  </revision>
 </revisionlist>

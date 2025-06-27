@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 26 09:36:32 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add click-8.2.patch to fix tests with click >= 8.2
+  gh#pypa/hatch#2013
+
+-------------------------------------------------------------------
 Wed Apr 16 07:11:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.14.1

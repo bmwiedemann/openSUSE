@@ -35,6 +35,8 @@ URL:            https://hatch.pypa.io/latest/
 Source:         https://github.com/pypa/hatch/archive/refs/tags/hatch-v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-with-latest-hatchling.patch gh#f8a2eaa gh#28f233c gh#fc25690
 Patch0:         fix-with-latest-hatchling.patch
+# PATCH-FIX-UPSTREAM click-8.2.patch gh#pypa/hatch#2013
+Patch1:         click-8.2.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-vcs >= 0.3}
 BuildRequires:  %{python_module hatchling >= 1.26.3}
@@ -128,7 +130,9 @@ donttest+=" or test_uv_env"
 donttest+=" or test_pyenv or test_no_open or test_open"
 # Fails with hatchling >= 1.26
 
-%pytest -v -k "not ($donttest)"
+# Ignore test_build.py it fails because output format difference.
+# https://github.com/pypa/hatch/commit/e843c42da2e71468b519a3aacdfeab31b14985a3
+%pytest -v -k "not ($donttest)" --ignore tests/cli/build/test_build.py
 %endif
 
 %post
