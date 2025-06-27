@@ -57,7 +57,7 @@ diff --git a/build/config/clang/clang.gni b/build/config/clang/clang.gni
 index e120a847c6d43..2ad331d38f6b6 100644
 --- a/build/config/clang/clang.gni
 +++ b/build/config/clang/clang.gni
-@@ -51,18 +51,26 @@ lld_emit_indexes_and_imports =
+@@ -51,19 +51,20 @@
      lld_emit_indexes_and_imports && is_a_target_toolchain
  
  # TODO(crbug.com/326584510): Reclient does not upload `inputs` from C/C++
@@ -73,23 +73,20 @@ index e120a847c6d43..2ad331d38f6b6 100644
 +rbe_bug_326584510_missing_input_list = []
  if (clang_use_chrome_plugins && defined(clang_unsafe_buffers_paths) &&
      "$clang_unsafe_buffers_paths" != "") {
-   if (rbe_exec_root != rebase_path("//")) {
-     assert(!use_siso, "Can't use non-default rbe_exec_root with siso.")
-   }
+-  if (rbe_exec_root != rebase_path("//")) {
+-    assert(!use_siso, "Can't use non-default rbe_exec_root with siso.")
+-  }
 -  from_exec_root = rebase_path(clang_unsafe_buffers_paths, rbe_exec_root)
 -  rbe_bug_326584510_missing_inputs = " -inputs=$from_exec_root"
 +  rbe_bug_326584510_missing_input_list +=
 +      [ rebase_path(clang_unsafe_buffers_paths, rbe_exec_root) ]
- }
++}
 +if (defined(clang_warning_suppression_file) &&
 +    "$clang_warning_suppression_file" != "") {
-+  if (rbe_exec_root != rebase_path("//")) {
-+    assert(!use_siso, "Can't use non-default rbe_exec_root with siso.")
-+  }
 +  rbe_bug_326584510_missing_input_list +=
 +      [ rebase_path(clang_warning_suppression_file, rbe_exec_root) ]
-+}
-+
+ }
+ 
 +# The leading space is important, if the string is non-empty.
 +rbe_bug_326584510_missing_inputs =
 +    " -inputs=" + string_join(",", rbe_bug_326584510_missing_input_list)
@@ -97,15 +94,27 @@ diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
 index 037d3b769add3..5b07f038e6bab 100644
 --- a/build/config/compiler/BUILD.gn
 +++ b/build/config/compiler/BUILD.gn
-@@ -310,6 +310,7 @@
+@@ -313,8 +313,19 @@
      ":rustc_revision",
      ":compiler_codegen",
      ":compiler_deterministic",
 +    ":clang_warning_suppression",
    ]
  
++  # TODO(https://crbug.com/404297941): Disable clang_warning_suppression
++  # configuration because the ICECC build doesn't distribute the
++  # warning_suppression.txt file to other ICECC nodes. As a result, the nodes
++  # cannot locate the file during target compilation. Therefore, we are
++  # disabling the clang_warning_suppression configuration for ICECC builds for
++  # now.
++  if (cc_wrapper == "icecc") {
++    configs -= [ ":clang_warning_suppression" ]
++  }
++
    # Here we enable -fno-delete-null-pointer-checks, which makes various nullptr
-@@ -1650,6 +1651,31 @@ config("clang_revision") {
+   # operations (e.g. dereferencing) into defined behavior. This avoids deletion
+   # of some security-critical code: see https://crbug.com/1139129.
+@@ -1544,6 +1555,28 @@
    }
  }
  
@@ -127,10 +136,7 @@ index 037d3b769add3..5b07f038e6bab 100644
 +    from_build_root =
 +        rebase_path(clang_warning_suppression_file, root_build_dir)
 +    inputs = [ clang_warning_suppression_file ]
-+    cflags = [
-+      "-Xclang",
-+      "--warning-suppression-mappings=" + from_build_root,
-+    ]
++    cflags = [ "--warning-suppression-mappings=" + from_build_root ]
 +  }
 +}
 +
@@ -141,38 +147,55 @@ diff --git a/build/config/siso/clang_all.star b/build/config/siso/clang_all.star
 index 9aea43bd81883..ca062f967b5d1 100644
 --- a/build/config/siso/clang_all.star
 +++ b/build/config/siso/clang_all.star
-@@ -87,15 +87,19 @@ __input_deps = {
-     ],
-     "third_party/llvm-build/Release+Asserts/bin/clang": [
-         "build/config/unsafe_buffers_paths.txt",
-+        "build/config/warning_suppression.txt",
-     ],
-     "third_party/llvm-build/Release+Asserts/bin/clang++": [
-         "build/config/unsafe_buffers_paths.txt",
-+        "build/config/warning_suppression.txt",
-     ],
-     "third_party/llvm-build/Release+Asserts/bin/clang-cl": [
-         "build/config/unsafe_buffers_paths.txt",
-+        "build/config/warning_suppression.txt",
-     ],
-     "third_party/llvm-build/Release+Asserts/bin/clang-cl.exe": [
-         "build/config/unsafe_buffers_paths.txt",
-+        "build/config/warning_suppression.txt",
-     ],
-     "third_party/llvm-build/Release+Asserts/bin/lld-link": [
-         "build/config/c++/libc++.natvis",
+@@ -13,6 +13,7 @@
+ 
+ __clang_plugin_configs = [
+     "build/config/unsafe_buffers_paths.txt",
++    "build/config/warning_suppression.txt",
+     # crbug.com/418842344: Angle, PDFium use a different plugin config.
+     "unsafe_buffers_paths.txt",
+ ]
 diff --git a/build/config/warning_suppression.txt b/build/config/warning_suppression.txt
 new file mode 100644
 index 0000000000000..4f78ea84d3a93
 --- /dev/null
 +++ b/build/config/warning_suppression.txt
-@@ -0,0 +1,9 @@
+@@ -0,0 +1,37 @@
 +# Copyright 2025 The Chromium Project. All rights reserved.
 +# Use of this source code is governed by a BSD-style license that can be
 +# found in the LICENSE file.
 +
-+# Warning suppression mappings are listed here on a per-warning basis.
-+# Upstream docs: https://clang.llvm.org/docs/WarningSuppressionMappings.html
-+# We'll put the policy here too when it's written.
-+# Don't use this file until the policy is written.
-+# See crbug.com/404297941 for more information.
++# This file is used to suppress warnings based on the file they originate from,
++# as opposed to disabling warnings via -Wno flags which apply to all the files
++# involved in each compilation. For more information, see
++# https://clang.llvm.org/docs/WarningSuppressionMappings.html
++# For background information on their use in chromium, see crbug.com/404297941
++
++# Warning Suppression Policy: updates to this file should be tightly controlled,
++# for reasons discussed in crbug.com/404297941. In particular:
++#
++# 1. This file should never grow (as measured by the number of files suppressed)
++#    except when a new warning is enabled.
++# 2. This file should only be used to opt out whole directories, never
++#    individual files.
++# 3. This file should be used as a last resort; if it's possible to fix the warning or suppress
++#    it without using the file, do so.
++#    1. For first-party code, just fix it directly, or use `#pragma GCC diagnostic ignored`.
++#    2. For third-party code, first attempt to fix it upstream.
++#    3. If that's not possible, attempt to suppress the warning using `-Wno` flags in a gn file.
++# 4. All entries should have a path to eventually be removed.
++#
++# In practice, rules (3) and (4) mean that the only accepted use case for this file is to
++# speed up rolls or enable a warning slightly sooner, for cases where an upstream fix has been
++# proposed but is likely to take a long time to get merged and rolled into chromium.
++#
++# We may make an exception to the policy for extremely high-value warnings that backslide a lot
++# (such as unsafe buffers), but this is expected to be rare.
++
++# Formatting note: Don't put comments on the same line as a glob pattern! Clang
++# will get confused and the warning won't be suppressed.
++
++[unnecessary-virtual-specifier]
++# Can be removed when https://github.com/google/nearby/pull/3392 is merged and rolled
++src:*/third_party/nearby/*
+\ No newline at end of file

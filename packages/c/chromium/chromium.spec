@@ -110,7 +110,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        137.0.7151.119
+Version:        138.0.7204.49
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -160,9 +160,6 @@ Patch371:       chromium-133-bring_back_and_disable_allowlist.patch
 Patch373:       chromium-134-type-mismatch-error.patch
 Patch375:       chromium-131-fix-qt-ui.pach
 Patch376:       chromium-135-add_map_droppable.patch
-Patch377:       chromium-137-pdfium_fix_pattribute.patch
-Patch378:       chromium-137-heuristics_missing_includes.patch
-Patch379:       chromium-137-disruptive_notification_permissions_manager-missing_include.patch
 # conditionally applied patches ppc64le only
 Patch401:       ppc-fedora-add-ppc64-architecture-string.patch
 Patch402:       ppc-fedora-0001-linux-seccomp-bpf-ppc64-glibc-workaround-in-SIGSYS-h.patch
@@ -230,6 +227,7 @@ Patch1003:      Cr122-ffmpeg-new-channel-layout.patch
 Patch1004:      ffmpeg-new-channel-layout.patch
 Patch1005:      chromium-106-ffmpeg-duration.patch
 Patch1006:      chromium-93-ffmpeg-4.4-rest.patch
+Patch1007:      chromium-138-revert_ffmpeg_FF_AV.patch
 # patch where libxml < 2.12
 Patch1010:      chromium-124-system-libxml.patch
 # patch where rust <= 1.85
@@ -510,6 +508,7 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %patch -p1 -R -P 1004
 %patch -p1 -P 1005
 %patch -p1 -P 1006
+%patch -p1 -P 1007
 %endif
 
 %if %{without libxml2_2_12}
@@ -517,7 +516,7 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %endif
 
 %if "%{?rust_version}" == "1.85"
-%patch -p1 -R -P 1030
+%patch -p1 -P 1030
 %endif
 
 %if %{without gtk4_4_19}
@@ -678,8 +677,8 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/wasmparser
     third_party/devtools-frontend/src/node_modules/fast-glob
     third_party/devtools-frontend/src/third_party
-    third_party/distributed_point_functions
     third_party/dom_distiller_js
+    third_party/dragonbox
     third_party/eigen3
     third_party/emoji-segmenter
     third_party/farmhash
@@ -796,7 +795,6 @@ keeplibs=(
     third_party/tensorflow_models
     third_party/tensorflow-text
     third_party/tflite
-    third_party/tflite/src/third_party/eigen3
     third_party/tflite/src/third_party/fft2d
     third_party/tflite/src/third_party/xla/third_party/tsl
     third_party/tflite/src/third_party/xla/xla/tsl
@@ -813,7 +811,6 @@ keeplibs=(
     third_party/webrtc/modules/third_party/fft
     third_party/webrtc/modules/third_party/g711
     third_party/webrtc/modules/third_party/g722
-    third_party/webrtc/rtc_base/third_party/base64
     third_party/webrtc/rtc_base/third_party/sigslot
     third_party/webrtc/rtc_tools
     third_party/widevine

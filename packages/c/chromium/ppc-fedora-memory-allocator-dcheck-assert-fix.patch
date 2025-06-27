@@ -6,7 +6,7 @@ Index: chromium-127.0.6533.88/base/allocator/partition_allocator/src/partition_a
         partition_page_count <= kMaxPartitionPagesPerRegularSlotSpan;
         partition_page_count++) {
      size_t candidate_size = partition_page_count * PartitionPageSize();
-+    if (candidate_size > kMaxBucketed) {
++    if (candidate_size > BucketIndexLookup::kMaxBucketSize) {
 +      break;
 +    }
      size_t waste = candidate_size % slot_size;
@@ -16,7 +16,7 @@ Index: chromium-127.0.6533.88/base/allocator/partition_allocator/src/partition_a
        size_t system_page_count =
            partition_page_count * NumSystemPagesPerPartitionPage() - slack;
        size_t candidate_size = system_page_count * SystemPageSize();
-+      if (candidate_size > kMaxBucketed) {
++      if (candidate_size > BucketIndexLookup::kMaxBucketSize) {
 +        continue;
 +      }
        size_t waste = candidate_size % slot_size;

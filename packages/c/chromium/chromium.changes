@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jun 25 10:32:36 CEST 2025 - ro@suse.de
+
+- Chromium 138.0.7204.49
+  (stable released 2025-06-24) (boo#1245332)
+  * CVE-2025-6555: Use after free in Animation
+  * CVE-2025-6556: Insufficient policy enforcement in Loader
+  * CVE-2025-6557: Insufficient data validation in DevTools
+
+- dropped patches:
+  chromium-137-heuristics_missing_includes.patch (upstream)
+  chromium-137-pdfium_fix_pattribute.patch (upstream)
+- modified patches:
+  chromium-125-compiler.patch (context)
+  ffmpeg-new-channel-layout.patch (context)
+  chromium-134-revert-rust-adler2.patch (context,reverse application)
+  ppc-fedora-0001-Add-PPC64-support-for-boringssl.patch (context)
+  ppc-fedora-0002-regenerate-xnn-buildgn.patch (context)
+  ppc-fedora-memory-allocator-dcheck-assert-fix.patch (context)
+  chromium-warning-suppression-mappings.patch (context)
+- added patches:
+  (conditional revert for old ffmpeg,
+   upstream 129f48501a7c3fa4236234f2fa0aee490a845b59)
+  chromium-138-revert_ffmpeg_FF_AV.patch
+- keeplibs:
+  removed third_party/distributed_point_functions
+  removed third_party/tflite/src/third_party/eigen3
+  removed third_party/webrtc/rtc_base/third_party/base64
+  added third_party/dragonbox
+  (needed by ../v8/src/numbers/conversions.cc )
+
+-------------------------------------------------------------------
 Tue Jun 17 23:36:50 CEST 2025 - ro@suse.de
 
 - Chromium 137.0.7151.119
