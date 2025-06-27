@@ -1,0 +1,31 @@
+From 4abeee1aac20a7a2552870e0359b8df013ae9037 Mon Sep 17 00:00:00 2001
+From: Seeteena Thoufeek <s1seetee@linux.ibm.com>
+Date: Wed, 18 Jun 2025 10:22:23 +0530
+Subject: [PATCH] numastat command fails on LPAR which is not having node0
+
+We see the device path hardcoded with node0.
+it presumes node0 always exist, and it just counts
+the number of rows of information in the file for later
+uses where it does process the nodes as expected.
+
+Signed-off-by: Seeteena Thoufeek <s1seetee@linux.vnet.ibm.com>
+---
+ numastat.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/numastat.c b/numastat.c
+index 7683f07..54d201c 100644
+--- a/numastat.c
++++ b/numastat.c
+@@ -782,8 +782,9 @@ static void show_info_from_system_file(char *file, int tok_offset)
+ {
+         char fname[64];
+         char buf[SMALL_BUF_SIZE];
+-        // Open /sys/.../node0/<file>
+-        snprintf(fname, sizeof(fname), "/sys/devices/system/node/node0/%s", file);
++	
++	// Use the first available node for initial row counting
++	snprintf(fname, sizeof(fname), "/sys/devices/system/node/node%d/%s", node_ix_map[0], file);
+         FILE *fs = fopen(fname, "r");
+         if (!fs) {
+                 sprintf(buf, "cannot open %s", fname);
