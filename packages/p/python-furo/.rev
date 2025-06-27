@@ -17,4 +17,13 @@ Fix missing Source OBS error.</comment>
     <comment></comment>
     <requestid>1228573</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ac51144810aa23ce9445d3d723c7d792</srcmd5>
+    <version>2024.8.6</version>
+    <time>1751058054</time>
+    <user>anag_factory</user>
+    <comment>- refresh node modules
+  (CVE-2025-5889, bsc#1244347)</comment>
+    <requestid>1288677</requestid>
+  </revision>
 </revisionlist>

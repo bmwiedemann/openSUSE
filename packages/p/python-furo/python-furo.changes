@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 26 12:18:33 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- refresh node modules
+  (CVE-2025-5889, bsc#1244347)
+
+-------------------------------------------------------------------
 Wed Dec  4 14:31:25 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - refresh node modules
