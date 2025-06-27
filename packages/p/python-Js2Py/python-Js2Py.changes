@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 27 02:47:33 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Jan  1 23:38:45 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add 313-compatibility.patch (gh#PiotrDabkowski/Js2Py#334)

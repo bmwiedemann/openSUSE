@@ -22,7 +22,6 @@ Version:        0.74
 Release:        0
 Summary:        JavaScript to Python Translator & JavaScript interpreter
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/PiotrDabkowski/Js2Py
 Source:         https://files.pythonhosted.org/packages/source/J/Js2Py/Js2Py-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/PiotrDabkowski/Js2Py/master/LICENSE.md
@@ -35,8 +34,10 @@ Patch2:         CVE-2024-28397.patch
 # PATCH-FIX-UPSTREAM 313-compatibility.patch gh#PiotrDabkowski/Js2Py#334 mcepl@suse.com
 # Compatibility with Python 3.13
 Patch3:         313-compatibility.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyjsparser}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyjsparser
@@ -54,10 +55,10 @@ implementation of the JavaScript core, is written in pure Python.
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -72,6 +73,6 @@ popd
 %doc README.md
 %license LICENSE.md
 %{python_sitelib}/js2py
-%{python_sitelib}/Js2Py-%{version}*-info
+%{python_sitelib}/[Jj]s2[Pp]y-%{version}.dist-info
 
 %changelog
