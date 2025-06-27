@@ -18,7 +18,7 @@
 
 %define libnum  1
 Name:           LibVNCServer
-Version:        0.9.14
+Version:        0.9.15
 Release:        0
 Summary:        VNC Development Library
 License:        GPL-2.0-or-later
@@ -29,6 +29,8 @@ Source0:        https://github.com/LibVNC/libvncserver/archive/%{name}-%{version
 Source1:        baselibs.conf
 #PATCH-FIX-OPENSUSE: redefine keysyms only if needed
 Patch0:         redef-keysym.patch
+# PATCH-FIX-UPSTREAM -- CMake 4 compat
+Patch1:         0001-CMake-require-at-least-CMake-3.5.patch
 #PATCH-FEATURE-UPSTREAM TLS security type enablement patches gh#LibVNC/libvncserver!234
 Patch10:        0001-libvncserver-Add-API-to-add-custom-I-O-entry-points.patch
 Patch11:        0002-libvncserver-Add-channel-security-handlers.patch
@@ -43,7 +45,6 @@ BuildRequires:  lzo-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  slang-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 VNC is a set of programs using the RFB (Remote Frame Buffer) protocol.
@@ -60,8 +61,8 @@ real running X11 server) has been split off into its own package on
 %package -n libvncclient%{libnum}
 Summary:        Library implementing a VNC client
 Group:          System/Libraries
+Conflicts:      LibVNCServer < %{version}
 Obsoletes:      linuxvnc < %{version}
-Conflicts:      LibVNCServer < %version
 
 %description -n libvncclient%{libnum}
 LibVNCServer/LibVNCClient are cross-platform C libraries that allow
@@ -76,12 +77,18 @@ LibVNCServer/LibVNCClient are cross-platform C libraries that allow
 implementing VNC server or client functionality in your program.
 
 %package devel
-Requires:       gnutls-devel
-Requires:       libvncclient%{libnum} = %version
-Requires:       libvncserver%{libnum} = %version
-Requires:       zlib-devel
 Summary:        VNC Development Library
 Group:          Development/Libraries/X11
+Requires:       gnutls-devel
+Requires:       libgcrypt-devel
+Requires:       libgnutls-devel
+Requires:       libjpeg-devel
+Requires:       libpng-devel
+Requires:       libvncclient%{libnum} = %{version}
+Requires:       libvncserver%{libnum} = %{version}
+Requires:       lzo-devel
+Requires:       openssl-devel
+Requires:       zlib-devel
 
 %description devel
 VNC is a set of programs using the RFB (Remote Frame Buffer) protocol.
@@ -97,8 +104,7 @@ The LibVNCServer-devel package contains the static libraries and header
 files for LibVNCServer.
 
 %prep
-%setup -q -n libvncserver-%{name}-%{version}
-%autopatch -p1
+%autosetup -p1 -n libvncserver-%{name}-%{version}
 
 # fix encoding
 for file in ChangeLog ; do
@@ -109,38 +115,34 @@ done
 
 %build
 %cmake
-make %{?_smp_mflags}
+%cmake_build
 
 %check
-pushd build
-export LD_LIBRARY_PATH="$(pwd)"
-make test
+%ctest
 
 %install
 %cmake_install
 
-%post   -n libvncclient%{libnum} -p /sbin/ldconfig
-%postun -n libvncclient%{libnum} -p /sbin/ldconfig
-%post   -n libvncserver%{libnum} -p /sbin/ldconfig
-%postun -n libvncserver%{libnum} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libvncclient%{libnum}
+%ldconfig_scriptlets -n libvncserver%{libnum}
 
 %files -n libvncserver%{libnum}
-%defattr(-,root,root)
-%doc COPYING README.md
-%_libdir/libvncserver.so.%{version}
-%_libdir/libvncserver.so.%{libnum}*
+%license COPYING
+%doc README.md
+%{_libdir}/libvncserver.so.%{version}
+%{_libdir}/libvncserver.so.%{libnum}*
 
 %files -n libvncclient%{libnum}
-%defattr(-,root,root)
-%doc COPYING README.md
-%_libdir/libvncclient.so.%{version}
-%_libdir/libvncclient.so.%{libnum}*
+%license COPYING
+%doc README.md
+%{_libdir}/libvncclient.so.%{version}
+%{_libdir}/libvncclient.so.%{libnum}*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS.md README.md
+%license COPYING
+%doc AUTHORS ChangeLog NEWS.md README.md
 %{_includedir}/rfb/*
-%dir /usr/include/rfb
+%dir %{_includedir}/rfb
 %{_libdir}/libvncclient.so
 %{_libdir}/libvncserver.so
 %{_libdir}/pkgconfig/*.pc

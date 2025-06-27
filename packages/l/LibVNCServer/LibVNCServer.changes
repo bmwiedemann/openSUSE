@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun 26 07:53:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.9.15
+  https://github.com/LibVNC/libvncserver/releases/tag/LibVNCServer-0.9.15
+  * internal code structure cleanup
+  * UTF-8 clipboard handling improvements
+  * HTTP server support for multithreaded VNC servers
+  * Fixed building with OpenSSL >= 3.0.0
+- Rebase patches
+- Fix devel package dependencies. The libraries have public link
+  targets that must be present when LibVNCServer-devel is
+  installed
+- Add upstream change to fix build failures with CMake 4:
+  * 0001-CMake-require-at-least-CMake-3.5.patch
+- Spec refresh
+
+-------------------------------------------------------------------
 Fri Jun 23 14:44:58 UTC 2023 - pgajdos@suse.com
 
 - version update to 0.9.14
@@ -581,4 +598,3 @@ Sun Aug 21 03:27:19 CEST 2005 - garloff@suse.de
 
 - Initial creation of package LibVNCServer-0.7.1. 
 
--------------------------------------------------------------------

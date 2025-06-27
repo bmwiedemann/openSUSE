@@ -498,4 +498,24 @@
   % 0002-libvncserver-Add-channel-security-handlers.patch (refreshed)</comment>
     <requestid>1094908</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>27d4a7362168a058e5f76fda217eef25</srcmd5>
+    <version>0.9.15</version>
+    <time>1751058017</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.9.15
+  https://github.com/LibVNC/libvncserver/releases/tag/LibVNCServer-0.9.15
+  * internal code structure cleanup
+  * UTF-8 clipboard handling improvements
+  * HTTP server support for multithreaded VNC servers
+  * Fixed building with OpenSSL &gt;= 3.0.0
+- Rebase patches
+- Fix devel package dependencies. The libraries have public link
+  targets that must be present when LibVNCServer-devel is
+  installed
+- Add upstream change to fix build failures with CMake 4:
+  * 0001-CMake-require-at-least-CMake-3.5.patch
+- Spec refresh</comment>
+    <requestid>1288668</requestid>
+  </revision>
 </revisionlist>

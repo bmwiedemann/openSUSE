@@ -1,7 +1,7 @@
-Index: LibVNCServer-0.8.2/rfb/keysym.h
+Index: LibVNCServer-0.8.2/include/rfb/keysym.h
 ===================================================================
---- LibVNCServer-0.8.2.orig/rfb/keysym.h
-+++ LibVNCServer-0.8.2/rfb/keysym.h
+--- LibVNCServer-0.8.2.orig/include/rfb/keysym.h
++++ LibVNCServer-0.8.2/include/rfb/keysym.h
 @@ -50,15 +50,29 @@ SOFTWARE.
  
  ******************************************************************/
