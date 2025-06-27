@@ -2,8 +2,9 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/vmware/open-vm-tools.git</param>
     <param name="scm">git</param>
-    <param name="revision">12.5.2</param>
+    <param name="revision">stable-13.0.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">stable-(.*)</param>
   </service>
   <service name="set_version" mode="manual">
   </service>

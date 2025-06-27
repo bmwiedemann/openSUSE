@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Jun 20 20:59:21 UTC 2025 - Kirk Allan <kallan@suse.com>
+
+- Update to open-vm-tools 13.0.0 based on build 24696409. (boo#1245169): 
+
+  There are no new features in the open-vm-tools 13.0.0 release.  This is
+  primarily a maintenance release that addresses a few issues, including:
+  - The vm-support script has been updated to collect the open-vm-tools log
+    files from the Linux guest and information from the systemd journal.
+  - Github pull requests has been integrated and issues fixed.  Please see
+    the Resolved Issues section of the Release Notes.
+
+  For a more complete list of issues resolved in this release, see the
+  Resolved Issues section of the Release Notes.
+
+  For complete details, see:
+    https://github.com/vmware/open-vm-tools/releases/tag/stable-13.0.0
+
+  Release Notes are available at:
+    https://github.com/vmware/open-vm-tools/blob/stable-13.0.0/ReleaseNotes.md
+
+  The granular changes that have gone into the 13.0.0 release are in the
+  ChangeLog at:
+    https://github.com/vmware/open-vm-tools/blob/stable-13.0.0/open-vm-tools/ChangeLog
+
+- Add patch:
+  0001-GOSC-Update-Guest-OS-Customization-to-utilize-system.patch
+  Currently the "telinit 6" command is used to reboot a Linux VM
+  following Guest OS Customization.  As the classic Linux init system,
+  SysVinit, is deprecated in favor of a newer init system, systemd,
+  the telinit command may not be available on the base Linux OS.
+
+  This change adds support to Guest OS Customization for the systemd init
+  system.  If the modern init system, systemd, is available, then a
+  "systemctl reboot" command will be used to trigger reboot.  Otherwise,
+  the "telinit 6" command will be used assuming the traditional init
+  system, SysVinit, is still available.
+
+- Drop patch now contained in 13.0.0:
+  open-vm-tools-12.5.0-gcc15.patch
+
+- Ran /usr/lib/obs/service/source_validators/helpers/fix_changelog to fix changes
+  file where source validator was failing.
+
+-------------------------------------------------------------------
 Tue May 13 04:34:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 12.5.2 (bsc#1243106):
@@ -2026,7 +2070,7 @@ Fri Aug 22 16:49:41 CEST 2008 - dominique@leuenberger.net
 - added packageand(open-vm-tools:xorg-x11) to Supplements
   of open-vm-tools-gui sub package
 
-------------------------------------------------------------------
+-------------------------------------------------------------------
 Fri Aug 22 07:30:15 CEST 2008 - dominique@leuenberger.net
 
  - Re-arranged comments for the configure line. Apparently, comments
@@ -2075,7 +2119,7 @@ Fri Aug 12 16:17:07 CEST 2008 - prusnak@suse.cz
     Martin Preishuber for the report (Sourceforge bug 2013568).
   * As usual, other bug fixes.
 
-------------------------------------------------------------------
+-------------------------------------------------------------------
 Mon Jul 21 17:02:15 CEST 2008 - prusnak@suse.cz
 
 - updated to 2008.07.01:
@@ -2117,8 +2161,8 @@ Tue May 27 21:00:00 EST 2008 - dominique-rpm@leuenberger.net
 - Excluded the building of KMPs for XEN, probably nobody installs
   a vmware host in xen.
 
--------------------------------------------------------------------
 
+-------------------------------------------------------------------
 Thu May 22 10:20:14 CEST 2008 - prusnak@suse.cz
 
 - added Recommends: open-vm-tools to KMP preamble [bnc#391434]
