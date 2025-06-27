@@ -2909,4 +2909,25 @@
   by a bind mount pointing to itself. This Fixes</comment>
     <requestid>1288533</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>e9bcc00778fa332dfaecbede10e0b859</srcmd5>
+    <version>10.2.26</version>
+    <time>1751058007</time>
+    <user>anag_factory</user>
+    <comment>- Bump version: 10.2.25 → 10.2.26
+
+- Fix shim lookup for arm on SUSE
+  Add missing search path for shim binary on arm based SUSE
+  systems. Also update the tumbleweed/test-image-live-disk
+  integration test for arm to build with secure boot enabled
+  to actually test a secure boot enabled ISO build.
+  This Fixes #2842
+
+- Add container_import template test
+
+- Add support for container-snap as a container-image engine
+  With this commit, we can now pre-load images using container-snap directly
+  during the kiwi image build</comment>
+    <requestid>1288814</requestid>
+  </revision>
 </revisionlist>

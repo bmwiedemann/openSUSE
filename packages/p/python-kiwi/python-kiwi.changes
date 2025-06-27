@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun 27 11:19:27 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.25 → 10.2.26
+
+-------------------------------------------------------------------
+Fri Jun 27 09:55:26 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix shim lookup for arm on SUSE
+
+  Add missing search path for shim binary on arm based SUSE
+  systems. Also update the tumbleweed/test-image-live-disk
+  integration test for arm to build with secure boot enabled
+  to actually test a secure boot enabled ISO build.
+  This Fixes #2842
+
+-------------------------------------------------------------------
+Wed Jun 25 16:02:51 CEST 2025 - Dan Čermák <dcermak@suse.com>
+
+- Add container_import template test
+
+-------------------------------------------------------------------
 Wed Jun 25 14:21:01 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.2.24 → 10.2.25
@@ -18,6 +39,14 @@ Wed Jun 25 09:36:58 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
   partitions in the table. The way lsblk was called did not
   enforce this ordering. This commit enforces the order to
   be done against the start offset and fixes bsc#1245190
+
+-------------------------------------------------------------------
+Tue Jun 24 23:35:52 CEST 2025 - Dan Čermák <dcermak@suse.com>
+
+- Add support for container-snap as a container-image engine
+
+  With this commit, we can now pre-load images using container-snap directly
+  during the kiwi image build
 
 -------------------------------------------------------------------
 Tue Jun 24 15:43:59 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
