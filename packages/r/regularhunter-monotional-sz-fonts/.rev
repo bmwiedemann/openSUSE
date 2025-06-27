@@ -27,4 +27,15 @@
 </comment>
     <requestid>1288614</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fde26150a384e8a724fa34b3b93d9358</srcmd5>
+    <version>2.8</version>
+    <time>1751058106</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.8:
+  * Align ` % ` and ` ~ ` to integer coordinates
+  * Scale ` % ` glyph to 104% of original size
+</comment>
+    <requestid>1288762</requestid>
+  </revision>
 </revisionlist>
