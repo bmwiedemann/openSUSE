@@ -331,6 +331,7 @@ find third_party/electron_node/deps/nghttp2 -type f ! -name "*.gn" -a ! -name "*
 find third_party/electron_node/deps/ngtcp2 -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/openssl -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/simdutf -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
+find third_party/electron_node/deps/sqlite -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/v8 -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 rm -rvf third_party/electron_node/deps/v8/{tools,include}
 ln -srv v8/tools -t third_party/electron_node/deps/v8/

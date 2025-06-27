@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 26 17:30:59 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 35.6.0
+  * Added support for --no-experimental-global-navigator flag
+  * Fixed a potential crash using session.clearData.
+  * Fixed an error when importing electron for the first time from an ESM module loaded by a CJS module.
+  * Fixed an issue where calling Fetch.continueResponse via debugger with WebContentsView could cause a crash.
+  * Fixed an issue where utility processes could leak file handles.
+- 15.6: use system sqlite in node
+- add backported python3.14-nodedownload-FancyURLopener.patch to fix build error
+
+-------------------------------------------------------------------
 Thu Jun  5 05:14:29 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 35.5.1

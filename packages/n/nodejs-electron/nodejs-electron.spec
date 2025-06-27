@@ -92,8 +92,6 @@ ExcludeArch: %arm
 %bcond_without system_vk_headers
 %bcond_without spirv_2024
 %bcond_without cares_21
-#sqlite requires being compiled with session support, not a specific version.
-%bcond_without system_sqlite
 %else
 %bcond_with system_vpx
 %bcond_with bro_11
@@ -101,7 +99,6 @@ ExcludeArch: %arm
 %bcond_with system_vk_headers
 %bcond_with spirv_2024
 %bcond_with cares_21
-%bcond_with system_sqlite
 %endif
 
 
@@ -194,7 +191,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        35.5.1
+Version:        35.6.0
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -397,6 +394,7 @@ Patch3208:      to_vector-std-projected-gcc119888.patch
 Patch3209:      file_dialog-missing-uint32_t.patch
 Patch3211:      html_permission_element_strings_map-reproducible.patch
 Patch3212:      extensions-common-assert.patch
+Patch3213:      python3.14-nodedownload-FancyURLopener.patch
 
 # Patches to re-enable upstream force disabled features.
 # There's no sense in submitting them but they may be reused as-is by other packagers.
@@ -770,9 +768,6 @@ patch -R -p1 < %SOURCE401
 patch -R -p1 < %SOURCE480
 %endif
 
-%if %{without system_sqlite}
-patch -R -p1 < %PATCH1093
-%endif
 
 
 # This one just removes compatibility with old abseil and does not add anything, reverting unconditionally.
@@ -929,9 +924,6 @@ find third_party/electron_node/deps/histogram -type f ! -name "*.gn" -a ! -name 
 find third_party/electron_node/deps/simdjson -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 %endif
 
-%if %{with system_sqlite}
-find third_party/electron_node/deps/sqlite -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
-%endif
 
 
 %build
