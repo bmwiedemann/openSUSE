@@ -18,19 +18,19 @@
 
 %define srcversion 6.15
 %define patchversion 6.15.3
-%define git_commit d7f7d34a2ff1c4f06c2a04991e35a37f9fa6d9e0
+%define git_commit 0b2be4d20b05720cc3ba3075d1baa2708b243d62
 %define variant %{nil}
 %define gcc_package gcc
 %define gcc_compiler gcc
 
 %include %_sourcedir/kernel-spec-macros
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-source
 Version:        6.15.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gd7f7d34
+Release:        <RELEASE>.g0b2be4d
 %else
 Release:        0
 %endif
@@ -93,11 +93,8 @@ Source62:       old-flavors
 Source63:       arch-symbols
 Source64:       package-descriptions
 Source65:       kernel-spec-macros
-Source68:       host-memcpy-hack.h
-Source69:       try-disable-staging-driver
 Source70:       kernel-obs-build.spec.in
 Source71:       kernel-obs-qa.spec.in
-Source72:       compress-vmlinux.sh
 Source73:       dtb.spec.in.in
 Source74:       mkspec-dtb
 Source75:       release-projects

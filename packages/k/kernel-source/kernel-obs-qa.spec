@@ -25,7 +25,7 @@
 Name:           kernel-obs-qa
 Version:        6.15.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gd7f7d34
+Release:        <RELEASE>.g0b2be4d
 %else
 Release:        0
 %endif
@@ -35,7 +35,7 @@ Group:          SLES
 BuildRequires:  kernel-default
 # kernel-obs-build must be also configured as VMinstall, but is required
 # here as well to avoid that qa and build package build parallel
-BuildRequires:  kernel-obs-build-srchash-d7f7d34a2ff1c4f06c2a04991e35a37f9fa6d9e0
+BuildRequires:  kernel-obs-build-srchash-0b2be4d20b05720cc3ba3075d1baa2708b243d62
 BuildRequires:  modutils
 ExclusiveArch:  aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
 

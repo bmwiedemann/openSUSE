@@ -19,7 +19,7 @@
 
 %define srcversion 6.15
 %define patchversion 6.15.3
-%define git_commit d7f7d34a2ff1c4f06c2a04991e35a37f9fa6d9e0
+%define git_commit 0b2be4d20b05720cc3ba3075d1baa2708b243d62
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -37,12 +37,12 @@
 
 %include %_sourcedir/kernel-spec-macros
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-kvmsmall
 Version:        6.15.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gd7f7d34
+Release:        <RELEASE>.g0b2be4d
 %else
 Release:        0
 %endif
@@ -202,11 +202,8 @@ Source62:       old-flavors
 Source63:       arch-symbols
 Source64:       package-descriptions
 Source65:       kernel-spec-macros
-Source68:       host-memcpy-hack.h
-Source69:       try-disable-staging-driver
 Source70:       kernel-obs-build.spec.in
 Source71:       kernel-obs-qa.spec.in
-Source72:       compress-vmlinux.sh
 Source73:       dtb.spec.in.in
 Source74:       mkspec-dtb
 Source75:       release-projects
@@ -270,11 +267,8 @@ NoSource:       62
 NoSource:       63
 NoSource:       64
 NoSource:       65
-NoSource:       68
-NoSource:       69
 NoSource:       70
 NoSource:       71
-NoSource:       72
 NoSource:       73
 NoSource:       74
 NoSource:       75
@@ -1308,7 +1302,6 @@ export KBUILD_VERBOSE=0
 export KBUILD_SYMTYPES=1
 export KBUILD_BUILD_USER=geeko
 export KBUILD_BUILD_HOST=buildhost
-export HOST_EXTRACFLAGS="-include %_sourcedir/host-memcpy-hack.h"
 EOF
 source .kernel-binary.spec.buildenv
 
@@ -1475,20 +1468,11 @@ source .kernel-binary.spec.buildenv
 
 mkdir -p %_topdir/OTHER
 log=%_topdir/OTHER/make-stderr.log
-while true; do
-    make all $MAKE_ARGS 2> >(tee "$log")
-    if test "${PIPESTATUS[0]}" -eq 0; then
-        break
-    fi
-    # In the linux-next and vanilla branches, we try harder to build a
-    # package.
-    if test 0%vanilla_only -gt 0 &&
-			%_sourcedir/try-disable-staging-driver "$log"; then
-        echo "Retrying make"
-    else
-        exit 1
-    fi
-done
+make all $MAKE_ARGS 2> >(tee "$log")
+result="${PIPESTATUS[0]}"
+if ! test "$result" -eq 0; then
+    exit "$result"
+fi
 
 %if 0%{?klp_ipa_clones} && %generate_compile_commands
     # Generate compile_commands.json
@@ -1524,17 +1508,9 @@ add_vmlinux()
     # mark the file 0644 again
     chmod +x %buildroot/$vmlinux
     if test $1 == "--compressed"; then
-        # avoid using the gzip -n option to make kdump happy (bnc#880848#c20)
         ts="$(head -n1 %_sourcedir/source-timestamp)"
         touch -d "$ts" %buildroot/$vmlinux
         touch %buildroot/$vmlinux.%{compress_vmlinux}
-%if 0%{?__debug_package:1}
-        # compress the vmlinux image after find-debuginfo.sh has processed it
-%global __debug_install_post %__debug_install_post \
-%_sourcedir/compress-vmlinux.sh %buildroot/boot/vmlinux-%kernelrelease-%build_flavor
-%else
-        %_sourcedir/compress-vmlinux.sh %buildroot/$vmlinux
-%endif
         ghost_vmlinux=true
     else
         ghost_vmlinux=false

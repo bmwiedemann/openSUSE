@@ -7048,4 +7048,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.15.3 (a big one) &amp; other fixes; bugs: bsc#1012628 bsc#1243995 bsc#1244538</comment>
     <requestid>1287650</requestid>
   </revision>
+  <revision rev="787" vrev="2">
+    <srcmd5>baaff978136aba509bb6db97a38f735f</srcmd5>
+    <version>6.15.3</version>
+    <time>1751058045</time>
+    <user>anag_factory</user>
+    <comment>fix NFS hole &amp; MediaTek support &amp; other fixes; bugs: bsc#1240696 bsc#1244269</comment>
+    <requestid>1288449</requestid>
+  </revision>
 </revisionlist>

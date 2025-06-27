@@ -22,12 +22,12 @@
 
 %include %_sourcedir/kernel-spec-macros
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-riscv64
 Version:        6.15.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gd7f7d34
+Release:        <RELEASE>.g0b2be4d
 %else
 Release:        0
 %endif
@@ -76,11 +76,8 @@ Source62:       old-flavors
 Source63:       arch-symbols
 Source64:       package-descriptions
 Source65:       kernel-spec-macros
-Source68:       host-memcpy-hack.h
-Source69:       try-disable-staging-driver
 Source70:       kernel-obs-build.spec.in
 Source71:       kernel-obs-qa.spec.in
-Source72:       compress-vmlinux.sh
 Source73:       dtb.spec.in.in
 Source74:       mkspec-dtb
 Source75:       release-projects
@@ -144,11 +141,8 @@ NoSource:       62
 NoSource:       63
 NoSource:       64
 NoSource:       65
-NoSource:       68
-NoSource:       69
 NoSource:       70
 NoSource:       71
-NoSource:       72
 NoSource:       73
 NoSource:       74
 NoSource:       75
