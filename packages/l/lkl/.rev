@@ -80,4 +80,18 @@ https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/S4HJD
     <comment></comment>
     <requestid>1282383</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4b93e53bef8aea524ff60228b9538858</srcmd5>
+    <version>0.6.4+git.0dca6d43c62</version>
+    <time>1751058048</time>
+    <user>anag_factory</user>
+    <comment>- Merge opensuse-kernel/SLE15-SP6 76bb7b85d869d
+- Add lklfuse man page (bsc#1245336)
+  * docs: lkl: move lkl documentation into subdirectory
+  * docs: lkl: add basic lklfuse documentation
+- Fix gcc -std=gnu23 build failures
+  * 0001-lkl-tests-drop-unused-lkl_test.fn-parameters.patch
+  * 0001-lkl-hijack-explicitly-build-with-std-gnu11.patch (forwarded request 1288670 from dmdiss)</comment>
+    <requestid>1288671</requestid>
+  </revision>
 </revisionlist>

@@ -17,14 +17,18 @@
 
 Name:           lkl
 # Downstream made-up version number, reflects corrseponding kernel version.
-Version:        0.6.4+git.e52e7a33bcb
+Version:        0.6.4+git.0dca6d43c62
 Release:        0
 Summary:        EXPERIMENTAL: Linux Kernel Library (LKL) utilities
 License:        GPL-2.0-only
 Group:          System/Kernel
 Url:            https://lkl.github.io
 Source:         %{name}-%{version}.tar.zst
+# mainline:
 Patch1:		0001-tools-build-Fix-s-detection-code-in-tools-build-Make.patch
+# https://github.com/lkl/linux/pull/610
+Patch2:		0001-lkl-tests-drop-unused-lkl_test.fn-parameters.patch
+Patch3:		0001-lkl-hijack-explicitly-build-with-std-gnu11.patch
 # regular Linux kernel build dependencies
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 BuildRequires:  bash-sh
@@ -44,6 +48,9 @@ BuildRequires:  python3
 BuildRequires:  fuse3-devel
 BuildRequires:  libarchive-devel
 BuildRequires:  zstd
+# rst2man used for Documentation/lkl
+BuildRequires:  python3-docutils
+BuildRequires:  gzip
 
 %description
 LKL (Linux Kernel Library) is aiming to allow reusing the Linux kernel code as
@@ -141,6 +148,8 @@ rm %{buildroot}/%{_libdir}/liblkl.a
 # lklfuse systemd integration needs to be explicitly installed
 install -m 0644 -D tools/lkl/systemd/61-lklfuse.rules %{buildroot}/%{_udevrulesdir}/61-lklfuse.rules
 install -m 0644 -D tools/lkl/systemd/lklfuse-mount@.service %{buildroot}/%{_unitdir}/lklfuse-mount@.service
+install -d %{buildroot}/%{_mandir}/man8
+rst2man Documentation/lkl/lklfuse.rst | gzip > %{buildroot}/%{_mandir}/man8/lklfuse.8.gz
 
 %check
 # tests aren't installed so we need to be in the correct _builddir path
@@ -162,7 +171,7 @@ EOF
 %postun -n liblkl0 -p /sbin/ldconfig
 
 %files -n lklfuse
-# TODO: manpage
+%{_mandir}/man8/lklfuse.8.gz
 %{_bindir}/lklfuse
 %{_udevrulesdir}/61-lklfuse.rules
 %{_unitdir}/lklfuse-mount@.service
@@ -175,7 +184,7 @@ EOF
 %license LICENSES/preferred/GPL-2.0
 %license LICENSES/exceptions/Linux-syscall-note
 %license Documentation/process/license-rules.rst
-%doc Documentation/lkl.txt
+%doc Documentation/lkl/lkl.txt
 %{_libdir}/*.so
 %{_includedir}/*
 
