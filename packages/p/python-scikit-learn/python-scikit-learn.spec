@@ -41,16 +41,16 @@ ExclusiveArch:  donotbuild
 %endif
 # optionally test with extra packages
 %bcond_with extratest
-# enable pytest color output for local debugging: osc --with pytestcolor
-%bcond_with pytestcolor
 
 Name:           python-scikit-learn%{psuffix}
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause
 URL:            https://scikit-learn.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/scikit_learn-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/scikit-learn/scikit-learn/pull/31642 MNT Remove deprecated iprint and disp usage in scipy 1.15 LBFGS
+Patch0:         scipy-iprint.patch
 BuildRequires:  %{python_module Cython >= 3.0.10}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module joblib >= 1.2.0}
@@ -106,9 +106,6 @@ scipy.
 %prep
 %autosetup -p1 -n scikit_learn-%{version}
 rm -rf sklearn/.pytest_cache
-%if !%{with pytestcolor}
-sed -i '/--color=yes/d' setup.cfg
-%endif
 
 %build
 %if !%{with test}

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 24 11:07:04 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.7.0
+  * Improved estimator’s HTML representation
+  * Custom validation set for histogram-based Gradient Boosting estimators
+  * Plotting ROC curves from cross-validation results
+  * Array API support
+  * Improved API consistency of Multi-layer Perceptron
+  * Migration toward sparse arrays
+- Add upstream scipy-iprint.patch to fix tests with recent scipy
+
+-------------------------------------------------------------------
 Mon Feb  3 10:39:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.6.1
