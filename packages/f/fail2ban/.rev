@@ -753,4 +753,12 @@ services protected by Fail2ban. CVE-2013-7177 (cyrus-imap) and CVE-2013-7176
     <comment>add missing changes file entry</comment>
     <requestid>1286316</requestid>
   </revision>
+  <revision rev="75" vrev="6">
+    <srcmd5>278f88e08e112db892d46e10e0bc2070</srcmd5>
+    <version>1.1.0</version>
+    <time>1751058093</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1288744</requestid>
+  </revision>
 </revisionlist>

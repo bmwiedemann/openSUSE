@@ -1,7 +1,7 @@
-Index: fail2ban-1.0.2/config/filter.d/sshd.conf
+Index: fail2ban-1.1.0/config/filter.d/sshd.conf
 ===================================================================
---- fail2ban-1.0.2.orig/config/filter.d/sshd.conf
-+++ fail2ban-1.0.2/config/filter.d/sshd.conf
+--- fail2ban-1.1.0.orig/config/filter.d/sshd.conf
++++ fail2ban-1.1.0/config/filter.d/sshd.conf
 @@ -16,7 +16,7 @@ before = common.conf
  
  [DEFAULT]

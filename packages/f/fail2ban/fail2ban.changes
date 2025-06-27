@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 19 19:00:38 UTC 2025 - chris@computersalat.de
+
+- fix build
+  * service file install
+- some rpmlint fixes
+- Add fail2ban_service.patch
+- rebase patches
+  * fail2ban-0.10.4-env-script-interpreter.patch
+  * fail2ban-fix-openssh98.patch
+  * fail2ban-opensuse-locations.patch
+  * harden_fail2ban.service.patch
+
+-------------------------------------------------------------------
 Mon Jun 16 22:37:03 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - spec:

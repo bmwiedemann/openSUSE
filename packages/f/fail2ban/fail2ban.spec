@@ -42,6 +42,8 @@ Source200:      fail2ban.keyring
 Patch100:       %{name}-opensuse-locations.patch
 # PATCH-FIX-OPENSUSE fail2ban-0.10.4-env-script-interpreter.patch jweberhofer@weberhofer.at -- use exact path to define interpretor
 Patch201:       %{name}-0.10.4-env-script-interpreter.patch
+# PATCH-FEATURE-OPENSUSE fail2ban_service.patch chris@computersalat.de -- Add [Service] EnvironmentFile
+Patch300:       %{name}_service.patch
 # PATCH-FEATURE-OPENSUSE harden_fail2ban.service.patch jsegitz@suse.com -- Added hardening to systemd service(s) bsc#1181400
 Patch301:       harden_fail2ban.service.patch
 # PATCH-FIX-OPENSUSE fail2ban-fix-openssh98.patch meissner@suse.com -- support openssh9.8 bsc#1230101
@@ -72,8 +74,8 @@ Requires:       systemd > 204
 %{?systemd_requires}
 Requires:       python3-pyinotify >= 0.8.3
 %if 0%{?suse_version} < 1600
-Obsoletes:      SuSEfirewall2-%{name}
-Provides:       SuSEfirewall2-%{name}
+Provides:       SuSEfirewall2-%{name} = %{version}
+Obsoletes:      SuSEfirewall2-%{name} < %{version}
 %endif
 
 %description
@@ -114,6 +116,7 @@ sed -i -e 's/^before = paths-.*/before = paths-opensuse.conf/' config/jail.conf
 
 %patch -P 100 -p1
 %patch -P 201 -p1
+%patch -P 300 -p1
 %patch -P 301 -p1
 %patch -P 302 -p1
 %patch -P 303 -p1
@@ -129,7 +132,7 @@ sed -i -e 's|%{_datadir}/doc/%{name}|%{_docdir}/%{name}|' setup.py
 
 %build
 export CFLAGS="%{optflags}"
-export SERVICE_BINDIR="/usr/bin"
+export SERVICE_BINDIR="%{_bindir}"
 %pyproject_wheel
 gzip man/*.{1,5}
 
@@ -138,8 +141,8 @@ gzip man/*.{1,5}
 %python_expand %fdupes %{buildroot}%{python3_sitelib}
 
 install -d -m 755 %{buildroot}%{_mandir}/man{1,5}
-install -p -m 644 man/fail2ban-*.1.gz %{buildroot}%{_mandir}/man1
-install -p -m 644 man/jail.conf.5.gz %{buildroot}%{_mandir}/man5
+install -m 644 man/fail2ban-*.1.gz %{buildroot}%{_mandir}/man1
+install -m 644 man/jail.conf.5.gz %{buildroot}%{_mandir}/man5
 
 install -d -m 755 %{buildroot}%{_initddir}
 install -d -m 755 %{buildroot}%{_sbindir}
@@ -149,13 +152,12 @@ install -d -m 755 %{buildroot}/run
 touch %{buildroot}/run/%{name}
 
 # systemd
-install -d -m 755 %{buildroot}%{_unitdir}
-cp -av build/fail2ban.service "%{buildroot}/%{_unitdir}/%{name}.service"
-
-install -d -m 755 %{buildroot}%{_tmpfilesdir}
-install -p -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/%{name}.conf
-
-ln -sf service %{buildroot}%{_sbindir}/rc%{name}
+if [[ ! -f build/fail2ban.service ]]; then
+  sed -e "s|@BINDIR@|%{_bindir}|g" files/fail2ban.service.in > build/fail2ban.service
+fi
+install -D -m 644 build/fail2ban.service "%{buildroot}/%{_unitdir}/%{name}.service"
+install -D -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 install -d -m 755 %{buildroot}%{_sysconfdir}
 mv %{buildroot}%{python3_sitelib}%{_sysconfdir}/%{name} %{buildroot}%{_sysconfdir}
@@ -168,11 +170,9 @@ echo "# Do all your modifications to the jail's configuration in jail.local!" > 
 
 install -d -m 0755 %{buildroot}%{_localstatedir}/lib/%{name}/
 
-install -d -m 755 %{buildroot}%{_fillupdir}
-install -p -m 644 %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.%{name}
+install -D -m 644 %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 
-install -d -m 755 %{buildroot}%{_sysconfdir}/logrotate.d
-install -p -m 644 %{SOURCE3}  %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
+install -D -m 644 %{SOURCE3}  %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 
 %if 0%{?suse_version} < 1600
 perl -i -lpe 's{(After|PartOf)=(.*)}{$1=$2 SuSEfirewall2.service}' \

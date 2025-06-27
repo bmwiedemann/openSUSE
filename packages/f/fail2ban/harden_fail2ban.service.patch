@@ -23,5 +23,5 @@ Index: fail2ban-1.1.0/files/fail2ban.service.in
 +RestrictRealtime=true
 +# end of automatic additions 
  Type=simple
+ EnvironmentFile=-/etc/sysconfig/fail2ban
  Environment="PYTHONNOUSERSITE=1"
- ExecStartPre=/bin/mkdir -p /run/fail2ban

@@ -1,6 +1,7 @@
-diff -ur fail2ban-0.10.4-orig/config/filter.d/ignorecommands/apache-fakegooglebot fail2ban-0.10.4/config/filter.d/ignorecommands/apache-fakegooglebot
---- fail2ban-0.10.4-orig/config/filter.d/ignorecommands/apache-fakegooglebot	2018-10-04 11:26:22.000000000 +0200
-+++ fail2ban-0.10.4/config/filter.d/ignorecommands/apache-fakegooglebot	2019-08-12 10:46:05.067842214 +0200
+Index: fail2ban-1.1.0/config/filter.d/ignorecommands/apache-fakegooglebot
+===================================================================
+--- fail2ban-1.1.0.orig/config/filter.d/ignorecommands/apache-fakegooglebot
++++ fail2ban-1.1.0/config/filter.d/ignorecommands/apache-fakegooglebot
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env fail2ban-python
 +#!/usr/bin/fail2ban-python
