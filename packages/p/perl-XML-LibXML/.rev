@@ -654,4 +654,12 @@ newSVpvn() call. (forwarded request 122259 from k0da)</comment>
   * Add perl-XML-LibXML-fix-testsuite-with-libxml2-2.13.patch (forwarded request 1239241 from pmonrealgonzalez)</comment>
     <requestid>1239251</requestid>
   </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>4fd5931c6c28b9f04b414c2f0ceb9a87</srcmd5>
+    <version>2.0210</version>
+    <time>1751058016</time>
+    <user>anag_factory</user>
+    <comment>Get fully determistic builds, even with --nocheck (boo#1227364) (forwarded request 1288338 from bmwiedemann)</comment>
+    <requestid>1288666</requestid>
+  </revision>
 </revisionlist>

@@ -109,6 +109,7 @@ perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 %perl_make_install
 %perl_process_packlist
 %perl_gen_filelist
+touch example # to have same mtime with+without tests
 
 %files -f %{name}.files
 %doc Changes docs example HACKING.txt README TODO
