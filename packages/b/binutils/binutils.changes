@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 18 09:30:37 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- pr33029.patch: Fix crash in assembler with -gdawrf-5
+
+-------------------------------------------------------------------
 Tue Jun  3 09:07:07 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Drop aarch64-common-pagesize.patch, aarch64 no longer uses 64K page size

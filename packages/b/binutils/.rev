@@ -2391,4 +2391,12 @@ soon.
     <comment>- Drop aarch64-common-pagesize.patch, aarch64 no longer uses 64K page size (forwarded request 1282431 from Andreas_Schwab)</comment>
     <requestid>1282736</requestid>
   </revision>
+  <revision rev="179" vrev="8">
+    <srcmd5>e699a08cdb538e2ef45d25711002dc16</srcmd5>
+    <version>2.43</version>
+    <time>1751058003</time>
+    <user>anag_factory</user>
+    <comment>- pr33029.patch: Fix crash in assembler with -gdawrf-5 (forwarded request 1286747 from Andreas_Schwab)</comment>
+    <requestid>1288676</requestid>
+  </revision>
 </revisionlist>
