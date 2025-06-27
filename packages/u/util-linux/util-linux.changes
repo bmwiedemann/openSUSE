@@ -1,9 +1,65 @@
 -------------------------------------------------------------------
+Tue Jun 24 22:41:18 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.41.1:
+  * cfdisk: fix memory leak and possible NULL dereference
+  * fdisk: fix possible memory leak
+  * findmnt: fix -k option parsing regression (boo#1242705,
+    drop util-linux-libblkid-econf-parse.patch)
+  * hardlink: fix performance regression
+  * include/cctype: fix string comparison
+  * libblkid:
+    * Fix crash while parsing config with libeconf
+    * befs fix underflow
+    * avoid strcasecmp() for ASCII-only strings
+  * libblkid/src/topology/dm: fix fscanf return value check to
+    match expected number of parsed items
+  * libmount:
+    * (subdir) restrict for real mounts only
+    * (subdir) remove unused code
+    * avoid calling memset() unnecessarily
+    * fix --no-canonicalize regression (boo#1244251,
+      drop libmount-fix-no-canonicalize-regression.patch)
+  * lsblk:
+    * use ID_PART_ENTRY_SCHEME as fallback for PTTYPE
+    * avoid strcasecmp() for ASCII-only strings
+  * lscpu:
+    * fix possible buffer overflow in cpuinfo parser
+    * Fix loongarch op-mode output with recent kernel
+  * lsfd:
+    * scan the protocol field of /proc/net/packet as a hex number
+    * fix the description for PACKET.PROTOCOL column
+  * lsns:
+    * enhance compilation without USE_NS_GET_API
+    * fix undefined reference to add_namespace_for_nsfd #3483
+  * more:
+    * fix broken ':!command' command key
+    * fix implicit previous shell_line execution #3508
+  * tests: (test_mkfds::mapped-packet-socket) add a new parameter,
+    protocol
+  * treewide:
+    * add ul_ to parse_timestamp() function name
+      (drop util-linux-rename-common-symbols-4.patch)
+    * add ul_ to parse_switch() function name
+      (drop util-linux-rename-common-symbols-3.patch)
+    * add ul_ to parse_size() function name
+      (drop util-linux-rename-common-symbols-2.patch)
+    * add ul_ to parse_range() function name
+      (drop util-linux-rename-common-symbols-1.patch)
+    * fix optional arguments usage
+    * avoid strcasecmp() for ASCII-only strings
+  * Wipefs: improve --all descriptions for whole-disks
+  * Misc: Do not call exit() on code ending in shared libraries
+  * Other fixes. For complete list see
+    https://kernel.org/pub/linux/utils/util-linux/v2.41/v2.41.1-ReleaseNotes
+- Fix problem with uname26 listed twice.
+
+-------------------------------------------------------------------
 Tue Jun 10 11:16:10 UTC 2025 - Nicolas Belouin <nicolas@belouin.fr>
 
 - Fix libmount --no-canonicalize regression (boo#1244251,
   gh#util-linux/util-linux#3479,
-  libmount-fix-no-canonicalize-regression.patch). 
+  libmount-fix-no-canonicalize-regression.patch).
 
 -------------------------------------------------------------------
 Thu May 29 15:21:59 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>

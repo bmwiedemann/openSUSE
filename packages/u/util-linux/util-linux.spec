@@ -85,7 +85,7 @@ Group:          Development/Languages/Python
 %endif
 # ulbuild == python
 
-Version:        2.41
+Version:        2.41.1
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://www.kernel.org/pub/linux/utils/util-linux/
@@ -110,18 +110,6 @@ Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
 # PATCH-FIX-SUSE util-linux-bash-completion-su-chsh-l.patch bsc1172427 -- Fix "su -s" bash completion.
 Patch3:         util-linux-bash-completion-su-chsh-l.patch
 Patch5:         static_lib.patch
-# PATCH-FIX-UPSTREAM util-linux-libblkid-econf-parse.patch boo1242705 gh#util-linux/util-linux#3574 sbrabec@suse.com -- Prevent segfault of findmnt caused by incorrect parsing of config file by libeconf.
-Patch6:         util-linux-libblkid-econf-parse.patch
-# PATCH-FIX-UPSTREAM util-linux-rename-common-symbols-1.patch gh#util-linux/util-linux#3603 sbrabec@suse.com -- Add ul_ prefix to functions with common names. Fixes btrfsprogs build failure.
-Patch7:         util-linux-rename-common-symbols-1.patch
-# PATCH-FIX-UPSTREAM util-linux-rename-common-symbols-2.patch gh#util-linux/util-linux#3603 sbrabec@suse.com -- Add ul_ prefix to functions with common names.
-Patch8:         util-linux-rename-common-symbols-2.patch
-# PATCH-FIX-UPSTREAM util-linux-rename-common-symbols-3.patch gh#util-linux/util-linux#3603 sbrabec@suse.com -- Add ul_ prefix to functions with common names.
-Patch9:         util-linux-rename-common-symbols-3.patch
-# PATCH-FIX-UPSTREAM util-linux-rename-common-symbols-4.patch gh#util-linux/util-linux#3603 sbrabec@suse.com -- Add ul_ prefix to functions with common names.
-Patch10:        util-linux-rename-common-symbols-4.patch
-# PATCH-FIX-UPSTREAM libmount-fix-no-canonicalize-regression.patch boo1244251 gh#util-linux/util-linux#3479 -- libmount: fix --no-canonicalize regression
-Patch11:        libmount-fix-no-canonicalize-regression.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel
@@ -682,10 +670,10 @@ rm -f %{buildroot}%{_mandir}/man8/fdisk.8*
 
 # create list of setarch(8) symlinks
 find  %{buildroot}%{_mandir}/man8 -regextype posix-egrep  \
-  -regex ".*(linux32|linux64|s390|s390x|i386|ppc|ppc64|ppc32|sparc|sparc64|sparc32|sparc32bash|mips|mips64|mips32|ia64|x86_64|parisc|parisc32|parisc64|uname26)\.8.*" \
+  -regex ".*(linux32|linux64|s390|s390x|i386|ppc|ppc64|ppc32|sparc|sparc64|sparc32|sparc32bash|mips|mips64|mips32|ia64|x86_64|parisc|parisc32|parisc64)\.8.*" \
   -printf "%{_mandir}/man8/%f*\n" >> %{name}.files
 find  %{buildroot}%{_bindir}/ -regextype posix-egrep -type l \
-  -regex ".*(linux32|linux64|s390|s390x|i386|ppc|ppc64|ppc32|sparc|sparc64|sparc32|sparc32bash|mips|mips64|mips32|ia64|x86_64|parisc|parisc32|parisc64|uname26)$" \
+  -regex ".*(linux32|linux64|s390|s390x|i386|ppc|ppc64|ppc32|sparc|sparc64|sparc32|sparc32bash|mips|mips64|mips32|ia64|x86_64|parisc|parisc32|parisc64)$" \
   -printf "%{_bindir}/%f\n" >> %{name}.files
 mkdir -p %{buildroot}/run/uuidd
 
