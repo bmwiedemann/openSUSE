@@ -214,4 +214,12 @@
   * add spi-connection restriction to ROM class</comment>
     <requestid>1227783</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>adeb08f306337e4ca83a2429e31c9f78</srcmd5>
+    <version>4.9.0</version>
+    <time>1751058145</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1288851</requestid>
+  </revision>
 </revisionlist>

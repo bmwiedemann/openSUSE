@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Jun 25 13:24:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.9.0
+  * ESP32-H21: Added full support
+  * ESP32-H4: Added full support
+  * ESP32-P4: Enabled USB-OTG in flasher stub
+  * ESP32-P4: Added support for >16MB flash sizes in flasher stub
+  * ESP32-S3: Added support for >16MB encrypted writes in flasher stub
+  * chip_type_verification: Enabled in secure download mode,
+    stopped using magic numbers
+  * watchdog_reset: Added a new watchdog_reset option working even in USB modes
+  * erase_region: Enabled erasing in ROM bootloader and secure download mode
+  * Added information about the currently used USB mode during chip connection
+  * image_info: Extended the app description info with new segments
+  * esp_rfc2217: Improved the logger message format
+  * Added the option to filter connections based on the serial number
+  * hard_reset: Added support for custom hard reset sequence configuration
+  * Added support for Python 3.13
+  * espefuse: Added support for eFuses for ESP32-C5 ECO2
+  * espefuse: Added support for eFuses for ESP32-C61 ECO3
+  * espsecure: Improved error messages in encrypt_flash_data() and decrypt_flash_data()
+  * espefuse: Added support for different eFuse table versions for ESP32-H2
+  * espefuse: Added 3 bit for PSRAM_CAP efuse field
+  * espefuse: Added API for getting block and wafer versions
+  * espefuse: Added ADC calibration data for ESP32-C61, ESP32-C5, and ESP32-P4
+  * stub_flasher: Fixed failing ESP32-C5 ECO2 flash writes
+  * stub_flasher: Fixed USB-Serial/JTAG mode on ESP32-C5 ECO2 and ESP32-C61 ECO3
+  * write_flash: Detect more cases of unresponsive flash, fixed failing flash_size check
+  * write_flash: Skipped flash_size checks if we can't read flash size
+  * espefuse: Fixed output messages in set_flash_voltage
+  * espefuse: Corrected JTAG_SEL_ENABLE to GPIO34 strapping pin on ESP32-P4
+  * ESP32-C5: Fixed bootloader address
+  * ESP32-H21: Fixed eFuse base address
+  * IntelHex: Do not use padding for merged IntelHex files
+  * elf2image: Fixed for RAM app when SHA256 offset is not specified
+  * elf2image: Fixed support for --flash-mmu-page-config for all chips
+  * elf2image: Try to correct MMU page size if not specified,
+    print correctly in error messages
+  * tests: Expect the correct module name for Python 3.14 argparse
+  * Fixed closing port when connection fails
+  * image_info: Hidden missing app info based on IDF version
+  * save_segment: Added segment length check, the same as the bootloader does
+  * image_info: Prevented reading app description in invalid cases
+  * esp_rfc2217: Fixed keyboard interrupt on Windows
+  * detect_chip: Fixed to select the correct loader before further
+    operations to avoid silent failures
+  * usb_resets: Fixed resetting in USB-OTG and USB-Serial/JTAG modes
+
+-------------------------------------------------------------------
 Sat Nov 30 09:40:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8.1:
