@@ -89,4 +89,12 @@ Set this package as the &quot;devel&quot; package please</comment>
     <comment>New version of sapstartsrv-resource-agents released</comment>
     <requestid>1247224</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0ba92113265821a9806e3dd35de58a6c</srcmd5>
+    <version>0.9.5+git.1751011207.4481e75</version>
+    <time>1751058115</time>
+    <user>anag_factory</user>
+    <comment>New version of sapstartsrv-resource-agents released</comment>
+    <requestid>1288803</requestid>
+  </revision>
 </revisionlist>

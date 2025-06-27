@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 26 12:58:26 UTC 2025 - abriel@suse.com
+
+- Version bump to 0.9.5
+  * As (re)starting the sapstartsrv service is expected it should
+    not be reported as a warning. So we use now severity 'info'
+    instead of the deprecated 'warn' for logging the systemd
+    service start of sapstartsrv.
+    (bsc#1244505)
+  * changed man pages regarding fence_sbd
+    SAPStartSrv_basic_cluster.7
+    SAPStartSrv_maintenance_procedures.7
+
+-------------------------------------------------------------------
 Wed Feb 19 09:22:51 UTC 2025 - abriel@suse.com
 
 -  add compatibility with python 3.13

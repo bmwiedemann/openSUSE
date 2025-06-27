@@ -24,7 +24,7 @@ Name:           sapstartsrv-resource-agents
 License:        GPL-2.0
 Group:          Productivity/Clustering/HA
 Summary:        Resource agent for SAP instance specific sapstartsrv service
-Version:        0.9.4+git.1739992536.298b1ce
+Version:        0.9.5+git.1751011207.4481e75
 Release:        0
 URL:            https://github.com/SUSE/SAPStartSrv-resourceAgent
 Source0:        %{name}-%{version}.tar.gz
