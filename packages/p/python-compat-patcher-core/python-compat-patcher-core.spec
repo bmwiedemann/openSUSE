@@ -1,7 +1,7 @@
 #
 # spec file for package python-compat-patcher-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-compat-patcher-core
-Version:        2.2
+Version:        2.3
 Release:        0
 Summary:        Python patcher system
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pakal/compat-patcher-core
 Source:         https://github.com/pakal/compat-patcher-core/archive/refs/tags/release-%{version}.tar.gz#/compat-patch-core-%{version}-gh.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/pakal/compat-patcher-core/pull/3 Get rid of the six dependency
-Patch:          no-six.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  cookiecutter > 1.6.0
