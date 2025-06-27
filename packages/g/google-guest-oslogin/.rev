@@ -317,4 +317,41 @@
     <comment></comment>
     <requestid>1250612</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>957570ee82d27774c4a912b13403e4bd</srcmd5>
+    <version>20250624.00</version>
+    <time>1751058098</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250624.00
+  * Pass c-strings to logging functions (#140)
+- from version 20241216.00
+  * Send the correct type to SysLogErr; the clang sanitizer
+    dislikes the type mismatch. (#158)
+  * Add Eric to the owners file. (#157)
+  * Revert &quot;new client component and tests&quot; (#155)
+- from version 20241214.00
+  * Remove pat from owners (#156)
+- from version 20241206.00
+  * Fix json include (#154)
+  * build: remove oslogin_sshca from binaries list (#153)
+  * Fix bad struct initialization pattern `= { 0 }` (#150)
+  * Apply &quot;include what you use,&quot; fixing missing include
+    statements broadly. (#152)
+  * Fix base64.h's missing includes and BSD types (#151)
+  * Fix a bug where very large GIDs would cause integer
+    overflow errors (#149)
+- from version 20241127.00
+  * Rename openbsd.h to base64.h and move it into the src/ folder (#148)
+- from version 20241126.01
+  * Follow the Google style guide by using the &quot;local include style&quot;
+    to include files from this project. (#147)
+- from version 20241126.00
+  * Delete oslogin_sshca binary, add it to the ignore list (#146)
+- from version 20241120.00
+  * OS Login agent searches for full fingerprint extension instead
+    of equals (#144)
+- from version 20241116.00
+  * Log an error when user has no challenges configured (#135) (forwarded request 1288507 from glaubitz)</comment>
+    <requestid>1288753</requestid>
+  </revision>
 </revisionlist>
