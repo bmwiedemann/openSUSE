@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 13 18:50:39 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- adapt soname.patch to also give a version to libcrypto (fixes boo#1244562)
+- bump soversion to actual aws-lc version
+
+-------------------------------------------------------------------
 Wed Jun 11 11:22:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - conflict the correct package

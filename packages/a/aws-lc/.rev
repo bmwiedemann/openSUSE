@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1284794</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4db3d676e796bbc5d6f43d89e380cb8a</srcmd5>
+    <version>1.52.1</version>
+    <time>1751058096</time>
+    <user>anag_factory</user>
+    <comment>- adapt soname.patch to also give a version to libcrypto (fixes boo#1244562)
+- bump soversion to actual aws-lc version</comment>
+    <requestid>1288747</requestid>
+  </revision>
 </revisionlist>

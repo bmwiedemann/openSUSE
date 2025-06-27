@@ -16,7 +16,7 @@
 #
 
 
-%define         sover 1_51_2
+%define         sover 1_52_1
 %define         __builder ninja
 Name:           aws-lc
 Version:        1.52.1
@@ -63,6 +63,12 @@ Summary:        Library file for %{name}
 %description -n libssl%{sover}
 %{summary}.
 
+%package -n libcrypto%{sover}
+Summary:        Crypto library for %{name}
+
+%description -n libcrypto%{sover}
+%{summary}.
+
 %package benchmark
 Summary:        Benchmarktool for %{name}
 
@@ -83,6 +89,7 @@ Summary:        Benchmarktool for %{name}
 sed -i 's|/usr/bin/env bash|/usr/bin/bash|g' %{buildroot}%{_bindir}/c_rehash
 
 %ldconfig_scriptlets -n libssl%{sover}
+%ldconfig_scriptlets -n libcrypto%{sover}
 
 %check
 %ninja_build -C build run_tests
@@ -107,6 +114,9 @@ sed -i 's|/usr/bin/env bash|/usr/bin/bash|g' %{buildroot}%{_bindir}/c_rehash
 %{_libdir}/ssl/cmake/
 
 %files -n libssl%{sover}
-%{_libdir}/libssl.so.*
+%{_libdir}/libssl.so.%{version}
+
+%files -n libcrypto%{sover}
+%{_libdir}/libcrypto.so.%{version}
 
 %changelog

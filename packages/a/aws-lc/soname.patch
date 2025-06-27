@@ -1,21 +1,31 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 9b27c5c7a..a9209c3e1 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -5,7 +5,7 @@ cmake_policy(SET CMP0091 NEW)
+diff -rub aws-lc-1.52.1/CMakeLists.txt aws-lc-1.52.1-patched/CMakeLists.txt
+--- aws-lc-1.52.1/CMakeLists.txt	2025-05-29 20:18:51.000000000 +0200
++++ aws-lc-1.52.1-patched/CMakeLists.txt	2025-06-13 20:30:45.360317788 +0200
+@@ -5,7 +5,7 @@
  endif()
  
  # Defer enabling C and CXX languages.
 -project(AWSLC NONE)
-+project(AWSLC VERSION 1.51.2)
++project(AWSLC VERSION 1.52.1)
  
  if(MSVC)
    # On Windows, prefer cl over gcc if both are available. By default most of
-diff --git a/ssl/CMakeLists.txt b/ssl/CMakeLists.txt
-index 5f41c3648..b624802f3 100644
---- a/ssl/CMakeLists.txt
-+++ b/ssl/CMakeLists.txt
-@@ -49,6 +49,8 @@ target_link_libraries(ssl crypto)
+diff -rub aws-lc-1.52.1/crypto/CMakeLists.txt aws-lc-1.52.1-patched/crypto/CMakeLists.txt
+--- aws-lc-1.52.1/crypto/CMakeLists.txt	2025-05-29 20:18:51.000000000 +0200
++++ aws-lc-1.52.1-patched/crypto/CMakeLists.txt	2025-06-13 20:38:41.776596096 +0200
+@@ -606,6 +606,8 @@
+   add_dependencies(${name} boringssl_prefix_symbols)
+   target_include_directories(${name} BEFORE PRIVATE ${AWSLC_BINARY_DIR}/symbol_prefix_include)
+ 
++  set_target_properties(${name} PROPERTIES VERSION ${PROJECT_VERSION} SOVERSION ${PROJECT_VERSION})
++
+   target_include_directories(${name} PUBLIC
+           $<BUILD_INTERFACE:${AWSLC_SOURCE_DIR}/include>
+           $<INSTALL_INTERFACE:include>)
+diff -rub aws-lc-1.52.1/ssl/CMakeLists.txt aws-lc-1.52.1-patched/ssl/CMakeLists.txt
+--- aws-lc-1.52.1/ssl/CMakeLists.txt	2025-05-29 20:18:51.000000000 +0200
++++ aws-lc-1.52.1-patched/ssl/CMakeLists.txt	2025-06-13 20:30:45.362197495 +0200
+@@ -49,6 +49,8 @@
  
  target_include_directories(ssl BEFORE PRIVATE ${AWSLC_BINARY_DIR}/symbol_prefix_include)
  
