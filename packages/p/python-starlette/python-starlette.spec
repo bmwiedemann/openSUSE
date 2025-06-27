@@ -1,7 +1,7 @@
 #
 # spec file for package python-starlette
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,31 +27,29 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-starlette%{psuffix}
-Version:        0.41.3
+Version:        0.47.0
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
 URL:            https://github.com/encode/starlette
 Source:         https://github.com/encode/starlette/archive/refs/tags/%{version}.tar.gz#/starlette-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM starlette-pr2773-httpx0.28.patch gh#encode/starlette#2773
-Patch0:         https://github.com/encode/starlette/pull/2773.patch#/starlette-pr2773-httpx0.28.patch
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-anyio >= 3.4.0
+Requires:       python-anyio >= 3.6.2
 Requires:       (python-typing_extensions >= 3.10.0 if python-base < 3.10)
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module anyio >= 3.4.0}
+BuildRequires:  %{python_module anyio >= 3.6.2}
 # typing_extensions, see below
 # SECTION [full]
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module httpx >= 0.28}
 BuildRequires:  %{python_module itsdangerous}
-BuildRequires:  %{python_module python-multipart >= 0.0.7}
+BuildRequires:  %{python_module python-multipart >= 0.0.18}
 # /SECTION
 # SECTION test
 BuildRequires:  %{python_module exceptiongroup}
@@ -93,7 +91,7 @@ building high performance asyncio services.
 ignored_tests="test_set_cookie"
 ignored_tests="$ignored_tests or test_expires_on_set_cookie"
 # fails to raise a deprecation warning as of 2024/04/25
-ignored_tests="$ignored_tests or test_lifespan_with_on_events"
+##ignored_tests="$ignored_tests or test_lifespan_with_on_events"
 %pytest -W ignore::PendingDeprecationWarning --asyncio-mode=strict -k "not ($ignored_tests)"
 
 %endif

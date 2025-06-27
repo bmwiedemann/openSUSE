@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Jun  4 12:21:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.47.0
+  * Added
+    + Add support for ASGI pathsend extension #2671.
+    + Add partitioned attribute to Response.set_cookie #2501.
+  * Changed
+    + Change methods parameter type from list[str] to Collection[str] #2903.
+    + Replace import typing by from typing import ... in the whole codebase #2867.
+  * Fixed
+    + Mark ExceptionMiddleware.http_exception as async to prevent thread creation #2922.
+
+-------------------------------------------------------------------
+Thu May  1 06:01:43 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.46.2:
+  * Added
+    + GZipMiddleware: Make sure Vary header is always added if a response can
+      be compressed
+    + Add max_part_size parameter to Request.form()
+    + Add client parameter to TestClient
+    + Make UUID path parameter conversion more flexible
+    + Raise ClientDisconnect on StreamingResponse
+  * Fixed
+    + Use correct index on backwards compatible logic in TemplateResponse
+    + Prevents reraising of exception from BaseHTTPMiddleware
+    + w relative directory path when follow_symlinks=True
+    + Raise exception from background task on BaseHTTPMiddleware
+    + GZipMiddleware: Don't compress on server sent events
+    + Turn directory into string on lookup_path on commonpath comparison
+    + Make create_memory_object_stream compatible with old anyio versions
+      once again, and bump anyio minimum version to 3.6.2
+    + Collect errors more reliably from WebSocket test client
+    + Fix unclosed MemoryObjectReceiveStream upon exception in
+      BaseHTTPMiddleware children
+    + Use ETag from headers when parsing If-Range in FileResponse
+    + Follow directory symlinks in StaticFiles when follow_symlinks=True
+    + Bump minimum python-multipart version to 0.0.18
+    + Bump minimum httpx version to 0.27.0
+  * Removed
+    + Drop Python 3.8
+    + Remove ExceptionMiddleware import proxy from starlette.exceptions
+      module
+    + Remove deprecated WS_1004_NO_STATUS_RCVD and WS_1005_ABNORMAL_CLOSURE
+    + Remove deprecated allow_redirects argument from TestClient
+- Drop patch starlette-pr2773-httpx0.28.patch, included upstream.
+
+-------------------------------------------------------------------
 Thu Dec 12 16:09:18 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add starlette-pr2773-httpx0.28.patch gh#encode/starlette#2773
