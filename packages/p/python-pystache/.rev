@@ -80,4 +80,18 @@
     <comment></comment>
     <requestid>1236879</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>50d90e4a2dd2e1a02c9218b6ff72a0ff</srcmd5>
+    <version>0.6.8</version>
+    <time>1751058151</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives
+
+- Update to 0.6.8
+  * pystache has been stable and out of beta a long time,
+    update config to reflect by @bakert in (#36)
+  * feat: Supply ParsingError with additional information
+    by @mykola-mokhnach-parloa in (#37)</comment>
+    <requestid>1288867</requestid>
+  </revision>
 </revisionlist>

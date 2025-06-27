@@ -17,8 +17,9 @@
 
 
 %{?sle15_python_module_pythons}
+%bcond_without libalternatives
 Name:           python-pystache
-Version:        0.6.7
+Version:        0.6.8
 Release:        0
 Summary:        Mustache for Python
 License:        MIT
@@ -30,8 +31,10 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 BuildArch:      noarch
 
 %description
@@ -58,16 +61,14 @@ https://github.com/mustache/spec.
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pystache
 %python_clone -a %{buildroot}%{_bindir}/pystache-test
+%python_group_libalternatives pystache pystache-test
 %{python_expand %fdupes %{buildroot}%$python_sitelib/}
 
 %check
 %pytest
 
-%post
-%{python_install_alternative pystache pystache-test}
-
-%postun
-%{python_uninstall_alternative pystache pystache-test}
+%pre
+%python_libalternatives_reset_alternative pystache
 
 %files %{python_files}
 %license LICENSE
