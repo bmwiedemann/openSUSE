@@ -979,4 +979,23 @@
     <comment></comment>
     <requestid>1240285</requestid>
   </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>2dea008bcc5fd3d60f3123937381d68e</srcmd5>
+    <version>5.12.0</version>
+    <time>1751058123</time>
+    <user>anag_factory</user>
+    <comment>- Add patches for Qt 6 support:
+  * 0001-Fix-name-of-output-variable.patch
+  * 0002-Support-building-for-Qt6.patch
+  * 0003-Adjusted-expression-to-work-correclty-using-Qt5-and-.patch
+  * 0004-Add-missing-files-to-AC_CONFIG_FILES.patch
+  * 0005-Prevent-configuration-for-Qt5-and-Qt6-at-the-same-ti.patch
+  * 0006-Improve-configuration-on-systems-with-Qt5-and-Qt6-in.patch
+  * 0007-Remove-debug-output.patch
+- Spec cleanup
+
+- Add patch:
+  * gwenhywfar-gcc15.patch (forwarded request 1288531 from krop)</comment>
+    <requestid>1288808</requestid>
+  </revision>
 </revisionlist>

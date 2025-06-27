@@ -24,23 +24,32 @@
 %define _name gwenhywfar
 %define releasenumber 529
 %define checksumreleasenumber 528
-%bcond_with configure
+%bcond_without configure
 Name:           gwenhywfar
 Version:        5.12.0
 Release:        0
 Summary:        Multiplatform helper library for other libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/Libraries
 URL:            https://www.aquamaniac.de/rdm/projects/gwenhywfar
 Source:         https://www.aquamaniac.de/rdm/attachments/download/%{releasenumber}/%{_name}-%{_version}.tar.gz
 Source1:        https://www.aquamaniac.de/rdm/attachments/download/%{checksumreleasenumber}/%{_name}-%{_version}.tar.gz.asc
+# PATCH-FIX-UPSTREAM -- gcc 15 build fix
+Patch0:         gwenhywfar-gcc15.patch
+# PATCH-FEATURE-UPSTREAM -- Qt 6 support
+Patch1:         0001-Fix-name-of-output-variable.patch
+Patch2:         0002-Support-building-for-Qt6.patch
+Patch3:         0003-Adjusted-expression-to-work-correclty-using-Qt5-and-.patch
+Patch4:         0004-Add-missing-files-to-AC_CONFIG_FILES.patch
+Patch5:         0005-Prevent-configuration-for-Qt5-and-Qt6-at-the-same-ti.patch
+Patch6:         0006-Improve-configuration-on-systems-with-Qt5-and-Qt6-in.patch
+Patch7:         0007-Remove-debug-output.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+# graphviz wants a URW font
+BuildRequires:  ghostscript-fonts-std-converted
 # For doc graphs
 BuildRequires:  graphviz
 BuildRequires:  graphviz-gd
-BuildRequires:  libgcrypt-devel >= 1.2.0
-BuildRequires:  libopenssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xorg-x11-fonts
 BuildRequires:  cmake(Qt5Concurrent)
@@ -53,13 +62,17 @@ BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(gnutls) >= 2.9.8
+BuildRequires:  pkgconfig(gpg-error)
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.17.5
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
+BuildRequires:  pkgconfig(libgcrypt) >= 1.2.0
+BuildRequires:  pkgconfig(opengl)
+BuildRequires:  pkgconfig(openssl)
 Recommends:     libgwenhywfar%{libversion}
-%if !%{with configure}
+%if %{with configure}
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -80,7 +93,6 @@ communication).
 %package tools
 Summary:        Tools for the gwenhywfar multi-platform helper library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       libgwenhywfar%{libversion} = %{version}
 
 %description tools
@@ -93,7 +105,6 @@ communication).
 %package -n libgwenhywfar%{libversion}-plugins
 Summary:        Plugins for the gwenhywfar multi-platform helper library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       %{name} = %{version}
 
 %description -n libgwenhywfar%{libversion}-plugins
@@ -106,7 +117,6 @@ communication).
 %package -n libgwenhywfar%{libversion}
 Summary:        Multiplatform Helper Library for Other Libraries
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Recommends:     %{name}-lang
 Recommends:     libgwenhywfar%{libversion}-plugins = %{version}
 
@@ -120,7 +130,6 @@ communication).
 %package -n libgwengui-cpp%{libversion}
 Summary:        C++ interface for Gwenhywfar
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n libgwengui-cpp%{libversion}
 This package contains the C++ GUI interface for Gwenhywfar.
@@ -128,7 +137,6 @@ This package contains the C++ GUI interface for Gwenhywfar.
 %package -n libgwengui-gtk2-%{libversion}
 Summary:        GTK+ 2 UI backend for Gwenhywfar
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n libgwengui-gtk2-%{libversion}
 Gwenhywfar is a base library used to provide OS abstraction functions
@@ -142,7 +150,6 @@ This package provides the GTK+ 2 implementation of the generic UI toolkit.
 %package -n libgwengui-gtk3-%{libversion}
 Summary:        GTK+ 3 UI backend for Gwenhywfar
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n libgwengui-gtk3-%{libversion}
 Gwenhywfar is a base library used to provide OS abstraction functions
@@ -156,7 +163,6 @@ This package provides the GTK+ 3 implementation of the generic UI toolkit.
 %package -n libgwengui-qt5-%{libversion}
 Summary:        Qt5 UI backend for the gwenhywfar multi-platform helper library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Provides:       libgwengui-qt4-0 = %{version}
 Obsoletes:      libgwengui-qt4-0 < %{version}
 
@@ -172,7 +178,6 @@ This package provides the Qt5 implementation of the generic UI toolkit.
 %package -n libgwengui-fox16-%{libversion}
 Summary:        FOX interface for Gwenhywfar
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n libgwengui-fox16-%{libversion}
 This package contains the interface to the FOX toolkit
@@ -181,7 +186,6 @@ for Gwenhywfar.
 %package devel
 Summary:        Header files for the Gwenhywfar multi-platform helper library
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libgwengui-cpp%{libversion} >= %{version}
 Requires:       libgwengui-fox16-%{libversion} >= %{version}
@@ -200,7 +204,6 @@ communication etc).
 %package gwenbuild
 Summary:        Specific build system for the aqbanking universe
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 
 %description gwenbuild
@@ -210,23 +213,25 @@ aqbanking universe.
 %lang_package
 
 %prep
-%setup -q -n %{_name}-%{_version}
+%autosetup -p1 -n %{_name}-%{_version}
 
 %build
+# Fix warnings
+doxygen -u Doxyfile.in
+
 export PATH=%{_libqt5_bindir}:$PATH
-# quick fix for $CPP being unset and configure failing to handle include dirs properly
-CPP=`which cpp`
-export CPP
-%if !%{with configure}
+
+%if %{with configure}
 autoreconf -ifv
 %endif
 %configure\
-	--enable-release\
-	--enable-full-doc\
-	--with-docpath=%{_docdir}/%{name}/api \
-	--disable-static \
-	--with-guis="fox16 qt5 gtk2 gtk3" \
-	--with-plugins-cfgmgr=all
+  --enable-release\
+  --enable-full-doc\
+  --with-docpath=%{_docdir}/%{name}/api \
+  --disable-static \
+  --with-guis="fox16 qt5 gtk2 gtk3" \
+  --with-plugins-cfgmgr=all
+
 %make_jobs
 %make_build srcdoc
 
@@ -240,24 +245,21 @@ pushd %{buildroot}%{_docdir}/%{name}/api
     # remove empty files
     `find -maxdepth 1 -type f -empty -print0 | xargs -0 echo rm -f`
 popd
+
 find %{buildroot} -type f -name "*.la" -delete -print
+
 %find_lang %{_name}
+
 %fdupes %{buildroot}%{_datadir}/%{_name}/apidoc
 %fdupes %{buildroot}%{_libdir}/cmake
 %fdupes %{buildroot}%{_docdir}
 
-%post   -n libgwenhywfar%{libversion} -p /sbin/ldconfig
-%postun -n libgwenhywfar%{libversion} -p /sbin/ldconfig
-%post   -n libgwengui-cpp%{libversion} -p /sbin/ldconfig
-%postun -n libgwengui-cpp%{libversion} -p /sbin/ldconfig
-%post   -n libgwengui-gtk2-%{libversion} -p /sbin/ldconfig
-%postun -n libgwengui-gtk2-%{libversion} -p /sbin/ldconfig
-%post   -n libgwengui-gtk3-%{libversion} -p /sbin/ldconfig
-%postun -n libgwengui-gtk3-%{libversion} -p /sbin/ldconfig
-%post -n libgwengui-qt5-%{libversion} -p /sbin/ldconfig
-%postun -n libgwengui-qt5-%{libversion} -p /sbin/ldconfig
-%post -n libgwengui-fox16-%{libversion} -p /sbin/ldconfig
-%postun -n libgwengui-fox16-%{libversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgwenhywfar%{libversion}
+%ldconfig_scriptlets -n libgwengui-cpp%{libversion}
+%ldconfig_scriptlets -n libgwengui-gtk2-%{libversion}
+%ldconfig_scriptlets -n libgwengui-gtk3-%{libversion}
+%ldconfig_scriptlets -n libgwengui-qt5-%{libversion}
+%ldconfig_scriptlets -n libgwengui-fox16-%{libversion}
 
 %files
 %license COPYING

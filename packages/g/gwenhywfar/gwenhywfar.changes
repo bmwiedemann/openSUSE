@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 24 22:33:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patches for Qt 6 support:
+  * 0001-Fix-name-of-output-variable.patch
+  * 0002-Support-building-for-Qt6.patch
+  * 0003-Adjusted-expression-to-work-correclty-using-Qt5-and-.patch
+  * 0004-Add-missing-files-to-AC_CONFIG_FILES.patch
+  * 0005-Prevent-configuration-for-Qt5-and-Qt6-at-the-same-ti.patch
+  * 0006-Improve-configuration-on-systems-with-Qt5-and-Qt6-in.patch
+  * 0007-Remove-debug-output.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
+Tue Jun 24 11:57:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * gwenhywfar-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Jan 23 11:17:50 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Add missing runtime dependency for libgwengui-cpp to

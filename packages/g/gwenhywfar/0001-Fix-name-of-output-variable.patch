@@ -1,0 +1,25 @@
+From f6e4f9e39a0b9aaafdf523a73bb96bf48ba5c7a3 Mon Sep 17 00:00:00 2001
+From: Thomas Baumgart <thb@net-bembel.de>
+Date: Mon, 16 Jun 2025 19:59:53 +0200
+Subject: [PATCH 1/7] Fix name of output variable
+
+---
+ gwenhywfar-config.cmake.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gwenhywfar-config.cmake.in b/gwenhywfar-config.cmake.in
+index 55152a5..f5f0944 100644
+--- a/gwenhywfar-config.cmake.in
++++ b/gwenhywfar-config.cmake.in
+@@ -58,7 +58,7 @@ if ( NOT ${FIND_GWEN_COMPONENT_QT4} EQUAL -1 )
+   endif()
+ endif()
+ 
+-list(FIND GWENHYWFAR_FIND_COMPONENTS "qt5" FIND_GWEN_COMPONENT_QT4)
++list(FIND GWENHYWFAR_FIND_COMPONENTS "qt5" FIND_GWEN_COMPONENT_QT5)
+ if ( NOT ${FIND_GWEN_COMPONENT_QT5} EQUAL -1 )
+   find_package(gwengui-qt5 "@GWENHYWFAR_VERSION_STRING@" EXACT)
+   if ( gwengui-qt5_FOUND )
+-- 
+2.50.0
+
