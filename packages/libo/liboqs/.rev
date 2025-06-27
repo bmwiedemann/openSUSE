@@ -249,4 +249,12 @@
   we dropped binary compatibility with postquantumcryptoengine (bsc#1242701) (forwarded request 1276794 from msmeissn)</comment>
     <requestid>1276795</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>3b37b36fef564849b9185d7b84456e3d</srcmd5>
+    <version>0.13.0</version>
+    <time>1751058021</time>
+    <user>anag_factory</user>
+    <comment>- enable testsuite (forwarded request 1288798 from msmeissn)</comment>
+    <requestid>1288799</requestid>
+  </revision>
 </revisionlist>

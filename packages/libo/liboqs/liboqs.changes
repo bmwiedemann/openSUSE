@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 26 15:21:36 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- enable testsuite
+
+-------------------------------------------------------------------
 Mon May 12 09:30:45 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - add -DOQS_ENABLE_KEM_HQC=ON even due to security issues, as otherwise

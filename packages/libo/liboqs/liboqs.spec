@@ -31,6 +31,10 @@ Patch2:         reproducible.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  libopenssl-devel
+# for tests
+BuildRequires:  python3-pytest
+BuildRequires:  python3-PyYAML
+BuildRequires:  python3-pytest-xdist
 
 %description
 liboqs is a C library for quantum-resistant cryptographic algorithms.
@@ -78,6 +82,11 @@ mv %{buildroot}%{_prefix}/local/* %{buildroot}%{_prefix}
 #fi
 
 rmdir %{buildroot}%{_prefix}/local/
+
+%check
+pushd build
+make run_tests
+popd
 
 %post -n liboqs7 -p /sbin/ldconfig
 %postun -n liboqs7 -p /sbin/ldconfig
