@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jun 25 22:30:26 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.37~git20250625:
+  * vk: Fix video-out calibration pass inputs
+  * vk: Fix shader interpreter inputs when textures are not used
+  * vk: Fix up binding layouts for some broken shaders
+  * vk: Cleanup compiler warnings
+  * vk: Fix crash when running MSAA resolve shaders
+  * Remove unused file
+  * vk: Fix binding of arrays
+  * vk: Drop obsolete logic around descriptor switching
+  * vk: Update shader interpreter to use dynamic binding layout
+  * vk: Fix crash when running attachment clear pass
+  * vk: Fix FS stencil mirror binding location overwrites causing holes in descriptor layout
+  * vk: Code improvements
+  * vk: Drop copy optimization
+  * vk: Improve pipeline layout validation and fix slot allocation bugs
+  * vk: Fix descriptor set update and caching model to support skipped updates
+  * vk: Fix edge cases in descriptor update logic
+  * rsx/util: Support basic array merge
+  * vk: Fix clang build and resource leak on exit
+  * vk: Use shared layout generator for all pipelines
+  * vk: Update binding model for compute jobs
+  * vk: Use standard C++
+  * vk: Lazy register/derigeter of hot data
+  * vk: Fix FSR upscaling
+  * vk: Use write commands instead of copy commands to avoid dependencies
+  * vk: Respect shader compile flags when linking
+  * vk: Correctly initialize descriptor copy data
+  * vk: Fix graphical bugs and crashes
+  * vk: Rewrite program binding management to use "separate shader objects" concept.
+  * vk: Fix build
+  * vk: Move descriptor management to the pipeline layer
+  * fix DEBUG mode compilation
+  * Fix invalid comparator in savedata_op sorting
+  * CI: Build static OpenAl
+  * Disable -Wold-style-cast diagnostic before including sse2neon
+  * CMake: add more options
+
+-------------------------------------------------------------------
 Mon Jun 16 14:03:09 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.37~git20250616:
