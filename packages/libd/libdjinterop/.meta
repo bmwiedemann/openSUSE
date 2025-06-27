@@ -1,0 +1,5 @@
+<package name="libdjinterop" project="openSUSE:Factory">
+  <title>C++ library for access to DJ record libraries </title>
+  <description>libdjinterop is a C++ library that allows access to database formats used to store information about DJ record libraries.</description>
+  <url>https://github.com/xsco/libdjinterop</url>
+</package>

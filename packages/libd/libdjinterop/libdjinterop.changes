@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Thu Jun 19 22:58:25 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Follow packaging conventions and rename the package to
+  libdjinterop.
+
+-------------------------------------------------------------------
+Wed Jun 18 03:17:45 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Force-add symbol versions to ensure ABI changes cause rebuilds
+  even when SONAME is unchanged.
+- Use noun phrases for summaries, compact descriptions.
+- Compact %files list.
+
+-------------------------------------------------------------------
+Tue May  6 19:20:17 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Updated to version 0.26.1:
+  * Support engine v3.
+
+-------------------------------------------------------------------
+Wed Oct 16 06:28:34 UTC 2024 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Updated to 0.22.1
+
+-------------------------------------------------------------------
+Sat Feb 24 17:43:28 UTC 2024 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Add version 0.20.1 which is required by Mixxx
