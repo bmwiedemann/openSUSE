@@ -58,4 +58,13 @@
     <comment>- Enable sle15_python_module_pythons.</comment>
     <requestid>1223453</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>b75bd1c3a04e37316038100912029837</srcmd5>
+    <version>1.4.1</version>
+    <time>1751058107</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1288764</requestid>
+  </revision>
 </revisionlist>
