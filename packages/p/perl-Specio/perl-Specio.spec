@@ -18,10 +18,10 @@
 
 %define cpan_name Specio
 Name:           perl-Specio
-Version:        0.500.0
+Version:        0.510.0
 Release:        0
-# 0.50 -> normalize -> 0.500.0
-%define cpan_version 0.50
+# 0.51 -> normalize -> 0.510.0
+%define cpan_version 0.51
 License:        Artistic-2.0
 Summary:        Type constraints and coercions for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -31,12 +31,15 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Clone)
+BuildRequires:  perl(Clone::Choose)
+BuildRequires:  perl(Clone::PP)
 BuildRequires:  perl(Devel::StackTrace)
 BuildRequires:  perl(Eval::Closure)
 BuildRequires:  perl(List::Util) >= 1.33
 BuildRequires:  perl(MRO::Compat)
+BuildRequires:  perl(Module::Implementation)
 BuildRequires:  perl(Module::Runtime)
-BuildRequires:  perl(Role::Tiny) >= 1.003003
+BuildRequires:  perl(Role::Tiny) >= 1.3.3
 BuildRequires:  perl(Role::Tiny::With)
 BuildRequires:  perl(Sub::Quote)
 BuildRequires:  perl(Test::Fatal)
@@ -47,12 +50,15 @@ BuildRequires:  perl(XString)
 BuildRequires:  perl(parent)
 BuildRequires:  perl(version) >= 0.83
 Requires:       perl(Clone)
+Requires:       perl(Clone::Choose)
+Requires:       perl(Clone::PP)
 Requires:       perl(Devel::StackTrace)
 Requires:       perl(Eval::Closure)
 Requires:       perl(List::Util) >= 1.33
 Requires:       perl(MRO::Compat)
+Requires:       perl(Module::Implementation)
 Requires:       perl(Module::Runtime)
-Requires:       perl(Role::Tiny) >= 1.003003
+Requires:       perl(Role::Tiny) >= 1.3.3
 Requires:       perl(Role::Tiny::With)
 Requires:       perl(Sub::Quote)
 Requires:       perl(Test::Fatal)
@@ -95,11 +101,13 @@ Provides:       perl(Specio::Library::Structured::Dict) = %{version}
 Provides:       perl(Specio::Library::Structured::Map) = %{version}
 Provides:       perl(Specio::Library::Structured::Tuple) = %{version}
 Provides:       perl(Specio::OO) = %{version}
+Provides:       perl(Specio::PP) = %{version}
 Provides:       perl(Specio::PartialDump) = %{version}
 Provides:       perl(Specio::Registry) = %{version}
 Provides:       perl(Specio::Role::Inlinable) = %{version}
 Provides:       perl(Specio::Subs) = %{version}
 Provides:       perl(Specio::TypeChecks) = %{version}
+Provides:       perl(Specio::XS) = %{version}
 Provides:       perl(Test::Specio) = %{version}
 %undefine       __perllib_provides
 Recommends:     perl(Ref::Util) >= 0.112
@@ -119,7 +127,7 @@ Instead, you can explicitly check a value against a type, and optionally
 coerce values to that type.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

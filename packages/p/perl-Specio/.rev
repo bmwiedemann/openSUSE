@@ -95,4 +95,19 @@
     <comment></comment>
     <requestid>1247152</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>58069329096d3dd7b414e4accff5c418</srcmd5>
+    <version>0.510.0</version>
+    <time>1751058028</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1288033 from tinita
+
+- updated to 0.510.0 (0.51)
+   see /usr/share/doc/packages/perl-Specio/Changes
+  0.51     2025-06-19
+  - Made it possible to force Specio to only use pure Perl dependencies by setting the
+    SPECIO_IMPLEMENTATION environment variable to &quot;PP&quot;. Requested by @arodland (Andrew Rodland). GH
+    #23.</comment>
+    <requestid>1288171</requestid>
+  </revision>
 </revisionlist>

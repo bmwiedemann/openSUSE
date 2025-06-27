@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 20 05:34:49 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.510.0 (0.51)
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.51     2025-06-19
+
+  - Made it possible to force Specio to only use pure Perl dependencies by setting the
+    SPECIO_IMPLEMENTATION environment variable to "PP". Requested by @arodland (Andrew Rodland). GH
+    #23.
+
+-------------------------------------------------------------------
 Wed Feb 19 05:34:05 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.500.0 (0.50)
