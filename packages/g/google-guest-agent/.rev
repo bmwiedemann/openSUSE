@@ -652,4 +652,41 @@
     <comment></comment>
     <requestid>1286345</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>f28f9111eb8f99807da880732a62014b</srcmd5>
+    <version>20250624.00</version>
+    <time>1751058099</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250624.00
+  * Final fix for RHEL packaging for routes setup (#549)
+  * Fix RHEL packaging for routes scripts (#548)
+  * Packaging changes to include routes script installation (#542)
+  * Update CLI name in packaging (#543)
+  * systemd should manage only the main process (#544)
+  * startup script: wrap compatibility decision into its own scripts (#538)
+  * Reapply &quot;oslogin: Correctly handle newlines at the end of modified
+    files (#520)&quot; (#523) (#540)
+- from version 20250611.01
+  * prepare stable release.
+- from version 20250611.00
+  * startup script: wrap compatibility decision into its own scripts (#538)
+  * Reapply &quot;oslogin: Correctly handle newlines at the end of modified
+    files (#520)&quot; (#523) (#540)
+- from version 20250609.00
+  * prepare stable release.
+- from version 20250605.00
+  * startup script: wrap compatibility decision into its own scripts (#538)
+  * Reapply &quot;oslogin: Correctly handle newlines at the end of modified
+    files (#520)&quot; (#523) (#540)
+  * Make sure agent added connections are activated by NM (#534)
+  * wrap NSS cache refresh in a goroutine (#533)
+  * Wicked: Only reload interfaces for which configurations are
+    written or changed. (#524)
+  * Add AuthorizedKeysCompat to windows packaging (#530)
+  * Remove error messages from gce_workload_cert_refresh and metadata
+    script runner (#527)
+  * Update guest-logging-go dependency (#526)
+  * Add 'created-by' metadata, and pass it as option to logging library (#508) (forwarded request 1288514 from glaubitz)</comment>
+    <requestid>1288755</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Jun 25 11:28:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20250624.00
+  * Final fix for RHEL packaging for routes setup (#549)
+  * Fix RHEL packaging for routes scripts (#548)
+  * Packaging changes to include routes script installation (#542)
+  * Update CLI name in packaging (#543)
+  * systemd should manage only the main process (#544)
+  * startup script: wrap compatibility decision into its own scripts (#538)
+  * Reapply "oslogin: Correctly handle newlines at the end of modified
+    files (#520)" (#523) (#540)
+- from version 20250611.01
+  * prepare stable release.
+- from version 20250611.00
+  * startup script: wrap compatibility decision into its own scripts (#538)
+  * Reapply "oslogin: Correctly handle newlines at the end of modified
+    files (#520)" (#523) (#540)
+- from version 20250609.00
+  * prepare stable release.
+- from version 20250605.00
+  * startup script: wrap compatibility decision into its own scripts (#538)
+  * Reapply "oslogin: Correctly handle newlines at the end of modified
+    files (#520)" (#523) (#540)
+  * Make sure agent added connections are activated by NM (#534)
+  * wrap NSS cache refresh in a goroutine (#533)
+  * Wicked: Only reload interfaces for which configurations are
+    written or changed. (#524)
+  * Add AuthorizedKeysCompat to windows packaging (#530)
+  * Remove error messages from gce_workload_cert_refresh and metadata
+    script runner (#527)
+  * Update guest-logging-go dependency (#526)
+  * Add 'created-by' metadata, and pass it as option to logging library (#508)
+  * Revert "oslogin: Correctly handle newlines at the end of
+    modified files (#520)" (#523)
+  * Re-enable disabled services if the core plugin was enabled (#522)
+  * Enable guest services on package upgrade (#519)
+  * oslogin: Correctly handle newlines at the end of modified files (#520)
+  * Fix core plugin path (#518)
+  * Fix package build issues (#517)
+  * Fix dependencies ran go mod tidy -v (#515)
+  * Fix debian build path (#514)
+  * Bundle compat metadata script runner binary in package (#513)
+  * Bump golang.org/x/net from 0.27.0 to 0.36.0 (#512)
+  * Update startup/shutdown services to launch compat manager (#503)
+  * Bundle new gce metadata script runner binary in agent package (#502)
+  * Revert "Revert bundling new binaries in the package (#509)" (#511)
+
+-------------------------------------------------------------------
 Wed Jun  4 06:14:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20250604.00
