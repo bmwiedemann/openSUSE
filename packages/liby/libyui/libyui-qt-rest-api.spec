@@ -19,7 +19,7 @@
 Name:           libyui-qt-rest-api
 
 # DO NOT manually bump the version here; instead, use rake version:bump
-Version:        4.7.4
+Version:        4.7.5
 Release:        0
 
 %define         so_version 16
@@ -43,6 +43,10 @@ Summary:        Libyui - The REST API plugin for the Qt frontend
 License:        LGPL-2.1-only OR LGPL-3.0-only
 URL:            http://github.com/libyui/
 Source:         libyui-%{version}.tar.bz2
+
+%if 0%{?suse_version} == 1600 && ! 0%{?is_openSUSE}
+ExclusiveArch:  donotbuild
+%endif
 
 %description
 This package provides a libyui REST API plugin for the Qt frontend.

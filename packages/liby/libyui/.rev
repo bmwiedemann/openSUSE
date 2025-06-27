@@ -815,4 +815,14 @@ build/package/libyui.spec:Version:        3.0.13</comment>
 https://github.com/libyui/libyui/pull/120</comment>
     <requestid>1286871</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>cd1dc458f0dcd72c0f557ec90c2b98d8</srcmd5>
+    <version>4.7.5</version>
+    <time>1751058042</time>
+    <user>anag_factory</user>
+    <comment>Do not build the qt packages in SLE16 since Qt5 won't be there
+
+https://github.com/libyui/libyui/pull/121</comment>
+    <requestid>1288461</requestid>
+  </revision>
 </revisionlist>

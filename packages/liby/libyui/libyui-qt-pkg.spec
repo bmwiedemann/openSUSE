@@ -19,7 +19,7 @@
 Name:           libyui-qt-pkg
 
 # DO NOT manually bump the version here; instead, use rake version:bump
-Version:        4.7.4
+Version:        4.7.5
 Release:        0
 
 %define         so_version 16
@@ -46,6 +46,10 @@ Summary:        Libyui - Qt Package Selector
 License:        LGPL-2.1-only OR LGPL-3.0-only
 URL:            https://github.com/libyui/
 Source:         libyui-%{version}.tar.bz2
+
+%if 0%{?suse_version} == 1600 && ! 0%{?is_openSUSE}
+ExclusiveArch:  donotbuild
+%endif
 
 %description
 This package contains the Qt package selector component for libyui.
