@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 14 15:46:35 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.9.6:
+  * Fixed #5908
+    Running sqlmap with --headers and -H parameters gives us different
+    output albeit same header values are provided
+
+-------------------------------------------------------------------
 Sat May 17 07:37:57 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.9.5:
