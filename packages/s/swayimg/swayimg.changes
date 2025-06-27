@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 26 12:35:10 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 4.3:
+  * Added built-in IPC server to manage app remotely;
+  * Added "include" directive support in config file;
+  * Added "mirror" background mode for windows;
+  * Added support for binding mouse buttons;
+  * Added support for mouse selection/open in gallery;
+  * Slide show now have own configuration;
+  * Auto hide mouse cursor on idle;
+  * Some minor bugfix and improvements.
+
+-------------------------------------------------------------------
 Mon Jun  9 10:24:18 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 4.2:
