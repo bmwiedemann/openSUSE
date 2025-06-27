@@ -182,4 +182,13 @@
   * Switched from autotools to meson #136</comment>
     <requestid>1285356</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>dd70ddba503d66985da1018c52cfcfb4</srcmd5>
+    <version>2.3.3</version>
+    <time>1751058071</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.3:
+  * Fix quick switch not working #139</comment>
+    <requestid>1288724</requestid>
+  </revision>
 </revisionlist>
