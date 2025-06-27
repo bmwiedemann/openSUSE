@@ -68,6 +68,9 @@ sed -i 's/%{_name}.\(png\|xpm\)/%{name}.\1/g' CMakeLists.txt
 sed -i 's|^\(Icon=\).*$|\1%{name}|' %{name}.desktop.in
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 # Since there are .so files involved, we need stronger than PIE: PIC.
 export CFLAGS="%{optflags} -fPIC" CXXFLAGS="$CFLAGS"
 %cmake \
