@@ -34,4 +34,12 @@
   timer</comment>
     <requestid>1286486</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>716f38365a79108fcce81d9f4997c030</srcmd5>
+    <version>20250624</version>
+    <time>1751058127</time>
+    <user>anag_factory</user>
+    <comment>- Removed Conflicts with systemd-presets-branding-microos</comment>
+    <requestid>1288188</requestid>
+  </revision>
 </revisionlist>

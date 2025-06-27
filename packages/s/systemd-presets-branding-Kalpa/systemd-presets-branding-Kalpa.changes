@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 24 08:36:26 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Removed Conflicts with systemd-presets-branding-microos
+
+-------------------------------------------------------------------
 Tue Jun 17 06:43:02 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Adjust preset due to rename of kalpa-discover-update service and
