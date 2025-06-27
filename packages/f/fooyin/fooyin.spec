@@ -1,7 +1,7 @@
 #
 # spec file for package fooyin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,15 @@ Version:        0.8.1
 Release:        0
 Summary:        A customisable music player built with Qt
 License:        GPL-3.0-only
-URL:            https://github.com/ludouzi/%{name}
-Source:         https://github.com/ludouzi/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://www.fooyin.org/
+Source0:        https://github.com/fooyin/fooyin/archive/v%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-Qt_NoBrush.patch -- based on commits e44e08a and 7e1463b
+Patch0:         fix-Qt_NoBrush.patch
 BuildRequires:  c++_compiler
+BuildRequires:  desktop-file-utils
+BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  ninja
 BuildRequires:  qt6-base-devel
 BuildRequires:  cmake(KDSingleApplication-qt6)
 BuildRequires:  cmake(Qt6Core)
@@ -61,24 +66,34 @@ use of FooScript to offer an even deeper level of control.
 %autosetup -p1
 
 %build
+%define __builder ninja
 %cmake -DBUILD_LIBVGM=OFF
 %cmake_build
 
 %install
 %cmake_install
-# No header files were installed, so... no point in keeping the
-# component libraries' devel files.
-rm -fv %{buildroot}/%{_libdir}/fooyin/*.so
 
-%files
+# fix "E: files-duplicated-waste"
+rm -rv %{buildroot}%{_datadir}/doc
+
+%find_lang %{name} --with-qt
+
+%fdupes -s %{buildroot}%{_datadir}/%{name}
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.%{name}.%{name}.desktop
+
+%files -f %{name}.lang
 %license COPYING
 %doc README.md
 %{_bindir}/%{name}
-%{_datadir}/applications/*
-%{_datadir}/doc/%{name}
-%{_datadir}/metainfo/*
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/translations
+%{_datadir}/applications/org.%{name}.%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/org.%{name}.%{name}.*
-%{_datadir}/%{name}
-%{_libdir}/%{name}/
+%{_datadir}/metainfo/org.%{name}.%{name}.metainfo.xml
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/lib%{name}_{core,gui,utils}.so.0.0.0
+%{_libdir}/%{name}/plugins
 
 %changelog

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 26 05:55:31 UTC 2025 - munix9@googlemail.com
+
+- Add fix-Qt_NoBrush.patch based on upstream commits e44e08a and 7e1463b
+  * Clang-Tidy fixes
+  * Clear background brush with Qt::NoBrush
+
+- Clean up spec file
+  * Use KDSingleApplication-qt6
+  * Use fdupes and ninja
+  * Add %check and %find_lang
+
+-------------------------------------------------------------------
 Tue Oct 15 18:33:37 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
 
 - Update to upstream 0.8.1

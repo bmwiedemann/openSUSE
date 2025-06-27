@@ -216,4 +216,19 @@ https://github.com/fooyin/fooyin/releases/tag/v0.8.0
 </comment>
     <requestid>1208367</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>831bdacfdbbc1cc842bfd0209c1ada1a</srcmd5>
+    <version>0.8.1</version>
+    <time>1751058069</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-Qt_NoBrush.patch based on upstream commits e44e08a and 7e1463b
+  * Clang-Tidy fixes
+  * Clear background brush with Qt::NoBrush
+- Clean up spec file
+  * Use KDSingleApplication-qt6
+  * Use fdupes and ninja
+  * Add %check and %find_lang
+</comment>
+    <requestid>1288699</requestid>
+  </revision>
 </revisionlist>
