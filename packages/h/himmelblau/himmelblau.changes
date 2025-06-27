@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 26 17:04:51 UTC 2025 - david.mulder@suse.com
+
+- Update to version 0.9.17+git.0.4a97692:
+  * Version 0.9.17
+  * Offline auth permits authentication with invalid Hello PIN; (CVE-2025-53013).
+  * Cargo fmt
+  * Don't neglect to sign the rpm packages
+
+-------------------------------------------------------------------
 Tue Jun 17 21:16:41 UTC 2025 - david.mulder@suse.com
 
 - Update to version 0.9.16+git.0.aac2205:
