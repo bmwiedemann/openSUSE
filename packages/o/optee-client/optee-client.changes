@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun 19 06:47:05 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 4.6.0:
+  * cmake: raise mimimum required to 3.5
+- Skipped 4.5.0:
+  * libckteec: Validate EdDSA mechanism parameter length
+  * VSCode : Enable Development inside Docker Container
+  * libckteec: support for CKM_RSA_X_509
+- Skipped 4.4.0:
+  * libteec/CMakeLists.txt: remove CFG_TEE_CLIENT_LOAD_PATH comment
+  * tee-supplicant: add udev rule and systemd service file
+  * libckteec: fix memory allocation leakage on template serialization
+  * tee-supplicant: add sd_notify.c to Android.bp sources
+- Skipped 4.3.0:
+  * tee-supplicant: send READY=1 notification to systemd
+  * tee-supplicant: remove useless use of __ANDROID__ condition
+
+-------------------------------------------------------------------
 Tue Jun 25 06:18:37 UTC 2024 - ming li <mli@suse.com>
 
 - Update to 4.2.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package optee-client
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,17 @@
 %define libname3 libseteec0
 %define libname4 libteeacl0
 Name:           optee-client
-Version:        4.2.0
+Version:        4.6.0
 Release:        0
 Summary:        A Trusted Execution Environment client
 License:        BSD-2-Clause
 Group:          System/Boot
 URL:            https://github.com/OP-TEE/optee_client
 Source:         https://github.com/OP-TEE/optee_client/archive/%{version}.tar.gz#/optee_client-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  libuuid-devel
+BuildRequires:  udev
+%{?systemd_requires}
 
 %description
 This component provides the TEE Client API as defined by the
@@ -108,6 +110,15 @@ make %{?_smp_mflags} V=1
 
 %install
 %cmake_install
+# Fix paths for service and udev rule
+mkdir -p %{buildroot}%{_udevrulesdir}
+mv %{buildroot}/usr/etc/udev/rules.d/optee-udev.rules %{buildroot}%{_udevrulesdir}/99-optee-udev.rules
+rm -rf %{buildroot}/usr/etc
+%ifnarch %{ix86} %{arm}
+mkdir -p %{buildroot}%{_unitdir}
+mv %{buildroot}/usr/lib64/systemd/system/tee-supplicant@.service %{buildroot}%{_unitdir}/tee-supplicant@.service
+rm -rf %{buildroot}/usr/lib64/systemd/
+%endif
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -125,6 +136,9 @@ make %{?_smp_mflags} V=1
 %license LICENSE
 %doc README.md
 %{_sbindir}/tee-supplicant
+%dir %{_unitdir}
+%{_udevrulesdir}/99-optee-udev.rules
+%{_unitdir}/tee-supplicant@.service
 
 %files devel
 %{_includedir}/*.h
