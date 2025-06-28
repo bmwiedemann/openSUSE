@@ -1181,6 +1181,7 @@ unsorted:
   - aws-crt-cpp-devel 
   - aws-efs-utils 
   - aws-lc-benchmark 
+  - aws-lc-devel 
   - aws-nitro-enclaves-binaryblobs-upstream 
   - aws-nitro-enclaves-cli 
   - aws-sdk-java 
@@ -2042,6 +2043,7 @@ unsorted:
   - ceph-common 
   - ceph-csi 
   - ceph-csi-helm-charts 
+  - ceph-exporter 
   - ceph-fuse 
   - ceph-grafana-dashboards 
   - ceph-immutable-object-cache 
@@ -2054,11 +2056,13 @@ unsorted:
   - ceph-mgr-k8sevents 
   - ceph-mgr-modules-core 
   - ceph-mgr-rook 
+  - ceph-mib 
   - ceph-mon 
+  - ceph-node-proxy 
   - ceph-osd 
   - ceph-prometheus-alerts 
   - ceph-radosgw 
-  - ceph-test 
+  - ceph-volume 
   - cephadm 
   - cephfs-mirror 
   - cephfs-shell 
@@ -8365,6 +8369,7 @@ unsorted:
   - gwenhywfar-devel 
   - gwenhywfar-gwenbuild 
   - gwenhywfar-lang 
+  - gwenhywfar-qt6-devel 
   - gwenhywfar-tools 
   - gzdoom 
   - gzrt 
@@ -12841,6 +12846,8 @@ unsorted:
   - libdispatch1_3 
   - libdisplay-info-devel 
   - libdisplaydevice0_0_0 
+  - libdjinterop-devel 
+  - libdjinterop0 
   - libdjvulibre-devel 
   - libdlib20_0_0 
   - libdlm 
@@ -13213,6 +13220,7 @@ unsorted:
   - libfmt10 
   - libfmt11 
   - libfmt11-32bit 
+  - libfmt9 
   - libfole-devel 
   - libfole1 
   - libfolks-telepathy26 
@@ -13810,6 +13818,7 @@ unsorted:
   - libgwengui-gtk2-79 
   - libgwengui-gtk3-79 
   - libgwengui-qt5-79 
+  - libgwengui-qt6-79 
   - libgwenhywfar79 
   - libgwenhywfar79-plugins 
   - libgxps-devel 
@@ -14821,7 +14830,7 @@ unsorted:
   - libnftnl-devel 
   - libnghttp2-14-32bit 
   - libnghttp2-devel 
-  - libnghttp3-9 
+  - libnghttp3-9-32bit 
   - libngspice-devel 
   - libngspice0 
   - libngtcp2-16 
@@ -15298,7 +15307,6 @@ unsorted:
   - libpmemobj-cpp-devel 
   - libpmemobj-cpp-devel-doc 
   - libpmemobj-devel 
-  - libpmemobj1 
   - libpmempool-devel 
   - libpmempool1 
   - libpmi0 
@@ -16074,6 +16082,9 @@ unsorted:
   - libshine-devel 
   - libshine3 
   - libshout-devel 
+  - libshout-idjc 
+  - libshout-idjc-devel 
+  - libshout-idjc3 
   - libshout3-32bit 
   - libshp-devel 
   - libshp4 
@@ -25541,6 +25552,7 @@ unsorted:
   - python311-ioctl-opt 
   - python311-ipdb 
   - python311-iptables 
+  - python311-ipwhois 
   - python311-ipy 
   - python311-ipyevents 
   - python311-ipyfilechooser 
@@ -29279,6 +29291,7 @@ unsorted:
   - python312-ioctl-opt 
   - python312-ipdb 
   - python312-iptables 
+  - python312-ipwhois 
   - python312-ipy 
   - python312-ipyevents 
   - python312-ipyfilechooser 
@@ -33016,6 +33029,7 @@ unsorted:
   - python313-invoke 
   - python313-ioctl-opt 
   - python313-iptables 
+  - python313-ipwhois 
   - python313-ipy 
   - python313-ipyevents 
   - python313-ipyfilechooser 
@@ -36076,7 +36090,6 @@ unsorted:
   - rook-rookflex 
   - root-tail 
   - rosegarden 
-  - rott 
   - roundcubemail 
   - rovasiras-kende-fonts 
   - rovasiras-roga-fonts 
@@ -37731,6 +37744,7 @@ unsorted:
   - tar-backup-scripts 
   - tar-doc 
   - tar-tests 
+  - taradino 
   - target-isns 
   - targetcli-fb-common 
   - tarix 

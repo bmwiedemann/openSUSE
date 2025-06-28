@@ -157,7 +157,6 @@
     <package name="avahi-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="awesfx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="aws-lc" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
-    <package name="aws-lc-devel" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
     <package name="ayatana-indicator3-7-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="b43-fwcutter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="babeltrace" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1866,6 +1865,7 @@
     <package name="libcrypt1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcrypt1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcryptmount0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libcrypto1_52_1" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
     <package name="libcryptsetup12" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libcryptui-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcryptui-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1996,7 +1996,6 @@
     <package name="libflatpak0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libflite1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libfltk1_3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libfmt9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libfolks-eds26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfolks26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfontconfig1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2454,6 +2453,7 @@
     <package name="libnftables1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnftnl11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnghttp2-14" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libnghttp3-9" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnice10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnl-config" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnl3-200" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2556,6 +2556,7 @@
     <package name="libply-splash-graphics5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libply5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libpmem1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libpmemobj1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpng16-16" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpng16-16-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpolkit-agent-1-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2753,7 +2754,7 @@
     <package name="libssh-config" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libssh2-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libssh4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libssl1_51_2" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
+    <package name="libssl1_52_1" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
     <package name="libsss_certmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libsss_idmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libstaroffice-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
