@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 30 05:16:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.23.2:
+  * fix: the Stat call in s3 storage drivers should not rely on
+    lexographical sort only
+
+-------------------------------------------------------------------
 Thu Jun 05 20:10:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.23.1:
