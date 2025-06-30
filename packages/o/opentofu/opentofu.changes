@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 30 04:49:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.1:
+  * BUG FIXES:
+    - Fix TF_APPEND_USER_AGENT handling in the S3 remote state
+      backend. (#2955)
+  * OTHER CHANGES:
+    - OpenTofu is now built with Go 1.24.4, which should clear some
+      false-positive indirect security advisories.
+
+-------------------------------------------------------------------
 Wed Jun 25 05:02:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.0:
