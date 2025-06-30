@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jun 30 03:44:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.0.4:
+  * Client: Remove use of six
+  * Confluence: method attach_file() to not read() file content
+  * Bitbucket: Pass header to request session creation and remove obsolete
+    @Property in Bitbucket
+  * Jira: Update Agile (Greenhopper) REST API URL handling
+  * Fix typing issues for py<3.9
+  * Fix 404 error when trying to download attachments from page
+  * python2 removal
+  * [Jira] fix paginated projects retrieving
+  * [BitBucket] Add webhooks to Cloud
+  * [JIRA] added new method get_issue_tree_recursive
+  * [BitBucket] added new method get_groups
+  * [JIRA] new method get_issue_status_changelog
+  * [Confluence] added new endpoints for confluence whiteboards
+  * [Jira] Make get_issue_changelog start and limit work
+  * [Confluence] Expand parameter addition for get_draft_page_by_id
+  * [Confluence] forward start and limit for getting attachments
+  * [Jira] two new methods: download_attachments_from_issue and
+    get_attachments_ids_from_issue
+  * [Bitbucket] Split pull request activities url for Cloud and Server
+  * Issue 1337: Bearer token on linux environment has new line character
+  * [Rest] Support exponential backoff and retry
+  * [Jira] new feature added scrap_regex_from_issue
+  * [Assets] Add checker end point
+  * create_object_navlist_iql method - changed parameter default values
+  * [Bitbucket] Fixed Pull Requests Activities path
+  * [Confluence] New method 'scrap_regex_from_page'
+  * [Jira] Added get_version and move_version
+  * Commit Object addition to Pull Requests
+  * [Confluence] new method added get_tables_from_page
+  * Download attachments from page
+  * Add more Crowd functions
+  * [confluence] documentation of token authentication
+  * add remove_space_permission
+
+-------------------------------------------------------------------
 Tue May 13 15:53:59 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

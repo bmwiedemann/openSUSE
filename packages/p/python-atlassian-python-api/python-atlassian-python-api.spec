@@ -17,14 +17,16 @@
 
 
 Name:           python-atlassian-python-api
-Version:        3.41.4
+Version:        4.0.4
 Release:        0
 Summary:        Python Atlassian REST API Wrapper
 License:        Apache-2.0
 URL:            https://github.com/atlassian-api/atlassian-python-api
-Source:         https://files.pythonhosted.org/packages/source/a/atlassian-python-api/atlassian-python-api-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/atlassian-python-api/atlassian_python_api-%{version}.tar.gz
 Source1:        python-atlassian-python-api.rpmlintrc
+BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module deprecated}
+BuildRequires:  %{python_module jmespath}
 BuildRequires:  %{python_module kerberos}
 BuildRequires:  %{python_module oauthlib}
 BuildRequires:  %{python_module pip}
@@ -32,16 +34,17 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-oauthlib}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-beautifulsoup4
 Requires:       python-deprecated
-Requires:       python-kerberos
+Requires:       python-jmespath
 Requires:       python-oauthlib
 Requires:       python-requests
 Requires:       python-requests-oauthlib
-Requires:       python-six
+Requires:       python-typing_extensions
 Suggests:       python-kerberos
 BuildArch:      noarch
 %python_subpackages
@@ -50,7 +53,7 @@ BuildArch:      noarch
 Python Atlassian REST API Wrapper
 
 %prep
-%autosetup -p1 -n atlassian-python-api-%{version}
+%autosetup -p1 -n atlassian_python_api-%{version}
 
 %build
 %pyproject_wheel
@@ -66,6 +69,6 @@ Python Atlassian REST API Wrapper
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/atlassian
-%{python_sitelib}/atlassian_python_api*-info
+%{python_sitelib}/atlassian_python_api-%{version}.dist-info
 
 %changelog
