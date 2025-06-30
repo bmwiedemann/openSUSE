@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Jun 30 05:29:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.6.0:
+  * Breaking Changes
+    - The git-commit promotion step will now complete with a
+      Skipped status instead of Succeeded if it detects there no
+      diffs in the working tree.
+  * CLI-related changes or dependency updates:
+    - chore(deps/tools): bump github.com/go-chi/chi/v5 from 5.2.1
+      to 5.2.2 in /hack/tools (#4432)
+    - chore(deps/api): bump the go-patch group in /api with 3
+      updates (#4441)
+    - chore(deps): bump curlimages/curl from 8.13.0 to 8.14.1
+      (#4442)
+    - chore(deps/tools): bump the go-patch group in /hack/tools
+      with 2 updates (#4443)
+    - chore(deps): bump the go-patch group with 10 updates (#4439)
+    - chore(deps/tools): bump github.com/bufbuild/buf from 1.54.0
+      to 1.55.1 in /hack/tools in the go-minor group (#4444)
+    - chore(deps): bump docker/setup-buildx-action from 3.10.0 to
+      3.11.1 (#4445)
+    - chore(deps): bump sigstore/cosign-installer from 3.8.2 to
+      3.9.0 (#4446)
+    - chore(deps): update dependencies (#4403)
+    - chore(deps/tools): bump golang.org/x/tools from 0.33.0 to
+      0.34.0 in /hack/tools in the go-minor group (#4359)
+    - chore(deps): bump golang from 1.24.3-bookworm to
+      1.24.4-bookworm (#4355)
+    - chore(deps): bump library/node from 22.15.0 to 24.1.0 (#4300)
+    - chore(deps/tools): bump helm.sh/helm/v3 from 3.18.1 to 3.18.2
+      in /hack/tools in the go-patch group (#4358)
+    - chore(deps/tools): bump helm.sh/helm/v3 from 3.18.0 to 3.18.1
+      in /hack/tools in the go-patch group (#4301)
+    - chore(deps): update controller-runtime to v0.21.0 (#4218)
+    - feat(client): allow QPS and burst configuration of Kubernetes
+      client (#4244)
+    - chore(deps/api): bump the go-patch group in /api with 3
+      updates (#4235)
+    - chore(deps): bump the go-patch group with 2 updates (#4232)
+    - chore(deps/tools): bump helm.sh/helm/v3 from 3.17.3 to 3.18.0
+      in /hack/tools in the go-minor group (#4231)
+    - chore(deps/pkg): bump k8s.io/apimachinery from 0.33.0 to
+      0.33.1 in /pkg in the go-patch group (#4132)
+    - chore(deps): bump the go-patch group with 8 updates (#4130)
+    - chore(deps/tools): bump k8s.io/code-generator from 0.33.0 to
+      0.33.1 in /hack/tools in the go-patch group (#4128)
+    - chore(deps): bump codecov/codecov-action from 5.4.2 to 5.4.3
+      (#4135)
+    - chore(deps/tools): bump github.com/bufbuild/buf from 1.53.0
+      to 1.54.0 in /hack/tools in the go-minor group (#4129)
+    - chore(deps): bump the go-minor group with 2 updates (#4131)
+    - chore(deps): bump the js-minor group across 1 directory with
+      25 updates (#4056)
+    - fix(cli): fix get + delete projectconfig commands (#4071)
+    - chore(deps): update Kubernetes libraries to 1.33 (#4065)
+    - chore(deps): update non-k8s dependencies (#4064)
+    - feat(cli): add commands for getting and deleting project
+      config (#4067)
+    - chore(deps): bump actions/setup-go from 5.4.0 to 5.5.0
+      (#4052)
+    - chore(deps): bump golang from 1.24.2-bookworm to
+      1.24.3-bookworm (#4057)
+    - chore(deps/tools): bump the go-minor group in /hack/tools
+      with 2 updates (#4054)
+
+-------------------------------------------------------------------
 Fri Jun 13 05:04:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.5.3:
