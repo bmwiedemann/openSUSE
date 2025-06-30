@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 28 20:18:55 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 20250628:
+  * Remove unused variable
+  * Change frame timing logic to always match timestamp timeout
+  * Restart portal capture if it's paused for 3 seconds or more
+
+-------------------------------------------------------------------
 Tue Jun 24 20:12:35 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 20250623:
