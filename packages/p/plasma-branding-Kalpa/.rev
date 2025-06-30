@@ -98,4 +98,14 @@
   flatpak package</comment>
     <requestid>1286555</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2334d61d47575abc3617ece9f26c8628</srcmd5>
+    <version>20250624</version>
+    <time>1751281399</time>
+    <user>anag_factory</user>
+    <comment>- Bump version to 20250624
+- Removed kalpa-discover-update service and timer,
+  plasma-discover-update was dropped in Plasma 6.4</comment>
+    <requestid>1288204</requestid>
+  </revision>
 </revisionlist>

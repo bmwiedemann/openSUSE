@@ -18,7 +18,7 @@
 
 
 Name:           plasma-branding-Kalpa
-Version:        20250618
+Version:        20250624
 Release:        0
 Summary:        Kalpa Desktop default settings
 License:        BSD-3-Clause
@@ -83,26 +83,18 @@ install -d %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/
 install -m0644 usr/lib/sddm/sddm.conf.d/10-wayland.conf %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/10-wayland.conf
 install -d %{buildroot}%{_prefix}/lib/systemd/user/transactional-update-notifier.d/
 install -m0644 usr/lib/systemd/user/transactional-update-notifier.d/set-notification-priority.conf %{buildroot}%{_prefix}/lib/systemd/user/transactional-update-notifier.d/set-notification-priority.conf
-install -m0644 usr/lib/systemd/user/kalpa-discover-update.timer %{buildroot}%{_userunitdir}/kalpa-discover-update.timer
-install -m0644 usr/lib/systemd/user/kalpa-discover-update.service %{buildroot}%{_userunitdir}/kalpa-discover-update.service
 
 %pre
 %systemd_user_pre distrobox-upgrade-all.service
 %systemd_user_pre distrobox-upgrade-all.timer
-%systemd_user_pre kalpa-discover-update.service
-%systemd_user_pre kalpa-discover-update.timer
 
 %post
 %systemd_user_post distrobox-upgrade-all.service
 %systemd_user_post distrobox-upgrade-all.timer
-%systemd_user_post kalpa-discover-update.service
-%systemd_user_post kalpa-discover-update.timer
 
 %preun
 %systemd_user_preun distrobox-upgrade-all.service
 %systemd_user_preun distrobox-upgrade-all.timer
-%systemd_user_preun kalpa-discover-update.service
-%systemd_user_preun kalpa-discover-update.timer
 
 %files
 %license COPYING
@@ -124,8 +116,6 @@ install -m0644 usr/lib/systemd/user/kalpa-discover-update.service %{buildroot}%{
 %{_distconfdir}/transactional-update.conf.d/50-desktop.conf
 %{_userunitdir}/distrobox-upgrade-all.service
 %{_userunitdir}/distrobox-upgrade-all.timer
-%{_userunitdir}/kalpa-discover-update.timer
-%{_userunitdir}/kalpa-discover-update.service
 %{_distconfdir}/sudoers.d/50-kalpa
 %{_datadir}/polkit-1/rules.d/49-kalpa.rules
 %dir %{_prefix}/lib/sddm
