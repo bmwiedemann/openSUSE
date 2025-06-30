@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 30 08:11:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.6.0:
+  * Deprecate features no longer supported with ansible-core 2.19
+    (#467)
+  * Bump the dependencies group in /.config with 12 updates (#464)
+  * Bump the dependencies group in /.config with 3 updates (#463)
+  * Bump the dependencies group in /.config with 5 updates (#462)
+  * chore: pre-commit autoupdate (#461)
+  * Bump the dependencies group in /.config with 4 updates (#460)
+
+-------------------------------------------------------------------
 Thu May 29 05:34:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.5.0:
