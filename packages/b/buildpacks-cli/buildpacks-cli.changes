@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun 30 06:00:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.2:
+  * Updating lifecycle version to latest v0.20.11 (#2411)
+  * build(deps): bump github.com/go-viper/mapstructure/v2 in /tools
+    (#2409)
+  * build(deps): bump github.com/go-viper/mapstructure/v2 (#2410)
+  * build(deps): bump buildpacks/github-actions from 5.8.11 to
+    5.9.1 (#2401)
+  * build(deps): bump the go-dependencies group across 1 directory
+    with 3 updates (#2408)
+  * Bump imgutil to latest and docker from v27.5.1 to v28.3.0
+    (#2406)
+  * updating to ubuntu jammy when releasing pack (#2400)
+  * Jjbustamante/fix pack 2397 (#2399)
+
+-------------------------------------------------------------------
+Mon Jun 16 19:23:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.1:
+  * upding delivery workflow to correct the wrong format (#2398)
+
+-------------------------------------------------------------------
 Sat Jun 14 08:26:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.0:
