@@ -1011,4 +1011,24 @@ varienvironment able.
 </comment>
     <requestid>1274722</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>4b56987357ffbe4dc24d7db96e42880e</srcmd5>
+    <version>0.63.0</version>
+    <time>1751281486</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.63.0:
+  * Added footer. The default border style for footer is `line`,
+    which draws a single separator line.
+  * `line` border style is now allowed for all types of border
+    except for `--list-border`.
+  * Added `{*}` placeholder flag that evaluates to matched items.
+  * Added asynchronous transform actions with `bg-` prefix that
+    run asynchronously in the background, along with `bg-cancel`
+    action to cancel currently running `bg-transform` actions.
+  * Added support for full-line background color in the list section
+  * SSH completion enhancements
+- Bug fixes and improvements
+</comment>
+    <requestid>1288912</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 28 04:17:13 UTC 2025 - Avindra Goolcharan <aavindraa@gmail.com>
+
+- Update to version 0.63.0:
+  * Added footer. The default border style for footer is `line`,
+    which draws a single separator line.
+  * `line` border style is now allowed for all types of border
+    except for `--list-border`.
+  * Added `{*}` placeholder flag that evaluates to matched items.
+  * Added asynchronous transform actions with `bg-` prefix that
+    run asynchronously in the background, along with `bg-cancel`
+    action to cancel currently running `bg-transform` actions.
+  * Added support for full-line background color in the list section
+  * SSH completion enhancements
+- Bug fixes and improvements
+
+-------------------------------------------------------------------
 Mon May  5 21:31:56 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 0.62.0:
