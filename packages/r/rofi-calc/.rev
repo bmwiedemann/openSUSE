@@ -191,4 +191,13 @@
   * Fix quick switch not working #139</comment>
     <requestid>1288724</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>28eeb247a80cb9c49b79b34eda4b63f9</srcmd5>
+    <version>2.4.0</version>
+    <time>1751281489</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.0:
+  * Add ability to configure via config.rasi #138</comment>
+    <requestid>1288924</requestid>
+  </revision>
 </revisionlist>
