@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 28 00:22:30 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1750841733.3fc0bf7:
+  * Update Perl::Tidy to 20250616.0.0
+  * generalhw: fix is_shutdown signature
+  * Workaround coverage issue
+  * Rename `$mock_main` to `$mock_ovs` in OVS unit test
+  * Extend logging in OVS service to debug its occasional unresponsiveness
+  * VMWare-related code made compatible with non-GNU ps
+
+-------------------------------------------------------------------
 Wed Jun 18 10:27:57 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1750149141.e9a7b3a:
