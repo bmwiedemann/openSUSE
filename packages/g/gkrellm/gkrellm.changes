@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun 29 18:32:42 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.4.0 (boo#1244666):
+  * UI improvements
+  * Add native GnuTLS support mail check via SSL/TLS
+  * Enable gkrellmd timeouts by default to make gkrellm clients
+    automatically reconnect after a connection loss
+    (drop gkrellm-install-and-reconnect-gkrellmd.conf.patch)
+  * Use locale-dependent date and time formatting by default
+  * Fix IPv6 address matching in gkrellmd client access list
+  * Update French translation
+- disable warning-as-errors for incompatible pointer types
+
+-------------------------------------------------------------------
 Tue Feb 18 16:59:07 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix bogus prefix / include path in Cflags (boo#1237310)

@@ -18,12 +18,12 @@
 
 
 Name:           gkrellm
-Version:        2.3.11
+Version:        2.4.0
 Release:        0
 Summary:        Manages Multiple Stacked Monitors
 License:        GPL-3.0-or-later
 Group:          System/Monitoring
-URL:            http://gkrellm.srcbox.net/
+URL:            https://gkrellm.srcbox.net/
 Source:         http://gkrellm.srcbox.net/releases/%{name}-%{version}.tar.bz2
 Source1:        %name.desktop
 Source2:        gkrellm-16.png
@@ -35,9 +35,6 @@ Source6:        gkrellmd.service
 %endif
 # PATCH-FIX-OPENSUSE gkrellm-lib64-plugins-dir.patch pgajdos@suse.cz -- look also into /usr/lib64/gkrellm2/plugins
 Patch1:         %{name}-lib64-plugins-dir.patch
-# PATCH-FIX-OPENSUSE gkrellm-install-and-reconnect-gkrellmd.conf.patch hpj@urpla.net -- install /etc/gkrellmd.conf and make reconnect default
-Patch2:         %{name}-install-and-reconnect-gkrellmd.conf.patch
-
 BuildRequires:  gtk2-devel
 BuildRequires:  libsensors4-devel
 %if 0%{?suse_version} > 1220
@@ -47,7 +44,6 @@ BuildRequires:  openssl-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libSM-devel
 Recommends:     %{name}-lang
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # no libsensors
 ExcludeArch:    s390 s390x
 
@@ -116,7 +112,7 @@ cd src
 #e. g. bnc#803967 bnc#803081
 ./configure
 cd ..
-make CFLAGS="%{optflags}" X11_LIBS="-L/usr/X11R6/%{_lib} -lX11 -lSM -lICE" GTOP_LIBS="-lgmodule-2.0" PREFIX=%{_prefix}
+make CFLAGS="%{optflags} -Wno-error=incompatible-pointer-types" X11_LIBS="-L/usr/X11R6/%{_lib} -lX11 -lSM -lICE" GTOP_LIBS="-lgmodule-2.0" PREFIX=%{_prefix}
 
 %install
 make install STRIP= \
@@ -176,11 +172,12 @@ ln -s /sbin/service %{buildroot}%{_sbindir}/rcgkrellmd
 %endif
 
 %files
-%defattr(-,root,root)
-%doc COPYRIGHT Changelog README Themes.html
+%license COPYRIGHT
+%doc README Themes.html
 %{_bindir}/gkrellm
 %{_datadir}/icons/hicolor/*/apps/gkrellm.png
 %{_datadir}/applications/gkrellm.desktop
+%{_datadir}/metainfo/net.srcbox.gkrellm.GKrellM.metainfo.xml
 %doc %{_mandir}/man1/*
 %dir /usr/lib/gkrellm2
 %dir /usr/lib/gkrellm2/plugins
@@ -190,8 +187,8 @@ ln -s /sbin/service %{buildroot}%{_sbindir}/rcgkrellmd
 %endif
 
 %files -n gkrellmd
-%defattr(-,root,root)
-%doc COPYRIGHT Changelog README Themes.html
+%license COPYRIGHT
+%doc README Themes.html
 %config(noreplace) %{_sysconfdir}/gkrellmd.conf
 %{_bindir}/gkrellmd
 %if 0%{?suse_version} > 1220
@@ -200,10 +197,11 @@ ln -s /sbin/service %{buildroot}%{_sbindir}/rcgkrellmd
 %endif
 
 %files devel
-%defattr(-,root,root)
+%license COPYRIGHT
 %{_includedir}/gkrellm2/
 %{_libdir}/pkgconfig/gkrellm.pc
 
 %files lang -f %{name}.lang
+%license COPYRIGHT
 
 %changelog

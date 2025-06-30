@@ -319,4 +319,12 @@
     <comment></comment>
     <requestid>1246755</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e7ec07678135630e05dc05377128350b</srcmd5>
+    <version>2.4.0</version>
+    <time>1751284869</time>
+    <user>anag_factory</user>
+    <comment>gkrellm 2.4.0 (boo#1244666) (forwarded request 1289107 from AndreasStieger)</comment>
+    <requestid>1289172</requestid>
+  </revision>
 </revisionlist>
