@@ -174,4 +174,20 @@
   * Update translations (forwarded request 1287254 from rrahl0)</comment>
     <requestid>1287255</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e1f56849872a21516ceb4eff75f1e7c3</srcmd5>
+    <version>0.5.6</version>
+    <time>1751284898</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5.6:
+  * Translations updates
+  * Fix compatibility tool detection
+  * Change DXVK Sarek naming scheme
+  * Fix library loading issue
+  * Fix a crash that happens when loginusers.vdf is missing
+  * Add an header to the library game list
+  * Add a donation button
+  * Improved build script (forwarded request 1289196 from rrahl0)</comment>
+    <requestid>1289197</requestid>
+  </revision>
 </revisionlist>
