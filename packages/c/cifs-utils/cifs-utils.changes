@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 16 19:03:05 UTC 2025 - Henrique Carvalho <henrique.carvalho@suse.com>
+
+- Update cifs-utils to 7.4
+  * mount.cifs: retry mount on -EINPROGRESS
+  * cifs.upcall: correctly treat UPTARGET_UNSPECIFIED as UPTARGET_APP
+  * cifs.upcall: fix memory leaks in check_service_ticket_exits()
+  * cifs-utils: bump version to 7.4
+  * getcifsacl, setcifsacl: use <libgen.h> for basename
+  * cifscreds: use <libgen.h> for basename
+
+-------------------------------------------------------------------
 Wed Apr  2 20:58:16 UTC 2025 - Henrique Carvalho <henrique.carvalho@suse.com>
 
 - Update cifs-utils to 7.3
