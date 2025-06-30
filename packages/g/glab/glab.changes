@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jun 25 12:26:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.61.0:
+  * refactor: remove unused option struct fields
+  * refactor: align more commands with common structure
+  * refactor: remove unnecessary copying of test var
+  * refactor: remove unused runE / runF cmd args
+  * feat(cluster/graph): extra docs on CEL
+  * feat(cluster/graph): support logging watch request
+  * feat(cluster/graph): support selecting namespaces
+  * feat: add 'repo update' command
+  * feat: command for ci run mr
+  * refactor: first pass of aligning command structure
+  * chore(deps): update module k8s.io/client-go to v0.33.2
+  * feat(cluster/graph): enhance docs
+  * feat(cluster/graph): allow selecting resources by name
+  * feat(cluster/graph): allow selecting common resources in common
+    groups
+  * refactor(cluster/graph): rework default query construction
+  * fix(cluster/graph): remove print
+  * chore(deps): update module k8s.io/apimachinery to v0.33.2
+  * chore(deps): update module
+    github.com/hashicorp/go-retryablehttp to v0.7.8
+
+-------------------------------------------------------------------
 Thu Jun 19 06:32:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.60.2:
