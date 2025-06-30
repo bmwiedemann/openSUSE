@@ -23,7 +23,7 @@
 %bcond_without fish
 %endif
 Name:           ugrep
-Version:        7.4.3
+Version:        7.5.0
 Release:        0
 Summary:        Universal grep: a feature-rich grep implementation with focus on speed
 License:        BSD-3-Clause
@@ -103,6 +103,7 @@ This package contains the fish completion for ugrep.
 %install
 %make_install
 %fdupes %{buildroot}%{_datadir}/%{name}
+%fdupes %{buildroot}%{_prefix}
 
 %check
 %make_build test
@@ -110,7 +111,11 @@ This package contains the fish completion for ugrep.
 %files
 %license LICENSE.txt
 %doc README.md
-%{_bindir}/*
+%{_bindir}/ug
+%{_bindir}/ug+
+%{_bindir}/ugrep
+%{_bindir}/ugrep+
+%{_bindir}/ugrep-indexer
 %{_mandir}/man1/*.1%{?ext_man}
 %{_datadir}/ugrep
 
