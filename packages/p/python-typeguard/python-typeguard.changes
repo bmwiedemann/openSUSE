@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 25 14:16:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.4.4
+  * Fixed IndexError when using @typechecked on more than one
+    function with the same name under certain circumstances (#527)
+  * Fixed TypeError during type checking when the value to check
+    is a parametrized generic class (#526)
+- from version 4.4.3
+  * Fixed @typechecked unable to find the target function or method if
+    it or the containing class had PEP 695 type parameters on them (#500)
+  * Fixed handling of union types on Python 3.14 (#522)
+  * Fixed __type_params__ getting lost when a function is instrumented
+
+-------------------------------------------------------------------
 Tue Mar  4 09:14:50 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - drop unneeded dependency
