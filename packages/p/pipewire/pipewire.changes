@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jun 27 16:29:52 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.4.6:
+  * Highlights
+    - Fix a crasher bug in filter-chain and one in the ALSA plugin.
+    - Improve latency reporting in module-combine-stream.
+    - Some smaller fixes and cleanups.
+  * modules
+    - Improve latency handling in module-combine-stream. (#4731)
+    - Improve save activation/deactivation of the filter-graph in
+      module-filter-chain to avoid crashes. (#4700, #4750)
+    - Add an option to disable RAOP with a context.property.
+  * SPA
+    - Handle NULL io in alsa wakeup code. This can happen when
+      there is negotiation happening. (#4734)
+    - Enable interrupts after an ALSA error to keep the dataflow
+      going.
+    - Reset some stats better after an ALSA error.
+    - Support the alsa.use-ucm property for the ALSA udev plugin.
+  * pulse-server
+    - Mark empty buffers. This improves some code paths in the
+      mixer.
+  * GStreamer
+    - Fix a refcount issue in the device provider.
+
+-------------------------------------------------------------------
 Wed Jun 11 13:54:00 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.4.5:
