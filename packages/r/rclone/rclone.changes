@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jun 27 13:31:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.70.2:
+  * Version v1.70.2
+  * docs: update client ID instructions to current Azure AD portal - fixes #8027
+  * mega: fix tls handshake failure - fixes #8565
+  * pacer: fix nil pointer deref in RetryError - fixes #8077
+  * convmv: fix moving to unicode-equivalent name - fixes #8634
+  * convmv: make --dry-run logs less noisy
+  * sync: avoid copying dir metadata to itself
+  * combine: fix directory not found errors with ListP interface - Fixes #8627
+  * local: fix --skip-links on Windows when skipping Junction points
+  * build: bump github.com/go-chi/chi/v5 from 5.2.1 to 5.2.2 to fix GHSA-vrw8-fxc6-2r93
+  * log: fix deadlock when using systemd logging - fixes #8621
+  * docs: googlephotos: detail how to make your own client_id - fixes #8622
+  * pikpak: fix uploads fail with "aws-chunked encoding is not supported" error
+  * Start v1.70.2-DEV development
+  * docs: Remove Warp as a sponsor
+  * docs: add files.com as a Gold sponsor
+  * docs: add links to SecureBuild docker image
+
+-------------------------------------------------------------------
 Thu Jun 19 14:11:41 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.70.1:
