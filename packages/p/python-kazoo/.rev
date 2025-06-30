@@ -202,4 +202,13 @@
 </comment>
     <requestid>1225417</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>7e681a7a15a71452853bfa2f627718b0</srcmd5>
+    <version>2.10.0</version>
+    <time>1751281566</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Drop now unneeded Requires on six.</comment>
+    <requestid>1289117</requestid>
+  </revision>
 </revisionlist>

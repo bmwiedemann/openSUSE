@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 30 04:12:52 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Drop now unneeded Requires on six.
+
+-------------------------------------------------------------------
 Wed Nov 20 22:55:42 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file.
