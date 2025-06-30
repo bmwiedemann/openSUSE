@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 25 08:40:15 UTC 2025 - Yifan Jiang <yfjiang@suse.com>
+
+- Built with noopenh264, drop ffmpeg-dlopen-openh264.patch
+  (jsc#PED-12607)
+
+-------------------------------------------------------------------
 Thu Jun 12 17:48:49 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable libiec61883 integration [boo#1244453]

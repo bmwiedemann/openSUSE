@@ -157,4 +157,13 @@ retry submit due to git-&gt;obs autosync delays</comment>
     <comment>add bugIDs</comment>
     <requestid>1286265</requestid>
   </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>91c130f735341faf8ea75911e2aec373</srcmd5>
+    <version>7.1.1</version>
+    <time>1751281402</time>
+    <user>anag_factory</user>
+    <comment>- Built with noopenh264, drop ffmpeg-dlopen-openh264.patch
+  (jsc#PED-12607)</comment>
+    <requestid>1288497</requestid>
+  </revision>
 </revisionlist>

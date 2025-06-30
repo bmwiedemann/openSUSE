@@ -118,16 +118,14 @@ Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
-Patch91:        ffmpeg-dlopen-openh264.patch
 Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
 Patch18:        ffmpeg-7-CVE-2025-25473.patch
 Patch19:        ffmpeg-7-CVE-2025-22921.patch
 Patch20:        0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
-BuildRequires:  libmp3lame-devel >= 3.98.3
 BuildRequires:  nasm
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(aom) >= 1.0.0
 BuildRequires:  pkgconfig(dav1d) >= 0.5.0
@@ -147,6 +145,7 @@ BuildRequires:  pkgconfig(libdc1394-2)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(libiec61883)
+BuildRequires:  pkgconfig(libmp3lame) >= 3.98.3
 BuildRequires:  pkgconfig(libopenjp2) >= 2.1.0
 BuildRequires:  pkgconfig(libopenmpt) >= 0.2.6557
 BuildRequires:  pkgconfig(libpng)
@@ -163,6 +162,7 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzmq) >= 4.2.1
 BuildRequires:  pkgconfig(lilv-0)
 BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(openh264)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(sdl2) >= 2.0.1
 BuildRequires:  pkgconfig(soxr)
@@ -187,7 +187,7 @@ BuildRequires:  pkgconfig(zvbi-0.2) >= 0.2.28
 BuildRequires:  AMF-devel
 %endif
 %if %{with mysofa}
-BuildRequires:  libmysofa-devel
+BuildRequires:  pkgconfig(libmysofa)
 %endif
 %if %{with codec2}
 BuildRequires:  pkgconfig(codec2)
@@ -238,7 +238,7 @@ BuildRequires:  pkgconfig(SvtAv1Enc) >= 0.9.0
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600
 BuildRequires:  pkgconfig(libplacebo) >= 6.292.0
 %else
-BuildRequires:  (pkgconfig(libplacebo) >= 4.192.0 with pkgconfig (libplacebo) < 6.292.0)
+BuildRequires:  (pkgconfig(libplacebo) >= 4.192.0 with pkgconfig(libplacebo) < 6.292.0)
 %endif
 BuildRequires:  pkgconfig(shaderc) >= 2019.1
 BuildRequires:  pkgconfig(vulkan) >= 1.3.255
@@ -604,7 +604,7 @@ LDFLAGS="%_lto_cflags" \
 %endif
 	--enable-libopenjpeg \
 	--enable-libopenmpt \
-	--enable-libopenh264-dlopen \
+	--enable-libopenh264 \
 	--enable-libopus \
 	--enable-libpulse \
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
@@ -835,9 +835,9 @@ Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
-Patch91:        ffmpeg-dlopen-openh264.patch
 Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
 BuildRequires:  c_compiler
+BuildRequires:  pkgconfig(openh264)
 Requires:       this-is-only-for-build-envs
 
 %description
