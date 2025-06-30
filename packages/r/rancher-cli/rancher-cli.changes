@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 30 06:25:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.11.3:
+  * Update Rancher refs to v2.11.3 (#446)
+  * Bump rancher/rancher to v2.11.3-alpha2 (#442)
+
+-------------------------------------------------------------------
 Fri May 23 05:12:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.11.2:
