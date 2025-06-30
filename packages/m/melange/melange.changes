@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun 30 04:51:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.28.0:
+  * logstash-8 is no more (#2059)
+  * feat: add SLSA provenance generation for package builds (#2051)
+
+-------------------------------------------------------------------
+Mon Jun 30 04:46:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.27.0:
+  * Fix issues introduced by the qemu_runner changes to os-release
+    (#2058)
+  * SBOM: add a OperatingSystem package to each apk SBOM (#2016)
+  * fix: avoid SSH lockups, use script for tests (#2049)
+  * feat(pkg/build/pipelines): add xcover pipelines (#1996)
+  * Add usrmerge linter failure on files in /lib and /lib64 (#2053)
+
+-------------------------------------------------------------------
 Mon Jun 23 04:46:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.13:
