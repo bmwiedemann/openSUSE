@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyfakefs%{psuffix}
-Version:        5.8.0
+Version:        5.9.1
 Release:        0
 Summary:        Fake file system that mocks the Python file system modules
 License:        Apache-2.0
@@ -60,7 +60,6 @@ no modification to work with pyfakefs.
 %install
 %if !%{with test}
 %pyproject_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/pyfakefs/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
