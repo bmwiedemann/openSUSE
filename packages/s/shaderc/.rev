@@ -265,4 +265,12 @@
     <comment>- Switch Leap build to newer gcc 13</comment>
     <requestid>1252821</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>8e454c28217fd8529c5495b310d9cdb4</srcmd5>
+    <version>2025.3</version>
+    <time>1751281440</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2025.3</comment>
+    <requestid>1288940</requestid>
+  </revision>
 </revisionlist>

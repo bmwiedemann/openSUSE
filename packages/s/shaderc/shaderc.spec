@@ -23,7 +23,7 @@
 %endif
 
 Name:           shaderc
-Version:        2025.1
+Version:        2025.3
 Release:        0
 Summary:        A collection of tools, libraries and tests for shader compilation
 License:        Apache-2.0
@@ -34,8 +34,8 @@ Source:         https://github.com/google/shaderc/archive/v%version.tar.gz
 Source99:       baselibs.conf
 Patch1:         0001-Use-system-third-party-libs.patch
 BuildRequires:  cmake >= 2.8.12
-BuildRequires:  gcc%{?gcc_version} >= 9
-BuildRequires:  gcc%{?gcc_version}-c++ >= 9
+BuildRequires:  gcc%{?gcc_version} >= 13
+BuildRequires:  gcc%{?gcc_version}-c++ >= 13
 BuildRequires:  glslang-devel >= 15.1
 BuildRequires:  glslang-nonstd-devel
 BuildRequires:  python3-base
@@ -74,7 +74,6 @@ Shaderc wraps around core functionality in glslang and SPIRV-Tools
 %autosetup -p1
 chmod a+x utils/update_build_version.sh
 echo "\"%version\"" >glslc/src/build-version.inc
-find . -type f -exec grep -l '#!/usr/bin/env python' {} + | xargs perl -i -lpe 's{/env python\w*}{/python3}g'
 
 %build
 export CXXFLAGS="%{optflags} -I%_includedir/External"
