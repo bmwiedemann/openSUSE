@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jun 30 05:16:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.39.1:
+  * fix(build): fix dockerfile context rel path
+
+-------------------------------------------------------------------
+Mon Jun 30 05:14:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.39.0:
+  * chore: release 2.39.0 (#6917)
+  * docs(includes): update example werf-includes.lock
+  * docs(includes): fix includes example (#6926)
+  * docs(includes): update example werf-includes.lock
+  * docs(includes): update example werf-includes.lock
+  * docs(includes): update example
+  * fix(includes): add dockerfile to build context
+  * fix(includes): fix dockerignore handler
+  * chore(docs): add backticks to --keep-list
+  * chore(kubedog): update kubedog (#6924)
+  * chore(release): 2 beta,stable
+  * chore(docs): use proper template
+  * docs(includes): small improvements
+  * feat: implement external configuration includes (#6863)
+  * chore(release): 2 alpha
+
+-------------------------------------------------------------------
 Fri Jun 20 12:50:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.38.1:
