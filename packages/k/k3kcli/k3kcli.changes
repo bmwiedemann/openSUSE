@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Jun 30 10:15:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version chart-0.3.3-r6:
+  * bump charts to 0.3.3-r6 (#401)
+  * Add pods/attach permission to k3k-kubelet (#400)
+  * Add scheduled Conformance tests for shared mode (#396)
+  * bump chart (#395)
+  * add named controller (#394)
+  * bump charts to 0.3.3-r4 (#393)
+  * Generate kubeconfig secret (#392)
+  * Bump Charts to `0.3.3-r3` (#391)
+  * [CLI] add storage-request-size flag (#372)
+  * Fix Network Policy reconciliation (#388)
+  * fix-howto usage of serverEnvs and agentEnvs (#385)
+  * Fix for `k3kcli policy delete` (#386)
+  * kubelet controllers cleanup (#376)
+  * Ephemeral containers fix (#371)
+  * fix for empty namespace (#375)
+  * [DOC] add how-to create virtual clusters (#373)
+  * charts-0.3.3-r1 (#370)
+  * [DOC] add how to choose mode (#369)
+  * add workload exposition howto doc (#366)
+  * Added `k3kcli cluster list` and `k3kcli policy list` commands
+    (#368)
+  * Update `allowedModeTypes` field to `allowedMode` (#367)
+  * `VirtualClusterPolicy` documentation (#364)
+  * Change `VirtualClusterPolicy` scope to Cluster (#358)
+  * move howtos in docs folder (#362)
+  * add air-gap support (#359)
+  * update version in readme (#357)
+  * Fix DNS options and allow custom dnsConfig (#354)
+  * remove `--devel` reference (#353)
+  * Rename `ClusterSet` to `VirtualClusterPolicy` (#349)
+  * Fix annotation update (#335)
+  * Fix HA init server scaling (#333)
+  * fix build-crds, bump Go to 1.24.2, bump golangci-lint (#344)
+  * Services updates (`LoadBalancerConfig` and `NodePortConfig`)
+    (#329)
+  * Add extra env for servers/agents (#324)
+  * Display error if agents flag is provided in shared mode (#330)
+  * Update Chart.yaml (#332)
+
+-------------------------------------------------------------------
 Fri Apr 18 12:00:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.3.2:
