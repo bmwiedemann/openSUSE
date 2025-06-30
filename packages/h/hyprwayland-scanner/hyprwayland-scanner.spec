@@ -1,7 +1,7 @@
 #
 # spec file for package hyprwayland-scanner
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Florian "sp1rit" <sp1rit@disroot.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           hyprwayland-scanner
-Version:        0.4.2
+Version:        0.4.4
 Release:        0
 Summary:        Hyprland implementation of wayland-scanner
 License:        BSD-3-Clause
