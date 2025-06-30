@@ -159,6 +159,8 @@ Source1:        %{name}.rpmlintrc
 Source21:       %{name}.pam.rh
 Source22:       %{name}.pam
 Patch1:         openwsman-redhat-initscript.patch
+# https://github.com/Openwsman/openwsman/commit/e619555c3484264a188396bc8b9c77c39ef47bb2
+Patch2:         openwsman-gcc15.patch
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 %define pamfile %{S:21}
 %else
@@ -392,6 +394,7 @@ It can be used to send shell commands to remote Windows hosts.
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 %patch -P 1 -p1
 %endif
+%patch -P 2 -p1
 
 %build
 rm -rf build

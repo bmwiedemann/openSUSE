@@ -1,0 +1,24 @@
+From a279af62e16eb3357a42215aa483c92ae8c63aed Mon Sep 17 00:00:00 2001
+From: Vitezslav Crhonek <vcrhonek@redhat.com>
+Date: Mon, 3 Feb 2025 11:30:15 +0100
+Subject: [PATCH] Fix to build with GCC 15.
+
+Signed-off-by: Vitezslav Crhonek <vcrhonek@redhat.com>
+---
+ src/plugins/swig/src/target_ruby.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/plugins/swig/src/target_ruby.c b/src/plugins/swig/src/target_ruby.c
+index bbce3981..e17bb443 100644
+--- a/src/plugins/swig/src/target_ruby.c
++++ b/src/plugins/swig/src/target_ruby.c
+@@ -49,7 +49,7 @@
+  */
+ 
+ static VALUE
+-load_module()
++load_module(VALUE)
+ {
+   ruby_script(PLUGIN_FILE);
+   return rb_require(PLUGIN_FILE);
+

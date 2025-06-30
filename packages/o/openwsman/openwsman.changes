@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 26 08:09:02 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/Openwsman/openwsman/commit/e619555c3484264a188396bc8b9c77c39ef47bb2
+  + openwsman-gcc15.patch
+
+-------------------------------------------------------------------
 Wed Jan 22 14:54:01 UTC 2025 - Klaus Kämpf <kkaempf@suse.de>
 
 - Update to 2.8.1
