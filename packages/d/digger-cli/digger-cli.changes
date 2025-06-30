@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jun 30 07:57:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.109:
+  * improve the logging logic (#2002)
+
+-------------------------------------------------------------------
+Mon Jun 30 06:57:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.108:
+  * fix block logic, add test (#2000)
+
+-------------------------------------------------------------------
+Mon Jun 30 06:43:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.107:
+  * feat/drift filter block name (#1997)
+  * blocks support block name in generated project (#1998)
+  * support depends_on in terragrunt generatino (#1999)
+  * fix dynamodb lock table creation (#1992)
+  * fix glob pattern for impacted projects (#1989)
+  * ensure info message is logged (#1987)
+  * fix bucket region (#1986)
+  * fix e2e tests (#1985)
+  * fix e2e tests (#1984)
+  * updated atlas versions (#1983)
+  * fix tasks dockerfile version (#1982)
+  * remove filtering loglines added by accident (#1981)
+  * docs: typo fix
+
+-------------------------------------------------------------------
 Sat Jun 14 08:24:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.106:
