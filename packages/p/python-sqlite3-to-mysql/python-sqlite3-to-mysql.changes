@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 28 12:00:45 UTC 2025 - Enno Gotthold <egotthold@suse.com>
+
+- Support libalternatives for 16.0 and newer
+- Update to 2.4.0
+  * add conversion of SQLite custom BOOL data type to MySQL TINYINT(1)
+  * add --mysql-skip-create-tables and --mysql-skip-transfer-data options
+  * fix default parameter parsing
+  * add MySQL 8.4 and MariaDB 11.4 support
+  * fix conversion of SQLite NUMERIC data type with precision and scale to
+    MySQL DECIMAL with precision and scale
+  * fix --mysql-insert-method
+  * modify the existing check_mysql_json_support and check_mysql_fulltext_support
+    to improve detection of MariaDB versions
+  * fix connecting with empty MySQL password
+
+-------------------------------------------------------------------
 Mon Jan 29 11:42:15 UTC 2024 - pgajdos@suse.com
 
 - python-six is not required
