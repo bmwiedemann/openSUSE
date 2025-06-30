@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 30 05:16:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.13.10:
+  * Merge a config from k3sup plan into a local file i.e.
+    $HOME/.kube/config
+    k3sup plan --merge
+  * Fetch a config from a pre-existing installation - either
+    because you lost the original, are on another machine, or want
+    to merge it into your main KUBECONFIG instead of having a
+    separate file
+    k3sup get-config
+  See the README.md for complete examples
+  * Commits
+    - 5d97659 Fix Makefile for Linux target when run on an Arm64
+      Mac by @alexellis
+    - e515ca4 Add get-config command by @alexellis
+    - 8602af8 Add --merge flag to k3sup plan by @alexellis
+
+-------------------------------------------------------------------
 Wed May 21 11:03:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.13.9:

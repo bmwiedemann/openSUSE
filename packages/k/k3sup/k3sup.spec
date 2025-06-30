@@ -17,7 +17,7 @@
 
 
 Name:           k3sup
-Version:        0.13.9
+Version:        0.13.10
 Release:        0
 Summary:        Bootstrap Kubernetes with k3s over SSH < 1 min
 License:        MIT
