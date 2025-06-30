@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Finance-Quote
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Finance-Quote
 Name:           perl-Finance-Quote
-Version:        1.640.0
+Version:        1.650.0
 Release:        0
-# 1.64 -> normalize -> 1.640.0
-%define cpan_version 1.64
+# 1.65 -> normalize -> 1.650.0
+%define cpan_version 1.65
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
 Summary:        Get stock and mutual fund quotes from various exchanges
@@ -33,6 +33,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Compress::Zlib)
 BuildRequires:  perl(Date::Manip)
+BuildRequires:  perl(Date::Parse)
 BuildRequires:  perl(Date::Range)
 BuildRequires:  perl(Date::Simple)
 BuildRequires:  perl(DateTime)
@@ -44,7 +45,7 @@ BuildRequires:  perl(HTML::TableExtract)
 BuildRequires:  perl(HTML::TokeParser)
 BuildRequires:  perl(HTML::TreeBuilder)
 BuildRequires:  perl(HTML::TreeBuilder::XPath)
-BuildRequires:  perl(HTTP::CookieJar::LWP) >= 0.014
+BuildRequires:  perl(HTTP::CookieJar::LWP) >= 0.14
 BuildRequires:  perl(HTTP::Cookies)
 BuildRequires:  perl(HTTP::Headers)
 BuildRequires:  perl(HTTP::Request)
@@ -56,7 +57,7 @@ BuildRequires:  perl(JSON)
 BuildRequires:  perl(LWP::Protocol::http)
 BuildRequires:  perl(LWP::Protocol::https)
 BuildRequires:  perl(LWP::Simple)
-BuildRequires:  perl(LWP::UserAgent) >= 6.48
+BuildRequires:  perl(LWP::UserAgent) >= 6.480
 BuildRequires:  perl(Module::CPANTS::Analyse)
 BuildRequires:  perl(Module::Load) >= 0.36
 BuildRequires:  perl(Mozilla::CA)
@@ -70,19 +71,19 @@ BuildRequires:  perl(Text::Template)
 BuildRequires:  perl(Time::Piece)
 BuildRequires:  perl(Time::Seconds)
 BuildRequires:  perl(Try::Tiny)
-BuildRequires:  perl(URI::Escape) >= 3.31
+BuildRequires:  perl(URI::Escape) >= 3.310
 BuildRequires:  perl(Web::Scraper)
 BuildRequires:  perl(XML::LibXML)
 BuildRequires:  perl(feature)
 Requires:       perl(Compress::Zlib)
-Requires:       perl(DateTime)
+Requires:       perl(Date::Parse)
 Requires:       perl(DateTime::Format::Strptime)
 Requires:       perl(HTML::Entities)
 Requires:       perl(HTML::TableExtract)
 Requires:       perl(HTML::TokeParser)
 Requires:       perl(HTML::TreeBuilder)
 Requires:       perl(HTML::TreeBuilder::XPath)
-Requires:       perl(HTTP::CookieJar::LWP) >= 0.014
+Requires:       perl(HTTP::CookieJar::LWP) >= 0.14
 Requires:       perl(HTTP::Cookies)
 Requires:       perl(HTTP::Headers)
 Requires:       perl(HTTP::Request)
@@ -94,7 +95,7 @@ Requires:       perl(JSON)
 Requires:       perl(LWP::Protocol::http)
 Requires:       perl(LWP::Protocol::https)
 Requires:       perl(LWP::Simple)
-Requires:       perl(LWP::UserAgent) >= 6.48
+Requires:       perl(LWP::UserAgent) >= 6.480
 Requires:       perl(Module::Load) >= 0.36
 Requires:       perl(Mozilla::CA)
 Requires:       perl(Readonly)
@@ -105,7 +106,7 @@ Requires:       perl(Text::Template)
 Requires:       perl(Time::Piece)
 Requires:       perl(Time::Seconds)
 Requires:       perl(Try::Tiny)
-Requires:       perl(URI::Escape) >= 3.31
+Requires:       perl(URI::Escape) >= 3.310
 Requires:       perl(Web::Scraper)
 Requires:       perl(XML::LibXML)
 Provides:       perl(Finance::Quote) = %{version}
@@ -129,7 +130,6 @@ Provides:       perl(Finance::Quote::CurrencyRates::FinanceAPI) = %{version}
 Provides:       perl(Finance::Quote::CurrencyRates::Fixer) = %{version}
 Provides:       perl(Finance::Quote::CurrencyRates::OpenExchange) = %{version}
 Provides:       perl(Finance::Quote::CurrencyRates::YahooJSON) = %{version}
-Provides:       perl(Finance::Quote::DWS) = %{version}
 Provides:       perl(Finance::Quote::Deka) = %{version}
 Provides:       perl(Finance::Quote::FTfunds) = %{version}
 Provides:       perl(Finance::Quote::FinanceAPI) = %{version}
@@ -141,7 +141,6 @@ Provides:       perl(Finance::Quote::GoogleWeb) = %{version}
 Provides:       perl(Finance::Quote::HU) = %{version}
 Provides:       perl(Finance::Quote::IndiaMutual) = %{version}
 Provides:       perl(Finance::Quote::MarketWatch) = %{version}
-Provides:       perl(Finance::Quote::MorningstarAU) = %{version}
 Provides:       perl(Finance::Quote::MorningstarCH) = %{version}
 Provides:       perl(Finance::Quote::MorningstarJP) = %{version}
 Provides:       perl(Finance::Quote::MorningstarUK) = %{version}
@@ -186,7 +185,7 @@ The first part of the hash (eg, "CML") is referred to as the stock. The
 second part (in this case, "price") is referred to as the label.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

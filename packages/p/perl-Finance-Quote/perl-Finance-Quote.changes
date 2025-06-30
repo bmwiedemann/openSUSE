@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun May 25 05:32:59 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.650.0 (1.65)
+   see /usr/share/doc/packages/perl-Finance-Quote/Changes
+
+  1.65      2025-04-26 18:17:38-07:00 America/Los_Angeles
+  	* Added EXCHANGE feature to Sinvestor.pm and some fixes - PR #481
+  	* Added EXCHANGE feature to OnVista.pm - PR #480
+  	* Added EXCHANGE feature to Consorsbank.pm and some fixes - PR #479
+  	* Enabled usage count in Quote.pm. Removed DWS.pm. Improved check that divident is a number in YahooJSON.pm by adding regex anchors.
+  	* Added ssl_opts to user agent in Union.pm to account for bad certificate chain - Issue #482
+  	* Added ETFs search, more labels and EXCHANGE feature to Comdirect.pm - PR #478
+  	* GoogleWeb - Add support for Hong Kong Exchange - PR #476
+  	* YahooJSON - Adjust other currency fields when data is returned in GBp, ZAc, or ILA.
+  	* Added label wkn, ìsin, close, ask, bid, p_change, time to OnVista.pm
+  	* Modified OnVista.pm to enable search by ISIN and WKN and search for ETFs
+  	* Added methodinfo hash to Tradegate.pm - PR #465
+  	* Added label isin, open, ask, bid, time to Tradegate.pm - PR #465
+  	* Fixed Tradegate.pm - Search for ETFs - PR #465
+  	* Removed MorningstarAU - Issue #405
+  	* Fixed malformed character in YahooWeb.pm - Issue #468
+  	* Changed useragent in YahooJSON.pm - Issue #467
+  	* Added methodinfo hash to AEX.pm - PR #466
+  	* Added label exchange, close, time to AEX.pm - PR #466
+  	* Fixed XETRA.pm - Issue #460
+  	* Added methodinfo hash to Fool.pm
+  	* Fixed MorningstarJP.pm - Issue #443 - PR #451
+
+-------------------------------------------------------------------
 Thu Dec 12 16:21:17 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.640.0 (1.64)
