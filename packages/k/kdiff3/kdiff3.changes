@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 20 06:38:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.12.3
+  * Fix installation bug
+  * Fix crash on directory compare on Windows 11
+
+-------------------------------------------------------------------
 Mon Mar 24 21:44:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.12.1

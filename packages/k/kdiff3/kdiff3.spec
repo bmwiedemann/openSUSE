@@ -1,7 +1,7 @@
 #
 # spec file for package kdiff3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kdiff3
-Version:        1.12.2
+Version:        1.12.3
 Release:        0
 Summary:        Code Comparison Utility
 License:        GPL-2.0-or-later
