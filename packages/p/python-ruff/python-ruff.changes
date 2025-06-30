@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat Jun 28 16:22:10 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.12.1
+ * Preview features
+   * [flake8-errmsg] Extend EM101 to support byte strings 
+   * [flake8-use-pathlib] Add autofix for PTH202 
+   * [pygrep-hooks] Add AsyncMock methods to invalid-mock-access (PGH005) 
+   * [pylint] Ignore __init__.py files in (PLC0414) 
+   * [ruff] Trigger RUF037 for empty string and byte strings 
+   * [formatter] Fix missing blank lines before decorated classes in .pyi files 
+ * Bug fixes
+   * Avoid generating diagnostics with per-file ignores 
+   * Handle parenthesized arguments in remove_argument 
+   * [flake8-logging] Avoid false positive for exc_info=True outside logger.exception (LOG014) 
+   * [flake8-pytest-style] Enforce pytest import for decorators 
+   * [flake8-pytest-style] Mark autofix for PT001 and PT023 as unsafe if there's comments in the decorator 
+   * [flake8-pytest-style] PT001/PT023 fix makes syntax error on parenthesized decorator 
+   * [flake8-raise] Make fix unsafe if it deletes comments (RSE102) 
+   * [flake8-simplify] Fix SIM911 autofix creating a syntax error 
+   * [flake8-simplify] Fix false negatives for shadowed bindings (SIM910, SIM911) 
+   * [flake8-simplify] Preserve original behavior for except () and bare except (SIM105) 
+   * [flake8-pyi] Fix PYI041's fix causing TypeError with None | None | ... 
+   * [perflint] Fix PERF101 autofix creating a syntax error and mark autofix as unsafe if there are comments in the list call expr 
+   * [perflint] Fix false negative in PERF401 
+   * [pylint] Avoid flattening nested min/max when outer call has single argument (PLW3301) 
+   * [pylint] Fix PLC2801 autofix creating a syntax error 
+   * [pylint] Mark PLE0241 autofix as unsafe if there's comments in the base classes 
+   * [pylint] Suppress PLE2510/PLE2512/PLE2513/PLE2514/PLE2515 autofix if the text contains an odd number of backslashes 
+   * [refurb] Detect more exotic float literals in FURB164 
+   * [refurb] Fix FURB163 autofix creating a syntax error for yield expressions 
+   * [refurb] Mark FURB129 autofix as unsafe if there's comments in the readlines call 
+   * [ruff] Fix false positives and negatives in RUF010 
+   * Fix casing of analyze.direction variant names 
+ * Rule changes
+   * Fix f-string interpolation escaping in generated fixes 
+   * [flake8-return] Mark RET501 fix unsafe if comments are inside 
+   * [flake8-async] Fix detection for large integer sleep durations in ASYNC116 rule 
+   * [flake8-async] Mark autofix for ASYNC115 as unsafe if the call expression contains comments 
+   * [flake8-bugbear] Mark autofix for B004 as unsafe if the hasattr call expr contains comments 
+   * [flake8-comprehension] Mark autofix for C420 as unsafe if there's comments inside the dict comprehension 
+   * [flake8-comprehensions] Handle template strings for comprehension fixes 
+   * [flake8-future-annotations] Add autofix (FA100) 
+   * [pyflakes] Mark F504/F522/F523 autofix as unsafe if there's a call with side effect 
+   * [pylint] Allow fix with comments and document performance implications (PLW3301) 
+   * [pylint] Detect more exotic NaN literals in PLW0177 
+   * [pylint] Fix PLC1802 autofix creating a syntax error and mark autofix as unsafe if there's comments in the len call 
+   * [pyupgrade] Extend version detection to include sys.version_info.major (UP036) 
+   * [ruff] Add lint rule RUF064 for calling chmod with non-octal integers 
+   * [ruff] Added cls.__dict__.get('__annotations__') check (RUF063) 
+   * [ruff] Frozen dataclass default should be valid (RUF009) 
+ * Server
+   * Consider virtual path for various server actions 
+ * Documentation
+   * Add fix safety section
+   * Use updated pre-commit id 
+   * [perflint] Small docs improvement to PERF401 
+   * [pyupgrade]: Use super(), not __super__ in error messages (UP008) 
+   * [flake8-pie] Small docs fix to PIE794 
+   * [flake8-pyi] Correct collections-named-tuple example to use PascalCase assignment 
+   * [flake8-pie] Add note on type checking benefits to unnecessary-dict-kwargs (PIE804) 
+   * [pycodestyle] Clarify PEP 8 relationship to whitespace-around-operator rules 
+ * Other changes
+   * Disallow newlines in format specifiers of single quoted f- or t-strings 
+   * [flake8-logging] Add fix safety section to LOG002 
+   * [pyupgrade] Add fix safety section to UP010 
+
+-------------------------------------------------------------------
 Tue Jun 17 22:36:39 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.12.0 

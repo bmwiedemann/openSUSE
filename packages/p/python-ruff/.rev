@@ -2184,4 +2184,41 @@
    * non-pep604-annotation-optional (UP045)</comment>
     <requestid>1286470</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>b3f2012d3191054cb7b69a30001f6804</srcmd5>
+    <version>0.12.1</version>
+    <time>1751281448</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.12.1
+ * Preview features
+   * [flake8-errmsg] Extend EM101 to support byte strings 
+   * [flake8-use-pathlib] Add autofix for PTH202 
+   * [pygrep-hooks] Add AsyncMock methods to invalid-mock-access (PGH005) 
+   * [pylint] Ignore __init__.py files in (PLC0414) 
+   * [ruff] Trigger RUF037 for empty string and byte strings 
+   * [formatter] Fix missing blank lines before decorated classes in .pyi files 
+ * Bug fixes
+   * Avoid generating diagnostics with per-file ignores 
+   * Handle parenthesized arguments in remove_argument 
+   * [flake8-logging] Avoid false positive for exc_info=True outside logger.exception (LOG014) 
+   * [flake8-pytest-style] Enforce pytest import for decorators 
+   * [flake8-pytest-style] Mark autofix for PT001 and PT023 as unsafe if there's comments in the decorator 
+   * [flake8-pytest-style] PT001/PT023 fix makes syntax error on parenthesized decorator 
+   * [flake8-raise] Make fix unsafe if it deletes comments (RSE102) 
+   * [flake8-simplify] Fix SIM911 autofix creating a syntax error 
+   * [flake8-simplify] Fix false negatives for shadowed bindings (SIM910, SIM911) 
+   * [flake8-simplify] Preserve original behavior for except () and bare except (SIM105) 
+   * [flake8-pyi] Fix PYI041's fix causing TypeError with None | None | ... 
+   * [perflint] Fix PERF101 autofix creating a syntax error and mark autofix as unsafe if there are comments in the list call expr 
+   * [perflint] Fix false negative in PERF401 
+   * [pylint] Avoid flattening nested min/max when outer call has single argument (PLW3301) 
+   * [pylint] Fix PLC2801 autofix creating a syntax error 
+   * [pylint] Mark PLE0241 autofix as unsafe if there's comments in the base classes 
+   * [pylint] Suppress PLE2510/PLE2512/PLE2513/PLE2514/PLE2515 autofix if the text contains an odd number of backslashes 
+   * [refurb] Detect more exotic float literals in FURB164 
+   * [refurb] Fix FURB163 autofix creating a syntax error for yield expressions 
+   * [refurb] Mark FURB129 autofix as unsafe if there's comments in the readlines call 
+   * [ruff] Fix false positives and negatives in RUF010</comment>
+    <requestid>1288970</requestid>
+  </revision>
 </revisionlist>
