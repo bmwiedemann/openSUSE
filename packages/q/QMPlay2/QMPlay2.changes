@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 28 15:05:27 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 25.06.27:
+  * Wayland: fix missing AudioCD and Tone generator context menus,
+  * always close panels with small delay when mouse leaves,
+  * fix window positioning on multi-monitor configuration,
+  * Wayland: fix video freeze on some compositors,
+  * remove character limit for yt-dlp parameters,
+  * ALSA: add SND_PCM_FORMAT_S24_3LE format,
+  * display size grip on Windows.
+
+-------------------------------------------------------------------
 Thu Jun 12 01:25:33 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 25.06.11:
