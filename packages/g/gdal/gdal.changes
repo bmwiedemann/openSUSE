@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Jun 28 14:07:32 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
+
+- Update gdal to version 3.11.0
+  * Add muparser as a new dependency, used by GDAL for C++ VRT expressions
+  * Disable frmts/libertiff by removing it from frmts/CMakeLists.txt, since
+    it has a hard dependency on the bundled tiff libraries that we remove
+  * Add gdal-backport-commit-b11cad7.patch to backport the fix for gdal
+    issue #4742 (upstream commit b11cad7)
+  * Full Changelog at github.com/OSGeo/gdal/releases/tag/v3.11.0
+  * Add GDAL Streamed Algorithm Format (GDALG) driver, enabling streamed vector
+    dataset replay of compatible gdal command lines
+  * RFC 100 - Support float16
+  * RFC 102 - Embed resource files into libgdal
+  * RFC 103 - Add OGR_SCHEMA option to select OGR drivers
+  * RFC 104 - Add new gdal front-end cli
+  * RFC 105 - Add safe path manipulation functions
+  * RFC 106 - Metadata for driver update capabilties
+  * RFC 107 - Add OGRLayer::I{GetExtent,SetSpatialFilter}() functions
+  * RFC 108 - Remove various raster and vector drivers, make other drivers read-only
+    See github.com/OSGeo/gdal/releases/tag/v3.11.0 for the removed/changed drivers
+  * Add (read-only) Arrow Database Connectivity (OGR ADBC) driver
+  * Add libertiff driver (NOTE: Disabled, see second entry)
+  * Add (read-only) Radarsat Constellation Mission raster driver
+  * Add (read-only) Artificial intelligence powered vector driver
+  * Add function evaluate arbitrary VRT Pixel Function expressions
+  * Improve ZARR driver, adding Kerchunk JHSON and Parquet reference stores
+  * Set GPKG default version to 1.4 on creation
+  * Remove OpenCL warper
+  * OGR Memory driver has been deprecated in favour of and aliased to the MEM driver
+  * Various other fixes
+
+-------------------------------------------------------------------
 Wed May 28 10:27:23 UTC 2025 - Max Lin <mlin@suse.com>
 
 - Fix wrong-script-interpreter rpmlint error

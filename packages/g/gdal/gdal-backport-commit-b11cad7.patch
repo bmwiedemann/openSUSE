@@ -1,0 +1,13 @@
+b11cad7851 E 2025-06-20 15:15:53 +0200 Even Rouault <even.rouault@spatialys.com> cpl_vsi_virtual.h: add missing include
+diff --git a/port/cpl_vsi_virtual.h b/port/cpl_vsi_virtual.h
+index a87cef58c4..eaf6e67bfb 100644
+--- a/port/cpl_vsi_virtual.h
++++ b/port/cpl_vsi_virtual.h
+@@ -23,6 +23,7 @@
+ #include "cpl_string.h"
+ #include "cpl_multiproc.h"
+ 
++#include <cstdint>
+ #include <map>
+ #include <memory>
+ #include <vector>

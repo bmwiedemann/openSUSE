@@ -17,7 +17,7 @@
 #
 
 
-%define soversion 36
+%define soversion 37
 %define sourcename gdal
 # Uppercase GDAL is the canonical name for this package in Python
 %define pypi_package_name GDAL
@@ -43,7 +43,7 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 
 Name:           gdal
-Version:        3.10.3
+Version:        3.11.0
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        BSD-3-Clause AND MIT AND SUSE-Public-Domain
@@ -51,6 +51,7 @@ URL:            https://www.gdal.org/
 Source0:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz
 Source1:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz.md5
 Source2:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}autotest-%{version}.tar.gz
+Patch0:         gdal-backport-commit-b11cad7.patch
 BuildRequires:  KEALib-devel
 BuildRequires:  bison
 BuildRequires:  blas-devel
@@ -69,6 +70,7 @@ BuildRequires:  libdeflate-devel
 BuildRequires:  libtool
 BuildRequires:  libzstd-devel
 BuildRequires:  mysql-devel
+BuildRequires:  muparser-devel
 # This one is needed for Leap :-(
 BuildRequires:  opencl-headers
 BuildRequires:  %{mypython}-base
@@ -237,6 +239,9 @@ find swig/python/gdal-utils/osgeo_utils -iname '*.py' -ls -exec sed -i '/^#!\/us
 # Fix wrong /usr/bin/env python3
 find . -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env python3,#!%{__mypython}," {} \;
 
+# Remove libertiff
+sed -e 's|gdal_optional_format(libertiff "GeoTIFF support through libertiff library")||1' -i frmts/CMakeLists.txt
+
 %build
 %{?gccver:export CC=gcc-%{gccver}}
 %{?gccver:export CXX=g++-%{gccver}}
@@ -363,6 +368,7 @@ popd
 %files
 %license LICENSE.TXT
 %doc NEWS.md PROVENANCE.TXT
+%{_bindir}/gdal
 %{_bindir}/gdal_contour
 %{_bindir}/gdal_create
 %{_bindir}/gdal_footprint
@@ -418,6 +424,74 @@ popd
 %{_mandir}/man1/ogrlineref.1%{?ext_man}
 %{_mandir}/man1/ogrtindex.1%{?ext_man}
 %{_mandir}/man1/sozip.1%{?ext_man}
+%{_mandir}/man1/gdal-convert.1%{?ext_man}
+%{_mandir}/man1/gdal-info.1%{?ext_man}
+%{_mandir}/man1/gdal-mdim-convert.1%{?ext_man}
+%{_mandir}/man1/gdal-mdim-info.1%{?ext_man}
+%{_mandir}/man1/gdal-mdim.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-calc.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-clean-collar.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-clip.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-color-map.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-contour.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-convert.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-create.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-edit.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-fill-nodata.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-footprint.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-hillshade.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-index.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-info.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-mosaic.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-overview-add.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-overview-delete.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-pipeline.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-pixel-info.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-polygonize.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-reclassify.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-reproject.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-resize.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-roughness.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-scale.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-select.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-set-type.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-sieve.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-slope.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-stack.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-tile.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-tpi.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-tri.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-unscale.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-viewshed.1%{?ext_man}
+%{_mandir}/man1/gdal-raster.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-clip.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-convert.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-edit.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-filter.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-geom-buffer.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-geom-explode-collections.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-geom-make-valid.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-geom-segmentize.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-geom-set-type.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-geom-simplify.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-geom-swap-xy.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-geom.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-grid.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-info.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-pipeline.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-rasterize.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-select.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-sql.1%{?ext_man}
+%{_mandir}/man1/gdal-vector.1%{?ext_man}
+%{_mandir}/man1/gdal-vector_concat.1%{?ext_man}
+%{_mandir}/man1/gdal-vsi-copy.1%{?ext_man}
+%{_mandir}/man1/gdal-vsi-delete.1%{?ext_man}
+%{_mandir}/man1/gdal-vsi-list.1%{?ext_man}
+%{_mandir}/man1/gdal-vsi-move.1%{?ext_man}
+%{_mandir}/man1/gdal-vsi-sozip.1%{?ext_man}
+%{_mandir}/man1/gdal-vsi-sync.1%{?ext_man}
+%{_mandir}/man1/gdal-vsi.1%{?ext_man}
+%{_mandir}/man1/gdal.1%{?ext_man}
 # 20240706 with 3.9.x release we have all binaries in gdal
 # and python311-GDAL contains the *.py equivalent.
 %{_bindir}/gdalattachpct
@@ -469,6 +543,8 @@ popd
 %{_libdir}/pkgconfig/gdal.pc
 %dir %{_includedir}/gdal
 %{_includedir}/gdal/*.h
+%{_includedir}/gdal/gdal_minmax_element.hpp
+%{_includedir}/gdal/gdal_priv_templates.hpp
 %{_mandir}/man1/gdal-config.1%{?ext_man}
 
 %files -n %{mypython}-%{pypi_package_name}
