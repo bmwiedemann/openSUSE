@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Jun 27 20:37:51 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to 1.12.0:
+  - Added:
+    * Add support for fallback icons in dmenu mode using comma-separated
+      values in the icon metadata ([#504][504]).
+    * `--namespace` command line option ([#512][512]).
+    * Gamma-correct blending. Disabled by default. Enable with the new
+      `--gamma-correct` command line option, or by setting
+      `gamma-correct-blending=yes` in `fuzzel.ini`. Note that
+      gamma-correct blending **is not supported in cairo enabled builds of
+      fuzzel**, due to the lack of 16-bit image buffers in cairo
+      ([#546][546]).
+    * `scaling-filter` option (and the corresponding `--scaling-filter`
+      command line option). This option defines which scaling filter
+      fuzzel uses when down scaling PNGs ([#553][553]).
+    * `--minimal-lines` command line and config option, causing fuzzel to
+      adjust the number of displayed lines to the minimum of `--lines` and
+      the number of input lines ([#144][144])
+    * Touchscreen support ([#594][594])
+    * `{cmd}` placeholder support in the `terminal` option. When `{cmd}` is
+      present in the terminal command string, it will be replaced with the
+      application command instead of appending the command at the end. Useful
+      for setting the title or app_id. ([#600][600])
+  - Changed:
+    * Scrolling speed is now line-by-line instead of page-by-page ([#586][586])
+    * Number of render workers is now automatically limited to the number
+      of displayed entries.
+    * wayland-protocols >= 1.41 is now required.
+    * pixman >= 0.46.0 is now required.
+    * fcft >= 3.3.1 is now required.
+    * In application mode (not dmenu), fuzzel now ignores icon theme
+      directories whose `Context` field is not `Application` or
+      `Apps`. This is for performance reasons ([#553][553])
+    * Default down scaling filter changed from `lanczos3` to `box`
+      ([#553][553]).
+    * Use the width of 'o' instead of 'W' when calculating the window
+      width ([#560][560]).
+    * Default icon theme from `hicolor` to `default`.
+    * Error out (with an appropriate error message) if the command line we
+      attempt to execute has non-specification-compliant quoting.
+  - Fixed:
+    * Crash when `--match-workers >= 100` ([#507][507]).
+    * Keyboard modifiers not being reset on keyboard leave events.
+    * `--with-nth`: non-selected columns still being matched.
+    * Match highlighting being offset when `--with-nth` is used
+      ([#551][551]).
+    * Too wide PNGs bleeding into the text ([#313][313]).
+    * Lookup of icon themes in `~/.icons` and `/usr/share/pixmans`.
+    * Missing shell completions for `--launch-prefix`.
+    * Missing shell completions for `--prompt-only`.
+    * Empty window being displayed despite `--no-run-if-empty` being used.
+    * Fix border width and scaling for mixed-DPI environments ([#595][595])
+
+
+-------------------------------------------------------------------
 Tue Sep 24 10:53:11 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Completion packages require main package
