@@ -1,4 +1,345 @@
 -------------------------------------------------------------------
+Mon Jun 30 05:21:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.1:
+  * Bump to v2.3.1 - Drop Illumos support per policy in #711 (#1503)
+  * Bump sdk to v2.3.1, add changelog to v2.3.0 (#1501)
+  * Bump API to v2.3.1 in core, sdk (#1500)
+  * Minor improvements to CEL for PKI  (#1390) (#1499)
+  * Allow disabling unauthenticated rekey (#1498)
+  * Add changelog entry for sdk/framework vulnerability (#1497)
+  * Fix PostgreSQL table creation on replica (#1478) (#1494)
+  * Namespaces UI support (#1406) (#1484)
+  * Fix identity store resolution (#1432) (#1491)
+  * Go dependency bumps to fix vulnerabilities in dependencies (#1492)
+  * Backport go-viper/mapstructure/v2 move (#1488)
+  * Point goreleaser and container image contacts to new OpenSSF domain (#1415) (#1489)
+  * Fix changelog entries (#1440) (#1487)
+  * HSM: Add arm64 builds & Alpine containers (#1427) (#1486)
+  * Fix flaky PostgreSQL backend connection test (#1368) (#1485)
+  * Fix detailed metadata on list results (#1388) (#1483)
+  * CEL for Certificate Issuance Policy (#794) (#1482)
+  * Deprecation notice for undocumented duplicate PKCS#11 seal options (#1385) (#1481)
+  * Bump github.com/ebitengine/purego to v0.8.4 (#1373)
+  * Changelog for v2.3.0-beta20250528 (#1371)
+  * Update to go-kms-wrapping/v2.4.0 (#1370)
+  * Track lock in namespace entry directly (#1367)
+  * Add check and set for policies (#1162)
+  * Namespaces locking/unlocking implementation (#1347)
+  * Add policy and path expiration (#1142)
+  * Add NeoNephos to supporters section of homepage (#1363)
+  * Support clearing views via pagination, with transaction (#1102)
+  * Describe how user access and roles are managed to cover OSPS-AC-02.01 (#1359)
+  * Use per-namespace storage layouts for identity (#1360)
+  * Update contributors and maintainers information (#1305)
+  * add hsm docker distribution to downloads page (#1353)
+  * MFA Login namespace adjustments (#1348)
+  * Describe usage of artifacts stores to cover OSPS-QA-05 (#1355)
+  * Describe how dependencies are tracked as part of OSPS-QA-02.01 (#1354)
+  * Detailed metadata in policy endpoint (#1224)
+  * Display seal configuration info keys in logs (#1346)
+  * Renew `goodcertbadroot.pem` (#1351)
+  * discarded ctx cancel functions
+  * struct literal uses unkeyed fields
+  * malformed struct field tag
+  * the ctxCancel function is not used on all paths (possible context leak)
+  * unreachable code
+  * Release note on PKCS#11 library finalization (see go-kms-wrapping)
+  * Better document configuration directories
+  * Add changelog entry
+  * Fix description of OU field in UI
+  * Namespaces: Test flake, deadlock, race condition cleanup (#1311)
+  * Add changelog to namespaces (#1321)
+  * Fix `/sys/remount` across namespaces (#1259)
+  * Hierarchical namespace storage (#1317)
+  * Move namespace resolution from http to core (#1279)
+  * Delete namespace-level quota on namespace deletion (#1296)
+  * fairshare job manager/worker: stop synchronously (#1291)
+  * Namespace-aware password policy storage & lookup (#1282)
+  * Add namespace-aware rate-limit quota (#1161)
+  * fix(identity): ensure identity store is set only for root namespace (#1271)
+  * Fix preSeal ordering w.r.t NamespaceStore (#1269)
+  * Implement Cascading Delete for Namespaces and Associated Resources (#1206)
+  * move namespace uuid into namespace struct (#1167)
+  * Forbid illegal namespace characters (#1203)
+  * Namespaces Regression: Restricted APIs in `sys/raw` (#1163)
+  * Tests for namespace  route resolution - issue #1020 (#1201)
+  * Fix namespace, mount name exclusion logic (#1202)
+  * Namespace aware identity store #1110 (#1159)
+  * Namespace-aware Expiration Manager #1125 (#1158)
+  * Namespace-aware token store #1068 (#1123)
+  * Implement namespace name restrictions #1023 (#1143)
+  * feat: add `bao namespace scan` (#1133)
+  * Refactor namespace store (#1113)
+  * implement namespace aware plugin storage (#1157)
+  * Add support for child namespaces (#1051)
+  * Implement namespace aware Cubbyhole #1067 (#1112)
+  * Polish namespaces API (#1041)
+  * Add PATCH support to namespaces API (#1027)
+  * Namespace aware policy store #1069 (#1106)
+  * Create required mounts when setting up namespace (#1047)
+  * Correctly handle request routing (#1028)
+  * Polish NamespaceStore implementation (#1026)
+  * Add NamespaceStore to the namespace branch (#896)
+  * Fix various minor docs formatting issues (#1344)
+  * Add JSON configuration example to website (#1338)
+  * Bump dependencies (#1318)
+  * Bump ubi9-minimal from 9.5 to 9.6 (#1329)
+  * Allow building with HSM support on MacOS (#1330)
+  * Bump to Go 1.24.3 (#1324)
+  * Prevent information disclosure on invalid request (#1323)
+  * PostgreSQL - Remove redundant PermitPool (#1299)
+  * Fix deadlock on legacy root key path migration (#1234)
+  * Support retrying PostgreSQL connection (#1280)
+  * Allow lazy discovery of OIDC connection information (#1306)
+  * Bump actions/setup-go from 5.4.0 to 5.5.0 in /.github/actions/set-up-go (#1309)
+  * Fix marshaling and setting nil request body (#1315)
+  * Add JWT CEL Role RFC (#1312)
+  * Add OSPS to policies (#1313)
+  * Describe coverage of OSPS requirement OSPS-QA-01.02 (#1307)
+  * Fix incorrect conversion between integer types (on <64 bit systems) (#1310)
+  * Bump go.opentelemetry.io/otel/trace from 1.34.0 to 1.35.0 (#1294)
+  * CEL auth program evaluation during JWT login (#869)
+  * Add CEL best practices RFC (#1267)
+  * Affirm Level 1: OSPS-LE-02.01 (#1287)
+  * Affirm Level 1: OSPS-VM-02.01 has been met (#1273)
+  * Allow empty PostgreSQL connection URLs (#1297)
+  * chore(tools): rm codechecker bin (#1292)
+  * Affirm Level 1: OSPS-DO-01.01 (#1286)
+  * Affirm Level 1: OSPS-GV-03.01 (#1285)
+  * Document coverage of OSPS requirement OSPS-QA-01.01 (#1289)
+  * Minor cleanup of the rekey webpage (#1288)
+  * Bump actions/download-artifact from 4.2.1 to 4.3.0 (#1275)
+  * Bump github.com/go-sql-driver/mysql from 1.8.1 to 1.9.2 (#1277)
+  * Bump github.com/openbao/go-kms-wrapping/wrappers/pkcs11/v2 (#1276)
+  * chore: remove artifacts in `dependencies/` (#1272)
+  * Fix make goreleaser-check after split (#1257)
+  * Add release notes for v2.2.1 to website (#1256)
+  * Update critical dependencies (#1251)
+  * Return quoted string when -output-curl-string flag is passed #1038 (#1238)
+  * Bump ember-test-selectors from 6.0.0 to 7.1.0 in /ui (#1239)
+  * match ssh test to updated behaviour (#1243)
+  * (secrets/pki): add not_before_bound and not_after_bound (#1172)
+  * Bump github.com/golangci/revgrep (#1240)
+  * Bump k8s.io/api from 0.32.1 to 0.32.3 (#1241)
+  * Bump actions/setup-node from 4.3.0 to 4.4.0 (#1242)
+  * Do not encode empty subproblems in ACME (#1236)
+  * Fix name of org-level maintainers team (#1237)
+  * fix(ssh): `generate_signing_key=false` not honored on issuer submission endpoints (#1235)
+  * Bump actions/upload-artifact from 4.6.1 to 4.6.2 (#1148)
+  * Fix test-ui (#1211)
+  * Upgrade ESLint and prettier (#1218)
+  * Bump highlight.js from 10.7.2 to 11.11.1 in /ui (#1035)
+  * Bump honnef.co/go/tools from 0.4.3 to 0.6.1 (#1217)
+  * Bump mvdan.cc/gofumpt from 0.7.0 to 0.8.0 (#1216)
+  * Fix vault/diagnose test failure (#1221)
+  * Add h1 for mfa-validate api-doc (#1230)
+  * Clarify that region is required (#1220)
+  * doc(telemetry.mdx): add metrics_prefix (#1214)
+  * Do not set LimitNOFILE (#1179)
+  * update SSH‑CA configure acceptance test for multi‑issuer flow (#1210)
+  * build: update Go version and dependencies (#1209)
+  * Another attempt to fix TestOIDC_PeriodicFunc (#1178)
+  * Transactions for ssh-related functions (#989)
+  * Bump github.com/ory/dockertest/v3 from 3.10.0 to 3.12.0 (#1197)
+  * Add guide for listing detailed endpoints (#1190)
+  * Bump typescript from 5.8.2 to 5.8.3 in /website (#1195)
+  * Bump golang.org/x/text from 0.23.0 to 0.24.0 (#1196)
+  * Bump actions/go-dependency-submission from 2.0.1 to 2.0.3 (#1192)
+  * Bump actions/setup-go from 5.3.0 to 5.4.0 in /.github/actions/set-up-go (#1193)
+  * fix mirror workflow (#1191)
+  * Add Dave to DevWG voting members (#1187)
+  * Add support for automatic unsealing of OpenBao using a KMIP protocol (#1144)
+  * Add action to mirror repo to Codeberg (#1186)
+  * Bump actions/cache from 4.2.2 to 4.2.3 (#1149)
+  * Bump react-dom from 19.0.0 to 19.1.0 in /website (#1174)
+  * Bump gotest.tools/gotestsum from 1.10.0 to 1.12.1 (#1118)
+  * Bump actions/download-artifact from 4.1.9 to 4.2.1 (#1150)
+  * Bump actions/setup-node from 4.2.0 to 4.3.0 (#1151)
+  * Bump actions/cache from 4.2.2 to 4.2.3 in /.github/actions/set-up-go (#1152)
+  * Bump github.com/hashicorp/go-secure-stdlib/password from 0.1.1 to 0.1.4 (#1153)
+  * Add link to dev-wg project in CONTRIBUTING.md (#1180)
+  * Add new moderators: voigt, Gabrielopesantos, karras (#1171)
+  * docs: Add SSH CA Multi-issuer RFC to website docs (#1146)
+  * Support Multiple Issuers for SSH Secret Engine Mounts (#880)
+  * config.go: fix config file filename comment (de-vault) (#1141)
+  * Validate policies can contain comments, be JSON (#1134)
+  * PKI test failure (#1139)
+  * Remove beta warning (#1138)
+  * Add hex to templating for ACL policies (#1081)
+  * Add webpage for OSPS baseline (#1124)
+  * fix(docs/pkcs11): remove documentation regarding key generation (#1135)
+  * Allow periodicFunc to execute "now" (#1129)
+  * docs: Correct config file location in token helper docs (#1132)
+  * Add EdgeX Selects OpenBao Blog (#1127)
+  * Add GitLab to supporters section of homepage (#1128)
+  * Address timing issue caused by race-detection slowdown (#1100)
+  * Fix vulns (#1126)
+  * Fix ACME TLS documentation (#1122)
+  * Mitigate security risks found using Zizmor (#924)
+  * add rfc#432 to docs rfc index (#1116)
+  * Bump ember-cli-deprecation-workflow from 2.1.0 to 3.2.0 in /ui (#1104)
+  * website: Fix typos in website content (#1108)
+  * Officially add TSC membership process (#1101)
+  * Bump browser-actions/setup-chrome from 1.7.2 to 1.7.3 (#1089)
+  * Bump actions/setup-node from 4.1.0 to 4.2.0 (#1092)
+  * Bump webpack from 5.97.1 to 5.98.0 in /ui (#1094)
+  * Use consistent path for root key (#1006)
+  * Bump github.com/shirou/gopsutil/v4 from 4.24.12 to 4.25.2 (#1095)
+  * Bump actions/download-artifact from 4.1.8 to 4.1.9
+  * Bump actions/upload-artifact from 4.6.0 to 4.6.1
+  * Bump actions/setup-go from 4.0.1 to 5.3.0 in /.github/actions/set-up-go
+  * Add wildcard so dependabot traverses child directories (#1088)
+  * Add v2.2.0 changelog to release notes (#1085)
+  * Nit: Fix link to create/update role in api/pki docs (#1071)
+  * Bump github.com/hashicorp/cap from 0.8.0 to 0.9.0 (#1058)
+  * Bump actions/cache to v4, use pinning (#1064)
+  * Bump prettier-eslint-cli from 7.1.0 to 8.0.1 in /ui (#1059)
+  * Bump typescript from 5.7.3 to 5.8.2 in /website (#1057)
+  * Simplify Goreleaser templates (#1039)
+  * userpass: fix the wrong error return value (#1055)
+  * Add blog post for horizontal scalability (#1049)
+  * fix(ui): repairs missing checkmarks, in checkboxes, due to invalid usage of sass-svg-uri (#1042)
+  * Bump github.com/hashicorp/cap from 0.3.0 to 0.8.0 (#1036)
+  * Bump swagger-ui-dist from 5.18.2 to 5.19.0 in /ui (#1034)
+  * Bump d3-transition from 1.3.2 to 3.0.1 in /ui (#1032)
+  * fix prerelease image tagging (#1030)
+  * Revive Valkey plugin (#1019)
+  * Add API and CLI commands to promote/demote nodes in the Raft cluster (#996)
+  * cleanup leftover DR Token options (#1018)
+  * Add transaction wrappers to database endpoints (#995)
+  * Add transactions to AppRole funcs (#992)
+  * Bump github.com/natefinch/atomic (#1012)
+  * Update libraries.mdx (#1015)
+  * Bump @types/rsvp from 4.0.4 to 4.0.9 in /ui (#1011)
+  * Bump qunit-dom from 2.0.0 to 3.4.0 in /ui (#1010)
+  * Bump @types/ember-resolver from 5.0.13 to 9.0.2 in /ui (#1009)
+  * Bump ember-cli-htmlbars from 6.0.1 to 6.3.0 in /ui (#1008)
+  * identity: return metadata when listing entity-aliases (#1013)
+  * Minor docs improvements and chore (#1005)
+
+-------------------------------------------------------------------
+Mon Jun 30 04:54:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.1:
+  OpenBao v2.3.0 is unreleased due to a bug in Illumos builds.
+  * SECURITY
+    - core/sys: Add listener parameter
+      (disable_unauthed_rekey_endpoints, default: false) to
+      optionally disable unauthenticated rekey operations (to
+      sys/rekey/* and sys/rekey-recovery-key/*) for a listener.
+      This will be set to true in a future release; see the
+      deprecation notice for more information. Auditing is now
+      enabled for these endpoints as well. CVE-2025-52894. Upstream
+      HCSEC-2025-11 / CVE-2025-4656.
+    - sdk/framework: prevent additional information disclosure on
+      invalid request. CVE-2025-52893. [GH-1495]
+  * CHANGES
+    - packaging/systemd: Do not set LimitNOFILE, allowing Go to
+      automatically manage this value on behalf of the server. See
+      also golang/go#46279. [GH-1179]
+    - storage/postgresql: Support empty connection URLs to use
+      standard component-wise variables [GH-1297]
+    - packaging: Support for Illumos removed due to broken builds
+      [GH-1503]
+  * FEATURES
+    - KMIP Auto-Unseal: Add support for automatic unsealing of
+      OpenBao using a KMIP protocol. [GH-1144]
+    - Namespaces UI Support: Added namespace UI support, including
+      namespace picker and namespace management pages. [GH-1406]
+    - Namespaces: Support for tenant isolation using namespaces,
+      application API compatible with upstream's implementation.
+      - Create, read, update, delete a hierarchical directory of
+        namespaces
+      - Manage isolated per-namespace secrets engines, auth
+        methods, tokens, policies and more
+      - Migrate (remount) secrets engines and auth methods between
+        namespaces
+      - Lock and unlock namespaces
+      - Route requests to namespaces via path
+        (/my-namespace/secrets) or X-Vault-Namespace header (or
+        both!)
+      - CLI support via the bao namespace family of commands and
+        the -namespace flag. [GH-1165]
+    - Add ARM64 HSM builds and Alpine-based HSM container images
+      [GH-1427]
+    - Support Common Expression Language (CEL) in PKI. CEL allows
+      role authors to create flexible, dynamic certificate policies
+      with complex, custom validation support and arbitrary control
+      over the final certificate object. [GH-794]
+    - auth/jwt: Add support for Common Expression Language (CEL)
+      login roles. CEL allows role authors to create flexible,
+      dynamic policies with complex, custom claim validation
+      support and arbitrary templating of logical.Auth data.
+      [GH-869]
+    - ssh: Support multiple certificate issuers in SSH secret
+      engine mounts, enabling safer rotation of SSH CA key material
+      [GH-880]
+  * IMPROVEMENTS
+    - When using auto-unseal via KMS, KMS-specific configuration
+      information (non-sensitive) is now logged at server startup.
+      [GH-1346]
+    - approle: Use transactions for read + write operations
+      [GH-992]
+    - auth/jwt: Support lazy resolution of oidc_discovery_url or
+      jwks_url when skip_jwks_validation=true is specified on
+      auth/jwt/config; OIDC status is now reported on reading the
+      configuration. [GH-1306]
+    - core/identity: add unsafe_cross_namespace_identity to give
+      compatibility with Vault Enterprise's cross-namespace group
+      membership. [GH-1432]
+    - core/policies: Add check-and-set support for modifying
+      policies, allowing for protection against concurrent
+      modifications. [GH-1162]
+    - core/policies: Add endpoint to allow detailed listing of
+      policies [GH-1224]
+    - core/policies: Allow setting expiration on policies and
+      component paths, removing policies or preventing usage of
+      path rules after expiration. [GH-1142]
+    - core: Support pagination and transactions in ClearView,
+      CollectKeys, and ScanView, improving secret disable memory
+      consumption and request consistency. [GH-1102]
+    - database/valkey: Revive Redis plugin as Valkey, the
+      OSI-licensed fork of Redis [GH-1019]
+    - database: Use transactions for read-then-write methods in the
+      database package [GH-995]
+    - pki: add not_after_bound and not_before_bound role parameters
+      to safely limit issuance duration [GH-1172]
+    - ssh: Use transactions for read-then-write or multiple write
+      methods in the ssh package [GH-989]
+    - storage/postgresql: support retrying database connection on
+      startup to gracefully handle service ordering issues
+      [GH-1280]
+  * DEPRECATIONS
+    - Configuration of PKCS#11 auto-unseal using the duplicate and
+      undocumented module, token and key options is now deprecated.
+      Use the documented alternative options lib, token_label and
+      key_label instead, respectively. (More details) [GH-1385]
+  * BUG FIXES
+    - api: Stop marshaling nil interface data and adding it as a
+      request body on an api.Request [GH-1315]
+    - core/identity: load namespace entities, groups into MemDB
+      preventing them from disappearing on restart. [GH-1432]
+    - oidc: add some buffer time after calling oidcPeriodicFunc in
+      test, to prevent flakiness [GH-1178]
+    - pki: addresses a timing issue revealed in pki
+      Backend_RevokePlusTidy test [GH-1139]
+    - sealing/pkcs11: OpenBao now correctly finalizes the PKCS#11
+      library on shutdown (openbao/go-kms-wrapping#32).
+    - This is unlikely to have caused many real-world issues so
+      far. [GH-1349]
+    - secrets/kv: Fix panic on detailed metadata list when results
+      include a directory. [GH-1388]
+    - storage/postgresql: Remove redundant PermitPool enforced by
+      db.SetMaxOpenConns(...). [GH-1299]
+    - storage/postgresql: skip table creation automatically on
+      PostgreSQL replicas [GH-1478]
+    - vault: addresses a timing issue revealed in OIDC_PeriodicFunc
+      test [GH-1129]
+    - vault: fixes a timing issue in OIDC_PeriodicFunc test
+      [GH-1100]
+
+-------------------------------------------------------------------
 Sat May 31 07:19:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.2:
