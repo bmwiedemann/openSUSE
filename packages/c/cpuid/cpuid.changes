@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun  5 19:32:38 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20250513
+  * DB updates for Intel Alder Lake, Arrow Lake, Twin Lake, Panther
+    Lake, Bartlett Lake, Raptor Cove, Wildcat Lake, Xeon 6 Granite
+    Rapids & Sierra Forest; for Hygon; and for AMD Shimada Peak.
+  * Added MS Hypervisor details, 256BITSGX, EGETKEY256, EREPORT2.
+
+-------------------------------------------------------------------
 Mon Apr  7 14:49:29 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Update to release 20250316
