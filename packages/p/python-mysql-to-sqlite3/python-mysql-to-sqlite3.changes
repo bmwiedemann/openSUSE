@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 28 14:05:13 UTC 2025 - Enno Gotthold <egotthold@suse.com>
+
+- Support libalternatives for 16.0 and newer
+- Update to version 2.4.1
+  * use more precise foreign key constraints
+  * ensure index names do not collide with table names
+  * add support for AUTOINCREMENT
+  * add --without-tables option
+  * Fix transferring composite primary keys when AUTOINCREMENT present
+  * add MySQL 8.4 and MariaDB 11.4 support
+  * fix passwordless login
+
+-------------------------------------------------------------------
 Thu Aug 29 09:04:05 UTC 2024 - pgajdos@suse.com
 
 - does not require python-six for build
