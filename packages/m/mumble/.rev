@@ -82,4 +82,12 @@
     <comment></comment>
     <requestid>1229170</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>ccbfe4a78c5f595c14f893c32e93125b</srcmd5>
+    <version>1.5.735</version>
+    <time>1751281473</time>
+    <user>anag_factory</user>
+    <comment>Fix build with gcc15 (boo#1245428)</comment>
+    <requestid>1288948</requestid>
+  </revision>
 </revisionlist>

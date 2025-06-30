@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 26 13:40:44 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix build with gcc15 (boo#1245428):
+  * add mumble-1.5.735-fix-gcc15.patch
+  * disable warnings-as-errors, see PR#6517 upstream
+
+-------------------------------------------------------------------
 Sun Dec  8 19:20:50 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 1.5.735:
@@ -315,7 +322,7 @@ Sat Jul 11 18:06:46 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 - fetch upstream release signing key for 2020
 
 -------------------------------------------------------------------
-Fri Jun 19 20:00:00 2020 UTC - Markus Ebner <info@ebner-markus.de>
+Fri Jun 19 20:00:00 UTC 2020 - Markus Ebner <info@ebner-markus.de>
 
 - Update to upstream version 1.3.1
 - Security

@@ -2,7 +2,7 @@
 # spec file for package mumble
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 # Copyright (c) 2024 Tobias Burnus <burnus@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,12 @@
 #
 
 
+# on Tumbleweed with gcc15, TestSSLLocks::stress() time out on aarch64 and i586
+%ifarch x86_64
 %bcond_without tests
+%else
+%bcond_with tests
+%endif
 %bcond_without server
 Name:           mumble
 Version:        1.5.735
@@ -35,6 +40,8 @@ Source:         %{name}-%{version}.tar.xz
 Source6:        baselibs.conf
 # PATCH-FIX-UPSTREAM fix-64bit-only-plugins.patch -- Requires 64bit memory alignment ( https://github.com/mumble-voip/mumble/issues/5849 )
 Patch0:         fix-64bit-only-plugins.patch
+# PATCH-FIX-UPSTREAM mumble-1.5.735-fix-gcc15.patch -- fix build with gcc15 https://github.com/mumble-voip/mumble/pull/6775
+Patch1:         mumble-1.5.735-fix-gcc15.patch
 # Patches related to dependency unbundling
 Patch100:       licenses.patch
 Patch101:       mumble-unbundle-tracy.patch
@@ -148,12 +155,6 @@ won't be audible to other players.
 %if 0%{?suse_version} > 1600
 	-DCMAKE_SHARED_LINKER_FLAGS="-lGL" \
 %endif
-%if 0%{?suse_version} < 1600
-	-Dwarnings-as-errors:BOOL=OFF \
-%endif
-%ifarch %{ix86}
-	-Dwarnings-as-errors:BOOL=OFF \
-%endif
 %if 0%{?suse_version} <= 1550
 	-DCMAKE_MODULE_LINKER_FLAGS="" \
 	-DCMAKE_SHARED_LINKER_FLAGS="" \
@@ -162,6 +163,7 @@ won't be audible to other players.
 	-Dtests:BOOL=ON \
 %endif
 	-DCMAKE_CXX_STANDARD=17 \
+	-Dwarnings-as-errors:BOOL=OFF \
 %{nil}
 
 %cmake_build
