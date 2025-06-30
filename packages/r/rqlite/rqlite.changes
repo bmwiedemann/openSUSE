@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jun 28 20:25:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.38.2:
+  * CLI supports RQLITE_HOST as connection environment variable
+  * Upgrade dependencies via 'go get'.
+  * Query supports returning Raft Index for Strong Consistency Reads
+  * Support returning Raft index in responses
+  * Add basic CDC streamer to database module
+  * Add CDC support to Store component
+  * Expose Raft log index via Store.Execute()
+  * Expose Raft log index via Store.Request()
+  * Support returning Raft Index in HTTP responses
+  * Upgrade go mod dependencies
+
+-------------------------------------------------------------------
 Sat Jun  7 17:02:14 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 8.37.4:
