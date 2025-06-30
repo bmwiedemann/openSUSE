@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun 30 08:39:37 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250630.23be67df:
+  * Fix: bootstrap: should fallback to default user when `core.hosts` is not availabe from the seed node (bsc#1245343)
+  * Fix: bootstrap: Refine qnetd passwordless configuration logic (bsc#1245387)
+  * Fix: log: Improve function confirm's logic (bsc#1245386)
+
+-------------------------------------------------------------------
+Sun Jun 29 08:46:20 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250629.3482516d:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: behave: Add functional test for previous commit
+  * Dev: bootstrap: Remove dead node from the cluster
+  * Dev: Prevent actions when offline nodes are unreachable
+  * Dev: xmlutil: Address circular import issue
+
+-------------------------------------------------------------------
+Thu Jun 26 07:49:12 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250626.4c49db91:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: bootstrap: Remove user@host item from /root/.config/crm/crm.conf when removing node
+
+-------------------------------------------------------------------
 Mon Jun 23 11:41:49 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250623.50ad8e8f:
