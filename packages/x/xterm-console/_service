@@ -5,7 +5,7 @@
     <param name="extract">xterm-console</param>
     <param name="extract">xterm-console.spec</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="url">git://github.com/os-autoinst/xterm_console.git</param>
+    <param name="url">https://github.com/os-autoinst/xterm_console.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
