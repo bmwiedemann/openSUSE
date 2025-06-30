@@ -19,8 +19,8 @@
 %global qt6_minver 6.5
 
 Name:           waycheck
-Version:        1.6.0
-Release:        0
+Version:        1.7.0
+Release:        1%{?dist}
 Summary:        GUI that displays protocols implemented by a Wayland compositor
 
 License:        Apache-2.0

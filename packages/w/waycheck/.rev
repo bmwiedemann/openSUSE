@@ -153,4 +153,19 @@
   + Expand default window width to show all tabs</comment>
     <requestid>1247080</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>85369565888c1c81bc8242eb126dcab6</srcmd5>
+    <version>1.7.0</version>
+    <time>1751281481</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.7.0
+  + Add Phosh's protocols 📱
+  + Update upstream protocols to v1.45
+  + Make Compositor text mouse-selectable
+  + Fix text-input-unstable-v3 detection
+  + Move unknown compositor tooltip to a dedicated button
+  + Rename 'Treeland' to 'Deepin'
+  + (a11y) Resolve table-related tab navigation issues</comment>
+    <requestid>1288910</requestid>
+  </revision>
 </revisionlist>

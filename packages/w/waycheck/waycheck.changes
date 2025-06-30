@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 28 02:09:16 UTC 2025 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 1.7.0
+  + Add Phosh's protocols 📱
+  + Update upstream protocols to v1.45
+  + Make Compositor text mouse-selectable
+  + Fix text-input-unstable-v3 detection
+  + Move unknown compositor tooltip to a dedicated button
+  + Rename 'Treeland' to 'Deepin'
+  + (a11y) Resolve table-related tab navigation issues
+
+-------------------------------------------------------------------
 Wed Feb 19 12:16:34 UTC 2025 - Neal Gompa <ngompa@opensuse.org>
 
 - Update to 1.6.0
