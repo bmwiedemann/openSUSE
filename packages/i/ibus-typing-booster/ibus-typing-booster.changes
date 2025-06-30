@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 25 19:30:15 UTC 2025 - maiku.fabian@gmail.com
+
+- Update to 2.27.67
+- Add time.sleep(self._ibus_event_sleep_seconds) after early commits of an m17n candidates
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/764)
+- Translation update from Weblate (es 100%)
+
+-------------------------------------------------------------------
 Wed Jun 25 13:45:55 UTC 2025 - maiku.fabian@gmail.com
 
 - Update to 2.27.66
@@ -2630,7 +2638,7 @@ Thu Jan  19 08:43:06 UTC 2017 - maiku.fabian@gmail.com
 - Do not try to reopen the preëdit when any modifier except
   CapsLock is on (Resolves: rhbz#1414642)
 
----------------------------------------------------------
+-------------------------------------------------------------------
 Tue Jan  17 14:00:23 UTC 2017 - maiku.fabian@gmail.com
 
 - update to 1.5.18
