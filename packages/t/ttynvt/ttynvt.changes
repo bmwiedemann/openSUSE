@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun 26 13:49:48 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.17
+  * Handling of initial protocol error changed
+  * Handling of pthread_mutex_init failure fixed
+  * nvttest: Add missing -lpthread
+  * ttynvt: On TCSET* skip rfc2217 baud rate change if zero
+  * nvtsrv: Fix inconsistent help
+  * nvttest: Improve help
+  * nvttest: Enable specifying device
+  * nvttest: Rework thread handling
+  * nvttest: Return error if anything fails
+  * nvtsrv: Change some log messages to debug
+  * test: Initial testing framework
+  * ttynvt: Move optional delay during close
+  * Support odd parity.
+  * support TCP/IPv6 address and UNIX domain socket path as
+    rfc2217 server
+
+-------------------------------------------------------------------
 Mon Mar 20 07:53:00 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 * Update to version 0.16

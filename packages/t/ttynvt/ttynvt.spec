@@ -1,8 +1,8 @@
 #
 # spec file for package ttynvt
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2021-2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2021-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,29 @@
 
 
 Name:           ttynvt
-Version:        0.16
+Version:        0.17
 Release:        0
 Summary:        Virtual Network Terminal supporting the Com Port Control Option (RFC2217)
 License:        GPL-3.0-or-later
+# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
 Group:          System/Utilities
 URL:            https://gitlab.com/lars-thrane-as/ttynvt
 #Git-Clone:     https://gitlab.com/lars-thrane-as/ttynvt.git
 Source:         https://gitlab.com/lars-thrane-as/ttynvt/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(gtest)
 
 %description
 ttynvt makes a virtual serial device (tty) and connects
 the device to a Network Virtual Terminal (NVT).
 
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup -n %{name}-v%{version}
 
 %build
 autoreconf -fiv
@@ -46,6 +49,10 @@ autoreconf -fiv
 
 %install
 %make_install
+
+%check
+# disabled since tests need root permission
+#%%make_build test
 
 %files
 %license COPYING
