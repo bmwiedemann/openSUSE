@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-consolekit%{psuffix}
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        Additional utilities for click
 License:        MIT
@@ -61,6 +61,7 @@ Additional utilities for click.
 
 %prep
 %autosetup -p1 -n consolekit-%{version}
+find . -name "*.py*" -exec sed -i '/#\!\/usr\/bin\/env/d' {} \;
 
 %build
 %pyproject_wheel
