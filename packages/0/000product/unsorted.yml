@@ -13412,7 +13412,7 @@ unsorted:
   - libgda-ui-6_0-tools 
   - libgda-xslt-6_0-6_0_0 
   - libgdal-drivers 
-  - libgdal36 
+  - libgdal37 
   - libgdata-devel 
   - libgdbm6-32bit 
   - libgdbm_compat4-32bit 
@@ -15028,7 +15028,7 @@ unsorted:
   - libopencv_videostab411 
   - libopencv_ximgproc411 
   - libopendkim11 
-  - libopenh264-8 
+  - libopenh264-8-32bit 
   - libopenh264-devel 
   - libopenhpi4 
   - libopenjp2-7-32bit 
@@ -19217,7 +19217,6 @@ unsorted:
   - mypaint-brushes1-devel 
   - mypaint-lang 
   - myquerytutor 
-  - myrlyn 
   - myspell-af_NA 
   - myspell-af_ZA 
   - myspell-an 
