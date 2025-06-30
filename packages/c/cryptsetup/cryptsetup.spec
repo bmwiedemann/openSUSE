@@ -18,19 +18,17 @@
 
 %define so_ver 12
 Name:           cryptsetup
-Version:        2.7.5
+Version:        2.8.0
 Release:        0
 Summary:        Setup program for dm-crypt Based Encrypted Block Devices
 License:        CC-BY-SA-4.0 AND LGPL-2.0-or-later WITH cryptsetup-OpenSSL-exception
 Group:          System/Base
 URL:            https://gitlab.com/cryptsetup/cryptsetup/
-Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.7/cryptsetup-%{version}.tar.xz
+Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.8/cryptsetup-%{version}.tar.xz
 # GPG signature of the uncompressed tarball.
-Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.7/cryptsetup-%{version}.tar.sign
+Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.8/cryptsetup-%{version}.tar.sign
 Source2:        baselibs.conf
 Source3:        cryptsetup.keyring
-# FAQ.md is CC-BY-SA-4.0
-Source4:        https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt#/cc-by-sa-4.0.txt
 Patch0:         cryptsetup-fips140-3.patch
 # 2.6.38 has the required if_alg.h
 BuildRequires:  linux-glibc-devel >= 2.6.38
@@ -119,7 +117,6 @@ time via the config file %{_sysconfdir}/crypttab.
 
 %prep
 %autosetup -p1
-cp -v %{SOURCE4} .
 
 %build
 # force regeneration of manual pages from AsciiDoc
@@ -169,7 +166,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %ldconfig_scriptlets -n libcryptsetup%{so_ver}
 
 %files
-%license COPYING*
+%license docs/licenses/COPYING*
 %if 0%{?suse_version} < 1550
 /sbin/cryptsetup
 %endif
@@ -180,29 +177,28 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %ghost %attr(700, -, -) %dir /run/cryptsetup
 
 %files lang -f %{name}.lang
-%license COPYING*
+%license docs/licenses/COPYING*
 
 %files -n libcryptsetup%{so_ver}
-%license COPYING*
+%license docs/licenses/COPYING*
 %{_libdir}/libcryptsetup.so.%{so_ver}*
 
 %files -n lib%{name}-devel
-%license COPYING*
+%license docs/licenses/COPYING*
 %doc docs/examples/
 %{_includedir}/libcryptsetup.h
 %{_libdir}/libcryptsetup.so
 %{_libdir}/pkgconfig/*
 
 %files ssh
-%license COPYING*
+%license docs/licenses/COPYING*
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/libcryptsetup-token-ssh.so
 %{_mandir}/man8/cryptsetup-ssh.8%{?ext_man}
 %{_sbindir}/cryptsetup-ssh
 
 %files doc
-%license COPYING*
-%license cc-by-sa-4.0.txt
+%license docs/licenses/COPYING*
 %doc AUTHORS FAQ.md README.md docs/*ReleaseNotes docs/on-disk-format*.pdf
 %{_mandir}/man8/cryptsetup.8%{?ext_man}
 %{_mandir}/man8/cryptsetup-benchmark.8%{?ext_man}
