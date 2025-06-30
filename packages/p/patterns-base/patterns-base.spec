@@ -177,7 +177,6 @@ Requires:       timezone
 Requires:       wtmpdb
 %{recommends_on_traditional service(network)}
 %{requires_on_transactional NetworkManager}
-%{requires_on_transactional NetworkManager-wifi}
 %if 0%{?is_opensuse}
 %{requires_on_transactional NetworkManager-bluetooth}
 %endif
@@ -344,7 +343,7 @@ Recommends:     pam-manpages
 %{obsolete_legacy_pattern documentation}
 
 %description documentation
-Help and Support Documentation
+Man tool and Man pages for various tools and POSIX API.
 
 %files documentation
 %dir %{_docdir}/patterns
@@ -579,7 +578,7 @@ This is the enhanced base runtime system with lots of convenience packages.
 ################################################################################
 
 %package fips
-%pattern_primaryfunctions
+%pattern_basetechnologies
 Summary:        FIPS 140-3 specific packages
 Group:          Metapackages
 Provides:       pattern() = fips
@@ -931,6 +930,10 @@ Provides:       pattern-order() = 1801
 %if !0%{?is_opensuse}
 Recommends:     pattern() = yast2_basis
 Recommends:     pattern() = yast2_server
+%endif
+# Myrlyn replaces YaST software management code-o-o#leap/features#173
+%if 0%{?is_opensuse}
+Recommends:     myrlyn
 %endif
 Requires:       pattern() = enhanced_base
 Requires:       pattern() = fonts

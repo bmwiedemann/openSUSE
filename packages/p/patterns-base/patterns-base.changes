@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jun 28 08:47:11 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add myrlyn to x11_enhanced 
+  Myrlyn replaces YaST software management code-o-o#leap/features#173
+
+-------------------------------------------------------------------
+Thu Jun 26 15:25:00 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Refine topics and descriptions of patterns (bsc#1243961).
+
+-------------------------------------------------------------------
+Thu Jun 26 14:39:55 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Drop requirement on NetworkManager-wifi, it was merged back in
+  NetworkManager in 2022.
+
+-------------------------------------------------------------------
 Thu Jun 12 14:39:31 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Remove xf86-video-fbdev from x11_raspberrypi pattern as the
