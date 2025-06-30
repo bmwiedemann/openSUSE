@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 30 05:10:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.8:
+  * build(deps): bump github.com/chainguard-dev/advisory-schema
+    (#1656)
+  * build(deps): bump sigstore/cosign-installer from 3.9.0 to 3.9.1
+    (#1654)
+  * build(deps): bump the chainguard group with 2 updates (#1655)
+  * build(deps): bump chainguard-dev/actions from 1.4.1 to 1.4.2
+    (#1653)
+
+-------------------------------------------------------------------
 Mon Jun 23 04:46:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.37.7:

@@ -17,16 +17,16 @@
 
 
 Name:           wolfictl
-Version:        0.37.7
+Version:        0.37.8
 Release:        0
 Summary:        A CLI used to work with the Wolfi OSS project
 License:        Apache-2.0
 URL:            https://github.com/wolfi-dev/wolfictl
 Source:         wolfictl-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.24
 BuildRequires:  bash-completion
 BuildRequires:  fish
+BuildRequires:  go >= 1.24
 BuildRequires:  zsh
 
 %description
