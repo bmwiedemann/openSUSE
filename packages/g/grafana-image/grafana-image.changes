@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 30 08:03:47 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- Add curl to the grafana image (bsc#1245255)
+
+-------------------------------------------------------------------
 Tue Jun  3 09:12:28 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - add missing required packages for the entrypoint script
