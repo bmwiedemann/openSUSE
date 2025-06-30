@@ -110,4 +110,12 @@
 - Drop pyside2 support for Leap 16 and factory (boo#1243916)</comment>
     <requestid>1282335</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>cde38d0cdbe9f1c8278a589ae5e59128</srcmd5>
+    <version>3.2.1</version>
+    <time>1751281583</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1289116</requestid>
+  </revision>
 </revisionlist>

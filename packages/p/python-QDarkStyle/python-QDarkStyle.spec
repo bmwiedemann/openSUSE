@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-QDarkStyle
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,15 +31,16 @@ Version:        3.2.1
 Release:        0
 Summary:        A dark stylesheet for Python and Qt applications
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ColinDuquesnoy/QDarkStyleSheet
 Source:         https://github.com/ColinDuquesnoy/QDarkStyleSheet/archive/v%{version}.tar.gz#/QDarkStyle-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-QtPy >= 2
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module QDarkStyle = %{version}}
@@ -63,12 +64,12 @@ sed -i '1{\,^#!%{_bindir}/env python,d}' qdarkstyle/*.py qdarkstyle/*/*.py
 
 %build
 %if !%{with test}
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/qdarkstyle
 %python_clone -a %{buildroot}%{_bindir}/qdarkstyle.example
 %python_clone -a %{buildroot}%{_bindir}/qdarkstyle.utils
@@ -101,7 +102,7 @@ PYTHONPATH=%{buildroot}%{python3_sitelib} xvfb-run python%{python_bin_suffix} -B
 %python_alternative %{_bindir}/qdarkstyle.example
 %python_alternative %{_bindir}/qdarkstyle.utils
 %{python_sitelib}/qdarkstyle
-%{python_sitelib}/QDarkStyle-%{version}*-info
+%{python_sitelib}/[Qq][Dd]ark[Ss]tyle-%{version}.dist-info
 %endif
 
 %changelog

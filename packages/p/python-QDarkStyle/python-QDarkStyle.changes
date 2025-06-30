@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 30 04:08:40 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros. 
+
+-------------------------------------------------------------------
 Mon Jun  2 08:54:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Drop pyside2 support for Leap 16 and factory (boo#1243916)
