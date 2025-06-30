@@ -797,4 +797,15 @@
     <comment>- properly set the version information in the binary</comment>
     <requestid>1279569</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>9eabcb020c349aebc2410c276189cb99</srcmd5>
+    <version>2.2.1</version>
+    <time>1751284825</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.2.1:
+  * chore: prepare release
+  * varnamelen: fix configuration (#5904)
+  * docs: update documentation assets (#5903) (forwarded request 1289113 from jfkw)</comment>
+    <requestid>1289114</requestid>
+  </revision>
 </revisionlist>
