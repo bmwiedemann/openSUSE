@@ -64,4 +64,4 @@ COPY xorg.conf /etc/X11/xorg.conf.d/xorg.conf
 ENV XDG_SESSION_TYPE=x11
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN set -euo pipefail; chmod +x /usr/local/bin/entrypoint.sh
