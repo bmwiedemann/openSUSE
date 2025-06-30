@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cppy
-Version:        1.2.1
+Version:        1.3.1
 Release:        0
 Summary:        C++ headers for C extension development
 License:        BSD-3-Clause
