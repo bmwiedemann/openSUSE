@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Mon Jun 30 06:42:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.82.3:
+  * Experiments Added
+    - Introduction of the auto-provider-cache-dir experiment
+      The new auto-provider-cache-dir experiment has been added to
+      automatically configure OpenTofu provider caching when
+      certain conditions are met:
+      - You are using OpenTofu
+      - You are using a version of OpenTofu >= 1.10
+      This leverages recent improvements in how OpenTofu handles
+      provider caching to allow for safe concurrent access to
+      provider plugins in OpenTofu 1.10.
+      In micro-benchmarks, the native provider cache directory
+      out-performs the Provider Cache Server, as the overhead of
+      starting and running the provider cache server is eliminated.
+      Once generally available, this feature will be enabled by
+      default, automatically providing performance improvements to
+      Terragrunt users using OpenTofu >= 1.10. If you are currently
+      using the Provider Cache Server, you are advised to
+      experiment with this feature, and share your feedback.
+      You can learn more about the feature in the dedicated feature
+      docs, including a comparison with the Provider Cache Server,
+      so you can learn if limitations in how the native OpenTofu
+      provider cache directory will result in a requirement to
+      continue using the Provider Cache Server going forward.
+      https://terragrunt.gruntwork.io/docs/features/provider-cache-server/
+      https://terragrunt.gruntwork.io/docs/features/auto-provider-cache-dir/
+      https://terragrunt.gruntwork.io/docs/features/auto-provider-cache-dir/#comparison-with-provider-cache-server
+  * New Features
+    - --version-manager-file-name Flag Added
+      During a run --all, Terragrunt memoizes the version of
+      OpenTofu/Terraform being run to determine if version
+      constraints are being satisfied, without doing unnecessary
+      work to repeatedly check the version of OpenTofu/Terraform
+      being run in each directory.
+      To ensure that users using tool managers are able to leverage
+      different versions of OpenTofu/Terraform in different
+      directories, the cache key for this memoization includes
+      calculations based on common version manager tools.
+      By default, the following are detected:
+        - .terraform-version
+        - .tool-versions
+        - .mise.toml
+        - mise.toml
+      To support the usage of any arbitrary tool manager, a new
+      --version-manager-file-name flag has been introduced to allow
+      configurability over this list.
+      To learn more about --version-manager-file-name read the
+      docs.
+      https://terragrunt.gruntwork.io/docs/reference/cli-options/#version-manager-file-name
+  * What's Changed
+    - feat: Adding auto provider cache dir experiment (#4466)
+    - docs: Adding docs for local state to the side with stacks
+      (#4477)
+    - feat: add new `--version-cache-file` flag that allows users
+      to override previously hardcoded values used for the
+      `version` cache key; resolves #4326 (#4415)
+
+-------------------------------------------------------------------
+Mon Jun 30 06:38:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.82.2:
+  * Bug Fixes
+    - get_terragrunt_dir returns appropriate directory
+      The get_terragrunt_dir() HCL function now returns the
+      expected stack directory containing a terragrunt.stack.hcl
+      when used in a terragrunt.stack.hcl file.
+    - non-git default templates supported for Catalog/Scaffold
+      A bug in how the default_template attribute of the catalog
+      configuration block worked resulted in a requirement that the
+      default template be a Git repository. That bug has been
+      resolved, removing the restriction.
+  * What's Changed
+    - fix: Support non-git templates for Catalog/Scaffold (#4474)
+    - build(deps): bump github.com/gruntwork-io/terratest (#4457)
+    - build(deps): bump github.com/labstack/echo/v4 from 4.13.3 to
+      4.13.4 (#4456)
+    - Fix the inconsistent behaviour of get_terragrunt_dir function
+      (#4443)
+
+-------------------------------------------------------------------
+Mon Jun 30 06:24:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.82.1:
+  * Experiments Updated
+    - The cas experiment now supports terraform block source
+      attributes
+      The cas experiment now supports de-duplication of
+      OpenTofu/Terraform module source cloning during unit
+      initialization.
+      This both reduces time spent cloning OpenTofu/Terraform
+      module sources by reducing network bandwidth overhead, and
+      reduces disk utilization.
+  * Bugs Fixed
+    - The hcl validate command now returns an appropriate exit code
+      When using hcl validate, if any unit fails validation when
+      run against a stack of units, the final exit code will be
+      non-zero when any unit fails validation.
+      While this is technically a bugfix that is a 🛠️ breaking
+      change in behavior, maintainers have opted to release this as
+      part of a patch release, as it's what most users expect from
+      the command and it's how the command is documented. We are
+      also trying to reduce the number of minor releases on the
+      road to 1.0 to make it easier to focus on the big changes
+      that require significant adjustment in usage of Terragrunt,
+      and want to make sure that users take special note of
+      breaking removal of deprecated functionality.
+      Avoiding the breaking change is fairly simple:
+        terragrunt hcl validate || true
+  * What's Changed
+    - 4211 - fix: Setting correct exit code for `hcl validate`
+      (#4290)
+    - fix: Addressing review feedback from #4436 (#4472)
+    - feat: Expanding CAS support for OpenTofu/Terraform source
+      clones (#4436)
+    - fix: Fixing some 404s reported (#4467)
+    - docs: Updating `report` experiment docs (#4452)
+    - feat: Adding `EnsureRun` method (#4453)
+    - chore: Adding AJ as CODEOWNER (#4458)
+
+-------------------------------------------------------------------
 Wed Jun 25 09:21:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.82.0:
