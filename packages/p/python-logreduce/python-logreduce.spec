@@ -1,7 +1,7 @@
 #
 # spec file for package python-logreduce
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # CLI tool, no module
 %define pythons python3
 Name:           python-logreduce
@@ -24,23 +23,20 @@ Version:        0.6.1
 Release:        0
 Summary:        Log file anomaly extractor
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://logreduce.softwarefactory-project.io/
 Source:         https://files.pythonhosted.org/packages/source/l/logreduce/logreduce-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-CherryPy
 Requires:       python-PyYAML
-Requires:       python-SQLAlchemy
 Requires:       python-aiohttp
-Requires:       python-alembic
 Requires:       python-numpy
 Requires:       python-requests
 Requires:       python-scikit-learn
 Requires:       python-scipy
-Requires:       python-voluptuous
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module CherryPy}
@@ -87,10 +83,10 @@ sed -i '1{/^#!/d}' logreduce/cmd.py
 fi}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/logreduce/tests/
 %fdupes %{buildroot}%{$python_sitelib}
 }
@@ -104,6 +100,7 @@ sed -i 's:from mock:from unittest.mock:' logreduce/tests/test_download.py
 %license LICENSE
 %doc ChangeLog README.rst
 %{_bindir}/logreduce
-%{python_sitelib}/*
+%{python_sitelib}/logreduce
+%{python_sitelib}/logreduce-%{version}.dist-info
 
 %changelog
