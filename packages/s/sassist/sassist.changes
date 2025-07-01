@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 25 16:21:36 UTC 2025 - Jeffrey Cheung <jcheung@suse.com>
+
+- Update to 0.8.7
+  
+  * sos and supportconfig fixes.
+  * documentation updates.
+
+
+-------------------------------------------------------------------
 Thu Nov 16 10:01:08 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

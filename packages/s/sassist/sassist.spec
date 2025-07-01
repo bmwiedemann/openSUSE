@@ -18,7 +18,7 @@
 
 
 Name:           sassist
-Version:        0.8.6
+Version:        0.8.7
 Release:        0
 Summary:        Dell SupportAssist log collector
 License:        MIT
