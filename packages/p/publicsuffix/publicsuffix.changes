@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun 30 08:15:59 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20250626:
+  * update scaleway subdomains (#2503)
+  * Update public_suffix_list.dat (#2508)
+  * Update Adobe entries with aem.network for Adobe Experience Manager (#2505)
+  * Add 4.at, my.at, my.de, *.nxa.eu, nx.gw (#2495)
+  * util: gTLD data autopull updates for 2025-06-07T15:17:54 UTC (#2507)
+  * TECCM-151074: Add webspace-host.com to PSL (#2504)
+  * add *.mtls.run.app to public_suffix_list.dat (#2485)
+  * Add https://lutra.ai (#2500)
+  * Add `vercel.run` to the public suffix list (#2490)
+  * request to add `tche.br` (#2487)
+  * Update public_suffix_list.dat (#2498)
+  * Add Cloudflare Subdomain Notice to README.md (#2497)
+  * Add schuldock.de (#2492)
+  * add kop.id (#2489)
+  * Add icp0.io /  icp1.io / caffeine.site / caffeine.website for Internet Computer domains (#2424)
+  * Add iserv.host (#2461)
+  * Add encr.app and lp.dev subdomains (#2450)
+  * Add eliv-cdn.kr (#2479)
+  * Add github.app to Public Suffix List (#2482)
+  * removing cloud66.zone as it is redundant now (#2483)
+
+-------------------------------------------------------------------
 Wed May 21 07:18:59 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20250520:
