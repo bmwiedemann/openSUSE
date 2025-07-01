@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 30 13:52:37 MDT 2025 - carnold@suse.com
+
+- Update to virt-v2v 2.8.1 (jsc#PED-12706)
+  * convert: Replay dirty log for ext4 filesystems before running
+    e2fsck
+  * docs: Add pre-conversion tasks section
+  * docs: Explain that the guest should not be running during
+    conversion
+  * output: Report space on the target filesystem
+  * convert: Limit the amount of memory used by xfs_repair
+
+-------------------------------------------------------------------
 Wed Jun 11 14:35:50 MDT 2025 - carnold@suse.com
 
 - Update to virt-v2v 2.8.0 (jsc#PED-12706)
