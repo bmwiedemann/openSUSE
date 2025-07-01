@@ -17,15 +17,15 @@
 # needsrootforbuild
 
 
-%define patchversion 6.15.3
+%define patchversion 6.15.4
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
 Name:           kernel-obs-qa
-Version:        6.15.3
+Version:        6.15.4
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g0b2be4d
+Release:        <RELEASE>.g55e70a8
 %else
 Release:        0
 %endif
@@ -35,7 +35,9 @@ Group:          SLES
 BuildRequires:  kernel-default
 # kernel-obs-build must be also configured as VMinstall, but is required
 # here as well to avoid that qa and build package build parallel
-BuildRequires:  kernel-obs-build-srchash-0b2be4d20b05720cc3ba3075d1baa2708b243d62
+%if ! 0%{?qemu_user_space_build}
+BuildRequires:  kernel-obs-build-srchash-55e70a8c5b295edf08b06b423d5bb1617fbee148
+%endif
 BuildRequires:  modutils
 ExclusiveArch:  aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
 
