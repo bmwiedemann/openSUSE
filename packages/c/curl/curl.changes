@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 30 09:38:09 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Disable insecure NTLM authentication support [bsc#1245491, jsc#PED-12960]
+
+-------------------------------------------------------------------
+Mon Jun 23 09:12:46 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- split wcurl into a subpackage so that upgrade works (wcurl
+  used to be a separate package)
+
+-------------------------------------------------------------------
 Fri Jun 20 18:54:44 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Build with experimental OpenSSL based QUIC support to enable --http3

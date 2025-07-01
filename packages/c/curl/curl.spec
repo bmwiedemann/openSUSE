@@ -138,6 +138,17 @@ BuildArch:      noarch
 
 %description zsh-completion
 ZSH command line completion support for %name.
+
+%package -n     wcurl
+Summary:        simple wrapper around curl to easily download files
+Requires:       curl >= %{version}
+Obsoletes:      wcurl >= 2025
+
+%description -n wcurl
+A simple curl wrapper which lets you use curl to download files
+without having to remember any parameters.
+Simply call wcurl with a list of URLs you want to download and
+wcurl will pick sane defaults.
 %endif
 
 %prep
@@ -181,7 +192,6 @@ sed -i 's/\(link_all_deplibs=\)unknown/\1no/' configure
     --disable-gopher \
     --disable-imap \
     --disable-mqtt \
-    --disable-ntlm \
     --disable-pop3 \
     --disable-rtsp \
     --disable-smtp \
@@ -197,6 +207,7 @@ sed -i 's/\(link_all_deplibs=\)unknown/\1no/' configure
     --with-libssh \
 %endif
     --enable-symbol-hiding \
+    --disable-ntlm \
     --disable-static \
     --enable-threaded-resolver \
     --with-zsh-functions-dir=%{_datadir}/zsh/site-functions/ \
@@ -253,6 +264,9 @@ popd
 %doc docs/{BUGS.md,FAQ,FEATURES.md,TODO,TheArtOfHttpScripting.md}
 %{_bindir}/curl
 %{_mandir}/man1/curl.1%{?ext_man}
+
+%files -n wcurl
+%license COPYING
 %{_bindir}/wcurl
 %{_mandir}/man1/wcurl.1%{?ext_man}
 
