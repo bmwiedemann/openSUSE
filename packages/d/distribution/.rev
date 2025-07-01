@@ -90,4 +90,31 @@
     <comment>- remove unnecessary lock group</comment>
     <requestid>1217245</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>48243c5caefd2adcc4f91095b2b1cd28</srcmd5>
+    <version>3.0.0</version>
+    <time>1751362467</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.0 (jsc#PED-11728):
+  * This is the first v3 stable release since `v2.8.3` which is a
+    culmination of years of hard work of the container community
+    and registry maintainers!
+  * If you are upgrading from `v2.x` and have never used any of
+    the release candidates, please familiarise yourselves with
+    the `v2.x` deprecations properly.
+  * oss and swift storage drivers are no longer supported
+  * `docker/libtrust` has been replaced with `go-jose/go-jose` in
+    https://github.com/distribution/distribution/pull/4096
+  * `client` is no longer supported as a standalone package in
+    https://github.com/distribution/distribution/pull/4126
+  * the default configuration path has changed to
+    `/etc/distribution/config.yml`
+  * `ManifestBuilder` interface in 3886
+  * `manifest.Versioned` has been deprecated in favor of
+    `oci.Versioned` in 3887
+  * `reference` package has been moved to
+    github.com/distribution/reference in
+    https://github.com/distribution/distribution/pull/4063</comment>
+    <requestid>1289281</requestid>
+  </revision>
 </revisionlist>

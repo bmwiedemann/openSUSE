@@ -1,7 +1,7 @@
 #
 # spec file for package distribution
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define goipath github.com/docker/distribution
+%define goipath github.com/distribution/distribution/v3
 Name:           distribution
-Version:        2.8.3
+Version:        3.0.0
 Release:        0
 Summary:        The toolset to pack, ship, store, and deliver content
 License:        Apache-2.0
@@ -33,7 +33,7 @@ BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  zstd
-BuildRequires:  golang(API) = 1.21
+BuildRequires:  golang(API) = 1.24
 Provides:       docker-distribution = %{version}
 Obsoletes:      docker-distribution < %{version}
 ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64
