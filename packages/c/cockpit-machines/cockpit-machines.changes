@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 26 11:58:26 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Patch cockpit-machines to ignore domain not found errors
+  when domain is deleted (bsc#1236383)
+  * added nic-domain-not-found.patch
+
+-------------------------------------------------------------------
+Mon Jun 16 08:22:25 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 333
+  * Bug fixes
+  * The "shareable" attribute of disks is no longer modified by Cockpit
+  * Virtual network interfaces can now select source mode
+
+-------------------------------------------------------------------
 Fri May  2 06:54:32 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
 
 - update to 330
@@ -180,7 +195,7 @@ Fri Jun 16 12:07:39 UTC 2023 - Adam Majer <adam.majer@suse.de>
 -------------------------------------------------------------------
 Fri Sep 23 10:30:20 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
 
-- Require qemu-block-curl for installing over https (bsc#1199672) 
+- Require qemu-block-curl for installing over https (bsc#1199672)
 
 -------------------------------------------------------------------
 Wed Aug 10 10:19:26 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
@@ -219,7 +234,7 @@ Thu Mar 17 13:42:11 UTC 2022 - Adam Majer <adam.majer@suse.de>
 -------------------------------------------------------------------
 Mon Mar 14 22:37:04 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
 
-- Hide links pointing to RHEL docs, hide-docs.patch (bsc#1197003) 
+- Hide links pointing to RHEL docs, hide-docs.patch (bsc#1197003)
 
 -------------------------------------------------------------------
 Thu Mar 10 15:41:35 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
@@ -230,12 +245,12 @@ Thu Mar 10 15:41:35 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
 -------------------------------------------------------------------
 Mon Jan 31 09:50:20 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
 
-- Remove translate-toolkit which is not available in SLE 
+- Remove translate-toolkit which is not available in SLE
 
 -------------------------------------------------------------------
 Fri Jan 28 10:53:18 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
 
-- Re-add source-offset to _service. 
+- Re-add source-offset to _service.
 
 -------------------------------------------------------------------
 Fri Aug 13 11:23:02 UTC 2021 - Ludwig Nussel <lnussel@suse.de>

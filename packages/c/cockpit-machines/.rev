@@ -266,4 +266,24 @@
   * Translation updates</comment>
     <requestid>1279482</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7b048abf7e504695b46ce1bdecc1ecd4</srcmd5>
+    <version>333</version>
+    <time>1751362454</time>
+    <user>anag_factory</user>
+    <comment>- Patch cockpit-machines to ignore domain not found errors
+  when domain is deleted (bsc#1236383)
+  * added nic-domain-not-found.patch
+
+- Update to 333
+  * Bug fixes
+  * The &quot;shareable&quot; attribute of disks is no longer modified by Cockpit
+  * Virtual network interfaces can now select source mode
+
+- Require qemu-block-curl for installing over https (bsc#1199672)
+- Hide links pointing to RHEL docs, hide-docs.patch (bsc#1197003)
+- Remove translate-toolkit which is not available in SLE
+- Re-add source-offset to _service.</comment>
+    <requestid>1289270</requestid>
+  </revision>
 </revisionlist>
