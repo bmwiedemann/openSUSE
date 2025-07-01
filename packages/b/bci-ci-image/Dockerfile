@@ -23,7 +23,7 @@
 FROM opensuse/bci/python:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends build buildah dnf fish gcc git-core jq osc python3-devel python3-dnf python3-pipx python3-poetry
+    zypper -n install --no-recommends build buildah dnf fish gcc git-core jq osc patch python3-devel python3-dnf python3-pipx python3-poetry
 RUN set -euo pipefail; zypper -n clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 
