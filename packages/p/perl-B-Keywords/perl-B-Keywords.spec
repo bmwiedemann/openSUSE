@@ -1,7 +1,7 @@
 #
 # spec file for package perl-B-Keywords
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name B-Keywords
 Name:           perl-B-Keywords
-Version:        1.270.0
+Version:        1.280.0
 Release:        0
-# 1.27 -> normalize -> 1.270.0
-%define cpan_version 1.27
+# 1.28 -> normalize -> 1.280.0
+%define cpan_version 1.28
 #Upstream:  2017-2021 Reini Urban, All rights reserved. This program is free software; you can redistribute it and/or modify it under the terms of either: a) the GNU General Public License as published by the Free Software Foundation; version 2, or b) the "Artistic License" which comes with Perl.
 License:        Artistic-1.0 OR GPL-2.0-only
 Summary:        Lists of reserved barewords and symbol names
@@ -57,7 +57,7 @@ though some @Functions are not functions in the strict sense. Several
 library functions use more special symbols, handles and methods.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

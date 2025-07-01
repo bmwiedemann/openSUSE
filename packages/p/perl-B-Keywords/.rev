@@ -234,4 +234,17 @@
     <comment></comment>
     <requestid>1183501</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c5cadeaa45c126f449d7557d9507959f</srcmd5>
+    <version>1.280.0</version>
+    <time>1751362430</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1288881 from tinita
+
+- updated to 1.280.0 (1.28)
+   see /usr/share/doc/packages/perl-B-Keywords/Changes
+  1.28 2025-06-25 08:52 rurban
+    - Add keywords any, all since 5.42.0</comment>
+    <requestid>1289301</requestid>
+  </revision>
 </revisionlist>

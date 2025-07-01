@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 26 05:34:57 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.280.0 (1.28)
+   see /usr/share/doc/packages/perl-B-Keywords/Changes
+
+  1.28 2025-06-25 08:52 rurban
+    - Add keywords any, all since 5.42.0
+
+-------------------------------------------------------------------
 Sun Jun 23 16:09:33 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 1.270.0 (1.27)
