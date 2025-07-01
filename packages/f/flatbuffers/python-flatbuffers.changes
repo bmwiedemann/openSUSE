@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 27 03:06:58 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+
+-------------------------------------------------------------------
 Tue Jun 17 12:44:12 UTC 2025 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 25.2.10

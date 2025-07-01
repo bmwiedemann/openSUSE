@@ -25,7 +25,9 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://google.github.io/flatbuffers/
 Source0:        https://github.com/google/flatbuffers/archive/v%{version}.tar.gz#/flatbuffers-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-numpy
@@ -41,15 +43,15 @@ ln ../LICENSE
 sed -i 's|../LICENSE|LICENSE|g' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license ../LICENSE
-%{python_sitelib}/flatbuffers*
-%{python_sitelib}/flatbuffers-%{version}*-info
+%{python_sitelib}/flatbuffers
+%{python_sitelib}/flatbuffers-%{version}.dist-info
 
 %changelog
