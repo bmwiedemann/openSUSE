@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun 30 14:33:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.0:
+  * Breaking:
+    - Drop support for 3rd Go release because of upstream forced
+      upgrades (see golang/go#69095). (PR 948)
+  * Features:
+    - Add a script to reproduce regclient images. (PR 940)
+    - Support IPv6 hosts. (PR 956)
+  * Fixes:
+    - Convert docker attestations built with oci-artifact=true. (PR
+      949)
+    - Allow duplicate keys in yaml config. (PR 952)
+  * Miscellaneous:
+    - Migrate yaml library. (PR 947)
+    - Convert the build to use OCI style attestations. (PR 950)
+
+-------------------------------------------------------------------
 Thu Apr 24 15:31:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.8.3:

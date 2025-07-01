@@ -17,7 +17,7 @@
 
 
 Name:           regclient
-Version:        0.8.3
+Version:        0.9.0
 Release:        0
 Summary:        OCI Registry Client in Go and tooling using those libraries
 License:        Apache-2.0
