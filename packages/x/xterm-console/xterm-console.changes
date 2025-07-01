@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 30 17:46:48 UTC 2025 - okurz@suse.com
+
+- Update to version 1.1:
+  * Bump version number in spec
+  * Handle glyphs without unicode mapping gracefully
+  * Fix generating psf2 fonts with multiple codepoints per glyph
+  * psf2bdf.pl: Support mapping multiple codepoints to a glyph
+  * Use eurlatgr as font
+  * Further cleanup of spec-file
+  * Cleanup spec-file (delete unused symbol; simplify)
+
+-------------------------------------------------------------------
 Sat Jun 28 00:26:28 UTC 2025 - okurz@suse.com
 
 - Update to version 1.1:
