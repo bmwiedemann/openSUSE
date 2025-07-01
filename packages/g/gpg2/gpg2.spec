@@ -47,6 +47,8 @@ Patch11:        gnupg-allow-large-rsa.patch
 Patch12:        gnupg-revert-rfc4880bis.patch
 #PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
 Patch13:        gnupg-nobetasuffix.patch
+# PATCH-FIX-UPSTREAM gnupg-2.5.8-re-add-revocation-reason.patch -- https://dev.gnupg.org/T7083
+Patch14:        gnupg-2.5.8-re-add-revocation-reason.patch
 
 BuildRequires:  expect
 BuildRequires:  fdupes

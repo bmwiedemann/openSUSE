@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 29 07:56:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build of qgpgme >= 2.0.0 [T7083] boo#1244605
+  add gnupg-2.5.8-re-add-revocation-reason.patch
+
+-------------------------------------------------------------------
 Fri Jun 20 16:35:05 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 2.5.8:

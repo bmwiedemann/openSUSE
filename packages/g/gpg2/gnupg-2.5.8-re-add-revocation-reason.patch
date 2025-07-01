@@ -1,0 +1,45 @@
+From: Werner Koch <wk@gnupg.org>
+Date: Mon, 23 Jun 2025 10:16:15 +0000 (+0200)
+Subject: gpg: Re-add the revocation reason to the sigclass in a "rev" record.
+X-Git-Url: https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg.git;a=commitdiff_plain;h=e6592f2f4601eb2e7e72ba785a64a9351d87c5d3;hp=63f64a3d8d4fbf20cdea27ae5bf792484cc93aca
+
+gpg: Re-add the revocation reason to the sigclass in a "rev" record.
+
+* g10/import.c (get_revocation_reason): Fix setting of r_reason.
+--
+
+Note that gpgme has not yet support for parsing the revocation reason.
+Due to the split of gpgme it was not tested with gpgmeqt which has its
+own parser in its regression tests which kicked it when building
+debian packages.
+
+GnuPG-bug-id: 7083
+Fixes-commit: 3f825b044b2f1db8773f27a96034c925177fe9f0
+---
+
+diff --git a/g10/import.c b/g10/import.c
+index 5dad290ca..5985d177b 100644
+--- a/g10/import.c
++++ b/g10/import.c
+@@ -3411,6 +3411,7 @@ get_revocation_reason (PKT_signature *sig, char **r_reason,
+   size_t reason_n;
+   const byte *reason_p;
+   int reason_code = 0;
++  const char *reason_string;
+   char *freeme;
+ 
+   if (r_reason)
+@@ -3427,9 +3428,11 @@ get_revocation_reason (PKT_signature *sig, char **r_reason,
+     {
+       reason_code = *reason_p;
+       reason_n--; reason_p++;
+-      revocation_reason_code_to_str (reason_code, &freeme);
+-      if (r_reason)
++      reason_string = revocation_reason_code_to_str (reason_code, &freeme);
++      if (r_reason && freeme)
+         *r_reason = freeme;
++      else if (r_reason && reason_string)
++        *r_reason = xstrdup (reason_string);
+       else
+         xfree (freeme);
+ 
