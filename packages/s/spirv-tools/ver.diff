@@ -4,40 +4,49 @@ Date: 2016-06-13 11:46:16.846841814 +0200
 Unversioned libraries suck!
 
 ---
- source/CMakeLists.txt        |    2 ++
+ source/CMakeLists.txt        |    4 +++-
  source/diff/CMakeLists.txt   |    1 +
  source/fuzz/CMakeLists.txt   |    1 +
  source/link/CMakeLists.txt   |    1 +
  source/lint/CMakeLists.txt   |    1 +
  source/opt/CMakeLists.txt    |    1 +
  source/reduce/CMakeLists.txt |    1 +
- 7 files changed, 8 insertions(+)
+ 7 files changed, 9 insertions(+), 1 deletion(-)
 
-Index: SPIRV-Tools-sdk-1.3.216.0/source/CMakeLists.txt
+Index: SPIRV-Tools-2025.3.rc1/source/CMakeLists.txt
 ===================================================================
---- SPIRV-Tools-sdk-1.3.216.0.orig/source/CMakeLists.txt
-+++ SPIRV-Tools-sdk-1.3.216.0/source/CMakeLists.txt
-@@ -377,6 +377,7 @@ endfunction()
- add_library(${SPIRV_TOOLS}-shared SHARED ${SPIRV_SOURCES})
+--- SPIRV-Tools-2025.3.rc1.orig/source/CMakeLists.txt
++++ SPIRV-Tools-2025.3.rc1/source/CMakeLists.txt
+@@ -344,6 +344,7 @@ if (SPIRV_TOOLS_USE_MIMALLOC)
+ endif()
  spirv_tools_default_target_options(${SPIRV_TOOLS}-shared)
  set_target_properties(${SPIRV_TOOLS}-shared PROPERTIES CXX_VISIBILITY_PRESET hidden)
 +set_target_properties(${SPIRV_TOOLS}-shared PROPERTIES OUTPUT_NAME "${SPIRV_TOOLS}-shared-@PACKAGE_VERSION@")
  target_compile_definitions(${SPIRV_TOOLS}-shared
    PRIVATE SPIRV_TOOLS_IMPLEMENTATION
    PUBLIC SPIRV_TOOLS_SHAREDLIB
-@@ -399,6 +400,7 @@ if(SPIRV_TOOLS_BUILD_STATIC)
-   set(SPIRV_TOOLS_TARGETS ${SPIRV_TOOLS}-static ${SPIRV_TOOLS}-shared)
- else()
-   add_library(${SPIRV_TOOLS} ${SPIRV_TOOLS_LIBRARY_TYPE} ${SPIRV_SOURCES})
-+  set_target_properties(${SPIRV_TOOLS} PROPERTIES OUTPUT_NAME "${SPIRV_TOOLS}-@PACKAGE_VERSION@")
+@@ -353,7 +354,7 @@ if(SPIRV_TOOLS_BUILD_STATIC)
+   add_library(${SPIRV_TOOLS}-static STATIC ${SPIRV_SOURCES})
+   spirv_tools_default_target_options(${SPIRV_TOOLS}-static)
+   # The static target does not have the '-static' suffix.
+-  set_target_properties(${SPIRV_TOOLS}-static PROPERTIES OUTPUT_NAME "${SPIRV_TOOLS}")
++  set_target_properties(${SPIRV_TOOLS}-static PROPERTIES OUTPUT_NAME "${SPIRV_TOOLS}-@PACKAGE_VERSION@")
+ 
+   # Create the "${SPIRV_TOOLS}" target as an alias to either "${SPIRV_TOOLS}-static"
+   # or "${SPIRV_TOOLS}-shared" depending on the value of BUILD_SHARED_LIBS.
+@@ -370,6 +371,7 @@ else()
+     target_link_libraries(${SPIRV_TOOLS} PRIVATE mimalloc-static)
+   endif()
    spirv_tools_default_target_options(${SPIRV_TOOLS})
++  set_target_properties(${SPIRV_TOOLS} PROPERTIES OUTPUT_NAME "${SPIRV_TOOLS}-@PACKAGE_VERSION@")
    set(SPIRV_TOOLS_TARGETS ${SPIRV_TOOLS} ${SPIRV_TOOLS}-shared)
  endif()
-Index: SPIRV-Tools-sdk-1.3.216.0/source/diff/CMakeLists.txt
+ 
+Index: SPIRV-Tools-2025.3.rc1/source/diff/CMakeLists.txt
 ===================================================================
---- SPIRV-Tools-sdk-1.3.216.0.orig/source/diff/CMakeLists.txt
-+++ SPIRV-Tools-sdk-1.3.216.0/source/diff/CMakeLists.txt
-@@ -36,6 +36,7 @@ target_link_libraries(SPIRV-Tools-diff
+--- SPIRV-Tools-2025.3.rc1.orig/source/diff/CMakeLists.txt
++++ SPIRV-Tools-2025.3.rc1/source/diff/CMakeLists.txt
+@@ -44,6 +44,7 @@ target_link_libraries(SPIRV-Tools-diff
    PUBLIC SPIRV-Tools-opt)
  
  set_property(TARGET SPIRV-Tools-diff PROPERTY FOLDER "SPIRV-Tools libraries")
@@ -45,22 +54,22 @@ Index: SPIRV-Tools-sdk-1.3.216.0/source/diff/CMakeLists.txt
  spvtools_check_symbol_exports(SPIRV-Tools-diff)
  
  if(ENABLE_SPIRV_TOOLS_INSTALL)
-Index: SPIRV-Tools-sdk-1.3.216.0/source/fuzz/CMakeLists.txt
+Index: SPIRV-Tools-2025.3.rc1/source/fuzz/CMakeLists.txt
 ===================================================================
---- SPIRV-Tools-sdk-1.3.216.0.orig/source/fuzz/CMakeLists.txt
-+++ SPIRV-Tools-sdk-1.3.216.0/source/fuzz/CMakeLists.txt
-@@ -439,6 +439,7 @@ if(SPIRV_BUILD_FUZZER)
-   spvtools_pch(SPIRV_TOOLS_FUZZ_SOURCES pch_source_fuzz)
+--- SPIRV-Tools-2025.3.rc1.orig/source/fuzz/CMakeLists.txt
++++ SPIRV-Tools-2025.3.rc1/source/fuzz/CMakeLists.txt
+@@ -443,6 +443,7 @@ if(SPIRV_BUILD_FUZZER)
+   endif()
  
    add_library(SPIRV-Tools-fuzz ${SPIRV_TOOLS_FUZZ_SOURCES})
 +  set_target_properties(SPIRV-Tools-fuzz PROPERTIES OUTPUT_NAME "SPIRV-Tools-fuzz-@PACKAGE_VERSION@")
  
-   spvtools_default_compile_options(SPIRV-Tools-fuzz)
- 
-Index: SPIRV-Tools-sdk-1.3.216.0/source/link/CMakeLists.txt
+   if (SPIRV_TOOLS_USE_MIMALLOC AND NOT SPIRV_TOOLS_BUILD_STATIC)
+     target_link_libraries(SPIRV-Tools-fuzz PRIVATE mimalloc-static)
+Index: SPIRV-Tools-2025.3.rc1/source/link/CMakeLists.txt
 ===================================================================
---- SPIRV-Tools-sdk-1.3.216.0.orig/source/link/CMakeLists.txt
-+++ SPIRV-Tools-sdk-1.3.216.0/source/link/CMakeLists.txt
+--- SPIRV-Tools-2025.3.rc1.orig/source/link/CMakeLists.txt
++++ SPIRV-Tools-2025.3.rc1/source/link/CMakeLists.txt
 @@ -14,6 +14,7 @@
  add_library(SPIRV-Tools-link ${SPIRV_TOOLS_LIBRARY_TYPE}
    linker.cpp
@@ -69,10 +78,10 @@ Index: SPIRV-Tools-sdk-1.3.216.0/source/link/CMakeLists.txt
  
  spvtools_default_compile_options(SPIRV-Tools-link)
  target_include_directories(SPIRV-Tools-link
-Index: SPIRV-Tools-sdk-1.3.216.0/source/lint/CMakeLists.txt
+Index: SPIRV-Tools-2025.3.rc1/source/lint/CMakeLists.txt
 ===================================================================
---- SPIRV-Tools-sdk-1.3.216.0.orig/source/lint/CMakeLists.txt
-+++ SPIRV-Tools-sdk-1.3.216.0/source/lint/CMakeLists.txt
+--- SPIRV-Tools-2025.3.rc1.orig/source/lint/CMakeLists.txt
++++ SPIRV-Tools-2025.3.rc1/source/lint/CMakeLists.txt
 @@ -27,6 +27,7 @@ endif()
  
  add_library(SPIRV-Tools-lint ${SPIRV_TOOLS_LIBRARY_TYPE} ${SPIRV_TOOLS_LINT_SOURCES})
@@ -81,22 +90,22 @@ Index: SPIRV-Tools-sdk-1.3.216.0/source/lint/CMakeLists.txt
  spvtools_default_compile_options(SPIRV-Tools-lint)
  target_include_directories(SPIRV-Tools-lint
    PUBLIC
-Index: SPIRV-Tools-sdk-1.3.216.0/source/opt/CMakeLists.txt
+Index: SPIRV-Tools-2025.3.rc1/source/opt/CMakeLists.txt
 ===================================================================
---- SPIRV-Tools-sdk-1.3.216.0.orig/source/opt/CMakeLists.txt
-+++ SPIRV-Tools-sdk-1.3.216.0/source/opt/CMakeLists.txt
-@@ -249,6 +249,7 @@ spvtools_pch(SPIRV_TOOLS_OPT_SOURCES pch
- 
- add_library(SPIRV-Tools-opt ${SPIRV_TOOLS_LIBRARY_TYPE} ${SPIRV_TOOLS_OPT_SOURCES})
+--- SPIRV-Tools-2025.3.rc1.orig/source/opt/CMakeLists.txt
++++ SPIRV-Tools-2025.3.rc1/source/opt/CMakeLists.txt
+@@ -272,6 +272,7 @@ if (SPIRV_TOOLS_USE_MIMALLOC AND NOT SPI
+   target_link_libraries(SPIRV-Tools-opt PRIVATE mimalloc-static)
+ endif()
  
 +set_target_properties(SPIRV-Tools-opt PROPERTIES OUTPUT_NAME "SPIRV-Tools-opt-@PACKAGE_VERSION@")
  spvtools_default_compile_options(SPIRV-Tools-opt)
  target_include_directories(SPIRV-Tools-opt
    PUBLIC
-Index: SPIRV-Tools-sdk-1.3.216.0/source/reduce/CMakeLists.txt
+Index: SPIRV-Tools-2025.3.rc1/source/reduce/CMakeLists.txt
 ===================================================================
---- SPIRV-Tools-sdk-1.3.216.0.orig/source/reduce/CMakeLists.txt
-+++ SPIRV-Tools-sdk-1.3.216.0/source/reduce/CMakeLists.txt
+--- SPIRV-Tools-2025.3.rc1.orig/source/reduce/CMakeLists.txt
++++ SPIRV-Tools-2025.3.rc1/source/reduce/CMakeLists.txt
 @@ -92,6 +92,7 @@ target_include_directories(SPIRV-Tools-r
  	$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
    PRIVATE ${spirv-tools_BINARY_DIR}

@@ -413,4 +413,12 @@ join Staging:E</comment>
     <comment>- Update to release 2025.2~rc2</comment>
     <requestid>1272806</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>1cecea0df2157421f3bdc6e01c17ad0c</srcmd5>
+    <version>2025.3~rc1</version>
+    <time>1751362410</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2025.3~rc1</comment>
+    <requestid>1289230</requestid>
+  </revision>
 </revisionlist>
