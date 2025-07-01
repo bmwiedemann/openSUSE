@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 30 13:30:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.6.1:
+  * Isolate testing from user or system level ansible config (#472)
+  * Add typing-extensions as a runtime dependency (#471)
+  * Bump the dependencies group in /.config with 6 updates (#469)
+  * Add MOLECULE_OPTS support to MoleculeScenario (#457)
+
+-------------------------------------------------------------------
 Mon Jun 30 08:11:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.6.0:

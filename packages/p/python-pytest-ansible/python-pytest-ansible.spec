@@ -44,7 +44,7 @@
 %endif
 
 Name:           python-pytest-ansible
-Version:        25.6.0
+Version:        25.6.1
 Release:        0
 Summary:        Plugin for pytest to simplify calling ansible modules from tests or fixtures
 License:        MIT
@@ -65,6 +65,7 @@ BuildRequires:  molecule >= 6.0.0
 BuildRequires:  fdupes
 Requires:       %{python_for_dependencies}-packaging
 Requires:       %{python_for_dependencies}-pytest >= 6
+Requires:       %{python_for_dependencies}-typing_extensions
 Requires:       ansible-core > 2.14
 Requires:       python-ansible-compat >= 4.1.11
 Suggests:       %{python_for_dependencies}-attrs == 22.2.0
