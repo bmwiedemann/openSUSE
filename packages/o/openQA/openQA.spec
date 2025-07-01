@@ -74,7 +74,7 @@
 %define build_requires %assetpack_requires npm rubygem(sass) >= 3.7.4
 %else
 # The following line is generated from dependencies.yaml
-%define build_requires %assetpack_requires npm perl(CSS::Sass)
+%define build_requires %assetpack_requires npm perl(CSS::Sass) python3-argparse-manpage
 %endif
 
 # All requirements needed by the tests executed during build-time.
@@ -97,7 +97,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1751037189.b3da736b
+Version:        5.1751274619.acdc8609
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
