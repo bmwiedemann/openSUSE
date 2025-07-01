@@ -173,4 +173,22 @@
     would cause cache storing and retrieval to fail. (forwarded request 1256336 from rrahl0)</comment>
     <requestid>1256337</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>428fec690055b121ee0c23ea6e274bb9</srcmd5>
+    <version>6.4.0</version>
+    <time>1751362509</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.4.0:
+  * chore(docs): update release notes to 6.4.0
+  * fix: unify data.forgejo.org/forgejo/forgejo-build-publish
+  * chore: fix typos and add type checking to port/addr args
+  * Remove unused header
+  * chore(renovate): drop explicit config in favor of preset
+  * chore(renovate): enable indirect gomod deps
+  * fix: if insecure == true, get proxy too
+  * fix: use v11 for the docker-compose example
+  * update dependencies
+- remove patch fix-CVE-2025-22869.patch, as upstream updated the dependencies (forwarded request 1289325 from rrahl0)</comment>
+    <requestid>1289326</requestid>
+  </revision>
 </revisionlist>

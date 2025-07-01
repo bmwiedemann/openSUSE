@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 30 16:59:32 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 6.4.0:
+  * chore(docs): update release notes to 6.4.0
+  * fix: unify data.forgejo.org/forgejo/forgejo-build-publish
+  * chore: fix typos and add type checking to port/addr args
+  * Remove unused header
+  * chore(renovate): drop explicit config in favor of preset
+  * chore(renovate): enable indirect gomod deps
+  * fix: if insecure == true, get proxy too
+  * fix: use v11 for the docker-compose example
+  * update dependencies
+- remove patch fix-CVE-2025-22869.patch, as upstream updated the dependencies
+
+-------------------------------------------------------------------
 Wed Mar 26 21:40:10 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 6.3.1:

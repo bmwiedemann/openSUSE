@@ -19,7 +19,7 @@
 %define services %{name}.service
 
 Name:           forgejo-runner
-Version:        6.3.1
+Version:        6.4.0
 Release:        0
 Summary:        Daemon that connects to a Forgejo instance and runs CI jobs
 License:        MIT
@@ -27,11 +27,10 @@ URL:            https://code.forgejo.org/forgejo/runner
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        %{name}.service
-Patch0:         fix-CVE-2025-22869.patch
-BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
 BuildRequires:  golang(API) >= 1.23
+BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(systemd)
 Requires:       (podman or docker)
 %{?systemd_ordering}
