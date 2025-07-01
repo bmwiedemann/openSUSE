@@ -634,4 +634,14 @@ bsc#1007869) (CVE-2016-8706)</comment>
   * https://github.com/memcached/memcached/wiki/ReleaseNotes1638</comment>
     <requestid>1285099</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>ead4cca09ce0cc2d0abceb6cfd4f3a87</srcmd5>
+    <version>1.6.38</version>
+    <time>1751362387</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1288562 from pgajdos
+
+- disable ssl_session_resumption.t for s390x [bsc#1243673]</comment>
+    <requestid>1289073</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 25 13:58:12 UTC 2025 - pgajdos@suse.com
+
+- disable ssl_session_resumption.t for s390x [bsc#1243673]
+
+-------------------------------------------------------------------
 Fri Jun  6 11:50:50 UTC 2025 - pgajdos@suse.com
 
 - version update to 1.6.38

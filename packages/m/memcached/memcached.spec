@@ -128,6 +128,10 @@ install -D -m 0644 %{SOURCE6} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 %endif
 
 %check
+%ifarch s390x
+# bsc#1243673
+rm t/ssl_session_resumption.t
+%endif
 %make_build test
 
 %if %{with sysusers}
