@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jun 29 20:36:01 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.7.17
+ * Bug fixes
+  * Apply build constraints when resolving --with dependencies 
+  * Drop trailing slashes when converting index URL from URL 
+  * Ignore UV_PYTHON_CACHE_DIR when empty 
+  * Fix error message ordering for pyvenv.cfg version conflict 
+
+-------------------------------------------------------------------
+Sat Jun 28 16:40:25 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.7.16 
+ * Enhancements
+   * Include path or URL when failing to convert in lockfile 
+   * Warn when ~= is used as a Python version specifier without a patch version 
+ * Preview features
+   * Ensure preview default Python installs are upgradeable 
+ * Performance
+   * Share workspace cache between lock and sync operations 
+ * Bug fixes
+   * Allow local indexes to reference remote files 
+   * Avoid rendering desugared prefix matches in error messages 
+   * Avoid using path URL for workspace Git dependencies in requirements.txt 
+   * Normalize index URLs to remove trailing slash 
+   * Respect URL-encoded credentials in redirect location 
+   * Lock the source tree when running setuptools, to protect concurrent builds 
+ * Documentation
+   * Note that GCP Artifact Registry download URLs must have /simple component 
+
+-------------------------------------------------------------------
 Wed Jun 25 12:03:39 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.15:
