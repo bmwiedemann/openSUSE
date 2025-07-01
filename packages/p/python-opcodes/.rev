@@ -23,4 +23,18 @@
     <comment></comment>
     <requestid>1197812</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e2aeb70ec614032bd8c656d3eb4b8775</srcmd5>
+    <version>0.3.14</version>
+    <time>1751362457</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1289266 from glaubitz
+
+- Limit Python files matched in %files section
+  - Switch build system from setuptools to pyproject.toml
+    * Add python-pip and python-wheel to BuildRequires
+    * Replace %python_build with %pyproject_wheel
+    * Replace %python_install with %pyproject_install</comment>
+    <requestid>1289276</requestid>
+  </revision>
 </revisionlist>

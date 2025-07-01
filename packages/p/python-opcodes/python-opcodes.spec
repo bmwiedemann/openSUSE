@@ -1,7 +1,7 @@
 #
 # spec file for package python-opcodes
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/Maratyszcza/Opcodes
 Source:         https://files.pythonhosted.org/packages/source/o/opcodes/opcodes-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -48,10 +50,10 @@ This project is a spin-off from <https://github.com/Maratyszcza/PeachPy
 %setup -q -n opcodes-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +62,7 @@ This project is a spin-off from <https://github.com/Maratyszcza/PeachPy
 %files %{python_files}
 %doc readme.rst
 %license license.rst
-%{python_sitelib}/*
+%{python_sitelib}/opcodes
+%{python_sitelib}/opcodes-%{version}.dist-info
 
 %changelog
