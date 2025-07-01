@@ -362,4 +362,27 @@
     <comment>weekly snapshot</comment>
     <requestid>1287985</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1f70af3150c8dec8d4fc3e1f79a783ad</srcmd5>
+    <version>16</version>
+    <time>1751362502</time>
+    <user>anag_factory</user>
+    <comment>- Version 16
+
+- ipmitool invocation: do not write spurious % percent sign
+  (jsc#PED-12285)
+
+- jsc#PED-11193
+  - do not create the &quot;after install&quot; snapshot 
+
+- Fix the conversion of the &quot;language&quot; section from AutoYaST profiles
+  (gh#agama-project/agama#2516).
+
+- do not crash if onlyRequired flag is set and libzypp is not
+  installed on target system (jsc#AGM-154)
+
+- allow to set onlyRequired flag for software service
+  (jsc#AGM-154)</comment>
+    <requestid>1289322</requestid>
+  </revision>
 </revisionlist>
