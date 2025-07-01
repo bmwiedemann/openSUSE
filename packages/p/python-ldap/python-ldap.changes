@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 30 09:36:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+
+-------------------------------------------------------------------
 Thu Aug 29 07:22:28 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Enable sle15_python_module_pythons (boo#1229549)

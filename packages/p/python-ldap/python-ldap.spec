@@ -1,7 +1,7 @@
 #
 # spec file for package python-ldap
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,11 @@ Group:          Development/Libraries/Python
 URL:            https://www.python-ldap.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/python-ldap/python-ldap-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyasn1 >= 0.3.7}
 BuildRequires:  %{python_module pyasn1-modules >= 0.1.5}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  cyrus-sasl-devel >= 2.1
 BuildRequires:  fdupes
 BuildRequires:  krb5-devel
@@ -54,10 +56,10 @@ LDAP-related stuff (e.g. processing LDIF, LDAPURLs, LDAPv3 schema, etc.).
 cp Build/setup.cfg.suse-linux setup.cfg
 
 %build
-CFLAGS="%{optflags}" %python_build
+CFLAGS="%{optflags}" %pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check

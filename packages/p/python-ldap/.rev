@@ -820,4 +820,17 @@ Tests/
     <comment></comment>
     <requestid>1201623</requestid>
   </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>4460eb159b2bb0ce2fc4c7f091c1675e</srcmd5>
+    <version>3.4.4</version>
+    <time>1751362428</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1289231 from glaubitz
+
+- Switch build system from setuptools to pyproject.toml
+    * Add python-pip and python-wheel to BuildRequires
+    * Replace %python_build with %pyproject_wheel
+    * Replace %python_install with %pyproject_install</comment>
+    <requestid>1289272</requestid>
+  </revision>
 </revisionlist>
