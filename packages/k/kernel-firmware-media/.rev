@@ -61,4 +61,17 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: vpu: update video firmware binary for SA8775p</comment>
     <requestid>1272728</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cff48dd0830301040615ba9935d837d5</srcmd5>
+    <version>20250627</version>
+    <time>1751362419</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250627 (git commit f40eafe21683):
+  * WHENCE: extract license texts
+  * qcom: update firmware binary for SM8550
+
+- Update to version 20250624 (git commit b05fabcd6f2a):
+  * qcom: venus-5.4: add the firmware binary for qcs615</comment>
+    <requestid>1289253</requestid>
+  </revision>
 </revisionlist>
