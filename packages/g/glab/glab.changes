@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 30 12:46:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- remove ldflags '-s -w' from build command
+- fix missing git commit in 'glab version' output
+
+-------------------------------------------------------------------
 Wed Jun 25 12:26:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.61.0:

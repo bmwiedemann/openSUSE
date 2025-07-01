@@ -84,12 +84,20 @@ Zsh command line completion support for %{name}.
 %autosetup -p 1 -a 1 -n %{name}-%{version}
 
 %build
+# hash will be shortened by COMMIT_HASH:0:8 later
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
+
 go build \
         -mod=vendor \
         -buildmode=pie \
-        -ldflags "-s -w -X main.version=%{version} -X main.build=$BUILD_DATE -X main.debugMode=false" \
+        -trimpath \
+        -ldflags "-X main.version=v%{version} \
+        -X main.build=${BUILD_DATE} \
+        -X main.commit=${COMMIT_HASH:0:8} \
+        -X main.debugMode=false" \
         ./cmd/glab
 
 # Build HTML docs
