@@ -1,0 +1,7 @@
+<services>
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">v0*</param>
+     <param name="compression">gz</param>
+     <param name="update">true</param>
+  </service>
+</services>
