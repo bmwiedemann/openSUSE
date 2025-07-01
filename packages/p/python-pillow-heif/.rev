@@ -58,4 +58,14 @@
   * AVIF format marked as deprecated and pending for the removal. (forwarded request 1253564 from rrahl0)</comment>
     <requestid>1253565</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4a9c63a6c5d5c5c2129c8bf62280aa69</srcmd5>
+    <version>1.0.0</version>
+    <time>1751362506</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.0:
+  * Support for YCbCr AUX images
+  * AVIF support was dropped, as the upcoming Pillow has native support (forwarded request 1289323 from rrahl0)</comment>
+    <requestid>1289324</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           python-pillow-heif
-Version:        0.22.0
+Version:        1.0.0
 Release:        0
 Summary:        Python interface for libheif library
 License:        BSD-3-Clause
