@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybtex
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oname   pybtex
 Name:           python-pybtex
 Version:        0.24.0
@@ -32,9 +31,11 @@ Patch0:         python-pybtex-no-six.patch
 BuildRequires:  %{python_module PyYAML >= 3.0.1}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module latexcodec}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-latexcodec
@@ -58,10 +59,10 @@ process the above formats.
 %autosetup -p1 -n %{oname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
 # install man
@@ -101,6 +102,7 @@ done
 %python_alternative %{_bindir}/%{oname}-format
 %python_alternative %{_bindir}/%{oname}-convert
 %python_alternative %{_bindir}/%{oname}
-%{python_sitelib}/*
+%{python_sitelib}/%{oname}
+%{python_sitelib}/%{oname}-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 25 01:47:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- List files and directories under sitelib explicitly.
+
+-------------------------------------------------------------------
 Thu May 16 15:09:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated
