@@ -1,6 +1,4 @@
 #!/bin/bash
-# -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
-# ex: ts=8 sw=4 sts=4 et filetype=sh
 
 set -e
 
@@ -42,12 +40,24 @@ add_requires ignition-umount-initrd-fstab.service ignition-files.service
 add_requires ignition-enable-network.service ignition-fetch.service
 
 if [ -z "${PLATFORM_ID}" ]; then
-    platform="$(systemd-detect-virt || true)"
-    case "${platform}" in
-        *vmware*)     platform="vmware" ;;
-        *oracle*)     platform="virtualbox" ;;
-        *kvm*|*qemu*) platform="qemu" ;;
-        *)            platform="metal" ;;
+    platform="metal"
+    detectedvirt="$(systemd-detect-virt || true)"
+    case "${detectedvirt}" in
+       *vmware*)
+            if modinfo -F name vmw_vsock_virtio_transport >/dev/null; then
+                platform="vmware"
+            fi
+            ;;
+        *oracle*)
+            if modinfo -F name vboxguest >/dev/null; then
+                platform="virtualbox"
+            fi
+            ;;
+        *kvm*|*qemu*)
+            if modinfo -F name qemu_fw_cfg >/dev/null; then
+                platform="qemu"
+            fi
+            ;;
     esac
     echo "PLATFORM_ID=${platform}" > /run/ignition.env
 fi

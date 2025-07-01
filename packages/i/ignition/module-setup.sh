@@ -41,7 +41,7 @@ install() {
         "/usr/sbin/ignition-enable-network"
     inst_script "$moddir/ignition-setup-user.sh" \
         "/usr/sbin/ignition-setup-user"
-    inst_multiple awk systemd-detect-virt cryptsetup
+    inst_multiple awk systemd-detect-virt cryptsetup modinfo
     install_ignition_unit ignition-remove-reconfig_system.service initrd.target
     install_ignition_unit ignition-setup-user.service
 }

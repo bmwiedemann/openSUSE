@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 30 14:08:02 UTC 2025 - Ignaz Forster <iforster@suse.com>
+
+- ignition-suse-generator: Only use Ignition platform ID when
+  the corresponding kernel modules are found
+  [bsc#1234315] [boo#1230668] [gh#coreos/ignition#1984]
+
+-------------------------------------------------------------------
 Tue Apr 01 11:56:36 UTC 2025 - iforster@suse.com
 
 - Update to version 2.21.0:
