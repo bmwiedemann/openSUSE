@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 26 07:46:54 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Update to GCC 15 branch head, 15.1.1+git9866
+- Fix PR120827, ICE due to splitter emitting constant loads directly
+
+-------------------------------------------------------------------
 Tue Jun 10 12:32:01 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Remove all %gcc_icecream mode cross-compilers and the corresponding

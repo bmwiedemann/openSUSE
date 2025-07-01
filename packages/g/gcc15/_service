@@ -13,5 +13,7 @@
     <param name="compression">xz</param>
     <param name="file">*.tar</param>
   </service>
-  <service name="set_version" mode="manual"/>
+  <service name="set_version" mode="manual">
+    <param name="basename">gcc</param>
+  </service>
 </services>

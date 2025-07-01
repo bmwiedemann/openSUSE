@@ -127,4 +127,13 @@ since we bumped libgo SONAME as well for 15</comment>
   and cross-arm-gcc (ovmf).</comment>
     <requestid>1288189</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1f63af3453db4335af80a00d25f64d1b</srcmd5>
+    <version>15.1.1+git9866</version>
+    <time>1751362383</time>
+    <user>anag_factory</user>
+    <comment>- Update to GCC 15 branch head, 15.1.1+git9866
+- Fix PR120827, ICE due to splitter emitting constant loads directly (forwarded request 1288652 from Andreas_Schwab)</comment>
+    <requestid>1289221</requestid>
+  </revision>
 </revisionlist>
