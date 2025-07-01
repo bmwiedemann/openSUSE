@@ -1,0 +1,14 @@
+Index: mtx-1.3.12/mtx.h
+===================================================================
+--- mtx-1.3.12.orig/mtx.h
++++ mtx-1.3.12/mtx.h
+@@ -222,7 +222,8 @@ typedef unsigned char Direction_T;
+ #define Input   0
+ #define Output  1
+ #else
+-typedef enum { false, true } boolean;
++#include <stdbool.h>
++typedef bool boolean;
+ 
+ typedef enum { Input, Output } Direction_T;
+ #endif

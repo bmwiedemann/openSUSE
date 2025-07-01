@@ -28,6 +28,8 @@ Patch0:         %{name}-1.3.12-param_h.patch
 Patch2:         %{name}-1.3.12-autoconf.patch
 Patch3:         mtx-1.3.11-large-slots.patch
 Patch4:         mtx-1.3.12-destdir.patch
+# fix build with gcc15
+Patch5:         mtx-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 
@@ -41,6 +43,7 @@ libraries.
 %patch -P 2
 %patch -P 3
 %patch -P 4 -p2
+%patch -P 5 -p1
 
 %build
 autoreconf -fvi

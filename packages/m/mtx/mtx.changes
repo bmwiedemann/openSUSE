@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 30 14:18:16 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + mtx-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 12:57:53 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.
