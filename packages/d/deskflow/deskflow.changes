@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 30 07:54:40 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add patch disable-updater.patch, this disables by default the internal
+  updater, and hides the UI elements
+
+-------------------------------------------------------------------
 Fri May 30 06:24:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.22.0:

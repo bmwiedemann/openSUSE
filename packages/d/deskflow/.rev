@@ -20,4 +20,13 @@
   * Fix issues around the dialog shown when you first connect a server</comment>
     <requestid>1281267</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>332240bd1546b7e9bff32d72e17fb303</srcmd5>
+    <version>1.22.0</version>
+    <time>1751362445</time>
+    <user>anag_factory</user>
+    <comment>- add patch disable-updater.patch, this disables by default the internal
+  updater, and hides the UI elements</comment>
+    <requestid>1289195</requestid>
+  </revision>
 </revisionlist>

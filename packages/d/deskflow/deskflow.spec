@@ -25,6 +25,7 @@ Summary:        Share a single keyboard and mouse between multiple computers
 License:        GPL-2.0-only AND MIT AND SUSE-GPL-2.0-with-openssl-exception AND LGPL-2.1-only
 URL:            https://github.com/deskflow/deskflow
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         disable-updater.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.24
 BuildRequires:  doxygen
@@ -74,7 +75,7 @@ BuildArch:      noarch
 %{summary}.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %cmake \
