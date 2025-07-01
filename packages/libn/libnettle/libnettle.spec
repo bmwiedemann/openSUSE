@@ -2,6 +2,7 @@
 # spec file for package libnettle
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +20,7 @@
 %define soname 8
 %define hogweed_soname 6
 Name:           libnettle
-Version:        3.10.1
+Version:        3.10.2
 Release:        0
 Summary:        Cryptographic Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -30,9 +31,6 @@ Source1:        https://ftp.gnu.org/gnu/nettle/nettle-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Source4:        %{name}-rpmlintrc
-#PATCH-FIX-SUSE Skip the AES-GCM test as it fails on ppc64le virtual envs
-Patch1:         libnettle-powerpc64-skip-AES-GCM-test.patch
-BuildRequires:  autoconf
 BuildRequires:  fipscheck
 BuildRequires:  gmp-devel >= 6.1.0
 BuildRequires:  m4
@@ -98,7 +96,6 @@ operations using the nettle library.
 %autosetup -p1 -n nettle-%{version}
 
 %build
-autoreconf -fiv
 %configure \
     --disable-static \
     --enable-shared \
@@ -136,10 +133,8 @@ done
 %{_bindir}/fipshmac %{buildroot}%{_libdir}/libhogweed.so.%{hogweed_soname}
 }}
 
-%post   -n libnettle%{soname} -p /sbin/ldconfig
-%postun -n libnettle%{soname} -p /sbin/ldconfig
-%post   -n libhogweed%{hogweed_soname} -p /sbin/ldconfig
-%postun -n libhogweed%{hogweed_soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libnettle%{soname}
+%ldconfig_scriptlets -n libhogweed%{hogweed_soname}
 
 %check
 %make_build check

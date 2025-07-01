@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 29 16:54:59 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.10.2:
+  * Fix missing prototypes in getopt.h and getopt.c
+  * For powerpc64, avoid using v9 (ISA v3.0) instructions lxvb16x,
+    lxv and stxv in powerpc64/p8/ files.
+  * For powerpc64, add configure check for __VSX__, and disable
+    use of assembly if not defined. Nettle's powerpc64 assembly
+    requires at least v7 (ISA v2.06)
+- drop libnettle-powerpc64-skip-AES-GCM-test.patch
+
+-------------------------------------------------------------------
 Thu Jan  9 15:39:31 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Disable the gcm regression test as it fails in virtual
