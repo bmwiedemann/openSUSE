@@ -1,7 +1,7 @@
 #
 # spec file for package nedit
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           nedit
 Version:        5.7
 Release:        0
 Summary:        A GUI text editor
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
-Url:            http://sourceforge.net/projects/nedit/
+URL:            http://sourceforge.net/projects/nedit/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}-src.tar.gz
 Source1:        %{name}-icon.png
 Source2:        %{name}.desktop
@@ -38,6 +38,7 @@ Patch4:         %{name}-5.5-visfix.patch
 Patch5:         %{name}-5.5CVS-utf8.patch
 #PATCH-FIX-OPENSUSE do not include data and time in binary
 Patch6:         %{name}-5.6_builddate_fix.patch
+Patch7:         %{name}-5.7-gcc15.patch
 BuildRequires:  bison
 BuildRequires:  openmotif-devel
 BuildRequires:  update-desktop-files
@@ -58,6 +59,7 @@ and a lot other nice features (and extensions for programmers).
 %patch -P 4 -p1
 %patch -P 5
 %patch -P 6 -p1
+%patch -P 7 -p1
 
 %build
 make -j1 RPM_OPT_FLAGS="%{optflags}" linux

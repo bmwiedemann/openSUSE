@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 16 18:36:38 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- nedit-5.7-gcc15.patch: fix build with gcc15
+
+-------------------------------------------------------------------
 Thu Feb 22 13:58:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
