@@ -395,4 +395,12 @@
     <comment>- Update to snapshot 1.6.4+sdk309+git17 (Git aa6cef19)</comment>
     <requestid>1272805</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>6c55fce7140ab119410b8d4e1e91626b</srcmd5>
+    <version>1.6.4+sdk313+git19</version>
+    <time>1751362408</time>
+    <user>anag_factory</user>
+    <comment>- Update to snapshot 1.6.4+sdk313+git19 (Git 2a611a9)</comment>
+    <requestid>1288937</requestid>
+  </revision>
 </revisionlist>
