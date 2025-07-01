@@ -209,4 +209,20 @@
     <comment>weekly snapshot</comment>
     <requestid>1287983</requestid>
   </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>99f3d03c2a14e9f451af50e965669cad</srcmd5>
+    <version>0</version>
+    <time>1751362500</time>
+    <user>anag_factory</user>
+    <comment>- Version 16
+
+- Fix Kalpa product definition (gh#agama-project/agama#2520).
+
+- Added Kalpa to Products (gh#agama-project/agama#2484).
+
+- Bump openSUSE Leap 16.0 to Beta
+- Add NetworkManager-config-server package to SLES 16.0 and
+  https://news.opensuse.org/2025/02/13/tw-plans-to-adopt-selinux-as-default/</comment>
+    <requestid>1289320</requestid>
+  </revision>
 </revisionlist>
