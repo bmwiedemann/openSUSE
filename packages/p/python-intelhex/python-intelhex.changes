@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 30 14:11:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+  * Update name for dist directory in %files section
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Thu Jul 18 19:53:11 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - This package actually is also a rename of intelhex package.

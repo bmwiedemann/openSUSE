@@ -1,7 +1,7 @@
 #
 # spec file for package python-intelhex
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-intelhex
 Version:        2.3.0
 Release:        0
@@ -23,7 +24,9 @@ Summary:        Python library for Intel HEX files manipulations
 License:        BSD-3-Clause
 URL:            https://github.com/python-intelhex/intelhex
 Source:         https://files.pythonhosted.org/packages/source/i/intelhex/intelhex-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -52,10 +55,10 @@ those based on the library itself. Check the docs to know more.
 sed -i -e '/^#!\s*\/usr\/bin\/.*python/d' intelhex/bench.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 for exe in bin2hex hex2bin hex2dump hexdiff hexinfo hexmerge ; do
 mv %{buildroot}%{_bindir}/$exe.py %{buildroot}%{_bindir}/ih_$exe
 %python_clone -a %{buildroot}%{_bindir}/ih_$exe
@@ -89,6 +92,7 @@ done
 %python_alternative %{_bindir}/ih_hexinfo
 %python_alternative %{_bindir}/ih_hexmerge
 
-%{python_sitelib}/intelhex*
+%{python_sitelib}/intelhex
+%{python_sitelib}/intelhex-%{version}.dist-info
 
 %changelog

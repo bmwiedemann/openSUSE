@@ -7,4 +7,12 @@
     <comment>Package required by the upgrade of python-esptool.</comment>
     <requestid>1188487</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4006044ebdcd3de352490b66383a33a9</srcmd5>
+    <version>2.3.0</version>
+    <time>1751362514</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1289332</requestid>
+  </revision>
 </revisionlist>
