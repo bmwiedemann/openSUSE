@@ -5537,4 +5537,12 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
   - More work on the new PDB backend.</comment>
     <requestid>1287260</requestid>
   </revision>
+  <revision rev="464" vrev="1">
+    <srcmd5>60624b9e4dc56903c1f1debba6c5a059</srcmd5>
+    <version>10.11</version>
+    <time>1751362441</time>
+    <user>anag_factory</user>
+    <comment>- readded .a files to -devel packages (bsc#1245475) (forwarded request 1289267 from msmeissn)</comment>
+    <requestid>1289312</requestid>
+  </revision>
 </revisionlist>

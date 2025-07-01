@@ -76,8 +76,8 @@
 
 %define         _lto_cflags %{nil}
 Name:           wine%{psuffix}
-%define downloadver  10.10
-Version:        10.10
+%define downloadver  10.11
+Version:        10.11
 Release:        0
 Summary:        An MS Windows Emulator
 Group:          System/Emulators/PC
@@ -206,11 +206,11 @@ Requires:       wine-32bit = %{version}
 %endif
 Requires:       samba-winbind
 Recommends:     wine-gecko >= 2.47.4
-Recommends:     wine-mono >= 9.4.0
+Recommends:     wine-mono >= 10.1.0
 Recommends:     winetricks
 Conflicts:      wine
 Conflicts:      wine-gecko < 2.47.4
-Conflicts:      wine-mono < 9.4.0
+Conflicts:      wine-mono < 10.1.0
 Provides:       wine-mp3 = %version
 Obsoletes:      wine-mp3 < %version
 %if "%{flavor}" != ""
@@ -329,14 +329,6 @@ cat %SOURCE97
 
 rm -rf %{buildroot}%{_mandir}/{pl,de,fr}.UTF-8
 
-# we dont need .a files currently
-rm -f %buildroot/usr/lib64/wine/x86_64-unix/*.a
-rm -f %buildroot/usr/lib64/wine/x86_64-windows/*.a
-rm -f %buildroot/usr/lib/wine/i386-unix/*.a
-rm -f %buildroot/usr/lib/wine/i386-windows/*.a
-rm -f %buildroot/usr/lib64/wine/i386-unix/*.a
-rm -f %buildroot/usr/lib64/wine/i386-windows/*.a
-
 %if ! %{wow64}
 %ifarch x86_64
 	ln -s /usr/lib/wine/i386-windows %buildroot/%_winelibdir/wine/i386-windows
@@ -420,13 +412,19 @@ ln -sf /usr/lib64/wine/x86_64-unix /usr/lib/wine/
 %endif
 %endif
 %ifarch %{ix86}
+%exclude %{_winelibdir}/wine/i386-unix/*.a
+%exclude %{_winelibdir}/wine/i386-windows/*.a
 %{_bindir}/wine
 %{_winelibdir}/wine/i386-windows
 %{_winelibdir}/wine/i386-unix
 %endif
 %ifarch x86_64
+%exclude %{_winelibdir}/wine/x86_64-unix/*.a
+%exclude %{_winelibdir}/wine/x86_64-windows/*.a
 %if %{wow64}
 %{_bindir}/wine
+%exclude %{_winelibdir}/wine/i386-unix/*.a
+%exclude %{_winelibdir}/wine/i386-windows/*.a
 %{_winelibdir}/wine/i386-windows
 %{_winelibdir}/wine/x86_64-windows
 %{_winelibdir}/wine/x86_64-unix
@@ -442,6 +440,7 @@ ln -sf /usr/lib64/wine/x86_64-unix /usr/lib/wine/
 %endif
 
 %files devel
+%{_winelibdir}/wine/*-*/*.a
 %{_includedir}/wine
 %{_bindir}/widl
 %{_bindir}/winebuild

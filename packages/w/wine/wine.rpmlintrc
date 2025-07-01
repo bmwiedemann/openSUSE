@@ -1,1 +1,6 @@
 addFilter('statically-linked-binary')
+addFilter('static-library-without-symtab')
+addFilter('readelf-failed')
+addFilter('lto-no-text-in-archive')
+# we provide mktemp as function
+addFilter('call-to-mktemp')

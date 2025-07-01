@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 30 12:47:38 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- readded .a files to -devel packages (bsc#1245475)
+
+-------------------------------------------------------------------
+Sat Jun 28 12:12:55 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 10.11 release
+  - Preparation work for NTSync support.
+  - More support for generating Windows Runtime metadata in WIDL.
+  - Various bug fixes.
+- update staging to 10.11 release
+
+-------------------------------------------------------------------
 Fri Jun 20 12:28:13 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - symlink /usr/lib64/wine/x86_64-* into /usr/lib/wine/
