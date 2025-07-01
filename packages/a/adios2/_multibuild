@@ -1,4 +1,5 @@
 <multibuild>
+  <package>minimal</package>
   <package>mpich</package>
   <package>mvapich2</package>
   <package>openmpi4</package>

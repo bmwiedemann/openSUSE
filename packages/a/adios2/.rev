@@ -94,4 +94,23 @@
 </comment>
     <requestid>1229067</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f2e88e78ae7bc6a8a87f41436b4ebba6</srcmd5>
+    <version>2.10.2</version>
+    <time>1751362548</time>
+    <user>anag_factory</user>
+    <comment>- Added conflict between minimal and canonical flavor.
+- Added extra description for minimal packages.
+- Do not own the corresponding python libdir when not MPI.
+- Make blosc2 dependency conditional on Leap 15.6+ only.
+- Typo fix for hdf5 dep
+- Add missing_includes_for_gcc15.patch to allow building with GCC
+  15. [boo#1244421]
+- Added Python subpackage.
+- Added minimal flavor.
+- Added HDF5, ZeroMQ, ZFP, BLOSC2, and LibPNG support in
+  no-minimal flavors.
+</comment>
+    <requestid>1289368</requestid>
+  </revision>
 </revisionlist>

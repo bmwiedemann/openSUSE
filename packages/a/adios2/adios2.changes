@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 24 00:00:00 UTC 2025 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
+
+- Added conflict between minimal and canonical flavor.
+- Added extra description for minimal packages.
+- Do not own the corresponding python libdir when not MPI.
+- Make blosc2 dependency conditional on Leap 15.6+ only.
+- Typo fix for hdf5 dep
+
+-------------------------------------------------------------------
+Tue Jun 10 17:06:06 UTC 2025 - Martin Jambor <mjambor@suse.com>
+
+- Add missing_includes_for_gcc15.patch to allow building with GCC
+  15. [boo#1244421]
+
+-------------------------------------------------------------------
+Thu Jan  9 00:00:00 UTC 2025 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
+- Added Python subpackage.
+- Added minimal flavor.
+- Added HDF5, ZeroMQ, ZFP, BLOSC2, and LibPNG support in
+  no-minimal flavors.
+
+-------------------------------------------------------------------
 Fri Dec  6 00:00:00 UTC 2024 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.10.2
 
 - Added ADIOS2 v2.10.2:
