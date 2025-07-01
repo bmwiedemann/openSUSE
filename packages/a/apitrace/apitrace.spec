@@ -1,7 +1,7 @@
 #
 # spec file for package apitrace
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,28 @@
 
 
 Name:           apitrace
-Version:        10.0
+Version:        13.0
 Release:        0
 Summary:        Tools for tracing OpenGL
 License:        MIT
 URL:            https://apitrace.github.io/
 Source0:        https://github.com/apitrace/apitrace/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# https://github.com/apitrace/apitrace/issues/756
-Patch0:         apitrace-fix-glibc-2.34.patch
-BuildRequires:  cmake >= 2.8.11
-BuildRequires:  gcc-c++ >= 4.9
+Patch0:         001-no-submodules.patch
+Patch1:         002-no-static-libbacktrace.patch
+BuildRequires:  c++_compiler
+BuildRequires:  cmake >= 3.15
+BuildRequires:  libbacktrace-devel
 BuildRequires:  libdwarf-devel
 BuildRequires:  pkgconfig
-BuildRequires:  (pkgconfig(libprocps) or pkgconfig(libproc2))
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(gtest)
+BuildRequires:  pkgconfig(libbrotlienc)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libproc2)
+BuildRequires:  pkgconfig(libunwind)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(snappy)
 BuildRequires:  pkgconfig(waffle-1)
@@ -63,28 +68,18 @@ This package contains libs that are preloaded into traced programs.
 %prep
 %autosetup -p1
 
-# Apitrace uses glibc private symbols
-# and author claims they have good reasons to do so:
-# https://github.com/apitrace/apitrace/issues/258
-# Hack find_requires to filter-out GLIBC_PRIVATE.
-cat >my_find_requires <<EOF
-#!/bin/sh
-%{__find_requires} "$@" | grep -v GLIBC_PRIVATE
-EOF
-chmod +x my_find_requires
-%global _use_internal_dependency_generator 0
-%global __find_requires %{_builddir}/%{name}-%{version}/my_find_requires
-
 %build
-%cmake -DENABLE_GUI=yes
+export CXXFLAGS="%{optflags} -Wno-error=return-type"
+%cmake -DENABLE_STATIC_SNAPPY=OFF -DENABLE_QT6=ON
 %cmake_build
 
 %install
 %cmake_install
-sed -i 's|#!%{_bindir}/env python3|#!%{_bindir}/python3|' %{buildroot}%{_libdir}/%{name}/scripts/*.py
-chmod -x %{buildroot}%{_libdir}/%{name}/scripts/highlight.py
 # We're packaging docs in files section
-rm -r %{buildroot}%{_datadir}/doc/%{name}/
+rm -r %{buildroot}%{_datadir}/doc/%{name}
+
+# fix env
+%python3_fix_shebang_path %{buildroot}%{_libdir}/%{name}/scripts/*.py
 
 %check
 %ctest
@@ -92,12 +87,12 @@ rm -r %{buildroot}%{_datadir}/doc/%{name}/
 %files
 %license LICENSE
 %doc README.markdown docs/BUGS.markdown docs/NEWS.markdown docs/USAGE.markdown
+%dir %{_libdir}/%{name}
 %{_bindir}/apitrace
 %{_bindir}/eglretrace
 %{_bindir}/glretrace
 %{_bindir}/gltrim
 %{_bindir}/qapitrace
-%dir %{_libdir}/%{name}
 %{_libdir}/%{name}/scripts/
 
 %files wrappers

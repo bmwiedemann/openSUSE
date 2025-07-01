@@ -1,0 +1,14 @@
+diff -rub apitrace-13.0/thirdparty/CMakeLists.txt apitrace-13.0-patched/thirdparty/CMakeLists.txt
+--- apitrace-13.0/thirdparty/CMakeLists.txt	2025-06-26 14:43:44.000000000 +0200
++++ apitrace-13.0-patched/thirdparty/CMakeLists.txt	2025-06-29 13:53:51.815981158 +0200
+@@ -55,10 +55,6 @@
+     include_with_scope (brotli.cmake)
+ endif ()
+ 
+-if (CMAKE_EXECUTABLE_FORMAT STREQUAL "ELF")
+-    include_with_scope (libbacktrace.cmake)
+-endif ()
+-
+ if (BUILD_TESTING)
+     # We use non-standard C++ flags, so we can't just use GTest's CMakeLists.txt
+     if (NOT GTEST_FOUND)

@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sun Jun 29 17:41:33 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 13.0:
+  * Some fixes related to the MRs I opened earlier
+  * Add support for GL_EXT_texture_compression_astc_decode_mode
+  * Add support for profiling with EXT_disjoint_timer_query
+  * Minor fixes and additions to opengl trace
+  * OVR_multiview extension support
+  * retrace: Use right API calls when using EXT_disjoint_timer_query
+  * Explicit header: stdint
+  * retrace: Fix GPU Duration calculation
+  * specs: Fix pUAVInitialCounts array element count of
+  * D3D11DeviceContext::OMSetRenderTargetsAndUnorderedAccessViews
+  * fix snappy detection, use build_testing for gtest detection too
+  * d3d9retrace: Adjust presentation interval when forcing windowed mode
+  * fix qt-6.9
+  * D3D8/9: Decode AL16 and R16 FOURCC formats
+- update to 12.0:
+  * cli: be more verbose about what GL api means on Linux/Mac
+  * Fix a crash in retrace_glXChooseFBConfig
+  * gltrim: retain objects in the last frame that were created in earlier frames
+  * gltrim: handle a few more EGL calls
+  * docs: update attachment procedure for trace
+  * implement versioning support
+  * Submitted handle wgl and more gl45
+  * Fix bug in _EGLImageKHR_get_image_info
+  * Retrace: Add retrace watchdog flag
+  * gui: Address deprecation warnings
+  * gui: Add icon
+  * d3d8trace: Remap shader handles
+  * d3d8trace: Remap state block handles
+  * Gltrim skip while looping
+  * #848. All three states of GL_ATI_mem_info are int x 4 arrays
+  * #848. Check for buffer overflow in case of scalar glGet[Integer]v
+  * #850. Add a bit of excessive space in image buffer
+  * gltrim: Add option to replace swaps in setup with glFinish
+  * Add missing calls to handle the GLES version of GravityMark
+  * Add envvar FLUSH_EVERY_MS.
+  * wrappers: add noexcept specification to DWriteCreateFactory
+  * cmake: enable LTO
+  * frametrimmer: split OpenGL implementation into a new class
+  * Implement a bunch of additional EGL extensions
+  * Bug fix in GUI
+  * Improve the layout of the retracer dialog
+  * retrace: call waffle_destroy_window on drawable destructor
+  * Avoid compilation error with ambiguous QString + QLatin1String
+  * gltrim: Fix trimmimg multi-threaded traces and fix a few calls
+  * Fake command line arguments during replay, so they match traced program's arguments
+  * Fix command line parsing for empty arguments
+  * Add option to append timestamp to generated trace filename
+  * Add support for EGL_DEBUG_KHR extension
+  * Display format modifiers as hexadecimal values
+  * Add support for fixed rate compression extensions
+- update to 11.1:
+  * frametrim: fix active texture check compare
+  * gltrim: handle glFramebufferTexture3D and glMultiDrawElements
+  * implement ARB_create_context_no_error for GLX and WGL
+  * wrappers/glcaps: Check config availablility before dereferencing
+- update to 11.0:
+  * nothing of relevance
+- remove apitrace-fix-glibc-2.34.patch, as upstream fixed the issue
+- switch the gui to Qt6
+- add patches 001-no-submodules.patch and 002-no-static-libbacktrace.patch,
+  as upstream prefers rather to use statically linked dependencies
+- don't filter out glibc_private symbols
+
+-------------------------------------------------------------------
 Mon Aug 19 11:13:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libprocps) or pkgconfig(libproc2).
