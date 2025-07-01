@@ -263,4 +263,43 @@
     <comment></comment>
     <requestid>1244259</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>73cd2f423a98a9aa2dd6223d69a16f85</srcmd5>
+    <version>4.6.0</version>
+    <time>1751362453</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1288947 from mnhauke
+
+- Update to version 4.6.0
+      * Fix to support cisco apic paging.
+      * Update Palo Alto Log Collector Compatibility.
+      * Fix pluribus paging issue.
+      * Improve H3C/Comware check_config_mode.
+      * Reimplement Huawei SmartAX autodetect.
+      * Aruba CX SSH autodetect.
+      * Telnet timeout.
+      * Huawei buffer clear.
+      * Nokia SR Linux: Modify check_config_mode regex.
+      * Add ANSI escape code to strip (graphics mode) on Linux.
+      * Palo Alto Fix commit options policy_and_objects.
+      * Screenos 'accept' fix (attempt #3).
+      * A10 nolicense issue and check_config_mode.
+      * Linux SCP updates to support environment variables.
+      * Support for cntl-y handler in Extreme VSP.
+      * H3c autodetect.
+      * Fix Arista term width exception issue.
+      * Improve telnet_login behavior in cisco_base_connection.py.
+      * Fixing MRV LX config mode issue.
+      * Improve Palo Alto find_prompt behavior.
+      * Do NOT double logout on disconnect if logged in as root
+        on Linux.
+      * Bugfix Mikrotik version &gt; 6.48 = 'export' command incomplete
+      * silverpeak_vxoa added.
+      * add support for force10 'login banner acknowledge enable'.
+      * Added fiberstore_networkos.
+      * LANCOM LCOS SX4 driver.
+      * FastIron: Fix missing non-greedy, fix no enable pwd, improve
+        base_connection.</comment>
+    <requestid>1289269</requestid>
+  </revision>
 </revisionlist>
