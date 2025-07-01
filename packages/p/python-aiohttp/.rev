@@ -688,4 +688,41 @@
     <comment></comment>
     <requestid>1269575</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>7f9858e9cff74361e078ad21d7c4ee67</srcmd5>
+    <version>3.12.13</version>
+    <time>1751362392</time>
+    <user>anag_factory</user>
+    <comment>- Add remove-isal-test-dep.patch to remove python-isal test
+  dependency, that's not part of Factory yet.
+
+- Update to 3.12.13
+  * Optimized web server performance when access logging is disabled
+    by reducing time syscalls
+  * Improved performance of the WebSocket reader
+  * Disabled TLS in TLS warning (when using HTTPS proxies) for uvloop
+    and newer Python versions
+  * Added a comprehensive HTTP Digest Authentication client middleware
+    (DigestAuthMiddleware) that implements RFC 7616.
+  * Fixed pytest plugin to not use deprecated asyncio policy APIs.
+  * Allow user setting zlib compression backend
+  * Added host parameter to aiohttp_server fixture
+  * Added socket_factory to aiohttp.TCPConnector to allow specifying
+    custom socket options
+  * Upgraded to LLHTTP 9.3.0
+  * Optimized small HTTP requests/responses by coalescing headers and
+    body into a single TCP packet
+  * Removed non SPDX-license description from setup.cfg
+  * Added support for building against system llhttp library
+  * Fixed compatibility issue with Cython 3.1.1
+  * Added support for reusable request bodies to enable retries,
+    redirects, and digest authentication
+  * Improved performance of isinstance checks by using collections.abc
+    types instead of typing module equivalents
+  * Added ssl_shutdown_timeout parameter to aiohttp.ClientSession and
+    aiohttp.TCPConnector to control the grace period for SSL shutdown
+    handshake on TLS connections.
+  * Downgraded the logging level for connector close errors from ERROR</comment>
+    <requestid>1289166</requestid>
+  </revision>
 </revisionlist>

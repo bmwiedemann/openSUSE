@@ -19,20 +19,20 @@
 %bcond_with docs
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp
-Version:        3.11.16
+Version:        3.12.13
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/aiohttp
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-%{version}.tar.gz
 Patch0:         test_no_warnings_fix.patch
-Requires:       python-aiohappyeyeballs >= 2.3.0
+# PATCH-FIX-OPENSUSE remove-isal-test-dep.patch -- daniel.garcia@suse.com
+# Remove python-isal dependency for testing.
+Patch1:         remove-isal-test-dep.patch
+Requires:       python-aiohappyeyeballs >= 2.5.0
 Requires:       python-aiosignal >= 1.1.2
 Requires:       python-attrs >= 17.3.0
 Requires:       python-frozenlist >= 1.1.1
-%if 0%{?python_version_nodots} < 311
-Requires:       (python-async_timeout >= 4.0 with python-async_timeout < 5)
-%endif
 Requires:       (python-charset-normalizer >= 2.0 with python-charset-normalizer < 4)
 Requires:       (python-multidict >= 4.5 with python-multidict < 7)
 Requires:       (python-yarl >= 1.17.0 with python-yarl < 2)
@@ -50,9 +50,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # /SECTION
 # SECTION install requirements
-BuildRequires:  %{python_module aiohappyeyeballs >= 2.3.0}
+BuildRequires:  %{python_module aiohappyeyeballs >= 2.5.0}
 BuildRequires:  %{python_module aiosignal >= 1.1.2}
-BuildRequires:  %{python_module async_timeout >= 4.0 with %python-async_timeout < 5}
 BuildRequires:  %{python_module attrs >= 17.3.0}
 BuildRequires:  %{python_module charset-normalizer >= 2.0 with %python-charset-normalizer < 4}
 BuildRequires:  %{python_module frozenlist >= 1.1.1}
@@ -62,6 +61,7 @@ BuildRequires:  %{python_module yarl >= 1.17.0 with %python-yarl < 2}
 # SECTION test requirements
 BuildRequires:  %{python_module aiodns}
 BuildRequires:  %{python_module Brotli}
+BuildRequires:  %{python_module blockbuster}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module gunicorn}
 BuildRequires:  %{python_module pluggy}
@@ -74,6 +74,7 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module re-assert}
 BuildRequires:  %{python_module time-machine}
 BuildRequires:  %{python_module trustme}
+BuildRequires:  %{python_module zlib-ng}
 # /SECTION
 # SECTION docs
 %if %{with docs}
@@ -127,15 +128,13 @@ rm -r %{buildroot}%{$python_sitearch}/aiohttp/.hash
 
 %check
 donttest="test_aiohttp_request_coroutine or test_mark_formdata_as_processed or test_aiohttp_plugin_async or test_secure_https_proxy_absolute_path"
-# # no name resolution
-# donttest+=" or test_client_session_timeout_zero"
 # # flaky
 # donttest+=" or test_https_proxy_unsupported_tls_in_tls"
 # donttest+=" or test_shutdown_handler_cancellation_suppressed"
-# raises not expected "ConnectionResetError" with openssl 3.2 and python < 3.11
-donttest+=" or test_tcp_connector_raise_connector_ssl_error[pyloop]"
-# # fails with pytest 8 https://github.com/aio-libs/aiohttp/issues/8234
-# donttest+=" or (test_pytest_plugin and test_aiohttp_plugin)"
+# https://github.com/aio-libs/aiohttp/issues/11113
+donttest+=" or test_tcp_connector_ssl_shutdown_timeout"
+# most probably https://github.com/cbornet/blockbuster/issues/47
+donttest+=" or (test_cookie_jar and (heap or expire)) or test_treat_as_secure_origin_init"
 
 # requires python-on-whales
 rm -v tests/autobahn/test_autobahn.py
@@ -143,6 +142,8 @@ rm -v tests/autobahn/test_autobahn.py
 rm -v tests/test_proxy_functional.py
 # Requires python-pytest-codspeed
 rm -v tests/test_benchmarks_*
+# some tests from here hang with pycares 4.9 https://github.com/aio-libs/aiohttp/issues/11244
+rm -v tests/test_leaks.py
 
 # randomly fails on xdist splits
 single_runs="(test_run_app or test_web_runner)"
