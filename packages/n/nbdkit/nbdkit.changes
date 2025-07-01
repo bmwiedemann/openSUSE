@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Jun 27 14:20:21 MDT 2025 - carnold@suse.com
+
+- Update to version 1.42.5: (jsc#PED-12706)
+  * vddk: Embolden "/" in file option
+  * cow: Make cow_on_read private to this file
+  * docs: Remove irrelevant verbiage about how plugins define
+    thread models
+  * docs: filters: Change parameter name of filter .get_ready
+  * filters: Remove a few unnecessary thread_model parallel
+    definitions
+  * tests/test-spinning-mkfs.sh: Reduce the time taken to run this
+    test
+  * docs: Mention recent CVE fixes
+  * vddk: Debug length of extents when using -D vddk.extents=1
+  * blocksize-policy: Typo fix
+  * cacheextents: Mark this filter as deprecated
+  * include: Move some extent functions to nbdkit-common.h
+  * vddk: Display command type in command completed message
+  * maint: Silence clang warning
+  *  maint: Better fix for clang
+  * vddk: stats: Use "us" instead of (Unicode) "µs" for
+    microseconds
+  * vddk: stats: Line up the columns correctly
+  * curl: Remove temporary file when the plugin is unloaded
+  * tests/test.c: Try harder to clean up nbdkit and temporary
+    directory
+  * sh: Use utils make_temporary_directory function
+  * server: Try harder to clean up the random fifo dir (-U -)
+  * exitwhen: Print a debug message if we exit before starting up
+  * tests/test-no-parameters.sh: Fix comment to reflect reality
+  * tests: Stop leaving left-over /tmp/nbdkitXXXXXX dirs
+  * vddk: Update comment and broken link
+  * tests/functions.sh.in: Fix typo in comment
+  * vddk: Document unreliable extents information with local vmdk
+    files
+  * vddk: Debug the output from QueryAllocatedBlocks
+  * vddk: Add support for VDDK 9.0.0.0
+  * tests: Skip more Python tests under valgrind
+
+-------------------------------------------------------------------
 Tue May 13 20:51:35 UTC 2025 - jfehlig@suse.com
 
 - Update to version 1.42.3:

@@ -210,4 +210,12 @@ Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
     <comment></comment>
     <requestid>1277277</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>16df1d574692fa26da74c4a0e11a8077</srcmd5>
+    <version>1.42.5</version>
+    <time>1751362551</time>
+    <user>anag_factory</user>
+    <comment>Update nbdkit to version 1.42.5</comment>
+    <requestid>1289370</requestid>
+  </revision>
 </revisionlist>
