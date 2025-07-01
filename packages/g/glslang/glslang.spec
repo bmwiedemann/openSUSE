@@ -22,7 +22,7 @@
 %endif
 
 Name:           glslang
-Version:        15.3.0
+Version:        15.4.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -34,10 +34,10 @@ Source3:        baselibs.conf
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  fdupes
-BuildRequires:  gcc%{?gcc_version} >= 9
-BuildRequires:  gcc%{?gcc_version}-c++ >= 9
+BuildRequires:  gcc%{?gcc_version} >= 13
+BuildRequires:  gcc%{?gcc_version}-c++ >= 13
 BuildRequires:  python3-base
-BuildRequires:  spirv-tools-devel >= 2025.2~rc2
+BuildRequires:  spirv-tools-devel >= 2025.3~rc1
 
 %description
 glslang is a compiler front end for the OpenGL ES and OpenGL shading
@@ -117,7 +117,7 @@ cd -
 mkdir -p "$b/%_includedir/External/"
 cp -a glslang "$b/%_includedir/"
 cp -a SPIRV StandAlone "$b/%_includedir/External/"
-find "$b/%_includedir/" -type f ! -iname "*.h" -a ! -iname "*.hpp" -print -delete
+find "$b/%_includedir/" -type f ! -iname "*.h" ! -iname "*.hpp" ! -iname '*.hpp11' -print -delete
 find "$b/%_includedir/" -type f -exec chmod a-x "{}" "+"
 
 cd "$b"

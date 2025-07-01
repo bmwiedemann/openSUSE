@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 27 15:47:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 15.4
+  * Implement GL_NV_gpu_shader5 and enable GL_ARB_gpu_shader5
+    completely
+  * Add the GLSL_QCOM_tile_shading support
+  * Implement GL_EXT_float8_e5m2_e4m3 (bits for exponent/mantissa)
+  * Add variadic function support for builtin functions
+  * Add argument default values support for builtin functions
+  * Add GL_ARM_tensors
+
+-------------------------------------------------------------------
 Fri Apr 25 22:16:04 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 15.3
