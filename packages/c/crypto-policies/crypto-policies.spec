@@ -58,6 +58,8 @@ Patch7:         crypto-policies-nss.patch
 Patch8:         crypto-policies-enable-SHA1-sigver-in-DEFAULT.patch
 #PATCH-FIX-OPENSUSE Allow sshd in FIPS mode when using the DEFAULT policy [bsc#1227370]
 Patch9:         crypto-policies-Allow-sshd-in-FIPS-mode-using-DEFAULT.patch
+#PATCH-FIX-OPENSUSE Allow openssl to load when using any policy in FIPS mode [bsc#1243830, bsc#1242233]
+Patch10:        crypto-policies-Allow-openssl-other-policies-in-FIPS-mode.patch
 BuildRequires:  python3-base >= 3.11
 %if %{with manbuild}
 BuildRequires:  asciidoc

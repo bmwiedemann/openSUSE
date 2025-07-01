@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 30 08:01:55 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Allow openssl to load when using the DEFAULT policy, and also
+  other policies, in FIPS mode. [bsc#1243830, bsc#1242233]
+  * Add crypto-policies-Allow-openssl-other-policies-in-FIPS-mode.patch
+
+-------------------------------------------------------------------
 Wed Apr  9 12:32:47 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update crypto-policies-enable-SHA1-sigver-in-DEFAULT.patch
