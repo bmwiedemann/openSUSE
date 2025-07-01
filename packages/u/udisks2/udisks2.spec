@@ -34,7 +34,11 @@ Source0:        %{url}/releases/download/udisks-%{version}/udisks-%{version}.tar
 # an exception will be silently removed with the next version update.
 
 Patch0:         harden_udisks2.service.patch
-
+Patch1:         usr_etc.patch
+%if 0%{?suse_version} > 1500
+BuildRequires:  autoconf
+BuildRequires:  automake
+%endif
 BuildRequires:  chrpath
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gobject-introspection-devel >= 0.6.2
@@ -206,6 +210,10 @@ Zsh command line completion support for the udisksctl command.
 %autosetup -p1 -n udisks-%{version}
 
 %build
+%if 0%{?suse_version} > 1500
+autoreconf -f
+automake
+%endif
 %configure \
 	--disable-static \
 	--disable-gtk-doc \
@@ -213,7 +221,11 @@ Zsh command line completion support for the udisksctl command.
 	--enable-btrfs \
 	--enable-lsm \
 	--enable-lvm2 \
+%if 0%{?suse_version} > 1500
+        --with-vendordir=%{_distconfdir} \
+%endif
 	%{nil}
+
 %make_build
 
 %install
@@ -232,14 +244,43 @@ ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
 
 # Move example config file to docs
 mkdir -p %{buildroot}%{_docdir}/%{name}
+%if 0%{?suse_version} > 1500
+mv -v %{buildroot}%{_distconfdir}/udisks2/mount_options.conf.example \
+   %{buildroot}%{_docdir}/%{name}/mount_options.conf.example
+%else
 mv -v %{buildroot}%{_sysconfdir}/udisks2/mount_options.conf.example \
-    %{buildroot}%{_docdir}/%{name}/mount_options.conf.example
+   %{buildroot}%{_docdir}/%{name}/mount_options.conf.example
+%endif
 
 %post -n libudisks2-%{soversion} -p /sbin/ldconfig
 %postun -n libudisks2-%{soversion} -p /sbin/ldconfig
 
 %pre -n %{name}
 %service_add_pre udisks2.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in udisks2/udisks2.conf; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in udisks2/udisks2.conf; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+
+%pre -n libudisks2-%{soversion}_lsm
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in udisks2/modules.conf.d/udisks2_lsm.conf; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans -n libudisks2-%{soversion}_lsm
+# Migration to /usr/etc, restore just created .rpmsave
+for i in udisks2/modules.conf.d/udisks2_lsm.conf; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post -n %{name}
 %{?udev_rules_update:%udev_rules_update}
@@ -256,9 +297,15 @@ mv -v %{buildroot}%{_sysconfdir}/udisks2/mount_options.conf.example \
 %doc AUTHORS NEWS
 %{_bindir}/udisksctl
 %{_datadir}/dbus-1/system.d/org.freedesktop.UDisks2.conf
+%if 0%{?suse_version} > 1500
+%dir %{_distconfdir}/udisks2
+%dir %{_distconfdir}/udisks2/modules.conf.d
+%config %{_distconfdir}/udisks2/udisks2.conf
+%else
 %dir %{_sysconfdir}/udisks2
 %dir %{_sysconfdir}/udisks2/modules.conf.d
 %config %{_sysconfdir}/udisks2/udisks2.conf
+%endif
 %doc %{_docdir}/%{name}/mount_options.conf.example
 %{_tmpfilesdir}/udisks2.conf
 %ghost %{_rundir}/media
@@ -311,8 +358,13 @@ mv -v %{buildroot}%{_sysconfdir}/udisks2/mount_options.conf.example \
 %{_datadir}/polkit-1/actions/org.freedesktop.UDisks2.btrfs.policy
 
 %files -n libudisks2-%{soversion}_lsm
+%if 0%{?suse_version} > 1500
+%dir %{_distconfdir}/udisks2/modules.conf.d
+%attr(0600,root,root) %config %{_distconfdir}/udisks2/modules.conf.d/udisks2_lsm.conf
+%else
 %dir %{_sysconfdir}/udisks2/modules.conf.d
 %attr(0600,root,root) %config %{_sysconfdir}/udisks2/modules.conf.d/udisks2_lsm.conf
+%endif
 %dir %{_libdir}/udisks2
 %dir %{_libdir}/udisks2/modules
 %{_libdir}/udisks2/modules/libudisks2_lsm.so

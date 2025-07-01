@@ -480,4 +480,12 @@ Security fix: Bug 865854, CVE-2014-0004. (forwarded request 225422 from pwieczor
     <comment></comment>
     <requestid>1239595</requestid>
   </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>a97ba00406b7fc29174f571e417b4d53</srcmd5>
+    <version>2.10.1</version>
+    <time>1751362405</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1289215</requestid>
+  </revision>
 </revisionlist>

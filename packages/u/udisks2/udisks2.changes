@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 16 08:14:25 UTC 2025 - Stefan Schubert <schubi@suse.com>
+
+- Moved /etc/udisks2/modules.conf.d/udisks2_lsm.conf and
+  /etc/udisks2/udisks2.conf do /usr/etc. (patch usr_etc.patch)
+
+-------------------------------------------------------------------
 Wed Jan 22 15:28:36 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).
