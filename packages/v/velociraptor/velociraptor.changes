@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 27 13:35:23 UTC 2025 - Darragh O'Reilly <doreilly@suse.com>
+
+- Update to version 0.7.0.4.git163.87ee3570:
+  * Update go-rpmdb to fix panic
+  * Update  github.com/go-jose/go-jose/v3
+    Fixes CVE-2025-27144 (bsc#1237623, bsc#1237626)
+  * Update github.com/golang-jwt/jwt
+    Fixes CVE-2025-30204 (bsc#1240462, bsc#1240448)
+  * Update npm package axios 1.7.9 -> 1.10.0
+    Fixes CVE-2025-27152 (bsc#1239305)
+  * Fix shadowed variable in hash.go
+  * Log error when server responds with http 403
+
+-------------------------------------------------------------------
 Fri Mar 21 14:19:38 UTC 2025 - doreilly@suse.com
 
 - Update to version 0.7.0.4.git152.fb24dfd:
