@@ -1,0 +1,1068 @@
+-------------------------------------------------------------------
+Wed Jun 18 04:43:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Make build recipe POSIX sh compatible (drop use of pushd).
+- Replace BuildRequires by pkgconfig()/cmake() where possible.
+- Trim redundancies from descriptions.
+- Drop hard dependency on djinterop version 0.24.3;
+  The note in mixxx's CMakeLists.txt only complains about unstable
+  ABI not unstable API (and the build succeeds with 0.26.1).
+
+-------------------------------------------------------------------
+Fri Jun 13 10:55:14 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.2:
+  Library:
+  * Fix playlist export when name contains a dot #14737
+  * Fix loading the wrong track via drag and drop when using symlinks #13708 #13706
+  * Fix: byte order in hotcue comments imported from rekordbox #14808 #14789
+  * Tracks table: show ReplayGain with max. 2 decimals, full precision in tooltip #14868 #14867
+  * Fix keyboard mappings with non-ASCII characters on Linux #14843 #14734
+  * Computer feature: enable initial sorting during population #14688
+  * Computer feature: avoid false-positve 'has children' for non-directory links #14907
+  * Fix column header mapping when using external library #13782
+  * Fixed Single track cover reload on reload metadata from file #14494 #14409
+  Controller Mappings:
+  * Arturia KeyLab Mk1: initial mapping #14502
+  * Denon MC7000: slicer mode TypeError #14804
+  * Denon MC7000: crossfader curve using wrong parameter #14803
+  * DJ TechTools MIDI Fighter Twister: support 4 decks #14557
+  * Hercules DJControl Inpulse 500: the crossfader was not reaching 100% to the right end #14722
+  * Icon Pro Audio iControls: initial mapping #14591
+  * Numark Mixtrack Platinium FX: Fix 4 steps browsing issue #14778
+  * Traktor Kontrol S3: Use GUI config for settings #14904
+  * Traktor S2 MK3: Fixed LED issue #14717
+  * Traktor S4 MK2: Use engine settings API for configuration #14781
+  * Traktor S4 MK3: prevent sync lockup, add setting for tempo center snap #14735 #14721
+  Controller Backend:
+  * Control picker: Allow to learn MIDI Aux/Mic enable controls #14720 #14718
+  * Make [Main],headSplit CO persistent across restart #14817
+  * Fix MIDI Controller button learning #14816 #14805
+  * Fix learning with "No Mapping" selected #14829
+  * Unit tests for engine.beginTimer #12437
+  * engine-api.d.ts: brake()/spinback() documentation #14929
+  Target support:
+  * Fix building with a CMake multi-config setup #14614
+  * Fix building with gcc >= 14 with LTO and clang >= 19 (fpclassify) #14749 #14716
+  * Fix: gcc -Warray-bounds= in fidlib by using a flexible member #14798
+  * Added Linux Mint Codenames to debian_buildenv.sh #14709
+  * Add hidden [Config],notify_max_dbg_time setting to reduce warnings in developer mode #14015
+  * Detect arch and fail early if not supported when installing buildenv #14478
+  Misc:
+  * Vinyl Control: Reduce sticker drift #14435
+  * Fix infinite number of pop ups of the "No Vinyl|Mic|Aux|Passthrough input configured" dialog #14841 #14837
+  * Reduce CPU usage with Trace log messages #14862 #14791
+  * Fix adjust Gain after adopting it as ReplayGain only in requesting player #14812 #14806
+  * Skins: add loop anchor toggle to Deere, Shade, Tango #14890 #14173
+  * Sound Hardware preferences: add manual link for Mic monitoring modes #14889
+  * Work around an Ubuntu, Ibus or Qt issue regarding detecting the current
+    keyboard layout. #14883 #14838 #14797
+  * Fix BPM rounding for the 3/2 case #14751
+  * Update cue & play indicators on paused decks when switching cue mode 14930 9928
+
+-------------------------------------------------------------------
+Tue May  6 18:31:29 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.5.1:
+  For changes, see:
+  https://mixxx.org/news/2025-04-27-mixxx-2_5_1-released/
+  https://github.com/mixxxdj/mixxx/blob/2.5.1/CHANGELOG.md
+- Drop upstreamed mixxx-qt6.9.patch.
+
+-------------------------------------------------------------------
+Tue May  6 18:23:21 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Change license to GPL-3.0-or-later. However the mixxx source code
+  itself is GPL-2.0-or-later, linking it with hidapi makes the
+  binary GPL-3.0-or-later. (gh:mixxxdj/mixxx#14742)
+
+-------------------------------------------------------------------
+Sun Apr 13 08:54:45 UTC 2025 - Edgar Aichinger <edogawa@aon.at>
+
+- pass QML=off to cmake, wait for a proper upstream fix
+  see https://github.com/mixxxdj/mixxx/issues/14122#issuecomment-2764648440
+- add mixxx-qt6.9.patch (backport from upstream)
+
+-------------------------------------------------------------------
+Wed Apr  9 21:47:53 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Require qt6-sql-sqlite. Program fails to start without it.
+
+-------------------------------------------------------------------
+Sun Dec 29 20:01:03 UTC 2024 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to 2.5.0
+  https://github.com/mixxxdj/mixxx/blob/2.5.0/CHANGELOG.md
+
+- adapt specfile to build against Qt6
+- remove patch 4e4d4e866ef86bb4d196a1903778697552cca05a.patch (not needed anymore)
+
+-------------------------------------------------------------------
+Tue Dec  3 07:29:11 UTC 2024 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Add patch 4e4d4e866ef86bb4d196a1903778697552cca05a.patch allowing to use
+  taglib 2.x which is fixed on 2.4.2
+
+- Update to 2.4.2
+  https://mixxx.org/news/2024-11-27-mixxx-2-4-2-released/
+  https://mixxx.org/news/2024-05-09-mixxx-2-4-1-released/
+
+  https://github.com/mixxxdj/mixxx/blob/2.4.2/CHANGELOG.md
+  https://github.com/mixxxdj/mixxx/blob/2.4.1/CHANGELOG.md
+  https://github.com/mixxxdj/mixxx/blob/2.4.0/CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri Aug 18 15:43:10 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
+
+-  Update to 2.3.6
+
+  * Fixed possible crash when closing Mixxx while browsing the file system #11593 #11589
+  * No longer stop a track with an active loop at the very end #11558 #11557
+  * Fixed resyncing when moving an active loop #11152 #11381
+  * Allow true gapless playback when repeating full tracks #11532 #9842 #11704
+  * Rhythmbox: Fixed bulk track imports from playlists #11661
+  * Console log spam reduced #11690 #11691
+  * Numark DJ2GO2 Touch: Add missing loop_out mapping for the right deck #11595 #11659
+  * Shade: Fixed VU-Meter and other minor issues #11598
+  * Fixed a rare crash when disabling quantize form a controller #11744 #11709
+  * Controller Preferences: Avoid scrollbars in I/O tabs if Info tab exceeds page height #11756
+  * Broadcast: Improved error message in case of timeout #11775
+  * Handle setting loop_in and loop_out to the same position #11771 #10600
+  * Fix build issues with Protobuf v23.4 and with clang 32 #11751 #11765 #11762
+  * Disable GL VU-Meters on Windows by default. They can be re-enabled via the command line option --enableVuMeterGL. #11787 #11785 #11789
+  * Library preferences: Uncheck Serato metadata export when file metadata export is unchecked #11782 #11226
+  * Denon MC6000MK2: Delete mapping for master gain #11792
+  * Improve output in case of some failed file system operations #11783
+  * Fix overlapping buffers when decoding M4A files using FFmpeg before 4.4 #11760 #11545
+  * Don't reject key values from file metadata with non-minor/-major scales. #11001 #10995
+  * Allow playing tracks with durations of more than 6 hours #11511 #11504
+  * Update latency compensation for Soundtouch version 2.1.1 to 2.3 #11154
+
+
+-------------------------------------------------------------------
+Wed May 10 20:43:06 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to 2.3.5
+
+  * Fix empty waveform overview after loading a track (Mixxx 2.3.4 regression) Fixed by #11333 #11359 #11344
+  * Fullscreen: Fix a crash that occurs on Linux after enabling fullsceen and using menu shortcuts e.g. Alt-F. #11328 #11320
+  * Fullscreen: Rebuild & reconnect menu only on desktops with global menu #11350
+  * macOS: Request Microphone and line-in access permission. #11367 #11365
+  * JACK API: Allow to explicit select buffers of 2048 and 4096 frames/period. They are not supported by the automatic buffer setting of the used PortAudio library. #11366 #11341
+  * Pioneer DDJ-400: Make Beat FX section more intuitive #10912
+  * Playlist export: Adopt new extension after changing the playlist type #11332 #11327
+  * LateNight: brighter fx parameter buttons #11397
+  * Fix drift in analyzis data after exporting metadata to MP3 files with ID3v1.1 tags #11168 #11159
+  * Fix broadcasting using Opus encoding #11349 #10666
+  * Tango: Remove VU peak indicators from stacked layout. This fixes a visual regression in Mixxx 2.3.4. #11430 #11362
+  * Hercules P32: Allow optional using pregain instead of dry/wet knob #3538
+  * Improve Color Picker dialog #11439
+  * Fix blank Waveform overview after changing Skin with a track loaded #11453
+  * Linux: Log a warning when the audio thread is not scheduled with real-time policy #11472 #11465
+  * Auto DJ: Fixes stop due to tracks with changed length #11479 #11492 #11448
+  * Auto DJ: Fix Auto DJ indicator state when controlling it via shortcut (SHIFT+F12) #11494 #11495
+  * Fix building with Clang 15/16 #11490 #11485
+  * Fix EQ and waveforms analysis when compiling with GCC 13 #11501 #11483 #11502 #11480 #11488
+  * Numark Mixtrack Pro FX: Fix sound output via WDM-KS on Windows #11393
+  * Fix crash on startup caused by faulty ASIO driver like FlexASIO 1.4 or Music Maker #11426 #10081
+  * Windows: Show a loopback device that allows to mix in system sound #11427 #11451
+  * Fix sorting via column header in external library features #11491 #11499
+  * Fix wrong waveform background color on recent Linux distributions like Fedora 37 #11164 #11523
+  * Serato Metadata: Don't import empty (black) cue points #11534 #11530 #11467 #11466 #11283
+  * Track context menu: Immediately adopt new position when resetting cues #11482
+  * Windows: Fix possible crash with faulty mp3 files #11535 #11531 #11528 #11521
+
+-------------------------------------------------------------------
+Mon Mar  6 08:19:18 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to 2.3.4
+
+  * Track Properties: Show 'date added' as local time #4838 lp:1980658
+  * Shade: Fix library sidebar splitter glitch #4828 lp:1979823
+  * LateNight: Add a border to the crossfader when Auto DJ is active. #10913
+  * LateNight: Isolate searchbar so maximize button is attached to tracks view. #11132
+  * macOS builds: Perform ad-hoc signing of macOS bundle in Pull request and personal repositories #4774
+  * Waveform: Avoid visual glitch with ranges < 1 px #4804
+  * Build Mixxx on macOS 11, replacing deprecated macOS 10.15 #4863
+  * Add macOS 13.0 (Ventura) support, by using portaudio 19.7.0 #11046
+  * EQ preferences: Properly restore 'One EQ for all decks' setting #4886
+  * Cover Art: Fix picking wrong cover file, when track file name contains extra dots #4909
+  * MusicBrainz: Respect rate limits #10874 #10795
+  * MusicBrainz: Stop fetching after closing the dialog #10878 #10877
+  * MusicBrainz: Fixed stalled GUI after client timeout #10875 #10883
+  * macOs: Fix frozen skin control after Ctrl-Click #10869 10831
+  * Avoid redundant messages boxes after track loading fails #10889
+  * Use OpenGL VU meter widgets. This aims to improve performance with macOS. #10893 #11052 #10979 #10973 #10983 #11288
+  * Prevent wild numbers from appearing during scratching under vinyl control. #10916
+  * Rekordbox: Fix missing playlists due to invalid child ID #10955
+  * Fixed a possible crash due to a race condition when editing cue points. #10976 #10689
+  * Fixed a possible crash when overing cue point via mouse in the waveforms. #10960 #10956
+  * History: Disallow dropping tracks. #10969 #10250
+  * WTrackMenu: Sort crates and playlists like in sidebar. #11023
+  * WCoverArtLabel: Don't open full-size cover if no cover is loaded, to avoid an issue when closing. #11022 #11021
+  * Removed integer truncation of the position when reading cue points from the database. #10998
+  * Auto DJ: Added a warning in a message box when it is started without decks with left and a right crossfader orientation #11018
+  * Fixed crash with FFmpeg decoder #11044
+  * Fixed issue with finding moved library tracks. #11051
+  * Preserve and synchronize ID3v1 tags (TagLib v1.12) #11163 #11123
+  * Replay Gain Preferences: Fix the "adjust by" text in case of negative adjustments #11176
+  * macOs: Install Qt translation #11134 #11110
+  * macOs: Fix assuming wrong system language #11218 #11195
+  * Fix resetting track colors on metadata reimport (Serato metadata): #11217 #11213
+  * Preferences: Fix incomplete version check in 2.3 during upgrade #11229 #9709
+  * Allow search in external libraries #11221 #11216
+  * JACK buffer size fix #11121
+  * Don't discard file tags with tuning information like "A#m +50" #10992
+  * Year search: Find also full date entries #11251 #11251
+  * Fix visual alignment of beats and waveform in case of decoding issues #11162
+  * Avoid "active key-value observers" messages during skin parsing on macOS #11265
+  * Fullscreen on Linux: Fix issues caused by Ubuntu Unity workaround #11295 #11281 #11294
+
+New Controller Mappings
+
+  * Traktor Kontrol S2 Mk1: Add controller mapping #3905
+  * Numark Party Mix: Mapping added #4720
+
+Controller Fixes
+
+  * Traktor S3: Fix issues with sampler and hotcue buttons #4676
+  * Numark DJ2GO2: Fix sliders and knobs #4835 lp:1948596
+  * Numark DJ2Go2: Support HotCue clear with pad #10841
+  * Numark DJ2Go2: Fix inverted tempo fader #10852 #10586
+  * Numark N4: Inverted pitch slider, to match the GUI orientation #11057
+  * Ableton Push: Show as one device #10905
+  * Denon DJ MC7000: off-by-one fix, soft-start/break effect, pitch play, 32 velocity samplers #4902 #4729
+  * Potmeters: Add support for arbitrary maximums in 7-/14-bit handlers from controller scripts #4495
+  * Controller Preferences: Fix some usability issues #10821
+  * Controller mapping table: show readable/translated strings for script bindings #11139
+  * Control picker menu: Added loop_in/out_goto to list #11133
+
+Packaging
+
+  * Fix compatibility with FFmpeg 5.1 and require FFmpeg v4.1.9 #10862 #10866
+  * Fix GCC 12.2.0 compatibility #10863
+  * Improve CMake 3.24 compatibility #10864
+  * Use MIXXX_VCPKG_ROOT cmake and environment variable to find the vcpkg environment #10904
+  * Fix -Wswitch when building with FLAC >= 1.4.0 #10921
+-------------------------------------------------------------------
+Wed Jun 29 10:48:21 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 2.3.3
+
+  * Pioneer DDJ-SB3: Fix controller breaking when releasing the shift button #4659
+  * Traktor S3: Push two deck switches to explicitly clone decks #4665 #4671 lp:1960680
+  * Behringer DDM4000: Improve stability and add soft-takeover for encoder knobs #4318 #4799
+  * Denon MC7000: Fix 'inverted shift' bug in the controller mapping #4755
+  * Fix spinback and break effect in the controller engine #4708
+  * Fix scratch on first wheel touch #4761 lp:1800343
+  * Preferences: Prevent controller settings being treated as changed even though they were not #4721 lp:1920844
+  * Fix rare crash when closing the progress dialog #4695
+  * Prevent preferences dialog from going out of screen #4613
+  * Fix undesired jump-cuts in Auto DJ #4693 lp:1948975 lp:1893197
+  * Fix bug that caused Auto DJ to stop playback after some time #4698 lp:1893197 lp:1961970
+  * Do not reset crossfader when Auto DJ is deactivated #4714 lp:1965298
+  * Change the minimum Auto DJ transition time to -99 #4768 lp:1975552
+  * Samplers, crates, playlists: fix storing import/export paths #4699 lp:1964508
+  * Library: keep hidden tracks in history #4725
+  * Broadcasting: allow multiple connections to same mount if only one is enabled #4750 lp:1972813
+  * Fix a rare mouse vanish bug when controlling knobs #4744 lp:1130794 lp:1969278
+  * Restore keylock from configuration and fix pitch ratio rounding issue #4756 lp:1943180
+  * Improve CSV export of playlists and crates and fix empty rating column #4762
+  * Fix passthrough-related crash in waveform code #4789 #4791 lp:1959489 lp:1977662
+  * Passthrough: stop rendering waveforms and disable Cue/Play indicators 4793
+
+-------------------------------------------------------------------
+Wed Feb  9 05:42:24 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 2.3.2
+
+  * Playlist: Enable sorting by color #4352 lp:1945976
+  * Fix crash when using Doubling/Halving/etc. BPM from track's 
+    Properties window on tracks without BPM #4587 lp:1955853
+  * Fix writing metadata on Windows for files that have never
+    been played #4586 lp:1955331
+  * Preserve file creation time when writing metadata on 
+    Windows #4586 lp1955314
+  * Fix handling of file extension when importing and exporting
+    sampler settings #4539
+  * Fix crash when using an empty directory as resource path using
+    the --resource-path command line option #4575 lp:1934560
+  * Pioneer DDJ-SB3: Add controller mapping #3821
+  * Don't wipe sound config during startup if configured devices 
+    are unavailable #4544
+  * Append selected file extension when exporting to playlist 
+    files #4531 lp:1889352
+  * Fix crash when using midi.sendShortMsg and platform vnc #4635 lp:1956144
+  * Traktor S3: Fix timedelta calculation bugs #4646 lp:1958925
+
+Packaging
+
+  * Downloads of external dependencies are placed in build/downloads
+  * The sources for libkeyfinder are now expected in 
+    build/downloads/libkeyfinder-2.2.6.zip instead of build/download/libkeyfinder/v2.2.6.zip
+  * CMake: Adjust the download directory and name of external dependencies #4511
+  * Fix/Improve Appstream metainfo #4344 #4346 #4349
+
+-------------------------------------------------------------------
+Wed Feb  9 05:41:53 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- drop Update-vendored-Benchmark-library-to-v160.patch - now upstream
+
+-------------------------------------------------------------------
+Wed Dec 22 23:49:20 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add Update-vendored-Benchmark-library-to-v160.patch fix build with recent g++
+
+-------------------------------------------------------------------
+Wed Oct  6 01:57:44 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- remove obsolete patches:
+  00-cmake-hidapi-find.patch: fixed in upstream
+
+-------------------------------------------------------------------
+Sat Oct  2 06:39:08 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- remove rpmlintrc
+
+-------------------------------------------------------------------
+Sat Oct  2 06:23:06 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 2.3.1
+
+  * Added mapping for the Numark DJ2GO2 Touch controller 
+    #4108 #4287
+  * Added mapping for the Numark Mixtrack Pro FX 
+    controller #4160
+  * Updated mapping for Behringer DDM4000 mixer #4262
+  * Updated mapping for Denon MC7000 controller #4021
+  * Hercules Inpulse 300: Add better FX controls and 
+    other minor improvements #4246
+  * Denon MC7000: Improve slip mode and jog wheel handling
+    #4021 #4324
+  * Disabled detection of keyboards and mice as HID
+    controllers #4243
+  * Disabled detection of all HID controllers with Apple's
+    vendor ID. Apple doesn't build actual controllers. #4260 #4273
+  * Add support for HiDPI scale factors of 125% and 175% (only 
+    with Qt 5.14+) lp1938102 #4161
+  * Fix unhandled exception when parsing corrupt Rekordbox PDB
+    files lp1933853 #4040
+  * Fix Echo effect adding left channel samples to right 
+    channel #4141
+  * Fix bad phase seek when starting from preroll lp1930143
+    #4093
+  * Fix bad phase seek when a channel's audible status 
+    changes #4156
+  * Tango skin: Show crossfader assign buttons by default #4046
+  * Fix keyfinder library in arm64 builds #4047
+  * Fix wrong track being recorded in History lp1933991 #4041 #4059 #4107 #4296
+  * Fix support for relative paths in the skin system which
+    caused missing images in third-party skins #4151
+  * Fix relocation of directories with special/reserved characters
+    in path name #4146
+  * Update keyboard shortcuts sheet #4042
+  * Library: resize the Played checkbox and BPM lock with the 
+    library font #4050
+  * Don't allow Input focus on waveforms #4134
+  * Fix performance issue on AArch64 by enabling flush-to-zero
+    for floating-point arithmetic #4144
+  * Fix custom key notation not restored correctly after restart #4136
+  * Traktor S3: Disable scratch when switching decks to prevent
+    locked scratch issue #4073
+  * FFmpeg: Ignore inaudible samples before start of stream #4245
+  * Controller Preferences: Don't automatically enable checkbox
+    if controller is disabled #4244 lp:1941042
+  * Tooltips: Always show tooltips in preferences #4198 lp:1840493
+  * Tooltips: Use item label for tooltips in library side bar and
+    show ID when debugging. #4247
+  * Library sidebar: Also activate items on PageUp/Down events. #4237
+  * Fix handling of preview button cell events in developer mode. #4264 lp:1929141
+  * Auto DJ: Fix bug which could make an empty track stop Auto DJ. #4267 lp:1941743
+  * Fix Auto DJ skipping tracks randomly #4319 lp1941989
+  * Fix high CPU load due to extremely high internal sync clock
+    values #4312 lp1943320
+  * Fix preference option for re-analyzing beatgrids imported
+    from other software #4288
+
+Packaging
+
+  * It is no longer necessary to manually copy the 
+    udev rule file in packaging scripts. Now pkg-config is 
+    used to determine the udevdir used to install the rules
+    file in the CMake install step when CMAKE_INSTALL_PREFIX
+    is / or /usr. #4126
+  * Various build issues on FreeBSD are fixed #4122 #4123 #4124
+  * .desktop file has be renamed to org.mixxx.Mixxx.desktop
+    according to Freedesktop standards #4206
+  * Uses system provided hidapi library if version >= 0.10.1 #4215
+  * Please update PortAudio to 19.7 if you have not done
+    so already. This is required for Mixxx to work with
+    PipeWire via the JACK API for many devices.
+  * Install multiple sizes of rasterized icons #4204 #4315
+  * CMake: Fixed detection of SoundTouch pkgconfig file and
+    version #4209
+  * Fix AppStream metainfo #4205 #4317
+
+-------------------------------------------------------------------
+Mon Jul 19 01:18:09 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- add 00-cmake-hidapi-find.patch: detect system hidapi on TW
+- drop mixxx-vamp.patch: vamp-sdk is not used anymore
+- drop mixxx.soundtouch.patch: mixxx uses cmake now
+
+- Update to 2.3.0
+
+- Hotcues
+
+  * Add hotcue colors and custom labels by right clicking hotcue 
+    buttons or right clicking hotcues on overview waveforms #2016 
+    #2520 #2238 #2560 #2557 #2362
+  * Mouse hover cues on overview waveform to show time remaining 
+    until the cue #2238
+
+- Hotcue & Track Colors
+
+  * Add configurable color per track #2470 #2539 #2545 #2630 
+    lp:1100882
+  * Add customizable color palettes for hotcue and track colors 
+    #2530 #2589 #3749 #2902
+  * Add hotcue color find-and-replace tool #2547
+
+- Importing From Other DJ Software
+
+  * Import cue points, track colors, and playlists from Serato 
+    file tags & database #2480 #2526 #2499 #2495 #2673 #3885
+        Note: Mixxx does not yet support multiple loops per 
+        track. We are working on this for Mixxx 2.4. In Mixxx 
+        2.3, if you import a track with multiple loops from 
+        Serato, Mixxx will use the first loop cue as the single 
+        loop Mixxx currently supports. The imported loops are 
+        still stored in Mixxx's database and are treated as 
+        hotcues in Mixxx 2.3. If you do not delete these hotcues, 
+        they will be usable as loops in Mixxx 2.4. Serato keeps 
+        loops and hotcues in separate lists, but Mixxx does not, 
+        so loops from Serato are imported starting as hotcue 9.
+  * Import cue points, track colors, and playlists from Rekordbox 
+    USB drives #2119 #2555 #2543 #2779
+        Note: The first Rekordbox memory cue is imported for the 
+        main cue button in Mixxx and the remaining Rekordbox 
+        memory cues are imported as Mixxx hotcues, starting with 
+        the next hotcue number after the last hotcue from 
+        Rekordbox.
+        Note: Mixxx does not yet support multiple loops per 
+        track. Imported loops from Rekordbox are treated like 
+        imported loops from Serato, so refer to the note above 
+        for details.
+
+- Intro & Outro Cues
+
+  * Add intro & outro range cues with automatic silence detection 
+    #1242
+  * Show duration of intro & outro ranges on overview waveform 
+    #2089
+  * Use intro & outro cues in AutoDJ transitions #2103
+
+- Deck cloning
+
+  * Add deck cloning (also known as "instant doubles" in other DJ 
+    software) by dragging and dropping between decks #1892 and 
+    samplers #3200
+  * Clone decks by double pressing the load button on a 
+    controller (with option to disable this) #2024 #2042
+
+- Skins & GUI
+
+  * Aesthetically revamped LateNight skin #2298 #2342
+  * Right click overview waveform to show time remaining until 
+    that point #2238
+  * Show track info dialog when double clicking track labels in 
+    decks #2990
+  * Show track context menu when right clicking text in decks 
+    #2612 #2675 #2684 #2696
+  * Add laptop battery widget to skins #2283 #2277 #2250 #2228 
+    #2221 #2163 #2160 #2147 #2281 #2319 #2287
+  * Show when passthrough mode is active on overview waveforms 
+    #2575 #2616
+  * Changed format of currently playing track in window title 
+    from "artist, title" to "artist - title" #2807
+  * Workaround Linux skin change crash #3144 lp:1885009
+  * Fix touch control lp:1895431
+  * Fix broken knob interaction on touchscreens #3512
+  * AutoDJ: Make "enable" shortcut work after startup #3242
+  * Add rate range indicator #3693
+  * Allow menubar to be styled #3372 #3788
+  * Add Donate button to About dialog #3838 #3846
+  * Add Scrollable Skin Widget #3890
+  * Fix minor visual issues in Skins #3958 #3954 #3941 #3938 
+    #3936 #3886 #3927 #3844 #3933 #3835 #3902 #3931
+
+- Music Feature Analysis
+
+  * Multithreaded analysis for much faster batch analysis on 
+    multicore CPUs #1624 #2142 lp:1641153
+  * Fix bugs affecting key detection accuracy #2137 #2152 #2112 
+    #2136
+        Note: Users who have not manually corrected keys are 
+        advised to clear all keys in their library by pressing 
+        Ctrl + A in the library, right clicking, going to Reset 
+        -> Key, then reanalyzing their library. This will freeze 
+        the GUI while Mixxx clears the keys; this is a known 
+        problem that we will not be able to fix for 2.3. Wait 
+        until it is finished and you will be able to reanalyze 
+        tracks for better key detection results.
+  * Remove VAMP plugin support and use Queen Mary DSP library 
+    directly. vamp-plugin-sdk and vamp-hostsdk are no longer 
+    required dependencies. #926
+  * Improvements BPM detection on non-const beatgrids #3626
+  * Fix const beatgrid placement #3965 #3973
+
+- Music Library
+
+  * Add support for searching for empty fields (for example 
+    crate:"") lp:1788086
+  * Improve synchronization of track metadata and file tags #2406
+  * Library Scanner: Improve hashing of directory contents #2497
+  * Rework of Cover Image Hashing lp:1607097 #2507 #2508
+  * MusicBrainz: Handle 301 status response #2510
+  * MusicBrainz: Add extended metadata support lp:1581256 #2522
+  * TagLib: Fix detection of empty or missing file tags 
+    lp:1865957 #2535
+  * Fix caching of duplicate tracks that reference the same file 
+    #3027
+  * Use 6 instead of only 4 compatible musical keys (major/minor) 
+    #3205
+  * Fix possible crash when trying to refocus the tracks table 
+    while another Mixxx window has focus #3201
+  * Don't create new tags in file when exporting metadata to it 
+    #3898
+  * Fix playlist files beginning with non-english characters not 
+    being loaded #3916
+  * Enable sorting in "Hidden Tracks" and "Missing Tracks" views 
+    #3828 lp:1828555 lp:1924616
+  * Fix track table being empty after start #3935 lp:1930546 
+    lp:1924843
+
+- Audio Codecs
+
+  * Add FFmpeg audio decoder, bringing support for ALAC files #1356
+  * Include LAME MP3 encoder with Mixxx now that the MP3 patent 
+    has expired lp:1294128 buildserver:#37 buildserver:9e8bcee
+  * Add Opus streaming and recording support. lp:1338413
+  * Remove support for SoundSource plugins because the code was 
+    not well-maintained and could lead to crashes lp:1792747
+  * Add HE-AAC encoding capabilities for recording and 
+    broadcasting #3615
+
+- Audio Engine
+
+  * Fix loss of precision when dealing with floating-point sample 
+    positions while setting loop out position and seeking using 
+    vinyl control #3126 #3127
+  * Prevent moving a loop beyond track end #3117 lp:1799574
+  * Fix possible memory corruption using JACK on Linux #3160
+  * Fix changing of vinyl lead-in time lp:1915483 #3781
+  * Fix tempo change of non-const beatgrid track on audible deck 
+    when cueing another track #3772
+  * Fix crash when changing effect unit routing #3882 lp:1775497
+  * Make microphone ducking use strength knob the same way in 
+    automatic & manual mode #2750
+
+- Controllers
+
+  * Improve workflow for configuring controller mappings and 
+    editing mappings #2569 #3278 #3667
+  * Improve error reporting from controller scripts #2588
+  * Make hotcue and track colors mappable on controllers #2030 
+    #2541 #2665 #2520
+  * Add way to change library table sorting from controllers #2118
+  * Add support for velocity sensitive sampler buttons in 
+    Components JS library #2032
+  * Add logging when script ControlObject callback is 
+    disconnected successfully #2054
+  * Add controller mapping for Roland DJ-505 #2111
+  * Add controller mapping for Numark iDJ Live II #2818
+  * Add controller mapping for Hercules DJControl Inpulse 200 #2542
+  * Add controller mapping for Hercules DJControl Jogvision #2370
+  * Add controller mapping for Pioneer DDJ-200 #3185 #3193 #3479 
+    #3793 #3949
+  * Add controller mapping for Pioneer DDJ-400 #3479
+  * Add controller mapping for ION Discover DJ Pro #2893
+  * Add controller mapping for Native Instrument Traktor Kontrol 
+    S3 #3031
+  * Add controller mapping for Behringer BCR2000 #3342 #3943
+  * Add controller mapping for Behringer DDM4000 #3542
+  * Update controller mapping for Allen & Heath Xone K2 to add 
+    intro/outro cues #2236
+  * Update controller mapping for Hercules P32 for more accurate 
+    headmix control #3537
+  * Update controller mapping for Native Instruments Traktor 
+    Kontrol S4MK2 to add auto-slip mode and pitch fader range #3331
+  * Fix Pioneer DDJ-SB2 controller mapping auto tempo going to 
+    infinity bug #2559 lp:1846403
+  * Fix Numark Mixtrack Pro 3 controller mapping inverted FX 
+    on/off control #3758
+  * Gracefully handle MIDI overflow #825
+
+- Other
+
+  * Add CMake build system with ccache and sccache support for 
+    faster compilation times and remove SCons #2280 #3618
+  * Make Mixxx compile even though QT_NO_OPENGL or QT_OPENGL_ES_2 
+    is defined (fixes build on Raspberry Pi) lp:1863440 #2504
+  * Fix ARM build issues #3602
+  * Fix missing manual in DEB package lp:1889776 #2985
+  * Add macOS codesigning and notarization to fix startup 
+    warnings #3281
+  * Don't trash user configuration if an error occurs when 
+    writing #3192
+  * Enable CUE sheet recording by default #3374
+  * Fix crash when double clicking GLSL waveforms with right 
+    mouse button #3904
+  * Derive Mixxx version from git describe #3824 #3841 #3848
+  * Improve tapping the bpm of a deck #3790 lp:1882776
+  * And countless other small fixes and improvements (too many to 
+    list them all!)
+ 
+
+-------------------------------------------------------------------
+Tue Sep 15 02:03:14 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 2.2.4
+  * Prevent infinite loop when decoding corrupt MP3 files #2417
+  * Add workaround for broken libshout versions #2040 #2438
+  * Speed up purging of tracks lp:1845837 #2393
+  * Prevent infinite loop when decoding corrupt MP3 files #2417
+  * Store default recording format after "Restore Defaults" lp:1857806 #2414
+  * Don't stop playback if vinyl passthrough input is configured and PASS button is pressed #2474
+  * Fix debug assertion for invalid crate names lp:1861431 #2477
+  * Fix crashes when executing actions on tracks that already disappeared from the DB #2527
+  * AutoDJ: Skip next track when both deck are playing lp:1399974 #2531
+  * Tweak scratch parameters for Mixtrack Platinum #2028
+  * Fix auto tempo going to infinity on Pioneer DDJ-SB2 #2559
+  * Fix bpm.tapButton logic and reject missed & double taps #2594
+  * Add controller mapping for Native Instruments Traktor Kontrol S2 MK3 #2348
+  * Add controller mapping for Soundless joyMIDI #2425
+  * Add controller mapping for Hercules DJControl Inpulse 300 #2465
+  * Add controller mapping for Denon MC7000 #2546
+  * Add controller mapping for Stanton DJC.4 #2607
+  * Fix broadcasting via broadcast/recording input lp:1876222 #2743
+  * Only apply ducking gain in manual ducking mode when talkover is enabed lp:1394968 lp:1737113 lp:1662536 #2759
+
+-------------------------------------------------------------------
+Mon Jun 22 18:44:48 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- spec-cleaner
+- Fix warnings (duplicates, dotfiles)
+- Fix build (glut dependency)
+
+-------------------------------------------------------------------
+Thu Jan 16 14:45:43 UTC 2020 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- Update to 2.2.3
+  * Don't make users reconfigure sound hardware when it has not changed #2253
+  * Fix MusicBrainz metadata lookup lp:1848887 #2328
+  * Fix high DPI scaling of cover art #2247
+  * Fix high DPI scaling of cue point labels on scrolling waveforms #2331
+  * Fix high DPI scaling of sliders in Tango skin #2318
+  * Fix sound dropping out during recording lp:1842679 #2265 #2305 #2308 #2309
+  * Fix rare crash on application shutdown #2293
+  * Workaround various rare bugs caused by database inconsistencies lp:1846971 #2321
+  * Improve handling of corrupt FLAC files #2315
+  * Don't immediately jump to loop start when loop_out is pressed in quantized mode lp:1837077 #2269
+  * Preserve order of tracks when dragging and dropping from AutoDJ to playlist lp:1829601 #2237
+  * Explicitly use X11 Qt platform plugin instead of Wayland in .desktop launcher lp:1850729 #2340
+  * Pioneer DDJ-SX: fix delayed sending of MIDI messages with low audio buffer sizes #2326
+  * Enable modplug support on Linux by default lp:1840537 #2244 #2272
+  * Fix keyboard shortcut for View > Skin Preferences lp:1851993 #2358 #2372
+  * Reloop Terminal Mix: Fix mapping of sampler buttons 5-8 lp:1846966 #2330
+
+-------------------------------------------------------------------
+Wed Aug 21 12:31:48 UTC 2019 - mvetter@suse.com
+
+- Update to 2.2.2:
+  * Please note that we had to disable writing of file tags for
+    .ogg files with the current TagLib version 1.11.1 that would
+    otherwise corrupt your precious files.
+  * Fix battery widget with upower <= 0.99.7. #2221
+  * Fix BPM adjust in BpmControl. lp:1836480
+  * Disable track metadata export for .ogg files and TagLib 1.11.1. lp:1833190
+  * Fix interaction of hot cue buttons and looping. lp:1778246
+  * Fix detection of moved tracks. #2197
+  * Fix playlist import. lp:16878282
+  * Fix updating playlist labels. lp:1837315
+  * Fix potential segfault on exit. lp:1828360
+  * Fix parsing of invalid bpm values in MP3 files. lp:1832325
+  * Fix crash when removing rows from empty model. #2128
+  * Fix high DPI scaling of RGB overview waveforms. #2090
+  * Fix for OpenGL SL detection on macOS. lp:1828019
+  * Fix OpenGL ES detection. lp:1825461
+  * Fix FX1/2 buttons missing Mic unit in Deere (64 samplers). lp:1837716
+  * Tango64: Re-enable 64 samplers. #2223
+  * Numark DJ2Go re-enable note-off for deck A cue button. #2087
+  * Replace Flanger with QuickEffect in keyboard mapping. #2233
+
+-------------------------------------------------------------------
+Sat Mar 16 00:55:48 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- allow newer versions of libavcodec and friends
+- enable QtKeychain support
+- enable verbose compilation mode to allow gcc checks
+
+-------------------------------------------------------------------
+Sun Dec 30 17:41:57 UTC 2018 - mvetter@suse.com
+
+- Update to 2.2.0:
+  General:
+  * Update from Qt4 to Qt5.
+  * Use Qt5's automatic high DPI scaling (and remove the old
+    scaling option from the preferences).
+  * Vectorize remaining raster graphics for better HiDPI support.
+  Effects:
+  * Add mix mode switch (Dry/Wet vs Dry+Wet) for effect units.
+  * Add support for LV2 effects plugins (currently no way to show plugin GUIs).
+  * Add preference option for selecting which effects are shown in the
+    list of available effects in the main window (all LV2 effects are
+    hidden by default and must be explicitly enabled by users).
+  Skins:
+  * Add 8 sampler and small sampler options to LateNight.
+  * Add key / BPM expansion indicators to Deere decks.
+  * Add skin settings menu to LateNight.
+  Controllers:
+  * Add controller mapping for Numark Mixtrack Platinum.
+  * Update controller mapping for Numark N4.
+  * Add spinback and break for Vestax VCI-400 mapping.
+  Miscellaneous:
+  * Add preference option to adjust the play position marker of
+    scrolling waveforms.
+  * Add preference option to adjust opacity of beatgrid markers on
+    scrolling waveforms.
+  * Support IRC/AIM/ICQ broadcast metadata.
+- Add liblilv and Qt5X11Extras BuildRequires
+
+-------------------------------------------------------------------
+Thu Nov 29 12:32:51 UTC 2018 - mvetter@suse.com
+
+- Update to 2.1.5:
+  * Code signing for Windows builds. lp:1517823
+  * Fix crash on exit when preferences is open. lp:1793185
+  * Fix crash when analyzing corrupt MP3s. lp:1793387
+  * Fix crash when importing metadata from MusicBrainz. lp:1794993
+  * Library search fixes when single quotes are used. lp:1784090 lp:1789728
+  * Fix scrolling waveform on Windows with WDM-KS sound API. lp:1729345
+  * Fix right clicking on beatgrid alignment button in Tango and LateNight skins. lp:1798237
+  * Improve speed of importing iTunes library. lp:1785545
+  * Add 2 deck mapping for DJTechTools MIDI Fighter Twister.
+
+-------------------------------------------------------------------
+Tue Aug 21 00:07:22 UTC 2018 - tampakrap@opensuse.org
+
+- Version bump 2.1.3:
+  - 2.1.3:
+    - Fix a severe performance regression on Windows:
+      https://mixxx.org/forums/viewtopic.php?f=3&t=12082
+  - 2.1.2:
+    - Allow maximum deck speed of 4x normal
+    - Don't always quantize hotcues, a 2.1.1 regression lp1777429
+    - Fix artifacts using more than 32 samplers lp1779559
+    - store No EQ and Filter persistently lp1780479
+    - Pad unreadable samples with silence on cache miss lp1777480
+    - Fixing painting of preview coloumn for Qt5 builds lp1776555
+    - LateNight: Fix play button right click lp1781829
+    - LateNight: Added missing sort up/down buttons
+    - Fix sampler play button tooltips lp1779468
+    - Shade: remove superfluid margins and padding in sampler.xml lp1773588
+    - Deere: Fix background-color code
+    - ITunes: Don't stop import in case of duplicated Playlists lp1783493
+  - 2.1.1:
+    - Require Soundtouch 2.0 to avoid segfault lp1577042
+    - Imrpoved Skins including library view fix lp1773709 lp1772202 lp1763953
+    - Fix crash when importing ID3v2 APIC frames lp1774790
+    - Synchronize execution of Vamp analyzers lp1743256
+    - DlgTrackInfo: Mismatching signal/slot connection
+    - Detect M4A decoding errors on Windows lp1766834
+    - Fix spinback inertia effect
+    - Fix decoding fixes and upgrade DB schema lp1766042 lp1769717
+    - Fix integration of external track libraries lp1766360
+    - Fix memory leak when loading cover art lp1767068
+    - Fix clearing of ReplayGain gain/ratio in file tags lp1766094
+    - Fix crash when removing a quick link lp1510068
+    - Fidlib: Thread-safe and reentrant generation of filters lp1765210
+    - Fix unresponsive scrolling through crates & playlists using encoder
+      lp1719474
+    - Swap default values for temp/perm rate changes lp1764254
+
+-------------------------------------------------------------------
+Sat Jun  2 12:02:30 UTC 2018 - tampakrap@opensuse.org
+
+- Version bump 2.1.0
+  * Graphical interface scales for high resolution screens
+  * Overhauled Deere and LateNight skins
+  * New Tango skin
+  * Effects are synchronized to the tempo
+  * Effects are processed post-fader and post-crossfader and can be previewed
+in headphones
+  * One metaknob per effect with customizable parameter control for intuitive
+use of effect chains
+  * Nine new effects: Autopan, Biquad Equalizer, Biquad Full Kill Equalizer,
+Loudness Contour, Metronome, Parametric Equalizer, Phaser, Stereo Balance,
+Tremolo
+  * Loaded effects and their parameters are saved and restored when Mixxx
+restarts
+  * More transparent sounding equalizers (Biquad Equalizer and Biquad Full Kill
+Equalizer)
+  * Improved scratching sounds with jog wheels, vinyl control, and dragging
+waveforms with the mouse
+  * Simplified looping and beatjump controls
+  * Configurable rows of 8 samplers with up to 8 rows available for a total of
+64 samplers
+  * Files loaded to samplers are reloaded when Mixxx restarts
+  * Improved volume normalization algorithm (EBU-R 128)
+  * Filter library table by crates
+  * Sort musical keys in library table by circle of fifths
+  * Write metadata tags back to audio files
+  * New JavaScript library for controller mapping
+  * Configure multiple Internet broadcasting stations and use multiple stations
+at the same time
+  * Broadcast and record microphones with direct monitoring and latency
+compensation
+  * Broadcast and record from an external mixer
+  * Booth output with independent gain knob for using sound cards with 6
+output channels without an external mixer
+  * Prevent screensaver from starting while Mixxx is running
+  * CUP (Cue And Play) cue button mode
+  * Time remaining and time elapsed now take into account the tempo fader
+  * Clicking cover art now shows it full size in a separate window
+  * and of course, lots and lots of bug fixes.
+  * For full changelog see https://github.com/mixxxdj/mixxx/blob/release-2.1.0/CHANGELOG
+
+-------------------------------------------------------------------
+Fri May  4 14:03:47 UTC 2018 - olaf@aepfle.de
+
+- Use ffmpeg3 versions of pkgconfig(libav*)
+
+-------------------------------------------------------------------
+Tue Feb 20 10:27:26 UTC 2018 - dmitry_r@opensuse.org
+
+- Merge with mixxx-unstable package
+- Version 2.1~beta1
+- Set correct vamp pkg-config file
+  * mixxx-vamp.patch
+
+-------------------------------------------------------------------
+Sun Aug  6 08:54:25 UTC 2017 - dmitry_r@opensuse.org
+
+- Use original mixxx 2.0.0 tarball
+- Disable Qt5 GUI fot Tumbleweed due to bugs
+- Fix build with new chromaprint
+  * mixxx-chromaprint-1.4.patch
+
+-------------------------------------------------------------------
+Sun Mar 12 09:39:40 UTC 2017 - olaf@aepfle.de
+
+- Disable mp4 and faad because libmp4v2 was dropped
+
+-------------------------------------------------------------------
+Wed Sep 30 19:50:44 UTC 2015 - johannesobermayr@gmx.de
+
+- update to 1.12 branch
+- remove obsolete (all) patches
+
+-------------------------------------------------------------------
+Thu Jan  9 16:15:13 UTC 2014 - diego.ercolani@gmail.com
+
+- adapted to build of 1.11.0
+- removed support of midi due to lack of porttime under portmidi
+  library distribution
+   -> we need to compile libporttime and porttime.h 
+
+-------------------------------------------------------------------
+Sun Jun 17 20:47:19 UTC 2012 - pascal.bleser@opensuse.org
+
+- add requires for libqt4-sql-sqlite
+
+-------------------------------------------------------------------
+Sat May 19 15:37:04 UTC 2012 - seife+obs@b1-systems.com
+
+- fix build with gcc 4.7 (missing unistd.h include)
+
+-------------------------------------------------------------------
+Sun Mar 18 15:49:23 UTC 2012 - pascal.bleser@opensuse.org
+
+- backport the following patches from mixxx-unstable:
+  * mixxx-add_toggleValue.patch: add patch for additional key mapping
+    functions: _toggle, _minus_toggle, _zero, _one, _minus_one
+  * mixxx-libmp3lame_path.patch: fixes the lookup path for libmp3lame.so.0
+    which is needed for streaming MP3 to Shoutcast/Icecast
+- build with maximum optimization, enables SSE/SSE2/MMX
+
+-------------------------------------------------------------------
+Sun Jan  1 13:24:14 UTC 2012 - pascal.bleser@opensuse.org
+
+- don't use our optflags but, instead, use the optimization flags from
+  upstream; that also fixes building on 12.1 where GCC crashed on assembler
+  stuff; dropped mixxx-optflags.patch
+
+-------------------------------------------------------------------
+Tue Dec 27 11:18:33 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.10.0
+
+-------------------------------------------------------------------
+Fri Mar  4 18:11:43 UTC 2011 - reddwarf@opensuse.org
+
+- Add patch to fix mp4v2 availability check
+
+-------------------------------------------------------------------
+Wed Jan  6 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 1.7.2
+- reenabled m4a support
+- This bugfix release addresses a number of issues that were discovered
+  in 1.7.1, and is a recommended upgrade for all users
+  Some of the changes include:
+  Improved saving of ordered playlists
+  Fixed MIDI support on OS X
+  Optimize latency settings. This should improve compatibility with certain soundcards/APIs.
+  Improved stability and error handling when loading certain songs.
+
+-------------------------------------------------------------------
+Sun Oct 25 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 1.7.1
+- This release incorporates many major improvements, hugely improved MIDI
+  controller support, better vinyl control support, savable cue points, and many
+  performance improvements and bugfixes.
+- disabled cmetrics and m4a (won't compile)
+
+-------------------------------------------------------------------
+Sat Oct  4 00:00:00 UTC 2008 - toni@links2linux.de
+
+- update to 1.6.1
+- removed skin sub-package (skin-Natt)
+
+-------------------------------------------------------------------
+Fri Aug  8 00:00:00 UTC 2008 - toni@links2linux.de
+
+- update to 1.6.0
+- enabled shoutcast and iPod support
+
+-------------------------------------------------------------------
+Sat Jul 19 00:00:00 UTC 2008 - toni@links2linux.de
+
+- update to 1.6.0beta4
+- added new skin sub-package (skin-Natt)
+
+-------------------------------------------------------------------
+Sat May 31 00:00:00 UTC 2008 - toni@links2linux.de
+
+- update to 1.6.0beta3
+
+-------------------------------------------------------------------
+Sun Feb 10 00:00:00 UTC 2008 - toni@links2linux.de
+
+- update to 1.6.0beta2
+
+-------------------------------------------------------------------
+Sat Sep  8 00:00:00 UTC 2007 - toni@links2linux.de
+
+- openSUSE-10.3 build, corrected BuildRequires
+
+-------------------------------------------------------------------
+Wed Mar  7 00:00:00 UTC 2007 - toni@links2linux.de
+
+- added -lusb in build.definition (is NOT using pkg-config!)
+
+-------------------------------------------------------------------
+Sun Mar  4 00:00:00 UTC 2007 - toni@links2linux.de
+
+- update to 1.5.0.1
+- replaced portaudio18 with portaudio
+- added libdjconsole support
+
+-------------------------------------------------------------------
+Tue Jan  2 00:00:00 UTC 2007 - toni@links2linux.de
+
+- build SuSE-10.2, corrected BuildRequires
+
+-------------------------------------------------------------------
+Thu Nov 30 00:00:00 UTC 2006 - toni@links2linux.de
+
+- update to 1.5.0beta2
+- added debug_package
+
+-------------------------------------------------------------------
+Fri Sep 29 00:00:00 UTC 2006 - toni@links2linux.de
+
+- update to 1.5.0 (cvs 29.09.2006)
+- adjusted BuildRequires
+
+-------------------------------------------------------------------
+Sun Sep 17 00:00:00 UTC 2006 - toni@links2linux.de
+
+- build for packman
+
+-------------------------------------------------------------------
+Thu Sep  7 00:00:00 UTC 2006 - oc2pus@arcor.de 1.5.0-0.oc2pus.cvs20060907
+
+- update to 1.5.0 (cvs 07.09.2006)
+
+-------------------------------------------------------------------
+Thu Aug 24 00:00:00 UTC 2006 - oc2pus@arcor.de 1.5.0-0.oc2pus.cvs20060824
+
+- update to 1.5.0 (cvs 24.08.2006)
+
+-------------------------------------------------------------------
+Mon Aug 14 00:00:00 UTC 2006 - oc2pus@arcor.de 1.5.0-0.oc2pus.cvs20060814
+
+- update to 1.5.0 (cvs 14.08.2006)
+
+-------------------------------------------------------------------
+Thu Aug 10 00:00:00 UTC 2006 - oc2pus@arcor.de 1.5.0-0.oc2pus.cvs20060810
+
+- update to 1.5.0 (cvs 10.08.2006)
+
+-------------------------------------------------------------------
+Wed May 31 00:00:00 UTC 2006 - oc2pus@arcor.de 1.5.0-0.oc2pus.cvs20060531
+
+- update to 1.5.0 (cvs 31.05.2006)
+
+-------------------------------------------------------------------
+Sat May 20 00:00:00 UTC 2006 - oc2pus@arcor.de 1.5.0-0.oc2pus.cvs20060520
+
+- update to 1.5.0 (cvs 20.05.2006)
+
+-------------------------------------------------------------------
+Sun Apr 23 00:00:00 UTC 2006 - oc2pus@arcor.de 1.5.0beta1-0.oc2pus.1
+
+- update to 1.5.0beta1
+- patched to use package soundtouch=1.3
+- patched to use package portaudio18
+- repacked without soundtouch and portaudio18* sources
+- sub-packages for skins (hercules, outlineClose, outline, traditional)
+ -changed menu-entry
+
+-------------------------------------------------------------------
+Wed Mar 29 00:00:00 UTC 2006 - oc2pus@arcor.de 1.5.0-0.oc2pus.cvs20060329
+
+- update to 1.5.0 (cvs 29.03.2006)
+
+-------------------------------------------------------------------
+Fri Feb 24 00:00:00 UTC 2006 - oc2pus@arcor.de 1.5.0-0.oc2pus.cvs20060224
+
+- update to 1.5.0 (cvs 24.02.2006)
+- added --enable-python
+
+-------------------------------------------------------------------
+Sat Jan 28 00:00:00 UTC 2006 - oc2pus@arcor.de 1.5.0-0.oc2pus.cvs20060128
+
+- update to 1.5.0 (cvs 28.01.2006)
+- patched to use package soundtouch=1.3
+- patched to use package portaudio18
+- sub-packages for skins (hercules, outlineClose, outline, traditional)
+
+-------------------------------------------------------------------
+Tue Jan  3 00:00:00 UTC 2006 - oc2pus@arcor.de 1.4.2-0.oc2pus.1
+
+- initial release of rpm
+- repacked as tar.bz2
+
