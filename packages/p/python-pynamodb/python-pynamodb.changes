@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon Jun 30 09:19:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 6.1.0
+  * Add a wait argument to Model.delete_table (#1270)
+  * Add the ability to set or unset the boto retry configuration (#1271)
+- from version 6.0.2
+  * Fix a warning about datetime.utcfromtimestamp deprecation (#1261)
+- from version 6.0.1
+  * For failed transaction, return the underlying item in
+    cancellation_reasons[...].raw_item (#1226). This only
+    applies when passing return_values=ALL_OLD.
+  * Fixing (#1242) regression to the extra_headers feature. These
+    headers are intended for proxies that strip them, so they should
+    be excluded from the AWS signature.
+- from version 6.0.0
+  * BinaryAttribute and BinarySetAttribute have undergone breaking changes:
+    * The attributes’ internal encoding has changed. To prevent this change
+      going unnoticed, a new required legacy_encoding parameter was added:
+      see Upgrading Binary(Set)Attribute for details. If your codebase uses
+      BinaryAttribute or BinarySetAttribute, go over the attribute declarations
+      and mark them accordingly.
+    * When using binary attributes, the return value of serialize() will no
+      longer be JSON-serializable since it will contain bytes objects. Use
+      to_dynamodb_dict() and to_simple_dict() for JSON-serializable mappings.
+      for a safe JSON-serializable representation.
+  * Python 3.6 is no longer supported.
+  * PynamoDB no longer has a default AWS region (used to be us-east-1) (#1003).
+    If needed, update your models’ Meta or set the AWS_DEFAULT_REGION environment
+    variable.
+  * Model’s JSON serialization helpers were changed:
+    * to_json was renamed to to_simple_dict() (#1126). Additionally, to_dynamodb_dict()
+      and from_dynamodb_dict() were added for round-trip JSON serialization.
+    * pynamodb.util.attribute_value_to_json was removed (#1126)
+  * Attribute’s default parameter must be either an immutable value (of one of
+    the built-in immutable types) or a callable. This prevents a common class of
+    errors caused by unintentionally mutating the default value. A simple workaround
+    is to pass an initializer (e.g. change default={} to default=dict) or wrap in a
+    lambda (e.g. change default={'foo': 'bar'} to default=lambda: {'foo': 'bar'}).
+  * count(), query(), and scan() are now instance methods.
+  * OperationSettings has been removed.
+  * We are now compatible with opentelemetry botocore instrumentation.
+  * We’ve reduced our usage of botocore private APIs (#1079). On multiple occasions,
+    new versions of botocore broke PynamoDB, and this change lessens the likelihood
+    of that happening in the future by reducing (albeit not eliminating) our reliance
+    on private botocore APIs.
+  * save(), update(), delete_item(), and delete() now accept a add_version_condition
+    parameter. See Conditioning on the version for more details.
+  * batch_get(), has guard rails defending against items without a hash_key and range_key.
+  * set(), can remove attribute by assigning an empty value in the update expression.
+- from version 5.5.1
+  * Fix compatibility with botocore 1.33.2 (#1205)
+- from version 5.5.0
+  * save(), update(), delete_item(), and delete() now accept a add_version_condition
+    parameter. See Conditioning on the version for more details.
+- from version 5.4.1
+  * Use model’s AWS credentials in threads (#1164)
+- from version 5.4.0
+  * Expose transaction cancellation reasons (#1156)
+- from version 5.3.5
+  * Fix exception message (#1157)
+- Limit Python files matched in %files section
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Remove python-devel and python-setuptools from BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+
+-------------------------------------------------------------------
 Mon Dec 12 18:15:28 UTC 2022 - pgajdos@suse.com
 
 - version update to 5.3.4

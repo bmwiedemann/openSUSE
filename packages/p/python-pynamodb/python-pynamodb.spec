@@ -1,7 +1,7 @@
 #
 # spec file for package python-pynamodb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-pynamodb
-Version:        5.3.4
+Version:        6.1.0
 Release:        0
 Summary:        Python Interface to DynamoDB
 License:        MIT
 URL:            https://github.com/pynamodb/PynamoDB
 Source0:        https://files.pythonhosted.org/packages/source/p/pynamodb/pynamodb-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-botocore >= 1.12.54
@@ -51,10 +48,10 @@ A Python interface for Amazon's DynamoDB.
 %setup -q -n pynamodb-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,6 +63,7 @@ export AWS_ACCESS_KEY_ID=fake_id
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pynamodb
+%{python_sitelib}/pynamodb-%{version}.dist-info
 
 %changelog
