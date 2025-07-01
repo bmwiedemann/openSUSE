@@ -20,7 +20,7 @@ Name:           ocaml-augeas
 Version:        0.7
 Release:        0
 Summary:        OCaml bindings for Augeas configuration API
-License:        GPL-2.0-or-later
+License:        LGPL-2.1-or-later
 URL:            https://download.libguestfs.org/ocaml-augeas/
 Source0:        https://download.libguestfs.org/ocaml-augeas/%{name}-%{version}.tar.gz
 Source1:        %{name}-%{version}.tar.gz.sig

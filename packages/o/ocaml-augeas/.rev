@@ -23,4 +23,12 @@
     <comment>Update ocaml-augeas to version 0.7</comment>
     <requestid>1285643</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>db1d8de2579888831d1294d76c0962a8</srcmd5>
+    <version>0.7</version>
+    <time>1751362486</time>
+    <user>anag_factory</user>
+    <comment>Modified the license in the spec file. No code change.</comment>
+    <requestid>1289311</requestid>
+  </revision>
 </revisionlist>
