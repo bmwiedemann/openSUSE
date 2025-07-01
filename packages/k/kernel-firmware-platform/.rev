@@ -104,4 +104,14 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases</comment>
     <requestid>1288150</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3dd2babcdf71d8eda9acd6183c7be087</srcmd5>
+    <version>20250627</version>
+    <time>1751362422</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250627 (git commit f40eafe21683):
+  * WHENCE: expand the advansys license statement
+  * WHENCE: some older AMD drivers are MIT licensed</comment>
+    <requestid>1289255</requestid>
+  </revision>
 </revisionlist>

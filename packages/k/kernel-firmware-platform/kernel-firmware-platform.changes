@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 30 06:07:43 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250627 (git commit f40eafe21683):
+  * WHENCE: expand the advansys license statement
+  * WHENCE: some older AMD drivers are MIT licensed
+
+-------------------------------------------------------------------
 Sat Jun 21 08:04:14 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases

@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 341b9e805613d1b4137032b488eec4a941d181f6
+%define git_version f40eafe216833d083f4e5598b7f45e894c373ad1
 
 Name:           kernel-firmware-platform
-Version:        20250520
+Version:        20250627
 Release:        0
 Summary:        Kernel firmware files for various platform drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only AND MPL-1.0 AND GPL-3.0-only AND MIT
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250605.tar.gz#/kernel-firmware-tools-20250605.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250630.tar.gz#/kernel-firmware-tools-20250630.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
