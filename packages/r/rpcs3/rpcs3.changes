@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 30 00:37:49 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.37~git20250629:
+  * RawSPU: Add missing MMIO register reads
+  * cellSaveData: Order equal elements using the opposing trait
+
+-------------------------------------------------------------------
 Wed Jun 25 22:30:26 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.37~git20250625:
