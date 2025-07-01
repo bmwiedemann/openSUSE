@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 30 15:18:40 UTC 2025 - pgajdos@suse.com
+
+- build with -std=gnu11 to fix build with gcc15
+
+-------------------------------------------------------------------
 Tue Nov 26 20:56:15 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - units 2.24:

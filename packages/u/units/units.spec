@@ -47,7 +47,7 @@ page for details.
 %autosetup -p1
 
 %build
-export CFLAGS="%{optflags} -fPIE"
+export CFLAGS="%{optflags} -fPIE -std=gnu11"
 export LDFLAGS="-pie"
 %configure
 %make_build
