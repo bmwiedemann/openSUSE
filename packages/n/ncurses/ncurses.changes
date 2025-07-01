@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 30 07:33:15 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250628
+  + fix a few compiler-warnings.
+  + simplify include for wchar.h in Windows port by removing the platform
+    ifdef's (report by Karl Knechtel).
+  + regen Ada95/configure (report by Sven Joachim).
+
+-------------------------------------------------------------------
 Mon Jun 23 07:39:35 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250621

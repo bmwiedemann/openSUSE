@@ -5226,4 +5226,16 @@
       recent Fedora releases.</comment>
     <requestid>1287862</requestid>
   </revision>
+  <revision rev="303" vrev="76">
+    <srcmd5>f49cab917382d0c6449567dc8be93de2</srcmd5>
+    <version>unknown</version>
+    <time>1751362381</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20250628
+  + fix a few compiler-warnings.
+  + simplify include for wchar.h in Windows port by removing the platform
+    ifdef's (report by Karl Knechtel).
+  + regen Ada95/configure (report by Sven Joachim).</comment>
+    <requestid>1289192</requestid>
+  </revision>
 </revisionlist>
