@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 27 14:42:17 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Prevent tests failures when pygit2 is not present
+
+- Added:
+  * fix-tests-issues-in-salt-shaker-environments-721.patch
+
+-------------------------------------------------------------------
 Thu Jun 26 09:44:59 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Several fixes for security issues

@@ -2634,4 +2634,12 @@ let build start it or we will get libvirt errors.
     <comment></comment>
     <requestid>1288665</requestid>
   </revision>
+  <revision rev="177" vrev="41">
+    <srcmd5>007d4ba9b1626525fb6a1d57fd606cad</srcmd5>
+    <version>3006.0</version>
+    <time>1751362401</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1289198</requestid>
+  </revision>
 </revisionlist>

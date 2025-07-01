@@ -563,6 +563,9 @@ Patch173:       add-subsystem-filter-to-udev.exportdb-bsc-1236621-71.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68089
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/0519a4cc6b6aac58e5358037ae61436e30b07c17
 Patch174:       several-fixes-for-security-issues.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68125
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/721
+Patch175:       fix-tests-issues-in-salt-shaker-environments-721.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

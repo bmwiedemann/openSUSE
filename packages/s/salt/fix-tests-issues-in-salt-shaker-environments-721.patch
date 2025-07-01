@@ -1,0 +1,92 @@
+From 4ce4f9c1de87f1e4ffec10a5352181fed20d10a9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Fri, 27 Jun 2025 15:37:24 +0100
+Subject: [PATCH] Fix tests issues in Salt Shaker environments (#721)
+
+---
+ .../pytests/integration/minion/test_return_retries.py |  1 +
+ tests/pytests/unit/test_master.py                     | 11 +++++++++++
+ tests/pytests/unit/utils/test_gitfs.py                |  4 ++++
+ 3 files changed, 16 insertions(+)
+
+diff --git a/tests/pytests/integration/minion/test_return_retries.py b/tests/pytests/integration/minion/test_return_retries.py
+index 00bfb908ae7..45dea9c4c76 100644
+--- a/tests/pytests/integration/minion/test_return_retries.py
++++ b/tests/pytests/integration/minion/test_return_retries.py
+@@ -56,6 +56,7 @@ def test_publish_retry(salt_master, salt_minion_retry, salt_cli, salt_run_cli):
+ 
+ 
+ @pytest.mark.slow_test
++@pytest.mark.flaky(max_runs=4)
+ def test_pillar_timeout(salt_master_factory):
+     cmd = (
+         sys.executable
+diff --git a/tests/pytests/unit/test_master.py b/tests/pytests/unit/test_master.py
+index 833f966e058..6aba734b64e 100644
+--- a/tests/pytests/unit/test_master.py
++++ b/tests/pytests/unit/test_master.py
+@@ -11,6 +11,16 @@ import salt.utils.platform
+ from tests.support.mock import MagicMock, patch
+ from tests.support.runtests import RUNTIME_VARS
+ 
++try:
++    import pygit2  # pylint: disable=unused-import
++
++    HAS_PYGIT2 = True
++except ImportError:
++    HAS_PYGIT2 = False
++
++
++skipif_no_pygit2 = pytest.mark.skipif(not HAS_PYGIT2, reason="Missing pygit2")
++
+ 
+ @pytest.fixture
+ def encrypted_requests(tmp_path):
+@@ -394,6 +404,7 @@ def allowed_funcs(tmp_path):
+     return salt.master.AESFuncs(opts=opts)
+ 
+ 
++@skipif_no_pygit2
+ def test_on_demand_allowed_command_injection(allowed_funcs, tmp_path, caplog):
+     """
+     Verify on demand pillars validate remote urls
+diff --git a/tests/pytests/unit/utils/test_gitfs.py b/tests/pytests/unit/utils/test_gitfs.py
+index 71c6c254b52..baedd9fd708 100644
+--- a/tests/pytests/unit/utils/test_gitfs.py
++++ b/tests/pytests/unit/utils/test_gitfs.py
+@@ -263,6 +263,7 @@ def test_get_cachedir_basename_pygit2(_prepare_provider):
+     assert "_" == _prepare_provider.get_cache_basename()
+ 
+ 
++@pytest.mark.skipif(not HAS_PYGIT2, reason="This host lacks proper pygit2 support")
+ def test_find_file(tmp_path):
+     opts = {
+         "cachedir": f"{tmp_path / 'cache'}",
+@@ -286,6 +287,7 @@ def test_find_file(tmp_path):
+     assert gitfs.find_file("asdf") == {"path": "", "rel": ""}
+ 
+ 
++@pytest.mark.skipif(not HAS_PYGIT2, reason="This host lacks proper pygit2 support")
+ def test_find_file_bad_path(tmp_path):
+     opts = {
+         "cachedir": f"{tmp_path / 'cache'}",
+@@ -310,6 +312,7 @@ def test_find_file_bad_path(tmp_path):
+         gitfs.find_file("sdf/../../../asdf")
+ 
+ 
++@pytest.mark.skipif(not HAS_PYGIT2, reason="This host lacks proper pygit2 support")
+ def test_find_file_bad_env(tmp_path):
+     opts = {
+         "cachedir": f"{tmp_path / 'cache'}",
+@@ -380,6 +383,7 @@ def test_remote_to_url(remote, result):
+     assert salt.utils.gitfs.GitFS.remote_to_url(remote) == result
+ 
+ 
++@pytest.mark.skipif(not HAS_PYGIT2, reason="This host lacks proper pygit2 support")
+ def test_find_file_subdir(tmp_path):
+     root = tmp_path / "root"
+     root.mkdir()
+-- 
+2.50.0
+
