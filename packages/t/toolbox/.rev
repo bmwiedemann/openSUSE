@@ -316,4 +316,13 @@
   * Support addition podman arguments</comment>
     <requestid>1274366</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3b8c64641c0c81d20ee12f7796cf731a</srcmd5>
+    <version>2.4+git20250630.5e08e45</version>
+    <time>1751362403</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4+git20250630.5e08e45:
+  * Forbid --user if running as root</comment>
+    <requestid>1289210</requestid>
+  </revision>
 </revisionlist>

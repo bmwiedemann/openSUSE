@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 30 08:29:43 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.4+git20250630.5e08e45:
+  * Forbid --user if running as root
+
+-------------------------------------------------------------------
 Mon May 05 07:51:37 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.4+git20250429.b335d1b:
