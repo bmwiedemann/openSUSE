@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 28 19:14:06 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Add libevent-devel conflict
+
+-------------------------------------------------------------------
+Sun Jun 22 13:28:46 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Split event.h to subpackage, it is an optional compatibility layer and we already ship
+  the native libevent - this allows for removal of the conflict in libevent and further
+  to allow building of packages requiring both libraries
+
+-------------------------------------------------------------------
 Thu Feb 29 16:15:33 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -204,4 +204,12 @@
   % libev-4.15_compiler_warnings.patch (refreshed) (forwarded request 1153467 from pgajdos)</comment>
     <requestid>1153468</requestid>
   </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>1b50dfb2598face4bf66d731bb9e42be</srcmd5>
+    <version>4.33</version>
+    <time>1751362394</time>
+    <user>anag_factory</user>
+    <comment>Add libevent-devel conflict (forwarded request 1288979 from crameleon)</comment>
+    <requestid>1289171</requestid>
+  </revision>
 </revisionlist>

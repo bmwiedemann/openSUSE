@@ -1,7 +1,7 @@
 #
 # spec file for package libev
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,6 +77,15 @@ available.
 
 This package holds the development files for libev.
 
+%package libevent-devel
+Summary:        Libev libevent compatibility header
+Group:          Development/Libraries/C and C++
+Requires:       %{library_name} = %{version}
+Conflicts:      libevent-devel
+
+%description libevent-devel
+This package holds the libevent compatibility header from libev.
+
 %prep
 %if %{with signify}
 signify -V -p %{SOURCE3} -m %{SOURCE0}
@@ -111,10 +120,12 @@ cp %{SOURCE1} %{buildroot}%{_libdir}/pkgconfig/libev.pc
 %doc README ev.pod Changes
 %{_includedir}/ev++.h
 %{_includedir}/ev.h
-%{_includedir}/event.h
 %{_libdir}/libev.so
 %{_mandir}/man3/ev.3%{?ext_man}
 %{_libdir}/pkgconfig/libev.pc
+
+%files libevent-devel
+%{_includedir}/event.h
 
 %files -n %{library_name}
 %{_libdir}/libev.so.4*
