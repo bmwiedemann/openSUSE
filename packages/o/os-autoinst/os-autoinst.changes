@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 30 17:30:19 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1751292366.cb60853:
+  * Fix category generation for paths to lua test modules
+  * Update Perl::Tidy to 20250616.0.0
+  * generalhw: fix is_shutdown signature
+  * Workaround coverage issue
+  * Rename `$mock_main` to `$mock_ovs` in OVS unit test
+  * Extend logging in OVS service to debug its occasional unresponsiveness
+
+-------------------------------------------------------------------
 Sat Jun 28 00:22:30 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1750841733.3fc0bf7:
