@@ -187,4 +187,13 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases</comment>
     <requestid>1288152</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e9c546b398cb23732e323944cea272b0</srcmd5>
+    <version>20250627</version>
+    <time>1751362427</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250627 (git commit f40eafe21683):
+  * WHENCE: extract license texts</comment>
+    <requestid>1289258</requestid>
+  </revision>
 </revisionlist>
