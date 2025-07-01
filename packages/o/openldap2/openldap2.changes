@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 23 11:22:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.10
+  * ldap.conf:TIMEOUT and NETWORK_TIMEOUT config directives now
+    have the desired effect for TLS connections (previously ignored)
+  * Reject attempts to modify cn=schema,cn=config objects
+  * Fixed a slapo-nestgroup leak in nestgroup_memberFilter
+  * Fixed a slapo-translucent regression with subordinate
+    databases / and when requesting attributes
+  * Adjusted slappw-argon2 defaults to be more secure
+  * Added slapd microsecond timestamp format for local logging
+  * Fixed libldap ldap_result behavior with LDAP_MSG_RECEIVED
+
+-------------------------------------------------------------------
 Wed Aug  7 11:42:49 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
 
 - Add back two hunks from gcc14.patch as gcc14-v2.patch.  Not all
@@ -2271,7 +2285,6 @@ Mon Jun 30 16:32:10 CEST 2008 - rhafer@suse.de
 - Adjust BuildRequires for older Distributions
 
 -------------------------------------------------------------------
-
 Fri Jun 27 10:57:53 CEST 2008 - coolo@suse.de
 
 - make sure the subpacks are only in one spec file declared

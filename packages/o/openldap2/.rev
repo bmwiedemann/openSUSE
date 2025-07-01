@@ -1600,4 +1600,12 @@ Removal of SuSEfirewall2 service.
   still remains in the upstream.</comment>
     <requestid>1192647</requestid>
   </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>b53b6d00a2925343202c9740dae8ea75</srcmd5>
+    <version>2.6.10</version>
+    <time>1751362413</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.6.10</comment>
+    <requestid>1289248</requestid>
+  </revision>
 </revisionlist>
