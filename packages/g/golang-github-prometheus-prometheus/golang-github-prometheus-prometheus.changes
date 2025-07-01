@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 30 04:54:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.4.2:
+  * [BUGFIX] OTLP receiver: Fix default configuration not being
+    respected if the otlp: block is unset in the config file. #16693
+
+-------------------------------------------------------------------
 Sat May 31 18:42:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.4.1:
