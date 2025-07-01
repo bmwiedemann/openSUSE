@@ -1,7 +1,7 @@
 #
 # spec file for package setools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,9 @@ Source3:        setools.keyring
 Source4:        README.SUSE
 BuildRequires:  %{python_module Cython >= 0.29.14}
 BuildRequires:  %{python_module devel >= 3.10}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libselinux-devel
 BuildRequires:  libsepol-devel
@@ -113,10 +115,10 @@ This package includes the following graphical tools:
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 install -m 644 -D %{SOURCE2} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %fdupes -s %{buildroot}%{python_sitearch}
 

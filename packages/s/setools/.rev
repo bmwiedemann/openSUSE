@@ -429,4 +429,14 @@
     <comment></comment>
     <requestid>1202534</requestid>
   </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>1f8f5ac7c5c9c549500ae92213df6a62</srcmd5>
+    <version>4.5.1</version>
+    <time>1751362432</time>
+    <user>anag_factory</user>
+    <comment>- Drop legacy %python_build and %python_install macros and 
+  switch to pyproject macros instead as requested by packaging team
+</comment>
+    <requestid>1289308</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 30 13:54:20 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Drop legacy %python_build and %python_install macros and 
+  switch to pyproject macros instead as requested by packaging team
+
+-------------------------------------------------------------------
 Wed Sep 18 14:17:31 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Add upstream tarball signature
