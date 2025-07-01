@@ -424,6 +424,7 @@ unsorted:
   - adios-openmpi5-devel 
   - adios-openmpi5-devel-static 
   - adios2-devel 
+  - adios2-minimal-devel 
   - adios2-mpich-devel 
   - adios2-mvapich2-devel 
   - adios2-openmpi4-devel 
@@ -1123,6 +1124,7 @@ unsorted:
   - autorandr 
   - autorandr-bash-completion 
   - autossh 
+  - autotiling-rs 
   - autotrace 
   - autotrace-devel 
   - autotrace-lang 
@@ -11563,7 +11565,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2025_2_rc2-32bit 
+  - libSPIRV-Tools-2025_3_rc1-32bit 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -11877,6 +11879,7 @@ unsorted:
   - libaddrxlat-devel 
   - libaddrxlat3 
   - libadios2-2_10 
+  - libadios2-minimal-2_10 
   - libadios2-mpich-2_10 
   - libadios2-mvapich2-2_10 
   - libadios2-openmpi4-2_10 
@@ -13006,6 +13009,7 @@ unsorted:
   - libetpan20 
   - libetrophy0 
   - libev-devel 
+  - libev-libevent-devel 
   - libev4-32bit 
   - libevdev-devel 
   - libevdev-tools 
@@ -18749,6 +18753,7 @@ unsorted:
   - mirror 
   - mirrormagic 
   - mirrorsorcerer 
+  - mixxx 
   - mjpg-streamer 
   - mk-configure 
   - mk-configure-doc 
@@ -20161,13 +20166,17 @@ unsorted:
   - ooRexx 
   - ooRexx-devel 
   - oomstaller 
+  - opa 
   - opa-address-resolution 
   - opa-address-resolution-devel 
+  - opa-bash-completion 
   - opa-basic-tools 
   - opa-fastfabric 
+  - opa-fish-completion 
   - opa-fm 
   - opa-fmgui 
   - opa-snapconfig 
+  - opa-zsh-completion 
   - opae 
   - opae-devel 
   - opam 
@@ -23578,6 +23587,10 @@ unsorted:
   - python3-SHERPA-MC 
   - python3-SoapySDR 
   - python3-YODA 
+  - python3-adios2 
+  - python3-adios2-mpich 
+  - python3-adios2-mvapich2 
+  - python3-adios2-openmpi4 
   - python3-ansible-compat 
   - python3-ara 
   - python3-arpack-ng 
@@ -24435,6 +24448,7 @@ unsorted:
   - python311-azure-mgmt-containerregistry 
   - python311-azure-mgmt-containerservice 
   - python311-azure-mgmt-containerservicefleet 
+  - python311-azure-mgmt-containerservicesafeguards 
   - python311-azure-mgmt-core 
   - python311-azure-mgmt-cosmosdb 
   - python311-azure-mgmt-cosmosdbforpostgresql 
@@ -28146,6 +28160,7 @@ unsorted:
   - python312-azure-mgmt-containerregistry 
   - python312-azure-mgmt-containerservice 
   - python312-azure-mgmt-containerservicefleet 
+  - python312-azure-mgmt-containerservicesafeguards 
   - python312-azure-mgmt-core 
   - python312-azure-mgmt-cosmosdb 
   - python312-azure-mgmt-cosmosdbforpostgresql 
@@ -31911,6 +31926,7 @@ unsorted:
   - python313-azure-mgmt-containerregistry 
   - python313-azure-mgmt-containerservice 
   - python313-azure-mgmt-containerservicefleet 
+  - python313-azure-mgmt-containerservicesafeguards 
   - python313-azure-mgmt-core 
   - python313-azure-mgmt-cosmosdb 
   - python313-azure-mgmt-cosmosdbforpostgresql 
@@ -48843,6 +48859,7 @@ unsorted:
   - wcslib-devel 
   - wcslib-doc 
   - wcslib-tools 
+  - wcurl 
   - wdiff 
   - wdiff-lang 
   - wdisplays 
@@ -48936,10 +48953,12 @@ unsorted:
   - wine-binfmt 
   - wine-binfmt-standalone 
   - wine-devel 
+  - wine-devel-32bit 
   - wine-gecko 
   - wine-staging 
   - wine-staging-32bit 
   - wine-staging-devel 
+  - wine-staging-devel-32bit 
   - wine-staging-wow64 
   - wine-staging-wow64-devel 
   - wine-wow64 
