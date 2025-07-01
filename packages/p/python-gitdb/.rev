@@ -88,4 +88,14 @@
     <comment></comment>
     <requestid>1241510</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5f16d43e5bb23e50919c63ffb38d738c</srcmd5>
+    <version>4.0.12</version>
+    <time>1751362388</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- List directories explicitly under %files.
+- Run a portion of the testsuite.</comment>
+    <requestid>1289118</requestid>
+  </revision>
 </revisionlist>

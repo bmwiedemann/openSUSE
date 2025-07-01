@@ -24,13 +24,17 @@ Summary:        Git Object Database
 License:        BSD-3-Clause
 URL:            https://github.com/gitpython-developers/gitdb
 Source:         https://files.pythonhosted.org/packages/source/g/gitdb/gitdb-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module smmap >= 3.0.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-smmap >= 3.0.1
 Provides:       python-gitdb2 = %{version}
 Obsoletes:      python-gitdb2 < %{version}
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -40,19 +44,22 @@ GitDB is a pure-Python git object database
 %setup -q -n gitdb-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Package requires its own git tree in order to pass tests
-#%%python_exec setup.py test
+donttest="test_reading or test_writing or test_correctness or test_base"
+donttest+=" or test_loose_correctness or test_pack_random_access"
+donttest+=" or test_pack_writing or test_stream_reading"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS
-%{python_sitelib}/gitdb*
+%{python_sitelib}/gitdb
+%{python_sitelib}/gitdb-%{version}.dist-info
 
 %changelog
