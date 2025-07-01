@@ -1,7 +1,7 @@
 #
 # spec file for package python-invocations
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Patch0:         invocations-no-bundled.patch
 Patch1:         drop-icecream-dep.patch
 BuildRequires:  %{python_module blessings >= 1.6}
 BuildRequires:  %{python_module invoke >= 1.7.2}
-BuildRequires:  %{python_module lexicon}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-relaxed}
 BuildRequires:  %{python_module releases >= 1.6}
 BuildRequires:  %{python_module semantic_version >= 2.4}
@@ -42,7 +42,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-blessings >= 1.6
 Requires:       python-invoke >= 1.7.2
-Requires:       python-lexicon
 Requires:       python-releases >= 1.6
 Requires:       python-semantic_version >= 2.4
 Requires:       python-tabulate >= 0.7.5
@@ -67,10 +66,10 @@ the Invoke project's communication channels for updates. Thanks!
 %autosetup -p1 -n invocations-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -84,6 +83,6 @@ rm -r tests/autodoc/ tests/packaging/
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/invocations
-%{python_sitelib}/invocations-%{version}*info
+%{python_sitelib}/invocations-%{version}.dist-info
 
 %changelog

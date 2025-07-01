@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 30 05:51:22 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Drop unneeded {Build,}Requires on python-lexicon.
+
+-------------------------------------------------------------------
 Wed Nov  6 10:23:52 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add drop-icecream-dep.patch

@@ -178,4 +178,13 @@
       skip_import kwarg (aka the --skip-import flag on the CLI).</comment>
     <requestid>1221720</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>7a19dffa1869b12229157eaf9bee7cb7</srcmd5>
+    <version>3.3.0</version>
+    <time>1751362391</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Drop unneeded {Build,}Requires on python-lexicon.</comment>
+    <requestid>1289151</requestid>
+  </revision>
 </revisionlist>
