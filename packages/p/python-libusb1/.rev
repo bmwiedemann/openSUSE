@@ -127,4 +127,18 @@
     id unicity and timely finalizer triggering.</comment>
     <requestid>1268608</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>bc01fd6b180bdbe549238e287b75a672</srcmd5>
+    <version>3.3.1</version>
+    <time>1751362456</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1289264 from glaubitz
+
+- Switch build system from setuptools to pyproject.toml
+    * Add python-pip and python-wheel to BuildRequires
+    * Replace %python_build with %pyproject_wheel
+    * Replace %python_install with %pyproject_install
+  - Use Python 3.11 on SLE-15 by default</comment>
+    <requestid>1289275</requestid>
+  </revision>
 </revisionlist>

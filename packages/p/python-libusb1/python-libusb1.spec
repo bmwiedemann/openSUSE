@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-libusb1
 Version:        3.3.1
 Release:        0
@@ -25,7 +26,9 @@ Summary:        Python wrapper for libusb-1.0
 License:        LGPL-2.1-or-later
 URL:            https://github.com/vpelletier/%{name}
 Source:         https://files.pythonhosted.org/packages/source/l/libusb1/libusb1-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libusb-1_0-0 >= 1.0.21
 BuildRequires:  python-rpm-macros
@@ -44,10 +47,10 @@ sed -i '1{/^#!/d}' examples/*.py
 chmod a-x examples/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
