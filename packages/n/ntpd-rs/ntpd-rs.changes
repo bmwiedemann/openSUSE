@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun 26 16:09:14 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.0
+  Added
+  * Support draft versions of NTPv5 with configuration changes.
+  * Allow disabling ntp versions in the server.
+  Changed
+  * NTPv5 draft support now targets draft 4.
+  * Time jumps now emit warnings.
+  * Updated dependencies.
+  Fixed
+  * Fixed a crash in force-sync when using many servers.
+  * Fixed root dispersion of the server not properly updating over
+    time.
+  * Fixed a bug in handling unsigned ntp deny messages.
+
+-------------------------------------------------------------------
 Fri Feb 28 16:01:48 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.0
