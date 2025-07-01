@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 30 06:06:57 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250627 (git commit f40eafe21683):
+  * amdgpu: DMCUB updates for DCN401
+
+-------------------------------------------------------------------
 Tue Jun 24 06:07:11 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250623 (git commit dbfe16e9e8ac):
