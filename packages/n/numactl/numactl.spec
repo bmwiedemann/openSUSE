@@ -17,7 +17,7 @@
 
 
 Name:           numactl
-Version:        2.0.19.13.g63e0223
+Version:        2.0.19.14.g690a72c
 Release:        0
 Summary:        NUMA Policy Control
 License:        GPL-2.0-only
@@ -25,12 +25,6 @@ Group:          System/Management
 URL:            https://github.com/numactl/numactl/releases
 Source0:        %{name}-%{version}.tar.gz
 Source2:        baselibs.conf
-# PATCH-FIX-UPSTREAM -- Avoid segfault when no node can be found in sysfs #246
-Patch1:         0001-Fixed-segfault-when-no-node-could-be-found-in-sysfs-.patch
-# PATCH-FIX-UPSTREAM -- Use __builtin___clear_cache #246
-Patch2:         numactl-clearcache-pie.patch
-# PATCH-FIX-UPSTREAM -- PR #245
-Patch3:         https://github.com/numactl/numactl/commit/4abeee1aac20a7a2552870e0359b8df013ae9037.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool

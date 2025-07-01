@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 30 18:02:29 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Update to version 2.0.19.14.g690a72c:
+  * numastat command fails on LPAR which is not having node0
+
+Patch is now upstream:
+https://github.com/numactl/numactl/pull/246
+D    4abeee1aac20a7a2552870e0359b8df013ae9037.patch
+
+Patches are wrong or not needed anymore:
+https://github.com/numactl/numactl/pull/246
+D    0001-Fixed-segfault-when-no-node-could-be-found-in-sysfs-.patch
+D    numactl-clearcache-pie.patch
+
+-------------------------------------------------------------------
 Tue Jun 24 11:19:25 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - Fix Node0 does not exist (bsc#1244492)
