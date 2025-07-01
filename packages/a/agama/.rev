@@ -373,4 +373,21 @@
     <comment>weekly snapshot</comment>
     <requestid>1287980</requestid>
   </revision>
+  <revision rev="23" vrev="23">
+    <srcmd5>37fc775873828ab46e48e75fa8238889</srcmd5>
+    <version>0</version>
+    <time>1751362496</time>
+    <user>anag_factory</user>
+    <comment>- Version 16
+
+- Reprobe storage if need while loading a config (bsc#1245114).
+
+- Add an end-point to check passwords strenght (bsc#1237480).
+
+- Fix error messages formatting (gh#agama-project/agama#2471).
+
+- Allow to specify onlyRequired in software config and in software
+  section of agama profile (jsc#AGM-154)</comment>
+    <requestid>1289317</requestid>
+  </revision>
 </revisionlist>
