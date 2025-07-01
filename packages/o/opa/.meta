@@ -1,0 +1,7 @@
+<package name="opa" project="openSUSE:Factory">
+  <title>Open Policy Agent (OPA) is an open source, general-purpose policy engine</title>
+  <description>Open Policy Agent (OPA) is an open source, general-purpose policy engine that enables unified, context-aware policy enforcement across the entire stack.
+
+OPA is proud to be a graduated project in the [Cloud Native Computing Foundation](https://cncf.io) (CNCF) landscape.</description>
+  <url>https://github.com/open-policy-agent/opa</url>
+</package>
