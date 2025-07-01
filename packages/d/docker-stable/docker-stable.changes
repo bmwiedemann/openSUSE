@@ -261,6 +261,14 @@ Wed Jun 16 04:18:11 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Initial docker-stable release, forked from Docker 24.0.6-ce release
   (packaged on 2023-10-11).
+- Patches included from snapshot:
+  + 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  + 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  + 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  + 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  + 0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+  + 0006-CVE-2024-23653-update-buildkit-to-include-CVE-patche.patch
+  + cli-0001-docs-include-required-tools-in-source-tree.patch
 - Update to Docker 24.0.9-ce, which is the latest version of the 24.0.x branch.
   It seems likely this will be the last upstream version of the 24.0.x branch
   (it seems Mirantis is going to do LTS for 23.0.x, not 24.0.x).
