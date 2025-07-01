@@ -33,7 +33,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.37.0
+Version:        2.38.0
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt for s390x (plus selected tools for x86_64)
 License:        MIT
@@ -152,12 +152,6 @@ Patch910:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.p
 Patch911:       s390-tools-sles15sp5-remove-no-pie-link-arguments.patch
 Patch912:       s390-tools-ALP-zdev-live.patch
 Patch913:       s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
-###
-Patch920:       s390-tools-01-Add-zpwr-tool.patch
-Patch921:       s390-tools-02-zpwr-Add-man-page-for-zpwr-tool.patch
-###
-Patch930:       s390-tools-chpstat-Fix-DPU-utilization-calculation.patch
-Patch931:       s390-tools-chpstat-Add-missing-CMG-5-data-fields.patch
 ###
 Patch990:       s390-tools-slfo-01-parse-ipl-device-for-activation.patch
 ###
@@ -723,6 +717,7 @@ done
 %dir %{_prefix}/lib/dracut/modules.d/95zdev-kdump
 %dir %{_prefix}/lib/dracut/modules.d/96zdev-live
 %dir %{_prefix}/lib/dracut/modules.d/99ngdump
+%{_prefix}/lib/dracut/dracut.conf.d/99-pkey.conf
 %dir /boot/zipl
 %dir %{_libdir}/zkey
 %{_libdir}/zkey/zkey-ekmfweb.so
@@ -828,7 +823,14 @@ export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
 %{_prefix}/bin/*
 %dir %{_datadir}/s390-tools
 %dir %{_datadir}/s390-tools/pvimg
-%{_datadir}/s390-tools/pvimg/check_hostkeydoc
+%{_datadir}/bash-completion/completions/genprotimg.bash
+%{_datadir}/bash-completion/completions/pvattest.bash
+%{_datadir}/bash-completion/completions/pvimg.bash
+%{_datadir}/bash-completion/completions/pvsecret.bash
+%{_datadir}/zsh/site-functions/_genprotimg
+%{_datadir}/zsh/site-functions/_pvattest
+%{_datadir}/zsh/site-functions/_pvimg
+%{_datadir}/zsh/site-functions/_pvsecret
 %{_mandir}/man1/*
 
 %endif
