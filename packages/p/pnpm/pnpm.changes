@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 30 05:15:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.12.4:
+  * Patch Changes
+    - Fix pnpm licenses command for local dependencies #9583.
+    - Fix a bug in which pnpm ls --filter=not-exist --json prints
+      nothing instead of an empty array #9672.
+    - Fix a deadlock that sometimes happens during peer dependency
+      resolution #9673.
+    - Running pnpm install after pnpm fetch should hoist all
+      dependencies that need to be hoisted.
+    - Fixes a regression introduced in v10.12.2 by #9648; resolves
+      #9689.
+
+-------------------------------------------------------------------
 Tue Jun 24 11:02:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 10.12.3:
