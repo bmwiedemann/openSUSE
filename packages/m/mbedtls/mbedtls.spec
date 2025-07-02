@@ -22,7 +22,7 @@
 %define lib_everest libeverest
 %define lib_p256m   libp256m
 Name:           mbedtls
-Version:        3.6.2
+Version:        3.6.4
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0 OR GPL-2.0-or-later
@@ -31,6 +31,8 @@ Source:         %{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 # PATCH-FEATURE-OPENSUSE - enable MBEDTLS_THREADING_PTHREAD and MBEDTLS_THREADING_C
 Patch1:         mbedtls-enable-pthread.patch
+# PATCH-FEATURE-OPENSUSE - enable MBEDTLS_SSL_DTLS_SRTP
+Patch2:         mbedtls-enable-srtp.patch
 BuildRequires:  cmake
 BuildRequires:  ninja
 %{?suse_build_hwcaps_libs}

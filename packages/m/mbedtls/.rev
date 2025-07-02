@@ -565,4 +565,13 @@
     <comment></comment>
     <requestid>1211119</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>eab29570e9d4bc8e0ac18d67e2f78217</srcmd5>
+    <version>3.6.4</version>
+    <time>1751451105</time>
+    <user>anag_factory</user>
+    <comment>- Enable SRTP protocol needed by some software.
+  * Add patch mbedtls-enable-srtp.patch (forwarded request 1289614 from lmulling)</comment>
+    <requestid>1289615</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,843 @@
 -------------------------------------------------------------------
+Tue Jul 01 14:39:38 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 3.6.4:
+  * Added generated files
+  * Version bump 3.6.4
+  * Assemble ChangeLog
+  * Properly initialize SSL endpoint objects
+  * Fix accidentally skipped test assertion
+  * Update framework pointer (release-sync)
+  * fix: additional MSVC v142 build issue with tls1.3 configuration enabled.
+  * Remove blank line
+  * Simplify changelog
+  * Add a note about processor memory reordering
+  * Add changelog
+  * Replace __attribute__((nonstring)) with macro MBEDTLS_ATTRIBUTE_UNTERMINATED_STRING
+  * Improve some explanations
+  * Don't mutate dst_size
+  * Add __attribute__ ((nonstring)) to remove unterminated-string-initialization warning
+  * Note that GCM is also impacted
+  * Adjust test case with invalid base64
+  * Fix race condition in mbedtls_aesni_has_support
+  * mbedtls_base64_decode: test dst=NULL with dlen>0
+  * Explain some aspects of the tests
+  * mbedtls_base64_decode: insist on correct padding
+  * Added CVE's to ChangeLogs
+  * lms.c: Updated documentation
+  * test_suite_lms.data: Updated comments
+  * Fix mbedtls_base64_decode() accepting invalid inputs with 4n+1 digits
+  * mbedtls_base64_decode: assert sloppy behavior with bad number of =
+  * mbedtls_base64_decode: test the reported output length
+  * test_suite_lms: Added negative test for corrupted Merkle path
+  * test_suite_lms: Added a test for importing invalid sized key
+  * Added changelog for check return of merkle leaf
+  * Added changelog for lms enum casting
+  * Added changelog for lms overread
+  * Fix change log entry
+  * Fix build test programs in MSVC (due to a warning treated as error in winbase.h)
+  * Built-in lms driver: always zeroize output-buffer in create_merkle_leaf_value
+  * Built-in lms driver:Check return values of Merkle node creation
+  * Built-in lms/lmots driver: Harden public key import against enum truncation
+  * Built-in lms driver: Added input guard
+  * Add changelog
+  * Add fix for PEM underflow
+  * Add test using underflow-causing PEM keyfile
+  * Update framework with additional operation initialization checks
+  * Fix possible UB in mbedtls_asn1_write_raw_buffer()
+  * Fix psa_pake_operation_s member types
+  * Move PAKE size calculation macros, cipher suite and operation structs
+  * Add change log
+  * Move the inclusion of crypto_sizes.h and crypto_struct.h in crypto.h
+  * Add ChangeLog entry
+  * Improve unit tests for mbedtls_asn1_store_named_data
+  * Fix bug in mbedtls_asn1_store_named_data()
+  * Add tests for bug in mbedtls_x509_string_to_names()
+  * Restore standard initializers in _init tests
+  * Use short initializers for multipart operation structures
+  * Avoid a useless copy in cert_{req,write}
+  * Mark ssl_tls12_preset_suiteb_sig_algs const
+  * Mark ssl_tls12_preset_default_sig_algs const
+  * Fix type in ChangeLog
+  * Add comment on apparent type mismatch
+  * Remove redundant free loop
+  * Fix ECDSA documentation: blinding is no longer optional
+  * ECDSA is a special flower
+  * Note functions that store the RNG callback in a context
+  * Reference mbedtls_f_rng_t in public documentation
+  * Name and document the type of random generator callbacks
+  * Add credit to the reporters of the PKCS7 issue
+  * Grammar in comments
+  * Remove .gitmodules
+  * Changelog entry for the union initialization fixes
+  * Test with GCC 15 with sloppy union initialization
+  * Initialize MAC context in internal functions for one-shot MAC
+  * Initialize MAC context in internal functions for KDF
+  * Initialize driver context in setup functions
+  * Add unit test for new behaviour of string_to_names()
+  * Fix memory leak in cert_write & cert_req
+  * Fix runtime error in cert_write & cert_req
+  * Restore behaviour of mbedtls_x509write_set_foo_name()
+  * Fix undocumented free() in x509_string_to_names()
+  * Improve comments
+  * Update framework
+  * Allow gcc-15 to be in $PATH
+  * Enable drivers when testing with GCC 15
+  * GCC 15: Silence -Wunterminated-string-initialization
+  * Test with GCC 15
+  * Disable warning from gcc -pedantic on dlsym/dlopen
+  * Move persistent key tests to a separate .data file
+  * Move concurrent tests to a separate .data file
+  * Update obsolete section title
+  * Complain about a missing comma in multiline lists of strings
+  * Prepare framework for pylint check-str-concat-over-line-jumps
+  * framework: update reference
+  * Constify cipher_wrap:mbedtls_cipher_base_lookup_table
+  * Fix some test helper functions returning 0 on some failures
+  * Check the status of mbedtls_ssl_set_hostname()
+  * Add missing ifdef for mbedtls_ssl_tls13_exporter
+  * Add label_len argument to non-PSA tls_prf_generic
+  * Fix dependencies for TLS-Exporter tests
+  * Fix doxygen for MBEDTLS_SSL_KEYING_MATERIAL_EXPORT
+  * Fix mistake in previous comment change
+  * Fix HkdfLabel comment
+  * Allow maximum label length in Hkdf-Expand-Label
+  * Exporter: Add min. and max. label tests
+  * Fix max. label length in key material exporter
+  * Document BAD_INPUT_DATA error in key material exporter
+  * Fix requirements for TLS 1.3 Exporter compat test
+  * Use mbedtls_calloc, not regular calloc
+  * Add fixed compatibility test for TLS 1.3 Exporter
+  * Remove exporter compatibility test for TLS 1.3
+  * Fix openssl s_client invocation
+  * Print names of new tests properly
+  * Fix memory leak in example programs
+  * ssl-opt.sh: Add tests for keying material export
+  * mbedtls_test_ssl_do_handshake_with_endpoints: Zeroize endpoints
+  * Exporter tests: Don't use unavailbable constant
+  * Exporter tests: Add missing depends-ons
+  * Use one maximum key_len for all exported keys
+  * Exporter tests: Reduce key size in long key tests
+  * Exporter tests: Free endpoints before PSA_DONE()
+  * Exporter tests: Fix possible uninitialized variable use
+  * Coding style cleanup
+  * Exporter tests: Initialize allocated memory
+  * Exportert tests: Free endpoints and options
+  * Fix output size check for key material exporter
+  * Increase allowed output size of HKDF-Expand-Label
+  * Add more tests for keying material export
+  * Mention MBEDTLS_SSL_KEYING_MATERIAL_EXPORT in change log
+  * Fix #endif comment
+  * Enable MBEDTLS_SSL_KEYING_MATERIAL_EXPORT by default
+  * Create MBEDTLS_SSL_KEYING_MATERIAL_EXPORT option
+  * Remove TLS 1.2 Exporter if we don't have randbytes
+  * Revert "Store randbytes for TLS 1.2 TLS-Exporter"
+  * Fix typos in comments
+  * Use fewer magic numbers in TLS-Exporter functions
+  * Add label length argument to tls_prf_generic()
+  * Store randbytes for TLS 1.2 TLS-Exporter
+  * Fix coding style
+  * Fix build when one of TLS 1.2 or 1.3 is disabled
+  * Fix coding style
+  * Fix TLS exporter changelog entry
+  * Fix doxygen comment parameter name
+  * Fix typos in comment
+  * Fix mismatches in function declarations
+  * Fix key_len check in TLS-Exporter
+  * Actually set exporter defaults in ssl_client2
+  * Simplify mbedtls_ssl_tls13_exporter
+  * Add test for TLS-Exporter in TLS 1.3
+  * Fix commented out function declaration
+  * Add changelog entry for TLS-Exporter feature
+  * Add TLS-Exporter options to ssl_client2
+  * Add TLS-Exporter options to ssl_server2
+  * Implement TLS-Exporter feature
+  * programs: demo: do not source project_detection.sh directly
+  * Fix record insertion
+  * programs: demo: source project_detection.sh
+  * framework: update reference
+  * Update feature macro for 3.6
+  * Use HANDSHAKE_OVER in nominal test cases
+  * Improve comments
+  * Adapt dependencies to the 3.6 branch
+  * Use same dependencies for helper functions
+  * Tighten dependencies again
+  * Improve dependency declarations
+  * Tighten dependency declarations
+  * Improve documentation
+  * Remove redundant setup
+  * Fix copypasta
+  * Simulate closing the connection mid-message
+  * Also test inserting non-empty, non-handshake records
+  * Fix the build without MBEDTLS_DEBUG_C
+  * Fix the build in PSK-only configurations
+  * Fix printf of enum
+  * Pacify ancient clang -Wmissing-initializer
+  * Test split, coalesced-split and empty handshake records
+  * Create handshake record coalescing tests
+  * Document gotcha of move_handshake_to_state
+  * Add a log message on every SSL state transition
+  * Always call mbedtls_ssl_handshake_set_state
+  * Document assumption of mbedtls_get_pkcs_padding
+  * Modify ChangeLog entry to full plaintext recovery
+  * Add testcase for maximum padding length
+  * Remove unnecessary TEST_CF_PUBLIC macro call
+  * Update to the new name in usages as well
+  * Add missing credit for set_hostname issue
+  * cmake: Generate test_keys.h and test_certs.h in the build tree
+  * Update framework pointer
+  * Revert "Add auto-generated files"
+  * Restored framework as a submodule
+  * Deleted flattened framework dir.
+  * Appease check-names with prefix
+  * Disable check-names for static padding function
+  * Add ChangeLog entry for PKCS#7 side channel fix
+  * Fix timing side-channel in PKCS7 padding
+  * Add constant-flow testing for PKCS7 padding
+
+-------------------------------------------------------------------
+Wed May 07 22:09:39 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Update _service file to easier obtain new sources.
+- Update to version 3.6.3:
+  * Add auto-generated files
+  * Added framework as a flattened directory
+  * Unlinked framework as a submodule.
+  * Updated BRANCHES.md
+  * Finalise ChangeLog
+  * Version Bump for 3.6.3
+  * Assemble Changelog
+  * Changelog: Added CVE.
+  * ssl-opt: Added 4 and 128 bytes tests to HS defragmentation for server initiated reneg
+  * ssl-opt: Fixed a minor typo.
+  * Reword slightly to be more tentative
+  * Re-introduce log asserts on positive cases
+  * Improve a test assertion
+  * Fix a typo
+  * Add test cases for EOF in the middle of fragments
+  * Adjust logic around log pattern
+  * Add test for length larger than 2^16
+  * Adapt "large ClientHello" tests to incremental
+  * Cleanly reject non-HS in-between HS fragments
+  * Reduce the level of logging used in tests
+  * Move new tests to their own data file
+  * Fix dependency issues
+  * New test function for large ClientHello
+  * Fix hash dependencies for TLS 1.2 tests
+  * Fix curve dependencies
+  * Add missing dependency declaration
+  * Fix dependency issues
+  * Add test with non-HS record in-between HS fragments
+  * Add test to TLS 1.3 ClientHello fragmentation
+  * Add reference tests with 1.3 ClientHello
+  * Add supported_curves/groups extension
+  * New test function inject_client_content_on_the_wire()
+  * ssl-opt: Disabled the renegotiation delay for fragmented HS renegotiation.
+  * ssl-opt: Updated documentation.
+  * ssl-opt: Added client-initiated server-rejected renegotation test.
+  * ssl-opt: Updated O_NEXT_CLI_RENEGOTIATE used by fragmented HS renegotiation with certificates.
+  * ssl-opt: Fragmented HS renegotiation, removed -legacy_renegotiation argument.
+  * ssl-opt: Fragmented HS renegotiation, removed requires_certificate_authentication dependency.
+  * ssl-opt: Fragmented HS renegotiation, removed requires_openssl_3_x dependency.
+  * ssl-opt: Fragmented HS renegotiation, adjusted test names for consistency.
+  * ssl-opt: Fragmented HS renegotiation, updated matching regex
+  * ssl-opt: Added coverage for client-initiated fragmented HS renegotiation tests.
+  * ssl-opt: Refactored fragmented HS renegotiation tests.
+  * ssl-opt: Fragmented HS renegotiation, updated documentation.
+  * ssl-opt: Removed mock-tests from HS renegotiation.
+  * sll-opt: Added refence fix for the Mock HS Defrag test using renegotitiation delay
+  * programs -> ssl_client2.c: Added option renego_delay to set record buffer depth.
+  * Added Mock Renegotiation negative test for testing.
+  * ssl-opt: Added fragmented HS tests for server-initiated renegotiation.
+  * ssl-opt: Added fragmented HS tests for client-initiated renegotiation.
+  * ssl-opt: Added fragmented HS tests for SSL_VARIABLE_BUFFER_LENGTH.
+  * Add note about MBEDTLS_PRIVATE() in 3.6
+  * Fix typos in the 3.0 migration guide
+  * mbedtls_net_send API description typo fix
+  * Use an array of strings instead of pointer smuggling
+  * Use dummy typedef instead of macro
+  * Clarify changelog
+  * Updated framework pointer.
+  * Update the location of defragmentation limitations
+  * State globally that the limitations don't apply to DTLS
+  * Clarify DTLS
+  * ClientHello may be fragmented in renegotiation
+  * Move the defragmentation documentation to mbedtls_ssl_handshake
+  * Refer to the API documentation for details
+  * Document the limitations of TLS handshake message defragmentation
+  * Add changelog entry for TLS 1.2 Finished fix
+  * More generally, what needs psa_crypto_init also needs threading
+  * PSA core: Allow enabling one volatile/builtin key
+  * Cleanly reject non-HS in-between HS fragments
+  * Replace zero by PSA_ALG_NONE in key derivation input functions
+  * Fix comments
+  * Update changelog to call out MinGW
+  * TLS1.2: Check for failures in Finished calculation
+  * Never use %zu on MinGW
+  * Remove Everest VS2010 compatibility headers
+  * Fix MSVC version guard for C99 format size specifiers
+  * Disable fatal assertions in Windows printf tests
+  * Add testcase for MBEDTLS_PRINTF_MS_TIME
+  * Test handling of format macros defined in debug.h
+  * Run test_suite_debug without MBEDTLS_SSL_TLS_C
+  * Fix a log message
+  * Note unused variables when debugging is disabled
+  * Pacify uncrustify
+  * Fix uninitialized variable
+  * Unify handshake fragment log messages
+  * Fix handshake defragmentation when the record has multiple messages
+  * Fix end check before memmove
+  * Zeroize temporary heap buffers used when deriving an ECC key
+  * Zeroize temporary heap buffers used in PSA operations
+  * Update framework
+  * Make conversion explicit to silence MSVC warning
+  * Fix dodgy printf calls
+  * Handshake defragmentation: reassemble incrementally
+  * mbedtls_ssl_prepare_handshake_record(): log offsets after decryption
+  * mbedtls_ssl_prepare_handshake_record(): refactor first fragment prep
+  * Tweak handshake fragment log message
+  * Tweak "waiting for more handshake fragments" log message
+  * Fix Doxygen markup
+  * Update framework
+  * Generate handshake defragmentation test cases: update analyze_outcomes
+  * Switch to generated handshake tests
+  * Normalize requirements in defragmentation test cases
+  * Normalize messages in defragmentation test cases
+  * Normalize whitespace in defragmentation test cases
+  * Move most TLS handshake defragmentation tests to a separate file
+  * New generated file: tests/opt-testcases/handshake-generated.sh
+  * Fix code style for key derivation input function
+  * Replace zero by PSA_ALG_NONE in key derivation test function
+  * Replace zero by PSA_ALG_NONE in key derivation testing
+  * Simplify testing psa_key_derivation_input_*() bad state
+  * Fix psa_key_derivation_input_integer() not detecting bad state
+  * framework: update reference
+  * ssl-opt: Re-introduce certificate dependency for HS negative tests.
+  * ssl-opt: Removed dependencies for HS defrag negative tests.
+  * ssl-opt: Adjusted reference hs defragmentation tests.
+  * ssl-opt: Minor typos and documentation fixes.
+  * analyze_outcomes: Temporary disabled 3 HS Degragmentation tests.
+  * ssl-opt: Updated documentation of HS-Defrag tests.
+  * ssl-opt: Removed redundant dependencies: requires_openssl_3_x
+  * ssl-opt.sh: Disabled HS Defrag Tests for TLS1.2 where len < 16
+  * ssl-opt: Replaced max_send_frag with split_send_frag
+  * ssl-opt: Added coverage for hs defragmentation TLS 1.2 tests.
+  * ChangeLog: Updated the entry for tls-hs-defragmentation
+  * ssl-opt: Updated documentation.
+  * ssl-opt: Added negative tests for handshake fragmentation.
+  * ssl-opt: Added handshake fragmentation tests for 4 byte fragments.
+  * ssl-opt: Added negative-assertion testing, (HS Fragmentation disabled)
+  * ssl-opt: Added tls 1.2 tests for HS defragmentation.
+  * ssl-opt: Dependency resolving set to use to requires_protocol_version HS deframentation tests.
+  * ssl-opt: Adjusted the wording on handshake fragmentation tests.
+  * ssl-opt: Added requires_openssl_3_x to defragmentation tests.
+  * ssl-opt: Updated the keywords to look up during handshake fragmentation tests.
+  * Add missing client certificate check in handshake defragmentation tests
+  * Test Handshake defragmentation only for TLS 1.3 only for small values
+  * Add guard to handshake defragmentation tests for client certificate
+  * Add a comment to elaborate using split_send_frag in handshake defragmentation tests
+  * Enforce client authentication in handshake fragmentation tests
+  * Remove unneeded mtu option from handshake fragmentation tests
+  * Add client authentication to handshake defragmentation tests
+  * Require openssl to support TLS 1.3 in handshake defragmentation tests
+  * Remove unnecessary string check in handshake defragmentation tests
+  * Fix typo in TLS Handshake defrafmentation tests
+  * Improve TLS handshake defragmentation tests
+  * Add TLS Hanshake defragmentation tests
+  * Document the need to call mbedtls_ssl_set_hostname
+  * Improve documentation of mbedtls_ssl_set_hostname
+  * Expand and rectify the documentation of mbedtls_ssl_context::hostname
+  * Changelog entries for requiring mbedls_ssl_set_hostname() in TLS clients
+  * Add a note about calling mbedtls_ssl_set_hostname to mbedtls_ssl_setup
+  * Run part of ssl-opt.sh in full_no_deprecated
+  * changelog: add note for MD changes
+  * crypto_extra: improve description of psa_can_do_hash()
+  * psa: move definition of psa_can_do_hash() to crypto_extra.h
+  * docs: update md-cipher-dispatch
+  * adjust_legacy_crypto: improve enablement of MBEDTLS_MD_xxx_VIA_PSA
+  * md: allow dispatch to PSA whenever CRYPTO_CLIENT is enabled
+  * adjust_legacy_crypto: move auto-enabling of CRYPTO_CLIENT when CRYPTO_C
+  * Document PSA's need for threading
+  * Update framework pointer
+  * Update documentation regarding metatest
+  * Update documentation regarding test_zeroize
+  * Update path to demo_common.sh
+  * Update path for moved test_zeroize.gdb script
+  * Update paths for moved programs in generate_visualc_files.pl
+  * Update paths for moved dlopen_demo.sh
+  * Update paths for moved program files in CMakeLists
+  * Update include paths in C files
+  * Update paths for moved program files in makefiles
+  * Remove unused variable in ssl_server.c
+  * Update the changelog message
+  * Remove obselete checks due to the introduction of handhsake defragmen...
+  * Add a note about badmac_seen's new name in ssl_context_info
+  * Fix Doxygen misuse
+  * Add MBEDTLS_FRAMEWORK_DIR variable to CMake
+  * Don't reset badmac_seen on a DTLS client reconnect
+  * Merge in_hsfraglen with badmac_seen_or_in_hsfraglen
+  * Change the type of in_hsfraglen to unsigned
+  * Rename badmac_seen to badmac_seen_or_in_hsfraglen
+  * Minor readability improvement
+  * Remove in_hshdr
+  * Add a safety check for in_hsfraglen
+  * Allow fragments less HS msg header size (4 bytes)
+  * Remove mbedtls_ssl_reset_in_out_pointers
+  * Review comments
+  * Update ChangeLog.d/tls-hs-defrag-in.txt
+  * Defragment incoming TLS handshake messages
+  * Move programs out of Mbed TLS
+  * mbedtls_ssl_set_hostname tests: add tests with CA callback
+  * Call mbedtls_ssl_set_hostname in the generic endpoint setup in unit tests
+  * Require calling mbedtls_ssl_set_hostname() for security
+  * Create configuration option to bypass the mbedtls_ssl_set_hostname check
+  * Create error code for mbedtls_ssl_set_hostname not called
+  * Keep track of whether mbedtls_ssl_set_hostname() has been called
+  * Update the documentation of ssl->hostname
+  * Access ssl->hostname through abstractions
+  * mbedtls_ssl_set_hostname tests: baseline
+  * Automate MBEDTLS_X509_TRUSTED_CERTIFICATE_CALLBACK dependency
+  * Make guards more consistent between X.509-has-certs and SSL-has-certs
+  * Fix Doxygen markup
+  * framework: update reference
+  * components-compliance.sh: update references to test_psa_compliance.py
+  * components-configuration.sh: update references to test_psa_constant_names.py
+  * Move files out of Mbed TLS
+  * test_suite_ssl: update description for conf_curve and conf_gruop tests
+  * test_suite_ssl: add ECDHE-RSA case for handshake_fragmentation()
+  * test_suite_ssl: add new ECDHE-RSA tests
+  * Update tf-psa-crypto/drivers/builtin/src/ecp.c
+  * Fix missing-word typo
+  * Add paragraph on undefined behaviour
+  * Add X.509 formatting validation to SECURITY.md
+  * Fix incorrect test function
+  * Remove useless dependency from test function
+  * Add ignore list entries for ECDH/FFDH algorithm without key type
+  * Remove test coverage exceptions that are no longer needed
+  * Update framework
+  * Update framework pointer
+  * Stop recommended deprecated function in migration guide
+  * config.py: Simplify crypto config default path setting
+  * framework: update reference
+  * components-build-system.sh: align component_test_cmake_as_package
+  * Move files out of Mbed TLS
+  * framework: update reference
+  * scripts: add new min_requirements.py script
+  * Move files out of Mbed TLS
+  * PSA interruptible sign/verify: detect invalid curve family in start
+  * framework: update reference
+  * component-basic-checks: fix paths of files moved to framework
+  * Move files out of Mbed TLS
+  * framework: updated reference
+  * scripts: fix paths for files moved to framework
+  * Move files out of Mbed TLS
+  * Update framework submodule
+  * Remove test coverage exceptions that are no longer needed
+  * crypto_config.h: Don't list mechanisms that are not implemented
+  * Update submodule
+  * Update submodule with the merge
+  * Update submodule
+  * Adujst paths
+  * Move files out of Mbed TLS
+  * Update submodule with the merge
+  * Update submodule
+  * Adjust paths
+  * Move files out of Mbed TLS
+  * Add change log entry on AES-NI asm block fixes
+  * Specify previously missed XMM register clobbers in AES-NI asm blocks
+  * Specify register clobbers in mbedtls_aesni_crypt_ecb()
+  * Update framework to the merge of #99
+  * Update framework
+  * Create a new Python module used by generate_psa_tests.py
+  * Fix `make dir/file` not rebuilding existing files
+  * Remove Invalid import/export key test
+  * Fix export public-key opaque key test paramters
+  * make: Add missing dependency
+  * Move test_keys.h to include/test
+  *  Fix incorrect submodule error message in CMake
+  * Fix incorrect submodule error message in Makefile
+  * Update submodule with the merge
+  * Added debug print in tls13 ssl_tls13_write_key_share_ext
+  * Update submodule
+  * Adapt paths for scripts/quiet
+  * Adapt paths for output_env.sh
+  * Move files out of Mbed TLS
+  * Refactor scripts to use config.py instead of config.pl
+  * Remove obsolete tcp_client.pl
+  * Remove obsolete Travis CI scripts
+  * Remove obsolete Docker CI scripts
+  * Distinguish between MBEDTLS_PSA_CRYPTO_C and MBEDTLS_PSA_CRYPTO_CLIENT
+  * FFDH in TLS: it's only a limitation for TLS 1.2, not TLS 1.3
+  * Fix copypasta
+  * reworked changelog according to suggestion
+  * Added changelog
+  * Make mbedTLS compile with MS-DOS DJGPP
+  * Update submodule to point to main
+  * Define FRAMEWORK
+  * Fix paths
+  * Use new functions
+  * Add project and branch detection in shell
+  * p256-m: allow deterministic ECDSA verification
+  * PSA interruptible sign/verify: detect unsupported mechanism in start
+  * Add missing resource cleanup on test failure
+  * Fix edge case with half-supported ECDSA (manual test cases)
+  * Move back *config_test_driver* headers from the framework
+  * Add some missing test case dependencies
+  * Update framework submodule
+  * import_not_supported: edge case of unsupported curves
+  * PSA sign/verify: more uniform error on an unsupported hash
+  * Update framework to add ported test helper changes
+  * Update framework submodule
+  * Update framework submodule
+  * Update framework submodule
+  * Properly clean instrument_record_status.h
+  * Reverse accidental docs PSA test wrappers path
+  * Add missing dependency to hash testsuite
+  * Disable test hooks when checking missing symbols
+  * Move mbedtls_test_hook_error_add from error.c to helpers.c
+  * Add missing include path to visual C script
+  * Update test_keys.h path on Windows
+  * Update paths to generated PSA test wrappers
+  * Update generate path to instrument_record_status.h
+  * Update path to PSA crypto alt headers
+  * Add extra paths to generate_visualc_files.pl
+  * Update make clean target with moved test helpers
+  * Update test_keys.h generation in Makefile
+  * Update libtestdriver paths in tests/Makefile
+  * Add tests/Makefile targets for moved test helpers
+  * Update common.mk with test helper object paths
+  * Add framework test include path to common.mk
+  * Add SSL-related test includes to ssl programs
+  * Add the framework/tests/include path to testsuites
+  * Re-add tests/include and tests/src paths to tests
+  * Add missing extra include path to fuzzer programs
+  * Re-add tests/include path for test helpers
+  * Update references to test helpers
+  * Move some test helpers out of Mbed TLS
+  * Update framework pointer
+  * Fix documentation for GCM decryption functions
+  * Fix issue where input data could be length 0
+  * Fix check_names errorr for MBEDTLS_GCM_ALT comment
+  * Update path to all-core.sh
+  * Update framework pointer
+  * Move all-{core,helpers}.sh out of Mbed TLS
+  *  Fix TEST_CALLOC issues with GCM buffer overlap tests
+  * Add test cases for AES GCM input and output buffer overlap
+  * Update GCM buffer overlap documentation
+  * Fix MD_PSA_INIT called before initializing some data structures
+  * Update submodule with the merge
+  * all.sh: improve check for clean config files
+  * all.sh: rationalize relative path usage
+  * Fix undefined variable in CMakeLists.txt
+  * Fix undefined variable in makefile
+  * Improve makefile error message
+  * Improve submodule error messages for Github archives
+  * Add a Python utility function to get the 3.6 feature macro
+  * Skip slowest FFDH tests against GnuTLS with MSan or Valgrind
+  * Don't use Unicode in .function file
+  * More explanation of what we do and do not test
+  * Add changelog entry
+  * mbedtls_psa_ecp_generate_key: don't calculate the public key
+  * Basic statistical tests for mbedtls_psa_ecp_generate_key()
+  * Unit tests for mbedtls_psa_ecp_generate_key()
+  * Rm forgotten armc5
+  * Drop building with armcc5 in all.sh
+  * Add override arguments for new gcc targets
+  * Clarify GCC version requirement
+  * Split up the Thumb-1 test component
+  * Remove superfluous invocations of make clean
+  * Update component speed estimates
+  * Initialize result caching variables
+  * Use true/false in place of integers
+  * Ignore missing temporary files during cleanup
+  * Fix copypasta in gcc_version
+  * Add AArch64 default config test
+  * Add Arm eabi default config tests
+  * Changelog entry for ECDSA conversion functions called with bits=0
+  * Remove unreachable assignments
+  * Assert non-empty data when needed
+  * Initialize CCM context before doing anything fallible
+  * mbedtls_ecdsa_raw_to_der and mbedtls_ecdsa_der_to_raw: reject bits==0
+  * Document errors for mbedtls_ecdsa_raw_to_der and mbedtls_ecdsa_der_to_raw
+  * mbedtls_mpi_write_binary{,_le}: test 0-size output
+  * Modernize mpi_write_binary and mpi_write_binary_le
+  * Disentangle 3.6/4.0 *_PSA_INIT/DONE variants
+  * Pair inits with declarations
+  * Move AES_PSA_INIT to after drbg init
+  * CMakeLists: use -O2 as ASAN_FLAG only in GCC versions before 7.0
+  * Revert "Temporarily comment out tests that are clogging the CI"
+  * Fix double free in case of test failure
+  * Add missing check of return
+  * Add const specifiers to pacify armclang
+  * Fix tests where tests were done prior to init
+  * Harmonise names of MBEDTLS_TEST_HAVE_ macros
+  * Tidy up header guards
+  * net/mbedtls_net_connect: Preventing double close problem
+  * fix PR9302 backporting issues
+  * changelog: fix typo
+  * changelog: updated description
+  * changelog: updated description
+  * changelog: describe support for static key slot buffers
+  * Documentation: fix some nits
+  * psa: move definition of MBEDTLS_PSA_KEY_BUFFER_MAX_SIZE
+  * test_suite_psa_crypto.data: fix some depends_on
+  * psa_crypto_helpers: add guard for MBEDTLS_TEST_STATIC_KEY_SLOTS_SUPPORT_RSA_xxx
+  * components-basic-checks: add new exception for MBEDTLS_CTR_DRBG_MAX_REQUEST
+  * test_suite_psa_crypto: use finer grained checks on the key slot buffer size
+  * psa_crypto_helpers: enhance definitions for static key slot related test symbols
+  * psa_crypto_helpers: add MBEDTLS_TEST_ prefix to newly created symbols
+  * psa: move default definition of MBEDTLS_PSA_STATIC_KEY_SLOT_BUFFER_SIZE
+  * test: disable dynamic key store in test_crypto_with_static_key_slots
+  * check_config: prevent fully dynamic and static key stores to be enabled simultaneously
+  * psa: zeroize static key buffer content when key slot is freed
+  * test_suite_psa_crypto_storage_format: improve input bit length specification for static key buffer
+  * test: properly select MBEDTLS_PSA_STATIC_KEY_SLOT_BUFFER_SIZE value
+  * mbedtls_config: fix/improve descriptions of PSA_STATIC_KEY_SLOT symbols
+  * psa: fix some macro definition
+  * test: add test with persitent key whose length is larger than MBEDTLS_PSA_STATIC_KEY_SLOT_BUFFER_SIZE
+  * test: extend component_test_crypto_with_static_key_slots
+  * psa-core: remove unnecessary element in psa_key_slot_t
+  * psa_crypto_core: take also cipher's key length into account when sizing static key buffer
+  * test: revert fixes for PSA entropy
+  * test_suite_psa_crypto_driver_wrappers: revert changes and fix validate_key()
+  * psa-core: properly set PSA_CRYPTO_MAX_STORAGE_SIZE
+  * test: disable all legacy symbols in test_psa_crypto_without_heap
+  * test: minor fixes to test_psa_crypto_without_heap and test_crypto_with_static_key_slots
+  * mbedtls_config: fix descriptions for PSA static key slots
+  * mbedtls_config: move MBEDTLS_PSA_STATIC_KEY_SLOT_BUFFER_SIZE to the correct place
+  * test: add new component to test core library without calloc/free
+  * test: add new component to test MBEDTLS_PSA_STATIC_KEY_SLOTS
+  * psa: allow to use static key buffers instead of dynamic ones
+  * Re-add special case for 3.6
+  * Only guard with CRYPTO_CLIENT when version >= 4
+  * Regenerate PSA test wrappers
+  * Align 3.6 tests/{src,include} with development PR
+  * Update framework
+  * Fix a typo in a comment
+  * all.sh: fix missing quotes
+  * Update framework to main
+  * Update submodule after the merge
+  * all.sh: adjust for when tf-psa-crypto is absent
+  * all.sh: re-instate 3.6-specific code
+  * all.sh: update documentation
+  * all.sh: move top-level code to a function
+  * all.sh: document new file structure
+  * all.sh: move definitions to all-core.sh
+  * all.sh: wrap main code into main() function
+  * all.sh: move clang_version() to helpers file
+  * all.sh: move component helpers to separate file
+  * all.sh: Move some functions to the right section
+  * all.sh: rename a helper function
+  * all.sh: extract repeated code to a function
+  * all.sh: group psasim helpers
+  * all.sh: rm obsolete functions
+  * all.sh: first define functions, then call them.
+  * all.sh: temporary alignment with development
+  * all.sh: align-dev: PSAsim functions
+  * all.sh: align-dev: tf-psa-crypto stuff
+  * all.sh: align-dev: move functions to the right place
+  * all.sh: align with development: whitespace
+  * Add "common.h"
+  * Update submodule
+  * Adjust file path for translate_ciphers.py
+  * Adjust file path for generate_tls13_compat_tests.py
+  * Adjust file path for generate_ssl_debug_helpers.py
+  * Move some files to framework repository
+  * Declare a generated file that was added after 3.6.1
+  * Revert "Add generated files"
+  * Temporarily comment out tests that are clogging the CI
+  * Work around GCC 5 performance problem with Asan+UBSan and -O3
+  * Improve support for submodules in code_style.py
+  * Minor readability improvements
+  * Remove ignore list entries that don't apply in 3.6
+  * framework: Fix overly lenient config tests for PSA_WANT_xxx
+  * Switch outcome analysis to enforcing that all tests are executed
+  * Add ALT-adjacent config option to the test coverage ignore list
+  * Add missing algorithm in the test driver configuration
+  * Add ignore list entries for configurations that are not tested
+  * Add ignore list entries for crypto tests that are not executed
+  * Add ignore list entries for TLS tests that are not executed
+  * Remove test case involving SECP224K1 in PSA
+  * In PSA generated tests, ignore patterns for which an issue has been raised
+  * In PSA generated tests, don't ignore not-implemented in some negative tests
+  * In PSA generated tests, ignore mechanisms that are not implemented
+  * Fix driver schema json default type requirements
+  * Update framework to the branch with collect_test_cases.py and outcome_analysis.py
+  * Default to allowing partial test coverage
+  * Downgrade mypy to a version that works with our code base
+  * Upgrade mypy to the last version supporting Python 3.6
+  * Move test case analysis modules to framework repository
+  * Adjust paths for impending moves to the framework
+  * Separate code and data of outcome analysis
+  * Pass KNOWN_TASKS as an argument to main
+  * Typecheck main
+  * Don't reuse a variable name inside a function
+  * Missing NotImplementedError in abstract method
+  * Remove sample ignore list elements for coverage
+  * Create a module to split branch-independent code out of analyze_outcomes.py
+  * Split test case collection from checks
+  * Create a module to split test case collection from checks
+  * check_test_cases.py: make 3.6 identical with development
+  * Don't use the "allow list" terminology any longer
+  * Switch coverage analysis to IGNORE_TESTS for its allowlist
+  * Simplify sub-test-suite handling in is_test_case_ignored
+  * Move test case ignore list to the master Task class
+  * Remove now-useless level of method call indirection
+  * Move analysis functions into their respective classes
+  * Remove dead code that was handling stringly typed data
+  * Replace stringly typed data by class: driver vs reference (data)
+  * Replace stringly typed data by class: driver vs reference (code)
+  * Replace stringly typed data by class: coverage
+  * Replace stringly typed data by class: prepare
+  * Allow running pylint and mypy on a single file
+  * Remove "error" allowance in dtls_server
+  * dtls_server: allow unexpected messages during handshake
+  * Update submodule
+  * Update submodule to the head of framework PR
+  * Expand on block cipher modes/derivatives
+  * Update framework to the main branch
+  * Expand on key derivations
+  * Clarify the superset rule
+  * Update and refine notes on restartable ECC and 4.0
+  * Skip ssl_server in config-suite-b
+  * Use OPENSSL_NEXT for a test case that uses IPv6 when available
+  * Note known issue about test cases skipped in TLS 1.3-only builds
+  * Test SSL sample programs against each other and ssl_client2, ssl_server2
+  * dtls_client: don't force the use of IPv6
+  * ssl_server: Allow the client to close the connection first
+  * Compatibiliy with older OpenSSL and GnuTLS
+  * Declare GnuTLS version dependency for TLS 1.3 test cases
+  * Declare OpenSSL version dependency for TLS 1.3 test cases
+  * Test dtls_server
+  * Test ssl_fork_server
+  * Test ssl_pthread_server
+  * Test ssl_server
+  * Test dtls_client
+  * Test ssl_client1
+  * Allow test cases to use a specific port
+  * Prepare to test SSL sample programs
+  * ssl_client1: Exit with an error status if the TLS connection failed
+  * Don't pass the section name to adapters
+  * Change "realfull" to activate everything
+  * Change "full" to affect boolean settings rather than use sections
+  * Pass the setting's value to adapters
+  * Have `make ssl-opt` generate `tls13-compat.sh` (make edition)
+  * Have `make ssl-opt` generate `tls13-compat.sh`
+  * Fix copypasta
+  * armv8 AES, SHA: simplify structure and fix copypasta
+  * Use .s extension for assembly
+  * Ignore and clean generated assembly
+  * Add target to compile to assembly
+  * Use -O2 for build+test with earliest compilers
+  * Fix spurious * in regex
+  * Don't set LD to a path with a typo for mingw
+  * Remove PSA macros usage from adapters
+  * CMake: generate tls13-compat.sh in the default build target
+  * Move generation of tls13-compat.sh to tests/CMakeLists.txt
+  * Print a "Gen" line when generating a file
+  * Remove obsolete requirement for GnuTLS %DISABLE_TLS13_COMPAT_MODE
+  * Reduce level of non-error debug message
+  * Remove transitional always-on internal option
+  * Changelog entry: fix #9551
+  * Fix sensitivity of tls13-compat.sh to the exact generation method
+  * Automatically generate tests/opt-testcases/tls13-compat.sh
+  * generate_tls13_compat_tests: change default mode to all
+  * Remove obsolete requirements on middlebox compatibility mode: generated
+  * Remove obsolete requirements on middlebox compatibility mode: manual
+  * Remove mid-stanza blank lines
+  * Adapt middlebox compatibility tests for always-on acceptance
+  * Separate accepting TLS 1.3 middlebox compatibility from sending it
+  * Avoid multiline requires_all_configs_xxx
+  * Remove test-ref-configs.pl, which no longer does anything
+  * Move config-tfm.h testing to separate all.sh component
+  * Move config-symmetric-only.h testing to separate all.sh components
+  * Move config-thread.h testing to separate all.sh components
+  * Move config-suite-b.h testing to separate all.sh components
+  * Move config-ccm-psk-dtls1_2.h testing to separate all.sh components
+  * Move config-ccm-psk-tls1_2.h testing to separate all.sh components
+  * Move config-no-entropy.h testing to separate all.sh component
+  * make: support "make ssl-opt" to just build what ssl-opt.sh needs
+  * CMake: support "make ssl-opt" to just build what ssl-opt.sh needs
+  * CMake: support "make programs"
+  * Fix obsolete comment about MBEDTLS_PSA_CRYPTO_KEY_ID_ENCODES_OWNER
+  * Update framework
+  * Remove unused `CombinedConfig` class
+  * Update old class names
+  * Use MbedTLSConfig for config handling to keep campatibility
+  * Apply the parameter change
+  * Fix documentation
+  * Update member variable names
+  * Fix documentation
+  * Update `config.py` to use `config_common.py` from the framework
+  * Document the C compiler requirement
+  * Make the file a bit more readable
+  * Remove some dependencies
+  * Add PSA_WANT_KEY_TYPE_ECC_KEY_PAIR_IMPORT
+  * Replace MBEDTLS_PK_CAN_ECDSA_SOME with MBEDTLS_PK_CAN_ECDSA_SIGN
+  * Add missing ALG_SHA_1
+  * opt-testcases/*.sh are not executable
+  * requires_certificate_authentication: prioritize TLS 1.3
+  * Documentation improvements
+  * Fix detection of TLS 1.2 PSK-ephemeral key exchange modes
+  * Improve some comments
+  * Remove unused auth_mode parameter on a PSK test case
+  * Fix weirdly quoted invocations of requires_any_configs_enabled
+  * Also activate PSK-only mode when PSK-ephemeral key exchanges are available
+  * Unify the two requires-key-exchange-with-certificate function
+  * Detect PSK-only mode in TLS 1.3 as well
+  * Fix PSK-only mode doing less than it should
+  * Detect more cases where certificates are required
+  * ssl-opt: Fix GnuTLS PSK injection
+  * Use CONFIGS_ENABLED instead of repeatedly calling query_compile_time_config
+  * Fix "Renegotiation: openssl server, client-initiated" with OpenSSL 3
+  * tests: add a test for pkg-config files
+  * Update framework to the merge of #45
+  * Update framework
+  * Clarify summary of PSA limitations
+  * Misc minor clarifications in transition-guards.md
+  * Clarify a comment in all.sh
+  * Fix some typos & markdown
+  * Add links and missing )
+  * Minor updates in doc/comments/debug
+  * Add transition-guards.md
+  * Update psa-migration/strategy.md
+  * Update psa-limitations.md and add summary
+  * Use libary default in ssl_client2 for new_session_tickets
+  * Add guard on internal 1.2-only function
+  * Misc improvements to comments
+  * Make error line consistent with the header
+  * Fix code style (for real this time, hopefully)
+  * Fix guards on #include
+  * Fix code style
+  * Prepare codepath tests for early termination
+  * Fix incorrect test result
+  * Move bignum code path testing out of the library
+  * Explain the choice of the value of  MBEDTLS_MPI_IS_PUBLIC
+  * Initial local variables to secure default
+  * Introduce MBEDTLS_MPI_IS_TEST
+  * Add tests for optionally safe code paths in RSA
+  * Add tests for optionally safe code paths in bignum
+  * Revert "Add generated files"
+  * Leave the spaces in psa-transition.md
+  * Fix typo in psa-transition.md
+  * ccm.c: Return early when ccm* is used without tag.
+  * Remove test_valgrind_constant_flow_psa_no_asm
+  * Tiny fix in library/constant_time_impl.h
+  * Remove the hack in library/constant_time_impl.h
+  * Edit component_release_test_valgrind_constant_flow_no_asm
+  * Change valgrind constant flow testing to test without asm
+  * Disable asm in component_test_memsan
+  * Alter constant-flow memsan testing
+  * Corrected header line of analyze_driver_vs_reference
+  * ssl_client2: Add Host to HTTP GET request
+
+-------------------------------------------------------------------
+Tue May  6 16:37:59 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Enable SRTP protocol needed by some software.
+  * Add patch mbedtls-enable-srtp.patch
+
+-------------------------------------------------------------------
 Thu Oct 17 09:38:18 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to version 3.6.2: [bsc#1231708, CVE-2024-49195]
