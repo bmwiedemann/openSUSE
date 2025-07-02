@@ -17,7 +17,7 @@
 
 
 Name:           slsa-verifier
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        Verify provenance from SLSA compliant builders
 License:        Apache-2.0
