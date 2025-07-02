@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Jun 28 08:10:21 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.0
+  * Add MCC to ISO country code conversion.
+  * Wakeup key support for:
+    + Fairphone 5
+    + FuriPhone FLX1
+  * Display panel support for:
+    + Fix border radius for OnePlus6
+- Update to version 0.3.0
+  * New API: Allow to set wakep timers
+  * Build vapi files too
+  * Allow to install tests
+  * Wakeup key support:
+    + Handle 3.5mm headset play-pause button on PinePhone
+- Update to version 0.2.2
+  * Wakeup key support for:
+    + Google Pixel 3a (sargo)
+    + SHIFT6mq
+    + Samsung Galaxy A5
+    + Xioami Mi A2 Lite (daisy)
+  * Display panel support for:
+    + Furilabs FLX1
+    + Nothing Phone 1 (spacewar)
+  * Issues fixed:
+    + https://gitlab.gnome.org/World/Phosh/gmobile/-/issues/12
+
+-------------------------------------------------------------------
 Wed Sep 11 06:42:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Initial package, version 0.2.1.

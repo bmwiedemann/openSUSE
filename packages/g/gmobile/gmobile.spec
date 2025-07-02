@@ -1,7 +1,7 @@
 #
 # spec file for package gmobile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gmobile
-Version:        0.2.1
+Version:        0.4.0
 Release:        0
 Summary:        Some helpers for glib based environments on mobile devices
 License:        LGPL-2.1-or-later
@@ -70,7 +70,7 @@ There aren't any API stability guarantees at this point in time.
 %autosetup -p1
 
 %build
-%meson
+%meson -Dvapi=false
 %meson_build
 
 %install
