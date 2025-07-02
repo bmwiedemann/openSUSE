@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 23 10:59:06 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-doclayout to version 1.2.0.1.
+  ## 1.2.0.1
+
+  Released 2025-06-23.
+
+  -   Relaxed upper bound for hslua, allow hslua-2.4.
+
+-------------------------------------------------------------------
 Sat Sep 21 13:26:16 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update hslua-module-doclayout to version 1.2.0.
