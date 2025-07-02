@@ -82,6 +82,8 @@ Source11:       pesign-copy-sources
 Source12:       pesign-spec-macros
 Source14:       group-source-files.pl
 Source15:       kmp-trigger.sh
+Patch0:         0003-nv-dmabuf-Inline-dma_buf_attachment_is_dynamic.patch
+Patch1:         0004-nvidia-uvm-Disable-SVA-support-for-6.16.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 24 09:47:53 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- 0003-nv-dmabuf-Inline-dma_buf_attachment_is_dynamic.patch
+  0004-nvidia-uvm-Disable-SVA-support-for-6.16.patch
+  * buildfixes against Kernel 6.16 picked up from
+    https://github.com/CachyOS/CachyOS-PKGBUILDS.git
+    --> nvidia/nvidia-utils
+
+-------------------------------------------------------------------
 Sun Jun 15 10:00:00 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - update non-CUDA variant to 570.169 (boo#1244614)

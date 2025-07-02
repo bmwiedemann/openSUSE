@@ -791,4 +791,12 @@
     firmware files (package nvidia-common-G06).</comment>
     <requestid>1286469</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>4ef6c8bc7035cc1213956d2caa23e8c5</srcmd5>
+    <version>570.169</version>
+    <time>1751451046</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1289518</requestid>
+  </revision>
 </revisionlist>
