@@ -267,4 +267,14 @@
     <comment></comment>
     <requestid>1266768</requestid>
   </revision>
+  <revision rev="36" vrev="271">
+    <srcmd5>ccb58822dada705817185cc12653868e</srcmd5>
+    <version>3.8.3</version>
+    <time>1751473047</time>
+    <user>anag_factory</user>
+    <comment>- Modify patch id3lib-3.8.3-fix-c23.patch:
+  Also move ID3Field_SetEncoding and ID3Field_IsEncodable to my_bool
+  typedef as otherwise grip fails at build</comment>
+    <requestid>1289957</requestid>
+  </revision>
 </revisionlist>

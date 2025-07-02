@@ -42,7 +42,8 @@ Patch13:        id3lib-%{version}-fix-stack-overrun.patch
 Patch14:        id3lib-3.8.3-fix-utf16-stringlists.patch
 Patch15:        add-c-wrapper-functions.patch
 Patch16:        id3lib-missing-nullpointer-check.patch
-Patch17:        https://gitweb.gentoo.org/repo/gentoo.git/plain/media-libs/id3lib/files/id3lib-3.8.3-fix-c23.patch
+# taken from https://gitweb.gentoo.org/repo/gentoo.git/plain/media-libs/id3lib/files/id3lib-3.8.3-fix-c23.patch
+Patch17:        id3lib-3.8.3-fix-c23.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  dos2unix
@@ -107,7 +108,7 @@ id3lib, a software library for ID3v1 and ID3v2 tag manipulation.
 %patch -P 15 -p1
 %patch -P 16 -p1
 %if %{pkg_vcmp gcc >= 15}
-%patch -P 17 -p1
+%patch -P 17 -p1 -b .c23
 %endif
 for i in doc/id3v2.3.0{.txt,.html}; do
   dos2unix $i

@@ -19,6 +19,13 @@ C++ always had "good _Bool-as-bool", unfortunately: typedef int my_bool.
 
 Bug: https://bugs.gentoo.org/949086
 Signed-off-by: Sam James <sam@gentoo.org>
+
+---
+ include/id3.h         |   22 +++++++++++-----------
+ include/id3/globals.h |   25 ++++++++++++++++---------
+ 2 files changed, 27 insertions(+), 20 deletions(-)
+
+diff --git a/include/id3.h b/include/id3.h
 --- a/include/id3.h
 +++ b/include/id3.h
 @@ -47,12 +47,12 @@ extern "C"
@@ -59,7 +66,19 @@ Signed-off-by: Sam James <sam@gentoo.org>
  
    /* field wrappers */
    ID3_C_EXPORT void                 CCONV ID3Field_Clear              (ID3Field *field);
-@@ -116,7 +116,7 @@ extern "C"
+@@ -104,9 +104,9 @@ extern "C"
+   ID3_C_EXPORT void                 CCONV ID3Field_GetBINARY          (const ID3Field *field, uchar *buffer, size_t buffLength);
+   ID3_C_EXPORT void                 CCONV ID3Field_FromFile           (ID3Field *field, const char *fileName);
+   ID3_C_EXPORT void                 CCONV ID3Field_ToFile             (const ID3Field *field, const char *fileName);
+-  ID3_C_EXPORT bool                 CCONV ID3Field_SetEncoding        (ID3Field *field, ID3_TextEnc enc);
++  ID3_C_EXPORT my_bool              CCONV ID3Field_SetEncoding        (ID3Field *field, ID3_TextEnc enc);
+   ID3_C_EXPORT ID3_TextEnc          CCONV ID3Field_GetEncoding        (const ID3Field *field);
+-  ID3_C_EXPORT bool                 CCONV ID3Field_IsEncodable        (const ID3Field *field);
++  ID3_C_EXPORT my_bool              CCONV ID3Field_IsEncodable        (const ID3Field *field);
+ 
+   /* field-info wrappers */
+   ID3_C_EXPORT char*                CCONV ID3FrameInfo_ShortName     (ID3_FrameID frameid);
+@@ -119,7 +119,7 @@ extern "C"
    ID3_C_EXPORT flags_t              CCONV ID3FrameInfo_FieldFlags     (ID3_FrameID frameid, int fieldnum);
  
    /* Deprecated */
@@ -68,6 +87,7 @@ Signed-off-by: Sam James <sam@gentoo.org>
  
  #ifdef __cplusplus
  }
+diff --git a/include/id3/globals.h b/include/id3/globals.h
 --- a/include/id3/globals.h
 +++ b/include/id3/globals.h
 @@ -82,12 +82,19 @@

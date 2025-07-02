@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 26 13:22:44 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch id3lib-3.8.3-fix-c23.patch:
+  Also move ID3Field_SetEncoding and ID3Field_IsEncodable to my_bool
+  typedef as otherwise grip fails at build
+
+-------------------------------------------------------------------
 Wed Apr  2 12:56:27 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add id3lib-3.8.3-fix-c23.patch: Import C23 patch from Gentoo.
