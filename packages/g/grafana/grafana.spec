@@ -22,7 +22,7 @@
 %endif
 
 Name:           grafana
-Version:        11.6.1+security01
+Version:        11.6.3
 Release:        0
 Summary:        The open-source platform for monitoring and observability
 License:        AGPL-3.0-only
@@ -37,8 +37,6 @@ Source3:        README
 Source4:        Makefile
 Source5:        0001-Add-source-code-reference.patch
 Patch2:         0002-Use-bash-instead-of-env.patch
-Patch3:         0003-Bump-x-net.patch
-Patch4:         0004-Fix-CVE-2025-3580.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  wire

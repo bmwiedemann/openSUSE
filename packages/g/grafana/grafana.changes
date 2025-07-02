@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 26 09:32:02 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to version 11.6.3:
+  Security:
+  CVE-2025-3415: Fix exposure of DingDing alerting integration URL
+                 to Viewer level users (bsc#1245302)
+
+- Update to version 11.6.2:
+  * Drop 0003-Bump-x-net.patch
+  * Drop 0004-Fix-CVE-2025-3580.patch
+  Security:
+  CVE-2025-1088: Fix improper input validation (bsc#1245224)
+  Bug fixes:
+  * Dashboard: Fixes issue with row repeats and first row.
+  * Graphite: Ensure template variables are interpolated correctly.
+  * Graphite: Fix Graphite series interpolation.
+  * Prometheus: Fix semver import path.
+
+-------------------------------------------------------------------
 Wed Jun  4 14:38:01 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Exclude ix86 architectures. They are not supported and fail to
