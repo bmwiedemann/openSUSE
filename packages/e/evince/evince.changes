@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 30 06:30:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1:
+  + general: Avoid potential heap overflow when allocating from
+    n_pages
+  + libview:
+    - Confine monitor fix to affected gtk versions
+    - Fix caret-color when using system dark mode
+    - Make annotation popup window always opaque
+  + shell/previwer: Set application ID to match with .desktop
+
+-------------------------------------------------------------------
 Thu Mar 20 19:29:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add evince-kpathsea.patch: Fix build with gcc 15 (patch lifted
