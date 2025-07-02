@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 23 10:28:08 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.3.1.
+  ## 0.3.1
+
+  Released 2025-06-23.
+
+    * Fix docs of the `Cite` constructor function
+
+    * Relax upper bounds for hslua and QuickCheck.
+
+    * Dropped support for GHC 8.6.
+
+-------------------------------------------------------------------
 Sat Dec  7 21:29:59 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update pandoc-lua-marshal to version 0.3.0.
