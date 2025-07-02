@@ -481,6 +481,7 @@ Patch309:       0001-Improve-TPM-key-protection-on-boot-interruptions.patch
 Patch310:       0004-Key-revocation-on-out-of-bound-file-access.patch
 Patch311:       grub2-bls-loader-entry-oneshot.patch
 Patch312:       0001-mkconfig-Determine-GRUB_DISTRIBUTOR-from-etc-SUSE-br.patch
+Patch313:       grub2-blsbumpcounter-menu.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime
