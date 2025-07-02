@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 17 11:45:23 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update kan-extensions to version 5.2.7.
+  5.2.7 [2025.06.17]
+  ------------------
+  * Make the implementations of `(.>)` and `(*>)` for `Data.Functor.Yoneda` more
+    stack-efficient.
+
+-------------------------------------------------------------------
 Mon Mar  3 11:34:50 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update kan-extensions to version 5.2.6 revision 1.
