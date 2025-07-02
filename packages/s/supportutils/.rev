@@ -362,4 +362,12 @@
     <comment>PED-11853 bsc#1230371 bsc#1231838 bsc#1222650 (forwarded request 1254880 from jrecord)</comment>
     <requestid>1254881</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>d0b3cacc8f9dae08e6efad2d6a0fd72c</srcmd5>
+    <version>3.2.11</version>
+    <time>1751451080</time>
+    <user>anag_factory</user>
+    <comment>bsc#1244003 bsc#1244011 bsc#1241284 bsc#1244937 (forwarded request 1289566 from jrecord)</comment>
+    <requestid>1289568</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul  1 15:21:49 UTC 2025 - jason.record@suse.com
+
+- Changes to version 3.2.11
+  + Collect rsyslog frule files (bsc#1244003, pr#257)
+  + Remove proxy passwords (bsc#1244011, pr#257)
+  + Missing NetworkManager information (bsc#1241284, pr#257)
+  + Include agama logs bsc#1244937, pr#256)
+  + Additional NFS conf files (pr#253)
+  + New fadump sysfs files (pr#252)
+  + Fixed change log dates
+
+-------------------------------------------------------------------
 Thu Mar 20 20:17:07 UTC 2025 - jason.record@suse.com
 
 - Changes to version 3.2.10
@@ -206,8 +218,8 @@ Mon Mar 20 22:51:05 UTC 2023 - jason.record@suse.com
 - Collects hwinfo hardware logs (bsc#1208928)
 - Collects lparnumascore logs (issue#148)
 
-Thu Feb 02 16:53:23 UTC 2023 - hp.jansen@suse.com
 -------------------------------------------------------------------
+Thu Feb 02 16:53:23 UTC 2023 - hp.jansen@suse.com
 
 - Add dependency to `numactl` on ppc64le and `s390x`, this enforces
   that `numactl --hardware` data is provided in supportconfigs
