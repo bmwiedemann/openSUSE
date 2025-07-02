@@ -1,0 +1,28 @@
+--- cutmp3-3.0.3.orig/main.c	2025-06-30 12:52:42.444414564 +0000
++++ cutmp3-3.0.3/main.c	2025-06-30 12:53:45.985359246 +0000
+@@ -2519,21 +2519,21 @@ void  term_restore  (void)  {
+ }  /* term_restore */
+ 
+ /* Clean up terminal; called on exit */
+-void  term_exit  ()  {
++void  term_exit  (int unused)  {
+ 	term_restore();
+ 	printf("\n\nbugreports to mail@puchalla-online.de\n\n");
+ 	exitseq(0);
+ }	/* term_exit */
+ 
+ /* Will be called when ctrl-z is pressed, this correctly handles the terminal */
+-void  term_ctrlz  ()  {
++void  term_ctrlz  (int unused)  {
+ 	signal(SIGTSTP, term_ctrlz);
+ 	term_restore();
+ 	kill(getpid(), SIGSTOP);
+ }  /* term_ctrlz */
+ 
+ /* Will be called when application is continued after having been stopped */
+-void  term_cont  ()  {
++void  term_cont  (int unused)  {
+ 	signal(SIGCONT, term_cont);
+ 	tcsetattr(0, TCSANOW, &current);
+ }  /* term_cont */
+

@@ -29,6 +29,8 @@ Source0:        https://github.com/tarjanm-movidius/cutmp3/archive/refs/tags/v%{
 Source1:        https://www.puchalla-online.de/cutmp3-keys.pdf
 Source2:        https://www.puchalla-online.de/cutmp3-keys.jpg
 Source99:       %{name}-rpmlintrc
+# https://github.com/tarjanm-movidius/cutmp3/issues/2
+Patch0:        cutmp3-gcc15.patch
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel

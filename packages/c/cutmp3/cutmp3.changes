@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 30 12:57:25 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/tarjanm-movidius/cutmp3/issues/2
+  + cutmp3-gcc15.patch
+
+-------------------------------------------------------------------
 Sat Oct 14 05:54:14 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.0.3
