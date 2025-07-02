@@ -2,7 +2,7 @@ cabal-version: 1.18
 
 name:           string-interpolate
 version:        0.3.4.0
-x-revision: 2
+x-revision: 3
 synopsis:       Haskell string/text/bytestring interpolation that just works
 description:    Unicode-aware string interpolation that handles all textual types.
                 .
@@ -92,7 +92,7 @@ test-suite string-interpolate-test
     build-depends:
         base ==4.*
       , string-interpolate
-      , QuickCheck <2.16
+      , QuickCheck <2.17
       , bytestring <0.13
       , text <2.2
       , template-haskell <2.24
@@ -113,7 +113,7 @@ benchmark string-interpolate-bench
     build-depends:
         base ==4.*
       , string-interpolate
-      , QuickCheck <2.16
+      , QuickCheck <2.17
       , bytestring <0.13
       , text <2.2
       , deepseq <1.6
