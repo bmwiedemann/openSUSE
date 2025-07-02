@@ -42,6 +42,8 @@ URL:            https://ai.meta.com/tools/faiss/
 Source0:        faiss-%{version}.tar
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  libopenblas_openmp-devel
 BuildRequires:  onednn-devel
 BuildRequires:  openblas-common-devel
@@ -161,7 +163,7 @@ export PATH=/usr/local/cuda-12.1/bin:${PATH}
 %endif
          %{nil}
 cd faiss/python
-%python_build
+%pyproject_wheel
 cd ../../..
 }
 cd %{__builddir}/faiss/python
@@ -171,7 +173,7 @@ cd %{__builddir}/faiss/python
 # c lib is build not installed
 install -D ./build/c_api/libfaiss_c.so %{buildroot}%{_libdir}/libfaiss_c.so
 cd %{__builddir}/faiss/python
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %post
@@ -181,7 +183,8 @@ cd %{__builddir}/faiss/python
 %{python_expand test -e %{_libdir}/libfaiss_python_callbacks.so || rm -f %{_libdir}/libfaiss_python_callbacks.so}
 
 %files %{python_files}
-%{python_sitelib}/faiss*
+%{python_sitelib}/faiss
+%{python_sitelib}/faiss-%{version}.dist-info
 %ghost %{_libdir}/libfaiss_python_callbacks.so
 
 %files -n faiss-devel

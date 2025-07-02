@@ -1,4 +1,5 @@
 <package name="python-faiss" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="science:machinelearning" package="python-faiss"/>
 </package>

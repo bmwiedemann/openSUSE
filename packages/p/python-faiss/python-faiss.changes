@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 25 03:49:16 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install the Python module. 
+
+-------------------------------------------------------------------
 Thu Apr  3 15:31:42 UTC 2025 - Christian Goll <cgoll@suse.com>
 
 - enable C_API 
