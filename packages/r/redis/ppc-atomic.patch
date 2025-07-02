@@ -1,0 +1,15 @@
+Index: redis-7.4.0/src/Makefile
+===================================================================
+--- redis-7.4.0.orig/src/Makefile
++++ redis-7.4.0/src/Makefile
+@@ -133,6 +133,10 @@ DEBUG=-g -ggdb
+ # Linux ARM32 needs -latomic at linking time
+ ifneq (,$(findstring armv,$(uname_M)))
+         FINAL_LIBS+=-latomic
++else
++ifneq (,$(findstring ppc,$(uname_M)))
++        FINAL_LIBS+=-latomic
++endif
+ endif
+ 
+ ifeq ($(uname_S),SunOS)

@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c44fe15b77038297b1edc32cd81cee56</srcmd5>
+    <version>8.0.2</version>
+    <time>1751451180</time>
+    <user>anag_factory</user>
+    <comment>Redis 7.4.0 there is support for specifying the lifetime of hash records (HEXPIRE), which valkey does not have and is not known to have.
+https://github.com/valkey-io/valkey/issues/640
+
+Redis 8.0.0 supported atomic HGETDEL, HGETEX and HSETEX, and AGPL-3.0-only license.</comment>
+    <requestid>1283583</requestid>
+  </revision>
+</revisionlist>
