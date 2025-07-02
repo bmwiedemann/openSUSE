@@ -57,7 +57,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        2.0.18
+Version:        2.1.0
 Release:        0
 Summary:        Kernel crash dump scripts and utilities
 License:        GPL-2.0-or-later
@@ -73,7 +73,10 @@ BuildRequires:  util-linux-systemd
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 #!BuildIgnore:  fop
-%if %{with calibrate}
+# dependencies needed when with_calibrate is turned on
+# OBS does not work with conditional buildrequires
+# so turn them on unconditionally
+# %if %{with calibrate}
 BuildRequires:  %qemu
 BuildRequires:  dhcp-client
 BuildRequires:  dracut >= 047
@@ -89,7 +92,8 @@ BuildRequires:  python3
 BuildRequires:  qemu-ipxe
 BuildRequires:  qemu-vgabios
 %endif
-%endif
+# end of with_calibrate dependencies
+# %endif
 Requires:       /usr/bin/sed
 Requires:       dracut >= 047
 Requires:       kexec-tools
@@ -215,16 +219,20 @@ servicelog_notify --add --command=/usr/lib/kdump/kdump-migrate-action.sh --match
 exit 0
 
 %preun
-%ifarch ppc64 ppc64le
 if [ $1 -eq 0 ]; then
 	# removal, not upgrade
+%ifarch ppc64 ppc64le
 	servicelog_notify --remove --command=/usr/lib/kdump/kdump-migrate-action.sh
-fi
 %endif
+	kdumptool commandline -D
+fi
+exit 0
+
 echo "Stopping kdump ..."
 %service_del_preun kdump.service
 %service_del_preun kdump-early.service
 %service_del_preun kdump-notify.service
+%service_del_preun kdump-commandline.service
 exit 0
 
 %postun
@@ -240,6 +248,7 @@ fi
 %service_del_postun kdump.service
 %service_del_postun kdump-early.service
 %service_del_postun kdump-notify.service
+%service_del_postun kdump-commandline.service
 exit 0
 
 %files
@@ -260,6 +269,7 @@ exit 0
 %{_unitdir}/kdump.service
 %{_unitdir}/kdump-early.service
 %{_unitdir}/kdump-notify.service
+%{_unitdir}/kdump-commandline.service
 %{_sbindir}/rckdump
 %dir /var/lib/kdump
 

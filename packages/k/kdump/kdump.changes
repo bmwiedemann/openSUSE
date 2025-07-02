@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 22 08:52:32 UTC 2025 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 2.1.0
+  * fix calibrate (no run-time changes)
+  * man: update kdump(7)
+  * add kdump-commandline.service (jsc#PED-12454)
+  * kdumptool: introduce the commandline subcommand (jsc#PED-12454)
+  * kdumptool calibrate: add per-cpu userspace requirements
+  * Use FADUMP_COMMANDLINE_APPEND to detect explicit ip= configuration 
+    (bsc#1242134)
+- update calibrate values for SLFO (alp1600)
+
+-------------------------------------------------------------------
 Tue Apr 15 17:06:26 UTC 2025 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 2.0.18

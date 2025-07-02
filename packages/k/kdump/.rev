@@ -1434,4 +1434,20 @@ Please note that the boo#1226676 fix does not completely fix the issue on its ow
     bsc#1237754, bsc#1239999)</comment>
     <requestid>1270563</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>77696bc02b120a9dd0214f8707ff9bd2</srcmd5>
+    <version>2.1.0</version>
+    <time>1751450863</time>
+    <user>anag_factory</user>
+    <comment>- upgrade to version 2.1.0
+  * fix calibrate (no run-time changes)
+  * man: update kdump(7)
+  * add kdump-commandline.service (jsc#PED-12454)
+  * kdumptool: introduce the commandline subcommand (jsc#PED-12454)
+  * kdumptool calibrate: add per-cpu userspace requirements
+  * Use FADUMP_COMMANDLINE_APPEND to detect explicit ip= configuration 
+    (bsc#1242134)
+- update calibrate values for SLFO (alp1600)</comment>
+    <requestid>1289600</requestid>
+  </revision>
 </revisionlist>
