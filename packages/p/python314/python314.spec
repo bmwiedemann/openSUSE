@@ -219,6 +219,9 @@ Patch39:        CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch
 # PATCH-FIX-OPENSUSE fix-test-recursion-limit-15.6.patch gh#python/cpython#115083
 # Skip some failing tests in test_compile for i586 arch in 15.6.
 Patch40:        fix-test-recursion-limit-15.6.patch
+# PATCH-FIX-UPSTREAM bsc1243155-sphinx-non-determinism.patch bsc#1243155 mcepl@suse.com
+# Doc: Generate ids for audit_events using docname
+Patch41:        bsc1243155-sphinx-non-determinism.patch
 #### Python 3.14 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -550,7 +553,7 @@ TODAY_DATE=`date -r %{SOURCE0} "+%%B %%d, %%Y"`
 
 cd Doc
 sed -i "s/^today = .*/today = '$TODAY_DATE'/" conf.py
-%make_build -j1 html
+%make_build -j1 JOBS=1 html
 
 # Build also devhelp files
 sphinx-build -a -b devhelp . build/devhelp

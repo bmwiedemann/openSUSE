@@ -2111,4 +2111,18 @@
     <comment>Also addresses bsc#1244705 (CVE-2025-6069) and CVE-2025-4435 (gh#135034, bsc#1244061).</comment>
     <requestid>1288600</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>9db9db9a7b1ac573f20b145733d3a802</srcmd5>
+    <version>3.14.0~b3</version>
+    <time>1751473050</time>
+    <user>anag_factory</user>
+    <comment>- Add bsc1243155-sphinx-non-determinism.patch (bsc#1243155) to
+  generate ids for audit_events using docname (reproducible
+  builds).
+
+- Use one core to build doc. This will make sphinx doc build
+  reproducible.
+  bsc#1243155</comment>
+    <requestid>1289981</requestid>
+  </revision>
 </revisionlist>
