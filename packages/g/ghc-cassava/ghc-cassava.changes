@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 18 10:33:30 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update cassava to version 0.5.4.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Jun 10 06:10:51 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update cassava to version 0.5.4.0.
