@@ -391,4 +391,12 @@
     <comment>version update</comment>
     <requestid>1284555</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>e81af20c9a6f018a1d3de33bfa177cb5</srcmd5>
+    <version>10.20250630</version>
+    <time>1751450904</time>
+    <user>anag_factory</user>
+    <comment>Update git-annex to version 10.20250630.</comment>
+    <requestid>1289397</requestid>
+  </revision>
 </revisionlist>

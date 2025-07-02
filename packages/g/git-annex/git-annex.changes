@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 30 14:06:16 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20250630.
+  * Work around git 2.50 bug that caused it to crash when there is
+    a merge conflict with an unlocked annexed file. [bsc#1245270]
+  * Skip and warn when a tree import includes empty filenames,
+    which can happen with eg a S3 bucket.
+  * Avoid a problem with temp file names ending in whitespace on
+    filesystems like VFAT that don't support such filenames.
+  * webapp: Rename "Upgrade Repository" to "Convert Repository"
+    to avoid confusion with git-annex upgrade.
+
+-------------------------------------------------------------------
 Thu Jun  5 18:13:58 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20250605.
