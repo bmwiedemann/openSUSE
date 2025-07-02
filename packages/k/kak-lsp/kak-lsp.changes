@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 24 00:39:31 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Remove _servicedata file. I don't think we ever use it. Besides, we
+  don't use obs_scm/tar_scm here.
+
+-------------------------------------------------------------------
 Sun Jun 22 08:35:03 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 18.2.0:
