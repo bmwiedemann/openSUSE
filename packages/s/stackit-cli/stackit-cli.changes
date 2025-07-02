@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jul 01 10:06:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.35.0:
+  * chore(deps): update renovatebot/github-action action to v43.0.2
+    (#829)
+  * chore(deps): bump renovatebot/github-action from 43.0.1 to
+    43.0.2 (#828)
+  * fix(deps): update stackit sdk modules (#826)
+  * Add installation instructions for rpm packages (#827)
+  * fix: replaced deprecated brews config in goreleaser (#811)
+  * feat(cli): onboard iaas snapshot api (#774)
+  * chore(deps): update renovatebot/github-action action to v43.0.1
+    (#822)
+  * fix(deps): update stackit sdk modules (#810)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/dns (#815)
+  * chore(deps): update renovatebot/github-action action to v43
+    (#819)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mongodbflex
+    (#805)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/opensearch
+    (#806)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/git (#807)
+  * chore(deps): bump fgrosse/go-coverage-report from 1.1.1 to
+    1.2.0 (#809)
+
+-------------------------------------------------------------------
 Tue Jun 17 18:03:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.34.5 (there are no releases between 0.33.1
