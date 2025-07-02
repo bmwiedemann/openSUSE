@@ -22,7 +22,7 @@
 %define soname libgtkhex-%{ghex_abi}-%{so_ver}
 
 Name:           ghex
-Version:        48.alpha
+Version:        48.beta2
 Release:        0
 Summary:        GNOME Binary Editor
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Ghex
 Source:         %{name}-%{version}.tar.zst
 
+BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
@@ -93,6 +94,9 @@ This package provides introspection bindings for ghex.
 
 %ldconfig_scriptlets -n %{soname}
 
+%check
+%meson_test
+
 %files
 %license COPYING
 %doc README.md COPYING-DOCS
@@ -105,6 +109,7 @@ This package provides introspection bindings for ghex.
 # Not split out as they are private to ghex
 %dir %{_libdir}/gtkhex-%{ghex_abi}.%{so_ver_ext}
 %{_libdir}/gtkhex-%{ghex_abi}.%{so_ver_ext}/*.so
+%{_datadir}/dbus-1/services/org.gnome.GHex.service
 
 %files -n %{soname}
 %{_libdir}/libgtkhex-%{ghex_abi}.so.*

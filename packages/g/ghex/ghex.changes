@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Jun 28 13:48:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta2:
+  + appwin: Put each window in its own group
+  + Implement info bar to communicate external file changes
+  + doc: Add external_file_change member to HexChangeData struct
+  + Enable/disable save and revert actions based on external file
+    changes
+  + Add file monitor to track external file changes
+  + paste: Allow for pasting of hex strings with or without
+    delimiters
+  + Add D-Bus service file
+  + Set file selection dialog for 'Open' and 'Save As' as modal
+    dialog
+  + Use appstreamcli for validation instead of appstream-util
+  + Add "new-window" command-line option
+  + Implement new-window action
+  + findrep: replace option's ComboBox by a ToggleGroup
+  + Fix erroneous error message when writing empty files
+  + appwin: Refresh status bar on changing of format setting
+  + build: Don't include gtk-hex-paste-data.c symbols in both lib
+    and binary
+  + Add option to change status bar offset format
+  + appdata: Update screenshot URLs
+  + Updated translations.
+- Add AppStream BuildRequires and check section, run meson_test
+  macro during build.
+
+-------------------------------------------------------------------
 Fri May 23 10:40:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and macro.

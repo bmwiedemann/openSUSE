@@ -599,4 +599,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment> (forwarded request 1279634 from iznogood)</comment>
     <requestid>1280006</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>b77b779f8ea18653fb49cb9c7c6a5b91</srcmd5>
+    <version>48.beta2</version>
+    <time>1751473035</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1289802</requestid>
+  </revision>
 </revisionlist>
