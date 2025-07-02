@@ -1,0 +1,24 @@
+diff -Naru speech_tools_orig/siod/editline.c speech_tools/siod/editline.c
+--- speech_tools_orig/siod/editline.c	2025-07-01 08:56:19.585036094 +0900
++++ speech_tools/siod/editline.c	2025-07-01 09:04:43.746936756 +0900
+@@ -55,6 +55,7 @@
+ #include "editline.h"
+ #include "EST_unix.h"
+ #include <ctype.h>
++#include <ncurses/termcap.h>
+ 
+ /*
+ **  Manifest constants.
+@@ -222,12 +223,6 @@
+ **  Declarations.
+ */
+ STATIC ECHAR	*editinput();
+-#if	defined(USE_TERMCAP)
+-extern char	*getenv();
+-extern char	*tgetstr();
+-extern int	tgetent();
+-extern int	tgetnum();
+-#endif	/* defined(USE_TERMCAP) */
+ 
+ /*
+ **  TTY input/output functions.

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul  1 00:23:42 UTC 2025 - Yasuhiko Kamata <belphegor@belbel.or.jp>
+
+- Added patch speech_tools-remove-externs.patch to remove
+  unnecessary external decls and add required header.
+- Added patch speech_tools-explicit-func-match.patch to resolve
+  function definition issues
+  (Abve two fixes resolve a compilation failure in Tumbleweed,
+   but it's also useful in other versions, so it applies
+   regardless of version).
+
+-------------------------------------------------------------------
 Sat Aug 24 01:06:24 UTC 2024 - Yasuhiko Kamata <belphegor@belbel.or.jp>
 
 - Updated configure script using autoconf because it fails with

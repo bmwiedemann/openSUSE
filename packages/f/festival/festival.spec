@@ -61,6 +61,8 @@ Patch19:        speech_tools-null-fragile.patch
 Patch20:        festival-null-fragile.patch
 # PATCH-FIX-OPENSUSE festival-configure-c99.patch -- fix prototype in configure tests.
 Patch21:        festival-configure-c99.patch
+Patch22:        speech_tools-remove-externs.patch
+Patch23:        speech_tools-explicit-func-match.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
@@ -108,9 +110,13 @@ cd ../speech_tools
 cd ../festival
 %patch -P 20 -p1
 %patch -P 21 -p1
+cd ../speech_tools
+%patch -P 22 -p1
+%patch -P 23 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+export CFLAGS="$CFLAGS -std=gnu89"
 %if 0%{?suse_version} > 1600
 autoconf -f
 %endif

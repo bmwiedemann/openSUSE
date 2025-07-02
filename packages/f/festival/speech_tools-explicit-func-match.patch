@@ -1,0 +1,30 @@
+diff -Naru speech_tools_orig/siod/editline.c speech_tools/siod/editline.c
+--- speech_tools_orig/siod/editline.c	2025-07-01 09:07:39.174350577 +0900
++++ speech_tools/siod/editline.c	2025-07-01 09:16:17.654869747 +0900
+@@ -176,7 +176,7 @@
+ STATIC STATUS h_prev();
+ STATIC STATUS h_first();
+ STATIC STATUS h_last();
+-STATIC int substrcmp(char *text, char *pat, int len);
++STATIC int substrcmp(const char *text, const char *pat, long unsigned int len);
+ STATIC ECHAR *search_hist(ECHAR *search, ECHAR *(*move)());
+ STATIC STATUS h_search();
+ STATIC STATUS fd_char();
+@@ -792,7 +792,7 @@
+ /*
+ **  Return zero if pat appears as a substring in text.
+ */
+-STATIC int substrcmp(char *text, char *pat, int len)
++STATIC int substrcmp(const char *text, const char *pat, long unsigned int len)
+ {
+     ECHAR	c;
+ 
+@@ -809,7 +809,7 @@
+     static ECHAR	*old_search;
+     int		len;
+     int		pos;
+-    int		(*match)();
++    int		(*match)(const char *, const char *, long unsigned int);
+     char	*pat;
+ 
+     /* Save or get remembered search pattern. */
