@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Jul 01 10:12:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.38.1:
+  * Improvements
+    - implement model_variable by @ndeloof in #13001
+  * Dependencies
+    - bump compose-go to version v2.7.1 by @glours in #13000
+
+-------------------------------------------------------------------
+Tue Jul 01 10:07:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.38.0:
+  * Improvements
+    - introduce support for models by @ndeloof in #12976
+    - Add volumes command by @leoperegrino in #12954
+    - remove publish limitation on bind mount by @glours in #12997
+    - mount /var/run/docker.sock for --use-api-socket by @ndeloof
+      in #12995
+  * Fixes
+    - only expose API socket to service asking for it by @ndeloof
+      in #12972
+    - check progress default value instead of empty string to use
+      BUILDKIT_PROGRESS env variable value by @glours in #12982
+    - exclude provider services from the list of dependencies that
+      Compose should wait for by @glours in #12983
+    - don't fail down cmd if services with pre_stop hook already
+      stopped/removed by @glours in #12986
+    - Swap to Reader in bake to avoid hangs on output by @nscott in
+      #12984
+    - make sure the post_start hooks fails by @glours in #12996
+    - remove error message from exec outpout by default by @glours
+      in #12992
+    - fix: typos by @hezhizhen in #12963
+    - pass project.environment to bake by @ndeloof in #12994
+    - fix provider concurrent environment map accesses by @glours
+      in #12999
+    - e2e compose run --env by @ndeloof in #12967
+  * Dependencies
+    - build(deps): bump github.com/docker/cli from
+      28.2.2+incompatible to 28.3.0+incompatible by @dependabot in
+      #12974
+    - build(deps): bump github.com/docker/docker from
+      28.2.2+incompatible to 28.3.0+incompatible by @dependabot in
+      #12975
+
+-------------------------------------------------------------------
 Wed Jun 25 04:43:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.37.3:
