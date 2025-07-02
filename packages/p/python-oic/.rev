@@ -104,4 +104,13 @@
     <comment></comment>
     <requestid>1235884</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d302af061c6138b2969be82e81cd84b1</srcmd5>
+    <version>1.7.0</version>
+    <time>1751451136</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Update {Build,}Requires to reflect current requirements.</comment>
+    <requestid>1289704</requestid>
+  </revision>
 </revisionlist>
