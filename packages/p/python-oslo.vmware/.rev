@@ -448,4 +448,27 @@
   - reno: Update master for unmaintained/xena</comment>
     <requestid>1198358</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7647f0db51637643a72ebc02efb998ad</srcmd5>
+    <version>4.6.0</version>
+    <time>1751451133</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.6.0:
+  * Skip installation to speed up pep8
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Replace deprecated defusedxml.lxml
+  * reno: Update master for unmaintained/2023.1
+  * pre-commit: Bump versions
+  * Add note about requirements lower bounds
+  * Remove Python 3.8 support
+  * Declare Python 3.12 support
+  * Fix wrong tox minversion
+  * Update master for stable/2024.2
+
+- remove unneeded dependencies
+  * Updated from global requirements
+  * Translations: make use of _LE, _LI and _LW
+- update to 0.3.0</comment>
+    <requestid>1289693</requestid>
+  </revision>
 </revisionlist>

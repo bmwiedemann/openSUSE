@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul  1 22:08:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.0:
+  * Skip installation to speed up pep8
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Replace deprecated defusedxml.lxml
+  * reno: Update master for unmaintained/2023.1
+  * pre-commit: Bump versions
+  * Add note about requirements lower bounds
+  * Remove Python 3.8 support
+  * Declare Python 3.12 support
+  * Fix wrong tox minversion
+  * Update master for stable/2024.2
+
+-------------------------------------------------------------------
 Mon Sep  2 17:29:18 UTC 2024 - cloud-devel@suse.de
 
 - update to version 4.5.0
@@ -51,7 +66,7 @@ Sat Oct  1 12:21:52 UTC 2022 - cloud-devel@suse.de
 -------------------------------------------------------------------
 Tue May 24 21:08:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- remove unneeded dependencies 
+- remove unneeded dependencies
 
 -------------------------------------------------------------------
 Sat Dec 11 09:05:54 UTC 2021 - cloud-devel@suse.de
@@ -394,7 +409,7 @@ Mon Jul 27 07:12:30 UTC 2015 - dmueller@suse.com
   * Mask/truncate vCenter credentials in suds logs
   * Imported Translations from Transifex
   * Add tox target to find missing requirements
-  * Updated from global requirements  
+  * Updated from global requirements
   * Fix exception to string in py34
   * Updated from global requirements
 
@@ -576,7 +591,7 @@ Sun Aug 31 14:03:37 UTC 2014 - dmueller@suse.com
   * Do not log the full session ID
   * Refactor the PBM support
   * Fix wrong usage of assertRaises
-  * Translations: make use of _LE, _LI and _LW 
+  * Translations: make use of _LE, _LI and _LW
 
 -------------------------------------------------------------------
 Fri Jul 11 08:13:44 UTC 2014 - dmueller@suse.com
@@ -611,7 +626,7 @@ Fri Jul 11 08:13:44 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Thu May 22 11:26:20 UTC 2014 - dmueller@suse.com
 
-- update to 0.3.0 
+- update to 0.3.0
 
 -------------------------------------------------------------------
 Fri Mar  7 09:12:06 UTC 2014 - speilicke@suse.com
