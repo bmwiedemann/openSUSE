@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-storage
-Version:        23.0.0
+Version:        23.0.1
 Release:        0
 Summary:        Microsoft Azure Storage Management Client Library
 License:        MIT
