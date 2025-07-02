@@ -4,6 +4,6 @@
 ## Default:    ""
 ## ServiceRestart: etcd
 #
-# additional options to pass to etcd. e.g. --enable-v2=true
+# additional options to pass to etcd:
 #
 ETCD_OPTIONS=""

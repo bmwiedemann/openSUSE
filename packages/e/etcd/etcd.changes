@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Jun 10 09:33:50 UTC 2025 - Elisei Roca <eroca@suse.com>
+
+- See upgrade guide:
+  https://etcd.io/docs/v3.6/upgrades/upgrade_3_6/
+
+- Update to version 3.6.1:
+  * etcd server:
+    - Replaced the deprecated/removed UnaryServerInterceptor and
+      StreamServerInterceptor in otelgrpc with NewServerHandler
+    - Add protection on PromoteMember and UpdateRaftAttributes to prevent panicking
+    - Fix the issue that --force-new-cluster can't remove all other members in a corner case
+    - Fix mvcc: avoid double decrement of watcher gauge on close/cancel race
+    - Add validation to ensure there is no empty v3discovery endpoint
+  * etcdctl:
+    - Fix command etcdctl endpoint health doesn't work when options are set via environment variables
+
+- Update to version 3.6.0:
+  https://github.com/etcd-io/etcd/compare/v3.5.21...v3.6.0
+  * Dropped flags in v3.6.0:
+      ETCD_ENABLE_V2
+      ETCD_PROXY
+      ETCD_PROXY_DIAL_TIMEOUT
+      ETCD_PROXY_FAILURE_WAIT
+      ETCD_PROXY_READ_TIMEOUT
+      ETCD_PROXY_REFRESH_INTERVAL
+      ETCD_PROXY_WRITE_TIMEOUT
+
+-------------------------------------------------------------------
+Fri Jun  6 19:46:00 UTC 2025 - Elisei Roca <eroca@suse.com>
+
+- Fix a bug when migrating existing /etc/sysconfig/etcd
+- Add suggests for subpackages etcdctl and etcdutl
+- Add script for updating etcd.conf
+  * update-etcd-conf.sh
+- Renamed script for vendoring and commented out go_modules
+  in service file, we use the script
+  * update-vendor.sh
+
+-------------------------------------------------------------------
 Fri Mar 28 08:58:18 UTC 2025 - Elisei Roca <eroca@suse.com>
 
 - Update to version 3.5.21:

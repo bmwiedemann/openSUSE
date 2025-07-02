@@ -11,7 +11,7 @@ NAME=etcd
 STACK=("server" "etcdctl" "etcdutl")
 VERSION=$(grep -oP '(?<=Version:)(.*)' etcd.spec | xargs)
 
-[ ! -f "$NAME-$VERSION".tar.gz ] && echo "$NAME-$VERSION.tar.gz does not exist" && exit 1 
+[ ! -f "$NAME-$VERSION".tar.gz ] && echo "$NAME-$VERSION.tar.gz does not exist" && exit 1
 
 echo "Updating vendor file..."
 
@@ -35,14 +35,14 @@ done
 cd "$dir"
 
 fdupes -r -1 "${tempdir}/vendor/" |
-  while read line; do 
+  while read line; do
     target="";
     for file in ${line[*]}; do
       if [ "x${target}" == "x" ]; then
         target=$file;
       else
         ln -f "${target}" "${file}";
-      fi; 
+      fi;
     done;
   done
 

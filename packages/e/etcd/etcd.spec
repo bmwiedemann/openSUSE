@@ -1,7 +1,7 @@
 #
 # spec file for package etcd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           etcd
-Version:        3.5.21
+Version:        3.6.1
 Release:        0
-Summary:        Highly-available key value store for configuration and service discovery
+Summary:        Reliable key-value store for the most critical data of a distributed system
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/etcd-io/etcd
@@ -34,21 +34,24 @@ Source1:        vendor.tar.gz
 Source11:       %{name}.conf
 Source12:       %{name}.service
 Source13:       %{name}.sysconfig
+Source14:       %{name}.sysuser
 Source15:       README.security
-Source16:       system-user-etcd.conf
-Source17:       vendor-update.sh
+Source16:       update-vendor.sh
+Source17:       update-etcd-conf.sh
 BuildRequires:  golang(API) >= 1.23
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  xz
 Requires(post): %fillup_prereq
+Suggests:       etcdctl
+Suggests:       etcdutl
 ExcludeArch:    s390 %{ix86}
 %sysusers_requires
 
 %description
-etcd is a distributed, consistent key-value store for shared configuration and
-service discovery, with a focus on being:
+etcd is a distributed reliable key-value store for the most critical data of a
+distributed system, with a focus on being:
 
 - Simple: well-defined, user-facing API (gRPC)
 - Secure: automatic TLS with optional client cert authentication
@@ -95,7 +98,7 @@ for item in server etcdctl etcdutl;do
 done
 cd "$dir"
 
-%sysusers_generate_pre %{SOURCE16} %{name} system-user-etcd.conf
+%sysusers_generate_pre %{SOURCE14} %{name} etcd.conf
 
 %install
 install -d %{buildroot}%{_sbindir}
@@ -115,13 +118,13 @@ install -D -p -m 0644 %{SOURCE11} %{buildroot}%{etcd_default_file}
 
 # Additional
 install -d -m 750 %{buildroot}%{_localstatedir}/lib/%{name}
-install -Dm0644 %{SOURCE16} %{buildroot}%{_sysusersdir}/system-user-etcd.conf
+install -Dm0644 %{SOURCE14} %{buildroot}%{_sysusersdir}/etcd.conf
 
 %pre -f %{name}.pre
-if [ ! -e %{etcd_default_file} -a /etc/sysconfig/etcd ] ; then
-echo "Migrating existing /etc/sysconfig/etcd to %{etcd_default_file}."
-echo "From now on only ETCD_OPTIONS should be in /etc/sysconfig/etcd"
-mv -i /etc/sysconfig/etcd %{etcd_default_file}
+if [ ! -e %{etcd_default_file} -a -e /etc/sysconfig/etcd ] ; then
+  echo "Migrating existing /etc/sysconfig/etcd to %{etcd_default_file}."
+  echo "From now on only ETCD_OPTIONS should be in /etc/sysconfig/etcd"
+  mv /etc/sysconfig/etcd %{etcd_default_file}
 fi
 %service_add_pre %{name}.service
 
@@ -139,7 +142,7 @@ fi
 %license LICENSE
 %doc CONTRIBUTING.md README.md DCO README.security
 %{_sbindir}/%{name}
-%{_sysusersdir}/system-user-etcd.conf
+%{_sysusersdir}/%{name}.conf
 
 # Service
 %{_unitdir}/%{name}.service
