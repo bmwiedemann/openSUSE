@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  2 07:26:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.2
+  * Remove Windows 2019 and add Windows 2025 with MSVC-17
+    by @TingDaoK in (#401)
+  * Log ack_timeout_seconds by @sbSteveK in (#402)
+
+-------------------------------------------------------------------
 Tue May 27 06:39:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.13.1
