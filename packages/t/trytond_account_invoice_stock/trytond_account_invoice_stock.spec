@@ -27,18 +27,17 @@
 %define mysitelib %{expand:%%%{mypython}_sitelib}
 %endif
 
-%define majorver 6.0
+%define majorver 7.0
 
 Name:           trytond_account_invoice_stock
-Version:        %{majorver}.4
+Version:        %{majorver}.2
 Release:        0
 Summary:        The "account_invoice_stock" module for the Tryton ERP system
 License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
-## Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
-## Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
+
 BuildRequires:  %{mypython}-devel
 BuildRequires:  %{mypython}-pip
 BuildRequires:  %{mypython}-setuptools
@@ -58,7 +57,7 @@ BuildArch:      noarch
 This module adds capability to bill stock items/materials
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %pyproject_wheel
