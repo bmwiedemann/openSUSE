@@ -24,7 +24,7 @@ FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends xorg-x11-fonts libpulse0 noto-sans-cjk-fonts libavcodec58_134
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends libavcodec58_134 libpulse0 noto-sans-cjk-fonts xorg-x11-fonts
 RUN set -euo pipefail; useradd -m -u 1000 -U user
 
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \

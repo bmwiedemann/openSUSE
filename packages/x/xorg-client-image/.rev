@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of xorg-client-image</comment>
     <requestid>1289305</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>12c810d562ba532e083f30e5b44344ce</srcmd5>
+    <version>unknown</version>
+    <time>1751451116</time>
+    <user>anag_factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1289675</requestid>
+  </revision>
 </revisionlist>
