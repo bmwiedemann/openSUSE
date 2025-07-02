@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hslua-packaging
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Utilities to build Lua modules
 License:        MIT
@@ -39,8 +39,6 @@ BuildRequires:  ghc-hslua-objectorientation-devel
 BuildRequires:  ghc-hslua-objectorientation-prof
 BuildRequires:  ghc-hslua-typing-devel
 BuildRequires:  ghc-hslua-typing-prof
-BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
