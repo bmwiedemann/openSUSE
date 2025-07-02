@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 24 19:36:55 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 3.13.9:
+  * Better Strict Mode by @mindflayer in #298
+- Update to version 3.13.8:
+  * Fixture event_loop got removed from pytest-asyncio by @mindflayer in #294
+  * Match querystring for multiple responses in httpretty plugin by @wilhelmklopp in #295
+
+-------------------------------------------------------------------
 Mon Jun  2 08:44:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.13.7
