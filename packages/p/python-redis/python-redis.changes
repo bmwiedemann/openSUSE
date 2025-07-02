@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 30 16:54:24 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Added test_add_elem_no_quant.patch to fix test on 32 bit archs.
+
+-------------------------------------------------------------------
 Thu Jun 12 10:24:11 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed pytest.ini source file.
@@ -1458,4 +1463,3 @@ Fri Apr 15 12:43:07 UTC 2011 - saschpe@suse.de
 Sun Mar  7 22:27:15 UTC 2010 - prusnak@suse.cz
 
 - Created package
-

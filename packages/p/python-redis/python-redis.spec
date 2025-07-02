@@ -37,6 +37,7 @@ URL:            https://github.com/redis/redis-py
 Source0:        https://files.pythonhosted.org/packages/source/r/redis/redis-%{version}.tar.gz
 Patch0:         increase-test-timeout.patch
 Patch1:         remove-mock.patch
+Patch2:         test_add_elem_no_quant.patch
 BuildRequires:  %{python_module async-timeout >= 4.0.2 if %python-base < 3.11.3}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling}
@@ -71,6 +72,7 @@ The Python interface to the Redis key-value store.
 %patch -P 0 -p1
 %endif
 %patch -P 1 -p1
+%patch -P 2 -p1
 
 # These tests pass locally but fail in obs with different
 # environment, like ALP build...

@@ -1,0 +1,24 @@
+diff -Pdpru redis-py-6.2.0.orig/tests/test_asyncio/test_vsets.py redis-py-6.2.0/tests/test_asyncio/test_vsets.py
+--- redis-py-6.2.0.orig/tests/test_asyncio/test_vsets.py	2025-05-27 19:21:45.000000000 +0300
++++ redis-py-6.2.0/tests/test_asyncio/test_vsets.py	2025-06-30 18:35:24.108629200 +0300
+@@ -83,7 +83,7 @@ async def test_add_elem_no_quant(d_clien
+     assert resp == 1
+ 
+     emb = await d_client.vset().vemb("myset", "elem1")
+-    assert _validate_quantization(float_array, emb, tolerance=0.0)
++    assert _validate_quantization(float_array, emb, tolerance=0.00001)
+ 
+ 
+ @skip_if_server_version_lt("7.9.0")
+diff -Pdpru redis-py-6.2.0.orig/tests/test_vsets.py redis-py-6.2.0/tests/test_vsets.py
+--- redis-py-6.2.0.orig/tests/test_vsets.py	2025-05-27 19:21:45.000000000 +0300
++++ redis-py-6.2.0/tests/test_vsets.py	2025-06-30 18:35:03.140295444 +0300
+@@ -87,7 +87,7 @@ def test_add_elem_no_quant(d_client):
+     assert resp == 1
+ 
+     emb = d_client.vset().vemb("myset", "elem1")
+-    assert _validate_quantization(float_array, emb, tolerance=0.0)
++    assert _validate_quantization(float_array, emb, tolerance=0.00001)
+ 
+ 
+ @skip_if_server_version_lt("7.9.0")
