@@ -17,7 +17,7 @@
 
 
 Name:           kustomize
-Version:        5.6.0
+Version:        5.7.0
 Release:        0
 Summary:        Customization of kubernetes YAML configurations
 License:        Apache-2.0

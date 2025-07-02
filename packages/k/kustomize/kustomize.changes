@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jun 30 08:13:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.7.0:
+  * Feature
+    - #5630: Add static value source for replacement
+    - #5921: feat: Add images suport for Image Volumes
+    - #5771: fix: Allow patches with empty files with multiple
+      newlines or comments
+    - #5865: feat(helm): allow the use of devel alias for
+      helmcharts
+  * fix
+    - #5846: fix: Get version from the BuildInfo.Main.Version if
+      not found in deps and build flag
+    - #5859: fix: Don't panic on multiple $patch: delete strategic
+      merge patches in a single patch file
+    - #5877: fix: make private one field in replacements
+      transformer struct that had a missing JSON tag
+  * Dependencies
+    - #5847: replace deplecated package github.com/google/shlex
+      with github.com/carapace-sh/carapace-shlex
+    - #5873: Bump to github.com/spf13/viper v1.20.0
+    - #5931: Drop usage of forked copies of goyaml.v2 and goyaml.v3
+  * chore
+    - #5882: Set Git messages to English for
+      TestRemoteLoad_LocalProtocol
+    - #5934: Update kyaml to v0.20.0
+    - #5935: Update cmd/config to v0.20.0
+    - #5936: Update api to v0.20.0
+
+-------------------------------------------------------------------
 Wed May  7 17:06:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - refactor _service file and spec
