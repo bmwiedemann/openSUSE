@@ -1976,4 +1976,12 @@ General : Update internal Libraw to snapshot 202110
     <comment></comment>
     <requestid>1273865</requestid>
   </revision>
+  <revision rev="229" vrev="1">
+    <srcmd5>52dc5677c23bfcd88bb57db1e4887868</srcmd5>
+    <version>8.7.0</version>
+    <time>1751451108</time>
+    <user>anag_factory</user>
+    <comment>Update to 8.7.0</comment>
+    <requestid>1289676</requestid>
+  </revision>
 </revisionlist>

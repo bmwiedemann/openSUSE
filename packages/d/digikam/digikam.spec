@@ -19,11 +19,11 @@
 %define kf6_version 6.0.0
 %define qt6_version 6.4.0
 
-%define soversion 8_6_0
+%define soversion 8_7_0
 %bcond_without released
 %bcond_with    apidocs
 Name:           digikam
-Version:        8.6.0
+Version:        8.7.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later
@@ -33,10 +33,8 @@ Source0:        https://download.kde.org/stable/digikam/%{version}/digiKam-%{ver
 Source1:        https://download.kde.org/stable/digikam/%{version}/digiKam-%{version}.tar.xz.sig
 Source2:        digikam.keyring
 %endif
-#PATCH-FIX-UPSTREAM
-Patch0:         digikam-qt69.patch
-#PATCH-FIX-OPENSUSE
-Patch1:         digikam-pointer-casting.patch
+# PATCH-FIX-OPENSUSE
+Patch0:         digikam-pointer-casting.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -128,8 +126,8 @@ Obsoletes:      digikam-plugin-enhance < %{version}
 Provides:       digikam-plugin-fxfilters = %{version}
 Obsoletes:      digikam-plugin-fxfilters < %{version}
 Provides:       digikam-plugin-transform = %{version}
-Obsoletes:      digikam-libs < %{version}
 Obsoletes:      digikam-plugin-transform < %{version}
+Obsoletes:      digikam-libs < %{version}
 # Docs no longer included in 6.0.0
 Provides:       digikam-doc = %{version}
 Obsoletes:      digikam-doc < %{version}
@@ -176,10 +174,9 @@ The main digikam libraries that are being shared between showfoto and digikam
 %lang_package
 
 %prep
-%setup -n digikam-%{version}
-%patch -P 0 -p1
+%setup -q -n digikam-%{version}
 %if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
-%patch -P 1 -p1 -R
+%patch -P 0 -p1 -R
 %endif
 
 %build

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul  1 06:53:05 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 8.7.0
+  https://www.digikam.org/news/2025-06-30-8.7.0_release_announcement/
+- Drop patch, merged upstream:
+  * digikam-qt69.patch
+
+-------------------------------------------------------------------
 Thu May  1 16:07:49 UTC 2025 - Nico Kruber <nico.kruber@gmail.com>
 
 - Add patch (to revert from upstream to fix builds on Leap 15.6):
