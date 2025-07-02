@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jul 01 11:11:14 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1751367844.1d8f9140:
+  * create_admin: improve search for admin users
+  * create_admin: fix for POO #179359 changes
+  * openqa-bootstrap: Allow curl to follow redirects (boo#1245379)
+  * Fix debugging SQL queries via `OPENQA_SQL_DEBUG`
+  * Apply dependency changes after adding python3-argparse-manpage
+  * Use argparse-manpage to create openqa-label-all.1
+  * Bump prettier from 3.6.0 to 3.6.2
+  * configure-web-proxy: deal with debian-style sites-available
+  * apparmor: +/usr/bin/env
+  * apparmor: additional worker perms
+  * apparmor: allow access to Arm UEFI (AAVMF) files
+  * apparmor: enable use of git-lfs for worker
+  * Bump @eslint/plugin-kit from 0.3.2 to 0.3.3
+  * Add --odn option to specify openqa.debian.net
+  * Command.pm: add missing quotes to o3 & osd options
+  * configure-web-proxy: Use variables for /etc paths
+
+-------------------------------------------------------------------
 Mon Jun 30 17:11:58 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1751274619.acdc8609:
