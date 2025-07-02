@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 23 15:38:37 UTC 2025 - Frank Schreiner <FSchreiner@suse.com>
+
+- Update to version 0.10.52:
+  * [archive] fix include/exclude glob to regex conversion
+
+-------------------------------------------------------------------
 Thu Jun 12 15:56:52 UTC 2025 - Frank Schreiner <FSchreiner@suse.com>
 
 - Update to version 0.10.51:

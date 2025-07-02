@@ -1544,4 +1544,12 @@ They are not in common use these days. (forwarded request 1191834 from iznogood)
   * [core] revert removal of fnmatch</comment>
     <requestid>1285209</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>513b5766505c89c232341566a29e7fc6</srcmd5>
+    <version>0.10.52</version>
+    <time>1751450844</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1289371</requestid>
+  </revision>
 </revisionlist>
