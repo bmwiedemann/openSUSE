@@ -126,6 +126,8 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cabal-tweak-dep-ver hslua "< 2.4" "< 3"
+cabal-tweak-dep-ver hslua-module-system "< 1.2" "< 2"
 
 %build
 %ghc_lib_build
