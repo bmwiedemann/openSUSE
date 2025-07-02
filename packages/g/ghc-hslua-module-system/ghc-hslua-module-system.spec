@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.1.3
+Version:        1.2.0
 Release:        0
 Summary:        Lua module wrapper around Haskell's System module
 License:        MIT
@@ -29,6 +29,8 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-exceptions-devel
@@ -46,6 +48,8 @@ BuildRequires:  ghc-temporary-devel
 BuildRequires:  ghc-temporary-prof
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
+BuildRequires:  ghc-time-devel
+BuildRequires:  ghc-time-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
