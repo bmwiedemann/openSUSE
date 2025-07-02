@@ -16,4 +16,41 @@
 - bump soversion to actual aws-lc version</comment>
     <requestid>1288747</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6e85601e3c79ca980a21f4824b089394</srcmd5>
+    <version>1.54.0</version>
+    <time>1751451119</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.54.0:
+  * Rename SSL test files to match Scrutinice filter
+  * Order tool output
+  * Fix Console Test Suite Execution Locally
+  * Re-remove afunix.h
+  * Note a couple of typoed struct names that we'll leave alone
+  * Document that EVP_PKEY_CTX_set_rsa_keygen_pubexp takes ownership
+  * Remove sys headers from bio.h
+  * rwlock race tests is not a GoogleTest executable
+  * Add two new APIs to expose TLS 1.3 traffic secrets for kTLS
+  * Intentionally redefine iovec in headers as CI
+- update to 1.53.1:
+  * Add timeouts to PQ TLS Integ Tests
+  * Split ssl handshake tests
+  * Add password prompting support &amp; EVP_read_pw_string
+  * Impl BIO_ADDR_xxx functions
+  * Update mlkem-native to v1
+- update to 1.53.0:
+  * Add build with hardened flag
+  * Openssl tool output ordered
+  * [SCRUTINICE] Remove redundant condition check
+  * Support relro in delocator
+  * Explicitly don't allow buffers aliasing in ctr-drbg implementation
+  * Remove unused Windows afunix.h
+  * Revert &quot;Rework memory BIOs and implement BIO_seek (2nd try) (#2433)&quot;
+  * Use max_cert_list for TLSv1.3 NewSessionTicket
+  * ML-KEM memory safety
+  * Improve support for multilib-style distros in our test scripts
+  * Fix Ru
+  * Add hardened build back in (forwarded request 1289677 from rrahl0)</comment>
+    <requestid>1289678</requestid>
+  </revision>
 </revisionlist>

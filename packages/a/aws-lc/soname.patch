@@ -6,7 +6,7 @@ diff -rub aws-lc-1.52.1/CMakeLists.txt aws-lc-1.52.1-patched/CMakeLists.txt
  
  # Defer enabling C and CXX languages.
 -project(AWSLC NONE)
-+project(AWSLC VERSION 1.52.1)
++project(AWSLC VERSION @@VERSION@@)
  
  if(MSVC)
    # On Windows, prefer cl over gcc if both are available. By default most of

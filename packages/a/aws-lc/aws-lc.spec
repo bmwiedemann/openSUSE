@@ -16,10 +16,10 @@
 #
 
 
-%define         sover 1_52_1
+%define         sover 1_54_0
 %define         __builder ninja
 Name:           aws-lc
-Version:        1.52.1
+Version:        1.54.0
 Release:        0
 Summary:        Checksums package for AWS SDK for C
 License:        Apache-2.0
@@ -39,8 +39,9 @@ BuildRequires:  llvm-gold
 BuildRequires:  ninja
 BuildRequires:  cmake(aws-c-common)
 BuildRequires:  pkgconfig(libunwind)
-Conflicts:      openssl
 Conflicts:      libressl
+Conflicts:      openssl
+ExcludeArch:    %{arm}
 
 %description
 Core c99 package for AWS SDK for C. Includes cross-platform primitives,
@@ -77,6 +78,7 @@ Summary:        Benchmarktool for %{name}
 
 %prep
 %autosetup -a1 -p1
+sed -i 's|project(AWSLC VERSION @@VERSION@@)|project(AWSLC VERSION %{version})|g' CMakeLists.txt
 
 %build
 %cmake -DCMAKE_C_FLAGS="-Wno-error=unused-variable -Wno-error=stringop-overflow="
