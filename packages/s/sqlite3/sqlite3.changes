@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul  1 12:04:55 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Update to 3.50.2:
+  * Fix the concat_ws() SQL function so that it includes empty
+    strings in the concatenation.
+  * Avoid writing frames with no checksums into the wal file if a
+    savepoint is rolled back after dirty pages have already been
+    spilled into the wal file.
+  * Fix the Bitvec object to avoid stack overflow when the
+    database is within 60 pages of its maximum size.
+  * Fix a problem with UPDATEs on fts5 tables that contain BLOB
+    values.
+  * Fix an issue with transitive IS constraints on a RIGHT JOIN.
+  * Raise an error early if the number of aggregate terms in a
+    query exceeds the maximum number of columns, to avoid
+    downstream assertion faults.
+  * Ensure that sqlite3_setlk_timeout() holds the database mutex.
+
+-------------------------------------------------------------------
 Mon Jun  9 07:56:06 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 3.50 (3.50.1):

@@ -19,12 +19,12 @@
 
 %define _buildshell /bin/bash
 %define oname sqlite
-%define tarversion 3500100
-%define docversion 3500100
+%define tarversion 3500200
+%define docversion 3500200
 %bcond_with icu
 %bcond_without check
 Name:           sqlite3
-Version:        3.50.1
+Version:        3.50.2
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain

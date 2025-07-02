@@ -1872,4 +1872,26 @@ CVE-2020-13871 boo#1172646</comment>
     <comment></comment>
     <requestid>1284363</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>fb7111117fb8f120f98151c96a921093</srcmd5>
+    <version>3.50.2</version>
+    <time>1751450857</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.50.2:
+  * Fix the concat_ws() SQL function so that it includes empty
+    strings in the concatenation.
+  * Avoid writing frames with no checksums into the wal file if a
+    savepoint is rolled back after dirty pages have already been
+    spilled into the wal file.
+  * Fix the Bitvec object to avoid stack overflow when the
+    database is within 60 pages of its maximum size.
+  * Fix a problem with UPDATEs on fts5 tables that contain BLOB
+    values.
+  * Fix an issue with transitive IS constraints on a RIGHT JOIN.
+  * Raise an error early if the number of aggregate terms in a
+    query exceeds the maximum number of columns, to avoid
+    downstream assertion faults.
+  * Ensure that sqlite3_setlk_timeout() holds the database mutex.</comment>
+    <requestid>1289540</requestid>
+  </revision>
 </revisionlist>
