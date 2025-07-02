@@ -205,4 +205,16 @@
     <comment></comment>
     <requestid>1288711</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>f0da8807b55c4b926af627c7097dce72</srcmd5>
+    <version>6.0.27</version>
+    <time>1751473040</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1279306 from rhabacker
+
+- Extend documentation in apache configuration file:
+  * Document PassengerDisableAnonymousTelemetry
+  * Add missing log level for PassengerLogLevel</comment>
+    <requestid>1289850</requestid>
+  </revision>
 </revisionlist>
