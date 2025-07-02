@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul  2 07:43:29 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.1.2
+  Bug fixes:
+  * Don't expose palette colors in UI theme editor since they
+    are not customizable
+  * Add fallback to update mechanism
+  Web UI:
+  * Fix incorrectly backported changes
+  Web API:
+  * Trim leading whitespaces on Run External Program fields
+    - RSS/SEARCH:
+  RSS/Search:
+  *  Prevent opening local files if web page is expected
+
+-------------------------------------------------------------------
 Mon Jun 23 07:56:46 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.1.1
