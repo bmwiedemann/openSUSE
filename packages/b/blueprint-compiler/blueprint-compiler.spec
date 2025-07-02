@@ -23,11 +23,11 @@
 %endif
 
 Name:           blueprint-compiler
-Version:        0.16.0
+Version:        0.18.0
 Release:        0
 Summary:        A markup language for GTK user interfaces
 License:        LGPL-3.0-or-later
-URL:            https://gitlab.gnome.org/jwestman/blueprint-compiler
+URL:            https://gitlab.gnome.org/GNOME/blueprint-compiler
 Source:         %{url}/-/archive/v%{version}/%{name}-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module base >= 3.10}

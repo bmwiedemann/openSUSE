@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jul  2 06:10:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Updatet o version 0.18.0:
+  + Added: GtkBuilder now allows menus to be specified inline as a
+    property value. Blueprint now supports this as well.
+  + Fixed:
+    - Made reference_docs.json build reproducible
+    - Correctly emit XML for nested templates
+    - Fix crash in language server while typing an
+      AdwBreakpointSetter rule
+    - Update URLs after move to GNOME namespace on GitLab
+    - Fix crash when decompiling a lookup tag with no type
+      attribute
+    - Fix incorrect result when decompiling a signal that has the
+      template as its object
+    - Fix an incorrect "Duplicate object ID" error when an
+      Adw.AlertDialog response had the same ID as an object
+  + Documentation:
+    - Updated syntax in the example on the Overview page
+    - Added examples of Gtk.Scale marks
+    - Corrected errors in the index on the Extensions page
+- Update URL to new home.
+
+-------------------------------------------------------------------
 Sat Mar  8 13:00:26 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Fix build error for Leap < 16.
