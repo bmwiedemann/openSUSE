@@ -128,4 +128,12 @@
     <comment>bugfx version</comment>
     <requestid>1234604</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fa8c2225f58b29c3e51e04d0dc39f533</srcmd5>
+    <version>7.0.2</version>
+    <time>1751473015</time>
+    <user>anag_factory</user>
+    <comment>version bump (forwarded request 1289026 from DocB)</comment>
+    <requestid>1289041</requestid>
+  </revision>
 </revisionlist>
