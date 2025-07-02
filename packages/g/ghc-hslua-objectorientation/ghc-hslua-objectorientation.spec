@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hslua-objectorientation
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        Object orientation tools for HsLua
 License:        MIT
@@ -29,39 +29,25 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
-BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
-BuildRequires:  ghc-exceptions-devel
-BuildRequires:  ghc-exceptions-prof
 BuildRequires:  ghc-hslua-core-devel
 BuildRequires:  ghc-hslua-core-prof
 BuildRequires:  ghc-hslua-marshalling-devel
 BuildRequires:  ghc-hslua-marshalling-prof
 BuildRequires:  ghc-hslua-typing-devel
 BuildRequires:  ghc-hslua-typing-prof
-BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-QuickCheck-prof
-BuildRequires:  ghc-lua-arbitrary-devel
-BuildRequires:  ghc-lua-arbitrary-prof
-BuildRequires:  ghc-quickcheck-instances-devel
-BuildRequires:  ghc-quickcheck-instances-prof
+BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hslua-devel
 BuildRequires:  ghc-tasty-hslua-prof
-BuildRequires:  ghc-tasty-hunit-devel
-BuildRequires:  ghc-tasty-hunit-prof
 BuildRequires:  ghc-tasty-prof
-BuildRequires:  ghc-tasty-quickcheck-devel
-BuildRequires:  ghc-tasty-quickcheck-prof
 %endif
 
 %description
