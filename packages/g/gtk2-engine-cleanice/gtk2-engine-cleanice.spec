@@ -27,6 +27,7 @@ License:        GPL-2.0
 Url:            http://sourceforge.net/projects/elysium-project
 Group:          System/GUI/GNOME
 Source:         %{_name}-%{version}.tar.bz2
+Source2:        baselibs.conf
 BuildRequires:  gtk2-devel
 Enhances:       gtk2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -46,7 +47,7 @@ Simple, clean theme engine for GTK2.
 
 %build
 %configure --disable-static
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 %makeinstall

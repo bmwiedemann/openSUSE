@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  9 08:10:08 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Replace usage of %jobs for reproducible builds (boo#1237231)
+
+-------------------------------------------------------------------
 Tue Apr 19 00:11:51 CEST 2011 - ro@suse.de
 
 - update baselibs.conf 
