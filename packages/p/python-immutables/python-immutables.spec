@@ -1,7 +1,7 @@
 #
 # spec file for package python-immutables
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ License:        Apache-2.0
 URL:            https://github.com/MagicStack/immutables
 Source:         https://files.pythonhosted.org/packages/source/i/immutables/immutables-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -39,10 +41,11 @@ Immutable collections for Python.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 export IMMU_SKIP_MYPY_TESTS=1
@@ -52,6 +55,6 @@ export IMMU_SKIP_MYPY_TESTS=1
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/immutables
-%{python_sitearch}/immutables-%{version}*-info
+%{python_sitearch}/immutables-%{version}.dist-info
 
 %changelog

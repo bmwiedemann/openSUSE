@@ -164,4 +164,13 @@
   * Replace `_PyLong_Format` with `PyNumber_ToBase`</comment>
     <requestid>1217421</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>192206589ffd3e659d5013a0eb1289ec</srcmd5>
+    <version>0.21</version>
+    <time>1751450835</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Actually run fdupes.</comment>
+    <requestid>1289727</requestid>
+  </revision>
 </revisionlist>
