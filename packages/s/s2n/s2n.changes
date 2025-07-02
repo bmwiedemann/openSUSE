@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  2 07:39:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.5.21
+  * feat(bindings): expose custom critical extension API (#5337)
+  * tests(integ): fix nondeterministic ocsp test shutdown behavior (#5340)
+  * chore: Bindings release 0.3.20 (#5344)
+  * ci: workaround for nix + gnutls + ubuntu24 issue (#5345)
+  * fix: do not use "digest and sign" for ML-DSA in FIPS mode (#5348)
+
+-------------------------------------------------------------------
 Tue Jun  3 09:17:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.5.20
