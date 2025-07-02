@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-half
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        Half-precision floating-point
 License:        BSD-2-Clause
@@ -42,10 +42,10 @@ BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
-BuildRequires:  ghc-test-framework-devel
-BuildRequires:  ghc-test-framework-prof
-BuildRequires:  ghc-test-framework-quickcheck2-devel
-BuildRequires:  ghc-test-framework-quickcheck2-prof
+BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-prof
+BuildRequires:  ghc-tasty-quickcheck-devel
+BuildRequires:  ghc-tasty-quickcheck-prof
 %endif
 
 %description

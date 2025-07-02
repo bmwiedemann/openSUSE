@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 17 11:55:34 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update half to version 0.3.3.
+  0.3.3 [2025.06.17]
+  ------------------
+  * Replace `test-framework` with `tasty` in the test suite.
+
+-------------------------------------------------------------------
 Wed Dec  4 12:27:01 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update half to version 0.3.2.
