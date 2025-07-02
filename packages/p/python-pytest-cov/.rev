@@ -342,4 +342,28 @@
   * Support changes in coverage 7.5.</comment>
     <requestid>1174102</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>636a1879b64415da1f3fd22dc4d5852f</srcmd5>
+    <version>6.2.1</version>
+    <time>1751450834</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.2.1:
+  * Added a version requirement for pytest's pluggy dependency.
+  * Removed deprecated license classifier (packaging).
+  * The plugin now adds 3 rules in the filter warnings configuration to
+    prevent common coverage warnings being raised as obscure errors.
+  * Fixed breakage that occurs when ``--cov-context`` and the ``no_cover``
+    marker are used together.
+  * Change terminal output to use full width lines for the coverage header.
+  * Removed unnecessary CovFailUnderWarning.
+  * Fixed the term report not using the precision specified via
+    ``--cov-precision``.
+  * Changed fail under checks to use the precision set in the coverage
+    configuration.
+  * Added a ``--cov-precision`` cli option that can override the value set
+    in your coverage configuration.
+  * Dropped support for now EOL Python 3.8.
+- Drop patch support-coverage-75.patch, included upstream.</comment>
+    <requestid>1289703</requestid>
+  </revision>
 </revisionlist>

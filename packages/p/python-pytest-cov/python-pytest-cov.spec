@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-cov
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,29 +26,29 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pytest-cov%{psuffix}
-Version:        5.0.0
+Version:        6.2.1
 Release:        0
 Summary:        Pytest plugin for coverage reporting
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-cov
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-cov/pytest-cov-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#pytest-dev/pytest-cov#643
-Patch0:         support-coverage-75.patch
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-cov/pytest_cov-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 %if %{with test}
-BuildRequires:  %{python_module coverage >= 5.2.1}
+BuildRequires:  %{python_module coverage >= 7.5}
 BuildRequires:  %{python_module fields}
 BuildRequires:  %{python_module process-tests}
-BuildRequires:  %{python_module pytest >= 4.6.0}
+BuildRequires:  %{python_module pytest >= 6.2.5}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module virtualenv}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-coverage >= 5.2.1
-Requires:       python-pytest >= 4.6.0
+Requires:       python-coverage >= 7.5
+Requires:       python-pluggy >= 1.2
+Requires:       python-pytest >= 6.2.5
 BuildArch:      noarch
 %python_subpackages
 
@@ -61,7 +61,7 @@ All features offered by the coverage package should be available, either
 through pytest-cov or through coverage's config file.
 
 %prep
-%autosetup -p1 -n pytest-cov-%{version}
+%autosetup -p1 -n pytest_cov-%{version}
 
 %build
 %pyproject_wheel
