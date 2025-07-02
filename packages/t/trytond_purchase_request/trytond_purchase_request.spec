@@ -27,9 +27,9 @@
 %define mysitelib %{expand:%%%{mypython}_sitelib}
 %endif
 
-%define majorver 6.0
+%define majorver 7.0
 Name:           trytond_purchase_request
-Version:        %{majorver}.5
+Version:        %{majorver}.1
 Release:        0
 
 URL:            http://www.tryton.org/
