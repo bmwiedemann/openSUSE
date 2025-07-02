@@ -190,4 +190,12 @@
     <comment>bugix version</comment>
     <requestid>1184807</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c4e5663d120cf8c5e4f674a67e8f50ff</srcmd5>
+    <version>7.0.1</version>
+    <time>1751473016</time>
+    <user>anag_factory</user>
+    <comment>version bump (forwarded request 1289028 from DocB)</comment>
+    <requestid>1289043</requestid>
+  </revision>
 </revisionlist>
