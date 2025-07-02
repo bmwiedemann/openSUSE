@@ -30,14 +30,14 @@
 %define version_text This is branch 3.x with version specific file locations
 
 Name:           %{original_name}%{branch}
-Version:        3.6
+Version:        3.6.1
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
 Group:          Development/Tools/Other
 URL:            https://godotengine.org/
-Source0:        https://downloads.tuxfamily.org/godotengine/%{version}/%{original_name}-%{version}-stable.tar.xz
-Source1:        https://downloads.tuxfamily.org/godotengine/%{version}/%{original_name}-%{version}-stable.tar.xz.sha256
+Source0:        https://github.com/godotengine/%{original_name}/releases/download/%{version}-stable/%{original_name}-%{version}-stable.tar.xz
+Source1:        https://github.com/godotengine/%{original_name}/releases/download/%{version}-stable/%{original_name}-%{version}-stable.tar.xz.sha256
 # Project policy does not allow "-no-pie"
 Patch0:         linker_pie_flag.patch
 # Use system certificates as fallback for certificates
@@ -52,7 +52,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  scons
-BuildRequires:  update-desktop-files
 BuildRequires:  yasm-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(glesv2)
@@ -110,8 +109,6 @@ BuildRequires:  mbedtls-devel < 3
 
 Requires:       ca-certificates
 Recommends:     ca-certificates-mozilla
-Requires(post): update-desktop-files
-Requires(postun):update-desktop-files
 Suggests:       %{name}-headless = %{version}
 Suggests:       %{name}-runner = %{version}
 Suggests:       %{name}-server = %{version}
@@ -178,7 +175,7 @@ Provides:       bundled(libpng) = 1.6.43
 Provides:       bundled(libzstd) = 1.5.5
 Provides:       bundled(zlib) = 1.3.1
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 2.28.8
+Provides:       bundled(mbedtls) = 2.28.10
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay
@@ -375,7 +372,7 @@ install -D -p -m 644 misc/dist/linux/%{original_name}.6 %{buildroot}/%{_mandir}/
 install -D -p -m 644 icon.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
 install -D -p -m 644 icon.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 install -D -p -m 644 misc/dist/linux/org.godotengine.Godot.appdata.xml  %{buildroot}%{_datadir}/metainfo/org.godotengine.%{name_upper}.appdata.xml
-%suse_update_desktop_file -i org.godotengine.%{name_upper}
+install -D -m 0644 misc/dist/linux/org.godotengine.%{name_upper}.desktop %{buildroot}%{_datadir}/applications/org.godotengine.%{name_upper}.desktop
 
 %if !0%{?faster_build}
 # Installing the headless editor
@@ -395,6 +392,9 @@ install -D -p -m 644 misc/dist/shell/%{name}-runner %{buildroot}%{_datadir}/bash
 install -D -p -m 644 misc/dist/shell/%{name}-server %{buildroot}%{_datadir}/bash-completion/completions/%{name}-server
 
 %fdupes -s %{buildroot}/%{_prefix}
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.godotengine.%{name_upper}.desktop
 
 %files
 %license LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md

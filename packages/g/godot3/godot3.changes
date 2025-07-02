@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 27 12:00:00 UTC 2025 - cunix@mail.de
+
+- Update to 3.6.1
+  * Revert changes to "Range::set_value"
+  * Ameliorate performance regression due to directional shadow "fade_start"
+  * embree: Fix invalid output operators raising errors with GCC 15
+
+- pointed source uri to github.com
+- removed update-desktop-files
+- added "check" section in spec
+
+-------------------------------------------------------------------
 Wed Sep 11 12:00:00 UTC 2024 - cunix@mail.de
 
 - Update to 3.6
