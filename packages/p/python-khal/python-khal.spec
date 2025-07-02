@@ -1,7 +1,7 @@
 #
 # spec file for package python-khal
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,38 +18,37 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-khal
-Version:        0.11.3
+Version:        0.13.0
 Release:        0
 Summary:        CLI calendar with CalDAV support
 License:        MIT
-Group:          Productivity/Office/Organizers
 URL:            https://lostpackets.de/khal/
 Source0:        https://files.pythonhosted.org/packages/source/k/khal/khal-%{version}.tar.gz
 BuildRequires:  %{python_module aiohttp}
-BuildRequires:  %{python_module atomicwrites >= 0.1.7}
 BuildRequires:  %{python_module click >= 3.2}
 BuildRequires:  %{python_module click-log >= 0.2.0}
 BuildRequires:  %{python_module configobj}
 BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module icalendar >= 4.0.3}
+BuildRequires:  %{python_module icalendar >= 6.0.0}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module pyxdg}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module tzlocal >= 1.0}
-BuildRequires:  %{python_module urwid >= 1.3.0}
+BuildRequires:  %{python_module urwid >= 2.6.15}
+BuildRequires:  %{python_module urwid >= 2.6.15}
 BuildRequires:  %{python_module vdirsyncer}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-atomicwrites
 Requires:       python-click
 Requires:       python-click-log
 Requires:       python-configobj
-Requires:       python-dateutil
-Requires:       python-icalendar
+Requires:       python-icalendar >= 6.0.0
+Requires:       python-python-dateutil
 Requires:       python-pytz >= 2018
 Requires:       python-pyxdg
 Requires:       python-tzlocal
@@ -83,7 +82,6 @@ Fish shell completions for khal
 
 %package -n python-khal-zsh-completion
 Summary:        ZSH completion for khal
-Group:          Productivity/File utilities
 Supplements:    (khal and zsh)
 BuildArch:      noarch
 
@@ -94,14 +92,14 @@ zsh shell completions for khal
 %autosetup -p1 -n khal-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 for shell in bash zsh fish; do
     PYTHONPATH="$PWD" _KHAL_COMPLETE=${shell}_source python3 ./bin/khal >khal.$shell
 done
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/khal
 %python_clone -a %{buildroot}%{_bindir}/ikhal
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -133,7 +131,7 @@ donttest+=" or test_bogota or test_event_no_dst"
 %license COPYING
 %doc AUTHORS.txt CONTRIBUTING.rst README.rst khal.conf.sample
 %{python_sitelib}/khal
-%{python_sitelib}/khal-%{version}*-info
+%{python_sitelib}/khal-%{version}.dist-info
 %python_alternative %{_bindir}/khal
 %python_alternative %{_bindir}/ikhal
 
