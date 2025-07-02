@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.2
+Version:        0.1.3.1
 Release:        0
 Summary:        Fast Splittable PRNG
 License:        BSD-3-Clause
@@ -50,6 +50,8 @@ BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-process-prof
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-random-prof
+BuildRequires:  ghc-template-haskell-devel
+BuildRequires:  ghc-template-haskell-prof
 BuildRequires:  ghc-test-framework-devel
 BuildRequires:  ghc-test-framework-hunit-devel
 BuildRequires:  ghc-test-framework-hunit-prof

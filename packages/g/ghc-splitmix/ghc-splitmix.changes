@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 26 20:35:31 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update splitmix to version 0.1.3.1.
+  # 0.1.3.1
+
+  - Fix linking issue `symbol not found in flat namespace '_kSecRandomDefault'`
+    when using splitmix in TH on macOS.
+
+-------------------------------------------------------------------
+Wed Jun 25 18:35:38 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update splitmix to version 0.1.3.
+  # 0.1.3
+
+  - Use system specific entropy/randomess sources to initialise the default generator.
+    Specifically `SecRandomCopyBytes` on Apple platforms and
+    `RtlGenRandom` on Windows.
+
+-------------------------------------------------------------------
 Mon Jun  9 17:17:55 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update splitmix to version 0.1.2.
