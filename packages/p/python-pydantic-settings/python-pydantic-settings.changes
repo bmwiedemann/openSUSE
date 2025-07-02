@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jul  1 08:46:12 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2.10.1
+  * Fix UnboundLocalError error in _replace_field_names_case_insensitively
+  * Remove unknown file reference in documentation
+  * Prepare release 2.10.1
+- Update to 2.10.0
+  * Fix running tests when azure-keyvault-secrets is not installed
+  * Fix running tests when google-cloud-secret-manager is not installed
+  * Support loading a specific nested key from YAML in YamlConfigSettingsSource
+  * Fix CLI suppression for model group help
+  * Fix missing DEFAULT_PATH import
+  * Fix case-insensitive handling of nested aliases in EnvironmentSettingsSource
+  * Azure Key Vault case insensitive support and dash-underscore translation
+  * fix: Respect 'cli_parse_args' from model_config with settings_customise_sources
+  * Bump astral-sh/setup-uv
+  * Update packages by
+  * Update README.md
+  * Fix CI badge
+  * Update dependencies
+  * Fix coverage report
+  * Fix _consume_object_or_array on unbalanced brackets in JSON strings
+  * add region as a parameter to aws secret manager
+  * Expose GCP Secret Manager case sensitive option
+  * Update deps
+  * feat: Add cli_shortcuts to CLI settings
+  * Expose AWS Secrets Manager case sensitive option
+  * Prepare release 2.10.0
+- remove otional test dependencies
+
+-------------------------------------------------------------------
 Thu Apr 24 05:53:47 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.9.1:

@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic-settings%{psuffix}
-Version:        2.9.1
+Version:        2.10.1
 Release:        0
 Summary:        Settings management using Pydantic
 License:        MIT
@@ -38,9 +38,8 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module azure-keyvault-secrets >= 4.8}
+BuildRequires:  %{python_module azure-identity}
 BuildRequires:  %{python_module google-auth}
-BuildRequires:  %{python_module google-cloud-secret-manager >= 2.23.1}
 BuildRequires:  %{python_module pydantic-settings = %{version}}
 BuildRequires:  %{python_module pytest-examples}
 BuildRequires:  %{python_module pytest-mock}
@@ -55,6 +54,7 @@ Suggests:       python-PyYAML >= 6.0.1
 Suggests:       python-tomli >= 2.0.1
 Suggests:       python-google-cloud-secret-manager >= 2.23.1
 Suggests:       python-azure-keyvault-secrets >= 4.8
+Suggests:       python-azure-identity
 BuildArch:      noarch
 %python_subpackages
 
