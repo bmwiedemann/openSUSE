@@ -27,17 +27,16 @@
 %define mysitelib %{expand:%%%{mypython}_sitelib}
 %endif
 
-%define majorver 6.0
+%define majorver 7.0
 Name:           proteus
-Version:        %{majorver}.8
+Version:        %{majorver}.1
 Release:        0
 Summary:        A library to access Tryton's modules like a client
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
 URL:            http://www.tryton.org/
 Source0:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
-Source1:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
-Source2:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
+
 # List of additional build dependencies
 BuildRequires:  %{mypython}-devel
 BuildRequires:  %{mypython}-pip
@@ -60,7 +59,7 @@ BuildArch:      noarch
 Proteus allows you to access Tryton's modules like a client. Useful for automation, data load etc.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %pyproject_wheel

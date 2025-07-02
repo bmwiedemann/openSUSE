@@ -223,4 +223,12 @@
     <comment></comment>
     <requestid>1144241</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5a4c4ce3d1d847fcb22de8bec0b6904e</srcmd5>
+    <version>7.0.1</version>
+    <time>1751473020</time>
+    <user>anag_factory</user>
+    <comment>version bump (forwarded request 1289019 from DocB)</comment>
+    <requestid>1289053</requestid>
+  </revision>
 </revisionlist>
