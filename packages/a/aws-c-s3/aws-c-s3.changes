@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul  2 07:20:01 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.3
+  * Add user data to pool factory by @DmitriyMusatkin in (#529)
+- from version 0.8.2
+  * Remove Windows 2019 and add Windows 2025 with MSVC-17
+    by @TingDaoK in (#524)
+  * Auto - Update S3 Ruleset & Partition by @TingDaoK in (#527)
+  * Fix issue with error response parting potentially overriding
+    upload buffer by @DmitriyMusatkin in (#528)
+
+-------------------------------------------------------------------
 Tue Jun 10 07:07:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.1
