@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>1206501</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>af95b61ea89d7e68cb8cc6ccf1c1cc09</srcmd5>
+    <version>1.8.0+git17.856ba8a</version>
+    <time>1751470253</time>
+    <user>anag_factory</user>
+    <comment>- Use pyproject macros to build and install.
+- List files and directories underneath python_sitelib explicitly.</comment>
+    <requestid>1289119</requestid>
+  </revision>
 </revisionlist>

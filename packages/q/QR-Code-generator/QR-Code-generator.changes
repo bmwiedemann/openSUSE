@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 23 05:29:49 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- List files and directories underneath python_sitelib explicitly.
+
+-------------------------------------------------------------------
 Wed Oct  9 10:51:51 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.8.0+git17.856ba8a

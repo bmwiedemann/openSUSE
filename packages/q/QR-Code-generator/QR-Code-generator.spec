@@ -1,7 +1,7 @@
 #
 # spec file for package QR-Code-generator
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,7 @@
 %define libcname libqrcodegen1
 %define libcppname libqrcodegencpp1
 
+%global pip_version 1.8.0
 %global cmake_code_version 1.8.0.cmake3
 
 %{?sle15_python_module_pythons}
@@ -31,7 +32,9 @@ License:        MIT
 URL:            https://github.com/nayuki/QR-Code-generator
 Source0:        %{name}-%{version}.tar.zst
 Source1:        qrcodegen-cmake-%cmake_code_version.tar.zst
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -83,14 +86,14 @@ cp qrcodegen-cmake-%cmake_code_version/{README.md,LICENSE} .
 %cmake
 
 pushd ../python
-%python_build
+%pyproject_wheel
 popd
 
 %install
 %cmake_install
 
 pushd python
-%python_install
+%pyproject_install
 popd
 
 %ldconfig_scriptlets -n %{libcname}
@@ -98,7 +101,9 @@ popd
 
 %files %{python_files}
 %license Readme.markdown
-%{python_sitelib}/*
+%{python_sitelib}/qrcodegen.py
+%pycache_only %{python_sitelib}/__pycache__/qrcodegen.*.pyc
+%{python_sitelib}/qrcodegen-%{pip_version}.dist-info
 
 %files -n QR-Code-generator-devel
 %license LICENSE Readme.markdown
