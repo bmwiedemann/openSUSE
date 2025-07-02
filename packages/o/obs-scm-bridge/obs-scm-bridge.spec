@@ -22,7 +22,7 @@
 %define build_pkg_name build
 %endif
 Name:           obs-scm-bridge
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        A help service to work with git repositories in OBS
 License:        GPL-2.0-or-later
@@ -41,10 +41,11 @@ Requires:       perl(XML::Parser)
 Requires:       perl(YAML::LibYAML)
 Recommends:     python3-packaging
 BuildArch:      noarch
+# git 2.49 for SHA1 submodule support in SHA256 repositories
 %if 0%{?fedora} || 0%{?rhel}
-Requires:       git
+Requires:       git >= 2.49
 %else
-Requires:       git-core
+Requires:       git-core >= 2.49
 Requires:       git-lfs
 %endif
 

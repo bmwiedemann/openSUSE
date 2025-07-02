@@ -191,4 +191,13 @@
   * stay on the configured branch of a submodule on checkout</comment>
     <requestid>1279572</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>40c441caa2e60603822962aa2755b2c7</srcmd5>
+    <version>0.7.1</version>
+    <time>1751473051</time>
+    <user>anag_factory</user>
+    <comment>- 0.7.1
+  * export trackingbranch to scmsync.obsinfo</comment>
+    <requestid>1289983</requestid>
+  </revision>
 </revisionlist>
