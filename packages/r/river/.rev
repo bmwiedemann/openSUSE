@@ -394,4 +394,12 @@ Fix specfile to not let river own `/usr/share/pkgconfig`</comment>
     <comment></comment>
     <requestid>1264676</requestid>
   </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>a9d0e62d55c110d344f6ca288699e4d6</srcmd5>
+    <version>0.3.7</version>
+    <time>1751450965</time>
+    <user>anag_factory</user>
+    <comment>- Set zig version to 0.13.0</comment>
+    <requestid>1289384</requestid>
+  </revision>
 </revisionlist>

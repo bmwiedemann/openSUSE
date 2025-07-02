@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  1 04:56:24 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Set zig version to 0.13.0
+
+-------------------------------------------------------------------
 Thu Mar 20 14:31:02 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Switch to BuildRequires: pkgconfig(libpcre2-8)

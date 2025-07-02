@@ -33,8 +33,8 @@ BuildRequires:  libevdev-devel
 BuildRequires:  libpixman-1-0-devel
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc >= 1.9.2
-BuildRequires:  zig
-BuildRequires:  zig-rpm-macros
+BuildRequires:  zig = 0.13.0
+BuildRequires:  zig-rpm-macros = 0.13.0
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1) >= 1.10
