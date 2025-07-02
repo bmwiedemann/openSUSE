@@ -329,4 +329,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1276462</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>fd0fe4c05275309a7c18032bc8952ab7</srcmd5>
+    <version>7.0.14</version>
+    <time>1751473018</time>
+    <user>anag_factory</user>
+    <comment>version bump (forwarded request 1289031 from DocB)</comment>
+    <requestid>1289046</requestid>
+  </revision>
 </revisionlist>
