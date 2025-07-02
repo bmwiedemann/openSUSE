@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           xonsh
-Version:        0.19.4
+Version:        0.19.8
 Release:        0
 Summary:        A general purpose, Python-powered shell
 License:        BSD-2-Clause AND BSD-3-Clause
@@ -27,6 +27,7 @@ URL:            https://xon.sh/
 Source0:        https://github.com/xonsh/xonsh/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python3-base >= 3.8
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools >= 61
 BuildRequires:  python3-wheel
 Recommends:     python3-Pygments >= 2.2
@@ -57,11 +58,11 @@ sed -i '1s/^#!.*//' xonsh/xoreutils/_which.py xonsh/webconfig/main.py xonsh/xore
 rm docs/api/.gitignore
 
 %build
-%python_build
+%pyproject_wheel
 # docs require unavailable theme 'furo'
 
 %install
-%python_install
+%pyproject_install
 %fdupes %{buildroot}
 %fdupes -s docs/
 %fdupes -s docs/_build/html/
@@ -70,12 +71,12 @@ rm docs/api/.gitignore
 %{python3_sitelib}/xonsh/
 %{python3_sitelib}/xontrib/
 %{python3_sitelib}/xompletions/
-%{python3_sitelib}/xonsh-%{version}*-info
+%{python3_sitelib}/xonsh-%{version}.dist-info
 %{_bindir}/xonsh
 %{_bindir}/xonsh-cat
 %{_bindir}/xonsh-uptime
 %{_bindir}/xonsh-uname
-%doc README.rst logo.txt CHANGELOG.rst
+%doc README.rst logo.txt CHANGELOG.md
 %doc xontrib
 %license license
 
