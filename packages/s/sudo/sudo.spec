@@ -25,7 +25,7 @@
 %endif
 
 Name:           sudo
-Version:        1.9.16p2
+Version:        1.9.17p1
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC
