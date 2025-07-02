@@ -1,7 +1,7 @@
 #
 # spec file for package klog
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           klog
-Version:        6.5
+Version:        6.6
 Release:        0
 Summary:        Time tracking in a human-readable, plain-text file format
 License:        MIT
