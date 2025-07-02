@@ -1,7 +1,7 @@
-diff -Nru oci-cli-3.56.0.orig/requirements.txt oci-cli-3.56.0/requirements.txt
---- oci-cli-3.56.0.orig/requirements.txt	2025-05-13 06:44:15.000000000 +0200
-+++ oci-cli-3.56.0/requirements.txt	2025-06-10 09:28:20.711069768 +0200
-@@ -2,47 +2,47 @@
+diff -Nru oci-cli-3.61.0.orig/requirements.txt oci-cli-3.61.0/requirements.txt
+--- oci-cli-3.61.0.orig/requirements.txt	2025-06-25 16:09:27.000000000 +0200
++++ oci-cli-3.61.0/requirements.txt	2025-07-02 11:00:36.465647710 +0200
+@@ -2,48 +2,47 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
  
@@ -23,23 +23,21 @@ diff -Nru oci-cli-3.56.0.orig/requirements.txt oci-cli-3.56.0/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.152.0
+-oci==2.154.3
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.11.0
 -pyasn1==0.2.3
--pyOpenSSL>=17.5.0,<25.0.0
--pycparser==2.20
--pyparsing==2.2.0
-+jmespath>=0.10.0
++jmespath=>0.10.0
 +ndg-httpsclient>=0.4.2
-+mock>=2.0.0
-+oci>=2.152.0
++oci>=2.154.3
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.11.0
 +pyasn1>=0.2.3
-+pyOpenSSL>=17.5.0
+ pyOpenSSL>=17.5.0,<25.0.0
+-pycparser==2.20
+-pyparsing==2.2.0
 +pycparser>=2.20
 +pyparsing>=2.2.0
  pytest==4.6.10; python_version <= '3.9'
@@ -54,22 +52,23 @@ diff -Nru oci-cli-3.56.0.orig/requirements.txt oci-cli-3.56.0/requirements.txt
  requests==2.31.0; python_version == '3.7'
  requests>=2.32.0; python_version > '3.7'
  six>=1.15.0
- sphinx==3.3.0
+-sphinx==3.3.0
 -sphinx-rtd-theme==0.4.3
 -terminaltables==3.1.10
 -tox==3.23.0
++sphinx>=3.3.0
 +sphinx-rtd-theme>=0.4.3
 +terminaltables>=3.1.10
 +tox>=3.23.0
  vcrpy==1.13.0; python_version <= '3.9'
 -vcrpy==4.2.1; python_version >= '3.10'
--virtualenv==20.13.0
++vcrpy>=4.2.1; python_version >= '3.10'
+ virtualenv==20.13.0; python_version <= '3.7'
+ virtualenv>=20.26.6; python_version > '3.7'
 -pytest-xdist==1.22.2
 -pytest-forked==1.0.2
--PyYAML>=5.4,<=6.0.1
+-PyYAML>=5.4,<=6.0.2
 -docutils==0.15.2
-+vcrpy>=4.2.1; python_version >= '3.10'
-+virtualenv>=20.13.0
 +pytest-xdist>=1.22.2
 +pytest-forked>=1.0.2
 +PyYAML>=5.4
@@ -77,15 +76,15 @@ diff -Nru oci-cli-3.56.0.orig/requirements.txt oci-cli-3.56.0/requirements.txt
  prompt-toolkit==3.0.29; python_version == '3.6'
  prompt-toolkit>=3.0.38,<=3.0.43; python_version > '3.6'
  setuptools>70.0.0; python_version > '3.7'
-diff -Nru oci-cli-3.56.0.orig/setup.py oci-cli-3.56.0/setup.py
---- oci-cli-3.56.0.orig/setup.py	2025-05-13 06:44:15.000000000 +0200
-+++ oci-cli-3.56.0/setup.py	2025-06-10 09:26:11.321036530 +0200
-@@ -30,21 +30,21 @@
+diff -Nru oci-cli-3.61.0.orig/setup.py oci-cli-3.61.0/setup.py
+--- oci-cli-3.61.0.orig/setup.py	2025-06-25 16:09:27.000000000 +0200
++++ oci-cli-3.61.0/setup.py	2025-07-02 10:59:06.162644363 +0200
+@@ -30,18 +30,18 @@
      readme = f.read()
  
  requires = [
--    'oci==2.152.0',
-+    'oci>=2.152.0',
+-    'oci==2.154.3',
++    'oci>=2.154.3',
      'arrow>=1.0.0',
      'certifi>=2025.1.31',
 -    'click==8.0.4',
@@ -100,15 +99,10 @@ diff -Nru oci-cli-3.56.0.orig/setup.py oci-cli-3.56.0/setup.py
      'six>=1.15.0',
 -    'terminaltables==3.1.10',
 -    'pyOpenSSL>=17.5.0,<25.0.0',
+-    'PyYAML>=5.4,<=6.0.2',
 +    'terminaltables>=3.1.10',
 +    'pyOpenSSL>=17.5.0',
-     'PyYAML>=5.4,<=6.0.1',
--    'prompt-toolkit>=3.0.38,<=3.0.43; python_version > "3.6"',
--    'prompt-toolkit==3.0.29; python_version == "3.6"',
--    'setuptools>70.0.0; python_version == "3.12"'
-+    'prompt-toolkit>=3.0.38',
-+    'prompt-toolkit>=3.0.29',
-+    'setuptools>70.0.0'
- ]
- 
- extras = {
++    'PyYAML>=5.4',
+     'prompt-toolkit>=3.0.38,<=3.0.43; python_version > "3.6"',
+     'prompt-toolkit==3.0.29; python_version == "3.6"',
+     'setuptools>70.0.0; python_version == "3.12"'

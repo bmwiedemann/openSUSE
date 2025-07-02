@@ -1911,4 +1911,246 @@
 (🤖: Submission of oci-cli via https://src.opensuse.org/pool/oci-cli/pulls/8 by glaubitz)</comment>
     <requestid>1284348</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>ecbdd8728918d27c49f838fae58b93a6</srcmd5>
+    <version>3.61.0</version>
+    <time>1751473032</time>
+    <user>anag_factory</user>
+    <comment>Update oci-cli Python package to 3.61.
+
+- Update to version 3.61.0
+  * Database Service
+     * Support for AWS_S3 as backup destination type
+       * ``oci db backup get``
+       * ``oci db backup list``
+     * Support for AWS_S3 for cloud-vm-cluster
+       * ``oci db cloud-vm-cluster create``
+       * ``oci db cloud-vm-cluster get``
+       * ``oci db cloud-vm-cluster list``
+       * ``oci db cloud-vm-cluster update``
+  * NoSql Service
+    * Support for customer managed encryption keys in hosted environments
+      in the NoSQL Database Cloud service
+      * ``oci nosql configuration get --compartment-id | -c ``
+      * ``oci nosql update-hosted --compartment-id | -c, --kms-key, --force ``
+      * ``oci nosql configuration unassign-kms-key --compartment-id | -c``
+  * Exadata Fleet Update Service
+    * Support for 23ai fleet upgrade of GI/DB (ExaDB-D/ExaC@C) collections in FPPCS
+      * ``oci fleet-software-update fsu-cycle update-fsu-cycle-update-upgrade-fsu-cycle``
+      * ``oci fleet-software-update fsu-cycle create-fsu-cycle-create-upgrade-fsu-cycle``
+  * OCI Network Load Balancer Service
+    * BYoIPv6 support on LBaaS
+      * ``oci lb load-balancer create --ipv6-subnet-cidr``
+      * ``oci lb load-balancer update --ip-mode``
+  * Database Service
+    * [BREAKING] Home id added as required parameter for below commands
+      * ``oci db database create-database-create-stand-by-database-details --db-home-id``
+      * ``oci db database create-database-from-backup --db-home-id``
+- from version 3.59.0
+  * Support for OCI API ACCESS CONTROL service
+    * ``oci apiaccesscontrol``
+  * Support for command String in Complex param --content
+    * ``oci instance-agent command create --content``
+  * Support for WebLogic Management service
+    * ``oci wlms``
+  * Support for oci cache user in redis service
+    * ``oci redis oci-cache-user``
+  * Redis Service
+    * [BREAKING] All previously-existing command in redis service are
+      now grouped under redis-cluster
+      * ``oci redis redis-cluster``
+- from version 3.58.1
+  * Database Service
+    * Support for new optional parameter in the Database service
+      * ``oci db database create-standby-database --opc-dry-run``
+- from version 3.58.0
+  * Database Service
+    * Enable Autonomous Container Database backup in a remote region
+      * ``oci db autonomous-container-database create-autonomous-container-\
+         database-create-autonomous-container-database-details``
+      * ``oci db autonomous-container-database create-autonomous-container-\
+        database-create-autonomous-container-database-from-backup-details``
+      * ``oci db autonomous-container-database-backup list``
+    * Support for new optional parameter in below command
+      * ``oci db autonomous-container-database create --source``
+  * Database Management Service
+    * Support for MySQL Replication and SQL Query Detail APIs
+      * ``oci database-management managed-my-sql-databases managed-my-sql-database
+        change-mysql-database-management-type``
+      * ``oci database-management managed-my-sql-databases managed-my-sql-database
+        get-binary-log-information``
+      * ``oci database-management managed-my-sql-databases managed-my-sql-database
+        get-general-replication-information``
+      * ``oci database-management managed-my-sql-databases managed-my-sql-database
+        get-my-sql-query-details``
+      * ``oci database-management managed-my-sql-databases managed-my-sql-database
+        list-high-availability-members``
+      * ``oci database-management managed-my-sql-databases managed-my-sql-database
+        list-inbound-replications``
+      * ``oci database-management managed-my-sql-databases managed-my-sql-database
+        list-my-sql-digest-errors``
+      * ``oci database-management managed-my-sql-databases managed-my-sql-database
+        list-outbound-replications``
+  * Database Migration Service
+    * Support for standby connection in DMS migration, --source-standby-database-connection-id
+      * ``oci database-migration migration clone-oracle-migration --source-standby-database-connection-id``
+      * ``oci database-migration migration create-oracle-migration --source-standby-database-connection-id``
+      * ``oci database-migration migration update-oracle-migration --source-standby-database-connection-id``
+  * Golden Gate Service
+    * Add support for creating/updating new connection types
+      * ``oci goldengate connection create-connection-create-iceberg-connection-details``
+      * ``oci goldengate connection update-connection-update-iceberg-connection-details``
+    * Added new optional parameters to the following commands
+      * ``oci goldengate connection create-amazon-s3-connection --endpoint-parameterconflict
+        --region-parameterconflict``
+      * ``oci goldengate connection update-amazon-s3-connection --endpoint-parameterconflict
+        --region-parameterconflict``
+      * ``oci goldengate connection get --view``
+  * MySQL Service
+    * Support for Soft Delete Backup in Heatwave Service by adding new optional parameter --soft-delete
+      * ``oci mysql backup create --soft-delete``
+      * ``oci mysql backup list --soft-delete``
+      * ``oci mysql backup update --soft-delete``
+      * ``oci mysql db-system create --backup-policy '{ &quot;isEnabled&quot;: true, &quot;softDelete&quot;: &quot;DISABLED&quot; }'``
+    * Added support to cancel backup deletion
+      * ``oci mysql backup cancel-backup-deletion``
+  * Golden Gate Service
+    * [BREAKING] Changed --username parameter to be a required parameter
+      * ``oci goldengate connection create-databricks-connection --username``
+  * Updated virtualenv dependency to &gt;=20.26.6; python_version &gt; '3.7' , 20.13.0 for &lt;= '3.7' per:
+    https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-53899
+  * Updated PyYAML dependency to 6.0.2 to support py3.13 build
+- from version 3.57.0
+  * Big Data Service
+    * Support for new command
+      * ``oci bds bds-capacity-report create``
+      * ``oci bds instance get-software-update``
+      * ``oci bds instance install-software-updates``
+      * ``oci bds instance list-software-updates``
+    * Support for new optional parameter for below commands
+      * ``oci bds instance install-os-patch --is-dry-run``
+      * ``oci bds instance install-os-patch-batching-based-patching-configs --is-dry-run``
+      * ``oci bds instance install-os-patch-domain-based-patching-configs --is-dry-run``
+      * ``oci bds instance install-os-patch-downtime-based-patching-configs --is-dry-run``
+  * Network Firewall Service
+    * Support for NAT Rule APIs
+      * ``oci network-firewall nat-rule``
+    * Support for new optional parameters in the network-firewall create and update commands
+      * ``oci network-firewall network-firewall create --nat-configuration``
+      * ``oci network-firewall network-firewall update --nat-configuration``
+  * Core Service
+    * Support for Compute HostGroups APIs
+      * ``oci compute compute-host-group``
+    * Support for new commands
+      * ``oci compute compute-host detach``
+      * ``oci compute compute-host attach``
+      * ``oci compute dedicated-vm-host create-dedicated-vm-host-compute-bare-\
+        metal-host-placement-constraint-details``
+      * ``oci compute dedicated-vm-host create-dedicated-vm-host-host-group-placement-constraint-details``
+      * ``oci compute instance launch-instance-compute-bare-metal-host-placement-constraint-details``
+      * ``oci compute instance launch-instance-host-group-placement-constraint-details``
+    * Support for new optional parameter for below commands
+      * ``oci compute compute-host list --compute-host-group-id``
+      * ``oci compute instance launch --compute-host-group-id --placement-constraint-details``
+      * ``oci compute dedicated-vm-host create --placement-constraint-details``
+      * ``oci network local-peering-gateway create --security-attributes``
+      * ``oci network local-peering-gateway update --security-attributes``
+      * ``oci network vcn create --is-zpr-only``
+      * ``oci network vcn update --is-zpr-only``
+  * Capacity Management Service
+    * Support for the Demand signal feature CRUD operations
+      * ``oci capacity-management demand-signal occm-demand-signal``
+      * ``oci capacity-management demand-signal occm-demand-signal-catalog-resource``
+      * ``oci capacity-management demand-signal occm-demand-signal-delivery-collection``
+      * ``oci capacity-management demand-signal occm-demand-signal-item``
+    * Support for Internal Demand signal feature CRUD operations
+      * ``oci capacity-management internal-demand-signal internal-occm-demand-signal``
+      * ``oci capacity-management internal-demand-signal internal-occm-demand-signal-catalog-resource``
+      * ``oci capacity-management internal-demand-signal internal-occm-demand-signal-delivery``
+      * ``oci capacity-management internal-demand-signal internal-occm-demand-signal-item-collection``
+      * ``oci capacity-management internal-demand-signal occm-demand-signal-catalog``
+  * Support for new commands in the Management Dashboard Service
+    * ``oci management-dashboard dashboard get-oob``
+    * ``oci management-dashboard dashboard list-oob``
+    * ``oci management-dashboard saved-search get-oob``
+    * ``oci management-dashboard saved-search list-oob``
+  * Support for REST in HeatWave MySQL Service
+    * ``oci mysql db-system clone --rest``
+    * ``oci mysql db-system create --rest``
+    * ``oci mysql db-system import --rest``
+    * ``oci mysql db-system update --rest``
+  * Support for new optional parameters for below command in the Database Service
+    * ``oci db system list-db-system-storage-performances --database-edition``
+  * Support for new optional parameters for below command in the Usage Service
+    * ``oci usage-api usage-carbon-emission-summary request-usage-carbon-emissions
+      --emission-calculation-method --emission-type --granularity``
+  * Database Service
+    * [BREAKING] Command to get cloud-exadata-infrastructure unallocated resources
+      has been renamed in the Database Service
+      * ``oci db cloud-exadata-infrastructure-unallocated-resources get`` renamed to
+        ``oci db cloud-exa-infra get-cloud-exadata-infrastructure-unallocated-resources``
+    * Required parameter --db-home-id is now a optional parameter for the below commands
+      * ``oci db database create-database-create-stand-by-database-details``
+      * ``oci db database create-database-from-backup``
+  * `Github Issue #949 &lt;https://github.com/oracle/oci-cli/issues/949&gt;`_ for OCI Database Service
+- from version 3.56.1
+  * Support for the Globally Distributed Database service
+    * ``oci distributed-database``
+  * Support for Network Security Groups in MySQL HeatWave service
+    * ``oci mysql db-system clone --nsg-ids``
+    * ``oci mysql db-system create --nsg-ids``
+    * ``oci mysql db-system import --nsg-ids``
+    * ``oci mysql db-system update --nsg-ids``
+  * Database Service
+    * Support for listing the available upgrades (OS &amp; GI) for VM DB systems
+      * ``oci db db-system-upgrade-summary list-db-system-upgrades``
+    * Support for running dry-run operations
+      * ``oci db autonomous-database change-autonomous-database-subscription --opc-dry-run``
+      * ``oci db autonomous-database change-compartment --opc-dry-run``
+      * ``oci db autonomous-database change-disaster-recovery-configuration --opc-dry-run``
+      * ``oci db autonomous-database configure-key --opc-dry-run``
+      * ``oci db autonomous-database configure-saas-admin-user --opc-dry-run``
+      * ``oci db autonomous-database create --opc-dry-run``
+      * ``oci db autonomous-database create-adb-cross-region-data-guard-details --opc-dry-run``
+      * ``oci db autonomous-database create-autonomous-database-create-\
+        cross-region-disaster-recovery-details --opc-dry-run``
+      * ``oci db autonomous-database create-autonomous-database-register-\
+        as-customer-owned-container-details --opc-dry-run``
+      * ``oci db autonomous-database create-autonomous-database-undelete-\
+        autonomous-database-details --opc-dry-run``
+      * ``oci db autonomous-database create-cross-tenancy-disaster-recovery-details --opc-dry-run``
+      * ``oci db autonomous-database create-from-backup-id --opc-dry-run``
+      * ``oci db autonomous-database create-from-backup-timestamp --opc-dry-run``
+      * ``oci db autonomous-database create-from-clone --opc-dry-run``
+      * ``oci db autonomous-database create-refreshable-clone --opc-dry-run``
+      * ``oci db autonomous-database create-virtual-clone --opc-dry-run``
+      * ``oci db autonomous-database data-safe deregister --opc-dry-run``
+      * ``oci db autonomous-database data-safe register --opc-dry-run``
+      * ``oci db autonomous-database delete --opc-dry-run``
+      * ``oci db autonomous-database disable-autonomous-database-management --opc-dry-run``
+      * ``oci db autonomous-database disable-operations-insights --opc-dry-run``
+      * ``oci db autonomous-database enable-autonomous-database-management --opc-dry-run``
+      * ``oci db autonomous-database enable-operations-insights --opc-dry-run``
+      * ``oci db autonomous-database fail-over --opc-dry-run``
+      * ``oci db autonomous-database generate-wallet --opc-dry-run``
+      * ``oci db autonomous-database manual-refresh --opc-dry-run``
+      * ``oci db autonomous-database restart --opc-dry-run``
+      * ``oci db autonomous-database restore --opc-dry-run``
+      * ``oci db autonomous-database shrink --opc-dry-run``
+      * ``oci db autonomous-database start --opc-dry-run``
+      * ``oci db autonomous-database stop --opc-dry-run``
+      * ``oci db autonomous-database switchover --opc-dry-run``
+      * ``oci db autonomous-database update --opc-dry-run``
+      * ``oci db autonomous-database-backup create --opc-dry-run``
+      * ``oci db autonomous-database-backup delete --opc-dry-run``
+      * ``oci db autonomous-database-backup update --opc-dry-run``
+      * ``oci db autonomous-database-wallet rotate --opc-dry-run``
+      * ``oci db autonomous-database-wallet rotate-regional-wallet --opc-dry-run``
+- Refresh patches for new version
+  * oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+(🤖: Submission of oci-cli via https://src.opensuse.org/pool/oci-cli/pulls/9 by glaubitz)</comment>
+    <requestid>1289822</requestid>
+  </revision>
 </revisionlist>
