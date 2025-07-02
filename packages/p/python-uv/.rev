@@ -936,4 +936,28 @@
    * Note that GCP Artifact Registry download URLs must have /simple component</comment>
     <requestid>1289111</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c9fc198f4f32a625777fb45f58604ca5</srcmd5>
+    <version>0.7.18</version>
+    <time>1751470254</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.7.18
+ * Enhancements
+   * Keep track of retries in ManagedPythonDownload::fetch_with_retry 
+   * Reuse build (virtual) environments across resolution and installation 
+   * Improve trace message for cached Python interpreter query 
+   * Use parsed URLs for conflicting URL error message 
+ * Preview features
+   * Ignore invalid build backend settings when not building 
+ * Bug fixes
+   * Fix equals-star and tilde-equals with python_version and python_full_version 
+   * Include the canonical path in the interpreter query cache key 
+   * Only drop build directories on program exit 
+   * Error instead of panic on conflict between global and subcommand flags 
+   * Consistently normalize trailing slashes on URLs with no path segments 
+ * Documentation
+   * Add instructions for publishing to JFrog's Artifactory 
+   * Edits to the build backend documentation</comment>
+    <requestid>1289789</requestid>
+  </revision>
 </revisionlist>
