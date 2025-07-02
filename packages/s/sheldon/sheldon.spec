@@ -17,13 +17,14 @@
 
 
 Name:           sheldon
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Fast, configurable, shell plugin manager
 License:        MIT OR Apache-2.0 AND MIT AND Zlib AND LGPL-2.1-or-later AND CC-BY-SA-4.0 AND Apache-2.0 WITH LLVM-exception AND BSD-4-clause AND OpenSSL AND Unicode AND SUSE-GPL-2.0-with-linking-exception
 URL:            https://sheldon.cli.rs/
 Source:         https://github.com/rossmacarthur/sheldon/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+BuildRequires:  cargo >= 1.82
 BuildRequires:  cargo-packaging
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig

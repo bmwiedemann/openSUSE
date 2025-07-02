@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  2 08:48:44 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.8.3 
+ * Fix unhandled error in access function calls
+
+-------------------------------------------------------------------
 Fri May 23 12:21:03 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.8.23
+- update to 0.8.2
  * Reduce scope of file mutex
 
 -------------------------------------------------------------------

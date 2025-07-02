@@ -61,4 +61,15 @@
  * Reduce scope of file mutex (forwarded request 1279540 from mimi_vx)</comment>
     <requestid>1279541</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d13eea7717b8cd99e27b5b4754f81ac0</srcmd5>
+    <version>0.8.3</version>
+    <time>1751473030</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.3 
+ * Fix unhandled error in access function calls
+
+- update to 0.8.2</comment>
+    <requestid>1289790</requestid>
+  </revision>
 </revisionlist>
