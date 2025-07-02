@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  1 10:43:12 CEST 2025 - ro@suse.de
+
+- Chromium 138.0.7204.96
+  (stable released 2025-06-30) (boo#1245544)
+  * CVE-2025-6554: Type Confusion in V8
+
+-------------------------------------------------------------------
 Wed Jun 25 10:32:36 CEST 2025 - ro@suse.de
 
 - Chromium 138.0.7204.49
@@ -28,6 +35,7 @@ Wed Jun 25 10:32:36 CEST 2025 - ro@suse.de
   removed third_party/webrtc/rtc_base/third_party/base64
   added third_party/dragonbox
   (needed by ../v8/src/numbers/conversions.cc )
+- bump gn buildrequires to 0.20250520
 
 -------------------------------------------------------------------
 Tue Jun 17 23:36:50 CEST 2025 - ro@suse.de

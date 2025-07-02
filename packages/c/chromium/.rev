@@ -5748,4 +5748,16 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
   (needed by ../v8/src/numbers/conversions.cc )</comment>
     <requestid>1288707</requestid>
   </revision>
+  <revision rev="467" vrev="1">
+    <srcmd5>48a738ae91c8c1ea565b6f15c7ebba08</srcmd5>
+    <version>138.0.7204.96</version>
+    <time>1751450986</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 138.0.7204.96
+  (stable released 2025-06-30) (boo#1245544)
+  * CVE-2025-6554: Type Confusion in V8
+
+- bump gn buildrequires to 0.20250520</comment>
+    <requestid>1289449</requestid>
+  </revision>
 </revisionlist>

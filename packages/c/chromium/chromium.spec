@@ -110,7 +110,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        138.0.7204.49
+Version:        138.0.7204.96
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -248,7 +248,7 @@ BuildRequires:  elfutils
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  git
-BuildRequires:  gn >= 0.20250306
+BuildRequires:  gn >= 0.20250520
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  golang(API)
