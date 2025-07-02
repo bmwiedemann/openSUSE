@@ -574,4 +574,18 @@
     <comment></comment>
     <requestid>1237822</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>b836c7d96d98420fe6f45db71f6331d2</srcmd5>
+    <version>5.0.0</version>
+    <time>1751473023</time>
+    <user>anag_factory</user>
+    <comment>- version 5.0.0
+  * source naming scheme changed
+- version 5.0.0rc1
+  * major upgrade
+  * for details, see
+    https://my.gnusolidario.org/2025/05/01/gnu-health-hospital-information-system-5-0-enters-alpha/
+</comment>
+    <requestid>1289770</requestid>
+  </revision>
 </revisionlist>

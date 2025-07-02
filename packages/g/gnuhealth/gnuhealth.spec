@@ -1,8 +1,8 @@
 #
 # spec file for package gnuhealth
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2014-2024 Dr. Axel Braun
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2014-2025 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,30 +20,25 @@
 %bcond_with tests 1
 %define         skip_python2 1
 
-%if 0%{?suse_version} >= 1550
 %define pythons python3
 %define mypython python3
 %define mysitelib %python3_sitelib
-%else
 %{?sle15_python_module_pythons}
-%define mypython %pythons
-%define mysitelib %{expand:%%%{mypython}_sitelib}
-%endif
 
 %define         t_version %(rpm -q --qf '%%{VERSION}' trytond)
-%define         majorver 4.4
+%define         majorver 5.0
 
 Name:           gnuhealth
 
-Version:        %{majorver}.1
+Version:        %{majorver}.0
 Release:        0
 URL:            https://health.gnu.org
 Summary:        A Health and Hospital Information System
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
 
-Source0:        https://ftp.gnu.org/gnu/health/%{name}-%{version}.tar.gz
-## Source0:        %{name}-%{version}.tar.gz
+Source0:        https://ftp.gnu.org/gnu/health/%{name}-his-server-%{majorver}-bundle-2025.1.tar.gz
+##%Source0:        %{name}-%{version}.tar.gz
 Source1:        GNUHealth.README.openSUSE
 Source2:        gnuhealth-control
 Source3:        gnuhealth.service
@@ -51,12 +46,13 @@ Source4:        gnuhealth-webdav@.service
 Source5:        openSUSE-gnuhealth-setup
 Source6:        gnuhealth
 Source7:        gnuhealth-rpmlintrc
-Source8:        https://ftp.gnu.org/gnu/health/%{name}-%{version}.tar.gz.sig
+Source8:        https://ftp.gnu.org/gnu/health/%{name}-his-server-%{majorver}-bundle-2025.1.tar.gz.sig
 Source9:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=health&download=1#/%{name}.keyring
 
-## BuildRequires:  %{python_module pytest}
+##% BuildRequires:  %{python_module pytest}
 BuildRequires:  %{mypython}-pip
 BuildRequires:  %{mypython}-devel
+BuildRequires:  %{mypython}-poetry-core >= 2.0.0
 BuildRequires:  %{mypython}-setuptools
 BuildRequires:  %{mypython}-wheel
 BuildRequires:  fdupes
@@ -64,43 +60,50 @@ BuildRequires:  python-rpm-generators
 BuildRequires:  python-rpm-macros
 
 # For the tests:
-BuildRequires:  trytond
-BuildRequires:  trytond_company
-BuildRequires:  trytond_currency
-BuildRequires:  trytond_party
-BuildRequires:  trytond_product
+BuildRequires:  trytond >= 7.0
+BuildRequires:  trytond_company >= 7.0
+BuildRequires:  trytond_currency >= 7.0
+BuildRequires:  trytond_party >= 7.0
+BuildRequires:  trytond_product >= 7.0
 
 # new fonts for the forms:
 Requires:       gnu-free-fonts
-Requires:       %{mypython}-Pillow
+Requires:       %{mypython}-Pillow >= 11.1.0
 Requires:       %{mypython}-PyWebDAV3-GNUHealth
+Requires:       %{mypython}-Werkzeug >= 3.1.3
+Requires:       %{mypython}-bcrypt
 Requires:       %{mypython}-caldav
 Requires:       %{mypython}-hl7apy
-Requires:       %{mypython}-ldap3
+Requires:       %{mypython}-ldap
 Requires:       %{mypython}-matplotlib
+Requires:       %{mypython}-numpy
 Requires:       %{mypython}-passlib
+Requires:       %{mypython}-pycountry
+Requires:       %{mypython}-pydot >= 3.0.4
 Requires:       %{mypython}-python-barcode
+Requires:       %{mypython}-python-magic >= 0.4.27
+Requires:       %{mypython}-pytz
 Requires:       %{mypython}-qrcode
 Requires:       %{mypython}-simpleeval
 Requires:       %{mypython}-six
-Requires:       %{mypython}-vobject
+Requires:       %{mypython}-vobject >= 0.9.9
 Requires:       bsdtar
 Requires:       proteus
-Requires:       trytond
-Requires:       trytond_account
-Requires:       trytond_account_invoice
-Requires:       trytond_account_invoice_stock
-Requires:       trytond_account_product
-Requires:       trytond_company
-Requires:       trytond_country
-Requires:       trytond_currency
-Requires:       trytond_party
-Requires:       trytond_product
-Requires:       trytond_purchase
-Requires:       trytond_purchase_request
-Requires:       trytond_stock
-Requires:       trytond_stock_lot
-Requires:       trytond_stock_supply
+Requires:       trytond >= 7.0
+Requires:       trytond_account >= 7.0
+Requires:       trytond_account_invoice >= 7.0
+Requires:       trytond_account_invoice_stock >= 7.0
+Requires:       trytond_account_product >= 7.0
+Requires:       trytond_company >= 7.0
+Requires:       trytond_country >= 7.0
+Requires:       trytond_currency >= 7.0
+Requires:       trytond_party >= 7.0
+Requires:       trytond_product >= 7.0
+Requires:       trytond_purchase >= 7.0
+Requires:       trytond_purchase_request >= 7.0
+Requires:       trytond_stock >= 7.0
+Requires:       trytond_stock_lot >= 7.0
+Requires:       trytond_stock_supply >= 7.0
 BuildArch:      noarch
 
 # additional suggestion for a useable editor
@@ -128,19 +131,21 @@ Group:          Productivity/Office/Management
 Requires:       %{mypython}-beren
 Requires:       %{mypython}-pendulum
 Requires:       %{mypython}-pydicom
+Requires:       %{mypython}-pyorthanc
 Requires:       gnuhealth
 
 %description -n %{name}-orthanc
-This package provides the interface to Orthanc
+This package provides the interface to Orthanc and the imaging worklist
 
 %prep
-%setup -q -n %{name}-%{version}
-## %%patch -P 0 -p1
+%autosetup -n %{name}-his-%{majorver}-bundle-2025.1
+##%%patch -P 0 -p1
 cp %{S:1} .
 cp %{S:2} .
 
 #shebag ersetzen
 find . -iname "*.py" -exec sed -i "s/env python/%{mypython}/" '{}' \;
+find . -iname "*gnuhealth-webdav-server" -exec sed -i "s/env python/%{mypython}/" '{}' \;
 
 %build
 for i in h*; do
@@ -160,7 +165,9 @@ mkdir -p -m 755 %{buildroot}%{_bindir}
 install -p -m 755 gnuhealth-control %{buildroot}%{_bindir}/gnuhealth-control
 install -p -m 755 %{S:5} %{buildroot}%{_bindir}/openSUSE-gnuhealth-setup
 install -p -m 755 %{S:6} %{buildroot}%{_bindir}/gnuhealth
-install -p -m 755 scripts/demodb/install_demo_database.sh %{buildroot}%{_bindir}/install_demo_database.sh
+install -p -m 755 health_webdav3_server/bin/gnuhealth-webdav-server %{buildroot}%{_bindir}/gnuhealth-webdav-server
+#5.0A1 change:
+#%%install -p -m 755 scripts/demodb/install_demo_database.sh %{buildroot}%{_bindir}/install_demo_database.sh
 
 #delete empty demo directory
 rm -rf scripts/demodb
@@ -175,9 +182,9 @@ mkdir -p %{buildroot}%{_sysconfdir}/tryton
 ## rm backend/fhir/client/COPYING
 
 #Move FHIR server to examples directory
-mkdir -p -m 755 %{buildroot}%{_docdir}/%{name}/examples/
-mv doc/* %{buildroot}%{_docdir}/%{name}/examples/.
-rmdir doc
+##%mkdir -p -m 755 %{buildroot}%{_docdir}/%{name}/examples/
+##%mv doc/* %{buildroot}%{_docdir}/%{name}/examples/.
+##%rmdir doc
 
 %python_expand %fdupes %{buildroot}%{mysitelib}
 
@@ -226,23 +233,30 @@ EOF
 
 %files -n %{name}-orthanc
 %{mysitelib}/%{name}_orthanc*
+%{mysitelib}/%{name}_imaging_worklist*
 %{mysitelib}/trytond/modules/health_orthanc*
+%{mysitelib}/trytond/modules/health_imaging_worklist*
 
 %files
 %defattr(-,root,root)
+##%{_docdir}/gnuhealth
 %{_bindir}/gnuhealth
 %{_bindir}/gnuhealth-control
 %{_bindir}/gnuhealth-webdav-server
 %{_bindir}/openSUSE-gnuhealth-setup
-%{_bindir}/install_demo_database.sh
+#5.0A1 change:
+#%%{_bindir}/install_demo_database.sh
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}-webdav@.service
-%doc README.rst Changelog gnuhealth-setup version gnuhealthrc GNUHealth.README.openSUSE scripts/* config/*
-%{_docdir}/%{name}/examples*
+#%%doc README.rst Changelog gnuhealth-setup version gnuhealthrc GNUHealth.README.openSUSE scripts/* config/*
+#%%doc README.rst Changelog version GNUHealth.README.openSUSE scripts/* config/*
+##%%{_docdir}/%{name}/examples*
 %dir %{_sysconfdir}/tryton
-%license COPYING LICENSES/*
+##%%license COPYING LICENSES/*
 %exclude %{mysitelib}/%{name}_orthanc*
+%exclude %{mysitelib}/%{name}_imaging_worklist*
 %exclude %{mysitelib}/trytond/modules/health_orthanc*
+%exclude %{mysitelib}/trytond/modules/health_imaging_worklist*
 %{mysitelib}/trytond*
 %{mysitelib}/gnuhealth*
 
