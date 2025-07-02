@@ -32,21 +32,19 @@ BuildRequires:  gcc11-c++
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 %endif
-BuildRequires:  appstream-glib
+BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  xvfb-run
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(exiv2) >= 0.14
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(libgsf-1) >= 1.12.0
 BuildRequires:  pkgconfig(poppler-glib) >= 0.18
@@ -62,12 +60,6 @@ desktop using GNOME libraries. In addition to basic file manager
 functions, the program is also an FTP client and can browse SMB
 networks.
 
-%package devel
-Summary:        Development files for %{name}
-
-%description devel
-Development files for %{name}.
-
 %lang_package
 
 %prep
@@ -80,6 +72,7 @@ export CXX=%{_bindir}/g++-11
 %endif
 %meson \
        -Dsamba=disabled \
+       -Dtests=disabled \
        %nil
 %meson_build
 
@@ -91,18 +84,18 @@ find %{buildroot}%{_datadir} -size 0 -delete
 %fdupes %{buildroot}%{_libdir}
 
 %check
-xvfb-run %{shrink:%meson_test}
+%meson_test
 
 %files
 %license COPYING
 %doc NEWS README.md AUTHORS TODO
 %{_datadir}/help/C/%{name}
 %{_datadir}/metainfo/org.gnome.%{name}.appdata.xml
-%{_bindir}/*
+%{_bindir}/gcmd-block
+%{_bindir}/gnome-commander
 %{_datadir}/applications/*.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.%{name}.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.%{name}.gschema.xml
-%{_datadir}/gnome-commander/
 %{_datadir}/pixmaps/%{name}
 %{_libdir}/%{name}
 %{_mandir}/man1/%{name}.1%{ext_man}
@@ -112,6 +105,7 @@ xvfb-run %{shrink:%meson_test}
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/internal_viewer_hacking.txt
 %{_datadir}/%{name}/keys.txt
+%{_datadir}/%{name}/icons
 
 %files lang -f %{name}.lang
 
