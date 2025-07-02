@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 23 09:58:51 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update hslua to version 2.4.0.
+  ## Dev
+
+  Released 2025-06-23.
+
+  -   Require hslua-objectorientation-2.4.0
+
+  -   Provide a full Lua app with Haskell-defined modules preloaded.
+      The app is only built if the `executable` flag is enabled.
+
+-------------------------------------------------------------------
 Thu Jan 18 17:38:49 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update hslua to version 2.3.1.
