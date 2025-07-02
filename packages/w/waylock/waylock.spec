@@ -1,7 +1,7 @@
 #
 # spec file for package waylock
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           waylock
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Small screenlocker for Wayland compositors
 License:        ISC
@@ -30,8 +30,8 @@ Source4:        vendor.tar.zst
 Patch1:         add-experimental-non-llvm-zig-backend.patch
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc >= 1.9.2
-BuildRequires:  zig
-BuildRequires:  zig-rpm-macros
+BuildRequires:  zig = 0.13.0
+BuildRequires:  zig-rpm-macros = 0.13.0
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(pam)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
