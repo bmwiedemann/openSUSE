@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 17 19:59:02 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update aeson to version 2.2.3.0 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Jan 15 06:45:23 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update aeson to version 2.2.3.0 revision 3.
