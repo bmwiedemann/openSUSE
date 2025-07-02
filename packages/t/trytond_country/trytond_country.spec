@@ -1,8 +1,8 @@
 #
 # spec file for package trytond_country
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2014-2024 Dr. Axel Braun
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2014-2025 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,20 +27,15 @@
 %define mysitelib %{expand:%%%{mypython}_sitelib}
 %endif
 
-%define majorver 6.0
+%define majorver 7.0
 Name:           trytond_country
-Version:        %{majorver}.3
+Version:        %{majorver}.0
 Release:        0
 Summary:        The "country" module for the Tryton ERP system
 License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
-## Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
-## Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
-Patch0:         001_pycountry.diff
-Patch1:         002_support_pycountry_22.diff
-Patch2:         003_revert_pycountry_limit.diff
 # List of additional build dependencies
 BuildRequires:  %{mypython}-devel
 BuildRequires:  %{mypython}-pip
@@ -63,9 +58,9 @@ module.
 %prep
 %setup -q
 # TW uses newer pycountry
-%if 0%{?suse_version} > 1500
-%patch -P 0 -P 1 -P 2 -p1
-%endif
+## %if 0%{?suse_version} > 1500
+## %patch -P 0 -P 1 -P 2 -p1
+## %endif
 
 %build
 %pyproject_wheel
