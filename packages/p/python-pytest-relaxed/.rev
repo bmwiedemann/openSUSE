@@ -145,4 +145,12 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1273926</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>295f4185f18f3b81ab40b4c5ce3853f8</srcmd5>
+    <version>2.0.2</version>
+    <time>1751450846</time>
+    <user>anag_factory</user>
+    <comment>- Skip a test that breaks with Pytest 8.4.</comment>
+    <requestid>1289378</requestid>
+  </revision>
 </revisionlist>

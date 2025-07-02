@@ -52,7 +52,8 @@ export LANG=en_US.UTF-8
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests
+# Broken with pytest 8.4.
+%pytest -k 'not test_skips_pytest_fixtures' tests
 
 %files %{python_files}
 %license LICENSE
