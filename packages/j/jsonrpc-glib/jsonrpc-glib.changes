@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 29 07:13:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.44.2:
+  + Improvements for potential UB usage for 8-byte aligned types.
+
+-------------------------------------------------------------------
 Sun Aug 11 13:23:33 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.44.1:
