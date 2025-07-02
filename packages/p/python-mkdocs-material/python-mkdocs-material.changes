@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  1 11:12:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.6.15:
+  * Updated Mongolian translations
+  * Improved semantic markup of "edit this page" button
+  * Improved info plugin virtual environment resolution
+  * Fixed #8291: Large font size setting throws of breakpoints in
+    JavaScript
+
+-------------------------------------------------------------------
 Wed May 14 04:58:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.6.14:
