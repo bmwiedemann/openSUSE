@@ -452,4 +452,17 @@
 - add parse-supportstatus.patch:</comment>
     <requestid>1288523</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>fa61b1d1252669bb62ffc98d497a7f3a</srcmd5>
+    <version>0.6.3</version>
+    <time>1751451076</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.6.3
+  * include last two patches, obsoleting 
+    - change-fitering-error-to-warning.patch
+    - parse-supportstatus.patch
+  * fixing a crash when iso's are only enabled in flavors
+- fix build/version handling after the change to setuptools_scm</comment>
+    <requestid>1289554</requestid>
+  </revision>
 </revisionlist>

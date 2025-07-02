@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 30 08:01:00 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.6.3
+  * include last two patches, obsoleting 
+    - change-fitering-error-to-warning.patch
+    - parse-supportstatus.patch
+  * fixing a crash when iso's are only enabled in flavors
+- fix build/version handling after the change to setuptools_scm
+
+-------------------------------------------------------------------
 Wed Jun 25 09:47:33 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add change-fitering-error-to-warning.patch:

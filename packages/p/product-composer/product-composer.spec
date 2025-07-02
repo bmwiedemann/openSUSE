@@ -23,7 +23,7 @@
 %endif
 
 Name:           product-composer
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Product Composer
 License:        GPL-2.0-or-later
@@ -31,13 +31,12 @@ Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/product-composer
 #!CreateArchive: product-composer
 Source:         %name-%{version}.tar.xz
-Patch0:         https://github.com/openSUSE/product-composer/commit/26c805f5b38bed987461ff51a0f6461827c43236.patch#/parse-supportstatus.patch
-Patch1:         https://github.com/openSUSE/product-composer/commit/3073c41cb968ad3c92ab0281b026f7cd8f7d1944.patch#/change-fitering-error-to-warning.patch
 # Should become a build option
 Patch10:        sle-15-defaults.patch
 BuildRequires:  %{used_python}-pip
 BuildRequires:  %{used_python}-poetry-core
 BuildRequires:  %{used_python}-setuptools
+BuildRequires:  %{used_python}-setuptools_scm
 BuildRequires:  %{used_python}-wheel
 Requires:       %{used_python}-PyYAML
 Requires:       %{used_python}-pydantic
@@ -60,13 +59,12 @@ WARNING: please be aware that the code is still on the move and is
 
 %prep
 %setup -q -n %name-%version
-%patch -P 0 -p1
-%patch -P 1 -p1
 %if "%{?sle_version}" == "150600"
 %patch -P 10 -p1
 %endif
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%version
 %if "%{?sle_version}" == "150600"
 %python311_pyproject_wheel
 %else
