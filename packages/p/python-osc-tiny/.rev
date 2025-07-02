@@ -364,4 +364,14 @@
 </comment>
     <requestid>1287242</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e4120b72baf60ef20275a3cc3d7fc1a7</srcmd5>
+    <version>0.10.8</version>
+    <time>1751451027</time>
+    <user>anag_factory</user>
+    <comment>- Release 0.10.8
+  - Fix pipeline mistake and add python 3.13 &amp; 3.14 to the CI
+</comment>
+    <requestid>1289531</requestid>
+  </revision>
 </revisionlist>

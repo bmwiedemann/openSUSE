@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 01 09:24:42 UTC 2025 - maintenance-obs-robot <maintenance-automation-team@suse.de>
+
+- Release 0.10.8
+  - Fix pipeline mistake and add python 3.13 & 3.14 to the CI
+
+-------------------------------------------------------------------
 Fri Jun 20 12:32:29 UTC 2025 - Chen Huang <chhuang@suse.com>
 
 - Remove patch py313.patch
