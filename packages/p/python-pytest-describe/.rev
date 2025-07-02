@@ -55,4 +55,13 @@
     3.12.</comment>
     <requestid>1160442</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b822cf67b56ceea48fbcbbda78e4f093</srcmd5>
+    <version>2.2.0</version>
+    <time>1751450960</time>
+    <user>anag_factory</user>
+    <comment>- Skip a broken test with Pytest 8.4.
+- Drop unneeded {Build,}Requires on python-py.</comment>
+    <requestid>1289377</requestid>
+  </revision>
 </revisionlist>
