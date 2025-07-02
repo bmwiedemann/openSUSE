@@ -7,6 +7,7 @@ enable restorecond.service
 enable hylafax-faxqclean.timer
 enable hylafax-usage.timer
 enable storeBackup.timer
+enable switcheroo-control.service
 enable drkonqi-coredump-processor@.service
 # libvirt hypervisor specific daemons. Start by default at boot for VM autostart,
 # but shutdown after 2 minutes of inactivity. Socket activated thereafter.

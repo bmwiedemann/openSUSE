@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package systemd-presets-branding-openSUSE
 #
 # Copyright (c) 2025 SUSE LLC
 #

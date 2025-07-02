@@ -583,4 +583,13 @@
 </comment>
     <requestid>1241645</requestid>
   </revision>
+  <revision rev="70" vrev="26">
+    <srcmd5>9a6ee18abfa703a4b8756bd524bbc83c</srcmd5>
+    <version>12.2</version>
+    <time>1751450860</time>
+    <user>anag_factory</user>
+    <comment>- enable switcheroo-control.service (boo#1244097)
+</comment>
+    <requestid>1289549</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  1 12:11:35 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- enable switcheroo-control.service (boo#1244097)
+
+-------------------------------------------------------------------
 Fri Jan 31 12:44:42 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - drop hostinfo entries, since the package no longer exists (see sr#1208439)
