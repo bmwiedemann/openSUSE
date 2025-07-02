@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul 01 10:12:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.0:
+  * New Features
+    - zizmor now has experimental support for IDE/editor
+      integrations via zizmor --lsp; see the IDE integration
+      documentation for more information (#984)
+  * Enhancements
+    - The bot-conditions audit now supports auto-fixes for many
+      findings (#921)
+    - The bot-conditions audit now produces findings on triggers
+      other than pull_request_target (#921)
+  * Bug Fixes
+    - Fixed a bug where zizmor would crash when attempting to
+      extract subfeatures from features containing non-ASCII
+      codepoints (#989)
+  * Dependencies
+    - chore(deps): bump the github-actions group with 3 updates
+      (#990)
+    - chore(deps): bump the cargo group with 3 updates (#991)
+    - chore(deps): bump http-cache-reqwest to 0.16.0 (#982)
+    - chore(deps): bump http-cache-reqwest to 0.15.2 (#980)
+    - chore(docs): remove demo file, link to zizmor.sh (#978)
+
+-------------------------------------------------------------------
 Mon Jun 30 05:16:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.0:
