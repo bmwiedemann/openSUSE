@@ -268,4 +268,15 @@
   * /usr/share/doc/packages/mame/whatsnew-0.277.txt</comment>
     <requestid>1273526</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a7575c1f8f9eeab4873c11ef09d7bf40</srcmd5>
+    <version>0.278</version>
+    <time>1751451125</time>
+    <user>anag_factory</user>
+    <comment>- Optimized CFLAGS, CXXFLAGS and LDFLAGS in spec file.
+- Changed _constraints file default 8GB RAM and 16GB HDD is enough.
+- Updated to 0.278
+  * /usr/share/doc/packages/mame/whatsnew-0.278.txt</comment>
+    <requestid>1289692</requestid>
+  </revision>
 </revisionlist>

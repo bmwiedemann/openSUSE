@@ -16,7 +16,7 @@
 #
 
 
-%define ver     277
+%define ver     278
 Name:           mame
 Version:        0.%{ver}
 Release:        0
@@ -67,7 +67,7 @@ BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data = %{version}
 Suggests:       %{name}-tools = %{version}
-ExcludeArch:    i586 armv6hl armv7hl ppc
+ExcludeArch:    i586 armv6hl armv7hl ppc s390
 %if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
 BuildRequires:  gcc13
 BuildRequires:  gcc13-c++
@@ -105,12 +105,18 @@ rm -r 3rdparty/{asio,compat,dxsdk,expat,flac,glm,libjpeg,portaudio,portmidi,pugi
 
 %build
 %define _lto_cflags %{nil}
-MY_OPT_FLAGS=$(echo %{optflags} | sed -re 's@-g($|[0-9])@-g1@g; s@-g\s@-g1 @g')
-MY_OPT_FLAGS=$(echo $MY_OPT_FLAGS | sed 's@ -Wp,-D_GLIBCXX_ASSERTIONS@@')
-sed -i "s@-Wall -Wextra -Os \$(MPARAM)@$MY_OPT_FLAGS@" 3rdparty/genie/build/gmake.linux/genie.make
-sed -i "s@-s -rdynamic@$MY_LDFLAGS -rdynamic@" 3rdparty/genie/build/gmake.linux/genie.make
+CFLAGS="%{optflags} -g1 -Wl,-v -fuse-ld=mold"
+LDFLAGS="$LDFLAGS -Wl,-v -fuse-ld=mold"
+sed -i -e "s/-Wall -Wextra -Os \$(MPARAM)/$CFLAGS/" -e "s/-s -rdynamic/$LDFLAGS -rdynamic/" 3rdparty/genie/build/gmake.linux/genie.make
 
 %make_build \
+%if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
+    CC="gcc-13" \
+    CXX="g++-13" \
+%endif
+    CFLAGS="$CFLAGS" \
+    CXXFLAGS="$CFLAGS" \
+    LDOPTS="$LDFLAGS" \
     NOWERROR=1 \
     OPTIMIZE=3 \
     PYTHON_EXECUTABLE=python3 \
@@ -128,13 +134,7 @@ sed -i "s@-s -rdynamic@$MY_LDFLAGS -rdynamic@" 3rdparty/genie/build/gmake.linux/
     USE_SYSTEM_LIB_UTF8PROC=1 \
     USE_SYSTEM_LIB_ZLIB=1 \
     SDL_INI_PATH="%{_sysconfdir}/%{name};" \
-    TOOLS=1 \
-%if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
-    CC="gcc-13" \
-    CXX="g++-13" \
-%endif
-    OPT_FLAGS="$MY_OPT_FLAGS" \
-    LDOPTS="${LDFLAGS} -Wl,-v -fuse-ld=mold"
+    TOOLS=1
 
 %install
 install -pm0644 %{SOURCE1} whatsnew-%{version}.txt
