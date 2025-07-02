@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  1 15:22:29 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.15.0
+  * Compile with fast math, without unsafe optimizations.
+  * residfp: reworked the SIMD support, removed the intrinsics
+    code leaving the compiler vectorize the loop.
+  * Extended the new play API.
+  * Marked old play API functions as deprecated.
+
+-------------------------------------------------------------------
 Sun May 11 18:56:40 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.14.0
