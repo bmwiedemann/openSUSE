@@ -64,4 +64,16 @@
 - pytest72.patch dropped (upstream)</comment>
     <requestid>1114839</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a1cf8955a36230e7f2d890115348a7c1</srcmd5>
+    <version>1.1.0</version>
+    <time>1751450958</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.1.0:
+  * Drop Python 3.8 (#57)
+  * Export the plugin types at top-level (#60, #61)
+  * Add host parameter to aiohttp_server fixture (#63)
+- Write out a pytest.ini file to support Pytest 8.4.</comment>
+    <requestid>1289376</requestid>
+  </revision>
 </revisionlist>

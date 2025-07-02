@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-aiohttp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-%define pyname pytest-aiohttp
 %{?sle15_python_module_pythons}
 Name:           python-pytest-aiohttp
-Version:        1.0.5
+Version:        1.1.0
 Release:        0
 Summary:        Python pytest plugin for aiohttp support
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/pytest-aiohttp
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-aiohttp/pytest-aiohttp-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-aiohttp/pytest_aiohttp-%{version}.tar.gz
 BuildRequires:  %{python_module aiohttp >= 3.8.1}
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6.1.0}
 BuildRequires:  %{python_module pytest-asyncio >= 0.20.2}
@@ -46,7 +44,12 @@ BuildArch:      noarch
 A library that provides fixtures for creation test aiohttp server and client.
 
 %prep
-%autosetup -p1 -n %{pyname}-%{version}
+%autosetup -p1 -n pytest_aiohttp-%{version}
+cat >pytest.ini <<EOF
+[pytest]
+asyncio_mode=auto
+asyncio_default_fixture_loop_scope=function
+EOF
 
 %build
 %pyproject_wheel
@@ -62,6 +65,6 @@ A library that provides fixtures for creation test aiohttp server and client.
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/pytest_aiohttp
-%{python_sitelib}/pytest_aiohttp-%{version}*-info
+%{python_sitelib}/pytest_aiohttp-%{version}.dist-info
 
 %changelog
