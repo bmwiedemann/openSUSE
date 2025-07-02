@@ -303,4 +303,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1141028</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>cc325b707f128a44c2e71d41b0eb3c6d</srcmd5>
+    <version>5.0.0</version>
+    <time>1751473024</time>
+    <user>anag_factory</user>
+    <comment>- version 5.0.0
+- version 5.0.0rc1
+  * major upgrade
+  * for details, see 
+    https://my.gnusolidario.org/2025/05/01/gnu-health-hospital-information-system-5-0-enters-alpha/
+</comment>
+    <requestid>1289771</requestid>
+  </revision>
 </revisionlist>

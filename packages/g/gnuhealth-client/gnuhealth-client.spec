@@ -1,8 +1,8 @@
 #
 # spec file for package gnuhealth-client
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2015-2024 Dr. Axel Braun
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2015-2025 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,12 @@
 #
 
 
-%define majorver 4.4
+%define majorver 5.0
 
-%if 0%{?suse_version} >= 1550
 %define pythons python3
 %define mypython python3
 %define mysitelib %python3_sitelib
-%else
 %{?sle15_python_module_pythons}
-%define mypython %pythons
-%define mysitelib %{expand:%%%{mypython}_sitelib}
-%endif
 
 Name:           gnuhealth-client
 Version:        %{majorver}.0
@@ -37,8 +32,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 URL:            http://health.gnu.org/
 Source:         https://ftp.gnu.org/pub/gnu/health/%{name}-%{version}.tar.gz
-## Source:         %{name}-%{version}.tar.gz
-## Source1:        %{name}-plugins-%{version}.tar.gz
+##%Source:         %{name}-%{version}.tar.gz
+##%Source1:        %{name}-plugins-%{version}.tar.gz
 Source1:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_camera-latest.tar.gz
 Source2:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_crypto-latest.tar.gz
 Source3:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_frl-latest.tar.gz
@@ -51,6 +46,7 @@ BuildRequires:  %{mypython}-Sphinx
 BuildRequires:  %{mypython}-devel
 BuildRequires:  %{mypython}-gobject
 BuildRequires:  %{mypython}-pip
+BuildRequires:  %{mypython}-poetry-core >= 2.0.0
 BuildRequires:  %{mypython}-python-dateutil
 BuildRequires:  %{mypython}-setuptools
 BuildRequires:  %{mypython}-simplejson
@@ -62,12 +58,12 @@ Requires:       %{mypython}-GooCalendar >= 0.5
 Requires:       %{mypython}-cairo
 Requires:       %{mypython}-chardet
 Requires:       %{mypython}-dateutil
-Requires:       %{mypython}-python-gnupg
 Requires:       %{mypython}-gobject
 Requires:       %{mypython}-gobject-Gdk
 Requires:       %{mypython}-gobject-cairo
 Requires:       %{mypython}-numpy
 Requires:       %{mypython}-opencv
+Requires:       %{mypython}-python-gnupg
 Requires:       %{mypython}-pytz
 Requires:       %{mypython}-setuptools
 Requires:       %{mypython}-simplejson
@@ -84,7 +80,7 @@ BuildArch:      noarch
 The client of the GNU Health Hospital application
 
 %prep
-%setup -q
+%autosetup
 
 pwd
 cd gnuhealth/plugins
@@ -125,7 +121,8 @@ cp %{buildroot}%{mysitelib}/gnuhealth/data/pixmaps/gnuhealth/gnuhealth-icon.png 
 %doc Changelog
 %license COPYRIGHT COPYING
 %{_datadir}/pixmaps/*
+%{mysitelib}/gnuhealth_client-5.0.0.dist-info
 %{mysitelib}/gnuhealth
-%{mysitelib}/gnuhealth_client-%{version}.dist-info
+%{mysitelib}/gnuhealth_client-5.0.0.dist-info/*
 
 %changelog
