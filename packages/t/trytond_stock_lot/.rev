@@ -144,4 +144,12 @@
     <comment>bugfix and security update</comment>
     <requestid>1175214</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7738d048de11ae1ab42ad0dfdb22277e</srcmd5>
+    <version>7.0.3</version>
+    <time>1751473019</time>
+    <user>anag_factory</user>
+    <comment>version bump (forwarded request 1289034 from DocB)</comment>
+    <requestid>1289049</requestid>
+  </revision>
 </revisionlist>
