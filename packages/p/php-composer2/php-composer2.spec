@@ -17,7 +17,7 @@
 
 
 Name:           php-composer2
-Version:        2.8.8
+Version:        2.8.9
 Release:        0
 Summary:        Dependency Management for PHP
 License:        MIT
@@ -27,7 +27,7 @@ Source0:        https://github.com/composer/composer/releases/download/%{version
 Source1:        https://github.com/composer/composer/releases/download/%{version}/composer.phar.asc
 Source2:        https://github.com/composer/composer/raw/%{version}/LICENSE
 # 161DFBE342889F01DDAC4E61CBB3D576F2A0946F
-Source3:       %{name}.keyring
+Source3:        %{name}.keyring
 BuildRequires:  php-phar
 Requires:       php >= 7.2.5
 Requires:       php-curl

@@ -446,4 +446,19 @@
   - Fixed InstalledVersions returning duplicate data in some instances</comment>
     <requestid>1271833</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a910f3f6302f241860e5af8627744caa</srcmd5>
+    <version>2.8.9</version>
+    <time>1751473043</time>
+    <user>anag_factory</user>
+    <comment>- version update to 2.8.9
+  * Fixed json schema issues with version validation (#12376)
+  * Fixed bump-after-update triggering after an update --lock, which makes no sense (#12371)
+  * Fixed zip bomb false positives when unpacking using ZipArchive (#12409)
+  * Fixed creation of empty archives (#12408)
+  * Removed output of script being run when running via composer &lt;script-name&gt; (#12383)
+- modified sources
+  % composer.phar</comment>
+    <requestid>1289856</requestid>
+  </revision>
 </revisionlist>

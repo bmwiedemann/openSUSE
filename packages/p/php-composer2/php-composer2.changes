@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul  2 10:49:10 UTC 2025 - pgajdos@suse.com
+
+- version update to 2.8.9
+  * Fixed json schema issues with version validation (#12376)
+  * Fixed bump-after-update triggering after an update --lock, which makes no sense (#12371)
+  * Fixed zip bomb false positives when unpacking using ZipArchive (#12409)
+  * Fixed creation of empty archives (#12408)
+  * Removed output of script being run when running via composer <script-name> (#12383)
+- modified sources
+  % composer.phar
+
+-------------------------------------------------------------------
 Tue Apr 22 10:31:49 UTC 2025 - pgajdos@suse.com
 
 - fix keyring (https://github.com/composer/composer/issues/12009)
