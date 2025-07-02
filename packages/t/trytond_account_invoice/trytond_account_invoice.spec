@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_account_invoice
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,17 +27,16 @@
 %define mysitelib %{expand:%%%{mypython}_sitelib}
 %endif
 
-%define majorver 6.0
+%define majorver 7.0
 Name:           trytond_account_invoice
-Version:        %{majorver}.21
+Version:        %{majorver}.13
 Release:        0
 Summary:        The "account_invoice" module for the Tryton ERP system
 License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
-## Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
-## Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
+
 BuildRequires:  %{mypython}-devel
 BuildRequires:  %{mypython}-pip
 BuildRequires:  %{mypython}-setuptools
@@ -61,7 +60,7 @@ BuildArch:      noarch
 The account_invoice module add invoices and payment terms.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %pyproject_wheel
