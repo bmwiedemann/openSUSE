@@ -1,7 +1,7 @@
 #
 # spec file for package qview
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           qview
-Version:        6.1
+Version:        7.0
 Release:        0
 Summary:        Practical and minimal image viewer
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/Viewers
 URL:            https://interversehq.com/qview/
-Source:         https://github.com/jurplel/qView/releases/download/%{version}/qView-%{version}.tar.gz#/qView-%{version}.tar.gz
+Source:         https://github.com/jurplel/qView/archive/refs/tags/%{version}.tar.gz#/qView-%{version}.tar.gz
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  pkgconfig
@@ -37,7 +37,7 @@ qView is a Qt image viewer designed with minimalism and usability in mind.
 No cluttered interface, just your image and a titlebar.
 
 %prep
-%setup -q -n qView
+%setup -q -n qView-%{version}
 
 %build
 %qmake5 PREFIX=%{_prefix}
