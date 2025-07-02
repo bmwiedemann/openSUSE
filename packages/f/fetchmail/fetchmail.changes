@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 26 10:25:36 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 6.5.4
+  * BUGFIXES:
+    * socket: avoid crash when writing to a socket without SSL/TLS fails.
+      Reported by Andrea Venturoli via mailing list, fixes #71.
+    * wolfSSL support: avoid fetchmail.c compilation failure in certain
+      configurations of wolfSSL (for instance, on FreeBSD's wolfssl-5.8.0_1
+      package), OpenSSL_version enables a newer 1.1.x compat API that passes its
+      argument to a wolfSSL API, with OPENSSL_DIR and OPENSSL_ENGINES_DIR, causing
+      related compiler failures.
+      See <https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=287435>. 
+
+-------------------------------------------------------------------
 Tue Jan 14 08:56:46 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
 
 - Update to 6.5.2
