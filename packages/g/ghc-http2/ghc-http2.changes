@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 26 05:31:35 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update http2 to version 5.3.10.
+  ## 5.3.10
+
+  * Introducing closure.
+    [#157](https://github.com/kazu-yamamoto/http2/pull/157)
+
+-------------------------------------------------------------------
 Tue Dec  3 05:57:06 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update http2 to version 5.3.9.
