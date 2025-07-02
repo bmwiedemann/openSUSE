@@ -1347,4 +1347,43 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.132.0</comment>
     <requestid>1286434</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>0ba68e65f98808bcf23be37a3b3375a3</srcmd5>
+    <version>1.133.0</version>
+    <time>1751451086</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1289571 from darix
+
+- Update to 1.133.0
+  - Features
+    - Add support for the MSC4260 user report API. (#18120)
+  - Bugfixes
+    - Fix an issue where, during state resolution for v11 rooms,
+      Synapse would incorrectly calculate the power level of the
+      creator when there was no power levels event in the room.
+      (#18534, #18547)
+    - Fix long-standing bug where sliding sync did not honour the
+      room_id_to_include config option. (#18535)
+    - Fix an issue where &quot;Lock timeout is getting excessive&quot;
+      warnings would be logged even when the lock timeout was &lt;10
+      minutes. (#18543)
+    - Fix an issue where Synapse could calculate the wrong power
+      level for the creator of the room if there was no power
+      levels event. (#18545)
+  - Improved Documentation
+    - Generate config documentation from JSON Schema file. (#18528)
+    - Fix typo in user type documentation. (#18568)
+  - Internal Changes
+    - Increase performance of introspecting access tokens when
+      using delegated auth. (#18357, #18561)
+    - Log user deactivations. (#18541)
+    - Enable flake8-logging and flake8-logging-format rules in Ruff
+      and fix related issues throughout the codebase. (#18542)
+    - Clean up old, unused rows from the device_federation_inbox
+      table. (#18546)
+    - Run config schema CI on develop and release branches.
+      (#18551)
+    - Add support for Twisted 25.5.0+ releases. (#18577)</comment>
+    <requestid>1289572</requestid>
+  </revision>
 </revisionlist>
