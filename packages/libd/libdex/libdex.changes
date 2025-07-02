@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 28 07:28:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.1:
+  + Fix autoptr usage
+  + Raise critical on finalization of thread-pool-scheduler which
+    should not happen in proper usage of libdex
+  + Avoid extra pointer chase when dispatching to thread pool
+    workers
+  + Don't dispatch blocks while on fibers, wait for scheduler
+  + Fix leak of unix signal futures
+  + Improve management of fiber run queues
+
+-------------------------------------------------------------------
 Tue May 27 08:10:42 UTC 2025 - Yifan Jiang <yfjiang@suse.com>
 
 - Add disable-test-semaphore.patch to temporarily disable the unit
