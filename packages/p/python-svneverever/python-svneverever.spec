@@ -19,7 +19,6 @@
 %define mod_name svneverever
 %define skip_python2 1
 %define oldpython python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-svneverever
 Version:        1.7.2
 Release:        0
@@ -28,6 +27,8 @@ License:        GPL-3.0-only
 URL:            https://github.com/hartwork/svneverever
 Source:         https://github.com/hartwork/svneverever/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       subversion
@@ -46,10 +47,10 @@ directories ever having existed in the repository.
 %setup -q -n %{mod_name}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone %{buildroot}%{_bindir}/%{mod_name} -a
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -62,7 +63,7 @@ directories ever having existed in the repository.
 %files %{python_files}
 %doc README.md
 %python_alternative %{_bindir}/%{mod_name}
-%{python_sitelib}/%{mod_name}-%{version}-*.egg-info
+%{python_sitelib}/%{mod_name}-%{version}.dist-info
 %{python_sitelib}/%{mod_name}/
 
 %changelog
