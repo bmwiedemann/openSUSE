@@ -16,7 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define majorver 6.0
+%define majorver 7.0
 
 %if 0%{?suse_version} >= 1550
 %define pythons python3
@@ -30,17 +30,13 @@
 
 
 Name:           tryton
-Version:        %{majorver}.54
+Version:        %{majorver}.27
 Release:        0
 Summary:        The client of the Tryton application platform
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
 URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
-## Source1:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
-## Source2:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
-
-Patch1:         001-disable-version-check.diff
 
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -78,7 +74,7 @@ It is the core base of an Open Source ERP.
 It provides modularity, scalability and security.
 
 %prep
-%autosetup -p1
+%autosetup 
 
 #shebag ersetzen
 find . -iname "bin/tryton" -exec sed -i "s/env python/%{mypython}/" '{}' \;
