@@ -419,4 +419,40 @@
   * Improve test coverage</comment>
     <requestid>1184136</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>5407464cdf7f3ec88c65d7ea2c5ec6e2</srcmd5>
+    <version>6.3.1</version>
+    <time>1751451139</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.3.1:
+  * New features:
+    + Add ``VALARM`` properties for :rfc:`9074`.
+    + Test compatibility with Python 3.13
+    + Add ``Timezone.from_tzinfo()`` and ``Timezone.from_tzid()`` to create
+      a ``Timezone`` component from a ``datetime.tzinfo`` timezone.
+    + Add ``icalendar.prop.tzid_from_tzinfo``.
+    + Add ``icalendar.alarms`` module to calculate alarm times.
+    + Add ``Event.alarms`` and ``Todo.alarms`` to access alarm calculation.
+    + Add ``DTSTART``, ``TZOFFSETTO``, and ``TZOFFSETFROM`` to
+      ``TimezoneStandard`` and ``TimezoneDaylight``
+    + Use ``pyproject.toml`` file instead of ``setup.py``
+  * Breaking changes:
+    + The ``relative`` attribute of ``vWeekday`` components has the correct sign now.
+    + Use ``zoneinfo`` for ``icalendar`` objects created from strings,
+    + Remove ``is_broken`` property. Use ``errors`` instead to check if a
+      component had suppressed parsing errors.
+    + Remove untested and broken ``LocalTimezone`` and ``FixedOffset`` tzinfo
+    + sub-classes.
+    + Remove Python 3.7 as compatible.
+    + Test compatibility with Python 3.12
+    + Add function ``icalendar.use_pytz()``.
+    + Allows selecting components with ``walk(select=func)`` where ``func`` takes a
+      component and returns ``True`` or ``False``.
+    + Add compatibility to :rfc:`7529`, adding ``vMonth`` and ``vSkip``
+  * Bug fixes:
+    + Fix a bad ``bytes`` replace in ``unescape_char``.
+    + Handle ``ValueError`` in ``vBinary.from_ical``.
+    + Rename RFC 2445 to RFC 5545, see `Issue 278</comment>
+    <requestid>1289705</requestid>
+  </revision>
 </revisionlist>
