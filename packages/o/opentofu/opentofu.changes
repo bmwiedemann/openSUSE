@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 02 05:18:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.2:
+  * S3 backend now correctly sends the x-amz-server-side-encryption
+    header for the lockfile. (#2870)
+  * A provider source address explicitly using the hostname
+    registry.terraform.io will no longer cause errors related to a
+    corresponding provider on registry.opentofu.org when executing
+    workflow commands like plan and apply. (#2979)
+
+-------------------------------------------------------------------
 Mon Jun 30 04:49:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.1:
