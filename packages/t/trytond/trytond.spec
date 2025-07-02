@@ -2,7 +2,7 @@
 # spec file for package trytond
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2015-2024 Dr. Axel Braun
+# Copyright (c) 2015-2025 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 #
 
 
-%define majorver 6.0
+%define majorver 7.0
 %define base_name tryton
-%if 0%{?suse_version} >= 1550
+##%%if 0%{?suse_version} >= 1550
 %define pythons python3
 %define mypython python3
 %define mysitelib %python3_sitelib
-%else
+##%%else
 %{?sle15_python_module_pythons}
-%define mypython %pythons
-%define mysitelib %{expand:%%%{mypython}_sitelib}
-%endif
+##%%define mypython %pythons
+##%%define mysitelib %{expand:%%%{mypython}_sitelib}
+##%%endif
 
 Name:           trytond
-Version:        %{majorver}.63
+Version:        %{majorver}.32
 Release:        0
 Summary:        An Enterprise Resource Planning (ERP) system
 License:        GPL-3.0-or-later
@@ -40,12 +40,10 @@ Source0:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.g
 Source1:        tryton-server.README.openSUSE
 Source3:        %{name}.conf
 Source4:        %{name}_log.conf
-## Source5:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
-## Source6:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 Source7:        openSUSE-trytond-setup
 Source20:       %{name}.service
-Patch0:         Update_changed_fields_6.0.diff
-BuildRequires:  %{mypython}-Werkzeug
+
+BuildRequires:  %{mypython}-Werkzeug > 0.12
 BuildRequires:  %{mypython}-bcrypt
 BuildRequires:  %{mypython}-devel
 BuildRequires:  %{mypython}-lxml >= 2.0
@@ -64,7 +62,7 @@ BuildRequires:  %{mypython}-wheel
 Requires:       %{mypython}-Genshi
 Requires:       %{mypython}-Levenshtein
 Requires:       %{mypython}-Pillow
-Requires:       %{mypython}-Werkzeug
+Requires:       %{mypython}-Werkzeug > 0.12
 Requires:       %{mypython}-bcrypt
 Requires:       %{mypython}-dateutil
 Requires:       %{mypython}-defusedxml
@@ -77,6 +75,7 @@ Requires:       %{mypython}-pydot
 Requires:       %{mypython}-python-sql >= 0.5
 Requires:       %{mypython}-relatorio >= 0.7.0
 Requires:       %{mypython}-weasyprint
+Requires:       %{mypython}-webcolors
 Requires:       %{mypython}-wrapt
 Requires:       graphviz
 Requires:       html2text
@@ -101,7 +100,7 @@ database engine. Tryton provides modularity, scalability and
 security.
 
 %prep
-%autosetup -p1
+%autosetup
 cp %{SOURCE1} .
 
 #shebag ersetzen

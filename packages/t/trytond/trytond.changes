@@ -1,68 +1,23 @@
 -------------------------------------------------------------------
-Sun Jun 15 07:11:48 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+Sun Jun 15 07:17:26 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
-- Version 6.0.63 - Bugfix Release
-
--------------------------------------------------------------------
-Sat May  3 10:54:59 UTC 2025 - Axel Braun <axel.braun@gmx.de>
-
-- Version 6.0.62 - Bugfix Release
+- Version 7.0.32 - Bugfix Release
+  * Update_changed_fields_6.0.diff removed
 
 -------------------------------------------------------------------
-Wed Mar  5 09:16:13 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+Sat May  3 10:49:56 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
-- Version 6.0.60 - Bugfix Release
-
--------------------------------------------------------------------
-Sun Feb  2 11:16:55 UTC 2025 - Axel Braun <axel.braun@gmx.de>
-
-- Version 6.0.58 - Bugfix Release
+- Version 7.0.31 - Bugfix Release
 
 -------------------------------------------------------------------
-Thu Jan  2 17:35:49 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+Sun Oct 13 06:52:15 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
-- Version 6.0.57 - Bugfix Release
-
--------------------------------------------------------------------
-Mon Dec  2 10:03:09 UTC 2024 - Axel Braun <axel.braun@gmx.de>
-
-- Version 6.0.55 - Bugfix Release
+- Version 7.0.19 - Bugfix Release
 
 -------------------------------------------------------------------
-Tue Oct  8 18:03:59 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+Wed Feb 14 17:30:18 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
-- Version 6.0.53 - Bugfix Release
-
--------------------------------------------------------------------
-Tue Sep 17 07:58:59 UTC 2024 - Axel Braun <axel.braun@gmx.de>
-
-- Version 6.0.52 - Bugfix Release
-
--------------------------------------------------------------------
-Sat Aug  3 08:11:37 UTC 2024 - Axel Braun <axel.braun@gmx.de>
-
-- Version 6.0.50 - Bugfix Release
-
--------------------------------------------------------------------
-Tue Jul  2 09:11:26 UTC 2024 - Axel Braun <axel.braun@gmx.de>
-
-- Version 6.0.48 - Bugfix Release
-
--------------------------------------------------------------------
-Tue May  7 08:02:02 UTC 2024 - Axel Braun <axel.braun@gmx.de>
-
-- Version 6.0.46 - Bugfix Release
-
--------------------------------------------------------------------
-Mon Apr 29 17:39:57 UTC 2024 - Axel Braun <axel.braun@gmx.de>
-
-- sources are not signed anymore
-
--------------------------------------------------------------------
-Mon Feb 26 16:05:43 UTC 2024 - pgajdos@suse.com
-
-- Use %autosetup macro. Allows to eliminate the usage of deprecated
-  %patchN
+- Version 7.0 - new LTS Release
 
 -------------------------------------------------------------------
 Sun Feb  4 21:49:34 UTC 2024 - Axel Braun <axel.braun@gmx.de>

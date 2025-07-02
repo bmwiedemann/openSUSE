@@ -27,13 +27,15 @@
 #-----------------------------------------------------------------------------
 # Change log
 #-----------------------------------------------------------------------------
+# V 0.34 20250503 Axel Update to Tryton7
+#-----------------------------------------------------------------------------
 # V 0.33 20210803 Axel Initial version
 #-----------------------------------------------------------------------------
 # Variables declaration
 #-----------------------------------------------------------------------------
 
 #Tryton Server installer for openSUSE version
-VERSION="0.33"
+VERSION="0.34"
 
 # Colors constants
 NONE="$(tput sgr0)"
@@ -44,7 +46,7 @@ WHITE="\n$(tput setaf 7)"
 
 # Params
 #ROOT_PW="root"
-DB_NAME="Tryton6"
+DB_NAME="Tryton7"
 DB_ADMIN_PWD="admin"
 DB_USER="tryton"
 DB_CONFIG="/var/lib/pgsql/data/pg_hba.conf"
