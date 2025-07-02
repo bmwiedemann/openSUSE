@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 23 03:08:24 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update fast-logger to version 3.2.6.
+  ## 3.2.6
+
+  * Labeling the thread of SingleLogger.
+
+-------------------------------------------------------------------
 Thu Oct 31 03:20:54 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update fast-logger to version 3.2.5.
