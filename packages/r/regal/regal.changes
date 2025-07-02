@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Tue Jul 01 10:15:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.35.1 (0.35.0 was not released):
+  We're happy to release v0.35.1, the mid-summer release of Regal
+  for the 🏖️ ! This release updates to OPA v1.6.0 bringing a number
+  of performance improvements as well as other improvements and bug
+  fixes.
+  * Improved Schema Loading This PR replaces Regal's custom schema
+    loader with one that matches OPA's behavior, enabling the same
+    schemas to work across opa check, opa eval, and other OPA
+    commands. PR #1605
+  * Performance Improvements
+    - Thanks to a PR in OPA, Regal's memory use is now much reduced
+      due to a change conditionally supplying built-in contexts
+      only when needed.
+    - This PR optimizes Rego evaluation by directly mapping source
+      data to ast.Value objects instead of going through
+      intermediate map[string]any or JSON representations,
+      eliminating ~2.9 million allocations in benchmarks. PR #1606
+    - Regal contributors will be happy with
+      open-policy-agent/opa#7442 which makes running Regal's tests
+      around 2.5x as fast!
+  * Code Actions Rewrite
+    - Code actions are LSP features that provide automated fixes or
+      refactoring suggestions (like "quick fix" options), and this
+      PR implements them for Regal with server-side filtering to
+      reduce data transfer and ensure consistent editor behavior.
+      This is also now implemented in Rego! PR #1604
+  * Docs
+    - PR #1584 refactors a number of Regal's pages including
+      breaking down the previously large README into separate
+      files. Browse the new structure on the Regal Website.
+    - The Code Lens documentation has been updated to better
+      explain supported configurations. Thanks @Shinzu for the
+      report here. #1596
+  * Changelog
+    - 92d1ba9: deps: Update OPA to v1.6.0 (#1617) (@charlieegan3)
+    - 2bbe76e: [create-pull-request] automated change (#1582)
+      (@github-actions[bot])
+    - 6e5e6bb: e2e: add frankenstein test build (@srenatus)
+    - 5bf607d: build(deps): bump github/codeql-action in the
+      dependencies group (#1585) (@dependabot[bot])
+    - 6f45a9f: build(deps): bump brace-expansion from 2.0.1 to
+      2.0.2 in /build (#1587) (@dependabot[bot])
+    - e85b878: docs: Update config cli docs (#1584) (@charlieegan3)
+    - 30c73fe: build(deps): bump github/codeql-action in the
+      dependencies group (#1595) (@dependabot[bot])
+    - b8f3e8f: fix: improve snippets suggestion condition (#1597)
+      (@anderseknert)
+    - eb48984: Fix issue with handling big numbers (#1599)
+      (@anderseknert)
+    - 1ee1cf4: fix: Correct end location in unresolved-reference
+      (#1600) (@anderseknert)
+    - e50c9af: Bump Roast -> v0.12.0 (#1601) (@anderseknert)
+    - 981d8d2: docs: Update Evaluation Code Lens docs (#1602)
+      (@charlieegan3)
+    - 3577efe: lsp/completion/input: don't suggest 'input'
+      following dot (#1603) (@srenatus)
+    - 02d1546: lsp: Code Action feature rewritten in Rego (#1604)
+      (@anderseknert)
+    - 25b1072: More robust loading of schemas (#1605)
+      (@anderseknert)
+    - 112dc87: perf: avoid JSON/map roundtrips in ast.Value
+      transforms (#1606) (@anderseknert)
+    - d87fd2f: docs: Tone down "obsolete" description for
+      use-rego-v1 (#1610) (@anderseknert)
+    - a939219: lsp: Roll over load file failures (#1611)
+      (@charlieegan3)
+    - 1d771ca: interning: bump opa+roast, replace call to
+      ast.InternedBoolTerm() (#1613) (@srenatus)
+    - ed0ead4: build(deps): bump
+      github.com/go-viper/mapstructure/v2 in /e2e/testbuild (#1615)
+      (@dependabot[bot])
+    - 0d65ef0: build(deps): bump
+      github.com/go-viper/mapstructure/v2 (#1614)
+      (@dependabot[bot])
+
+-------------------------------------------------------------------
 Wed Jun 04 18:37:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.34.1:
