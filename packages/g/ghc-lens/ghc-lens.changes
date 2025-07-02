@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 17 11:56:55 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update lens to version 5.3.5.
+  5.3.5 [2025.06.17]
+  ------------------
+  * Replace `test-framework` with `tasty` in the test suite.
+
+-------------------------------------------------------------------
 Mon Mar  3 12:24:55 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update lens to version 5.3.4.
