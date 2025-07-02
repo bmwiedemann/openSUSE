@@ -113,4 +113,12 @@
     <comment>security update Tryton issue #13142</comment>
     <requestid>1172366</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4618e2ce7fa579032b56dbcbf342b50c</srcmd5>
+    <version>7.0.1</version>
+    <time>1751473015</time>
+    <user>anag_factory</user>
+    <comment>version bump (forwarded request 1289025 from DocB)</comment>
+    <requestid>1289040</requestid>
+  </revision>
 </revisionlist>
