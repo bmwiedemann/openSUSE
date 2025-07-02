@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 02 05:20:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.8:
+  * feat: add go report card (#506)
+  * fix: pagination in repo list command (#502)
+  * Improve table grid controls and form validation (Follow‑up
+    Improvements to PR #489) (#503)
+  * Rebase add scan all command (#490)
+  * fix: default FormatUrl to use https instead of http (#496)
+  * Finalizing Robots Account cli command (#489)
+  * feat: Release to Homebrew-Tap (#421)
+  * fix velnerability-check (#494)
+
+-------------------------------------------------------------------
 Tue Jun 17 13:48:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.7:
