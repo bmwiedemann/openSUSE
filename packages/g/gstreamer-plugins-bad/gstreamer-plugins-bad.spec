@@ -22,7 +22,6 @@
 %define _name gst-plugins-bad
 %define gst_branch 1.0
 %bcond_with faac
-%bcond_with faad
 %bcond_with openh264
 %bcond_with voamrwbenc
 
@@ -102,6 +101,7 @@ BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  ladspa-devel
+BuildRequires:  libfaad-devel
 BuildRequires:  libgme-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  meson >= 1.4
@@ -246,9 +246,6 @@ BuildRequires:  pkgconfig(vo-aacenc) >= 0.1.0
 BuildRequires:  pkgconfig(x265)
 %if %{with faac}
 BuildRequires:  faac-devel
-%endif
-%if %{with faad}
-BuildRequires:  libfaad-devel
 %endif
 %endif
 %if 0%{?BUILD_ORIG}
@@ -833,9 +830,6 @@ export PYTHON=%{_bindir}/python3
 %if %{without faac}
 	-D faac=disabled \
 %endif
-%if %{without faad}
-	-D faad=disabled \
-%endif
 %if %{without fdk_aac}
 	-D fdkaac=disabled \
 %endif
@@ -1008,6 +1002,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvbsuboverlay.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvdspu.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfaceoverlay.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstfaad.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfbdevsink.so
 %if %{with fdk_aac}
 %{_libdir}/gstreamer-%{gst_branch}/libgstfdkaac.so
@@ -1312,9 +1307,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstdecklink.so
 %if %{with faac}
 %{_libdir}/gstreamer-%{gst_branch}/libgstfaac.so
-%endif
-%if %{with faad}
-%{_libdir}/gstreamer-%{gst_branch}/libgstfaad.so
 %endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstde265.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmodplug.so
