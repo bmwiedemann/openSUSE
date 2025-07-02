@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul 02 05:31:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.9.0:
+  * New Feature
+    - feat: implement AutoDown functionality with tests by
+      @jLopezbarb in #4732
+  * Bug Fix
+    - fix: wait until sync completes to run services by @jLopezbarb
+      in #4731
+    - fix(test): create /okteto/artifacts dir (PROD-377) by
+      @jpf-okteto in #4735
+  * Dependencies:
+    - build(deps): bump brace-expansion in /samples/node.js (#4730)
+    - build(deps): bump github.com/cloudflare/circl from 1.3.7 to
+      1.6.1 (#4728)
+    - build(deps): bump rack from 3.1.14 to 3.1.16 in /samples/ruby
+      (#4727)
+    - build(deps): update buildkit dependency (#4729)
+
+-------------------------------------------------------------------
 Thu Jun 12 05:16:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.8.0:
