@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul  1 11:49:32 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.30.0
+  * Fixes
+    fix(protocol): avoid deadlock with concurrent connection start and close by @calmh in #10140
+    fix(syncthing): avoid writing panic log to nil fd by @ardevd in #10154
+  * Features
+    feat(config): expose folder and device info as metrics (fixes #9519) by @calmh in #10148
+  * Other
+    build: properly propagate build tags to Debian build by @calmh in #10144
+    chore(protocol): don't start connection routines a second time by @imsodin in #10146
+    chore(protocol): only allow enc. password changes on cluster config by @imsodin in #10145 
+
+-------------------------------------------------------------------
 Mon Jun  2 20:25:26 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.29.7
