@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Jul  1 12:28:30 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
+
+- fix naming in supplements, main package is opencloud-desktop
+
+-------------------------------------------------------------------
+Tue Jul  1 12:20:01 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
+
+- remove hard dependency on the client, fix supplements 
+
+-------------------------------------------------------------------
+Tue Apr 15 12:37:29 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
+
+- Remove requires to the desktop client, not needed 
+
+-------------------------------------------------------------------
+Mon Mar 31 15:57:54 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
+
+- First release of the shell extensions for nautilus and friends 
