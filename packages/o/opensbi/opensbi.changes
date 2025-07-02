@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jun 30 07:12:09 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 1.7
+  * New parameter in top-level Makefile for reproducible builds
+  * Added MIPS P8700 platform support
+  * Allow arbitrary path in LLVM parameter of top-level Makefile
+  * Improved SBI v3.0 extensions to match frozen specification
+  * Emulate AMO instructions when Zaamo is not available
+  * Stop the harts waiting for HSM start from supervisor software
+  * Improved generic platform overrides to use common fdt_driver helpers
+  * Improved SBI MPXY framework to use per-domain data
+  * Added support for control transfer records (CTR) ISA extension
+  * Use LR and SC when Zaamo ISA extension is not available
+  * Added PXA UART support
+  * Added support for double-trap ISA extensions
+  * Optimized hartid and scratch lookup
+  * Added unit tests for bitwise operations
+  * Added unit tests for SBI ecall functionality
+  * Constify various FDT driver definitions
+  * Added MPXY RPMI mailbox driver for System MSI service group
+  * Improved RPMI drivers to match frozen specifications
+  * Initialize miscellaneous early drivers in one pass
+  * Use fdt_driver helpers for irqchip driver framework
+  * Allow adding SSE events dynamically at boot-time
+  * Simple singly linked list implementation
+
+-------------------------------------------------------------------
 Tue Dec 24 12:14:23 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Update to opensbi 1.6
