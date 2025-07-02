@@ -384,6 +384,8 @@ Patch24:        opt-viewer-Find-style-css-in-usr-share.patch
 Patch25:        check-no-llvm-exegesis.patch
 # PATCH-FIX-OPENSUSE lld-default-sha1.patch
 Patch26:        lld-default-sha1.patch
+# PATCH-FIX-UPSTREAM: Fix build with GCC 15.
+Patch31:        llvm-fix-gcc15-build.patch
 # Fix lookup of targets in installed CMake files. (boo#1180748, https://reviews.llvm.org/D96670)
 Patch33:        CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch
 # Make sure we link libatomic into libLLVM if necessary. Fixes build on ppc. (https://reviews.llvm.org/D132799)
@@ -839,6 +841,7 @@ This package contains the development files for Polly.
 %patch -P 22 -p1
 %patch -P 24 -p1
 %patch -P 25 -p2
+%patch -P 31 -p2
 %patch -P 33 -p2
 %patch -P 34 -p2
 %patch -P 37 -p1

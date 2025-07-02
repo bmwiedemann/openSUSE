@@ -223,4 +223,13 @@ without RUNPATH on libc++.so.
     <comment></comment>
     <requestid>1251062</requestid>
   </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>7f93006a7c6275d8d740d35eb0501875</srcmd5>
+    <version>15.0.7</version>
+    <time>1751451029</time>
+    <user>anag_factory</user>
+    <comment>- Add llvm-fix-gcc15-build.patch to fix build with GCC 15.
+</comment>
+    <requestid>1289504</requestid>
+  </revision>
 </revisionlist>
