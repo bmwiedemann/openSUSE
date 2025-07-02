@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul  1 23:00:51 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 11.5.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v11-5-0-2025-07-01
+
+-------------------------------------------------------------------
+Tue Jul  1 16:56:29 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- qemu: Use numa-preplace instead of numad for numa placement advice
+  bsc#1242979
+
+-------------------------------------------------------------------
 Fri Jun  6 22:32:30 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 11.4.0

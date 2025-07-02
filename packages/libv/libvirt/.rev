@@ -4892,4 +4892,17 @@ make it easier to directly use the Factory package in SUSE projects.</comment>
 number to the last changelog entry.</comment>
     <requestid>1285550</requestid>
   </revision>
+  <revision rev="426" vrev="1">
+    <srcmd5>b1096409e5d990367ce017848d4c9942</srcmd5>
+    <version>11.5.0</version>
+    <time>1751450830</time>
+    <user>anag_factory</user>
+    <comment>- Update to libvirt 11.5.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v11-5-0-2025-07-01
+
+- qemu: Use numa-preplace instead of numad for numa placement advice
+  bsc#1242979</comment>
+    <requestid>1289695</requestid>
+  </revision>
 </revisionlist>

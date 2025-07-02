@@ -89,11 +89,10 @@
     %define with_userfaultfd_sysctl 0
 %endif
 
-# numad is used to manage the CPU and memory placement dynamically for
-# qemu and lxc drivers
+# numa-preplace (formerly numad) is used to manage the CPU and memory
+# placement dynamically for qemu and lxc drivers
 %if %{with_qemu} || %{with_lxc}
-# Enable numad for most architectures
-    %ifnarch s390 s390x %arm %ix86
+    %ifarch aarch64 %{power64} x86_64
         %define with_numad 0%{!?_without_numad:1}
     %endif
 %endif
@@ -111,7 +110,6 @@
     %define with_libxl     0
     %define with_lxc       0
     %define with_fuse      0
-    %define with_numad     0
     %define with_sanlock   0
     %define with_storage_gluster 0
     %define with_storage_rbd     0
@@ -150,7 +148,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        11.4.0
+Version:        11.5.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -232,12 +230,6 @@ BuildRequires:  polkit >= 0.112
 %if %{with_nbdkit}
 BuildRequires:  libnbd-devel
 %endif
-# For mount/umount in FS driver
-BuildRequires:  util-linux
-# For LVM drivers
-BuildRequires:  lvm2
-# For pool type=iscsi
-BuildRequires:  open-iscsi
 %if %{with_storage_iscsi_direct}
 # For pool type=iscsi-direct
 BuildRequires:  libiscsi-devel
@@ -276,9 +268,6 @@ BuildRequires:  libwsman-devel >= 2.6.3
 BuildRequires:  audit-devel
 # For /usr/sbin/dtrace
 BuildRequires:  systemtap-sdt-devel
-%if %{with_numad}
-BuildRequires:  numad
-%endif
 %if %{with_wireshark}
 BuildRequires:  wireshark-devel
 %endif
@@ -494,7 +483,7 @@ Summary:        Storage driver plugin including base backends for the libvirtd d
 Requires:       %{name}-daemon-common = %{version}-%{release}
 Requires:       %{name}-libs = %{version}-%{release}
 Recommends:     nfs-utils
-# For mkfs
+# For mkfs and mount/unmount
 Requires:       util-linux
 %if %{with_qemu}
 # From QEMU RPMs
@@ -632,7 +621,7 @@ Requires:       qemu-ovmf-x86_64
 Requires:       qemu-uefi-aarch64
 %endif
 %if %{with_numad}
-Suggests:       numad
+Suggests:       numa-preplace
 %endif
 %if %{with_nbdkit}
 Recommends:     nbdkit
@@ -654,7 +643,7 @@ Requires:       systemd-container
 # For modprobe of nbd driver
 Requires:       modutils
 %if %{with_numad}
-Suggests:       numad
+Suggests:       numa-preplace
 %endif
 
 %description daemon-driver-lxc
