@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Jul 02 10:07:48 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.2.2+git0.a55102f09:
+  * [RELEASE] Released version 3.2.2
+  * BUILD: dev/phash: remove the accidentally committed a.out file
+  * BUG/MINOR: httpclient: wrongly named httpproxy flag
+  * DOC: Fix 'jwt_verify' converter doc
+  * BUG/MINOR: jwt: Copy input and parameters in dedicated buffers in jwt_verify converter
+  * BUG/MEDIUM: mux-h2: Properly handle connection error during preface sending
+  * BUG/MEDIUM: hlua: Forbid any L6/L7 sample fetche functions from lua services
+  * MINOR: ssl: check TLS1.3 ciphersuites again in clienthello with recent AWS-LC
+  * BUG/MINOR: tools: use my_unsetenv instead of unsetenv
+  * SCRIPTS: drop the HTML generation from announce-release
+  * DOC: config: crt-list clarify default cert + cert-bundle
+  * MINOR: quic: Useless TX buffer size reduction in closing state
+  * BUG/MINOR: quic: wrong QUIC_FT_CONNECTION_CLOSE(0x1c) frame encoding
+  * DOC: configuration: add details on prefer-client-ciphers
+  * BUG/MINOR: log: Be able to use %ID alias at anytime of the stream's evaluation
+  * BUG/MINOR: stream: Avoid recursive evaluation for unique-id based on itself
+  * BUG/MINOR: tools: only reset argument start upon new argument
+  * MINOR: fwlc: Factorize code.
+  * BUG/MAJOR: fwlc: Count an avoided server as unusable.
+  * BUG/MINOR: mux-quic/h3: properly handle too low peer fctl initial stream
+  * DOC: config: prefer-last-server: add notes for non-deterministic algorithms
+  * BUG/MEDIUM: check: Set SOCKERR by default when a connection error is reported
+  * MINOR: cli: handle EOS/ERROR first
+  * BUG/MEDIUM: cli: Don't consume data if outbuf is full or not available
+  * BUG/MINOR: quic: Fix OSSL_FUNC_SSL_QUIC_TLS_got_transport_params_fn callback (OpenSSL3.5)
+  * BUG/MINOR: http-ana: Properly handle keep-query redirect option if no QS
+  * BUG/MINOR: config/server: reject QUIC addresses
+
+-------------------------------------------------------------------
+Wed Jul 02 10:07:34 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.2.1+git0.f4d1a4e27:
+  * [RELEASE] Released version 3.2.1
+  * BUG/MINIR: h1: Fix doc of 'accept-unsafe-...-request' about URI parsing
+  * BUG/MEDIUM: fd: Use the provided tgid in fd_insert() to get tgroup_info
+  * BUG/MINOR: quic: Missing SSL session object freeing
+  * BUG/MINOR: config: fix arg number reported on empty arg warning
+  * BUG/MINOR: config: emit warning for empty args only in discovery mode
+  * BUG/MEDIUM: cli: Properly parse empty lines and avoid crashed
+  * BUG/MINOR: mux-spop: Fix null-pointer deref on SPOP stream allocation failure
+  * BUG/MEDIUM: check: Requeue healthchecks on I/O events to handle check timeout
+  * BUG/MAJOR: leastconn: Protect tree_elt with the lbprm lock
+  * DOC: config: Fix a typo in 2.7 (Name format for maps and ACLs)
+  * BUILD: tools: properly define ha_dump_backtrace() to avoid a build warning
+
+-------------------------------------------------------------------
+Mon Jun 30 10:20:11 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- always build with quic when using awslc
+
+-------------------------------------------------------------------
 Fri Jun 20 10:44:20 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Repair rc_symlink conditionals
@@ -21,7 +75,6 @@ Wed Jun 11 10:44:58 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
   project config
 
   ```
-  %define _with_awslc 1
   Macros:
   %_with_awslc 1
   :Macros

@@ -20,7 +20,9 @@
 %define pkg_home %{_localstatedir}/lib/%{pkg_name}
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim/%(readlink %{_datadir}/vim/current)}
 
-%if 0%{?suse_version} > 1600
+%bcond_with awslc
+
+%if 0%{?suse_version} > 1600 || %{with awslc}
 %bcond_without quic
 %else
 %bcond_with quic
@@ -69,10 +71,8 @@
 %bcond_with tmpfiles
 %endif
 
-%bcond_with awslc
-
 Name:           haproxy
-Version:        3.2.0+git0.e134140d2
+Version:        3.2.2+git0.a55102f09
 Release:        0
 #
 Summary:        The Reliable, High Performance TCP/HTTP Load Balancer
