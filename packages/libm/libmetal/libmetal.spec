@@ -1,7 +1,7 @@
 #
 # spec file for package libmetal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,16 @@
 #
 
 
-%define libname libmetal0
+%define libname libmetal1
 Name:           libmetal
-Version:        2020.10.0
+Version:        2025.04.0
 Release:        0
 Summary:        Bare metal interaction APIs
 License:        BSD-3-Clause
 URL:            https://github.com/OpenAMP/libmetal
 Source:         https://github.com/OpenAMP/libmetal/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/OpenAMP/libmetal/commit/dcf121ab617443166e976afbdd848569cf773895
+Patch0:         libmetal-gcc15.patch
 BuildRequires:  cmake
 BuildRequires:  libhugetlbfs-devel
 BuildRequires:  sysfsutils-devel
@@ -49,14 +51,14 @@ and request memory across the following operating environments:
 
 %package devel
 Summary:        Include Files and Libraries mandatory for Development
-Requires:       libmetal0 = %{version}
+Requires:       %{libname} = %{version}
 
 %description devel
 This package contains all necessary include files and libraries needed
 to develop applications that require these.
 
 %prep
-%setup -q -n libmetal-%{version}
+%autosetup -p1 -n libmetal-%{version}
 # set up our cpu names
 ln -s arm lib/processor/armv6l
 ln -s arm lib/processor/armv7l

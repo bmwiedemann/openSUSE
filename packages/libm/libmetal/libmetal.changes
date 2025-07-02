@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul  1 13:12:09 UTC 2025 - pgajdos@suse.com
+
+- fix devel package dependency
+
+-------------------------------------------------------------------
+Tue Jul  1 07:33:04 UTC 2025 - pgajdos@suse.com
+
+- version update to 2025.04.0
+  * fixes issue to improve the library maturity
+  * Update the cmake minimum support to 3.16
+  * lot more https://github.com/OpenAMP/libmetal/releases
+- added patches
+  https://github.com/OpenAMP/libmetal/commit/dcf121ab617443166e976afbdd848569cf773895
+  + libmetal-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Dec 29 20:18:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2020.10.0:
