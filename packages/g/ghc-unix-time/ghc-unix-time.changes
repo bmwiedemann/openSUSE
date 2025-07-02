@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 15 22:40:45 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update unix-time to version 0.4.17.
+  ## v0.4.17
+
+  * Fix MinGW64 linker error
+    [#67](https://github.com/kazu-yamamoto/unix-time/pull/67)
+
+-------------------------------------------------------------------
 Tue Oct 29 01:03:19 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update unix-time to version 0.4.16.
