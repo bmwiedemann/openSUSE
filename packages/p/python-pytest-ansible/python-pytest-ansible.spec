@@ -44,7 +44,7 @@
 %endif
 
 Name:           python-pytest-ansible
-Version:        25.6.1
+Version:        25.6.2
 Release:        0
 Summary:        Plugin for pytest to simplify calling ansible modules from tests or fixtures
 License:        MIT
@@ -60,6 +60,7 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  ansible-core >= 2.15.0
 BuildRequires:  %{python_module pytest >= 6}
+BuildRequires:  ansible-test >= 2.15.0
 BuildRequires:  molecule >= 6.0.0
 # /SECTION
 BuildRequires:  fdupes
@@ -101,6 +102,7 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_dark_with_params_and_host_pattern_mark
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_dark_with_params_and_inventory_marker"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_molecule_disabled"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_molecule_runtest"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_ansible_test"
 
 %pytest -k "not (${IGNORED_CHECKS})" -W ignore:'There is no current event loop'
 

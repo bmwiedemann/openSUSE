@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 02 05:51:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.6.2:
+  * Bugfixes
+    - Ensure that presence of pytest-ansible does not break
+      ansible-test (#478) @ssbarnea
+    - Avoid logging spam during collection phase (#477) @ssbarnea
+    - Treat warnings as errors during testing (#475) @ssbarnea
+    - Address some typing issues (#474) @ssbarnea
+    - Register molecule markers (#473) @ssbarnea
+  * Maintenance
+    - Add prerelease pipeline (#479) @ssbarnea
+    - Enable few extra pytest plugins (#476) @ssbarnea
+
+-------------------------------------------------------------------
 Mon Jun 30 13:30:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.6.1:
