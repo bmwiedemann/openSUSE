@@ -27,17 +27,15 @@
 %define mysitelib %{expand:%%%{mypython}_sitelib}
 %endif
 
-%define         majorver 6.0
+%define         majorver 7.0
 Name:           trytond_stock_supply
-Version:        %{majorver}.10
+Version:        %{majorver}.4
 Release:        0
 Summary:        The Stock Supply module for the Tryton ERP system
 License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
-## Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
-## Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 
 BuildRequires:  %{mypython}-devel
 BuildRequires:  %{mypython}-pip
@@ -62,7 +60,7 @@ introduce the concepts of order point and purchase request into the
 Tryton application platform.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %pyproject_wheel
