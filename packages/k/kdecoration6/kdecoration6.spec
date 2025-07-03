@@ -25,7 +25,7 @@
 %global private_sover 2
 %bcond_without released
 Name:           kdecoration6
-Version:        6.4.1
+Version:        6.4.2
 Release:        0
 Summary:        KDE's window decorations library
 License:        GPL-2.0-or-later
