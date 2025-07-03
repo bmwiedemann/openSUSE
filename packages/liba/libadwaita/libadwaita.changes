@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 29 07:18:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.7.5:
+  + AdwAboutDialog/AdwAboutWindow: Fix a leak
+  + AdwAvatar: Fix custom image size with GTK 4.19.2
+  + AdwStyleManager: Fix loading font names when debug variables
+    are set
+  + AdwTabOverview: Update window radius
+  + AdwToastOverlay: Fix a critical when showing a toast while
+    hiding it
+  + Tests: Fix a leak
+
+-------------------------------------------------------------------
 Mon May 26 20:23:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.7.4:
