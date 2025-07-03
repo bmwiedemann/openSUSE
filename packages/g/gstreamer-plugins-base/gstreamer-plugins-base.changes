@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul  1 19:41:33 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.3:
+  + GstAudioAggregator: fix structure unref in peek_next_sample()
+  + audioconvert: Fix setting mix-matrix when input caps changes
+  + encodebasebin: Duplicate encoding profile in property setter
+  + gl: simplify private
+    gst_gl_gst_meta_api_type_tags_contain_only()
+  + osxvideosink: Use gst_pad_push_event() and post navigation
+    messages
+  + playsink: Fix race condition in stream synchronizer pad cleanup
+    during state changes
+  + python: Fix pulling events from appsink
+  + streamsynchronizer: Consider streams having received
+    stream-start as waiting
+  + urisourcebin: Text tracks are no longer set as sparse stream in
+    urisourcebin's multiqueue
+
+-------------------------------------------------------------------
 Sun Jun  1 07:06:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.2:
