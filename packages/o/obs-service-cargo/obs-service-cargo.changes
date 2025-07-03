@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun 25 14:16:40 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 7.0.1+git4.gf492aff6b70ec15c54c50bd1800062bdac7c6b0e:
+  * docs: improve README.md
+  * dependency: update libroast to patched version 10.0.1
+  * dependency: update libroast to v10.x
+  * docs: improve README.md
+  * chore(release): bugfix release v7.0.1
+  * docs: WARN -> WARNING
+  * docs: improve README.md
+  * tests: change tokio spawn logic to perform batched tasks
+
+-------------------------------------------------------------------
+Sun Jun 22 11:50:58 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 7.0.0:
+  * chore(release): v7.0.0
+  * misc: more cleanup
+  * refactor: adopt to libroast v9.x API
+  * dependencies: bump all available updates/dependencies
+  * dependencies: update libroast to v9.x
+  * misc: cleanup code
+
+-------------------------------------------------------------------
 Thu Jun 19 10:12:48 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 6.0.9:

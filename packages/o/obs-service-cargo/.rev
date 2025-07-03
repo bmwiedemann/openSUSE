@@ -1171,4 +1171,12 @@ packages. This library is fasted, easier to maintain and easier for a user to co
   * fix: make `no-root-manifest` field to `Option&lt;bool&gt;`</comment>
     <requestid>1286893</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>75676cc0949c17247445004bb11baa3f</srcmd5>
+    <version>7.0.1+git4.gf492aff6b70ec15c54c50bd1800062bdac7c6b0e</version>
+    <time>1751537434</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1290001</requestid>
+  </revision>
 </revisionlist>
