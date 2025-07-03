@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 02 11:08:13 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 4.0+git17:
+  * 98selinux-microos: Also include parent devices needed for /var
+
+-------------------------------------------------------------------
 Fri May 09 13:41:02 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 4.0+git16:

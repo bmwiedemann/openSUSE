@@ -445,4 +445,13 @@
   * Add import-pubring: create gpg file from rpmdb</comment>
     <requestid>1276282</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>1deed892dc2e1a728543bff1d72dc461</srcmd5>
+    <version>4.0+git17</version>
+    <time>1751537387</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.0+git17:
+  * 98selinux-microos: Also include parent devices needed for /var</comment>
+    <requestid>1289864</requestid>
+  </revision>
 </revisionlist>
