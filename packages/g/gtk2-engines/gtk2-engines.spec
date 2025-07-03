@@ -225,7 +225,7 @@ cp -a %{S:1} .
         --enable-animation
 #        --enable-lua \
 #        --with-system-lua
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 %makeinstall

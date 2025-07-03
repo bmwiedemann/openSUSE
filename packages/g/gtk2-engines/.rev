@@ -394,4 +394,12 @@
     <comment>Fix date format in old changelog entries (forwarded request 1277782 from dimstar)</comment>
     <requestid>1278241</requestid>
   </revision>
+  <revision rev="59" vrev="23">
+    <srcmd5>c0069d7ba51bbe11efa60c15c1cc4586</srcmd5>
+    <version>2.20.2</version>
+    <time>1751537386</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1289834</requestid>
+  </revision>
 </revisionlist>
