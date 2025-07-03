@@ -181,4 +181,23 @@
     <comment></comment>
     <requestid>1286748</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9d77ba8a78273fd8b9d3d7cf10c877d9</srcmd5>
+    <version>1.8.1</version>
+    <time>1751537328</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.8.1
+  Security fixes
+  * CVE-2025-49014: Fix heap use after free in f_strftime,
+    f_strflocaltime.
+  * GHSA-f946-j5j2-4w5m: Fix stack overflow in node_min_byte_len
+    of oniguruma.
+  CLI changes
+  * Fix assertion failure when syntax error happens at the end of
+    the query.
+  Language changes
+  * Revert the change of reduce/foreach state variable in 1.8.0.
+  * This change was reverted due to serious performance regression. (forwarded request 1289560 from mnhauke)</comment>
+    <requestid>1289769</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul  1 15:18:11 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.1
+  Security fixes
+  * CVE-2025-49014: Fix heap use after free in f_strftime,
+    f_strflocaltime.
+  * GHSA-f946-j5j2-4w5m: Fix stack overflow in node_min_byte_len
+    of oniguruma.
+  CLI changes
+  * Fix assertion failure when syntax error happens at the end of
+    the query.
+  Language changes
+  * Revert the change of reduce/foreach state variable in 1.8.0.
+  * This change was reverted due to serious performance regression.
+
+-------------------------------------------------------------------
 Wed Jun 18 13:33:37 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.8.0
