@@ -103,8 +103,13 @@ drop-in replacement for common pip and pip-tools workflows.
 
 %prep
 %autosetup -p1 -a1 -n uv-%{version}
+%ifnarch x86_64
+# Reduce memory consumption for non x86 arches
+sed -i '/lto = "fat"/d' Cargo.toml
+%endif
 
 %build
+export LDFLAGS="--no-keep-memory"
 export CARGO_AUDITABLE="auditable"
 export CARGO_INCREMENTAL=0
 export CARGO_FEATURE_VENDORED=1

@@ -960,4 +960,15 @@
    * Edits to the build backend documentation</comment>
     <requestid>1289789</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>2bae49e632f6ba92cabfa25c6a32d25a</srcmd5>
+    <version>0.7.18</version>
+    <time>1751537446</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1289932 from dgarcia
+
+- Reduce memory usage during build, removing lto=fat from Cargo.toml.
+    bsc#1245526</comment>
+    <requestid>1290024</requestid>
+  </revision>
 </revisionlist>
