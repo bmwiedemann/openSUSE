@@ -1,7 +1,7 @@
 #
 # spec file for package automake
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define nsuffix %{nil}
 %endif
 Name:           automake%{nsuffix}
-Version:        1.17
+Version:        1.18.1
 Release:        0
 Summary:        A Program for Automatically Generating GNU-Style Makefile.in Files
 # docs ~> GFDL, sources ~> GPLv2+, mkinstalldirs ~> PD and install-sh ~> MIT
@@ -38,7 +38,6 @@ Source1:        https://ftp.gnu.org/gnu/automake/automake-%{version}.tar.xz.sig
 # taken from https://savannah.gnu.org/project/release-gpgkeys.php?group=automake&download=1
 Source2:        automake.keyring
 Source3:        automake-rpmlintrc
-Patch5:         0001-correct-parameter-parsing-in-test-driver-script.patch
 Patch100:       automake-suse-vendor.patch
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  bison
@@ -86,14 +85,13 @@ definitions (with rules occasionally thrown in).  The generated
 %autopatch -p1
 
 %build
-sh bootstrap
 %configure --docdir=%{_docdir}/%{name}
-%make_build #%%{?_smp_mflags}
+%make_build
 
 %if "%{flavor}" == "testsuite"
 %check
 # Some architectures can't keep up the pace.
-%ifnarch alpha %{arm}
+%ifnarch %{arm}
 %make_build check
 %endif
 
@@ -108,7 +106,6 @@ ln -s %{_sysconfdir}/aclocal_dirlist %{buildroot}%{_datadir}/aclocal/dirlist
 install -m644 AUTHORS ChangeLog NEWS README THANKS %{buildroot}%{_docdir}/%{name}
 # info's dir file is not auto ignored on some systems
 rm -rf %{buildroot}%{_infodir}/dir
-#name == automake
 %endif
 
 %post
