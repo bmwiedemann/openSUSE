@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  1 20:11:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.3:
+  + This release includes some important regression fixes for the
+    GStreamer Python bindings for regressions introduced in 1.26.2.
+    - gst-python/tests: don't depend on webrtc and rtsp-server
+    - python: Fix pulling events from appsink and other fixes
+
+-------------------------------------------------------------------
 Sun Jun  1 08:03:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.2:
