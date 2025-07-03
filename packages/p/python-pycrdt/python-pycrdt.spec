@@ -17,7 +17,7 @@
 
 
 Name:           python-pycrdt
-Version:        0.12.21
+Version:        0.12.23
 Release:        0
 Summary:        Python bindings for Yrs
 License:        MIT
@@ -32,12 +32,14 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       (python-anyio >= 4.4 with python-anyio < 5)
 Requires:       (python-importlib-metadata >= 3.6 if python-base < 3.10)
+Requires:       (python-typing_extensions >= 4.14.0 if python-base < 3.11)
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 8}
 BuildRequires:  %{python_module anyio >= 4.4.0 with %python-anyio < 5}
 BuildRequires:  %{python_module exceptiongroup if %python-base < 3.11}
 BuildRequires:  %{python_module importlib-metadata >= 3.6 if %python-base < 3.10}
 BuildRequires:  %{python_module trio >= 0.25.1 with %python-trio < 0.30}
+BuildRequires:  %{python_module typing_extensions >= 4.14.0 if %python-base < 3.11}
 # /SECTION
 %python_subpackages
 

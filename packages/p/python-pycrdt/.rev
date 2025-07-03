@@ -129,4 +129,14 @@
 - Drop pycrdt-pr246-trio-0.30.patch, upstream merged in 0.12.10</comment>
     <requestid>1287011</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fb50747f89f77b3c65e758366956089f</srcmd5>
+    <version>0.12.23</version>
+    <time>1751537432</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.12.23
+  * Support sticky index.
+  * Upgrade `yrs` to v0.23.5.</comment>
+    <requestid>1289995</requestid>
+  </revision>
 </revisionlist>
