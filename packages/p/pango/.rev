@@ -1267,4 +1267,12 @@ pango-view: When running GraphicsMagick 'gm display' command: Failed to execute 
     <comment>New stable release (forwarded request 1253499 from iznogood)</comment>
     <requestid>1253725</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>cda84e80633544113fe63a611afe6540</srcmd5>
+    <version>1.56.4</version>
+    <time>1751537341</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1289798</requestid>
+  </revision>
 </revisionlist>

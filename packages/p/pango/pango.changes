@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jun 27 13:17:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.56.4:
+  + fontconfig:
+    - Improve the add_font_file implementation
+    - Combine font features and style variants
+    - Make sure font faces stay alive
+  + win32:
+    - Drop some caching
+    - Make sure font faces stay alive
+    - Modernize and simplify the code
+    - Stop synthesizing fonts
+    - Implement list models
+  + coretext: Support synthetic small caps
+  + layout: Avoid assertions in line breaking
+  + build: Require GLib 2.82
+
+-------------------------------------------------------------------
 Sun Mar 16 12:55:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.56.3:
