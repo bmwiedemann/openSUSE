@@ -1,7 +1,7 @@
 #
 # spec file for package libblockdev
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/storaged-project/libblockdev
 Source0:        %{url}/releases/download/%{version}-1/libblockdev-%{version}.tar.gz
 Source1:        %{url}/raw/%{version}-1/NEWS.rst
+Patch0:         0001-dont-allow-suid-and-dev-set-on-fs-resize.patch
 
 ###############################################################################
 #                          M A I N  P A C K A G E

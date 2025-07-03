@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 23 13:50:50 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
+
+- suppress privilege escalation during xfs fs resize (CVE-2025-6019)
+ (bsc#1243285)
+ add 0001-dont-allow-suid-and-dev-set-on-fs-resize.patch
+
+-------------------------------------------------------------------
 Wed Apr 10 11:29:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.1:
