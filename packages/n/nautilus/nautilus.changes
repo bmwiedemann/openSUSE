@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 30 06:37:36 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.3:
+  + Enhancements: Support more video/audio types in search filter
+  + Bugfixes:
+    - Inhibit logout during file operations
+    - Allow opening current diretroy in multiple-dir mode
+    - Prevent crash in location entry completions
+    - Fix focusing window from other apps via DBus
+    - Correctly close wait dialogs
+    - Prevent file chooser crash on opening an empty location
+    - Use existing replacement for icon removed from theme
+    - Fix file leaking in directory
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun May 25 10:48:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.2:
