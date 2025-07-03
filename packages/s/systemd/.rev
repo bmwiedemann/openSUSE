@@ -7632,4 +7632,14 @@ handle manual pages that consist only of a .so directive such as
 - Fix systemd-network recommending libidn2-devel (boo#1234765)</comment>
     <requestid>1286997</requestid>
   </revision>
+  <revision rev="450" vrev="1">
+    <srcmd5>8b4200904996de5c1b12be548e27a2c3</srcmd5>
+    <version>257.7</version>
+    <time>1751537393</time>
+    <user>anag_factory</user>
+    <comment>- Import commit a0dfd5de4cdc3f97ef2ad23396904f3e20769317 (merge of v257.7)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/1e42ecf5a145589954df77da05937ee69619f3e5...a0dfd5de4cdc3f97ef2ad23396904f3e20769317</comment>
+    <requestid>1289968</requestid>
+  </revision>
 </revisionlist>
