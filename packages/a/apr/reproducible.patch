@@ -2,16 +2,16 @@ Author: Bernhard M. Wiedemann <bwiedemann suse de>
 Date: 2023-12-18
 Subject: drop build machine host name
 
-Index: apr-1.7.5/configure
+Index: apr-1.7.6/configure
 ===================================================================
---- apr-1.7.5.orig/configure
-+++ apr-1.7.5/configure
-@@ -36085,7 +36085,7 @@ printf "%s\n" "$as_me: executing $ac_fil
-     cat <<_LT_EOF >> "$cfgfile"
- #! $SHELL
- # Generated automatically by $as_me ($PACKAGE) $VERSION
--# Libtool was configured on host `(hostname || uname -n) 2>/dev/null | sed 1q`:
-+# Libtool was configured on build.opensuse.org
- # NOTE: Changes made to this file will be lost: look at ltmain.sh.
+--- apr-1.7.6.orig/configure
++++ apr-1.7.6/configure
+@@ -594,7 +594,7 @@ exec 6>&1
+ # Name of the host.
+ # hostname on some systems (SVR3.2, old GNU/Linux) returns a bogus exit status,
+ # so uname gets run too.
+-ac_hostname=`(hostname || uname -n) 2>/dev/null | sed 1q`
++ac_hostname="reproducible"
  
- # Provide generalized library-building support services.
+ #
+ # Initializations.

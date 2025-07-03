@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 24 08:32:54 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.7.6:
+  * build system fixes
+  * fixes to regression tests
+  * fixes for other platforms
+
+-------------------------------------------------------------------
 Tue Sep 17 12:25:38 UTC 2024 - pgajdos@suse.com
 
 - version update to 1.7.5 [bsc#1229783] CVE-2023-49582
