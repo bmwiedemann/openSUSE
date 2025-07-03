@@ -1385,4 +1385,12 @@ New upstream release</comment>
   * emulation: Fix OSC 111 (forwarded request 1279862 from iznogood)</comment>
     <requestid>1280051</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>ec3fb52d0ff89428e92262121eb3eae0</srcmd5>
+    <version>0.80.3</version>
+    <time>1751537363</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1289811</requestid>
+  </revision>
 </revisionlist>
