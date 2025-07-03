@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jul  1 19:57:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.3:
+  + aacparse: Fix counting audio channels in program_config_element
+  + adaptivedemux2: free cancellable when freeing transfer task
+  + dashdemux2: Fix seeking in a stream with gaps
+  + decodebin wavparse cannot pull header
+  + imagefreeze: fix not negotiate log when stop
+  + osxvideosink: Use gst_pad_push_event() and post navigation
+    messages
+  + qml6glsink: Allow configuring if the item will consume input
+    events
+  + qtmux: Update chunk offsets when converting stco to co64 with
+    faststart
+  + splitmuxsink: Only send closed message once per open fragment
+  + rtph265depay: CRA_NUT can also start an (open) GOP
+  + rtph265depay: fix codec_data generation
+  + rtspsrc: Don't emit error during close if server is EOF
+  + twcc: Fix reference timestamp wrapping (again)
+  + v4l2: Fix possible internal pool leak
+  + v4l2object: Add support for colorimetry bt2100-pq and 1:4:5:3
+  + wavparse: Don't error out always when parsing acid chunks
+
+-------------------------------------------------------------------
 Sun Jun  1 07:16:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.2:
