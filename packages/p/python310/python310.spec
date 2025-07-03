@@ -202,6 +202,9 @@ Patch27:        gh120226-fix-sendfile-test-kernel-610.patch
 # PATCH-FIX-UPSTREAM sphinx-802.patch mcepl@suse.com
 # status_iterator method moved between the Sphinx versions
 Patch28:        sphinx-802.patch
+# PATCH-FIX-UPSTREAM CVE-2025-6069-quad-complex-HTMLParser.patch bsc#1244705 mcepl@suse.com
+# avoid quadratic complexity when processing malformed inputs with HTMLParser
+Patch29:        CVE-2025-6069-quad-complex-HTMLParser.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes

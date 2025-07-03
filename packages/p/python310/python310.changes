@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  2 14:47:20 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2025-6069-quad-complex-HTMLParser.patch to avoid worst
+ case quadratic complexity when processing certain crafted
+ malformed inputs with HTMLParser (CVE-2025-6069, bsc#1244705).
+
+-------------------------------------------------------------------
 Mon Jun  9 16:53:24 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.10.18:
