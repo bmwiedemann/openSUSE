@@ -1,7 +1,7 @@
 #
 # spec file for package eth-ff
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define git_ver .0.10e93dd3630c
+%define git_ver .0.9fb6c79
 
 %define pseudo_opt %{_prefix}/lib/eth-tools/
 %define ethsysconfdir %{_sysconfdir}/eth-tools/
 
 Name:           eth-ff
-Version:        11.7.0.0
+Version:        12.1.0.0
 Release:        0
 Summary:        Intel Ethernet Fabric Suite basic tools and libraries for fabric management
 License:        BSD-3-Clause OR GPL-2.0-only
@@ -40,7 +40,7 @@ BuildRequires:  librdmacm1
 BuildRequires:  ncurses-devel
 BuildRequires:  net-snmp-devel
 BuildRequires:  rdma-core-devel
-BuildRequires:  tcl-devel
+BuildRequires:  tcl-devel < 1:9
 BuildRequires:  zlib-devel
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

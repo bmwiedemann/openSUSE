@@ -8,7 +8,7 @@
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">10e93dd3630c77e8e4dc6d39981ce3122830f64e</param>
+    <param name="revision">9fb6c79b16024f52bf04499b9f164960cf459685</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">eth-ff*.tar</param>

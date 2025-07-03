@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun 27 11:03:46 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v12.1.0.0
+  - Improved to support RHEL 9.6, 10.0 and SLES 15.7
+  - Improved stability and print of ethudstress
+  - Removed unused code
+  - Replaced egrep with grep -E
+  - Changed rpm spec to require tcl8 or tcl < 1:9
+  - Changed to use tclsh8 when possible
+  - Changed rpm spec to require tcl < 1:9
+  - Improved to support RHEL 9.5
+  - Updated pkg spec License to use SPDX standard name
+  - Improved ethcapture to capture device information more efficiently
+  - Removed old ssh arg from tcl scripts
+  - Limit tcl_dev package version to less than 9 as there is
+    no expect package available yet for Tcl 9.0
+  - Improved build related script, ff_install.sh, to get install
+    directories from rpm macros
+  - Fixed ethudstress cq poll regression issue
+
+-------------------------------------------------------------------
 Mon Aug 12 10:02:11 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to v11.7.0.0
