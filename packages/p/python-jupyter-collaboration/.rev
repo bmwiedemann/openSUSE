@@ -164,4 +164,20 @@
     (@nzinfo)</comment>
     <requestid>1287604</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b4c224bb53ce079e7be800a1dbee3828</srcmd5>
+    <version>4.1.0</version>
+    <time>1751537438</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.1.0
+  ## Enhancements made
+  * Add dialog to update user info #482 (@brichet)
+  * Respect autosave setting in RTC backend #479 (@Darshan808)
+  * Add a UI to let users share their servers to other users and
+    groups #438 (@Hyrla)
+  ## Bugs fixed
+  * Fix confirmation on manual saving #490 (@krassowski)
+  * Fix translation loading in share link dialog #488 (@krassowski)</comment>
+    <requestid>1290007</requestid>
+  </revision>
 </revisionlist>

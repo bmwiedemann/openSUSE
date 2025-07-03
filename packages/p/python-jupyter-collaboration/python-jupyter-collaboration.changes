@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul  2 14:40:40 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.1.0
+  ## Enhancements made
+  * Add dialog to update user info #482 (@brichet)
+  * Respect autosave setting in RTC backend #479 (@Darshan808)
+  * Add a UI to let users share their servers to other users and
+    groups #438 (@Hyrla)
+  ## Bugs fixed
+  * Fix confirmation on manual saving #490 (@krassowski)
+  * Fix translation loading in share link dialog #488 (@krassowski)
+
+-------------------------------------------------------------------
 Sat Jun 21 16:50:03 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.0.2
