@@ -17,7 +17,7 @@
 
 
 Name:           gupnp-av
-Version:        0.14.3
+Version:        0.14.4
 Release:        0
 Summary:        Library to ease the handling and implementation of UPnP A/V profiles
 License:        LGPL-2.0-or-later
