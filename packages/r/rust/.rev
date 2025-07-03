@@ -897,4 +897,12 @@ See SR#946556</comment>
     <comment>- Update to version 1.87.0 - for details see the rust1.87 package</comment>
     <requestid>1278904</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>dca8745f2259e7d220e1257d1fae6e5d</srcmd5>
+    <version>1.88.0</version>
+    <time>1751537319</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1289380</requestid>
+  </revision>
 </revisionlist>
