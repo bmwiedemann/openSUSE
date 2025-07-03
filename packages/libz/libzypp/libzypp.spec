@@ -17,7 +17,9 @@
 
 # Switched to single_rpmtrans as default install backed.
 # SUSE distros stay with classic_rpmtrans as default.
-%if 0%{?suse_version}
+# Code16: Want's to switch to single_rpmtrans as default
+#         (level of enablement is handled in the code)
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
 %bcond_without classic_rpmtrans_as_default
 %else
 %bcond_with classic_rpmtrans_as_default
@@ -70,7 +72,7 @@
 %endif
 
 Name:           libzypp
-Version:        17.37.4
+Version:        17.37.8
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -86,7 +88,7 @@ Obsoletes:      yast2-packagemanager
 Conflicts:      python2-zypp-plugin < 0.6.4
 Conflicts:      python3-zypp-plugin < 0.6.4
 # API refactoring. Prevent zypper from using (now) private symbols
-Conflicts:      zypper <= 1.14.76
+Conflicts:      zypper < 1.14.91
 
 # Features we provide (update doc/autoinclude/FeatureTest.doc):
 Provides:       libzypp(plugin) = 0.1
