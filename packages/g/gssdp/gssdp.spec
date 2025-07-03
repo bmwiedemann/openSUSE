@@ -1,7 +1,7 @@
 #
 # spec file for package gssdp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define sover 1.6
 %bcond_with sniffer
 Name:           gssdp
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        Library for resource discovery and announcement over SSDP
 License:        LGPL-2.1-or-later

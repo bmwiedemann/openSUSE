@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 29 07:25:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.4:
+  + Fix build path leaking into code
+  + Fix issues with Since: and Deprecated: declarations in
+    documentation
+
+-------------------------------------------------------------------
 Fri Nov  3 08:33:56 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.3:
