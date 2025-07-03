@@ -41,7 +41,7 @@ hv_vmbus hyperv-keyboard hv_netvsc hv_storvsc scsi_transport_fc hyperv_fb
 %define scsi_modules scsi_transport_iscsi sd_mod sg sr_mod st scsi_mod
 
 %define block_drivers loop dm-mod libata libahci ahci ata_piix mptsas mptspi \
-        BusLogic sym53c8xx am53c974 rbd brd dm-crypt
+        BusLogic sym53c8xx am53c974 rbd brd dm-crypt nvme nvme_fabrics
 
 %define usb_modules usb-common usbcore ehci-hcd ehci-pci ohci-hcd ohci-pci uhci-hcd \
 xhci-hcd xhci-pci typec typec_ucsi ucsi_acpi typec ums-alauda ums-cypress ums-datafab \
