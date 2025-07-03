@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 29 07:12:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.56.3:
+  + DeviceEventController: update mouse coordinates before sending
+    button events
+  + atspi-device-legacy: Don't crash when XkbGetMap fails
+  + Return localized role name for ATSPI_ROLE_EDITBAR
+
+-------------------------------------------------------------------
 Mon Apr 28 16:08:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.56.2:
