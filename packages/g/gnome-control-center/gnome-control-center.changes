@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jun 27 13:18:29 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.3:
+  + Various accessibility fixes
+  + About: Properly close System Details dialog supressing dispose
+    warning
+  + Common: Fix use-after-free in CcPermissionInfobar
+  + Colors: Remote extra line below the device name
+  + Global Shortcuts: Discard request from invalid app ID
+  + Wacom: Plug stylus motion backlog array leak
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun 19 09:12:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.2+9:
+  * a11y: add accessible role in list-row when needed
+  * background: Set accessible role for background widgets
+  * background: Set a name for recent backgrounds
+  * background: Do not use the list-item role for single preference
+    rows
+  * color: Use AdwDialog.force_close for dialog
+  * colors: Remove extra line below the device name
+  * about: Use AdwDialog.force_close for System Details dialog
+  * wacom: Plug leak
+  * Updated translations.
+
+-------------------------------------------------------------------
 Thu Jun  5 01:32:02 UTC 2025 - xiaoguang wang <xiaoguang.wang@suse.com>
 
 - Add Recommends distribution-logos-branding-SLE for SLE
