@@ -15,4 +15,12 @@
     <comment>- Adjust patching of bootstrap to work with Automake 1.17, too.</comment>
     <requestid>1187601</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5fdc6b7eee6d8ade5d1c2253edf2b048</srcmd5>
+    <version>0.3</version>
+    <time>1751537238</time>
+    <user>anag_factory</user>
+    <comment>- Dropped automake build.</comment>
+    <requestid>1290042</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package toilet
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,9 @@ Release:        0
 Summary:        Powerful figlet replacement
 License:        WTFPL
 URL:            http://caca.zoy.org/wiki/toilet
-Source:         http://caca.zoy.org/raw-attachment/wiki/toilet/%{name}-%{version}.tar.gz
-BuildRequires:  automake
-BuildRequires:  libcaca-devel
-BuildRequires:  zlib-devel
+Source0:        http://caca.zoy.org/raw-attachment/wiki/toilet/%{name}-%{version}.tar.gz
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(caca)
 
 %description
 TOIlet is in its very early development phase. It uses the powerful libcucul
@@ -40,11 +39,9 @@ TOIlet also aims for full FIGlet compatibility. It is currently able to load
 FIGlet fonts and perform horizontal smushing.
 
 %prep
-%setup -q
-sed -i 's|11 10|17 16 15 14 13 12 11 10|' bootstrap
+%autosetup -p1
 
 %build
-./bootstrap
 %configure
 %make_build
 

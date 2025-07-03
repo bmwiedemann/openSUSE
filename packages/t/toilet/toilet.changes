@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  2 19:08:18 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Dropped automake build.
+
+-------------------------------------------------------------------
 Mon Jul 15 15:06:46 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - Adjust patching of bootstrap to work with Automake 1.17, too.
