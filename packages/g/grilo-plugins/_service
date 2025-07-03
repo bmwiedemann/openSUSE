@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/grilo-plugins.git</param>
-    <param name="revision">grilo-plugins-0.3.17</param>
+    <param name="revision">grilo-plugins-0.3.18</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">grilo-plugins-(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
