@@ -22,7 +22,6 @@
 %define _name gst-plugins-bad
 %define gst_branch 1.0
 %bcond_with faac
-%bcond_with openh264
 %bcond_with voamrwbenc
 
 %if 0%{?is_opensuse} || 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1600
@@ -35,12 +34,6 @@
 %bcond_with bs2b
 %bcond_with zbar
 %bcond_with voamrwbenc
-%endif
-
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
-%bcond_without fdk_aac
-%else
-%bcond_with fdk_aac
 %endif
 
 %if 0%{?is_opensuse}
@@ -82,7 +75,7 @@
 %endif
 
 Name:           gstreamer-plugins-bad
-Version:        1.26.2
+Version:        1.26.3
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -94,9 +87,6 @@ Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE spandsp3.patch jengelh@inai.de -- Fix build against spandsp 3.x. Patch is not upstreamable in this form
 Patch2:         spandsp3.patch
 
-%if %{with fdk_aac}
-BuildRequires:  pkgconfig(fdk-aac) >= 0.1.4
-%endif
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel
@@ -123,6 +113,7 @@ BuildRequires:  pkgconfig(dirac) >= 0.10
 BuildRequires:  pkgconfig(dvdnav) >= 4.1.2
 BuildRequires:  pkgconfig(dvdread) >= 4.1.2
 BuildRequires:  pkgconfig(egl)
+BuildRequires:  pkgconfig(fdk-aac) >= 0.1.4
 %if %{with fluidsynth}
 BuildRequires:  pkgconfig(fluidsynth)
 %endif
@@ -177,6 +168,7 @@ BuildRequires:  pkgconfig(mjpegtools)
 BuildRequires:  pkgconfig(neon)
 BuildRequires:  pkgconfig(nice) >= 0.1.20
 BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(openh264) >= 1.3.0
 BuildRequires:  pkgconfig(openssl) >= 0.9.5
 BuildRequires:  pkgconfig(opus) >= 0.9.4
 BuildRequires:  pkgconfig(pangocairo)
@@ -239,9 +231,6 @@ BuildRequires:  pkgconfig(libde265) >= 0.9
 BuildRequires:  pkgconfig(libmodplug)
 BuildRequires:  pkgconfig(libopenaptx) == 0.2.0
 BuildRequires:  pkgconfig(librtmp)
-%if %{with openh264}
-BuildRequires:  pkgconfig(openh264) >= 1.3.0
-%endif
 BuildRequires:  pkgconfig(vo-aacenc) >= 0.1.0
 BuildRequires:  pkgconfig(x265)
 %if %{with faac}
@@ -257,6 +246,8 @@ Provides:       %{name}-orig-addon = %{version}
 %else
 Provides:       patched_subset
 %endif
+Provides:       gstreamer-plugin-openh264 = %{version}
+Obsoletes:      gstreamer-plugin-openh264 < 1.26.0
 
 %description
 GStreamer is a streaming media framework based on graphs of filters
@@ -816,7 +807,6 @@ export PYTHON=%{_bindir}/python3
 	-D decklink=disabled \
 	-D libde265=disabled \
 	-D modplug=disabled \
-	-D openh264=disabled \
 	-D rtmp=disabled \
 	-D voaacenc=disabled \
 	-D x265=disabled \
@@ -829,12 +819,6 @@ export PYTHON=%{_bindir}/python3
 %endif
 %if %{without faac}
 	-D faac=disabled \
-%endif
-%if %{without fdk_aac}
-	-D fdkaac=disabled \
-%endif
-%if %{without openh264}
-	-D openh264=disabled \
 %endif
 	-D directfb=disabled \
 	-D doc=disabled \
@@ -1004,9 +988,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstfaceoverlay.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfaad.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfbdevsink.so
-%if %{with fdk_aac}
 %{_libdir}/gstreamer-%{gst_branch}/libgstfdkaac.so
-%endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstfieldanalysis.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfreeverb.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfrei0r.so
@@ -1052,6 +1034,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstnetsim.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstnvcodec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopenexr.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstopenh264.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopusparse.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstpcapparse.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstpnm.so
@@ -1311,9 +1294,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstde265.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmodplug.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopenaptx.so
-%if %{with openh264}
-%{_libdir}/gstreamer-%{gst_branch}/libgstopenh264.so
-%endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstrtmp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstx265.so
 %endif

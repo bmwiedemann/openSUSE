@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Jul  1 19:47:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.3:
+  + amc: Overhaul hw-accelerated video codecs detection
+  + bayer2rgb: Fix RGB stride calculation
+  + d3d12compositor: Fix critical warnings
+  + dashsink: Fix failing test
+  + decklink: calculate internal using values closer to the current
+    clock times
+  + decklinkvideosink: show preroll frame correctly
+  + decklink: clock synchronization after pause
+  + h266parser: Fix overflow when parsing subpic_level_info
+  + lcevcdec: Check for errors after receiving all enhanced and
+    base pictures
+  + meson: fix building -bad tests with disabled soundtouch
+  + mpegts: handle MPEG2-TS with KLV metadata safely by preventing
+    out of bounds
+  + mpegtsmux: Corrections around Teletext handling
+  + srtsink: Fix header buffer filtering
+  + transcoder: Fix uritranscodebin reference handling
+  + tsdemux: Allow access unit parsing failures
+  + tsdemux: Send new-segment before GAP
+  + vulkanupload: fix regression for uploading VulkanBuffer
+  + vulkanupload: fix regression when uploading to single memory
+    multiplaned memory images
+  + webrtcbin: disconnect signal ICE handlers on dispose
+  + {d3d12,d3d11}compositor: Fix negative position handling
+  + {nv,d3d12,d3d11}decoder: Use interlace info in input caps
+
+-------------------------------------------------------------------
+Thu Jun 26 13:02:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Build with noopenh264, move plugin to main package.
+- Drop conditionals for fdk-aac, explicitly build it for all
+  targets.
+
+-------------------------------------------------------------------
 Wed Jun 25 06:20:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Move faad plugin to main package.
