@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  2 14:31:51 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.1.0
+  * Add clearOutputs() method to ISharedCodeCell #330 (@Darshan808)
+
+-------------------------------------------------------------------
 Thu Jun 19 09:26:39 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.0.5 (CVE-2025-5889, bsc#1244347):

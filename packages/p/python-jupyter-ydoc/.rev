@@ -164,4 +164,13 @@
     <comment></comment>
     <requestid>1286929</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9b5999295d9e13de0c94096df03eef99</srcmd5>
+    <version>3.1.0</version>
+    <time>1751537436</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.1.0
+  * Add clearOutputs() method to ISharedCodeCell #330 (@Darshan808)</comment>
+    <requestid>1289996</requestid>
+  </revision>
 </revisionlist>
