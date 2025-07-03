@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Jul  1 20:32:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.3:
+  + Add new speech synthesis element around ElevenLabs API
+  + cea708mux: fix another WouldOverflow case
+  + cea708mux: support configuring a limit to how much data will be
+    pending.
+  + cea708overlay: also reset the output size on flush stop
+  + gcc: handle out of order packets
+  + fmp4mux: Fix panic on late GOP
+  + livekit: expose a connection state property
+  + mp4mux: add taic box
+  + mp4mux: test the trak structure
+  + pcap_writer: Make target-property and pad-path properties
+    writable again
+  + skia: Don't build skia plugin by default for now
+  + threadshare: cleanups & usability improvements
+  + threadshare: sync runtime with latest async-io
+  + threadshare: fix kqueue reactor
+  + threadshare: Update to getifaddrs 0.2
+  + threadshare: add new thread-sharing inter elements
+  + threadshare: add a ts-rtpdtmfsrc element
+  + transcriberbin: fix naming of subtitle pads
+  + tttocea708: don't panic if a new service would overflow
+  + webrtc: android: Update Gradle and migrate to
+    FindGStreamerMobile
+  + webrtc: add new examples for stream selection over data channel
+  + webrtcsrc: the webrtcbin get-transceiver index is not
+    mlineindex
+  + webrtcsrc: send CustomUpstream events over control channel ..
+  + webrtcsink: Don't require encoder element for pre-encoded
+    streams
+  + webrtcsink: Don't reject caps events if the codec_data changes
+  + whip: server: pick session-id from the endpoint if specified
+  + cargo: add config file to force
+    CARGO_NET_GIT_FETCH_WITH_CLI=true
+  + Cargo.lock, deny: Update dependencies and log duplicated
+    targo-lexicon
+  + Update windows-sys dependency from ">=0.52, <=0.59" to ">=0.52,
+    <=0.60"
+  + deny: Add override for windows-sys 0.59
+  + deny: Update lints
+  + cargo_wrapper: Fix backslashes being parsed as escape codes on
+    Windows
+  + Fixes for Clock: non-optional return types
+  + Rename relationmeta plugin to analytics
+
+-------------------------------------------------------------------
 Sun Jun  1 07:36:19 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.2:
