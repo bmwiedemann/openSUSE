@@ -538,4 +538,13 @@
     <comment></comment>
     <requestid>1270844</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>388f88b5b8c53bba78b4b37324e90993</srcmd5>
+    <version>2.2.1</version>
+    <time>1751537456</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.2.1:
+  * Provides compatibility with lxqt-build-tools &gt;= 2.2.1</comment>
+    <requestid>1290045</requestid>
+  </revision>
 </revisionlist>
