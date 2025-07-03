@@ -27,16 +27,16 @@
 # Set globals for easier future maintenance
 %global commonlibsover 11
 %global mircoresover 2
-%global mirplatformsover 30
+%global mirplatformsover 31
 %global lomirisover 7
 %global miralsover 7
-%global mirserversover 63
+%global mirserversover 64
 %global mirwaylandsover 5
 %global mirserverplatformsover 23
 %global mirevdevsover 10
 
 Name:           mir
-Version:        2.20.2
+Version:        2.21.0
 Release:        0
 Summary:        Libraries for building Wayland shells
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
@@ -89,6 +89,7 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libxml++-2.6)
 BuildRequires:  pkgconfig(lttng-ust)
 BuildRequires:  pkgconfig(nettle)
+BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(umockdev-1.0) >= 0.6
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(wayland-client)

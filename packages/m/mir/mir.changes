@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Jun 28 07:05:48 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.21.0
+  * Enhancements:
+    - Cursor scaling support (gh#canonical/mir#3735)
+    - Implement mousekeys (gh#canonical/mir/#3757)
+    - Add key repeat rate/delay config options and properly merge
+      config settings (gh#canonical/mir#3830)
+    - add the ability to associate a layout with custom user data
+      (gh#canonical/mir#3869)
+    - static_display_config: add display properties to output
+      (gh#canonical/mir#3903)
+    - implement xdg toplevel tiled states (gh#canonical/mir#3920)
+    - Update of core wayland extensions (gh#canonical/mir#3927)
+    - refactor 'BasicSurface' so that it can be used internally by
+      shell authors (gh#canonical/mir#3948)
+    - Check DRM for supported formats (gh#canonical/mir#3950)
+    - Add an output filter for the purposes of accessibility
+      (gh#canonical/mir#3911)
+  * Bugs fixed:
+    - Texture allocation happens with an incorrect context for the
+      renderer that needs it (gh#canonical/mir#3933)
+  * Documentation:
+    - Screencasting how-to (gh#canonical/mir#3874)
+    - How to speed up compliation using ccache and mold
+      (gh#canonical/mir#3946)
+  * Testing:
+    - add tests for 'FloatingWindowManagementPolicy' and expose
+      externally (gh#canonical/mir#3840#3848#3878#3879#3913)
+  * Deprecations:
+    - Deprecate "persistent" surface IDs (gh#canonical/mir#3852)
+
+-------------------------------------------------------------------
 Wed Apr 16 15:22:03 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 2.20.2:
