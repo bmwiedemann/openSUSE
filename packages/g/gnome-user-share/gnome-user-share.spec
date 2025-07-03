@@ -17,7 +17,7 @@
 
 
 Name:           gnome-user-share
-Version:        48.0
+Version:        48.1
 Release:        0
 Summary:        GNOME user file sharing
 License:        GPL-2.0-or-later
