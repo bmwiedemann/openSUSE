@@ -1422,7 +1422,7 @@
       <repopackage name="libcrypt1"/>
       <repopackage name="libcrypt1-32bit"/>
       <repopackage name="libcryptmount0"/>
-      <repopackage name="libcrypto1_52_1"/>
+      <repopackage name="libcrypto1_54_0"/>
       <repopackage name="libcryptsetup12"/>
       <repopackage name="libcryptui-data"/>
       <repopackage name="libcryptui-lang"/>
@@ -1532,6 +1532,7 @@
       <repopackage name="libexttextcat-2_0-0"/>
       <repopackage name="libf2fs10"/>
       <repopackage name="libfa1"/>
+      <repopackage name="libfaad2"/>
       <repopackage name="libfastjson4"/>
       <repopackage name="libfcitx-config4"/>
       <repopackage name="libfcitx-core0"/>
@@ -2724,7 +2725,7 @@
       <repopackage name="libssh-config"/>
       <repopackage name="libssh2-1"/>
       <repopackage name="libssh4"/>
-      <repopackage name="libssl1_52_1"/>
+      <repopackage name="libssl1_54_0"/>
       <repopackage name="libsss_certmap0"/>
       <repopackage name="libsss_idmap0"/>
       <repopackage name="libstaroffice-0_0-0"/>

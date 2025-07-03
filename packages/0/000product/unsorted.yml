@@ -1894,6 +1894,7 @@ unsorted:
   - caja-extension-image-converter 
   - caja-extension-nextcloud 
   - caja-extension-open-terminal 
+  - caja-extension-opencloud 
   - caja-extension-owncloud 
   - caja-extension-rename 
   - caja-extension-sendto 
@@ -12837,7 +12838,7 @@ unsorted:
   - libdico2 
   - libdict-devel 
   - libdict1_0 
-  - libdigikamcore8_6_0 
+  - libdigikamcore8_7_0 
   - libdirac_decoder0 
   - libdirac_decoder0-32bit 
   - libdirac_encoder0 
@@ -13078,7 +13079,6 @@ unsorted:
   - libf2fs_format9 
   - libf3d3 
   - libfa1-32bit 
-  - libfaad2 
   - libfaad2-32bit 
   - libfaad_drm2 
   - libfaad_drm2-32bit 
@@ -14582,7 +14582,7 @@ unsorted:
   - libmetacity3 
   - libmetaio1 
   - libmetal-devel 
-  - libmetal0 
+  - libmetal1 
   - libmetalink-devel 
   - libmetee6_0_0_0 
   - libmetis5 
@@ -19408,6 +19408,7 @@ unsorted:
   - nautilus-extension-folder-color 
   - nautilus-extension-ghostty 
   - nautilus-extension-nextcloud 
+  - nautilus-extension-opencloud 
   - nautilus-extension-owncloud 
   - nautilus-extension-papers 
   - nautilus-extension-sendto-blueman 
@@ -19484,6 +19485,7 @@ unsorted:
   - nemo-extension-folder-color 
   - nemo-extension-image-converter 
   - nemo-extension-nextcloud 
+  - nemo-extension-opencloud 
   - nemo-extension-owncloud 
   - nemo-extension-pastebin 
   - nemo-extension-preview 
@@ -20314,6 +20316,7 @@ unsorted:
   - opencensus-proto-source 
   - opencl-cpp-headers 
   - opencl-headers 
+  - opencloud-extensions-resources 
   - opencloud-server 
   - openconnect-devel 
   - openconnect-doc 
@@ -24432,6 +24435,7 @@ unsorted:
   - python311-azure-mgmt-carbonoptimization 
   - python311-azure-mgmt-cdn 
   - python311-azure-mgmt-chaos 
+  - python311-azure-mgmt-cloudhealth 
   - python311-azure-mgmt-cognitiveservices 
   - python311-azure-mgmt-commerce 
   - python311-azure-mgmt-communication 
@@ -28144,6 +28148,7 @@ unsorted:
   - python312-azure-mgmt-carbonoptimization 
   - python312-azure-mgmt-cdn 
   - python312-azure-mgmt-chaos 
+  - python312-azure-mgmt-cloudhealth 
   - python312-azure-mgmt-cognitiveservices 
   - python312-azure-mgmt-commerce 
   - python312-azure-mgmt-communication 
@@ -31910,6 +31915,7 @@ unsorted:
   - python313-azure-mgmt-carbonoptimization 
   - python313-azure-mgmt-cdn 
   - python313-azure-mgmt-chaos 
+  - python313-azure-mgmt-cloudhealth 
   - python313-azure-mgmt-cognitiveservices 
   - python313-azure-mgmt-commerce 
   - python313-azure-mgmt-communication 
@@ -35858,6 +35864,7 @@ unsorted:
   - redfishtool 
   - redhat-overpass-fonts 
   - redhat-overpass-mono-fonts 
+  - redis 
   - redis++-devel 
   - redland 
   - redland-storage-postgresql 
