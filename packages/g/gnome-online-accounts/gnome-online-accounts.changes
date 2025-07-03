@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 29 07:15:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.54.4:
+  + Bugs fixed:
+    - Fix Nextcloud and mailbox.org preconfiguration
+    - Add DAV preconfig for mail.ru
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun May 25 05:34:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.54.3:
