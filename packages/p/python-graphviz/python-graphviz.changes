@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul  2 07:55:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.21
+  * Drop Python 3.8 support (end of life 7 Oct 2024).
+  * Tag Python 3.13 support.
+  * Add support for ``format='svg_inline'``, available since upstream
+    Graphviz 10.0.1. Produces header-less SVG suitable for inlining
+    into HTML (see https://www.graphviz.org/docs/outputs/svg/).
+  * Switch project to ``pyproject.toml`` and build to ``python -m build``)
+    (https://build.pypa.io). This changes the source distribution formar
+    from ``.zip`` to PEP 625 compliant ``.tar.gz``
+    (https://peps.python.org/pep-0625/).
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Fri Jun  6 09:21:15 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - Fix tests with latest graphviz update to 12.x

@@ -1,7 +1,7 @@
 #
 # spec file for package python-graphviz
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-graphviz
-Version:        0.20.3
+Version:        0.21
 Release:        0
 Summary:        Python interface for Graphviz
 License:        MIT
 URL:            https://github.com/xflr6/graphviz
-Source:         https://files.pythonhosted.org/packages/source/g/graphviz/graphviz-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/g/graphviz/graphviz-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest >= 6}
+BuildRequires:  %{python_module pytest >= 7}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock >= 3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -37,7 +39,6 @@ BuildRequires:  graphviz-gd
 BuildRequires:  graphviz-gnome
 BuildRequires:  noto-sans-fonts
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 BuildRequires:  w3m
 BuildRequires:  xdg-utils
 Requires:       graphviz
