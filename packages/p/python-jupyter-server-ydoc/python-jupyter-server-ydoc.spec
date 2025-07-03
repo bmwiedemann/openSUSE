@@ -25,9 +25,9 @@
 %bcond_with test
 %endif
 
-%define distversion 2.0.2
+%define distversion 2.1
 Name:           python-jupyter-server-ydoc%{psuffix}
-Version:        2.0.2
+Version:        2.1.0
 Release:        0
 Summary:        Jupyter server extension integrating collaborative shared models
 License:        BSD-3-Clause
@@ -40,12 +40,12 @@ BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-server-ydoc = %{version}
 Requires:       python-jsonschema >= 4.18.0
-Requires:       python-jupyter_events >= 0.10.0
-Requires:       python-jupyter_server >= 2.11.1
-Requires:       python-jupyter_server_fileid >= 0.7.0
-Requires:       python-jupyter_ydoc >= 2.1.2
+Requires:       python-jupyter_events >= 0.11.0
 Requires:       python-pycrdt
-Requires:       python-pycrdt-websocket >= 0.15.0
+Requires:       (python-jupyter_server >= 2.15.0 with python-jupyter_server < 3.0)
+Requires:       (python-jupyter_server_fileid >= 0.7.0 with python-jupyter_server_fileid < 1)
+Requires:       (python-jupyter_ydoc >= 2.1.2 with python-jupyter_ydoc < 4)
+Requires:       (python-pycrdt-websocket >= 0.15.0 with python-pycrdt-websocket < 0.16)
 Provides:       python-jupyter_server_ydoc = %{version}-%{release}
 BuildArch:      noarch
 %if %{with test}
@@ -80,7 +80,7 @@ Requires:       python-anyio
 Requires:       python-dirty-equals
 Requires:       python-httpx-ws >= 0.5.2
 Requires:       python-jupyter-server-fileid
-Requires:       python-jupyter-server-test >= 2.11.1
+Requires:       python-jupyter-server-test >= 2.15
 Requires:       python-jupyter-server-ydoc = %{version}
 Requires:       python-pytest >= 7.0
 Requires:       (python-importlib_metadata >= 4.8.3 if python-base < 3.10)
