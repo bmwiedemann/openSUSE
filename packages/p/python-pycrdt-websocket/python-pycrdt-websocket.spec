@@ -16,8 +16,16 @@
 #
 
 
-Name:           python-pycrdt-websocket
-Version:        0.15.4
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-pycrdt-websocket%{?psuffix}
+Version:        0.15.5
 Release:        0
 Summary:        WebSocket connector for pycrdt
 License:        MIT
@@ -33,18 +41,16 @@ Requires:       python-anyio >= 3.6.2
 Requires:       (python-pycrdt >= 0.10.3 with python-pycrdt < 0.13)
 Requires:       (python-sqlite-anyio >= 0.2.3 with python-sqlite-anyio < 0.3.0)
 Provides:       python-pycrdt_websocket = %{version}-%{release}
-BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module sqlite-anyio >= 0.2.3 with %python-sqlite-anyio < 0.3.0}
-BuildRequires:  %{python_module anyio >= 3.6.2}
+%if %{with test}
 BuildRequires:  %{python_module httpx-ws >= 0.5.2}
 BuildRequires:  %{python_module hypercorn if %python-base >= 3.11}
-BuildRequires:  %{python_module pycrdt >= 0.10.3 with %python-pycrdt < 0.13}
+BuildRequires:  %{python_module pycrdt-websocket = %{version}}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module trio}
 BuildRequires:  nodejs
-# /SECTION
+%endif
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -56,19 +62,25 @@ It can be used to create collaborative web applications.
 %autosetup -p1 -n pycrdt_websocket-%{version} -a10
 
 %build
+%if !%{with test}
 %pyproject_wheel
+%endif
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
-# switch off testing for python310: no hypercorn
-python310_args=-V
-%pytest ${$python_args}
+%pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %{python_sitelib}/pycrdt_websocket
 %{python_sitelib}/pycrdt_websocket-%{version}.dist-info
+%endif
 
 %changelog

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jul  2 15:23:49 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- revert to 0.15.5: jupyter ecosystem not ready yet
+
+-------------------------------------------------------------------
+Wed Jul  2 14:19:53 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Remove noarch tag from package and create platlib symlink
+  gh#y-crdt/pycrdt-websocket#131
+
+-------------------------------------------------------------------
+Sun Jun 22 15:32:18 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Back to platlib and wait for upstream
+  gh#y-crdt/pycrdt-websocket#131
+
+-------------------------------------------------------------------
+Sat Jun 21 19:40:23 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.16.0
+  * Add log to BaseYStore abstract class by @krassowski in #120
+  * Replace references to jupyter-server with y-crdt by
+    @davidbrochart in #122
+  * Extract out YStore to pycrdt-store by @davidbrochart in #123
+  * Change package name from pycrdt_websocket to pycrdt.websocket.
+  * Move test and docs dependencies to dependency groups by
+    @davidbrochart in #124
+  * Handle ASGI lifespan by @davidbrochart in #127
+  * Run tests on multiple Python versions by @davidbrochart in #129
+  * Allow room to sync with provider by @davidbrochart in #128
+  * Drop Jupyter Releaser by @davidbrochart in #133
+- Release 0.15.5
+  * Avoid propagating disconnection message from client #118
+    (@brichet)
+- Make it (faux) arch dependent, because this is now a submodule
+  of pycrdt and must be installed into python sitearch.
+
+-------------------------------------------------------------------
 Wed Jan 29 15:52:16 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.15.4

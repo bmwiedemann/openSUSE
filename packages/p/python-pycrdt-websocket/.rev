@@ -48,4 +48,36 @@
     <comment></comment>
     <requestid>1241238</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>80bd5864a427cded86cd28973183b10f</srcmd5>
+    <version>0.15.5</version>
+    <time>1751537432</time>
+    <user>anag_factory</user>
+    <comment>- revert to 0.15.5: jupyter ecosystem not ready yet
+
+- Remove noarch tag from package and create platlib symlink
+  gh#y-crdt/pycrdt-websocket#131
+
+- Back to platlib and wait for upstream
+  gh#y-crdt/pycrdt-websocket#131
+
+- Update to 0.16.0
+  * Add log to BaseYStore abstract class by @krassowski in #120
+  * Replace references to jupyter-server with y-crdt by
+    @davidbrochart in #122
+  * Extract out YStore to pycrdt-store by @davidbrochart in #123
+  * Change package name from pycrdt_websocket to pycrdt.websocket.
+  * Move test and docs dependencies to dependency groups by
+    @davidbrochart in #124
+  * Handle ASGI lifespan by @davidbrochart in #127
+  * Run tests on multiple Python versions by @davidbrochart in #129
+  * Allow room to sync with provider by @davidbrochart in #128
+  * Drop Jupyter Releaser by @davidbrochart in #133
+- Release 0.15.5
+  * Avoid propagating disconnection message from client #118
+    (@brichet)
+- Make it (faux) arch dependent, because this is now a submodule
+  of pycrdt and must be installed into python sitearch.</comment>
+    <requestid>1290004</requestid>
+  </revision>
 </revisionlist>
