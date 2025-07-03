@@ -32,4 +32,16 @@
     <comment></comment>
     <requestid>1270834</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8ed2f8827915ece25a40a243763ada20</srcmd5>
+    <version>2.2.1</version>
+    <time>1751537455</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.2.1:
+  * Bumped the minimum compatibility level to C++20
+  * Fixed bashisms in lxqt-transupdate for better portability with
+    non-bash shells
+  * Use FindXCB module provided by Qt</comment>
+    <requestid>1290044</requestid>
+  </revision>
 </revisionlist>

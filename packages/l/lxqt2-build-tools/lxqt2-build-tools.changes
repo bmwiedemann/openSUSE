@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  2 19:15:32 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.2.1:
+  * Bumped the minimum compatibility level to C++20
+  * Fixed bashisms in lxqt-transupdate for better portability with
+    non-bash shells
+  * Use FindXCB module provided by Qt
+
+-------------------------------------------------------------------
 Thu Apr 17 14:03:15 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.2.0:
