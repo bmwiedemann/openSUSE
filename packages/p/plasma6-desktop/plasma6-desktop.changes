@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul  1 13:11:23 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.2
+- Changes since 6.4.1:
+  * Update version for new release 6.4.2
+  * desktoppackage/configuration: avoid hasOwnProperty
+  * Update version for new release 6.4.2
+  * Fix OSDs on LockScreen
+  * kcms/tablet: Refresh the "Map to screen" option during reset (kde#505768)
+  * applets/kickoff: Use positive background for "New" badge
+  * 🍒applets/kicker: activate favorites on enter/return (kde#505542)
+  * Folder View: fix FullRepresentation labels too (kde#506152)
+
+-------------------------------------------------------------------
 Tue Jun 24 11:55:18 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.1:
