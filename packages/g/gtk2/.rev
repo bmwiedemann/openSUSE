@@ -1424,4 +1424,12 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
   2.x versions. This should save us until libtool jumps to 3.x. (forwarded request 1285778 from dimstar)</comment>
     <requestid>1285783</requestid>
   </revision>
+  <revision rev="193" vrev="17">
+    <srcmd5>8e83e32f607b042cb539ccbb0df64a1b</srcmd5>
+    <version>2.24.33</version>
+    <time>1751537236</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1290038</requestid>
+  </revision>
 </revisionlist>

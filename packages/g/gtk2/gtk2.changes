@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  2 17:30:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Rebase automake-1.17.patch to allow usage of automake-1.18.x
+- Refresh patches with quilt
+
+-------------------------------------------------------------------
 Sat Jun 14 09:38:41 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update automake-1.17.patch: make autogen.sh accept all libtool

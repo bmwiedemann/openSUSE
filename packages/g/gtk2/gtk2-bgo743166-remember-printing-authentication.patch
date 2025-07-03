@@ -24,19 +24,19 @@ Subject: [PATCH] Use secrets service for cups auth_info
  create mode 100644 modules/printbackends/cups/gtkcupssecretsutils.c
  create mode 100644 modules/printbackends/cups/gtkcupssecretsutils.h
 
-diff --git a/gtk/gtkmarshalers.list b/gtk/gtkmarshalers.list
-index 77873cb..533a266 100644
---- a/gtk/gtkmarshalers.list
-+++ b/gtk/gtkmarshalers.list
+Index: gtk-2.24.33/gtk/gtkmarshalers.list
+===================================================================
+--- gtk-2.24.33.orig/gtk/gtkmarshalers.list
++++ gtk-2.24.33/gtk/gtkmarshalers.list
 @@ -111,4 +111,3 @@ VOID:UINT,STRING,UINT
  VOID:UINT,UINT
  VOID:VOID
  OBJECT:OBJECT,INT,INT
 -VOID:POINTER,POINTER,POINTER,POINTER,STRING
-diff --git a/gtk/gtkprintbackend.c b/gtk/gtkprintbackend.c
-index c487d33..7e61ca4 100644
---- a/gtk/gtkprintbackend.c
-+++ b/gtk/gtkprintbackend.c
+Index: gtk-2.24.33/gtk/gtkprintbackend.c
+===================================================================
+--- gtk-2.24.33.orig/gtk/gtkprintbackend.c
++++ gtk-2.24.33/gtk/gtkprintbackend.c
 @@ -51,6 +51,7 @@ struct _GtkPrintBackendPrivate
    GtkPrintBackendStatus status;
    char **auth_info_required;
@@ -45,7 +45,7 @@ index c487d33..7e61ca4 100644
  };
  
  enum {
-@@ -366,7 +367,8 @@ static void                 request_password                       (GtkPrintBack
+@@ -366,7 +367,8 @@ static void                 request_pass
                                                                      gpointer             auth_info_default,
                                                                      gpointer             auth_info_display,
                                                                      gpointer             auth_info_visible,
@@ -55,7 +55,7 @@ index c487d33..7e61ca4 100644
    
  static void
  gtk_print_backend_class_init (GtkPrintBackendClass *class)
-@@ -445,9 +447,9 @@ gtk_print_backend_class_init (GtkPrintBackendClass *class)
+@@ -445,9 +447,9 @@ gtk_print_backend_class_init (GtkPrintBa
  		  G_TYPE_FROM_CLASS (class),
  		  G_SIGNAL_RUN_LAST,
  		  G_STRUCT_OFFSET (GtkPrintBackendClass, request_password),
@@ -68,7 +68,7 @@ index c487d33..7e61ca4 100644
  }
  
  static void
-@@ -670,12 +672,24 @@ gtk_print_backend_print_stream (GtkPrintBackend        *backend,
+@@ -670,12 +672,24 @@ gtk_print_backend_print_stream (GtkPrint
  void 
  gtk_print_backend_set_password (GtkPrintBackend  *backend,
                                  gchar           **auth_info_required,
@@ -95,7 +95,7 @@ index c487d33..7e61ca4 100644
  }
  
  static void
-@@ -702,9 +716,9 @@ password_dialog_response (GtkWidget       *dialog,
+@@ -702,9 +716,9 @@ password_dialog_response (GtkWidget
    gint i;
  
    if (response_id == GTK_RESPONSE_OK)
@@ -107,7 +107,7 @@ index c487d33..7e61ca4 100644
  
    for (i = 0; i < g_strv_length (priv->auth_info_required); i++)
      if (priv->auth_info[i] != NULL)
-@@ -729,10 +743,11 @@ request_password (GtkPrintBackend  *backend,
+@@ -729,10 +743,11 @@ request_password (GtkPrintBackend  *back
                    gpointer          auth_info_default,
                    gpointer          auth_info_display,
                    gpointer          auth_info_visible,
@@ -121,7 +121,7 @@ index c487d33..7e61ca4 100644
    GtkWidget *focus = NULL;
    gchar     *markup;
    gint       length;
-@@ -745,6 +760,7 @@ request_password (GtkPrintBackend  *backend,
+@@ -745,6 +760,7 @@ request_password (GtkPrintBackend  *back
    priv->auth_info_required = g_strdupv (ai_required);
    length = g_strv_length (ai_required);
    priv->auth_info = g_new0 (gchar *, length + 1);
@@ -129,7 +129,7 @@ index c487d33..7e61ca4 100644
  
    dialog = gtk_dialog_new_with_buttons ( _("Authentication"), NULL, GTK_DIALOG_MODAL, 
                                           GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-@@ -813,6 +829,16 @@ request_password (GtkPrintBackend  *backend,
+@@ -813,6 +829,16 @@ request_password (GtkPrintBackend  *back
          }
      }
  
@@ -146,10 +146,10 @@ index c487d33..7e61ca4 100644
    if (focus != NULL)
      {
        gtk_widget_grab_focus (focus);
-diff --git a/gtk/gtkprintbackend.h b/gtk/gtkprintbackend.h
-index bdf5b69..50bec43 100644
---- a/gtk/gtkprintbackend.h
-+++ b/gtk/gtkprintbackend.h
+Index: gtk-2.24.33/gtk/gtkprintbackend.h
+===================================================================
+--- gtk-2.24.33.orig/gtk/gtkprintbackend.h
++++ gtk-2.24.33/gtk/gtkprintbackend.h
 @@ -125,12 +125,14 @@ struct _GtkPrintBackendClass
                                                                gpointer             auth_info_default,
                                                                gpointer             auth_info_display,
@@ -167,7 +167,7 @@ index bdf5b69..50bec43 100644
  
    /* Padding for future expansion */
    void (*_gtk_reserved1) (void);
-@@ -155,7 +157,8 @@ GList *     gtk_print_backend_load_modules         (void);
+@@ -155,7 +157,8 @@ GList *     gtk_print_backend_load_modul
  void        gtk_print_backend_destroy              (GtkPrintBackend         *print_backend);
  void        gtk_print_backend_set_password         (GtkPrintBackend         *backend, 
                                                      gchar                  **auth_info_required,
@@ -177,11 +177,11 @@ index bdf5b69..50bec43 100644
  
  /* Backend-only functions for GtkPrintBackend */
  
-diff --git a/modules/printbackends/cups/Makefile.am b/modules/printbackends/cups/Makefile.am
-index 463199e..e904f50 100644
---- a/modules/printbackends/cups/Makefile.am
-+++ b/modules/printbackends/cups/Makefile.am
-@@ -27,12 +27,14 @@ backend_LTLIBRARIES = libprintbackend-cups.la
+Index: gtk-2.24.33/modules/printbackends/cups/Makefile.am
+===================================================================
+--- gtk-2.24.33.orig/modules/printbackends/cups/Makefile.am
++++ gtk-2.24.33/modules/printbackends/cups/Makefile.am
+@@ -27,12 +27,14 @@ backend_LTLIBRARIES = libprintbackend-cu
  libprintbackend_cups_la_SOURCES =	\
  	gtkprintbackendcups.c		\
  	gtkprintercups.c		\
@@ -198,11 +198,10 @@ index 463199e..e904f50 100644
  
  libprintbackend_cups_la_LDFLAGS =  -avoid-version -module $(no_undefined)
  libprintbackend_cups_la_LIBADD = $(LDADDS) $(CUPS_LIBS)
-diff --git a/modules/printbackends/cups/gtkcupssecretsutils.c b/modules/printbackends/cups/gtkcupssecretsutils.c
-new file mode 100644
-index 0000000..2ed0db5
+Index: gtk-2.24.33/modules/printbackends/cups/gtkcupssecretsutils.c
+===================================================================
 --- /dev/null
-+++ b/modules/printbackends/cups/gtkcupssecretsutils.c
++++ gtk-2.24.33/modules/printbackends/cups/gtkcupssecretsutils.c
 @@ -0,0 +1,1044 @@
 +/* gtkcupssecretsutils.h: Helper to use a secrets service for printer passwords
 + * Copyright (C) 2014, Intevation GmbH
@@ -1248,11 +1247,10 @@ index 0000000..2ed0db5
 +  g_bus_get (G_BUS_TYPE_SESSION, NULL,
 +             get_connection_cb, task);
 +}
-diff --git a/modules/printbackends/cups/gtkcupssecretsutils.h b/modules/printbackends/cups/gtkcupssecretsutils.h
-new file mode 100644
-index 0000000..1a0424a
+Index: gtk-2.24.33/modules/printbackends/cups/gtkcupssecretsutils.h
+===================================================================
 --- /dev/null
-+++ b/modules/printbackends/cups/gtkcupssecretsutils.h
++++ gtk-2.24.33/modules/printbackends/cups/gtkcupssecretsutils.h
 @@ -0,0 +1,41 @@
 +/* gtkcupssecretsutils.h: Helper to use a secrets service for printer passwords
 + * Copyright (C) 2014 Intevation GmbH
@@ -1295,10 +1293,10 @@ index 0000000..1a0424a
 +G_END_DECLS
 +
 +#endif /* __GTK_SECRETS_UTILS_H__ */
-diff --git a/modules/printbackends/cups/gtkprintbackendcups.c b/modules/printbackends/cups/gtkprintbackendcups.c
-index cebdc17..7e51f2f 100644
---- a/modules/printbackends/cups/gtkprintbackendcups.c
-+++ b/modules/printbackends/cups/gtkprintbackendcups.c
+Index: gtk-2.24.33/modules/printbackends/cups/gtkprintbackendcups.c
+===================================================================
+--- gtk-2.24.33.orig/modules/printbackends/cups/gtkprintbackendcups.c
++++ gtk-2.24.33/modules/printbackends/cups/gtkprintbackendcups.c
 @@ -60,6 +60,7 @@
  #include "gtkprintercups.h"
  
@@ -1317,7 +1315,7 @@ index cebdc17..7e51f2f 100644
  };
  
  static GObjectClass *backend_parent_class;
-@@ -212,16 +216,26 @@ static cairo_surface_t *    cups_printer_create_cairo_surface      (GtkPrinter
+@@ -212,16 +216,26 @@ static cairo_surface_t *    cups_printer
  
  static void                 gtk_print_backend_cups_set_password    (GtkPrintBackend                   *backend, 
                                                                      gchar                            **auth_info_required,
@@ -1345,7 +1343,7 @@ index cebdc17..7e51f2f 100644
  static void
  gtk_print_backend_cups_register_type (GTypeModule *module)
  {
-@@ -788,6 +802,13 @@ gtk_print_backend_cups_init (GtkPrintBackendCups *backend_cups)
+@@ -788,6 +802,13 @@ gtk_print_backend_cups_init (GtkPrintBac
  #endif
  
    cups_get_local_default_printer (backend_cups);
@@ -1359,7 +1357,7 @@ index cebdc17..7e51f2f 100644
  }
  
  static void
-@@ -820,6 +841,12 @@ gtk_print_backend_cups_finalize (GObject *object)
+@@ -820,6 +841,12 @@ gtk_print_backend_cups_finalize (GObject
    g_clear_object (&backend_cups->dbus_connection);
  #endif
  
@@ -1382,7 +1380,7 @@ index cebdc17..7e51f2f 100644
  {
    GtkPrintBackendCups *cups_backend = GTK_PRINT_BACKEND_CUPS (backend);
    GList *l;
-@@ -988,6 +1016,17 @@ gtk_print_backend_cups_set_password (GtkPrintBackend  *backend,
+@@ -988,6 +1016,17 @@ gtk_print_backend_cups_set_password (Gtk
                for (i = 0; i < length; i++)
                  dispatch->request->auth_info[i] = g_strdup (auth_info[i]);
              }
@@ -1527,7 +1525,7 @@ index cebdc17..7e51f2f 100644
    return FALSE;
  }
  
-@@ -1514,7 +1644,7 @@ cups_request_execute (GtkPrintBackendCups              *print_backend,
+@@ -1514,7 +1644,7 @@ cups_request_execute (GtkPrintBackendCup
      {
        dispatch->callback = callback;
        dispatch->callback_data = user_data;
@@ -1536,7 +1534,7 @@ index cebdc17..7e51f2f 100644
      }
    else
      {
-@@ -5762,3 +5892,24 @@ cups_printer_get_capabilities (GtkPrinter *printer)
+@@ -5764,3 +5894,24 @@ cups_printer_get_capabilities (GtkPrinte
  
    return capabilities;
  }
@@ -1561,6 +1559,3 @@ index cebdc17..7e51f2f 100644
 +
 +  backend->secrets_service_available = FALSE;
 +}
--- 
-1.9.1
-

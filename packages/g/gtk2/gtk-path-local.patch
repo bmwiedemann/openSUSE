@@ -66,7 +66,7 @@ Index: configure.ac
 ===================================================================
 --- configure.ac.orig
 +++ configure.ac
-@@ -1340,7 +1340,8 @@ AC_SUBST(GDK_EXTRA_LIBS)
+@@ -1345,7 +1345,8 @@ AC_SUBST(GDK_EXTRA_LIBS)
  AC_SUBST(GDK_EXTRA_CFLAGS)
  AC_SUBST(GDK_DEP_LIBS)
  AC_SUBST(GDK_DEP_CFLAGS)

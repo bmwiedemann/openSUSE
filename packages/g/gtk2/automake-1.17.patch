@@ -11,30 +11,34 @@ Index: gtk-2.24.33/autogen.sh
  		have_libtool=true
  		;;
  	esac
-@@ -48,7 +48,10 @@ fi
+@@ -48,7 +48,13 @@ fi
  	DIE=1
  }
  
 -if automake-1.16 --version < /dev/null > /dev/null 2>&1 ; then
-+if automake-1.17 --version < /dev/null > /dev/null 2>&1 ; then
++if automake-1.18 --version < /dev/null > /dev/null 2>&1 ; then
++    AUTOMAKE=automake-1.18
++    ACLOCAL=aclocal-1.18
++else if automake-1.17 --version < /dev/null > /dev/null 2>&1 ; then
 +    AUTOMAKE=automake-1.17
 +    ACLOCAL=aclocal-1.17
 +else if automake-1.16 --version < /dev/null > /dev/null 2>&1 ; then
      AUTOMAKE=automake-1.16
      ACLOCAL=aclocal-1.16
  else if automake-1.15 --version < /dev/null > /dev/null 2>&1 ; then
-@@ -75,13 +78,14 @@ else if automake-1.7 --version < /dev/nu
+@@ -75,13 +81,15 @@ else if automake-1.7 --version < /dev/nu
  else
  	echo
  	echo "You must have automake 1.7.x, 1,10.x, 1.11.x, 1.12.x, 1.13.x, 1.14.x,"
 -	echo "1.15.x or 1.16.x installed to compile $PROJECT."
-+	echo "1.15.x, 1.16.x, or 1.17.x installed to compile $PROJECT."
++	echo "1.15.x, 1.16.x, 1.17.x or 1.18.x installed to compile $PROJECT."
  	echo "Install the appropriate package for your distribution,"
  	echo "or get the source tarball at http://ftp.gnu.org/gnu/automake/"
  	DIE=1
  fi
  fi
  fi
++fi
 +fi
  fi
  fi

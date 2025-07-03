@@ -1,8 +1,8 @@
-Index: gtk+-2.22.1/gtk/gtkmodules.c
+Index: gtk-2.24.33/gtk/gtkmodules.c
 ===================================================================
---- gtk+-2.22.1.orig/gtk/gtkmodules.c
-+++ gtk+-2.22.1/gtk/gtkmodules.c
-@@ -68,7 +68,7 @@ get_module_path (void)
+--- gtk-2.24.33.orig/gtk/gtkmodules.c
++++ gtk-2.24.33/gtk/gtkmodules.c
+@@ -69,7 +69,7 @@ get_module_path (void)
    if (home_dir)
      home_gtk_dir = g_build_filename (home_dir, ".gtk-2.0", NULL);
  
