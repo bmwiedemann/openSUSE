@@ -2698,4 +2698,12 @@ New stable rel</comment>
 - Drop obsolete update-desktop-files BuildRequires and macro. (forwarded request 1279663 from iznogood)</comment>
     <requestid>1280044</requestid>
   </revision>
+  <revision rev="288" vrev="2">
+    <srcmd5>ee432d2e9c8d7522ac63b4f5dca71d1a</srcmd5>
+    <version>3.56.2</version>
+    <time>1751537378</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1289820</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 24 03:39:39 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add evolution-fix-gtk-call-from-other-thread.patch: Fix crash
+  because of GTK call from other thread (bsc#1243898).
+
+-------------------------------------------------------------------
 Fri May 23 19:24:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.56.2:

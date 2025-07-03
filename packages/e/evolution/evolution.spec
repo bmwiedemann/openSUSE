@@ -29,6 +29,8 @@ License:        CC-BY-SA-3.0 AND LGPL-2.0-only AND LGPL-3.0-only AND OLDAP-2.8 A
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Evolution/
 Source0:        %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM evolution-fix-gtk-call-from-other-thread.patch bsc#1243898 alynx.zhou@suse.com -- Fix crash because of GTK call from other thread
+Patch0:         evolution-fix-gtk-call-from-other-thread.patch
 
 BuildRequires:  bison
 BuildRequires:  bogofilter
