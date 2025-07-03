@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  2 14:18:51 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.37~git20250702:
+  * Fix invalid comparator in event_strcmp_events()
+  * Remove qstr, sstr and qsv aliases. This does not compile on clang-cl
+  * Fix missing include on clang-cl
+  * Fix u32 compile error on clang-cl
+  * Fix noexcept warnings in XAudio
+
+-------------------------------------------------------------------
 Mon Jun 30 00:37:49 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.37~git20250629:

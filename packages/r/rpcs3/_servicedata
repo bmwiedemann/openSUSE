@@ -1,10 +1,10 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">git://github.com/RPCS3/rpcs3</param>
-    <param name="changesrevision">786ac95dc018bd56874450b48b6cbd2083ef3242</param>
+    <param name="changesrevision">eeeb7fb4ab11edbfe1f4a7e1708f5bc45fedfbc8</param>
   </service>
   <service name="tar_scm">
     <param name="url">https://github.com/RPCS3/rpcs3.git</param>
-    <param name="changesrevision">786ac95dc018bd56874450b48b6cbd2083ef3242</param>
+    <param name="changesrevision">eeeb7fb4ab11edbfe1f4a7e1708f5bc45fedfbc8</param>
   </service>
 </servicedata>
