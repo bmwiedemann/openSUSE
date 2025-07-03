@@ -222,7 +222,7 @@ Patch12:        cephadm-fix-get_cluster_count_when_data_dir_is_missing.patch
 Patch13:        ceph-rocksdb-gcc15.patch
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
-ExclusiveArch:  x86_64 aarch64 ppc64le s390x
+ExclusiveArch:  x86_64 aarch64 ppc64le s390x riscv64
 %endif
 #################################################################################
 # dependencies that apply across all distro families
