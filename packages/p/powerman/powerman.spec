@@ -1,7 +1,7 @@
 #
 # spec file for package powerman
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ URL:            https://github.com/chaos/powerman
 Source:         https://github.com/chaos/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Patch1:         harden_powerman.service.patch
 Patch2:         Replace-deprecated-usmHMACMD5AuthProtocol-Protocol-by-SNMP_DEFAULT_AUTH_PROTO.patch
+Patch3:         httppower-redfishpower-Curl_easy_setopt-Expects-long-int.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  fdupes
@@ -85,6 +86,12 @@ Header files, pkg-config file and man pages for developing applications using Po
 %autosetup -p1
 
 %build
+
+# Use gnu17 on SLES16 and higher
+%if 0%{?suse_version} >= 1600
+%global optflags %{optflags} -std=gnu17
+%endif
+
 %configure \
 	--disable-static\
 	--with-httppower \

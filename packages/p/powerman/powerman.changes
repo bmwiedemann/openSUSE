@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  2 07:06:54 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Add patch httppower-redfishpower-Curl_easy_setopt-Expects-long-int.patch
+  * Fixes build with curl 1.84.x. 
+- Use -std=gnu17 on SLES16 and higher to fix build with gcc-15.
+
+-------------------------------------------------------------------
 Sun Sep 15 12:51:05 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 2.4.4:
