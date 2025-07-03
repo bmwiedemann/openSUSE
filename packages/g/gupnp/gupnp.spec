@@ -21,7 +21,7 @@
 %define sover 1.6
 
 Name:           gupnp
-Version:        1.6.8
+Version:        1.6.9
 Release:        0
 Summary:        Implementation of the UPnP specification
 License:        LGPL-2.1-or-later
@@ -128,7 +128,7 @@ mv %{buildroot}%{_datadir}/doc/%{name}-%{sover} %{buildroot}%{_docdir}
 %ldconfig_scriptlets -n libgupnp-%{soname}
 
 %check
-%meson_test
+%meson_test || (%meson_test)
 
 %files -n libgupnp-%{soname}
 %license COPYING

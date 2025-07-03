@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 29 07:24:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.9:
+  + Linux-CM: Fix a potential memory leak
+  + Fix documentation link for libsoup
+  + Fix unnecessary g_thread_unref in tests
+  + Fix issues with Since: in documentation
+
+-------------------------------------------------------------------
+Wed Apr  2 17:33:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- If the test suite falis, try it once more. This test suite is
+  known to be a bit flaky.
+
+-------------------------------------------------------------------
 Sat Jan 18 16:50:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.8:
