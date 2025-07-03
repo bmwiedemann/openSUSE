@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 25 16:12:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.6:
+  + Web: Enter focus mode when focus moves inside descendant of web
+    app.
+  + General:
+    - Fix bug in adjust_for_digits() that could cause the space
+      between words to be removed.
+    - Fix bug that could lead to the double-presentation of
+      value-change events.
+    - Fix traceback from debugging utilities.
+
+-------------------------------------------------------------------
 Sun Jun 22 07:31:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.5:
