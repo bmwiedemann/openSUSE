@@ -192,6 +192,9 @@ Patch50:        gh120226-fix-sendfile-test-kernel-610.patch
 # PATCH-FIX-UPSTREAM sphinx-802.patch mcepl@suse.com
 # status_iterator method moved between the Sphinx versions
 Patch51:        sphinx-802.patch
+# PATCH-FIX-UPSTREAM CVE-2025-6069-quad-complex-HTMLParser.patch bsc#1244705 mcepl@suse.com
+# avoid quadratic complexity when processing malformed inputs with HTMLParser
+Patch52:        CVE-2025-6069-quad-complex-HTMLParser.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -463,6 +466,7 @@ other applications.
 %patch -p1 -P 48
 %patch -p1 -P 50
 %patch -p1 -P 51
+%patch -p1 -P 52
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

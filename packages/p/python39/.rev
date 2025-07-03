@@ -1483,4 +1483,14 @@
     <comment>Also addresses CVE-2025-4435 (gh#135034, bsc#1244061).</comment>
     <requestid>1288602</requestid>
   </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>49dbd29049ceb8f9d78d554971086edc</srcmd5>
+    <version>3.9.23</version>
+    <time>1751537451</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2025-6069-quad-complex-HTMLParser.patch to avoid worst
+  case quadratic complexity when processing certain crafted
+  malformed inputs with HTMLParser (CVE-2025-6069, bsc#1244705).</comment>
+    <requestid>1290034</requestid>
+  </revision>
 </revisionlist>
