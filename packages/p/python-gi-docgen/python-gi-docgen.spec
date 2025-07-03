@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           python-gi-docgen
-Version:        2025.3
+Version:        2025.4
 Release:        0
 Summary:        A documentation generator for GObject-based libraries
 # For reference, as some scripts are known to reorder things:
