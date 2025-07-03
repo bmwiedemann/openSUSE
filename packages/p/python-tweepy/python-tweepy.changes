@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul  2 11:45:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.16.0
+  * Re-improve clarity of OAuth 2.0 User Context example code
+  * Fix SyntaxWarning
+  * Install 'build'
+  * Bump version number to 4.15.0
+  * Docs config updates to fix build
+  * Fix Sphinx context injection removal by readthedocs
+  * Revert hoverxref upgrade for now until sphinx can be updated
+  * Fix build error for docs related to 'html_context' setting
+  * Modernize packaging configuration
+  * Add new publish workflow to use trusted publisher
+  * Add dev and test dependencies
+  * Update publish workflow...
+  * Add support for posting tweets to Communities
+  * Update .gitignore
+  * Release 4.16.0
+- Drop fix-package-version.patch, merged upstream
+- Update BuildRequires from pyproject.toml
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Tue Jan 28 09:08:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.15.0

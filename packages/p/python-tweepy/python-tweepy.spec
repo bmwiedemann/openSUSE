@@ -16,17 +16,17 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-tweepy
-Version:        4.15.0
+Version:        4.16.0
 Release:        0
 Summary:        Twitter library for python
 License:        MIT
 URL:            https://github.com/tweepy/tweepy
 Source:         https://github.com/tweepy/tweepy/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: Bump version number to 4.15.0
-Patch:          https://github.com/tweepy/tweepy/commit/c1eb4f3f7bfaf5a54db73ae28f7395e8cbf01752.patch#/fix-package-version.patch
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module async-lru}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.27.0}
