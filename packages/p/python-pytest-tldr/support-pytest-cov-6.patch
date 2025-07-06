@@ -1,0 +1,13 @@
+Index: pytest-tldr-0.2.5/tests/test_plugins.py
+===================================================================
+--- pytest-tldr-0.2.5.orig/tests/test_plugins.py
++++ pytest-tldr-0.2.5/tests/test_plugins.py
+@@ -10,7 +10,7 @@ def test_coverage(testdir):
+     result.stdout.fnmatch_lines(
+         [
+             "test_coverage.py::test_coverage ... ok",
+-            "*----- coverage: platform *-----",
++            "*_____ coverage: platform *_____",
+             "Name               Stmts   Miss  Cover",
+             "--------------------------------------",
+             "test_coverage.py       2      0   100%",

@@ -23,6 +23,7 @@ Summary:        A pytest plugin that limits the output to just the things you ne
 License:        BSD-3-Clause
 URL:            https://github.com/freakboy3742/pytest-tldr
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-tldr/pytest-tldr-%{version}.tar.gz
+Patch0:         support-pytest-cov-6.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.5.0}
 BuildRequires:  %{python_module pytest-cov}
@@ -38,7 +39,7 @@ BuildArch:      noarch
 A pytest plugin that limits the output to just the things you need.
 
 %prep
-%setup -q -n pytest-tldr-%{version}
+%autosetup -p1 -n pytest-tldr-%{version}
 
 %build
 %pyproject_wheel
@@ -53,7 +54,7 @@ A pytest plugin that limits the output to just the things you need.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%pycache_only %{python_sitelib}/__pycache__/*.pyc
+%pycache_only %{python_sitelib}/__pycache__/pytest_tldr.*.pyc
 %{python_sitelib}/pytest_tldr.py
 %{python_sitelib}/pytest_tldr-%{version}.dist-info
 
