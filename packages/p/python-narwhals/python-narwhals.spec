@@ -17,7 +17,7 @@
 
 
 Name:           python-narwhals
-Version:        1.43.1
+Version:        1.45.0
 Release:        0
 Summary:        Extremely lightweight compatibility layer between dataframe libraries
 License:        MIT

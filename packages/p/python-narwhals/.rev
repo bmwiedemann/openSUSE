@@ -7,4 +7,41 @@
     <comment>New requirement for plotly update.</comment>
     <requestid>1287122</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>29ceaed2e363a0b85eea74342a7c0aec</srcmd5>
+    <version>1.45.0</version>
+    <time>1751814916</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.45.0:
+  * feat: Add `Expr|Series.str.to_date`
+  * feat: add `ignore_nulls` to `any_horizontal` and
+    `all_horizontal`
+  * feat: Add `order_by` option in `with_row_index` method
+  * patch: Preserve pandas &quot;pyarrow&quot; dtype_backend in
+    `str.to_datetime`
+  * fix: zfill for old polars and pyarrow versions
+  * fix: ensure `fill_null` doesn't silently downcast for pandas
+    per-3.0
+  * test: Suppress `NotImplementedError` for `cuDF`
+  * test: xfail floordiv polars on GPU engine
+  * ci: Fail polars 0.20.6 in floordiv by zero
+  * ci: use try_divide in PySpark for division
+  * test: div by zero returns nan
+  * chore: share binary comparisons between duckdb/ibis/spark
+  * typing: Return `Self` whenever possible
+  * ci: pin sqlglot, use different cache_suffixes for different
+    jobs
+  * chore: Add pandas-like `import_array_module` util function
+  * chore: Add `LazyExprNamespace`
+  * ci: fixup old versions for floordiv test
+- update to 1.44.0:
+  * fix, perf: avoid np.repeat for broadcasting
+  * feat: Add support for `Expr.str.zfill`
+  * fix: Set Ibis time_unit and time_zone for Datetime dtype
+    conversion
+  * fix: raise NotImplementedError instead of returning it
+  * fix, perf: avoid np.repeat for broadcasting
+  * fix(typing): Resolve intermittent `*GroupBy` variance issue</comment>
+    <requestid>1290770</requestid>
+  </revision>
 </revisionlist>
