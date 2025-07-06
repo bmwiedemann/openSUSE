@@ -1,7 +1,7 @@
 #
 # spec file for package zoo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,7 @@ for decompressing old archives.
 %autosetup -n zoo -p0
 
 %build
-%make_build linux OPTIM="%{optflags}"
+%make_build linux OPTIM="%{optflags} -std=gnu17"
 
 %install
 install -Dpm 0755 zoo \

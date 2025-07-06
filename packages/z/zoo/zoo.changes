@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  3 08:38:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Set -std=gnu17 explicitly to resolve build failure with gcc15
+  and the new implied C23 standard.
+
+-------------------------------------------------------------------
 Mon May 13 12:23:43 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - zoo-gcc14.patch: fix build with gcc14, mostly implicits and type
