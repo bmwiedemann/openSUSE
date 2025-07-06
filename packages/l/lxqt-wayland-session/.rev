@@ -64,4 +64,17 @@
     <comment></comment>
     <requestid>1270911</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a164388161a977d99bddc81e625e3d5c</srcmd5>
+    <version>0.2.0</version>
+    <time>1751814822</time>
+    <user>anag_factory</user>
+    <comment>- Add conditionals to remove hyprland and river sessions from Leap,
+  restore hyprland session for Tumbleweed
+
+- Disable creation of lxqt-hyprland-session subpackage
+  * Hyprland just moves too quickly to reasonably support it as a
+    default option, from a maintenance perspective</comment>
+    <requestid>1290543</requestid>
+  </revision>
 </revisionlist>

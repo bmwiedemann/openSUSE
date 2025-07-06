@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul  3 20:52:06 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add conditionals to remove hyprland and river sessions from Leap,
+  restore hyprland session for Tumbleweed
+
+-------------------------------------------------------------------
+Fri Jun 13 09:18:16 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Disable creation of lxqt-hyprland-session subpackage
+  * Hyprland just moves too quickly to reasonably support it as a
+    default option, from a maintenance perspective
+
+-------------------------------------------------------------------
 Thu Apr 17 23:17:24 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Updated to version 0.2.0:

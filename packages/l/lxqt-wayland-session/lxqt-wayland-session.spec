@@ -16,6 +16,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# Disable hyprland and river for SLE/Leap
+%if 0%{?suse_version} && 0%{?suse_version} <= 1600
+  %bcond river_session 0
+  %bcond hyprland_session 0
+%else
+  %bcond river_session 1
+  %bcond hyprland_session 1
+%endif
 
 Name:           lxqt-wayland-session
 Version:        0.2.0
@@ -64,6 +72,7 @@ Files needed for the LXQt Wayland Session: Wayland session start script,
 its desktop entry for display managers and default configurations for
 actually supported compositors.
 
+%if %{with hyprland_session}
 %package -n     lxqt-hyprland-session
 Summary:        Session files for LXQt-Hyprland
 License:        BSD-3-Clause
@@ -76,6 +85,7 @@ Supplements:    (%{name} and hyprland)
 %description -n lxqt-hyprland-session
 This package contains the files necessary to use Hyprland as the Wayland
 compositor with LXQt
+%endif
 
 %package -n     lxqt-labwc-session
 Summary:        Session files and theme for labwc
@@ -116,6 +126,7 @@ Supplements:    (%{name} and niri)
 This package contains the files necessary to use niri as the Wayland compositor
 for LXQt
 
+%if %{with river_session}
 %package -n     lxqt-river-session
 Summary:        Session files for LXQt-river
 License:        GPL-3.0-or-later
@@ -127,6 +138,7 @@ Supplements:    (%{name} and river)
 %description -n lxqt-river-session
 This package contains the files necessary to use river as the Wayland
 compositor with LXQt
+%endif
 
 %package -n     lxqt-sway-session
 Summary:        Session files for LXQt-Sway
@@ -164,6 +176,14 @@ compositor with LXQt
 %install
 %cmake_install
 
+%if ! %{with hyprland_session}
+  rm -f %{buildroot}%{_datadir}/lxqt/wayland/lxqt-hyprland.conf
+%endif
+
+%if ! %{with river_session}
+  rm -f %{buildroot}%{_datadir}/lxqt/wayland/lxqt-river-init
+%endif
+
 %fdupes -s %{buildroot}%{_datadir}/themes/
 
 %check
@@ -182,9 +202,11 @@ compositor with LXQt
 %{_mandir}/man?/%{name}.?%{?ext_man}
 %{_mandir}/man?/startlxqtwayland.?%{?ext_man}
 
+%if %{with hyprland_session}
 %files -n lxqt-hyprland-session
 %license LICENSE.BSD
 %{_datadir}/lxqt/wayland/lxqt-hyprland.conf
+%endif
 
 %files -n lxqt-labwc-session
 %license LICENSE.GPLv2
@@ -213,9 +235,11 @@ compositor with LXQt
 %license COPYING
 %{_datadir}/lxqt/wayland/lxqt-niri.kdl
 
+%if %{with river_session}
 %files -n lxqt-river-session
 %license COPYING
 %attr(0755,root,root)%{_datadir}/lxqt/wayland/lxqt-river-init
+%endif
 
 %files -n lxqt-sway-session
 %license LICENSE.MIT
