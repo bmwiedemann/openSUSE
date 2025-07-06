@@ -2221,4 +2221,41 @@
    * [ruff] Fix false positives and negatives in RUF010</comment>
     <requestid>1288970</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>34a021f84b5bd9dc6ecf4a1aa13e30b8</srcmd5>
+    <version>0.12.2</version>
+    <time>1751814237</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.12.2:
+  * [`flake8-pyi`] Expand `Optional[A]` to `A | None`
+    (`PYI016`)
+  * [`pyupgrade`] Mark `UP008` fix safe if no comments are in
+    range
+  * [`flake8-comprehensions`] Fix `C420` to prepend whitespace
+    when needed
+  * [`perflint`] Fix `PERF403` panic on attribute or
+    subscription loop variable
+  * [`pydocstyle`] Fix `D413` infinite loop for parenthesized
+    docstring
+  * [`pylint`] Fix `PLW0108` autofix introducing a syntax error
+    when the lambda's body contains an assignment expression
+  * [`refurb`] Fix false positive on empty tuples (`FURB168`)
+  * [`ruff`] Allow more `field` calls from `attrs` (`RUF009`)
+  * [`ruff`] Fix syntax error introduced for an empty string
+    followed by a u-prefixed string (`UP025`)
+
+   * [flake8-errmsg] Extend EM101 to support byte strings
+   * [flake8-use-pathlib] Add autofix for PTH202
+   * [pygrep-hooks] Add AsyncMock methods to invalid-mock-access (PGH005)
+   * [pylint] Ignore __init__.py files in (PLC0414)
+   * [ruff] Trigger RUF037 for empty string and byte strings
+   * [formatter] Fix missing blank lines before decorated classes in .pyi files
+   * Avoid generating diagnostics with per-file ignores
+   * Handle parenthesized arguments in remove_argument
+   * [flake8-logging] Avoid false positive for exc_info=True outside logger.exception (LOG014)
+   * [flake8-pytest-style] Enforce pytest import for decorators
+   * [flake8-pytest-style] Mark autofix for PT001 and PT023 as unsafe if there's comments in the decorator
+   * [flake8-pytest-style] PT001/PT023 fix makes syntax error on parenthesized decorator</comment>
+    <requestid>1290670</requestid>
+  </revision>
 </revisionlist>
