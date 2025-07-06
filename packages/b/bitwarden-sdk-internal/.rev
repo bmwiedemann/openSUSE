@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>77af52bae26a0baed4bad8b8a8a7246a</srcmd5>
+    <version>0.2.0~main.198</version>
+    <time>1751814403</time>
+    <user>anag_factory</user>
+    <comment>Wasm module for Bitwarden 2025.x
+
+The tarball must be currently downloaded like this because upstream misses some build dependencies in the repo. This will be fixed when remove-nonfree.patch reaches the released version</comment>
+    <requestid>1290162</requestid>
+  </revision>
+</revisionlist>

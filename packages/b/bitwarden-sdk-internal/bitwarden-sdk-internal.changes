@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Wed Jul  2 08:24:39 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Initial package of version 0.2.0-main.198 for Bitwarden 2025.6.0
+  * add backported wasm-bindgen-cli.patch and added dependencies from that patch in tarball
+  * add remove-nonfree.patch
