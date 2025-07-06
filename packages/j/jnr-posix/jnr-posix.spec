@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package jnr-posix
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        CPL-1.0 OR GPL-2.0-or-later OR LGPL-2.1-or-later
 Group:          Development/Libraries/Java
 URL:            https://github.com/%{cluster}/%{name}
 Source0:        %{url}/archive/%{name}-%{version}.tar.gz
+Patch0:         sun-misc.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.github.jnr:jnr-constants)
@@ -47,6 +48,7 @@ Javadoc for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+%patch -P 0 -p1
 %{mvn_file} : %{cluster}/%{name}
 
 # Remove useless wagon extension.
@@ -58,9 +60,7 @@ Javadoc for %{name}.
 %pom_xpath_set pom:configuration/pom:instructions/pom:Import-Package "!sun.misc,!sun.nio.ch,*"
 
 %build
-%{mvn_build} -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-    -Dsource=8
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install

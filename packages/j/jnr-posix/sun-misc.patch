@@ -1,0 +1,28 @@
+diff -urEbwB jnr-posix-jnr-posix-3.1.16.orig/pom.xml jnr-posix-jnr-posix-3.1.16/pom.xml
+--- jnr-posix-jnr-posix-3.1.16.orig/pom.xml	2025-07-04 01:14:29.228326748 +0200
++++ jnr-posix-jnr-posix-3.1.16/pom.xml	2025-07-04 01:23:14.708406346 +0200
+@@ -219,21 +219,9 @@
+                 <phase>compile</phase>
+                 <goals><goal>compile</goal></goals>
+                 <configuration>
+-                  <includes>
+-                    <include>jnr/posix/util/SunMiscSignal.java</include>
+-                  </includes>
+-                </configuration>
+-              </execution>
+-              <execution>
+-                <id>java9-compile</id>
+-                <phase>compile</phase>
+-                <goals><goal>compile</goal></goals>
+-                <configuration>
+-                  <!-- Use -release compiler option rather than source/target if 9+ -->
+-                  <release>${maven.compiler.target}</release>
+-                  <excludes>
+-                    <exclude>jnr/posix/util/SunMiscSignal.java</exclude>
+-                  </excludes>
++                  <source>${maven.compiler.source}</source>
++                  <target>${maven.compiler.target}</target>
++                  <release combine.self="override"/>
+                 </configuration>
+               </execution>
+             </executions>

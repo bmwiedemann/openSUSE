@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  3 23:25:08 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * sun-misc.patch
+    + build with source/target 8 instead of release 8 to be able
+      to use the sun.misc package
+
+-------------------------------------------------------------------
 Sat Sep  9 14:30:59 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
