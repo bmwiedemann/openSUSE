@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul  4 15:47:36 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Temporarily disable Y2Users::Clients::Auto#run tests
+  (bsc#1245519).
+- 5.0.6
+
+-------------------------------------------------------------------
+Fri Jul  4 12:33:06 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Temporarily disable Users#Export tests (bsc#1245519).
+- 5.0.5
+
+-------------------------------------------------------------------
 Tue Jan 28 09:46:57 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Remove nscd-related code (bsc#1236308)
