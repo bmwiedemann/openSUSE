@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Jul 03 04:49:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.95.0:
+  * Added Features
+    - Add string severity to db search json results [#2730
+      @wagoodman]
+    - Add package specifier overrides for kb, dpkg, and apkg [#2742
+      @westonsteimel]
+  * Bug Fixes
+    - show related NVD records for non-NVD matches [#2755 @kzantow]
+    - assume that a vulnerability with no ranges is always
+      vulnerable [#2759 @wagoodman]
+    - DB should hydrate for when the client has new features [#2758
+      @wagoodman]
+    - show relationship back to NVD for all CVE ids [#2756
+      @westonsteimel]
+    - properly escape CPE segments [#2731 @kzantow]
+    - msrc matcher should search by package ecosystem, not by
+      distro [#2748 @westonsteimel]
+    - Grype does not report any vulnerabilities for CPEs with
+      target_sw field set to value that does not correspond to
+      known package type [#2768 #2772 @willmurphyscode]
+    - malformed CPE in grype db search output [#2767 #2769
+      @westonsteimel]
+    - vex documents from the --vex flag do get processed or applied
+      to the output correctly [#1836 #2741 @willmurphyscode]
+  * Additional Changes
+    - replace deprecated GoReleaser configurations [#2729
+      @emmanuel-ferdman]
+    - specify types for all match details [#2762 @wagoodman]
+    - Refactor the version package [#2735 @wagoodman]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#2773)
+    - chore(deps): update anchore dependencies (#2771)
+    - chore(deps): update tools to latest versions (#2751)
+    - chore(deps): bump github/codeql-action from 3.29.1 to 3.29.2
+      (#2760)
+    - chore(deps): bump github/codeql-action from 3.29.0 to 3.29.1
+      (#2757)
+    - chore(deps): bump github.com/docker/docker (#2753)
+    - chore(deps): bump sigstore/cosign-installer from 3.8.2 to
+      3.9.1 (#2749)
+    - chore(deps): bump anchore/sbom-action from 0.20.0 to 0.20.1
+      (#2732)
+    - chore(deps): bump github.com/google/go-containerregistry
+      (#2733)
+    - chore(deps): bump github.com/go-viper/mapstructure/v2 (#2734)
+    - chore(deps): update tools to latest versions (#2736)
+    - chore(deps): bump github/codeql-action from 3.28.19 to 3.29.0
+      (#2727)
+
+-------------------------------------------------------------------
 Fri Jun 13 04:52:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.94.0:
