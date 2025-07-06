@@ -1198,4 +1198,12 @@
   * 0001-Fix-build-with-GPGME-2.0.patch</comment>
     <requestid>1286074</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>01556fa179abe3143ff9f8e8b4481ff6</srcmd5>
+    <version>25.04.3</version>
+    <time>1751814609</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.04.3 (forwarded request 1289933 from krop)</comment>
+    <requestid>1290345</requestid>
+  </revision>
 </revisionlist>
