@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 25 07:26:44 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- disable tests on non-x86 -- they fail pretty randomly.
+
+-------------------------------------------------------------------
 Tue Apr  8 11:46:39 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable resize-rings.t as it is not very stable in OBS
