@@ -19,7 +19,7 @@
 
 %define skip_python36 1
 Name:           python-nagiosplugin
-Version:        1.3.3
+Version:        1.4.0
 Release:        0
 Summary:        Class library for writing Nagios (Icinga) plugins
 License:        ZPL-2.1

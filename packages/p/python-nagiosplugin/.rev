@@ -44,4 +44,35 @@
 </comment>
     <requestid>1278839</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d49c363e6782f988ed5c75e97151eda0</srcmd5>
+    <version>1.4.0</version>
+    <time>1751814907</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.0:
+  * new: add check name to Check constructor (Simon Meggle)
+  * change: drop support for Python 3.4, 3.5, and 3.6 (#65)
+  * change: add support for Python 3.11, 3.12, and 3.13 (#65)
+  * fix: correct reference to class ~.performace.Performance in
+  *   Context.performance docstring (Josef Friedrich)
+  * fix: tests use importlib where available in place of
+    deprecated
+  *   pkg_resources (#50)
+  * fix: build environment updates to support py2.7 (#64)
+  * doc: additional text explaining the naming of the Warn state
+    class (#26)
+  * doc: updated document building for newer Sphinx (#72)
+  * doc: updated document building for new readthedocs.io
+    deployment process
+  *   (#79)
+  * linting: replaced some elif statements occluded by return
+    statements (no-else-return)
+  * linting: cleaned up &quot;inconsistent-return-statements&quot; errors
+  * linting: replace flake8 with ruff (#60)
+  * linting: add security tests with pip-audit and bandit (#61)
+
+  * cleanup: many bits of code tidying to eliminate linter warnings
+- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>1290766</requestid>
+  </revision>
 </revisionlist>
