@@ -18,21 +18,23 @@
 
 %define libname libsnappy1
 Name:           snappy
-Version:        1.1.10
+Version:        1.2.2
 Release:        0
 Summary:        A compressor/decompressor library favoring time
 License:        BSD-3-Clause
 URL:            https://github.com/google/snappy/
-Source0:        https://github.com/google/snappy/archive/%{version}.tar.gz
+Source0:        https://github.com/google/snappy/archive/%{version}.tar.gz#/snappy-%{version}.tar.gz
 Source1:        snappy.pc
 Source99:       baselibs.conf
 Patch0:         use-system-test-libs.patch
-Patch2:         reenable-rtti.patch
-BuildRequires:  cmake >= 3.5
+Patch1:         reenable-rtti.patch
+Patch2:         correct_testing_link.patch
+BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  lzo-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(benchmark)
+BuildRequires:  pkgconfig(gmock)
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(zlib)
 
@@ -74,8 +76,7 @@ This package holds the development files for snappy.
 %cmake \
   -DSNAPPY_USE_BUNDLED_GTEST=OFF \
   -DSNAPPY_USE_BUNDLED_BENCHMARK_LIB=OFF \
-  -DCMAKE_CXX_STANDARD=17 \
-  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+  -DCMAKE_CXX_STANDARD=17
 %make_build
 
 %install

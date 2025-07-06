@@ -1,0 +1,28 @@
+Description: add required libraries to link with
+ Just add those libraries to the linker.
+Author: Laszlo Boszormenyi (GCS) <gcs@debian.org>
+Forwarded: not-needed
+Last-Update: 2021-12-04
+
+---
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -350,7 +350,7 @@ if(SNAPPY_BUILD_TESTS)
+     PRIVATE
+       "snappy_unittest.cc"
+   )
+-  target_link_libraries(snappy_unittest snappy_test_support gmock_main gtest)
++  target_link_libraries(snappy_unittest snappy_test_support gmock_main gmock gtest pthread)
+ 
+   add_test(
+     NAME snappy_unittest
+@@ -371,7 +371,7 @@ if(SNAPPY_BUILD_BENCHMARKS)
+     PRIVATE
+       "snappy_benchmark.cc"
+   )
+-  target_link_libraries(snappy_benchmark snappy_test_support benchmark_main)
++  target_link_libraries(snappy_benchmark snappy_test_support benchmark_main benchmark pthread)
+ 
+   # This project uses Google benchmark for benchmarking.
+   set(BENCHMARK_ENABLE_TESTING OFF CACHE BOOL "" FORCE)

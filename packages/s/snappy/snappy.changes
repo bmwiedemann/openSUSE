@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun 29 11:18:27 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 1.2.2
+  * We fixed a very old issue of data corruption when compressed
+    size exceeds 4GB. This can happen when you compress data
+    close to 4GB and it's incompressible, for example, random
+    data.
+ *  Started to use minimum CMake 3.10 because older ones are not
+    planned to be supported.
+- update to 1.2.1
+  * We restored old functions/symbols after reports of ABI
+    incompatibility apache/arrow#41058
+- update to 1.2.0
+  * Level API was added with level 2 support. Compresses 5-10%
+    denser and decompresses 5-10% faster. The compression speed
+    drop is about 20-30%
+- add correct_testing_link.patch, taken from Debian
+- adjust reenable-rtti.patch
+- adjust use-system-test-libs.patch, following the patch from
+  Debian
+
+-------------------------------------------------------------------
 Thu Jun 19 11:08:34 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Fix build with googletest 1.17.0 by using C++17, boo#1244989
