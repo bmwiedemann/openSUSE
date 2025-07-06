@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  1 15:26:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.3/
+- Changes since 25.04.2:
+  * incidenceformatter.cpp - manage the excepted recur dates list length
+
+-------------------------------------------------------------------
 Tue Jun  3 21:12:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.2
