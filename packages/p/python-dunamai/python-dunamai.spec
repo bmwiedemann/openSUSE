@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dunamai
-Version:        1.24.1
+Version:        1.25.0
 Release:        0
 Summary:        Dynamic version generation
 License:        MIT

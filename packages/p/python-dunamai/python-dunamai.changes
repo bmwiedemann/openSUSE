@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul  5 18:20:36 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.25.0:
+  * Added commit_prefix option to Version.serialize() to insert a prefix when
+    serializing commit IDs.
+  * Added escape_with option to Version.serialize() to customize how branch
+    names are escaped.
+
+-------------------------------------------------------------------
 Fri May  9 18:22:40 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.24.1:

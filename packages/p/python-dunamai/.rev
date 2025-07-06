@@ -110,4 +110,16 @@
   * Fixed: Deprecation warning from re.sub() using Python 3.13+ (forwarded request 1276337 from rrahl0)</comment>
     <requestid>1276338</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>55529c7650ee35c47fedc9028ba2f07e</srcmd5>
+    <version>1.25.0</version>
+    <time>1751814944</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.25.0:
+  * Added commit_prefix option to Version.serialize() to insert a prefix when
+    serializing commit IDs.
+  * Added escape_with option to Version.serialize() to customize how branch
+    names are escaped. (forwarded request 1290818 from rrahl0)</comment>
+    <requestid>1290819</requestid>
+  </revision>
 </revisionlist>
