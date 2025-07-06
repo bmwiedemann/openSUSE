@@ -195,4 +195,14 @@ AFAICT these packages aren't needed for generating the docs and the official doc
   starting up before ip setup is finished.</comment>
     <requestid>1286199</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a5c806432cf5a14017360e382643cf82</srcmd5>
+    <version>3.0.0</version>
+    <time>1751814467</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.0.0
+- Set RuntimeDirectoryPreserve=yes in services to prevent deletion
+  of RuntimeDirectory when one service gets stopped.</comment>
+    <requestid>1290508</requestid>
+  </revision>
 </revisionlist>

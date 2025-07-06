@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Jul  1 09:28:14 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 3.0.0
+  Noteworthy changes:
+  * Lease caching is now enabled by default.
+  * The control-socket.socket-name and control-socket.socket-type
+    parameters have been removed from the CB.
+  * Kea now rejects certain default passwords. If you copied your
+    Kea configuration from the examples in our documentation using
+    our sample password, change your password to a unique value.
+  * The kea-control-agent is now deprecated. The individual Kea
+    services support HTTP/HTTPS control channels, so the Control
+    Agent (CA) is no longer needed. The CA is still available but
+    will be removed in a future release.
+  * The precedence of options specified in a template class and its
+    spawned classes has been reversed. An option specified in a
+    spawned class now takes precedence over the same option
+    specified in the template class.
+  * The only-if-required and require-client-classes were renamed to
+    only-in-additional-list and evaluate-additional-classes.
+  * Classes included in require-client-classes (now called
+    evaluate-additional-classes) that do not have test expressions
+    will now be unconditionally added to a client's list of
+    matching classes; previously, they were ignored.
+  * Additional classes are now evaluated in the same order as
+    option-data, i.e. pools, subnets, and shared networks. In
+    earlier versions, the order was reversed.
+  * It is now possible to define multiple client classes when
+    limiting access to networks, subnets, and pools. The parameter
+    client-class (a single class name) has been replaced with
+    client-classes (a list of one or more class names). The older
+    syntax is still accepted but is now deprecated and will be
+    removed in the future. You cannot specify both client-class and
+    client-classes within the same scope.
+  * Options name value pairs specified in option-data have a new
+    parameter available: client-classes. This allows the
+    administrator to place a guard on the option requiring
+    membership in a class or classes before that particular option
+    data will be added to the packet. This is intended as a
+    powerful mechanism to bring back some of the functionality from
+    the conditional (if) statements that were widely used in ISC
+    DHCP. See Option Class-Tagging in the ARM for further
+    information.
+  * The build system has been switched to meson.
+
+  Further detailed information of all changes is available at
+  https://gitlab.isc.org/isc-projects/kea/-/wikis/Release-Notes/release-notes-3.0.0
+  and
+  https://kb.isc.org/docs/things-to-be-aware-of-when-upgrading-to-kea-300
+
+- Set RuntimeDirectoryPreserve=yes in services to prevent deletion
+  of RuntimeDirectory when one service gets stopped.
+
+-------------------------------------------------------------------
 Mon Jun 16 12:27:37 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Change After= from network.target to network-online.target and

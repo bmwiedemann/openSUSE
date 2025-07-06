@@ -16,36 +16,33 @@
 #
 
 
-%define asiodns_sover 49
-%define asiolink_sover 72
-%define cc_sover 68
-%define cfgclient_sover 66
-%define cryptolink_sover 50
-%define d2srv_sover 47
-%define database_sover 62
-%define dhcppp_sover 92
-%define dhcp_ddns_sover 57
-%define dhcpsrv_sover 111
-%define dnspp_sover 57
-%define eval_sover 69
-%define exceptions_sover 33
-%define hooks_sover 100
-%define http_sover 72
-%define log_sover 61
-%define mysql_sover 71
-%define pgsql_sover 71
-%define process_sover 74
-%define stats_sover 41
-%define tcp_sover 19
-%define util_io_sover 0
-%define util_sover 86
-%if 0%{?suse_version} >= 1600
-%bcond_without regen_files
-%else
-%bcond_with    regen_files
-%endif
+%define asiodns_sover 62
+%define asiolink_sover 87
+%define cc_sover 82
+%define cfgrpt_sover 3
+%define config_sover 83
+%define cryptolink_sover 63
+%define d2srv_sover 63
+%define database_sover 76
+%define dhcp_sover 109
+%define dhcp_ddns_sover 68
+%define dhcpsrv_sover 129
+%define dns_sover 71
+%define eval_sover 84
+%define exceptions_sover 45
+%define hooks_sover 118
+%define http_sover 87
+%define log_interprocess_sover 3
+%define log_sover 75
+%define mysql_sover 88
+%define pgsql_sover 88
+%define process_sover 90
+%define stats_sover 53
+%define tcp_sover 33
+%define util_io_sover 12
+%define util_sover 101
 Name:           kea
-Version:        2.6.3
+Version:        3.0.0
 Release:        0
 Summary:        Dynamic Host Configuration Protocol daemon
 License:        MPL-2.0
@@ -53,19 +50,15 @@ Group:          Productivity/Networking/Boot/Servers
 URL:            https://kea.isc.org/
 #Git-Clone:     https://gitlab.isc.org/isc-projects/kea
 #Github is out of date / abandoned(?)
-Source:         https://ftp.isc.org/isc/kea/%version/kea-%version.tar.gz
-Source2:        https://ftp.isc.org/isc/kea/%version/kea-%version.tar.gz.asc
+Source:         https://ftp.isc.org/isc/kea/%version/kea-%version.tar.xz
+Source2:        https://ftp.isc.org/isc/kea/%version/kea-%version.tar.xz.asc
 # https://www.isc.org/pgpkey/
 Source3:        kea.keyring
 Source4:        kea-dhcp4.service
 Source5:        kea-dhcp6.service
 Source6:        kea-dhcp-ddns.service
 Source7:        kea-ctrl-agent.service
-BuildRequires:  autoconf >= 2.59
-BuildRequires:  automake
-%if %{with regen_files}
-BuildRequires:  bison >= 3.3
-%endif
+BuildRequires:  meson
 BuildRequires:  freeradius-server-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libmysqlclient-devel
@@ -80,11 +73,9 @@ BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  sysuser-tools
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  fdupes
 %sysusers_requires
 Suggests:       %name-hooks = %version
-%if %{with regen_files}
-BuildRequires:  flex
-%endif
 %if 0%{?suse_version} >= 1500
 BuildRequires:  libboost_system-devel
 %else
@@ -140,11 +131,20 @@ Group:          System/Libraries
 libkea-cc is used for the control channel protocol between keactrl
 and the server.
 
-%package -n libkea-cfgclient%cfgclient_sover
+%package -n libkea-cfgrpt%cfgrpt_sover
+Summary:        Kea DHCP server config report library
+Group:          System/Libraries
+
+%description -n libkea-cfgrpt%cfgrpt_sover
+The cfgrpt library is used for generating configuration reports for Kea,
+providing detailed JSON-formatted summaries of the server's current
+configuration.
+
+%package -n libkea-config%config_sover
 Summary:        Kea DHCP server configuration client library
 Group:          System/Libraries
 
-%description -n libkea-cfgclient%cfgclient_sover
+%description -n libkea-config%config_sover
 The Kea DHCP server can be managed at runtime via the Control
 Channel. The CC allows an external entity (e.g. a tool run by a
 sysadmin or a script) to issue commands to the server which can
@@ -177,12 +177,12 @@ Group:          System/Libraries
 %description -n libkea-database%database_sover
 Kea's database abstraction library.
 
-%package -n libkea-dhcp++%dhcppp_sover
+%package -n libkea-dhcp%dhcp_sover
 Summary:        Kea DHCP library
 Group:          System/Libraries
 
-%description -n libkea-dhcp++%dhcppp_sover
-libdhcp++ is an all-purpose DHCP-manipulation library, written in
+%description -n libkea-dhcp%dhcp_sover
+libdhcp is an all-purpose DHCP-manipulation library, written in
 C++. It offers packet parsing and assembly, DHCPv4 and DHCPv6 options
 parsing and assembly, interface detection, and socket operations It
 can be used by server, client, relay, performance tools and other
@@ -208,11 +208,11 @@ operations, including the "Lease Manager" that manages information
 about leases and the "Configuration Manager" that stores the servers'
 configuration etc.
 
-%package -n libkea-dns++%dnspp_sover
+%package -n libkea-dns%dns_sover
 Summary:        Kea DHCP server component library
 Group:          System/Libraries
 
-%description -n libkea-dns++%dnspp_sover
+%description -n libkea-dns%dns_sover
 One of the many libraries the Kea DHCP server is composed of.
 
 %package -n libkea-eval%eval_sover
@@ -255,6 +255,14 @@ This library is used by Control Agent to establish HTTP connections,
 receive messages and send responses over HTTP. This library uses
 boost ASIO for creating TCP connections and asynchronously receive
 and send the data over the sockets.
+
+%package -n libkea-log-interprocess%log_interprocess_sover
+Summary:        Kea DHCP log interprocess library
+Group:          System/Libraries
+
+%description -n libkea-log-interprocess%log_interprocess_sover
+The log-interprocess library facilitates the transfer of logging messages
+between the different Kea processes.
 
 %package -n libkea-log%log_sover
 Summary:        Kea DHCP logging system library
@@ -328,18 +336,20 @@ Group:          Development/Libraries/C and C++
 Requires:       libkea-asiodns%asiodns_sover = %version
 Requires:       libkea-asiolink%asiolink_sover = %version
 Requires:       libkea-cc%cc_sover = %version
-Requires:       libkea-cfgclient%cfgclient_sover = %version
+Requires:       libkea-cfgrpt%cfgrpt_sover = %version
+Requires:       libkea-config%config_sover = %version
 Requires:       libkea-cryptolink%cryptolink_sover = %version
 Requires:       libkea-d2srv%d2srv_sover = %version
 Requires:       libkea-database%database_sover = %version
-Requires:       libkea-dhcp++%dhcppp_sover = %version
+Requires:       libkea-dhcp%dhcp_sover = %version
 Requires:       libkea-dhcp_ddns%dhcp_ddns_sover = %version
 Requires:       libkea-dhcpsrv%dhcpsrv_sover = %version
-Requires:       libkea-dns++%dnspp_sover = %version
+Requires:       libkea-dns%dns_sover = %version
 Requires:       libkea-eval%eval_sover = %version
 Requires:       libkea-exceptions%exceptions_sover = %version
 Requires:       libkea-hooks%hooks_sover = %version
 Requires:       libkea-http%http_sover = %version
+Requires:       libkea-log-interprocess%log_interprocess_sover = %version
 Requires:       libkea-log%log_sover = %version
 Requires:       libkea-mysql%mysql_sover = %version
 Requires:       libkea-pgsql%pgsql_sover = %version
@@ -361,20 +371,13 @@ Development files for the Kea DHCP server
 export FREERADIUS_INCLUDE="%_includedir/freeradius"
 export FREERADIUS_LIB=""
 export FREERADIUS_DICTIONARY=""
-autoreconf -fi
-%configure \
-	--disable-rpath --disable-static \
-%if %{with regen_files}
-	--enable-generate-docs --enable-generate-parser \
-%endif
-	--enable-logger-checks \
-	--with-dhcp-mysql --with-dhcp-pgsql \
-	--enable-perfdhcp --enable-shell
-make %{?_smp_mflags}
+%meson -D netconf=disabled
+%meson_build
+%meson_build doc
 
 %install
 b=%buildroot
-%make_install
+%meson_install
 find %buildroot -type f -name "*.la" -delete -print
 mkdir -p "$b/%_unitdir" "$b/%_sysusersdir"
 cp %_sourcedir/*.service "$b/%_unitdir/"
@@ -388,8 +391,12 @@ perl -i -pe 's{%_localstatedir/log/kea-}{%_localstatedir/log/kea/}' \
 mkdir -p "$b%_localstatedir/log/kea"
 
 # Remove unnecessary files
-find "%buildroot/%_libdir" -name "*.so.*" -type l -delete
 rm -Rf "%buildroot/%python3_sitelib/kea/__pycache__"
+%fdupes %{buildroot}/%{_datadir}/doc/kea
+
+# Fix permissions so keadhcp user can run executables and libraries
+chmod 755 %{buildroot}/%{_libdir}/*.so*
+chmod 755 %{buildroot}/%{_sbindir}/kea*
 
 %pre -f random.pre
 %service_add_pre kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service kea-ctrl-agent.service
@@ -450,18 +457,20 @@ fi
 %ldconfig_scriptlets -n libkea-asiodns%asiodns_sover
 %ldconfig_scriptlets -n libkea-asiolink%asiolink_sover
 %ldconfig_scriptlets -n libkea-cc%cc_sover
-%ldconfig_scriptlets -n libkea-cfgclient%cfgclient_sover
+%ldconfig_scriptlets -n libkea-cfgrpt%cfgrpt_sover
+%ldconfig_scriptlets -n libkea-config%config_sover
 %ldconfig_scriptlets -n libkea-cryptolink%cryptolink_sover
 %ldconfig_scriptlets -n libkea-d2srv%d2srv_sover
 %ldconfig_scriptlets -n libkea-database%database_sover
-%ldconfig_scriptlets -n libkea-dhcp++%dhcppp_sover
+%ldconfig_scriptlets -n libkea-dhcp%dhcp_sover
 %ldconfig_scriptlets -n libkea-dhcp_ddns%dhcp_ddns_sover
 %ldconfig_scriptlets -n libkea-dhcpsrv%dhcpsrv_sover
-%ldconfig_scriptlets -n libkea-dns++%dnspp_sover
+%ldconfig_scriptlets -n libkea-dns%dns_sover
 %ldconfig_scriptlets -n libkea-eval%eval_sover
 %ldconfig_scriptlets -n libkea-exceptions%exceptions_sover
 %ldconfig_scriptlets -n libkea-hooks%hooks_sover
 %ldconfig_scriptlets -n libkea-http%http_sover
+%ldconfig_scriptlets -n libkea-log-interprocess%log_interprocess_sover
 %ldconfig_scriptlets -n libkea-log%log_sover
 %ldconfig_scriptlets -n libkea-mysql%mysql_sover
 %ldconfig_scriptlets -n libkea-pgsql%pgsql_sover
@@ -490,74 +499,107 @@ fi
 %files hooks
 %dir %_libdir/kea
 %_libdir/kea/hooks/
+%dir %{_sysconfdir}/kea/radius
+%{_sysconfdir}/kea/radius/dictionary
 
 %files -n libkea-asiodns%asiodns_sover
+%_libdir/libkea-asiodns.so.%asiodns_sover
 %_libdir/libkea-asiodns.so.%asiodns_sover.*
 
 %files -n libkea-asiolink%asiolink_sover
+%_libdir/libkea-asiolink.so.%asiolink_sover
 %_libdir/libkea-asiolink.so.%asiolink_sover.*
 
 %files -n libkea-cc%cc_sover
+%_libdir/libkea-cc.so.%cc_sover
 %_libdir/libkea-cc.so.%cc_sover.*
 
-%files -n libkea-cfgclient%cfgclient_sover
-%_libdir/libkea-cfgclient.so.%cfgclient_sover.*
+%files -n libkea-cfgrpt%cfgrpt_sover
+%_libdir/libkea-cfgrpt.so.%cfgrpt_sover
+%_libdir/libkea-cfgrpt.so.%cfgrpt_sover.*
+
+%files -n libkea-config%config_sover
+%_libdir/libkea-config.so.%config_sover
+%_libdir/libkea-config.so.%config_sover.*
 
 %files -n libkea-cryptolink%cryptolink_sover
+%_libdir/libkea-cryptolink.so.%cryptolink_sover
 %_libdir/libkea-cryptolink.so.%cryptolink_sover.*
 
 %files -n libkea-d2srv%d2srv_sover
+%_libdir/libkea-d2srv.so.%d2srv_sover
 %_libdir/libkea-d2srv.so.%d2srv_sover.*
 
 %files -n libkea-database%database_sover
+%_libdir/libkea-database.so.%database_sover
 %_libdir/libkea-database.so.%database_sover.*
 
-%files -n libkea-dhcp++%dhcppp_sover
-%_libdir/libkea-dhcp++.so.%dhcppp_sover.*
+%files -n libkea-dhcp%dhcp_sover
+%_libdir/libkea-dhcp.so.%dhcp_sover
+%_libdir/libkea-dhcp.so.%dhcp_sover.*
 
 %files -n libkea-dhcp_ddns%dhcp_ddns_sover
+%_libdir/libkea-dhcp_ddns.so.%dhcp_ddns_sover
 %_libdir/libkea-dhcp_ddns.so.%dhcp_ddns_sover.*
 
 %files -n libkea-dhcpsrv%dhcpsrv_sover
+%_libdir/libkea-dhcpsrv.so.%dhcpsrv_sover
 %_libdir/libkea-dhcpsrv.so.%dhcpsrv_sover.*
 
-%files -n libkea-dns++%dnspp_sover
-%_libdir/libkea-dns++.so.%dnspp_sover.*
+%files -n libkea-dns%dns_sover
+%_libdir/libkea-dns.so.%dns_sover
+%_libdir/libkea-dns.so.%dns_sover.*
 
 %files -n libkea-eval%eval_sover
+%_libdir/libkea-eval.so.%eval_sover
 %_libdir/libkea-eval.so.%eval_sover.*
 
 %files -n libkea-exceptions%exceptions_sover
+%_libdir/libkea-exceptions.so.%exceptions_sover
 %_libdir/libkea-exceptions.so.%exceptions_sover.*
 
 %files -n libkea-hooks%hooks_sover
+%_libdir/libkea-hooks.so.%hooks_sover
 %_libdir/libkea-hooks.so.%hooks_sover.*
 
 %files -n libkea-http%http_sover
+%_libdir/libkea-http.so.%http_sover
 %_libdir/libkea-http.so.%http_sover.*
 
+%files -n libkea-log-interprocess%log_interprocess_sover
+%_libdir/libkea-log-interprocess.so.%log_interprocess_sover
+%_libdir/libkea-log-interprocess.so.%log_interprocess_sover.*
+
 %files -n libkea-log%log_sover
+%_libdir/libkea-log.so.%log_sover
 %_libdir/libkea-log.so.%log_sover.*
 
 %files -n libkea-mysql%mysql_sover
+%_libdir/libkea-mysql.so.%mysql_sover
 %_libdir/libkea-mysql.so.%mysql_sover.*
 
 %files -n libkea-pgsql%pgsql_sover
+%_libdir/libkea-pgsql.so.%pgsql_sover
 %_libdir/libkea-pgsql.so.%pgsql_sover.*
 
 %files -n libkea-process%process_sover
+%_libdir/libkea-process.so.%process_sover
 %_libdir/libkea-process.so.%process_sover.*
 
 %files -n libkea-stats%stats_sover
+%_libdir/libkea-stats.so.%stats_sover
 %_libdir/libkea-stats.so.%stats_sover.*
 
 %files -n libkea-tcp%tcp_sover
+%_libdir/libkea-tcp.so.%tcp_sover
 %_libdir/libkea-tcp.so.%tcp_sover.*
 
 %files -n libkea-util-io%util_io_sover
+%_libdir/libkea-util-io.so.%util_io_sover
 %_libdir/libkea-util-io.so.%util_io_sover.*
 
 %files -n libkea-util%util_sover
+%_libdir/libkea-util.so.%util_sover
 %_libdir/libkea-util.so.%util_sover.*
 
 %files -n python3-kea
@@ -566,5 +608,7 @@ fi
 %files devel
 %_includedir/kea/
 %_libdir/libkea*.so
+%{_libdir}/pkgconfig/*.pc
+%{_bindir}/kea-msg-compiler
 
 %changelog

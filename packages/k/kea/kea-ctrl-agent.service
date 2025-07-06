@@ -9,6 +9,7 @@ User=keadhcp
 Environment=KEA_PIDFILE_DIR=/run/kea
 RuntimeDirectory=kea
 RuntimeDirectoryMode=0750
+RuntimeDirectoryPreserve=yes
 ExecStart=/usr/sbin/kea-ctrl-agent -c /etc/kea/kea-ctrl-agent.conf
 ExecReload=kill -HUP $MAINPID
 ProtectSystem=full
