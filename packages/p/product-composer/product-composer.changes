@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul  4 10:29:58 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.6.6
+  * verify command works now also for setups which only builds
+    via a flavor
+  * Export directory content sizes in kb (boo#1245709)
+
+-------------------------------------------------------------------
+Thu Jul  3 14:54:15 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.6.5
+  * Fixing further regressions of refactoring for iso building
+
+-------------------------------------------------------------------
+Thu Jul  3 09:30:47 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.6.4
+  * Fixing the iso parsing crash for real
+
+-------------------------------------------------------------------
 Mon Jun 30 08:01:00 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.6.3

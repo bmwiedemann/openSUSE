@@ -465,4 +465,21 @@
 - fix build/version handling after the change to setuptools_scm</comment>
     <requestid>1289554</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>05c7e3ae9d4b7be8c301a06dda3041d0</srcmd5>
+    <version>0.6.6</version>
+    <time>1751814406</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.6.6
+  * verify command works now also for setups which only builds
+    via a flavor
+  * Export directory content sizes in kb (boo#1245709)
+
+- update to version 0.6.5
+  * Fixing further regressions of refactoring for iso building
+
+- update to version 0.6.4
+  * Fixing the iso parsing crash for real</comment>
+    <requestid>1290671</requestid>
+  </revision>
 </revisionlist>
