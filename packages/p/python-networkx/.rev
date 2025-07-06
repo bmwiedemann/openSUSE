@@ -453,4 +453,41 @@
     + Allow dispatch machinery to fall back to networkx.</comment>
     <requestid>1243534</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>eed4c240c681261bfc2104b07426fcdc</srcmd5>
+    <version>3.5</version>
+    <time>1751814921</time>
+    <user>anag_factory</user>
+    <comment>- update to networkx-3.5:
+  * Save Layouts on Graphs (#7571).
+  * Expire d_separated and minimum_d_separator functions (#7830).
+  * Expire all_triplets deprecation (#7828).
+  * Expire random_triad deprecation (#7829).
+  * DEP: Raise an exception for k_core functions with multigraphs
+    (#7831).
+  * Deprecate graph_could_be_isomorphic (#7826).
+  * Expire total_spanning_tree_weight deprecation (#7843).
+  * Expire deprecation of create kwarg in nonisomorphic_trees
+    (#7847).
+  * New draw API (#7589).
+  * perf: optimise `random_k_out_graph` (#7702).
+  * Clausets local community detection algorithm (#7691).
+  * `find_asteroidal_triple` improvement (#7736).
+  * Add `weight` to harmonic_diameter (#7636).
+  * Densest Subgraph Problem: Greedy Peeling and Greedy++
+    Implementations (#7731).
+  * single_source_all_shortest_paths: don't loop over all nodes
+    (#7762).
+  * Error message improvement for nbunch_iter ( NetworkXError
+    raised with specific message on TypeError with &quot;iter&quot; in msg
+    ) (#7790).
+  * Faster computation of energy in Laplacian centrality (#7793).
+  * Make `forceatlas2_layout` dispatchable (#7794).
+  * Update dispatchable for `forceatlas2_layout` (#7798).
+  * Enable backend-only functions where NetworkX is just an API
+    (#7690).
+  * Steinertree kou enhancement in response to issue 5889
+    type:Enhancements (#7767).</comment>
+    <requestid>1290788</requestid>
+  </revision>
 </revisionlist>

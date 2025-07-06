@@ -18,11 +18,11 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-networkx
-Version:        3.4.2
+Version:        3.5
 Release:        0
 Summary:        Python package for the study of complex networks
 License:        BSD-3-Clause
-URL:            https://networkx.github.io/
+URL:            https://github.com/networkx/networkx
 Source:         https://files.pythonhosted.org/packages/source/n/networkx/networkx-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}

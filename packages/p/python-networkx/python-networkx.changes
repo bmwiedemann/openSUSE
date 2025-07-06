@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Sat Jul  5 10:52:25 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to networkx-3.5:
+  * Save Layouts on Graphs (#7571).
+  * Expire d_separated and minimum_d_separator functions (#7830).
+  * Expire all_triplets deprecation (#7828).
+  * Expire random_triad deprecation (#7829).
+  * DEP: Raise an exception for k_core functions with multigraphs
+    (#7831).
+  * Deprecate graph_could_be_isomorphic (#7826).
+  * Expire total_spanning_tree_weight deprecation (#7843).
+  * Expire deprecation of create kwarg in nonisomorphic_trees
+    (#7847).
+  * New draw API (#7589).
+  * perf: optimise `random_k_out_graph` (#7702).
+  * Clausets local community detection algorithm (#7691).
+  * `find_asteroidal_triple` improvement (#7736).
+  * Add `weight` to harmonic_diameter (#7636).
+  * Densest Subgraph Problem: Greedy Peeling and Greedy++
+    Implementations (#7731).
+  * single_source_all_shortest_paths: don't loop over all nodes
+    (#7762).
+  * Error message improvement for nbunch_iter ( NetworkXError
+    raised with specific message on TypeError with "iter" in msg
+    ) (#7790).
+  * Faster computation of energy in Laplacian centrality (#7793).
+  * Make `forceatlas2_layout` dispatchable (#7794).
+  * Update dispatchable for `forceatlas2_layout` (#7798).
+  * Enable backend-only functions where NetworkX is just an API
+    (#7690).
+  * Steinertree kou enhancement in response to issue 5889
+    type:Enhancements (#7767).
+  * Add Leiden as a backend-only algorithm (#7743).
+  * Bipartite layout nodes optional (#7756).
+  * Densest Subgraph Problem: FISTA based algorithm + Large scale
+    tests (#7770).
+  * Dispatch `get_node_attributes` and a few more from
+    `nx.classes.function` (#7824).
+  * Faster `could_be_isomorphic` and `number_of_cliques` (#7855).
+  * Add square_clustering to algorithm benchmarks (#7857).
+  * Faster Implementation of Structural Holes (#7249).
+  * Improve runtime of number_of_nonisomorphic_trees() (#7917).
+  * Fix write_gexf timeformat for dynamic Graphs (#7914).
+  * Consolidate could_be_isomorphic (#7852).
+  * Improving rooted_tree_isomorphism for deep trees (#7945).
+  * Fixing nx.diameter inconsistent results with usebounds=True
+    (#7954).
+  * Faster `square_clustering` (#7810).
+  * Avoid repeated cache conversion failures for backends
+    (#7768).
+  * Improve _sparse_fruchterman_reingold with L-BFGS (#7889).
+  * Improve Performance of Tree Isomorphism and Center
+    Calculation (#7946).
+  * Add option for `biadjacency_matrix` to be returned as a dense
+    NumPy array (#7973).
+  * Add Functions for Finding Connected Dominating Sets (#7774).
+  * Add feature to make storing node contraction data optional
+    (#7902).
+  * Added "initial_node" param to generate_random_paths() to
+    allow a starting node to be specified for generated walks
+    (#8002).
+  * Fix behavior for iterable `sources` argument in `bfs_layers`
+    (#8013).
+  * Speed up `connected_components` and
+    `weakly_connected_components` (#7971).
+  * BiRank Algorithm Implementation (#7978).
+  * Enforce correct graph types for graph matchers (#8043).
+  * Fix for issue #7645: Do not preserve 'cw' and 'ccw'
+    attributes in PlanarEmbedding.to_undirected() (#7750).
+  * fix typo in ramanujan branch (#7804).
+  * Fix `with nx.config(backend_priority=backends):` (#7814).
+  * Fix handling of faux_infinite values in network_simplex
+    (#7796).
+  * Fixed the return type from an empty dict to an empty set
+    (#7910).
+  * Add `edge_attrs="weight"` to `forceatlas2_layout` dispatch
+    decorator (#7918).
+  * Fix graph_hash iteration counts and DiGraph handling (#7834).
+  * Refactored the working of chordless_cycles to handle self
+    loops (#7901).
+  * Fix bc scale with k endpoints (#7908).
+  * Fix BC scaling for source nodes with k and endpoints=False
+    (#7949).
+  * BUG: graph6 format invariant to trailing newline (#7941).
+  * Fix `random_degree_sequence_graph` when input is an iterator
+    (#7979).
+  * Improve special cases in dispatch testing (paying off tech
+    debt) (#7982).
+  * Fix bug when assigning list to `nx.config.backend_priority`
+    (#8034).
+  * A minimal fix for `is_aperiodic` (#8029).
+  * fix bug of _sparse_fruchterman_reingold and remove try/except
+    idiom (#8041).
+  * Fix edge case in ISMAGS symmetry detection (#8055).
+
+-------------------------------------------------------------------
 Tue Feb  4 03:21:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.4.2:
@@ -65,7 +161,7 @@ Mon Apr 22 15:25:05 UTC 2024 - Markéta Machová <mmachova@suse.com>
   * [A-star] Added expansion pruning via cutoff if cutoff is provided
   * Add Tadpole graph
   * [Feat] Random expanders utilities
-  * Add Kirchhoff index / Effective graph resistance 
+  * Add Kirchhoff index / Effective graph resistance
   * Changed return types of shortest path methods to improve consistency
   * Many more changes, see upstream changelog
 - drop doc build, PyPI tarball doesn't support it anymore
@@ -74,23 +170,23 @@ Mon Apr 22 15:25:05 UTC 2024 - Markéta Machová <mmachova@suse.com>
 Thu Jul 27 11:55:11 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to 3.1
-  * Better syncing between G._succ and G._adj for directed G. And 
+  * Better syncing between G._succ and G._adj for directed G. And
     slightly better speed from all the core adjacency data structures.
-  * If your code sets G._succ or G._adj to new dictionary-like objects, 
-    you no longer have to set them both. Setting either will ensure 
+  * If your code sets G._succ or G._adj to new dictionary-like objects,
+    you no longer have to set them both. Setting either will ensure
     the other is set as well.
-  * If you use the presence of the attribute _adj as a criteria for 
+  * If you use the presence of the attribute _adj as a criteria for
     the object being a Graph instance, that code may need updating.
-  * We have added an experimental plugin feature, which let users 
+  * We have added an experimental plugin feature, which let users
     choose alternate backends like GraphBLAS, CuGraph for computation.
   * Improved integration with the general Scientific Python ecosystem.
-  * New drawing feature (module and tests) from NetworkX graphs to 
+  * New drawing feature (module and tests) from NetworkX graphs to
     the TikZ library of TeX/LaTeX.
   * Added an improved subgraph isomorphism algorithm called VF2++.
-  * OrderedGraph and other Ordered classes are replaced by Graph 
+  * OrderedGraph and other Ordered classes are replaced by Graph
     because Python dicts (and thus networkx graphs) now maintain order.
-  * The attrs keyword argument will be replaced with keyword only 
-    arguments source, target, name, key and link for 
+  * The attrs keyword argument will be replaced with keyword only
+    arguments source, target, name, key and link for
     json_graph/node_link functions.
   * Supports Python 3.8, 3.9, 3.10, and 3.11.
   * Stopped building PDF version of docs
@@ -105,35 +201,35 @@ Tue Jun 13 11:08:24 UTC 2023 - ecsos <ecsos@opensuse.org>
 Wed Jan  4 22:18:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.8:
-  * Fix warnings from running tests in randomized order 
-  * Update pydata-sphinx-theme 
-  * update secutiry link to tidelift 
-  * Update numpydoc 
-  * Support Python 3.11 
-  * Minor updates to expanders generator tests 
-  * Add missing asserts to tests 
-  * fixes #6036 
-  * Improve test coverage expanders line graph generators solved (PR for issue #6034) 
-  * Replace .A call with .toarray for sparse array in example. 
-  * Improve test coverage for algorithms/richclub.py 
-  * Tested boykov_kolmogorov and dinitz with cutoff 
-  * Improve test coverage for multigraph class 
-  * Improve test coverage for algorithms in dominating_set.py (PR for issue 6032) 
-  * Improve test coverage for graph class 
-  * added coverage in generators/tree.py 
-  * DOC: Specifically branch off main, instead of current branch 
-  * Improve test coverage for multidigraph class 
-  * Improve test coverage for digraph class 
-  * Improve test coverage for algorithms in dispersion.py 
-  * Test on Python 3.11 
-  * Improve test coverage in algorithms shortest paths unweighted.py 
-  * Increased test coverage algorithms/matching.py 
-  * Renamed test functions in test_lowest_common_ancestors 
-  * Increase covering coverage 
-  * Add example for fiedler_vector 
-  * Improve test coverage for cycles.py 
-  * Added an example in all_pairs_node_connectivity  
-  * Amount of nodes and edges have mistakes when reading adjlist file 
+  * Fix warnings from running tests in randomized order
+  * Update pydata-sphinx-theme
+  * update secutiry link to tidelift
+  * Update numpydoc
+  * Support Python 3.11
+  * Minor updates to expanders generator tests
+  * Add missing asserts to tests
+  * fixes #6036
+  * Improve test coverage expanders line graph generators solved (PR for issue #6034)
+  * Replace .A call with .toarray for sparse array in example.
+  * Improve test coverage for algorithms/richclub.py
+  * Tested boykov_kolmogorov and dinitz with cutoff
+  * Improve test coverage for multigraph class
+  * Improve test coverage for algorithms in dominating_set.py (PR for issue 6032)
+  * Improve test coverage for graph class
+  * added coverage in generators/tree.py
+  * DOC: Specifically branch off main, instead of current branch
+  * Improve test coverage for multidigraph class
+  * Improve test coverage for digraph class
+  * Improve test coverage for algorithms in dispersion.py
+  * Test on Python 3.11
+  * Improve test coverage in algorithms shortest paths unweighted.py
+  * Increased test coverage algorithms/matching.py
+  * Renamed test functions in test_lowest_common_ancestors
+  * Increase covering coverage
+  * Add example for fiedler_vector
+  * Improve test coverage for cycles.py
+  * Added an example in all_pairs_node_connectivity
+  * Amount of nodes and edges have mistakes when reading adjlist file
 
 -------------------------------------------------------------------
 Sun Oct  2 09:32:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -532,7 +628,7 @@ Sat Jun  4 17:48:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Feb 22 10:01:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- skip pydot tests for older dists 
+- skip pydot tests for older dists
 
 -------------------------------------------------------------------
 Tue Dec  7 08:06:03 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
@@ -558,7 +654,7 @@ Wed Oct 13 22:37:10 CEST 2021 - Fabrice Bauzac <noon@mykolab.com>
 -------------------------------------------------------------------
 Mon Aug  2 07:28:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- require pandas 
+- require pandas
 
 -------------------------------------------------------------------
 Wed Jul 28 23:30:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -590,7 +686,7 @@ Tue May 18 21:51:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Feb 23 18:12:59 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
-- Refine the optional test dependencies. We want to test python39 
+- Refine the optional test dependencies. We want to test python39
   in the future.
 
 -------------------------------------------------------------------
@@ -709,7 +805,7 @@ Sun Nov 17 23:53:12 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
   * Last release to support Python 3.5
   * Fifteen new fuctions, including onion decomposition and linear prufing
   * Three new generators, such as a directed joint degree generator
-- Add numpy-38-test.patch, to correct test failure under Python 3.8  
+- Add numpy-38-test.patch, to correct test failure under Python 3.8
 - Update URL, upstream changed to tarballs from zipfiles.
 
 -------------------------------------------------------------------
@@ -1068,7 +1164,7 @@ Wed Jan 11 14:56:08 UTC 2012 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Thu Sep  8 20:27:43 UTC 2011 - alinm.elena@gmail.com
 
-- initial commit 
+- initial commit
 
 -------------------------------------------------------------------
 Fri Feb  6 00:00:00 UTC 2009 - urs.beyerle@env.ethz.ch
