@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kosmindoormap
-Version:        25.04.2
+Version:        25.04.3
 Release:        0
 Summary:        OSM multi-floor indoor map renderer
 License:        LGPL-2.0-or-later AND CC0-1.0
