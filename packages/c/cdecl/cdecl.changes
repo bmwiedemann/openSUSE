@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul  5 07:50:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 18.5
+  * Added support for C++26 `indeterminate` attribute and
+    some predefined types.
+  * `static` storage class support.
+
+-------------------------------------------------------------------
 Mon Apr  7 12:23:33 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 18.4.2
