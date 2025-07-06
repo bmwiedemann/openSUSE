@@ -24,6 +24,7 @@ License:        EPL-1.0
 Group:          Development/Languages/Python
 URL:            http://eclipse.org/paho
 Source:         https://github.com/eclipse/paho.mqtt.python/archive/refs/tags/v%{version}.tar.gz#/paho-mqtt-%{version}.tar.gz
+Patch1:         https://github.com/eclipse-paho/paho.mqtt.python/pull/854.patch#/fix-tests.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
