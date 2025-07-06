@@ -1,7 +1,7 @@
 #
 # spec file for package lmms
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,14 @@
 # https://github.com/LMMS/lmms/tree/v%%{version}/src/3rdparty/qt5-x11embed and
 # https://github.com/LMMS/lmms/tree/v1.2.1/src/3rdparty/rpmalloc/rpmalloc (two directories not a mistake)
 %define rev            18252088ba1dcbf5218e0bf7cb6604522a64185c
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
+%ifarch %x86
 %bcond_without  wine
-%endif
 %bcond_without  carla
+%else
+# might want to experiment
+%bcond_with  wine
+%bcond_with  carla
+%endif
 %bcond_without  crippled_stk
 Name:           lmms
 Version:        1.3.0~git2024.09.21
@@ -108,7 +112,6 @@ BuildRequires:  wine-devel
 BuildRequires:  wine-devel-32bit
 #!BuildIgnore:  sane-backends-32bit
 %endif
-ExclusiveArch:  x86_64
 
 %description
 LMMS is a free cross-platform music studio which allows you to produce music
