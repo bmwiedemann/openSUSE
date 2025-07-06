@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul  5 10:20:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.12:
+  * Finalise TOML config (e.g. exclude unwanted folders in
+    installations), remove `setup.py`
+- update to 0.1.11:
+  * Added documentation
+  * Automated publishing to PyPI
+  * Automated documentation generation
+  * Switched to TOML package description
+  * No changes in functionality
+
+-------------------------------------------------------------------
 Tue Jun  3 12:24:42 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

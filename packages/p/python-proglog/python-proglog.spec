@@ -17,7 +17,7 @@
 
 
 Name:           python-proglog
-Version:        0.1.10
+Version:        0.1.12
 Release:        0
 Summary:        Log and progress bar manager for Python
 License:        MIT
