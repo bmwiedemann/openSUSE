@@ -56,4 +56,13 @@ Provides the miriway wayland compositor</comment>
     <comment></comment>
     <requestid>1252560</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5a30457670ef6d95928b070c65ecfff5</srcmd5>
+    <version>25.02.1</version>
+    <time>1751814823</time>
+    <user>anag_factory</user>
+    <comment>- Switch from sddm-kalpa to sddm, now that sddm is capable of
+  running as a Wayland client</comment>
+    <requestid>1290544</requestid>
+  </revision>
 </revisionlist>

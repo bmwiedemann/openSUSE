@@ -56,7 +56,7 @@ session
 Summary:        Miriway SDDM greeter configuration
 Requires:       %{name} = %{version}
 Requires:       layer-shell-qt6
-Requires:       sddm-kalpa
+Requires:       sddm
 Supplements:    (sddm and %{name})
 BuildArch:      noarch
 
