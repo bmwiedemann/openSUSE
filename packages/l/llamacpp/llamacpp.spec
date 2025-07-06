@@ -2,6 +2,7 @@
 # spec file for package llamacpp
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Eyad Issa <eyadlorenzo@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           llamacpp
-Version:        5699
+Version:        5812
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT

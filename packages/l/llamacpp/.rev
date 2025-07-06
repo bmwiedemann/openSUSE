@@ -133,4 +133,27 @@
   ...</comment>
     <requestid>1286807</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0511e0eebf924b9d28365e9282449ecc</srcmd5>
+    <version>5812</version>
+    <time>1751814473</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5812:
+  * Mamba-2 Support: Initial integration of Mamba-2 architecture.
+  * Added support for ERNIE 4.5 0.3B, NeoBERT, Arcee AI's AFM,
+    Gemma3n text-only, and dots.llm1 architectures
+  * Vulkan Improvements: Support for softmax/FlashAttention
+    batch/broadcast, fused RMS_NORM+MUL, and better memory handling
+  * GGML Backend: Added REGLU/GEGLU/SWIGLU ops, ggml_set_rows, and
+    improved SYCL/OpenCL/Metal support
+  * Server Improvements: Jinja template kwargs, draft model cache
+    params, and Unix socket support
+  * Quantization: User-defined layer pruning and KV override fixes
+  * Optimizations: Batched Vulkan mul_mat_id splitting
+    and ARM hsum reduction
+  * Added GGML version function
+  * Full changelog:
+    https://github.com/ggml-org/llama.cpp/compare/b5699...b5812</comment>
+    <requestid>1290235</requestid>
+  </revision>
 </revisionlist>
