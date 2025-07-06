@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jul  3 07:41:04 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.41.0:
+  * Treat SIGINFO as non-fatal
+  * Improve signal handling
+  * Add dotenv-override setting
+  * Add PATH_SEP and PATH_VAR_SEP constants
+  * Add --tempdir command-line option
+  * Pin clap_complete to last compatible version
+  * Add arkade to readme
+  * Link to pipx instead of pypi in readme
+  * Add reasons to #[ignore] attributes
+  * Mention that command-line environment variables are inherited
+  * Fix attribute grammar and update documentation
+  * Tweak prose in groups section of readme
+  * Update extractions/setup-just version in readme
+  * Remove return in Recipe::confirm
+  * Add mise to alternatives in readem
+  * Update softprops/action-gh-release
+  * Use default as name of --init justfile default recipe
+  * Add just.systems link to --init justfile
+  * Fix kitchen-sink.just comment
+  * Update softprops/action-gh-release
+  * Fix clippy lints
+  * Add back-to-the-top link to readme
+  * Placate clippy lints for 1.86
+  * Use -S in uv example
+  * Handle --request without parsing justfile
+- remove unnecessary set_version service
+- disable cargo_vendor filtering, as of right now it's bugged
+
+-------------------------------------------------------------------
 Fri Jun 13 10:26:33 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - create manpage, so we actually have documentation
@@ -268,104 +300,104 @@ Mon Jun 17 02:09:18 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 Sun Jun 16 12:44:34 UTC 2024 - rrahl0@disroot.org
 
 - Update to version 1.29.1:
-  * Release 1.29.1 (#2159)
-  * Fix unexport syntax conflicts (#2158)
-  * Release 1.29.0 (#2155)
-  * Improve argument parsing and error handling for submodules (#2154)
-  * Document shell expanded string defaults (#2153)
-  * Load environment file from dotenv-path relative to working directory (#2152)
-  * Add [positional-arguments] attribute (#2151)
-  * Test bare bash path in shebang on windows (#2144)
-  * Use `--justfile` in Fish shell completions (#2148)
-  * Test shell not found error messages (#2145)
-  * Add `is_dependency()` function (#2139)
-  * Fix `fzf` chooser preview with space-separated module paths (#2141)
-  * Allow printing nu completion script with `just --completions nushell` (#2140)
-  * Add `[ATTRIBUTE: VALUE]` shorthand (#2136)
-  * Refactor evaluator (#2138)
-  * Allow unexporting environment variables (#2098)
+  * Release 1.29.1
+  * Fix unexport syntax conflicts
+  * Release 1.29.0
+  * Improve argument parsing and error handling for submodules
+  * Document shell expanded string defaults
+  * Load environment file from dotenv-path relative to working directory
+  * Add [positional-arguments] attribute
+  * Test bare bash path in shebang on windows
+  * Use `--justfile` in Fish shell completions
+  * Test shell not found error messages
+  * Add `is_dependency()` function
+  * Fix `fzf` chooser preview with space-separated module paths
+  * Allow printing nu completion script with `just --completions nushell`
+  * Add `[ATTRIBUTE: VALUE]` shorthand
+  * Refactor evaluator
+  * Allow unexporting environment variables
 
 -------------------------------------------------------------------
 Thu Jun 06 01:50:27 UTC 2024 - rrahl0@disroot.org
 
 - Update to version 1.28.0:
-  * Fix man page generation in release workflow (#2132)
-  * Release 1.28.0 (#2131)
-  * Don't check in manpage (#2130)
-  * Document default shell (#2129)
-  * Write shebang recipes to $XDG_RUNTIME_DIR (#2128)
-  * Remove duplicate section in Chinese readme (#2127)
-  * Update Chinese readme (#2124)
-  * Fix typo in readme (#2122)
-  * Don't check in auto-generated completion scripts (#2120)
-  * Add `set dotenv-required` to require an environment file (#2116)
-  * Allow listing recipes in submodules with `--list-submodules` (#2113)
-  * Use space-separated recipe paths in `--choose` (#2115)
-  * Don't display submodule recipes in `--list` (#2112)
-  * Show recipes in submodules with `--show RECIPE::PATH` (#2111)
-  * Add `--timestamp-format` (#2106)
-  * Allow listing submodule recipes with `--list PATH` (#2108)
-  * Print recipe command timestamps with `--timestamps` (#2084)
-  * Add `module_file()` and `module_directory()` functions (#2105)
-  * Fix bash completion for aliases (#2104)
-  * Document when dependencies run in readme (#2103)
-  * Build aarch64-pc-windows-msvc release binaries (#2100)
-  * Clarify that `dotenv-path`-given env file is required (#2099)
-  * Print multi-line doc comments before recipe in `--list` (#2090)
-  * List unsorted imported recipes by import depth and offset (#2092)
-  * Update README.md (#2091)
+  * Fix man page generation in release workflow
+  * Release 1.28.0
+  * Don't check in manpage
+  * Document default shell
+  * Write shebang recipes to $XDG_RUNTIME_DIR
+  * Remove duplicate section in Chinese readme
+  * Update Chinese readme
+  * Fix typo in readme
+  * Don't check in auto-generated completion scripts
+  * Add `set dotenv-required` to require an environment file
+  * Allow listing recipes in submodules with `--list-submodules`
+  * Use space-separated recipe paths in `--choose`
+  * Don't display submodule recipes in `--list`
+  * Show recipes in submodules with `--show RECIPE::PATH`
+  * Add `--timestamp-format`
+  * Allow listing submodule recipes with `--list PATH`
+  * Print recipe command timestamps with `--timestamps`
+  * Add `module_file()` and `module_directory()` functions
+  * Fix bash completion for aliases
+  * Document when dependencies run in readme
+  * Build aarch64-pc-windows-msvc release binaries
+  * Clarify that `dotenv-path`-given env file is required
+  * Print multi-line doc comments before recipe in `--list`
+  * List unsorted imported recipes by import depth and offset
+  * Update README.md
 
 -------------------------------------------------------------------
 Sat May 25 13:05:59 UTC 2024 - rrahl0@disroot.org
 
 - Update to version 1.27.0:
-  * Release 1.27.0 (#2089)
-  * Add `[doc]` attribute to set and suppress documentation comments (#2050)
-  * Add source_file() and source_directory() functions (#2088)
-  * List modules in source order with `--unsorted` (#2085)
-  * Add recipe groups (#1842)
-  * Forbid whitespace in shell-expanded string prefixes (#2083)
-  * Add Debian and Ubuntu install instructions to readme (#2072)
-  * Remove snap installation instructions from readme (#2070)
-  * Show submodule recipes in --choose (#2069)
+  * Release 1.27.0
+  * Add `[doc]` attribute to set and suppress documentation comments
+  * Add source_file() and source_directory() functions
+  * List modules in source order with `--unsorted`
+  * Add recipe groups
+  * Forbid whitespace in shell-expanded string prefixes
+  * Add Debian and Ubuntu install instructions to readme
+  * Remove snap installation instructions from readme
+  * Show submodule recipes in --choose
   * Fallback to wget in install script if curl isn't available(#1913)
-  * Use cache dir for temporary files (#2067)
-  * Use std::io::IsTerminal instead of atty crate (#2066)
-  * Improve `shell()` documentation (#2060)
-  * Add bash completion for snap (#2058)
-  * Allow multiple imports of the same file in different modules (#2065)
-  * Fix submodule recipe listing indentation (#2063)
-  * Refactor list subcommand (#2062)
-  * Pass command as first argument to `shell` (#2061)
-  * Add shell() function for running external commands (#2047)
-  * Allow shell expanded strings in mod and import paths (#2059)
-  * Add `--global-justfile` flag (#1846)
-  * Run imported recipes in root justfile with correct working directory (#2056)
-  * Add shell-expanded strings (#2055)
-  * Add `encode_uri_component` function (#2052)
-  * Add `choose` function for generating random strings (#2049)
-  * Add predefined constants (#2054)
-  * Document working directory (#2053)
-  * Replace FunctionContext with Evaluator (#2048)
-  * Allow setting some command-line options with environment variables (#2044)
-  * Add prepend() function (#2045)
-  * Add append() function (#2046)
-  * Add --man subcommand (#2041)
-  * Make `dotenv-path` relative to working directory (#2040)
-  * Update clap to version 4 (#1924)
-  * Cleanup (#2026)
-  * Increase --list maximum alignable width from 30 to 50 (#2039)
-  * Document using `env -S` (#2038)
-  * Update line continuation documentation (#1998)
-  * Add `assert` expression (#1845)
-  * Add 'allow-duplicate-variables' setting (#1922)
-  * Add example using GNU parallel to run tasks in concurrently (#1915)
-  * Placate clippy: use `clone_into` (#2037)
-  * Use --command-color when printing shebang recipe commands (#1911)
-  * Document how to use watchexec to re-run recipes when files change (#2036)
-  * Fix output `\r\n` stripping (#2035)
-  * Update VS Code extensions in readme (#2034)
-  * Add rust:just repology package table to readme (#2032)
+  * Use cache dir for temporary files
+  * Use std::io::IsTerminal instead of atty crate
+  * Improve `shell()` documentation
+  * Add bash completion for snap
+  * Allow multiple imports of the same file in different modules
+  * Fix submodule recipe listing indentation
+  * Refactor list subcommand
+  * Pass command as first argument to `shell`
+  * Add shell() function for running external commands
+  * Allow shell expanded strings in mod and import paths
+  * Add `--global-justfile` flag
+  * Run imported recipes in root justfile with correct working directory
+  * Add shell-expanded strings
+  * Add `encode_uri_component` function
+  * Add `choose` function for generating random strings
+  * Add predefined constants
+  * Document working directory
+  * Replace FunctionContext with Evaluator
+  * Allow setting some command-line options with environment variables
+  * Add prepend() function
+  * Add append() function
+  * Add --man subcommand
+  * Make `dotenv-path` relative to working directory
+  * Update clap to version 4
+  * Cleanup
+  * Increase --list maximum alignable width from 30 to 50
+  * Document using `env -S`
+  * Update line continuation documentation
+  * Add `assert` expression
+  * Add 'allow-duplicate-variables' setting
+  * Add example using GNU parallel to run tasks in concurrently
+  * Placate clippy: use `clone_into`
+  * Use --command-color when printing shebang recipe commands
+  * Document how to use watchexec to re-run recipes when files change
+  * Fix output `\r\n` stripping
+  * Update VS Code extensions in readme
+  * Add rust:just repology package table to readme
 - add ignore-test.patch, as the backtick test fails only on OBS
 
 -------------------------------------------------------------------
@@ -373,11 +405,11 @@ Tue May 14 10:43:57 UTC 2024 - rrahl0@disroot.org
 
 - Update to version 1.26.0:
   * Update dependencies
-  * Clarify that janus operates on public justfiles only (#2021)
-  * Fix Error::TmpdirIo error message (#1987)
-  * Add --no-aliases to hide aliases in --list (#1961)
-  * Add -E as alias for --dotenv-path (#1910)
-  * Rename `delete` example recipe to `delete-all` (#1966)
+  * Clarify that janus operates on public justfiles only
+  * Fix Error::TmpdirIo error message
+  * Add --no-aliases to hide aliases in --list
+  * Add -E as alias for --dotenv-path
+  * Rename `delete` example recipe to `delete-all`
 - enable upstream tests
 
 -------------------------------------------------------------------

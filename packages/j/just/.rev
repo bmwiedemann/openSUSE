@@ -371,4 +371,41 @@
     <comment>- create manpage, so we actually have documentation (forwarded request 1285631 from rrahl0)</comment>
     <requestid>1285632</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>aacc5ee50014647c5d608f5ac3368ee6</srcmd5>
+    <version>1.41.0</version>
+    <time>1751814379</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.41.0:
+  * Treat SIGINFO as non-fatal
+  * Improve signal handling
+  * Add dotenv-override setting
+  * Add PATH_SEP and PATH_VAR_SEP constants
+  * Add --tempdir command-line option
+  * Pin clap_complete to last compatible version
+  * Add arkade to readme
+  * Link to pipx instead of pypi in readme
+  * Add reasons to #[ignore] attributes
+  * Mention that command-line environment variables are inherited
+  * Fix attribute grammar and update documentation
+  * Tweak prose in groups section of readme
+  * Update extractions/setup-just version in readme
+  * Remove return in Recipe::confirm
+  * Add mise to alternatives in readem
+  * Update softprops/action-gh-release
+  * Use default as name of --init justfile default recipe
+  * Add just.systems link to --init justfile
+  * Fix kitchen-sink.just comment
+  * Update softprops/action-gh-release
+  * Fix clippy lints
+  * Add back-to-the-top link to readme
+  * Placate clippy lints for 1.86
+  * Use -S in uv example
+  * Handle --request without parsing justfile
+- remove unnecessary set_version service
+- disable cargo_vendor filtering, as of right now it's bugged
+
+  * Release 1.29.1 (forwarded request 1290139 from rrahl0)</comment>
+    <requestid>1290140</requestid>
+  </revision>
 </revisionlist>

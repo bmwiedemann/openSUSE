@@ -3,7 +3,5 @@
   <service name="cargo_vendor" mode="manual">
     <param name="src">just-*.tar.gz</param>
     <param name="update">true</param>
-    <param name="filter">true</param>
   </service>
-  <service name="set_version" mode="manual" />
 </services>
