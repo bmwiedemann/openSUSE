@@ -25,4 +25,14 @@
 - Initial Package</comment>
     <requestid>1273207</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>226d7333294d4ef44525f3917fc5096e</srcmd5>
+    <version>3.2.3</version>
+    <time>1751814846</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.2.3:
+  * Fix mypy error in the plugin
+  * fix: docker host doesn't need to start with tcp://</comment>
+    <requestid>1290627</requestid>
+  </revision>
 </revisionlist>

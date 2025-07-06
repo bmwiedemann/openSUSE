@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  4 07:50:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.2.3:
+  * Fix mypy error in the plugin
+  * fix: docker host doesn't need to start with tcp://
+
+-------------------------------------------------------------------
 Mon Apr 28 16:38:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.1:

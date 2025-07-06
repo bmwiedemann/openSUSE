@@ -18,11 +18,10 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-docker
-Version:        3.2.1
+Version:        3.2.3
 Release:        0
 Summary:        Simple pytest fixtures for Docker and Docker Compose based tests
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/avast/pytest-docker
 Source:         https://github.com/avast/pytest-docker/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module attrs >= 19.2.0}
