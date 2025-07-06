@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jun 29 06:49:01 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird ESR 128.12.0
+  MFSA 2025-55 (bsc#1244670)
+  * CVE-2025-6424 (bmo#1966423)
+    Use-after-free in FontFaceSet
+  * CVE-2025-6425 (bmo#1717672)
+    The WebCompat WebExtension shipped exposed a persistent UUID
+  * CVE-2025-6426 (bmo#1964385)
+    No warning when opening executable terminal files on macOS
+  * CVE-2025-6429 (bmo#1970658)
+    Incorrect parsing of URLs could have allowed embedding of
+    youtube.com
+  * CVE-2025-6430 (bmo#1971140)
+    Content-Disposition header ignored when a file is included in
+    an embed or object tag
+
+-------------------------------------------------------------------
 Tue Jun 17 08:18:37 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Use these tools/versions unconditionally, package won't build on

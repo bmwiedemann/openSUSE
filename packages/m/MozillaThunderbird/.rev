@@ -5928,4 +5928,25 @@ I cannot test locally unfortunately.
   gcc14, gcc14-c++, cargo1.84, rust1.84</comment>
     <requestid>1287471</requestid>
   </revision>
+  <revision rev="366" vrev="1">
+    <srcmd5>7f097b2e86b8bb8230ff0d8b12c97f01</srcmd5>
+    <version>128.12.0</version>
+    <time>1751814855</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Thunderbird ESR 128.12.0
+  MFSA 2025-55 (bsc#1244670)
+  * CVE-2025-6424 (bmo#1966423)
+    Use-after-free in FontFaceSet
+  * CVE-2025-6425 (bmo#1717672)
+    The WebCompat WebExtension shipped exposed a persistent UUID
+  * CVE-2025-6426 (bmo#1964385)
+    No warning when opening executable terminal files on macOS
+  * CVE-2025-6429 (bmo#1970658)
+    Incorrect parsing of URLs could have allowed embedding of
+    youtube.com
+  * CVE-2025-6430 (bmo#1971140)
+    Content-Disposition header ignored when a file is included in
+    an embed or object tag</comment>
+    <requestid>1290580</requestid>
+  </revision>
 </revisionlist>
