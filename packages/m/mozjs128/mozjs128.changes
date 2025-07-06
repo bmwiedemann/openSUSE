@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jul  4 18:00:13 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 128.12.0:
+  + CVE-2025-6424: Use-after-free in FontFaceSet
+  + CVE-2025-6425: The WebCompat WebExtension shipped with Firefox
+    exposed a persistent UUID
+  + CVE-2025-6426: No warning when opening executable terminal
+    files on macOS
+  + CVE-2025-6429: Incorrect parsing of URLs could have allowed
+    embedding of youtube.com
+  + CVE-2025-6430: Content-Disposition header ignored when a file
+    is included in an embed or object tag
+- Changes from version 128.11.0:
+  + CVE-2025-5283: Double-free in libvpx encoder
+  + CVE-2025-5263: Error handling for script execution was
+    incorrectly isolated from web content
+  + CVE-2025-5264: Potential local code execution in “Copy as cURL”
+    command
+  + CVE-2025-5265: Potential local code execution in “Copy as cURL”
+    command
+  + CVE-2025-5266: Script element events leaked cross-origin
+    resource status
+  + CVE-2025-5267: Clickjacking vulnerability could have led to
+    leaking saved payment card details
+  + CVE-2025-5268: Memory safety bugs fixed in Firefox 139,
+    Thunderbird 139, Firefox ESR 128.11, and Thunderbird 128.11
+  + CVE-2025-5269: Memory safety bug fixed in Firefox ESR 128.11
+    and Thunderbird 128.11
+
+-------------------------------------------------------------------
 Tue May 20 08:27:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 128.10.1:
