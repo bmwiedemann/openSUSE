@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul  3 07:51:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.10.1:
+  * Fix use-after-free in capabilities handling. The visible effect of this was
+    either crash, or some capabilities having wrong state
+  * Fix nullptr dereference in TAGMSG handling
+  * Preserve `DisableClientCap/DisableServerCap` settings when writing config
+  * The listening unix socket can now be configured to belong to a specific
+    group and/or to have a specific file access mode. The syntax for AddPort
+    command is `unix:ssl,group=mygroup,mode=666:/path`, some of these options
+    can be skipped if the feature is not needed
+
+-------------------------------------------------------------------
 Tue Jun 10 14:48:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.10.0:
