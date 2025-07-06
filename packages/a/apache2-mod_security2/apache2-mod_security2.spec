@@ -18,7 +18,7 @@
 
 
 Name:           apache2-mod_security2
-Version:        2.9.10
+Version:        2.9.11
 Release:        0
 Summary:        Web Application Firewall for Apache httpd
 License:        Apache-2.0

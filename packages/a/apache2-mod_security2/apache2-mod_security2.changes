@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  3 11:13:07 UTC 2025 - pgajdos@suse.com
+
+- version update to 2.9.11 [bsc#1245620] (CVE-2025-52891)
+  * fix: prevent segmentation fault if the XML node is empty
+  * Plug memory leak when msre_op_validateSchema_execute() exits normally (validateSchema)
+  * chore: bump version in MSI installer.wxs
+  * Fix resource leaks in `msc_status_engine_mac_address`
+- modified patches
+  % apache2-mod_security2-no_rpath.diff (refreshed)
+  % modsecurity-fixes.patch (refreshed)
+
+-------------------------------------------------------------------
 Mon Jun  2 19:14:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.9.10:

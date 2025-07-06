@@ -355,4 +355,19 @@ CVE-2025-48866 (boo#1243976)
 CVE-2025-47947 (boo#1243978) (forwarded request 1282154 from AndreasStieger)</comment>
     <requestid>1282334</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9941d5f2707b1797ac680f45c4bdeacd</srcmd5>
+    <version>2.9.11</version>
+    <time>1751814425</time>
+    <user>anag_factory</user>
+    <comment>- version update to 2.9.11 [bsc#1245620] (CVE-2025-52891)
+  * fix: prevent segmentation fault if the XML node is empty
+  * Plug memory leak when msre_op_validateSchema_execute() exits normally (validateSchema)
+  * chore: bump version in MSI installer.wxs
+  * Fix resource leaks in `msc_status_engine_mac_address`
+- modified patches
+  % apache2-mod_security2-no_rpath.diff (refreshed)
+  % modsecurity-fixes.patch (refreshed)</comment>
+    <requestid>1290193</requestid>
+  </revision>
 </revisionlist>
