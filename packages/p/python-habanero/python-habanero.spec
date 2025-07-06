@@ -1,7 +1,7 @@
 #
 # spec file for package python-habanero
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,29 @@
 
 
 Name:           python-habanero
-Version:        1.2.6
+Version:        2.3.0
 Release:        0
 Summary:        Low Level Client for Crossref Search API
 License:        MIT
 URL:            https://github.com/sckott/habanero
 Source:         https://files.pythonhosted.org/packages/source/h/habanero/habanero-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-requests >= 2.7.0
-Requires:       python-tqdm
+Requires:       python-PyYAML >= 6.0.2
+Requires:       python-httpx >= 0.27.2
+Requires:       python-packaging >= 24.1
+Requires:       python-tqdm >= 4.66.5
+Requires:       python-urllib3 >= 2.2.2
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest-vcr}
+BuildRequires:  %{python_module pytest-recording}
+BuildRequires:  %{python_module httpx >= 0.27.2}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests >= 2.7.0}
-BuildRequires:  %{python_module tqdm}
-BuildRequires:  %{python_module vcrpy}
+BuildRequires:  %{python_module tqdm >= 4.66.5}
+BuildRequires:  %{python_module urllib3 >= 2.2.2}
 # /SECTION
 %python_subpackages
 
@@ -46,10 +50,10 @@ Low Level Client for Crossref Search API
 %autosetup -p1 -n habanero-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,8 +61,8 @@ Low Level Client for Crossref Search API
 
 %files %{python_files}
 %doc Changelog.rst README.rst
-%license LICENSE
+%license LICENSE.md
 %{python_sitelib}/habanero
-%{python_sitelib}/habanero-%{version}*-info
+%{python_sitelib}/habanero-%{version}.dist-info
 
 %changelog

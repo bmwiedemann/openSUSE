@@ -15,4 +15,20 @@
     <comment></comment>
     <requestid>1198719</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8da3b224c46a70bf18a9464291f2b2d4</srcmd5>
+    <version>2.3.0</version>
+    <time>1751814361</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.0:
+  * Change urllib3 version to urllib3&gt;=2.2.2,&lt;3.0.0
+  * Make tests independent of optional dependency bibtexparser
+  * Moved bibtexparser from required dependency to optional
+  * Added new Crossref instance variable timeout for the user to set a curl
+    timeout for all requests using the instance of the class created with
+    timeout
+  * Replaced requests with httpx throughout this package
+- Switch to pyproject macros.</comment>
+    <requestid>1290080</requestid>
+  </revision>
 </revisionlist>

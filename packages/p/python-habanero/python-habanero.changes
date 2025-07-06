@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul  3 05:59:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.3.0:
+  * Change urllib3 version to urllib3>=2.2.2,<3.0.0
+  * Make tests independent of optional dependency bibtexparser
+  * Moved bibtexparser from required dependency to optional
+  * Added new Crossref instance variable timeout for the user to set a curl
+    timeout for all requests using the instance of the class created with
+    timeout
+  * Replaced requests with httpx throughout this package
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Sep  4 12:15:50 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
 
 - removed mark-vcr-tests.patch, no longer needed. 
