@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 16 13:20:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 37
+  * Add /etc and /run to the search paths for system services.
+  * Support systemd's ``notify-reload`` to trigger a reload
+    operation.
+  * Extend the `org.freedesktop.DBus.Debug.Stats.GetStats` DBUS
+    interface with all the fields defined in the spec.
+  * Fix a bug in match-rule processing which caused argument
+    processing to fail for any but the first message argument.
+  * Fix a memory leak in configuration processing when parsing
+    invalid user or group IDs.
+
+-------------------------------------------------------------------
 Thu Dec 19 02:15:06 UTC 2024 - Simon Lees <sflees@suse.de>
 
 - Requires(pre): systemd >= 253.6 to ensure scripts in %post are
