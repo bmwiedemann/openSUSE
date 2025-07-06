@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kturtle
-Version:        25.04.2
+Version:        25.04.3
 Release:        0
 Summary:        Logo Programming Environment
 License:        GPL-2.0-or-later
