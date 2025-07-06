@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jul  5 00:05:00 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.7.19
+ * The uv build backend is now stable, and considered ready for production use.
+ * Enhancements
+   * Ignore Python patch version for --universal pip compile
+   * Update the tilde version specifier warning to include more context
+   * Clarify behavior and hint on tool install when no executables are available
+ * Bug fixes
+   * Make project and interpreter lock acquisition non-fatal
+   * Includes sys.prefix in cached environment keys to avoid --with collisions across projects 
+ * Documentation
+   * Add a migration guide from pip to uv projects 
+
+-------------------------------------------------------------------
 Wed Jul  2 10:33:55 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Reduce memory usage during build, removing lto=fat from Cargo.toml.
