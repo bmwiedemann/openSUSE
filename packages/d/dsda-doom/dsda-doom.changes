@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul  3 14:56:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.29.3
+  * Fixed wrong save slot being deleted when quicksaving
+  * Fixed a crash in Hexen
+  * Fixed building dsda-doom.wad in big-endian hosts
+  * Improved statusbar color background algorithm
+
+-------------------------------------------------------------------
 Fri Jun 27 07:58:23 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.29.2

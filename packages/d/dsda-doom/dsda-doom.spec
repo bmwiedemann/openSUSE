@@ -17,7 +17,7 @@
 
 
 Name:           dsda-doom
-Version:        0.29.2
+Version:        0.29.3
 Release:        0
 Summary:        DOOM source port with Hexen support and demo compatibility
 License:        GPL-2.0-or-later
