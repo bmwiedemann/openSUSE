@@ -454,4 +454,13 @@
   * Includes gcc13-bsc1216664.patch</comment>
     <requestid>1283431</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>e5bd73e7daaa3a7089f6bbd4a9bdf6a1</srcmd5>
+    <version>13.4.0+git9739</version>
+    <time>1751814371</time>
+    <user>anag_factory</user>
+    <comment>- Tune for power10 for SLES 16.  [jsc#PED-12029]
+- Tune for z15 for SLES 16.  [jsc#PED-253]</comment>
+    <requestid>1290114</requestid>
+  </revision>
 </revisionlist>
