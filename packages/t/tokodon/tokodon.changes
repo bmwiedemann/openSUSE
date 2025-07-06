@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul  1 15:27:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.3/
+- Changes since 25.04.2:
+  * Prevent a null access in certain timelines (kde#504215)
+  * Make blocking accounts actually work
+  * Allow boosting your own private posts
+  * Fix timeline streaming when the server configured it for another URL (kde#505213)
+
+-------------------------------------------------------------------
 Tue Jun  3 21:13:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.2
