@@ -18,7 +18,7 @@
 
 %define modname mod_maxminddb
 Name:           apache2-mod_maxminddb
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        MaxMind DB Apache Module
 License:        Apache-2.0

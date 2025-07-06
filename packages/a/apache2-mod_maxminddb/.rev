@@ -40,4 +40,14 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1147827 from dimstar)</comment>
     <requestid>1149080</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d6af3161624eab4fd92e4749f221ce15</srcmd5>
+    <version>1.3.0</version>
+    <time>1751814387</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.3.0
+  * Portability fixes
+  * Documentation improvements (forwarded request 1290020 from Simmphonie)</comment>
+    <requestid>1290143</requestid>
+  </revision>
 </revisionlist>
