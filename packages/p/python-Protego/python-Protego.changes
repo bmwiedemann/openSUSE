@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul  3 13:13:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.5.0
+  * Restructured the code, splitting the single ``protego.py`` file
+    into multiple modules. The public API remains the same but some
+    internal names may now be available at different import paths.
+  * Added type hints and ``py.typed``.
+  * Added official support for PyPy 3.11.
+  * Switched the build backend from ``setuptools`` to ``hatchling``.
+  * Switched from ``setup.py`` to ``pyproject.toml``.
+  * CI fixes and improvements.
+- Update BuildRequires from pyproject.toml
+- Update filenames of Python files matched in %files section
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Mon Apr 14 06:10:41 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.
