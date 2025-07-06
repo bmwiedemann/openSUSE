@@ -28,7 +28,7 @@
 
 %bcond_without released
 Name:           kajongg
-Version:        25.04.2
+Version:        25.04.3
 Release:        0
 Summary:        4 Player Mahjongg game
 License:        GPL-2.0-or-later
