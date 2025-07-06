@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Wed Jul  2 07:29:33 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 11.3.0 (includes fix for CVE-2025-48379, bsc#1245578)
+  * Deprecations
+    * Deprecate fromarray mode argument #9018 [@radarhere]
+    * Deprecate saving I mode images as PNG #9023 [@radarhere]
+  * Documentation
+    * Added release notes for #9041 #9042 [@radarhere]
+    * Add release notes for #8912 and #8969 #9019 [@radarhere]
+    * ImageFont does not handle multiline text #9000 [@radarhere]
+    * Updated Ubuntu CI targets #8988 [@radarhere]
+    * Update MinGW package names #8987 [@H4M5TER]
+    * Updated docstring #8943 [@radarhere]
+    * Mention that tobytes() with the raw encoder uses Pack.c
+      #8878 [@radarhere]
+    * Refactor docs Makefile #8933 [@hugovk]
+    * Add template for quarterly release issue #8932 [@aclark4life]
+    * Add list of third party plugins #8910 [@radarhere]
+    * Update redirected URL #8919 [@radarhere]
+    * Docs: use sentence case for headers #8914 [@hugovk]
+    * Docs: remove unused Makefile targets #8917 [@hugovk]
+    * Remove indentation from lists #8915 [@radarhere]
+    * Python 3.13 is tested on Arch #8894 [@radarhere]
+    * Move XV Thumbnails to read only section #8893 [@aclark4life]
+  * Dependencies
+    * Updated macOS tested Pillow versions #8890 [@radarhere]
+    * Add AVIF to wheels using only aomenc and dav1d AVIF codecs for
+      reduced size #8858 [@fdintino]
+    * Use same AVIF URL when fetching dependency #8871 [@radarhere]
+    * Update dependency mypy to v1.16.1 #9026 [@renovate[bot]]
+    * Update libpng to 1.6.49 #9014 [@radarhere]
+    * Update dependency cibuildwheel to v3 #9010 [@renovate[bot]]
+    * Updated libjpeg-turbo to 3.1.1 #9009 [@radarhere]
+    * Update dependency mypy to v1.16.0 #8991 [@renovate[bot]]
+    * Updated libpng to 1.6.48 #8940 [@radarhere]
+    * Updated Ghostscript to 10.5.1 #8939 [@radarhere]
+    * Updated harfbuzz to 11.2.1 #8937 [@radarhere]
+    * Updated libavif to 1.3.0 #8949 [@radarhere]
+    * Update dependency cibuildwheel to v2.23.3 #8931 [@renovate[bot]]
+    * Updated harfbuzz to 11.1.0 #8904 [@radarhere]
+  * Testing
+    * Add match parameter to pytest.warns() #9038 [@hugovk]
+    * Increase pytest verbosity #9040 [@radarhere]
+    * Improve SgiImagePlugin test coverage #8896 [@radarhere]
+    * Update ruff pre-commit ID #8994 [@radarhere]
+    * Only check DHT marker for libjpeg-turbo #9025 [@radarhere]
+    * Improve BLP tests #9020 [@radarhere]
+    * Fix warning #9016 [@radarhere]
+    * Test Python 3.14t on macOS and Linux #9011 [@radarhere]
+    * Only accept missing tkinter when building wheels on Windows
+      #8981 [@radarhere]
+    * Fix test #8996 [@radarhere]
+    * Stop testing deprecated Windows Server 2019 runner image
+      #8989 [@radarhere]
+    * Run slow tests on valgrind, but without timeout #8975 [@radarhere]
+    * Close file pointer earlier #8895 [@radarhere]
+    * Added Fedora 42 #8899 [@radarhere]
+    * Removed Fedora 40 #8887 [@radarhere]
+  * Type hints
+    * Assert palette is not None #8877 [@radarhere]
+    * Do not import type checking #8854 [@radarhere]
+    * Improve type hints #8883 [@radarhere]
+    * Update dependency mypy to v1.16.0 #8991 [@renovate[bot]]
+  * Other changes
+    * Updated check script paths #9052 [@radarhere]
+    * Raise FileNotFoundError when opening an empty path #9048 [@radarhere]
+    * Handle IPTC TIFF tags with incorrect type #8925 [@radarhere]
+    * Do not update palette for L mode GIF frame #8924 [@radarhere]
+    * Use save parameters as encoderinfo defaults #9001 [@radarhere]
+    * Add support for iOS #9030 [@freakboy3742]
+    * Fix qtables and quality scaling #8879 [@Kyliroco]
+    * Read 16-bit McIdas images into I;16B mode to allow for memory mapping
+      #9046 [@radarhere]
+    * Support ttb multiline text #8730 [@radarhere]
+    * Use unpacking #9044 [@radarhere]
+    * Fix saving MPO with more than one appended image #8979 [@radarhere]
+    * Restore original encoderinfo after saving #8942 [@radarhere]
+    * Return PixelAccess from first load of ICO and IPTC images
+      #8922 [@radarhere]
+    * Improve justifying text #8905 [@radarhere]
+    * Set color table fourth channel to zero for 1 and L mode when saving BMP
+      #8889 [@radarhere]
+    * Improve reading XPM images #8874 [@radarhere]
+    * Fix buffer overflow when saving compressed DDS images #9041 [@radarhere]
+    * Use PEP 489 multi-phase initialization #8983 [@radarhere]
+    * Support saving I;16L TIFF images #9015 [@radarhere]
+    * Do not call sys.executable in ImageShow in PyInstaller application
+      #9028 [@radarhere]
+    * Search for libtiff library file first on Windows and macOS
+      #9034 [@radarhere]
+    * Fix libtiff cleanup #9002 [@radarhere]
+    * Use percent formatting for _dbg calls #9035 [@radarhere]
+    * Removed ImageCmsProfile._set method #9032 [@radarhere]
+    * Added Python 3.14 macOS x86-64 wheels #9031 [@radarhere]
+    * Support writing QOI images #9007 [@thisismypassport]
+    * Simplify C error handling #9021 [@radarhere]
+    * Add Python 3.14 beta wheels #9012 [@hugovk]
+    * Remove padding between interleaved PCX palette data #9005 [@radarhere]
+    * Start QOI decoding with a zero-initialized array of previously seen
+      pixels #9008 [@radarhere]
+    * Correct drawing I;16 horizontal lines #8985 [@radarhere]
+    * Reduce number of bytes read for PCX header #9004 [@radarhere]
+    * Handle XMP data from an UNDEFINED TIFF tag #8997 [@radarhere]
+    * Do not decode bytes in PPM error message #8958 [@radarhere]
+    * Parse XMP tag bytes without decoding to string #8960 [@radarhere]
+    * Clear TIFF core image if memory mapping was used for last load
+      #8962 [@radarhere]
+    * Use mask in C when drawing wide polygon lines #8984 [@radarhere]
+    * Simplify code #8863 [@radarhere]
+    * Call startswith once with a tuple #8998 [@radarhere]
+    * [pre-commit.ci] pre-commit autoupdate #8993 [@pre-commit-ci[bot]]
+    * Use ImageFile.MAXBLOCK in tobytes() #8906 [@radarhere]
+    * Removed unreachable code #8918 [@radarhere]
+    * Valgrind Memory Leak Checking #8954 [@wiredfool]
+    * Add parallel test target, using pytest-xdist #8972 [@wiredfool]
+    * Add support for flat uint8 arrow arrays for multi channel images
+      #8908 [@wiredfool]
+    * Removed CMAKE_POLICY_VERSION_MINIMUM=3.5 for libavif #8973 [@radarhere]
+    * Reduced number of bytes read in WMF header #8964 [@radarhere]
+    * Do not build against libavif < 1 #8969 [@radarhere]
+    * Improved support for Python 3.14 #8948 [@radarhere]
+    * [pre-commit.ci] pre-commit autoupdate #8944 [@pre-commit-ci[bot]]
+    * Allow loading ImageFile state from Pillow < 11.2.1 #8938 [@radarhere]
+    * Remove outdated comment #8929 [@radarhere]
+    * Add support for Grim in Wayland sessions ImageGrab #8912 [@AdianKozlica]
+    * Add make [-C docs] htmllive to rebuild and reload HTML files
+      #8913 [@hugovk]
+    * Build Windows arm64 wheels on arm64 runner #8898 [@radarhere]
+
+-------------------------------------------------------------------
 Mon May 12 10:00:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 11.2.1

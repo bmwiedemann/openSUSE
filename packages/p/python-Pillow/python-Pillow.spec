@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pillow
-Version:        11.2.1
+Version:        11.3.0
 Release:        0
 Summary:        Python Imaging Library (Fork)
 License:        HPND
