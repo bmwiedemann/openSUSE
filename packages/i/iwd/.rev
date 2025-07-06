@@ -537,4 +537,16 @@
     <comment>- Update to version 3.8</comment>
     <requestid>1283888</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>b27311f21c9cde60e6db2b9fbd8511b7</srcmd5>
+    <version>3.9</version>
+    <time>1751814433</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.9
+   * Fix issue with Access Point mode and frequency unlocking.
+   * Fix issue with network configuration and BSS retry logic.
+   * Fix issue with handling busy notification from Access Point.
+   * Fix issue with handling P-192, P-224 and P-521 for SAE. (forwarded request 1289963 from alois)</comment>
+    <requestid>1290199</requestid>
+  </revision>
 </revisionlist>
