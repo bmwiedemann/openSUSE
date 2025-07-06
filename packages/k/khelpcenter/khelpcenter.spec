@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           khelpcenter
-Version:        25.04.2
+Version:        25.04.3
 Release:        0
 Summary:        KDE Documentation Application
 License:        GPL-2.0-or-later
