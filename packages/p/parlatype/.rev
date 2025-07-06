@@ -163,4 +163,18 @@
     version of Parlatype.</comment>
     <requestid>1178223</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4fd72757bb64423663022a9335934f60</srcmd5>
+    <version>4.3</version>
+    <time>1751814874</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.3:
+  * New: added support for PocketSphinx 5
+  * New: debug info in About dialog
+  * New: MPRIS interface provides album, artist, title
+  * More usage of libadwaita
+  * Several fixes
+  * See https://www.parlatype.xyz/2025/07/01/v4.3.html</comment>
+    <requestid>1290613</requestid>
+  </revision>
 </revisionlist>

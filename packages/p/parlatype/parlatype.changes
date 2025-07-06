@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul  4 06:22:51 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.3:
+  * New: added support for PocketSphinx 5
+  * New: debug info in About dialog
+  * New: MPRIS interface provides album, artist, title
+  * More usage of libadwaita
+  * Several fixes
+  * See https://www.parlatype.xyz/2025/07/01/v4.3.html
+
+-------------------------------------------------------------------
 Mon Jun  3 06:18:05 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.2:
