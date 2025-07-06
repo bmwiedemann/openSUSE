@@ -114,4 +114,14 @@
   * Possible object has no attribute 'poetry' error in some projects. (forwarded request 1265535 from rrahl0)</comment>
     <requestid>1265536</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7908907c3b283276f808907a52ac416f</srcmd5>
+    <version>1.9.0</version>
+    <time>1751814946</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.9.0:
+  * Option tool.poetry-dynamic-versioning.commit-prefix
+  * Option tool.poetry-dynamic-versioning.escape-with (forwarded request 1290820 from rrahl0)</comment>
+    <requestid>1290821</requestid>
+  </revision>
 </revisionlist>

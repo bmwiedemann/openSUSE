@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul  5 18:23:08 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.9.0:
+  * Option tool.poetry-dynamic-versioning.commit-prefix
+  * Option tool.poetry-dynamic-versioning.escape-with
+
+-------------------------------------------------------------------
 Sun Mar 30 11:42:39 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.8.2:
