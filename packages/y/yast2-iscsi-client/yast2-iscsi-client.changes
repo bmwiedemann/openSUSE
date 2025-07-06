@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul  3 13:24:33 UTC 2025 - José Iván López González <jlopez@suse.com>
+
+- Avoid exception if discovering from a portal fails (related to
+  bsc#1245171).
+- 5.0.8
+
+-------------------------------------------------------------------
+Wed Jul  2 15:24:46 UTC 2025 - José Iván López González <jlopez@suse.com>
+
+- Add method for discovering from a portal (needed for Agama, see
+  bsc#1245171).
+- 5.0.7
+
+-------------------------------------------------------------------
 Wed Jan 22 16:31:35 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
 
 - Try to load the iscsi_ibft module in ARM arch as it should be 
@@ -44,7 +58,6 @@ Tue Sep 19 14:01:12 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
 - 5.0.1
 
 -------------------------------------------------------------------
-
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)
