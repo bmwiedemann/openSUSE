@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul  3 07:28:21 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.5.8:
+  * i18n: Add missing translations, fix placeholder ordering, and relocate
+    punctuation
+  * Translations update
+  * Fix games being duplicated when switching tab back and forth
+- update to 0.5.7:
+  * Refine the library game list header
+  * Improved dropdowns in game library
+  * Removed Proton Kron4ek
+  * Fix crash when opening mass edit dialog a second time
+  * Fix changing compatibility tool not working in certain cases
+  * Translations update
+  * Improved the UI/UX
+  * Fix issue related to the new custom dropdown's
+
+-------------------------------------------------------------------
 Sun Jun 29 20:41:37 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.5.6:
