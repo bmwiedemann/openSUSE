@@ -1,0 +1,67 @@
+From d0ab0bfd0846e38df6c791222a364e82b52a34d9 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Thu, 3 Jul 2025 17:49:35 +0200
+Subject: [PATCH] Add `minion_legacy_req_warnings` option to avoid
+ noisy warnings
+
+---
+ salt/channel/server.py                      |  2 +-
+ tests/pytests/unit/transport/test_zeromq.py | 22 ++++++++++++++++++---
+ 2 files changed, 20 insertions(+), 4 deletions(-)
+
+diff --git a/salt/channel/server.py b/salt/channel/server.py
+index abef8aa2f0..1d7cc9c577 100644
+--- a/salt/channel/server.py
++++ b/salt/channel/server.py
+@@ -819,7 +819,7 @@ class ReqServerChannel:
+                 ret["aes"] = cipher.encrypt(aes)
+                 ret["session"] = cipher.encrypt(salt.utils.stringutils.to_bytes(self.session_key(load["id"])))
+ 
+-        if version < 3:
++        if version < 3 and self.opts.get("minion_legacy_req_warnings", True):
+             log.warning(
+                 "Minion using legacy request server protocol, please upgrade %s",
+                 load["id"],
+diff --git a/tests/pytests/unit/transport/test_zeromq.py b/tests/pytests/unit/transport/test_zeromq.py
+index 558f753778..fd0e4b1977 100644
+--- a/tests/pytests/unit/transport/test_zeromq.py
++++ b/tests/pytests/unit/transport/test_zeromq.py
+@@ -1034,7 +1034,7 @@ async def test_req_chan_decode_data_dict_entry_v2_bad_key(pki_dir, master_opts,
+     assert "Key verification failed." == excinfo.value.message
+ 
+ 
+-async def test_req_serv_auth_v1(pki_dir, master_opts, minion_opts):
++async def test_req_serv_auth_v1(pki_dir, master_opts, minion_opts, caplog):
+     minion_opts.update(
+         {
+             "master_uri": "tcp://127.0.0.1:4506",
+@@ -1088,8 +1088,24 @@ async def test_req_serv_auth_v1(pki_dir, master_opts, minion_opts):
+         "token": token,
+         "pub": pub_key,
+     }
+-    ret = server._auth(load, sign_messages=False)
+-    assert "load" not in ret
++    with caplog.at_level(logging.WARNING):
++        ret = server._auth(load, sign_messages=False)
++        assert "Minion using legacy request server protocol, please upgrade minion" in caplog.text
++        assert "load" not in ret
++
++    caplog.clear()
++
++    with caplog.at_level(logging.WARNING), patch.dict(server.opts, {"minion_legacy_req_warnings": False}):
++        ret = server._auth(load, sign_messages=False)
++        assert "Minion using legacy request server protocol, please upgrade minion" not in caplog.text
++        assert "load" not in ret
++
++    caplog.clear()
++
++    with caplog.at_level(logging.WARNING), patch.dict(server.opts, {"minion_legacy_req_warnings": True}):
++        ret = server._auth(load, sign_messages=False)
++        assert "Minion using legacy request server protocol, please upgrade minion" in caplog.text
++        assert "load" not in ret
+ 
+ 
+ async def test_req_serv_auth_v2(pki_dir, master_opts, minion_opts):
+-- 
+2.50.0
+
