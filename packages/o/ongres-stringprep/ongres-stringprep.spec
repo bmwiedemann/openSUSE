@@ -26,7 +26,7 @@ License:        BSD-2-Clause
 URL:            https://github.com/ongres/%{upstream_name}
 Source0:        https://github.com/ongres/%{upstream_name}/archive/%{upstream_version}/%{upstream_name}-%{upstream_version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 11
+BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 Provides:       ongres-stringprep-parent = %{upstream_version}
 Obsoletes:      ongres-stringprep-parent < %{upstream_version}
@@ -58,11 +58,7 @@ find \( -name '*.jar' -o -name '*.class' \) -delete
 # codegen is only needed for specific build profile that we do not use
 rm -r codegen
 
-%pom_xpath_inject 'pom:plugin[pom:artifactId="maven-jar-plugin"]/pom:configuration/pom:archive' '
-<manifestEntries>
-  <Multi-Release>true</Multi-Release>
-</manifestEntries>
-' parent
+%pom_xpath_remove 'pom:plugin[pom:artifactId="maven-compiler-plugin"]/pom:executions/pom:execution/pom:configuration/pom:multiReleaseOutput' parent
 
 %build
 %{mvn_build} -f
