@@ -75,4 +75,14 @@
     <comment></comment>
     <requestid>1282326</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4ced489486e08a7a844afe9eaff91165</srcmd5>
+    <version>30.4.3</version>
+    <time>1751814908</time>
+    <user>anag_factory</user>
+    <comment>- update to 30.4.3:
+  * Release license-expression wheels properly
+  * Update license list to latest ScanCode</comment>
+    <requestid>1290767</requestid>
+  </revision>
 </revisionlist>
