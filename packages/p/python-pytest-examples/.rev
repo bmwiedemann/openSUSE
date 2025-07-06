@@ -97,4 +97,17 @@
   * add `include_print` config function</comment>
     <requestid>1273219</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e8a1bf688b7ef46212e6f2309499dc0c</srcmd5>
+    <version>0.0.18</version>
+    <time>1751814214</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.0.18:
+  * adapt tests to pytest 8.3.4
+  * Increase triple quote search
+- Drop patch newline.patch, included upstream.
+- Skip a broken test with pytest 8.4.
+- Ship README and license.</comment>
+    <requestid>1290605</requestid>
+  </revision>
 </revisionlist>

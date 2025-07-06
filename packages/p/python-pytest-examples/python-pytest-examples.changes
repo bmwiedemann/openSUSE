@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul  4 06:12:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.0.18:
+  * adapt tests to pytest 8.3.4
+  * Increase triple quote search
+- Drop patch newline.patch, included upstream.
+- Skip a broken test with pytest 8.4.
+- Ship README and license.
+
+-------------------------------------------------------------------
 Mon Apr 28 16:51:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.17:

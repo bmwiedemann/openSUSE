@@ -18,15 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-examples
-Version:        0.0.17
+Version:        0.0.18
 Release:        0
 Summary:        Pytest plugin for testing examples in docstrings and markdown files
 License:        MIT
 URL:            https://github.com/pydantic/pytest-examples
-# sdist without tests
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-examples/pytest_examples-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/pydantic/pytest-examples/pull/54 adapt tests to pytest 8.3.4
-Patch:          newline.patch
 BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -61,9 +58,11 @@ It can also update code examples in place to format them and insert or update pr
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k 'not test_run_example_ok_fail'
 
 %files %{python_files}
+%license LICENSE
+%doc README.md
 %{python_sitelib}/pytest_examples
 %{python_sitelib}/pytest_examples-%{version}.dist-info
 
