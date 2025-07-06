@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul  3 08:31:53 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.0.0.0
+  * Removed some application-level functions that only belonged
+    only in the Planarity wrapper application for the graph
+    library.
+  * Addition of Graph6 file format (G6) support.
+  * Extended support to the ability to transform graphs stored in
+    files and in-memory strings to and from Graph6 format and
+    this project’s adjacency list and adjacency matrix formats.
+  * Added support for the output of randomly generated graphs and
+    LEDA input graphs into a Graph6 output file.
+  * On a small fraction of graphs containing a subgraph
+    homeomorphic to K_{3, 3}, the search reported a null result
+    due to an error in a pattern matching function that has been
+    repaired.
+
+-------------------------------------------------------------------
 Sun Dec  4 20:46:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - install license

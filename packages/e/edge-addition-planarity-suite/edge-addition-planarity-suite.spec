@@ -1,7 +1,7 @@
 #
 # spec file for package edge-addition-planarity-suite
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define lname   libplanarity0
+%define lname   libplanarity2
 Name:           edge-addition-planarity-suite
-Version:        3.0.2.0
+Version:        4.0.0.0
 Release:        0
 Summary:        Edge Addition Planarity Suite
 License:        GPL-3.0-or-later
@@ -65,26 +65,26 @@ autoreconf -fi
 %install
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
+find %buildroot|sort
 
 %check
 %make_build check
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
-%doc README.md
 %doc %_defaultdocdir/%name
 %_bindir/planarity
 %_mandir/man1/planarity.1*
 
 %files -n %lname
 %license LICENSE.TXT
-%_libdir/libplanarity.so.0*
+%_libdir/libplanarity.so.*
 
 %files devel
 %_includedir/planarity/
 %_libdir/libplanarity.so
+%_libdir/pkgconfig/*.pc
 %license LICENSE*
 
 %changelog
