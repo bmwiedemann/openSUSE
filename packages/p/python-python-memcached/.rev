@@ -233,4 +233,12 @@
 - drop python-python-memcached-no-six.patch (upstream)</comment>
     <requestid>1143507</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>66fb7fdaaeaf789bdbf94a09f9fe1caa</srcmd5>
+    <version>1.62</version>
+    <time>1751814903</time>
+    <user>anag_factory</user>
+    <comment>- fix tests for SLE15</comment>
+    <requestid>1290719</requestid>
+  </revision>
 </revisionlist>

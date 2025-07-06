@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-memcached
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,12 @@ sed -i -e '/__version__/s/[0-9.]\+/%{version}/' memcache.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+%if 0%{?suse_version} > 1500
 %{_bindir}/memcached -dv -P $PWD/memcached.pid
+%else
+%{_sbindir}/memcached -dv -P $PWD/memcached.pid
+%endif
+
 %pytest
 kill -9 $(cat $PWD/memcached.pid)
 
