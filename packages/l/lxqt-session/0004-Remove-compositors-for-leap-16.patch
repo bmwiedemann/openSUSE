@@ -1,0 +1,37 @@
+From 4aee405959d1c3518981e8c742afaf7dca34134d Mon Sep 17 00:00:00 2001
+From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
+Date: Thu, 3 Jul 2025 14:03:27 -0700
+Subject: [PATCH 4/4] Remove compositors for leap 16
+
+hyprland and river will not ship in Leap-16, remove them from selectable
+options
+---
+ config/waylandwindowmanagers.conf | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/config/waylandwindowmanagers.conf b/config/waylandwindowmanagers.conf
+index e0ddbb2..18ac2cc 100644
+--- a/config/waylandwindowmanagers.conf
++++ b/config/waylandwindowmanagers.conf
+@@ -1,8 +1,5 @@
+ [KnownManagers]
+ 
+-Hyprland/Name=Hyprland
+-Hyprland/Comment=Independent, highly customizable, dynamic tiling Wayland compositor
+-
+ kwin_wayland/Name=KWin-Wayland
+ kwin_wayland/Comment=Window manager of the KDE Software Compilation
+ 
+@@ -15,9 +12,6 @@ miriway/Comment=Simple Wayland compositor built on Mir for building desktop envi
+ niri/Name=niri
+ niri/Comment=A scrollable-tiling Wayland compositor
+ 
+-river/Name=River
+-river/Comment=Dynamic tiling Wayland compositor
+-
+ sway/Name=Sway
+ sway/Comment=i3-compatible, tiling Wayland compositor
+ 
+-- 
+2.50.0
+

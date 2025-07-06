@@ -26,12 +26,17 @@ URL:            https://github.com/lxqt/lxqt-session
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+# Special patch source, conditionally applied
+## PATCH-FIX-openSUSE Removes hyprland and river for Leap >= 16.0
+Source3:         0004-Remove-compositors-for-leap-16.patch
+
 # mvetter@suse.com bsc#1127043 - Use Openbox as default WM
 Patch1:         0001-set-default-wm.patch
 # PATCH-FIX-openSUSE boo#1226394 sfalken@opensuse.org
 Patch2:         0002-fix-xdg-desktop-portal-lxqt.patch
 # PATCH-FEATURE-UPSTREAM https://github.com/lxqt/lxqt-session/pull/571
 Patch3:         0003-add-option-for-miriway.patch
+
 
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  fdupes
@@ -82,6 +87,11 @@ This package provides the upstream look and feel for %{name}.
 
 %prep
 %autosetup -p1 -S git_am
+
+%if 0%{?suse_version} && 0%{?suse_version} <= 1600
+git am --reject %{SOURCE3}
+%endif
+
 sed -i 's/^\(Type=\).*/\1XSession/' xsession/lxqt.desktop.in
 sed -i '/^Categories/s/\(LXQt\;\)/X-\1/' lxqt-config-session/lxqt-config-session.desktop.in
 

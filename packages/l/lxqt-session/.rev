@@ -1444,4 +1444,18 @@ comply with openSUSE policy
     <comment></comment>
     <requestid>1270853</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>65c7a4f08a367fcd483baf0981f6bfc9</srcmd5>
+    <version>2.2.0</version>
+    <time>1751814825</time>
+    <user>anag_factory</user>
+    <comment>- Added:
+  * 0004-Remove-compositors-for-leap-16.patch
+- Dropped:
+  * 0004-Drop-hyprland-entry-from-available-compositors.patch
+
+- Added:
+  * 0004-Drop-hyprland-entry-from-available-compositors.patch</comment>
+    <requestid>1290560</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
-From 80f5eabac1b6f48ec8642b905bab2def40664633 Mon Sep 17 00:00:00 2001
+From 2fe58ac26890554a52153e806b66dcdcd3fb9dd2 Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Sat, 11 Jan 2025 21:29:09 -0800
-Subject: [PATCH 2/3] fix xdg desktop portal lxqt
+Subject: [PATCH 2/4] fix xdg desktop portal lxqt
 
 xdg-desktop-portal-lxqt isn't being started by xdg-desktop-portal on
 login, running "/usr/libexec/xdg-desktop-portal --replace" after login
@@ -26,5 +26,5 @@ index 0000000..637ddb4
 +Exec=/usr/libexec/xdg-desktop-portal --replace
 +OnlyShowIn=LXQt;
 -- 
-2.48.0
+2.50.0
 

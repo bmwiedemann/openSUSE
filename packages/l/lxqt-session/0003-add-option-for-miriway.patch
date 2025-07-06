@@ -1,7 +1,7 @@
-From ccd9bb7936f4e9bcb41179c8ff4ba96d1a204591 Mon Sep 17 00:00:00 2001
+From 369ea7915dc1a5445e766352d1aeb572bf2a83a4 Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Thu, 16 Jan 2025 10:39:28 -0800
-Subject: [PATCH 3/3] add option for miriway
+Subject: [PATCH 3/4] add option for miriway
 
 Miriway is a new generic compositor built on the Mir compositor library that
 is designed to be used as part of composable desktop environments.
@@ -26,5 +26,5 @@ index e727f43..e0ddbb2 100644
  niri/Comment=A scrollable-tiling Wayland compositor
  
 -- 
-2.48.0
+2.50.0
 
