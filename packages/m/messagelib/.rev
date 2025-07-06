@@ -993,4 +993,12 @@
   split-off of the C++ bindings (boo#1244605)</comment>
     <requestid>1286042</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>bd9c4b7526cdb7aca04292e858a581a1</srcmd5>
+    <version>25.04.3</version>
+    <time>1751814180</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.04.3 (forwarded request 1289933 from krop)</comment>
+    <requestid>1290463</requestid>
+  </revision>
 </revisionlist>
