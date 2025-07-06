@@ -1,0 +1,33 @@
+Work around a bug in cargo-vendor-filterer causing this:
+
++ cargo -vv auditable -vv rustc --offline --release --package desktop_napi --lib --crate-type cdylib
+warning: both `/home/abuild/rpmbuild/BUILD/bitwarden-2025.1.2/apps/desktop/desktop_native/.cargo/config` and `/home/abuild/rpmbuild/BUILD/bitwarden-2025.1.2/apps/desktop/desktop_native/.cargo/config.toml` exist. Using `/home/abuild/rpmbuild/BUILD/bitwarden-2025.1.2/apps/desktop/desktop_native/.cargo/config`
+warning: both `/home/abuild/rpmbuild/BUILD/bitwarden-2025.1.2/apps/desktop/desktop_native/.cargo/config` and `/home/abuild/rpmbuild/BUILD/bitwarden-2025.1.2/apps/desktop/desktop_native/.cargo/config.toml` exist. Using `/home/abuild/rpmbuild/BUILD/bitwarden-2025.1.2/apps/desktop/desktop_native/.cargo/config`
+error: failed to get `anyhow` as a dependency of package `desktop_napi v0.0.0 (/home/abuild/rpmbuild/BUILD/bitwarden-2025.1.2/apps/desktop/desktop_native/napi)`
+Caused by:
+  failed to load source for dependency `anyhow`
+Caused by:
+  Unable to update registry `crates-io`
+Caused by:
+  failed to update replaced source registry `crates-io`
+Caused by:
+  failed to parse manifest at `/home/abuild/rpmbuild/BUILD/bitwarden-2025.1.2/apps/desktop/desktop_native/vendor/cxxbridge-cmd/Cargo.toml`
+Caused by:
+  no targets specified in the manifest
+  either src/lib.rs, src/main.rs, a [lib] section, or [[bin]] section must be present
+
+
+--- clients/apps/desktop/desktop_native/vendor/cxxbridge-cmd/Cargo.toml.orig	2025-01-23 19:34:35.524748802 +0100
++++ clients/apps/desktop/desktop_native/vendor/cxxbridge-cmd/Cargo.toml	2025-01-23 19:58:25.464540529 +0100
+@@ -20,6 +20,11 @@ default-features = false
+ features = ["clone-impls", "full", "parsing", "printing"]
+ version = "2.0.46"
+ 
++[lib]
++doc-scrape-examples = false
++name = "cxxbridge_cmd"
++path = "src/lib.rs"
++
+ [features]
+ experimental-async-fn = []
+ 

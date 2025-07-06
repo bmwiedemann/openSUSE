@@ -1,17 +1,18 @@
---- clients/tsconfig.json.old	2023-04-26 13:30:57.000000000 +0200
-+++ clients/tsconfig.json	2023-04-26 20:15:39.879489082 +0200
-@@ -6,7 +6,7 @@
-     "target": "ES2016",
-     "module": "ES2020",
-     "lib": ["es5", "es6", "es7", "dom", "ES2021"],
+--- clients/tsconfig.base.json	2025-07-02 20:03:23.998679344 +0200
++++ bitwarden-2025.6.1/tsconfig.base.json	2025-07-02 21:23:52.860744260 +0200
+@@ -15,7 +15,8 @@
+     "baseUrl": ".",
+     "resolveJsonModule": true,
+     "allowJs": true,
 -    "sourceMap": true,
 +    "sourceMap": false,
-     "allowSyntheticDefaultImports": true,
-     "experimentalDecorators": true,
-     "emitDecoratorMetadata": true,
---- clients/apps/desktop/webpack.renderer.js.old	2023-04-26 13:30:57.000000000 +0200
-+++ clients/apps/desktop/webpack.renderer.js	2023-04-26 20:17:42.900973173 +0200
-@@ -61,7 +61,7 @@
++    "removeComments": true,
+     "skipLibCheck": true,
+     "paths": {
+       "@bitwarden/admin-console/common": ["./libs/admin-console/src/common"],
+--- clients/apps/desktop/webpack.renderer.js	2025-07-02 20:03:23.070679456 +0200
++++ bitwarden-2025.6.1/apps/desktop/webpack.renderer.js	2025-07-02 21:27:05.376723459 +0200
+@@ -66,7 +61,7 @@ const common = {
  
  const renderer = {
    mode: NODE_ENV,
@@ -20,7 +21,7 @@
    target: "web",
    node: {
      __dirname: false,
-@@ -138,7 +138,7 @@
+@@ -169,7 +159,7 @@ const renderer = {
      new AngularWebpackPlugin({
        tsConfigPath: "tsconfig.renderer.json",
        entryModule: "src/app/app.module#AppModule",
@@ -29,7 +30,7 @@
      }),
      // ref: https://github.com/angular/angular/issues/20357
      new webpack.ContextReplacementPlugin(
-@@ -150,9 +150,6 @@
+@@ -181,9 +171,6 @@ const renderer = {
        filename: "index.html",
        chunks: ["app/vendor", "app/main"],
      }),
@@ -39,14 +40,3 @@
      new MiniCssExtractPlugin({
        filename: "[name].[contenthash].css",
        chunkFilename: "[id].[contenthash].css",
---- clients/apps/desktop/tsconfig.json.old	2023-12-06 21:48:09.744042358 +0100
-+++ clients/apps/desktop/tsconfig.json	2023-12-06 21:53:51.341419937 +0100
-@@ -6,7 +6,7 @@
-     "experimentalDecorators": true,
-     "module": "ES2020",
-     "target": "ES2016",
--    "sourceMap": true,
-+    "removeComments": true,
-     "types": [],
-     "baseUrl": ".",
-     "paths": {

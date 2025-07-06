@@ -20,15 +20,15 @@
 #not running the tests on OBS — extremely flaky
 %bcond_with test_rust
 
+%global sdk_internal_req_version 0.2.0~main.198
+
 
 Name:       bitwarden
-Version:    2024.12.0
+Version:    2025.6.1
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
-License:    GPL-3.0-only and MIT and (Apache-2.0 or MIT) and OFL-1.1
-#TODO: This font should be submitted to openSUSE and Fedora and debundled from here
-Provides:   bundled(google-dm-fonts)
+License:    (Apache-2.0 OR MIT) AND (Apache-2.0 OR BSL-1.0) AND BSD-3-Clause AND GPL-3.0-only AND MIT AND (MIT OR Unlicense) AND MPL-2.0 AND Unicode-3.0
 URL:        https://github.com/bitwarden/clients
 
 #x86 electron requires SSE2
@@ -65,11 +65,13 @@ Patch8:    no-sourcemaps.patch
 Patch9:    main-getPath-exe.patch
 Patch10:   native-messaging.main-fix-path.patch
 
-#patches to remove stuff we do not want
-Patch500:  remove-sdk-internal.patch
 
 #patches to use system libs
 Patch1000: system-libargon2.patch
+Patch1001: system-roboto-font.patch
+
+#patches to fix interaction with other software
+Patch2000: cxxbridge-cmd.patch
 
 #patches to fix upstream hostility (DRM etc.)
 Patch4000: remove-esbuild-version-check.patch
@@ -95,9 +97,8 @@ BuildRequires: fdupes
 BuildRequires: fontpackages-devel
 BuildRequires: hicolor-icon-theme
 BuildRequires: jq
-%if 0%{?suse_version}
 BuildRequires: nodejs-packaging
-%endif
+BuildRequires: nodejs-bitwarden-sdk-internal = %sdk_internal_req_version
 BuildRequires: nodejs-electron-devel
 BuildRequires: pkgconfig(libargon2)
 BuildRequires: sed
@@ -118,7 +119,9 @@ BuildRequires:  dbus-1-daemon
 %endif
 %endif
 
+Requires: bitwarden-sdk-internal = %sdk_internal_req_version
 Requires: nodejs-electron%{_isa}
+Requires: google-roboto-fonts
 
 %global __requires_exclude ^npm(.*)|^nodejs(.*)
 %global __provides_exclude ^npm(.*)|^nodejs(.*)|^lib.*\\.so.*$
@@ -130,6 +133,16 @@ Bitwarden is a free and open-source password management service that stores sens
 
 %prep
 %autosetup -p1 -a1
+
+#Sanity check that we've declared the correct version in header
+test $(jq -cj '.version' node_modules/@bitwarden/sdk-internal/package.json | sed 's/-/~/g') = %sdk_internal_req_version
+
+
+rm -rvf node_modules/@bitwarden/sdk-internal
+ln -svT {%{nodejs_sitelib},node_modules}/@bitwarden/sdk-internal
+
+#remove bundled font
+rm -v libs/angular/src/scss/webfonts/roboto.woff2
 
 #fix exe path
 sed -i 's[XXXLIBDIRXXX[%{_libdir}[g' apps/desktop/src/main/native-messaging.main.ts
@@ -153,7 +166,7 @@ cd apps/desktop/desktop_native
 rm -rf vendor/wayland-protocols/protocols
 ln -svT /usr/share/wayland-protocols vendor/wayland-protocols/protocols
 # https://blogs.gnome.org/mcatanzaro/2020/05/18/patching-vendored-rust-dependencies/
-for i in wayland-protocols libloading system-deps pkcs5 aes-gcm; do
+for i in wayland-protocols libloading pkcs5 aes-gcm blake2; do
 pushd vendor/$i
 jq -cj '.files={}' .cargo-checksum.json >tmp && mv tmp .cargo-checksum.json && popd
 done
@@ -191,7 +204,8 @@ auditable='auditable -vv'
 cd apps/desktop
 pushd desktop_native
 cargo -vv $auditable rustc --offline --release --package desktop_napi --lib --crate-type cdylib
-RUSTFLAGS="$RUSTFLAGS -Crelocation-model=pie" cargo -vv $auditable rustc --offline --release --package desktop_proxy --bin desktop_proxy
+#RUSTFLAGS="$RUSTFLAGS -Crelocation-model=pie"
+cargo -vv $auditable rustc --offline --release --package desktop_proxy --bin desktop_proxy -- -Crelocation-model=pie
 popd
 
 npm run build
@@ -203,16 +217,14 @@ mkdir -pv node_modules/@bitwarden/desktop-napi
 cp -plv ../desktop_native/napi/{package.json,index.js} -t node_modules/@bitwarden/desktop-napi
 cp -plvT ../desktop_native/target/release/*.so node_modules/@bitwarden/desktop-napi/desktop_napi.node
 cp -plv -t . ../desktop_native/target/release/desktop_proxy
-rm -fv ../../../node_modules/argon2/build-tmp-napi-v3/node_gyp_bins/python3
-cp -plvr ../../../node_modules/argon2 -t node_modules/
-cp -plvr ../../../node_modules/node-gyp-build -t node_modules/
-cp -plvr '../../../node_modules/@phc' -t node_modules/
 
 
 %install
 cd %{_builddir}/bitwarden-%{version}/apps/desktop
 mkdir -pv %{buildroot}%{_libdir}
 cp -ar build %{buildroot}%{_libdir}/%{name}
+cmp %{_datadir}/bitwarden/*.wasm %{buildroot}%{_libdir}/%{name}/*.wasm
+ln -svf %{_datadir}/bitwarden/*.wasm %{buildroot}%{_libdir}/%{name}/*.wasm
 for i in 16 32 64 128 256 512 1024
 do
 install -pvDm644 resources/icons/${i}x${i}.png "%{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/%{name}.png"

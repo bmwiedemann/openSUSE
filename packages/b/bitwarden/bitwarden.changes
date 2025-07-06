@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul  2 19:53:15 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Update to 2025.6.1
+  * Bitwarden 2025.x is a major rewrite of the application,
+    moving some backend code to a separate wasm module
+  * Updated UI for two-step login with security keys
+  * Added location to login with device requests
+  * Added support for two-step login with security keys on Linux
+  * Added verification of logins from unrecognized devices
+  * Can now generate SSH keys
+- Drop remove-sdk-internal.patch as we now actually use bitwarden-sdk-internal
+- Add system-roboto-font.patch
+- Add cxxbridge-cmd.patch
+
+-------------------------------------------------------------------
 Thu Dec 12 18:40:10 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 2024.12.0

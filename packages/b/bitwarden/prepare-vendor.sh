@@ -34,6 +34,7 @@ popd
 
 echo ">>>>>> Remove non-free binaries"
 find . -type f -name "*.wasm" -print -delete
+find . -type f -name "*.wasm.js" -print -delete
 find . -type f -name "*.jar" -print -delete
 find . -type f -name "*.exe" -print -delete
 find . -type f -name "*.node" -print -delete
