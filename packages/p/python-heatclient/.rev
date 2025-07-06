@@ -694,4 +694,25 @@
   - reno: Update master for unmaintained/wallaby</comment>
     <requestid>1198504</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2ea067c0c6d997ad7152d1ea1bab46b2</srcmd5>
+    <version>4.1.0</version>
+    <time>1751814893</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.1.0:
+  * reno: Update master for unmaintained/2023.1
+  * Declare Python 3.12 support
+  * Update master for stable/2024.2
+
+- install bash_completion for heat
+- fix requires
+- fix requires
+- switch to python-setuptools
+- fix requires
+- fix requires
+- move heat client to main package
+- update requires
+- fix test requires</comment>
+    <requestid>1290699</requestid>
+  </revision>
 </revisionlist>

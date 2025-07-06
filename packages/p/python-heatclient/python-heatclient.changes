@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul  4 14:24:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.0:
+  * reno: Update master for unmaintained/2023.1
+  * Declare Python 3.12 support
+  * Update master for stable/2024.2
+
+-------------------------------------------------------------------
 Tue Sep  3 13:12:41 UTC 2024 - cloud-devel@suse.de
 
 - update to version 4.0.0
@@ -1198,7 +1206,7 @@ Fri Mar 21 01:53:15 UTC 2014 -  cloud-devel@suse.de
 -------------------------------------------------------------------
 Wed Mar 19 17:18:40 UTC 2014 - dmueller@suse.com
 
-- install bash_completion for heat 
+- install bash_completion for heat
 
 -------------------------------------------------------------------
 Sat Mar 15 00:43:06 UTC 2014 -  cloud-devel@suse.de
@@ -1292,7 +1300,7 @@ Fri Feb 14 08:23:50 UTC 2014 -  cloud-devel@suse.de
 -------------------------------------------------------------------
 Thu Feb 13 14:17:39 UTC 2014 - dmueller@suse.com
 
-- fix requires 
+- fix requires
 
 -------------------------------------------------------------------
 Tue Feb 11 15:47:45 UTC 2014 - speilicke@suse.com
@@ -1373,7 +1381,7 @@ Fri Jan 17 00:40:55 UTC 2014 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Thu Jan 16 11:57:51 UTC 2014 - dmueller@suse.com
 
-- fix requires  
+- fix requires
 
 -------------------------------------------------------------------
 Thu Jan 16 01:18:30 UTC 2014 - opensuse-cloud@opensuse.org
@@ -1531,7 +1539,7 @@ Tue Nov 26 00:40:24 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Mon Nov 25 14:21:08 UTC 2013 - dmueller@suse.com
 
-- switch to python-setuptools 
+- switch to python-setuptools
 
 -------------------------------------------------------------------
 Sun Nov 24 01:05:18 UTC 2013 - opensuse-cloud@opensuse.org
@@ -1630,7 +1638,7 @@ Fri Sep 27 23:40:56 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Thu Sep 26 12:08:59 UTC 2013 - dmueller@suse.com
 
-- fix requires 
+- fix requires
 
 -------------------------------------------------------------------
 Thu Sep 19 23:52:33 UTC 2013 - opensuse-cloud@opensuse.org
@@ -1641,7 +1649,7 @@ Thu Sep 19 23:52:33 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Thu Sep 19 19:46:41 UTC 2013 - dmueller@suse.com
 
-- fix requires 
+- fix requires
 
 -------------------------------------------------------------------
 Thu Sep 12 00:12:30 UTC 2013 - opensuse-cloud@opensuse.org
@@ -1755,7 +1763,7 @@ Mon Jul 15 07:23:08 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Sun Jul 14 16:09:38 UTC 2013 - dmueller@suse.com
 
-- move heat client to main package 
+- move heat client to main package
 
 -------------------------------------------------------------------
 Thu Jul 11 23:48:23 UTC 2013 - opensuse-cloud@opensuse.org
@@ -1772,7 +1780,7 @@ Thu Jul 11 08:23:29 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Fri Jul  5 13:10:22 UTC 2013 - dmueller@suse.com
 
-- update requires 
+- update requires
 
 -------------------------------------------------------------------
 Wed Jul  3 23:50:16 UTC 2013 - opensuse-cloud@opensuse.org
@@ -1817,7 +1825,7 @@ Mon Jun 17 00:06:17 UTC 2013 - opensuse-cloud@opensuse.org
 -------------------------------------------------------------------
 Wed Jun 12 09:51:13 UTC 2013 - dmueller@suse.com
 
-- fix test requires 
+- fix test requires
 
 --------------------------------------------------------------------
 Wed Jun 12 09:22:33 UTC 2013 - opensuse-cloud@opensuse.org
