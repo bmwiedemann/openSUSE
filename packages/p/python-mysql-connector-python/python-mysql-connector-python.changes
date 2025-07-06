@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Jul  5 10:30:23 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.3.0:
+  * WL#16754: The host wildcard no longer applies to localhost
+  * WL#16752: Deprecate class methods to access instance data or
+    to know instance internal state
+  * WL#16327: Remove Cursors Prepared Raw and Named Tuple
+  * BUG#37541353: (Contribution) Fix typing annotation of
+    MySQLConnectionAbstract's close function
+  * BUG#37453587: Github links in PyPI project's pages do not
+    work
+  * BUG#37447394: Unable to escape a parameter marker (`%s`) used
+    in a query that should not be treated as a parameter marker
+  * BUG#37418436: Arbitrary File Read in MySQL Python Client
+    library
+  * BUG#37410052: Bad formatting of exceptions when connecting
+    with Unix sockets
+  * BUG#37399636: The C-extension has a memory leak when working
+    with prepared statements
+  * BUG#37275524: Exception is not interpreted properly on
+    prepared statements when C extension is in use
+  * BUG#36098290: mysql-connector-python is distributed without
+    setup.py or pyproject.toml
+  * WL#16381: Add support for read and write timeouts
+  * WL#16285: Remake Multi Statement Execution
+  * BUG#37145655: MySQL Connector/Python Configuration Files RCE
+  * BUG#36702939: connection_cext has a memory leak in the python
+    mysql-connector
+  * BUG#36922645: Option `connection_timeout` is overwritten and
+    works as "query" timeout instead
+  * BUG#36126909: "Unread result found" exception/bad
+    MySQLCursor.statement when query text contains code comments
+  * BUG#35810050: Executing multiple statements fails when
+    importing Sakila
+
+-------------------------------------------------------------------
 Mon Oct 21 12:28:45 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 9.1.0 (bsc#1231740, CVE-2024-21272)
@@ -191,7 +227,7 @@ Tue Dec  4 12:50:41 UTC 2018 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Thu Feb 15 20:40:57 UTC 2018 - jacobwinski@gmail.com
 
-- Update to 2.1.7: 
+- Update to 2.1.7:
   * BUG#26376334: Fix prepared statements in MySQL 8.0
   * BUG#25965922: Add support for Django 1.11
   * BUG#24659561: Fix MySQLCursor.executemany() when using utf8mb4 charset
@@ -222,7 +258,7 @@ Thu Feb 15 20:40:57 UTC 2018 - jacobwinski@gmail.com
 -------------------------------------------------------------------
 Thu Feb 15 20:30:11 UTC 2018 - jacobwinski@gmail.com
 
-- Fix spec file bug not installing c libs 
+- Fix spec file bug not installing c libs
 
 -------------------------------------------------------------------
 Mon Feb 12 21:29:34 UTC 2018 - jacobwinski@gmail.com
@@ -232,7 +268,7 @@ Mon Feb 12 21:29:34 UTC 2018 - jacobwinski@gmail.com
 -------------------------------------------------------------------
 Mon Feb 12 20:04:55 UTC 2018 - jacobwinski@gmail.com
 
-- Convert to singlespec 
+- Convert to singlespec
 
 -------------------------------------------------------------------
 Fri Oct 21 14:17:52 UTC 2016 - jmatejek@suse.com
@@ -248,7 +284,7 @@ Fri Oct 21 14:17:52 UTC 2016 - jmatejek@suse.com
 -------------------------------------------------------------------
 Tue Oct 21 11:33:41 UTC 2014 - dmueller@suse.com
 
-- fix license to SUSE-GPL-2.0-with-FLOSS-exception 
+- fix license to SUSE-GPL-2.0-with-FLOSS-exception
 
 -------------------------------------------------------------------
 Tue Sep 23 12:15:03 UTC 2014 - tbechtold@suse.com

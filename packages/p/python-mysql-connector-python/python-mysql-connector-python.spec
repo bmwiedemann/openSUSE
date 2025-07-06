@@ -1,7 +1,7 @@
 #
 # spec file for package python-mysql-connector-python
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-mysql-connector-python
-Version:        9.1.0
+Version:        9.3.0
 Release:        0
 Summary:        MySQL driver written in Python
 License:        SUSE-GPL-2.0-with-FLOSS-exception

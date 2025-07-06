@@ -121,4 +121,41 @@
   - BUG#36167880: Massive memory leak mysqlx native Protobuf adding to collection</comment>
     <requestid>1216720</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>56290bc3fc69c14af022ee738145689c</srcmd5>
+    <version>9.3.0</version>
+    <time>1751814912</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.3.0:
+  * WL#16754: The host wildcard no longer applies to localhost
+  * WL#16752: Deprecate class methods to access instance data or
+    to know instance internal state
+  * WL#16327: Remove Cursors Prepared Raw and Named Tuple
+  * BUG#37541353: (Contribution) Fix typing annotation of
+    MySQLConnectionAbstract's close function
+  * BUG#37453587: Github links in PyPI project's pages do not
+    work
+  * BUG#37447394: Unable to escape a parameter marker (`%s`) used
+    in a query that should not be treated as a parameter marker
+  * BUG#37418436: Arbitrary File Read in MySQL Python Client
+    library
+  * BUG#37410052: Bad formatting of exceptions when connecting
+    with Unix sockets
+  * BUG#37399636: The C-extension has a memory leak when working
+    with prepared statements
+  * BUG#37275524: Exception is not interpreted properly on
+    prepared statements when C extension is in use
+  * BUG#36098290: mysql-connector-python is distributed without
+    setup.py or pyproject.toml
+  * WL#16381: Add support for read and write timeouts
+  * WL#16285: Remake Multi Statement Execution
+  * BUG#37145655: MySQL Connector/Python Configuration Files RCE
+  * BUG#36702939: connection_cext has a memory leak in the python
+    mysql-connector
+  * BUG#36922645: Option `connection_timeout` is overwritten and
+    works as &quot;query&quot; timeout instead
+  * BUG#36126909: &quot;Unread result found&quot; exception/bad
+    MySQLCursor.statement when query text contains code comments</comment>
+    <requestid>1290773</requestid>
+  </revision>
 </revisionlist>
