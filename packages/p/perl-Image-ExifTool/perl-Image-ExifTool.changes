@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jul  4 06:20:41 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.32:
+  * Added a new Olympus CameraType
+  * Added a new Sony LensType (github #335)
+  * Added a new Nikon CropHiSpeed value
+  * Added a warning if a tag value couldn't be packed for writing
+    to a binary data structure
+  * Decode more Ricoh/Pentax AF tags for some models
+  * Decode Canon HDR-PQ tag (github #336)
+  * Extract a couple more EXIF tags
+  * Patched to allow a dot (.) in the name of a structure element when writing
+  * Fixed "uninitialized value" bug when using -w with the -stay_open feature
+  * Fixed bug in -file option when tag names were used to specify the
+    name of the alternate file (the tags were taken only from the first
+    input file unless a file name formatting code was also specified)
+
+-------------------------------------------------------------------
 Tue Jun 24 11:19:56 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.31:
