@@ -330,4 +330,15 @@ gruss friseer (forwarded request 77922 from Friseer)</comment>
     <comment></comment>
     <requestid>1153470</requestid>
   </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>a590fea2605bd01a645a6ec9cbe6141e</srcmd5>
+    <version>2.1.12</version>
+    <time>1751813974</time>
+    <user>anag_factory</user>
+    <comment>- Adjust conflict from libev-devel to libev-libevent-devel (event.h was moved)
+- Add python-rpm-macros as build requirement to resolve undefined Python macros
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]</comment>
+    <requestid>1290023</requestid>
+  </revision>
 </revisionlist>

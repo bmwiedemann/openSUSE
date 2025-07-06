@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jun 22 13:35:40 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Adjust conflict from libev-devel to libev-libevent-devel (event.h was moved)
+
+-------------------------------------------------------------------
+Sun Jun 22 13:33:29 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Add python-rpm-macros as build requirement to resolve undefined Python macros
+
+-------------------------------------------------------------------
+Thu Apr 11 07:18:53 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Thu Feb 29 16:15:04 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

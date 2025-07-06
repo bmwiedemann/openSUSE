@@ -1,7 +1,7 @@
 #
 # spec file for package libevent
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,8 +49,8 @@ BuildRequires:  pkgconfig
 %else
 BuildRequires:  pkg-config
 %endif
+BuildRequires:  python-rpm-macros
 BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The libevent API provides a mechanism to execute a callback function
@@ -86,8 +86,7 @@ Summary:        Development files for libevent2
 Group:          Development/Libraries/C and C++
 Requires:       %{libsoname} = %{version}
 Requires:       glibc-devel
-# Both have /usr/include/event.h
-Conflicts:      libev-devel
+Conflicts:      libev-libevent-devel
 Provides:       %{name}:%{_includedir}/event.h
 
 %description devel
@@ -120,21 +119,19 @@ This package holds the static libraries for libevent2.
 export ac_cv_func_select=no
 %configure \
 	--disable-libevent-regress
-make %{?_smp_mflags}
+%make_build
 
 %check
-make check
+%make_build check
 
 %install
 %make_install %{?_smp_mflags}
 find %{buildroot}%{_libdir} -type f -name "*.la" -delete -print
+%python3_fix_shebang
 
-%post    -n %{libsoname} -p /sbin/ldconfig
-
-%postun  -n %{libsoname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libsoname}
 
 %files -n %{libsoname}
-%defattr(-,root,root,-)
 %license LICENSE
 %doc ChangeLog whatsnew-2.0.txt whatsnew-2.1.txt
 %{_libdir}/%{name}-%{version_base}.%{version_minor}.so.%{abi_release}*
@@ -144,7 +141,6 @@ find %{buildroot}%{_libdir} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}_openssl-%{version_base}.%{version_minor}.so.%{abi_release}*
 
 %files devel
-%defattr(-,root,root)
 %{_bindir}/event_rpcgen.py
 %{_includedir}/evdns.h
 %{_includedir}/event.h
@@ -164,7 +160,6 @@ find %{buildroot}%{_libdir} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/%{name}_extra.pc
 
 %files devel-static
-%defattr(-,root,root)
 %{_libdir}/%{name}.a
 %{_libdir}/%{name}_core.a
 %{_libdir}/%{name}_extra.a
