@@ -51,7 +51,8 @@ Provides:       group(%{name})
 Provides:       user(%{name})
 
 %description
-Fast-paced first-person shooter that works on Windows, OS X and Linux. The project is geared towards providing addictive arena shooter gameplay which is all spawned and driven by the community itself. Being a direct successor of the Nexuiz project with years of development between them, and it aims to become the best possible open-source FPS (first-person-shooter) of its kind.
+Fast-paced first-person shooter. It provides arena shooter gameplay
+and is a direct successor of the Nexuiz project.
 
 %package server
 Summary:        Dedicated server for the Xonotic first person shooter
@@ -63,10 +64,12 @@ Requires(pre):  shadow
 %endif
 
 %description server
-Xonotic is a free (GPL), fast-paced first-person shooter that works on Windows, OS X and Linux. The project is geared towards providing addictive arena shooter gameplay which is all spawned and driven by the community itself. Xonotic is a direct successor of the Nexuiz project with years of development between them, and it aims to become the best possible open-source FPS (first-person-shooter) of its kind.
+Fast-paced first-person shooter. It provides arena shooter gameplay
+and is a direct successor of the Nexuiz project.
 
-Server with dedicated xonotic running as services unter the specific user.
-service is handle via systemd or init - depends on your version.
+This subpackage contains the server with dedicated xonotic running as
+services unter the specific user. The service is handle via systemd or
+init, depending on your version.
 
 %package data
 Summary:        Data for the xonotic first person shooter
@@ -74,16 +77,18 @@ Group:          Amusements/Games/3D/Shoot
 BuildArch:      noarch
 
 %description data
-Xonotic is a free (GPL), fast-paced first-person shooter that works on Windows, OS X and Linux. The project is geared towards providing addictive arena shooter gameplay which is all spawned and driven by the community itself. Xonotic is a direct successor of the Nexuiz project with years of development between them, and it aims to become the best possible open-source FPS (first-person-shooter) of its kind.
+Fast-paced first-person shooter. It provides arena shooter gameplay
+and is a direct successor of the Nexuiz project.
 
-Data (textures, maps, sounds and models) required to play xonotic.
+This subpackage contains data (textures, maps, sounds and models)
+required to play xonotic.
 
 %prep
 %autosetup -n Xonotic -p1
 rm -rf misc/buildfiles/ # use system libs
 sed -i \
 		-e "/^EXE_/s:darkplaces:%{name}-%{version}:" \
-		-e "s:-O3:%{optflags}:" \
+		-e "s:-O3:%{optflags} -std=gnu17:" \
 		-e '/^STRIP/s/strip/true/' \
 		source/darkplaces/makefile.inc
 # do not include build time
@@ -138,7 +143,7 @@ mkdir -p  %{buildroot}%{_localstatedir}/lib/%{name}
  %suse_update_desktop_file -i %{name} Game ActionGame
 %endif
 
-%pre -n %{name}-server
+%pre server
 %if %{with systemd}
  %service_add_pre %{name}-server.service
 %endif
@@ -150,21 +155,21 @@ getent passwd %{name} >/dev/null || useradd -r -g %{name} -d %{_localstatedir}/l
 
 # only 13.1 is able to work with service* commands:
 
-%post -n %{name}-server
+%post server
 %if %{with systemd}
  %service_add_post %{name}-server.service
 %else
  %{fillup_and_insserv -n %{name}-server }
 %endif
 
-%preun -n %{name}-server
+%preun server
 %if %{with systemd}
  %service_del_preun %{name}-server.service
 %else
  %stop_on_removal %{name}-server
 %endif
 
-%postun -n %{name}-server
+%postun server
 %if %{with systemd}
  %service_del_postun %{name}-server.service
 %else

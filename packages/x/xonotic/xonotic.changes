@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  3 09:24:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Explicitly set -std=gnu17. (GCC15 switch to C23 by default,
+  which the code does not support.)
+
+-------------------------------------------------------------------
 Thu Mar 13 18:06:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace old package names BuildRequires (we have not had
