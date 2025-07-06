@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul  1 15:26:52 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.3/
+- Changes since 25.04.2:
+  * Improve verbosity of qtkeychain error handling
+  * Do not request password twice
+- Drop patch, merged upstream:
+  * 0001-Do-not-request-password-twice.patch
+
+-------------------------------------------------------------------
 Mon Jun 23 23:57:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fix:

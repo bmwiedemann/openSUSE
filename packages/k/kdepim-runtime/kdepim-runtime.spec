@@ -18,7 +18,7 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.4.2
+%define kpim6_version 6.4.3
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
 %bcond_without etebase
@@ -27,7 +27,7 @@
 %bcond_with kolabxml
 %bcond_without released
 Name:           kdepim-runtime
-Version:        25.04.2
+Version:        25.04.3
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -37,8 +37,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Do-not-request-password-twice.patch
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libboost_atomic-devel
