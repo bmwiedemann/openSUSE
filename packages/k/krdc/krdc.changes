@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul  1 15:27:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.3/
+- Changes since 25.04.2:
+  * Show system tray icon at startup if enabled in settings (kde#505744)
+  * VncView: focus the view on successful connection (kde#503115)
+  * Rdp: rework handling for some error messages
+  * Let Mainwindow publish error messages from views When an error occurs the view gets closed, so the error never shows up
+  * Rdp host preferences: correctly load sound preferences (kde#493602)
+  * Avoid crash when the main window is outside of any screen
+
+-------------------------------------------------------------------
 Tue Jun  3 21:12:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.2
