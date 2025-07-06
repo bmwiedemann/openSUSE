@@ -1,7 +1,7 @@
 #
 # spec file for package jna
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,7 +33,8 @@ Patch0:         jna-build.patch
 Patch1:         jna-callback.patch
 Patch2:         jna-system-libjnidispatch.patch
 Patch3:         jna-java8compat.patch
-Patch4:         jna-old-libffi.patch
+Patch4:         jna-no-multirelease.patch
+Patch5:         jna-old-libffi.patch
 BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -85,9 +86,10 @@ This package contains the javadocs for %{name}.
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
+%patch -P 4 -p1
 
 %if 0%{?suse_version} < 1550
-%patch -P 4 -p1
+%patch -P 5 -p1
 %endif
 
 sed -i 's|@LIBDIR@|%{_libdir}/%{name}|' src/com/sun/jna/Native.java

@@ -1,0 +1,42 @@
+--- jna-5.13.0/build.xml	2025-07-03 09:09:11.117850701 +0200
++++ jna-5.13.0/build.xml	2025-07-03 09:14:19.243369605 +0200
+@@ -492,9 +492,6 @@
+                  which will force failure on unsupported platforms.
+               -->
+           </manifest>
+-          <manifest file="@{target}" mode="update" if:true="@{module-info}">
+-              <attribute name="Multi-Release" value="true"/>
+-          </manifest>
+           <manifest file="@{target}" mode="update" unless:true="@{module-info}">
+               <attribute name="Automatic-Module-Name" value="com.sun.jna"/>
+           </manifest>
+@@ -527,7 +524,7 @@
+     </zip>
+     <jar jarfile="${build}/jna-jpms.jar" duplicate="preserve" createUnicodeExtraFields="never" encoding="UTF-8" manifest="${build}/manifest/module.mf">
+       <zipfileset src="${build}/${jar}" excludes="META-INF/MANIFEST.mf"/>
+-      <zipfileset dir="${build}/manifest/" includes="module-info.class" prefix="META-INF/versions/9"/>
++      <zipfileset dir="${build}/manifest/" includes="module-info.class"/>
+     </jar>
+   </target>
+ 
+--- jna-5.13.0/contrib/platform/build.xml	2025-07-03 09:09:11.125026335 +0200
++++ jna-5.13.0/contrib/platform/build.xml	2025-07-03 09:33:54.156634730 +0200
+@@ -169,9 +169,6 @@
+ com.sun.jna.platform.wince;version=&quot;${osgi.version}&quot;;uses:=&quot;com.sun.jna,com.sun.jna.platform.win32&quot;
+ "/>
+             </manifest>
+-            <manifest file="@{target}" mode="update" if:true="@{module-info}">
+-                <attribute name="Multi-Release" value="true"/>
+-            </manifest>
+             <manifest file="@{target}" mode="update" unless:true="@{module-info}">
+                 <attribute name="Automatic-Module-Name" value="com.sun.jna.platform"/>
+             </manifest>
+@@ -222,7 +219,7 @@
+         </jar>
+         <jar jarfile="dist/jna-platform-jpms.jar" duplicate="preserve" createUnicodeExtraFields="never" encoding="UTF-8" manifest="${build.dir}/manifest/module.mf">
+             <zipfileset src="${build.dir}/jna-platform-base.jar" excludes="META-INF/MANIFEST.mf"/>
+-            <zipfileset dir="${build.dir}/manifest/" includes="module-info.class" prefix="META-INF/versions/9"/>
++            <zipfileset dir="${build.dir}/manifest/" includes="module-info.class"/>
+         </jar>
+     </target>
+ 

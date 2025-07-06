@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  3 07:38:29 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jna-no-multirelease.patch
+    + do not put module-info.class in multirelease directories
+
+-------------------------------------------------------------------
 Mon Apr 29 12:36:21 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - The binaries are compatible with java 1.8
