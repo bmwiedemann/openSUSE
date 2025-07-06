@@ -24,13 +24,14 @@ Version:        %{_version}
 Release:        0
 Summary:        Acceleration for python-opengl
 License:        BSD-3-Clause
-Group:          Development/Libraries/Python
 URL:            http://pyopengl.sourceforge.net
 Source0:        %{tarname}-%{_version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module opengl >= %{version}}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module numpy-devel if (%python-base without python36-base)}
@@ -56,10 +57,10 @@ rmdir accelerate
 
 %build
 export CFLAGS="%{optflags} -DGLX_GLXEXT_LEGACY"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -69,6 +70,6 @@ export CFLAGS="%{optflags} -DGLX_GLXEXT_LEGACY"
 %license license.txt
 %doc README.md
 %{python_sitearch}/OpenGL_accelerate/
-%{python_sitearch}/PyOpenGL_accelerate-*-py%{python_version}.egg-info
+%{python_sitearch}/[Pp]y[Oo]pen[Gg][Ll]_accelerate-%{version}.dist-info
 
 %changelog
