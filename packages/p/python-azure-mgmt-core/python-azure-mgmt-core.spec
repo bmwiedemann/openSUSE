@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-core
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Microsoft Azure Management Core Library
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       (python-azure-core >= 1.31.0 with python-azure-core < 2.0.0)
+Requires:       (python-azure-core >= 1.32.0 with python-azure-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-mgmt-core < 1.4.0

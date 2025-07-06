@@ -140,4 +140,16 @@
 - Remove leftover workaround for older Python versions (forwarded request 1220041 from glaubitz)</comment>
     <requestid>1220060</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a57e262503c6b7e6851b5db2fff3dce9</srcmd5>
+    <version>1.6.0</version>
+    <time>1751814884</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1290122 from glaubitz)</comment>
+    <requestid>1290665</requestid>
+  </revision>
 </revisionlist>
