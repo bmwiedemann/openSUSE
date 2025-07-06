@@ -25,6 +25,7 @@
 %bcond_with test
 %endif
 %{?sle15_python_module_pythons}
+%bcond_without libalternatives
 Name:           python-pyproject-parser%{psuffix}
 Version:        0.13.0
 Release:        0
@@ -34,7 +35,24 @@ URL:            https://github.com/repo-helper/pyproject-parser
 Source:         https://github.com/repo-helper/pyproject-parser/archive/refs/tags/v%{version}.tar.gz#/pyproject-parser-%{version}.tar.gz
 BuildRequires:  %{python_module hatch-requirements-txt}
 BuildRequires:  %{python_module pip}
+BuildRequires:  alts
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
+Requires:       python-apeye-core >= 1.0.0
+Requires:       python-attrs >= 20.3.0
+Requires:       python-dom-toml >= 2.0.0
+Requires:       python-domdf-python-tools >= 2.8.0
+Requires:       python-natsort >= 7.1.1
+Requires:       python-packaging >= 20.9
+Requires:       python-shippinglabel >= 1.0.0
+Requires:       python-typing-extensions >= 3.7.4.3
+Suggests:       python-click >= 7.1.2
+Suggests:       python-consolekit >= 1.4.1
+Suggests:       python-docutils >= 0.16
+Suggests:       python-readme-renderer >= 27.0
+Suggests:       python-sdjson >= 0.3.1
+BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
 BuildRequires:  %{python_module coincidence}
@@ -47,21 +65,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sdjson}
 %endif
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-apeye-core >= 1.0.0
-Requires:       python-attrs >= 20.3.0
-Requires:       python-dom-toml >= 2.0.0
-Requires:       python-domdf-python-tools >= 2.8.0
-Requires:       python-natsort >= 7.1.1
-Requires:       python-packaging >= 20.9
-Requires:       python-shippinglabel >= 1.0.0
-Requires:       python-typing-extensions >= 3.7.4.3
-Suggests:       python-consolekit >= 1.4.1
-Suggests:       python-click >= 7.1.2
-Suggests:       python-docutils >= 0.16
-Suggests:       python-readme-renderer >= 27.0
-Suggests:       python-sdjson >= 0.3.1
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -80,13 +83,11 @@ Parser for 'pyproject.toml'
 %python_clone -a %{buildroot}%{_bindir}/check-pyproject
 %python_clone -a %{buildroot}%{_bindir}/pyproject-fmt
 %python_clone -a %{buildroot}%{_bindir}/pyproject-info
+%python_group_libalternatives pyproject-parser check-pyproject pyproject-fmt pyproject-info
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative pyproject-parser check-pyproject pyproject-fmt pyproject-info
-
-%postun
-%python_uninstall_alternative pyproject-parser
+%pre
+%python_libalternatives_reset_alternative pyproject-parser
 %endif
 
 %check
