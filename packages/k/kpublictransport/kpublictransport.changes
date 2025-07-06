@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul  1 15:27:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.3/
+- Changes since 25.04.2:
+  * Ignore empty path sections when computing the bounding box
+  * Update Transitous coverage data
+  * Parse more DB vehicle layout feature types
+  * Fix DE-NI Efa endpoint URL
+  * Update Transitous coverage data
+  * NRW ZKS has a working SSL certificate meanwhile
+
+-------------------------------------------------------------------
 Tue Jun  3 21:12:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.2
