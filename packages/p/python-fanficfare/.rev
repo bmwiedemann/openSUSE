@@ -1604,4 +1604,37 @@ Update to 4.43.0:
     site change. Thanks, kilandra</comment>
     <requestid>1284270</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>7a39b2ad86748320644fa7c65d02a928</srcmd5>
+    <version>4.47.0</version>
+    <time>1751814825</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.47.0:
+  - adapter_ashwindersycophanthexcom: http to https
+  - Plugin BG Jobs: Remove old multi-process code
+  - Report BG job failed entirely as individual books failed
+    instead of just exception. For #1225
+  - adapter_fimfictionnet: New img attr and class. #1226
+  - Send refresh_screen=True when updating Reading Lists in case
+    of series column updates.
+  - Add SB favicons to cover_exclusion_regexp.
+  - Support for logging into royal road to keep chapter progress
+    (and count as page views), #1222, thanks snoonan.
+  - Fix images from existing epub being discarded during update.
+  - Change default base_xenforoforum minimum_threadmarks:1. See
+    #1218
+  - Shutdown IMAP connection when done with it.
+  - Mildly kludgey fix for status bar notifications.
+  - PI BG Jobs: Fix split without reconsolidate.
+  - Py2 fix for split BG jobs, closes #1214
+  - Fix xenforo2 prefixtags, some still using tags in title
+  - alternatehistory needs at least cloudscraper now, it seems.
+  - Add use_flaresolverr_session and flaresolverr_session
+    settings for #1211
+  - Include Accept:image/* header when requesting an image url,
+    thanks bellisk
+  - Skip OTW(AO3) login when open_pages_in_browser AND
+    use_browser_cache AND use_browser_cache_only</comment>
+    <requestid>1290547</requestid>
+  </revision>
 </revisionlist>
