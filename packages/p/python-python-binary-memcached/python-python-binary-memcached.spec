@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-binary-memcached
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           python-python-binary-memcached
-Version:        0.31.2
+Version:        0.31.4
 Release:        0
 Summary:        Access memcached via its binary protocol with SASL auth support
 License:        MIT
 URL:            https://github.com/jaysonsantos/python-binary-memcached
-Source:         https://files.pythonhosted.org/packages/source/p/python-binary-memcached/python-binary-memcached-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python-binary-memcached/python_binary_memcached-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -45,7 +45,7 @@ BuildRequires:  %{python_module uhashring}
 A pure python module to access memcached via its binary protocol with SASL auth support
 
 %prep
-%setup -q -n python-binary-memcached-%{version}
+%setup -q -n python_binary_memcached-%{version}
 
 %build
 %pyproject_wheel
