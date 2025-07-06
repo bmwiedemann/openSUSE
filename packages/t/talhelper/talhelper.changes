@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Jul 04 10:34:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.30:
+  * docs: update CLI reference documentation (#1077)
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.10.5
+  * chore(deps): update dependency siderolabs/talos to v1.10.5
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v0.7.4
+  * chore(schema): update talos-extensions.yaml JSON schema (#1076)
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.11.0-alpha.3
+  * chore(github-action): update renovatebot/github-action action
+    to v43.0.2
+  * chore(schema): update talos-extensions.yaml JSON schema (#1072)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1071)
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.2.1
+  * chore(schema): update talos-extensions.yaml JSON schema (#1067)
+  * fix(deps): update module sigs.k8s.io/yaml to v1.5.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#1066)
+  * chore(github-action): update renovatebot/github-action action
+    to v43.0.1
+  * chore(github-action)!: Update renovatebot/github-action action
+    to v43
+  * chore(container): update registry.k8s.io/kubectl docker tag to
+    v1.33.2
+  * chore(github-action): update renovatebot/github-action action
+    to v42.0.6
+  * fix(deps): update module github.com/google/go-containerregistry
+    to v0.20.6
+  * chore(schema): update talos-extensions.yaml JSON schema (#1060)
+  * chore(container): update ghcr.io/mirceanton/age docker tag to
+    v1.2.1 (#1058)
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.29
+  * feat: update Scoop for talhelper version v3.0.29
+  * feat: update flake (#1055)
+
+-------------------------------------------------------------------
 Fri Jun 13 04:44:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.29:
