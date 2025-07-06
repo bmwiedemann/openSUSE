@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul  3 09:59:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.4.3
+  * minor updates to documentation
+  * C-level:
+    - simplify and speedup `extend_unicode01()`
+    - customize `resize_lite()` - avoid unused code
+    - use `PyTypeObject` for bitarray type object in `_util.c` to
+      be consistent with `_bitarray.c`
+    - add and improve comments to implementation of sparse bitarray
+      compression
+    - simplify `sc_count()`
+
+-------------------------------------------------------------------
 Fri Jun  6 05:30:55 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
