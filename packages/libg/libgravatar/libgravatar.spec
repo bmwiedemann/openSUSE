@@ -18,11 +18,11 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.4.2
+%define kpim6_version 6.4.3
 
 %bcond_without released
 Name:           libgravatar
-Version:        25.04.2
+Version:        25.04.3
 Release:        0
 Summary:        Library to download and display gravatars
 License:        LGPL-2.1-or-later
