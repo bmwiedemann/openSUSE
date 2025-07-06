@@ -1,4 +1,217 @@
 -------------------------------------------------------------------
+Fri Jul 04 05:08:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.0:
+  * Notable Changes
+    - Copa now supports multi-platform patching!
+    - Support for buildkit instance running on podman
+    - Support for OCI Media Types in addition to Docker
+  * Changelog
+    - feat: support update all for multi platform patching (#1141)
+    - chore(security): ignore irrelevant vulnerabilities in
+      osv-scanner.toml (#1177)
+    - fix: Revert "chore: bump cbl-mariner/distroless/base from
+      2.0.20240112 to 2.0.20250602 in
+      /integration/singlearch/fixtures/openssl-test-img-rpm"
+      (#1173)
+    - chore: bump the all group across 1 directory with 2 updates
+      (#1174)
+    - chore: bump dotenv from 17.0.0 to 17.0.1 in /website in the
+      all group (#1170)
+    - chore: bump github.com/aquasecurity/trivy from 0.63.0 to
+      0.64.0 (#1169)
+    - chore: bump github.com/moby/buildkit from 0.23.1 to 0.23.2
+      (#1168)
+    - chore: bump cbl-mariner/distroless/base from 2.0.20240112 to
+      2.0.20250602 in
+      /integration/singlearch/fixtures/openssl-test-img-rpm (#1165)
+    - ci: [StepSecurity] Apply security best practices (#1156)
+    - fix: retain multiplatform manifest list annotations (#1120)
+    - docs: add openssf best practices badge (#1157)
+    - feat: enhance multi platform summary report (#1123)
+    - chore: bump github.com/cpuguy83/go-docker from 0.3.0 to 0.3.1
+      (#1148)
+    - chore: bump the all group with 2 updates (#1147)
+    - chore: bump github.com/docker/cli from 28.2.2+incompatible to
+      28.3.0+incompatible (#1146)
+    - chore: bump github.com/docker/docker from 28.2.2+incompatible
+      to 28.3.0+incompatible (#1145)
+    - chore: bump dotenv from 16.5.0 to 17.0.0 in /website in the
+      all group (#1144)
+    - chore: bump github.com/go-viper/mapstructure/v2 from 2.2.1 to
+      2.3.0 (#1142)
+    - docs: update release doc to include cncf guidance (#1066)
+    - fix: handle docker load generically (#1059)
+    - docs: Update ADOPTERS.md to link to official adopters webpage
+      (#1140)
+    - fix: ensure tooling image is tried with platform (#1134)
+    - docs: improve multiplatform docs (#1129)
+    - fix: preseve all  platforms in manifest (#1121)
+    - chore: bump k8s.io/apimachinery from 0.33.1 to 0.33.2 (#1126)
+    - chore: bump github.com/moby/buildkit from 0.22.0 to 0.23.1
+      (#1125)
+    - chore: bump github.com/docker/buildx from 0.24.0 to 0.25.0
+      (#1124)
+    - feat: add multiplatform e2e plugin test (#1114)
+    - docs: Add Search to website using Algolia (#1082)
+    - chore: bump brace-expansion from 1.1.11 to 1.1.12 in /website
+      (#1118)
+    - chore: bump the all group with 3 updates (#1117)
+    - chore: bump github.com/quay/claircore from 1.5.38 to 1.5.39
+      (#1116)
+    - chore: bump github.com/google/go-containerregistry from
+      0.20.5 to 0.20.6 (#1115)
+    - feat: Add Multi Arch Enhancements (#1098)
+    - fix: remove directory and platform-specific-errors args from
+      multi platform (#1105)
+    - chore: bump google.golang.org/grpc from 1.72.2 to 1.73.0
+      (#1102)
+    - chore: bump the all group with 2 updates (#1103)
+    - chore: bump golang.org/x/sync from 0.14.0 to 0.15.0 (#1100)
+    - chore: bump github.com/quay/claircore from 1.5.37 to 1.5.38
+      (#1099)
+    - chore: bump the all group in /website with 3 updates (#1101)
+    - feat: Add native v1alpha1 report support (#1079)
+    - fix: run go mod tidy (#1089)
+    - feat: add multiarch patching workflow changes (#1067)
+    - chore: bump ossf/scorecard-action from 2.4.1 to 2.4.2 in the
+      all group (#1088)
+    - chore: bump the all group in /website with 3 updates (#1087)
+    - chore: bump github.com/aquasecurity/trivy from 0.62.1 to
+      0.63.0 (#1085)
+    - chore: bump github.com/docker/cli from 28.1.1+incompatible to
+      28.2.2+incompatible (#1084)
+    - fix: add shorthand flag for report-dir (#1081)
+    - docs: Add Governance Documentation  (#1056)
+    - docs: add contributor ladder (#1052)
+    - feat: Improve EOL Logging (#1069)
+    - docs: consistent community docs (#1078)
+    - chore: bump github.com/docker/buildx from 0.23.0 to 0.24.0
+      (#1076)
+    - chore: bump google.golang.org/grpc from 1.72.1 to 1.72.2
+      (#1075)
+    - chore: bump github.com/google/go-containerregistry from
+      0.20.3 to 0.20.5 (#1074)
+    - chore: bump github.com/moby/buildkit from 0.21.1 to 0.22.0
+      (#1073)
+    - docs: Keep FAQ headings consistent (#1062)
+    - docs: Clarify no VEX Document generation with update all
+      (#1055)
+    - feat: add multi arch command changes (#1009)
+    - chore: bump the all group with 4 updates (#1065)
+    - chore: bump k8s.io/apimachinery from 0.33.0 to 0.33.1 (#1064)
+    - chore: bump google.golang.org/grpc from 1.72.0 to 1.72.1
+      (#1063)
+    - chore: Add some tests for buildx context support (#1057)
+    - chore: bump github.com/aquasecurity/trivy from 0.61.1 to
+      0.62.1 (#1050)
+    - chore: bump golang.org/x/sync from 0.13.0 to 0.14.0 (#1049)
+    - fix: Debian temprootfs (#997)
+    - chore: Fix some issues with docker and buildx connections
+      (#1053)
+    - fix: oci media type should be respected (#949)
+    - chore: bump the all group with 2 updates (#1051)
+    - fix: upgrade golangci-lint to v2.1.0 (#1045)
+    - chore: bump the all group with 3 updates (#1043)
+    - chore: bump github.com/quay/claircore from 1.5.36 to 1.5.37
+      (#1042)
+    - chore: bump github.com/moby/buildkit from 0.21.0 to 0.21.1
+      (#1040)
+    - fix: guard against error buildkit solve (#1037)
+    - chore: bump the all group with 2 updates (#1032)
+    - chore: bump github.com/docker/buildx from 0.22.0 to 0.23.0
+      (#1030)
+    - chore: bump github.com/docker/cli from 28.0.4+incompatible to
+      28.1.1+incompatible (#1029)
+    - chore: bump github.com/docker/docker from 28.0.4+incompatible
+      to 28.1.1+incompatible (#1028)
+    - fix: apt apk images fail tooling images missing (#985)
+    - fix: ignore shadow cves for integration test (#1027)
+    - feat: add push images on patch flag (#1004)
+    - chore: bump the all group across 1 directory with 3 updates
+      (#1025)
+    - chore: bump github.com/quay/claircore from 1.5.35 to 1.5.36
+      (#1023)
+    - chore: bump google.golang.org/grpc from 1.71.1 to 1.72.0
+      (#1021)
+    - chore: bump github.com/moby/buildkit from 0.20.2 to 0.21.0
+      (#1020)
+    - chore: bump github.com/aquasecurity/trivy from 0.61.0 to
+      0.61.1 (#1019)
+    - feat: Discover Platforms Utility (#1017)
+    - chore: bump http-proxy-middleware from 2.0.7 to 2.0.9 in
+      /website (#1024)
+    - chore: bump golang.org/x/net from 0.37.0 to 0.38.0 (#1018)
+    - chore: bump the all group with 2 updates (#1016)
+    - chore: bump estree-util-value-to-estree from 3.1.1 to 3.3.3
+      in /website (#1015)
+    - chore: bump the all group with 3 updates (#1014)
+    - chore: bump typescript from 5.8.2 to 5.8.3 in /website in the
+      all group (#1013)
+    - chore: bump golang.org/x/sync from 0.12.0 to 0.13.0 (#1012)
+    - chore: bump google.golang.org/grpc from 1.71.0 to 1.71.1
+      (#1011)
+    - docs: explain EOL image error messages in FAQ (#966)
+    - feat: invalidate tdnf cache when patching (#973)
+    - fix: fast fail for no upgrades (#1005)
+    - docs: Add community docs (#996)
+    - chore: bump image-size from 1.1.1 to 1.2.1 in /website
+      (#1008)
+    - fix: lint fixes for ci (#1006)
+    - chore: upgrade trivy to 0.61.0 (#1007)
+    - chore: bump github.com/docker/buildx from 0.21.3 to 0.22.0
+      (#983)
+    - feat: add copa install command (#987)
+    - fix: rpm fails if mirror tooling image not present (#978)
+    - chore: bump goreleaser/goreleaser-action from 6.2.1 to 6.3.0
+      in the all group (#1003)
+    - chore: bump github.com/docker/cli from 28.0.2+incompatible to
+      28.0.4+incompatible (#1002)
+    - chore: bump github.com/spf13/viper from 1.20.0 to 1.20.1
+      (#1001)
+    - chore: bump github.com/moby/buildkit from 0.20.1 to 0.20.2
+      (#1000)
+    - chore: bump the all group in /website with 2 updates (#999)
+    - fix: golangci-lint v1 is not supported by
+      golangci-lint-action v7 (#994)
+    - chore: bump the all group with 6 updates (#984)
+    - chore: add cbl-mariner/base/core:1.0 to mirrored tooling
+      images (#979)
+    - chore: bump k8s.io/apimachinery from 0.32.2 to 0.32.3 (#982)
+    - chore: bump github.com/docker/cli from
+      28.0.0-rc.2+incompatible to 28.0.2+incompatible (#981)
+    - feat: add support for custom suffix tag (#961)
+    - chore: bump github.com/moby/buildkit from 0.19.0 to 0.20.1
+      (#943)
+    - fix: dependency update for docker/buildx v0.21.3 (#972)
+    - chore: bump github.com/spf13/viper from 1.19.0 to 1.20.0
+      (#963)
+    - chore: bump github.com/containerd/containerd from 1.7.25 to
+      1.7.27 (#969)
+    - chore: bump github.com/containerd/containerd/v2 from 2.0.2 to
+      2.0.4 (#968)
+    - chore: bump the all group with 3 updates (#964)
+    - chore: bump github.com/opencontainers/image-spec from 1.1.0
+      to 1.1.1 (#962)
+    - chore: bump @babel/runtime from 7.26.0 to 7.26.10 in /website
+      (#959)
+    - chore: bump @babel/runtime-corejs3 from 7.26.0 to 7.26.10 in
+      /website (#958)
+    - chore: bump @babel/helpers from 7.26.0 to 7.26.10 in /website
+      (#957)
+    - chore: bump golang.org/x/net from 0.34.0 to 0.36.0 (#956)
+    - fix: update docs with mirrored tooling images (#955)
+    - feat: mirror tooling images to ghcr - part 2 (#947)
+    - chore: bump prismjs from 1.29.0 to 1.30.0 in /website (#954)
+    - chore: bump the all group with 2 updates (#950)
+    - chore: bump google.golang.org/grpc from 1.70.0 to 1.71.0
+      (#951)
+    - chore: bump golang.org/x/sync from 0.11.0 to 0.12.0 (#952)
+    - feat: mirror tooling images to ghcr (#946)
+    - docs: add docker extension (#948)
+    - chore: Generate v0.10.x docs (#945)
+
+-------------------------------------------------------------------
 Fri Mar 14 11:35:06 UTC 2025 - dcermak@suse.com
 
 - update to version 0.10.0:
