@@ -1,0 +1,4 @@
+<package name="numa-preplace" project="openSUSE:Factory">
+  <title></title>
+  <description>Once upon a time, there was numad. These days, there is no need of having it running as a daemon. However, the service of &quot;pre-placement&quot; of a VM (i.e., deciding on which NUMA node[s] place the VM, while it's being created) is still valuable. And that's what this package aims at offering.</description>
+</package>

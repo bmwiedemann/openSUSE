@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a9898829e98f0501589d27bba3f60c9d</srcmd5>
+    <version>0.1</version>
+    <time>1751814451</time>
+    <user>anag_factory</user>
+    <comment>Once upon a time, there was numad. And there still is, e.g., in Factory, except the upstream project is basically abandoned since something like 2017.
+
+https://build.opensuse.org/package/show/hardware/numad
+
+The package does build, but I've tried installing it in Tumbleweed and using it, and it SEGFAULTs right away in a fraction of a sec! :-O
+
+There are also bugs caused by just having numad enabled, especially if Automatic NUMA balancing (see later) is also on... and that is on by default in all our kernels (and, AFAICT, in all kernels of all distros).
+
+Anyway, these days, there is no need of having something like numad running as a daemon any longer (as, the Linux kernel takes care of that by means of a faeature called Automatic NUMA balancing).
+
+On the other hand, the &quot;pre-placement&quot; of a VM (i.e.,deciding on which NUMA node[s] the VM is best &quot;allocated&quot;, both memory and CPU-wise, while it's being created) is still valuable.
+
+And that's what this package aims at offering. For now, it's basically a stripped down version of numad itself, but we're already working on making it more advanced and suitable for its task.
+
+Considering all that I just said, this new package Obsoletes: the numad package. I.e., an update will automatically remove numad and install numa-preplace. I know it can be seen as quite a change, but considering that numad, currently, just _DOES_NOT_WORK_ at all, I don't think it'd be that big of a deal
+
+I've sent the usual email about this to the Factory ML: https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/62YO2D7IWGI5M227CELKCLYHRT5OO44F/
+
+And I (think I) have addressed all the comments from: https://build.opensuse.org/requests/1287170
+
+Note also that the Libvirt package in Factory is already prepared to work together with this package</comment>
+    <requestid>1290224</requestid>
+  </revision>
+</revisionlist>
