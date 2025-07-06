@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           grantleetheme
-Version:        25.04.2
+Version:        25.04.3
 Release:        0
 Summary:        Grantlee theme support
 License:        GPL-2.0-only
