@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  1 15:26:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.3/
+- Changes since 25.04.2:
+  * viewproperties: Fix leaking file descriptors (kde#505215)
+
+-------------------------------------------------------------------
 Tue Jun  3 21:11:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.2
