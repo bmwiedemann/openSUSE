@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul  2 11:20:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.30.0
+  * Add @trio.as_safe_channel, a wrapper that can be used to make async generators
+    safe. This will be the suggested fix for the flake8-async lint rule ASYNC900. (#3197)
+  * Allow trio to be a types.ModuleType and still have deprecated attributes. (#2135)
+  * Fixed socket module for some older systems which lack socket.AI_NUMERICSERV.
+  * Now trio works on legacy (pre-Lion) macOS. (#3133)
+  * Update type hints for trio.run_process and trio.lowlevel.open_process. (#3183)
+  * Don't mutate the global runner when MockClock is created. (#3205)
+  * Fix incorrect return type hint for Nursery.start(). (#3224)
+  * Update wording in documentation to more accurately reflect Trio's maturity. (#3216)
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Tue Mar  4 15:13:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.29.0
