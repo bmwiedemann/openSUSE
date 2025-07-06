@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           falkon
-Version:        25.04.2
+Version:        25.04.3
 Release:        0
 Summary:        Modern web browser
 License:        GPL-3.0-or-later
