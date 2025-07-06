@@ -1,7 +1,7 @@
 #
 # spec file for package python-oiffile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-oiffile
-Version:        2024.5.24
+Version:        2025.5.10
 Release:        0
 Summary:        Read Olympus(r) image files (OIF and OIB)
 License:        BSD-3-Clause

@@ -60,4 +60,18 @@
     <comment></comment>
     <requestid>1188211</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>acc7a4d92dde81565a7a0eccfc047504</srcmd5>
+    <version>2025.5.10</version>
+    <time>1751814918</time>
+    <user>anag_factory</user>
+    <comment>- update to 2025.5.10:
+  * Remove doctest command line option.
+  * Support Python 3.14.
+  * Improve type hints.
+  * Drop support for Python 3.9, support Python 3.13.
+
+- Restrict numpy to &lt; 2 for now.</comment>
+    <requestid>1290771</requestid>
+  </revision>
 </revisionlist>
