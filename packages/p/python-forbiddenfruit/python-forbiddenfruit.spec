@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-forbiddenfruit
 Version:        0.1.4
 Release:        0

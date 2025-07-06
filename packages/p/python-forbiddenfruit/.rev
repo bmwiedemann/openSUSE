@@ -48,4 +48,12 @@
 - Fiddle with remove-nose.patch to drop a useless decorator.</comment>
     <requestid>1156212</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>733b9204e5b73a7dac08d878f458feb5</srcmd5>
+    <version>0.1.4</version>
+    <time>1751813967</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1290013</requestid>
+  </revision>
 </revisionlist>
