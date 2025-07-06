@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  3 15:21:54 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * jdk9.patch
+     + Add Automatic-Module-Name commons.beanutils to be found
+       by modular artifacts
+
+-------------------------------------------------------------------
 Thu Jun  5 06:22:08 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Adapt the spec file, so that it can be used for building on

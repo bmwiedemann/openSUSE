@@ -192,4 +192,12 @@
     <comment>sync with sle</comment>
     <requestid>1282983</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>58ebc7cddbc86a03e01be3238c4b3699</srcmd5>
+    <version>1.11.0</version>
+    <time>1751814789</time>
+    <user>anag_factory</user>
+    <comment>make modular</comment>
+    <requestid>1290526</requestid>
+  </revision>
 </revisionlist>

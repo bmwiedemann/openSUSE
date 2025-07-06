@@ -1,8 +1,6 @@
-Index: commons-beanutils-1.9.3-src/build.xml
-===================================================================
---- commons-beanutils-1.9.3-src.orig/build.xml
-+++ commons-beanutils-1.9.3-src/build.xml
-@@ -62,10 +62,10 @@
+--- commons-beanutils-1.11.0-src/build.xml	2025-07-03 17:15:28.898719156 +0200
++++ commons-beanutils-1.11.0-src/build.xml	2025-07-03 17:19:33.455675526 +0200
+@@ -61,10 +61,10 @@
  
  
    <!-- Compiler source JDK version -->
@@ -15,3 +13,12 @@ Index: commons-beanutils-1.9.3-src/build.xml
  
    <!-- Should Java compilations set the 'debug' compiler option? -->
    <property name="compile.debug"           value="true"/>
+@@ -228,7 +228,7 @@
+ 
+     <jar    jarfile="${dist.home}/commons-beanutils-${component.version}.jar">
+         <manifest>
+-            <attribute name="Built-By" value="${user.name}"/>
++            <attribute name="Automatic-Module-Name" value="commons.beanutils"/>
+             <attribute name="Specification-Title" value="Commons BeanUtils"/>
+             <attribute name="Specification-Version" value="${component.version}"/>
+             <attribute name="Specification-Vendor" value="The Apache Software Foundation"/>
