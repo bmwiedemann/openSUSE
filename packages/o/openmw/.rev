@@ -1042,4 +1042,13 @@
     <comment>Fixes Qt6 compilation</comment>
     <requestid>1287957</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8eb838fd02d385f3bb22b9d76ee10da2</srcmd5>
+    <version>0.49.0</version>
+    <time>1751814886</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.49.0 final
+</comment>
+    <requestid>1290677</requestid>
+  </revision>
 </revisionlist>
