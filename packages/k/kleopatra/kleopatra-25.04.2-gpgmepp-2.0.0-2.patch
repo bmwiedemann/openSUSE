@@ -1,4 +1,4 @@
-From 10b618703d74618c09b5e2b16e2db9d829aed93b Mon Sep 17 00:00:00 2001
+From 52799e1dd66194f9fda205a946777f520f367f68 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
 Date: Wed, 14 May 2025 17:29:18 +0200
 Subject: [PATCH] Include QGpgME/Debug for QDebug operator for GpgME::Error
@@ -13,7 +13,7 @@ operator<<.
  2 files changed, 2 insertions(+)
 
 diff --git a/src/dialogs/useridswidget.cpp b/src/dialogs/useridswidget.cpp
-index bcb540bc4..fc26e7b9e 100644
+index bcb540b..fc26e7b 100644
 --- a/src/dialogs/useridswidget.cpp
 +++ b/src/dialogs/useridswidget.cpp
 @@ -33,6 +33,7 @@
@@ -25,10 +25,10 @@ index bcb540bc4..fc26e7b9e 100644
  #include <QGpgME/Protocol>
  
 diff --git a/src/view/cardkeysview.cpp b/src/view/cardkeysview.cpp
-index eee754f7b..1f5a233aa 100644
+index 3e7e6dd..305b8e2 100644
 --- a/src/view/cardkeysview.cpp
 +++ b/src/view/cardkeysview.cpp
-@@ -34,6 +34,7 @@
+@@ -35,6 +35,7 @@
  #include <KLocalizedString>
  #include <KSharedConfig>
  
@@ -37,5 +37,5 @@ index eee754f7b..1f5a233aa 100644
  #include <QGpgME/Protocol>
  
 -- 
-GitLab
+2.50.0
 
