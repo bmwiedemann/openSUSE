@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  3 01:24:33 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 28.3.1-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/28/#2831>
+
+-------------------------------------------------------------------
 Wed Jun 25 15:33:36 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 28.3.0-ce. See upstream changelog online at
