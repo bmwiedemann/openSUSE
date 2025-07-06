@@ -8029,4 +8029,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1279763</requestid>
   </revision>
+  <revision rev="387" vrev="1">
+    <srcmd5>a5c433f9d629125766e257f13c95e34b</srcmd5>
+    <version>9.1.1508</version>
+    <time>1751814257</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.1.1508 
+  * patch 9.1.1508: string manipulation can be improved in cmdexpand.c
+  * runtime(vim): Update base-syntax and generator, match all default highlight groups
+  * runtime(vim): Update base-syntax and generator, generate command modifiers
+  * patch 9.1.1507: symlinks are resolved on :cd commands
+  * runtime(postscr): Correct some standard font names in syntax
+  * runtime(optwin): show 'guiligatures' option also on MS-Windows builds
+  * patch 9.1.1506: tests: missing cleanup in Test_search_cmdline_incsearch_highlight()
+  * patch 9.1.1505: not possible to return completion type for :ex command
+  * patch 9.1.1504: filetype: numbat files are not recognized
+  * patch 9.1.1503: filetype: haxe files are not recognized
+  * patch 9.1.1502: filetype: quickbms files are not recognized
+  * patch 9.1.1501: filetype: flix files are not recognized
+  * runtime(go): add section movement mappings to ftplugin
+  * runtime(doc): Tweak documentation style
+  * patch 9.1.1500: if_python: typo in python error variable
+  * runtime(tutor): regenerate utf-8 version of French vimtutor manpage
+  * runtime(netrw): upstream snapshot of v183
+  * runtime(vim): Update base-syntax, improve :syn-sync line defaults
+  * patch 9.1.1498: completion: 'complete' funcs behave different to 'omnifunc'
+  * patch 9.1.1497: Link error with shm_open()
+  * patch 9.1.1496: terminal: still not highlighting empty cells correctly
+  * README: mention POSIX vi as a goal of this project
+  * patch 9.1.1495: Wayland: uses $XDG_SEAT to determine seat
+  * patch 9.1.1494: runtime(tutor): no French translation for Chapter 2
+  * runtime(tutor): apply fixes to runtime/tutor/tutor2
+  * translation(it): updated Italian manpage
+  * patch 9.1.1493: manually comparing positions on buffer
+  * nsis: copy tutor directory recursively
+  * patch 9.1.1492: tests: failure when Wayland compositor fails to start</comment>
+    <requestid>1290727</requestid>
+  </revision>
 </revisionlist>

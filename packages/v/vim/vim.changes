@@ -1,4 +1,217 @@
 -------------------------------------------------------------------
+Fri Jul  4 18:27:09 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.1508 
+  * patch 9.1.1508: string manipulation can be improved in cmdexpand.c
+  * runtime(vim): Update base-syntax and generator, match all default highlight groups
+  * runtime(vim): Update base-syntax and generator, generate command modifiers
+  * patch 9.1.1507: symlinks are resolved on :cd commands
+  * runtime(postscr): Correct some standard font names in syntax
+  * runtime(optwin): show 'guiligatures' option also on MS-Windows builds
+  * patch 9.1.1506: tests: missing cleanup in Test_search_cmdline_incsearch_highlight()
+  * patch 9.1.1505: not possible to return completion type for :ex command
+  * patch 9.1.1504: filetype: numbat files are not recognized
+  * patch 9.1.1503: filetype: haxe files are not recognized
+  * patch 9.1.1502: filetype: quickbms files are not recognized
+  * patch 9.1.1501: filetype: flix files are not recognized
+  * runtime(go): add section movement mappings to ftplugin
+  * runtime(doc): Tweak documentation style
+  * patch 9.1.1500: if_python: typo in python error variable
+  * runtime(tutor): regenerate utf-8 version of French vimtutor manpage
+  * runtime(netrw): upstream snapshot of v183
+  * runtime(vim): Update base-syntax, improve :syn-sync line defaults
+  * patch 9.1.1498: completion: 'complete' funcs behave different to 'omnifunc'
+  * patch 9.1.1497: Link error with shm_open()
+  * patch 9.1.1496: terminal: still not highlighting empty cells correctly
+  * README: mention POSIX vi as a goal of this project
+  * patch 9.1.1495: Wayland: uses $XDG_SEAT to determine seat
+  * patch 9.1.1494: runtime(tutor): no French translation for Chapter 2
+  * runtime(tutor): apply fixes to runtime/tutor/tutor2
+  * translation(it): updated Italian manpage
+  * patch 9.1.1493: manually comparing positions on buffer
+  * nsis: copy tutor directory recursively
+  * patch 9.1.1492: tests: failure when Wayland compositor fails to start
+  * patch 9.1.1491: missing out-of-memory checks in cmdexpand.c
+  * runtime(vim): re-generate vim syntax script after v9.1.1487
+  * patch 9.1.1490: 'wildchar' does not work in search contexts
+  * runtime(doc): fix :vmap example to avoid unwanted spaces with JJ
+  * patch 9.1.1489: terminal: no visual highlight of empty cols with empty 'listchars'
+  * patch 9.1.1488: configure: using obsolete macro AC_PROG_GCC_TRADITIONAL
+  * runtime(doc): Fix modeline in wayland.txt
+  * patch 9.1.1487: :cl doesn't invoke :clist
+  * patch 9.1.1486: documentation issues with Wayland
+  * Maintainers: Update MAINTAINERS file
+  * patch 9.1.1485: missing Wayland clipboard support
+  * runtime(pandoc): sync syntax script with upstream
+  * runtime(netrw): upstream snapshot of v182
+  * patch 9.1.1484: tests: Turkish locale tests fails on Mac
+  * patch 9.1.1483: not possible to translation position in buffer
+  * patch 9.1.1482: scrolling with 'splitkeep' and line()
+  * runtime(doc): mismatch between the :uniq document's description and examples
+  * runtime(diff): fix regex for matching no-eol match
+  * runtime(netrw): remove the fun from netrw :)
+  * runtime(doc): update description of :uniq command
+  * runtime(vim): Update base-syntax, match unamed register alias
+  * patch 9.1.1481: gcc complains about uninitialized variable
+  * runtime(doc): improve documentation style in editing.txt
+  * patch 9.1.1480: Turkish translation outdated
+  * patch 9.1.1479: regression when displaying localized percentage position
+  * translation(it): update Italian manpage for vimtutor
+  * runtime(vim): Update base-syntax, match :uniq command
+  * patch 9.1.1478: Unused assignment in ex_uniq()
+  * runtime(vim): Update base-syntax, match OR operator in :echo and :execute
+  * patch 9.1.1476: no easy way to deduplicate text
+  * runtime(java): Complement the recognition of type parameter sections
+  * patch 9.1.1476: missing out-of-memory checks in cmdexpand.c
+  * runtime(doc): vimtutor starts Vim in nocompatible mode
+  * runtime(doc): remove wrong documentation of the :digraph command
+  * patch 9.1.1475: completion: regression when "nearest" in 'completeopt'
+  * runtime(comment): add <Plug>-mappings
+  * runtime(openPlugin): add <Plug>-mappings
+  * patch 9.1.1474: missing out-of-memory check in mark.c
+  * runtime(tutor): Make all tutor files utf-8 only
+  * runtime(vim): Update base-syntax, match bare mark ranges
+  * runtime(vim): Update base-syntax, fix Vim9 :import expression comment handling
+  * patch 9.1.1473: inconsistent range arg for :diffget/diffput
+  * runtime(doc): mention using <script> instead of <sfile> in :autocmd
+  * patch 9.1.1472: if_python: PySequence_Fast_{GET_SIZE,GET_ITEM} removed
+  * patch 9.1.1471: completion: inconsistent ordering with CTRL-P
+  * runtime(doc): Remove obsolete labelling from 'h' occasion in :help 'highlight'
+  * runtime(hgcommit): set comments and commentstring options in filetype plugin
+  * runtime(ishd): set comments and commentstring options in filetype plugin
+  * runtime(nroff,groff): update commentstyle in filetype plugins
+  * patch 9.1.1470: use-after-free with popup callback on error
+  * patch 9.1.1469: potential buffer-underflow with invalid hl_id
+  * patch 9.1.1468: filetype: bright(er)script files are not recognized
+  * patch 9.1.1467: too many strlen() calls
+  * runtime(vim): fix incorrect highlighting of User autocmds
+  * patch 9.1.1466: filetype: not all lex files are recognized
+  * patch 9.1.1465: tabpanel: not correctly drawn with 'equalalways'
+  * translation(de): update German messages translation
+  * runtime(optwin): fix tabpanel typo in optwin
+  * patch 9.1.1464: gv does not work in operator-pending mode
+  * patch 9.1.1463: Integer overflow in getmarklist() after linewise operation
+  * patch 9.1.1462: missing change from patch v9.1.1461
+  * runtime(sh): reset g:sh_fold_enabled after outputting its value in syntax script
+  * runtime(vimtutor): vimtutor throws Access Denied Error on MS-Windows
+  * patch 9.1.1461: tabpanel: tabpanel vanishes with popup menu
+  * runtime(keymaps): Add Azerbaijani keymap
+  * patch 9.1.1459: xxd: coloring output is inefficient
+  * patch 9.1.1458: tabpanel: tabs not properly updated with 'stpl'
+  * runtime(doc): mention cannot ignored events in eventignorewin
+  * runtime(netrw): remove g:netrw_quiet and reindent to 4 spaces
+  * runtime(comment): handle special chars ^$[ robustly
+  * runtime(debcontrol): add hurd-amd64 architecture to syntax script
+  * runtime(masm): set 'com' and 'cms' options in ftplugin
+  * runtime(zimbu): set 'commentstring' option in ftplugin
+  * runtime(doc): improve the wording of 'sts', 'varts' and 'varsts' values
+  * runtime(netrw): refactor netrw#ErrorMsg -> netrw#msg#Notify
+  * runtime(defaults): Update the "Last Changes" header in defaults.vim
+  * patch 9.1.1457: compile warning with tabpanelopt
+  * patch 9.1.1456: comment plugin fails toggling if 'cms' contains \
+  * runtime(doc): remove an obsolete item from todo.txt
+  * patch 9.1.1455: Haiku: dailog objects created with no reference
+  * runtime(vim): Update base-syntax, improve function definition matching
+  * patch 9.1.1454: tests: no test for pum at line break position
+  * runtime(openPlugin): Open should open file names with spaces in Windows
+  * runtime(doc): add more pointers to 'completeopt'
+  * runtime(netrw): remove comment separators
+  * patch 9.1.1453: tests: Test_geometry() may fail
+  * runtime(filetype): Use s:StarSetf for all patterns ending in *
+  * runtime(doc): update documentation on tabstop settings
+  * runtime(vim): Update base-syntax, contain let-heredocs
+  * runtime(reva): set 'cms' option in ftplugin, update URL
+  * runtime(abap): set 'comments' and 'commentstring' option in ftplugin
+  * patch 9.1.1452: completion: redundant check for completion flags
+  * patch 9.1.1451: tabpanel rendering artifacts when scrolling
+  * runtime(netrw): get rid of s:Strlen() and use strdisplaywidth()
+  * runtime(java): Match raw-, non-generic-, and generic-type names of "java.lang"
+  * runtime(gdshader): add comments and commentstring to ftplugin
+  * patch 9.1.1450: Session has wrong arglist with :tcd and :arglocal
+  * runtime(8th): updated 8th syntax script
+  * patch 9.1.1449: typo in pum_display()
+  * patch 9.1.1448: tabpanel is not displayed correctly when msg_scrolled
+  * patch 9.1.1447: completion: crash when backspacing with fuzzy completion
+  * runtime(rpl): set commentstring option in ftplugin
+  * runtime(postscr): set commentstring option in ftplugin
+  * runtime(occam): set commentstring option in ftplugin
+  * runtime(lprolog): set com, cms options for lambda prolog
+  * runtime(vue): set 'com' and 'cms' options in ftplugin
+  * patch 9.1.1446: filetype: cuda-gdb config files are not recognized
+  * patch 9.1.1445: negative matchfuzzy scores although there is a match
+  * patch 9.1.1444: Unused assignment in set_fuzzy_score()
+  * patch 9.1.1443: potential buffer underflow in insertchar()
+  * patch 9.1.1442: tests: Test_diff_fold_redraw() is insufficient
+  * runtime(netrw): cleanup Decho related comments
+  * patch 9.1.1441: completion: code can be improved
+  * runtime(nginx): Add NGINX directive for background cache updates
+  * patch 9.1.1440: too many strlen() calls in os_win32.c
+  * patch 9.1.1439: Last diff folds not merged
+  * patch 9.1.1438: tests: Test_breakindent_list_split() fails
+  * runtime(doc): fix some style issues and remove obsolete docs
+  * runtime(vim): vimHLGroup is not highlighted correctly
+  * runtime(vim): remove trailing whitespace in Vim syntax generator
+  * patch 9.1.1436: GUI control code is displayed on the console on startup
+  * CI: bump xcode to 16.4
+  * runtime(netrw): upstream snapshot of v181
+  * runtime(typescript): remove Fixedgq() function from indent script
+  * runtime(doc): Add missing 'wfb' (winfixbuf) tag
+  * patch 9.1.1435: completion: various flaws in fuzzy completion
+  * patch 9.1.1434: MS-Windows: missing out-of-memory checks in os_win32.c
+  * patch 9.1.1433: Unnecessary :if when writing session
+  * runtime(vim): Update base-syntax, improve Vim9 block start pattern
+  * runtime(openPlugin): Add URLOpen to not expand special chars
+  * runtime(doc): fix small errors from rev 2090405de5bb66facc29c74
+  * patch 9.1.1432: GTK GUI: Buffer menu does not handle unicode correctly
+  * runtime(doc): clarify the effect of 'smarttab'
+  * patch 9.1.1431: Hit-Enter Prompt when loading session files
+  * runtime(mbsync): Add support for TLSType in syntax script
+  * patch 9.1.1430: tabpanel may flicker in the GUI
+  * runtime(new-tutor): update the "correct" text in tutor.tutor.json
+  * patch 9.1.1429: dragging outside the tabpanel changes tabpagenr
+  * patch 9.1.1428: completion: register completion needs cleanup
+  * patch 9.1.1427: rendering artifacts with the tabpanel
+  * runtime(doc): make examples verbatim to prevent conceal/tag parsing
+  * runtime(doc): clarify the effect of exclusive single char selections
+  * patch 9.1.1426: completion: register contents not completed
+  * runtime(vim): Update base-syntax, bug fixes
+  * patch 9.1.1425: tabpanel: there are still some problems with the tabpanel
+  * patch 9.1.1424: PMenu selection broken with multi-line selection and limits
+  * patch 9.1.1423: :tag command not working correctly using Vim9 Script
+  * patch 9.1.1422: scheduling of complete function can be improved
+  * runtime(doc): make 'shiftwidth' setting more precise
+  * patch 9.1.1421: tests: need a test for the new-style tutor.tutor
+  * runtime(java): Match annotation- and interface-type names of "java.lang"
+  * runtime(vim): Update base-syntax, improve :profile highlighting
+  * runtime(vim): Update base-syntax, improve :mark and :substitute highlighting
+  * patch 9.1.1420: tests: could need some more tests for shebang lines
+  * runtime(java): Reference a modern syntax item generator for type names
+  * patch 9.1.1419: It is difficult to ignore all but some events
+  * runtime(doc): fix typo in tag for helptoc package
+  * runtime(doc): clarify behaviour of set maxcombine=0
+  * runtime(doc): clarify tabstop settings and guidance
+  * runtime(vim): Update base-syntax, improve :set highlighting
+  * runtime(doc): Fix typos and language in documentation for tabpanel.
+  * patch 9.1.1418: configures GUI auto detection favors GTK2
+  * patch 9.1.1417: missing info about register completion in complete_info()
+  * patch 9.1.1416: completion limits not respected for fuzzy completions
+  * runtime(doc): Correct allowed flags after :substitute repeat
+  * patch 9.1.1415: potential use-after free when there is an error in 'tabpanel'
+  * runtime(doc): trailing whitespace in options.txt, delete it.
+  * translation(hy): renamed am.po -> hy.po for armenian lang translations
+  * runtime(doc): Correct allowed characters at :help 'filetype'
+  * patch 9.1.1414: MS-Windows: compile warnings in os_win32.c
+  * patch 9.1.1413: spurious CursorHold triggered in GUI on startup
+  * patch 9.1.1412: tests: Test_tabpanel_tabonly() fails on larger screens
+  * patch 9.1.1411: crash when calling non-existing function for tabpanel
+  * patch 9.1.1410: out-of-bounds access with 'completefunc'
+  * patch 9.1.1409: using f-flag in 'complete' conflicts with Neovim
+  * patch 9.1.1408: not easily possible to complete from register content
+  * runtime(doc):  clarify license conditions for distributed runtime files
+  * runtime: Add license information for HCL and Terraform runtime files
+  * patch 9.1.1407: Can't use getpos('v') in OptionSet when using setbufvar()
+
+-------------------------------------------------------------------
 Sat May 24 11:13:11 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 9.1.1406.
