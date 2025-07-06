@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul  1 15:26:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.3/
+- Changes since 25.04.2:
+  * Fix build-in volume effect still disabled after enabling it
+  * Fix OTIO export tracks order and ensures .otio file extension
+  * Fix guides not correctly adjusted when changing profile to clip profile from bin messsage action
+  * Fix guides position not adjusted after project profile change (kde#434585)
+  * By default insert to the lowest video track, not top track. (kde#503028)
+  * When the transform on monitor rectangle is small, apply an offset to resize handles so rect can be moved (kde#505224)
+
+-------------------------------------------------------------------
 Tue Jun  3 21:12:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.2
