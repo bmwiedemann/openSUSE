@@ -1,12 +1,50 @@
 -------------------------------------------------------------------
-Fri Jun 20 09:41:45 UTC 2025 - YI HSIN Lyu <richard.lyu@suse.com>
+Fri Jul  4 06:08:42 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
+
+- Revert the following change due to security concerns and potential underlying issues.
+  - Enables UEFI Shell support for guests on X64 and AARCH64 platforms (bsc#1244266)
+      - Build Shell.efi independently
+      - Add ovmf-ShellPkg-Add-post-script-for-Shell-installation.patch
+        - Install Shell.efi to EFI boot partition (/boot/efi/EFI/opensuse/ or /boot/efi/EFI/sles/)
+        - Register Shell.efi as a boot entry
+
+-------------------------------------------------------------------
+Thu Jul  3 06:03:52 UTC 2025 - Chun-Yi Lee <jlee@suse.com>
+
+- Removed ovmf-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.patch
+  because the bsc#1205978 be fixed in qemu. And re-enabling 'dynamic mmio
+  window size' feature in ovmf can support big GPU passthrough to guest.
+  (bsc#1245542)
+
+-------------------------------------------------------------------
+Wed Jul  2 08:28:34 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
+
+- Remove 60-ovmf-x86_64-sev.json descriptor (bsc#1245497)
+
+-------------------------------------------------------------------
+Fri Jun 27 02:53:08 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
+
+- Enables UEFI Shell support for guests on X64 and AARCH64 platforms (bsc#1244266)
+    - Build Shell.efi independently
+    - Add ovmf-ShellPkg-Add-post-script-for-Shell-installation.patch
+      - Install Shell.efi to EFI boot partition (/boot/efi/EFI/opensuse/ or /boot/efi/EFI/sles/)
+      - Register Shell.efi as a boot entry
+
+-------------------------------------------------------------------
+Thu Jun 26 02:03:11 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
+
+- Add patch to make Ovmf builds reproducible in OvmfPkg and ArmVirtPkg (bsc#1244218) 
+    - Add ovmf-OvmfPkg-ArmVirtPkg-Keep-JSON-stack-cookie-files.patch   
+
+-------------------------------------------------------------------
+Fri Jun 20 09:41:45 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
 
 - Enable TDVF firmware to boot TDX guest VM with Secure boot (jsc#PED-13070)
     - Add ovmf-x86_64-tdx-secureboot.bin
     - Add 60-ovmf-x86_64-tdx.json 
 
 -------------------------------------------------------------------
-Wed May 28 09:46:23 UTC 2025 - YI HSIN Lyu <richard.lyu@suse.com>
+Wed May 28 09:46:23 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
 
 - Update to edk2-stable202505
     - New Features & Bug Fixes (https://github.com/tianocore/edk2/releases):
@@ -373,7 +411,7 @@ Wed May 28 09:46:23 UTC 2025 - YI HSIN Lyu <richard.lyu@suse.com>
     - ovmf-Revert-Add-Stack-Cookie-Support-to-MSVC-and-GCC.patch
 
 -------------------------------------------------------------------
-Wed May  7 09:52:50 UTC 2025 - YI HSIN Lyu <richard.lyu@suse.com>
+Wed May  7 09:52:50 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
 
 - Add patchset to enable SVSM vTPM support in OVMF (jsc#PED-12743, jsc#PED-12767)
     - 9bceb16000 ovmf-Maintainers.txt-Add-reviewer-for-SVSM-vTPM-related-m.patch
@@ -389,7 +427,7 @@ Wed May  7 09:52:50 UTC 2025 - YI HSIN Lyu <richard.lyu@suse.com>
     - c2d8e92367 ovmf-SecurityPkg-Tpm2DeviceLibDTpm-Check-SNP-enabled-prio.patch
 
 -------------------------------------------------------------------
-Wed May  7 02:55:27 UTC 2025 - YI HSIN Lyu <richard.lyu@suse.com>
+Wed May  7 02:55:27 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
 
 - Remove non-unified SEV/TDX images due to potential security risks. (bsc#1232762)
     - ovmf-x86_64-sev-code.bin
@@ -398,7 +436,7 @@ Wed May  7 02:55:27 UTC 2025 - YI HSIN Lyu <richard.lyu@suse.com>
     - ovmf-x86_64-tdx-vars.bin
 
 -------------------------------------------------------------------
-Mon Apr 28 03:59:31 UTC 2025 - YI HSIN Lyu <richard.lyu@suse.com>
+Mon Apr 28 03:59:31 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
 
 - Add TDX flavor OVMF using Config-B (OvmfPkg/IntelTdx/IntelTdxX64.dsc).
 Full TDX functionality has been supported with Config-B. 

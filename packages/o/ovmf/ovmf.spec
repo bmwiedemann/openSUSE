@@ -61,8 +61,6 @@ Patch1:         %{name}-gdb-symbols.patch
 Patch2:         %{name}-pie.patch
 Patch3:         %{name}-disable-ia32-firmware-piepic.patch
 Patch6:         %{name}-ignore-spurious-GCC-12-warning.patch
-# Bug 1205978 - Got Page-Fault exception when VM is booting with edk2-stable202211 ovmf
-Patch7:         %{name}-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.patch
 # Bug 1207095 - ASSERT [ArmCpuDxe] /home/abuild/rpmbuild/BUILD/edk2-edk2-stable202211/ArmPkg/Library/DefaultExceptionHandlerLib/AArch64/DefaultExceptionHandler.c(333): ((BOOLEAN)(0==1))
 Patch8:         %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
 # Bug 1205613 - L3: win 2k22 UEFI xen VMs cannot boot in xen after upgrade
@@ -76,7 +74,8 @@ Patch11:        %{name}-BaseTools-Using-gcc12-for-building-image.patch
 %endif
 # Bug 1240420 - UEFI boot breaks: X64 Exception Type - 0E(#PF - Page-Fault) CPU Apic ID - 00000000
 Patch13:        %{name}-UefiCpuPkg-Disable-EFI-memory-attributes-protocol.patch
-
+# Bug 1244218 - ovmf: non-deterministic .bin files (about unreproducible)
+Patch14:        %{name}-OvmfPkg-ArmVirtPkg-Keep-JSON-stack-cookie-files.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
