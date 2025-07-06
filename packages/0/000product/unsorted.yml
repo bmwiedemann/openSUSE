@@ -1270,6 +1270,7 @@ unsorted:
   - azure-cli 
   - azure-cli-core 
   - azure-cli-telemetry 
+  - azure-storage-azcopy 
   - b3sum 
   - b4 
   - babelstone-han-fonts 
@@ -1450,6 +1451,7 @@ unsorted:
   - bitstream-vera-fonts 
   - bittwist 
   - bitwarden 
+  - bitwarden-sdk-internal 
   - bitwise 
   - bk 
   - black-hole-solver 
@@ -11287,7 +11289,7 @@ unsorted:
   - libOsi1 
   - libOsiCbc3 
   - libOsiClp1 
-  - libPDAL18 
+  - libPDAL19 
   - libPocoActiveRecord111 
   - libPocoCppParser111 
   - libPocoCrypto111 
@@ -14169,29 +14171,31 @@ unsorted:
   - libkdstatemachineeditor_view2 
   - libkdumpfile-devel 
   - libkdumpfile12 
-  - libkea-asiodns49 
-  - libkea-asiolink72 
-  - libkea-cc68 
-  - libkea-cfgclient66 
-  - libkea-cryptolink50 
-  - libkea-d2srv47 
-  - libkea-database62 
-  - libkea-dhcp++92 
-  - libkea-dhcp_ddns57 
-  - libkea-dhcpsrv111 
-  - libkea-dns++57 
-  - libkea-eval69 
-  - libkea-exceptions33 
-  - libkea-hooks100 
-  - libkea-http72 
-  - libkea-log61 
-  - libkea-mysql71 
-  - libkea-pgsql71 
-  - libkea-process74 
-  - libkea-stats41 
-  - libkea-tcp19 
-  - libkea-util-io0 
-  - libkea-util86 
+  - libkea-asiodns62 
+  - libkea-asiolink87 
+  - libkea-cc82 
+  - libkea-cfgrpt3 
+  - libkea-config83 
+  - libkea-cryptolink63 
+  - libkea-d2srv63 
+  - libkea-database76 
+  - libkea-dhcp109 
+  - libkea-dhcp_ddns68 
+  - libkea-dhcpsrv129 
+  - libkea-dns71 
+  - libkea-eval84 
+  - libkea-exceptions45 
+  - libkea-hooks118 
+  - libkea-http87 
+  - libkea-log-interprocess3 
+  - libkea-log75 
+  - libkea-mysql88 
+  - libkea-pgsql88 
+  - libkea-process90 
+  - libkea-stats53 
+  - libkea-tcp33 
+  - libkea-util-io12 
+  - libkea-util101 
   - libkea1_5 
   - libkeccak-devel 
   - libkeccak1 
@@ -15289,7 +15293,7 @@ unsorted:
   - libplacebo-devel 
   - libplacebo351-32bit 
   - libplacebo5-devel 
-  - libplanarity0 
+  - libplanarity2 
   - libplank1 
   - libplasma6-devel 
   - libplayerctl2 
@@ -15307,10 +15311,6 @@ unsorted:
   - libpmem-devel 
   - libpmem2-1 
   - libpmem2-devel 
-  - libpmemkv1 
-  - libpmemkv_json_config1 
-  - libpmemobj-cpp-devel 
-  - libpmemobj-cpp-devel-doc 
   - libpmemobj-devel 
   - libpmempool-devel 
   - libpmempool1 
@@ -15957,7 +15957,6 @@ unsorted:
   - librnp0 
   - librocksdb10 
   - librocsgraphtheory0 
-  - librpma0 
   - librrd8 
   - librsb-devel 
   - librsb0 
@@ -16824,10 +16823,6 @@ unsorted:
   - libvmdk-devel 
   - libvmdk-tools 
   - libvmdk1 
-  - libvmem-devel 
-  - libvmem1 
-  - libvmmalloc-devel 
-  - libvmmalloc1 
   - libvmtools-devel 
   - libvncclient1 
   - libvo-amrwbenc-devel 
@@ -17533,7 +17528,6 @@ unsorted:
   - lmdbxx-devel 
   - lmms 
   - lmms-devel 
-  - lmms-vst 
   - lnav 
   - lndir 
   - local-npm-registry 
@@ -19667,6 +19661,7 @@ unsorted:
   - nnn-fish-completion 
   - nnn-zsh-completion 
   - no-more-secrets 
+  - nodejs-bitwarden-sdk-internal 
   - nodejs-common 
   - nodejs-default 
   - nodejs-devel-default 
@@ -19750,6 +19745,7 @@ unsorted:
   - nulloy-gstreamer 
   - nulloy-taglib 
   - nulloy-vlc 
+  - numa-preplace 
   - numad 
   - numatop 
   - numbat 
@@ -20317,6 +20313,7 @@ unsorted:
   - opencensus-proto-source 
   - opencl-cpp-headers 
   - opencl-headers 
+  - opencloud-dolphin 
   - opencloud-extensions-resources 
   - opencloud-server 
   - openconnect-devel 
@@ -22883,8 +22880,6 @@ unsorted:
   - pmdk-convert 
   - pmdk-devel-doc 
   - pmdk-tools 
-  - pmemkv-devel 
-  - pmemkv-python 
   - pmidi 
   - pmix 
   - pmix-devel 
@@ -25377,7 +25372,6 @@ unsorted:
   - python311-gmpy2 
   - python311-gns3fy 
   - python311-gnureadline 
-  - python311-gobject-Gdk 
   - python311-gobject-devel 
   - python311-google-ai-generativelanguage 
   - python311-google-api-core 
@@ -36128,7 +36122,6 @@ unsorted:
   - rpm-repo-keys-openSUSE 
   - rpm-repos-openSUSE-Tumbleweed 
   - rpm2docserv 
-  - rpma-devel 
   - rpmconf 
   - rpmdevtools 
   - rpmlint 
