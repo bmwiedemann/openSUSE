@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 28 15:50:49 UTC 2025 - Enno Gotthold <egotthold@suse.com>
+
+- Update to version 1.7.1:
+  * Update vendored dependencies
+  * Update containernetworking plugins to 1.7.1
+
+-------------------------------------------------------------------
 Fri Nov 29 16:41:11 UTC 2024 - egotthold@suse.com
 
 - Update to version 1.6.0
