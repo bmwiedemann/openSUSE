@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul  3 14:25:51 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.77
+  * Added operation `IsFullSubgroupoid(gpd,subgpd)`
+  * `Subgroupoid` now checks for `SubgroupoidWithRays`
+  * `SubgroupoidByPieces` now copes with mixed piece data
+  * Added method for `\=` for two groupoid homomorphisms
+  * Documented the operation `PiecePositions`
+  * Revised `HomomorphismByUnion` - deals with many pieces
+
+-------------------------------------------------------------------
 Mon Sep 23 11:17:50 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.76
