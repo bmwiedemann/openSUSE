@@ -24,6 +24,12 @@ License:        BSL-1.0 AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://www.siril.org/
 Source:         https://gitlab.com/free-astro/siril/-/archive/%{version}/siril-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM - extracted from https://gitlab.com/free-astro/siril/-/commit/763079de767df0e3ae42f51b65f2f25d7ea7b8b8
+Patch0:         fix_C_linkage.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         https://gitlab.com/free-astro/siril/-/commit/1041f25fd1d04330626601185907373c2e69e709.patch#/fix_glib_284_compat.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         https://gitlab.com/free-astro/siril/-/commit/241b4b17d83285eb4bf4151dd77198427ac9fde4.patch#/fix_odr_violation.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

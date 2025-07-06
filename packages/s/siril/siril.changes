@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul  3 23:27:32 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with glib 2.84, add patches:
+  * fix_C_linkage.patch
+  * fix_glib_284_compat.patch
+- Fix ODR violation, add
+  * fix_odr_violation.patch
+
+-------------------------------------------------------------------
 Thu Feb  6 07:50:21 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.2.6:
