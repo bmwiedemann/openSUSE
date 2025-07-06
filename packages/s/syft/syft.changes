@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Jul 03 04:49:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.28.0:
+  * Added Features
+    - add native support for snap packages [#1088 #3929 @wagoodman]
+  * Additional Changes
+    - upgrade tablewriter dependency to use new API [#3990
+      @cpanato]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#4047)
+    - chore(deps): update anchore dependencies (#4045)
+    - chore: upgrade tablewriter dependency to use new API (#3990)
+    - chore(deps): bump github.com/Masterminds/semver/v3 from 3.3.1
+      to 3.4.0 (#4040)
+    - chore: update tests to read from latest test-fixture-cache
+      and fix cache publish (#4042)
+    - chore(deps): bump github.com/mholt/archives from 0.1.2 to
+      0.1.3 (#4032)
+    - chore(deps): bump marocchino/sticky-pull-request-comment
+      (#4019)
+    - chore(deps): bump sigstore/cosign-installer from 3.9.0 to
+      3.9.1 (#4022)
+    - chore(deps): update tools to latest versions (#4035)
+    - chore(deps): update CPE dictionary index (#4037)
+    - chore(deps): bump github/codeql-action from 3.29.0 to 3.29.2
+      (#4039)
+    - chore(deps): update CPE dictionary index (#4021)
+    - chore(deps): update tools to latest versions (#4016)
+    - chore(deps): update tools to latest versions (#4012)
+    - chore(deps): bump github.com/go-viper/mapstructure/v2 (#4014)
+    - chore(deps): bump sigstore/cosign-installer from 3.8.2 to
+      3.9.0 (#4015)
+    - chore(deps): update CPE dictionary index (#4007)
+    - chore(deps): bump anchore/sbom-action from 0.20.0 to 0.20.1
+      (#4008)
+    - chore(deps): bump github.com/google/go-containerregistry
+      (#4009)
+    - chore(deps): update tools to latest versions (#3992)
+    - chore(deps): bump github/codeql-action from 3.28.19 to 3.29.0
+      (#4000)
+
+-------------------------------------------------------------------
 Fri Jun 13 04:42:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.27.1:
