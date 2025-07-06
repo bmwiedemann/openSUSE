@@ -1,7 +1,7 @@
 #
 # spec file for package wfuzz
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           wfuzz
 Version:        3.1.0
 Release:        0
@@ -24,12 +23,14 @@ Summary:        The web fuzzer
 License:        GPL-2.0-only
 URL:            https://wfuzz.readthedocs.io/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/w/wfuzz/wfuzz-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %python_subpackages
 
@@ -72,10 +73,10 @@ sed -i '1{/^#!/ d}' src/wfuzz/wfuzz.py
 sed -i 's/pyparsing>=2.4\*/pyparsing>=2.4/g' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 for p in wfencode wfpayload wfuzz wxfuzz ; do
     %python_clone -a %{buildroot}%{_bindir}/$p
@@ -92,7 +93,8 @@ done
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/wfuzz
+%{python_sitelib}/wfuzz-%{version}.dist-info
 
 %python_alternative %{_bindir}/wfencode
 %python_alternative %{_bindir}/wfpayload

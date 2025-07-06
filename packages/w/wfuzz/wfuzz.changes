@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 27 01:14:39 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- List directories under sitelib explicitly.
+
+-------------------------------------------------------------------
 Wed Feb  1 14:35:52 UTC 2023 - Paolo Perego <paolo.perego@suse.com>
 
 - Fixed a problem preventing this package to build in Factory
