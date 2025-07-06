@@ -1,0 +1,31 @@
+Index: tcp_wrappers_7.6/safe_finger.c
+===================================================================
+--- tcp_wrappers_7.6.orig/safe_finger.c
++++ tcp_wrappers_7.6/safe_finger.c
+@@ -32,12 +32,10 @@ static char sccsid[] = "@(#) safe_finger
+ 
+ /* Local stuff */
+ 
+-char    path[] = "PATH=/bin:/usr/bin:/usr/sbin";
+-
+ #define	TIME_LIMIT	60		/* Do not keep listinging forever */
+ #define	INPUT_LENGTH	100000		/* Do not keep listinging forever */
+ #define	LINE_LENGTH	128		/* Editors can choke on long lines */
+-#define	FINGER_PROGRAM	"finger"	/* Most, if not all, UNIX systems */
++#define	FINGER_PROGRAM	"/usr/bin/finger"	/* Most, if not all, UNIX systems */
+ #define	UNPRIV_NAME	"nobody"	/* Preferred privilege level */
+ #define	UNPRIV_UGID	32767		/* Default uid and gid */
+ 
+@@ -76,9 +74,9 @@ int main(int argc, char **argv)
+     /*
+      * Redirect our standard input through the raw finger command.
+      */
+-    if (putenv(path)) {
+-	fprintf(stderr, "%s: putenv: out of memory", argv[0]);
+-	exit(1);
++    if (access(FINGER_PROGRAM, X_OK) != 0) {
++	printf("Can not execute " FINGER_PROGRAM ". Please install 'finger' package.\n");
++        return 1;
+     }
+     argv[0] = FINGER_PROGRAM;
+     finger_pid = pipe_stdin(argv);

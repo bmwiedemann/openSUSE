@@ -66,6 +66,8 @@ Patch33:        tcp_wrappers_%{version}-ipv6-mapped-v4.patch
 Patch34:        tcp_wrappers_%{version}-ipv6.fix.fix3.diff
 Patch35:        tcp_wrappers_%{version}-gcc14.patch
 Patch36:        tcp_wrappers_%{version}-gcc15.patch
+# check whether finger is present
+Patch37:        tcpd-check-finger-presence.patch
 BuildRequires:  linux-kernel-headers
 Provides:       nkitb:%{_sbindir}/tcpd
 # bug437293
@@ -141,6 +143,7 @@ to compile and link programs against the TCP wrapper library.
 %patch -P 34
 %patch -P 35 -p1
 %patch -P 36 -p1
+%patch -P 37 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -154,7 +157,7 @@ install -d -m 755 %{buildroot}%{_sbindir}
 install -d -m 755 %{buildroot}%{_mandir}/man{1,3,5,8}
 install -m 644 ip6utils.h tcpd.h %{buildroot}%{_includedir}
 install -m 644 libwrap.a %{buildroot}/%{_libdir}
-install -m 755 tcpd tcpdchk tcpdmatch try-from %{buildroot}%{_sbindir}
+install -m 755 safe_finger tcpd tcpdchk tcpdmatch try-from %{buildroot}%{_sbindir}
 install -m 644 hosts_access.3 %{buildroot}%{_mandir}/man3
 install -m 644 hosts_access.5 hosts_options.5 %{buildroot}%{_mandir}/man5
 install -m 644 tcpd.8 tcpdchk.8 tcpdmatch.8 %{buildroot}%{_mandir}/man8

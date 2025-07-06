@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 30 09:17:56 UTC 2025 - pgajdos@suse.com
+
+- readd safe_finger [bsc#1241401]
+- added patches
+  check whether finger is present
+  + tcpd-check-finger-presence.patch
+
+-------------------------------------------------------------------
 Tue Apr 22 11:20:12 UTC 2025 - pgajdos@suse.com
 
 - remove safe_finger as it calls dropped figner [bsc#1241401]
