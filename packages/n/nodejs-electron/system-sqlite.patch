@@ -17,8 +17,8 @@ Unbundle Node's sqlite copy. Note that this is NOT the sqlite used by Chromium, 
 +  pkg_config("sqlite_config") {
 +    packages = ["sqlite3"]
      defines = [
-       "SQLITE_ENABLE_MATH_FUNCTIONS",
-       "SQLITE_ENABLE_SESSION",
+       "SQLITE_ENABLE_COLUMN_METADATA",
+       "SQLITE_ENABLE_DBSTAT_VTAB",
 @@ -14,28 +15,9 @@ template("sqlite_gn_build") {
      ]
    }

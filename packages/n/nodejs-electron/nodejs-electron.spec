@@ -191,7 +191,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        35.6.0
+Version:        35.7.0
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
