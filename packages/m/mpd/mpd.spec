@@ -16,17 +16,15 @@
 #
 
 
-%define mver    0.23
-%bcond_with    faad
-%bcond_without mpd_iso9660
+%define ver 0.24
 Name:           mpd
-Version:        0.23.17
+Version:        %{ver}.4
 Release:        0
 Summary:        Music Player Daemon
 License:        GPL-2.0-or-later
 URL:            https://musicpd.org
-Source0:        https://musicpd.org/download/%{name}/%{mver}/%{name}-%{version}.tar.xz
-Source1:        https://musicpd.org/download/%{name}/%{mver}/%{name}-%{version}.tar.xz.sig
+Source0:        https://musicpd.org/download/%{name}/%{ver}/%{name}-%{version}.tar.xz
+Source1:        https://musicpd.org/download/%{name}/%{ver}/%{name}-%{version}.tar.xz.sig
 Source2:        README.%{name}
 Source3:        %{name}-user.conf
 Source4:        %{name}.firewalld
@@ -34,20 +32,12 @@ Source5:        %{name}.tmpfiles.d
 Source9:        %{name}.keyring
 Patch0:         %{name}-conf.patch
 Patch1:         %{name}-sndfile.patch
-BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  group(audio)
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libboost_headers-devel
-BuildRequires:  libcue-devel
-# MPD_ENABLE_AUTO_LIB
-BuildRequires:  libgcrypt-devel
-BuildRequires:  libmikmod-devel
-BuildRequires:  libmp3lame-devel
-BuildRequires:  meson >= 0.56.0
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
-# MPD_ENABLE_AUTO_PKG
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(ao)
 BuildRequires:  pkgconfig(audiofile)
@@ -55,6 +45,7 @@ BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(faad2)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(fmt)
@@ -62,14 +53,17 @@ BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(id3tag)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libcdio_paranoia)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libgme)
+BuildRequires:  pkgconfig(libiso9660)
+BuildRequires:  pkgconfig(libmikmod)
 BuildRequires:  pkgconfig(libmms)
 BuildRequires:  pkgconfig(libmodplug)
+BuildRequires:  pkgconfig(libmp3lame)
 BuildRequires:  pkgconfig(libmpdclient)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libnfs) >= 4
@@ -77,10 +71,12 @@ BuildRequires:  pkgconfig(libopenmpt)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libsidplayfp)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libupnp)
 BuildRequires:  pkgconfig(liburing)
 BuildRequires:  pkgconfig(mad)
+BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(opus)
@@ -89,13 +85,13 @@ BuildRequires:  pkgconfig(shine)
 BuildRequires:  pkgconfig(shout)
 BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(sndio)
 BuildRequires:  pkgconfig(soxr)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(twolame)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(wavpack)
-BuildRequires:  pkgconfig(yajl)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(zziplib)
 Requires(pre):  %fillup_prereq
@@ -103,12 +99,6 @@ Requires(pre):  group(audio)
 Requires(pre):  shadow
 Provides:       user(%{name})
 %{?systemd_requires}
-%if %{with faad}
-BuildRequires:  faad2-devel
-%endif
-%if %{with mpd_iso9660}
-BuildRequires:  pkgconfig(libiso9660)
-%endif
 
 %description
 A daemon for playing music (mp3, ogg vorbis, flac, and wav).  Music is
@@ -132,90 +122,12 @@ This package contains optional documentation provided in addition to this packag
 
 %build
 %meson \
-    -Dsidplay=disabled \
-    -Dfaad=disabled \
-    -Diso9660=disabled \
-    -Dsyslog=enabled \
-    -Deventfd=true \
-    -Dsignalfd=true \
-    -Depoll=true \
-    -Ddatabase=true \
-    -Ddaemon=true \
-    -Ddocumentation=enabled \
-    -Dmanpages=true \
-    -Ddsd=true \
-    -Dfifo=true \
-    -Dhttpd=true \
-    -Dinotify=true \
-    -Dipv6=enabled \
-    -Dsoundcloud=disabled \
-    -Dmikmod=enabled \
-    -Dopenal=enabled \
-    -Doss=disabled \
-    -Dpipe=true \
-    -Drecorder=true \
-    -Dshout=enabled \
-    -Dsolaris_output=enabled \
-    -Dtcp=true \
-    -Dtest=false \
-    -Dlocal_socket=true \
-    -Dvorbis=enabled \
-    -Dwave_encoder=true \
-    -Dicu=enabled \
-    -Diconv=enabled \
-    -Dsystemd=enabled \
-    -Dlibmpdclient=enabled \
-    -Dexpat=enabled \
-    -Did3tag=enabled \
-    -Dchromaprint=disabled \
-    -Dsqlite=enabled \
-    -Dlibsamplerate=enabled \
-    -Dsoxr=enabled \
-    -Dcurl=enabled \
-    -Dsmbclient=enabled \
-    -Dnfs=enabled \
-    -Dcdio_paranoia=enabled \
-    -Dmms=enabled \
-    -Dwebdav=enabled \
-    -Dcue=true \
-    -Dneighbor=true \
-%if %{with mpd_iso9660}
-    -Diso9660=enabled \
-%endif
-    -Dzlib=enabled \
-    -Dbzip2=enabled \
-    -Dupnp=pupnp \
-    -Dzzip=enabled \
     -Dadplug=disabled \
-    -Daudiofile=enabled \
-%if %{with faad}
-    -Dfaad=enabled \
-%endif
-    -Dffmpeg=enabled \
-    -Dflac=enabled \
-    -Dfluidsynth=enabled \
-    -Dgme=enabled \
-    -Dmad=enabled \
-    -Dmpg123=enabled \
-    -Dmodplug=enabled \
-    -Dopus=enabled \
-    -Dsndfile=enabled \
+    -Dchromaprint=disabled \
     -Dmpcdec=disabled \
-    -Dwavpack=enabled \
-    -Dwildmidi=disabled \
-    -Dshine=enabled \
-    -Dvorbisenc=enabled \
-    -Dlame=enabled \
-    -Dtwolame=enabled \
-    -Dalsa=enabled \
-    -Dsndio=disabled \
-    -Djack=enabled \
-    -Dao=enabled \
-    -Dpulse=enabled \
+    -Dsmbclient=enabled \
     -Dtremor=disabled \
-    -Dpcre=enabled \
-    -Dsystemd_system_unit_dir=%{_unitdir} \
-    -Dsystemd_user_unit_dir=%{_userunitdir}
+    -Dwildmidi=disabled
 %meson_build
 
 %install

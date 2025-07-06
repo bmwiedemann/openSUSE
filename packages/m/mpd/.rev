@@ -819,4 +819,19 @@
   * supported libfmt 11.1</comment>
     <requestid>1242003</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>0828c7aa3f18b890423a2cc4dffda8f3</srcmd5>
+    <version>0.24.4</version>
+    <time>1751814901</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 0.24.4
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.24.4/NEWS
+  * protocol: fixed stuck &quot;getfingerprint&quot; with io_uring
+  * decoder: mpg123: supported Icy stream tags and use libid3tag to parse
+  * tags: id3: fixed assertion failure with broken AIFF/RIFF ID3 chunks
+  * output
+    * fixed resuming playback after it was paused by &quot;single&quot; mode
+    * alsa: fixed compiler warning with alsa-lib 1.2.14</comment>
+    <requestid>1290714</requestid>
+  </revision>
 </revisionlist>

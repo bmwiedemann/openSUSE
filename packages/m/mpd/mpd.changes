@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul  4 15:52:54 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 0.24.4
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.24.4/NEWS
+  * protocol: fixed stuck "getfingerprint" with io_uring
+  * decoder: mpg123: supported Icy stream tags and use libid3tag to parse
+  * tags: id3: fixed assertion failure with broken AIFF/RIFF ID3 chunks
+  * output
+    * fixed resuming playback after it was paused by "single" mode
+    * alsa: fixed compiler warning with alsa-lib 1.2.14
+
+-------------------------------------------------------------------
 Fri Jan 31 23:08:52 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.23.17
