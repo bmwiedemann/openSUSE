@@ -1353,4 +1353,13 @@
 - Renew clamav.keyring</comment>
     <requestid>1287162</requestid>
   </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>dc0b86af3e89a694bb3778f4c8a252f3</srcmd5>
+    <version>1.4.3</version>
+    <time>1751814479</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1240363, clamav-disable-administrative-commands.patch: clamd:
+  Add an option to toggle SHUTDOWN, RELOAD, STATS and VERSION.</comment>
+    <requestid>1290236</requestid>
+  </revision>
 </revisionlist>

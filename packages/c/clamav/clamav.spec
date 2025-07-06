@@ -53,6 +53,7 @@ Source12:       service.clamonacc
 Source65:       system-user-vscan.conf
 Patch1:         clamav-conf.patch
 Patch2:         clamav-freshclam_test.patch
+Patch3:         clamav-disable-administrative-commands.patch
 Patch5:         clamav-obsolete-config.patch
 Patch12:        clamav-fips.patch
 Patch14:        clamav-document-maxsize.patch
@@ -184,6 +185,7 @@ that want to make use of libclamav.
 %setup -q
 %patch -P 1
 %patch -P 2
+%patch -P 3
 %patch -P 5
 %patch -P 12
 %patch -P 14

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 30 16:13:30 UTC 2025 - Reinhard Max <max@suse.com>
+
+- bsc#1240363, clamav-disable-administrative-commands.patch: clamd:
+  Add an option to toggle SHUTDOWN, RELOAD, STATS and VERSION.
+
+-------------------------------------------------------------------
 Thu Jun 19 20:40:22 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - New version 1.4.3:
