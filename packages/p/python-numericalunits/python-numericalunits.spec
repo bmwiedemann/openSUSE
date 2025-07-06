@@ -17,7 +17,7 @@
 
 
 Name:           python-numericalunits
-Version:        1.25
+Version:        1.26
 Release:        0
 Summary:        Python module for defining quantities with units
 License:        MIT
