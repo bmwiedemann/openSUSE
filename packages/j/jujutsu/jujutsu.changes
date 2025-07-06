@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Jul  3 05:00:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.31.0:
+  * Breaking changes
+    - Revset expressions like hidden_id | description(x) now search
+      the specified hidden revision and its ancestors as well as
+      all visible revisions.
+    - Commit templates no longer normalize description by appending
+      final newline character. Use description.trim_end() ++ "\n"
+      if needed.
+  * Deprecations
+    - The git.push-bookmark-prefix setting is deprecated in favor
+      of templates.git_push_bookmark, which supports templating.
+      The old setting can be expressed in template as "<prefix>" ++
+      change_id.short().
+  * New features
+    - New change_id(prefix)/commit_id(prefix) revset functions to
+      explicitly query commits by change/commit ID prefix.
+    - The parents() and children() revset functions now accept an
+      optional depth argument. For instance, parents(x, 3) is
+      equivalent to x---, and children(x, 3) is equivalent to x+++.
+    - jj evolog can now follow changes from multiple revisions such
+      as divergent revisions.
+    - jj diff now accepts -T/--template option to customize summary
+      output.
+    - Log node templates are now specified in toml rather than
+      hardcoded.
+    - Templates now support json(x) function to serialize values in
+      JSON format.
+    - The ANSI 256-color palette can be used when configuring
+      colors. For example, colors."diff removed token" = { bg =
+      "ansi-color-52", underline = false } will apply a dark red
+      background on removed words in diffs.
+  * Fixed bugs
+    - jj file annotate can now process files at a hidden revision.
+    - jj op log --op-diff no longer fails at displaying "reconcile
+      divergent operations." #4465
+    - jj util gc --expire=now now passes the corresponding flag to
+      git gc.
+    - change_id/commit_id.shortest() template functions now take
+      conflicting bookmark and tag names into account. #2416
+    - Fixed lockfile issue on stale file handles observed with NFS.
+
+-------------------------------------------------------------------
 Wed Jun  4 19:49:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.30.0:
