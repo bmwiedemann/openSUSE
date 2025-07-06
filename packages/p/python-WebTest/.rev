@@ -388,4 +388,13 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1285281</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>934e4e36742c3fb899518c744a09978d</srcmd5>
+    <version>3.0.4</version>
+    <time>1751814247</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.4:
+  * Ensure BeautifulSoup 4.13+ compatibility</comment>
+    <requestid>1290717</requestid>
+  </revision>
 </revisionlist>

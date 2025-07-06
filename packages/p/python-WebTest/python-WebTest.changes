@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  4 16:26:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.4:
+  * Ensure BeautifulSoup 4.13+ compatibility
+
+-------------------------------------------------------------------
 Fri Jun 13 02:42:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
