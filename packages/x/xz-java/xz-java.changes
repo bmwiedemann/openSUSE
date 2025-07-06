@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  3 15:55:06 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * xz-java-module-info.patch
+    + Do not put the module-info.class into multirelease directory
+    + If building with Java 8 only, specify in the manifest the
+      Automatic-Module-Name, so that it can be recognized as
+      modular jar even in that configuration
+
+-------------------------------------------------------------------
 Fri Aug  2 15:55:10 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to version 1.10

@@ -1,7 +1,7 @@
 #
 # spec file for package xz-java
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013 Peter Conrad
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,8 @@ Summary:        Pure Java implementation of XZ compression
 License:        0BSD
 Group:          Development/Libraries/Java
 URL:            https://tukaani.org/xz/java.html
-Source:         https://tukaani.org/xz/xz-java-%{version}.zip
+Source0:        https://tukaani.org/xz/xz-java-%{version}.zip
+Patch0:         xz-java-module-info.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -48,9 +49,10 @@ This package contains the API documentation of xz-java.
 
 %prep
 %setup -q -c -n %{name}
+%patch -P 0 -p1
 
 %build
-%{ant} -Dant.build.javac.{source,target}=8 clean jar doc maven
+ant -Dant.build.javac.{source,target}=8 clean jar doc maven
 
 %install
 # jar
@@ -62,7 +64,7 @@ install -dm 0755 %{buildroot}%{_mavenpomdir}
 %{mvn_install_pom} build/maven/xz-%{version}.pom %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 # javadoc
-mkdir -p %{buildroot}%{_javadocdir}/%{name}
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr build/doc/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 
