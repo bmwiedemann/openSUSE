@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 03 05:13:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.7.1:
+  * no CLI-related changes (other than dependencies)
+  * Dependencies
+    - build(deps): bump rustc-demangle from 0.1.24 to 0.1.25
+      (#14187)
+    - build(deps): bump bumpalo from 3.18.1 to 3.19.0 (#14189)
+    - build(deps-dev): bump eslint-plugin-import in /web/app
+      (#14190)
+    - build(deps-dev): bump @babel/core from 7.27.4 to 7.27.7 in
+      /web/app (#14191)
+
+-------------------------------------------------------------------
 Mon Jun 30 05:52:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.6.4:
