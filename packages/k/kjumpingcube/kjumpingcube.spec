@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kjumpingcube
-Version:        25.04.2
+Version:        25.04.3
 Release:        0
 Summary:        Tactical board game
 License:        GPL-2.0-or-later
