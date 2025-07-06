@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  3 09:57:47 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Specify the right version in pom file
+
+-------------------------------------------------------------------
 Thu May  1 07:51:04 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Explicitely declare jsr305 build requirement

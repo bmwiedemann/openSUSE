@@ -47,6 +47,8 @@ API documentation for %{name}.
 %prep
 %setup -q
 
+%pom_xpath_set pom:project/pom:version %{version}
+
 %pom_remove_plugin org.sonatype.plugins:nexus-staging-maven-plugin
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :maven-javadoc-plugin
