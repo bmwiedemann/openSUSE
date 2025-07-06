@@ -1279,4 +1279,12 @@ D fixes-a-template-rendering-error.patch
     <comment></comment>
     <requestid>1225259</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>b2c9f58b3f8288dee5289193398cca93</srcmd5>
+    <version>3.3.7</version>
+    <time>1751814564</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1290120</requestid>
+  </revision>
 </revisionlist>

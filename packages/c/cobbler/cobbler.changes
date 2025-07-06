@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 30 17:49:31 UTC 2025 - Nathan Cutler <ncutler@suse.com>
+
+- Run recent source_validator and fix_changelog locally against the
+  package (removes rogue --------- lines from the changes file)
+
+-------------------------------------------------------------------
 Wed Nov 20 09:11:51 UTC 2024 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
 
 - Update to 3.3.7
@@ -1056,7 +1062,6 @@ package, these changes (changelog entries) therefore are not relevant
 for this package anymore:
 
 Koan specific:
---------------
 - fix koan wait parameter initialization
   Added:
   * fix-wait.patch
@@ -1074,7 +1079,6 @@ section above to please maintenance and "factory first"
 release checking tools:
 
 cobbler specific (still have to be done):
------------------------------------------
 - Escape shell parameters provided by the user for the
   reposync action (CVE-2017-1000469) (bsc#1074594)
 - Added:
