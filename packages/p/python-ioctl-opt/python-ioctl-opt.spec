@@ -23,7 +23,9 @@ Summary:        Pythonified linux asm-generic/ioctl.h
 License:        GPL-2.0-only
 URL:            https://github.com/vpelletier/python-ioctl-opt
 Source:         https://pypi.org/packages/source/i/ioctl-opt/ioctl-opt-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -36,16 +38,16 @@ Functions to compute fnctl.ioctl's opt argument.
 %autosetup -p1 -n ioctl-opt-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
 %license COPYING
 %{python_sitelib}/ioctl_opt
-%{python_sitelib}/ioctl_opt-%{version}-*.egg-info
+%{python_sitelib}/ioctl_opt-%{version}.dist-info
 
 %changelog

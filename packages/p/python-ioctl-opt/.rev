@@ -7,4 +7,12 @@
     <comment>new package, dependency of sc-controller</comment>
     <requestid>1248741</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>af84dbd9c0009451b8820b6b8a620721</srcmd5>
+    <version>1.3</version>
+    <time>1751814829</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1290555</requestid>
+  </revision>
 </revisionlist>
