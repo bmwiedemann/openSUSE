@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul  3 10:21:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.5.2
+  * Remove support for Python 3.7
+  * Explicitly marks support for Python 3.13
+  * Improved project documentation
+- Drop py313-support.patch, merged upstream
+
+-------------------------------------------------------------------
 Sun Jun 30 21:22:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add py313-support.patch to fix build with python 3.13

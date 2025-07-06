@@ -1,7 +1,7 @@
 #
 # spec file for package python-freezegun
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-freezegun
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Mock time date for Python
 License:        Apache-2.0
 URL:            https://github.com/spulec/freezegun
 Source:         https://files.pythonhosted.org/packages/source/f/freezegun/freezegun-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: https://github.com/spulec/freezegun/commit/1777174bb97c0b514033a09b820078b0d117f4a8
-Patch1:         py313-support.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
