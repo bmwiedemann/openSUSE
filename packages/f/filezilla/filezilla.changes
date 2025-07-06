@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jul  4 14:02:02 UTC 2025 - ecsos <ecsos@opensuse.org> - 3.69.1
+
+- Update to 3.69.1
+  * Bugfixes and minor changes:
+    - Fixed initial loading of file extensions for the Auto transfer type
+- Changes from 3.69.0
+  * Bugfixes and minor changes:
+    - Faster natural sort
+    - *nix: Fixed focus issue in Site Manager
+    - Updated to libfilezilla 0.50.0
+
+-------------------------------------------------------------------
+Wed Dec 18 07:46:40 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.68.1
+  * New features:
+    - macOS: Fixed a build issue affecting App Notarization on arm64
+  * Bugfixes and minor changes:
+    - Updated translations
+
+-------------------------------------------------------------------
 Sat Nov  2 11:28:32 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.68.0

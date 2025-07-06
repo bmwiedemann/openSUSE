@@ -1,7 +1,7 @@
 #
 # spec file for package filezilla
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define libversion 3.68.0
-%define libfilezillaversion 0.49.0
+%define libversion 3.69.1
+%define libfilezillaversion 0.50.0
 
 Name:           filezilla
-Version:        3.68.0
+Version:        3.69.1
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
