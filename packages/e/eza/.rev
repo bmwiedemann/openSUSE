@@ -1170,4 +1170,20 @@
   * Add prettier icon for .prettierrc.{json,json5,toml,yaml,yml}</comment>
     <requestid>1288727</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>6c87c63e93a22cd99ac2579ad9bb5629</srcmd5>
+    <version>0.22.0</version>
+    <time>1751814833</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.22.0:
+  Bug Fixes:
+  * Replace default_input_path check with &quot;.&quot; check
+  Features:
+  * [breaking] Define -d/--treat-dirs-as-files behavior, tests
+    The behavior of the -d flag has been refined to be more
+    consistent with ls. Its long flag has been changed to --treat-dirs-as-files
+    for clarity, while --list-dirs is retained as a backward-compatible alias to be
+    removed in a future release.</comment>
+    <requestid>1290611</requestid>
+  </revision>
 </revisionlist>

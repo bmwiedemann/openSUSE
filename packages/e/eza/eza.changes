@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul  4 06:18:37 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.0:
+  Bug Fixes:
+  * Replace default_input_path check with "." check
+  Features:
+  * [breaking] Define -d/--treat-dirs-as-files behavior, tests
+    The behavior of the -d flag has been refined to be more
+    consistent with ls. Its long flag has been changed to --treat-dirs-as-files
+    for clarity, while --list-dirs is retained as a backward-compatible alias to be
+    removed in a future release.
+
+-------------------------------------------------------------------
 Thu Jun 26 15:59:31 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.21.6:
