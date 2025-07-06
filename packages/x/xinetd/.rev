@@ -389,4 +389,13 @@ Use this license from license.opensuse.org until upstream SPDX accepts xinetd in
     <comment>Prepare for RPM 4.20 (forwarded request 1151316 from dimstar)</comment>
     <requestid>1151773</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>dba5587e6e837387e888af221cfda845</srcmd5>
+    <version>2.3.15.4</version>
+    <time>1751814896</time>
+    <user>anag_factory</user>
+    <comment>- Explicitly set -std=gnu17 because this is old code not building
+  with GCC 15 default C23 mode.</comment>
+    <requestid>1290698</requestid>
+  </revision>
 </revisionlist>
