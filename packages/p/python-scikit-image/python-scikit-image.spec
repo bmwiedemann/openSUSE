@@ -20,6 +20,9 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
+%if 0%{?suse_version} == 1600 && 0%{?is_opensuse}
+ExclusiveArch:  do_not_build
+%endif
 %bcond_without test
 %else
 %define psuffix %{nil}
