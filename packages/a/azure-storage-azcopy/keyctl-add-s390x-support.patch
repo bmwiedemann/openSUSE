@@ -1,0 +1,27 @@
+From 5489b3e43381048a52f9f85c8c104677672d8c5b Mon Sep 17 00:00:00 2001
+From: John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
+Date: Tue, 1 Jul 2025 10:55:49 +0200
+Subject: [PATCH] Add support for s390x architecture
+
+---
+ sys_linux_s390x.go | 7 +++++++
+ 1 file changed, 7 insertions(+)
+ create mode 100644 sys_linux_s390x.go
+
+diff --git a/sys_linux_s390x.go b/sys_linux_s390x.go
+new file mode 100644
+index 0000000..8ea8e9a
+--- /dev/null
++++ b/sys_linux_s390x.go
+@@ -0,0 +1,7 @@
++package keyctl
++
++const (
++	syscall_keyctl   uintptr = 280
++	syscall_add_key  uintptr = 278
++	syscall_setfsgid uintptr = 216
++)
+\ No newline at end of file
+-- 
+2.39.5
+
