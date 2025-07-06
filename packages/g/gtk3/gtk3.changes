@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  3 07:38:34 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Bump python versions in 'Requires: python3*-gobject-Gdk' for
+  typelib-1_0-Gtk-3_0.
+
+-------------------------------------------------------------------
 Mon Mar 31 10:26:00 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.24.49+14:
