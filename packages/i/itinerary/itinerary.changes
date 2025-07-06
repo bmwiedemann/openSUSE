@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul  1 15:26:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.3/
+- Changes since 25.04.2:
+  * Fix price display when there's no home country configured
+  * Work around pkpass type identifier case-sensitivity getting lost in URLs
+  * Add fallback for empty pkpass description in that pass list view
+  * Add a few fallbacks for empty pkpass descriptions when importing
+  * Fix APK startup due to missing LCMS
+  * Add 25.04.2 release notes
+
+-------------------------------------------------------------------
 Tue Jun  3 21:12:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.2
