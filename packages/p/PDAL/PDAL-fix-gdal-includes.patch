@@ -1,0 +1,15 @@
+diff --git i/pdal/util/VSIIO.cpp w/pdal/util/VSIIO.cpp
+index 06556f1c6..082a6a750 100644
+--- i/pdal/util/VSIIO.cpp
++++ w/pdal/util/VSIIO.cpp
+@@ -36,8 +36,8 @@
+ #include <sstream>
+ #include <streambuf>
+ 
+-#include <cpl_vsi.h>
+-#include <cpl_vsi_virtual.h>
++#include <gdal/cpl_vsi.h>
++#include <gdal/cpl_vsi_virtual.h>
+ #include <pdal/util/FileUtils.hpp>
+ #include <pdal/util/VSIIO.hpp>
+ #include <pdal/pdal_types.hpp>

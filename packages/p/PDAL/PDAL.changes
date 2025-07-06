@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun 29 06:52:23 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to PDAL 2.9.0
+  * Refresh PDAL_unbundle.patch
+  * Add new PDAL-fix-gdal-includes.patch, fixing GDAL includes
+  * Add gtest as dependency, required for tests and dropped from
+    PDAL as a vendored copy
+  * Release notes can be found at https://github.com/PDAL/PDAL/releases/tag/2.9.0
+    Some of the listed changes are:
+    + Add GDAL VSI support
+    + Add FileSpec support
+    + Remove vendored nlohmann_json copy
+    + Add SPZ reader and writer
+    + Add supervoxel filter
+    + Improve various filters, readers and commands
+    + Update vendored delaunator dependency
+    + Various bug fixes
+    + Source tree cleanups
+    + Use modern CMake targets for libraries
+    + Symbol export macro has been renamed from PDAL_DLL to PDAL_EXPORT
+
+-------------------------------------------------------------------
 Mon Mar  3 20:22:09 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 2.8.4; Upstream lists the following changes:

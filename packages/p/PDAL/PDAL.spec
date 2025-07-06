@@ -17,11 +17,11 @@
 #
 
 
-%define soname 18
-%define sovers 18.1.0
+%define soname 19
+%define sovers 19.0.0
 %define lname   pdal
 Name:           PDAL
-Version:        2.8.4
+Version:        2.9.0
 Release:        0
 Summary:        Point Data Abstraction Library (GDAL for point cloud data)
 # The code is licensed BSD except for:
@@ -38,6 +38,8 @@ Source1:        https://github.com/PDAL/PDAL/releases/download/%{version}/%{name
 # https://src.fedoraproject.org/rpms/PDAL/blob/rawhide/f/PDAL_unbundle.patch
 # Upstream is not interested in this patch/change, so we'll have to keep it around
 Patch0:         PDAL_unbundle.patch
+# GDAL headers are located in %{_includedir}/gdal
+Patch1:         PDAL-fix-gdal-includes.patch
 BuildRequires:  bash-completion
 BuildRequires:  cairo-devel
 BuildRequires:  cmake >= 2.8
@@ -48,7 +50,6 @@ BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
 BuildRequires:  gdal
 BuildRequires:  geotiff-devel
-BuildRequires:  gtest
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_headers-devel
@@ -56,6 +57,7 @@ BuildRequires:  libboost_program_options-devel
 BuildRequires:  libgdal-devel
 BuildRequires:  libgeos-devel
 BuildRequires:  libopenssl-devel >= 1.1
+BuildRequires:  nlohmann_json-devel
 BuildRequires:  proj-devel
 # Needed to have proj.db for tests
 BuildRequires:  libpsl5
@@ -73,6 +75,7 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libpq)
+BuildRequires:  cmake(GTest)
 # Needed for documentation but we don't build it.
 # BuildRequires:  dblatex
 # BuildRequires:  doxygen
@@ -91,8 +94,6 @@ Provides:       bundled(arbiter)
 Provides:       bundled(PoissonRecon)
 # https://github.com/jlblancoc/nanoflann bundled in vendor/nanoflann
 Provides:       bundled(nanoflann)
-# https://github.com/nlohmann/json bundled in vendor/nlohmann
-Provides:       bundled(nlohmann)
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc12-c++
 %else
@@ -166,12 +167,12 @@ PDAL algorithms.
 
 %prep
 %autosetup -p1 -n %{name}-%{version}-src
-# Remove some bundled libraries	to use system
-rm -rf vendor/{eigen,gtest}
+# Remove vendored eigen3 library
+rm -rf vendor/eigen
 # Fix all wrong shebang and move to python3 only
 find . -type f -iname "*.py" -exec sed -i 's,^#!%{_bindir}/env python$,#!%{_bindir}/python3,' {} +
 
-#Cleanup spurious perms in documentation
+# Cleanup spurious perms in documentation
 find ./doc/ -type f -exec chmod -v 0644 {} +
 find ./doc/ -type f -iname "*.orig" -o -iname ".gitignore" -delete
 find ./doc/ -type f -iname "*.ai" -delete
@@ -194,6 +195,8 @@ export CXX=g++-12
     -DENABLE_CTEST=ON \
     -Dgtest_build_tests=OFF \
     -DWITH_TESTS=ON \
+    -DUSE_EXTERNAL_GTEST_DEFAULT=ON \
+    -DUSE_EXTERNAL_GTEST=ON \
     -DWITH_COMPLETION=ON \
     -DWITH_LZMA=ON \
     -DPOSTGRESQL_INCLUDE_DIR=%{_includedir}/pgsql \

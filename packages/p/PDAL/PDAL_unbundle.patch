@@ -1,8 +1,8 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 3152a35b3..29871d4c1 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -118,6 +118,10 @@ include(${PDAL_CMAKE_DIR}/lazperf.cmake)
+diff --git i/CMakeLists.txt w/CMakeLists.txt
+index 2a7a6c7e4..c2331d5b2 100644
+--- i/CMakeLists.txt
++++ w/CMakeLists.txt
+@@ -119,6 +119,10 @@ include(${PDAL_CMAKE_DIR}/lazperf.cmake)
  include(${PDAL_CMAKE_DIR}/gcs.cmake) # Optional
  include(${PDAL_CMAKE_DIR}/utfcpp.cmake)
  
@@ -13,18 +13,10 @@ index 3152a35b3..29871d4c1 100644
  #------------------------------------------------------------------------------
  # generate the pdal_features.hpp header
  #------------------------------------------------------------------------------
-@@ -153,7 +157,6 @@ endif()
- add_subdirectory(plugins)
- 
- if (WITH_TESTS)
--    include (${PDAL_CMAKE_DIR}/gtest.cmake)
-     add_subdirectory(test)
- endif()
- add_subdirectory(dimbuilder)
-diff --git a/cmake/directories.cmake b/cmake/directories.cmake
+diff --git i/cmake/directories.cmake w/cmake/directories.cmake
 index 97e799bdb..f079ec725 100644
---- a/cmake/directories.cmake
-+++ b/cmake/directories.cmake
+--- i/cmake/directories.cmake
++++ w/cmake/directories.cmake
 @@ -11,5 +11,4 @@ set(PDAL_KERNELS_DIR ${ROOT_DIR}/kernels)
  set(PDAL_FILTERS_DIR ${ROOT_DIR}/filters)
  set(PDAL_IO_DIR ${ROOT_DIR}/io)
