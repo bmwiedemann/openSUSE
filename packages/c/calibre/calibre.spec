@@ -96,6 +96,7 @@ BuildRequires:  libwmf-devel >= 0.2.8
 # upstream use: mozjpeg >= 4.1.4
 BuildRequires:  optipng >= 0.7.7
 BuildRequires:  poppler-tools >= 23.08.0
+BuildRequires:  python-rpm-macros
 BuildRequires:  qt6-core-private-devel >= %{my_qtversion}
 BuildRequires:  qt6-declarative-devel >= %{my_qtversion}
 BuildRequires:  qt6-gui-private-devel >= %{my_qtversion}
@@ -186,7 +187,6 @@ BuildRequires:  %{python_module pybcj >= 1.0.1}
 BuildRequires:  %{python_module pychm >= 0.8.6}
 BuildRequires:  %{python_module pycryptodome >= 3.19.0}
 BuildRequires:  libjpeg-turbo >= 3.0.0
-BuildRequires:  python-rpm-macros
 ##BuildRequires:  %%{python_module pykakasi >= 2.3.0}
 BuildRequires:  %{python_module pyparsing >= 3.0.6}
 BuildRequires:  %{python_module pyppmd >= 1.2.0}
@@ -227,6 +227,7 @@ Requires:       %{python_flavor}-cchardet >= 2.1.7
 Requires:       %{python_flavor}-chardet >= 4.0.0
 Requires:       %{python_flavor}-css-parser >= 1.0.8
 Requires:       %{python_flavor}-dateutil >= 2.8.2
+Requires:       libjpeg-turbo >= 3.0.0
 Requires:       libmtp9 >= 1.1.21
 Requires:       libpng16-16 >= 1.6.40
 Requires:       libwmf >= 0.2.8
