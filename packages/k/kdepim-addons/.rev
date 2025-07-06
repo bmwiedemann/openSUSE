@@ -931,4 +931,12 @@ Newer versions will have the correct headers.</comment>
     <comment></comment>
     <requestid>1286024</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>027b35cbb1d3bcd6842fd308393bada6</srcmd5>
+    <version>25.04.3</version>
+    <time>1751814070</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.04.3 (forwarded request 1289933 from krop)</comment>
+    <requestid>1290328</requestid>
+  </revision>
 </revisionlist>
