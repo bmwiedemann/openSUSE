@@ -64,11 +64,9 @@ find \( -name '*.jar' -o -name '*.class' \) -delete
 %{mvn_package} com.ongres.scram:scram-aggregator __noinstall
 %{mvn_package} com.ongres.scram:scram-parent __noinstall
 
-%pom_xpath_inject 'pom:plugin[pom:artifactId = "maven-jar-plugin"]/pom:configuration/pom:archive' '
-<manifestEntries>
-  <Multi-Release>true</Multi-Release>
-</manifestEntries>
-' scram-parent
+%pom_xpath_remove \
+    'pom:plugin[pom:artifactId="maven-compiler-plugin"]/pom:executions/pom:execution/pom:configuration/pom:multiReleaseOutput' \
+    scram-parent
 
 %build
 %{mvn_build} -s -f
