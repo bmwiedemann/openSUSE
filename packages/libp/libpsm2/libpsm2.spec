@@ -1,7 +1,7 @@
 #
 # spec file for package libpsm2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ Source1:        libpsm2.changelog
 Source2:        libpsm2-rpmlintrc
 Patch2:         libpsm2-use_RPM_OPT_FLAGS.patch
 Patch3:         libpsm2-use-exported-variable-for-version-and-release.patch
+Patch4:         libpsm2-disable-AVX.patch
 BuildRequires:  libnuma-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig

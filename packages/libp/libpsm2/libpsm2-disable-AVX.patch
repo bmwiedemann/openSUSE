@@ -1,0 +1,162 @@
+commit 30500125ff629ee83b856b246912408c33662a4b
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Fri Jul 4 08:41:25 2025 +0200
+
+    libpsm2: disable AVX
+    
+    PSM2 is built with AVX2 enable by default and if manually disables,
+    falls back to AVX.
+    Disable both for compat purposes.
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git buildflags.mak buildflags.mak
+index 206223dbd0a0..24221f1531a8 100644
+--- buildflags.mak
++++ buildflags.mak
+@@ -98,54 +98,7 @@ INCLUDES += -I${IFS_HFI_HEADER_PATH}
+ 
+ BASECFLAGS +=-Wall $(WERROR)
+ 
+-#
+-# test if compiler supports 32B(AVX2)/64B(AVX512F) move instruction.
+-#
+-ifeq (${CC},icc)
+-	ifeq ($(PSM_DISABLE_AVX2),)
+-		MAVX2=-xATOM_SSE4.2 -DPSM_AVX512
+-	else
+-		MAVX2=-march=core-avx-i
+-	endif
+-else
+-	ifeq ($(PSM_DISABLE_AVX2),)
+-		MAVX2=-mavx2
+-	else
+-		MAVX2=-mavx
+-	endif
+-endif
+-
+-ifneq (icc,${CC})
+-	ifeq ($(PSM_DISABLE_AVX2),)
+-		RET := $(shell echo "int main() {}" | ${CC} ${MAVX2} -E -dM -xc - 2>&1 | grep -q AVX2 ; echo $$?)
+-	else
+-		RET := $(shell echo "int main() {}" | ${CC} ${MAVX2} -E -dM -xc - 2>&1 | grep -q AVX ; echo $$?)
+-                anerr := $(warning ***NOTE TO USER**** Disabling AVX2 will harm performance)
+-	endif
+-
+-	ifeq (0,${RET})
+-		BASECFLAGS += ${MAVX2}
+-	else
+-		anerr := $(error Compiler does not support ${MAVX2} )
+-	endif
+-else
+-		BASECFLAGS += ${MAVX2}
+-endif
+-
+-# This support is dynamic at runtime, so is OK to enable as long as compiler can generate
+-# the code.
+-ifneq (,${PSM_AVX512})
+-	ifneq (icc,${CC})
+-		RET := $(shell echo "int main() {}" | ${CC} -mavx512f -E -dM -xc - 2>&1 | grep -q AVX512 ; echo $$?)
+-		ifeq (0,${RET})
+-			BASECFLAGS += -mavx512f
+-		else
+-			anerr := $(error Compiler does not support AVX512 )
+-		endif
+-		BASECFLAGS += -DPSM_AVX512
+-	endif
+-endif
+-
++BASECFLAGS += -msse4.2
+ #
+ # feature test macros for drand48_r
+ #
+diff --git opa/opa_dwordcpy-generic.c opa/opa_dwordcpy-generic.c
+index dfb7755d5fdf..e1313bc4f25c 100644
+--- opa/opa_dwordcpy-generic.c
++++ opa/opa_dwordcpy-generic.c
+@@ -192,33 +192,6 @@ void hfi_pio_blockcpy_512(volatile uint64_t *dest, const uint64_t *src, uint32_t
+ }
+ #endif
+ 
+-void hfi_pio_blockcpy_256(volatile uint64_t *dest, const uint64_t *src, uint32_t nblock)
+-{
+-	volatile __m256i *dp = (volatile __m256i *) dest;
+-	const __m256i *sp = (const __m256i *) src;
+-
+-	psmi_assert((dp != NULL) && (sp != NULL));
+-	psmi_assert((((uintptr_t) dp) & 0x3f) == 0x0);
+-
+-	if ((((uintptr_t) sp) & 0x1f) == 0x0) {
+-		/* source and destination are both 32 byte aligned */
+-		do {
+-			__m256i tmp0 = _mm256_load_si256(sp);
+-			__m256i tmp1 = _mm256_load_si256(sp + 1);
+-			_mm256_store_si256((__m256i *)dp, tmp0);
+-			_mm256_store_si256((__m256i *)(dp + 1), tmp1);
+-		} while ((--nblock) && (dp = dp+2) && (sp = sp+2));
+-	} else {
+-		/* only destination is 32 byte aligned - use unaligned loads */
+-		do {
+-			__m256i tmp0 = _mm256_loadu_si256(sp);
+-			__m256i tmp1 = _mm256_loadu_si256(sp + 1);
+-			_mm256_store_si256((__m256i *)dp, tmp0);
+-			_mm256_store_si256((__m256i *)(dp + 1), tmp1);
+-		} while ((--nblock) && (dp = dp+2) && (sp = sp+2));
+-	}
+-}
+-
+ void hfi_pio_blockcpy_128(volatile uint64_t *dest, const uint64_t *src, uint32_t nblock)
+ {
+ 	volatile __m128i *dp = (volatile __m128i *) dest;
+diff --git opa/opa_dwordcpy-x86_64.c opa/opa_dwordcpy-x86_64.c
+index dfb7755d5fdf..e1313bc4f25c 100644
+--- opa/opa_dwordcpy-x86_64.c
++++ opa/opa_dwordcpy-x86_64.c
+@@ -192,33 +192,6 @@ void hfi_pio_blockcpy_512(volatile uint64_t *dest, const uint64_t *src, uint32_t
+ }
+ #endif
+ 
+-void hfi_pio_blockcpy_256(volatile uint64_t *dest, const uint64_t *src, uint32_t nblock)
+-{
+-	volatile __m256i *dp = (volatile __m256i *) dest;
+-	const __m256i *sp = (const __m256i *) src;
+-
+-	psmi_assert((dp != NULL) && (sp != NULL));
+-	psmi_assert((((uintptr_t) dp) & 0x3f) == 0x0);
+-
+-	if ((((uintptr_t) sp) & 0x1f) == 0x0) {
+-		/* source and destination are both 32 byte aligned */
+-		do {
+-			__m256i tmp0 = _mm256_load_si256(sp);
+-			__m256i tmp1 = _mm256_load_si256(sp + 1);
+-			_mm256_store_si256((__m256i *)dp, tmp0);
+-			_mm256_store_si256((__m256i *)(dp + 1), tmp1);
+-		} while ((--nblock) && (dp = dp+2) && (sp = sp+2));
+-	} else {
+-		/* only destination is 32 byte aligned - use unaligned loads */
+-		do {
+-			__m256i tmp0 = _mm256_loadu_si256(sp);
+-			__m256i tmp1 = _mm256_loadu_si256(sp + 1);
+-			_mm256_store_si256((__m256i *)dp, tmp0);
+-			_mm256_store_si256((__m256i *)(dp + 1), tmp1);
+-		} while ((--nblock) && (dp = dp+2) && (sp = sp+2));
+-	}
+-}
+-
+ void hfi_pio_blockcpy_128(volatile uint64_t *dest, const uint64_t *src, uint32_t nblock)
+ {
+ 	volatile __m128i *dp = (volatile __m128i *) dest;
+diff --git psm_hal_gen1/psm_hal_gen1_spio.c psm_hal_gen1/psm_hal_gen1_spio.c
+index 5444897a3e44..9b11a4ec133b 100644
+--- psm_hal_gen1/psm_hal_gen1_spio.c
++++ psm_hal_gen1/psm_hal_gen1_spio.c
+@@ -171,8 +171,7 @@ ips_spio_init(const struct psmi_context *context, struct ptl *ptl,
+ 	get_cpuid(0x7, 0, &id);
+ 
+ 	/* 32B copying supported */
+-	ctrl->spio_blockcpy_large = (id.ebx & (1<<AVX2_BIT)) ?
+-		hfi_pio_blockcpy_256 : ctrl->spio_blockcpy_med;
++	ctrl->spio_blockcpy_large = ctrl->spio_blockcpy_med;
+ 
+ #ifdef PSM_AVX512
+ 	/* 64B copying supported */

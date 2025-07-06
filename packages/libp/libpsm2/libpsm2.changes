@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  4 06:43:53 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add libpsm2-disable-AVX.patch to completely disable AVX support
+  and use only up to SSE4.2. (bsc#1245739)
+
+-------------------------------------------------------------------
 Fri Mar  1 08:51:40 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
