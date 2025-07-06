@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul  2 12:43:36 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to version 1.22.21
+  The full changelog is very large. Please check it here:
+  https://git.dpkg.org/cgit/dpkg/dpkg.git/tree/debian/changelog?h=1.22.21
+- Changes from 1.22.20:
+  https://git.dpkg.org/cgit/dpkg/dpkg.git/tree/debian/changelog?h=1.22.20
+- Changes from 1.22.19:
+  https://git.dpkg.org/cgit/dpkg/dpkg.git/tree/debian/changelog?h=1.22.19
+- Release 1.22.21 includes the fix upstream for CVE-2025-6297 / bsc#1245573.
+
+-------------------------------------------------------------------
 Mon Apr 14 05:12:22 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to version 1.22.18.
