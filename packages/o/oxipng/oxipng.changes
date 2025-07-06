@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 04 07:31:14 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 9.1.5:
+  * Add --sequential option to process files sequentially rather
+    than in parallel.
+  * Update to latest Zopfli with greatly improved performance.
+  * Reduce memory usage.
+  * Correct handling of grayscale conversion when ICC profile is
+    present.
+
+-------------------------------------------------------------------
 Wed Mar 12 08:27:51 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Enable features:

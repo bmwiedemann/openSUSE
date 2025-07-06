@@ -17,11 +17,11 @@
 
 
 Name:           oxipng
-Version:        9.1.4
+Version:        9.1.5
 Release:        0
 Summary:        Multithreaded lossless PNG optimizer
 License:        MIT
-URL:            https://github.com/shssoichiro/oxipng
+URL:            https://github.com/oxipng/oxipng
 Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
