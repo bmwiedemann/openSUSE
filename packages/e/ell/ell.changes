@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  3 11:46:39 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.78
+  * Fix issue with random ECC scalar generation.
+
+-------------------------------------------------------------------
 Thu Jun  5 08:31:10 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.77
