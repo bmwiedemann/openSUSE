@@ -248,6 +248,8 @@ Provides:       patched_subset
 %endif
 Provides:       gstreamer-plugin-openh264 = %{version}
 Obsoletes:      gstreamer-plugin-openh264 < 1.26.0
+Provides:       gstreamer-1.20-plugin-openh264 = 1.22.0
+Obsoletes:      gstreamer-1.20-plugin-openh264 < 1.22.0
 
 %description
 GStreamer is a streaming media framework based on graphs of filters

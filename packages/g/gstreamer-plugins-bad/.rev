@@ -1676,4 +1676,14 @@ Please add to Staging:G</comment>
     <comment></comment>
     <requestid>1289974</requestid>
   </revision>
+  <revision rev="186" vrev="2">
+    <srcmd5>2bfb31b1e6a9930784d749c4f99d7211</srcmd5>
+    <version>1.26.3</version>
+    <time>1751814210</time>
+    <user>anag_factory</user>
+    <comment>- Provide and Obsolete gstreamer-1.20-plugin-openh264 too, not just
+  gstreamer-plugin-openh264.
+</comment>
+    <requestid>1290732</requestid>
+  </revision>
 </revisionlist>

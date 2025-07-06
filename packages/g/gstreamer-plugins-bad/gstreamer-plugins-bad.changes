@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  4 09:11:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Provide and Obsolete gstreamer-1.20-plugin-openh264 too, not just
+  gstreamer-plugin-openh264.
+
+-------------------------------------------------------------------
 Tue Jul  1 19:47:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.3:
