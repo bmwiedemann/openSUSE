@@ -21,7 +21,7 @@
 %else
 %bcond_with libalternatives
 %endif
-
+%{?sle15_python_module_pythons}
 Name:           python-versioningit
 Version:        3.1.2
 Release:        0

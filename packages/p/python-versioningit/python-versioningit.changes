@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  2 09:30:14 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sat Oct 12 06:04:22 UTC 2024 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - update to 3.1.2:
