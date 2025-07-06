@@ -1,7 +1,7 @@
 #
 # spec file for package python-cmd2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-cmd2
-Version:        2.5.8
+Version:        2.5.11
 Release:        0
 Summary:        Extra features for standard library's cmd module
 License:        MIT
@@ -35,17 +35,11 @@ Requires:       python-attrs >= 16.3.0
 Requires:       python-pyperclip >= 1.6
 Requires:       python-wcwidth >= 0.1.7
 BuildArch:      noarch
-%if 0%{?python_version_nodots} < 38
-Requires:       python-importlib_metadata >= 1.6
-Requires:       python-typing_extensions
-%endif
 # SECTION Test requirements
 BuildRequires:  %{python_module attrs >= 16.3.0}
-BuildRequires:  %{python_module importlib_metadata >= 1.6 if %python-base < 3.8}
 BuildRequires:  %{python_module pyperclip >= 1.6}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
 BuildRequires:  %{python_module wcwidth >= 0.1.7}
 BuildRequires:  vim
 # /SECTION

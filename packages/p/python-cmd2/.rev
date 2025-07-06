@@ -642,4 +642,24 @@
     <comment></comment>
     <requestid>1232033</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>95ca3492fd67337aff8fae5fe63dade6</srcmd5>
+    <version>2.5.11</version>
+    <time>1751814229</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.5.11:
+  * Fixed duplicated parameter tables in API documentation.
+  * Fixed docstring style for MkDocs API documentation so
+    parameters are displayed properly.
+  * Fixed 'index out of range' error when passing no arguments to
+    an argparse-based command function.
+
+  * Added `ArgumentParser.get_ap_completer_type()` and
+  * Fixed bug where AutoCompleter was not distinguishing between a negative number and a flag
+  * Fixed bug where AutoCompleter did not handle -- the same way argparse does (all args after -- are non-options)
+  * The ``preparse``, ``postparsing_precmd``, and ``postparsing_postcmd`` methods *deprecated* in the previous release
+    * Fixed bug in parsing of multiline commands where matching quote is on another line
+- update to 0.6.5.1:</comment>
+    <requestid>1290634</requestid>
+  </revision>
 </revisionlist>

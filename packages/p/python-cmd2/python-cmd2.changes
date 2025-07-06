@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul  4 09:05:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.11:
+  * Fixed duplicated parameter tables in API documentation.
+  * Fixed docstring style for MkDocs API documentation so
+    parameters are displayed properly.
+  * Fixed 'index out of range' error when passing no arguments to
+    an argparse-based command function.
+
+-------------------------------------------------------------------
 Wed Dec 18 17:37:07 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.8
@@ -167,7 +177,7 @@ Sat Oct 16 21:48:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 2.2.0:
   * Fixed extra space appended to each alias by "alias list" command
   * New function `set_default_ap_completer_type()`
-  * Added `ArgumentParser.get_ap_completer_type()` and 
+  * Added `ArgumentParser.get_ap_completer_type()` and
     `ArgumentParser.set_ap_completer_type()`.
   * Added `ap_completer_type` keyword arg to `Cmd2ArgumentParser.__init__()`
     which saves a call to `set_ap_completer_type()`. This keyword will also
@@ -533,8 +543,8 @@ Thu Feb 28 11:43:56 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
     the argparse object. Also, single-character tokens that happen to be a
     prefix char are not treated as flags by argparse and AutoCompleter now
     matches that behavior.
-  * Fixed bug where AutoCompleter was not distinguishing between a negative number and a flag 
-  * Fixed bug where AutoCompleter did not handle -- the same way argparse does (all args after -- are non-options)  
+  * Fixed bug where AutoCompleter was not distinguishing between a negative number and a flag
+  * Fixed bug where AutoCompleter did not handle -- the same way argparse does (all args after -- are non-options)
   * Added ``exit_code`` attribute of ``cmd2.Cmd`` class
     * Enables applications to return a non-zero exit code when exiting from ``cmdloop``
   * ``ACHelpFormatter`` now inherits from ``argparse.RawTextHelpFormatter`` to make it easier
@@ -546,7 +556,7 @@ Thu Feb 28 11:43:56 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
         display when the user is still entering text at the prompt.
   * Cross-platform colored output support
   * Deprecated the built-in ``cmd2`` support for colors including ``Cmd.colorize()`` and ``Cmd._colorcodes``
-  * The ``preparse``, ``postparsing_precmd``, and ``postparsing_postcmd`` methods *deprecated* in the previous release 
+  * The ``preparse``, ``postparsing_precmd``, and ``postparsing_postcmd`` methods *deprecated* in the previous release
     have been deleted
     * The new application lifecycle hook system allows for registration of callbacks to be called at various points
       in the lifecycle and is more powerful and flexible than the previous system
@@ -567,7 +577,7 @@ Thu Sep 20 20:17:41 UTC 2018 - Todd R <toddrme2178@gmail.com>
 - Update to version 0.9.4
   +  Bug Fixes
     * Fixed bug where ``preparse`` was not getting called
-    * Fixed bug in parsing of multiline commands where matching quote is on another line 
+    * Fixed bug in parsing of multiline commands where matching quote is on another line
   +  Enhancements
     * Improved implementation of lifecycle hooks to support a plugin
       framework, see ``docs/hooks.rst`` for details.
@@ -894,7 +904,7 @@ Mon Nov 14 14:21:27 UTC 2016 - dmueller@suse.com
 
 - update to 0.6.9:
   * Support Python 3 input()
- 
+
 -------------------------------------------------------------------
 Fri Jan  9 00:30:50 UTC 2015 - dmueller@suse.com
 
@@ -933,7 +943,7 @@ Thu Jul 25 15:35:32 UTC 2013 - dheidler@suse.de
 -------------------------------------------------------------------
 Mon Apr 29 11:18:38 UTC 2013 - dmueller@suse.com
 
-- update to 0.6.5.1: 
+- update to 0.6.5.1:
   * Fix requires to python-pyparsing
 
 -------------------------------------------------------------------

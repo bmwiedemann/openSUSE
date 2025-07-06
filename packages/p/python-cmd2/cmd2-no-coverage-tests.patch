@@ -1,11 +1,11 @@
-diff --git a/pyproject.toml b/pyproject.toml
-index bfd8d44..f88999e 100644
---- a/pyproject.toml
-+++ b/pyproject.toml
-@@ -54,12 +54,6 @@ warn_unused_ignores = false
- testpaths = [
-     "tests",
- ]
+Index: cmd2-2.5.11/pyproject.toml
+===================================================================
+--- cmd2-2.5.11.orig/pyproject.toml
++++ cmd2-2.5.11/pyproject.toml
+@@ -104,12 +104,6 @@ warn_unused_ignores = false
+ 
+ [tool.pytest.ini_options]
+ testpaths = ["tests"]
 -addopts = [
 -    "--cov=cmd2",
 -    "--cov-append",
