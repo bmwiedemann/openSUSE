@@ -18,11 +18,11 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.4.2
+%define kpim6_version 6.4.3
 
 %bcond_without released
 Name:           kidentitymanagement
-Version:        25.04.2
+Version:        25.04.3
 Release:        0
 Summary:        KDE PIM Libraries: Identity Management
 License:        LGPL-2.1-or-later
