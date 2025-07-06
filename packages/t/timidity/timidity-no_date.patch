@@ -1,8 +1,12 @@
-Index: timidity/speex_a.c
+---
+ timidity/speex_a.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: TiMidity++-2.15.0/timidity/speex_a.c
 ===================================================================
---- timidity/speex_a.c.orig	2011-01-19 17:00:42.000000000 +0100
-+++ timidity/speex_a.c	2011-01-19 17:25:43.310509349 +0100
-@@ -246,7 +246,7 @@ void comment_init(char **comments, int*
+--- TiMidity++-2.15.0.orig/timidity/speex_a.c
++++ TiMidity++-2.15.0/timidity/speex_a.c
+@@ -255,7 +255,7 @@ void comment_init(char **comments, int*
  int write_ogg_header(Speex_ctx *ctx, int fd, char *comments)
  {
    int ret, result;

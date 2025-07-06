@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul  4 11:12:20 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Set -std=gnu17 as build mode as the code is not compatible
+  with C23 (GCC 15's new default).
+- Switch timidity-no_date.patch, timidity-add_fluid_cfgs.patch
+  from p0 to p1.
+- Modernize various specfile constructs.
+
+-------------------------------------------------------------------
 Mon Feb 26 14:50:40 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,7 +1,7 @@
 #
 # spec file for package timidity
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,27 +28,6 @@ Group:          Productivity/Multimedia/Sound/Midi
 Version:        2.15.0
 Release:        0
 URL:            http://timidity.sourceforge.net/
-%define my_provides /tmp/my-provides
-BuildRequires:  alsa-devel
-BuildRequires:  automake
-BuildRequires:  flac-devel
-BuildRequires:  gtk2-devel
-BuildRequires:  libao-devel
-BuildRequires:  libjack-devel
-BuildRequires:  libogg-devel
-BuildRequires:  libvorbis-devel
-BuildRequires:  ncurses-devel
-BuildRequires:  slang-devel
-BuildRequires:  speex-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  xaw3d
-BuildRequires:  xorg-x11
-Recommends:     fluid-soundfont-gm fluid-soundfont-gs
-BuildRequires:  fdupes
-BuildRequires:  xaw3d-devel
-BuildRequires:  pkgconfig(systemd)
-%{?systemd_ordering}
-PreReq:         %fillup_prereq
 Source:         TiMidity++-%{version}.tar.xz
 Source1:        timidity-patches.tar.bz2
 Source2:        %name.desktop
@@ -62,21 +41,39 @@ Patch100:       timidity-no_date.patch
 Patch101:       timidity-add_fluid_cfgs.patch
 Patch200:       timidity-readmidi-zero-division-fix.patch
 Patch201:       timidity-resample-frac-overflow-fix.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  automake
+BuildRequires:  fdupes
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(ao)
+BuildRequires:  pkgconfig(flac)
+BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(ice)
+BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(ncursesw)
+BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(slang)
+BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(speex)
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(vorbis)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xaw3d)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xmu)
+Recommends:     fluid-soundfont-gm
+Recommends:     fluid-soundfont-gs
+%{?systemd_ordering}
+PreReq:         %fillup_prereq
+%define my_provides /tmp/my-provides
 
 %description
 TiMidity plays MIDI files without external MIDI instruments and
 converts MIDI files to WAV using GUS/patch and SoundFont for voice
 data.
 
-
 %prep
-%setup -q -n TiMidity++-%{version} -a 1
-%patch -P 2 -p1
-%patch -P 100
-%patch -P 101
-%patch -P 200 -p1
-%patch -P 201 -p1
+%autosetup -n TiMidity++-%{version} -a1 -p1
 for f in ./utils/bitset.c ./utils/bitset.h ./utils/nkflib.c; do
 	iconv -f EUC-JISX0213 -t UTF-8 $f > $f.utf8 && mv $f.utf8 $f
 done
@@ -95,75 +92,74 @@ autoreconf --force --install
 	--enable-wrd \
 	--with-module-dir=%{_libdir}/timidity \
 	--with-default-path=/etc
-make %{?_smp_mflags} WISH=tclsh CFLAGS="$RPM_OPT_FLAGS"
+%make_build WISH=tclsh CFLAGS="%{optflags} -std=gnu17"
 
 %install
 %makeinstall WISH=tclsh
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/X11/app-defaults/
+mkdir -p %{buildroot}/%{_datadir}/X11/app-defaults/
 cp interface/TiMidity.ad $RPM_BUILD_ROOT/usr/share/X11/app-defaults/TiMidity
 # for japanese locale
 # UTF-8 version
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/X11/{ja,ja_JP.UTF-8,ja_JP.eucJP,ja_JP.ujis}/app-defaults
-iconv -feuc-jp -tutf-8 interface/TiMidity-uj.ad > $RPM_BUILD_ROOT%{_datadir}/X11/ja/app-defaults/TiMidity
-ln -s ../../ja/app-defaults/TiMidity $RPM_BUILD_ROOT%{_datadir}/X11/ja_JP.UTF-8/app-defaults/TiMidity
+mkdir -p %{buildroot}/%{_datadir}/X11/{ja,ja_JP.UTF-8,ja_JP.eucJP,ja_JP.ujis}/app-defaults
+iconv -feuc-jp -tutf-8 interface/TiMidity-uj.ad > %{buildroot}/%{_datadir}/X11/ja/app-defaults/TiMidity
+ln -s ../../ja/app-defaults/TiMidity %{buildroot}/%{_datadir}/X11/ja_JP.UTF-8/app-defaults/TiMidity
 # EUC-jp version
-cp interface/TiMidity-uj.ad $RPM_BUILD_ROOT%{_datadir}/X11/ja_JP.eucJP/app-defaults/TiMidity
-ln -s ../../ja_JP.eucJP/app-defaults/TiMidity $RPM_BUILD_ROOT%{_datadir}/X11/ja_JP.ujis/app-defaults/TiMidity
+cp interface/TiMidity-uj.ad %{buildroot}/%{_datadir}/X11/ja_JP.eucJP/app-defaults/TiMidity
+ln -s ../../ja_JP.eucJP/app-defaults/TiMidity %{buildroot}/%{_datadir}/X11/ja_JP.ujis/app-defaults/TiMidity
 # copy documents
-mkdir -p $RPM_BUILD_ROOT%{_docdir}/%{name}
+mkdir -p %{buildroot}/%{_docdir}/%{name}
 cp AUTHORS ChangeLog* NEWS README TODO \
-  $RPM_BUILD_ROOT%{_docdir}/%{name}
-cp %{SOURCE7} $RPM_BUILD_ROOT%{_docdir}/%{name}
+  %{buildroot}/%{_docdir}/%{name}
+cp %{SOURCE7} %{buildroot}/%{_docdir}/%{name}
 for i in *.ja; do
-  iconv -f euc-jp -t utf8 $i > $RPM_BUILD_ROOT%{_docdir}/%{name}/$i
+  iconv -f euc-jp -t utf8 $i > %{buildroot}/%{_docdir}/%{name}/$i
 done
-mkdir -p $RPM_BUILD_ROOT%{_docdir}/%{name}/en
+mkdir -p %{buildroot}/%{_docdir}/%{name}/en
 (cd doc/C
   for i in * ; do
     case $i in
     Makefile*|*.[1-9])
       ;;
     *)
-      cp $i $RPM_BUILD_ROOT%{_docdir}/%{name}/en
+      cp $i %{buildroot}/%{_docdir}/%{name}/en
       ;;
     esac
   done
 )
-mkdir -p $RPM_BUILD_ROOT%{_docdir}/%{name}/ja_JP
+mkdir -p %{buildroot}/%{_docdir}/%{name}/ja_JP
 (cd doc/ja_JP.eucJP
   for i in * ; do
     case $i in
     Makefile*|*.[1-9])
       ;;
     *)
-      iconv -f euc-jp -t utf8 $i > $RPM_BUILD_ROOT%{_docdir}/%{name}/ja_JP/$i
+      iconv -f euc-jp -t utf8 $i > %{buildroot}/%{_docdir}/%{name}/ja_JP/$i
       ;;
     esac
   done
 )
 # copy sample patches and config file
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/timidity
-cp -a timidity-patches/* $RPM_BUILD_ROOT%{_datadir}/timidity
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/emacs/site-lisp
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/xemacs/site-lisp/lisp
-cp interface/timidity.el $RPM_BUILD_ROOT%{_datadir}/emacs/site-lisp
-cp interface/timidity.el $RPM_BUILD_ROOT%{_datadir}/xemacs/site-lisp/lisp
+mkdir -p %{buildroot}/%{_datadir}/timidity
+cp -a timidity-patches/* %{buildroot}/%{_datadir}/timidity
+mkdir -p %{buildroot}/%{_datadir}/emacs/site-lisp
+mkdir -p %{buildroot}/%{_datadir}/xemacs/site-lisp/lisp
+cp interface/timidity.el %{buildroot}/%{_datadir}/emacs/site-lisp
+cp interface/timidity.el %{buildroot}/%{_datadir}/xemacs/site-lisp/lisp
 %suse_update_desktop_file -i -u %name AudioVideo Midi
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/pixmaps
-cp %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/pixmaps
+mkdir -p %{buildroot}/%{_datadir}/pixmaps
+cp %{SOURCE3} %{buildroot}/%{_datadir}/pixmaps
 mkdir -p $RPM_BUILD_ROOT/etc
 install -c -m 644 %{SOURCE4} $RPM_BUILD_ROOT/etc
 
 # boot scripts
 #
-%__install -m 644 -D %{S:6} %{buildroot}%{_fillupdir}/sysconfig.timidity
-%__install -Dm 644 %{S:5} %{buildroot}%{_unitdir}/%{name}.service
-%__install -d %{buildroot}%{_sbindir}
-ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
+install -m 644 -D %{S:6} %{buildroot}/%{_fillupdir}/sysconfig.timidity
+install -Dm 644 %{S:5} %{buildroot}/%{_unitdir}/%{name}.service
+install -d %{buildroot}/%{_sbindir}
 
 # exclude plugins from the provide-list
 cat << EOF > %{my_provides}
-grep -v $RPM_BUILD_ROOT%{_libdir}/timidity | %{__find_provides}
+grep -v %{buildroot}/%{_libdir}/timidity | %{__find_provides}
 EOF
 chmod 755 %{my_provides}
 %define __find_provides %{my_provides}
@@ -183,7 +179,6 @@ chmod 755 %{my_provides}
 %service_del_postun %{name}.service
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc %{_docdir}/timidity
 %{_libdir}/timidity
@@ -194,12 +189,11 @@ chmod 755 %{my_provides}
 %{_datadir}/pixmaps/*.png
 %config /etc/timidity.cfg
 %{_mandir}/man*/*
-%{_datadir}/X11/app-defaults/TiMidity
+%{_datadir}/X11/app-defaults/
 %{_datadir}/X11/ja*
 %{_datadir}/emacs
 %{_datadir}/xemacs
 %{_unitdir}/timidity.service
-%{_sbindir}/rctimidity
 %{_fillupdir}/sysconfig.timidity
 
 %changelog
