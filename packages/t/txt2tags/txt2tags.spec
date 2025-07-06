@@ -1,7 +1,7 @@
 #
 # spec file for package txt2tags
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013,2019 Christoph Junghans <junghans@votca.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           txt2tags
 Version:        3.9
 Release:        0
@@ -26,7 +25,9 @@ License:        GPL-2.0-only
 Group:          Productivity/Text/Convertors
 URL:            https://txt2tags.org/
 Source:         https://github.com/txt2tags/txt2tags/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
@@ -48,10 +49,10 @@ no external commands or libraries are needed.
 %autosetup
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/txt2tags
 sed -i '1s/env python/python3/' %{buildroot}%{python3_sitelib}/txt2tags.py
 chmod +x %{buildroot}%{python3_sitelib}/txt2tags.py
@@ -70,7 +71,8 @@ chmod +x %{buildroot}%{python2_sitelib}/txt2tags.py
 %doc CHANGELOG.md README.md
 %license COPYING
 %python_alternative %{_bindir}/txt2tags
-%{python_sitelib}/txt2tags*
-%pycache_only %{python_sitelib}/__pycache__
+%{python_sitelib}/txt2tags.py
+%{python_sitelib}/txt2tags-%{version}.dist-info
+%pycache_only %{python_sitelib}/__pycache__/txt2tags.*.pyc
 
 %changelog

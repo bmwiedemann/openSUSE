@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 23 05:36:40 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- Explicitly list files and directories under python_sitelib in %files.
+
+-------------------------------------------------------------------
 Wed Apr  3 11:37:47 UTC 2024 - pgajdos@suse.com
 
 - version update to 3.9
