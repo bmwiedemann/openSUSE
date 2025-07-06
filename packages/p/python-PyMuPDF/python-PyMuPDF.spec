@@ -75,11 +75,7 @@ cd /tmp
 %files %{python_files}
 %license COPYING
 %doc README.md
-%if %{suse_version} > 1600
-%{python_sitearch}/pymupdf-%{version}*info
-%else
-%{python_sitearch}/PyMuPDF-%{version}*info
-%endif
+%{python_sitearch}/[Pp]y[Mm]u[Pp][Dd][Ff]-%{version}*info
 %{python_sitearch}/fitz/
 
 %changelog
