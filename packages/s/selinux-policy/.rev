@@ -1836,4 +1836,64 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1286743</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>0086bcd32d0495e2ae2a821b7bec7a11</srcmd5>
+    <version>20250703</version>
+    <time>1751814005</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250703:
+  * Drop SUSE-specific /usr/etc = /etc equivalency
+  * Allow irqbalance execute shell if irqbalance_run_unconfined is on
+  * Allow openvswitch ioctl vduse devices
+  * Label /dev/vduse/control and /dev/vduse/NAME devices
+  * Allow virtstoraged the sys_rawio capability
+  * Allow virtqemud read insights-core state files
+  * Allow virtnodedev create mdevctl config dirs
+  * Allow virtqemud additional permissions on scsi generic chr files
+  * Allow local login execute gnome keyring daemon
+  * Allow virtqemud send a generic signal to passt
+  * Allow svirt-tcg read init state
+  * Allow irqbalance execute shell if irqbalance_run_unconfined is on
+  * Label /run/opendkim with dkim_milter_data_t
+  * Allow sa-update status systemd services
+  * Introduce new cluster_service_transition_to_unconfined_user boolean (bsc#1244495)
+  * Allow updpwd logging send audit messages
+  * Temporary dontaudit iio-sensor-proxy sys_admin.
+  * Allow iio-sensor-proxy sendto to journald over a unix datagram socket
+  * Revert &quot;Allow iio-sensor-proxy sendto to journald over a unix datagram socket&quot;
+  * virt: allow QEMU use of the qgs daemon for attestation
+  * qgs: add contrib module for TDX &quot;qgs&quot; daemon
+  * kernel: add interfaces for using SGX enclaves
+  * Define file equivalency for /usr/etc
+  * Allow mongod to receive pressure stall information
+  * Dontaudit systemd_generator read sssd public files
+  * Allow plymouthd read/write input event devices
+  * Label 99-nvme-nbft-connect.sh with NetworkManager_dispatcher_nvme_script_t
+  * Allow systemd-user-runtime-dir sendto to syslogd
+  * Remove pcp module
+  * Update irqbalance policy for using unconfined scripts
+  * Allow utempter use terminal multiplexor
+  * Allow virtqemud execute ovs-vsctl with a domain transition
+  * Update the files_search_mnt() interface
+  * Allow nmbd read network sysctls
+  * Allow iio-sensor-proxy sendto to journald over a unix datagram socket
+  * Allow logrotate stop all systemd services
+  * systemd: rework systemd_manage_random_seed
+  * Allow tuned-ppd connect to sssd over a unix stream socket
+  * Drop config for /run/random-seed
+  * Update file location for systemd random-seed file
+  * Allow tomcat execute cracklib-check with a domain transition
+  * Allow sssd watch lib dirs
+  * Confine systemd-hibernate-resume
+  * Allow login_userdomain create /run/tlog directory with user_tmp_t
+  * Allow login_pgm read filesystem sysctls
+  * Allow gconfd connect to system dbus
+  * Allow NetworkManager manage NetworkManager_etc_rw_t symlinks
+- Syncing with upstream rawhide selinux-policy up to:
+  * 23514206ea45e1d1d2f8a4c08288065c813fcc91
+- Update embedded container-selinux version to commit:
+  * 36e8f213b7ac8a1843e5e37b37eb8ef7bdc2af9c (version 2.238.0)
+</comment>
+    <requestid>1290168</requestid>
+  </revision>
 </revisionlist>
