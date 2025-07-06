@@ -19,7 +19,7 @@
 %define executable_name dfc
 
 Name:           chainguard-dfc
-Version:        0.9.0
+Version:        0.9.3
 Release:        0
 Summary:        Chainguard Dockerfile Converter
 License:        Apache-2.0
@@ -28,6 +28,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
+BuildRequires:  git-core
 BuildRequires:  zsh
 BuildRequires:  golang(API) >= 1.24
 # there is already a package called dfc...
@@ -76,15 +77,11 @@ zsh command line completion support for %{name}.
 %build
 COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
 
-DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
-BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
-
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags=" \
-   -X main.Version=v%{version} \
-   -X main.Revision=${COMMIT_HASH}" \
+   -buildvcs=true \
+   -trimpath \
    -o bin/%{executable_name}
 
 %install
