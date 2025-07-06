@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jul  5 10:48:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * Improve the performance of `hash128()`, `hash64()`, and
+    `hash_bytes()` by using METH_FASTCALL, reducing the overhead
+     of function calls
+  * Drop support for Python 3.8, as it has reached the end of
+    life on 2024-10-07
+  * Fix the issue that the package cannot be built from the
+    source distribution
+  * Add support for Python 3.13.
+  * Improve the performance of the `hash()` function with
+  * METH_FASTCALL, reducing the overhead of function calls. For
+    data sizes between 1–2 KB (e.g., 48x48 favicons), performance
+    is 10%–20% faster. For smaller data (~500 bytes,
+    like 16x16 favicons), performance increases by approximately 30%
+  * Add `digest` functions that support the new buffer protocol
+
+-------------------------------------------------------------------
 Wed Sep 18 09:06:04 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Use upstream tarball
