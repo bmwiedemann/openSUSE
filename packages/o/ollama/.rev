@@ -479,4 +479,28 @@ because we don't need git-web and the other stuff here (forwarded request 125417
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1288227</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>32439d8914cb1f1f4e4899b594084a2f</srcmd5>
+    <version>0.9.5</version>
+    <time>1751814470</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.9.5:
+  * No notable changes.	
+- Update to version 0.9.4:
+  * The directory in which models are stored can now be modified.
+  * Tool calling with empty parameters will now work correctly
+  * Fixed issue when quantizing models with the Gemma 3n 
+  	architecture
+- Update to version 0.9.3:
+  * Ollama now supports Gemma 3n
+  * Ollama will now limit context length to what the model was 
+  	trained against to avoid strange overflow behavior
+- Update to version 0.9.2:
+  * Fixed issue where tool calls without parameters would not be 
+  	returned correctly 
+  * Fixed does not support generate errors
+  * Fixed issue where some special tokens would not be tokenized 
+  	properly for some model architectures</comment>
+    <requestid>1290234</requestid>
+  </revision>
 </revisionlist>
