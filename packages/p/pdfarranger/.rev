@@ -116,4 +116,13 @@
     <comment></comment>
     <requestid>1247125</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fae312d83ed6aee524637dac812b28cb</srcmd5>
+    <version>1.12.1</version>
+    <time>1751814310</time>
+    <user>anag_factory</user>
+    <comment>* Specfile cleanups.
+* Add 'Requires: python-packaging': new version has 'imports' on it. (forwarded request 1290123 from badshah400)</comment>
+    <requestid>1290532</requestid>
+  </revision>
 </revisionlist>

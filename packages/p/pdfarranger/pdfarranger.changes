@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jul  3 06:22:39 UTC 2025 - Atri Bhattacharya <badshah400@gmai.com>
+
+- Specfile cleanups:
+  * Drop 'Requires: gtk3': There is no package called 'gtk3', and
+    the right gtk3 shared library is already pulled in by
+    typelib-1_0-Gtk-3_0.
+  * Add pdfarranger.rpmlintrc to weed out obvious false positives.
+  * Use pyproject macros to build and install; add python-pip and
+    python-wheel as BuildRequires.
+  * Add BuildRequires: hicolor-icon-theme for correct ownership of
+    %_datadir/icon/hicolor dir.
+  * Drop obsolete %suse_update_desktop_file macro and associated
+    BuildRequires: update-desktop-files.
+  * Implement %check section using pytest; add required packages
+    to BuildRequires for tests.
+  * Drop info not directly relevant to application use from
+    package description.
+- Add 'Requires: python-packaging': new version has 'imports' on
+  it.
+
+-------------------------------------------------------------------
+Thu Jul  3 06:13:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.12.1
+  * Fix incompatibility with Python 3.13.4 on Linux
+  * Update translations
+  * Support export to png, jpeg and rasterized pdf
+  * Fix import of webp images on Windows and Flatpak installations
+  * Fix priority of what metadata is saved when merging documents
+  * Fix printing of rasterized pdf
+
+-------------------------------------------------------------------
 Wed Feb 19 13:37:26 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Use pythons so we can build also for Leap with python311.

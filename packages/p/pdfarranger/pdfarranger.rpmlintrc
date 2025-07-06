@@ -1,0 +1,7 @@
+# These are absolutely necessary, though not listed in setup.py dependencies
+addFilter("pdfarranger.noarch: W: python-leftover-require python3-cairo")
+addFilter("pdfarranger.noarch: W: python-leftover-require python3-dateutil")
+addFilter("pdfarranger.noarch: W: python-leftover-require python3-gobject-Gdk")
+
+# This is already there as %%{python_flavor}-dateutil
+addFilter("pdfarranger.noarch: W: python-missing-require python-dateutil")

@@ -24,23 +24,36 @@
 %endif
 
 Name:           pdfarranger
-Version:        1.11.1
+Version:        1.12.1
 Release:        0
 Summary:        Merge, split, rotate, crop, and rearrange pages of PDF documents
 License:        GPL-3.0-only
 URL:            https://github.com/pdfarranger/pdfarranger
-Source:         https://github.com/pdfarranger/pdfarranger/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/pdfarranger/pdfarranger/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        %{name}.rpmlintrc
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  python-rpm-macros
-BuildRequires:  update-desktop-files
+# Section Tests
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module cairo}
+BuildRequires:  %{python_module dateutil >= 2.4.0}
+BuildRequires:  %{python_module gobject-Gdk}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pikepdf >= 6}
+BuildRequires:  typelib-1_0-Gtk-3_0
+BuildRequires:  typelib-1_0-Poppler-0_18
+# /Section
 Requires:       %{python_flavor}-cairo
 Requires:       %{python_flavor}-dateutil >= 2.4.0
 Requires:       %{python_flavor}-gobject-Gdk
+Requires:       %{python_flavor}-packaging
 Requires:       %{python_flavor}-pikepdf >= 6
-Requires:       gtk3
 Requires:       typelib-1_0-Gtk-3_0
 Requires:       typelib-1_0-Poppler-0_18
 Recommends:     %{python_flavor}-img2pdf >= 0.3.4
@@ -51,33 +64,32 @@ pdfarranger is a small python-gtk application, which helps the user
 to merge or split pdf documents and rotate, crop and rearrange their
 pages using a graphical interface. It is a frontend for pikepdf.
 
-pdfarranger is a fork of Konstantinos Poulios’s pdfshuffler. It is
-a humble attempt to make the project a bit more active.
-
 %lang_package
 
 %prep
 %autosetup -p1
 
 %build
-python%{python_bin_suffix} setup.py build
+%pyproject_wheel
 
 %install
-python%{python_bin_suffix} setup.py install --prefix=%{_prefix} --root=%{buildroot}
-%suse_update_desktop_file -r com.github.jeromerobert.pdfarranger Graphics VectorGraphics
+%pyproject_install
 %find_lang %{name} %{?no_lang_C}
 %fdupes -s %{buildroot}
+
+%check
+%pytest
 
 %files
 %license COPYING
 %doc README.md
 %{_bindir}/%{name}
 %{python_sitelib}/%{name}
-%{python_sitelib}/%{name}-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/%{name}-%{version}*.*-info
 %{_datadir}/applications/com.github.jeromerobert.pdfarranger.desktop
 %{_mandir}/man1/%{name}.1%{?ext_man}
-%{_datadir}/%{name}
-%{_datadir}/icons/hicolor
+%{_datadir}/%{name}/
+%{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/metainfo/com.github.jeromerobert.pdfarranger.metainfo.xml
 
 %files lang -f %{name}.lang
