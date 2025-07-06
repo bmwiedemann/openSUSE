@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sat Jul  5 10:28:23 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.2:
+  * fix(langchain): do not stringify metadata unnecessarily
+  * chore: add good .env defaults
+  * fix(openai): add check for metadata NotGiven
+  * fix(scores): skip sampling if OTEL sampler not available
+  * fix(dataset-run-items): correctly typ datasetRunItems.list
+- update to 3.1.1:
+  * fix(client): do not escape url param with httpx > 0.28
+- update to 3.1.0:
+  * feat(prompts): chat message placeholders
+- update to 3.0.8:
+  * feat(langchain): add last trace id property to
+    CallbackHandler
+  * fix(openai): chat.completions.parse out of beta
+- update to 2.60.9:
+  * fix(openai): chat completions parse out of beta (sdk-v2)
+- update to 3.0.7:
+  * fix(client): auth check on missing credentials
+  * fix(flushing): rely on OTEL default flush settings
+- update to 3.0.6:
+  * fix(prompts): escape json in get_langchain_prompt
+- update to 3.0.5:
+  * feat(client): allow filtering spans by instrumentation scope
+  * fix(observe): default IO capture on decorated functions
+- update to 3.0.4:
+  * fix(client): use tracing_enabled in get_client
+- update to 3.0.3:
+  * fix(client): correctly scope client in multiproject setups
+  * chore(deps): bump protobuf from 5.29.4 to 5.29.5
+- update to 3.0.2:
+  * fix: set timeout to 5 seconds
+  * chore(deps): bump requests from 2.32.3 to 2.32.4
+  * feat(langchain): langfuse trace attributes in run invocation
+    config
+  * fix(client): url encoding slashes
+  * fix(resource-manager): do not register processor if tracing
+- update to 3.0.1:
+  * fix: treat `usage_metadata.total_token_count` of vertex ai as
+    total
+  * fix(client): scope mask function to resources singleton
+- update to 3.0.0:
+  * This is the new OTEL-based Langfuse Python SDK. See the our
+    changelog post for more details and let us know your feedback
+    in this GitHub Discussion.
+- update to 2.60.8:
+  * fix(langchain): deployment version in azure model
+- update to 2.60.7:
+  * fix(langchain): vertex token counts
+- update to 2.60.6:
+  * fix(langchain): anthropic usage parsing
+- update to 2.60.5:
+  * fix(openai): usage parsing for streamed responses
+- update to 2.60.4:
+  * feat: add env filter to fetch_traces() and
+    fetch_observations()
+- update to 2.60.3:
+  * fix(langchain): capture tool_call_id
+
+-------------------------------------------------------------------
 Fri Apr 11 20:57:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.60.2:

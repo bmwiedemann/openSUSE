@@ -111,4 +111,41 @@
   * fix(openai): handle usage object without mutation</comment>
     <requestid>1268730</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a8547cf4758a1f8c82dc1252228d80a3</srcmd5>
+    <version>3.1.2</version>
+    <time>1751814910</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.2:
+  * fix(langchain): do not stringify metadata unnecessarily
+  * chore: add good .env defaults
+  * fix(openai): add check for metadata NotGiven
+  * fix(scores): skip sampling if OTEL sampler not available
+  * fix(dataset-run-items): correctly typ datasetRunItems.list
+- update to 3.1.1:
+  * fix(client): do not escape url param with httpx &gt; 0.28
+- update to 3.1.0:
+  * feat(prompts): chat message placeholders
+- update to 3.0.8:
+  * feat(langchain): add last trace id property to
+    CallbackHandler
+  * fix(openai): chat.completions.parse out of beta
+- update to 2.60.9:
+  * fix(openai): chat completions parse out of beta (sdk-v2)
+- update to 3.0.7:
+  * fix(client): auth check on missing credentials
+  * fix(flushing): rely on OTEL default flush settings
+- update to 3.0.6:
+  * fix(prompts): escape json in get_langchain_prompt
+- update to 3.0.5:
+  * feat(client): allow filtering spans by instrumentation scope
+  * fix(observe): default IO capture on decorated functions
+- update to 3.0.4:
+  * fix(client): use tracing_enabled in get_client
+- update to 3.0.3:
+  * fix(client): correctly scope client in multiproject setups
+  * chore(deps): bump protobuf from 5.29.4 to 5.29.5
+- update to 3.0.2:</comment>
+    <requestid>1290772</requestid>
+  </revision>
 </revisionlist>
