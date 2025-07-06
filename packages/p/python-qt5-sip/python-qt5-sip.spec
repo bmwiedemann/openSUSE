@@ -30,6 +30,8 @@ Patch0:         fix-license-in-setup_py.patch
 Patch100:       support-python3.6.patch
 BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module setuptools >= 30.3}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-PyQt5-sip = %{version}-%{release}
@@ -49,16 +51,16 @@ create wxPython, the Python bindings for the wxWidget toolkit.
 %autosetup -p1 -n pyqt5_sip-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
 %license LICENSE
 %dir %{python_sitearch}/PyQt5
 %{python_sitearch}/PyQt5/sip*
-%{python_sitearch}/PyQt5_sip-%{version}*info
+%{python_sitearch}/[Pp]y[Qq]t5_sip-%{version}.dist-info
 
 %changelog
