@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul  3 07:29:17 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Make 32bit architectures build again by using %_libdir at
+  symbolic linking the final native compiled eln files back
+  for installing and checking
+
+-------------------------------------------------------------------
+Tue Jul  1 08:32:33 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Reenable tests again which is let the emacs binary find its eln
+  files as well
+
+-------------------------------------------------------------------
 Fri Jun  6 13:20:26 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Try some tricks like -j1 and SOURCE_DATE_EPOCH 

@@ -49,7 +49,7 @@
  
  ifeq ($(DUMPING),pdumper)
  $(pdmp): emacs$(EXEEXT) $(lispsource)/loaddefs.el $(lispsource)/loaddefs.elc
-+	rm -f emacs-*.*.*[0-9]$(EXEEXT) emacs-*.*.*[0-9].pdmp
++	rm -f emacs-*.*.*[0-9]$(EXEEXT) emacs-*.*.*[0-9].pdmp; \
  	LC_ALL=C $(RUN_TEMACS) -batch $(BUILD_DETAILS) -l loadup --temacs=pdump \
  		--bin-dest $(BIN_DESTDIR) --eln-dest $(ELN_DESTDIR)
  	cp -f $@ $(bootstrap_pdmp)

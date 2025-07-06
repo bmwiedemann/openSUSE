@@ -2199,4 +2199,17 @@ Now one could consider building emacs with gsettings support (both debian and fe
   to have reproducible binary files and programs (boo#1239628)</comment>
     <requestid>1285065</requestid>
   </revision>
+  <revision rev="206" vrev="7">
+    <srcmd5>f03a43f21a80ca7440730970cbd5027e</srcmd5>
+    <version>30.1</version>
+    <time>1751813983</time>
+    <user>anag_factory</user>
+    <comment>- Make 32bit architectures build again by using %_libdir at
+  symbolic linking the final native compiled eln files back
+  for installing and checking
+
+- Reenable tests again which is let the emacs binary find its eln
+  files as well</comment>
+    <requestid>1290116</requestid>
+  </revision>
 </revisionlist>

@@ -107,7 +107,7 @@ BuildRequires:  update-desktop-files
 #BuildRequires:  xdotool
 #BuildRequires:  xorg-x11-Xvfb
 BuildRequires:  xz
-%if 0%{?suse_version} > 1550 && 0%{is_opensuse}
+%if 0%{?suse_version} > 1550 && 0%{?is_opensuse}
 BuildRequires:  zlib-ng-compat-devel
 %else
 BuildRequires:  zlib-devel
@@ -439,6 +439,7 @@ TZ=UTC0
 LANG=POSIX
 LC_ALL=C.UTF-8
 export SOURCE_DATE_EPOCH TZ LANG LC_ALL
+touch -d "@${SOURCE_DATE_EPOCH}" .source_date_epoch
 %if %{without autoconf}
 # We don't want to run autoconf
 if test configure.ac -nt aclocal.m4 -o m4/gnulib-comp.m4 -nt aclocal.m4 ; then
@@ -513,10 +514,16 @@ LDFLAGS=
   cflags -Wno-pointer-sign	CFLAGS
   cflags -Wno-unused-variable	CFLAGS
   cflags -Wno-unused-label	CFLAGS
+  cflags -Wuninitialized	CFLAGS
   cflags -Wdate-time		CFLAGS
+  cflags -Werror 		CFLAGS
+  cflags -ftrivial-auto-var-init=zero	CFLAGS
+  cflags -fzero_call_used_regs=all	CFLAGS
+  cflags -fzero-init-padding-bits=all	CFLAGS
+  cflags -fzero-initialized-in-bss	CFLAGS
   cflags -fprofile-reproducible=multithreaded	CFLAGS
   cflags -fno-optimize-sibling-calls	CFLAGS
-  cflags -ffile-prefix-map=${PWD}=.	CFLAGS
+  cflags -ffile-prefix-map=${PWD}/=./	CFLAGS
   cflags -Wl,-O2		LDFLAGS
   cflags -Wl,--copy-dt-needed-entries	LDFLAGS
   cflags -Wl,-z,relro		LDFLAGS
@@ -612,6 +619,7 @@ DESKTOP="--with-x \
 	 --with-file-notification=inotify \
 	 --with-modules \
 	 --enable-gcc-warnings=warn-only \
+         --enable-checking=all \
 	 --enable-autodepend \
 "
 if (($(getconf LONG_BIT) < 62))
@@ -629,6 +637,7 @@ ac_cv_lib_gif_EGifPutExtensionLast=yes
 export ac_cv_lib_gif_EGifPutExtensionLast
 
 parking=$(mktemp -p ${PWD} -d parking.XXXXXX)
+chmod go+rx $parking
 CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-nox\"'" ./configure ${COMP} ${PREFIX} ${NOX11} ${SYS} --with-dumping=pdumper
 %make_build V=1
 make -C lisp/ updates compile V=1
@@ -646,6 +655,7 @@ pushd src
     rm -vf emacs-%{version}* emacs.pdmp
     echo Here we check if check sums differ for each pdump with same binary
     echo and same byte/native compiled lisp files
+    touch -r ../.source_date_epoch ./temacs
     LC_ALL=C ./temacs -batch --no-build-details -l loadup --temacs=pdump \
 	--bin-dest %{_bindir} --eln-dest %{_libdir}/emacs/%{version}/
 popd
@@ -702,6 +712,7 @@ pushd src
     rm -vf emacs-%{version}* emacs.pdmp
     echo Here we check if check sums differ for each pdump with same binary
     echo and same byte/native compiled lisp files
+    touch -r ../.source_date_epoch ./temacs
     LC_ALL=C ./temacs -batch --no-build-details -l loadup --temacs=pdump \
 	--bin-dest %{_bindir} --eln-dest %{_libdir}/emacs/%{version}/
 popd
@@ -730,6 +741,7 @@ pushd src
     rm -vf emacs-%{version}* emacs.pdmp
     echo Here we check if check sums differ for each pdump with same binary
     echo and same byte/native compiled lisp files
+    touch -r ../.source_date_epoch ./temacs
     LC_ALL=C ./temacs -batch --no-build-details -l loadup --temacs=pdump \
 	--bin-dest %{_bindir} --eln-dest %{_libdir}/emacs/%{version}/
 popd
@@ -760,13 +772,14 @@ popd
 umask 022
 SOURCE_DATE_EPOCH="$(sed -n '/^----/n;s/ - .*$//;p;q' %{SOURCE99} | date -u -f - +%%s)"
 export SOURCE_DATE_EPOCH
-%if 0%{?suse_version} >= 1550
-%ifarch %ix86 %arm
-    export CC=gcc-13
-    export AR=gcc-ar-13
-    export RANLIB=gcc-ranlib-13
-%endif
-%endif
+parking=${PWD}/parking.*
+#%if 0%{?suse_version} >= 1550
+#%ifarch %ix86 %arm
+#    export CC=gcc-13
+#    export AR=gcc-ar-13
+#    export RANLIB=gcc-ranlib-13
+#%endif
+#%endif
 #
 PATH=/sbin:$PATH
 ##
@@ -774,16 +787,15 @@ VERSION=%{version}
 sed -ri 's@/usr/lib/X11/fonts@/usr/share/fonts@g;s@(/usr/)local/(info|share|lib)@\1\2@;s@\$VERSION@%{version}@g;s@\$ARCH@'%{configuration}'@g' doc/man/emacs.1
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_libexecdir}/emacs/%{version}/%{configuration}
-make install DESTDIR=%{buildroot} systemdunitdir=%{_userunitdir}
-rm -vf %{buildroot}%{_libexecdir}/emacs/%{version}/%{configuration}/*.pdmp
 %if %{with nativecomp}
 rm -vrf native-lisp/%{version}-*
 pushd native-lisp/
-    ln -sf ../parking.*/usr/lib64/emacs/%{version}/native-lisp/* .
+    ln -sf ${parking}%{_libdir}/emacs/%{version}/native-lisp/%{version}-* .
 popd
+find native-lisp/%{version}-*/ -type f
 %endif
-rm -vf src/emacs-%{version}.*
-mkdir -p %{buildroot}%{_libexecdir}/emacs/%{version}/%{configuration}
+make install DESTDIR=%{buildroot} systemdunitdir=%{_userunitdir}
+rm -vf %{buildroot}%{_libexecdir}/emacs/%{version}/%{configuration}/*.pdmp
 for pdmp in emacs-nox emacs-gtk emacs-x11 emacs-wayland
 do
     install -m 0755 src/${pdmp}      %{buildroot}%{_bindir}
@@ -802,12 +814,11 @@ find %{buildroot} -name 'emacs-[^n]*.pdmp' -and -type f -printf '/%%P\n'  > file
 find %{buildroot} -name 'emacs-[^n]*.pdmp' -and -type l -printf '/%%P\n' >> file.x11
 %endif
 %if %{with nativecomp}
-pushd parking.*/%{_libdir}/emacs/%{version}/
+pushd ${parking}%{_libdir}/emacs/%{version}/
     find native-lisp -type d -exec mkdir -p             "%{buildroot}%{_libdir}/emacs/%{version}/{}" \;
     find native-lisp -type f -exec install -m 0644 "{}" "%{buildroot}%{_libdir}/emacs/%{version}/{}" \;
 popd
 %endif
-rm -rf parking.*
 install -p %{S:5} %{buildroot}/usr/bin/emacs
 chmod 0755        %{buildroot}/usr/bin/emacs
 tar cf - `find site-lisp/ -name '*.el'  -o -name '*.elc'` | \
@@ -1005,13 +1016,16 @@ mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
 
 %if %{with checks}
 %check
-%if 0%{?suse_version} >= 1550
-%ifarch %ix86 %arm
-export CC=gcc-13
-export AR=gcc-ar-13
-export RANLIB=gcc-ranlib-13
-%endif
-%endif
+#%if 0%{?suse_version} >= 1550
+#%ifarch %ix86 %arm
+#export CC=gcc-13
+#export AR=gcc-ar-13
+#export RANLIB=gcc-ranlib-13
+#%endif
+#%endif
+mkdir -p native-lisp
+rm -rf native-lisp/%{version}-*
+ln -sf %{buildroot}%{_libdir}/emacs/%{version}/native-lisp/%{version}-* native-lisp/
 sed -ri '/sleep 2/{ s/sleep 2/sleep 6/ }' test/lisp/eshell/eshell-tests.el
 sed -ri '/\(sleep-for/{ s/1/5/ }' test/lisp/net/network-stream-tests.el
 SCREENDIR=$(mktemp -d ${PWD}/screen.XXXXXX) || exit 1
@@ -1037,6 +1051,7 @@ tail -q -s 0.5 -f $SCREENLOG & pid=$!
 screen -D -m make -k check
 sleep 1
 kill $pid
+grep -q FAILED ${SCREENLOG} && exit 1 || :
 %endif
 
 %if %{with games} && "%{gattr}" == "02755"

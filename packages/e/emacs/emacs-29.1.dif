@@ -1,13 +1,14 @@
 ---
- Makefile.in                     |    7 +-
+ Makefile.in                     |   11 ++--
  configure.ac                    |    6 --
  doc/man/etags.1                 |   20 ++++----
  lib-src/Makefile.in             |    4 -
  lib-src/pop.c                   |    1 
  lisp/cmuscheme.el               |    3 -
+ lisp/cus-start.el               |    1 
  lisp/international/mule-cmds.el |    1 
  lisp/net/ange-ftp.el            |    8 +--
- lisp/site-load.el               |   45 ++++++++++++++++++
+ lisp/site-load.el               |   37 +++++++++++++++
  lisp/speedbar.el                |    1 
  lisp/textmodes/ispell.el        |   88 +++++++++++++++++++++++++++++++++---
  site-lisp/term/func-keys.el     |   33 +++++++++++++
@@ -15,10 +16,21 @@
  site-lisp/term/kvt.el           |   97 ++++++++++++++++++++++++++++++++++++++++
  site-lisp/term/linux.el         |   79 ++++++++++++++++++++++++++++++++
  site-lisp/term/locale.el        |   13 +++++
- 16 files changed, 472 insertions(+), 31 deletions(-)
+ 17 files changed, 467 insertions(+), 33 deletions(-)
 
 --- Makefile.in
-+++ Makefile.in	2025-03-03 14:13:31.011626405 +0000
++++ Makefile.in	2025-07-01 06:46:25.609937432 +0000
+@@ -361,8 +361,8 @@ COPYDIR = ${srcdir}/etc ${srcdir}/lisp
+ COPYDESTS = "$(DESTDIR)${etcdir}" "$(DESTDIR)${lispdir}"
+ 
+ ifeq (${ns_self_contained},no)
+-BIN_DESTDIR='$(DESTDIR)${bindir}/'
+-ELN_DESTDIR = $(DESTDIR)${libdir}/emacs/${version}/
++BIN_DESTDIR='${bindir}/'
++ELN_DESTDIR='${libdir}/emacs/${version}/'
+ else
+ BIN_DESTDIR='${ns_appbindir}/'
+ ELN_DESTDIR = ${ns_applibdir}/
 @@ -627,7 +627,7 @@ install-arch-dep: src install-arch-indep
  	umask 022; ${MKDIR_P} "$(DESTDIR)${bindir}"
  	$(MAKE) -C lib-src install
