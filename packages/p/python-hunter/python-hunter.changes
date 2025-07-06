@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul  4 02:35:43 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Actually run the testsuite.
+- No more greedy globs in %files.
+- Add patches:
+  * support-python-313.patch, allow testsuite to build with Python 3.13.
+  * use-sys.executable.patch, use sys.executable in the testsuite.
+
+-------------------------------------------------------------------
 Sun Jun 30 19:18:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.7.0:

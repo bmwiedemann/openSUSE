@@ -56,4 +56,17 @@
   * Switched docs theme to furo.</comment>
     <requestid>1184123</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>bd139e19256446f9c5f208521c1495ae</srcmd5>
+    <version>3.7.0</version>
+    <time>1751814831</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Actually run the testsuite.
+- No more greedy globs in %files.
+- Add patches:
+  * support-python-313.patch, allow testsuite to build with Python 3.13.
+  * use-sys.executable.patch, use sys.executable in the testsuite.</comment>
+    <requestid>1290567</requestid>
+  </revision>
 </revisionlist>

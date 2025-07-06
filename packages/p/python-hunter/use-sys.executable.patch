@@ -1,0 +1,52 @@
+From 5c1c453e19fce6cc1486db4e63a120d2646af97d Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Fri, 4 Jul 2025 11:45:12 +1000
+Subject: [PATCH] Use sys.executable everywhere in test_remote
+
+Not all systems use python to run the interpreter, and this also doesn't
+help if the user has multiple interpreters in their path. Use
+sys.executable like the other test case in this file.
+---
+ tests/test_remote.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tests/test_remote.py b/tests/test_remote.py
+index 6574cc8..76e2869 100644
+--- a/tests/test_remote.py
++++ b/tests/test_remote.py
+@@ -15,7 +15,7 @@
+ 
+ @pytest.mark.skipif('platform.system() == "Windows"')
+ def test_manhole():
+-    with TestProcess('python', '-msamplemanhole') as target, dump_on_error(target.read):
++    with TestProcess(sys.executable, '-msamplemanhole') as target, dump_on_error(target.read):
+         wait_for_strings(target.read, TIMEOUT, 'Oneshot activation is done by signal')
+ 
+         with TestProcess('hunter-trace', '-p', str(target.proc.pid), 'stdlib=False') as tracer, dump_on_error(tracer.read):
+@@ -32,7 +32,7 @@ def test_manhole():
+ 
+ @pytest.mark.skipif('platform.system() == "Windows"')
+ def test_manhole_reattach():
+-    with TestProcess('python', '-msamplemanhole') as target, dump_on_error(target.read):
++    with TestProcess(sys.executable, '-msamplemanhole') as target, dump_on_error(target.read):
+         wait_for_strings(target.read, TIMEOUT, 'Oneshot activation is done by signal')
+ 
+         with TestProcess('hunter-trace', '-p', str(target.proc.pid), 'stdlib=False') as tracer, dump_on_error(tracer.read):
+@@ -61,7 +61,7 @@ def test_manhole_reattach():
+ 
+ @pytest.mark.skipif('platform.system() == "Windows"')
+ def test_manhole_clean_exit():
+-    with TestProcess('python', '-msamplemanhole') as target, dump_on_error(target.read):
++    with TestProcess(sys.executable, '-msamplemanhole') as target, dump_on_error(target.read):
+         wait_for_strings(target.read, TIMEOUT, 'Oneshot activation is done by signal')
+ 
+         with TestProcess('hunter-trace', '-p', str(target.proc.pid), 'stdlib=False') as tracer, dump_on_error(tracer.read):
+@@ -90,7 +90,7 @@ def test_manhole_clean_exit():
+ @pytest.mark.skipif('platform.python_implementation() == "PyPy"')
+ @pytest.mark.skipif('not which("gdb")')
+ def test_gdb():
+-    with TestProcess('python', '-msamplemanhole') as target, dump_on_error(target.read):
++    with TestProcess(sys.executable, '-msamplemanhole') as target, dump_on_error(target.read):
+         with TestProcess('hunter-trace', '-p', str(target.proc.pid), '--gdb', 'stdlib=False') as tracer, dump_on_error(tracer.read):
+             wait_for_strings(
+                 tracer.read,
