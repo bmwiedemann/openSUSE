@@ -25,7 +25,8 @@ Group:          Productivity/Scientific/Math
 URL:            https://digraphs.github.io/Digraphs/
 #Git-Clone:     https://github.com/digraphs/Digraphs
 Source:         https://github.com/digraphs/Digraphs/releases/download/v%version/digraphs-%version.tar.gz
-BuildRequires:  edge-addition-planarity-suite-devel
+Patch1:         eaps4.patch
+BuildRequires:  edge-addition-planarity-suite-devel >= 4
 BuildRequires:  fdupes
 BuildRequires:  gap-devel
 BuildRequires:  gap-rpm-devel
@@ -47,7 +48,7 @@ The Digraphs package is a GAP package containing methods for digraphs
 and multidigraphs.
 
 %prep
-%autosetup -n digraphs-%version
+%autosetup -n digraphs-%version -p1
 
 %build
 %configure --with-gaproot="%gapdir" --without-intrinsics \

@@ -55,4 +55,12 @@
     <comment>- Make specfile conform to POSIX sh</comment>
     <requestid>1249110</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>18e1c1a7777a338df51af1b051da7ada</srcmd5>
+    <version>1.10.0</version>
+    <time>1751814392</time>
+    <user>anag_factory</user>
+    <comment>- Add eaps4.patch</comment>
+    <requestid>1290161</requestid>
+  </revision>
 </revisionlist>
