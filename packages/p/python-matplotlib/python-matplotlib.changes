@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  3 07:36:25 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Add Pillow-13-compat.patch to fix tests with new Pillow version
+
+-------------------------------------------------------------------
 Mon Jun  9 15:35:10 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.10.3

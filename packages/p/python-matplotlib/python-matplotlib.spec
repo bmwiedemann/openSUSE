@@ -59,6 +59,8 @@ Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6
 Source100:      python-matplotlib.rpmlintrc
 # PATCH-FEATURE-OPENSUSE matplotlib-meson-options-opensuse.patch code@bnavigator.de -- Custom build options for meson-python
 Patch1:         matplotlib-meson-options-opensuse.patch
+# PATCH-FIX-UPSTREAM Pillow-13-compat.patch https://github.com/matplotlib/matplotlib/pull/30221
+Patch2:         Pillow-13-compat.patch
 Recommends:     ghostscript
 Recommends:     libxml2-tools
 Recommends:     poppler-tools
