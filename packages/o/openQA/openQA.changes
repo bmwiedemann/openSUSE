@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 05 15:40:35 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1751707651.71eebf76:
+  * dbicdh: Cleanup pre-2020 files
+  * Avoid showing AJAX	error on index page when user is navigating elsewhere
+  * Dependency cron 2025-07-03
+  * Avoid showing confusing data in the needles table
+
+-------------------------------------------------------------------
 Wed Jul 02 18:11:26 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1751472215.9a30d4e5:
