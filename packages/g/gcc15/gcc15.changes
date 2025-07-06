@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  2 10:31:10 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Tune for power10 for SLES 16.  [jsc#PED-12029]
+- Tune for z15 for SLES 16.  [jsc#PED-253]
+
+-------------------------------------------------------------------
 Thu Jun 26 07:46:54 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Update to GCC 15 branch head, 15.1.1+git9866

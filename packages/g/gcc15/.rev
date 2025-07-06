@@ -136,4 +136,13 @@ since we bumped libgo SONAME as well for 15</comment>
 - Fix PR120827, ICE due to splitter emitting constant loads directly (forwarded request 1288652 from Andreas_Schwab)</comment>
     <requestid>1289221</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>03cd8578b32124228e09499bc3ea959b</srcmd5>
+    <version>15.1.1+git9866</version>
+    <time>1751813955</time>
+    <user>anag_factory</user>
+    <comment>- Tune for power10 for SLES 16.  [jsc#PED-12029]
+- Tune for z15 for SLES 16.  [jsc#PED-253]</comment>
+    <requestid>1290115</requestid>
+  </revision>
 </revisionlist>
