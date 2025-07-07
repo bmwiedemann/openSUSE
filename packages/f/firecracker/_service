@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/firecracker-microvm/firecracker.git</param>
     <param name="scm">git</param>
-    <param name="revision">v1.12.0</param>
+    <param name="revision">v1.12.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
@@ -12,7 +12,7 @@
   <service name="cargo_vendor" mode="manual">
     <param name="srcdir">firecracker</param>
     <param name="compression">xz</param>
-    <param name="update">true</param>
+    <param name="update">false</param>
   </service>
   <!-- services below are running at buildtime -->
   <service name="tar" mode="buildtime">

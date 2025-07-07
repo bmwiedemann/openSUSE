@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 25 04:40:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.1:
+  * Fixed
+    - #5277: Fixed a bug allowing the block device to starve all
+      other devices when backed by a sufficiently slow drive.
+
+-------------------------------------------------------------------
 Fri May 09 05:53:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.12.0:
