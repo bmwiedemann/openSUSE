@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  7 10:35:34 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 4.0.1:
+  * Fix GnuTLS 3.8.4+ compilation due to new RSA-OAEP support.
+  * Bind hex-encode and hex-decode
+  * Harmonize license templates mainly to avoid obsolete FSF postal address.
+  * Improve anonymous authentication guile example.
+  * Update gnulib files.
+
+-------------------------------------------------------------------
 Fri Oct 20 11:47:18 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 4.0.0:
