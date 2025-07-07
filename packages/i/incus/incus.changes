@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jul  5 16:29:35 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Incus 6.14. See upstream changelog online at
+  <https://discuss.linuxcontainers.org/t/incus-6-14-has-been-released/24092>
+
+  * This release fixes two security issues reported by Olivier BAL-PETRE of
+    ANSSI (French Cybersecurity Agency):
+    - CVE-2025-52889 bsc#1245365
+    - CVE-2025-52890 bsc#1245367
+
+  + S3 upload of instance and volume backups
+  + Customizable expiry on snapshot creation
+  + Alternative default expiry for manually created snapshots
+  + Live migration tweaks and progress reporting
+  + Reporting of CPU address sizes in the resources API
+  * Database logic moved to our code generator
+
+-------------------------------------------------------------------
 Fri May 30 09:40:21 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Incus 6.13. See upstream changelog online at
