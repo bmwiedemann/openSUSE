@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul  6 13:48:43 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.5.19.0
+  - build: Fixes to build against libheif 1.20 #4822 (by Rui Chen)
+- drop 06860e2d5b71d614e8878d738ea27d671be2994e.patch
+
+-------------------------------------------------------------------
+Sun Jul  6 00:05:08 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix build with libheif 1.20
+  https://github.com/AcademySoftwareFoundation/OpenImageIO/pull/4822
+  Adds 06860e2d5b71d614e8878d738ea27d671be2994e.patch
+
+-------------------------------------------------------------------
 Tue Mar 18 17:02:13 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - partially revert the previous change:
