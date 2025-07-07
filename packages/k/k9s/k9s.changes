@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jul 07 05:26:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.7:
+  * Resolved Issues
+    - #3435 noExitOnCtrlC
+    - #3434 Pulses - navigation selection is invisible
+    - #3424 feat: Add GPUs to nodes view
+    - #3422 Changing ns should keep current kind
+    - #3412 "Toggle Decode" for secret has no effect
+    - #3406 History navigation: new view after going back should
+      truncate forward history
+    - #3398 Improve the UX of FieldManager field on restart
+    - #3383 Triggering a CronJob fails as Unauthorized since v0.50
+    - #3406 History navigation: new view after going back should
+      truncate forward history
+  * Dependencies
+    - chore(deps): bump k8s.io/apiextensions-apiserver from 0.33.0
+      to 0.33.2 (#3410)
+    - chore(deps): bump helm.sh/helm/v3 from 3.18.0 to 3.18.3
+      (#3425)
+    - chore(deps): bump k8s.io/kubectl from 0.33.0 to 0.33.2
+      (#3411)
+    - chore(deps): bump github.com/go-viper/mapstructure/v2 (#3419)
+    - chore(deps): bump helm.sh/helm/v3 from 3.17.3 to 3.18.0
+      (#3359)
+    - chore(deps): bump k8s.io/metrics from 0.33.0 to 0.33.1
+      (#3360)
+    - chore(deps): bump k8s.io/cli-runtime from 0.33.0 to 0.33.1
+      (#3362)
+    - chore(deps): bump github.com/anchore/grype from 0.91.2 to
+      0.92.2 (#3367)
+    - chore(deps): bump golang.org/x/text from 0.24.0 to 0.25.0
+      (#3340)
+    - chore(deps): bump golang from 1.24.2-alpine3.21 to
+      1.24.3-alpine3.21 (#3342)
+    - chore(deps): bump actions/setup-go from 5.4.0 to 5.5.0
+      (#3343)
+
+-------------------------------------------------------------------
 Mon May 12 06:27:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.6:
