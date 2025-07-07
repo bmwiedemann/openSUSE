@@ -1,7 +1,7 @@
 #
 # spec file for package python-hankel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,10 @@ URL:            https://github.com/steven-murray/hankel
 Source:         https://files.pythonhosted.org/packages/source/h/%{modname}/%{modname}-%{version}.tar.gz
 # https://github.com/steven-murray/hankel/commit/3307d7527325dc80ac441d845982f93fd84d5311
 Patch0:         fix-get_h-test.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mpmath >= 1.0.0
@@ -50,10 +52,10 @@ transformations using the method of Ogata 2005.
 %autosetup -p1 -n hankel-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # TESTS TAKE TOO LONG ON i586 LEADING TO OBS WORKER TIMING OUT
@@ -66,6 +68,6 @@ transformations using the method of Ogata 2005.
 %doc README.rst CHANGELOG.rst
 %license LICENSE.rst
 %{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{modname}-%{version}.dist-info/
 
 %changelog
