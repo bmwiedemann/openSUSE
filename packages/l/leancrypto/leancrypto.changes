@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul  3 23:51:03 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 1.5.0:
+  * Enable SHA3 CE 2x implementation for SLH-DSA and ML-DSA (performance increases 2 to 3 fold)
+  * Fix lookup of RDRAND support in CPUID
+  * Catch Y2038 issue on 32-bit systems that do not have 64 bit time_t support
+  * Start Python interface
+  * Add ED448 / X448 for use in hybrid PQC constructions, ED448 implementation verified with NIST ACVP
+  * Add ML-KEM-X448 and ML-DSA-ED448 support
+  * ASN.1: Add ML-DSA-ED448 certificate support
+  * RUST: Add ML-DSA-ED448 support
+  * Linux kernel: Add ML-KEM-X448 and ML-DSA-ED448 support
+  * Ascon AEAD: Bug fix when calculating the tag for plaintext that is not multiples of 128 bits
+  * Composite X.509 signatures: update implementation to match draft revision 5
+  * Add support for the Linux kernel updated scatterwalk API in 6.15 for leancrypto_kernel_aead_ascon.ko
+- Includes changes from 1.4.0:
+  * ML-DSA: add signature generation rejection test cases and enable them during self tests
+  * add HQC following reference implementation (https://pqc-hqc.org/implementation.html (versions from 2025-02-19)) but derived from PQClean implementation. NOTE: HQC is not yet considered stable as the implementation currently does not exhibit the IND-CCA2 property. Moreover, the FIPS standardization of HQC is pending. Changes to the HQC algorithm until standardization will need to be expected. I.e. the versioning rules of the library do not apply to the HQC algorithm until being announced in the CHANGES.md file.
+  * ARMv8: properly save/restore SIMD registers v8 through v15 for ML-DSA/ML-KEM, X25519 and SHA3-CE (reported by Alexander Sosedkin)
+  * Rust: add wrapper allowing a native interaction with the leancrypto library - the API offered by the Rust wrappers is not yet defined to be stable and may change to the next version - i.e. the versioning rules of the library do not apply to the Rust API until being announced in the CHANGES.md file.
+  * Add “secure_execution” compile-time option
+  * Add HQC AVX2 implementation derived from https://pqc-hqc.org/
+- Remove patch fix-aarch64.patch
+
+-------------------------------------------------------------------
 Tue Apr 15 13:02:47 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - added keyring, https://leancrypto.org/about/smuellerDD-2024.asc
