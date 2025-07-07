@@ -20,13 +20,13 @@ Execute the following command to run DHCP using the configuration provided in th
 
 ```ShellSession
 podman container runlabel run \
-      registry.opensuse.org/opensuse/kea:2.6
+      registry.opensuse.org/opensuse/kea:3.0
 ```
 To run a DHCP6 server using the configuration file supplied in the directory `/etc/kea`, execute the following command:
 
 ```ShellSession
 podman container runlabel run_dhcp6 \
-      registry.opensuse.org/opensuse/kea:2.6
+      registry.opensuse.org/opensuse/kea:3.0
 ```
 
 The Kea configuration file can also be provided in the current working directory.
@@ -35,10 +35,10 @@ To run a DHCP or a DHCP6 server using the configuration file in the current work
 ```ShellSession
 $ # for DHCP
 $ podman container runlabel runcwd \
-      registry.opensuse.org/opensuse/kea:2.6
+      registry.opensuse.org/opensuse/kea:3.0
 $ # for DHCP6
 $ podman container runlabel runcwd_dhcp6 \
-      registry.opensuse.org/opensuse/kea:2.6
+      registry.opensuse.org/opensuse/kea:3.0
 ```
 
 ## Licensing
