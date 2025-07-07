@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 15 06:50:51 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Added encryption_authentication in the product description file
+  (section partitioning/proposal) (jsc#PED-10703).
+- 5.0.3
+
+-------------------------------------------------------------------
+Tue Apr 29 16:17:14 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Added preferred_bootloader (jsc#PED-1906)
+- 5.0.2
+
+-------------------------------------------------------------------
 Wed Apr 17 15:19:17 UTC 2024 - Stefan Schubert <schubi@suse.com>
 
 - Added encryption_method and encryption_pbkdf in the product
