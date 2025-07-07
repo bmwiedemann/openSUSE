@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  7 13:11:03 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Unify the changelog format to make source_validator pass
+
+-------------------------------------------------------------------
 Wed Mar 26 20:49:01 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.50.0:
@@ -1125,17 +1130,17 @@ Thu Feb 12 14:42:54 UTC 2015 - tchvatal@suse.com
 - Try to enable tests and they currently fail
 
 -------------------------------------------------------------------
-Mon Sep 15 2014 00:00:00 UTC - daxim@cpan.org
+Mon Sep 15 00:00:00 UTC 2014 - daxim@cpan.org
 
 - update to v0.11.29
 
 -------------------------------------------------------------------
-Mon Aug 11 2014 00:00:00 UTC - daxim@cpan.org
+Mon Aug 11 00:00:00 UTC 2014 - daxim@cpan.org
 
 - update to v0.11.28
 
 -------------------------------------------------------------------
-Wed Apr 30 2014 00:00:00 UTC - dmacvicar@suse.de
+Wed Apr 30 00:00:00 UTC 2014 - dmacvicar@suse.de
 
 - update to 0.11.24
 - install pkg-config file
