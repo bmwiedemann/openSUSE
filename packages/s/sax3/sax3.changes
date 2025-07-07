@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul  6 07:01:41 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Make compatible with CMake 4.0.
+- Remove special cases for very old SUSE versions.
+
+-------------------------------------------------------------------
 Mon Feb 26 13:07:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

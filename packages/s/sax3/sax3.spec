@@ -1,7 +1,7 @@
 #
 # spec file for package sax3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,14 +29,10 @@ Source:         %{name}-%{version}.tar.gz
 Patch0:         sax3-gcc6.patch
 BuildRequires:  augeas-devel
 BuildRequires:  augeas-lenses
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
-%if 0%{?suse_version} > 1220
 BuildRequires:  libyui-devel
-%else
-BuildRequires:  yast2-libyui-devel
-%endif
 Requires:       augeas
 Requires:       augeas-lenses
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -52,16 +48,11 @@ Michal Hrusecky
 %prep
 %autosetup -p1
 
-%if 0%{?suse_version} < 1230
-# No libyui pkg-config before 12.3
-sed -i 's|${LIBYUI_INCLUDE_DIR}|/usr/include/YaST2\ /usr/include/YaST2/yui|' src/CMakeLists.txt
-sed -i 's|${LIBYUI_LIBRARIES}|yui|' src/CMakeLists.txt
-%endif
-
 %build
 cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_SKIP_RPATH=true \
     -DCMAKE_CXX_FLAGS="%{optflags}" \
     -DCMAKE_VERBOSE_MAKEFILE=true \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 %if "%{_lib}" == "lib64"
     -DLIB_SUFFIX="64" \
 %endif
