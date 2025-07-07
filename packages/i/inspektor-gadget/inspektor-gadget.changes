@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Mon Jul 07 12:24:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.42.0:
+    - UST WASM: Rust bindings for inspektor gadget by @Daksh-10 in
+      #4275
+    - treewide: Remove built-in gadgets. by @eiffel-fl in #4573
+  * General Improvements
+    - wasmapi: go: datasource: Remove uneeded subscription type. by
+      @eiffel-fl in #4517
+    - Add tty field by @AdvH039 in #4532
+    - gadgets/Makefile: Make GADGETS variable configurable by
+      @burak-ok in #4556
+    - deps: Update to go-ebpf version with lower memory usage by
+      @mauriciovasquezbernal in #4541
+    - annotations: Use middle ellipsis for l4endpoint by
+      @blanquicet in #4568
+    - gadget-container: Import kubenameresolver. by @eiffel-fl in
+      #4596
+    - Set visibility of formatted columns by @AdvH039 in #4545
+    - trace_tcp: add accept-only parameter by @alban in #4565
+    - Remove support for torcx by @alban in #3700
+    - charts: Add default gadget namespace by @mqasimsarfraz in
+      #4614
+    - container-hook: introduce PreCreateContainer events by @alban
+      in #4522
+    - pkg: operators: wasm: Move syscall_helpers functions to
+      pkg/utils/syscalls. by @eiffel-fl in #4613
+    - wasm/rusttestdata: Add .gitignore and Cargo.lock files by
+      @mauriciovasquezbernal in #4621
+    - trace_dns: Improve description and value.one-of annotations
+      in the yaml by @blanquicet in #4609
+    - bpfstats/top_process: Provide human readable format for bytes
+      and duration fields by @blanquicet in #4628
+    - treewide: Bump to go 1.24.4. by @eiffel-fl in #4631
+    - operators/process: add a first round of the metric collection
+      directly after start by @flyth in #4620
+    - Document kernel version by @AdvH039 in #4560
+    - pkg/datasource/expr: improve performance by @flyth in #4639
+    - go.mod: update cilium/ebpf to include performance
+      improvements by @alban in #4652
+    - gadget-container/gadgettracermanager: Remove unused
+      ReceiveStream by @blanquicet in #4647
+    - cmd/common: Remove parser by @mauriciovasquezbernal in #4654
+    - kallsyms/cache: preload kallsyms that cilium/ebpf will need
+      by @alban in #4653
+    - resources: Remove unused CRDs stuff by @mauriciovasquezbernal
+      in #4655
+    - wasmapi: Use std::sync::LazyLock instead of
+      once_cell::sync::Lazy. by @eiffel-fl in #4659
+    - socketenricher: Use CO-RE to make it resilient against
+      changes by @mauriciovasquezbernal in #4543
+    - Allow gadgets to specify default values for parameters by
+      @mauriciovasquezbernal in #4649
+    - deploy: Add support for config file by @mqasimsarfraz in
+      #4634
+    - oci: Use oras to cache gadget signature by
+      @mauriciovasquezbernal in #4626
+    - operators: Clean up and document lifecycle by
+      @mauriciovasquezbernal in #3778
+    - gadgettracermanager: Remove deprecated environment variables
+      by @mqasimsarfraz in #4664
+    - charts: Add support for extra environment variables in
+      DaemonSet by @SamuelBagattin in #4607
+    - wasmapi: rust: Use $crate to import LogLevel. by @eiffel-fl
+      in #4673
+    - gadgettracermanager: Use log-level from config by
+      @mqasimsarfraz in #4674
+    - bpfstats fixes by @mauriciovasquezbernal in #4666
+    - Handle signature during image export/import by @AdvH039 in
+      #4669
+    - cmd/common/image/import: Support JSON output mode by
+      @blanquicet in #4687
+    - update: allow ig to have rust support by @Daksh-10 in #4562
+  * Security Improvements
+    - none
+  * Bug Fixes
+    - localmanager: Fix crash when container collection isn't
+      available by @mauriciovasquezbernal in #4558
+    - operators/ebpf: Add missing annotations to ds by
+      @mauriciovasquezbernal in #4627
+    - pkg/k8sutil/client: Ensure config is there before using it by
+      @blanquicet in #4602
+  * Documentation Improvements
+    - docs: Fix helloworld guide by @mauriciovasquezbernal in #4574
+    - docs: profile_cpu: fix symlink by @alban in #4599
+    - docs: Fix symlink for profile_cpu by @burak-ok in #4601
+    - docs: Remove trace_tcpconnect by @burak-ok in #4608
+    - Fix placement of a parenthesis in index.md by @ahrkrak in
+      #4637
+  * Testing and Continue Integration
+    - gadgets/trace_exec: cleaned up test process in unit tests by
+      @Shaheer-Ahmd in #4487
+    - wasm: Remove wrong comments on test files by
+      @mauriciovasquezbernal in #4555
+    - operators: wasm: testdata: Fix wrong name for datasource. by
+      @eiffel-fl in #4557
+    - inspect: adds testing for inspect command by @KapilSareen in
+      #4364
+    - gadgets: Compile with '-Werror' in the CI by @burak-ok in
+      #4511
+    - gadgets: Add dummy unit tests for all gadgets by
+      @mauriciovasquezbernal in #4544
+    - trace_exec/unit: Dont use full path by @burak-ok in #4597
+    - ci: Generate go mod vendor archive on release. by @eiffel-fl
+      in #4645
+    - [Tests]: Add unit tests for runtime.go in pkg/runtime by
+      @Dhiren-Mhatre in #3983
+    - docs: Improve documentation for Configuration by
+      @mqasimsarfraz in #4665
+
+-------------------------------------------------------------------
 Mon Jun 02 15:48:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.41.0:
