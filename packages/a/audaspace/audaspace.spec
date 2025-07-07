@@ -18,8 +18,8 @@
 
 # See also http://en.opensuse.org/openSUSE:Shared_library_packaging_policy
 # NOTE: sover follows version.
-%define sover 1_6
-%define soversion 1.6
+%define sover 1_7
+%define soversion 1.7
 
 %if %{pkg_vcmp pipewire-devel >= 1.4.0}
 %bcond_without pipewire
@@ -28,7 +28,7 @@
 %endif
 
 Name:           audaspace
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        A High-Level Audio Library
 License:        Apache-2.0

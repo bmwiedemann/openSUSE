@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  2 21:43:01 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to release 1.7.0
+  - Rewrite of the Synchronizer API.
+  - Unified backends with a mixing thread (Jack, Pulse, Pipewire,
+    CoreAudio)
+  - Various fixes for CoreAudio.
+
+-------------------------------------------------------------------
 Wed Mar 19 17:07:47 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - instead of disabling pipewire support based on the OS version
