@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Jul  6 10:28:04 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.0
+  * Fixed the work on big endian processors.
+  * Fixed ARM64 build on some platforms.
+  * Improved support of the EA-MUS files.
+  * Fixed crash on attempt to change the volume of a blank note.
+  * Added an ability to supply the custom list of embedded banks
+    using -DGENADLDATA_CUSTOM_BANKLIST=/path/to/ini/file.ini
+    argument
+  * Improved support of the CMF files: added support for previously
+    missing transpose, depth control, and song marker controllers.
+  * Added ESFMu emulator for the future ESFM support (Currently
+    used as one another OPL3 emulator and without panned stereo
+    support yet).
+  * Added YMFM emulator support (OPL3 and OPL2).
+  * Added support for OPL2 mode when some emulators enabled.
+  * Added Nuked OPL2 and OPL3 Low-Level emulators (Kept disabled
+    by default because they are too heavy for ordinary processors).
+  * Fixed a dead loop that might happen when final tone gets lower
+    than zero.
+  * Added possibility to play the same note multiple times at the
+    same MIDI channel (Resolved playback of some music, like
+    Heretic's E1M6).
+  * Dual-voice 2-op instruments will be squashed to single 2-op
+    voice when available chip channels are overflow (The stability
+    of DMX-oriented music has been improved).
+
+-------------------------------------------------------------------
 Mon Oct 31 08:50:23 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.1
