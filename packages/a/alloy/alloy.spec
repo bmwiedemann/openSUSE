@@ -17,7 +17,7 @@
 
 
 Name:           alloy
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        OpenTelemetry Collector distribution with programmable pipelines
 License:        Apache-2.0
