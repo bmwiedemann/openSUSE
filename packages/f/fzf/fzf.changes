@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jul  6 18:43:48 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.64.0:
+  * Added `multi` event that is triggered when the multi-
+    selection has changed.
+  * Halfwidth and fullwidth alphanumeric and punctuation
+    characters are now internally normalized to their ASCII
+    equivalents to allow matching with ASCII queries.
+  * Renamed `clear-selection` action to `clear-multi` for consistency.
+  * Fixed a bug that could cause fzf to abort due to incorrect
+    update ordering.
+  * Fixed a bug where some multi-selections were lost when using
+    `exclude` or `change-nth`.
+
+-------------------------------------------------------------------
 Sat Jun 28 04:17:13 UTC 2025 - Avindra Goolcharan <aavindraa@gmail.com>
 
 - Update to version 0.63.0:

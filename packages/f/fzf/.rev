@@ -1031,4 +1031,23 @@ varienvironment able.
 </comment>
     <requestid>1288912</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>8ece4fa56eca8b7b3ec19f2a5a1d36ce</srcmd5>
+    <version>0.64.0</version>
+    <time>1751892372</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.64.0:
+  * Added `multi` event that is triggered when the multi-
+    selection has changed.
+  * Halfwidth and fullwidth alphanumeric and punctuation
+    characters are now internally normalized to their ASCII
+    equivalents to allow matching with ASCII queries.
+  * Renamed `clear-selection` action to `clear-multi` for consistency.
+  * Fixed a bug that could cause fzf to abort due to incorrect
+    update ordering.
+  * Fixed a bug where some multi-selections were lost when using
+    `exclude` or `change-nth`.
+</comment>
+    <requestid>1290911</requestid>
+  </revision>
 </revisionlist>
