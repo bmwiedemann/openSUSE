@@ -480,4 +480,19 @@
    + #111 Provide auto detection of background for perception of transparency</comment>
     <requestid>1282042</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e29a9a6aa58c44b3690ea8438f87048e</srcmd5>
+    <version>1.16.2</version>
+    <time>1751892264</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.16.2:
+  * #288 SVG scaling seems to be done after bitmap conversion
+  * [unfiled] MinGW: Undeclared function error for strlen()
+  * [unfiled] Assert when using chafa_canvas_draw_all_pixels() with Kitty passthrough
+  * [unfiled] Hangs when running with closed stdin
+  * [unfiled] Potential overrun when output dimension is exactly 1 pixel.
+  * [unfiled] Small memory leak on failed load in the grid layout.
+  * [unfiled] Occasional warnings from JPEG loader that should not be printed.</comment>
+    <requestid>1290742</requestid>
+  </revision>
 </revisionlist>
