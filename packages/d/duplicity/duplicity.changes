@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jul  6 23:50:12 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.0.5:
+  + Changes
+    - Add ENODEV to list of "robust" ignored exceptions.
+    - Support gpg binary 'gpgsm'.
+    - Accept GPG user id formats other than hex.
+    - Add env var BACKEND\_PASSWORD, deprecate FTP\_PASSWORD.
+  + Fix
+    - Fix handling of .p7m filename suffix during sync.
+    - Cache negative getpwnam/getgrnam lookups.
+    - Incompatible with par2cmdline v1.0.0.
+    - Allow the full range of time formats as arguments to
+    --full-if-older-than.
+    - Fix problems with password request and metadata sync.
+    - "OverflowError: bytes object is too large to make repr".
+    - Prevent webdav log password at info log level.
+
+-------------------------------------------------------------------
 Sat Feb 15 12:17:45 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.0.4:
