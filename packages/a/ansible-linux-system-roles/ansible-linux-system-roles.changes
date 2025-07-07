@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 27 10:37:02 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Add selinux role for managing SELinux configuration
+- Add podman role for managing containers using Podman 
+
+-------------------------------------------------------------------
 Wed Jun 25 12:24:00 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Update roles:

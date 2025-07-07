@@ -26,6 +26,8 @@
 %global suseconnect_version 1.0.1
 %global auto_maintenance_version 1.94.2
 %global certificate_version 1.3.11
+%global selinux_version 1.8.2
+%global podman_version 1.8.1
 
 %if 0%{?suse_version} >= 1600
 %global sle16 1
@@ -54,6 +56,8 @@ Source8:        %{url}/ansible-suseconnect/archive/refs/tags/%{suseconnect_versi
 Source9:        %{url}/ansible-auto_maintenance/archive/refs/tags/%{auto_maintenance_version}-suse.tar.gz#/auto_maintenance-%{auto_maintenance_version}.tar.gz 
 %if %{sle16}
 Source10:        %{url}/ansible-certificate/archive/refs/tags/%{certificate_version}-suse.tar.gz#/certificate-%{certificate_version}.tar.gz
+Source11:        %{url}/ansible-selinux/archive/refs/tags/%{selinux_version}-suse.tar.gz#/selinux-%{selinux_version}.tar.gz
+Source12:        %{url}/ansible-podman/archive/refs/tags/%{podman_version}-suse.tar.gz#/podman-%{podman_version}.tar.gz
 %endif
 Source999:      galaxy.yml
 
@@ -88,6 +92,8 @@ roles=(
   "auto_maintenance:%{auto_maintenance_version}"
 %if %{sle16}
   "certificate:%{certificate_version}"
+  "selinux:%{selinux_version}"
+  "podman:%{podman_version}"
 %endif
 )
 

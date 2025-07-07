@@ -64,6 +64,7 @@ build_ignore:
   # Ignore unwanted files
   - tests
   - .sanity-ansible-ignore-*
+  - lsr_role2coll_extra_script-podman
   - .markdownlint-*
   - .commitlintrc-*
   - .README-*

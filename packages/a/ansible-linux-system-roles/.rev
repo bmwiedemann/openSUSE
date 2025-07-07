@@ -38,4 +38,12 @@ This package contains ansible roles from linux-system-roles project: https://git
     <comment></comment>
     <requestid>1288545</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c2b755db19caa18cbd11113bda57aa3b</srcmd5>
+    <version>1.0.0</version>
+    <time>1751892604</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1291011</requestid>
+  </revision>
 </revisionlist>
