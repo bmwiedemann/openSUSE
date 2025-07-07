@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Jul 07 04:41:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.103.0:
+  * Partial manifest:
+    Partials manifests are named, reusable fragments of an
+    Updatecli manifest, typically used to define repeatable logic
+    for:
+    - Scms (e.g., Git repository details)
+    - Sources (e.g., version checks)
+    - Conditions
+    - Targets
+    These fragments are automatically available to pipelines within
+    the same directory, helping keep your main manifests DRY (Don't
+    Repeat Yourself) and maintainable.
+    A partial file must have a filename that starts with an
+    underscore (_). Updatecli never loads these as standalone
+    manifest files.
+    IMPORTANT: Partial files are concatenated into the main
+    manifest during execution. If a --- YAML document separator is
+    present, the partial feature will be disabled, as the resulting
+    content would be treated as multiple separate YAML documents.
+  * Semver Version Filter
+    When an AND group has one constraint with a prerelease but more
+    than one constraint then prereleases will be included. For
+    example, >1.0.0-beta.1 < 2. In the past this would not have
+    included prereleases because each constraint needed to have a
+    prerelease. Now, only one constraint needs to have a
+    prerelease. Note, this does not carry across OR groups. For
+    example, >1.0.0-beta.1 < 2 || > 3. In this case, prereleases
+    will not be included when evaluating against >3
+  * Features
+    - feat: add partial manifest @olblak (#5508)
+  * Bug Fixes
+    - fix: Branch reset causes initial Github API commit to be lost
+      @MattiasAng (#5486)
+    - fix(bitbucket): use body parameter on pull request updates
+      @mcwarman (#5457)
+  * Maintenance
+    - refactor(autodiscovery): unify discovery spec & reduce
+      boilerplate code & fix terragrunt missing in jsonschema
+      @qianlongzt
+    - deps(go): bump module github.com/Masterminds/semver/v3 to
+      v3.4.0 @updateclibot[bot] (#5507)
+    - deps(go): bump module sigs.k8s.io/yaml to v1.5.0
+      @updateclibot[bot] (#5485)
+    - deps(go): bump module helm.sh/helm/v3 to v3.18.3
+      @updateclibot[bot] (#5460)
+    - deps(go): bump module cuelang.org/go to v0.13.2
+      @updateclibot[bot] (#5464)
+  * Documentation
+    - doc: reformat code comment to improve website visualization
+      @olblak (#5436)
+
+-------------------------------------------------------------------
 Fri Jun 13 11:31:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.102.0:
