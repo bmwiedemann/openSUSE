@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul  6 14:46:25 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 8.0.3
+  * https://github.com/redis/redis/releases/tag/8.0.3
+  * Fixed out-of-bounds write in HyperLogLog commands (CVE-2025-32023).
+  * Fixed retry accepting other connections even if the accepted
+    connection reports an error (CVE-2025-48367).
+  * Fixed a short read may lead to an exit() on a replica.
+  * Fixed db->expires is not defragmented.
+  * Added new WITHATTRIBS to return the JSON attribute associated
+    with an element.
+
+-------------------------------------------------------------------
 Fri Jun  6 08:43:56 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Added conflict with valkey-compat-redis.
