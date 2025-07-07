@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-copr-cli
 Version:        2.1
 Release:        0
@@ -26,8 +27,10 @@ Source:         https://files.pythonhosted.org/packages/source/c/copr-cli/copr-c
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-Jinja2
 Requires:       python-copr >= 1.116
 Requires:       python-humanize
@@ -40,8 +43,6 @@ BuildRequires:  %{python_module humanize}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module responses}
 # /SECTION
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -63,11 +64,8 @@ sed -i '1{/#!/d}' copr_cli/package_build_order.py
 %check
 %pytest
 
-%post
-%python_install_alternative copr-cli
-
-%postun
-%python_uninstall_alternative copr-cli
+%pre
+%python_libalternatives_reset_alternative copr-cli
 
 %files %{python_files}
 %license LICENSE
