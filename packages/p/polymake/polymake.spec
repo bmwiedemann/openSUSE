@@ -16,42 +16,44 @@
 #
 
 
-%define lname   libpolymake4_13
+%define lname   libpolymake4_14
 Name:           polymake
-Version:        4.13
+Version:        4.14
 Release:        0
 Summary:        Application for studying combinatorics and geometry of convex polytopes
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://polymake.org/
 
-Source:         https://github.com/polymake/polymake/releases/download/V4.13/polymake-4.13-minimal.tar.bz2
-Source:         polymake-4.13-minimal.tar.bz2
+Source:         https://github.com/polymake/polymake/releases/download/V4.14/polymake-4.14-minimal.tar.bz2
+Source:         polymake-4.14-minimal.tar.bz2
 Source9:        %name-rpmlintrc
 Patch2:         sympol-system.patch
 Patch3:         perl.patch
-Patch4:         gcc15.patch
 BuildRequires:  bliss-devel
-BuildRequires:  cddlib-devel
 BuildRequires:  fdupes
-BuildRequires:  flint-devel
 BuildRequires:  gcc-c++ >= 5
 BuildRequires:  gmp-devel >= 4.2
-BuildRequires:  libSingular-devel
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt-tools
 BuildRequires:  lrslib-devel >= 7.1b
 BuildRequires:  memory-constraints
-BuildRequires:  mpfr-devel
 BuildRequires:  ninja
 BuildRequires:  normaliz-devel
 BuildRequires:  perl
-BuildRequires:  ppl-devel
-BuildRequires:  readline-devel >= 5
-BuildRequires:  sympol-devel
 BuildRequires:  perl(JSON)
+BuildRequires:  perl(Term::ReadKey)
+BuildRequires:  perl(Term::ReadLine::Gnu)
+BuildRequires:  perl(XML::SAX)
+BuildRequires:  pkgconfig(Singular)
+BuildRequires:  pkgconfig(cddlib)
+BuildRequires:  pkgconfig(flint)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(mpfr)
+BuildRequires:  pkgconfig(readline) >= 5
+BuildRequires:  ppl-devel
+BuildRequires:  sympol-devel
 Requires:       perl(JSON)
 Requires:       perl(Term::ReadKey)
 Requires:       perl(Term::ReadLine::Gnu)

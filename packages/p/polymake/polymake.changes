@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul  5 14:22:38 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.14
+  * tropical: cone: refactoring and fixes for DOME, COVECTORs and
+    PSEUDOVERTICES
+  * tropical: polytope: fix vertices computation
+  * tropical: hypersurface: fixes for monomials and binomials
+- Drop gcc15.patch (merged)
+
+-------------------------------------------------------------------
 Sun Jun 22 20:52:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add gcc15.patch
