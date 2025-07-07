@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul  7 11:10:13 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 4.4:
+  * initial support for DRM rendering;
+  * Fixed segfault setting cursor shape;
+  * Fixed segfault using extended background on slow CPU;
+  * viewer: Fixed mouse drag coordinates on HiDPI display.
+  * slideshow: Fixed FS monitor handling;
+  * imglist: Fixed first file in "from file" mode;
+  * imglist: Fixed freezing next_dir/prev_dir actions.
+- Add pkgconfig(libdrm) BuildRequires: enable DRM rendering support
+
+-------------------------------------------------------------------
 Thu Jun 26 12:35:10 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 4.3:

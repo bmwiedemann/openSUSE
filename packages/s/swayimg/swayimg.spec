@@ -19,7 +19,7 @@
 
 %bcond_with test
 Name:           swayimg
-Version:        4.3
+Version:        4.4
 Release:        0
 Summary:        Image viewer for Sway/Wayland
 License:        MIT
@@ -40,6 +40,7 @@ BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libexif)
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libheif)
 BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(libraw)
