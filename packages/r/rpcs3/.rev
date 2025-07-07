@@ -1090,4 +1090,20 @@
     <comment></comment>
     <requestid>1289998</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>92e6ec6ce0be14f3d6c8c2cb287dd73d</srcmd5>
+    <version>0.0.37~git20250706</version>
+    <time>1751892378</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.37~git20250706:
+  * Move gamemode exit to final kill callback analog to display_sleep
+  * [Linux] Implement Feral Interactive's Gamemode for Potential 
+    Performance Increases (#17325)
+  * cellVdec: log uknown arguments instead of throwing an error
+  * clang-cl: fix a bunch of warnings
+  * Update FAudio to 25.07
+  * Enable fetch (oops) and also check highest tag in version_check
+</comment>
+    <requestid>1290923</requestid>
+  </revision>
 </revisionlist>

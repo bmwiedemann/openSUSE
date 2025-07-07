@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul  6 22:54:26 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.37~git20250706:
+  * Move gamemode exit to final kill callback analog to display_sleep
+  * [Linux] Implement Feral Interactive's Gamemode for Potential 
+    Performance Increases (#17325)
+  * cellVdec: log uknown arguments instead of throwing an error
+  * clang-cl: fix a bunch of warnings
+  * Update FAudio to 25.07
+  * Enable fetch (oops) and also check highest tag in version_check
+
+-------------------------------------------------------------------
 Wed Jul  2 14:18:51 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.37~git20250702:
