@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jul  5 16:40:32 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 25.07
+  * A video preview is shown on the seek bar.
+  * The window can be moved by dragging the bottom section.
+  * Bigger icons and updated subtitles icon.
+  * The shuffle feature shuffles the entire list (and preserve
+    its original order) and the playlist keeps the current item
+    at the center, so you'll always know what's playing next.
+  * The new music mode makes it possible to keep the MPC-QT
+    small to play music.
+  * The keys editor is easier to use thanks to a search field
+    and a better workflow.
+  * Subtitles additions for deaf or hard-of-hearing (SDH) like
+    [whispers] can be automatically hidden (in "Subtitles >
+    Misc").
+  * You can force MPC-QT to use English instead of an incomplete
+    translation.
+- Switch to cmake build
+
+-------------------------------------------------------------------
 Fri May 23 21:56:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Remove unneeded build dependency

@@ -17,22 +17,29 @@
 
 
 Name:           mpc-qt
-Version:        24.12.1
+Version:        25.07
 Release:        0
 Summary:        Media Player Classic Qute Theater
 License:        GPL-2.0-only
 URL:            https://github.com/mpc-qt/mpc-qt
 Source0:        https://github.com/mpc-qt/mpc-qt/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
 # For dirs ownership
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  qt6-tools-linguist
-BuildRequires:  pkgconfig(Qt6Core)
-BuildRequires:  pkgconfig(Qt6DBus)
-BuildRequires:  pkgconfig(Qt6Gui)
-BuildRequires:  pkgconfig(Qt6Network)
-BuildRequires:  pkgconfig(Qt6OpenGLWidgets)
-BuildRequires:  pkgconfig(Qt6Svg)
-BuildRequires:  pkgconfig(Qt6Widgets)
+%if 0%{?suse_version} > 1500
+BuildRequires:  libboost_system-devel
+%else
+BuildRequires:  gcc13-c++
+BuildRequires:  libboost_system1_75_0-devel
+%endif
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6OpenGLWidgets)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(mpv) >= 1.101.0
 
 %description
@@ -43,13 +50,14 @@ A clone of Media Player Classic reimplemented in Qt.
 rm -rf mpv-dev
 
 %build
-qmake6 \
-  PREFIX=%{_prefix} MPCQT_VERSION=%{version} \
-  mpc-qt.pro
-%qmake6_build
+export CXX=g++
+test -x "$(type -p g++-13)" && export CXX=g++-13
+%cmake \
+  -DMPCQT_VERSION=%{version}
+%cmake_build
 
 %install
-%qmake6_install
+%cmake_install
 
 # Use %%doc instead
 rm -r %{buildroot}%{_datadir}/doc/mpc-qt
@@ -58,7 +66,8 @@ rm -r %{buildroot}%{_datadir}/doc/mpc-qt
 %doc README.md DOCS/ipc.md
 %license LICENSE
 %{_bindir}/%{name}
-%{_datadir}/applications/io.github.mpc-qt.mpc-qt.desktop
+%{_datadir}/applications/io.github.mpc_qt.mpc-qt.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+%{_datadir}/metainfo/io.github.mpc_qt.mpc-qt.appdata.xml
 
 %changelog
