@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Jul 07 04:51:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.24.0:
+  * Features
+    - add minimum PostgreSQL database version check (6b8ef00)
+    - add support for application spdx media type (b4b57e1)
+    - api/gitlab/v1: enable DLB for List Sub Repositories API
+      endpoint (dc25583)
+    - improve GCS-next driver debuggability (fd44b20)
+  * Bug Fixes
+    - proper translation of env vars with underscores to the
+      configuration (98e786e)
+    - the Stat call in s3 storage drivers should not rely on
+      lexographical sort only (cd8513b)
+  * Build
+    - deps: update module github.com/aws/aws-sdk-go-v2/config to
+      v1.29.16 (d3155da)
+    - deps: update module github.com/aws/aws-sdk-go-v2/config to
+      v1.29.17 (7173243)
+    - deps: update module
+      github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to
+      v1.8.13 (0b5eefa)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.80.2 (74078da)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.81.0 (80b23bc)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.82.0 (761a7d1)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.83.0 (30f5b8c)
+    - deps: update module
+      github.com/azure/azure-sdk-for-go/sdk/azidentity to v1.10.1
+      (6147438)
+    - deps: update module github.com/getsentry/sentry-go to v0.34.0
+      (9c424ef)
+    - deps: update module github.com/redis/go-redis/v9 to v9.10.0
+      (b09a8d3)
+    - deps: update module github.com/redis/go-redis/v9 to v9.11.0
+      (b38470d)
+    - deps: update module gitlab.com/gitlab-org/api/client-go to
+      v0.130.1 (505055d)
+    - deps: update module gitlab.com/gitlab-org/labkit to v1.24.1
+      (ebda676)
+    - deps: update module golang.org/x/crypto to v0.39.0 (25053b7)
+    - deps: update module golang.org/x/sync to v0.15.0 (714cbe1)
+    - deps: update module golang.org/x/time to v0.12.0 (25ac321)
+    - deps: update module google.golang.org/api to v0.238.0
+      (85bb727)
+    - deps: update module google.golang.org/api to v0.239.0
+      (4f533f6)
+
+-------------------------------------------------------------------
 Mon Jun 30 05:16:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.23.2:
