@@ -482,4 +482,19 @@
   * Fixing the iso parsing crash for real</comment>
     <requestid>1290671</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>ef3b55556c9ceded284565370b35af93</srcmd5>
+    <version>0.6.8</version>
+    <time>1751900875</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.6.8:
+  * One more attempt for crashes in iso handling
+  * Accept product_name_prefix key in scc block
+
+- update to version 0.6.7:
+  * Make the diskusage estimation compatible to the old implementation.
+    Doing the kb conversation by file to cover fs block size
+  * Implement option to follow package version for product</comment>
+    <requestid>1291053</requestid>
+  </revision>
 </revisionlist>
