@@ -20,7 +20,7 @@
 %define         typelib1 typelib-1_0-XreaderDocument-1_5
 %define         typelib2 typelib-1_0-XreaderView-1_5
 Name:           xreader
-Version:        4.2.3
+Version:        4.2.6
 Release:        0
 Summary:        Document viewer for documents like PDF/PostScript
 License:        GPL-2.0-only AND LGPL-2.0-only
@@ -114,9 +114,9 @@ single page document formats like PDF and Postscript.
 #Requires:       %{name}
 
 
+
 #%description -n xreader-plugin-epubdocument
 #A plugin for Xreader to read EPUB documents.
-
 %package -n xreader-plugin-pdfdocument
 Summary:        PDF document support for Xreader
 Requires:       %{name}

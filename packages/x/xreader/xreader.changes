@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 25 07:44:28 UTC 2025 - pgajdos@suse.com
+
+- version update to 4.2.6
+  * epub-document.c: Fix null pointer crash when building a TOC.
+  * ev-window.c: Check that we have a document set before accessing it.
+  * ev-sidebar-thumbnails.c: Don't attempt to generate thumbnails for epub docs.
+  * Update private.h: gcc-15 build fix (#667)
+  * epub: Disable support for sidebar thumbnails. (#671)
+
+-------------------------------------------------------------------
 Sun Jan 12 05:15:35 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update to 4.2.3
