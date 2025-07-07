@@ -42,7 +42,9 @@ BuildRequires:  python-rpm-macros
 %if 0%{?_test}
 BuildRequires:  python3-%{short_name} == %{version}
 %else
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 # workaround because of python-configparser not providing the '__init__.py'
 # file within site-packages/backports
@@ -82,7 +84,7 @@ A review helper script for openQA. For more details look into the README file.
 # reason
 touch %{_sourcedir}/%{short_name}
 %else
-%setup -q
+%autosetup
 # delete shebang of files not in executable path
 find %{short_name}/ -name '*.py' -print0 | xargs -0 sed -i '1s/#!.*$//'
 %endif
@@ -92,7 +94,7 @@ find %{short_name}/ -name '*.py' -print0 | xargs -0 sed -i '1s/#!.*$//'
 openqa-review --help
 tumblesle-release --help
 %else
-%python_build
+%pyproject_wheel
 %endif
 
 %install
@@ -100,7 +102,7 @@ tumblesle-release --help
 # disable debug packages in package test to prevent error about missing files
 %define debug_package %{nil}
 %else
-%python_install
+%pyproject_install
 rm %{buildroot}/%{python_sitelib}/version.*
 
 for i in %{binaries}; do
