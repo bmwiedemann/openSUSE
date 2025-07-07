@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 07 04:41:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.9:
+  * build(deps): bump github.com/anchore/grype from 0.94.0 to
+    0.95.0
+  * build(deps): bump github.com/anchore/syft from 1.27.1 to 1.28.0
+    (#1664)
+  * build(deps): bump github.com/savioxavier/termlink from 1.4.2 to
+    1.4.3 (#1660)
+  * build(deps): bump step-security/harden-runner from 2.12.1 to
+    2.12.2 (#1658)
+  * build(deps): bump chainguard-dev/actions from 1.4.2 to 1.4.3
+    (#1659)
+  * build(deps): bump the chainguard group with 3 updates (#1661)
+
+-------------------------------------------------------------------
 Mon Jun 30 05:10:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.37.8:
