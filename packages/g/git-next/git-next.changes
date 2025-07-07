@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 07 05:26:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2025.7.1:
+  * Fixed
+    - forgejo auth no longer accepts the token in query path
+  * Other
+    - lint fixes and replace/remove allow with expect
+
+-------------------------------------------------------------------
 Mon May 26 04:45:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2025.5.1:
