@@ -1,7 +1,7 @@
 #
 # spec file for package fuse-oscfs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,23 @@
 #
 
 
+%define pythons python3
 Name:           fuse-oscfs
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        A FUSE file system for accessing Open Build Service instances
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://github.com/mgerstner/oscfs
 Source:         oscfs-%{version}.tar.xz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
 Requires:       osc
 Requires:       python3-fusepy
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       python2-oscfs = %version-%release
 Obsoletes:      python2-oscfs < %version-%release
 
@@ -40,19 +43,21 @@ Python package for interfacing with OBS. At the moment, it provides read-only
 access for inspecting packages and their metadata.
 
 %prep
-%setup -q -n oscfs-%{version}
+%autosetup -p1 -n oscfs-%{version}
 
 %build
-python3 setup.py build
+%pyproject_wheel
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%pyproject_install
+%fdupes -s %{buildroot}%{python3_sitelib}/oscfs
 
 %files
 %defattr(-,root,root)
 %doc README.md NEWS.rst
 %license LICENSE.txt
-%{python3_sitelib}/*
+%{python3_sitelib}/oscfs
+%{python3_sitelib}/oscfs-%{version}.dist-info
 %{_bindir}/oscfs
 
 %changelog

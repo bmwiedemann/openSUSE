@@ -84,4 +84,18 @@
   * bugfix: fix early auth check on non-OBS instance</comment>
     <requestid>1119201</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e91679528059b61017608ffb4d3838ca</srcmd5>
+    <version>0.9.1</version>
+    <time>1751900872</time>
+    <user>anag_factory</user>
+    <comment>- require python3-fusepy to fix install time dependency error.
+
+- Update to version 0.9.1:
+  * prepare new minor release
+  * gitignore: ignore Python packaging artifacts
+  * obs: no longer quote URLs passed to OSC on versions newer 1.6.1
+- convert to pip based build</comment>
+    <requestid>1291036</requestid>
+  </revision>
 </revisionlist>

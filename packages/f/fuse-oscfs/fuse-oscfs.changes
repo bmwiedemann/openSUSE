@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul  7 12:13:24 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- require python3-fusepy to fix install time dependency error.
+
+-------------------------------------------------------------------
+Fri Jun 13 10:53:30 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to version 0.9.1:
+  * prepare new minor release
+  * gitignore: ignore Python packaging artifacts
+  * obs: no longer quote URLs passed to OSC on versions newer 1.6.1
+- convert to pip based build
+
+-------------------------------------------------------------------
 Fri Oct 20 09:27:57 UTC 2023 - matthias.gerstner@suse.com
 
 - Update to version 0.9.0:
