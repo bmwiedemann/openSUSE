@@ -17,17 +17,29 @@
 
 
 Name:           kubescape
-Version:        3.0.34
+Version:        3.0.35
 Release:        0
 Summary:        Tool providing a multi-cloud K8s single pane of glass
 License:        Apache-2.0
 URL:            https://github.com/armosec/kubescape
 Source:         kubescape-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.23
+BuildRequires:  golang(API) >= 1.24
 
 %description
-Kubescape is a K8s open-source tool providing a multi-cloud K8s single pane of glass, including risk analysis, security compliance, RBAC visualizer and image vulnerabilities scanning. Kubescape scans K8s clusters, YAML files, and HELM charts, detecting misconfigurations according to multiple frameworks (such as the NSA-CISA , MITRE ATT&CK®), software vulnerabilities, and RBAC (role-based-access-control) violations at early stages of the CI/CD pipeline, calculates risk score instantly and shows risk trends over time. It became one of the fastest-growing Kubernetes tools among developers due to its easy-to-use CLI interface, flexible output formats, and automated scanning capabilities, saving Kubernetes users and admins’ precious time, effort, and resources. Kubescape integrates natively with other DevOps tools, including Jenkins, CircleCI, Github workflows, Prometheus, and Slack, and supports multi-cloud K8s deployments like EKS, GKE, and AKS.
+Kubescape is a K8s open-source tool providing a multi-cloud K8s single pane of
+glass, including risk analysis, security compliance, RBAC visualizer and image
+vulnerabilities scanning. Kubescape scans K8s clusters, YAML files, and HELM
+charts, detecting misconfigurations according to multiple frameworks (such as
+the NSA-CISA , MITRE ATT&CK®), software vulnerabilities, and RBAC
+(role-based-access-control) violations at early stages of the CI/CD pipeline,
+calculates risk score instantly and shows risk trends over time. It became one
+of the fastest-growing Kubernetes tools among developers due to its easy-to-use
+CLI interface, flexible output formats, and automated scanning capabilities,
+saving Kubernetes users and admins’ precious time, effort, and resources.
+Kubescape integrates natively with other DevOps tools, including Jenkins,
+CircleCI, Github workflows, Prometheus, and Slack, and supports multi-cloud K8s
+deployments like EKS, GKE, and AKS.
 
 %prep
 %autosetup -p 1 -a 1

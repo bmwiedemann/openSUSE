@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun 25 04:52:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.35:
+  * check for nil map in merge methods by @matthyx in #1813
+  * test: increase test coverage by @pixel365 in #1814
+  * upgrade open-policy-agent to 1.x by @matthyx in #1820
+  * merge labels and annotations in RetryOnConflict by @matthyx in
+    #1822
+  * Bump helm.sh/helm/v3 from 3.14.4 to 3.17.3 by @dependabot in
+    #1824
+  * Bump golang.org/x/net from 0.37.0 to 0.38.0 by @dependabot in
+    #1829
+  * fix: Fix stdin restoration in TestUserConfirmed by
+    @shangchengbabaiban in #1827
+  * Update dir.go by @rash1411 in #1828
+  * Ensure context cancellation on command execution failure by
+    @pixel365 in #1835
+  * Make a second sigint terminate kubescape immediately by
+    @ian-fox in #1837
+  * Feature/mcpserver v1 by @slashben in #1836
+
+-------------------------------------------------------------------
 Fri Mar 28 11:57:56 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.34:
