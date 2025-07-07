@@ -3785,6 +3785,7 @@ unsorted:
   - espeak-ng-devel 
   - espeak-ng-vim 
   - espeakedit 
+  - espresso 
   - etc-update 
   - etcd 
   - etcd-for-k8s1.30 
@@ -10551,6 +10552,7 @@ unsorted:
   - kubectl-klock-zsh-completion 
   - kubectl-neat 
   - kubectl-node-shell 
+  - kubectl-node_resource 
   - kubectl-np-viewer 
   - kubectl-oomd 
   - kubectl-operator 
@@ -12052,9 +12054,9 @@ unsorted:
   - libattr1-32bit 
   - libaubio-devel 
   - libaubio5 
-  - libaudaspace-c1_6 
-  - libaudaspace-py1_6 
-  - libaudaspace1_6 
+  - libaudaspace-c1_7 
+  - libaudaspace-py1_7 
+  - libaudaspace1_7 
   - libaudcore5 
   - libaudgui6 
   - libaudiofile1 
@@ -13535,7 +13537,7 @@ unsorted:
   - libgmodule-2_0-0-32bit 
   - libgmpxx4 
   - libgmpxx4-32bit 
-  - libgmsh4_13 
+  - libgmsh4_14 
   - libgmxapi0 
   - libgmxapi_mpi0 
   - libgnome-bluetooth13 

@@ -1,7 +1,7 @@
 #
 # spec file for package backintime
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           backintime
-Version:        1.5.3
+Version:        1.5.5
 Release:        0
 Summary:        Backup tool for Linux inspired by the "flyback project"
 Group:          Productivity/Archiving/Backup

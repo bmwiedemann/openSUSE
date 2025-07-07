@@ -17,7 +17,7 @@
 
 
 Name:           gap-wedderga
-Version:        4.11.0
+Version:        4.11.1
 Release:        0
 Summary:        GAP: Wedderburn Decomposition of Group Algebras
 License:        GPL-2.0-or-later
