@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Jul  7 05:57:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.114:
+  * General
+    - Upgraded jwt library to 5.2.2 with neccesary dep changes
+      @ShashaankS (#15259)
+    - Delete
+      server/meshmodel/kubernetes/v1.32.0-alpha.3/v1.0.0/relationshi…
+      @CodeAhmedJamil (#15270)
+  * Meshery CLI
+    - remove category from model import comp summary @mike-dev-oss
+      (#15278)
+    - e2e tests for component view @VinayCheripally (#14888)
+    - feature: model build: allow specify just model name without
+      specific version @n2h9 (#15251)
+  * Maintenance
+    - Fix: Share options overflow outside dialog container on
+      performance chart modal @n0IQ (#15182)
+    - e2e tests for component view @VinayCheripally (#14888)
+    - Bump eslint-config-next from 15.3.1 to 15.3.4 in /provider-ui
+      @dependabot (#15265)
+    - Bump @babel/eslint-parser from 7.27.0 to 7.27.5 in
+      /provider-ui @dependabot (#15269)
+    - Bump @sistent/sistent from 0.14.199 to 0.14.203 in
+      /provider-ui @dependabot (#15268)
+    - update model definition ouput path for remote provider
+      @vishalvivekm (#15260)
+  * Documentation
+    - Fix: Share options overflow outside dialog container on
+      performance chart modal @n0IQ (#15182)
+    - fix: Close Import Design modal on successful pattern upload
+      @Darshan174 (#15222)
+    - feature: model build: allow specify just model name without
+      specific version @n2h9 (#15251)
+- update to 0.8.113:
+  no CLI-related changes
+- update to 0.8.112:
+  no CLI-related changes
+- update to 0.8.111:
+  no CLI-related changes
+- update to 0.8.110:
+  no CLI-related changes
+
+-------------------------------------------------------------------
 Tue Jun 24 06:34:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.109:
