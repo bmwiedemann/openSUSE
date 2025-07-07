@@ -1,6 +1,7 @@
---- doc/doxygen.conf.in.orig
-+++ doc/doxygen.conf.in
-@@ -54,6 +54,7 @@ GENERATE_HTML = YES
+diff -Pdpru libmpdclient-2.23.orig/doc/doxygen.conf.in libmpdclient-2.23/doc/doxygen.conf.in
+--- libmpdclient-2.23.orig/doc/doxygen.conf.in	2025-06-24 12:54:55.000000000 +0300
++++ libmpdclient-2.23/doc/doxygen.conf.in	2025-07-04 19:54:13.897604247 +0300
+@@ -55,6 +55,7 @@ GENERATE_HTML = YES
  HTML_OUTPUT = html
  HTML_FILE_EXTENSION = .html
  DOCSET_FEEDNAME = "The Music Player Daemon Project"

@@ -109,4 +109,23 @@
     * command &quot;save [create|replace|append]&quot;</comment>
     <requestid>1167954</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e5f1c1a885f970b31ac0a4f84d734c56</srcmd5>
+    <version>2.23</version>
+    <time>1751892260</time>
+    <user>anag_factory</user>
+    <comment>- Added libmpdclient-2.23.tar.xz.sig and libmpdclient.keyring.
+- Changed libmpdclient-doxygen_nodatetime.patch.
+- Updated to 2.23
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/libmpdclient/v2.23/NEWS
+  * Supported MPD protocol 0.24.0
+    * allow window for listplaylist and listplaylistinfo
+    * command &quot;playlistlength&quot;, &quot;protocol&quot;, &quot;stickertypes&quot;, &quot;stickernamestypes&quot;,
+      &quot;searchplaylist&quot;, tag &quot;ShowMovement&quot;
+    * new sticker find api
+    * new subcommands for &quot;tagtypes&quot;: &quot;available&quot;, &quot;reset&quot;
+  * supported open end for mpd_search_add_window
+  * format floating-point numbers with the POSIX localew</comment>
+    <requestid>1290722</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul  4 16:58:42 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Added libmpdclient-2.23.tar.xz.sig and libmpdclient.keyring.
+- Changed libmpdclient-doxygen_nodatetime.patch.
+- Updated to 2.23
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/libmpdclient/v2.23/NEWS
+  * Supported MPD protocol 0.24.0
+    * allow window for listplaylist and listplaylistinfo
+    * command "playlistlength", "protocol", "stickertypes", "stickernamestypes",
+      "searchplaylist", tag "ShowMovement"
+    * new sticker find api
+    * new subcommands for "tagtypes": "available", "reset"
+  * supported open end for mpd_search_add_window
+  * format floating-point numbers with the POSIX localew
+
+-------------------------------------------------------------------
 Tue Apr 16 08:07:38 UTC 2024 - Илья Индиго <13ilya@gmail.com>
 
 - Updated to 2.22
