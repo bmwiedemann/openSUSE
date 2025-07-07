@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jul  5 14:35:47 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.7.1:
+  * Revert "Temporarily reverting qt 6.8 upgrade for another 2.5.x release"
+  * Attempting to blacklist more iPhone microphones
+  * Reworking webengine configuration
+  * Adding modal to select what screen or window you would like to share
+  * VS Mode shows too many options for stereo devices
+  * Fixing order of destruction to fix seg fault when shutting down
+  * Adding Audio Unit v2 version of the JackTrip Audio Bridge
+  * Fix sample rate conversion in Audio Unit plugin
+  * Fix mLastSeqNumIn when packets arrive out of order
+  * Display friendlier error message when audio interface is disconnected
+  * Updating AudioSockets to eliminate dependency on QApplication
+  * Only use glitches for increasing auto headroom
+  * Don't glitch on the first good packet if previous was a glitch
+  * Accelerate increases to auto headroom when we know it will help
+  * Conditionally include onDesktopMediaRequested based on Qt version
+  * Fixing some issues with auto button for audio quality slider
+  * Fix potential double delete in volume meters
+  * Many fixes for Windows, not in scope
+
+-------------------------------------------------------------------
 Sat Apr 26 08:23:20 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.6.0:
