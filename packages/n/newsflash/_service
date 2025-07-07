@@ -3,8 +3,8 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.com/news-flash/news_flash_gtk.git</param>
-    <param name="revision">refs/tags/v.4.0.0-beta2</param>
-    <param name="versionformat">4.0.0~beta2</param>
+    <param name="revision">refs/tags/v.4.0.3</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v.(.*)</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">newsflash</param>

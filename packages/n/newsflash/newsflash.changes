@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jul 05 17:10:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to 4.0.3:
+  * miniflux: no longer use changed_at as updated timestamp
+  * article list: fix loading query when sorting by last updated
+  * article view: add whitespace at the bottom
+  * article view: fix scrolling issue when resizing the window
+- update to 4.0.2:
+  * migration for content width preference
+
+-------------------------------------------------------------------
+Thu Jul 03 07:46:10 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 4.0.1:
+  * fix appstream lints
+  * update changelog
+  * allow sorting by published or last updated
+  * clippy lints
+  * remove tiny image previews from article header
+  * clippy
+  * article list view: remove sorter
+
+-------------------------------------------------------------------
 Fri Jun 13 19:03:22 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 4.0.0~beta2:

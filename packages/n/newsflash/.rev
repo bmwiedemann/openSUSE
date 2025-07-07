@@ -156,4 +156,18 @@
   * ashpd: use async-std instead of tokio (forwarded request 1285640 from rrahl0)</comment>
     <requestid>1285641</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5096fe1a31151cf6289b1140c2b3741f</srcmd5>
+    <version>4.0.3</version>
+    <time>1751892247</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.3:
+  * miniflux: no longer use changed_at as updated timestamp
+  * article list: fix loading query when sorting by last updated
+  * article view: add whitespace at the bottom
+  * article view: fix scrolling issue when resizing the window
+- update to 4.0.2:
+  * migration for content width preference (forwarded request 1290822 from rrahl0)</comment>
+    <requestid>1290823</requestid>
+  </revision>
 </revisionlist>

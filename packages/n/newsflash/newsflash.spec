@@ -18,7 +18,7 @@
 
 %define         appname io.gitlab.news_flash.NewsFlash
 Name:           newsflash
-Version:        4.0.0~beta2
+Version:        4.0.3
 Release:        0
 Summary:        The spiritual successor to FeedReader
 License:        GPL-3.0-only
@@ -36,6 +36,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject
+BuildRequires:  rust >= 1.88
 BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(blueprint-compiler)
 BuildRequires:  pkgconfig(clapper-gtk-0.0)
