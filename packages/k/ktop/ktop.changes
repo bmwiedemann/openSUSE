@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Jul 07 06:01:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.1:
+  * Fix Homebrew cask release (#56)
+
+-------------------------------------------------------------------
+Mon Jul 07 05:57:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.0:
+  * This release introduces new command-line options to filter
+    which columns are displayed in nodes and pods tables.
+    Users can now customize the view by specifying columns with
+    --node-columns and --pod-columns flags.
+    - Column Filtering
+      You can now customize which columns are displayed in the
+      nodes and pods tables. This is useful when you want to focus
+      on specific metrics or when working with limited screen
+      space.
+      To show only specific node columns:
+        ktop --node-columns NAME,CPU,MEM
+      To show only specific pod columns:
+        ktop --pod-columns NAMESPACE,POD,CPU,MEMORY
+      You can combine both filters:
+        ktop --node-columns NAME,CPU,MEM --pod-columns NAMESPACE,POD,STATUS
+      Available node columns:
+      - NAME
+      - STATUS
+      - AGE
+      - VERSION
+      - INT/EXT IPs
+      - OS/ARC
+      - PODS/IMGs
+      - DISK
+      - CPU
+      - MEM
+      Available pod columns:
+      - NAMESPACE
+      - POD
+      - READY
+      - STATUS
+      - RESTARTS
+      - AGE
+      - VOLS
+      - IP
+      - NODE
+      - CPU
+      - MEMORY
+      These enhancements improve the usability and customization of
+      ktop, allowing users to tailor the displayed information to
+      their needs. The updated automation scripts also ensure a
+      smoother release workflow.
+  * What's Changed
+    - Update CI/release scripts (#55)
+    - Add column filtering options for nodes and pods in ktop (#51)
+    - Bump golang.org/x/net from 0.36.0 to 0.38.0
+    - Bump golang.org/x/net from 0.23.0 to 0.36.0
+
+-------------------------------------------------------------------
 Fri Jul 26 05:02:08 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.3.7:
