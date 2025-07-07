@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 28 08:46:43 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- Fix compilation error on tumbleweed with fix-dtd-declaration.patch:
+  dtd.hash:117:1: error: conflicting types for ‘lookup_element’; have ‘const ElementType *(const char *, size_t)’ {aka ‘const struct _ElementType *(const char *, long unsigned int)’}
+    117 | link,           0, 1, 0, 1, 0, 0, 1, 0, {"head", NULL}
+        | ^~~~~~~~~~~~~~~~~~~~~~~
+  dtd.hash:46:28: note: previous declaration of ‘lookup_element’ with type ‘const ElementType *(void)’ {aka ‘const struct _ElementType *(void)’}
+- Add basic check section.
+
+-------------------------------------------------------------------
 Sat Mar  8 15:52:58 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 8.7:
