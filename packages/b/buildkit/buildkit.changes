@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Mon Jun 23 05:50:18 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 0.23.1:
+  * forbid inconsistent logging and shadowing stdlib
+  * Update containerd to v2.1.3
+  * Use commit date in release binary artifacts
+  * provenance: slsa v1 to v0.2 helper
+  * resolver: allow reference matches for local image lookups
+  * docs: fix heading levels in slsa-definitions page
+  * vendor: github.com/tonistiigi/go-actions-cache 388a2ec8cdf8
+  * test: use platforms spec instead of runtime const
+  * client: add test for forcing platform-split=true on single-arch build
+  * fix: wcow: privileges for local exporter
+  * contenthash: unconditionally clear ModeIrregular during content hash
+  * local: fix platform-split=true option
+  * history: build arg to opt-in for provenance slsa v1
+  * docs: provenance slsa v1
+  * provenance slsa v1
+  * http: allow authorization secrets per hostname
+  * build(deps): bump softprops/action-gh-release from 2.2.2 to 2.3.2
+  * vendor: update docker & cli to v28.2.2
+  * vendor: mod-outdated patch release updates
+  * Update buildkitd.toml.md registry examples
+  * fix(readme): Add a missing trailing double quote
+  * vendor: update fsutil to master@586307ad452f
+  * cdi: mitigate tests flakiness
+  * git url: rename GitURLFragment to GitURLOpts
+  * fix HTTP_PROXY errors on local sockets via grpc update
+  * test: move cdi tests to dedicated file
+  * Remove intermediate type RawConfig
+  * Add support for raw mode in the SSH agent provider.
+  * dockerui: fix data race on dockerignore access
+  * solver: fix data race on setting job values
+  * sshforward: Add support for forwarding raw connections
+  * integration: data race protection of localimagecache
+  * integration: fix data race on printing daemon logs
+  * solver: handle not found error on cache export
+  * exporter: fix oci export of multi-platform nil result
+  * llbsolver: fix nil result error on multi-platform
+  * ci: assign author on pull request
+  * fix: wcow: cache: add lock for enable/disable privileges
+  * Dockerfile: update rootlesskit v2.3.5
+  * Dockerfile: update nerdctl v2.1.2
+  * Dockerfile: update runc v1.3.0
+  * Dockerfile: update containerd v2.1.1
+  * vendor: update to containerd v2.1.1
+
+-------------------------------------------------------------------
+Tue May 27 07:25:22 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 0.22.0:
+  * dockerfile: add --unpack flag to ADD
+  * README.md: Add Massé to the list of frontends
+  * ci: arm runners are only available on public repos
+  * ci(validate): choose best matching runner
+  * ci(validate): split by platform
+  * Fix instructions for building directly from repo
+  * file: add chown to archive unpack from copy
+  * Dockerfile: curl: add -S -f
+  * tests: client: skip flaky test on windows
+  * allow duration based filters on diskusage requests
+  * git: add testcase for checking that adding checksum doesn't break cache
+  * git: verify checksum early and more tests
+  * dockerfile: implement `ADD --checksum=COMMIT_HASH GIT_URL`
+  * git source: add AttrGitChecksum
+  * project: update wrong flag name
+  * vendor: github.com/containerd/accelerated-container-image v1.3.0
+  * dockerfile: update cni to 1.7.1
+  * dockerfile: run device docs
+  * cdi: fix device request by class annotation
+  * lint: fix after merge conflict
+  * errdefs: fix filename typo
+  * fix: omit empty list of platforms when serializing worker config
+  * dockerfile: allow whitespace in heredocs
+  * progressui: fix panic on very small terminal
+  * cache: improve migration to image manifest cache
+  * Support for building overlaybd images
+  * wcow: leave default PATH env to be set by the OS
+  * update gopls to go1.24 compatible version
+  * update to go1.24
+  * dockerfile: make WORKDIR respect SOURCE_DATE_EPOCH
+  * util: testutil: enable `dockerd-containerd` worker for wcow
+  * pusher: add response details to push errors
+  * lint: add unconvert
+  * lint: add usestdlibvars
+  * lint: add fatcontext
+  * lint: stack + tracing error updates
+  * lint: correcting errorlint and some err113 cases
+  * lint: enable durationcheck
+  * lint: renable error types for errname
+  * golangci-lint: v2 upgrade
+
+-------------------------------------------------------------------
 Tue May 06 07:21:47 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 0.21.1:
