@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 05 15:30:08 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.12.3:
+  * Bump deps
+  * --rerun-fails-abort-on-data-race
+  * Use earlier and latest event time for elapsed time
+  * go junitxml: compute per package start times rather than using per execution
+  * feat: support for hidding skipped tests in the junit report
+
+-------------------------------------------------------------------
 Sat Mar 22 22:31:26 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:

@@ -17,7 +17,7 @@
 
 
 Name:           gotestsum
-Version:        1.12.1
+Version:        1.12.3
 Release:        0
 Summary:        CLI Go test runner with output optimized for human readability
 License:        Apache-2.0
