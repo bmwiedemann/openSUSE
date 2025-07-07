@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  7 10:25:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- fix build without libalternatives
+
+-------------------------------------------------------------------
 Wed Jun  4 15:35:12 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - fix usage of libalternatives

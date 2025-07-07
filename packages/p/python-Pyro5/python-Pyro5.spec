@@ -28,10 +28,12 @@ Source:         https://files.pythonhosted.org/packages/source/P/Pyro5/Pyro5-%{v
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+BuildRequires:  alts
 Requires:       alts
+%endif
 Requires:       python-serpent >= 1.41
 Recommends:     ca-certificates
 Recommends:     python-cloudpickle >= 0.4.0

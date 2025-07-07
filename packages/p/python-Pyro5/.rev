@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>1284012</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>d357305fe2022f044cc28d84ff9050b3</srcmd5>
+    <version>5.15</version>
+    <time>1751892608</time>
+    <user>anag_factory</user>
+    <comment>- fix build without libalternatives</comment>
+    <requestid>1291023</requestid>
+  </revision>
 </revisionlist>
