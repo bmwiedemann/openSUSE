@@ -122,4 +122,12 @@
     <comment>- Switch to pyroject macros.</comment>
     <requestid>1285958</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>eb8b828db811d202f0d054e7175f8afc</srcmd5>
+    <version>1.6.1</version>
+    <time>1751892592</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1291007</requestid>
+  </revision>
 </revisionlist>

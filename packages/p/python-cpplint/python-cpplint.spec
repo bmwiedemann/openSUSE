@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-cpplint
 Version:        1.6.1
 Release:        0
@@ -34,10 +35,10 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testfixtures}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -66,11 +67,8 @@ sed -i 's/--cov-fail-under=75 --cov=cpplint//' setup.cfg
 %check
 %pytest
 
-%post
-%python_install_alternative cpplint
-
-%postun
-%python_uninstall_alternative cpplint
+%pre
+%python_libalternatives_reset_alternative cpplint
 
 %files %{python_files}
 %license LICENSE
