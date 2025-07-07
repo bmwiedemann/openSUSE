@@ -97,7 +97,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1751707651.71eebf76
+Version:        5.1751834777.ce019b36
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -107,12 +107,7 @@ Source2:        node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
 BuildRequires:  fdupes
 # for install-opensuse in Makefile
-%if 0%{?is_opensuse}
-BuildRequires:  openSUSE-release
-%endif
-%if 0%{?suse_version} && !0%{?is_opensuse}
-BuildRequires:  sles-release
-%endif
+BuildRequires:  distribution-release
 BuildRequires:  %{build_requires}
 BuildRequires:  apparmor-rpm-macros
 BuildRequires:  local-npm-registry

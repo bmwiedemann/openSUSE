@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 07 10:11:45 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1751834777.ce019b36:
+  * dist: Simplify dependency for /etc/os-release (boo#1244139)
+
+-------------------------------------------------------------------
 Sat Jul 05 15:40:35 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1751707651.71eebf76:
