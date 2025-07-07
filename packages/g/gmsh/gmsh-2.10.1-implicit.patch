@@ -67,4 +67,4 @@ diff -urN gmsh-2.6.1-source.orig/contrib/blossom/concorde97/UTIL/safe_io.c gmsh-
 +#include <sys/socket.h>
  #include "machdefs.h"
  #include "util.h"
- 
+ #ifdef _MSC_VER
