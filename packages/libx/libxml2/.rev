@@ -1236,4 +1236,23 @@
 - bug references: [bsc#1241453], [bsc#1241551]</comment>
     <requestid>1271897</requestid>
   </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>33b554a52b0ceaac496f2f2112f53847</srcmd5>
+    <version>2.13.8</version>
+    <time>1751981269</time>
+    <user>anag_factory</user>
+    <comment>- security update
+- added patches
+  CVE-2025-49794 [bsc#1244554], heap use after free (UAF) can lead to Denial of service (DoS)
+  CVE-2025-49796 [bsc#1244557], type confusion may lead to Denial of service (DoS)
+  + libxml2-CVE-2025-49794,49796.patch
+  CVE-2025-49795 [bsc#1244555], null pointer dereference may lead to Denial of service (DoS)
+  + libxml2-CVE-2025-49795.patch
+
+- security update
+  fix CVE-2025-6170 [bsc#1244700], stack buffer overflow may lead to a crash
+  fix CVE-2025-6021 [bsc#1244580], Integer Overflow in xmlBuildQName() Leads to Stack Buffer Overflow in libxml2
+  + libxml2-CVE-2025-6170,6021.patch</comment>
+    <requestid>1291037</requestid>
+  </revision>
 </revisionlist>

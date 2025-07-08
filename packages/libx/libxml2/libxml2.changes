@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul  7 12:23:31 UTC 2025 - pgajdos@suse.com
+
+- security update
+- added patches
+  CVE-2025-49794 [bsc#1244554], heap use after free (UAF) can lead to Denial of service (DoS)
+  CVE-2025-49796 [bsc#1244557], type confusion may lead to Denial of service (DoS)
+  + libxml2-CVE-2025-49794,49796.patch
+  CVE-2025-49795 [bsc#1244555], null pointer dereference may lead to Denial of service (DoS)
+  + libxml2-CVE-2025-49795.patch
+
+-------------------------------------------------------------------
+Tue Jul  1 10:06:36 UTC 2025 - pgajdos@suse.com
+
+- security update
+  fix CVE-2025-6170 [bsc#1244700], stack buffer overflow may lead to a crash
+  fix CVE-2025-6021 [bsc#1244580], Integer Overflow in xmlBuildQName() Leads to Stack Buffer Overflow in libxml2
+  + libxml2-CVE-2025-6170,6021.patch
+
+-------------------------------------------------------------------
 Thu Apr 17 17:14:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.13.8:

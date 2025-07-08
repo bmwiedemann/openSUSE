@@ -54,6 +54,12 @@ Patch1:         libxml2-python3-string-null-check.patch
 ## SUSE-specific? If so, shouldn't it be applied only for SLE distributions?
 # PATCH-FIX-SUSE bsc#1135123 Added a new configurable variable XPATH_DEFAULT_MAX_NODESET_LENGTH to avoid nodeset limit
 Patch2000:      libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch
+# CVE-2025-6170 [bsc#1244700], stack buffer overflow may lead to a crash|CVE-2025-6021 [bsc#1244580], Integer Overflow in xmlBuildQName() Leads to Stack Buffer Overflow in libxml2
+Patch2001:      libxml2-CVE-2025-6170,6021.patch
+# CVE-2025-49794 [bsc#1244554], heap use after free (UAF) can lead to Denial of service (DoS)|CVE-2025-49796 [bsc#1244557], type confusion may lead to Denial of service (DoS)
+Patch2002:      libxml2-CVE-2025-49794,49796.patch
+# CVE-2025-49795 [bsc#1244555], null pointer dereference may lead to Denial of service (DoS)
+Patch2003:      libxml2-CVE-2025-49795.patch
 #
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
