@@ -205,4 +205,13 @@ AFAICT these packages aren't needed for generating the docs and the official doc
   of RuntimeDirectory when one service gets stopped.</comment>
     <requestid>1290508</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>3c29e462740f1d5a45cb5039cbf83f3a</srcmd5>
+    <version>3.0.0</version>
+    <time>1751981357</time>
+    <user>anag_factory</user>
+    <comment>- Use meson install_umask to set binaries and libraries
+  permissions.</comment>
+    <requestid>1291080</requestid>
+  </revision>
 </revisionlist>

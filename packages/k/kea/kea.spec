@@ -371,7 +371,7 @@ Development files for the Kea DHCP server
 export FREERADIUS_INCLUDE="%_includedir/freeradius"
 export FREERADIUS_LIB=""
 export FREERADIUS_DICTIONARY=""
-%meson -D netconf=disabled
+%meson --install-umask 022 -D netconf=disabled
 %meson_build
 %meson_build doc
 
@@ -393,10 +393,6 @@ mkdir -p "$b%_localstatedir/log/kea"
 # Remove unnecessary files
 rm -Rf "%buildroot/%python3_sitelib/kea/__pycache__"
 %fdupes %{buildroot}/%{_datadir}/doc/kea
-
-# Fix permissions so keadhcp user can run executables and libraries
-chmod 755 %{buildroot}/%{_libdir}/*.so*
-chmod 755 %{buildroot}/%{_sbindir}/kea*
 
 %pre -f random.pre
 %service_add_pre kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service kea-ctrl-agent.service
