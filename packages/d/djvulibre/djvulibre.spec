@@ -1,7 +1,7 @@
 #
 # spec file for package djvulibre
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,25 +20,15 @@
 
 %define	libname	lib%{name}21
 Name:           djvulibre
-Version:        3.5.28
+Version:        3.5.29
 Release:        0
 Summary:        An Implementation of DjVu
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            http://djvu.sourceforge.net
 Source:         https://downloads.sourceforge.net/djvu/%{name}-%{version}.tar.gz
-# CVE-2021-32490 [bsc#1185895], Out of bounds write in function DJVU:filter_bv() via crafted djvu file
-Patch0:         djvulibre-CVE-2021-32490.patch
-# CVE-2021-32491 [bsc#1185900], Integer overflow in function render() in tools/ddjvu via crafted djvu file
-Patch1:         djvulibre-CVE-2021-32491.patch
-# CVE-2021-32492 [bsc#1185904], Out of bounds read in function DJVU:DataPool:has_data() via crafted djvu file
-Patch2:         djvulibre-CVE-2021-32492.patch
-# CVE-2021-32493 [bsc#1185905], Heap buffer overflow in function DJVU:GBitmap:decode() via crafted djvu file
-Patch3:         djvulibre-CVE-2021-32493.patch
 # CVE-2021-3500 [bsc#1186253], Stack overflow in function DJVU:DjVuDocument:get_djvu_file() via crafted djvu file
 Patch4:         djvulibre-CVE-2021-3500.patch
-# CVE-2021-46310 [bsc#1214670], divide by zero in IW44Image.cpp
-Patch5:         djvulibre-CVE-2021-46310.patch
 # CVE-2021-46312 [bsc#1214672], divide by zero in IW44EncodeCodec.cpp
 Patch6:         djvulibre-CVE-2021-46312.patch
 BuildRequires:  fdupes

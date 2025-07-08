@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul  7 08:04:45 UTC 2025 - pgajdos@suse.com
+
+- version update to 3.5.29 [bsc#1245773] (CVE-2025-53367)
+  * various bug fixes
+  * additional tests for corrupted files
+  * fixes for clang warnings
+- deleted patches
+  - djvulibre-CVE-2021-32490.patch (upstreamed)
+  - djvulibre-CVE-2021-32491.patch (upstreamed)
+  - djvulibre-CVE-2021-32492.patch (upstreamed)
+  - djvulibre-CVE-2021-32493.patch (upstreamed)
+  - djvulibre-CVE-2021-46310.patch (upstreamed)
+- fixes  CVE-2021-32490 [bsc#1185895]
+         CVE-2021-32491 [bsc#1185900]
+         CVE-2021-32492 [bsc#1185904]
+         CVE-2021-32493 [bsc#1185905]
+         CVE-2021-46310 [bsc#1214670]
+
+-------------------------------------------------------------------
 Thu Feb 22 07:52:40 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

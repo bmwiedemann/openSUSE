@@ -402,4 +402,26 @@
   %patchN.</comment>
     <requestid>1149022</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>46e72c9a7dd2f8ebf4c6db5d3f67d979</srcmd5>
+    <version>3.5.29</version>
+    <time>1751981292</time>
+    <user>anag_factory</user>
+    <comment>- version update to 3.5.29 [bsc#1245773] (CVE-2025-53367)
+  * various bug fixes
+  * additional tests for corrupted files
+  * fixes for clang warnings
+- deleted patches
+  - djvulibre-CVE-2021-32490.patch (upstreamed)
+  - djvulibre-CVE-2021-32491.patch (upstreamed)
+  - djvulibre-CVE-2021-32492.patch (upstreamed)
+  - djvulibre-CVE-2021-32493.patch (upstreamed)
+  - djvulibre-CVE-2021-46310.patch (upstreamed)
+- fixes  CVE-2021-32490 [bsc#1185895]
+         CVE-2021-32491 [bsc#1185900]
+         CVE-2021-32492 [bsc#1185904]
+         CVE-2021-32493 [bsc#1185905]
+         CVE-2021-46310 [bsc#1214670]</comment>
+    <requestid>1290990</requestid>
+  </revision>
 </revisionlist>
