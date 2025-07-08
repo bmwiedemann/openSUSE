@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-cssutils
 Version:        2.11.1
@@ -31,11 +32,11 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-more-itertools
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,14 +54,12 @@ A Python package to parse and build CSS Cascading Style Sheets. DOM only, not an
 %python_clone -a %{buildroot}%{_bindir}/csscapture
 %python_clone -a %{buildroot}%{_bindir}/csscombine
 %python_clone -a %{buildroot}%{_bindir}/cssparse
+%python_group_libalternatives csscapture csscombine cssparse
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
-%post
-%{python_install_alternative csscapture csscombine cssparse}
-
-%postun
-%python_uninstall_alternative csscapture
+%pre
+%python_libalternatives_reset_alternative csscapture
 
 %files %{python_files}
 %license LICENSE

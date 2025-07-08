@@ -314,4 +314,12 @@ This fixes the file conflict in factory (forwarded request 171294 from TheBlackC
 </comment>
     <requestid>1288854</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>2aacdb56d479c1de9f67319e7a5b7abd</srcmd5>
+    <version>2.11.1</version>
+    <time>1751981416</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1291183</requestid>
+  </revision>
 </revisionlist>
