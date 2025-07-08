@@ -43,8 +43,10 @@
 %global force_gcc_version 13
 %endif
 
+%bcond_with heif_view
+
 Name:           libheif%{?psuffix}
-Version:        1.19.8
+Version:        1.20.1
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
 License:        LGPL-3.0-only AND MIT
@@ -61,7 +63,11 @@ BuildRequires:  pkgconfig(aom)
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libbrotlienc)
 BuildRequires:  pkgconfig(libjpeg)
+%if %{with heif_view}
+BuildRequires:  pkgconfig(sdl2)
+%endif
 %if %{with openjpeg}
 BuildRequires:  pkgconfig(libopenjp2)
 %endif

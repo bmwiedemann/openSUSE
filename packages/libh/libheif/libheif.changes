@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Jul  5 15:51:19 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.20.1:
+  - Fixes a bug in decoder plugin loading.
+- Changes from 1.20.0:
+  - Sequences:
+    - API for reading and writing image sequences. You can read and
+      write sequences for all codecs (not just H.265 / AV1, but
+      also JPEG-2000, ISO-23001-17 uncompressed, ...). Currently
+      only intra-coded sequences are supported.
+    - API for reading and writing metadata sequences. The metadata
+      tracks can contain any raw timed data.
+    - Support for SAI (sample auxiliary information). Timed samples
+      (from image sequences or metadata) can have auxiliary data
+      attached. Currently we support TAI timestamps and GIMI
+      content description IDs.
+    - Support for track references.
+    - The API for sequences is described here:
+      https://github.com/strukturag/libheif/wiki/Reading-and-Writing-Sequences
+    - New command line tool heif-view to show HEIF sequences
+      (requires libSDL).
+  - Other new features:
+    - You can specify a security limit for the maximum total memory
+      libheif may use for decoding. This is easier to handle than
+      specifying limits on the maximum image size or single memory
+      allocations.
+    - Support for TAI timestamps (in images and sequences) has been
+      promoted from experimental to stable.
+    - FFMPEG plugin now supports HDR decoding
+    - Header files are now split into individual headers by topic.
+      However, it should still be backwards compatible with heif.h
+      being a catch-all covering the old content. For new
+      functionality (sequences, TAI), you will need to include the
+      specific headers.
+    - All struct names of the API are now also typedefs.
+- add build requires for brotli which it looks for since 1.18
+- prepare building heif-view
+
+-------------------------------------------------------------------
 Sun Apr 27 20:13:21 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.19.8:
