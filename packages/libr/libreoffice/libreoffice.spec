@@ -141,6 +141,8 @@ Patch991:       libreoffice-no-destdircheck.patch
 Patch992:       python34-no-f-strings.patch
 # PATCH-FIX-OPENSUSE override date in clucene files (boo#1047218)
 Patch995:       reproducible-clucene.patch
+# PATCH-FIX-UPSTREAM fix_build_with_poppler_25.05.patch
+Patch996:       fix_build_with_poppler_25.05.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -1104,6 +1106,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %if 0%{?suse_version} < 1550
 %patch -P 992 -p1
 %endif
+%patch -P 996 -p1
 
 # Disable some of the failing tests (some are random)
 %if 0%{?suse_version} < 1330
