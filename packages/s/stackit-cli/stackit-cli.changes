@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 08 04:59:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.36.0:
+  * feat(ske): Region adjustment (#842)
+  * fix(image): update overwrites nullable values (#834)
+  * chore: update code owners (#840)
+  * fix(deps): update stackit sdk modules (#838)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mongodbflex
+    (#832)
+
+-------------------------------------------------------------------
 Tue Jul 01 10:06:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.35.0:
