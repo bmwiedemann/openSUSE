@@ -17,7 +17,7 @@
 
 
 Name:           papi
-Version:        7.2.0b2
+Version:        7.2.0
 Release:        0
 Summary:        Performance Application Programming Interface
 License:        BSD-3-Clause
@@ -160,6 +160,7 @@ chrpath --delete %{buildroot}%{_libdir}/*.so*
 %{_includedir}/fpapi.h
 %{_includedir}/papi.h
 %{_includedir}/papiStdEventDefs.h
+%{_includedir}/papi_components_config_event_defs.h
 %{_includedir}/sde_lib.h
 %{_includedir}/sde_lib.hpp
 %doc %{_mandir}/man3/*.gz
