@@ -252,4 +252,12 @@
     <comment></comment>
     <requestid>1243050</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>fa494c02c155b6b6e1b506c058111fbc</srcmd5>
+    <version>8.17.1</version>
+    <time>1751981342</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream event_loop.patch to fix tests with pytest-asyncio 1.0</comment>
+    <requestid>1291145</requestid>
+  </revision>
 </revisionlist>

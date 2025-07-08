@@ -27,6 +27,8 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/elastic/elasticsearch-py
 Source:         https://github.com/elastic/elasticsearch-py/archive/refs/tags/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/elastic/elasticsearch-py/commit/3c9680a5cf0b67a56356bf73173a7d5eabb2e552 Stop using event_loop fixture
+Patch:          event_loop.patch
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module elastic-transport}
 BuildRequires:  %{python_module hatchling}
