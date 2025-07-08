@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul  3 12:47:34 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.2.4
+  * Fixed a log injection possibility by migrating remaining response logging
+    to django.utils.log.log_response(), which safely escapes arguments
+    such as the request path to prevent unsafe log output (CVE 2025-48432).
+  * Fixed a regression in Django 5.2 that caused QuerySet.bulk_update() to
+    incorrectly convert None to JSON null instead of SQL NULL for JSONField
+  * Fixed a regression in Django 5.2.2 where the q parameter was removed from
+    the internal django.http.MediaType.params property
+  * Fixed a regression in Django 5.2.2 where HttpRequest.get_preferred_type()
+    incorrectly preferred more specific media types with a lower quality
+  * Fixed a crash in Django 5.2 when performing an __in lookup involving a
+    composite primary key and a subquery on certain backends
+
+-------------------------------------------------------------------
 Thu Jun  5 11:53:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.2.2 (bsc#1244095)
