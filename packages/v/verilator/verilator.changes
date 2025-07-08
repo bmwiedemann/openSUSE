@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul  7 15:28:51 UTC 2025 - Yousaf Kaukab <yousaf.kaukab@suse.com>
+
+- Update to v5.036. For a list of changes, see included Changes or
+  https://github.com/verilator/verilator/blob/v5.036/Changes
+- See https://verilator.org/guide/latest/ for documentation
+- Add man pages for verilator_gantt and verilator_profcfunc
+- Add following build requirements
+      help2man
+      python3-devel
+      python3-distro 
+
+-------------------------------------------------------------------
 Sat Oct 29 13:07:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.228:

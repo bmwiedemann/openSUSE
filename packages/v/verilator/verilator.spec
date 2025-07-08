@@ -1,7 +1,7 @@
 #
 # spec file for package verilator
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           verilator
-Version:        4.228
+Version:        5.036
 Release:        0
 Summary:        Compiling Verilog HDL simulator
 License:        Artistic-2.0 OR LGPL-3.0-only
@@ -29,8 +29,11 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gdb
+BuildRequires:  help2man
 BuildRequires:  perl
 BuildRequires:  pkgconfig
+BuildRequires:  python3-devel
+BuildRequires:  python3-distro
 
 %description
 Verilator compiles synthesizable Verilog (not test-bench code), plus
@@ -101,6 +104,8 @@ make test
 %{_datadir}/verilator
 %{_mandir}/man1/verilator.1%{?ext_man}
 %{_mandir}/man1/verilator_coverage.1%{?ext_man}
+%{_mandir}/man1/verilator_gantt.1%{?ext_man}
+%{_mandir}/man1/verilator_profcfunc.1%{?ext_man}
 
 %files devel
 %{_datadir}/pkgconfig/verilator.pc
