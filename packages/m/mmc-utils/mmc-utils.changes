@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul  4 06:51:49 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0
+  * mmc-utils: Add FFU optional mode 1
+  * mmc-utils: Add FFU optional mode 2 using CMD25+CMD12 for
+    Open-ended write download FW
+  * mmc-utils: Add FFU optional mode 3 that uses CMD6 and CMD24
+    single-block write to download firmware
+  * mmc-utils: Add FFU optional mode 4 for firmware download
+    using repeated CMD24 single-block write command
+  * mmc-utils: Add secure write-protect mode enable/disable
+- Deactivate sparse, it is unable to find stddef.h.
+
+-------------------------------------------------------------------
 Mon Aug 26 11:14:14 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1+git.20240801:
