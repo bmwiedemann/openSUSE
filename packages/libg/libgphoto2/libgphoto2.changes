@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sun Jul  6 10:15:47 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- libgphoto2 2.5.32 release
+
+  quicktake1x0:
+  * New Apple Quicktake (serial camera) driver
+
+  pentax:
+  * Added Pentax K1II, K3III
+  * sync with pktriggercord fixes
+  
+  ptp2:
+  * Big code and (canon eos) debug outout cleanups by Axel W
+  * --summary output format changed to be more condensed
+  * Canon EOS: imageformat output changed
+  * Canon: added disablemodedial
+  * Canon: keepdeviceon send less often to speed up
+  * Sony: Now officially documented by Sony. Changes imported from the documentation.
+  * Sony: support newer sony property format
+  * Sony: added capturemode, focalposition, magnifysetting, spotfocusarea,
+  * Sony: fixed crash in movie option
+  * Panasonic: bugfixes
+  * Fuji: configurations added, af drive manual, availableshots, graineffect, rawcompression
+  * Fuji: bugfixes
+  * Nikon: support 32bit properties
+  * Added ids:
+    - Canon EOS R100, R3, R8, R50, G7 X Mark 3,
+    - Sony Alpha A6100, ZV-E10, A6700, NEX-5N, SLT A99V, ILCE-9M3, ILX-LR1
+    - Nikon Zf, Z6 III
+    - Olympus OM-1Mark2
+    - Fuji X-H2S, X100V1, GFX100 II
+    - Ricoh GR III
+    - Leica Q3, M11 Monochrome
+  
+  ports/usb:
+  * added more Android support (passing in filedescriptor)
+  
+  ports/serial:
+  * some fixes, needed for quicktake
+  
+  all:
+  * IOLIBS and CAMLIBS now runtime configurable
+  * Builds use silent rules by default now
+  * Meson buildsupport, parallel to automake
+  * print-camera-list can now print camera list in JSON format
+  * added new functions: gp_setting_set_get_func, gp_setting_set_set_func
+    for user defined settings setters
+  * added new port functions: gp_port_usb_set_sys_device,
+    gp_port_usb_get_sys_device used for Android
+  
+  translations:
+  * added georgian, friulian, polish, romanian, ukrainian, chinese, brazilian
+- remove libgphoto2-c99.patch: upstream
+
+-------------------------------------------------------------------
 Mon Aug  5 12:07:01 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
 
 - Adding libgphoto2-c99.patch so that the package builds for 32bit

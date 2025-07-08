@@ -1,7 +1,7 @@
 #
 # spec file for package libgphoto2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,13 +55,12 @@ Obsoletes:      libgphoto2-64bit
 Summary:        A Digital Camera Library
 License:        LGPL-2.1-or-later
 Group:          Hardware/Camera
-Version:        2.5.31
+Version:        2.5.32
 Release:        0
 Source0:        https://downloads.sourceforge.net/project/gphoto/libgphoto/%version/%name-%version.tar.xz
 Source1:        https://downloads.sourceforge.net/project/gphoto/libgphoto/%version/%name-%version.tar.xz.asc
 Source2:        %name.keyring
 Source3:        baselibs.conf
-Patch0:         libgphoto2-c99.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %package -n libgphoto2-%major
