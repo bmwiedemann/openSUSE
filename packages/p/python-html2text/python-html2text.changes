@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul  7 02:18:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2025.4.15:
+  * Upgrade Build Tools to Lates
+  * Support tri-backquote style code block and fix ordered list indent
+  * Fix invalid character reference parsing
+- Correct parsing error in changes file.
+
+-------------------------------------------------------------------
+Wed Jun  4 13:09:18 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- fix usage of libalternatives
+
+-------------------------------------------------------------------
+Tue May 27 16:19:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Mar 19 07:01:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.2.26:
@@ -333,7 +352,6 @@ Wed Sep 21 09:28:46 UTC 2011 - saschpe@suse.de
 - Fixed non-executable script rpmlint warning
 
 -------------------------------------------------------------------
-
 Tue Feb 15 23:33:53 UTC 2011 - alexandre@exatati.com.br
 
 - Update to 3.01.

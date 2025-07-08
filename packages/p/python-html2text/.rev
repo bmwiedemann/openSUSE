@@ -247,4 +247,20 @@
   * Feature #406: Improve support for null atttibute values.</comment>
     <requestid>1159224</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2bd52b4c5611b8328447a0d59f2f7a46</srcmd5>
+    <version>2025.4.15</version>
+    <time>1751981276</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2025.4.15:
+  * Upgrade Build Tools to Lates
+  * Support tri-backquote style code block and fix ordered list indent
+  * Fix invalid character reference parsing
+- Correct parsing error in changes file.
+
+- fix usage of libalternatives
+
+- Convert to pip-based build</comment>
+    <requestid>1290927</requestid>
+  </revision>
 </revisionlist>

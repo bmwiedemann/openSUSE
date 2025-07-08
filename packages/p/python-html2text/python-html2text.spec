@@ -1,7 +1,7 @@
 #
 # spec file for package python-html2text
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,25 @@
 #
 
 
+%bcond_without libalternatives
 %define upname html2text
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-%{upname}
-Version:        2024.2.26
+Version:        2025.4.15
 Release:        0
 Summary:        Python script for turning HTML into Markdown text
 License:        GPL-3.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/Alir3z4/html2text/
 Source:         https://files.pythonhosted.org/packages/source/h/%{upname}/%{upname}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires:       alts
 Provides:       html2text = %{version}-%{release}
 Obsoletes:      html2text < %{version}-%{release}
 BuildArch:      noarch
@@ -51,30 +53,28 @@ sed -i '/^#!/d' %{upname}/__init__.py
 rm -r *.egg-info/
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/%{upname}
 
-%post
-%python_install_alternative html2text
+%pre
+# Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative html2text
 
-%postun
-%python_uninstall_alternative html2text
+# post and postun macro call is not needed with only libalternatives
 
 %check
-# otherwise python 3.6 does not automatically select UTF-8 for console output
-export LANG=en_US.UTF-8
 %pytest
 
 %files %{python_files}
 %license COPYING
 %doc README.md AUTHORS.rst ChangeLog.rst
 %python_alternative %{_bindir}/%{upname}
-%{python_sitelib}/*
-%{python_sitelib}/*.egg-info/
+%{python_sitelib}/html2text
+%{python_sitelib}/html2text-%{version}.dist-info
 
 %changelog
