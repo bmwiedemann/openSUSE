@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Jun 20 12:27:13 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream pytest84.patch for compatibility with pytest 8.4.0
+
+-------------------------------------------------------------------
+Tue May 27 11:12:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.0:
+  https://github.com/pytest-dev/pytest-asyncio/releases/tag/v1.0.0
+  * Removed
+    - The deprecated event_loop fixture.
+      (#1106)
+  * Added
+    - Prelimiary support for Python 3.14
+      (#1025)
+  * Changed
+    + Scoped event loops (e.g. module-scoped loops) are created
+      once rather than per scope (e.g. per module). This reduces
+      the number of fixtures and speeds up collection time,
+      especially for large test suites.
+      (#1107)
+    * The loop_scope argument to pytest.mark.asyncio no longer
+      forces that a pytest Collector exists at the level of the
+      specified scope.  For example, a test function marked with
+      pytest.mark.asyncio(loop_scope="class") no longer requires a
+      class surrounding the test. This is consistent with the
+      behavior of the scope argument to pytest_asyncio.fixture.
+      (#1112)
+  * Fixed
+    * An error caused when using pytest's
+      [--setup-plan]{.title-ref} option.
+      (#630)
+    * Unsuppressed import errors with pytest option
+      --doctest-ignore-import-errors
+      (#797)
+    * A "fixture not found" error in connection with package-scoped
+      loops
+      (#1052)
+  * Notes for Downstream Packagers
+    * Removed a test that had an ordering dependency on other
+      tests.
+      (#1114)
+
+-------------------------------------------------------------------
 Mon Apr 28 14:19:40 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.26.0:

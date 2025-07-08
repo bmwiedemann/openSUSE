@@ -26,12 +26,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pytest-asyncio%{psuffix}
-Version:        0.26.0
+Version:        1.0.0
 Release:        0
 Summary:        Pytest support for asyncio
 License:        Apache-2.0
 URL:            https://github.com/pytest-dev/pytest-asyncio
 Source:         https://github.com/pytest-dev/pytest-asyncio/archive/v%{version}.tar.gz#/pytest-asyncio-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pytest-dev/pytest-asyncio/commit/8c6612fda96f78a1df2f0d271426b7b6e3c10737 test: Adapt unmarked async tests in strict mode for pytest 8.4.0
+Patch0:         pytest84.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
