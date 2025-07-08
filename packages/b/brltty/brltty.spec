@@ -17,11 +17,11 @@
 
 
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
-%define api_version 0.8.6
+%define api_version 0.8.7
 %define sover 0_8
 %define soname libbrlapi%{sover}
 Name:           brltty
-Version:        6.7
+Version:        6.8
 Release:        0
 Summary:        Braille display driver for Linux/Unix
 License:        LGPL-2.1-or-later

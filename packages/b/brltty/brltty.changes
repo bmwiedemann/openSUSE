@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul  6 23:07:54 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 6.8:
+  + Too many changes; please read ChangeLog
+- API version is now 0.8.6.
+
+-------------------------------------------------------------------
 Wed May 21 17:21:57 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Drop libbraille plugin. Libbraille is unmaintained and unlikely

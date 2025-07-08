@@ -659,4 +659,14 @@
   libusb (jsc#PED-10531). (forwarded request 1279095 from mgorse)</comment>
     <requestid>1279936</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>2e8b4fb49d22666be482a39d56fc2630</srcmd5>
+    <version>6.8</version>
+    <time>1751981278</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.8:
+  + Too many changes; please read ChangeLog
+- API version is now 0.8.6. (forwarded request 1290924 from mgorse)</comment>
+    <requestid>1290933</requestid>
+  </revision>
 </revisionlist>
