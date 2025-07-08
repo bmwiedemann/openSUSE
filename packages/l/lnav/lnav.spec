@@ -1,9 +1,9 @@
-# vim: set ts=4 sw=4 et:
 #
 # spec file for package lnav
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2010-2013 Pascal Bleser <pascal.bleser@opensuse.org>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,40 +18,34 @@
 #
 
 
-%if 0%{?suse_version} >= 1500
-%define cxx g++
-BuildRequires:  gcc-c++
-%else
-%define cxx g++-6
-BuildRequires:  gcc6-c++
-%endif
 Name:           lnav
-Version:        0.12.3
+Version:        0.12.4
 Release:        0
 Summary:        Logfile Navigator
 License:        BSD-2-Clause
 Group:          System/Monitoring
 URL:            https://lnav.org
 #Git-Clone:     https://github.com/tstack/lnav.git
-Source:         https://github.com/tstack/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        lnav.desktop
-Patch0:         lnav-0.12.1-fixbuild.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libcurl-devel
-BuildRequires:  ncurses-devel
-# Only needed for the tests to run
-BuildRequires:  openssh
-BuildRequires:  pcre2-devel
-BuildRequires:  readline-devel
-BuildRequires:  zlib-devel
-%if 0%{?suse_version}
-BuildRequires:  sqlite3-devel >= 3.9.0
+Source:         https://github.com/tstack/lnav/releases/download/v%{version}/%{name}-%{version}.tar.bz2
+Patch0:         lnav-0.12.4-nonvoid-return.patch
+BuildRequires:  c++_compiler
+BuildRequires:  libunistring-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(doctest)
+BuildRequires:  pkgconfig(libarchive)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libpcre2-8)
+BuildRequires:  pkgconfig(ncursesw)
+BuildRequires:  pkgconfig(sqlite3) >= 3.9.0
+BuildRequires:  pkgconfig(zlib)
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(readline)
 %else
-BuildRequires:  sqlite-devel >= 3.9.0
+BuildRequires:  readline-devel
 %endif
-%if 0%{?suse_version} > 0
-BuildRequires:  update-desktop-files
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc12-c++
 %endif
 
 %description
@@ -68,11 +62,13 @@ quickly and efficiently focus on problems.
 %autosetup -p1
 
 %build
-export CXX=%{cxx}
-autoreconf -fiv
+%if 0%{?suse_version} < 1600
+export CXX=g++-12
+%endif
 %configure \
      --disable-silent-rules \
      --disable-static \
+     --with-system-doctest \
      --with-ncurses \
      --with-readline
 #     --with-yajl       local copy contains changes that will probably be merged for next release (after 2.1.0).
@@ -82,18 +78,10 @@ autoreconf -fiv
 %install
 %make_install
 
-%if %{defined suse_version}
-install -D -m0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/applications/%{name}.desktop"
-%suse_update_desktop_file -r "%{name}" System Monitor
-%endif
-
 %files
 %license LICENSE
 %doc AUTHORS NEWS.md README
 %{_bindir}/lnav
 %{_mandir}/man1/lnav.1%{?ext_man}
-%if %{defined suse_version}
-%{_datadir}/applications/%{name}.desktop
-%endif
 
 %changelog

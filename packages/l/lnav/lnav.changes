@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri May 23 19:41:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.12.4:
+  * upstream feature improvements for improved log file display and
+    handling
+  * Improved terminal interaction, support for italic/strike
+  * scripts added: report-access-log, find-msg, find-chained-msg
+  * Highlighting for markdown format
+  * Added Proxifier log format
+  * Support for 24 bit colors
+  * bug fixes, interface changes and changes to key mappings
+  * reduced startup time and memory use
+  * improved performance and file open speed
+- enable supported archive formats
+- use bootstrapped tarball and clean up spec file
+- build with system doctest
+- fix openSUSE Leap 15.x build
+- swap lnav-0.12.1-fixbuild.patch with changes from an upstream
+  commit into lnav-0.12.4-nonvoid-return.patch
+
+-------------------------------------------------------------------
 Wed Nov 27 08:34:05 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.12.3:
