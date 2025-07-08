@@ -56,6 +56,9 @@
 %{_mandir}/man1/systemd-pty-forward.1.gz
 %endif
 %{_mandir}/man1/systemd-sbsign.1.gz
+%if %{with upstream}
+%{_mandir}/man1/systemd-ssh-issue.1.gz
+%endif
 %{_mandir}/man1/systemd-ssh-proxy.1.gz
 %{_mandir}/man1/systemd-vmspawn.1.gz
 %if %{with sd_boot}
@@ -154,6 +157,9 @@
 %endif
 %{_systemd_util_dir}/systemd-pcrlock
 %{_systemd_util_dir}/systemd-sbsign
+%if %{with upstream}
+%{_systemd_util_dir}/systemd-ssh-issue
+%endif
 %{_systemd_util_dir}/systemd-ssh-proxy
 %{_systemd_util_dir}/systemd-storagetm
 %{_systemd_util_dir}/systemd-sysupdate

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jul  4 14:57:26 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Move the workaround which consists in converting /var/lib/machines as a
+  separate subvolume in cases where it was incorrectly created inside a
+  snapshot.
+
+  Relocating the workaround from the systemd-container sub-package to the main
+  package ensures it's applied on old systems where it's still needed [1] even
+  if the systemd-container sub-package is not installed.
+
+  This change should allow us to eventually drop the workaround in the future.
+
+  [1] The workaround is required on legacy installations (those made more than
+  eight years ago) where /var was not a separate subvolume.
+
+-------------------------------------------------------------------
+Fri Jul  4 12:43:24 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- triggers.systemd: skip update of hwdb, journal-catalog if executed during
+  an offline update.
+
+-------------------------------------------------------------------
 Tue Jul  1 10:05:12 UTC 2025 - Franck Bui <fbui@suse.com>
 
 - Import commit a0dfd5de4cdc3f97ef2ad23396904f3e20769317 (merge of v257.7)

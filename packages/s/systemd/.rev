@@ -7642,4 +7642,23 @@ handle manual pages that consist only of a .so directive such as
   https://github.com/openSUSE/systemd/compare/1e42ecf5a145589954df77da05937ee69619f3e5...a0dfd5de4cdc3f97ef2ad23396904f3e20769317</comment>
     <requestid>1289968</requestid>
   </revision>
+  <revision rev="451" vrev="2">
+    <srcmd5>79566e5a7bab2aaa4dc7cd46bdff90fa</srcmd5>
+    <version>257.7</version>
+    <time>1751981293</time>
+    <user>anag_factory</user>
+    <comment>- Move the workaround which consists in converting /var/lib/machines as a
+  separate subvolume in cases where it was incorrectly created inside a
+  snapshot.
+  Relocating the workaround from the systemd-container sub-package to the main
+  package ensures it's applied on old systems where it's still needed [1] even
+  if the systemd-container sub-package is not installed.
+  This change should allow us to eventually drop the workaround in the future.
+  [1] The workaround is required on legacy installations (those made more than
+  eight years ago) where /var was not a separate subvolume.
+
+- triggers.systemd: skip update of hwdb, journal-catalog if executed during
+  an offline update.</comment>
+    <requestid>1291008</requestid>
+  </revision>
 </revisionlist>

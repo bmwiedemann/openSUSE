@@ -47,6 +47,9 @@
 %dir %{_systemd_system_env_generator_dir}
 %dir %{_systemd_user_env_generator_dir}
 %dir %{_systemd_util_dir}
+%if %{with upstream}
+%dir %{_systemd_util_dir}/initrd-preset
+%endif
 %dir %{_systemd_util_dir}/ntp-units.d
 %dir %{_systemd_util_dir}/rpm
 %dir %{_systemd_util_dir}/system-preset
@@ -463,6 +466,10 @@
 %if %{without bootstrap}
 %{_systemd_util_dir}/coredump.conf
 %endif
+%if %{with upstream}
+%{_systemd_util_dir}/initrd-preset/90-systemd.preset
+%{_systemd_util_dir}/initrd-preset/99-default.preset
+%endif
 %{_systemd_util_dir}/journald.conf
 %{_systemd_util_dir}/logind.conf
 %{_systemd_util_dir}/rpm/fixlet-systemd-post.sh
@@ -650,6 +657,9 @@
 %{_unitdir}/sockets.target.wants/systemd-hostnamed.socket
 %{_unitdir}/sockets.target.wants/systemd-journald-dev-log.socket
 %{_unitdir}/sockets.target.wants/systemd-journald.socket
+%if %{with upstream}
+%{_unitdir}/sockets.target.wants/systemd-logind-varlink.socket
+%endif
 %{_unitdir}/sockets.target.wants/systemd-sysext.socket
 %{_unitdir}/soft-reboot.target
 %{_unitdir}/sound.target
@@ -726,6 +736,7 @@
 %{_unitdir}/systemd-localed.service
 %{_unitdir}/systemd-logind.service
 %if %{with upstream}
+%{_unitdir}/systemd-logind-varlink.socket
 %{_unitdir}/systemd-loop@.service
 %endif
 %{_unitdir}/systemd-machine-id-commit.service

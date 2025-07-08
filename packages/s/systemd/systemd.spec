@@ -198,7 +198,6 @@ Source8:        pam.systemd-user
 Source9:        pam.systemd-run0
 Source14:       kbd-model-map.legacy
 
-Source100:      fixlet-container-post.sh
 Source101:      fixlet-systemd-post.sh
 
 Source200:      files.systemd
@@ -924,9 +923,6 @@ install -m0755 -D %{SOURCE4} %{buildroot}/%{_systemd_util_dir}/systemd-sysv-inst
 
 # Install the fixlets
 mkdir -p %{buildroot}%{_systemd_util_dir}/rpm
-%if %{with machined}
-install -m0755 %{SOURCE100} %{buildroot}%{_systemd_util_dir}/rpm/
-%endif
 install -m0755 %{SOURCE101} %{buildroot}%{_systemd_util_dir}/rpm/
 
 # Make sure /usr/lib/modules-load.d exists in udev(-mini)?, so other
@@ -1259,7 +1255,6 @@ fi
 %systemd_post systemd-mountfsd.socket
 %systemd_post systemd-nsresourced.socket
 %systemd_post machines.target
-%{_systemd_util_dir}/rpm/fixlet-container-post.sh $1 || :
 %endif
 
 %if %{with journal_remote}

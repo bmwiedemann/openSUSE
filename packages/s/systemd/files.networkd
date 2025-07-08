@@ -46,6 +46,9 @@
 %{_sysusersdir}/systemd-network.conf
 %{_tmpfilesdir}/systemd-network.conf
 %{_unitdir}/systemd-networkd-persistent-storage.service
+%if %{with upstream}
+%{_unitdir}/systemd-networkd-varlink.socket
+%endif
 %{_unitdir}/systemd-networkd-wait-online.service
 %{_unitdir}/systemd-networkd-wait-online@.service
 %{_unitdir}/systemd-networkd.service

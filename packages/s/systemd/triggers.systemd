@@ -42,7 +42,7 @@ assert(rpm.execute("/usr/lib/systemd/systemd-update-helper", "user-restart"))
 -- This script will process files installed in /usr/lib/sysusers.d to create
 -- specified users automatically. The priority is set such that it
 -- will run before the tmpfiles file trigger.
--- Note: /run is never mounted during transactional updates.
+-- Note: this should be skipped during offline updates.
 if posix.access("/run/systemd/system") then
     assert(rpm.execute("systemd-sysusers"))
 end
@@ -51,13 +51,19 @@ end
 %transfiletriggerin -P 1000700 -n udev -p <lua> -- /usr/lib/udev/hwdb.d
 -- This script will automatically invoke hwdb update if files have been
 -- installed or updated in /usr/lib/udev/hwdb.d.
-assert(rpm.execute("systemd-hwdb", "update"))
+-- Note: this should be skipped during offline updates.
+if posix.access("/run/systemd/system") then
+    assert(rpm.execute("systemd-hwdb", "update"))
+end
 %endif
 
 %transfiletriggerin -P 1000700 -p <lua> -- /usr/lib/systemd/catalog
 -- This script will automatically invoke journal catalog update if files
 -- have been installed or updated in /usr/lib/systemd/catalog.
-assert(rpm.execute("journalctl", "--update-catalog"))
+-- Note: this should be skipped during offline updates.
+if posix.access("/run/systemd/system") then
+    assert(rpm.execute("journalctl", "--update-catalog"))
+end
 
 %transfiletriggerin -P 1000700 -p <lua> -- /usr/lib/binfmt.d
 -- This script will automatically apply binfmt rules if files have been
@@ -70,7 +76,7 @@ end
 -- This script will process files installed in /usr/lib/tmpfiles.d to create
 -- tmpfiles automatically. The priority is set such that it will run
 -- after the sysusers file trigger, but before any other triggers.
--- Note: /run is never mounted during transactional updates.
+-- Note: this should be skipped during offline updates.
 if posix.access("/run/systemd/system") then
     assert(rpm.execute("systemd-tmpfiles", "--create"))
 end
@@ -87,6 +93,7 @@ end
 %transfiletriggerin -P 1000500 -p <lua> -- /usr/lib/sysctl.d
 -- This script will automatically apply sysctl rules if files have been
 -- installed or updated in /usr/lib/sysctl.d.
+-- Note: this should be skipped if executed in a chroot environment.
 if posix.access("/run/systemd/system") then
     assert(rpm.execute("/usr/lib/systemd/systemd-sysctl"))
 end
