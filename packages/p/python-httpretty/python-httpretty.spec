@@ -51,6 +51,7 @@ BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module fakeredis}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module httplib2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-httpserver}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
@@ -58,6 +59,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sure}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module urllib3}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -75,10 +77,10 @@ rm tests/bugfixes/nosetests/test_416_boto3.py
 %endif
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -96,6 +98,6 @@ donttest="$donttest or test_httpretty_should_handle_paths_starting_with_two_slas
 %license COPYING
 %doc README.rst
 %{python_sitelib}/httpretty
-%{python_sitelib}/httpretty-%{version}*-info
+%{python_sitelib}/httpretty-%{version}.dist-info
 
 %changelog

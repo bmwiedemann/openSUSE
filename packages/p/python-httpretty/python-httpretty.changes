@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  7 02:32:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed May 28 06:01:26 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add 0001-Mock-socket.shutdown-for-compatibility-with-urllib3-.patch:

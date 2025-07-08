@@ -266,4 +266,12 @@ sr#1280514
   * Mock socket.shutdown for compatibility with urllib3 &gt;= 2.3</comment>
     <requestid>1280753</requestid>
   </revision>
+  <revision rev="32" vrev="14">
+    <srcmd5>91e638650a06b24c6dc38139e3582299</srcmd5>
+    <version>1.1.4</version>
+    <time>1751981277</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1290928</requestid>
+  </revision>
 </revisionlist>
