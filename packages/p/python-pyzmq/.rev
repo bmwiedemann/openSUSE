@@ -525,4 +525,19 @@ update to latest version</comment>
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1284673</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>515b90a06661a367b31c89e5c2624060</srcmd5>
+    <version>27.0.0</version>
+    <time>1751981343</time>
+    <user>anag_factory</user>
+    <comment>- Update to 27.0.0
+  * The Cython backend has been rewritten using Cython 3’s pure Python
+    mode.
+  * The build system has been rewritten to use CMake via scikit-build-core
+    instead of setuptools
+  * Bundled libzmq is updated to 4.3.5, which changes its license from
+    LGPL to MPL.
+  * Many smaller changes, see upstream chngelog</comment>
+    <requestid>1291147</requestid>
+  </revision>
 </revisionlist>

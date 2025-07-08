@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul  7 10:27:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 27.0.0
+  * The Cython backend has been rewritten using Cython 3’s pure Python
+    mode.
+  * The build system has been rewritten to use CMake via scikit-build-core
+    instead of setuptools
+  * Bundled libzmq is updated to 4.3.5, which changes its license from
+    LGPL to MPL.
+  * Many smaller changes, see upstream chngelog
+
+-------------------------------------------------------------------
 Wed Jun 11 05:49:39 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

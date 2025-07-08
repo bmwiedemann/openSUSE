@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyzmq
-Version:        25.1.2
+Version:        27.0.0
 Release:        0
 Summary:        Python bindings for 0MQ
 License:        BSD-3-Clause AND LGPL-3.0-or-later
@@ -34,13 +34,13 @@ URL:            https://github.com/zeromq/pyzmq
 Source:         https://files.pythonhosted.org/packages/source/p/pyzmq/pyzmq-%{version}.tar.gz
 # For test markers
 Source1:        https://raw.githubusercontent.com/zeromq/pyzmq/v%{version}/pytest.ini
-BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel >= 3.6}
-BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module Cython >= 3}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module scikit-build-core}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 BuildRequires:  zeromq-devel
 Recommends:     python-gevent
@@ -97,14 +97,6 @@ cp %{SOURCE1} ./
 find examples zmq -name "*.py" -exec sed -i "s|#\!\/usr\/bin\/env python||" {} \;
 chmod -x examples/pubsub/topics_pub.py examples/pubsub/topics_sub.py
 
-# See https://github.com/zeromq/pyzmq/blob/master/setup.cfg.template
-echo '
-[global]
-skip_check_zmq = False
-zmq_prefix = %{_prefix}
-no_libzmq_extension = True
-'>> setup.cfg
-
 %build
 export CFLAGS="%{optflags}"
 %pyproject_wheel
@@ -116,25 +108,17 @@ export CFLAGS="%{optflags}"
 %if %{with tests}
 %check
 export LANG=en_US.UTF-8
-# This test wants to build a custom cython extension, but does
-# not have the source files installed into the buildroot
-SKIPPED_TESTS+=" or test_cython"
 # unreliable socket handling in obs environment
 SKIPPED_TESTS+=" or test_log"
 %if 0%{?suse_version} < 1550
 # tries to open a network connection on older distributions
 SKIPPED_TESTS+=" or test_null or test_int_sockopts"
 %endif
-# temporarily disable to build with OpenSSL 3.0 bsc#1205042
-SKIPPED_TESTS+=" or test_on_recv_basic"
-mkdir cleantest
-pushd cleantest
-%pytest_arch --pyargs zmq -k "not (${SKIPPED_TESTS:4})" --timeout 1200
-popd
+%pytest_arch --pyargs zmq -k "not (${SKIPPED_TESTS:4})" --timeout 1200 tests
 %endif
 
 %files %{python_files}
-%license LICENSE.BSD LICENSE.LESSER
+%license LICENSE.md
 %doc AUTHORS.md README.md examples
 %{python_sitearch}/zmq
 %{python_sitearch}/pyzmq-%{version}.dist-info
