@@ -17,7 +17,7 @@
 
 
 Name:           re-flex
-Version:        5.2.1
+Version:        6.0.0
 Release:        0
 Summary:        C++ regex library and lexical analyzer generator with Unicode support
 License:        BSD-3-Clause
