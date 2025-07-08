@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  7 08:41:20 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 2.239.0:
+  * Allow containers to use hsa devices for ROCM
+
+-------------------------------------------------------------------
 Mon Jun 02 07:13:46 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 2.238.0:
