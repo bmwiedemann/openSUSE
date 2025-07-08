@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun 18 12:58:39 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 4.9.0 (fixes CVE-2025-48945, bsc#1244691)
+  * Create dependabot configuration by @bdraco in #226
+  * build(deps): bump pypa/cibuildwheel from 2.22.0 to 2.23.3
+    by @dependabot in #227
+  * Pin Python version to 3.13.3 to avoid Windows build error by @saghul in #235
+  * Fix shutdown race by @bdraco in #236
+  * Add support for windows arm64 by @finnagin in #233
+- Update to 4.8.0
+  * Cancel previous CI jobs on pull request update by @bdraco in #222
+  * Update bundled c-ares to v1.34.5 by @bdraco in #221
+  * Add ARES_FLAG_NO_DFLT_SVR and ARES_FLAG_EDNS to API by @bdraco in #224
+- Update to 4.7.0
+  * Update c-ares to 1.29.0 to add reinit support to Channel by @bdraco in #219
+  * Add event thread support by @bdraco in #220
+
+-------------------------------------------------------------------
 Mon Apr 28 16:43:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.1:

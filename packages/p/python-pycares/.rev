@@ -125,4 +125,12 @@
   * Fix missing attribute type information for errno</comment>
     <requestid>1273211</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fc9fedf6029a6b0dff3b6a4f135b1f04</srcmd5>
+    <version>4.9.0</version>
+    <time>1751981288</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1286872</requestid>
+  </revision>
 </revisionlist>
