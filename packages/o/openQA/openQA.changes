@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 07 18:34:24 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1751898525.cfb73284:
+  * Avoid `Transaction already destroyed` being logged as error
+  * Get BUILD time from oldest job if not sorting by newest job per build
+  * Implement build version sorting by oldest job in build
+  * Add frontend config option to sort by oldest job per build in jobgroup
+  * Allow schemeless ip address as job url
+  * Refactor and add tests for openqa-clone-job
+  * Convert build version sorting type from bool to int
+
+-------------------------------------------------------------------
 Mon Jul 07 10:11:45 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1751834777.ce019b36:
