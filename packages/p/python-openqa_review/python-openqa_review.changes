@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 07 19:55:37 UTC 2025 - okurz@suse.com
+
+- Update to version 1.40.0:
+  * dist: Remove deprecated macros to build openqa_review
+  * dist: Add .spec file to git
+  * Remove flake pinned version
+  * Remove checks running under no longer supported Ubuntu version
+  * Adapt artifact upload to deprecation of `actions/upload-artifact@v2`
+  * Fix typos
+
+-------------------------------------------------------------------
 Mon Jul  7 07:06:19 UTC 2025 - Yiannis Bonatakis <ioannis.bonatakis@suse.com>
 
 - Remove deprecated macros to build openqa_review 
