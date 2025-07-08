@@ -17,20 +17,20 @@
 
 
 %define srcversion 6.12
-%define patchversion 6.12.35
-%define git_commit 393c6075ed6eb2d54cf81dcab07fefa48262c00d
+%define patchversion 6.12.36
+%define git_commit ebe3768be5c351076a25028e6f67ebe0ca70aa2f
 %define variant -longterm%{nil}
 %define gcc_package gcc
 %define gcc_compiler gcc
 
 %include %_sourcedir/kernel-spec-macros
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-source-longterm
-Version:        6.12.35
+Version:        6.12.36
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g393c607
+Release:        <RELEASE>.gebe3768
 %else
 Release:        0
 %endif
@@ -45,11 +45,7 @@ BuildRequires:  bash-sh
 BuildRequires:  coreutils
 BuildRequires:  fdupes
 BuildRequires:  sed
-%if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
 BuildArch:      noarch
-%else
-ExclusiveArch:  do_not_build
-%endif
 Prefix:         /usr/src
 
 %define src_install_dir usr/src/linux-%kernelrelease%variant
@@ -97,12 +93,8 @@ Source62:       old-flavors
 Source63:       arch-symbols
 Source64:       package-descriptions
 Source65:       kernel-spec-macros
-Source67:       log.sh
-Source68:       host-memcpy-hack.h
-Source69:       try-disable-staging-driver
 Source70:       kernel-obs-build.spec.in
 Source71:       kernel-obs-qa.spec.in
-Source72:       compress-vmlinux.sh
 Source73:       dtb.spec.in.in
 Source74:       mkspec-dtb
 Source75:       release-projects
@@ -323,9 +315,9 @@ popd
 
 find %{buildroot}/usr/src/linux* -type f -name '*.[ch]' -perm /0111 -exec chmod -v a-x {} +
 # OBS checks don't like /usr/bin/env in script interpreter lines
-grep -Elr '^#! */usr/bin/env ' %{buildroot}/usr/src/linux* | while read f; do
+grep -Elr '^#! */(usr/)?bin/env ' %{buildroot}/usr/src/linux* | while read f; do
     sed -re '1 { s_^#! */usr/bin/env +/_#!/_ ; s_^#! */usr/bin/env +([^/])_#!/usr/bin/\1_ }' \
-        -re '1 { s_^#! */bin/env +/_#!/_ ; s_^#! */bin/env +([^/])_#!/usr/bin/\1_ }' -i "$f"
+        -e  '1 { s_^#! */bin/env +/_#!/_ ; s_^#! */bin/env +([^/])_#!/usr/bin/\1_ }' -i "$f"
 done
 # kernel-source and kernel-$flavor-devel are built independently, but the
 # shipped sources (/usr/src/linux/) need to be older than generated files

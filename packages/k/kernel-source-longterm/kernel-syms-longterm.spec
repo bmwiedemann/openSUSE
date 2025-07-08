@@ -16,16 +16,16 @@
 #
 
 
-%define git_commit 393c6075ed6eb2d54cf81dcab07fefa48262c00d
+%define git_commit ebe3768be5c351076a25028e6f67ebe0ca70aa2f
 %define variant -longterm%{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
 Name:           kernel-syms-longterm
-Version:        6.12.35
+Version:        6.12.36
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g393c607
+Release:        <RELEASE>.gebe3768
 %else
 Release:        0
 %endif
@@ -38,11 +38,7 @@ License:        GPL-2.0-only
 Group:          Development/Sources
 URL:            https://www.kernel.org/
 BuildRequires:  coreutils
-%if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
 ExclusiveArch:  aarch64 x86_64
-%else
-ExclusiveArch:  do_not_build
-%endif
 Prefix:         /usr/src
 AutoReqProv:    off
 Source:         README.KSYMS

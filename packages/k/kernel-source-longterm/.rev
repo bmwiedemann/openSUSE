@@ -609,4 +609,12 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>6.12.35</comment>
     <requestid>1289399</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>96939349b9901fb49a43ed3ce2c6a00f</srcmd5>
+    <version>6.12.36</version>
+    <time>1751981284</time>
+    <user>anag_factory</user>
+    <comment>6.12.36</comment>
+    <requestid>1290977</requestid>
+  </revision>
 </revisionlist>
