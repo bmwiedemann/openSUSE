@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul  1 11:12:30 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- update to 0.19.02:
+  * stressor fd-abuse: file descriptor abuse stressor
+  * stressor mmapcow: memory mapping copy-on-write page stressor
+  * --cache-permute: permute --cache-enable-all cache options
+  * --cachehammer-numa: move memory mapped memory around NUMA nodes
+  * --spinmem-numa: move spinmem memory around NUMA nodes
+  * --vm-flush: force memory mapped pages to be cache flushed
+  * exercise valid and invalid UTF-8 filenames in filename stressor
+  * add memory and file size information to various stressors
+
+
+-------------------------------------------------------------------
 Mon Jun  2 07:39:12 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - update to 0.19.01:
