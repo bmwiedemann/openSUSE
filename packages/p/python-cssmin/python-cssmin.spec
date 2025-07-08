@@ -1,7 +1,7 @@
 #
 # spec file for package python-cssmin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-cssmin
 Version:        0.2.0
 Release:        0
@@ -28,10 +29,10 @@ BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,11 +56,8 @@ sed -i "s|^#!.*env python$|#!%{__$python}|" %{buildroot}%{$python_sitelib}/cssmi
 %check
 # Good upstream have never even heard about the idea of tests
 
-%post
-%python_install_alternative cssmin
-
-%postun
-%python_uninstall_alternative cssmin
+%pre
+%python_libalternatives_reset_alternative cssmin
 
 %files %{python_files}
 %python_alternative %{_bindir}/cssmin
