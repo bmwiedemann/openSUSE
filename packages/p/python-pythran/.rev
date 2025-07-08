@@ -241,4 +241,14 @@ now with fixed empty debuginfo extraction</comment>
     <comment></comment>
     <requestid>1286685</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>0d59ca6a4d713fb06f6e9a9d2117ed63</srcmd5>
+    <version>0.18.0</version>
+    <time>1751981286</time>
+    <user>anag_factory</user>
+    <comment>- Do not run any tests on Leap 16.0 due to lack of dependencies
+  This is part of hplip enablement on 16.0
+</comment>
+    <requestid>1291117</requestid>
+  </revision>
 </revisionlist>

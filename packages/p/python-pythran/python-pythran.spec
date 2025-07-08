@@ -34,8 +34,8 @@
 %if "%{flavor}" != "test-py313"
 %define skip_python313 1
 %endif
-# Skip empty buildsets, last one is for sle15_python_module_pythons
-%if "%{shrink:%{pythons}}" == "" || ("%pythons" == "python311" && 0%{?skip_python311})
+# Skip empty buildsets on tumbleweed, or non py311 flavors on sle15_python_module_pythons, or any testing on leap 16
+%if "%{shrink:%{pythons}}" == "" || ("%pythons" == "python311" && 0%{?skip_python311}) || (0%{?is_opensuse} && 0%{?suse_version} == 1600)
 ExclusiveArch:  donotbuild
 %define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
 %else

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  7 18:31:44 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Do not run any tests on Leap 16.0 due to lack of dependencies
+  This is part of hplip enablement on 16.0
+
+-------------------------------------------------------------------
 Wed Jun 18 10:47:55 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Skip pythran/tests/test_xdoc.py::TestDoctest::test_utils, which
