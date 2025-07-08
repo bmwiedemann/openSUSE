@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jul  3 08:46:24 UTC 2025 - pgajdos@suse.com
+
+- version update to 25.06.0 [bsc#1245625] (CVE-2025-52886)
+  Release 25.06.0:
+    core:
+     * Fix writing dates back to file
+     * Internal code improvements
+     * Fix crashes in malformed documents
+    glib:
+     * Add the ink annotation type
+     * Add missing autopointers definitions
+    utils:
+     * pdfsig: Add assert-signer feature
+     * pdfsig: Return error code on error
+  Release 25.05.0:
+    core:
+     * Fix re-fetching after xref reconstruction. Issue #1584
+     * Fix compilation with ENABLE_ZLIB_UNCOMPRESS=ON
+     * Various annotation improvements. Issues #642, #1558, #1055
+     * CairoFontEngine: invalidate broken embedded fonts. Issue #1453
+     * Splash: Performance improvements
+     * Internal code improvements
+    glib:
+     * Small signature improvements
+- modified patches
+  % reduce-boost-required-version.patch (refreshed)
+  % reduce-libtiff-required-version.patch (refreshed)
+
+-------------------------------------------------------------------
 Mon Apr  7 10:46:03 UTC 2025 - pgajdos@suse.com
 
 - version update to 25.04.0 

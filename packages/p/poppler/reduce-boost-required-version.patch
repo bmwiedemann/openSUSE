@@ -1,8 +1,8 @@
-Index: poppler-24.12.0/CMakeLists.txt
+Index: poppler-25.06.0/CMakeLists.txt
 ===================================================================
---- poppler-24.12.0.orig/CMakeLists.txt
-+++ poppler-24.12.0/CMakeLists.txt
-@@ -227,7 +227,7 @@ find_soft_mandatory_package(ENABLE_QT6 Q
+--- poppler-25.06.0.orig/CMakeLists.txt
++++ poppler-25.06.0/CMakeLists.txt
+@@ -232,7 +232,7 @@ add_definitions(-DQT_NO_KEYWORDS)
  # Check for Cairo rendering backend
  macro_optional_find_package(Cairo ${CAIRO_VERSION})
  
