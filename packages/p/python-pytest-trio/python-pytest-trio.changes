@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  7 04:13:11 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not remove pytest.ini, we need the configuration for pytest 8.4.
+- Do not play around with test directory name.
+
+-------------------------------------------------------------------
 Wed May  7 07:00:40 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

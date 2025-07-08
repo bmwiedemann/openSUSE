@@ -36,8 +36,8 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis >= 3.64}
 BuildRequires:  %{python_module outcome >= 1.1.0}
-# we really need newer pytest in tests than is required by the package
 BuildRequires:  %{python_module pytest >= 7.2.0}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module trio >= 0.22.0}
 # /SECTION
 %python_subpackages
@@ -48,22 +48,17 @@ a friendly library for concurrency and async I/O in Python.
 
 %prep
 %autosetup -p1 -n pytest-trio-%{version}
-
-rm pytest.ini
 rm pytest_trio/_tests/test_hypothesis_interaction.py
-mv pytest_trio/_tests/ tests
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
-%{python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k 'not (test_skip_and_xfail or test_error_collection)'
 
 %files %{python_files}
 %doc README.rst

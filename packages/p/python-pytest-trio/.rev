@@ -83,4 +83,13 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1275118</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>578312f081e3e2624c670147050fcd91</srcmd5>
+    <version>0.8.0</version>
+    <time>1751981278</time>
+    <user>anag_factory</user>
+    <comment>- Do not remove pytest.ini, we need the configuration for pytest 8.4.
+- Do not play around with test directory name.</comment>
+    <requestid>1290931</requestid>
+  </revision>
 </revisionlist>
