@@ -25,6 +25,7 @@ Group:          Development/Tools/Other
 URL:            https://github.com/KhronosGroup/Vulkan-Tools
 Source:         https://github.com/KhronosGroup/Vulkan-Tools/archive/refs/tags/vulkan-sdk-%version.0.tar.gz
 Source9:        baselibs.conf
+Patch1:         cmake.patch
 BuildRequires:  cmake >= 3.17
 BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  glslang-devel

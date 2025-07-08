@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul  6 15:30:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add cmake.patch
+
+-------------------------------------------------------------------
 Thu Jun  5 19:09:31 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove unused dependency on vulkan-volk

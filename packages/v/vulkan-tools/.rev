@@ -440,4 +440,12 @@
     <comment>- Remove unused dependency on vulkan-volk</comment>
     <requestid>1283444</requestid>
   </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>f661c45669d27cfa6f1b8a64b4449a0e</srcmd5>
+    <version>1.4.313</version>
+    <time>1751981276</time>
+    <user>anag_factory</user>
+    <comment>- Add cmake.patch</comment>
+    <requestid>1290915</requestid>
+  </revision>
 </revisionlist>
