@@ -23,4 +23,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1276586</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>894ecf7af6e3bbe017966f195d9880bf</srcmd5>
+    <version>1.30</version>
+    <time>1751981271</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.30:
+  * Adding #109 Halt on non-regular files like /dev/zero and
+    /dev/random (thanks to Yuri Schaeffer)</comment>
+    <requestid>1290768</requestid>
+  </revision>
 </revisionlist>

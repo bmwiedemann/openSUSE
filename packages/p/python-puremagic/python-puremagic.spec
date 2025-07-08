@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-puremagic
-Version:        1.29
+Version:        1.30
 Release:        0
 Summary:        Pure python implementation of magic file detection
 License:        MIT
