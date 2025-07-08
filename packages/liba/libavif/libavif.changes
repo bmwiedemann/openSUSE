@@ -36,6 +36,7 @@ Fri May  9 22:46:11 UTC 2025 - munix9@googlemail.com
   * Declare *RowBytes as size_t in avifImageRGBToYUV()
   * Check ftell returned value in avifjpeg.c
   * Add integer overflow checks to makeRoom.
+    (CVE-2025-48174, bsc#1243269)
   * LocalJpeg.cmake: Support multi-config generators.
 
 - Remove 'Group:' tags.

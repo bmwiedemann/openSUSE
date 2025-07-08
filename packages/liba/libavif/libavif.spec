@@ -81,8 +81,8 @@ https://aomediacodec.github.io/av1-avif/
 %package -n avif-tools
 Summary:        Tools for libavif
 License:        BSD-2-Clause AND MIT
-Provides:       bundled(libargparse) = 20211125.ee74d1b
 Provides:       libavif-tools = %{version}
+Provides:       bundled(libargparse) = 20211125.ee74d1b
 Obsoletes:      libavif-tools < %{version}
 
 %description -n avif-tools
