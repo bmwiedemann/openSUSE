@@ -1,7 +1,7 @@
 #
 # spec file for package python-cyrtranslit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-cyrtranslit
 Version:        1.1.1
 Release:        0
@@ -23,11 +24,13 @@ Summary:        Bi-directional Cyrillic transliteration.
 License:        MIT
 URL:            https://github.com/opendatakosovo/cyrillic-transliteration
 Source:         https://files.pythonhosted.org/packages/source/c/cyrtranslit/cyrtranslit-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,11 +51,8 @@ Bi-directional Cyrillic transliteration. Transliterate Cyrillic script to Latin 
 %check
 # no unittests, just text files in cyrilic
 
-%post
-%python_install_alternative cyrtranslit
-
-%postun
-%python_uninstall_alternative cyrtranslit
+%pre
+%python_libalternatives_reset_alternative cyrtranslit
 
 %files %{python_files}
 %doc README.md
