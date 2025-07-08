@@ -90,7 +90,7 @@ rm -rf /usr/lib*/libmfxhw*.so.* /usr/lib*/mfx/
 
 if [ "$desktop" = "x11" ]; then
 	# Generated on boot if missing
-	rm /etc/udev/hwdb.bin
+	rm -f /etc/udev/hwdb.bin
 	# xfce4-pulseaudio-plugin is omitted, remove it from the panel config.
 	# To avoid having to mess with IDs, just replace it with a separator.
 	sed -i 's/"pulseaudio"/"separator"/' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
