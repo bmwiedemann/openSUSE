@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 08 04:59:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.6.3:
+  * Bugfixes
+    - Improve detection of molecule scenarios (#480) @ssbarnea
+  * Maintenance
+    - Bump the dependencies group in /.config with 8 updates (#481)
+      @dependabot[bot]
+
+-------------------------------------------------------------------
 Wed Jul 02 05:51:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.6.2:
