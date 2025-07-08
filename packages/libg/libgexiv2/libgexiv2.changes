@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul  6 18:50:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.14.6:
+  + Fix get_tag_multiple for tags that have LangAlt and contain ","
+  + Fix a memory leak when calling open_* multiple times on the
+    same Metadata object
+
+-------------------------------------------------------------------
 Sun May 25 10:54:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.14.5:
