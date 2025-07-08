@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul  6 22:21:36 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 3.5.1
+  * CMake build system improvements, notably Windows DLL support
+    and new option to turn off build of examples and build just
+    the Python interface
+- update to 3.5.0
+  * Introduction of a new CMake-based build system.
+  * Inclusion of SISCone 3.1.1, with its own CMake support
+  * Speed improvements for corner cases of the N2Plain strategy
+    noted in 2503.08146.
+- update to 3.4.3
+  * python interface looks also for python3-config
+  * various build-system upgrades
+
+-------------------------------------------------------------------
 Sat Jan  6 12:40:42 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 3.4.2

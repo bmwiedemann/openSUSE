@@ -1,7 +1,7 @@
 #
 # spec file for package fastjet
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fastjet
-Version:        3.4.2
+Version:        3.5.1
 Release:        0
 Summary:        Package for jet finding in pp and e+e- collisions
 License:        GPL-2.0-or-later
@@ -162,7 +162,7 @@ sed -i "s|-Wl,-rpath,[^ ]\+||g" %{buildroot}%{_bindir}/fastjet-config
 
 %files -n libfastjet0
 %license COPYING
-%doc ChangeLog README
+%doc ChangeLog README.md
 %{_libdir}/libfastjet.so.*
 %{_libdir}/libfastjettools.so.*
 %{_libdir}/libfastjetplugins.so.*
@@ -185,6 +185,6 @@ sed -i "s|-Wl,-rpath,[^ ]\+||g" %{buildroot}%{_bindir}/fastjet-config
 %files -n python3-%{name}
 %{python3_sitelib}/fastjet.*
 %{python3_sitelib}/__pycache__/*
-%{python3_sitearch}/_fastjet.*
+%{python3_sitearch}/_fastjet_swig.*
 
 %changelog
