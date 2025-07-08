@@ -11292,27 +11292,27 @@ unsorted:
   - libOsiCbc3 
   - libOsiClp1 
   - libPDAL19 
-  - libPocoActiveRecord111 
-  - libPocoCppParser111 
-  - libPocoCrypto111 
-  - libPocoData111 
-  - libPocoDataMySQL111 
-  - libPocoDataODBC111 
-  - libPocoDataPostgreSQL111 
-  - libPocoDataSQLite111 
-  - libPocoEncodings111 
-  - libPocoFoundation111 
-  - libPocoJSON111 
-  - libPocoJWT111 
-  - libPocoMongoDB111 
-  - libPocoNet111 
-  - libPocoNetSSL111 
-  - libPocoPDF111 
-  - libPocoPrometheus111 
-  - libPocoRedis111 
-  - libPocoUtil111 
-  - libPocoXML111 
-  - libPocoZip111 
+  - libPocoActiveRecord112 
+  - libPocoCppParser112 
+  - libPocoCrypto112 
+  - libPocoData112 
+  - libPocoDataMySQL112 
+  - libPocoDataODBC112 
+  - libPocoDataPostgreSQL112 
+  - libPocoDataSQLite112 
+  - libPocoEncodings112 
+  - libPocoFoundation112 
+  - libPocoJSON112 
+  - libPocoJWT112 
+  - libPocoMongoDB112 
+  - libPocoNet112 
+  - libPocoNetSSL112 
+  - libPocoPDF112 
+  - libPocoPrometheus112 
+  - libPocoRedis112 
+  - libPocoUtil112 
+  - libPocoXML112 
+  - libPocoZip112 
   - libQCSXCAD0 
   - libQCoro5Core0 
   - libQCoro5DBus0 
@@ -15358,7 +15358,7 @@ unsorted:
   - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
-  - libpoppler148-32bit 
+  - libpoppler150-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -16316,6 +16316,7 @@ unsorted:
   - libstrophe-devel 
   - libstrophe0 
   - libsubid-devel 
+  - libsubrandr0 
   - libsubtitleeditor-devel 
   - libsubtitleeditor0 
   - libsubunit0 
@@ -37444,6 +37445,7 @@ unsorted:
   - subnetcalc-bash-completion 
   - subnetcalc-doc 
   - subnetcalc-lang 
+  - subrandr-devel 
   - subtitlecomposer 
   - subtitlecomposer-lang 
   - subtitleeditor 
