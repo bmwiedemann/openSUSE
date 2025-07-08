@@ -1,7 +1,7 @@
 #
 # spec file for package udica
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define pythons python3
 Name:           udica
 Version:        0.2.8
 Release:        0
@@ -23,9 +24,12 @@ Summary:        A tool for generating SELinux security policies for containers
 License:        GPL-3.0-or-later
 URL:            https://github.com/containers/udica
 Source0:        https://github.com/containers/udica/archive/v%{version}.tar.gz
-BuildRequires:  python3
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 # container-selinux provides policy templates
 Requires:       container-selinux >= 2.168.0-2
 Requires:       python3
@@ -42,10 +46,15 @@ inspection of container JSON file.
 %autosetup -p 1
 
 %build
-python3 setup.py build
+%pyproject_wheel
 
 %install
-python3 setup.py install --single-version-externally-managed --root=%{buildroot}
+%pyproject_install
+# pip isn't allowed to write outside of sitelib
+mkdir -p %{buildroot}%{_datadir}/udica
+mv %{buildroot}%{python3_sitelib}%{_datadir}/udica %{buildroot}%{_datadir}
+rm -r %{buildroot}%{python3_sitelib}/usr
+%fdupes %{buildroot}%{python3_sitelib}
 
 install --directory %{buildroot}%{_mandir}/man8
 install -m 0644 udica/man/man8/udica.8 %{buildroot}%{_mandir}/man8/udica.8
@@ -59,6 +68,6 @@ install -m 0644 udica/man/man8/udica.8 %{buildroot}%{_mandir}/man8/udica.8
 
 %license LICENSE
 %{python3_sitelib}/udica/
-%{python3_sitelib}/udica-*.egg-info
+%{python3_sitelib}/udica-%{version}.dist-info
 
 %changelog
