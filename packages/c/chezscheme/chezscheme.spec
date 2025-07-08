@@ -21,7 +21,7 @@
 
 Name:           chezscheme
 Summary:        A superset of the R6RS Scheme language
-Version:        10.1.0
+Version:        10.2.0
 Release:        0
 License:        Apache-2.0 AND BSD-2-Clause AND GPL-2.0-only AND Zlib AND SUSE-GPL-2.0-with-linking-exception
 Group:          Development/Languages/Scheme
