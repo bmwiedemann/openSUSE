@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  7 04:55:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pytest-8.4.patch:
+  * test cases can no longer call yield.
+
+-------------------------------------------------------------------
 Wed May  7 06:46:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

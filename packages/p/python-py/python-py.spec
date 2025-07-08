@@ -37,6 +37,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/py/py-%{version
 Patch0:         pr_222.patch
 # CVE-2022-42969 Remove all traces of svn
 Patch1:         remove-svn-remants.patch
+# PATCH-FIX-OPENSUSE Support pytest 8.4+ changes
+Patch2:         support-pytest-8.4.patch
 BuildRequires:  %{python_module apipkg}
 BuildRequires:  %{python_module iniconfig}
 BuildRequires:  %{python_module pip}

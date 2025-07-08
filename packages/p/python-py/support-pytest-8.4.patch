@@ -1,0 +1,13 @@
+Index: py-1.11.0/testing/code/test_source.py
+===================================================================
+--- py-1.11.0.orig/testing/code/test_source.py
++++ py-1.11.0/testing/code/test_source.py
+@@ -294,7 +294,7 @@ class TestSourceParsingAndCompiling:
+ 
+         for comp in py.code.compile, py.code.Source.compile:
+             for name in '', None, 'my':
+-                yield check, comp, name
++                check(comp, name)
+ 
+     def test_offsetless_synerr(self):
+         py.test.raises(SyntaxError, py.code.compile, "lambda a,a: 0", mode='eval')

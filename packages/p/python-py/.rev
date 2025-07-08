@@ -483,4 +483,13 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1275088</requestid>
   </revision>
+  <revision rev="45" vrev="9">
+    <srcmd5>81b58342bbb9b95c2a8805df2f7d5c10</srcmd5>
+    <version>1.11.0</version>
+    <time>1751981280</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-pytest-8.4.patch:
+  * test cases can no longer call yield.</comment>
+    <requestid>1290938</requestid>
+  </revision>
 </revisionlist>
