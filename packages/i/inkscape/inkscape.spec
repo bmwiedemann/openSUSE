@@ -17,7 +17,7 @@
 
 
 Name:           inkscape
-Version:        1.4.2+1
+Version:        1.4.2+37
 Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only

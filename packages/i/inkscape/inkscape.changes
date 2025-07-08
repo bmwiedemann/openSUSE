@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Jul 03 19:15:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.2+37:
+  * Update macOS job for new runner infrastructure
+  * Fix includes in PDF input extensions
+  * Fix build against Poppler 25.06
+  * String fixes for Inkscape 1.4.3 (please keep until after the 1.4.2 release)
+  * Add policy checking for UI toolbars for focus
+  * Update macOS build pipeline to 0.81
+  * Rectangles are allows for Text on Path
+  * Add special paste section in context menu
+  * Reduce number of clipping paths created during PDF import
+  * Use Undo::maybeDone for swatch color slider
+  * Update the select toolbar when the bbox preference changes
+  * Fix crash when pattern transform is singular
+  * Page swapping shouldn't modify the size of the page through viewPort
+  * Enhance PDF Import: Remember font rendering settings
+  * Fix to pdf font preferences
+  * Fix crash when deleting a page with clones on it
+  * Allow multiline strings to expand in extension dialog
+  * Recursively unlock when dealign with item under cursor
+  * Fix issues with shape-inside having invalid references
+  * Avoid unchecked optional access in render_preview
+  * Make Action Section names translatable. Fix #5501
+  * Fix: Show Handles command not working on the mesh tool
+  * Fix crash on editing SVGs with text nodes
+  * Add color support for geometric pattern 'Abstract 1'
+  * Limit SVG preference to SVG opening extension only
+  * Fix Welcome Screen Keyboard Selector
+  * Hide LPETool in the default preference
+  * Fix control handle rendering with flipped canvas
+  * Lpe Simplify button converted to checkbox
+  * Hide Splash on Wayland when moving to Welcome
+  * Fix filter dialog crashing on Ctrl+Space
+  * Check for null text before setting to ustring.
+  * Snap package: Fix file permissions
+  * Fix a crash when converting a <textPath> to <text> in an SVG 2 spec example.
+  * Don't turn an invalid SPItem bounding box into a valid one if there is a filter.
+  * Update windows installed library list
+
+-------------------------------------------------------------------
 Wed May 14 06:22:25 UTC 2025 - thod_@gmx.de
 
 - Update to version 1.4.2+1:
