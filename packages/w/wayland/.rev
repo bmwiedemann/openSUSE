@@ -460,4 +460,12 @@ Thus there's no need for the parsing or extra dependency. (forwarded request 580
     <comment>- Skip tests in qemu emulation</comment>
     <requestid>1283928</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>c37773ef2bb9ec834be29850a86d925f</srcmd5>
+    <version>1.24.0</version>
+    <time>1751981275</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.24</comment>
+    <requestid>1290914</requestid>
+  </revision>
 </revisionlist>

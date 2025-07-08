@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jul  6 14:10:41 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.24
+  * A new wl_fixes interface to add a request to destroy a
+    wl_registry object.
+  * A new wl_keyboard.key repeated state, to allow compositors to
+    take over the responsibility of repeating keys, which is
+    useful for remote desktop.
+  * wl_display_dispatch_queue_timeout() and
+    wl_display_dispatch_timeout(), to set a timeout when
+    dispatching events.
+  * wl_shm_buffer_ref() and wl_shm_buffer_unref(), to access
+    wl_shm_buffer underlying storage after the protocol object
+    has been destroyed (e.g. when a client is shutting down).
+  * wl_proxy_get_interface() and wl_resource_get_interface(), to
+    fetch the wl_interface of an object.
+  * wl_resource_post_error_vargs(), as an alternative to
+    wl_resource_post_error() when the compositor already has a
+    va_list.
+
+-------------------------------------------------------------------
 Sat Jun  7 09:18:19 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Skip tests in qemu emulation
