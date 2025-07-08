@@ -17,16 +17,14 @@
 
 
 %{?sle15_python_module_pythons}
-%define oldpython python
 Name:           python-PasteDeploy
-Version:        2.1.1+git.1652668078.0f0697d
+Version:        3.1.0
 Release:        0
 Summary:        Tool to load, configure, and compose WSGI applications and servers
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Pylons/pastedeploy
-# Source:         https://github.com/Pylons/pastedeploy/archive/%%{version}.tar.gz
-Source:         pastedeploy-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/PasteDeploy/PasteDeploy-%{version}.tar.gz
 BuildRequires:  %{python_module Paste}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -39,10 +37,6 @@ Requires:       python-setuptools
 Provides:       python-pastedeploy = %{version}
 Obsoletes:      python-pastedeploy < %{version}
 BuildArch:      noarch
-%ifpython2
-Obsoletes:      %{oldpython}-pastedeploy < %{version}
-Provides:       %{oldpython}-pastedeploy = %{version}
-%endif
 %python_subpackages
 
 %description
@@ -51,8 +45,7 @@ URIs can refer to Python Eggs for INI-style configuration files. Paste Script
 provides commands to serve applications based on this configuration file.
 
 %prep
-%setup -q -n pastedeploy-%{version}
-%autopatch -p1
+%autosetup -p1 -n PasteDeploy-%{version}
 
 sed -i -e '/^addopts/s/ --cov//' pytest.ini
 
@@ -69,9 +62,8 @@ sed -i -e '/^addopts/s/ --cov//' pytest.ini
 %files %{python_files}
 %doc README.rst
 %license license.txt
-# %%{python_sitelib}/[pP]aste[dD]eploy-%{version}*-info
-%{python_sitelib}/[pP]aste[dD]eploy-2.1.1.dist-info
-%{python_sitelib}/PasteDeploy-2.1.1*-nspkg.pth
+%{python_sitelib}/[pP]aste[dD]eploy-%{version}.dist-info
+%{python_sitelib}/PasteDeploy-%{version}*-nspkg.pth
 %{python_sitelib}/paste/deploy
 
 %changelog

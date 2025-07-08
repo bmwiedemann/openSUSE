@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Jul  5 10:35:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * Support Python 3.11 and 3.12.
+  * Remove deprecated usage of inspect.getargspec that is no
+    longer supported in Python 3.12.
+  * Fix python_requires package metadata to support Python 3.7+.
+  * Drop support for Python 2, as well as 3.4, 3.5, and 3.6.
+  * Fix a broken compatibility shim that would cause the
+    ConfigParser to fail on Python 3.12 when ConfigParser.readfp
+    is removed.
+  * Drop setuptools dependency and start using importlib.metadata
+    instead.
+  * Refactor repository into a src folder layout.
+  * Added setuptools as an explicit dependency. This has always
+    been required but now that more environments are becoming
+    capable of operating without it being installed, we now need
+    to ensure it's available.
+  * pytest-runner removed, use tox to run tests.
+  * Python 3 deprecation warning cleanups
+  * Moved code to GitHub under the Pylons Project.
+  * Moved documentation under the Pylons Project, hosted by Read
+    the Docs at https://docs.pylonsproject.org/projects/pastedepl
+    oy/en/latest/
+  * Fixed Python 3 issue in paste.deploy.util.fix_type_error()
+  * Fixed use of the wrong variable when determining the context
+    protocol
+  * Fixed invalid import of paste.deploy.Config to
+    paste.deploy.config.Config
+  * Fixed multi proxy IPs bug in X-Forwarded-For header in
+    PrefixMiddleware
+  * Fixed TypeError when trying to raise LookupError on Python 3
+  * Fixed exception reraise on Python 3
+  * Project is now maintained by Alex Grönholm
+    <alex.gronholm@nextday.fi>
+  * Was printing extraneous data when calling setup.py
+  * Fixed missing paster template files (fixes "paster create -t
+    paste.deploy")
+
+-------------------------------------------------------------------
 Tue Apr  1 12:34:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make the dist-info name case-insensitive
@@ -157,12 +197,12 @@ Thu Oct 24 11:09:48 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Thu Jun 13 13:50:37 UTC 2013 - dmueller@suse.com
 
-- add python-distribute dependency 
+- add python-distribute dependency
 
 -------------------------------------------------------------------
 Sun May 27 05:17:04 UTC 2012 - highwaystar.ru@gmail.com
 
-- python3 package added 
+- python3 package added
 
 -------------------------------------------------------------------
 Thu Sep  1 09:05:45 UTC 2011 - saschpe@suse.de
