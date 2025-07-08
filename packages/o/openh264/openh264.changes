@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Mar 20 11:48:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.6.0:
+  + Initialize PSNR to 0 instead of NAN
+  + Enable PIC in x86 assembly code
+  + Add QEMU test for LoongArch architecture
+  + Add support for calculating PSNR for Y/U/V components
+  + Add support for PowerPC architecture in meson.build
+  + Fix potential bug in the codebase
+  + Pass the actual temporal ID to GMPVideoEncodedFrame
+  + Use HW_NCPUONLINE on OpenBSD / NetBSD for CPU detection
+  + Add Windows VSBuildTools VC17 compile support
+  + Expose temporal layer info via GMP API at encoder
+    initialization and on a per-frame basis
+  + Remove the use of -Werror to prevent warnings from being
+    treated as errors.
+  + Use void casts to silence warnings about memcpy to a class
+- Update mozilla plugin global to current head
+  + 1f5a2f07a565a9465c14d3a8b12f3202f83c775e
+- Update somajor global to 8 following upstream changes.
+
+-------------------------------------------------------------------
+Mon Dec 16 14:45:47 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 2.5.0
+  + Add LoongArch SIMD
+  + Bug fixes
+  + Fix off by one regression in decoder
+  + Fix glitches that sometimes happen near the scene changes
+  + Fix some multi-thread decoding issues
+  + Remove unused pSpatialLayer variable in DetermineTemporalSettings
+  + Change picOrderCnt to 2
+  + Fix deadlock at the end of decoding
+  + Fix frame-decode errors
+  + Fix build with meson on riscv64
+  + Enable pac bti support
+  + Fix a bug in decoding H.264 streams encoded by Apple HWA encoder
+
+-------------------------------------------------------------------
 Sat Oct 15 17:07:07 UTC 2022 - Neal Gompa <ngompa@opensuse.org>
 
 - Update to 2.3.1

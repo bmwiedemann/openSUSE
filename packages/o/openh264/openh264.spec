@@ -2,7 +2,8 @@
 # spec file for package openh264
 #
 # Copyright (c) 2021 Red Hat, Inc.
-# Copyright (c) 2022 Neal Gompa <ngompa@opensuse.org>.
+# Copyright (c) 2024 Neal Gompa <ngompa@opensuse.org>.
+# Copyright (c) 2025 Bjørn Lie <bjorn.lie@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +19,14 @@
 
 
 # moz plugin commit hash
-%global commit1 3a01c086d1b0394238ff1b5ad22e76022830625a
+%global commit1 1f5a2f07a565a9465c14d3a8b12f3202f83c775e
 
-%global somajor 7
+%global somajor 8
 %global libname lib%{name}-%{somajor}
 %global devname lib%{name}-devel
 
 Name:           openh264
-Version:        2.3.1
+Version:        2.6.0
 Release:        0
 Summary:        H.264 codec library
 Group:          Productivity/Multimedia/Other
@@ -41,7 +42,6 @@ BuildRequires:  nasm
 %description
 OpenH264 is a codec library which supports H.264 encoding and decoding. It is
 suitable for use in real time applications such as WebRTC.
-
 
 %package     -n %{libname}
 Summary:        H.264 codec library
@@ -75,11 +75,9 @@ Supplements:    firefox
 The mozilla-openh264 package contains a H.264 codec plugin for Mozilla
 browsers.
 
-
 %prep
 %autosetup -a1
 mv gmp-api-%{commit1} gmp-api
-
 
 %build
 # Update the makefile with our build options
@@ -97,7 +95,6 @@ sed -i -e '/^CFLAGS_OPT=/i LDFLAGS=%{build_ldflags}' Makefile
 
 # ... then build the mozilla plugin
 %make_build plugin
-
 
 %install
 %make_install
@@ -121,9 +118,7 @@ EOF
 # Remove static libraries
 rm -v %{buildroot}%{_libdir}/*.a
 
-
 %ldconfig_scriptlets -n %{libname}
-
 
 %files -n %{libname}
 %license LICENSE
@@ -145,6 +140,5 @@ rm -v %{buildroot}%{_libdir}/*.a
 %dir %{_libdir}/mozilla
 %dir %{_libdir}/mozilla/plugins
 %{_libdir}/mozilla/plugins/gmp-gmpopenh264/
-
 
 %changelog

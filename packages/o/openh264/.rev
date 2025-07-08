@@ -25,4 +25,42 @@ This is per https://code.opensuse.org/leap/features/issue/22#comment-838</commen
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1030548</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>61266b95e640fcc9937cc982e8a064c8</srcmd5>
+    <version>2.6.0</version>
+    <time>1751981497</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.6.0:
+  + Fixes boo#1245828
+  + Initialize PSNR to 0 instead of NAN
+  + Enable PIC in x86 assembly code
+  + Add QEMU test for LoongArch architecture
+  + Add support for calculating PSNR for Y/U/V components
+  + Add support for PowerPC architecture in meson.build
+  + Fix potential bug in the codebase
+  + Pass the actual temporal ID to GMPVideoEncodedFrame
+  + Use HW_NCPUONLINE on OpenBSD / NetBSD for CPU detection
+  + Add Windows VSBuildTools VC17 compile support
+  + Expose temporal layer info via GMP API at encoder
+    initialization and on a per-frame basis
+  + Remove the use of -Werror to prevent warnings from being
+    treated as errors.
+  + Use void casts to silence warnings about memcpy to a class
+- Update mozilla plugin global to current head
+  + 1f5a2f07a565a9465c14d3a8b12f3202f83c775e
+- Update somajor global to 8 following upstream changes.
+
+- Update to 2.5.0
+  + Add LoongArch SIMD
+  + Bug fixes
+  + Fix off by one regression in decoder
+  + Fix glitches that sometimes happen near the scene changes
+  + Fix some multi-thread decoding issues
+  + Remove unused pSpatialLayer variable in DetermineTemporalSettings
+  + Change picOrderCnt to 2
+  + Fix deadlock at the end of decoding
+  + Fix frame-decode errors
+  + Fix build with meson on riscv64</comment>
+    <requestid>1291173</requestid>
+  </revision>
 </revisionlist>
