@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul  5 14:53:34 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- disable django support on SLE15 also
+
+-------------------------------------------------------------------
 Thu Jun  5 06:01:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -18,7 +23,7 @@ Wed Sep 27 12:15:19 UTC 2023 - ecsos <ecsos@opensuse.org>
 Mon Sep  4 15:58:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.6.3:
-  * Fix peek when value is so large that a file is used 
+  * Fix peek when value is so large that a file is used
 
 -------------------------------------------------------------------
 Wed Apr 26 06:24:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -28,7 +33,7 @@ Wed Apr 26 06:24:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * pylint fixes
   * Add maxlen parameter to diskcache.Deque
   * update docs
-  * Support pathlib.Path as directory argument 
+  * Support pathlib.Path as directory argument
 
 -------------------------------------------------------------------
 Sat Jan 15 17:42:10 UTC 2022 - Dirk Müller <dmueller@suse.com>

@@ -132,4 +132,15 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282971</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>32332e5e5e99b3f41913caa8fbb27bcf</srcmd5>
+    <version>5.6.3</version>
+    <time>1751981273</time>
+    <user>anag_factory</user>
+    <comment>- disable django support on SLE15 also
+
+  * Fix peek when value is so large that a file is used
+  * Support pathlib.Path as directory argument</comment>
+    <requestid>1290787</requestid>
+  </revision>
 </revisionlist>

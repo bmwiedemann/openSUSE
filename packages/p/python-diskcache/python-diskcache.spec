@@ -16,8 +16,8 @@
 #
 
 
-%if 0%{?suse_version} == 1600
-# No django in SLFO:Main
+%if 0%{?suse_version} == 1600 || 0%{?suse_version} == 1500
+# No django in SLFO:Main or SLE15
 %bcond_with django
 %else
 %bcond_without django
@@ -40,8 +40,8 @@ BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with django}
-BuildRequires:  %{python_module Django if (%python-base without python36-base)}
-BuildRequires:  %{python_module pytest-django if (%python-base without python36-base)}
+BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module pytest-django}
 %endif
 Requires:       python
 BuildArch:      noarch
