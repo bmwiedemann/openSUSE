@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 07 18:49:43 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1751897761.d55ec72:
+  * CI: Enable Leap 16.0 OBS build checks
+  * Autodetect default ethernet dev/br in os-autoinst-setup-multi-machine
+  * Fix category generation for paths to lua test modules
+  * Update Perl::Tidy to 20250616.0.0
+  * Workaround coverage issue
+  * Rename `$mock_main` to `$mock_ovs` in OVS unit test
+  * Extend logging in OVS service to debug its occasional unresponsiveness
+
+-------------------------------------------------------------------
 Sat Jul 05 15:52:53 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1751470028.ff900af:
