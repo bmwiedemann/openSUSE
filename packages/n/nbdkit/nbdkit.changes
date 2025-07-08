@@ -1,4 +1,179 @@
 -------------------------------------------------------------------
+Mon Jul 07 17:23:58 UTC 2025 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.44.1:
+  * Version 1.44.1.
+  * server: Fix .zero fallback path
+  * Version 1.44.0.
+  * tests: Use 'source ./functions.sh' and 'set -e/-x/-u' consistently
+  * tests/test-parallel-sh.sh: Enable shell debugging options in the test
+  * tests/test-vddk-real.sh: Enable nbdcopy --flush unconditionally
+  * tests: Use 'set -u' in tests
+  * tests: Modify some more tests to use 'define' function
+  * tests/test-info-base64.sh: Remove never-used 'info-base64.out' file
+  * tests/test-ddrescue-filter.sh: Various fixes and improvements
+  * docs: Update release notes for upcoming 1.44
+  * tests/test-exportname.sh: Refactor output file name
+  * tests: Use new 'define' function for some sh plugins
+  * tests/test-export-name.sh: Fix PID file name
+  * Fix typo and wording in release notes
+  * Version 1.43.13.
+  * tests: Skip more Python tests under valgrind
+  * vddk: Add support for VDDK 9.0.0.0
+  * vddk: Debug the output from QueryAllocatedBlocks
+  * vddk: Document unreliable extents information with local vmdk files
+  * docs: Create release notes for upcoming 1.44
+  * Revert "vddk: Add example of finding out how sparse VMDK files are"
+  * vddk: Add example of finding out how sparse VMDK files are
+  * tests/functions.sh.in: Fix typo in comment
+  * vddk: Update comment and broken link
+  * server: Print filter and plugin layers in debug mode
+  * common/utils: Add convenient string_append_format function
+  * Version 1.43.12.
+  * tests: Stop leaving left-over /tmp/nbdkitXXXXXX dirs
+  * tests/test-no-parameters.sh: Fix comment to reflect reality
+  * exitwhen: Print a debug message if we exit before starting up
+  * server: Try harder to clean up the random fifo dir (-U -)
+  * sh: Use utils make_temporary_directory function
+  * tests/test.c: Try harder to clean up nbdkit and temporary directory
+  * curl: Remove temporary file when the plugin is unloaded
+  * vddk: Fix VDDK version in error message and some comments
+  * vddk: stats: Collect elapsed time for ReadAsync and WriteAsync
+  * vddk: stats: Record the byte count of each QueryAllocatedBlocks call
+  * vddk: stats: Line up the columns correctly
+  * vddk: stats: Use "us" instead of (Unicode) "µs" for microseconds
+  * Version 1.43.11.
+  * maint: Better fix for clang
+  * blocksize-policy: Add blocksize-error-policy=strict-error
+  * server: Align the truncation of large block_status results
+  * blocksize-policy: Round extents to match minimum alignment
+  * extents: Handle unaligned tail in nbdkit_extents_aligned
+  * blocksize-policy: Document use with truncate filter
+  * data: Allow scaling suffixes on @decimal
+  * human-size: Add human_size_parse_substr
+  * blocksize-policy: Always flag unaligned block_status calls
+  * maint: Silence clang warning
+  * file: Add offset/count to error messages
+  * file: Add the filename (or equivalent) to error messages
+  * file: Save the filename or equivalent in the file handle
+  * Version 1.43.10.
+  * vddk: Pre-cache the extents for readonly connections
+  * vddk: Unconditionally test QueryAllocatedBlocks
+  * vddk: Move minimum version of VDDK to 6.7
+  * vddk: Cache the readonly flag from the .open call in the handle
+  * vddk: Display command type in command completed message
+  * include: Move some extent functions to nbdkit-common.h
+  * cacheextents: Mark this filter as deprecated
+  * blocksize-policy: Typo fix
+  * vddk: Debug length of extents when using -D vddk.extents=1
+  * ext2: Support concurrent connections
+  * Version 1.43.9.
+  * docs: Mention recent CVE fixes
+  * tests/test-spinning-mkfs.sh: Reduce the time taken to run this test
+  * ci: Update generated files
+  * ci: Remove fedora-40 and add fedora-42
+  * ci: Install python3-packaging for the CI tests
+  * New filter: openonce - open the underlying plugin once (per export)
+  * server: filters: Pass the underlying thread model to .thread_model
+  * filters: Remove a few unnecessary thread_model parallel definitions
+  * docs: filters: Change parameter name of filter .get_ready
+  * docs: Remove irrelevant verbiage about how plugins define thread models
+  * server: Move saved exportname from connection to context
+  * docs: Describe which filters are currently export safe
+  * cow: Destroy blk->lock on exit
+  * Version 1.43.8.
+  * cow: Replace singleton overlay with a mapping of export name -> overlay
+  * cow: Allow there to be multiple block overlays
+  * cow: Make cow_on_read private to this file
+  * vddk: Document export parameter
+  * vddk: Embolden "/" in file option
+  * vddk: Add export parameter
+  * todo: Remove references to libnfs and gluster
+  * Version 1.43.7.
+  * blocksize: Fix 32-bit overflow in .extents [CVE-2025-47712]
+  * server: Fix off-by-one for maximum block_status length [CVE-2025-47711]
+  * file: Change confusing comment
+  * file: Implement BLKDISCARD for trim
+  * file: Don't ignore most errors on trim
+  * file: Fix check for errno EOPNOTSUPP
+  * torrent: Implement --dump-plugin
+  * torrent: Implement cache (prefetch)
+  * Version 1.43.6.
+  * Update TODO with file plugin vs block device issues
+  * file: zero: Use BLKDISCARD method if may_trim is set
+  * file: zero: Document implicit order that we will try zeroing methods
+  * file: Rename h->can_zeroout to h->can_blkzeroout to reflect ioctl
+  * file: Fix do_fallocate debugging on Alpine
+  * file: Fix do_fallocate debugging on Alpine
+  * rust: Fix clippy uninlined-format-args warning
+  * file: Fix comment style in a few places
+  * file: Add more debugging when -D file.zero=1 is used
+  * file: Fix minor typo in debug message
+  * maint: Spelling fixes
+  * curl: add proxy-cafile and proxy-capath
+  * curl: Remove extra whitespace character
+  * tests: More robust check for nbdsh --base-allocation
+  * ci: Update to latest
+  * docs: Explain how debug flags work
+  * tests/test-layers.c: Replace realloc with nbdkit string type
+  * docs: Simplify and clarify the standard text about magic parameters
+  * docs: Use POD macro for all magic parameters
+  * tests/test-golang-fork-warning.sh: Don't use nbdinfo in test
+  * nfs: Set libnfs context to readonly if readonly=true
+  * Version 1.43.5.
+  * New plugin: NFS plugin using libnfs
+  * curl: Move AC_DEFINE upwards
+  * tests/test-pycodestyle.sh: Print paths relative to top source directory
+  * python: Remove unneeded global statements
+  * random, sparse-random: Link to nbdkit-pattern-plugin
+  * info: Add new method 'version'
+  * fua: Add an example of using flush-on-close=true
+  * fua: Small whitespace and comment changes
+  * fua: Use common code for flag logic
+  * fua: Add flush-on-close flag
+  * file: Improve documentation for cache=none
+  * file: Annotate a few local variables with 'const'
+  * server: Turn flush into a controlpath message
+  * Version 1.43.4.
+  * file: Document implicit assumption about eviction windows
+  * file: Reduce the size of the lock around write eviction
+  * file: Hard error if sync_file_range fails
+  * tests: Add more generic tests of file cache=none
+  * Version 1.43.3.
+  * tests: Add tests of file plugin cache=none
+  * file: If sync_file_range fails to start, don't add window to list
+  * file: Add debugging if sync_file_range / posix_fadvise fails
+  * Version 1.43.2.
+  * tests: Add test-golang-fork-warning.sh to EXTRA_DIST if !HAVE_GOLANG
+  * tests: Add test file to EXTRA_DIST even if !HAVE_LZIP
+  * common/protocol: Add a test of protocol string conversion functions
+  * common/protocol: Use thread-local storage for "unknown" string
+  * common/protocol/protostrings.h: Fix name_of_nbd_reply prototype
+  * protostrings: Use correct path to nbd-protocol.h
+  * docs: Add a note to --log entry about using nbdkit_error
+  * docs/nbdkit_error.pod: Describe interaction with --log option
+  * docs: Remove incorrect information about syslog
+  * docs: Simplify documentation for --log option
+  * server: Add --log=default
+  * server/log.c: Fix comment
+  * tests: Test that --log=/path appends to the log file
+  * golang: Issue a warning if we detect fork in golang plugin
+  * golang: Don't use '()' for no-argument C functions
+  * server: Add --log=/path option to log to a file
+  * server/log-fp.c: Flush the message after writing
+  * server: Make log-stderr function more generic
+  * build: Create sections in the configure file
+  * build: Add heading about basic build environment
+  * Version 1.43.1.
+  * build: Only use ANSI colour sequences if stdout is a terminal
+  * build: Embolden headings in configure output
+  * build: Mark libfuzzer as a developer only option
+  * build: Colourize features
+  * build: Default USDT probes to off on FreeBSD and macOS
+  * rust: Disable clippy warnings unless --enable-gcc-warnings is used
+  * server: Allow user statically defined tracing (USDT) probes
+
+-------------------------------------------------------------------
 Fri Jun 27 14:20:21 MDT 2025 - carnold@suse.com
 
 - Update to version 1.42.5: (jsc#PED-12706)

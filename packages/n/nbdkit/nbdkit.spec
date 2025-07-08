@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64 %{ix86}
 
 Name:           nbdkit
-Version:        1.42.5
+Version:        1.44.1
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -177,6 +177,7 @@ This package contains example plugins for %{name}.
 
 
 
+
 # The plugins below have non-trivial dependencies are so are
 # packaged separately.
 
@@ -195,6 +196,7 @@ Requires:       %{name}-server = %{version}-%{release}
 
 %description curl-plugin
 This package contains cURL (HTTP/FTP) support for %{name}.
+
 
 
 
@@ -681,6 +683,7 @@ export PATH=/usr/sbin:$PATH
 %{_libdir}/%{name}/filters/nbdkit-noparallel-filter.so
 %{_libdir}/%{name}/filters/nbdkit-nozero-filter.so
 %{_libdir}/%{name}/filters/nbdkit-offset-filter.so
+%{_libdir}/%{name}/filters/nbdkit-openonce-filter.so
 %{_libdir}/%{name}/filters/nbdkit-partition-filter.so
 %{_libdir}/%{name}/filters/nbdkit-pause-filter.so
 %{_libdir}/%{name}/filters/nbdkit-protect-filter.so
@@ -723,6 +726,7 @@ export PATH=/usr/sbin:$PATH
 %{_mandir}/man1/nbdkit-noparallel-filter.1*
 %{_mandir}/man1/nbdkit-nozero-filter.1*
 %{_mandir}/man1/nbdkit-offset-filter.1*
+%{_mandir}/man1/nbdkit-openonce-filter.1*
 %{_mandir}/man1/nbdkit-partition-filter.1*
 %{_mandir}/man1/nbdkit-pause-filter.1*
 %{_mandir}/man1/nbdkit-protect-filter.1*
@@ -765,6 +769,7 @@ export PATH=/usr/sbin:$PATH
 %{_includedir}/nbd-protocol.h
 %{_mandir}/man3/nbdkit-filter.3*
 %{_mandir}/man3/nbdkit-plugin.3*
+%{_mandir}/man3/nbdkit-tracing.3*
 %{_mandir}/man3/nbdkit_*.3*
 %{_mandir}/man1/nbdkit-release-notes-1.*.1*
 %{_libdir}/pkgconfig/nbdkit.pc
