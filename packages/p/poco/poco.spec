@@ -2,6 +2,7 @@
 # spec file for package poco
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +17,33 @@
 #
 
 
-%define sover  111
+%define sover  112
 # disabled for now as 4 of them fail
 %bcond_with tests
 Name:           poco
-Version:        1.14.1
+Version:        1.14.2
 Release:        0
 Summary:        C++ Framework for Network-based Applications
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
 URL:            https://pocoproject.org
 Source:         https://github.com/pocoproject/%{name}/archive/%{name}-%{version}-release.tar.gz
+BuildRequires:  apache2-devel
+BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.15
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  mysql-devel
 BuildRequires:  ninja
-BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  postgresql-devel
-BuildRequires:  unixODBC-devel
+BuildRequires:  pkgconfig(apr-1)
+BuildRequires:  pkgconfig(apr-util-1)
 BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libutf8proc)
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(odbc)
 BuildRequires:  pkgconfig(sqlite3) >= 3.7
 BuildRequires:  pkgconfig(zlib)
 
@@ -70,18 +74,7 @@ Requires:       libPocoRedis%{sover} = %{version}
 Requires:       libPocoUtil%{sover} = %{version}
 Requires:       libPocoXML%{sover} = %{version}
 Requires:       libPocoZip%{sover} = %{version}
-Requires:       libexpat-devel
-Requires:       libmysqlclient-devel
-Requires:       libstdc++-devel
-Requires:       openssl-devel
-Requires:       pcre2-devel
 Requires:       poco-cpspc = %{version}
-Requires:       postgresql-devel
-Requires:       unixODBC-devel
-Requires:       pkgconfig(libpng)
-Requires:       pkgconfig(libutf8proc)
-Requires:       pkgconfig(sqlite3) >= 3.7
-Requires:       pkgconfig(zlib)
 Provides:       libpoco-devel = %{version}
 
 %description devel
@@ -300,8 +293,10 @@ network- and Internet-based applications.
     -DENABLE_DATA_MYSQL=ON \
     -DENABLE_DATA_ODBC=ON \
     -DENABLE_DATA_SQLITE=ON \
+    -DENABLE_DATA_POSTGRESQL=ON \
     -DENABLE_JSON=ON \
     -DENABLE_MONGODB=ON \
+    -DENABLE_APACHECONNECTOR=ON \
     -DENABLE_NET=ON \
     -DENABLE_NETSSL=ON \
     -DENABLE_NETSSL_WIN=OFF \
@@ -315,7 +310,8 @@ network- and Internet-based applications.
     -DENABLE_TESTS=ON \
 %endif
     -DFORCE_OPENSSL=ON \
-    -DPOCO_UNBUNDLED=ON
+    -DPOCO_UNBUNDLED=ON \
+    %{nil}
 %cmake_build
 
 %install
@@ -352,66 +348,87 @@ export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:$(pwd)/build/lib:$LD_LIBRARY_PATH
 %ldconfig_scriptlets -n libPocoJWT%{sover}
 
 %files -n libPocoActiveRecord%{sover}
+%license LICENSE
 %{_libdir}/libPocoActiveRecord.so.%{sover}
 
 %files -n libPocoCrypto%{sover}
+%license LICENSE
 %{_libdir}/libPocoCrypto.so.%{sover}
 
 %files -n libPocoCppParser%{sover}
+%license LICENSE
 %{_libdir}/libPocoCppParser.so.%{sover}
 
 %files -n libPocoData%{sover}
+%license LICENSE
 %{_libdir}/libPocoData.so.%{sover}
 
 %files -n libPocoDataMySQL%{sover}
+%license LICENSE
 %{_libdir}/libPocoDataMySQL.so.%{sover}
 
 %files -n libPocoDataODBC%{sover}
+%license LICENSE
 %{_libdir}/libPocoDataODBC.so.%{sover}
 
 %files -n libPocoDataPostgreSQL%{sover}
+%license LICENSE
 %{_libdir}/libPocoDataPostgreSQL.so.%{sover}
 
 %files -n libPocoDataSQLite%{sover}
+%license LICENSE
 %{_libdir}/libPocoDataSQLite.so.%{sover}
 
 %files -n libPocoEncodings%{sover}
+%license LICENSE
 %{_libdir}/libPocoEncodings.so.%{sover}
 
 %files -n libPocoFoundation%{sover}
+%license LICENSE
 %{_libdir}/libPocoFoundation.so.%{sover}
 
 %files -n libPocoJSON%{sover}
+%license LICENSE
 %{_libdir}/libPocoJSON.so.%{sover}
 
 %files -n libPocoMongoDB%{sover}
+%license LICENSE
 %{_libdir}/libPocoMongoDB.so.%{sover}
 
 %files -n libPocoNet%{sover}
+%license LICENSE
 %{_libdir}/libPocoNet.so.%{sover}
 
 %files -n libPocoNetSSL%{sover}
+%license LICENSE
 %{_libdir}/libPocoNetSSL.so.%{sover}
 
 %files -n libPocoPDF%{sover}
+%license LICENSE
 %{_libdir}/libPocoPDF.so.%{sover}
 
 %files -n libPocoPrometheus%{sover}
+%license LICENSE
 %{_libdir}/libPocoPrometheus.so.%{sover}
 
 %files -n libPocoRedis%{sover}
+%license LICENSE
 %{_libdir}/libPocoRedis.so.%{sover}
 
 %files -n libPocoUtil%{sover}
+%license LICENSE
 %{_libdir}/libPocoUtil.so.%{sover}
 
 %files -n libPocoXML%{sover}
+%license LICENSE
 %{_libdir}/libPocoXML.so.%{sover}
 
 %files -n libPocoZip%{sover}
+%license LICENSE
 %{_libdir}/libPocoZip.so.%{sover}
 
 %files -n libPocoJWT%{sover}
+%license LICENSE
 %{_libdir}/libPocoJWT.so.%{sover}
 
 %files devel
@@ -424,6 +441,7 @@ export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:$(pwd)/build/lib:$LD_LIBRARY_PATH
 %{_libdir}/cmake/Poco/*.cmake
 
 %files cpspc
+%license LICENSE
 %{_bindir}/cpspc
 %{_bindir}/f2cpsp
 

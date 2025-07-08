@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul  6 15:51:33 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.14.2
+  * NetSSL_OpenSSL: non-blocking functions return value
+  * Fix crash in Poco::Net::NTLMCredentials::parseChallengeMessage
+  * Fix TCPServer continues to accept connections after stop()
+  * Fix XML memory leak
+  * CVE-2025-6375: MultipartInputStream Null Pointer Dereference
+    (boo#1245177)
+  * make utf8proc, PCRE2, zlib and expat private dependencies
+  * developer visible bug fixes
+- clean up requirements of the -devel package, in favor of auto-
+  generated depencencies
+- enable Apache httpd connector
+
+-------------------------------------------------------------------
 Tue Apr 22 09:37:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.14.1. Too many changes since last package update.
@@ -248,6 +264,8 @@ Wed Feb  7 13:28:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
   * PR #3102 Made it possible to use lowercase hex numbers, also
     when encoding JSON
   * PR #3009 switching iPhoneSimulator arch to 64 bit
+- includes fix for nteger overflow in Poco::UTF32Encoding
+  CVE-2023-52389 boo#1219269
 
 -------------------------------------------------------------------
 Mon Oct 30 22:11:30 UTC 2023 - Martin Hauke <mardnh@gmx.de>
