@@ -25,33 +25,14 @@ Group:          Amusements/Games/Strategy/Other
 URL:            https://pentobi.sourceforge.net/
 Source:         https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz
 BuildRequires:  cmake >= 3.18
-BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  extra-cmake-modules
-BuildRequires:  itstool
-BuildRequires:  kio-devel
-BuildRequires:  libxslt-tools
-BuildRequires:  pkgconfig
-BuildRequires:  qt6-linguist-devel
+# For hicolor dirs ownership
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  rsvg-convert
-BuildRequires:  pkgconfig(Qt6Concurrent)
-BuildRequires:  pkgconfig(Qt6Core) >= 6.5
-BuildRequires:  pkgconfig(Qt6QuickControls2)
-BuildRequires:  pkgconfig(Qt6WebView)
-BuildRequires:  pkgconfig(Qt6Widgets)
-BuildRequires:  pkgconfig(Qt6Xml)
-BuildRequires:  pkgconfig(appstream)
-Requires(post): hicolor-icon-theme
-Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
-# unresolvable: nothing provides pkgconfig(Qt6WebView)
-ExclusiveArch:  x86_64 aarch64
-%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
-%else
-BuildRequires:  gcc-c++
-%endif
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core) >= 6.5
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6QuickControls2)
+BuildRequires:  cmake(Qt6Xml)
 
 %description
 Pentobi is a computer opponent for the board game Blokus with
@@ -63,15 +44,11 @@ save and load games along with comments and move variations.
 %setup -q
 
 %build
-%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-export CC="gcc-12"
-export CXX="g++-12"
-%endif
-%cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON .
-%make_jobs VERBOSE=1
+%cmake_qt6 -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON
+%qt6_build
 
 %install
-%cmake_install
+%qt6_install
 
 %files
 %license LICENSE.md
