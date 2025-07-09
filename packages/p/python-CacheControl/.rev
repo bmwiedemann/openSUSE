@@ -183,4 +183,12 @@
     <comment></comment>
     <requestid>1274887</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>2d957b20769168e55b2148024f6c4ca2</srcmd5>
+    <version>0.14.3</version>
+    <time>1752074767</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1291263</requestid>
+  </revision>
 </revisionlist>

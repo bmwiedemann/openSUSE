@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-CacheControl
 Version:        0.14.3
@@ -29,14 +30,14 @@ BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-msgpack >= 0.5.2
 Requires:       python-requests >= 2.16.0
-Provides:       python-cachecontrol = %{version}-%{release}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     python-filelock >= 3.8.0
+Provides:       python-cachecontrol = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module CherryPy}
@@ -70,11 +71,8 @@ requests session object.
 # test_file_cache_recognizes_consumed_file_handle uses httpbin.org directly
 %pytest -v -k 'not test_file_cache_recognizes_consumed_file_handle'
 
-%post
-%python_install_alternative doesitcache
-
-%postun
-%python_uninstall_alternative doesitcache
+%pre
+%python_libalternatives_reset_alternative doesitcache
 
 %files %{python_files}
 %license LICENSE.txt
