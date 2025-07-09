@@ -1,8 +1,8 @@
 #
 # spec file for package cbonsai
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2021-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           cbonsai
-Version:        1.3.1
+Version:        1.4.2
 Release:        0
 Summary:        A bonsai tree generator for your terminal
 License:        GPL-3.0-or-later
@@ -33,8 +33,18 @@ A beautifully random bonsai tree generator. It intelligently
 creates, colors, and positions a bonsai tree, and is entirely
 configurable via CLI options.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash completion script for %{name}.
+
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup -n %{name}-v%{version}
 
 %build
 %make_build
@@ -46,6 +56,9 @@ make install DESTDIR=%{buildroot} PREFIX=%{_prefix}
 %license LICENSE
 %doc README.md
 %{_bindir}/cbonsai
-%{_mandir}/man1/cbonsai.1%{?ext_man}
+%{_mandir}/man6/cbonsai.6%{?ext_man}
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/cbonsai
 
 %changelog
