@@ -15,12 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %global soname  libnghttp2
 %global sover   14
 %global flavor @BUILD_FLAVOR@%{nil}
+%if 0%{?suse_version} > 1600
+%bcond_without http3
+%else
+%bcond_with http3
+%endif
 Name:           nghttp2
-Version:        1.65.0
+Version:        1.66.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT
@@ -30,15 +34,9 @@ Source0:        https://github.com/nghttp2/nghttp2/releases/download/v%{version}
 Source1:        https://github.com/nghttp2/nghttp2/releases/download/v%{version}/nghttp2-%{version}.tar.xz.asc
 Source2:        nghttp2.keyring
 Source3:        baselibs.conf
-%if 0%{?suse_version} && 0%{?suse_version} == 1500
-BuildRequires:  gcc13-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(cunit)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libcares)
@@ -48,9 +46,21 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl) >= 1.1.1
 BuildRequires:  pkgconfig(zlib)
+%if 0%{?suse_version} && 0%{?suse_version} == 1500
+BuildRequires:  gcc13-c++
+%else
+BuildRequires:  gcc-c++
+%endif
+%if %{with http3}
+BuildRequires:  pkgconfig(libevent_openssl)
+BuildRequires:  pkgconfig(libnghttp3)
+BuildRequires:  pkgconfig(libngtcp2)
+%endif
 %ifnarch ppc %{arm}
 BuildRequires:  pkgconfig(jemalloc)
 %endif
+# for util/test_util_localtime_date
+BuildRequires:  timezone
 
 %description
 This is an implementation of Hypertext Transfer Protocol version 2.
@@ -100,33 +110,22 @@ HTTP/2 client, server and proxy.
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} == 1500
-export CC=/usr/bin/gcc-13
-export CXX=/usr/bin/g++-13
+export CC=%{_bindir}/gcc-13
+export CXX=%{_bindir}/g++-13
 %endif
 %configure \
   --disable-static        \
   --disable-silent-rules  \
   --enable-app            \
+%if %{with http3}
+  --enable-http3          \
+%endif
   %{nil}
 %make_build all
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-
-
-# Do not ship this
-rm -rf %{buildroot}%{_datadir}/doc/nghttp2
-
-# None of applications using these man pages are built.
-rm -rf %{buildroot}%{_mandir}/man1/* \
-  doc/manual/html/.buildinfo
-
-# https://build.opensuse.org/request/show/1212476
-%if %{suse_version} >= 1600
-%python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/fetch-ocsp-response
-%endif
-
 
 %check
 %make_build check
@@ -140,7 +139,10 @@ rm -rf %{buildroot}%{_mandir}/man1/* \
 %{_bindir}/nghttp
 %{_bindir}/nghttpd
 %{_bindir}/nghttpx
-%{_datadir}/%{name}/
+%{_mandir}/man1/h2load.1%{?ext_man}
+%{_mandir}/man1/nghttp.1%{?ext_man}
+%{_mandir}/man1/nghttpd.1%{?ext_man}
+%{_mandir}/man1/nghttpx.1%{?ext_man}
 
 %files -n %{soname}-%{sover}
 %license COPYING
@@ -151,5 +153,8 @@ rm -rf %{buildroot}%{_mandir}/man1/* \
 %{_includedir}/%{name}/%{name}*.h
 %{_libdir}/%{soname}.so
 %{_libdir}/pkgconfig/%{soname}.pc
+
+%files doc
+%{_datadir}/doc/nghttp2
 
 %changelog

@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Jun 25 10:43:02 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Ship manpages together with binaries
+- Ship documentation in previously dangling doc subpackage
+
+-------------------------------------------------------------------
+Mon Jun 23 05:49:03 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.66.0:
+  * Bump github.com/quic-go/quic-go to v0.50.0
+  * build(deps): bump golang.org/x/net from 0.35.0 to 0.37.0
+  * h2load: Check the return value from OBJ_nid2sn
+  * build(deps): bump golang.org/x/net from 0.37.0 to 0.38.0
+  * Remove go toolchain
+  * build(deps): bump github.com/quic-go/quic-go from 0.50.0 to
+    0.50.1
+  * nghttpx: Close h1 connection on CONNECT failure
+  * doc:rubydomain: Fix build failure with rubydomain namespace
+  * Update integration tests
+  * quic: Use secure random generator for ngtcp2_rand
+  * Revert "quic: Use secure random generator for ngtcp2_rand"
+  * quic: Use secure random generator for ngtcp2_rand
+  * GHA: Replace macos-13 with macos-15
+  * build(deps): bump golang.org/x/net from 0.38.0 to 0.39.0
+  * Bump ngtcp2
+  * nghttpx: Refactor QUIC packet write
+  * h2load: Refactor QUIC packet write path
+  * nghttpx: Adopt std::span::first
+  * Rewrite util::quote_string
+  * Rewrite util::utos functions
+  * Rewrite util::decode_hex
+  * Make util::format_hex constexpr
+  * Remove util::inp_strlower in favor of util::tolower
+  * Refactor util::make_http_hostport and util::make_hostport
+  * Refine output iterator requirements
+  * Make base64 encoder/decoder constexpr
+  * Optimize util::utos
+  * Optimize util::format_hex
+  * Optimize util::utox
+  * Disallow array to substitute R &&
+  * Revert "nghttpx: No need to capitalize HTTP/1.1 field name"
+  * Refactor http2::capitalize
+  * Bump quic-go to v0.52.0
+  * nghttpx: Fix integral logging is always done in 64 bits
+    integer
+
+-------------------------------------------------------------------
+Sun Jun 22 13:45:05 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Build with HTTP/3 support
+- Tidy up spec file
+
+-------------------------------------------------------------------
 Sat Apr  5 13:58:34 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - version update to 1.65.0
