@@ -355,4 +355,15 @@
   * Small docco update</comment>
     <requestid>1267636</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>75e747174e475de68c7f110e32f61136</srcmd5>
+    <version>7.1.4</version>
+    <time>1752074763</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives
+
+- Add reproducible-doc-build.patch to make the build reproducible.
+  gh#RDFLib/rdflib#2645</comment>
+    <requestid>1291244</requestid>
+  </revision>
 </revisionlist>

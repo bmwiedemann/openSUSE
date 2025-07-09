@@ -18,37 +18,37 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "doc"
-%bcond_without doc
 %define psuffix -doc
+%bcond_without doc
 %else
-%bcond_with doc
 %define psuffix %{nil}
+%bcond_with doc
 %endif
-
 # Tests don't work and cause a dependency loop with python-SPARQLWrapper
 %bcond_with tests
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-rdflib%{psuffix}
 Version:        7.1.4
 Release:        0
 Summary:        A Python library for working with RDF
 License:        BSD-3-Clause
-URL:            http://rdflib.net/
+URL:            https://rdflib.net/
 Source:         https://files.pythonhosted.org/packages/source/r/rdflib/rdflib-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM sphinx8.patch gh#RDFLib/rdflib#2956 -- daniel.garcia@suse.com
 Patch0:         sphinx8.patch
+# PATCH-FIX-OPENSUSE reproducible-doc-build.patch gh#RDFLib/rdflib#2645 -- daniel.garcia@suse.com
+Patch1:         reproducible-doc-build.patch
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 BuildArch:      noarch
-
 %if %{with tests}
 BuildRequires:  %{python_module SPARQLWrapper}
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module pytest}
 %endif
-
 %if %{with doc}
 BuildRequires:  %{python_module rdflib = %{version}}
 BuildRequires:  python3-Sphinx
@@ -65,8 +65,8 @@ BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xml}
 Requires:       python-pyparsing
-%python_subpackages
 %endif
+%python_subpackages
 
 %description
 RDFLib is a Python library for working with RDF, a simple yet powerful
@@ -117,19 +117,12 @@ popd
 
 %else
 
-%post
-%python_install_alternative rdfs2dot
-%python_install_alternative rdfpipe
-%python_install_alternative rdfgraphisomorphism
-%python_install_alternative rdf2dot
-%python_install_alternative csv2rdf
-
-%postun
-%python_uninstall_alternative rdfs2dot
-%python_uninstall_alternative rdfpipe
-%python_uninstall_alternative rdfgraphisomorphism
-%python_uninstall_alternative rdf2dot
-%python_uninstall_alternative csv2rdf
+%pre
+%python_libalternatives_reset_alternative rdfs2dot
+%python_libalternatives_reset_alternative rdfpipe
+%python_libalternatives_reset_alternative rdfgraphisomorphism
+%python_libalternatives_reset_alternative rdf2dot
+%python_libalternatives_reset_alternative csv2rdf
 
 %files %{python_files}
 %license LICENSE

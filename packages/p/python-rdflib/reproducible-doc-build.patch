@@ -1,0 +1,26 @@
+diff --git a/rdflib/term.py b/rdflib/term.py
+index 3e397674..4e0cfcf1 100644
+--- a/rdflib/term.py
++++ b/rdflib/term.py
+@@ -23,6 +23,7 @@ underlying Graph:
+ 
+ from __future__ import annotations
+ 
++import sys
+ import abc
+ import re
+ from fractions import Fraction
+@@ -483,7 +484,12 @@ class BNode(IdentifiedNode):
+                 else:
+                     node_id = sn_result
+             else:
+-                node_id = uuid4().hex
++                # Do not generate random id for doc, this will help with reproducible
++                # builds https://github.com/RDFLib/rdflib/issues/2645
++                if "sphinx-build" in sys.argv[0]:
++                    node_id = "NODEID"
++                else:
++                    node_id = uuid4().hex
+             # note, for two (and only two) string variables,
+             # concat with + is faster than f"{x}{y}"
+             value = _prefix + f"{node_id}"
