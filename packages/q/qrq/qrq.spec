@@ -1,6 +1,7 @@
 #
 # spec file for package qrq
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,10 +26,12 @@ Group:          Productivity/Hamradio/Other
 URL:            https://fkurz.net/ham/qrq.html
 Source:         https://fkurz.net/ham/qrq/%{name}-%{version}.tar.gz
 Patch0:         reproducible.patch
+# fix build with gcc15
+Patch1:         qrq-gcc15.patch
+BuildRequires:  dos2unix
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(ncurses)
-BuildRequires:  dos2unix
 
 %description
 qrq is a Morse telegraphy trainer. It is not intended for learning telegraphy,

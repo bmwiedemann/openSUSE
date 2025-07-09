@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  9 07:52:06 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + qrq-gcc15.patch
+
+-------------------------------------------------------------------
 Tue Feb 18 16:01:54 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to normalize build time
