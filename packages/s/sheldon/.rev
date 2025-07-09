@@ -72,4 +72,13 @@
 - update to 0.8.2</comment>
     <requestid>1289790</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d238f7bbb5102fe33ca2ab1be71e4828</srcmd5>
+    <version>0.8.4</version>
+    <time>1752074871</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.4
+ * Ignore not found errors from fmutex for config init and edits</comment>
+    <requestid>1291303</requestid>
+  </revision>
 </revisionlist>

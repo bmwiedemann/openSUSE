@@ -17,7 +17,7 @@
 
 
 Name:           sheldon
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Fast, configurable, shell plugin manager
 License:        MIT OR Apache-2.0 AND MIT AND Zlib AND LGPL-2.1-or-later AND CC-BY-SA-4.0 AND Apache-2.0 WITH LLVM-exception AND BSD-4-clause AND OpenSSL AND Unicode AND SUSE-GPL-2.0-with-linking-exception
