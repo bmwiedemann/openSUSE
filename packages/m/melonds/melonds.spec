@@ -19,7 +19,7 @@
 %define __builder ninja
 %define _name melonDS
 Name:           melonds
-Version:        1.0rc
+Version:        1.0
 Release:        0
 Summary:        Nintendo DS emulator
 License:        GPL-3.0-or-later
@@ -55,6 +55,9 @@ BuildRequires:  gcc13-c++
 sed -i '1s|^|include_directories("%{_includedir}/wayland")\n\n|' src/frontend/qt_sdl/CMakeLists.txt
 
 %build
+%if 0%{?is_opensuse} && !0%{?sle_version}
+%define _lto_cflags %{nil}
+%endif
 %if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
 export CC="gcc-13"
 export CXX="g++-13"

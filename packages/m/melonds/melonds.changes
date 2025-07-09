@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  9 01:16:45 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Disabled LTO for gcc-c++ >= 15 (internal compiler error).
+- Updated to 1.0
+  * https://github.com/melonDS-emu/melonDS/releases/tag/1.0
+
+-------------------------------------------------------------------
 Sun Apr 27 23:56:53 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated spec-file via spec-cleaner and manual optimizations.
