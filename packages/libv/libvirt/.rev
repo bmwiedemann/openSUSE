@@ -4905,4 +4905,17 @@ number to the last changelog entry.</comment>
   bsc#1242979</comment>
     <requestid>1289695</requestid>
   </revision>
+  <revision rev="427" vrev="2">
+    <srcmd5>9a2b929a3eed9b281be7d4e1782fa716</srcmd5>
+    <version>11.5.0</version>
+    <time>1752074790</time>
+    <user>anag_factory</user>
+    <comment>Factory update for libvirt that contains a bug fix and amendment to
+a previous changelog entry.
+
+- qemu: ARM: Change default SCSI controller model from 'lsilogic'
+  to 'virtio-scsi'
+  bsc#1240762</comment>
+    <requestid>1291368</requestid>
+  </revision>
 </revisionlist>

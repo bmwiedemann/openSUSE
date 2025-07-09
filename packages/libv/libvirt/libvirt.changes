@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  8 21:33:25 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- qemu: ARM: Change default SCSI controller model from 'lsilogic'
+  to 'virtio-scsi'
+  bsc#1240762
+
+-------------------------------------------------------------------
 Tue Jul  1 23:00:51 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 11.5.0
@@ -9,7 +16,7 @@ Tue Jul  1 23:00:51 UTC 2025 - James Fehlig <jfehlig@suse.com>
 Tue Jul  1 16:56:29 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - qemu: Use numa-preplace instead of numad for numa placement advice
-  bsc#1242979
+  bsc#1242979, jsc#PED-12821
 
 -------------------------------------------------------------------
 Fri Jun  6 22:32:30 UTC 2025 - James Fehlig <jfehlig@suse.com>
