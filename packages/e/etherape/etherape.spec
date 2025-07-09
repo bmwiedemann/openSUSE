@@ -25,6 +25,8 @@ Group:          Productivity/Networking/Diagnostic
 URL:            https://etherape.sourceforge.io/
 Source0:        https://prdownloads.sourceforge.net/etherape/%{name}-%{version}.tar.gz
 Patch0:         etherape-0.9.12-desktop.patch
+# https://sourceforge.net/p/etherape/bugs/112/
+Patch1:         etherape-gcc15.patch
 BuildRequires:  docbook_4
 BuildRequires:  fdupes
 BuildRequires:  libpcap-devel
