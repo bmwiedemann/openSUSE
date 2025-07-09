@@ -34,6 +34,7 @@ Fri May  9 22:46:11 UTC 2025 - munix9@googlemail.com
   * Always forward Unspecified (2) CICP color primaries, transfer characteristics,
     and matrix coefficients to the AV1 encoder. Rely on the 'colr' box instead.
   * Declare *RowBytes as size_t in avifImageRGBToYUV()
+    (CVE-2025-48175, bsc#1243270)
   * Check ftell returned value in avifjpeg.c
   * Add integer overflow checks to makeRoom.
     (CVE-2025-48174, bsc#1243269)
@@ -251,7 +252,8 @@ Thu Dec 21 09:27:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.0.3:
   * Rewrite the fix for memory errors fixed in 1.0.2
-  * CVE-2023-6704: Fix use-after-free errors (boo#1218303)
+  * Fix use-after-free errors.
+    (CVE-2023-6704, boo#1218303)
   * src/reformat.c: Allocate the threadData array directly
 
 -------------------------------------------------------------------
