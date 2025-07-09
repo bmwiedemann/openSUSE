@@ -17,7 +17,7 @@
 
 
 Name:           gvisor-tap-vsock
-Version:        0.8.5
+Version:        0.8.6
 Release:        0
 Summary:        Go replacement for libslirp and VPNKit
 License:        Apache-2.0

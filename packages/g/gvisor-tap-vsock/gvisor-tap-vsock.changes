@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul 04 09:13:43 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 0.8.6:
+  * build(deps): bump golang.org/x/crypto from 0.37.0 to 0.38.0
+  * Add a step to push gvforwarder image to quay.io in release workflow
+  * Document how gvisor-tap-vsock releases are made
+  * build(deps): bump golang.org/x/net from 0.37.0 to 0.38.0
+  * build(deps): bump github.com/coreos/stream-metadata-go
+  * gha: Switch to go 1.23 and 1.24
+  * gha: Switch to ubuntu 22.04
+  * gvproxy: Add --pcap option
+  * build(deps): bump github.com/onsi/gomega from 1.36.2 to 1.37.0
+  * build(deps): bump golang.org/x/crypto from 0.36.0 to 0.37.0
+  * build(deps): bump github.com/miekg/dns from 1.1.63 to 1.1.65
+  * build(deps): bump golang.org/x/sync from 0.12.0 to 0.13.0
+  * build(deps): bump github.com/coreos/stream-metadata-go
+  * CI changes to build images
+  * Dockerfile changes to build gvforwarder
+
+-------------------------------------------------------------------
 Fri Mar 21 04:27:00 UTC 2025 - madhankumar.chellamuthu@suse.com
 
 - Update to version 0.8.5:
