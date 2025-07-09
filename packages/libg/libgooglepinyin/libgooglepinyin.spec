@@ -1,7 +1,7 @@
 #
 # spec file for package libgooglepinyin
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,7 @@ The libgooglepinyin-devel package includes the header files for the googlepinyin
 pushd build
 cmake   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DLIB_INSTALL_DIR=%{_libdir} \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         ..
 make
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  8 06:15:58 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Mark use of CMake 3.5 okay to make it compatible with CMake 4.0.
+
+-------------------------------------------------------------------
 Fri Feb  2 15:26:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop bogus dependency on python-base from the devel project:
