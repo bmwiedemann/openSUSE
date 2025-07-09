@@ -584,8 +584,10 @@ fi
 %{_datadir}/OGRE/plugins%{sover}.cfg
 %{_datadir}/OGRE/plugins.cfg
 %ghost %{_sysconfdir}/alternatives/plugins.cfg
+%ifnarch aarch64 %{arm}
 %{plugin_dir}/RenderSystem_GL.so{,.%{sover}}
 %{plugin_dir}/RenderSystem_GL3Plus.so{,.%{sover}}
+%endif
 %{plugin_dir}/RenderSystem_GLES2.so{,.%{sover}}
 %{plugin_dir}/RenderSystem_Vulkan.so{,.%{sover}}
 %{plugin_dir}/Plugin_BSPSceneManager.so{,.%{sover}}

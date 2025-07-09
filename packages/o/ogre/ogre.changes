@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 24 06:54:23 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix packaging on aarch64 and %{arm}
+
+-------------------------------------------------------------------
 Thu May  2 18:12:26 UTC 2024 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Disable mono bindings by default to fix build on Tumbleweed
