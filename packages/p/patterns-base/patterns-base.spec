@@ -351,6 +351,27 @@ Man tool and Man pages for various tools and POSIX API.
 
 ################################################################################
 
+%package kdump
+%pattern_basetechnologies
+Summary:        Kernel dump tooling
+Group:          Metapackages
+Provides:       pattern() = kdump
+Provides:       pattern-icon() = pattern-basis
+Provides:       pattern-order() = 1005
+Provides:       pattern-visible()
+Requires:       kdump
+Recommends:     (cockpit-kdump if cockpit)
+Requires:       pattern() = minimal_base
+
+%description kdump
+Tools used to trigger and handle kernel dump (kdump).
+
+%files kdump
+%dir %{_docdir}/patterns
+%{_docdir}/patterns/kdump.txt
+
+################################################################################
+
 %package enhanced_base
 %pattern_basetechnologies
 Summary:        Enhanced Base System
@@ -364,6 +385,8 @@ Requires:       pattern() = base
 Recommends:     pattern() = documentation
 Recommends:     pattern() = sw_management
 Recommends:     pattern() = yast2_basis
+%else
+Recommends:     pattern() = kdump
 %endif
 Requires:       openssh
 Recommends:     aaa_base-extras
@@ -1145,7 +1168,7 @@ base enhanced_base minimal_base sw_management; do
 done
 
 # These packages don't generate a 32bit pattern
-for i in basesystem bootloader documentation fips transactional_base selinux \
+for i in basesystem bootloader documentation fips transactional_base selinux kdump \
 %if 0%{?is_opensuse}
 console update_test basic_desktop \
 %ifarch armv6hl armv7hl aarch64

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  2 15:04:17 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Add a kdump pattern (bsc#1244712).
+
+-------------------------------------------------------------------
 Sat Jun 28 08:47:11 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Add myrlyn to x11_enhanced 
