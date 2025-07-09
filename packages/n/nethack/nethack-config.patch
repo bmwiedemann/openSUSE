@@ -141,18 +141,16 @@ Index: sys/unix/Makefile.src
 ===================================================================
 --- sys/unix/Makefile.src.orig
 +++ sys/unix/Makefile.src
-@@ -124,8 +124,8 @@ SYSOBJ = ioctl.o unixmain.o unixtty.o un
- 
- # flags for Linux
+@@ -126,6 +126,8 @@ SYSOBJ = ioctl.o unixmain.o unixtty.o un
  #   compile normally
--# CFLAGS = -O2 -fomit-frame-pointer -I../include
--# LFLAGS = -L/usr/X11R6/lib
-+CFLAGS = -O2 -fomit-frame-pointer -I../include
+ # CFLAGS = -O2 -fomit-frame-pointer -I../include -Wno-old-style-definition -Wno-unused-result -Wno-format-overflow
+ # LFLAGS = -L/usr/X11R6/lib
++CFLAGS = -O2 -fomit-frame-pointer -I../include -Wno-old-style-definition -Wno-unused-result -Wno-format-overflow
 +LFLAGS = -L/usr/X11R6/lib
  #   OR compile backwards compatible a.out format
  # CFLAGS = -O2 -b i486-linuxaout -fomit-frame-pointer -I../include
  # LFLAGS = -b i486-linuxaout -L/usr/X11R6/lib
-@@ -151,8 +151,8 @@ GNOMEINC=-I/usr/lib/glib/include -I/usr/
+@@ -151,8 +153,8 @@ GNOMEINC=-I/usr/lib/glib/include -I/usr/
  # flags for debugging:
  # CFLAGS = -g -I../include
  
@@ -163,7 +161,7 @@ Index: sys/unix/Makefile.src
  
  # The Qt and Be window systems are written in C++, while the rest of
  # NetHack is standard C.  If using Qt, uncomment the LINK line here to get
-@@ -230,8 +230,8 @@ WINOBJ = $(WINTTYOBJ)
+@@ -230,8 +232,8 @@ WINOBJ = $(WINTTYOBJ)
  # WINTTYLIB = -ltermcap
  # WINTTYLIB = -lcurses
  # WINTTYLIB = -lcurses16

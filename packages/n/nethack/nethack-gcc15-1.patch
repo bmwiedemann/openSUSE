@@ -1,0 +1,69 @@
+Index: include/system.h
+===================================================================
+--- include/system.h.orig
++++ include/system.h
+@@ -57,7 +57,11 @@ typedef long	off_t;
+ #endif
+ #ifndef SIG_RET_TYPE
+ # if defined(NHSTDC) || defined(POSIX_TYPES) || defined(OS2) || defined(__DECC)
+-#  define SIG_RET_TYPE void (*)()
++#  if defined(__GLIBC__) && defined(__GNUC__)
++#   define SIG_RET_TYPE __sighandler_t
++#  else
++#   define SIG_RET_TYPE void (*)()
++#  endif
+ # endif
+ #endif
+ #ifndef SIG_RET_TYPE
+@@ -87,8 +91,10 @@ E int FDECL(srandom, (unsigned int));
+ #  endif
+ # endif
+ #else
++#ifndef __GLIBC__
+ E long lrand48();
+ E void srand48();
++#endif
+ #endif /* BSD || ULTRIX || RANDOM */
+ 
+ #if !defined(BSD) || defined(ultrix)
+@@ -342,6 +348,7 @@ E char *FDECL(memset, (char*,int,int));
+ # endif /* TOS */
+ #endif /* MICRO */
+ 
++#ifndef __GLIBC__
+ #if defined(BSD) && defined(ultrix)	/* i.e., old versions of Ultrix */
+ E void sleep();
+ #endif
+@@ -351,6 +358,7 @@ E unsigned sleep();
+ #if defined(HPUX)
+ E unsigned int FDECL(sleep, (unsigned int));
+ #endif
++#endif
+ #ifdef VMS
+ E int FDECL(sleep, (unsigned));
+ #endif
+@@ -501,7 +509,11 @@ E char *FDECL(tgoto, (const char *,int,i
+ #else
+ # if ! (defined(HPUX) && defined(_POSIX_SOURCE))
+ E int FDECL(tgetent, (char *,const char *));
++#if !(defined(__GLIBC__) && defined(__GNUC__))
+ E void FDECL(tputs, (const char *,int,int (*)()));
++#else
++E int tputs(const char *, int, int (*)(int));
++#endif
+ # endif
+ E int FDECL(tgetnum, (const char *));
+ E int FDECL(tgetflag, (const char *));
+Index: sys/unix/Makefile.src
+===================================================================
+--- sys/unix/Makefile.src.orig
++++ sys/unix/Makefile.src
+@@ -124,7 +124,7 @@ SYSOBJ = ioctl.o unixmain.o unixtty.o un
+ 
+ # flags for Linux
+ #   compile normally
+-# CFLAGS = -O2 -fomit-frame-pointer -I../include
++# CFLAGS = -O2 -fomit-frame-pointer -I../include -Wno-old-style-definition -Wno-unused-result -Wno-format-overflow
+ # LFLAGS = -L/usr/X11R6/lib
+ #   OR compile backwards compatible a.out format
+ # CFLAGS = -O2 -b i486-linuxaout -fomit-frame-pointer -I../include

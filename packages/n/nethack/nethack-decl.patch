@@ -1,15 +1,8 @@
---- include/system.h
+Index: include/system.h
+===================================================================
+--- include/system.h.orig
 +++ include/system.h
-@@ -87,14 +87,18 @@
- #  endif
- # endif
- #else
-+# ifndef __GLIBC__
- E long lrand48();
- E void srand48();
-+# endif
- #endif /* BSD || ULTRIX || RANDOM */
- 
+@@ -100,7 +100,9 @@ E void srand48();
  #if !defined(BSD) || defined(ultrix)
  			/* real BSD wants all these to return int */
  # ifndef MICRO
@@ -19,7 +12,7 @@
  # endif /* MICRO */
  /* compensate for some CSet/2 bogosities */
  # if defined(OS2_CSET2) && defined(OS2_CSET2_VER_2)
-@@ -113,7 +117,9 @@
+@@ -119,7 +121,9 @@ E void FDECL(exit, (int));
  # if defined(__STDC__) || !defined(FLEX_SCANNER)
  #  ifndef OS2_CSET2
  #   ifndef MONITOR_HEAP
@@ -29,7 +22,7 @@
  #   endif
  #  endif
  # endif
-@@ -346,26 +352,34 @@
+@@ -353,27 +357,35 @@ E char *FDECL(memset, (char*,int,int));
  E void sleep();
  #endif
  #if defined(ULTRIX) || defined(SYSV)
@@ -39,6 +32,7 @@
  #endif
  #if defined(HPUX)
  E unsigned int FDECL(sleep, (unsigned int));
+ #endif
  #endif
  #ifdef VMS
 +# ifndef __GLIBC__
@@ -64,7 +58,7 @@
  #  ifdef VMS
  E pid_t NDECL(getppid);
  #  endif
-@@ -476,9 +490,11 @@
+@@ -484,9 +496,11 @@ E  char *sprintf();
  #  if !defined(SVR4) && !defined(apollo)
  #   if !(defined(ULTRIX_PROTO) && defined(__GNUC__))
  #    if !(defined(SUNOS4) && defined(__STDC__)) /* Solaris unbundled cc (acc) */

@@ -103,4 +103,33 @@
     <comment></comment>
     <requestid>1253889</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>f047ec7a98705646b5a71d465bae5305</srcmd5>
+    <version>3.4.3</version>
+    <time>1752074869</time>
+    <user>anag_factory</user>
+    <comment>Fixes to make NetHack build with gcc15:
+
+- Add nethack-WINCHAIN-a-framework-allowing-multiple-processors-be.patch:
+  Define preprocessor token UNUSED to mark unused variables. (boo#1245527)
+- Add nethack-address-H4266-build-problem-with-clang-Modules.patch: Fix
+  passing an incorrect function signature for signal handling.
+  allmain.c: In function ‘newgame’:
+  allmain.c:507:31: error: passing argument 2 of ‘signal’ from incompatible pointer type [-Wincompatible-pointer-types]
+  507 |         (void) signal(SIGINT, (SIG_RET_TYPE) done1);
+      |                               ^~~~~~~~~~~~~~~~~~~~
+      |                               |
+      |                               void (*)(void)
+  The patch from upstream changes a number of things for OSX support,
+  but we only take the fixes to signal handling. (boo#1245527)
+- Add nethack-tty-xputc.patch: tputs() wants a callback that returns
+  an integer. Backport upstream fix. (boo#1245527)
+- Add nethack-gcc15-1.patch: Adopt upstream fix for NetHack 3.6 to
+  the code base to make it build with Gcc 15. Reference avalable at
+  https://nethack.org/v367/bugmore/gcc15-1.diff. (boo#1245527)
+- Refresh patches on top of upstream backports.
+- Start listing patches specific to openSUSE at offset 50. This leaves
+  room for backports in the range below.</comment>
+    <requestid>1291315</requestid>
+  </revision>
 </revisionlist>

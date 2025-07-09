@@ -27,18 +27,26 @@ Source0:        nethack-343-src.tar.bz2
 Source1:        nethack-rpmlintrc
 # PATCH-FIX-UPSTREAM nethack-escapes-revamp.patch boo#1239138
 Patch0:         nethack-escapes-revamp.patch
+# PATCH-FIX-UPSTREAM nethack-WINCHAIN-a-framework-allowing-multiple-processors-be.patch boo#1245527
+Patch1:         nethack-WINCHAIN-a-framework-allowing-multiple-processors-be.patch
+# PATCH-FIX-UPSTREAM nethack-address-H4266-build-problem-with-clang-Modules.patch boo#1245527
+Patch2:         nethack-address-H4266-build-problem-with-clang-Modules.patch
+# PATCH-FIX-UPSTREAM nethack-tty-xputc.patch boo#1245527
+Patch3:         nethack-tty-xputc.patch
+# PATCH-FIX-UPSTREAM nethack-gcc15-1.patch boo#1245527
+Patch4:         nethack-gcc15-1.patch
 # PATCH-FIX-OPENSUSE nethack-config.patch Adapt build to openSUSE systems
-Patch1:         nethack-config.patch
+Patch50:        nethack-config.patch
 # PATCH-FIX-OPENSUSE nethack-decl.patch Do not redeclare system interfaces
-Patch2:         nethack-decl.patch
+Patch51:        nethack-decl.patch
 # PATCH-FIX-OPENSUSE nethack-escape-char.patch
-Patch3:         nethack-escape-char.patch
+Patch52:        nethack-escape-char.patch
 # PATCH-FIX-OPENSUSE nethack-secure.patch Handle SECURE in recover utility
-Patch4:         nethack-secure.patch
+Patch53:        nethack-secure.patch
 # PATCH-FIX-OPENSUSE nethack-gzip.patch Use gzip compression
-Patch5:         nethack-gzip.patch
+Patch54:        nethack-gzip.patch
 # PATCH-FIX-OPENSUSE nethack-reproducible.patch boo#1047218
-Patch6:         nethack-reproducible.patch
+Patch55:        nethack-reproducible.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -58,14 +66,18 @@ Persist against various monsters and defeat the Wizard of Yendor.
 This package contains the text interface.
 
 %prep
-%setup -q
+%setup
 %patch -P0
-%patch -P1
-%patch -P2
-%patch -P3
+%patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
 %patch -P4
-%patch -P5
-%patch -P6 -p1
+%patch -P50
+%patch -P51
+%patch -P52
+%patch -P53
+%patch -P54
+%patch -P55 -p1
 
 %build
 # copy Makefiles and add optimization flags
