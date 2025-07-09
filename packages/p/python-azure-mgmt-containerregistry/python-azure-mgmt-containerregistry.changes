@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  9 07:56:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 14.1.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 14.1.0~b1
+
+-------------------------------------------------------------------
 Tue Apr 29 07:24:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

@@ -289,4 +289,16 @@
 - Update Requires from setup.py (forwarded request 1273327 from glaubitz)</comment>
     <requestid>1273403</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>dfd78c99d3b7d521de8c0d93900af57b</srcmd5>
+    <version>14.1.0~b1</version>
+    <time>1752074981</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 14.1.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 14.1.0~b1 (forwarded request 1291417 from glaubitz)</comment>
+    <requestid>1291493</requestid>
+  </revision>
 </revisionlist>
