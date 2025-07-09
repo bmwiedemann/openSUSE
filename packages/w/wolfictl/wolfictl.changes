@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 09 04:45:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.0:
+  * build(deps): bump the chainguard group with 4 updates (#1669)
+  * fix(scan): ensure deterministic ordering of merged findings
+  * chore(scan): fix golangci-lint rangeValCopy warnings
+  * test(scan): update golden files for deduplicated vulnerability
+    findings
+  * feat(scan): deduplicate vulnerability findings with different
+    IDs
+
+-------------------------------------------------------------------
 Mon Jul 07 04:41:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.37.9:
