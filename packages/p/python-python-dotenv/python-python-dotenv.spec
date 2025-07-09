@@ -16,6 +16,8 @@
 #
 
 
+# rubygem-dotenv also provides executable dotenv
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-python-dotenv
 Version:        1.1.0
@@ -32,12 +34,11 @@ BuildRequires:  %{python_module pytest >= 3.0.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sh >= 2.0}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-click >= 5.0
-# rubygem-dotenv also provides executable dotenv
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Suggests:       python-jupyter_ipython
 # There is a very similar Python package which also used `dotenv` namespace
 Conflicts:      python-dotenv
@@ -72,11 +73,8 @@ $python -m pytest -v -k "not ipython"
 }
 mv %{buildroot}%{_bindir}/dotenv.orig %{buildroot}%{_bindir}/dotenv
 
-%post
-%python_install_alternative dotenv
-
-%postun
-%python_uninstall_alternative dotenv
+%pre
+%python_libalternatives_reset_alternative dotenv
 
 %files %{python_files}
 %doc README.md
