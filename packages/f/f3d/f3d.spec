@@ -18,7 +18,7 @@
 
 %define c_lib   libf3d3
 Name:           f3d
-Version:        3.0.0
+Version:        3.2.0
 Release:        0
 Summary:        Fast and minimalist 3D viewer
 License:        BSD-3-Clause
@@ -134,7 +134,7 @@ rm -rfv %{buildroot}%{_docdir}/f3d
 mkdir -p %{buildroot}%{_sysconfdir}/f3d/config.d
 install -Dm644 plugins/assimp/configs/config.d/10_assimp.json %{buildroot}%{_sysconfdir}/f3d/config.d/10_assimp.json
 install -Dm644 plugins/alembic/configs/config.d/10_alembic.json %{buildroot}%{_sysconfdir}/f3d/config.d/10_alembic.json
-install -Dm644 plugins/exodus/configs/config.d/10_exodus.json %{buildroot}%{_sysconfdir}/f3d/config.d/10_exodus.json
+#install -Dm644 plugins/exodus/configs/config.d/10_exodus.json %{buildroot}%{_sysconfdir}/f3d/config.d/10_exodus.json
 install -Dm644 plugins/native/configs/config.d/10_native.json %{buildroot}%{_sysconfdir}/f3d/config.d/10_native.json
 install -Dm644 plugins/occt/configs/config.d/10_occt.json %{buildroot}%{_sysconfdir}/f3d/config.d/10_occt.json
 

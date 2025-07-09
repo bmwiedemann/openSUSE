@@ -143,4 +143,41 @@
     <comment></comment>
     <requestid>1269637</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0cff2a6a722716949dc65244c506ddc9</srcmd5>
+    <version>3.2.0</version>
+    <time>1752074912</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.2.0:
+  * Fix artifacts with spherical harmonics (#2367)
+  * scene: Fix a crash when switching from a invalid file (#2368)
+  * animationManager: stop playing animation when there is none available (#2365)
+  * Change imgui style to match official F3D palette (#2359)
+  * Feature: Add yaw camera support  (#2357)
+  * Revert &quot;Fix incorrect usage of internal variable PACKAGE_PREFIX_DIR (#1377)&quot; (#2362)
+  * Add support for 3DGS .ply files (#2256)
+  * Improve VCPKG and CMake presets (#2356)
+  * Feature/improve visual studio and vcpkg integration (#2298)
+  * feat: Add F3D splat reader stream support and test (#2351)
+  * [Fix]  Verbose level update dynamic options (#2350)
+  * libf3d: Introduce animation.indices (#2261)
+  * Add bounties to CONTRIBUTING (#2287)
+  * Add netcdf support (#2335)
+  * [Feature] Add binding and command for cycling verbose level (#2324)
+  * Application: Fix an issue when switching file with optional config CLI options (#2329)
+  * substitute `Sequence[...]` for `list[...]` parameters in stubs (#2322)
+  * add `py.typed` file to Python module (#2323)
+  * Exclude assimp from sanitizer testing and update VTK (#2313)
+  * Add external navigation link to F3D libf3d doxygen in config.yml (#2319)
+  * App: fixed crash when no file was selected in dialog (#2315)
+  * Updating VTK
+  * Assimp: Exclude some tests failing with sanitizer
+  * fix: improve help(f3d) (#2299)
+  * Implements texture transforms (#2282)
+  * configs: Use glob in config files where it make sense (#2295)
+  * App: Fix a order logic issue in F3DConfigFileTools (#2288)
+  * ForceReader: Support invalid extensions (#2294)
+  * hdf: Add missing exodus extensions (#2293)</comment>
+    <requestid>1291401</requestid>
+  </revision>
 </revisionlist>
