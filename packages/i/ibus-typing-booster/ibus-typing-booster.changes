@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 08 10:30:01 UTC 2025 - maiku.fabian@gmail.com
+
+- Update to 2.27.68
+- Do not try to point the popovers on search results directly to the emoji
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/766)
+- Translation update from Weblate (el 31.3%)
+
+-------------------------------------------------------------------
 Sat Jun 25 19:30:15 UTC 2025 - maiku.fabian@gmail.com
 
 - Update to 2.27.67
