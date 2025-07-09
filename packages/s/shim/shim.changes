@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  8 13:44:42 UTC 2025 - Joey Lee <jlee@suse.com>
+
+- The old shim-16.0.tar.bz2 is repackaged from a local source which
+  includes quilt series files. It causes that we can not direct add
+  new patch file through shim.spec. I replaced it by shim-16.0 tarball
+  from upstream:
+  https://github.com/rhboot/shim/releases/download/16.0/shim-16.0.tar.bz2  
+
+-------------------------------------------------------------------
 Thu Jun  5 03:22:48 UTC 2025 - Dennis <dennis.tseng@suse.com>
 
 - rename incorrect certificat name revoked-SLES-UEFI-SIGN-Certificate-2022-06.crt
