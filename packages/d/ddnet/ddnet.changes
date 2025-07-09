@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Jun 23 18:28:48 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 19.3:
+  * [Client] Add turret prediction
+  * [Client] Freeze-laser visual update and all outlines for laser
+  * [Client&Server] Add rotating and flipping of weapons
+  * [Client] Maplayer render pipeline refactoring
+  * [Client] Add laser head prediction
+  * [Client] Fix strong/weak nameplate disappearing
+  * [Client] Predict ninja skin in freeze
+  * [Client] Add id to Spectator HUD
+  * [Client] Show demo play/speed HUD for demo_play/demo_speed
+    commands
+  * [Client] Allow spec char and normal nameplate at same time
+  * [Client] HUD info cleanup
+  * [Client] Reveal screen keyboard after selecting text input
+    if closed
+  * [Client] Improve base network error handling
+  * [Client] Fix CCamera::SetView clamping y pos with map width
+    instead of map height
+  * [Client] Fix removing open files on Windows by first renaming
+    to temporary
+  * [Client] Add error handling for checking points on
+    first launch
+  * [Client] More precise interval for demo l/r
+  * [Client] Fix server browser being refreshed multiple times
+    on client start
+  * [Client] Fix wrong hook collision line length in tune zones
+  * [Client] Use protocol7 sizes for clan and name to prevent
+    cutoff
+  * [Client] Fix envelop performance by caching the envelop
+    point access
+  * [Client] Increase number of supported joystick buttons to 24
+  * [Client] Prevent direct touch when active touch button becomes
+    invisible
+  * [Client] Various fixes to make Emscripten client runnable
+    again
+  * [Editor] Fix view in tele popup for checkpoint teleports
+  * [Editor] Fix brush not containing all tile data
+  * [Editor] Fix live gametiles with teles
+  * [Server] Correctly align damage indicator
+  * [Server] Mute and vote mute improvements
+  * [Server] Add sv_register_port for NAT
+  * [Server] Distribute tees across all spawn types
+  * [Server] Websocket networking fixes
+  * [Server] Fix sv_shutdown_when_empty not working while
+    recording demo
+  * [Server] Fix teamtop5 showing wrong records
+  * [Server] Fix incorrect tune flags
+  * [Server] Fix wrong sixup values in antibot
+
+-------------------------------------------------------------------
 Sat May 17 11:02:45 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 19.2:
