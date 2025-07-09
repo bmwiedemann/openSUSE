@@ -1684,4 +1684,24 @@
     <comment>- Update to version 3.2.2+git0.a55102f09:</comment>
     <requestid>1289848</requestid>
   </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>571289f14ad64c5cebef39f3a1652231</srcmd5>
+    <version>3.2.3+git0.1844da7c6</version>
+    <time>1752074969</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.2.3+git0.1844da7c6:
+  * [RELEASE] Released version 3.2.3
+  * BUILD/MEDIUM: deviceatlas: fix when installed in custom locations.
+  * BUG/MINOR: http-act: Fix parsing of the expression argument for pause action
+  * BUG/MINOR: ssl: crash in ssl_sock_io_cb() with SSL traces and idle connections
+  * BUG/MINOR: ssl/ocsp: fix definition discrepancies with ocsp_update_init()
+  * BUG/MINOR: quic: Missing TLS 1.3 QUIC cipher suites and groups inits (OpenSSL 3.5 QUIC API)
+  * CI: github: update to OpenSSL 3.5.1
+  * BUG/MEDIUM: quic: SSL/TCP handshake failures with OpenSSL 3.5
+  * BUILD: quic: QUIC build against OpenSSL 3.5 broken
+  * CI: github: update the stable CI to ubuntu-24.04
+  * CI: github: add an OpenSSL 3.5.0 job
+  * CI: enable USE_QUIC=1 for OpenSSL versions &gt;= 3.5.0</comment>
+    <requestid>1291449</requestid>
+  </revision>
 </revisionlist>
