@@ -1,7 +1,7 @@
 #
 # spec file for package python-confusable-homoglyphs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-confusable-homoglyphs
 Version:        3.3.1
@@ -28,11 +29,11 @@ BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-click
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,13 +55,12 @@ CAPITAL LETTER A ('A') vs. U+0391 GREEK CAPITAL LETTER ALPHA, 'Α'.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# temporarily disable CLI tests, broken with (exactly) click 8.2.1 https://github.com/pallets/click/issues/2939
+rm tests/test_cli.py
 %pyunittest discover -v tests/
 
-%post
-%python_install_alternative confusable_homoglyphs
-
-%postun
-%python_uninstall_alternative confusable_homoglyphs
+%pre
+%python_libalternatives_reset_alternative confusable_homoglyphs
 
 %files %{python_files}
 %doc README.rst

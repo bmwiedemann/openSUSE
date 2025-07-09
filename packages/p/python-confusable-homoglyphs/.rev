@@ -67,4 +67,13 @@
     <comment>- Update URL to correct location.</comment>
     <requestid>1202066</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>0a699ed7287d65bca3ec1f5a78f38d66</srcmd5>
+    <version>3.3.1</version>
+    <time>1752074836</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives
+</comment>
+    <requestid>1291264</requestid>
+  </revision>
 </revisionlist>
