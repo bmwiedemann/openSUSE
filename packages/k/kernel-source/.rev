@@ -7064,4 +7064,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.15.4 &amp; fied uring &amp; another fix; bugs: bsc#1012628</comment>
     <requestid>1289262</requestid>
   </revision>
+  <revision rev="789" vrev="1">
+    <srcmd5>4d2b32d159e95069d8617a592dedf9e6</srcmd5>
+    <version>6.15.5</version>
+    <time>1752074778</time>
+    <user>anag_factory</user>
+    <comment>6.15.5 &amp; other fixes; bugs: bsc#1012628 bsc#1245446 bsc#1245584</comment>
+    <requestid>1290942</requestid>
+  </revision>
 </revisionlist>
