@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-email-validator
 Version:        2.2.0
@@ -34,12 +35,12 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 5.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-dnspython >= 1.15.0
 Requires:       python-idna >= 2.0.0
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Provides:       python-email_validator = %{version}-%{release}
 Obsoletes:      python-email_validator < %{version}-%{release}
 BuildArch:      noarch
@@ -78,11 +79,8 @@ export RESOLV_FILE=$PWD/resolv.conf
 donttest="test_caching_dns_resolver"
 %pytest tests -k "not ($donttest)"
 
-%post
-%python_install_alternative email_validator
-
-%postun
-%python_uninstall_alternative email_validator
+%pre
+%python_libalternatives_reset_alternative email_validator
 
 %files %{python_files}
 %license LICENSE

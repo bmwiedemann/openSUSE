@@ -201,4 +201,12 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1287770</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>d132abf71a941c9b9e781d3d0a93d59d</srcmd5>
+    <version>2.2.0</version>
+    <time>1752074770</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1291275</requestid>
+  </revision>
 </revisionlist>
