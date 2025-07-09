@@ -18,7 +18,7 @@
 
 
 Name:           scamper
-Version:        20250505
+Version:        20250630
 Release:        0
 Summary:        Parallel Internet measurement utility
 License:        GPL-2.0-only
@@ -27,7 +27,7 @@ URL:            https://www.caida.org/catalog/software/scamper/
 Source:         https://www.caida.org/tools/measurement/%{name}/code/%{name}-cvs-%{version}.tar.gz
 BuildRequires:  libopenssl-devel
 # for the Python module
-BuildRequires:  python3
+BuildRequires:  python3 >= 3.8
 BuildRequires:  python3-Cython
 # for sc_uptime
 BuildRequires:  pkgconfig(sqlite3)
