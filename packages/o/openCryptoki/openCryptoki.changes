@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Jun 16 09:43:23 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Upgrade openCryptoki to version 3.25
+- Upgrade openCryptoki to version 3.25 (jsc#PED-3361)
   * Updates/add supports
     - ICA/Soft: Add support for PKCS#11 v3.0 SHAKE key derivation
     - EP11: Add support for PKCS#11 v3.0 SHA3 and SHA3-HMAC mechanisms
