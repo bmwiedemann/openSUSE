@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 09 04:54:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.103.1:
+  * fix: panic when Updatecli manifests doesn't exist (#5543)
+  * deps: bump updatecli version to v0.103.0 (#5530)
+
+-------------------------------------------------------------------
 Mon Jul 07 04:41:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.103.0:
