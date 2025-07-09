@@ -592,4 +592,12 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
   * chore(deps): Bump github.com/aws/aws-sdk-go-v2/credentials from 1.17.68 to 1.17.69 (#17180) (forwarded request 1288093 from jfkw)</comment>
     <requestid>1288095</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>9465772f02ebabfe6974cfa47287eaed</srcmd5>
+    <version>1.35.2</version>
+    <time>1752074796</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.35.2: (forwarded request 1291140 from darix)</comment>
+    <requestid>1291141</requestid>
+  </revision>
 </revisionlist>
