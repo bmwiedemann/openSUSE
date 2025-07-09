@@ -55,14 +55,14 @@
 %bcond_with libfreeipmi
 %endif
 Name:           nut
-Version:        2.8.2
+Version:        2.8.3
 Release:        0
 Summary:        Network UPS Tools Core (Uninterruptible Power Supply Monitoring)
 License:        GPL-2.0-or-later
 Group:          Hardware/UPS
 URL:            https://www.networkupstools.org/
-# Repack with upstream PR #2623 patched in due to files with proprietary license
-Source0:        %{name}-%{version}-repack.tar.gz
+Source0:        https://github.com/networkupstools/nut/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/networkupstools/nut/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
 Source2:        README.SUSE
 Source3:        nut.rpmlintrc
 Source4:        nut.keyring
@@ -74,9 +74,8 @@ Patch2:         nut-doc-fixed-date.patch
 Patch3:         harden_nut-driver.service.patch
 Patch4:         harden_nut-monitor.service.patch
 Patch5:         harden_nut-server.service.patch
-# PATCH-FIX-UPSTREAM pynut-replace-telnetlib.patch antonio.teixeira@suse.com -- Removes dependency on telnetlib module which was removed in python 3.13.
-# Backported from https://github.com/networkupstools/nut/pull/2792
-Patch6:         pynut-replace-telnetlib.patch
+Patch6:         fix-upsd-buffer-overflow.patch
+Patch7:         fix-usbhid-ups-commands.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
@@ -166,23 +165,23 @@ Shared library for the Network UPS Tools.
 Network UPS Tools is a collection of programs which provide a common
 interface for monitoring and administering UPS hardware.
 
-%package -n libnutscan2
+%package -n libnutscan3
 Summary:        Network UPS Tools Library (Uninterruptible Power Supply Monitoring)
 Group:          System/Libraries
 Conflicts:      libupsclient1
 
-%description -n libnutscan2
+%description -n libnutscan3
 Shared library for the Network UPS Tools.
 
 Network UPS Tools is a collection of programs which provide a common
 interface for monitoring and administering UPS hardware.
 
-%package -n libupsclient6
+%package -n libupsclient7
 Summary:        Network UPS Tools Library (Uninterruptible Power Supply Monitoring)
 Group:          System/Libraries
 Conflicts:      libupsclient1
 
-%description -n libupsclient6
+%description -n libupsclient7
 Shared library for the Network UPS Tools.
 
 Network UPS Tools is a collection of programs which provide a common
@@ -194,6 +193,16 @@ Group:          System/Libraries
 Conflicts:      libupsclient1
 
 %description -n libnutclientstub1
+Shared library for the Network UPS Tools.
+
+Network UPS Tools is a collection of programs which provide a common
+interface for monitoring and administering UPS hardware.
+
+%package -n libnutconf0
+Summary:        Network UPS Tools Library (Uninterruptible Power Supply Monitoring)
+Group:          System/Libraries
+
+%description -n libnutconf0
 Shared library for the Network UPS Tools.
 
 Network UPS Tools is a collection of programs which provide a common
@@ -219,8 +228,9 @@ Summary:        Network UPS Tools (Uninterruptible Power Supply Monitoring)
 Group:          Development/Libraries/C and C++
 Requires:       libnutclient2 = %{version}-%{release}
 Requires:       libnutclientstub1 = %{version}-%{release}
-Requires:       libnutscan2 = %{version}-%{release}
-Requires:       libupsclient6 = %{version}-%{release}
+Requires:       libnutconf0 = %{version}-%{release}
+Requires:       libnutscan3 = %{version}-%{release}
+Requires:       libupsclient7 = %{version}-%{release}
 Requires:       pkgconfig(openssl)
 
 %description devel
@@ -322,6 +332,7 @@ sed -i s/@now@/`date -r ChangeLog +%%Y-%%m-%%d`/g docs/docinfo.xml.in
 %build
 autoreconf -fvi
 %configure \
+	--docdir=%{_docdir}/%{name} \
 	--disable-static \
 	--sysconfdir=%{CONFPATH} \
 	--datadir=%{_datadir}/%{name} \
@@ -378,24 +389,23 @@ install -D -m 644 scripts/misc/nut.bash_completion %{buildroot}%{bashcompletions
 
 # Documentation
 cp -a docs/*.txt docs/cables docs/images %{buildroot}%{_docdir}/%{name}/
-cp -a docs/*.css docs/*.html %{buildroot}%{_docdir}/%{name}/
-%if %{with texdoc}
-cp -a docs/*.pdf %{buildroot}%{_docdir}/%{name}/
-%endif
+cp -a docs/*.css %{buildroot}%{_docdir}/%{name}/html-doc
 
 # Not needed for packaged contents:
 rm -f %{buildroot}%{_docdir}/%{name}/packager-guide.*
+rm -f %{buildroot}%{_docdir}/%{name}/html-doc/packager-guide.html
 rm -f %{buildroot}%{_docdir}/%{name}/cables/Makefile*
 rm -f %{buildroot}%{_docdir}/%{name}/cables/*.txt-prepped
 
 # Create symlinks for man pages
 %fdupes -s %{buildroot}%{_mandir}
+%fdupes %{buildroot}%{_docdir}/%{name}
 
 %pre
 %if 0%{?suse_version} < 1330
 getent passwd %{NUT_USER} >/dev/null || useradd -r -g %{NUT_GROUP} -s /bin/false -c "UPS daemon" -d /sbin %{NUT_USER} 2>/dev/null
 %endif
-%service_add_pre nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target nut-driver-enumerator-daemon-activator.path nut-driver-enumerator-daemon-activator.service nut-driver-enumerator-daemon.service
+%service_add_pre nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target nut-driver-enumerator-daemon-activator.path nut-driver-enumerator-daemon-activator.service nut-driver-enumerator-daemon.service nut-logger.service nut-udev-settle.service
 
 %post
 # Generate initial passwords.
@@ -420,29 +430,32 @@ if grep "powersave -U" %{_sysconfdir}/ups/upsmon.conf ; then
 fi
 # And finally trigger udev to set permissions according to newly installed rules files.
 udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
-%service_add_post nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target nut-driver-enumerator-daemon-activator.path nut-driver-enumerator-daemon-activator.service nut-driver-enumerator-daemon.service
+%service_add_post nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target nut-driver-enumerator-daemon-activator.path nut-driver-enumerator-daemon-activator.service nut-driver-enumerator-daemon.service nut-logger.service nut-udev-settle.service
 %tmpfiles_create %{_tmpfilesdir}/%{name}-common-tmpfiles.conf
 
 %preun
-%service_del_preun nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target nut-driver-enumerator-daemon-activator.path nut-driver-enumerator-daemon-activator.service nut-driver-enumerator-daemon.service
+%service_del_preun nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target nut-driver-enumerator-daemon-activator.path nut-driver-enumerator-daemon-activator.service nut-driver-enumerator-daemon.service nut-logger.service nut-udev-settle.service
 
 %postun
-%service_del_postun nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target nut-driver-enumerator-daemon-activator.path nut-driver-enumerator-daemon-activator.service nut-driver-enumerator-daemon.service
+%service_del_postun nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target nut-driver-enumerator-daemon-activator.path nut-driver-enumerator-daemon-activator.service nut-driver-enumerator-daemon.service nut-logger.service nut-udev-settle.service
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %ldconfig_scriptlets -n libnutclient2
 %ldconfig_scriptlets -n libnutclientstub1
-%ldconfig_scriptlets -n libnutscan2
-%ldconfig_scriptlets -n libupsclient6
+%ldconfig_scriptlets -n libnutscan3
+%ldconfig_scriptlets -n libupsclient7
+%ldconfig_scriptlets -n libnutconf0
 %else
 %post   -n libnutclient2 -p /sbin/ldconfig
 %postun -n libnutclient2 -p /sbin/ldconfig
 %post   -n libnutclientstub1 -p /sbin/ldconfig
 %postun -n libnutclientstub1 -p /sbin/ldconfig
-%post   -n libnutscan2 -p /sbin/ldconfig
-%postun -n libnutscan2 -p /sbin/ldconfig
-%post   -n libupsclient6 -p /sbin/ldconfig
-%postun -n libupsclient6 -p /sbin/ldconfig
+%post   -n libnutscan3 -p /sbin/ldconfig
+%postun -n libnutscan3 -p /sbin/ldconfig
+%post   -n libupsclient7 -p /sbin/ldconfig
+%postun -n libupsclient7 -p /sbin/ldconfig
+%post   -n libnutconf0 -p /sbin/ldconfig
+%postun -n libnutconf0 -p /sbin/ldconfig
 %endif
 
 %files
@@ -457,7 +470,7 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %exclude %{_mandir}/man8/snmp-ups*.*
 %dir %{_libexecdir}/ups
 %{_libexecdir}/nut-driver-enumerator.sh
-%python_sitearch/PyNUT.py
+%python_sitelib/PyNUT.py
 %{_sbindir}/*
 %{_udevrulesdir}/*.rules
 %config(noreplace) %{CONFPATH}/hosts.conf
@@ -477,6 +490,7 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %{_unitdir}/*.path
 %{_unitdir}/*.target
 %{_unitdir}/*.service
+%{_presetdir}/*.preset
 %{systemdsystemdutildir}/system-shutdown/*
 %{systemdsystemdutildir}/system-sleep/%{name}.sh
 %{bashcompletionsdir}/*
@@ -496,11 +510,14 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %files -n libnutclientstub1
 %{_libdir}/libnutclientstub.so.*
 
-%files -n libnutscan2
+%files -n libnutscan3
 %{_libdir}/libnutscan.so.*
 
-%files -n libupsclient6
+%files -n libupsclient7
 %{_libdir}/libupsclient.so.*
+
+%files -n libnutconf0
+%{_libdir}/libnutconf.so.*
 
 %files cgi
 %dir %{apache_serverroot}
@@ -512,12 +529,12 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %config(noreplace) %{CONFPATH}/upsstats.html
 
 %files devel
-%{_includedir}/*.h
+%{_includedir}/*.{h,hpp}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_libexecdir}/sockdebug
 %{_mandir}/man3/*%{ext_man}
-%python_sitearch/test_nutclient.py
+%python_sitelib/test_nutclient.py
 
 %files doc-asciidoc
 %doc %dir %{_docdir}/%{name}{,/cables}
@@ -525,16 +542,19 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %{_docdir}/%{name}/cables/*.txt
 
 %files devel-doc-html
-%{_docdir}/%{name}/developer-guide.html
+%{_docdir}/%{name}/html-doc/developer-guide.html
+%{_docdir}/%{name}/html-doc/qa-guide.html
 
 %files doc-html
-%{_docdir}/%{name}/ChangeLog.html
-%{_docdir}/%{name}/FAQ.html
-%{_docdir}/%{name}/cables.html
-%{_docdir}/%{name}/release-notes.html
-%{_docdir}/%{name}/solaris-usb.html
-%{_docdir}/%{name}/user-manual.html
-%{_docdir}/%{name}/*.css
+%{_docdir}/%{name}/html-man
+%dir %{_docdir}/%{name}/html-doc
+%{_docdir}/%{name}/html-doc/FAQ.html
+%{_docdir}/%{name}/html-doc/cables.html
+%{_docdir}/%{name}/html-doc/ChangeLog.html
+%{_docdir}/%{name}/html-doc/release-notes.html
+%{_docdir}/%{name}/html-doc/solaris-usb.html
+%{_docdir}/%{name}/html-doc/user-manual.html
+%{_docdir}/%{name}/html-doc/*.css
 
 %files doc-images
 %doc %dir %{_docdir}/%{name}

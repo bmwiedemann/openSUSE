@@ -1,0 +1,418 @@
+From 534a343a21c2d99c2c158b57c26b00745a6c670b Mon Sep 17 00:00:00 2001
+From: Jim Klimov <jimklimov+nut@gmail.com>
+Date: Tue, 13 May 2025 16:44:20 +0200
+Subject: [PATCH 1/5] drivers/usbhid-ups.h: revise comment markup
+
+Signed-off-by: Jim Klimov <jimklimov+nut@gmail.com>
+---
+ drivers/usbhid-ups.h | 27 ++++++++++++++-------------
+ 1 file changed, 14 insertions(+), 13 deletions(-)
+
+diff --git a/drivers/usbhid-ups.h b/drivers/usbhid-ups.h
+index a73e1ee353..b34854a91f 100644
+--- a/drivers/usbhid-ups.h
++++ b/drivers/usbhid-ups.h
+@@ -174,16 +174,16 @@ typedef enum {
+ 
+ typedef struct {
+ 	const char	*info_type;		/* NUT variable name */
+-	int	info_flags;		/* NUT flags (to set in addinfo) */
+-	int	info_len;		/* if ST_FLAG_STRING: length of the string */
+-					/* if HU_TYPE_CMD: command value */
++	int		info_flags;		/* NUT flags (to set in addinfo) */
++	int		info_len;		/* if ST_FLAG_STRING: length of the string */
++						/* if HU_TYPE_CMD: command value */
+ 	const char	*hidpath;		/* Full HID Object path (or NULL for server side vars) */
+-	HIDData_t *hiddata;		/* Full HID Object data (for caching purpose, filled at runtime) */
++	HIDData_t	*hiddata;		/* Full HID Object data (for caching purpose, filled at runtime) */
+ 	const char	*dfl;			/* if HU_FLAG_ABSENT: default value ; format otherwise */
+-	unsigned long hidflags;		/* driver's own flags */
+-	info_lkp_t *hid2info;		/* lookup table between HID and NUT values */
+-								/* if HU_FLAG_ENUM is set, hid2info is also used
+-								 * as enumerated values (dstate_addenum()) */
++	unsigned long	hidflags;		/* driver's own flags */
++	info_lkp_t	*hid2info;		/* lookup table between HID and NUT values */
++						/* if HU_FLAG_ENUM is set, hid2info is also used
++						 * as enumerated values (dstate_addenum()) */
+ 
+ /*	char *info_HID_format;	*//* FFE: HID format for complex values */
+ /*	interpreter interpret;	*//* FFE: interpreter fct, NULL if not needed  */
+@@ -192,15 +192,16 @@ typedef struct {
+ 
+ /* TODO: rework flags */
+ #define HU_FLAG_STATIC			2		/* retrieve info only once. */
+-#define HU_FLAG_SEMI_STATIC		4		/* retrieve info smartly */
++#define HU_FLAG_SEMI_STATIC		4		/* retrieve info smartly. */
+ #define HU_FLAG_ABSENT			8		/* data is absent in the device, */
+-							/* use default value. */
+-#define HU_FLAG_QUICK_POLL		16		/* Mandatory vars	*/
++							/* so we use default value. */
++#define HU_FLAG_QUICK_POLL		16		/* Mandatory vars. */
+ #define HU_FLAG_STALE			32		/* data stale, don't try too often. */
+-#define HU_FLAG_ENUM			128		/* enum values exist */
++/* see 64 below */
++#define HU_FLAG_ENUM			128		/* enum values exist. */
+ 
+ /* hints for su_ups_set, applicable only to rw vars */
+-#define HU_TYPE_CMD				64		/* instant command */
++#define HU_TYPE_CMD			64		/* instant command */
+ 
+ #define HU_CMD_MASK		0x2000
+ 
+
+From 71bf4ccbff7d1edd6198a388bb465330830233e6 Mon Sep 17 00:00:00 2001
+From: Jim Klimov <jimklimov+nut@gmail.com>
+Date: Tue, 13 May 2025 16:45:19 +0200
+Subject: [PATCH 2/5] drivers/usbhid-ups.h: bump (C)
+
+Signed-off-by: Jim Klimov <jimklimov+nut@gmail.com>
+---
+ drivers/usbhid-ups.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/usbhid-ups.h b/drivers/usbhid-ups.h
+index b34854a91f..96aad8d776 100644
+--- a/drivers/usbhid-ups.h
++++ b/drivers/usbhid-ups.h
+@@ -4,6 +4,7 @@
+  *  2003-2009 Arnaud Quette <http://arnaud.quette.free.fr/contact.html>
+  *  2005-2006 Peter Selinger <selinger@users.sourceforge.net>
+  *  2007-2009 Arjen de Korte <adkorte-guest@alioth.debian.org>
++ *  2017-2025 Jim Klimov <jimklimov+nut@gmail.com>
+  *
+  * This program was sponsored by MGE UPS SYSTEMS, and now Eaton
+  *
+
+From 8f3557074a9074306163e331d9a2356eb8fc173d Mon Sep 17 00:00:00 2001
+From: Jim Klimov <jimklimov+nut@gmail.com>
+Date: Tue, 13 May 2025 17:15:16 +0200
+Subject: [PATCH 3/5] drivers/usbhid-ups.c: drop EOL from single-line
+ upsdebugx() reports
+
+Signed-off-by: Jim Klimov <jimklimov+nut@gmail.com>
+---
+ drivers/usbhid-ups.c | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/drivers/usbhid-ups.c b/drivers/usbhid-ups.c
+index db8aab21f3..577382e0ef 100644
+--- a/drivers/usbhid-ups.c
++++ b/drivers/usbhid-ups.c
+@@ -900,7 +900,7 @@ int instcmd(const char *cmdname, const char *extradata)
+ 			return instcmd("load.off.delay", dstate_getinfo("ups.delay.shutdown"));
+ 		}
+ 
+-		upsdebugx(2, "instcmd: info element unavailable %s\n", cmdname);
++		upsdebugx(2, "instcmd: info element unavailable %s", cmdname);
+ 		return STAT_INSTCMD_INVALID;
+ 	}
+ 
+@@ -911,14 +911,14 @@ int instcmd(const char *cmdname, const char *extradata)
+ 
+ 	/* Check if the item is an instant command */
+ 	if (!(hidups_item->hidflags & HU_TYPE_CMD)) {
+-		upsdebugx(2, "instcmd: %s is not an instant command\n", cmdname);
++		upsdebugx(2, "instcmd: %s is not an instant command", cmdname);
+ 		return STAT_INSTCMD_INVALID;
+ 	}
+ 
+ 	/* If extradata is empty, use the default value from the HID-to-NUT table */
+ 	val = extradata ? extradata : hidups_item->dfl;
+ 	if (!val) {
+-		upsdebugx(2, "instcmd: %s requires an explicit parameter\n", cmdname);
++		upsdebugx(2, "instcmd: %s requires an explicit parameter", cmdname);
+ 		return STAT_INSTCMD_CONVERSION_FAILED;
+ 	}
+ 
+@@ -931,13 +931,13 @@ int instcmd(const char *cmdname, const char *extradata)
+ 
+ 	/* Actual variable setting */
+ 	if (HIDSetDataValue(udev, hidups_item->hiddata, value) == 1) {
+-		upsdebugx(3, "instcmd: SUCCEED\n");
++		upsdebugx(3, "instcmd: SUCCEED");
+ 		/* Set the status so that SEMI_STATIC vars are polled */
+ 		data_has_changed = TRUE;
+ 		return STAT_INSTCMD_HANDLED;
+ 	}
+ 
+-	upsdebugx(3, "instcmd: FAILED\n"); /* TODO: HANDLED but FAILED, not UNKNOWN! */
++	upsdebugx(3, "instcmd: FAILED"); /* TODO: HANDLED but FAILED, not UNKNOWN! */
+ 	return STAT_INSTCMD_FAILED;
+ }
+ 
+@@ -953,26 +953,26 @@ int setvar(const char *varname, const char *val)
+ 	hidups_item = find_nut_info(varname);
+ 
+ 	if (hidups_item == NULL) {
+-		upsdebugx(2, "setvar: info element unavailable %s\n", varname);
++		upsdebugx(2, "setvar: info element unavailable %s", varname);
+ 		return STAT_SET_UNKNOWN;
+ 	}
+ 
+ 	/* Checking item writability and HID Path */
+ 	if (!(hidups_item->info_flags & ST_FLAG_RW)) {
+-		upsdebugx(2, "setvar: not writable %s\n", varname);
++		upsdebugx(2, "setvar: not writable %s", varname);
+ 		return STAT_SET_UNKNOWN;
+ 	}
+ 
+ 	/* handle server side variable */
+ 	if (hidups_item->hidflags & HU_FLAG_ABSENT) {
+-		upsdebugx(2, "setvar: setting server side variable %s\n", varname);
++		upsdebugx(2, "setvar: setting server side variable %s", varname);
+ 		dstate_setinfo(hidups_item->info_type, "%s", val);
+ 		return STAT_SET_HANDLED;
+ 	}
+ 
+ 	/* HU_FLAG_ABSENT is the only case of HID Path == NULL */
+ 	if (hidups_item->hidpath == NULL) {
+-		upsdebugx(2, "setvar: ID Path is NULL for %s\n", varname);
++		upsdebugx(2, "setvar: ID Path is NULL for %s", varname);
+ 		return STAT_SET_UNKNOWN;
+ 	}
+ 
+@@ -985,13 +985,13 @@ int setvar(const char *varname, const char *val)
+ 
+ 	/* Actual variable setting */
+ 	if (HIDSetDataValue(udev, hidups_item->hiddata, value) == 1) {
+-		upsdebugx(5, "setvar: SUCCEED\n");
++		upsdebugx(5, "setvar: SUCCEED");
+ 		/* Set the status so that SEMI_STATIC vars are polled */
+ 		data_has_changed = TRUE;
+ 		return STAT_SET_HANDLED;
+ 	}
+ 
+-	upsdebugx(3, "setvar: FAILED\n"); /* FIXME: HANDLED but FAILED, not UNKNOWN! */
++	upsdebugx(3, "setvar: FAILED"); /* FIXME: HANDLED but FAILED, not UNKNOWN! */
+ 	return STAT_SET_UNKNOWN;
+ }
+ 
+@@ -1253,7 +1253,7 @@ void upsdrv_updateinfo(void)
+ 		ups_infoval_set(item, value);
+ 	}
+ #ifdef DEBUG
+-	upsdebugx(1, "took %.3f seconds handling interrupt reports...\n",
++	upsdebugx(1, "took %.3f seconds handling interrupt reports...",
+ 		interval());
+ #endif
+ 	/* clear status buffer before beginning */
+@@ -1289,7 +1289,7 @@ void upsdrv_updateinfo(void)
+ 
+ 	dstate_dataok();
+ #ifdef DEBUG
+-	upsdebugx(1, "took %.3f seconds handling feature reports...\n",
++	upsdebugx(1, "took %.3f seconds handling feature reports...",
+ 		interval());
+ #endif
+ }
+
+From 6c65b4926e625af4309576ba6bac173a76937c27 Mon Sep 17 00:00:00 2001
+From: Jim Klimov <jimklimov+nut@gmail.com>
+Date: Tue, 13 May 2025 16:50:20 +0200
+Subject: [PATCH 4/5] drivers/usbhid-ups.h, drivers/usbhid-ups.c, NEWS.adoc,
+ docs/nut.dict: introduce HU_FLAG_CMD_PARAM_REQUIRED and a
+ HU_TYPE_CMD_PARAM_REQUIRED shortcut for setting in the mapping tables
+
+Complete the feature started in commit 7991e4592e042f16f5e0757083f0fd58503e8a5e
+which became a regression of NUT v2.8.3 [#2860].
+
+Signed-off-by: Jim Klimov <jimklimov+nut@gmail.com>
+---
+ docs/nut.dict        |  3 ++-
+ drivers/usbhid-ups.c | 17 ++++++++++++++---
+ drivers/usbhid-ups.h |  4 ++++
+ 4 files changed, 27 insertions(+), 5 deletions(-)
+
+diff --git a/docs/nut.dict b/docs/nut.dict
+index 0eb9d8bfe0..73c1619e0b 100644
+--- a/docs/nut.dict
++++ b/docs/nut.dict
+@@ -1,4 +1,4 @@
+-personal_ws-1.1 en 3462 utf-8
++personal_ws-1.1 en 3463 utf-8
+ AAC
+ AAS
+ ABI
+@@ -488,6 +488,7 @@ HOWTO
+ HPE
+ HPUX
+ HREF
++HU
+ HUPCL
+ HUZKVEIkHnC
+ HV
+diff --git a/drivers/usbhid-ups.c b/drivers/usbhid-ups.c
+index 577382e0ef..ae9a5ef2f6 100644
+--- a/drivers/usbhid-ups.c
++++ b/drivers/usbhid-ups.c
+@@ -29,7 +29,7 @@
+  */
+ 
+ #define DRIVER_NAME	"Generic HID driver"
+-#define DRIVER_VERSION	"0.62"
++#define DRIVER_VERSION	"0.64"
+ 
+ #define HU_VAR_WAITBEFORERECONNECT "waitbeforereconnect"
+ 
+@@ -918,8 +918,19 @@ int instcmd(const char *cmdname, const char *extradata)
+ 	/* If extradata is empty, use the default value from the HID-to-NUT table */
+ 	val = extradata ? extradata : hidups_item->dfl;
+ 	if (!val) {
+-		upsdebugx(2, "instcmd: %s requires an explicit parameter", cmdname);
+-		return STAT_INSTCMD_CONVERSION_FAILED;
++		if (hidups_item->hidflags & HU_FLAG_CMD_PARAM_REQUIRED) {
++			upsdebugx(2, "instcmd: %s requires an explicit or default parameter", cmdname);
++			return STAT_INSTCMD_CONVERSION_FAILED;
++		}
++
++		/* If we end up with atol() below, it should return 0 on error
++		 * anyway (on platforms where it would not crash due to NULL),
++		 * so we make it portably explicit here as a string "0" to be
++		 * handled below.
++		 */
++		upsdebugx(4, "instcmd: %s got no explicit nor default parameter, "
++			"but does not require one: falling back to \"0\"", cmdname);
++		val = "0";
+ 	}
+ 
+ 	/* Lookup the new value if needed */
+diff --git a/drivers/usbhid-ups.h b/drivers/usbhid-ups.h
+index 96aad8d776..c65227d882 100644
+--- a/drivers/usbhid-ups.h
++++ b/drivers/usbhid-ups.h
+@@ -200,9 +200,13 @@ typedef struct {
+ #define HU_FLAG_STALE			32		/* data stale, don't try too often. */
+ /* see 64 below */
+ #define HU_FLAG_ENUM			128		/* enum values exist. */
++#define HU_FLAG_CMD_PARAM_REQUIRED	256		/* if also HU_TYPE_CMD, require during
++							 * instcmd() that a non-trivial command
++							 * parameter is passed. */
+ 
+ /* hints for su_ups_set, applicable only to rw vars */
+ #define HU_TYPE_CMD			64		/* instant command */
++#define HU_TYPE_CMD_PARAM_REQUIRED	(HU_TYPE_CMD | HU_FLAG_CMD_PARAM_REQUIRED)	/* Shortcut for setting in the mapping tables */
+ 
+ #define HU_CMD_MASK		0x2000
+ 
+
+From 82cb7bee4a6bf732b5d61fc4dbac057c2c2eac45 Mon Sep 17 00:00:00 2001
+From: Jim Klimov <jimklimov+nut@gmail.com>
+Date: Wed, 14 May 2025 01:17:50 +0200
+Subject: [PATCH 5/5] drivers/usbhid-ups.{c,h}, NEWS.adoc: rename
+ HU_FLAG_CMD_PARAM_REQUIRED => HU_FLAG_PARAM_REQUIRED and extend to setvar()
+ too [#2955, #2860]
+
+---
+ drivers/usbhid-ups.c | 58 ++++++++++++++++++++++++++++++++------------
+ drivers/usbhid-ups.h |  8 +++---
+ 3 files changed, 53 insertions(+), 25 deletions(-)
+
+diff --git a/drivers/usbhid-ups.c b/drivers/usbhid-ups.c
+index ae9a5ef2f6..abbf3a166d 100644
+--- a/drivers/usbhid-ups.c
++++ b/drivers/usbhid-ups.c
+@@ -917,27 +917,32 @@ int instcmd(const char *cmdname, const char *extradata)
+ 
+ 	/* If extradata is empty, use the default value from the HID-to-NUT table */
+ 	val = extradata ? extradata : hidups_item->dfl;
+-	if (!val) {
+-		if (hidups_item->hidflags & HU_FLAG_CMD_PARAM_REQUIRED) {
+-			upsdebugx(2, "instcmd: %s requires an explicit or default parameter", cmdname);
+-			return STAT_INSTCMD_CONVERSION_FAILED;
+-		}
+-
+-		/* If we end up with atol() below, it should return 0 on error
+-		 * anyway (on platforms where it would not crash due to NULL),
+-		 * so we make it portably explicit here as a string "0" to be
+-		 * handled below.
+-		 */
+-		upsdebugx(4, "instcmd: %s got no explicit nor default parameter, "
+-			"but does not require one: falling back to \"0\"", cmdname);
+-		val = "0";
++	if (!val && hidups_item->hidflags & HU_FLAG_PARAM_REQUIRED) {
++		upsdebugx(2, "instcmd: %s requires an explicit or default parameter", cmdname);
++		return STAT_INSTCMD_CONVERSION_FAILED;
+ 	}
+ 
+ 	/* Lookup the new value if needed */
+ 	if (hidups_item->hid2info != NULL) {
++		/* item->nuf() is expected to handle NULL if it must */
+ 		value = hu_find_valinfo(hidups_item->hid2info, val);
+ 	} else {
+-		value = atol(val);
++		if (!val) {
++			/* If we end up with atol(NULL) below, it should return
++			 * 0 on error anyway (on platforms where it would not
++			 * crash instead due to the NULL), so we make it portably
++			 * explicit here.
++			 */
++			/* FIXME: Look up data points (maybe via override.* or
++			 * default.* settings) for delay/etc. when handling
++			 * commands like shutdown.* or load.* ?
++			 */
++			upsdebugx(4, "instcmd: %s got no explicit nor default parameter, "
++				"but does not require one: falling back to 0", cmdname);
++			value = 0;
++		} else {
++			value = atol(val);
++		}
+ 	}
+ 
+ 	/* Actual variable setting */
+@@ -987,11 +992,32 @@ int setvar(const char *varname, const char *val)
+ 		return STAT_SET_UNKNOWN;
+ 	}
+ 
++	/* FIXME: This code did not use "dfl"; should it start to?
++	 * If val is empty, use the default value from the HID-to-NUT table */
++	/* if (!val) val = hidups_item->dfl; */
++
++	if (!val && hidups_item->hidflags & HU_FLAG_PARAM_REQUIRED) {
++		upsdebugx(2, "setvar: %s requires an explicit or default parameter", varname);
++		return STAT_SET_CONVERSION_FAILED;
++	}
++
+ 	/* Lookup the new value if needed */
+ 	if (hidups_item->hid2info != NULL) {
++		/* item->nuf() is expected to handle NULL if it must */
+ 		value = hu_find_valinfo(hidups_item->hid2info, val);
+ 	} else {
+-		value = atol(val);
++		if (!val) {
++			/* If we end up with atol(NULL) below, it should return
++			 * 0 on error anyway (on platforms where it would not
++			 * crash instead due to the NULL), so we make it portably
++			 * explicit here.
++			 */
++			upsdebugx(4, "setvar: %s got no explicit nor default parameter, "
++				"but does not require one: falling back to 0", varname);
++			value = 0;
++		} else {
++			value = atol(val);
++		}
+ 	}
+ 
+ 	/* Actual variable setting */
+diff --git a/drivers/usbhid-ups.h b/drivers/usbhid-ups.h
+index c65227d882..8fe3e815d1 100644
+--- a/drivers/usbhid-ups.h
++++ b/drivers/usbhid-ups.h
+@@ -200,13 +200,13 @@ typedef struct {
+ #define HU_FLAG_STALE			32		/* data stale, don't try too often. */
+ /* see 64 below */
+ #define HU_FLAG_ENUM			128		/* enum values exist. */
+-#define HU_FLAG_CMD_PARAM_REQUIRED	256		/* if also HU_TYPE_CMD, require during
+-							 * instcmd() that a non-trivial command
+-							 * parameter is passed. */
++#define HU_FLAG_PARAM_REQUIRED		256		/* require during setvar() or
++							 * instcmd() that a non-trivial
++							 * value parameter is passed. */
+ 
+ /* hints for su_ups_set, applicable only to rw vars */
+ #define HU_TYPE_CMD			64		/* instant command */
+-#define HU_TYPE_CMD_PARAM_REQUIRED	(HU_TYPE_CMD | HU_FLAG_CMD_PARAM_REQUIRED)	/* Shortcut for setting in the mapping tables */
++#define HU_TYPE_CMD_PARAM_REQUIRED	(HU_TYPE_CMD | HU_FLAG_PARAM_REQUIRED)	/* Shortcut for setting in the mapping tables */
+ 
+ #define HU_CMD_MASK		0x2000
+ 
+

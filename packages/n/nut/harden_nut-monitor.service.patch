@@ -1,8 +1,9 @@
-diff -purN a/scripts/systemd/nut-monitor.service.in b/scripts/systemd/nut-monitor.service.in
---- a/scripts/systemd/nut-monitor.service.in	2023-10-07 16:06:44.000000000 +0200
-+++ b/scripts/systemd/nut-monitor.service.in	2023-11-03 19:48:16.280004811 +0100
-@@ -25,6 +25,17 @@ Wants=nut-server.service
- PartOf=nut.target
+Index: b/scripts/systemd/nut-monitor.service.in
+===================================================================
+--- a/scripts/systemd/nut-monitor.service.in
++++ b/scripts/systemd/nut-monitor.service.in
+@@ -32,6 +32,17 @@ Documentation=man:nut.conf(@MAN_SECTION_
+ Documentation=@NUT_WEBSITE_BASE@/docs/man/nut.conf.html
  
  [Service]
 +# added automatically, for details please see

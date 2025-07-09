@@ -1,7 +1,8 @@
-diff -purN a/scripts/systemd/nut-driver@.service.in b/scripts/systemd/nut-driver@.service.in
---- a/scripts/systemd/nut-driver@.service.in	2023-10-07 16:06:44.000000000 +0200
-+++ b/scripts/systemd/nut-driver@.service.in	2023-11-03 19:46:30.856267504 +0100
-@@ -46,6 +46,17 @@ PartOf=nut-driver.target
+Index: b/scripts/systemd/nut-driver@.service.in
+===================================================================
+--- a/scripts/systemd/nut-driver@.service.in
++++ b/scripts/systemd/nut-driver@.service.in
+@@ -53,6 +53,17 @@ Documentation=@NUT_WEBSITE_BASE@/docs/ma
  # Finally note that "nut-driver-enumerator.service" should take care of this.
  
  [Service]
@@ -17,5 +18,5 @@ diff -purN a/scripts/systemd/nut-driver@.service.in b/scripts/systemd/nut-driver
 +RestrictRealtime=true
 +# end of automatic additions 
  Environment=NUT_IGNORE_NOWAIT=true
+ Environment=NUT_QUIET_INIT_NDE_WARNING=true
  EnvironmentFile=-@CONFPATH@/nut.conf
- SyslogIdentifier=%N

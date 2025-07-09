@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jul  3 14:06:13 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 2.8.3:
+  https://github.com/networkupstools/nut/releases/tag/v2.8.3
+  For more see NEWS.adoc and UPGRADING.adoc in /usr/share/doc/packages/nut
+- Use upstream sources directly instead of repacking, license issues with
+  Eaton scripts have been fixed (files have been relicensed to the GPL)
+- SO version bump for libnutscan and libupsclient
+- Package new library libnutconf
+- Add %service_* calls for new systemd units
+- Install html-doc through build system instead of manually
+  * html-doc files have been moved to /usr/share/doc/packages/nut/html-doc
+- Move python files to %python_sitelib
+- Drop pynut-replace-telnetlib.patch
+  * Included in upstream release
+- Package systemd preset files
+- Refresh patches
+  * nut-doc-fixed-date.patch
+  * harden_nut-server.service.patch
+  * harden_nut-monitor.service.patch
+  * harden_nut-driver.service.patch
+- Add patches
+  * fix-upsd-buffer-overflow.patch
+    Fixes some portability problems and potential buffer overflow in upsd
+  * fix-usbhid-ups-commands.patch
+    Fixes failing commands with usbhid-ups
+
+-------------------------------------------------------------------
 Tue Apr  1 19:22:22 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Add pynut-replace-telnetlib.patch

@@ -1,8 +1,9 @@
-diff -purN a/scripts/systemd/nut-server.service.in b/scripts/systemd/nut-server.service.in
---- a/scripts/systemd/nut-server.service.in	2023-10-07 16:06:44.000000000 +0200
-+++ b/scripts/systemd/nut-server.service.in	2023-11-03 19:49:51.496940092 +0100
-@@ -26,6 +26,17 @@ Before=nut-monitor.service
- PartOf=nut.target
+Index: b/scripts/systemd/nut-server.service.in
+===================================================================
+--- a/scripts/systemd/nut-server.service.in
++++ b/scripts/systemd/nut-server.service.in
+@@ -37,6 +37,17 @@ Documentation=man:nut.conf(@MAN_SECTION_
+ Documentation=@NUT_WEBSITE_BASE@/docs/man/nut.conf.html
  
  [Service]
 +# added automatically, for details please see
@@ -18,4 +19,4 @@ diff -purN a/scripts/systemd/nut-server.service.in b/scripts/systemd/nut-server.
 +# end of automatic additions 
  # A busy server can be monitoring a lot of devices as well as replying
  # to many clients. The "infinity" definition is actually capped by OS
- # settings and hardcoded defaults; typically can be 65535+ nowadays.
+ # settings and hard-coded defaults; typically can be 65535+ nowadays.
