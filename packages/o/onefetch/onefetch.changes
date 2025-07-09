@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul  9 06:22:16 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.25.0:
+  New Features:
+  * add language support for Text #1579
+  * support repos "without source code" #1580
+  Chores:
+  * improve error handling #1560
+  Bug Fixes:
+  * remove extra line break in 886d942
+- bsc#1230085: This updates gix-path to 0.10.11
+
+-------------------------------------------------------------------
 Sun Apr 13 18:49:49 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.24.0:

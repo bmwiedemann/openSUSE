@@ -482,4 +482,20 @@
   * update wiki powershell-snippet #1542</comment>
     <requestid>1269030</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>74cd3651f46260107454a9b1766b50f0</srcmd5>
+    <version>2.25.0</version>
+    <time>1752074916</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.25.0:
+  New Features:
+  * add language support for Text #1579
+  * support repos &quot;without source code&quot; #1580
+  Chores:
+  * improve error handling #1560
+  Bug Fixes:
+  * remove extra line break in 886d942
+- bsc#1230085: This updates gix-path to 0.10.11</comment>
+    <requestid>1291402</requestid>
+  </revision>
 </revisionlist>
