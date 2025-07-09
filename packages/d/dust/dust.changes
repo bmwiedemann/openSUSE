@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jul 09 06:24:25 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 1.2.2:
+  * release: increment version
+  * refactor: ThreadPool use build not build_global (#512)
+  * docs: update readme
+  * fix: dir_walker interrupted error (#507)
+  * deps: cargo update (#510)
+  * style: fix clippy
+  * refactor: pull out more methods, remove unused Option
+  * refactor: extract function
+
+-------------------------------------------------------------------
+Thu Jun 05 05:00:54 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 1.2.1:
+  * version: increment version
+  * fix: bug: Remove bad error handling
+  * chore(cli): Migrate to Derive API
+  * style: Fix clippy
+  * refactor: Fix clippy warnings (#488)
+  * Fix: miscalculation of NTFS mount file sizes inside WSL (#487)
+
+-------------------------------------------------------------------
 Wed Apr 02 16:03:15 UTC 2025 - mvetter@suse.com
 
 - Update to version 1.2.0:

@@ -17,7 +17,7 @@
 
 
 Name:           dust
-Version:        1.2.0
+Version:        1.2.2
 Release:        0
 Summary:        A more intuitive version of du
 Group:          Productivity/File utilities
