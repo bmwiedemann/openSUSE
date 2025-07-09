@@ -1,7 +1,7 @@
 #
 # spec file for package chmlib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ Patch4:         chm_http-bind-localhost.patch
 Patch5:         chm_http-output-server-address.patch
 # PATCH-FIX-UPSTREAM: https://github.com/jedwing/CHMLib/pull/17
 Patch6:         chmlib-c99.patch
+# CVE-2025-48172 [bsc#1245803], integer overflow in _chm_decompress_block of chm_lib.c can lead to heap buffer overflow
+Patch7:         chmlib-CVE-2025-48172.patch
 BuildRequires:  gcc-c++
 
 %description

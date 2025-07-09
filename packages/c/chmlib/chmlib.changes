@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  7 10:05:58 UTC 2025 - pgajdos@suse.com
+
+- security update
+- added patches
+  CVE-2025-48172 [bsc#1245803], integer overflow in _chm_decompress_block of chm_lib.c can lead to heap buffer overflow
+  + chmlib-CVE-2025-48172.patch
+
+-------------------------------------------------------------------
 Thu Oct  5 09:50:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - drop chmlib-0.39.diff - superseded by
