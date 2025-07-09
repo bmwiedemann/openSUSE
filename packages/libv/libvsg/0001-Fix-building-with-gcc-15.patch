@@ -1,0 +1,24 @@
+From daf94bb5bb9a50914b081cad7740cd65b443fb5e Mon Sep 17 00:00:00 2001
+From: Ralf Habacker <ralf.habacker@freenet.de>
+Date: Wed, 2 Jul 2025 22:42:02 +0200
+Subject: [PATCH] Fix building with gcc 15
+
+---
+ SPIRV/SpvBuilder.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/glslang/SPIRV/SpvBuilder.h b/src/glslang/SPIRV/SpvBuilder.h
+index 03b1a442..b328388e 100644
+--- a/src/glslang/SPIRV/SpvBuilder.h
++++ b/src/glslang/SPIRV/SpvBuilder.h
+@@ -56,6 +56,7 @@ namespace spv {
+ }
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include <map>
+ #include <memory>
+ #include <set>
+-- 
+2.43.0
+

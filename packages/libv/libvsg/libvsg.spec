@@ -1,7 +1,7 @@
 #
 # spec file for package libvsg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Group:          Productivity/Graphics/Other
 URL:            https://vsg-dev.github.io/VulkanSceneGraph
 Source0:        %{rname}-%{version}.tar.xz
 Source1:        glslang-%{glslang_version}.tar.xz
+Source2:        0001-Fix-building-with-gcc-15.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 %if %_check
@@ -82,6 +83,7 @@ VulkanSceneGraph.
 %autosetup -p1 -n %{rname}-%{version}
 tar -xJf %{SOURCE1}
 mv glslang-%{glslang_version} src/glslang
+patch -p1 -i %{SOURCE2}
 
 %build
 %cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_RELWITHDEBINFO_POSTFIX=

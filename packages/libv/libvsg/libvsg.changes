@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul  2 20:44:50 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fix building with Tumbleweed
+- Add patch:
+  * 0001-Fix-building-with-gcc-15.patch
+
+-------------------------------------------------------------------
+Mon Oct 23 07:08:41 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Migrate service file to use 'manual' instead of 'disabled' as
+  suggested by osc  
+
+-------------------------------------------------------------------
 Fri Sep 15 20:27:52 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 1.0.9
