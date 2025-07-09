@@ -2,7 +2,7 @@
 #
 # spec file for package mruby
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,9 +19,9 @@
 
 
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%define sover 3_1_0
+%define sover 3_4_0
 Name:           mruby
-Version:        3.1.0
+Version:        3.4.0
 Release:        0
 Summary:        Lightweight Ruby
 License:        MIT
@@ -30,10 +30,8 @@ URL:            https://github.com/mruby/mruby/
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE PATCH-FEATURE-UPSTREAM link-with-soname.patch -- Add SONAME to library
 Patch0:         link-with-soname.patch
-# PATCH-FIX-UPSTREAM CVE-2022-1286.patch -- boo#1198289 https://github.com/mruby/mruby/commit/b1d0296a
-Patch2:         CVE-2022-1286.patch
-# PATCH-FIX-UPSTREAM CVE-2022-1212.patch -- https://github.com/mruby/mruby/commit/3cf291f72224715942beaf8553e42ba8891ab3c6
-Patch3:         CVE-2022-1212.patch
+# PATCH-FIX-UPSTREAM CVE-2025-7207.patch -- upstream patch for CVE-2025-7207 known as boo#1246138
+Patch1:         https://github.com/mruby/mruby/commit/1fdd96104180cc0fb5d3cb086b05ab6458911bb9.diff#/CVE-2025-7207.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  pkgconfig

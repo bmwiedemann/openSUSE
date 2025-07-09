@@ -1,10 +1,10 @@
-diff -Nur mruby-3.1.0/build_config/host-shared.rb new/build_config/host-shared.rb
---- mruby-3.1.0/build_config/host-shared.rb	2022-05-12 05:19:10.000000000 +0200
-+++ new/build_config/host-shared.rb	2023-02-15 19:40:18.649494310 +0100
-@@ -18,12 +18,12 @@
+diff -Nur mruby-3.4.0/build_config/host-shared.rb new/build_config/host-shared.rb
+--- mruby-3.4.0/build_config/host-shared.rb	2025-04-20 06:08:22.000000000 +0200
++++ new/build_config/host-shared.rb	2025-07-09 13:57:53.778707930 +0200
+@@ -15,12 +15,12 @@
  
    conf.archiver do |archiver|
-     archiver.command = 'gcc'
+     archiver.command = cc.command
 -    archiver.archive_options = '-shared -o %{outfile} %{objs}'
 +    archiver.archive_options = '-shared -Wl,-soname,%{filename} -o %{outfile} %{objs}'
    end
@@ -16,9 +16,9 @@ diff -Nur mruby-3.1.0/build_config/host-shared.rb new/build_config/host-shared.r
    end
  
    # file separator
-diff -Nur mruby-3.1.0/lib/mruby/build/command.rb new/lib/mruby/build/command.rb
---- mruby-3.1.0/lib/mruby/build/command.rb	2022-05-12 05:19:10.000000000 +0200
-+++ new/lib/mruby/build/command.rb	2023-02-15 19:39:00.763898579 +0100
+diff -Nur mruby-3.4.0/lib/mruby/build/command.rb new/lib/mruby/build/command.rb
+--- mruby-3.4.0/lib/mruby/build/command.rb	2025-04-20 06:08:22.000000000 +0200
++++ new/lib/mruby/build/command.rb	2025-07-09 13:56:55.668375790 +0200
 @@ -4,7 +4,7 @@
    class Command
      include Rake::DSL
@@ -28,7 +28,7 @@ diff -Nur mruby-3.1.0/lib/mruby/build/command.rb new/lib/mruby/build/command.rb
      attr_accessor :build, :command
  
      def initialize(build)
-@@ -234,7 +234,7 @@
+@@ -240,7 +240,7 @@
      def run(outfile, objfiles)
        mkdir_p File.dirname(outfile)
        _pp "AR", outfile.relative_path
@@ -37,18 +37,18 @@ diff -Nur mruby-3.1.0/lib/mruby/build/command.rb new/lib/mruby/build/command.rb
      end
    end
  
-diff -Nur mruby-3.1.0/lib/mruby/build.rb new/lib/mruby/build.rb
---- mruby-3.1.0/lib/mruby/build.rb	2022-05-12 05:19:10.000000000 +0200
-+++ new/lib/mruby/build.rb	2023-02-15 19:39:00.763898579 +0100
-@@ -6,6 +6,7 @@
+diff -Nur mruby-3.4.0/lib/mruby/build.rb new/lib/mruby/build.rb
+--- mruby-3.4.0/lib/mruby/build.rb	2025-04-20 06:08:22.000000000 +0200
++++ new/lib/mruby/build.rb	2025-07-09 13:56:55.668457919 +0200
+@@ -7,6 +7,7 @@
    autoload :Gem, "mruby/gem"
    autoload :Lockfile, "mruby/lockfile"
    autoload :Presym, "mruby/presym"
 +  autoload :Source, 'mruby/source'
  
-   class << self
-     def targets
-@@ -382,6 +383,10 @@
+   INSTALL_PREFIX = ENV['PREFIX'] || ENV['INSTALL_PREFIX'] || '/usr/local'
+   INSTALL_DESTDIR = ENV['DESTDIR'] || ''
+@@ -425,6 +426,10 @@
        end
      end
  
@@ -59,7 +59,7 @@ diff -Nur mruby-3.1.0/lib/mruby/build.rb new/lib/mruby/build.rb
      def exefile(name)
        if name.is_a?(Array)
          name.flatten.map { |n| exefile(n) }
-@@ -405,7 +410,7 @@
+@@ -448,7 +453,7 @@
        if name.is_a?(Array)
          name.flatten.map { |n| libfile(n) }
        else

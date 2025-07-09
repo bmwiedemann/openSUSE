@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Wed Jul  9 11:41:30 UTC 2025 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 3.4.0
+  - mruby now supports `private` and `protected` visibility
+    - Maximum length of inlined symbols reduced from 5 to 4 characters
+      to provide space for visibility flags
+    - Many methods are made private according to CRuby visibility
+    - `initialize` method will be always private
+  - Add new hooks `method_removed`, `method_undefined`
+  - Add new hooks `singleton_method_removed`, `singleton_method_undefined`
+  - Hash `to_s` format has changed
+  - Remove Float bit-operation
+  - use SWAR technique for strlen performance
+  - use merge sort for `Array#sort`
+  - C API changes:
+    - pool.c renamed to mempool.c (and mrb_pool to mrb_mempool)
+    - mrb_pool_value renamed to mrb_irep_pool to reduce confusion
+    - rename BOXNIX_SET_VALUE to BOXNO_SET_VALUE
+    - `MRB_FROZEN_P()` is replaced by `mrb_frozen_p()`
+    - rename `color` to `gc_color`
+    - add `obj->frozen` instead of flags `MRB_SET_FROZEN_FLAG`/`MRB_UNSET_FROZEN_FLAG`
+  - Changes in mrbgems:
+    - **mruby-print**: removed; if you do not use `mruby-io`, mruby use `#print` etc. in the core
+    - **mruby-toplevel-ext**: top-level public/private/protected moved to the core
+    - **mruby-metaprog**: method list methods now works according to the visibility
+    - **mruby-encoding**: MRB_UTF8_STRING turned on automatically with this gem
+- Update to 3.3.0
+  - aliases work properly with `super`
+  - `callee` method work differently with aliases in mruby
+  - define `Kernel#respond_to_missing?` method
+  - `_inspect` method (`inspect` with recursive check) is removed
+  - `__printstr__` method is removed; use `print` instead
+  - New method `String#bytesplice`
+  - Allow `return` in blocks to cross C boundaries
+  - mruby memory API
+    - `mrb_default_allocf` can be overridden by the application
+    - `mrb_open_allocf` will be deprecated
+  - Changes in C API
+    - add new error handling API functions
+    - Add `mrb_vm_ci_env_clear()` function with `MRB_API`
+    - a new function `mrb_check_frozen_value()`
+    - avoid formatting in `mrb_bug()`
+    - stop using `mrbc_` prefix for compiler context
+    - Allow `Class#allocate` to be prohibited. To disable `#allocate`, use `MRB_UNDEF_ALLOCATOR()`.
+  - Changes in mrbgems
+    - **mruby-binding**: renamed from `mruby-binding-core` of mruby3.2
+    - **mruby-binding**: implemented `Binding#initialize_copy` method
+    - **mruby-binding**: `Kernel#binding` responds only to calls from Ruby
+    - **mruby-enumerator**: remove internal attribute methods `obj`, `args`, `kwd`, `meth`, `fib`.
+  - Other breaking changes
+    - `mrb_f_raise()` is now an internal function
+    - `mrb_make_exception()` is now an internal function with different parameters
+    - The `File#path` method no longer uses the `#to_path` method for implicit conversion
+- Update to 3.2.0
+  - Now `a::B = c` should evaluate `a` then `c`.
+  - Anonymous arguments `*`, `**`, `&` can be passed for forwarding.
+  - Multi-precision integer is available now via `mruby-bigint` gem.
+  - mruby VM and bytecode
+    - `OP_ARYDUP` was renamed to `OP_ARYSPLAT`. The instruction name
+      was changed but instruction number and basic behavior have not
+      changed (except that `ARYDUP nil` makes `[]`).
+  - `mruby` tool
+    - `-b` only specifies the script is the binary.
+      The files loaded by `-r` are not affected by the option.
+    - `mruby` now loads complied binary if the suffix is `.mrb`.
+  - `mrbc` tool
+    - Add `--no-optimize` option to disable optimization.
+  - mrbgems
+    - mruby-class-ext: Add `Class#subclasses` method.
+    - mruby-class-ext: Add `Module#undefined_instance_methods` method.
+    - mruby-errno is now included
+    - mruby-set is now included
+    - mruby-dir is now included
+  - Fixed security issues:
+    - CVE-2022-0080, CVE-2022-0240, CVE-2022-0326, CVE-2022-0631,
+      CVE-2022-0481, CVE-2022-0525, CVE-2022-0570, CVE-2022-0614,
+      CVE-2022-0623, CVE-2022-0630, CVE-2022-0631, CVE-2022-0632,
+      CVE-2022-0717, CVE-2022-0890, CVE-2022-1106, CVE-2022-1212,
+      CVE-2022-1276, CVE-2022-1286, CVE-2022-1934
+- Removed upstream merged patches
+  - CVE-2022-1286.patch
+  - CVE-2022-1212.patch
+- Added CVE-2025-7207.patch as an upstream patch for CVE-2025-7207
+  also known as boo#1246138
+- Updated link-with-soname.patch
+
+-------------------------------------------------------------------
 Wed Feb 15 18:26:15 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 3.1.0
