@@ -1,7 +1,7 @@
 #
 # spec file for package uwsgi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,9 +76,6 @@ BuildRequires:  argon2-devel
 %endif
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-objc
-%if 0%{?suse_version} > 1220
-BuildRequires:  glusterfs-devel
-%endif
 #BuildRequires:  go
 BuildRequires:  java-devel
 #BuildRequires:  krb5-devel
@@ -128,7 +125,6 @@ BuildRequires:  v8-devel
 BuildRequires:  zeromq-devel
 BuildRequires:  pkgconfig(zlib)
 %{?systemd_requires}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       uwsgi-carbon = %{version}
 Obsoletes:      uwsgi-carbon < 1.9.11
 Provides:       uwsgi-cgi = %{version}
@@ -236,20 +232,6 @@ uWSGI is a self-healing application container server coded in pure C.
 
 This package contains support for Python Gevent, which is a non-blocking
 networking framework.
-
-
-%if 0%{?suse_version} > 1220
-%package glusterfs
-Summary:        GlusterFS Plugin for uWSGI
-Group:          Productivity/Networking/Web/Servers
-Requires:       %{name} = %{version}
-
-%description glusterfs
-uWSGI is a self-healing application container server coded in pure C.
-
-This package contains support for returning objects directly from a GlusterFS
-filesystem
-%endif
 
 %package greenlet
 Summary:        Greenlet Plugin for uWSGI
@@ -533,10 +515,8 @@ excluded_plugins="$excluded_plugins python"
 excluded_plugins="$excluded_plugins fiber mongrel2 rack rbthreads ruby19"
 %endif
 
-%if 0%{?suse_version} <= 1220
-# Requirements missing on openSUSE <= 12.2
+# Unmaintained and deleted from openSUSE
 excluded_plugins="$excluded_plugins glusterfs"
-%endif
 
 plugins=$(python3 -c "import sys, os; print(', '.join([p for p in sorted(os.listdir('plugins')) if p not in sys.argv[1:]]))" $excluded_plugins)
 sed -e "s#@@LIBDIR@@#%{_libdir}#" -e "s#@@PLUGINS@@#$plugins#" %{SOURCE1} > buildconf/opensuse.ini
@@ -551,7 +531,7 @@ export UWSGICONFIG_JVM_INCPATH="%{_jvmdir}/java/include"
 export UWSGICONFIG_LUALIB="lua"
 export UWSGICONFIG_LUAPC="lua"
 export UWSGICONFIG_RUBYPATH="ruby1.9"
-export CFLAGS="%{optflags} -Wno-error=deprecated-declarations -I%{_includedir}/glusterfs -I$(echo %{_libdir}/erlang/lib/erl_interface-*/include) -I%{_jvmdir}/java/include/linux -L$UWSGICONFIG_JVM_LIBPATH/jli"
+export CFLAGS="%{optflags} -Wno-error=deprecated-declarations -I$(echo %{_libdir}/erlang/lib/erl_interface-*/include) -I%{_jvmdir}/java/include/linux -L$UWSGICONFIG_JVM_LIBPATH/jli"
 export CPUCOUNT=${RPM_BUILD_NCPUS:-1}
 %python_expand PYTHON=$python $python uwsgiconfig.py --build opensuse
 
@@ -619,7 +599,6 @@ install -m 0644 %{SOURCE9} %{buildroot}/%{_tmpfilesdir}/uwsgi.conf
 %service_del_postun uwsgi.service
 
 %files
-%defattr(-,root,root,-)
 %license LICENSE
 %doc CONTRIBUTORS README contrib examples README.openSUSE
 %{_sbindir}/uwsgi
@@ -711,38 +690,25 @@ install -m 0644 %{SOURCE9} %{buildroot}/%{_tmpfilesdir}/uwsgi.conf
 
 %if 0%{suse_version} < 1500
 %files -n apache2-mod_proxy_uwsgi
-%defattr(-,root,root,-)
 %{apache_libexecdir}/mod_proxy_uwsgi.so
 %endif
 
 %files -n apache2-mod_uwsgi
-%defattr(-,root,root,-)
 %{apache_libexecdir}/mod_uwsgi.so
 
 %files emperor_pg
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/emperor_pg_plugin.so
 
 %files emperor_zeromq
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/emperor_zeromq_plugin.so
 
 %files gevent
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/gevent_plugin.so
 
 %files greenlet
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/greenlet_plugin.so
 
-%if 0%{?suse_version} > 1220
-%files glusterfs
-%defattr(-,root,root,-)
-%{_libdir}/uwsgi/glusterfs_plugin.so
-%endif
-
 %files jvm
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/jvm_plugin.so
 %{_libdir}/uwsgi/jwsgi_plugin.so
 %{_libdir}/uwsgi/ring_plugin.so
@@ -750,44 +716,35 @@ install -m 0644 %{SOURCE9} %{buildroot}/%{_tmpfilesdir}/uwsgi.conf
 %{_javadir}/uwsgi.jar
 
 %files ldap
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/ldap_plugin.so
 
 %files libffi
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/libffi_plugin.so
 
 %files logzmq
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/logzmq_plugin.so
 
 %files lua
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/lua_plugin.so
 
 %files pam
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/pam_plugin.so
 
 %files psgi
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/psgi_plugin.so
 
 %files pypy
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/pypy_plugin.so
 
 %if 0%{?sle_version} && 0%{?sle_version} <= 150400
 
 %files python3
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/python3_plugin.so
 %{python3_sitelib}/uwsgidecorators.py*
 
 %else
 
 %files %{python_files uwsgi-python3}
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/%{python_flavor}_plugin.so
 %if "%{python_provides}" == "python3"
 %{_libdir}/uwsgi/python3_plugin.so
@@ -798,7 +755,6 @@ install -m 0644 %{SOURCE9} %{buildroot}/%{_tmpfilesdir}/uwsgi.conf
 
 %if 0%{?suse_version} <= 1310
 %files ruby
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/fiber_plugin.so
 %{_libdir}/uwsgi/mongrel2_plugin.so
 %{_libdir}/uwsgi/rack_plugin.so
@@ -807,24 +763,20 @@ install -m 0644 %{SOURCE9} %{buildroot}/%{_tmpfilesdir}/uwsgi.conf
 %endif
 
 %files sqlite3
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/sqlite3_plugin.so
 
 %ifarch %{ix86} x86_64 %{arm}
 %if 0%{?suse_version} < 1310
 %files v8
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/v8_plugin.so
 %endif
 %endif
 
 %files xslt
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/xslt_plugin.so
 
 %if 0%{?suse_version} > 1320
 %files %{php}
-%defattr(-,root,root,-)
 %{_libdir}/uwsgi/php*_plugin.so
 %endif
 
