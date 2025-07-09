@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-dill
 Version:        0.4.0
@@ -30,11 +31,11 @@ BuildRequires:  %{python_module objgraph >= 1.7.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 Recommends:     python-objgraph >= 1.7.2
 BuildArch:      noarch
 %python_subpackages
@@ -65,6 +66,7 @@ find dill -name '*.py' -exec sed -i '1{\@^#!%{_bindir}/env python@d}' {} \;
 %python_clone -a %{buildroot}%{_bindir}/undill
 %python_clone -a %{buildroot}%{_bindir}/get_gprof
 %python_clone -a %{buildroot}%{_bindir}/get_objgraph
+%python_group_libalternatives undill get_gprof get_objgraph
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
@@ -72,11 +74,8 @@ export PYTHONPATH=%{_builddir}/dill-%{version}
 # Creative; copied from tox.ini
 %python_exec dill/tests/__main__.py
 
-%post
-%{python_install_alternative undill get_objgraph get_gprof}
-
-%postun
-%python_uninstall_alternative undill
+%pre
+%python_libalternatives_reset_alternative undill
 
 %files %{python_files}
 %doc README.md
