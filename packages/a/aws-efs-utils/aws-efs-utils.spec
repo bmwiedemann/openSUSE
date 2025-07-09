@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %if 0%{?suse_version} >= 1600
 %define pythons %{primary_python}
 %else
@@ -23,13 +22,14 @@
 %endif
 %global _sitelibdir %{%{pythons}_sitelib}
 Name:           aws-efs-utils
-Version:        2.2.1
+Version:        2.3.1
 Release:        0
 Summary:        Utilities for using the EFS file systems
 License:        MIT
 Group:          System/Management
 URL:            https://github.com/aws/efs-utils
-Source0:        %{url}/archive/v%{version}.tar.gz#/efs-utils-%{version}.tar.gz
+Source0:        efs-utils-v%{version}.tar.gz
+Source1:        vendor.tar.gz
 Patch0:         disable_mount_efs_test.patch
 Patch1:         harden_amazon-efs-mount-watchdog.service.patch
 Patch2:         skip-styletest.patch
@@ -48,26 +48,30 @@ BuildRequires:  %{pythons}-pytest-cov >= 5.0.0
 BuildRequires:  %{pythons}-pytest-html >= 4.1.1
 BuildRequires:  %{pythons}-pytest-metadata >= 3.1.1
 BuildRequires:  %{pythons}-pytest-mock >= 3.14.0
+BuildRequires:  cargo
+BuildRequires:  cargo-packaging
+BuildRequires:  libopenssl-devel
 BuildRequires:  openssl
+BuildRequires:  rust
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
 Requires:       nfs-utils
 Requires:       stunnel >= 4.56
-BuildArch:      noarch
 
 %description
 This package provides utilities for using the EFS file systems.
 
 %prep
-%setup -n efs-utils-%{version}
+%setup -n efs-utils-v%{version} -a1
 %patch -P 0 -p1
-find . -name "*.py" -exec sed -i 's/env python3/python3/' {} +
+find src/mount_efs src/watchdog -name "*.py" -exec sed -i 's/env python3/python3/' {} +
 %patch -P 1 -p1
 %patch -P 2
 %patch -P 3 -p1
 
 %build
-# No build required
+cd src/proxy
+%cargo_build
 
 %check
 make test
@@ -75,7 +79,7 @@ make test
 %install
 mkdir -p %{buildroot}%{_sysconfdir}/amazon/efs
 mkdir -p %{buildroot}%{_unitdir}
-install -p -m 644 %{_builddir}/efs-utils-%{version}/dist/amazon-efs-mount-watchdog.service %{buildroot}%{_unitdir}
+install -p -m 644 %{_builddir}/efs-utils-v%{version}/dist/amazon-efs-mount-watchdog.service %{buildroot}%{_unitdir}
 
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_sbindir}
@@ -83,11 +87,13 @@ mkdir -p %{buildroot}%{_localstatedir}/log/amazon/efs
 mkdir -p %{buildroot}%{_mandir}/man8
 mkdir -p %{buildroot}%{_sysconfdir}/amazon/efs
 
-install -p -m 644 %{_builddir}/efs-utils-%{version}/dist/efs-utils.conf %{buildroot}%{_sysconfdir}/amazon/efs
-install -p -m 444 %{_builddir}/efs-utils-%{version}/dist/efs-utils.crt %{buildroot}%{_sysconfdir}/amazon/efs
-install -p -m 755 %{_builddir}/efs-utils-%{version}/src/mount_efs/__init__.py %{buildroot}%{_sbindir}/mount.efs
-install -p -m 755 %{_builddir}/efs-utils-%{version}/src/watchdog/__init__.py %{buildroot}%{_bindir}/amazon-efs-mount-watchdog
-install -p -m 644 %{_builddir}/efs-utils-%{version}/man/mount.efs.8 %{buildroot}%{_mandir}/man8
+install -p -m 644 %{_builddir}/efs-utils-v%{version}/dist/efs-utils.conf %{buildroot}%{_sysconfdir}/amazon/efs
+install -p -m 444 %{_builddir}/efs-utils-v%{version}/dist/efs-utils.crt %{buildroot}%{_sysconfdir}/amazon/efs
+install -p -m 755 %{_builddir}/efs-utils-v%{version}/src/mount_efs/__init__.py %{buildroot}%{_sbindir}/mount.efs
+install -p -m 755 %{_builddir}/efs-utils-v%{version}/src/watchdog/__init__.py %{buildroot}%{_bindir}/amazon-efs-mount-watchdog
+install -p -m 644 %{_builddir}/efs-utils-v%{version}/man/mount.efs.8 %{buildroot}%{_mandir}/man8
+cd src/proxy
+%cargo_install
 
 # Create rc-link
 for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.service' $srv_name); ln -s service %{buildroot}%{_sbindir}/rc$rc_name; done
@@ -112,6 +118,7 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
 %{_sysconfdir}/amazon
 %config %{_sysconfdir}/amazon/efs/efs-utils.conf
 %config %{_sysconfdir}/amazon/efs/efs-utils.crt
+%{_bindir}/efs-proxy
 %{_sbindir}/mount.efs
 %{_bindir}/amazon-efs-mount-watchdog
 %{_sbindir}/rcamazon-efs-mount-watchdog

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Jul  8 09:30:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Remove BuildArch field to set build architecture to any
+- Use %cargo_install for installing efs-proxy
+- Update install location for efs-proxy in %files section
+
+-------------------------------------------------------------------
+Fri Jul  4 09:15:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add cargo-packaging to BuildRequires
+- Use %cargo_build for building Rust code
+
+-------------------------------------------------------------------
+Fri Jun 27 19:41:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Limit recompress service to efs-utils-*.tar
+- Remove commented fields from _service file
+- Switch source service from obs_scm to tar_scm
+
+-------------------------------------------------------------------
+Fri Jun 27 13:56:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.3.1
+  * Fix backtrace version to resolve ubuntu and rhel build issues
+  * Pin Cargo.lock to avoid unexpected error across images
+- from version 2.3.0
+  * Add support for pod-identity credentials in the credentials chain
+  * Enable mounting with IPv6 when using with the 'stunnel' mount option
+- Build and install efs-proxy binary (bsc#1240044)
+  * Add cargo, libopenssl-devel and rust to BuildRequires
+  * Adjust starting directory for find command to exclude src/proxy
+  * Enable vendoring for Rust dependencies of efs-proxy
+  * Include efs-proxy binary in %files section
+  * Replace upstream tarball with SCM-generated source
+
+-------------------------------------------------------------------
 Mon Mar 31 09:42:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.2.1

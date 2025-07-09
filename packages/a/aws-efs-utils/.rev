@@ -221,4 +221,12 @@
 - Update BuildRequires from requirements.txt (forwarded request 1265712 from glaubitz)</comment>
     <requestid>1265933</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2a2ad25f51fe1d047b741d05ddd55ad4</srcmd5>
+    <version>2.3.1</version>
+    <time>1752074816</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1291205</requestid>
+  </revision>
 </revisionlist>

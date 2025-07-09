@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/aws/efs-utils.git</param>
+    <param name="scm">git</param>
+    <param name="revision">v2.3.1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">efs-utils-*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+   <param name="compression">gz</param>
+   <param name="custom-root">src/proxy</param>
+   <param name="i-accept-the-risk">RUSTSEC-2022-0013 RUSTSEC-2022-0006</param>
+   <param name="srcdir">efs-utils</param>
+   <param name="update">true</param>
+  </service>
+</services>
