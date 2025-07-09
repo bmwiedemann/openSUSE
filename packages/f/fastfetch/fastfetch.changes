@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul  8 14:10:31 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to 2.47.0:
+  Features:
+   * Improve DietPi OS and Raspberry Pi OS detection 
+     (gh#fastfetch-cli/fastfetch#1816)
+   * Increase `PROC_FILE_BUFFSIZ` to avoid possible short reads
+     - Fix potential bugs in `DiskIO`, `NetIO` and `CPUUsage` 
+       modules
+   * Improve accuracy of CPU usage calculations by including 
+     interrupt and softirq times
+   * Ignore init and systemd processes when detecting terminals
+  Logos:
+   * Improve visibility on white-background terminals for some 
+     logos by replacing white with the default foreground color 
+     - According to Wikipedia, the default foreground color is 
+       implementation-defined. It's usually black for white themes 
+       and white for dark themes. However, some terminals, notably 
+       Konsole with the default theme, use a different color, 
+       which may cause issues with some logos.
+   * Add Xubuntu
+
+-------------------------------------------------------------------
 Sun Jun 22 20:03:56 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to 2.46.0:
