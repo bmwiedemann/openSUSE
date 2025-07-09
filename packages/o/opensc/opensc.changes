@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  9 09:42:07 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix error found when compiling with gcc 15
+  * https://github.com/OpenSC/OpenSC/pull/3316
+  * Add opensc-gcc15.patch
+
+-------------------------------------------------------------------
 Tue Jan 14 19:30:47 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.26.1

@@ -33,6 +33,8 @@ Source2:        %{name}-rpmlintrc
 Source3:        opensc.module
 Patch0:         opensc-gcc11.patch
 Patch1:         opensc-docbook-xsl-fix.patch
+# PATCH-FIX-UPSTREAM Fix error found when compiling with gcc 15 #3316
+Patch2:         opensc-gcc15.patch
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
