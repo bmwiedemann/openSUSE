@@ -451,7 +451,7 @@ Wed Nov 15 18:05:58 UTC 2017 - msuchanek@suse.com
     apply to SLE15 (4.12 kernel) due to backport of 2d070eab2e82 (bsc#1067703)
 
 -------------------------------------------------------------------
-Fri Nov 10 17:01:33 HKT 2017 - lzwang@suse.com
+Fri Nov 10 09:01:33 UTC 2017 - lzwang@suse.com
 
 - Handled renaming of init_level4_pgt to init_top_pgt (bsc#1066770).
   * Added patch: makedumpfile-handle-renamed-init_level4_pgt-init_top_pgt.patch
@@ -462,7 +462,7 @@ Thu Nov  9 12:16:29 UTC 2017 - jslaby@suse.com
 - add makedumpfile-Fix-SECTION_MAP_MASK-for-kernel-v.13.patch (bnc#1066811)
 
 -------------------------------------------------------------------
-Wed Nov  8 17:00:15 HKT 2017 - lzwang@suse.com
+Wed Nov  8 09:00:15 UTC 2017 - lzwang@suse.com
 
 - Update to 1.6.2
   * Fix the use of Xen physical and machine addresses (bsc#1014136)

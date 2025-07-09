@@ -1252,4 +1252,12 @@ See README.static for an explanation why static linking is preferred for some li
 - Update bundled eppic to 63c2a2072464d774097a1a6cc1d2e98290f89c49.</comment>
     <requestid>1281243</requestid>
   </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>85c21b56e3cd10367ca70d04e5e7bdb7</srcmd5>
+    <version>1.7.7</version>
+    <time>1752074758</time>
+    <user>anag_factory</user>
+    <comment>Convert HKT timezone in Changelog to UTC.</comment>
+    <requestid>1291179</requestid>
+  </revision>
 </revisionlist>
