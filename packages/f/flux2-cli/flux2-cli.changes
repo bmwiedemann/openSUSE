@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jul 08 10:51:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.6.4:
+  Flux v2.6.4 is a patch release that comes with various fixes.
+  Users are encouraged to upgrade for the best experience.
+  * Fixes:
+    - Fix for SOPS decryption with US Government KMS keys failing
+      with the error:
+
+        STS: AssumeRoleWithWebIdentity, https response error\n   StatusCode: 0, RequestID: ,
+        request send failed, Post\n \"https://sts.arn.amazonaws.com/\": dial tcp:
+        lookupts.arn.amazonaws.com on 10.100.0.10:53: no such host
+
+  * Components changelog
+    - kustomize-controller v1.6.1
+  * CLI changed
+    - [release/v2.6.x] Update toolkit components by @fluxcdbot in
+      #5444
+
+-------------------------------------------------------------------
 Mon Jun 30 04:52:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.6.3:
