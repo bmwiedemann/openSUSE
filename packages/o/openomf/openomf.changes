@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Jun 22 09:50:48 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.3
+  * Netplay bugfixes.
+  * Hitpause improvements.
+  * Scrap improvements.
+  * Rehit mode.
+  * Other minor cleanups and fixes.
+- Update to version 0.8.2
+  * Experimental netplay spectator mode.
+  * Fix more netplay bugs and improve performance.
+  * Fix infinite unranked challengers in tournament mode.
+  * Fix most (all?) scrap/destructs.
+  * Implement and correct several more animation tags.
+  * Many other small gameplay fixes.
+- Update to version 0.8.1
+  * Improve netplay latency and reliability.
+  * Fix custom key bindings.
+  * Fix incorrect controls in netplay sometimes.
+  * Various Tournament mode UI fixes.
+  * Implement correct stun mechanics.
+  * Fix some NAT traversal issues, and add a network configuration
+    menu.
+  * Fan made tournament support (still a bit experimental).
+  * Various smaller gameplay and UI fixes.
+- Update to version 0.8.0
+  * Netplay support (peer to peer and via a network lobby).
+  * SIM support in tournament mode.
+  * Reworked text renderer and HELP menu.
+  * Opponent AI improvements.
+  * Large improvements to gameplay accuracy.
+  * Numerous graphical improvements.
+
+-------------------------------------------------------------------
 Sat Feb  8 18:59:44 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.7.0

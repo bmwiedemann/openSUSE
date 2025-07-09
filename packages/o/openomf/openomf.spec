@@ -18,7 +18,7 @@
 
 
 Name:           openomf
-Version:        0.7.0
+Version:        0.8.3
 Release:        0
 Summary:        Open Source remake of "One Must Fall 2097"
 License:        MIT
@@ -41,6 +41,7 @@ BuildRequires:  pkgconfig(cunit)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(libconfuse)
 BuildRequires:  pkgconfig(libxmp)
+BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
 
@@ -54,13 +55,15 @@ vary in strength, speed and endurance.
 
 NOTE:
 To play One Must Fall 2097 with openomf you need the original game
-files.  See /usr/share/doc/packages/openomf/README.SUSE
+files.  See %{_docdir}/openomf/README.SUSE
 
 %prep
 %autosetup -p1
 
 %build
 %cmake \
+    -DUSE_MINIUPNPC=OFF \
+    -DUSE_NATPMP=OFF \
     -DUSE_TESTS=ON
 %cmake_build
 
@@ -76,12 +79,14 @@ done
 
 install -m0644 %{SOURCE2} README.SUSE
 
+rm %{buildroot}%{_datadir}/games/openomf/{LICENSE*,README.md}
+
 %check
 ./build/openomf_test_main
 
 %files
-%doc README.md README.SUSE
-%license LICENSE
+%doc DEBUG-KEYS.md NETWORKING.md README.md README.SUSE
+%license LICENSE resources/gamecontrollerdb/LICENSE.gamecontrollerdb src/vendored/LICENSE.argtable3
 %{_bindir}/%{name}
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/applications/%{name}.desktop
