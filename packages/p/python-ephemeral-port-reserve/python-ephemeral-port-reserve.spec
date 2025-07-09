@@ -1,7 +1,7 @@
 #
 # spec file for package python-ephemeral-port-reserve
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname ephemeral-port-reserve
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-ephemeral-port-reserve
 Version:        1.1.4
@@ -31,10 +32,10 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,11 +58,8 @@ sed -i -e '1{/env python/d}' ephemeral_port_reserve.py
 %check
 %pytest
 
-%post
-%python_install_alternative ephemeral-port-reserve
-
-%postun
-%python_uninstall_alternative ephemeral-port-reserve
+%pre
+%python_libalternatives_reset_alternative ephemeral-port-reserve
 
 %files %{python_files}
 %python_alternative %{_bindir}/ephemeral-port-reserve
