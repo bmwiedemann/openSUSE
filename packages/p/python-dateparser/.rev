@@ -263,4 +263,12 @@
   * Prevent installing regex 2019.02.19</comment>
     <requestid>1135449</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>dd22cde34e93489a06d0d9c027630d7b</srcmd5>
+    <version>1.2.0</version>
+    <time>1752074760</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1291193</requestid>
+  </revision>
 </revisionlist>

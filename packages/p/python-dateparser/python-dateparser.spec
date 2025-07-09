@@ -1,7 +1,7 @@
 #
 # spec file for package python-dateparser
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-dateparser
 Version:        1.2.0
@@ -29,14 +30,14 @@ Source:         https://files.pythonhosted.org/packages/source/d/dateparser/date
 Patch1:         mark-network-tests.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires:       python-regex
 Requires:       python-tzlocal
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 Recommends:     convertdate
 Recommends:     python-fasttext
 Recommends:     python-langdetect
@@ -87,11 +88,8 @@ ignoretestfiles="$ignoretestfiles --ignore tests/test_search.py"
 donttest="(not test_timezone_offset_calculation)"
 %pytest -k "$donttest" $ignoretestfiles
 
-%post
-%python_install_alternative dateparser-download
-
-%postun
-%python_uninstall_alternative dateparser-download
+%pre
+%python_libalternatives_reset_alternative dateparser-download
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst
