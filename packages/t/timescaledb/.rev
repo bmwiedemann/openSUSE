@@ -390,4 +390,41 @@
 Stop storing build machine kernel version (boo#1101107)</comment>
     <requestid>1284769</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8bcfab0c9dfcb6f7ebc069f213e5ffef</srcmd5>
+    <version>2.21.0</version>
+    <time>1752074841</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.21.0
+  https://github.com/timescale/timescaledb/releases/tag/2.21.0
+  This release contains performance improvements and bug fixes
+  since the 2.20.3 release. We recommend that you upgrade at the
+  next available opportunity.
+  Highlighted features in TimescaleDB v2.21.0
+  - The attach &amp; detach chunks feature allows manually adding or
+    removing chunks from a hypertable with uncompressed chunks,
+    similar to PostgreSQL’s partition management.
+  - Continued improvement of backfilling into the columnstore,
+    achieving up to 2.5x speedup for constrained tables, by
+    introducing caching logic that boosts throughput for writes to
+    compressed chunks, bringing INSERT performance close to that of
+    uncompressed chunks.
+  - Optimized DELETE operations on the columstore through
+    batch-level deletions of non-segmentby keys in the filter
+    condition, greatly improving performance to up to 42x faster in
+    some cases, as well as reducing bloat, and lowering resource
+    usage.
+  - The heavy lock taken in Continuous Aggregate refresh was
+    relaxed, enabling concurrent refreshes for non-overlapping
+    ranges and eliminating the need for complex customer
+    workarounds.
+  - [tech preview] Direct Compress is an innovative TimescaleDB
+    feature that improves high-volume data ingestion by compressing
+    data in memory and writing it directly to disk, reducing I/O
+    overhead, eliminating dependency on background compression
+    jobs, and significantly boosting insert performance.
+  Sunsetting of the hypercore access method
+  We made the decision to deprecate hypercore access method (TAM)</comment>
+    <requestid>1291267</requestid>
+  </revision>
 </revisionlist>
