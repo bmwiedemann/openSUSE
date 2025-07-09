@@ -5545,4 +5545,14 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <comment>- readded .a files to -devel packages (bsc#1245475) (forwarded request 1289267 from msmeissn)</comment>
     <requestid>1289312</requestid>
   </revision>
+  <revision rev="465" vrev="2">
+    <srcmd5>afc26ae1d4c5dadd46f8a694f76b4b19</srcmd5>
+    <version>10.11</version>
+    <time>1752074873</time>
+    <user>anag_factory</user>
+    <comment>- 0001-kernel32-Use-the-correct-buffer-length.patch: fixed a regression (bsc#1246072)
+
+- added wine-win-debuginfo to baselibs.conf</comment>
+    <requestid>1291323</requestid>
+  </revision>
 </revisionlist>

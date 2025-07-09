@@ -92,6 +92,7 @@ Source3:        https://github.com/wine-staging/wine-staging/archive/v%{download
 Source97:       baselibs.conf
 Source98:       wine.rpmlintrc
 Source99:       get-sources.sh
+Patch0:		0001-kernel32-Use-the-correct-buffer-length.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  flex
@@ -249,7 +250,7 @@ libraries.
 %_win_debug_package
 
 %prep
-%autosetup -n wine-%{downloadver}
+%autosetup -n wine-%{downloadver} -p1
 %if %{staging}
 tar xf %{SOURCE3}
 python3 wine-staging-%{downloadver}/staging/patchinstall.py --all
@@ -319,6 +320,7 @@ echo "  +^/usr/lib/wine/.*def" >> %SOURCE97
 echo " provides \"wine-devel-<targettype> = <version>\""		>> %SOURCE97
 %endif
 echo " conflicts \"otherproviders(wine-devel-<targettype>)\""		>> %SOURCE97
+echo "wine-win-debuginfo" >> %SOURCE97
 
 cat %SOURCE97
 %endif
