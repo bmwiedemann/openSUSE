@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-fastapi%{psuffix}
 Version:        0.115.13
@@ -37,13 +38,13 @@ Patch0:         support-starlette-0.47.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-pydantic >= 1.8.2
 Requires:       python-typing_extensions >= 4.8.0
 Requires:       (python-starlette >= 0.40.0 with python-starlette < 0.48.0)
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
@@ -102,11 +103,8 @@ donttest+=" or test_openapi"
 %pytest -W ignore::DeprecationWarning -W ignore::PendingDeprecationWarning -W ignore::ResourceWarning -k "not ($donttest)" tests
 %endif
 
-%post
-%python_install_alternative fastapi
-
-%postun
-%python_uninstall_alternative fastapi
+%pre
+%python_libalternatives_reset_alternative fastapi
 
 %if !%{with test}
 %files %{python_files}

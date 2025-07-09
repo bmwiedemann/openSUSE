@@ -520,4 +520,12 @@
 - Drop remove-classifiers.patch, no longer required.</comment>
     <requestid>1288758</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>51bd743f220243278deb3aa1368cb49a</srcmd5>
+    <version>0.115.13</version>
+    <time>1752074775</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1291283</requestid>
+  </revision>
 </revisionlist>
