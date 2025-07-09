@@ -1,7 +1,7 @@
 #
 # spec file for package python-Fabric
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-Fabric
 Version:        3.2.2
@@ -39,20 +40,18 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-relaxed}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-Deprecated
 Requires:       python-decorator
 Requires:       python-invoke >= 2.0
 Requires:       python-paramiko >= 3.2
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Conflicts:      python-Fabric3
 Provides:       python-Fabric2 = %{version}
 Provides:       python-Fabric3 = %{version}
-Provides:       python-Fabric3 = %{version}
 Provides:       python-fabric = %{version}
-Provides:       python-fabric2 = %{version}
 Provides:       python-fabric2 = %{version}
 BuildArch:      noarch
 %python_subpackages
@@ -88,11 +87,8 @@ sed -i 's/from invoke.vendor\./from\ /' fabric/connection.py fabric/group.py int
 %check
 %pytest tests/
 
-%post
-%python_install_alternative fab
-
-%postun
-%python_uninstall_alternative fab
+%pre
+%python_libalternatives_reset_alternative fab
 
 %files %{python_files}
 %license LICENSE
