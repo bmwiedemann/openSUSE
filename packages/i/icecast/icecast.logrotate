@@ -1,4 +1,5 @@
 /var/log/icecast/*log {
+	su icecast icecast
 	missingok
 	notifempty
 	sharedscripts

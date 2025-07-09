@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  9 07:59:02 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Fix logrotate configuration to set the proper owner (bsc#1245967);
+  also dropping the corresponding rpmlintrc entry
+
+-------------------------------------------------------------------
 Thu Feb 22 13:36:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
