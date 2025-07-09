@@ -32,20 +32,20 @@ ExclusiveArch:  do_not_build
 Name:           %{name_pg}-pgaudit
 %endif
 %if "%{name_pg}" == "postgresql13"
-Version:        1.5.2
+Version:        1.5.3
 %endif
 # you need to update both the Version: field and the define below for the factory check
 %if "%{name_pg}" == "postgresql14"
-Version:        1.6.2
+Version:        1.6.3
 %endif
 %if "%{name_pg}" == "postgresql15"
-Version:        1.7.0
+Version:        1.7.1
 %endif
 %if "%{name_pg}" == "postgresql16"
-Version:        16.0
+Version:        16.1
 %endif
 %if "%{name_pg}" == "postgresql17"
-Version:        17.0
+Version:        17.1
 %endif
 Release:        0
 Summary:        An auditing module for PostgreSQL

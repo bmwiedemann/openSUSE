@@ -80,4 +80,13 @@
   https://github.com/pgaudit/pgaudit/releases/tag/16.0</comment>
     <requestid>1245893</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>a85745e893c5d491f82c771c94932634</srcmd5>
+    <version>unknown</version>
+    <time>1752074930</time>
+    <user>anag_factory</user>
+    <comment>- Update to 17.1, 16.1, 1.7.1, 1.6.3, 1.5.3:
+  * Fix issues that could cause 'pgaudit stack is not empty' errors.</comment>
+    <requestid>1291429</requestid>
+  </revision>
 </revisionlist>
