@@ -598,4 +598,15 @@
     <comment></comment>
     <requestid>1284873</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>8aaa97002f15114b77ef7dfa81d858fe</srcmd5>
+    <version>37.0.0</version>
+    <time>1752074981</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 37.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1291420 from glaubitz)</comment>
+    <requestid>1291494</requestid>
+  </revision>
 </revisionlist>
