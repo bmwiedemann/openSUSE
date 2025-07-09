@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul  8 07:28:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.5:
+  + Check for X_OK before potential chdir()
+  + Restore initial title when tab has not been visited
+  + Re-use existing new-tab option from overview so consistent
+    styling/container/directory is applied
+  + Remove interface-style action when disposing window to
+    workaround a crash in action muxing inside GTK
+
+-------------------------------------------------------------------
 Tue May 27 19:06:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.4:
