@@ -666,4 +666,15 @@
 - Remove changesauthor from _service</comment>
     <requestid>1269600</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>e61e2079a2e1c2a12bc6468bb89d171c</srcmd5>
+    <version>1.5.8</version>
+    <time>1752074771</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.8:
+  * Update files/usr/share/jeos-firstboot/jeos-firstboot-functions
+  * Use SUSE_PRETTY_NAME as product name to display if it exists (bsc#1245364)
+  * Use xterm-256color on WSL based hosts boo#1237756</comment>
+    <requestid>1291276</requestid>
+  </revision>
 </revisionlist>
