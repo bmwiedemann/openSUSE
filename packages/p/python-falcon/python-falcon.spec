@@ -21,17 +21,17 @@
 %else
 %bcond_with doc
 %endif
-
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-falcon
 Version:        4.0.2
 Release:        0
 Summary:        A web framework for building APIs and app backends
 License:        Apache-2.0
-URL:            http://falconframework.org
+URL:            https://falconframework.org
 Source:         https://files.pythonhosted.org/packages/source/f/falcon/falcon-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/falconry/falcon/pull/2406 chore(tests/asgi): migrate to the new websockets async client
-Patch:          websockets.patch
+Patch0:         websockets.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module base >= 3.8}
@@ -45,8 +45,15 @@ BuildRequires:  %{python_module sphinx-tabs}
 BuildRequires:  %{python_module sphinxcontrib-copybutton}
 BuildRequires:  %{python_module websockets}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       alts
+Suggests:       %{name}-doc
+BuildArch:      noarch
 # TODO: Cython support
 #BuildRequires:  %%{python_module Cython}
+#Requires:       python-Cython
 # SECTION test requirements
 BuildRequires:  %{python_module aiofiles}
 BuildRequires:  %{python_module cbor2}
@@ -64,13 +71,6 @@ BuildRequires:  %{python_module websockets >= 13.1 if (%python-base without pyth
 BuildRequires:  %{python_module pydata-sphinx-theme}
 %endif
 # /SECTION
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-#Requires:       python-Cython
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Suggests:       %{name}-doc
-BuildArch:      noarch
 %python_subpackages
 
 %package -n %{name}-doc
@@ -110,6 +110,7 @@ popd
 %python_clone -a %{buildroot}%{_bindir}/falcon-bench
 %python_clone -a %{buildroot}%{_bindir}/falcon-inspect-app
 %python_clone -a %{buildroot}%{_bindir}/falcon-print-routes
+%python_group_libalternatives falcon-bench falcon-inspect-app falcon-print-routes
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with doc}
@@ -122,11 +123,8 @@ cp -ar docs/_build/html examples %{buildroot}%{_defaultdocdir}/%{name}-doc/
 export LANG=en_US.UTF8
 %pytest
 
-%post
-%{python_install_alternative falcon-bench falcon-inspect-app falcon-print-routes}
-
-%postun
-%python_uninstall_alternative falcon-bench
+%pre
+%python_libalternatives_reset_alternative falcon-bench
 
 %files %{python_files}
 %doc README.rst

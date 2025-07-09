@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  8 13:19:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives
+
+-------------------------------------------------------------------
 Tue Mar 25 15:51:05 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add websockets.patch to fix test failure
