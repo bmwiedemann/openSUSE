@@ -919,4 +919,16 @@ See changelog in:
 - Update to version 3.18.0 (bsc#1241802, CVE-2025-22872):</comment>
     <requestid>1286347</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>a9696509959b98d601b1a1c82e92c552</srcmd5>
+    <version>3.18.4</version>
+    <time>1752074972</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.18.4 (bsc#1246152, CVE-2025-53547):
+  * Disabling linter due to unknown issue f20a4ad (Matt Farina)
+  * build(deps): bump the k8s-io group with 7 updates 563b094
+    (dependabot[bot])
+  * Updating link handling 00de613 (Matt Farina)</comment>
+    <requestid>1291506</requestid>
+  </revision>
 </revisionlist>

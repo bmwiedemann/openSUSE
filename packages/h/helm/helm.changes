@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 09 04:44:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.18.4 (bsc#1246152, CVE-2025-53547):
+  * Disabling linter due to unknown issue f20a4ad (Matt Farina)
+  * build(deps): bump the k8s-io group with 7 updates 563b094
+    (dependabot[bot])
+  * Updating link handling 00de613 (Matt Farina)
+
+-------------------------------------------------------------------
 Tue Jun 17 04:30:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.18.3:
