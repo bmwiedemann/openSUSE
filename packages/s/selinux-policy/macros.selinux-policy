@@ -117,9 +117,13 @@ if [ -z "${_policytype}" ]; then \
   _policytype="targeted" \
 fi \
 if %{_sbindir}/selinuxenabled && [ "${SELINUXTYPE}" = "${_policytype}" ]; then \
-   if [ -f %{_file_context_file_pre} ] && [ -z "${TRANSACTIONAL_UPDATE}" ]; then \
-     %{_sbindir}/fixfiles -C %{_file_context_file_pre} restore &> /dev/null \
-     rm -f %{_file_context_file_pre} \
+   if [ -f %{_file_context_file_pre} ]; then \
+     if [ -z "${TRANSACTIONAL_UPDATE}" ]; then \
+       %{_sbindir}/fixfiles -C %{_file_context_file_pre} restore &> /dev/null \
+       rm -f %{_file_context_file_pre} \
+     else \
+       touch /etc/selinux/.autorelabel \
+     fi \
    fi \
 fi \
 %{nil}

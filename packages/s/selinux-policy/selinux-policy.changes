@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  8 09:08:34 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update macros.selinux-policy to trigger a full relabel on transactional
+  systems upon module installation. This is rather expensive and will
+  hopefully be replaced by a more fine grained solution later on (bsc#1232753)
+
+-------------------------------------------------------------------
 Thu Jul 03 09:28:49 UTC 2025 - cathy.hu@suse.com
 
 - Update to version 20250703:
