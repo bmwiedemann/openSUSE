@@ -17,7 +17,7 @@
 
 
 Name:           gap-xmod
-Version:        2.93
+Version:        2.94
 Release:        0
 Summary:        GAP: Crossed Modules and Cat1-Groups
 License:        GPL-2.0-or-later
