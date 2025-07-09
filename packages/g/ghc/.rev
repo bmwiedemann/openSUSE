@@ -1135,4 +1135,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment>- more work on riscv64-ncg.patch (forwarded request 1277896 from mimi_vx)</comment>
     <requestid>1277897</requestid>
   </revision>
+  <revision rev="113" vrev="3">
+    <srcmd5>68250fdb81fec1749c4f969cc1961205</srcmd5>
+    <version>9.10.2</version>
+    <time>1752074886</time>
+    <user>anag_factory</user>
+    <comment>Improve loongarch64 support.</comment>
+    <requestid>1291352</requestid>
+  </revision>
 </revisionlist>

@@ -28,4 +28,14 @@
       </disk> 
     </hardware>
   </overwrite>
+ <overwrite>
+    <conditions>
+      <arch>loongarch64</arch>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">16</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
 </constraints>

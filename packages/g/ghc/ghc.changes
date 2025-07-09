@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  3 18:49:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Apply ghc-hadrian-s390x-rts--qg.patch on loongarch64 as well
+- Set physicalmemory for loongarch64 in _constraints to 16 GB
+
+-------------------------------------------------------------------
 Thu May 15 21:10:31 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - more work on riscv64-ncg.patch 

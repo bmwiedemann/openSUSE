@@ -295,7 +295,7 @@ Installing this package causes %{name}-*-prof packages corresponding to
 %patch -P 3 -p1
 %endif
 
-%ifarch ppc64le s390x riscv64
+%ifarch loongarch64 ppc64le s390x riscv64
 %patch -P 200 -p1
 %endif
 %patch -P 243 -p1
