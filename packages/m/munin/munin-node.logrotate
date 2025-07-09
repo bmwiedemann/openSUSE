@@ -1,4 +1,4 @@
-/var/log/munin/munin-node.log {
+/var/log/munin-node/munin-node.log {
 	daily
 	missingok
 	rotate 7

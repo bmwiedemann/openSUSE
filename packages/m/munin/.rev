@@ -550,4 +550,12 @@
   https://guide.munin-monitoring.org/en/latest/reference/munin-httpd.html (forwarded request 1286361 from lkocman)</comment>
     <requestid>1286364</requestid>
   </revision>
+  <revision rev="39" vrev="11">
+    <srcmd5>db2d301517163cb4049e88032c263d5e</srcmd5>
+    <version>2.0.72</version>
+    <time>1752074792</time>
+    <user>anag_factory</user>
+    <comment>Let munin-node use its own log and run sub-directory to avoid privilege escalation (boo#1246089)</comment>
+    <requestid>1291418</requestid>
+  </revision>
 </revisionlist>

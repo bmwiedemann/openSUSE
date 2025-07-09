@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  8 13:03:35 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Let munin-node use its own log and run sub-directory
+  to avoid privilege escalation (boo#1246089)
+
+-------------------------------------------------------------------
 Tue Jun 17 11:42:04 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Drop dependency on fast-cgi which was replaced in 2.0.x by munin-httpd

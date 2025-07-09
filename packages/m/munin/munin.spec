@@ -193,7 +193,7 @@ unzip %{SOURCE13}
 %__install -m0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/cron.d/munin
 %endif
 
-%__mkdir_p %{buildroot}/%{logdir}
+%__mkdir_p %{buildroot}/%{logdir} %{buildroot}/%{logdir}-node
 %__mkdir_p %{buildroot}/%{htmldir}
 %__mkdir_p %{buildroot}/%{dbdir}
 %__mkdir_p %{buildroot}/%{dbdir}/plugin-state
@@ -207,6 +207,11 @@ ln munin-gsa-master/README.md README.gsa
 %if %{suse_version} >= 1600
 %python3_fix_shebang_path %{buildroot}/%{plugindir}/*
 %endif
+
+# for boo#1246089
+sed -i 's,/var/log/munin/,/var/log/munin-node/,;
+        s,/var/run/munin/,/var/run/munin-node/,' \
+        %{buildroot}/etc/munin/munin-node.conf
 
 # Fix rpmlint warning: This script uses 'env' as an interpreter.
 for F in \
@@ -452,11 +457,11 @@ fi
 %{_mandir}/man3/Munin::Plugin.3pm.gz
 %{_mandir}/man3/Munin::Plugin::Pgsql.3pm.gz
 %{_mandir}/man3/Munin::Plugin::SNMP.3pm.gz
-%attr(0750, munin, munin) %dir %{logdir}
 %attr(0755, munin, munin) %dir %{dbdir}
 %attr(0775, nobody, nobody) %dir %{dbdir}/plugin-state
-%ghost %{logdir}/munin-node.log
-%ghost /run/munin
+%attr(0750, root, root) %dir %{logdir}-node
+%ghost %{logdir}-node/munin-node.log
+%ghost /run/munin-node
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services
 %{_prefix}/lib/firewalld/services/munin-node.xml
