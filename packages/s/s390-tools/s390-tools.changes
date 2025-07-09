@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Jun 30 09:17:50 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Upgrade s390-tools to version 2.38
+- Upgrade s390-tools to version 2.38 (jsc#PED-10303)
   * Add new tools
     - udev: New rule to set newly hotplugged CPUs online
     - zmemtopo: Display memory topology information
