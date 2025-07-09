@@ -160,4 +160,12 @@
     <comment></comment>
     <requestid>1274383</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>aacbf3e765fc204897efe3b0f2c80bdb</srcmd5>
+    <version>3.12.0</version>
+    <time>1752074776</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1291289</requestid>
+  </revision>
 </revisionlist>
