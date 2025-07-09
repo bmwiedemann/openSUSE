@@ -123,4 +123,12 @@ provides from elf metadata of vendored deps
     <comment></comment>
     <requestid>1235463</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d871b34dcda125cc808c010172d60a3e</srcmd5>
+    <version>1.3.0+0</version>
+    <time>1752074779</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1285005</requestid>
+  </revision>
 </revisionlist>

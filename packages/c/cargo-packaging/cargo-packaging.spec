@@ -17,14 +17,14 @@
 
 
 Name:           cargo-packaging
-Version:        1.2.0+7
+Version:        1.3.0+0
 Release:        0
 Summary:        Macros and tools to assist with cargo and rust packaging
 License:        MPL-2.0
 Group:          Development/Languages/Rust
 URL:            https://github.com/Firstyear/cargo-packaging
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Requires:       cargo-auditable
 Requires:       rust+cargo
 Requires:       zstd
