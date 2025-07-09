@@ -44,6 +44,7 @@ Patch1:         coreutils-remove_hostname_documentation.patch
 Patch3:         coreutils-remove_kill_documentation.patch
 Patch4:         coreutils-i18n.patch
 Patch8:         coreutils-sysinfo.patch
+Patch10:        coreutils-9.7-sort-CVE-2025-5278.patch
 # OBS / RPMLINT require /usr/bin/timeout to be built with the -fpie option.
 Patch100:       coreutils-build-timeout-as-pie.patch
 # There is no network in the build root so make the test succeed
@@ -64,6 +65,7 @@ Patch501:       coreutils-test_without_valgrind.patch
 # tests: skip tests/rm/ext3-perf.sh temporarily as it hangs on OBS.
 Patch810:       coreutils-skip-tests-rm-ext3-perf.patch
 Patch900:       coreutils-tests-workaround-make-fdleak.patch
+
 BuildRequires:  automake
 BuildRequires:  gmp-devel
 BuildRequires:  hostname
@@ -145,6 +147,7 @@ This package contains the documentation for the GNU Core Utilities.
 %patch -P 1
 %patch -P 3
 %patch -P 8
+%patch -P 10 -p1
 #
 %if 0%{?suse_version} <= 1320
 %patch -P 100

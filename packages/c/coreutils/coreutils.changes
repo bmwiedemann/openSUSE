@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  2 09:30:09 UTC 2025 - rw@suse.com
+
+- coreutils-9.7-sort-CVE-2025-5278.patch: Add upstream patch:
+  sort with key character offsets of SIZE_MAX, could induce
+  a read of 1 byte before an allocated heap buffer.
+  (CVE-2025-5278, bsc#1243767)
+
+-------------------------------------------------------------------
 Sun Apr 13 18:32:55 UTC 2025 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - coreutils-i18n.patch: update gnulib mbchar+mbfile to the commit
