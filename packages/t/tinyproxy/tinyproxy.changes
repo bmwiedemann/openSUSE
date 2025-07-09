@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  8 12:06:10 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add userswitching to logrotate snippet [boo#1246092]
+- Replace sysvinit call in logrotate snippet by systemctl
+
+-------------------------------------------------------------------
 Wed May  8 19:02:38 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.11.2

@@ -158,4 +158,13 @@
     [CVE-2023-49606, boo#1223746] (forwarded request 1172908 from bmwiedemann)</comment>
     <requestid>1172918</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>1cf90786fc5838352bafea18cba63082</srcmd5>
+    <version>1.11.2</version>
+    <time>1752074840</time>
+    <user>anag_factory</user>
+    <comment>- Add userswitching to logrotate snippet [boo#1246092]
+- Replace sysvinit call in logrotate snippet by systemctl (try-restart)</comment>
+    <requestid>1291405</requestid>
+  </revision>
 </revisionlist>
