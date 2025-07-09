@@ -17,15 +17,15 @@
 #
 
 
-%global nss_softokn_fips_version 3.110
+%global nss_softokn_fips_version 3.112
 %define NSPR_min_version 4.36
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 %global crypto_policies_version 20210218
 Name:           mozilla-nss
-Version:        3.110
+Version:        3.112
 Release:        0
-%define underscore_version 3_110
+%define underscore_version 3_112
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -323,7 +323,20 @@ source ../obsenv.sh
 source ../obstestenv.sh
 cd tests
 ./all.sh
-if grep "FAILED" ../../../tests_results/security/localhost.1/output.log ; then
+# This file can live at different places when built in OBS or using "osc build":
+if [ -s ../../../tests_results/security/localhost.1/output.log ]; then
+  output_log=../../../tests_results/security/localhost.1/output.log
+elif [ -s ../../tests_results/security/localhost.1/output.log ]; then
+  output_log=../../tests_results/security/localhost.1/output.log
+elif [ -s ../tests_results/security/localhost.1/output.log ]; then
+  output_log=../tests_results/security/localhost.1/output.log
+elif [ -s ../security/localhost.1/output.log ]; then
+  output_log=../security/localhost.1/output.log
+else
+  echo "Cannot find tests_results output.log - Assuming testsuite failed"
+  exit 1
+fi
+if grep "FAILED" $output_log ; then
   echo "Testsuite FAILED"
   exit 1
 fi
