@@ -1,4 +1,162 @@
 -------------------------------------------------------------------
+Wed Jul  9 05:50:32 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.14.0~b4:
+  - Tools/Demos
+    - gh-135968: Stubs for strip are now provided as part of an
+      iOS install.
+    - gh-133600: Backport file reorganization for               .
+      Tools/wasm/wasi This should make backporting future code  .
+      changes easier. It also simplifies instructions around how.
+      to do WASI builds in the devguide                         .
+  - Tests
+    - gh-135966: The iOS testbed now handles the app_packages
+      folder as a site directory.
+    - gh-135494: Fix regrtest to support excluding tests from
+      --pgo tests. Patch by Victor Stinner.
+  - Security
+    - gh-136053: marshal: fix a possible crash when deserializing
+      slice objects.
+    - gh-135661: Fix parsing start and end tags in
+      html.parser.HTMLParser according to the HTML5 standard.
+      - Whitespaces no longer accepted between </ and the tag
+        name. E.g. </ script> does not end the script section.
+      - Vertical tabulation (\v) and non-ASCII whitespaces no
+        longer recognized as whitespaces. The only whitespaces
+        are \t\n\r\f and space.
+      - Null character (U+0000) no longer ends the tag name.
+      - Attributes and slashes after the tag name in end tags are
+        now ignored, instead of terminating after the first > in
+        quoted attribute value. E.g. </script/foo=">"/>.
+      - Multiple slashes and whitespaces between the last
+        attribute and closing > are now ignored in both start and
+        end tags. E.g. <a foo=bar/ //>.
+      - Multiple = between attribute name and value are no longer
+        collapsed. E.g. <a foo==bar> produces attribute “foo”
+        with value “=bar”.
+      - Whitespaces between the = separator and attribute name or
+        value are no longer ignored. E.g. <a foo =bar> produces
+        two attributes “foo” and “=bar”, both with value None; <a
+        foo= bar> produces two attributes: “foo” with value “”
+        and “bar” with value None.
+    - gh-102555: Fix comment parsing in html.parser.HTMLParser
+      according to the HTML5 standard. --!> now ends the comment.
+      -- > no longer ends the comment. Support abnormally ended
+      empty comments <--> and <--->.
+  - Library
+    - gh-136286: Fix pickling failures for protocols 0 and 1 for
+      many objects realted to subinterpreters.
+    - gh-136316: Improve support for evaluating nested forward
+      references in typing.evaluate_forward_ref().
+    - gh-85702: If zoneinfo._common.load_tzdata is given a
+      package without a resource a zoneinfo.ZoneInfoNotFoundError
+      is raised rather than a PermissionError. Patch by Victor
+      Stinner.
+    - gh-136028: Fix parsing month names containing “İ”
+      (U+0130, LATIN CAPITAL LETTER I WITH DOT ABOVE) in
+      time.strptime(). This affects locales az_AZ, ber_DZ, ber_MA
+      and crh_UA.
+    - gh-135995: In the palmos encoding, make byte 0x9b decode to
+      › (U+203A - SINGLE RIGHT-POINTING ANGLE QUOTATION MARK).
+    - gh-53203: Fix time.strptime() for %c and %x formats on
+      locales byn_ER, wal_ET and lzh_TW, and for %X format on
+      locales ar_SA, bg_BG and lzh_TW.
+    - gh-91555: An earlier change, which was introduced in
+      3.14.0b2, has been reverted. It disabled logging for
+      a logger during handling of log messages for that
+      logger. Since the reversion, the behaviour should be as it
+      was before 3.14.0b2.
+    - gh-135878: Fixes a crash of types.SimpleNamespace on free
+      threading builds, when several threads were calling its
+      __repr__() method at the same time.
+    - gh-135836: Fix IndexError in
+      asyncio.loop.create_connection() that could occur when
+      non-OSError exception is raised during connection and
+      socket’s close() raises OSError.
+    - gh-135836: Fix IndexError in
+      asyncio.loop.create_connection() that could occur when the
+      Happy Eyeballs algorithm resulted in an empty exceptions
+      list during connection attempts.
+    - gh-135855: Raise TypeError instead of SystemError when
+      _interpreters.set___main___attrs() is passed a non-dict
+      object. Patch by Brian Schubert.
+    - gh-135815: netrc: skip security checks if os.getuid() is
+      missing. Patch by Bénédikt Tran.
+    - gh-135640: Address bug where it was possible to call
+      xml.etree.ElementTree.ElementTree.write() on an ElementTree
+      object with an invalid root element. This behavior blanked
+      the file passed to write if it already existed.
+    - gh-135645: Added supports_isolated_interpreters field to
+      sys.implementation.
+    - gh-135646: Raise consistent NameError exceptions in
+      annotationlib.ForwardRef.evaluate()
+    - gh-135557: Fix races on heapq updates and list reads on the
+      free threaded build.
+    - gh-119180: Only fetch globals and locals if necessary in
+      annotationlib.get_annotations()
+    - gh-135561: Fix a crash on DEBUG builds when an HACL* HMAC
+      routine fails. Patch by Bénédikt Tran.
+    - gh-135487: Fix reprlib.Repr.repr_int() when given integers
+      with more than sys.get_int_max_str_digits() digits. Patch
+      by Bénédikt Tran.
+    - gh-135335: multiprocessing: Flush stdout and stderr after
+      preloading modules in the forkserver.
+    - gh-135069: Fix the “Invalid error handling” exception in
+      encodings.idna.IncrementalDecoder to correctly replace the
+      ‘errors’ parameter.
+    - gh-130662: +Accept leading zeros in precision and width
+      fields for +:class:Decimal formatting, for example
+      format(Decimal(1.25), '.016f').
+    - gh-130662: Accept leading zeros in precision and
+      width fields for Fraction formatting, for example
+      format(Fraction(1, 3), '.016f').
+    - gh-87790: Support underscore and comma as thousands
+      separators in the fractional part for Fraction’s
+      formatting. Patch by Sergey B Kirpichev.
+    - gh-87790: Support underscore and comma as thousands
+      separators in the fractional part for Decimal’s
+      formatting. Patch by Sergey B Kirpichev.
+    - gh-130664: Handle corner-case for Fraction’s formatting:
+      treat zero-padding (preceding the width field by a zero
+      ('0') character) as an equivalent to a fill character of
+      '0' with an alignment type of '=', just as in case of
+      float’s.
+  - Documentation
+    - gh-136155: EPUB builds are fixed by excluding
+      non-XHTML-compatible tags.
+  - Core and Builtins
+    - gh-109700: Fix memory error handling in
+      PyDict_SetDefault().
+    - gh-78465: Fix error message for cls.__new__(cls, ...) where
+      cls is not instantiable builtin or extension type (with
+      tp_new set to NULL).
+    - gh-129958: Differentiate between t-strings and f-strings
+      in syntax error for newlines in format specifiers of
+      single-quoted interpolated strings.
+    - gh-135871: Non-blocking mutex lock attempts now return
+      immediately when the lock is busy instead of briefly
+      spinning in the free threading build.
+    - gh-135106: Restrict the trashcan mechanism to GC’ed objects
+      and untrack them while in the trashcan to prevent the GC
+      and trashcan mechanisms conflicting.
+    - gh-135607: Fix potential weakref races in an object’s
+      destructor on the free threaded build.
+    - gh-135608: Fix a crash in the JIT involving attributes of
+      modules.
+    - gh-135543: Emit sys.remote_exec audit event
+      when sys.remote_exec() is called and migrate
+      remote_debugger_script to cpython.remote_debugger_script.
+    - gh-134280: Disable constant folding for ~ with a boolean
+      argument. This moves the deprecation warning from compile
+      time to runtime.
+  - C API
+    - gh-135906: Fix compilation errors when compiling the
+      internal headers with a C++ compiler.
+  - Build
+    - gh-134273: Add support for configuring compiler flags for
+      the JIT with CFLAGS_JIT
+
+-------------------------------------------------------------------
 Wed Jul  2 13:14:28 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add bsc1243155-sphinx-non-determinism.patch (bsc#1243155) to
