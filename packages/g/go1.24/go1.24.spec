@@ -122,7 +122,7 @@
 %endif
 
 Name:           go1.24
-Version:        1.24.4
+Version:        1.24.5
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause

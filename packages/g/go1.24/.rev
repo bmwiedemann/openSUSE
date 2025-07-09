@@ -175,4 +175,25 @@
   * go#73832 cmd/link: Go 1.24.3 and 1.23.9 regression - duplicated definition of symbol dlopen (forwarded request 1283449 from jfkw)</comment>
     <requestid>1283453</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c5f4b3c35549d67f41c12b056d6466ae</srcmd5>
+    <version>1.24.5</version>
+    <time>1752074788</time>
+    <user>anag_factory</user>
+    <comment>- go1.24.5 (released 2025-07-08) includes security fixes to the go
+  command, as well as bug fixes to the compiler, the linker, the
+  runtime, and the go command.
+  Refs boo#1236217 go1.24 release tracking
+  CVE-2025-4674
+  * go#74381 go#74380 boo#1246118 security: fix CVE-2025-4674 cmd/go: disable support for multiple vcs in one module
+  * go#73908 runtime: bad frame pointer during panic during duffcopy
+  * go#74098 cmd/compile: regression on ppc64le bit operations
+  * go#74113 cmd/go: crash on unknown GOEXPERIMENT during toolchain selection
+  * go#74290 runtime: heap mspan limit is set too late, causing data race between span allocation and conservative scanning
+  * go#74294 internal/trace: stress tests triggering suspected deadlock in tracer
+  * go#74346 runtime: memlock not unlocked in all control flow paths in sysReserveAlignedSbrk
+  * go#74363 runtime/pprof: crash &quot;cannot read stack of running goroutine&quot; in goroutine profile
+  * go#74403 cmd/link: duplicated definition of symbol github.com/ebitengine/purego.syscall15XABI0 when running with ASAN (forwarded request 1291359 from jfkw)</comment>
+    <requestid>1291362</requestid>
+  </revision>
 </revisionlist>
