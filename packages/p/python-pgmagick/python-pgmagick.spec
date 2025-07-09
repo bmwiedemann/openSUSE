@@ -1,7 +1,7 @@
 #
 # spec file for package python-pgmagick
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,10 @@
 #
 
 
+# Building for primary python only due to Boost only being built for the
+# primary python, and exporting all symbols. We can revisit after Python
+# 3.13 is the lowest version we build for.
+%define pythons python3
 %{?sle15_python_module_pythons}
 Name:           python-pgmagick
 Version:        0.7.6
@@ -37,9 +41,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(GraphicsMagick++)
 %if 0%{?suse_version} >= 1500
 BuildRequires:  libboost_python3-devel
-%if %{with python2}
-BuildRequires:  libboost_python-devel
-%endif
 %else
 BuildRequires:  boost-devel
 %endif

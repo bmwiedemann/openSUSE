@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  9 05:15:43 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Build for primary python only, due to how Boost is built.
+- Remove some Python 2 gubbins.
+
+-------------------------------------------------------------------
 Thu Mar 21 05:54:25 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Rewrite the check section completly, making use of upstream's Makefile.

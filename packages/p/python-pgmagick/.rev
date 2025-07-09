@@ -55,4 +55,13 @@
 - Switch to pyproject macros.</comment>
     <requestid>1159955</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>14d9946bd52a0d8f2d0476ab30a2a35e</srcmd5>
+    <version>0.7.6</version>
+    <time>1752074903</time>
+    <user>anag_factory</user>
+    <comment>- Build for primary python only, due to how Boost is built.
+- Remove some Python 2 gubbins.</comment>
+    <requestid>1291386</requestid>
+  </revision>
 </revisionlist>
