@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Jun 16 09:24:17 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Upgrade libzpc to version 1.4.0
+- Upgrade libzpc to version 1.4.0 (jsc#PED-11163)
   - [FEATURE] Support for MSA 10 (XTS-FULL) and MSA 11 (HMAC)
   - [PATCH] bug fixes 
 
