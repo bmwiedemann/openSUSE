@@ -478,4 +478,12 @@
   * Require python &gt;= 3.9 (See also :pull:`1973`).</comment>
     <requestid>1269469</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>d3d37f718dc1a1fc4f6acbcf57a2a39a</srcmd5>
+    <version>7.2.0</version>
+    <time>1752074775</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1291284</requestid>
+  </revision>
 </revisionlist>

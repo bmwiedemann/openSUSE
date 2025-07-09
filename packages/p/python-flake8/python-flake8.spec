@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-flake8
 Version:        7.2.0
@@ -30,21 +31,21 @@ BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# https://flake8.pycqa.org/en/latest/faq.html#why-does-flake8-use-ranges-for-its-dependencies
+Requires:       (python-mccabe >= 0.7.0 with python-mccabe < 0.8.0)
+Requires:       alts
+Requires:       (python-pycodestyle >= 2.13.0 with python-pycodestyle < 2.14.0)
+Requires:       (python-pyflakes >= 3.3.0 with python-pyflakes < 3.4.0)
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mccabe >= 0.7.0 with %python-mccabe < 0.8.0}
 BuildRequires:  %{python_module pycodestyle >= 2.13.0 with %python-pycodestyle < 2.14.0}
 BuildRequires:  %{python_module pyflakes >= 3.3.0 with %python-pyflakes < 3.4.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildArch:      noarch
-# https://flake8.pycqa.org/en/latest/faq.html#why-does-flake8-use-ranges-for-its-dependencies
-Requires:       (python-mccabe >= 0.7.0 with python-mccabe < 0.8.0)
-Requires:       (python-pycodestyle >= 2.13.0 with python-pycodestyle < 2.14.0)
-Requires:       (python-pyflakes >= 3.3.0 with python-pyflakes < 3.4.0)
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -78,11 +79,8 @@ install -m 0755 -D %{SOURCE2} bin/gen-pycodestyle-plugin
 %python_clone -a %{buildroot}%{_bindir}/flake8
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative flake8
-
-%postun
-%python_uninstall_alternative flake8
+%pre
+%python_libalternatives_reset_alternative flake8
 
 %check
 %pytest tests
