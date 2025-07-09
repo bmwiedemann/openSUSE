@@ -66,12 +66,12 @@ RUN set -euo pipefail; chmod +x /usr/local/bin/entrypoint.sh
 
 # create directories that tmpfiles.d would create for us
 RUN set -euo pipefail; \
-    mkdir -p /run/named; chown root:named /run/named; chmod 1775 /run/named; \ 
-    mkdir -p /var/lib/named; chown root:named /var/lib/named; chmod 1775 /var/lib/named; \ 
-    mkdir -p /var/lib/named/dyn; chown named:named /var/lib/named/dyn; chmod 755 /var/lib/named/dyn; \ 
-    mkdir -p /var/lib/named/master; chown root:root /var/lib/named/master; chmod 755 /var/lib/named/master; \ 
-    mkdir -p /var/lib/named/slave; chown named:named /var/lib/named/slave; chmod 755 /var/lib/named/slave; \ 
-    mkdir -p /var/log/named; chown named:named /var/log/named; chmod 750 /var/log/named;
+    install -d -m 1775 -o root -g named /run/named; \
+    install -d -m 1775 -o root -g named /var/lib/named; \
+    install -d -m 755 -o named -g named /var/lib/named/dyn; \
+    install -d -m 755 -o root -g root /var/lib/named/master; \
+    install -d -m 755 -o named -g named /var/lib/named/slave; \
+    install -d -m 750 -o named -g named /var/log/named;
 # create files that tmpfiles.d would create for us
 RUN set -euo pipefail; touch /var/lib/named/127.0.0.zone /var/lib/named/localhost.zone /var/lib/named/named.root.key /var/lib/named/root.hint
 
