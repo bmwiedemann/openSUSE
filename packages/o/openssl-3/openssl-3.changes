@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul  7 13:33:21 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 3.5.1:
+  * Fix x509 application adds trusted use instead of rejected use.
+    [bsc#1243564, CVE-2025-4575]
+- Remove patches:
+  * openssl-Fix-P384-on-P8-targets.patch
+  * openssl-CVE-2025-4575.patch
+- Rebase patches:
+  * openssl-Allow-disabling-of-SHA1-signatures.patch
+  * openssl-FIPS-Allow-SHA1-in-seclevel-2-if-rh-allow-sha1-signatures.patch
+  * openssl-FIPS-NO-DES-support.patch
+- Fix a bogus warning caused by -Wfree-nonheap-object
+  * Add patch openssl-Fix-Wfree-nonheap-object-warning.patch
+
+-------------------------------------------------------------------
 Thu May 29 06:46:14 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix P-384 curve on lower-than-P9 PPC64 targets [bsc#1243014]

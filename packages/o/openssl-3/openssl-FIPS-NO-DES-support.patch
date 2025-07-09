@@ -12,11 +12,11 @@ Signed-off-by: Simo Sorce <simo@redhat.com>
  test/recipes/80-test_cms.t                          |  2 +-
  5 files changed, 14 insertions(+), 13 deletions(-)
 
-Index: openssl-3.5.0-beta1/providers/fips/fipsprov.c
+Index: openssl-3.5.1/providers/fips/fipsprov.c
 ===================================================================
---- openssl-3.5.0-beta1.orig/providers/fips/fipsprov.c
-+++ openssl-3.5.0-beta1/providers/fips/fipsprov.c
-@@ -358,7 +358,8 @@ static const OSSL_ALGORITHM_CAPABLE fips
+--- openssl-3.5.1.orig/providers/fips/fipsprov.c
++++ openssl-3.5.1/providers/fips/fipsprov.c
+@@ -359,7 +359,8 @@ static const OSSL_ALGORITHM_CAPABLE fips
           ossl_cipher_capable_aes_cbc_hmac_sha256),
      ALGC(PROV_NAMES_AES_256_CBC_HMAC_SHA256, ossl_aes256cbc_hmac_sha256_functions,
           ossl_cipher_capable_aes_cbc_hmac_sha256),
@@ -26,10 +26,10 @@ Index: openssl-3.5.0-beta1/providers/fips/fipsprov.c
      ALG(PROV_NAMES_DES_EDE3_ECB, ossl_tdes_ede3_ecb_functions),
      ALG(PROV_NAMES_DES_EDE3_CBC, ossl_tdes_ede3_cbc_functions),
  #endif  /* OPENSSL_NO_DES */
-Index: openssl-3.5.0-beta1/providers/fips/self_test_data.inc
+Index: openssl-3.5.1/providers/fips/self_test_data.inc
 ===================================================================
---- openssl-3.5.0-beta1.orig/providers/fips/self_test_data.inc
-+++ openssl-3.5.0-beta1/providers/fips/self_test_data.inc
+--- openssl-3.5.1.orig/providers/fips/self_test_data.inc
++++ openssl-3.5.1/providers/fips/self_test_data.inc
 @@ -209,6 +209,7 @@ static const ST_KAT_DIGEST st_kat_digest
  /*- CIPHER TEST DATA */
  
@@ -63,10 +63,10 @@ Index: openssl-3.5.0-beta1/providers/fips/self_test_data.inc
  };
  
  static const char hkdf_digest[] = "SHA256";
-Index: openssl-3.5.0-beta1/test/evp_libctx_test.c
+Index: openssl-3.5.1/test/evp_libctx_test.c
 ===================================================================
---- openssl-3.5.0-beta1.orig/test/evp_libctx_test.c
-+++ openssl-3.5.0-beta1/test/evp_libctx_test.c
+--- openssl-3.5.1.orig/test/evp_libctx_test.c
++++ openssl-3.5.1/test/evp_libctx_test.c
 @@ -831,7 +831,9 @@ int setup_tests(void)
      ADD_TEST(kem_invalid_keytype);
  #endif
@@ -78,10 +78,10 @@ Index: openssl-3.5.0-beta1/test/evp_libctx_test.c
  #endif
      return 1;
  }
-Index: openssl-3.5.0-beta1/test/recipes/30-test_evp_data/evpciph_des3_common.txt
+Index: openssl-3.5.1/test/recipes/30-test_evp_data/evpciph_des3_common.txt
 ===================================================================
---- openssl-3.5.0-beta1.orig/test/recipes/30-test_evp_data/evpciph_des3_common.txt
-+++ openssl-3.5.0-beta1/test/recipes/30-test_evp_data/evpciph_des3_common.txt
+--- openssl-3.5.1.orig/test/recipes/30-test_evp_data/evpciph_des3_common.txt
++++ openssl-3.5.1/test/recipes/30-test_evp_data/evpciph_des3_common.txt
 @@ -14,7 +14,7 @@
  Title = DES3 Tests
  
@@ -131,16 +131,16 @@ Index: openssl-3.5.0-beta1/test/recipes/30-test_evp_data/evpciph_des3_common.txt
  Ciphertext = 3FE301C962AC01D02213763C1CBD4CDC799657C064ECF5D41C673812CFDE9675
  
  # Test that DES3 ECB mode encryption is not FIPS approved
--Availablein = fipss
+-Availablein = fips
 -FIPSversion = >=3.4.0
 +Availablein = none
  Cipher = DES-EDE3-ECB
  Operation = ENCRYPT
  Unapproved = 1
-Index: openssl-3.5.0-beta1/test/recipes/80-test_cms.t
+Index: openssl-3.5.1/test/recipes/80-test_cms.t
 ===================================================================
---- openssl-3.5.0-beta1.orig/test/recipes/80-test_cms.t
-+++ openssl-3.5.0-beta1/test/recipes/80-test_cms.t
+--- openssl-3.5.1.orig/test/recipes/80-test_cms.t
++++ openssl-3.5.1/test/recipes/80-test_cms.t
 @@ -398,7 +398,7 @@ my @smime_cms_tests = (
        \&final_compare
      ],

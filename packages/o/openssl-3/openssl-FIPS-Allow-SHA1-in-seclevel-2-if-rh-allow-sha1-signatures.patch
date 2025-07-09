@@ -10,10 +10,10 @@ Subject: [PATCH] Allow SHA1 in seclevel 2 if rh-allow-sha1-signatures = yes
  test/recipes/25-test_verify.t |  7 ++--
  4 files changed, 79 insertions(+), 18 deletions(-)
 
-Index: openssl-3.5.0/crypto/x509/x509_vfy.c
+Index: openssl-3.5.1/crypto/x509/x509_vfy.c
 ===================================================================
---- openssl-3.5.0.orig/crypto/x509/x509_vfy.c
-+++ openssl-3.5.0/crypto/x509/x509_vfy.c
+--- openssl-3.5.1.orig/crypto/x509/x509_vfy.c
++++ openssl-3.5.1/crypto/x509/x509_vfy.c
 @@ -25,6 +25,7 @@
  #include <openssl/objects.h>
  #include <openssl/core_names.h>
@@ -54,10 +54,10 @@ Index: openssl-3.5.0/crypto/x509/x509_vfy.c
 +
      return secbits >= minbits_table[level - 1];
  }
-Index: openssl-3.5.0/ssl/t1_lib.c
+Index: openssl-3.5.1/ssl/t1_lib.c
 ===================================================================
---- openssl-3.5.0.orig/ssl/t1_lib.c
-+++ openssl-3.5.0/ssl/t1_lib.c
+--- openssl-3.5.1.orig/ssl/t1_lib.c
++++ openssl-3.5.1/ssl/t1_lib.c
 @@ -21,6 +21,7 @@
  #include <openssl/bn.h>
  #include <openssl/provider.h>
@@ -66,7 +66,7 @@ Index: openssl-3.5.0/ssl/t1_lib.c
  #include "internal/sslconf.h"
  #include "internal/nelem.h"
  #include "internal/sizes.h"
-@@ -2807,19 +2808,27 @@ int tls12_check_peer_sigalg(SSL_CONNECTI
+@@ -2809,19 +2810,27 @@ int tls12_check_peer_sigalg(SSL_CONNECTI
          SSLfatal(s, SSL_AD_HANDSHAKE_FAILURE, SSL_R_UNKNOWN_DIGEST);
          return 0;
      }
@@ -107,7 +107,7 @@ Index: openssl-3.5.0/ssl/t1_lib.c
      }
      /* Store the sigalg the peer uses */
      s->s3.tmp.peer_sigalg = lu;
-@@ -3391,6 +3400,14 @@ static int tls12_sigalg_allowed(const SS
+@@ -3393,6 +3402,14 @@ static int tls12_sigalg_allowed(const SS
          }
      }
  
@@ -122,7 +122,7 @@ Index: openssl-3.5.0/ssl/t1_lib.c
      /* Finally see if security callback allows it */
      secbits = sigalg_security_bits(SSL_CONNECTION_GET_CTX(s), lu);
      sigalgstr[0] = (lu->sigalg >> 8) & 0xff;
-@@ -4381,6 +4398,8 @@ static int ssl_security_cert_sig(SSL_CON
+@@ -4383,6 +4400,8 @@ static int ssl_security_cert_sig(SSL_CON
  {
      /* Lookup signature algorithm digest */
      int secbits, nid, pknid;
@@ -131,7 +131,7 @@ Index: openssl-3.5.0/ssl/t1_lib.c
  
      /* Don't check signature if self signed */
      if ((X509_get_extension_flags(x) & EXFLAG_SS) != 0)
-@@ -4390,6 +4409,25 @@ static int ssl_security_cert_sig(SSL_CON
+@@ -4392,6 +4411,25 @@ static int ssl_security_cert_sig(SSL_CON
      /* If digest NID not defined use signature NID */
      if (nid == NID_undef)
          nid = pknid;
@@ -157,20 +157,20 @@ Index: openssl-3.5.0/ssl/t1_lib.c
      if (s != NULL)
          return ssl_security(s, op, secbits, nid, x);
      else
-Index: openssl-3.5.0/test/recipes/25-test_verify.t
+Index: openssl-3.5.1/test/recipes/25-test_verify.t
 ===================================================================
---- openssl-3.5.0.orig/test/recipes/25-test_verify.t
-+++ openssl-3.5.0/test/recipes/25-test_verify.t
-@@ -29,7 +29,7 @@ sub verify {
+--- openssl-3.5.1.orig/test/recipes/25-test_verify.t
++++ openssl-3.5.1/test/recipes/25-test_verify.t
+@@ -30,7 +30,7 @@ sub verify {
      run(app([@args]));
  }
  
--plan tests => 194;
-+plan tests => 193;
+-plan tests => 203;
++plan tests => 202;
  
  # Canonical success
  ok(verify("ee-cert", "sslserver", ["root-cert"], ["ca-cert"]),
-@@ -484,8 +484,9 @@ ok(verify("ee-pss-sha1-cert", "", ["root
+@@ -485,8 +485,9 @@ ok(verify("ee-pss-sha1-cert", "", ["root
  ok(verify("ee-pss-sha256-cert", "", ["root-cert"], ["ca-cert"], ),
      "CA with PSS signature using SHA256");
  

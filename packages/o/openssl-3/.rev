@@ -440,4 +440,12 @@
     - [bsc#1243459, CVE-2025-27587] Minerva side channel vulnerability in P-384</comment>
     <requestid>1281096</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>5d30bb0b75e1aa0eb1da9b7bcad12a13</srcmd5>
+    <version>3.5.1</version>
+    <time>1752074732</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1291169</requestid>
+  </revision>
 </revisionlist>

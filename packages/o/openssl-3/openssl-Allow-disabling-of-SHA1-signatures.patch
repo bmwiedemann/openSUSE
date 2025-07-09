@@ -1,7 +1,7 @@
-Index: openssl-3.5.0/crypto/context.c
+Index: openssl-3.5.1/crypto/context.c
 ===================================================================
---- openssl-3.5.0.orig/crypto/context.c
-+++ openssl-3.5.0/crypto/context.c
+--- openssl-3.5.1.orig/crypto/context.c
++++ openssl-3.5.1/crypto/context.c
 @@ -85,6 +85,8 @@ struct ossl_lib_ctx_st {
  #endif
      STACK_OF(SSL_COMP) *comp_methods;
@@ -35,7 +35,7 @@ Index: openssl-3.5.0/crypto/context.c
  static void context_deinit_objs(OSSL_LIB_CTX *ctx);
  
  static int context_init(OSSL_LIB_CTX *ctx)
-@@ -235,6 +256,10 @@ static int context_init(OSSL_LIB_CTX *ct
+@@ -235,6 +254,10 @@ static int context_init(OSSL_LIB_CTX *ct
          goto err;
  #endif
  
@@ -46,7 +46,7 @@ Index: openssl-3.5.0/crypto/context.c
      /* Low priority. */
  #ifndef FIPS_MODULE
      ctx->child_provider = ossl_child_prov_ctx_new(ctx);
-@@ -382,6 +407,11 @@ static void context_deinit_objs(OSSL_LIB
+@@ -382,6 +405,11 @@ static void context_deinit_objs(OSSL_LIB
      }
  #endif
  
@@ -58,7 +58,7 @@ Index: openssl-3.5.0/crypto/context.c
      /* Low priority. */
  #ifndef FIPS_MODULE
      if (ctx->child_provider != NULL) {
-@@ -660,6 +690,9 @@ void *ossl_lib_ctx_get_data(OSSL_LIB_CTX
+@@ -660,6 +688,9 @@ void *ossl_lib_ctx_get_data(OSSL_LIB_CTX
      case OSSL_LIB_CTX_COMP_METHODS:
          return (void *)&ctx->comp_methods;
  
@@ -68,7 +68,7 @@ Index: openssl-3.5.0/crypto/context.c
      default:
          return NULL;
      }
-@@ -714,3 +747,44 @@ void OSSL_LIB_CTX_set_conf_diagnostics(O
+@@ -714,3 +745,44 @@ void OSSL_LIB_CTX_set_conf_diagnostics(O
          return;
      libctx->conf_diagnostics = value;
  }
@@ -113,10 +113,10 @@ Index: openssl-3.5.0/crypto/context.c
 +    ldsigs->allowed = allow;
 +    return 1;
 +}
-Index: openssl-3.5.0/crypto/evp/evp_cnf.c
+Index: openssl-3.5.1/crypto/evp/evp_cnf.c
 ===================================================================
---- openssl-3.5.0.orig/crypto/evp/evp_cnf.c
-+++ openssl-3.5.0/crypto/evp/evp_cnf.c
+--- openssl-3.5.1.orig/crypto/evp/evp_cnf.c
++++ openssl-3.5.1/crypto/evp/evp_cnf.c
 @@ -10,6 +10,7 @@
  #include <stdio.h>
  #include <openssl/crypto.h>
@@ -144,10 +144,10 @@ Index: openssl-3.5.0/crypto/evp/evp_cnf.c
          } else {
              ERR_raise_data(ERR_LIB_EVP, EVP_R_UNKNOWN_OPTION,
                             "name=%s, value=%s", oval->name, oval->value);
-Index: openssl-3.5.0/crypto/evp/m_sigver.c
+Index: openssl-3.5.1/crypto/evp/m_sigver.c
 ===================================================================
---- openssl-3.5.0.orig/crypto/evp/m_sigver.c
-+++ openssl-3.5.0/crypto/evp/m_sigver.c
+--- openssl-3.5.1.orig/crypto/evp/m_sigver.c
++++ openssl-3.5.1/crypto/evp/m_sigver.c
 @@ -15,6 +15,7 @@
  #include "internal/provider.h"
  #include "internal/numbers.h"   /* includes SIZE_MAX */
@@ -156,7 +156,7 @@ Index: openssl-3.5.0/crypto/evp/m_sigver.c
  
  static int update(EVP_MD_CTX *ctx, const void *data, size_t datalen)
  {
-@@ -251,6 +252,18 @@ static int do_sigver_init(EVP_MD_CTX *ct
+@@ -320,6 +321,18 @@ static int do_sigver_init(EVP_MD_CTX *ct
          }
      }
  
@@ -173,12 +173,12 @@ Index: openssl-3.5.0/crypto/evp/m_sigver.c
 +    }
 +
      if (ver) {
-         if (signature->digest_verify_init == NULL) {
-             ERR_raise(ERR_LIB_EVP, EVP_R_INITIALIZATION_ERROR);
-Index: openssl-3.5.0/crypto/evp/pmeth_lib.c
+         if (ctx->pctx->pmeth->verifyctx_init) {
+             if (ctx->pctx->pmeth->verifyctx_init(ctx->pctx, ctx) <= 0)
+Index: openssl-3.5.1/crypto/evp/pmeth_lib.c
 ===================================================================
---- openssl-3.5.0.orig/crypto/evp/pmeth_lib.c
-+++ openssl-3.5.0/crypto/evp/pmeth_lib.c
+--- openssl-3.5.1.orig/crypto/evp/pmeth_lib.c
++++ openssl-3.5.1/crypto/evp/pmeth_lib.c
 @@ -33,6 +33,7 @@
  #include "internal/ffc.h"
  #include "internal/numbers.h"
@@ -187,7 +187,7 @@ Index: openssl-3.5.0/crypto/evp/pmeth_lib.c
  #include "evp_local.h"
  
  #ifndef FIPS_MODULE
-@@ -954,6 +955,20 @@ static int evp_pkey_ctx_set_md(EVP_PKEY_
+@@ -963,6 +964,20 @@ static int evp_pkey_ctx_set_md(EVP_PKEY_
          return -2;
      }
  
@@ -208,10 +208,10 @@ Index: openssl-3.5.0/crypto/evp/pmeth_lib.c
      if (fallback)
          return EVP_PKEY_CTX_ctrl(ctx, -1, op, ctrl, 0, (void *)(md));
  
-Index: openssl-3.5.0/doc/man5/config.pod
+Index: openssl-3.5.1/doc/man5/config.pod
 ===================================================================
---- openssl-3.5.0.orig/doc/man5/config.pod
-+++ openssl-3.5.0/doc/man5/config.pod
+--- openssl-3.5.1.orig/doc/man5/config.pod
++++ openssl-3.5.1/doc/man5/config.pod
 @@ -315,6 +315,21 @@ Within the algorithm properties section,
  The value may be anything that is acceptable as a property query
  string for EVP_set_default_properties().
@@ -234,10 +234,10 @@ Index: openssl-3.5.0/doc/man5/config.pod
  =item B<fips_mode> (deprecated)
  
  The value is a boolean that can be B<yes> or B<no>.  If the value is
-Index: openssl-3.5.0/include/crypto/context.h
+Index: openssl-3.5.1/include/crypto/context.h
 ===================================================================
---- openssl-3.5.0.orig/include/crypto/context.h
-+++ openssl-3.5.0/include/crypto/context.h
+--- openssl-3.5.1.orig/include/crypto/context.h
++++ openssl-3.5.1/include/crypto/context.h
 @@ -48,3 +48,11 @@ void ossl_release_default_drbg_ctx(void)
  #if defined(OPENSSL_THREADS)
  void ossl_threads_ctx_free(void *);
@@ -250,10 +250,10 @@ Index: openssl-3.5.0/include/crypto/context.h
 +} OSSL_LEGACY_DIGEST_SIGNATURES;
 +#endif
 +
-Index: openssl-3.5.0/include/internal/cryptlib.h
+Index: openssl-3.5.1/include/internal/cryptlib.h
 ===================================================================
---- openssl-3.5.0.orig/include/internal/cryptlib.h
-+++ openssl-3.5.0/include/internal/cryptlib.h
+--- openssl-3.5.1.orig/include/internal/cryptlib.h
++++ openssl-3.5.1/include/internal/cryptlib.h
 @@ -120,7 +120,8 @@ typedef struct ossl_ex_data_global_st {
  # define OSSL_LIB_CTX_DECODER_CACHE_INDEX           20
  # define OSSL_LIB_CTX_COMP_METHODS                  21
@@ -264,10 +264,10 @@ Index: openssl-3.5.0/include/internal/cryptlib.h
  
  OSSL_LIB_CTX *ossl_lib_ctx_get_concrete(OSSL_LIB_CTX *ctx);
  int ossl_lib_ctx_is_default(OSSL_LIB_CTX *ctx);
-Index: openssl-3.5.0/include/internal/sslconf.h
+Index: openssl-3.5.1/include/internal/sslconf.h
 ===================================================================
---- openssl-3.5.0.orig/include/internal/sslconf.h
-+++ openssl-3.5.0/include/internal/sslconf.h
+--- openssl-3.5.1.orig/include/internal/sslconf.h
++++ openssl-3.5.1/include/internal/sslconf.h
 @@ -18,4 +18,8 @@ int conf_ssl_name_find(const char *name,
  void conf_ssl_get_cmd(const SSL_CONF_CMD *cmd, size_t idx, char **cmdstr,
                        char **arg);
@@ -277,20 +277,20 @@ Index: openssl-3.5.0/include/internal/sslconf.h
 +int ossl_ctx_legacy_digest_signatures_allowed_set(OSSL_LIB_CTX *libctx, int allow,
 +                                                  int loadconfig);
  #endif
-Index: openssl-3.5.0/providers/common/include/prov/securitycheck.h
+Index: openssl-3.5.1/providers/common/include/prov/securitycheck.h
 ===================================================================
---- openssl-3.5.0.orig/providers/common/include/prov/securitycheck.h
-+++ openssl-3.5.0/providers/common/include/prov/securitycheck.h
+--- openssl-3.5.1.orig/providers/common/include/prov/securitycheck.h
++++ openssl-3.5.1/providers/common/include/prov/securitycheck.h
 @@ -37,3 +37,5 @@ int ossl_digest_get_approved_nid(const E
  /* Functions that have different implementations for the FIPS_MODULE */
  int ossl_digest_rsa_sign_get_md_nid(const EVP_MD *md);
  int ossl_fips_config_securitycheck_enabled(OSSL_LIB_CTX *libctx);
 +
 +int rh_digest_signatures_allowed(OSSL_LIB_CTX *libctx, int mdnid);
-Index: openssl-3.5.0/providers/common/securitycheck.c
+Index: openssl-3.5.1/providers/common/securitycheck.c
 ===================================================================
---- openssl-3.5.0.orig/providers/common/securitycheck.c
-+++ openssl-3.5.0/providers/common/securitycheck.c
+--- openssl-3.5.1.orig/providers/common/securitycheck.c
++++ openssl-3.5.1/providers/common/securitycheck.c
 @@ -19,6 +19,7 @@
  #include <openssl/core_names.h>
  #include <openssl/obj_mac.h>
@@ -316,10 +316,10 @@ Index: openssl-3.5.0/providers/common/securitycheck.c
 +
 +     return mdnid;
 +}
-Index: openssl-3.5.0/providers/common/securitycheck_default.c
+Index: openssl-3.5.1/providers/common/securitycheck_default.c
 ===================================================================
---- openssl-3.5.0.orig/providers/common/securitycheck_default.c
-+++ openssl-3.5.0/providers/common/securitycheck_default.c
+--- openssl-3.5.1.orig/providers/common/securitycheck_default.c
++++ openssl-3.5.1/providers/common/securitycheck_default.c
 @@ -15,6 +15,7 @@
  #include <openssl/obj_mac.h>
  #include "prov/securitycheck.h"
@@ -328,10 +328,10 @@ Index: openssl-3.5.0/providers/common/securitycheck_default.c
  
  /* Disable the security checks in the default provider */
  int ossl_fips_config_securitycheck_enabled(OSSL_LIB_CTX *libctx)
-Index: openssl-3.5.0/providers/implementations/signature/dsa_sig.c
+Index: openssl-3.5.1/providers/implementations/signature/dsa_sig.c
 ===================================================================
---- openssl-3.5.0.orig/providers/implementations/signature/dsa_sig.c
-+++ openssl-3.5.0/providers/implementations/signature/dsa_sig.c
+--- openssl-3.5.1.orig/providers/implementations/signature/dsa_sig.c
++++ openssl-3.5.1/providers/implementations/signature/dsa_sig.c
 @@ -163,6 +163,7 @@ static int dsa_setup_md(PROV_DSA_CTX *ct
  
          md = EVP_MD_fetch(ctx->libctx, mdname, mdprops);
@@ -340,10 +340,10 @@ Index: openssl-3.5.0/providers/implementations/signature/dsa_sig.c
  
          if (md == NULL) {
              ERR_raise_data(ERR_LIB_PROV, PROV_R_INVALID_DIGEST,
-Index: openssl-3.5.0/providers/implementations/signature/ecdsa_sig.c
+Index: openssl-3.5.1/providers/implementations/signature/ecdsa_sig.c
 ===================================================================
---- openssl-3.5.0.orig/providers/implementations/signature/ecdsa_sig.c
-+++ openssl-3.5.0/providers/implementations/signature/ecdsa_sig.c
+--- openssl-3.5.1.orig/providers/implementations/signature/ecdsa_sig.c
++++ openssl-3.5.1/providers/implementations/signature/ecdsa_sig.c
 @@ -197,13 +197,16 @@ static int ecdsa_setup_md(PROV_ECDSA_CTX
          goto err;
      }
@@ -362,10 +362,10 @@ Index: openssl-3.5.0/providers/implementations/signature/ecdsa_sig.c
      /* XOF digests don't work */
      if (EVP_MD_xof(md)) {
          ERR_raise(ERR_LIB_PROV, PROV_R_XOF_DIGESTS_NOT_ALLOWED);
-Index: openssl-3.5.0/providers/implementations/signature/rsa_sig.c
+Index: openssl-3.5.1/providers/implementations/signature/rsa_sig.c
 ===================================================================
---- openssl-3.5.0.orig/providers/implementations/signature/rsa_sig.c
-+++ openssl-3.5.0/providers/implementations/signature/rsa_sig.c
+--- openssl-3.5.1.orig/providers/implementations/signature/rsa_sig.c
++++ openssl-3.5.1/providers/implementations/signature/rsa_sig.c
 @@ -26,6 +26,7 @@
  #include "internal/cryptlib.h"
  #include "internal/nelem.h"
@@ -419,10 +419,10 @@ Index: openssl-3.5.0/providers/implementations/signature/rsa_sig.c
  
      if (pmgf1mdname != NULL
          && !rsa_setup_mgf1_md(prsactx, pmgf1mdname, pmgf1mdprops))
-Index: openssl-3.5.0/ssl/t1_lib.c
+Index: openssl-3.5.1/ssl/t1_lib.c
 ===================================================================
---- openssl-3.5.0.orig/ssl/t1_lib.c
-+++ openssl-3.5.0/ssl/t1_lib.c
+--- openssl-3.5.1.orig/ssl/t1_lib.c
++++ openssl-3.5.1/ssl/t1_lib.c
 @@ -21,6 +21,7 @@
  #include <openssl/bn.h>
  #include <openssl/provider.h>
@@ -431,7 +431,7 @@ Index: openssl-3.5.0/ssl/t1_lib.c
  #include "internal/nelem.h"
  #include "internal/sizes.h"
  #include "internal/tlsgroups.h"
-@@ -2176,6 +2177,7 @@ int ssl_setup_sigalgs(SSL_CTX *ctx)
+@@ -2178,6 +2179,7 @@ int ssl_setup_sigalgs(SSL_CTX *ctx)
      EVP_PKEY *tmpkey = EVP_PKEY_new();
      int istls;
      int ret = 0;
@@ -439,7 +439,7 @@ Index: openssl-3.5.0/ssl/t1_lib.c
  
      if (ctx == NULL)
          goto err;
-@@ -2193,6 +2195,7 @@ int ssl_setup_sigalgs(SSL_CTX *ctx)
+@@ -2195,6 +2197,7 @@ int ssl_setup_sigalgs(SSL_CTX *ctx)
          goto err;
  
      ERR_set_mark();
@@ -447,7 +447,7 @@ Index: openssl-3.5.0/ssl/t1_lib.c
      /* First fill cache and tls12_sigalgs list from legacy algorithm list */
      for (i = 0, lu = sigalg_lookup_tbl;
           i < OSSL_NELEM(sigalg_lookup_tbl); lu++, i++) {
-@@ -2213,6 +2216,11 @@ int ssl_setup_sigalgs(SSL_CTX *ctx)
+@@ -2215,6 +2218,11 @@ int ssl_setup_sigalgs(SSL_CTX *ctx)
              cache[i].available = 0;
              continue;
          }
@@ -459,10 +459,10 @@ Index: openssl-3.5.0/ssl/t1_lib.c
  
          if (!EVP_PKEY_set_type(tmpkey, lu->sig)) {
              cache[i].available = 0;
-Index: openssl-3.5.0/util/libcrypto.num
+Index: openssl-3.5.1/util/libcrypto.num
 ===================================================================
---- openssl-3.5.0.orig/util/libcrypto.num
-+++ openssl-3.5.0/util/libcrypto.num
+--- openssl-3.5.1.orig/util/libcrypto.num
++++ openssl-3.5.1/util/libcrypto.num
 @@ -5925,3 +5925,5 @@ OSSL_AA_DIST_POINT_free
  OSSL_AA_DIST_POINT_new                  6052	3_5_0	EXIST::FUNCTION:
  OSSL_AA_DIST_POINT_it                   6053	3_5_0	EXIST::FUNCTION:

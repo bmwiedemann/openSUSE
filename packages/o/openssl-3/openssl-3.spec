@@ -38,7 +38,7 @@
 %define livepatchable 1
 
 Name:           openssl-3
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        Apache-2.0
@@ -124,10 +124,8 @@ Patch42:        openssl-FIPS-Deny-SHA-1-sigver-in-FIPS-provider.patch
 Patch43:        openssl-FIPS-Allow-SHA1-in-seclevel-2-if-rh-allow-sha1-signatures.patch
 # PATCH-FIX-FEDORA FIPS: Fix the speed command in FIPS mode for KMAC
 Patch44:        openssl-FIPS-Fix-openssl-speed-KMAC.patch
-# PATCH-FIX-UPSTREAM bsc#1243564 CVE-2025-4575 The x509 application adds trusted use instead of rejected use
-Patch45:        openssl-CVE-2025-4575.patch
-# PATCH-FIX-UPSTREAM bsc#1243014 Fix P-384 curve on lower-than-P9 PPC64 targets
-Patch46:        openssl-Fix-P384-on-P8-targets.patch
+# PATCH-FIX-SUSE Fix a bogus warning caused by -Wfree-nonheap-object
+Patch45:        openssl-Fix-Wfree-nonheap-object-warning.patch
 
 # ulp-macros is available according to SUSE version.
 %ifarch x86_64
