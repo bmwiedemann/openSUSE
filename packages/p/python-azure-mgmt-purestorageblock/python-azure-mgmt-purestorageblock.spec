@@ -16,17 +16,15 @@
 #
 
 
-%define realversion 1.0.0b1
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-purestorageblock
-Version:        1.0.0~b1
+Version:        1.0.0
 Release:        0
 Summary:        Microsoft Azure Purestorageblock Management Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_purestorageblock/azure_mgmt_purestorageblock-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_purestorageblock/azure_mgmt_purestorageblock-%{version}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -51,7 +49,7 @@ This is the Microsoft Azure Purestorageblock Management Client Library.
 This package has been tested with Python 3.9+.
 
 %prep
-%setup -q -n azure_mgmt_purestorageblock-%{realversion}
+%setup -q -n azure_mgmt_purestorageblock-%{version}
 
 %build
 %pyproject_wheel
