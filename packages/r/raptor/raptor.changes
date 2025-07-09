@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  8 15:15:46 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add raptor-CVE-2024-57822.patch (bsc#1235674, CVE-2024-57822)
+- refresh raptor-CVE-2024-57823.patch (bsc#1235673, CVE-2024-57823)
+- convert to autosetup
+
+-------------------------------------------------------------------
 Mon Jan 13 10:57:36 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add raptor-CVE-2024-57823.patch (bsc#1235673, CVE-2024-57823)

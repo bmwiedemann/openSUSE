@@ -28,9 +28,9 @@ Source1:        https://download.librdf.org/source/raptor2-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Patch2:         ubsan.patch
-# Patch sent upstream: https://github.com/dajobe/raptor/pull/58
 Patch3:         raptor-libxml2-2.11-support.patch
-Patch4:         raptor-CVE-2024-57823.patch
+Patch4:         raptor-CVE-2024-57822.patch
+Patch5:         raptor-CVE-2024-57823.patch
 BuildRequires:  bison
 BuildRequires:  curl-devel
 BuildRequires:  libxslt-devel
@@ -68,10 +68,7 @@ This package contains the files needed to compile programs that use the
 raptor library.
 
 %prep
-%setup -q -n %{name}2-%{version}
-%patch -P 2
-%patch -P 3 -p1
-%patch -P 4 -p1
+%autosetup -p1 -n %{name}2-%{version}
 
 %build
 %configure \

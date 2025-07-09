@@ -337,4 +337,14 @@ Updating to those licenses stated in the LICENSE.txt file (even though the LGPL-
 - missing pkg-config in buildrequires</comment>
     <requestid>1237384</requestid>
   </revision>
+  <revision rev="46" vrev="5">
+    <srcmd5>d21cbe7d49a2121cd3444a5bd4f24029</srcmd5>
+    <version>2.0.16</version>
+    <time>1752074784</time>
+    <user>anag_factory</user>
+    <comment>- add raptor-CVE-2024-57822.patch (bsc#1235674, CVE-2024-57822)
+- refresh raptor-CVE-2024-57823.patch (bsc#1235673, CVE-2024-57823)
+- convert to autosetup</comment>
+    <requestid>1291319</requestid>
+  </revision>
 </revisionlist>

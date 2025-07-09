@@ -1,7 +1,5 @@
-Index: src/raptor_rfc2396.c
-===================================================================
---- src/raptor_rfc2396.c.orig
-+++ src/raptor_rfc2396.c
+--- a/src/raptor_rfc2396.c.orig
++++ b/src/raptor_rfc2396.c
 @@ -386,7 +386,7 @@ raptor_uri_normalize_path(unsigned char*
    } 
  
