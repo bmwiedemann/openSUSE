@@ -235,4 +235,12 @@
     from a pre-configured PASV range.</comment>
     <requestid>1198052</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>c2a253aea9d35cf66c5c49e3b28d2afb</srcmd5>
+    <version>1.5.10</version>
+    <time>1752074777</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1291290</requestid>
+  </revision>
 </revisionlist>

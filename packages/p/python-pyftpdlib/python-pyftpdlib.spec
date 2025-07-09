@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyftpdlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,6 +17,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-pyftpdlib
 Version:        1.5.10
@@ -33,11 +34,11 @@ BuildRequires:  %{python_module pysendfile}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-pyOpenSSL
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     python-pysendfile
 BuildArch:      noarch
 %python_subpackages
@@ -82,11 +83,8 @@ export TZ=GMT+1
 $python -m pytest
 }
 
-%post
-%python_install_alternative ftpbench
-
-%postun
-%python_uninstall_alternative ftpbench
+%pre
+%python_libalternatives_reset_alternative ftpbench
 
 %files %{python_files}
 %license LICENSE
