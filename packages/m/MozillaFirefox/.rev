@@ -7553,4 +7553,41 @@
     Integer overflow in OrderedHashTable</comment>
     <requestid>1285776</requestid>
   </revision>
+  <revision rev="460" vrev="1">
+    <srcmd5>7158825709ca6a7fc28c1b696659e2cd</srcmd5>
+    <version>140.0.2</version>
+    <time>1752074736</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Firefox 140.0.2
+  * Fixed a startup crash on Windows experienced by some users
+    (bmo#1974259)
+- Mozilla Firefox 140.0.1
+  * Fixed text contrast issues in the sidebar with some dark themes
+    (bmo#1971487)
+  * Fixed a startup crash experienced by some users caused by DLL
+    injection (mbo#1973947)
+
+- Firefox 140.0 Release
+  * New: Vertical Tabs: You can now keep more — or fewer — pinned
+    tabs in view for quicker access to important windows. Just
+    drag the divider to resize your pinned tabs section.
+  * New: Custom Search Engines: Firefox now supports adding even
+    more search engines. To add a custom engine, right-click a
+    search field of a supported website and select “Add Search
+    Engine”, or go to Settings &gt; Search &gt; Add (below the search
+    shortcuts table) to manually enter a search URL.
+  * New: Firefox Extensions: Customize your toolbar with the
+    option to remove the extensions shortcut, giving you more
+    control over your browser. When the button is hidden, you can
+    access the extensions panel again at any time from the
+    Firefox menu by clicking the Extensions menu item.
+  * New: You can now unload tabs by right-clicking on a tab (or
+    multiple selected tabs) and selecting &quot;Unload Tab&quot;. This can
+    speed up performance by reducing Firefox's memory and CPU
+    usage.
+  * New: Full-Page Translations now prioritizes translating only
+    the content near your current view, improving speed and
+    responsiveness. Content outside your view is skipped unless</comment>
+    <requestid>1291039</requestid>
+  </revision>
 </revisionlist>

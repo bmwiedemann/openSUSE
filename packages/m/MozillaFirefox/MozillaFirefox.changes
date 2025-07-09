@@ -1,16 +1,146 @@
 -------------------------------------------------------------------
+Sun Jun 29 07:33:44 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 140.0.2
+  * Fixed a startup crash on Windows experienced by some users
+    (bmo#1974259)
+- Mozilla Firefox 140.0.1
+  * Fixed text contrast issues in the sidebar with some dark themes
+    (bmo#1971487)
+  * Fixed a startup crash experienced by some users caused by DLL
+    injection (mbo#1973947)
+
+-------------------------------------------------------------------
+Tue Jun 24 07:09:28 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox 140.0 Release
+  * New: Vertical Tabs: You can now keep more — or fewer — pinned
+    tabs in view for quicker access to important windows. Just
+    drag the divider to resize your pinned tabs section.
+  * New: Custom Search Engines: Firefox now supports adding even
+    more search engines. To add a custom engine, right-click a
+    search field of a supported website and select “Add Search
+    Engine”, or go to Settings > Search > Add (below the search
+    shortcuts table) to manually enter a search URL.
+  * New: Firefox Extensions: Customize your toolbar with the
+    option to remove the extensions shortcut, giving you more
+    control over your browser. When the button is hidden, you can
+    access the extensions panel again at any time from the
+    Firefox menu by clicking the Extensions menu item.
+  * New: You can now unload tabs by right-clicking on a tab (or
+    multiple selected tabs) and selecting "Unload Tab". This can
+    speed up performance by reducing Firefox's memory and CPU
+    usage.
+  * New: Full-Page Translations now prioritizes translating only
+    the content near your current view, improving speed and
+    responsiveness. Content outside your view is skipped unless
+    you scroll to it, reducing unnecessary resource usage.
+  * New: Firefox builds in Arabic now come with a built-in Arabic
+    dictionary for the Firefox spellchecker.
+  * New: Address autofill enabled for users in Italy, Poland, and
+    Austria.
+  * Changed: The Pocket toolbar icon, as well as the Pocket
+    integrations on New Tab, have been removed per the service
+    shutdown announcement.
+  * HTML5: Added platform support for aria-keyshortcuts in Linux,
+    macOS, and Windows.
+  * HTML5: Added support for the CookieStore API, an asynchronous
+    cookie API for scripts running in HTML documents and service
+    workers.
+  * HTML5: Added support for the Custom Highlight API, which
+    allows styling arbitrary text ranges. Support for text-
+    decoration is not included and is planned for an upcoming
+    release.
+  * HTML5: Added support for the pointerrawupdate event. This
+    event provides lower-latency access to pointer movements by
+    firing as soon as the pointer data is available, typically
+    before the main `pointermove` event. Unlike `pointermove`, it
+    performs an additional hit test to determine the target and
+    fires more frequently, which may impact performance even if
+    only a listener is added. This event is intended for
+    applications that require high-precision input handling and
+    cannot achieve smooth interaction using coalesced
+    `pointermove` events alone.
+  * HTML5: Service Workers are now available in Private Browsing
+    Mode. This enhancement builds on our efforts to support
+    IndexedDB and the DOM Cache API in Private Browsing through
+    encrypted storage. With this change, more websites,
+    especially those that rely on background tasks, will be able
+    to benefit from Service workers.
+  * HTML5: Firefox now applies a uniform user agent (UA) style to
+    `<h1>` elements, regardless of whether they are used inside
+    `<article>`, `<aside>`, `<nav>`, or `<section>`.
+  * HTML5: Firefox will now escape less-than (`<`) and greater-
+    than (`>`) symbols when serializing HTML attributes, making
+    certain mXSS attacks on websites more difficult.
+  * Developer: Improved the search feature in the Inspector panel
+    to help developers more effectively search the DOM of the
+    current page. Sorting the results by the number of matching
+    elements, support “pseudo” selector state, etc.
+  * Enterprise: You can find information about policy updates and
+    enterprise specific bug fixes in the Firefox for Enterprise
+    140 Release Notes.
+  * Fixed: Various security fixes.
+- Mozilla Firefox 140.0
+  https://www.mozilla.org/en-US/firefox/140.0/releasenotes/
+  MFSA 2025-51 (bsc#1244670)
+  * CVE-2025-6424 (bmo#1966423)
+    Use-after-free in FontFaceSet
+  * CVE-2025-6425 (bmo#1717672)
+    The WebCompat WebExtension shipped with Firefox exposed a
+    persistent UUID
+  * CVE-2025-6426 (bmo#1964385)
+    No warning when opening executable terminal files on macOS
+  * CVE-2025-6427 (bmo#1966927)
+    connect-src Content Security Policy restriction could be
+    bypassed
+  * CVE-2025-6428 (bmo#1970151)
+    Firefox for Android opened URLs specified in a link
+    querystring parameter
+  * CVE-2025-6429 (bmo#1970658)
+    Incorrect parsing of URLs could have allowed embedding of
+    youtube.com
+  * CVE-2025-6430 (bmo#1971140)
+    Content-Disposition header ignored when a file is included in
+    an embed or object tag
+  * CVE-2025-6431 (bmo#1942716)
+    The prompt in Firefox for Android that asks before opening a
+    link in an external application could be bypassed
+  * CVE-2025-6432 (bmo#1943804)
+    DNS Requests leaked outside of a configured SOCKS proxy
+  * CVE-2025-6433 (bmo#1954033)
+    WebAuthn would allow a user to sign a challenge on a webpage
+    with an invalid TLS certificate
+  * CVE-2025-6434 (bmo#1955182)
+    HTTPS-Only exception screen lacked anti-clickjacking delay
+  * CVE-2025-6435 (bmo#1950056, bmo#1961777)
+    Save as in Devtools could download files without sanitizing
+    the extension
+  * CVE-2025-6436 (bmo#1941377, bmo#1960948, bmo#1966187,
+    bmo#1966505, bmo#1970764)
+    Memory safety bugs fixed in Firefox 140 and Thunderbird 140
+- requires
+  NSS >= 3.112
+  cargo/rust 1.86
+
+-------------------------------------------------------------------
 Wed Jun 11 16:59:31 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
+- Firefox 139.0.4 Release
+  * Fixed: Fixed Firefox freezing when switching between apps or
+    opening certain panels within the browser. (Bug 1969253 & Bug
+    1969346)
+  * Fixed: Fixed difficult selection of drop-down menu options in
+    the Firefox preferences page when selected via the in-page
+    search. (bmo#1968949)
+  * Fixed: Fixed various selection issues when triple-clicking
+    text in some situations. (Bug 1969100 & Bug 1969432)
+  * Fixed: Fixed an incorrect filename being used when setting an
+    image as the desktop wallpaper on Windows. (bmo#1969793)
+  * Fixed: Various security fixes.
 - Mozilla Firefox 139.0.4
-  * Fixed Firefox freezing when switching between apps or opening
-    certain panels within the browser. (bmo#1969253, bmo#1969346)
-  * Fixed difficult selection of drop-down menu options in the Firefox
-    preferences page when selected via the in-page search. (bmo#1968949)
-  * Fixed various selection issues when triple-clicking text in some
-    situations. (bmo#1969100, bmo#1969432)
-  * Fixed an incorrect filename being used when setting an image
-    as the desktop wallpaper on Windows. (bmo#1969793)
-  MFSA 2025-47
+  https://www.mozilla.org/en-US/firefox/139.0.4/releasenotes/
+  MFSA 2025-47 (bsc#1244468)
   * CVE-2025-49709 (bmo#1966083)
     Memory corruption in canvas surfaces
   * CVE-2025-49710 (bmo#1970095)
