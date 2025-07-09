@@ -32,6 +32,8 @@ Supplements:    modalias(platform:cbe-mic)
 # match ps3flash for package installation
 Supplements:    modalias(ps3:8)
 Patch0:         spu-tools-2.3.0-as-needed.patch
+# build with gcc15
+Patch1:         spu-tools-gcc15.patch
 
 %description
 The spu-tools package contains user space tools for Cell/B.E.

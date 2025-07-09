@@ -1,0 +1,33 @@
+--- spu-top.c	2025-07-08 07:55:16.045199847 +0000
++++ spu-top.c	2025-07-08 08:05:23.329460812 +0000
+@@ -119,6 +119,10 @@ static void quit()
+ 	endwin();
+ 	exit(0);
+ }
++static void quit_sig(int unused)
++{
++  quit();
++}
+ 
+ /* Initializes ncurses library */
+ static void init_ncurses()
+@@ -411,12 +415,12 @@ int main(int argc, char **argv)
+ 
+ 	/* Handle signals */
+ 	atexit(quit);
+-	signal(SIGALRM, quit);
+-	signal(SIGHUP, quit);
+-	signal(SIGINT, quit);
+-	signal(SIGPIPE, quit);
+-	signal(SIGQUIT, quit);
+-	signal(SIGTERM, quit);
++	signal(SIGALRM, quit_sig);
++	signal(SIGHUP, quit_sig);
++	signal(SIGINT, quit_sig);
++	signal(SIGPIPE, quit_sig);
++	signal(SIGQUIT, quit_sig);
++	signal(SIGTERM, quit_sig);
+ 
+ 	last_time.tv_sec = 0;
+ 	last_time.tv_usec = 0;
+

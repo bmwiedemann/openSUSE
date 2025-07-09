@@ -152,4 +152,14 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1151596 from dimstar)</comment>
     <requestid>1151641</requestid>
   </revision>
+  <revision rev="23" vrev="30">
+    <srcmd5>def7ea2e03f0f27abcd98577b4b82c25</srcmd5>
+    <version>2.3.0</version>
+    <time>1752074867</time>
+    <user>anag_factory</user>
+    <comment>- added patches
+  build with gcc15
+  + spu-tools-gcc15.patch (forwarded request 1291182 from pgajdos)</comment>
+    <requestid>1291314</requestid>
+  </revision>
 </revisionlist>
