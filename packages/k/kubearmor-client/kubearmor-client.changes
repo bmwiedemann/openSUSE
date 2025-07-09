@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 08 10:49:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.4:
+  * upgrade dependencies
+  * feat(deps): update protobuf to support kubeArmorVersion
+  * feat: Add long description for install, log, policy and profile
+    commands
+  * fixes e-notation representation
+
+-------------------------------------------------------------------
 Fri Jun 13 11:31:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.3:

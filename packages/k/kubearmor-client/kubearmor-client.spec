@@ -17,7 +17,7 @@
 
 
 Name:           kubearmor-client
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        KubeArmor cli tool aka kArmor
 License:        Apache-2.0
