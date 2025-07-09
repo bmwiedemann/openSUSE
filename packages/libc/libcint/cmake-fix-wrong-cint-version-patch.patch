@@ -1,0 +1,22 @@
+From c0a8902d85bb1304911fd050e02689072dbfb933 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christoph=20Gr=C3=BCninger?= <foss@grueninger.de>
+Date: Sun, 6 Jul 2025 08:08:58 +0200
+Subject: [PATCH] [cmake] Fix wrong cint_VERSION_PATCH
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ad9ee22..3833031 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 3.15)
+ project (cint C)
+ set(cint_VERSION_MAJOR "6")
+ set(cint_VERSION_MINOR "1")
+-set(cint_VERSION_PATCH "1")
++set(cint_VERSION_PATCH "2")
+ set(cint_VERSION_TWEAK "0")
+ set(cint_VERSION "${cint_VERSION_MAJOR}.${cint_VERSION_MINOR}.${cint_VERSION_PATCH}")
+ set(cint_SOVERSION "${cint_VERSION_MAJOR}")

@@ -1,7 +1,7 @@
 #
 # spec file for package libcint
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,19 @@
 #
 
 
-%define major 5
+%define major 6
 %define libname %{name}%{major}
 %define develname   cint
 Name:           libcint
-Version:        5.5.0
+Version:        6.1.2
 Release:        0
 Summary:        General Gaussian-type orbitals integrals for quantum chemistry
 License:        BSD-2-Clause
 URL:            https://github.com/sunqm/libcint
 Source:         https://github.com/sunqm/libcint/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+# PATCH-FIX-UPSTREAM https://github.com/sunqm/libcint/issues/117
+Patch0:         cmake-fix-wrong-cint-version-patch.patch
+BuildRequires:  cmake >= 3.15
 BuildRequires:  gcc-fortran
 BuildRequires:  openblas-devel
 BuildRequires:  python3-numpy
@@ -60,6 +62,7 @@ developing applications that use %{name}.
 
 %build
 %cmake -DCMAKE_INSTALL_LIBDIR=%{_lib} \
+       -DCMAKE_C_STANDARD=17 \
        -DENABLE_EXAMPLE:BOOL=ON \
        -DWITH_F12:BOOL=ON \
        -DWITH_COULOMB_ERF:BOOL=ON \

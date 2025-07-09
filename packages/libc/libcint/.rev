@@ -39,4 +39,15 @@
     <comment></comment>
     <requestid>1126973</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e0eaa334c5e8b9c953c1cd688294ce8d</srcmd5>
+    <version>6.1.2</version>
+    <time>1752074843</time>
+    <user>anag_factory</user>
+    <comment>* update to 6.1.2
+* add cmake-fix-wrong-cint-version-patch.patch to fix wrong library
+  version in CMakeLists.txt (gh#sunqm/libcint#117)
+</comment>
+    <requestid>1291278</requestid>
+  </revision>
 </revisionlist>

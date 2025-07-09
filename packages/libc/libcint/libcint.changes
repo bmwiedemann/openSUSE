@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jul  6 07:08:38 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 6.1.2
+  * Update libcint version tag to align with the new release of qcint
+- update to 6.1.1
+  * Add explicit SSE3 instructions for int2e
+- update to 6.1
+  * Add new integral int1e_grids_ipip
+- update to 6.0
+  * Add polynomial root finder using the eigenvalue algorithm
+  * Fitting Rys roots of SR integrals with Chebyshev polynomials
+  * Remove GTG integrals which are erroneous in previous versions
+  * Remove coulerf integrals which has been covered by regular int2e functions
+- add cmake-fix-wrong-cint-version-patch.patch to fix wrong library
+  version in CMakeLists.txt (gh#sunqm/libcint#117)
+
+-------------------------------------------------------------------
 Wed Nov 15 21:37:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.5.0:
