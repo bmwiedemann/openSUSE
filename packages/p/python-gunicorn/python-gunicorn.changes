@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  8 14:22:13 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives
+
+-------------------------------------------------------------------
 Wed Mar 12 07:43:22 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add missing dependency python-packaging, bsc#1239443

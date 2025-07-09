@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-gunicorn%{psuffix}
 Version:        23.0.0
@@ -36,10 +37,10 @@ Source:         https://files.pythonhosted.org/packages/source/g/gunicorn/gunico
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 3.0}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 Requires:       python-packaging
 Requires:       (python-importlib_metadata if python-base < 3.8)
 Suggests:       python-evenlet
@@ -107,11 +108,8 @@ sphinx-build -b html -d docs/build/doctrees docs/source docs/build/html
 %python_clone -a %{buildroot}%{_bindir}/gunicorn
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative gunicorn
-
-%postun
-%python_uninstall_alternative gunicorn
+%pre
+%python_libalternatives_reset_alternative gunicorn
 
 %files %{python_files}
 %license LICENSE
