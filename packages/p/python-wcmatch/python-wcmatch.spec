@@ -1,7 +1,7 @@
 #
 # spec file for package python-wcmatch
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %{?python_enable_dependency_generator}
 Name:           python-wcmatch
-Version:        10.0
+Version:        10.1
 Release:        0
 Summary:        Wildcard/glob file name matcher
 License:        MIT
