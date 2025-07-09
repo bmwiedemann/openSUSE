@@ -22,6 +22,9 @@ sed -i 's|/bin/bash|/bin/sh|' /etc/passwd
 # not making sense in a zypper-free image
 rm -v /var/lib/zypp/AutoInstalled
 
+# includes device and inode numbers that change on deploy
+rm -v /var/cache/ldconfig/aux-cache
+
 # Will be recreated by the next rpm(1) run as root user
 rm -v /usr/lib/sysimage/rpm/Index.db
 
