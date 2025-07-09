@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  9 08:51:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.32.10
+  * Update eventstream submodule: by @bretambrose in (#748)
+- from version 0.32.9
+  * Use smart pointers in MQTT5 builder by @sfod in (#742)
+  * Remove windows-2019 and latest submodules by @TingDaoK in (#745)
+  * Update submodules by @sfod in (#746)
+
+-------------------------------------------------------------------
 Tue Jun  3 09:08:38 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.32.8
