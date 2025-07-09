@@ -27,8 +27,6 @@ COPY --from=target / /target
 RUN set -euo pipefail; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends bash ca-certificates-mozilla-prebuilt coreutils openSUSE-release openSUSE-release-appliance-docker
 
-# not making sense in a zypper-free image
-RUN set -euo pipefail; rm -v /target/var/lib/zypp/AutoInstalled
 RUN set -euo pipefail; zypper -n install jdupes \
     && jdupes -1 -L -r /target/usr/
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
@@ -53,3 +51,8 @@ LABEL org.opensuse.release-stage="released"
 LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
 LABEL io.artifacthub.package.logo-url="https://opensource.suse.com/bci/SLE_BCI_logomark_green.svg"
 CMD ["/bin/sh"]
+
+# not making sense in a zypper-free image
+RUN set -euo pipefail; rm -v /var/lib/zypp/AutoInstalled
+# includes device and inode numbers that change on deploy
+RUN set -euo pipefail; rm -v /var/cache/ldconfig/aux-cache
