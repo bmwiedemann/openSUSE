@@ -24,6 +24,8 @@ License:        BSD-3-Clause
 Group:          System/Console
 URL:            https://github.com/bmc/daemonize
 Source0:        %{name}-%{version}.tar.gz
+# https://github.com/bmc/daemonize/commit/eaf4746d47e171e7b8655690eb1e91fc216f2866
+Patch0:         daemonize-gcc15.patch
 
 %description
 daemonize runs a command as a Unix daemon. As defined in W. Richard Stevens'
@@ -51,7 +53,7 @@ When you must run a daemon program that does not properly make itself into a
 true Unix daemon, you can use daemonize to force it to run as a true daemon.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 sed -i -e 's|/sbin|/bin|' Makefile.in

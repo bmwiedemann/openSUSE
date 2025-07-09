@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  9 08:27:13 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/bmc/daemonize/commit/eaf4746d47e171e7b8655690eb1e91fc216f2866
+  + daemonize-gcc15.patch
+
+-------------------------------------------------------------------
 Tue Feb 27 14:14:45 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
 
 - Add proper group field for daemonize 1.7.8
