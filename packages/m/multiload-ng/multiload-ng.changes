@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 20 21:54:13 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Specifying gcc-14 usage since build errors out with >= gcc-15 (default)
+  * Adding '-fPIE -pie' to CFLAGS
+  * Adding '-pie' as LDFLAGS
+
+-------------------------------------------------------------------
 Mon Mar  7 18:02:42 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com> - git20210103.743885d
 
 - Adding '_service' file to do the git leg work correctly.

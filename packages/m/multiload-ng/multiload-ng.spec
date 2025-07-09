@@ -1,7 +1,7 @@
 #
 # spec file for package multiload-ng
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 Name:           multiload-ng
 Version:        git20210103.743885d
 Release:        0
 Summary:        Modern graphical system monitor for any panel
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
-Url:            https://github.com/udda/multiload-ng
+URL:            https://github.com/udda/multiload-ng
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  gcc14
+BuildRequires:  gcc14-c++
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -36,7 +40,8 @@ BuildRequires:  pkgconfig(libxfce4ui-2)
 This spec will build a 'base' multiload-ng package and an 'xfce4' multiload-ng package.
 
 %package base
-Summary: Base multiload-ng package
+Summary:        Base multiload-ng package
+
 %description base
 Multiload-ng is a modern graphical system monitor. It's a near-complete rewrite of the good old GNOME multiload applet, that aims to support every existing panel.
 
@@ -56,11 +61,13 @@ Multiload-ng can be built with GTK2 and GTK3, so can be embedded within GTK2/GTK
 %setup -q
 
 %build base
+export CC=gcc-14 CFLAGS="%{optflags} -fPIE -pie" LDFLAGS="-pie"
 ./autogen.sh
 %configure --disable-autostart --with-systray --with-xfce4
 %make_build
 
 %install base
+export CC=gcc-14
 %make_install
 
 %find_lang multiload-ng %{?no_lang_C}
@@ -79,17 +86,16 @@ Multiload-ng can be built with GTK2 and GTK3, so can be embedded within GTK2/GTK
 %{_datadir}/locale/ru/LC_MESSAGES/multiload-ng.mo
 %{_datadir}/locale/zh_CN/LC_MESSAGES/multiload-ng.mo
 
-# -----
-
 %package xfce4
 Summary:        XFCE4 multiload-ng package
 Requires:       multiload-ng-base
+
 %description xfce4
 Provides required files for XFCE4 panel integration.
+
 %files xfce4
 %{_libdir}/xfce4/panel/plugins/libmultiload-ng.la
 %{_libdir}/xfce4/panel/plugins/libmultiload-ng.so
 %{_datadir}/xfce4/panel/plugins/multiload-ng-xfce4.desktop
 
 %changelog
-
