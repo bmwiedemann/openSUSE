@@ -24,6 +24,8 @@ License:        EPL-1.0
 Group:          System/Kernel
 URL:            https://www.ibm.com/developerworks/linux/linux390/smc-tools.html
 Source:         https://github.com/ibm-s390-linux/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/ibm-s390-linux/smc-tools/issues/17
+Patch0:          smc-tools-gcc15.patch
 ### Source:     https://github.com/ibm-s390-linux/smc-tools/releases/tag/1.8.3.tar.gz
 
 BuildRequires:  bash-completion-devel

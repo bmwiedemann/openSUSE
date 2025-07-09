@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  8 12:30:13 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + smc-tools-gcc15.patch
+
+-------------------------------------------------------------------
 Wed Dec 18 11:43:06 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade smc-tools to v1.8.4 (jsc#PED-3280, jsc#PED-3227)
