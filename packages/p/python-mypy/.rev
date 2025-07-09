@@ -500,4 +500,12 @@ reveal_type(Context[MyBot]().bot)
 </comment>
     <requestid>1281381</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>e92bde427f15fd6943f997b427d9543e</srcmd5>
+    <version>1.16.0</version>
+    <time>1752074761</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1291195</requestid>
+  </revision>
 </revisionlist>
