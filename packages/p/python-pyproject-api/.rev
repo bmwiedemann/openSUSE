@@ -47,4 +47,22 @@
       prepare_metadata_for_build_&lt;wheel|editable&gt; in #99</comment>
     <requestid>1124420</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0328462945a95d085985b0cad2fe8b39</srcmd5>
+    <version>1.8.0</version>
+    <time>1752074831</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.8.0:
+  * really drop python&lt;3 support
+- update to 1.7.2:
+  * Improve the CI
+- update to 1.7.1:
+  * Move changelog to GH releases
+- update to 1.7.0:
+  * docs: correct Homepage URL
+  * Bump and fix CI for new setuptools
+
+  - Extrat build_&lt;wheel|editable&gt; from</comment>
+    <requestid>1291241</requestid>
+  </revision>
 </revisionlist>

@@ -1,11 +1,24 @@
 -------------------------------------------------------------------
+Tue Jul  8 11:46:40 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * really drop python<3 support
+- update to 1.7.2:
+  * Improve the CI
+- update to 1.7.1:
+  * Move changelog to GH releases
+- update to 1.7.0:
+  * docs: correct Homepage URL
+  * Bump and fix CI for new setuptools
+
+-------------------------------------------------------------------
 Thu Nov  9 08:57:34 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.6.1:
   - Fix metadata_from_built only extracts one of the dist info files
     in #100
 - Update to 1.6.0:
-  - Extrat build_<wheel|editable> from 
+  - Extrat build_<wheel|editable> from
     prepare_metadata_for_build_<wheel|editable> in #99
 
 -------------------------------------------------------------------

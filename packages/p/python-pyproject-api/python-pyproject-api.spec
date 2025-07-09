@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyproject-api
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyproject-api
-Version:        1.6.1
+Version:        1.8.0
 Release:        0
 Summary:        API to interact with the python pyproject.toml based projects
 License:        MIT
@@ -28,28 +28,22 @@ BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch >= 0.3}
 BuildRequires:  %{python_module hatch-vcs >= 0.3}
 BuildRequires:  %{python_module hatchling >= 1.18}
-BuildRequires:  %{python_module importlib-metadata >= 6 if %python-base < 3.8}
-BuildRequires:  %{python_module packaging >= 23.1}
+BuildRequires:  %{python_module packaging >= 24.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 68.1.2}
+BuildRequires:  %{python_module setuptools >= 75.1}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module tomli >= 2.0.1 if %python-base < 3.11}
 BuildRequires:  %{python_module wheel >= 0.41.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-BuildRequires:  (python36-importlib-metadata >= 6 if python36-base)
-Requires:       python-packaging >= 23
-Requires:       (python-importlib-metadata >= 6 if python3-base < 3.8)
-Requires:       (python-tomli >= 2.0.1 if python3-base < 3.11)
+Requires:       python-packaging >= 24.1
 BuildArch:      noarch
 # SECTION testing=
 # (except for pytest-cov and -randomly)
 BuildRequires:  %{python_module covdefaults >= 2.3}
-BuildRequires:  %{python_module pytest >= 7.4}
-BuildRequires:  %{python_module pytest-cov >= 4.1}
-BuildRequires:  %{python_module pytest-mock >= 3.11.1}
-BuildRequires:  %{python_module virtualenv >= 20.17.1}
+BuildRequires:  %{python_module pytest >= 8.3.3}
+BuildRequires:  %{python_module pytest-cov >= 5}
+BuildRequires:  %{python_module pytest-mock >= 3.14}
 # /SECTION
 %python_subpackages
 
@@ -78,7 +72,7 @@ skip_tests="($skip_tests or test_setuptools_prepare_metadata_for_build_wheel)"
 
 %files %{python_files}
 %license LICENSE
-%doc README.md docs/changelog.rst
+%doc README.md
 %{python_sitelib}/pyproject_api-%{version}*-info
 %{python_sitelib}/pyproject_api
 
