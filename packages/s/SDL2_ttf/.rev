@@ -112,4 +112,12 @@
   versions that work with Tumbleweed.</comment>
     <requestid>1270659</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>8dca142b1ff8f62df392b3460e48b0c5</srcmd5>
+    <version>2.24.0</version>
+    <time>1752074881</time>
+    <user>anag_factory</user>
+    <comment>- Reference baselibs.conf as a Source to make factory-auto happy</comment>
+    <requestid>1291330</requestid>
+  </revision>
 </revisionlist>

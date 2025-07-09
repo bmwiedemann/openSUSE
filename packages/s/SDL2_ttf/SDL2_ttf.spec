@@ -28,6 +28,7 @@ URL:            https://github.com/libsdl-org/SDL_ttf
 #Git-Clone:	https://github.com/libsdl-org/SDL_ttf
 Source:         https://github.com/libsdl-org/SDL_ttf/releases/download/release-%version/SDL2_ttf-%version.tar.gz
 Source2:        https://github.com/libsdl-org/SDL_ttf/releases/download/release-%version/SDL2_ttf-%version.tar.gz.sig
+Source3:        baselibs.conf
 Source8:        %name.keyring
 BuildRequires:  SDL2-devel >= 2.24
 BuildRequires:  c++_compiler
