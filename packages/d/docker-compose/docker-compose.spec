@@ -17,7 +17,7 @@
 
 
 Name:           docker-compose
-Version:        2.38.1
+Version:        2.38.2
 Release:        0
 Summary:        Define and run multi-container applications with Docker
 License:        Apache-2.0
