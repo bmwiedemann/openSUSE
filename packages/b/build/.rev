@@ -1990,4 +1990,19 @@ Changes:
   * Fix handling of replaced golang modules</comment>
     <requestid>1281885</requestid>
   </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>b7f51cde975697cfb5feddfd4d4d6133</srcmd5>
+    <version>20250708</version>
+    <time>1752074764</time>
+    <user>anag_factory</user>
+    <comment>- Make CreateArchive reproducible
+- Adapt to new product composer package set handling
+- Add support for '--format json' option to queryrecipe
+- LiveBuild: drop unused @args from the parse function
+- Support options in the recipe parsers
+- Support the new FromScratch: directive
+- vm-type=qemu: use cpu=max on x86_64
+- generate_sbom: make sure that no package is listed twice in product mode</comment>
+    <requestid>1291258</requestid>
+  </revision>
 </revisionlist>
