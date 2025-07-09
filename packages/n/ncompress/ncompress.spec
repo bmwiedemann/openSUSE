@@ -1,7 +1,7 @@
 #
 # spec file for package ncompress
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        SUSE-Public-Domain
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/vapier/ncompress
 Source:         https://github.com/vapier/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/vapier/ncompress/issues/43
+Patch0:         ncompress-gcc15.patch
 # gzip provides the uncompress tool in /usr/bin
 # we don't provide a link here as this conflicts with gzip
 Requires:       gzip
@@ -39,7 +41,7 @@ also able to decompress .Z files, though ncompress will not recognize
 .gz files at all.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"

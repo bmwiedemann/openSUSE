@@ -1,0 +1,13 @@
+Index: ncompress-5.0/compress.c
+===================================================================
+--- ncompress-5.0.orig/compress.c
++++ ncompress-5.0/compress.c
+@@ -175,7 +175,7 @@
+ #endif
+ 
+ #ifndef SIG_TYPE
+-#	define	SIG_TYPE	void (*)()
++#	define	SIG_TYPE	void (*)(int)
+ #endif
+ 
+ #if defined(AMIGA) || defined(DOS) || defined(MINGW) || defined(WINDOWS)
