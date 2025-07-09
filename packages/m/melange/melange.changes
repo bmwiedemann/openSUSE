@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 09 04:44:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.29.1:
+  * Revert "feat: allow symlinks in workspaces (#2064)" (#2071)
+  * fix: avoid running cachedir mount commands via script (#2070)
+  * Add comment about PATH vs the qemu runner (#2069)
+  * SCA: Generate provides for shlibs ending with ".so" (#2067)
+  * licensing: default to concatenating with AND, add simple mode
+    for license-check --fix (#2057)
+
+-------------------------------------------------------------------
 Fri Jul 04 05:07:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.29.0:
