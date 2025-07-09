@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  8 17:29:35 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.25rc2 (released 2025-07-08) is a release candidate version of
+  go1.25 cut from the master branch at the revision tagged
+  go1.25rc2.
+  Refs boo#1244485 go1.25 release tracking
+  CVE-2025-4674
+  * go#74380 boo#1246118 security: fix CVE-2025-4674 cmd/go: disable support for multiple vcs in one module
+
+-------------------------------------------------------------------
 Wed Jun 11 18:56:35 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.25rc1 (released 2025-06-11) is a release candidate version of

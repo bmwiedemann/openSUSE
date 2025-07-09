@@ -7,4 +7,17 @@
     <comment>New package go1.25 version 1.25rc1 is a release candidate of the upcoming stable release of Go.</comment>
     <requestid>1285203</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d14b64966dce6d2fc9fb5656b600b170</srcmd5>
+    <version>1.25rc2</version>
+    <time>1752074892</time>
+    <user>anag_factory</user>
+    <comment>- go1.25rc2 (released 2025-07-08) is a release candidate version of
+  go1.25 cut from the master branch at the revision tagged
+  go1.25rc2.
+  Refs boo#1244485 go1.25 release tracking
+  CVE-2025-4674
+  * go#74380 boo#1246118 security: fix CVE-2025-4674 cmd/go: disable support for multiple vcs in one module</comment>
+    <requestid>1291363</requestid>
+  </revision>
 </revisionlist>
