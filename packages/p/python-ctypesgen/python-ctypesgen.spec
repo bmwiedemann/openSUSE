@@ -1,7 +1,7 @@
 #
 # spec file for package python-ctypesgen
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-ctypesgen
 Version:        1.1.1
 Release:        0
@@ -23,14 +24,17 @@ Summary:        Python wrapper generator for ctypes
 License:        BSD-2-Clause
 URL:            https://github.com/ctypesgen/ctypesgen
 Source:         https://files.pythonhosted.org/packages/source/c/ctypesgen/ctypesgen-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{pythons} >= 3.7
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 44}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  %{pythons} >= 3.7
+BuildRequires:  alts
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -52,13 +56,11 @@ and creates a wrapper for libraries based on what it finds.
 %check
 # Create a dir in PWD and set TMPDIR to avoid writing to /tmp
 export TMPDIR=`mktemp -d -p ${PWD}`
-%pyunittest -v
+# test_stdbool_type fails with gcc 15, the test code snippet needs porting
+%pytest tests/testsuite.py -k "not test_stdbool_type"
 
-%post
-%python_install_alternative ctypesgen
-
-%postun
-%python_uninstall_alternative ctypesgen
+%pre
+%python_libalternatives_reset_alternative ctypesgen
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
