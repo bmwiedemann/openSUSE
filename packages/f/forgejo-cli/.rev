@@ -65,4 +65,12 @@
     <comment>- update vendor tarball, fixing bsc#1242683 (forwarded request 1274967 from rrahl0)</comment>
     <requestid>1274968</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>65c5c98f6082d693144f3a526c7fe412</srcmd5>
+    <version>0.3.0</version>
+    <time>1752074939</time>
+    <user>anag_factory</user>
+    <comment>- update vendor tarball, fixing issues with gcc15 (forwarded request 1291452 from rrahl0)</comment>
+    <requestid>1291453</requestid>
+  </revision>
 </revisionlist>
