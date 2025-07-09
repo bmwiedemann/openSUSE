@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 23 18:04:06 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.36+git.20250612:
+  * Rename LCC constexpr function to constantexpr, avoiding C23
+    keyword clash
+  * Rename CHAR_WIDTH to CHARACTER_WIDTH
+  * Update FUNDING.yml
+  * Update README.md
+  * OpenGL2: Disable the VAO cache by default
+  * fix minor spelling errors
+
+-------------------------------------------------------------------
 Sun Jan 26 06:24:31 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add ioquake3-drop-build-date-from-generated-file.patch, 
