@@ -22,7 +22,7 @@
 %define afl_32 1
 %endif
 
-%ifarch aarch64 ppc64 ppc64le riscv64 s390x x86_64
+%ifarch aarch64 loongarch64 ppc64 ppc64le riscv64 s390x x86_64
 %define afl_64 1
 %endif
 
