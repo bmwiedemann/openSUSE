@@ -32,6 +32,8 @@ Summary:        Get the currently executing AST node of a frame, and other infor
 License:        MIT
 URL:            https://github.com/alexmojaki/executing
 Source:         https://files.pythonhosted.org/packages/source/e/executing/executing-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM One commit from gh#alexmojaki/executing#97
+Patch0:         support-pytest-8.4.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 4.0.0}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  9 06:44:07 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pytest-8.4.patch:
+  * Do not allow pytest to collect non-test functions.
+
+-------------------------------------------------------------------
 Mon Mar 10 09:25:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.2.0
