@@ -344,7 +344,7 @@ ln -sf opensuse-%{branding}-ports-repoindex.xml %{_datadir}/zypp/local/service/o
 
 # We hereby declare that running this will not influence existing transaction
 ZYPP_READONLY_HACK=1 zypper addservice %{_datadir}/zypp/local/service/openSUSE openSUSE
-ZYPP_READONLY_HACK=1 zypper refresh-services
+ZYPP_READONLY_HACK=1 zypper refresh-services || :
 
 %if 0%{?with_nvidia}
 %posttrans NVIDIA
@@ -362,7 +362,7 @@ done
 
 # We hereby declare that running this will not influence existing transaction
 ZYPP_READONLY_HACK=1 zypper addservice %{_datadir}/zypp/local/service/NVIDIA NVIDIA
-ZYPP_READONLY_HACK=1 zypper refresh-services
+ZYPP_READONLY_HACK=1 zypper refresh-services || :
 %endif
 
 %postun
