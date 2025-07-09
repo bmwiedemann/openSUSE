@@ -17,7 +17,7 @@
 
 
 Name:           read-only-root-fs
-Version:        1.0+git20250422.3e17744
+Version:        1.0+git20250708.3eed5de
 Release:        0
 Summary:        Files and Scripts for a RO root fileystem
 License:        GPL-2.0-or-later

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 08 12:47:38 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.0+git20250708.3eed5de:
+  * writable-etc: Install findmnt instead of mountpoint
+  * CI: Omit volatile-overlay from the initrd
+  * Add basic CI
+  * Only remount when [/sysroot]/etc is ro (bsc#1246021)
+
+-------------------------------------------------------------------
 Tue Apr 22 12:27:34 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.0+git20250422.3e17744:

@@ -186,4 +186,16 @@
 - Switch _service to use mode=&quot;manual&quot;</comment>
     <requestid>1272417</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8764ecb0fb5ea22d280c8f996649eef5</srcmd5>
+    <version>1.0+git20250708.3eed5de</version>
+    <time>1752074769</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0+git20250708.3eed5de:
+  * writable-etc: Install findmnt instead of mountpoint
+  * CI: Omit volatile-overlay from the initrd
+  * Add basic CI
+  * Only remount when [/sysroot]/etc is ro (bsc#1246021)</comment>
+    <requestid>1291268</requestid>
+  </revision>
 </revisionlist>
