@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul  8 17:00:23 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.23.11 (released 2025-07-08) includes security fixes to the go
+  command, as well as bug fixes to the compiler, the linker, and
+  the runtime.
+  Refs boo#1229122 go1.23 release tracking
+  CVE-2025-4674
+  * go#74382 go#74380 boo#1246118 security: fix CVE-2025-4674 cmd/go: disable support for multiple vcs in one module
+  * go#73907 runtime: bad frame pointer during panic during duffcopy
+  * go#74289 runtime: heap mspan limit is set too late, causing data race between span allocation and conservative scanning
+  * go#74293 internal/trace: stress tests triggering suspected deadlock in tracer
+  * go#74362 runtime/pprof: crash "cannot read stack of running goroutine" in goroutine profile
+  * go#74402 cmd/link: duplicated definition of symbol github.com/ebitengine/purego.syscall15XABI0 when running with ASAN
+
+-------------------------------------------------------------------
 Thu Jun  5 18:34:47 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.23.10 (released 2025-06-05) includes security fixes to the
