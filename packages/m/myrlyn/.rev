@@ -68,4 +68,26 @@
   * Removed obsolete textdomain</comment>
     <requestid>1286215</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8ee34a5c0d1db6c2334679fa0ec48450</srcmd5>
+    <version>0.9.7</version>
+    <time>1752074978</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.9.7:
+  * Version bump to 0.9.7
+  * Override exclude filters when searching for -devel / -debug* (Closes #105)
+  * myrlyn-sudo: Build own environment (Closes #102, closes #104)
+  * Don't use login shell (-i) for sudo to avoid XWayland (#104)
+  * Keep XDG_RUNTIME_DIR env var (#102)
+  * Cleaned up whitespace in comments
+  * Fixed coding style
+  * Cleaned up .desktop files; myrlyn-xdg-su is now in attic/
+  * Added auth method to desktop files
+  * Support for prompt arg in myrlyn-askpass
+  * Fixed coding style
+  * Fixed typo
+  * New help menu item: Root Authentication
+  * Backup of .spec and _service</comment>
+    <requestid>1291469</requestid>
+  </revision>
 </revisionlist>

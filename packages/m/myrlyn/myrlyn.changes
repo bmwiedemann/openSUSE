@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul 09 09:41:24 UTC 2025 - shundhammer@suse.com
+
+- Update to version 0.9.7:
+  * Version bump to 0.9.7
+  * Override exclude filters when searching for -devel / -debug* (Closes #105)
+  * myrlyn-sudo: Build own environment (Closes #102, closes #104)
+  * Don't use login shell (-i) for sudo to avoid XWayland (#104)
+  * Keep XDG_RUNTIME_DIR env var (#102)
+  * Cleaned up whitespace in comments
+  * Fixed coding style
+  * Cleaned up .desktop files; myrlyn-xdg-su is now in attic/
+  * Added auth method to desktop files
+  * Support for prompt arg in myrlyn-askpass
+  * Fixed coding style
+  * Fixed typo
+  * New help menu item: Root Authentication
+  * Backup of .spec and _service
+
+-------------------------------------------------------------------
 Mon Jun 16 23:23:48 UTC 2025 - shundhammer@suse.com
 
 - Update to version 0.9.6:
