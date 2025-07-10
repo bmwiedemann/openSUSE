@@ -16,11 +16,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# use GCC 12 for Leap
+
+%define about OpenTTD is a reimplementation of the Microprose game "Transport Tycoon Deluxe" with lots of new features and enhancements. To play the game, you need either the original proprietary data set from the game, or install the recommend subpackages OpenGFX, OpenSFX and OpenMSX for an alternate, free set of graphics, sounds and music, respectively.
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
 %global force_gcc_version 12
 %endif
-%define about OpenTTD is a reimplementation of the Microprose game "Transport Tycoon Deluxe" with lots of new features and enhancements. To play the game, you need either the original proprietary data set from the game, or install the recommend subpackages OpenGFX, OpenSFX and OpenMSX for an alternate, free set of graphics, sounds and music, respectively.
 Name:           openttd
 Version:        14.1
 Release:        0
@@ -32,6 +32,7 @@ Source:         https://cdn.openttd.org/openttd-releases/%{version}/%{name}-%{ve
 Source2:        openttd.appdata.xml
 # PATCH-FEATURE-UPSTREAM https://bugs.openttd.org/task/6490
 Patch1:         0001-icu-build-fix.patch
+Patch2:         0002-gcc15.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?force_gcc_version}-c++
@@ -106,7 +107,7 @@ Recommends:     openttd-opengfx >= 0.5.2
 This package provides the data files needed by %{name} or %{name}-dedicated.
 
 %prep
-%autosetup
+%autosetup -p1
 
 # Remove build time references so build-compare can do its work
 sed -i "s/__DATE__.*__TIME__/\"${SOURCE_DATE_EPOCH}\"/" src/rev.cpp.in
@@ -117,7 +118,7 @@ export CXX="g++-%{force_gcc_version}"
 %else
 export CXX=g++
 %endif
-export CXXFLAGS=-fPIE
+export CXXFLAGS="%{optflags} -fPIE"
 # first, we build the dedicated binary inside dedicated/
 %define __builddir dedicated
 %cmake -DCMAKE_INSTALL_BINDIR="bin" -DCMAKE_INSTALL_DATADIR="share" \

@@ -1315,4 +1315,14 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1273032</requestid>
   </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>38d6ea1650558cb36f3d05ec751d9f3c</srcmd5>
+    <version>14.1</version>
+    <time>1752178311</time>
+    <user>anag_factory</user>
+    <comment>- Fix builds with GCC 15 by backporting 0002-gcc15.patch
+- Fix CXXFLAGS not being properly propagated
+- Fix changelog with source_validators/helpers/fix_changelog</comment>
+    <requestid>1291539</requestid>
+  </revision>
 </revisionlist>
