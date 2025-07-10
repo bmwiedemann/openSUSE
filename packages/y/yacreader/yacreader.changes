@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  9 14:57:41 UTC 2025 - Martin Jambor <mjambor@suse.com>
+
+- Add 0002-fix_building_with_qt_6_9_0.patch and
+  0003-add_missing_QVariantMap_include.patch to fix building with Qt 9.6.0
+  (both backported from https://github.com/YACReader/yacreader/issues/469).
+
+-------------------------------------------------------------------
 Fri Jan  3 04:32:38 UTC 2025 - Xu Zhao <i@xuzhao.net>
 
 - Update to 9.15.0

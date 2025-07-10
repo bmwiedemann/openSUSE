@@ -31,6 +31,10 @@ Source1:        unarr.%{srcext}
 # Source URL: https://sourceforge.net/projects/p7zip/files/p7zip/16.02/p7zip_16.02_src_all.tar.bz2/download
 Source2:        p7zip_%{p7zip_version}_src_all.tar.bz2
 Patch1:         0001-fix-unarr.patch
+# PATCH-FIX-UPSTREAM 0002-fix_building_with_qt_6_9_0.patch https://github.com/YACReader/yacreader/issues/469
+Patch2:         0002-fix_building_with_qt_6_9_0.patch
+# PATCH-FIX-UPSTREAM 0003-add_missing_QVariantMap_include.patch https://github.com/YACReader/yacreader/issues/469
+Patch3:         0003-add_missing_QVariantMap_include.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  glu-devel
@@ -58,6 +62,8 @@ A cross platform comic reader and library manager.
 %setup -q -a 1 -a 2
 mv unarr compressed_archive/unarr/unarr-master
 %patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 mv p7zip_%{p7zip_version} compressed_archive/libp7zip
 
 %build
