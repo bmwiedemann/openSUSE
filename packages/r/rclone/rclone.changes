@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 09 16:27:08 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.70.3:
+  * Version v1.70.3
+  * azureblob: fix server side copy error "requires exactly one scope"
+  * docs: explain the json log format in more detail
+  * check: fix difference report (was reporting error counts)
+  * linkbox: fix upload error "user upload file not exist"
+  * march: fix deadlock when using --no-traverse - fixes #8656
+  * pikpak: improve error handling for missing links and unrecoverable 500s
+  * webdav: fix setting modtime to that of local object instead of remote
+  * fix: b2 versionAt read metadata
+  * Start v1.70.3-DEV development
+  * docs: fix filescom/filelu link mixup
+  * docs: update link for filescom
+
+-------------------------------------------------------------------
 Fri Jun 27 13:31:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.70.2:
