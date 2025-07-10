@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  9 18:11:58 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Update to 1.4.4:
+  * Improve tetra10 scaled jacobian.
+- Changes from version 1.4.3:
+  * Fix clang compile warnings.
+- remove verdict-use-cxx14-standard.patch as it is part of the
+  release
+
+-------------------------------------------------------------------
 Thu Apr 25 10:48:31 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add verdict-use-cxx14-standard.patch to build with cpp14
