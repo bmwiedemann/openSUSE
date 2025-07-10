@@ -91,12 +91,14 @@ skiptests="wheel or test_open_zip_https or test_open_http or test_collection_htt
 skiptests="$skiptests or GPSTrackMaker"
 # December 2022: test_no_append_driver_cannot_append has started failing for FlatGeobuf and GeoJSONSeq only
 skiptests="$skiptests or (test_no_append_driver_cannot_append and (FlatGeobuf or GeoJSONSeq))"
+# Issues with click 8.2.1 on tests: https://github.com/pallets/click/issues/2939
+skiptests="$skiptests or test_fio"
 
 mv fiona fiona_temp
 export GDAL_DATA=$(pkg-config --variable=datadir gdal)
 export PROJ_LIB=$(pkg-config --variable=datadir proj)
 export LANG=en_US.UTF-8
-%pytest_arch -rs -k "not ($skiptests)"
+%pytest_arch -rsfE -k "not ($skiptests)"
 mv fiona_temp fiona
 
 %files %{python_files}

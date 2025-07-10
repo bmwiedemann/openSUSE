@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  3 09:45:38 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Skip fio cli tests because of click 8.2.1 regression
+  * gh#pallets/click#2939
+
+-------------------------------------------------------------------
 Thu Apr 10 06:40:53 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.10.1:
