@@ -32,6 +32,8 @@ Group:          Amusements/Games/Strategy/Real Time
 URL:            http://wz2100.net/
 Source:         https://github.com/Warzone2100/warzone2100/releases/download/%{version}/warzone2100_src.tar.xz
 Source99:       %{name}.changes
+# PATCH-FIX-UPSTREAM warzone2100-SQLiteCPP-gcc15.patch - Fix building with gcc15 - https://src.fedoraproject.org/rpms/warzone2100/raw/rawhide/f/SQLiteCPP-gcc15.patch
+Patch0:         warzone2100-SQLiteCPP-gcc15.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 24 04:59:49 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add warzone2100-SQLiteCPP-gcc15.patch, fix building with gcc15
+
+-------------------------------------------------------------------
 Wed May  7 12:19:50 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
