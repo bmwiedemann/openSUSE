@@ -1,7 +1,7 @@
 #
 # spec file for package python-notify2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +22,16 @@ Version:        0.3.1
 Release:        0
 Summary:        Python interface to DBus notifications
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/notify2/
 Source:         https://files.pythonhosted.org/packages/source/n/notify2/notify2-%{version}.tar.gz
 BuildRequires:  %{python_module dbus-python}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 Requires:       python-dbus-python
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -43,16 +44,16 @@ applications.
 %setup -q -n notify2-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/notify2.py*
-%pycache_only %{python_sitelib}/__pycache__/notify2*
-%{python_sitelib}/notify2-%{version}-*info
+%{python_sitelib}/notify2.py
+%pycache_only %{python_sitelib}/__pycache__/notify2.*.pyc
+%{python_sitelib}/notify2-%{version}.dist-info
 
 %changelog
