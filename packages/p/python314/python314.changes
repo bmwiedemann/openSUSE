@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 10 10:17:47 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix gil/nogil package description, bsc#1246229
+
+-------------------------------------------------------------------
 Wed Jul  9 05:50:32 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.14.0~b4:

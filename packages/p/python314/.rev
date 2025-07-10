@@ -2287,4 +2287,12 @@
 </comment>
     <requestid>1291400</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>8b65585a465529c86a36c297e753af3e</srcmd5>
+    <version>3.14.0~b4</version>
+    <time>1752178419</time>
+    <user>anag_factory</user>
+    <comment>- Fix gil/nogil package description, bsc#1246229</comment>
+    <requestid>1291661</requestid>
+  </revision>
 </revisionlist>

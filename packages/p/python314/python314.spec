@@ -314,7 +314,7 @@ Installing "python3" is sufficient for the vast majority of usecases.
 In addition, recommended packages provide UI toolkit support (python3-curses,
 python3-tk), legacy UNIX database bindings (python3-dbm), and the IDLE
 development environment (python3-idle).
-%if %{with GIL}
+%if %{without GIL}
 
 This package has been built with the Global Interpreter Lock removed.
 This feature is still considered to be experimental. This package is
@@ -435,7 +435,7 @@ This package contains the interpreter core and most commonly used modules
 from the standard library. This is sufficient for many usecases, but it
 excludes components that depend on external libraries, most notably XML,
 database and UI toolkits support.
-%if %{with GIL}
+%if %{without GIL}
 
 This package has been built with the Global Interpreter Lock removed.
 This feature is still considered to be experimental. This package is
