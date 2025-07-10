@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 17 04:35:55 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+
+-------------------------------------------------------------------
 Fri Apr 16 15:18:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.5.0

@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-geojson
 Version:        2.5.0
 Release:        0
@@ -28,6 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/g/geojson/geojson
 # PATCH-FIX-UPSTREAM geojson-py39-jsonload.patch -- gh#jazzband/python-geojson#151
 Patch0:         https://github.com/jazzband/geojson/pull/151.patch#/geojson-py39-jsonload.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -42,10 +43,10 @@ geo interface specification.
 %autosetup -p1 -n geojson-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +57,6 @@ export LANG=en_US.UTF-8
 %license LICENSE.rst
 %doc README.rst CHANGELOG.rst
 %{python_sitelib}/geojson
-%{python_sitelib}/geojson-%{version}*-info
+%{python_sitelib}/geojson-%{version}.dist-info
 
 %changelog
