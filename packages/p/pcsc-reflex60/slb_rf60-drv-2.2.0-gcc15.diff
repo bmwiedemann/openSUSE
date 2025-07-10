@@ -1,0 +1,14 @@
+Index: defines.h
+===================================================================
+--- defines.h.orig
++++ defines.h
+@@ -51,7 +51,8 @@
+ #endif
+ 
+ #ifndef bool
+- typedef short bool;
++ /* typedef short bool; */
++ #include <stdbool.h>
+ #endif
+ 
+ /*

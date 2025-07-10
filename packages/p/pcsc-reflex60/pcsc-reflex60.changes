@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  9 11:22:43 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix build with gcc15:
+  * Remove bool typedef as not needed and not used in the code
+  * Add slb_rf60-drv-2.2.0-gcc15.diff
+
+-------------------------------------------------------------------
 Wed May 21 11:16:20 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use %make_build instead of %jobs (boo#1237231)
