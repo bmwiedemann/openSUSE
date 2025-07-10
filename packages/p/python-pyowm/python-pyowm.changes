@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 17 04:37:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- Explicitly list files and directories in %files.
+
+-------------------------------------------------------------------
 Wed Dec 26 17:52:43 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Upgrade to version 2.10.0

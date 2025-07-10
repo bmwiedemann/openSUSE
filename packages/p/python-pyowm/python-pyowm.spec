@@ -18,7 +18,6 @@
 
 %define skip_python2 1
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyowm
 Version:        2.10.0
 Release:        0
@@ -30,6 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyowm/pyowm-%{v
 Source99:       https://raw.githubusercontent.com/csparpa/pyowm/master/LICENSE
 BuildRequires:  %{python_module requests >= 2.18.2}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-geojson >= 2.3.0
@@ -53,15 +54,16 @@ sed -i '1d' pyowm/__init__.py
 cp -a pyowm/weatherapi25/__init__.py pyowm/weatherapi25/cityids/
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pyowm
+%{python_sitelib}/pyowm-%{version}.dist-info
 
 %changelog
