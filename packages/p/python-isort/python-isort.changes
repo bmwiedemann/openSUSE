@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 10 13:23:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives
+
+-------------------------------------------------------------------
 Fri May  2 08:59:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Raise suse_version to disable pymama tests to <= 1600

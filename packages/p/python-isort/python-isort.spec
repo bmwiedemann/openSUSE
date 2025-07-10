@@ -24,13 +24,12 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %if 0%{?suse_version} <= 1600
 %bcond_with pylama
 %else
 %bcond_without pylama
 %endif
-
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-isort%{psuffix}
 Version:        6.0.1
@@ -40,15 +39,15 @@ License:        MIT
 URL:            https://pycqa.github.io/isort/
 Source:         https://files.pythonhosted.org/packages/source/i/isort/isort-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-typo.patch gh#PyCQA/isort/2392
-Patch:          fix-typo.patch
+Patch0:         fix-typo.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 Recommends:     python-colorama >= 0.4.3
 Recommends:     python-pip-api
 Recommends:     python-pip-shims >= 0.5.2
@@ -65,13 +64,13 @@ BuildRequires:  %{python_module libcst}
 BuildRequires:  %{python_module natsort}
 BuildRequires:  %{python_module pip-api}
 BuildRequires:  %{python_module pipreqs}
-%if %{with pylama}
-BuildRequires:  %{python_module pylama}
-%endif
 BuildRequires:  %{python_module pytest > 6.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module toml >= 0.10.2}
 BuildRequires:  git-core
+%if %{with pylama}
+BuildRequires:  %{python_module pylama}
+%endif
 %endif
 %python_subpackages
 
@@ -111,6 +110,7 @@ hypothesis.settings.register_profile(
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/isort
 %python_clone -a %{buildroot}%{_bindir}/isort-identify-imports
+%python_group_libalternatives isort isort-identify-imports
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -170,11 +170,8 @@ pytest-%{$python_bin_suffix} -v \
 %endif
 
 %if !%{with test}
-%post
-%python_install_alternative isort isort-identify-imports
-
-%postun
-%python_uninstall_alternative isort
+%pre
+%python_libalternatives_reset_alternative isort
 
 %files %{python_files}
 %doc README.md
