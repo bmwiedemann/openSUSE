@@ -2930,4 +2930,62 @@
   during the kiwi image build</comment>
     <requestid>1288814</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>9896dd56437ab93e10153208ae31d8fa</srcmd5>
+    <version>10.2.27</version>
+    <time>1752182090</time>
+    <user>anag_factory</user>
+    <comment>- Bump version: 10.2.26 → 10.2.27
+
+- Fix regression in get_partition_node_name
+  backwards compat for lsblk before 2.38
+  if START column not supported, fall back to default sort
+
+- Add global option --setenv
+  Allow to set environment variables in the caller environment
+  via the commandline, e.g --setenv SOURCE_DATE_EPOCH=42
+
+- Seed filesystem UUIDs with SOURCE_DATE_EPOCH
+  For reproducible builds the calculation of the filesystem UUID
+  should be persistent with each rebuild of the image. To achieve
+  this the UUID is calculated using the SOURCE_DATE_EPOCH from
+  the environment plus a char-number representation of the filesystem
+  label name as random seed. In kiwi every filesystem is created
+  with a label, thus only in case there is no SOURCE_DATE_EPOCH
+  available we continue to create the UUID as random data.
+  This Fixes #2761
+
+- Add label attribute for &lt;partition&gt; section
+  Allow to specify a filesystem label as part of a &lt;partition&gt;
+  definition. So far the label was set by the name of the
+  partition. With the new label attribute, a filesystem label
+  different from the partition name can be set. This commit
+  also updates/fixes the documentation in this regard.
+
+- Improve log message in SystemIdentifier
+  Add some scope information such that we know from where
+  this log information originates from.
+
+- Add rd.kiwi.install.devicepersistency
+  Allow to specify which type of persistent device name should
+  be used to build up the list of installation disk devices.
+  For example rd.kiwi.install.devicepersistency=by-path would
+  use the by-path representations for the available disk
+  devices. The default (by-id) stays untouched. In case an
+  invalid or not present device representation is selected, kiwi
+  falls back to the non persistent unix node names.
+
+- Make mbr-id deterministic
+  Log the value of SDE so it is available to review,
+  even if the build system does not tell about it.
+  Update the tests to cover the new code-path.
+  Co-Authored-By: Marcus Schäfer &lt;marcus.schaefer@gmail.com&gt;
+
+- Ensure dracut initrd is reproducible
+  This helps a bit with issue #2358
+  Add reproducible flag for UKI too
+  Update tests accordingly
+  Co-Authored-By: Marcus Schäfer &lt;marcus.schaefer@gmail.com&gt;</comment>
+    <requestid>1291451</requestid>
+  </revision>
 </revisionlist>

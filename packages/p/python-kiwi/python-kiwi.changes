@@ -1,7 +1,115 @@
 -------------------------------------------------------------------
+Wed Jul 09 11:26:31 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.26 → 10.2.27
+
+-------------------------------------------------------------------
+Tue Jul 08 16:06:26 CEST 2025 - Gavin Lambert <uecasm@users.noreply.github.com>
+
+- Fix regression in get_partition_node_name
+
+  backwards compat for lsblk before 2.38
+  if START column not supported, fall back to default sort
+
+-------------------------------------------------------------------
+Tue Jul 08 09:54:11 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add global option --setenv
+
+  Allow to set environment variables in the caller environment
+  via the commandline, e.g --setenv SOURCE_DATE_EPOCH=42
+
+-------------------------------------------------------------------
+Tue Jul 08 09:06:22 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Seed filesystem UUIDs with SOURCE_DATE_EPOCH
+
+  For reproducible builds the calculation of the filesystem UUID
+  should be persistent with each rebuild of the image. To achieve
+  this the UUID is calculated using the SOURCE_DATE_EPOCH from
+  the environment plus a char-number representation of the filesystem
+  label name as random seed. In kiwi every filesystem is created
+  with a label, thus only in case there is no SOURCE_DATE_EPOCH
+  available we continue to create the UUID as random data.
+  This Fixes #2761
+
+-------------------------------------------------------------------
+Tue Jul 08 09:03:09 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add label attribute for <partition> section
+
+  Allow to specify a filesystem label as part of a <partition>
+  definition. So far the label was set by the name of the
+  partition. With the new label attribute, a filesystem label
+  different from the partition name can be set. This commit
+  also updates/fixes the documentation in this regard.
+
+-------------------------------------------------------------------
+Tue Jul 08 08:59:03 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Improve log message in SystemIdentifier
+
+  Add some scope information such that we know from where
+  this log information originates from.
+
+-------------------------------------------------------------------
+Mon Jul 07 16:35:27 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add rd.kiwi.install.devicepersistency
+
+  Allow to specify which type of persistent device name should
+  be used to build up the list of installation disk devices.
+  For example rd.kiwi.install.devicepersistency=by-path would
+  use the by-path representations for the available disk
+  devices. The default (by-id) stays untouched. In case an
+  invalid or not present device representation is selected, kiwi
+  falls back to the non persistent unix node names.
+
+-------------------------------------------------------------------
+Fri Jul 04 16:15:45 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update test-image-disk
+
+  Add NetworkManager for better remote debugging capabilities
+
+-------------------------------------------------------------------
+Tue Jul 01 11:36:30 CEST 2025 - Bernhard M. Wiedemann <bwiedemann@suse.de>
+
+- Make mbr-id deterministic
+
+  Log the value of SDE so it is available to review,
+  even if the build system does not tell about it.
+
+  Update the tests to cover the new code-path.
+
+  Co-Authored-By: Marcus Schäfer <marcus.schaefer@gmail.com>
+
+-------------------------------------------------------------------
+Tue Jul 01 03:59:03 CEST 2025 - Bernhard M. Wiedemann <bwiedemann@suse.de>
+
+- Ensure dracut initrd is reproducible
+
+  This helps a bit with issue #2358
+
+  Add reproducible flag for UKI too
+
+  Update tests accordingly
+
+  Co-Authored-By: Marcus Schäfer <marcus.schaefer@gmail.com>
+
+-------------------------------------------------------------------
 Fri Jun 27 11:19:27 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.2.25 → 10.2.26
+
+-------------------------------------------------------------------
+Fri Jun 27 11:07:30 CEST 2025 - Alejandro Perez Pestana <alejandroperezpestana99@gmail.com>
+
+- Add kernel parameter support for dm-verity options
+
+  Implement rd.kiwi.verity_options= parameter to allow runtime customization of veritysetup options
+
+  Closes #2837
 
 -------------------------------------------------------------------
 Fri Jun 27 09:55:26 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
