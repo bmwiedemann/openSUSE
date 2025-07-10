@@ -26,7 +26,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        5.0.4
+Version:        5.0.6
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -35,10 +35,14 @@ URL:            https://github.com/openSUSE/transactional-update
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        transactional-update.check
 
+BuildRequires:  acl
+BuildRequires:  attr
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
+BuildRequires:  bats
 BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  fakeroot
 BuildRequires:  fdupes
 %if %{?suse_version} <= 1500
 BuildRequires:  gcc10-c++
@@ -80,6 +84,7 @@ Recommends:     inotify-tools
 Recommends:     rebootmgr
 Suggests:       tukitd = %{version}-%{release}
 Conflicts:      health-checker < 1.8
+Conflicts:      kdump < 2.1.0
 # Support for /etc as subvolume
 Conflicts:      read-only-root-fs < 1.0+git20250410
 Conflicts:      sdbootutil < 1+git20250409
@@ -353,5 +358,9 @@ done
 %config(noreplace) %{_sysconfdir}/zypp/systemCheck.d/transactional-update.check
 
 %check
+if ! %{__make} check; then
+  cat tests/test-suite.log
+  exit 1
+fi
 
 %changelog

@@ -1349,4 +1349,21 @@ Also requires https://build.opensuse.org/request/show/1167142.</comment>
     <comment>Submitting to keep the package in sync with SLE 16 and https://build.suse.de/request/show/381297#comment-4095981</comment>
     <requestid>1287197</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>19431369395e9d7383b54a408e6decc9</srcmd5>
+    <version>5.0.6</version>
+    <time>1752182095</time>
+    <user>anag_factory</user>
+    <comment>- Version 5.0.6
+  - Fix missing x-initrd.mount in fstab on migration [boo#1246139]
+    When migrating overlayfs based /etc to btrfs subvolumes, then
+    the attribute was not set - this may result in failures from
+    services operating on /etc during initrd phase such as SELinux
+    relabelling
+  - Optimize execution time of tests
+- Version 5.0.5
+  - Add support for kdump 2.1.0 [bsc#1243758]
+  - Integrate test to support `make check</comment>
+    <requestid>1291508</requestid>
+  </revision>
 </revisionlist>
