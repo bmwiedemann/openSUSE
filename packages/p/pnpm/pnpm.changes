@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jul  9 11:02:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.13.1:
+  * Patch Changes
+    - Run user defined pnpmfiles after pnpmfiles of plugins.
+- update to 10.13.0:
+  * Minor Changes
+    - Added the possibility to load multiple pnpmfiles. The pnpmfile
+      setting can now accept a list of pnpmfile locations #9702.
+    - pnpm will now automatically load the pnpmfile.cjs file from any
+      config dependency named @pnpm/plugin-* or pnpm-plugin-* #9729.
+    - The order in which config dependencies are initialized should
+      not matter — they are initialized in alphabetical order. If a
+      specific order is needed, the paths to the pnpmfile.cjs files in
+      the config dependencies can be explicitly listed using the
+      pnpmfile setting in pnpm-workspace.yaml.
+  * Patch Changes
+    - When patching dependencies installed via pkg.pr.new, treat them
+      as Git tarball URLs #9694.
+    - Prevent conflicts between local projects' config and the global
+      config in dangerouslyAllowAllBuilds, onlyBuiltDependencies,
+      onlyBuiltDependenciesFile, and neverBuiltDependencies #9628.
+    - Sort keys in pnpm-workspace.yaml with deep #9701.
+    - The pnpm rebuild command should not add pkgs included in
+      ignoredBuiltDependencies to ignoredBuilds in
+      node_modules/.modules.yaml #9338.
+    - Replaced shell-quote with shlex for quoting command arguments
+      #9381.
+
+-------------------------------------------------------------------
 Mon Jun 30 05:15:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 10.12.4:
