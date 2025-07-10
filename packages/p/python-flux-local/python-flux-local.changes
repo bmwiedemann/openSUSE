@@ -1,4 +1,139 @@
 -------------------------------------------------------------------
+Wed Jun 18 04:53:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.5.6:
+  * Fix a bug when diffing OCIRepository changes used by multiple
+    HelmReleases by @allenporter in #948
+  * Add a second app-template for testing diffs by @allenporter in
+    #946
+  * Update app-template test charts by @allenporter in #947
+
+-------------------------------------------------------------------
+Sun Jun 15 16:51:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.5.5:
+  * What's Changed
+    - Improve error messages in image extraction by @allenporter in
+      #944
+    - fix: upgrade helm to 3.18.1 by @onedr0p in #928
+    - pin oras in requirements.txt (avoid bug in oras 0.2.34) by
+      @samholton in #943
+  * Other dependency updates
+    - chore(deps): update fluxcd/flux2 action to v2.6.0 by
+      @renovate in #929
+    - chore(deps): update ghcr.io/fluxcd/flux-cli docker tag to
+      v2.6.0 by @renovate in #930
+    - chore(deps): update dependency oras to v0.2.33 by @renovate
+      in #933
+    - chore(deps): update dependency pdoc to v15.0.4 by @renovate
+      in #940
+    - chore(deps): update fluxcd/flux2 action to v2.6.1 by
+      @renovate in #934
+    - chore(deps): update ghcr.io/fluxcd/flux-cli docker tag to
+      v2.6.1 by @renovate in #935
+    - chore(deps): update dependency pytest to v8.4.0 by @renovate
+      in #937
+    - chore(deps): update dependency mypy to v1.16.0 by @renovate
+      in #932
+    - chore(deps): update dependency typing-extensions to v4.14.0
+      by @renovate in #936
+    - chore(deps): update pre-commit hook
+      charliermarsh/ruff-pre-commit to v0.11.13 by @renovate in
+      #931
+    - chore(deps): update ubuntu docker tag to noble-20250529 by
+      @renovate in #939
+    - chore(deps): update dependency oras to v0.2.35 by @renovate
+      in #941
+
+-------------------------------------------------------------------
+Thu May 29 05:19:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.5.4:
+  * fix: downgrade helm to 3.17.3 by @onedr0p in #926
+
+-------------------------------------------------------------------
+Mon May 26 04:49:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.5.3:
+  * What's Changed
+    - Revert uv for project publish by @allenporter in #925
+  * Experimental non-released features
+    - Add an orchestration layer and flux-local shell by
+      @allenporter in #911
+    - Improve reconcile for kustomize controller by @allenporter in
+      #912
+    - Add new API watch API to the store by @allenporter in #913
+    - Add a background task API to the task service by @allenporter
+      in #915
+    - Move kustomize controller to watch API by @allenporter in
+      #916
+    - Add a dependency watcher by @allenporter in #917
+    - Add a method to the store to watch for a specific object
+      existing by @allenporter in #918
+    - Remove dead code from watcher by @allenporter in #919
+    - Add co-pilot instructions by @allenporter in #921
+    - Add suport for watching objects without a status by
+      @allenporter in #920
+    - Update design documentation by @allenporter in #922
+    - Add flux-local build ks-new to use new experimental
+      orchestrator by @allenporter in #923
+  * Developer udpates
+    - chore(deps): update dependency pytest-asyncio to v1 by
+      @renovate in #914
+- update to 7.5.2:
+  * Fix style errors form pre-commit by @allenporter in #909
+  * Rollback Helm to 3.17.3 by @allenporter in #910
+- update to 7.5.1:
+  * Improve handling of relative paths by @allenporter in #874
+  * Update CONTRIBUTING to recommend uv by @allenporter in #875
+  * Propose a new design for the system by @allenporter in #876
+  * Update python install process using uv to improve speed by
+    @allenporter in #877
+  * Update actions to python3.13 and latest astral by @allenporter
+    in #879
+  * Add a foundational storage module by @allenporter in #880
+  * Add an initial source controller by @allenporter in #881
+  * Fix tests by setgin a fixed chart version for podinfo by
+    @allenporter in #889
+  * chore(deps): update dependency types-pyyaml to v6.0.12.20250516
+    by @renovate in #891
+  * chore(deps): update dependency ruff to v0.11.10 by @renovate in
+    #885
+  * chore(deps): update pre-commit hook
+    charliermarsh/ruff-pre-commit to v0.11.10 by @renovate in #886
+  * chore(deps): update codecov/codecov-action action to v5.4.3 by
+    @renovate in #887
+  * chore(deps): update docker.io/bitnami/kubectl docker tag to
+    v1.33.1 by @renovate in #888
+  * chore(deps): update dependency types-aiofiles to
+    v24.1.0.20250516 by @renovate in #890
+  * Ignore virtual environments with diagnostics command by
+    @allenporter in #892
+  * Add a Kustomization Controller by @allenporter in #893
+  * Simplify controllers and cleanup pydoc by @allenporter in #894
+  * Add a HelmController by @allenporter in #895
+  * Improve git support in the source controller by @allenporter in
+    #896
+  * Improve OCIRepository version handling by @allenporter in #897
+  * Improve Artifact support for OCI Artfacts in new controllers by
+    @allenporter in #898
+  * Rename source_controller to controller by @allenporter in #900
+  * Update kustomize controller to apply objects by @allenporter in
+    #901
+  * Update helm controller to apply objects to the cluster by
+    @allenporter in #902
+  * chore(deps): update dependency python-slugify to v8.0.4 by
+    @renovate in #899
+  * Add a task service by @allenporter in #903
+  * Implement a task context manager by @allenporter in #904
+  * Use task service to simpilfy tests waiting for callbacks to run
+    by @allenporter in #905
+  * Fix for a temporary default Helm registry config for some helm
+    versions by @allenporter in #907
+  * Set pytest verbose flag in action when debug is enabled by
+    @allenporter in #908
+
+-------------------------------------------------------------------
 Sun May  4 07:30:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.5.0:

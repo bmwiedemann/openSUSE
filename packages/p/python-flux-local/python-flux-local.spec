@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flux-local
-Version:        7.5.0
+Version:        7.5.6
 Release:        0
 Summary:        Set of tools for managing a flux gitops repository
 License:        Apache-2.0
@@ -32,21 +32,25 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module aiofiles >= 24.1.0}
 BuildRequires:  %{python_module GitPython >= 3.1.44}
 BuildRequires:  %{python_module PyYAML >= 6.0.2}
-BuildRequires:  %{python_module mashumaro >= 3.15}
+BuildRequires:  %{python_module mashumaro >= 3.16}
 BuildRequires:  %{python_module nest-asyncio >= 1.6.0}
+BuildRequires:  %{python_module oras >= 0.2.37}
+BuildRequires:  %{python_module python-slugify >= 8.0.4}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 8.3.5}
-BuildRequires:  %{python_module pytest-asyncio >= 0.25.3}
+BuildRequires:  %{python_module pytest-asyncio >= 1.0.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-GitPython >= 3.1.44
 Requires:       python-PyYAML >= 6.0.2
 Requires:       python-aiofiles >= 24.1.0
-Requires:       python-mashumaro >= 3.15
+Requires:       python-mashumaro >= 3.16
 Requires:       python-nest-asyncio >= 1.6.0
+Requires:       python-oras >= 0.2.37
+Requires:       python-python-slugify >= 8.0.4
 # Note: flux-local provides repo testing using pytest
 Requires:       python-pytest >= 8.3.5
-Requires:       python-pytest-asyncio >= 0.25.3
+Requires:       python-pytest-asyncio >= 1.0.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
