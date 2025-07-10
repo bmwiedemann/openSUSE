@@ -1,7 +1,7 @@
 #
 # spec file for package libhtp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define lname   %{name}%{sover}
 %bcond_without tests
 Name:           libhtp
-Version:        0.5.49
+Version:        0.5.50
 Release:        0
 Summary:        HTTP normalizer and parser
 License:        BSD-3-Clause
@@ -38,14 +38,18 @@ BuildRequires:  c++_compiler
 %endif
 
 %description
-The HTP Library is an HTTP normalizer and parser written by Ivan Ristic of Mod Security fame for the OISF. This integrates and provides very advanced processing of HTTP streams for Suricata. The HTP library is required by the engine, but may also be used independently in a range of applications and tools.
+LibHTP is a security-aware parser for the HTTP protocol and the related bits
+and pieces. The goal of the project is mainly to support the Suricata use case.
+Other use cases might not fully be supported, and we encourage you to cover these.
 
 %package -n %{lname}
 Summary:        Library for HTTP normalizer and parser
 Group:          System/Libraries
 
 %description -n %{lname}
-The HTP Library is an HTTP normalizer and parser written by Ivan Ristic of Mod Security fame for the OISF. This integrates and provides very advanced processing of HTTP streams for Suricata. The HTP library is required by the engine, but may also be used independently in a range of applications and tools.
+LibHTP is a security-aware parser for the HTTP protocol and the related bits
+and pieces. The goal of the project is mainly to support the Suricata use case.
+Other use cases might not fully be supported, and we encourage you to cover these.
 
 %package        devel
 Summary:        Development files for %{name}

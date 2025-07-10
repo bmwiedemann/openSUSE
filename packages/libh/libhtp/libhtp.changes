@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 27 22:36:21 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- WARNING: OISF is in the process of migrating this package to
+  Rust, so support may be discontinued in the future
+
+- Reformat spec file to hard-wrap long lines
+- Update to version 0.5.50:
+  * response: do not error on gap finishing content-length
+  * chunks: probe validity if data was not buffered
+  * chunks: abort asap on invalid chunk length
+  * response: end decompressors in chunked content
+  * decompressors: do not take data after end
+  * readme: update status
+  * readme: update goals
+  * response: end decompressors in chunked content
+  * scan-build: work around optin.performance.Padding
+
+-------------------------------------------------------------------
 Thu Oct  3 12:37:06 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.49
