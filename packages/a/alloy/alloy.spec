@@ -35,7 +35,6 @@ Requires(pre):  user(alloy)
 Requires(pre):  group(alloy)
 # for the sysconfig file
 Requires(post): %fillup_prereq
-
 # /usr/lib/go/1.23/pkg/tool/linux_386/link: mapping output file failed: cannot allocate memory
 ExcludeArch:    %{ix86} armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
 
@@ -77,7 +76,7 @@ cd ../../
 
 %build
 # hash will be shortended by COMMIT_HASH:0:8 later
-COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/alloy.obsinfo)"
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %{_sourcedir}/alloy.obsinfo)"
 
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
@@ -100,8 +99,8 @@ install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 # systemd unit
 install -D -m 0644 packaging/rpm/%{name}.service %{buildroot}/%{_unitdir}/%{name}.service
 
-# configuration directory
-install -d -m 0755 %{buildroot}/%{_sysconfdir}/%{name}
+# configuration file
+install -D -m 0644 packaging/config.alloy %{buildroot}/%{_sysconfdir}/%{name}/config.alloy
 
 # sysconfig file
 install -D -m 0644 packaging/environment-file %{buildroot}%{_fillupdir}/sysconfig.alloy
@@ -125,6 +124,7 @@ install -d -m 0770 %{buildroot}/%{_sharedstatedir}/%{name}/data/
 
 %files
 %doc README.md packaging/config.alloy
+%config(noreplace) %{_sysconfdir}/%{name}/config.alloy
 %license LICENSE
 %{_bindir}/%{name}
 %{_unitdir}/%{name}.service
