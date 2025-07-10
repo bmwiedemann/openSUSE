@@ -17,7 +17,7 @@
 
 
 Name:           steampipe
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Query various APIs and services via SQL language
 License:         	AGPL-3.0-only

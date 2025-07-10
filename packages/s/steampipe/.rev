@@ -109,4 +109,27 @@
   * Fix pluginmanager not running error when starting steampipe via a symlink. Closes #4573 (#4574) (forwarded request 1285028 from ph03nix)</comment>
     <requestid>1285160</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e49261eea826ce653aae017abf0e3416</srcmd5>
+    <version>2.1.0</version>
+    <time>1752178219</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.1.0:
+  * v2.1.0 (#4608)
+  * Update FDW to v2.1.0 (#4607)
+  * Fix versioning in task pkg
+  * Add smoke test workflow (#4602)
+  * Fix versioning (#4603)
+  * fix: release workflow
+  * [dep][go](deps): Bump golang.org/x/text from 0.24.0 to 0.26.0 (#4578)
+  * [dep][go](deps): Bump github.com/fsnotify/fsnotify from 1.8.0 to 1.9.0 (#4579)
+  * [dep][go](deps): Bump google.golang.org/grpc from 1.72.1 to 1.73.0 (#4580)
+  * [dep][go](deps): Bump github.com/go-viper/mapstructure/v2 (#4589)
+  * chore: update module to v2 and  bump Go version to 1.24 (#4597)
+  * Merge branch 'v2.0.x' into develop
+  * Skip query test: reenable later
+  * Fix 'unused' linting errors
+  * add test: symlinked binary (forwarded request 1291496 from ph03nix)</comment>
+    <requestid>1291498</requestid>
+  </revision>
 </revisionlist>
