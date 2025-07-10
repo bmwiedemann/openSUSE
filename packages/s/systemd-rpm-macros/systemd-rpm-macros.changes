@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jul  8 12:58:05 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Bump version to 26
+
+-------------------------------------------------------------------
+Mon Jul  7 15:56:08 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Introduce %udev_trigger_with_reload() for packages that need to trigger events
+  in theirs scriplets. The new macro automatically triggers a reload of the udev
+  rule files as this step is often overlooked by packages (bsc#1237143).
+
+-------------------------------------------------------------------
+Sat Jun 24 08:41:48 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Bump to version 25
+
+-------------------------------------------------------------------
+Sat Jun 24 08:40:00 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Turn %tmpfiles_create/%sysusers_create into NOPs
+
+  The 2 following macros have also been converted into NOPs since we moved to
+  file triggers. Some packages might have assumed that their effects were
+  effective as soon as the macros return. However such assumption on tmpfiles
+  can't work on transactional systems anyways where changes must take place on
+  reboot.
+  
+  When a system user/group needs to be created in %%pre, so proper ownership are
+  used when package's files are installed, "sysusers_create_package()" should be
+  used.
+
+-------------------------------------------------------------------
 Tue Jun 20 16:08:47 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Bump to version 24

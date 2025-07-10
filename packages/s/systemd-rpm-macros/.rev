@@ -734,4 +734,29 @@
   recommended on such systems but it has to work anyways.</comment>
     <requestid>1094319</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>44416cb1b5550e36679d179bfb86486d</srcmd5>
+    <version>26</version>
+    <time>1752178209</time>
+    <user>anag_factory</user>
+    <comment>- Bump version to 26
+
+- Introduce %udev_trigger_with_reload() for packages that need to trigger events
+  in theirs scriplets. The new macro automatically triggers a reload of the udev
+  rule files as this step is often overlooked by packages (bsc#1237143).
+
+- Bump to version 25
+
+- Turn %tmpfiles_create/%sysusers_create into NOPs
+  The 2 following macros have also been converted into NOPs since we moved to
+  file triggers. Some packages might have assumed that their effects were
+  effective as soon as the macros return. However such assumption on tmpfiles
+  can't work on transactional systems anyways where changes must take place on
+  reboot.
+  
+  When a system user/group needs to be created in %%pre, so proper ownership are
+  used when package's files are installed, &quot;sysusers_create_package()&quot; should be
+  used.</comment>
+    <requestid>1291291</requestid>
+  </revision>
 </revisionlist>
