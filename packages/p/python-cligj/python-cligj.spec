@@ -1,7 +1,7 @@
 #
 # spec file for package python-cligj
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cligj
 Version:        0.7.2
 Release:        0
@@ -26,7 +25,9 @@ URL:            https://github.com/mapbox/cligj
 Group:          Development/Languages/Python
 # pypi source lack license and tests
 Source:         https://github.com/mapbox/cligj/archive/%{version}.tar.gz#/cligj-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -47,10 +48,10 @@ Common arguments and options for GeoJSON processing commands, using Click.
 chmod a-x LICENSE
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +63,7 @@ py.test-%{$python_bin_suffix}
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/cligj
+%{python_sitelib}/cligj-%{version}.dist-info
 
 %changelog
