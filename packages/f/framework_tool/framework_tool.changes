@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul  9 11:23:08 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.4.5
+  * Update blocklist of unsafe commands by @JohnAZoidberg in #187
+- Update to 0.4.4
+  * ccgx: derive Ord for AppVersion and BaseVersion by @JohnAZoidberg in #175
+  * Add support for EC_CMD_REBOOT_AP_ON_G3 by @JohnAZoidberg in #181
+  * --inputdeck: On FW16 also print sleep_l gpio state
+    by @JohnAZoidberg in #179
+  * Update docs by @JohnAZoidberg in #176
+  * Current and charge rate limit cannot be read by @JohnAZoidberg in #182
+  * uefi: Fix shell args when run from a script by @JohnAZoidberg in #185
+  * Add --feature readonly, to build a bin without risky commands
+    by @JohnAZoidberg in #141
+  * Bump to v0.4.4 by @JohnAZoidberg in #186
+
+-------------------------------------------------------------------
 Tue Jun 10 14:21:14 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.4.3
