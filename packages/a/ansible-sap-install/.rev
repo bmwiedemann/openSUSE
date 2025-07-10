@@ -9,4 +9,37 @@ This package contains Ansible Automation for installation of SAP landscape.
 Downstream source is located at https://github.com/SUSE/community.sap_install</comment>
     <requestid>1269277</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7cf416e031f3dfb5e23f0a1427ef4330</srcmd5>
+    <version>1.6.0</version>
+    <time>1752178421</time>
+    <user>anag_factory</user>
+    <comment>This request also contains changes to spec file to align it with other packages.
+
+- 1.6.0
+  - Minor Changes:
+    - New Feature - sap_anydb_install_oracle - Add handling of OS specific vars (#1033)
+    - New Feature - sap_ha_pacemaker_cluster - SLES16 support, new vars for ha_cluster for corosync and zypper patterns (#1056)
+    - New Feature - sap_storage_setup - Allow /software NFS mount (#1029)
+    - sap_*_preconfigure - Add missing RHEL 10.x vars (#1059)
+    - sap_general_preconfigure - Modify the kernel command line for SELinux also for RHEL 10 (#1036)
+    - sap_general_preconfigure - Use the correct sap.conf file for RHEL 10 (#1022)
+    - sap_ha_pacemaker_cluster/SUSE - SAP HANA scaleup post steps updated (#1061)
+    - sap_hana_install - Add opt-out for setting sidadm to noexpire (#1016)
+    - sap_swpm - Add opt-out for setting sidadm to noexpire (#1018)
+  - Bugfixes:
+    - Collection - fix documentation link in galaxy.yml (#1009)
+    - sap_*_preconfigure - Make SELinux booleans persistent (#1013)
+    - sap_*_preconfigure/SUSE - Add retry attempts to zypper pattern installation (#1032)
+    - sap_*_preconfigure/SUSE - Update SLES16 pattern names and add packages for hardened images (#1057)
+    - sap_ha_pacemaker_cluster/SUSE - Remove python3-rpm dependency in pre_steps_hana (#1028)
+    - sap_hana_install - update README.md with Local Secure Store (LSS) installation details and examples (#1008)
+    - sap_maintain_etc_hosts - Resolve situation with empty domain, but not undefined (#1044)
+    - sap_swpm - Ensure sap_swpm_product_catalog_id is a string (#1035)
+    - sap_swpm - Fix TEMP handling (#1019)
+    - sap_swpm - Remove selinux role dependency from README.md (#1012)
+    - sap_swpm - Require inifile.params only on the managed node when reusing an existing inifile.params. (#1024)
+    - sap_swpm - Sanitize hostname length (#1042)</comment>
+    <requestid>1291666</requestid>
+  </revision>
 </revisionlist>

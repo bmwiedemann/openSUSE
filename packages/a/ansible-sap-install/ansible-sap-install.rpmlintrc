@@ -1,0 +1,12 @@
+# rpmlint configuration for ansible-sap-install package.
+
+# Ignore duplicate file warnings, because hard links and %dupes cannot be used.
+# update_firewall.yml: Wrapper code for calling firewall steps, that is part of pre_tasks and post_tasks in sap_swpm role.
+# handlers/main.yml: Simple handler task file for 2 roles.
+# post_steps_nwas_abap_ascs_ers.yml, post_steps_nwas_java_scs_ers.yml: Identical files, that are called from different sources.
+addFilter("W: files-duplicate")
+
+# Ignore error, because script is not executed from this location.
+# Ansible role will distribute file and set permission, when used.
+# roles/sap_hana_install/files/tmp/tail-f-hdblcm-install-trc.sh
+addFilter("E: non-executable-script")
