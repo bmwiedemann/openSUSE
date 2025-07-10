@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  3 08:49:29 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Explicitly set -std=gnu17, since GCC 15 moved to implicit C23.
+
+-------------------------------------------------------------------
 Thu Sep 12 12:20:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add xsession-implicit-shutdown.patch: Fix build with GCC 14:

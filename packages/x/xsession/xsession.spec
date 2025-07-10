@@ -1,7 +1,7 @@
 #
 # spec file for package xsession
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,9 +28,9 @@ Release:        0
 Summary:        A session manager
 License:        MIT
 Group:          System/X11/Utilities
+# It's not quite the same as https://ftp.gwdg.de/pub/x11/x.org/contrib/applications/xsession-1.1.tar.gz
 Source:         xsession-1.1.tar.gz
 Patch0:         xsession-implicit-shutdown.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global _exec_prefix %(type -p pkg-config &>/dev/null && pkg-config --variable prefix x11 || echo /usr/X11R6)}
 %if "%_exec_prefix" == "/usr/X11R6"
 %global _mandir     %{_exec_prefix}/man
@@ -56,14 +56,12 @@ Examples may be found under /usr/share/doc/packages/xsession/examples.
 
 %build
 xmkmf -a
-make CCOPTIONS="$RPM_OPT_FLAGS"
+make CCOPTIONS="%{optflags} -std=gnu17"
 
 %install
-make DESTDIR=%{buildroot} install
-make DESTDIR=%{buildroot} install.man
+%make_install all install.man
 
 %files
-%defattr(-,root,root)
 %doc CHANGES ChangeLog INSTALL README examples
 %{_bindir}/xsession
 %dir %{_appdefdir}
