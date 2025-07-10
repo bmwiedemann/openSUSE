@@ -733,4 +733,41 @@ please add to Staging:E, should fix the tox failure</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1231731</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>d733d07b75d74f20e80ff50be243a02d</srcmd5>
+    <version>4.25.0</version>
+    <time>1752178295</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.25.0:
+  * Tests: Adjust expected exception message for Python 3.14.0a6
+  * feat(config): Allow ranges in envlist
+- update to 4.24.2:
+  * TOX-3117 bugfix -c pyproject with non legacy
+  * fix(docs): update expected code
+  * Add missing bracket in config example
+  * Gh issue 3456 update environment variable documentation
+  * fix: Respect `--parallel N` with `--parallel-no-spinner`
+  * TOML set_env file support
+- update to 4.24.1:
+  * Adds ability to configure stderr output color
+- update to 4.24.0:
+  * fix docs config typo
+  * Allow users to disable use of pre-commit-uv
+  * Pass nix-ld related variables by default in pass_env (fixes
+    #3425)
+  * Improve testenv docs consistency
+  * Display exception name when subprocesses raise them
+  * Fix the CI after setuptools 75.6 change
+  * Update pre-commit hooks with mypy fix
+  * Fix a typo in a code block in the User Guide
+  * Update pre-commit hooks
+  * 💅 Make SVG image compatible with Firefox
+  * feat: adding a json schema command
+
+  * Add provision arguments to ToxParser to fix crash when
+    provisioning new tox environment without list-dependencies by
+    :user:`seyidaniels` (:issue:`3190`)
+  * Removed unused line from the 'fresh_subprocess' documentation.</comment>
+    <requestid>1291245</requestid>
+  </revision>
 </revisionlist>

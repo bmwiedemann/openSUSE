@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jul  8 11:50:14 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.25.0:
+  * Tests: Adjust expected exception message for Python 3.14.0a6
+  * feat(config): Allow ranges in envlist
+- update to 4.24.2:
+  * TOX-3117 bugfix -c pyproject with non legacy
+  * fix(docs): update expected code
+  * Add missing bracket in config example
+  * Gh issue 3456 update environment variable documentation
+  * fix: Respect `--parallel N` with `--parallel-no-spinner`
+  * TOML set_env file support
+- update to 4.24.1:
+  * Adds ability to configure stderr output color
+- update to 4.24.0:
+  * fix docs config typo
+  * Allow users to disable use of pre-commit-uv
+  * Pass nix-ld related variables by default in pass_env (fixes
+    #3425)
+  * Improve testenv docs consistency
+  * Display exception name when subprocesses raise them
+  * Fix the CI after setuptools 75.6 change
+  * Update pre-commit hooks with mypy fix
+  * Fix a typo in a code block in the User Guide
+  * Update pre-commit hooks
+  * 💅 Make SVG image compatible with Firefox
+  * feat: adding a json schema command
+
+-------------------------------------------------------------------
 Tue Dec 10 17:01:25 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Ignore failing test_load_dependency_many_extra test case as
@@ -102,69 +131,30 @@ Mon Mar 25 19:22:38 UTC 2024 - Dan Čermák <dcermak@suse.com>
 - Remove unused dependency pytest-randomly
 
 - New upstream release 4.14.2:
-
-v4.14.2 (2024-03-22)
---------------------
-
-Bugfixes - 4.14.2
-~~~~~~~~~~~~~~~~~
-- Add provision arguments to ToxParser to fix crash when provisioning new tox environment without list-dependencies by :user:`seyidaniels` (:issue:`3190`)
-
-Improved Documentation - 4.14.2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- Removed unused line from the 'fresh_subprocess' documentation. (:issue:`3241`)
-
-v4.14.1 (2024-03-06)
---------------------
-
-Bugfixes - 4.14.1
-~~~~~~~~~~~~~~~~~
-- Fix crash with fresh subprocess, if the build backend is setuptools automatically enable fresh subprocesses for
-  build backend calls - by :user:`gaborbernat`. (:issue:`3235`)
-
-v4.14.0 (2024-03-05)
---------------------
-
-Features - 4.14.0
-~~~~~~~~~~~~~~~~~
-- Support enabling fresh subprocess for packaging build backends via :ref:`fresh_subprocess` - by :user:`gaborbernat`. (:issue:`3227`)
-- Allow plugins attaching additional information to ``--version`` via ``tox_append_version_info`` method in the plugin
-  module - by :user:`gaborbernat`. (:issue:`3234`)
-
-v4.13.0 (2024-02-16)
---------------------
-
-Features - 4.13.0
-~~~~~~~~~~~~~~~~~
-- Extract virtual environment packaging code to its own base class not tied to ``virtualenv`` - by :user:`gaborbernat`. (:issue:`3221`)
-
-Improved Documentation - 4.13.0
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- Documented usage of ``pytest`` with ``tox run-parallel`` - by :user:`faph`. (:issue:`3187`)
-- Configuration: state in config directive sections their ini file sections - by :user:`0cjs`. (:issue:`3194`)
-- Development: summarize important points experienced developers need to know - by :user:`0cjs`. (:issue:`3197`)
-
-v4.12.1 (2024-01-16)
---------------------
-
-Bugfixes - 4.12.1
-~~~~~~~~~~~~~~~~~
-- Fixed bug where running with --installpkg and multiple envs could not clean up between tests (:issue:`3165`)
-
-v4.12.0 (2024-01-11)
---------------------
-
-Features - 4.12.0
-~~~~~~~~~~~~~~~~~
-- Always pass ``FORCE_COLOR`` and ``NO_COLOR`` to the environment (:issue:`3171`)
-
-Bugfixes - 4.12.0
-~~~~~~~~~~~~~~~~~
-- ``--parallel-no-spinner`` flag now implies ``--parallel`` (:issue:`3158`)
-
-Improved Documentation - 4.12.0
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- -Fix ``open an issue`` link in development.rst (:issue:`3179`)
+  * Add provision arguments to ToxParser to fix crash when
+    provisioning new tox environment without list-dependencies by
+    :user:`seyidaniels` (:issue:`3190`)
+  * Removed unused line from the 'fresh_subprocess' documentation.
+  * Fix crash with fresh subprocess, if the build backend is
+    setuptools automatically enable fresh subprocesses for
+    build backend calls - by :user:`gaborbernat`. (:issue:`3235`)
+  * Support enabling fresh subprocess for packaging build backends
+    via :ref:`fresh_subprocess` - by :user:`gaborbernat`.
+  * Allow plugins attaching additional information to ``--version``
+    via ``tox_append_version_info`` method in the plugin
+    module - by :user:`gaborbernat`. (:issue:`3234`)
+  * Extract virtual environment packaging code to its own base
+    class not tied to ``virtualenv`` - by :user:`gaborbernat`.
+  * Documented usage of ``pytest`` with ``tox run-parallel``
+  * Configuration: state in config directive sections their ini
+    file sections - by :user:`0cjs`. (:issue:`3194`)
+  * Development: summarize important points experienced developers
+    need to know - by :user:`0cjs`. (:issue:`3197`)
+  * Fixed bug where running with --installpkg and multiple envs
+    could not clean up between tests (:issue:`3165`)
+  * Always pass ``FORCE_COLOR`` and ``NO_COLOR`` to the environment
+  * ``--parallel-no-spinner`` flag now implies ``--parallel``
+  * Fix ``open an issue`` link in development.rst (:issue:`3179`)
 
 -------------------------------------------------------------------
 Tue Mar  5 13:39:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
