@@ -2005,6 +2005,7 @@ unsorted:
   - cblas-devel-32bit 
   - cblas-devel-static 
   - cbonsai 
+  - cbonsai-bash-completion 
   - cc-tool 
   - ccache 
   - ccd2cue 
@@ -12563,7 +12564,7 @@ unsorted:
   - libcinnamon-desktop4 
   - libcinnamon-menu-3-0 
   - libcinnamon-menu-3-devel 
-  - libcint5 
+  - libcint6 
   - libcircle-devel 
   - libcircle2 
   - libcircllhist-devel 
@@ -14711,8 +14712,8 @@ unsorted:
   - libmpv2 
   - libmrss-devel 
   - libmrss0 
-  - libmruby3_1_0 
-  - libmruby_core3_1_0 
+  - libmruby3_4_0 
+  - libmruby_core3_4_0 
   - libmseed-devel 
   - libmseed3 
   - libmsgpack-c2 
@@ -14843,8 +14844,11 @@ unsorted:
   - libngspice-devel 
   - libngspice0 
   - libngtcp2-16 
+  - libngtcp2-16-32bit 
   - libngtcp2_crypto_gnutls8 
+  - libngtcp2_crypto_gnutls8-32bit 
   - libngtcp2_crypto_ossl0 
+  - libngtcp2_crypto_ossl0-32bit 
   - libnice 
   - libnice-devel 
   - libnice10-32bit 
@@ -14916,7 +14920,8 @@ unsorted:
   - libnuspell5 
   - libnutclient2 
   - libnutclientstub1 
-  - libnutscan2 
+  - libnutconf0 
+  - libnutscan3 
   - libnvidia-egl-gbm-devel 
   - libnvidia-egl-gbm1 
   - libnvidia-egl-gbm1-32bit 
@@ -16657,7 +16662,7 @@ unsorted:
   - libupnpp-devel 
   - libupnpp17 
   - libupower-glib-devel 
-  - libupsclient6 
+  - libupsclient7 
   - libur_adapter_native_cpu0 
   - libur_adapter_opencl0 
   - libur_loader0 
@@ -19604,6 +19609,7 @@ unsorted:
   - nftables-devel 
   - nftlb 
   - nghttp2 
+  - nghttp2-doc 
   - nghttp3-devel 
   - nginx 
   - nginx-macros 
@@ -20877,6 +20883,7 @@ unsorted:
   - patterns-base-documentation 
   - patterns-base-enhanced_base-32bit 
   - patterns-base-fips 
+  - patterns-base-kdump 
   - patterns-base-minimal_base-32bit 
   - patterns-base-sw_management-32bit 
   - patterns-base-transactional_base 
@@ -23808,6 +23815,7 @@ unsorted:
   - python3-paraview 
   - python3-partio 
   - python3-pcp 
+  - python3-pgmagick 
   - python3-plist 
   - python3-pocketsphinx 
   - python3-presage 
@@ -24547,6 +24555,7 @@ unsorted:
   - python311-azure-mgmt-mixedreality 
   - python311-azure-mgmt-mobilenetwork 
   - python311-azure-mgmt-mongocluster 
+  - python311-azure-mgmt-mongodbatlas 
   - python311-azure-mgmt-monitor 
   - python311-azure-mgmt-msi 
   - python311-azure-mgmt-mysqlflexibleservers 
@@ -26226,7 +26235,6 @@ unsorted:
   - python311-persistent 
   - python311-persistent-devel 
   - python311-petact 
-  - python311-pgmagick 
   - python311-phabricator 
   - python311-phonenumbers 
   - python311-photutils 
@@ -27284,10 +27292,8 @@ unsorted:
   - python311-toposort 
   - python311-topy 
   - python311-torch 
-  - python311-torch-converters 
   - python311-torch-devel 
   - python311-torch-openmpi4 
-  - python311-torch-openmpi4-converters 
   - python311-torch-openmpi4-devel 
   - python311-tornado 
   - python311-tortilla 
@@ -28259,6 +28265,7 @@ unsorted:
   - python312-azure-mgmt-mixedreality 
   - python312-azure-mgmt-mobilenetwork 
   - python312-azure-mgmt-mongocluster 
+  - python312-azure-mgmt-mongodbatlas 
   - python312-azure-mgmt-monitor 
   - python312-azure-mgmt-msi 
   - python312-azure-mgmt-mysqlflexibleservers 
@@ -29978,7 +29985,6 @@ unsorted:
   - python312-persistent-devel 
   - python312-petact 
   - python312-pexpect 
-  - python312-pgmagick 
   - python312-phabricator 
   - python312-phonenumbers 
   - python312-photutils 
@@ -31058,10 +31064,8 @@ unsorted:
   - python312-toposort 
   - python312-topy 
   - python312-torch 
-  - python312-torch-converters 
   - python312-torch-devel 
   - python312-torch-openmpi4 
-  - python312-torch-openmpi4-converters 
   - python312-torch-openmpi4-devel 
   - python312-tornado 
   - python312-tornado6 
@@ -32026,6 +32030,7 @@ unsorted:
   - python313-azure-mgmt-mixedreality 
   - python313-azure-mgmt-mobilenetwork 
   - python313-azure-mgmt-mongocluster 
+  - python313-azure-mgmt-mongodbatlas 
   - python313-azure-mgmt-monitor 
   - python313-azure-mgmt-msi 
   - python313-azure-mgmt-mysqlflexibleservers 
@@ -33707,7 +33712,6 @@ unsorted:
   - python313-persistent 
   - python313-persistent-devel 
   - python313-petact 
-  - python313-pgmagick 
   - python313-phabricator 
   - python313-phonenumbers 
   - python313-photutils 
@@ -34760,10 +34764,8 @@ unsorted:
   - python313-toposort 
   - python313-topy 
   - python313-torch 
-  - python313-torch-converters 
   - python313-torch-devel 
   - python313-torch-openmpi4 
-  - python313-torch-openmpi4-converters 
   - python313-torch-openmpi4-devel 
   - python313-tornado 
   - python313-tortilla 
@@ -48465,7 +48467,6 @@ unsorted:
   - uwsgi-emperor_pg 
   - uwsgi-emperor_zeromq 
   - uwsgi-gevent 
-  - uwsgi-glusterfs 
   - uwsgi-greenlet 
   - uwsgi-jvm 
   - uwsgi-ldap 
