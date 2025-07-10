@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.74.0
+Version:        2.75.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -54,11 +54,11 @@ Requires:       %{pythons}-PyGithub >= 1.38
 Requires:       %{pythons}-PyNaCl >= 1.5.0
 Requires:       %{pythons}-PyYAML >= 5.1
 Requires:       %{pythons}-antlr4-python3-runtime >= 4.13.1
-Requires:       %{pythons}-azure-appconfiguration >= 1.7.0
+Requires:       %{pythons}-azure-appconfiguration >= 1.7.1
 Requires:       %{pythons}-azure-batch >= 15.0.0~b1
 Requires:       %{pythons}-azure-cosmos >= 3.0.2
 Requires:       %{pythons}-azure-data-tables >= 12.4.0
-Requires:       %{pythons}-azure-datalake-store >= 1.0.0~a0
+Requires:       %{pythons}-azure-datalake-store >= 1.0.1
 Requires:       %{pythons}-azure-keyvault-administration >= 4.4.0~b2
 Requires:       %{pythons}-azure-keyvault-certificates >= 4.7.0
 Requires:       %{pythons}-azure-keyvault-keys >= 4.11.0~b1
@@ -78,8 +78,8 @@ Requires:       %{pythons}-azure-mgmt-cdn >= 12.0.0
 Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.5.0
 Requires:       %{pythons}-azure-mgmt-compute >= 34.1.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.2.0~b1
-Requires:       %{pythons}-azure-mgmt-containerregistry >= 14.0.0
-Requires:       %{pythons}-azure-mgmt-containerservice >= 36.0.0
+Requires:       %{pythons}-azure-mgmt-containerregistry >= 14.1.0~b1
+Requires:       %{pythons}-azure-mgmt-containerservice >= 37.0.0
 Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.8.0
 Requires:       %{pythons}-azure-mgmt-databoxedge >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-datalake-store >= 1.1.0~b1
@@ -108,7 +108,7 @@ Requires:       %{pythons}-azure-mgmt-policyinsights >= 1.1.0b4
 Requires:       %{pythons}-azure-mgmt-postgresqlflexibleservers >= 1.1.0~b2
 Requires:       %{pythons}-azure-mgmt-privatedns >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-rdbms >= 10.2.0b17
-Requires:       %{pythons}-azure-mgmt-recoveryservices >= 3.0.0
+Requires:       %{pythons}-azure-mgmt-recoveryservices >= 3.1.0
 Requires:       %{pythons}-azure-mgmt-recoveryservicesbackup >= 9.2.0
 Requires:       %{pythons}-azure-mgmt-redhatopenshift >= 1.5.0
 Requires:       %{pythons}-azure-mgmt-redis >= 14.5.0
@@ -128,7 +128,7 @@ Requires:       %{pythons}-azure-mgmt-synapse >= 2.1.0b5
 Requires:       %{pythons}-azure-mgmt-trafficmanager >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-web >= 7.2.0
 Requires:       %{pythons}-azure-monitor-query >= 1.2.0
-Requires:       %{pythons}-azure-multiapi-storage >= 1.4.0
+Requires:       %{pythons}-azure-multiapi-storage >= 1.4.1
 Requires:       %{pythons}-azure-storage-common >= 1.4
 Requires:       %{pythons}-azure-synapse-accesscontrol >= 0.5.0
 Requires:       %{pythons}-azure-synapse-artifacts >= 0.19.0
