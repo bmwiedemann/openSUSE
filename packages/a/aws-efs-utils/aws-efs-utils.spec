@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} >= 1600
 %define pythons %{primary_python}
 %else
@@ -36,13 +37,9 @@ Patch2:         skip-styletest.patch
 Patch3:         use_mock_from_unittest.patch
 BuildRequires:  %{pythons}-botocore >= 1.34.140
 BuildRequires:  %{pythons}-coverage >= 7.6.0
-BuildRequires:  %{pythons}-flake8 >= 7.1.0
-BuildRequires:  %{pythons}-mccabe >= 0.6.1
 BuildRequires:  %{pythons}-pbr >= 3.1.1
 BuildRequires:  %{pythons}-pluggy >= 0.13.0
 BuildRequires:  %{pythons}-py >= 1.11.0
-BuildRequires:  %{pythons}-pycodestyle >= 2.5.0
-BuildRequires:  %{pythons}-pyflakes >= 2.1.1
 BuildRequires:  %{pythons}-pytest >= 8.2.2
 BuildRequires:  %{pythons}-pytest-cov >= 5.0.0
 BuildRequires:  %{pythons}-pytest-html >= 4.1.1
@@ -50,6 +47,10 @@ BuildRequires:  %{pythons}-pytest-metadata >= 3.1.1
 BuildRequires:  %{pythons}-pytest-mock >= 3.14.0
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
+%if 0%{?suse_version} <= 1500
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%endif
 BuildRequires:  libopenssl-devel
 BuildRequires:  openssl
 BuildRequires:  rust
@@ -70,6 +71,10 @@ find src/mount_efs src/watchdog -name "*.py" -exec sed -i 's/env python3/python3
 %patch -P 3 -p1
 
 %build
+%if 0%{?suse_version} <= 1500
+export CC=gcc-13
+export CXX=g++-13
+%endif
 cd src/proxy
 %cargo_build
 
@@ -92,6 +97,11 @@ install -p -m 444 %{_builddir}/efs-utils-v%{version}/dist/efs-utils.crt %{buildr
 install -p -m 755 %{_builddir}/efs-utils-v%{version}/src/mount_efs/__init__.py %{buildroot}%{_sbindir}/mount.efs
 install -p -m 755 %{_builddir}/efs-utils-v%{version}/src/watchdog/__init__.py %{buildroot}%{_bindir}/amazon-efs-mount-watchdog
 install -p -m 644 %{_builddir}/efs-utils-v%{version}/man/mount.efs.8 %{buildroot}%{_mandir}/man8
+
+%if 0%{?suse_version} <= 1500
+export CC=gcc-13
+export CXX=g++-13
+%endif
 cd src/proxy
 %cargo_install
 

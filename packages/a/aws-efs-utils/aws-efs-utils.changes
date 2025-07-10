@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 10 11:29:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add gcc13 and gcc13-c++ to BuildRequires for SLE-15
+- Set CC=gcc-13 and CXX=g++-13 for SLE-15
+- Remove unused build dependencies python-flake8, python-mccabe,
+  python-pycodestyle and python-pyflakes from BuildRequires
+
+-------------------------------------------------------------------
 Tue Jul  8 09:30:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Remove BuildArch field to set build architecture to any
