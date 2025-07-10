@@ -402,4 +402,12 @@
   gh#pypa/hatch#2013</comment>
     <requestid>1288662</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>a693d60fd491fda70a8afbb76154e191</srcmd5>
+    <version>1.14.1</version>
+    <time>1752178431</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1291688</requestid>
+  </revision>
 </revisionlist>

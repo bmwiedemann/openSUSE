@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-hatch%{psuffix}
 Version:        1.14.1
@@ -41,10 +42,10 @@ BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-vcs >= 0.3}
 BuildRequires:  %{python_module hatchling >= 1.26.3}
 BuildRequires:  %{python_module pip}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 Requires:       git-core
 Requires:       python-click >= 8.0.6
 Requires:       python-hatchling >= 1.21.0
@@ -135,11 +136,8 @@ donttest+=" or test_pyenv or test_no_open or test_open"
 %pytest -v -k "not ($donttest)" --ignore tests/cli/build/test_build.py
 %endif
 
-%post
-%python_install_alternative hatch
-
-%postun
-%python_uninstall_alternative hatch
+%pre
+%python_libalternatives_reset_alternative hatch
 
 %if !%{with test}
 %files %{python_files}

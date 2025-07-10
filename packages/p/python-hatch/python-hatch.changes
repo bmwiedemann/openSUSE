@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 10 12:33:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives
+
+-------------------------------------------------------------------
 Thu Jun 26 09:36:32 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add click-8.2.patch to fix tests with click >= 8.2
