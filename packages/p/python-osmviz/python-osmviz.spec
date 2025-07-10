@@ -1,7 +1,7 @@
 #
 # spec file for package python-osmviz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python36 1
 Name:           python-osmviz
 Version:        1.1.0
@@ -26,7 +25,9 @@ License:        MIT
 URL:            http://cbick.github.com/osmviz
 Source:         https://files.pythonhosted.org/packages/source/o/osmviz/osmviz-%{version}.tar.gz
 Source10:       https://raw.githubusercontent.com/hugovk/osmviz/%{version}/LICENSE
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pygame
@@ -45,15 +46,16 @@ images).
 cp %{SOURCE10} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/osmviz
+%{python_sitelib}/osmviz-%{version}.dist-info
 
 %changelog

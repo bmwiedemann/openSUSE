@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 17 04:36:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- Explicitly list files and directories in %files.
+
+-------------------------------------------------------------------
 Tue May 25 04:59:44 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy.
