@@ -1,0 +1,6 @@
+# rpmlint configuration for ansible-sap-infrastructure package.
+
+# Ignore duplicate file warnings, because hard links and %dupes cannot be used.
+# post_deployment_execute.yml and execute_main.yml are placeholders in most of platforms, but they are required to exist.
+# tf_template_outputs.tf file contains standardized terraform output across platforms.
+addFilter("W: files-duplicate")

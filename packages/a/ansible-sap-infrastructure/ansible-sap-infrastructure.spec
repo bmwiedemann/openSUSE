@@ -15,31 +15,31 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define ansible_collection_name sap_infrastructure
 %define ansible_collection_path %{_datadir}/ansible/collections/ansible_collections/suse/%{ansible_collection_name}
-
 
 Name:           ansible-sap-infrastructure
 Summary:        Ansible collection suse.sap_infrastructure for SAP Automation
 License:        Apache-2.0
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 URL:            https://github.com/SUSE/community.sap_infrastructure/
 Source0:        %{url}archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        ansible-sap-infrastructure.yaml
-Source2:        collection_update.py
+Source1:        %{name}.yaml
+Source2:        transformation.py
+Source99:       %{name}.rpmlintrc
 
 BuildArch:      noarch
 
 
-Requires: ansible-core >= 2.16
-Requires: ansible >= 9
-BuildRequires: ansible-core >= 2.16
-BuildRequires: ansible >= 9
+Requires:       ansible >= 9
+Requires:       ansible-core >= 2.16
+BuildRequires:  ansible >= 9
+BuildRequires:  ansible-core >= 2.16
 
 # Python module ruamel.yaml for collection-update.py
-BuildRequires: python3-ruamel.yaml
-
+BuildRequires:  python3-ruamel.yaml
 
 %description
 This package provides a Ansible collection suse.sap_infrastructure.
@@ -57,23 +57,16 @@ https://github.com/SUSE/community.sap_infrastructure/tree/main/roles/sap_vm_prov
 
 Package and collection dependencies are not installed along with this package!
 
-
 %prep
-# Extract tarball
-cd %{_builddir}
-tar -xzf %{_sourcedir}/%{name}-%{version}.tar.gz --strip-components=1
-
-# Execute python script to update documentation and remove unsupported roles
-python3 %{_sourcedir}/collection_update.py --config %{_sourcedir}/%{name}.yaml  --build_dir %{_builddir}
-
+%autosetup -p1 -n community.%{ansible_collection_name}-%{version}
 
 %build
+# Execute python script to update documentation and remove unsupported roles
+python3 %{_sourcedir}/transformation.py --config %{_sourcedir}/%{name}.yaml  --build_dir .
 # Build the Ansible collection
 ansible-galaxy collection build --output-path %{_builddir}
 
-
 %install
-rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_datadir}/ansible/collections
 mkdir -p %{buildroot}%{_datadir}/ansible/roles/
 
@@ -81,9 +74,8 @@ mkdir -p %{buildroot}%{_datadir}/ansible/roles/
 ansible-galaxy collection install --force %{_builddir}/suse-%{ansible_collection_name}-%{version}.tar.gz \
   --collections-path %{buildroot}%{_datadir}/ansible/collections
 
-
 %post
-# Loop through roles in collection and create symlinks under %{_datadir}/ansible/roles/
+# Loop through roles in collection and create symlinks under /usr/share/ansible/roles/
 # Installed community collection will take precedence over role symlinks.
 for role in %{ansible_collection_path}/roles/*; do
   role_name=$(basename "$role")
@@ -93,9 +85,8 @@ for role in %{ansible_collection_path}/roles/*; do
   fi
 done
 
-
 %postun
-# Loop through roles in %{_datadir}/ansible/roles/ and remove those that link to collection
+# Loop through roles in /usr/share/ansible/roles/ and remove those that link to collection
 if [ "$1" -eq 0 ]; then
   for role in %{_datadir}/ansible/roles/community.%{ansible_collection_name}.*; do
     if [ -L "$role" ]; then
@@ -106,7 +97,6 @@ if [ "$1" -eq 0 ]; then
     fi
   done
 fi
-
 
 %files
 %{_datadir}/ansible/collections/
