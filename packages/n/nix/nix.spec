@@ -21,13 +21,21 @@
 
 %ifarch aarch64 x86_64
   # only build docs on aarch64 and x86_64 (we need mdbook)
+  %if 0%{?suse_version} >= 1600
   %bcond_without docs
+  %else
+  %bcond_with docs
+  %endif
 %else
   %bcond_with docs
 %endif
 
+%if 0%{?suse_version} == 1500
+%global force_boost_version 1_75_0
+%endif
+
 Name:           nix
-Version:        2.29.1
+Version:        2.30.0
 Release:        0
 Summary:        The purely functional package manager
 License:        LGPL-2.1-only
@@ -46,10 +54,10 @@ BuildRequires:  doxygen
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  jq
-BuildRequires:  libboost_container-devel
-BuildRequires:  libboost_context-devel
-BuildRequires:  libboost_coroutine-devel
-BuildRequires:  libboost_iostreams-devel
+BuildRequires:  libboost_container%{?force_boost_version}-devel
+BuildRequires:  libboost_context%{?force_boost_version}-devel
+BuildRequires:  libboost_coroutine%{?force_boost_version}-devel
+BuildRequires:  libboost_iostreams%{?force_boost_version}-devel
 BuildRequires:  libtool
 BuildRequires:  lowdown
 BuildRequires:  lsof
@@ -73,7 +81,7 @@ BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(lowdown)
 BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(readline)
+BuildRequires:  (pkgconfig(readline) or readline-devel)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 # Needed by -Dembedded-sandbox-shell

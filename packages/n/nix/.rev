@@ -54,4 +54,41 @@ support for software auditability among other things</comment>
   https://discourse.nixos.org/t/security-advisory-privilege-escalations-in-nix-lix-and-guix/66017</comment>
     <requestid>1288353</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e7c9bbf4162b82391d7f99e8c627f4a0</srcmd5>
+    <version>2.30.0</version>
+    <time>1752178294</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.30.0:
+  ## Backward-incompatible changes and deprecations
+  - build-dir  longer defaults to  $TMPDIR The directory in which
+    temporary build directories are created no longer defaults to
+    TMPDIR  or  /tmp , to avoid builders making their directories
+    world-accessible. This behavior allowed escaping the build
+    sandbox and can cause build impurities even when not used
+    maliciously. We now default to builds in  NIX_STATE_DIR  (which
+    is  /nix/var/nix/builds  in the default configuration).
+  - Deprecate manually making structured attrs using the  __json
+    attribute #13220 https://github.com/NixOS/nix/pull/13220The
+    proper way to create a derivation using structured attrs in the
+    Nix language is by using  __structuredAttrs = true  with
+    builtins. derivation
+    However, by exploiting how structured attrs are implementated,
+    it has also been possible to create them by setting the  __json
+    environment variable to a serialized JSON string. This sneaky
+    alternative method is now deprecated, and may be disallowed in
+    future versions of Nix.
+  - Rename  nix profile install  to  nix profile add #13224
+    https://github.com/NixOS/nix/pull/13224 The command  nix
+    profile install  has been renamed to  nix profile add (though
+    the former is still available as an alias). This is because the
+    verb &quot;add&quot; is a better antonym for the verb &quot;remove&quot; (i.e.  nix
+    profile remove ). Nix also does not have install hooks or
+    general behavior often associated with &quot;installing&quot;.
+  ## Performance improvements
+  This release has a number performance improvements, in particular:
+  - Reduce the size of value from 24 to 16 bytes #13407
+    https://github. com/NixOS/nix/pull/13407 This shaves off a very</comment>
+    <requestid>1291337</requestid>
+  </revision>
 </revisionlist>
