@@ -136,4 +136,13 @@
   * Automated updates to the HSTS preload list on 2024-11-1</comment>
     <requestid>1223993</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>1ac24a4609cea5b512009c1d5ca5dfda</srcmd5>
+    <version>2024.11.1</version>
+    <time>1752178325</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1291574</requestid>
+  </revision>
 </revisionlist>
