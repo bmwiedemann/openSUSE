@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jul 10 07:39:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.62.0:
+  * OPA Changes
+    - ebb167d: build(deps): bump github.com/open-policy-agent/opa
+      from 1.5.1 to 1.6.0 (#1149) (@dependabot[bot])
+  * Other Changes
+    - 4c22f26: build(deps): bump alpine from 3.21.3 to 3.22.0
+      (#1135) (@dependabot[bot])
+    - 7cf3311: build(deps): bump cuelang.org/go from 0.13.0 to
+      0.13.2 (#1148) (@dependabot[bot])
+    - 2d33645: build(deps): bump github.com/moby/buildkit from
+      0.22.0 to 0.23.2 (#1150) (@dependabot[bot])
+    - 89ef4d5: build(deps): bump golang from 1.24.3-alpine to
+      1.24.4-alpine (#1140) (@dependabot[bot])
+    - c7f6f8f: chore: Replace OPA v0 with v1 import paths (#1142)
+      (@jalseth)
+    - 91d8de7: chore: Use uppercase for all Dockerfile build
+      keywords (#1143) (@jalseth)
+    - 060ea76: ci: Run docker builds in parallel during release
+      (#1139) (@jalseth)
+
+-------------------------------------------------------------------
 Tue Jun 10 07:11:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.61.2:

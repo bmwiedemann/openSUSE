@@ -17,7 +17,7 @@
 
 
 Name:           conftest
-Version:        0.61.2
+Version:        0.62.0
 Release:        0
 Summary:        Tool to write tests against structured configuration data
 License:        Apache-2.0
