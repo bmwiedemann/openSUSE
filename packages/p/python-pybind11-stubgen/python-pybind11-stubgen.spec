@@ -18,6 +18,7 @@
 
 %define pypiname pybind11-stubgen
 
+%{?sle15_python_module_pythons}
 Name:           python-%{pypiname}
 Version:        0.12.0
 Release:        0
