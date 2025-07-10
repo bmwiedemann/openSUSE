@@ -1,7 +1,7 @@
 #
 # spec file for package python-googlemaps
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,12 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/googlemaps/google-maps-services-python
 Source:         https://github.com/googlemaps/google-maps-services-python/archive/v%{version}.tar.gz#/googlemaps-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module responses >= 0.3}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.20.0
@@ -45,10 +47,10 @@ Python via Google.
 sed -i 's/--cov.*$//' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +60,7 @@ sed -i 's/--cov.*$//' setup.cfg
 %files %{python_files}
 %license LICENSE
 %doc README.md CHANGELOG.md
-%{python_sitelib}/googlemaps*
+%{python_sitelib}/googlemaps
+%{python_sitelib}/googlemaps-%{version}.dist-info
 
 %changelog
