@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Thu Jul 10 10:54:52 UTC 2025 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.75.0:
+  * Quote Windows rsyso script global hook
+  * test(search): verify `URL` returns quoted query
+  * test(search): test pagination with multi-word quoted queries
+  * fix(search): fix mutating query state fields
+  * Add setup-go to bump-go
+  * Update contribution design link
+  * test(pr merge): always assert stderr
+  * test(pr merge): verify `deleteRemoteBranch` behaviour when API returns error
+  * fix(pr merge): ignore 404 as error when deleting remote branch
+  * Ensure go mod tidy is run in bump-go
+  * Inject token into bump-go workflow
+  * Reformat gh run view help
+  * docs(run view): explain restrictions of fallback API calls
+  * test(run view): delete unused ZIP archive
+  * refactor(run view): remove `Log` field from DTO types
+  * test(run view): update tests
+  * refactor(run view): use API as fallback to fetch job logs
+  * test: add `BinaryResponse` helper function
+  * Ensure bump go script has git user configured
+  * Support --no-repos-selected on secret set
+  * docs: consistently use apt in installation instructions
+  * Consume dependabot minor versions for go modules
+  * test: add test for `ParseURL`
+  * Update microsoft dev-tunnels to v0.1.13
+  * Bump all dependencies except dev-tunnels
+  * Fix inconsistent use of tabs and spaces
+  * docs: explain PR URL parsing reason
+  * test: improve test case to highlight host name override
+  * test: remove references to `AssignedActorsUsed` field
+  * test: verify providing a URL arg affects the base repo
+  * refactor: select PR fields based on detected features
+  * test: remove tests verifying assigne-related behaviour
+  * fix: remove assignee-related intervention
+  * fix: remove `AssignedActorsUsed` field
+  * Add workflow to automate go version bumping
+  * fix: expose `ParseURL` as a public func
+  * Remove unused GH_TOKEN env variable from workflow
+  * Add `workflow_dispatch` support to PR Help Wanted check (#11179)
+  * chore: improve error message when `versioninfo.json` is not found
+  * Fix: `gh pr create` prioritize `--title` and `--body` over `--fill` when `--web` is present (#10547)
+  * chore: create `.syso` libs only on Windows
+  * chore: delete `script/winres.json`
+  * chore: add `versioninfo.template.json`
+  * refactor: switch to `github.com/josephspurrier/goversioninfo`
+  * chore: exclude generated `.syso` files from git repo
+  * Ensure automation uses pinned go-licenses version
+  * Fix missing newline in install_linux.md
+  * Apply suggestions from code review
+  * Update missed Go 1.23 references
+  * chore: update Go version to 1.24 in devcontainer configuration
+  * Use `make` for license generation and checks
+  * Use temp directory for license checks
+  * Update 3rd party licenses
+  * Restored original test setup, clarified
+  * Enhance Activetoken prioritize test
+  * improve the description for gh release verify cmd
+  * chore: fix function name
+  * Push up
+  * Use active token stubbing on auth config
+  * refactor to simplify implementation
+  * Primer formatting
+  * Fix spacing
+  * Add missing files
+  * Rename READMEs
+  * Initial restore of Primer CLI docs
+  * use standardize color roles logic for the logging
+  * moved to shared lib
+  * moved to shared lib
+  * update the artifact and bundle for testing
+  * empty commit
+  * clean the code
+  * revert the workflow
+  * debug windows env
+  * debug windows env
+  * debug windows env
+  * chore: fix variable name casing
+  * Avoid analyzing 3rd party license content with CodeQL
+  * chore: ensure output path is a directory
+  * clean the path
+  * clean the path
+  * Update 3rd party license information
+  * Adopt license compliance scripts into workflows, docs
+  * clean the path
+  * improve test
+  * fix test
+  * add unit test
+  * chore: prepare Windows resources `.syso` files before build
+  * chore: add script to create Windows resources
+  * Cleanup
+  * fix: get token for active user instead of blank if possible
+  * remove filepath test
+  * update Sprintf
+  * removed unused file
+  * added the unit test
+  * add json format
+  * change verify-asset logic
+  * minor fix
+  * clean up the code
+  * update the lng
+  * wip
+  * remove comment
+  * wip
+  * init
+  * docs: install_linux.md: add Solus linux install instructions
+
+-------------------------------------------------------------------
 Fri Jun 20 08:01:15 UTC 2025 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.74.2:
