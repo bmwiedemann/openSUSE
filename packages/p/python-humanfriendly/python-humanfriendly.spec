@@ -1,7 +1,7 @@
 #
 # spec file for package python-humanfriendly
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-humanfriendly%{psuffix}
 Version:        10.0
@@ -41,11 +42,11 @@ Patch2:         support-python-313.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module capturer >= 2.1}
@@ -95,11 +96,8 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/hu
 %endif
 
 %if !%{with test}
-%post
-%python_install_alternative humanfriendly
-
-%postun
-%python_uninstall_alternative humanfriendly
+%pre
+%python_libalternatives_reset_alternative humanfriendly
 
 %files %{python_files}
 %license LICENSE.txt
