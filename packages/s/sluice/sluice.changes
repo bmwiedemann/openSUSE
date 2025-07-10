@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 21 07:11:26 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.03.01
+  * check_max_pipe_size: close pipe fds if fcntl fails
+- Update to version 0.03.00
+  * Add new -F option to sync output data to file on each write.
+    The sync operation is disabled if the output is a tty or cannot
+    be sync'd to because the output does not support fsync().
+- Update to version 0.02.16
+  * Manual: fix typos
+- Fix upstream URLs
+
+-------------------------------------------------------------------
 Thu Apr 29 10:13:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.02.13

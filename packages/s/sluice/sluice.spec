@@ -1,8 +1,8 @@
 #
 # spec file for package sluice
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2017-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 
 Name:           sluice
-Version:        0.02.13
+Version:        0.03.01
 Release:        0
 Summary:        Rate limiting data piping tool
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            https://kernel.ubuntu.com/~cking/sluice/
-Source:         https://kernel.ubuntu.com/~cking/tarballs/%{name}/%{name}-%{version}.tar.gz
+URL:            https://github.com/ColinIanKing/sluice
+Source:         https://github.com/ColinIanKing/sluice/archive/refs/tags/V%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 %description
 Sluice reads from standard input and write to standard output at a specified
@@ -43,7 +43,7 @@ BuildArch:      noarch
 Bash completion script for %{name}.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 export CFLAGS="%{optflags}"
