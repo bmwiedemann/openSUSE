@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 10 07:35:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.21.9:
+  * INS-1201: Fix pluto vulnerability (#570)
+    - golang.org/x/mod v0.25.0
+    - helm.sh/helm/v3 v3.18.4
+    - k8s.io/api v0.33.2
+    - k8s.io/apimachinery v0.33.2
+    - k8s.io/client-go v0.33.2
+
+-------------------------------------------------------------------
 Wed Jun 18 04:28:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.21.8:
