@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  9 08:52:24 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/wojtekka/6tunnel/issues/19
+  + 6tunnel-gcc15.patch
+
+-------------------------------------------------------------------
 Fri Mar  8 07:49:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

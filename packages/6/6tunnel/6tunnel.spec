@@ -27,6 +27,8 @@ URL:            https://github.com/wojtekka/6tunnel
 #Git-Clone:     https://github.com/wojtekka/6tunnel.git
 Source:         https://github.com/wojtekka/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         https://github.com/wojtekka/6tunnel/commit/9e4119f03f57eec67b97dddbf09d363b638791dc.patch
+# https://github.com/wojtekka/6tunnel/issues/19
+Patch2:         6tunnel-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  python3
