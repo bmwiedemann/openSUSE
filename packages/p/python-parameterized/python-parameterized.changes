@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 10 02:30:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on setuptools.
+- Add patch remove-external-mock.patch:
+  * Remove requirement on external mock module.
+- Do not run testsuite with pytest, we already do so with unittest.
+
+-------------------------------------------------------------------
 Mon Jul 22 11:26:38 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Cherry-pick upstream patch to fix tests with Python 3.13

@@ -1,7 +1,7 @@
 #
 # spec file for package python-parameterized
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,8 +42,11 @@ Patch2:         skip_failing_teardown.patch
 Patch3:         fix-assert-method.patch
 # PATCH-FIX-UPSTREAM gh#wolever/parameterized#176
 Patch4:         fix-tests-with-python3.13.patch
+# PATCH-FIX-UPSTREAM Based on gh#wolever/parameterized#186
+Patch5:         remove-external-mock.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 %if %{with nose2}
 BuildRequires:  %{python_module nose2}
@@ -67,16 +70,11 @@ Parameterized testing with any Python test framework.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/wolever/parameterized/issues/122
-sed -i 's:import mock:from unittest import mock:' parameterized/test.py
 export LANG=en_US.UTF8
 %if %{with nose2}
 %{python_expand nose2-%$python_version -v -B --pretty-assert}
 %endif
 %python_exec -m unittest parameterized.test
-# gh#wolever/parameterized#122
-skip_tests="test_with_docstring_1_v_l_ or test_with_docstring_0_value1"
-%pytest parameterized/test.py -k "not ($skip_tests)"
 
 %files %{python_files}
 %doc README.rst

@@ -165,4 +165,15 @@
     <comment></comment>
     <requestid>1189022</requestid>
   </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>4e0272a65cfd448f7c5c5b9289c498d6</srcmd5>
+    <version>0.9.0</version>
+    <time>1752182098</time>
+    <user>anag_factory</user>
+    <comment>- Add missing BuildRequires on setuptools.
+- Add patch remove-external-mock.patch:
+  * Remove requirement on external mock module.
+- Do not run testsuite with pytest, we already do so with unittest.</comment>
+    <requestid>1291571</requestid>
+  </revision>
 </revisionlist>

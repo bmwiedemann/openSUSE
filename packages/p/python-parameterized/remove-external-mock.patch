@@ -1,0 +1,26 @@
+From caa701915f1ef6a940d9589f91ff0853f930084f Mon Sep 17 00:00:00 2001
+From: "Benjamin A. Beasley" <code@musicinmybrain.net>
+Date: Tue, 6 May 2025 10:02:24 -0400
+Subject: [PATCH] Remove test dependency on PyPI mock
+
+Use `unittest.mock` from the Python standard library instead.
+---
+ parameterized/test.py | 3 +--
+ tox.ini               | 1 -
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+Index: parameterized-0.9.0/parameterized/test.py
+===================================================================
+--- parameterized-0.9.0.orig/parameterized/test.py
++++ parameterized-0.9.0/parameterized/test.py
+@@ -2,9 +2,8 @@
+ 
+ import inspect
+ import sys
+-import mock
+ from functools import wraps
+-from unittest import TestCase
++from unittest import TestCase, mock
+ import pytest
+ 
+ from .parameterized import (
