@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul  5 14:43:42 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 3.17.0:
+  * libc: only change resolv.conf if the signature matches
+  * resolvconf: -I now inits subscribers after clearing state 
+  * resolvconf.8: resolvconf -I should be called during early boot 
+  * resolvconf: remember if any subscriber errored 
+
+-------------------------------------------------------------------
 Fri May  9 13:44:40 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 3.16.3:

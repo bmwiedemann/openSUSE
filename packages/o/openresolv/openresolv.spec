@@ -17,7 +17,7 @@
 
 
 Name:           openresolv
-Version:        3.16.3
+Version:        3.17.0
 Release:        0
 Summary:        DNS management framework
 License:        BSD-2-Clause
