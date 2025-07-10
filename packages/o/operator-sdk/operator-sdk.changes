@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 10 07:37:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.41.1:
+  * Release v1.41.1 (#6973)
+  * Bump helm.sh/helm/v3 from 3.18.3 to 3.18.4 (#6970)
+  * re-generate scaffolding post release
+
+-------------------------------------------------------------------
 Wed Jul 09 04:48:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.41.0:
