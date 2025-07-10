@@ -92,6 +92,8 @@ sed -i 's|MODE="660"|MODE="666"|g' udev-rules/64-limesuite.rules
   -DBUILD_SHARED_LIBS=ON \
   -DCMAKE_AUTOSET_INSTALL_RPATH=FALSE \
   -DUDEV_RULES_PATH=%{_udevrulesdir} \
+  -DCMAKE_C_STANDARD=17 \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 %ifarch x86_64
   -DENABLE_SIMD_FLAGS="SSE3" \
 %else

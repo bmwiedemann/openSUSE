@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 10 12:48:32 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Add CMake flags to make it compatible with CMake 4.0 and
+  prevent GCC from using C23 mode.
+
+-------------------------------------------------------------------
 Thu Mar 27 19:17:20 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - SOAPY_SDR_ABI_VERSION bump -> "0.8-3"
