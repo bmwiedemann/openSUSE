@@ -145,4 +145,15 @@ since we bumped libgo SONAME as well for 15</comment>
 - Tune for z15 for SLES 16.  [jsc#PED-253]</comment>
     <requestid>1290115</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>680e418ef217b4c3b1b0f25da41f23e1</srcmd5>
+    <version>15.1.1+git9866</version>
+    <time>1752178213</time>
+    <user>anag_factory</user>
+    <comment>- Prune the use of update-alternatives from openSUSE Factory and
+  SLFO.
+- Adjust crosses to conflict consistently where they did not
+  already and make them use unsuffixed binaries.</comment>
+    <requestid>1291470</requestid>
+  </revision>
 </revisionlist>

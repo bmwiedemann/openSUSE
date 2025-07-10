@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  9 11:26:24 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Prune the use of update-alternatives from openSUSE Factory and
+  SLFO.
+- Adjust crosses to conflict consistently where they did not
+  already and make them use unsuffixed binaries.
+
+-------------------------------------------------------------------
 Wed Jul  2 10:31:10 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Tune for power10 for SLES 16.  [jsc#PED-12029]

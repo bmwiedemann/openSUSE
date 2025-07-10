@@ -270,7 +270,7 @@ ExclusiveArch:  i586 ppc64le x86_64 s390x aarch64 riscv64 loongarch64
 %if "%pkgname" == "cross-ppc64-gcc49"
 Obsoletes:      cross-ppc-gcc49 <= 4.9.0+r209354
 %endif
-%if 0%{?gcc_target_newlib:1}%{?gcc_target_glibc:1}
+%if 0%{!?gcc_accel:1}
 # Generally only one cross for the same target triplet can be installed
 # at the same time as we are populating a non-version-specific sysroot
 # The -bootstrap packages file-conflict with the non-bootstrap variants.
@@ -278,6 +278,7 @@ Obsoletes:      cross-ppc-gcc49 <= 4.9.0+r209354
 # the following avoids repo-checker spamming us endlessly.
 %if 0%{!?gcc_libc_bootstrap:1}
 Provides:       %{gcc_target_arch}-gcc
+Conflicts:      %{pkgname}-bootstrap
 %endif
 Conflicts:      %{gcc_target_arch}-gcc
 %endif
@@ -288,7 +289,7 @@ Conflicts:      %{gcc_target_arch}-gcc
 # the libs, though)
 Requires:       libstdc++6-devel-gcc15
 %endif
-%if 0%{!?gcc_accel:1}
+%if 0%{!?gcc_accel:1} && %{suse_version} < 1600
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
@@ -547,11 +548,11 @@ amdgcn-amdhsa,\
 %ifarch %ix86 x86_64 ppc ppc64 ppc64le %arm aarch64 s390 s390x %sparc
 	--enable-gnu-indirect-function \
 %endif
-	--program-suffix=%{binsuffix} \
 %ifarch %{disable_multilib_arch}
 	--disable-multilib \
 %endif
 %if 0%{!?gcc_target_arch:1}
+	--program-suffix=%{binsuffix} \
 %ifarch ia64
 	--with-system-libunwind \
 %else
@@ -559,6 +560,9 @@ amdgcn-amdhsa,\
 %endif
 %endif
 %if 0%{?gcc_target_arch:1}
+%if %{suse_version} < 1600
+	--program-suffix=%{binsuffix} \
+%endif
 	--program-prefix=%{gcc_target_arch}- \
 	--target=%{gcc_target_arch} \
 	--disable-nls \
@@ -916,7 +920,7 @@ rm -r env
 
 # we provide update-alternatives for selecting a compiler version for
 # crosses
-%if 0%{!?gcc_accel:1}
+%if 0%{!?gcc_accel:1} && %{suse_version} < 1600
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 for ex in gcc cpp \
 %if %{build_cp}
@@ -972,15 +976,19 @@ fi
 %endif
 %else
 %{_prefix}/bin/%{gcc_target_arch}-gcc%{binsuffix}
+%if %{suse_version} < 1600
 %{_prefix}/bin/%{gcc_target_arch}-cpp%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-gcc-ar%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-gcc-nm%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-gcc-ranlib%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-lto-dump%{binsuffix}
+%endif
 %if 0%{!?gcc_libc_bootstrap:1} && "%{cross_arch}" != "bpf"
+%if %{suse_version} < 1600
 %{_prefix}/bin/%{gcc_target_arch}-gcov%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-gcov-dump%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-gcov-tool%{binsuffix}
+%endif
 %{_prefix}/bin/%{gcc_target_arch}-gcov
 %{_prefix}/bin/%{gcc_target_arch}-gcov-dump
 %{_prefix}/bin/%{gcc_target_arch}-gcov-tool
@@ -991,6 +999,7 @@ fi
 %{_prefix}/bin/%{gcc_target_arch}-gcc-nm
 %{_prefix}/bin/%{gcc_target_arch}-gcc-ranlib
 %{_prefix}/bin/%{gcc_target_arch}-lto-dump
+%if %{suse_version} < 1600
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcc
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-cpp
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcc-ar
@@ -1002,13 +1011,16 @@ fi
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcov-dump
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcov-tool
 %endif
+%endif
 %if %{build_cp}
-%{_prefix}/bin/%{gcc_target_arch}-c++%{binsuffix}
-%{_prefix}/bin/%{gcc_target_arch}-g++%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-c++
 %{_prefix}/bin/%{gcc_target_arch}-g++
+%if %{suse_version} < 1600
+%{_prefix}/bin/%{gcc_target_arch}-c++%{binsuffix}
+%{_prefix}/bin/%{gcc_target_arch}-g++%{binsuffix}
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-c++
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-g++
+%endif
 %if 0%{!?gcc_libc_bootstrap:1}
 %if "%{cross_arch}" == "avr" || 0%{?gcc_target_newlib:1} || 0%{?gcc_target_glibc:1}
 %{_prefix}/include/c++
