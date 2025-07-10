@@ -161,4 +161,41 @@
   * fix(gitlab): use CI_SERVER_VERSION when available (#5783) (forwarded request 1284520 from ph03nix)</comment>
     <requestid>1284583</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0865332f56e018fb04eb455afe13fd15</srcmd5>
+    <version>2.11.0</version>
+    <time>1752178228</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.11.0:
+  * ci: improve test:golden:update
+  * ci: improve script
+  * ci: improve script
+  * ci: add task test:golden:update
+  * docs: readme update
+  * docs: update
+  * chore(deps): bump golang from 1.24.4-alpine to 1.24.5-alpine (#5890)
+  * Revert &quot;chore(deps): bump github.com/charmbracelet/lipgloss/v2 from 2.0.0-beta.2.0.20250707173510-045a87bf1420 to 2.0.0-beta1 (#5889)&quot;
+  * chore(deps): bump github.com/mark3labs/mcp-go from 0.32.0 to 0.33.0 (#5887)
+  * docs: cleanup
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.133.0 to 0.134.0 (#5888)
+  * chore(deps): bump github.com/charmbracelet/lipgloss/v2 from 2.0.0-beta.2.0.20250707173510-045a87bf1420 to 2.0.0-beta1 (#5889)
+  * ci: remove dagger
+  * chore(deps): update lipgloss
+  * fix(cask): invalid string quoting in uninstall/zap arrays (#5885)
+  * chore(deps): bump github.com/slack-go/slack from 0.17.2 to 0.17.3 (#5884)
+  * fix(nix): improve nix-hash check (#5883)
+  * chore(deps): bump github.com/charmbracelet/fang from 0.2.1-0.20250630160126-3fe7faad10fc to 0.3.0 (#5880)
+  * chore(deps): bump github.com/charmbracelet/lipgloss/v2 from 2.0.0-beta.2 to 2.0.0-beta1 (#5881)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.132.0 to 0.133.0 (#5882)
+  * fix: keyword style
+  * feat: improve error handling (#5878)
+  * test: fix test on CI
+  * fix(deps): update to lipgloss/v2 (#5877)
+  * fix(archive): override with no goos
+  * fix(archive): ignore override with no formats
+  * chore(deps): update caarlos0/log
+  * chore(deps): bump anchore/sbom-action from 0.20.1 to 0.20.2 (#5873)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.131.0 to 0.132.0 (#5874) (forwarded request 1291507 from ph03nix)</comment>
+    <requestid>1291510</requestid>
+  </revision>
 </revisionlist>

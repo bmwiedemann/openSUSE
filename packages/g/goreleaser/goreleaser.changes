@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Wed Jul 09 14:28:31 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.11.0:
+  * ci: improve test:golden:update
+  * ci: improve script
+  * ci: improve script
+  * ci: add task test:golden:update
+  * docs: readme update
+  * docs: update
+  * chore(deps): bump golang from 1.24.4-alpine to 1.24.5-alpine (#5890)
+  * Revert "chore(deps): bump github.com/charmbracelet/lipgloss/v2 from 2.0.0-beta.2.0.20250707173510-045a87bf1420 to 2.0.0-beta1 (#5889)"
+  * chore(deps): bump github.com/mark3labs/mcp-go from 0.32.0 to 0.33.0 (#5887)
+  * docs: cleanup
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.133.0 to 0.134.0 (#5888)
+  * chore(deps): bump github.com/charmbracelet/lipgloss/v2 from 2.0.0-beta.2.0.20250707173510-045a87bf1420 to 2.0.0-beta1 (#5889)
+  * ci: remove dagger
+  * chore(deps): update lipgloss
+  * fix(cask): invalid string quoting in uninstall/zap arrays (#5885)
+  * chore(deps): bump github.com/slack-go/slack from 0.17.2 to 0.17.3 (#5884)
+  * fix(nix): improve nix-hash check (#5883)
+  * chore(deps): bump github.com/charmbracelet/fang from 0.2.1-0.20250630160126-3fe7faad10fc to 0.3.0 (#5880)
+  * chore(deps): bump github.com/charmbracelet/lipgloss/v2 from 2.0.0-beta.2 to 2.0.0-beta1 (#5881)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.132.0 to 0.133.0 (#5882)
+  * fix: keyword style
+  * feat: improve error handling (#5878)
+  * test: fix test on CI
+  * fix(deps): update to lipgloss/v2 (#5877)
+  * fix(archive): override with no goos
+  * fix(archive): ignore override with no formats
+  * chore(deps): update caarlos0/log
+  * chore(deps): bump anchore/sbom-action from 0.20.1 to 0.20.2 (#5873)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.131.0 to 0.132.0 (#5874)
+  * ci: fix semgrep check
+  * chore: fix lint issues
+  * refactor: using signal.NotifyContext, better context usage (#5859)
+  * refactor: rename package
+  * feat: log duration of all shell commands (#5872)
+  * chore(deps): bump mkdocs-material from 9.6.14 to 9.6.15 in /www (#5868)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.130.1 to 0.131.0 (#5869)
+  * chore(deps): bump github/codeql-action from 3.29.1 to 3.29.2 (#5867)
+  * docs: update
+  * fix: remove opts set by fang
+  * feat(ux): use fang (#5842)
+  * fix(rust): properly group binaries by platform (#5866)
+  * docs: update
+  * chore(deps): bump github/codeql-action from 3.29.0 to 3.29.1 (#5864)
+  * chore(deps): bump gocloud.dev from 0.41.0 to 0.42.0 (#5863)
+  * chore(deps): bump github.com/Masterminds/semver/v3 from 3.3.1 to 3.4.0 (#5862)
+  * chore(deps): bump github.com/slack-go/slack from 0.17.1 to 0.17.2 (#5861)
+  * chore(deps): bump github.com/go-viper/mapstructure/v2 from 2.2.1 to 2.3.0 in the go_modules group (#5860)
+  * chore(deps): update go-github to v73
+  * test: fix windows test
+  * refactor: improve commitauthor templating (#5858)
+  * fix(semver): skip=validate allows invalid semver (#5845)
+  * feat: run custom publishers last
+  * docs: update
+  * docs: clarify 'binary' mode usage
+  * fix(http): improve log output
+  * fix(schema): upload.mode enum
+  * refactor: simplify tests with require.ErrorContains (#5855)
+  * docs: fix
+  * chore: lint
+  * feat: add signed commits capability (#5820)
+  * chore(deps): update github.com/caarlos0/go-version from 0.2.0 to 0.2.1 (#5850)
+  * fix: artifact.Checksum should set artifact.Extra field (#5849)
+  * chore(deps): bump sigstore/cosign-installer from 3.9.0 to 3.9.1 (#5848)
+  * docs(cask): fix the incorrect Ruby code in the example (#5847)
+  * fix(cask): add test and docs for custom URL (#5844)
+  * feat(cask): place `custom_block` on top of cask definition (#5831)
+  * chore(deps): bump github/codeql-action from 3.28.19 to 3.29.0 (#5827)
+  * chore(deps): bump docker/setup-buildx-action from 3.11.0 to 3.11.1 (#5843)
+  * chore: update schema
+  * feat(cask): pluralize manpages (#5839)
+  * chore(deps): bump sigstore/cosign-installer from 3.8.2 to 3.9.0 (#5841)
+  * fix(casks): binary packages need to rename to binary (#5840)
+  * chore(deps): bump docker/setup-buildx-action from 3.10.0 to 3.11.0 (#5838)
+  * chore(deps): bump mkdocs-include-markdown-plugin from 7.1.5 to 7.1.6 in /www (#5836)
+  * chore(deps): bump github.com/google/go-containerregistry from 0.20.5 to 0.20.6 (#5835)
+  * chore(deps): bump anchore/sbom-action from 0.20.0 to 0.20.1 (#5834)
+  * fix: warn if cask directory is not Casks
+  * docs: improve cask deprecation notice
+  * fix: skip empty image_templates in docker_manifests (#5825)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.129.0 to 0.130.1 (#5828)
+  * chore(deps): bump github.com/mark3labs/mcp-go from 0.31.0 to 0.32.0 (#5829)
+  * chore(deps): bump stefanzweifel/git-auto-commit-action from 6.0.0 to 6.0.1 (#5826)
+  * docs: update
+  * chore(deps): bump stefanzweifel/git-auto-commit-action from 5.2.0 to 6.0.0 (#5823)
+  * chore(deps): bump github.com/cloudflare/circl from 1.6.0 to 1.6.1 in the go_modules group (#5821)
+  * chore(deps): bump github.com/slack-go/slack from 0.17.0 to 0.17.1 (#5819)
+  * chore(deps): bump github.com/mark3labs/mcp-go from 0.30.1 to 0.31.0 (#5818)
+  * chore: auto-update generated files
+  * fix: typo
+
+-------------------------------------------------------------------
 Tue Jun 10 14:29:01 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.10.2:
