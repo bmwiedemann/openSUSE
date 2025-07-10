@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Jul  3 13:05:42 UTC 2025 - pgajdos@suse.com
+
+- version update to 8.4.10 [bsc#1246146][bsc#1246148][bsc#1246167]
+    BcMath:
+        Fixed bug GH-18641 (Accessing a BcMath\Number property by ref crashes).
+    Core:
+        Fixed bugs GH-17711 and GH-18022 (Infinite recursion on deprecated attribute evaluation) and GH-18464 (Recursion protection for deprecation constants not released on bailout).
+        Fixed GH-18695 (zend_ast_export() - float number is not preserved).
+        Fix handling of references in zval_try_get_long().
+        Do not delete main chunk in zend_gc.
+        Fix compile issues with zend_alloc and some non-default options.
+    Curl:
+        Fix memory leak when setting a list via curl_setopt fails.
+    Date:
+        Fix leaks with multiple calls to DatePeriod iterator current().
+    DOM:
+        Fixed bug GH-18744 (classList works not correctly if copy HTMLElement by clone keyword).
+    FPM:
+        Fixed GH-18662 (fpm_get_status segfault).
+    Hash:
+        Fixed bug GH-14551 (PGO build fails with xxhash).
+    Intl:
+        Fix memory leak in intl_datetime_decompose() on failure.
+        Fix memory leak in locale lookup on failure.
+    Opcache:
+        Fixed bug GH-18743 (Incompatibility in Inline TLS Assembly on Alpine 3.22).
+    ODBC:
+        Fix memory leak on php_odbc_fetch_hash() failure.
+    OpenSSL:
+        Fix memory leak of X509_STORE in php_openssl_setup_verify() on failure.
+        Fixed bug #74796 (Requests through http proxy set peer name).
+    PGSQL:
+        Fixed GHSA-hrwm-9436-5mv3 (pgsql extension does not check for errors during escaping). (CVE-2025-1735)
+        Fix warning not being emitted when failure to cancel a query with pg_cancel_query().
+    PDO ODBC:
+        Fix memory leak if WideCharToMultiByte() fails.
+    PDO Sqlite:
+        Fixed memory leak with Pdo_Sqlite::createCollation when the callback has an incorrect return type.
+    Phar:
+        Add missing filter cleanups on phar failure.
+        Fixed bug GH-18642 (Signed integer overflow in ext/phar fseek).
+    PHPDBG:
+        Fix 'phpdbg --help' segfault on shutdown with USE_ZEND_ALLOC=0.
+    Random:
+        Fix reference type confusion and leak in user random engine.
+    Readline:
+        Fix memory leak when calloc() fails in php_readline_completion_cb().
+    SimpleXML:
+        Fixed bug GH-18597 (Heap-buffer-overflow in zend_alloc.c when assigning string with UTF-8 bytes).
+    SOAP:
+        Fix memory leaks in php_http.c when call_user_function() fails.
+        Fixed GHSA-453j-q27h-5p8x (NULL Pointer Dereference in PHP SOAP Extension via Large XML Namespace Prefix). (CVE-2025-6491)
+    Standard:
+        Fixed GHSA-3cr5-j632-f35r (Null byte termination in hostnames). (CVE-2025-1220)
+    Tidy:
+        Fix memory leak in tidy output handler on error.
+        Fix tidyOptIsReadonly deprecation, using tidyOptGetCategory.
+- modified patches
+  % php-build-reproducible-phar.patch (refreshed)
+
+-------------------------------------------------------------------
 Fri Jun  6 08:25:15 UTC 2025 - pgajdos@suse.com
 
 - version update to 8.4.8
