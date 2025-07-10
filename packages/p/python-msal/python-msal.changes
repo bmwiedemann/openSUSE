@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul  9 07:32:59 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.33.0b1
+  * ManagedIdentityClient(..., client_capabilities=["cp1"]).\
+    acquire_token_for_client(..., claims_challenge="...")
+    by @rayluo in (#791)
+  * Update deprecated TokenCache API usage by @pvaneck in (#805)
+  * Enable broker support on Linux for WSL by @DharshanBJ in (#766)
+  * Fix username/password validation in broker test
+    by @emmanuel-ferdman in (#807)
+  * Merge release 1.32.3 back to dev branch by @rayluo in (#816)
+  * Add dependency management suggestions by @rayluo in (#819)
+  * Remind developers about http_cache's unstable format by @rayluo in (#821)
+  * Properly throw MsalServiceError exception by @rayluo in (#820)
+  * Improve test cases to test header-less response by @rayluo in (#822)
+  * Upgrade dependency by @rayluo in (#824)
+  * Linux broker needs a specific redirect_uri by @rayluo in (#826)
+  * MSAL Python 1.33.0b1 release by @rayluo in (#827)
+- Override upstream version with 1.33.0~b1
+
+-------------------------------------------------------------------
 Tue Apr 29 11:12:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.32.3

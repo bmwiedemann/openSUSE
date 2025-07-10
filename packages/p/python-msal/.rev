@@ -397,4 +397,28 @@
   * Optimization on cache (forwarded request 1273415 from glaubitz)</comment>
     <requestid>1273419</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f85f136a62ac5d6da688d11ab6fcb63a</srcmd5>
+    <version>1.33.0~b1</version>
+    <time>1752182093</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.33.0b1
+  * ManagedIdentityClient(..., client_capabilities=[&quot;cp1&quot;]).\
+    acquire_token_for_client(..., claims_challenge=&quot;...&quot;)
+    by @rayluo in (#791)
+  * Update deprecated TokenCache API usage by @pvaneck in (#805)
+  * Enable broker support on Linux for WSL by @DharshanBJ in (#766)
+  * Fix username/password validation in broker test
+    by @emmanuel-ferdman in (#807)
+  * Merge release 1.32.3 back to dev branch by @rayluo in (#816)
+  * Add dependency management suggestions by @rayluo in (#819)
+  * Remind developers about http_cache's unstable format by @rayluo in (#821)
+  * Properly throw MsalServiceError exception by @rayluo in (#820)
+  * Improve test cases to test header-less response by @rayluo in (#822)
+  * Upgrade dependency by @rayluo in (#824)
+  * Linux broker needs a specific redirect_uri by @rayluo in (#826)
+  * MSAL Python 1.33.0b1 release by @rayluo in (#827)
+- Override upstream version with 1.33.0~b1 (forwarded request 1291414 from glaubitz)</comment>
+    <requestid>1291492</requestid>
+  </revision>
 </revisionlist>
