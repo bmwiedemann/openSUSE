@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-hatch-fancy-pypi-readme%{psuffix}
 Version:        25.1.0
@@ -31,24 +32,24 @@ Release:        0
 Summary:        Fancy PyPI READMEs with Hatch
 License:        MIT
 URL:            https://github.com/hynek/hatch-fancy-pypi-readme
-Source:         https://files.pythonhosted.org/packages/source/h/hatch-fancy-pypi-readme/hatch_fancy_pypi_readme-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/h/hatch_fancy_pypi_readme/hatch_fancy_pypi_readme-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
 BuildRequires:  python-rpm-macros
+Requires:       alts
+Provides:       python-hatch_fancy_pypi_readme = %{version}-%{release}
+BuildArch:      noarch
+%{?python_enable_dependency_generator}
 %if %{with test}
 # SECTION test
 BuildRequires:  %{python_module hatch-fancy-pypi-readme >= %version}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %endif
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Provides:       python-hatch_fancy_pypi_readme = %{version}-%{release}
-BuildArch:      noarch
-%{?python_enable_dependency_generator}
 %python_subpackages
 
 %description
@@ -85,11 +86,8 @@ release? You've come to the right place!
 %pytest --ignore tests/test_end_to_end.py
 %endif
 
-%post
-%python_install_alternative hatch-fancy-pypi-readme
-
-%postun
-%python_uninstall_alternative hatch-fancy-pypi-readme
+%pre
+%python_libalternatives_reset_alternative hatch-fancy-pypi-readme
 
 %if !%{with test}
 %files %{python_files}
