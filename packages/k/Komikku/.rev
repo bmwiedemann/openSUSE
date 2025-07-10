@@ -494,4 +494,25 @@
   * [L10n] Updated French and Persian translations (forwarded request 1287246 from rrahl0)</comment>
     <requestid>1287867</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>8dad3faf836b43b80ce15f6252aeb055</srcmd5>
+    <version>1.81.0</version>
+    <time>1752178423</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.81.0:
+  * [Card] Improved interface refresh after an update
+  * [Updater] Added detection of downed servers
+  * [Servers] ComicK: Fixed covers in search results
+  * [Servers] Mangalek (AR): Update
+  * [Servers] NHentai (EN/JA/ZH): Update
+  * [Servers] Perf Scan (FR): Update
+  * [Servers] Rawkuma (JA): Update
+  * [Servers] Terco Scans (EN): Update
+  * [Servers] Tres Daos (ES): Update
+  * [Servers] WEBTOON: Update
+  * [L10n] Updated translations
+- add do-not-load-avif.patch, we don't need to load the pillow-heif
+  AVIF support anymore (and it's removed since 1.0.0) (forwarded request 1290825 from rrahl0)</comment>
+    <requestid>1291669</requestid>
+  </revision>
 </revisionlist>

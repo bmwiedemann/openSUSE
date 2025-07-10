@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jul  5 16:20:40 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.81.0:
+  * [Card] Improved interface refresh after an update
+  * [Updater] Added detection of downed servers
+  * [Servers] ComicK: Fixed covers in search results
+  * [Servers] Mangalek (AR): Update
+  * [Servers] NHentai (EN/JA/ZH): Update
+  * [Servers] Perf Scan (FR): Update
+  * [Servers] Rawkuma (JA): Update
+  * [Servers] Terco Scans (EN): Update
+  * [Servers] Tres Daos (ES): Update
+  * [Servers] WEBTOON: Update
+  * [L10n] Updated translations
+- add do-not-load-avif.patch, we don't need to load the pillow-heif
+  AVIF support anymore (and it's removed since 1.0.0)
+
+-------------------------------------------------------------------
 Fri Jun 20 12:42:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.80.0:
