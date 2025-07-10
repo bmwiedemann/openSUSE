@@ -1,7 +1,7 @@
 #
 # spec file for package python-geolinks
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,21 +13,23 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-geolinks
 Version:        0.2.0
 Release:        0
 License:        MIT
 Summary:        Utilities to deal with geospatial links
-Url:            https://github.com/geopython/geolinks
+URL:            https://github.com/geopython/geolinks
 Group:          Development/Languages/Python
 # pypi source lack license and tests
 Source:         https://github.com/geopython/geolinks/archive/%{version}.tar.gz#/geolinks-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 
 %python_subpackages
@@ -39,10 +41,10 @@ Python implementation of Cat-Interop utilities for geospatial links.
 %setup -q -n geolinks-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +57,7 @@ popd
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/geolinks
+%{python_sitelib}/geolinks-%{version}.dist-info
 
 %changelog
