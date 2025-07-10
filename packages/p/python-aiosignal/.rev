@@ -46,4 +46,17 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1285326</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>18e29bfa5b6ec4a2c7af094a4f016c11</srcmd5>
+    <version>1.4.0</version>
+    <time>1752182100</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to 1.4.0:
+  * Added decorator functionality to Signal as a convenient way to add a
+    callback
+  * Improved type safety by allowing callback parameters to be type checked
+    (typing-extensions is now required for Python &lt;3.13). Parameters for a
+    Signal callback should now be defined like Signal[int, str]</comment>
+    <requestid>1291582</requestid>
+  </revision>
 </revisionlist>

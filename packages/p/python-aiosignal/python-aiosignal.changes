@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 10 04:53:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Upgrade to 1.4.0:
+  * Added decorator functionality to Signal as a convenient way to add a
+    callback
+  * Improved type safety by allowing callback parameters to be type checked
+    (typing-extensions is now required for Python <3.13). Parameters for a
+    Signal callback should now be defined like Signal[int, str]
+
+-------------------------------------------------------------------
 Fri Jun 13 05:35:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

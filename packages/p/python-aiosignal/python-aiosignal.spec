@@ -16,27 +16,31 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-aiosignal
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        a list of registered asynchronous callbacks
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/aiosignal
 Source:         https://files.pythonhosted.org/packages/source/a/aiosignal/aiosignal-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-frozenlist >= 1.1.0
+%if 0%{?python_version_nodots} < 313
+Requires:       python-typing_extensions >= 4.4
+%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module frozenlist >= 1.1.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing_extensions >= 4.4}
 # /SECTION
 %python_subpackages
 
