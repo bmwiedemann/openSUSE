@@ -16,6 +16,11 @@
 #
 
 
+# Because "-std=gnu17" we need a c++17 compiler at least
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%global force_gcc_version 13
+%endif
+
 %bcond_without systemd
 Name:           xonotic
 Version:        0.8.6
@@ -30,6 +35,7 @@ Source2:        xonotic.service
 Source3:        xonotic.init
 Source4:        %{name}.changes
 Source100:      xonotic.appdata.xml
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  libcurl-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -98,6 +104,11 @@ TIME="\"$(date -d "${modified}" "+%%R")\""
 find .  -name '*.[ch]' | xargs sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g"
 
 %build
+%if 0%{?force_gcc_version}
+export CC="gcc-%{force_gcc_version}"
+export CXX="g++-%{force_gcc_version}"
+%endif
+
 %make_build \
   DP_LINK_TO_LIBJPEG=1 \
   DP_LINK_CRYPTO=shared \

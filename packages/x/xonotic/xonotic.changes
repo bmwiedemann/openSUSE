@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 10 03:37:00 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Force use of gcc13 for Leap 15.6, needed because the last change
+
+-------------------------------------------------------------------
 Thu Jul  3 09:24:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Explicitly set -std=gnu17. (GCC15 switch to C23 by default,
