@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul  6 20:32:54 UTC 2025 - Robert Munteanu <rombert@apache.org>
+
+- Create /run/shadowsocks using tmpfiles, otherwise systemd services
+  fail to start
+
+-------------------------------------------------------------------
 Sat Mar 29 14:43:39 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - port to pcre2, add shadowsocks-libev-3.3.5-pcre2.patch based on

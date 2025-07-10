@@ -38,6 +38,7 @@ Source9:        %{name}-server@.service
 Source10:       %{name}-tunnel@.service
 Source11:       %{name}-nat@.service
 Source12:       %{name}-redir@.service
+Source13:       %{name}.tmpfiles
 Patch0:         shadowsocks-libev-3.3.5-pcre2.patch
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
@@ -125,6 +126,10 @@ install -m 644 %{SOURCE9} %{buildroot}%{_unitdir}
 install -m 644 %{SOURCE10} %{buildroot}%{_unitdir}
 install -m 644 %{SOURCE11} %{buildroot}%{_unitdir}
 install -m 644 %{SOURCE12} %{buildroot}%{_unitdir}
+
+mkdir -p %{buildroot}%{_tmpfilesdir}
+install -m 644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+
 mkdir -p %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-client
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-server
@@ -214,6 +219,7 @@ chmod 640 %{_sysconfdir}/shadowsocks/*
 %{_mandir}/man1/ss-*.1%{?ext_man}
 %{_sbindir}/rcshadowsocks-libev-*
 %{_unitdir}/%{name}-*.service
+%{_tmpfilesdir}/%{name}.conf
 
 %files -n lib%{name}%{libver}
 %license COPYING

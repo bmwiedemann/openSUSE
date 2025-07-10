@@ -202,4 +202,12 @@
     <comment></comment>
     <requestid>1266034</requestid>
   </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>c58f5e32116395cd7f257cb02743aa02</srcmd5>
+    <version>3.3.5</version>
+    <time>1752178387</time>
+    <user>anag_factory</user>
+    <comment>Addressed review from https://build.opensuse.org/requests/1291266 (forwarded request 1291334 from robert_munteanu)</comment>
+    <requestid>1291637</requestid>
+  </revision>
 </revisionlist>
