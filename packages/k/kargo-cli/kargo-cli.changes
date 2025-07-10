@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 10 07:35:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.6.1:
+  * CLI-related changes or dependency updates:
+    - chore(backport release-1.6): chore(deps): bump
+      helm.sh/helm/v3 from 3.18.3 to 3.18.4 (#4576)
+
+-------------------------------------------------------------------
 Mon Jun 30 05:29:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.6.0:
