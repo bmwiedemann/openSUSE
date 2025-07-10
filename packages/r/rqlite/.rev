@@ -152,4 +152,12 @@
     <comment>rqlite 8.38.3</comment>
     <requestid>1290610</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5319ef71dcded81baf09cfcc8db6c1ee</srcmd5>
+    <version>8.39.1</version>
+    <time>1752178321</time>
+    <user>anag_factory</user>
+    <comment>rqlite 8.39.1</comment>
+    <requestid>1291562</requestid>
+  </revision>
 </revisionlist>
