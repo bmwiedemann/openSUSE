@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Jul 9 13:56:34 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1026
+- log output of lvmdevices during probing for debugging
+- 4.5.261
+
+--------------------------------------------------------------------
 Mon Jun 16 06:40:33 UTC 2025 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1025
