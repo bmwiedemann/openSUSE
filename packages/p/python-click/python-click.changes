@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  8 15:09:58 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add click-8.2.1-clirunner.patch to fix clirunner breaking other
+  modules' tests, cf. github.com/pallets/click/issues/2939
+
+-------------------------------------------------------------------
 Wed May 21 07:16:31 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 8.2.1:
