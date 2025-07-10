@@ -228,4 +228,15 @@ Well maintained game, reasonable release cycles.</comment>
     <comment></comment>
     <requestid>1269451</requestid>
   </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>940395231c91be34df4dbd074788031a</srcmd5>
+    <version>1.4</version>
+    <time>1752178261</time>
+    <user>anag_factory</user>
+    <comment>- Make compatible to CMake 4.0 and newer until STK 1.5 will provide
+  the proper fix.
+- Add upstream add-include-work-with-gcc15.patch
+</comment>
+    <requestid>1291524</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package supertuxkart
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,11 @@ Source:         https://github.com/supertuxkart/stk-code/releases/download/%{ver
 # Geeko kart add-on (CC-BY 3.0)
 Source1:        14e6ba25b17f0d.zip
 Source9:        supertuxkart.6
+# PATCH-FIX-UPSTREAM build with gcc13
 Patch0:         gcc13.patch
-BuildRequires:  cmake >= 3
+# PATCH-FIX-UPSTREAM build with gcc15
+Patch1:         add-include-work-with-gcc15.patch 
+BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -107,6 +110,7 @@ cmake .. \
         -DCMAKE_C_FLAGS="%{optflags} -fno-strict-aliasing" \
         -DCMAKE_CXX_FLAGS="%{optflags} -fno-strict-aliasing" \
         -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DBUILD_RECORDER=0 \
         -DOpenGL_GL_PREFERENCE=GLVND \
         -DUSE_SYSTEM_WIIUSE:BOOL=ON \
