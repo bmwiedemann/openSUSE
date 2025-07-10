@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  9 16:42:07 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add CVE-2025-53547.patch (CVE-2025-53547, bsc#1246155)
+
+-------------------------------------------------------------------
 Mon Jul 07 05:26:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.7:
