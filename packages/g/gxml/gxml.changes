@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Thu Jul 10 14:00:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- create the lang package seperately, as we don't have a main package
+
+-------------------------------------------------------------------
+Thu Jul 10 11:10:10 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix leap build (package name for library)
+- fix patch, so typelib can find the correct library
+
+-------------------------------------------------------------------
+Fri May  9 14:09:48 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- initial packaging
