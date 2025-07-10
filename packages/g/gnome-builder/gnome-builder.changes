@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  9 08:31:04 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.2:
+  + Meson template fixes
+  + Fix application of text edits with some LSPs
+  + Fix certain types of directory updates to project tree
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar 16 09:14:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:
