@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  9 08:53:02 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Add uhd-fix-build-gcc15.patch to allow building with latest gcc
+- Fix build far Factory_ARM
+
+-------------------------------------------------------------------
 Tue May 27 06:25:44 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Add uhd-new-boost.patch to allow building with boost 1.88.0+

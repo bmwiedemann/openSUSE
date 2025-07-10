@@ -28,6 +28,7 @@ Source1:        https://github.com/EttusResearch/uhd/releases/download/v%{versio
 Patch0:         reproducible.patch
 # PATCH_FIX_UPSTREAM uhd-new-boost.patch -- https://github.com/EttusResearch/uhd/commit/2725c664ce617ec949670d449fe6172b7661a3bd
 Patch1:         uhd-new-boost.patch
+Patch2:         uhd-fix-build-gcc15.patch
 
 BuildRequires:  cmake >= 3.5
 BuildRequires:  docutils
@@ -187,8 +188,10 @@ mv %{buildroot}%{_datadir}/doc/uhd %{buildroot}%{_docdir}/
 ## Move executable files to the default bindir
 mv %{buildroot}%{_libdir}/uhd/utils/*[!.rules] %{buildroot}%{_bindir}
 %if 0%{?suse_version} >= 1600
+%ifnarch armv7hl
 mv %{buildroot}%{_libdir}/uhd/examples/python/* %{buildroot}%{_bindir}
 rm -R %{buildroot}%{_libdir}/uhd/examples/python
+%endif
 %endif
 mv %{buildroot}%{_libdir}/uhd/examples/* %{buildroot}%{_bindir}
 rm -R %{buildroot}%{_libdir}/uhd/examples
@@ -234,8 +237,10 @@ getent group usrp >/dev/null || %{_sbindir}/groupadd -r usrp
 
 %if 0%{?suse_version} >= 1600
 %files -n python3-%{name}
+%ifnarch armv7hl
 %{python3_sitearch}/uhd
 %{python3_sitearch}/usrp_mpm
+%endif
 %endif
 
 %files udev
