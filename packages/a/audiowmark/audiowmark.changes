@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  9 18:04:00 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.6.5:
+  * improve robustness for low quality material
+  * fix speed detection result output for default key
+  * ship more m4 macros to fix automake on some target systems
+
+-------------------------------------------------------------------
 Wed Mar  5 21:38:56 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.6.4:

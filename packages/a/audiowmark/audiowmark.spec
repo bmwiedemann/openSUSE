@@ -17,7 +17,7 @@
 
 
 Name:           audiowmark
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        Audio watermarking
 License:        GPL-3.0-or-later
