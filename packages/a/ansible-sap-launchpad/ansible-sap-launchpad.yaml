@@ -1,0 +1,20 @@
+# Configuration file for changes before build.
+
+# Types of available options for transformation:
+# - remove_paths - Removes the specified files or directories.
+# - remove_lines - Removes lines matching the patterns from the files matching specified glob patterns.
+# - replace_text - Replaces text in files matching specified glob patterns.
+# - update_yaml_key - Updates a specific key's value in the specified YAML files matching specified glob patterns.
+# - append_yaml_list - Appends a new item to a list in the specified YAML files matching specified glob patterns.
+# - set_yaml_value - Sets or replaces a specific key's value in the specified YAML files matching specified glob patterns.
+# - remove_yaml_list_items - Removes specific items from a list in the specified YAML files matching specified glob patterns.
+
+changes:
+  - type: remove_paths
+    # Remove all 'meta/main.yml' files within any role directory.
+    # Remove private .git/.gitkeep files and changelog generator configuration.
+    paths:
+      - ".git*"
+      - "*/.git*"
+      - "*/*/.git*"
+      - "changelogs/.plugin-cache.yaml"

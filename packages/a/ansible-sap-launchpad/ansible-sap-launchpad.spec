@@ -21,10 +21,12 @@
 Name:           ansible-sap-launchpad
 Summary:        Ansible collection community.sap_launchpad for SAP Automation
 License:        Apache-2.0
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 URL:            https://github.com/sap-linuxlab/community.sap_launchpad/
-Source:         %{url}archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        %{name}.yaml
+Source2:        transformation.py
 
 BuildArch:      noarch
 
@@ -34,6 +36,9 @@ Requires:       ansible-core >= 2.16
 BuildRequires:  ansible >= 9
 BuildRequires:  ansible-core >= 2.16
 
+# Python module ruamel.yaml for collection-update.py
+BuildRequires:  python3-ruamel.yaml
+
 %description
 This package provides a Ansible collection community.sap_launchpad.
 
@@ -41,16 +46,17 @@ It automates download of SAP Software for SAP installations.
 Downloads software using list of files or maintenance plan ID.
 
 %prep
-# Extract tarball
-cd %{_builddir}
-tar -xzf %{_sourcedir}/%{name}-%{version}.tar.gz --strip-components=1
+%autosetup -p1 -n community.sap_launchpad-%{version}
 
 %build
+# Execute python script to update documentation and remove unsupported roles
+python3 %{_sourcedir}/transformation.py --config %{_sourcedir}/%{name}.yaml  --build_dir .
+# Ensure there are no executable files present, except for sh and py files.
+find . -type f -perm /u+x,g+x,o+x -not -name "*.sh" -not -name "*.py" -exec chmod -x {} \;
 # Build the Ansible collection
 ansible-galaxy collection build --output-path %{_builddir}
 
 %install
-rm -rf %{buildroot}
 # ansible-galaxy always appends ansible_collections folder into collections path
 mkdir -p %{buildroot}%{_datadir}/ansible/collections
 ansible-galaxy collection install --force %{_builddir}/%{ansible_collection_name}.tar.gz \

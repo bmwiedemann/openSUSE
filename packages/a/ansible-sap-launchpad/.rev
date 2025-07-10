@@ -31,4 +31,17 @@ Source is downstream that we are contributing to: https://github.com/sap-linuxla
 </comment>
     <requestid>1268432</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8956cfe1a156ab814f9b04d97d85874a</srcmd5>
+    <version>1.2.1</version>
+    <time>1752178383</time>
+    <user>anag_factory</user>
+    <comment>This request also contains changes to spec file to align it with other packages.
+- 1.2.1
+  - Bugfixes:
+    - software_center_download: Improved logic for skipping existing files and getting valid filename
+    - sap_software_download: Add SLES 16 python313 support and update changelog
+</comment>
+    <requestid>1291653</requestid>
+  </revision>
 </revisionlist>

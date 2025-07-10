@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul  8 13:29:05 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
+
+- 1.2.1
+  - Bugfixes:
+    - software_center_download: Improved logic for skipping existing files and getting valid filename
+    - sap_software_download: Add SLES 16 python313 support and update changelog
+
+-------------------------------------------------------------------
 Mon Apr  7 10:28:18 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
 
 - 1.2.0
