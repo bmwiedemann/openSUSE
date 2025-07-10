@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 10 16:04:05 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 9.4.0:
+  * BLI: Implement `LoaderTimeInitUSec` and `LoaderTimeExecUSec`.
+    These are variables used by `systemd-analyze` and are useful for boot
+    performance metrics.
+  * Limine boot protocol: Add bootloader performance feature.
+    This feature provides the same information as the new Boot Loader
+    Interface variables, but encoded in a nicer way for Limine protocol
+    executables.
+
+-------------------------------------------------------------------
 Sat Jun 21 09:31:44 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 9.3.4:
