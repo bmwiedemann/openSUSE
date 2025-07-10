@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 10 07:35:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.5:
+  * INS-1202: Fix nova vulnerability (#381)
+    - github.com/Masterminds/semver/v3 v3.4.0
+    - helm.sh/helm/v3 v3.18.4
+    - k8s.io/api v0.33.2
+    - k8s.io/apimachinery v0.33.2
+    - k8s.io/client-go v0.33.2
+
+-------------------------------------------------------------------
 Wed Jun 18 04:31:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.4 (3.11.3 was on same hash as 3.11.2):
