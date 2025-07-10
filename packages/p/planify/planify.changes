@@ -1,0 +1,451 @@
+-------------------------------------------------------------------
+Fri Jun 20 12:49:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 4.12.2:
+  * Update io.github.alainm23.planify.appdata.xml.in.in
+- remove patch use-static-cast.patch, as upstream included the patch
+- add patch correct-gxml.patch, as we patch gxml versioning
+
+-------------------------------------------------------------------
+Tue May 20 17:50:25 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 4.12.0:
+  * update styles
+  * Update README.md
+  * Fix: Remove "Offline Mode" tooltip when network is available again
+  * Rewrite offline detection to check the connectivity per connected integration
+  * Drop NetworkMonitor class, because it is no longer needed
+  * Add sync_failed call to Todoist
+  * Fix Code Format
+  * Make the SyncButton clickable even when it currently shows an error
+  * feat: add underline support
+  * fix: linter warnings
+- update to 4.11.6:
+  * verify db integrity
+- add minimum versions to BR
+- update description
+- fix optflags
+- remove update-desktop-files BR
+- add patch use-static-cast.patch
+
+-------------------------------------------------------------------
+Thu Oct 17 18:35:14 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 4.11.5
+  * Bug fixes and performance improvements.
+- update to 4.11.4:
+  * Added a button to view the sub tasks of a main task when in detail view.
+  * Bug fixed: do not show task description.
+  * Bug fixed: task position pinned when moving between projects
+- update to 4.11.2:
+  * Fixed bug with the schedule button
+  * Fixed bug that opened multiple times Quick Add.
+  * translation updates
+- update to 4.11.0:
+  * Added feature to collapse sections.
+  * A task counter per section has been added.
+  * Pinned tasks are now displayed at the start of each project.
+  * Added an overdue tasks indicator to the today button.
+  * New keyboard shortcuts were added to Quick Add, @ to add tags, # to select
+    a project and ! to create a reminder.
+  * A new view has been added to see completed tasks, sorted by date and the
+    possibility to filter by Sections.
+  * New task history log added, now it is possible to see when the task was
+    completed, moved between projects or sections.
+  * Fixed several bugs when doing Drag and Drop.
+  * Quick Find now opens the task detail when selected.
+  * Added a preference to enable or disable the use of Markdown in task detail.
+  * Improved navigation using the keyboard.
+  * In Quick Add, it is now possible to create a section if it does not exist.
+  * Added a numerical indicator for the number of attachments.
+  * Added preference to keep the task detail pane open, making navigation faster.
+  * The option to repeat a task has been moved to the date and time selection
+    widget, allowing you to create recurring tasks more quickly.
+  * Fixed several bugs with Nextcloud synchronisation.
+  * Several design and optimisation improvements, Planify now feels faster and
+    consumes less resources.
+- update to 4.10.8:
+  * Fixed bug on TLS certificate that didn't allow to sync with Nextcloud
+
+-------------------------------------------------------------------
+Wed Aug 14 06:05:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 4.10.7:
+  * Support for syncing Nextcloud accounts that use a custom subpath
+- update to 4.10.6:
+  * Fixed a bug that crashed the application when completing tasks with subtasks
+- update to 4.10.5:
+  * Updated translations
+- update to 4.10.4:
+  * Fixed bug that did not allow to see the completed tasks
+  * upport for syncing Nextcloud accounts that use a custom port
+- update to 4.10.3:
+  * Updated translations
+- update to 4.10.2:
+  * Fixed bug that does not show synchronised accounts correctly
+- update to 4.9.0:
+  * Added feature to switch between task and note..
+  * Added a task change history feature.
+  * Fixed bug when importing backup and not recovering labels.
+  * Updated translations
+- update to 4.8.4:
+  * Planify now sends reminder notifications when you create a task with a specific time.
+  * Fixed bug that removed the description of a task when changing a value in the side view.
+  * Fixed bug when selecting weekly repeat changes the selected date and time.
+  * Fixed bug when sorting completed tasks.
+  * Updated translations
+- update to 4.8.2:
+  * Fixed bug not showing overdue tasks
+- update to 4.8:
+  * Markdown Support in Task Descriptions.
+  * Markdown Support in Task Titles.
+  * New All Tasks View.
+  * Expand or Collapse Tasks Functionality.
+  * Updated translations
+- update to 4.7.4:
+  * Support for libadwaita 1.5 and adaptive dialogs
+  * Design, Usability, and Performance Improvements
+  * Updated translations
+- update to 4.7.2:
+  * Inbox as Independent Project: We've completely rebuilt the functionality
+    of Inbox. Now, it's an independent project with the ability to move your
+    tasks between different synchronized services. The Inbox is the default
+    place to add new tasks, allowing you to quickly get your ideas out of your
+    head and then plan them when you're ready.
+  * Enhanced Task Duplication: When you duplicate a task now, all subtasks and
+    labels are automatically duplicated, saving you time and effort in managing
+    your projects.
+  * Duplication of Sections and Projects: You can now easily duplicate entire sections
+    and projects, making it easier to create new projects based on existing structures.
+  * Improvements in Quick Add: We've improved the usability of Quick Add. Now, the
+    "Create More" option is directly displayed in the user interface, making it easier
+    to visualize and configure your new tasks.
+  * Improvements on Small Screens: For those working on devices with small screens, we've
+    enhanced the user experience to ensure smooth and efficient navigation.
+  * Project Expiry Date: Your project's expiry date now clearly shows the remaining days,
+    helping you keep track of your deadlines more effectively.
+  * Archiving of Projects and Sections: You can now archive entire projects and sections!
+    This feature helps you keep your workspace organized and clutter-free.
+- update to 4.7:
+  * Added feat to filter to-dos within a project.
+  * Added feat to attach attachments to a task.
+  * Added feat to play a sound when completing a task (if you want to).
+  * Fixed bug that duplicated projects when dragging into a sub-project
+  * Fixed a bug when dragging a subtask out of a section and dragging it back in, the subtask would disappear
+  * Updated translations
+- update to 4.6:
+  * Now you can sort tasks in the Today view.
+  * We've added a new detailed task view on the sidebar when opening a task in Board view.
+  * We've introduced the ability to delete completed tasks.
+  * You can now use the Ctrl key when creating a task to continue adding.
+  * We've fixed a bug when moving tasks between projects and sections.
+  * We've addressed an animation bug when adding subtasks.
+  * Updated translations
+- update to 4.5.12:
+  * Fixed bug when syncing on Nextcloud.
+  * Updated translations
+- update to 4.5.11:
+  * Improved performance when using the Completed view.
+  * Added the option to close an open task with the ESC key.
+  * Added the option to delete a completed task from the context menu.
+  * The sync keyboard shortcut also syncs your Nextcloud account.
+  * Fixed error when viewing calendar event as a task in Nextcloud.
+  * Updated translations
+- update to 4.5.10:
+  * Tomorrrow, Untagged, Repeat and Anytime filter added from Quick Search.
+  * Completed view added to the sidebar.
+  * Fixed bug when syncing uncolored task list in Nextcloud.
+  * Updated translations
+- update to 4.5.8:
+  * Fixed bug that icons are not displayed in Quick Add
+- update to 4.5.6:
+  * A URL validation was added when syncing with Nextcloud
+  * The Pinboard view can now be selected as the homepage
+  * Fixed bug that broke the application when adding a task
+  * Fixed bug where the completion icon was not displayed
+  * Fixed bug that did not update tasks in the Pinboard view
+  * Fixed bug that displayed the incorrect date format in the Scheduled view
+- update to 4.5.4:
+  * Improved design and new UI icons.
+  * It is now possible to mark a task as Pinned from the context menu.
+  * Fixed bug that improves CalDAV sync.
+  * Updated translations
+- update to 4.5.2:
+  * Fixed bug that improves CalDAV sync.
+  * Fixed bug when moving tasks.
+  * Fixed bug where task disappeared when dragging from Today views to a project.
+- update to 4.5:
+  * Nextcloud integration is available.
+  * Option to migrate tasks from Planner
+  * Redesigned date and time selection widget
+  * It is now possible to move tasks by dragging them to the task list
+  * Option to show completed subtasks always
+  * Added option to hide sections
+- update to 4.4:
+  * Improved drag-and-drop sorting: Added a new animation and a new way of
+    sorting making it cleaner and easier.
+  * Support for sub-projects: Create a sub-project just by dragging and dropping
+    or by using the magic button and dropping into the parent project.
+  * Magic Button: Just drag and drop to add tasks wherever you want and in the order you want.
+  * Board View: Have an overview of your tasks without losing sight of the details.
+  * Using Adw.OverlaySplitView to have a collapsible sidebar.
+  * Sections are now created from a Dialog and support color and a description.
+  * Parent and child tasks: It is now easier to create subtasks, just drag the child task to
+    the parent task and drop it.
+  * New preference to configure whether to add the task at the beginning or end of the list.
+  * Quick Add now allows you to select the target section.
+  * Improved integration with Todoist, now allows you to create tasks with strange character content.
+  * The description of a project is now editable instead of using a Dialog.
+  * The design of the reminder creation has been improved.
+  * Updated translations
+- update to 4.3.2:
+  * Fixed the functionality of adding tags.
+- update to 4.3.1:
+  * Updated translations
+- update to 4.3:
+  * Quick Add Improvements: Now supports project selection, due date,
+    priority, labels and pinned.
+  * Sidebar filter settings: It is now possible to re-order, hide filters and the task cutter.
+  * Backup support: It is now possible to create a backup copy and import it
+    from somewhere else. Planify will import all your tasks and settings.
+  * Offline support for Todoist: You were without internet, keep using Planify
+    with Todoist, the tasks will be saved locally and synchronized when the connection returns.
+  * Updated translations
+- update to 4.2.1:
+  * fixed Keyboard shortcuts not working
+- update to 4.2:
+  * Icon size update.
+  * Custom decoration layout support.
+  * Improved colors in light theme.
+  * Sort to-dos by project available.
+  * Ability to configure or decrease the size of the sidebar.
+  * Available configuration to change the start day of the week in the calendar.
+  * Added the functionality to select the home page.
+- update to 4.1:
+  * Planify has a new icon thanks to Tobias Bernard.
+  * Quick Add is available, quickly add tasks from anywhere on your desktop with a simple
+    keyboard shortcut, set it from Preferences → Quick Add
+  * Preferences page redesigned.
+  * The preferences to run in the background and run at startup are available.
+  * The error that did not allow to see the calendar events was solved.
+  * Added the preference to create tutorial project.
+  * Bug fixes and performance improvement.
+- update to 3.0:
+  * Complete redesign of the UI
+  * Drag and Order arrived: Sort your tasks wherever you want.
+  * Progress indicator for each project.
+  * Be more productive and organize your tasks by 'Sections'.
+  * Magic Button: Drag and Drop and create your tasks wherever you want.
+  * Better integration with the dark theme.
+- rename to planify
+
+
+-------------------------------------------------------------------
+Thu Sep  9 22:39:24 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.7:
+  * New Natural Language Date Parser.
+  * First beta support for CalDAV.
+  * Labels synced with Todoist.
+  * Many, many design improvements.
+  * Bug fixes and performance improvement
+  * New visual indicator to know if a project has a subproject,
+    thanks to Jakub Koudelka
+  * UX improvement to collapse or expand subprojects, thanks to
+    Jakub Koudelka
+  * Added a task counter in Sections and Boards.
+  * Updated translations.
+  * Github #658 - Missing collapse button on projects with due
+    date.
+  * Merry Christmas everyone, Planner 2.6 is here.
+  * Github #647 - The error when installing from AppCenter was
+    solved.
+  * Github #640 - The labels don't appear in both the sidebar and
+    the settings.
+  * Github #641 - The project description.
+  * Updated translations..
+  * New Board View.
+  * Sub-project is here.
+  * Quick Search now saves your last searches, so you can hop
+    around without even typing.
+  * Added new Tomorrow view to Quick Search.
+  * Now it is possible to search between Sections.
+  * Added a new view in Preferences to edit task defaults.
+  * It is now possible to filter the tasks within a project by
+    labels.
+  * Labels have been added in the sidebar to make the use of
+    filter by labels much faster.
+  * It is now possible to sort the position Inbox, Today and
+    Upcoming by Drag and Drop.
+  * A giant code cleanup was done and resource usage was
+    improved. Now Planner is faster and works much better.
+
+-------------------------------------------------------------------
+Fri Oct 30 15:48:12 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.5.7:
+  * Bug fixes and performance improvement
+  * Github #577 - Fixed recurring tasks.
+  * Github #575 - Homepage was fixed.
+  * Github #336 - The option to change the text size was added.
+  * New Quick Find button position.
+  * Github #565 - Fixing error when displaying the project name.
+  * Github #563 - Fixing error when moving a task to the end of
+    the list.
+  * Github #559 #415 - Enabled click to see full details of a
+    completed task.
+  * Updated translations
+
+-------------------------------------------------------------------
+Sun Oct 11 07:33:34 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.5.3:
+  * Bug fixes and performance improvement
+  * Github #554 - Reschedule tasks correctly.
+  * Fixed bug when dragging and dropping tasks between projects.
+  * Planner 2.5 is here, with many design improvements, new
+    features, and more.
+  * Quick Add comes with a new design and new features.
+  * Multiple Windows Support.
+  * Multiple Selection Support.
+  * Text Formatting.
+  * Sort Your Tasks.
+  * Export Y Import.
+  * New Keyboard Shortcuts.
+  * General bug fixes and improvements.
+  * Updated translations for non-English languages.
+
+-------------------------------------------------------------------
+Thu Jul 16 18:34:08 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.4.6:
+  * Fixed a critical bug where tasks disappear unexpectedly
+
+-------------------------------------------------------------------
+Thu May  7 04:01:11 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 2.3.5:
+  * Sort your folders by dragging and dropping.
+  * The error that does not allow creating tasks in the 
+  Inbox has been fixed.
+  * Overdue tasks are now counted in badge count.
+  * Today's tasks are displayed correctly.
+  * The progress indicator in the project view now has a tooltip.
+
+-------------------------------------------------------------------
+Thu May  7 03:57:15 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Unnecessary dependencies removed 
+
+-------------------------------------------------------------------
+Thu Apr 30 07:30:38 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.3.3:
+  * Fix #317
+  * Update README
+  * Fix #283
+  * patch dialogs
+  * patch quick find
+  * Fix #160 better url detection
+  * Update .po files
+  * Merge pull request #301 from albanobattistella/patch-9
+  * Merge branch 'master' into patch-9
+  * Fix #284 #283 #265 #260 #187 #155
+  * Fix #133
+  * Merge branch 'origin/master' into Weblate.
+  * Fix #160
+  * fix #295 #241 #205 #157 #153 #121 #116 #54
+  * Update it.po
+  * Update readme po
+  * Merge pull request #291 from albanobattistella/patch-7
+  * Merge branch 'master' into patch-7
+  * Merge pull request #285 from albanobattistella/patch-6
+  * Merge pull request #292 from albanobattistella/patch-8
+  * ...
+
+-------------------------------------------------------------------
+Wed Mar 11 16:45:40 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.14:
+  * Fix QuickAdd
+  * Release 2.2.10
+  * Update po files
+  * Release 2.2.9
+  * Merge pull request #267 from gleissonjoaquim3/master
+  * Fix due date error
+  * Merge branch 'origin/master' into Weblate.
+  * Merge pull request #257 from alainm23/dev
+  * Remove lint
+  * Merge pull request #256 from alainm23/dev
+  * fix #253
+  * Try to fix #253 #254
+
+-------------------------------------------------------------------
+Mon Mar  2 19:02:07 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.8:
+  * Release 2.2.7
+  * update .po files
+  * Merge pull request #245 from albanobattistella/patch-2
+  * Remove actions
+  * Merge branch 'origin/master' into Weblate.
+  * Merge pull request #243 from alainm23/dev
+  * fix #239 #238 #215 #177 #155 #154 #141
+  * fix travis
+  * Fix #227
+  * Fix #122
+  * Update readme
+  * update md
+
+-------------------------------------------------------------------
+Sun Feb  2 10:27:52 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.1:
+  * Update po files
+  * Merge pull request #184 from PululuK/PululuK-patch-1
+  * Update menus
+  * fix #181
+  * fix #152
+  * Merge pull request #168 from yannicka/patch-2
+  * Merge branch 'master' into patch-2
+  * Merge pull request #167 from yannicka/patch-1
+  * Add keyboard shortcuts
+  * Apply suggestions from code review
+  * Fix #144
+  * fix #136 #138 #145 #146 #147
+  * Add files
+  * Add --vapidir
+  * Merge pull request #134 from wi24rd/patch-1
+  * fix magic button
+  * Fix url typo
+  * Add Environment.get_user_data_dir ()
+  * fix internationalization support
+  * Fix calendar flatpak
+  * update flatpak file
+  * fix sync
+  * Update appdata
+  * try to fix build flatpak
+  * Merge pull request #131 from Vistaus/master
+  * update apdata
+  * Remove test files
+  * ...
+
+-------------------------------------------------------------------
+Mon Apr  1 14:34:41 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.2.4:
+  * Fix unexpected null date
+  * Indent correction
+  * Fix some errors
+  * Add JSON errors catching
+  * Update pt_BR.po
+  * Add Todoist Access
+  * Update markdown support
+  * Fix overflow
+  * Update screenshot
+
+-------------------------------------------------------------------
+Tue Mar 19 22:01:07 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Initial package
+
