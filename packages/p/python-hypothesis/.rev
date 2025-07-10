@@ -1009,4 +1009,12 @@ This version fixes the license naming issue.</comment>
     <comment></comment>
     <requestid>1273194</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>68b6b4b2c048cd353f07bf7c1a7c65ac</srcmd5>
+    <version>6.127.8</version>
+    <time>1752182105</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1291700</requestid>
+  </revision>
 </revisionlist>
