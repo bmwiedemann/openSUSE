@@ -89,7 +89,8 @@ install -Dm0644 doc/pygmentize.1 %{buildroot}%{_mandir}/man1/pygmentize.1
 # in exmplefiles because of potential licensing concerns
 # See https://github.com/pygments/pygments/issues/2872
 # skip random input tests as they get stuck (missing entropy?)
-%pytest -k "not test_guess_lexer_modula2 and not test_random_input"
+# test_lexer_classes breaks with pytest 8.4.
+%pytest -k "not (test_guess_lexer_modula2 or test_random_input or test_lexer_classes)"
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.

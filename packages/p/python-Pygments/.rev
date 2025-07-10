@@ -596,4 +596,12 @@
     <comment></comment>
     <requestid>1287798</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>54b6684f198baf49c215bda57694a8b2</srcmd5>
+    <version>2.19.2</version>
+    <time>1752182099</time>
+    <user>anag_factory</user>
+    <comment>- Skip testcase that breaks with pytest 8.4.</comment>
+    <requestid>1291573</requestid>
+  </revision>
 </revisionlist>

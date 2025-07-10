@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 10 02:55:32 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip testcase that breaks with pytest 8.4. 
+
+-------------------------------------------------------------------
 Sat Jun 21 15:48:13 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 2.19.2:
