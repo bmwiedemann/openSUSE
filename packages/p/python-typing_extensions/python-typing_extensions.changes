@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul 10 10:39:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.14.0
+  * Remove `__or__` and `__ror__` methods from `typing_extensions.Sentinel`
+    on Python versions <3.10. PEP 604 was introduced in Python 3.10, and
+    `typing_extensions` does not generally attempt to backport PEP-604 methods
+    to prior versions.
+  * Further update `typing_extensions.evaluate_forward_ref` with changes in Python 3.14.
+- from version 4.14.0rc1
+  * Drop support for Python 3.8 (including PyPy-3.8). Patch by Victorien Plot.
+  * Do not attempt to re-export names that have been removed from `typing`,
+    anticipating the removal of `typing.no_type_check_decorator` in Python 3.15.
+    Patch by Jelle Zijlstra.
+  * Update `typing_extensions.Format`, `typing_extensions.evaluate_forward_ref`, and
+    `typing_extensions.TypedDict` to align
+    with changes in Python 3.14. Patches by Jelle Zijlstra.
+  * Fix tests for Python 3.14 and 3.15. Patches by Jelle Zijlstra.
+  * Add support for inline typed dictionaries (PEP 764).
+    Patch by [Victorien Plot](https://github.com/Viicos).
+  * Add `typing_extensions.Reader` and `typing_extensions.Writer`. Patch by
+    Sebastian Rittau.
+  * Add support for sentinels (PEP 661). Patch by Victorien Plot.
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Tue May 20 11:34:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.13.2
