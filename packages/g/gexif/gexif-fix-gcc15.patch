@@ -1,0 +1,27 @@
+Index: gexif-0.5/gexif/gexif-main.c
+===================================================================
+--- gexif-0.5.orig/gexif/gexif-main.c
++++ gexif-0.5/gexif/gexif-main.c
+@@ -304,16 +304,16 @@ action_thumbnail (gpointer callback_data
+ static GtkItemFactoryEntry mi[] =
+ {
+ 	{"/_File", NULL, 0, 0, "<Branch>"},
+-	{"/File/_Open...", NULL, action_open, 0, "<StockItem>", GTK_STOCK_OPEN},
+-	{"/File/_Save", NULL, action_save, 0, "<StockItem>", GTK_STOCK_SAVE},
+-	{"/File/Save _As...", NULL, action_save_as, 0, "<StockItem>",
++	{"/File/_Open...", NULL, (void*)action_open, 0, "<StockItem>", GTK_STOCK_OPEN},
++	{"/File/_Save", NULL, (void*)action_save, 0, "<StockItem>", GTK_STOCK_SAVE},
++	{"/File/Save _As...", NULL, (void*)action_save_as, 0, "<StockItem>",
+ 							GTK_STOCK_SAVE_AS},
+ 	{"/File/sep1", NULL, 0, 0, "<Separator>"},
+-	{"/File/E_xit", NULL, action_exit, 0, "<StockItem>", GTK_STOCK_QUIT},
++	{"/File/E_xit", NULL, (void*)action_exit, 0, "<StockItem>", GTK_STOCK_QUIT},
+ 	{"/_View", NULL, 0, 0, "<Branch>"},
+-	{"/View/_Thumbnail", NULL, action_thumbnail, 0, NULL, NULL},
++	{"/View/_Thumbnail", NULL, (void*)action_thumbnail, 0, NULL, NULL},
+ 	{"/_Help", NULL, 0, 0, "<Branch>"},
+-	{"/Help/About", NULL, action_about, 0, NULL, NULL}
++	{"/Help/About", NULL, (void*)action_about, 0, NULL, NULL}
+ };
+ 
+ GtkWidget *

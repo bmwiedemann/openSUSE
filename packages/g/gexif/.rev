@@ -145,4 +145,12 @@
     <comment></comment>
     <requestid>1277572</requestid>
   </revision>
+  <revision rev="22" vrev="208">
+    <srcmd5>f5133b607e64130d4c04105e37e0870a</srcmd5>
+    <version>0.5</version>
+    <time>1752178315</time>
+    <user>anag_factory</user>
+    <comment>- gexif-fix-gcc15.patch: make build with gcc15 (forwarded request 1291549 from msmeissn)</comment>
+    <requestid>1291550</requestid>
+  </revision>
 </revisionlist>
