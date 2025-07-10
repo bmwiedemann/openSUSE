@@ -1,0 +1,14 @@
+Index: eco5000-1.2.0/defines.h
+===================================================================
+--- eco5000-1.2.0.orig/defines.h
++++ eco5000-1.2.0/defines.h
+@@ -78,7 +78,8 @@
+ 
+ #ifndef bool
+ 
+- typedef int bool;
++/* typedef int bool; */
++#include <stdbool.h>
+ 
+ #endif
+ 

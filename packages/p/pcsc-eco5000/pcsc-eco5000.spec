@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-eco5000
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Summary:        PC/SC IFD Handler for the ECO 5000 Serial Smart Card Reader
 Source:         %{_name}-%{version}.tar.bz2
 Patch0:         pcsc-eco5000-fix-compile-gcc14.patch
 Patch1:         pcsc-eco5000-clean-warnings.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch2:         pcsc-eco5000-fix-compile-gcc15.patch
 Requires:       pcsc-lite
 %define ifddir %(pkg-config --variable=usbdropdir libpcsclite)
 
@@ -69,9 +69,7 @@ Authors:
     Andreas Schwier <andreas.schwier@cardcontact.de>
 
 %prep
-%setup -q -n %{_name}-%{version}
-%patch -P 0 -p1
-%patch -P 1 -p1
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 autoreconf -f -i
