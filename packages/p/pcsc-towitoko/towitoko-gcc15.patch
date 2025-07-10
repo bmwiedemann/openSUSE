@@ -1,0 +1,14 @@
+Index: towitoko-linux-2.0.8/src/driver/defines.h
+===================================================================
+--- towitoko-linux-2.0.8.orig/src/driver/defines.h
++++ towitoko-linux-2.0.8/src/driver/defines.h
+@@ -48,7 +48,8 @@
+ 
+ typedef unsigned char BYTE;
+ #ifndef __cplusplus
+-typedef int bool;
++/* typedef int bool; */
++#include <stdbool.h>
+ #endif
+ typedef unsigned short USHORT;
+ typedef unsigned char UCHAR;

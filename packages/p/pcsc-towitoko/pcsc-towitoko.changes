@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  9 11:30:13 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix build with gcc15:
+  * Remove bool typedef as not needed and not used in the code
+  * Add towitoko-gcc15.patch
+
+-------------------------------------------------------------------
 Tue Oct 18 01:40:31 UTC 2022 - Jason Sikes <jsikes@suse.com>
 
 - Update to 2.0.8

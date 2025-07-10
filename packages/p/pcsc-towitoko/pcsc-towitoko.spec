@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-towitoko
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source:         https://github.com/cprados/towitoko-linux/archive/refs/tags/v%{v
 Patch1:         %{_name}-%{version}-install.diff
 Patch2:         %{_name}-destdir.patch
 Patch3:         towitoko-%{version}-implicit-decls.patch
+Patch4:         towitoko-gcc15.patch
 BuildRequires:  libtool
 BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkgconfig
