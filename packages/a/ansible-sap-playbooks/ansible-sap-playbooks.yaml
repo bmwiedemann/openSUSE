@@ -1,0 +1,56 @@
+# Configuration file for changes before build.
+
+# Types of available options for transformation:
+# - remove_paths - Removes the specified files or directories.
+# - remove_lines - Removes lines matching the patterns from the files matching specified glob patterns.
+# - replace_text - Replaces text in files matching specified glob patterns.
+# - update_yaml_key - Updates a specific key's value in the specified YAML files matching specified glob patterns.
+# - append_yaml_list - Appends a new item to a list in the specified YAML files matching specified glob patterns.
+# - set_yaml_value - Sets or replaces a specific key's value in the specified YAML files matching specified glob patterns.
+# - remove_yaml_list_items - Removes specific items from a list in the specified YAML files matching specified glob patterns.
+
+changes:
+  - type: remove_paths
+    # Remove all internal files and folders.
+    paths:
+      - ".git*"
+      - ".ansible-lint"
+
+  - type: replace_text
+    # This is used to update the namespace from 'community' to 'suse'.
+    files:
+      - "deploy_scenarios/*/ansible_playbook.yml"
+      - "special_actions/*/ansible_playbook.yml"
+    replacements:
+      - { find: "name: community.sap_install", replace: "name: suse.sap_install" }
+      - { find: "name: community.sap_infrastructure", replace: "name: suse.sap_infrastructure" }
+
+  - type: replace_text
+    # This is used to update github links.
+    files:
+      - "README.md"
+      - "*/*.md"
+      - "*/*/*.md"
+    replacements:
+      - { find: "github.com/sap-linuxlab/ansible.playbooks_for_sap", replace: "github.com/SUSE/ansible.playbooks_for_sap" }
+
+  - type: remove_yaml_list_items
+    # This is used to remove specific collections from ansible_requirements.yml.
+    files:
+      - "deploy_scenarios/*/ansible_requirements.yml"
+      - "special_actions/sap_webdispatcher_standalone/ansible_requirements.yml"
+    list_key: "collections"
+    items_to_remove:
+      - name: "fedora.linux_system_roles"
+      - name: "community.sap_install"
+      - name: "community.sap_launchpad"
+      - name: "community.sap_infrastructure"
+
+  - type: set_yaml_value
+    # This is used to empty the collections list in ansible_requirements.yml.
+    files:
+      - "special_actions/sap_sda/ansible_requirements.yml"
+      - "special_actions/sap_system_copy_export/ansible_requirements.yml"
+      - "special_actions/sap_system_copy_restore_hana_sandbox/ansible_requirements.yml"
+    key: "collections"
+    value: []

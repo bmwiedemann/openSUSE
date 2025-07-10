@@ -1,0 +1,11 @@
+<package name="ansible-sap-playbooks" project="openSUSE:Factory">
+  <title></title>
+  <description>This package provides a collection of Ansible Playbooks for SAP Automation,  designed to automate the setup and configuration of SAP environments.
+
+The playbooks are installed in the following directory: /usr/share/ansible/playbooks/ansible.playbooks_for_sap/
+
+IMPORTANT: Do not modify the playbooks in this directory directly. Any changes will be overwritten by future package updates (zypper up).
+Instead, copy the playbooks to a different location before customizing or using them.
+
+It is highly recommended to read the README file in the installation directory to understand the functionality and proper usage of the playbooks.</description>
+</package>

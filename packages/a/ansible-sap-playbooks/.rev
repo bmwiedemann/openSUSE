@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bc3b442d3892603edf1a81651fccde06</srcmd5>
+    <version>1.1.3</version>
+    <time>1752178446</time>
+    <user>anag_factory</user>
+    <comment>This is first onboarding of package.
+Please ensure you read explanations in rpmlintrc file, that document design of package and why duplicates are expected.
+
+- 1.1.3
+  - Bugfixes
+    - all: Remove executable flag from yml files and fix typos in interactive mode</comment>
+    <requestid>1291714</requestid>
+  </revision>
+</revisionlist>

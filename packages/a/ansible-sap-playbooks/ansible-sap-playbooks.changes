@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Tue Jul  8 11:16:35 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
+
+- 1.1.3
+  - Bugfixes
+    - all: Remove executable flag from yml files and fix typos in interactive mode
+
+-------------------------------------------------------------------
+Mon Jun 23 12:28:36 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
+
+- 1.1.2
+  - Initial release to Factory
+
+  - Minor Changes:
+    - New scenario sap_s4hana_sandbox_syscopy.
+    - Placeholder variable validation, Rsync destination regex and usability improvements.
+    - Enable PR linting, noqa for placeholder checks and add sap_infrastructure 1.1.3 bastion variable.
+    - action: Add rsync checksum and improve output verbosity.
+
+- 1.1.1
+  - Minor Changes:
+    - Update existing hosts extravars files, Azure comments and inventory comments.
+
+- 1.1.0
+  - Major Changes:
+    - Interactive prompts for end-user, across all supported scenarios and target platforms.
+    - Simplified variable files, structure and comments.
+  - Minor Changes:
+    - Add github action for publishing stage to main.
+    - all: Add author to publish action and update ansible_requirements
+    - all: Default SAP HANA master password and readme update explaining S-user

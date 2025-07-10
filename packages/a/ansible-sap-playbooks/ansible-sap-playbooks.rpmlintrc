@@ -1,0 +1,7 @@
+# rpmlint configuration for ansible-sap-playbooks package.
+# This package contains range of Ansible Playbooks that are designed to be used as template.
+# Each scenario is represented by folder that is completely isolated, ready to be copied and customized.
+# This results in duplicate contents or files themselves, which is part of design.
+
+addFilter("W: files-duplicate")
+addFilter("E: files-duplicated-waste")
