@@ -68,4 +68,12 @@
   * AVIF support was dropped, as the upcoming Pillow has native support (forwarded request 1289323 from rrahl0)</comment>
     <requestid>1289324</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c2a85fe942056ce652795dbb7e9f24ac</srcmd5>
+    <version>1.0.0</version>
+    <time>1752178346</time>
+    <user>anag_factory</user>
+    <comment>- add patch include-new-header.patch, as libheif split the header file (forwarded request 1291611 from rrahl0)</comment>
+    <requestid>1291612</requestid>
+  </revision>
 </revisionlist>

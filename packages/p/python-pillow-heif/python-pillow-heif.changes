@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 10 06:20:18 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add patch include-new-header.patch, as libheif split the header file
+
+-------------------------------------------------------------------
 Mon Jun 30 17:06:51 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0:
