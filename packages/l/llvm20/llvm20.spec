@@ -132,7 +132,7 @@
 # Set max_<type>_jobs so that every job of the given type has at least the
 # given amount of memory.
 %define set_jobs() \
-    max_%{1}_jobs="%{?jobs:%{jobs}}" \
+    max_%{1}_jobs="$(echo %{?_smp_mflags} | cut -c 3-)" \
     if test -n "$max_%{1}_jobs" -a "$max_%{1}_jobs" -gt 1 ; then \
         max_jobs="$(($avail_mem / %2))" \
         test "$max_%{1}_jobs" -gt "$max_jobs" && max_%{1}_jobs="$max_jobs" && echo "Warning: Reducing number of %{1} jobs to $max_jobs because of memory limits" \
@@ -1082,13 +1082,14 @@ max_link_jobs=1
 %define __builddir build
 %if %{with thin_lto} && %{with use_lld}
 %global lld_ldflag --ld-path=%{sourcedir}/stage1/bin/ld.lld
+jobs=$(echo %{?_smp_mflags} | cut -c 3-)
 %ifarch %{arm} i586 ppc
-%if %{jobs} > 8
-%global lto_limit_threads -Wl,--thinlto-jobs=8
+if [ $jobs -gt 8 ] ; then
+    lto_limit_threads=-Wl,--thinlto-jobs=8
+fi
 %endif
 %endif
-%endif
-%define build_ldflags -Wl,--build-id=sha1 %{?lld_ldflag} %{?lto_limit_threads}
+%define build_ldflags -Wl,--build-id=sha1 %{?lld_ldflag} ${lto_limit_threads}
 # The build occasionally uses tools linking against previously built
 # libraries (mostly libLLVM.so), but we don't want to set RUNPATHs.
 export LD_LIBRARY_PATH=%{sourcedir}/build/%{_lib}
@@ -1657,7 +1658,7 @@ fi
 %ifnarch %{ix86}
 %{_libdir}/clang/%{_sonum}/lib/linux/libclang_rt.*.a.syms
 %endif
-%ifarch aarch64 %{arm} ppc64le x86_64
+%ifarch aarch64 %{arm} loongarch64 ppc64le x86_64
 %{_libdir}/clang/%{_sonum}/lib/linux/liborc_rt-*.a
 %endif
 

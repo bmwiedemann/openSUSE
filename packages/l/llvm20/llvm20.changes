@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul  4 06:57:21 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Replace usage of %jobs for reproducible builds (boo#1237231)
+
+-------------------------------------------------------------------
+Thu Jul  3 18:37:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Install liborc_rt-*.a on loongarch64
+
+-------------------------------------------------------------------
 Fri Jun 20 21:33:10 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 20.1.7.
