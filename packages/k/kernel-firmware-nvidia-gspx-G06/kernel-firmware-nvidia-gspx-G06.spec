@@ -17,7 +17,7 @@
 
 
 %define gfx_version 550.144.03
-%define cuda_version 560.35.03
+%define cuda_version 565.57.01
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 %if "%{flavor}" == "cuda"
@@ -51,10 +51,10 @@ NoSource:       0
 # factory_auto. This both sources are seen outside of the build but only
 # the matching one will be included in the srpm for the respective flavor.
 %if %{undefined linux_arch} || %{with cuda}
-Source1:        https://developer.download.nvidia.com/compute/cuda/repos/sles15/x86_64/kernel-firmware-nvidia-gspx-G06-%{cuda_version}-0.x86_64.rpm
+Source1:        https://developer.download.nvidia.com/compute/cuda/repos/sles15/x86_64/kernel-firmware-nvidia-gspx-G06-%{cuda_version}-1.x86_64.rpm
 NoSource:       1
 %endif
-Source2:        LICENCE.nvidia
+Source2:        LICENSE
 Source4:        kernel-firmware-nvidia-gspx-G06-rpmlintrc
 
 # Only required to distinguish between build and factor-auto
@@ -110,7 +110,7 @@ install -m 644 ./lib/firmware/nvidia/%{version}/{gsp_ga10x.bin,gsp_tu10x.bin} \
 %endif
 
 %files
-%license LICENCE.nvidia
+%license LICENSE
 %dir %{_firmwaredir}/nvidia
 %dir %{_firmwaredir}/nvidia/%{version}
 %{_firmwaredir}/nvidia/%{version}/gsp_ga10x.bin
