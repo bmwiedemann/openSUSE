@@ -31,4 +31,16 @@
     <comment></comment>
     <requestid>1245040</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b8ab598f13d41a8ec8cfa08611d9450b</srcmd5>
+    <version>2.2.0</version>
+    <time>1752178328</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.2.0:
+  * Support python 3.13
+  * Fix use of bool keyword in C23
+  * Fix iter long fix leak
+  * Drop python3.8 support</comment>
+    <requestid>1291584</requestid>
+  </revision>
 </revisionlist>

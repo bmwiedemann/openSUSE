@@ -27,13 +27,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyahocorasick%{?psuffix}
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Library for exact or approximate multi-pattern string search
 License:        BSD-3-Clause
 URL:            https://github.com/WojciechMula/pyahocorasick
 Source:         https://files.pythonhosted.org/packages/source/p/pyahocorasick/pyahocorasick-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

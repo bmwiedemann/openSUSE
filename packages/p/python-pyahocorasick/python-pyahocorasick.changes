@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 10 05:26:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.2.0:
+  * Support python 3.13
+  * Fix use of bool keyword in C23
+  * Fix iter long fix leak
+  * Drop python3.8 support
+
+-------------------------------------------------------------------
 Mon Feb 10 21:36:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Enable %build section for test flavor
