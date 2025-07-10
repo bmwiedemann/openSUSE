@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsondiff
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-jsondiff
 Version:        2.2.1
@@ -31,11 +32,11 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-PyYAML
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,11 +57,8 @@ Package to show differences between JSON and JSON-like structures in Python
 %check
 %pytest
 
-%post
-%python_install_alternative jdiff
-
-%postun
-%python_uninstall_alternative jdiff
+%pre
+%python_libalternatives_reset_alternative jdiff
 
 %files %{python_files}
 %license LICENSE
