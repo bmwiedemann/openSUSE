@@ -33,6 +33,7 @@ URL:            https://libcamera.org/
 #Git-Web:       https://git.libcamera.org/libcamera/libcamera.git/
 Source:         libcamera-%version.tar.xz
 Source1:        baselibs.conf
+Patch0:         reproducible.patch
 BuildRequires:  boost-devel
 BuildRequires:  c++_compiler
 %if 0%{?suse_version} <= 1500

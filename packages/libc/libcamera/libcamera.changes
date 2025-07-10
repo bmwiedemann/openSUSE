@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  9 11:32:16 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Add reproducible.patch to skip module signing (boo#1217690)
+
+-------------------------------------------------------------------
 Thu Jun  5 21:57:29 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.5.1

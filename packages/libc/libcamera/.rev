@@ -248,4 +248,12 @@
     <comment>- Update to release 0.5.1</comment>
     <requestid>1283468</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>bb0ca29cafd930010611dd7427ed0445</srcmd5>
+    <version>0.5.1</version>
+    <time>1752182095</time>
+    <user>anag_factory</user>
+    <comment>- Add reproducible.patch to skip module signing (boo#1217690)</comment>
+    <requestid>1291502</requestid>
+  </revision>
 </revisionlist>
