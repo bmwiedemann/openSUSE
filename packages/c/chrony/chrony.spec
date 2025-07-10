@@ -33,7 +33,7 @@
 %bcond_without testsuite
 
 %define _systemdutildir %(pkg-config --variable systemdutildir systemd)
-%global clknetsim_ver 633a0be
+%global clknetsim_ver 530d1a5
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -41,7 +41,7 @@
 %define chrony_helper %{_libexecdir}/chrony/helper
 %define chrony_rundir %{_rundir}/%{name}
 Name:           chrony
-Version:        4.6.1
+Version:        4.7
 Release:        0
 Summary:        System Clock Synchronization Client and Server
 License:        GPL-2.0-only

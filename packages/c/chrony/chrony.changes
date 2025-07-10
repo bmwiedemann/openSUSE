@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jul  2 17:42:22 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Update to version 4.5:
+  * Add opencommands directive to select remote monitoring
+    commands
+  * Add interval option to driftfile directive
+  * Add waitsynced and waitunsynced options to local directive
+  * Add sanity checks for integer values in configuration
+  * Add support for systemd Type=notify service
+  * Add RTC refclock driver
+  * Allow PHC refclock to be specified with network interface name
+  * Don’t require multiple refclock samples per poll to simplify
+    filter configuration
+  * Keep refclock reachable when dropping samples with large delay
+  * Improve quantile-based filtering to adapt faster to larger
+    delay
+  * Improve logging of selection failures
+  * Detect clock interference from other processes
+  * Try to reopen message log (-l option) on cyclelogs command
+  * Fix sourcedir reloading to not multiply sources
+  * Fix tracking offset after failed clock step
+  * Drop support for NTS with Nettle < 3.6 and GnuTLS < 3.6.14
+  * Drop support for building without POSIX threads
+- Update clknetsim to snapshot 530d1a5.
+
+-------------------------------------------------------------------
 Wed Feb  5 17:16:32 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Update to version 4.6.1:
