@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 10 13:13:00 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives
+
+-------------------------------------------------------------------
 Thu Feb 27 11:55:41 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

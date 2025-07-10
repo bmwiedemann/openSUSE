@@ -1,7 +1,7 @@
 #
 # spec file for package python-hypercorn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-hypercorn
 Version:        0.17.3
@@ -38,21 +39,21 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module taskgroup if %python-base < 3.11}
 BuildRequires:  %{python_module trio >= 0.22.0}
 BuildRequires:  %{python_module wsproto >= 0.14.0}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-h11
 Requires:       python-h2 >= 3.1.0
 Requires:       python-priority
 Requires:       python-wsproto >= 0.14.0
+BuildArch:      noarch
 %if %{python_version_nodots} < 311
 Requires:       python-exceptiongroup >= 1.1
 Requires:       python-taskgroup
 Requires:       python-tomli
 Requires:       python-typing-extensions
 %endif
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -80,11 +81,8 @@ sed -i 's/--no-cov-on-fail//' pyproject.toml
 # Broken with new trio
 %pytest -k 'not test_startup_failure'
 
-%post
-%python_install_alternative hypercorn
-
-%postun
-%python_uninstall_alternative hypercorn
+%pre
+%python_libalternatives_reset_alternative hypercorn
 
 %files %{python_files}
 %doc README.rst
