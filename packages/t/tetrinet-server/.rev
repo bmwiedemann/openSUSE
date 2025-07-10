@@ -129,4 +129,12 @@
     <comment></comment>
     <requestid>1155922</requestid>
   </revision>
+  <revision rev="20" vrev="345">
+    <srcmd5>49890fda4de28a6782cfa1f07d6a2074</srcmd5>
+    <version>1.13.16</version>
+    <time>1752178237</time>
+    <user>anag_factory</user>
+    <comment>- added patch to build with gcc15: tetrinet-server-gcc15.patch</comment>
+    <requestid>1291520</requestid>
+  </revision>
 </revisionlist>

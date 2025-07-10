@@ -28,6 +28,8 @@ License:        GPL-2.0-or-later
 Group:          Amusements/Games/Logic
 Source:         %{realname}-%{version}+qirc-%{qirc_version}.tar.bz2
 Patch2:         %{realname}.diff
+# PATCH-FIX-UPSTREAM build with gcc15
+Patch3:         tetrinet-server-gcc15.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

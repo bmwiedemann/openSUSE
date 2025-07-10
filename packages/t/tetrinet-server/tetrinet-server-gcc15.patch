@@ -1,0 +1,13 @@
+Index: src/main.c
+===================================================================
+--- src/main.c.orig
++++ src/main.c
+@@ -3280,7 +3280,7 @@ int net_query_creadaccesslist(struct net
+ 	struct net_t *nn;
+ 	init_banlist(banlist, MAXBAN);
+ 	init_banlist(combanlist, MAXBAN);
+-	init_allowlist(allowlist, MAXALLOW);
++	init_allowlist();
+ 	read_banlist(FILE_BAN, banlist, MAXBAN);
+ 	read_banlist(FILE_BAN_COMPROMISE, combanlist, MAXBAN);
+ 	read_allowlist();

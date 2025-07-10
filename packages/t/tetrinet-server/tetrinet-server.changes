@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  8 09:37:49 UTC 2025 - pgajdos@suse.com
+
+- added patch to build with gcc15: tetrinet-server-gcc15.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 12:55:42 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -57,4 +62,3 @@ Sun Nov 17 20:55:40 CET 2002 - prehak@suse.cz
 Thu Nov 14 15:07:32 CET 2002 - prehak@suse.cz
 
 - initial version 1.13.16 of this package
-
