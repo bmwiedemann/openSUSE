@@ -133,4 +133,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1226928</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>9a3a7bb6b78bc7032e90596180f6b847</srcmd5>
+    <version>2.0.0</version>
+    <time>1752178325</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Sprinkle in fdupes.
+- No more greedy globs in %files.
+- Add Requires that are needed.
+- Fix changelog issues.</comment>
+    <requestid>1291592</requestid>
+  </revision>
 </revisionlist>

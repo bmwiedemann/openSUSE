@@ -1,7 +1,7 @@
 #
 # spec file for package python-logilab-common
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-logilab-common
 Version:        2.0.0
 Release:        0
 Summary:        Python lowlevel functionality shared by logilab projects
 License:        LGPL-2.1-or-later
-Group:          Development/Languages/Python
 URL:            https://logilab-common.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/l/logilab-common/logilab-common-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-mypy_extensions
+Requires:       python-setuptools
+Requires:       python-typing_extensions
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,15 +49,19 @@ database driver.
 %setup -q -n logilab-common-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 rm -f %{buildroot}%{_bindir}/logilab-pytest
 
 %files %{python_files}
 %license COPYING COPYING.LESSER
 %doc ChangeLog README.rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/logilab
+%{python_sitelib}/logilab/common
+%{python_sitelib}/logilab_common-%{version}-*-nspkg.pth
+%{python_sitelib}/logilab_common-%{version}.dist-info
 
 %changelog
