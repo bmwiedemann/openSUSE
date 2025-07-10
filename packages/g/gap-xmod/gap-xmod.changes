@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 10 13:40:40 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.95
+  * Added `PreXModWithObjectsByBoundaryAndAction`
+  * Make the new groupoids 1.77 a prerequisite and revise material
+    on double groupoids to agree with the changes in gap-groupoids.
+
+-------------------------------------------------------------------
 Tue Jul  8 08:02:07 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.94
