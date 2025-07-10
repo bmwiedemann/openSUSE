@@ -16,11 +16,11 @@ Signed-off-by: Takashi Iwai <tiwai@suse.de>
  git-gui/lib/remote_branch_delete.tcl |  4 +++-
  5 files changed, 31 insertions(+), 9 deletions(-)
 
-diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
-index 28572c889c0e..206981190535 100755
---- a/git-gui/git-gui.sh
-+++ b/git-gui/git-gui.sh
-@@ -1275,6 +1275,17 @@ if {[catch {
+Index: git/git-gui/git-gui.sh
+===================================================================
+--- git.orig/git-gui/git-gui.sh
++++ git/git-gui/git-gui.sh
+@@ -1298,6 +1298,17 @@ if {[catch {
  	set picked 1
  }
  
@@ -38,7 +38,7 @@ index 28572c889c0e..206981190535 100755
  # we expand the _gitdir when it's just a single dot (i.e. when we're being
  # run from the .git dir itself) lest the routines to find the worktree
  # get confused
-@@ -1822,7 +1833,7 @@ proc short_path {path} {
+@@ -1845,7 +1856,7 @@ proc short_path {path} {
  }
  
  set next_icon_id 0
@@ -47,10 +47,10 @@ index 28572c889c0e..206981190535 100755
  
  proc merge_state {path new_state {head_info {}} {index_info {}}} {
  	global file_states next_icon_id null_sha1
-diff --git a/git-gui/lib/blame.tcl b/git-gui/lib/blame.tcl
-index 8441e109be32..1f0b8ea28504 100644
---- a/git-gui/lib/blame.tcl
-+++ b/git-gui/lib/blame.tcl
+Index: git/git-gui/lib/blame.tcl
+===================================================================
+--- git.orig/git-gui/lib/blame.tcl
++++ git/git-gui/lib/blame.tcl
 @@ -426,6 +426,7 @@ method _kill {} {
  
  method _load {jump} {
@@ -86,7 +86,7 @@ index 8441e109be32..1f0b8ea28504 100644
  			set t [string range $c 0 8]...
  		} elseif {$c eq {}} {
  			set t {Working Directory}
-@@ -627,6 +630,7 @@ method _exec_blame {cur_w cur_d options cur_s} {
+@@ -627,6 +630,7 @@ method _exec_blame {cur_w cur_d options
  method _read_blame {fd cur_w cur_d} {
  	upvar #0 $cur_d line_data
  	variable group_colors
@@ -112,10 +112,10 @@ index 8441e109be32..1f0b8ea28504 100644
  				set commit_abbr work
  				set commit_type curr_commit
  			} elseif {$cmit eq $commit} {
-diff --git a/git-gui/lib/choose_repository.tcl b/git-gui/lib/choose_repository.tcl
-index d23abedcb36f..6078b1c7e2c4 100644
---- a/git-gui/lib/choose_repository.tcl
-+++ b/git-gui/lib/choose_repository.tcl
+Index: git/git-gui/lib/choose_repository.tcl
+===================================================================
+--- git.orig/git-gui/lib/choose_repository.tcl
++++ git/git-gui/lib/choose_repository.tcl
 @@ -870,6 +870,8 @@ method _do_clone_HEAD {ok} {
  }
  
@@ -127,14 +127,14 @@ index d23abedcb36f..6078b1c7e2c4 100644
  	if {$ok} {
 @@ -879,7 +881,7 @@ method _do_clone_full_end {ok} {
  		if {[file exists [gitdir FETCH_HEAD]]} {
- 			set fd [open [gitdir FETCH_HEAD] r]
+ 			set fd [safe_open_file [gitdir FETCH_HEAD] r]
  			while {[gets $fd line] >= 0} {
 -				if {[regexp "^(.{40})\t\t" $line line HEAD]} {
 +				if {[regexp [string map "@@ $hashlength" "^(.{@@})\t\t"] $line line HEAD]} {
  					break
  				}
  			}
-@@ -965,6 +967,8 @@ method _do_clone_checkout {HEAD} {
+@@ -966,6 +968,8 @@ method _do_clone_checkout {HEAD} {
  }
  
  method _readtree_wait {fd} {
@@ -143,7 +143,7 @@ index d23abedcb36f..6078b1c7e2c4 100644
  	set buf [read $fd]
  	$o_status_op update_meter $buf
  	append readtree_err $buf
-@@ -986,7 +990,7 @@ method _readtree_wait {fd} {
+@@ -987,7 +991,7 @@ method _readtree_wait {fd} {
  
  	# -- Run the post-checkout hook.
  	#
@@ -152,11 +152,11 @@ index d23abedcb36f..6078b1c7e2c4 100644
  		[git rev-parse HEAD] 1]
  	if {$fd_ph ne {}} {
  		global pch_error
-diff --git a/git-gui/lib/commit.tcl b/git-gui/lib/commit.tcl
-index a570f9cdc6a4..7a7394a5c89c 100644
---- a/git-gui/lib/commit.tcl
-+++ b/git-gui/lib/commit.tcl
-@@ -348,6 +348,7 @@ proc commit_committree {fd_wt curHEAD msg_p} {
+Index: git/git-gui/lib/commit.tcl
+===================================================================
+--- git.orig/git-gui/lib/commit.tcl
++++ git/git-gui/lib/commit.tcl
+@@ -348,6 +348,7 @@ proc commit_committree {fd_wt curHEAD ms
  	global file_states selected_paths rescan_active
  	global repo_config
  	global env
@@ -164,7 +164,7 @@ index a570f9cdc6a4..7a7394a5c89c 100644
  
  	gets $fd_wt tree_id
  	if {[catch {close $fd_wt} err]} {
-@@ -367,7 +368,7 @@ proc commit_committree {fd_wt curHEAD msg_p} {
+@@ -367,7 +368,7 @@ proc commit_committree {fd_wt curHEAD ms
  		close $fd_ot
  
  		if {[string equal -length 5 {tree } $old_tree]
@@ -173,10 +173,10 @@ index a570f9cdc6a4..7a7394a5c89c 100644
  			set old_tree [string range $old_tree 5 end]
  		} else {
  			error [mc "Commit %s appears to be corrupt" $PARENT]
-diff --git a/git-gui/lib/remote_branch_delete.tcl b/git-gui/lib/remote_branch_delete.tcl
-index 5ba9fcadd17f..8ea672479306 100644
---- a/git-gui/lib/remote_branch_delete.tcl
-+++ b/git-gui/lib/remote_branch_delete.tcl
+Index: git/git-gui/lib/remote_branch_delete.tcl
+===================================================================
+--- git.orig/git-gui/lib/remote_branch_delete.tcl
++++ git/git-gui/lib/remote_branch_delete.tcl
 @@ -323,6 +323,8 @@ method _load {cache uri} {
  }
  
@@ -195,6 +195,3 @@ index 5ba9fcadd17f..8ea672479306 100644
  			if {[regsub ^refs/heads/ $ref {} abr]} {
  				lappend head_list $abr
  				lappend head_cache($cache) $abr
--- 
-2.50.0
-
