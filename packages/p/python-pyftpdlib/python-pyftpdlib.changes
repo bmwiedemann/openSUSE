@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 10 08:53:50 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Set CIBUILDWHEEL to avoid spurious test failures
+
+-------------------------------------------------------------------
 Tue Jul  8 13:56:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

@@ -62,6 +62,7 @@ cp %{SOURCE1} pyftpdlib/test
 # Note: Do not remove tests. Other packages import them
 
 %check
+export CIBUILDWHEEL=1
 ignorebuild="--ignore build"
 %{python_expand # expand to python flavor, not to the binary name, then strip the trailing _
 builddir=_build.$python_
