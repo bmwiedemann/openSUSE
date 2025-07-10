@@ -26,6 +26,8 @@ Group:          Development/Languages/Python
 Source:         https://github.com/geopy/geopy/archive/%{version}.tar.gz#/geopy-%{version}.tar.gz
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 # SECTION test requirements
 BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module docutils}
@@ -74,11 +76,11 @@ rm \
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -88,6 +90,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc AUTHORS README.rst docs/changelog_09x.rst docs/changelog_1xx.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/geopy
+%{python_sitelib}/geopy-%{version}.dist-info
 
 %changelog

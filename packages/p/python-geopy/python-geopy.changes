@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 17 04:37:28 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- Explicitly list files and directories in %files.
+
+-------------------------------------------------------------------
 Mon Jun 26 07:55:41 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 2.3.0
